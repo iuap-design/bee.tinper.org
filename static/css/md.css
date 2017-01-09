@@ -511,3 +511,8 @@ table td:first-child {
 .u-panel-bordered .u-panel-heading {
     border-bottom:none;
 }
+@media screen and (max-width: 768px) {
+    .u-navbar .u-navbar-nav > li {
+        padding: 15px 10px;
+    }
+}
