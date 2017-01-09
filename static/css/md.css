@@ -36,7 +36,7 @@
 .sidebar a {
     transition:all .3s;
     text-decoration:none;
-    color:#5e6d82;
+    color:#000;
     font-size: 14px;
     line-height:25px;
     cursor: pointer;
@@ -510,4 +510,9 @@ table td:first-child {
 }
 .u-panel-bordered .u-panel-heading {
     border-bottom:none;
+}
+@media screen and (max-width: 768px) {
+    .u-navbar .u-navbar-nav > li {
+        padding: 15px 10px;
+    }
 }
