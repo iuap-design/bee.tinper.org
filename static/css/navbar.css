@@ -974,6 +974,12 @@ a {
 
 @media (min-width: 1200px) {
     .u-container {
-        width: 970px; } }
+        width: 970px; }
+}
+@media screen and (max-width: 768px) {
+    .u-navbar .u-navbar-nav > li {
+        padding: 15px 10px;
+    }
+}
 
 /*# sourceMappingURL=demo.css.map */
