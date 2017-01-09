@@ -1,11 +1,10 @@
 {% extends 'layout/layout.swig' %}
 
 {% block css %}
-    <link href="/tinper-bee/assets/tinper-bee.css" type="text/css" rel="stylesheet" />
+  <link href="/tinper-bee/assets/tinper-bee.css" type="text/css" rel="stylesheet" />
     {% if docId && isComponent==1 %}
         <link href="/{{docId}}/dist/demo.css" type="text/css" rel="stylesheet" />
     {% endif %}
-    <link href="/css/navbar.css" type="text/css" rel="stylesheet" />
     <link href="/css/md.css" type="text/css" rel="stylesheet" />
 {% endblock%}
 
