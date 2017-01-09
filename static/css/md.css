@@ -60,8 +60,8 @@
 }
 /*头部*/
 
-.u-navbar {
-    z-index: 10000000000;
+/*.u-navbar {
+    z-index: 1000;
     width: 100%;
     margin-bottom: 0;
     box-sizing: border-box;
@@ -127,7 +127,7 @@
     background: #FFF;
     -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
     box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
-}
+}*/
 
 @media (max-width: 767px) {
     .nav-list .dropdown .nav-par+ul {
@@ -461,7 +461,7 @@ table td:first-child {
     padding: 30px 0;
 }
 #tinperBeeDemo .u-button:active {
-    background:none;
+    /*background:none;*/
 }
 
 @media screen and (max-width: 768px) {
