@@ -23,7 +23,7 @@
 <div class="page-container u-container example">
     <div class="u-row">
         {% include "common/sidebar.swig"%}
-        <div class="u-col-xs-12 u-col-md-9">
+        <div class="u-col-xs-12 u-col-sm-9 u-col-md-9">
             {% autoescape false %}
                 {{ doc| }}
             {% endautoescape %}
