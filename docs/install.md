@@ -1,10 +1,5 @@
 ### 安装
 
->使用npm安装
-
->从github获取我们的源码
-
->使用工具获取
 
 
 #### 使用npm安装
@@ -42,15 +37,6 @@ git clone git@github.com:iuap-design/tinper-bee.git
 ```
 然后从build目录下获取js源码，在assets目录下获取css样式文件，在style里面获取字体文件。在本地项目中进行相应引用。
 
-#### 使用工具获取
-
-如果你是一个新的项目，推荐使用我们提供的开发脚手架和开发工具进行开发。开发脚手架里面内置了我们的组件库和一些常用开发构建流程。
-
-```
-npm install -g uba
-
-uba init bee-boilerplate-light your-projectname
-```
 
 #### CDN
 
