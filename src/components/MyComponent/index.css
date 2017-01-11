@@ -1,0 +1,25 @@
+.demo {
+  font-size: 50px;
+  color: blue;
+  text-align: center;
+  font-weight: bold;
+}
+.static-modal .u-modal {
+    position: relative;
+    top: auto;
+    right: auto;
+    left: auto;
+    bottom: auto;
+    z-index: 1;
+    display: block;
+}
+.demo-tooltip .u-tooltip {
+    position: relative;
+    opacity: 1;
+    margin-right: 20px;
+    margin-top: 20px;
+    display: inline-block;
+}
+.demo-checkbox .u-checkbox {
+    display: block;
+}
