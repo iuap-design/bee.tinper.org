@@ -15,62 +15,64 @@ Iuap Design React 致力于提供给程序员愉悦快速的开发体验
 
 ```
 npm install -g uba
-uba init uba-boilerplate-bee-light your-projectname
-cd your-projectname && npm install
+uba init
+```
+然后在下面选项中，选择第一个,然后回车。
+```
+>uba-boilerplate-bee - 基于webpack构建并内置tinper-bee组件库
+ uba-boilerplate-gulp-cloud - 基于gulp+director+require+less所构建基本web架构
+ uba-boilerplate-multipage-app - 基于 webpack 的多页应用脚手架
+ uba-boilerplate-portal - 基于tinper-bee所构建portal实践
+ uba-boilerplate-vue - 基于webpack+vuejs所构建前端最佳实践
+ uba-boilerplate-webapp - 基于Neoui+Kero+Director+Require构建并带有基本演示
+ uba-boilerplate-webpack - 基于React+Webpack+Babel最佳实践
+```
+在下面的光标处输入你的项目的名称，回车。
+```
+? boilerplate name : (uba-boilerplate)
+```
+接下来会询问你时候自动安装npm依赖包，这里输入`Y`，回车。
+```
+? Automatically install NPM dependent packages? (Y/n)
+```
+这样项目我们就安装好了，接下来我们启动调试。
+```
+cd 你的项目名
+npm run start:pre
 npm run start
 ```
-这样就启动了开发工程，自动打开网页。
+项目会自动打开你的默认浏览器，你就可以看到我们的预制的页面了。
 
-#### 脚手架目录说明
+#### 构建我的代码
 
+打开src/components/MyComponent/index.jsx文件，你会看到如下代码：
 ```
+import { Component } from 'react';
 
-│
-├─app
-│   ├─components //编写组件
-│   ├─containers //容器
-│   ├─index.html //页面文件
-│   ├─index.js   //入口js文件
-│
-├─test //编写页面测试用例
-│      
-│
-└─
+import './index.css';
 
+class MyComponent extends Component {
+  render() {
+    return (
+      <h1 className="demo">
+        欢迎使用tinper-bee组件库。
+      </h1>
+    );
+  }
+}
 
+export default MyComponent;
 ```
+将“欢迎使用tinper-bee组件库。”改写成“Hello World!”。保存一下，接着打开我们刚刚打开的页面，你会看到改变。
 
-#### 脚手架指令说明
+#### 新组件编写
 
-- npm run dev 运行项目服务，进行开发调试
-- npm run build 进行项目编译打包，输入静态文件
-- npm run lint 执行语法测试
-- npm run test 执行测试
-- npm run clean 清空build输出目录
+如果你想写一个新的组件，你可以执行以下步骤：
 
+##### 1、创建文件
+在src/components/下新建一个文件夹，名字是你的组件的名字，首字母大写，在文件夹内创建index.jsx和index.css两个文件。
 
-
-### 开始使用
-
-#### 样式引用
-为了满足多样的需求，我们对样式进行了单独打包，请引用单独的样式文件。
-
-- 在html中通过link标签
-
-```
-<link rel="stylesheet" href="../node_modules/tinper-bee/assets/tinper-bee.css">
-
-```
-路径更换为你的路径。
-
-- 在app/index.js内引入样式
-```
-import 'tinper-bee/assets/tinper-bee.css';
-```
-
-#### 组件编写
-
-在app/components/下新建一个文件夹，名字是你的组件的名字，首字母大写，写入index.jsx和index.css。
+##### 2、编写组件
 
 在index.jsx内写下组件相关代码，如：
 
@@ -97,13 +99,17 @@ class Example extends Component {
 export default Example;
 
 ```
-在app/components/index.js下进行导出
+##### 3、导出组件
+
+在src/components/index.js下进行导出
 
 ```
 export Example from './Example/index.jsx';
 ```
 
-最后在你需要引用的容器组件内，如在app内引用
+##### 4、在容器中引入组件
+
+最后在你需要引用的容器组件内，如在src/containers/App/index.jsx内引用
 
 ```
 import { Example } from '../../components';
@@ -119,6 +125,38 @@ import { Example } from '../../components';
 如果已经启动了工程，直接就可以在页面上，看到效果了。
 如果没有，就运行
 ```
-npm run dev
+npm run start
 ```
 查看效果。
+
+#### 脚手架目录说明
+
+```
+
+│
+├─conf //一些简单配置文件
+├─src  //项目源代码
+│   ├─components //编写组件
+│   ├─containers //容器
+|   ├─redux //数据及数据绑定相关文件
+|   ├─routes //路由文件
+│   ├─index.html //页面文件
+│   ├─index.js   //入口js文件
+│
+├─test //编写页面测试用例
+│      
+│
+└─
+
+
+```
+
+#### 脚手架指令说明
+
+- npm run start:pre 项目运行第一次需使用这个命令，进行一些不变依赖的预打包
+- npm run start 运行项目服务，进行开发调试
+- npm run build 进行项目编译打包，输入静态文件
+- npm run lint 执行语法测试
+- npm run test 执行测试
+- npm run test:watch 监听文件变化，自动执行测试
+- npm run clean 清空build输出目录
