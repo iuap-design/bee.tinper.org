@@ -1,19 +1,28 @@
-<a name="0.2.6"></a>
-## [0.2.6](https://github.com/iuap-design/tinper-bee/compare/v0.2.5...v0.2.6) (2017-01-09)
+<a name="0.3.0"></a>
 
 ### Bug Fixes
-* radio选中错行 ([f350777](https://github.com/iuap-design/tinper-neoui/commit/f350777))
 
-* 修正弹出层未传参数报错 ([47627fc](https://github.com/iuap-design/tinper-neoui/commit/47627fc))
+* popconfirm组件依赖问题
+* modal组件firefox显示问题
 
-* 按钮组样式问题 ([5862563](https://github.com/iuap-design/tinper-neoui/commit/5862563))
+### new feature
 
-* 日期按钮显示样式 ([cdcbfe6](https://github.com/iuap-design/tinper-neoui/commit/cdcbfe6))
+* 新增table组件
+* 新增tree组件
 
-* 日期样式错乱 ([3a27404](https://github.com/iuap-design/tinper-neoui/commit/3a27404))
+<a name="0.2.8"></a>
 
-* 补充修正按钮组样式 ([0ab1e14](https://github.com/iuap-design/tinper-neoui/commit/0ab1e14))
+### perf
+
+* scss打包优化([f1fdf69](https://github.com/iuap-design/tinper-bee/commit/4c34bf048791ae8eb3a7e5b156c91b7aafc0a03c))
+
+### Bug Fixes
+
+* tabs组件样式修正([3b82bb0](https://github.com/iuap-design/tinper-bee/commit/3b82bb014392c2d36dc87768f423885eaba22013))
 
 
-<a name="0.2.5"></a>
-## [0.2.6](https://github.com/iuap-design/tinper-bee/compare/v0.2.4...v0.2.5) (2017-01-09)
+<a name="0.2.6"></a>
+
+### Bug Fixes
+
+* tooltip组件样式出错 ([f1fdf69](https://github.com/iuap-design/tinper-bee/commit/f1fdf69cb59cd05e3ea0b5ae10859833b23b5393))
