@@ -45,8 +45,8 @@
             "component":""
         },
         "图标 Icon":{
-            "version":"0.1.3",
-            "component":""
+            "version":"0.1.0",
+            "component":"bee-icon"
         }
     },
     "布局 Layout": {
@@ -97,12 +97,12 @@
             "component":""
         },
         "表格 Table":{
-            "version":"0.1.3",
-            "component":""
+            "version":"0.2.0",
+            "component":"bee-table"
         },
         "树形控件 Tree":{
-            "version":"0.1.3",
-            "component":""
+            "version":"0.1.0",
+            "component":"bee-tree"
         }
     },
     "导航 Navigation": {
