@@ -93,7 +93,7 @@
             "component":""
         },
         "日历 Calendar":{
-            "version":"0.1.1",
+            "version":"0.1.3",
             "component":"bee-calendar"
         },
         "表格 Table":{
@@ -222,21 +222,25 @@
             "version":"0.1.3",
             "component":""
         },
-        "数字框 InputNumber":{
-            "version":"0.1.3",
-            "component":""
+        "数字输入框 InputNumber":{
+            "version":"0.0.8",
+            "component":"bee-input-number"
         },
         "时间 TimePicker":{
-            "version":"0.1.1",
+            "version":"0.1.3",
             "component":"bee-timepicker"
         },
         "日期 DatePicker":{
-            "version":"0.1.1",
+            "version":"0.1.2",
             "component":"bee-datepicker"
         },
         "评分 Rate":{
-            "version":"0.1.3",
-            "component":""
+            "version":"0.1.2",
+            "component":"bee-rate"
+        },
+        "剪贴板 clipboard":{
+            "version":"0.1.5",
+            "component":"bee-clipboard"
         }
     }
 
