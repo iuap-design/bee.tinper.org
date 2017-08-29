@@ -7,156 +7,157 @@ Iuap Design React 致力于提供给程序员愉悦快速的开发体验
 
 #### 标准开发
 
-实际项目开发中，你会需要对 ES2015 和 JSX 代码的构建、调试、代理、打包部署等一系列工程化的需求。 我们提供了一套 npm + webpack 的开发工具链来辅助开发。
+实际项目开发中，你会需要对 ES2015 和 JSX 代码的构建、调试、代理、打包部署等一系列工程化的需求。 我们提供了一套 `uba` 的开发工具链来辅助开发。
 
-#### 获取开发脚手架
+# tinper-bee-admin
 
-使用uba工具来初始化项目
+> 基于webpack+react+tinper-bee搭建基本快速开发脚手架并使用强大的集成开发工具[ uba ](https://github.com/iuap-design/tinper-uba)
 
-```
-npm install -g uba
-uba init
-```
-然后在下面选项中，选择第一个,然后回车。
-```
->uba-boilerplate-bee - 基于webpack构建并内置tinper-bee组件库
- uba-boilerplate-gulp-cloud - 基于gulp+director+require+less所构建基本web架构
- uba-boilerplate-multipage-app - 基于 webpack 的多页应用脚手架
- uba-boilerplate-portal - 基于tinper-bee所构建portal实践
- uba-boilerplate-vue - 基于webpack+vuejs所构建前端最佳实践
- uba-boilerplate-webapp - 基于Neoui+Kero+Director+Require构建并带有基本演示
- uba-boilerplate-webpack - 基于React+Webpack+Babel最佳实践
-```
-在下面的光标处输入你的项目的名称，回车。
-```
-? boilerplate name : (uba-boilerplate)
-```
-接下来会询问你时候自动安装npm依赖包，这里输入`Y`，回车。
-```
-? Automatically install NPM dependent packages? (Y/n)
-```
-这样项目我们就安装好了，接下来我们启动调试。
-```
-cd 你的项目名
-npm run start:pre
-npm run start
-```
-项目会自动打开你的默认浏览器，你就可以看到我们的预制的页面了。
+### 说明
 
-#### 构建我的代码
+- 基于[tinper-bee](http://tinper.org/)组件库编写的admin实例工程。
 
-打开src/components/MyComponent/index.jsx文件，你会看到如下代码：
-```
-import { Component } from 'react';
+- 依赖于前端集成开发工具[ uba ](https://github.com/iuap-design/tinper-uba)，项目生成的时候需要安装全局工具命令来使用，参与开发人员无需重复安装全局使用。
 
-import './index.css';
+- 集成市面上常规的使用插件等配置，可以满足常规开发需求，无需繁琐复杂的配置项，简单、干净、舒服。
 
-class MyComponent extends Component {
-  render() {
-    return (
-      <h1 className="demo">
-        欢迎使用tinper-bee组件库。
-      </h1>
-    );
-  }
-}
+- 依赖强大的集成开发工具 `uba` 内置 `数据模拟`、`代理请求`、`静态托管`、`开放配置`等功能.
 
-export default MyComponent;
-```
-将“欢迎使用tinper-bee组件库。”改写成“Hello World!”。保存一下，接着打开我们刚刚打开的页面，你会看到改变。
+- 方便开发人员在快速搭建`react`前端开发项目，无需学习复杂配置环境，拆箱即用.
 
-#### 新组件编写
+### 安装与使用
 
-如果你想写一个新的组件，你可以执行以下步骤：
+1. 安装`uba` 命令：`npm install uba -g`.
 
-##### 1、创建文件
-在src/components/下新建一个文件夹，名字是你的组件的名字，首字母大写，在文件夹内创建index.jsx和index.css两个文件。
+2. 执行`uba`命令来查看帮助.
 
-##### 2、编写组件
+3. 生成本脚手架 命令：`uba init`选择`template-tinper-bee-admin`回车继续等待安装即可。(可以使用默认的npm来安装，也可以手动后续来安装)
 
-在index.jsx内写下组件相关代码，如：
+4. 启动开发`npm run dev`,稍等片刻会自动打开默认浏览器显示.
 
-```
+5. 开发完毕后，使用命令`npm run build`来产出所需的静态资源依赖文件.
 
-import { Row, Col, Button } from 'tinper-bee';
+6. 享受集成开发工具`uba`给你带来的方便体验来开发吧！
 
-import React, { Component } from 'react';
+### 默认内置
 
-import './index.css';
+- `react`、`react-dom`、`webpack3`.
+- `babel`、`ES5\6`、`postcss`、`Less`、`图片处理`、`字体处理`、`热部署`.
 
-class Example extends Component {
-  render() {
-    return (
-     <Row>
-        <Col>
-            <Button colors="primary">点我点我！</Button>
-        </Col>
-     </Row>
-    );
-  }
-}
+### 资源展示
 
-export default Example;
+```base
 
-```
-##### 3、导出组件
-
-在src/components/index.js下进行导出
-
-```
-export Example from './Example/index.jsx';
-```
-
-##### 4、在容器中引入组件
-
-最后在你需要引用的容器组件内，如在src/containers/App/index.jsx内引用
-
-```
-import { Example } from '../../components';
-
-<div>
-    <Header />
-    <Con>
-        <Example />
-    </Con>
-</div>
-
-```
-如果已经启动了工程，直接就可以在页面上，看到效果了。
-如果没有，就运行
-```
-npm run start
-```
-查看效果。
-
-#### 脚手架目录说明
+├── assets
+│   └── README.md
+├── components
+│   ├── EditTableCell
+│   │   ├── index.css
+│   │   └── index.jsx
+│   ├── Header
+│   │   ├── index.css
+│   │   └── index.jsx
+│   ├── Loading
+│   │   ├── index.css
+│   │   └── index.jsx
+│   ├── LoadingTable
+│   │   ├── index.css
+│   │   └── index.jsx
+│   ├── Menus
+│   │   ├── index.css
+│   │   └── index.jsx
+│   ├── MyComponent
+│   │   ├── index.css
+│   │   └── index.jsx
+│   ├── SimpleReference
+│   │   ├── index.css
+│   │   └── index.jsx
+│   └── index.js
+├── containers
+│   ├── App
+│   │   ├── index.css
+│   │   └── index.jsx
+│   ├── Dashbroad
+│   │   ├── index.css
+│   │   └── index.jsx
+│   ├── DataTable
+│   │   ├── index.css
+│   │   └── index.jsx
+│   ├── Editor
+│   │   ├── index.css
+│   │   └── index.jsx
+│   ├── Reference
+│   │   ├── index.css
+│   │   └── index.jsx
+│   ├── UserManager
+│   │   ├── index.css
+│   │   └── index.jsx
+│   └── index.js
+├── index.html
+├── index.js
+├── lib
+│   └── index.js
+├── redux
+│   ├── configureStore.js
+│   └── reducers.js
+├── routes
+│   └── index.js
+└── serve
+    └── index.js
 
 ```
 
-│
-├─conf //一些简单配置文件
-├─src  //项目源代码
-│   ├─components //编写组件
-│   ├─containers //容器
-|   ├─redux //数据及数据绑定相关文件
-|   ├─routes //路由文件
-│   ├─index.html //页面文件
-│   ├─index.js   //入口js文件
-│
-├─test //编写页面测试用例
-│      
-│
-└─
+### 修改默认配置
 
+项目核心文件`uba.config.js`里面包含所有的配置，主要是基于`webpack3`配置，修改需谨慎。
 
-```
+数据模拟配置文件`uba.mock.js`可以配置需要模拟的请求方式，简单易懂，默认带完整配置。支出8种请求模式(`OPTIONS`,`HEAD`,`GET`,`POST`,`PUT`,`DELETE`,`TRACE`,`CONNECT`)
 
-#### 脚手架指令说明
+#### 常见问题说明
 
-- npm run start:pre 项目运行第一次需使用这个命令，进行一些不变依赖的预打包
-- npm run start 运行项目服务，进行开发调试
-- npm run build 进行项目编译打包，输入静态文件
-- npm run lint 执行语法测试
-- npm run test 执行测试
-- npm run test:watch 监听文件变化，自动执行测试
-- npm run clean 清空build输出目录
+1. 服务器IP或端口冲突需要修改：
+
+  ```js
+  //服务启动设置
+  const svrConfig = {
+    host: "127.0.0.1",
+    port: 3000
+  };
+  ```
+
+2. 代理服务的设置：
+如下配置，`proxyConfig`是一个数组对象参数，可以配置多个，当`enable:true`的时候，启用该代理功能，`router:"proxy"`代理的路径是哪个，当配置成proxy的时候，访问我们的项目`http://127.0.0.1:3000/proxy/你的代理路径资源地址`这样来访问就可以了。
+例子里面的地址是`url:"cnodejs.org"`，远程的接口访问是：`http://cnodejs.org/api/v1/topics`；本地代理过去访问地址就是：`http://127.0.0.1:3000/proxy/api/v1/topics`，也可以去掉`proxy`这个代理路由，但是这样会导致路由跟现有的项目冲突，这样会有问题的。最好在请求数据的时候去配置一个可控制的参数来切换数据模拟和代理线上的问题。
+
+  当有需要排除不需要代理的情况，可以设置`filter`该参数，来编程去实现哪些资源是走代理，哪些不走代理。具体需要查询文档[proxy](https://www.npmjs.com/package/express-http-proxy)
+
+  ```js
+  //远程代理访问，可以配置多个代理服务
+  const proxyConfig = [{
+    enable: true,//true启用代理,mock服务失效.
+    router: "/proxy",//代理本地对外的路径
+    url: "cnodejs.org",
+    options : {
+      filter : function(req,res){
+        return (req.url.indexOf("webpack_hmr") > -1 ? false : true);
+      }
+    }
+  }];
+  ```
+
+3. 如何开启静态资源托管：
+
+  ```js
+  //静态服务托管
+  const staticConfig = {
+    folder: "src/static"
+  };
+  ```
+
+  找到该配置，直接设置`src/static`文件夹为直接对外开启静态目录功能，不受webpack影响，单独存在的，访问资源地址是：`http://127.0.0.1:3000/js/demo.js`，访问到的资源：`src/static/*`下的所有资源。
+
+4. 不想配置模拟数据路由直接访问`mock`下的`json` :
+
+  `uba-server`插件默认加载根目录`mock`文件夹内的资源托管，可以直接访问里面的`json`文件。`http://127.0.0.1:3000/api/user/get.json`->`./mock/api/user/get.json`。
+
+5. `devConfig`是开发环境，是给`uba-server`插件读取用的，`prodConfig`是生产环境，是给`uba-build`构建资源读取用的。
