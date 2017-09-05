@@ -1,6 +1,6 @@
 ### 快速上手
 
-Iuap Design React 致力于提供给程序员愉悦快速的开发体验
+tinper-bee组件库 致力于提供给程序员愉悦快速的开发体验
 
 
 在开始之前，推荐学习 <a href="http://facebook.github.io/react">React</a> 和 <a href="http://www.nodeclass.com/api/ECMAScript6.html">ES2016</a>
@@ -19,13 +19,15 @@ uba init
 ```
 然后在下面选项中，选择第一个,然后回车。
 ```
->uba-boilerplate-bee - 基于webpack构建并内置tinper-bee组件库
- uba-boilerplate-gulp-cloud - 基于gulp+director+require+less所构建基本web架构
- uba-boilerplate-multipage-app - 基于 webpack 的多页应用脚手架
- uba-boilerplate-portal - 基于tinper-bee所构建portal实践
- uba-boilerplate-vue - 基于webpack+vuejs所构建前端最佳实践
- uba-boilerplate-webapp - 基于Neoui+Kero+Director+Require构建并带有基本演示
- uba-boilerplate-webpack - 基于React+Webpack+Babel最佳实践
+Available official templates:
+? Please select :
+  template-react-multiple-pages - React多页应用脚手架
+❯ template-react-single-pages - React单页应用脚手架
+  template-tinper-bee-admin - 采用tinper-bee组件库所构建的管理系统
+  uba-boilerplate-bee - 基于webpack构建并内置tinper-bee组件库
+  uba-boilerplate-cloud - 云服务脚手架 - Cloud Platform Boilerplate
+  uba-boilerplate-gulp-cloud - 基于gulp+director+require+less所构建基本web架构
+  uba-boilerplate-manage - 后台管理系统的示例工程
 ```
 在下面的光标处输入你的项目的名称，回车。
 ```
@@ -38,125 +40,131 @@ uba init
 这样项目我们就安装好了，接下来我们启动调试。
 ```
 cd 你的项目名
-npm run start:pre
-npm run start
+npm run dev
 ```
 项目会自动打开你的默认浏览器，你就可以看到我们的预制的页面了。
 
 #### 构建我的代码
 
-打开src/components/MyComponent/index.jsx文件，你会看到如下代码：
-```
-import { Component } from 'react';
+先来看入口文件：
 
+打开`/src/index.js`文件，你会看到如下代码：
+```
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { App } from 'containers';
 import './index.css';
 
-class MyComponent extends Component {
-  render() {
-    return (
-      <h1 className="demo">
-        欢迎使用tinper-bee组件库。
-      </h1>
-    );
-  }
-}
-
-export default MyComponent;
+ReactDOM.render(
+    <App />,
+    document.querySelector("#app")
+);
 ```
-将“欢迎使用tinper-bee组件库。”改写成“Hello World!”。保存一下，接着打开我们刚刚打开的页面，你会看到改变。
 
 #### 新组件编写
 
 如果你想写一个新的组件，你可以执行以下步骤：
 
 ##### 1、创建文件
-在src/components/下新建一个文件夹，名字是你的组件的名字，首字母大写，在文件夹内创建index.jsx和index.css两个文件。
+在src/components/下新建一个文件夹Example，在文件夹内创建index.jsx和index.ss两个文件。
 
 ##### 2、编写组件
 
 在index.jsx内写下组件相关代码，如：
 
 ```
+import React,{ Component } from 'react';
+import './index.less';
 
-import { Row, Col, Button } from 'tinper-bee';
-
-import React, { Component } from 'react';
-
-import './index.css';
-
-class Example extends Component {
-  render() {
+export default class Example extends Component{
+  constructor(props) {
+   super(props);
+ }
+  render(){
     return (
-     <Row>
-        <Col>
-            <Button colors="primary">点我点我！</Button>
-        </Col>
-     </Row>
-    );
+    <div>
+      hello world
+    </div>)
   }
 }
-
-export default Example;
 
 ```
 ##### 3、导出组件
 
-在src/components/index.js下进行导出
+在src/components目录下，新建index.js下进行导出
 
 ```
-export Example from './Example/index.jsx';
+import Example from './Example/index.js';
+
+export {
+    Example
+}
 ```
 
 ##### 4、在容器中引入组件
 
-最后在你需要引用的容器组件内，如在src/containers/App/index.jsx内引用
+最后在你需要引用的容器组件内，如在sr/containers/App/index.js内引用
 
 ```
-import { Example } from '../../components';
+import {Welcome, Example} from 'components';
 
-<div>
-    <Header />
-    <Con>
-        <Example />
-    </Con>
-</div>
-
+export default class App extends Component {
+    render() {
+        return (
+        <div>
+            <Welcome
+                title="欢迎使用uba所构建的脚手架"
+                content="本页面来自演示组件[src/components/Welcome]，你可以修改入口文件[src/entry/index.js]来设置不同的加载组件以及路由规则等。"
+             />
+             <Example />
+        </div>
+        )
+    }
+}
 ```
 如果已经启动了工程，直接就可以在页面上，看到效果了。
 如果没有，就运行
 ```
-npm run start
+npm run dev
 ```
 查看效果。
 
 #### 脚手架目录说明
 
 ```
-
-│
-├─conf //一些简单配置文件
-├─src  //项目源代码
-│   ├─components //编写组件
-│   ├─containers //容器
-|   ├─redux //数据及数据绑定相关文件
-|   ├─routes //路由文件
-│   ├─index.html //页面文件
-│   ├─index.js   //入口js文件
-│
-├─test //编写页面测试用例
-│      
-│
-└─
+├── LICENSE
+├── README.md
+├── mock                               # 数据模拟存放文件夹
+│   └── api
+│       └── user
+│           ├── get.json
+│           └── post.json
+├── package.json
+├── postcss.config.js                  # postcss的基本配置文件
+├── src                                # 开发源代码
+│   ├── assets                         # 开发使用到的资源文件
+│   │   └── images
+│   │       ├── favicon.png
+│   │       └── logo.png
+│   ├── components                     # react组件存放
+│   │   └── Test
+│   │       ├── index.css
+│   │       └── index.js
+│   ├── static                         # 静态文件目录
+│   │ 
+│   │ 
+│   ├── index.css
+│   ├── index.html
+│   └── index.js                       # react入口的文件
+│ 
+│ 
+├── uba.config.js                      # uba的核心配置文件
+└── uba.mock.js                        # uba配置数据模拟
 
 
 ```
 
 #### 脚手架指令说明
 
-- npm run start:pre 项目运行第一次需使用这个命令，进行一些不变依赖的预打包
-- npm run start 运行项目服务，进行开发调试
+- npm run dev 运行项目服务，进行开发调试
 - npm run build 进行项目编译打包，输入静态文件
-- npm run lint 执行语法测试
-- npm run test 执行测试
-- npm run test:watch 监听文件变化，自动执行测试
-- npm run clean 清空build输出目录
