@@ -77,7 +77,7 @@ router.get('/:id', function*(next) {
     }
     else {
         try{
-            var data = fs.readFileSync(path.join(__dirname,'../node_modules/'+docId+'/docs/api.md'),'utf-8');
+            var data = fs.readFileSync(path.join(__dirname,'../tinper-bee/'+docId+'/docs/api.md'),'utf-8');
         }
         catch (e){
             data = '## 文档建设中...';
@@ -92,6 +92,7 @@ router.get('/:id', function*(next) {
 
 
     data = data.replace(/\<table/ig,'\<div class="table-container">\n\<table').replace(/<\/table>/ig,'<\/table>\n<\/div>\n');
+
 
 
 
