@@ -1,5 +1,5 @@
 *, :after, :before {
-    box-sizing:border-box;
+    box-sizing:inherit;
 }
 
 @media (min-width: 768px) {

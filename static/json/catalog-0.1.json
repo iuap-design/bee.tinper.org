@@ -97,6 +97,10 @@
         "树形控件 Tree":{
             "version":"0.1.0",
             "component":"bee-tree"
+        },
+        "树表控件 table-tree":{
+            "version":"0.1.0",
+            "component":"bee-table-tree"
         }
     },
     "导航 Navigation": {
@@ -130,7 +134,7 @@
         },
         "固钉 Affix":{
             "version":"0.1.3",
-            "component":""
+            "component":"bee-affix"
         },
         "回到顶部 BackTop":{
             "version":"0.1.7",
@@ -214,7 +218,7 @@
         },
         "滑块 Slider":{
             "version":"0.1.3",
-            "component":""
+            "component":"bee-slider"
         },
         "穿梭框 Transfer":{
             "version":"0.0.3",
@@ -239,6 +243,14 @@
         "剪贴板 clipboard":{
             "version":"0.1.5",
             "component":"bee-clipboard"
+        },
+        "自动完成 complete":{
+            "version":"0.1.5",
+            "component":"bee-auto-complete"
+        },
+        "搜索 search":{
+            "version":"0.1.5",
+            "component":"bee-search-panel"
         }
     }
 
