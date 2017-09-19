@@ -66,6 +66,8 @@ router.get('/:id', function*(next) {
     var docId = this.params.id;
     var isComponent = 1;
 
+
+
     if(docId.search('bee-')==-1){
         try{
             var data = fs.readFileSync(path.join(__dirname,'../docs/'+docId+'.md'),'utf-8');
@@ -77,7 +79,10 @@ router.get('/:id', function*(next) {
     }
     else {
         try{
-            var data = fs.readFileSync(path.join(__dirname,'../tinper-bee/'+docId+'/docs/api.md'),'utf-8');
+            //var data = fs.readFileSync(path.join(__dirname,'../tinper-bee/'+docId+'/docs/api.md'),'utf-8');
+            var swig  = require('swig-templates');
+            var template = swig.compileFile(path.join(__dirname,'../tinper-bee/'+docId+'/docs/api.md'));
+            var data = template();
         }
         catch (e){
             data = '## 文档建设中...';

@@ -47,8 +47,8 @@
             "component":"bee-layout"
         }
     },
-    "拖拽 drag": {
-        "拖拽 drag": {
+    "拖拽 Drag": {
+        "拖拽 Drag": {
             "version":"0.1.7",
             "component":"bee-dnd"
         }
@@ -97,10 +97,6 @@
         "树形控件 Tree":{
             "version":"0.1.0",
             "component":"bee-tree"
-        },
-        "树表控件 table-tree":{
-            "version":"0.1.0",
-            "component":"bee-table-tree"
         }
     },
     "导航 Navigation": {
@@ -208,7 +204,7 @@
             "version":"0.1.3",
             "component":"bee-cascader"
         },
-        "城市选择 city-select":{
+        "城市选择 CitySelect":{
             "version":"0.0.3",
             "component":"bee-city-select"
         },
@@ -224,7 +220,7 @@
             "version":"0.0.3",
             "component":"bee-transfer"
         },
-        "数字输入框 InputNumber":{
+        "数字框 InputNumber":{
             "version":"0.0.8",
             "component":"bee-input-number"
         },
@@ -240,15 +236,15 @@
             "version":"0.1.3",
             "component":"bee-rate"
         },
-        "剪贴板 clipboard":{
+        "剪贴板 Clipboard":{
             "version":"0.1.5",
             "component":"bee-clipboard"
         },
-        "自动完成 complete":{
+        "自动完成 Autocomplete":{
             "version":"0.1.5",
-            "component":"bee-auto-complete"
+            "component":"bee-autocomplete"
         },
-        "搜索 search":{
+        "搜索 SearchPanel":{
             "version":"0.1.5",
             "component":"bee-search-panel"
         }

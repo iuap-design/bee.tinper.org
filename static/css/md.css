@@ -249,7 +249,7 @@ body {
     margin: 10px 0 15px 0;
     border-collapse: collapse;
 }
-.table-container td,th {
+.table-container td,.table-containe th {
     border: 1px solid #ddd;
     padding: 3px 10px;
 }
@@ -515,4 +515,8 @@ table th {
     .u-navbar .u-navbar-nav > li {
         padding: 15px 10px;
     }
+}
+.u-navbar .u-navbar-brand {
+    padding:10px 0;
+    height:inherit;
 }

@@ -1,6 +1,8 @@
 *.iml
 *.log
 .idea/
+node_modules
+dist
 .ipr
 .iws
 *~
