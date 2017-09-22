@@ -196,7 +196,7 @@
             "version":"0.1.3",
             "component":"bee-switch"
         },
-        "选择器 Select": {
+        "下拉框 Select": {
             "version":"0.1.3",
             "component":"bee-select"
         },
