@@ -50,7 +50,7 @@
     "拖拽 Drag": {
         "拖拽 Drag": {
             "version":"0.1.7",
-            "component":"bee-dnd"
+            "component":""
         }
     },
     "视图 View": {
@@ -68,7 +68,7 @@
         },
         "状态按钮 LoadingState": {
             "version":"0.1.3",
-            "component":"bee-loading-state"
+            "component":""
         },
         "展示板 Panel": {
             "version":"0.1.3",
@@ -97,6 +97,10 @@
         "树形控件 Tree":{
             "version":"0.1.0",
             "component":"bee-tree"
+        },
+        "折叠 Collapse":{
+            "version":"0.1.0",
+            "component":"bee-collapse"
         }
     },
     "导航 Navigation": {
@@ -246,7 +250,7 @@
         },
         "搜索 SearchPanel":{
             "version":"0.1.5",
-            "component":"bee-search-panel"
+            "component":""
         }
     }
 

@@ -21,9 +21,26 @@ app.use(logger());
 
 //初始化静态服务器资源
 
+
+// var components = require('../static/json/catalog-0.1.json');
+//
+//
+// for(let i in components){
+//     if(i!=''){
+//         let o = components[i];
+//         for(let i in o){
+//             if(o[i].component!=''){
+//                 app.use(staticCache(path.join(__dirname, '../tinper-bee/'+o[i].component+'/dist')),{  maxAge: 365 * 24 * 60 * 60});
+//             }
+//         }
+//     }
+// }
+
+
 app.use(staticCache(path.join(__dirname, '../static')),{  maxAge: 365 * 24 * 60 * 60});
 app.use(staticCache(path.join(__dirname, '../assets')),{  maxAge: 365 * 24 * 60 * 60});
-app.use(staticCache(path.join(__dirname, '../tinper-bee')),{  maxAge: 365 * 24 * 60 * 60});
+app.use(staticCache(path.join(__dirname, '../tinper-bee')),{maxAge: 365 * 24 * 60 * 60});
+app.use(staticCache(path.join(__dirname, '../static/js/')),{  maxAge: 365 * 24 * 60 * 60});
 
 
 app.context.render = render({
@@ -32,6 +49,8 @@ app.context.render = render({
     cache: false, // disable,memory, set to false, memory
     ext: 'swig'
 });
+
+
 
 app.use(function *(next) {
 
