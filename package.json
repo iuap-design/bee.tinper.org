@@ -4,7 +4,9 @@
   "description": "bee.tinper.org",
   "main": "server/index.js",
   "scripts": {
-    "server": "node server/index.js"
+    "server": "node server/index.js",
+    "update": "git submodule foreach git pull",
+    "init": "git submodule init && git submodule update"
   },
   "repository": {
     "type": "git",
