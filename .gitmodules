@@ -154,3 +154,6 @@
 [submodule "tinper-bee/bee-city-select"]
 	path = tinper-bee/bee-city-select
 	url = http://github.com/tinper-bee/bee-city-select.git
+[submodule "tinper-bee/bee-locale"]
+	path = tinper-bee/bee-locale
+	url = http://github.com/tinper-bee/bee-locale.git
