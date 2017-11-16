@@ -520,3 +520,10 @@ table th {
     padding:10px 0;
     height:inherit;
 }
+
+.tinper-version{
+    display: inline-block;
+    margin-top: 24px;
+    margin-left: 20px;
+    color: #42bf23;
+}
