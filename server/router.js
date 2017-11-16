@@ -68,6 +68,8 @@ router.get('/:id', function*(next) {
 
 
 
+
+
     if(docId.search('bee-')==-1){
 
         try{
@@ -83,7 +85,7 @@ router.get('/:id', function*(next) {
             //var data = fs.readFileSync(path.join(__dirname,'../tinper-bee/'+docId+'/docs/api.md'),'utf-8');
             var swig  = require('swig-templates');
             var template = swig.compileFile(path.join(__dirname,'../tinper-bee/'+docId+'/docs/api.md'));
-            console.log(template);
+
             var data = template();
         }
         catch (e){
@@ -101,72 +103,6 @@ router.get('/:id', function*(next) {
     data = data.replace(/\<table/ig,'\<div class="table-container">\n\<table').replace(/<\/table>/ig,'<\/table>\n<\/div>\n');
 
 
-
-
-    //var p = path.join(__dirname,'../node_modules/'+docId+'/demo/demoButton');
-    //
-    //function explorer(paths){
-    //    var arr = [],code=[];
-    //    fs.readdir(paths, function(err,files){
-    //
-    //        if(err){
-    //            console.log("error:\n"+err);
-    //            return;
-    //        }
-    //
-    //        files.forEach(function(file) {
-    //            var fileName = file.replace('.js','');
-    //            fs.stat(paths + "//" + file, function (err, stat) {
-    //                console.log(stat);
-    //                if (err) {
-    //                    console.log(err);
-    //                    return;
-    //                }
-    //                if (stat.isDirectory()) {
-    //                    console.log(paths + "\/" + file + "\/");
-    //                    explorer(path + "\/" + file);
-    //                } else {
-    //                    console.log(paths + "\/" + file);
-    //                }
-    //
-    //            });
-    //            var data = fs.readFileSync(paths + "//" + file,'utf-8');
-    //
-    //
-    //
-    //            arr.push({
-    //                example: '<'+fileName+' />',
-    //                title: fileName,
-    //                code: data
-    //            });
-    //            code.push(data);
-    //        });
-    //        var index = fs.readFileSync(path.join(__dirname,'../node_modules/'+docId+'/demo/index.bak.js'),'utf-8');
-    //
-    //        var str = 'var DemoArray = '+JSON.stringify(arr) +'\n';
-    //
-    //        str = str.replace(/ple":"</ig,'ple":<').replace(/","tit/ig,',"tit');
-    //
-    //        console.log(str);
-    //
-    //        fs.writeFile(path.join(__dirname,'../node_modules/'+docId+'/demo/index.js'), str+index+code.join(''), function (err) {
-    //            if (err) throw err;
-    //            console.log('It\'s saved!');
-    //        });
-    //
-    //    });
-    //};
-    //
-    //explorer(p);
-
-
-    //var demoJs = fs.readFileSync(path.join(__dirname,'../node_modules/'+docId+'/demo/demoButton/demo-1.js'),'utf-8');
-
-
-
-    //var ReactApp = React.createFactory(require('./../node_modules/'+docId+'/demo/demoButton/demo-1.js').ReactApp);
-
-    //console.log(ReactApp);
 
 
     yield this.render('docs',{
