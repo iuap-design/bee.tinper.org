@@ -1,7 +1,7 @@
 {% extends 'layout/layout.swig' %}
 
 {% block css %}
-  <link href="//design.yonyoucloud.com/static/tinper-bee/0.6.2/assets/tinper-bee.min.css" rel="stylesheet" media="screen">
+  <link href="//design.yonyoucloud.com/static/tinper-bee/1.1.0/assets/tinper-bee.css" rel="stylesheet" media="screen">
     {% if docId && isComponent==1 %}
         <link href="/{{docId}}/dist/demo.css" type="text/css" rel="stylesheet" />
     {% endif %}
@@ -10,17 +10,8 @@
 
 {% block script %}
 
-    <script src="/console-polyfill/index.js"></script>
-    <script src="/es5-shim/es5-shim.min.js"></script>
-    <script src="/es5-shim/es5-sham.min.js"></script>
-
-    {% if docId == 'bee-modal' || docId == 'bee-form' %}
-        <script src="http://design.yonyoucloud.com/static/react/15.3.2/react.js"></script>
-        <script src="http://design.yonyoucloud.com/static/react/15.3.2/react-dom.js"></script>
-    {% else %}
-        <script src="//design.yonyoucloud.com/static/react/16.0.0/umd/react.development.js"></script>
-        <script src="//design.yonyoucloud.com/static/react/16.0.0/umd/react-dom.development.js"></script>
-    {% endif %}
+        <script src="//design.yonyoucloud.com/static/react/15.3.2/react.js"></script>
+        <script src="//design.yonyoucloud.com/static/react/15.3.2/react-dom.js"></script>
 
     <script src="//design.yonyoucloud.com/static/prop-types/15.6.0/prop-types.min.js"></script>
     {% if docId && isComponent==1 %}
