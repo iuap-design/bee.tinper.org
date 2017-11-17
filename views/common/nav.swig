@@ -17,7 +17,7 @@
                 <a class="nav-par" href="/quickStart">快速开始</a>
             </li>
             <li>
-                <a class="nav-par" href="/updatelog">更新日志</a>
+                <a class="nav-par" href="/changelog">更新日志</a>
             </li>
         </ul>
 
