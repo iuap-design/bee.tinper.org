@@ -1,4 +1,4 @@
-### 安装
+### 安装和CDN
 
 
 
@@ -40,4 +40,25 @@ git clone git@github.com:iuap-design/tinper-bee.git
 
 #### CDN
 
-后续会提供cdn服务。
+- css样式
+
+```
+<link href="//design.yonyoucloud.com/static/tinper-bee/1.1.0/assets/tinper-bee.css">
+
+//其他版本
+
+<link href="//design.yonyoucloud.com/static/tinper-bee/[版本号]/assets/tinper-bee.css">
+```
+
+- js
+
+```
+<script src="//design.yonyoucloud.com/static/tinper-bee/1.1.0/build/tinper-bee.js"></script>
+
+//其他版本
+
+<script src="//design.yonyoucloud.com/static/tinper-bee/[版本号]/build/tinper-bee.js"></script>
+
+```
+
+[更多CDN服务](http://tinper.org/dist/cdn/index.html)

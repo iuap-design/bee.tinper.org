@@ -4,7 +4,7 @@
             "version":"0.1.3",
             "component":"summarize"
         },
-        "安装": {
+        "安装和CDN": {
             "version":"0.1.3",
             "component":"install"
         },
