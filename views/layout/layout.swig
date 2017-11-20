@@ -5,7 +5,7 @@
     <title>{% block title %}tinper-bee{% endblock %}</title>
     <link rel="icon" href="logos/favicon.png" type="image/png" sizes="16x16">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Destiny Multipurpose Landing Page Template">
+    <meta name="description" content="tinper-bee 是基于 iuap design 的 react 组件库，包含丰富的基础组件和应用组件，支持组件的灵活调用和扩展，助力快速进行应用的组件化开发。">
     <meta name="keywords" content="tinper-bee, tinper, bee">
     <meta name="keywords" content="react, UI, framework">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -18,6 +18,15 @@
 
     {% endblock%}
     {% block css %}{% endblock%}
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-109836800-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-109836800-1');
+    </script>
 </head>
 
 <body>
