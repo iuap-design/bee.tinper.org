@@ -1,3 +1,11 @@
+## 1.1.1
+
+- 修复Dropdown选中，父组件销毁时，下拉菜单未消失。
+- 修复Table增加行列合并。
+- 修复Select下拉宽度，向上渲染弹出两次，增加data Props。
+- 修复Form，自定义组件更新value;校验逻辑修改，增加多个校验正则。
+- 修复Datepicker组件rangepicker为一个输入框显示。
+
 ## 1.1.0
 
 - 增加Locale多语组件

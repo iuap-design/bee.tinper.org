@@ -157,3 +157,6 @@
 [submodule "tinper-bee/bee-locale"]
 	path = tinper-bee/bee-locale
 	url = http://github.com/tinper-bee/bee-locale.git
+[submodule "tinper-bee/bee-page-layout"]
+	path = tinper-bee/bee-page-layout
+	url = http://github.com/tinper-bee/bee-page-layout.git
