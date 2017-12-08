@@ -160,3 +160,6 @@
 [submodule "tinper-bee/bee-page-layout"]
 	path = tinper-bee/bee-page-layout
 	url = http://github.com/tinper-bee/bee-page-layout.git
+[submodule "tinper-bee/bee-carousel"]
+	path = tinper-bee/bee-carousel
+	url = https://github.com/tinper-bee/bee-carousel.git
