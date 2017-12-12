@@ -1,8 +1,8 @@
-### 兼容解决方案
+## 兼容解决方案
 
 tinper-bee组件库本身兼容到ie9浏览器。
 
-#### react 15
+### react 15
 
 对于使用了`axios`这个请求库的项目，因为他使用了Promise语法，所以需要引入`es6-promise`的兼容包。
 
@@ -36,7 +36,7 @@ module.exports = {
 ```
 
 
-#### react 16
+### react 16
 
 对于老浏览器（ie < 11）
 
@@ -68,13 +68,13 @@ import 'raf/polyfill'
 ```
 
 
-#### 兼容 IE8
+### 兼容 IE8
 
 首先，你不应该使用 React v15 或更高版本。使用仍然支持 IE8 的 React v0.14 即可。
 
 如果你需要查看 React v0.14 的文档，请访问：http://react-ie8.xcatliu.com
 
-### 使用 CommonJS
+#### 使用 CommonJS
 
 强烈推荐使用 CommonJS 风格来引入需要的模块。
 
@@ -100,7 +100,7 @@ require('console-polyfill');
 <script src="://design.yonyoucloud.com/static/bee-polyfill/1.0.0/bee-polyfill.js"></script>
 ```
 
-### 其他问题
+#### 其他问题
 
 一些问题其实并不是 `React` 的问题，不过我也把他们列出来了：
 
