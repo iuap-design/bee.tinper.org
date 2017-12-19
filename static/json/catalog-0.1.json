@@ -274,7 +274,7 @@
         },
         "搜索 SearchPanel":{
             "version":"0.1.5",
-            "component":""
+            "component":"bee-search-panel"
         }
     }
 

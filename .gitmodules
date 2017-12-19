@@ -163,3 +163,6 @@
 [submodule "tinper-bee/bee-carousel"]
 	path = tinper-bee/bee-carousel
 	url = https://github.com/tinper-bee/bee-carousel.git
+[submodule "tinper-bee/bee-search-panel"]
+	path = tinper-bee/bee-search-panel
+	url = https://github.com/tinper-bee/bee-search-panel.git
