@@ -95,7 +95,9 @@ router.get('/:id', function*(next) {
         var demo = '<div id="tinperBeeDemo"></div>';
         data = data.replace(/##.*代码演示/,'## 代码演示\n'+demo);
     }
-
+    var str = (data.match(/##? \w+/g)&&data.match(/##? \w+/g).length)?data.match(/##? \w+/g)[0]:"";
+    console.log(docId)
+    data = data.replace(/##? \w+/,str+"<a href='https://github.com/tinper-bee/"+docId+"/edit/master/docs/api.md' style='text-decoration: underline;' target='_blank' title='在github上编辑此页'><i class='uf uf-pencil' style='font-size: 20px;padding-left: 10px;'></i></a>")
 
     data = marked(data);
 
