@@ -37,7 +37,7 @@ marked.setOptions({
 //});
 
 //首页路由
-router.get("/", function*(next) {
+router.get("/", function* (next) {
   var data = fs.readFileSync(
     path.join(__dirname, "../docs/summarize.md"),
     "utf-8"
@@ -62,7 +62,7 @@ router.get("/", function*(next) {
 //});
 
 //读取md文档，生成html
-router.get("/:id", function*(next) {
+router.get("/:id", function* (next) {
   var docId = this.params.id;
   var isComponent = 1;
 
@@ -91,18 +91,34 @@ router.get("/:id", function*(next) {
 
     var demo = '<div id="tinperBeeDemo"></div>';
     data = data.replace(/##.*代码演示/, "## 代码演示\n" + demo);
-  }
-  var str =
-    data.match(/##? \w+/g) && data.match(/##? \w+/g).length
-      ? data.match(/##? \w+/g)[0]
-      : "";
-  data = data.replace(
-    /##? \w+/,
-    str +
+    var pack_data = fs.readFileSync(
+      path.join(__dirname, "../tinper-bee/" + docId + "/package.json")
+    );
+    if (pack_data) {
+      pack_data = JSON.parse(pack_data);
+      if (!pack_data) {
+        pack_data = {};
+      }
+    }
+    var str =
+      data.match(/##? \w+/g) && data.match(/##? \w+/g).length ?
+      data.match(/##? \w+/g)[0] :
+      "";
+    data = data.replace(
+      /##? \w+/,
+      str +
       "<a href='https://github.com/tinper-bee/" +
       docId +
-      "/edit/master/docs/api.md' style='text-decoration: underline;' target='_blank' title='在github上编辑此页'><i class='uf uf-pencil' style='font-size: 20px;padding-left: 10px;'></i></a><div><a class='title-tag' href='https://github.com/tinper-bee/"+docId+"' target='_blank'><i class='uf uf-github-c'></i>"+docId+"</a><a class='title-tag' href='https://github.com/tinper-bee/"+docId+"/blob/master/CHANGELOG.md' target='_blank'><i class='uf uf-treeadd'></i>changelog</a></div>"
-  );
+      "/edit/master/docs/api.md' style='text-decoration: underline;' target='_blank' title='在github上编辑此页'><i class='uf uf-pencil' style='font-size: 20px;padding-left: 10px;'></i></a>" +
+      "<div>" +
+      "<a class='title-tag' href='https://github.com/tinper-bee/" + docId + "' target='_blank'><i class='uf uf-github-c'></i>" + docId + "</a>" +
+      (pack_data && pack_data.version ? "<span class='title-tag'><i class='uf uf-treeadd'></i>" + pack_data.version + "</span>" : "") +
+      "<a class='title-tag' href='https://github.com/tinper-bee/" + docId + "/blob/master/CHANGELOG.md' target='_blank'><i class='uf uf-group'></i>changelog</a>" +
+      "<a class='title-tag' href='https://github.com/tinper-bee/" + docId + "/issues/new' target='_blank'><i class='uf uf-qm-c'></i>issue</a>" +
+      "</div>"
+    );
+  }
+  
 
   data = marked(data);
 
