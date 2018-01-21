@@ -24,6 +24,8 @@ import Dnd from 'tinper-bee/lib/Dnd';
 
 import Calendar from 'tinper-bee/lib/Calendar';
 
+import Carousel from 'tinper-bee/lib/Carousel';
+
 ```
 
 ### 样式引入问题
