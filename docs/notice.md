@@ -73,3 +73,33 @@ css
 <link href="//design.yonyoucloud.com/static/tinper-bee/[版本号]/assets/tinper-bee.css">
 ```
 
+### 按需加载
+
+当你的项目只用到了部分组件，你想要更小的打包体积的时候，我们提供了按需加载的能力。
+
+- 下载babel插件
+
+```
+npm install -D babel-plugin-import-bee
+```
+
+- 配置`.babelrc`
+
+```
+{
+  "presets": ["es2015", "stage-0", "react"],
+  "plugins": [["import-bee"] ]
+}
+
+
+```
+如果你需要自动帮助你引用组件的样式，就设置`style: true`，如果不需要，就不需要设置这个属性。
+
+```
+{
+  "presets": ["es2015", "stage-0", "react"],
+  "plugins": [["import-bee", { "style": true}] ]
+}
+
+
+```

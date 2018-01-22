@@ -1,6 +1,6 @@
 {
   "name": "bee.tinper.org",
-  "version": "0.1.0",
+  "version": "1.2.7",
   "description": "bee.tinper.org",
   "main": "server/index.js",
   "scripts": {
