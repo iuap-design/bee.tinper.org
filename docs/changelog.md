@@ -1,3 +1,16 @@
+## 1.2.10
+
+- 修复Tab组件，多页签展示时，箭头不垂直居中问题
+
+## 1.2.9
+
+- 修复Tree组件，异步加载时显示loading的图片
+- 修复ProgressBar顶部导航样式问题
+
+## 1.2.8
+
+- 修复Button, FormControl, ProgressBar按需加载样式问题。
+
 ## 1.2.7
 
 - Radio: 修复disabled时无法设置默认值问题
