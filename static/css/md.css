@@ -8,16 +8,16 @@
 .sidebar a {
     transition:all .3s;
     text-decoration:none;
-    color:#000;
+    color:#444;
     font-size: 14px;
     line-height:25px;
     cursor: pointer;
 }
 .sidebar a:hover,.sidebar a.selected {
-    color:#20a0ff;
+    color:#409eff;
 }
 .sidebar .selected a {
-    color:#20a0ff;
+    color:#409eff;
 }
 .demo-block {
     border-radius: 4px;
@@ -59,12 +59,14 @@
 
 
 /* md */
-h1,h2,h3,h4,h5,h6,p,blockquote {
+h1,h2,h3,h4,h5,h6,blockquote {
     margin: 0;
     padding: 0;
 }
 body {
-    font-family: "Helvetica Neue", Helvetica, "Hiragino Sans GB", Arial, sans-serif;
+    font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei,SimSun",sans-serif;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
     font-size: 14px;
     line-height: 18px;
     color: #737373;
@@ -94,27 +96,30 @@ a img {
 }
 p {
     /*margin-bottom: 9px;*/
-    /*font-size: 14px;*/
-    /*color: #5e6d82;*/
-    /*line-height: 36px;*/
+    font-size: 14px;
+    color: #5e6d82;
+    line-height: 1.5em;
 }
 h1,h2,h3,h4,h5,h6 {
     color: #1f2f3d;
     line-height: 150%;
     margin:35px 0 15px;
+    font-weight: 100;
 }
 h1 {
     margin-bottom: 18px;
     font-size: 30px;
 }
 h2 {
-    font-size: 24px;
+    font-size: 28px;
 }
 h3 {
-    font-size: 18px;
+    margin: 55px 0 20px;
+    font-size: 22px;
 }
 h4 {
     font-size: 16px;
+    font-weight: 700;
 }
 h5 {
     font-size: 14px;
@@ -162,9 +167,11 @@ code {
 pre {
     display: block;
     /*padding: 14px;*/
-    margin: 0 0 18px;
+    /* margin: 0 0 18px; */
+    margin: 1em 0px;
     line-height: 16px;
     font-size: 11px;
+    font-family: monospace;
     white-space: pre-wrap;
     word-wrap: break-word;
 }
@@ -192,15 +199,19 @@ sup {
     }
 }
 .menu-item {
-    padding: 0  16px 0 28px;
+    /* padding: 0  16px 0 28px;
     font-size: 12px;
-    line-height: 42px;
-    height: 42px;
+    line-height: 40px;
+    height: 40px;
     overflow: hidden;
-    text-overflow: ellipsis;
+    text-overflow: ellipsis; */
 }
 .menu-item a {
     font-size:14px;
+    line-height: 40px;
+    height: 40px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .menu-item a span {
     font-size: 12px;
@@ -208,9 +219,12 @@ sup {
     font-weight: normal;
     opacity: .67;
 }
-.menu-item label {
-    color:#9e9e9e;
-    font-size:14px;
+.menu-component label,.menu-item label {
+    color:#333;
+    font-size:16px;
+    line-height: 42px;
+    font-weight: 700;
+    display: inline-block;
 }
 .menu-item label span {
     font-size:12px;
@@ -226,14 +240,38 @@ sup {
     color: #999;
     font-size: 12px;
     line-height: 1.5;
-    padding: 8px 16px;
+    /* padding: 8px 16px; */
     list-style: none;
 }
 .menu-component li:first-child .menu-item {
     padding:0;
 }
+.menu-group .menu-group-title{
+    font-size: 12px;
+    color: #999;
+    line-height: 26px;
+    margin-top: 15px;
+}
 #tinperBeeDemo .u-col-md-offset-1 {
     margin:0;
+}
+#tinperBeeDemo .u-panel .u-panel-heading{
+    padding: 0;
+}
+#tinperBeeDemo .u-panel .u-panel-title>div:first-child{
+    padding: 24px;
+}
+#tinperBeeDemo .u-button-block{
+    color: #5e6d82;
+    background-color: #f9fafc;
+    border-top: 1px solid #ebebeb;
+}
+#tinperBeeDemo .u-button-block:hover{
+    color: #409eff;
+    background-color: #f9fafc;
+}
+#tinperBeeDemo .u-panel-collapse{
+    background-color: #f9fafc;
 }
 
 .table-container table {
@@ -263,19 +301,19 @@ table th {
     font-family: "Lucida Console", Consolas, Menlo, Courier, monospace;
 }
 #tinperBeeDemo .u-panel {
-    border: 1px solid #e9e9e9;
-    border-radius: 4px;
+    border: 1px solid #ebebeb;
+    border-radius: 6px;
     display: inline-block;
     width: 100%;
     position: relative;
     margin: 0 0 16px 0;
-    -webkit-transition: all 0.2s ease;
-    transition: all 0.2s ease;
-    box-shadow:none;
+    -webkit-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+    box-shadow: none;
 }
 #tinperBeeDemo .u-panel:hover {
-    border: 1px solid #e9e9e9;
-    box-shadow: 0 2px 7px rgba(0, 0, 0, 0.2);
+    border: 1px solid #eee;
+    box-shadow: 0 2px 7px rgba(0, 0, 0, 0.15);
     border-color: transparent;
     position: relative;
     z-index: 10;

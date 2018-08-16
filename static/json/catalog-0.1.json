@@ -1,5 +1,9 @@
 {
-    "": {
+    "开发指南":{
+        "type":0,
+        "title":"开发指南"
+    },
+    "开发指南": {
         "概述":{
             "version":"0.1.3",
             "component":"summarize"
@@ -21,11 +25,13 @@
             "component":"",
             "url":"https://github.com/iuap-design/tinper-bee",
             "icon":"&#xe695"
-        },
-        "整体概览": {
-            "version":"0.1.3",
-            "component":""
-        },
+        }
+    },
+    "整体概览":{
+        "type":0,
+        "title":"整体概览"
+    },
+    "整体概览":{
         "兼容性": {
             "version":"0.1.3",
             "component":"compatibility"
@@ -276,6 +282,23 @@
             "version":"0.1.5",
             "component":"bee-search-panel"
         }
+    },
+    "其它组件": {
+        "参照组件": {
+            "version":"1.1.1",
+            "component":"yyuap-ref"
+        },
+        "应用上传组件": {
+            "version":"0.0.20",
+            "component":"ac-upload"
+        },
+        "多语言 Input 组件": {
+            "version":"0.0.2",
+            "component":"ac-input-locale"
+        },
+        "Bpm流程组件": {
+            "version":"0.2.9",
+            "component":"yyuap-bpm"  
+        }
     }
-
 }

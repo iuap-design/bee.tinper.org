@@ -30,8 +30,7 @@
     "url": "https://github.com/iuap-design/bee.tinper.org/issues"
   },
   "homepage": "https://github.com/iuap-design/bee.tinper.org#readme",
-  "devDependencies": {
-  },
+  "devDependencies": {},
   "dependencies": {
     "koa": "^1.2.4",
     "koa-logger": "^1.3.0",
