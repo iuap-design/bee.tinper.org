@@ -5,15 +5,12 @@
 .page-container {
     padding-top:50px;
 }
-/* .sidebar{
-    width: 290px;
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    margin-top: 50px;
+.sidebar{
+    width: 20%;
+    height: 100%;
     transition: padding-top .3s;
-    overflow: hidden;
-} */
+    overflow-y: auto;
+}
 .sidebar a {
     transition:all .3s;
     text-decoration:none;
@@ -29,20 +26,28 @@
     color:#409eff;
 }
 /*滚动条*/
-/* .el-scrollbar__bar.is-vertical{
-    width: 6px;
-    top: 2px;
-    position: absolute;
-    right: 2px;
-    bottom: 2px;
-    z-index: 1;
-    border-radius: 4px;
-    opacity: 0;
-    transition: opacity .12s ease-out;
-} */
-/* .demo-container{
-    margin-left:300px;
-} */
+.sidebar::-webkit-scrollbar {
+    width: 8px;
+    height: 1px;
+}
+.sidebar::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    background-color: #eee;
+}
+.demo-container{
+    height: 100%;
+    padding-bottom: 100px;
+    margin-left: 10px;
+    overflow-y: auto;
+}
+.demo-container::-webkit-scrollbar {
+    width: 8px;
+    height: 1px;
+}
+.demo-container::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    background-color: #fff;
+}
 .demo-block {
     border-radius: 4px;
     transition: .2s;
@@ -223,12 +228,12 @@ sup {
     }
 }
 .menu-item {
-    /* padding: 0  16px 0 28px;
+    /* padding: 0  16px 0 28px; */
     font-size: 12px;
-    line-height: 40px;
-    height: 40px;
+    line-height: 34px;
+    height: 34px;
     overflow: hidden;
-    text-overflow: ellipsis; */
+    text-overflow: ellipsis;
 }
 .menu-item a {
     font-size:14px;
@@ -242,13 +247,6 @@ sup {
     margin-left: 3px;
     font-weight: normal;
     opacity: .67;
-}
-.menu-component label,.menu-item label {
-    color:#333;
-    font-size:16px;
-    line-height: 42px;
-    font-weight: 700;
-    display: inline-block;
 }
 .menu-item label span {
     font-size:12px;
@@ -272,9 +270,12 @@ sup {
 }
 .menu-group .menu-group-title{
     color: rgba(0, 0, 0, 0.45);
-    font-size: 14px;
+    font-size: 12px;
     line-height: 26px;
-    margin-top: 15px;
+    margin-top: 22px;
+}
+.menu-group:first-child>.menu-group-title{
+    display: none;
 }
 #tinperBeeDemo .u-col-md-offset-1 {
     margin:0;
@@ -290,6 +291,12 @@ sup {
     background-color: #f9fafc;
     border-top: 1px solid #ebebeb;
     height: 44px;
+}
+#tinperBeeDemo .u-panel .u-panel-body{
+    padding-top: 0;
+}
+#tinperBeeDemo .u-panel .u-panel-body pre{
+    margin: 0;
 }
 #tinperBeeDemo .u-button-block:hover{
     color: #409eff;
