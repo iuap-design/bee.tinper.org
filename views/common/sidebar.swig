@@ -31,4 +31,7 @@
             {% endif %}
         {%- endfor %}
     </ul>
+    <div class="el-scrollbar__bar is-vertical">
+        <div class="el-scrollbar__thumb" style="transform: translateY(0%); height: 20.2947%;"></div>
+    </div>
 </div>

@@ -5,6 +5,15 @@
 .page-container {
     padding-top:50px;
 }
+/* .sidebar{
+    width: 290px;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    margin-top: 50px;
+    transition: padding-top .3s;
+    overflow: hidden;
+} */
 .sidebar a {
     transition:all .3s;
     text-decoration:none;
@@ -19,6 +28,21 @@
 .sidebar .selected a {
     color:#409eff;
 }
+/*滚动条*/
+/* .el-scrollbar__bar.is-vertical{
+    width: 6px;
+    top: 2px;
+    position: absolute;
+    right: 2px;
+    bottom: 2px;
+    z-index: 1;
+    border-radius: 4px;
+    opacity: 0;
+    transition: opacity .12s ease-out;
+} */
+/* .demo-container{
+    margin-left:300px;
+} */
 .demo-block {
     border-radius: 4px;
     transition: .2s;
@@ -247,8 +271,8 @@ sup {
     padding:0;
 }
 .menu-group .menu-group-title{
-    font-size: 12px;
-    color: #999;
+    color: rgba(0, 0, 0, 0.45);
+    font-size: 14px;
     line-height: 26px;
     margin-top: 15px;
 }
@@ -258,13 +282,14 @@ sup {
 #tinperBeeDemo .u-panel .u-panel-heading{
     padding: 0;
 }
-#tinperBeeDemo .u-panel .u-panel-title>div:first-child{
-    padding: 24px;
+#tinperBeeDemo .u-panel .u-panel-title>:first-child{
+    margin: 10px 15px;
 }
 #tinperBeeDemo .u-button-block{
     color: #5e6d82;
     background-color: #f9fafc;
     border-top: 1px solid #ebebeb;
+    height: 44px;
 }
 #tinperBeeDemo .u-button-block:hover{
     color: #409eff;
