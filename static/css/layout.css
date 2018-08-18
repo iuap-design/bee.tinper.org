@@ -1,0 +1,19 @@
+body .u-container {
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 15px;
+    padding-right: 15px; 
+    height: 100%;
+}
+body .u-container .content-container{
+    height: 100%;
+}
+@media (min-width: 768px) {
+    body .u-container {
+    width: 750px; } }
+@media (min-width: 992px) {
+    body .u-container {
+    width: 970px; } }
+@media (min-width: 1200px) {
+    body .u-container {
+    width: 1300px; } }

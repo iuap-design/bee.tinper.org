@@ -24,6 +24,12 @@ hue-6-2: #e6c07b
   padding: 0.5em;
   color: #abb2bf;
   background: #282c34;
+  /* line-height: 1.8; */
+  font-family: Menlo,Monaco,Consolas,Courier,monospace;
+  /* padding: 18px 24px; */
+  margin-bottom: 25px;
+  border-radius: 4px;
+  -webkit-font-smoothing: auto;
 }
 
 .hljs-comment,

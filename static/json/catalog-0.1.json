@@ -22,7 +22,7 @@
             "url":"https://github.com/iuap-design/tinper-bee",
             "icon":"&#xe695"
         },
-        "整体概览": {
+        "整体概览":{
             "version":"0.1.3",
             "component":""
         },
@@ -276,6 +276,23 @@
             "version":"0.1.5",
             "component":"bee-search-panel"
         }
+    },
+    "应用组件": {
+        "参照组件": {
+            "version":"1.1.1",
+            "component":"yyuap-ref"
+        },
+        "附件管理组件": {
+            "version":"0.0.20",
+            "component":"ac-upload"
+        },
+        "多语言输入组件": {
+            "version":"0.0.2",
+            "component":"ac-input-locale"
+        },
+        "Bpm流程组件": {
+            "version":"0.2.9",
+            "component":"yyuap-bpm"  
+        }
     }
-
 }
