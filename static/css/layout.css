@@ -1,13 +1,3 @@
-body .u-container {
-    margin-right: auto;
-    margin-left: auto;
-    padding-left: 15px;
-    padding-right: 15px; 
-    height: 100%;
-}
-body .u-container .content-container{
-    height: 100%;
-}
 @media (min-width: 768px) {
     body .u-container {
     width: 750px; } }
@@ -16,4 +6,23 @@ body .u-container .content-container{
     width: 970px; } }
 @media (min-width: 1200px) {
     body .u-container {
-    width: 1300px; } }
+        width: 1300px;
+        margin-right: auto;
+        margin-left: auto;
+        padding-left: 15px;
+        padding-right: 15px; 
+        height: 100%;
+    } 
+    body .u-container .content-container{
+        height: 100%;
+    }
+}
+@media (max-width: 768px){
+    .content-container .sidebar{
+        width: 100%;
+        height: auto;
+    }
+    body .page-container {
+        padding-top: 60px;
+    }
+}

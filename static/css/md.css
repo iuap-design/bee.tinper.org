@@ -9,8 +9,11 @@
     width: 20%;
     height: 100%;
     transition: padding-top .3s;
-    overflow-y: auto;
+    overflow: scroll;
 }
+/* .sidebar:hover{
+    overflow-y: scroll;
+} */
 .sidebar a {
     transition:all .3s;
     text-decoration:none;
@@ -38,8 +41,11 @@
     height: 100%;
     padding-bottom: 100px;
     margin-left: 10px;
-    overflow-y: auto;
+    overflow-y: auto; 
 }
+/* .demo-container:hover{
+    overflow-y: scroll;
+} */
 .demo-container::-webkit-scrollbar {
     width: 8px;
     height: 1px;
