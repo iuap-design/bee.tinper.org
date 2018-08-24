@@ -7,8 +7,9 @@
 
 ### 1. 简介
 
-> 基于 [tinper-bee](http://bee.tinper.org/) 组件库对iUap原有UUI流程业务组件进行封装成React应用组件
-> 查看更多应用组件前往 [https://github.com/tinper-acs](https://github.com/tinper-acs)
+基于 [tinper-bee](http://bee.tinper.org/) 组件库对 iuap原有UUI流程业务组件进行封装成React应用组件
+
+查看更多应用组件前往 [https://github.com/tinper-acs](https://github.com/tinper-acs)
 
 总共包含8种组件，分别是：
 
@@ -28,7 +29,10 @@
 ### 2. 安装
 
 - 前端工程内置 [tinper-bee](http://bee.tinper.org/) 组件库以及平台参照组件 [yyuap-ref](https://www.npmjs.com/package/yyuap-ref)
-- 通过npm下载使用 `npm install yyuap-bpm -S`
+- 通过npm下载使用 
+```sh
+$ npm install yyuap-bpm -S
+```
 
 ### 3. 使用
 
@@ -265,7 +269,6 @@ import queryString from 'query-string';
         );
     }
 ```
-
 
 ### 6. Change Log
 

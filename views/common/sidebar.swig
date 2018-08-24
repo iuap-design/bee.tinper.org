@@ -5,8 +5,9 @@
                 <div class="menu-group-title">{{ loop.key }}</div>
                 {% for item in key -%}
                     <div class="menu-item">
+                        <a name="{{item.component}}" id="{{item.component}}"></a>
                         {% if item.component!='' %}
-                            <a href="/{{item.component}}" {% if item.component==docId  %}class="selected"{% endif %}>
+                            <a href="/{{item.component}}#{{item.component}}" {% if item.component==docId  %}class="selected"{% endif %}>
                                 {% autoescape false %}
                                     {{ loop.key|replace('([A-Za-z]+)','<span>$1</span>') }}
                                 {% endautoescape %}
