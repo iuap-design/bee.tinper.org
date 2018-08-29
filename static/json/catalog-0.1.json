@@ -278,6 +278,10 @@
         }
     },
     "应用组件": {
+        "西瓜UI按钮": {
+            "version":"0.0.2",
+            "component":"ac-button"
+        },
         "参照组件": {
             "version":"1.1.1",
             "component":"yyuap-ref"
@@ -293,6 +297,10 @@
         "Bpm流程组件": {
             "version":"0.2.9",
             "component":"yyuap-bpm"  
+        },
+        "温度计、液位计组件": {
+            "version": "0.0.1",
+            "component": "ac-thermometer"
         }
     }
 }

@@ -12,12 +12,14 @@ import AcInputLocale from '@yonyou/ac-input-locale';
 
 样式引入
 
-import '@yonyou/ac-input-locale/build/ac-input-locale.css';
+import '@yonyou/ac-input-locale/dist/index.css';
 ```
 
-##效果
- 
- 
+## 效果
+
+ <img src="https://raw.githubusercontent.com/fridaydream/blogpic/master/ac-input-locale2.gif" width="90%">
+
+<img src="http://upload-images.jianshu.io/upload_images/8194969-aee1bf72ef11bf74?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="90%">
 
 ## API
 
@@ -29,7 +31,7 @@ import '@yonyou/ac-input-locale/build/ac-input-locale.css';
 |locale|系统语言|string |'zh-cn/en/tw'/ |
 |localeList|语言列表|Array| ---|
 
-       
+
 
 #### 开发调试
 
@@ -38,4 +40,3 @@ $ cd @yonyou/ac-input-locale
 $ npm install
 $ npm run dev
 ```
-
