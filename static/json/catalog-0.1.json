@@ -293,6 +293,10 @@
         "Bpm流程组件": {
             "version":"0.2.9",
             "component":"yyuap-bpm"  
+        },
+        "文字滚动组件": {
+            "version": "0.0.2",
+            "component": "ac-marquee"
         }
     }
 }
