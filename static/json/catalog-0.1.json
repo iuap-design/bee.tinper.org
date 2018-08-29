@@ -297,6 +297,10 @@
         "文字滚动组件": {
             "version": "0.0.2",
             "component": "ac-marquee"
+        },
+        "人力云、内部转移应用组件": {
+            "version": "0.0.1",
+            "component": "ac-orgcenter-form"
         }
     }
 }
