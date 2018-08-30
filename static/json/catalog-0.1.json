@@ -278,9 +278,21 @@
         }
     },
     "应用组件": {
-        "西瓜UI按钮": {
+        "ac-button": {
             "version":"0.0.2",
             "component":"ac-button"
+        },
+        "ac-notification":{
+            "version":"0.0.2",
+            "component":"ac-notification"
+        },
+        "ac-orgcenter-form":{
+            "version":"0.0.1",
+            "component":"ac-orgcenter-form"
+        },
+        "ac-marquee":{
+            "version":"0.0.2",
+            "component":"ac-marquee"
         },
         "参照组件": {
             "version":"1.1.1",

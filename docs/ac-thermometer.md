@@ -5,6 +5,8 @@
 
 <img src="http://iuap-design-cdn.oss-cn-beijing.aliyuncs.com/static/ynpm/image/wenduji.gif" width="90%">
 ---
+### 在线示例
+[示例链接](https://tinper-acs.github.io/ac-thermometer/)
 
 ### 1. 简介
 

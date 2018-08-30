@@ -15,9 +15,12 @@ import AcInputLocale from '@yonyou/ac-input-locale';
 import '@yonyou/ac-input-locale/dist/index.css';
 ```
 
+## 在线示例
+[示例链接](https://tinper-acs.github.io/ac-input-locale/)
+
 ## 效果
 
- <img src="https://raw.githubusercontent.com/fridaydream/blogpic/master/ac-input-locale2.gif" width="90%">
+<img src="https://raw.githubusercontent.com/fridaydream/blogpic/master/ac-input-locale2.gif" width="90%">
 
 <img src="http://upload-images.jianshu.io/upload_images/8194969-aee1bf72ef11bf74?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="90%">
 
