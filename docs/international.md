@@ -59,11 +59,11 @@ ReactDOM.render( (
 // en_US.js
 import en from 'tinper-bee/locale/en_US.js';
 import appLocaleData from 'react-intl/locale-data/en';
-import enMessages from 'en_US.json';
+import messages from 'en_US.json';
 
 export default {
   messages: {
-    ...enMessages,
+    ...messages,
   },
   tinperLocale: en,
   locale: 'en',
@@ -73,11 +73,11 @@ export default {
 // zh_CN.js
 import zh from 'tinper-bee/locale/zh_CN.js';
 import appLocaleData from 'react-intl/locale-data/zh';
-import enMessages from 'zh_CN.json';
+import messages from 'zh_CN.json';
 
 export default {
   messages: {
-    ...enMessages,
+    ...messages,
   },
   tinperLocale: zh,
   locale: 'zh',
@@ -144,4 +144,10 @@ class App extends Component {
         )
     }
 }
+```
+
+注：使用 `react-intl` ，如果要兼容ie浏览器，需要单独引入 `polyfill`。此 `polyfill` cdn地址为动态地址，会根据浏览器不同使用不同的 `polyfill`
+
+```
+<script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
 ```
