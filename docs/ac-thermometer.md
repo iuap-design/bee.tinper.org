@@ -1,17 +1,22 @@
 # 温度计、液位计组件
-[![npm version](https://img.shields.io/npm/v/ac-thermometer.svg)](https://www.npmjs.com/package/ac-thermometer)              
-
+---
+[![npm version](https://img.shields.io/npm/v/ac-thermometer.svg)](https://www.npmjs.com/package/ac-thermometer)
 [![NPM downloads](http://img.shields.io/npm/dt/ac-thermometer.svg?style=flat)](https://npmjs.org/package/ac-thermometer)
 
 <img src="http://iuap-design-cdn.oss-cn-beijing.aliyuncs.com/static/ynpm/image/wenduji.gif" width="90%">
 ---
+
 ### 在线示例
 [示例链接](https://tinper-acs.github.io/ac-thermometer/)
 
 ### 1. 简介
 
-温度计、液位计 应用组件
+> 温度计、液位计 应用组件
+
 查看更多应用组件前往 [https://github.com/tinper-acs](https://github.com/tinper-acs)
+
+演示效果: [https://tinper-acs.github.io/ac-thermometer/](https://tinper-acs.github.io/ac-thermometer/)
+
 
 本组件包含温度计`Thermometer`、液位计`ContentGage`两种组件
 
@@ -27,7 +32,7 @@ import React, { Component } from 'react';
 import { Col, Row } from 'tinper-bee';//加载组件库
 import { Thermometer, ContentGage } from 'ac-thermometer';//导入应用组件
 import 'tinper-bee/assets/tinper-bee.css';//加载组件库样式
-import 'ac-thermometer/build/style.css';//加载温度计、液位计样式
+import 'ac-thermometer/dist/index.css';//加载温度计、液位计样式
 
 
 class Demo extends Component {
