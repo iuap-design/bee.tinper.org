@@ -278,39 +278,39 @@
         }
     },
     "应用组件": {
-        "ac-button": {
+        "按钮ac-button": {
             "version":"0.0.2",
             "component":"ac-button"
         },
-        "ac-notification":{
+        "通知ac-notification":{
             "version":"0.0.2",
             "component":"ac-notification"
         },
-        "ac-orgcenter-form":{
+        "内部转移应用ac-orgcenter-form":{
             "version":"0.0.1",
             "component":"ac-orgcenter-form"
         },
-        "ac-marquee":{
+        "滚动公告ac-marquee":{
             "version":"0.0.2",
             "component":"ac-marquee"
         },
-        "参照组件": {
+        "参照yyuap-ref": {
             "version":"1.1.1",
             "component":"yyuap-ref"
         },
-        "附件管理组件": {
+        "附件管理ac-upload": {
             "version":"0.0.20",
             "component":"ac-upload"
         },
-        "多语言输入组件": {
+        "多语言输入ac-input-locale": {
             "version":"0.0.2",
             "component":"ac-input-locale"
         },
-        "Bpm流程组件": {
+        "Bpm流程组件yyuap-bpm": {
             "version":"0.2.9",
             "component":"yyuap-bpm"  
         },
-        "温度计、液位计组件": {
+        "温度计/液位计ac-thermometer": {
             "version": "0.0.1",
             "component": "ac-thermometer"
         }
