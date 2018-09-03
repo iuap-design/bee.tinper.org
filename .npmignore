@@ -32,3 +32,4 @@ server
 static
 docs
 .github
+package-lock.json
