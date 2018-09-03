@@ -2,12 +2,9 @@
 ---
 [![npm version](https://img.shields.io/npm/v/ac-thermometer.svg)](https://www.npmjs.com/package/ac-thermometer)
 [![NPM downloads](http://img.shields.io/npm/dt/ac-thermometer.svg?style=flat)](https://npmjs.org/package/ac-thermometer)
-
+---
 <img src="http://iuap-design-cdn.oss-cn-beijing.aliyuncs.com/static/ynpm/image/wenduji.gif" width="90%">
 ---
-
-### 在线示例
-[示例链接](https://tinper-acs.github.io/ac-thermometer/)
 
 ### 1. 简介
 

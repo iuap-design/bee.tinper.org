@@ -278,10 +278,10 @@ sup {
 #tinperBeeDemo .u-col-md-offset-1 {
     margin:0;
 }
-#tinperBeeDemo .u-panel .u-panel-heading{
+#tinperBeeDemo .u-col-md-12>.u-panel>.u-panel-heading{
     padding: 0;
 }
-#tinperBeeDemo .u-panel .u-panel-title>:first-child{
+#tinperBeeDemo .u-col-md-12>.u-panel>.u-panel-heading>.u-panel-title>:first-child{
     margin: 10px 15px;
 }
 #tinperBeeDemo .u-button-block{
@@ -290,7 +290,7 @@ sup {
     border-top: 1px solid #ebebeb;
     height: 44px;
 }
-#tinperBeeDemo .u-panel .u-panel-body{
+#tinperBeeDemo .u-col-md-12>.u-panel>.u-panel-collapse>.u-panel-body{
     padding-top: 0;
 }
 #tinperBeeDemo .u-panel .u-panel-body pre{
@@ -300,7 +300,7 @@ sup {
     color: #409eff;
     background-color: #f9fafc;
 }
-#tinperBeeDemo .u-panel-collapse{
+#tinperBeeDemo .u-col-md-12>.u-panel>.u-panel-collapse{
     background-color: #f9fafc;
 }
 
@@ -399,7 +399,7 @@ table th {
 
     /* 小屏幕表格滚动 end */
 }
-.u-panel-bordered .u-panel-heading {
+#tinperBeeDemo .u-col-md-12>.u-panel-bordered>.u-panel-heading {
     border-bottom:none;
 }
 @media screen and (max-width: 768px) {
