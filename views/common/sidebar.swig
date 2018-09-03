@@ -9,7 +9,7 @@
                         {% if item.component!='' %}
                             <a href="/{{item.component}}#{{item.component}}" {% if item.component==docId  %}class="selected"{% endif %}>
                                 {% autoescape false %}
-                                    {{ loop.key|replace('([A-Za-z]+)','<span>$1</span>') }}
+                                    {{ loop.key|replace('([A-Za-z-]+)','<span>$1</span>') }}
                                 {% endautoescape %}
                             </a>
                         {% elseif item.url!='' %}
@@ -20,7 +20,7 @@
                             </a>
                         {% else %}
                             {% autoescape false %}
-                                <label>{{ loop.key|replace('([A-Za-z]+)','<span>$1</span>') }}</label>
+                                <label>{{ loop.key|replace('([A-Za-z-]+)','<span>$1</span>') }}</label>
                             {% endautoescape %}
                         {% endif %}
                     </div>
