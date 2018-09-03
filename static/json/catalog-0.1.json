@@ -306,7 +306,7 @@
             "version":"0.0.2",
             "component":"ac-input-locale"
         },
-        "Bpm流程组件yyuap-bpm": {
+        "Bpm流程组件<span>yyuap-bpm</span>": {
             "version":"0.2.9",
             "component":"yyuap-bpm"  
         },
