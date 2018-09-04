@@ -11,7 +11,7 @@ $ ynpm install @yonyou/ac-orgcenter-form --save
 
 引入
 
-import AcOrgcenterForm from '@yonyou/ac-orgcenter-form';
+import {AcOrgcenterForm} from '@yonyou/ac-orgcenter-form';
 
 样式引入
 
