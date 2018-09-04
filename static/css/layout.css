@@ -16,6 +16,13 @@
     body .u-container .content-container{
         height: 100%;
     }
+    .content-container .demo-container{
+        margin-left: 295px;
+    }
+    .content-container .sidebar{
+        position: fixed;
+        padding-bottom: 50px;
+    }
 }
 @media (max-width: 768px){
     .content-container .sidebar{

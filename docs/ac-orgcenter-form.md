@@ -1,8 +1,10 @@
 ## ac-orgcenter-form
 
-## 效果
+## 在线示例
+[https://tinper-acs.github.io/ac-orgcenter-form/](https://tinper-acs.github.io/ac-orgcenter-form/)
 
-![效果](http://upload-images.jianshu.io/upload_images/8194969-bef0ffc1c9e0d8d1?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+## 效果
+<img src="http://upload-images.jianshu.io/upload_images/8194969-bef0ffc1c9e0d8d1?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="90%">
 
 ```
 $ ynpm install @yonyou/ac-orgcenter-form --save
@@ -17,8 +19,6 @@ import '@yonyou/ac-orgcenter-form/dist/index.css';
 
 ```
 
-##效果
-
 
 
 ## API
@@ -26,7 +26,7 @@ import '@yonyou/ac-orgcenter-form/dist/index.css';
 |参数|说明|类型|默认值|
 |:--|:---:|:--:|---:|
 |className|样式|string|default|
-|parent|参数object|object|
+|parent|参数object|object| --|
 |btns|操作组(如下)| array| --|
 
 ## parent所有的属性
@@ -40,7 +40,7 @@ import '@yonyou/ac-orgcenter-form/dist/index.css';
 ## btns所有的属性
  |参数|说明|类型|默认值|
  |:--|:---:|:--:|---:|
- |label|文字|string|default|空字符|
+ |label|文字|string|空字符|
  |type|btns: next、last|string|空字符|
  |func|回调函数| function| --|
 

@@ -13,8 +13,6 @@ import Marquee from '@yonyou/ac-marquee';
 
 import '@yonyou/ac-marquee/build/ac-marquee.css';
 ```
-
-##效果
  
  
 

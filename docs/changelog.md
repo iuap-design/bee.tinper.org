@@ -10,11 +10,15 @@
    3. table有纵向滚动条，列过多时，滚动下不对齐
    4. bee-table重新验证示例，修改4个示例的Bug
 - bee-transfer 
+   1. 显示的数据总数根据选中的数据动态变化
+   2. 穿梭框 在左侧搜索过滤的情况下 右传左的报错
 - bee-menus 增加选中获取自定义data对象的示例
 - bee-panel增加代码复制功能，增加代码示例展示板Demo
 - bee-tooltip加判断，无overlay不渲染tooltip-arrow,tooltip-inner
 - bee-locale文件名规范化
-
+- bee-datepicker 示例代码去掉相对路径
+- bee-timepickker 示例代码去掉相对路径
+ 
 ## 1.5.8
 - bee-input-number 增加了disabled属性，新增2个demo示例
 

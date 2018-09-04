@@ -278,29 +278,41 @@
         }
     },
     "应用组件": {
-        "参照组件": {
+        "按钮AcButton": {
+            "version":"0.0.2",
+            "component":"ac-button"
+        },
+        "通知AcNotification":{
+            "version":"0.0.2",
+            "component":"ac-notification"
+        },
+        "内部转移应用AcOrgcenterForm":{
+            "version":"0.0.1",
+            "component":"ac-orgcenter-form"
+        },
+        "滚动公告AcMarquee":{
+            "version":"0.0.2",
+            "component":"ac-marquee"
+        },
+        "参照yyuap-ref": {
             "version":"1.1.1",
             "component":"yyuap-ref"
         },
-        "附件管理组件": {
+        "附件管理AcUpload": {
             "version":"0.0.20",
             "component":"ac-upload"
         },
-        "多语言输入组件": {
+        "多语言输入AcInputLocale": {
             "version":"0.0.2",
             "component":"ac-input-locale"
         },
-        "Bpm流程组件": {
+        "Bpm流程组件<span>yyuap-bpm</span>": {
             "version":"0.2.9",
             "component":"yyuap-bpm"  
         },
-        "文字滚动组件": {
-            "version": "0.0.2",
-            "component": "ac-marquee"
-        },
-        "人力云、内部转移应用组件": {
+        "温度计/液位计AcThermometer": {
             "version": "0.0.1",
-            "component": "ac-orgcenter-form"
+            "component": "ac-thermometer"
         }
     }
 }

@@ -90,7 +90,7 @@ router.get("/:id", function* (next) {
     }
 
     var demo = '<div id="tinperBeeDemo"></div>';
-    data = data.replace(/##.*代码演示/, "## 代码演示\n" + demo);
+    data = data.replace(/##.*代码演示/, demo);
     var pack_data = fs.readFileSync(
       path.join(__dirname, "../tinper-bee/" + docId + "/package.json")
     );

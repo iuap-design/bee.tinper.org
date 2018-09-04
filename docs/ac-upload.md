@@ -7,7 +7,7 @@
 
 ### 1. 简介
 
-> 基于tinper-bee组件库封装开发
+基于[tinper-bee](http://bee.tinper.org/)组件库封装开发
 
 手动上传组件，可以帮助你打开一个模态框选择文件进行上传、也包括拖拽式的上传方式，支持单个文件以及多个文件一起上传使用，上传完毕后，组件会显示查看附件信息
 
@@ -16,7 +16,9 @@
 ### 2. 安装
 
 - 通过npm下载使用
-`npm install ac-upload -S`
+```sh
+$ npm install ac-upload -S
+```
 
 ### 3. 使用
 
@@ -28,7 +30,7 @@ import 'ac-upload/build/ac-upload.css';//加载组件样式
 ```
 然后在render使用的时候传入相应组件需要的参数：
 
-> 注：只要放在AcUpload组件之间的一个按钮即可
+*注：只要放在AcUpload组件之间的一个按钮即可*
 
 ```js
 <AcUpload
