@@ -13,7 +13,10 @@
         padding-right: 15px; 
         height: 100%;
     } 
-    body .u-container .content-container{
+    body .content-container{
+        width: 1490px;
+        margin-right: auto;
+        margin-left: auto;
         height: 100%;
     }
     .content-container .demo-container{
@@ -31,5 +34,10 @@
     }
     body .page-container {
         padding-top: 60px;
+    }
+}
+@media (min-width: 1680px) {
+    .content-container .sidebar{
+        width: 15%;
     }
 }
