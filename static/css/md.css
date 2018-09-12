@@ -13,6 +13,7 @@
 }
 .sidebar:hover{
     overflow-y: scroll;
+    cursor: pointer;
 }
 .sidebar a {
     transition:all .3s;
@@ -30,24 +31,15 @@
 }
 /*滚动条*/
 .sidebar::-webkit-scrollbar {
-    width: 8px;
+    width: 6px;
     height: 1px;
 }
 .sidebar::-webkit-scrollbar-thumb {
-    border-radius: 8px;
-    background-color: #eee;
+    border-radius: 6px;
+    background-color: hsla(220,4%,58%,.5);
 }
 .demo-container{
     padding-bottom: 100px;
-    margin-left: 10px; 
-}
-.demo-container::-webkit-scrollbar {
-    width: 8px;
-    height: 1px;
-}
-.demo-container::-webkit-scrollbar-thumb {
-    border-radius: 8px;
-    background-color: #fff;
 }
 .demo-block {
     border-radius: 4px;

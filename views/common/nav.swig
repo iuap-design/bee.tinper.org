@@ -1,5 +1,5 @@
 <nav class="u-navbar u-navbar-default u-navbar-fixed-top demo-web-navbar" role="navigation">
-    <div class="u-container">
+    <div class="u-container clearfix">
         <div class="u-navbar-header">
             <button type="button" class="u-navbar-toggle u-hamburger u-hamburger-close  u-collapsed"
                     data-target="#example-default-collapse" data-toggle="collapse">

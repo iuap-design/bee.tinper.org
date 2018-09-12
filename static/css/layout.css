@@ -6,7 +6,7 @@
     width: 970px; } }
 @media (min-width: 1200px) {
     body .u-container {
-        width: 1300px;
+        width: 1400px;
         margin-right: auto;
         margin-left: auto;
         padding-left: 15px;
@@ -24,7 +24,7 @@
         padding-bottom: 50px;
     }
 }
-@media (max-width: 768px){
+@media (max-width: 450px){
     .content-container .sidebar{
         width: 100%;
         height: auto;
