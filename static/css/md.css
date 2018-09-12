@@ -10,6 +10,8 @@
     height: 100%;
     transition: padding-top .3s;
     overflow: hidden;
+    border-right: 1px solid #eee;
+    padding-left:60px;
 }
 .sidebar:hover{
     overflow-y: scroll;
