@@ -6,7 +6,7 @@
     width: 970px; } }
 @media (min-width: 1200px) {
     body .u-container {
-        width: 1400px;
+        width: 1259px;
         margin-right: auto;
         margin-left: auto;
         padding-left: 15px;
@@ -14,7 +14,7 @@
         height: 100%;
     } 
     body .content-container{
-        width: 1490px;
+        width: 1348px;
         margin-right: auto;
         margin-left: auto;
         height: 100%;
@@ -37,7 +37,13 @@
     }
 }
 @media (min-width: 1680px) {
+    body .u-container {
+        width: 1400px;
+    } 
     .content-container .sidebar{
         width: 15%;
+    }
+    body .content-container{
+        width: 1488px;
     }
 }
