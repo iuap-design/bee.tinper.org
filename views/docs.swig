@@ -20,7 +20,7 @@
 {% endblock %}
 
 {% block content %}
-<div class="page-container u-container example">
+<div class="page-container example">
     <div class="u-row content-container">
         {% include "common/sidebar.swig"%}
         <div class="u-col-xs-12 u-col-sm-9 u-col-md-9 demo-container">
