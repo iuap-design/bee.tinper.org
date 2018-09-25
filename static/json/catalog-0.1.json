@@ -313,6 +313,10 @@
         "温度计/液位计AcThermometer": {
             "version": "0.0.1",
             "component": "ac-thermometer"
+        },
+        "富文本编辑AcEditor": {
+            "version": "1.0.0",
+            "component": "ac-editor"
         }
     }
 }
