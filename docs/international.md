@@ -36,7 +36,7 @@ ReactDOM.render( (
 
 ### 项目国际化 方案一
 
-> [示例](https://github.com/tinper-bee/bee-international-intl)
+[示例](https://github.com/tinper-bee/bee-international-intl)
 
 对于项目的多语设置，我们推荐使用[react-intl](https://github.com/yahoo/react-intl)。
 简要说明如下：假设项目的入口为 App 组件，需要根据cookie判断语言
@@ -156,6 +156,6 @@ class App extends Component {
 
 ### 项目国际化 方案二
 
-> [示例](https://github.com/tinper-bee/bee-international-lanbuild)
+[示例](https://github.com/tinper-bee/bee-international-lanbuild)
 
 使用 [lanbuild](https://www.npmjs.com/package/lanbuild) 组件，产出多种语言版本代码。 目前只支持，中文，英文，繁体中文。 后续支持多种语言以及简化配置，开发正在努力中。。。
