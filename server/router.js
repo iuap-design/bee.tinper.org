@@ -8,7 +8,7 @@ var path = require("path");
 var cate = require("../static/json/catalog-0.1.json");
 var markdown = require("markdown").markdown;
 var marked = require("marked");
-
+var axios = require('axios')
 marked.setOptions({
   renderer: new marked.Renderer(),
   gfm: true,
@@ -65,13 +65,42 @@ router.get("/", function* (next) {
 router.get("/:id", function* (next) {
   var docId = this.params.id;
   var isComponent = 1;
-
-  if (docId.search("bee-") == -1) {
+  var jsList=[];
+  if (docId.search("bee-") == -1 && docId.search("ac-") === -1) {
     try {
       var data = fs.readFileSync(
         path.join(__dirname, "../docs/" + docId + ".md"),
         "utf-8"
       );
+    } catch (e) {
+      data = "## 文档建设中...";
+    }
+    isComponent = 0;
+  } else if (docId.search("ac-") > -1){
+    try {
+      var data = fs.readFileSync(
+        path.join(__dirname, "../docs/" + docId + ".md"),
+        "utf-8"
+      );
+      console.log(data)
+      console.log(/##.*代码演示/.test(data))
+      if (/##.*代码演示/.test(data)) {
+        var demo = '<div id="root"></div>';
+        data = data.replace(/##.*代码演示/, demo);
+        var acHomePage = yield axios.get(`https://tinper-acs.github.io/${docId}/`)
+        var requestJSList = acHomePage.data.match(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi)
+        var jsStartIndex,jsEndIndex,scriptUrl;
+        requestJSList.forEach((item) => {
+          if(item.indexOf(`${docId}`)>-1) {
+            jsStartIndex = item.indexOf('src=\"')
+            jsEndIndex = item.indexOf('\.js')
+            scriptUrl = item.slice(jsStartIndex+5,jsEndIndex+3)
+            scriptUrl = scriptUrl.indexOf('tinper-acs.github.io')===-1?'https://tinper-acs.github.io'+scriptUrl:scriptUrl
+            jsList.push(scriptUrl)
+          }
+        })
+        console.log(jsList)
+      }
     } catch (e) {
       data = "## 文档建设中...";
     }
@@ -130,7 +159,8 @@ router.get("/:id", function* (next) {
     sidebar: cate,
     docId: docId,
     doc: data,
-    isComponent: isComponent
+    isComponent: isComponent,
+    jsList:jsList
   });
 });
 

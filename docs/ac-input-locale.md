@@ -2,6 +2,7 @@
 
 多语言 Input 组件
 
+## 代码演示
 
 ```
 $ ynpm install @yonyou/ac-input-locale --save-dev
@@ -20,20 +21,22 @@ import '@yonyou/ac-input-locale/dist/index.css';
 
 ## 效果
 
-<img src="https://raw.githubusercontent.com/fridaydream/blogpic/master/ac-input-locale2.gif" width="90%">
+<img src="http://iuap-tenat-market.oss-cn-beijing.aliyuncs.com/main-data/ac-input-locale.gif" width="90%">
 
-<img src="http://upload-images.jianshu.io/upload_images/8194969-aee1bf72ef11bf74?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="90%">
+<img src="http://iuap-tenat-market.oss-cn-beijing.aliyuncs.com/main-data/ac-input-locale2.gif" width="90%">
 
 ## API
 
-|参数|说明|类型|返回值|
-|:--|:---:|:--:|---:|
-|className|容器样式|string| --- |
-|onSave|点击确定的钩子函数|fun|object |
-|onCancel|点击取消的钩子函数|fun|Object |
-|locale|系统语言|string |'zh-cn/en/tw'/ |
-|localeList|语言列表|Array| ---|
-
+|参数|说明|类型|返回值|是否必填|
+|:--|:---:|:--:|---:|---:|
+|className|容器样式|string| --- | 否 |
+|onOk|点击确定的钩子函数|fun|object | 否 |
+|onCancel|点击取消的钩子函数|fun|Object | 否 |
+|locale|当前语种|string | -- | 是 |
+|localeList|语言列表|object| -- | 是 |
+|onChange|输入框的change的钩子函数|fun| object | 否 |
+|isTextarea|是否textarea，默认false|bool| -- | 否 |
+|modalLocale|模态框中title、按钮的文字语态|object| -- | 否 |
 
 
 #### 开发调试
