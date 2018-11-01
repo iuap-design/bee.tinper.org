@@ -1,4 +1,4 @@
-<div class="sidebar u-col-xs-6 u-col-sm-3 u-col-md-3">
+<div class="sidebar u-col-xs-6 u-col-sm-2 u-col-md-2">
     <ul class="menu-component">
         {% for key in sidebar -%}
             <li class="menu-group">
