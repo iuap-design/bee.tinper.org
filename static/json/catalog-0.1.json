@@ -271,10 +271,6 @@
         "自动完成 Autocomplete":{
             "version":"0.1.5",
             "component":"bee-autocomplete"
-        },
-        "搜索 SearchPanel":{
-            "version":"0.1.5",
-            "component":"bee-search-panel"
         }
     },
     "应用组件": {
@@ -317,6 +313,18 @@
         "富文本编辑AcEditor": {
             "version": "1.0.0",
             "component": "ac-editor"
+        },
+        "手机号国际化AcMobileLocale": {
+            "version": "0.0.1",
+            "component": "ac-mobile-locale"
+        }, 
+        "条件搜索组件AcComplexSearchPanel": {
+            "version": "0.0.1",
+            "component": "ac-complex-search-panel"
+        },
+        "手机号国际化AcMobileLocale": {
+            "version": "0.0.1",
+            "component": "ac-mobile-locale"
         }
     }
 }
