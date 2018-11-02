@@ -1,4 +1,4 @@
-## app-mobile-locale
+## ac-mobile-locale
 
 ## 代码演示
 
