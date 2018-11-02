@@ -1,8 +1,8 @@
-## ac-complex-search-panel
-
+## ac-complex-search-panel 条件搜索组件
+ 
+[进入示例](https://tinper-acs.github.io/ac-complex-search-panel/)
 ## 代码演示
 
->  查询面板React组件 [进入示例](https://tinper-acs.github.io/ac-complex-search-panel/)
 
 ```
 $ ynpm install @yonyou/ac-complex-search-panel --save-dev
@@ -16,9 +16,6 @@ import AcComplexSearchPanel from '@yonyou/ac-complex-search-panel';
 import '@yonyou/ac-complex-search-panel/build/ac-complex-search-panel.css';
 
 ```
-
-##效果  [进入示例](https://tinper-acs.github.io/ac-complex-search-panel/)
- 
 
 ## API
 
