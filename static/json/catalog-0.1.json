@@ -271,60 +271,86 @@
         "自动完成 Autocomplete":{
             "version":"0.1.5",
             "component":"bee-autocomplete"
+        },
+        "图片查看器 Viewer":{
+            "version":"0.1.2",
+            "component":"bee-viewer"
         }
     },
     "应用组件": {
-        "按钮AcButton": {
+        "按钮 AcButton": {
             "version":"0.0.2",
             "component":"ac-button"
         },
-        "通知AcNotification":{
+        "通知 AcNotification":{
             "version":"0.0.2",
             "component":"ac-notification"
         },
-        "内部转移应用AcOrgcenterForm":{
+        "内部转移应用 AcOrgcenterForm":{
             "version":"0.0.1",
             "component":"ac-orgcenter-form"
         },
-        "滚动公告AcMarquee":{
+        "滚动公告 AcMarquee":{
             "version":"0.0.2",
             "component":"ac-marquee"
         },
-        "参照yyuap-ref": {
+        "参照 yyuap-ref": {
             "version":"1.1.1",
             "component":"yyuap-ref"
         },
-        "附件管理AcUpload": {
+        "附件管理 AcUpload": {
             "version":"0.0.20",
             "component":"ac-upload"
         },
-        "多语言输入AcInputLocale": {
+        "多语言输入 AcInputLocale": {
             "version":"0.0.2",
             "component":"ac-input-locale"
         },
-        "Bpm流程组件<span>yyuap-bpm</span>": {
+        "Bpm流程组件 <span>yyuap-bpm</span>": {
             "version":"0.2.9",
             "component":"yyuap-bpm"  
         },
-        "温度计/液位计AcThermometer": {
+        "温度计/液位计 AcThermometer": {
             "version": "0.0.1",
             "component": "ac-thermometer"
         },
-        "富文本编辑AcEditor": {
+        "富文本编辑 AcEditor": {
             "version": "1.0.0",
             "component": "ac-editor"
         },
-        "手机号国际化AcMobileLocale": {
+        "手机号国际化 AcMobileLocale": {
             "version": "0.0.1",
             "component": "ac-mobile-locale"
         }, 
-        "条件搜索组件AcComplexSearchPanel": {
+        "条件搜索组件 AcComplexSearchPanel": {
             "version": "0.0.1",
             "component": "ac-complex-search-panel"
+        }
+    },
+    "参照组件2.0": {
+        "参照-树形 RefTree": {
+            "version":"0.0.1",
+            "component":"ref-tree"
         },
-        "手机号国际化AcMobileLocale": {
-            "version": "0.0.1",
-            "component": "ac-mobile-locale"
+        "参照-左树右表(可多选) RefMultipleSelection": {
+            "version":"0.0.1",
+            "component":"ref-multiple-selection"
+        },
+        "复杂查询表格参照 RefMultipleTable ": {
+            "version":"0.0.1",
+            "component":"ref-multiple-table"
+        },
+        "表格参照 RefTable ": {
+            "version":"0.0.1",
+            "component":"ref-table"
+        },
+        "树表参照 RefTreeTable": {
+            "version":"0.0.1",
+            "component":"ref-tree-table"
+        },
+        "树穿梭参照 RefTreetransfer": {
+            "version":"0.0.1",
+            "component":"ref-tree-transfer"
         }
     }
 }
