@@ -1,8 +1,8 @@
 # ref-tree-table树表参照
 
->具有单选多选的树表形参照
-
+[进入示例](https://tinper-acs.github.io/ref-tree-table/)
 ## 代码演示
+
 
 ```javascript
 $ ynpm install @yonyou/ref-tree-table --save

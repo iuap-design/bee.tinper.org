@@ -1,5 +1,9 @@
 ##  ref-multiple-selection 参照-左树右表(可多选)
-    具有多选功能的矩阵布局弹出参照，可多选
+
+具有多选功能的矩阵布局弹出参照，可多选
+
+[进入示例](https://tinper-acs.github.io/ref-multiple-selection/)
+## 代码演示
 
 ```
 $ ynpm install @yonyou/ref-multiple-selection --save

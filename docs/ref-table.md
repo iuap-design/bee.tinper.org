@@ -1,7 +1,6 @@
 # ref-table 表格参照
 
->表格参照
-
+[进入示例](https://tinper-acs.github.io/ref-table/)
 ## 代码演示
 
 ```

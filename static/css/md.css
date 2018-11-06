@@ -233,6 +233,8 @@ sup {
     font-size:14px;
     overflow: hidden;
     text-overflow: ellipsis;
+    white-space: nowrap;
+    position: relative;
 }
 .menu-item a span {
     font-size: 12px;
@@ -249,6 +251,16 @@ sup {
 }
 .menu-item a:hover .icon {
     color:#20a0ff;
+}
+.menu-item .new::before{
+    content: "  ";
+    display: block;
+    position: absolute;
+    background: url(../img/new.gif) no-repeat;
+    background-size: 100%;
+    width: 20px;
+    height: 10px;
+    top: -7px;
 }
 .menu-component li {
     color: #999;

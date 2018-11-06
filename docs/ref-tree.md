@@ -1,6 +1,9 @@
 ## ref-tree 参照-树形
 
-    > 具有单选多选的树形参照
+
+[进入示例](https://tinper-acs.github.io/ref-tree/)
+## 代码演示
+
 
 ```
 $ ynpm install @yonyou/ref-tree --save
