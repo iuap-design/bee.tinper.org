@@ -335,12 +335,12 @@
         }
     },
     "参照组件2.0": {
-        "树形 RefTree": {
+        "树形参照RefTree": {
             "version":"0.0.1",
             "component":"ref-tree",
             "new":"new"
         },
-        "左树右表RefMultipleSelection": {
+        "多选参照RefMultipleSelection": {
             "version":"0.0.1",
             "component":"ref-multiple-selection",
             "new":"new"
