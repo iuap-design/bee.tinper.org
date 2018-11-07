@@ -1,7 +1,5 @@
 ## ref-tree 参照-树形
 
-
-[进入示例](https://tinper-acs.github.io/ref-tree/)
 ## 代码演示
 
 

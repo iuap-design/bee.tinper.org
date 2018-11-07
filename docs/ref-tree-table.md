@@ -1,6 +1,5 @@
 # ref-tree-table树表参照
 
-[进入示例](https://tinper-acs.github.io/ref-tree-table/)
 ## 代码演示
 
 

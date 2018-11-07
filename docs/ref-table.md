@@ -1,7 +1,8 @@
-# ref-table 表格参照
+## ref-table
 
-[进入示例](https://tinper-acs.github.io/ref-table/)
+
 ## 代码演示
+
 
 ```
 $ ynpm install @yonyou/ref-table --save

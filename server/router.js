@@ -66,7 +66,7 @@ router.get("/:id", function* (next) {
   var docId = this.params.id;
   var isComponent = 1;
   var jsList=[];
-  if (docId.search("bee-") == -1 && docId.search("ac-") === -1) {
+  if (docId.search("bee-") == -1 && docId.search("ac-") === -1&& docId.search("ref-") === -1) {
     try {
       var data = fs.readFileSync(
         path.join(__dirname, "../docs/" + docId + ".md"),
@@ -76,7 +76,7 @@ router.get("/:id", function* (next) {
       data = "## 文档建设中...";
     }
     isComponent = 0;
-  } else if (docId.search("ac-") > -1){
+  } else if (docId.search("ac-") > -1||docId.search("ref-") > -1){
     try {
       var data = fs.readFileSync(
         path.join(__dirname, "../docs/" + docId + ".md"),
@@ -87,7 +87,9 @@ router.get("/:id", function* (next) {
       if (/##.*代码演示/.test(data)) {
         var demo = '<div id="root"></div>';
         data = data.replace(/##.*代码演示/, demo);
+        console.log(`https://tinper-acs.github.io/${docId}/`)
         var acHomePage = yield axios.get(`https://tinper-acs.github.io/${docId}/`)
+        console.log('achomepage', acHomePage)
         var requestJSList = acHomePage.data.match(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi)
         var jsStartIndex,jsEndIndex,scriptUrl;
         requestJSList.forEach((item) => {

@@ -18,7 +18,7 @@
     <script src="//design.yonyoucloud.com/static/prop-types/15.6.0/prop-types.min.js"></script>
     {% if docId && isComponent==1 %}
         <script src="/{{docId}}/dist/demo.js"></script>
-    {% elseif docId.indexOf('ac-')>-1 && isComponent==0 %}
+    {% elseif (docId.indexOf('ac-')>-1 || docId.indexOf('ref-')>-1)  && isComponent==0 %}
         {% for key, val in jsList %}
             <script src="{{val}}"></script>
         {% endfor %}
