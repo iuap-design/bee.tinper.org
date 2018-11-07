@@ -82,14 +82,10 @@ router.get("/:id", function* (next) {
         path.join(__dirname, "../docs/" + docId + ".md"),
         "utf-8"
       );
-      console.log(data)
-      console.log(/##.*代码演示/.test(data))
       if (/##.*代码演示/.test(data)) {
         var demo = '<div id="root"></div>';
         data = data.replace(/##.*代码演示/, demo);
-        console.log(`https://tinper-acs.github.io/${docId}/`)
         var acHomePage = yield axios.get(`https://tinper-acs.github.io/${docId}/`)
-        console.log('achomepage', acHomePage)
         var requestJSList = acHomePage.data.match(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi)
         var jsStartIndex,jsEndIndex,scriptUrl;
         requestJSList.forEach((item) => {
@@ -101,7 +97,6 @@ router.get("/:id", function* (next) {
             jsList.push(scriptUrl)
           }
         })
-        console.log(jsList)
       }
     } catch (e) {
       data = "## 文档建设中...";

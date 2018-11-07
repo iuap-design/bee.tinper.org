@@ -345,11 +345,6 @@
             "component":"ref-multiple-selection",
             "new":"new"
         },
-        "复杂查询表格参照 RefMultipleTable ": {
-            "version":"0.0.1",
-            "component":"ref-multiple-table",
-            "new":"new"
-        },
         "表格参照 RefTable ": {
             "version":"0.0.1",
             "component":"ref-table",
@@ -358,11 +353,6 @@
         "树表参照 RefTreeTable": {
             "version":"0.0.1",
             "component":"ref-tree-table",
-            "new":"new"
-        },
-        "树穿梭参照 RefTreetransfer": {
-            "version":"0.0.1",
-            "component":"ref-tree-transfer",
             "new":"new"
         }
     }

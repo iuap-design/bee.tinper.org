@@ -12,8 +12,8 @@
 
 {% block script %}
 
-        <script src="//design.yonyoucloud.com/static/react/15.3.2/react.js"></script>
-        <script src="//design.yonyoucloud.com/static/react/15.3.2/react-dom.js"></script>
+        <script src="//design.yonyoucloud.com/static/react/16.6.0/umd/react.development.js"></script>
+        <script src="//design.yonyoucloud.com/static/react/16.6.0/umd/react-dom.development.js"></script>
 
     <script src="//design.yonyoucloud.com/static/prop-types/15.6.0/prop-types.min.js"></script>
     {% if docId && isComponent==1 %}

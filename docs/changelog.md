@@ -1,4 +1,5 @@
 ## 1.6.2
+- 组件库官网 react 升级到 16.6.0 版本
 - bee-select  多选的下拉框闪、配合form在onBlur校验时报错
 - bee-overlay 加判断去掉 clearTimeout
 - bee-affix affix容器动态宽高时，减少affix位置的计算次数
