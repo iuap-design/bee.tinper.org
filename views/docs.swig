@@ -4,7 +4,7 @@
   <link href="//design.yonyoucloud.com/static/tinper-bee/1.6.0/assets/tinper-bee.css" rel="stylesheet" media="screen">
     {% if docId && isComponent==1 %}
         <link href="/{{docId}}/dist/demo.css" type="text/css" rel="stylesheet" />
-    {% elseif docId.indexOf('ac-')>-1 && isComponent==0 %}
+    {% elseif (docId.indexOf('ac-')>-1 || docId.indexOf('ref-')>-1) && isComponent==0 %}
         <link href="https://tinper-acs.github.io/{{docId}}/styles.css" type="text/css" rel="stylesheet" />
     {% endif %}
     <link href="/css/md.css" type="text/css" rel="stylesheet" />
