@@ -1,5 +1,3 @@
-##  ref-multiple-selection 参照-左树右表(可多选)
-具有多选功能的矩阵布局弹出参照，可多选
 
 ## 代码演示
 
@@ -16,7 +14,6 @@ import {RefMultipleSelectionWithInput} from '@yonyou/ref-multiple-selection';
 
 ```
 
-## 效果
 
 
 ## 类型说明
