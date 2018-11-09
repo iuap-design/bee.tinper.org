@@ -8,7 +8,7 @@ $ ynpm install @yonyou/ref-tree-transfer --save
 
 引入
 
-import {RefTreeTransfer, RefTreeTransferWithInput, createRefTreeTransfer} from ref-tree-transfer';
+import {RefTreeTransfer, RefTreeTransferWithInput, createRefTreeTransfer} from 'ref-tree-transfer';
 或
 import {RefTreeTransfer, RefTreeTransferWithInput, createRefTreeTransfer} from '@yonyou/ref-tree-transfer';
 
@@ -88,3 +88,5 @@ ac-refer/packages/ref-treetransfer
 $ npm install
 
 $ npm run dev
+
+```
