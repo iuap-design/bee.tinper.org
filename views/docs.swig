@@ -1,7 +1,7 @@
 {% extends 'layout/layout.swig' %}
 
 {% block css %}
-  <link href="//design.yonyoucloud.com/static/tinper-bee/1.6.0/assets/tinper-bee.css" rel="stylesheet" media="screen">
+  <link href="//design.yonyoucloud.com/static/tinper-bee/1.6.3/assets/tinper-bee.css" rel="stylesheet" media="screen">
     {% if docId && isComponent==1 %}
         <link href="/{{docId}}/dist/demo.css" type="text/css" rel="stylesheet" />
     {% elseif (docId.indexOf('ac-')>-1 || docId.indexOf('ref-')>-1) && isComponent==0 %}

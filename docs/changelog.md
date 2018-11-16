@@ -1,3 +1,25 @@
+## 1.6.3
+- bee-select 计算宽度性能问题，新增键盘操作功能
+- bee-step组件升级，修复1px抖动bug
+- bee-menu srcollIntoView 报错
+- bee-form-control 示例无法输入；新增focusSelect功能
+- bee-city-select更新语言包
+- bee-modal 关闭图标 &timer; 改为uf-close
+- bee-input-number样式更改，无法输入小数
+- bee-notification 添加键盘esc关闭功能
+- bee-message 添加键盘esc关闭功能
+- bee-popconfirm 修复浏览器边界箭头指向的bug
+- bee-tooltip 添加visible API 
+- bee-overlay 添加visible API
+- ac-input-locale加了form表单校验
+- bee-affix lodash.isequal bug修复
+- bee-form-group 错字修改
+- bee-table
+  1. 合并 newMuitlSelect 和 muitlSelect
+  2. 修复表头全选进入选中问题
+  3. 拖拽列和交换列在同一个实例中使用
+
+
 ## 1.6.2
 - 组件库官网 react 升级到 16.6.0 版本
 - bee-select  多选的下拉框闪、配合form在onBlur校验时报错
