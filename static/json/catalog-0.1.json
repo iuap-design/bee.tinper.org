@@ -311,8 +311,7 @@
         },
         "多语言输入 AcInputLocale": {
             "version":"0.0.2",
-            "component":"ac-input-locale",
-            "new":"new"
+            "component":"ac-input-locale"
         },
         "Bpm流程组件 <span>yyuap-bpm</span>": {
             "version":"0.2.9",
