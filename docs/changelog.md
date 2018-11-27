@@ -1,3 +1,17 @@
+## 1.6.4
+- bee-notification 添加键盘esc关闭功能
+- bee-message 添加键盘esc关闭功能
+- bee-popconfirm 修复浏览器边界箭头指向的bug
+- bee-tooltip 添加visible API 
+- bee-overlay 添加visible API
+- bee-form-group 文档修改
+- bee-checkbox 新增group功能
+- bee-modal  修改width适配 、number警告
+- bee-checkbox 支持全键盘操作
+- bee-radio 支持全键盘操作
+- bee-datepicker 全键盘操作
+- bee-table 增加过滤行数值型输入、数值型条件选择
+
 ## 1.6.3
 - bee-select 计算宽度性能问题，新增键盘操作功能
 - bee-step组件升级，修复1px抖动bug

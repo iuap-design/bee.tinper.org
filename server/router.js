@@ -66,7 +66,9 @@ router.get("/:id", function* (next) {
   var docId = this.params.id;
   var isComponent = 1;
   var jsList=[];
-  if (docId.search("bee-") == -1 && docId.search("ac-") === -1&& docId.search("ref-") === -1) {
+  if(docId=='changelog'){
+    data='哈哈哈哈';
+  }else if (docId.search("bee-") == -1 && docId.search("ac-") === -1&& docId.search("ref-") === -1) {
     try {
       var data = fs.readFileSync(
         path.join(__dirname, "../docs/" + docId + ".md"),

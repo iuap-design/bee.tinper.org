@@ -151,13 +151,11 @@
         },
         "菜单 Menus": {
             "version":"0.1.10",
-            "component":"bee-menus",
-            "new":"new"
+            "component":"bee-menus"
         },
         "步骤条 Steps":{
             "version":"0.0.4",
-            "component":"bee-step",
-            "new":"new"
+            "component":"bee-step"
         },
         "固钉 Affix":{
             "version":"0.1.3",
@@ -218,12 +216,12 @@
         },
         "多选 Checkbox": {
             "version":"0.1.3",
-            "component":"bee-checkbox"
+            "component":"bee-checkbox",
+            "new":"new"
         },
         "输入框 Input": {
             "version":"0.1.3",
-            "component":"bee-form-control",
-            "new":"new"
+            "component":"bee-form-control"
         },
         "输入框组 InputGroup": {
             "version": "0.1.3",
@@ -231,7 +229,8 @@
         },
         "表单容器 FormGroup": {
             "version": "0.1.3",
-            "component": "bee-form-group"
+            "component": "bee-form-group",
+            "new":"new"
         },
         "开关 Switch": {
             "version":"0.1.3",
@@ -248,8 +247,7 @@
         },
         "城市选择 CitySelect":{
             "version":"0.0.3",
-            "component":"bee-city-select",
-            "new":"new"
+            "component":"bee-city-select"
         },
         "上传 Upload":{
             "version":"0.1.3",
@@ -265,7 +263,8 @@
         },
         "数字框 InputNumber":{
             "version":"0.0.8",
-            "component":"bee-input-number"
+            "component":"bee-input-number",
+            "new":"new"
         },
         "时间 TimePicker":{
             "version":"0.1.3",
@@ -273,7 +272,8 @@
         },
         "日期 DatePicker":{
             "version":"0.1.2",
-            "component":"bee-datepicker"
+            "component":"bee-datepicker",
+            "new":"new"
         },
         "评分 Rate":{
             "version":"0.1.3",
