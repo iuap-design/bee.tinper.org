@@ -10,7 +10,7 @@
   2. 过滤行添加InputNumber组件来支持数值操作，增加对应多语资源，Icon颜色修改
   3. 增加onFilterChange、onFilterClear
   4. 整合回调参数集合
-- bee-grid 
+- bee-complex-grid 
   1. 拖拽激活区宽度超长导致滚动条显示bug
   2. 增加是否可过滤API-columnFilterAble
   3. 固定列在过滤栏位上显示但不可以点击
