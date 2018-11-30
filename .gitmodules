@@ -169,3 +169,6 @@
 [submodule "tinper-bee/bee-viewer"]
 	path = tinper-bee/bee-viewer
 	url = https://github.com/tinper-bee/bee-viewer.git
+[submodule "tinper-bee/bee-complex-grid"]
+	path = tinper-bee/bee-complex-grid
+	url = https://github.com/tinper-bee/bee-complex-grid.git
