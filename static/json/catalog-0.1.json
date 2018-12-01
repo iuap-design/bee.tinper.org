@@ -176,13 +176,11 @@
     "反馈 Feedback": {
         "模态框 Modal": {
             "version":"0.1.3",
-            "component":"bee-modal",
-            "new":"new"
+            "component":"bee-modal"
         },
         "通知 Notification": {
             "version":"0.1.3",
-            "component":"bee-notification",
-            "new":"new"
+            "component":"bee-notification"
         },
         "警告提示 Alert": {
             "version":"0.1.3",
@@ -190,18 +188,15 @@
         },
         "气泡弹窗 Popconfirm": {
             "version":"0.0.2",
-            "component":"bee-popconfirm",
-            "new":"new"
+            "component":"bee-popconfirm"
         },
         "消息提醒 Message": {
             "version":"0.0.2",
-            "component":"bee-message",
-            "new":"new"
+            "component":"bee-message"
         },
         "文字提示 Tooltip": {
             "version":"0.1.3",
-            "component":"bee-tooltip",
-            "new":"new"
+            "component":"bee-tooltip"
         },
         "加载提示 Loading": {
             "version":"0.1.3",
@@ -219,16 +214,17 @@
         },
         "单选 Radio": {
             "version":"0.1.3",
-            "component":"bee-radio"
+            "component":"bee-radio",
+            "new":"new"
         },
         "多选 Checkbox": {
             "version":"0.1.3",
-            "component":"bee-checkbox",
-            "new":"new"
+            "component":"bee-checkbox"
         },
         "输入框 Input": {
             "version":"0.1.3",
-            "component":"bee-form-control"
+            "component":"bee-form-control",
+            "new":"new"
         },
         "输入框组 InputGroup": {
             "version": "0.1.3",
@@ -236,8 +232,7 @@
         },
         "表单容器 FormGroup": {
             "version": "0.1.3",
-            "component": "bee-form-group",
-            "new":"new"
+            "component": "bee-form-group"
         },
         "开关 Switch": {
             "version":"0.1.3",
@@ -275,7 +270,8 @@
         },
         "时间 TimePicker":{
             "version":"0.1.3",
-            "component":"bee-timepicker"
+            "component":"bee-timepicker",
+            "new":"new"
         },
         "日期 DatePicker":{
             "version":"0.1.2",
