@@ -6,7 +6,6 @@
     padding-top:60px;
 }
 .sidebar{
-    width: 20%;
     height: 100%;
     transition: padding-top .3s;
     overflow: hidden;
@@ -228,6 +227,7 @@ sup {
     height: 34px;
     overflow: hidden;
     text-overflow: ellipsis;
+    padding-left: 10px;
 }
 .menu-item a {
     font-size:14px;
