@@ -1,10 +1,10 @@
-## 1.6.0
-- [Fix] bee-pagination 添加dataNumSelect数组中有不是数字的容错处理，选中此项将items设置为1即只显示1页(上一个版本是1.0.2)
-- [Fix] bee-overlay 添加window.resize触发更新窗口位置的功能 
-- [Fix] bee-tooltip  添加window.resize触发更新窗口位置的功能 
-- [Fix] bee-popover  添加window.resize触发更新窗口位置的功能  
-- [Fix] bee-popconfirm  添加window.resize触发更新窗口位置的功能  
-- [Fix] bee-table(上个版本1.5.18)
+## 1.6.7
+-  bee-pagination 添加dataNumSelect数组中有不是数字的容错处理，选中此项将items设置为1即只显示1页(上一个版本是1.0.2)
+-  bee-overlay 添加window.resize触发更新窗口位置的功能 
+-  bee-tooltip  添加window.resize触发更新窗口位置的功能 
+-  bee-popover  添加window.resize触发更新窗口位置的功能  
+-  bee-popconfirm  添加window.resize触发更新窗口位置的功能  
+-  bee-table(上个版本1.5.18)
   1. 解决交换列咋ie上报错的问题
   2. 合计逻辑重构、合计浮点数，合计时，精确到2位小数
   3. 过滤行没有数据的时候不执行回调、清除值只清空存在的值，不多次回调
@@ -20,13 +20,104 @@
   13. 交换列和拖拽改变列宽共存问题。
   14. 拖拽激活区宽度超长导致滚动条显示bug
   15. 增加示例文档、调整APi
-  - [Fix,Feature] bee-complex-grid(上个版本是0.2.44)
+  - bee-complex-grid(上个版本是0.2.44)
    1. 增加导出excel功能。
    2. 增加模板示例功能
    3. 最后一个非固定列不可以fix
    4. 动态设置是否显示列过滤bug。
    5. 增加导出示例、导出单独设置数据源、是否要在导出中隐藏某列、修改demo 示例以及文档
    6. 增加示例文档、调整APi
+
+## 1.6.5
+
+- bee-input-number 去掉输入非数字错误提示， onChange改为数值类型
+- bee-radio 全键盘问题修改
+- bee-form-control type='search' 改造
+- bee-datepicker 全键盘操作
+- bee-panel uf 样式去掉
+- bee-table 
+  1. 表格过滤支持数值过滤下拉
+  2. 过滤行添加InputNumber组件来支持数值操作，增加对应多语资源，Icon颜色修改
+  3. 增加onFilterChange、onFilterClear
+  4. 整合回调参数集合
+- bee-complex-grid 
+  1. 拖拽激活区宽度超长导致滚动条显示bug
+  2. 增加是否可过滤API-columnFilterAble
+  3. 固定列在过滤栏位上显示但不可以点击
+
+
+## 1.6.4
+- bee-notification 添加键盘esc关闭功能
+- bee-message 添加键盘esc关闭功能
+- bee-popconfirm 修复浏览器边界箭头指向的bug
+- bee-tooltip 添加visible API 
+- bee-overlay 添加visible API
+- bee-form-group 文档修改
+- bee-checkbox 新增group功能
+- bee-modal  修改width适配 、number警告
+- bee-checkbox 支持全键盘操作
+- bee-radio 支持全键盘操作
+- bee-datepicker 全键盘操作
+- bee-table 增加过滤行数值型输入、数值型条件选择
+
+## 1.6.3
+- bee-select 计算宽度性能问题，新增键盘操作功能
+- bee-step组件升级，修复1px抖动bug
+- bee-menu srcollIntoView 报错
+- bee-form-control 示例无法输入；新增focusSelect功能
+- bee-city-select更新语言包
+- bee-modal 关闭图标 &timer; 改为uf-close
+- bee-input-number样式更改，无法输入小数
+- bee-notification 添加键盘esc关闭功能
+- bee-message 添加键盘esc关闭功能
+- bee-popconfirm 修复浏览器边界箭头指向的bug
+- bee-tooltip 添加visible API 
+- bee-overlay 添加visible API
+- ac-input-locale加了form表单校验
+- bee-affix lodash.isequal bug修复
+- bee-form-group 错字修改
+- bee-table
+  1. 合并 newMuitlSelect 和 muitlSelect
+  2. 修复表头全选进入选中问题
+  3. 拖拽列和交换列在同一个实例中使用
+
+
+## 1.6.2
+- 组件库官网 react 升级到 16.6.0 版本
+- bee-select  多选的下拉框闪、配合form在onBlur校验时报错
+- bee-overlay 加判断去掉 clearTimeout
+- bee-affix affix容器动态宽高时，减少affix位置的计算次数
+- bee-input-number 在form下传string改number警告
+- bee-viewer  新增组件图片查看器
+- bee-locale  新增繁体语言
+- bee-table 
+  1. 过滤行为空条件删除.
+  2. 过滤行失去焦点事件还原。
+  3. 支持表头出现滚动条。
+  4. grid封装了推拽、交换列、过滤列、合计、多选、排序、等复杂table功能，提供过去列属性和table属性API
+- ac-mobile-locle 手机号国际化
+- 参照组件2.0
+  1. 树形参照
+  2. 多选参照
+  3. 表格参照
+  4. 树表参照
+  5. 树穿梭参照
+  6. 复杂查询表格参照
+
+## 1.6.1
+- bee-message 修复在生命周期函数中调用报错的问题
+- bee-notification react16的兼容
+- bee-dnd：升级依赖组件；新增横向排序、多列排序示例；增加多个api 
+- bee-affix修改container传值为null的容错处理
+- bee-select：解决输入框失焦后仍保持聚焦状态的问题；增加 open 参数控制下拉框的展开收起
+- bee-table：锁定加个边界线；按条件和值进行过滤；拖拽改变列宽；修改表头th添加className问题；safair下checkbox无法选中问题；动态设置固定列交互修改；内容超出当前dom宽度时，自动出现滚动条
+
+## 1.6.0
+- bee-table
+  1. 动态设置固定列，固定列关联的列自动固定，增加回调函数
+  2. bee-table排序功能，去掉列筛选功能后，排序上下箭头类名改变，样式丢失
+  3. bee-table 过滤组件通过tinper-bee引入路径问题
+- bee-select dropdownMatchSelectWidth属性，为false时，下拉框的内容不取决于输入框
 
 ## 1.5.9
 - bee-input-number disabled后仍然可以点击bug

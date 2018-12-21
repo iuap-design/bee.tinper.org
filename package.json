@@ -1,12 +1,13 @@
 {
   "name": "bee.tinper.org",
-  "version": "1.5.9",
+  "version": "1.6.7",
   "description": "bee.tinper.org",
   "main": "server/index.js",
   "scripts": {
     "server": "node server/index.js",
     "update": "git submodule foreach git pull origin master",
-    "init": "git submodule init && git submodule update"
+    "init": "git submodule init && git submodule update",
+    "new-update": "git submodule update --remote tinper-bee"
   },
   "repository": {
     "type": "git",

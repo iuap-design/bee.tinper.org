@@ -11,6 +11,6 @@
 
 ### 开发及构建
 
-开发者可以一起参与为 tinper-bee 贡献代码，同时也可以基于 tinper-bee 进行二次开发或封装插件。
+开发者可以一起参与为 [tinper-bee](https://github.com/tinper-bee) 贡献代码，同时也可以基于 tinper-bee 进行二次开发或封装插件。
 
-[tinper-bee](https://github.com/tinper-bee)
+
