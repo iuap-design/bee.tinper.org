@@ -22,8 +22,8 @@ import 'ac-drawer/dist/ac-drawer.css';
 
 ## API
 
-|参数|说明|类型|默认值|
-|:--|:---:|:--:|---:|
+|参数|类型|默认值|说明|
+|:--|:---:|:--:|:---|
 |show | `string` | | 是否显示抽屉组件
 |placement | `string` | `right` | 抽屉的位置。有四个预置的选项: `left`,`right`,`top`,`bottom`
 |hasHeader | `boolean` | `true` | 是否显示抽屉的头部

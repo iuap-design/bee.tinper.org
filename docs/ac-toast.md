@@ -20,8 +20,8 @@ import 'ac-toast/dist/ac-toast.css';
 
 ## API
 
-|参数|说明|类型|默认值|
-|:--|:---:|:--:|---:|
+|参数|类型|默认值|说明|
+|:--|:---:|:--:|:---|
 |id | `string` | 随机字符串 | toast组件的id
 |msg | `string` |  | 组件中显示的文字
 |className | `string` | | 组件顶层的class，用来自定义样式
@@ -35,14 +35,14 @@ import 'ac-toast/dist/ac-toast.css';
 
 ## API 方法
 
-|参数|说明|类型|默认值|
-|:--|:---:|:--:|---:|
-|info | above |  | 默认的黑色背景弹出消息
-|success | above |  | 绿色背景弹出成功消息
-|warning | above | | 黄色背景弹出警告消息
-|error | above |  | 红色背景弹出错误消息
-|close | id：toast's id | | 关闭指定id的toast
-|closeAll |   |  | 关闭所有的toast
+|名称|参数|返回值|说明|
+|:--|:---:|:---:|:---|
+|info | above |  --| 默认的黑色背景弹出消息
+|success | above | -- | 绿色背景弹出成功消息
+|warning | above | --| 黄色背景弹出警告消息
+|error | above | -- | 红色背景弹出错误消息
+|close | id：toast's id | --| 关闭指定id的toast
+|closeAll | --  | -- | 关闭所有的toast
        
 
 #### 开发调试

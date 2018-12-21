@@ -21,14 +21,13 @@ import 'ac-attachment/dist/ac-attachment.css';
 
 ## API
 
-
-|参数|说明|类型|返回值|是否必填|
-|:--|:---:|:--:|---:|---:|
+|参数|类型|默认值|是否必填|说明|
+|:--|:---:|:--:|---:|:---|
 |recordId | `string` | | 是 | 单据相关的唯一标示，一般包含单据ID，如果有多个附件的时候由业务自己制定规则 
 |groupname | `string` |  | 是 | 分组名
 |permission | `string` |  | 否 | Oss权限(read，private，full),read是可读=公有，private=私有，当这个参数不传的时候会默认private
 |tenant | `string` |  | 否 | 附件查询使用，租户id，不写会自动从系统获取
-|url | `string` |  | 否 | 里传true或false。为true，则返回附件的连接地址存到数据库中；如果isencrypt设置为true，|url不能设置为true否则不能上传，提示：对于加密文件不能返回url，返回了也无法访问
+|url | `string` |  | 否 | 里传true或false。为true，则返回附件的连接地址存到数据库中；如果isencrypt设置为true，url不能设置为true否则不能上传，提示：对于加密文件不能返回url，返回了也无法访问
 |isencrypt | `boolean` | `false` | 否 | 是否加密，默认false不加密
 |baseUrl | `string` | | 否 | 应用平台的地址(IP地址或域名)
 |uploadUrl | `string` | `/iuap-saas-filesystem-service/file/upload` | 否 | 应用平台上传附件的地址
@@ -45,13 +44,12 @@ import 'ac-attachment/dist/ac-attachment.css';
 
 ## 事件
 
-|参数|说明|类型|默认值|
-|:--|:---:|:--:|---:|
+|名称|参数|说明|
+|:--|:---:|:--:|:---|
 |onFileTypeOver | `file`，当前上传的文件对象 | 文件类型超出限制回调
 |onFileSizeOver | `file`，当前上传的文件对象 | 文件大小超出限制回调
 |onFileNumOver | `file`，当前上传的文件对象 | 文件数量超出限制回调
 |onDelete | `attach` | 参数attach为附件组件实例，调用attach.fDelete()，可以调起接口删除附件
-
 
 ## 自定义按钮
 
