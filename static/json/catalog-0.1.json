@@ -313,6 +313,18 @@
         "温度计/液位计AcThermometer": {
             "version": "0.0.1",
             "component": "ac-thermometer"
+        },
+        "消息框组件AcToast": {
+            "version": "0.0.9",
+            "component": "ac-toast"
+        },
+        "抽屉组件AcDrawer": {
+            "version": "0.0.2",
+            "component": "ac-drawer"
+        },
+        "上传列表组件AcAttachment": {
+            "version": "0.2.3",
+            "component": "ac-attachment"
         }
     }
 }
