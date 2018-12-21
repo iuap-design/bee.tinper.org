@@ -9,8 +9,20 @@ var cate = require("../static/json/catalog-0.1.json");
 var markdown = require("markdown").markdown;
 var marked = require("marked");
 var axios = require('axios')
+var renderer = new marked.Renderer();
+
+renderer.link = function (href,title,text) {
+  var target = '';
+  if(href){
+    target="_blank";
+  }else{
+    href = 'javacript:void(0);'
+  }
+  return `<a class="summarize" target="${target}" href="${href}" >${text}</a>`;
+};
+
 marked.setOptions({
-  renderer: new marked.Renderer(),
+  renderer: renderer,
   gfm: true,
   tables: true,
   breaks: false,

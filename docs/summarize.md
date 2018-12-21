@@ -18,7 +18,7 @@
 
 - [江铜贵溪冶炼厂-智能工厂]()
 
-- [三一重工-全球供应商门户]()
+- [三一重工-全球供应商门户](http://gsp.sany.com.cn/wbalone/pages/login/login.html?r=L3diYWxvbmUv)
 
 - [台湾华新丽华-MES 系统]()
 
