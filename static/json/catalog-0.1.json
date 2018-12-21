@@ -320,15 +320,18 @@
         },
         "消息框组件AcToast": {
             "version": "0.0.9",
-            "component": "ac-toast"
+            "component": "ac-toast",
+            "new":"new"
         },
         "抽屉组件AcDrawer": {
             "version": "0.0.2",
-            "component": "ac-drawer"
+            "component": "ac-drawer",
+            "new":"new"
         },
         "上传列表组件AcAttachment": {
             "version": "0.2.3",
-            "component": "ac-attachment"
+            "component": "ac-attachment",
+            "new":"new"
         },
         "富文本编辑 AcEditor": {
             "version": "1.0.0",
