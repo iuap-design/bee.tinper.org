@@ -79,6 +79,7 @@ router.get("/:id", function* (next) {
   var isComponent = 1;
   var jsList=[];
   if (docId.search("bee-") == -1 && docId.search("ac-") === -1&& docId.search("ref-") === -1) {
+    console.log("-----取md文档，生成ht-----------",path.join(__dirname, "../docs/" + docId + ".md"))
     try {
       var data = fs.readFileSync(
         path.join(__dirname, "../docs/" + docId + ".md"),
