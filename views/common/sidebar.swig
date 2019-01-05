@@ -7,6 +7,7 @@
                     <div class="menu-item">
                         <a name="{{item.component}}" class="{{item.new}}" id="{{item.component}}"></a>
                         {% if item.component!='' %}
+
                             <a href="/{{item.component}}#{{item.component}}" title="{{item.component}}" {% if item.component==docId  %}class="selected"{% endif %}>
                                 {% autoescape false %}
                                     {{ loop.key|replace('([A-Za-z-]+)','<span>$1</span>') }}

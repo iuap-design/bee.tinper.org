@@ -75,10 +75,10 @@ router.get("/", function* (next) {
 
 //读取md文档，生成html
 router.get("/:id", function* (next) {
-  var docId = this.params.id;
+  var docId = this.params.id === 'keyboard'?'ac-keyboard-example':this.params.id;
   var isComponent = 1;
   var jsList=[];
-  if (docId.search("bee-") == -1 && docId.search("ac-") === -1&& docId.search("ref-") === -1) {
+  if (docId.search("bee-") == -1 && docId.search("ac-") === -1&& docId.search("ref-") === -1 && this.params.id != 'keyboard') {
     console.log("-----取md文档，生成ht-----------",path.join(__dirname, "../docs/" + docId + ".md"))
     try {
       var data = fs.readFileSync(

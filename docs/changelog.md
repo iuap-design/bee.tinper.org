@@ -1,3 +1,12 @@
+## 1.6.9
+
+- [Fix] bee-table@1.6.21 快捷键修复
+- [Fix] bee-tabs@1.0.9 快捷键修复。
+- [Fix] bee-menu@0.1.9 快捷键修复。
+- [Fix] bee-tree 快捷键修复。
+- [Fix] bee-dropdown@1.0.3 快捷键修复。
+- [Feature]  增加全键盘快捷键文档描述、各个增加快捷键的api 都加了api的说明部分。
+
 ## 1.6.8
 
 - bee-table@1.6.21
