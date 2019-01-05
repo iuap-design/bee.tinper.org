@@ -1,8 +1,8 @@
 ## 全键盘操作
 
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='red'>tinper-bee 支持快捷键从1.6.3 开始就有部分组件支持快捷键，但之前都是零零散散的，目前 V1.6.9的版本是最稳定的版本，支持的快捷键下面将详细描述。(官方建议使用 tinper-bee 请使用 V1.6.9版本) </font>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='red'>tinper-bee 支持快捷键从 V1.6.3 开始就有部分组件支持快捷键，但之前都是零零散散的，目前 V1.6.9的版本是最稳定的版本，支持的快捷键下面将详细描述。(官方建议使用 tinper-bee 请使用 V1.6.9版本) </font>
 
-## tinper-bee(V1.6.9)快捷键APi
+## tinper-bee(V1.6.9)快捷键规范定义
 
 | 组件名称 | 快捷键 | 快捷键描述 |
 | --- | --- | --- |
