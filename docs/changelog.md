@@ -1,3 +1,17 @@
+## 1.6.10
+
+- popconfirm 添加控制显示,添加第二优先级渲染方向功能,添加onRootClose的API
+- bee-tooltip 添加可配置container的API和示例
+- Grid 增加是否有分页的api
+- Table 支持多表头列的排序功能、增加是否开启快捷键功能、自定义列对齐方式、修改表格交换列逻辑
+- 修复city-select 组件内部select警告
+- radio,tree,select,menu 新增对children API的使用限制说明
+- select 下拉item高度改为30px
+- bee-slider 竖直方向的slider重叠问题 V1.0.3
+- datepicker 新增外层输入框可输入功能
+- input-number 新增显示千分符的功能
+- bee-modal 调整有遮罩层的示例
+
 ## 1.6.9
 
 - [Fix] bee-table@1.6.21 快捷键修复
