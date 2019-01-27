@@ -20,13 +20,37 @@
     {% endblock%}
     {% block css %}{% endblock%}
     <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script src="http://iuap-design-cdn.oss-cn-beijing.aliyuncs.com/static/tinper-bee/theme/config.js"></script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-109836800-1"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+        function getCookie(name){ 
+            var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+            if(arr=document.cookie.match(reg))
+                return unescape(arr[2]); 
+            else 
+                return null; 
+        }
+        let cookie = this.getCookie(window.tinperCookieId);
+        if(cookie){
+            document.getElementById("tinper-bee-csslink").href = (window.tinperCdnUrl+cookie);
+        }
+        var t1=window.setInterval(refreshCount, 1000);
+        function refreshCount() {
+            var ifm= document.getElementById("theme-iframe");
+            if(ifm){
+                ifm.height=1500;// document.documentElement.clientHeight+200;
+                window.clearInterval(t1);   
+            }
+        }
+        window.addEventListener("message", function( event ) {
+            console.log("tinper.bee.org message: ",event.data);
+            document.getElementById("tinper-bee-csslink").href = (window.tinperCdnUrl+event.data);
+        }, false );
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
 
-      gtag('config', 'UA-109836800-1');
+        gtag('config', 'UA-109836800-1');
     </script>
 </head>
 
@@ -48,3 +72,4 @@
 {% endblock %}
 </body>
 </html>
+
