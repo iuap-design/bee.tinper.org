@@ -155,7 +155,8 @@
         },
         "菜单 Menus": {
             "version":"0.1.10",
-            "component":"bee-menus"
+            "component":"bee-menus",
+            "new":"new"
         },
         "步骤条 Steps":{
             "version":"0.0.4",
@@ -214,7 +215,8 @@
         },
         "单选 Radio": {
             "version":"0.1.3",
-            "component":"bee-radio"
+            "component":"bee-radio",
+            "new":"new"
         },
         "多选 Checkbox": {
             "version":"0.1.3",
@@ -238,7 +240,8 @@
         },
         "下拉框 Select": {
             "version":"0.1.3",
-            "component":"bee-select"
+            "component":"bee-select",
+            "new":"new"
         },
         "级联菜单 Cascader":{
             "version":"0.1.3",
@@ -246,7 +249,8 @@
         },
         "城市选择 CitySelect":{
             "version":"0.0.3",
-            "component":"bee-city-select"
+            "component":"bee-city-select",
+            "new":"new"
         },
         "上传 Upload":{
             "version":"0.1.3",
@@ -254,7 +258,8 @@
         },
         "滑块 Slider":{
             "version":"0.1.3",
-            "component":"bee-slider"
+            "component":"bee-slider",
+            "new":"new"
         },
         "穿梭框 Transfer":{
             "version":"0.0.3",
@@ -262,7 +267,8 @@
         },
         "数字框 InputNumber":{
             "version":"0.0.8",
-            "component":"bee-input-number"
+            "component":"bee-input-number",
+            "new":"new"
         },
         "时间 TimePicker":{
             "version":"0.1.3",
@@ -270,7 +276,8 @@
         },
         "日期 DatePicker":{
             "version":"0.1.2",
-            "component":"bee-datepicker"
+            "component":"bee-datepicker",
+            "new":"new"
         },
         "评分 Rate":{
             "version":"0.1.3",
@@ -349,7 +356,8 @@
     "参照组件2.0": {
         "树形参照RefTree": {
             "version":"0.0.1",
-            "component":"ref-tree"
+            "component":"ref-tree",
+            "new":"new"
         },
         "多选参照RefMultipleSelection": {
             "version":"0.0.1",
