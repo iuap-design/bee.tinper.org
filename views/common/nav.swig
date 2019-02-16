@@ -7,7 +7,7 @@
                 <span class="u-hamburger-bar"></span>
             </button>
             <a class="u-navbar-brand" href="//bee.tinper.org"><img src="//tinper.org/assets/images/tinperlogos32.png" alt=""></a>
-            <span class="tinper-version">最新:v1.6.9</span>
+            <span class="tinper-version">最新:v1.6.10</span>
         </div>
         <ul class="u-nav u-navbar-nav nav-list u-navbar-toolbar u-navbar-right u-navbar-toolbar-right">
             <li>
@@ -18,6 +18,9 @@
             </li>
             <li>
                 <a class="nav-par" href="/changelog">更新日志</a>
+            </li>
+            <li>
+                <a class="nav-par" style="display:none" href="https://tinper-bee.github.io/tinper-bee-history/">历史版本</a>
             </li>
         </ul>
 
