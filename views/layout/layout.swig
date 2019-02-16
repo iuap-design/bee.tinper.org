@@ -38,7 +38,7 @@
         function refreshCount() {
             var ifm= document.getElementById("theme-iframe");
             if(ifm){
-                ifm.height=1500;// document.documentElement.clientHeight+200;
+                ifm.height=3500;// document.documentElement.clientHeight+200;
                 window.clearInterval(t1);   
             }
         }

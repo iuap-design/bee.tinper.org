@@ -167,7 +167,8 @@ router.get("/:id", function* (next) {
 
   if(docId === "theme"){
     // frameborder='0' scrolling='no' style='{border: 0 none;width:100%;height:100%}'
-    data += "<iframe src='http://localhost:3000/#/' id='theme-iframe' frameborder='0' scrolling='no' width='100%' height='100%' />"
+    // data += "<iframe src='http://tinper-bee-theme-client.online.app.yyuap.com' id='theme-iframe' frameborder='0' scrolling='no' width='100%' height='100%' />"
+    data += "<iframe src='http://localhost:3000' id='theme-iframe' frameborder='0' scrolling='no' width='100%' height='100%' />"
   }
 
   yield this.render("docs", {
