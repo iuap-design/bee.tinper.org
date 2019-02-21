@@ -11,6 +11,8 @@
 - [Fix] bee-slider@1.0.3 竖直方向的slider重叠问题 V1.0.3
 - [Fix] bee-datepicker@1.3.12 新增外层输入框可输入功能
 - [Fix] bee-input-number@1.2.2 新增显示千分符的功能
+- [Feature] 官网新增历史版本入口
+- [Feature] 官网新增全局搜索功能
 
 ## 1.6.9
 
@@ -19,7 +21,7 @@
 - [Fix] bee-menu@0.1.9 快捷键修复。
 - [Fix] bee-tree 快捷键修复。
 - [Fix] bee-dropdown@1.0.3 快捷键修复。
-- [Feature]  增加全键盘快捷键文档描述、各个增加快捷键的api 都加了api的说明部分。
+- [Feature] 增加全键盘快捷键文档描述、各个增加快捷键的api 都加了api的说明部分。
 
 ## 1.6.8
 

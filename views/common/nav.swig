@@ -11,6 +11,11 @@
         </div>
         <ul class="u-nav u-navbar-nav nav-list u-navbar-toolbar u-navbar-right u-navbar-toolbar-right">
             <li>
+                <span class="search-area">
+                    <input id="componentSearch" placeholder="请输入关键字查询"/>
+                </span>
+            </li>
+            <li>
                 <a class="nav-par" href="//tinper.org">首页</a>
             </li>
             <li>

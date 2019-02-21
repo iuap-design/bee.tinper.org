@@ -44,7 +44,7 @@
         }
         window.addEventListener("message", function( event ) {
             console.log("tinper.bee.org message: ",event.data);
-            document.getElementById("tinper-bee-csslink").href = (window.tinperCdnUrl+event.data);
+            // document.getElementById("tinper-bee-csslink").href = (window.tinperCdnUrl+event.data);
         }, false );
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
