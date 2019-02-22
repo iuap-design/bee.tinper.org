@@ -42,9 +42,9 @@
 .demo-container{
     padding-bottom: 100px;
 }
-.demo-container a{
+/* .demo-container a{
     color: #5e6d82;
-}
+} */
 .demo-block {
     border-radius: 4px;
     transition: .2s;
