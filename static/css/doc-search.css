@@ -1,6 +1,6 @@
 /* 查询框   开始*/
 .search-area{
-    display: inline-block;
+    display: none;
 }
 .search-area input{
     height: 30px;
