@@ -1,5 +1,4 @@
 ## 1.6.10
-
 - [Fix] bee-popconfirm@1.0.15 添加第二优先级渲染方向功能、添加onRootClose的API、添加自定义确定取消按钮
 - [Fix] bee-tooltip@1.0.14 添加可配置container的API
 - [Fix] bee-popover@1.0.6 添加可配置container的API
