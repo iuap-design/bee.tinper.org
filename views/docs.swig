@@ -1,7 +1,7 @@
 {% extends 'layout/layout.swig' %}
 
 {% block css %}
-<link href="http://iuap-design-cdn.oss-cn-beijing.aliyuncs.com/static/tinper-bee/theme/tinper-bee.css" id="tinper-bee-csslink" rel="stylesheet" media="screen" />
+<link href="http://design.yonyoucloud.com/static/tinper-bee/theme/tinper-bee.css" id="tinper-bee-csslink" rel="stylesheet" media="screen" />
     {% if docId && isComponent==1 %}
         <link href="/{{docId}}/dist/demo.css" type="text/css" rel="stylesheet" />
     {% elseif (docId.indexOf('ac-')>-1 || docId.indexOf('ref-')>-1) && isComponent==0 %}
