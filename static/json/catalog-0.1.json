@@ -28,6 +28,10 @@
             "version":"0.1.3",
             "component":"international"
         },
+        "定制主题cli": {
+            "version":"0.1.3",
+            "component":"theme-cli"
+        },
         "定制主题": {
             "version":"0.1.3",
             "component":"theme"
