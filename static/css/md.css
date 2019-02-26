@@ -447,3 +447,8 @@ table th {
 .title-tag>i{
     font-size: inherit;
 }
+.tag-select{
+    height: 25px;
+    font-size: 15px;
+    margin: 0 5px;
+}

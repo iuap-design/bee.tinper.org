@@ -1,25 +1,72 @@
+## 2.0.0
+- [Feature] 在tinper-bee.css 中增加 Datepicker、Calendar 组件的样式。
+- [Fix] bee-cascader 2.0.0
+- [Fix] 去掉组件中^的版本号，改成具体版本号
+- [Fix] 修改component中大小写问题。
+- [Feature] bee-button
+  1. V2.0.0~V2.0.1 版本的边框按钮 primary 为默认主题色
+  2. 默认按钮高度由34px变为32px
+  3. 巨大按钮高度由47px变为48px
+  4. 所有按钮的圆角由4px变为3px
+  5. 不提倡使用button的默认颜色，默认颜色即为primary色。 
+- [Feature] bee-select
+  1. 下拉选项的hover背景色由蓝色变为灰色
+  2. hover文字色由深灰色变为蓝色
+- [Feature] bee-rate下拉选项的hover背景色由蓝色变为灰色
+- [Feature] bee-timeline 下拉选项的hover背景色由蓝色变为灰色
+- [Feature] bee-breadcrumb 面包屑默认的a标签文字颜色由浅蓝（#31c4dc）变为主题蓝色
+- [Feature] bee-tree
+  1. 选中的树节点的文字颜色由黑色变为主题蓝色
+  2. 树节点的hover背景色由蓝色变为灰色
+- [Feature] bee-calendar
+  1. 日期hover背景色由浅蓝"#ebfaff"变为灰色，hover文字色由黑色变为主题蓝色
+  2. 选中的日期背景色由浅蓝（#3fc7fa）变为主题蓝色
+  3. 选中日期的文字色由黑色变为白色
+- [Feature] bee-slider 锚点色和滑动条色由"info"浅蓝变为"primary"主题蓝色
+- [Feature] bee-timepicker 选中的文字色由浅蓝（#2db7f5）变为主题蓝色
+- [Feature] bee-button-group 边框按钮（设置shape="border"）的文字颜色由黑色变为主题蓝色
+- [Feature] bee-tabs
+  1. 基础Tab，hover状态标签文字颜色由浅蓝（#23c0fa）变为primary主题蓝色
+  2. 竖向的Tab，标签文字色和右侧线条色由浅蓝（#23c0fa）变为primary主题蓝色
+- [Feature] bee-table 表格行内链接文字色由默认的超链接色变为主题蓝色
+- [Feature] bee-datepicker
+  1. 日期hover背景色由浅蓝变为灰色，hover文字色由黑变为蓝色
+  2. 日期select背景色由浅蓝变为深蓝，选中的文字色由黑色变为白色
+  3. 底部按钮文字色由红色变为蓝色
+  4. 所有面板默认增加输入框
+- [Feature] bee-pagination
+  1. 默认页码按钮由带边框变为无边框
+  2. 选中的页码背景色由蓝色变为深灰色
+  3. 默认分页去掉确认按钮，支持自定义
+  4. 新增'confirmBtn'API，支持外部传参，自定义跳转按钮。(去掉默认按钮)
+  5. 普通分页，默认去掉边框
+- [Feature] bee-icon @1.0.9，增加图标
+- tinper-bee 2.0 组件升级风险组件[primary 为默认主题色]
+- [Feature] bee-cascader 2.0.0 在单独使用时，需要手动引入css样式。
+
+
 ## 1.6.10
-- [Fix] bee-popconfirm@1.0.15 添加第二优先级渲染方向功能、添加onRootClose的API、添加自定义确定取消按钮
-- [Fix] bee-tooltip@1.0.14 添加可配置container的API
-- [Fix] bee-popover@1.0.6 添加可配置container的API
-- [Fix] bee-grid@1.0.11 增加是否有分页的api(上个版本0.2.44)
-- bee-table@1.6.35(上个版本1.6.35)
+- [Fix] bee-popconfirm @1.0.15 添加第二优先级渲染方向功能、添加onRootClose的API、添加自定义确定取消按钮
+- [Fix] bee-tooltip @1.0.14 添加可配置container的API
+- [Fix] bee-popover @1.0.6 添加可配置container的API
+- [Fix] bee-grid @1.0.11 增加是否有分页的api(上个版本0.2.44)
+- bee-table @1.6.35(上个版本1.6.35)
      1. [Feature] 支持多表头列的排序功能、增加是否开启快捷键功能、自定义列对齐方式、修改表格交换列逻辑修复city-select 组件内部select警告。
      2. [Feature]  增加获取拖拽列宽的colgroup的id、以及table 的id。
-- [Fix] bee-select@1.1.8 下拉item高度改为30px
-- [Fix] bee-slider@1.0.3 竖直方向的slider重叠问题 V1.0.3
-- [Fix] bee-datepicker@1.3.12 新增外层输入框可输入功能
-- [Fix] bee-input-number@1.2.2 新增显示千分符的功能
+- [Fix] bee-select @1.1.8 下拉item高度改为30px
+- [Fix] bee-slider @1.0.3 竖直方向的slider重叠问题 V1.0.3
+- [Fix] bee-datepicker @1.3.12 新增外层输入框可输入功能
+- [Fix] bee-input-number @1.2.2 新增显示千分符的功能
 - [Feature] 官网新增历史版本入口
 - [Feature] 官网新增全局搜索功能
 
 ## 1.6.9
 
-- [Fix] bee-table@1.6.21 快捷键修复
-- [Fix] bee-tabs@1.0.9 快捷键修复。
-- [Fix] bee-menu@0.1.9 快捷键修复。
+- [Fix] bee-table @1.6.21 快捷键修复
+- [Fix] bee-tabs @1.0.9 快捷键修复。
+- [Fix] bee-menu @0.1.9 快捷键修复。
 - [Fix] bee-tree 快捷键修复。
-- [Fix] bee-dropdown@1.0.3 快捷键修复。
+- [Fix] bee-dropdown @1.0.3 快捷键修复。
 - [Feature] 增加全键盘快捷键文档描述、各个增加快捷键的api 都加了api的说明部分。
 
 ## 1.6.8
@@ -27,12 +74,12 @@
 - bee-table@1.6.21
      1. [Feature] 支持快捷键 ↑ ，↓ ，tab 快捷键操作，以及新增快捷键的api。
      2. [Feature]  增加懒加载功能 ，支持大数据量加载。
-- [Feature] bee-tabs@1.0.9 增加tabIndex api。
-- [Feature] bee-menu@0.1.9 支持快捷键操作。
+- [Feature] bee-tabs @1.0.9 增加tabIndex api。
+- [Feature] bee-menu @0.1.9 支持快捷键操作。
 - [Feature] bee-tree 支持快捷键操作， ↑ ，↓  选中功能。
-- [Feature] bee-dropdown@1.0.3 新增快捷键。
-- [Feature] bee-tooltip@1.0.14 增加鼠标滑过API。
-- [Feature] bee-message@1.0.13 将icon改为默认不显示
+- [Feature] bee-dropdown @1.0.3 新增快捷键。
+- [Feature] bee-tooltip @1.0.14 增加鼠标滑过API。
+- [Feature] bee-message @1.0.13 将icon改为默认不显示
 
 -  应用组件部分 
    [Fix] ac-attachment 添加disabled按钮禁用选项

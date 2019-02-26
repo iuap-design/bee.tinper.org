@@ -10,6 +10,7 @@ var markdown = require("markdown").markdown;
 var marked = require("marked");
 var axios = require('axios')
 var renderer = new marked.Renderer();
+var components = require('../static/components/components.json')
 
 renderer.link = function (href,title,text) {
   var target = '';
@@ -115,7 +116,7 @@ router.get("/:id", function* (next) {
       data = "## 文档建设中...";
     }
     isComponent = 0;
-  } else {
+  } else {//基础组件
     try {
       //var data = fs.readFileSync(path.join(__dirname,'../tinper-bee/'+docId+'/docs/api.md'),'utf-8');
       var swig = require("swig-templates");
@@ -127,7 +128,7 @@ router.get("/:id", function* (next) {
     } catch (e) {
       data = "## 文档建设中...";
     }
-
+    
     var demo = '<div id="tinperBeeDemo"></div>';
     data = data.replace(/##.*代码演示/, demo);
     var pack_data = fs.readFileSync(
@@ -139,6 +140,18 @@ router.get("/:id", function* (next) {
         pack_data = {};
       }
     }
+    var listStr = '<select class="tag-select" id="tagSelect" >';
+    var tags = components[pack_data.name].versions;
+    tags.forEach(item=>{
+      if(item==pack_data.version){
+        listStr+=`<option selected value=${item} >${item}</li>`;
+      }else{
+        listStr+=`<option value=${item} >${item}</li>`;
+      }
+    })
+    listStr+='</select>';
+
+
     var str =
       data.match(/##? \w+/g) && data.match(/##? \w+/g).length ?
       data.match(/##? \w+/g)[0] :
@@ -151,6 +164,7 @@ router.get("/:id", function* (next) {
       "/edit/master/docs/api.md' style='text-decoration: underline;' target='_blank' title='在github上编辑此页'><i class='uf uf-pencil' style='font-size: 20px;padding-left: 10px;'></i></a>" +
       "<div>" +
       "<a class='title-tag' href='https://github.com/tinper-bee/" + docId + "' target='_blank'><i class='uf uf-github-c'></i>" + docId + "</a>" +
+      // listStr+
       (pack_data && pack_data.version ? "<span class='title-tag'><i class='uf uf-treeadd'></i>" + pack_data.version + "</span>" : "") +
       "<a class='title-tag' href='https://github.com/tinper-bee/" + docId + "/blob/master/CHANGELOG.md' target='_blank'><i class='uf uf-group'></i>changelog</a>" +
       "<a class='title-tag' href='https://github.com/tinper-bee/" + docId + "/issues/new' target='_blank'><i class='uf uf-qm-c'></i>issue</a>" +

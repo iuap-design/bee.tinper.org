@@ -44,11 +44,13 @@
     "基础 General": {
         "按钮 Button": {
             "version":"0.1.3",
-            "component":"bee-button"
+            "component":"bee-button",
+            "new":"new"
         },
         "图标 Icon":{
             "version":"0.1.0",
-            "component":"bee-icon"
+            "component":"bee-icon",
+            "new":"new"
         }
     },
     "布局 Layout": {
@@ -120,7 +122,8 @@
         },
         "树形控件 Tree":{
             "version":"0.1.0",
-            "component":"bee-tree"
+            "component":"bee-tree",
+            "new":"new"
         },
         "折叠 Collapse":{
             "version":"0.1.0",
@@ -143,7 +146,8 @@
         },
         "标签 Tab": {
             "version":"0.1.3",
-            "component":"bee-tabs"
+            "component":"bee-tabs",
+            "new":"new"
         },
         "下拉按钮 Dropdown": {
             "version":"0.1.3",
@@ -186,8 +190,7 @@
         },
         "气泡弹窗 Popconfirm": {
             "version":"0.0.2",
-            "component":"bee-popconfirm",
-            "new":"new"
+            "component":"bee-popconfirm"
         },
         "消息提醒 Message": {
             "version":"0.0.2",
@@ -195,8 +198,7 @@
         },
         "文字提示 Tooltip": {
             "version":"0.1.3",
-            "component":"bee-tooltip",
-            "new":"new"
+            "component":"bee-tooltip"
         },
         "加载提示 Loading": {
             "version":"0.1.3",

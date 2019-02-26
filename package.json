@@ -4,6 +4,8 @@
   "description": "bee.tinper.org",
   "main": "server/index.js",
   "scripts": {
+    "getTag": "node server/getTag.js",
+    "createFile": "node server/createFile.js",
     "server": "node server/index.js",
     "update": "git submodule foreach git pull origin master",
     "init": "git submodule init && git submodule update",
@@ -43,6 +45,10 @@
     "markdown": "^0.5.0",
     "marked": "^0.3.6",
     "swig": "^1.4.2",
-    "swig-templates": "^2.0.2"
+    "swig-templates": "^2.0.2",
+    "download": "7.1.0",
+    "fs-extra": "7.0.1",
+    "git-tags-remote": "1.0.1",
+    "latest-version": "4.0.0"
   }
 }
