@@ -204,8 +204,7 @@
         },
         "气泡卡片 Popover": {
             "version":"0.1.3",
-            "component":"bee-popover",
-            "new":"new"
+            "component":"bee-popover"
         }
     },
     "表单 Form": {
@@ -215,8 +214,7 @@
         },
         "单选 Radio": {
             "version":"0.1.3",
-            "component":"bee-radio",
-            "new":"new"
+            "component":"bee-radio"
         },
         "多选 Checkbox": {
             "version":"0.1.3",
@@ -240,8 +238,7 @@
         },
         "下拉框 Select": {
             "version":"0.1.3",
-            "component":"bee-select",
-            "new":"new"
+            "component":"bee-select"
         },
         "级联菜单 Cascader":{
             "version":"0.1.3",
@@ -249,8 +246,7 @@
         },
         "城市选择 CitySelect":{
             "version":"0.0.3",
-            "component":"bee-city-select",
-            "new":"new"
+            "component":"bee-city-select"
         },
         "上传 Upload":{
             "version":"0.1.3",
@@ -258,8 +254,7 @@
         },
         "滑块 Slider":{
             "version":"0.1.3",
-            "component":"bee-slider",
-            "new":"new"
+            "component":"bee-slider"
         },
         "穿梭框 Transfer":{
             "version":"0.0.3",
@@ -272,7 +267,8 @@
         },
         "时间 TimePicker":{
             "version":"0.1.3",
-            "component":"bee-timepicker"
+            "component":"bee-timepicker",
+            "new":"new"
         },
         "日期 DatePicker":{
             "version":"0.1.2",
@@ -327,18 +323,15 @@
         },
         "消息框组件AcToast": {
             "version": "0.0.9",
-            "component": "ac-toast",
-            "new":"new"
+            "component": "ac-toast"
         },
         "抽屉组件AcDrawer": {
             "version": "0.0.2",
-            "component": "ac-drawer",
-            "new":"new"
+            "component": "ac-drawer"
         },
         "上传列表组件AcAttachment": {
             "version": "0.2.3",
-            "component": "ac-attachment",
-            "new":"new"
+            "component": "ac-attachment"
         },
         "富文本编辑 AcEditor": {
             "version": "1.0.0",

@@ -1,0 +1,59 @@
+/* 查询框   开始*/
+.search-area{
+    display: none;
+}
+.search-area input{
+    height: 30px;
+    line-height: 30px;
+    box-sizing: border-box;
+    padding: 0 15px 0 30px;
+    border: 1px solid #e3e3e3;
+    color: #2c3e50;
+    outline: none;
+    border-radius: 15px;
+    margin-right: 10px;
+    transition: border-color 0.2s ease;
+    background: #fff url(../img/search.png) 8px 5px no-repeat;
+    background-size: 20px;
+    vertical-align: middle !important;
+}
+.algolia-autocomplete {
+    line-height: normal;
+  }
+  .aa-dropdown-menu {
+    width: 100%;
+    border-color: #999;
+    font-size: 0.9rem;
+  }
+  @media (min-width: 768px) {
+    .aa-dropdown-menu {
+      min-width: 515px;
+    }
+  }
+  .algolia-docsearch-suggestion {
+    border-color: #ddd;
+  }
+  .algolia-docsearch-suggestion--content {
+    color: #2c3e50;
+  }
+  .algolia-docsearch-suggestion--subcategory-column {
+    border-color: #ddd;
+  }
+  .algolia-docsearch-suggestion--category-header {
+    background: rgb(30,136,229);
+    color: #fff!important;
+  }
+  .algolia-docsearch-footer {
+    border-color: #ddd;
+  }
+  .algolia-docsearch-suggestion--category-header .algolia-docsearch-suggestion--highlight {
+    background: rgba(255,255,255,0.6);
+  }
+  .algolia-docsearch-suggestion--highlight {
+    color: #2c815b;
+  }
+  .aa-cursor .algolia-docsearch-suggestion--content {
+    color: #2c3e50;
+  }
+  
+/* 查询框   结束*/

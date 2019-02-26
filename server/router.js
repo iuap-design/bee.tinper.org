@@ -18,7 +18,7 @@ renderer.link = function (href,title,text) {
   }else{
     href = 'javacript:void(0);'
   }
-  return `<a class="summarize" target="${target}" href="${href}" >${text}</a>`;
+  return `<a target="${target}" href="${href}" >${text}</a>`;
 };
 
 marked.setOptions({

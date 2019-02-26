@@ -11,6 +11,11 @@
         </div>
         <ul class="u-nav u-navbar-nav nav-list u-navbar-toolbar u-navbar-right u-navbar-toolbar-right">
             <li>
+                <span class="search-area">
+                    <input id="componentSearch" placeholder="请输入关键字查询"/>
+                </span>
+            </li>
+            <li>
                 <a class="nav-par" href="//tinper.org">首页</a>
             </li>
             <li>
@@ -20,7 +25,7 @@
                 <a class="nav-par" href="/changelog">更新日志</a>
             </li>
             <li>
-                <a class="nav-par" style="display:none" href="https://tinper-bee.github.io/tinper-bee-history/">历史版本</a>
+                <a class="nav-par" target="_blank" href="https://tinper-bee.github.io/tinper-bee-history/">历史版本</a>
             </li>
         </ul>
 

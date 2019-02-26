@@ -1,17 +1,39 @@
+## ref-tree 参照-树形
+
+>华新丽华专项树形参照
 
 ## 代码演示
-
 ```sh
-$ npm install @yonyou/ref-tree --save
-或
-$ ynpm install @yonyou/ref-tree --save
+$ npm install ref-tree@walsin --save
+```
 
-引入
+```javascript
 
-import {RefTree, RefTreeWithInput, createRefTree} from 'ref-tree';
-或
-import {RefTree, RefTreeWithInput, createRefTree} from '@yonyou/ref-tree';
+import RefTreeWithInput, {RefTree, createRefTree} from 'ref-tree';
 
+    <RefTreeWithInput 
+            title={'部门'}
+            multiple={false}
+            searchable= {true}
+            param= { {
+                    "refCode":"newdept",
+            }}
+            checkStrictly={true}
+            displayField='{refname}'
+            valueField='refpk'
+            refModelUrl= {{
+                treeUrl: '/blobRefTree', //树请求
+            }}
+            matchUrl='/matchPKRefJSON'
+            filterUrl='/filterRefJSON'
+            {...getFieldProps('valueField', {
+                initialValue:'{\"refname\":\"高级-T3\",\"refpk\":\"level5\"}',
+                rules:[{
+                    message: '请输入姓名',
+                    pattern: /[^({"refname":"","refpk":""}|{"refpk":"","refname":""})]/
+                }]
+            })}
+        >
 ```
 
 
@@ -34,48 +56,52 @@ import {RefTree, RefTreeWithInput, createRefTree} from '@yonyou/ref-tree';
 参数 | 类型 |默认值| 说明 | 必选
 ---|---|--- | --- | ---
 title |``string``|空 |打开上传的模态框显示的标题文字 | 否
-className |`string`|空 | 参照class样式，作用于弹出层和 RefTreeWithInput 输入框的样式，默认为空。 | 否
-searchable |`bool`|true |是否显示搜索框，弹出层是否带有搜索框，true 显示，false 不显示。 | 否
-emptyBtn |`bool`|true |是否显示清空按钮，true 显示，false 不显示 | 否
-multiple |`bool`| false |是否单选， true 单选，false 多选 | 否
+className |`string`|空 | 参照class样式，作用于弹出层的样式，默认为空。 | 否
+<span style="color:red;">*</span> strictMode|`bool`|false |严格模式，此配置项为业务优化使用，当为 true（启用） 时每次打开弹出层都会刷新数据，若不启用时第一次数据加载正常且部为第一页数据时不再刷新数据 | 否
+multiple |`bool`| false |是否单选， true 多选，false 单选， 同时多选时不会有确认和取消按钮，多选时会出现复选框 | 否
 backdrop |`bool`| true |弹出层是否有模态层，true 显示，false 不显示 | 否
-buttons |`object`| `okText`: "确认", //确认按钮<br/>`cancelText`: "取消", //取消按钮<br/>`clearText`: "清空已选" //清空已选按钮|弹出层工具栏三个按钮的文字，若 bottomButton 为 false 则该配置无效。| 否
-bottomButton |`bool`|true | 是否显示弹出层下边框工具栏， false true 显示`注意该属性为临时兼容配置后期可能随时会弃用` | 否
+param|`object`| {} |refModelUrl 中接口请求的参数 | 否
+searchable |`bool`|true |是否显示搜索框，弹出层是否带有搜索框，true 显示，false 不显示。 | 否
 defaultExpandAll |`bool`|false |展开所有节点 true 展开，false 不展开 | 否
 checkStrictly |`bool`|false|heckable状态下节点选择完全受控（父子节点选中状态不再关联）, false 关联选择，true 不关联| 否
-param |`objecet`|{} |接口请求参数 | 是
-refModelUrl |`object`|{treeUrl:''} |弹出层数据接口地址，为了兼容其他参照保留了多连接配置。(详解如下) | 是
+refModelUrl |`object`|{treeUrl:''} |弹出层数据接口地址，为了兼容其他参照保留了多连接配置。| 是
+matchUrl| ``string``|空|查询并校验 value 中的 refpk 对应参照的详细记录。|否
+filterUrl| ``string``|空|快捷录入接口。|否
+lang|`string`| `zh_TW` |多语配置，详情查看参数详解 | 否
 onSave |`function( record:object )`|-- |保存回调函数，返回已选择的记录详细数据。 | 否
 onCancel `|function(  )`|-- |关闭弹出层 | 否
+
 
 ## RefTreeWithInput 增量 API
 ><span style="color: red; font-size: 15px;">注意:以下参数为 `<RefTreeWithInput/>`独有。对其他两个类型的引用无效。</span>
 
 参数 | 类型 |默认值| 说明 | 必选
 ---|---|--- | --- | ---
+参数 | 类型 |默认值| 说明 | 必选
+---|---|--- | --- | ---
 displayField |<code>string 或 function</code>|'{refname}' |记录中显示的键。<br/>当为字符串时则会根据`{}`包裹的增则匹配替换。<br/>如：`'人员姓名：{refname}，编号：{refcode}'`<br/>当为函数时则需自定义返回内容，参数为迭代已选择的记录。<br/>如：<br/>displayField: (record)=>  ${record.refname}-${record.refname}| 否
 valueField |``string``|'refcode' |待提交的 value 的键。 | 否
-checkedArray|`array`|[]|已选的数据详细记录，此配置为本地配置不做缓存不做服务器校验。`|否
-matchUrl| ``string``|空|查询并校验 checkedArray 中的 valueField 对应参照的详细记录。|否
-rules|`array`|[]|表单校验规则，参考 rc-from，或使用的 from 组件具体的校验规则写法。`如： rules：[{required: true, message: '请选择该引用',}]|否
-form|`form：object`|{}|当前表单的 form 对象。|否.
-
+value| ``string``|空|默认值，例如 `'{"refname":"初级-T1","refpk":"level1"}'`。|否
+disabled|`bool`| false |禁用参照 | 否
+wrapClassName|`string`|空 | 文本框的class样，默认为空。 | 否
+placeholder|`string`| 空 |文本框的 placeholder | 否
 ## 参数详解
 
 ```js
 eg:
 
-checkedArray:
-//需要组装出详细记录，但只要保证 displayField 和 valueField 所标记的字段存在即可， 如：
-[
-    { "refpk": "857c41b","refcode": "wujd", "refname": "吴惊道" },
-    { "refpk": "65c2c42", "refcode": "ms", "refname": "马帅" }
-]
 
-refModelUrl:{
-// treeUrl 为 ref-tree 的数据来源。
-    treeUrl: http://workbench.yyuap.com/ref/rest/iref_ctr/commonRefsearch'
-}
+    refModelUrl:{
+    // treeUrl 为 ref-tree 的数据来源。
+        treeUrl: 'http://workbench.yyuap.com/ref/rest/iref_ctr/commonRefsearch'
+    }
+    lang:
+      "zh_CN" // 中文
+      "en_US" // 英文
+      "zh_TW" // 繁体中文
+      "fr_FR" // 法文
+      "de_DE" // 德文
+      "ja_JP" // 日文
 ```
 
 ## 开发调试
