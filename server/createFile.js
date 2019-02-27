@@ -5,10 +5,10 @@ const OSS = require('ali-oss');
 let components = require('../static/components/components.json');
 
 let ossconfig = {
-    accessKeyId: 'LTAIM7dqay3t13Wg',
-    accessKeySecret: 'JVvsSST3Vd9Zq0ikiakq9JiBDoDbrP',
-    bucket: 'iuap-design-cdn',
-    region: 'oss-cn-beijing',
+    accessKeyId: '',
+    accessKeySecret: '',
+    bucket: '',
+    region: '',
 }
 
 let client = new OSS(ossconfig);
