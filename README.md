@@ -47,8 +47,6 @@ npm run createFile
 
 ```
 
-- 手动将 components下的文件放到 cdn上 地址 static/tinper-bee/components
-
 - 更新子模块
 
 ```
