@@ -40,11 +40,11 @@
     {% endif %}
 
         <script>
-            document.getElementById('tagSelect').onchange=function(){
-                var selectTag = document.getElementById('tagSelect').value;
-                document.getElementById('demoCss').href="//design.yonyoucloud.com/static/tinper-bee/components/{{docId}}/dist/"+selectTag+"/demo.css";
-                document.getElementById('demoJs').src="//design.yonyoucloud.com/static/tinper-bee/components/{{docId}}/dist/"+selectTag+"/demo.css";
-            }
+            // document.getElementById('tagSelect').onchange=function(){
+            //     var selectTag = document.getElementById('tagSelect').value;
+            //     document.getElementById('demoCss').href="//design.yonyoucloud.com/static/tinper-bee/components/{{docId}}/dist/"+selectTag+"/demo.css";
+            //     // document.getElementById('demoJs').src="//design.yonyoucloud.com/static/tinper-bee/components/{{docId}}/dist/"+selectTag+"/demo.js";
+            // }
         </script>
 {% endblock %}
 

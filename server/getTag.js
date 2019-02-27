@@ -8,7 +8,6 @@ let componentsSource = require('../static/components/componentsSource.json');
  */
 let getAlltag = () => {
     Object.keys(componentsSource).forEach(item => {
-        console.log(`我是 ${item} `);
         let ary = [];
         gitTagsRemote.get(`https://github.com/tinper-bee/${item}.git`)
             .then((tags) => {
@@ -16,7 +15,7 @@ let getAlltag = () => {
                     for (let key of tags.keys()) {
                         ary.push(key)
                     }
-                    console.log(item + ' 成功了——————————————')
+                    console.log(item + '😀成功了——————————————')
                     componentsSource[item].versions = ary;
                 }
             })
@@ -24,15 +23,15 @@ let getAlltag = () => {
                 components = componentsSource;
                 fs.writeJson('./static/components/components.json', componentsSource)
                     .then(() => {
-                        console.log('json文件写入成功!')
+                        console.log('😀json文件写入成功!')
                     })
                     .catch(err => {
-                        console.log('json文件写入失败!')
+                        console.log('😀json文件写入失败!')
                         console.error(err)
                     })
             })
             .catch((error) => {
-                console.log(item + ' 出错了————————————');
+                console.log(item + '❌出错了————————————');
                 console.log(error)
             })
     });
