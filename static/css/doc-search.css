@@ -1,6 +1,6 @@
 /* 查询框   开始*/
 .search-area{
-    display: none;
+    display: inline-block;
 }
 .search-area input{
     height: 30px;
@@ -40,8 +40,7 @@
     border-color: #ddd;
   }
   .algolia-docsearch-suggestion--category-header {
-    background: rgb(30,136,229);
-    color: #fff!important;
+    background: #fff;
   }
   .algolia-docsearch-footer {
     border-color: #ddd;
