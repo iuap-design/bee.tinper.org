@@ -18,7 +18,7 @@ let client = new OSS(ossconfig);
  * 4、增量上传到CDN
  * "http://iuap-design-cdn.oss-cn-beijing.aliyuncs.com/static/tinper-bee/components/bee-button/dist/v2.0.1/demo.js"
  */
-function putCDN(putUrl,filePath) {
+function putCDN(putUrl, filePath) {
     client.put(putUrl, filePath).then(data => {
         console.log(`😀${filePath} 上传成功`)
     }).catch(function (err) {
@@ -38,10 +38,23 @@ let writeDemo = (item, tag) => {
                 download(downPath).then(data => {
                         fs.writeFileSync(filePath, data);
                         console.log(`😀写入 ${filePath} 成功 `);
-                        putCDN(`static/tinper-bee/components/${item}/dist/${tag}/${fileName}`,filePath)
+                        putCDN(`static/tinper-bee/components/${item}/dist/${tag}/${fileName}`, filePath)
                     })
                     .catch(() => {
-                        fs.appendFile('./static/components/error.txt', `${filePath} 失败 \n`);
+                        fs.appendFile('./static/components/error.txt', `请求 ${filePath} 失败 \n`);
+                        if(fileName=='demo.js'){//删除没有dist/demo.js 文件的tag
+                            let versions = components[item].versions;
+                            versions.splice(versions.indexOf(tag), 1);
+                            components[item].versions = versions;
+                            fs.writeJson('./static/components/components.json', components)
+                                .then(() => {
+                                    console.log(`😀json文件写入成功! 删除了 ${item}--${tag}`);
+                                })
+                                .catch(err => {
+                                    console.log('❌json文件写入失败!')
+                                    console.error(err)
+                                })
+                        }
                         console.log(`❌ ———————— 请求 ${filePath}失败，找不到文件 `);
                     })
             } else {
@@ -50,14 +63,14 @@ let writeDemo = (item, tag) => {
         })
     }
     //下载demo.js
-    downFn(`https://raw.githubusercontent.com/tinper-bee/${item}/${tag}/dist/demo.js`, 
-    `./components/${item}/dist/${tag}/demo.js`,'demo.js');
+    downFn(`https://raw.githubusercontent.com/tinper-bee/${item}/${tag}/dist/demo.js`,
+        `./components/${item}/dist/${tag}/demo.js`, 'demo.js');
     //下载demo.css
-    downFn(`https://raw.githubusercontent.com/tinper-bee/${item}/${tag}/dist/demo.css`, 
-    `./components/${item}/dist/${tag}/demo.css`,'demo.css');
+    downFn(`https://raw.githubusercontent.com/tinper-bee/${item}/${tag}/dist/demo.css`,
+        `./components/${item}/dist/${tag}/demo.css`, 'demo.css');
     //下载api.md
-    downFn(`https://raw.githubusercontent.com/tinper-bee/${item}/${tag}/docs/api.md`, 
-    `./components/${item}/dist/${tag}/api.md`,'api.md');
+    downFn(`https://raw.githubusercontent.com/tinper-bee/${item}/${tag}/docs/api.md`,
+        `./components/${item}/dist/${tag}/api.md`, 'api.md');
 }
 
 /**
@@ -84,4 +97,3 @@ let createFile = () => {
 }
 
 createFile();
-

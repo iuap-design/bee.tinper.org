@@ -10,8 +10,7 @@ var markdown = require("markdown").markdown;
 var marked = require("marked");
 var axios = require('axios')
 var renderer = new marked.Renderer();
-var components = require('../static/components/components.json');
-var qs = require('querystring');
+var components = require('../static/components/components.json')
 
 renderer.link = function (href,title,text) {
   var target = '';
@@ -77,8 +76,7 @@ router.get("/", function* (next) {
 
 
 //读取md文档，生成html
-router.get("/:id", function* (next) {debugger;
-  let tag = this.url.split('tag=')[1];
+function* toHtml(docId,tag){
   var docId = this.params.id === 'keyboard'?'ac-keyboard-example':this.params.id;
   var isComponent = 1;
   var jsList=[];
@@ -123,8 +121,9 @@ router.get("/:id", function* (next) {debugger;
     try {
       //var data = fs.readFileSync(path.join(__dirname,'../tinper-bee/'+docId+'/docs/api.md'),'utf-8');
       var swig = require("swig-templates");
-      var apiFile = tag ? path.join(__dirname, `../components/${docId}/dist/${tag}/api.md`):path.join(__dirname, "../tinper-bee/" + docId + "/docs/api.md");
-      var template = swig.compileFile(apiFile);
+      var template = swig.compileFile(
+        path.join(__dirname, "../tinper-bee/" + docId + "/docs/api.md")
+      );
 
       var data = template();
     } catch (e) {
@@ -144,9 +143,8 @@ router.get("/:id", function* (next) {debugger;
     }
     var listStr = '<select class="tag-select" id="tagSelect" >';
     var tags = components[pack_data.name].versions;
-    var selectTag = tag ? tag :pack_data.version;
     tags.forEach(item=>{
-      if(item==selectTag){
+      if(item==pack_data.version){
         listStr+=`<option selected value=${item} >${item}</li>`;
       }else{
         listStr+=`<option value=${item} >${item}</li>`;
@@ -167,15 +165,14 @@ router.get("/:id", function* (next) {debugger;
       "/edit/master/docs/api.md' style='text-decoration: underline;' target='_blank' title='在github上编辑此页'><i class='uf uf-pencil' style='font-size: 20px;padding-left: 10px;'></i></a>" +
       "<div>" +
       "<a class='title-tag' href='https://github.com/tinper-bee/" + docId + "' target='_blank'><i class='uf uf-github-c'></i>" + docId + "</a>" +
-      // listStr+
-      (pack_data && pack_data.version ? "<span class='title-tag'><i class='uf uf-treeadd'></i>" + pack_data.version + "</span>" : "") +
+      listStr+
+      // (pack_data && pack_data.version ? "<span class='title-tag'><i class='uf uf-treeadd'></i>" + pack_data.version + "</span>" : "") +
       "<a class='title-tag' href='https://github.com/tinper-bee/" + docId + "/blob/master/CHANGELOG.md' target='_blank'><i class='uf uf-group'></i>changelog</a>" +
       "<a class='title-tag' href='https://github.com/tinper-bee/" + docId + "/issues/new' target='_blank'><i class='uf uf-qm-c'></i>issue</a>" +
       "</div>"
     );
   }
   
-
   data = marked(data);
 
   data = data
@@ -194,10 +191,23 @@ router.get("/:id", function* (next) {debugger;
     doc: data,
     isComponent: isComponent,
     jsList:jsList,
-    // tag:tag
+    tag:tag
   });
+}
+
+
+
+router.get("/:id", function* (next) {
+  var docId = this.params.id === 'keyboard'?'ac-keyboard-example':this.params.id;
+  toHtml(docId)
 });
 
+
+router.get('/:id/:tag',function* (next){
+  var docId = this.params.id === 'keyboard'?'ac-keyboard-example':this.params.id;
+  var tag = this.params.tag;
+  toHtml(docId,tag)
+})
 
 
 

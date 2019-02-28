@@ -40,11 +40,13 @@
     {% endif %}
 
         <script>
-            // document.getElementById('tagSelect').onchange=function(){
-            //     var selectTag = document.getElementById('tagSelect').value;
-            //     document.getElementById('demoCss').href="//design.yonyoucloud.com/static/tinper-bee/components/{{docId}}/dist/"+selectTag+"/demo.css";
-            //     // document.getElementById('demoJs').src="//design.yonyoucloud.com/static/tinper-bee/components/{{docId}}/dist/"+selectTag+"/demo.js";
-            // }
+            var select = document.getElementById('tagSelect');
+            if(select){
+                select.onchange=function(){
+                    var selectTag = select.value;
+                    window.location.search='?tag='+selectTag;
+                }
+            }
         </script>
 {% endblock %}
 
