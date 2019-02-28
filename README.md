@@ -65,6 +65,6 @@ npm run server
 
 - 修改完成提交git
 
-- 压缩bee.tinper.org的内的文件为压缩包。注意不压缩文件夹，只压缩里面的文件，不要压缩components文件。
+- 压缩bee.tinper.org的内的文件为压缩包。注意不压缩文件夹，只压缩里面的文件
 
 - 登录开发者中心，上传压缩的zip包。在应用管理内更新。
