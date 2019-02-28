@@ -33,6 +33,8 @@ npm run server
 
 ### 更新
 
+- server/createFile.js 文件中填写 oss 配置
+
 - 更新 子模块的tag
 
 ```
