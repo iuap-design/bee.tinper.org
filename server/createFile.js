@@ -1,30 +1,9 @@
 const download = require('download');
 const fs = require('fs-extra');
 const latestVersion = require('latest-version');
-const OSS = require('ali-oss');
+
 let components = require('../static/components/components.json');
 
-let ossconfig = {
-    accessKeyId: '',
-    accessKeySecret: '',
-    bucket: '',
-    region: '',
-}
-
-let client = new OSS(ossconfig);
-
-
-/**
- * 4、增量上传到CDN
- * "http://iuap-design-cdn.oss-cn-beijing.aliyuncs.com/static/tinper-bee/components/bee-button/dist/v2.0.1/demo.js"
- */
-function putCDN(putUrl, filePath) {
-    client.put(putUrl, filePath).then(data => {
-        console.log(`😀${filePath} 上传成功`)
-    }).catch(function (err) {
-        console.error(`❌ ${filePath} 上传失败`, err);
-    });
-}
 
 /**
  * 3、创建demo.js demo.css api.md
@@ -38,11 +17,10 @@ let writeDemo = (item, tag) => {
                 download(downPath).then(data => {
                         fs.writeFileSync(filePath, data);
                         console.log(`😀写入 ${filePath} 成功 `);
-                        putCDN(`static/tinper-bee/components/${item}/dist/${tag}/${fileName}`, filePath)
                     })
                     .catch(() => {
                         fs.appendFile('./static/components/error.txt', `请求 ${filePath} 失败 \n`);
-                        if(fileName=='demo.js'){//删除没有dist/demo.js 文件的tag
+                        if(fileName=='api.md'){//删除没有dist/demo.js 文件的tag
                             let versions = components[item].versions;
                             versions.splice(versions.indexOf(tag), 1);
                             components[item].versions = versions;
@@ -62,12 +40,12 @@ let writeDemo = (item, tag) => {
             }
         })
     }
-    //下载demo.js
-    downFn(`https://raw.githubusercontent.com/tinper-bee/${item}/${tag}/dist/demo.js`,
-        `./components/${item}/dist/${tag}/demo.js`, 'demo.js');
-    //下载demo.css
-    downFn(`https://raw.githubusercontent.com/tinper-bee/${item}/${tag}/dist/demo.css`,
-        `./components/${item}/dist/${tag}/demo.css`, 'demo.css');
+    // //下载demo.js
+    // downFn(`https://raw.githubusercontent.com/tinper-bee/${item}/${tag}/dist/demo.js`,
+    //     `./components/${item}/dist/${tag}/demo.js`, 'demo.js');
+    // //下载demo.css
+    // downFn(`https://raw.githubusercontent.com/tinper-bee/${item}/${tag}/dist/demo.css`,
+    //     `./components/${item}/dist/${tag}/demo.css`, 'demo.css');
     //下载api.md
     downFn(`https://raw.githubusercontent.com/tinper-bee/${item}/${tag}/docs/api.md`,
         `./components/${item}/dist/${tag}/api.md`, 'api.md');

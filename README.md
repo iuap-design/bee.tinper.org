@@ -33,18 +33,21 @@ npm run server
 
 ### 更新
 
-- server/createFile.js 文件中填写 oss 配置
+- 下载 https://github.com/tinper-bee/tinper-bee-components 项目,server/createFile.js 文件中填写 oss 配置，运行如下命令，更新demo.js，demo.css
+
+```
+npm run getTag 
+
+npm run createFile 
+```
+
+- server/createFile.js 文件中填写 oss 配置，运行如下命令，更新 api.md
 
 - 更新 子模块的tag
 
 ```
 npm run getTag 
 
-```
-
-- 更新 components文件夹
-
-```
 npm run createFile  
 
 ```

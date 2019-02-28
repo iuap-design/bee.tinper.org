@@ -35,7 +35,6 @@
   "homepage": "https://github.com/iuap-design/bee.tinper.org#readme",
   "devDependencies": {},
   "dependencies": {
-    "ali-oss": "^6.1.0",
     "axios": "^0.18.0",
     "download": "7.1.0",
     "fs-extra": "7.0.1",

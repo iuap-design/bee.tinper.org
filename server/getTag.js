@@ -1,9 +1,6 @@
 const fs = require('fs-extra');
 const gitTagsRemote = require('git-tags-remote');
 let componentsSource = require('../static/components/componentsSource.json');
-
-let errorTags = require('../static/components/errorTags.json');
-
 /**
  * 1、获得所有tag，并改变 components.json
  * @param {*} item 组件名称
@@ -15,9 +12,7 @@ let getAlltag = () => {
             .then((tags) => {
                 if (tags) {
                     for (let key of tags.keys()) {
-                        if(errorTags.indexOf(`${item}/dist/${key}`==-1)){//已知有问题的tag不push进数组
-                            ary.push(key)
-                        }
+                        ary.push(key)
                     }
                     console.log(item + '😀成功了——————————————')
                     componentsSource[item].versions = ary;
@@ -39,7 +34,7 @@ let getAlltag = () => {
                 console.log(error)
             })
     });
-    fs.writeFileSync('./static/error.txt', '');
+    fs.writeFileSync('./static/components/error.txt', '');
 }
 
 getAlltag();

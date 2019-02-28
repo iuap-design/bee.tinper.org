@@ -3,7 +3,7 @@
 {% block css %}
 <link href="//design.yonyoucloud.com/static/tinper-bee/2.0.0/assets/tinper-bee.css" id="tinper-bee-csslink" rel="stylesheet" media="screen" />
     {% if docId && isComponent==1 && tag %}
-        <link id="demoCss" href="//design.yonyoucloud.com/static/tinper-bee/components/{{docId}}/dist/{{tag}}/demo.css" type="text/css" rel="stylesheet" />
+        <link id="demoCss" href="/components/{{docId}}/dist/{{tag}}/demo.css" type="text/css" rel="stylesheet" />
     {% elseif docId && isComponent==1 %}
         <link id="demoCss" href="/{{docId}}/dist/demo.css" type="text/css" rel="stylesheet" />
     {% elseif (docId.indexOf('ac-')>-1 || docId.indexOf('ref-')>-1) && isComponent==0 %}
@@ -30,7 +30,7 @@
         
     <script src="//design.yonyoucloud.com/static/prop-types/15.6.0/prop-types.min.js"></script>
     {% if docId && isComponent==1 && tag %}
-        <script id="demoJs" src="//design.yonyoucloud.com/static/tinper-bee/components/{{docId}}/dist/{{tag}}/demo.js"></script>
+        <script id="demoJs" src="/components/{{docId}}/dist/{{tag}}/demo.js"></script>
     {% elseif docId && isComponent==1 %}
         <script id="demoJs" src="/{{docId}}/dist/demo.js"></script>
     {% elseif (docId.indexOf('ac-')>-1 || docId.indexOf('ref-')>-1)  && isComponent==0 %}
