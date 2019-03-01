@@ -71,7 +71,7 @@
 
 ## 1.6.8
 
-- bee-table@1.6.21
+- bee-table @1.6.21
      1. [Feature] 支持快捷键 ↑ ，↓ ，tab 快捷键操作，以及新增快捷键的api。
      2. [Feature]  增加懒加载功能 ，支持大数据量加载。
 - [Feature] bee-tabs @1.0.9 增加tabIndex api。
