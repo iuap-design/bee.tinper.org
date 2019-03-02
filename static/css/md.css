@@ -452,3 +452,6 @@ table th {
     font-size: 15px;
     margin: 0 5px;
 }
+.u-navbar-fixed-top{
+    z-index: 2000;
+}
