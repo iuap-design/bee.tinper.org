@@ -350,6 +350,10 @@
         "条形码组件 AcBarcode": {
             "version": "0.0.1",
             "component": "ac-barcode"
+        },
+        "二维码组件 AcQrcode": {
+            "version": "0.0.1",
+            "component": "ac-qrcode"
         }
     },
     "参照组件2.0": {
