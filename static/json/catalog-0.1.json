@@ -362,14 +362,6 @@
             "component":"ref-tree",
             "new":"new"
         },
-        "多选参照RefMultipleSelection": {
-            "version":"0.0.1",
-            "component":"ref-multiple-selection"
-        },
-        "表格参照 RefTable ": {
-            "version":"0.0.1",
-            "component":"ref-table"
-        },
         "树表参照 RefTreeTable": {
             "version":"0.0.1",
             "component":"ref-tree-table"
@@ -378,9 +370,13 @@
             "version":"0.0.1",
             "component":"ref-tree-transfer"
         },
-        "复杂查询表格参照RefMultipleTable ": {
+        "表格参照RefMultipleTable ": {
             "version":"0.0.1",
             "component":"ref-multiple-table"
+        },
+        "combobox参照 ": {
+            "version":"0.0.1",
+            "component":"ref-combobox"
         }
     }
 }
