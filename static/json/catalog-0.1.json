@@ -30,7 +30,8 @@
         },
         "定制主题cli": {
             "version":"0.1.3",
-            "component":"theme-cli"
+            "component":"theme-cli",
+            "new":"new"
         },
         "主题在线定制": {
             "version":"0.1.3",
