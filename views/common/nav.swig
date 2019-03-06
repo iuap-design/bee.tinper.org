@@ -24,8 +24,8 @@
             <li>
                 <a class="nav-par" href="/changelog">更新日志</a>
             </li>
-            <li>
-                <a class="nav-par" target="_blank" href="https://tinper-bee.github.io/tinper-bee-history/">历史版本</a>
+            <li style="display:none">
+                <a class="nav-par"  target="_blank" href="https://tinper-bee.github.io/tinper-bee-history/">历史版本</a>
             </li>
         </ul>
 
