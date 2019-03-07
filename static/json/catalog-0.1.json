@@ -33,10 +33,6 @@
             "component":"theme-cli",
             "new":"new"
         },
-        "主题在线定制": {
-            "version":"0.1.3",
-            "component":"theme"
-        },
         "使用注意": {
             "version":"0.1.3",
             "component":"notice"
@@ -289,95 +285,6 @@
         "自动完成 Autocomplete":{
             "version":"0.1.5",
             "component":"bee-autocomplete"
-        }
-    },
-    "应用组件": {
-        "按钮 AcButton": {
-            "version":"0.0.2",
-            "component":"ac-button"
-        },
-        "通知 AcNotification":{
-            "version":"0.0.2",
-            "component":"ac-notification"
-        },
-        "内部转移应用 AcOrgcenterForm":{
-            "version":"0.0.1",
-            "component":"ac-orgcenter-form"
-        },
-        "滚动公告 AcMarquee":{
-            "version":"0.0.2",
-            "component":"ac-marquee"
-        },
-        "附件管理 AcUpload": {
-            "version":"0.0.20",
-            "component":"ac-upload"
-        },
-        "多语言输入 AcInputLocale": {
-            "version":"0.0.2",
-            "component":"ac-input-locale"
-        },
-        "Bpm流程组件 <span>yyuap-bpm</span>": {
-            "version":"0.2.9",
-            "component":"yyuap-bpm"  
-        },
-        "温度计/液位计 AcThermometer": {
-            "version": "0.0.1",
-            "component": "ac-thermometer"
-        },
-        "消息框组件AcToast": {
-            "version": "0.0.9",
-            "component": "ac-toast"
-        },
-        "抽屉组件AcDrawer": {
-            "version": "0.0.2",
-            "component": "ac-drawer"
-        },
-        "上传列表组件AcAttachment": {
-            "version": "0.2.3",
-            "component": "ac-attachment"
-        },
-        "富文本编辑 AcEditor": {
-            "version": "1.0.0",
-            "component": "ac-editor"
-        },
-        "手机号国际化 AcMobileLocale": {
-            "version": "0.0.1",
-            "component": "ac-mobile-locale"
-        }, 
-        "条件搜索组件 AcComplexSearchPanel": {
-            "version": "0.0.1",
-            "component": "ac-complex-search-panel"
-        },
-        "条形码组件 AcBarcode": {
-            "version": "0.0.1",
-            "component": "ac-barcode"
-        },
-        "二维码组件 AcQrcode": {
-            "version": "0.0.1",
-            "component": "ac-qrcode"
-        }
-    },
-    "参照组件2.0": {
-        "树形参照RefTree": {
-            "version":"0.0.1",
-            "component":"ref-tree",
-            "new":"new"
-        },
-        "树表参照 RefTreeTable": {
-            "version":"0.0.1",
-            "component":"ref-tree-table"
-        },
-        "树穿梭参照RefTreeTransfer": {
-            "version":"0.0.1",
-            "component":"ref-tree-transfer"
-        },
-        "表格参照RefMultipleTable ": {
-            "version":"0.0.1",
-            "component":"ref-multiple-table"
-        },
-        "combobox参照 ": {
-            "version":"0.0.1",
-            "component":"ref-combobox"
         }
     }
 }
