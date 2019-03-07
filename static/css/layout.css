@@ -1,26 +1,19 @@
 @media (min-width: 768px) {
     body .u-container {
-    width: 750px; } }
+    width: 100%; } }
 @media (min-width: 992px) {
     body .u-container {
-    width: 970px; } }
+    width: 100%; } }
 @media (min-width: 1200px) {
     body .u-container {
-        width: 1259px;
-        margin-right: auto;
-        margin-left: auto;
-        padding-left: 15px;
+        width: 100%;
+        margin: 0;
+        padding-left: 0;
         padding-right: 15px; 
         height: 100%;
     } 
-    body .content-container{
-        width: 1348px;
-        margin-right: auto;
-        margin-left: auto;
-        height: 100%;
-    }
     .content-container .demo-container{
-        margin-left: 295px;
+        margin-left: 300px;
     }
     .content-container .sidebar{
         position: fixed;

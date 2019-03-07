@@ -3,4 +3,3 @@
 {% block content %}
     {% include "common/sidebar.swig"%}
 {% endblock %}
-

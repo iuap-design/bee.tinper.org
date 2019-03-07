@@ -60,8 +60,6 @@
 {% include "../common/nav.swig"%}
 {% block content %}{% endblock %}
 
-{% include "../common/footer.swig"%}
-
 
 <script src="//cdn.jsdelivr.net/highlight.js/9.8.0/highlight.min.js"></script>
 <script>

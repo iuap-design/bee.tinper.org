@@ -1,21 +1,26 @@
 /* 查询框   开始*/
 .search-area{
     display: inline-block;
+    position: relative;
+    top: 7px;
+    left: -14px;
 }
 .search-area input{
     height: 30px;
     line-height: 30px;
     box-sizing: border-box;
     padding: 0 15px 0 30px;
-    border: 1px solid #e3e3e3;
-    color: #2c3e50;
+    border: none;
+    color: #424242;
     outline: none;
-    border-radius: 15px;
-    margin-right: 10px;
-    transition: border-color 0.2s ease;
-    background: #fff url(../img/search.png) 8px 5px no-repeat;
     background-size: 20px;
     vertical-align: middle !important;
+    margin-left: -30px;
+    margin-top: -2px;
+}
+.search-area .uf-search:before{
+  z-index: 2;
+  position: relative;
 }
 .algolia-autocomplete {
     line-height: normal;
