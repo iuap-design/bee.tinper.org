@@ -5,8 +5,8 @@
 ![image](https://user-images.githubusercontent.com/3817644/53713600-5f7bcf00-3e86-11e9-8dfd-399b442029c6.png)
 
 
-[![npm version](https://img.shields.io/npm/v/ac-qrcode.svg)](https://www.npmjs.com/package/ac-qrcode)
-[![NPM downloads](http://img.shields.io/npm/dt/ac-qrcode.svg?style=flat)](https://npmjs.org/package/ac-qrcode)
+[![npm version](https://img.shields.io/npm/v/ac-qrcodes.svg)](https://www.npmjs.com/package/ac-qrcodes)
+[![NPM downloads](http://img.shields.io/npm/dt/ac-qrcodes.svg?style=flat)](https://npmjs.org/package/ac-qrcodes)
 
 在线演示：https://tinper-acs.github.io/ac-qrcode/
 
@@ -20,22 +20,22 @@ React二维码组件，使用底层核心算法[qr.js](https://github.com/defunc
 
 1. 通过`npm`安装
     ```bash
-    npm install ac-qrcode --save
+    npm install ac-qrcodes --save
     ```
 2. 国内镜像通过`cnpm`安装
     ```bash
-    cnpm install ac-qrcode --save
+    cnpm install ac-qrcodes --save
     ```
 3. 用友内网通过`ynpm`安装
     ```bash
-    ynpm install ac-qrcode --save
+    ynpm install ac-qrcodes --save
     ```
 
 
 ### 3. 使用
 
 ```js
-import AcQrcode from "ac-qrcode";
+import AcQrcode from "ac-qrcodes";
 
 render(){
     return (<div>
