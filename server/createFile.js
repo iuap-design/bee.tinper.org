@@ -49,8 +49,6 @@ let writeDemo = (item, tag) => {
     //下载api.md
     downFn(`https://raw.githubusercontent.com/tinper-bee/${item}/${tag}/docs/api.md`,
         `./components/${item}/dist/${tag}/api.md`, 'api.md');
-    downFn(`https://raw.githubusercontent.com/tinper-bee/${item}/master/package.json`,
-    `./components/${item}/package.json`, 'package.json');
 }
 
 /**
