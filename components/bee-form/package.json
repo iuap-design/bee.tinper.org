@@ -1,0 +1,77 @@
+{
+ "name": "bee-form",
+ "version": "2.0.7",
+ "description": "Form ui component for react",
+ "keywords": [
+  "react",
+  "react-component",
+  "bee-form",
+  "iuap-design",
+  "tinper-bee",
+  "Form"
+ ],
+ "engines": {
+  "node": ">=4.0.0"
+ },
+ "homepage": "https://github.com/tinper-bee/bee-form",
+ "author": "liushaozhen",
+ "repository": "http://github.com/tinper-bee/bee-form",
+ "bugs": "https://github.com/tinper-bee/bee-form/issues",
+ "license": "MIT",
+ "main": "./build/index.js",
+ "config": {
+  "port": 8000,
+  "commitizen": {
+   "path": "./node_modules/cz-conventional-changelog"
+  }
+ },
+ "scripts": {
+  "dev": "bee-tools run start",
+  "build": "bee-tools run build",
+  "lint": "bee-tools-test run lint",
+  "test": "bee-tools-test run test",
+  "chrome": "bee-tools-test run chrome",
+  "coveralls": "bee-tools-test run coverage",
+  "browsers": "bee-tools-test run browsers",
+  "pub": "bee-tools run pub"
+ },
+ "dependencies": {
+  "babel-runtime": "^6.23.0",
+  "bee-layout": "latest",
+  "classnames": "^2.2.5",
+  "rc-form": "^2.1.7",
+  "tinper-bee-core": "latest"
+ },
+ "devDependencies": {
+  "bee-button": "latest",
+  "bee-form-group": "latest",
+  "bee-input-group": "latest",
+  "bee-label": "latest",
+  "bee-checkbox": "latest",
+  "bee-city-select": "latest",
+  "bee-input-number": "latest",
+  "bee-rate": "latest",
+  "bee-slider": "latest",
+  "bee-datepicker": "latest",
+  "bee-form-control": "latest",
+  "bee-layout": "latest",
+  "bee-panel": "latest",
+  "bee-radio": "latest",
+  "bee-select": "latest",
+  "bee-switch": "latest",
+  "chai": "^3.5.0",
+  "console-polyfill": "~0.2.1",
+  "cz-conventional-changelog": "^2.1.0",
+  "enzyme": "^2.4.1",
+  "es5-shim": "~4.1.10",
+  "moment": "^2.19.1",
+  "react": "15.3.2",
+  "react-addons-test-utils": "15.3.2",
+  "react-dom": "15.3.2"
+ },
+ "peerDependencies": {
+  "react": ">= 15.3.0",
+  "react-dom": ">= 15.3.0",
+  "prop-types": ">= 15.6.0"
+ }
+}

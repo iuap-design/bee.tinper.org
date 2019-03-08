@@ -121,27 +121,28 @@ router.get("/:id", function* (next) {
     isComponent = 0;
   } else {//基础组件
     try {
+      var pack_data = fs.readFileSync(
+        path.join(__dirname, "../components/" + docId + "/package.json")
+      );
+      if (pack_data) {
+        pack_data = JSON.parse(pack_data);
+        if (!pack_data) {
+          pack_data = {};
+        }
+      }
+      tag = 'v'+pack_data.version;
+
       //var data = fs.readFileSync(path.join(__dirname,'../tinper-bee/'+docId+'/docs/api.md'),'utf-8');
       var swig = require("swig-templates");
-      var apiFile = tag ? path.join(__dirname, `../components/${docId}/dist/${tag}/api.md`):path.join(__dirname, "../tinper-bee/" + docId + "/docs/api.md");
+      var apiFile = tag ? path.join(__dirname, `../components/${docId}/dist/${tag}/api.md`):path.join(__dirname, `../components/${docId}/dist/${tag}/api.md`);
       var template = swig.compileFile(apiFile);
 
       var data = template();
     } catch (e) {
       data = "## 文档建设中...";
     }
-    
     var demo = '<div id="tinperBeeDemo"></div>';
     data = data.replace(/##.*代码演示/, demo);
-    var pack_data = fs.readFileSync(
-      path.join(__dirname, "../tinper-bee/" + docId + "/package.json")
-    );
-    if (pack_data) {
-      pack_data = JSON.parse(pack_data);
-      if (!pack_data) {
-        pack_data = {};
-      }
-    }
     var listStr = '<select class="tag-select" id="tagSelect" >';
     var tags = components[pack_data.name].versions;
     var selectTag = tag ? tag :pack_data.version;
