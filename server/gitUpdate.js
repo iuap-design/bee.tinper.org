@@ -3,6 +3,8 @@ const fs = require('fs-extra')
 let componentsSource = require('../static/components/componentsSource.json');
 let length = Object.keys(componentsSource).length;
 
+
+
 Object.keys(componentsSource).forEach((item,index)=>{
     console.log(`cd tinper-bee/${item} && git pull origin master`)
     process.exec(`cd tinper-bee/${item} && git pull origin master`,function (error, stdout, stderr) {
@@ -13,4 +15,5 @@ Object.keys(componentsSource).forEach((item,index)=>{
         }
     });
 })
+
 
