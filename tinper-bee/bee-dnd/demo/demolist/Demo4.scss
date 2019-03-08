@@ -1,0 +1,28 @@
+
+.demo4 {
+  width: 250px;
+  line-height: 50px;
+  border: 1px solid rgb(30, 136, 229);
+  color: #000000;
+  text-align: center;
+  cursor: all-scroll;
+  border: 1px solid rgb(30, 136, 229);
+  height: 80px;
+}
+
+.demo4 .handle {
+  height: 20px;
+  line-height: 20px;
+  background: lightgrey;
+  margin: 10px;
+}
+
+.demo4 .drag-context {
+  height: 50px;
+  line-height: 50px;
+}
+
+.demo-4>div {
+  display: inline-block;
+  padding: 10px;
+}

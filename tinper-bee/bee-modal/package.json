@@ -1,0 +1,71 @@
+{
+ "name": "bee-modal",
+ "version": "2.0.0",
+ "description": "ModalDialogl ui component for react",
+ "keywords": [
+  "react",
+  "react-component",
+  "bee-modal",
+  "iuap-design",
+  "tinper-bee",
+  "Modal"
+ ],
+ "engines": {
+  "node": ">=4.0.0"
+ },
+ "homepage": "https://github.com/tinper-bee/bee-modal.git",
+ "author": "Yonyou FED",
+ "repository": "http://github.com/tinper-bee/bee-modal",
+ "bugs": "https://github.com/tinper-bee/bee-modal.git/issues",
+ "license": "MIT",
+ "main": "./build/index.js",
+ "config": {
+  "port": 3000,
+  "commitizen": {
+   "path": "./node_modules/cz-conventional-changelog"
+  }
+ },
+ "scripts": {
+  "dev": "bee-tools run start",
+  "build": "bee-tools run build",
+  "lint": "bee-tools-test run lint",
+  "test": "bee-tools-test run test",
+  "chrome": "bee-tools-test run chrome",
+  "coveralls": "bee-tools-test run coverage",
+  "browsers": "bee-tools-test run browsers",
+  "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
+  "pub": "bee-tools run pub"
+ },
+ "dependencies": {
+  "bee-datepicker": "^2.0.6",
+  "bee-loading": "^1.0.4",
+  "bee-overlay": "^1.0.2",
+  "bee-popconfirm": "^2.0.0",
+  "bee-select": "^2.0.4",
+  "bee-transition": "^0.2.2",
+  "classnames": "^2.2.5",
+  "dom-helpers": "3.0.0",
+  "tinper-bee-core": "latest"
+ },
+ "peerDependencies": {
+  "react": "^15.3.0 || ^16.0",
+  "react-dom": "^15.3.0 || ^16.0",
+  "prop-types": "15.6.0"
+ },
+ "devDependencies": {
+  "bee-button": "latest",
+  "bee-form-control": "latest",
+  "bee-form-group": "latest",
+  "bee-label": "latest",
+  "bee-layout": "latest",
+  "bee-panel": "latest",
+  "chai": "^3.5.0",
+  "console-polyfill": "~0.2.1",
+  "cz-conventional-changelog": "^2.1.0",
+  "enzyme": "^2.4.1",
+  "es5-shim": "~4.1.10",
+  "react": "15.3.2",
+  "react-addons-test-utils": "15.3.2",
+  "react-dom": "15.3.2"
+ }
+}

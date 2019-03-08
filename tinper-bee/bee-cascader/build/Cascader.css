@@ -1,0 +1,55 @@
+/* FormGroup */
+/*  Navlayout  */
+.cascader-container {
+  position: relative; }
+
+.cascader-header input {
+  padding: 4px 7px;
+  width: 100%;
+  height: 32px;
+  font-size: 14px;
+  line-height: 32px;
+  color: #666;
+  background-image: none;
+  border: 1px solid rgb(165, 173, 186);
+  border-radius: 3px;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+  background-color: transparent;
+  cursor: pointer;
+  width: 100%;
+  z-index: 1;
+  outline: 0; }
+  .cascader-header input:focus {
+    border-color: #66afe9;
+    outline: 0; }
+
+.cascader-content {
+  position: absolute;
+  left: 0px;
+  margin-top: 2px;
+  display: inline-flex;
+  z-index: 2;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2); }
+  .cascader-content ul {
+    display: inline-block;
+    border-left: 0;
+    min-width: 100px;
+    vertical-align: middle;
+    border-radius: 3px;
+    padding: 0px;
+    margin: 0; }
+  .cascader-content ul:first-child {
+    border-left: 1px solid #ccc; }
+  .cascader-content li {
+    padding: 6px 8px;
+    font-size: 14px;
+    list-style: none;
+    cursor: pointer; }
+    .cascader-content li:hover {
+      background-color: rgb(235, 236, 240); }
+  .cascader-content i.uf {
+    padding: 1px 5px;
+    float: right;
+    color: #424242;
+    font-size: 12px; }

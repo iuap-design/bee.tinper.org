@@ -1,0 +1,67 @@
+/* FormGroup */
+/*  Navlayout  */
+.u-tile {
+  background: #fff;
+  border-radius: 2px;
+  font-size: 12px;
+  position: relative;
+  overflow: hidden;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+  width: 100%;
+  padding: 24px;
+  padding-bottom: 14px; }
+
+a.u-tile {
+  display: inline-block;
+  text-decoration: none;
+  color: #757575; }
+
+.u-tile-bordered {
+  border: 1px solid #e9e9e9; }
+
+.u-tile:hover {
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2);
+  border-color: transparent;
+  z-index: 1; }
+
+.u-tile h3, .u-tile h4 {
+  line-height: 0.2; }
+
+.u-tile h1 {
+  margin-bottom: 0;
+  font-size: 48px; }
+
+.u-tile h4 {
+  padding-top: 0;
+  margin-top: 0; }
+
+.u-tile-hover-primary {
+  border-color: rgb(30,136,229); }
+
+.u-tile-hover-primary:hover {
+  box-shadow: 0 1px 6px rgb(66,165,245); }
+
+.u-tile-hover-danger {
+  border-color: rgb(244,67,54); }
+
+.u-tile-hover-danger:hover {
+  box-shadow: 0 1px 6px rgb(229,115,115); }
+
+.u-tile-hover-warning {
+  border-color: rgb(255,152,0); }
+
+.u-tile-hover-warning:hover {
+  box-shadow: 0 1px 6px rgb(255,183,77); }
+
+.u-tile-hover-info:hover {
+  box-shadow: 0 1px 6px rgb(77,208,225); }
+
+.u-tile-hover-info {
+  border-color: rgb(0,188,212); }
+
+.u-tile-hover-success {
+  border-color: rgb(76,175,80); }
+
+.u-tile-hover-success:hover {
+  box-shadow: 0 1px 6px rgb(129,199,132); }

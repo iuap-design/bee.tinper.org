@@ -1,0 +1,26 @@
+.u-panel .u-panel-heading {
+  padding: 0;
+}
+.horizontal-submenu  {
+  display: flex;
+  justify-content: center;
+  margin-top: 17px;
+}
+.dropdown-menu.u-dropdown {
+  left: 30% !important;
+  margin-top: 68px;
+}
+.dropdown-menu {
+  .u-dropdown-menu > .u-dropdown-menu-item {
+    margin-top: 5px;
+    border-bottom: 2px solid transparent;
+    cursor: default;
+    padding: 0 20px;
+
+  }
+  .u-dropdown-menu > .u-dropdown-menu-item:hover, .u-dropdown-menu > .u-dropdown-menu-item-active, .u-dropdown-menu > .u-dropdown-menu-item-selected {
+    background: #fff;
+    border-bottom-color: red;
+    border-radius: 0;
+  }
+}

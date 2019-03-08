@@ -1,0 +1,77 @@
+/* FormGroup */
+/*  Navlayout  */
+.u-timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0; }
+  .u-timeline a {
+    color: #108ee9;
+    background: transparent;
+    text-decoration: none;
+    outline: none;
+    cursor: pointer; }
+    .u-timeline a:hover {
+      color: #49a9ee; }
+  .u-timeline-item {
+    position: relative;
+    padding: 0 0 12px 0;
+    list-style: none;
+    margin: 0; }
+    .u-timeline-item-tail {
+      position: absolute;
+      left: 5px;
+      top: 0;
+      height: 100%;
+      border-left: 2px solid #e9e9e9; }
+    .u-timeline-item-pending .u-timeline-item-tail {
+      display: none; }
+    .u-timeline-item-head {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      background-color: #fff;
+      border-radius: 100px;
+      border: 2px solid transparent; }
+      .u-timeline-item-head-primary {
+        border-color: rgb(245, 60, 50);
+        color: rgb(245, 60, 50); }
+      .u-timeline-item-head-news {
+        border-color: rgb(33,150,243);
+        color: rgb(33,150,243); }
+      .u-timeline-item-head-danger {
+        border-color: rgb(244,67,54);
+        color: rgb(244,67,54); }
+      .u-timeline-item-head-success {
+        border-color: rgb(76,175,80);
+        color: rgb(76,175,80); }
+      .u-timeline-item-head-warning {
+        border-color: rgb(255,152,0);
+        color: rgb(255,152,0); }
+      .u-timeline-item-head-info {
+        border-color: rgb(0,188,212);
+        color: rgb(0,188,212); }
+    .u-timeline-item-head-custom {
+      position: absolute;
+      text-align: center;
+      width: 40px;
+      left: -14px;
+      line-height: 1;
+      margin-top: 6px;
+      border: 0;
+      height: auto;
+      border-radius: 0;
+      padding: 3px 0;
+      font-size: 12px;
+      transform: translateY(-50%); }
+    .u-timeline-item-content {
+      padding: 0 0 10px 24px;
+      font-size: 12px;
+      position: relative;
+      top: -3px; }
+    .u-timeline-item-last .u-timeline-item-tail {
+      border-left: 2px dotted #e9e9e9;
+      display: none; }
+    .u-timeline-item-last .u-timeline-item-content {
+      min-height: 48px; }
+  .u-timeline-pending .u-timeline-item-last .u-timeline-item-tail {
+    display: block; }

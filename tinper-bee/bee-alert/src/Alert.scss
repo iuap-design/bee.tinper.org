@@ -1,0 +1,78 @@
+@import "../node_modules/tinper-bee-core/scss/minxin-variables";
+@import "../node_modules/tinper-bee-core/scss/minxin-mixins";
+
+.u-alert-dismissable, .alert-dismissible {
+  padding-right: 35px;
+}
+
+.u-alert {
+  position: relative;
+  padding: $alert-padding;
+  border: 1px solid transparent;
+  border-radius: $alert-border-radius;
+  font-size: $alert-font-size;
+  //.alert-text {
+  //  padding-left: $alert-text-padding-left;
+  //  padding-right: $alert-text-padding-right;
+  //}
+  .close {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    font-size: $alert-close-font-size;
+    font-weight: $alert-close-font-weight;
+    line-height: 1;
+    color: #000;
+    text-shadow: 0 1px 0 #fff;
+    opacity: $alert-close-opacity;
+    filter: alpha(opacity=20);
+    cursor: pointer;
+  }
+}
+
+.u-alert-success.u-alert {
+  @include alert-styles-variant($alert-success-bg, $alert-success-color);
+}
+
+.u-alert-news.u-alert {
+  @include alert-styles-variant($alert-news-bg, $alert-news-color);
+}
+
+.u-alert-info.u-alert {
+  @include alert-styles-variant($alert-info-bg, $alert-info-color);
+}
+
+.u-alert-warning.u-alert {
+  @include alert-styles-variant($alert-warning-bg, $alert-warning-color);
+}
+
+.u-alert-danger.u-alert {
+  @include alert-styles-variant($alert-danger-bg, $alert-danger-color);
+}
+
+.dark.u-alert-success.u-alert {
+  @include alert-styles-variant($alert-dark-success-bg, $snackbar-color);
+}
+
+.dark.u-alert-news.u-alert {
+  @include alert-styles-variant($alert-dark-news-bg, $snackbar-color);
+}
+
+.dark.u-alert-info.u-alert {
+  @include alert-styles-variant($alert-dark-info-bg, $snackbar-color);
+}
+
+.dark.u-alert-warning.u-alert {
+  @include alert-styles-variant($alert-dark-warning-bg, $snackbar-color);
+}
+
+.dark.u-alert-danger.u-alert {
+  @include alert-styles-variant($alert-dark-danger-bg, $snackbar-color);
+}
+
+.u-alert-dismissable .close, .u-alert-dismissible .close {
+  position: relative;
+  top: -2px;
+  right: -21px;
+  color: inherit;
+}

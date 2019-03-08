@@ -1,0 +1,56 @@
+@import "../node_modules/tinper-bee-core/scss/index.scss";
+@import "../src/Carousel.scss";
+@import "../node_modules/bee-panel/src/Panel.scss";
+@import "../node_modules/bee-layout/src/Layout.scss";
+@import "../node_modules/bee-button/src/Button.scss";
+@import "../node_modules/bee-transition/src/Transition.scss";
+
+#customized-pagination{
+  width: 640px;
+  height: 360px;
+}
+.carousel-demo-two, .carousel-demo-three, .carousel-demo-four{
+  width: 640px;
+}
+.carousel-demo-five{
+  width: 100%;
+}
+.carousel-demo-1{
+  height: 360px;
+  background: url("http://design.yonyoucloud.com/static/bee.tinper.org-demo/swiper-demo-1-min.jpg")no-repeat;
+  background-size: cover;
+}
+.carousel-demo-2{
+  height: 360px;
+  background: url("http://design.yonyoucloud.com/static/bee.tinper.org-demo/swiper-demo-2-min.jpg")no-repeat;
+  background-size: cover;
+}
+.carousel-demo-3{
+  height: 360px;
+  background: url("http://design.yonyoucloud.com/static/bee.tinper.org-demo/swiper-demo-3-min.jpg")no-repeat;
+  background-size: cover;
+}
+.carousel-demo-4{
+  height: 360px;
+  background: url("http://design.yonyoucloud.com/static/bee.tinper.org-demo/swiper-demo-4-min.jpg")no-repeat;
+  background-size: cover;
+}
+.carousel-demo-5{
+  height: 360px;
+  background: url("http://design.yonyoucloud.com/static/bee.tinper.org-demo/swiper-demo-5-min.jpg")no-repeat;
+  background-size: cover;
+}
+#customized-pagination .swiper-pagination-bullet {
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    line-height: 21px;
+    font-size: 11px;
+    color: #1e70cd;
+    border: 1px solid #1e70cd;
+    opacity: 1;
+    background: #fff;
+}
+#customized-pagination .swiper-pagination-bullet-active {
+	background: pink;
+}
