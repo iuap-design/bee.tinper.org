@@ -17,11 +17,11 @@
         </div>
         <div class="u-col-md-7 ">
             <ul class="u-nav u-navbar-nav nav-list u-navbar-toolbar u-navbar-right u-navbar-toolbar-right">
-                <li><a href="">首页</a></li>
+                <li><a href="//iuapdesign.online.app.yyuap.com">首页</a></li>
                 <li><a href="">设计语言</a></li>
-                <li class="active"><a href="">基础组件</a></li>
-                <li><a href="">应用组件</a></li>
-                <li><a href="">典型案例</a></li>
+                <li class="active"><a href="#">基础组件</a></li>
+                <li><a href="//design.yyuap.com/tinper-acs">应用组件</a></li>
+                <li><a href="//design.yyuap.com/case/preview" target="_blank">典型案例</a></li>
                 <li class='lang-select'>
                     <select class='u-select nav-lang-select' >
                         <option value="zh_CN">简体中文</option>
