@@ -25,8 +25,8 @@
                 <li class='lang-select'>
                     <select class='u-select nav-lang-select' >
                         <option value="zh_CN">简体中文</option>
-                        <option value="zh_TW">繁体中文</option>
-                        <option value="en_US">英文</option>
+                        <option disabled value="zh_TW">繁体中文</option>
+                        <option disabled value="en_US">英文</option>
                     </select>
                     <span class="uf uf-arrow-down"></span>
                 </li>

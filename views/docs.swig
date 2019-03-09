@@ -10,9 +10,9 @@
         <link href="https://tinper-acs.github.io/{{docId}}/styles.css" type="text/css" rel="stylesheet" />
     {% endif %}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" /> 
-    <link href="/css/md.css" type="text/css" rel="stylesheet" />
-    <link href="/css/doc-search.css" type="text/css" rel="stylesheet" />
-    <link href="/css/footer.css" type="text/css" rel="stylesheet" />
+    <link href="./css/md.css" type="text/css" rel="stylesheet" />
+    <link href="./css/doc-search.css" type="text/css" rel="stylesheet" />
+    <link href="./css/footer.css" type="text/css" rel="stylesheet" />
 {% endblock%}
 
 {% block script %}

@@ -7,8 +7,7 @@
     "getTag": "node server/getTag.js",
     "createFile": "node server/createFile.js",
     "server": "node server/index.js",
-    "init": "node server/gitInit.js",
-    "update": "node server/gitUpdate.js"
+    "init": "node server/gitInit.js"
   },
   "repository": {
     "type": "git",
