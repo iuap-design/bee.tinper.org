@@ -1,3 +1,4 @@
+
 .footer {
     min-height: 500px;
     background: #424242;
@@ -16,12 +17,17 @@
     line-height: 30px
 }
 
-.footer .footer-top-item h5 {
-    margin-top: 0
+.footer .footer-top-item p {
+    margin-top: 0;
+    font: 16px
 }
 
 .footer .footer-top-item a {
     color: #fff
+}
+
+.footer .footer-top-item a:hover {
+    color: #e14c46
 }
 
 .footer .footer-top-item img {
@@ -31,21 +37,31 @@
 
 .footer .footer-middle .footer-line {
     height: 1px;
-    background: #959aa5;
+    background: #666;
     margin-left: -11%;
-    width: 122%;
+    margin-right: -11%;
 }
 
 .footer .footer-base {
     display: table;
-    height: 85px
+    height: 80px
 }
 
 .footer .footer-base .footer-base-font {
     display: table-cell;
     font-size: 14px;
-    color: #959aa5;
+    color: #fff;
     vertical-align: middle;
     text-align: center;
     line-height: 1
+}
+
+.footer .footer-base .footer-base-font p {
+    margin-top: 8px;
+    margin-bottom: 7px
+}
+
+/* 适配 */
+.footer p{
+    color: #fff;
 }

@@ -100,15 +100,15 @@ body {
     color: #737373;
     background-color: white;
 }
-.table-container table {
+.demo-container .table-container table {
     margin: 10px 0 15px 0;
     border-collapse: collapse;
 }
-.table-container td,.table-containe th {
+.demo-container .table-container td,.table-containe th {
     border: 1px solid #ddd;
     padding: 3px 10px;
 }
-th {
+.demo-container th {
     padding: 5px 10px;
 }
 
@@ -119,71 +119,71 @@ th {
     /*color: #0050a3;*/
     /*text-decoration: none;*/
 /*}*/
-a img {
+.demo-container a img {
     border: none;
 }
-p {
+.demo-container p {
     /*margin-bottom: 9px;*/
     font-size: 14px;
     color: #5e6d82;
     line-height: 1.5em;
 }
-h1,h2,h3,h4,h5,h6 {
+.demo-container h1,h2,h3,h4,h5,h6 {
     color: #1f2f3d;
     line-height: 150%;
     margin:35px 0 15px;
     font-weight: 400;
 }
-h1 {
+.demo-container h1 {
     margin-bottom: 18px;
     font-size: 30px;
 }
-h2 {
+.demo-container h2 {
     font-size: 28px;
 }
-h3 {
+.demo-container h3 {
     margin: 55px 0 20px;
     font-size: 22px;
 }
-h4 {
+.demo-container h4 {
     font-size: 16px;
     font-weight: 700;
 }
-h5 {
+.demo-container h5 {
     font-size: 14px;
 }
-h6 {
+.demo-container h6 {
     font-size: 13px;
 }
-hr {
+.demo-container hr {
     margin: 0 0 19px;
     border: 0;
     border-bottom: 1px solid #ccc;
 }
-blockquote {
+.demo-container blockquote {
     padding: 13px 13px 21px 15px;
     margin-bottom: 18px;
     font-family:georgia,serif;
     font-style: italic;
 }
-blockquote:before {
+.demo-container blockquote:before {
     content:"\201C";
     font-size:40px;
     margin-left:-10px;
     font-family:georgia,serif;
     color:#eee;
 }
-blockquote p {
+.demo-container blockquote p {
     font-size: 14px;
     font-weight: 300;
     line-height: 18px;
     margin-bottom: 0;
     font-style: italic;
 }
-code, pre {
+.demo-container code, pre {
     font-family: Monaco, Andale Mono, Courier New, monospace;
 }
-code {
+.demo-container code {
     background-color: #fee9cc;
     color: rgba(0, 0, 0, 0.75);
     padding: 1px 3px;
@@ -192,7 +192,7 @@ code {
     -moz-border-radius: 3px;
     border-radius: 3px;
 }
-pre {
+.demo-container pre {
     display: block;
     /*padding: 14px;*/
     /* margin: 0 0 18px; */
@@ -203,13 +203,13 @@ pre {
     white-space: pre-wrap;
     word-wrap: break-word;
 }
-pre code {
+.demo-container pre code {
     background-color: #fff;
     color:#737373;
     font-size: 11px;
     padding: 0;
 }
-sup {
+.demo-container sup {
     font-size: 0.83em;
     vertical-align: super;
     line-height: 0;
