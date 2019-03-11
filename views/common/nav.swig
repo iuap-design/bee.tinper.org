@@ -6,8 +6,8 @@
                 <!-- <span class="sr-only">Toggle navigation</span> -->
                 <span class="u-hamburger-bar"></span>
             </button>
-            <a class="u-navbar-brand" href="//bee.tinper.org">
-                <img src="//design.yonyoucloud.com/static/tinper-bee/logo/iuapdesign.svg" alt="">
+            <a class="u-navbar-brand" href="/design">
+                <img src="//design.yonyoucloud.com/static/tinper-bee/logo/iuapdesignz.svg" alt="">
             </a>
             <span class='nav-split'>|</span>
             <span class="search-area">

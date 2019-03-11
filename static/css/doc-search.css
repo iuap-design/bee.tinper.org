@@ -2,8 +2,7 @@
 .search-area{
     display: inline-block;
     position: relative;
-    top: 7px;
-    left: -14px;
+    left: -5px;
 }
 .search-area input{
     height: 30px;
@@ -21,6 +20,7 @@
 .search-area .uf-search:before{
   z-index: 2;
   position: relative;
+  color: #959aa5;
 }
 .algolia-autocomplete {
     line-height: normal;

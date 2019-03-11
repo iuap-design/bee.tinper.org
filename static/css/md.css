@@ -458,7 +458,7 @@ table th {
 }
 .demo-web-navbar.u-navbar .u-navbar-brand {
     padding: 0;
-    padding-left: 5px;
+    line-height: 65px;
 }
 .u-navbar-fixed-top{
     color: #444;
@@ -466,10 +466,7 @@ table th {
     height: 65px;
     line-height: 65px;
 }
-.demo-web-navbar.u-navbar .u-navbar-brand img{
-    height: 80px;
-    width: 100px;
-}
+
 .u-navbar .u-navbar-nav>li{
     height: 65px;
     line-height: 65px;
@@ -484,9 +481,7 @@ table th {
     color: #444;
 }
 .u-navbar .u-navbar-header{
-    position: relative;
-    bottom: 6px;
-    padding: 0;
+    line-height: 65px;
 }
 .u-navbar .u-navbar-nav>li>a:hover{
     color: #e14c46;
@@ -494,9 +489,6 @@ table th {
 .u-navbar .u-navbar-header .nav-split{
     color: #ccc;
     margin: 0 20px;
-    position: relative;
-    top: 6px;
-    right: 10px;
 }
 .u-navbar-default{
     background: #fff;
