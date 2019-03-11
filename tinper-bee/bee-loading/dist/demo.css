@@ -2155,13 +2155,13 @@
   color: rgb(255,255,255) !important; }
 
 .bg-primary {
-  background-color: rgb(30,136,229) !important; }
+  background-color: rgb(245, 60, 50) !important; }
 
 .bg-primary-contrast {
   background-color: rgb(255,255,255) !important; }
 
 .bg-primary-dark {
-  background-color: rgb(21,101,192) !important; }
+  background-color: rgb(230, 0, 18) !important; }
 
 .bg-accent {
   background-color: rgb(67,160,71) !important; }
@@ -2170,13 +2170,13 @@
   background-color: rgb(255,255,255) !important; }
 
 .text-primary {
-  color: rgb(30,136,229) !important; }
+  color: rgb(245, 60, 50) !important; }
 
 .text-primary-contrast {
   color: rgb(255,255,255) !important; }
 
 .text-primary-dark {
-  color: rgb(21,101,192) !important; }
+  color: rgb(230, 0, 18) !important; }
 
 .text-accent {
   color: rgb(67,160,71) !important; }
@@ -5411,6 +5411,8 @@ a, .mdl-accordion, .mdl-button, .mdl-card, .mdl-checkbox, .mdl-dropdown-menu,
   border: 1px solid #0084ff;
   overflow: hidden;
   font-size: 14px; }
+  .demo2 .u-loading-backdrop {
+    z-index: 1029; }
 
 .demo3 {
   position: relative;
@@ -5419,6 +5421,8 @@ a, .mdl-accordion, .mdl-button, .mdl-card, .mdl-checkbox, .mdl-dropdown-menu,
   border: 1px solid #0084ff;
   overflow: hidden;
   font-size: 14px; }
+  .demo3 .u-loading-backdrop {
+    z-index: 1029; }
 
 .demo4 {
   position: relative;
@@ -5427,5 +5431,7 @@ a, .mdl-accordion, .mdl-button, .mdl-card, .mdl-checkbox, .mdl-dropdown-menu,
   border: 1px solid #0084ff;
   overflow: hidden;
   font-size: 14px; }
+  .demo4 .u-loading-backdrop {
+    z-index: 1029; }
 
 /*# sourceMappingURL=demo.css.map */

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>tinper-bee</title>
+    <link href="//design.yonyoucloud.com/static/tinper-bee/2.0.3/assets/tinper-bee.css" rel="stylesheet" media="screen" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" /> 
+    <link rel="stylesheet" href="./css/atom-one-dark.css" type="text/css"/>
+    <link rel="stylesheet" href="./css/layout.css" type="text/css"/>
+    <link rel="stylesheet" href="./css/narbar.css" type="text/css"/>
+    <link rel="stylesheet" href="./css/sidebar.css" type="text/css"/>
+    <link rel="stylesheet" href="./css/docs.css" type="text/css"/>
+    <link rel="stylesheet" href="./css/footer.css" type="text/css"/>
+</head>
+<script src="//design.yonyoucloud.com/static/react/16.6.0/umd/react.development.js"></script>
+<script src="//design.yonyoucloud.com/static/react/16.6.0/umd/react-dom.development.js"></script>
+<script src="//design.yonyoucloud.com/static/prop-types/15.6.0/prop-types.min.js"></script>
+<body>
+    <div class="navbar">
+        <% include navbar.html %>
+    </div>
+    <div class="content">
+        <div class="sidebar">
+            <% include sidebar.html %>
+        </div>
+        <div class="docs">
+            <% include docs.html %>
+        </div>
+        <div class="footer-out">
+            <% include footer.html %>
+        </div>
+    </div>
+    
+</body>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+ 
+<script>
+    docsearch({ 
+            apiKey: 'd388a4977faabf821db64112c8abdcf7', 
+            indexName: 'bee_tinper', 
+            inputSelector: '#componentSearch', 
+            debug: false // Set debug to true if you want to inspect the dropdown 
+        }); 
+</script>
+
+</html>

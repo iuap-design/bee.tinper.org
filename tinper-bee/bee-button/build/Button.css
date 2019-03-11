@@ -106,7 +106,7 @@ input.u-button[type="submit"] {
   .u-button.u-button-primary:hover {
     background-color: rgb(230, 0, 18);
     border-color: rgb(230, 0, 18); }
-  .u-button.u-button-primary.focus, .u-button.u-button-primary:focus:hover {
+  .u-button.u-button-primary.focus, .u-button.u-button-primary:focus {
     background-color: rgb(245, 60, 50);
     border-color: rgb(245, 60, 50); }
   .u-button.u-button-primary.active, .u-button.u-button-primary:active {
@@ -120,7 +120,7 @@ input.u-button[type="submit"] {
   .u-button.u-button-secondary:hover {
     background-color: rgb(189,189,189);
     border-color: rgb(189,189,189); }
-  .u-button.u-button-secondary.focus, .u-button.u-button-secondary:focus:hover {
+  .u-button.u-button-secondary.focus, .u-button.u-button-secondary:focus {
     background-color: rgb(224,224,224);
     border-color: rgb(224,224,224); }
   .u-button.u-button-secondary.active, .u-button.u-button-secondary:active {
@@ -134,7 +134,7 @@ input.u-button[type="submit"] {
   .u-button.u-button-danger:hover {
     background-color: rgb(211,47,47);
     border-color: rgb(211,47,47); }
-  .u-button.u-button-danger.focus, .u-button.u-button-danger:focus:hover {
+  .u-button.u-button-danger.focus, .u-button.u-button-danger:focus {
     background-color: rgb(244,67,54);
     border-color: rgb(244,67,54); }
   .u-button.u-button-danger.active, .u-button.u-button-danger:active {
@@ -148,7 +148,7 @@ input.u-button[type="submit"] {
   .u-button.u-button-info:hover {
     background-color: rgb(0,151,167);
     border-color: rgb(0,151,167); }
-  .u-button.u-button-info.focus, .u-button.u-button-info:focus:hover {
+  .u-button.u-button-info.focus, .u-button.u-button-info:focus {
     background-color: rgb(0,188,212);
     border-color: rgb(0,188,212); }
   .u-button.u-button-info.active, .u-button.u-button-info:active {
@@ -162,7 +162,7 @@ input.u-button[type="submit"] {
   .u-button.u-button-warning:hover {
     background-color: rgb(245,124,0);
     border-color: rgb(245,124,0); }
-  .u-button.u-button-warning.focus, .u-button.u-button-warning:focus:hover {
+  .u-button.u-button-warning.focus, .u-button.u-button-warning:focus {
     background-color: rgb(255,152,0);
     border-color: rgb(255,152,0); }
   .u-button.u-button-warning.active, .u-button.u-button-warning:active {
@@ -176,7 +176,7 @@ input.u-button[type="submit"] {
   .u-button.u-button-success:hover {
     background-color: rgb(56,142,60);
     border-color: rgb(56,142,60); }
-  .u-button.u-button-success.focus, .u-button.u-button-success:focus:hover {
+  .u-button.u-button-success.focus, .u-button.u-button-success:focus {
     background-color: rgb(76,175,80);
     border-color: rgb(76,175,80); }
   .u-button.u-button-success.active, .u-button.u-button-success:active {
@@ -190,7 +190,7 @@ input.u-button[type="submit"] {
   .u-button.u-button-dark:hover {
     background-color: rgb(66,66,66);
     border-color: rgb(66,66,66); }
-  .u-button.u-button-dark.focus, .u-button.u-button-dark:focus:hover {
+  .u-button.u-button-dark.focus, .u-button.u-button-dark:focus {
     background-color: rgb(97,97,97);
     border-color: rgb(97,97,97); }
   .u-button.u-button-dark.active, .u-button.u-button-dark:active {
@@ -204,7 +204,7 @@ input.u-button[type="submit"] {
   .u-button.u-button-light:hover {
     background-color: rgb(189,189,189);
     border-color: rgb(189,189,189); }
-  .u-button.u-button-light.focus, .u-button.u-button-light:focus:hover {
+  .u-button.u-button-light.focus, .u-button.u-button-light:focus {
     background-color: rgb(255,255,255);
     border-color: rgb(255,255,255); }
   .u-button.u-button-light.active, .u-button.u-button-light:active {
@@ -219,7 +219,7 @@ input.u-button[type="submit"] {
     background-color: rgb(56,142,60);
     border-color: rgb(56,142,60);
     color: #fff; }
-  .u-button-border.u-button-success.focus, .u-button-border.u-button-success:focus:hover {
+  .u-button-border.u-button-success.focus, .u-button-border.u-button-success:focus {
     color: rgb(76,175,80);
     background-color: #fff;
     border-color: rgb(76,175,80); }
@@ -236,7 +236,7 @@ input.u-button[type="submit"] {
     background-color: rgb(245,124,0);
     border-color: rgb(245,124,0);
     color: #fff; }
-  .u-button-border.u-button-warning.focus, .u-button-border.u-button-warning:focus:hover {
+  .u-button-border.u-button-warning.focus, .u-button-border.u-button-warning:focus {
     color: rgb(255,152,0);
     background-color: #fff;
     border-color: rgb(255,152,0); }
@@ -253,7 +253,7 @@ input.u-button[type="submit"] {
     background-color: rgb(211,47,47);
     border-color: rgb(211,47,47);
     color: #fff; }
-  .u-button-border.u-button-danger.focus, .u-button-border.u-button-danger:focus:hover {
+  .u-button-border.u-button-danger.focus, .u-button-border.u-button-danger:focus {
     color: rgb(244,67,54);
     background-color: #fff;
     border-color: rgb(244,67,54); }
@@ -270,7 +270,7 @@ input.u-button[type="submit"] {
     background-color: rgb(0,151,167);
     border-color: rgb(0,151,167);
     color: #fff; }
-  .u-button-border.u-button-info.focus, .u-button-border.u-button-info:focus:hover {
+  .u-button-border.u-button-info.focus, .u-button-border.u-button-info:focus {
     color: rgb(0,188,212);
     background-color: #fff;
     border-color: rgb(0,188,212); }
@@ -287,7 +287,7 @@ input.u-button[type="submit"] {
     background-color: rgb(230, 0, 18);
     border-color: rgb(230, 0, 18);
     color: #fff; }
-  .u-button-border.u-button-primary.focus, .u-button-border.u-button-primary:focus:hover {
+  .u-button-border.u-button-primary.focus, .u-button-border.u-button-primary:focus {
     color: rgb(245, 60, 50);
     background-color: #fff;
     border-color: rgb(245, 60, 50); }
@@ -304,7 +304,7 @@ input.u-button[type="submit"] {
     background-color: rgb(189,189,189);
     border-color: rgb(189,189,189);
     color: #fff; }
-  .u-button-border.u-button-secondary.focus, .u-button-border.u-button-secondary:focus:hover {
+  .u-button-border.u-button-secondary.focus, .u-button-border.u-button-secondary:focus {
     color: rgb(224,224,224);
     background-color: #fff;
     border-color: rgb(224,224,224); }
@@ -321,7 +321,7 @@ input.u-button[type="submit"] {
     background-color: rgb(66,66,66);
     border-color: rgb(66,66,66);
     color: #fff; }
-  .u-button-border.u-button-dark.focus, .u-button-border.u-button-dark:focus:hover {
+  .u-button-border.u-button-dark.focus, .u-button-border.u-button-dark:focus {
     color: rgb(97,97,97);
     background-color: #fff;
     border-color: rgb(97,97,97); }
@@ -338,7 +338,7 @@ input.u-button[type="submit"] {
     background-color: rgb(189,189,189);
     border-color: rgb(189,189,189);
     color: #fff; }
-  .u-button-border.u-button-light.focus, .u-button-border.u-button-light:focus:hover {
+  .u-button-border.u-button-light.focus, .u-button-border.u-button-light:focus {
     color: rgb(97,97,97);
     background-color: #fff;
     border-color: rgb(255,255,255); }

@@ -355,12 +355,12 @@ class InputNumber extends Component {
         value = format ? format(value) : value;
 
         let disabledCursor = disabled? ' disabled-cursor':'';
-
+        let disabledCon = disabled? ' disabled-con':'';
         return (
             <div>
                 {
                     iconStyle === 'double' ? (
-                        <InputGroup className={classnames(className, classes)}>
+                        <InputGroup className={classnames(className, classes,disabledCon)}>
                             <InputGroup.Addon
                                 className={(minusDisabled && 'disabled' ) + disabledCursor}
                                 onMouseDown={ this.handleReduceMouseDown}
@@ -388,6 +388,7 @@ class InputNumber extends Component {
                         <InputGroup
                             className={classnames(className, classes)}
                             simple
+                            disabledCon
                         >
                             <FormControl 
                                 {...others}

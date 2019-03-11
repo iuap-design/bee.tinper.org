@@ -69,7 +69,7 @@ class Demo3 extends Component {
                     <Modal.Header closeButton>
                         <Modal.Title > 我来组成头部 </Modal.Title>
                     </Modal.Header >
-                    <Modal.Body style={{maxHeight: "430px", overflow: "auto"}}>
+                    <Modal.Body>
                         <h4> 这是一个沉默的标题 </h4>
 
                         <p> 一些描述。。。 </p>

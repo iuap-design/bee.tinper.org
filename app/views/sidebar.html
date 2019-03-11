@@ -1,0 +1,57 @@
+<div>
+    <ul class="menu-components">
+        <% for (key in sidebar){ var title = sidebar[key]; %>
+            <li class="menu-group">
+                <% if(title.children){ var child = title.children; %>
+                    <div class="menu-item menu-item-components open" >
+                        <span class="menu-item-components-text">
+                            <%= key %>
+                        </span>
+                        <% for (heard in child) { var acs = child[heard]; %>
+                            <div class="menu-item-heard">
+                                <%= heard %>
+                                <% for (com in acs) { %>
+                                    <% if(acs[com].component == active) {%>
+                                        <div class="menu-item-com active">
+                                            <a href="./<%= acs[com].component %>" title="<%= com %>"><%= com %></a>
+                                        </div>
+                                    <%} else {%>
+                                        <div class="menu-item-com">
+                                            <a href="./<%= acs[com].component %>" title="<%= com %>"><%= com %></a>
+                                        </div>
+                                    <% } %>
+                                <% } %>
+                            </div>
+                        <% } %>
+                    </div>
+                <% } else { %>
+                    <% if(sidebar[key].component==active){ %>
+                        <div class="menu-item active">
+                            <a href="./<%= sidebar[key].component %>" title="<%= key %>"><%= key %></a>
+                        </div>
+                    <% } else { %>
+                        <div class="menu-item">
+                            <a href="./<%= sidebar[key].component %>" title="<%= key %>"><%= key %></a>
+                        </div>
+                    <% } %>
+                 <% } %> 
+            </li>
+        <% } %> 
+    </ul>
+</div>
+
+
+<script>
+    let nodeList = document.querySelectorAll('.menu-item-components-text');
+    nodeList.forEach(item=>{
+        item.onclick=(e)=>{
+            let outDiv = document.querySelector('.menu-item-components')
+            let cls = outDiv.getAttribute('class');
+            if(cls.indexOf('open')!=-1){//打开状态
+                outDiv.setAttribute('class','menu-item menu-item-components');
+            } else {//关闭状态
+                outDiv.setAttribute('class','menu-item menu-item-components open');
+            }
+        }
+    })
+</script>

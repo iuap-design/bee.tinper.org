@@ -26,7 +26,7 @@ class Demo1 extends Component {
           this.setState({
               showRotate: false
           })
-      }, 5000)
+      }, 3000)
 
   }
 
@@ -38,7 +38,7 @@ class Demo1 extends Component {
             this.setState({
                 showLine: false
             })
-        }, 5000)
+        }, 3000)
 
     }
 

@@ -1,7 +1,7 @@
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-				value: true
+	value: true
 });
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -31,47 +31,47 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
 
 var propTypes = {
-				validationState: _propTypes2["default"].oneOf(['success', 'warning', 'error'])
+	validationState: _propTypes2["default"].oneOf(['success', 'warning', 'error'])
 };
 var defaultProps = {
-				clsPrefix: 'u-form-group'
+	clsPrefix: 'u-form-group'
 };
 
 var FormGroup = function (_React$Component) {
-				_inherits(FormGroup, _React$Component);
+	_inherits(FormGroup, _React$Component);
 
-				function FormGroup(props) {
-								_classCallCheck(this, FormGroup);
+	function FormGroup(props) {
+		_classCallCheck(this, FormGroup);
 
-								return _possibleConstructorReturn(this, _React$Component.call(this, props));
-				}
+		return _possibleConstructorReturn(this, _React$Component.call(this, props));
+	}
 
-				FormGroup.prototype.render = function render() {
-								var _props = this.props,
-								    validationState = _props.validationState,
-								    className = _props.className,
-								    children = _props.children,
-								    clsPrefix = _props.clsPrefix,
-								    others = _objectWithoutProperties(_props, ['validationState', 'className', 'children', 'clsPrefix']);
+	FormGroup.prototype.render = function render() {
+		var _props = this.props,
+		    validationState = _props.validationState,
+		    className = _props.className,
+		    children = _props.children,
+		    clsPrefix = _props.clsPrefix,
+		    others = _objectWithoutProperties(_props, ['validationState', 'className', 'children', 'clsPrefix']);
 
-								var classes = {};
+		var classes = {};
 
-								if (validationState) {
-												classes['has-' + validationState] = true;
-								}
+		if (validationState) {
+			classes['has-' + validationState] = true;
+		}
 
-								var classNames = (0, _classnames2["default"])(clsPrefix, classes);
+		var classNames = (0, _classnames2["default"])(clsPrefix, classes);
 
-								return _react2["default"].createElement(
-												'div',
-												_extends({}, others, {
-																className: (0, _classnames2["default"])(className, classNames)
-												}),
-												children
-								);
-				};
+		return _react2["default"].createElement(
+			'div',
+			_extends({}, others, {
+				className: (0, _classnames2["default"])(className, classNames)
+			}),
+			children
+		);
+	};
 
-				return FormGroup;
+	return FormGroup;
 }(_react2["default"].Component);
 
 FormGroup.propTypes = propTypes;

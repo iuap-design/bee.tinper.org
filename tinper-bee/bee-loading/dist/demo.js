@@ -76,7 +76,7 @@
 	
 	var CARETUP = _react2['default'].createElement('i', { className: 'uf uf-arrow-up' });
 	
-	var Demo1 = __webpack_require__(84);var Demo2 = __webpack_require__(91);var Demo3 = __webpack_require__(92);var Demo4 = __webpack_require__(93);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 基础Loading", "code": "/**\r\n *\r\n * @title 基础Loading\r\n * @description 设置`loadingType`来修改Loading样式。默认是'rotate'。\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\r\nimport { Loading, Button } from 'tinper-bee';\r\n\n\r\nclass Demo1 extends Component {\r\n  constructor(props) {\r\n    super(props);\r\n    this.state = {\r\n      showRotate: false,\r\n        showLine: false\r\n    }\r\n  }\r\n\r\n  handleShow = () => {\r\n      this.setState({\r\n          showRotate: true\r\n      })\r\n      setTimeout(() => {\r\n          this.setState({\r\n              showRotate: false\r\n          })\r\n      }, 5000)\r\n\r\n  }\r\n\r\n    handleShowLine = () => {\r\n        this.setState({\r\n            showLine: true\r\n        })\r\n        setTimeout(() => {\r\n            this.setState({\r\n                showLine: false\r\n            })\r\n        }, 5000)\r\n\r\n    }\r\n\r\n  render() {\r\n    return (\r\n      <div>\r\n        <Button\r\n            colors=\"primary\"\r\n            onClick={this.handleShow}>\r\n          点击显示默认loading\r\n        </Button>\r\n        <Loading\r\n            fullScreen\r\n            showBackDrop={true}\r\n            show={this.state.showRotate}\r\n        />\r\n        <Button\r\n            colors=\"primary\"\r\n            style={{ marginLeft: 50 }}\r\n            onClick={this.handleShowLine}>\r\n          点击显示line loading\r\n        </Button>\r\n        <Loading\r\n            showBackDrop={true}\r\n            loadingType=\"line\"\r\n            show={this.state.showLine}\r\n        />\r\n      </div>\r\n    )\r\n  }\r\n}\r\n\r\n", "desc": " 设置`loadingType`来修改Loading样式。默认是'rotate'。" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 将Loading渲染到容器中", "code": "/**\r\n *\r\n * @title 将Loading渲染到容器中\r\n * @description 通过设置`container`属性，来控制loading渲染位置\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\r\nimport { Loading } from 'tinper-bee';\r\n\r\n\r\nclass Demo2 extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            show: true\r\n        }\r\n        this.a = null;\r\n    }\r\n\r\n\r\n    render() {\r\n        return (\r\n                <div className=\"demo2\">\r\n                    <p>\r\n                        曾经有一份真诚的爱情放在我面前，我没有珍惜，等我失去的时候我才后悔莫及，人世间最痛苦的事莫过于此。\r\n                        如果上天能够给我一个再来一次的机会，我会对那个女孩子说三个字：我爱你。\r\n                        如果非要在这份爱上加上一个期限，我希望是……\r\n                        一万年\r\n                    </p>\r\n                    <Loading container={this} show={this.state.show} />\r\n                </div>\r\n        )\r\n    }\r\n}\r\n\r\n\r\n", "desc": " 通过设置`container`属性，来控制loading渲染位置", "scss_code": ".demo2{\r\n  position: relative;\r\n  height: 100px;\r\n  width: 500px;\r\n  border: 1px solid #0084ff;\r\n  overflow: hidden;\r\n  font-size: 14px;\r\n}" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 添加描述", "code": "/**\r\n *\r\n * @title 添加描述\r\n * @description 通过添加children，来添加Loading的文字描述\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\r\nimport { Loading } from 'tinper-bee';\r\n\r\n\r\nclass Demo3 extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            show: true\r\n        }\r\n        this.a = null;\r\n    }\r\n\r\n    render() {\r\n        return (\r\n            <div className=\"demo3\">\r\n                <p>\r\n                    曾经有一份真诚的爱情放在我面前，我没有珍惜，等我失去的时候我才后悔莫及，人世间最痛苦的事莫过于此。\r\n                    如果上天能够给我一个再来一次的机会，我会对那个女孩子说三个字：我爱你。\r\n                    如果非要在这份爱上加上一个期限，我希望是……\r\n                    一万年\r\n                </p>\r\n                <Loading\r\n                    describe={true}\r\n                    container={this}\r\n                    show={this.state.show} >\r\n                    加载中\r\n                </Loading>\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\n\r\n", "desc": " 通过添加children，来添加Loading的文字描述", "scss_code": ".demo3{\r\n  position: relative;\r\n  height: 100px;\r\n  width: 500px;\r\n  border: 1px solid #0084ff;\r\n  overflow: hidden;\r\n  font-size: 14px;\r\n}" }, { "example": _react2['default'].createElement(Demo4, null), "title": " 将Loading渲染到容器中", "code": "/**\r\n *\r\n * @title 将Loading渲染到容器中\r\n * @description 通过设置`container`属性，通过传入function的方式，来控制loading渲染位置\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\r\nimport { Loading } from 'tinper-bee';\r\n\r\n\r\nclass Demo4 extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            show: true\r\n        }\r\n        this.a = null;\r\n    }\r\n    getElement =()=>{\r\n        return document.getElementById('demo4')\r\n    }\r\n\r\n\r\n    render() {\r\n        return (\r\n                <div className=\"demo4\">\r\n                    <p>\r\n                        曾经有一份真诚的爱情放在我面前，我没有珍惜，等我失去的时候我才后悔莫及，人世间最痛苦的事莫过于此。\r\n                        如果上天能够给我一个再来一次的机会，我会对那个女孩子说三个字：我爱你。\r\n                        如果非要在这份爱上加上一个期限，我希望是……\r\n                        一万年\r\n                    </p>\r\n                    <p id=\"demo4\">\r\n                    \r\n                        曾经有一份真诚的爱情放在我面前，我没有珍惜，等我失去的时候我才后悔莫及，人世间最痛苦的事莫过于此。\r\n                        如果上天能够给我一个再来一次的机会，我会对那个女孩子说三个字：我爱你。\r\n                        如果非要在这份爱上加上一个期限，我希望是……\r\n                        一万年\r\n                    </p>\r\n                    <Loading container={this.getElement} show={this.state.show} />\r\n                </div>\r\n        )\r\n    }\r\n}\r\n\r\n\r\n\r\n", "desc": " 通过设置`container`属性，通过传入function的方式，来控制loading渲染位置", "scss_code": ".demo4{\r\n  position: relative;\r\n  height: 100px;\r\n  width: 500px;\r\n  border: 1px solid #0084ff;\r\n  overflow: hidden;\r\n  font-size: 14px;\r\n}" }];
+	var Demo1 = __webpack_require__(84);var Demo2 = __webpack_require__(91);var Demo3 = __webpack_require__(92);var Demo4 = __webpack_require__(93);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 基础Loading", "code": "/**\r\n *\r\n * @title 基础Loading\r\n * @description 设置`loadingType`来修改Loading样式。默认是'rotate'。\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\r\nimport { Loading, Button } from 'tinper-bee';\r\n\n\r\nclass Demo1 extends Component {\r\n  constructor(props) {\r\n    super(props);\r\n    this.state = {\r\n      showRotate: false,\r\n        showLine: false\r\n    }\r\n  }\r\n\r\n  handleShow = () => {\r\n      this.setState({\r\n          showRotate: true\r\n      })\r\n      setTimeout(() => {\r\n          this.setState({\r\n              showRotate: false\r\n          })\r\n      }, 3000)\r\n\r\n  }\r\n\r\n    handleShowLine = () => {\r\n        this.setState({\r\n            showLine: true\r\n        })\r\n        setTimeout(() => {\r\n            this.setState({\r\n                showLine: false\r\n            })\r\n        }, 3000)\r\n\r\n    }\r\n\r\n  render() {\r\n    return (\r\n      <div>\r\n        <Button\r\n            colors=\"primary\"\r\n            onClick={this.handleShow}>\r\n          点击显示默认loading\r\n        </Button>\r\n        <Loading\r\n            fullScreen\r\n            showBackDrop={true}\r\n            show={this.state.showRotate}\r\n        />\r\n        <Button\r\n            colors=\"primary\"\r\n            style={{ marginLeft: 50 }}\r\n            onClick={this.handleShowLine}>\r\n          点击显示line loading\r\n        </Button>\r\n        <Loading\r\n            showBackDrop={true}\r\n            loadingType=\"line\"\r\n            show={this.state.showLine}\r\n        />\r\n      </div>\r\n    )\r\n  }\r\n}\r\n\r\n", "desc": " 设置`loadingType`来修改Loading样式。默认是'rotate'。" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 将Loading渲染到容器中", "code": "/**\r\n *\r\n * @title 将Loading渲染到容器中\r\n * @description 通过设置`container`属性，来控制loading渲染位置\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\r\nimport { Loading } from 'tinper-bee';\r\n\r\n\r\nclass Demo2 extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            show: true\r\n        }\r\n        this.a = null;\r\n    }\r\n\r\n\r\n    render() {\r\n        return (\r\n                <div className=\"demo2\">\r\n                    <p>\r\n                        曾经有一份真诚的爱情放在我面前，我没有珍惜，等我失去的时候我才后悔莫及，人世间最痛苦的事莫过于此。\r\n                        如果上天能够给我一个再来一次的机会，我会对那个女孩子说三个字：我爱你。\r\n                        如果非要在这份爱上加上一个期限，我希望是……\r\n                        一万年\r\n                    </p>\r\n                    <Loading container={this} show={this.state.show} />\r\n                </div>\r\n        )\r\n    }\r\n}\r\n\r\n\r\n", "desc": " 通过设置`container`属性，来控制loading渲染位置", "scss_code": ".demo2{\r\n  position: relative;\r\n  height: 100px;\r\n  width: 500px;\r\n  border: 1px solid #0084ff;\r\n  overflow: hidden;\r\n  font-size: 14px;\r\n  .u-loading-backdrop{\r\n    z-index:1029;\r\n  }\r\n}" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 添加描述", "code": "/**\r\n *\r\n * @title 添加描述\r\n * @description 通过添加children，来添加Loading的文字描述\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\r\nimport { Loading } from 'tinper-bee';\r\n\r\n\r\nclass Demo3 extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            show: true\r\n        }\r\n        this.a = null;\r\n    }\r\n\r\n    render() {\r\n        return (\r\n            <div className=\"demo3\">\r\n                <p>\r\n                    曾经有一份真诚的爱情放在我面前，我没有珍惜，等我失去的时候我才后悔莫及，人世间最痛苦的事莫过于此。\r\n                    如果上天能够给我一个再来一次的机会，我会对那个女孩子说三个字：我爱你。\r\n                    如果非要在这份爱上加上一个期限，我希望是……\r\n                    一万年\r\n                </p>\r\n                <Loading\r\n                    describe={true}\r\n                    container={this}\r\n                    show={this.state.show} >\r\n                    加载中\r\n                </Loading>\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\n\r\n", "desc": " 通过添加children，来添加Loading的文字描述", "scss_code": ".demo3{\r\n  position: relative;\r\n  height: 100px;\r\n  width: 500px;\r\n  border: 1px solid #0084ff;\r\n  overflow: hidden;\r\n  font-size: 14px;\r\n  .u-loading-backdrop{\r\n    z-index:1029;\r\n  }\r\n}" }, { "example": _react2['default'].createElement(Demo4, null), "title": " 将Loading渲染到容器中", "code": "/**\r\n *\r\n * @title 将Loading渲染到容器中\r\n * @description 通过设置`container`属性，通过传入function的方式，来控制loading渲染位置\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\r\nimport { Loading } from 'tinper-bee';\r\n\r\n\r\nclass Demo4 extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            show: true\r\n        }\r\n        this.a = null;\r\n    }\r\n    getElement =()=>{\r\n        return document.getElementById('demo4')\r\n    }\r\n\r\n\r\n    render() {\r\n        return (\r\n                <div className=\"demo4\">\r\n                    <p>\r\n                        曾经有一份真诚的爱情放在我面前，我没有珍惜，等我失去的时候我才后悔莫及，人世间最痛苦的事莫过于此。\r\n                        如果上天能够给我一个再来一次的机会，我会对那个女孩子说三个字：我爱你。\r\n                        如果非要在这份爱上加上一个期限，我希望是……\r\n                        一万年\r\n                    </p>\r\n                    <p id=\"demo4\">\r\n                    \r\n                        曾经有一份真诚的爱情放在我面前，我没有珍惜，等我失去的时候我才后悔莫及，人世间最痛苦的事莫过于此。\r\n                        如果上天能够给我一个再来一次的机会，我会对那个女孩子说三个字：我爱你。\r\n                        如果非要在这份爱上加上一个期限，我希望是……\r\n                        一万年\r\n                    </p>\r\n                    <Loading container={this.getElement} show={this.state.show} />\r\n                </div>\r\n        )\r\n    }\r\n}\r\n\r\n\r\n\r\n", "desc": " 通过设置`container`属性，通过传入function的方式，来控制loading渲染位置", "scss_code": ".demo4{\r\n  position: relative;\r\n  height: 100px;\r\n  width: 500px;\r\n  border: 1px solid #0084ff;\r\n  overflow: hidden;\r\n  font-size: 14px;\r\n  .u-loading-backdrop{\r\n    z-index:1029;\r\n  }\r\n}" }];
 	
 	var Demo = function (_Component) {
 	    _inherits(Demo, _Component);
@@ -2119,7 +2119,10 @@
 	  }
 	
 	  return (0, _createChainableTypeChecker2.default)(allPropTypes);
-	}
+	} /**
+	   * This source code is quoted from rc-util.
+	   * homepage: https://github.com/react-component/util
+	   */
 
 /***/ }),
 /* 29 */
@@ -2139,6 +2142,10 @@
 	 */
 	
 	// Mostly taken from ReactPropTypes.
+	
+	/* This source code is quoted from rc-util.
+	 * homepage: https://github.com/react-component/util
+	 */
 	
 	function createChainableTypeChecker(validate) {
 	  function checkType(isRequired, props, propName, componentName, location, propFullName) {
@@ -2174,7 +2181,11 @@
 	
 	exports.__esModule = true;
 	
-	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; /**
+	                                                                                                                                                                                                                                                                               * This source code is quoted from rc-util.
+	                                                                                                                                                                                                                                                                               * homepage: https://github.com/react-component/util
+	                                                                                                                                                                                                                                                                               */
+	
 	
 	var _react = __webpack_require__(4);
 	
@@ -2218,8 +2229,10 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	var warned = {};
-	
+	var warned = {}; /**
+	                  * This source code is quoted from rc-util.
+	                  * homepage: https://github.com/react-component/util
+	                  */
 	function deprecated(validator, reason) {
 	  return function validate(props, propName, componentName, location, propFullName) {
 	    var componentNameSafe = componentName || '<<anonymous>>';
@@ -2514,7 +2527,11 @@
 	
 	exports.__esModule = true;
 	
-	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; /**
+	                                                                                                                                                                                                                                                                               * This source code is quoted from rc-util.
+	                                                                                                                                                                                                                                                                               * homepage: https://github.com/react-component/util
+	                                                                                                                                                                                                                                                                               */
+	
 	
 	var _react = __webpack_require__(4);
 	
@@ -2551,6 +2568,10 @@
 	
 	exports.__esModule = true;
 	exports.default = isRequiredForA11y;
+	/**
+	 * This source code is quoted from rc-util.
+	 * homepage: https://github.com/react-component/util
+	 */
 	function isRequiredForA11y(validator) {
 	  return function validate(props, propName, componentName, location, propFullName) {
 	    var componentNameSafe = componentName || '<<anonymous>>';
@@ -2576,6 +2597,10 @@
 	
 	exports.__esModule = true;
 	exports.default = splitComponentProps;
+	/**
+	 * This source code is quoted from rc-util.
+	 * homepage: https://github.com/react-component/util
+	 */
 	function _objectEntries(obj) {
 	  var entries = [];
 	  var keys = Object.keys(obj);
@@ -2618,6 +2643,10 @@
 	'use strict';
 	
 	exports.__esModule = true;
+	/**
+	 * This source code is quoted from rc-util.
+	 * homepage: https://github.com/react-component/util
+	 */
 	function createChainedFunction() {
 	  for (var _len = arguments.length, funcs = Array(_len), _key = 0; _key < _len; _key++) {
 	    funcs[_key] = arguments[_key];
@@ -2650,6 +2679,10 @@
 /* 38 */
 /***/ (function(module, exports) {
 
+	/**
+	 * This source code is quoted from rc-util.
+	 * homepage: https://github.com/react-component/util
+	 */
 	'use strict';
 	
 	/**
@@ -3179,6 +3212,10 @@
 	
 	exports.__esModule = true;
 	exports.default = contains;
+	/**
+	 * This source code is quoted from rc-util.
+	 * homepage: https://github.com/react-component/util
+	 */
 	function contains(root, n) {
 	  var node = n;
 	  while (node) {
@@ -3210,6 +3247,10 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
+	/**
+	 * This source code is quoted from rc-util.
+	 * homepage: https://github.com/react-component/util
+	 */
 	function addEventListenerWrap(target, eventType, cb) {
 	  /* eslint camelcase: 2 */
 	  var callback = _reactDom2.default.unstable_batchedUpdates ? function run(e) {
@@ -3729,7 +3770,11 @@
 	
 	exports.__esModule = true;
 	
-	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; /**
+	                                                                                                                                                                                                                                                                               * This source code is quoted from rc-util.
+	                                                                                                                                                                                                                                                                               * homepage: https://github.com/react-component/util
+	                                                                                                                                                                                                                                                                               */
+	
 	
 	var _Event = __webpack_require__(46);
 	
@@ -3920,6 +3965,10 @@
 	'use strict';
 	
 	exports.__esModule = true;
+	/**
+	 * This source code is quoted from rc-util.
+	 * homepage: https://github.com/react-component/util
+	 */
 	var EVENT_NAME_MAP = {
 	  transitionend: {
 	    transition: 'transitionend',
@@ -4233,7 +4282,10 @@
 	    ret.push(c);
 	  });
 	  return ret;
-	}
+	} /**
+	   * This source code is quoted from rc-util.
+	   * homepage: https://github.com/react-component/util
+	   */
 
 /***/ }),
 /* 50 */
@@ -4269,7 +4321,11 @@
 	
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * This source code is quoted from rc-util.
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * homepage: https://github.com/react-component/util
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
+	
 	
 	//import isWindow from './isWindow';
 	
@@ -7906,7 +7962,9 @@
 	        if (colorsMap[colors]) {
 	            clsObj[clsPrefix + '-' + colorsMap[colors]] = true;
 	        }
-	        //clsObj[`${clsPrefix}-border`] = bordered;
+	        if (bordered) {
+	            clsObj[clsPrefix + '-border'] = bordered;
+	        }
 	        var classes = (0, _classnames2["default"])(clsPrefix, clsObj);
 	        return _react2["default"].createElement(
 	            'button',
@@ -7981,7 +8039,7 @@
 	                _this.setState({
 	                    showRotate: false
 	                });
-	            }, 5000);
+	            }, 3000);
 	        };
 	
 	        _this.handleShowLine = function () {
@@ -7992,7 +8050,7 @@
 	                _this.setState({
 	                    showLine: false
 	                });
-	            }, 5000);
+	            }, 3000);
 	        };
 	
 	        _this.state = {

@@ -9149,6 +9149,10 @@ li.rc-time-picker-panel-select-option-disabled:hover {
 .demo-margin {
   margin: 5px 15px; }
 
+.u-modal-body {
+  max-height: 430px;
+  overflow: auto; }
+
 .demo-margin {
   margin: 5px 15px; }
 

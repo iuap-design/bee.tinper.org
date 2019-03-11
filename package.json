@@ -4,10 +4,11 @@
   "description": "bee.tinper.org",
   "main": "server/index.js",
   "scripts": {
-    "getTag": "node server/getTag.js",
-    "createFile": "node server/createFile.js",
-    "server": "node server/index.js",
-    "init": "node server/gitInit.js"
+    "getTag": "node app/utils/getTag.js",
+    "createFile": "node app/utils/createFile.js",
+    "init": "node app/utils/getComponent.js",
+    "dev": "node --inspect app/app.js",
+    "start": "node app/app.js"
   },
   "repository": {
     "type": "git",
@@ -34,23 +35,20 @@
   "devDependencies": {},
   "dependencies": {
     "axios": "^0.18.0",
-    "child_process": "^1.0.2",
-    "download": "7.1.0",
+    "download": "^7.1.0",
     "download-git-repo": "^1.1.0",
-    "fs-extra": "7.0.1",
-    "git-tags-remote": "1.0.1",
-    "koa": "^1.2.4",
-    "koa-logger": "^1.3.0",
-    "koa-router": "^5.4.0",
-    "koa-static": "^2.0.0",
-    "koa-static-cache": "^3.1.7",
-    "koa-swig": "^2.2.0",
-    "latest-version": "4.0.0",
-    "markdown": "^0.5.0",
-    "marked": "^0.3.6",
-    "querystring": "^0.2.0",
-    "simple-git": "^1.107.0",
-    "swig": "^1.4.2",
-    "swig-templates": "^2.0.2"
+    "fs-extra": "^7.0.1",
+    "ghreleases": "^3.0.2",
+    "git-tags-remote": "^1.0.1",
+    "koa": "^2.6.2",
+    "koa-bodyparser": "^4.2.1",
+    "koa-ejs": "^4.2.0",
+    "koa-less": "0.0.3",
+    "koa-nunjucks-2": "^3.0.2",
+    "koa-router": "^7.4.0",
+    "koa-static": "^5.0.0",
+    "log4js": "^3.0.6",
+    "marked": "^0.6.1",
+    "nunjucks": "^3.1.6"
   }
 }
