@@ -7995,13 +7995,13 @@
 	  value: true
 	});
 	
-	var _Test = __webpack_require__(85);
+	var _NavbarIuapdesign = __webpack_require__(85);
 	
-	var _Test2 = _interopRequireDefault(_Test);
+	var _NavbarIuapdesign2 = _interopRequireDefault(_NavbarIuapdesign);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
-	exports['default'] = _Test2['default'];
+	exports['default'] = _NavbarIuapdesign2['default'];
 	module.exports = exports['default'];
 
 /***/ }),
@@ -8035,16 +8035,16 @@
 	var propTypes = {};
 	var defaultProps = {};
 	
-	var Test = function (_Component) {
-	  _inherits(Test, _Component);
+	var NavbarIuapdesign = function (_Component) {
+	  _inherits(NavbarIuapdesign, _Component);
 	
-	  function Test() {
-	    _classCallCheck(this, Test);
+	  function NavbarIuapdesign() {
+	    _classCallCheck(this, NavbarIuapdesign);
 	
 	    return _possibleConstructorReturn(this, _Component.apply(this, arguments));
 	  }
 	
-	  Test.prototype.render = function render() {
+	  NavbarIuapdesign.prototype.render = function render() {
 	    return _react2['default'].createElement(
 	      'h2',
 	      null,
@@ -8052,13 +8052,13 @@
 	    );
 	  };
 	
-	  return Test;
+	  return NavbarIuapdesign;
 	}(_react.Component);
 	
 	;
-	Test.propTypes = propTypes;
-	Test.defaultProps = defaultProps;
-	exports['default'] = Test;
+	NavbarIuapdesign.propTypes = propTypes;
+	NavbarIuapdesign.defaultProps = defaultProps;
+	exports['default'] = NavbarIuapdesign;
 	module.exports = exports['default'];
 
 /***/ }),
