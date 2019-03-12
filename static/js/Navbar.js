@@ -80,7 +80,7 @@
 	
 	var CARETUP = _react2['default'].createElement('i', { className: 'uf uf-arrow-up' });
 	
-	var Demo1 = __webpack_require__(86);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": "Demo1", "code": "import React, { Component } from 'react';\nimport {  } from 'tinper-bee';\nimport { Button,Row,Col,FormControl,Dropdown,Menu,Select,Icon,InputGroup } from 'tinper-bee';\n\nconst Option = Select.Option;\nconst { Item } = Menu;\n\nclass NavBar extends Component {\n\n    componentDidMount(){\n        docsearch({ \n            apiKey: 'd388a4977faabf821db64112c8abdcf7', \n            indexName: 'bee_tinper', \n            inputSelector: '#componentSearch', \n            debug: false // Set debug to true if you want to inspect the dropdown \n        }); \n    }\n    \n    goto=(path)=>{\n        window.location.pathname=path;\n    }\n    render() {\n        const menu1 = (\n            <Menu>\n              <Item key=\"1\" className=\"first-show\">首页</Item>\n              <Item key=\"2\">设计语言</Item>\n              <Item key=\"3\"><a href=\"/tinper-bee\">基础组件</a></Item>\n              <Item key=\"4\"><a href=\"/tinper-acs\">应用组件</a></Item>\n              <Item key=\"5\"><a href=\"/case/preview\">典型案例</a></Item>\n            </Menu>\n        );\n        return (\n            <div >\n                <Row className='nav'>\n                <Col className='nav-left' md={5}>\n                    <span className='nav-logo '>\n                        <a href=\"#\"><img src='//iuap-design-cdn.oss-cn-beijing.aliyuncs.com/static/tinper-bee/logo/iuapdesign.svg' /></a>\n                    </span>\n                    <span className='nav-split'>|</span>\n                    <span className='nav-search'>\n                        <FormControl id='componentSearch' placeholder='在iuap design 中搜索' type='search' />\n                    </span>\n                </Col>\n                <Col className='nav-right' md={7}>\n                    <ul className=\"nav-options\">\n                        <li><a className=\"first-show\" href=\"#\" onClick={()=>{this.goto('/design')}}>首页</a></li>\n                        <li><a href=\"\" >设计语言</a></li>\n                        <li><a href=\"/tinper-bee\" onClick={()=>{this.goto('/tinper-bee')}}>基础组件</a></li>\n                        <li><a href=\"/tinper-acs\" onClick={()=>{this.goto('/tinper-acs')}}>应用组件</a></li>\n                        <li><a href=\"/case/preview\" onClick={()=>{this.goto('/case/preview')}} target=\"_blank\">典型案例</a></li>\n                        <li>\n                            <Select defaultValue=\"zh_CN\" dropdownClassName='nav-lang-select'>\n                                <Option value=\"zh_CN\">简体中文</Option>\n                                <Option value=\"zh_TW\" disabled={true}>繁体中文</Option>\n                                <Option value=\"en_US\" disabled={true}>英文</Option>\n                            </Select>\n                        </li>\n                    </ul>  \n                </Col>          \n            </Row>\n            <div className=\"mob-nav\">\n                   <img src='//iuap-design-cdn.oss-cn-beijing.aliyuncs.com/static/tinper-bee/logo/iuapdesign.svg' />\n               <span className=\"nav-content\">\n                   <Dropdown\n                        trigger={['click']}\n                        overlay={menu1}\n                        animation=\"slide-up\">\n                        <Button ><Icon type=\"uf-navmenu\"></Icon></Button>\n                    </Dropdown> \n               </span>\n            </div>\n        </div> \n        );\n    }\n}\n\n", "desc": "" }];
+	var Demo1 = __webpack_require__(87);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": "Demo1", "code": "import React, { Component } from 'react';\nimport { NavbarIuapdesign } from 'tinper-bee';\nclass Demo1 extends Component {\n\n    render() {\n        return (\n            <NavbarIuapdesign/>\n        );\n    }\n}\n\n", "desc": "" }];
 	
 	var Demo = function (_Component) {
 	    _inherits(Demo, _Component);
@@ -8011,63 +8011,6 @@
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _react = __webpack_require__(4);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _propTypes = __webpack_require__(5);
-	
-	var _propTypes2 = _interopRequireDefault(_propTypes);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-	
-	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
-	
-	var propTypes = {};
-	var defaultProps = {};
-	
-	var NavbarIuapdesign = function (_Component) {
-	  _inherits(NavbarIuapdesign, _Component);
-	
-	  function NavbarIuapdesign() {
-	    _classCallCheck(this, NavbarIuapdesign);
-	
-	    return _possibleConstructorReturn(this, _Component.apply(this, arguments));
-	  }
-	
-	  NavbarIuapdesign.prototype.render = function render() {
-	    return _react2['default'].createElement(
-	      'h2',
-	      null,
-	      'Welcome use tinper-bee'
-	    );
-	  };
-	
-	  return NavbarIuapdesign;
-	}(_react.Component);
-	
-	;
-	NavbarIuapdesign.propTypes = propTypes;
-	NavbarIuapdesign.defaultProps = defaultProps;
-	exports['default'] = NavbarIuapdesign;
-	module.exports = exports['default'];
-
-/***/ }),
-/* 86 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
 	
@@ -8075,7 +8018,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _tinperBee = __webpack_require__(87);
+	var _tinperBee = __webpack_require__(86);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
@@ -8106,15 +8049,6 @@
 	            window.location.pathname = path;
 	        }, _temp), _possibleConstructorReturn(_this, _ret);
 	    }
-	
-	    NavBar.prototype.componentDidMount = function componentDidMount() {
-	        docsearch({
-	            apiKey: 'd388a4977faabf821db64112c8abdcf7',
-	            indexName: 'bee_tinper',
-	            inputSelector: '#componentSearch',
-	            debug: false // Set debug to true if you want to inspect the dropdown 
-	        });
-	    };
 	
 	    NavBar.prototype.render = function render() {
 	        var _this2 = this;
@@ -8171,7 +8105,9 @@
 	                    { className: 'nav-left', md: 5 },
 	                    _react2['default'].createElement(
 	                        'span',
-	                        { className: 'nav-logo ' },
+	                        { className: 'nav-logo', onClick: function onClick() {
+	                                _this2.goto('/design');
+	                            } },
 	                        _react2['default'].createElement(
 	                            'a',
 	                            { href: '#' },
@@ -8305,7 +8241,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 87 */
+/* 86 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	(function webpackUniversalModuleDefinition(root, factory) {
@@ -115145,6 +115081,53 @@
 	/***/ })
 	/******/ ]);
 	});
+
+/***/ }),
+/* 87 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _react = __webpack_require__(4);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _src = __webpack_require__(84);
+	
+	var _src2 = _interopRequireDefault(_src);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	
+	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
+	
+	var Demo1 = function (_Component) {
+	    _inherits(Demo1, _Component);
+	
+	    function Demo1() {
+	        _classCallCheck(this, Demo1);
+	
+	        return _possibleConstructorReturn(this, _Component.apply(this, arguments));
+	    }
+	
+	    Demo1.prototype.render = function render() {
+	        return _react2['default'].createElement(_src2['default'], null);
+	    };
+	
+	    return Demo1;
+	}(_react.Component);
+	
+	exports['default'] = Demo1;
+	module.exports = exports['default'];
 
 /***/ })
 /******/ ]);
