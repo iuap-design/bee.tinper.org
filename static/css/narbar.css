@@ -1,175 +1,261 @@
 .nav {
     position: fixed;
     z-index: 999;
-    background: #fff;
+    background: white;
     width: 100%;
     height: 65px;
     line-height: 65px;
-    border-bottom: 1px solid #dfdfdf;
-    margin: 0!important;
+    border-bottom: 1px solid #DFDFDF;
+    font-size: 14px;
 }
 
 .nav .nav-left .nav-logo {
-    display: inline-block
+    display: inline-block;
+    margin-left: 60px;
+    margin-right: 75px;
+}
+
+.nav .nav-left .nav-logo img {
+    height: 24px;
+    vertical-align: middle;
 }
 
 .nav .nav-left .nav-logo i {
     padding: 0;
     height: 0;
-    display: inline-block
+    display: inline-block;
 }
 
 .nav .nav-left .nav-logo .uf-iuapdesign-col:before {
     font-size: 100px;
-    display: inline-block
+    display: inline-block;
 }
 
 .nav .nav-left .nav-split {
     color: #ccc;
-    margin: 0 16px
+    margin: 0 20px;
 }
 
 .nav .nav-left .nav-search {
-    color: #959aa5;
-    position: relative;
-    top: -5px;
+    color: white;
+}
+
+.nav .nav-left .nav-search .uf-search {
+    color: #959AA5;
 }
 
 .nav .nav-left .nav-search #componentSearch {
-    vertical-align: unset !important
+    vertical-align: unset !important;
+}
+
+.nav .nav-left .nav-search input::-webkit-input-placeholde {
+    color: white;
+    font-size: 14px;
 }
 
 .nav .nav-left .nav-search .u-form-control-affix-wrapper {
-    width: auto
+    width: auto;
 }
 
 .nav .nav-left .nav-search .u-form-control-affix-wrapper .u-form-control {
-    width: auto;
+    width: 200px;
+    font-size: 14px;
+    color: #959AA5;
     border: none;
     padding-left: 30px;
-    font-weight: 500;
 }
 
 .nav .nav-left .nav-search .u-form-control-affix-wrapper .u-form-control-suffix {
     right: auto;
-    left: 0
+    left: 0;
 }
 
 .nav .nav-right .nav-options {
-    float: right
+    float: right;
 }
 
 .nav .nav-right .nav-options .first-show {
-    color: #e14c46
+    color: #E14C46;
 }
 
 .nav .nav-right .nav-options li {
     float: left;
-    margin-right: 38px
+    margin-right: 38px;
 }
 
 .nav .nav-right .nav-options li .u-select {
     min-width: 100px;
     font-size: 14px;
-    color: #444
+    color: #444;
 }
 
 .nav .nav-right .nav-options li .u-select .u-select-arrow {
     margin-top: -8px;
-    font-size: 14px
+    font-size: 14px;
 }
 
 .nav .nav-right .nav-options li .u-select .u-select-selection {
-    border: none
+    border: none;
 }
 
 .nav .nav-right .nav-options li a {
-    color: #444
+    color: #444;
 }
 
 .nav .nav-right .nav-options li a:hover {
-    color: #e14c46
+    color: #E14C46;
 }
 
-.nav-lang-select .u-select-dropdown-menu-item-active,
-.nav-lang-select .u-select-dropdown-menu-item-selected,
-.nav-lang-select .u-select-dropdown-menu-item-selected:hover {
-    color: #e14c46 !important;
-    background: #fff !important;
-    font-weight: 0 !important
-}
-.nav .nav-right .lang-select{
-    position: relative;
-    left: 6px;
-}
-.nav .nav-right .nav-lang-select{
-    border: none;
-    background: #fff;
-    min-width: 85px;
+.mob-nav {
+    width: 100%;
+    height: 65px;
+    line-height: 65px;
+    border-bottom: 1px solid #DFDFDF;
     font-size: 14px;
-    color: #444;
-    appearance:none;
-    -moz-appearance:none;
-    -webkit-appearance:none;
-    height: 64px;
-}
-.nav .nav-right .uf-arrow-down{
-    position: absolute;
-    right: 15px;
-    line-height: 1;
-    top: 27px;
-    font-size: 10.5px;
+    display: inline-block;
+    text-align: center;
 }
 
-
-.nav .nav-left .nav-search  .uf-search:before {
-    position: absolute;
-    top: 15px;
+.mob-nav img {
+    display: inline-block;
+    text-align: center;
+    margin: 0 auto;
 }
+
+.mob-nav .nav-content {
+    float: right;
+    right: 3px;
+    position: fixed;
+    z-index: 999;
+}
+
+.mob-nav .nav-content .uf-navmenu {
+    margin-left: 2px;
+}
+
+.mob-nav .nav-content .u-button {
+    background: transparent;
+}
+
+.mob-nav a {
+    color: #424242;
+}
+
+.u-dropdown {
+    width: 240px;
+}
+
+.u-dropdown .u-dropdown-menu {
+    text-align: center;
+}
+
+.u-dropdown .u-dropdown-menu .first-show {
+    color: #E14C46;
+}
+
+.u-dropdown .u-dropdown-menu .u-dropdown-menu-item:active,
+.u-dropdown .u-dropdown-menu .u-dropdown-menu-item-active,
+.u-dropdown .u-dropdown-menu .u-dropdown-menu-item-selected:hover {
+    color: #E14C46;
+    background: #f0f0f0;
+}
+
+.u-dropdown .u-dropdown-menu .u-dropdown-menu-item a {
+    color: #424242;
+}
+
+.nav-lang-select .u-select-dropdown-menu-item-selected,
+.nav-lang-select .u-select-dropdown-menu-item-selected:hover,
+.nav-lang-select .u-select-dropdown-menu-item-active {
+    color: #E14C46 !important;
+    background: #fff !important;
+    font-weight: 0 !important;
+}
+
 .algolia-autocomplete {
-    line-height: normal
+    line-height: normal;
 }
 
 .aa-dropdown-menu {
     width: 100%;
     border-color: #999;
-    font-size: .9rem
+    font-size: 0.9rem;
 }
 
-@media (min-width:768px) {
+@media (min-width: 768px) {
     .aa-dropdown-menu {
-        min-width: 515px
+        min-width: 515px;
     }
 }
 
 .algolia-docsearch-suggestion {
-    border-color: #ddd
+    border-color: #ddd;
 }
 
 .algolia-docsearch-suggestion--content {
-    color: #2c3e50
+    color: #2c3e50;
 }
 
 .algolia-docsearch-suggestion--subcategory-column {
-    border-color: #ddd
+    border-color: #ddd;
 }
 
 .algolia-docsearch-suggestion--category-header {
-    background: #fff
+    background: #fff;
 }
 
 .algolia-docsearch-footer {
-    border-color: #ddd
+    border-color: #ddd;
 }
 
 .algolia-docsearch-suggestion--category-header .algolia-docsearch-suggestion--highlight {
-    background: hsla(0, 0%, 100%, .6)
+    background: rgba(255, 255, 255, 0.6);
 }
 
 .algolia-docsearch-suggestion--highlight {
-    color: #2c815b
+    color: #2c815b;
 }
 
 .aa-cursor .algolia-docsearch-suggestion--content {
-    color: #2c3e50
+    color: #2c3e50;
+}
+
+input::-webkit-input-placeholder {
+    color: #959AA5;
+    font-size: 14px;
+}
+
+@media screen and (max-width: 800px) {
+    .nav {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 800px) {
+    .mob-nav {
+        display: none;
+    }
+}
+
+
+/* 适配 */
+#navbar h3,
+#navbar p,
+#navbar .u-panel-footer,
+#navbar .u-panel-collapse {
+    display: none;
+}
+#navbar {
+    background: #fff;
+}
+#navbar>.u-row>.u-col-md-12>.u-panel-bordered {
+   border: none;
+   box-shadow: none;
+}
+#navbar>.u-row>.u-col-md-12>.u-panel-bordered>.u-panel-heading {
+    background: #fff;
+    border: none;
+}
+.nav{
+    top: 0;
 }

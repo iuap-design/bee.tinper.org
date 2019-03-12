@@ -14,10 +14,10 @@ module.exports = (app) => {
 
 
 
-  const css = staticFiles(path.join(__dirname,'../../static'));
+  const static = staticFiles(path.join(__dirname,'../../static'));
   const tinperBee = staticFiles(path.join(__dirname,'../../tinper-bee'));
 
-  app.use(css);
+  app.use(static);
   app.use(tinperBee);
 
   app.use(nunjucks({
