@@ -199,12 +199,12 @@ body {
 }
 .docs .title-right .title-tag>span{
     position: absolute;
-    left: 28px;
+    left: 32px;
     bottom: 0px;
 }
 .docs .title-right .title-tag .uf:before{
     position: absolute;
-    left: 2px;
+    left: 14px;
     bottom: -1px;
 }
 .docs .title-right .tag-select{
@@ -226,4 +226,7 @@ body {
 }
 select::-ms-expand { 
     display: none; 
+}
+.docs a.pencil{
+    color: #8D99AE;
 }

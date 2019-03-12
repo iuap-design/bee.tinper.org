@@ -9,10 +9,17 @@
     overflow: hidden;
     white-space: nowrap;
 }
+.sidebar .menu-components .menu-group .menu-item.active{
+    background: #FDF6F6;
+    border-right: 1px solid #E14C46;
+}
 .sidebar .menu-components .menu-group .menu-item a{
     color: #424242;
     text-decoration: none;
     padding-left: 10px;
+}
+.sidebar .menu-components .menu-group .menu-item a:hover{
+    color: #e14c46;
 }
 .sidebar .menu-components .menu-group .menu-item.active a{
     color: #e14c46;

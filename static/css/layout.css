@@ -11,7 +11,10 @@
     display: inline-block;
     vertical-align: top;
     padding-left: 40px;
-    padding-top: 30px;
+    position: fixed;
+    overflow: auto;
+    height: 100%;
+    top: 95px;
 }
 
 .docs {
@@ -19,6 +22,8 @@
     vertical-align: top;
     width: calc(100% - 300px);
     padding-left: 40px;
+    margin-left: 250px;
+    margin-top: 20px;
 }
 
 .footer-out {

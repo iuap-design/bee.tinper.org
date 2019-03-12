@@ -109,6 +109,9 @@
 #footer .u-panel-collapse {
     display: none;
 }
+#footer .u-panel {
+    margin-bottom: 0;
+}
 #footer .u-panel-heading{
     padding: 0;
 }
