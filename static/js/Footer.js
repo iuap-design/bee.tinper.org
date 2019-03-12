@@ -80,7 +80,7 @@
 	
 	var CARETUP = _react2['default'].createElement('i', { className: 'uf uf-arrow-up' });
 	
-	var Demo1 = __webpack_require__(86);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": "Demo1", "code": "import React, { Component } from 'react';\nimport {  } from 'tinper-bee';\nimport { Row,Col } from 'tinper-bee';\nclass Footer extends Component {\n    render() { //包含事件按钮 \n        return (\n            <div className=\"footer\">\n                <Row className=''>\n                    <Col className=\"footer-top-item\" md={3} xs={12} sm={6} >\n                        <p><b>相关资源</b></p>\n                        <ul>\n                            <li>\n                                <a href=\"https://mock.yonyoucloud.com/\">Mock 接口管理平台</a>\n                            </li>\n                            <li>\n                                <a href=\"https://package.yonyoucloud.com/#/\">YNPM-用友Node镜像服务</a>\n                            </li>\n                            <li>\n                                <a href=\"https://github.com/tinper-bee/bee-tools\">bee-tools 基础组件开发工具</a>\n                            </li>\n                            <li>\n                                <a href=\"https://github.com/tinper-acs/ac-tools\">ac-tools 业务组件开发工具</a>\n                            </li>\n                            <li>\n                                <a href=\"https://github.com/tinper-acs/ac-tools\">YYIMSDK 即时通讯 SDK</a>\n                            </li>\n                            <li>\n                                <a href=\"https://www.yuque.com/ucf-web/book\">UCF-WEB 微前端框架</a>\n                            </li>\n                            <li>\n                                <a href=\"http://tinper.org/webide/\">Moy 框架在线示例</a>\n                            </li>\n                            <li>\n                                <a href=\"https://github.com/lebra/lebra-components\">lebra-components 移动组件库</a>\n                            </li>\n                        </ul>\n                    </Col>\n                    <Col className=\"footer-top-item\" md={3} xs={12} sm={6}>\n                        <p><b>社区</b></p>\n                            <ul>\n                                <li>\n                                    <a href=\"https://github.com/iuap-design/blog/issues\">云平台体验技术团队BLOG</a>\n                                </li>\n                                <li>\n                                    <a href=\"\">tinper 官方技术交流群</a>\n                                </li>\n                            </ul>\n                    </Col>\n                    <Col className=\"footer-top-item\" md={3} xs={12} sm={6}>\n                        <p><b>帮助</b></p>\n                        <ul>\n                            <li>\n                                <a href=\"https://github.com/tinper-bee\">组件Github 源码</a>\n                            </li>\n                            <li>\n                                <a href=\"https://github.com/iuap-design/tinper-bee/releases\">更新记录</a>\n                            </li>\n                            <li>\n                                <a href=\"\">常见问题</a>\n                            </li>\n                        </ul>\n                    </Col>\n                    <Col className=\"footer-top-item\" md={3} xs={12} sm={6}>\n                        <p><b>联系我们</b></p>\n                            <ul>\n                                <li>\n                                    <img src='//iuap-design-cdn.oss-cn-beijing.aliyuncs.com/static/tinper-bee/logo/address.png'/> 北京市海淀区北清路68号用友产业园\n                                </li>\n                                <li><img src='//iuap-design-cdn.oss-cn-beijing.aliyuncs.com/static/tinper-bee/logo/mail.png'/> guoyff@yonyou.com</li>\n                            </ul>\n                    </Col>\n                </Row>\n                <Row>\n                    <Col className=\"footer-middle\" md={12} xs={12} sm={12} >\n                        <div className=\"footer-line\">\n                        </div>\n                    </Col>\n                    <Col className=\"footer-base\" md={12}  xs={12} sm={12}>\n                        <div className=\"footer-base-font\">\n                            <p className=\"copy-right\" >\n                                版权所有：用友网络科技股份有限公司 2016 京ICP备05007539号-7 京ICP证100714号 京公网安备1101080209224号\n                            </p>\n                            <p className=\"produ\">\n                                Made with by FED team\n                            </p>\n                        </div>\n                    </Col>\n                </Row>\n            </div>\n            \n        );\n    }\n}\n\n", "desc": "" }];
+	var Demo1 = __webpack_require__(87);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": "Demo1", "code": "import React, { Component } from 'react';\nimport { FooterIuapdesign } from 'tinper-bee';\nclass Demo1 extends Component {\n\n    render() {\n        return (\n            <FooterIuapdesign/>\n        );\n    }\n}\n\n", "desc": "" }];
 	
 	var Demo = function (_Component) {
 	    _inherits(Demo, _Component);
@@ -8011,63 +8011,6 @@
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _react = __webpack_require__(4);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _propTypes = __webpack_require__(5);
-	
-	var _propTypes2 = _interopRequireDefault(_propTypes);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-	
-	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
-	
-	var propTypes = {};
-	var defaultProps = {};
-	
-	var FooterIuapdesign = function (_Component) {
-	  _inherits(FooterIuapdesign, _Component);
-	
-	  function FooterIuapdesign() {
-	    _classCallCheck(this, FooterIuapdesign);
-	
-	    return _possibleConstructorReturn(this, _Component.apply(this, arguments));
-	  }
-	
-	  FooterIuapdesign.prototype.render = function render() {
-	    return _react2['default'].createElement(
-	      'h2',
-	      null,
-	      'Welcome use tinper-bee'
-	    );
-	  };
-	
-	  return FooterIuapdesign;
-	}(_react.Component);
-	
-	;
-	FooterIuapdesign.propTypes = propTypes;
-	FooterIuapdesign.defaultProps = defaultProps;
-	exports['default'] = FooterIuapdesign;
-	module.exports = exports['default'];
-
-/***/ }),
-/* 86 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
 	
@@ -8075,7 +8018,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _tinperBee = __webpack_require__(87);
+	var _tinperBee = __webpack_require__(86);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
@@ -8091,9 +8034,17 @@
 	    _inherits(Footer, _Component);
 	
 	    function Footer() {
+	        var _temp, _this, _ret;
+	
 	        _classCallCheck(this, Footer);
 	
-	        return _possibleConstructorReturn(this, _Component.apply(this, arguments));
+	        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+	            args[_key] = arguments[_key];
+	        }
+	
+	        return _ret = (_temp = (_this = _possibleConstructorReturn(this, _Component.call.apply(_Component, [this].concat(args))), _this), _this.goto = function (e) {
+	            window.open(e.target.href);
+	        }, _temp), _possibleConstructorReturn(_this, _ret);
 	    }
 	
 	    Footer.prototype.render = function render() {
@@ -8124,7 +8075,7 @@
 	                            null,
 	                            _react2['default'].createElement(
 	                                'a',
-	                                { href: 'https://mock.yonyoucloud.com/' },
+	                                { href: 'https://mock.yonyoucloud.com/', onClick: this.goto },
 	                                'Mock \u63A5\u53E3\u7BA1\u7406\u5E73\u53F0'
 	                            )
 	                        ),
@@ -8339,7 +8290,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 87 */
+/* 86 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	(function webpackUniversalModuleDefinition(root, factory) {
@@ -115179,6 +115130,53 @@
 	/***/ })
 	/******/ ]);
 	});
+
+/***/ }),
+/* 87 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _react = __webpack_require__(4);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _src = __webpack_require__(84);
+	
+	var _src2 = _interopRequireDefault(_src);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	
+	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
+	
+	var Demo1 = function (_Component) {
+	    _inherits(Demo1, _Component);
+	
+	    function Demo1() {
+	        _classCallCheck(this, Demo1);
+	
+	        return _possibleConstructorReturn(this, _Component.apply(this, arguments));
+	    }
+	
+	    Demo1.prototype.render = function render() {
+	        return _react2['default'].createElement(_src2['default'], null);
+	    };
+	
+	    return Demo1;
+	}(_react.Component);
+	
+	exports['default'] = Demo1;
+	module.exports = exports['default'];
 
 /***/ })
 /******/ ]);
