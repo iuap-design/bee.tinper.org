@@ -16,10 +16,24 @@ let writeDemo = (item, tag) => {
             if (!flag) {
                 download(downPath).then(data => {
                         fs.writeFileSync(filePath, data);
+                            if(fileName=='api.md'&&(data.indexOf('include')!=-1)){
+                                let reg = new RegExp(/include "([\w\W]*?)"/,'g');
+                                let reg2 = new RegExp(/"/,'g');
+                                let dataStr = data.toString('utf-8');
+                                let includes = dataStr.match(reg);
+                                if(includes){
+                                    includes.forEach(item=>{
+                                        item = item.replace('include','');
+                                        item = item.replace(reg2,'').trim()
+                                        downFn(downPath.replace(fileName,item),filePath.replace(fileName,item),item)
+                                    })
+                                }
+                                
+                            }
                         console.log(`😀写入 ${filePath} 成功 `);
                     })
-                    .catch(() => {
-                        fs.appendFile('./static/components/error.txt', `请求 ${filePath} 失败 \n`);
+                    .catch((err) => {console.log(err)
+                        fs.appendFile('./static/components/error.txt', `请求 ${downPath} 失败 \n`);
                         if(fileName=='api.md'){//删除没有dist/demo.js 文件的tag
                             let versions = components[item].versions;
                             versions.splice(versions.indexOf(tag), 1);
@@ -33,7 +47,7 @@ let writeDemo = (item, tag) => {
                                     console.error(err)
                                 })
                         }
-                        console.log(`❌ ———————— 请求 ${filePath}失败，找不到文件 `);
+                        console.log(`❌ ———————— 请求 ${downPath}失败，找不到文件 `);
                     })
             } else {
                 console.log(`😀${filePath} 已存在，跳过 `);

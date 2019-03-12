@@ -1,1 +1,6 @@
-请求 ./components/bee-switch/dist/0.0.1/api.md 失败 
+请求 https://raw.githubusercontent.com/tinper-bee/bee-slider/v1.0.3/docs/api.md 失败 
+请求 https://raw.githubusercontent.com/tinper-bee/bee-slider/v2.0.0/docs/api.md 失败 
+请求 https://raw.githubusercontent.com/tinper-bee/bee-locale/v0.0.12/docs/api.md 失败 
+请求 https://raw.githubusercontent.com/tinper-bee/bee-slider/v2.0.1/docs/api.md 失败 
+请求 https://raw.githubusercontent.com/tinper-bee/bee-locale/v0.0.10/docs/api.md 失败 
+请求 https://raw.githubusercontent.com/tinper-bee/bee-locale/v0.0.11/docs/api.md 失败 
