@@ -386,10 +386,9 @@ class InputNumber extends Component {
                         </InputGroup>
                     ) : (
                         <InputGroup
-                            className={classnames(className, classes)}
+                            className={classnames(className, classes,disabledCon)}
                             simple
-                            disabledCon
-                        >
+                        > 
                             <FormControl 
                                 {...others}
                                 value={toThousands?showValue:value}

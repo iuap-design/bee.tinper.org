@@ -1,17 +1,50 @@
-.content {
-  width: 150px;
-  height: 100px;
-  background-image: linear-gradient(-180deg, #6873E8 0%, #277DF4 100%);
-  font-size: 20px;
-  color: #fff;
-  text-align: center;
-  line-height: 100px;
-}
-.u-panel-title{
-  height: 800px;
-}
-#outer-box{
-  width: 700px;
-  height: 300px!important;
-  background: #1baede;
-}
+// .content {
+//   width: 150px;
+//   height: 100px;
+//   background-image: linear-gradient(-180deg, #6873E8 0%, #277DF4 100%);
+//   font-size: 20px;
+//   color: #fff;
+//   text-align: center;
+//   line-height: 100px;
+// }
+// .u-panel-title{
+//   height: 800px;
+// }
+// #outer-box{
+//   width: 700px;
+//   height: 300px!important;
+//   background: #1baede;
+// }
+.stripes {   
+  width: 500px;   
+  height: 400px!important;;   
+  float: left;   
+     
+  margin: 10px;   
+     
+  -webkit-background-size: 16px 16px;   
+  -moz-background-size: 16px 16px;   
+  background-size: 16px 16px; /* 控制条纹的大小 */  
+     
+  -moz-box-shadow: 1px 1px 8px #ccc;   
+  -webkit-box-shadow: 1px 1px 8px #ccc;   
+  box-shadow: 1px 1px 8px #ccc;   
+}  
+.checkered {   
+  background-image: -webkit-gradient(linear, 0 0, 100% 100%, color-stop(.25, #ccc), color-stop(.25, transparent), to(transparent)),   
+                    -webkit-gradient(linear, 0 100%, 100% 0, color-stop(.25, #ccc), color-stop(.25, transparent), to(transparent)),   
+                    -webkit-gradient(linear, 0 0, 100% 100%, color-stop(.75, transparent), color-stop(.75, #ccc)),   
+                    -webkit-gradient(linear, 0 100%, 100% 0, color-stop(.75, transparent), color-stop(.75, #ccc));   
+  background-image: -moz-linear-gradient(45deg, #ccc 25%, transparent 25%, transparent),   
+                    -moz-linear-gradient(-45deg, #ccc 25%, transparent 25%, transparent),   
+                    -moz-linear-gradient(45deg, transparent 75%, #ccc 75%),   
+                    -moz-linear-gradient(-45deg, transparent 75%, #ccc 75%);   
+  background-image: -o-linear-gradient(45deg, #ccc 25%, transparent 25%, transparent),   
+                    -o-linear-gradient(-45deg, #ccc 25%, transparent 25%, transparent),   
+                    -o-linear-gradient(45deg, transparent 75%, #ccc 75%),   
+                    -o-linear-gradient(-45deg, transparent 75%, #ccc 75%);   
+  background-image: linear-gradient(45deg, #ccc 25%, transparent 25%, transparent),   
+                    linear-gradient(-45deg, #ccc 25%, transparent 25%, transparent),   
+                    linear-gradient(45deg, transparent 75%, #ccc 75%),   
+                    linear-gradient(-45deg, transparent 75%, #ccc 75%);   
+}  

@@ -1,7 +1,7 @@
 <% if(tag) { %>
     <link href="//design.yonyoucloud.com/static/tinper-bee/components/<%= active %>/dist/<%= tag %>/demo.css" type="text/css" rel="stylesheet" />
 <% } else { %>
-    <link href="/<%= active %>/dist/demo.css" type="text/css" rel="stylesheet" />
+    <link href="./<%= active %>/dist/demo.css" type="text/css" rel="stylesheet" />
 <% } %>    
 <div>
     <%- docs %>
@@ -9,7 +9,7 @@
 <% if(tag) { %>
     <script src="//design.yonyoucloud.com/static/tinper-bee/components/<%= active %>/dist/<%= tag %>/demo.js"></script>
 <% } else { %>
-    <script src="/<%= active %>/dist/demo.js"></script>
+    <script src="./<%= active %>/dist/demo.js"></script>
 <% } %>  
 <script>
     var select = document.getElementById('tagSelect');

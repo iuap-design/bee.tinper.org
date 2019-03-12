@@ -492,9 +492,8 @@ var InputNumber = function (_Component) {
             ) : _react2["default"].createElement(
                 _beeInputGroup2["default"],
                 {
-                    className: (0, _classnames2["default"])(className, classes),
-                    simple: true,
-                    disabledCon: true
+                    className: (0, _classnames2["default"])(className, classes, disabledCon),
+                    simple: true
                 },
                 _react2["default"].createElement(_beeFormControl2["default"], _extends({}, others, {
                     value: toThousands ? showValue : value,

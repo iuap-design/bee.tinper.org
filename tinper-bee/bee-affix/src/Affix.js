@@ -52,7 +52,7 @@ class Affix extends Component {
  
 
     componentDidMount() {
-        this.getInitPosition();
+        this.getInitPosition(undefined,true);
         const listenTarget = this.props.target();
         if (listenTarget) {
             addEventListener(listenTarget,'resize',this.handleTargetChange);
@@ -88,15 +88,14 @@ class Affix extends Component {
     }
 
     /**
-     * 执行一次获取初始的位置，height,width,containerHeight，containerWidth,
+     * 第一次 和 每次srcoll和resize也会执行该方法
      * initTop,initLeft，marginTop,marginLeft都是不变的
      * @return {[type]} [description]
      */
-    getInitPosition =(nextProps)=> {
+    getInitPosition =(nextProps,flag)=> {
         const container = this.getContainerDOM(nextProps);
         // 20180927children是个变化，所以在nextprops要传入childrenRef，否则直接使用后面的语句
         const thisElm = nextProps && nextProps.childrenRef && ReactDOM.findDOMNode(nextProps.childrenRef) || ReactDOM.findDOMNode(this);
-
         this.setState({
             height: thisElm.offsetHeight,
             width: thisElm.offsetWidth,
@@ -112,8 +111,8 @@ class Affix extends Component {
         this.setState({
             top: top,
             left: left,
-            initTop: top,
-            initLeft: left,
+            initTop: flag ? top :this.state.initTop,
+            initLeft: flag ? left :this.state.initLeft,
             marginTop: marginTop,
             marginLeft: marginLeft
         });
@@ -152,7 +151,7 @@ class Affix extends Component {
         }
  
         this.props.onTargetChange(this.state);
-        this.getInitPosition();
+        this.getInitPosition(undefined,false);
     }
     
     /**

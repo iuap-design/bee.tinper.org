@@ -5342,11 +5342,9 @@ a, .mdl-accordion, .mdl-button, .mdl-card, .mdl-checkbox, .mdl-dropdown-menu,
   font-size: 14px;
   font-weight: 400;
   line-height: 1;
-  color: #555;
+  color: #505F79;
   text-align: center;
-  background-color: #eee;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 3px;
   width: 1%;
   white-space: nowrap;
   vertical-align: middle;
@@ -5392,7 +5390,7 @@ a, .mdl-accordion, .mdl-button, .mdl-card, .mdl-checkbox, .mdl-dropdown-menu,
   border-collapse: separate; }
   .u-input-group .u-input-group-btn .u-button {
     border: 1px solid #ccc;
-    height: 30px;
+    height: 32px;
     line-height: 1.3; }
   .u-input-group .u-form-control {
     position: relative;
@@ -5412,9 +5410,9 @@ a, .mdl-accordion, .mdl-button, .mdl-card, .mdl-checkbox, .mdl-dropdown-menu,
     border-radius: 3px; }
   .u-input-group.simple .u-input-group-btn {
     position: absolute;
-    top: 2px;
+    top: 4px;
     bottom: 0;
-    right: 5px;
+    right: 6px;
     min-width: 20px; }
   .u-input-group.simple .u-form-control:not(:last-child) {
     padding-right: 23px; }
@@ -5423,9 +5421,6 @@ a, .mdl-accordion, .mdl-button, .mdl-card, .mdl-checkbox, .mdl-dropdown-menu,
   width: 100%;
   border: 1px solid rgb(165, 173, 186);
   border-radius: 3px; }
-  .u-input-number.u-input-group > span {
-    background: transparent;
-    border: transparent; }
   .u-input-number.u-input-group > span:first-child {
     border-right: 1px solid rgb(165, 173, 186); }
   .u-input-number.u-input-group > span:last-child {
@@ -5455,7 +5450,7 @@ a, .mdl-accordion, .mdl-button, .mdl-card, .mdl-checkbox, .mdl-dropdown-menu,
         width: 100%;
         text-align: center;
         line-height: 0;
-        height: 50%;
+        height: 54%;
         overflow: hidden;
         color: rgba(0, 0, 0, 0.43);
         transition: all .1s linear;
@@ -5467,19 +5462,19 @@ a, .mdl-accordion, .mdl-button, .mdl-card, .mdl-checkbox, .mdl-dropdown-menu,
           color: #C1C7D0; }
         .u-input-number.u-input-group.simple .u-input-group-btn .icon-group .plus.disabled-cursor {
           background: #f7f9fb;
-          cursor: not-allowed; }
+          cursor: not-allowed;
+          border-top-right-radius: 3px; }
           .u-input-number.u-input-group.simple .u-input-group-btn .icon-group .plus.disabled-cursor:hover {
             background: #f7f9fb; }
         .u-input-number.u-input-group.simple .u-input-group-btn .icon-group .plus:hover {
-          background: #ebecf0;
-          color: #555; }
+          background: #ebecf0; }
       .u-input-number.u-input-group.simple .u-input-group-btn .icon-group .reduce {
         position: relative;
         top: -1px;
         display: block;
         width: 100%;
         text-align: center;
-        border-top: 1px solid #d9d9d9;
+        border-top: 1px solid rgb(165, 173, 186);
         line-height: 0;
         height: 50%;
         overflow: hidden;
@@ -5493,12 +5488,12 @@ a, .mdl-accordion, .mdl-button, .mdl-card, .mdl-checkbox, .mdl-dropdown-menu,
           color: #C1C7D0; }
         .u-input-number.u-input-group.simple .u-input-group-btn .icon-group .reduce.disabled-cursor {
           cursor: not-allowed;
-          background: #f7f9fb; }
+          background: #f7f9fb;
+          border-bottom-right-radius: 3px; }
           .u-input-number.u-input-group.simple .u-input-group-btn .icon-group .reduce.disabled-cursor:hover {
             background: #f7f9fb; }
         .u-input-number.u-input-group.simple .u-input-group-btn .icon-group .reduce:hover {
-          background: #ebecf0;
-          color: #555; }
+          background: #ebecf0; }
       .u-input-number.u-input-group.simple .u-input-group-btn .icon-group .disabled-cursor.disabled {
         background: none; }
       .u-input-number.u-input-group.simple .u-input-group-btn .icon-group .disabled-cursor .uf {
@@ -5507,7 +5502,7 @@ a, .mdl-accordion, .mdl-button, .mdl-card, .mdl-checkbox, .mdl-dropdown-menu,
           color: #ccc; }
       .u-input-number.u-input-group.simple .u-input-group-btn .icon-group .uf {
         font-size: 12px;
-        line-height: 12px; }
+        line-height: 16px; }
   .u-input-number.u-input-group.simple .u-input-group-btn[disabled] {
     background: #f7f9fb; }
   .u-input-number.u-input-group.simple .u-form-control {
@@ -6324,12 +6319,18 @@ a, .mdl-accordion, .mdl-button, .mdl-card, .mdl-checkbox, .mdl-dropdown-menu,
     .u-button.colored:focus:not(:active) {
       background-color: rgb(238,238,238);
       border-color: rgb(189,189,189); }
-  .u-button.disable {
-    -webkit-box-shadow: none;
-    filter: alpha(opacity=65);
-    box-shadow: none;
+  .u-button.disable, .u-button.u-button[disabled] {
     cursor: not-allowed;
-    opacity: .65; }
+    background-color: #DFE1E6;
+    border-color: #DFE1E6;
+    color: #fff; }
+    .u-button.disable:hover, .u-button.disable:active, .u-button.disable:focus, .u-button.u-button[disabled]:hover, .u-button.u-button[disabled]:active, .u-button.u-button[disabled]:focus {
+      background-color: #DFE1E6;
+      border-color: #DFE1E6;
+      color: #fff; }
+  .u-button:not(.u-button-icon) i.uf {
+    padding-left: 0;
+    line-height: normal; }
 
 input.u-button[type="submit"] {
   -webkit-appearance: none; }
@@ -6357,9 +6358,9 @@ input.u-button[type="submit"] {
 
 .u-button.disabled, .u-button[disabled] {
   cursor: not-allowed;
-  opacity: .65;
-  filter: alpha(opacity=65);
-  box-shadow: none; }
+  background-color: #DFE1E6;
+  border-color: #DFE1E6;
+  color: #fff; }
 
 .u-button-default {
   color: #333;
@@ -6389,7 +6390,7 @@ input.u-button[type="submit"] {
   .u-button.u-button-primary:hover {
     background-color: rgb(230, 0, 18);
     border-color: rgb(230, 0, 18); }
-  .u-button.u-button-primary.focus, .u-button.u-button-primary:focus:hover {
+  .u-button.u-button-primary.focus, .u-button.u-button-primary:focus {
     background-color: rgb(245, 60, 50);
     border-color: rgb(245, 60, 50); }
   .u-button.u-button-primary.active, .u-button.u-button-primary:active {
@@ -6403,7 +6404,7 @@ input.u-button[type="submit"] {
   .u-button.u-button-secondary:hover {
     background-color: rgb(189,189,189);
     border-color: rgb(189,189,189); }
-  .u-button.u-button-secondary.focus, .u-button.u-button-secondary:focus:hover {
+  .u-button.u-button-secondary.focus, .u-button.u-button-secondary:focus {
     background-color: rgb(224,224,224);
     border-color: rgb(224,224,224); }
   .u-button.u-button-secondary.active, .u-button.u-button-secondary:active {
@@ -6417,7 +6418,7 @@ input.u-button[type="submit"] {
   .u-button.u-button-danger:hover {
     background-color: rgb(211,47,47);
     border-color: rgb(211,47,47); }
-  .u-button.u-button-danger.focus, .u-button.u-button-danger:focus:hover {
+  .u-button.u-button-danger.focus, .u-button.u-button-danger:focus {
     background-color: rgb(244,67,54);
     border-color: rgb(244,67,54); }
   .u-button.u-button-danger.active, .u-button.u-button-danger:active {
@@ -6431,7 +6432,7 @@ input.u-button[type="submit"] {
   .u-button.u-button-info:hover {
     background-color: rgb(0,151,167);
     border-color: rgb(0,151,167); }
-  .u-button.u-button-info.focus, .u-button.u-button-info:focus:hover {
+  .u-button.u-button-info.focus, .u-button.u-button-info:focus {
     background-color: rgb(0,188,212);
     border-color: rgb(0,188,212); }
   .u-button.u-button-info.active, .u-button.u-button-info:active {
@@ -6445,7 +6446,7 @@ input.u-button[type="submit"] {
   .u-button.u-button-warning:hover {
     background-color: rgb(245,124,0);
     border-color: rgb(245,124,0); }
-  .u-button.u-button-warning.focus, .u-button.u-button-warning:focus:hover {
+  .u-button.u-button-warning.focus, .u-button.u-button-warning:focus {
     background-color: rgb(255,152,0);
     border-color: rgb(255,152,0); }
   .u-button.u-button-warning.active, .u-button.u-button-warning:active {
@@ -6459,7 +6460,7 @@ input.u-button[type="submit"] {
   .u-button.u-button-success:hover {
     background-color: rgb(56,142,60);
     border-color: rgb(56,142,60); }
-  .u-button.u-button-success.focus, .u-button.u-button-success:focus:hover {
+  .u-button.u-button-success.focus, .u-button.u-button-success:focus {
     background-color: rgb(76,175,80);
     border-color: rgb(76,175,80); }
   .u-button.u-button-success.active, .u-button.u-button-success:active {
@@ -6473,7 +6474,7 @@ input.u-button[type="submit"] {
   .u-button.u-button-dark:hover {
     background-color: rgb(66,66,66);
     border-color: rgb(66,66,66); }
-  .u-button.u-button-dark.focus, .u-button.u-button-dark:focus:hover {
+  .u-button.u-button-dark.focus, .u-button.u-button-dark:focus {
     background-color: rgb(97,97,97);
     border-color: rgb(97,97,97); }
   .u-button.u-button-dark.active, .u-button.u-button-dark:active {
@@ -6487,7 +6488,7 @@ input.u-button[type="submit"] {
   .u-button.u-button-light:hover {
     background-color: rgb(189,189,189);
     border-color: rgb(189,189,189); }
-  .u-button.u-button-light.focus, .u-button.u-button-light:focus:hover {
+  .u-button.u-button-light.focus, .u-button.u-button-light:focus {
     background-color: rgb(255,255,255);
     border-color: rgb(255,255,255); }
   .u-button.u-button-light.active, .u-button.u-button-light:active {
@@ -6502,7 +6503,7 @@ input.u-button[type="submit"] {
     background-color: rgb(56,142,60);
     border-color: rgb(56,142,60);
     color: #fff; }
-  .u-button-border.u-button-success.focus, .u-button-border.u-button-success:focus:hover {
+  .u-button-border.u-button-success.focus, .u-button-border.u-button-success:focus {
     color: rgb(76,175,80);
     background-color: #fff;
     border-color: rgb(76,175,80); }
@@ -6519,7 +6520,7 @@ input.u-button[type="submit"] {
     background-color: rgb(245,124,0);
     border-color: rgb(245,124,0);
     color: #fff; }
-  .u-button-border.u-button-warning.focus, .u-button-border.u-button-warning:focus:hover {
+  .u-button-border.u-button-warning.focus, .u-button-border.u-button-warning:focus {
     color: rgb(255,152,0);
     background-color: #fff;
     border-color: rgb(255,152,0); }
@@ -6536,7 +6537,7 @@ input.u-button[type="submit"] {
     background-color: rgb(211,47,47);
     border-color: rgb(211,47,47);
     color: #fff; }
-  .u-button-border.u-button-danger.focus, .u-button-border.u-button-danger:focus:hover {
+  .u-button-border.u-button-danger.focus, .u-button-border.u-button-danger:focus {
     color: rgb(244,67,54);
     background-color: #fff;
     border-color: rgb(244,67,54); }
@@ -6553,7 +6554,7 @@ input.u-button[type="submit"] {
     background-color: rgb(0,151,167);
     border-color: rgb(0,151,167);
     color: #fff; }
-  .u-button-border.u-button-info.focus, .u-button-border.u-button-info:focus:hover {
+  .u-button-border.u-button-info.focus, .u-button-border.u-button-info:focus {
     color: rgb(0,188,212);
     background-color: #fff;
     border-color: rgb(0,188,212); }
@@ -6570,7 +6571,7 @@ input.u-button[type="submit"] {
     background-color: rgb(230, 0, 18);
     border-color: rgb(230, 0, 18);
     color: #fff; }
-  .u-button-border.u-button-primary.focus, .u-button-border.u-button-primary:focus:hover {
+  .u-button-border.u-button-primary.focus, .u-button-border.u-button-primary:focus {
     color: rgb(245, 60, 50);
     background-color: #fff;
     border-color: rgb(245, 60, 50); }
@@ -6587,7 +6588,7 @@ input.u-button[type="submit"] {
     background-color: rgb(189,189,189);
     border-color: rgb(189,189,189);
     color: #fff; }
-  .u-button-border.u-button-secondary.focus, .u-button-border.u-button-secondary:focus:hover {
+  .u-button-border.u-button-secondary.focus, .u-button-border.u-button-secondary:focus {
     color: rgb(224,224,224);
     background-color: #fff;
     border-color: rgb(224,224,224); }
@@ -6604,7 +6605,7 @@ input.u-button[type="submit"] {
     background-color: rgb(66,66,66);
     border-color: rgb(66,66,66);
     color: #fff; }
-  .u-button-border.u-button-dark.focus, .u-button-border.u-button-dark:focus:hover {
+  .u-button-border.u-button-dark.focus, .u-button-border.u-button-dark:focus {
     color: rgb(97,97,97);
     background-color: #fff;
     border-color: rgb(97,97,97); }
@@ -6621,7 +6622,7 @@ input.u-button[type="submit"] {
     background-color: rgb(189,189,189);
     border-color: rgb(189,189,189);
     color: #fff; }
-  .u-button-border.u-button-light.focus, .u-button-border.u-button-light:focus:hover {
+  .u-button-border.u-button-light.focus, .u-button-border.u-button-light:focus {
     color: rgb(97,97,97);
     background-color: #fff;
     border-color: rgb(255,255,255); }

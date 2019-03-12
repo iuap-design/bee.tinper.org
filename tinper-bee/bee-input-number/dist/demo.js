@@ -7972,7 +7972,9 @@
 	        if (colorsMap[colors]) {
 	            clsObj[clsPrefix + '-' + colorsMap[colors]] = true;
 	        }
-	        //clsObj[`${clsPrefix}-border`] = bordered;
+	        if (bordered) {
+	            clsObj[clsPrefix + '-border'] = bordered;
+	        }
 	        var classes = (0, _classnames2["default"])(clsPrefix, clsObj);
 	        return _react2["default"].createElement(
 	            'button',
@@ -8579,9 +8581,8 @@
 	            ) : _react2['default'].createElement(
 	                _beeInputGroup2['default'],
 	                {
-	                    className: (0, _classnames2['default'])(className, classes),
-	                    simple: true,
-	                    disabledCon: true
+	                    className: (0, _classnames2['default'])(className, classes, disabledCon),
+	                    simple: true
 	                },
 	                _react2['default'].createElement(_beeFormControl2['default'], _extends({}, others, {
 	                    value: toThousands ? showValue : value,
@@ -8783,11 +8784,10 @@
 	  }
 	
 	  InputGroupAddon.prototype.render = function render() {
-	    var _props = this.props;
-	    var className = _props.className;
-	    var clsPrefix = _props.clsPrefix;
-	
-	    var others = _objectWithoutProperties(_props, ['className', 'clsPrefix']);
+	    var _props = this.props,
+	        className = _props.className,
+	        clsPrefix = _props.clsPrefix,
+	        others = _objectWithoutProperties(_props, ['className', 'clsPrefix']);
 	
 	    return _react2["default"].createElement('span', _extends({}, others, {
 	      className: (0, _classnames2["default"])(className, clsPrefix)

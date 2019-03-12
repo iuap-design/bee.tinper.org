@@ -6,6 +6,7 @@
 */
 
 import React, { Component } from 'react';
+import Button from 'bee-button';
 import Affix from '../../src';
 
 class Demo2 extends Component {
@@ -14,12 +15,10 @@ class Demo2 extends Component {
     let container = document.getElementsByClassName('page-container u-container example')[0]? document.getElementsByClassName('page-container u-container example')[0] : document.getElementById('tinperBeeDemo');
 
     return (
-      <div className="outer-box" id="outer-box2">
+      <div className="demo2" id="outer-box2">
         <label>基本的Affix，具体屏幕顶部距离等于offetTop `zIndex={2001} offsetTop=200`</label>
-        <Affix container={container} zIndex={2001} offsetTop={200}>
-          <div className='content'>
-            <span>affix</span>
-          </div>
+        <Affix container={container} zIndex={2001} offsetTop={120}>
+          <Button colors="primary">120px to affix top</Button>
         </Affix>
       </div>
     )
