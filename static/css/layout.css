@@ -13,8 +13,9 @@
     padding-left: 40px;
     position: fixed;
     overflow: auto;
-    height: 100%;
+    height: calc(100% - 65px);
     top: 95px;
+    padding-bottom: 30px;
 }
 
 .docs {
@@ -27,6 +28,6 @@
 }
 
 .footer-out {
-    max-width: calc(100% - 300px);
+    width: calc(100% - 300px);
     margin-left: 290px;
 }
