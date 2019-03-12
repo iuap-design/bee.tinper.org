@@ -80,7 +80,7 @@
 	
 	var CARETUP = _react2['default'].createElement('i', { className: 'uf uf-arrow-up' });
 	
-	var Demo1 = __webpack_require__(86);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": "Demo1", "code": "import React, { Component } from 'react';\nimport {  } from 'tinper-bee';\nimport { Button,Row,Col,FormControl,Dropdown,Menu,Select,Icon,InputGroup } from 'tinper-bee';\n\n\nconst Option = Select.Option;\nconst { Item } = Menu;\nfunction onSelect({ key }) {\n    console.log(`${key} selected`);\n}\n\nfunction onVisibleChange(visible) {\n    console.log(visible);\n}\n\nclass NavBar extends Component {\n    constructor(props){\n        super(props);\n        this.state={\n            activeKey:this.props.activeKey\n        }\n    }\n\n    handleClick = (e) => {\n        this.setState({\n            current: e.key,\n        });\n    }\n    //-------------------\n\n\n    componentDidMount(){\n        docsearch({ \n            apiKey: 'd388a4977faabf821db64112c8abdcf7', \n            indexName: 'bee_tinper', \n            inputSelector: '#componentSearch', \n            debug: false // Set debug to true if you want to inspect the dropdown \n        }); \n    }\n    \n\n    render() {\n        const menu1 = (\n            <Menu\n              onSelect={onSelect}>\n              <Item key=\"1\" className=\"first-show\">首页</Item>\n              <Item key=\"2\">设计语言</Item>\n              <Item key=\"3\"><a href=\"//design.yyuap.com/tinper-bee\">基础组件</a></Item>\n              <Item key=\"4\"><a href=\"//design.yyuap.com/tinper-acs\">应用组件</a></Item>\n              <Item key=\"5\"><a href=\"//design.yyuap.com/tinper-acs\">典型案例</a></Item>\n            </Menu>\n        );\n\n        let activeKey = this.state.activeKey;\n        return (\n            <div >\n                <Row className='nav'>\n                <Col className='nav-left' md={5}>\n                    <span className='nav-logo '>\n                        <a href=\"http://127.0.0.1:3000/design\"><img src='//iuap-design-cdn.oss-cn-beijing.aliyuncs.com/static/tinper-bee/logo/iuapdesign.svg' /></a>\n                    </span>\n                    <span className='nav-split'>|</span>\n                    <span className='nav-search'>\n                        <FormControl id='componentSearch' placeholder='在iuap design 中搜索' type='search' />\n                    </span>\n                </Col>\n                <Col className='nav-right' md={7}>\n                    <ul className=\"nav-options\">\n                        <li><a className=\"first-show\" href=\"#\" >首页</a></li>\n                        <li><a href=\"\" >设计语言</a></li>\n                        <li><a href=\"//design.yyuap.com/tinper-bee\">基础组件</a></li>\n                        <li><a href=\"//design.yyuap.com/tinper-acs\">应用组件</a></li>\n                        <li><a href=\"//design.yyuap.com/case/preview\" target=\"_blank\">典型案例</a></li>\n                        <li>\n                            <Select defaultValue=\"zh_CN\" dropdownClassName='nav-lang-select'>\n                                <Option value=\"zh_CN\">简体中文</Option>\n                                <Option value=\"zh_TW\" disabled={true}>繁体中文</Option>\n                                <Option value=\"en_US\" disabled={true}>英文</Option>\n                            </Select>\n                        </li>\n                    </ul>  \n                </Col>          \n            </Row>\n            <div className=\"mob-nav\">\n                   <img src='//iuap-design-cdn.oss-cn-beijing.aliyuncs.com/static/tinper-bee/logo/iuapdesign.svg' />\n               <span className=\"nav-content\">\n                   <Dropdown\n                        trigger={['click']}\n                        overlay={menu1}\n                        animation=\"slide-up\"\n                        onVisibleChange={onVisibleChange}>\n                        <Button ><Icon type=\"uf-navmenu\"></Icon></Button>\n                    </Dropdown> \n               </span>\n            </div>\n        </div> \n        );\n    }\n}\n\n", "desc": "" }];
+	var Demo1 = __webpack_require__(86);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": "Demo1", "code": "import React, { Component } from 'react';\nimport {  } from 'tinper-bee';\nimport { Button,Row,Col,FormControl,Dropdown,Menu,Select,Icon,InputGroup } from 'tinper-bee';\n\nconst Option = Select.Option;\nconst { Item } = Menu;\n\nclass NavBar extends Component {\n\n    componentDidMount(){\n        docsearch({ \n            apiKey: 'd388a4977faabf821db64112c8abdcf7', \n            indexName: 'bee_tinper', \n            inputSelector: '#componentSearch', \n            debug: false // Set debug to true if you want to inspect the dropdown \n        }); \n    }\n    \n    goto=(path)=>{\n        window.location.pathname=path;\n    }\n    render() {\n        const menu1 = (\n            <Menu>\n              <Item key=\"1\" className=\"first-show\">首页</Item>\n              <Item key=\"2\">设计语言</Item>\n              <Item key=\"3\"><a href=\"/tinper-bee\">基础组件</a></Item>\n              <Item key=\"4\"><a href=\"/tinper-acs\">应用组件</a></Item>\n              <Item key=\"5\"><a href=\"/case/preview\">典型案例</a></Item>\n            </Menu>\n        );\n        return (\n            <div >\n                <Row className='nav'>\n                <Col className='nav-left' md={5}>\n                    <span className='nav-logo '>\n                        <a href=\"#\"><img src='//iuap-design-cdn.oss-cn-beijing.aliyuncs.com/static/tinper-bee/logo/iuapdesign.svg' /></a>\n                    </span>\n                    <span className='nav-split'>|</span>\n                    <span className='nav-search'>\n                        <FormControl id='componentSearch' placeholder='在iuap design 中搜索' type='search' />\n                    </span>\n                </Col>\n                <Col className='nav-right' md={7}>\n                    <ul className=\"nav-options\">\n                        <li><a className=\"first-show\" href=\"#\" onClick={()=>{this.goto('#')}}>首页</a></li>\n                        <li><a href=\"\" >设计语言</a></li>\n                        <li><a href=\"/tinper-bee\" onClick={()=>{this.goto('/tinper-bee')}}>基础组件</a></li>\n                        <li><a href=\"/tinper-acs\" onClick={()=>{this.goto('/tinper-acs')}}>应用组件</a></li>\n                        <li><a href=\"/case/preview\" onClick={()=>{this.goto('/case/preview')}} target=\"_blank\">典型案例</a></li>\n                        <li>\n                            <Select defaultValue=\"zh_CN\" dropdownClassName='nav-lang-select'>\n                                <Option value=\"zh_CN\">简体中文</Option>\n                                <Option value=\"zh_TW\" disabled={true}>繁体中文</Option>\n                                <Option value=\"en_US\" disabled={true}>英文</Option>\n                            </Select>\n                        </li>\n                    </ul>  \n                </Col>          \n            </Row>\n            <div className=\"mob-nav\">\n                   <img src='//iuap-design-cdn.oss-cn-beijing.aliyuncs.com/static/tinper-bee/logo/iuapdesign.svg' />\n               <span className=\"nav-content\">\n                   <Dropdown\n                        trigger={['click']}\n                        overlay={menu1}\n                        animation=\"slide-up\">\n                        <Button ><Icon type=\"uf-navmenu\"></Icon></Button>\n                    </Dropdown> \n               </span>\n            </div>\n        </div> \n        );\n    }\n}\n\n", "desc": "" }];
 	
 	var Demo = function (_Component) {
 	    _inherits(Demo, _Component);
@@ -8090,38 +8090,22 @@
 	var Option = _tinperBee.Select.Option;
 	var Item = _tinperBee.Menu.Item;
 	
-	function onSelect(_ref) {
-	    var key = _ref.key;
-	
-	    console.log(key + ' selected');
-	}
-	
-	function onVisibleChange(visible) {
-	    console.log(visible);
-	}
-	
 	var NavBar = function (_Component) {
 	    _inherits(NavBar, _Component);
 	
-	    function NavBar(props) {
+	    function NavBar() {
+	        var _temp, _this, _ret;
+	
 	        _classCallCheck(this, NavBar);
 	
-	        var _this = _possibleConstructorReturn(this, _Component.call(this, props));
+	        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+	            args[_key] = arguments[_key];
+	        }
 	
-	        _this.handleClick = function (e) {
-	            _this.setState({
-	                current: e.key
-	            });
-	        };
-	
-	        _this.state = {
-	            activeKey: _this.props.activeKey
-	        };
-	        return _this;
+	        return _ret = (_temp = (_this = _possibleConstructorReturn(this, _Component.call.apply(_Component, [this].concat(args))), _this), _this.goto = function (path) {
+	            window.location.pathname = path;
+	        }, _temp), _possibleConstructorReturn(_this, _ret);
 	    }
-	
-	    //-------------------
-	
 	
 	    NavBar.prototype.componentDidMount = function componentDidMount() {
 	        docsearch({
@@ -8133,10 +8117,11 @@
 	    };
 	
 	    NavBar.prototype.render = function render() {
+	        var _this2 = this;
+	
 	        var menu1 = _react2['default'].createElement(
 	            _tinperBee.Menu,
-	            {
-	                onSelect: onSelect },
+	            null,
 	            _react2['default'].createElement(
 	                Item,
 	                { key: '1', className: 'first-show' },
@@ -8152,7 +8137,7 @@
 	                { key: '3' },
 	                _react2['default'].createElement(
 	                    'a',
-	                    { href: '//design.yyuap.com/tinper-bee' },
+	                    { href: '/tinper-bee' },
 	                    '\u57FA\u7840\u7EC4\u4EF6'
 	                )
 	            ),
@@ -8161,7 +8146,7 @@
 	                { key: '4' },
 	                _react2['default'].createElement(
 	                    'a',
-	                    { href: '//design.yyuap.com/tinper-acs' },
+	                    { href: '/tinper-acs' },
 	                    '\u5E94\u7528\u7EC4\u4EF6'
 	                )
 	            ),
@@ -8170,13 +8155,11 @@
 	                { key: '5' },
 	                _react2['default'].createElement(
 	                    'a',
-	                    { href: '//design.yyuap.com/tinper-acs' },
+	                    { href: '/case/preview' },
 	                    '\u5178\u578B\u6848\u4F8B'
 	                )
 	            )
 	        );
-	
-	        var activeKey = this.state.activeKey;
 	        return _react2['default'].createElement(
 	            'div',
 	            null,
@@ -8191,7 +8174,7 @@
 	                        { className: 'nav-logo ' },
 	                        _react2['default'].createElement(
 	                            'a',
-	                            { href: 'http://127.0.0.1:3000/design' },
+	                            { href: '#' },
 	                            _react2['default'].createElement('img', { src: '//iuap-design-cdn.oss-cn-beijing.aliyuncs.com/static/tinper-bee/logo/iuapdesign.svg' })
 	                        )
 	                    ),
@@ -8217,7 +8200,9 @@
 	                            null,
 	                            _react2['default'].createElement(
 	                                'a',
-	                                { className: 'first-show', href: '#' },
+	                                { className: 'first-show', href: '#', onClick: function onClick() {
+	                                        _this2.goto('#');
+	                                    } },
 	                                '\u9996\u9875'
 	                            )
 	                        ),
@@ -8235,7 +8220,9 @@
 	                            null,
 	                            _react2['default'].createElement(
 	                                'a',
-	                                { href: '//design.yyuap.com/tinper-bee' },
+	                                { href: '/tinper-bee', onClick: function onClick() {
+	                                        _this2.goto('/tinper-bee');
+	                                    } },
 	                                '\u57FA\u7840\u7EC4\u4EF6'
 	                            )
 	                        ),
@@ -8244,7 +8231,9 @@
 	                            null,
 	                            _react2['default'].createElement(
 	                                'a',
-	                                { href: '//design.yyuap.com/tinper-acs' },
+	                                { href: '/tinper-acs', onClick: function onClick() {
+	                                        _this2.goto('/tinper-acs');
+	                                    } },
 	                                '\u5E94\u7528\u7EC4\u4EF6'
 	                            )
 	                        ),
@@ -8253,7 +8242,9 @@
 	                            null,
 	                            _react2['default'].createElement(
 	                                'a',
-	                                { href: '//design.yyuap.com/case/preview', target: '_blank' },
+	                                { href: '/case/preview', onClick: function onClick() {
+	                                        _this2.goto('/case/preview');
+	                                    }, target: '_blank' },
 	                                '\u5178\u578B\u6848\u4F8B'
 	                            )
 	                        ),
@@ -8295,8 +8286,7 @@
 	                        {
 	                            trigger: ['click'],
 	                            overlay: menu1,
-	                            animation: 'slide-up',
-	                            onVisibleChange: onVisibleChange },
+	                            animation: 'slide-up' },
 	                        _react2['default'].createElement(
 	                            _tinperBee.Button,
 	                            null,
