@@ -258,6 +258,7 @@ input::-webkit-input-placeholder {
 }
 .nav{
     top: 0;
+    left: 0;
 }
 #navbar .nav-options a.first-show{
     color: #444;

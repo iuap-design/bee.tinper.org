@@ -103,6 +103,18 @@
 #footer p {
     color: #fff;
 }
+#footer .footer>.footer-top{
+    margin-left: 9%;
+    margin-right: 9%;
+}
+#footer .footer .footer-middle{
+    padding: 0;
+}
+#footer .footer .footer-middle .footer-line{
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+}
 #footer .u-col-md-12>h3,
 #footer .u-col-md-12>p,
 #footer .u-panel-footer,

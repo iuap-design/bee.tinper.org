@@ -8054,7 +8054,7 @@
 	            { className: 'footer' },
 	            _react2['default'].createElement(
 	                _tinperBee.Row,
-	                { className: '' },
+	                { className: 'footer-top' },
 	                _react2['default'].createElement(
 	                    _tinperBee.Col,
 	                    { className: 'footer-top-item', md: 3, xs: 12, sm: 6 },
@@ -8084,7 +8084,7 @@
 	                            null,
 	                            _react2['default'].createElement(
 	                                'a',
-	                                { href: 'https://package.yonyoucloud.com/#/' },
+	                                { href: 'https://package.yonyoucloud.com/#/', onClick: this.goto },
 	                                'YNPM-\u7528\u53CBNode\u955C\u50CF\u670D\u52A1'
 	                            )
 	                        ),
@@ -8093,7 +8093,7 @@
 	                            null,
 	                            _react2['default'].createElement(
 	                                'a',
-	                                { href: 'https://github.com/tinper-bee/bee-tools' },
+	                                { href: 'https://github.com/tinper-bee/bee-tools', onClick: this.goto },
 	                                'bee-tools \u57FA\u7840\u7EC4\u4EF6\u5F00\u53D1\u5DE5\u5177'
 	                            )
 	                        ),
@@ -8102,7 +8102,7 @@
 	                            null,
 	                            _react2['default'].createElement(
 	                                'a',
-	                                { href: 'https://github.com/tinper-acs/ac-tools' },
+	                                { href: 'https://github.com/tinper-acs/ac-tools', onClick: this.goto },
 	                                'ac-tools \u4E1A\u52A1\u7EC4\u4EF6\u5F00\u53D1\u5DE5\u5177'
 	                            )
 	                        ),
@@ -8111,7 +8111,7 @@
 	                            null,
 	                            _react2['default'].createElement(
 	                                'a',
-	                                { href: 'https://github.com/tinper-acs/ac-tools' },
+	                                { href: 'https://github.com/tinper-acs/ac-tools', onClick: this.goto },
 	                                'YYIMSDK \u5373\u65F6\u901A\u8BAF SDK'
 	                            )
 	                        ),
@@ -8120,7 +8120,7 @@
 	                            null,
 	                            _react2['default'].createElement(
 	                                'a',
-	                                { href: 'https://www.yuque.com/ucf-web/book' },
+	                                { href: 'https://www.yuque.com/ucf-web/book', onClick: this.goto },
 	                                'UCF-WEB \u5FAE\u524D\u7AEF\u6846\u67B6'
 	                            )
 	                        ),
@@ -8129,7 +8129,7 @@
 	                            null,
 	                            _react2['default'].createElement(
 	                                'a',
-	                                { href: 'http://tinper.org/webide/' },
+	                                { href: 'http://tinper.org/webide/', onClick: this.goto },
 	                                'Moy \u6846\u67B6\u5728\u7EBF\u793A\u4F8B'
 	                            )
 	                        ),
@@ -8138,7 +8138,7 @@
 	                            null,
 	                            _react2['default'].createElement(
 	                                'a',
-	                                { href: 'https://github.com/lebra/lebra-components' },
+	                                { href: 'https://github.com/lebra/lebra-components', onClick: this.goto },
 	                                'lebra-components \u79FB\u52A8\u7EC4\u4EF6\u5E93'
 	                            )
 	                        )
@@ -8164,7 +8164,7 @@
 	                            null,
 	                            _react2['default'].createElement(
 	                                'a',
-	                                { href: 'https://github.com/iuap-design/blog/issues' },
+	                                { href: 'https://github.com/iuap-design/blog/issues', onClick: this.goto },
 	                                '\u4E91\u5E73\u53F0\u4F53\u9A8C\u6280\u672F\u56E2\u961FBLOG'
 	                            )
 	                        ),
@@ -8199,7 +8199,7 @@
 	                            null,
 	                            _react2['default'].createElement(
 	                                'a',
-	                                { href: 'https://github.com/tinper-bee' },
+	                                { target: '_blank', href: 'https://github.com/tinper-bee', onClick: this.goto },
 	                                '\u7EC4\u4EF6Github \u6E90\u7801'
 	                            )
 	                        ),
@@ -8208,7 +8208,7 @@
 	                            null,
 	                            _react2['default'].createElement(
 	                                'a',
-	                                { href: 'https://github.com/iuap-design/tinper-bee/releases' },
+	                                { target: '_blank', href: 'https://github.com/iuap-design/tinper-bee/releases', onClick: this.goto },
 	                                '\u66F4\u65B0\u8BB0\u5F55'
 	                            )
 	                        ),
@@ -8217,7 +8217,7 @@
 	                            null,
 	                            _react2['default'].createElement(
 	                                'a',
-	                                { href: '' },
+	                                { target: '_blank', href: 'https://github.com/iuap-design/tinper-bee/issues', onClick: this.goto },
 	                                '\u5E38\u89C1\u95EE\u9898'
 	                            )
 	                        )
