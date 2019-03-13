@@ -30,6 +30,7 @@
 .footer-out {
     width: calc(100% - 300px);
     margin-left: 290px;
+    margin-top: 60px;
 }
 .u-row{
     margin: 0
