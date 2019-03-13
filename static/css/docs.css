@@ -222,13 +222,3 @@ select::-ms-expand {
 .docs a.pencil{
     color: #8D99AE;
 }
-.tag-select{
-    background:#fafdfe;  
-    height:28px;  
-    width:180px;  
-    line-height:28px;  
-    border:1px solid #9bc0dd;  
-    -moz-border-radius:2px;  
-    -webkit-border-radius:2px;  
-    border-radius:2px;  
-}

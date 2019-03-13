@@ -31,3 +31,6 @@
     width: calc(100% - 300px);
     margin-left: 290px;
 }
+.u-row{
+    margin: 0
+}
