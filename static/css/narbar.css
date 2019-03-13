@@ -265,3 +265,7 @@ input::-webkit-input-placeholder {
 #navbar .nav-options a[href="/tinper-bee"]{
     color: #E14C46;
 }
+#navbar .nav-options a[href=""]{
+    color: #ccc;
+    cursor: not-allowed;
+}
