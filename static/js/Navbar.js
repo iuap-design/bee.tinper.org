@@ -8045,8 +8045,12 @@
 	            args[_key] = arguments[_key];
 	        }
 	
-	        return _ret = (_temp = (_this = _possibleConstructorReturn(this, _Component.call.apply(_Component, [this].concat(args))), _this), _this.goto = function (path) {
-	            window.location.pathname = path;
+	        return _ret = (_temp = (_this = _possibleConstructorReturn(this, _Component.call.apply(_Component, [this].concat(args))), _this), _this.goto = function (path, blank) {
+	            if (blank) {
+	                window.open('//' + window.location.host + path);
+	            } else {
+	                window.location.pathname = path;
+	            }
 	        }, _temp), _possibleConstructorReturn(_this, _ret);
 	    }
 	
@@ -8179,7 +8183,7 @@
 	                            _react2['default'].createElement(
 	                                'a',
 	                                { href: '/case/preview', onClick: function onClick() {
-	                                        _this2.goto('/case/preview');
+	                                        _this2.goto('/case/preview', true);
 	                                    }, target: '_blank' },
 	                                '\u5178\u578B\u6848\u4F8B'
 	                            )
