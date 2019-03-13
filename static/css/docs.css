@@ -111,17 +111,9 @@ body {
     border-bottom: 1px solid #ccc;
 }
 .docs blockquote {
-    padding: 13px 13px 21px 15px;
-    margin-bottom: 18px;
+    padding: 0;
     font-family:georgia,serif;
     font-style: italic;
-}
-.docs blockquote:before {
-    content:"\201C";
-    font-size:40px;
-    margin-left:-10px;
-    font-family:georgia,serif;
-    color:#eee;
 }
 .docs blockquote p {
     font-size: 14px;
