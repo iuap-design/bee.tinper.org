@@ -7,14 +7,14 @@
   display: inline-block;
   padding: 0 12px;
   width: 100%;
-  height: 30px;
+  height: 32px;
   cursor: text;
   font-size: 14px;
   line-height: 1.5;
   color: #424242;
   background-color: #fff;
   background-image: none;
-  border: 1px solid #bdbdbd;
+  border: 1px solid rgb(165, 173, 186);
   border-radius: 3px;
   transition: all .3s; }
   .u-form-control:focus {
@@ -24,18 +24,18 @@
     display: none; }
 
 .u-form-control[disabled] {
-  background: #eee;
-  border-color: #e0e0e0;
-  color: #BDBDBD;
+  background: #F7F9FB;
+  border-color: #DFE1E6;
+  color: #909090;
   cursor: not-allowed; }
 
 .u-form-control.lg {
-  height: 38px;
+  height: 40px;
   font-size: 14px; }
 
 .u-form-control.sm {
   font-size: 12px;
-  height: 24px; }
+  height: 26px; }
 
 .u-form-control-search-wrapper {
   position: absolute;

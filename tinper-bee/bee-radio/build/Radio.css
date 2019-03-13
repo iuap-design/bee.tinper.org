@@ -130,22 +130,25 @@
   .u-radio.is-checked.u-radio-inverse .u-radio-label:after {
     background: rgb(255,255,255); }
   .u-radio.disabled {
-    cursor: not-allowed;
-    color: #909090; }
+    cursor: not-allowed; }
     .u-radio.disabled input[type='radio'] {
       cursor: not-allowed; }
-    .u-radio.disabled .u-radio-label:before {
-      border-color: #DFE1E6; }
-  .u-radio.disabled.is-checked .u-radio-label:after {
-    background: #c1c7d0; }
+    .u-radio.disabled .u-radio-label {
+      color: #909090; }
+      .u-radio.disabled .u-radio-label:before {
+        border-color: #DFE1E6; }
+  .u-radio.disabled.is-checked .u-radio-label {
+    color: #909090; }
+    .u-radio.disabled.is-checked .u-radio-label:after {
+      background: #c1c7d0; }
   .u-radio .u-radio-label {
     font-size: 14px;
     cursor: pointer;
     display: inline-block;
     position: relative;
-    padding-left: 25px;
+    padding-left: 24px;
     margin-right: 16px;
-    color: rgba(0, 0, 0, 0.65); }
+    color: #212121; }
     .u-radio .u-radio-label:before {
       -moz-border-radius: 50%;
       -webkit-border-radius: 50%;

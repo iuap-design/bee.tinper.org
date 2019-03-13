@@ -7974,7 +7974,9 @@
 	        if (colorsMap[colors]) {
 	            clsObj[clsPrefix + '-' + colorsMap[colors]] = true;
 	        }
-	        //clsObj[`${clsPrefix}-border`] = bordered;
+	        if (bordered) {
+	            clsObj[clsPrefix + '-border'] = bordered;
+	        }
 	        var classes = (0, _classnames2["default"])(clsPrefix, clsObj);
 	        return _react2["default"].createElement(
 	            'button',
@@ -36134,11 +36136,10 @@
 	  }
 	
 	  InputGroupAddon.prototype.render = function render() {
-	    var _props = this.props;
-	    var className = _props.className;
-	    var clsPrefix = _props.clsPrefix;
-	
-	    var others = _objectWithoutProperties(_props, ['className', 'clsPrefix']);
+	    var _props = this.props,
+	        className = _props.className,
+	        clsPrefix = _props.clsPrefix,
+	        others = _objectWithoutProperties(_props, ['className', 'clsPrefix']);
 	
 	    return _react2["default"].createElement('span', _extends({}, others, {
 	      className: (0, _classnames2["default"])(className, clsPrefix)
@@ -45692,7 +45693,7 @@
 /* 487 */
 /***/ (function(module, exports) {
 
-	/** @license React v16.8.3
+	/** @license React v16.8.4
 	 * react-is.production.min.js
 	 *
 	 * Copyright (c) Facebook, Inc. and its affiliates.
@@ -45713,7 +45714,7 @@
 /* 488 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(process) {/** @license React v16.8.3
+	/* WEBPACK VAR INJECTION */(function(process) {/** @license React v16.8.4
 	 * react-is.development.js
 	 *
 	 * Copyright (c) Facebook, Inc. and its affiliates.

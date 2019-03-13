@@ -76,7 +76,7 @@
 	
 	var CARETUP = _react2['default'].createElement('i', { className: 'uf uf-arrow-up' });
 	
-	var Demo1 = __webpack_require__(84);var Demo2 = __webpack_require__(89);var Demo3 = __webpack_require__(90);var Demo4 = __webpack_require__(91);var Demo5 = __webpack_require__(92);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " Radio 基本用法", "code": "/**\r\n * @title Radio 基本用法\r\n * @description `selectedValue`参数被选中的radio值，`disabled`参数设置是否可用，`onChange`设置值改变的回调\r\n */\r\n\r\nimport React, { Component } from 'react'\r\nimport { Radio } from 'tinper-bee';\r\n\r\n\r\n\r\nclass Demo1 extends Component{\r\n  constructor(props) {\r\n  \tsuper(props);\r\n  \tthis.state = {\r\n    \tselectedValue: '2'\r\n    };\r\n  }\r\n  handleChange(value) {\r\n    this.setState({selectedValue: value});\r\n  }\r\n  render() {\r\n    return (\r\n      <Radio.RadioGroup\r\n        name=\"fruits\"\r\n        selectedValue={this.state.selectedValue}\r\n        onChange={this.handleChange.bind(this)}>\r\n          <Radio value=\"1\" disabled>苹果</Radio>\r\n          <Radio value=\"2\" disabled>香蕉</Radio>\r\n          <Radio value=\"3\" >葡萄</Radio>\r\n          <Radio value=\"4\" >菠萝</Radio>\r\n          <Radio value=\"5\" >梨</Radio>\r\n          <Radio value=\"6\" >石榴</Radio>\r\n      </Radio.RadioGroup>   \r\n    )\r\n  }\r\n};\r\n\r\n", "desc": " `selectedValue`参数被选中的radio值，`disabled`参数设置是否可用，`onChange`设置值改变的回调" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 不同颜色的radio", "code": "/**\r\n * @title 不同颜色的radio\r\n * @description `colors`参数控制背景色\r\n */\r\n\r\nimport React, { Component } from 'react'\r\nimport { Radio } from 'tinper-bee';\r\n\r\n\r\n\r\nclass Demo2 extends Component{\r\n  constructor(props) {\r\n  \tsuper(props);\r\n  \tthis.state = {\r\n    \tselectedValue: '3'\r\n    };\r\n  }\r\n  handleChange(value) {\r\n    this.setState({selectedValue: value});\r\n  }\r\n  render() {\r\n    return (\r\n      <Radio.RadioGroup\r\n        name=\"color\"\r\n        selectedValue={this.state.selectedValue}\r\n        onChange={this.handleChange.bind(this)}>\r\n          <Radio colors=\"primary\" value=\"1\" >苹果</Radio>\r\n          <Radio colors=\"success\" value=\"2\" >香蕉</Radio>\r\n          <Radio colors=\"info\" value=\"3\" >葡萄</Radio>\r\n          <Radio colors=\"warning\" value=\"4\" >菠萝</Radio>\r\n          <Radio colors=\"danger\" value=\"5\" >梨</Radio>\r\n          <Radio colors=\"dark\" value=\"6\" >石榴</Radio>\r\n      </Radio.RadioGroup>\r\n    )\r\n  }\r\n};\r\n\r\n", "desc": " `colors`参数控制背景色" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 竖方向Radio", "code": "/**\r\n * @title 竖方向Radio\r\n * @description 可以通过style来设置radio样式\r\n */\r\n\r\nimport React, { Component } from 'react'\r\nimport { Radio } from 'tinper-bee';\r\n\r\n\r\n\r\nclass Demo3 extends Component{\r\n  constructor(props) {\r\n  \tsuper(props);\r\n  \tthis.state = {\r\n    \tselectedValue: '1'\r\n    };\r\n  }\r\n  handleChange(value) {\r\n    this.setState({selectedValue: value});\r\n  }\r\n  render() {\r\n    const radioStyle = {\r\n      display: 'block'\r\n    };\r\n    return (\r\n      <Radio.RadioGroup\r\n        name=\"team\"\r\n        selectedValue={this.state.selectedValue}\r\n        onChange={this.handleChange.bind(this)}>\r\n          <Radio style={radioStyle} value=\"1\" >苹果</Radio>\r\n          <Radio style={radioStyle} value=\"2\" >香蕉</Radio>\r\n          <Radio style={radioStyle} value=\"3\" >葡萄</Radio>\r\n          <Radio style={radioStyle} value=\"4\" >菠萝</Radio>\r\n          <Radio style={radioStyle} value=\"5\" >梨</Radio>\r\n          <Radio style={radioStyle} value=\"6\" >石榴</Radio>\r\n      </Radio.RadioGroup>\r\n    )\r\n  }\r\n};\r\n\r\n", "desc": " 可以通过style来设置radio样式" }, { "example": _react2['default'].createElement(Demo4, null), "title": " RadioButton 基本使用", "code": "/**\r\n * @title RadioButton 基本使用\r\n * @description `selectedValue`参数设置被选中的radio值，`onChange`设置值改变的回调\r\n */\r\n\r\nimport React, { Component } from 'react'\r\nimport { Radio } from 'tinper-bee';\r\n\r\nconst  RadioGroup = Radio.RadioGroup;\r\n\r\nclass Demo4 extends Component{\r\n  constructor(props) {\r\n  \tsuper(props);\r\n  \tthis.state = {\r\n      selectedValue: 'orange',\r\n      selectedValue2: 'apple'\r\n    };\r\n  }\r\n  handleChange(value) {\r\n    this.setState({selectedValue: value});\r\n  }\r\n  handleChange2(value) {\r\n    this.setState({selectedValue2: value});\r\n  }\r\n  render() {\r\n    return (\r\n      <div>\r\n        <Radio.RadioGroup\r\n          name=\"fruit\"\r\n          selectedValue={this.state.selectedValue}\r\n          onChange={this.handleChange.bind(this)}>\r\n            <Radio.RadioButton value=\"apple\">apple</Radio.RadioButton>\r\n            <Radio.RadioButton value=\"banana\">banana</Radio.RadioButton>\r\n            <Radio.RadioButton value=\"orange\">orange</Radio.RadioButton>\r\n        </Radio.RadioGroup>\r\n\r\n        <div style={{ marginTop: 16 }}>\r\n          <Radio.RadioGroup \r\n            selectedValue={this.state.selectedValue2}\r\n            onChange={this.handleChange2.bind(this)}>\r\n            <Radio.RadioButton value=\"apple\">apple</Radio.RadioButton>\r\n            <Radio.RadioButton value=\"banana\" disabled>banana</Radio.RadioButton>\r\n            <Radio.RadioButton value=\"orange\">orange</Radio.RadioButton>\r\n          </Radio.RadioGroup>\r\n        </div>\r\n\r\n        <div style={{ marginTop: 16 }}>\r\n          <Radio.RadioGroup selectedValue=\"apple\">\r\n            <Radio.RadioButton value=\"apple\" disabled>apple</Radio.RadioButton>\r\n            <Radio.RadioButton value=\"banana\" disabled>banana</Radio.RadioButton>\r\n            <Radio.RadioButton value=\"orange\" disabled>orange</Radio.RadioButton>\r\n          </Radio.RadioGroup>\r\n        </div>\r\n      </div>\r\n\r\n    )\r\n  }\r\n};\r\n\r\n", "desc": " `selectedValue`参数设置被选中的radio值，`onChange`设置值改变的回调" }, { "example": _react2['default'].createElement(Demo5, null), "title": " 红色填充的 Radio", "code": "/**\r\n * @title 红色填充的 Radio\r\n * @description `inverse` 参数设置选中为红色填充。\r\n */\r\n\r\nimport React, { Component } from 'react'\r\nimport { Radio } from 'tinper-bee';\r\n\r\n\r\n\r\nclass Demo1 extends Component{\r\n  constructor(props) {\r\n  \tsuper(props);\r\n  \tthis.state = {\r\n    \tselectedValue: '1'\r\n    };\r\n  }\r\n  handleChange(value) {\r\n    this.setState({selectedValue: value});\r\n  }\r\n  render() {\r\n    return (\r\n      <Radio.RadioGroup\r\n        name=\"fruits\"\r\n        selectedValue={this.state.selectedValue}\r\n        onChange={this.handleChange.bind(this)}>\r\n          <Radio value=\"1\" inverse>苹果</Radio>\r\n          <Radio value=\"2\" inverse>香蕉</Radio>\r\n          <Radio value=\"3\" inverse>葡萄</Radio>\r\n      </Radio.RadioGroup>   \r\n    )\r\n  }\r\n};\r\n\r\n", "desc": " `inverse` 参数设置选中为红色填充。" }];
+	var Demo1 = __webpack_require__(84);var Demo2 = __webpack_require__(89);var Demo3 = __webpack_require__(90);var Demo4 = __webpack_require__(91);var Demo5 = __webpack_require__(92);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " Radio 基本用法", "code": "/**\r\n * @title Radio 基本用法\r\n * @description `selectedValue`参数被选中的radio值，`disabled`参数设置是否可用，`onChange`设置值改变的回调\r\n */\r\n\r\nimport React, { Component } from 'react'\r\nimport { Radio } from 'tinper-bee';\r\n\r\n\r\n\r\nclass Demo1 extends Component{\r\n  constructor(props) {\r\n  \tsuper(props);\r\n  \tthis.state = {\r\n    \tselectedValue: '2'\r\n    };\r\n  }\r\n  handleChange(value) {\r\n    this.setState({selectedValue: value});\r\n  }\r\n  render() {\r\n    return (\r\n      <Radio.RadioGroup\r\n        name=\"fruits\"\r\n        selectedValue={this.state.selectedValue}\r\n        onChange={this.handleChange.bind(this)}>\r\n          <Radio value=\"1\" disabled>苹果</Radio>\r\n          <Radio value=\"2\" disabled>香蕉</Radio>\r\n          <Radio value=\"3\" >葡萄</Radio>\r\n          <Radio value=\"4\" >菠萝</Radio>\r\n          <Radio value=\"5\" >梨</Radio>\r\n          <Radio value=\"6\" >石榴</Radio>\r\n      </Radio.RadioGroup>   \r\n    )\r\n  }\r\n};\r\n\r\n", "desc": " `selectedValue`参数被选中的radio值，`disabled`参数设置是否可用，`onChange`设置值改变的回调" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 不同颜色的radio", "code": "/**\r\n * @title 不同颜色的radio\r\n * @description `colors`参数控制背景色\r\n */\r\n\r\nimport React, { Component } from 'react'\r\nimport { Radio } from 'tinper-bee';\r\n\r\n\r\n\r\nclass Demo2 extends Component{\r\n  constructor(props) {\r\n  \tsuper(props);\r\n  \tthis.state = {\r\n    \tselectedValue: '3'\r\n    };\r\n  }\r\n  handleChange(value) {\r\n    this.setState({selectedValue: value});\r\n  }\r\n  render() {\r\n    return (\r\n      <Radio.RadioGroup\r\n        name=\"color\"\r\n        selectedValue={this.state.selectedValue}\r\n        onChange={this.handleChange.bind(this)}>\r\n          <Radio colors=\"primary\" value=\"1\" >苹果</Radio>\r\n          <Radio colors=\"success\" value=\"2\" >香蕉</Radio>\r\n          <Radio colors=\"info\" value=\"3\" >葡萄</Radio>\r\n          <Radio colors=\"warning\" value=\"4\" >菠萝</Radio>\r\n          <Radio colors=\"danger\" value=\"5\" >梨</Radio>\r\n          <Radio colors=\"dark\" value=\"6\" >石榴</Radio>\r\n      </Radio.RadioGroup>\r\n    )\r\n  }\r\n};\r\n\r\n", "desc": " `colors`参数控制背景色" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 竖方向Radio", "code": "/**\r\n * @title 竖方向Radio\r\n * @description 可以通过style来设置radio样式\r\n */\r\n\r\nimport React, { Component } from 'react'\r\nimport { Radio } from 'tinper-bee';\r\n\r\n\r\n\r\nclass Demo3 extends Component{\r\n  constructor(props) {\r\n  \tsuper(props);\r\n  \tthis.state = {\r\n    \tselectedValue: '1'\r\n    };\r\n  }\r\n  handleChange(value) {\r\n    this.setState({selectedValue: value});\r\n  }\r\n  render() {\r\n    const radioStyle = {\r\n      display: 'block'\r\n    };\r\n    return (\r\n      <div className=\"demo3\">\r\n        <Radio.RadioGroup\r\n          name=\"team\"\r\n          selectedValue={this.state.selectedValue}\r\n          onChange={this.handleChange.bind(this)}>\r\n            <Radio style={radioStyle} value=\"1\" >苹果</Radio>\r\n            <Radio style={radioStyle} value=\"2\" >香蕉</Radio>\r\n            <Radio style={radioStyle} value=\"3\" >葡萄</Radio>\r\n            <Radio style={radioStyle} value=\"4\" >菠萝</Radio>\r\n            <Radio style={radioStyle} value=\"5\" >梨</Radio>\r\n            <Radio style={radioStyle} value=\"6\" >石榴</Radio>\r\n        </Radio.RadioGroup>\r\n      </div>\r\n    )\r\n  }\r\n};\r\n\r\n", "desc": " 可以通过style来设置radio样式", "scss_code": ".demo3 .u-radio-group .u-radio{\r\n    margin-bottom: 8px;\r\n}" }, { "example": _react2['default'].createElement(Demo4, null), "title": " RadioButton 基本使用", "code": "/**\r\n * @title RadioButton 基本使用\r\n * @description `selectedValue`参数设置被选中的radio值，`onChange`设置值改变的回调\r\n */\r\n\r\nimport React, { Component } from 'react'\r\nimport { Radio } from 'tinper-bee';\r\n\r\nconst  RadioGroup = Radio.RadioGroup;\r\n\r\nclass Demo4 extends Component{\r\n  constructor(props) {\r\n  \tsuper(props);\r\n  \tthis.state = {\r\n      selectedValue: 'orange',\r\n      selectedValue2: 'apple'\r\n    };\r\n  }\r\n  handleChange(value) {\r\n    this.setState({selectedValue: value});\r\n  }\r\n  handleChange2(value) {\r\n    this.setState({selectedValue2: value});\r\n  }\r\n  render() {\r\n    return (\r\n      <div>\r\n        <Radio.RadioGroup\r\n          name=\"fruit\"\r\n          selectedValue={this.state.selectedValue}\r\n          onChange={this.handleChange.bind(this)}>\r\n            <Radio.RadioButton value=\"apple\">apple</Radio.RadioButton>\r\n            <Radio.RadioButton value=\"banana\">banana</Radio.RadioButton>\r\n            <Radio.RadioButton value=\"orange\">orange</Radio.RadioButton>\r\n        </Radio.RadioGroup>\r\n\r\n        <div style={{ marginTop: 16 }}>\r\n          <Radio.RadioGroup \r\n            selectedValue={this.state.selectedValue2}\r\n            onChange={this.handleChange2.bind(this)}>\r\n            <Radio.RadioButton value=\"apple\">apple</Radio.RadioButton>\r\n            <Radio.RadioButton value=\"banana\" disabled>banana</Radio.RadioButton>\r\n            <Radio.RadioButton value=\"orange\">orange</Radio.RadioButton>\r\n          </Radio.RadioGroup>\r\n        </div>\r\n\r\n        <div style={{ marginTop: 16 }}>\r\n          <Radio.RadioGroup selectedValue=\"apple\">\r\n            <Radio.RadioButton value=\"apple\" disabled>apple</Radio.RadioButton>\r\n            <Radio.RadioButton value=\"banana\" disabled>banana</Radio.RadioButton>\r\n            <Radio.RadioButton value=\"orange\" disabled>orange</Radio.RadioButton>\r\n          </Radio.RadioGroup>\r\n        </div>\r\n      </div>\r\n\r\n    )\r\n  }\r\n};\r\n\r\n", "desc": " `selectedValue`参数设置被选中的radio值，`onChange`设置值改变的回调" }, { "example": _react2['default'].createElement(Demo5, null), "title": " 红色填充的 Radio", "code": "/**\r\n * @title 红色填充的 Radio\r\n * @description `inverse` 参数设置选中为红色填充。\r\n */\r\n\r\nimport React, { Component } from 'react'\r\nimport { Radio } from 'tinper-bee';\r\n\r\n\r\n\r\nclass Demo1 extends Component{\r\n  constructor(props) {\r\n  \tsuper(props);\r\n  \tthis.state = {\r\n    \tselectedValue: '1'\r\n    };\r\n  }\r\n  handleChange(value) {\r\n    this.setState({selectedValue: value});\r\n  }\r\n  render() {\r\n    return (\r\n      <Radio.RadioGroup\r\n        name=\"fruits\"\r\n        selectedValue={this.state.selectedValue}\r\n        onChange={this.handleChange.bind(this)}>\r\n          <Radio value=\"1\" inverse>苹果</Radio>\r\n          <Radio value=\"2\" inverse>香蕉</Radio>\r\n          <Radio value=\"3\" inverse>葡萄</Radio>\r\n      </Radio.RadioGroup>   \r\n    )\r\n  }\r\n};\r\n\r\n", "desc": " `inverse` 参数设置选中为红色填充。" }];
 	
 	var Demo = function (_Component) {
 	    _inherits(Demo, _Component);
@@ -8658,40 +8658,44 @@
 	      display: 'block'
 	    };
 	    return _react2['default'].createElement(
-	      _src2['default'].RadioGroup,
-	      {
-	        name: 'team',
-	        selectedValue: this.state.selectedValue,
-	        onChange: this.handleChange.bind(this) },
+	      'div',
+	      { className: 'demo3' },
 	      _react2['default'].createElement(
-	        _src2['default'],
-	        { style: radioStyle, value: '1' },
-	        '\u82F9\u679C'
-	      ),
-	      _react2['default'].createElement(
-	        _src2['default'],
-	        { style: radioStyle, value: '2' },
-	        '\u9999\u8549'
-	      ),
-	      _react2['default'].createElement(
-	        _src2['default'],
-	        { style: radioStyle, value: '3' },
-	        '\u8461\u8404'
-	      ),
-	      _react2['default'].createElement(
-	        _src2['default'],
-	        { style: radioStyle, value: '4' },
-	        '\u83E0\u841D'
-	      ),
-	      _react2['default'].createElement(
-	        _src2['default'],
-	        { style: radioStyle, value: '5' },
-	        '\u68A8'
-	      ),
-	      _react2['default'].createElement(
-	        _src2['default'],
-	        { style: radioStyle, value: '6' },
-	        '\u77F3\u69B4'
+	        _src2['default'].RadioGroup,
+	        {
+	          name: 'team',
+	          selectedValue: this.state.selectedValue,
+	          onChange: this.handleChange.bind(this) },
+	        _react2['default'].createElement(
+	          _src2['default'],
+	          { style: radioStyle, value: '1' },
+	          '\u82F9\u679C'
+	        ),
+	        _react2['default'].createElement(
+	          _src2['default'],
+	          { style: radioStyle, value: '2' },
+	          '\u9999\u8549'
+	        ),
+	        _react2['default'].createElement(
+	          _src2['default'],
+	          { style: radioStyle, value: '3' },
+	          '\u8461\u8404'
+	        ),
+	        _react2['default'].createElement(
+	          _src2['default'],
+	          { style: radioStyle, value: '4' },
+	          '\u83E0\u841D'
+	        ),
+	        _react2['default'].createElement(
+	          _src2['default'],
+	          { style: radioStyle, value: '5' },
+	          '\u68A8'
+	        ),
+	        _react2['default'].createElement(
+	          _src2['default'],
+	          { style: radioStyle, value: '6' },
+	          '\u77F3\u69B4'
+	        )
 	      )
 	    );
 	  };

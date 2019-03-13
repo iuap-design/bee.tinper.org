@@ -1,6 +1,9 @@
-# Carousel
+## Carousel
+
 ## 代码演示
+
 ## API
+
 |参数|说明|类型|默认值|
 |:---|:-----|:----|:------|
 |containerClass|Carousel 容器 class name|String|swiper-container|

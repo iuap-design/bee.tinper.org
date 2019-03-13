@@ -76,7 +76,7 @@
 	
 	var CARETUP = _react2['default'].createElement('i', { className: 'uf uf-arrow-up' });
 	
-	var Demo1 = __webpack_require__(84);var Demo2 = __webpack_require__(109);var Demo3 = __webpack_require__(110);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 常用可选transfer", "code": "/**\r\n*\r\n* @title 常用可选transfer\r\n* @description \r\n*\r\n*/\r\n\r\n\r\nimport React, { Component } from 'react';\r\nimport { Transfer } from 'tinper-bee';\r\n\r\nconst mockData = [];\r\nfor (let i = 0; i < 20; i++) {\r\n  mockData.push({\r\n    key: i.toString(),\r\n    title: `content${i + 1}`,\r\n    description: `description of content${i + 1}`,\r\n    disabled: i % 3 < 1,\r\n\r\n  });\r\n}\r\n\r\nconst targetKeys = mockData\r\n        .filter(item => +item.key % 3 > 1)\r\n        .map(item => item.key);\r\n\r\nclass Demo1 extends React.Component {\r\n  state = {\r\n    targetKeys,\r\n    selectedKeys: [],\r\n    showModal: false,\r\n    modalSize: ''\r\n  }\r\n\r\n  handleChange = (nextTargetKeys, direction, moveKeys) => {\r\n    this.setState({ targetKeys: nextTargetKeys });\r\n\r\n    console.log('targetKeys: ', targetKeys);\r\n    console.log('direction: ', direction);\r\n    console.log('moveKeys: ', moveKeys);\r\n  }\r\n\r\n  handleSelectChange = (sourceSelectedKeys, targetSelectedKeys) => {\r\n    this.setState({ selectedKeys: [...sourceSelectedKeys, ...targetSelectedKeys] });\r\n\r\n    console.log('sourceSelectedKeys: ', sourceSelectedKeys);\r\n    console.log('targetSelectedKeys: ', targetSelectedKeys);\r\n  }\r\n\r\n  handleScroll = (direction, e) => {\r\n    console.log('direction:', direction);\r\n    console.log('target:', e.target);\r\n  }\r\n\r\n\r\n  render() {\r\n    const state = this.state;\r\n\r\n    return (\r\n       <Transfer\r\n          dataSource={mockData}\r\n          titles={['Source', 'Target']}\r\n          targetKeys={state.targetKeys}\r\n          selectedKeys={state.selectedKeys}\r\n          onChange={this.handleChange}\r\n          onSelectChange={this.handleSelectChange}\r\n          onScroll={this.handleScroll}\r\n          render={item => item.title}\r\n        />\r\n    );\r\n  }\r\n}\r\n\r\n\r\n\r\n", "desc": " " }, { "example": _react2['default'].createElement(Demo2, null), "title": " 带搜索框的tranfer", "code": "/**\r\n*\r\n* @title 带搜索框的tranfer\r\n* @description\r\n*\r\n*/\r\n\r\nimport React, { Component } from 'react';\r\nimport { Transfer } from 'tinper-bee';\r\n\r\n\r\nclass Demo2 extends React.Component {\r\n  state = {\r\n    mockData: [],\r\n    targetKeys: [],\r\n  }\r\n  componentDidMount() {\r\n    this.getMock();\r\n  }\r\n  getMock = () => {\r\n    const targetKeys = [];\r\n    const mockData = [];\r\n    for (let i = 0; i < 20; i++) {\r\n      const data = {\r\n        key: i.toString(),\r\n        title: `content${i + 1}`,\r\n        description: `description of content${i + 1}`,\r\n        chosen: Math.random() * 2 > 1,\r\n      };\r\n      if (data.chosen) {\r\n        targetKeys.push(data.key);\r\n      }\r\n      mockData.push(data);\r\n    }\r\n    this.setState({ mockData, targetKeys });\r\n  }\r\n  filterOption = (inputValue, option) => {\r\n    return option.title.indexOf(inputValue) > -1;\r\n  }\r\n  handleChange = (targetKeys) => {\r\n    this.setState({ targetKeys });\r\n  }\r\n  render() {\r\n    return (\r\n      <Transfer\r\n        dataSource={this.state.mockData}\r\n        showSearch\r\n        filterOption={this.filterOption}\r\n        targetKeys={this.state.targetKeys}\r\n        onChange={this.handleChange}\r\n        render={item => item.title}\r\n      />\r\n    );\r\n  }\r\n}\r\n\r\n\r\n\r\n", "desc": "" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 底部自定义的transfer", "code": "/**\r\n*\r\n* @title 底部自定义的transfer\r\n* @description \r\n*\r\n*/\r\n\r\nimport React, { Component } from 'react';\r\n\nimport { Transfer, Button } from 'tinper-bee';\r\n\r\nclass Demo3 extends React.Component {\r\n  state = {\r\n    mockData: [],\r\n    targetKeys: [],\r\n  }\r\n  componentDidMount() {\r\n    this.getMock();\r\n  }\r\n  getMock = () => {\r\n    const targetKeys = [];\r\n    const mockData = [];\r\n    for (let i = 0; i < 20; i++) {\r\n      const data = {\r\n        key: i.toString(),\r\n        title: `content${i + 1}`,\r\n        description: `description of content${i + 1}`,\r\n        chosen: Math.random() * 2 > 1,\r\n      };\r\n      if (data.chosen) {\r\n        targetKeys.push(data.key);\r\n      }\r\n      mockData.push(data);\r\n    }\r\n    this.setState({ mockData, targetKeys });\r\n  }\r\n  handleChange = (targetKeys) => {\r\n    this.setState({ targetKeys });\r\n  }\r\n  renderFooter = () => {\r\n    return (\r\n      <Button\r\n        size=\"sm\"\r\n        style={{ float: 'right', margin: 5 }}\r\n        onClick={this.getMock}\r\n      >\r\n        reload\r\n      </Button>\r\n    );\r\n  }\r\n  render() {\r\n    return (\r\n      <Transfer\r\n        dataSource={this.state.mockData}\r\n        showSearch\r\n        listStyle={{\r\n          width: 250,\r\n          height: 300,\r\n        }}\r\n        targetKeys={this.state.targetKeys}\r\n        onChange={this.handleChange}\r\n        render={item => `${item.title}-${item.description}`}\r\n        footer={this.renderFooter}\r\n      />\r\n    );\r\n  }\r\n}\r\n\r\n\r\n", "desc": " " }];
+	var Demo1 = __webpack_require__(84);var Demo2 = __webpack_require__(109);var Demo3 = __webpack_require__(110);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 常用可选transfer", "code": "/**\n*\n* @title 常用可选transfer\n* @description \n*\n*/\n\n\nimport React, { Component } from 'react';\nimport { Transfer } from 'tinper-bee';\n\nconst mockData = [];\nfor (let i = 0; i < 20; i++) {\n  mockData.push({\n    key: i.toString(),\n    title: `content${i + 1}`,\n    description: `description of content${i + 1}`,\n    disabled: i % 3 < 1,\n\n  });\n}\n\nconst targetKeys = mockData\n        .filter(item => +item.key % 3 > 1)\n        .map(item => item.key);\n\nclass Demo1 extends React.Component {\n  state = {\n    targetKeys,\n    selectedKeys: [],\n    showModal: false,\n    modalSize: ''\n  }\n\n  handleChange = (nextTargetKeys, direction, moveKeys) => {\n    this.setState({ targetKeys: nextTargetKeys });\n\n    console.log('targetKeys: ', targetKeys);\n    console.log('direction: ', direction);\n    console.log('moveKeys: ', moveKeys);\n  }\n\n  handleSelectChange = (sourceSelectedKeys, targetSelectedKeys) => {\n    this.setState({ selectedKeys: [...sourceSelectedKeys, ...targetSelectedKeys] });\n\n    console.log('sourceSelectedKeys: ', sourceSelectedKeys);\n    console.log('targetSelectedKeys: ', targetSelectedKeys);\n  }\n\n  handleScroll = (direction, e) => {\n    console.log('direction:', direction);\n    console.log('target:', e.target);\n  }\n\n\n  render() {\n    const state = this.state;\n\n    return (\n       <Transfer\n          dataSource={mockData}\n          titles={['Source', 'Target']}\n          targetKeys={state.targetKeys}\n          selectedKeys={state.selectedKeys}\n          onChange={this.handleChange}\n          onSelectChange={this.handleSelectChange}\n          onScroll={this.handleScroll}\n          render={item => item.title}\n        />\n    );\n  }\n}\n\n\n\n", "desc": " " }, { "example": _react2['default'].createElement(Demo2, null), "title": " 带搜索框的tranfer", "code": "/**\n*\n* @title 带搜索框的tranfer\n* @description\n*\n*/\n\nimport React, { Component } from 'react';\nimport { Transfer } from 'tinper-bee';\n\n\nclass Demo2 extends React.Component {\n  state = {\n    mockData: [],\n    targetKeys: [],\n  }\n  componentDidMount() {\n    this.getMock();\n  }\n  getMock = () => {\n    const targetKeys = [];\n    const mockData = [];\n    for (let i = 0; i < 20; i++) {\n      const data = {\n        key: i.toString(),\n        title: `content${i + 1}`,\n        description: `description of content${i + 1}`,\n        chosen: Math.random() * 2 > 1,\n      };\n      if (data.chosen) {\n        targetKeys.push(data.key);\n      }\n      mockData.push(data);\n    }\n    this.setState({ mockData, targetKeys });\n  }\n  filterOption = (inputValue, option) => {\n    return option.title.indexOf(inputValue) > -1;\n  }\n  handleChange = (targetKeys) => {\n    this.setState({ targetKeys });\n  }\n  render() {\n    return (\n      <Transfer\n        dataSource={this.state.mockData}\n        showSearch\n        filterOption={this.filterOption}\n        targetKeys={this.state.targetKeys}\n        onChange={this.handleChange}\n        render={item => item.title}\n      />\n    );\n  }\n}\n\n\n\n", "desc": "" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 底部自定义的transfer", "code": "/**\n*\n* @title 底部自定义的transfer\n* @description \n*\n*/\n\nimport React, { Component } from 'react';\nimport { Transfer, Button } from 'tinper-bee';\n\nclass Demo3 extends React.Component {\n  state = {\n    mockData: [],\n    targetKeys: [],\n  }\n  componentDidMount() {\n    this.getMock();\n  }\n  getMock = () => {\n    const targetKeys = [];\n    const mockData = [];\n    for (let i = 0; i < 20; i++) {\n      const data = {\n        key: i.toString(),\n        title: `content${i + 1}`,\n        description: `description of content${i + 1}`,\n        chosen: Math.random() * 2 > 1,\n      };\n      if (data.chosen) {\n        targetKeys.push(data.key);\n      }\n      mockData.push(data);\n    }\n    this.setState({ mockData, targetKeys });\n  }\n  handleChange = (targetKeys) => {\n    this.setState({ targetKeys });\n  }\n  renderFooter = () => {\n    return (\n      <Button\n        size=\"sm\"\n        style={{ float: 'right', margin: 5 }}\n        onClick={this.getMock}\n      >\n        reload\n      </Button>\n    );\n  }\n  render() {\n    return (\n      <Transfer\n        dataSource={this.state.mockData}\n        showSearch\n        listStyle={{\n          width: 250,\n          height: 300,\n        }}\n        targetKeys={this.state.targetKeys}\n        onChange={this.handleChange}\n        render={item => `${item.title}-${item.description}`}\n        footer={this.renderFooter}\n      />\n    );\n  }\n}\n\n\n", "desc": " " }];
 	
 	var Demo = function (_Component) {
 	    _inherits(Demo, _Component);
@@ -5582,6 +5582,16 @@
 	  var documentWidth = documentElement.scrollWidth;
 	  var documentHeight = documentElement.scrollHeight;
 	
+	  // scrollXXX on html is sync with body which means overflow: hidden on body gets wrong scrollXXX.
+	  // We should cut this ourself.
+	  var bodyStyle = window.getComputedStyle(body);
+	  if (bodyStyle.overflowX === 'hidden') {
+	    documentWidth = win.innerWidth;
+	  }
+	  if (bodyStyle.overflowY === 'hidden') {
+	    documentHeight = win.innerHeight;
+	  }
+	
 	  // Reset element position after calculate the visible area
 	  if (element.style) {
 	    element.style.position = originalPosition;
@@ -7964,7 +7974,9 @@
 	        if (colorsMap[colors]) {
 	            clsObj[clsPrefix + '-' + colorsMap[colors]] = true;
 	        }
-	        //clsObj[`${clsPrefix}-border`] = bordered;
+	        if (bordered) {
+	            clsObj[clsPrefix + '-border'] = bordered;
+	        }
 	        var classes = (0, _classnames2["default"])(clsPrefix, clsObj);
 	        return _react2["default"].createElement(
 	            'button',
@@ -10943,12 +10955,15 @@
 	
 	    colors: _propTypes2["default"].oneOf(['', 'dark', 'success', 'info', 'warning', 'danger', 'primary']),
 	
-	    disabled: _propTypes2["default"].bool
+	    disabled: _propTypes2["default"].bool,
+	
+	    inverse: _propTypes2["default"].bool
 	
 	};
 	
 	var defaultProps = {
 	    disabled: false,
+	    inverse: false,
 	    colors: 'primary',
 	    clsPrefix: 'u-checkbox',
 	    defaultChecked: false,
@@ -10984,6 +10999,7 @@
 	    Checkbox.prototype.render = function render() {
 	        var _props = this.props,
 	            disabled = _props.disabled,
+	            inverse = _props.inverse,
 	            colors = _props.colors,
 	            size = _props.size,
 	            className = _props.className,
@@ -10994,7 +11010,7 @@
 	            clsPrefix = _props.clsPrefix,
 	            onDoubleClick = _props.onDoubleClick,
 	            onChange = _props.onChange,
-	            others = _objectWithoutProperties(_props, ['disabled', 'colors', 'size', 'className', 'indeterminate', 'onClick', 'children', 'checked', 'clsPrefix', 'onDoubleClick', 'onChange']);
+	            others = _objectWithoutProperties(_props, ['disabled', 'inverse', 'colors', 'size', 'className', 'indeterminate', 'onClick', 'children', 'checked', 'clsPrefix', 'onDoubleClick', 'onChange']);
 	
 	        var input = _react2["default"].createElement('input', _extends({}, others, {
 	            type: 'checkbox',
@@ -11005,6 +11021,10 @@
 	            'is-checked': this.state.checked,
 	            disabled: disabled
 	        };
+	
+	        if (inverse) {
+	            classes[clsPrefix + '-inverse'] = true;
+	        }
 	
 	        if (colors) {
 	            classes[clsPrefix + '-' + colors] = true;
@@ -11134,13 +11154,15 @@
 	var propTypes = {
 	    clsPrefix: _propTypes2["default"].string,
 	    value: _propTypes2["default"].array,
-	    onChange: _propTypes2["default"].func
+	    onChange: _propTypes2["default"].func,
+	    disabled: _propTypes2["default"].bool
 	};
 	
 	var defaultProps = {
 	    clsPrefix: 'u-checkbox-group',
 	    value: [],
-	    onChange: function onChange() {}
+	    onChange: function onChange() {},
+	    disabled: false
 	};
 	
 	var CheckboxGroup = function (_React$Component) {
@@ -11183,7 +11205,8 @@
 	
 	        var _props = this.props,
 	            clsPrefix = _props.clsPrefix,
-	            className = _props.className;
+	            className = _props.className,
+	            disabled = _props.disabled;
 	
 	        var classes = clsPrefix;
 	        if (className) classes += ' ' + className;
@@ -11195,7 +11218,8 @@
 	                    onChange: function onChange() {
 	                        _this2.changeHandle(child.props.value);
 	                    },
-	                    checked: _this2.state.values.indexOf(child.props.value) != -1
+	                    checked: _this2.state.values.indexOf(child.props.value) != -1,
+	                    disabled: disabled
 	                });
 	            })
 	        );

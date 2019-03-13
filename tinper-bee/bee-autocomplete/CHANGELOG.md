@@ -1,3 +1,13 @@
+<a name="2.0.0"></a>
+# [2.0.0](https://github.com/tinper-bee/bee-auto-complete/compare/v1.1.2...v2.0.0) (2019-03-13)
+
+
+### Features
+
+* 主题2.0依赖 ([de738f0](https://github.com/tinper-bee/bee-auto-complete/commit/de738f0))
+
+
+
 <a name="1.1.2"></a>
 ## [1.1.2](https://github.com/tinper-bee/bee-auto-complete/compare/v1.1.1...v1.1.2) (2019-03-05)
 

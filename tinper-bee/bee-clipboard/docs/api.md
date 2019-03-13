@@ -1,6 +1,9 @@
-# Clipboard
+## Clipboard
+
 ## 代码演示
+
 ## API
+
 |参数|说明|类型|默认值|
 |:---|:---:|:--:|---:|
 |action|方法，可以传`copy`或者`cut`,`cut`只支持`textarea`|`string`|`copy`|

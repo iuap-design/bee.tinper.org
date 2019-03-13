@@ -23,17 +23,19 @@ class Demo3 extends Component{
       display: 'block'
     };
     return (
-      <Radio.RadioGroup
-        name="team"
-        selectedValue={this.state.selectedValue}
-        onChange={this.handleChange.bind(this)}>
-          <Radio style={radioStyle} value="1" >苹果</Radio>
-          <Radio style={radioStyle} value="2" >香蕉</Radio>
-          <Radio style={radioStyle} value="3" >葡萄</Radio>
-          <Radio style={radioStyle} value="4" >菠萝</Radio>
-          <Radio style={radioStyle} value="5" >梨</Radio>
-          <Radio style={radioStyle} value="6" >石榴</Radio>
-      </Radio.RadioGroup>
+      <div className="demo3">
+        <Radio.RadioGroup
+          name="team"
+          selectedValue={this.state.selectedValue}
+          onChange={this.handleChange.bind(this)}>
+            <Radio style={radioStyle} value="1" >苹果</Radio>
+            <Radio style={radioStyle} value="2" >香蕉</Radio>
+            <Radio style={radioStyle} value="3" >葡萄</Radio>
+            <Radio style={radioStyle} value="4" >菠萝</Radio>
+            <Radio style={radioStyle} value="5" >梨</Radio>
+            <Radio style={radioStyle} value="6" >石榴</Radio>
+        </Radio.RadioGroup>
+      </div>
     )
   }
 };
