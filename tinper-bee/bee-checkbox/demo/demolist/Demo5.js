@@ -57,7 +57,7 @@ class Demo4 extends Component {
 						5
 					</Checkbox>
 				</CheckboxGroup>
-				<Button onClick={this.click}>submit</Button>
+				<Button colors="secondary" onClick={this.click}>submit</Button>
 			</div>
 		)
 	}

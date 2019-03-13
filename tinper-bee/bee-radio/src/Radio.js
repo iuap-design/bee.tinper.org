@@ -15,10 +15,15 @@ const propTypes = {
   /**
     * radio 是否可用
     */
-  disabled: PropTypes.bool
+  disabled: PropTypes.bool,
+  /**
+    * radio 样式 是否使用红色填充
+    */
+  inverse: PropTypes.bool
 };
 
 const defaultProps = {
+  inverse: false,
   disabled: false,
   clsPrefix: 'u-radio'
 };
@@ -56,6 +61,7 @@ class Radio extends React.Component {
        * 自身的属性
        */
       const {
+          inverse,
           disabled,
           colors,
           className,
@@ -83,6 +89,9 @@ class Radio extends React.Component {
       }
       if (size) {
           classes[`${clsPrefix}-${size}`] = true;
+      }
+      if (inverse) {
+        classes[`${clsPrefix}-inverse`] = true;
       }
       let classNames = classnames(clsPrefix,classes);
       let  tabIndex=optional.checked?0:-1;

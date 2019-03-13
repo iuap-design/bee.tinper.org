@@ -76,7 +76,7 @@
 	
 	var CARETUP = _react2['default'].createElement('i', { className: 'uf uf-arrow-up' });
 	
-	var Demo1 = __webpack_require__(84);var Demo2 = __webpack_require__(89);var Demo3 = __webpack_require__(90);var Demo4 = __webpack_require__(91);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " Radio", "code": "/**\r\n * @title Radio\r\n * @description 基本用法 \r\n */\r\n\r\nimport React, { Component } from 'react'\r\nimport { Radio } from 'tinper-bee';\r\n\r\n\r\n\r\nclass Demo1 extends Component{\r\n  constructor(props) {\r\n  \tsuper(props);\r\n  \tthis.state = {\r\n    \tselectedValue: ''\r\n    };\r\n  }\r\n  handleChange(value) {\r\n    this.setState({selectedValue: value});\r\n  }\r\n  render() {\r\n    return (\r\n      <Radio.RadioGroup\r\n        name=\"fruits\"\r\n        selectedValue={this.state.selectedValue}\r\n        onChange={this.handleChange.bind(this)}>\r\n          <Radio value=\"1\" >苹果</Radio>\r\n          <Radio value=\"2\" >香蕉</Radio>\r\n          <Radio value=\"3\" >葡萄</Radio>\r\n          <Radio value=\"4\" >菠萝</Radio>\r\n          <Radio value=\"5\" >梨</Radio>\r\n          <Radio value=\"6\" >石榴</Radio>\r\n      </Radio.RadioGroup>   \r\n    )\r\n  }\r\n};\r\n\r\n", "desc": " 基本用法 " }, { "example": _react2['default'].createElement(Demo2, null), "title": " 不同颜色的radio", "code": "/**\r\n * @title 不同颜色的radio\r\n * @description `colors`参数控制背景色\r\n */\r\n\r\nimport React, { Component } from 'react'\r\nimport { Radio } from 'tinper-bee';\r\n\r\n\r\n\r\nclass Demo2 extends Component{\r\n  constructor(props) {\r\n  \tsuper(props);\r\n  \tthis.state = {\r\n    \tselectedValue: '3'\r\n    };\r\n  }\r\n  handleChange(value) {\r\n    this.setState({selectedValue: value});\r\n  }\r\n  render() {\r\n    return (\r\n      <Radio.RadioGroup\r\n        name=\"color\"\r\n        selectedValue={this.state.selectedValue}\r\n        onChange={this.handleChange.bind(this)}>\r\n          <Radio colors=\"primary\" value=\"1\" >苹果</Radio>\r\n          <Radio colors=\"success\" value=\"2\" >香蕉</Radio>\r\n          <Radio colors=\"info\" value=\"3\" >葡萄</Radio>\r\n          <Radio colors=\"warning\" value=\"4\" >菠萝</Radio>\r\n          <Radio colors=\"danger\" value=\"5\" >梨</Radio>\r\n          <Radio colors=\"dark\" value=\"6\" >石榴</Radio>\r\n      </Radio.RadioGroup>\r\n    )\r\n  }\r\n};\r\n\r\n", "desc": " `colors`参数控制背景色" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 竖方向Radio", "code": "/**\r\n * @title 竖方向Radio\r\n * @description 可以通过style来设置radio样式\r\n */\r\n\r\nimport React, { Component } from 'react'\r\nimport { Radio } from 'tinper-bee';\r\n\r\n\r\n\r\nclass Demo3 extends Component{\r\n  constructor(props) {\r\n  \tsuper(props);\r\n  \tthis.state = {\r\n    \tselectedValue: '1'\r\n    };\r\n  }\r\n  handleChange(value) {\r\n    this.setState({selectedValue: value});\r\n  }\r\n  render() {\r\n    const radioStyle = {\r\n      display: 'block'\r\n    };\r\n    return (\r\n      <Radio.RadioGroup\r\n        name=\"team\"\r\n        selectedValue={this.state.selectedValue}\r\n        onChange={this.handleChange.bind(this)}>\r\n          <Radio style={radioStyle} value=\"1\" >苹果</Radio>\r\n          <Radio style={radioStyle} value=\"2\" >香蕉</Radio>\r\n          <Radio style={radioStyle} value=\"3\" >葡萄</Radio>\r\n          <Radio style={radioStyle} value=\"4\" >菠萝</Radio>\r\n          <Radio style={radioStyle} value=\"5\" >梨</Radio>\r\n          <Radio style={radioStyle} value=\"6\" >石榴</Radio>\r\n      </Radio.RadioGroup>\r\n    )\r\n  }\r\n};\r\n\r\n", "desc": " 可以通过style来设置radio样式" }, { "example": _react2['default'].createElement(Demo4, null), "title": " RadioButton", "code": "/**\r\n * @title RadioButton\r\n * @description \r\n */\r\n\r\nimport React, { Component } from 'react'\r\nimport { Radio } from 'tinper-bee';\r\n\r\nconst  RadioGroup = Radio.RadioGroup;\r\n\r\nclass Demo4 extends Component{\r\n  constructor(props) {\r\n  \tsuper(props);\r\n  \tthis.state = {\r\n    \tselectedValue: 'banana'\r\n    };\r\n  }\r\n  handleChange(value) {\r\n    this.setState({selectedValue: value});\r\n  }\r\n  render() {\r\n    return (\r\n      <Radio.RadioGroup\r\n        name=\"fruit\"\r\n        selectedValue={this.state.selectedValue}\r\n        onChange={this.handleChange.bind(this)}>\r\n\r\n          <Radio.RadioButton value=\"apple\">apple</Radio.RadioButton>\r\n\r\n          <Radio.RadioButton value=\"banana\">banana</Radio.RadioButton>\r\n\r\n          <Radio.RadioButton  value=\"orange\">orange</Radio.RadioButton>\r\n\r\n      </Radio.RadioGroup>\r\n     \r\n\r\n    )\r\n  }\r\n};\r\n\r\n", "desc": " " }];
+	var Demo1 = __webpack_require__(84);var Demo2 = __webpack_require__(89);var Demo3 = __webpack_require__(90);var Demo4 = __webpack_require__(91);var Demo5 = __webpack_require__(92);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " Radio 基本用法", "code": "/**\r\n * @title Radio 基本用法\r\n * @description `selectedValue`参数被选中的radio值，`disabled`参数设置是否可用，`onChange`设置值改变的回调\r\n */\r\n\r\nimport React, { Component } from 'react'\r\nimport { Radio } from 'tinper-bee';\r\n\r\n\r\n\r\nclass Demo1 extends Component{\r\n  constructor(props) {\r\n  \tsuper(props);\r\n  \tthis.state = {\r\n    \tselectedValue: '2'\r\n    };\r\n  }\r\n  handleChange(value) {\r\n    this.setState({selectedValue: value});\r\n  }\r\n  render() {\r\n    return (\r\n      <Radio.RadioGroup\r\n        name=\"fruits\"\r\n        selectedValue={this.state.selectedValue}\r\n        onChange={this.handleChange.bind(this)}>\r\n          <Radio value=\"1\" disabled>苹果</Radio>\r\n          <Radio value=\"2\" disabled>香蕉</Radio>\r\n          <Radio value=\"3\" >葡萄</Radio>\r\n          <Radio value=\"4\" >菠萝</Radio>\r\n          <Radio value=\"5\" >梨</Radio>\r\n          <Radio value=\"6\" >石榴</Radio>\r\n      </Radio.RadioGroup>   \r\n    )\r\n  }\r\n};\r\n\r\n", "desc": " `selectedValue`参数被选中的radio值，`disabled`参数设置是否可用，`onChange`设置值改变的回调" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 不同颜色的radio", "code": "/**\r\n * @title 不同颜色的radio\r\n * @description `colors`参数控制背景色\r\n */\r\n\r\nimport React, { Component } from 'react'\r\nimport { Radio } from 'tinper-bee';\r\n\r\n\r\n\r\nclass Demo2 extends Component{\r\n  constructor(props) {\r\n  \tsuper(props);\r\n  \tthis.state = {\r\n    \tselectedValue: '3'\r\n    };\r\n  }\r\n  handleChange(value) {\r\n    this.setState({selectedValue: value});\r\n  }\r\n  render() {\r\n    return (\r\n      <Radio.RadioGroup\r\n        name=\"color\"\r\n        selectedValue={this.state.selectedValue}\r\n        onChange={this.handleChange.bind(this)}>\r\n          <Radio colors=\"primary\" value=\"1\" >苹果</Radio>\r\n          <Radio colors=\"success\" value=\"2\" >香蕉</Radio>\r\n          <Radio colors=\"info\" value=\"3\" >葡萄</Radio>\r\n          <Radio colors=\"warning\" value=\"4\" >菠萝</Radio>\r\n          <Radio colors=\"danger\" value=\"5\" >梨</Radio>\r\n          <Radio colors=\"dark\" value=\"6\" >石榴</Radio>\r\n      </Radio.RadioGroup>\r\n    )\r\n  }\r\n};\r\n\r\n", "desc": " `colors`参数控制背景色" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 竖方向Radio", "code": "/**\r\n * @title 竖方向Radio\r\n * @description 可以通过style来设置radio样式\r\n */\r\n\r\nimport React, { Component } from 'react'\r\nimport { Radio } from 'tinper-bee';\r\n\r\n\r\n\r\nclass Demo3 extends Component{\r\n  constructor(props) {\r\n  \tsuper(props);\r\n  \tthis.state = {\r\n    \tselectedValue: '1'\r\n    };\r\n  }\r\n  handleChange(value) {\r\n    this.setState({selectedValue: value});\r\n  }\r\n  render() {\r\n    const radioStyle = {\r\n      display: 'block'\r\n    };\r\n    return (\r\n      <Radio.RadioGroup\r\n        name=\"team\"\r\n        selectedValue={this.state.selectedValue}\r\n        onChange={this.handleChange.bind(this)}>\r\n          <Radio style={radioStyle} value=\"1\" >苹果</Radio>\r\n          <Radio style={radioStyle} value=\"2\" >香蕉</Radio>\r\n          <Radio style={radioStyle} value=\"3\" >葡萄</Radio>\r\n          <Radio style={radioStyle} value=\"4\" >菠萝</Radio>\r\n          <Radio style={radioStyle} value=\"5\" >梨</Radio>\r\n          <Radio style={radioStyle} value=\"6\" >石榴</Radio>\r\n      </Radio.RadioGroup>\r\n    )\r\n  }\r\n};\r\n\r\n", "desc": " 可以通过style来设置radio样式" }, { "example": _react2['default'].createElement(Demo4, null), "title": " RadioButton 基本使用", "code": "/**\r\n * @title RadioButton 基本使用\r\n * @description `selectedValue`参数设置被选中的radio值，`onChange`设置值改变的回调\r\n */\r\n\r\nimport React, { Component } from 'react'\r\nimport { Radio } from 'tinper-bee';\r\n\r\nconst  RadioGroup = Radio.RadioGroup;\r\n\r\nclass Demo4 extends Component{\r\n  constructor(props) {\r\n  \tsuper(props);\r\n  \tthis.state = {\r\n      selectedValue: 'orange',\r\n      selectedValue2: 'apple'\r\n    };\r\n  }\r\n  handleChange(value) {\r\n    this.setState({selectedValue: value});\r\n  }\r\n  handleChange2(value) {\r\n    this.setState({selectedValue2: value});\r\n  }\r\n  render() {\r\n    return (\r\n      <div>\r\n        <Radio.RadioGroup\r\n          name=\"fruit\"\r\n          selectedValue={this.state.selectedValue}\r\n          onChange={this.handleChange.bind(this)}>\r\n            <Radio.RadioButton value=\"apple\">apple</Radio.RadioButton>\r\n            <Radio.RadioButton value=\"banana\">banana</Radio.RadioButton>\r\n            <Radio.RadioButton value=\"orange\">orange</Radio.RadioButton>\r\n        </Radio.RadioGroup>\r\n\r\n        <div style={{ marginTop: 16 }}>\r\n          <Radio.RadioGroup \r\n            selectedValue={this.state.selectedValue2}\r\n            onChange={this.handleChange2.bind(this)}>\r\n            <Radio.RadioButton value=\"apple\">apple</Radio.RadioButton>\r\n            <Radio.RadioButton value=\"banana\" disabled>banana</Radio.RadioButton>\r\n            <Radio.RadioButton value=\"orange\">orange</Radio.RadioButton>\r\n          </Radio.RadioGroup>\r\n        </div>\r\n\r\n        <div style={{ marginTop: 16 }}>\r\n          <Radio.RadioGroup selectedValue=\"apple\">\r\n            <Radio.RadioButton value=\"apple\" disabled>apple</Radio.RadioButton>\r\n            <Radio.RadioButton value=\"banana\" disabled>banana</Radio.RadioButton>\r\n            <Radio.RadioButton value=\"orange\" disabled>orange</Radio.RadioButton>\r\n          </Radio.RadioGroup>\r\n        </div>\r\n      </div>\r\n\r\n    )\r\n  }\r\n};\r\n\r\n", "desc": " `selectedValue`参数设置被选中的radio值，`onChange`设置值改变的回调" }, { "example": _react2['default'].createElement(Demo5, null), "title": " 红色填充的 Radio", "code": "/**\r\n * @title 红色填充的 Radio\r\n * @description `inverse` 参数设置选中为红色填充。\r\n */\r\n\r\nimport React, { Component } from 'react'\r\nimport { Radio } from 'tinper-bee';\r\n\r\n\r\n\r\nclass Demo1 extends Component{\r\n  constructor(props) {\r\n  \tsuper(props);\r\n  \tthis.state = {\r\n    \tselectedValue: '1'\r\n    };\r\n  }\r\n  handleChange(value) {\r\n    this.setState({selectedValue: value});\r\n  }\r\n  render() {\r\n    return (\r\n      <Radio.RadioGroup\r\n        name=\"fruits\"\r\n        selectedValue={this.state.selectedValue}\r\n        onChange={this.handleChange.bind(this)}>\r\n          <Radio value=\"1\" inverse>苹果</Radio>\r\n          <Radio value=\"2\" inverse>香蕉</Radio>\r\n          <Radio value=\"3\" inverse>葡萄</Radio>\r\n      </Radio.RadioGroup>   \r\n    )\r\n  }\r\n};\r\n\r\n", "desc": " `inverse` 参数设置选中为红色填充。" }];
 	
 	var Demo = function (_Component) {
 	    _inherits(Demo, _Component);
@@ -8011,8 +8011,8 @@
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); } /**
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @title Radio
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @description 基本用法 
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @title Radio 基本用法
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @description `selectedValue`参数被选中的radio值，`disabled`参数设置是否可用，`onChange`设置值改变的回调
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
 	
 	var Demo1 = function (_Component) {
@@ -8024,7 +8024,7 @@
 	    var _this = _possibleConstructorReturn(this, _Component.call(this, props));
 	
 	    _this.state = {
-	      selectedValue: ''
+	      selectedValue: '2'
 	    };
 	    return _this;
 	  }
@@ -8042,12 +8042,12 @@
 	        onChange: this.handleChange.bind(this) },
 	      _react2['default'].createElement(
 	        _src2['default'],
-	        { value: '1' },
+	        { value: '1', disabled: true },
 	        '\u82F9\u679C'
 	      ),
 	      _react2['default'].createElement(
 	        _src2['default'],
-	        { value: '2' },
+	        { value: '2', disabled: true },
 	        '\u9999\u8549'
 	      ),
 	      _react2['default'].createElement(
@@ -8327,10 +8327,15 @@
 	  /**
 	    * radio 是否可用
 	    */
-	  disabled: _propTypes2['default'].bool
+	  disabled: _propTypes2['default'].bool,
+	  /**
+	    * radio 样式 是否使用红色填充
+	    */
+	  inverse: _propTypes2['default'].bool
 	};
 	
 	var defaultProps = {
+	  inverse: false,
 	  disabled: false,
 	  clsPrefix: 'u-radio'
 	};
@@ -8377,13 +8382,14 @@
 	     */
 	
 	    var _props = this.props,
+	        inverse = _props.inverse,
 	        disabled = _props.disabled,
 	        colors = _props.colors,
 	        className = _props.className,
 	        children = _props.children,
 	        clsPrefix = _props.clsPrefix,
 	        style = _props.style,
-	        others = _objectWithoutProperties(_props, ['disabled', 'colors', 'className', 'children', 'clsPrefix', 'style']);
+	        others = _objectWithoutProperties(_props, ['inverse', 'disabled', 'colors', 'className', 'children', 'clsPrefix', 'style']);
 	
 	    var optional = {};
 	    /**
@@ -8403,6 +8409,9 @@
 	    }
 	    if (size) {
 	      classes[clsPrefix + '-' + size] = true;
+	    }
+	    if (inverse) {
+	      classes[clsPrefix + '-inverse'] = true;
 	    }
 	    var classNames = (0, _classnames2['default'])(clsPrefix, classes);
 	    var tabIndex = optional.checked ? 0 : -1;
@@ -8722,8 +8731,8 @@
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); } /**
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @title RadioButton
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @description 
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @title RadioButton 基本使用
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @description `selectedValue`参数设置被选中的radio值，`onChange`设置值改变的回调
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
 	
 	var RadioGroup = _src2['default'].RadioGroup;
@@ -8737,7 +8746,8 @@
 	    var _this = _possibleConstructorReturn(this, _Component.call(this, props));
 	
 	    _this.state = {
-	      selectedValue: 'banana'
+	      selectedValue: 'orange',
+	      selectedValue2: 'apple'
 	    };
 	    return _this;
 	  }
@@ -8746,27 +8756,83 @@
 	    this.setState({ selectedValue: value });
 	  };
 	
+	  Demo4.prototype.handleChange2 = function handleChange2(value) {
+	    this.setState({ selectedValue2: value });
+	  };
+	
 	  Demo4.prototype.render = function render() {
 	    return _react2['default'].createElement(
-	      _src2['default'].RadioGroup,
-	      {
-	        name: 'fruit',
-	        selectedValue: this.state.selectedValue,
-	        onChange: this.handleChange.bind(this) },
+	      'div',
+	      null,
 	      _react2['default'].createElement(
-	        _src2['default'].RadioButton,
-	        { value: 'apple' },
-	        'apple'
+	        _src2['default'].RadioGroup,
+	        {
+	          name: 'fruit',
+	          selectedValue: this.state.selectedValue,
+	          onChange: this.handleChange.bind(this) },
+	        _react2['default'].createElement(
+	          _src2['default'].RadioButton,
+	          { value: 'apple' },
+	          'apple'
+	        ),
+	        _react2['default'].createElement(
+	          _src2['default'].RadioButton,
+	          { value: 'banana' },
+	          'banana'
+	        ),
+	        _react2['default'].createElement(
+	          _src2['default'].RadioButton,
+	          { value: 'orange' },
+	          'orange'
+	        )
 	      ),
 	      _react2['default'].createElement(
-	        _src2['default'].RadioButton,
-	        { value: 'banana' },
-	        'banana'
+	        'div',
+	        { style: { marginTop: 16 } },
+	        _react2['default'].createElement(
+	          _src2['default'].RadioGroup,
+	          {
+	            selectedValue: this.state.selectedValue2,
+	            onChange: this.handleChange2.bind(this) },
+	          _react2['default'].createElement(
+	            _src2['default'].RadioButton,
+	            { value: 'apple' },
+	            'apple'
+	          ),
+	          _react2['default'].createElement(
+	            _src2['default'].RadioButton,
+	            { value: 'banana', disabled: true },
+	            'banana'
+	          ),
+	          _react2['default'].createElement(
+	            _src2['default'].RadioButton,
+	            { value: 'orange' },
+	            'orange'
+	          )
+	        )
 	      ),
 	      _react2['default'].createElement(
-	        _src2['default'].RadioButton,
-	        { value: 'orange' },
-	        'orange'
+	        'div',
+	        { style: { marginTop: 16 } },
+	        _react2['default'].createElement(
+	          _src2['default'].RadioGroup,
+	          { selectedValue: 'apple' },
+	          _react2['default'].createElement(
+	            _src2['default'].RadioButton,
+	            { value: 'apple', disabled: true },
+	            'apple'
+	          ),
+	          _react2['default'].createElement(
+	            _src2['default'].RadioButton,
+	            { value: 'banana', disabled: true },
+	            'banana'
+	          ),
+	          _react2['default'].createElement(
+	            _src2['default'].RadioButton,
+	            { value: 'orange', disabled: true },
+	            'orange'
+	          )
+	        )
 	      )
 	    );
 	  };
@@ -8777,6 +8843,88 @@
 	;
 	
 	exports['default'] = Demo4;
+	module.exports = exports['default'];
+
+/***/ }),
+/* 92 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _react = __webpack_require__(4);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _src = __webpack_require__(85);
+	
+	var _src2 = _interopRequireDefault(_src);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	
+	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); } /**
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @title 红色填充的 Radio
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @description `inverse` 参数设置选中为红色填充。
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
+	
+	var Demo1 = function (_Component) {
+	  _inherits(Demo1, _Component);
+	
+	  function Demo1(props) {
+	    _classCallCheck(this, Demo1);
+	
+	    var _this = _possibleConstructorReturn(this, _Component.call(this, props));
+	
+	    _this.state = {
+	      selectedValue: '1'
+	    };
+	    return _this;
+	  }
+	
+	  Demo1.prototype.handleChange = function handleChange(value) {
+	    this.setState({ selectedValue: value });
+	  };
+	
+	  Demo1.prototype.render = function render() {
+	    return _react2['default'].createElement(
+	      _src2['default'].RadioGroup,
+	      {
+	        name: 'fruits',
+	        selectedValue: this.state.selectedValue,
+	        onChange: this.handleChange.bind(this) },
+	      _react2['default'].createElement(
+	        _src2['default'],
+	        { value: '1', inverse: true },
+	        '\u82F9\u679C'
+	      ),
+	      _react2['default'].createElement(
+	        _src2['default'],
+	        { value: '2', inverse: true },
+	        '\u9999\u8549'
+	      ),
+	      _react2['default'].createElement(
+	        _src2['default'],
+	        { value: '3', inverse: true },
+	        '\u8461\u8404'
+	      )
+	    );
+	  };
+	
+	  return Demo1;
+	}(_react.Component);
+	
+	;
+	
+	exports['default'] = Demo1;
 	module.exports = exports['default'];
 
 /***/ })

@@ -67,5 +67,8 @@
 }
 .sidebar .menu-components .menu-item-heard .menu-item-com.active{
     background: #FDF6F6;
-    border-right: 1px solid #E14C46;
+    border-right: 2px solid #E14C46;
+}
+.sidebar .menu-components .menu-item-heard .menu-item-com.active a{
+    color: #E14C46
 }

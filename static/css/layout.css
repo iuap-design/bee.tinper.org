@@ -15,7 +15,7 @@
     overflow: auto;
     height: calc(100% - 65px);
     top: 95px;
-    padding-bottom: 30px;
+    padding-bottom: 100px;
 }
 
 .docs {

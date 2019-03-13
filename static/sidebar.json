@@ -114,10 +114,6 @@
                     "version":"0.2.0",
                     "component":"bee-table"
                 },
-                "复杂表格 ComplexGrid":{
-                    "version":"0.2.44",
-                    "component":"bee-complex-grid"
-                },
                 "树形控件 Tree":{
                     "version":"0.1.0",
                     "component":"bee-tree"

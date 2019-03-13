@@ -1,5 +1,5 @@
 /**
- * @title 多颜色`Checkbox`
+ * @title 不同颜色的 Checkbox
  * @description `colors`参数控制背景色
  */
 

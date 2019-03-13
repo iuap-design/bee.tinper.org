@@ -42,10 +42,15 @@ var propTypes = {
   /**
     * radio 是否可用
     */
-  disabled: _propTypes2["default"].bool
+  disabled: _propTypes2["default"].bool,
+  /**
+    * radio 样式 是否使用红色填充
+    */
+  inverse: _propTypes2["default"].bool
 };
 
 var defaultProps = {
+  inverse: false,
   disabled: false,
   clsPrefix: 'u-radio'
 };
@@ -92,13 +97,14 @@ var Radio = function (_React$Component) {
      */
 
     var _props = this.props,
+        inverse = _props.inverse,
         disabled = _props.disabled,
         colors = _props.colors,
         className = _props.className,
         children = _props.children,
         clsPrefix = _props.clsPrefix,
         style = _props.style,
-        others = _objectWithoutProperties(_props, ['disabled', 'colors', 'className', 'children', 'clsPrefix', 'style']);
+        others = _objectWithoutProperties(_props, ['inverse', 'disabled', 'colors', 'className', 'children', 'clsPrefix', 'style']);
 
     var optional = {};
     /**
@@ -118,6 +124,9 @@ var Radio = function (_React$Component) {
     }
     if (size) {
       classes[clsPrefix + '-' + size] = true;
+    }
+    if (inverse) {
+      classes[clsPrefix + '-inverse'] = true;
     }
     var classNames = (0, _classnames2["default"])(clsPrefix, classes);
     var tabIndex = optional.checked ? 0 : -1;

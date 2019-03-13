@@ -37,13 +37,15 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var propTypes = {
     clsPrefix: _propTypes2["default"].string,
     value: _propTypes2["default"].array,
-    onChange: _propTypes2["default"].func
+    onChange: _propTypes2["default"].func,
+    disabled: _propTypes2["default"].bool
 };
 
 var defaultProps = {
     clsPrefix: 'u-checkbox-group',
     value: [],
-    onChange: function onChange() {}
+    onChange: function onChange() {},
+    disabled: false
 };
 
 var CheckboxGroup = function (_React$Component) {
@@ -86,7 +88,8 @@ var CheckboxGroup = function (_React$Component) {
 
         var _props = this.props,
             clsPrefix = _props.clsPrefix,
-            className = _props.className;
+            className = _props.className,
+            disabled = _props.disabled;
 
         var classes = clsPrefix;
         if (className) classes += ' ' + className;
@@ -98,7 +101,8 @@ var CheckboxGroup = function (_React$Component) {
                     onChange: function onChange() {
                         _this2.changeHandle(child.props.value);
                     },
-                    checked: _this2.state.values.indexOf(child.props.value) != -1
+                    checked: _this2.state.values.indexOf(child.props.value) != -1,
+                    disabled: disabled
                 });
             })
         );

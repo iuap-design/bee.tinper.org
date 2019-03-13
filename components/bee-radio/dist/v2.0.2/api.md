@@ -15,7 +15,6 @@
 |disabled|是否可用|bool|false|
 | style  | 添加style | object| {} |
 |className|传入列的classname|String	|-|
-|inverse|设置选中为红色填充|bool|false|
 
 ## RadioButton
 

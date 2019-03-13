@@ -7972,7 +7972,9 @@
 	        if (colorsMap[colors]) {
 	            clsObj[clsPrefix + '-' + colorsMap[colors]] = true;
 	        }
-	        //clsObj[`${clsPrefix}-border`] = bordered;
+	        if (bordered) {
+	            clsObj[clsPrefix + '-border'] = bordered;
+	        }
 	        var classes = (0, _classnames2["default"])(clsPrefix, clsObj);
 	        return _react2["default"].createElement(
 	            'button',
@@ -15988,7 +15990,7 @@
 /* 273 */
 /***/ (function(module, exports) {
 
-	/** @license React v16.8.3
+	/** @license React v16.8.4
 	 * react-is.production.min.js
 	 *
 	 * Copyright (c) Facebook, Inc. and its affiliates.
@@ -16009,7 +16011,7 @@
 /* 274 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(process) {/** @license React v16.8.3
+	/* WEBPACK VAR INJECTION */(function(process) {/** @license React v16.8.4
 	 * react-is.development.js
 	 *
 	 * Copyright (c) Facebook, Inc. and its affiliates.
@@ -17316,12 +17318,15 @@
 	
 	    colors: _propTypes2["default"].oneOf(['', 'dark', 'success', 'info', 'warning', 'danger', 'primary']),
 	
-	    disabled: _propTypes2["default"].bool
+	    disabled: _propTypes2["default"].bool,
+	
+	    inverse: _propTypes2["default"].bool
 	
 	};
 	
 	var defaultProps = {
 	    disabled: false,
+	    inverse: false,
 	    colors: 'primary',
 	    clsPrefix: 'u-checkbox',
 	    defaultChecked: false,
@@ -17357,6 +17362,7 @@
 	    Checkbox.prototype.render = function render() {
 	        var _props = this.props,
 	            disabled = _props.disabled,
+	            inverse = _props.inverse,
 	            colors = _props.colors,
 	            size = _props.size,
 	            className = _props.className,
@@ -17367,7 +17373,7 @@
 	            clsPrefix = _props.clsPrefix,
 	            onDoubleClick = _props.onDoubleClick,
 	            onChange = _props.onChange,
-	            others = _objectWithoutProperties(_props, ['disabled', 'colors', 'size', 'className', 'indeterminate', 'onClick', 'children', 'checked', 'clsPrefix', 'onDoubleClick', 'onChange']);
+	            others = _objectWithoutProperties(_props, ['disabled', 'inverse', 'colors', 'size', 'className', 'indeterminate', 'onClick', 'children', 'checked', 'clsPrefix', 'onDoubleClick', 'onChange']);
 	
 	        var input = _react2["default"].createElement('input', _extends({}, others, {
 	            type: 'checkbox',
@@ -17378,6 +17384,10 @@
 	            'is-checked': this.state.checked,
 	            disabled: disabled
 	        };
+	
+	        if (inverse) {
+	            classes[clsPrefix + '-inverse'] = true;
+	        }
 	
 	        if (colors) {
 	            classes[clsPrefix + '-' + colors] = true;
@@ -17507,13 +17517,15 @@
 	var propTypes = {
 	    clsPrefix: _propTypes2["default"].string,
 	    value: _propTypes2["default"].array,
-	    onChange: _propTypes2["default"].func
+	    onChange: _propTypes2["default"].func,
+	    disabled: _propTypes2["default"].bool
 	};
 	
 	var defaultProps = {
 	    clsPrefix: 'u-checkbox-group',
 	    value: [],
-	    onChange: function onChange() {}
+	    onChange: function onChange() {},
+	    disabled: false
 	};
 	
 	var CheckboxGroup = function (_React$Component) {
@@ -17556,7 +17568,8 @@
 	
 	        var _props = this.props,
 	            clsPrefix = _props.clsPrefix,
-	            className = _props.className;
+	            className = _props.className,
+	            disabled = _props.disabled;
 	
 	        var classes = clsPrefix;
 	        if (className) classes += ' ' + className;
@@ -17568,7 +17581,8 @@
 	                    onChange: function onChange() {
 	                        _this2.changeHandle(child.props.value);
 	                    },
-	                    checked: _this2.state.values.indexOf(child.props.value) != -1
+	                    checked: _this2.state.values.indexOf(child.props.value) != -1,
+	                    disabled: disabled
 	                });
 	            })
 	        );
@@ -54442,11 +54456,10 @@
 	  }
 	
 	  InputGroupAddon.prototype.render = function render() {
-	    var _props = this.props;
-	    var className = _props.className;
-	    var clsPrefix = _props.clsPrefix;
-	
-	    var others = _objectWithoutProperties(_props, ['className', 'clsPrefix']);
+	    var _props = this.props,
+	        className = _props.className,
+	        clsPrefix = _props.clsPrefix,
+	        others = _objectWithoutProperties(_props, ['className', 'clsPrefix']);
 	
 	    return _react2["default"].createElement('span', _extends({}, others, {
 	      className: (0, _classnames2["default"])(className, clsPrefix)
@@ -62100,13 +62113,13 @@
 	        value = format ? format(value) : value;
 	
 	        var disabledCursor = disabled ? ' disabled-cursor' : '';
-	
+	        var disabledCon = disabled ? ' disabled-con' : '';
 	        return _react2["default"].createElement(
 	            'div',
 	            null,
 	            iconStyle === 'double' ? _react2["default"].createElement(
 	                _beeInputGroup2["default"],
-	                { className: (0, _classnames2["default"])(className, classes) },
+	                { className: (0, _classnames2["default"])(className, classes, disabledCon) },
 	                _react2["default"].createElement(
 	                    _beeInputGroup2["default"].Addon,
 	                    {
@@ -62135,7 +62148,7 @@
 	            ) : _react2["default"].createElement(
 	                _beeInputGroup2["default"],
 	                {
-	                    className: (0, _classnames2["default"])(className, classes),
+	                    className: (0, _classnames2["default"])(className, classes, disabledCon),
 	                    simple: true
 	                },
 	                _react2["default"].createElement(_beeFormControl2["default"], _extends({}, others, {

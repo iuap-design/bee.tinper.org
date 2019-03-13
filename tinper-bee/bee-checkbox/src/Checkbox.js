@@ -9,10 +9,13 @@ const propTypes = {
 
     disabled: PropTypes.bool,
 
+    inverse: PropTypes.bool
+
 };
 
 const defaultProps = {
     disabled: false,
+    inverse: false,
     colors: 'primary',
     clsPrefix: 'u-checkbox',
     defaultChecked: false,
@@ -81,6 +84,7 @@ class Checkbox extends React.Component {
     render() {
         const {
             disabled,
+            inverse,
             colors,
             size,
             className,
@@ -107,6 +111,10 @@ class Checkbox extends React.Component {
             'is-checked': this.state.checked,
             disabled
         };
+
+        if (inverse) {
+            classes[`${clsPrefix}-inverse`] = true;
+        }
 
         if (colors) {
             classes[`${clsPrefix}-${colors}`] = true;

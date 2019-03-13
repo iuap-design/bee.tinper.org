@@ -97,15 +97,15 @@ a {
     .u-navbar .u-navbar-toggle {
       display: none; }
     .u-navbar .u-navbar-collapse.collapse {
-      display: block !important;
-      height: auto !important;
+      display: block;
+      height: auto;
       padding-bottom: 0;
-      overflow: visible !important; }
+      overflow: visible; }
     .u-navbar .u-navbar-right {
-      float: right !important;
+      float: right;
       margin-right: -15px; }
     .u-navbar .u-navbar-left {
-      float: left !important; }
+      float: left; }
     .u-navbar .u-navbar-nav {
       float: left;
       margin: 0; }

@@ -34,12 +34,15 @@ var propTypes = {
 
     colors: _propTypes2["default"].oneOf(['', 'dark', 'success', 'info', 'warning', 'danger', 'primary']),
 
-    disabled: _propTypes2["default"].bool
+    disabled: _propTypes2["default"].bool,
+
+    inverse: _propTypes2["default"].bool
 
 };
 
 var defaultProps = {
     disabled: false,
+    inverse: false,
     colors: 'primary',
     clsPrefix: 'u-checkbox',
     defaultChecked: false,
@@ -75,6 +78,7 @@ var Checkbox = function (_React$Component) {
     Checkbox.prototype.render = function render() {
         var _props = this.props,
             disabled = _props.disabled,
+            inverse = _props.inverse,
             colors = _props.colors,
             size = _props.size,
             className = _props.className,
@@ -85,7 +89,7 @@ var Checkbox = function (_React$Component) {
             clsPrefix = _props.clsPrefix,
             onDoubleClick = _props.onDoubleClick,
             onChange = _props.onChange,
-            others = _objectWithoutProperties(_props, ['disabled', 'colors', 'size', 'className', 'indeterminate', 'onClick', 'children', 'checked', 'clsPrefix', 'onDoubleClick', 'onChange']);
+            others = _objectWithoutProperties(_props, ['disabled', 'inverse', 'colors', 'size', 'className', 'indeterminate', 'onClick', 'children', 'checked', 'clsPrefix', 'onDoubleClick', 'onChange']);
 
         var input = _react2["default"].createElement('input', _extends({}, others, {
             type: 'checkbox',
@@ -96,6 +100,10 @@ var Checkbox = function (_React$Component) {
             'is-checked': this.state.checked,
             disabled: disabled
         };
+
+        if (inverse) {
+            classes[clsPrefix + '-inverse'] = true;
+        }
 
         if (colors) {
             classes[clsPrefix + '-' + colors] = true;

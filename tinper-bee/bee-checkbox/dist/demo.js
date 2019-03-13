@@ -76,7 +76,7 @@
 	
 	var CARETUP = _react2['default'].createElement('i', { className: 'uf uf-arrow-up' });
 	
-	var Demo1 = __webpack_require__(84);var Demo2 = __webpack_require__(90);var Demo3 = __webpack_require__(91);var Demo4 = __webpack_require__(92);var Demo5 = __webpack_require__(93);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " Checkbox", "code": "/**\r\n * @title Checkbox\r\n * @description `checked` 参数设置是否选中，`disabled`设置是否可用。\r\n */\r\n\r\n\r\nimport React, {Component} from 'react';\r\nimport { Checkbox } from 'tinper-bee';\r\n\r\nclass Demo1 extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            checkedFlag: false\r\n        }\r\n        this.onChange = this.onChange.bind(this);\r\n    }\r\n\r\n    onChange(e) {\r\n        console.log(e);\r\n        this.setState({checkedFlag: e});\r\n    }\r\n\r\n    handleDblClick = (state) => {\r\n\t\tconsole.log(state);\r\n    }\r\n\r\n    render() {\r\n        return (\r\n            <div className=\"demo-checkbox\">\r\n                <Checkbox\r\n                    disabled\r\n                    className=\"test\" >\r\n                </Checkbox>\r\n                <Checkbox\r\n                    onDoubleClick={ this.handleDblClick }\r\n                    ref=\"test\"\r\n                    checked={this.state.checkedFlag}\r\n                    onChange={this.onChange}>\r\n                    全选\r\n                </Checkbox>\r\n                <Checkbox\r\n                    ref=\"test\"\r\n                    indeterminate\r\n                    onChange={this.onChange}>\r\n                    半选\r\n                </Checkbox>\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\n", "desc": " `checked` 参数设置是否选中，`disabled`设置是否可用。", "scss_code": "" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 多颜色`Checkbox`", "code": "/**\r\n * @title 多颜色`Checkbox`\r\n * @description `colors`参数控制背景色\r\n */\r\n\r\nimport React, { Component } from 'react';\r\nimport { Checkbox } from 'tinper-bee';\r\n\r\nclass Demo2 extends Component {\r\n\trender(){\r\n\t\treturn (\r\n\t\t\t<div className=\"demo-checkbox\">\r\n\t\t\t\t<Checkbox colors=\"primary\">primary</Checkbox>\r\n\t\t\t\t<Checkbox colors=\"success\">success</Checkbox>\r\n\t\t\t\t<Checkbox colors=\"info\">info</Checkbox>\r\n\t\t\t\t<Checkbox colors=\"danger\">danger</Checkbox>\r\n\t\t\t\t<Checkbox colors=\"warning\">warning</Checkbox>\r\n\t\t\t\t<Checkbox colors=\"dark\">dark</Checkbox>\r\n\t\t\t</div>\r\n\t\t)\r\n\t}\r\n}\r\n\r\n", "desc": " `colors`参数控制背景色", "scss_code": "" }, { "example": _react2['default'].createElement(Demo3, null), "title": " Checkbox", "code": "/**\r\n * @title Checkbox\r\n * @description `checked` 参数设置是否选中，`disabled`设置是否可用。\r\n */\r\n\r\nimport React, { Component } from 'react';\r\nimport { Checkbox, Button } from 'tinper-bee';\r\n\n\r\nclass Demo3 extends Component {\r\n\tconstructor(props) {\r\n\t\tsuper(props);\r\n\t\tthis.state = {\r\n\t\t\tchecked: false\r\n\t\t}\r\n\t}\r\n\tchangeCheck=()=> {\r\n\t\tthis.setState({checked:!this.state.checked});\r\n\t}\r\n\trender () {\r\n\t\treturn (\r\n\t\t\t<div className=\"demo-checkbox\">\r\n\t\t\t\t<Button onClick={this.changeCheck.bind(this)}>change checkbox</Button>\r\n\t\t\t\t <Checkbox checked={this.state.checked} onChange={this.changeCheck}>checkbox2</Checkbox>\r\n\t\t\t\t<Checkbox defaultChecked={this.state.checked}>checkbox2</Checkbox>\r\n\t\t\t</div>\r\n\t\t)\r\n\t}\r\n}\r\n", "desc": " `checked` 参数设置是否选中，`disabled`设置是否可用。", "scss_code": "" }, { "example": _react2['default'].createElement(Demo4, null), "title": " CheckboxGroup基本使用", "code": "/**\r\n * @title CheckboxGroup基本使用\r\n * @description `value` 参数设置默认值，`onChange`设置值改变的回调。\r\n */\r\n\r\nimport React, { Component } from 'react';\r\nimport { Checkbox } from 'tinper-bee';\r\n\r\n\r\nconst CheckboxGroup = Checkbox.CheckboxGroup;\r\n\r\nclass Demo4 extends Component {\r\n\tconstructor(props) {\r\n\t\tsuper(props);\r\n\t\tthis.state = {\r\n\t\t\tvalue:['3','4']\r\n\t\t}\r\n\t}\r\n\tchange=(value)=>{\r\n\t\tconsole.log(value)\r\n\t\tthis.setState({\r\n\t\t\tvalue\r\n\t\t})\r\n\t}\r\n\trender () {\r\n\t\treturn (\r\n\t\t\t<div className=\"demo-checkbox\">\r\n\t\t\t\t<CheckboxGroup value={this.state.value} onChange={this.change}>\r\n\t\t\t\t\t<Checkbox value='1'>\r\n\t\t\t\t\t\t1\r\n\t\t\t\t\t</Checkbox>\r\n\t\t\t\t\t<Checkbox value='2'>\r\n\t\t\t\t\t\t2\r\n\t\t\t\t\t</Checkbox>\r\n\t\t\t\t\t<Checkbox value='3'>\r\n\t\t\t\t\t\t3\r\n\t\t\t\t\t</Checkbox>\r\n\t\t\t\t\t<Checkbox value='4'>\r\n\t\t\t\t\t\t4\r\n\t\t\t\t\t</Checkbox>\r\n\t\t\t\t\t<Checkbox value='5'>\r\n\t\t\t\t\t\t5\r\n\t\t\t\t\t</Checkbox>\r\n\t\t\t\t</CheckboxGroup>\r\n\t\t\t</div>\r\n\t\t)\r\n\t}\r\n}\r\n", "desc": " `value` 参数设置默认值，`onChange`设置值改变的回调。" }, { "example": _react2['default'].createElement(Demo5, null), "title": " CheckboxGroup在form中使用", "code": "/**\r\n * @title CheckboxGroup在form中使用\r\n * @description `value` 参数设置默认值，`onChange`设置值改变的回调。\r\n */\r\n\r\nimport React, { Component } from 'react';\r\nimport { Checkbox, Button, Form } from 'tinper-bee';\r\n\n\n\r\n\r\nconst CheckboxGroup = Checkbox.CheckboxGroup;\r\n\r\nclass Demo4 extends Component {\r\n\tconstructor(props) {\r\n\t\tsuper(props);\r\n\t\tthis.state = {\r\n\t\t\tvalue:['3','4']\r\n\t\t}\r\n\t}\r\n\tchange=(value)=>{\r\n\t\tthis.setState({\r\n\t\t\tvalue\r\n\t\t})\r\n\t}\r\n\tclick=()=>{\r\n\t\tthis.props.form.validateFields((error,values)=>{\r\n\t\t\tconsole.log(values)\r\n\t\t})\r\n\t}\r\n\trender () {\r\n\t\tconst self = this;\r\n\t\tconst { getFieldProps, getFieldError }  = this.props.form;\r\n\t\treturn (\r\n\t\t\t<div className=\"demo-checkbox\">\r\n\t\t\t\t<CheckboxGroup \r\n\t\t\t\t\t{\r\n\t\t\t\t\t\t...getFieldProps('name',{\r\n\t\t\t\t\t\t\tinitialValue:['2','3'],\r\n\t\t\t\t\t\t\tonChange:self.change\r\n\t\t\t\t\t\t})\r\n\t\t\t\t\t}\r\n\t\t\t\t>\r\n\t\t\t\t\t<Checkbox value='1'>\r\n\t\t\t\t\t\t1\r\n\t\t\t\t\t</Checkbox>\r\n\t\t\t\t\t<Checkbox value='2'>\r\n\t\t\t\t\t\t2\r\n\t\t\t\t\t</Checkbox>\r\n\t\t\t\t\t<Checkbox value='3'>\r\n\t\t\t\t\t\t3\r\n\t\t\t\t\t</Checkbox>\r\n\t\t\t\t\t<Checkbox value='4'>\r\n\t\t\t\t\t\t4\r\n\t\t\t\t\t</Checkbox>\r\n\t\t\t\t\t<Checkbox value='5'>\r\n\t\t\t\t\t\t5\r\n\t\t\t\t\t</Checkbox>\r\n\t\t\t\t</CheckboxGroup>\r\n\t\t\t\t<Button onClick={this.click}>submit</Button>\r\n\t\t\t</div>\r\n\t\t)\r\n\t}\r\n}\r\n", "desc": " `value` 参数设置默认值，`onChange`设置值改变的回调。" }];
+	var Demo1 = __webpack_require__(84);var Demo2 = __webpack_require__(90);var Demo3 = __webpack_require__(91);var Demo4 = __webpack_require__(92);var Demo5 = __webpack_require__(93);var Demo6 = __webpack_require__(263);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 基本用法", "code": "/**\r\n * @title 基本用法\r\n * @description `checked` 参数设置是否选中，`disabled`设置是否可用，`onDoubleClick`定义双击事件。\r\n */\r\n\r\n\r\nimport React, {Component} from 'react';\r\nimport { Checkbox } from 'tinper-bee';\r\n\r\nclass Demo1 extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            checkedFlag: false\r\n        }\r\n        this.onChange = this.onChange.bind(this);\r\n    }\r\n\r\n    onChange(e) {\r\n        console.log(e);\r\n        this.setState({checkedFlag: e});\r\n    }\r\n\r\n    handleDblClick = (state) => {\r\n\t\tconsole.log(state);\r\n    }\r\n\r\n    render() {\r\n        return (\r\n            <div className=\"demo-checkbox\">\r\n                <Checkbox\r\n                    disabled\r\n                    className=\"test\" >\r\n                </Checkbox>\r\n                <Checkbox\r\n                    disabled\r\n                    checked={true}\r\n                    className=\"test\" >\r\n                </Checkbox>\r\n                <Checkbox\r\n                    // onDoubleClick={ this.handleDblClick }\r\n                    ref=\"test\"\r\n                    checked={this.state.checkedFlag}\r\n                    onChange={this.onChange}>\r\n                    全选\r\n                </Checkbox>\r\n                <Checkbox\r\n                    ref=\"test\"\r\n                    indeterminate\r\n                    onChange={this.onChange}>\r\n                    半选\r\n                </Checkbox>\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\n", "desc": " `checked` 参数设置是否选中，`disabled`设置是否可用，`onDoubleClick`定义双击事件。", "scss_code": "" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 不同颜色的 Checkbox", "code": "/**\r\n * @title 不同颜色的 Checkbox\r\n * @description `colors`参数控制背景色\r\n */\r\n\r\nimport React, { Component } from 'react';\r\nimport { Checkbox } from 'tinper-bee';\r\n\r\nclass Demo2 extends Component {\r\n\trender(){\r\n\t\treturn (\r\n\t\t\t<div className=\"demo-checkbox\">\r\n\t\t\t\t<Checkbox colors=\"primary\">primary</Checkbox>\r\n\t\t\t\t<Checkbox colors=\"success\">success</Checkbox>\r\n\t\t\t\t<Checkbox colors=\"info\">info</Checkbox>\r\n\t\t\t\t<Checkbox colors=\"danger\">danger</Checkbox>\r\n\t\t\t\t<Checkbox colors=\"warning\">warning</Checkbox>\r\n\t\t\t\t<Checkbox colors=\"dark\">dark</Checkbox>\r\n\t\t\t</div>\r\n\t\t)\r\n\t}\r\n}\r\n\r\n", "desc": " `colors`参数控制背景色", "scss_code": "" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 受控的 Checkbox", "code": "/**\r\n * @title 受控的 Checkbox\r\n * @description `checked` 参数设置是否选中，`disabled`设置是否可用。\r\n */\r\n\r\nimport React, { Component } from 'react';\r\nimport { Checkbox, Button } from 'tinper-bee';\r\n\n\r\nclass Demo3 extends Component {\r\n\tconstructor(props) {\r\n\t\tsuper(props);\r\n\t\tthis.state = {\r\n\t\t\tchecked: false,\r\n\t\t\tdisabled: false\r\n\t\t}\r\n\t}\r\n\tchangeCheck=()=> {\r\n\t\tthis.setState({checked:!this.state.checked});\r\n\t}\r\n\tchangeDisabled=()=> {\r\n\t\tthis.setState({disabled:!this.state.disabled});\r\n\t}\r\n\trender () {\r\n\t\tconst label = `${this.state.checked ? 'Checked' : 'Unchecked'}-${this.state.disabled ? 'Disabled' : 'Enabled'}`;\r\n\t\treturn (\r\n\t\t\t<div className=\"demo-checkbox\">\r\n\t\t\t\t<p>\r\n\t\t\t\t\t<Button \r\n\t\t\t\t\t\tcolors=\"secondary\" \r\n\t\t\t\t\t\tonClick={this.changeCheck.bind(this)}\r\n\t\t\t\t\t\tstyle={{marginRight:\"8px\"}}\r\n\t\t\t\t\t>\r\n\t\t\t\t\t\t{!this.state.checked ? 'Check' : 'Uncheck'}\r\n\t\t\t\t\t</Button>\r\n\t\t\t\t\t<Button \r\n\t\t\t\t\t\tcolors=\"secondary\" \r\n\t\t\t\t\t\tonClick={this.changeDisabled.bind(this)}\r\n\t\t\t\t\t>\r\n\t\t\t\t\t\t{!this.state.disabled ? 'Disable' : 'Enable'}\r\n\t\t\t\t\t</Button>\r\n\t\t\t\t</p>\t\r\n\t\t\t\t<p>\r\n\t\t\t\t\t<Checkbox \r\n\t\t\t\t\t\tchecked={this.state.checked} \r\n\t\t\t\t\t\tdisabled={this.state.disabled} \r\n\t\t\t\t\t\tonChange={this.changeCheck}\r\n\t\t\t\t\t>\r\n\t\t\t\t\t\t{label }\r\n\t\t\t\t\t</Checkbox>\r\n\t\t\t\t</p>\r\n\t\t\t</div>\r\n\t\t)\r\n\t}\r\n}\r\n", "desc": " `checked` 参数设置是否选中，`disabled`设置是否可用。", "scss_code": "" }, { "example": _react2['default'].createElement(Demo4, null), "title": " CheckboxGroup基本使用", "code": "/**\r\n * @title CheckboxGroup基本使用\r\n * @description `value` 参数设置默认值，`onChange`设置值改变的回调，`disabled`设置是否可用\r\n */\r\n\r\nimport React, { Component } from 'react';\r\nimport { Checkbox } from 'tinper-bee';\r\n\r\n\r\nconst CheckboxGroup = Checkbox.CheckboxGroup;\r\n\r\nclass Demo4 extends Component {\r\n\tconstructor(props) {\r\n\t\tsuper(props);\r\n\t\tthis.state = {\r\n\t\t\tvalue1:['3','4'],\r\n\t\t\tvalue2:['3','4']\r\n\t\t}\r\n\t}\r\n\tchange=(value)=>{\r\n\t\tconsole.log(value)\r\n\t\tthis.setState({\r\n\t\t\tvalue1:value\r\n\t\t})\r\n\t}\r\n\trender () {\r\n\t\treturn (\r\n\t\t\t<div className=\"demo-checkbox\">\r\n\t\t\t\t<CheckboxGroup value={this.state.value1} onChange={this.change}>\r\n\t\t\t\t\t<Checkbox value='1'>\r\n\t\t\t\t\t\t1\r\n\t\t\t\t\t</Checkbox>\r\n\t\t\t\t\t<Checkbox value='2'>\r\n\t\t\t\t\t\t2\r\n\t\t\t\t\t</Checkbox>\r\n\t\t\t\t\t<Checkbox value='3'>\r\n\t\t\t\t\t\t3\r\n\t\t\t\t\t</Checkbox>\r\n\t\t\t\t\t<Checkbox value='4'>\r\n\t\t\t\t\t\t4\r\n\t\t\t\t\t</Checkbox>\r\n\t\t\t\t\t<Checkbox value='5'>\r\n\t\t\t\t\t\t5\r\n\t\t\t\t\t</Checkbox>\r\n\t\t\t\t</CheckboxGroup>\r\n\t\t\t\t<CheckboxGroup disabled value={this.state.value2}>\r\n\t\t\t\t\t<Checkbox value='1'>\r\n\t\t\t\t\t\t1\r\n\t\t\t\t\t</Checkbox>\r\n\t\t\t\t\t<Checkbox value='2'>\r\n\t\t\t\t\t\t2\r\n\t\t\t\t\t</Checkbox>\r\n\t\t\t\t\t<Checkbox value='3'>\r\n\t\t\t\t\t\t3\r\n\t\t\t\t\t</Checkbox>\r\n\t\t\t\t\t<Checkbox value='4'>\r\n\t\t\t\t\t\t4\r\n\t\t\t\t\t</Checkbox>\r\n\t\t\t\t\t<Checkbox value='5'>\r\n\t\t\t\t\t\t5\r\n\t\t\t\t\t</Checkbox>\r\n\t\t\t\t</CheckboxGroup>\r\n\t\t\t</div>\r\n\t\t)\r\n\t}\r\n}\r\n", "desc": " `value` 参数设置默认值，`onChange`设置值改变的回调，`disabled`设置是否可用" }, { "example": _react2['default'].createElement(Demo5, null), "title": " CheckboxGroup在form中使用", "code": "/**\r\n * @title CheckboxGroup在form中使用\r\n * @description `value` 参数设置默认值，`onChange`设置值改变的回调。\r\n */\r\n\r\nimport React, { Component } from 'react';\r\nimport { Checkbox, Button, Form } from 'tinper-bee';\r\n\n\n\r\n\r\nconst CheckboxGroup = Checkbox.CheckboxGroup;\r\n\r\nclass Demo4 extends Component {\r\n\tconstructor(props) {\r\n\t\tsuper(props);\r\n\t\tthis.state = {\r\n\t\t\tvalue:['3','4']\r\n\t\t}\r\n\t}\r\n\tchange=(value)=>{\r\n\t\tthis.setState({\r\n\t\t\tvalue\r\n\t\t})\r\n\t}\r\n\tclick=()=>{\r\n\t\tthis.props.form.validateFields((error,values)=>{\r\n\t\t\tconsole.log(values)\r\n\t\t})\r\n\t}\r\n\trender () {\r\n\t\tconst self = this;\r\n\t\tconst { getFieldProps, getFieldError }  = this.props.form;\r\n\t\treturn (\r\n\t\t\t<div className=\"demo-checkbox\">\r\n\t\t\t\t<CheckboxGroup \r\n\t\t\t\t\t{\r\n\t\t\t\t\t\t...getFieldProps('name',{\r\n\t\t\t\t\t\t\tinitialValue:['2','3'],\r\n\t\t\t\t\t\t\tonChange:self.change\r\n\t\t\t\t\t\t})\r\n\t\t\t\t\t}\r\n\t\t\t\t>\r\n\t\t\t\t\t<Checkbox value='1'>\r\n\t\t\t\t\t\t1\r\n\t\t\t\t\t</Checkbox>\r\n\t\t\t\t\t<Checkbox value='2'>\r\n\t\t\t\t\t\t2\r\n\t\t\t\t\t</Checkbox>\r\n\t\t\t\t\t<Checkbox value='3'>\r\n\t\t\t\t\t\t3\r\n\t\t\t\t\t</Checkbox>\r\n\t\t\t\t\t<Checkbox value='4'>\r\n\t\t\t\t\t\t4\r\n\t\t\t\t\t</Checkbox>\r\n\t\t\t\t\t<Checkbox value='5'>\r\n\t\t\t\t\t\t5\r\n\t\t\t\t\t</Checkbox>\r\n\t\t\t\t</CheckboxGroup>\r\n\t\t\t\t<Button colors=\"secondary\" onClick={this.click}>submit</Button>\r\n\t\t\t</div>\r\n\t\t)\r\n\t}\r\n}\r\n", "desc": " `value` 参数设置默认值，`onChange`设置值改变的回调。" }, { "example": _react2['default'].createElement(Demo6, null), "title": " 红色填充的 Checkbox", "code": "/**\r\n * @title 红色填充的 Checkbox\r\n * @description `inverse` 参数设置选中为红色填充。\r\n */\r\n\r\n\r\nimport React, {Component} from 'react';\r\nimport { Checkbox } from 'tinper-bee';\r\n\r\nclass Demo6 extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            checkedFlag: false\r\n        }\r\n        this.onChange = this.onChange.bind(this);\r\n    }\r\n\r\n    onChange(e) {\r\n        console.log(e);\r\n        this.setState({checkedFlag: e});\r\n    }\r\n\r\n    render() {\r\n        return (\r\n            <div className=\"demo-checkbox\">\r\n                <Checkbox\r\n                    inverse\r\n                    ref=\"test\"\r\n                    checked={this.state.checkedFlag}\r\n                    onChange={this.onChange}>\r\n                    全选\r\n                </Checkbox>\r\n                <Checkbox\r\n                    inverse\r\n                    ref=\"test\"\r\n                    indeterminate\r\n                    onChange={this.onChange}>\r\n                    半选\r\n                </Checkbox>\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\n", "desc": " `inverse` 参数设置选中为红色填充。" }];
 	
 	var Demo = function (_Component) {
 	    _inherits(Demo, _Component);
@@ -5580,6 +5580,16 @@
 	  var documentWidth = documentElement.scrollWidth;
 	  var documentHeight = documentElement.scrollHeight;
 	
+	  // scrollXXX on html is sync with body which means overflow: hidden on body gets wrong scrollXXX.
+	  // We should cut this ourself.
+	  var bodyStyle = window.getComputedStyle(body);
+	  if (bodyStyle.overflowX === 'hidden') {
+	    documentWidth = win.innerWidth;
+	  }
+	  if (bodyStyle.overflowY === 'hidden') {
+	    documentHeight = win.innerHeight;
+	  }
+	
 	  // Reset element position after calculate the visible area
 	  if (element.style) {
 	    element.style.position = originalPosition;
@@ -7962,7 +7972,9 @@
 	        if (colorsMap[colors]) {
 	            clsObj[clsPrefix + '-' + colorsMap[colors]] = true;
 	        }
-	        //clsObj[`${clsPrefix}-border`] = bordered;
+	        if (bordered) {
+	            clsObj[clsPrefix + '-border'] = bordered;
+	        }
 	        var classes = (0, _classnames2["default"])(clsPrefix, clsObj);
 	        return _react2["default"].createElement(
 	            'button',
@@ -8011,8 +8023,8 @@
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); } /**
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @title Checkbox
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @description `checked` 参数设置是否选中，`disabled`设置是否可用。
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @title 基本用法
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @description `checked` 参数设置是否选中，`disabled`设置是否可用，`onDoubleClick`定义双击事件。
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
 	
 	var Demo1 = function (_Component) {
@@ -8046,11 +8058,15 @@
 	            _react2['default'].createElement(_src2['default'], {
 	                disabled: true,
 	                className: 'test' }),
+	            _react2['default'].createElement(_src2['default'], {
+	                disabled: true,
+	                checked: true,
+	                className: 'test' }),
 	            _react2['default'].createElement(
-	                _src2['default'],
-	                {
-	                    onDoubleClick: this.handleDblClick,
-	                    ref: 'test',
+	                _src2['default']
+	                // onDoubleClick={ this.handleDblClick }
+	                ,
+	                { ref: 'test',
 	                    checked: this.state.checkedFlag,
 	                    onChange: this.onChange },
 	                '\u5168\u9009'
@@ -8136,12 +8152,15 @@
 	
 	    colors: _propTypes2['default'].oneOf(['', 'dark', 'success', 'info', 'warning', 'danger', 'primary']),
 	
-	    disabled: _propTypes2['default'].bool
+	    disabled: _propTypes2['default'].bool,
+	
+	    inverse: _propTypes2['default'].bool
 	
 	};
 	
 	var defaultProps = {
 	    disabled: false,
+	    inverse: false,
 	    colors: 'primary',
 	    clsPrefix: 'u-checkbox',
 	    defaultChecked: false,
@@ -8177,6 +8196,7 @@
 	    Checkbox.prototype.render = function render() {
 	        var _props = this.props,
 	            disabled = _props.disabled,
+	            inverse = _props.inverse,
 	            colors = _props.colors,
 	            size = _props.size,
 	            className = _props.className,
@@ -8187,7 +8207,7 @@
 	            clsPrefix = _props.clsPrefix,
 	            onDoubleClick = _props.onDoubleClick,
 	            onChange = _props.onChange,
-	            others = _objectWithoutProperties(_props, ['disabled', 'colors', 'size', 'className', 'indeterminate', 'onClick', 'children', 'checked', 'clsPrefix', 'onDoubleClick', 'onChange']);
+	            others = _objectWithoutProperties(_props, ['disabled', 'inverse', 'colors', 'size', 'className', 'indeterminate', 'onClick', 'children', 'checked', 'clsPrefix', 'onDoubleClick', 'onChange']);
 	
 	        var input = _react2['default'].createElement('input', _extends({}, others, {
 	            type: 'checkbox',
@@ -8198,6 +8218,10 @@
 	            'is-checked': this.state.checked,
 	            disabled: disabled
 	        };
+	
+	        if (inverse) {
+	            classes[clsPrefix + '-inverse'] = true;
+	        }
 	
 	        if (colors) {
 	            classes[clsPrefix + '-' + colors] = true;
@@ -8327,13 +8351,15 @@
 	var propTypes = {
 	    clsPrefix: _propTypes2['default'].string,
 	    value: _propTypes2['default'].array,
-	    onChange: _propTypes2['default'].func
+	    onChange: _propTypes2['default'].func,
+	    disabled: _propTypes2['default'].bool
 	};
 	
 	var defaultProps = {
 	    clsPrefix: 'u-checkbox-group',
 	    value: [],
-	    onChange: function onChange() {}
+	    onChange: function onChange() {},
+	    disabled: false
 	};
 	
 	var CheckboxGroup = function (_React$Component) {
@@ -8376,7 +8402,8 @@
 	
 	        var _props = this.props,
 	            clsPrefix = _props.clsPrefix,
-	            className = _props.className;
+	            className = _props.className,
+	            disabled = _props.disabled;
 	
 	        var classes = clsPrefix;
 	        if (className) classes += ' ' + className;
@@ -8388,7 +8415,8 @@
 	                    onChange: function onChange() {
 	                        _this2.changeHandle(child.props.value);
 	                    },
-	                    checked: _this2.state.values.indexOf(child.props.value) != -1
+	                    checked: _this2.state.values.indexOf(child.props.value) != -1,
+	                    disabled: disabled
 	                });
 	            })
 	        );
@@ -10301,7 +10329,7 @@
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); } /**
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @title 多颜色`Checkbox`
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @title 不同颜色的 Checkbox
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @description `colors`参数控制背景色
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
 	
@@ -10388,7 +10416,7 @@
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); } /**
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @title Checkbox
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @title 受控的 Checkbox
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @description `checked` 参数设置是否选中，`disabled`设置是否可用。
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
 	
@@ -10404,30 +10432,55 @@
 				_this.setState({ checked: !_this.state.checked });
 			};
 	
+			_this.changeDisabled = function () {
+				_this.setState({ disabled: !_this.state.disabled });
+			};
+	
 			_this.state = {
-				checked: false
+				checked: false,
+				disabled: false
 			};
 			return _this;
 		}
 	
 		Demo3.prototype.render = function render() {
+			var label = (this.state.checked ? 'Checked' : 'Unchecked') + '-' + (this.state.disabled ? 'Disabled' : 'Enabled');
 			return _react2['default'].createElement(
 				'div',
 				{ className: 'demo-checkbox' },
 				_react2['default'].createElement(
-					_beeButton2['default'],
-					{ onClick: this.changeCheck.bind(this) },
-					'change checkbox'
+					'p',
+					null,
+					_react2['default'].createElement(
+						_beeButton2['default'],
+						{
+							colors: 'secondary',
+							onClick: this.changeCheck.bind(this),
+							style: { marginRight: "8px" }
+						},
+						!this.state.checked ? 'Check' : 'Uncheck'
+					),
+					_react2['default'].createElement(
+						_beeButton2['default'],
+						{
+							colors: 'secondary',
+							onClick: this.changeDisabled.bind(this)
+						},
+						!this.state.disabled ? 'Disable' : 'Enable'
+					)
 				),
 				_react2['default'].createElement(
-					_src2['default'],
-					{ checked: this.state.checked, onChange: this.changeCheck },
-					'checkbox2'
-				),
-				_react2['default'].createElement(
-					_src2['default'],
-					{ defaultChecked: this.state.checked },
-					'checkbox2'
+					'p',
+					null,
+					_react2['default'].createElement(
+						_src2['default'],
+						{
+							checked: this.state.checked,
+							disabled: this.state.disabled,
+							onChange: this.changeCheck
+						},
+						label
+					)
 				)
 			);
 		};
@@ -10466,7 +10519,7 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); } /**
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @title CheckboxGroup基本使用
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @description `value` 参数设置默认值，`onChange`设置值改变的回调。
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @description `value` 参数设置默认值，`onChange`设置值改变的回调，`disabled`设置是否可用
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
 	
 	var CheckboxGroup = _src2['default'].CheckboxGroup;
@@ -10482,12 +10535,13 @@
 			_this.change = function (value) {
 				console.log(value);
 				_this.setState({
-					value: value
+					value1: value
 				});
 			};
 	
 			_this.state = {
-				value: ['3', '4']
+				value1: ['3', '4'],
+				value2: ['3', '4']
 			};
 			return _this;
 		}
@@ -10498,7 +10552,36 @@
 				{ className: 'demo-checkbox' },
 				_react2['default'].createElement(
 					CheckboxGroup,
-					{ value: this.state.value, onChange: this.change },
+					{ value: this.state.value1, onChange: this.change },
+					_react2['default'].createElement(
+						_src2['default'],
+						{ value: '1' },
+						'1'
+					),
+					_react2['default'].createElement(
+						_src2['default'],
+						{ value: '2' },
+						'2'
+					),
+					_react2['default'].createElement(
+						_src2['default'],
+						{ value: '3' },
+						'3'
+					),
+					_react2['default'].createElement(
+						_src2['default'],
+						{ value: '4' },
+						'4'
+					),
+					_react2['default'].createElement(
+						_src2['default'],
+						{ value: '5' },
+						'5'
+					)
+				),
+				_react2['default'].createElement(
+					CheckboxGroup,
+					{ disabled: true, value: this.state.value2 },
 					_react2['default'].createElement(
 						_src2['default'],
 						{ value: '1' },
@@ -10644,7 +10727,7 @@
 				),
 				_react2['default'].createElement(
 					_beeButton2['default'],
-					{ onClick: this.click },
+					{ colors: 'secondary', onClick: this.click },
 					'submit'
 				)
 			);
@@ -10670,7 +10753,7 @@
 	
 	var _Form2 = _interopRequireDefault(_Form);
 	
-	var _FormItem = __webpack_require__(259);
+	var _FormItem = __webpack_require__(262);
 	
 	var _FormItem2 = _interopRequireDefault(_FormItem);
 	
@@ -10779,7 +10862,7 @@
 	
 	var _createFormField2 = _interopRequireDefault(_createFormField);
 	
-	var _propTypes = __webpack_require__(258);
+	var _propTypes = __webpack_require__(261);
 	
 	var _propTypes2 = _interopRequireDefault(_propTypes);
 	
@@ -10855,9 +10938,9 @@
 	
 	var _defineProperty3 = _interopRequireDefault(_defineProperty2);
 	
-	var _extends2 = __webpack_require__(104);
+	var _extends5 = __webpack_require__(104);
 	
-	var _extends3 = _interopRequireDefault(_extends2);
+	var _extends6 = _interopRequireDefault(_extends5);
 	
 	var _toConsumableArray2 = __webpack_require__(119);
 	
@@ -10887,6 +10970,10 @@
 	
 	var _set2 = _interopRequireDefault(_set);
 	
+	var _eq = __webpack_require__(231);
+	
+	var _eq2 = _interopRequireDefault(_eq);
+	
 	var _createFieldsStore = __webpack_require__(252);
 	
 	var _createFieldsStore2 = _interopRequireDefault(_createFieldsStore);
@@ -10895,10 +10982,8 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
-	/* eslint-disable react/prefer-es6-class */
+	var DEFAULT_TRIGGER = 'onChange'; /* eslint-disable react/prefer-es6-class */
 	/* eslint-disable prefer-promise-reject-errors */
-	
-	var DEFAULT_TRIGGER = 'onChange';
 	
 	function createBaseForm() {
 	  var option = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
@@ -10981,10 +11066,10 @@
 	          Object.keys(valuesAll).forEach(function (key) {
 	            return (0, _set2['default'])(valuesAllSet, key, valuesAll[key]);
 	          });
-	          onValuesChange(this.props, (0, _set2['default'])({}, name, value), valuesAllSet);
+	          onValuesChange((0, _extends6['default'])((0, _defineProperty3['default'])({}, formPropName, this.getForm()), this.props), (0, _set2['default'])({}, name, value), valuesAllSet);
 	        }
 	        var field = this.fieldsStore.getField(name);
-	        return { name: name, field: (0, _extends3['default'])({}, field, { value: value, touched: true }), fieldMeta: fieldMeta };
+	        return { name: name, field: (0, _extends6['default'])({}, field, { value: value, touched: true }), fieldMeta: fieldMeta };
 	      },
 	      onCollect: function onCollect(name_, action) {
 	        for (var _len = arguments.length, args = Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
@@ -10998,7 +11083,10 @@
 	
 	        var validate = fieldMeta.validate;
 	
-	        var newField = (0, _extends3['default'])({}, field, {
+	
+	        this.fieldsStore.setFieldsAsDirty();
+	
+	        var newField = (0, _extends6['default'])({}, field, {
 	          dirty: (0, _utils.hasRules)(validate)
 	        });
 	        this.setFields((0, _defineProperty3['default'])({}, name, newField));
@@ -11012,9 +11100,12 @@
 	            field = _onCollectCommon2.field,
 	            fieldMeta = _onCollectCommon2.fieldMeta;
 	
-	        var newField = (0, _extends3['default'])({}, field, {
+	        var newField = (0, _extends6['default'])({}, field, {
 	          dirty: true
 	        });
+	
+	        this.fieldsStore.setFieldsAsDirty();
+	
 	        this.validateFieldsInternal([newField], {
 	          action: action,
 	          options: {
@@ -11053,7 +11144,7 @@
 	          }
 	          fieldMeta.originalProps = originalProps;
 	          fieldMeta.ref = fieldElem.ref;
-	          return _react2['default'].cloneElement(fieldElem, (0, _extends3['default'])({}, props, _this2.fieldsStore.getFieldValuePropValue(fieldMeta)));
+	          return _react2['default'].cloneElement(fieldElem, (0, _extends6['default'])({}, props, _this2.fieldsStore.getFieldValuePropValue(fieldMeta)));
 	        };
 	      },
 	      getFieldProps: function getFieldProps(name) {
@@ -11071,7 +11162,7 @@
 	
 	        delete this.clearedFieldMetaCache[name];
 	
-	        var fieldOption = (0, _extends3['default'])({
+	        var fieldOption = (0, _extends6['default'])({
 	          name: name,
 	          trigger: DEFAULT_TRIGGER,
 	          valuePropName: 'value',
@@ -11090,7 +11181,7 @@
 	          fieldMeta.initialValue = fieldOption.initialValue;
 	        }
 	
-	        var inputProps = (0, _extends3['default'])({}, this.fieldsStore.getFieldValuePropValue(fieldOption), {
+	        var inputProps = (0, _extends6['default'])({}, this.fieldsStore.getFieldValuePropValue(fieldOption), {
 	          ref: this.getCacheBind(name, name + '__ref', this.saveRef)
 	        });
 	        if (fieldNameProp) {
@@ -11109,7 +11200,7 @@
 	          inputProps[trigger] = this.getCacheBind(name, trigger, this.onCollect);
 	        }
 	
-	        var meta = (0, _extends3['default'])({}, fieldMeta, fieldOption, {
+	        var meta = (0, _extends6['default'])({}, fieldMeta, fieldOption, {
 	          validate: validateRules
 	        });
 	        this.fieldsStore.setFieldMeta(name, meta);
@@ -11146,7 +11237,7 @@
 	          var changedFields = Object.keys(fields).reduce(function (acc, name) {
 	            return (0, _set2['default'])(acc, name, _this4.fieldsStore.getField(name));
 	          }, {});
-	          onFieldsChange(this.props, changedFields, this.fieldsStore.getNestedAllFields());
+	          onFieldsChange((0, _extends6['default'])((0, _defineProperty3['default'])({}, formPropName, this.getForm()), this.props), changedFields, this.fieldsStore.getNestedAllFields());
 	        }
 	        this.forceUpdate(callback);
 	      },
@@ -11170,7 +11261,7 @@
 	        this.setFields(newFields, callback);
 	        if (onValuesChange) {
 	          var allValues = this.fieldsStore.getAllValues();
-	          onValuesChange(this.props, changedValues, allValues);
+	          onValuesChange((0, _extends6['default'])((0, _defineProperty3['default'])({}, formPropName, this.getForm()), this.props), changedValues, allValues);
 	        }
 	      },
 	      saveRef: function saveRef(name, _, component) {
@@ -11266,7 +11357,7 @@
 	            return;
 	          }
 	          var fieldMeta = _this7.fieldsStore.getFieldMeta(name);
-	          var newField = (0, _extends3['default'])({}, field);
+	          var newField = (0, _extends6['default'])({}, field);
 	          newField.errors = undefined;
 	          newField.validating = true;
 	          newField.dirty = true;
@@ -11288,10 +11379,41 @@
 	          validator.messages(validateMessages);
 	        }
 	        validator.validate(allValues, options, function (errors) {
-	          var errorsGroup = (0, _extends3['default'])({}, alreadyErrors);
+	          var errorsGroup = (0, _extends6['default'])({}, alreadyErrors);
 	          if (errors && errors.length) {
 	            errors.forEach(function (e) {
-	              var fieldName = e.field;
+	              var errorFieldName = e.field;
+	              var fieldName = errorFieldName;
+	
+	              // Handle using array validation rule.
+	              // ref: https://github.com/ant-design/ant-design/issues/14275
+	              Object.keys(allRules).some(function (ruleFieldName) {
+	                var rules = allRules[ruleFieldName] || [];
+	
+	                // Exist if match rule
+	                if (ruleFieldName === errorFieldName) {
+	                  fieldName = ruleFieldName;
+	                  return true;
+	                }
+	
+	                // Skip if not match array type
+	                if (rules.every(function (_ref2) {
+	                  var type = _ref2.type;
+	                  return type !== 'array';
+	                }) && errorFieldName.indexOf(ruleFieldName) !== 0) {
+	                  return false;
+	                }
+	
+	                // Exist if match the field name
+	                var restPath = errorFieldName.slice(ruleFieldName.length + 1);
+	                if (/\d+/.test(restPath)) {
+	                  fieldName = ruleFieldName;
+	                  return true;
+	                }
+	
+	                return false;
+	              });
+	
 	              var field = (0, _get2['default'])(errorsGroup, fieldName);
 	              if (typeof field !== 'object' || Array.isArray(field)) {
 	                (0, _set2['default'])(errorsGroup, fieldName, { errors: [] });
@@ -11306,7 +11428,7 @@
 	            var fieldErrors = (0, _get2['default'])(errorsGroup, name);
 	            var nowField = _this7.fieldsStore.getField(name);
 	            // avoid concurrency problems
-	            if (nowField.value !== allValues[name]) {
+	            if (!(0, _eq2['default'])(nowField.value, allValues[name])) {
 	              expired.push({
 	                name: name
 	              });
@@ -11321,8 +11443,8 @@
 	          _this7.setFields(nowAllFields);
 	          if (callback) {
 	            if (expired.length) {
-	              expired.forEach(function (_ref2) {
-	                var name = _ref2.name;
+	              expired.forEach(function (_ref3) {
+	                var name = _ref3.name;
 	
 	                var fieldErrors = [{
 	                  message: name + ' need to revalidate',
@@ -11372,9 +11494,7 @@
 	            return field;
 	          });
 	          if (!fields.length) {
-	            if (callback) {
-	              callback(null, _this8.fieldsStore.getFieldsValue(fieldNames));
-	            }
+	            callback(null, _this8.fieldsStore.getFieldsValue(fieldNames));
 	            return;
 	          }
 	          if (!('firstFields' in options)) {
@@ -11407,7 +11527,7 @@
 	        var _this9 = this;
 	
 	        if (process.env.NODE_ENV !== 'production' && process.env.NODE_ENV !== 'test') {
-	          (0, _warning2['default'])(false, '`submit` is deprecated.' + 'Actually, it\'s more convenient to handle submitting status by yourself.');
+	          (0, _warning2['default'])(false, '`submit` is deprecated. ' + 'Actually, it\'s more convenient to handle submitting status by yourself.');
 	        }
 	        var fn = function fn() {
 	          _this9.setState({
@@ -11433,7 +11553,7 @@
 	        } else if (wrappedComponentRef) {
 	          formProps.ref = wrappedComponentRef;
 	        }
-	        var props = mapProps.call(this, (0, _extends3['default'])({}, formProps, restProps));
+	        var props = mapProps.call(this, (0, _extends6['default'])({}, formProps, restProps));
 	        return _react2['default'].createElement(WrappedComponent, props);
 	      }
 	    });
@@ -17381,6 +17501,21 @@
 	      this.fieldsMeta[name] = meta;
 	    }
 	  }, {
+	    key: 'setFieldsAsDirty',
+	    value: function setFieldsAsDirty() {
+	      var _this2 = this;
+	
+	      Object.keys(this.fields).forEach(function (name) {
+	        var field = _this2.fields[name];
+	        var fieldMeta = _this2.fieldsMeta[name];
+	        if (field && fieldMeta && (0, _utils.hasRules)(fieldMeta.validate)) {
+	          _this2.fields[name] = (0, _extends3['default'])({}, field, {
+	            dirty: true
+	          });
+	        }
+	      });
+	    }
+	  }, {
 	    key: 'getFieldMeta',
 	    value: function getFieldMeta(name) {
 	      this.fieldsMeta[name] = this.fieldsMeta[name] || {};
@@ -17399,12 +17534,12 @@
 	  }, {
 	    key: 'getValidFieldsName',
 	    value: function getValidFieldsName() {
-	      var _this2 = this;
+	      var _this3 = this;
 	
 	      var fieldsMeta = this.fieldsMeta;
 	
 	      return fieldsMeta ? Object.keys(fieldsMeta).filter(function (name) {
-	        return !_this2.getFieldMeta(name).hidden;
+	        return !_this3.getFieldMeta(name).hidden;
 	      }) : [];
 	    }
 	  }, {
@@ -17448,16 +17583,16 @@
 	  }, {
 	    key: 'getNotCollectedFields',
 	    value: function getNotCollectedFields() {
-	      var _this3 = this;
+	      var _this4 = this;
 	
 	      var fieldsName = this.getValidFieldsName();
 	      return fieldsName.filter(function (name) {
-	        return !_this3.fields[name];
+	        return !_this4.fields[name];
 	      }).map(function (name) {
 	        return {
 	          name: name,
 	          dirty: false,
-	          value: _this3.getFieldMeta(name).initialValue
+	          value: _this4.getFieldMeta(name).initialValue
 	        };
 	      }).reduce(function (acc, field) {
 	        return (0, _set2['default'])(acc, field.name, (0, _createFormField2['default'])(field));
@@ -17466,10 +17601,10 @@
 	  }, {
 	    key: 'getNestedAllFields',
 	    value: function getNestedAllFields() {
-	      var _this4 = this;
+	      var _this5 = this;
 	
 	      return Object.keys(this.fields).reduce(function (acc, name) {
-	        return (0, _set2['default'])(acc, name, (0, _createFormField2['default'])(_this4.fields[name]));
+	        return (0, _set2['default'])(acc, name, (0, _createFormField2['default'])(_this5.fields[name]));
 	      }, this.getNotCollectedFields());
 	    }
 	  }, {
@@ -17523,14 +17658,14 @@
 	}();
 	
 	var _initialiseProps = function _initialiseProps() {
-	  var _this5 = this;
+	  var _this6 = this;
 	
 	  this.setFieldsInitialValue = function (initialValues) {
-	    var flattenedInitialValues = _this5.flattenRegisteredFields(initialValues);
-	    var fieldsMeta = _this5.fieldsMeta;
+	    var flattenedInitialValues = _this6.flattenRegisteredFields(initialValues);
+	    var fieldsMeta = _this6.fieldsMeta;
 	    Object.keys(flattenedInitialValues).forEach(function (name) {
 	      if (fieldsMeta[name]) {
-	        _this5.setFieldMeta(name, (0, _extends3['default'])({}, _this5.getFieldMeta(name), {
+	        _this6.setFieldMeta(name, (0, _extends3['default'])({}, _this6.getFieldMeta(name), {
 	          initialValue: flattenedInitialValues[name]
 	        }));
 	      }
@@ -17538,55 +17673,55 @@
 	  };
 	
 	  this.getAllValues = function () {
-	    var fieldsMeta = _this5.fieldsMeta,
-	        fields = _this5.fields;
+	    var fieldsMeta = _this6.fieldsMeta,
+	        fields = _this6.fields;
 	
 	    return Object.keys(fieldsMeta).reduce(function (acc, name) {
-	      return (0, _set2['default'])(acc, name, _this5.getValueFromFields(name, fields));
+	      return (0, _set2['default'])(acc, name, _this6.getValueFromFields(name, fields));
 	    }, {});
 	  };
 	
 	  this.getFieldsValue = function (names) {
-	    return _this5.getNestedFields(names, _this5.getFieldValue);
+	    return _this6.getNestedFields(names, _this6.getFieldValue);
 	  };
 	
 	  this.getFieldValue = function (name) {
-	    var fields = _this5.fields;
+	    var fields = _this6.fields;
 	
-	    return _this5.getNestedField(name, function (fullName) {
-	      return _this5.getValueFromFields(fullName, fields);
+	    return _this6.getNestedField(name, function (fullName) {
+	      return _this6.getValueFromFields(fullName, fields);
 	    });
 	  };
 	
 	  this.getFieldsError = function (names) {
-	    return _this5.getNestedFields(names, _this5.getFieldError);
+	    return _this6.getNestedFields(names, _this6.getFieldError);
 	  };
 	
 	  this.getFieldError = function (name) {
-	    return _this5.getNestedField(name, function (fullName) {
-	      return (0, _utils.getErrorStrs)(_this5.getFieldMember(fullName, 'errors'));
+	    return _this6.getNestedField(name, function (fullName) {
+	      return (0, _utils.getErrorStrs)(_this6.getFieldMember(fullName, 'errors'));
 	    });
 	  };
 	
 	  this.isFieldValidating = function (name) {
-	    return _this5.getFieldMember(name, 'validating');
+	    return _this6.getFieldMember(name, 'validating');
 	  };
 	
 	  this.isFieldsValidating = function (ns) {
-	    var names = ns || _this5.getValidFieldsName();
+	    var names = ns || _this6.getValidFieldsName();
 	    return names.some(function (n) {
-	      return _this5.isFieldValidating(n);
+	      return _this6.isFieldValidating(n);
 	    });
 	  };
 	
 	  this.isFieldTouched = function (name) {
-	    return _this5.getFieldMember(name, 'touched');
+	    return _this6.getFieldMember(name, 'touched');
 	  };
 	
 	  this.isFieldsTouched = function (ns) {
-	    var names = ns || _this5.getValidFieldsName();
+	    var names = ns || _this6.getValidFieldsName();
 	    return names.some(function (n) {
-	      return _this5.isFieldTouched(n);
+	      return _this6.isFieldTouched(n);
 	    });
 	  };
 	};
@@ -17874,7 +18009,7 @@
 
 /***/ }),
 /* 257 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
@@ -17882,12 +18017,15 @@
 	 * Copyright 2015, Yahoo! Inc.
 	 * Copyrights licensed under the New BSD License. See the accompanying LICENSE file for terms.
 	 */
+	var ReactIs = __webpack_require__(258);
 	var REACT_STATICS = {
 	    childContextTypes: true,
+	    contextType: true,
 	    contextTypes: true,
 	    defaultProps: true,
 	    displayName: true,
 	    getDefaultProps: true,
+	    getDerivedStateFromError: true,
 	    getDerivedStateFromProps: true,
 	    mixins: true,
 	    propTypes: true,
@@ -17904,15 +18042,43 @@
 	    arity: true
 	};
 	
+	var FORWARD_REF_STATICS = {
+	    '$$typeof': true,
+	    render: true,
+	    defaultProps: true,
+	    displayName: true,
+	    propTypes: true
+	};
+	
+	var MEMO_STATICS = {
+	    '$$typeof': true,
+	    compare: true,
+	    defaultProps: true,
+	    displayName: true,
+	    propTypes: true,
+	    type: true
+	};
+	
+	var TYPE_STATICS = {};
+	TYPE_STATICS[ReactIs.ForwardRef] = FORWARD_REF_STATICS;
+	
+	function getStatics(component) {
+	    if (ReactIs.isMemo(component)) {
+	        return MEMO_STATICS;
+	    }
+	    return TYPE_STATICS[component['$$typeof']] || REACT_STATICS;
+	}
+	
 	var defineProperty = Object.defineProperty;
 	var getOwnPropertyNames = Object.getOwnPropertyNames;
 	var getOwnPropertySymbols = Object.getOwnPropertySymbols;
 	var getOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
 	var getPrototypeOf = Object.getPrototypeOf;
-	var objectPrototype = getPrototypeOf && getPrototypeOf(Object);
+	var objectPrototype = Object.prototype;
 	
 	function hoistNonReactStatics(targetComponent, sourceComponent, blacklist) {
-	    if (typeof sourceComponent !== 'string') { // don't hoist over string (html) components
+	    if (typeof sourceComponent !== 'string') {
+	        // don't hoist over string (html) components
 	
 	        if (objectPrototype) {
 	            var inheritedComponent = getPrototypeOf(sourceComponent);
@@ -17927,11 +18093,15 @@
 	            keys = keys.concat(getOwnPropertySymbols(sourceComponent));
 	        }
 	
+	        var targetStatics = getStatics(targetComponent);
+	        var sourceStatics = getStatics(sourceComponent);
+	
 	        for (var i = 0; i < keys.length; ++i) {
 	            var key = keys[i];
-	            if (!REACT_STATICS[key] && !KNOWN_STATICS[key] && (!blacklist || !blacklist[key])) {
+	            if (!KNOWN_STATICS[key] && !(blacklist && blacklist[key]) && !(sourceStatics && sourceStatics[key]) && !(targetStatics && targetStatics[key])) {
 	                var descriptor = getOwnPropertyDescriptor(sourceComponent, key);
-	                try { // Avoid failures from read-only properties
+	                try {
+	                    // Avoid failures from read-only properties
 	                    defineProperty(targetComponent, key, descriptor);
 	                } catch (e) {}
 	            }
@@ -17948,6 +18118,275 @@
 
 /***/ }),
 /* 258 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
+	
+	if (process.env.NODE_ENV === 'production') {
+	  module.exports = __webpack_require__(259);
+	} else {
+	  module.exports = __webpack_require__(260);
+	}
+	
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(33)))
+
+/***/ }),
+/* 259 */
+/***/ (function(module, exports) {
+
+	/** @license React v16.8.3
+	 * react-is.production.min.js
+	 *
+	 * Copyright (c) Facebook, Inc. and its affiliates.
+	 *
+	 * This source code is licensed under the MIT license found in the
+	 * LICENSE file in the root directory of this source tree.
+	 */
+	
+	'use strict';Object.defineProperty(exports,"__esModule",{value:!0});
+	var b="function"===typeof Symbol&&Symbol.for,c=b?Symbol.for("react.element"):60103,d=b?Symbol.for("react.portal"):60106,e=b?Symbol.for("react.fragment"):60107,f=b?Symbol.for("react.strict_mode"):60108,g=b?Symbol.for("react.profiler"):60114,h=b?Symbol.for("react.provider"):60109,k=b?Symbol.for("react.context"):60110,l=b?Symbol.for("react.async_mode"):60111,m=b?Symbol.for("react.concurrent_mode"):60111,n=b?Symbol.for("react.forward_ref"):60112,p=b?Symbol.for("react.suspense"):60113,q=b?Symbol.for("react.memo"):
+	60115,r=b?Symbol.for("react.lazy"):60116;function t(a){if("object"===typeof a&&null!==a){var u=a.$$typeof;switch(u){case c:switch(a=a.type,a){case l:case m:case e:case g:case f:case p:return a;default:switch(a=a&&a.$$typeof,a){case k:case n:case h:return a;default:return u}}case r:case q:case d:return u}}}function v(a){return t(a)===m}exports.typeOf=t;exports.AsyncMode=l;exports.ConcurrentMode=m;exports.ContextConsumer=k;exports.ContextProvider=h;exports.Element=c;exports.ForwardRef=n;
+	exports.Fragment=e;exports.Lazy=r;exports.Memo=q;exports.Portal=d;exports.Profiler=g;exports.StrictMode=f;exports.Suspense=p;exports.isValidElementType=function(a){return"string"===typeof a||"function"===typeof a||a===e||a===m||a===g||a===f||a===p||"object"===typeof a&&null!==a&&(a.$$typeof===r||a.$$typeof===q||a.$$typeof===h||a.$$typeof===k||a.$$typeof===n)};exports.isAsyncMode=function(a){return v(a)||t(a)===l};exports.isConcurrentMode=v;exports.isContextConsumer=function(a){return t(a)===k};
+	exports.isContextProvider=function(a){return t(a)===h};exports.isElement=function(a){return"object"===typeof a&&null!==a&&a.$$typeof===c};exports.isForwardRef=function(a){return t(a)===n};exports.isFragment=function(a){return t(a)===e};exports.isLazy=function(a){return t(a)===r};exports.isMemo=function(a){return t(a)===q};exports.isPortal=function(a){return t(a)===d};exports.isProfiler=function(a){return t(a)===g};exports.isStrictMode=function(a){return t(a)===f};
+	exports.isSuspense=function(a){return t(a)===p};
+
+
+/***/ }),
+/* 260 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(process) {/** @license React v16.8.3
+	 * react-is.development.js
+	 *
+	 * Copyright (c) Facebook, Inc. and its affiliates.
+	 *
+	 * This source code is licensed under the MIT license found in the
+	 * LICENSE file in the root directory of this source tree.
+	 */
+	
+	'use strict';
+	
+	
+	
+	if (process.env.NODE_ENV !== "production") {
+	  (function() {
+	'use strict';
+	
+	Object.defineProperty(exports, '__esModule', { value: true });
+	
+	// The Symbol used to tag the ReactElement-like types. If there is no native Symbol
+	// nor polyfill, then a plain number is used for performance.
+	var hasSymbol = typeof Symbol === 'function' && Symbol.for;
+	
+	var REACT_ELEMENT_TYPE = hasSymbol ? Symbol.for('react.element') : 0xeac7;
+	var REACT_PORTAL_TYPE = hasSymbol ? Symbol.for('react.portal') : 0xeaca;
+	var REACT_FRAGMENT_TYPE = hasSymbol ? Symbol.for('react.fragment') : 0xeacb;
+	var REACT_STRICT_MODE_TYPE = hasSymbol ? Symbol.for('react.strict_mode') : 0xeacc;
+	var REACT_PROFILER_TYPE = hasSymbol ? Symbol.for('react.profiler') : 0xead2;
+	var REACT_PROVIDER_TYPE = hasSymbol ? Symbol.for('react.provider') : 0xeacd;
+	var REACT_CONTEXT_TYPE = hasSymbol ? Symbol.for('react.context') : 0xeace;
+	var REACT_ASYNC_MODE_TYPE = hasSymbol ? Symbol.for('react.async_mode') : 0xeacf;
+	var REACT_CONCURRENT_MODE_TYPE = hasSymbol ? Symbol.for('react.concurrent_mode') : 0xeacf;
+	var REACT_FORWARD_REF_TYPE = hasSymbol ? Symbol.for('react.forward_ref') : 0xead0;
+	var REACT_SUSPENSE_TYPE = hasSymbol ? Symbol.for('react.suspense') : 0xead1;
+	var REACT_MEMO_TYPE = hasSymbol ? Symbol.for('react.memo') : 0xead3;
+	var REACT_LAZY_TYPE = hasSymbol ? Symbol.for('react.lazy') : 0xead4;
+	
+	function isValidElementType(type) {
+	  return typeof type === 'string' || typeof type === 'function' ||
+	  // Note: its typeof might be other than 'symbol' or 'number' if it's a polyfill.
+	  type === REACT_FRAGMENT_TYPE || type === REACT_CONCURRENT_MODE_TYPE || type === REACT_PROFILER_TYPE || type === REACT_STRICT_MODE_TYPE || type === REACT_SUSPENSE_TYPE || typeof type === 'object' && type !== null && (type.$$typeof === REACT_LAZY_TYPE || type.$$typeof === REACT_MEMO_TYPE || type.$$typeof === REACT_PROVIDER_TYPE || type.$$typeof === REACT_CONTEXT_TYPE || type.$$typeof === REACT_FORWARD_REF_TYPE);
+	}
+	
+	/**
+	 * Forked from fbjs/warning:
+	 * https://github.com/facebook/fbjs/blob/e66ba20ad5be433eb54423f2b097d829324d9de6/packages/fbjs/src/__forks__/warning.js
+	 *
+	 * Only change is we use console.warn instead of console.error,
+	 * and do nothing when 'console' is not supported.
+	 * This really simplifies the code.
+	 * ---
+	 * Similar to invariant but only logs a warning if the condition is not met.
+	 * This can be used to log issues in development environments in critical
+	 * paths. Removing the logging code for production environments will keep the
+	 * same logic and follow the same code paths.
+	 */
+	
+	var lowPriorityWarning = function () {};
+	
+	{
+	  var printWarning = function (format) {
+	    for (var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+	      args[_key - 1] = arguments[_key];
+	    }
+	
+	    var argIndex = 0;
+	    var message = 'Warning: ' + format.replace(/%s/g, function () {
+	      return args[argIndex++];
+	    });
+	    if (typeof console !== 'undefined') {
+	      console.warn(message);
+	    }
+	    try {
+	      // --- Welcome to debugging React ---
+	      // This error was thrown as a convenience so that you can use this stack
+	      // to find the callsite that caused this warning to fire.
+	      throw new Error(message);
+	    } catch (x) {}
+	  };
+	
+	  lowPriorityWarning = function (condition, format) {
+	    if (format === undefined) {
+	      throw new Error('`lowPriorityWarning(condition, format, ...args)` requires a warning ' + 'message argument');
+	    }
+	    if (!condition) {
+	      for (var _len2 = arguments.length, args = Array(_len2 > 2 ? _len2 - 2 : 0), _key2 = 2; _key2 < _len2; _key2++) {
+	        args[_key2 - 2] = arguments[_key2];
+	      }
+	
+	      printWarning.apply(undefined, [format].concat(args));
+	    }
+	  };
+	}
+	
+	var lowPriorityWarning$1 = lowPriorityWarning;
+	
+	function typeOf(object) {
+	  if (typeof object === 'object' && object !== null) {
+	    var $$typeof = object.$$typeof;
+	    switch ($$typeof) {
+	      case REACT_ELEMENT_TYPE:
+	        var type = object.type;
+	
+	        switch (type) {
+	          case REACT_ASYNC_MODE_TYPE:
+	          case REACT_CONCURRENT_MODE_TYPE:
+	          case REACT_FRAGMENT_TYPE:
+	          case REACT_PROFILER_TYPE:
+	          case REACT_STRICT_MODE_TYPE:
+	          case REACT_SUSPENSE_TYPE:
+	            return type;
+	          default:
+	            var $$typeofType = type && type.$$typeof;
+	
+	            switch ($$typeofType) {
+	              case REACT_CONTEXT_TYPE:
+	              case REACT_FORWARD_REF_TYPE:
+	              case REACT_PROVIDER_TYPE:
+	                return $$typeofType;
+	              default:
+	                return $$typeof;
+	            }
+	        }
+	      case REACT_LAZY_TYPE:
+	      case REACT_MEMO_TYPE:
+	      case REACT_PORTAL_TYPE:
+	        return $$typeof;
+	    }
+	  }
+	
+	  return undefined;
+	}
+	
+	// AsyncMode is deprecated along with isAsyncMode
+	var AsyncMode = REACT_ASYNC_MODE_TYPE;
+	var ConcurrentMode = REACT_CONCURRENT_MODE_TYPE;
+	var ContextConsumer = REACT_CONTEXT_TYPE;
+	var ContextProvider = REACT_PROVIDER_TYPE;
+	var Element = REACT_ELEMENT_TYPE;
+	var ForwardRef = REACT_FORWARD_REF_TYPE;
+	var Fragment = REACT_FRAGMENT_TYPE;
+	var Lazy = REACT_LAZY_TYPE;
+	var Memo = REACT_MEMO_TYPE;
+	var Portal = REACT_PORTAL_TYPE;
+	var Profiler = REACT_PROFILER_TYPE;
+	var StrictMode = REACT_STRICT_MODE_TYPE;
+	var Suspense = REACT_SUSPENSE_TYPE;
+	
+	var hasWarnedAboutDeprecatedIsAsyncMode = false;
+	
+	// AsyncMode should be deprecated
+	function isAsyncMode(object) {
+	  {
+	    if (!hasWarnedAboutDeprecatedIsAsyncMode) {
+	      hasWarnedAboutDeprecatedIsAsyncMode = true;
+	      lowPriorityWarning$1(false, 'The ReactIs.isAsyncMode() alias has been deprecated, ' + 'and will be removed in React 17+. Update your code to use ' + 'ReactIs.isConcurrentMode() instead. It has the exact same API.');
+	    }
+	  }
+	  return isConcurrentMode(object) || typeOf(object) === REACT_ASYNC_MODE_TYPE;
+	}
+	function isConcurrentMode(object) {
+	  return typeOf(object) === REACT_CONCURRENT_MODE_TYPE;
+	}
+	function isContextConsumer(object) {
+	  return typeOf(object) === REACT_CONTEXT_TYPE;
+	}
+	function isContextProvider(object) {
+	  return typeOf(object) === REACT_PROVIDER_TYPE;
+	}
+	function isElement(object) {
+	  return typeof object === 'object' && object !== null && object.$$typeof === REACT_ELEMENT_TYPE;
+	}
+	function isForwardRef(object) {
+	  return typeOf(object) === REACT_FORWARD_REF_TYPE;
+	}
+	function isFragment(object) {
+	  return typeOf(object) === REACT_FRAGMENT_TYPE;
+	}
+	function isLazy(object) {
+	  return typeOf(object) === REACT_LAZY_TYPE;
+	}
+	function isMemo(object) {
+	  return typeOf(object) === REACT_MEMO_TYPE;
+	}
+	function isPortal(object) {
+	  return typeOf(object) === REACT_PORTAL_TYPE;
+	}
+	function isProfiler(object) {
+	  return typeOf(object) === REACT_PROFILER_TYPE;
+	}
+	function isStrictMode(object) {
+	  return typeOf(object) === REACT_STRICT_MODE_TYPE;
+	}
+	function isSuspense(object) {
+	  return typeOf(object) === REACT_SUSPENSE_TYPE;
+	}
+	
+	exports.typeOf = typeOf;
+	exports.AsyncMode = AsyncMode;
+	exports.ConcurrentMode = ConcurrentMode;
+	exports.ContextConsumer = ContextConsumer;
+	exports.ContextProvider = ContextProvider;
+	exports.Element = Element;
+	exports.ForwardRef = ForwardRef;
+	exports.Fragment = Fragment;
+	exports.Lazy = Lazy;
+	exports.Memo = Memo;
+	exports.Portal = Portal;
+	exports.Profiler = Profiler;
+	exports.StrictMode = StrictMode;
+	exports.Suspense = Suspense;
+	exports.isValidElementType = isValidElementType;
+	exports.isAsyncMode = isAsyncMode;
+	exports.isConcurrentMode = isConcurrentMode;
+	exports.isContextConsumer = isContextConsumer;
+	exports.isContextProvider = isContextProvider;
+	exports.isElement = isElement;
+	exports.isForwardRef = isForwardRef;
+	exports.isFragment = isFragment;
+	exports.isLazy = isLazy;
+	exports.isMemo = isMemo;
+	exports.isPortal = isPortal;
+	exports.isProfiler = isProfiler;
+	exports.isStrictMode = isStrictMode;
+	exports.isSuspense = isSuspense;
+	  })();
+	}
+	
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(33)))
+
+/***/ }),
+/* 261 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -17987,7 +18426,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 259 */
+/* 262 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -18056,6 +18495,88 @@
 	FormItem.propTypes = propTypes;
 	FormItem.defaultProps = defaultProps;
 	exports["default"] = FormItem;
+	module.exports = exports['default'];
+
+/***/ }),
+/* 263 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _react = __webpack_require__(4);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _src = __webpack_require__(85);
+	
+	var _src2 = _interopRequireDefault(_src);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	
+	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); } /**
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @title 红色填充的 Checkbox
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @description `inverse` 参数设置选中为红色填充。
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
+	
+	var Demo6 = function (_Component) {
+	    _inherits(Demo6, _Component);
+	
+	    function Demo6(props) {
+	        _classCallCheck(this, Demo6);
+	
+	        var _this = _possibleConstructorReturn(this, _Component.call(this, props));
+	
+	        _this.state = {
+	            checkedFlag: false
+	        };
+	        _this.onChange = _this.onChange.bind(_this);
+	        return _this;
+	    }
+	
+	    Demo6.prototype.onChange = function onChange(e) {
+	        console.log(e);
+	        this.setState({ checkedFlag: e });
+	    };
+	
+	    Demo6.prototype.render = function render() {
+	        return _react2['default'].createElement(
+	            'div',
+	            { className: 'demo-checkbox' },
+	            _react2['default'].createElement(
+	                _src2['default'],
+	                {
+	                    inverse: true,
+	                    ref: 'test',
+	                    checked: this.state.checkedFlag,
+	                    onChange: this.onChange },
+	                '\u5168\u9009'
+	            ),
+	            _react2['default'].createElement(
+	                _src2['default'],
+	                {
+	                    inverse: true,
+	                    ref: 'test',
+	                    indeterminate: true,
+	                    onChange: this.onChange },
+	                '\u534A\u9009'
+	            )
+	        );
+	    };
+	
+	    return Demo6;
+	}(_react.Component);
+	
+	exports['default'] = Demo6;
 	module.exports = exports['default'];
 
 /***/ })

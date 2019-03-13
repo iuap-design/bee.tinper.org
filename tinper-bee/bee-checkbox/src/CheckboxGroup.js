@@ -8,13 +8,15 @@ import isEqual from 'lodash.isequal'
 const propTypes = {
     clsPrefix:PropTypes.string,
     value:PropTypes.array,
-    onChange:PropTypes.func
+    onChange:PropTypes.func,
+    disabled: PropTypes.bool
 };
 
 const defaultProps = {
     clsPrefix:'u-checkbox-group',
     value:[],
-    onChange:()=>{}
+    onChange:()=>{},
+    disabled: false
 };
 class CheckboxGroup extends React.Component {
     constructor(props) {
@@ -44,7 +46,7 @@ class CheckboxGroup extends React.Component {
     }
 
     render() {
-        let { clsPrefix, className } = this.props;
+        let { clsPrefix, className, disabled } = this.props;
         let classes = clsPrefix;
         if(className)classes += ' '+className
         return (
@@ -53,7 +55,8 @@ class CheckboxGroup extends React.Component {
                    React.Children.map(this.props.children,child=>React.cloneElement(child,
                         {
                             onChange:()=>{this.changeHandle(child.props.value)},
-                            checked:this.state.values.indexOf(child.props.value)!=-1
+                            checked:this.state.values.indexOf(child.props.value)!=-1,
+                            disabled: disabled
                         }
                     ))
                }

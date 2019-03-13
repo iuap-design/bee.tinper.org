@@ -1,6 +1,6 @@
 /**
- * @title RadioButton
- * @description 
+ * @title RadioButton 基本使用
+ * @description `selectedValue`参数设置被选中的radio值，`onChange`设置值改变的回调
  */
 
 import React, { Component } from 'react'
@@ -12,27 +12,46 @@ class Demo4 extends Component{
   constructor(props) {
   	super(props);
   	this.state = {
-    	selectedValue: 'banana'
+      selectedValue: 'orange',
+      selectedValue2: 'apple'
     };
   }
   handleChange(value) {
     this.setState({selectedValue: value});
   }
+  handleChange2(value) {
+    this.setState({selectedValue2: value});
+  }
   render() {
     return (
-      <Radio.RadioGroup
-        name="fruit"
-        selectedValue={this.state.selectedValue}
-        onChange={this.handleChange.bind(this)}>
+      <div>
+        <Radio.RadioGroup
+          name="fruit"
+          selectedValue={this.state.selectedValue}
+          onChange={this.handleChange.bind(this)}>
+            <Radio.RadioButton value="apple">apple</Radio.RadioButton>
+            <Radio.RadioButton value="banana">banana</Radio.RadioButton>
+            <Radio.RadioButton value="orange">orange</Radio.RadioButton>
+        </Radio.RadioGroup>
 
-          <Radio.RadioButton value="apple">apple</Radio.RadioButton>
+        <div style={{ marginTop: 16 }}>
+          <Radio.RadioGroup 
+            selectedValue={this.state.selectedValue2}
+            onChange={this.handleChange2.bind(this)}>
+            <Radio.RadioButton value="apple">apple</Radio.RadioButton>
+            <Radio.RadioButton value="banana" disabled>banana</Radio.RadioButton>
+            <Radio.RadioButton value="orange">orange</Radio.RadioButton>
+          </Radio.RadioGroup>
+        </div>
 
-          <Radio.RadioButton value="banana">banana</Radio.RadioButton>
-
-          <Radio.RadioButton  value="orange">orange</Radio.RadioButton>
-
-      </Radio.RadioGroup>
-     
+        <div style={{ marginTop: 16 }}>
+          <Radio.RadioGroup selectedValue="apple">
+            <Radio.RadioButton value="apple" disabled>apple</Radio.RadioButton>
+            <Radio.RadioButton value="banana" disabled>banana</Radio.RadioButton>
+            <Radio.RadioButton value="orange" disabled>orange</Radio.RadioButton>
+          </Radio.RadioGroup>
+        </div>
+      </div>
 
     )
   }

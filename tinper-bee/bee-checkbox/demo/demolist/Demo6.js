@@ -1,13 +1,13 @@
 /**
- * @title 基本用法
- * @description `checked` 参数设置是否选中，`disabled`设置是否可用，`onDoubleClick`定义双击事件。
+ * @title 红色填充的 Checkbox
+ * @description `inverse` 参数设置选中为红色填充。
  */
 
 
 import React, {Component} from 'react';
 import Checkbox from '../../src';
 
-class Demo1 extends Component {
+class Demo6 extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -21,30 +21,18 @@ class Demo1 extends Component {
         this.setState({checkedFlag: e});
     }
 
-    handleDblClick = (state) => {
-		console.log(state);
-    }
-
     render() {
         return (
             <div className="demo-checkbox">
                 <Checkbox
-                    disabled
-                    className="test" >
-                </Checkbox>
-                <Checkbox
-                    disabled
-                    checked={true}
-                    className="test" >
-                </Checkbox>
-                <Checkbox
-                    // onDoubleClick={ this.handleDblClick }
+                    inverse
                     ref="test"
                     checked={this.state.checkedFlag}
                     onChange={this.onChange}>
                     全选
                 </Checkbox>
                 <Checkbox
+                    inverse
                     ref="test"
                     indeterminate
                     onChange={this.onChange}>
@@ -55,4 +43,4 @@ class Demo1 extends Component {
     }
 }
 
-export default Demo1;
+export default Demo6;

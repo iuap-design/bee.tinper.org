@@ -51,6 +51,7 @@ import "./node_modules/build/bee-checkbox.css"
 |onDoubleClick|双击事件|function|function(checked, event){}|
 |onClick|单击事件|function|function(event){}|
 |value|选中的值，需配合CheckboxGroup使用|string|-|
+|inverse|设置选中为红色填充|bool|false|
 
 
 ## CheckboxGroup
@@ -60,6 +61,7 @@ import "./node_modules/build/bee-checkbox.css"
 |className|类名|string|-|
 |onChange|监听改变|function|-|
 |value|设置默认值|array|[]|
+|disabled|是否可用|bool|false|
 
 ## 已支持的键盘操作
 
