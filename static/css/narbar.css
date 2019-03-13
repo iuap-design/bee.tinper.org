@@ -270,3 +270,6 @@ input::-webkit-input-placeholder {
     color: #ccc;
     cursor: not-allowed;
 }
+#navbar .nav .nav-left .nav-logo{
+    margin-right: 50px;
+}

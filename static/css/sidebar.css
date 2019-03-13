@@ -47,6 +47,7 @@
     font-family: "uf" !important;
     box-sizing: border-box;
     content: "\e608";
+    margin-right: 20px;
 }
 
 .sidebar .menu-components .menu-item-components.open .menu-item-components-text:before {

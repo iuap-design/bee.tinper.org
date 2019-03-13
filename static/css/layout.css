@@ -16,6 +16,7 @@
     height: calc(100% - 65px);
     top: 95px;
     padding-bottom: 100px;
+    border-right: 1px solid #dfdfdf;
 }
 
 .docs {
@@ -29,7 +30,7 @@
 
 .footer-out {
     width: calc(100% - 300px);
-    margin-left: 290px;
+    margin-left: 249px;
     margin-top: 60px;
 }
 .u-row{
