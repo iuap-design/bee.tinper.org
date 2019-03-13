@@ -120,3 +120,6 @@
     margin-right: -11%;
     width: 122%;
 }
+#footer>.u-row>.u-col-md-12{
+    padding: 0;
+}

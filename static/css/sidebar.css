@@ -106,7 +106,7 @@
     background: #DFDFDF;
     border-radius: 10px;
 }
-
+/* 失去焦点颜色 */
 ::-webkit-scrollbar-thumb:window-inactive {
-    background: rgba(255, 0, 0, 0.4);
+    background: #DFDFDF;
 }

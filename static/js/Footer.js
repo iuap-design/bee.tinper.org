@@ -8275,7 +8275,7 @@
 	                        _react2['default'].createElement(
 	                            'p',
 	                            { className: 'produ' },
-	                            'Made with by FED team'
+	                            'Powered by yonyou'
 	                        )
 	                    )
 	                )
