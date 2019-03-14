@@ -11,9 +11,9 @@ fs.remove('tinper-bee')
             download(`tinper-bee/${item}`,`tinper-bee/${item}`,
             function (error) {
                 if (error) {
-                    console.log(`❌ download 失败,还剩  ${length}  个` + error);
+                    console.log(`❌ download ${item} 失败,还剩  ${length}  个` + error);
                 }else{
-                    console.log(`😀 download 成功,还剩  ${--length}  个`)
+                    console.log(`😀 download ${item} 成功,还剩  ${--length}  个`)
                 }
             })
         })
