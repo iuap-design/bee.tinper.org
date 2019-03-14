@@ -12,7 +12,7 @@
 .nav .nav-left .nav-logo {
     display: inline-block;
     margin-left: 60px;
-    margin-right: 75px;
+    margin-right: 50px;
 }
 
 .nav .nav-left .nav-logo img {
@@ -82,7 +82,10 @@
     float: left;
     margin-right: 38px;
 }
-
+.nav .nav-right .nav-options li.language {
+    color: #ccc;
+    cursor: not-allowed;
+}
 .nav .nav-right .nav-options li .u-select {
     min-width: 100px;
     font-size: 14px;

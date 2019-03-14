@@ -27,7 +27,7 @@
 <script src="//design.yonyoucloud.com/static/prop-types/15.6.0/prop-types.min.js"></script>
 <body>
     <div class="navbar">
-        <div id='navbar'></div>
+        <% include navbar.html %>
     </div>
     <div class="content">
         <div class="sidebar">
@@ -37,12 +37,17 @@
             <% include docs.html %>
         </div>
         <div class="footer-out">
-            <div id='footer'></div>
+            <% include footer.html %>
         </div>
     </div>
-    
 </body>
 <script type="text/javascript" src="//design.yonyoucloud.com/static/docSearch/docsearch.min.js"></script>
-<script src="./js/Navbar.js"></script>
-<script src="./js/Footer.js"></script>
+<script>
+    docsearch({ 
+            apiKey: 'd388a4977faabf821db64112c8abdcf7', 
+            indexName: 'bee_tinper', 
+            inputSelector: '#componentSearch', 
+            debug: false // Set debug to true if you want to inspect the dropdown 
+        }); 
+</script>
 </html>
