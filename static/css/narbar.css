@@ -282,3 +282,15 @@ input::-webkit-input-placeholder {
 #selectList.select-list.open{
     display: block;
 }
+.nav .nav-right .nav-options li.lang-select{
+    position: relative;
+}
+#selectList.select-list .u-select-dropdown{
+    top: 52px;
+    left: 0;
+}
+#selectList.select-list .u-select-dropdown .u-select-dropdown-menu-item{
+    padding: 0 16px;
+    height: 30px;
+    line-height: 30px;
+}
