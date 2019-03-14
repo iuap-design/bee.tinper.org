@@ -276,3 +276,9 @@ input::-webkit-input-placeholder {
 #navbar .nav .nav-left .nav-logo{
     margin-right: 50px;
 }
+#selectList.select-list{
+    display: none;
+}
+#selectList.select-list.open{
+    display: block;
+}
