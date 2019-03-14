@@ -9,10 +9,10 @@ import React, { Component } from 'react';
 import Button from '../../src';
 import Icon from 'bee-icon';
 
-class Demo4 extends Component {
+class Demo3 extends Component {
     render () {
         return (
-            <div className="demoPadding">
+            <div className="demo3 demoPadding">
                 <Button colors="primary" shape="icon"><Icon type='uf-search' /></Button>
                 <Button colors="primary"><Icon type='uf-search' />Search</Button>
                 <Button colors="secondary" shape="icon"><Icon type='uf-del' /></Button>
@@ -26,4 +26,4 @@ class Demo4 extends Component {
     }
 }
 
-export default Demo4;
+export default Demo3;

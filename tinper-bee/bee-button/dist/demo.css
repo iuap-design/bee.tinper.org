@@ -4,6 +4,7 @@
 /* FormGroup */
 /*  Navlayout  */
 @import url(../node_modules/bee-message/build/Message.css);
+@import url(../node_modules/bee-modal/build/Modal.css);
 .red {
   color: rgb(244,67,54) !important; }
 
@@ -5304,7 +5305,6 @@ a, .mdl-accordion, .mdl-button, .mdl-card, .mdl-checkbox, .mdl-dropdown-menu,
       border-color: #DFE1E6;
       color: #fff; }
   .u-button:not(.u-button-icon) i.uf {
-    padding-left: 0;
     line-height: normal; }
 
 input.u-button[type="submit"] {
@@ -6383,5 +6383,8 @@ input.u-button[type="submit"] {
   height: 1px;
   overflow: hidden;
   background-color: #fff; }
+
+.demo3 .u-button-icon + .u-button i {
+  padding-left: 0; }
 
 /*# sourceMappingURL=demo.css.map */

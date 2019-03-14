@@ -5452,10 +5452,9 @@ a, .mdl-accordion, .mdl-button, .mdl-card, .mdl-checkbox, .mdl-dropdown-menu,
         line-height: 0;
         height: 54%;
         overflow: hidden;
-        color: rgba(0, 0, 0, 0.43);
+        color: #505F79;
         transition: all .1s linear;
-        cursor: pointer;
-        font-weight: 700; }
+        cursor: pointer; }
         .u-input-number.u-input-group.simple .u-input-group-btn .icon-group .plus.disabled {
           cursor: not-allowed;
           background: transparent !important;
@@ -5478,10 +5477,9 @@ a, .mdl-accordion, .mdl-button, .mdl-card, .mdl-checkbox, .mdl-dropdown-menu,
         line-height: 0;
         height: 50%;
         overflow: hidden;
-        color: rgba(0, 0, 0, 0.43);
+        color: #505F79;
         transition: all .1s linear;
-        cursor: pointer;
-        font-weight: 700; }
+        cursor: pointer; }
         .u-input-number.u-input-group.simple .u-input-group-btn .icon-group .reduce.disabled {
           cursor: not-allowed;
           background: transparent !important;
@@ -5489,7 +5487,8 @@ a, .mdl-accordion, .mdl-button, .mdl-card, .mdl-checkbox, .mdl-dropdown-menu,
         .u-input-number.u-input-group.simple .u-input-group-btn .icon-group .reduce.disabled-cursor {
           cursor: not-allowed;
           background: #f7f9fb;
-          border-bottom-right-radius: 3px; }
+          border-bottom-right-radius: 3px;
+          border-top: 1px solid #DFE1E6; }
           .u-input-number.u-input-group.simple .u-input-group-btn .icon-group .reduce.disabled-cursor:hover {
             background: #f7f9fb; }
         .u-input-number.u-input-group.simple .u-input-group-btn .icon-group .reduce:hover {

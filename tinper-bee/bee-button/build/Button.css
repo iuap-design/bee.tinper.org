@@ -45,7 +45,6 @@
       border-color: #DFE1E6;
       color: #fff; }
   .u-button:not(.u-button-icon) i.uf {
-    padding-left: 0;
     line-height: normal; }
 
 input.u-button[type="submit"] {

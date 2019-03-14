@@ -561,9 +561,7 @@ onExpand(treeNode,keyType) {
       let onFocusRes = onFocus && onFocus(isExist);
         if(onFocusRes instanceof Promise){
           onFocusRes.then(()=>{
-            if(!isExist){
-                this._focusDom(this.selectKeyDomPos,targetDom);
-              }
+            this._focusDom(this.selectKeyDomPos,targetDom);
           });
         }else{
           this._focusDom(this.selectKeyDomPos,targetDom);

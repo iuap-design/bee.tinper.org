@@ -70,11 +70,11 @@ $disable-border-color:#dfe1e6;
                 line-height: 0;
                 height: 54%;
                 overflow: hidden;
-                color: rgba(0, 0, 0, .43);
+                color: #505F79;
                 -webkit-transition: all .1s linear;
                 transition: all .1s linear;
                 cursor: pointer;
-                font-weight: 700;
+                // font-weight: 700;
 
                 // border: 1px solid transparent;
                 // border-bottom-color:$border-color-base;
@@ -111,11 +111,11 @@ $disable-border-color:#dfe1e6;
                 line-height: 0;
                 height: 50%;
                 overflow: hidden;
-                color: rgba(0, 0, 0, .43);
+                color: #505F79;
                 -webkit-transition: all .1s linear;
                 transition: all .1s linear;
                 cursor: pointer;
-                font-weight: 700;
+                // font-weight: 700;
                 &.disabled {
                     cursor: not-allowed;
                     background: transparent !important;
@@ -125,6 +125,7 @@ $disable-border-color:#dfe1e6;
                     cursor: not-allowed;
                     background: #f7f9fb;
                     border-bottom-right-radius: $border-radius;
+                    border-top: 1px solid #DFE1E6;
                     &:hover {
                         background: #f7f9fb;
                     }

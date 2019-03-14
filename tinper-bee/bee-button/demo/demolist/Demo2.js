@@ -8,7 +8,7 @@
 import React, { Component } from 'react';
 import Button from '../../src';
 
- class Demo5 extends Component {
+ class Demo2 extends Component {
     render () {
         return (
             <div className="demoPadding">
@@ -21,4 +21,4 @@ import Button from '../../src';
     }
 }
 
-export default Demo5;
+export default Demo2;

@@ -8,7 +8,7 @@
 import React, { Component } from 'react';
 import Button from '../../src';
 
- class Demo3 extends Component {
+ class Demo5 extends Component {
 
     render () {
         return (
@@ -31,4 +31,4 @@ import Button from '../../src';
     }
 }
 
-export default Demo3;
+export default Demo5;
