@@ -1,10 +1,24 @@
-## Layout 
+# Layout 
 
+## 何时使用
+协助进行页面级整体布局。
+
+## 如何使用
+
+```
+import { Layout } from 'tinper-bee';
+
+or
+
+import Layout from 'bee-layout';
+import bee-layout/build/Layout.css;
+
+```
 通过基础的 12 分栏，迅速简便地创建布局。
 
 ## 代码演示
 
-### API
+## API
 
 ### Con组件
 
@@ -42,3 +56,9 @@
 |componentClass|组件根元素|element/ReactElement|div|
 
 以上列数设置，只能设置1-12的数字。
+
+## 注意事项
+
+暂无
+
+## 更新日志

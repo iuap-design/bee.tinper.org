@@ -76,7 +76,7 @@
 	
 	var CARETUP = _react2['default'].createElement('i', { className: 'uf uf-arrow-up' });
 	
-	var Demo1 = __webpack_require__(84);var Demo2 = __webpack_require__(91);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": "  FromGroup 三种校验状态实例", "code": "/**\r\n * @title  FromGroup 三种校验状态实例\r\n * @description `validationState`参数控制状态颜色\r\n */\r\n\r\nimport { Component } from 'react';\r\n\nimport { FormGroup, FormControl } from 'tinper-bee';\r\n\r\n class Demo1 extends Component {\r\n\trender () {\r\n\t\treturn (\r\n\t\t\t<div className=\"demo-form-group\">\r\n\t        \t<FormGroup validationState=\"error\"> \r\n\t\t\t\t\t<FormControl type=\"text\" />\r\n\t\t\t\t</FormGroup>\t\r\n\t\t\t\t<FormGroup validationState=\"warning\"> \r\n\t\t\t\t\t<FormControl type=\"text\" />\r\n\t\t\t\t</FormGroup>\t\r\n\t\t\t\t<FormGroup validationState=\"success\"> \r\n\t\t\t\t\t<FormControl type=\"text\" />\r\n\t\t\t\t</FormGroup>\t\t\t\r\n\t        </div>\r\n\t\t)\r\n\t}\r\n}\r\n\r\n", "desc": " `validationState`参数控制状态颜色" }, { "example": _react2['default'].createElement(Demo2, null), "title": " FormGroup 动态校验实例", "code": "/**\r\n * @title FormGroup 动态校验实例\r\n * @description 限制只能输入数字\r\n */\r\nimport React, { Component } from 'react';\r\n\nimport { FormGroup, FormControl } from 'tinper-bee';\r\n\r\nclass Demo2 extends Component {\r\n    constructor (props) {\r\n        super(props);\r\n        this.state = {\r\n            value: ''\r\n        }\r\n    }\r\n    validateState () {\r\n\r\n        if ( this.state.value == \"\" ) {\r\n            return \"warning\";\r\n        }\r\n        if ( /^[0-9]*$/.test(this.state.value) ) {\r\n            return \"success\";\r\n        } else {\r\n            return \"error\"\r\n        }\r\n    }\r\n\r\n    handerChange (e) {\r\n        this.setState({value:e});\r\n    }\r\n    render (){\r\n        return( \r\n            <div className=\"demo-form-control\">\r\n                <FormGroup ref='demo3FormGroup' validationState={this.validateState()}>\r\n                    <FormControl ref=\"demo3FormControl\" placeholder=\"只能输入数字\" value={this.state.value} onChange={this.handerChange.bind(this)}/> \r\n                </FormGroup>\r\n            </div>\r\n        )\r\n    }\r\n\r\n}\r\n\r\n", "desc": " 限制只能输入数字" }];
+	var Demo1 = __webpack_require__(84);var Demo2 = __webpack_require__(91);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": "  FormGroup 三种校验状态实例", "code": "/**\n * @title  FormGroup 三种校验状态实例\n * @description `validationState`参数控制状态颜色\n */\n\nimport { Component } from 'react';\nimport { FormGroup, FormControl } from 'tinper-bee';\n\n class Demo1 extends Component {\n\trender () {\n\t\treturn (\n\t\t\t<div className=\"demo-form-group\">\n\t        \t<FormGroup validationState=\"error\"> \n\t\t\t\t\t<FormControl type=\"text\" />\n\t\t\t\t</FormGroup>\t\n\t\t\t\t<FormGroup validationState=\"warning\"> \n\t\t\t\t\t<FormControl type=\"text\" />\n\t\t\t\t</FormGroup>\t\n\t\t\t\t<FormGroup validationState=\"success\"> \n\t\t\t\t\t<FormControl type=\"text\" />\n\t\t\t\t</FormGroup>\t\t\t\n\t        </div>\n\t\t)\n\t}\n}\n\n", "desc": " `validationState`参数控制状态颜色" }, { "example": _react2['default'].createElement(Demo2, null), "title": " FormGroup 动态校验实例", "code": "/**\n * @title FormGroup 动态校验实例\n * @description 限制只能输入数字\n */\nimport React, { Component } from 'react';\nimport { FormGroup, FormControl } from 'tinper-bee';\n\nclass Demo2 extends Component {\n    constructor (props) {\n        super(props);\n        this.state = {\n            value: ''\n        }\n    }\n    validateState () {\n\n        if ( this.state.value == \"\" ) {\n            return \"warning\";\n        }\n        if ( /^[0-9]*$/.test(this.state.value) ) {\n            return \"success\";\n        } else {\n            return \"error\"\n        }\n    }\n\n    handerChange (e) {\n        this.setState({value:e});\n    }\n    render (){\n        return( \n            <div className=\"demo-form-control\">\n                <FormGroup ref='demo3FormGroup' validationState={this.validateState()}>\n                    <FormControl ref=\"demo3FormControl\" placeholder=\"只能输入数字\" value={this.state.value} onChange={this.handerChange.bind(this)}/> \n                </FormGroup>\n            </div>\n        )\n    }\n\n}\n\n", "desc": " 限制只能输入数字" }];
 	
 	var Demo = function (_Component) {
 	    _inherits(Demo, _Component);
@@ -2119,10 +2119,7 @@
 	  }
 	
 	  return (0, _createChainableTypeChecker2.default)(allPropTypes);
-	} /**
-	   * This source code is quoted from rc-util.
-	   * homepage: https://github.com/react-component/util
-	   */
+	}
 
 /***/ }),
 /* 29 */
@@ -2142,10 +2139,6 @@
 	 */
 	
 	// Mostly taken from ReactPropTypes.
-	
-	/* This source code is quoted from rc-util.
-	 * homepage: https://github.com/react-component/util
-	 */
 	
 	function createChainableTypeChecker(validate) {
 	  function checkType(isRequired, props, propName, componentName, location, propFullName) {
@@ -2181,11 +2174,7 @@
 	
 	exports.__esModule = true;
 	
-	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; /**
-	                                                                                                                                                                                                                                                                               * This source code is quoted from rc-util.
-	                                                                                                                                                                                                                                                                               * homepage: https://github.com/react-component/util
-	                                                                                                                                                                                                                                                                               */
-	
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 	
 	var _react = __webpack_require__(4);
 	
@@ -2229,10 +2218,8 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	var warned = {}; /**
-	                  * This source code is quoted from rc-util.
-	                  * homepage: https://github.com/react-component/util
-	                  */
+	var warned = {};
+	
 	function deprecated(validator, reason) {
 	  return function validate(props, propName, componentName, location, propFullName) {
 	    var componentNameSafe = componentName || '<<anonymous>>';
@@ -2527,11 +2514,7 @@
 	
 	exports.__esModule = true;
 	
-	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; /**
-	                                                                                                                                                                                                                                                                               * This source code is quoted from rc-util.
-	                                                                                                                                                                                                                                                                               * homepage: https://github.com/react-component/util
-	                                                                                                                                                                                                                                                                               */
-	
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 	
 	var _react = __webpack_require__(4);
 	
@@ -2568,10 +2551,6 @@
 	
 	exports.__esModule = true;
 	exports.default = isRequiredForA11y;
-	/**
-	 * This source code is quoted from rc-util.
-	 * homepage: https://github.com/react-component/util
-	 */
 	function isRequiredForA11y(validator) {
 	  return function validate(props, propName, componentName, location, propFullName) {
 	    var componentNameSafe = componentName || '<<anonymous>>';
@@ -2597,10 +2576,6 @@
 	
 	exports.__esModule = true;
 	exports.default = splitComponentProps;
-	/**
-	 * This source code is quoted from rc-util.
-	 * homepage: https://github.com/react-component/util
-	 */
 	function _objectEntries(obj) {
 	  var entries = [];
 	  var keys = Object.keys(obj);
@@ -2643,10 +2618,6 @@
 	'use strict';
 	
 	exports.__esModule = true;
-	/**
-	 * This source code is quoted from rc-util.
-	 * homepage: https://github.com/react-component/util
-	 */
 	function createChainedFunction() {
 	  for (var _len = arguments.length, funcs = Array(_len), _key = 0; _key < _len; _key++) {
 	    funcs[_key] = arguments[_key];
@@ -2679,10 +2650,6 @@
 /* 38 */
 /***/ (function(module, exports) {
 
-	/**
-	 * This source code is quoted from rc-util.
-	 * homepage: https://github.com/react-component/util
-	 */
 	'use strict';
 	
 	/**
@@ -3212,10 +3179,6 @@
 	
 	exports.__esModule = true;
 	exports.default = contains;
-	/**
-	 * This source code is quoted from rc-util.
-	 * homepage: https://github.com/react-component/util
-	 */
 	function contains(root, n) {
 	  var node = n;
 	  while (node) {
@@ -3247,10 +3210,6 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	/**
-	 * This source code is quoted from rc-util.
-	 * homepage: https://github.com/react-component/util
-	 */
 	function addEventListenerWrap(target, eventType, cb) {
 	  /* eslint camelcase: 2 */
 	  var callback = _reactDom2.default.unstable_batchedUpdates ? function run(e) {
@@ -3770,11 +3729,7 @@
 	
 	exports.__esModule = true;
 	
-	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; /**
-	                                                                                                                                                                                                                                                                               * This source code is quoted from rc-util.
-	                                                                                                                                                                                                                                                                               * homepage: https://github.com/react-component/util
-	                                                                                                                                                                                                                                                                               */
-	
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 	
 	var _Event = __webpack_require__(46);
 	
@@ -3965,10 +3920,6 @@
 	'use strict';
 	
 	exports.__esModule = true;
-	/**
-	 * This source code is quoted from rc-util.
-	 * homepage: https://github.com/react-component/util
-	 */
 	var EVENT_NAME_MAP = {
 	  transitionend: {
 	    transition: 'transitionend',
@@ -4282,10 +4233,7 @@
 	    ret.push(c);
 	  });
 	  return ret;
-	} /**
-	   * This source code is quoted from rc-util.
-	   * homepage: https://github.com/react-component/util
-	   */
+	}
 
 /***/ }),
 /* 50 */
@@ -4321,11 +4269,7 @@
 	
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * This source code is quoted from rc-util.
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * homepage: https://github.com/react-component/util
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
-	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
 	//import isWindow from './isWindow';
 	
@@ -5580,16 +5524,6 @@
 	  var documentWidth = documentElement.scrollWidth;
 	  var documentHeight = documentElement.scrollHeight;
 	
-	  // scrollXXX on html is sync with body which means overflow: hidden on body gets wrong scrollXXX.
-	  // We should cut this ourself.
-	  var bodyStyle = window.getComputedStyle(body);
-	  if (bodyStyle.overflowX === 'hidden') {
-	    documentWidth = win.innerWidth;
-	  }
-	  if (bodyStyle.overflowY === 'hidden') {
-	    documentHeight = win.innerHeight;
-	  }
-	
 	  // Reset element position after calculate the visible area
 	  if (element.style) {
 	    element.style.position = originalPosition;
@@ -6230,7 +6164,7 @@
 	    });
 	}
 	
-	function notice(content, duration, type, onClose, position, style, keyboard, onEscapeKeyUp, showIcon) {
+	function notice(content, duration, type, onClose, position, style, keyboard, onEscapeKeyUp) {
 	    var iconType = {
 	        info: 'uf uf-i-c-2',
 	        success: 'uf uf-correct',
@@ -6256,11 +6190,11 @@
 	            content: _react2["default"].createElement(
 	                'div',
 	                null,
-	                showIcon ? _react2["default"].createElement(
+	                _react2["default"].createElement(
 	                    'div',
 	                    { className: clsPrefix + '-notice-description-icon' },
 	                    _react2["default"].createElement('i', { className: (0, _classnames2["default"])(iconType) })
-	                ) : null,
+	                ),
 	                _react2["default"].createElement(
 	                    'div',
 	                    { className: clsPrefix + '-notice-description-content' },
@@ -6288,8 +6222,7 @@
 	        var onClose = obj.onClose || noop;
 	        var position = obj.position || "top";
 	        var style = obj.style || {};
-	        var showIcon = obj.showIcon || false;
-	        return notice(content, duration, color, onClose, position, style, obj.keyboard, obj.onEscapeKeyUp, showIcon);
+	        return notice(content, duration, color, onClose, position, style, obj.keyboard, obj.onEscapeKeyUp);
 	    },
 	    config: function config(options) {
 	        if (options.top !== undefined) {
@@ -7865,7 +7798,7 @@
 	    /**
 	     * @title 尺寸
 	     */
-	    size: _propTypes2["default"].oneOf(['sm', 'md', 'xg', 'lg']),
+	    size: _propTypes2["default"].oneOf(['sm', 'xg', 'lg']),
 	    /**
 	     * @title 样式
 	     */
@@ -7879,7 +7812,7 @@
 	    /**
 	    * @title 类型
 	    */
-	    colors: _propTypes2["default"].oneOf(['primary', 'secondary', 'accent', 'success', 'info', 'warning', 'danger', 'dark', 'light', 'default']),
+	    colors: _propTypes2["default"].oneOf(['primary', 'accent', 'success', 'info', 'warning', 'danger', 'default']),
 	    /**
 	     * @title 是否禁用
 	     * @veIgnore
@@ -7909,20 +7842,16 @@
 	
 	var sizeMap = {
 	    sm: 'sm',
-	    md: 'md',
 	    xg: 'xg',
 	    lg: 'lg'
 	},
 	    colorsMap = {
 	    primary: 'primary',
-	    secondary: 'secondary',
 	    accent: 'accent',
 	    success: 'success',
 	    info: 'info',
 	    warning: 'warning',
-	    danger: 'danger',
-	    dark: 'dark',
-	    light: 'light'
+	    danger: 'danger'
 	},
 	    shapeMap = {
 	    block: 'block',
@@ -7972,9 +7901,7 @@
 	        if (colorsMap[colors]) {
 	            clsObj[clsPrefix + '-' + colorsMap[colors]] = true;
 	        }
-	        if (bordered) {
-	            clsObj[clsPrefix + '-border'] = bordered;
-	        }
+	        //clsObj[`${clsPrefix}-border`] = bordered;
 	        var classes = (0, _classnames2["default"])(clsPrefix, clsObj);
 	        return _react2["default"].createElement(
 	            'button',
@@ -8025,7 +7952,7 @@
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); } /**
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @title  FromGroup 三种校验状态实例
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @title  FormGroup 三种校验状态实例
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @description `validationState`参数控制状态颜色
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
 	
@@ -8193,19 +8120,14 @@
 	        _this.handleKeyDown = function (e) {
 	            var _this$props = _this.props,
 	                onSearch = _this$props.onSearch,
+	                value = _this$props.value,
 	                type = _this$props.type;
 	
 	            if (e.keyCode === 13 && type === "search") {
 	                if (onSearch) {
-	                    onSearch(_this.input.value);
+	                    onSearch(value);
 	                }
 	            }
-	        };
-	
-	        _this.handleSearch = function (e) {
-	            var onSearch = _this.props.onSearch;
-	
-	            if (onSearch) onSearch(_this.input.value);
 	        };
 	
 	        _this.handleBlur = function (e) {
@@ -8329,7 +8251,7 @@
 	                    _react2["default"].createElement(
 	                        'div',
 	                        { className: clsPrefix + '-suffix' },
-	                        _react2["default"].createElement(_beeIcon2["default"], { type: 'uf-search', onClick: _this.handleSearch })
+	                        _this.state.showSearch || others.disabled ? _react2["default"].createElement(_beeIcon2["default"], { type: 'uf-search' }) : _react2["default"].createElement(_beeIcon2["default"], { onClick: _this.clearValue, type: 'uf-close-c' })
 	                    )
 	                );
 	            }
@@ -8492,7 +8414,7 @@
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-		value: true
+					value: true
 	});
 	
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -8522,47 +8444,47 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
 	
 	var propTypes = {
-		validationState: _propTypes2['default'].oneOf(['success', 'warning', 'error'])
+					validationState: _propTypes2['default'].oneOf(['success', 'warning', 'error'])
 	};
 	var defaultProps = {
-		clsPrefix: 'u-form-group'
+					clsPrefix: 'u-form-group'
 	};
 	
 	var FormGroup = function (_React$Component) {
-		_inherits(FormGroup, _React$Component);
+					_inherits(FormGroup, _React$Component);
 	
-		function FormGroup(props) {
-			_classCallCheck(this, FormGroup);
+					function FormGroup(props) {
+									_classCallCheck(this, FormGroup);
 	
-			return _possibleConstructorReturn(this, _React$Component.call(this, props));
-		}
+									return _possibleConstructorReturn(this, _React$Component.call(this, props));
+					}
 	
-		FormGroup.prototype.render = function render() {
-			var _props = this.props,
-			    validationState = _props.validationState,
-			    className = _props.className,
-			    children = _props.children,
-			    clsPrefix = _props.clsPrefix,
-			    others = _objectWithoutProperties(_props, ['validationState', 'className', 'children', 'clsPrefix']);
+					FormGroup.prototype.render = function render() {
+									var _props = this.props,
+									    validationState = _props.validationState,
+									    className = _props.className,
+									    children = _props.children,
+									    clsPrefix = _props.clsPrefix,
+									    others = _objectWithoutProperties(_props, ['validationState', 'className', 'children', 'clsPrefix']);
 	
-			var classes = {};
+									var classes = {};
 	
-			if (validationState) {
-				classes['has-' + validationState] = true;
-			}
+									if (validationState) {
+													classes['has-' + validationState] = true;
+									}
 	
-			var classNames = (0, _classnames2['default'])(clsPrefix, classes);
+									var classNames = (0, _classnames2['default'])(clsPrefix, classes);
 	
-			return _react2['default'].createElement(
-				'div',
-				_extends({}, others, {
-					className: (0, _classnames2['default'])(className, classNames)
-				}),
-				children
-			);
-		};
+									return _react2['default'].createElement(
+													'div',
+													_extends({}, others, {
+																	className: (0, _classnames2['default'])(className, classNames)
+													}),
+													children
+									);
+					};
 	
-		return FormGroup;
+					return FormGroup;
 	}(_react2['default'].Component);
 	
 	FormGroup.propTypes = propTypes;

@@ -30,6 +30,9 @@
     color: $rate-star-default-color;
     cursor: pointer;
     outline: none;
+    div:focus{
+      outline: none;
+    }
   }
   .u-rate-star-first,
   .u-rate-star-second {

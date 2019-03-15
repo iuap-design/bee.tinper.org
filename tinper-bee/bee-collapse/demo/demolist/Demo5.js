@@ -24,7 +24,7 @@ class Demo1 extends Component {
 		return (
 			<div className="demo5">
 		        <Button
-					colors="success"
+					colors="primary"
 					onClick={ ()=> this.setState({ open: !this.state.open })}>
 		          点我内容横向动态显示隐藏
 		        </Button>

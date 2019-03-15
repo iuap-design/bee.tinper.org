@@ -1,7 +1,22 @@
-## Slider
+# Slider
 
 滑动型输入器，展示当前值和可选范围。
-当用户需要在数值区间/自定义区间内进行选择时，可为连续或离散值。
+
+## 何时使用
+当用户需要在数值区间/自定义区间内进行选择时
+
+## 如何使用
+
+```
+import { Slider } from 'tinper-bee';
+
+or
+
+import Slider from 'bee-slider';
+import bee-slider/build/Slider.css;
+
+```
+
 ## 代码演示
 
 ## API
@@ -27,3 +42,9 @@
 |onChange|当Slider的值发生改变时，会触发onChange事件，并把改变后的值作为参数传入。|Function(value)|NOOP|
 |onAfterChange|与onmouseup触发时机一致，把当前值作为参数传入。|Function(value)|NOOP|
 |tipFormatterSlider|会把当前值传给tipFormatter，并在Tooltip中显示tipFormatter的返回值，若为null，则隐藏Tooltip。|Function|-|
+
+## 注意事项
+
+暂无
+
+## 更新日志

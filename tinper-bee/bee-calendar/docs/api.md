@@ -1,4 +1,18 @@
-## Calendar
+# Calendar
+
+## 何时使用
+当数据是日期或按照日期划分时，例如日程、课表、价格日历等，农历等。目前支持年/月切换。
+
+## 如何使用
+```
+import { Calendar } from 'tinper-bee/lib/Calendar';
+
+or
+
+import Calendar from 'bee-calendar';
+import bee-calendar/build/Calendar.css;
+
+```
 
 ## 代码演示
 
@@ -18,3 +32,9 @@
 |monthCellContentRender|月份内容渲染回调函数|function||
 |dateCellContentRender|日期内容渲染回调函数|function||
 |onSelect|日期选中回调函数|Function(date: moment)||
+
+## 注意事项
+
+暂无
+
+## 更新日志

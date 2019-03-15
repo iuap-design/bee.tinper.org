@@ -1,4 +1,19 @@
-## Clipboard
+# Clipboard
+
+## 何时使用
+剪贴页面内容
+
+## 如何使用
+
+```
+import { Clipboard } from 'tinper-bee';
+
+or
+
+import Clipboard from 'bee-clipboard';
+import bee-clipboard/build/Clipboard.css;
+
+```
 
 ## 代码演示
 
@@ -12,3 +27,9 @@
 |success|复制成功之后的回调函数|`function`|-|
 |error|复制失败之后的回调函数|`function`|-|
 |locale|设置默认文字语言|object|中文|
+
+## 注意事项
+
+暂无
+
+## 更新日志

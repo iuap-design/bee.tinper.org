@@ -1,10 +1,24 @@
-## Popover 气泡弹出框
+# Popover
+点击元素弹出气泡弹出框。
 
-点击元素弹出对话框。
+## 何时使用
+例如：table内确认删除气泡弹出框
+
+## 如何使用
+
+```
+import { Popover } from 'tinper-bee';
+
+or
+
+import Popover from 'bee-popover';
+import bee-popover/build/Popover.css;
+
+```
 
 ## 代码演示
 
-### API
+## API
 
 |参数|说明|类型|默认值|
 |:---|:-----|:----|:------|
@@ -20,3 +34,9 @@
 |show|控制显示和隐藏|bool|-|
 |defaultOverlayShown|默认显示的状态|bool|false|
 |onHide|隐藏时的回调|function|-|
+
+## 注意事项
+
+暂无
+
+## 更新日志

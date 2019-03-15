@@ -1,6 +1,6 @@
 {
  "name": "bee-cascader",
- "version": "2.0.3",
+ "version": "2.1.0",
  "description": "Cascader ui component for react",
  "keywords": [
   "react",
@@ -36,8 +36,15 @@
   "pub": "bee-tools run pub"
  },
  "dependencies": {
+  "array-tree-filter": "^2.1.0",
+  "bee-form-control": "latest",
+  "bee-icon": "latest",
+  "bee-input-group": "latest",
   "classnames": "^2.2.5",
-  "tinper-bee-core": "^2.0.20"
+  "rc-trigger": "^2.6.2",
+  "shallow-equal": "^1.1.0",
+  "tinper-bee-core": "^2.0.20",
+  "warning": "^4.0.3"
  },
  "peerDependencies": {
   "react": "^15.3.0 || ^16.0",

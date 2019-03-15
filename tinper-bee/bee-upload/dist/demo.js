@@ -5589,7 +5589,7 @@
 	
 	  // scrollXXX on html is sync with body which means overflow: hidden on body gets wrong scrollXXX.
 	  // We should cut this ourself.
-	  var bodyStyle = getComputedStyle(body);
+	  var bodyStyle = window.getComputedStyle(body);
 	  if (bodyStyle.overflowX === 'hidden') {
 	    documentWidth = win.innerWidth;
 	  }
@@ -7979,7 +7979,9 @@
 	        if (colorsMap[colors]) {
 	            clsObj[clsPrefix + '-' + colorsMap[colors]] = true;
 	        }
-	        //clsObj[`${clsPrefix}-border`] = bordered;
+	        if (bordered) {
+	            clsObj[clsPrefix + '-border'] = bordered;
+	        }
 	        var classes = (0, _classnames2["default"])(clsPrefix, clsObj);
 	        return _react2["default"].createElement(
 	            'button',

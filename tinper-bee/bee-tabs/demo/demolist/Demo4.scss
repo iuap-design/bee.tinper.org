@@ -1,0 +1,12 @@
+.demo4{
+  width: 600px;
+  margin: 20px;
+  .demo4-tabs{
+    &.u-tabs-left, &.u-tabs-right{
+      height: 300px;
+    }
+  }
+  .u-select{
+    width: 100px;
+  }
+}

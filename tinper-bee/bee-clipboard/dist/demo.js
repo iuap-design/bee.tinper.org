@@ -50,7 +50,7 @@
 	
 	var _beePanel = __webpack_require__(8);
 	
-	var _beeButton = __webpack_require__(81);
+	var _beeButton = __webpack_require__(77);
 	
 	var _beeButton2 = _interopRequireDefault(_beeButton);
 	
@@ -76,7 +76,7 @@
 	
 	var CARETUP = _react2['default'].createElement('i', { className: 'uf uf-arrow-up' });
 	
-	var Demo1 = __webpack_require__(83);var Demo2 = __webpack_require__(145);var Demo3 = __webpack_require__(146);var Demo4 = __webpack_require__(147);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 默认复制", "code": "/**\n *\n * @title 默认复制\n * @description 在复制按钮中定义内容，点击复制到剪切板\n *\n */\n\nimport React, { Component } from 'react';\nimport { Clipboard } from 'tinper-bee';\n\nclass Demo1 extends Component {\n    render() {\n        function success() {\n            console.log('success');\n        }\n\n        function error() {\n            console.log('error');\n        }\n\n        return (\n            <Clipboard action=\"copy\" text=\"默认复制-我将被复制到剪切板\" success={success} error={error}>\n\n            </Clipboard>\n        )\n    }\n}\n\n", "desc": " 在复制按钮中定义内容，点击复制到剪切板" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 目标复制", "code": "/**\n *\n * @title 目标复制\n * @description 复制目标元素的内容到剪切板\n *\n */\n\nimport React, { Component } from 'react';\nimport { Clipboard } from 'tinper-bee';\n\nclass Demo2 extends Component {\n    render() {\n        function success(){\n           console.log('success');\n        }\n        function error(){\n           console.log('error');\n        }\n        return (\n            <div>\n                <div id=\"copyContent\" >目标复制-我将被复制到剪切板</div>\n                <Clipboard action=\"copy\"  target='#copyContent' success={success} error={error}>\n                </Clipboard>\n            </div>\n        )\n    }\n}\n\n", "desc": " 复制目标元素的内容到剪切板" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 目标剪切", "code": "/**\n *\n * @title 目标剪切\n * @description 剪切只适用于 textarea 元素\n *\n */\n\nimport React, { Component } from 'react';\nimport { Clipboard } from 'tinper-bee';\n\nclass Demo3 extends Component {\n    render() {\n        function success(){\n            console.log('success');\n        }\n        function error(){\n            console.log('error');\n        }\n        return (\n            <div>\n                <textarea id=\"cutContent\" >我将被剪切到剪切板</textarea>\n                <Clipboard action=\"cut\" target='#cutContent' success={success} error={error}>\n                </Clipboard>\n            </div>\n        )\n    }\n}\n\n", "desc": " 剪切只适用于 textarea 元素" }, { "example": _react2['default'].createElement(Demo4, null), "title": " 切换复制组件显示的语言", "code": "/**\n *\n * @title 切换复制组件显示的语言\n * @description 通过设置locale属性来修改文字和语言\n *\n */\n\nimport React, { Component } from 'react';\nimport { Clipboard } from 'tinper-bee';\nimport ZhCn from \"bee-locale/build/zh_CN.js\";\nimport ZhTw from \"bee-locale/build/zh_TW.js\";\nimport EnUS from \"bee-locale/build/en_US.js\";\n\nclass Demo4 extends Component {\n    render() {\n        function success() {\n            console.log('success');\n        }\n\n        function error() {\n            console.log('error');\n        }\n\n        return (\n            <Clipboard locale={ZhTw.Clipboard}  action=\"copy\" text=\"默认复制-我将被复制到剪切板\" success={success} error={error}>\n\n            </Clipboard>\n        )\n    }\n}\n\n", "desc": " 通过设置locale属性来修改文字和语言" }];
+	var Demo1 = __webpack_require__(79);var Demo2 = __webpack_require__(142);var Demo3 = __webpack_require__(143);var Demo4 = __webpack_require__(144);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 默认复制", "code": "/**\n *\n * @title 默认复制\n * @description 在复制按钮中定义内容，点击复制到剪切板\n *\n */\n\nimport React, { Component } from 'react';\nimport { Clipboard } from 'tinper-bee';\n\nclass Demo1 extends Component {\n    render() {\n        function success() {\n            console.log('success');\n        }\n\n        function error() {\n            console.log('error');\n        }\n\n        return (\n            <Clipboard action=\"copy\" text=\"默认复制-我将被复制到剪切板\" success={success} error={error}>\n\n            </Clipboard>\n        )\n    }\n}\n\n", "desc": " 在复制按钮中定义内容，点击复制到剪切板" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 目标复制", "code": "/**\n *\n * @title 目标复制\n * @description 复制目标元素的内容到剪切板\n *\n */\n\nimport React, { Component } from 'react';\nimport { Clipboard } from 'tinper-bee';\n\nclass Demo2 extends Component {\n    render() {\n        function success(){\n           console.log('success');\n        }\n        function error(){\n           console.log('error');\n        }\n        return (\n            <div>\n                <div id=\"copyContent\" >目标复制-我将被复制到剪切板</div>\n                <Clipboard action=\"copy\"  target='#copyContent' success={success} error={error}>\n                </Clipboard>\n            </div>\n        )\n    }\n}\n\n", "desc": " 复制目标元素的内容到剪切板" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 目标剪切", "code": "/**\n *\n * @title 目标剪切\n * @description 剪切只适用于 textarea 元素\n *\n */\n\nimport React, { Component } from 'react';\nimport { Clipboard } from 'tinper-bee';\n\nclass Demo3 extends Component {\n    render() {\n        function success(){\n            console.log('success');\n        }\n        function error(){\n            console.log('error');\n        }\n        return (\n            <div>\n                <textarea id=\"cutContent\" >我将被剪切到剪切板</textarea>\n                <Clipboard action=\"cut\" target='#cutContent' success={success} error={error}>\n                </Clipboard>\n            </div>\n        )\n    }\n}\n\n", "desc": " 剪切只适用于 textarea 元素" }, { "example": _react2['default'].createElement(Demo4, null), "title": " 切换复制组件显示的语言", "code": "/**\n *\n * @title 切换复制组件显示的语言\n * @description 通过设置locale属性来修改文字和语言\n *\n */\n\nimport React, { Component } from 'react';\nimport { Clipboard } from 'tinper-bee';\nimport ZhCn from \"bee-locale/build/zh_CN.js\";\nimport ZhTw from \"bee-locale/build/zh_TW.js\";\nimport EnUS from \"bee-locale/build/en_US.js\";\n\nclass Demo4 extends Component {\n    render() {\n        function success() {\n            console.log('success');\n        }\n\n        function error() {\n            console.log('error');\n        }\n\n        return (\n            <Clipboard locale={ZhTw.Clipboard}  action=\"copy\" text=\"默认复制-我将被复制到剪切板\" success={success} error={error}>\n\n            </Clipboard>\n        )\n    }\n}\n\n", "desc": " 通过设置locale属性来修改文字和语言" }];
 	
 	var Demo = function (_Component) {
 	    _inherits(Demo, _Component);
@@ -643,7 +643,7 @@
 	
 	var _Panel3 = _interopRequireDefault(_Panel2);
 	
-	var _PanelGroup2 = __webpack_require__(80);
+	var _PanelGroup2 = __webpack_require__(76);
 	
 	var _PanelGroup3 = _interopRequireDefault(_PanelGroup2);
 	
@@ -682,7 +682,7 @@
 	
 	var _propTypes2 = _interopRequireDefault(_propTypes);
 	
-	var _copyToClipboard = __webpack_require__(78);
+	var _copyToClipboard = __webpack_require__(74);
 	
 	var _copyToClipboard2 = _interopRequireDefault(_copyToClipboard);
 	
@@ -877,7 +877,7 @@
 	        'div',
 	        { key: children.length, className: bodyClassName },
 	        bodyChildren,
-	        copyable && _react2["default"].createElement('i', { className: clsPrefix + '-copy uf uf-files-o', onClick: self.copyDemo })
+	        copyable && _react2["default"].createElement('i', { className: 'uf uf-files-o', onClick: self.copyDemo })
 	      ));
 	      bodyChildren = [];
 	    }
@@ -2114,10 +2114,7 @@
 	  }
 	
 	  return (0, _createChainableTypeChecker2.default)(allPropTypes);
-	} /**
-	   * This source code is quoted from rc-util.
-	   * homepage: https://github.com/react-component/util
-	   */
+	}
 
 /***/ }),
 /* 28 */
@@ -2137,10 +2134,6 @@
 	 */
 	
 	// Mostly taken from ReactPropTypes.
-	
-	/* This source code is quoted from rc-util.
-	 * homepage: https://github.com/react-component/util
-	 */
 	
 	function createChainableTypeChecker(validate) {
 	  function checkType(isRequired, props, propName, componentName, location, propFullName) {
@@ -2176,11 +2169,7 @@
 	
 	exports.__esModule = true;
 	
-	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; /**
-	                                                                                                                                                                                                                                                                               * This source code is quoted from rc-util.
-	                                                                                                                                                                                                                                                                               * homepage: https://github.com/react-component/util
-	                                                                                                                                                                                                                                                                               */
-	
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 	
 	var _react = __webpack_require__(4);
 	
@@ -2224,10 +2213,8 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	var warned = {}; /**
-	                  * This source code is quoted from rc-util.
-	                  * homepage: https://github.com/react-component/util
-	                  */
+	var warned = {};
+	
 	function deprecated(validator, reason) {
 	  return function validate(props, propName, componentName, location, propFullName) {
 	    var componentNameSafe = componentName || '<<anonymous>>';
@@ -2522,11 +2509,7 @@
 	
 	exports.__esModule = true;
 	
-	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; /**
-	                                                                                                                                                                                                                                                                               * This source code is quoted from rc-util.
-	                                                                                                                                                                                                                                                                               * homepage: https://github.com/react-component/util
-	                                                                                                                                                                                                                                                                               */
-	
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 	
 	var _react = __webpack_require__(4);
 	
@@ -2563,10 +2546,6 @@
 	
 	exports.__esModule = true;
 	exports.default = isRequiredForA11y;
-	/**
-	 * This source code is quoted from rc-util.
-	 * homepage: https://github.com/react-component/util
-	 */
 	function isRequiredForA11y(validator) {
 	  return function validate(props, propName, componentName, location, propFullName) {
 	    var componentNameSafe = componentName || '<<anonymous>>';
@@ -2592,10 +2571,6 @@
 	
 	exports.__esModule = true;
 	exports.default = splitComponentProps;
-	/**
-	 * This source code is quoted from rc-util.
-	 * homepage: https://github.com/react-component/util
-	 */
 	function _objectEntries(obj) {
 	  var entries = [];
 	  var keys = Object.keys(obj);
@@ -2638,10 +2613,6 @@
 	'use strict';
 	
 	exports.__esModule = true;
-	/**
-	 * This source code is quoted from rc-util.
-	 * homepage: https://github.com/react-component/util
-	 */
 	function createChainedFunction() {
 	  for (var _len = arguments.length, funcs = Array(_len), _key = 0; _key < _len; _key++) {
 	    funcs[_key] = arguments[_key];
@@ -2674,10 +2645,6 @@
 /* 37 */
 /***/ (function(module, exports) {
 
-	/**
-	 * This source code is quoted from rc-util.
-	 * homepage: https://github.com/react-component/util
-	 */
 	'use strict';
 	
 	/**
@@ -3207,10 +3174,6 @@
 	
 	exports.__esModule = true;
 	exports.default = contains;
-	/**
-	 * This source code is quoted from rc-util.
-	 * homepage: https://github.com/react-component/util
-	 */
 	function contains(root, n) {
 	  var node = n;
 	  while (node) {
@@ -3242,10 +3205,6 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	/**
-	 * This source code is quoted from rc-util.
-	 * homepage: https://github.com/react-component/util
-	 */
 	function addEventListenerWrap(target, eventType, cb) {
 	  /* eslint camelcase: 2 */
 	  var callback = _reactDom2.default.unstable_batchedUpdates ? function run(e) {
@@ -3765,11 +3724,7 @@
 	
 	exports.__esModule = true;
 	
-	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; /**
-	                                                                                                                                                                                                                                                                               * This source code is quoted from rc-util.
-	                                                                                                                                                                                                                                                                               * homepage: https://github.com/react-component/util
-	                                                                                                                                                                                                                                                                               */
-	
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 	
 	var _Event = __webpack_require__(45);
 	
@@ -3960,10 +3915,6 @@
 	'use strict';
 	
 	exports.__esModule = true;
-	/**
-	 * This source code is quoted from rc-util.
-	 * homepage: https://github.com/react-component/util
-	 */
 	var EVENT_NAME_MAP = {
 	  transitionend: {
 	    transition: 'transitionend',
@@ -4277,10 +4228,7 @@
 	    ret.push(c);
 	  });
 	  return ret;
-	} /**
-	   * This source code is quoted from rc-util.
-	   * homepage: https://github.com/react-component/util
-	   */
+	}
 
 /***/ }),
 /* 49 */
@@ -4316,11 +4264,7 @@
 	
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * This source code is quoted from rc-util.
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * homepage: https://github.com/react-component/util
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
-	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
 	//import isWindow from './isWindow';
 	
@@ -5575,16 +5519,6 @@
 	  var documentWidth = documentElement.scrollWidth;
 	  var documentHeight = documentElement.scrollHeight;
 	
-	  // scrollXXX on html is sync with body which means overflow: hidden on body gets wrong scrollXXX.
-	  // We should cut this ourself.
-	  var bodyStyle = window.getComputedStyle(body);
-	  if (bodyStyle.overflowX === 'hidden') {
-	    documentWidth = win.innerWidth;
-	  }
-	  if (bodyStyle.overflowY === 'hidden') {
-	    documentHeight = win.innerHeight;
-	  }
-	
 	  // Reset element position after calculate the visible area
 	  if (element.style) {
 	    element.style.position = originalPosition;
@@ -6199,33 +6133,24 @@
 	function getMessageInstance() {
 	    var position = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'top';
 	    var callback = arguments[1];
-	    var keyboard = arguments[2];
-	    var onEscapeKeyUp = arguments[3];
 	
 	    if (messageInstance) {
 	        callback(messageInstance);
 	        return;
 	    }
 	    var style = positionObj[position].notificationStyle;
-	    var instanceObj = {
+	    _beeNotification2["default"].newInstance({
 	        clsPrefix: clsPrefix,
 	        transitionName: clsPrefix + '-' + positionObj[position].transitionName,
 	        style: style, // 覆盖原来的样式
 	        position: ''
-	    };
-	    if (typeof keyboard === 'boolean') {
-	        instanceObj.keyboard = keyboard;
-	    }
-	    if (typeof onEscapeKeyUp === 'function') {
-	        instanceObj.onEscapeKeyUp = onEscapeKeyUp;
-	    }
-	    _beeNotification2["default"].newInstance(instanceObj, function (instance) {
+	    }, function (instance) {
 	        messageInstance = instance;
 	        callback(instance);
 	    });
 	}
 	
-	function notice(content, duration, type, onClose, position, style, keyboard, onEscapeKeyUp, showIcon) {
+	function notice(content, duration, type, onClose, position, style) {
 	    var iconType = {
 	        info: 'uf uf-i-c-2',
 	        success: 'uf uf-correct',
@@ -6251,11 +6176,11 @@
 	            content: _react2["default"].createElement(
 	                'div',
 	                null,
-	                showIcon ? _react2["default"].createElement(
+	                _react2["default"].createElement(
 	                    'div',
 	                    { className: clsPrefix + '-notice-description-icon' },
 	                    _react2["default"].createElement('i', { className: (0, _classnames2["default"])(iconType) })
-	                ) : null,
+	                ),
 	                _react2["default"].createElement(
 	                    'div',
 	                    { className: clsPrefix + '-notice-description-content' },
@@ -6264,7 +6189,7 @@
 	            ),
 	            onClose: onClose
 	        });
-	    }, keyboard, onEscapeKeyUp);
+	    });
 	    return function () {
 	        var target = key++;
 	        return function () {
@@ -6283,8 +6208,7 @@
 	        var onClose = obj.onClose || noop;
 	        var position = obj.position || "top";
 	        var style = obj.style || {};
-	        var showIcon = obj.showIcon || false;
-	        return notice(content, duration, color, onClose, position, style, obj.keyboard, obj.onEscapeKeyUp, showIcon);
+	        return notice(content, duration, color, onClose, position, style);
 	    },
 	    config: function config(options) {
 	        if (options.top !== undefined) {
@@ -6366,19 +6290,11 @@
 	
 	var _createChainedFunction2 = _interopRequireDefault(_createChainedFunction);
 	
-	var _ownerDocument = __webpack_require__(73);
-	
-	var _ownerDocument2 = _interopRequireDefault(_ownerDocument);
-	
-	var _addEventListener = __webpack_require__(75);
-	
-	var _addEventListener2 = _interopRequireDefault(_addEventListener);
-	
 	var _classnames = __webpack_require__(3);
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
-	var _Notice = __webpack_require__(77);
+	var _Notice = __webpack_require__(73);
 	
 	var _Notice2 = _interopRequireDefault(_Notice);
 	
@@ -6407,15 +6323,12 @@
 	  style: _propTypes2["default"].object,
 	  position: _propTypes2["default"].oneOf(['topRight', 'bottomRight', '']),
 	  transitionName: _propTypes2["default"].string,
-	  keyboard: _propTypes2["default"].bool, // 按esc键是否关闭notice
-	  onEscapeKeyUp: _propTypes2["default"].func, // 设置esc键特殊钩子函数
 	  animation: _propTypes2["default"].oneOfType([_propTypes2["default"].string, _propTypes2["default"].object])
 	};
 	
 	var defaultProps = {
 	  clsPrefix: 'u-notification',
 	  animation: 'fade',
-	  keyboard: true,
 	  position: 'topRight'
 	};
 	
@@ -6427,20 +6340,6 @@
 	
 	    var _this = _possibleConstructorReturn(this, _Component.call(this, props));
 	
-	    _this.handleDocumentKeyUp = function (e) {
-	      if (_this.props.keyboard && e.keyCode === 27 && _this.state.notices.length) {
-	        _this.setState(function (previousState) {
-	          previousState.notices.shift();
-	          return {
-	            notices: previousState.notices
-	          };
-	        });
-	        if (_this.props.onEscapeKeyUp) {
-	          _this.props.onEscapeKeyUp(e);
-	        }
-	      }
-	    };
-	
 	    _this.state = {
 	      notices: []
 	    };
@@ -6449,16 +6348,6 @@
 	
 	    return _this;
 	  }
-	
-	  Notification.prototype.componentDidMount = function componentDidMount() {
-	    // 给document绑定keyup事件
-	    var doc = (0, _ownerDocument2["default"])(this);
-	    this._onDocumentKeyupListener = (0, _addEventListener2["default"])(doc, 'keyup', this.handleDocumentKeyUp);
-	  };
-	
-	  Notification.prototype.componentWillUnmount = function componentWillUnmount() {
-	    this._onDocumentKeyupListener.remove();
-	  };
 	
 	  Notification.prototype.getTransitionName = function getTransitionName() {
 	    var props = this.props;
@@ -6492,11 +6381,6 @@
 	      };
 	    });
 	  };
-	
-	  /**
-	   * 处理绑定在document上的keyup事件
-	   */
-	
 	
 	  Notification.prototype.render = function render() {
 	    var _this2 = this,
@@ -7286,109 +7170,6 @@
 	  value: true
 	});
 	
-	exports["default"] = function (componentOrElement) {
-	  return (0, _ownerDocument2["default"])(_reactDom2["default"].findDOMNode(componentOrElement));
-	};
-	
-	var _reactDom = __webpack_require__(12);
-	
-	var _reactDom2 = _interopRequireDefault(_reactDom);
-	
-	var _ownerDocument = __webpack_require__(74);
-	
-	var _ownerDocument2 = _interopRequireDefault(_ownerDocument);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-	
-	module.exports = exports['default'];
-
-/***/ }),
-/* 74 */
-/***/ (function(module, exports) {
-
-	"use strict";
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.default = ownerDocument;
-	function ownerDocument(node) {
-	  return node && node.ownerDocument || document;
-	}
-	module.exports = exports["default"];
-
-/***/ }),
-/* 75 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	exports["default"] = function (node, event, handler, capture) {
-	  (0, _on2["default"])(node, event, handler, capture);
-	
-	  return {
-	    remove: function remove() {
-	      (0, _off2["default"])(node, event, handler, capture);
-	    }
-	  };
-	};
-	
-	var _on = __webpack_require__(15);
-	
-	var _on2 = _interopRequireDefault(_on);
-	
-	var _off = __webpack_require__(76);
-	
-	var _off2 = _interopRequireDefault(_off);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-	
-	module.exports = exports['default'];
-
-/***/ }),
-/* 76 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _inDOM = __webpack_require__(14);
-	
-	var _inDOM2 = _interopRequireDefault(_inDOM);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var off = function off() {};
-	if (_inDOM2.default) {
-	  off = function () {
-	    if (document.addEventListener) return function (node, eventName, handler, capture) {
-	      return node.removeEventListener(eventName, handler, capture || false);
-	    };else if (document.attachEvent) return function (node, eventName, handler) {
-	      return node.detachEvent('on' + eventName, handler);
-	    };
-	  }();
-	}
-	
-	exports.default = off;
-	module.exports = exports['default'];
-
-/***/ }),
-/* 77 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
 	var _react = __webpack_require__(4);
 	
 	var _react2 = _interopRequireDefault(_react);
@@ -7523,12 +7304,12 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 78 */
+/* 74 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var deselectCurrent = __webpack_require__(79);
+	var deselectCurrent = __webpack_require__(75);
 	
 	var defaultMessage = 'Copy to clipboard: #{key}, Enter';
 	
@@ -7607,7 +7388,7 @@
 
 
 /***/ }),
-/* 79 */
+/* 75 */
 /***/ (function(module, exports) {
 
 	
@@ -7652,7 +7433,7 @@
 
 
 /***/ }),
-/* 80 */
+/* 76 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -7799,7 +7580,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 81 */
+/* 77 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -7808,7 +7589,7 @@
 	  value: true
 	});
 	
-	var _Button = __webpack_require__(82);
+	var _Button = __webpack_require__(78);
 	
 	var _Button2 = _interopRequireDefault(_Button);
 	
@@ -7818,7 +7599,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 82 */
+/* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -7861,7 +7642,7 @@
 	    /**
 	     * @title 尺寸
 	     */
-	    size: _propTypes2["default"].oneOf(['sm', 'md', 'xg', 'lg']),
+	    size: _propTypes2["default"].oneOf(['sm', 'xg', 'lg']),
 	    /**
 	     * @title 样式
 	     */
@@ -7875,7 +7656,7 @@
 	    /**
 	    * @title 类型
 	    */
-	    colors: _propTypes2["default"].oneOf(['primary', 'secondary', 'accent', 'success', 'info', 'warning', 'danger', 'dark', 'light', 'default']),
+	    colors: _propTypes2["default"].oneOf(['primary', 'accent', 'success', 'info', 'warning', 'danger', 'default']),
 	    /**
 	     * @title 是否禁用
 	     * @veIgnore
@@ -7905,20 +7686,16 @@
 	
 	var sizeMap = {
 	    sm: 'sm',
-	    md: 'md',
 	    xg: 'xg',
 	    lg: 'lg'
 	},
 	    colorsMap = {
 	    primary: 'primary',
-	    secondary: 'secondary',
 	    accent: 'accent',
 	    success: 'success',
 	    info: 'info',
 	    warning: 'warning',
-	    danger: 'danger',
-	    dark: 'dark',
-	    light: 'light'
+	    danger: 'danger'
 	},
 	    shapeMap = {
 	    block: 'block',
@@ -7968,9 +7745,7 @@
 	        if (colorsMap[colors]) {
 	            clsObj[clsPrefix + '-' + colorsMap[colors]] = true;
 	        }
-	        if (bordered) {
-	            clsObj[clsPrefix + '-border'] = bordered;
-	        }
+	        //clsObj[`${clsPrefix}-border`] = bordered;
 	        var classes = (0, _classnames2["default"])(clsPrefix, clsObj);
 	        return _react2["default"].createElement(
 	            'button',
@@ -7993,7 +7768,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 83 */
+/* 79 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -8006,7 +7781,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _src = __webpack_require__(84);
+	var _src = __webpack_require__(80);
 	
 	var _src2 = _interopRequireDefault(_src);
 	
@@ -8053,7 +7828,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 84 */
+/* 80 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -8062,7 +7837,7 @@
 	  value: true
 	});
 	
-	var _Clipboard = __webpack_require__(85);
+	var _Clipboard = __webpack_require__(81);
 	
 	var _Clipboard2 = _interopRequireDefault(_Clipboard);
 	
@@ -8072,7 +7847,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 85 */
+/* 81 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -8085,7 +7860,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _clipboard = __webpack_require__(86);
+	var _clipboard = __webpack_require__(82);
 	
 	var _clipboard2 = _interopRequireDefault(_clipboard);
 	
@@ -8093,7 +7868,7 @@
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
-	var _beeIcon = __webpack_require__(94);
+	var _beeIcon = __webpack_require__(90);
 	
 	var _beeIcon2 = _interopRequireDefault(_beeIcon);
 	
@@ -8101,7 +7876,7 @@
 	
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 	
-	var _beeTooltip = __webpack_require__(96);
+	var _beeTooltip = __webpack_require__(92);
 	
 	var _beeTooltip2 = _interopRequireDefault(_beeTooltip);
 	
@@ -8109,21 +7884,21 @@
 	
 	var _propTypes2 = _interopRequireDefault(_propTypes);
 	
-	var _tool = __webpack_require__(119);
+	var _tool = __webpack_require__(116);
 	
-	var _i18n = __webpack_require__(120);
+	var _i18n = __webpack_require__(117);
 	
 	var _i18n2 = _interopRequireDefault(_i18n);
 	
-	var _beeModal = __webpack_require__(121);
+	var _beeModal = __webpack_require__(118);
 	
 	var _beeModal2 = _interopRequireDefault(_beeModal);
 	
-	var _beeFormControl = __webpack_require__(143);
+	var _beeFormControl = __webpack_require__(140);
 	
 	var _beeFormControl2 = _interopRequireDefault(_beeFormControl);
 	
-	var _beeButton = __webpack_require__(81);
+	var _beeButton = __webpack_require__(77);
 	
 	var _beeButton2 = _interopRequireDefault(_beeButton);
 	
@@ -8295,12 +8070,12 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 86 */
+/* 82 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function (global, factory) {
 	    if (true) {
-	        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [module, __webpack_require__(87), __webpack_require__(89), __webpack_require__(90)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [module, __webpack_require__(83), __webpack_require__(85), __webpack_require__(86)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 	    } else if (typeof exports !== "undefined") {
 	        factory(module, require('./clipboard-action'), require('tiny-emitter'), require('good-listener'));
 	    } else {
@@ -8507,12 +8282,12 @@
 	});
 
 /***/ }),
-/* 87 */
+/* 83 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function (global, factory) {
 	    if (true) {
-	        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [module, __webpack_require__(88)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [module, __webpack_require__(84)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 	    } else if (typeof exports !== "undefined") {
 	        factory(module, require('select'));
 	    } else {
@@ -8741,7 +8516,7 @@
 	});
 
 /***/ }),
-/* 88 */
+/* 84 */
 /***/ (function(module, exports) {
 
 	function select(element) {
@@ -8790,7 +8565,7 @@
 
 
 /***/ }),
-/* 89 */
+/* 85 */
 /***/ (function(module, exports) {
 
 	function E () {
@@ -8859,15 +8634,14 @@
 	};
 	
 	module.exports = E;
-	module.exports.TinyEmitter = E;
 
 
 /***/ }),
-/* 90 */
+/* 86 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var is = __webpack_require__(91);
-	var delegate = __webpack_require__(92);
+	var is = __webpack_require__(87);
+	var delegate = __webpack_require__(88);
 	
 	/**
 	 * Validates all params and calls the right
@@ -8964,7 +8738,7 @@
 
 
 /***/ }),
-/* 91 */
+/* 87 */
 /***/ (function(module, exports) {
 
 	/**
@@ -9019,10 +8793,10 @@
 
 
 /***/ }),
-/* 92 */
+/* 88 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var closest = __webpack_require__(93);
+	var closest = __webpack_require__(89);
 	
 	/**
 	 * Delegates event to a selector.
@@ -9103,7 +8877,7 @@
 
 
 /***/ }),
-/* 93 */
+/* 89 */
 /***/ (function(module, exports) {
 
 	var DOCUMENT_NODE_TYPE = 9;
@@ -9142,7 +8916,7 @@
 
 
 /***/ }),
-/* 94 */
+/* 90 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -9151,7 +8925,7 @@
 	  value: true
 	});
 	
-	var _Icon = __webpack_require__(95);
+	var _Icon = __webpack_require__(91);
 	
 	var _Icon2 = _interopRequireDefault(_Icon);
 	
@@ -9161,7 +8935,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 95 */
+/* 91 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -9240,7 +9014,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 96 */
+/* 92 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -9249,7 +9023,7 @@
 	  value: true
 	});
 	
-	var _Tooltip = __webpack_require__(97);
+	var _Tooltip = __webpack_require__(93);
 	
 	var _Tooltip2 = _interopRequireDefault(_Tooltip);
 	
@@ -9259,7 +9033,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 97 */
+/* 93 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -9282,7 +9056,7 @@
 	
 	var _propTypes2 = _interopRequireDefault(_propTypes);
 	
-	var _OverlayTrigger = __webpack_require__(98);
+	var _OverlayTrigger = __webpack_require__(94);
 	
 	var _OverlayTrigger2 = _interopRequireDefault(_OverlayTrigger);
 	
@@ -9306,8 +9080,6 @@
 	     */
 	    id: _propTypes2["default"].oneOfType([_propTypes2["default"].string, _propTypes2["default"].number]),
 	    inverse: _propTypes2["default"].bool,
-	    visible: _propTypes2["default"].bool,
-	    onVisibleChange: _propTypes2["default"].func,
 	    /**
 	     * 相对目标元素显示上下左右的位置
 	     */
@@ -9336,106 +9108,32 @@
 	    placement: 'right',
 	    clsPrefix: 'u-tooltip'
 	};
-	function OverlayNode(props) {
-	    var className = props.className,
-	        classNames = props.classNames,
-	        style = props.style,
-	        overlay = props.overlay,
-	        arrowOffsetTop = props.arrowOffsetTop,
-	        arrowOffsetLeft = props.arrowOffsetLeft;
-	
-	    return _react2["default"].createElement(
-	        'div',
-	        {
-	            className: (0, _classnames2["default"])(className, classNames),
-	            onMouseEnter: props.onMouseEnter,
-	            onMouseLeave: props.onMouseLeave,
-	            style: style
-	        },
-	        overlay ? _react2["default"].createElement('div', { className: 'tooltip-arrow', style: {
-	                top: arrowOffsetTop,
-	                left: arrowOffsetLeft
-	            } }) : '',
-	        overlay ? _react2["default"].createElement(
-	            'div',
-	            { className: 'tooltip-inner' },
-	            overlay
-	        ) : ''
-	    );
-	}
 	
 	var Tooltip = function (_React$Component) {
 	    _inherits(Tooltip, _React$Component);
 	
-	    function Tooltip(props) {
+	    function Tooltip() {
 	        _classCallCheck(this, Tooltip);
 	
-	        var _this = _possibleConstructorReturn(this, _React$Component.call(this, props));
-	
-	        _this.onMouseEnter = function () {
-	            _this.setState({
-	                isHoverShow: true
-	            });
-	        };
-	
-	        _this.onMouseLeave = function () {
-	            _this.setState({
-	                isHoverShow: false
-	            });
-	        };
-	
-	        var initState = {
-	            isHoverShow: false
-	        };
-	        if ('visible' in props) {
-	            _extends(initState, {
-	                visible: props.visible
-	            });
-	        }
-	        _this.state = initState;
-	        return _this;
+	        return _possibleConstructorReturn(this, _React$Component.apply(this, arguments));
 	    }
 	
-	    Tooltip.prototype.componentDidUpdate = function componentDidUpdate(prevProps) {
-	        var _props = this.props,
-	            visible = _props.visible,
-	            onVisibleChange = _props.onVisibleChange;
-	
-	        if ('visible' in this.props && prevProps.visible !== visible) {
-	            this.setState({
-	                visible: visible
-	            });
-	            onVisibleChange && onVisibleChange(visible);
-	        }
-	    };
-	
-	    /**
-	     * @desc 鼠标划入时候的事件
-	     */
-	
-	
-	    /**
-	     * @desc 鼠标划出时候的事件
-	     */
-	
-	
 	    Tooltip.prototype.render = function render() {
-	        var _classes,
-	            _this2 = this;
+	        var _classes;
 	
-	        var _props2 = this.props,
-	            placement = _props2.placement,
-	            positionTop = _props2.positionTop,
-	            positionLeft = _props2.positionLeft,
-	            arrowOffsetTop = _props2.arrowOffsetTop,
-	            arrowOffsetLeft = _props2.arrowOffsetLeft,
-	            className = _props2.className,
-	            style = _props2.style,
-	            children = _props2.children,
-	            clsPrefix = _props2.clsPrefix,
-	            overlay = _props2.overlay,
-	            inverse = _props2.inverse,
-	            others = _objectWithoutProperties(_props2, ['placement', 'positionTop', 'positionLeft', 'arrowOffsetTop', 'arrowOffsetLeft', 'className', 'style', 'children', 'clsPrefix', 'overlay', 'inverse']);
+	        var _props = this.props,
+	            placement = _props.placement,
+	            positionTop = _props.positionTop,
+	            positionLeft = _props.positionLeft,
+	            arrowOffsetTop = _props.arrowOffsetTop,
+	            arrowOffsetLeft = _props.arrowOffsetLeft,
+	            className = _props.className,
+	            style = _props.style,
+	            children = _props.children,
+	            clsPrefix = _props.clsPrefix,
+	            overlay = _props.overlay,
+	            inverse = _props.inverse,
+	            others = _objectWithoutProperties(_props, ['placement', 'positionTop', 'positionLeft', 'arrowOffsetTop', 'arrowOffsetLeft', 'className', 'style', 'children', 'clsPrefix', 'overlay', 'inverse']);
 	
 	        var classes = (_classes = {}, _defineProperty(_classes, placement, true), _defineProperty(_classes, 'inverse', inverse), _classes);
 	
@@ -9451,27 +9149,23 @@
 	
 	        var classNames = (0, _classnames2["default"])(clsPrefix, classes);
 	
-	        var overlayNode = _react2["default"].createElement(OverlayNode, {
-	            className: className,
-	            classNames: classNames,
-	            overlay: overlay,
-	            onMouseEnter: this.onMouseEnter,
-	            onMouseLeave: this.onMouseLeave,
-	            style: true,
-	            arrowOffsetTop: true,
-	            arrowOffsetLeft: true
-	        });
-	        return 'visible' in this.props ? _react2["default"].createElement(
+	        var overlayNode = _react2["default"].createElement(
+	            'div',
+	            {
+	                className: (0, _classnames2["default"])(className, classNames),
+	                style: outerStyle
+	            },
+	            overlay ? _react2["default"].createElement('div', { className: 'tooltip-arrow', style: arrowStyle }) : '',
+	            overlay ? _react2["default"].createElement(
+	                'div',
+	                { className: 'tooltip-inner' },
+	                overlay
+	            ) : ''
+	        );
+	
+	        return _react2["default"].createElement(
 	            _OverlayTrigger2["default"],
-	            _extends({ visible: this.state.visible, ref: function ref(_ref) {
-	                    return _this2.trigger = _ref;
-	                }, shouldUpdatePosition: true, placement: placement }, others, { overlay: overlayNode }),
-	            children
-	        ) : _react2["default"].createElement(
-	            _OverlayTrigger2["default"],
-	            _extends({ isHoverShow: this.state.isHoverShow, ref: function ref(_ref2) {
-	                    return _this2.trigger = _ref2;
-	                }, shouldUpdatePosition: true, placement: placement }, others, { overlay: overlayNode }),
+	            _extends({ shouldUpdatePosition: true, placement: placement }, others, { overlay: overlayNode }),
 	            children
 	        );
 	    };
@@ -9486,7 +9180,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 98 */
+/* 94 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -9497,7 +9191,7 @@
 	
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 	
-	var _contains = __webpack_require__(99);
+	var _contains = __webpack_require__(95);
 	
 	var _contains2 = _interopRequireDefault(_contains);
 	
@@ -9517,15 +9211,15 @@
 	
 	var _warning2 = _interopRequireDefault(_warning);
 	
-	var _Portal = __webpack_require__(100);
+	var _Portal = __webpack_require__(96);
 	
 	var _Portal2 = _interopRequireDefault(_Portal);
 	
-	var _Overlay = __webpack_require__(102);
+	var _Overlay = __webpack_require__(100);
 	
 	var _Overlay2 = _interopRequireDefault(_Overlay);
 	
-	var _createChainedFunction = __webpack_require__(118);
+	var _createChainedFunction = __webpack_require__(115);
 	
 	var _createChainedFunction2 = _interopRequireDefault(_createChainedFunction);
 	
@@ -9585,7 +9279,6 @@
 	     * 覆盖的初始可见性状态。对于更细微的可见性控制，请考虑直接使用覆盖组件。
 	     */
 	    defaultOverlayShown: _propTypes2["default"].bool,
-	    visible: _propTypes2["default"].bool,
 	
 	    /**
 	     * 要覆盖在目标旁边的元素或文本。
@@ -9656,15 +9349,8 @@
 	
 	        _this._mountNode = null;
 	
-	        var visible = void 0;
-	        if ('visible' in props) {
-	            visible = !!props.visible;
-	        } else {
-	            visible = !!props.defaultOverlayShown;
-	        }
-	
 	        _this.state = {
-	            show: visible
+	            show: props.defaultOverlayShown
 	        };
 	        return _this;
 	    }
@@ -9674,18 +9360,8 @@
 	        !isReact16 && this.renderOverlay();
 	    };
 	
-	    OverlayTrigger.prototype.componentDidUpdate = function componentDidUpdate(prevProps) {
+	    OverlayTrigger.prototype.componentDidUpdate = function componentDidUpdate() {
 	        !isReact16 && this.renderOverlay();
-	        if ('visible' in this.props && prevProps.visible !== this.props.visible) {
-	            this.setState({
-	                show: this.props.visible
-	            });
-	        }
-	        if ('isHoverShow' in this.props && prevProps.isHoverShow !== this.props.isHoverShow) {
-	            this.setState({
-	                show: this.props.isHoverShow
-	            });
-	        }
 	    };
 	
 	    OverlayTrigger.prototype.componentWillUnmount = function componentWillUnmount() {
@@ -9827,18 +9503,18 @@
 	
 	        triggerProps.onClick = (0, _createChainedFunction2["default"])(childProps.onClick, onClick);
 	
-	        if (isOneOf('click', trigger) && !('visible' in this.props)) {
+	        if (isOneOf('click', trigger)) {
 	            triggerProps.onClick = (0, _createChainedFunction2["default"])(triggerProps.onClick, this.handleToggle);
 	        }
 	
-	        if (isOneOf('hover', trigger) && !('visible' in this.props)) {
+	        if (isOneOf('hover', trigger)) {
 	            (0, _warning2["default"])(!(trigger === 'hover'), '[react-bootstrap] Specifying only the `"hover"` trigger limits the ' + 'visibility of the overlay to just mouse users. Consider also ' + 'including the `"focus"` trigger so that touch and keyboard only ' + 'users can see the overlay as well.');
 	
 	            triggerProps.onMouseOver = (0, _createChainedFunction2["default"])(childProps.onMouseOver, onMouseOver, this.handleMouseOver);
 	            triggerProps.onMouseOut = (0, _createChainedFunction2["default"])(childProps.onMouseOut, onMouseOut, this.handleMouseOut);
 	        }
 	
-	        if (isOneOf('focus', trigger) && !('visible' in this.props)) {
+	        if (isOneOf('focus', trigger)) {
 	            triggerProps.onFocus = (0, _createChainedFunction2["default"])(childProps.onFocus, onFocus, this.handleDelayedShow);
 	            triggerProps.onBlur = (0, _createChainedFunction2["default"])(childProps.onBlur, onBlur, this.handleDelayedHide);
 	        }
@@ -9871,7 +9547,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 99 */
+/* 95 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -9905,7 +9581,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 100 */
+/* 96 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -9926,11 +9602,11 @@
 	
 	var _propTypes2 = _interopRequireDefault(_propTypes);
 	
-	var _ownerDocument = __webpack_require__(73);
+	var _ownerDocument = __webpack_require__(97);
 	
 	var _ownerDocument2 = _interopRequireDefault(_ownerDocument);
 	
-	var _getContainer = __webpack_require__(101);
+	var _getContainer = __webpack_require__(99);
 	
 	var _getContainer2 = _interopRequireDefault(_getContainer);
 	
@@ -10113,7 +9789,48 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 101 */
+/* 97 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	exports["default"] = function (componentOrElement) {
+	  return (0, _ownerDocument2["default"])(_reactDom2["default"].findDOMNode(componentOrElement));
+	};
+	
+	var _reactDom = __webpack_require__(12);
+	
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+	
+	var _ownerDocument = __webpack_require__(98);
+	
+	var _ownerDocument2 = _interopRequireDefault(_ownerDocument);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+	
+	module.exports = exports['default'];
+
+/***/ }),
+/* 98 */
+/***/ (function(module, exports) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.default = ownerDocument;
+	function ownerDocument(node) {
+	  return node && node.ownerDocument || document;
+	}
+	module.exports = exports["default"];
+
+/***/ }),
+/* 99 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -10142,7 +9859,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 102 */
+/* 100 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -10165,13 +9882,13 @@
 	
 	var _propTypes2 = _interopRequireDefault(_propTypes);
 	
-	var _BaseOverlay = __webpack_require__(103);
+	var _BaseOverlay = __webpack_require__(101);
 	
 	var _BaseOverlay2 = _interopRequireDefault(_BaseOverlay);
 	
 	var _tinperBeeCore = __webpack_require__(26);
 	
-	var _Fade = __webpack_require__(116);
+	var _Fade = __webpack_require__(113);
 	
 	var _Fade2 = _interopRequireDefault(_Fade);
 	
@@ -10240,12 +9957,7 @@
 	  /**
 	   * Sets the direction of the Overlay.
 	   */
-	  placement: _propTypes2["default"].oneOf(['top', 'right', 'bottom', 'left']),
-	
-	  /**
-	   * 当Overlay在placement方向放不下时的第二优先级方向
-	   */
-	  secondPlacement: _propTypes2["default"].oneOf(['top', 'right', 'bottom', 'left'])
+	  placement: _propTypes2["default"].oneOf(['top', 'right', 'bottom', 'left'])
 	});
 	
 	var defaultProps = {
@@ -10301,7 +10013,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 103 */
+/* 101 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -10324,15 +10036,15 @@
 	
 	var _propTypes2 = _interopRequireDefault(_propTypes);
 	
-	var _Portal = __webpack_require__(100);
+	var _Portal = __webpack_require__(96);
 	
 	var _Portal2 = _interopRequireDefault(_Portal);
 	
-	var _Position = __webpack_require__(104);
+	var _Position = __webpack_require__(102);
 	
 	var _Position2 = _interopRequireDefault(_Position);
 	
-	var _RootCloseWrapper = __webpack_require__(115);
+	var _RootCloseWrapper = __webpack_require__(110);
 	
 	var _RootCloseWrapper2 = _interopRequireDefault(_RootCloseWrapper);
 	
@@ -10467,14 +10179,13 @@
 	        containerPadding = _props2.containerPadding,
 	        target = _props2.target,
 	        placement = _props2.placement,
-	        secondPlacement = _props2.secondPlacement,
 	        shouldUpdatePosition = _props2.shouldUpdatePosition,
 	        rootClose = _props2.rootClose,
 	        positionLeft = _props2.positionLeft,
 	        positionTop = _props2.positionTop,
 	        children = _props2.children,
 	        Transition = _props2.transition,
-	        props = _objectWithoutProperties(_props2, ['container', 'containerPadding', 'target', 'placement', 'secondPlacement', 'shouldUpdatePosition', 'rootClose', 'positionLeft', 'positionTop', 'children', 'transition']);
+	        props = _objectWithoutProperties(_props2, ['container', 'containerPadding', 'target', 'placement', 'shouldUpdatePosition', 'rootClose', 'positionLeft', 'positionTop', 'children', 'transition']);
 	
 	    // Don't un-render the overlay while it's transitioning out.
 	
@@ -10498,7 +10209,6 @@
 	        positionLeft: positionLeft,
 	        positionTop: positionTop,
 	        placement: placement,
-	        secondPlacement: secondPlacement,
 	        shouldUpdatePosition: shouldUpdatePosition },
 	      child
 	    );
@@ -10559,7 +10269,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 104 */
+/* 102 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -10588,29 +10298,17 @@
 	
 	var _tinperBeeCore = __webpack_require__(26);
 	
-	var _requestAnimationFrame = __webpack_require__(105);
-	
-	var _requestAnimationFrame2 = _interopRequireDefault(_requestAnimationFrame);
-	
-	var _calculatePosition = __webpack_require__(106);
+	var _calculatePosition = __webpack_require__(103);
 	
 	var _calculatePosition2 = _interopRequireDefault(_calculatePosition);
 	
-	var _getContainer = __webpack_require__(101);
+	var _getContainer = __webpack_require__(99);
 	
 	var _getContainer2 = _interopRequireDefault(_getContainer);
 	
-	var _ownerDocument = __webpack_require__(73);
+	var _ownerDocument = __webpack_require__(97);
 	
 	var _ownerDocument2 = _interopRequireDefault(_ownerDocument);
-	
-	var _ownerWindow = __webpack_require__(113);
-	
-	var _ownerWindow2 = _interopRequireDefault(_ownerWindow);
-	
-	var _addEventListener = __webpack_require__(75);
-	
-	var _addEventListener2 = _interopRequireDefault(_addEventListener);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 	
@@ -10642,12 +10340,6 @@
 	     * 位置设置
 	     */
 	    placement: _propTypes2["default"].oneOf(['top', 'right', 'bottom', 'left']),
-	
-	    /**
-	     * 第二优先级位置设置
-	     */
-	    secondPlacement: _propTypes2["default"].oneOf(['top', 'right', 'bottom', 'left']),
-	
 	    /**
 	     * 是否需要更新位置
 	     */
@@ -10685,19 +10377,10 @@
 	        _this.getTarget = _this.getTarget.bind(_this);
 	        _this.maybeUpdatePosition = _this.maybeUpdatePosition.bind(_this);
 	        _this.updatePosition = _this.updatePosition.bind(_this);
-	        _this.onWindowResize = _this.onWindowResize.bind(_this);
 	        return _this;
 	    }
 	
 	    Position.prototype.componentDidMount = function componentDidMount() {
-	        var _this2 = this;
-	
-	        this._isMounted = true;
-	
-	        this._windowResizeListener = (0, _addEventListener2["default"])((0, _ownerWindow2["default"])(this), 'resize', function () {
-	            return _this2.onWindowResize();
-	        });
-	
 	        this.updatePosition(this.getTarget());
 	    };
 	
@@ -10710,14 +10393,6 @@
 	            this.needsFlush = false;
 	
 	            this.maybeUpdatePosition();
-	        }
-	    };
-	
-	    Position.prototype.componentWillUnmount = function componentWillUnmount() {
-	        this._isMounted = false;
-	
-	        if (this._windowResizeListener) {
-	            this._windowResizeListener.remove();
 	        }
 	    };
 	
@@ -10747,27 +10422,11 @@
 	        this.updatePosition(target);
 	    };
 	
-	    Position.prototype.onWindowResize = function onWindowResize() {
-	        var _this3 = this;
-	
-	        (0, _requestAnimationFrame2["default"])(function () {
-	            return _this3.updatePosition(_this3.getTarget());
-	        });
-	    };
-	
 	    /**
 	     * 更新位置
 	     */
 	
 	    Position.prototype.updatePosition = function updatePosition(target) {
-	        var _props = this.props,
-	            placement = _props.placement,
-	            secondPlacement = _props.secondPlacement;
-	
-	
-	        if (!this._isMounted) {
-	            return;
-	        }
 	        this.lastTarget = target;
 	
 	        if (!target) {
@@ -10784,36 +10443,14 @@
 	        var overlay = _reactDom2["default"].findDOMNode(this);
 	        var container = (0, _getContainer2["default"])(this.props.container, (0, _ownerDocument2["default"])(this).body);
 	
-	        // 若设置了第二渲染位置，placement的优先级是： placement > secondPlacement > placement的反方向
-	        if ("secondPlacement" in this.props && secondPlacement) {
-	            var initPosition = (0, _calculatePosition2["default"])(placement, overlay, target, container, this.props.containerPadding);
-	            if (initPosition.inverseArrow) {
-	                var secondPosition = (0, _calculatePosition2["default"])(secondPlacement, overlay, target, container, this.props.containerPadding);
-	
-	                if (secondPosition.inverseArrow) {
-	                    this.setState(_extends({}, initPosition, {
-	                        renderPlacement: placement
-	                    }));
-	                } else {
-	                    this.setState(_extends({}, secondPosition, {
-	                        renderPlacement: secondPlacement
-	                    }));
-	                }
-	            } else {
-	                this.setState(_extends({}, initPosition, {
-	                    renderPlacement: placement
-	                }));
-	            }
-	        } else {
-	            this.setState((0, _calculatePosition2["default"])(placement, overlay, target, container, this.props.containerPadding));
-	        }
+	        this.setState((0, _calculatePosition2["default"])(this.props.placement, overlay, target, container, this.props.containerPadding));
 	    };
 	
 	    Position.prototype.render = function render() {
-	        var _props2 = this.props,
-	            children = _props2.children,
-	            className = _props2.className,
-	            props = _objectWithoutProperties(_props2, ['children', 'className']);
+	        var _props = this.props,
+	            children = _props.children,
+	            className = _props.className,
+	            props = _objectWithoutProperties(_props, ['children', 'className']);
 	
 	        var _state = this.state,
 	            positionLeft = _state.positionLeft,
@@ -10831,15 +10468,14 @@
 	        delete props.shouldUpdatePosition;
 	
 	        var child = _react2["default"].Children.only(children);
-	        return (0, _react.cloneElement)(child, _extends({
-	            className: (0, _classnames2["default"])(className, child.props.className, { 'inverse-arrow': inverseArrow })
-	        }, arrowPosition, {
+	        return (0, _react.cloneElement)(child, {
+	            className: (0, _classnames2["default"])(className, child.props.className, { 'inverse-arrow': inverseArrow }),
 	            style: _extends({}, child.props.style, {
 	                width: width,
 	                left: positionLeft,
 	                top: positionTop
 	            })
-	        }));
+	        });
 	    };
 	
 	    return Position;
@@ -10852,67 +10488,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 105 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _inDOM = __webpack_require__(14);
-	
-	var _inDOM2 = _interopRequireDefault(_inDOM);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var vendors = ['', 'webkit', 'moz', 'o', 'ms'];
-	var cancel = 'clearTimeout';
-	var raf = fallback;
-	var compatRaf = void 0;
-	
-	var getKey = function getKey(vendor, k) {
-	  return vendor + (!vendor ? k : k[0].toUpperCase() + k.substr(1)) + 'AnimationFrame';
-	};
-	
-	if (_inDOM2.default) {
-	  vendors.some(function (vendor) {
-	    var rafKey = getKey(vendor, 'request');
-	
-	    if (rafKey in window) {
-	      cancel = getKey(vendor, 'cancel');
-	      return raf = function raf(cb) {
-	        return window[rafKey](cb);
-	      };
-	    }
-	  });
-	}
-	
-	/* https://github.com/component/raf */
-	var prev = new Date().getTime();
-	
-	function fallback(fn) {
-	  var curr = new Date().getTime(),
-	      ms = Math.max(0, 16 - (curr - prev)),
-	      req = setTimeout(fn, ms);
-	
-	  prev = curr;
-	  return req;
-	}
-	
-	compatRaf = function compatRaf(cb) {
-	  return raf(cb);
-	};
-	compatRaf.cancel = function (id) {
-	  return window[cancel](id);
-	};
-	
-	exports.default = compatRaf;
-	module.exports = exports['default'];
-
-/***/ }),
-/* 106 */
+/* 103 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -10922,19 +10498,19 @@
 	});
 	exports["default"] = calculatePosition;
 	
-	var _offset = __webpack_require__(107);
+	var _offset = __webpack_require__(104);
 	
 	var _offset2 = _interopRequireDefault(_offset);
 	
-	var _position = __webpack_require__(109);
+	var _position = __webpack_require__(106);
 	
 	var _position2 = _interopRequireDefault(_position);
 	
-	var _scrollTop = __webpack_require__(111);
+	var _scrollTop = __webpack_require__(108);
 	
 	var _scrollTop2 = _interopRequireDefault(_scrollTop);
 	
-	var _ownerDocument = __webpack_require__(73);
+	var _ownerDocument = __webpack_require__(97);
 	
 	var _ownerDocument2 = _interopRequireDefault(_ownerDocument);
 	
@@ -11088,7 +10664,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 107 */
+/* 104 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -11098,15 +10674,15 @@
 	});
 	exports.default = offset;
 	
-	var _contains = __webpack_require__(99);
+	var _contains = __webpack_require__(95);
 	
 	var _contains2 = _interopRequireDefault(_contains);
 	
-	var _isWindow = __webpack_require__(108);
+	var _isWindow = __webpack_require__(105);
 	
 	var _isWindow2 = _interopRequireDefault(_isWindow);
 	
-	var _ownerDocument = __webpack_require__(74);
+	var _ownerDocument = __webpack_require__(98);
 	
 	var _ownerDocument2 = _interopRequireDefault(_ownerDocument);
 	
@@ -11140,7 +10716,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 108 */
+/* 105 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -11155,7 +10731,7 @@
 	module.exports = exports["default"];
 
 /***/ }),
-/* 109 */
+/* 106 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -11168,19 +10744,19 @@
 	
 	exports.default = position;
 	
-	var _offset = __webpack_require__(107);
+	var _offset = __webpack_require__(104);
 	
 	var _offset2 = _interopRequireDefault(_offset);
 	
-	var _offsetParent = __webpack_require__(110);
+	var _offsetParent = __webpack_require__(107);
 	
 	var _offsetParent2 = _interopRequireDefault(_offsetParent);
 	
-	var _scrollTop = __webpack_require__(111);
+	var _scrollTop = __webpack_require__(108);
 	
 	var _scrollTop2 = _interopRequireDefault(_scrollTop);
 	
-	var _scrollLeft = __webpack_require__(112);
+	var _scrollLeft = __webpack_require__(109);
 	
 	var _scrollLeft2 = _interopRequireDefault(_scrollLeft);
 	
@@ -11221,7 +10797,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 110 */
+/* 107 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -11231,7 +10807,7 @@
 	});
 	exports.default = offsetParent;
 	
-	var _ownerDocument = __webpack_require__(74);
+	var _ownerDocument = __webpack_require__(98);
 	
 	var _ownerDocument2 = _interopRequireDefault(_ownerDocument);
 	
@@ -11258,7 +10834,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 111 */
+/* 108 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -11268,7 +10844,7 @@
 	});
 	exports.default = scrollTop;
 	
-	var _isWindow = __webpack_require__(108);
+	var _isWindow = __webpack_require__(105);
 	
 	var _isWindow2 = _interopRequireDefault(_isWindow);
 	
@@ -11284,7 +10860,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 112 */
+/* 109 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -11294,7 +10870,7 @@
 	});
 	exports.default = scrollTop;
 	
-	var _isWindow = __webpack_require__(108);
+	var _isWindow = __webpack_require__(105);
 	
 	var _isWindow2 = _interopRequireDefault(_isWindow);
 	
@@ -11310,7 +10886,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 113 */
+/* 110 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -11319,56 +10895,7 @@
 	  value: true
 	});
 	
-	exports["default"] = function (componentOrElement) {
-	  return (0, _ownerWindow2["default"])(_reactDom2["default"].findDOMNode(componentOrElement));
-	};
-	
-	var _reactDom = __webpack_require__(12);
-	
-	var _reactDom2 = _interopRequireDefault(_reactDom);
-	
-	var _ownerWindow = __webpack_require__(114);
-	
-	var _ownerWindow2 = _interopRequireDefault(_ownerWindow);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-	
-	module.exports = exports['default'];
-
-/***/ }),
-/* 114 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.default = ownerWindow;
-	
-	var _ownerDocument = __webpack_require__(74);
-	
-	var _ownerDocument2 = _interopRequireDefault(_ownerDocument);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function ownerWindow(node) {
-	  var doc = (0, _ownerDocument2.default)(node);
-	  return doc && doc.defaultView || doc.parentWindow;
-	}
-	module.exports = exports['default'];
-
-/***/ }),
-/* 115 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _contains = __webpack_require__(99);
+	var _contains = __webpack_require__(95);
 	
 	var _contains2 = _interopRequireDefault(_contains);
 	
@@ -11384,11 +10911,11 @@
 	
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 	
-	var _addEventListener = __webpack_require__(75);
+	var _addEventListener = __webpack_require__(111);
 	
 	var _addEventListener2 = _interopRequireDefault(_addEventListener);
 	
-	var _ownerDocument = __webpack_require__(73);
+	var _ownerDocument = __webpack_require__(97);
 	
 	var _ownerDocument2 = _interopRequireDefault(_ownerDocument);
 	
@@ -11521,7 +11048,69 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 116 */
+/* 111 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	exports["default"] = function (node, event, handler, capture) {
+	  (0, _on2["default"])(node, event, handler, capture);
+	
+	  return {
+	    remove: function remove() {
+	      (0, _off2["default"])(node, event, handler, capture);
+	    }
+	  };
+	};
+	
+	var _on = __webpack_require__(15);
+	
+	var _on2 = _interopRequireDefault(_on);
+	
+	var _off = __webpack_require__(112);
+	
+	var _off2 = _interopRequireDefault(_off);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+	
+	module.exports = exports['default'];
+
+/***/ }),
+/* 112 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _inDOM = __webpack_require__(14);
+	
+	var _inDOM2 = _interopRequireDefault(_inDOM);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var off = function off() {};
+	if (_inDOM2.default) {
+	  off = function () {
+	    if (document.addEventListener) return function (node, eventName, handler, capture) {
+	      return node.removeEventListener(eventName, handler, capture || false);
+	    };else if (document.attachEvent) return function (node, eventName, handler) {
+	      return node.detachEvent('on' + eventName, handler);
+	    };
+	  }();
+	}
+	
+	exports.default = off;
+	module.exports = exports['default'];
+
+/***/ }),
+/* 113 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -11544,7 +11133,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _Transition = __webpack_require__(117);
+	var _Transition = __webpack_require__(114);
 	
 	var _Transition2 = _interopRequireDefault(_Transition);
 	
@@ -11642,7 +11231,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 117 */
+/* 114 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -11991,7 +11580,7 @@
 	exports["default"] = Transition;
 
 /***/ }),
-/* 118 */
+/* 115 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -12039,7 +11628,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 119 */
+/* 116 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -12063,12 +11652,7 @@
 	    }
 	
 	    var result = _extends({}, locale, props.locale);
-	    if (props.locale) {
-	        result.lang = _extends({}, locale.lang, props.locale.lang);
-	    } else {
-	        result.lang = _extends({}, locale.lang);
-	    }
-	
+	    result.lang = _extends({}, locale.lang, props.locale.lang);
 	    return result;
 	}
 	
@@ -12082,7 +11666,7 @@
 	}
 
 /***/ }),
-/* 120 */
+/* 117 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -12115,7 +11699,7 @@
 	};
 
 /***/ }),
-/* 121 */
+/* 118 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -12124,7 +11708,7 @@
 	  value: true
 	});
 	
-	var _Modal = __webpack_require__(122);
+	var _Modal = __webpack_require__(119);
 	
 	var _Modal2 = _interopRequireDefault(_Modal);
 	
@@ -12134,7 +11718,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 122 */
+/* 119 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -12151,11 +11735,11 @@
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
-	var _events = __webpack_require__(123);
+	var _events = __webpack_require__(120);
 	
 	var _events2 = _interopRequireDefault(_events);
 	
-	var _ownerDocument = __webpack_require__(74);
+	var _ownerDocument = __webpack_require__(98);
 	
 	var _ownerDocument2 = _interopRequireDefault(_ownerDocument);
 	
@@ -12163,7 +11747,7 @@
 	
 	var _inDOM2 = _interopRequireDefault(_inDOM);
 	
-	var _scrollbarSize = __webpack_require__(127);
+	var _scrollbarSize = __webpack_require__(124);
 	
 	var _scrollbarSize2 = _interopRequireDefault(_scrollbarSize);
 	
@@ -12175,11 +11759,11 @@
 	
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 	
-	var _Modal = __webpack_require__(128);
+	var _Modal = __webpack_require__(125);
 	
 	var _Modal2 = _interopRequireDefault(_Modal);
 	
-	var _isOverflowing = __webpack_require__(134);
+	var _isOverflowing = __webpack_require__(131);
 	
 	var _isOverflowing2 = _interopRequireDefault(_isOverflowing);
 	
@@ -12187,23 +11771,23 @@
 	
 	var _beeTransition = __webpack_require__(10);
 	
-	var _ModalBody = __webpack_require__(138);
+	var _ModalBody = __webpack_require__(135);
 	
 	var _ModalBody2 = _interopRequireDefault(_ModalBody);
 	
-	var _ModalDialog = __webpack_require__(139);
+	var _ModalDialog = __webpack_require__(136);
 	
 	var _ModalDialog2 = _interopRequireDefault(_ModalDialog);
 	
-	var _ModalFooter = __webpack_require__(140);
+	var _ModalFooter = __webpack_require__(137);
 	
 	var _ModalFooter2 = _interopRequireDefault(_ModalFooter);
 	
-	var _ModalHeader = __webpack_require__(141);
+	var _ModalHeader = __webpack_require__(138);
 	
 	var _ModalHeader2 = _interopRequireDefault(_ModalHeader);
 	
-	var _ModalTitle = __webpack_require__(142);
+	var _ModalTitle = __webpack_require__(139);
 	
 	var _ModalTitle2 = _interopRequireDefault(_ModalTitle);
 	
@@ -12232,10 +11816,6 @@
 	   */
 	  backdrop: _propTypes2["default"].oneOf(['static', true, false]),
 	
-	  /**
-	   * 点击遮罩层是否允许关闭
-	   */
-	  backdropClosable: _propTypes2["default"].bool,
 	  /**
 	   * esc触发关闭
 	   */
@@ -12291,15 +11871,10 @@
 	  /**
 	   * 尺寸
 	   */
-	  size: _propTypes2["default"].oneOf(["sm", "lg", "xlg", ""]),
-	  /**
-	   * 自定义宽度
-	   */
-	  width: _propTypes2["default"].oneOfType([_propTypes2["default"].number, _propTypes2["default"].string])
+	  size: _propTypes2["default"].oneOf(["sm", "lg", "xlg", ""])
 	});
 	
 	var defaultProps = _extends({}, _Modal2["default"].defaultProps, {
-	  backdropClosable: true,
 	  animation: true,
 	  dialogComponentClass: _ModalDialog2["default"],
 	  clsPrefix: 'u-modal'
@@ -12391,20 +11966,17 @@
 	
 	    var _props = this.props,
 	        backdrop = _props.backdrop,
-	        backdropClosable = _props.backdropClosable,
 	        animation = _props.animation,
 	        show = _props.show,
 	        Dialog = _props.dialogComponentClass,
 	        className = _props.className,
 	        clsPrefix = _props.clsPrefix,
-	        _props$style = _props.style,
-	        style = _props$style === undefined ? {} : _props$style,
+	        style = _props.style,
 	        size = _props.size,
-	        width = _props.width,
 	        children = _props.children,
 	        onEntering = _props.onEntering,
 	        onExited = _props.onExited,
-	        props = _objectWithoutProperties(_props, ['backdrop', 'backdropClosable', 'animation', 'show', 'dialogComponentClass', 'className', 'clsPrefix', 'style', 'size', 'width', 'children', 'onEntering', 'onExited']);
+	        props = _objectWithoutProperties(_props, ['backdrop', 'animation', 'show', 'dialogComponentClass', 'className', 'clsPrefix', 'style', 'size', 'children', 'onEntering', 'onExited']);
 	
 	    var _splitComponent = (0, _tinperBeeCore.splitComponent)(props, _Modal2["default"]),
 	        _splitComponent2 = _slicedToArray(_splitComponent, 2),
@@ -12415,12 +11987,7 @@
 	
 	    var backdropClasses = _defineProperty({}, clsPrefix + '-backdrop', true);
 	    var containerClasses = _defineProperty({}, clsPrefix + '-open', true);
-	    if (Number(width)) width += 'px';
 	
-	    var styleRes = _extends({}, this.state.style, style);
-	    if (width) {
-	      _extends(styleRes, { width: width });
-	    }
 	    return _react2["default"].createElement(
 	      _Modal2["default"],
 	      _extends({}, baseModalProps, {
@@ -12440,9 +12007,9 @@
 	      _react2["default"].createElement(
 	        Dialog,
 	        _extends({}, dialogProps, {
-	          style: styleRes,
+	          style: _extends({}, this.state.style, style),
 	          className: (0, _classnames2["default"])(className, inClassName),
-	          onClick: backdrop === true && !!backdropClosable ? this.handleDialogClick : null,
+	          onClick: backdrop === true ? this.handleDialogClick : null,
 	          size: size
 	        }),
 	        children
@@ -12471,7 +12038,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 123 */
+/* 120 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -12485,15 +12052,15 @@
 	
 	var _on2 = _interopRequireDefault(_on);
 	
-	var _off = __webpack_require__(76);
+	var _off = __webpack_require__(112);
 	
 	var _off2 = _interopRequireDefault(_off);
 	
-	var _filter = __webpack_require__(124);
+	var _filter = __webpack_require__(121);
 	
 	var _filter2 = _interopRequireDefault(_filter);
 	
-	var _listen = __webpack_require__(126);
+	var _listen = __webpack_require__(123);
 	
 	var _listen2 = _interopRequireDefault(_listen);
 	
@@ -12506,7 +12073,7 @@
 	exports.default = { on: _on2.default, off: _off2.default, filter: _filter2.default, listen: _listen2.default };
 
 /***/ }),
-/* 124 */
+/* 121 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -12516,11 +12083,11 @@
 	});
 	exports.default = filterEvents;
 	
-	var _contains = __webpack_require__(99);
+	var _contains = __webpack_require__(95);
 	
 	var _contains2 = _interopRequireDefault(_contains);
 	
-	var _querySelectorAll = __webpack_require__(125);
+	var _querySelectorAll = __webpack_require__(122);
 	
 	var _querySelectorAll2 = _interopRequireDefault(_querySelectorAll);
 	
@@ -12540,7 +12107,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 125 */
+/* 122 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -12578,7 +12145,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 126 */
+/* 123 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -12595,7 +12162,7 @@
 	
 	var _on2 = _interopRequireDefault(_on);
 	
-	var _off = __webpack_require__(76);
+	var _off = __webpack_require__(112);
 	
 	var _off2 = _interopRequireDefault(_off);
 	
@@ -12616,7 +12183,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 127 */
+/* 124 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -12656,7 +12223,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 128 */
+/* 125 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -12682,23 +12249,23 @@
 	
 	var _tinperBeeCore = __webpack_require__(26);
 	
-	var _Portal = __webpack_require__(100);
+	var _Portal = __webpack_require__(96);
 	
 	var _Portal2 = _interopRequireDefault(_Portal);
 	
-	var _ModalManager = __webpack_require__(129);
+	var _ModalManager = __webpack_require__(126);
 	
 	var _ModalManager2 = _interopRequireDefault(_ModalManager);
 	
-	var _ownerDocument = __webpack_require__(73);
+	var _ownerDocument = __webpack_require__(97);
 	
 	var _ownerDocument2 = _interopRequireDefault(_ownerDocument);
 	
-	var _addEventListener = __webpack_require__(75);
+	var _addEventListener = __webpack_require__(111);
 	
 	var _addEventListener2 = _interopRequireDefault(_addEventListener);
 	
-	var _addFocusListener = __webpack_require__(136);
+	var _addFocusListener = __webpack_require__(133);
 	
 	var _addFocusListener2 = _interopRequireDefault(_addFocusListener);
 	
@@ -12706,15 +12273,15 @@
 	
 	var _inDOM2 = _interopRequireDefault(_inDOM);
 	
-	var _activeElement = __webpack_require__(137);
+	var _activeElement = __webpack_require__(134);
 	
 	var _activeElement2 = _interopRequireDefault(_activeElement);
 	
-	var _contains = __webpack_require__(99);
+	var _contains = __webpack_require__(95);
 	
 	var _contains2 = _interopRequireDefault(_contains);
 	
-	var _getContainer = __webpack_require__(101);
+	var _getContainer = __webpack_require__(99);
 	
 	var _getContainer2 = _interopRequireDefault(_getContainer);
 	
@@ -13200,7 +12767,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 129 */
+/* 126 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -13213,19 +12780,19 @@
 	
 	var _style2 = _interopRequireDefault(_style);
 	
-	var _class = __webpack_require__(130);
+	var _class = __webpack_require__(127);
 	
 	var _class2 = _interopRequireDefault(_class);
 	
-	var _scrollbarSize = __webpack_require__(127);
+	var _scrollbarSize = __webpack_require__(124);
 	
 	var _scrollbarSize2 = _interopRequireDefault(_scrollbarSize);
 	
-	var _isOverflowing = __webpack_require__(134);
+	var _isOverflowing = __webpack_require__(131);
 	
 	var _isOverflowing2 = _interopRequireDefault(_isOverflowing);
 	
-	var _manageAriaHidden = __webpack_require__(135);
+	var _manageAriaHidden = __webpack_require__(132);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 	
@@ -13381,7 +12948,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 130 */
+/* 127 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -13391,15 +12958,15 @@
 	});
 	exports.hasClass = exports.removeClass = exports.addClass = undefined;
 	
-	var _addClass = __webpack_require__(131);
+	var _addClass = __webpack_require__(128);
 	
 	var _addClass2 = _interopRequireDefault(_addClass);
 	
-	var _removeClass = __webpack_require__(133);
+	var _removeClass = __webpack_require__(130);
 	
 	var _removeClass2 = _interopRequireDefault(_removeClass);
 	
-	var _hasClass = __webpack_require__(132);
+	var _hasClass = __webpack_require__(129);
 	
 	var _hasClass2 = _interopRequireDefault(_hasClass);
 	
@@ -13411,7 +12978,7 @@
 	exports.default = { addClass: _addClass2.default, removeClass: _removeClass2.default, hasClass: _hasClass2.default };
 
 /***/ }),
-/* 131 */
+/* 128 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -13421,7 +12988,7 @@
 	});
 	exports.default = addClass;
 	
-	var _hasClass = __webpack_require__(132);
+	var _hasClass = __webpack_require__(129);
 	
 	var _hasClass2 = _interopRequireDefault(_hasClass);
 	
@@ -13433,7 +13000,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 132 */
+/* 129 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -13448,7 +13015,7 @@
 	module.exports = exports["default"];
 
 /***/ }),
-/* 133 */
+/* 130 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -13458,7 +13025,7 @@
 	};
 
 /***/ }),
-/* 134 */
+/* 131 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -13468,11 +13035,11 @@
 	});
 	exports["default"] = isOverflowing;
 	
-	var _isWindow = __webpack_require__(108);
+	var _isWindow = __webpack_require__(105);
 	
 	var _isWindow2 = _interopRequireDefault(_isWindow);
 	
-	var _ownerDocument = __webpack_require__(74);
+	var _ownerDocument = __webpack_require__(98);
 	
 	var _ownerDocument2 = _interopRequireDefault(_ownerDocument);
 	
@@ -13504,7 +13071,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 135 */
+/* 132 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -13558,7 +13125,7 @@
 	}
 
 /***/ }),
-/* 136 */
+/* 133 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -13594,7 +13161,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 137 */
+/* 134 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -13604,7 +13171,7 @@
 	});
 	exports.default = activeElement;
 	
-	var _ownerDocument = __webpack_require__(74);
+	var _ownerDocument = __webpack_require__(98);
 	
 	var _ownerDocument2 = _interopRequireDefault(_ownerDocument);
 	
@@ -13620,7 +13187,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 138 */
+/* 135 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -13696,7 +13263,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 139 */
+/* 136 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -13810,7 +13377,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 140 */
+/* 137 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -13886,7 +13453,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 141 */
+/* 138 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -13988,7 +13555,7 @@
 	        _react2["default"].createElement(
 	          'span',
 	          { 'aria-hidden': 'true' },
-	          _react2["default"].createElement('i', { className: 'uf uf-close' })
+	          '\xD7'
 	        )
 	      ),
 	      children
@@ -14006,7 +13573,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 142 */
+/* 139 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -14082,7 +13649,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 143 */
+/* 140 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -14091,7 +13658,7 @@
 	  value: true
 	});
 	
-	var _FormControl = __webpack_require__(144);
+	var _FormControl = __webpack_require__(141);
 	
 	var _FormControl2 = _interopRequireDefault(_FormControl);
 	
@@ -14101,7 +13668,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 144 */
+/* 141 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -14120,7 +13687,7 @@
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
-	var _beeIcon = __webpack_require__(94);
+	var _beeIcon = __webpack_require__(90);
 	
 	var _beeIcon2 = _interopRequireDefault(_beeIcon);
 	
@@ -14147,8 +13714,7 @@
 	    onSearch: _propTypes2["default"].func,
 	    onChange: _propTypes2["default"].func,
 	    onBlur: _propTypes2["default"].func,
-	    showClose: _propTypes2["default"].bool,
-	    focusSelect: _propTypes2["default"].bool
+	    showClose: _propTypes2["default"].bool
 	};
 	
 	var defaultProps = {
@@ -14208,19 +13774,14 @@
 	        _this.handleKeyDown = function (e) {
 	            var _this$props = _this.props,
 	                onSearch = _this$props.onSearch,
+	                value = _this$props.value,
 	                type = _this$props.type;
 	
 	            if (e.keyCode === 13 && type === "search") {
 	                if (onSearch) {
-	                    onSearch(_this.input.value);
+	                    onSearch(value);
 	                }
 	            }
-	        };
-	
-	        _this.handleSearch = function (e) {
-	            var onSearch = _this.props.onSearch;
-	
-	            if (onSearch) onSearch(_this.input.value);
 	        };
 	
 	        _this.handleBlur = function (e) {
@@ -14237,12 +13798,13 @@
 	            var value = _this.state.value;
 	            var onFocus = _this.props.onFocus;
 	
-	            if (_this.props.focusSelect) {
-	                _this.input.select();
-	            }
 	            if (onFocus) {
 	                onFocus(value, e);
 	            }
+	        };
+	
+	        _this.handleClick = function (e) {
+	            alert();
 	        };
 	
 	        _this.renderInput = function () {
@@ -14257,8 +13819,7 @@
 	                onSearch = _this$props2.onSearch,
 	                onBlur = _this$props2.onBlur,
 	                showClose = _this$props2.showClose,
-	                focusSelect = _this$props2.focusSelect,
-	                others = _objectWithoutProperties(_this$props2, ['componentClass', 'type', 'className', 'size', 'clsPrefix', 'value', 'onChange', 'onSearch', 'onBlur', 'showClose', 'focusSelect']);
+	                others = _objectWithoutProperties(_this$props2, ['componentClass', 'type', 'className', 'size', 'clsPrefix', 'value', 'onChange', 'onSearch', 'onBlur', 'showClose']);
 	            // input[type="file"] 不应该有类名 .form-control.
 	
 	
@@ -14299,7 +13860,6 @@
 	                value: value,
 	                onChange: _this.handleChange,
 	                onBlur: _this.handleBlur,
-	                onFocus: _this.handleFocus,
 	                className: (0, _classnames2["default"])(className, classNames)
 	            }));
 	        };
@@ -14338,13 +13898,12 @@
 	                        value: value,
 	                        onKeyDown: _this.handleKeyDown,
 	                        onBlur: _this.handleBlur,
-	                        onFocus: _this.handleFocus,
 	                        className: (0, _classnames2["default"])(className, clsPrefix, classes)
 	                    })),
 	                    _react2["default"].createElement(
 	                        'div',
 	                        { className: clsPrefix + '-suffix' },
-	                        _react2["default"].createElement(_beeIcon2["default"], { type: 'uf-search', onClick: _this.handleSearch })
+	                        _this.state.showSearch || others.disabled ? _react2["default"].createElement(_beeIcon2["default"], { type: 'uf-search' }) : _react2["default"].createElement(_beeIcon2["default"], { onClick: _this.clearValue, type: 'uf-close-c' })
 	                    )
 	                );
 	            }
@@ -14384,7 +13943,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 145 */
+/* 142 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -14397,7 +13956,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _src = __webpack_require__(84);
+	var _src = __webpack_require__(80);
 	
 	var _src2 = _interopRequireDefault(_src);
 	
@@ -14451,7 +14010,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 146 */
+/* 143 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -14464,7 +14023,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _src = __webpack_require__(84);
+	var _src = __webpack_require__(80);
 	
 	var _src2 = _interopRequireDefault(_src);
 	
@@ -14518,7 +14077,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 147 */
+/* 144 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -14531,19 +14090,19 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _src = __webpack_require__(84);
+	var _src = __webpack_require__(80);
 	
 	var _src2 = _interopRequireDefault(_src);
 	
-	var _zh_CN = __webpack_require__(148);
+	var _zh_CN = __webpack_require__(145);
 	
 	var _zh_CN2 = _interopRequireDefault(_zh_CN);
 	
-	var _zh_TW = __webpack_require__(149);
+	var _zh_TW = __webpack_require__(146);
 	
 	var _zh_TW2 = _interopRequireDefault(_zh_TW);
 	
-	var _en_US = __webpack_require__(150);
+	var _en_US = __webpack_require__(147);
 	
 	var _en_US2 = _interopRequireDefault(_en_US);
 	
@@ -14590,7 +14149,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 148 */
+/* 145 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -14601,48 +14160,39 @@
 	exports["default"] = {
 	    lang: 'zh_CN',
 	    Popconfirm: {
-	        'ok': '确认',
-	        'cancel': '取消'
+	        ok: '确认',
+	        cancel: '取消'
 	    },
 	    Table: {
-	        'resetSettings': '还原设置',
-	        'include': '包含',
-	        'exclusive': '不包含',
-	        'equal': '等于',
-	        'unequal': '不等于',
-	        'begin': '以开始',
-	        'end': '以结尾'
+	        noData: '无数据'
 	    },
 	    Clipboard: {
-	        'copy': '复制',
-	        'cut': '剪切',
-	        'copyReady': '已复制',
-	        'cutReady': '已剪切',
-	        'copyToClipboard': '复制到剪切板',
-	        'close': '关闭'
+	        copy: '复制',
+	        cut: '剪切',
+	        copyReady: '已复制',
+	        cutReady: '已剪切',
+	        copyToClipboard: '复制到剪切板',
+	        close: '关闭'
 	    },
 	    Pagination: {
-	        'total': '共',
-	        'items': '条',
-	        'show': '显示',
-	        'goto': '跳至',
-	        'page': '页',
-	        'ok': '确认'
+	        total: '共',
+	        items: '条',
+	        show: '显示',
+	        "goto": '跳至',
+	        page: '页',
+	        ok: '确认'
 	    },
 	    Grid: {
-	        'lang': 'zh-cn',
 	        'fixTitle': '锁定',
 	        'noFixTitle': '解锁',
 	        'hideTitle': '隐藏',
-	        'rowFilter': '行过滤',
-	        'openRowFilter': '打开行过滤',
-	        'closeRowFilter': '关闭行过滤'
+	        'rowFilter': '行过滤'
 	    }
 	};
 	module.exports = exports['default'];
 
 /***/ }),
-/* 149 */
+/* 146 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -14657,43 +14207,35 @@
 	        cancel: '取消'
 	    },
 	    Table: {
-	        'resetSettings': '還原設置',
-	        'include': '包含',
-	        'exclusive': '不包含',
-	        'equal': '等於',
-	        'unequal': '不等於',
-	        'begin': '以開始',
-	        'end': '以結尾'
+	        noData: '無數據'
 	    },
 	    Clipboard: {
-	        'copy': '複製',
-	        'cut': '剪切',
-	        'copyReady': '已複製',
-	        'cutReady': '已剪切',
-	        'copyToClipboard': '複製到剪切板',
-	        'close': '關閉'
+	        copy: '複製',
+	        cut: '剪切',
+	        copyReady: '已複製',
+	        cutReady: '已剪切',
+	        copyToClipboard: '複製到剪切板',
+	        close: '關閉'
 	    },
 	    Pagination: {
-	        'total': '共',
-	        'items': '條',
-	        'show': '顯示',
-	        'goto': '跳至',
-	        'page': '頁',
-	        'ok': '確認'
+	        total: '共',
+	        items: '條',
+	        show: '顯示',
+	        "goto": '跳至',
+	        page: '頁',
+	        ok: '確認'
 	    },
 	    Grid: {
 	        'fixTitle': '鎖定',
 	        'noFixTitle': '解鎖',
 	        'hideTitle': '隱藏',
-	        'rowFilter': '行過濾',
-	        'openRowFilter': '打開行過濾',
-	        'closeRowFilter': '關閉行過濾'
+	        'rowFilter': '行過濾'
 	    }
 	};
 	module.exports = exports['default'];
 
 /***/ }),
-/* 150 */
+/* 147 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -14704,41 +14246,33 @@
 	exports["default"] = {
 	    lang: 'en_US',
 	    Popconfirm: {
-	        'ok': 'OK',
-	        'cancel': 'Cancel'
+	        ok: 'OK',
+	        cancel: 'Cancel'
 	    },
 	    Table: {
-	        'resetSettings': 'reset settings',
-	        'include': 'include',
-	        'exclusive': 'exclusive',
-	        'equal': 'equal',
-	        'unequal': 'unequal',
-	        'begin': 'begin',
-	        'end': 'end'
+	        noData: 'no data'
 	    },
 	    Clipboard: {
-	        'copy': 'copy',
-	        'cut': 'cut',
-	        'copyReady': 'copied',
-	        'cutReady': 'cut',
-	        'copyToClipboard': 'copy to clipboard',
-	        'close': 'close'
+	        copy: 'copy',
+	        cut: 'cut',
+	        copyReady: 'copied',
+	        cutReady: 'cut',
+	        copyToClipboard: 'copy to clipboard',
+	        close: 'close'
 	    },
 	    Pagination: {
-	        'total': 'total',
-	        'items': 'items',
-	        'show': 'page',
-	        'goto': 'goto',
-	        'page': 'page',
-	        'ok': 'ok'
+	        total: 'total',
+	        items: 'items',
+	        show: 'page',
+	        "goto": 'goto',
+	        page: 'page',
+	        ok: 'ok'
 	    },
 	    Grid: {
 	        'fixTitle': 'fix',
 	        'noFixTitle': 'unfix',
 	        'hideTitle': 'hide',
-	        'rowFilter': 'rowFilter',
-	        'openRowFilter': 'openRowFilter',
-	        'closeRowFilter': 'closeRowFilter'
+	        'rowFilter': 'rowFilter'
 	    }
 	};
 	module.exports = exports['default'];

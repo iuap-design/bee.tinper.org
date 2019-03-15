@@ -1,10 +1,25 @@
-## Loading 加载组件
+# Loading 
 
 加载数据时显示动效。
 
+## 何时使用
+
+
+## 如何使用
+
+```
+import { Loading } from 'tinper-bee';
+
+or
+
+import Loading from 'bee-loading';
+import bee-loading/build/Loading.css;
+
+```
+
 ## 代码演示
 
-### API
+## API
 
 |参数|说明|类型|默认值|
 |:---|:----|:----|:------|
@@ -15,4 +30,9 @@
 |showBackDrop|是否显示遮罩|boolean|true|
 |fullScreen|是否全屏显示，或者只传入fullScreen即可|boolean|false|
 |wrapperClassName|容器样式|string|''|
- 
+
+## 注意事项
+
+暂无
+
+## 更新日志

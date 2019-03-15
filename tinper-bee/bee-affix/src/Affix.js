@@ -169,7 +169,8 @@ class Affix extends Component {
             fixStyle = {
                 position: "fixed",
                 //修改20171102 去掉展示Affix全部内容，若是Affix内容高度大于container可展示，那么Affix只可展示部分
-                top: this.props.canHidden ? ( h < 0 ? h : Math.min(h, this.props.offsetTop)) : ( h < 0 ? 0 : Math.min(h, this.props.offsetTop)),
+                // top: this.props.canHidden ? ( h < 0 ? h : Math.min(h, this.props.offsetTop)) : ( h < 0 ? 0 : Math.min(h, this.props.offsetTop)),
+                top: this.props.canHidden ? ( h < 0 ? h : Math.min(h, this.props.offsetTop)) : this.props.offsetTop,
                 left: this.props.horizontal ? this.state.initLeft : this.state.left,
                 height: this.state.height,
                 width: this.state.width,

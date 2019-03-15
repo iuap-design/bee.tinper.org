@@ -23,7 +23,7 @@ class Demo1 extends Component {
         return (
             <div>
                 <Button
-                    colors="success"
+                    colors="primary"
                     onClick={() => this.setState({open: !this.state.open})}>
                     unmountOnExit为true的Demo
                 </Button>

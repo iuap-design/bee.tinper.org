@@ -2,6 +2,22 @@
 
 两框之间的元素迁移，非常直观且有效。一个或多个元素选择后点击方向按钮转到另一列框中。左栏是“源”，右边是“目标”
 
+## 何时使用
+
+需要两框之间的元素迁移时
+
+## 如何使用
+
+```
+import { Transfer } from 'tinper-bee';
+
+or
+
+import Transfer from 'bee-transfer';
+import bee-transfer/build/Transfer.css;
+
+```
+
 ## 代码演示
 
 ## API
@@ -26,3 +42,9 @@
 |footer|渲染底部的dom|ReactNode|-|
 |lazy|懒加载dom|object|当tranfer放在bee-modal里 添加参数 lazy={container:"modal"}|
 |onSearchChange|当搜索域变化的回调函数 参数(direction: 'left'|'right', event: Event)|func|-|
+
+## 注意事项
+
+暂无
+
+## 更新日志

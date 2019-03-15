@@ -1,12 +1,27 @@
-## Navbar
+# Navbar
 
 帮助用户依赖导航在各个页面中进行跳转。顶部导航提供全局性的类目和功能.
 
+## 何时使用
+可作为页面导航
+
+## 如何使用
+
+```
+import { Navbar } from 'tinper-bee';
+
+or
+
+import Navbar from 'bee-navbar';
+import bee-navbar/build/Navbar.css;
+
+```
+
 ## 代码演示
 
-### API
+## API
 
-## Navbar
+### Navbar
 
 |参数|说明|类型|默认值|
 |:---|:----|:---|:------|
@@ -17,11 +32,17 @@
 |inverse|黑色背景|bool|false|
 |onToggle|切换导航条显示隐藏 针对小屏幕|func|-|
 
-## Navbar.Toggle
+### Navbar.Toggle
 
 |参数|说明|类型|默认值|
 |:---|:----|:---|:------|
 |children|切换的文字或图标|element type|如例子|
 |onClick|自定义方法|func|-|
 
+
+## 注意事项
+
+暂无
+
+## 更新日志
 

@@ -1,12 +1,26 @@
-## Notification 通知
-
+# Notification 
 Notification通知不同于操作类型的信息反馈，是一种主动推送的信息。
+
+## 何时使用
+例如：消息推送
+
+## 如何使用
+
+```
+import { Notification } from 'tinper-bee';
+
+or
+
+import Notification from 'bee-notification';
+import bee-notification/build/Notification.css;
+
+```
 
 ## 代码演示
 
-### API
+## API
 
-#### Notice
+### Notice
 
 |参数|说明|类型|默认值|
 |:---|:-----|:----|:------|
@@ -17,7 +31,7 @@ Notification通知不同于操作类型的信息反馈，是一种主动推送�
 |className|类名|string|-|
 |style|样式|object|-|
 
-#### Notification
+### Notification
 
 |参数|说明|类型|默认值|
 |:---|:-----|:----|:------|
@@ -37,8 +51,14 @@ Notification通知不同于操作类型的信息反馈，是一种主动推送�
 |onEscapeKeyUp|响应ESC键时的钩子函数|function|-|
 
 
-#### 已支持的键盘操作
+### 已支持的键盘操作
 
 |按键|功能|
 |:---|:----|
 |esc |关闭Notification|
+
+## 注意事项
+
+暂无
+
+## 更新日志

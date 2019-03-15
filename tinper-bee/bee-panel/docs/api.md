@@ -1,12 +1,24 @@
-## Panel 展示板
+# Panel
 
+## 何时使用
 带有折叠效果的展示板。
+
+## 如何使用
+```
+import { Panel } from 'tinper-bee';
+
+or
+
+import Panel from 'bee-panel';
+import bee-panel/build/Panel.css;
+
+```
 
 ## 代码演示
 
-### API
+## API
 
-#### Panel
+### Panel
 
 |参数|说明|类型|默认值|
 |:---|:-----|:----|:------|
@@ -28,7 +40,7 @@
 |eventKey|当多个panel存在时,每个panel的标记|any|-|
 |colors|panel的颜色|primary\accent\success\info\warning\danger\default\bordered|default|
 
-#### PanelGroup
+### PanelGroup
 
 |参数|说明|类型|默认值|
 |:---|:-----|:----|:------|
@@ -38,3 +50,9 @@
 |onSelect|选中的钩子函数|function|-|
 |className|传入的class|any|-|
 |style|传入的style|pbject|-|
+
+## 注意事项
+
+暂无
+
+## 更新日志

@@ -17,6 +17,7 @@ export default {
     };
   },
   onTabClick(key) {
+    // debugger
     this.props.onTabClick(key);
   },
   getTabs() {

@@ -1,12 +1,27 @@
-## Checkbox
+# Checkbox
 
 从选中选择多个值
 
+## 何时使用
+代替原生checkbox
+
+## 如何使用
+
+```
+import { Checkbox } from 'tinper-bee';
+
+or
+
+import Checkbox from 'bee-checkbox';
+import bee-checkbox/build/Affix.css;
+
+```
+
 ## 代码演示
 
-### API
+## API
 
-## Checkbox
+### Checkbox
 
 |参数|说明|类型|默认值|
 |:--|:---|:--|:---|
@@ -23,7 +38,7 @@
 |inverse|设置选中为红色填充|bool|false|
 
 
-## CheckboxGroup
+### CheckboxGroup
 
 |参数|说明|类型|默认值|
 |:--|:---|:--|:---|
@@ -32,8 +47,15 @@
 |value|设置默认值|array|[]|
 |disabled|是否可用|bool|false|
 
-## 已支持的键盘操作
+### 已支持的键盘操作
 
 |按键|功能|
 |:---|:----|
 |space |选中/反选Checkbox|
+
+## 注意事项
+
+暂无
+
+## 更新日志
+

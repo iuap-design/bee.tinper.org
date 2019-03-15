@@ -26,6 +26,8 @@
     color: rgb(238,238,238);
     cursor: pointer;
     outline: none; }
+    .u-rate .u-rate-star div:focus {
+      outline: none; }
   .u-rate .u-rate-star-first,
   .u-rate .u-rate-star-second {
     transition: all .3s; }

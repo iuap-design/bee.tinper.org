@@ -76,7 +76,7 @@
 	
 	var CARETUP = _react2['default'].createElement('i', { className: 'uf uf-arrow-up' });
 	
-	var Demo1 = __webpack_require__(84);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " Breadcrumb ", "code": "/**\r\n * @title Breadcrumb \r\n * @description Breadcrumb.Item定义子面包，`active`参数定义当前状态。\r\n */\r\n\r\nimport React, { Component } from 'react';\r\nimport { Breadcrumb } from 'tinper-bee';\r\n\r\nclass Demo1 extends Component {\r\n\trender () {\r\n\t\treturn (\r\n\t\t\t<Breadcrumb>\r\n\t\t\t    <Breadcrumb.Item href=\"#\">\r\n\t\t\t      Home\r\n\t\t\t    </Breadcrumb.Item>\r\n\t\t\t    <Breadcrumb.Item>\r\n\t\t\t      Library\r\n\t\t\t    </Breadcrumb.Item>\r\n\t\t\t    <Breadcrumb.Item active>\r\n\t\t\t      Data\r\n\t\t\t    </Breadcrumb.Item>\r\n\t\t\t</Breadcrumb>\r\n\t\t)\r\n\t}\r\n}\r\n\r\n", "desc": " Breadcrumb.Item定义子面包，`active`参数定义当前状态。" }];
+	var Demo1 = __webpack_require__(84);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " Breadcrumb ", "code": "/**\n * @title Breadcrumb \n * @description Breadcrumb.Item定义子面包，`active`参数定义当前状态。\n */\n\nimport React, { Component } from 'react';\nimport { Breadcrumb } from 'tinper-bee';\n\nclass Demo1 extends Component {\n\trender () {\n\t\treturn (\n\t\t\t<Breadcrumb>\n\t\t\t    <Breadcrumb.Item href=\"#\">\n\t\t\t      Home\n\t\t\t    </Breadcrumb.Item>\n\t\t\t    <Breadcrumb.Item>\n\t\t\t      Library\n\t\t\t    </Breadcrumb.Item>\n\t\t\t    <Breadcrumb.Item active>\n\t\t\t      Data\n\t\t\t    </Breadcrumb.Item>\n\t\t\t</Breadcrumb>\n\t\t)\n\t}\n}\n\n", "desc": " Breadcrumb.Item定义子面包，`active`参数定义当前状态。" }];
 	
 	var Demo = function (_Component) {
 	    _inherits(Demo, _Component);
@@ -5582,6 +5582,16 @@
 	  var documentWidth = documentElement.scrollWidth;
 	  var documentHeight = documentElement.scrollHeight;
 	
+	  // scrollXXX on html is sync with body which means overflow: hidden on body gets wrong scrollXXX.
+	  // We should cut this ourself.
+	  var bodyStyle = window.getComputedStyle(body);
+	  if (bodyStyle.overflowX === 'hidden') {
+	    documentWidth = win.innerWidth;
+	  }
+	  if (bodyStyle.overflowY === 'hidden') {
+	    documentHeight = win.innerHeight;
+	  }
+	
 	  // Reset element position after calculate the visible area
 	  if (element.style) {
 	    element.style.position = originalPosition;
@@ -7964,7 +7974,9 @@
 	        if (colorsMap[colors]) {
 	            clsObj[clsPrefix + '-' + colorsMap[colors]] = true;
 	        }
-	        //clsObj[`${clsPrefix}-border`] = bordered;
+	        if (bordered) {
+	            clsObj[clsPrefix + '-border'] = bordered;
+	        }
 	        var classes = (0, _classnames2["default"])(clsPrefix, clsObj);
 	        return _react2["default"].createElement(
 	            'button',

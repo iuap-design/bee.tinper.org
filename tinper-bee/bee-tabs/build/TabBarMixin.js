@@ -34,6 +34,7 @@ exports["default"] = {
     };
   },
   onTabClick: function onTabClick(key) {
+    // debugger
     this.props.onTabClick(key);
   },
   getTabs: function getTabs() {

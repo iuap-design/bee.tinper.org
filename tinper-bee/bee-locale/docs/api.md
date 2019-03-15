@@ -1,6 +1,16 @@
 # Locale 
 
+## 何时使用
 Locale组件，在使用时，需要将你的App跟组件包裹起来。这样才能影响到所有使用的tinper-bee组件。
+
+## 如何使用
+```
+import { Locale } from 'tinper-bee';
+import ZhCn from "tinper-bee/lib/zh_CN";
+import ZhTw from "tinper-bee/lib/zh_TW";
+import EnUS from "tinper-bee/lib/en_US";
+
+```
 
 ## 代码演示
 
@@ -56,3 +66,9 @@ export default {
 ### 第三方国际化方案
 
 - [react-intl](https://github.com/yahoo/react-intl)
+
+## 注意事项
+
+暂无
+
+## 更新日志

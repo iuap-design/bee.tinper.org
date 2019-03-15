@@ -1,8 +1,23 @@
-# Tabs 标签页
+# Tabs 
 
 分隔内容上有关联但属于不同类别的数据集合。
 
-### 代码演示
+## 何时使用
+
+例如：切换不同tab展示不同内容时
+## 如何使用
+
+```
+import { Tabs } from 'tinper-bee';
+
+or
+
+import Tabs from 'bee-tabs';
+import bee-tabs/build/Tabs.css;
+
+```
+
+## 代码演示
 
 ## API
 
@@ -38,6 +53,8 @@
 
 
 
+## 注意事项
 
+暂无
 
-
+## 更新日志

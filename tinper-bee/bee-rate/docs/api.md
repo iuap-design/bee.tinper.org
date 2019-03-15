@@ -1,4 +1,20 @@
-## Rate
+# Rate
+评分组件
+
+## 何时使用
+例如：对产品的评价评分
+
+## 如何使用
+
+```
+import { Rate } from 'tinper-bee';
+
+or
+
+import Rate from 'bee-rate';
+import bee-rate/build/Rate.css;
+
+```
 
 ## 代码演示
 
@@ -16,3 +32,9 @@
 |character|自定义字符|`ReactNode`/`string`|<Icon type="uf-star" />|
 |className|自定义样式类名|`string`|-|
 |style|	自定义样式对象|`object`|-|
+
+## 注意事项
+
+暂无
+
+## 更新日志

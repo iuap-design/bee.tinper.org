@@ -1,15 +1,26 @@
 # Form
 
+基于 [rc-form](http://react-component.github.io/form/)。
+
+## 何时使用
+需要校验表单数据，提交表单数据时
+
+## 如何使用
+
+```
+import { Form } from 'tinper-bee';
+
+or
+
+import Form from 'bee-form';
+import bee-form/build/Form.css;
+
+```
+
 ## 代码演示
 
 ## API
 
-基于 [rc-form](http://react-component.github.io/form/)。
-
-### 使用注意，写在最前面
-
-- 同一个表单中，表单元素不能设置相同的name
-- 使用 `getFieldProps` 后，不能使用 ref 。 可以使用 ` this.props.form.getFieldInstance('ref') `
 
 ### Form 
 
@@ -117,3 +128,11 @@
 |option.fieldMetaProp|设置存取 `getFieldProps` 原数据的store|string|-|
 |option.fieldDataProp|设置存取 `getFieldProps` 数据的store|string|-|
 |option.withRef(deprecated)|是否为包装组件实例维护ref，使用refs.wrappedComponent进行访问|boolean|false|
+
+## 注意事项
+
+- 同一个表单中，表单元素不能设置相同的name
+- 使用 `getFieldProps` 后，不能使用 ref 。 可以使用 ` this.props.form.getFieldInstance('ref') `
+
+
+## 更新日志

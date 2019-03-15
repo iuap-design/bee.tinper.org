@@ -37,10 +37,10 @@ a.u-tile {
   margin-top: 0; }
 
 .u-tile-hover-primary {
-  border-color: rgb(30,136,229); }
+  border-color: rgb(245, 60, 50); }
 
 .u-tile-hover-primary:hover {
-  box-shadow: 0 1px 6px rgb(66,165,245); }
+  box-shadow: 0 1px 6px rgb(230, 0, 18); }
 
 .u-tile-hover-danger {
   border-color: rgb(244,67,54); }

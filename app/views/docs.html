@@ -1,14 +1,14 @@
-<% if(tag) { %>
+<% if(tag&&(active.indexOf('bee')!=-1)) { %>
     <link href="//design.yonyoucloud.com/static/tinper-bee/components/<%= active %>/dist/<%= tag %>/demo.css" type="text/css" rel="stylesheet" />
-<% } else { %>
+<% } else if(active.indexOf('bee')!=-1) { %>
     <link href="./<%= active %>/dist/demo.css" type="text/css" rel="stylesheet" />
 <% } %>    
 <div>
     <%- docs %>
 </div>
-<% if(tag) { %>
+<% if(tag&&(active.indexOf('bee')!=-1)) { %>
     <script src="//design.yonyoucloud.com/static/tinper-bee/components/<%= active %>/dist/<%= tag %>/demo.js"></script>
-<% } else { %>
+<% } else if(active.indexOf('bee')!=-1) { %>
     <script src="./<%= active %>/dist/demo.js"></script>
 <% } %>  
 <script>

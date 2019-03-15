@@ -1,5 +1,5 @@
 /**
- * @title  FromGroup 三种校验状态实例
+ * @title  FormGroup 三种校验状态实例
  * @description `validationState`参数控制状态颜色
  */
 

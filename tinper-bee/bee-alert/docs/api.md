@@ -1,6 +1,22 @@
-## Alert
+# Alert
 
 页面内部针对用户行为操作的区域性提醒。根据信息类型不同提供相应的以背景颜色区分的alert。若需背景颜色加深需加`dark`类。
+
+## 何时使用
+
+需要区域性提醒
+
+## 如何使用
+
+```
+import { Alert } from 'tinper-bee';
+
+or
+
+import Alert from 'bee-alert';
+import bee-alert/build/Alert.css;
+
+```
 
 ## 代码演示
 
@@ -15,4 +31,8 @@
 |dark|显示颜色深度|bool|false|
 
 
+## 注意事项
 
+暂无
+
+## 更新日志

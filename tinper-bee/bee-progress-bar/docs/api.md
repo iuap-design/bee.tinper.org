@@ -1,10 +1,24 @@
-## ProgressBar
+# ProgressBar
 
+## 何时使用
 记录进度或动态的显示进度变化。
+
+## 如何使用
+
+```
+import { ProgressBar } from 'tinper-bee';
+
+or
+
+import ProgressBar from 'bee-progress-bar';
+import bee-progress-bar/build/ProgressBar.css;
+
+```
+
 
 ## 代码演示
 
-### API
+## API
 
 |参数|说明|类型|默认值|
 |:--|:---|:--|:---|
@@ -34,3 +48,9 @@
 直接结束进度
 
 注：具体使用可以参考例四！
+
+## 注意事项
+
+暂无
+
+## 更新日志

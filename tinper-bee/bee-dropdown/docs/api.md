@@ -1,10 +1,25 @@
-## Dropdown
+# Dropdown
 
 以条形菜单栏和菜单栏中每个菜单项的弹出菜单窗口两部分组成，一般作为应用系统的主菜单使用。
 
+## 何时使用
+可作为下拉菜单等使用
+
+## 如何使用
+
+```
+import { Dropdown } from 'tinper-bee';
+
+or
+
+import Dropdown from 'bee-dropdown';
+import bee-dropdown/build/Dropdown.css;
+
+```
+
 ## 代码演示
 
-### API
+## API
 
 |参数|说明|类型|默认值|
 |:--|:---|:----|:---|
@@ -22,3 +37,8 @@
 |getPopupContainer|获取要添加的容器|document.body|
 |getDocument|点击隐藏的document，适用于出现iframe的情况|function|document|
 
+## 注意事项
+
+暂无
+
+## 更新日志

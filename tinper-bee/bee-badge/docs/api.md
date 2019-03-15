@@ -1,10 +1,23 @@
-## Badge
+# Badge
 
+## 何时使用
 用来醒目的展示新的或未读的信息条目
+
+## 如何使用
+
+```
+import { Badge } from 'tinper-bee';
+
+or
+
+import Badge from 'bee-badge';
+import bee-badge/build/Badge.css;
+
+```
 
 ## 代码演示
 
-### API
+## API
 
 |参数|说明|类型|默认值|
 |:--|:---|:--|:---|
@@ -14,4 +27,8 @@
 |className|增加额外的class|string|''|
 
 
+## 注意事项
 
+暂无
+
+## 更新日志

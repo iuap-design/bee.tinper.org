@@ -1,10 +1,25 @@
-## Select
+# Select
 
 下拉弹出菜单，代替原生的选择器。当然Select扩展了其他功能：多选，级联，搜索过滤单选和搜索过滤多选与自动填充选择。
 
+## 何时使用
+
+代替原生 select下拉列表
+## 如何使用
+
+```
+import { Select } from 'tinper-bee';
+
+or
+
+import Select from 'bee-select';
+import bee-select/build/Select.css;
+
+```
+
 ## 代码演示
 
-### API
+## API
 
 |参数|说明|类型|默认值|
 |:---|:----|:---|:------|
@@ -42,7 +57,7 @@
 
 
 
-## Option
+### Option
 
 |参数|说明|类型|默认值|
 |:---|:----|:---|:------|
@@ -51,7 +66,7 @@
 |disabled|是否禁用|bool|false|
 
 
-## OptGroup
+### OptGroup
 
 |参数|说明|类型|默认值|
 |:---|:----|:---|:------|
@@ -70,7 +85,7 @@
 |enter | 选中下拉框|
 
 
-## 注意
+## 注意事项
 
 在Modal组件中，使用Select组件时，需要使用getPopupContainer,来让下拉显示在modal上。
 
@@ -84,3 +99,5 @@ return (
 
 ```
 
+
+## 更新日志

@@ -1,4 +1,20 @@
-## TimePicker
+# TimePicker
+时间输入框
+
+## 何时使用
+
+选择时间
+## 如何使用
+
+```
+import { TimePicker } from 'tinper-bee';
+
+or
+
+import TimePicker from 'bee-timepicker';
+import bee-timepicker/build/TimePicker.css;
+
+```
 
 ## 代码演示
 
@@ -34,3 +50,9 @@
 |onOpen|打开时的回调|Function({ open })|-|
 |onClose|关闭时的回调|Function({ open })|-|
 |getPopupContainer|定义浮层的容器，默认为 body 上新建 div|Function|-|
+
+## 注意事项
+
+暂无
+
+## 更新日志

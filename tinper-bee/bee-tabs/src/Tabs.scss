@@ -1,6 +1,7 @@
 @import "../node_modules/tinper-bee-core/scss/minxin-variables";
 @import "../node_modules/tinper-bee-core/scss/minxin-mixins";
 
+$tabs-border-color: rgb(233,233,233);
 .u-tabs {
   box-sizing: border-box;
   position: relative;
@@ -141,6 +142,7 @@
 
   .u-tabs-content {
     zoom: 1;
+    font-size: 14px;
   }
 
   .u-tabs-content .u-tabs-tabpane {
@@ -179,13 +181,13 @@
 
 
 .u-tabs-left {
-  border-right: 2px solid #f3f3f3;
+  // border-right: 2px solid $tabs-border-color;
   overflow-y: hidden;
   .u-tabs-bar {
     float: left;
     height: 100%;
-    margin-right: 10px;
-    border-right: 1px solid #f3f3f3;
+    margin-right: 16px;
+    border-right: 1px solid $tabs-border-color;
   }
   
   .u-tabs-nav-container {
@@ -292,13 +294,13 @@
 
 
 .u-tabs-right {
-  border-left: 2px solid #f3f3f3;
+  // border-left: 2px solid $tabs-border-color;
   overflow-y: hidden;
   .u-tabs-bar {
     float: right;
     height: 100%;
-    margin-left: 10px;
-    border-left: 1px solid #f3f3f3;
+    margin-left: 16px;
+    border-left: 1px solid $tabs-border-color;
   }
   
   .u-tabs-nav-container {
@@ -404,14 +406,15 @@
 
 
 .u-tabs-bottom {
-  border-top: 2px solid #f3f3f3;
+  // border-top: 2px solid $tabs-border-color;
   overflow-x: hidden;
   .u-tabs-content {
     width: 100%;
   }
   
   .u-tabs-bar {
-    border-top: 1px solid #f3f3f3;
+    border-top: 1px solid $tabs-border-color;
+    margin-top: 16px;
   }
   
   .u-tabs-nav-container-scrolling {
@@ -507,14 +510,16 @@
 
 
 .u-tabs-top {
-  border-bottom: 2px solid #f3f3f3;
+  // border-bottom: 2px solid $tabs-border-color;
   overflow-x: hidden;
   .u-tabs-content {
     width: 100%;
+    font-size: 14px;
   }
   
   .u-tabs-bar {
-    //border-bottom: 1px solid #f3f3f3;
+    border-bottom: 1px solid $tabs-border-color;
+    margin-bottom: 16px;
   }
   
   .u-tabs-nav-container-scrolling {

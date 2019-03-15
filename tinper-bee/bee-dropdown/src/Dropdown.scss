@@ -38,15 +38,18 @@
     &-submenu{
         position: relative;
         &-title {
-        margin: 0;
-        position: relative;
-        display: block;
-        white-space: nowrap;
-        padding:$dropdown-menu-item-padding;
-        line-height: $dropdown-menu-item-light-height;
-        height: $dropdown-menu-item-height;
-        overflow: hidden;
-        text-overflow: ellipsis;
+          margin: 0;
+          position: relative;
+          display: block;
+          white-space: nowrap;
+          padding:$dropdown-menu-item-padding;
+          line-height: $dropdown-menu-item-light-height;
+          height: $dropdown-menu-item-height;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          &:hover{
+            background: $hover-bg-color-base;
+          }
         }
         &-vertical > &-title:after{
             transform: rotate(270deg) scale(0.75);
@@ -154,6 +157,9 @@
                 height: $dropdown-menu-item-height;
                 overflow: hidden;
                 text-overflow: ellipsis;
+                &:hover{
+                  background: $hover-bg-color-base;
+                }
             }
         }
     }

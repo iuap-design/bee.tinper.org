@@ -1,12 +1,28 @@
-## Message 消息
+# Message 消息
 
 全局展示操作反馈信息。
 
+## 何时使用
+
+例如：成功、失败、警告等提示
+
+## 如何使用
+
+```
+import { Message } from 'tinper-bee';
+
+or
+
+import Message from 'bee-message';
+import bee-message/build/Message.css;
+
+```
+
 ## 代码演示
 
-### API
+## API
 
-#### 函数api
+### 函数api
 
 ```
 //设置默认设置
@@ -26,7 +42,7 @@ Messsage.create({});
 
 ```
 
-#### message函数参数
+### message函数参数
 
 |参数|说明|类型|默认值|
 |:---|:-----|:----|:------|
@@ -40,8 +56,14 @@ Messsage.create({});
 |onEscapeKeyUp|响应ESC键时的钩子函数|function|-|
 |showIcon|是否显示icon|boolean|false|
 
-#### 已支持的键盘操作
+### 已支持的键盘操作
 
 |按键|功能|
 |:---|:----|
 |esc |关闭message|
+
+## 注意事项
+
+暂无
+
+## 更新日志

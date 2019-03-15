@@ -16,6 +16,17 @@ class Demo3 extends Component {
         }
     }
 
+    get = ()=>{
+        fetch('https://mock.yonyoucloud.com/mock/360/viewer/getPic')
+        .then(response => response.json())
+        .then(data => {
+            console.log(data)
+            this.setState({
+                pictureSrc: data.pictureSrc
+            })
+        })
+    }
+
     loadPic=()=>{
         window.setTimeout(()=>{
             this.setState({
@@ -27,7 +38,7 @@ class Demo3 extends Component {
     }
 
     componentWillMount(){
-        this.loadPic();
+        this.get();
     }
     addPicture=()=>{
         let pictureSrc = this.state.pictureSrc;
@@ -40,7 +51,7 @@ class Demo3 extends Component {
     render () {
         return (
             <div className='demo'>
-                <Button onClick={this.addPicture} style={{'marginBottom':'10px'}}>点击新增图片</Button>
+                <Button colors="primary" onClick={this.addPicture} style={{'marginBottom':'10px'}}>点击新增图片</Button>
                 <Viewer asyncLoad={true} >
                     <div>
                         {this.state.pictureSrc?

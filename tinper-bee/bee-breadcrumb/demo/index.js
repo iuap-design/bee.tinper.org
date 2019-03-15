@@ -10,7 +10,7 @@ const CARET = <i className="uf uf-arrow-down"></i>;
 const CARETUP = <i className="uf uf-arrow-up"></i>;
 
 
-var Demo1 = require("./demolist/Demo1");var DemoArray = [{"example":<Demo1 />,"title":" Breadcrumb ","code":"/**\r\n * @title Breadcrumb \r\n * @description Breadcrumb.Item定义子面包，`active`参数定义当前状态。\r\n */\r\n\r\nimport React, { Component } from 'react';\r\nimport { Breadcrumb } from 'tinper-bee';\r\n\r\nclass Demo1 extends Component {\r\n\trender () {\r\n\t\treturn (\r\n\t\t\t<Breadcrumb>\r\n\t\t\t    <Breadcrumb.Item href=\"#\">\r\n\t\t\t      Home\r\n\t\t\t    </Breadcrumb.Item>\r\n\t\t\t    <Breadcrumb.Item>\r\n\t\t\t      Library\r\n\t\t\t    </Breadcrumb.Item>\r\n\t\t\t    <Breadcrumb.Item active>\r\n\t\t\t      Data\r\n\t\t\t    </Breadcrumb.Item>\r\n\t\t\t</Breadcrumb>\r\n\t\t)\r\n\t}\r\n}\r\n\r\n","desc":" Breadcrumb.Item定义子面包，`active`参数定义当前状态。"}]
+var Demo1 = require("./demolist/Demo1");var DemoArray = [{"example":<Demo1 />,"title":" Breadcrumb ","code":"/**\n * @title Breadcrumb \n * @description Breadcrumb.Item定义子面包，`active`参数定义当前状态。\n */\n\nimport React, { Component } from 'react';\nimport { Breadcrumb } from 'tinper-bee';\n\nclass Demo1 extends Component {\n\trender () {\n\t\treturn (\n\t\t\t<Breadcrumb>\n\t\t\t    <Breadcrumb.Item href=\"#\">\n\t\t\t      Home\n\t\t\t    </Breadcrumb.Item>\n\t\t\t    <Breadcrumb.Item>\n\t\t\t      Library\n\t\t\t    </Breadcrumb.Item>\n\t\t\t    <Breadcrumb.Item active>\n\t\t\t      Data\n\t\t\t    </Breadcrumb.Item>\n\t\t\t</Breadcrumb>\n\t\t)\n\t}\n}\n\n","desc":" Breadcrumb.Item定义子面包，`active`参数定义当前状态。"}]
 
 
 class Demo extends Component {

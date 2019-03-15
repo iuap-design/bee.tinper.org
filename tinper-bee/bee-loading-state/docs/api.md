@@ -1,10 +1,22 @@
-## LoadingState
+# LoadingState
 
- 组件常用于在按钮上加载状态,继承Button
+## 何时使用
+组件常用于在按钮上加载状态,继承Button
+
+## 如何使用
+```
+import { LoadingState } from 'tinper-bee';
+
+or
+
+import LoadingState from 'bee-loading-state';
+import bee-loading-state/build/LoadingState.css;
+
+```
 
 ## 代码演示
 
-### API
+## API
 
 |参数|说明|类型|默认值|
 |:--|:---|:--|:---|
@@ -15,6 +27,8 @@
 
 可以使用其他Button组件的props，来设置LoadingState组件中按钮的props。
 
+## 注意事项
 
+暂无
 
-
+## 更新日志

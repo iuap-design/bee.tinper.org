@@ -1,5 +1,21 @@
 # Viewer
+
+## 何时使用
+图片查看器
+
+## 如何使用
+```
+import { Viewer } from 'tinper-bee';
+
+or
+
+import Viewer from 'bee-viewer';
+import bee-viewer/build/Viewer.css;
+
+```
+
 ## 代码演示
+
 ## API
 
 
@@ -29,3 +45,9 @@
 |url|图片查看器中图片的地址|string|data-original|
 |shown|图片查看器显示后的回调|func|()=>{}|
 |hidden|图片查看器关闭后的回调|func|()=>{}|
+
+## 注意事项
+
+暂无
+
+## 更新日志

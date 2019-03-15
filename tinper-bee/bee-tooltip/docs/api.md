@@ -1,10 +1,23 @@
-## Tooltip
+# Tooltip
 
-简单的文字提示
 
+## 何时使用
+需要简单的文字提示
+
+## 如何使用
+
+```
+import { Tooltip } from 'tinper-bee';
+
+or
+
+import Tooltip from 'bee-tooltip';
+import bee-tooltip/build/Tooltip.css;
+
+```
 ## 代码演示
 
-### API
+## API
 
 |参数|说明|类型|默认值|
 |:--|:---|:--|:---|
@@ -28,5 +41,8 @@
 |onVisibleChange|使用控制弹出层显示时的钩子函数|function|-|
 |container|容器|DOM元素/React组件/或者返回React组件的函数|-|
 
+## 注意事项
 
+暂无
 
+## 更新日志

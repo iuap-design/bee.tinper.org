@@ -1,13 +1,28 @@
-## Menus
+# Menus
 
 菜单对于网站来说很重要，它帮助用户快速地从一个站点跳转到另一个站点。侧导航提供网站的多层次结构。
 
+## 何时使用
+需要将数据作为菜单展示时
+
+## 如何使用
+
+```
+import { Menus } from 'tinper-bee';
+
+or
+
+import Menus from 'bee-menus';
+import bee-menus/build/Menus.css;
+
+```
+
 ## 代码演示
 
-### API
+## API
 
 
-## Menu
+### Menu
 
 |参数|说明|类型|默认值|
 |:---|:----|:---|:------|
@@ -27,7 +42,7 @@
 |tabIndex|设置tabIndex|string|0|	
 |Children|MenuItem组件/SubMenu组件/MenuItemGroup组件|node|-|
 
-## Menu.Item
+### Menu.Item
 
 |参数|说明|类型|默认值|
 |:---|:----|:---|:------|
@@ -35,7 +50,7 @@
 |key|item 的唯一标志|String|-|
 |attribute|添加到dom上的属性|Object|-|
 
-## Menu.SubMenu
+### Menu.SubMenu
 
 |参数|说明|类型|默认值|
 |:---|:----|:---|:------|
@@ -62,3 +77,8 @@
 |enter | 选中|
 
 
+## 注意事项
+
+暂无
+
+## 更新日志

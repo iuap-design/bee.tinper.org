@@ -1,9 +1,27 @@
 # Step
+
 当任务复杂或具有子任务的系列一定的序列，我们可以将它分解成几个步骤，让事情变得更容易。
+
+## 何时使用
+例如：分步骤提交表单
+
+## 如何使用
+
+```
+import { Step } from 'tinper-bee';
+
+or
+
+import Step from 'bee-step';
+import bee-step/build/Step.css;
+
+```
+
 ## 代码演示
+
 ## API
 
-## Step
+### Step
 
 |Property|Description|Type|Default|
 |:---|:-----|:----|:------|
@@ -19,3 +37,9 @@
 |status|指定当前步骤的状态(danger,info,news,warning,sucess,process)|string|process|
 |size|设置step bar的大小(default,samll)|string|default|
 |direction|设置step bar的方向(horizontal,vertical)|string|horizontal|
+
+## 注意事项
+
+暂无
+
+## 更新日志

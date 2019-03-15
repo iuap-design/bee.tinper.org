@@ -26,6 +26,8 @@ import Button from '../../src';
                     <Button shape="border" colors="warning">warning</Button>
                     <Button shape="border" colors="danger">danger</Button>
                     <Button shape="border" colors="dark">dark</Button>
+                <div className="divider"></div>
+                  <Button colors="primary" disabled>状态(disabled)</Button>
             </div>
         )
     }

@@ -80,7 +80,7 @@
 	
 	var CARETUP = _react2['default'].createElement('i', { className: 'uf uf-arrow-up' });
 	
-	var Demo1 = __webpack_require__(507);var Demo2 = __webpack_require__(508);var Demo3 = __webpack_require__(509);var Demo4 = __webpack_require__(510);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 高级表格的基础应用grid", "code": "/**\r\n * @title 高级表格的基础应用grid\r\n * @description 全选、分页、过滤功能、交换\r\n *\r\n */\r\nimport React, { Component } from \"react\";\r\nimport { Grid } from 'tinper-bee';\r\n\r\nfunction fmoney(s, n) {\r\n  n = n > 0 && n <= 20 ? n : 2;\r\n  s = parseFloat((s + \"\").replace(/[^\\d\\.-]/g, \"\")).toFixed(n) + \"\";\r\n  let l = s.split(\".\")[0].split(\"\").reverse(), r = s.split(\".\")[1];\r\n  let t = \"\";\r\n  for (let i = 0; i < l.length; i++) {\r\n  t += l[i] + ((i + 1) % 3 == 0 && (i + 1) != l.length ? \",\" : \"\");\r\n  }\r\n  return t.split(\"\").reverse().join(\"\") + \".\" + r;\r\n  }\r\n  \r\nconst column = [\r\n  {\r\n    title: \"序号\",\r\n    dataIndex: \"index\",\r\n    key: \"index\",\r\n    width: 100\r\n  },\r\n  {\r\n    title: \"订单编号\",\r\n    dataIndex: \"orderCode\",\r\n    key: \"orderCode\",\r\n    width: 150\r\n  },\r\n  {\r\n    title: \"金额\",\r\n    dataIndex: \"money\",\r\n    key: \"money\",\r\n    width: 160,\r\n    textAlign:'right',\r\n    render(text, record, index) {\r\n       let money = fmoney(text,2);\r\n       return (<span>{money}</span>)\r\n    }\r\n  },\r\n  {\r\n    title: \"类型\",\r\n    dataIndex: \"type_name\",\r\n    key: \"type_name\",\r\n    width: 100\r\n  },\r\n  {\r\n    title: \"采购组织\",\r\n    dataIndex: \"purchasing\",\r\n    key: \"purchasing\",\r\n    width: 150\r\n  },\r\n  {\r\n    title: \"采购组\",\r\n    dataIndex: \"purchasingGroup\",\r\n    key: \"purchasingGroup\",\r\n    width: 300\r\n  },\r\n  {\r\n    title: \"凭证日期\",\r\n    dataIndex: \"voucherDate\",\r\n    key: \"voucherDate\",\r\n    width: 150\r\n  },\r\n  {\r\n    title: \"审批状态\",\r\n    dataIndex: \"approvalState_name\",\r\n    key: \"approvalState_name\",\r\n    width: 150\r\n  },\r\n  {\r\n    title: \"确认状态\",\r\n    dataIndex: \"confirmState_name\",\r\n    key: \"confirmState_name\",\r\n    width: 500\r\n  },\r\n  {\r\n    title: \"关闭状态\",\r\n    dataIndex: \"closeState_name\",\r\n    key: \"closeState_name\",\r\n    width: 150\r\n  },\r\n  {\r\n    title: \"操作\",\r\n    dataIndex: \"d\",\r\n    key: \"d\",\r\n    width: 100,\r\n    fixed: \"right\",\r\n    render(text, record, index) {\r\n      return (\r\n        <div className=\"operation-btn\">\r\n          <a\r\n            href=\"#\"\r\n            tooltip={text}\r\n            onClick={() => {\r\n              alert(\"这是第\" + index + \"列，内容为:\" + text);\r\n            }}\r\n          >\r\n            一些操作\r\n          </a>\r\n        </div>\r\n      );\r\n    }\r\n  }\r\n];\r\nconst dataList = [\r\n  {\r\n    index: 1,\r\n    orderCode: \"2343\",\r\n    supplierName: \"xxx\",\r\n    type_name: \"123\",\r\n    purchasing: \"内行\",\r\n    purchasingGroup: \"323\",\r\n    voucherDate: \"kkkk\",\r\n    approvalState_name: \"vvvv\",\r\n    confirmState_name: \"aaaa\",\r\n    closeState_name: \"vnnnnn\",\r\n    money:'1232.56',\r\n    d: \"操作\",\r\n    key: \"1\"\r\n  },\r\n  {\r\n    index: 2,\r\n    _checked: true,\r\n    orderCode: \"222\",\r\n    supplierName: \"22xxx\",\r\n    type_name: \"1223\",\r\n    purchasing: \"内行2\",\r\n    purchasingGroup: \"3223\",\r\n    voucherDate: \"222kk\",\r\n    approvalState_name: \"22vvvv\",\r\n    confirmState_name: \"2aaaa\",\r\n    closeState_name: \"2vnnnnn\",\r\n    money:'2341232.56',\r\n    d: \"2操作\",\r\n    key: \"2\"\r\n  },\r\n  {\r\n    index: 3,\r\n    orderCode: \"222\",\r\n    supplierName: \"22xxx\",\r\n    _disabled: true,\r\n    type_name: \"1223\",\r\n    purchasing: \"内行2\",\r\n    purchasingGroup: \"3223\",\r\n    voucherDate: \"222kk\",\r\n    approvalState_name: \"22vvvv\",\r\n    confirmState_name: \"2aaaa\",\r\n    closeState_name: \"2vnnnnn\",\r\n    money:'122368732.56',\r\n    d: \"3操作\",\r\n    key: \"3\"\r\n  },\r\n  {\r\n    index: 4,\r\n    orderCode: \"222\",\r\n    supplierName: \"22xxx\",\r\n    type_name: \"1223\",\r\n    purchasing: \"内行2\",\r\n    purchasingGroup: \"3223\",\r\n    voucherDate: \"222kk\",\r\n    approvalState_name: \"22vvvv\",\r\n    confirmState_name: \"2aaaa\",\r\n    closeState_name: \"2vnnnnn\",\r\n    money:'18765232.56',\r\n    d: \"4操作\",\r\n    key: \"4\"\r\n  }\r\n];\r\n\r\nclass Demo1 extends Component {\r\n  constructor(props) {\r\n    super(props);\r\n  }\r\n  //临时加个判断\r\n  shouldComponentUpdate(){\r\n    if(this.props.className =='u-panel-title'){\r\n      return false;\r\n    }\r\n  }\r\n  getSelectedDataFunc = data => {\r\n    console.log(\"data\", data);\r\n  };\r\n\r\n  selectedRow = (record, index) => {};\r\n  /**\r\n   * 请求页面数据\r\n   */\r\n  freshata=()=>{\r\n\r\n  }\r\n  onDataNumSelect=()=>{\r\n    console.log('选择每页多少条的回调函数');\r\n  }\r\n  render() {\r\n    let paginationObj = {\r\n      items:10,//一页显示多少条\r\n      total:100,//总共多少条、\r\n      freshData:this.freshData,//点击下一页刷新的数据\r\n      onDataNumSelect:this.onDataNumSelect, //每页大小改变触发的事件\r\n      showJump:false\r\n    }\r\n    return (\r\n      <Grid\r\n        className=\"demo\"\r\n        columns={column}\r\n        data={dataList}\r\n        getSelectedDataFunc={this.getSelectedDataFunc}\r\n        paginationObj={paginationObj}\r\n      />\r\n    );\r\n  }\r\n}\r\n", "desc": " 全选、分页、过滤功能、交换" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 高级表格(排序)应用", "code": "/**\r\n *\r\n * @title 高级表格(排序)应用\r\n * @description 基础grid上添加排序功能\r\n *\r\n */\r\nimport React, { Component } from \"react\";\r\nimport { Grid } from 'tinper-bee';\r\nconst column = [\r\n    {\r\n      title: \"名字\",\r\n      dataIndex: \"a\",\r\n      key: \"a\",\r\n      className:'dfasd',\r\n      width: 200\r\n    },\r\n    {\r\n      title: \"功力指数\",\r\n      dataIndex: \"b\",\r\n      key: \"b\",\r\n      width: 200,\r\n      sumCol: true,\r\n      sorter: (a, b) => a.c - b.c,\r\n      sorterClick:(data,type)=>{//排序的回调函数\r\n        //type value is up or down\r\n        console.log(\"data\",data);\r\n      }\r\n    },\r\n    {\r\n      title: \"年龄\",\r\n      dataIndex: \"c\",\r\n      key: \"c\",\r\n      width: 200,\r\n      sumCol: true,\r\n      sorter: (a, b) => a.c - b.c,\r\n      sorterClick:(data,type)=>{//排序的回调函数\r\n        //type value is up or down\r\n        console.log(\"data\",data);\r\n      }\r\n    },\r\n    {\r\n      title: \"成绩\",\r\n      dataIndex: \"e\",\r\n      key: \"e\",\r\n      width: 200,\r\n      sumCol: true,\r\n      sorter: (a, b) => a.c - b.c,\r\n    },\r\n    {\r\n      title: \"武功级别\",\r\n      dataIndex: \"d\",\r\n      key: \"d\",\r\n      width: 200\r\n    }\r\n  ];\r\n  const dataList = [\r\n    { a: \"杨过\", b: 675, c: 30, d: \"内行\",e:100, key: \"2\" },\r\n    { a: \"令狐冲\", b: 43, c: 41, d: \"大侠\",e:90, key: \"1\" },\r\n    { a: \"令狐冲1\", b: 43, c: 81, d: \"大侠\", e:120,key: \"4\" },\r\n    { a: \"令狐冲2\", b: 43, c: 81, d: \"大侠\", e:130,key: \"5\" },\r\n    { a: \"郭靖\", b: 153, c: 25, d: \"大侠\",e:90, key: \"3\" }\r\n  ];\r\n\r\nclass Demo2 extends Component {\r\n  constructor(props) {\r\n    super(props);\r\n  }\r\n\r\n  //临时加个判断\r\n  shouldComponentUpdate(){\r\n    if(this.props.className =='u-panel-title'){\r\n      return false;\r\n    }\r\n  }\r\n  getSelectedDataFunc = data => {\r\n    console.log(\"data\", data);\r\n  };\r\n\r\n  getCloumnsScroll = columns => {\r\n    let sum = 0;\r\n    columns.forEach(da => {\r\n      sum += da.width;\r\n    });\r\n    console.log(\"sum\", sum);\r\n    return sum;\r\n  };\r\n\r\n  selectedRow = (record, index) => {};\r\n  /**\r\n   * 请求页面数据\r\n   */\r\n  freshData=()=>{\r\n\r\n  }\r\n  /**\r\n   * 后端获取数据\r\n   */\r\n  sortFun = (sortParam)=>{\r\n    console.info(sortParam);\r\n    //将参数传递给后端排序\r\n  }\r\n  render() {\r\n    let paginationObj = {\r\n      items:10,//总页数\r\n      freshData:this.freshData\r\n    }\r\n    let sortObj = {\r\n        mode:'multiple',\r\n        // backSource:true,\r\n        sortFun:this.sortFun\r\n      }\r\n    return (\r\n      <Grid\r\n        className=\"demo\"\r\n        columns={column}\r\n        data={dataList}\r\n        getSelectedDataFunc={this.getSelectedDataFunc}\r\n        selectedRow={this.selectedRow}\r\n        sort={sortObj}\r\n        headerScroll={true}\r\n        sortFun={this.sortFun}\r\n        paginationObj={paginationObj}\r\n      />\r\n    );\r\n  }\r\n}\r\n", "desc": " 基础grid上添加排序功能" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 高级表格(保存操作模板、导出excel)应用 ", "code": "/**\r\n  * @title 高级表格(保存操作模板、导出excel)应用 \r\n * @description 拖住表格宽度、交换列、以及导出excel功能\r\n *\r\n */\r\nimport React, { Component } from \"react\";\r\n\nimport { Grid, Button } from 'tinper-bee';\r\n\r\nconst column = [\r\n  {\r\n    title: \"序号\",\r\n    dataIndex: \"index\",\r\n    key: \"index\",\r\n    width: 100,\r\n    // exportHidden:true //是否在导出中隐藏此列,此属性如不设置的话，他会读取当前页面的列是否隐藏和显示\r\n  },\r\n  {\r\n    title: \"订单编号\",\r\n    dataIndex: \"orderCode\",\r\n    key: \"orderCode\",\r\n    exportKey:'supplierName',//单独设置当前列的导出的key\r\n    width: 100\r\n  },\r\n  {\r\n    title: \"供应商名称\",\r\n    dataIndex: \"supplierName\",\r\n    key: \"supplierName\",\r\n    width: 100\r\n  },\r\n  {\r\n    title: \"类型\",\r\n    dataIndex: \"type_name\",\r\n    key: \"type_name\",\r\n    width: 100\r\n  },\r\n  {\r\n    title: \"采购组织\",\r\n    dataIndex: \"purchasing\",\r\n    key: \"purchasing\",\r\n    width: 100,\r\n  },\r\n  {\r\n    title: \"采购组\",\r\n    dataIndex: \"purchasingGroup\",\r\n    key: \"purchasingGroup\",\r\n    width: 300\r\n  },\r\n  {\r\n    title: \"凭证日期\",\r\n    dataIndex: \"voucherDate\",\r\n    key: \"voucherDate\",\r\n    width: 100\r\n  },\r\n  {\r\n    title: \"审批状态\",\r\n    dataIndex: \"approvalState_name\",\r\n    key: \"approvalState_name\",\r\n    width: 100\r\n  },\r\n  {\r\n    title: \"确认状态\",\r\n    dataIndex: \"confirmState_name\",\r\n    key: \"confirmState_name\",\r\n    width: 500\r\n  },\r\n  {\r\n    title: \"关闭状态\",\r\n    dataIndex: \"closeState_name\",\r\n    key: \"closeState_name\",\r\n    width: 100\r\n  },\r\n  {\r\n    title: \"操作\",\r\n    dataIndex: \"d\",\r\n    key: \"d\",\r\n    width: 100,\r\n    fixed: \"right\",\r\n    render(text, record, index) {\r\n      return (\r\n        <div className=\"operation-btn\">\r\n          <a\r\n            href=\"#\"\r\n            tooltip={text}\r\n            onClick={() => {\r\n              alert(\"这是第\" + index + \"列，内容为:\" + text);\r\n            }}\r\n          >\r\n            一些操作\r\n          </a>\r\n        </div>\r\n      );\r\n    }\r\n  }\r\n];\r\nconst dataList = [\r\n  {\r\n    index: 1,\r\n    orderCode: \"2343\",\r\n    supplierName: \"xxx\",\r\n    type_name: \"123\",\r\n    purchasing: \"内行\",\r\n    purchasingGroup: \"323\",\r\n    voucherDate: \"kkkk\",\r\n    approvalState_name: \"vvvv\",\r\n    confirmState_name: \"aaaa\",\r\n    closeState_name: \"vnnnnn\",\r\n    d: \"操作\",\r\n    key: \"1\"\r\n  },\r\n  {\r\n    index: 2,\r\n    _checked: true,\r\n    orderCode: \"222\",\r\n    supplierName: \"22xxx\",\r\n    type_name: \"1223\",\r\n    purchasing: \"内行2\",\r\n    purchasingGroup: \"3223\",\r\n    voucherDate: \"222kk\",\r\n    approvalState_name: \"22vvvv\",\r\n    confirmState_name: \"2aaaa\",\r\n    closeState_name: \"2vnnnnn\",\r\n    d: \"2操作\",\r\n    key: \"2\"\r\n  },\r\n  {\r\n    index: 3,\r\n    orderCode: \"222\",\r\n    supplierName: \"22xxx\",\r\n    _disabled: true,\r\n    type_name: \"1223\",\r\n    purchasing: \"内行2\",\r\n    purchasingGroup: \"3223\",\r\n    voucherDate: \"222kk\",\r\n    approvalState_name: \"22vvvv\",\r\n    confirmState_name: \"2aaaa\",\r\n    closeState_name: \"2vnnnnn\",\r\n    d: \"3操作\",\r\n    key: \"3\"\r\n  },\r\n  {\r\n    index: 4,\r\n    orderCode: \"222\",\r\n    supplierName: \"22xxx\",\r\n    type_name: \"1223\",\r\n    purchasing: \"内行2\",\r\n    purchasingGroup: \"3223\",\r\n    voucherDate: \"222kk\",\r\n    approvalState_name: \"22vvvv\",\r\n    confirmState_name: \"2aaaa\",\r\n    closeState_name: \"2vnnnnn\",\r\n    d: \"4操作\",\r\n    key: \"4\"\r\n  }\r\n];\r\n\r\nconst exportDataList = [\r\n  {\r\n    index: 1,\r\n    orderCode: \"2343\",\r\n    supplierName: \"xxx\",\r\n    type_name: \"123\",\r\n    purchasing: \"内行\",\r\n    purchasingGroup: \"323\",\r\n    voucherDate: \"kkkk\",\r\n    approvalState_name: \"vvvv\",\r\n    confirmState_name: \"aaaa\",\r\n    closeState_name: \"vnnnnn\",\r\n    d: \"操作\",\r\n    key: \"1\"\r\n  },\r\n  {\r\n    index: 4,\r\n    orderCode: \"222\",\r\n    supplierName: \"22xxx\",\r\n    type_name: \"1223\",\r\n    purchasing: \"内行2\",\r\n    purchasingGroup: \"3223\",\r\n    voucherDate: \"222kk\",\r\n    approvalState_name: \"22vvvv\",\r\n    confirmState_name: \"2aaaa\",\r\n    closeState_name: \"2vnnnnn\",\r\n    d: \"4操作\",\r\n    key: \"4\"\r\n  }\r\n];\r\n\r\n\r\nclass Demo3 extends Component {\r\n  constructor(props) {\r\n    super(props);\r\n    this.state={\r\n      showTemTable:false\r\n    }\r\n  }\r\n  \r\n  getSelectedDataFunc = data => {\r\n    console.log(\"data\", data);\r\n  };\r\n\r\n  getCloumnsScroll = columns => {\r\n    let sum = 0;\r\n    columns.forEach(da => {\r\n      sum += da.width;\r\n    });\r\n    console.log(\"sum\", sum);\r\n    return sum;\r\n  };\r\n\r\n  selectedRow = (record, index) => {};\r\n  /**\r\n   * 请求页面数据\r\n   */\r\n  freshData=()=>{\r\n\r\n  }\r\n  createTemTable=()=>{\r\n    const colsAndTablePros = this.refs.grid.getColumnsAndTablePros();\r\n    this.setState({\r\n      showTemTable:true,\r\n      tablePros:colsAndTablePros.tablePros,\r\n      temColumns:colsAndTablePros.columns\r\n    });\r\n  }\r\n\r\n  exportExcel = ()=>{\r\n    this.refs.grid.exportExcel();\r\n  }\r\n\r\n  render() {\r\n    let paginationObj = {\r\n      items:10,//总页数\r\n      total:100,\r\n      freshData:this.freshData\r\n    }\r\n    return (\r\n      <div>\r\n        <div className='btn_group'>\r\n          <Button colors=\"primary\" onClick={this.createTemTable}>生成模板表格</Button>\r\n          <Button colors=\"primary\" onClick={this.exportExcel}>导出数据</Button>\r\n        </div>\r\n        <Grid\r\n          ref=\"grid\"\r\n          className='gridDemo demo'\r\n          columns={column}\r\n          data={dataList}\r\n          exportData={exportDataList}\r\n          getSelectedDataFunc={this.getSelectedDataFunc}\r\n          checkMinSize={7}\r\n          // draggable={true}\r\n          dragborder\r\n          multiSelect={{ type: \"checkbox\" }}\r\n          scroll={{ x: \"130%\", y: 100 }}\r\n          selectedRow={this.selectedRow}\r\n          paginationObj={paginationObj}\r\n          showFilterPopover={true}\r\n        />\r\n        <h3>根据模板生成的表格</h3>\r\n        {this.state.showTemTable?\r\n          <Grid {...this.state.tablePros} columns={this.state.temColumns}/>\r\n          :\"\"}\r\n      </div>\r\n    );\r\n  }\r\n}\r\n", "desc": " 拖住表格宽度、交换列、以及导出excel功能" }, { "example": _react2['default'].createElement(Demo4, null), "title": " 高级表格的基础应用grid", "code": "/**\r\n * @title 高级表格的基础应用grid\r\n * @description 全选、分页、过滤功能、交换\r\n *\r\n */\r\nimport React, { Component } from \"react\";\r\nimport { Grid } from 'tinper-bee';\r\nconst columns = [\r\n    {\r\n        title:'序号',\r\n        dataIndex:'index',\r\n        width:'80',\r\n        render:(text,record,index)=>{\r\n            return index\r\n        },\r\n        fixed:'left'\r\n    },\r\n    {\r\n    title: \"用户名\", dataIndex: \"a\", key: \"a\", width: 580, className: \"rowClassName\",\r\n  },\r\n  { id: \"123\", title: \"性别\", dataIndex: \"b\", key: \"b\", width: 80},\r\n  { title: \"年龄\", dataIndex: \"c\", key: \"c\", width: 200 },\r\n  {\r\n    title: \"操作\",\r\n    dataIndex: \"d\",\r\n    key: \"d\",\r\n    fixed:'right',\r\n    render(text, record, index) {\r\n      return (\r\n        <div style={{ position: 'relative' }} title={text} >\r\n          <a\r\n            href=\"javascript:;\"\r\n            tooltip={text}\r\n            onClick={() => {\r\n              alert('这是第' + index + '列，内容为:' + text);\r\n            }}\r\n          >\r\n            一些操作\r\n              </a>\r\n        </div>\r\n      );\r\n    }\r\n  }\r\n];\r\n\r\nconst data = [ ...new Array(10000) ].map((e, i) => {\r\n    const rs = { a: i + 'a', b: i + 'b', c: i + 'c', d: i + 'd', key: i };\r\n    if(i%3==0){\r\n        rs.b = '女';\r\n    }\r\n    return rs;\r\n   })\r\n\r\nclass Demo4 extends Component {\r\n  constructor(props) {\r\n    super(props);\r\n  }\r\n  //临时加个判断\r\n  shouldComponentUpdate(){\r\n    if(this.props.className =='u-panel-title'){\r\n      return false;\r\n    }\r\n  }\r\n  getSelectedDataFunc = data => {\r\n    console.log(\"data\", data);\r\n  };\r\n\r\n  selectedRow = (record, index) => {};\r\n  /**\r\n   * 请求页面数据\r\n   */\r\n  freshata=()=>{\r\n\r\n  }\r\n  onDataNumSelect=()=>{\r\n    console.log('选择每页多少条的回调函数');\r\n  }\r\n  render() {\r\n    let paginationObj = {\r\n      items:10,//一页显示多少条\r\n      total:100,//总共多少条\r\n      freshData:this.freshData,//点击下一页刷新的数据\r\n      onDataNumSelect:this.onDataNumSelect //每页大小改变触发的事件\r\n    }\r\n    return (\r\n      <Grid\r\n        className=\"demo\"\r\n        columns={columns}\r\n        data={data}\r\n        getSelectedDataFunc={this.getSelectedDataFunc}\r\n        paginationObj={paginationObj}\r\n        loadLazy={true}\r\n        heigth={40}\r\n        scroll = {{y:300}}\r\n      />\r\n    );\r\n  }\r\n}\r\n", "desc": " 全选、分页、过滤功能、交换" }];
+	var Demo1 = __webpack_require__(507);var Demo2 = __webpack_require__(508);var Demo3 = __webpack_require__(509);var Demo4 = __webpack_require__(510);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 高级表格的基础应用grid", "code": "/**\n * @title 高级表格的基础应用grid\n * @description 全选、分页、过滤功能、交换\n *\n */\nimport React, { Component } from \"react\";\nimport { Grid } from 'tinper-bee';\n\nfunction fmoney(s, n) {\n  n = n > 0 && n <= 20 ? n : 2;\n  s = parseFloat((s + \"\").replace(/[^\\d\\.-]/g, \"\")).toFixed(n) + \"\";\n  let l = s.split(\".\")[0].split(\"\").reverse(), r = s.split(\".\")[1];\n  let t = \"\";\n  for (let i = 0; i < l.length; i++) {\n  t += l[i] + ((i + 1) % 3 == 0 && (i + 1) != l.length ? \",\" : \"\");\n  }\n  return t.split(\"\").reverse().join(\"\") + \".\" + r;\n  }\n  \nconst column = [\n  {\n    title: \"序号\",\n    dataIndex: \"index\",\n    key: \"index\",\n    width: 100\n  },\n  {\n    title: \"订单编号\",\n    dataIndex: \"orderCode\",\n    key: \"orderCode\",\n    width: 150\n  },\n  {\n    title: \"金额\",\n    dataIndex: \"money\",\n    key: \"money\",\n    width: 160,\n    textAlign:'right',\n    render(text, record, index) {\n       let money = fmoney(text,2);\n       return (<span>{money}</span>)\n    }\n  },\n  {\n    title: \"类型\",\n    dataIndex: \"type_name\",\n    key: \"type_name\",\n    width: 100\n  },\n  {\n    title: \"采购组织\",\n    dataIndex: \"purchasing\",\n    key: \"purchasing\",\n    width: 150\n  },\n  {\n    title: \"采购组\",\n    dataIndex: \"purchasingGroup\",\n    key: \"purchasingGroup\",\n    width: 300\n  },\n  {\n    title: \"凭证日期\",\n    dataIndex: \"voucherDate\",\n    key: \"voucherDate\",\n    width: 150\n  },\n  {\n    title: \"审批状态\",\n    dataIndex: \"approvalState_name\",\n    key: \"approvalState_name\",\n    width: 150\n  },\n  {\n    title: \"确认状态\",\n    dataIndex: \"confirmState_name\",\n    key: \"confirmState_name\",\n    width: 500\n  },\n  {\n    title: \"关闭状态\",\n    dataIndex: \"closeState_name\",\n    key: \"closeState_name\",\n    width: 150\n  },\n  {\n    title: \"操作\",\n    dataIndex: \"d\",\n    key: \"d\",\n    width: 100,\n    fixed: \"right\",\n    render(text, record, index) {\n      return (\n        <div className=\"operation-btn\">\n          <a\n            href=\"#\"\n            tooltip={text}\n            onClick={() => {\n              alert(\"这是第\" + index + \"列，内容为:\" + text);\n            }}\n          >\n            一些操作\n          </a>\n        </div>\n      );\n    }\n  }\n];\nconst dataList = [\n  {\n    index: 1,\n    orderCode: \"2343\",\n    supplierName: \"xxx\",\n    type_name: \"123\",\n    purchasing: \"内行\",\n    purchasingGroup: \"323\",\n    voucherDate: \"kkkk\",\n    approvalState_name: \"vvvv\",\n    confirmState_name: \"aaaa\",\n    closeState_name: \"vnnnnn\",\n    money:'1232.56',\n    d: \"操作\",\n    key: \"1\"\n  },\n  {\n    index: 2,\n    _checked: true,\n    orderCode: \"222\",\n    supplierName: \"22xxx\",\n    type_name: \"1223\",\n    purchasing: \"内行2\",\n    purchasingGroup: \"3223\",\n    voucherDate: \"222kk\",\n    approvalState_name: \"22vvvv\",\n    confirmState_name: \"2aaaa\",\n    closeState_name: \"2vnnnnn\",\n    money:'2341232.56',\n    d: \"2操作\",\n    key: \"2\"\n  },\n  {\n    index: 3,\n    orderCode: \"222\",\n    supplierName: \"22xxx\",\n    _disabled: true,\n    type_name: \"1223\",\n    purchasing: \"内行2\",\n    purchasingGroup: \"3223\",\n    voucherDate: \"222kk\",\n    approvalState_name: \"22vvvv\",\n    confirmState_name: \"2aaaa\",\n    closeState_name: \"2vnnnnn\",\n    money:'122368732.56',\n    d: \"3操作\",\n    key: \"3\"\n  },\n  {\n    index: 4,\n    orderCode: \"222\",\n    supplierName: \"22xxx\",\n    type_name: \"1223\",\n    purchasing: \"内行2\",\n    purchasingGroup: \"3223\",\n    voucherDate: \"222kk\",\n    approvalState_name: \"22vvvv\",\n    confirmState_name: \"2aaaa\",\n    closeState_name: \"2vnnnnn\",\n    money:'18765232.56',\n    d: \"4操作\",\n    key: \"4\"\n  }\n];\n\nclass Demo1 extends Component {\n  constructor(props) {\n    super(props);\n  }\n  //临时加个判断\n  shouldComponentUpdate(){\n    if(this.props.className =='u-panel-title'){\n      return false;\n    }\n  }\n  getSelectedDataFunc = data => {\n    console.log(\"data\", data);\n  };\n\n  selectedRow = (record, index) => {};\n  /**\n   * 请求页面数据\n   */\n  freshata=()=>{\n\n  }\n  onDataNumSelect=()=>{\n    console.log('选择每页多少条的回调函数');\n  }\n  render() {\n    let paginationObj = {\n      items:10,//一页显示多少条\n      total:100,//总共多少条、\n      freshData:this.freshData,//点击下一页刷新的数据\n      onDataNumSelect:this.onDataNumSelect, //每页大小改变触发的事件\n      showJump:false\n    }\n    return (\n      <Grid\n        className=\"demo\"\n        columns={column}\n        data={dataList}\n        getSelectedDataFunc={this.getSelectedDataFunc}\n        paginationObj={paginationObj}\n      />\n    );\n  }\n}\n", "desc": " 全选、分页、过滤功能、交换" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 高级表格(排序)应用", "code": "/**\n *\n * @title 高级表格(排序)应用\n * @description 基础grid上添加排序功能\n *\n */\nimport React, { Component } from \"react\";\nimport { Grid } from 'tinper-bee';\nconst column = [\n    {\n      title: \"名字\",\n      dataIndex: \"a\",\n      key: \"a\",\n      className:'dfasd',\n      width: 200\n    },\n    {\n      title: \"功力指数\",\n      dataIndex: \"b\",\n      key: \"b\",\n      width: 200,\n      sumCol: true,\n      sorter: (a, b) => a.c - b.c,\n      sorterClick:(data,type)=>{//排序的回调函数\n        //type value is up or down\n        console.log(\"data\",data);\n      }\n    },\n    {\n      title: \"年龄\",\n      dataIndex: \"c\",\n      key: \"c\",\n      width: 200,\n      sumCol: true,\n      sorter: (a, b) => a.c - b.c,\n      sorterClick:(data,type)=>{//排序的回调函数\n        //type value is up or down\n        console.log(\"data\",data);\n      }\n    },\n    {\n      title: \"成绩\",\n      dataIndex: \"e\",\n      key: \"e\",\n      width: 200,\n      sumCol: true,\n      sorter: (a, b) => a.c - b.c,\n    },\n    {\n      title: \"武功级别\",\n      dataIndex: \"d\",\n      key: \"d\",\n      width: 200\n    }\n  ];\n  const dataList = [\n    { a: \"杨过\", b: 675, c: 30, d: \"内行\",e:100, key: \"2\" },\n    { a: \"令狐冲\", b: 43, c: 41, d: \"大侠\",e:90, key: \"1\" },\n    { a: \"令狐冲1\", b: 43, c: 81, d: \"大侠\", e:120,key: \"4\" },\n    { a: \"令狐冲2\", b: 43, c: 81, d: \"大侠\", e:130,key: \"5\" },\n    { a: \"郭靖\", b: 153, c: 25, d: \"大侠\",e:90, key: \"3\" }\n  ];\n\nclass Demo2 extends Component {\n  constructor(props) {\n    super(props);\n  }\n\n  //临时加个判断\n  shouldComponentUpdate(){\n    if(this.props.className =='u-panel-title'){\n      return false;\n    }\n  }\n  getSelectedDataFunc = data => {\n    console.log(\"data\", data);\n  };\n\n  getCloumnsScroll = columns => {\n    let sum = 0;\n    columns.forEach(da => {\n      sum += da.width;\n    });\n    console.log(\"sum\", sum);\n    return sum;\n  };\n\n  selectedRow = (record, index) => {};\n  /**\n   * 请求页面数据\n   */\n  freshData=()=>{\n\n  }\n  /**\n   * 后端获取数据\n   */\n  sortFun = (sortParam)=>{\n    console.info(sortParam);\n    //将参数传递给后端排序\n  }\n  render() {\n    let paginationObj = {\n      items:10,//总页数\n      freshData:this.freshData\n    }\n    let sortObj = {\n        mode:'multiple',\n        // backSource:true,\n        sortFun:this.sortFun\n      }\n    return (\n      <Grid\n        className=\"demo\"\n        columns={column}\n        data={dataList}\n        getSelectedDataFunc={this.getSelectedDataFunc}\n        selectedRow={this.selectedRow}\n        sort={sortObj}\n        headerScroll={true}\n        sortFun={this.sortFun}\n        paginationObj={paginationObj}\n      />\n    );\n  }\n}\n", "desc": " 基础grid上添加排序功能" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 高级表格(保存操作模板、导出excel)应用 ", "code": "/**\n  * @title 高级表格(保存操作模板、导出excel)应用 \n * @description 拖住表格宽度、交换列、以及导出excel功能\n *\n */\nimport React, { Component } from \"react\";\nimport { Grid, Button } from 'tinper-bee';\n\nconst column = [\n  {\n    title: \"序号\",\n    dataIndex: \"index\",\n    key: \"index\",\n    width: 100,\n    // exportHidden:true //是否在导出中隐藏此列,此属性如不设置的话，他会读取当前页面的列是否隐藏和显示\n  },\n  {\n    title: \"订单编号\",\n    dataIndex: \"orderCode\",\n    key: \"orderCode\",\n    exportKey:'supplierName',//单独设置当前列的导出的key\n    width: 100\n  },\n  {\n    title: \"供应商名称\",\n    dataIndex: \"supplierName\",\n    key: \"supplierName\",\n    width: 100\n  },\n  {\n    title: \"类型\",\n    dataIndex: \"type_name\",\n    key: \"type_name\",\n    width: 100\n  },\n  {\n    title: \"采购组织\",\n    dataIndex: \"purchasing\",\n    key: \"purchasing\",\n    width: 100,\n  },\n  {\n    title: \"采购组\",\n    dataIndex: \"purchasingGroup\",\n    key: \"purchasingGroup\",\n    width: 300\n  },\n  {\n    title: \"凭证日期\",\n    dataIndex: \"voucherDate\",\n    key: \"voucherDate\",\n    width: 100\n  },\n  {\n    title: \"审批状态\",\n    dataIndex: \"approvalState_name\",\n    key: \"approvalState_name\",\n    width: 100\n  },\n  {\n    title: \"确认状态\",\n    dataIndex: \"confirmState_name\",\n    key: \"confirmState_name\",\n    width: 500\n  },\n  {\n    title: \"关闭状态\",\n    dataIndex: \"closeState_name\",\n    key: \"closeState_name\",\n    width: 100\n  },\n  {\n    title: \"操作\",\n    dataIndex: \"d\",\n    key: \"d\",\n    width: 100,\n    fixed: \"right\",\n    render(text, record, index) {\n      return (\n        <div className=\"operation-btn\">\n          <a\n            href=\"#\"\n            tooltip={text}\n            onClick={() => {\n              alert(\"这是第\" + index + \"列，内容为:\" + text);\n            }}\n          >\n            一些操作\n          </a>\n        </div>\n      );\n    }\n  }\n];\nconst dataList = [\n  {\n    index: 1,\n    orderCode: \"2343\",\n    supplierName: \"xxx\",\n    type_name: \"123\",\n    purchasing: \"内行\",\n    purchasingGroup: \"323\",\n    voucherDate: \"kkkk\",\n    approvalState_name: \"vvvv\",\n    confirmState_name: \"aaaa\",\n    closeState_name: \"vnnnnn\",\n    d: \"操作\",\n    key: \"1\"\n  },\n  {\n    index: 2,\n    _checked: true,\n    orderCode: \"222\",\n    supplierName: \"22xxx\",\n    type_name: \"1223\",\n    purchasing: \"内行2\",\n    purchasingGroup: \"3223\",\n    voucherDate: \"222kk\",\n    approvalState_name: \"22vvvv\",\n    confirmState_name: \"2aaaa\",\n    closeState_name: \"2vnnnnn\",\n    d: \"2操作\",\n    key: \"2\"\n  },\n  {\n    index: 3,\n    orderCode: \"222\",\n    supplierName: \"22xxx\",\n    _disabled: true,\n    type_name: \"1223\",\n    purchasing: \"内行2\",\n    purchasingGroup: \"3223\",\n    voucherDate: \"222kk\",\n    approvalState_name: \"22vvvv\",\n    confirmState_name: \"2aaaa\",\n    closeState_name: \"2vnnnnn\",\n    d: \"3操作\",\n    key: \"3\"\n  },\n  {\n    index: 4,\n    orderCode: \"222\",\n    supplierName: \"22xxx\",\n    type_name: \"1223\",\n    purchasing: \"内行2\",\n    purchasingGroup: \"3223\",\n    voucherDate: \"222kk\",\n    approvalState_name: \"22vvvv\",\n    confirmState_name: \"2aaaa\",\n    closeState_name: \"2vnnnnn\",\n    d: \"4操作\",\n    key: \"4\"\n  }\n];\n\nconst exportDataList = [\n  {\n    index: 1,\n    orderCode: \"2343\",\n    supplierName: \"xxx\",\n    type_name: \"123\",\n    purchasing: \"内行\",\n    purchasingGroup: \"323\",\n    voucherDate: \"kkkk\",\n    approvalState_name: \"vvvv\",\n    confirmState_name: \"aaaa\",\n    closeState_name: \"vnnnnn\",\n    d: \"操作\",\n    key: \"1\"\n  },\n  {\n    index: 4,\n    orderCode: \"222\",\n    supplierName: \"22xxx\",\n    type_name: \"1223\",\n    purchasing: \"内行2\",\n    purchasingGroup: \"3223\",\n    voucherDate: \"222kk\",\n    approvalState_name: \"22vvvv\",\n    confirmState_name: \"2aaaa\",\n    closeState_name: \"2vnnnnn\",\n    d: \"4操作\",\n    key: \"4\"\n  }\n];\n\n\nclass Demo3 extends Component {\n  constructor(props) {\n    super(props);\n    this.state={\n      showTemTable:false\n    }\n  }\n  \n  getSelectedDataFunc = data => {\n    console.log(\"data\", data);\n  };\n\n  getCloumnsScroll = columns => {\n    let sum = 0;\n    columns.forEach(da => {\n      sum += da.width;\n    });\n    console.log(\"sum\", sum);\n    return sum;\n  };\n\n  selectedRow = (record, index) => {};\n  /**\n   * 请求页面数据\n   */\n  freshData=()=>{\n\n  }\n  createTemTable=()=>{\n    const colsAndTablePros = this.refs.grid.getColumnsAndTablePros();\n    this.setState({\n      showTemTable:true,\n      tablePros:colsAndTablePros.tablePros,\n      temColumns:colsAndTablePros.columns\n    });\n  }\n\n  exportExcel = ()=>{\n    this.refs.grid.exportExcel();\n  }\n\n  render() {\n    let paginationObj = {\n      items:10,//总页数\n      total:100,\n      freshData:this.freshData\n    }\n    return (\n      <div>\n        <div className='btn_group'>\n          <Button colors=\"primary\" onClick={this.createTemTable}>生成模板表格</Button>\n          <Button colors=\"primary\" onClick={this.exportExcel}>导出数据</Button>\n        </div>\n        <Grid\n          ref=\"grid\"\n          className='gridDemo demo'\n          columns={column}\n          data={dataList}\n          exportData={exportDataList}\n          getSelectedDataFunc={this.getSelectedDataFunc}\n          checkMinSize={7}\n          // draggable={true}\n          dragborder\n          multiSelect={{ type: \"checkbox\" }}\n          scroll={{ x: \"130%\", y: 100 }}\n          selectedRow={this.selectedRow}\n          paginationObj={paginationObj}\n          showFilterPopover={true}\n        />\n        <h3>根据模板生成的表格</h3>\n        {this.state.showTemTable?\n          <Grid {...this.state.tablePros} columns={this.state.temColumns}/>\n          :\"\"}\n      </div>\n    );\n  }\n}\n", "desc": " 拖住表格宽度、交换列、以及导出excel功能" }, { "example": _react2['default'].createElement(Demo4, null), "title": " 高级表格的基础应用grid", "code": "/**\n * @title 高级表格的基础应用grid\n * @description 全选、分页、过滤功能、交换\n *\n */\nimport React, { Component } from \"react\";\nimport { Grid } from 'tinper-bee';\nconst columns = [\n    {\n        title:'序号',\n        dataIndex:'index',\n        width:'80',\n        render:(text,record,index)=>{\n            return index\n        },\n        fixed:'left'\n    },\n    {\n    title: \"用户名\", dataIndex: \"a\", key: \"a\", width: 580, className: \"rowClassName\",\n  },\n  { id: \"123\", title: \"性别\", dataIndex: \"b\", key: \"b\", width: 80},\n  { title: \"年龄\", dataIndex: \"c\", key: \"c\", width: 200 },\n  {\n    title: \"操作\",\n    dataIndex: \"d\",\n    key: \"d\",\n    fixed:'right',\n    render(text, record, index) {\n      return (\n        <div style={{ position: 'relative' }} title={text} >\n          <a\n            href=\"javascript:;\"\n            tooltip={text}\n            onClick={() => {\n              alert('这是第' + index + '列，内容为:' + text);\n            }}\n          >\n            一些操作\n              </a>\n        </div>\n      );\n    }\n  }\n];\n\nconst data = [ ...new Array(10000) ].map((e, i) => {\n    const rs = { a: i + 'a', b: i + 'b', c: i + 'c', d: i + 'd', key: i };\n    if(i%3==0){\n        rs.b = '女';\n    }\n    return rs;\n   })\n\nclass Demo4 extends Component {\n  constructor(props) {\n    super(props);\n  }\n  //临时加个判断\n  shouldComponentUpdate(){\n    if(this.props.className =='u-panel-title'){\n      return false;\n    }\n  }\n  getSelectedDataFunc = data => {\n    console.log(\"data\", data);\n  };\n\n  selectedRow = (record, index) => {};\n  /**\n   * 请求页面数据\n   */\n  freshata=()=>{\n\n  }\n  onDataNumSelect=()=>{\n    console.log('选择每页多少条的回调函数');\n  }\n  render() {\n    let paginationObj = {\n      items:10,//一页显示多少条\n      total:100,//总共多少条\n      freshData:this.freshData,//点击下一页刷新的数据\n      onDataNumSelect:this.onDataNumSelect //每页大小改变触发的事件\n    }\n    return (\n      <Grid\n        className=\"demo\"\n        columns={columns}\n        data={data}\n        getSelectedDataFunc={this.getSelectedDataFunc}\n        paginationObj={paginationObj}\n        loadLazy={true}\n        heigth={40}\n        scroll = {{y:300}}\n      />\n    );\n  }\n}\n", "desc": " 全选、分页、过滤功能、交换" }];
 	
 	var Demo = function (_Component) {
 	    _inherits(Demo, _Component);
@@ -6362,7 +6362,9 @@
 	        if (colorsMap[colors]) {
 	            clsObj[clsPrefix + '-' + colorsMap[colors]] = true;
 	        }
-	        //clsObj[`${clsPrefix}-border`] = bordered;
+	        if (bordered) {
+	            clsObj[clsPrefix + '-border'] = bordered;
+	        }
 	        var classes = (0, _classnames2["default"])(clsPrefix, clsObj);
 	        return _react2["default"].createElement(
 	            'button',
@@ -6435,7 +6437,7 @@
 	
 	var _multiSelect2 = _interopRequireDefault(_multiSelect);
 	
-	var _filterColumn = __webpack_require__(465);
+	var _filterColumn = __webpack_require__(461);
 	
 	var _filterColumn2 = _interopRequireDefault(_filterColumn);
 	
@@ -6459,7 +6461,7 @@
 	
 	var _beeIcon2 = _interopRequireDefault(_beeIcon);
 	
-	var _beeCheckbox = __webpack_require__(460);
+	var _beeCheckbox = __webpack_require__(462);
 	
 	var _beeCheckbox2 = _interopRequireDefault(_beeCheckbox);
 	
@@ -7378,7 +7380,7 @@
 	    var rows = [].concat(_toConsumableArray(props.data));
 	    _this.columnManager = new _ColumnManager2["default"](props.columns, props.children, props.originWidth);
 	    _this.store = (0, _createStore2["default"])({ currentHoverKey: null });
-	
+	    _this.firstDid = true;
 	    if (props.defaultExpandAllRows) {
 	      for (var i = 0; i < rows.length; i++) {
 	        var row = rows[i];
@@ -7499,6 +7501,8 @@
 	    if (prevProps.data.length === 0 || this.props.data.length === 0) {
 	      this.resetScrollX();
 	    }
+	    // 是否传入 scroll中的y属性，如果传入判断是否是整数，如果是则进行比较 。bodyTable 的clientHeight进行判断
+	    this.isShowScrollY();
 	  };
 	
 	  Table.prototype.componentWillUnmount = function componentWillUnmount() {
@@ -7546,6 +7550,23 @@
 	      this.setState({ contentWidthDiff: 0, lastShowIndex: lastShowIndex }); //重新渲染，为了显示滚动条
 	    }
 	  };
+	  //根据内容动态的判断是否显示纵向滚动条
+	
+	
+	  Table.prototype.isShowScrollY = function isShowScrollY() {
+	    var props = this.props;
+	    var y = props.scroll && props.scroll.y;
+	    if (y) {
+	      var bodyH = this.refs.bodyTable.clientHeight;
+	      var bodyContentH = this.refs.bodyTable.querySelector('table').clientHeight;
+	      var rightBodyTable = this.refs.fixedColumnsBodyRight;
+	      if (bodyContentH <= bodyH) {
+	        this.refs.bodyTable.style.overflowY = 'auto';
+	        this.refs.headTable.style.overflowY = 'auto';
+	        rightBodyTable && (rightBodyTable.style.overflowY = 'auto');
+	      }
+	    }
+	  };
 	
 	  Table.prototype.onExpandedRowsChange = function onExpandedRowsChange(expandedRowKeys) {
 	    if (!this.props.expandedRowKeys) {
@@ -7581,6 +7602,10 @@
 	    });
 	    if (index !== -1) {
 	      expandedRows.splice(index, 1);
+	    }
+	    //
+	    if (this.currentHoverKey == rowKey && this.hoverDom) {
+	      this.hoverDom.style.display = 'none';
 	    }
 	    this.onExpandedRowsChange(expandedRows);
 	  };
@@ -8430,19 +8455,21 @@
 	        currentHoverKey: isHover ? key : null
 	      });
 	    }
-	    if (this.hoverDom && isHover) {
-	      this.currentHoverKey = key;
-	      var td = (0, _utils.closest)(event.target, 'td');
-	      if (td) {
-	        var scrollTop = this.lastScrollTop ? this.lastScrollTop : 0;
-	        var top = td.offsetTop - scrollTop;
-	        if (this.refs.headTable) {
-	          top = top + this.refs.headTable.clientHeight;
+	    if (this.hoverDom) {
+	      if (isHover) {
+	        this.currentHoverKey = key;
+	        var td = (0, _utils.closest)(event.target, 'td');
+	        if (td) {
+	          var scrollTop = this.lastScrollTop ? this.lastScrollTop : 0;
+	          var top = td.offsetTop - scrollTop;
+	          if (this.refs.headTable) {
+	            top = top + this.refs.headTable.clientHeight;
+	          }
+	          this.hoverDom.style.top = top + 'px';
+	          this.hoverDom.style.height = td.offsetHeight + 'px';
+	          this.hoverDom.style.lineHeight = td.offsetHeight + 'px';
+	          this.hoverDom.style.display = 'block';
 	        }
-	        this.hoverDom.style.top = top + 'px';
-	        this.hoverDom.style.height = td.offsetHeight + 'px';
-	        this.hoverDom.style.lineHeight = td.offsetHeight + 'px';
-	        this.hoverDom.style.display = 'block';
 	      }
 	    }
 	
@@ -39550,11 +39577,10 @@
 	  }
 	
 	  InputGroupAddon.prototype.render = function render() {
-	    var _props = this.props;
-	    var className = _props.className;
-	    var clsPrefix = _props.clsPrefix;
-	
-	    var others = _objectWithoutProperties(_props, ['className', 'clsPrefix']);
+	    var _props = this.props,
+	        className = _props.className,
+	        clsPrefix = _props.clsPrefix,
+	        others = _objectWithoutProperties(_props, ['className', 'clsPrefix']);
 	
 	    return _react2["default"].createElement('span', _extends({}, others, {
 	      className: (0, _classnames2["default"])(className, clsPrefix)
@@ -40221,7 +40247,8 @@
 	            {
 	                value: this.state.value,
 	                animation: 'animation' in props ? props.animation : "slide-up",
-	                calendar: calendar
+	                calendar: calendar,
+	                disabled: props.disabled
 	            },
 	            function (_ref) {
 	                _objectDestructuringEmpty(_ref);
@@ -51260,13 +51287,13 @@
 	        value = format ? format(value) : value;
 	
 	        var disabledCursor = disabled ? ' disabled-cursor' : '';
-	
+	        var disabledCon = disabled ? ' disabled-con' : '';
 	        return _react2["default"].createElement(
 	            'div',
 	            null,
 	            iconStyle === 'double' ? _react2["default"].createElement(
 	                _beeInputGroup2["default"],
-	                { className: (0, _classnames2["default"])(className, classes) },
+	                { className: (0, _classnames2["default"])(className, classes, disabledCon) },
 	                _react2["default"].createElement(
 	                    _beeInputGroup2["default"].Addon,
 	                    {
@@ -51295,7 +51322,7 @@
 	            ) : _react2["default"].createElement(
 	                _beeInputGroup2["default"],
 	                {
-	                    className: (0, _classnames2["default"])(className, classes),
+	                    className: (0, _classnames2["default"])(className, classes, disabledCon),
 	                    simple: true
 	                },
 	                _react2["default"].createElement(_beeFormControl2["default"], _extends({}, others, {
@@ -55250,7 +55277,7 @@
 	        if (column.fixed === 'left' || column.fixed === true) {
 	          var width = column.width;
 	          if (typeof width == 'string' && width.includes('%')) {
-	            width = contentWidth * parseInt(col.width) / 100;
+	            width = contentWidth * parseInt(column.width) / 100;
 	          }
 	          leftColumnsWidth += parseInt(width);
 	        }
@@ -55270,7 +55297,7 @@
 	        if (column.fixed === 'right') {
 	          var width = column.width;
 	          if (typeof width == 'string' && width.includes('%')) {
-	            width = contentWidth * parseInt(col.width) / 100;
+	            width = contentWidth * parseInt(column.width) / 100;
 	          }
 	          rightColumnsWidth += parseInt(width);
 	        }
@@ -55973,7 +56000,7 @@
 /* 459 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -55987,11 +56014,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _beeCheckbox = __webpack_require__(460);
-	
-	var _beeCheckbox2 = _interopRequireDefault(_beeCheckbox);
-	
-	var _util = __webpack_require__(464);
+	var _util = __webpack_require__(460);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 	
@@ -56002,6 +56025,8 @@
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
+	// import Checkbox from 'bee-checkbox';
+	
 	
 	/**
 	 * 参数: 过滤表头
@@ -56109,7 +56134,8 @@
 	
 	    return NewMultiSelect;
 	  }(_react.Component), _class.defaultProps = {
-	    prefixCls: "u-table-mult-select"
+	    prefixCls: "u-table-mult-select",
+	    getSelectedDataFunc: function getSelectedDataFunc() {}
 	  }, _initialiseProps = function _initialiseProps() {
 	    var _this2 = this;
 	
@@ -56193,7 +56219,7 @@
 	
 	      var _defaultColumns = [{
 	        title: _react2["default"].createElement(Checkbox, _extends({
-	          className: 'table-checkbox'
+	          className: "table-checkbox"
 	        }, checkAttr, {
 	          disabled: disabledCount == dataLength ? true : false,
 	          onChange: _this2.onAllCheckChange
@@ -56207,7 +56233,7 @@
 	          record._disabled ? attr.disabled = record._disabled : "";
 	          return _react2["default"].createElement(Checkbox, _extends({
 	            key: index,
-	            className: 'table-checkbox'
+	            className: "table-checkbox"
 	          }, attr, {
 	            checked: record._checked,
 	            onClick: _this2.handleClick,
@@ -56219,10 +56245,373 @@
 	    };
 	  }, _temp;
 	}
-	module.exports = exports['default'];
+	module.exports = exports["default"];
 
 /***/ }),
 /* 460 */
+/***/ (function(module, exports) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
+	exports.sortBy = sortBy;
+	exports.compare = compare;
+	exports.ObjectAssign = ObjectAssign;
+	/*
+	* 快速排序，按某个属性，或按“获取排序依据的函数”，来排序.
+	* @method soryBy
+	* @static
+	* @param {array} arr 待处理数组
+	* @param {string|function} prop 排序依据属性，获取
+	* @param {boolean} desc 降序
+	* @return {array} 返回排序后的新数组
+	*/
+	
+	function sortBy(arr, prop, desc) {
+	    var props = [],
+	        ret = [],
+	        i = 0,
+	        len = arr.length;
+	    if (typeof prop == 'string') {
+	        for (; i < len; i++) {
+	            var oI = arr[i];
+	            (props[i] = new String(oI && oI[prop] || ''))._obj = oI;
+	        }
+	    } else if (typeof prop == 'function') {
+	        for (; i < len; i++) {
+	            var _oI = arr[i];
+	            (props[i] = new String(_oI && prop(_oI) || ''))._obj = _oI;
+	        }
+	    } else {
+	        throw '参数类型错误';
+	    }
+	    props.sort();
+	    for (i = 0; i < len; i++) {
+	        ret[i] = props[i]._obj;
+	    }
+	    if (desc) ret.reverse();
+	    return ret;
+	};
+	
+	/**
+	 * 数组对象排序
+	 * console.log(arr.sort(compare('age')))
+	 * @param {} property 
+	 */
+	function compare(property) {
+	    return function (a, b) {
+	        var value1 = a[property];
+	        var value2 = b[property];
+	        return value1 - value2;
+	    };
+	}
+	
+	/**
+	 * 简单数组数据对象拷贝
+	 * @param {*} obj 要拷贝的对象 
+	 */
+	function ObjectAssign(obj) {
+	    var b = obj instanceof Array;
+	    var tagObj = b ? [] : {};
+	    if (b) {
+	        //数组
+	        obj.forEach(function (da) {
+	            var _da = {};
+	            _extends(_da, da);
+	            tagObj.push(_da);
+	        });
+	    } else {
+	        _extends(tagObj, obj);
+	    }
+	    return tagObj;
+	}
+
+/***/ }),
+/* 461 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
+	exports["default"] = filterColumn;
+	
+	var _react = __webpack_require__(4);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _beeCheckbox = __webpack_require__(462);
+	
+	var _beeCheckbox2 = _interopRequireDefault(_beeCheckbox);
+	
+	var _beeIcon = __webpack_require__(361);
+	
+	var _beeIcon2 = _interopRequireDefault(_beeIcon);
+	
+	var _util = __webpack_require__(460);
+	
+	var _i18n = __webpack_require__(447);
+	
+	var _i18n2 = _interopRequireDefault(_i18n);
+	
+	var _tool = __webpack_require__(448);
+	
+	var _propTypes = __webpack_require__(5);
+	
+	var _propTypes2 = _interopRequireDefault(_propTypes);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+	
+	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
+	
+	function noop() {}
+	/**
+	 * 参数: 过滤表头
+	 * @param {*} Table
+	 * @param {*} Popover
+	 * @param {*} Icon
+	 */
+	
+	function filterColumn(Table, Popover) {
+	  var _class, _temp, _initialiseProps;
+	
+	  return _temp = _class = function (_Component) {
+	    _inherits(FilterColumn, _Component);
+	
+	    function FilterColumn(props) {
+	      _classCallCheck(this, FilterColumn);
+	
+	      var _this = _possibleConstructorReturn(this, _Component.call(this, props));
+	
+	      _initialiseProps.call(_this);
+	
+	      var columns = props.columns;
+	
+	      _this.state = {
+	        columns: _this.setColumOrderByIndex((0, _util.ObjectAssign)(columns)),
+	        showModal: false,
+	        screenY: 0
+	      };
+	      return _this;
+	    }
+	
+	    FilterColumn.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
+	      if (nextProps.columns != this.props.columns) {
+	        this.setState({
+	          columns: this.setColumOrderByIndex((0, _util.ObjectAssign)(nextProps.columns))
+	        });
+	      }
+	      this.setState({
+	        showModal: nextProps.showFilterPopover ? true : false
+	      });
+	    };
+	
+	    FilterColumn.prototype.render = function render() {
+	      var _props = this.props,
+	          data = _props.data,
+	          prefixCls = _props.prefixCls,
+	          scrollPro = _props.scroll;
+	      var _state = this.state,
+	          columns = _state.columns,
+	          showModal = _state.showModal;
+	
+	
+	      var locale = (0, _tool.getComponentLocale)(this.props, this.context, 'Table', function () {
+	        return _i18n2["default"];
+	      });
+	
+	      var _columns = [],
+	          widthState = 0,
+	          scroll = scrollPro;
+	      columns.forEach(function (da) {
+	        if (da.ifshow) {
+	          _columns.push(da);
+	          if (da.width) {
+	            widthState++;
+	          }
+	        }
+	      });
+	      // if(_columns.length == widthState){
+	      //   scroll.x = this.getCloumnsScroll(columns);
+	      // }
+	
+	      var content = _react2["default"].createElement(
+	        "div",
+	        { className: prefixCls + "-pop-cont" },
+	        _react2["default"].createElement(
+	          "span",
+	          { className: prefixCls + "-clear-setting", onClick: this.clear },
+	          locale["resetSettings"]
+	        ),
+	        _react2["default"].createElement(
+	          "div",
+	          null,
+	          this.getCloumItem()
+	        )
+	      );
+	
+	      return _react2["default"].createElement(
+	        "div",
+	        { className: prefixCls + "-cont" },
+	        _react2["default"].createElement(Table, _extends({}, this.props, {
+	          columns: _columns,
+	          data: data
+	          // scroll={scroll}
+	          //  scroll={{x:this.getCloumnsScroll(columns)}}
+	        })),
+	        this.props.columnFilterAble == false ? "" : _react2["default"].createElement(
+	          "div",
+	          { className: prefixCls + "-filter-icon" },
+	          _react2["default"].createElement(
+	            Popover,
+	            {
+	              id: "filter_column_popover",
+	              placement: "left",
+	              content: content,
+	              show: showModal
+	            },
+	            _react2["default"].createElement(
+	              "div",
+	              { className: prefixCls + "-pop-column-filter-cont" },
+	              _react2["default"].createElement(_beeIcon2["default"], { type: "uf-grid", onClick: this.openCloumList })
+	            )
+	          )
+	        )
+	      );
+	    };
+	
+	    return FilterColumn;
+	  }(_react.Component), _class.defaultProps = {
+	    prefixCls: "u-table-filter-column",
+	    afterFilter: noop,
+	    columnFilterAble: true,
+	    scroll: {}
+	  }, _class.contextTypes = {
+	    beeLocale: _propTypes2["default"].object
+	  }, _initialiseProps = function _initialiseProps() {
+	    var _this2 = this;
+	
+	    this.setColumOrderByIndex = function (_column) {
+	      _column.forEach(function (da) {
+	        //默认所有的列都显示，如果传递ifshow属性，根据ifshow属性值来判断是否显示某列
+	        if (da.hasOwnProperty("ifshow")) {
+	          da.checked = da.ifshow ? true : false;
+	          da.ifshow = da.checked;
+	        } else {
+	          da.checked = true;
+	          da.ifshow = true;
+	        }
+	      });
+	      return _column;
+	    };
+	
+	    this.checkedColumItemClick = function (da) {
+	      var _props2 = _this2.props,
+	          checkMinSize = _props2.checkMinSize,
+	          afterFilter = _props2.afterFilter;
+	      // if(checkMinSize)
+	
+	      var sum = 0,
+	          leng = 0;
+	      _this2.state.columns.forEach(function (da) {
+	        da.fixed ? "" : leng++;
+	        !da.fixed && da.checked ? sum++ : "";
+	      });
+	      if (sum < checkMinSize && da.checked) {
+	        return;
+	      } else {
+	        if (sum <= 1 && da.checked) return;
+	      }
+	      da.checked = da.checked ? false : true;
+	      da.ifshow = da.checked ? true : false;
+	
+	      _this2.setState(_extends({}, _this2.state));
+	      afterFilter(da, _this2.state.columns);
+	    };
+	
+	    this.openCloumList = function () {
+	      _this2.setState({
+	        showModal: true
+	      });
+	    };
+	
+	    this.getCloumItem = function () {
+	      var prefixCls = _this2.props.prefixCls;
+	      var columns = _this2.state.columns;
+	
+	      return columns.map(function (da, i) {
+	        var paramObj = {
+	          id: da.key,
+	          checked: da.checked
+	        };
+	        if (da.fixed) {
+	          paramObj.disabled = true;
+	        } else {
+	          paramObj.onClick = function () {
+	            _this2.checkedColumItemClick(da);
+	          };
+	        }
+	
+	        return _react2["default"].createElement(
+	          "div",
+	          {
+	            key: da.key + "_" + i,
+	            className: prefixCls + "-pop-cont-item"
+	          },
+	          _react2["default"].createElement(_beeCheckbox2["default"], paramObj),
+	          _react2["default"].createElement(
+	            "span",
+	            null,
+	            da.title
+	          )
+	        );
+	      });
+	    };
+	
+	    this.clear = function () {
+	      var columns = _this2.state.columns;
+	
+	      columns.forEach(function (da) {
+	        da.checked = true;
+	        da.ifshow = true;
+	      });
+	      _this2.setState({
+	        columns: columns
+	      });
+	      _this2.props.afterFilter(_this2.state.columns, _this2.state.columns);
+	    };
+	
+	    this.getCloumnsScroll = function (columns) {
+	      var sum = 0;
+	      columns.forEach(function (da) {
+	        if (da.checked) {
+	          sum += da.width;
+	        }
+	      });
+	      // console.log("sum",sum);
+	      return sum;
+	    };
+	  }, _temp;
+	}
+	module.exports = exports["default"];
+
+/***/ }),
+/* 462 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -56231,11 +56620,11 @@
 	  value: true
 	});
 	
-	var _Checkbox = __webpack_require__(461);
+	var _Checkbox = __webpack_require__(463);
 	
 	var _Checkbox2 = _interopRequireDefault(_Checkbox);
 	
-	var _CheckboxGroup = __webpack_require__(462);
+	var _CheckboxGroup = __webpack_require__(464);
 	
 	var _CheckboxGroup2 = _interopRequireDefault(_CheckboxGroup);
 	
@@ -56246,7 +56635,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 461 */
+/* 463 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -56285,12 +56674,15 @@
 	
 	    colors: _propTypes2["default"].oneOf(['', 'dark', 'success', 'info', 'warning', 'danger', 'primary']),
 	
-	    disabled: _propTypes2["default"].bool
+	    disabled: _propTypes2["default"].bool,
+	
+	    inverse: _propTypes2["default"].bool
 	
 	};
 	
 	var defaultProps = {
 	    disabled: false,
+	    inverse: false,
 	    colors: 'primary',
 	    clsPrefix: 'u-checkbox',
 	    defaultChecked: false,
@@ -56326,6 +56718,7 @@
 	    Checkbox.prototype.render = function render() {
 	        var _props = this.props,
 	            disabled = _props.disabled,
+	            inverse = _props.inverse,
 	            colors = _props.colors,
 	            size = _props.size,
 	            className = _props.className,
@@ -56336,7 +56729,7 @@
 	            clsPrefix = _props.clsPrefix,
 	            onDoubleClick = _props.onDoubleClick,
 	            onChange = _props.onChange,
-	            others = _objectWithoutProperties(_props, ['disabled', 'colors', 'size', 'className', 'indeterminate', 'onClick', 'children', 'checked', 'clsPrefix', 'onDoubleClick', 'onChange']);
+	            others = _objectWithoutProperties(_props, ['disabled', 'inverse', 'colors', 'size', 'className', 'indeterminate', 'onClick', 'children', 'checked', 'clsPrefix', 'onDoubleClick', 'onChange']);
 	
 	        var input = _react2["default"].createElement('input', _extends({}, others, {
 	            type: 'checkbox',
@@ -56347,6 +56740,10 @@
 	            'is-checked': this.state.checked,
 	            disabled: disabled
 	        };
+	
+	        if (inverse) {
+	            classes[clsPrefix + '-inverse'] = true;
+	        }
 	
 	        if (colors) {
 	            classes[clsPrefix + '-' + colors] = true;
@@ -56434,7 +56831,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 462 */
+/* 464 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -56455,11 +56852,11 @@
 	
 	var _propTypes2 = _interopRequireDefault(_propTypes);
 	
-	var _Checkbox = __webpack_require__(461);
+	var _Checkbox = __webpack_require__(463);
 	
 	var _Checkbox2 = _interopRequireDefault(_Checkbox);
 	
-	var _lodash = __webpack_require__(463);
+	var _lodash = __webpack_require__(465);
 	
 	var _lodash2 = _interopRequireDefault(_lodash);
 	
@@ -56476,13 +56873,15 @@
 	var propTypes = {
 	    clsPrefix: _propTypes2["default"].string,
 	    value: _propTypes2["default"].array,
-	    onChange: _propTypes2["default"].func
+	    onChange: _propTypes2["default"].func,
+	    disabled: _propTypes2["default"].bool
 	};
 	
 	var defaultProps = {
 	    clsPrefix: 'u-checkbox-group',
 	    value: [],
-	    onChange: function onChange() {}
+	    onChange: function onChange() {},
+	    disabled: false
 	};
 	
 	var CheckboxGroup = function (_React$Component) {
@@ -56525,7 +56924,8 @@
 	
 	        var _props = this.props,
 	            clsPrefix = _props.clsPrefix,
-	            className = _props.className;
+	            className = _props.className,
+	            disabled = _props.disabled;
 	
 	        var classes = clsPrefix;
 	        if (className) classes += ' ' + className;
@@ -56537,7 +56937,8 @@
 	                    onChange: function onChange() {
 	                        _this2.changeHandle(child.props.value);
 	                    },
-	                    checked: _this2.state.values.indexOf(child.props.value) != -1
+	                    checked: _this2.state.values.indexOf(child.props.value) != -1,
+	                    disabled: disabled
 	                });
 	            })
 	        );
@@ -56553,7 +56954,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 463 */
+/* 465 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global, module) {/**
@@ -58408,369 +58809,6 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(104)(module)))
 
 /***/ }),
-/* 464 */
-/***/ (function(module, exports) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-	
-	exports.sortBy = sortBy;
-	exports.compare = compare;
-	exports.ObjectAssign = ObjectAssign;
-	/*
-	* 快速排序，按某个属性，或按“获取排序依据的函数”，来排序.
-	* @method soryBy
-	* @static
-	* @param {array} arr 待处理数组
-	* @param {string|function} prop 排序依据属性，获取
-	* @param {boolean} desc 降序
-	* @return {array} 返回排序后的新数组
-	*/
-	
-	function sortBy(arr, prop, desc) {
-	    var props = [],
-	        ret = [],
-	        i = 0,
-	        len = arr.length;
-	    if (typeof prop == 'string') {
-	        for (; i < len; i++) {
-	            var oI = arr[i];
-	            (props[i] = new String(oI && oI[prop] || ''))._obj = oI;
-	        }
-	    } else if (typeof prop == 'function') {
-	        for (; i < len; i++) {
-	            var _oI = arr[i];
-	            (props[i] = new String(_oI && prop(_oI) || ''))._obj = _oI;
-	        }
-	    } else {
-	        throw '参数类型错误';
-	    }
-	    props.sort();
-	    for (i = 0; i < len; i++) {
-	        ret[i] = props[i]._obj;
-	    }
-	    if (desc) ret.reverse();
-	    return ret;
-	};
-	
-	/**
-	 * 数组对象排序
-	 * console.log(arr.sort(compare('age')))
-	 * @param {} property 
-	 */
-	function compare(property) {
-	    return function (a, b) {
-	        var value1 = a[property];
-	        var value2 = b[property];
-	        return value1 - value2;
-	    };
-	}
-	
-	/**
-	 * 简单数组数据对象拷贝
-	 * @param {*} obj 要拷贝的对象 
-	 */
-	function ObjectAssign(obj) {
-	    var b = obj instanceof Array;
-	    var tagObj = b ? [] : {};
-	    if (b) {
-	        //数组
-	        obj.forEach(function (da) {
-	            var _da = {};
-	            _extends(_da, da);
-	            tagObj.push(_da);
-	        });
-	    } else {
-	        _extends(tagObj, obj);
-	    }
-	    return tagObj;
-	}
-
-/***/ }),
-/* 465 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	"use strict";
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-	
-	exports["default"] = filterColumn;
-	
-	var _react = __webpack_require__(4);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _beeCheckbox = __webpack_require__(460);
-	
-	var _beeCheckbox2 = _interopRequireDefault(_beeCheckbox);
-	
-	var _beeIcon = __webpack_require__(361);
-	
-	var _beeIcon2 = _interopRequireDefault(_beeIcon);
-	
-	var _util = __webpack_require__(464);
-	
-	var _i18n = __webpack_require__(447);
-	
-	var _i18n2 = _interopRequireDefault(_i18n);
-	
-	var _tool = __webpack_require__(448);
-	
-	var _propTypes = __webpack_require__(5);
-	
-	var _propTypes2 = _interopRequireDefault(_propTypes);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-	
-	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
-	
-	function noop() {}
-	/**
-	 * 参数: 过滤表头
-	 * @param {*} Table
-	 * @param {*} Popover
-	 * @param {*} Icon
-	 */
-	
-	function filterColumn(Table, Popover) {
-	  var _class, _temp, _initialiseProps;
-	
-	  return _temp = _class = function (_Component) {
-	    _inherits(FilterColumn, _Component);
-	
-	    function FilterColumn(props) {
-	      _classCallCheck(this, FilterColumn);
-	
-	      var _this = _possibleConstructorReturn(this, _Component.call(this, props));
-	
-	      _initialiseProps.call(_this);
-	
-	      var columns = props.columns;
-	
-	      _this.state = {
-	        columns: _this.setColumOrderByIndex((0, _util.ObjectAssign)(columns)),
-	        showModal: false,
-	        screenY: 0
-	      };
-	      return _this;
-	    }
-	
-	    FilterColumn.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
-	      if (nextProps.columns != this.props.columns) {
-	        this.setState({
-	          columns: this.setColumOrderByIndex((0, _util.ObjectAssign)(nextProps.columns))
-	        });
-	      }
-	      this.setState({
-	        showModal: nextProps.showFilterPopover ? true : false
-	      });
-	    };
-	
-	    FilterColumn.prototype.render = function render() {
-	      var _props = this.props,
-	          data = _props.data,
-	          prefixCls = _props.prefixCls,
-	          scrollPro = _props.scroll;
-	      var _state = this.state,
-	          columns = _state.columns,
-	          showModal = _state.showModal;
-	
-	
-	      var locale = (0, _tool.getComponentLocale)(this.props, this.context, 'Table', function () {
-	        return _i18n2["default"];
-	      });
-	
-	      var _columns = [],
-	          widthState = 0,
-	          scroll = scrollPro;
-	      columns.forEach(function (da) {
-	        if (da.ifshow) {
-	          _columns.push(da);
-	          if (da.width) {
-	            widthState++;
-	          }
-	        }
-	      });
-	      // if(_columns.length == widthState){
-	      //   scroll.x = this.getCloumnsScroll(columns);
-	      // }
-	
-	      var content = _react2["default"].createElement(
-	        "div",
-	        { className: prefixCls + "-pop-cont" },
-	        _react2["default"].createElement(
-	          "span",
-	          { className: prefixCls + "-clear-setting", onClick: this.clear },
-	          locale["resetSettings"]
-	        ),
-	        _react2["default"].createElement(
-	          "div",
-	          null,
-	          this.getCloumItem()
-	        )
-	      );
-	
-	      return _react2["default"].createElement(
-	        "div",
-	        { className: prefixCls + "-cont" },
-	        _react2["default"].createElement(Table, _extends({}, this.props, {
-	          columns: _columns,
-	          data: data
-	          // scroll={scroll}
-	          //  scroll={{x:this.getCloumnsScroll(columns)}}
-	        })),
-	        this.props.columnFilterAble == false ? "" : _react2["default"].createElement(
-	          "div",
-	          { className: prefixCls + "-filter-icon" },
-	          _react2["default"].createElement(
-	            Popover,
-	            {
-	              id: "filter_column_popover",
-	              placement: "left",
-	              content: content,
-	              show: showModal
-	            },
-	            _react2["default"].createElement(
-	              "div",
-	              { className: prefixCls + "-pop-column-filter-cont" },
-	              _react2["default"].createElement(_beeIcon2["default"], { type: "uf-grid", onClick: this.openCloumList })
-	            )
-	          )
-	        )
-	      );
-	    };
-	
-	    return FilterColumn;
-	  }(_react.Component), _class.defaultProps = {
-	    prefixCls: "u-table-filter-column",
-	    afterFilter: noop,
-	    columnFilterAble: true,
-	    scroll: {}
-	  }, _class.contextTypes = {
-	    beeLocale: _propTypes2["default"].object
-	  }, _initialiseProps = function _initialiseProps() {
-	    var _this2 = this;
-	
-	    this.setColumOrderByIndex = function (_column) {
-	      _column.forEach(function (da) {
-	        //默认所有的列都显示，如果传递ifshow属性，根据ifshow属性值来判断是否显示某列
-	        if (da.hasOwnProperty("ifshow")) {
-	          da.checked = da.ifshow ? true : false;
-	          da.ifshow = da.checked;
-	        } else {
-	          da.checked = true;
-	          da.ifshow = true;
-	        }
-	      });
-	      return _column;
-	    };
-	
-	    this.checkedColumItemClick = function (da) {
-	      var _props2 = _this2.props,
-	          checkMinSize = _props2.checkMinSize,
-	          afterFilter = _props2.afterFilter;
-	      // if(checkMinSize)
-	
-	      var sum = 0,
-	          leng = 0;
-	      _this2.state.columns.forEach(function (da) {
-	        da.fixed ? "" : leng++;
-	        !da.fixed && da.checked ? sum++ : "";
-	      });
-	      if (sum < checkMinSize && da.checked) {
-	        return;
-	      } else {
-	        if (sum <= 1 && da.checked) return;
-	      }
-	      da.checked = da.checked ? false : true;
-	      da.ifshow = da.checked ? true : false;
-	
-	      _this2.setState(_extends({}, _this2.state));
-	      afterFilter(da, _this2.state.columns);
-	    };
-	
-	    this.openCloumList = function () {
-	      _this2.setState({
-	        showModal: true
-	      });
-	    };
-	
-	    this.getCloumItem = function () {
-	      var prefixCls = _this2.props.prefixCls;
-	      var columns = _this2.state.columns;
-	
-	      return columns.map(function (da, i) {
-	        var paramObj = {
-	          id: da.key,
-	          checked: da.checked
-	        };
-	        if (da.fixed) {
-	          paramObj.disabled = true;
-	        } else {
-	          paramObj.onClick = function () {
-	            _this2.checkedColumItemClick(da);
-	          };
-	        }
-	
-	        return _react2["default"].createElement(
-	          "div",
-	          {
-	            key: da.key + "_" + i,
-	            className: prefixCls + "-pop-cont-item"
-	          },
-	          _react2["default"].createElement(_beeCheckbox2["default"], paramObj),
-	          _react2["default"].createElement(
-	            "span",
-	            null,
-	            da.title
-	          )
-	        );
-	      });
-	    };
-	
-	    this.clear = function () {
-	      var columns = _this2.state.columns;
-	
-	      columns.forEach(function (da) {
-	        da.checked = true;
-	        da.ifshow = true;
-	      });
-	      _this2.setState({
-	        columns: columns
-	      });
-	      _this2.props.afterFilter(_this2.state.columns, _this2.state.columns);
-	    };
-	
-	    this.getCloumnsScroll = function (columns) {
-	      var sum = 0;
-	      columns.forEach(function (da) {
-	        if (da.checked) {
-	          sum += da.width;
-	        }
-	      });
-	      // console.log("sum",sum);
-	      return sum;
-	    };
-	  }, _temp;
-	}
-	module.exports = exports["default"];
-
-/***/ }),
 /* 466 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -58790,7 +58828,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _util = __webpack_require__(464);
+	var _util = __webpack_require__(460);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 	

@@ -1,6 +1,22 @@
-## Upload
+# Upload
 
 过Upload可以将资源（web page,text,picture,video...）传到远程服务器
+
+## 何时使用
+
+代替原生 `input type='file'`
+
+## 如何使用
+
+```
+import { Upload } from 'tinper-bee';
+
+or
+
+import Upload from 'bee-upload';
+import bee-upload/build/Upload.css;
+
+```
 
 ## 代码演示
 
@@ -45,3 +61,8 @@
 ```
 
 
+## 注意事项
+
+暂无
+
+## 更新日志

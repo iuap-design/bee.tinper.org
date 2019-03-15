@@ -1,114 +1,70 @@
 /**
  *
  * @title 基础级联菜单
- * @description
+ * @description 级联选择对数据有较严格要求，请参照示例的格式使用options，每项数据至少包含 value、label 两项，子集为 children，以此类推。
  *
  */
 
 import React, { Component } from 'react';
-import {Row, Col } from 'bee-layout';
+import { Row, Col } from 'bee-layout';
 import Cascader from '../../src';
-import Button from "bee-button";
 
- const options = [
- 	{
- 	  value: '浙江',
- 	  children: [
- 		  {
- 		    value: '杭州',
- 		    children: [
- 			    {
- 			      value: '西湖',
- 			      children: [
- 				    {
- 				      value: '白娘子'
- 				    },
- 				    {
- 				      value: '许仙'
- 				    }]
- 			    }]
- 		  }
- 	  ]
+const options = [{
+	label: '浙江',
+	value: 'zj',
+	children: [{
+		label: '杭州',
+		value: 'hz',
+		children: [{
+			label: '西湖',
+			value: 'xh',
+			children: [{
+				label: '白娘子',
+				value: 'bnz'
+			},{
+				label: '许仙',
+				value: 'xx'
+			}]
+		}]
+	}]
+	},
+	{
+		label: '江苏',
+		value: 'js',
+		children: [{
+			label: '南京',
+			value: 'nj',
+			children: [{
+				label: '中华门',
+				value: 'zhm'
+			}]
+		}]
  	},
  	{
- 	  value: '江苏',
- 	  children: [
- 		  {
- 		    value: '南京',
- 		    children: [
- 			    {
- 			      value: '中华门'
- 			    }]
- 		  }
- 	  ]
- 	},
- 	{
- 	  value: '山东'
+		label: '山东',
+ 	    value: 'sd'
  	}
- ];
- class Demo1 extends Component {
-	constructor(props){
-		super(props);
-		this.state={
-			options:options
-		}
-	}
+];
+class Demo1 extends Component {
 
-	onClickHandler=(data)=>{
-		console.log("data: ",data);
+	onChange = (value, selectedOptions) => {
+    	console.log(value, selectedOptions);
 	}
-
-	click=()=>{
-		this.setState({
-			options:[
-				{
-					value: '浙江1',
-					children: [
-						{
-							value: '杭州',
-							children: [
-								{
-									value: '西湖',
-									children: [
-									{
-										value: '白娘子'
-									},
-									{
-										value: '许仙'
-									}]
-								}]
-						}
-					]
-				},
-				{
-					value: '江苏1',
-					children: [
-						{
-							value: '南京',
-							children: [
-								{
-									value: '中华门'
-								}]
-						}
-					]
-				},
-				{
-					value: '山东1'
-				}
-			]
-		})
-	}
+	
  	render(){
  		return(
-            <Row>
-                <Col md={4}>
-									<Button colors="primary" onClick={this.click} style={{marginBottom:8+'px'}}>清空</Button>
-                    <div className="height-150">
-                     	<Cascader options = {this.state.options} onClick={this.onClickHandler}/>
-                    </div>
-                </Col>
-            </Row>
+			<Row>
+				<Col md={4}>
+					<div className="height-150">
+						<Cascader 
+							options = {options} 
+							onChange = {this.onChange}
+							placeholder = "请选择地址"
+						/>
+					</div>
+				</Col>
+			</Row>
  		)
  	}
- }
+}
 export default Demo1;

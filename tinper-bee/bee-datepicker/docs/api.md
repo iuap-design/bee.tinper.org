@@ -1,43 +1,29 @@
 # DatePicker
 
-## Moment.js
+日期选择框
 
-### 格式化
+## 何时使用
+例如：表单中需要选择日期时间
 
-```javascript
-var moment = require('moment');
-moment().format();                                // "2014-09-08T08:02:17-05:00" (ISO 8601)
-moment().format("YYYY-MM-DD");                    // "2018-08-08"
-moment().format("dddd, MMMM Do YYYY, h:mm:ss a"); // "Sunday, February 14th 2010, 3:25:50 pm"
-moment().format("ddd, hA");                       // "Sun, 3PM"
-moment('gibberish').format('YYYY MM DD');         // "Invalid date"
+## 如何使用
+
 ```
+import { DatePicker } from 'tinper-bee';
 
-### 当前时间
+or
 
-```javascript
-var now = moment();
+import DatePicker from 'bee-datepicker';
+import bee-datepicker/build/DatePicker.css;
+
 ```
-
-### 设置语言 (全局)
-
-```javascript
-moment.locale('en');     //英文
-moment.locale('zh-cn');  //中文
-```
-
-###  设置语言 (局部) 1.7.0+
-
-```javascript
-moment().locale('en'); //英文
-```
-
-
-##### 相关的文档地址[链接](http://momentjs.cn/docs/)*
-
 
 ## 代码演示
+
+
+
+
 ## API
+
 ### DatePicker
 
 |参数|说明|类型|默认值|
@@ -147,10 +133,51 @@ moment().locale('en'); //英文
 | locale| 语言包 | Object |zh_CN |
 
 
-## DatePicker 已支持的键盘操作
+### Moment.js
+相关的文档地址[链接](http://momentjs.cn/docs/)
+#### 格式化
+
+```javascript
+var moment = require('moment');
+moment().format();                                // "2014-09-08T08:02:17-05:00" (ISO 8601)
+moment().format("YYYY-MM-DD");                    // "2018-08-08"
+moment().format("dddd, MMMM Do YYYY, h:mm:ss a"); // "Sunday, February 14th 2010, 3:25:50 pm"
+moment().format("ddd, hA");                       // "Sun, 3PM"
+moment('gibberish').format('YYYY MM DD');         // "Invalid date"
+```
+
+#### 当前时间
+
+```javascript
+var now = moment();
+```
+
+#### 设置语言 (全局)
+
+```javascript
+moment.locale('en');     //英文
+moment.locale('zh-cn');  //中文
+```
+
+#### 设置语言 (局部) 1.7.0+
+
+```javascript
+moment().locale('en'); //英文
+```
+
+
+
+### 已支持的键盘操作
 
 |按键|功能|
 |:---|:----|
 |↓(下箭) |打开面板|
 |esc |关闭面板|
 |delete |清除内容|
+
+
+## 注意事项
+
+暂无
+
+## 更新日志

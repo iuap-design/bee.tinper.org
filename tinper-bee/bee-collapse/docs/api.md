@@ -1,7 +1,20 @@
 # Collapse
+
+## 何时使用
 折叠组件
 
 在一个元素或者组件中添加折叠效果
+
+## 如何使用
+```
+import { Collapse } from 'tinper-bee';
+
+or
+
+import Collapse from 'bee-collapse';
+import bee-collapse/build/Collapse.css;
+
+```
 
 ## 代码演示
 
@@ -19,3 +32,9 @@
 |onExiting|组件内容隐藏时调用的函数|func|-|
 |onExited|组件内容隐藏后调用的函数|func|-|
 |dimension|折叠区展开效果是纵向的还是横向的（即height或者width改变）|"height"或者"width"或者func|height|
+
+## 注意事项
+
+暂无
+
+## 更新日志

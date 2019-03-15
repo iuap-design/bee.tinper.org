@@ -1,12 +1,10 @@
-## Popconfirm 气泡弹出框
+# Popconfirm 
 
 点击元素弹出对话框。
 
 ## 代码演示
 
-### API
-
-### Popconfirm
+## API
 
 |参数|说明|类型|默认值|
 |:---|:-----|:----|:------|
@@ -33,3 +31,9 @@
 |show|显示隐藏是否受控|bool|-|
 |cancel_btn|自定义的取消按钮|node/function|-|
 |close_btn|自定义的确定按钮|node/function|-|
+
+## 注意事项
+
+暂无
+
+## 更新日志

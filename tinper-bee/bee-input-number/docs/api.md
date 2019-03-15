@@ -1,6 +1,26 @@
 # InputNumber
+
+数字输入框
+
+## 何时使用
+
+代替原生 `input type='number'`
+
+## 如何使用
+
+```
+import { InputNumber } from 'tinper-bee';
+
+or
+
+import InputNumber from 'bee-input-number';
+import bee-input-number/build/InputNumber.css;
+
+```
 ## 代码演示
+
 ## API
+
 |参数|说明|类型|默认值|
 |:---|:-----|:----|:------|
 |className|类名|string|-|
@@ -16,3 +36,8 @@
 |toThousands|是否显示千分符|bool|false|
 
 
+## 注意事项
+
+暂无
+
+## 更新日志

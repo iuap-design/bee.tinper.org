@@ -76,7 +76,7 @@
 	
 	var CARETUP = _react2['default'].createElement('i', { className: 'uf uf-arrow-up' });
 	
-	var Demo1 = __webpack_require__(84);var Demo2 = __webpack_require__(88);var Demo3 = __webpack_require__(89);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 默认提醒", "code": "/**\r\n *\r\n * @title 默认提醒\r\n * @description\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\r\n\nimport { Notification, Button } from 'tinper-bee';\r\n\r\nlet notification = null;\r\nNotification.newInstance({position: 'bottomRight'}, n => notification = n);\r\n\r\n\r\nclass Demo1 extends Component {\r\n\r\n    simpleFn() {\r\n      notification.notice({\r\n        content: <span>这是一个提示</span>,\r\n        onClose() {\r\n          console.log('simple close');\r\n        },\r\n      });\r\n    }\r\n    render () {\r\n\r\n        return (\r\n            <div className=\"demoPadding\">\r\n                <Button onClick={this.simpleFn}>simple show</Button>\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\n\r\n", "desc": "", "scss_code": ".demoPadding{\r\n  button {\r\n    margin: auto 10px;\r\n  }\r\n}" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 不同颜色的提醒", "code": "/**\r\n *\r\n * @title 不同颜色的提醒\r\n * @description 默认提供两种颜色，一黑一白。\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\r\n\nimport { Notification, Button } from 'tinper-bee';\r\n\r\nlet notification = null;\r\nNotification.newInstance({position: 'bottomRight'}, n => notification = n);\r\n\r\nclass Demo2 extends Component {\r\n\r\n simpleLight() {\r\n      notification.notice({\r\n         title: '通知',\r\n        content: '明天下午李总召开会议，请您参加',\r\n        color: 'light'\r\n      });\r\n    }\r\n    simpleDark() {\r\n         notification.notice({\r\n            title: '邮箱',\r\n           content: '您收到一封邮件'\r\n         });\r\n       }\r\n    render () {\r\n        return (\r\n            <div className=\"demoPadding\">\r\n                <Button onClick={this.simpleLight}>light notification</Button>\r\n                <Button onClick={this.simpleDark} style={{ background: '#404040', color: '#fff' }}>dark notification</Button>\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\n\r\n", "desc": " 默认提供两种颜色，一黑一白。", "scss_code": ".demoPadding{\r\n  button {\r\n    margin: auto 10px;\r\n  }\r\n}" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 可控制的提醒", "code": "/**\r\n *\r\n * @title 可控制的提醒\r\n * @description 通过设置duration:6来设置时间，null为自动控制\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\r\n\nimport { Notification, Button } from 'tinper-bee';\r\n\r\nlet notification = null;\r\nNotification.newInstance({position: 'bottomRight'}, n => notification = n);\r\n\r\nclass Demo3 extends Component {\r\n    constructor(props){\r\n        super(props);\r\n        this.manualClose = this.manualClose.bind(this);\r\n    }\r\n closableFn() {\r\n      notification.notice({\r\n        content: <span>只可以自动关闭的提示</span>,\r\n        duration: null,\r\n        onClose() {\r\n          console.log('closable close');\r\n        },\r\n        duration: 6,\r\n        closable: false\r\n      });\r\n    }\r\n\r\n close(key) {\r\n      notification.removeNotice(key);\r\n    }\r\n\r\n manualClose() {\r\n      const key = Date.now();\r\n      notification.notice({\r\n        content: <div>\r\n          <span>只可以点击关闭的提示</span>\r\n          <Button onClick={this.close.bind(this, key)} size=\"sm\" style={{ position: 'absolute', right: 15, bottom: 15}}>知道了</Button>\r\n        </div>,\r\n        key,\r\n        duration: null,\r\n        closable: false\r\n      });\r\n    }\r\n    render () {\r\n        return (\r\n            <div className=\"demoPadding\">\r\n                <Button colors=\"primary\" onClick={this.closableFn}>自动关闭</Button>\r\n                <Button colors=\"primary\" onClick={this.manualClose}>手动关闭</Button>\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\n\r\n", "desc": " 通过设置duration:6来设置时间，null为自动控制", "scss_code": ".demoPadding{\r\n  button {\r\n    margin: auto 10px;\r\n  }\r\n}\r\n.u-notification-notice-description{\r\n  span{\r\n    line-height: 26px;\r\n  }\r\n}" }];
+	var Demo1 = __webpack_require__(84);var Demo2 = __webpack_require__(88);var Demo3 = __webpack_require__(89);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 默认提醒", "code": "/**\n *\n * @title 默认提醒\n * @description\n *\n */\n\nimport React, { Component } from 'react';\nimport { Notification, Button } from 'tinper-bee';\n\nlet notification = null;\nNotification.newInstance({position: 'bottomRight'}, n => notification = n);\n\n\nclass Demo1 extends Component {\n\n    simpleFn() {\n      notification.notice({\n        content: <span>这是一个提示</span>,\n        onClose() {\n          console.log('simple close');\n        },\n      });\n    }\n    render () {\n\n        return (\n            <div className=\"demoPadding\">\n                <Button onClick={this.simpleFn}>simple show</Button>\n            </div>\n        )\n    }\n}\n\n\n", "desc": "", "scss_code": ".demoPadding{\n  button {\n    margin: auto 10px;\n  }\n}" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 不同颜色的提醒", "code": "/**\n *\n * @title 不同颜色的提醒\n * @description 默认提供两种颜色，一黑一白。\n *\n */\n\nimport React, { Component } from 'react';\nimport { Notification, Button } from 'tinper-bee';\n\nlet notification = null;\nNotification.newInstance({position: 'bottomRight'}, n => notification = n);\n\nclass Demo2 extends Component {\n\n simpleLight() {\n      notification.notice({\n         title: '通知',\n        content: '明天下午李总召开会议，请您参加',\n        color: 'light'\n      });\n    }\n    simpleDark() {\n         notification.notice({\n            title: '邮箱',\n           content: '您收到一封邮件'\n         });\n       }\n    render () {\n        return (\n            <div className=\"demoPadding\">\n                <Button onClick={this.simpleLight}>light notification</Button>\n                <Button onClick={this.simpleDark} style={{ background: '#404040', color: '#fff' }}>dark notification</Button>\n            </div>\n        )\n    }\n}\n\n\n", "desc": " 默认提供两种颜色，一黑一白。", "scss_code": ".demoPadding{\n  button {\n    margin: auto 10px;\n  }\n}" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 可控制的提醒", "code": "/**\n *\n * @title 可控制的提醒\n * @description 通过设置duration:6来设置时间，null为自动控制\n *\n */\n\nimport React, { Component } from 'react';\nimport { Notification, Button } from 'tinper-bee';\n\nlet notification = null;\nNotification.newInstance({position: 'bottomRight'}, n => notification = n);\n\nclass Demo3 extends Component {\n    constructor(props){\n        super(props);\n        this.manualClose = this.manualClose.bind(this);\n    }\n closableFn() {\n      notification.notice({\n        content: <span>只可以自动关闭的提示</span>,\n        duration: null,\n        onClose() {\n          console.log('closable close');\n        },\n        duration: 6,\n        closable: false\n      });\n    }\n\n close(key) {\n      notification.removeNotice(key);\n    }\n\n manualClose() {\n      const key = Date.now();\n      notification.notice({\n        content: <div>\n          <span>只可以点击关闭的提示</span>\n          <Button onClick={this.close.bind(this, key)} size=\"sm\" style={{ position: 'absolute', right: 15, bottom: 15}}>知道了</Button>\n        </div>,\n        key,\n        duration: null,\n        closable: false\n      });\n    }\n    render () {\n        return (\n            <div className=\"demoPadding\">\n                <Button colors=\"primary\" onClick={this.closableFn}>自动关闭</Button>\n                <Button colors=\"primary\" onClick={this.manualClose}>手动关闭</Button>\n            </div>\n        )\n    }\n}\n\n\n", "desc": " 通过设置duration:6来设置时间，null为自动控制", "scss_code": ".demoPadding{\n  button {\n    margin: auto 10px;\n  }\n}\n.u-notification-notice-description{\n  span{\n    line-height: 26px;\n  }\n}" }];
 	
 	var Demo = function (_Component) {
 	    _inherits(Demo, _Component);
@@ -2119,10 +2119,7 @@
 	  }
 	
 	  return (0, _createChainableTypeChecker2.default)(allPropTypes);
-	} /**
-	   * This source code is quoted from rc-util.
-	   * homepage: https://github.com/react-component/util
-	   */
+	}
 
 /***/ }),
 /* 29 */
@@ -2142,10 +2139,6 @@
 	 */
 	
 	// Mostly taken from ReactPropTypes.
-	
-	/* This source code is quoted from rc-util.
-	 * homepage: https://github.com/react-component/util
-	 */
 	
 	function createChainableTypeChecker(validate) {
 	  function checkType(isRequired, props, propName, componentName, location, propFullName) {
@@ -2181,11 +2174,7 @@
 	
 	exports.__esModule = true;
 	
-	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; /**
-	                                                                                                                                                                                                                                                                               * This source code is quoted from rc-util.
-	                                                                                                                                                                                                                                                                               * homepage: https://github.com/react-component/util
-	                                                                                                                                                                                                                                                                               */
-	
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 	
 	var _react = __webpack_require__(4);
 	
@@ -2229,10 +2218,8 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	var warned = {}; /**
-	                  * This source code is quoted from rc-util.
-	                  * homepage: https://github.com/react-component/util
-	                  */
+	var warned = {};
+	
 	function deprecated(validator, reason) {
 	  return function validate(props, propName, componentName, location, propFullName) {
 	    var componentNameSafe = componentName || '<<anonymous>>';
@@ -2527,11 +2514,7 @@
 	
 	exports.__esModule = true;
 	
-	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; /**
-	                                                                                                                                                                                                                                                                               * This source code is quoted from rc-util.
-	                                                                                                                                                                                                                                                                               * homepage: https://github.com/react-component/util
-	                                                                                                                                                                                                                                                                               */
-	
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 	
 	var _react = __webpack_require__(4);
 	
@@ -2568,10 +2551,6 @@
 	
 	exports.__esModule = true;
 	exports.default = isRequiredForA11y;
-	/**
-	 * This source code is quoted from rc-util.
-	 * homepage: https://github.com/react-component/util
-	 */
 	function isRequiredForA11y(validator) {
 	  return function validate(props, propName, componentName, location, propFullName) {
 	    var componentNameSafe = componentName || '<<anonymous>>';
@@ -2597,10 +2576,6 @@
 	
 	exports.__esModule = true;
 	exports.default = splitComponentProps;
-	/**
-	 * This source code is quoted from rc-util.
-	 * homepage: https://github.com/react-component/util
-	 */
 	function _objectEntries(obj) {
 	  var entries = [];
 	  var keys = Object.keys(obj);
@@ -2643,10 +2618,6 @@
 	'use strict';
 	
 	exports.__esModule = true;
-	/**
-	 * This source code is quoted from rc-util.
-	 * homepage: https://github.com/react-component/util
-	 */
 	function createChainedFunction() {
 	  for (var _len = arguments.length, funcs = Array(_len), _key = 0; _key < _len; _key++) {
 	    funcs[_key] = arguments[_key];
@@ -2679,10 +2650,6 @@
 /* 38 */
 /***/ (function(module, exports) {
 
-	/**
-	 * This source code is quoted from rc-util.
-	 * homepage: https://github.com/react-component/util
-	 */
 	'use strict';
 	
 	/**
@@ -3212,10 +3179,6 @@
 	
 	exports.__esModule = true;
 	exports.default = contains;
-	/**
-	 * This source code is quoted from rc-util.
-	 * homepage: https://github.com/react-component/util
-	 */
 	function contains(root, n) {
 	  var node = n;
 	  while (node) {
@@ -3247,10 +3210,6 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	/**
-	 * This source code is quoted from rc-util.
-	 * homepage: https://github.com/react-component/util
-	 */
 	function addEventListenerWrap(target, eventType, cb) {
 	  /* eslint camelcase: 2 */
 	  var callback = _reactDom2.default.unstable_batchedUpdates ? function run(e) {
@@ -3770,11 +3729,7 @@
 	
 	exports.__esModule = true;
 	
-	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; /**
-	                                                                                                                                                                                                                                                                               * This source code is quoted from rc-util.
-	                                                                                                                                                                                                                                                                               * homepage: https://github.com/react-component/util
-	                                                                                                                                                                                                                                                                               */
-	
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 	
 	var _Event = __webpack_require__(46);
 	
@@ -3965,10 +3920,6 @@
 	'use strict';
 	
 	exports.__esModule = true;
-	/**
-	 * This source code is quoted from rc-util.
-	 * homepage: https://github.com/react-component/util
-	 */
 	var EVENT_NAME_MAP = {
 	  transitionend: {
 	    transition: 'transitionend',
@@ -4282,10 +4233,7 @@
 	    ret.push(c);
 	  });
 	  return ret;
-	} /**
-	   * This source code is quoted from rc-util.
-	   * homepage: https://github.com/react-component/util
-	   */
+	}
 
 /***/ }),
 /* 50 */
@@ -4321,11 +4269,7 @@
 	
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * This source code is quoted from rc-util.
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * homepage: https://github.com/react-component/util
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
-	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
 	//import isWindow from './isWindow';
 	
@@ -5579,16 +5523,6 @@
 	  var viewportHeight = _utils2['default'].viewportHeight(win);
 	  var documentWidth = documentElement.scrollWidth;
 	  var documentHeight = documentElement.scrollHeight;
-	
-	  // scrollXXX on html is sync with body which means overflow: hidden on body gets wrong scrollXXX.
-	  // We should cut this ourself.
-	  var bodyStyle = window.getComputedStyle(body);
-	  if (bodyStyle.overflowX === 'hidden') {
-	    documentWidth = win.innerWidth;
-	  }
-	  if (bodyStyle.overflowY === 'hidden') {
-	    documentHeight = win.innerHeight;
-	  }
 	
 	  // Reset element position after calculate the visible area
 	  if (element.style) {
@@ -7972,7 +7906,9 @@
 	        if (colorsMap[colors]) {
 	            clsObj[clsPrefix + '-' + colorsMap[colors]] = true;
 	        }
-	        //clsObj[`${clsPrefix}-border`] = bordered;
+	        if (bordered) {
+	            clsObj[clsPrefix + '-border'] = bordered;
+	        }
 	        var classes = (0, _classnames2["default"])(clsPrefix, clsObj);
 	        return _react2["default"].createElement(
 	            'button',
@@ -8581,7 +8517,7 @@
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	  value: true
 	});
 	
 	var _react = __webpack_require__(4);
@@ -8615,82 +8551,82 @@
 	
 	var notification = null;
 	_src2['default'].newInstance({ position: 'bottomRight' }, function (n) {
-	    return notification = n;
+	  return notification = n;
 	});
 	
 	var Demo3 = function (_Component) {
-	    _inherits(Demo3, _Component);
+	  _inherits(Demo3, _Component);
 	
-	    function Demo3(props) {
-	        _classCallCheck(this, Demo3);
+	  function Demo3(props) {
+	    _classCallCheck(this, Demo3);
 	
-	        var _this = _possibleConstructorReturn(this, _Component.call(this, props));
+	    var _this = _possibleConstructorReturn(this, _Component.call(this, props));
 	
-	        _this.manualClose = _this.manualClose.bind(_this);
-	        return _this;
-	    }
+	    _this.manualClose = _this.manualClose.bind(_this);
+	    return _this;
+	  }
 	
-	    Demo3.prototype.closableFn = function closableFn() {
-	        var _notification$notice;
+	  Demo3.prototype.closableFn = function closableFn() {
+	    var _notification$notice;
 	
-	        notification.notice((_notification$notice = {
-	            content: _react2['default'].createElement(
-	                'span',
-	                null,
-	                '\u53EA\u53EF\u4EE5\u81EA\u52A8\u5173\u95ED\u7684\u63D0\u793A'
-	            ),
-	            duration: null,
-	            onClose: function onClose() {
-	                console.log('closable close');
-	            }
-	        }, _defineProperty(_notification$notice, 'duration', 6), _defineProperty(_notification$notice, 'closable', false), _notification$notice));
-	    };
+	    notification.notice((_notification$notice = {
+	      content: _react2['default'].createElement(
+	        'span',
+	        null,
+	        '\u53EA\u53EF\u4EE5\u81EA\u52A8\u5173\u95ED\u7684\u63D0\u793A'
+	      ),
+	      duration: null,
+	      onClose: function onClose() {
+	        console.log('closable close');
+	      }
+	    }, _defineProperty(_notification$notice, 'duration', 6), _defineProperty(_notification$notice, 'closable', false), _notification$notice));
+	  };
 	
-	    Demo3.prototype.close = function close(key) {
-	        notification.removeNotice(key);
-	    };
+	  Demo3.prototype.close = function close(key) {
+	    notification.removeNotice(key);
+	  };
 	
-	    Demo3.prototype.manualClose = function manualClose() {
-	        var key = Date.now();
-	        notification.notice({
-	            content: _react2['default'].createElement(
-	                'div',
-	                null,
-	                _react2['default'].createElement(
-	                    'span',
-	                    null,
-	                    '\u53EA\u53EF\u4EE5\u70B9\u51FB\u5173\u95ED\u7684\u63D0\u793A'
-	                ),
-	                _react2['default'].createElement(
-	                    _beeButton2['default'],
-	                    { onClick: this.close.bind(this, key), size: 'sm', style: { position: 'absolute', right: 15, bottom: 15 } },
-	                    '\u77E5\u9053\u4E86'
-	                )
-	            ),
-	            key: key,
-	            duration: null,
-	            closable: false
-	        });
-	    };
+	  Demo3.prototype.manualClose = function manualClose() {
+	    var key = Date.now();
+	    notification.notice({
+	      content: _react2['default'].createElement(
+	        'div',
+	        null,
+	        _react2['default'].createElement(
+	          'span',
+	          null,
+	          '\u53EA\u53EF\u4EE5\u70B9\u51FB\u5173\u95ED\u7684\u63D0\u793A'
+	        ),
+	        _react2['default'].createElement(
+	          _beeButton2['default'],
+	          { onClick: this.close.bind(this, key), size: 'sm', style: { position: 'absolute', right: 15, bottom: 15 } },
+	          '\u77E5\u9053\u4E86'
+	        )
+	      ),
+	      key: key,
+	      duration: null,
+	      closable: false
+	    });
+	  };
 	
-	    Demo3.prototype.render = function render() {
-	        return _react2['default'].createElement(
-	            'div',
-	            { className: 'demoPadding' },
-	            _react2['default'].createElement(
-	                _beeButton2['default'],
-	                { colors: 'primary', onClick: this.closableFn },
-	                '\u81EA\u52A8\u5173\u95ED'
-	            ),
-	            _react2['default'].createElement(
-	                _beeButton2['default'],
-	                { colors: 'primary', onClick: this.manualClose },
-	                '\u624B\u52A8\u5173\u95ED'
-	            )
-	        );
-	    };
+	  Demo3.prototype.render = function render() {
+	    return _react2['default'].createElement(
+	      'div',
+	      { className: 'demoPadding' },
+	      _react2['default'].createElement(
+	        _beeButton2['default'],
+	        { colors: 'primary', onClick: this.closableFn },
+	        '\u81EA\u52A8\u5173\u95ED'
+	      ),
+	      _react2['default'].createElement(
+	        _beeButton2['default'],
+	        { colors: 'primary', onClick: this.manualClose },
+	        '\u624B\u52A8\u5173\u95ED'
+	      )
+	    );
+	  };
 	
-	    return Demo3;
+	  return Demo3;
 	}(_react.Component);
 	
 	exports['default'] = Demo3;

@@ -1,11 +1,27 @@
-## Button
-按钮组件
+# Button
 
-通过点击执行一个具体的行为或动作。
+按钮组件通过点击执行一个具体的行为或动作。
+
+## 何时使用
+
+需要通过点击按钮响应行为的时候
+
+## 如何使用
+
+```
+import { Button } from 'tinper-bee';
+
+or
+
+import Button from 'bee-button';
+import bee-button/build/Button.css;
+
+```
 
 ## 代码演示
 
-### API
+
+## API
 
 |参数|说明|类型|默认值|
 |:---|:----:|:---:|------:|
@@ -17,3 +33,10 @@
 |className|增加额外的class|string|''|
 |htmlType|html dom 的 type 属性(`submit` `button` `reset`)|string|button|
 |style|style 属性|object|''|
+
+
+## 注意事项
+
+暂无
+
+## 更新日志
