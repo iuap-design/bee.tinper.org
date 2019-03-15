@@ -5,12 +5,11 @@
 }
 
 .footer .footer-top {
-    min-height: 400px;
-    padding: 50px;
+    padding: 50px 50px 40px 50px;
 }
 
 .footer .footer-top-item {
-    height: 400px;
+    height: 290px;
     line-height: 30px;
     padding: 0;
 }
