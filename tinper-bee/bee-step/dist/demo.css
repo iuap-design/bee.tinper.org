@@ -53,7 +53,7 @@
 .u-steps-item-icon > .u-steps-icon {
   line-height: 1;
   top: -1px;
-  color: rgb(30,136,229);
+  color: rgb(245, 60, 50);
   position: relative; }
 
 .u-steps-item-tail {
@@ -117,14 +117,14 @@
   background-color: #e8e8e8; }
 
 .u-steps-item-process .u-steps-item-icon {
-  border-color: rgb(30,136,229);
+  border-color: rgb(245, 60, 50);
   background-color: #fff; }
 
 .u-steps-item-process .u-steps-item-icon > .u-steps-icon {
-  color: rgb(30,136,229); }
+  color: rgb(245, 60, 50); }
 
 .u-steps-item-process .u-steps-item-icon > .u-steps-icon .u-steps-icon-dot {
-  background: rgb(30,136,229); }
+  background: rgb(245, 60, 50); }
 
 .u-steps-item-process > .u-steps-item-content > .u-steps-item-title {
   color: rgba(0, 0, 0, 0.85); }
@@ -139,7 +139,7 @@
   background-color: #e8e8e8; }
 
 .u-steps-item-process .u-steps-item-icon {
-  background: rgb(30,136,229); }
+  background: rgb(245, 60, 50); }
 
 .u-steps-item-process .u-steps-item-icon > .u-steps-icon {
   color: #fff; }
@@ -148,29 +148,29 @@
   font-weight: 500; }
 
 .u-steps-item-finish .u-steps-item-icon {
-  border-color: rgb(30,136,229);
+  border-color: rgb(245, 60, 50);
   background-color: #fff; }
 
 .u-steps-item-finish .u-steps-item-icon .u-steps-icon {
-  color: rgb(30,136,229); }
+  color: rgb(245, 60, 50); }
 
 .u-steps-item-finish .u-steps-item-icon .uicon:before {
   content: "\e677"; }
 
 .u-steps-item-finish .u-steps-item-icon > .u-steps-icon .u-steps-icon-dot {
-  background: rgb(30,136,229); }
+  background: rgb(245, 60, 50); }
 
 .u-steps-item-finish > .u-steps-item-content > .u-steps-item-title {
   color: rgba(0, 0, 0, 0.65); }
 
 .u-steps-item-finish > .u-steps-item-content > .u-steps-item-title:after {
-  background-color: rgb(30,136,229); }
+  background-color: rgb(245, 60, 50); }
 
 .u-steps-item-finish > .u-steps-item-content > .u-steps-item-description {
   color: rgba(0, 0, 0, 0.45); }
 
 .u-steps-item-finish > .u-steps-item-tail:after {
-  background-color: rgb(30,136,229); }
+  background-color: rgb(245, 60, 50); }
 
 .u-steps-item-error .u-steps-item-icon {
   border-color: #f5222d;
@@ -232,7 +232,7 @@
   height: 32px; }
 
 .u-steps-item-custom.u-steps-item-process .u-steps-item-icon > .u-steps-icon {
-  color: rgb(30,136,229); }
+  color: rgb(245, 60, 50); }
 
 .u-steps-small.u-steps-horizontal:not(.u-steps-label-vertical) .u-steps-item {
   margin-right: 12px; }

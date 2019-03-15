@@ -37,3 +37,6 @@
 .u-row{
     margin: 0!important;
 }
+.u-row .u-col-md-12{
+    padding: 0!important;
+}

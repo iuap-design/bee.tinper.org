@@ -31,7 +31,7 @@
         "version":"0.1.3",
         "component":"theme-cli"
     },
-    "主题在线定制": {
+    "可视化主题定制": {
         "version":"0.1.3",
         "component":"theme"
     },
@@ -114,7 +114,7 @@
                     "version":"0.2.0",
                     "component":"bee-table"
                 },
-                "复杂表格 ComplexTable":{
+                "复杂表格 ComplexGrid":{
                     "version":"0.2.0",
                     "component":"bee-complex-grid"
                 },
