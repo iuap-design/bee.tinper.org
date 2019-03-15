@@ -1,16 +1,22 @@
-<% if(tag&&(active.indexOf('bee')!=-1)) { %>
-    <link href="//design.yonyoucloud.com/static/tinper-bee/components/<%= active %>/dist/<%= tag %>/demo.css" type="text/css" rel="stylesheet" />
-<% } else if(active.indexOf('bee')!=-1) { %>
-    <link href="./<%= active %>/dist/demo.css" type="text/css" rel="stylesheet" />
-<% } %>    
+<% if(isComponent){ %>
+    <% if(tag) { %>
+        <link href="//design.yonyoucloud.com/static/tinper-bee/components/<%= active %>/dist/<%= tag %>/demo.css" type="text/css" rel="stylesheet" />
+    <% } else { %>
+        <link href="./<%= active %>/dist/demo.css" type="text/css" rel="stylesheet" />
+    <% } %> 
+<% } %>
 <div>
     <%- docs %>
 </div>
-<% if(tag&&(active.indexOf('bee')!=-1)) { %>
-    <script src="//design.yonyoucloud.com/static/tinper-bee/components/<%= active %>/dist/<%= tag %>/demo.js"></script>
-<% } else if(active.indexOf('bee')!=-1) { %>
-    <script src="./<%= active %>/dist/demo.js"></script>
-<% } %>  
+
+<% if(isComponent){ %>
+    <% if(tag) { %>
+        <script src="//design.yonyoucloud.com/static/tinper-bee/components/<%= active %>/dist/<%= tag %>/demo.js"></script>
+    <% } else { %>
+        <script src="./<%= active %>/dist/demo.js"></script>
+    <% } %>     
+<% } %>
+
 <script>
     var select = document.getElementById('tagSelect');
     if(select){

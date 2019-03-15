@@ -16,9 +16,11 @@ module.exports = {
     let component = ctx.params.component;
     let data ='';
     let filePath = '';
+    let isComponentFlag=false;
     
     if (component) {
       if (component.indexOf('bee') != -1) {
+        isComponentFlag=true;
         filePath = path.join(__dirname, `../../tinper-bee/${component}/docs/api.md`);
         data = await fs.readFileSync(filePath, 'utf-8');
         let demo = '<div id="tinperBeeDemo"></div>';
@@ -70,11 +72,13 @@ module.exports = {
       .replace(/\<table/gi, '<div class="table-container">\n<table')
       .replace(/<\/table>/gi, "</table>\n</div>\n");
 
+
     await ctx.render('index', {
       sidebar: sidebar,
       docs: data,
       active: component,
       tag:tag,
+      isComponent:isComponentFlag
     });
   }
 }
