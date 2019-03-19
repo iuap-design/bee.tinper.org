@@ -76,7 +76,7 @@
 	
 	var CARETUP = _react2['default'].createElement('i', { className: 'uf uf-arrow-up' });
 	
-	var Demo1 = __webpack_require__(84);var Demo2 = __webpack_require__(183);var Demo3 = __webpack_require__(184);var Demo4 = __webpack_require__(185);var Demo5 = __webpack_require__(186);var Demo6 = __webpack_require__(187);var Demo7 = __webpack_require__(188);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 基础级联菜单", "code": "/**\n *\n * @title 基础级联菜单\n * @description 级联选择对数据有较严格要求，请参照示例的格式使用options，每项数据至少包含 value、label 两项，子集为 children，以此类推。\n *\n */\n\nimport React, { Component } from 'react';\nimport { Cascader,  Row, Col  } from 'tinper-bee';\n\nconst options = [{\n\tlabel: '浙江',\n\tvalue: 'zj',\n\tchildren: [{\n\t\tlabel: '杭州',\n\t\tvalue: 'hz',\n\t\tchildren: [{\n\t\t\tlabel: '西湖',\n\t\t\tvalue: 'xh',\n\t\t\tchildren: [{\n\t\t\t\tlabel: '白娘子',\n\t\t\t\tvalue: 'bnz'\n\t\t\t},{\n\t\t\t\tlabel: '许仙',\n\t\t\t\tvalue: 'xx'\n\t\t\t}]\n\t\t}]\n\t}]\n\t},\n\t{\n\t\tlabel: '江苏',\n\t\tvalue: 'js',\n\t\tchildren: [{\n\t\t\tlabel: '南京',\n\t\t\tvalue: 'nj',\n\t\t\tchildren: [{\n\t\t\t\tlabel: '中华门',\n\t\t\t\tvalue: 'zhm'\n\t\t\t}]\n\t\t}]\n \t},\n \t{\n\t\tlabel: '山东',\n \t    value: 'sd'\n \t}\n];\nclass Demo1 extends Component {\n\n\tonChange = (value, selectedOptions) => {\n    \tconsole.log(value, selectedOptions);\n\t}\n\t\n \trender(){\n \t\treturn(\n\t\t\t<Row>\n\t\t\t\t<Col md={4}>\n\t\t\t\t\t<div className=\"height-150\">\n\t\t\t\t\t\t<Cascader \n\t\t\t\t\t\t\toptions = {options} \n\t\t\t\t\t\t\tonChange = {this.onChange}\n\t\t\t\t\t\t\tplaceholder = \"请选择地址\"\n\t\t\t\t\t\t/>\n\t\t\t\t\t</div>\n\t\t\t\t</Col>\n\t\t\t</Row>\n \t\t)\n \t}\n}\n", "desc": " 级联选择对数据有较严格要求，请参照示例的格式使用options，每项数据至少包含 value、label 两项，子集为 children，以此类推。" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 默认值", "code": "/**\n *\n * @title 默认值\n * @description 默认值通过数组的方式指定。注：需要给数组的每一项指定label和value属性。\n *\n */\n\nimport React, { Component } from 'react';\nimport { Cascader,  Row, Col  } from 'tinper-bee';\n\nconst options = [{\n    label: '浙江',\n    value: 'zj',\n    children: [{\n        label: '杭州',\n        value: 'hz',\n        children: [{\n            label: '西湖',\n            value: 'xh',\n            children: [{\n                label: '白娘子',\n                value: 'bnz'\n            },{\n                label: '许仙',\n                value: 'xx'\n            }]\n        }]\n    }]\n    },\n    {\n        label: '江苏',\n        value: 'js',\n        children: [{\n\t\t\tlabel: '南京',\n\t\t\tvalue: 'nj',\n\t\t\tchildren: [{\n\t\t\t\tlabel: '中华门',\n\t\t\t\tvalue: 'zhm'\n\t\t\t}]\n \t\t}]\n \t},\n \t{\n\t\tlabel: '山东',\n \t    value: 'sd'\n \t}\n];\n\nconst defaultOptions = [{\n    label: '江苏',\n    value: 'js',\n}, {\n    label: '南京',\n    value: 'nj',\n}, {\n    label: '中华门',\n    value: 'zhm',\n}];\n\nclass Demo2 extends Component {\n\n\tonChange = (value, selectedOptions) => {\n        console.log(value, selectedOptions);\n\t}\n\t\n \trender(){\n \t\treturn(\n\t\t\t<Row>\n\t\t\t\t<Col md={4}>\n\t\t\t\t\t<div className=\"height-150\">\n                        <Cascader \n                            defaultValue={defaultOptions}\n\t\t\t\t\t\t\toptions = {options} \n\t\t\t\t\t\t\tonChange = {this.onChange}\n\t\t\t\t\t\t\tplaceholder = \"请选择地址\"\n\t\t\t\t\t\t/>\n\t\t\t\t\t</div>\n\t\t\t\t</Col>\n\t\t\t</Row>\n \t\t)\n \t}\n}\n", "desc": " 默认值通过数组的方式指定。注：需要给数组的每一项指定label和value属性。" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 移入展开", "code": "/**\n *\n * @title 移入展开\n * @description 鼠标hover时展开菜单子选项\n *\n */\n\nimport React, { Component } from 'react';\nimport { Cascader,  Row, Col  } from 'tinper-bee';\n\nconst options = [{\n    label: '浙江',\n    value: 'zj',\n    children: [{\n            label: '杭州',\n            value: 'hz',\n            children: [{\n                label: '西湖',\n                value: 'xh',\n                children: [{\n                    label: '白娘子',\n                    value: 'bnz'\n                },{\n                    label: '许仙',\n                    value: 'xx'\n                }]\n            }]\n        }]\n    },\n    {\n        label: '江苏',\n    value: 'js',\n    children: [{\n            label: '南京',\n            value: 'nj',\n            children: [{\n                label: '中华门',\n                value: 'zhm'\n            }]\n        }]\n    },\n    {\n        label: '山东',\n    value: 'sd'\n    }\n];\n\nclass Demo3 extends Component {\n\n    onChange = (value) => {\n        console.log(value)\n    }\n\n    render(){\n        return (\n            <Row>\n                <Col md={4}>\n                    <div className=\"height-150\">\n                        <Cascader expandTrigger=\"hover\" options={options} onChange={this.onChange} placeholder=\"请选择地址\"/>\n                    </div>\n                </Col>\n            </Row>\n        )\n    }\n}\n\n", "desc": " 鼠标hover时展开菜单子选项" }, { "example": _react2['default'].createElement(Demo4, null), "title": " 禁用状态", "code": "/**\n *\n * @title 禁用状态\n * @description 通过`disabled`参数设置是否禁用。\n *\n */\n\nimport React, { Component } from 'react';\nimport { Cascader,  Row, Col  } from 'tinper-bee';\n\nconst options = [{\n    label: '浙江',\n    value: 'zj',\n    children: [{\n            label: '杭州',\n            value: 'hz',\n            children: [{\n                label: '西湖',\n                value: 'xh',\n                children: [{\n                    label: '白娘子',\n                    value: 'bnz'\n                },{\n                    label: '许仙',\n                    value: 'xx'\n                }]\n            }]\n        }]\n    },\n    {\n        label: '江苏',\n    value: 'js',\n    children: [{\n            label: '南京',\n            value: 'nj',\n            children: [{\n                label: '中华门',\n                value: 'zhm'\n            }]\n        }]\n    },\n    {\n        label: '山东',\n    value: 'sd'\n    }\n];\n\nclass Demo4 extends Component {  \n    render(){\n        return (\n            <Row>\n                <Col md={4}>\n                    <div className=\"height-150\">\n                        <Cascader disabled options={options} placeholder=\"请选择地址\"/>\n                    </div>\n                </Col>\n            </Row>\n        )\n    }\n}\n\n", "desc": " 通过`disabled`参数设置是否禁用。" }, { "example": _react2['default'].createElement(Demo5, null), "title": " 选择即改变", "code": "/**\n *\n * @title 选择即改变\n * @description 设置属性 `changeOnSelect` 点任何一级都可以选择。\n *\n */\n\nimport React, { Component } from 'react';\nimport { Cascader,  Row, Col  } from 'tinper-bee';\n\nconst options = [{\n    label: '浙江',\n    value: 'zj',\n    children: [{\n            label: '杭州',\n            value: 'hz',\n            children: [{\n                label: '西湖',\n                value: 'xh',\n                children: [{\n                    label: '白娘子',\n                    value: 'bnz'\n                },{\n                    label: '许仙',\n                    value: 'xx'\n                }]\n            }]\n        }]\n    },\n    {\n        label: '江苏',\n    value: 'js',\n    children: [{\n            label: '南京',\n            value: 'nj',\n            children: [{\n                label: '中华门',\n                value: 'zhm'\n            }]\n        }]\n    },\n    {\n        label: '山东',\n    value: 'sd'\n    }\n];\n\nclass Demo5 extends Component {  \n    render(){\n        return (\n            <Row>\n                <Col md={4}>\n                    <div className=\"height-150\">\n                        <Cascader changeOnSelect options={options} placeholder=\"请选择地址\"/>\n                    </div>\n                </Col>\n            </Row>\n        )\n    }\n}\n\n", "desc": " 设置属性 `changeOnSelect` 点任何一级都可以选择。" }, { "example": _react2['default'].createElement(Demo6, null), "title": " 动态改变options", "code": "/**\n *\n * @title 动态改变options\n * @description 通过动态设置`options`参数，即可灵活改变数据源。\n *\n */\n\nimport React, { Component } from 'react';\nimport { Cascader, Button,  Row, Col  } from 'tinper-bee';\n\nconst addressOptions = [{\n    label: '浙江',\n    value: 'zj',\n    children: [{\n            label: '杭州',\n            value: 'hz',\n            children: [{\n                label: '西湖',\n                value: 'xh',\n                children: [{\n                    label: '白娘子',\n                    value: 'bnz'\n                },{\n                    label: '许仙',\n                    value: 'xx'\n                }]\n            }]\n        }]\n    },\n    {\n        label: '江苏',\n        value: 'js',\n        children: [{\n            label: '南京',\n            value: 'nj',\n            children: [{\n                label: '中华门',\n                value: 'zhm'\n            }]\n        }]\n    },\n    {\n        label: '山东',\n        value: 'sd'\n    }\n];\n\nclass Demo6 extends Component {  \n    state = {\n        options: addressOptions\n    }\n    \n    changeOptions = () => {\n        this.setState({\n            options: [{\n                label: '北京',\n                value: 'bj',\n                children: [{\n                        label: '故宫',\n                        value: 'gg',\n                    },{\n                        label: '天坛',\n                        value: 'tt',\n                    },{\n                        label: '王府井',\n                        value: 'wfj',\n                    }]\n                },\n                {\n                    label: '江苏1',\n                    value: 'js1',\n                    children: [{\n                            label: '南京1',\n                            value: 'nj1',\n                            children: [{\n                                label: '中华门1',\n                                value: 'zhm1'\n                            }]\n                        }]\n                    },\n                    {\n                        label: '山东1',\n                    value: 'sd1'\n                }\n            ]\n        })\n    }\n\n    render(){\n        return (\n            <Row>\n                <Col md={4}>\n                    <div className=\"height-150\">\n                        <Button colors=\"primary\" onClick={this.changeOptions} style={{marginBottom:8+'px'}}>点击改变选项数组</Button>\n                        <Cascader options={this.state.options} placeholder=\"请选择地址\"/>\n                    </div>\n                </Col>\n            </Row>\n        )\n    }\n}\n\n", "desc": " 通过动态设置`options`参数，即可灵活改变数据源。" }, { "example": _react2['default'].createElement(Demo7, null), "title": " 不同尺寸的Cascader", "code": "/**\n *\n * @title 不同尺寸的Cascader\n * @description 通过设置`size`属性为 \"lg\" 和 \"sm\" 将输入框设置为大和小尺寸，不设置为默认（中）尺寸。\n *\n */\n\nimport React, { Component } from 'react';\nimport { Cascader, Button,  Row, Col  } from 'tinper-bee';\n\nconst addressOptions = [{\n    label: '浙江',\n    value: 'zj',\n    children: [{\n            label: '杭州',\n            value: 'hz',\n            children: [{\n                label: '西湖',\n                value: 'xh',\n                children: [{\n                    label: '白娘子',\n                    value: 'bnz'\n                },{\n                    label: '许仙',\n                    value: 'xx'\n                }]\n            }]\n        }]\n    },\n    {\n        label: '江苏',\n        value: 'js',\n        children: [{\n            label: '南京',\n            value: 'nj',\n            children: [{\n                label: '中华门',\n                value: 'zhm'\n            }]\n        }]\n    },\n    {\n        label: '山东',\n        value: 'sd'\n    }\n];\n\nclass Demo7 extends Component {  \n\n    render(){\n        return (\n            <Row>\n                <Col md={4}>\n                    <div className=\"height-150 demo7\">\n                        <Cascader size=\"sm\" options={addressOptions} placeholder=\"请选择地址\"/>\n                        <Cascader options={addressOptions} placeholder=\"请选择地址\"/>\n                        <Cascader size=\"lg\" options={addressOptions} placeholder=\"请选择地址\"/>\n                    </div>\n                </Col>\n            </Row>\n        )\n    }\n}\n\n", "desc": " 通过设置`size`属性为 \"lg\" 和 \"sm\" 将输入框设置为大和小尺寸，不设置为默认（中）尺寸。", "scss_code": ".demo7{\n    span{\n        margin-bottom: 16px;\n    }\n    .u-form-control.lg{\n        width: 183px;\n    }\n}" }];
+	var Demo1 = __webpack_require__(84);var Demo2 = __webpack_require__(183);var Demo3 = __webpack_require__(184);var Demo4 = __webpack_require__(185);var Demo5 = __webpack_require__(186);var Demo6 = __webpack_require__(187);var Demo7 = __webpack_require__(188);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 基础级联菜单", "code": "/**\r\n *\r\n * @title 基础级联菜单\r\n * @description 级联选择对数据有较严格要求，请参照示例的格式使用options，每项数据至少包含 value、label 两项，子集为 children，以此类推。\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\r\n\nimport { Cascader,  Row, Col  } from 'tinper-bee';\r\n\r\nconst options = [{\r\n\tlabel: '基础组件',\r\n\tvalue: 'jczj',\r\n\tchildren: [{\r\n\t\tlabel: '导航',\r\n\t\tvalue: 'dh',\r\n\t\tchildren: [{\r\n\t\t\tlabel: '面包屑',\r\n\t\t\tvalue: 'mbx'\r\n\t\t},{\r\n\t\t\tlabel: '分页',\r\n\t\t\tvalue: 'fy'\r\n\t\t},{\r\n\t\t\tlabel: '标签',\r\n\t\t\tvalue: 'bq'\r\n\t\t},{\r\n\t\t\tlabel: '菜单',\r\n\t\t\tvalue: 'cd'\r\n\t\t}]\r\n\t},{\r\n\t\tlabel: '反馈',\r\n\t\tvalue: 'fk',\r\n\t\tchildren: [{\r\n\t\t\tlabel: '模态框',\r\n\t\t\tvalue: 'mtk'\r\n\t\t},{\r\n\t\t\tlabel: '通知',\r\n\t\t\tvalue: 'tz'\r\n\t\t}]\r\n \t},\r\n \t{\r\n\t\tlabel: '表单',\r\n \t    value: 'bd'\r\n \t}]\r\n\t},{\r\n\t\tlabel: '应用组件',\r\n\t\tvalue: 'yyzj',\r\n\t\tchildren: [{\r\n\t\t\tlabel: '参照',\r\n\t\t\tvalue: 'ref',\r\n\t\t\tchildren: [{\r\n\t\t\t\tlabel: '树参照',\r\n\t\t\t\tvalue: 'reftree'\r\n\t\t\t},{\r\n\t\t\t\tlabel: '表参照',\r\n\t\t\t\tvalue: 'reftable'\r\n\t\t\t},{\r\n\t\t\t\tlabel: '穿梭参照',\r\n\t\t\t\tvalue: 'reftransfer'\r\n\t\t\t}]\r\n\t\t}]\r\n\t}\r\n];\r\nclass Demo1 extends Component {\r\n\r\n\tonChange = (value, selectedOptions) => {\r\n    \tconsole.log(value, selectedOptions);\r\n\t}\r\n\t\r\n \trender(){\r\n \t\treturn(\r\n\t\t\t<Row>\r\n\t\t\t\t<Col md={4}>\r\n\t\t\t\t\t<div className=\"height-150\">\r\n\t\t\t\t\t\t<Cascader \r\n\t\t\t\t\t\t\toptions = {options} \r\n\t\t\t\t\t\t\tonChange = {this.onChange}\r\n\t\t\t\t\t\t\tplaceholder = \"请选择\"\r\n\t\t\t\t\t\t/>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</Col>\r\n\t\t\t</Row>\r\n \t\t)\r\n \t}\r\n}\r\n", "desc": " 级联选择对数据有较严格要求，请参照示例的格式使用options，每项数据至少包含 value、label 两项，子集为 children，以此类推。" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 默认值", "code": "/**\r\n *\r\n * @title 默认值\r\n * @description 默认值通过数组的方式指定。注：需要给数组的每一项指定label和value属性。\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\r\n\nimport { Cascader,  Row, Col  } from 'tinper-bee';\r\n\r\nconst options = [{\r\n\tlabel: '基础组件',\r\n\tvalue: 'jczj',\r\n\tchildren: [{\r\n\t\tlabel: '导航',\r\n\t\tvalue: 'dh',\r\n\t\tchildren: [{\r\n\t\t\tlabel: '面包屑',\r\n\t\t\tvalue: 'mbx'\r\n\t\t},{\r\n\t\t\tlabel: '分页',\r\n\t\t\tvalue: 'fy'\r\n\t\t},{\r\n\t\t\tlabel: '标签',\r\n\t\t\tvalue: 'bq'\r\n\t\t},{\r\n\t\t\tlabel: '菜单',\r\n\t\t\tvalue: 'cd'\r\n\t\t}]\r\n\t},{\r\n\t\tlabel: '反馈',\r\n\t\tvalue: 'fk',\r\n\t\tchildren: [{\r\n\t\t\tlabel: '模态框',\r\n\t\t\tvalue: 'mtk'\r\n\t\t},{\r\n\t\t\tlabel: '通知',\r\n\t\t\tvalue: 'tz'\r\n\t\t}]\r\n \t},\r\n \t{\r\n\t\tlabel: '表单',\r\n \t    value: 'bd'\r\n \t}]\r\n\t},{\r\n\t\tlabel: '应用组件',\r\n\t\tvalue: 'yyzj',\r\n\t\tchildren: [{\r\n\t\t\tlabel: '参照',\r\n\t\t\tvalue: 'ref',\r\n\t\t\tchildren: [{\r\n\t\t\t\tlabel: '树参照',\r\n\t\t\t\tvalue: 'reftree'\r\n\t\t\t},{\r\n\t\t\t\tlabel: '表参照',\r\n\t\t\t\tvalue: 'reftable'\r\n\t\t\t},{\r\n\t\t\t\tlabel: '穿梭参照',\r\n\t\t\t\tvalue: 'reftransfer'\r\n\t\t\t}]\r\n\t\t}]\r\n\t}\r\n];\r\n\r\nconst defaultOptions = [{\r\n    label: '基础组件',\r\n    value: 'jczj',\r\n}, {\r\n    label: '导航',\r\n    value: 'dh',\r\n}, {\r\n    label: '菜单',\r\n    value: 'cd',\r\n}];\r\n\r\nclass Demo2 extends Component {\r\n\r\n\tonChange = (value, selectedOptions) => {\r\n        console.log(value, selectedOptions);\r\n\t}\r\n\t\r\n \trender(){\r\n \t\treturn(\r\n\t\t\t<Row>\r\n\t\t\t\t<Col md={4}>\r\n\t\t\t\t\t<div className=\"height-150\">\r\n                        <Cascader \r\n                            defaultValue={defaultOptions}\r\n\t\t\t\t\t\t\toptions = {options} \r\n\t\t\t\t\t\t\tonChange = {this.onChange}\r\n\t\t\t\t\t\t\tplaceholder = \"请选择\"\r\n\t\t\t\t\t\t/>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</Col>\r\n\t\t\t</Row>\r\n \t\t)\r\n \t}\r\n}\r\n", "desc": " 默认值通过数组的方式指定。注：需要给数组的每一项指定label和value属性。" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 移入展开", "code": "/**\r\n *\r\n * @title 移入展开\r\n * @description 鼠标hover时展开菜单子选项\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\r\n\nimport { Cascader,  Row, Col  } from 'tinper-bee';\r\n\r\nconst options = [{\r\n\tlabel: '基础组件',\r\n\tvalue: 'jczj',\r\n\tchildren: [{\r\n\t\tlabel: '导航',\r\n\t\tvalue: 'dh',\r\n\t\tchildren: [{\r\n\t\t\tlabel: '面包屑',\r\n\t\t\tvalue: 'mbx'\r\n\t\t},{\r\n\t\t\tlabel: '分页',\r\n\t\t\tvalue: 'fy'\r\n\t\t},{\r\n\t\t\tlabel: '标签',\r\n\t\t\tvalue: 'bq'\r\n\t\t},{\r\n\t\t\tlabel: '菜单',\r\n\t\t\tvalue: 'cd'\r\n\t\t}]\r\n\t},{\r\n\t\tlabel: '反馈',\r\n\t\tvalue: 'fk',\r\n\t\tchildren: [{\r\n\t\t\tlabel: '模态框',\r\n\t\t\tvalue: 'mtk'\r\n\t\t},{\r\n\t\t\tlabel: '通知',\r\n\t\t\tvalue: 'tz'\r\n\t\t}]\r\n \t},\r\n \t{\r\n\t\tlabel: '表单',\r\n \t    value: 'bd'\r\n \t}]\r\n\t},{\r\n\t\tlabel: '应用组件',\r\n\t\tvalue: 'yyzj',\r\n\t\tchildren: [{\r\n\t\t\tlabel: '参照',\r\n\t\t\tvalue: 'ref',\r\n\t\t\tchildren: [{\r\n\t\t\t\tlabel: '树参照',\r\n\t\t\t\tvalue: 'reftree'\r\n\t\t\t},{\r\n\t\t\t\tlabel: '表参照',\r\n\t\t\t\tvalue: 'reftable'\r\n\t\t\t},{\r\n\t\t\t\tlabel: '穿梭参照',\r\n\t\t\t\tvalue: 'reftransfer'\r\n\t\t\t}]\r\n\t\t}]\r\n\t}\r\n];\r\n\r\nclass Demo3 extends Component {\r\n\r\n    onChange = (value) => {\r\n        console.log(value)\r\n    }\r\n\r\n    render(){\r\n        return (\r\n            <Row>\r\n                <Col md={4}>\r\n                    <div className=\"height-150\">\r\n                        <Cascader expandTrigger=\"hover\" options={options} onChange={this.onChange} placeholder=\"请选择\"/>\r\n                    </div>\r\n                </Col>\r\n            </Row>\r\n        )\r\n    }\r\n}\r\n\r\n", "desc": " 鼠标hover时展开菜单子选项" }, { "example": _react2['default'].createElement(Demo4, null), "title": " 禁用状态", "code": "/**\r\n *\r\n * @title 禁用状态\r\n * @description 通过`disabled`参数设置是否禁用。\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\r\n\nimport { Cascader,  Row, Col  } from 'tinper-bee';\r\n\r\nconst options = [{\r\n    label: '浙江',\r\n    value: 'zj',\r\n    children: [{\r\n            label: '杭州',\r\n            value: 'hz',\r\n            children: [{\r\n                label: '西湖',\r\n                value: 'xh',\r\n                children: [{\r\n                    label: '白娘子',\r\n                    value: 'bnz'\r\n                },{\r\n                    label: '许仙',\r\n                    value: 'xx'\r\n                }]\r\n            }]\r\n        }]\r\n    },\r\n    {\r\n        label: '江苏',\r\n    value: 'js',\r\n    children: [{\r\n            label: '南京',\r\n            value: 'nj',\r\n            children: [{\r\n                label: '中华门',\r\n                value: 'zhm'\r\n            }]\r\n        }]\r\n    },\r\n    {\r\n        label: '山东',\r\n    value: 'sd'\r\n    }\r\n];\r\n\r\nclass Demo4 extends Component {  \r\n    render(){\r\n        return (\r\n            <Row>\r\n                <Col md={4}>\r\n                    <div className=\"height-150\">\r\n                        <Cascader disabled options={options} placeholder=\"请选择地址\"/>\r\n                    </div>\r\n                </Col>\r\n            </Row>\r\n        )\r\n    }\r\n}\r\n\r\n", "desc": " 通过`disabled`参数设置是否禁用。" }, { "example": _react2['default'].createElement(Demo5, null), "title": " 选择即改变", "code": "/**\r\n *\r\n * @title 选择即改变\r\n * @description 设置属性 `changeOnSelect` 点任何一级都可以选择。\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\r\n\nimport { Cascader,  Row, Col  } from 'tinper-bee';\r\n\r\nconst options = [{\r\n\tlabel: '基础组件',\r\n\tvalue: 'jczj',\r\n\tchildren: [{\r\n\t\tlabel: '导航',\r\n\t\tvalue: 'dh',\r\n\t\tchildren: [{\r\n\t\t\tlabel: '面包屑',\r\n\t\t\tvalue: 'mbx'\r\n\t\t},{\r\n\t\t\tlabel: '分页',\r\n\t\t\tvalue: 'fy'\r\n\t\t},{\r\n\t\t\tlabel: '标签',\r\n\t\t\tvalue: 'bq'\r\n\t\t},{\r\n\t\t\tlabel: '菜单',\r\n\t\t\tvalue: 'cd'\r\n\t\t}]\r\n\t},{\r\n\t\tlabel: '反馈',\r\n\t\tvalue: 'fk',\r\n\t\tchildren: [{\r\n\t\t\tlabel: '模态框',\r\n\t\t\tvalue: 'mtk'\r\n\t\t},{\r\n\t\t\tlabel: '通知',\r\n\t\t\tvalue: 'tz'\r\n\t\t}]\r\n \t},\r\n \t{\r\n\t\tlabel: '表单',\r\n \t    value: 'bd'\r\n \t}]\r\n\t},{\r\n\t\tlabel: '应用组件',\r\n\t\tvalue: 'yyzj',\r\n\t\tchildren: [{\r\n\t\t\tlabel: '参照',\r\n\t\t\tvalue: 'ref',\r\n\t\t\tchildren: [{\r\n\t\t\t\tlabel: '树参照',\r\n\t\t\t\tvalue: 'reftree'\r\n\t\t\t},{\r\n\t\t\t\tlabel: '表参照',\r\n\t\t\t\tvalue: 'reftable'\r\n\t\t\t},{\r\n\t\t\t\tlabel: '穿梭参照',\r\n\t\t\t\tvalue: 'reftransfer'\r\n\t\t\t}]\r\n\t\t}]\r\n\t}\r\n];\r\n\r\nclass Demo5 extends Component {  \r\n    render(){\r\n        return (\r\n            <Row>\r\n                <Col md={4}>\r\n                    <div className=\"height-150\">\r\n                        <Cascader changeOnSelect options={options} placeholder=\"请选择\"/>\r\n                    </div>\r\n                </Col>\r\n            </Row>\r\n        )\r\n    }\r\n}\r\n\r\n", "desc": " 设置属性 `changeOnSelect` 点任何一级都可以选择。" }, { "example": _react2['default'].createElement(Demo6, null), "title": " 动态改变options", "code": "/**\r\n *\r\n * @title 动态改变options\r\n * @description 通过动态设置`options`参数，即可灵活改变数据源。\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\r\n\n\nimport { Cascader, Button,  Row, Col  } from 'tinper-bee';\r\n\r\nconst baseOptions = [{\r\n    label: '基础组件',\r\n    value: 'jczj',\r\n    children: [{\r\n        label: '导航',\r\n        value: 'dh',\r\n        children: [{\r\n            label: '面包屑',\r\n            value: 'mbx'\r\n        },{\r\n            label: '分页',\r\n            value: 'fy'\r\n        },{\r\n            label: '标签',\r\n            value: 'bq'\r\n        },{\r\n            label: '菜单',\r\n            value: 'cd'\r\n        }]\r\n    },{\r\n        label: '反馈',\r\n        value: 'fk',\r\n        children: [{\r\n            label: '模态框',\r\n            value: 'mtk'\r\n        },{\r\n            label: '通知',\r\n            value: 'tz'\r\n        }]\r\n        },\r\n        {\r\n        label: '表单',\r\n            value: 'bd'\r\n        }]\r\n    },{\r\n        label: '应用组件',\r\n        value: 'yyzj',\r\n        children: [{\r\n            label: '参照',\r\n            value: 'ref',\r\n            children: [{\r\n                label: '树参照',\r\n                value: 'reftree'\r\n            },{\r\n                label: '表参照',\r\n                value: 'reftable'\r\n            },{\r\n                label: '穿梭参照',\r\n                value: 'reftransfer'\r\n            }]\r\n        }]\r\n    }\r\n];\r\n\r\nclass Demo6 extends Component {  \r\n    state = {\r\n        options: baseOptions\r\n    }\r\n    \r\n    changeOptions = () => {\r\n        this.setState({\r\n            options: [{\r\n                label: '北京',\r\n                value: 'bj',\r\n                children: [{\r\n                        label: '故宫',\r\n                        value: 'gg',\r\n                    },{\r\n                        label: '天坛',\r\n                        value: 'tt',\r\n                    },{\r\n                        label: '王府井',\r\n                        value: 'wfj',\r\n                    }]\r\n                },\r\n                {\r\n                    label: '江苏',\r\n                    value: 'js',\r\n                    children: [{\r\n                            label: '南京',\r\n                            value: 'nj',\r\n                            children: [{\r\n                                label: '中华门',\r\n                                value: 'zhm'\r\n                            }]\r\n                        }]\r\n                    },\r\n                    {\r\n                        label: '山东',\r\n                    value: 'sd'\r\n                }\r\n            ]\r\n        })\r\n    }\r\n\r\n    render(){\r\n        return (\r\n            <Row>\r\n                <Col md={4}>\r\n                    <div className=\"height-150\">\r\n                        <Button colors=\"primary\" onClick={this.changeOptions} style={{marginBottom:8+'px'}}>点击改变选项数组</Button>\r\n                        <Cascader options={this.state.options} placeholder=\"请选择\"/>\r\n                    </div>\r\n                </Col>\r\n            </Row>\r\n        )\r\n    }\r\n}\r\n\r\n", "desc": " 通过动态设置`options`参数，即可灵活改变数据源。" }, { "example": _react2['default'].createElement(Demo7, null), "title": " 不同尺寸的Cascader", "code": "/**\r\n *\r\n * @title 不同尺寸的Cascader\r\n * @description 通过设置`size`属性为 \"lg\" 和 \"sm\" 将输入框设置为大和小尺寸，不设置为默认（中）尺寸。\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\r\n\n\nimport { Cascader, Button,  Row, Col  } from 'tinper-bee';\r\n\r\nconst options = [{\r\n    label: '基础组件',\r\n    value: 'jczj',\r\n    children: [{\r\n        label: '导航',\r\n        value: 'dh',\r\n        children: [{\r\n            label: '面包屑',\r\n            value: 'mbx'\r\n        },{\r\n            label: '分页',\r\n            value: 'fy'\r\n        },{\r\n            label: '标签',\r\n            value: 'bq'\r\n        },{\r\n            label: '菜单',\r\n            value: 'cd'\r\n        }]\r\n    },{\r\n        label: '反馈',\r\n        value: 'fk',\r\n        children: [{\r\n            label: '模态框',\r\n            value: 'mtk'\r\n        },{\r\n            label: '通知',\r\n            value: 'tz'\r\n        }]\r\n        },\r\n        {\r\n        label: '表单',\r\n            value: 'bd'\r\n        }]\r\n    },{\r\n        label: '应用组件',\r\n        value: 'yyzj',\r\n        children: [{\r\n            label: '参照',\r\n            value: 'ref',\r\n            children: [{\r\n                label: '树参照',\r\n                value: 'reftree'\r\n            },{\r\n                label: '表参照',\r\n                value: 'reftable'\r\n            },{\r\n                label: '穿梭参照',\r\n                value: 'reftransfer'\r\n            }]\r\n        }]\r\n    }\r\n];\r\n\r\nclass Demo7 extends Component {  \r\n\r\n    render(){\r\n        return (\r\n            <Row>\r\n                <Col md={4}>\r\n                    <div className=\"height-150 demo7\">\r\n                        <Cascader size=\"sm\" options={options} placeholder=\"请选择\"/>\r\n                        <Cascader options={options} placeholder=\"请选择\"/>\r\n                        <Cascader size=\"lg\" options={options} placeholder=\"请选择\"/>\r\n                    </div>\r\n                </Col>\r\n            </Row>\r\n        )\r\n    }\r\n}\r\n\r\n", "desc": " 通过设置`size`属性为 \"lg\" 和 \"sm\" 将输入框设置为大和小尺寸，不设置为默认（中）尺寸。", "scss_code": ".demo7{\r\n    span{\r\n        margin-bottom: 16px;\r\n    }\r\n    .u-form-control.lg{\r\n        width: 183px;\r\n    }\r\n}" }];
 	
 	var Demo = function (_Component) {
 	    _inherits(Demo, _Component);
@@ -5584,6 +5584,16 @@
 	  var documentWidth = documentElement.scrollWidth;
 	  var documentHeight = documentElement.scrollHeight;
 	
+	  // scrollXXX on html is sync with body which means overflow: hidden on body gets wrong scrollXXX.
+	  // We should cut this ourself.
+	  var bodyStyle = window.getComputedStyle(body);
+	  if (bodyStyle.overflowX === 'hidden') {
+	    documentWidth = win.innerWidth;
+	  }
+	  if (bodyStyle.overflowY === 'hidden') {
+	    documentHeight = win.innerHeight;
+	  }
+	
 	  // Reset element position after calculate the visible area
 	  if (element.style) {
 	    element.style.position = originalPosition;
@@ -8026,37 +8036,55 @@
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
 	
 	var options = [{
-		label: '浙江',
-		value: 'zj',
+		label: '基础组件',
+		value: 'jczj',
 		children: [{
-			label: '杭州',
-			value: 'hz',
+			label: '导航',
+			value: 'dh',
 			children: [{
-				label: '西湖',
-				value: 'xh',
-				children: [{
-					label: '白娘子',
-					value: 'bnz'
-				}, {
-					label: '许仙',
-					value: 'xx'
-				}]
+				label: '面包屑',
+				value: 'mbx'
+			}, {
+				label: '分页',
+				value: 'fy'
+			}, {
+				label: '标签',
+				value: 'bq'
+			}, {
+				label: '菜单',
+				value: 'cd'
 			}]
+		}, {
+			label: '反馈',
+			value: 'fk',
+			children: [{
+				label: '模态框',
+				value: 'mtk'
+			}, {
+				label: '通知',
+				value: 'tz'
+			}]
+		}, {
+			label: '表单',
+			value: 'bd'
 		}]
 	}, {
-		label: '江苏',
-		value: 'js',
+		label: '应用组件',
+		value: 'yyzj',
 		children: [{
-			label: '南京',
-			value: 'nj',
+			label: '参照',
+			value: 'ref',
 			children: [{
-				label: '中华门',
-				value: 'zhm'
+				label: '树参照',
+				value: 'reftree'
+			}, {
+				label: '表参照',
+				value: 'reftable'
+			}, {
+				label: '穿梭参照',
+				value: 'reftransfer'
 			}]
 		}]
-	}, {
-		label: '山东',
-		value: 'sd'
 	}];
 	
 	var Demo1 = function (_Component) {
@@ -8089,7 +8117,7 @@
 						_react2['default'].createElement(_src2['default'], {
 							options: options,
 							onChange: this.onChange,
-							placeholder: '\u8BF7\u9009\u62E9\u5730\u5740'
+							placeholder: '\u8BF7\u9009\u62E9'
 						})
 					)
 				)
@@ -14081,7 +14109,7 @@
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+		value: true
 	});
 	
 	var _react = __webpack_require__(4);
@@ -14110,89 +14138,107 @@
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
 	
 	var options = [{
-	    label: '浙江',
-	    value: 'zj',
-	    children: [{
-	        label: '杭州',
-	        value: 'hz',
-	        children: [{
-	            label: '西湖',
-	            value: 'xh',
-	            children: [{
-	                label: '白娘子',
-	                value: 'bnz'
-	            }, {
-	                label: '许仙',
-	                value: 'xx'
-	            }]
-	        }]
-	    }]
+		label: '基础组件',
+		value: 'jczj',
+		children: [{
+			label: '导航',
+			value: 'dh',
+			children: [{
+				label: '面包屑',
+				value: 'mbx'
+			}, {
+				label: '分页',
+				value: 'fy'
+			}, {
+				label: '标签',
+				value: 'bq'
+			}, {
+				label: '菜单',
+				value: 'cd'
+			}]
+		}, {
+			label: '反馈',
+			value: 'fk',
+			children: [{
+				label: '模态框',
+				value: 'mtk'
+			}, {
+				label: '通知',
+				value: 'tz'
+			}]
+		}, {
+			label: '表单',
+			value: 'bd'
+		}]
 	}, {
-	    label: '江苏',
-	    value: 'js',
-	    children: [{
-	        label: '南京',
-	        value: 'nj',
-	        children: [{
-	            label: '中华门',
-	            value: 'zhm'
-	        }]
-	    }]
-	}, {
-	    label: '山东',
-	    value: 'sd'
+		label: '应用组件',
+		value: 'yyzj',
+		children: [{
+			label: '参照',
+			value: 'ref',
+			children: [{
+				label: '树参照',
+				value: 'reftree'
+			}, {
+				label: '表参照',
+				value: 'reftable'
+			}, {
+				label: '穿梭参照',
+				value: 'reftransfer'
+			}]
+		}]
 	}];
 	
 	var defaultOptions = [{
-	    label: '江苏',
-	    value: 'js'
+		label: '基础组件',
+		value: 'jczj'
 	}, {
-	    label: '南京',
-	    value: 'nj'
+		label: '导航',
+		value: 'dh'
 	}, {
-	    label: '中华门',
-	    value: 'zhm'
+		label: '菜单',
+		value: 'cd'
 	}];
 	
 	var Demo2 = function (_Component) {
-	    _inherits(Demo2, _Component);
+		_inherits(Demo2, _Component);
 	
-	    function Demo2() {
-	        var _temp, _this, _ret;
+		function Demo2() {
+			var _temp, _this, _ret;
 	
-	        _classCallCheck(this, Demo2);
+			_classCallCheck(this, Demo2);
 	
-	        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-	            args[_key] = arguments[_key];
-	        }
+			for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+				args[_key] = arguments[_key];
+			}
 	
-	        return _ret = (_temp = (_this = _possibleConstructorReturn(this, _Component.call.apply(_Component, [this].concat(args))), _this), _this.onChange = function (value, selectedOptions) {
-	            console.log(value, selectedOptions);
-	        }, _temp), _possibleConstructorReturn(_this, _ret);
-	    }
+			return _ret = (_temp = (_this = _possibleConstructorReturn(this, _Component.call.apply(_Component, [this].concat(args))), _this), _this.onChange = function (value, selectedOptions) {
+				console.log(value, selectedOptions);
+			}, _temp), _possibleConstructorReturn(_this, _ret);
+		}
 	
-	    Demo2.prototype.render = function render() {
-	        return _react2['default'].createElement(
-	            _beeLayout.Row,
-	            null,
-	            _react2['default'].createElement(
-	                _beeLayout.Col,
-	                { md: 4 },
-	                _react2['default'].createElement(
-	                    'div',
-	                    { className: 'height-150' },
-	                    _react2['default'].createElement(_src2['default'], {
-	                        defaultValue: defaultOptions,
-	                        options: options,
-	                        onChange: this.onChange,
-	                        placeholder: '\u8BF7\u9009\u62E9\u5730\u5740'
-	                    })
-	                )
-	            )
-	        );
-	    };
+		Demo2.prototype.render = function render() {
+			return _react2['default'].createElement(
+				_beeLayout.Row,
+				null,
+				_react2['default'].createElement(
+					_beeLayout.Col,
+					{ md: 4 },
+					_react2['default'].createElement(
+						'div',
+						{ className: 'height-150' },
+						_react2['default'].createElement(_src2['default'], {
+							defaultValue: defaultOptions,
+							options: options,
+							onChange: this.onChange,
+							placeholder: '\u8BF7\u9009\u62E9'
+						})
+					)
+				)
+			);
+		};
 	
-	    return Demo2;
+		return Demo2;
 	}(_react.Component);
 	
 	exports['default'] = Demo2;
@@ -14205,7 +14251,7 @@
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+		value: true
 	});
 	
 	var _react = __webpack_require__(4);
@@ -14234,73 +14280,91 @@
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
 	
 	var options = [{
-	    label: '浙江',
-	    value: 'zj',
-	    children: [{
-	        label: '杭州',
-	        value: 'hz',
-	        children: [{
-	            label: '西湖',
-	            value: 'xh',
-	            children: [{
-	                label: '白娘子',
-	                value: 'bnz'
-	            }, {
-	                label: '许仙',
-	                value: 'xx'
-	            }]
-	        }]
-	    }]
+		label: '基础组件',
+		value: 'jczj',
+		children: [{
+			label: '导航',
+			value: 'dh',
+			children: [{
+				label: '面包屑',
+				value: 'mbx'
+			}, {
+				label: '分页',
+				value: 'fy'
+			}, {
+				label: '标签',
+				value: 'bq'
+			}, {
+				label: '菜单',
+				value: 'cd'
+			}]
+		}, {
+			label: '反馈',
+			value: 'fk',
+			children: [{
+				label: '模态框',
+				value: 'mtk'
+			}, {
+				label: '通知',
+				value: 'tz'
+			}]
+		}, {
+			label: '表单',
+			value: 'bd'
+		}]
 	}, {
-	    label: '江苏',
-	    value: 'js',
-	    children: [{
-	        label: '南京',
-	        value: 'nj',
-	        children: [{
-	            label: '中华门',
-	            value: 'zhm'
-	        }]
-	    }]
-	}, {
-	    label: '山东',
-	    value: 'sd'
+		label: '应用组件',
+		value: 'yyzj',
+		children: [{
+			label: '参照',
+			value: 'ref',
+			children: [{
+				label: '树参照',
+				value: 'reftree'
+			}, {
+				label: '表参照',
+				value: 'reftable'
+			}, {
+				label: '穿梭参照',
+				value: 'reftransfer'
+			}]
+		}]
 	}];
 	
 	var Demo3 = function (_Component) {
-	    _inherits(Demo3, _Component);
+		_inherits(Demo3, _Component);
 	
-	    function Demo3() {
-	        var _temp, _this, _ret;
+		function Demo3() {
+			var _temp, _this, _ret;
 	
-	        _classCallCheck(this, Demo3);
+			_classCallCheck(this, Demo3);
 	
-	        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-	            args[_key] = arguments[_key];
-	        }
+			for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+				args[_key] = arguments[_key];
+			}
 	
-	        return _ret = (_temp = (_this = _possibleConstructorReturn(this, _Component.call.apply(_Component, [this].concat(args))), _this), _this.onChange = function (value) {
-	            console.log(value);
-	        }, _temp), _possibleConstructorReturn(_this, _ret);
-	    }
+			return _ret = (_temp = (_this = _possibleConstructorReturn(this, _Component.call.apply(_Component, [this].concat(args))), _this), _this.onChange = function (value) {
+				console.log(value);
+			}, _temp), _possibleConstructorReturn(_this, _ret);
+		}
 	
-	    Demo3.prototype.render = function render() {
-	        return _react2['default'].createElement(
-	            _beeLayout.Row,
-	            null,
-	            _react2['default'].createElement(
-	                _beeLayout.Col,
-	                { md: 4 },
-	                _react2['default'].createElement(
-	                    'div',
-	                    { className: 'height-150' },
-	                    _react2['default'].createElement(_src2['default'], { expandTrigger: 'hover', options: options, onChange: this.onChange, placeholder: '\u8BF7\u9009\u62E9\u5730\u5740' })
-	                )
-	            )
-	        );
-	    };
+		Demo3.prototype.render = function render() {
+			return _react2['default'].createElement(
+				_beeLayout.Row,
+				null,
+				_react2['default'].createElement(
+					_beeLayout.Col,
+					{ md: 4 },
+					_react2['default'].createElement(
+						'div',
+						{ className: 'height-150' },
+						_react2['default'].createElement(_src2['default'], { expandTrigger: 'hover', options: options, onChange: this.onChange, placeholder: '\u8BF7\u9009\u62E9' })
+					)
+				)
+			);
+		};
 	
-	    return Demo3;
+		return Demo3;
 	}(_react.Component);
 	
 	exports['default'] = Demo3;
@@ -14413,7 +14477,7 @@
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+		value: true
 	});
 	
 	var _react = __webpack_require__(4);
@@ -14442,65 +14506,83 @@
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
 	
 	var options = [{
-	    label: '浙江',
-	    value: 'zj',
-	    children: [{
-	        label: '杭州',
-	        value: 'hz',
-	        children: [{
-	            label: '西湖',
-	            value: 'xh',
-	            children: [{
-	                label: '白娘子',
-	                value: 'bnz'
-	            }, {
-	                label: '许仙',
-	                value: 'xx'
-	            }]
-	        }]
-	    }]
+		label: '基础组件',
+		value: 'jczj',
+		children: [{
+			label: '导航',
+			value: 'dh',
+			children: [{
+				label: '面包屑',
+				value: 'mbx'
+			}, {
+				label: '分页',
+				value: 'fy'
+			}, {
+				label: '标签',
+				value: 'bq'
+			}, {
+				label: '菜单',
+				value: 'cd'
+			}]
+		}, {
+			label: '反馈',
+			value: 'fk',
+			children: [{
+				label: '模态框',
+				value: 'mtk'
+			}, {
+				label: '通知',
+				value: 'tz'
+			}]
+		}, {
+			label: '表单',
+			value: 'bd'
+		}]
 	}, {
-	    label: '江苏',
-	    value: 'js',
-	    children: [{
-	        label: '南京',
-	        value: 'nj',
-	        children: [{
-	            label: '中华门',
-	            value: 'zhm'
-	        }]
-	    }]
-	}, {
-	    label: '山东',
-	    value: 'sd'
+		label: '应用组件',
+		value: 'yyzj',
+		children: [{
+			label: '参照',
+			value: 'ref',
+			children: [{
+				label: '树参照',
+				value: 'reftree'
+			}, {
+				label: '表参照',
+				value: 'reftable'
+			}, {
+				label: '穿梭参照',
+				value: 'reftransfer'
+			}]
+		}]
 	}];
 	
 	var Demo5 = function (_Component) {
-	    _inherits(Demo5, _Component);
+		_inherits(Demo5, _Component);
 	
-	    function Demo5() {
-	        _classCallCheck(this, Demo5);
+		function Demo5() {
+			_classCallCheck(this, Demo5);
 	
-	        return _possibleConstructorReturn(this, _Component.apply(this, arguments));
-	    }
+			return _possibleConstructorReturn(this, _Component.apply(this, arguments));
+		}
 	
-	    Demo5.prototype.render = function render() {
-	        return _react2['default'].createElement(
-	            _beeLayout.Row,
-	            null,
-	            _react2['default'].createElement(
-	                _beeLayout.Col,
-	                { md: 4 },
-	                _react2['default'].createElement(
-	                    'div',
-	                    { className: 'height-150' },
-	                    _react2['default'].createElement(_src2['default'], { changeOnSelect: true, options: options, placeholder: '\u8BF7\u9009\u62E9\u5730\u5740' })
-	                )
-	            )
-	        );
-	    };
+		Demo5.prototype.render = function render() {
+			return _react2['default'].createElement(
+				_beeLayout.Row,
+				null,
+				_react2['default'].createElement(
+					_beeLayout.Col,
+					{ md: 4 },
+					_react2['default'].createElement(
+						'div',
+						{ className: 'height-150' },
+						_react2['default'].createElement(_src2['default'], { changeOnSelect: true, options: options, placeholder: '\u8BF7\u9009\u62E9' })
+					)
+				)
+			);
+		};
 	
-	    return Demo5;
+		return Demo5;
 	}(_react.Component);
 	
 	exports['default'] = Demo5;
@@ -14545,38 +14627,56 @@
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
 	
-	var addressOptions = [{
-	    label: '浙江',
-	    value: 'zj',
+	var baseOptions = [{
+	    label: '基础组件',
+	    value: 'jczj',
 	    children: [{
-	        label: '杭州',
-	        value: 'hz',
+	        label: '导航',
+	        value: 'dh',
 	        children: [{
-	            label: '西湖',
-	            value: 'xh',
-	            children: [{
-	                label: '白娘子',
-	                value: 'bnz'
-	            }, {
-	                label: '许仙',
-	                value: 'xx'
-	            }]
+	            label: '面包屑',
+	            value: 'mbx'
+	        }, {
+	            label: '分页',
+	            value: 'fy'
+	        }, {
+	            label: '标签',
+	            value: 'bq'
+	        }, {
+	            label: '菜单',
+	            value: 'cd'
 	        }]
+	    }, {
+	        label: '反馈',
+	        value: 'fk',
+	        children: [{
+	            label: '模态框',
+	            value: 'mtk'
+	        }, {
+	            label: '通知',
+	            value: 'tz'
+	        }]
+	    }, {
+	        label: '表单',
+	        value: 'bd'
 	    }]
 	}, {
-	    label: '江苏',
-	    value: 'js',
+	    label: '应用组件',
+	    value: 'yyzj',
 	    children: [{
-	        label: '南京',
-	        value: 'nj',
+	        label: '参照',
+	        value: 'ref',
 	        children: [{
-	            label: '中华门',
-	            value: 'zhm'
+	            label: '树参照',
+	            value: 'reftree'
+	        }, {
+	            label: '表参照',
+	            value: 'reftable'
+	        }, {
+	            label: '穿梭参照',
+	            value: 'reftransfer'
 	        }]
 	    }]
-	}, {
-	    label: '山东',
-	    value: 'sd'
 	}];
 	
 	var Demo6 = function (_Component) {
@@ -14592,7 +14692,7 @@
 	        }
 	
 	        return _ret = (_temp = (_this = _possibleConstructorReturn(this, _Component.call.apply(_Component, [this].concat(args))), _this), _this.state = {
-	            options: addressOptions
+	            options: baseOptions
 	        }, _this.changeOptions = function () {
 	            _this.setState({
 	                options: [{
@@ -14609,19 +14709,19 @@
 	                        value: 'wfj'
 	                    }]
 	                }, {
-	                    label: '江苏1',
-	                    value: 'js1',
+	                    label: '江苏',
+	                    value: 'js',
 	                    children: [{
-	                        label: '南京1',
-	                        value: 'nj1',
+	                        label: '南京',
+	                        value: 'nj',
 	                        children: [{
-	                            label: '中华门1',
-	                            value: 'zhm1'
+	                            label: '中华门',
+	                            value: 'zhm'
 	                        }]
 	                    }]
 	                }, {
-	                    label: '山东1',
-	                    value: 'sd1'
+	                    label: '山东',
+	                    value: 'sd'
 	                }]
 	            });
 	        }, _temp), _possibleConstructorReturn(_this, _ret);
@@ -14642,7 +14742,7 @@
 	                        { colors: 'primary', onClick: this.changeOptions, style: { marginBottom: 8 + 'px' } },
 	                        '\u70B9\u51FB\u6539\u53D8\u9009\u9879\u6570\u7EC4'
 	                    ),
-	                    _react2['default'].createElement(_src2['default'], { options: this.state.options, placeholder: '\u8BF7\u9009\u62E9\u5730\u5740' })
+	                    _react2['default'].createElement(_src2['default'], { options: this.state.options, placeholder: '\u8BF7\u9009\u62E9' })
 	                )
 	            )
 	        );
@@ -14693,38 +14793,56 @@
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
 	
-	var addressOptions = [{
-	    label: '浙江',
-	    value: 'zj',
+	var options = [{
+	    label: '基础组件',
+	    value: 'jczj',
 	    children: [{
-	        label: '杭州',
-	        value: 'hz',
+	        label: '导航',
+	        value: 'dh',
 	        children: [{
-	            label: '西湖',
-	            value: 'xh',
-	            children: [{
-	                label: '白娘子',
-	                value: 'bnz'
-	            }, {
-	                label: '许仙',
-	                value: 'xx'
-	            }]
+	            label: '面包屑',
+	            value: 'mbx'
+	        }, {
+	            label: '分页',
+	            value: 'fy'
+	        }, {
+	            label: '标签',
+	            value: 'bq'
+	        }, {
+	            label: '菜单',
+	            value: 'cd'
 	        }]
+	    }, {
+	        label: '反馈',
+	        value: 'fk',
+	        children: [{
+	            label: '模态框',
+	            value: 'mtk'
+	        }, {
+	            label: '通知',
+	            value: 'tz'
+	        }]
+	    }, {
+	        label: '表单',
+	        value: 'bd'
 	    }]
 	}, {
-	    label: '江苏',
-	    value: 'js',
+	    label: '应用组件',
+	    value: 'yyzj',
 	    children: [{
-	        label: '南京',
-	        value: 'nj',
+	        label: '参照',
+	        value: 'ref',
 	        children: [{
-	            label: '中华门',
-	            value: 'zhm'
+	            label: '树参照',
+	            value: 'reftree'
+	        }, {
+	            label: '表参照',
+	            value: 'reftable'
+	        }, {
+	            label: '穿梭参照',
+	            value: 'reftransfer'
 	        }]
 	    }]
-	}, {
-	    label: '山东',
-	    value: 'sd'
 	}];
 	
 	var Demo7 = function (_Component) {
@@ -14746,9 +14864,9 @@
 	                _react2['default'].createElement(
 	                    'div',
 	                    { className: 'height-150 demo7' },
-	                    _react2['default'].createElement(_src2['default'], { size: 'sm', options: addressOptions, placeholder: '\u8BF7\u9009\u62E9\u5730\u5740' }),
-	                    _react2['default'].createElement(_src2['default'], { options: addressOptions, placeholder: '\u8BF7\u9009\u62E9\u5730\u5740' }),
-	                    _react2['default'].createElement(_src2['default'], { size: 'lg', options: addressOptions, placeholder: '\u8BF7\u9009\u62E9\u5730\u5740' })
+	                    _react2['default'].createElement(_src2['default'], { size: 'sm', options: options, placeholder: '\u8BF7\u9009\u62E9' }),
+	                    _react2['default'].createElement(_src2['default'], { options: options, placeholder: '\u8BF7\u9009\u62E9' }),
+	                    _react2['default'].createElement(_src2['default'], { size: 'lg', options: options, placeholder: '\u8BF7\u9009\u62E9' })
 	                )
 	            )
 	        );

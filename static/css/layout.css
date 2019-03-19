@@ -32,6 +32,8 @@
 .footer-out {
     margin-left: 249px;
     margin-top: 60px;
+    position: relative;
+    z-index: 2;
 }
 .u-row{
     margin: 0!important;

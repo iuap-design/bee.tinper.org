@@ -1,4 +1,4 @@
-## tinper-bee 2.0.4(推荐版本)
+## tinper-bee 2.0.4
 - [Fixbug]bee-button @2.0.8，解决按钮active态错误问题
 - [Bugfix]bee-dropdown @2.0.3，解决部分下拉菜单缺失hover状态的问题
 - [Feature]bee-checkbox @2.0.3
@@ -30,7 +30,7 @@
 - [Feature]bee-autocomplete @2.0.1 相关2.0主题依赖组件升级,bee-form-control 需要升级
 
 
-## tinper-bee 2.0.3(推荐版本)
+## tinper-bee 2.0.3
 
 - [Feature]bee-input-group @2.0.1
     1. 输入框行高统一为32px

@@ -6,11 +6,9 @@
 *
 */
 import React, { Component } from 'react';
-import Table from '../../src';
-import Icon from 'bee-icon';
-import Menu from 'bee-menus';
-import Dropdown from 'bee-dropdown';
+import {Icon,Menu,Dropdown} from "tinper-bee";
 
+import Table from '../../src';
 
 const { Item } = Menu;
 // const columns24 = [
@@ -103,9 +101,6 @@ class Demo24 extends Component {
 
   constructor(props) {
     super(props);
-    // let columns = [];
-    // Object.assign(columns,columns24);
-    // columns.forEach(da=>da.onHeadCellClick=this.onHeadCellClick);
     this.state = {
       columns:columns24
     }

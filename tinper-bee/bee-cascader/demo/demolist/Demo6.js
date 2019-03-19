@@ -10,46 +10,63 @@ import { Row, Col } from 'bee-layout';
 import Button from 'bee-button';
 import Cascader from '../../src';
 
-const addressOptions = [{
-    label: '浙江',
-    value: 'zj',
+const baseOptions = [{
+    label: '基础组件',
+    value: 'jczj',
     children: [{
-            label: '杭州',
-            value: 'hz',
-            children: [{
-                label: '西湖',
-                value: 'xh',
-                children: [{
-                    label: '白娘子',
-                    value: 'bnz'
-                },{
-                    label: '许仙',
-                    value: 'xx'
-                }]
-            }]
-        }]
-    },
-    {
-        label: '江苏',
-        value: 'js',
+        label: '导航',
+        value: 'dh',
         children: [{
-            label: '南京',
-            value: 'nj',
+            label: '面包屑',
+            value: 'mbx'
+        },{
+            label: '分页',
+            value: 'fy'
+        },{
+            label: '标签',
+            value: 'bq'
+        },{
+            label: '菜单',
+            value: 'cd'
+        }]
+    },{
+        label: '反馈',
+        value: 'fk',
+        children: [{
+            label: '模态框',
+            value: 'mtk'
+        },{
+            label: '通知',
+            value: 'tz'
+        }]
+        },
+        {
+        label: '表单',
+            value: 'bd'
+        }]
+    },{
+        label: '应用组件',
+        value: 'yyzj',
+        children: [{
+            label: '参照',
+            value: 'ref',
             children: [{
-                label: '中华门',
-                value: 'zhm'
+                label: '树参照',
+                value: 'reftree'
+            },{
+                label: '表参照',
+                value: 'reftable'
+            },{
+                label: '穿梭参照',
+                value: 'reftransfer'
             }]
         }]
-    },
-    {
-        label: '山东',
-        value: 'sd'
     }
 ];
 
 class Demo6 extends Component {  
     state = {
-        options: addressOptions
+        options: baseOptions
     }
     
     changeOptions = () => {
@@ -69,20 +86,20 @@ class Demo6 extends Component {
                     }]
                 },
                 {
-                    label: '江苏1',
-                    value: 'js1',
+                    label: '江苏',
+                    value: 'js',
                     children: [{
-                            label: '南京1',
-                            value: 'nj1',
+                            label: '南京',
+                            value: 'nj',
                             children: [{
-                                label: '中华门1',
-                                value: 'zhm1'
+                                label: '中华门',
+                                value: 'zhm'
                             }]
                         }]
                     },
                     {
-                        label: '山东1',
-                    value: 'sd1'
+                        label: '山东',
+                    value: 'sd'
                 }
             ]
         })
@@ -94,7 +111,7 @@ class Demo6 extends Component {
                 <Col md={4}>
                     <div className="height-150">
                         <Button colors="primary" onClick={this.changeOptions} style={{marginBottom:8+'px'}}>点击改变选项数组</Button>
-                        <Cascader options={this.state.options} placeholder="请选择地址"/>
+                        <Cascader options={this.state.options} placeholder="请选择"/>
                     </div>
                 </Col>
             </Row>

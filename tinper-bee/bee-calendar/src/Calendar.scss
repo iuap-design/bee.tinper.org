@@ -478,7 +478,6 @@
 }
 .u-calendar-date:hover {
   background: $hover-bg-color-base;
-  color: $brand-primary;
   cursor: pointer;
 }
 .u-calendar-selected-day .u-calendar-date {
@@ -760,7 +759,6 @@
     text-align: center;
     &:hover{
       background: $hover-bg-color-base;
-      color: $brand-primary;
       cursor: pointer;
     }
   }
@@ -1181,8 +1179,7 @@
     }
   }
   .u-calendar-full-header-switcher-normal:hover {
-    border-color: $brand-primary;
-    box-shadow: 0 0 2px unquote("rgb(#{$primary-color,0.8})");
+    background: $hover-bg-color-base;
     cursor: pointer;
   }
 }
@@ -1213,8 +1210,8 @@
   }
   .u-calendar-selected-day .u-calendar-date,
   .u-calendar-month-panel-selected-cell .u-calendar-month-panel-month {
-    background-color: $hover-bg-color-base;
-    color: #666;
+    background-color: $selected-bg-color-base;
+    color: $brand-primary;
   }
   .u-calendar-today .u-calendar-date,
   .u-calendar-month-panel-selected-cell .u-calendar-month-panel-month {
@@ -1593,13 +1590,11 @@ li.rc-select-dropdown-menu-item-disabled {
 }
 li.rc-select-dropdown-menu-item-active {
   background-color: $hover-bg-color-base;
-  color: $brand-primary;
   cursor: pointer;
 }
 li.rc-select-dropdown-menu-item-selected {
-  font-weight: 600;
-  // color: #666;
-  background-color: #f7f7f7;
+  color: $brand-primary;
+  background-color: $selected-bg-color-base;
 }
 li.rc-select-dropdown-menu-item-divider {
   height: 1px;

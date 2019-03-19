@@ -1,5 +1,5 @@
-<a name="2.0.5"></a>
-## [2.0.5](https://github.com/tinper-bee/bee-tree/compare/v2.0.4...v2.0.5) (2019-03-08)
+<a name="2.0.6"></a>
+## [2.0.6](https://github.com/tinper-bee/bee-tree/compare/v2.0.2...v2.0.6) (2019-03-19)
 
 
 ### Bug Fixes
@@ -8,18 +8,18 @@
 
 
 
-<a name="2.0.4"></a>
-## [2.0.4](https://github.com/tinper-bee/bee-tree/compare/v2.0.3...v2.0.4) (2019-03-07)
-
-
-
-<a name="2.0.3"></a>
-## [2.0.3](https://github.com/tinper-bee/bee-tree/compare/v2.0.2...v2.0.3) (2019-03-06)
-
-
-
 <a name="2.0.2"></a>
-## [2.0.2](https://github.com/tinper-bee/bee-tree/compare/2.0.2...v2.0.2) (2019-03-02)
+## [2.0.2](https://github.com/tinper-bee/bee-tree/compare/v2.0.1...v2.0.2) (2019-03-02)
+
+
+
+<a name="2.0.1"></a>
+## [2.0.1](https://github.com/tinper-bee/bee-tree/compare/v2.0.0...v2.0.1) (2019-02-28)
+
+
+
+<a name="2.0.0"></a>
+# [2.0.0](https://github.com/tinper-bee/bee-tree/compare/v1.1.16...v2.0.0) (2019-02-16)
 
 
 

@@ -76,7 +76,7 @@
 	
 	var CARETUP = _react2['default'].createElement('i', { className: 'uf uf-arrow-up' });
 	
-	var Demo1 = __webpack_require__(84);var Demo2 = __webpack_require__(332);var Demo3 = __webpack_require__(333);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 基本时间选择", "code": "/**\n *\n * @title 基本时间选择\n * @description 点击 Timepicker，然后可以在浮层中选择或者输入某一时间。\n *\n */\n\n\n\nimport React, { Component } from 'react';\nimport Timepicker from \"tinper-bee/lib/Timepicker\";\nimport moment from 'moment';\n\nclass Demo1 extends Component {\n\n    onChange(time){\n        console.log(time);\n    }\n    getPopupContainer() {\n        return this.d || document.getElementById('d');\n    }\n    render() {\n        return (\n            <div id={\"d\"}>\n                <Timepicker getPopupContainer={this.getPopupContainer} placeholder=\"选择时间\" onChange={this.onChange.bind(this)} />\n            </div>\n        )\n    }\n}\n\n\n", "desc": " 点击 Timepicker，然后可以在浮层中选择或者输入某一时间。" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 12小时制时间选择", "code": "/**\n *\n * @title 12小时制时间选择\n * @description 点击 Timepicker，然后可以在浮层中选择或者输入某一时间。\n *\n */\n\nimport React, { Component } from 'react';\nimport Timepicker from \"tinper-bee/lib/Timepicker\";\nimport moment from 'moment';\n\n\nclass Demo2 extends Component {\n\n    onChange(time,timeString){\n        console.log(time, timeString);\n    }\n    render() {\n        const format = 'h:mm a';\n        const now = moment().hour(0).minute(0);\n        return (\n            <div>\n                <Timepicker\n                    format={format}\n                    showSecond={false}\n                    defaultValue={now}\n                    placeholder=\"选择时间\"\n                    onChange={this.onChange.bind(this)}\n                    use12Hours\n                />\n            </div>\n        )\n    }\n}\n\n", "desc": " 点击 Timepicker，然后可以在浮层中选择或者输入某一时间。" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 限定时间", "code": "/**\n *\n * @title 限定时间\n * @description 点击 Timepicker，然后可以在浮层中选择或者输入某一时间。\n *\n */\n\nimport React, { Component } from 'react';\nimport Timepicker from \"tinper-bee/lib/Timepicker\";\nimport moment from 'moment';\n\nconst showSecond = true;\nconst str = showSecond ? 'HH:mm:ss' : 'HH:mm';\n\nclass Demo3 extends Component {\n\n    onChange(value) {\n        console.log(value && value.format(str));\n    }\n\n    generateOptions(length, excludedOptions) {\n        const arr = [];\n        for (let value = 0; value < length; value++) {\n            if (excludedOptions.indexOf(value) < 0) {\n                arr.push(value);\n            }\n        }\n        return arr;\n    }\n\n    disabledHours() {\n        return [0, 1, 2, 3, 4, 5, 6, 7, 8, 22, 23];\n    }\n\n    disabledMinutes(h) {\n        switch (h) {\n            case 9:\n                return this.generateOptions(60, [30]);\n            case 21:\n                return this.generateOptions(60, [0]);\n            default:\n                return this.generateOptions(60, [0, 30]);\n        }\n    }\n\n    disabledSeconds(h, m) {\n        return [h + m % 60];\n    }\n\n    render() {\n        const format = 'h:mm a';\n        const now = moment().hour(0).minute(0);\n        return (\n            <div>\n                <Timepicker\n                    showSecond={showSecond}\n                    defaultValue={now}\n                    onChange={this.onChange.bind(this)}\n                    disabledHours={this.disabledHours}\n                    disabledMinutes={this.disabledMinutes.bind(this)}\n                    disabledSeconds={this.disabledSeconds.bind(this)}\n                />\n            </div>\n        )\n    }\n}\n\n", "desc": " 点击 Timepicker，然后可以在浮层中选择或者输入某一时间。" }];
+	var Demo1 = __webpack_require__(84);var Demo2 = __webpack_require__(332);var Demo3 = __webpack_require__(333);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 基本时间选择", "code": "/**\r\n *\r\n * @title 基本时间选择\r\n * @description 点击 Timepicker，然后可以在浮层中选择或者输入某一时间。\r\n *\r\n */\r\n\r\n\r\n\r\nimport React, { Component } from 'react';\r\nimport Timepicker from \"tinper-bee/lib/Timepicker\";\r\nimport moment from 'moment';\r\n\r\nclass Demo1 extends Component {\r\n\r\n    onChange(time){\r\n        console.log(time);\r\n    }\r\n    getPopupContainer() {\r\n        return this.d || document.getElementById('d');\r\n    }\r\n    render() {\r\n        return (\r\n            <div id={\"d\"}>\r\n                <Timepicker getPopupContainer={this.getPopupContainer} placeholder=\"选择时间\" onChange={this.onChange.bind(this)} />\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\n\r\n", "desc": " 点击 Timepicker，然后可以在浮层中选择或者输入某一时间。" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 12小时制时间选择", "code": "/**\r\n *\r\n * @title 12小时制时间选择\r\n * @description 点击 Timepicker，然后可以在浮层中选择或者输入某一时间。\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\r\nimport Timepicker from \"tinper-bee/lib/Timepicker\";\r\nimport moment from 'moment';\r\n\r\n\r\nclass Demo2 extends Component {\r\n\r\n    onChange(time,timeString){\r\n        console.log(time, timeString);\r\n    }\r\n    render() {\r\n        const format = 'h:mm a';\r\n        const now = moment().hour(0).minute(0);\r\n        return (\r\n            <div>\r\n                <Timepicker\r\n                    format={format}\r\n                    showSecond={false}\r\n                    defaultValue={now}\r\n                    placeholder=\"选择时间\"\r\n                    onChange={this.onChange.bind(this)}\r\n                    use12Hours\r\n                />\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\n", "desc": " 点击 Timepicker，然后可以在浮层中选择或者输入某一时间。" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 限定时间", "code": "/**\r\n *\r\n * @title 限定时间\r\n * @description 点击 Timepicker，然后可以在浮层中选择或者输入某一时间。\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\r\nimport Timepicker from \"tinper-bee/lib/Timepicker\";\r\nimport moment from 'moment';\r\n\r\nconst showSecond = true;\r\nconst str = showSecond ? 'HH:mm:ss' : 'HH:mm';\r\n\r\nclass Demo3 extends Component {\r\n\r\n    onChange(value) {\r\n        console.log(value && value.format(str));\r\n    }\r\n\r\n    generateOptions(length, excludedOptions) {\r\n        const arr = [];\r\n        for (let value = 0; value < length; value++) {\r\n            if (excludedOptions.indexOf(value) < 0) {\r\n                arr.push(value);\r\n            }\r\n        }\r\n        return arr;\r\n    }\r\n\r\n    disabledHours() {\r\n        return [0, 1, 2, 3, 4, 5, 6, 7, 8, 22, 23];\r\n    }\r\n\r\n    disabledMinutes(h) {\r\n        switch (h) {\r\n            case 9:\r\n                return this.generateOptions(60, [30]);\r\n            case 21:\r\n                return this.generateOptions(60, [0]);\r\n            default:\r\n                return this.generateOptions(60, [0, 30]);\r\n        }\r\n    }\r\n\r\n    disabledSeconds(h, m) {\r\n        return [h + m % 60];\r\n    }\r\n\r\n    render() {\r\n        const format = 'h:mm a';\r\n        const now = moment().hour(0).minute(0);\r\n        return (\r\n            <div>\r\n                <Timepicker\r\n                    showSecond={showSecond}\r\n                    defaultValue={now}\r\n                    onChange={this.onChange.bind(this)}\r\n                    disabledHours={this.disabledHours}\r\n                    disabledMinutes={this.disabledMinutes.bind(this)}\r\n                    disabledSeconds={this.disabledSeconds.bind(this)}\r\n                />\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\n", "desc": " 点击 Timepicker，然后可以在浮层中选择或者输入某一时间。" }];
 	
 	var Demo = function (_Component) {
 	    _inherits(Demo, _Component);
@@ -7857,7 +7857,7 @@
 	    /**
 	     * @title 尺寸
 	     */
-	    size: _propTypes2["default"].oneOf(['sm', 'md', 'xg', 'lg']),
+	    size: _propTypes2["default"].oneOf(['sm', 'xg', 'lg']),
 	    /**
 	     * @title 样式
 	     */
@@ -7901,7 +7901,6 @@
 	
 	var sizeMap = {
 	    sm: 'sm',
-	    md: 'md',
 	    xg: 'xg',
 	    lg: 'lg'
 	},
@@ -7964,9 +7963,7 @@
 	        if (colorsMap[colors]) {
 	            clsObj[clsPrefix + '-' + colorsMap[colors]] = true;
 	        }
-	        if (bordered) {
-	            clsObj[clsPrefix + '-border'] = bordered;
-	        }
+	        //clsObj[`${clsPrefix}-border`] = bordered;
 	        var classes = (0, _classnames2["default"])(clsPrefix, clsObj);
 	        return _react2["default"].createElement(
 	            'button',
@@ -9548,7 +9545,7 @@
 /* 96 */
 /***/ (function(module, exports) {
 
-	var core = module.exports = { version: '2.6.5' };
+	var core = module.exports = { version: '2.6.3' };
 	if (typeof __e == 'number') __e = core; // eslint-disable-line no-undef
 
 
@@ -11786,9 +11783,7 @@
 
 	'use strict';
 	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
+	exports.__esModule = true;
 	
 	var _Align = __webpack_require__(183);
 	
@@ -11806,17 +11801,11 @@
 
 	'use strict';
 	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
+	exports.__esModule = true;
 	
 	var _classCallCheck2 = __webpack_require__(129);
 	
 	var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
-	
-	var _createClass2 = __webpack_require__(175);
-	
-	var _createClass3 = _interopRequireDefault(_createClass2);
 	
 	var _possibleConstructorReturn2 = __webpack_require__(130);
 	
@@ -11862,8 +11851,6 @@
 	  (0, _inherits3['default'])(Align, _Component);
 	
 	  function Align() {
-	    var _ref;
-	
 	    var _temp, _this, _ret;
 	
 	    (0, _classCallCheck3['default'])(this, Align);
@@ -11872,7 +11859,7 @@
 	      args[_key] = arguments[_key];
 	    }
 	
-	    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3['default'])(this, (_ref = Align.__proto__ || Object.getPrototypeOf(Align)).call.apply(_ref, [this].concat(args))), _this), _this.forceAlign = function () {
+	    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3['default'])(this, _Component.call.apply(_Component, [this].concat(args))), _this), _this.forceAlign = function () {
 	      var _this$props = _this.props,
 	          disabled = _this$props.disabled,
 	          target = _this$props.target,
@@ -11886,17 +11873,11 @@
 	        var element = getElement(target);
 	        var point = getPoint(target);
 	
-	        // IE lose focus after element realign
-	        // We should record activeElement and restore later
-	        var activeElement = document.activeElement;
-	
 	        if (element) {
 	          result = (0, _domAlign.alignElement)(source, element, align);
 	        } else if (point) {
 	          result = (0, _domAlign.alignPoint)(source, point, align);
 	        }
-	
-	        (0, _util.restoreFocus)(activeElement, source);
 	
 	        if (onAlign) {
 	          onAlign(source, result);
@@ -11905,108 +11886,101 @@
 	    }, _temp), (0, _possibleConstructorReturn3['default'])(_this, _ret);
 	  }
 	
-	  (0, _createClass3['default'])(Align, [{
-	    key: 'componentDidMount',
-	    value: function componentDidMount() {
-	      var props = this.props;
-	      // if parent ref not attached .... use document.getElementById
-	      this.forceAlign();
-	      if (!props.disabled && props.monitorWindowResize) {
-	        this.startMonitorWindowResize();
-	      }
+	  Align.prototype.componentDidMount = function componentDidMount() {
+	    var props = this.props;
+	    // if parent ref not attached .... use document.getElementById
+	    this.forceAlign();
+	    if (!props.disabled && props.monitorWindowResize) {
+	      this.startMonitorWindowResize();
 	    }
-	  }, {
-	    key: 'componentDidUpdate',
-	    value: function componentDidUpdate(prevProps) {
-	      var reAlign = false;
-	      var props = this.props;
+	  };
 	
-	      if (!props.disabled) {
-	        var source = _reactDom2['default'].findDOMNode(this);
-	        var sourceRect = source ? source.getBoundingClientRect() : null;
+	  Align.prototype.componentDidUpdate = function componentDidUpdate(prevProps) {
+	    var reAlign = false;
+	    var props = this.props;
 	
-	        if (prevProps.disabled) {
+	    if (!props.disabled) {
+	      var source = _reactDom2['default'].findDOMNode(this);
+	      var sourceRect = source ? source.getBoundingClientRect() : null;
+	
+	      if (prevProps.disabled) {
+	        reAlign = true;
+	      } else {
+	        var lastElement = getElement(prevProps.target);
+	        var currentElement = getElement(props.target);
+	        var lastPoint = getPoint(prevProps.target);
+	        var currentPoint = getPoint(props.target);
+	
+	        if ((0, _util.isWindow)(lastElement) && (0, _util.isWindow)(currentElement)) {
+	          // Skip if is window
+	          reAlign = false;
+	        } else if (lastElement !== currentElement || // Element change
+	        lastElement && !currentElement && currentPoint || // Change from element to point
+	        lastPoint && currentPoint && currentElement || // Change from point to element
+	        currentPoint && !(0, _util.isSamePoint)(lastPoint, currentPoint)) {
 	          reAlign = true;
-	        } else {
-	          var lastElement = getElement(prevProps.target);
-	          var currentElement = getElement(props.target);
-	          var lastPoint = getPoint(prevProps.target);
-	          var currentPoint = getPoint(props.target);
-	
-	          if ((0, _util.isWindow)(lastElement) && (0, _util.isWindow)(currentElement)) {
-	            // Skip if is window
-	            reAlign = false;
-	          } else if (lastElement !== currentElement || // Element change
-	          lastElement && !currentElement && currentPoint || // Change from element to point
-	          lastPoint && currentPoint && currentElement || // Change from point to element
-	          currentPoint && !(0, _util.isSamePoint)(lastPoint, currentPoint)) {
-	            reAlign = true;
-	          }
-	
-	          // If source element size changed
-	          var preRect = this.sourceRect || {};
-	          if (!reAlign && source && (!(0, _util.isSimilarValue)(preRect.width, sourceRect.width) || !(0, _util.isSimilarValue)(preRect.height, sourceRect.height))) {
-	            reAlign = true;
-	          }
 	        }
 	
-	        this.sourceRect = sourceRect;
+	        // If source element size changed
+	        var preRect = this.sourceRect || {};
+	        if (!reAlign && source && (preRect.width !== sourceRect.width || preRect.height !== sourceRect.height)) {
+	          reAlign = true;
+	        }
 	      }
 	
-	      if (reAlign) {
-	        this.forceAlign();
-	      }
-	
-	      if (props.monitorWindowResize && !props.disabled) {
-	        this.startMonitorWindowResize();
-	      } else {
-	        this.stopMonitorWindowResize();
-	      }
+	      this.sourceRect = sourceRect;
 	    }
-	  }, {
-	    key: 'componentWillUnmount',
-	    value: function componentWillUnmount() {
+	
+	    if (reAlign) {
+	      this.forceAlign();
+	    }
+	
+	    if (props.monitorWindowResize && !props.disabled) {
+	      this.startMonitorWindowResize();
+	    } else {
 	      this.stopMonitorWindowResize();
 	    }
-	  }, {
-	    key: 'startMonitorWindowResize',
-	    value: function startMonitorWindowResize() {
-	      if (!this.resizeHandler) {
-	        this.bufferMonitor = (0, _util.buffer)(this.forceAlign, this.props.monitorBufferTime);
-	        this.resizeHandler = (0, _addEventListener2['default'])(window, 'resize', this.bufferMonitor);
-	      }
-	    }
-	  }, {
-	    key: 'stopMonitorWindowResize',
-	    value: function stopMonitorWindowResize() {
-	      if (this.resizeHandler) {
-	        this.bufferMonitor.clear();
-	        this.resizeHandler.remove();
-	        this.resizeHandler = null;
-	      }
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      var _this2 = this;
+	  };
 	
-	      var _props = this.props,
-	          childrenProps = _props.childrenProps,
-	          children = _props.children;
+	  Align.prototype.componentWillUnmount = function componentWillUnmount() {
+	    this.stopMonitorWindowResize();
+	  };
 	
-	      var child = _react2['default'].Children.only(children);
-	      if (childrenProps) {
-	        var newProps = {};
-	        var propList = Object.keys(childrenProps);
-	        propList.forEach(function (prop) {
-	          newProps[prop] = _this2.props[childrenProps[prop]];
-	        });
-	
-	        return _react2['default'].cloneElement(child, newProps);
-	      }
-	      return child;
+	  Align.prototype.startMonitorWindowResize = function startMonitorWindowResize() {
+	    if (!this.resizeHandler) {
+	      this.bufferMonitor = (0, _util.buffer)(this.forceAlign, this.props.monitorBufferTime);
+	      this.resizeHandler = (0, _addEventListener2['default'])(window, 'resize', this.bufferMonitor);
 	    }
-	  }]);
+	  };
+	
+	  Align.prototype.stopMonitorWindowResize = function stopMonitorWindowResize() {
+	    if (this.resizeHandler) {
+	      this.bufferMonitor.clear();
+	      this.resizeHandler.remove();
+	      this.resizeHandler = null;
+	    }
+	  };
+	
+	  Align.prototype.render = function render() {
+	    var _this2 = this;
+	
+	    var _props = this.props,
+	        childrenProps = _props.childrenProps,
+	        children = _props.children;
+	
+	    var child = _react2['default'].Children.only(children);
+	    if (childrenProps) {
+	      var newProps = {};
+	      var propList = Object.keys(childrenProps);
+	      propList.forEach(function (prop) {
+	        newProps[prop] = _this2.props[childrenProps[prop]];
+	      });
+	
+	      return _react2['default'].cloneElement(child, newProps);
+	    }
+	    return child;
+	  };
+	
 	  return Align;
 	}(_react.Component);
 	
@@ -12038,25 +12012,14 @@
 
 /***/ }),
 /* 184 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
 	'use strict';
 	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
+	exports.__esModule = true;
 	exports.buffer = buffer;
 	exports.isSamePoint = isSamePoint;
 	exports.isWindow = isWindow;
-	exports.isSimilarValue = isSimilarValue;
-	exports.restoreFocus = restoreFocus;
-	
-	var _contains = __webpack_require__(172);
-	
-	var _contains2 = _interopRequireDefault(_contains);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-	
 	function buffer(fn, ms) {
 	  var timer = void 0;
 	
@@ -12094,19 +12057,6 @@
 	
 	function isWindow(obj) {
 	  return obj && typeof obj === 'object' && obj.window === obj;
-	}
-	
-	function isSimilarValue(val1, val2) {
-	  var int1 = Math.floor(val1);
-	  var int2 = Math.floor(val2);
-	  return Math.abs(int1 - int2) <= 1;
-	}
-	
-	function restoreFocus(activeElement, container) {
-	  // Focus back if is in the container
-	  if (activeElement !== document.activeElement && (0, _contains2['default'])(container, activeElement)) {
-	    activeElement.focus();
-	  }
 	}
 
 /***/ }),

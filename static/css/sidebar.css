@@ -90,8 +90,8 @@
 }
 
 ::-webkit-scrollbar {
-    width: 0;
-    height: 0;
+    width: 0!important;
+    height: 0!important;
 }
 
 /* 滚动槽 */

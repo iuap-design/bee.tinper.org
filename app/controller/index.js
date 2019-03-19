@@ -37,11 +37,14 @@ module.exports = {
     let filePath = '';
     let isComponentFlag=false;//是否是组件
     let rightMenus = {};//右侧菜单
+    let changeLog = [];//组件更新日志
+    let changelogs = '';
     
     if (component) {
       if (component.indexOf('bee') != -1) {
         rightMenus = components[component].menus;
-        isComponentFlag=true;
+        changeLog = components[component].changeLog;
+        isComponentFlag = true;
         filePath = path.join(__dirname, `../../tinper-bee/${component}/docs/api.md`);
         data = await fs.readFileSync(filePath, 'utf-8');
         let demo = '<div id="tinperBeeDemo"></div>';
@@ -81,12 +84,14 @@ module.exports = {
           "</div>"
         );
       } else {
-        rightMenus = {}
+        rightMenus = {};
+        changeLog = [];
         filePath = path.join(__dirname, `../../docs/${component}.md`);
         data = await fs.readFileSync(filePath, 'utf-8');
       }
     }else{
       rightMenus = {}
+      changeLog = [];
       filePath = path.join(__dirname, `../../docs/summarize.md`);
       data = await fs.readFileSync(filePath, 'utf-8');
     }
@@ -102,7 +107,8 @@ module.exports = {
       active: component,
       tag:tag,
       isComponent:isComponentFlag,
-      rightMenus:rightMenus
+      rightMenus:rightMenus,
+      changeLog:changeLog
     });
   }
 }

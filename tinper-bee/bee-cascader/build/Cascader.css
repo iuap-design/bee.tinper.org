@@ -168,7 +168,6 @@
     overflow: hidden;
     background: #fff;
     position: absolute;
-    border: 1px solid #d9d9d9;
     border-radius: 3px;
     box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2);
     white-space: nowrap;
@@ -223,11 +222,10 @@
     transition: all 0.3s ease;
     position: relative; }
     .u-cascader-menu-item:hover {
-      background-color: rgb(235, 236, 240);
-      color: rgb(245, 60, 50); }
+      background-color: rgb(235, 236, 240); }
     .u-cascader-menu-item-disabled {
       cursor: not-allowed;
-      color: #ccc; }
+      color: #909090; }
       .u-cascader-menu-item-disabled:hover {
         background: transparent; }
     .u-cascader-menu-item-loading:after {
@@ -237,7 +235,8 @@
       color: #aaa;
       font-style: italic; }
     .u-cascader-menu-item-active {
-      background-color: #f7f7f7; }
+      background-color: rgb(255, 247, 231);
+      color: rgb(245, 60, 50); }
     .u-cascader-menu-item-expand {
       position: relative; }
       .u-cascader-menu-item-expand-icon {

@@ -25,33 +25,33 @@ class Demo8 extends Component {
     return (
       <div>
         <Select
-          size="lg"
-          defaultValue="lucy"
+          defaultValue="all"
           style={{ width: 200, marginRight: 6 }}
           onChange={this.handleChange}
           onFocus={this.handFocus}
           onBlur={this.onBlur}
           autofocus
         >
-          <Option value="jack">boyuzhou111</Option>
-          <Option value="lucy">renhualiu</Option>
-          <Option value="disabled" disabled>
-            Disabled
+          <Option value="all">全部</Option>
+          <Option value="confirming">待确认</Option>
+          <Option value="executing">执行中</Option>
+          <Option value="completed" disabled>
+            已办结
           </Option>
-          <Option value="yiminghe">yuzhao</Option>
+          <Option value="termination">终止</Option>
         </Select>
         <Select
-          size="lg"
-          defaultValue="lucy"
+          defaultValue="confirming"
           style={{ width: 200, marginRight: 6 }}
           onChange={this.handleChange}
         >
-          <Option value="jack">boyuzhou</Option>
-          <Option value="lucy">renhualiu</Option>
-          <Option value="disabled" disabled>
-            Disabled
+          <Option value="all">全部</Option>
+          <Option value="confirming">待确认</Option>
+          <Option value="executing">执行中</Option>
+          <Option value="completed" disabled>
+            已办结
           </Option>
-          <Option value="yiminghe">yuzhao</Option>
+          <Option value="termination">终止</Option>
         </Select>
         
       </div>

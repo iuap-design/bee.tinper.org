@@ -332,7 +332,6 @@
 
 .u-calendar-date:hover {
   background: rgb(235, 236, 240);
-  color: rgb(245, 60, 50);
   cursor: pointer; }
 
 .u-calendar-selected-day .u-calendar-date {
@@ -613,7 +612,6 @@
     text-align: center; }
     .u-calendar-month-panel-cell .u-calendar-month-panel-month:hover {
       background: rgb(235, 236, 240);
-      color: rgb(245, 60, 50);
       cursor: pointer; }
 
 .u-calendar-month-panel-cell-disabled .u-calendar-month-panel-month {
@@ -949,8 +947,7 @@
       background-color: rgb(245, 60, 50);
       color: #fff; }
   .u-calendar-full-header .u-calendar-full-header-switcher-normal:hover {
-    border-color: rgb(245, 60, 50);
-    box-shadow: 0 0 2px rgb(245, 60, 50, 0.8);
+    background: rgb(235, 236, 240);
     cursor: pointer; }
 
 .u-calendar-fullscreen {
@@ -975,8 +972,8 @@
     padding-right: 8px; }
   .u-calendar-fullscreen .u-calendar-selected-day .u-calendar-date,
   .u-calendar-fullscreen .u-calendar-month-panel-selected-cell .u-calendar-month-panel-month {
-    background-color: rgb(235, 236, 240);
-    color: #666; }
+    background-color: rgb(255, 247, 231);
+    color: rgb(245, 60, 50); }
   .u-calendar-fullscreen .u-calendar-today .u-calendar-date,
   .u-calendar-fullscreen .u-calendar-month-panel-selected-cell .u-calendar-month-panel-month {
     border-top-color: rgb(245, 60, 50);
@@ -1263,12 +1260,11 @@ li.rc-select-dropdown-menu-item-disabled {
 
 li.rc-select-dropdown-menu-item-active {
   background-color: rgb(235, 236, 240);
-  color: rgb(245, 60, 50);
   cursor: pointer; }
 
 li.rc-select-dropdown-menu-item-selected {
-  font-weight: 600;
-  background-color: #f7f7f7; }
+  color: rgb(245, 60, 50);
+  background-color: rgb(255, 247, 231); }
 
 li.rc-select-dropdown-menu-item-divider {
   height: 1px;

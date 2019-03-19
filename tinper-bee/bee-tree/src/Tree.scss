@@ -24,8 +24,8 @@ $treePrefixCls : "u-tree";
     vertical-align: middle;
   }
   .u-tree-checkbox-checked .u-tree-checkbox-inner, .u-tree-checkbox-indeterminate .u-tree-checkbox-inner {
-      background-color: $tree-checkbox-color;
-      border-color: $tree-checkbox-color;
+      // background-color: $tree-checkbox-color;
+      // border-color: $tree-checkbox-color;
   }
   .u-tree-checkbox-inner {
       position: relative;
@@ -41,8 +41,8 @@ $treePrefixCls : "u-tree";
       transition: all .3s;
   }
   .u-tree-checkbox-checked .u-tree-checkbox-inner, .u-tree-checkbox-indeterminate .u-tree-checkbox-inner {
-      background-color: $tree-checkbox-color;
-      border-color: $tree-checkbox-color;
+      // background-color: $tree-checkbox-color;
+      // border-color: $tree-checkbox-color;
   }
   .u-tree-checkbox-disabled .u-tree-checkbox-inner {
       border-color: #d9d9d9;
@@ -79,7 +79,7 @@ $treePrefixCls : "u-tree";
       display: table;
       width: 5px;
       height: 8px;
-      border: 2px solid #fff;
+      border: 2px solid $tree-checkbox-color;
       border-top: 0;
       border-left: 0;
       content: ' ';
@@ -96,7 +96,7 @@ $treePrefixCls : "u-tree";
       display: table;
       width: 5px;
       height: 8px;
-      border: 2px solid #fff;
+      border: 2px solid $tree-checkbox-color;
       border-top: 0;
       border-left: 0;
       content: ' ';
@@ -156,7 +156,7 @@ $treePrefixCls : "u-tree";
     cursor: pointer;
     text-decoration: none;
     vertical-align: middle;
-    color: #666;
+    color: $font-color-base;
     -webkit-transition: all 0.3s ease;
     transition: all 0.3s ease;
     // a 标签hover宽度调整
@@ -169,9 +169,9 @@ $treePrefixCls : "u-tree";
     background-color: $tree-node-bg-color;
   }
   li a.u-tree-node-selected {
-    background-color: $tree-node-bg-color;
+    background-color: $selected-bg-color-base;
     .u-tree-title{
-      color: unquote("rgb(#{$primary-color})");
+      color: $brand-primary;
     }
   }
   li span.u-checkbox {
@@ -256,7 +256,7 @@ $treePrefixCls : "u-tree";
   .u-tree-treenode-disabled > span,
   .u-tree-treenode-disabled > a,
   .u-tree-treenode-disabled > a span {
-    color: #ccc;
+    color: #909090;
     cursor: not-allowed;
     &:hover{
       background: transparent;

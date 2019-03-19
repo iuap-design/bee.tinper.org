@@ -144,28 +144,6 @@
     color: #424242;
 }
 
-.u-dropdown {
-    width: 240px;
-}
-
-.u-dropdown .u-dropdown-menu {
-    text-align: center;
-}
-
-.u-dropdown .u-dropdown-menu .first-show {
-    color: #E14C46;
-}
-
-.u-dropdown .u-dropdown-menu .u-dropdown-menu-item:active,
-.u-dropdown .u-dropdown-menu .u-dropdown-menu-item-active,
-.u-dropdown .u-dropdown-menu .u-dropdown-menu-item-selected:hover {
-    color: #E14C46;
-    background: #f0f0f0;
-}
-
-.u-dropdown .u-dropdown-menu .u-dropdown-menu-item a {
-    color: #424242;
-}
 
 .nav-lang-select .u-select-dropdown-menu-item-selected,
 .nav-lang-select .u-select-dropdown-menu-item-selected:hover,

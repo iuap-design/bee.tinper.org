@@ -1,6 +1,6 @@
 /**
 *
-* @title 数组选择控件
+* @title 限定最大值、最小值、间隔值
 * @description 自定义max=12,min=5,step=1
 *
 */

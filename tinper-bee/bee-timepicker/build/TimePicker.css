@@ -21,7 +21,7 @@
     cursor: text;
     font-size: 14px;
     line-height: 32;
-    color: #666;
+    color: #212121;
     background-color: #fff;
     background-image: none;
     border: 1px solid rgb(165, 173, 186);
@@ -116,6 +116,7 @@
     padding: 0 0 0 16px;
     width: 100%;
     height: 24px;
+    color: #212121;
     line-height: 24px;
     text-align: left;
     cursor: pointer;
@@ -125,12 +126,12 @@
     -ms-user-select: none;
     user-select: none; }
   .u-time-picker-panel .u-time-picker-panel-select li:hover {
-    background: rgb(225, 76, 70, 0.1); }
+    background: rgb(235, 236, 240); }
   .u-time-picker-panel li.u-time-picker-panel-select-option-selected {
-    background: rgb(225, 76, 70, 0.1);
-    color: rgb(225, 76, 70); }
+    background: rgb(255, 247, 231);
+    color: rgb(245, 60, 50); }
   .u-time-picker-panel li.u-time-picker-panel-select-option-disabled {
-    color: #bfbfbf; }
+    color: #909090; }
   .u-time-picker-panel li.u-time-picker-panel-select-option-disabled:hover {
     background: transparent;
     cursor: not-allowed; }

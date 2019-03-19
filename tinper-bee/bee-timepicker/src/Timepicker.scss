@@ -24,7 +24,7 @@
     cursor: text;
     font-size: $timepicker-font-size;
     line-height: 32;
-    color: #666;
+    color: #212121;
     background-color: #fff;
     background-image: none;
     border: 1px solid $border-color-base;
@@ -135,6 +135,7 @@
     padding: 0 0 0 16px;
     width: 100%;
     height: 24px;
+    color: $font-color-base;
     line-height: 24px;
     text-align: left;
     cursor: pointer;
@@ -145,14 +146,14 @@
     user-select: none;
   }
   .u-time-picker-panel-select li:hover {
-    background: unquote("rgb(#{$primary-color,0.1})");
+    background: $hover-bg-color-base;
   }
   li.u-time-picker-panel-select-option-selected {
-    background: unquote("rgb(#{$primary-color,0.1})");
+    background: $selected-bg-color-base;
     color: $brand-primary;
   }
   li.u-time-picker-panel-select-option-disabled {
-    color: #bfbfbf;
+    color: #909090;
   }
   li.u-time-picker-panel-select-option-disabled:hover {
     background: transparent;

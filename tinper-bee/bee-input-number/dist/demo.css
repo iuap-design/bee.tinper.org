@@ -163,6 +163,8 @@
   width: 100%;
   border: 1px solid rgb(165, 173, 186);
   border-radius: 3px; }
+  .u-input-number.u-input-group {
+    border-spacing: 0; }
   .u-input-number.u-input-group > span:first-child {
     border-right: 1px solid rgb(165, 173, 186); }
   .u-input-number.u-input-group > span:last-child {

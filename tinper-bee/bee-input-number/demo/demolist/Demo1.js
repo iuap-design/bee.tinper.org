@@ -1,6 +1,6 @@
 /**
  *
-* @title 数组选择控件 
+* @title 基础实力 
  * @description 最简单输入控制
  *
  */

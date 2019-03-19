@@ -1,55 +1,18 @@
-<a name="2.0.7"></a>
-## [2.0.7](https://github.com/tinper-bee/bee-select/compare/v2.0.6...v2.0.7) (2019-03-18)
-
-
-### Bug Fixes
-
-* **bee-select:** 多选配合form使用设置初始值为字符串时，去掉报错，给警告 ([a36d4db](https://github.com/tinper-bee/bee-select/commit/a36d4db))
-
-
-
-<a name="2.0.6"></a>
-## [2.0.6](https://github.com/tinper-bee/bee-select/compare/v2.0.5...v2.0.6) (2019-03-18)
-
-
-### Bug Fixes
-
-* **bee-select:** 多选配合form使用保存bug ([21d2c56](https://github.com/tinper-bee/bee-select/commit/21d2c56))
-
-
-
-<a name="2.0.5"></a>
-## [2.0.5](https://github.com/tinper-bee/bee-select/compare/v2.0.4...v2.0.5) (2019-03-18)
-
-
-### Bug Fixes
-
-* **bee-select:** 多选配合form使用报错问题 ([366d1a3](https://github.com/tinper-bee/bee-select/commit/366d1a3))
-
-
-
-<a name="2.0.4"></a>
-## [2.0.4](https://github.com/tinper-bee/bee-select/compare/v2.0.3...v2.0.4) (2019-03-05)
-
-
-
-<a name="2.0.3"></a>
-## [2.0.3](https://github.com/tinper-bee/bee-select/compare/v2.0.2...v2.0.3) (2019-03-04)
-
-
-
-<a name="2.0.2"></a>
-## [2.0.2](https://github.com/tinper-bee/bee-select/compare/v2.0.1...v2.0.2) (2019-03-04)
+<a name="2.0.8"></a>
+## [2.0.8](https://github.com/tinper-bee/bee-select/compare/v2.0.0...v2.0.8) (2019-03-19)
 
 
 ### Bug Fixes
 
 * **bee-select:** export 问题 ([77fc595](https://github.com/tinper-bee/bee-select/commit/77fc595))
+* **bee-select:** 多选配合form使用保存bug ([21d2c56](https://github.com/tinper-bee/bee-select/commit/21d2c56))
+* **bee-select:** 多选配合form使用报错问题 ([366d1a3](https://github.com/tinper-bee/bee-select/commit/366d1a3))
+* **bee-select:** 多选配合form使用设置初始值为字符串时，去掉报错，给警告 ([a36d4db](https://github.com/tinper-bee/bee-select/commit/a36d4db))
 
 
 
-<a name="2.0.1"></a>
-## [2.0.1](https://github.com/tinper-bee/bee-select/compare/v1.1.8...v2.0.1) (2019-02-28)
+<a name="2.0.0"></a>
+# [2.0.0](https://github.com/tinper-bee/bee-select/compare/v1.1.8...v2.0.0) (2019-02-22)
 
 
 
@@ -249,7 +212,22 @@
 
 
 <a name="1.0.8"></a>
-## [1.0.8](https://github.com/tinper-bee/bee-select/compare/0df3382...v1.0.8) (2018-04-25)
+## [1.0.8](https://github.com/tinper-bee/bee-select/compare/v1.0.7...v1.0.8) (2018-04-25)
+
+
+
+<a name="1.0.7"></a>
+## [1.0.7](https://github.com/tinper-bee/bee-select/compare/v1.0.6...v1.0.7) (2018-04-25)
+
+
+
+<a name="1.0.6"></a>
+## [1.0.6](https://github.com/tinper-bee/bee-select/compare/v1.0.5...v1.0.6) (2018-04-24)
+
+
+
+<a name="1.0.5"></a>
+## [1.0.5](https://github.com/tinper-bee/bee-select/compare/0df3382...v1.0.5) (2018-04-24)
 
 
 * fix(搜索的时候会一直报错Uncaught TypeError: menu.onKeyDown is not a function): ([2830c2f](https://github.com/tinper-bee/bee-select/commit/2830c2f)), closes [#8](https://github.com/tinper-bee/bee-select/issues/8)

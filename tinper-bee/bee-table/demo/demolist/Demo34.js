@@ -6,7 +6,8 @@
 */
 
 import React, { Component } from "react";
-import Tooltip from "bee-tooltip";
+import {Tooltip} from "tinper-bee";
+
 import Table from "../../src";
 import BigData from "../../src/lib/bigData";
 const BigDataTable = BigData(Table);
@@ -58,7 +59,7 @@ const data = [ ...new Array(1000) ].map((e, i) => {
    })
 
 
-class Demo30 extends Component {
+class Demo34 extends Component {
 
   constructor(props) {
     super(props);
@@ -91,4 +92,4 @@ class Demo30 extends Component {
   }
 }
 
-export default Demo30;
+export default Demo34;

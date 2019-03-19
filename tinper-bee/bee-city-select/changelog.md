@@ -1,3 +1,8 @@
+<a name="2.0.1"></a>
+## [2.0.1](https://github.com/tinper-bee/bee-city-select/compare/v1.0.11...v2.0.1) (2019-03-19)
+
+
+
 <a name="1.0.11"></a>
 ## [1.0.11](https://github.com/tinper-bee/bee-city-select/compare/v1.0.10...v1.0.11) (2019-01-14)
 

@@ -244,5 +244,40 @@ select::-ms-expand {
     right: 20px;
     width: 200px;
     overflow: auto;
-    height: calc(100% - 65px);
+    height: calc(100% - 95px);
+}
+
+/* 更新日志 */
+.docs .doc-content .changelog .u-timeline-item-head-danger {
+    color: #E14C46;
+    border-color: #E14C46;
+    background: #E14C46;
+    height: 8px;
+    width: 8px;
+    left: 2px;
+}
+.docs .doc-content .changelog .u-timeline-item{
+    padding: 0
+}
+.docs .doc-content .changelog .u-timeline-item-tail {
+    border-left: 1px solid #DFDFDF;
+}
+.docs .doc-content .changelog .u-timeline-item-content {
+    padding-bottom: 0;
+}
+.docs .changelog p, .docs .changelog pre{
+    margin: 0;
+}
+.docs .changelog .u-timeline-item-content>pre{
+    font-size: 14px;
+    padding-left: 15px;
+}
+.docs .changelog .u-timeline-item-content>p{
+    font-size: 20px;
+}
+.docs .changelog .u-timeline-item-content>pre ul{
+    list-style: circle;
+}
+.docs .changelog .u-timeline-item-content>pre>ul>li>ul{
+    padding-left: 15px;
 }

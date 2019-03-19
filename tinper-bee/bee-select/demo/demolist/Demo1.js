@@ -1,6 +1,6 @@
 /**
- * @title 不同尺寸单选`Select`
- * @description `size`参数控制大小
+ * @title 基本使用
+ * @description `disabled`参数设置是否禁用，`size`参数控制大小
  */
 
 import React, { Component } from "react";
@@ -18,44 +18,18 @@ class Demo1 extends Component {
     return (
       <div>
         <Select
-          size="lg"
-          defaultValue="1" 
-          onFocus={(v)=>{console.log('focus',v)}}
-          style={{ width: 200, marginRight: 6 }}
-          onChange={this.handleChange}
-        >
-          <Option value="1">一</Option>
-          <Option value="2">二</Option>
-          <Option value="3" disabled>
-            三
-          </Option>
-          <Option value="4">四</Option>
-        </Select>
-        <Select
-          defaultValue="lucy"
+          defaultValue="all"
           style={{ width: 200, marginRight: 6 }}
           onChange={this.handleChange}
           showSearch={true}
         >
-          <Option value="jack">boyuzhou</Option>
-          <Option value="lucy">renhualiu</Option>
-          <Option value="disabled" disabled>
-            Disabled
+          <Option value="all">全部</Option>
+          <Option value="confirming">待确认</Option>
+          <Option value="executing">执行中</Option>
+          <Option value="completed" disabled>
+            已办结
           </Option>
-          <Option value="yiminghe">yuzhao</Option>
-        </Select>
-        <Select
-          size="sm"
-          defaultValue="lucy"
-          style={{ width: 200 }}
-          onChange={this.handleChange}
-        >
-          <Option value="jack">boyuzhou</Option>
-          <Option value="lucy">renhualiu</Option>
-          <Option value="disabled" disabled>
-            Disabled
-          </Option>
-          <Option value="yiminghe">yuzhao</Option>
+          <Option value="termination">终止</Option>
         </Select>
       </div>
     );

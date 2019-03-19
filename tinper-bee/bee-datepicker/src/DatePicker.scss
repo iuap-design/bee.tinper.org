@@ -2,6 +2,7 @@
 @import "../node_modules/tinper-bee-core/scss/minxin-mixins";
 @import "../node_modules/bee-form-control/src/FormControl.scss";
 @import "../node_modules/bee-input-group/src/InputGroup.scss";
+$disabled-color-base: #909090;
 .rc-calendar {
   box-sizing: border-box;
   color: #212121;
@@ -393,7 +394,6 @@
 }
 .rc-calendar-date:hover {
   background: $hover-bg-color-base;
-  color: $brand-primary;
   cursor: pointer;
 }
 .rc-calendar-selected-day .rc-calendar-date {
@@ -688,7 +688,6 @@
 }
 .rc-calendar-month-panel-cell .rc-calendar-month-panel-month:hover {
   background: $hover-bg-color-base;
-  color: $brand-primary;
   cursor: pointer;
 }
 .rc-calendar-month-panel-cell-disabled .rc-calendar-month-panel-month {
@@ -815,7 +814,6 @@
 }
 .rc-calendar-year-panel-year:hover {
   background: $hover-bg-color-base;
-  color: $brand-primary;
   cursor: pointer;
 }
 .rc-calendar-year-panel-selected-cell .rc-calendar-year-panel-year {
@@ -832,7 +830,7 @@
    -ms-user-select: none;
        user-select: none;
   -webkit-user-select: none;
-  color: rgba(0, 0, 0, 0.25);
+  color: $disabled-color-base;
 }
 .rc-calendar-decade-panel {
   left: 0;
@@ -929,7 +927,6 @@
 }
 .rc-calendar-decade-panel-decade:hover {
   background: $hover-bg-color-base;
-  color:$brand-primary;
   cursor: pointer;
 }
 .rc-calendar-decade-panel-selected-cell .rc-calendar-decade-panel-decade {
@@ -946,7 +943,7 @@
    -ms-user-select: none;
        user-select: none;
   -webkit-user-select: none;
-  color: rgba(0, 0, 0, 0.25);
+  color: $disabled-color-base;
 }
 .rc-calendar-range {
   width: 502px;
@@ -1038,7 +1035,7 @@
   height: 198px;
 }
 .rc-calendar-range .rc-calendar-in-range-cell {
-  background: #ebf4f8;
+  background: $selected-bg-color-base;
   border-radius: 0;
 }
 .rc-calendar-range-bottom {

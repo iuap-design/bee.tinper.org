@@ -7,11 +7,16 @@
 <% } %>
 <div class="doc-content">
     <%- docs %>
+    <div class="changelog">
+        <% include changelog.html %>
+    </div>
 </div>
 
 <div class="right-menus">
     <% include rightMenus.html %>
 </div>
+
+
 
 <% if(isComponent){ %>
     <% if(tag) { %>

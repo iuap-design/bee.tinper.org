@@ -2,8 +2,7 @@
 @import "../node_modules/tinper-bee-core/scss/minxin-mixins";
 
 // @import "../node_modules/bee-animate/src/Animate.scss";
-
-
+$dropdown-menu-title-color: #909090;
 .u-dropdown{
   position: absolute;
   left: -9999px;
@@ -48,7 +47,6 @@
           overflow: hidden;
           text-overflow: ellipsis;
           &:hover{
-            color: $brand-primary;
             background: $hover-bg-color-base;
           }
         }
@@ -109,13 +107,19 @@
 
 
       &:hover, &-active, &-selected {
-        color: $brand-primary;
         background-color: $hover-bg-color-base;
         cursor: pointer;
       }
+      // &-active{
+      //   color: $brand-primary;
+      // }
       &-selected{
+        color: $brand-primary;
         background-color: $selected-bg-color-base;
         position: relative;
+        &:hover{
+          background-color: $selected-bg-color-base;
+        }
       }
 
       &-disabled {
@@ -161,6 +165,13 @@
                 text-overflow: ellipsis;
                 &:hover{
                   background: $hover-bg-color-base;
+                }
+                &-selected{
+                  color: $brand-primary;
+                  background: $selected-bg-color-base;
+                  &:hover{
+                    background: $selected-bg-color-base;
+                  }
                 }
             }
         }

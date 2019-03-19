@@ -10,40 +10,57 @@ import { Row, Col } from 'bee-layout';
 import Cascader from '../../src';
 
 const options = [{
-	label: '浙江',
-	value: 'zj',
+	label: '基础组件',
+	value: 'jczj',
 	children: [{
-		label: '杭州',
-		value: 'hz',
+		label: '导航',
+		value: 'dh',
 		children: [{
-			label: '西湖',
-			value: 'xh',
-			children: [{
-				label: '白娘子',
-				value: 'bnz'
-			},{
-				label: '许仙',
-				value: 'xx'
-			}]
+			label: '面包屑',
+			value: 'mbx'
+		},{
+			label: '分页',
+			value: 'fy'
+		},{
+			label: '标签',
+			value: 'bq'
+		},{
+			label: '菜单',
+			value: 'cd'
 		}]
-	}]
-	},
-	{
-		label: '江苏',
-		value: 'js',
+	},{
+		label: '反馈',
+		value: 'fk',
 		children: [{
-			label: '南京',
-			value: 'nj',
-			children: [{
-				label: '中华门',
-				value: 'zhm'
-			}]
+			label: '模态框',
+			value: 'mtk'
+		},{
+			label: '通知',
+			value: 'tz'
 		}]
  	},
  	{
-		label: '山东',
- 	    value: 'sd'
- 	}
+		label: '表单',
+ 	    value: 'bd'
+ 	}]
+	},{
+		label: '应用组件',
+		value: 'yyzj',
+		children: [{
+			label: '参照',
+			value: 'ref',
+			children: [{
+				label: '树参照',
+				value: 'reftree'
+			},{
+				label: '表参照',
+				value: 'reftable'
+			},{
+				label: '穿梭参照',
+				value: 'reftransfer'
+			}]
+		}]
+	}
 ];
 class Demo1 extends Component {
 
@@ -59,7 +76,7 @@ class Demo1 extends Component {
 						<Cascader 
 							options = {options} 
 							onChange = {this.onChange}
-							placeholder = "请选择地址"
+							placeholder = "请选择"
 						/>
 					</div>
 				</Col>

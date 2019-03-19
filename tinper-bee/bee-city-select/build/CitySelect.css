@@ -999,7 +999,7 @@ ul {
     padding: 7px 16px;
     padding-left: 6px;
     font-weight: normal;
-    color: #666;
+    color: #212121;
     cursor: pointer;
     white-space: nowrap;
     overflow: hidden;
@@ -1010,8 +1010,7 @@ ul {
     white-space: nowrap; }
   .u-select-dropdown .u-select-dropdown-menu-item:hover,
   .u-select-dropdown .u-select-dropdown-menu-item-active {
-    background-color: rgb(235, 236, 240);
-    color: rgb(245, 60, 50); }
+    background-color: rgb(235, 236, 240); }
   .u-select-dropdown .u-select-dropdown-menu-item-disabled {
     color: #ccc;
     cursor: not-allowed; }
@@ -1021,9 +1020,8 @@ ul {
     cursor: not-allowed; }
   .u-select-dropdown .u-select-dropdown-menu-item-selected,
   .u-select-dropdown .u-select-dropdown-menu-item-selected:hover {
-    background-color: rgb(247,247,247);
-    font-weight: bold;
-    color: #867777; }
+    background-color: rgb(255, 247, 231);
+    color: rgb(245, 60, 50); }
   .u-select-dropdown .u-select-dropdown-menu-item-divider {
     height: 1px;
     margin: 1px 0;
@@ -1306,4 +1304,7 @@ ul {
   width: 120px; }
 
 .area {
+  width: 120px; }
+
+.u-city-select .u-select {
   width: 120px; }

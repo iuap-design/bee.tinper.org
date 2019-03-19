@@ -287,8 +287,8 @@ ul {
     box-sizing: border-box;
     display: block;
     background-color: #fff;
-    border-radius: 4px;
-    border: 1px solid #d9d9d9;
+    border-radius: 3px;
+    border: 1px solid rgb(165, 173, 186);
     transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1); }
     .u-select .u-select-selection :hover {
       border-color: #40a5ed; }
@@ -405,7 +405,7 @@ ul {
   line-height: 24px; }
 
 .u-select-sm .u-select-selection {
-  border-radius: 4px; }
+  border-radius: 3px; }
 
 .u-select-sm .u-select-selection--single {
   height: 26px; }
@@ -456,7 +456,7 @@ ul {
     width: 100%;
     background: transparent;
     outline: 0;
-    border-radius: 4px; }
+    border-radius: 3px; }
   .u-select-search--inline .u-select-search-field-mirror {
     position: absolute;
     top: 0;
@@ -495,7 +495,7 @@ ul {
     line-height: 24px; }
   .u-select-selection--multiple .u-select-selection-choice {
     background-color: #f3f3f3;
-    border-radius: 4px;
+    border-radius: 3px;
     cursor: default;
     float: left;
     padding: 0 16px;
@@ -590,7 +590,7 @@ ul {
 .u-select-dropdown {
   background-color: white;
   box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2);
-  border-radius: 4px;
+  border-radius: 3px;
   box-sizing: border-box;
   z-index: 1800;
   left: -9999px;
@@ -631,7 +631,7 @@ ul {
     padding: 7px 16px;
     padding-left: 6px;
     font-weight: normal;
-    color: #666;
+    color: #212121;
     cursor: pointer;
     white-space: nowrap;
     overflow: hidden;
@@ -641,8 +641,7 @@ ul {
     white-space: nowrap; }
   .u-select-dropdown .u-select-dropdown-menu-item:hover,
   .u-select-dropdown .u-select-dropdown-menu-item-active {
-    background-color: #e7f4fd;
-    color: rgb(30,136,229); }
+    background-color: rgb(235, 236, 240); }
   .u-select-dropdown .u-select-dropdown-menu-item-disabled {
     color: #ccc;
     cursor: not-allowed; }
@@ -652,9 +651,8 @@ ul {
     cursor: not-allowed; }
   .u-select-dropdown .u-select-dropdown-menu-item-selected,
   .u-select-dropdown .u-select-dropdown-menu-item-selected:hover {
-    background-color: #f7f7f7;
-    font-weight: bold;
-    color: #666; }
+    background-color: rgb(255, 247, 231);
+    color: rgb(245, 60, 50); }
   .u-select-dropdown .u-select-dropdown-menu-item-divider {
     height: 1px;
     margin: 1px 0;
@@ -729,7 +727,7 @@ ul {
   vertical-align: middle; }
 
 .u-search-input.u-input-group .u-input:first-child, .u-search-input.u-input-group .u-select:first-child {
-  border-radius: 4px;
+  border-radius: 3px;
   position: absolute;
   top: -1px;
   width: 100%; }
@@ -915,6 +913,9 @@ ul {
   width: 120px; }
 
 .area {
+  width: 120px; }
+
+.u-city-select .u-select {
   width: 120px; }
 
 /*# sourceMappingURL=demo.css.map */

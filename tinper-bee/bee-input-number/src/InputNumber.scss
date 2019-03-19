@@ -10,10 +10,9 @@ $disable-border-color:#dfe1e6;
     border: 1px solid $border-color-base;
     border-radius: $border-radius;
 
-    // &.u-input-group>span{
-    //     background: transparent;
-    //     border: transparent; 
-    // }
+    &.u-input-group{
+        border-spacing: 0; 
+    }
 
     &.u-input-group>span:first-child{
         border-right: 1px solid $border-color-base;

@@ -1,6 +1,6 @@
 /**
- * @title 带有图标的 
- * @description 图标放在文字前面。
+ * @title 图标 
+ * @description 使用Icon图标组件。
  */
 
 import React, { Component } from 'react';
@@ -16,10 +16,9 @@ class Demo2 extends Component {
 			    </Breadcrumb.Item>
 			    <Breadcrumb.Item href="#">
                     <Icon type="uf-caven"></Icon>
-                    <span>Application List</span>
 			    </Breadcrumb.Item>
 			    <Breadcrumb.Item active>
-			      Data
+					<Icon type="uf-cart-o"></Icon>
 			    </Breadcrumb.Item>
 			</Breadcrumb>
 		)

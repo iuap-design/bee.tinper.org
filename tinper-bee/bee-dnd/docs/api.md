@@ -17,6 +17,7 @@ import bee-dnd/build/Dnd.css;
 ## 代码演示
 
 ## API
+
 ### 模块拖拽API
 
 |参数|说明|类型|默认值|
@@ -53,18 +54,14 @@ import bee-dnd/build/Dnd.css;
 ### 拖拽排序回调函数参数说明
 
 - `destination` Draggable完成的位置。如果用户在不超过Droppable的情况下掉落，则目标将为空
+
 - `draggableId` 被拖动的Draggable的ID
+
 - `source`  Draggable开始的位置
 
 
-
-
-### 说明
-
-> 本组件提供三种使用方式，第一种：模块拖拽。第二种：拖拽排序，包括：横向排序、纵向排序、两个纵向交换、两个横向交换。第三种，更复杂的拖拽排序，可用 Dnd 组件内的 `DragDropContext, Droppable, Draggable`，并参考 [react-beautiful-dnd](https://github.com/atlassian/react-beautiful-dnd)。
-
 ## 注意事项
 
-暂无
+本组件提供三种使用方式，第一种：模块拖拽。第二种：拖拽排序，包括：横向排序、纵向排序、两个纵向交换、两个横向交换。第三种，更复杂的拖拽排序，可用 Dnd 组件内的 `DragDropContext, Droppable, Draggable`，并参考 [react-beautiful-dnd](https://github.com/atlassian/react-beautiful-dnd)。
 
 ## 更新日志
