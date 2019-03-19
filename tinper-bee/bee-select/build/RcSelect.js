@@ -1395,7 +1395,8 @@ var _initialiseProps = function _initialiseProps() {
         );
       }
       if ((0, _util.isMultipleOrTags)(props)) {
-        selectedValueNodes = limitedCountValue.map(function (singleValue) {
+        selectedValueNodes = limitedCountValue.map(function (singleValue, index) {
+          var key = singleValue || index;
           var info = _this2.getOptionInfoBySingleValue(singleValue);
           var content = info.label;
           var title = info.title || content;
@@ -1411,7 +1412,7 @@ var _initialiseProps = function _initialiseProps() {
             }, _util.UNSELECTABLE_ATTRIBUTE, {
               onMouseDown: _util.preventDefaultEvent,
               className: choiceClassName,
-              key: singleValue,
+              key: key,
               title: (0, _util.toTitle)(title)
             }),
             _react2["default"].createElement(

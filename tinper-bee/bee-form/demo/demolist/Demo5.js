@@ -72,7 +72,7 @@ const Demo5 = Form.createForm()(class Demo extends Component {
                 <Row>
                         <Col lg={4} md={6} xs={12}>
                             <FormItem>
-                                <Label>订单编号：</Label>
+                                <Label>订单编号</Label>
                                 <FormControl
                                     {
                                     ...getFieldProps('orderCode', {
@@ -84,7 +84,7 @@ const Demo5 = Form.createForm()(class Demo extends Component {
                         </Col>
                         <Col  lg={4} md={6} xs={12}>
                             <FormItem>
-                                <Label>供应商名称：</Label>
+                                <Label>供应商名称</Label>
                                 <FormControl
                                     {
                                     ...getFieldProps('supplierName', {
@@ -96,7 +96,7 @@ const Demo5 = Form.createForm()(class Demo extends Component {
                         </Col>
                         <Col lg={4} md={6} xs={4}>
                             <FormItem>
-                                <Label className='time'>凭证日期：</Label>
+                                <Label className='time'>凭证日期</Label>
                                 <RangePicker
                                     defaultValue={this.state.voucherDate}
                                     placeholder={'开始 ~ 结束'}
@@ -115,7 +115,7 @@ const Demo5 = Form.createForm()(class Demo extends Component {
                         </Col>
                         <Col  lg={4} md={6} xs={12}>
                             <FormItem>
-                                <Label>订单类型：</Label>
+                                <Label>订单类型</Label>
                                 <Select {
                                     ...getFieldProps('type', {
                                         initialValue: '',
@@ -134,7 +134,7 @@ const Demo5 = Form.createForm()(class Demo extends Component {
                         </Col>
                         <Col  lg={4} md={6} xs={12}>
                             <FormItem>
-                                <Label>采购组：</Label>
+                                <Label>采购组</Label>
                                 <FormControl
                                     {
                                     ...getFieldProps('purchasingGroup', {
@@ -146,7 +146,7 @@ const Demo5 = Form.createForm()(class Demo extends Component {
                         </Col>
                         <Col  lg={4} md={6} xs={12}>
                             <FormItem>
-                                <Label>审批状态：</Label>
+                                <Label>审批状态</Label>
                                 <Radio.RadioGroup
                                     selectedValue={this.state.approvalState}
                                     {
@@ -165,7 +165,7 @@ const Demo5 = Form.createForm()(class Demo extends Component {
                         </Col>
                         <Col  lg={4} md={6} xs={12}>
                             <FormItem>
-                                <Label>关闭状态：</Label>
+                                <Label>关闭状态</Label>
                                 <Radio.RadioGroup
                                     selectedValue={this.state.closeState}
                                     {
@@ -184,7 +184,7 @@ const Demo5 = Form.createForm()(class Demo extends Component {
                         </Col>
                         <Col  lg={4} md={6} xs={12}>
                             <FormItem>
-                                <Label>确认状态：</Label>
+                                <Label>确认状态</Label>
                                 <Radio.RadioGroup
                                     selectedValue={this.state.confirmState}
                                     {

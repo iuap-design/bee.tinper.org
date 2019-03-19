@@ -11,7 +11,7 @@ class Demo1 extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            checkedFlag: false
+            checkedFlag: true
         }
         this.onChange = this.onChange.bind(this);
     }
@@ -42,13 +42,7 @@ class Demo1 extends Component {
                     ref="test"
                     checked={this.state.checkedFlag}
                     onChange={this.onChange}>
-                    全选
-                </Checkbox>
-                <Checkbox
-                    ref="test"
-                    indeterminate
-                    onChange={this.onChange}>
-                    半选
+                    Checkbox
                 </Checkbox>
             </div>
         )

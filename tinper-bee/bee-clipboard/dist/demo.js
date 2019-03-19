@@ -121,7 +121,7 @@
 	        );
 	        return _react2['default'].createElement(
 	            _beeLayout.Col,
-	            { md: 12 },
+	            { md: 12, id: title.trim() },
 	            _react2['default'].createElement(
 	                'h3',
 	                null,
@@ -2114,7 +2114,10 @@
 	  }
 	
 	  return (0, _createChainableTypeChecker2.default)(allPropTypes);
-	}
+	} /**
+	   * This source code is quoted from rc-util.
+	   * homepage: https://github.com/react-component/util
+	   */
 
 /***/ }),
 /* 28 */
@@ -2134,6 +2137,10 @@
 	 */
 	
 	// Mostly taken from ReactPropTypes.
+	
+	/* This source code is quoted from rc-util.
+	 * homepage: https://github.com/react-component/util
+	 */
 	
 	function createChainableTypeChecker(validate) {
 	  function checkType(isRequired, props, propName, componentName, location, propFullName) {
@@ -2169,7 +2176,11 @@
 	
 	exports.__esModule = true;
 	
-	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; /**
+	                                                                                                                                                                                                                                                                               * This source code is quoted from rc-util.
+	                                                                                                                                                                                                                                                                               * homepage: https://github.com/react-component/util
+	                                                                                                                                                                                                                                                                               */
+	
 	
 	var _react = __webpack_require__(4);
 	
@@ -2213,8 +2224,10 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	var warned = {};
-	
+	var warned = {}; /**
+	                  * This source code is quoted from rc-util.
+	                  * homepage: https://github.com/react-component/util
+	                  */
 	function deprecated(validator, reason) {
 	  return function validate(props, propName, componentName, location, propFullName) {
 	    var componentNameSafe = componentName || '<<anonymous>>';
@@ -2509,7 +2522,11 @@
 	
 	exports.__esModule = true;
 	
-	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; /**
+	                                                                                                                                                                                                                                                                               * This source code is quoted from rc-util.
+	                                                                                                                                                                                                                                                                               * homepage: https://github.com/react-component/util
+	                                                                                                                                                                                                                                                                               */
+	
 	
 	var _react = __webpack_require__(4);
 	
@@ -2546,6 +2563,10 @@
 	
 	exports.__esModule = true;
 	exports.default = isRequiredForA11y;
+	/**
+	 * This source code is quoted from rc-util.
+	 * homepage: https://github.com/react-component/util
+	 */
 	function isRequiredForA11y(validator) {
 	  return function validate(props, propName, componentName, location, propFullName) {
 	    var componentNameSafe = componentName || '<<anonymous>>';
@@ -2571,6 +2592,10 @@
 	
 	exports.__esModule = true;
 	exports.default = splitComponentProps;
+	/**
+	 * This source code is quoted from rc-util.
+	 * homepage: https://github.com/react-component/util
+	 */
 	function _objectEntries(obj) {
 	  var entries = [];
 	  var keys = Object.keys(obj);
@@ -2613,6 +2638,10 @@
 	'use strict';
 	
 	exports.__esModule = true;
+	/**
+	 * This source code is quoted from rc-util.
+	 * homepage: https://github.com/react-component/util
+	 */
 	function createChainedFunction() {
 	  for (var _len = arguments.length, funcs = Array(_len), _key = 0; _key < _len; _key++) {
 	    funcs[_key] = arguments[_key];
@@ -2645,6 +2674,10 @@
 /* 37 */
 /***/ (function(module, exports) {
 
+	/**
+	 * This source code is quoted from rc-util.
+	 * homepage: https://github.com/react-component/util
+	 */
 	'use strict';
 	
 	/**
@@ -3174,6 +3207,10 @@
 	
 	exports.__esModule = true;
 	exports.default = contains;
+	/**
+	 * This source code is quoted from rc-util.
+	 * homepage: https://github.com/react-component/util
+	 */
 	function contains(root, n) {
 	  var node = n;
 	  while (node) {
@@ -3205,6 +3242,10 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
+	/**
+	 * This source code is quoted from rc-util.
+	 * homepage: https://github.com/react-component/util
+	 */
 	function addEventListenerWrap(target, eventType, cb) {
 	  /* eslint camelcase: 2 */
 	  var callback = _reactDom2.default.unstable_batchedUpdates ? function run(e) {
@@ -3724,7 +3765,11 @@
 	
 	exports.__esModule = true;
 	
-	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; /**
+	                                                                                                                                                                                                                                                                               * This source code is quoted from rc-util.
+	                                                                                                                                                                                                                                                                               * homepage: https://github.com/react-component/util
+	                                                                                                                                                                                                                                                                               */
+	
 	
 	var _Event = __webpack_require__(45);
 	
@@ -3915,6 +3960,10 @@
 	'use strict';
 	
 	exports.__esModule = true;
+	/**
+	 * This source code is quoted from rc-util.
+	 * homepage: https://github.com/react-component/util
+	 */
 	var EVENT_NAME_MAP = {
 	  transitionend: {
 	    transition: 'transitionend',
@@ -4228,7 +4277,10 @@
 	    ret.push(c);
 	  });
 	  return ret;
-	}
+	} /**
+	   * This source code is quoted from rc-util.
+	   * homepage: https://github.com/react-component/util
+	   */
 
 /***/ }),
 /* 49 */
@@ -4264,7 +4316,11 @@
 	
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * This source code is quoted from rc-util.
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * homepage: https://github.com/react-component/util
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
+	
 	
 	//import isWindow from './isWindow';
 	
@@ -7642,7 +7698,7 @@
 	    /**
 	     * @title 尺寸
 	     */
-	    size: _propTypes2["default"].oneOf(['sm', 'xg', 'lg']),
+	    size: _propTypes2["default"].oneOf(['sm', 'md', 'xg', 'lg']),
 	    /**
 	     * @title 样式
 	     */
@@ -7656,7 +7712,7 @@
 	    /**
 	    * @title 类型
 	    */
-	    colors: _propTypes2["default"].oneOf(['primary', 'accent', 'success', 'info', 'warning', 'danger', 'default']),
+	    colors: _propTypes2["default"].oneOf(['primary', 'secondary', 'accent', 'success', 'info', 'warning', 'danger', 'dark', 'light', 'default']),
 	    /**
 	     * @title 是否禁用
 	     * @veIgnore
@@ -7686,16 +7742,20 @@
 	
 	var sizeMap = {
 	    sm: 'sm',
+	    md: 'md',
 	    xg: 'xg',
 	    lg: 'lg'
 	},
 	    colorsMap = {
 	    primary: 'primary',
+	    secondary: 'secondary',
 	    accent: 'accent',
 	    success: 'success',
 	    info: 'info',
 	    warning: 'warning',
-	    danger: 'danger'
+	    danger: 'danger',
+	    dark: 'dark',
+	    light: 'light'
 	},
 	    shapeMap = {
 	    block: 'block',
@@ -7745,7 +7805,9 @@
 	        if (colorsMap[colors]) {
 	            clsObj[clsPrefix + '-' + colorsMap[colors]] = true;
 	        }
-	        //clsObj[`${clsPrefix}-border`] = bordered;
+	        if (bordered) {
+	            clsObj[clsPrefix + '-border'] = bordered;
+	        }
 	        var classes = (0, _classnames2["default"])(clsPrefix, clsObj);
 	        return _react2["default"].createElement(
 	            'button',
@@ -11652,7 +11714,12 @@
 	    }
 	
 	    var result = _extends({}, locale, props.locale);
-	    result.lang = _extends({}, locale.lang, props.locale.lang);
+	    if (props.locale) {
+	        result.lang = _extends({}, locale.lang, props.locale.lang);
+	    } else {
+	        result.lang = _extends({}, locale.lang);
+	    }
+	
 	    return result;
 	}
 	
@@ -11817,6 +11884,10 @@
 	  backdrop: _propTypes2["default"].oneOf(['static', true, false]),
 	
 	  /**
+	   * 点击遮罩层是否允许关闭
+	   */
+	  backdropClosable: _propTypes2["default"].bool,
+	  /**
 	   * esc触发关闭
 	   */
 	  keyboard: _propTypes2["default"].bool,
@@ -11871,10 +11942,15 @@
 	  /**
 	   * 尺寸
 	   */
-	  size: _propTypes2["default"].oneOf(["sm", "lg", "xlg", ""])
+	  size: _propTypes2["default"].oneOf(["sm", "lg", "xlg", ""]),
+	  /**
+	   * 自定义宽度
+	   */
+	  width: _propTypes2["default"].oneOfType([_propTypes2["default"].number, _propTypes2["default"].string])
 	});
 	
 	var defaultProps = _extends({}, _Modal2["default"].defaultProps, {
+	  backdropClosable: true,
 	  animation: true,
 	  dialogComponentClass: _ModalDialog2["default"],
 	  clsPrefix: 'u-modal'
@@ -11966,17 +12042,20 @@
 	
 	    var _props = this.props,
 	        backdrop = _props.backdrop,
+	        backdropClosable = _props.backdropClosable,
 	        animation = _props.animation,
 	        show = _props.show,
 	        Dialog = _props.dialogComponentClass,
 	        className = _props.className,
 	        clsPrefix = _props.clsPrefix,
-	        style = _props.style,
+	        _props$style = _props.style,
+	        style = _props$style === undefined ? {} : _props$style,
 	        size = _props.size,
+	        width = _props.width,
 	        children = _props.children,
 	        onEntering = _props.onEntering,
 	        onExited = _props.onExited,
-	        props = _objectWithoutProperties(_props, ['backdrop', 'animation', 'show', 'dialogComponentClass', 'className', 'clsPrefix', 'style', 'size', 'children', 'onEntering', 'onExited']);
+	        props = _objectWithoutProperties(_props, ['backdrop', 'backdropClosable', 'animation', 'show', 'dialogComponentClass', 'className', 'clsPrefix', 'style', 'size', 'width', 'children', 'onEntering', 'onExited']);
 	
 	    var _splitComponent = (0, _tinperBeeCore.splitComponent)(props, _Modal2["default"]),
 	        _splitComponent2 = _slicedToArray(_splitComponent, 2),
@@ -11987,7 +12066,12 @@
 	
 	    var backdropClasses = _defineProperty({}, clsPrefix + '-backdrop', true);
 	    var containerClasses = _defineProperty({}, clsPrefix + '-open', true);
+	    if (Number(width)) width += 'px';
 	
+	    var styleRes = _extends({}, this.state.style, style);
+	    if (width) {
+	      _extends(styleRes, { width: width });
+	    }
 	    return _react2["default"].createElement(
 	      _Modal2["default"],
 	      _extends({}, baseModalProps, {
@@ -12007,9 +12091,9 @@
 	      _react2["default"].createElement(
 	        Dialog,
 	        _extends({}, dialogProps, {
-	          style: _extends({}, this.state.style, style),
+	          style: styleRes,
 	          className: (0, _classnames2["default"])(className, inClassName),
-	          onClick: backdrop === true ? this.handleDialogClick : null,
+	          onClick: backdrop === true && !!backdropClosable ? this.handleDialogClick : null,
 	          size: size
 	        }),
 	        children
@@ -13555,7 +13639,7 @@
 	        _react2["default"].createElement(
 	          'span',
 	          { 'aria-hidden': 'true' },
-	          '\xD7'
+	          _react2["default"].createElement('i', { className: 'uf uf-close' })
 	        )
 	      ),
 	      children
@@ -13714,7 +13798,8 @@
 	    onSearch: _propTypes2["default"].func,
 	    onChange: _propTypes2["default"].func,
 	    onBlur: _propTypes2["default"].func,
-	    showClose: _propTypes2["default"].bool
+	    showClose: _propTypes2["default"].bool,
+	    focusSelect: _propTypes2["default"].bool
 	};
 	
 	var defaultProps = {
@@ -13774,14 +13859,19 @@
 	        _this.handleKeyDown = function (e) {
 	            var _this$props = _this.props,
 	                onSearch = _this$props.onSearch,
-	                value = _this$props.value,
 	                type = _this$props.type;
 	
 	            if (e.keyCode === 13 && type === "search") {
 	                if (onSearch) {
-	                    onSearch(value);
+	                    onSearch(_this.input.value);
 	                }
 	            }
+	        };
+	
+	        _this.handleSearch = function (e) {
+	            var onSearch = _this.props.onSearch;
+	
+	            if (onSearch) onSearch(_this.input.value);
 	        };
 	
 	        _this.handleBlur = function (e) {
@@ -13798,13 +13888,12 @@
 	            var value = _this.state.value;
 	            var onFocus = _this.props.onFocus;
 	
+	            if (_this.props.focusSelect) {
+	                _this.input.select();
+	            }
 	            if (onFocus) {
 	                onFocus(value, e);
 	            }
-	        };
-	
-	        _this.handleClick = function (e) {
-	            alert();
 	        };
 	
 	        _this.renderInput = function () {
@@ -13819,7 +13908,8 @@
 	                onSearch = _this$props2.onSearch,
 	                onBlur = _this$props2.onBlur,
 	                showClose = _this$props2.showClose,
-	                others = _objectWithoutProperties(_this$props2, ['componentClass', 'type', 'className', 'size', 'clsPrefix', 'value', 'onChange', 'onSearch', 'onBlur', 'showClose']);
+	                focusSelect = _this$props2.focusSelect,
+	                others = _objectWithoutProperties(_this$props2, ['componentClass', 'type', 'className', 'size', 'clsPrefix', 'value', 'onChange', 'onSearch', 'onBlur', 'showClose', 'focusSelect']);
 	            // input[type="file"] 不应该有类名 .form-control.
 	
 	
@@ -13860,6 +13950,7 @@
 	                value: value,
 	                onChange: _this.handleChange,
 	                onBlur: _this.handleBlur,
+	                onFocus: _this.handleFocus,
 	                className: (0, _classnames2["default"])(className, classNames)
 	            }));
 	        };
@@ -13898,12 +13989,13 @@
 	                        value: value,
 	                        onKeyDown: _this.handleKeyDown,
 	                        onBlur: _this.handleBlur,
+	                        onFocus: _this.handleFocus,
 	                        className: (0, _classnames2["default"])(className, clsPrefix, classes)
 	                    })),
 	                    _react2["default"].createElement(
 	                        'div',
 	                        { className: clsPrefix + '-suffix' },
-	                        _this.state.showSearch || others.disabled ? _react2["default"].createElement(_beeIcon2["default"], { type: 'uf-search' }) : _react2["default"].createElement(_beeIcon2["default"], { onClick: _this.clearValue, type: 'uf-close-c' })
+	                        _react2["default"].createElement(_beeIcon2["default"], { type: 'uf-search', onClick: _this.handleSearch })
 	                    )
 	                );
 	            }
@@ -14160,33 +14252,42 @@
 	exports["default"] = {
 	    lang: 'zh_CN',
 	    Popconfirm: {
-	        ok: '确认',
-	        cancel: '取消'
+	        'ok': '确认',
+	        'cancel': '取消'
 	    },
 	    Table: {
-	        noData: '无数据'
+	        'resetSettings': '还原设置',
+	        'include': '包含',
+	        'exclusive': '不包含',
+	        'equal': '等于',
+	        'unequal': '不等于',
+	        'begin': '以开始',
+	        'end': '以结尾'
 	    },
 	    Clipboard: {
-	        copy: '复制',
-	        cut: '剪切',
-	        copyReady: '已复制',
-	        cutReady: '已剪切',
-	        copyToClipboard: '复制到剪切板',
-	        close: '关闭'
+	        'copy': '复制',
+	        'cut': '剪切',
+	        'copyReady': '已复制',
+	        'cutReady': '已剪切',
+	        'copyToClipboard': '复制到剪切板',
+	        'close': '关闭'
 	    },
 	    Pagination: {
-	        total: '共',
-	        items: '条',
-	        show: '显示',
-	        "goto": '跳至',
-	        page: '页',
-	        ok: '确认'
+	        'total': '共',
+	        'items': '条',
+	        'show': '显示',
+	        'goto': '跳至',
+	        'page': '页',
+	        'ok': '确认'
 	    },
 	    Grid: {
+	        'lang': 'zh-cn',
 	        'fixTitle': '锁定',
 	        'noFixTitle': '解锁',
 	        'hideTitle': '隐藏',
-	        'rowFilter': '行过滤'
+	        'rowFilter': '行过滤',
+	        'openRowFilter': '打开行过滤',
+	        'closeRowFilter': '关闭行过滤'
 	    }
 	};
 	module.exports = exports['default'];
@@ -14207,29 +14308,37 @@
 	        cancel: '取消'
 	    },
 	    Table: {
-	        noData: '無數據'
+	        'resetSettings': '還原設置',
+	        'include': '包含',
+	        'exclusive': '不包含',
+	        'equal': '等於',
+	        'unequal': '不等於',
+	        'begin': '以開始',
+	        'end': '以結尾'
 	    },
 	    Clipboard: {
-	        copy: '複製',
-	        cut: '剪切',
-	        copyReady: '已複製',
-	        cutReady: '已剪切',
-	        copyToClipboard: '複製到剪切板',
-	        close: '關閉'
+	        'copy': '複製',
+	        'cut': '剪切',
+	        'copyReady': '已複製',
+	        'cutReady': '已剪切',
+	        'copyToClipboard': '複製到剪切板',
+	        'close': '關閉'
 	    },
 	    Pagination: {
-	        total: '共',
-	        items: '條',
-	        show: '顯示',
-	        "goto": '跳至',
-	        page: '頁',
-	        ok: '確認'
+	        'total': '共',
+	        'items': '條',
+	        'show': '顯示',
+	        'goto': '跳至',
+	        'page': '頁',
+	        'ok': '確認'
 	    },
 	    Grid: {
 	        'fixTitle': '鎖定',
 	        'noFixTitle': '解鎖',
 	        'hideTitle': '隱藏',
-	        'rowFilter': '行過濾'
+	        'rowFilter': '行過濾',
+	        'openRowFilter': '打開行過濾',
+	        'closeRowFilter': '關閉行過濾'
 	    }
 	};
 	module.exports = exports['default'];
@@ -14246,33 +14355,41 @@
 	exports["default"] = {
 	    lang: 'en_US',
 	    Popconfirm: {
-	        ok: 'OK',
-	        cancel: 'Cancel'
+	        'ok': 'OK',
+	        'cancel': 'Cancel'
 	    },
 	    Table: {
-	        noData: 'no data'
+	        'resetSettings': 'reset settings',
+	        'include': 'include',
+	        'exclusive': 'exclusive',
+	        'equal': 'equal',
+	        'unequal': 'unequal',
+	        'begin': 'begin',
+	        'end': 'end'
 	    },
 	    Clipboard: {
-	        copy: 'copy',
-	        cut: 'cut',
-	        copyReady: 'copied',
-	        cutReady: 'cut',
-	        copyToClipboard: 'copy to clipboard',
-	        close: 'close'
+	        'copy': 'copy',
+	        'cut': 'cut',
+	        'copyReady': 'copied',
+	        'cutReady': 'cut',
+	        'copyToClipboard': 'copy to clipboard',
+	        'close': 'close'
 	    },
 	    Pagination: {
-	        total: 'total',
-	        items: 'items',
-	        show: 'page',
-	        "goto": 'goto',
-	        page: 'page',
-	        ok: 'ok'
+	        'total': 'total',
+	        'items': 'items',
+	        'show': 'page',
+	        'goto': 'goto',
+	        'page': 'page',
+	        'ok': 'ok'
 	    },
 	    Grid: {
 	        'fixTitle': 'fix',
 	        'noFixTitle': 'unfix',
 	        'hideTitle': 'hide',
-	        'rowFilter': 'rowFilter'
+	        'rowFilter': 'rowFilter',
+	        'openRowFilter': 'openRowFilter',
+	        'closeRowFilter': 'closeRowFilter'
 	    }
 	};
 	module.exports = exports['default'];

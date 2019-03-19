@@ -19,7 +19,7 @@ const Demo1 = Form.createForm()(class Demo extends Component {
         const { getFieldProps, getFieldError } = this.props.form;
         return (
                 <FormItem className='demo1'>
-                    <Label>姓名：</Label>
+                    <Label>姓名</Label>
                     <FormControl placeholder='请输入姓名'
                      {...getFieldProps('name', {
                         validateTrigger: 'onBlur',

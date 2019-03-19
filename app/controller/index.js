@@ -5,21 +5,42 @@ const render = require('koa-ejs');
 const sidebar = require('../../static/sidebar.json');
 const axios = require('axios');
 const components = require('../../static/components.json');
+const renderer = new marked.Renderer();
 
+renderer.heading = function(text, level){
+  if(level>1){
+    return `<h${level} id="${text}">${text}</h${level}/>`
+  }else{
+    return `<h${level}>${text}</h${level}/>`
+  }
+}
+
+marked.setOptions({
+  renderer: renderer,
+  gfm: true,
+  tables: true,
+  breaks: false,
+  pedantic: false,
+  sanitize: false,
+  smartLists: true,
+  smartypants: false
+});
 
 //定义变量提取
 ///##.*代码演示/ 匹配规则改变，
 // 官网react版本
 module.exports = {
   index: async (ctx, next) => {
-    let tag = ctx.url.split('tag=')[1];
+    let tag = ctx.url.split('tag=')[1];//版本号
     let component = ctx.params.component;
     let data ='';
     let filePath = '';
-    let isComponentFlag=false;
+    let isComponentFlag=false;//是否是组件
+    let rightMenus = {};//右侧菜单
     
     if (component) {
       if (component.indexOf('bee') != -1) {
+        rightMenus = components[component].menus;
         isComponentFlag=true;
         filePath = path.join(__dirname, `../../tinper-bee/${component}/docs/api.md`);
         data = await fs.readFileSync(filePath, 'utf-8');
@@ -60,10 +81,12 @@ module.exports = {
           "</div>"
         );
       } else {
+        rightMenus = {}
         filePath = path.join(__dirname, `../../docs/${component}.md`);
         data = await fs.readFileSync(filePath, 'utf-8');
       }
     }else{
+      rightMenus = {}
       filePath = path.join(__dirname, `../../docs/summarize.md`);
       data = await fs.readFileSync(filePath, 'utf-8');
     }
@@ -78,7 +101,8 @@ module.exports = {
       docs: data,
       active: component,
       tag:tag,
-      isComponent:isComponentFlag
+      isComponent:isComponentFlag,
+      rightMenus:rightMenus
     });
   }
 }

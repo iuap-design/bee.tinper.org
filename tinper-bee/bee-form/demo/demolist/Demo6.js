@@ -70,7 +70,7 @@ const Demo6 = Form.createForm()(class Demo extends Component {
                     <Row className = 'edit-panel'>
                         <Col lg={4} md={6} xs={12}>
                             <FormItem>
-                                <Label>订单编号：
+                                <Label>订单编号
                                     <span className='mast'>*</span>
                                 </Label>
                                 <FormControl
@@ -92,7 +92,7 @@ const Demo6 = Form.createForm()(class Demo extends Component {
                         </Col>
                         <Col lg={4} md={6} xs={12}>
                             <FormItem>
-                                <Label>供应商名称：
+                                <Label>供应商名称
                                     <span className='mast'>*</span>
                                 </Label>
                                 <FormControl
@@ -115,7 +115,7 @@ const Demo6 = Form.createForm()(class Demo extends Component {
                         </Col>
                         <Col lg={4} md={6} xs={12}>
                             <FormItem>
-                                <Label className='time'>凭证日期：</Label>
+                                <Label className='time'>凭证日期</Label>
                                 <RangePicker
                                     defaultValue={this.state.voucherDate}
                                     placeholder={'开始 ~ 结束'}
@@ -144,7 +144,7 @@ const Demo6 = Form.createForm()(class Demo extends Component {
                      <Row className = 'edit-panel edit-panel-all'>
                         <FormItem>
                             <Col md={2}>
-                                <Label>订单编号：
+                                <Label>订单编号
                                     <span className='mast'>*</span>
                                 </Label>
                             </Col>
@@ -169,7 +169,7 @@ const Demo6 = Form.createForm()(class Demo extends Component {
 
                         <FormItem>
                             <Col md={2}>
-                                <Label>供应商名称：
+                                <Label>供应商名称
                                     <span className='mast'>*</span>
                                 </Label>
                             </Col>
@@ -194,7 +194,7 @@ const Demo6 = Form.createForm()(class Demo extends Component {
 
                         <FormItem>
                             <Col md={2}>
-                                <Label>凭证日期：</Label>
+                                <Label>凭证日期</Label>
                             </Col>
                             <Col md={10}>
                                 <RangePicker
@@ -215,7 +215,7 @@ const Demo6 = Form.createForm()(class Demo extends Component {
                         </FormItem>
                         <FormItem>
                             <Col md={2}>
-                                <Label>订单类型：</Label>
+                                <Label>订单类型</Label>
                             </Col>
                             <Col md={10}>
                                 <Select {
@@ -244,9 +244,9 @@ const Demo6 = Form.createForm()(class Demo extends Component {
                         单列居中
                      </h4>
                     <Row className = 'edit-panel edit-panel-center'>
-                        <Col md={12}>
+                        <Col md={12} >
                             <FormItem>
-                                <Label>订单编号：
+                                <Label>订单编号
                                     <span className='mast'>*</span>
                                 </Label>
                                 <FormControl
@@ -266,9 +266,9 @@ const Demo6 = Form.createForm()(class Demo extends Component {
                                 </span>
                             </FormItem>
                         </Col>
-                        <Col md={12}>
+                        <Col md={12}  >
                             <FormItem>
-                                <Label>供应商名称：
+                                <Label>供应商名称
                                     <span className='mast'>*</span>
                                 </Label>
                                 <FormControl
@@ -289,9 +289,9 @@ const Demo6 = Form.createForm()(class Demo extends Component {
                             </FormItem>
                             
                         </Col>
-                        <Col md={12}>
+                        <Col md={12}  >
                             <FormItem>
-                                <Label className='time'>凭证日期：</Label>
+                                <Label className='time'>凭证日期</Label>
                                 <RangePicker
                                     defaultValue={this.state.voucherDate}
                                     placeholder={'开始 ~ 结束'}
@@ -319,7 +319,7 @@ const Demo6 = Form.createForm()(class Demo extends Component {
                      </h4>
                     <Row className = 'edit-panel edit-panel-textarea'>
                             <Col md={1}>
-                                <Label>订单编号：
+                                <Label>订单编号
                                     <span className='mast'>*</span>
                                 </Label>
                             </Col>
@@ -341,7 +341,7 @@ const Demo6 = Form.createForm()(class Demo extends Component {
                                 </span>
                             </Col>
                             <Col md={1}>
-                                <Label>供应商：
+                                <Label>供应商
                                     <span className='mast'>*</span>
                                 </Label>
                             </Col>
@@ -363,7 +363,7 @@ const Demo6 = Form.createForm()(class Demo extends Component {
                                 </span>
                             </Col>
                             <Col md={1}>
-                                <Label className='time'>凭证日期：</Label>
+                                <Label className='time'>凭证日期</Label>
                             </Col>
                             <Col md={3}>
                             <RangePicker
@@ -382,7 +382,7 @@ const Demo6 = Form.createForm()(class Demo extends Component {
                                 />
                             </Col>
                             <Col md={1}>
-                                <Label className='time'>备注：</Label>
+                                <Label className='time'>备注</Label>
                             </Col>
                             <Col md={11}>
                             <textarea className='u-form-control'

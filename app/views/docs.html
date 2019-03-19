@@ -5,8 +5,12 @@
         <link href="./<%= active %>/dist/demo.css" type="text/css" rel="stylesheet" />
     <% } %> 
 <% } %>
-<div>
+<div class="doc-content">
     <%- docs %>
+</div>
+
+<div class="right-menus">
+    <% include rightMenus.html %>
 </div>
 
 <% if(isComponent){ %>

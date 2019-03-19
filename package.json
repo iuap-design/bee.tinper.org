@@ -9,7 +9,8 @@
     "init": "node app/utils/getComponent.js",
     "getMenu":"node app/utils/getRightMenu.js",
     "dev": "node --inspect app/app.js",
-    "start": "node app/app.js"
+    "start": "node app/app.js",
+    "tinper":"node app/utils/tinper.js"
   },
   "repository": {
     "type": "git",

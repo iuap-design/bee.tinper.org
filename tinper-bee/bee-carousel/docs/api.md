@@ -1,5 +1,21 @@
-## Carousel
+# Carousel
+轮播图组件
 
+## 何时使用
+
+例如：首页滚动图片
+
+## 如何使用
+
+```
+import { Carousel } from 'tinper-bee';
+
+or
+
+import Carousel from 'bee-carousel';
+import bee-carousel/build/Carousel.css;
+
+```
 ## 代码演示
 
 ## API
@@ -18,3 +34,10 @@
 |activeSlideKey|定义最初的激活态slide|String or Number|''|
 
 你也可以直接用swiper.js的原始参数 点击[这里](http://idangero.us/swiper/api/)api/
+
+
+## 注意事项
+
+暂无
+
+## 更新日志

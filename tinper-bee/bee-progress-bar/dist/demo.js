@@ -76,7 +76,7 @@
 	
 	var CARETUP = _react2['default'].createElement('i', { className: 'uf uf-arrow-up' });
 	
-	var Demo1 = __webpack_require__(84);var Demo2 = __webpack_require__(88);var Demo3 = __webpack_require__(89);var Demo4 = __webpack_require__(90);var Demo5 = __webpack_require__(91);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 基本样式展示", "code": "/**\r\n * @title 基本样式展示\r\n * @description now 控制实际进度\r\n */\r\n\r\nimport React, { Component } from 'react';\r\nimport { ProgressBar } from 'tinper-bee';\r\n\r\nclass Demo1 extends Component {\r\n\r\n\trender () {\r\n\t\treturn (\r\n\t\t\t<ProgressBar style={{width:30}} now = {40} />\r\n\t\t)\r\n\t}\r\n}\r\n\r\n\r\n", "desc": " now 控制实际进度" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 激活状态 ProgressBar", "code": "/**\r\n * @title 激活状态 ProgressBar\r\n * @description 添加参数active,具备动画。\r\n */\r\n\r\nimport React, { Component } from 'react';\r\nimport { ProgressBar } from 'tinper-bee';\r\n\r\nclass Demo2 extends Component {\r\n\trender(){\r\n\t\treturn (\r\n\t\t\t<ProgressBar active now = {40} />\r\n\t\t)\r\n\t}\r\n}\r\n\r\n", "desc": " 添加参数active,具备动画。" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 进度条组合", "code": "/**\r\n * @title 进度条组合\r\n * @description 多种状态或者背景的进度条组合成一条。`size`控制大小。\r\n */\r\n\r\nimport React, { Component } from 'react';\r\nimport { ProgressBar } from 'tinper-bee';\r\n\r\nclass Demo3 extends Component {\r\n\trender () {\r\n\t\treturn (\r\n\t\t\t<ProgressBar size=\"sm\">\r\n\t\t\t\t<ProgressBar colors=\"danger\" now = {10} />\r\n\t\t\t\t<ProgressBar colors=\"success\" now = {20} />\r\n\t\t\t\t<ProgressBar colors=\"warning\" now = {30} />\r\n\t\t\t</ProgressBar>\t\r\n\t\t)\r\n\t}\r\n}\r\n\r\n", "desc": " 多种状态或者背景的进度条组合成一条。`size`控制大小。" }, { "example": _react2['default'].createElement(Demo4, null), "title": " 带label ProgressBar", "code": "/**\r\n * @title 带label ProgressBar\r\n * @description\r\n */\r\n\r\nimport React, { Component } from 'react';\r\nimport { ProgressBar } from 'tinper-bee';\r\n\r\nclass Demo4 extends Component {\r\n\trender(){\r\n\t\tlet now = 40;\r\n\t\treturn (\r\n\t\t\t<div>\r\n\t\t\t\t<ProgressBar active now = {now} label={`${now}%`} ></ProgressBar>\r\n\t\t\t\t<ProgressBar size=\"sm\" active now = {now} label={`${now}%`} ></ProgressBar>\r\n\t\t\t\t<ProgressBar size=\"xs\" active now = {now} label={`${now}%`} ></ProgressBar>\r\n\t\t\t</div>\r\n\t\t)\r\n\t}\r\n}\r\n\r\n", "desc": "" }, { "example": _react2['default'].createElement(Demo5, null), "title": " 网页顶部进度条", "code": "/**\r\n * @title 网页顶部进度条\r\n * @description 网页顶部进度条\r\n */\r\n\r\nimport React, { Component } from 'react';\r\nimport { ProgressBar, Button } from 'tinper-bee';\r\n\n\r\n\r\n\r\nclass Demo4 extends Component {\r\n    start = () => {\r\n        ProgressBar.start();\r\n    }\r\n    set = () => {\r\n        ProgressBar.set(0.4);\r\n    }\r\n    inc = () => {\r\n        ProgressBar.inc();\r\n    }\r\n    done = () => {\r\n        ProgressBar.done();\r\n    }\r\n\trender(){\r\n        const style = {marginRight:\"10px\"};\r\n\t\treturn (\r\n\t\t\t<div>\r\n\t\t\t\t<Button style={style} onClick={this.start}>点我开始</Button>\r\n\t\t\t\t<Button style={style} onClick={this.set}>设置固定位置</Button>\r\n\t\t\t\t<Button style={style} onClick={this.inc}>点我加快</Button>\r\n\t\t\t\t<Button onClick={this.done}>点我结束</Button>\r\n\t\t\t</div>\r\n\t\t)\r\n\t}\r\n}\r\n\r\n", "desc": " 网页顶部进度条" }];
+	var Demo1 = __webpack_require__(84);var Demo2 = __webpack_require__(88);var Demo3 = __webpack_require__(89);var Demo4 = __webpack_require__(90);var Demo5 = __webpack_require__(91);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 基本样式展示", "code": "/**\n * @title 基本样式展示\n * @description now 控制实际进度\n */\n\nimport React, { Component } from 'react';\nimport { ProgressBar } from 'tinper-bee';\n\nclass Demo1 extends Component {\n\n\trender () {\n\t\treturn (\n\t\t\t<ProgressBar style={{width:30}} now = {40} />\n\t\t)\n\t}\n}\n\n\n", "desc": " now 控制实际进度" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 激活状态 ProgressBar", "code": "/**\n * @title 激活状态 ProgressBar\n * @description 添加参数active,具备动画。\n */\n\nimport React, { Component } from 'react';\nimport { ProgressBar } from 'tinper-bee';\n\nclass Demo2 extends Component {\n\trender(){\n\t\treturn (\n\t\t\t<ProgressBar active now = {40} />\n\t\t)\n\t}\n}\n\n", "desc": " 添加参数active,具备动画。" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 进度条组合", "code": "/**\n * @title 进度条组合\n * @description 多种状态或者背景的进度条组合成一条。`size`控制大小。\n */\n\nimport React, { Component } from 'react';\nimport { ProgressBar } from 'tinper-bee';\n\nclass Demo3 extends Component {\n\trender () {\n\t\treturn (\n\t\t\t<ProgressBar size=\"sm\">\n\t\t\t\t<ProgressBar colors=\"danger\" now = {10} />\n\t\t\t\t<ProgressBar colors=\"success\" now = {20} />\n\t\t\t\t<ProgressBar colors=\"warning\" now = {30} />\n\t\t\t</ProgressBar>\t\n\t\t)\n\t}\n}\n\n", "desc": " 多种状态或者背景的进度条组合成一条。`size`控制大小。" }, { "example": _react2['default'].createElement(Demo4, null), "title": " 带label ProgressBar", "code": "/**\n * @title 带label ProgressBar\n * @description\n */\n\nimport React, { Component } from 'react';\nimport { ProgressBar } from 'tinper-bee';\n\nclass Demo4 extends Component {\n\trender(){\n\t\tlet now = 40;\n\t\treturn (\n\t\t\t<div>\n\t\t\t\t<ProgressBar active now = {now} label={`${now}%`} ></ProgressBar>\n\t\t\t\t<ProgressBar size=\"sm\" active now = {now} label={`${now}%`} ></ProgressBar>\n\t\t\t\t<ProgressBar size=\"xs\" active now = {now} label={`${now}%`} ></ProgressBar>\n\t\t\t</div>\n\t\t)\n\t}\n}\n\n", "desc": "" }, { "example": _react2['default'].createElement(Demo5, null), "title": " 网页顶部进度条", "code": "/**\n * @title 网页顶部进度条\n * @description 网页顶部进度条\n */\n\nimport React, { Component } from 'react';\nimport { ProgressBar, Button } from 'tinper-bee';\n\n\n\nclass Demo4 extends Component {\n    start = () => {\n        ProgressBar.start();\n    }\n    set = () => {\n        ProgressBar.set(0.4);\n    }\n    inc = () => {\n        ProgressBar.inc();\n    }\n    done = () => {\n        ProgressBar.done();\n    }\n\trender(){\n        const style = {marginRight:\"10px\"};\n\t\treturn (\n\t\t\t<div>\n\t\t\t\t<Button style={style} onClick={this.start}>点我开始</Button>\n\t\t\t\t<Button style={style} onClick={this.set}>设置固定位置</Button>\n\t\t\t\t<Button style={style} onClick={this.inc}>点我加快</Button>\n\t\t\t\t<Button onClick={this.done}>点我结束</Button>\n\t\t\t</div>\n\t\t)\n\t}\n}\n\n", "desc": " 网页顶部进度条" }];
 	
 	var Demo = function (_Component) {
 	    _inherits(Demo, _Component);
@@ -121,7 +121,7 @@
 	        );
 	        return _react2['default'].createElement(
 	            _beeLayout.Col,
-	            { md: 12 },
+	            { md: 12, id: title.trim() },
 	            _react2['default'].createElement(
 	                'h3',
 	                null,
@@ -5582,6 +5582,16 @@
 	  var documentWidth = documentElement.scrollWidth;
 	  var documentHeight = documentElement.scrollHeight;
 	
+	  // scrollXXX on html is sync with body which means overflow: hidden on body gets wrong scrollXXX.
+	  // We should cut this ourself.
+	  var bodyStyle = window.getComputedStyle(body);
+	  if (bodyStyle.overflowX === 'hidden') {
+	    documentWidth = win.innerWidth;
+	  }
+	  if (bodyStyle.overflowY === 'hidden') {
+	    documentHeight = win.innerHeight;
+	  }
+	
 	  // Reset element position after calculate the visible area
 	  if (element.style) {
 	    element.style.position = originalPosition;
@@ -7964,7 +7974,9 @@
 	        if (colorsMap[colors]) {
 	            clsObj[clsPrefix + '-' + colorsMap[colors]] = true;
 	        }
-	        //clsObj[`${clsPrefix}-border`] = bordered;
+	        if (bordered) {
+	            clsObj[clsPrefix + '-border'] = bordered;
+	        }
 	        var classes = (0, _classnames2["default"])(clsPrefix, clsObj);
 	        return _react2["default"].createElement(
 	            'button',

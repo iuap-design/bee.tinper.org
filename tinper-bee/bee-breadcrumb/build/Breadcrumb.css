@@ -8,12 +8,14 @@
   border-radius: 4px; }
   .u-breadcrumb li {
     display: inline-block;
-    color: rgb(245, 60, 50); }
+    color: #212121; }
   .u-breadcrumb a {
-    color: rgb(245, 60, 50);
+    color: #212121;
     text-decoration: none; }
+    .u-breadcrumb a:hover {
+      color: rgb(245, 60, 50); }
   .u-breadcrumb .active {
-    color: #777; }
+    color: rgb(245, 60, 50); }
 
 .u-breadcrumb > li + li:before {
   content: "/\A0";

@@ -50,6 +50,7 @@
   "console-polyfill": "~0.2.1",
   "es5-shim": "~4.1.10",
   "bee-button": "latest",
+  "bee-icon": "latest",
   "bee-panel": "latest",
   "bee-layout": "latest"
  }

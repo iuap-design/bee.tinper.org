@@ -9,14 +9,17 @@
     border-radius: 4px;
     li {
     	display: inline-block;
-        color: $breadcrumb-color;
+        color: #212121;
     }
     a {
-    	color: $breadcrumb-color;
-    	text-decoration: none;
+        color: #212121;
+        text-decoration: none;
+        &:hover {
+            color: $breadcrumb-color;
+        }
     }
     .active {
-    	color: $breadcrumb-active-color;
+    	color: $breadcrumb-color;
     }
 }
 .u-breadcrumb>li+li:before {

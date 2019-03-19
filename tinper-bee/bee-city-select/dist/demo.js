@@ -119,7 +119,7 @@
 	        );
 	        return _react2['default'].createElement(
 	            _beeLayout.Col,
-	            { md: 12 },
+	            { md: 12, id: title.trim() },
 	            _react2['default'].createElement(
 	                'h3',
 	                null,
@@ -8204,7 +8204,6 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.SelectPropTypes = exports.OptGroup = exports.Option = undefined;
 	
 	var _Select = __webpack_require__(87);
 	
@@ -8224,10 +8223,8 @@
 	
 	_Select2["default"].Option = _Option2["default"];
 	_Select2["default"].OptGroup = _OptGroup2["default"];
-	exports.Option = _Option2["default"];
-	exports.OptGroup = _OptGroup2["default"];
-	exports.SelectPropTypes = _PropTypes.SelectPropTypes;
 	exports["default"] = _Select2["default"];
+	module.exports = exports['default'];
 
 /***/ }),
 /* 87 */
@@ -8275,7 +8272,11 @@
 	
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); } /**
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               * This source code is quoted from rc-select.
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               * homepage: https://github.com/react-component/select
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               */
+	
 	
 	var SelectContext = {
 	  antLocale: {
@@ -8469,9 +8470,10 @@
 	
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); } /* eslint func-names: 1 */
-	/* eslint-disable no-multi-assign, no-lonely-if, jsx-a11y/no-noninteractive-element-interactions, no-restricted-syntax, jsx-a11y/role-has-required-aria-props */
-	// TODO: Fix eslint later
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); } /**
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               * This source code is quoted from rc-select.
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               * homepage: https://github.com/react-component/select
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               */
 	
 	
 	function noop() {}
@@ -9805,7 +9807,8 @@
 	        );
 	      }
 	      if ((0, _util.isMultipleOrTags)(props)) {
-	        selectedValueNodes = limitedCountValue.map(function (singleValue) {
+	        selectedValueNodes = limitedCountValue.map(function (singleValue, index) {
+	          var key = singleValue || index;
 	          var info = _this2.getOptionInfoBySingleValue(singleValue);
 	          var content = info.label;
 	          var title = info.title || content;
@@ -9821,7 +9824,7 @@
 	            }, _util.UNSELECTABLE_ATTRIBUTE, {
 	              onMouseDown: _util.preventDefaultEvent,
 	              className: choiceClassName,
-	              key: singleValue,
+	              key: key,
 	              title: (0, _util.toTitle)(title)
 	            }),
 	            _react2["default"].createElement(
@@ -17099,7 +17102,9 @@
 
 	'use strict';
 	
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
 	
 	var _Align = __webpack_require__(202);
 	
@@ -17117,11 +17122,17 @@
 
 	'use strict';
 	
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
 	
 	var _classCallCheck2 = __webpack_require__(132);
 	
 	var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+	
+	var _createClass2 = __webpack_require__(194);
+	
+	var _createClass3 = _interopRequireDefault(_createClass2);
 	
 	var _possibleConstructorReturn2 = __webpack_require__(133);
 	
@@ -17167,6 +17178,8 @@
 	  (0, _inherits3['default'])(Align, _Component);
 	
 	  function Align() {
+	    var _ref;
+	
 	    var _temp, _this, _ret;
 	
 	    (0, _classCallCheck3['default'])(this, Align);
@@ -17175,7 +17188,7 @@
 	      args[_key] = arguments[_key];
 	    }
 	
-	    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3['default'])(this, _Component.call.apply(_Component, [this].concat(args))), _this), _this.forceAlign = function () {
+	    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3['default'])(this, (_ref = Align.__proto__ || Object.getPrototypeOf(Align)).call.apply(_ref, [this].concat(args))), _this), _this.forceAlign = function () {
 	      var _this$props = _this.props,
 	          disabled = _this$props.disabled,
 	          target = _this$props.target,
@@ -17189,11 +17202,17 @@
 	        var element = getElement(target);
 	        var point = getPoint(target);
 	
+	        // IE lose focus after element realign
+	        // We should record activeElement and restore later
+	        var activeElement = document.activeElement;
+	
 	        if (element) {
 	          result = (0, _domAlign.alignElement)(source, element, align);
 	        } else if (point) {
 	          result = (0, _domAlign.alignPoint)(source, point, align);
 	        }
+	
+	        (0, _util.restoreFocus)(activeElement, source);
 	
 	        if (onAlign) {
 	          onAlign(source, result);
@@ -17202,101 +17221,108 @@
 	    }, _temp), (0, _possibleConstructorReturn3['default'])(_this, _ret);
 	  }
 	
-	  Align.prototype.componentDidMount = function componentDidMount() {
-	    var props = this.props;
-	    // if parent ref not attached .... use document.getElementById
-	    this.forceAlign();
-	    if (!props.disabled && props.monitorWindowResize) {
-	      this.startMonitorWindowResize();
+	  (0, _createClass3['default'])(Align, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      var props = this.props;
+	      // if parent ref not attached .... use document.getElementById
+	      this.forceAlign();
+	      if (!props.disabled && props.monitorWindowResize) {
+	        this.startMonitorWindowResize();
+	      }
 	    }
-	  };
+	  }, {
+	    key: 'componentDidUpdate',
+	    value: function componentDidUpdate(prevProps) {
+	      var reAlign = false;
+	      var props = this.props;
 	
-	  Align.prototype.componentDidUpdate = function componentDidUpdate(prevProps) {
-	    var reAlign = false;
-	    var props = this.props;
+	      if (!props.disabled) {
+	        var source = _reactDom2['default'].findDOMNode(this);
+	        var sourceRect = source ? source.getBoundingClientRect() : null;
 	
-	    if (!props.disabled) {
-	      var source = _reactDom2['default'].findDOMNode(this);
-	      var sourceRect = source ? source.getBoundingClientRect() : null;
-	
-	      if (prevProps.disabled) {
-	        reAlign = true;
-	      } else {
-	        var lastElement = getElement(prevProps.target);
-	        var currentElement = getElement(props.target);
-	        var lastPoint = getPoint(prevProps.target);
-	        var currentPoint = getPoint(props.target);
-	
-	        if ((0, _util.isWindow)(lastElement) && (0, _util.isWindow)(currentElement)) {
-	          // Skip if is window
-	          reAlign = false;
-	        } else if (lastElement !== currentElement || // Element change
-	        lastElement && !currentElement && currentPoint || // Change from element to point
-	        lastPoint && currentPoint && currentElement || // Change from point to element
-	        currentPoint && !(0, _util.isSamePoint)(lastPoint, currentPoint)) {
+	        if (prevProps.disabled) {
 	          reAlign = true;
+	        } else {
+	          var lastElement = getElement(prevProps.target);
+	          var currentElement = getElement(props.target);
+	          var lastPoint = getPoint(prevProps.target);
+	          var currentPoint = getPoint(props.target);
+	
+	          if ((0, _util.isWindow)(lastElement) && (0, _util.isWindow)(currentElement)) {
+	            // Skip if is window
+	            reAlign = false;
+	          } else if (lastElement !== currentElement || // Element change
+	          lastElement && !currentElement && currentPoint || // Change from element to point
+	          lastPoint && currentPoint && currentElement || // Change from point to element
+	          currentPoint && !(0, _util.isSamePoint)(lastPoint, currentPoint)) {
+	            reAlign = true;
+	          }
+	
+	          // If source element size changed
+	          var preRect = this.sourceRect || {};
+	          if (!reAlign && source && (!(0, _util.isSimilarValue)(preRect.width, sourceRect.width) || !(0, _util.isSimilarValue)(preRect.height, sourceRect.height))) {
+	            reAlign = true;
+	          }
 	        }
 	
-	        // If source element size changed
-	        var preRect = this.sourceRect || {};
-	        if (!reAlign && source && (preRect.width !== sourceRect.width || preRect.height !== sourceRect.height)) {
-	          reAlign = true;
-	        }
+	        this.sourceRect = sourceRect;
 	      }
 	
-	      this.sourceRect = sourceRect;
-	    }
+	      if (reAlign) {
+	        this.forceAlign();
+	      }
 	
-	    if (reAlign) {
-	      this.forceAlign();
+	      if (props.monitorWindowResize && !props.disabled) {
+	        this.startMonitorWindowResize();
+	      } else {
+	        this.stopMonitorWindowResize();
+	      }
 	    }
-	
-	    if (props.monitorWindowResize && !props.disabled) {
-	      this.startMonitorWindowResize();
-	    } else {
+	  }, {
+	    key: 'componentWillUnmount',
+	    value: function componentWillUnmount() {
 	      this.stopMonitorWindowResize();
 	    }
-	  };
-	
-	  Align.prototype.componentWillUnmount = function componentWillUnmount() {
-	    this.stopMonitorWindowResize();
-	  };
-	
-	  Align.prototype.startMonitorWindowResize = function startMonitorWindowResize() {
-	    if (!this.resizeHandler) {
-	      this.bufferMonitor = (0, _util.buffer)(this.forceAlign, this.props.monitorBufferTime);
-	      this.resizeHandler = (0, _addEventListener2['default'])(window, 'resize', this.bufferMonitor);
+	  }, {
+	    key: 'startMonitorWindowResize',
+	    value: function startMonitorWindowResize() {
+	      if (!this.resizeHandler) {
+	        this.bufferMonitor = (0, _util.buffer)(this.forceAlign, this.props.monitorBufferTime);
+	        this.resizeHandler = (0, _addEventListener2['default'])(window, 'resize', this.bufferMonitor);
+	      }
 	    }
-	  };
-	
-	  Align.prototype.stopMonitorWindowResize = function stopMonitorWindowResize() {
-	    if (this.resizeHandler) {
-	      this.bufferMonitor.clear();
-	      this.resizeHandler.remove();
-	      this.resizeHandler = null;
+	  }, {
+	    key: 'stopMonitorWindowResize',
+	    value: function stopMonitorWindowResize() {
+	      if (this.resizeHandler) {
+	        this.bufferMonitor.clear();
+	        this.resizeHandler.remove();
+	        this.resizeHandler = null;
+	      }
 	    }
-	  };
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var _this2 = this;
 	
-	  Align.prototype.render = function render() {
-	    var _this2 = this;
+	      var _props = this.props,
+	          childrenProps = _props.childrenProps,
+	          children = _props.children;
 	
-	    var _props = this.props,
-	        childrenProps = _props.childrenProps,
-	        children = _props.children;
+	      var child = _react2['default'].Children.only(children);
+	      if (childrenProps) {
+	        var newProps = {};
+	        var propList = Object.keys(childrenProps);
+	        propList.forEach(function (prop) {
+	          newProps[prop] = _this2.props[childrenProps[prop]];
+	        });
 	
-	    var child = _react2['default'].Children.only(children);
-	    if (childrenProps) {
-	      var newProps = {};
-	      var propList = Object.keys(childrenProps);
-	      propList.forEach(function (prop) {
-	        newProps[prop] = _this2.props[childrenProps[prop]];
-	      });
-	
-	      return _react2['default'].cloneElement(child, newProps);
+	        return _react2['default'].cloneElement(child, newProps);
+	      }
+	      return child;
 	    }
-	    return child;
-	  };
-	
+	  }]);
 	  return Align;
 	}(_react.Component);
 	
@@ -17328,14 +17354,25 @@
 
 /***/ }),
 /* 203 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
 	exports.buffer = buffer;
 	exports.isSamePoint = isSamePoint;
 	exports.isWindow = isWindow;
+	exports.isSimilarValue = isSimilarValue;
+	exports.restoreFocus = restoreFocus;
+	
+	var _contains = __webpack_require__(191);
+	
+	var _contains2 = _interopRequireDefault(_contains);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	
 	function buffer(fn, ms) {
 	  var timer = void 0;
 	
@@ -17373,6 +17410,19 @@
 	
 	function isWindow(obj) {
 	  return obj && typeof obj === 'object' && obj.window === obj;
+	}
+	
+	function isSimilarValue(val1, val2) {
+	  var int1 = Math.floor(val1);
+	  var int2 = Math.floor(val2);
+	  return Math.abs(int1 - int2) <= 1;
+	}
+	
+	function restoreFocus(activeElement, container) {
+	  // Focus back if is in the container
+	  if (activeElement !== document.activeElement && (0, _contains2['default'])(container, activeElement)) {
+	    activeElement.focus();
+	  }
 	}
 
 /***/ }),
@@ -18644,7 +18694,6 @@
 	u++),t&&t!==g[u]&&(h[e=E(t)]||(h[e]=!0,-1===(e=F(g,t,u))?d.c&&(a.push(p({type:"childList",target:c.node,removedNodes:[t],nextSibling:q[r+1],previousSibling:q[r-1]})),z--):l.push({j:e,l:r})),r++));l&&f(l,b,g,q,z)}var k;n(b,c);return k}function C(a,b){var c=!0;return function f(a){var k={node:a};!b.a||3!==a.nodeType&&8!==a.nodeType?(b.b&&c&&1===a.nodeType&&(k.b=G(a.attributes,function(c,f){if(!b.f||b.f[f.name])c[f.name]=D(a,f);return c})),c&&(b.c||b.a||b.b&&b.g)&&(k.c=N(a.childNodes,f)),c=b.g):k.a=
 	a.nodeValue;return k}(a)}function E(a){try{return a.id||(a.mo_id=a.mo_id||H++)}catch(b){try{return a.nodeValue}catch(c){return H++}}}function N(a,b){for(var c=[],d=0;d<a.length;d++)c[d]=b(a[d],d,a);return c}function G(a,b){for(var c={},d=0;d<a.length;d++)c=b(c,a[d],d,a);return c}function F(a,b,c,d){for(;c<a.length;c++)if((d?a[c][d]:a[c])===b)return c;return-1}v._period=30;v.prototype={observe:function(a,b){for(var c={b:!!(b.attributes||b.attributeFilter||b.attributeOldValue),c:!!b.childList,g:!!b.subtree,
 	a:!(!b.characterData&&!b.characterDataOldValue)},d=this.i,f=0;f<d.length;f++)d[f].s===a&&d.splice(f,1);b.attributeFilter&&(c.f=G(b.attributeFilter,function(a,b){a[b]=!0;return a}));d.push({s:a,o:J(a,c)});this.h||I(this)},takeRecords:function(){for(var a=[],b=this.i,c=0;c<b.length;c++)b[c].o(a);return a},disconnect:function(){this.i=[];clearTimeout(this.h);this.h=null}};var B=document.createElement("i");B.style.top=0;var D=(B="null"!=B.attributes.style.value)?L:M,H=1;return v}(void 0);
-	//# sourceMappingURL=mutationobserver.map
 
 
 /***/ }),
@@ -19724,7 +19773,11 @@
 	
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); } /**
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               * This source code is quoted from rc-select.
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               * homepage: https://github.com/react-component/select
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               */
+	
 	
 	var Option = function (_React$Component) {
 	  _inherits(Option, _React$Component);
@@ -20010,7 +20063,10 @@
 	
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); } // import Trigger from 'rc-trigger';
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); } /**
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               * This source code is quoted from rc-select.
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               * homepage: https://github.com/react-component/select
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               */
 	
 	
 	_trigger2["default"].displayName = 'Trigger';
@@ -21362,7 +21418,11 @@
 	
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); } /**
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               * This source code is quoted from rc-select.
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               * homepage: https://github.com/react-component/select
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               */
+	
 	
 	var DropdownMenu = function (_React$Component) {
 	  _inherits(DropdownMenu, _React$Component);
@@ -21719,8 +21779,10 @@
 	    var _validate = _propTypes2["default"].oneOfType([_propTypes2["default"].arrayOf(basicType), basicType]);
 	    return _validate.apply(undefined, arguments);
 	  }
-	} /* eslint-disable consistent-return, prefer-rest-params, import/prefer-default-export */
-	// TODO: Fix eslint later
+	} /**
+	  * This source code is quoted from rc-select.
+	  * homepage: https://github.com/react-component/select
+	  */
 	var SelectPropTypes = exports.SelectPropTypes = {
 	  id: _propTypes2["default"].string,
 	  defaultActiveFirstOption: _propTypes2["default"].bool,

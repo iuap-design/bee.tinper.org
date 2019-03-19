@@ -121,7 +121,7 @@
 	        );
 	        return _react2['default'].createElement(
 	            _beeLayout.Col,
-	            { md: 12 },
+	            { md: 12, id: title.trim() },
 	            _react2['default'].createElement(
 	                'h3',
 	                null,
@@ -8120,14 +8120,19 @@
 	        _this.handleKeyDown = function (e) {
 	            var _this$props = _this.props,
 	                onSearch = _this$props.onSearch,
-	                value = _this$props.value,
 	                type = _this$props.type;
 	
 	            if (e.keyCode === 13 && type === "search") {
 	                if (onSearch) {
-	                    onSearch(value);
+	                    onSearch(_this.input.value);
 	                }
 	            }
+	        };
+	
+	        _this.handleSearch = function (e) {
+	            var onSearch = _this.props.onSearch;
+	
+	            if (onSearch) onSearch(_this.input.value);
 	        };
 	
 	        _this.handleBlur = function (e) {
@@ -8251,7 +8256,7 @@
 	                    _react2["default"].createElement(
 	                        'div',
 	                        { className: clsPrefix + '-suffix' },
-	                        _this.state.showSearch || others.disabled ? _react2["default"].createElement(_beeIcon2["default"], { type: 'uf-search' }) : _react2["default"].createElement(_beeIcon2["default"], { onClick: _this.clearValue, type: 'uf-close-c' })
+	                        _react2["default"].createElement(_beeIcon2["default"], { type: 'uf-search', onClick: _this.handleSearch })
 	                    )
 	                );
 	            }

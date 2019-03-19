@@ -19,7 +19,7 @@
     position: absolute;
     box-sizing: border-box;
     margin-top: -3px;
-    background-color: rgb(245, 60, 50);
+    background-color: rgb(30,136,229);
     transform-origin: 0 0; }
   .u-tabs .u-tabs-tab-prev,
   .u-tabs .u-tabs-tab-next {
@@ -79,10 +79,10 @@
     font-weight: 500;
     cursor: pointer; }
   .u-tabs .u-tabs-tab:hover {
-    color: rgb(245, 60, 50); }
+    color: rgb(30,136,229); }
   .u-tabs .u-tabs-tab-active,
   .u-tabs .u-tabs-tab-active:hover {
-    color: rgb(245, 60, 50);
+    color: rgb(30,136,229);
     cursor: default;
     transform: translateZ(0);
     z-index: 0; }
@@ -378,9 +378,9 @@
     padding: 5px 20px;
     text-align: center; }
     .u-tabs-primary .u-tabs-nav .u-tabs-tab:hover {
-      color: rgb(245, 60, 50); }
+      color: rgb(30,136,229); }
   .u-tabs-primary .u-tabs-nav .u-tabs-tab-active {
-    background: rgb(245, 60, 50);
+    background: rgb(30,136,229);
     color: #fff; }
     .u-tabs-primary .u-tabs-nav .u-tabs-tab-active:hover {
       color: #fff; }
@@ -418,12 +418,12 @@
     z-index: -1;
     width: 100%;
     height: 100%;
-    background-color: rgb(245, 60, 50);
+    background-color: rgb(30,136,229);
     content: '';
     border-bottom: 32px #fff solid;
     border-left: none; }
   .u-tabs-upborder .u-tabs-nav .u-tabs-tab-active {
-    color: rgb(245, 60, 50); }
+    color: rgb(30,136,229); }
 
 /*基础tab03*/
 .u-tabs-downborder .u-tabs-ink-bar {
@@ -441,7 +441,7 @@
     color: #666;
     transition: color 0.3s; }
     .u-tabs-downborder .u-tabs-nav .u-tabs-tab:hover {
-      color: rgb(245, 60, 50); }
+      color: rgb(30,136,229); }
     .u-tabs-downborder .u-tabs-nav .u-tabs-tab::after {
       position: absolute;
       top: 0;
@@ -452,7 +452,7 @@
       background: #d2d8d6;
       content: ''; }
     .u-tabs-downborder .u-tabs-nav .u-tabs-tab:hover::after, .u-tabs-downborder .u-tabs-nav .u-tabs-tab:focus::after, .u-tabs-downborder .u-tabs-nav .u-tabs-tab.u-tabs-tab-active::after {
-      background: rgb(245, 60, 50); }
+      background: rgb(30,136,229); }
     .u-tabs-downborder .u-tabs-nav .u-tabs-tab.u-tabs-tab-active::after {
       border-top-left-radius: 5px;
       border-top-right-radius: 5px; }
@@ -491,7 +491,7 @@
     z-index: -1;
     width: 100%;
     height: 100%;
-    border-bottom: 32px rgb(245, 60, 50) solid;
+    border-bottom: 32px rgb(30,136,229) solid;
     border-right: transparent 15px solid;
     border-left: none;
     z-index: -1; }
@@ -508,7 +508,7 @@
     border-right: #f5f5f5 15px solid;
     border-left: none; }
   .u-tabs-trapezoid .u-tabs-nav .u-tabs-tab-active {
-    color: rgb(245, 60, 50);
+    color: rgb(30,136,229);
     margin-top: 5px; }
 
 /*基础tab2*/
@@ -522,7 +522,7 @@
     color: #666;
     transition: color 0.3s; }
     .u-tabs-fill .u-tabs-nav .u-tabs-tab:hover {
-      color: rgb(245, 60, 50); }
+      color: rgb(30,136,229); }
     .u-tabs-fill .u-tabs-nav .u-tabs-tab::after {
       position: absolute;
       top: 0;
@@ -533,7 +533,7 @@
       background: #d2d8d6;
       content: ''; }
     .u-tabs-fill .u-tabs-nav .u-tabs-tab:hover::after, .u-tabs-fill .u-tabs-nav .u-tabs-tab:focus::after, .u-tabs-fill .u-tabs-nav .u-tabs-tab.u-tabs-tab-active::after {
-      background: rgb(245, 60, 50); }
+      background: rgb(30,136,229); }
     .u-tabs-fill .u-tabs-nav .u-tabs-tab.u-tabs-tab-active::after {
       border-top-left-radius: 5px;
       border-top-right-radius: 5px; }
@@ -571,7 +571,7 @@
     z-index: -1;
     width: 100%;
     height: 100%;
-    border-bottom: 32px rgb(245, 60, 50) solid;
+    border-bottom: 32px rgb(30,136,229) solid;
     border-right: transparent 15px solid;
     border-left: none;
     z-index: -1; }
@@ -588,7 +588,7 @@
     border-right: #f5f5f5 15px solid;
     border-left: none; }
   .u-tabs-turn .u-tabs-nav .u-tabs-tab-active {
-    color: rgb(245, 60, 50);
+    color: rgb(30,136,229);
     margin-top: 5px; }
 
 .u-tabs-moveleft .u-content-list {
@@ -634,12 +634,12 @@
     cursor: pointer;
     text-decoration: none; }
     .u-tabs-fade .u-tabs-nav .u-tabs-tab:hover {
-      color: rgb(245, 60, 50); }
+      color: rgb(30,136,229); }
   .u-tabs-fade .u-tabs-nav .u-tabs-tab-active {
     background: #fff;
     color: #666; }
     .u-tabs-fade .u-tabs-nav .u-tabs-tab-active:hover {
-      color: rgb(245, 60, 50); }
+      color: rgb(30,136,229); }
 
 /*基础tab5 */
 .u-tabs-fadeup .u-tabs-ink-bar {
@@ -665,7 +665,7 @@
     cursor: pointer;
     text-decoration: none; }
     .u-tabs-fadeup .u-tabs-nav .u-tabs-tab:hover {
-      color: rgb(245, 60, 50); }
+      color: rgb(30,136,229); }
     .u-tabs-fadeup .u-tabs-nav .u-tabs-tab::after {
       position: absolute;
       top: -5px;
@@ -675,7 +675,7 @@
       height: 100%;
       content: ''; }
     .u-tabs-fadeup .u-tabs-nav .u-tabs-tab:hover::after, .u-tabs-fadeup .u-tabs-nav .u-tabs-tab:focus::after, .u-tabs-fadeup .u-tabs-nav .u-tabs-tab.u-tabs-tab-active::after {
-      background: rgb(245, 60, 50); }
+      background: rgb(30,136,229); }
     .u-tabs-fadeup .u-tabs-nav .u-tabs-tab-active {
       color: #fff; }
   .u-tabs-fadeup .u-tabs-nav .u-tabs-tab-active {
@@ -694,7 +694,7 @@
       bottom: 0;
       left: 0;
       height: 4px;
-      background: rgb(245, 60, 50);
+      background: rgb(30,136,229);
       content: ''; }
 
 ul, li {

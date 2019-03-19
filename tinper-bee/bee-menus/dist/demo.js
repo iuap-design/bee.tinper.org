@@ -121,7 +121,7 @@
 	        );
 	        return _react2['default'].createElement(
 	            _beeLayout.Col,
-	            { md: 12 },
+	            { md: 12, id: title.trim() },
 	            _react2['default'].createElement(
 	                'h3',
 	                null,
@@ -5582,16 +5582,6 @@
 	  var documentWidth = documentElement.scrollWidth;
 	  var documentHeight = documentElement.scrollHeight;
 	
-	  // scrollXXX on html is sync with body which means overflow: hidden on body gets wrong scrollXXX.
-	  // We should cut this ourself.
-	  var bodyStyle = getComputedStyle(body);
-	  if (bodyStyle.overflowX === 'hidden') {
-	    documentWidth = win.innerWidth;
-	  }
-	  if (bodyStyle.overflowY === 'hidden') {
-	    documentHeight = win.innerHeight;
-	  }
-	
 	  // Reset element position after calculate the visible area
 	  if (element.style) {
 	    element.style.position = originalPosition;
@@ -7974,7 +7964,9 @@
 	        if (colorsMap[colors]) {
 	            clsObj[clsPrefix + '-' + colorsMap[colors]] = true;
 	        }
-	        //clsObj[`${clsPrefix}-border`] = bordered;
+	        if (bordered) {
+	            clsObj[clsPrefix + '-border'] = bordered;
+	        }
 	        var classes = (0, _classnames2["default"])(clsPrefix, clsObj);
 	        return _react2["default"].createElement(
 	            'button',
@@ -12749,7 +12741,7 @@
 /* 110 */
 /***/ (function(module, exports) {
 
-	var core = module.exports = { version: '2.6.5' };
+	var core = module.exports = { version: '2.6.2' };
 	if (typeof __e == 'number') __e = core; // eslint-disable-line no-undef
 
 

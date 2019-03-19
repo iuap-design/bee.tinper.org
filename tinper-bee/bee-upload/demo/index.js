@@ -41,7 +41,7 @@ class Demo extends Component {
             </div>
         );
         return (
-            <Col md={12}>
+            <Col md={12} id={title.trim()} >
                 <h3>{title}</h3>
                 <p>{desc}</p>
                 <div style={{ padding: '10px 15px', backgroundColor: '#fff', borderTop: '1px solid #e9e9e9', borderLeft: '1px solid #e9e9e9', borderRight: '1px solid #e9e9e9', borderRadius: 4}}>

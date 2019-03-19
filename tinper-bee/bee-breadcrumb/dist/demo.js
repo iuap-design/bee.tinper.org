@@ -76,7 +76,7 @@
 	
 	var CARETUP = _react2['default'].createElement('i', { className: 'uf uf-arrow-up' });
 	
-	var Demo1 = __webpack_require__(84);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " Breadcrumb ", "code": "/**\n * @title Breadcrumb \n * @description Breadcrumb.Item定义子面包，`active`参数定义当前状态。\n */\n\nimport React, { Component } from 'react';\nimport { Breadcrumb } from 'tinper-bee';\n\nclass Demo1 extends Component {\n\trender () {\n\t\treturn (\n\t\t\t<Breadcrumb>\n\t\t\t    <Breadcrumb.Item href=\"#\">\n\t\t\t      Home\n\t\t\t    </Breadcrumb.Item>\n\t\t\t    <Breadcrumb.Item>\n\t\t\t      Library\n\t\t\t    </Breadcrumb.Item>\n\t\t\t    <Breadcrumb.Item active>\n\t\t\t      Data\n\t\t\t    </Breadcrumb.Item>\n\t\t\t</Breadcrumb>\n\t\t)\n\t}\n}\n\n", "desc": " Breadcrumb.Item定义子面包，`active`参数定义当前状态。" }];
+	var Demo1 = __webpack_require__(84);var Demo2 = __webpack_require__(88);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 基础用法 ", "code": "/**\n * @title 基础用法 \n * @description Breadcrumb.Item定义子面包，`active`参数定义当前状态。\n */\n\nimport React, { Component } from 'react';\nimport { Breadcrumb } from 'tinper-bee';\n\nclass Demo1 extends Component {\n\trender () {\n\t\treturn (\n\t\t\t<Breadcrumb>\n\t\t\t    <Breadcrumb.Item href=\"#\">\n\t\t\t      Home\n\t\t\t    </Breadcrumb.Item>\n\t\t\t    <Breadcrumb.Item>\n\t\t\t      Library\n\t\t\t    </Breadcrumb.Item>\n\t\t\t    <Breadcrumb.Item active>\n\t\t\t      Data\n\t\t\t    </Breadcrumb.Item>\n\t\t\t</Breadcrumb>\n\t\t)\n\t}\n}\n\n", "desc": " Breadcrumb.Item定义子面包，`active`参数定义当前状态。" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 带有图标的 ", "code": "/**\n * @title 带有图标的 \n * @description 图标放在文字前面。\n */\n\nimport React, { Component } from 'react';\nimport { Breadcrumb, Icon } from 'tinper-bee';\n\nclass Demo2 extends Component {\n\trender () {\n\t\treturn (\n\t\t\t<Breadcrumb>\n\t\t\t    <Breadcrumb.Item href=\"#\">\n                    <Icon type=\"uf-home\"></Icon>\n\t\t\t    </Breadcrumb.Item>\n\t\t\t    <Breadcrumb.Item href=\"#\">\n                    <Icon type=\"uf-caven\"></Icon>\n                    <span>Application List</span>\n\t\t\t    </Breadcrumb.Item>\n\t\t\t    <Breadcrumb.Item active>\n\t\t\t      Data\n\t\t\t    </Breadcrumb.Item>\n\t\t\t</Breadcrumb>\n\t\t)\n\t}\n}\n\n", "desc": " 图标放在文字前面。" }];
 	
 	var Demo = function (_Component) {
 	    _inherits(Demo, _Component);
@@ -121,7 +121,7 @@
 	        );
 	        return _react2['default'].createElement(
 	            _beeLayout.Col,
-	            { md: 12 },
+	            { md: 12, id: title.trim() },
 	            _react2['default'].createElement(
 	                'h3',
 	                null,
@@ -8025,7 +8025,7 @@
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); } /**
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @title Breadcrumb 
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @title 基础用法 
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @description Breadcrumb.Item定义子面包，`active`参数定义当前状态。
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
 	
@@ -8242,6 +8242,181 @@
 	BreadcrumbItem.defaultProps = defaultProps;
 	
 	exports['default'] = BreadcrumbItem;
+	module.exports = exports['default'];
+
+/***/ }),
+/* 88 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _react = __webpack_require__(4);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _beeIcon = __webpack_require__(89);
+	
+	var _beeIcon2 = _interopRequireDefault(_beeIcon);
+	
+	var _src = __webpack_require__(85);
+	
+	var _src2 = _interopRequireDefault(_src);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	
+	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); } /**
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @title 带有图标的 
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @description 图标放在文字前面。
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
+	
+	var Demo2 = function (_Component) {
+		_inherits(Demo2, _Component);
+	
+		function Demo2() {
+			_classCallCheck(this, Demo2);
+	
+			return _possibleConstructorReturn(this, _Component.apply(this, arguments));
+		}
+	
+		Demo2.prototype.render = function render() {
+			return _react2['default'].createElement(
+				_src2['default'],
+				null,
+				_react2['default'].createElement(
+					_src2['default'].Item,
+					{ href: '#' },
+					_react2['default'].createElement(_beeIcon2['default'], { type: 'uf-home' })
+				),
+				_react2['default'].createElement(
+					_src2['default'].Item,
+					{ href: '#' },
+					_react2['default'].createElement(_beeIcon2['default'], { type: 'uf-caven' }),
+					_react2['default'].createElement(
+						'span',
+						null,
+						'Application List'
+					)
+				),
+				_react2['default'].createElement(
+					_src2['default'].Item,
+					{ active: true },
+					'Data'
+				)
+			);
+		};
+	
+		return Demo2;
+	}(_react.Component);
+	
+	exports['default'] = Demo2;
+	module.exports = exports['default'];
+
+/***/ }),
+/* 89 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _Icon = __webpack_require__(90);
+	
+	var _Icon2 = _interopRequireDefault(_Icon);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+	
+	exports["default"] = _Icon2["default"];
+	module.exports = exports['default'];
+
+/***/ }),
+/* 90 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
+	var _react = __webpack_require__(4);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _classnames = __webpack_require__(3);
+	
+	var _classnames2 = _interopRequireDefault(_classnames);
+	
+	var _propTypes = __webpack_require__(5);
+	
+	var _propTypes2 = _interopRequireDefault(_propTypes);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+	
+	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
+	
+	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
+	
+	var propTypes = {
+		type: _propTypes2["default"].string
+	
+	};
+	/**
+	 *  badge 默认显示内容1
+	 */
+	var defaultProps = {
+		clsPrefix: 'uf'
+	};
+	
+	var Icon = function (_Component) {
+		_inherits(Icon, _Component);
+	
+		function Icon(props) {
+			_classCallCheck(this, Icon);
+	
+			return _possibleConstructorReturn(this, _Component.call(this, props));
+		}
+	
+		Icon.prototype.render = function render() {
+			var _props = this.props,
+			    type = _props.type,
+			    className = _props.className,
+			    clsPrefix = _props.clsPrefix,
+			    others = _objectWithoutProperties(_props, ['type', 'className', 'clsPrefix']);
+	
+			var clsObj = {};
+	
+			var classNames = (0, _classnames2["default"])(clsPrefix, type);
+	
+			return _react2["default"].createElement('i', _extends({}, others, { className: (0, _classnames2["default"])(classNames, className) }));
+		};
+	
+		return Icon;
+	}(_react.Component);
+	
+	Icon.defaultProps = defaultProps;
+	Icon.propTypes = propTypes;
+	
+	exports["default"] = Icon;
 	module.exports = exports['default'];
 
 /***/ })

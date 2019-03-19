@@ -76,7 +76,7 @@
 	
 	var CARETUP = _react2['default'].createElement('i', { className: 'uf uf-arrow-up' });
 	
-	var Demo1 = __webpack_require__(84);var Demo2 = __webpack_require__(365);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 卡片模式", "code": "\r\n/**\r\n *\r\n * @title 卡片模式\r\n * @description 用于嵌套在空间有限的容器中\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\r\nimport Calendar from \"tinper-bee/lib/Calendar\";\r\n\r\n\r\nfunction onSelect(value) {\r\n    console.log(value);\r\n}\r\n\r\n\r\nclass Demo1 extends Component {\r\n    render() {\r\n        return (\r\n            <div>\r\n               <Calendar\r\n                   style={{ margin: 10 }}\r\n                   fullscreen={false}\r\n                   onSelect={onSelect}\r\n               />\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\n\r\n", "desc": " 用于嵌套在空间有限的容器中" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 选择日历", "code": "\r\n/**\r\n *\r\n * @title 选择日历\r\n * @description 一个通用的日历面板，支持年/月切换。\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\r\nimport Calendar from \"tinper-bee/lib/Calendar\";\r\n\r\n\r\nfunction onSelect(value) {\r\n    console.log(value);\r\n}\r\n\r\nclass Demo2 extends Component {\r\n\r\n    constructor(props, context) {\r\n        super(props, context);\r\n\r\n        this.state =  {\r\n            type:'month',\r\n        }\r\n    }\r\n\r\n    onTypeChange(type) {\r\n        this.setState({\r\n            type,\r\n        });\r\n    }\r\n\r\n    render() {\r\n        return (\r\n            <div>\r\n               <Calendar\r\n                   style={{ margin: 10 }}\r\n                   fullscreen\r\n\r\n                   onSelect={onSelect}\r\n                   type={this.state.type}\r\n                   onTypeChange={this.onTypeChange.bind(this)}\r\n\r\n               />\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\n", "desc": " 一个通用的日历面板，支持年/月切换。" }];
+	var Demo1 = __webpack_require__(84);var Demo2 = __webpack_require__(365);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 卡片模式", "code": "\n/**\n *\n * @title 卡片模式\n * @description 用于嵌套在空间有限的容器中\n *\n */\n\nimport React, { Component } from 'react';\nimport Calendar from \"tinper-bee/lib/Calendar\";\n\n\nfunction onSelect(value) {\n    console.log(value);\n}\n\n\nclass Demo1 extends Component {\n    render() {\n        return (\n            <div>\n               <Calendar\n                   style={{ margin: 10 }}\n                   fullscreen={false}\n                   onSelect={onSelect}\n               />\n            </div>\n        )\n    }\n}\n\n\n", "desc": " 用于嵌套在空间有限的容器中" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 选择日历", "code": "\n/**\n *\n * @title 选择日历\n * @description 一个通用的日历面板，支持年/月切换。\n *\n */\n\nimport React, { Component } from 'react';\nimport Calendar from \"tinper-bee/lib/Calendar\";\n\n\nfunction onSelect(value) {\n    console.log(value);\n}\n\nclass Demo2 extends Component {\n\n    constructor(props, context) {\n        super(props, context);\n\n        this.state =  {\n            type:'month',\n        }\n    }\n\n    onTypeChange(type) {\n        this.setState({\n            type,\n        });\n    }\n\n    render() {\n        return (\n            <div>\n               <Calendar\n                   style={{ margin: 10 }}\n                   fullscreen\n\n                   onSelect={onSelect}\n                   type={this.state.type}\n                   onTypeChange={this.onTypeChange.bind(this)}\n\n               />\n            </div>\n        )\n    }\n}\n\n", "desc": " 一个通用的日历面板，支持年/月切换。" }];
 	
 	var Demo = function (_Component) {
 	    _inherits(Demo, _Component);
@@ -121,7 +121,7 @@
 	        );
 	        return _react2['default'].createElement(
 	            _beeLayout.Col,
-	            { md: 12 },
+	            { md: 12, id: title.trim() },
 	            _react2['default'].createElement(
 	                'h3',
 	                null,
@@ -5582,6 +5582,16 @@
 	  var documentWidth = documentElement.scrollWidth;
 	  var documentHeight = documentElement.scrollHeight;
 	
+	  // scrollXXX on html is sync with body which means overflow: hidden on body gets wrong scrollXXX.
+	  // We should cut this ourself.
+	  var bodyStyle = window.getComputedStyle(body);
+	  if (bodyStyle.overflowX === 'hidden') {
+	    documentWidth = win.innerWidth;
+	  }
+	  if (bodyStyle.overflowY === 'hidden') {
+	    documentHeight = win.innerHeight;
+	  }
+	
 	  // Reset element position after calculate the visible area
 	  if (element.style) {
 	    element.style.position = originalPosition;
@@ -7964,7 +7974,9 @@
 	        if (colorsMap[colors]) {
 	            clsObj[clsPrefix + '-' + colorsMap[colors]] = true;
 	        }
-	        //clsObj[`${clsPrefix}-border`] = bordered;
+	        if (bordered) {
+	            clsObj[clsPrefix + '-border'] = bordered;
+	        }
 	        var classes = (0, _classnames2["default"])(clsPrefix, clsObj);
 	        return _react2["default"].createElement(
 	            'button',
@@ -8492,7 +8504,7 @@
 /* 94 */
 /***/ (function(module, exports) {
 
-	var core = module.exports = { version: '2.6.3' };
+	var core = module.exports = { version: '2.6.5' };
 	if (typeof __e == 'number') __e = core; // eslint-disable-line no-undef
 
 
@@ -33721,7 +33733,9 @@
 
 	'use strict';
 	
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
 	
 	var _Align = __webpack_require__(338);
 	
@@ -33739,11 +33753,17 @@
 
 	'use strict';
 	
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
 	
 	var _classCallCheck2 = __webpack_require__(134);
 	
 	var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+	
+	var _createClass2 = __webpack_require__(135);
+	
+	var _createClass3 = _interopRequireDefault(_createClass2);
 	
 	var _possibleConstructorReturn2 = __webpack_require__(139);
 	
@@ -33789,6 +33809,8 @@
 	  (0, _inherits3['default'])(Align, _Component);
 	
 	  function Align() {
+	    var _ref;
+	
 	    var _temp, _this, _ret;
 	
 	    (0, _classCallCheck3['default'])(this, Align);
@@ -33797,7 +33819,7 @@
 	      args[_key] = arguments[_key];
 	    }
 	
-	    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3['default'])(this, _Component.call.apply(_Component, [this].concat(args))), _this), _this.forceAlign = function () {
+	    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3['default'])(this, (_ref = Align.__proto__ || Object.getPrototypeOf(Align)).call.apply(_ref, [this].concat(args))), _this), _this.forceAlign = function () {
 	      var _this$props = _this.props,
 	          disabled = _this$props.disabled,
 	          target = _this$props.target,
@@ -33811,11 +33833,17 @@
 	        var element = getElement(target);
 	        var point = getPoint(target);
 	
+	        // IE lose focus after element realign
+	        // We should record activeElement and restore later
+	        var activeElement = document.activeElement;
+	
 	        if (element) {
 	          result = (0, _domAlign.alignElement)(source, element, align);
 	        } else if (point) {
 	          result = (0, _domAlign.alignPoint)(source, point, align);
 	        }
+	
+	        (0, _util.restoreFocus)(activeElement, source);
 	
 	        if (onAlign) {
 	          onAlign(source, result);
@@ -33824,101 +33852,108 @@
 	    }, _temp), (0, _possibleConstructorReturn3['default'])(_this, _ret);
 	  }
 	
-	  Align.prototype.componentDidMount = function componentDidMount() {
-	    var props = this.props;
-	    // if parent ref not attached .... use document.getElementById
-	    this.forceAlign();
-	    if (!props.disabled && props.monitorWindowResize) {
-	      this.startMonitorWindowResize();
+	  (0, _createClass3['default'])(Align, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      var props = this.props;
+	      // if parent ref not attached .... use document.getElementById
+	      this.forceAlign();
+	      if (!props.disabled && props.monitorWindowResize) {
+	        this.startMonitorWindowResize();
+	      }
 	    }
-	  };
+	  }, {
+	    key: 'componentDidUpdate',
+	    value: function componentDidUpdate(prevProps) {
+	      var reAlign = false;
+	      var props = this.props;
 	
-	  Align.prototype.componentDidUpdate = function componentDidUpdate(prevProps) {
-	    var reAlign = false;
-	    var props = this.props;
+	      if (!props.disabled) {
+	        var source = _reactDom2['default'].findDOMNode(this);
+	        var sourceRect = source ? source.getBoundingClientRect() : null;
 	
-	    if (!props.disabled) {
-	      var source = _reactDom2['default'].findDOMNode(this);
-	      var sourceRect = source ? source.getBoundingClientRect() : null;
-	
-	      if (prevProps.disabled) {
-	        reAlign = true;
-	      } else {
-	        var lastElement = getElement(prevProps.target);
-	        var currentElement = getElement(props.target);
-	        var lastPoint = getPoint(prevProps.target);
-	        var currentPoint = getPoint(props.target);
-	
-	        if ((0, _util.isWindow)(lastElement) && (0, _util.isWindow)(currentElement)) {
-	          // Skip if is window
-	          reAlign = false;
-	        } else if (lastElement !== currentElement || // Element change
-	        lastElement && !currentElement && currentPoint || // Change from element to point
-	        lastPoint && currentPoint && currentElement || // Change from point to element
-	        currentPoint && !(0, _util.isSamePoint)(lastPoint, currentPoint)) {
+	        if (prevProps.disabled) {
 	          reAlign = true;
+	        } else {
+	          var lastElement = getElement(prevProps.target);
+	          var currentElement = getElement(props.target);
+	          var lastPoint = getPoint(prevProps.target);
+	          var currentPoint = getPoint(props.target);
+	
+	          if ((0, _util.isWindow)(lastElement) && (0, _util.isWindow)(currentElement)) {
+	            // Skip if is window
+	            reAlign = false;
+	          } else if (lastElement !== currentElement || // Element change
+	          lastElement && !currentElement && currentPoint || // Change from element to point
+	          lastPoint && currentPoint && currentElement || // Change from point to element
+	          currentPoint && !(0, _util.isSamePoint)(lastPoint, currentPoint)) {
+	            reAlign = true;
+	          }
+	
+	          // If source element size changed
+	          var preRect = this.sourceRect || {};
+	          if (!reAlign && source && (!(0, _util.isSimilarValue)(preRect.width, sourceRect.width) || !(0, _util.isSimilarValue)(preRect.height, sourceRect.height))) {
+	            reAlign = true;
+	          }
 	        }
 	
-	        // If source element size changed
-	        var preRect = this.sourceRect || {};
-	        if (!reAlign && source && (preRect.width !== sourceRect.width || preRect.height !== sourceRect.height)) {
-	          reAlign = true;
-	        }
+	        this.sourceRect = sourceRect;
 	      }
 	
-	      this.sourceRect = sourceRect;
-	    }
+	      if (reAlign) {
+	        this.forceAlign();
+	      }
 	
-	    if (reAlign) {
-	      this.forceAlign();
+	      if (props.monitorWindowResize && !props.disabled) {
+	        this.startMonitorWindowResize();
+	      } else {
+	        this.stopMonitorWindowResize();
+	      }
 	    }
-	
-	    if (props.monitorWindowResize && !props.disabled) {
-	      this.startMonitorWindowResize();
-	    } else {
+	  }, {
+	    key: 'componentWillUnmount',
+	    value: function componentWillUnmount() {
 	      this.stopMonitorWindowResize();
 	    }
-	  };
-	
-	  Align.prototype.componentWillUnmount = function componentWillUnmount() {
-	    this.stopMonitorWindowResize();
-	  };
-	
-	  Align.prototype.startMonitorWindowResize = function startMonitorWindowResize() {
-	    if (!this.resizeHandler) {
-	      this.bufferMonitor = (0, _util.buffer)(this.forceAlign, this.props.monitorBufferTime);
-	      this.resizeHandler = (0, _addEventListener2['default'])(window, 'resize', this.bufferMonitor);
+	  }, {
+	    key: 'startMonitorWindowResize',
+	    value: function startMonitorWindowResize() {
+	      if (!this.resizeHandler) {
+	        this.bufferMonitor = (0, _util.buffer)(this.forceAlign, this.props.monitorBufferTime);
+	        this.resizeHandler = (0, _addEventListener2['default'])(window, 'resize', this.bufferMonitor);
+	      }
 	    }
-	  };
-	
-	  Align.prototype.stopMonitorWindowResize = function stopMonitorWindowResize() {
-	    if (this.resizeHandler) {
-	      this.bufferMonitor.clear();
-	      this.resizeHandler.remove();
-	      this.resizeHandler = null;
+	  }, {
+	    key: 'stopMonitorWindowResize',
+	    value: function stopMonitorWindowResize() {
+	      if (this.resizeHandler) {
+	        this.bufferMonitor.clear();
+	        this.resizeHandler.remove();
+	        this.resizeHandler = null;
+	      }
 	    }
-	  };
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var _this2 = this;
 	
-	  Align.prototype.render = function render() {
-	    var _this2 = this;
+	      var _props = this.props,
+	          childrenProps = _props.childrenProps,
+	          children = _props.children;
 	
-	    var _props = this.props,
-	        childrenProps = _props.childrenProps,
-	        children = _props.children;
+	      var child = _react2['default'].Children.only(children);
+	      if (childrenProps) {
+	        var newProps = {};
+	        var propList = Object.keys(childrenProps);
+	        propList.forEach(function (prop) {
+	          newProps[prop] = _this2.props[childrenProps[prop]];
+	        });
 	
-	    var child = _react2['default'].Children.only(children);
-	    if (childrenProps) {
-	      var newProps = {};
-	      var propList = Object.keys(childrenProps);
-	      propList.forEach(function (prop) {
-	        newProps[prop] = _this2.props[childrenProps[prop]];
-	      });
-	
-	      return _react2['default'].cloneElement(child, newProps);
+	        return _react2['default'].cloneElement(child, newProps);
+	      }
+	      return child;
 	    }
-	    return child;
-	  };
-	
+	  }]);
 	  return Align;
 	}(_react.Component);
 	
@@ -33950,14 +33985,25 @@
 
 /***/ }),
 /* 339 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
 	exports.buffer = buffer;
 	exports.isSamePoint = isSamePoint;
 	exports.isWindow = isWindow;
+	exports.isSimilarValue = isSimilarValue;
+	exports.restoreFocus = restoreFocus;
+	
+	var _contains = __webpack_require__(334);
+	
+	var _contains2 = _interopRequireDefault(_contains);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	
 	function buffer(fn, ms) {
 	  var timer = void 0;
 	
@@ -33995,6 +34041,19 @@
 	
 	function isWindow(obj) {
 	  return obj && typeof obj === 'object' && obj.window === obj;
+	}
+	
+	function isSimilarValue(val1, val2) {
+	  var int1 = Math.floor(val1);
+	  var int2 = Math.floor(val2);
+	  return Math.abs(int1 - int2) <= 1;
+	}
+	
+	function restoreFocus(activeElement, container) {
+	  // Focus back if is in the container
+	  if (activeElement !== document.activeElement && (0, _contains2['default'])(container, activeElement)) {
+	    activeElement.focus();
+	  }
 	}
 
 /***/ }),

@@ -1,6 +1,11 @@
 @import "../node_modules/tinper-bee-core/scss/minxin-variables";
 @import "../node_modules/tinper-bee-core/scss/minxin-mixins";
 @import "../node_modules/tinper-bee-core/scss/util-keyframe";
+
+$icon-color-light-contrast: #505F79;
+$icon-color-dark-contrast: #fff;
+$text-color-base: #212121;
+$disabled-text-color-base: #909090;
 .u-menu {
     font-size: 14px;
     font-variant: tabular-nums;
@@ -15,7 +20,7 @@
     list-style: none;
     -webkit-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-    color: rgba(0, 0, 0, 0.65);
+    color: $text-color-base;
     background: #fff;
     line-height: 0;
     -webkit-transition: background 0.3s, width 0.2s;
@@ -48,7 +53,7 @@
 }
 
 .u-menu-item-group-title {
-    color: rgba(0, 0, 0, 0.45);
+    color: $disabled-text-color-base;
     font-size: 14px;
     line-height: 1.5;
     padding: 8px 16px;
@@ -109,7 +114,7 @@
 .u-menu-submenu-active,
 .u-menu-submenu-title:hover {
     background-color: $hover-bg-color-base;
-    color: $brand-primary;
+    // color: $brand-primary;
 }
 
 .u-menu-horizontal .u-menu-item,
@@ -133,7 +138,7 @@
 }
 
 .u-menu:not(.u-menu-horizontal) .u-menu-item-selected {
-    background-color: $hover-bg-color-base;
+    background-color: $selected-bg-color-base;
 }
 
 .u-menu-inline,
@@ -323,9 +328,9 @@
 .u-menu-submenu-vertical-left>.u-menu-submenu-title:hover .u-menu-submenu-arrow:before,
 .u-menu-submenu-vertical-right>.u-menu-submenu-title:hover .u-menu-submenu-arrow:before,
 .u-menu-submenu-inline>.u-menu-submenu-title:hover .u-menu-submenu-arrow:before {
-    background: -webkit-gradient(linear, left top, right top, from($brand-primary), to($brand-primary));
-    background: -webkit-linear-gradient(left, $brand-primary, $brand-primary);
-    background: linear-gradient(to right, $brand-primary, $brand-primary);
+    background: -webkit-gradient(linear, left top, right top, from($icon-color-light-contrast), to($icon-color-light-contrast));
+    background: -webkit-linear-gradient(left, $icon-color-light-contrast, $icon-color-light-contrast);
+    background: linear-gradient(to right, $icon-color-light-contrast, $icon-color-light-contrast);
 }
 
 .u-menu-submenu-inline>.u-menu-submenu-title .u-menu-submenu-arrow:before {
@@ -405,9 +410,9 @@
     color: rgba(0, 0, 0, 0.65);
 }
 
-.u-menu-horizontal>.u-menu-item>a:hover {
-    color: $brand-primary;
-}
+// .u-menu-horizontal>.u-menu-item>a:hover {
+//     color: $brand-primary;
+// }
 
 .u-menu-horizontal>.u-menu-item>a:before {
     bottom: -2px;

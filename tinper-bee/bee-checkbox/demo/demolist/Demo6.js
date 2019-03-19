@@ -1,46 +1,67 @@
 /**
- * @title 红色填充的 Checkbox
- * @description `inverse` 参数设置选中为红色填充。
+ * @title 全选
+ * @description `indeterminate` 参数设置部分选中状态。
  */
 
 
 import React, {Component} from 'react';
 import Checkbox from '../../src';
 
-class Demo6 extends Component {
+const CheckboxGroup = Checkbox.CheckboxGroup;
+
+const plainOptions = ['1','2','3','4','5'];
+const defaultCheckedList = ['2','3'];
+
+class Demo7 extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            checkedFlag: false
+            checkedList: defaultCheckedList,
+            indeterminate: true,
+            checkAll: false
         }
         this.onChange = this.onChange.bind(this);
     }
 
-    onChange(e) {
+    onCheckAllChange = (e) => {
         console.log(e);
-        this.setState({checkedFlag: e});
+        this.setState({
+          checkedList: e ? plainOptions : [],
+          indeterminate: false,
+          checkAll: e,
+        });
+    }
+
+    onChange(checkedList) {
+        console.log(checkedList)
+        this.setState({
+            checkedList: checkedList,
+            indeterminate: !!checkedList.length && (checkedList.length < plainOptions.length),
+            checkAll: checkedList.length === plainOptions.length
+        });
     }
 
     render() {
         return (
             <div className="demo-checkbox">
                 <Checkbox
-                    inverse
                     ref="test"
-                    checked={this.state.checkedFlag}
-                    onChange={this.onChange}>
+                    indeterminate={this.state.indeterminate}
+                    onChange={this.onCheckAllChange}
+                    checked={this.state.checkAll}>
                     全选
                 </Checkbox>
-                <Checkbox
-                    inverse
-                    ref="test"
-                    indeterminate
-                    onChange={this.onChange}>
-                    半选
-                </Checkbox>
+                <br/>
+                <CheckboxGroup value={this.state.checkedList} onChange={this.onChange}>
+                    <Checkbox value='1'>1</Checkbox>
+                    <Checkbox value='2'>2</Checkbox>
+                    <Checkbox value='3'>3</Checkbox>
+                    <Checkbox value='4'>4</Checkbox>
+                    <Checkbox value='5'>5</Checkbox>
+                </CheckboxGroup>
             </div>
         )
     }
 }
 
-export default Demo6;
+export default Demo7;

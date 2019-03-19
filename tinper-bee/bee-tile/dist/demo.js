@@ -76,7 +76,7 @@
 	
 	var CARETUP = _react2['default'].createElement('i', { className: 'uf uf-arrow-up' });
 	
-	var Demo1 = __webpack_require__(84);var Demo2 = __webpack_require__(87);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " Tile实例", "code": "/**\r\n*\r\n* @title Tile实例\r\n* @description 通过style自定义样式，Tile的children均可自定义。hoverColors设置磁贴hover的效果\r\n*\r\n*/\r\n\r\nimport React, { Component } from 'react';\r\nimport { Tile } from 'tinper-bee';\r\n\r\nclass Demo1 extends Component {\r\n\trender () {\r\n\t\treturn (\r\n\t\t\t<Tile style={{width:200}}>\r\n\t\t\t\t<h4>磁贴标题</h4>\r\n\t\t\t\t<span>进度</span>\r\n\t\t\t\t<h1>95%</h1>\r\n\t\t\t</Tile>\r\n\t\t)\t\r\n\t}\r\n}\r\n\r\n\r\n", "desc": " 通过style自定义样式，Tile的children均可自定义。hoverColors设置磁贴hover的效果" }, { "example": _react2['default'].createElement(Demo2, null), "title": " Tile 实例", "code": "/**\r\n*\r\n* @title Tile 实例\r\n* @description 具备链接功能，设置参数Component为a,且设置href为你的链接地址\r\n*\r\n*/\r\n\r\nimport React, { Component } from 'react';\r\nimport { Tile } from 'tinper-bee';\r\n\r\nclass Demo2 extends Component {\r\n\trender () {\r\n\t\treturn (\r\n\t\t\t<Tile Component=\"a\" href=\"baidu\" style={{width:200}}>\r\n\t\t\t\t<h4>磁贴标题</h4>\r\n\t\t\t\t<span>进度</span>\r\n\t\t\t\t<h1>95%</h1>\r\n\t\t\t</Tile>\r\n\t\t)\t\r\n\t}\r\n}\r\n\r\n", "desc": " 具备链接功能，设置参数Component为a,且设置href为你的链接地址" }];
+	var Demo1 = __webpack_require__(84);var Demo2 = __webpack_require__(87);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " Tile实例", "code": "/**\n*\n* @title Tile实例\n* @description 通过style自定义样式，Tile的children均可自定义。hoverColors设置磁贴hover的效果\n*\n*/\n\nimport React, { Component } from 'react';\nimport { Tile } from 'tinper-bee';\n\nclass Demo1 extends Component {\n\trender () {\n\t\treturn (\n\t\t\t<Tile style={{width:200}}>\n\t\t\t\t<h4>磁贴标题</h4>\n\t\t\t\t<span>进度</span>\n\t\t\t\t<h1>95%</h1>\n\t\t\t</Tile>\n\t\t)\t\n\t}\n}\n\n\n", "desc": " 通过style自定义样式，Tile的children均可自定义。hoverColors设置磁贴hover的效果" }, { "example": _react2['default'].createElement(Demo2, null), "title": " Tile 实例", "code": "/**\n*\n* @title Tile 实例\n* @description 具备链接功能，设置参数Component为a,且设置href为你的链接地址\n*\n*/\n\nimport React, { Component } from 'react';\nimport { Tile } from 'tinper-bee';\n\nclass Demo2 extends Component {\n\trender () {\n\t\treturn (\n\t\t\t<Tile Component=\"a\" href=\"baidu\" style={{width:200}}>\n\t\t\t\t<h4>磁贴标题</h4>\n\t\t\t\t<span>进度</span>\n\t\t\t\t<h1>95%</h1>\n\t\t\t</Tile>\n\t\t)\t\n\t}\n}\n\n", "desc": " 具备链接功能，设置参数Component为a,且设置href为你的链接地址" }];
 	
 	var Demo = function (_Component) {
 	    _inherits(Demo, _Component);
@@ -121,7 +121,7 @@
 	        );
 	        return _react2['default'].createElement(
 	            _beeLayout.Col,
-	            { md: 12 },
+	            { md: 12, id: title.trim() },
 	            _react2['default'].createElement(
 	                'h3',
 	                null,
@@ -5584,7 +5584,7 @@
 	
 	  // scrollXXX on html is sync with body which means overflow: hidden on body gets wrong scrollXXX.
 	  // We should cut this ourself.
-	  var bodyStyle = window.getComputedStyle(body);
+	  var bodyStyle = getComputedStyle(body);
 	  if (bodyStyle.overflowX === 'hidden') {
 	    documentWidth = win.innerWidth;
 	  }
@@ -7974,9 +7974,7 @@
 	        if (colorsMap[colors]) {
 	            clsObj[clsPrefix + '-' + colorsMap[colors]] = true;
 	        }
-	        if (bordered) {
-	            clsObj[clsPrefix + '-border'] = bordered;
-	        }
+	        //clsObj[`${clsPrefix}-border`] = bordered;
 	        var classes = (0, _classnames2["default"])(clsPrefix, clsObj);
 	        return _react2["default"].createElement(
 	            'button',

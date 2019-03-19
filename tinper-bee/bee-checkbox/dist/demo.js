@@ -76,7 +76,7 @@
 	
 	var CARETUP = _react2['default'].createElement('i', { className: 'uf uf-arrow-up' });
 	
-	var Demo1 = __webpack_require__(84);var Demo2 = __webpack_require__(90);var Demo3 = __webpack_require__(91);var Demo4 = __webpack_require__(92);var Demo5 = __webpack_require__(93);var Demo6 = __webpack_require__(260);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 基本用法", "code": "/**\n * @title 基本用法\n * @description `checked` 参数设置是否选中，`disabled`设置是否可用，`onDoubleClick`定义双击事件。\n */\n\n\nimport React, {Component} from 'react';\nimport { Checkbox } from 'tinper-bee';\n\nclass Demo1 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            checkedFlag: false\n        }\n        this.onChange = this.onChange.bind(this);\n    }\n\n    onChange(e) {\n        console.log(e);\n        this.setState({checkedFlag: e});\n    }\n\n    handleDblClick = (state) => {\n\t\tconsole.log(state);\n    }\n\n    render() {\n        return (\n            <div className=\"demo-checkbox\">\n                <Checkbox\n                    disabled\n                    className=\"test\" >\n                </Checkbox>\n                <Checkbox\n                    disabled\n                    checked={true}\n                    className=\"test\" >\n                </Checkbox>\n                <Checkbox\n                    // onDoubleClick={ this.handleDblClick }\n                    ref=\"test\"\n                    checked={this.state.checkedFlag}\n                    onChange={this.onChange}>\n                    全选\n                </Checkbox>\n                <Checkbox\n                    ref=\"test\"\n                    indeterminate\n                    onChange={this.onChange}>\n                    半选\n                </Checkbox>\n            </div>\n        )\n    }\n}\n\n", "desc": " `checked` 参数设置是否选中，`disabled`设置是否可用，`onDoubleClick`定义双击事件。", "scss_code": "" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 不同颜色的 Checkbox", "code": "/**\n * @title 不同颜色的 Checkbox\n * @description `colors`参数控制背景色\n */\n\nimport React, { Component } from 'react';\nimport { Checkbox } from 'tinper-bee';\n\nclass Demo2 extends Component {\n\trender(){\n\t\treturn (\n\t\t\t<div className=\"demo-checkbox\">\n\t\t\t\t<Checkbox colors=\"primary\">primary</Checkbox>\n\t\t\t\t<Checkbox colors=\"success\">success</Checkbox>\n\t\t\t\t<Checkbox colors=\"info\">info</Checkbox>\n\t\t\t\t<Checkbox colors=\"danger\">danger</Checkbox>\n\t\t\t\t<Checkbox colors=\"warning\">warning</Checkbox>\n\t\t\t\t<Checkbox colors=\"dark\">dark</Checkbox>\n\t\t\t</div>\n\t\t)\n\t}\n}\n\n", "desc": " `colors`参数控制背景色", "scss_code": "" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 受控的 Checkbox", "code": "/**\n * @title 受控的 Checkbox\n * @description `checked` 参数设置是否选中，`disabled`设置是否可用。\n */\n\nimport React, { Component } from 'react';\nimport { Checkbox, Button } from 'tinper-bee';\n\nclass Demo3 extends Component {\n\tconstructor(props) {\n\t\tsuper(props);\n\t\tthis.state = {\n\t\t\tchecked: false,\n\t\t\tdisabled: false\n\t\t}\n\t}\n\tchangeCheck=()=> {\n\t\tthis.setState({checked:!this.state.checked});\n\t}\n\tchangeDisabled=()=> {\n\t\tthis.setState({disabled:!this.state.disabled});\n\t}\n\trender () {\n\t\tconst label = `${this.state.checked ? 'Checked' : 'Unchecked'}-${this.state.disabled ? 'Disabled' : 'Enabled'}`;\n\t\treturn (\n\t\t\t<div className=\"demo-checkbox\">\n\t\t\t\t<p>\n\t\t\t\t\t<Button \n\t\t\t\t\t\tcolors=\"secondary\" \n\t\t\t\t\t\tonClick={this.changeCheck.bind(this)}\n\t\t\t\t\t\tstyle={{marginRight:\"8px\"}}\n\t\t\t\t\t>\n\t\t\t\t\t\t{!this.state.checked ? 'Check' : 'Uncheck'}\n\t\t\t\t\t</Button>\n\t\t\t\t\t<Button \n\t\t\t\t\t\tcolors=\"secondary\" \n\t\t\t\t\t\tonClick={this.changeDisabled.bind(this)}\n\t\t\t\t\t>\n\t\t\t\t\t\t{!this.state.disabled ? 'Disable' : 'Enable'}\n\t\t\t\t\t</Button>\n\t\t\t\t</p>\t\n\t\t\t\t<p>\n\t\t\t\t\t<Checkbox \n\t\t\t\t\t\tchecked={this.state.checked} \n\t\t\t\t\t\tdisabled={this.state.disabled} \n\t\t\t\t\t\tonChange={this.changeCheck}\n\t\t\t\t\t>\n\t\t\t\t\t\t{label }\n\t\t\t\t\t</Checkbox>\n\t\t\t\t</p>\n\t\t\t</div>\n\t\t)\n\t}\n}\n", "desc": " `checked` 参数设置是否选中，`disabled`设置是否可用。", "scss_code": "" }, { "example": _react2['default'].createElement(Demo4, null), "title": " CheckboxGroup基本使用", "code": "/**\n * @title CheckboxGroup基本使用\n * @description `value` 参数设置默认值，`onChange`设置值改变的回调，`disabled`设置是否可用\n */\n\nimport React, { Component } from 'react';\nimport { Checkbox } from 'tinper-bee';\n\n\nconst CheckboxGroup = Checkbox.CheckboxGroup;\n\nclass Demo4 extends Component {\n\tconstructor(props) {\n\t\tsuper(props);\n\t\tthis.state = {\n\t\t\tvalue1:['3','4'],\n\t\t\tvalue2:['3','4']\n\t\t}\n\t}\n\tchange=(value)=>{\n\t\tconsole.log(value)\n\t\tthis.setState({\n\t\t\tvalue1:value\n\t\t})\n\t}\n\trender () {\n\t\treturn (\n\t\t\t<div className=\"demo-checkbox\">\n\t\t\t\t<CheckboxGroup value={this.state.value1} onChange={this.change}>\n\t\t\t\t\t<Checkbox value='1'>\n\t\t\t\t\t\t1\n\t\t\t\t\t</Checkbox>\n\t\t\t\t\t<Checkbox value='2'>\n\t\t\t\t\t\t2\n\t\t\t\t\t</Checkbox>\n\t\t\t\t\t<Checkbox value='3'>\n\t\t\t\t\t\t3\n\t\t\t\t\t</Checkbox>\n\t\t\t\t\t<Checkbox value='4'>\n\t\t\t\t\t\t4\n\t\t\t\t\t</Checkbox>\n\t\t\t\t\t<Checkbox value='5'>\n\t\t\t\t\t\t5\n\t\t\t\t\t</Checkbox>\n\t\t\t\t</CheckboxGroup>\n\t\t\t\t<CheckboxGroup disabled value={this.state.value2}>\n\t\t\t\t\t<Checkbox value='1'>\n\t\t\t\t\t\t1\n\t\t\t\t\t</Checkbox>\n\t\t\t\t\t<Checkbox value='2'>\n\t\t\t\t\t\t2\n\t\t\t\t\t</Checkbox>\n\t\t\t\t\t<Checkbox value='3'>\n\t\t\t\t\t\t3\n\t\t\t\t\t</Checkbox>\n\t\t\t\t\t<Checkbox value='4'>\n\t\t\t\t\t\t4\n\t\t\t\t\t</Checkbox>\n\t\t\t\t\t<Checkbox value='5'>\n\t\t\t\t\t\t5\n\t\t\t\t\t</Checkbox>\n\t\t\t\t</CheckboxGroup>\n\t\t\t</div>\n\t\t)\n\t}\n}\n", "desc": " `value` 参数设置默认值，`onChange`设置值改变的回调，`disabled`设置是否可用" }, { "example": _react2['default'].createElement(Demo5, null), "title": " CheckboxGroup在form中使用", "code": "/**\n * @title CheckboxGroup在form中使用\n * @description `value` 参数设置默认值，`onChange`设置值改变的回调。\n */\n\nimport React, { Component } from 'react';\nimport { Checkbox, Button, Form } from 'tinper-bee';\n\n\nconst CheckboxGroup = Checkbox.CheckboxGroup;\n\nclass Demo4 extends Component {\n\tconstructor(props) {\n\t\tsuper(props);\n\t\tthis.state = {\n\t\t\tvalue:['3','4']\n\t\t}\n\t}\n\tchange=(value)=>{\n\t\tthis.setState({\n\t\t\tvalue\n\t\t})\n\t}\n\tclick=()=>{\n\t\tthis.props.form.validateFields((error,values)=>{\n\t\t\tconsole.log(values)\n\t\t})\n\t}\n\trender () {\n\t\tconst self = this;\n\t\tconst { getFieldProps, getFieldError }  = this.props.form;\n\t\treturn (\n\t\t\t<div className=\"demo-checkbox\">\n\t\t\t\t<CheckboxGroup \n\t\t\t\t\t{\n\t\t\t\t\t\t...getFieldProps('name',{\n\t\t\t\t\t\t\tinitialValue:['2','3'],\n\t\t\t\t\t\t\tonChange:self.change\n\t\t\t\t\t\t})\n\t\t\t\t\t}\n\t\t\t\t>\n\t\t\t\t\t<Checkbox value='1'>\n\t\t\t\t\t\t1\n\t\t\t\t\t</Checkbox>\n\t\t\t\t\t<Checkbox value='2'>\n\t\t\t\t\t\t2\n\t\t\t\t\t</Checkbox>\n\t\t\t\t\t<Checkbox value='3'>\n\t\t\t\t\t\t3\n\t\t\t\t\t</Checkbox>\n\t\t\t\t\t<Checkbox value='4'>\n\t\t\t\t\t\t4\n\t\t\t\t\t</Checkbox>\n\t\t\t\t\t<Checkbox value='5'>\n\t\t\t\t\t\t5\n\t\t\t\t\t</Checkbox>\n\t\t\t\t</CheckboxGroup>\n\t\t\t\t<Button colors=\"secondary\" onClick={this.click}>submit</Button>\n\t\t\t</div>\n\t\t)\n\t}\n}\n", "desc": " `value` 参数设置默认值，`onChange`设置值改变的回调。" }, { "example": _react2['default'].createElement(Demo6, null), "title": " 红色填充的 Checkbox", "code": "/**\n * @title 红色填充的 Checkbox\n * @description `inverse` 参数设置选中为红色填充。\n */\n\n\nimport React, {Component} from 'react';\nimport { Checkbox } from 'tinper-bee';\n\nclass Demo6 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            checkedFlag: false\n        }\n        this.onChange = this.onChange.bind(this);\n    }\n\n    onChange(e) {\n        console.log(e);\n        this.setState({checkedFlag: e});\n    }\n\n    render() {\n        return (\n            <div className=\"demo-checkbox\">\n                <Checkbox\n                    inverse\n                    ref=\"test\"\n                    checked={this.state.checkedFlag}\n                    onChange={this.onChange}>\n                    全选\n                </Checkbox>\n                <Checkbox\n                    inverse\n                    ref=\"test\"\n                    indeterminate\n                    onChange={this.onChange}>\n                    半选\n                </Checkbox>\n            </div>\n        )\n    }\n}\n\n", "desc": " `inverse` 参数设置选中为红色填充。" }];
+	var Demo1 = __webpack_require__(84);var Demo2 = __webpack_require__(90);var Demo3 = __webpack_require__(91);var Demo4 = __webpack_require__(92);var Demo5 = __webpack_require__(93);var Demo6 = __webpack_require__(260);var Demo7 = __webpack_require__(261);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 基本用法", "code": "/**\n * @title 基本用法\n * @description `checked` 参数设置是否选中，`disabled`设置是否可用，`onDoubleClick`定义双击事件。\n */\n\n\nimport React, {Component} from 'react';\nimport { Checkbox } from 'tinper-bee';\n\nclass Demo1 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            checkedFlag: true\n        }\n        this.onChange = this.onChange.bind(this);\n    }\n\n    onChange(e) {\n        console.log(e);\n        this.setState({checkedFlag: e});\n    }\n\n    handleDblClick = (state) => {\n\t\tconsole.log(state);\n    }\n\n    render() {\n        return (\n            <div className=\"demo-checkbox\">\n                <Checkbox\n                    disabled\n                    className=\"test\" >\n                </Checkbox>\n                <Checkbox\n                    disabled\n                    checked={true}\n                    className=\"test\" >\n                </Checkbox>\n                <Checkbox\n                    // onDoubleClick={ this.handleDblClick }\n                    ref=\"test\"\n                    checked={this.state.checkedFlag}\n                    onChange={this.onChange}>\n                    Checkbox\n                </Checkbox>\n            </div>\n        )\n    }\n}\n\n", "desc": " `checked` 参数设置是否选中，`disabled`设置是否可用，`onDoubleClick`定义双击事件。", "scss_code": "" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 不同颜色的 Checkbox", "code": "/**\n * @title 不同颜色的 Checkbox\n * @description `colors`参数控制背景色\n */\n\nimport React, { Component } from 'react';\nimport { Checkbox } from 'tinper-bee';\n\nclass Demo2 extends Component {\n\trender(){\n\t\treturn (\n\t\t\t<div className=\"demo-checkbox\">\n\t\t\t\t<Checkbox colors=\"primary\">primary</Checkbox>\n\t\t\t\t<Checkbox colors=\"success\">success</Checkbox>\n\t\t\t\t<Checkbox colors=\"info\">info</Checkbox>\n\t\t\t\t<Checkbox colors=\"danger\">danger</Checkbox>\n\t\t\t\t<Checkbox colors=\"warning\">warning</Checkbox>\n\t\t\t\t<Checkbox colors=\"dark\">dark</Checkbox>\n\t\t\t</div>\n\t\t)\n\t}\n}\n\n", "desc": " `colors`参数控制背景色", "scss_code": "" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 受控的 Checkbox", "code": "/**\n * @title 受控的 Checkbox\n * @description `checked` 参数设置是否选中，`disabled`设置是否可用。\n */\n\nimport React, { Component } from 'react';\nimport { Checkbox, Button } from 'tinper-bee';\n\nclass Demo3 extends Component {\n\tconstructor(props) {\n\t\tsuper(props);\n\t\tthis.state = {\n\t\t\tchecked: false,\n\t\t\tdisabled: false\n\t\t}\n\t}\n\tchangeCheck=()=> {\n\t\tthis.setState({checked:!this.state.checked});\n\t}\n\tchangeDisabled=()=> {\n\t\tthis.setState({disabled:!this.state.disabled});\n\t}\n\trender () {\n\t\tconst label = `${this.state.checked ? 'Checked' : 'Unchecked'}-${this.state.disabled ? 'Disabled' : 'Enabled'}`;\n\t\treturn (\n\t\t\t<div className=\"demo-checkbox\">\n\t\t\t\t<p>\n\t\t\t\t\t<Button \n\t\t\t\t\t\tcolors=\"secondary\" \n\t\t\t\t\t\tonClick={this.changeCheck.bind(this)}\n\t\t\t\t\t\tstyle={{marginRight:\"8px\"}}\n\t\t\t\t\t>\n\t\t\t\t\t\t{!this.state.checked ? 'Check' : 'Uncheck'}\n\t\t\t\t\t</Button>\n\t\t\t\t\t<Button \n\t\t\t\t\t\tcolors=\"secondary\" \n\t\t\t\t\t\tonClick={this.changeDisabled.bind(this)}\n\t\t\t\t\t>\n\t\t\t\t\t\t{!this.state.disabled ? 'Disable' : 'Enable'}\n\t\t\t\t\t</Button>\n\t\t\t\t</p>\t\n\t\t\t\t<p>\n\t\t\t\t\t<Checkbox \n\t\t\t\t\t\tchecked={this.state.checked} \n\t\t\t\t\t\tdisabled={this.state.disabled} \n\t\t\t\t\t\tonChange={this.changeCheck}\n\t\t\t\t\t>\n\t\t\t\t\t\t{label }\n\t\t\t\t\t</Checkbox>\n\t\t\t\t</p>\n\t\t\t</div>\n\t\t)\n\t}\n}\n", "desc": " `checked` 参数设置是否选中，`disabled`设置是否可用。", "scss_code": "" }, { "example": _react2['default'].createElement(Demo4, null), "title": " CheckboxGroup基本使用", "code": "/**\n * @title CheckboxGroup基本使用\n * @description `value` 参数设置默认值，`onChange`设置值改变的回调，`disabled`设置是否可用\n */\n\nimport React, { Component } from 'react';\nimport { Checkbox } from 'tinper-bee';\n\n\nconst CheckboxGroup = Checkbox.CheckboxGroup;\n\nclass Demo4 extends Component {\n\tconstructor(props) {\n\t\tsuper(props);\n\t\tthis.state = {\n\t\t\tvalue1:['3','4'],\n\t\t\tvalue2:['3','4']\n\t\t}\n\t}\n\tchange=(value)=>{\n\t\tconsole.log(value)\n\t\tthis.setState({\n\t\t\tvalue1:value\n\t\t})\n\t}\n\trender () {\n\t\treturn (\n\t\t\t<div className=\"demo-checkbox\">\n\t\t\t\t<CheckboxGroup value={this.state.value1} onChange={this.change}>\n\t\t\t\t\t<Checkbox value='1'>\n\t\t\t\t\t\t1\n\t\t\t\t\t</Checkbox>\n\t\t\t\t\t<Checkbox value='2'>\n\t\t\t\t\t\t2\n\t\t\t\t\t</Checkbox>\n\t\t\t\t\t<Checkbox value='3'>\n\t\t\t\t\t\t3\n\t\t\t\t\t</Checkbox>\n\t\t\t\t\t<Checkbox value='4'>\n\t\t\t\t\t\t4\n\t\t\t\t\t</Checkbox>\n\t\t\t\t\t<Checkbox value='5'>\n\t\t\t\t\t\t5\n\t\t\t\t\t</Checkbox>\n\t\t\t\t</CheckboxGroup>\n\t\t\t\t<CheckboxGroup disabled value={this.state.value2}>\n\t\t\t\t\t<Checkbox value='1'>\n\t\t\t\t\t\t1\n\t\t\t\t\t</Checkbox>\n\t\t\t\t\t<Checkbox value='2'>\n\t\t\t\t\t\t2\n\t\t\t\t\t</Checkbox>\n\t\t\t\t\t<Checkbox value='3'>\n\t\t\t\t\t\t3\n\t\t\t\t\t</Checkbox>\n\t\t\t\t\t<Checkbox value='4'>\n\t\t\t\t\t\t4\n\t\t\t\t\t</Checkbox>\n\t\t\t\t\t<Checkbox value='5'>\n\t\t\t\t\t\t5\n\t\t\t\t\t</Checkbox>\n\t\t\t\t</CheckboxGroup>\n\t\t\t</div>\n\t\t)\n\t}\n}\n", "desc": " `value` 参数设置默认值，`onChange`设置值改变的回调，`disabled`设置是否可用" }, { "example": _react2['default'].createElement(Demo5, null), "title": " CheckboxGroup在form中使用", "code": "/**\n * @title CheckboxGroup在form中使用\n * @description `value` 参数设置默认值，`onChange`设置值改变的回调。\n */\n\nimport React, { Component } from 'react';\nimport { Checkbox, Button, Form } from 'tinper-bee';\n\n\nconst CheckboxGroup = Checkbox.CheckboxGroup;\n\nclass Demo4 extends Component {\n\tconstructor(props) {\n\t\tsuper(props);\n\t\tthis.state = {\n\t\t\tvalue:['3','4']\n\t\t}\n\t}\n\tchange=(value)=>{\n\t\tthis.setState({\n\t\t\tvalue\n\t\t})\n\t}\n\tclick=()=>{\n\t\tthis.props.form.validateFields((error,values)=>{\n\t\t\tconsole.log(values)\n\t\t})\n\t}\n\trender () {\n\t\tconst self = this;\n\t\tconst { getFieldProps, getFieldError }  = this.props.form;\n\t\treturn (\n\t\t\t<div className=\"demo-checkbox\">\n\t\t\t\t<CheckboxGroup \n\t\t\t\t\t{\n\t\t\t\t\t\t...getFieldProps('name',{\n\t\t\t\t\t\t\tinitialValue:['2','3'],\n\t\t\t\t\t\t\tonChange:self.change\n\t\t\t\t\t\t})\n\t\t\t\t\t}\n\t\t\t\t>\n\t\t\t\t\t<Checkbox value='1'>\n\t\t\t\t\t\t1\n\t\t\t\t\t</Checkbox>\n\t\t\t\t\t<Checkbox value='2'>\n\t\t\t\t\t\t2\n\t\t\t\t\t</Checkbox>\n\t\t\t\t\t<Checkbox value='3'>\n\t\t\t\t\t\t3\n\t\t\t\t\t</Checkbox>\n\t\t\t\t\t<Checkbox value='4'>\n\t\t\t\t\t\t4\n\t\t\t\t\t</Checkbox>\n\t\t\t\t\t<Checkbox value='5'>\n\t\t\t\t\t\t5\n\t\t\t\t\t</Checkbox>\n\t\t\t\t</CheckboxGroup>\n\t\t\t\t<Button colors=\"secondary\" onClick={this.click}>submit</Button>\n\t\t\t</div>\n\t\t)\n\t}\n}\n", "desc": " `value` 参数设置默认值，`onChange`设置值改变的回调。" }, { "example": _react2['default'].createElement(Demo6, null), "title": " 全选", "code": "/**\n * @title 全选\n * @description `indeterminate` 参数设置部分选中状态。\n */\n\n\nimport React, {Component} from 'react';\nimport { Checkbox } from 'tinper-bee';\n\nconst CheckboxGroup = Checkbox.CheckboxGroup;\n\nconst plainOptions = ['1','2','3','4','5'];\nconst defaultCheckedList = ['2','3'];\n\nclass Demo7 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            checkedList: defaultCheckedList,\n            indeterminate: true,\n            checkAll: false\n        }\n        this.onChange = this.onChange.bind(this);\n    }\n\n    onCheckAllChange = (e) => {\n        console.log(e);\n        this.setState({\n          checkedList: e ? plainOptions : [],\n          indeterminate: false,\n          checkAll: e,\n        });\n    }\n\n    onChange(checkedList) {\n        console.log(checkedList)\n        this.setState({\n            checkedList: checkedList,\n            indeterminate: !!checkedList.length && (checkedList.length < plainOptions.length),\n            checkAll: checkedList.length === plainOptions.length\n        });\n    }\n\n    render() {\n        return (\n            <div className=\"demo-checkbox\">\n                <Checkbox\n                    ref=\"test\"\n                    indeterminate={this.state.indeterminate}\n                    onChange={this.onCheckAllChange}\n                    checked={this.state.checkAll}>\n                    全选\n                </Checkbox>\n                <br/>\n                <CheckboxGroup value={this.state.checkedList} onChange={this.onChange}>\n                    <Checkbox value='1'>1</Checkbox>\n                    <Checkbox value='2'>2</Checkbox>\n                    <Checkbox value='3'>3</Checkbox>\n                    <Checkbox value='4'>4</Checkbox>\n                    <Checkbox value='5'>5</Checkbox>\n                </CheckboxGroup>\n            </div>\n        )\n    }\n}\n\n", "desc": " `indeterminate` 参数设置部分选中状态。" }, { "example": _react2['default'].createElement(Demo7, null), "title": " 红色填充的 Checkbox", "code": "/**\n * @title 红色填充的 Checkbox\n * @description `inverse` 参数设置选中为红色填充。\n */\n\n\nimport React, {Component} from 'react';\nimport { Checkbox } from 'tinper-bee';\n\nclass Demo7 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            checkedFlag: false\n        }\n        this.onChange = this.onChange.bind(this);\n    }\n\n    onChange(e) {\n        console.log(e);\n        this.setState({checkedFlag: e});\n    }\n\n    render() {\n        return (\n            <div className=\"demo-checkbox\">\n                <Checkbox\n                    inverse\n                    ref=\"test\"\n                    checked={this.state.checkedFlag}\n                    onChange={this.onChange}>\n                    全选\n                </Checkbox>\n                <Checkbox\n                    inverse\n                    ref=\"test\"\n                    indeterminate>\n                    半选\n                </Checkbox>\n            </div>\n        )\n    }\n}\n\n", "desc": " `inverse` 参数设置选中为红色填充。" }];
 	
 	var Demo = function (_Component) {
 	    _inherits(Demo, _Component);
@@ -121,7 +121,7 @@
 	        );
 	        return _react2['default'].createElement(
 	            _beeLayout.Col,
-	            { md: 12 },
+	            { md: 12, id: title.trim() },
 	            _react2['default'].createElement(
 	                'h3',
 	                null,
@@ -7967,7 +7967,7 @@
 	        };
 	
 	        _this.state = {
-	            checkedFlag: false
+	            checkedFlag: true
 	        };
 	        _this.onChange = _this.onChange.bind(_this);
 	        return _this;
@@ -7996,15 +7996,7 @@
 	                { ref: 'test',
 	                    checked: this.state.checkedFlag,
 	                    onChange: this.onChange },
-	                '\u5168\u9009'
-	            ),
-	            _react2['default'].createElement(
-	                _src2['default'],
-	                {
-	                    ref: 'test',
-	                    indeterminate: true,
-	                    onChange: this.onChange },
-	                '\u534A\u9009'
+	                'Checkbox'
 	            )
 	        );
 	    };
@@ -18064,15 +18056,138 @@
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); } /**
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @title 全选
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @description `indeterminate` 参数设置部分选中状态。
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
+	
+	var CheckboxGroup = _src2['default'].CheckboxGroup;
+	
+	var plainOptions = ['1', '2', '3', '4', '5'];
+	var defaultCheckedList = ['2', '3'];
+	
+	var Demo7 = function (_Component) {
+	    _inherits(Demo7, _Component);
+	
+	    function Demo7(props) {
+	        _classCallCheck(this, Demo7);
+	
+	        var _this = _possibleConstructorReturn(this, _Component.call(this, props));
+	
+	        _this.onCheckAllChange = function (e) {
+	            console.log(e);
+	            _this.setState({
+	                checkedList: e ? plainOptions : [],
+	                indeterminate: false,
+	                checkAll: e
+	            });
+	        };
+	
+	        _this.state = {
+	            checkedList: defaultCheckedList,
+	            indeterminate: true,
+	            checkAll: false
+	        };
+	        _this.onChange = _this.onChange.bind(_this);
+	        return _this;
+	    }
+	
+	    Demo7.prototype.onChange = function onChange(checkedList) {
+	        console.log(checkedList);
+	        this.setState({
+	            checkedList: checkedList,
+	            indeterminate: !!checkedList.length && checkedList.length < plainOptions.length,
+	            checkAll: checkedList.length === plainOptions.length
+	        });
+	    };
+	
+	    Demo7.prototype.render = function render() {
+	        return _react2['default'].createElement(
+	            'div',
+	            { className: 'demo-checkbox' },
+	            _react2['default'].createElement(
+	                _src2['default'],
+	                {
+	                    ref: 'test',
+	                    indeterminate: this.state.indeterminate,
+	                    onChange: this.onCheckAllChange,
+	                    checked: this.state.checkAll },
+	                '\u5168\u9009'
+	            ),
+	            _react2['default'].createElement('br', null),
+	            _react2['default'].createElement(
+	                CheckboxGroup,
+	                { value: this.state.checkedList, onChange: this.onChange },
+	                _react2['default'].createElement(
+	                    _src2['default'],
+	                    { value: '1' },
+	                    '1'
+	                ),
+	                _react2['default'].createElement(
+	                    _src2['default'],
+	                    { value: '2' },
+	                    '2'
+	                ),
+	                _react2['default'].createElement(
+	                    _src2['default'],
+	                    { value: '3' },
+	                    '3'
+	                ),
+	                _react2['default'].createElement(
+	                    _src2['default'],
+	                    { value: '4' },
+	                    '4'
+	                ),
+	                _react2['default'].createElement(
+	                    _src2['default'],
+	                    { value: '5' },
+	                    '5'
+	                )
+	            )
+	        );
+	    };
+	
+	    return Demo7;
+	}(_react.Component);
+	
+	exports['default'] = Demo7;
+	module.exports = exports['default'];
+
+/***/ }),
+/* 261 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _react = __webpack_require__(4);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _src = __webpack_require__(85);
+	
+	var _src2 = _interopRequireDefault(_src);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	
+	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); } /**
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @title 红色填充的 Checkbox
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @description `inverse` 参数设置选中为红色填充。
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
 	
-	var Demo6 = function (_Component) {
-	    _inherits(Demo6, _Component);
+	var Demo7 = function (_Component) {
+	    _inherits(Demo7, _Component);
 	
-	    function Demo6(props) {
-	        _classCallCheck(this, Demo6);
+	    function Demo7(props) {
+	        _classCallCheck(this, Demo7);
 	
 	        var _this = _possibleConstructorReturn(this, _Component.call(this, props));
 	
@@ -18083,12 +18198,12 @@
 	        return _this;
 	    }
 	
-	    Demo6.prototype.onChange = function onChange(e) {
+	    Demo7.prototype.onChange = function onChange(e) {
 	        console.log(e);
 	        this.setState({ checkedFlag: e });
 	    };
 	
-	    Demo6.prototype.render = function render() {
+	    Demo7.prototype.render = function render() {
 	        return _react2['default'].createElement(
 	            'div',
 	            { className: 'demo-checkbox' },
@@ -18106,17 +18221,16 @@
 	                {
 	                    inverse: true,
 	                    ref: 'test',
-	                    indeterminate: true,
-	                    onChange: this.onChange },
+	                    indeterminate: true },
 	                '\u534A\u9009'
 	            )
 	        );
 	    };
 	
-	    return Demo6;
+	    return Demo7;
 	}(_react.Component);
 	
-	exports['default'] = Demo6;
+	exports['default'] = Demo7;
 	module.exports = exports['default'];
 
 /***/ })

@@ -44,7 +44,7 @@ const Demo4 = Form.createForm()(class Demo extends Component {
             <div>
                 <Form className='demo4'>
                     <FormItem>
-                        <Label>姓名：</Label>
+                        <Label>姓名</Label>
                         <FormControl placeholder="请输入姓名"
                             {...getFieldProps('name', {
                                 validateTrigger: 'onBlur',
@@ -58,7 +58,7 @@ const Demo4 = Form.createForm()(class Demo extends Component {
                         </span>
                     </FormItem>
                     <FormItem>
-                        <Label>身份证号：</Label>
+                        <Label>身份证号</Label>
                         <FormControl placeholder="请输入身份证号"
                             {...getFieldProps('id', {
                                 validateTrigger: 'onBlur',
@@ -72,7 +72,7 @@ const Demo4 = Form.createForm()(class Demo extends Component {
                         </span>
                     </FormItem>
                     <FormItem className='time'>
-                        <Label>出生日期：</Label>
+                        <Label>出生日期</Label>
                         <DatePicker
                             {
                             ...getFieldProps('time', {
@@ -83,7 +83,7 @@ const Demo4 = Form.createForm()(class Demo extends Component {
                         />
                     </FormItem>
                     <FormItem>
-                        <Label>年龄：</Label>
+                        <Label>年龄</Label>
                         <FormControl placeholder="请输入年龄"
                             {...getFieldProps('age', {
                                 validateTrigger: 'onBlur',
@@ -97,7 +97,7 @@ const Demo4 = Form.createForm()(class Demo extends Component {
                         </span>
                     </FormItem>
                      <FormItem>
-                        <Label>性别：</Label>
+                        <Label>性别</Label>
                         <Radio.RadioGroup
                             selectedValue={this.state.selectedValue}
                             {
@@ -115,7 +115,7 @@ const Demo4 = Form.createForm()(class Demo extends Component {
                         </Radio.RadioGroup>
                     </FormItem>
                     <FormItem>
-                        <Label>学历：</Label>
+                        <Label>学历</Label>
                         <Select
                             {
                             ...getFieldProps('education', {
@@ -135,7 +135,7 @@ const Demo4 = Form.createForm()(class Demo extends Component {
                         </Select>
                     </FormItem>
                     <FormItem>
-                        <Label>保密等级：</Label>
+                        <Label>保密等级</Label>
                         <Rate
                             {
                             ...getFieldProps('rate', {
@@ -146,7 +146,7 @@ const Demo4 = Form.createForm()(class Demo extends Component {
                         />
                     </FormItem>
                     <FormItem >
-                        <Label>备注：</Label>
+                        <Label>备注</Label>
                         <FormControl componentClass='textarea'
                             {
                             ...getFieldProps('remark', {}

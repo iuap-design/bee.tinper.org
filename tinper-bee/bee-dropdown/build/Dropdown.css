@@ -38,6 +38,7 @@
         overflow: hidden;
         text-overflow: ellipsis; }
         .u-dropdown-menu-submenu-title:hover {
+          color: rgb(245, 60, 50);
           background: rgb(235, 236, 240); }
       .u-dropdown-menu-submenu-vertical > .u-dropdown-menu-submenu-title:after {
         transform: rotate(270deg) scale(0.75);
@@ -85,9 +86,11 @@
       font-weight: normal;
       white-space: nowrap; }
       .u-dropdown-menu > .u-dropdown-menu-item:hover, .u-dropdown-menu > .u-dropdown-menu-item-active, .u-dropdown-menu > .u-dropdown-menu-item-selected {
+        color: rgb(245, 60, 50);
         background-color: rgb(235, 236, 240);
         cursor: pointer; }
       .u-dropdown-menu > .u-dropdown-menu-item-selected {
+        background-color: rgb(255, 247, 231);
         position: relative; }
       .u-dropdown-menu > .u-dropdown-menu-item-disabled {
         color: rgb(189,189,189);

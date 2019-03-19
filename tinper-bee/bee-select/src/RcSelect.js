@@ -1196,7 +1196,8 @@ class Select extends React.Component {
         </li>);
       }
       if (isMultipleOrTags(props)) {
-        selectedValueNodes = limitedCountValue.map(singleValue => {
+        selectedValueNodes = limitedCountValue.map((singleValue,index) => {
+          let key = singleValue||index;
           const info = this.getOptionInfoBySingleValue(singleValue);
           let content = info.label;
           const title = info.title || content;
@@ -1217,7 +1218,7 @@ class Select extends React.Component {
               {...UNSELECTABLE_ATTRIBUTE}
               onMouseDown={preventDefaultEvent}
               className={choiceClassName}
-              key={singleValue}
+              key={key}
               title={toTitle(title)}
             >
               <div className={`${prefixCls}-selection-choice-content`}>

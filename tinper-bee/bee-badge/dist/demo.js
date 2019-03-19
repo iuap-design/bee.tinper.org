@@ -76,7 +76,7 @@
 	
 	var CARETUP = _react2['default'].createElement('i', { className: 'uf uf-arrow-up' });
 	
-	var Demo1 = __webpack_require__(84);var Demo2 = __webpack_require__(87);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 基本样式Badge", "code": "/**\r\n * @title 基本样式Badge\r\n * @description `colors`控制背景颜色种类。\r\n */\r\n\r\nimport React, { Component } from 'react';\r\nimport { Badge } from 'tinper-bee';\r\n\r\n class Demo1 extends Component {\r\n\trender () {\r\n\t\treturn (\r\n\t\t\t<Badge colors=\"primary\" >8</Badge>\r\n\t\t)\r\n\t}\r\n}\r\n", "desc": " `colors`控制背景颜色种类。" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 图标Badge", "code": "/**\r\n * @title 图标Badge\r\n * @description 在子元素里自定义内容\r\n */\r\n\r\nimport React, {Component} from 'react';\r\n\nimport { Badge, Icon } from 'tinper-bee';\r\n\r\nclass Demo2 extends Component {\r\n    render() {\r\n        return (\r\n            <div>\r\n                <Badge dataBadge={4} dataBadgePlacement=\"bottom\">\r\n                    <Icon type=\"uf-bell\"/>\r\n                </Badge>\r\n                <Badge dataBadge={4} colors=\"warning\" dataBadgePlacement=\"up\">\r\n                    <Icon type=\"uf-bell\"/>\r\n                </Badge>\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\n", "desc": " 在子元素里自定义内容" }];
+	var Demo1 = __webpack_require__(84);var Demo2 = __webpack_require__(87);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 基本样式Badge", "code": "/**\n * @title 基本样式Badge\n * @description `colors`控制背景颜色种类。\n */\n\nimport React, { Component } from 'react';\nimport { Badge } from 'tinper-bee';\n\n class Demo1 extends Component {\n\trender () {\n\t\treturn (\n\t\t\t<Badge colors=\"primary\" >8</Badge>\n\t\t)\n\t}\n}\n", "desc": " `colors`控制背景颜色种类。" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 图标Badge", "code": "/**\n * @title 图标Badge\n * @description 在子元素里自定义内容\n */\n\nimport React, {Component} from 'react';\nimport { Badge, Icon } from 'tinper-bee';\n\nclass Demo2 extends Component {\n    render() {\n        return (\n            <div>\n                <Badge dataBadge={4} dataBadgePlacement=\"bottom\">\n                    <Icon type=\"uf-bell\"/>\n                </Badge>\n                <Badge dataBadge={4} colors=\"warning\" dataBadgePlacement=\"up\">\n                    <Icon type=\"uf-bell\"/>\n                </Badge>\n            </div>\n        )\n    }\n}\n\n", "desc": " 在子元素里自定义内容" }];
 	
 	var Demo = function (_Component) {
 	    _inherits(Demo, _Component);
@@ -121,7 +121,7 @@
 	        );
 	        return _react2['default'].createElement(
 	            _beeLayout.Col,
-	            { md: 12 },
+	            { md: 12, id: title.trim() },
 	            _react2['default'].createElement(
 	                'h3',
 	                null,
@@ -5582,6 +5582,16 @@
 	  var documentWidth = documentElement.scrollWidth;
 	  var documentHeight = documentElement.scrollHeight;
 	
+	  // scrollXXX on html is sync with body which means overflow: hidden on body gets wrong scrollXXX.
+	  // We should cut this ourself.
+	  var bodyStyle = window.getComputedStyle(body);
+	  if (bodyStyle.overflowX === 'hidden') {
+	    documentWidth = win.innerWidth;
+	  }
+	  if (bodyStyle.overflowY === 'hidden') {
+	    documentHeight = win.innerHeight;
+	  }
+	
 	  // Reset element position after calculate the visible area
 	  if (element.style) {
 	    element.style.position = originalPosition;
@@ -7964,7 +7974,9 @@
 	        if (colorsMap[colors]) {
 	            clsObj[clsPrefix + '-' + colorsMap[colors]] = true;
 	        }
-	        //clsObj[`${clsPrefix}-border`] = bordered;
+	        if (bordered) {
+	            clsObj[clsPrefix + '-border'] = bordered;
+	        }
 	        var classes = (0, _classnames2["default"])(clsPrefix, clsObj);
 	        return _react2["default"].createElement(
 	            'button',

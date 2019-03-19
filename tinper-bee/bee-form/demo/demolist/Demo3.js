@@ -42,7 +42,7 @@ const Demo3 = Form.createForm()( class Demo extends Component {
             <div className="demo3">
                 <Form>
                     <FormItem>
-                        <Label>用户名：</Label>
+                        <Label>用户名</Label>
                         <FormControl placeholder="请输入用户名(包含数字和字母，8-15位)"
                             {...getFieldProps('username', {
                                 validateTrigger: 'onBlur',
@@ -59,7 +59,7 @@ const Demo3 = Form.createForm()( class Demo extends Component {
                     </FormItem>
 
                     <FormItem>
-                        <Label>密码：</Label>
+                        <Label>密码</Label>
                         <FormControl placeholder="请输入密码" type='password'
                             {...getFieldProps('password', {
                                 validateTrigger: 'onBlur',
@@ -74,7 +74,7 @@ const Demo3 = Form.createForm()( class Demo extends Component {
                     </FormItem>
 
                     <FormItem>
-                        <Label>再次输入密码：</Label>
+                        <Label>再次输入密码</Label>
                         <FormControl placeholder="请输入密码" type='password'
                             {...getFieldProps('password2', {
                                 validateTrigger: 'onBlur',
@@ -91,7 +91,7 @@ const Demo3 = Form.createForm()( class Demo extends Component {
                     </FormItem>
 
                     <FormItem>
-                        <Label>邮箱：</Label>
+                        <Label>邮箱</Label>
                         <FormControl placeholder="请输入邮箱"
                             {...getFieldProps('email', {
                                 validateTrigger: 'onBlur',
@@ -107,7 +107,7 @@ const Demo3 = Form.createForm()( class Demo extends Component {
                         </span>
                     </FormItem>
                     <FormItem>
-                        <Label>手机号：</Label>
+                        <Label>手机号</Label>
 
                         <FormControl placeholder="请输入手机号"
                             {...getFieldProps('phone', {
@@ -126,15 +126,16 @@ const Demo3 = Form.createForm()( class Demo extends Component {
                     </FormItem>
 
                     <FormItem style={{'paddingLeft':'110px'}}>
-                        <Checkbox colors="info"
+                        <Checkbox
                             defaultChecked={this.state.checkbox}
                             {
                             ...getFieldProps('checkbox', {
                                 initialValue: false,
                             }
                             ) }
-                        />
-                        <span>我已经阅读并同意相关条款</span>
+                        >
+                        我已经阅读并同意相关条款
+                        </Checkbox>
                     </FormItem>
                     <div className='submit'>
                         <Button colors="primary" className="login" onClick={this.submit}>注册</Button>

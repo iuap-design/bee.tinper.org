@@ -28,7 +28,7 @@ const Demo2 = Form.createForm()(class Demo2 extends Component {
             <div className="demo2">
                 <Form >
                     <FormItem>
-                        <Label>用户名：</Label>
+                        <Label>用户名</Label>
                         <FormControl placeholder="请输入用户名"
                             {...getFieldProps('username', {
                                 validateTrigger: 'onBlur',
@@ -42,7 +42,7 @@ const Demo2 = Form.createForm()(class Demo2 extends Component {
                         </span>
                     </FormItem>
                     <FormItem>
-                        <Label>密码：</Label>
+                        <Label>密码</Label>
                         <FormControl placeholder="请输入密码" type='password'
                             {...getFieldProps('password', {
                                 validateTrigger: 'onBlur',
@@ -56,7 +56,7 @@ const Demo2 = Form.createForm()(class Demo2 extends Component {
                         </span>
                     </FormItem>
                     <div className='submit'>
-                        <Button colors="primary" className="login" onClick={this.submit}>登陆</Button>
+                        <Button colors="primary" className="login" onClick={this.submit}>登录</Button>
                         <Button shape="border" className="reset">取消</Button>
                     </div>
                 </Form>

@@ -48,6 +48,7 @@
           overflow: hidden;
           text-overflow: ellipsis;
           &:hover{
+            color: $brand-primary;
             background: $hover-bg-color-base;
           }
         }
@@ -108,11 +109,12 @@
 
 
       &:hover, &-active, &-selected {
+        color: $brand-primary;
         background-color: $hover-bg-color-base;
         cursor: pointer;
       }
-
-      &-selected {
+      &-selected{
+        background-color: $selected-bg-color-base;
         position: relative;
       }
 
