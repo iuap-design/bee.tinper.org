@@ -37,10 +37,6 @@
             "version":"0.1.3",
             "component":"theme"
         },
-        "使用注意": {
-            "version":"0.1.3",
-            "component":"notice"
-        },
         "更新日志": {
             "version":"0.1.3",
             "component":"changelog"
