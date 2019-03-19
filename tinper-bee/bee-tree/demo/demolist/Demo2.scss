@@ -1,0 +1,30 @@
+// .demo2.u-tree {
+//   li a.u-tree-node-content-wrapper:hover::before {
+//     background: rgb(235, 236, 240);
+//   }
+//   li a.u-tree-node-content-wrapper.u-tree-node-selected {
+//     color: rgb(245, 60, 50);
+//     .u-tree-title{
+//         color: rgb(245, 60, 50);
+//     }
+//     background: transparent;
+//     &::before {
+//       background: rgb(235, 236, 240);
+//     }
+//   }
+
+//   li a.u-tree-node-content-wrapper::before {
+//     position: absolute;
+//     right: 0;
+//     left: 0;
+//     height: 20px;
+//     -webkit-transition: all 0.3s;
+//     transition: all 0.3s;
+//     content: "";
+//   }
+
+//   li  span {
+//     position: relative;
+//     z-index: 1;
+//   }
+// }

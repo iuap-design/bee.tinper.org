@@ -1,0 +1,50 @@
+@import "../node_modules/tinper-bee-core/scss/minxin-variables";
+@import "../node_modules/tinper-bee-core/scss/minxin-mixins";
+
+
+.has-error{
+	.u-form-control {
+	    border-color: $error-input-border;
+	    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+	}
+	.u-label {
+		color: $error-input-border;
+	}
+	.u-input-group-addon {
+	    color: $error-input-border;
+	    border-color: $error-input-border;
+	    background-color: $error-addon-bg;
+	}
+} 
+.has-success {
+	.u-form-control {
+	    border-color: $success-input-border;
+	    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+	}
+	.u-label {
+		color: $success-input-border;
+	}
+	.u-input-group-addon {
+	    color: $success-input-border;
+	    border-color: $success-input-border;
+	    background-color: $success-addon-bg;
+	}
+} 
+.has-warning{
+	.u-label{
+		color: $warning-input-border;
+	}
+	.u-form-control {
+	    border-color: $warning-input-border;
+	    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+	}
+	.u-input-group-addon {
+	    color: $warning-input-border;
+	    border-color: $warning-input-border;
+	    background-color: $warning-addon-bg;
+	}
+}
+.u-form-group {
+	margin-bottom: 15px;
+	margin-top: 15px;
+}

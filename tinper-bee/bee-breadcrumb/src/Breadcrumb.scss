@@ -1,0 +1,29 @@
+@import "../node_modules/tinper-bee-core/scss/minxin-variables";
+@import "../node_modules/tinper-bee-core/scss/minxin-mixins";
+
+.u-breadcrumb {
+	padding: 8px 15px;
+    margin-bottom: 20px;
+    list-style: none;
+    background-color: $breadcrumb-bg-color;
+    border-radius: 4px;
+    li {
+    	display: inline-block;
+        color: #212121;
+    }
+    a {
+        color: #212121;
+        text-decoration: none;
+        &:hover {
+            color: $breadcrumb-color;
+        }
+    }
+    .active {
+    	color: $breadcrumb-color;
+    }
+}
+.u-breadcrumb>li+li:before {
+    content: "/\A0";
+    padding: 0 5px;
+    color: $breadcrumb-separate-color;
+}

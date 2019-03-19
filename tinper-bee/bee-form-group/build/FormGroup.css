@@ -1,0 +1,41 @@
+/* FormGroup */
+/*  Navlayout  */
+.has-error .u-form-control {
+  border-color: rgb(244,67,54);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075); }
+
+.has-error .u-label {
+  color: rgb(244,67,54); }
+
+.has-error .u-input-group-addon {
+  color: rgb(244,67,54);
+  border-color: rgb(244,67,54);
+  background-color: rgb(255,205,210); }
+
+.has-success .u-form-control {
+  border-color: rgb(76,175,80);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075); }
+
+.has-success .u-label {
+  color: rgb(76,175,80); }
+
+.has-success .u-input-group-addon {
+  color: rgb(76,175,80);
+  border-color: rgb(76,175,80);
+  background-color: rgb(200,230,201); }
+
+.has-warning .u-label {
+  color: rgb(255,152,0); }
+
+.has-warning .u-form-control {
+  border-color: rgb(255,152,0);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075); }
+
+.has-warning .u-input-group-addon {
+  color: rgb(255,152,0);
+  border-color: rgb(255,152,0);
+  background-color: rgb(255,224,178); }
+
+.u-form-group {
+  margin-bottom: 15px;
+  margin-top: 15px; }

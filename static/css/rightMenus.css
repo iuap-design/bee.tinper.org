@@ -1,0 +1,18 @@
+.right-menus a{
+    line-height: 30px;
+    height: 30px;
+    font-size: 12px;
+    padding: 5px 10px;
+    text-decoration: #424242;
+    color: #424242;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.right-menus a:hover,.right-menus a:active{
+    color: #E14C46;
+}
+.right-menus .rm-child-list{
+    padding-left: 10px;
+}

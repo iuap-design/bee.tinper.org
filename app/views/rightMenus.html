@@ -1,0 +1,16 @@
+<div>
+    <ul class="rm-list">
+        <% for(key in rightMenus) { var item = rightMenus[key]; %>
+            <li class="rm-list-item"> <a href="#<%= key %>" title="<%= key %>"><%= key %></a></li>
+                <% if(item.children){ %>
+                    <ul class="rm-child-list">
+                        <% item.children.forEach(function(it){ %>
+                            <li class="rm-child-item"> 
+                                <a href="#<%= it %>" title="<%= it %>"><%= it %> </a>
+                            </li>
+                        <% }) %>
+                    </ul>
+                <% } %>
+        <% } %>
+    </ul>
+</div>

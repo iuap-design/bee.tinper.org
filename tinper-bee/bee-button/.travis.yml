@@ -1,0 +1,22 @@
+sudo: false
+
+language: node_js
+
+node_js:
+  - "6"
+
+service_name: travis-ci
+repo_token: 60zkEAjMHC1AoOXcOTlcSLJiSopSDUUZU
+
+env:
+  global:
+    - NODE_ENV=travisci
+    - NPM_CONFIG_PROGRESS="false"
+
+before_install:
+  - npm install -g bee-tools
+
+script: npm run test
+
+after_script:
+    - npm run coveralls

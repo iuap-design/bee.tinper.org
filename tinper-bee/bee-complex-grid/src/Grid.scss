@@ -1,0 +1,65 @@
+@import "../node_modules/tinper-bee-core/scss/minxin-variables";
+@import "../node_modules/tinper-bee-core/scss/minxin-mixins";
+@import "../node_modules/bee-form-control/src/FormControl.scss";
+@import "../node_modules/bee-checkbox/src/Checkbox.scss";
+@import "../node_modules/bee-select/src/Select.scss";
+@import "../node_modules/bee-popover/src/Popover.scss";
+@import  "../node_modules/bee-pagination/src/Pagination.scss";
+@import "../node_modules/bee-dropdown/src/Dropdown.scss";
+@import "../node_modules/bee-menus/src/Menu.scss";
+@import "../node_modules/bee-table/src/Table.scss";
+.u-grid{
+    th{
+        .drop-menu{
+            .uf{
+                font-size: 12px;
+                visibility: hidden;
+                margin-left: 15px;
+                cursor: pointer;
+            }
+        }
+        &:hover{
+            .drop-menu{
+                // background: #ccc;
+                .uf{
+                        visibility: visible;
+                }
+            }
+        }
+        ::last-child{
+            overflow: hidden;
+          }
+          
+    }
+    .u-checkbox{
+        margin:0px;
+    }
+    .u-pagination {
+        
+        overflow: hidden;
+        margin-bottom: 8px;
+        .u-pagination-list{
+            margin-left: 0px;
+        }
+        .data_per_select .u-select {
+            width: 60px;
+        }
+        &.center{
+            display: flex;
+            justify-content: center;
+        }
+        &.right{
+            display: flex;
+            justify-content: flex-end;;
+        }
+        
+    } 
+}
+
+.u-table-filter-column-pop-cont-item{
+    .drop-menu{
+        .uf{
+            visibility: hidden;
+        }
+    }
+}

@@ -1,0 +1,63 @@
+@import "../node_modules/tinper-bee-core/scss/minxin-variables";
+@import "../node_modules/tinper-bee-core/scss/minxin-mixins";
+.u-rate-disabled {
+  .u-rate-star:before,
+  .u-rate-star-content:before {
+    cursor: default;
+  }
+  .u-rate-star:hover {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+.u-rate {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: $font-size;
+  display: inline-block;
+  vertical-align: middle;
+  outline: none;
+
+  
+  .u-rate-star {
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    margin-right: $rate-star-marginRight;
+    position: relative;
+    transition: all .3s;
+    color: $rate-star-default-color;
+    cursor: pointer;
+    outline: none;
+    div:focus{
+      outline: none;
+    }
+  }
+  .u-rate-star-first,
+  .u-rate-star-second {
+    transition: all .3s;
+  }
+  .u-rate-star:hover {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+  .u-rate-star-first {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+    opacity: 0;
+  }
+  .u-rate-star-half .u-rate-star-first,
+  .u-rate-star-half .u-rate-star-second {
+    opacity: 1;
+  }
+  .u-rate-star-half .u-rate-star-first,
+  .u-rate-star-full .u-rate-star-second,.u-rate-star-half:hover .u-rate-star-first,
+  .u-rate-star-full:hover .u-rate-star-second {
+    color: $rate-star-active-color;
+  } 
+}

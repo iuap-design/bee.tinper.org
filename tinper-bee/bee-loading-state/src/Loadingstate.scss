@@ -1,0 +1,35 @@
+@import "../node_modules/tinper-bee-core/scss/minxin-variables";
+@import "../node_modules/tinper-bee-core/scss/minxin-mixins";
+@import "../node_modules/bee-button/src/Button.scss";
+@import "../node_modules/bee-loading/src/Loading.scss";
+
+$loadingState-icon-color: #fff;
+
+.u-loading-state{
+    position: relative;
+    & > :not(.u-loading-backdrop){
+        .u-loading.u-loading-rotate > div{
+            // position: absolute;
+            top: 55%;
+            left: 20px;
+            // width: 20px;
+            // height: 20px;
+            // margin: 0;
+            & > .uf{
+                color: $loadingState-icon-color;
+                font-size: 16px;
+            }
+        }
+    }
+    .u-loading-desc {
+        position: absolute;
+        left: 30px;
+        top: 2px;
+        font-size: 16px;
+        color: #000;
+        text-align: center;
+    }
+    &-label{
+        margin-left: 20px;
+    }
+}

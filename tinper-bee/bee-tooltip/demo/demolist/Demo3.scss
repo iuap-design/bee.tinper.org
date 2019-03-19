@@ -1,0 +1,17 @@
+.demo-tooltip{
+  .input{
+    border: 1px solid #a5adba;
+    border-radius: 3px; 
+    &:focus{
+    	border-color: #66afe9;
+	    outline: 0;
+    }
+  }
+  .err{
+    border-color: red;
+    &:focus{
+    	border-color:red;
+	    outline: 0;
+    }
+  }
+} 

@@ -1,6 +1,8 @@
 ## 全键盘操作
 
-## tinper-bee(v1.6.8)快捷键APi
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='red'>tinper-bee 支持快捷键从 V1.6.3 开始就有部分组件支持快捷键，但之前都是零零散散的，目前 V1.6.9的版本是最稳定的版本，支持的快捷键下面将详细描述。(官方建议使用 tinper-bee 请使用 V1.6.9版本) </font>
+
+## tinper-bee(V1.6.9)快捷键规范定义
 
 | 组件名称 | 快捷键 | 快捷键描述 |
 | --- | --- | --- |
@@ -18,7 +20,14 @@
 
 > 部分快捷键需要参考该组件的示例。
 
-## 示例
+## 快捷键示例操作说明
+  1. 【bee-table】 鼠标焦点进入到input中，按tab 切换焦点，进入到table的焦点中，且默认选中第一行，按下 ↓(下箭)  选中下一条、↑(上箭) 选中上一条
+
+  2. 【bee-tree】 按tab 焦点进入到tree示例中，按下 ↑(上箭)、↓(下箭) 上一行、下一行。 ←(左箭)、→(右箭) 收起。
+  
+  3. 【bee-datepicker】 鼠标焦点进入到input中，按tab 切换焦点，当焦点在输入框中，按下 ↓(下箭) 即可 打开日期面板。esc 即可关闭面板
+
+## [示例点击](https://tinper-acs.github.io/ac-keyboard-example/index.html) 
 
 ## 代码演示
 

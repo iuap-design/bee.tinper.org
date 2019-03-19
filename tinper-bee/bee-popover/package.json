@@ -1,0 +1,58 @@
+{
+ "name": "bee-popover",
+ "version": "2.0.0",
+ "description": "popover ui component for react",
+ "keywords": [
+  "react",
+  "react-component",
+  "bee-popover",
+  "iuap-design",
+  "tinper-bee",
+  "popover"
+ ],
+ "engines": {
+  "node": ">=4.0.0"
+ },
+ "homepage": "https://github.com/tinper-beebee-popconfirm.git",
+ "author": "Yonyou FED",
+ "repository": "http://github.com/tinper-bee/bee-popconfirm",
+ "bugs": "https://github.com/tinper-beebee-popconfirm.git/issues",
+ "license": "MIT",
+ "main": "./build/index.js",
+ "config": {
+  "port": 3000,
+  "commitizen": {
+   "path": "./node_modules/cz-conventional-changelog"
+  }
+ },
+ "scripts": {
+  "dev": "bee-tools run start",
+  "build": "bee-tools run build",
+  "lint": "bee-tools-test run lint",
+  "test": "bee-tools-test run test",
+  "chrome": "bee-tools-test run chrome",
+  "coveralls": "bee-tools-test run coverage",
+  "browsers": "bee-tools-test run browsers",
+  "pub": "bee-tools run pub"
+ },
+ "dependencies": {
+  "babel-runtime": "^6.26.0",
+  "bee-overlay": "^1.0.19",
+  "classnames": "^2.2.5",
+  "dom-helpers": "^3.2.1",
+  "tinper-bee-core": "^2.0.14"
+ },
+ "devDependencies": {
+  "bee-button": "^2.0.4",
+  "bee-layout": "^1.2.7",
+  "bee-panel": "^1.0.0",
+  "chai": "^3.5.0",
+  "console-polyfill": "~0.2.1",
+  "cz-conventional-changelog": "^2.1.0",
+  "enzyme": "^2.4.1",
+  "es5-shim": "~4.1.10",
+  "react": "~0.14.0",
+  "react-addons-test-utils": "15.3.2",
+  "react-dom": "~0.14.0"
+ }
+}

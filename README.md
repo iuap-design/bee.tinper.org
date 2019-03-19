@@ -16,11 +16,6 @@ bee组件库文档官网。
 npm run init
 ```
 
-- 更新子模块
-
-```
-npm run update
-```
 
 - 启动服务（要查看文档完整性，个别文档会有不显示和显示错误）
 
@@ -55,7 +50,7 @@ npm run createFile
 - 更新子模块
 
 ```
-npm run update
+npm run init
 ```
 - 验证是否可用
 

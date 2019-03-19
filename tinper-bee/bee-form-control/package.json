@@ -1,0 +1,62 @@
+{
+ "name": "bee-form-control",
+ "version": "2.0.1",
+ "description": "form-control ui component for react",
+ "keywords": [
+  "react",
+  "react-component",
+  "react-form-control",
+  "iuap-design",
+  "neoui-react",
+  "form-control"
+ ],
+ "engines": {
+  "node": ">=4.0.0"
+ },
+ "homepage": "https://github.com/tinper-bee/form-control",
+ "author": "yonyou",
+ "repository": "http://github.com/tinper-bee/form-control",
+ "bugs": "https://github.com/tinper-bee/form-control/issues",
+ "license": "MIT",
+ "main": "./build/index",
+ "config": {
+  "port": 8000,
+  "commitizen": {
+   "path": "./node_modules/cz-conventional-changelog"
+  }
+ },
+ "scripts": {
+  "dev": "bee-tools run start",
+  "build": "bee-tools run build",
+  "lint": "bee-tools run lint",
+  "test": "bee-tools run test",
+  "chrome": "bee-tools run chrome",
+  "browsers": "bee-tools run browsers",
+  "pub": "bee-tools run pub",
+  "coveralls": "bee-tools run coverage"
+ },
+ "dependencies": {
+  "bee-icon": "^1.0.3",
+  "classnames": "^2.2.5",
+  "express": "^4.16.3",
+  "tinper-bee-core": "latest",
+  "warning": "^3.0.0"
+ },
+ "peerDependencies": {
+  "react": "^15.3.0 || ^16.0",
+  "react-dom": "^15.3.0 || ^16.0",
+  "prop-types": "15.6.0"
+ },
+ "devDependencies": {
+  "bee-button": "latest",
+  "bee-form": "latest",
+  "bee-layout": "latest",
+  "bee-panel": "latest",
+  "chai": "^3.5.0",
+  "console-polyfill": "^0.2.3",
+  "cz-conventional-changelog": "^2.1.0",
+  "enzyme": "^2.4.1",
+  "es5-shim": "^4.5.9",
+  "react-addons-test-utils": "15.3.2"
+ }
+}

@@ -1,0 +1,242 @@
+@import "../node_modules/tinper-bee-core/scss/minxin-variables";
+@import "../node_modules/tinper-bee-core/scss/minxin-mixins";
+
+$tooltip-bg: #42526E;
+$tooltip-arrow-color: #42526E;
+.u-tooltip{
+    position: absolute;
+    z-index: 1070;
+    display: block;
+    font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: normal;
+    line-break: auto;
+    line-height: 1.42857143;
+    text-align: left;
+    text-decoration: none;
+    text-shadow: none;
+    text-transform: none;
+    white-space: normal;
+    word-break: normal;
+    word-spacing: normal;
+    word-wrap: normal;
+    font-size: 12px;
+    opacity: 0;
+    &.in{
+    	opacity: $tooltip-opacity !important;
+    }
+    .tooltip-arrow{
+        position: absolute;
+        display: block;
+        width: 0;
+        height: 0;
+        border-color: transparent;
+        border-style: solid;
+    }
+    
+    .tooltip-inner{
+    	max-width: $tooltip-max-width;
+	    padding: 3px 8px;
+	    color: #fff;
+	    background-color: #42526E;
+        border-radius: $border-radius;
+        word-wrap:break-word;
+    }
+    
+    &.right{
+    	padding: 0 5px;
+    	.tooltip-arrow{
+    		top: 50%;
+		    left: 0;
+		    margin-top: -5px;
+		    border-width: 5px 5px 5px 0;
+		    border-right-color: $tooltip-arrow-color;
+    	}
+    }
+    &.top{
+    	padding: 5px 0;
+    	.tooltip-arrow{
+    		bottom: 0;
+		    left: 50%;
+		    margin-left: -5px;
+		    border-width: 5px 5px 0;
+		    border-top-color: $tooltip-arrow-color;
+    	}
+    }
+    &.left{
+    	padding: 0 5px;
+    	.tooltip-arrow{
+    		top: 50%;
+		    right: 0;
+		    margin-top: -5px;
+		    border-width: 5px 0 5px 5px;
+		    border-left-color: $tooltip-arrow-color;
+    	}
+    }
+    &.bottom{
+    	padding: 5px 0;
+    	.tooltip-arrow{
+    		top: 0;
+		    left: 50%;
+		    margin-left: -5px;
+		    border-width: 0 5px 5px;
+		    border-bottom-color: $tooltip-arrow-color;
+        }
+        
+    }
+    &.inverse-arrow.right{
+        .tooltip-arrow{
+            top: 50%;
+            left: auto;
+		    right: 0;
+		    margin-top: -5px;
+		    border-width: 5px 0 5px 5px;
+		    border-left-color: $tooltip-arrow-color;
+        }
+    }
+    &.inverse-arrow.left{
+        .tooltip-arrow{
+            top: 50%;
+		    left: 0;
+		    margin-top: -5px;
+		    border-width: 5px 5px 5px 0;
+		    border-right-color: $tooltip-arrow-color;
+        }
+    }
+    &.inverse-arrow.top{
+        .tooltip-arrow{
+            top: 0;
+		    left: 50%;
+		    margin-left: -5px;
+		    border-width: 0 5px 5px;
+		    border-bottom-color: $tooltip-arrow-color;
+        }
+    }
+    &.inverse-arrow.bottom{
+        .tooltip-arrow{
+            top: auto;
+            bottom: 0;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px 5px 0;
+            border-top-color: $tooltip-arrow-color;
+        }
+    }
+    // &.inverse-arrow.inverse{
+    //     .tooltip-arrow:after{
+    //         border-color:#fff;
+    //     }
+    // }
+    &.inverse.bottom {
+        .tooltip-arrow::after{
+            top:1px;
+            margin-left: -5px;
+            border-top-width:0;
+            border-bottom-color:#fff;
+        }
+        .tooltip-arrow {
+            border-bottom-color:$border-color-base;
+        }
+    }
+     &.inverse-arrow.inverse.top {
+        .tooltip-arrow::after{
+            top:1px;
+            margin-left: -5px;
+            border-top-width:0;
+            border-bottom-color:#fff;
+            border-bottom-width: inherit;
+        }
+        .tooltip-arrow {
+            border-bottom-color:$border-color-base;
+        }
+    }
+    &.inverse.left {
+        .tooltip-arrow::after{
+            border-right-width: 0;
+            top: -5px;
+            margin-left: -6px;
+            border-left-color: #fff;
+        }
+        .tooltip-arrow {
+            border-left-color:$border-color-base;
+        }
+    }
+    &.inverse-arrow.inverse.right{
+        .tooltip-arrow::after{
+            border-right-width: 0;
+            top: -5px;
+            margin-left: -6px;
+            border-left-color: #fff;
+            border-left-width: inherit;
+        }
+        .tooltip-arrow {
+            border-left-color:$border-color-base;
+        }
+    }
+    &.inverse.right{
+        .tooltip-arrow::after{
+            border-left-width: 0;
+            top: -5px;
+            margin-left: 1px;
+            border-right-color: #fff;
+        }
+        .tooltip-arrow {
+            border-right-color:$border-color-base;
+        }
+    }
+    &.inverse-arrow.inverse.left {
+        .tooltip-arrow::after{
+            border-left-width: 0;
+            top: -5px;
+            margin-left: 1px;
+            border-right-color: #fff;
+            border-right-width: inherit;
+        }
+        .tooltip-arrow {
+            border-right-color:$border-color-base;
+        }
+    }
+    &.inverse.top {
+        .tooltip-arrow::after{
+            top: -6px;
+            margin-left: -5px;
+            border-bottom-width: 0;
+            border-bottom-color: #d9d9d9;
+            border-top-color: #fff;
+        }
+        .tooltip-arrow {
+            border-top-color:$border-color-base;
+        }
+    }
+    &.inverse-arrow.inverse.bottom {
+        .tooltip-arrow::after{
+            top: -6px;
+            margin-left: -5px;
+            border-bottom-width: 0;
+            border-bottom-color: #d9d9d9;
+            border-top-color: #fff;
+            border-top-width: inherit;
+        }
+        .tooltip-arrow {
+            border-top-color:$border-color-base;
+        }
+    }
+    &.inverse {
+        .tooltip-inner{
+            background-color: #fff;
+            color: $tooltip-inverse-color;
+            border: 1px solid $border-color-base;
+        }
+
+        .tooltip-arrow::after{
+            position:absolute;
+            display:block;
+            width:0;
+            height:0;
+            border: 5px solid transparent;
+            content:" ";
+        }
+
+    }
+}

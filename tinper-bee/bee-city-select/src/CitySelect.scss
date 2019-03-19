@@ -1,0 +1,15 @@
+@import "../node_modules/tinper-bee-core/scss/minxin-variables";
+@import "../node_modules/tinper-bee-core/scss/minxin-mixins";
+@import "../node_modules/bee-select/src/Select.scss";
+.province , .city{
+	margin-right: 10px;
+	width: 120px;
+}
+.area {
+	width: 120px;
+}
+.u-city-select{
+	.u-select{
+		width: 120px;
+	}
+}

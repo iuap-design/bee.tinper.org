@@ -1,0 +1,11 @@
+.demo4{
+  position: relative;
+  height: 100px;
+  width: 500px;
+  border: 1px solid #0084ff;
+  overflow: hidden;
+  font-size: 14px;
+  .u-loading-backdrop{
+    z-index:1029;
+  }
+}

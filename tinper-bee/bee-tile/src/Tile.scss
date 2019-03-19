@@ -1,0 +1,70 @@
+@import "../node_modules/tinper-bee-core/scss/minxin-variables";
+@import "../node_modules/tinper-bee-core/scss/minxin-mixins";
+
+.u-tile {
+    background: #fff;
+    border-radius: 2px;
+    font-size: 12px;
+    position: relative;
+    overflow: hidden;
+    -webkit-transition: all .3s;
+    transition: all .3s;
+    width: $tile-width;
+    padding: 24px;
+    padding-bottom: 14px;
+
+}
+a.u-tile{
+    display: inline-block;
+    text-decoration: none;
+    color: #757575;
+}
+.u-tile-bordered {
+    border: 1px solid $tile-default-border-color;
+}
+.u-tile:hover {
+    box-shadow: 0 1px 6px $tile-default-hover-shadow-color;
+    border-color: transparent;
+    z-index: 1;
+}
+.u-tile h3,.u-tile h4{
+	line-height:0.2
+}
+.u-tile h1{
+    margin-bottom:0;
+    font-size:48px;
+}
+.u-tile h4{
+    padding-top: 0;
+    margin-top: 0;
+}
+.u-tile-hover-primary {
+    border-color:$tile-primary-border-color;
+}
+.u-tile-hover-primary:hover {
+    box-shadow: 0 1px 6px $tile-primary-hover-shadow-color;
+}
+.u-tile-hover-danger {
+    border-color:$tile-danger-border-color;
+}
+.u-tile-hover-danger:hover {
+    box-shadow: 0 1px 6px $tile-danger-hover-shadow-color;
+}
+.u-tile-hover-warning {
+    border-color:$tile-warning-border-color;
+}
+.u-tile-hover-warning:hover {
+    box-shadow: 0 1px 6px $tile-warning-hover-shadow-color;
+}
+.u-tile-hover-info:hover {
+    box-shadow: 0 1px 6px $tile-info-hover-shadow-color;
+}
+.u-tile-hover-info {
+    border-color:$tile-info-border-color;
+}
+.u-tile-hover-success {
+    border-color:$tile-success-border-color;
+}
+.u-tile-hover-success:hover {
+    box-shadow: 0 1px 6px $tile-success-hover-shadow-color;
+}

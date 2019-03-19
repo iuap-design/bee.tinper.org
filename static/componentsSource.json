@@ -1,0 +1,332 @@
+{
+    "bee-button": {
+        "name": "按钮",
+        "versions": [
+
+        ]
+    },
+    "bee-icon": {
+        "name": "图标",
+        "versions": [
+
+        ]
+    },
+    "bee-layout": {
+        "name": "栅格布局",
+        "versions": [
+
+        ]
+    },
+    "bee-dnd": {
+        "name": "拖拽",
+        "versions": [
+
+        ]
+    },
+    "bee-locale": {
+        "name": "多语",
+        "versions": [
+
+        ]
+    },
+    "bee-badge": {
+        "name": "标记",
+        "versions": [
+
+        ]
+    },
+    "bee-button-group": {
+        "name": "按钮组",
+        "versions": [
+
+        ]
+    },
+    "bee-progress-bar": {
+        "name": "进度条",
+        "versions": [
+
+        ]
+    },
+    "bee-loading-state": {
+        "name": "状态按钮",
+        "versions": [
+
+        ]
+    },
+    "bee-panel": {
+        "name": "展示板",
+        "versions": [
+
+        ]
+    },
+    "bee-tile": {
+        "name": "磁铁",
+        "versions": [
+
+        ]
+    },
+    "bee-timeline": {
+        "name": "时间轴",
+        "versions": [
+
+        ]
+    },
+    "bee-carousel": {
+        "name": "轮播图",
+        "versions": [
+
+        ]
+    },
+    "bee-calendar": {
+        "name": "日历",
+        "versions": [
+
+        ]
+    },
+    "bee-table": {
+        "name": "表格",
+        "versions": [
+
+        ]
+    },
+    "bee-complex-grid": {
+        "name": "复杂表格",
+        "versions": [
+
+        ]
+    },
+    "bee-tree": {
+        "name": "树形控件",
+        "versions": [
+
+        ]
+    },
+    "bee-collapse": {
+        "name": "折叠",
+        "versions": [
+
+        ]
+    },
+    "bee-viewer": {
+        "name": "图片查看器",
+        "versions": [
+
+        ]
+    },
+    "bee-breadcrumb": {
+        "name": "面包屑",
+        "versions": [
+
+        ]
+    },
+    "bee-pagination": {
+        "name": "分页",
+        "versions": [
+
+        ]
+    },
+    "bee-tabs": {
+        "name": "标签",
+        "versions": [
+
+        ]
+    },
+    "bee-dropdown": {
+        "name": "",
+        "versions": [
+
+        ]
+    },
+    "bee-navbar": {
+        "name": "下拉按钮",
+        "versions": [
+
+        ]
+    },
+    "bee-menus": {
+        "name": "菜单",
+        "versions": [
+
+        ]
+    },
+    "bee-step": {
+        "name": "步骤条",
+        "versions": [
+
+        ]
+    },
+    "bee-affix": {
+        "name": "固钉",
+        "versions": [
+
+        ]
+    },
+    "bee-backtop": {
+        "name": "回到顶部",
+        "versions": [
+
+        ]
+    },
+    "bee-modal": {
+        "name": "模态框",
+        "versions": [
+
+        ]
+    },
+    "bee-notification": {
+        "name": "通知",
+        "versions": [
+
+        ]
+    },
+    "bee-alert": {
+        "name": "警告提示",
+        "versions": [
+
+        ]
+    },
+    "bee-popconfirm": {
+        "name": "气泡弹窗",
+        "versions": [
+
+        ]
+    },
+    "bee-message": {
+        "name": "消息提醒",
+        "versions": [
+
+        ]
+    },
+    "bee-tooltip": {
+        "name": "文字提示",
+        "versions": [
+
+        ]
+    },
+    "bee-loading": {
+        "name": "加载提示",
+        "versions": [
+
+        ]
+    },
+    "bee-popover": {
+        "name": "气泡卡片",
+        "versions": [
+
+        ]
+    },
+    "bee-form": {
+        "name": "表单",
+        "versions": [
+
+        ]
+    },
+    "bee-radio": {
+        "name": "单选",
+        "versions": [
+
+        ]
+    },
+    "bee-checkbox": {
+        "name": "多选",
+        "versions": [
+
+        ]
+    },
+    "bee-form-control": {
+        "name": "输入框",
+        "versions": [
+
+        ]
+    },
+    "bee-input-group": {
+        "name": "输入框组",
+        "versions": [
+
+        ]
+    },
+    "bee-form-group": {
+        "name": "表单容器",
+        "versions": [
+
+        ]
+    },
+    "bee-switch": {
+        "name": "开关",
+        "versions": [
+
+        ]
+    },
+    "bee-select": {
+        "name": "下拉菜单",
+        "versions": [
+
+        ]
+    },
+    "bee-cascader": {
+        "name": "级联菜单",
+        "versions": [
+
+        ]
+    },
+    "bee-city-select": {
+        "name": "城市选择",
+        "versions": [
+
+        ]
+    },
+    "bee-upload": {
+        "name": "上传",
+        "versions": [
+
+        ]
+    },
+    "bee-slider": {
+        "name": "滑块",
+        "versions": [
+
+        ]
+    },
+    "bee-transfer": {
+        "name": "穿梭框",
+        "versions": [
+
+        ]
+    },
+    "bee-input-number": {
+        "name": "数字框",
+        "versions": [
+
+        ]
+    },
+    "bee-timepicker": {
+        "name": "时间",
+        "versions": [
+
+        ]
+    },
+    "bee-datepicker": {
+        "name": "日期",
+        "versions": [
+
+        ]
+    },
+    "bee-rate": {
+        "name": "评分",
+        "versions": [
+
+        ]
+    },
+    "bee-clipboard": {
+        "name": "剪贴板",
+        "versions": [
+
+        ]
+    },
+    "bee-autocomplete": {
+        "name": "自动完成",
+        "versions": [
+
+        ]
+    }
+}

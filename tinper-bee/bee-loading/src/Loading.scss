@@ -1,0 +1,224 @@
+@import "../node_modules/tinper-bee-core/scss/minxin-variables";
+@import "../node_modules/tinper-bee-core/scss/minxin-mixins";
+
+
+$loading-icon-color: #0084ff;
+
+/**
+  * 加载背景
+  */
+//.u-loading-back{
+//  position:relative;
+//  text-align: center;
+//  width:$loading-back-width;
+//  height:$loading-back-height;
+//  margin:0 auto;
+//  &.light{
+//    background: #fff;
+//  }
+//  &.dark{
+//    background: #000;
+//  }
+//}
+/**
+  * 文字
+  */
+.u-loading-desc {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  font-size: $loading-desc-font-size;
+  color: #000;
+  text-align: center;
+}
+
+
+/**
+  * default样式 单个圆圈加载
+  */
+
+.u-loading {
+  &.u-loading-rotate {
+    & > div {
+      position: absolute;
+      border-radius: 100%;
+      margin: 2px;
+      -webkit-animation-fill-mode: both;
+      animation-fill-mode: both;
+      // border: 2px solid #0084ff;
+      // border-bottom-color: transparent;
+      width: $loading-rotate-size;
+      height: $loading-rotate-size;
+      top: $loading-center-top;
+      left: $loading-center-left;
+      margin-left: $loading-rotate-center;
+      margin-top: $loading-rotate-center;
+      background: transparent !important;
+      display: inline-block;
+      -webkit-animation: rotate 1.5s 0s linear infinite;
+      animation: rotate 1.5s 0s linear infinite;
+      text-align: center;
+      line-height: $loading-rotate-size;
+      & > .uf{
+        color: $loading-icon-color;
+        font-size: 40px;
+        padding: 0;
+      }
+    }
+    &.u-loading-rotate-lg {
+      & > div {
+        margin-left: $loading-rotate-center-lg;
+        margin-top: $loading-rotate-center-lg;
+        width: $loading-rotate-lg-size;
+        height: $loading-rotate-lg-size;
+        line-height: $loading-rotate-lg-size;
+        & > .uf{
+          font-size: 60px;
+        }
+      }
+    }
+    &.u-loading-rotate-sm {
+      & > div {
+        margin-left:$loading-rotate-center-sm;
+        margin-top: $loading-rotate-center-sm;
+        width: $loading-rotate-sm-size;
+        height:$loading-rotate-sm-size;
+        line-height: $loading-rotate-sm-size;
+        & > .uf{
+          font-size: 25px;
+        }
+      }
+    }
+    &.u-loading-rotate-primary {
+      & > div > .uf{
+        color: $loading-loadprimary;
+        // border: 2px solid $loading-loadprimary;
+        // border-bottom-color: transparent;
+      }
+    }
+    &.u-loading-rotate-success {
+      & > div > .uf{
+        color: $loading-loadsuccess;
+        // border: 2px solid $loading-loadsuccess;
+        // border-bottom-color: transparent;
+      }
+    }
+    &.u-loading-rotate-warning {
+      & > div > .uf{
+        color: $loading-loadwarn;
+        // border: 2px solid $loading-loadwarn;
+        // border-bottom-color: transparent;
+      }
+    }
+  }
+
+}
+
+.u-loading-backdrop{
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1900;
+  opacity: .7;
+  filter: blur(.5px);
+  background-color: #fff;
+  &.full-screen{
+    position: fixed;
+  }
+}
+
+@keyframes rotate {
+  0% {
+    -webkit-transform: rotate(0deg) scale(1);
+    transform: rotate(0deg) scale(1);
+  }
+
+  50% {
+    -webkit-transform: rotate(180deg) scale(1);
+    transform: rotate(180deg) scale(1);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg) scale(1);
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+.u-loading {
+  &.u-loading-line {
+    position: absolute;
+    top:$loading-center-top;
+    left: $loading-center-left;
+    margin-top: $loading-line-center-top;
+    margin-left: $loading-line-center-left;
+    & > div {
+      background-color: #C2C3C5;
+      width: $loading-line-width;
+      height: $loading-line-height;
+      border-radius: 2px;
+      margin: 2px;
+      -webkit-animation-fill-mode: both;
+      animation-fill-mode: both;
+      display: inline-block;
+    }
+    &.u-loading-line-lg {
+      margin-top: $loading-line-center-lg-top;
+      margin-left: $loading-line-center-lg-left;
+      & > div {
+        width: $loading-line-lg-width;
+        height: $loading-line-lg-height;
+      }
+    }
+    &.u-loading-line-sm {
+      margin-top: $loading-line-center-sm-top;
+      margin-left: $loading-line-center-sm-left;
+      & > div {
+        width:$loading-line-sm-width;
+        height: $loading-line-sm-height;
+      }
+    }
+    @each $index, $anima in $loading-lineanimating {
+      div:nth-child( #{$index}  ) {
+        -webkit-animation: $anima;
+        animation: $anima;
+        background-color: map_get($loading-linebackcolor, $index);
+      }
+    }
+
+    &.u-loading-line-primary {
+      & > div {
+        background-color: $loading-loadprimary;
+      }
+    }
+    &.u-loading-line-success {
+      & > div {
+        background-color: $loading-loadsuccess;
+      }
+    }
+    &.u-loading-line-warning {
+      & > div {
+        background-color: $loading-loadwarn;
+      }
+    }
+  }
+}
+@keyframes line-scale {
+  0% {
+    -webkit-transform: scaley(1);
+    transform: scaley(1);
+  }
+
+  50% {
+    -webkit-transform: scaley(0.4);
+    transform: scaley(0.4);
+  }
+
+  100% {
+    -webkit-transform: scaley(1);
+    transform: scaley(1);
+
+  }
+}

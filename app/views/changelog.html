@@ -1,0 +1,15 @@
+<ul class="u-timeline">
+    <% changeLog.forEach(function(item){ %>
+        <li class="u-timeline-item">
+            <div class="u-timeline-item-tail"></div>
+            <div class="u-timeline-item-head u-timeline-item-head-danger"></div>
+            <div class="u-timeline-item-content">
+                <p><%= item.tag_name %> 
+                    <span class="time"> <%= item.published_at %></span>
+                    (<a href="<%= item.html_url %>" target="_blank">release地址</a>)
+                </p>
+                <pre><%- item.body %></pre>
+            </div>
+        </li>
+    <% }) %>
+</ul>

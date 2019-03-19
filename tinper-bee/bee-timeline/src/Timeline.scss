@@ -1,0 +1,110 @@
+@import "../node_modules/tinper-bee-core/scss/minxin-variables";
+@import "../node_modules/tinper-bee-core/scss/minxin-mixins";
+
+
+$timeline-color: #e9e9e9;
+$font-size-base: 12px;
+$primary-color : #108ee9;
+$error-color : #f04134;
+$component-background: #fff;
+$success-color : #00a854;
+$timeline-color : #e9e9e9;
+$timeline-prefix-cls : 'u-timeline';
+
+.#{$timeline-prefix-cls} {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  a {
+    color: #108ee9;
+    background: transparent;
+    text-decoration: none;
+    outline: none;
+    cursor: pointer;
+    &:hover {
+      color: #49a9ee;
+    }
+  }
+  &-item {
+    position: relative;
+    padding: 0 0 12px 0;
+    list-style: none;
+    margin: 0;
+
+    &-tail {
+      position: absolute;
+      left: 5px;
+      top: 0;
+      height: 100%;
+      border-left: 2px solid $timeline-color;
+    }
+
+    &-pending &-tail {
+      display: none;
+    }
+
+    &-head {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      background-color: $component-background;
+      border-radius: 100px;
+      border: 2px solid transparent;
+
+      &-primary {
+        @include timeline-styles-variant($timeline-primary-color);
+      }
+      &-news {
+        @include timeline-styles-variant($timeline-news-color);
+      }
+      &-danger {
+        @include timeline-styles-variant($timeline-danger-color);
+      }
+      &-success {
+        @include timeline-styles-variant($timeline-success-color);
+      }
+      &-warning {
+        @include timeline-styles-variant($timeline-warning-color);
+      }
+      &-info {
+        @include timeline-styles-variant($timeline-info-color);
+      }
+    }
+
+    &-head-custom {
+      position: absolute;
+      text-align: center;
+      width: 40px;
+      left: -14px;
+      line-height: 1;
+      margin-top: 6px;
+      border: 0;
+      height: auto;
+      border-radius: 0;
+      padding: 3px 0;
+      font-size: $font-size-base;
+      transform: translateY(-50%);
+    }
+
+    &-content {
+      padding: 0 0 10px 24px;
+      font-size: $font-size-base;
+      position: relative;
+      top: -3px;
+    }
+
+    &-last {
+      .#{$timeline-prefix-cls}-item-tail {
+        border-left: 2px dotted $timeline-color;
+        display: none;
+      }
+      .#{$timeline-prefix-cls}-item-content {
+        min-height: 48px;
+      }
+    }
+  }
+
+  &-pending &-item-last &-item-tail {
+    display: block;
+  }
+}

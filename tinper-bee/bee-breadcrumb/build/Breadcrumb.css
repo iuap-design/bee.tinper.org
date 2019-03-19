@@ -1,0 +1,23 @@
+/* FormGroup */
+/*  Navlayout  */
+.u-breadcrumb {
+  padding: 8px 15px;
+  margin-bottom: 20px;
+  list-style: none;
+  background-color: #f5f5f5;
+  border-radius: 4px; }
+  .u-breadcrumb li {
+    display: inline-block;
+    color: #212121; }
+  .u-breadcrumb a {
+    color: #212121;
+    text-decoration: none; }
+    .u-breadcrumb a:hover {
+      color: rgb(245, 60, 50); }
+  .u-breadcrumb .active {
+    color: rgb(245, 60, 50); }
+
+.u-breadcrumb > li + li:before {
+  content: "/\A0";
+  padding: 0 5px;
+  color: #ccc; }

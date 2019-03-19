@@ -1,0 +1,89 @@
+/* FormGroup */
+/*  Navlayout  */
+.u-alert-dismissable, .alert-dismissible {
+  padding-right: 35px; }
+
+.u-alert {
+  position: relative;
+  padding: 10px;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  font-size: 12px; }
+  .u-alert .close {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    font-size: 21px;
+    font-weight: 700;
+    line-height: 1;
+    color: #000;
+    text-shadow: 0 1px 0 #fff;
+    opacity: 0.2;
+    filter: alpha(opacity=20);
+    cursor: pointer; }
+
+.u-alert-success.u-alert {
+  background-color: rgb(200,230,201);
+  border-color: rgb(200,230,201);
+  color: rgb(76,175,80); }
+
+.u-alert-news.u-alert {
+  background-color: rgb(187,222,251);
+  border-color: rgb(187,222,251);
+  color: rgb(33,150,243); }
+
+.u-alert-info.u-alert {
+  background-color: rgb(178,235,242);
+  border-color: rgb(178,235,242);
+  color: rgb(0,188,212); }
+
+.u-alert-warning.u-alert {
+  background-color: rgb(255,224,178);
+  border-color: rgb(255,224,178);
+  color: rgb(255,152,0); }
+
+.u-alert-danger.u-alert {
+  background-color: rgb(255,205,210);
+  border-color: rgb(255,205,210);
+  color: rgb(244,67,54); }
+
+.dark.u-alert-success.u-alert {
+  background-color: rgb(76,175,80);
+  border-color: rgb(76,175,80);
+  color: rgb(255,255,255); }
+
+.dark.u-alert-news.u-alert {
+  background-color: rgb(33,150,243);
+  border-color: rgb(33,150,243);
+  color: rgb(255,255,255); }
+
+.dark.u-alert-info.u-alert {
+  background-color: rgb(0,188,212);
+  border-color: rgb(0,188,212);
+  color: rgb(255,255,255); }
+
+.dark.u-alert-warning.u-alert {
+  background-color: rgb(255,152,0);
+  border-color: rgb(255,152,0);
+  color: rgb(255,255,255); }
+
+.dark.u-alert-danger.u-alert {
+  background-color: rgb(244,67,54);
+  border-color: rgb(244,67,54);
+  color: rgb(255,255,255); }
+
+.u-alert-dismissable .close, .u-alert-dismissible .close {
+  position: relative;
+  top: -2px;
+  right: -21px;
+  color: inherit; }
+
+.demo1-alert {
+  margin-bottom: 20px; }
+  .demo1-alert .alert-text {
+    padding: 0 15px; }
+
+.demo2-alert {
+  margin: 20px 0; }
+
+/*# sourceMappingURL=demo.css.map */

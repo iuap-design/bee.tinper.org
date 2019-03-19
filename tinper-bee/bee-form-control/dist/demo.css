@@ -1,0 +1,132 @@
+/* FormGroup */
+/*  Navlayout  */
+.u-form-control {
+  position: relative;
+  display: inline-block;
+  padding: 0 12px;
+  width: 100%;
+  height: 32px;
+  cursor: text;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #424242;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid rgb(165, 173, 186);
+  border-radius: 3px;
+  transition: all .3s; }
+  .u-form-control:focus {
+    border-color: #66afe9;
+    outline: 0; }
+  .u-form-control::-ms-clear, .u-form-control ::-ms-reveal {
+    display: none; }
+
+.u-form-control[disabled] {
+  background: #F7F9FB;
+  border-color: #DFE1E6;
+  color: #909090;
+  cursor: not-allowed; }
+
+.u-form-control.lg {
+  height: 40px;
+  font-size: 14px; }
+
+.u-form-control.sm {
+  font-size: 12px;
+  height: 26px; }
+
+.u-form-control-search-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 28px;
+  padding: 4px;
+  width: 100%; }
+  .u-form-control-search-wrapper .u-form-control-search-action {
+    color: #ccc;
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+    font-size: 14px;
+    text-decoration: none; }
+    .u-form-control-search-wrapper .u-form-control-search-action .uf {
+      transition: all .3s;
+      font-size: 12px;
+      color: #ccc; }
+      .u-form-control-search-wrapper .u-form-control-search-action .uf.uf-search:before {
+        content: "\e603"; }
+
+.u-form-control-affix-wrapper {
+  position: relative;
+  display: inline-block;
+  width: 100%; }
+  .u-form-control-affix-wrapper .u-form-control-prefix, .u-form-control-affix-wrapper .u-form-control-suffix {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    line-height: 0;
+    right: 7px;
+    color: rgba(0, 0, 0, 0.65); }
+
+.demo1 {
+  padding-bottom: 20px;
+  display: block; }
+  .demo1 .demo1-input {
+    margin-top: 10px;
+    width: 200px;
+    display: block; }
+
+.demo2 {
+  padding-bottom: 20px;
+  display: block; }
+  .demo2 .demo2-input {
+    margin-top: 10px;
+    width: 200px;
+    display: block; }
+
+.demo3 {
+  padding-bottom: 20px;
+  display: block; }
+  .demo3 .demo3-input {
+    margin-top: 10px;
+    width: 200px;
+    display: block; }
+
+.demo4 {
+  padding-bottom: 20px;
+  display: block; }
+  .demo4 .demo4-input {
+    margin-top: 10px;
+    width: 200px;
+    display: block; }
+
+.demo5 {
+  padding-bottom: 20px;
+  display: block; }
+  .demo5 .demo5-input {
+    margin-top: 10px;
+    width: 200px;
+    display: block; }
+
+.demo6 {
+  padding-bottom: 20px;
+  display: block; }
+  .demo6 .demo6-input {
+    margin-top: 10px;
+    width: 200px;
+    display: block; }
+
+.demo8 {
+  padding-bottom: 20px;
+  display: block; }
+  .demo8 .demo8-input {
+    margin-top: 10px;
+    width: 200px;
+    display: block; }
+
+/*# sourceMappingURL=demo.css.map */

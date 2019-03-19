@@ -1,0 +1,59 @@
+{
+ "name": "bee-radio",
+ "version": "2.0.3",
+ "description": "radio ui component for react",
+ "keywords": [
+  "react",
+  "react-component",
+  "react-radio-group",
+  "iuap-design",
+  "neoui-react",
+  "radio-group",
+  "bee-radio"
+ ],
+ "engines": {
+  "node": ">=4.0.0"
+ },
+ "homepage": "https://github.com/tinper-bee/bee-radio",
+ "author": "",
+ "repository": "http://github.com/tinper-bee/bee-radio",
+ "bugs": "https://github.com/tinper-bee/bee-radio/issues",
+ "license": "MIT",
+ "main": "./build/index",
+ "config": {
+  "port": 8000,
+  "commitizen": {
+   "path": "./node_modules/cz-conventional-changelog"
+  }
+ },
+ "scripts": {
+  "dev": "bee-tools run start",
+  "build": "bee-tools run build",
+  "lint": "bee-tools run lint",
+  "test": "bee-tools run test",
+  "chrome": "bee-tools run chrome",
+  "browsers": "bee-tools run browsers",
+  "pub": "bee-tools run pub",
+  "coveralls": "bee-tools run coverage"
+ },
+ "dependencies": {
+  "classnames": "^2.2.5",
+  "tinper-bee-core": "latest"
+ },
+ "peerDependencies": {
+  "react": "^15.3.0 || ^16.0",
+  "react-dom": "^15.3.0 || ^16.0",
+  "prop-types": "15.6.0"
+ },
+ "devDependencies": {
+  "bee-button": "latest",
+  "bee-layout": "latest",
+  "bee-panel": "latest",
+  "chai": "^3.5.0",
+  "console-polyfill": "~0.2.1",
+  "cz-conventional-changelog": "^2.1.0",
+  "enzyme": "^2.4.1",
+  "es5-shim": "~4.1.10",
+  "react-addons-test-utils": "15.3.2"
+ }
+}

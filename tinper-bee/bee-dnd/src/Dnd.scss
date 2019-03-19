@@ -1,0 +1,73 @@
+@import "../node_modules/tinper-bee-core/scss/minxin-variables";
+@import "../node_modules/tinper-bee-core/scss/minxin-mixins";
+
+// .u-drag-list{
+//   background: $dnd-list-background;
+//   padding: $dnd-list-padding;
+// }
+// .u-list-dragging{
+//   background: $dnd-list-dragging-background;
+// }
+// .u-drag-item{
+//   user-select: none;
+//   padding: $dnd-item-padding;
+//   color: $dnd-item-color;
+//   margin: $dnd-item-margin;
+//   background: $dnd-item-background;
+// }
+// .u-dragging{
+//   background: $dnd-item-dragging-background;
+// }
+
+// drop
+.u-drop{
+  background: $dnd-list-background;
+  padding: $dnd-list-padding;
+}
+
+// dragover
+.u-droping{
+  background: $dnd-list-dragging-background;
+}
+
+.u-drop.u-drop-horizontal{
+  display: flex;
+  width: 100%;
+}
+
+.u-droping-horizontal{
+  
+}
+
+// drag
+.u-drag{
+  user-select: none;
+  padding: $dnd-item-padding;
+  color: $dnd-item-color;
+  margin: $dnd-item-margin;
+  background: $dnd-item-background;
+  min-width: 100px;
+}
+
+// draging
+.u-draging{
+  background: $dnd-item-dragging-background;
+}
+
+// drag 横向
+.u-drag.u-drag-horizontal{
+  display: inline-block;
+}
+
+// draging 横向
+.u-draging-horizontal{
+
+}
+
+// between
+.u-drag-between{
+  display: flex;
+}
+.u-drag-between-horizontal{
+  flex-wrap: wrap;
+}

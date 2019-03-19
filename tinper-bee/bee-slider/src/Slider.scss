@@ -1,0 +1,259 @@
+@import "../node_modules/tinper-bee-core/scss/minxin-variables";
+@import "../node_modules/tinper-bee-core/scss/minxin-mixins";
+@import "../node_modules/bee-tooltip/src/Tooltip.scss";
+.u-slider {
+  position: relative;
+  height: 14px;
+  padding: 5px 0;
+  width: 100%;
+  border-radius: 6px;
+  touch-action: none;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  * {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+  }
+  .u-slider-rail {
+    position: absolute;
+    width: 100%;
+    background-color: #e9e9e9;
+    height: 4px;
+    border-radius: 6px;
+  }
+  .u-slider-track {
+    position: absolute;
+    left: 0;
+    height: 4px;
+    border-radius: 6px;
+    background-color: $brand-primary;
+  }
+  .u-slider-handle {
+    position: absolute;
+    margin-left: -7px;
+    margin-top: -5px;
+    width: 14px;
+    height: 14px;
+    cursor: pointer;
+    cursor: -webkit-grab;
+    cursor: grab;
+    border-radius: 50%;
+    border: solid 2px $brand-primary;
+    background-color: #fff;
+    touch-action: pan-x;
+  }
+  .u-slider-handle:hover {
+    border-color: $brand-primary;
+  }
+  .u-slider-handle:active {
+    border-color: $brand-primary;
+    box-shadow: 0 0 5px $brand-primary;
+    cursor: -webkit-grabbing;
+    cursor: grabbing;
+  }
+  .u-slider-handle:focus {
+    border-color: $brand-primary;
+    box-shadow: 0 0 0 5px $brand-primary;
+    outline: none;
+  }
+  .u-slider-mark {
+    position: absolute;
+    top: 18px;
+    left: 0;
+    width: 100%;
+    font-size: 12px;
+  }
+  .u-slider-mark-text {
+    position: absolute;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+    cursor: pointer;
+    color: #999;
+  }
+  .u-slider-mark-text-active {
+    color: #666;
+  }
+  .u-slider-step {
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    background: transparent;
+  }
+  .u-slider-dot {
+    position: absolute;
+    bottom: -2px;
+    margin-left: -4px;
+    width: 8px;
+    height: 8px;
+    border: 2px solid #e9e9e9;
+    background-color: #fff;
+    cursor: pointer;
+    border-radius: 50%;
+    vertical-align: middle;
+  }
+  .u-slider-dot:first-child {
+    margin-left: -4px;
+  }
+  .u-slider-dot:last-child {
+    margin-left: -4px;
+  }
+  .u-slider-dot-active {
+    border-color: $brand-primary;
+  }
+  .u-slider-disabled {
+    background-color: #e9e9e9;
+  }
+  .u-slider-disabled .u-slider-track {
+    background-color: #ccc;
+  }
+  .u-slider-disabled .u-slider-handle,
+  .u-slider-disabled .u-slider-dot {
+    border-color: #ccc;
+    box-shadow: none;
+    background-color: #fff;
+    cursor: not-allowed;
+  }
+  .u-slider-disabled .u-slider-mark-text,
+  .u-slider-disabled .u-slider-dot {
+    cursor: not-allowed;
+  }
+  &.u-slider-vertical {
+    width: 14px;
+    height: 100%;
+    padding: 0 5px;
+  }
+  &.u-slider-vertical .u-slider-rail {
+    height: 100%;
+    width: 4px;
+  }
+  &.u-slider-vertical .u-slider-track {
+    left: 5px;
+    bottom: 0;
+    width: 4px;
+  }
+  &.u-slider-vertical .u-slider-handle {
+    margin-left: -5px;
+    margin-bottom: -7px;
+    touch-action: pan-y;
+  }
+  &.u-slider-vertical .u-slider-mark {
+    top: 0;
+    left: 18px;
+    height: 100%;
+  }
+  &.u-slider-vertical .u-slider-step {
+    height: 100%;
+    width: 4px;
+  }
+  &.u-slider-vertical .u-slider-dot {
+    left: 2px;
+    margin-bottom: -4px;
+  }
+  &.u-slider-vertical .u-slider-dot:first-child {
+    margin-bottom: -4px;
+  }
+  &.u-slider-vertical .u-slider-dot:last-child {
+    margin-bottom: -4px;
+  }
+  .u-slider-tooltip-zoom-down-enter,
+  .u-slider-tooltip-zoom-down-appear {
+    animation-duration: .3s;
+    animation-fill-mode: both;
+    display: block;
+    animation-play-state: paused;
+  }
+  .u-slider-tooltip-zoom-down-leave {
+    animation-duration: .3s;
+    animation-fill-mode: both;
+    display: block;
+    animation-play-state: paused;
+  }
+  .u-slider-tooltip-zoom-down-enter.u-slider-tooltip-zoom-down-enter-active,
+  .u-slider-tooltip-zoom-down-appear.u-slider-tooltip-zoom-down-appear-active {
+    animation-name: rcSliderTooltipZoomDownIn;
+    animation-play-state: running;
+  }
+  .u-slider-tooltip-zoom-down-leave.u-slider-tooltip-zoom-down-leave-active {
+    animation-name: rcSliderTooltipZoomDownOut;
+    animation-play-state: running;
+  }
+  .u-slider-tooltip-zoom-down-enter,
+  .u-slider-tooltip-zoom-down-appear {
+    transform: scale(0,0);
+    animation-timing-function: cubic-bezier(0.23,1,0.32,1);
+  }
+  .u-slider-tooltip-zoom-down-leave {
+    animation-timing-function: cubic-bezier(0.755,0.05,0.855,0.06);
+  }
+}
+
+.u-slider-tooltip {
+  position: absolute;
+  left: -9999px;
+  top: -9999px;
+  visibility: visible;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  * {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+  }
+  .u-slider-tooltip-hidden {
+    display: none;
+  }
+  .u-slider-tooltip-placement-top {
+    padding: 4px 0 8px 0;
+  }
+  .u-slider-tooltip-inner {
+    padding: 6px 2px;
+    min-width: 24px;
+    height: 24px;
+    font-size: 12px;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    background-color: rgba(#666,4%);
+    border-radius: 6px;
+    box-shadow: 0 0 4px #d9d9d9;
+  }
+  .u-slider-tooltip-arrow {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+  }
+  .u-slider-tooltip-placement-top .u-slider-tooltip-arrow {
+    bottom: 4px;
+    left: 50%;
+    margin-left: -4px;
+    border-width: 4px 4px 0;
+    border-top-color: rgba(#666,4%);
+  }
+  
+}
+
+@keyframes rcSliderTooltipZoomDownIn {
+  0% {
+    opacity: 0;
+    transform-origin: 50% 100%;
+    transform: scale(0,0);
+  }
+  100% {
+    transform-origin: 50% 100%;
+    transform: scale(1,1);
+  }
+}
+@keyframes rcSliderTooltipZoomDownOut {
+  0% {
+    transform-origin: 50% 100%;
+    transform: scale(1,1);
+  }
+  100% {
+    opacity: 0;
+    transform-origin: 50% 100%;
+    transform: scale(0,0);
+  }
+}
