@@ -7,33 +7,13 @@
         "version":"0.1.3",
         "component":"quickStart"
     },
+    "项目实战": {
+        "version":"0.1.3",
+        "component":"project"
+    },
     "参与贡献": {
         "version":"0.1.3",
         "component":"participation"
-    },
-    "兼容性": {
-        "version":"0.1.3",
-        "component":"compatibility"
-    },
-    "全键盘操作": {
-        "version":"0.1.3",
-        "component":"keyboard"
-    },
-    "多端适配": {
-        "version":"0.1.3",
-        "component":"multiport"
-    },
-    "国际化": {
-        "version":"0.1.3",
-        "component":"international"
-    },
-    "定制主题cli": {
-        "version":"0.1.3",
-        "component":"theme-cli"
-    },
-    "可视化主题定制": {
-        "version":"0.1.3",
-        "component":"theme"
     },
     "使用注意": {
         "version":"0.1.3",
@@ -42,6 +22,43 @@
     "更新日志": {
         "version":"0.1.3",
         "component":"changelog"
+    },
+    "关键特性": {
+        "version":"",
+        "component":"",
+        "children":{
+            "": {
+                "浏览器兼容性":{
+                    "version":"",
+                    "component":"compatibility"
+                },
+                "全键盘操作": {
+                    "version":"0.1.3",
+                    "component":"keyboard"
+                },
+                "多端适配": {
+                    "version":"0.1.3",
+                    "component":"multiport"
+                },
+                "国际化": {
+                    "version":"0.1.3",
+                    "component":"international"
+                },
+                "国际化定制主题（CLI方式）": {
+                    "version":"0.1.3",
+                    "component":"theme-cli"
+                },
+                "国际化定制主题（可视化）": {
+                    "version":"0.1.3",
+                    "component":"theme"
+                },
+                "企业级UI交互能力": {
+                    "version":"",
+                    "component":"interact"       
+                }
+            }
+            
+        }
     },
     "组件": {
         "version":"",
