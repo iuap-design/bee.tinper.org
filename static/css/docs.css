@@ -306,3 +306,8 @@ select::-ms-expand {
 .docs .changelog .u-timeline-item-content>pre>ul>li>ul{
     padding-left: 15px;
 }
+
+/* 企业级ui交互能力 */
+.docs .doc-content .interact img{
+    max-width: 100%;
+}
