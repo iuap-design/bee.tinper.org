@@ -57,6 +57,7 @@
   "bee-radio": "latest",
   "bee-rate": "latest",
   "bee-select": "latest",
+  "bee-search-panel": "latest",
   "bee-slider": "latest",
   "bee-switch": "latest",
   "chai": "^3.5.0",

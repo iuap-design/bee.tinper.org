@@ -27,7 +27,8 @@
                 display: block;
             }
             .u-label {
-                // min-width: 100px;
+                min-width: 100px;
+                text-align: right;
                 display: inline-block;
                 padding-right: 12px;
             }
@@ -43,6 +44,7 @@
                 width: 5px;
                 min-width: auto;
                 margin-left: 4px;
+                padding: 0;
                 color: red;
             }
             .datepicker-input-group {
@@ -94,11 +96,14 @@
     .edit-panel-all {
         .u-form-item {
             padding: 0;
+            .u-col-md-2,.u-col-md-10{
+                padding: 0;
+            }
             .u-label {
                 width: 100%;
                 text-align: right;
-                height: 30px;
-                line-height: 30px;
+                height: 32px;
+                line-height: 32px;
             }
             .u-form-control {
                 width: 100%;
@@ -125,10 +130,11 @@
             margin-bottom: 10px;
             min-height: 50px;
             .u-label {
-                height: 30px;
-                line-height: 30px;
+                height: 32px;
+                line-height: 32px;
                 text-align: right;
                 display: block;
+                padding-right: 12px;
             }
             .error {
                 margin-left: 100px;
@@ -136,6 +142,8 @@
                 display: block;
             }
             .mast {
+                margin-left:4px;
+                padding: 0;
                 color: red;
             }
             textarea {
