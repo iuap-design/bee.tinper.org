@@ -56,17 +56,42 @@ module.exports = {
             pack_data = {};
           }
         }
-        let listStr = '<select class="tag-select" id="tagSelect" >';
+        // let listStr = '<select class="tag-select" id="tagSelect" >';
         let tags = components[pack_data.name].versions;
-        let selectTag = tag ? tag : 'v'+pack_data.version;;
-        tags.forEach(item => {
-          if (item == selectTag) {
-            listStr += `<option selected value=${item} >${item}</li>`;
-          } else {
-            listStr += `<option value=${item} >${item}</li>`;
+        let selectTag = tag ? tag : 'v'+pack_data.version;
+        // tags.forEach(item => {
+        //   if (item == selectTag) {
+        //     listStr += `<option selected value=${item} >${item}</li>`;
+        //   } else {
+        //     listStr += `<option value=${item} >${item}</li>`;
+        //   }
+        // })
+        // listStr += '</select>';
+
+
+
+        let listStr = '<div class="u-select u-select-focused u-select-enabled tag-select" id="tagSelect"><div class="u-select-selection '+
+'u-select-selection--single" role="combobox" aria-autocomplete="list" aria-haspopup="true" aria-expanded="false" tabindex="0"> '+
+            '<div class="u-select-selection-rendered" name="input"><div class="u-select-selection-selected-value" title="'+selectTag+'" style="display: block; opacity: 1;">'+selectTag+'</div>'+
+            '</div><span class="u-select-arrow" unselectable="unselectable" style="user-select: none;"><b></b></span></div></div>';
+
+
+        
+        listStr += '<div id="tagList" class="select-list"><div><div class="u-select-dropdown nav-lang-select u-select-dropdown--single u-select-dropdown-placement-bottomLeft " style="width: 100px; "><div style="overflow: auto;">'+
+                    '<ul class="u-select-dropdown-menu u-select-dropdown-menu-vertical  u-menu-light u-select-dropdown-menu-root" role="menu" aria-activedescendant="">';
+        tags.forEach(item=>{
+          if(item==selectTag){
+            listStr+='<li unselectable="unselectable" title="'+item+'" class="u-select-dropdown-menu-item-selected u-select-dropdown-menu-item" role="menuitem" aria-selected="true" style="user-select: none;">'+item+'</li> '
+          }else{
+            listStr+='<li unselectable="unselectable" title="'+item+'" class="u-select-dropdown-menu-item" role="menuitem" aria-selected="true" style="user-select: none;">'+item+'</li> '
           }
-        })
-        listStr += '</select>';
+          
+        });       
+        listStr +='</ul></div></div></div></div>'
+
+
+
+
         let name = components[pack_data.name].name;
         let str =
           data.match(/##? \w+/g) && data.match(/##? \w+/g).length ?

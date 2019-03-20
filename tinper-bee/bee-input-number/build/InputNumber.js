@@ -457,13 +457,13 @@ var InputNumber = function (_Component) {
         value = format ? format(value) : value;
 
         var disabledCursor = disabled ? ' disabled-cursor' : '';
-
+        var disabledCon = disabled ? ' disabled-con' : '';
         return _react2["default"].createElement(
             'div',
             null,
             iconStyle === 'double' ? _react2["default"].createElement(
                 _beeInputGroup2["default"],
-                { className: (0, _classnames2["default"])(className, classes) },
+                { className: (0, _classnames2["default"])(className, classes, disabledCon) },
                 _react2["default"].createElement(
                     _beeInputGroup2["default"].Addon,
                     {
@@ -492,7 +492,7 @@ var InputNumber = function (_Component) {
             ) : _react2["default"].createElement(
                 _beeInputGroup2["default"],
                 {
-                    className: (0, _classnames2["default"])(className, classes),
+                    className: (0, _classnames2["default"])(className, classes, disabledCon),
                     simple: true
                 },
                 _react2["default"].createElement(_beeFormControl2["default"], _extends({}, others, {

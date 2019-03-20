@@ -7,7 +7,7 @@ let components = require('../../static/components.json');
 
 
 const auth = {
-    token: '29736fa779ec763bfe3dd1ab992b320f3fb48fca',
+    token: '14d6b2ace78b7a557de48e1ad583674879ae9e69',
     user: 'liushaozhen'
 }
 
@@ -19,6 +19,7 @@ function getRelease(component) {
     gh.list(auth, 'tinper-bee', component, (err, list) => {
         if (err) {
             console.log(`❌❌ 读取release失败！${component} `)
+            console.log(err);
         } else {
             let changesArray = [];
             list.forEach(item => {

@@ -6,6 +6,7 @@
 */
 
 import React, { Component } from 'react';
+import Button from 'bee-button';
 import Affix from '../../src';
 
 
@@ -25,14 +26,13 @@ class Demo1 extends Component {
   render () {
   
     return (
-      <div className="outer-box" id="outer-box">
-        <label>某个div内的affix，container canHidden={true} zIndex={2001}</label>
+      <div className="demo1">
+        <div>某个div内的affix，container canHidden={true} zIndex={2001}</div>
+        <div className="outer-box checkered stripes" id="outer-box">
           <Affix container={this.state.container} canHidden={true} zIndex={2001}>
-            <div className='content'>
-              <span>affix</span>
-            </div>
+            <Button colors="primary">affix in container</Button>
           </Affix>
-       
+        </div>
       </div>
     )
   }

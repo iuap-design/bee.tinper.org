@@ -198,6 +198,8 @@ body {
     position: relative;
     display: inline-block;
     color: #314659;
+    margin-right: 17px;
+    top: 2px;
 }
 .docs .doc-content .title-right .title-tag>span{
     position: absolute;
@@ -209,22 +211,43 @@ body {
     left: 14px;
     bottom: -1px;
 }
-.docs .doc-content .title-right .tag-select{
+/* 版本下拉 */
+.docs .doc-content .title-right #tagSelect{
+    width: 80px;
+    display: inline-block;
+    height: 24px;
+}
+.docs .doc-content .title-right #tagSelect .u-select-selection{
     height: 24px;
     border: 1px solid #8D99AE;
-    font-size: 14px;
     border-radius: 0;
-    margin-left: 15px;
-    width: 80px;
+}
+.docs .doc-content .title-right #tagSelect .u-select-selection-rendered{
     line-height: 24px;
-    background: #fff;
-    appearance:none;
-    -moz-appearance:none;
-    -webkit-appearance:none;
+}
+#tagList.select-list .u-select-dropdown{
+    top: 0;
+    left: 0;
+    left: auto;
+    right: 0;
+    width: 80px!important;
+}
+#tagList.select-list{
+    display: none;
     position: relative;
-    top: -1px;
-    padding-left: 20px;
-    cursor: pointer;
+}
+#tagList.select-list.open{
+    display: block;
+}
+
+#tagList.select-list .u-select-dropdown .u-select-dropdown-menu-item{
+    padding: 0;
+    line-height: 32px;
+    text-align: center;
+}
+#tagList.select-list .u-select-dropdown .u-select-dropdown-menu-item:hover{
+    background: #fff;
+    color: #E14C46;
 }
 select::-ms-expand { 
     display: none; 

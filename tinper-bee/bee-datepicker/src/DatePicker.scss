@@ -2,7 +2,6 @@
 @import "../node_modules/tinper-bee-core/scss/minxin-mixins";
 @import "../node_modules/bee-form-control/src/FormControl.scss";
 @import "../node_modules/bee-input-group/src/InputGroup.scss";
-$disabled-color-base: #909090;
 .rc-calendar {
   box-sizing: border-box;
   color: #212121;
@@ -394,6 +393,7 @@ $disabled-color-base: #909090;
 }
 .rc-calendar-date:hover {
   background: $hover-bg-color-base;
+  color: $brand-primary;
   cursor: pointer;
 }
 .rc-calendar-selected-day .rc-calendar-date {
@@ -688,6 +688,7 @@ $disabled-color-base: #909090;
 }
 .rc-calendar-month-panel-cell .rc-calendar-month-panel-month:hover {
   background: $hover-bg-color-base;
+  color: $brand-primary;
   cursor: pointer;
 }
 .rc-calendar-month-panel-cell-disabled .rc-calendar-month-panel-month {
@@ -786,6 +787,7 @@ $disabled-color-base: #909090;
   -ms-flex: 1;
       flex: 1;
   padding: 9px 10px 10px;
+  min-height: 210px;
 }
 .rc-calendar-year-panel-footer {
   border-top: 1px solid #ccc;
@@ -814,6 +816,7 @@ $disabled-color-base: #909090;
 }
 .rc-calendar-year-panel-year:hover {
   background: $hover-bg-color-base;
+  color: $brand-primary;
   cursor: pointer;
 }
 .rc-calendar-year-panel-selected-cell .rc-calendar-year-panel-year {
@@ -830,7 +833,7 @@ $disabled-color-base: #909090;
    -ms-user-select: none;
        user-select: none;
   -webkit-user-select: none;
-  color: $disabled-color-base;
+  color: rgba(0, 0, 0, 0.25);
 }
 .rc-calendar-decade-panel {
   left: 0;
@@ -927,6 +930,7 @@ $disabled-color-base: #909090;
 }
 .rc-calendar-decade-panel-decade:hover {
   background: $hover-bg-color-base;
+  color:$brand-primary;
   cursor: pointer;
 }
 .rc-calendar-decade-panel-selected-cell .rc-calendar-decade-panel-decade {
@@ -943,7 +947,7 @@ $disabled-color-base: #909090;
    -ms-user-select: none;
        user-select: none;
   -webkit-user-select: none;
-  color: $disabled-color-base;
+  color: rgba(0, 0, 0, 0.25);
 }
 .rc-calendar-range {
   width: 502px;
@@ -1001,6 +1005,7 @@ $disabled-color-base: #909090;
 .rc-calendar-range .rc-calendar-year-panel-body,
 .rc-calendar-range .rc-calendar-month-panel-body {
   border-bottom: 1px solid #e9e9e9;
+  background: #fff;
 }
 .rc-calendar-range.rc-calendar-week-number {
   width: 574px;
@@ -1033,9 +1038,10 @@ $disabled-color-base: #909090;
 .rc-calendar-range .rc-calendar-year-panel-table,
 .rc-calendar-range .rc-calendar-month-panel-table {
   height: 198px;
+  background: #fff;
 }
 .rc-calendar-range .rc-calendar-in-range-cell {
-  background: $selected-bg-color-base;
+  background: #ebf4f8;
   border-radius: 0;
 }
 .rc-calendar-range-bottom {
@@ -1352,7 +1358,7 @@ li.rc-time-picker-panel-select-option-disabled:hover {
 }
 .rc-calendar-month-header-wrap {
   position: relative;
-  height: 274px;
+  height: 280px;
 }
 //周
 .week-calendar-footer-button{

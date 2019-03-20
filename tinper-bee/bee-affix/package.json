@@ -1,6 +1,6 @@
 {
  "name": "bee-affix",
- "version": "1.0.14",
+ "version": "1.0.15",
  "description": "Affix ui component for react",
  "keywords": [
   "react",
@@ -51,6 +51,7 @@
   "es5-shim": "~4.1.10",
   "bee-panel": "latest",
   "bee-layout": "latest",
-  "bee-button": "latest"
+  "bee-button": "latest",
+  "bee-navbar": "latest"
  }
 }

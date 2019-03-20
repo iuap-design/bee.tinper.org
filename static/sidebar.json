@@ -55,6 +55,10 @@
                 "企业级UI交互能力": {
                     "version":"",
                     "component":"interact"       
+                },
+                "按需打包": {
+                    "version":"",
+                    "component":"pakage"
                 }
             }
             

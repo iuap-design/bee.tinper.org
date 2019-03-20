@@ -81,11 +81,10 @@ var Affix = function (_Component) {
             return container;
         };
 
-        _this.getInitPosition = function (nextProps) {
+        _this.getInitPosition = function (nextProps, flag) {
             var container = _this.getContainerDOM(nextProps);
             // 20180927children是个变化，所以在nextprops要传入childrenRef，否则直接使用后面的语句
             var thisElm = nextProps && nextProps.childrenRef && _reactDom2["default"].findDOMNode(nextProps.childrenRef) || _reactDom2["default"].findDOMNode(_this);
-
             _this.setState({
                 height: thisElm.offsetHeight,
                 width: thisElm.offsetWidth,
@@ -103,8 +102,8 @@ var Affix = function (_Component) {
             _this.setState({
                 top: top,
                 left: left,
-                initTop: top,
-                initLeft: left,
+                initTop: flag ? top : _this.state.initTop,
+                initLeft: flag ? left : _this.state.initLeft,
                 marginTop: marginTop,
                 marginLeft: marginLeft
             });
@@ -140,7 +139,7 @@ var Affix = function (_Component) {
             }
 
             _this.props.onTargetChange(_this.state);
-            _this.getInitPosition();
+            _this.getInitPosition(undefined, false);
         };
 
         _this.calculate = function () {
@@ -154,7 +153,8 @@ var Affix = function (_Component) {
                 fixStyle = {
                     position: "fixed",
                     //修改20171102 去掉展示Affix全部内容，若是Affix内容高度大于container可展示，那么Affix只可展示部分
-                    top: _this.props.canHidden ? h < 0 ? h : Math.min(h, _this.props.offsetTop) : h < 0 ? 0 : Math.min(h, _this.props.offsetTop),
+                    // top: this.props.canHidden ? ( h < 0 ? h : Math.min(h, this.props.offsetTop)) : ( h < 0 ? 0 : Math.min(h, this.props.offsetTop)),
+                    top: _this.props.canHidden ? h < 0 ? h : Math.min(h, _this.props.offsetTop) : _this.props.offsetTop,
                     left: _this.props.horizontal ? _this.state.initLeft : _this.state.left,
                     height: _this.state.height,
                     width: _this.state.width,
@@ -187,7 +187,7 @@ var Affix = function (_Component) {
     }
 
     Affix.prototype.componentDidMount = function componentDidMount() {
-        this.getInitPosition();
+        this.getInitPosition(undefined, true);
         var listenTarget = this.props.target();
         if (listenTarget) {
             (0, _utils.addEventListener)(listenTarget, 'resize', this.handleTargetChange);
@@ -214,7 +214,7 @@ var Affix = function (_Component) {
 
 
     /**
-     * 执行一次获取初始的位置，height,width,containerHeight，containerWidth,
+     * 第一次 和 每次srcoll和resize也会执行该方法
      * initTop,initLeft，marginTop,marginLeft都是不变的
      * @return {[type]} [description]
      */

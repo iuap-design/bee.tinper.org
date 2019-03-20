@@ -1,6 +1,6 @@
 /**
 *
-* @title 数组选择控件
+* @title 不可以状态
 * @description 自定义max=12,min=5,step=2 且设置 disabled 处理
 *
 */

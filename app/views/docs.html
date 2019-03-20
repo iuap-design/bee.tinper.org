@@ -26,17 +26,8 @@
     <% } %>     
 <% } %>
 
-<script>
-    var select = document.getElementById('tagSelect');
-    if(select){
-        select.onchange=function(){
-            var selectTag = select.value;
-            window.location.search='?tag='+selectTag;
-        }
-    }
-</script>
-<script src="http://iuap-design-cdn.oss-cn-beijing.aliyuncs.com/static/tinper-bee/theme/config.js"></script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-109836800-1"></script>
+<script src="//iuap-design-cdn.oss-cn-beijing.aliyuncs.com/static/tinper-bee/theme/config.js"></script>
+<script async src="//www.googletagmanager.com/gtag/js?id=UA-109836800-1"></script>
 <script>
     function getCookie(name){ 
         var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
@@ -59,3 +50,37 @@
 
     gtag('config', 'UA-109836800-1');
 </script>
+
+<script>
+        var select = document.querySelector('#tagSelect');
+        var selectList = document.querySelector('#tagList');
+        var selectOptions = selectList.querySelectorAll('.u-select-dropdown-menu-item');
+    
+        function showHide(hide) {
+            var select = document.querySelector('#tagSelect');
+            var selectList = document.querySelector('#tagList');
+            var cls = selectList.getAttribute('class');
+            if (hide) {
+                selectList.setAttribute('class', 'select-list');
+                select.setAttribute('class', 'u-select u-select-focused u-select-enabled');
+            } else {
+                if (cls.indexOf('open') != -1) { //打开状态
+                    selectList.setAttribute('class', 'select-list');
+                    select.setAttribute('class', 'u-select u-select-focused u-select-enabled');
+                } else { //关闭状态
+                    selectList.setAttribute('class', 'select-list open');
+                    select.setAttribute('class', 'u-select u-select-open u-select-focused u-select-enabled');
+                }
+            }
+        }
+        select.onclick = (e) => {
+            showHide()
+        };
+        selectOptions.forEach(item => {
+            item.onclick = (e) => {
+                showHide(true);
+                let selectTag = e.target.innerHTML;
+                window.location.search='?tag='+selectTag;
+            };
+        })
+    </script>

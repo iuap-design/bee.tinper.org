@@ -1,5 +1,6 @@
 .navbar {
-    background: #808080
+    background: #808080;
+    height: 65px;
 }
 
 .content {
@@ -27,7 +28,6 @@
     width: calc(100% - 300px);
     padding-left: 40px;
     margin-left: 250px;
-    margin-top: 65px;
 }
 .footer-out {
     margin-left: 249px;
