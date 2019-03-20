@@ -11,7 +11,8 @@
   .demo1 .u-form-item {
     min-height: auto !important; }
   .demo1 .u-label {
-    display: inline; }
+    display: inline;
+    padding-right: 12px; }
   .demo1 .u-form-control {
     width: auto; }
   .demo1 .error {
@@ -24,7 +25,8 @@
   .demo2 .u-label {
     display: inline-block;
     min-width: 80px;
-    text-align: right; }
+    text-align: right;
+    padding-right: 12px; }
   .demo2 .u-form-control {
     width: auto; }
   .demo2 .error {
@@ -43,7 +45,8 @@
   .demo3 .u-label {
     display: inline-block;
     min-width: 105px;
-    text-align: right; }
+    text-align: right;
+    padding-right: 12px; }
   .demo3 .u-form-control {
     width: auto;
     min-width: 300px; }
@@ -63,7 +66,8 @@
   .demo4 .u-label {
     display: inline-block;
     min-width: 100px;
-    text-align: right; }
+    text-align: right;
+    padding-right: 12px; }
   .demo4 .u-form-control {
     width: auto;
     min-width: 380px; }
@@ -85,6 +89,12 @@
   .demo4 .time .u-label {
     position: relative;
     bottom: 10px; }
+  .demo4 .time .error {
+    position: relative;
+    bottom: 10px; }
+  .demo4 .remarks .u-label {
+    position: relative;
+    bottom: 79px; }
   .demo4 .u-city-select {
     display: inline-block; }
   .demo4 .u-city-select .province,
@@ -94,43 +104,45 @@
   .demo4 .u-form-item {
     min-height: auto !important; }
 
-.demo5 .submit {
-  padding-left: 90px; }
-
-.demo5 .reset {
-  margin-left: 10px; }
-
-.demo5 .u-form-item {
-  min-width: 100%;
-  min-height: 50px !important;
-  padding: 0; }
-  .demo5 .u-form-item .u-label {
-    min-width: 90px;
-    display: inline-block;
-    text-align: right; }
-  .demo5 .u-form-item .u-label.time {
-    position: relative;
-    bottom: 10px; }
-  .demo5 .u-form-item .u-label + * {
-    min-width: 200px;
-    display: inline-block; }
-  .demo5 .u-form-item .datepicker-input-group .u-input-group-btn .uf-calendar {
+.demo5 {
+  background: #f7f9fb;
+  padding: 11px 24px; }
+  .demo5 .submit {
+    padding-left: 90px; }
+  .demo5 .reset {
+    margin-right: 10px; }
+  .demo5 .u-form-item {
+    min-width: 100%;
+    min-height: 50px !important;
     padding: 0; }
-  .demo5 .u-form-item .u-switch {
-    min-width: auto; }
-  .demo5 .u-form-item .u-select {
-    width: auto; }
-  .demo5 .u-form-item .u-form-control {
-    width: auto; }
-  .demo5 .u-form-item .calendar-picker {
-    display: inline-block;
-    min-width: 200px;
-    width: auto; }
-    .demo5 .u-form-item .calendar-picker input {
-      width: 100%;
-      text-align: center; }
-  .demo5 .u-form-item .u-radio .u-radio-label {
-    font-size: 14px; }
+    .demo5 .u-form-item .u-label {
+      min-width: 90px;
+      display: inline-block;
+      text-align: right;
+      padding-right: 12px; }
+    .demo5 .u-form-item .u-label.time {
+      position: relative;
+      bottom: 10px; }
+    .demo5 .u-form-item .u-label + * {
+      min-width: 200px;
+      display: inline-block; }
+    .demo5 .u-form-item .datepicker-input-group .u-input-group-btn .uf-calendar {
+      padding: 0; }
+    .demo5 .u-form-item .u-switch {
+      min-width: auto; }
+    .demo5 .u-form-item .u-select {
+      width: auto; }
+    .demo5 .u-form-item .u-form-control {
+      width: auto; }
+    .demo5 .u-form-item .calendar-picker {
+      display: inline-block;
+      min-width: 200px;
+      width: auto; }
+      .demo5 .u-form-item .calendar-picker input {
+        width: 100%;
+        text-align: center; }
+    .demo5 .u-form-item .u-radio .u-radio-label {
+      font-size: 14px; }
 
 .demo6 .edit-panel {
   background: #FFF;
@@ -156,8 +168,8 @@
       color: red;
       display: block; }
     .demo6 .edit-panel .u-form-item .u-label {
-      min-width: 100px;
-      display: inline-block; }
+      display: inline-block;
+      padding-right: 12px; }
     .demo6 .edit-panel .u-form-item .u-label.time {
       position: relative;
       bottom: 10px; }
@@ -167,7 +179,7 @@
     .demo6 .edit-panel .u-form-item .mast {
       width: 5px;
       min-width: auto;
-      margin-right: 5px;
+      margin-left: 4px;
       color: red; }
     .demo6 .edit-panel .u-form-item .datepicker-input-group .u-input-group-btn .uf-calendar {
       padding: 0; }

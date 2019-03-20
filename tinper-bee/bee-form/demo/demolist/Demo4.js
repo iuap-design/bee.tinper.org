@@ -64,6 +64,8 @@ const Demo4 = Form.createForm()(class Demo extends Component {
                                 validateTrigger: 'onBlur',
                                 rules: [{
                                     required: true, message: '请输入身份证号',
+                                },{
+                                    pattern: /^[1-9][0-9]{5}([1][9][0-9]{2}|[2][0][0|1][0-9])([0][1-9]|[1][0|1|2])([0][1-9]|[1|2][0-9]|[3][0|1])[0-9]{3}([0-9]|[X])$/, message: '身份证号格式不正确'
                                 }],
                             }) }
                         />
@@ -76,11 +78,19 @@ const Demo4 = Form.createForm()(class Demo extends Component {
                         <DatePicker
                             {
                             ...getFieldProps('time', {
-
+                                validateTrigger: 'onBlur',
+                                rules: [{
+                                    required: true, message: '请选择出生日期',
+                                }, {
+                                    type: 'date', message: '日期格式不正确'
+                                }],
                             }
                             ) }
                             placeholder={'请选择出生日期'}
                         />
+                        <span className='error'>
+                            {getFieldError('time')}
+                        </span>
                     </FormItem>
                     <FormItem>
                         <Label>年龄</Label>
@@ -120,7 +130,7 @@ const Demo4 = Form.createForm()(class Demo extends Component {
                             {
                             ...getFieldProps('education', {
                                 initialValue: '',
-                                rules: [{ required: true }]
+                                rules: [{ required: true, message: '请选择学历' }]
                             }
                             ) }
                         >
@@ -133,6 +143,9 @@ const Demo4 = Form.createForm()(class Demo extends Component {
                             <Option value="graduate">研究生及以上</Option>
                             <Option value="other">其它</Option>
                         </Select>
+                        <span className='error'>
+                            {getFieldError('education')}
+                        </span>
                     </FormItem>
                     <FormItem>
                         <Label>保密等级</Label>
@@ -145,7 +158,7 @@ const Demo4 = Form.createForm()(class Demo extends Component {
                             ) }
                         />
                     </FormItem>
-                    <FormItem >
+                    <FormItem className="remarks">
                         <Label>备注</Label>
                         <FormControl componentClass='textarea'
                             {

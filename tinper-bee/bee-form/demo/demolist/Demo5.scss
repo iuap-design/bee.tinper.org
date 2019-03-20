@@ -1,9 +1,11 @@
 .demo5 {
+    background: rgb(247, 249, 251);
+    padding: 11px 24px;
     .submit{
         padding-left:90px
     }
     .reset{
-        margin-left:10px;
+        margin-right:10px;
     }
     .u-form-item {
         min-width: 100%;
@@ -13,6 +15,7 @@
             min-width: 90px;
             display: inline-block;
             text-align:right;
+            padding-right: 12px;
         }
         .u-label.time{
             position: relative;

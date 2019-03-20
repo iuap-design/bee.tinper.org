@@ -533,7 +533,6 @@
 
 .rc-calendar-date:hover {
   background: rgb(235, 236, 240);
-  color: rgb(245, 60, 50);
   cursor: pointer; }
 
 .rc-calendar-selected-day .rc-calendar-date {
@@ -828,7 +827,6 @@
 
 .rc-calendar-month-panel-cell .rc-calendar-month-panel-month:hover {
   background: rgb(235, 236, 240);
-  color: rgb(245, 60, 50);
   cursor: pointer; }
 
 .rc-calendar-month-panel-cell-disabled .rc-calendar-month-panel-month {
@@ -956,7 +954,6 @@
 
 .rc-calendar-year-panel-year:hover {
   background: rgb(235, 236, 240);
-  color: rgb(245, 60, 50);
   cursor: pointer; }
 
 .rc-calendar-year-panel-selected-cell .rc-calendar-year-panel-year {
@@ -973,7 +970,7 @@
   -ms-user-select: none;
   user-select: none;
   -webkit-user-select: none;
-  color: rgba(0, 0, 0, 0.25); }
+  color: #909090; }
 
 .rc-calendar-decade-panel {
   left: 0;
@@ -1070,7 +1067,6 @@
 
 .rc-calendar-decade-panel-decade:hover {
   background: rgb(235, 236, 240);
-  color: rgb(245, 60, 50);
   cursor: pointer; }
 
 .rc-calendar-decade-panel-selected-cell .rc-calendar-decade-panel-decade {
@@ -1087,7 +1083,7 @@
   -ms-user-select: none;
   user-select: none;
   -webkit-user-select: none;
-  color: rgba(0, 0, 0, 0.25); }
+  color: #909090; }
 
 .rc-calendar-range {
   width: 502px;
@@ -1182,7 +1178,7 @@
   background: #fff; }
 
 .rc-calendar-range .rc-calendar-in-range-cell {
-  background: #ebf4f8;
+  background: rgb(255, 247, 231);
   border-radius: 0; }
 
 .rc-calendar-range-bottom {

@@ -148,7 +148,7 @@ const Demo6 = Form.createForm()(class Demo extends Component {
                                     <span className='mast'>*</span>
                                 </Label>
                             </Col>
-                            <Col md={10}>
+                            <Col md={12}>
                                 <FormControl
                                     {
                                     ...getFieldProps('orderCode2', {
