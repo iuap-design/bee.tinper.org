@@ -203,8 +203,8 @@ const Demo5 = Form.createForm()(class Demo extends Component {
                         </Col>
                     </Row>
                     <div className='submit'>
-                        <Button colors="primary" className="login" onClick={this.submit}>查询</Button>
                         <Button shape="border" className="reset" onClick={this.reset}>重置</Button>
+                        <Button colors="primary" className="login" onClick={this.submit}>查询</Button>
                     </div>
                 </Form>
             </div>
