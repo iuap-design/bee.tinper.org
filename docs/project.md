@@ -1346,3 +1346,12 @@ export const postUpdate = (data) => {
 ```
 
 
+## 更多学习资源
+ 
+&nbsp;&nbsp;1、 项目脚手架可以使用 ucf-web 工具来初始化项目,一个专注于性能与效率的前端微应用开发框架 [快速上手使用](https://github.com/iuap-design/ucf-web/blob/master/README.md)
+
+&nbsp;&nbsp;2、 包的下载管理可以使用ynpm。ynpm是一款基于用友内部的镜像库，为用友内部打造一个优质的代码共享平台、业务组件的多样性、组件能力最大化的输出。ynpm还提供组件的上传、下载的以及热门组件的统计。
+[快速上手使用](https://package.yonyoucloud.com/#/guide)
+
+
+&nbsp;&nbsp;3、CDN 使用自己定制的主题tinper-bee，生成CDN地址[工具上手连接](https://github.com/iuap-design/tinper-bee-theme-cli/blob/master/README.md)
