@@ -231,6 +231,8 @@ body {
     left: auto;
     right: 0;
     width: 80px!important;
+    border: 1px dashed #424242;
+    box-shadow: none;
 }
 #tagList.select-list{
     display: none;
