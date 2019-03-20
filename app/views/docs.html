@@ -53,9 +53,20 @@
 
 <script>
         var select = document.querySelector('#tagSelect');
-        var selectList = document.querySelector('#tagList');
-        var selectOptions = selectList.querySelectorAll('.u-select-dropdown-menu-item');
-    
+        if(select){
+            var selectList = document.querySelector('#tagList');
+            var selectOptions = selectList.querySelectorAll('.u-select-dropdown-menu-item');
+            select.onclick = (e) => {
+                showHide()
+            };
+            selectOptions.forEach(item => {
+                item.onclick = (e) => {
+                    showHide(true);
+                    let selectTag = e.target.innerHTML;
+                    window.location.search='?tag='+selectTag;
+                };
+            })
+        }
         function showHide(hide) {
             var select = document.querySelector('#tagSelect');
             var selectList = document.querySelector('#tagList');
@@ -73,14 +84,5 @@
                 }
             }
         }
-        select.onclick = (e) => {
-            showHide()
-        };
-        selectOptions.forEach(item => {
-            item.onclick = (e) => {
-                showHide(true);
-                let selectTag = e.target.innerHTML;
-                window.location.search='?tag='+selectTag;
-            };
-        })
+        
     </script>
