@@ -1,7 +1,7 @@
 /**
  *
  * @title 多种布局示例
- * @description 
+ * @description 必输项的 * ，在文字左侧或右侧均可 
  */
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
@@ -15,6 +15,7 @@ import Checkbox from 'bee-checkbox';
 import Switch from 'bee-switch';
 import Label from 'bee-label';
 import Button from 'bee-button';
+import Icon from 'bee-icon';
 import moment from "moment/moment";
 const FormItem = Form.FormItem;
 const Option = Select.Option;
@@ -71,7 +72,7 @@ const Demo6 = Form.createForm()(class Demo extends Component {
                         <Col lg={4} md={6} xs={12}>
                             <FormItem>
                                 <Label>订单编号
-                                    <span className='mast'>*</span>
+                                    <Icon type="uf-mi" className='mast'></Icon>
                                 </Label>
                                 <FormControl
                                     {
@@ -93,7 +94,7 @@ const Demo6 = Form.createForm()(class Demo extends Component {
                         <Col lg={4} md={6} xs={12}>
                             <FormItem>
                                 <Label>供应商名称
-                                    <span className='mast'>*</span>
+                                    <Icon type="uf-mi" className='mast'></Icon>
                                 </Label>
                                 <FormControl
                                     {
@@ -144,11 +145,12 @@ const Demo6 = Form.createForm()(class Demo extends Component {
                      <Row className = 'edit-panel edit-panel-all'>
                         <FormItem>
                             <Col md={2}>
-                                <Label>订单编号
-                                    <span className='mast'>*</span>
+                                <Label>
+                                    <Icon type="uf-mi" className='mast'></Icon>
+                                    订单编号
                                 </Label>
                             </Col>
-                            <Col md={12}>
+                            <Col md={10}>
                                 <FormControl
                                     {
                                     ...getFieldProps('orderCode2', {
@@ -169,8 +171,9 @@ const Demo6 = Form.createForm()(class Demo extends Component {
 
                         <FormItem>
                             <Col md={2}>
-                                <Label>供应商名称
-                                    <span className='mast'>*</span>
+                                <Label>
+                                    <Icon type="uf-mi" className='mast'></Icon>
+                                    供应商名称
                                 </Label>
                             </Col>
                             <Col md={10}>
@@ -246,8 +249,9 @@ const Demo6 = Form.createForm()(class Demo extends Component {
                     <Row className = 'edit-panel edit-panel-center'>
                         <Col md={12} >
                             <FormItem>
-                                <Label>订单编号
-                                    <span className='mast'>*</span>
+                                <Label>
+                                    <Icon type="uf-mi" className='mast'></Icon>
+                                    订单编号
                                 </Label>
                                 <FormControl
                                     {
@@ -268,8 +272,9 @@ const Demo6 = Form.createForm()(class Demo extends Component {
                         </Col>
                         <Col md={12}  >
                             <FormItem>
-                                <Label>供应商名称
-                                    <span className='mast'>*</span>
+                                <Label>
+                                    <Icon type="uf-mi" className='mast'></Icon>
+                                    供应商名称
                                 </Label>
                                 <FormControl
                                     {
@@ -320,7 +325,7 @@ const Demo6 = Form.createForm()(class Demo extends Component {
                     <Row className = 'edit-panel edit-panel-textarea'>
                             <Col md={1}>
                                 <Label>订单编号
-                                    <span className='mast'>*</span>
+                                    <Icon type="uf-mi" className='mast'></Icon>
                                 </Label>
                             </Col>
                             <Col md={3}>
@@ -342,7 +347,7 @@ const Demo6 = Form.createForm()(class Demo extends Component {
                             </Col>
                             <Col md={1}>
                                 <Label>供应商
-                                    <span className='mast'>*</span>
+                                    <Icon type="uf-mi" className='mast'></Icon>
                                 </Label>
                             </Col>
                             <Col md={3}>

@@ -170,8 +170,8 @@ const Demo4 = Form.createForm()(class Demo extends Component {
 
 
                     <div className='submit'>
-                        <Button colors="primary" className="login" onClick={this.submit}>提交</Button>
                         <Button shape="border" className="reset">取消</Button>
+                        <Button colors="primary" className="login" onClick={this.submit}>提交</Button>
                     </div>
                 </Form>
             </div>

@@ -138,8 +138,8 @@ const Demo3 = Form.createForm()( class Demo extends Component {
                         </Checkbox>
                     </FormItem>
                     <div className='submit'>
-                        <Button colors="primary" className="login" onClick={this.submit}>注册</Button>
                         <Button shape="border" className="reset">取消</Button>
+                        <Button colors="primary" className="login" onClick={this.submit}>注册</Button>
                     </div>
                 </Form>
             </div>
