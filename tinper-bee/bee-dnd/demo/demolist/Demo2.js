@@ -7,6 +7,7 @@
  */
 
 import React, { Component } from 'react';
+import Button from 'bee-button';
 import Dnd from '../../src/index';
 
 class Demo2 extends Component {

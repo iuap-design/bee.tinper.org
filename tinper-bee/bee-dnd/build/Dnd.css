@@ -1,11 +1,10 @@
+@charset "UTF-8";
 /* FormGroup */
 /*  Navlayout  */
 .u-drop {
-  background: rgb(189,189,189);
-  padding: 8px; }
-
-.u-droping {
-  background: rgb(64,196,255); }
+  background: #f7f9fb;
+  border: 1px solid #ebecf0;
+  padding: 12px; }
 
 .u-drop.u-drop-horizontal {
   display: flex;
@@ -13,17 +12,31 @@
 
 .u-drag {
   user-select: none;
-  padding: 16px;
-  color: rgb(0,0,0);
   margin: 4px;
-  background: rgb(158,158,158);
-  min-width: 100px; }
+  min-width: 100px;
+  background: white;
+  border-radius: 3px;
+  border: 1px solid #a5adba;
+  padding: 6px 0;
+  font-size: 12px; }
+  .u-drag:hover {
+    background: #ebecf0;
+    border: 1px solid #a5adba; }
+  .u-drag:focus {
+    outline: none; }
 
-.u-draging {
-  background: rgb(100,181,246); }
+/*拖动状态*/
+.u-droping .u-draging {
+  background: #ebecf0;
+  box-shadow: 0px 2px 4px 0px rgba(31, 37, 52, 0.3);
+  opacity: 0.8; }
 
 .u-drag.u-drag-horizontal {
-  display: inline-block; }
+  display: inline-block;
+  width: 72px;
+  height: 72px;
+  line-height: 72px;
+  padding: 0; }
 
 .u-drag-between {
   display: flex; }

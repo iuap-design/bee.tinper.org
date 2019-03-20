@@ -47,6 +47,8 @@
  },
  "devDependencies": {
   "babel-runtime": "^6.26.0",
+  "bee-clipboard": "latest",
+  "bee-drawer": "latest",
   "bee-icon": "latest",
   "bee-layout": "latest",
   "bee-modal": "latest",

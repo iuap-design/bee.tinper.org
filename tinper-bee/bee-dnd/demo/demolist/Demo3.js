@@ -7,6 +7,7 @@
  */
 
 import React, { Component } from 'react';
+import Button from 'bee-button';
 import Dnd from '../../src/index';
 
 class Demo3 extends Component {
@@ -20,9 +21,9 @@ class Demo3 extends Component {
     }
     render() {
         return (
-            <div>
+            <div className="demo-3">
                 <Dnd onStart={this.onStart}  onStop={this.onStop}>
-                    <div className="demo">我不可以拖拽</div>
+                    <div className="demo3 demo">我不可以拖拽</div>
                 </Dnd>
             </div>
 
