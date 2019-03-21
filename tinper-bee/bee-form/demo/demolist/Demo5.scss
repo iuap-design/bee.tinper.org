@@ -7,7 +7,7 @@
     }
     .u-form-item {
         min-width: 100%;
-        min-height: 50px!important;
+        min-height: 43px!important;
         padding: 0;
         .u-col-md-3,.u-col-md-9{
             padding: 0;
@@ -15,9 +15,9 @@
         .u-label{
             display: inline-block;
             width: 100%;
-            min-width: 90px;
             text-align:right;
             padding-right: 12px;
+            color: #212121;
         }
         .u-label + *{
             min-width: 200px;

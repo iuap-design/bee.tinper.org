@@ -1,4 +1,4 @@
-# babel-plugin-import-bee 按需打包
+# 按需打包
 
 [![npm version](https://img.shields.io/npm/v/babel-plugin-import-bee.svg)](https://www.npmjs.com/package/babel-plugin-import-bee)
 [![NPM downloads](http://img.shields.io/npm/dt/babel-plugin-import-bee.svg?style=flat)](https://npmjs.org/package/babel-plugin-import-bee)

@@ -1,4 +1,4 @@
-## 主题定制 cli 工具(tinper-bee-theme-cli)
+# 主题定制 cli 工具(tinper-bee-theme-cli)
 
 ## 介绍
 

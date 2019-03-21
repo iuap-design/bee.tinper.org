@@ -1,6 +1,6 @@
-## 国际化
+# 国际化
 
-### 组件库多语设置
+## 组件库多语设置
 
 tinper-bee组件库提供了 `Locale` 组件来修改组件内写死的文字的语言。使用 `Locale` 组件将你的组件包裹起来，并将语言包传给 `Locale` 组件的 `locale` 属性，即可实现组件库多语。目前组件库提供两种语言包，中文 `tinper-bee/locale/zh_CN.js` 英文 `tinper-bee/locale/en_US.js`。
 示例代码如下：
@@ -34,7 +34,7 @@ ReactDOM.render( (
 ```
 
 
-### 项目国际化 方案一
+## 项目国际化 方案一
 
 [示例](https://github.com/tinper-bee/bee-international-intl)
 
@@ -154,7 +154,7 @@ class App extends Component {
 <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
 ```
 
-### 项目国际化 方案二
+## 项目国际化 方案二
 
 [示例](https://github.com/tinper-bee/bee-international-lanbuild)
 

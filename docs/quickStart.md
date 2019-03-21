@@ -1,10 +1,10 @@
-## 快速上手
+# 快速上手
 
 &nbsp;&nbsp;tinper-bee 组件库 致力于提供给程序员愉悦快速的开发体验。
 
 
 
-### 一、安装 tinper-bee 
+## 一、安装 tinper-bee 
 >可使用 npm、cnpm、yarn 以及 ynpm 来安装组件库以及组件。
 
 ```js
@@ -13,7 +13,7 @@
 ```
 
 
-### 二、项目中使用 tinper-bee
+## 二、项目中使用 tinper-bee
 
 >为了方便用户单独处理样式和js文件，所以我们对js和css进行了单独的打包。
 
@@ -50,7 +50,7 @@ export default Example；
 <br/><br/>
 
 
-### 三、使用CDN
+## 三、使用CDN
 
 > [版本号查阅](http://bee.tinper.org/tinper-bee/changelog)
 
@@ -85,7 +85,7 @@ externals: {
 ...
 ```
 
-### 三、单个使用个别组件
+## 四、单个使用个别组件
 > 无法使用主题定制
 
 ```js
@@ -109,7 +109,7 @@ export default Example；
 ```
 
 
-## 四、注意事项
+## 五、注意事项
 
 另外，有几个组件因为使用的第三方的包比较大，所以我们没有将它们打包进tinper-bee.js，只是对他进行了转码，引入方式略有变化，包含组件如下。
 

@@ -9,6 +9,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    display: inline-block;
 }
 .right-menus a:hover,.right-menus a:active{
     color: #E14C46;

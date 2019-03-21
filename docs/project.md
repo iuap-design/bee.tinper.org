@@ -1,4 +1,7 @@
-# 安装cli工具
+# 项目实战
+
+## 安装cli工具
+
 ![image](https://user-images.githubusercontent.com/3817644/54671311-a3cac880-4b30-11e9-98e8-2f21456433be.png)
 
 
@@ -16,9 +19,9 @@ ucf -h
 ```
 
 
-# 快速初始化
+## 快速初始化
 
-## 创建项目
+### 创建项目
 
 * 首先确定我们当前开发目录，在根目录自动创建`ucf-project`工程，执行如下：
 
@@ -27,7 +30,7 @@ ucf init ucf-project
 ```
 
 
-## 依赖安装
+### 依赖安装
 在运行微前端工程之前，需要我们安装依赖包，可以使用[npm](https://www.npmjs.com/)、[cnpm](http://npm.taobao.org/)，在园区内网还可以使用[ynpm](https://package.yonyoucloud.com)
 
 ```bash
@@ -43,7 +46,7 @@ ynpm install
 
 
 
-## 运行
+### 运行
 安装好我们的依赖包后，开始运行前端服务，如下：
 
 ```bash
@@ -84,7 +87,6 @@ npm run build
 
 
 
-# 实战
 
 ## 安装组件库
 
@@ -96,7 +98,7 @@ npm install tinper-bee --save
 
 ## 使用组件库
 
-#### 创建微应用
+### 创建微应用
 
 首先通过ucf-cli的命令来创建一个微应用`admin`
 
@@ -106,7 +108,7 @@ ucf new app
 
 输入名称 `admin` 选择 `MPA` 即可，
 
-#### 修改结构
+### 修改结构
 
 修改 `ucf-apps/admin/src/components/App/index.js` 如下：
 

@@ -1,4 +1,4 @@
-## 全键盘操作
+# 全键盘操作
 
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='red'>tinper-bee 支持快捷键从 V1.6.3 开始就有部分组件支持快捷键，但之前都是零零散散的，目前 V1.6.9的版本是最稳定的版本，支持的快捷键下面将详细描述。(官方建议使用 tinper-bee 请使用 V1.6.9版本) </font>
 
@@ -21,19 +21,23 @@
 > 部分快捷键需要参考该组件的示例。
 
 ## 快捷键示例操作说明
-  1. 【bee-table】 鼠标焦点进入到input中，按tab 切换焦点，进入到table的焦点中，且默认选中第一行，按下 ↓(下箭)  选中下一条、↑(上箭) 选中上一条
 
-  2. 【bee-tree】 按tab 焦点进入到tree示例中，按下 ↑(上箭)、↓(下箭) 上一行、下一行。 ←(左箭)、→(右箭) 收起。
+1. 【bee-table】 鼠标焦点进入到input中，按tab 切换焦点，进入到table的焦点中，且默认选中第一行，按下 ↓(下箭)  选中下一条、↑(上箭) 选中上一条
+
+2. 【bee-tree】 按tab 焦点进入到tree示例中，按下 ↑(上箭)、↓(下箭) 上一行、下一行。 ←(左箭)、→(右箭) 收起。
   
-  3. 【bee-datepicker】 鼠标焦点进入到input中，按tab 切换焦点，当焦点在输入框中，按下 ↓(下箭) 即可 打开日期面板。esc 即可关闭面板
+3. 【bee-datepicker】 鼠标焦点进入到input中，按tab 切换焦点，当焦点在输入框中，按下 ↓(下箭) 即可 打开日期面板。esc 即可关闭面板
 
-## [示例点击](https://tinper-acs.github.io/ac-keyboard-example/index.html) 
+## 示例点击
 
-## 代码演示
+[参考链接](https://tinper-acs.github.io/ac-keyboard-example/index.html) 
+
 
 ## 自定义组件键盘操作解决方案
 
 这里推荐使用组件库 [react-hot-keys](https://github.com/jaywcjlove/react-hotkeys)
 
-## [问题反馈](https://github.com/iuap-design/tinper-bee/issues)
+## 问题反馈
+
+[反馈地址](https://github.com/iuap-design/tinper-bee/issues)
 

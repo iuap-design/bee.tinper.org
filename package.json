@@ -4,9 +4,9 @@
   "description": "bee.tinper.org",
   "main": "server/index.js",
   "scripts": {
+    "init": "node app/utils/getComponent.js",
     "getTag": "node app/utils/getTag.js",
     "createFile": "node app/utils/createFile.js",
-    "init": "node app/utils/getComponent.js",
     "getMenu": "node app/utils/getRightMenu.js",
     "getRelease": "node app/utils/getRelease.js",
     "dev": "node --inspect app/app.js",

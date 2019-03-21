@@ -308,8 +308,17 @@ select::-ms-expand {
 .docs .changelog .u-timeline-item-content>p{
     font-size: 20px;
 }
+.docs .changelog .u-timeline-item-content a{
+    color: #E14C46;
+}
 .docs .changelog .u-timeline-item-content>pre ul{
     list-style: circle;
+    white-space: normal;
+}
+.docs .changelog .u-timeline-item-content>pre li{
+    line-height: 30px;
+    font-size: 14px;
+    white-space: normal;
 }
 .docs .changelog .u-timeline-item-content>pre>ul>li>ul{
     padding-left: 15px;
@@ -318,4 +327,16 @@ select::-ms-expand {
 /* 企业级ui交互能力 */
 .docs .doc-content .interact img{
     max-width: 100%;
+}
+
+/* changelog */
+.docs .changelogs .changelog .u-timeline-item-content>pre>p{
+    display: none;
+}
+.docs .changelogs .changelog pre{
+    line-height: unset;
+}
+
+.docs .changelogs .changelog{
+    margin-top: 40px;
 }

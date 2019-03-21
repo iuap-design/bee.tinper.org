@@ -1,0 +1,383 @@
+{
+    "概述":{
+        "version":"0.1.3",
+        "component":"summarize",
+        "menus":{
+            "特性":{},
+            "谁在使用":{}
+        }
+    },
+    "快速开始": {
+        "version":"0.1.3",
+        "component":"quickStart",
+        "menus":{
+            "一、安装 tinper-bee":{},
+            "二、项目中使用 tinper-bee":{},
+            "三、使用CDN":{},
+            "四、单个使用个别组件":{},
+            "五、注意事项":{}
+        }
+    },
+    "项目实战": {
+        "version":"0.1.3",
+        "component":"project",
+        "menus":{
+            "安装cli工具":{},
+            "快速初始化":{
+                "children":["创建项目","依赖安装","运行","如何访问",""]
+            },
+            "安装组件库":{},
+            "使用组件库":{
+                "children":["创建微应用","修改结构"]
+            }
+        }
+    },
+    "参与贡献": {
+        "version":"0.1.3",
+        "component":"participation",
+        "menus":{
+            "参与讨论和开发":{},
+            "开发及构建":{}
+        }
+    },
+    "使用注意": {
+        "version":"0.1.3",
+        "component":"notice",
+        "menus":{
+            "组件引入问题":{},
+            "样式引入问题":{},
+            "按需加载":{}
+        }
+    },
+    "更新日志": {
+        "version":"0.1.3",
+        "component":"changelog"
+    },
+    "关键特性": {
+        "version":"",
+        "component":"",
+        "children":{
+            "": {
+                "浏览器兼容性":{
+                    "version":"",
+                    "component":"compatibility",
+                    "menus":{
+                        "react 15":{},
+                        "react 16":{},
+                        "兼容 IE8":{},
+                        "使用 CommonJS":{},
+                        "其他问题":{}
+                    }
+                },
+                "全键盘操作": {
+                    "version":"0.1.3",
+                    "component":"keyboard",
+                    "menus":{
+                        "tinper-bee(V1.6.9)快捷键规范定义":{},
+                        "快捷键示例操作说明":{},
+                        "示例点击":{},
+                        "自定义组件键盘操作解决方案":{},
+                        "问题反馈":{}
+                    }
+                },
+                "多端适配": {
+                    "version":"0.1.3",
+                    "component":"multiport",
+                    "menus":{
+                        "PC端":{},
+                        "移动端":{}
+                    }
+                },
+                "国际化": {
+                    "version":"0.1.3",
+                    "component":"international",
+                    "menus":{
+                        "组件库多语设置":{},
+                        "项目国际化 方案一":{},
+                        "项目国际化 方案二":{}
+                    }
+                },
+                "国际化定制主题（CLI方式）": {
+                    "version":"0.1.3",
+                    "component":"theme-cli",
+                    "menus":{
+                        "介绍":{},
+                        "安装、使用":{},
+                        "api":{},
+                        "tinper-bee 主题样式文件注解(themeColor.json)":{},
+                        "help":{}
+                    }
+                },
+                "国际化定制主题（可视化）": {
+                    "version":"0.1.3",
+                    "component":"theme",
+                    "menus":{}
+                },
+                "企业级UI交互能力": {
+                    "version":"",
+                    "component":"interact",
+                    "menus":{
+                        "1、简单单表+查询+导出":{},
+                        "2、表格行内编辑":{},
+                        "3、表格弹窗编辑":{},
+                        "4、左树右表":{},
+                        "5、主子表（一主一子）":{},
+                        "6、主子表（一主多子）":{},
+                        "7、多种参照":{},
+                        "8、附件管理":{},
+                        "9、流程":{}
+                    }     
+                },
+                "按需打包": {
+                    "version":"",
+                    "component":"pakage",
+                    "menus":{
+                        "说明":{},
+                        "安装":{}
+                    }   
+                }
+            }
+            
+        }
+    },
+    "组件": {
+        "version":"",
+        "component":"",
+        "children":{
+            "基础 General": {
+                "按钮 Button": {
+                    "version":"0.1.3",
+                    "component":"bee-button"
+                },
+                "图标 Icon":{
+                    "version":"0.1.0",
+                    "component":"bee-icon"
+                }
+            },
+            "布局 Layout": {
+                "栅格布局 Layout": {
+                    "version":"0.1.3",
+                    "component":"bee-layout"
+                }
+            },
+            "工具 Tool": {
+                "拖拽 Dnd": {
+                    "version":"0.1.3",
+                    "component":"bee-dnd"
+                },
+                "多语 Locale": {
+                    "version": "1.1.1",
+                    "component": "bee-locale"
+                }
+            },
+            "视图 View": {
+                "标记 Badge": {
+                    "version":"0.1.3",
+                    "component":"bee-badge"
+                },
+                "按钮组 ButtonGroup": {
+                    "version":"0.1.3",
+                    "component":"bee-button-group"
+                },
+                "进度条 ProgressBar": {
+                    "version":"0.1.3",
+                    "component":"bee-progress-bar"
+                },
+                "状态按钮 LoadingState": {
+                    "version":"0.1.3",
+                    "component":"bee-loading-state"
+                },
+                "展示板 Panel": {
+                    "version":"0.1.3",
+                    "component":"bee-panel"
+                },
+                "磁贴 Tile": {
+                    "version":"0.1.3",
+                    "component":"bee-tile"
+                },
+                "时间轴 Timeline":{
+                    "version":"0.0.1",
+                    "component":"bee-timeline"
+                },
+                "轮播图 Carousel":{
+                    "version":"0.1.3",
+                    "component":"bee-carousel"
+                },
+                "日历 Calendar":{
+                    "version":"0.1.3",
+                    "component":"bee-calendar"
+                },
+                "表格 Table":{
+                    "version":"0.2.0",
+                    "component":"bee-table"
+                },
+                "复杂表格 ComplexGrid":{
+                    "version":"0.2.0",
+                    "component":"bee-complex-grid"
+                },
+                "树形控件 Tree":{
+                    "version":"0.1.0",
+                    "component":"bee-tree"
+                },
+                "折叠 Collapse":{
+                    "version":"0.1.0",
+                    "component":"bee-collapse"
+                },
+                "图片查看器 Viewer":{
+                    "version":"0.1.3",
+                    "component":"bee-viewer"
+                }
+            },
+            "导航 Navigation": {
+                "面包屑 Breadcrumb": {
+                    "version":"0.1.3",
+                    "component":"bee-breadcrumb"
+                },
+                "分页 Pagination": {
+                    "version":"0.1.3",
+                    "component":"bee-pagination"
+                },
+                "标签 Tabs": {
+                    "version":"0.1.3",
+                    "component":"bee-tabs"
+                },
+                "下拉按钮 Dropdown": {
+                    "version":"0.1.3",
+                    "component":"bee-dropdown"
+                },
+                "导航栏 Navbar": {
+                    "version":"0.2.8",
+                    "component":"bee-navbar"
+                },
+                "菜单 Menus": {
+                    "version":"0.1.10",
+                    "component":"bee-menus"
+                },
+                "步骤条 Steps":{
+                    "version":"0.0.4",
+                    "component":"bee-step"
+                },
+                "固钉 Affix":{
+                    "version":"0.1.3",
+                    "component":"bee-affix"
+                },
+                "回到顶部 BackTop":{
+                    "version":"0.1.7",
+                    "component":"bee-backtop"
+                }
+            },
+            "反馈 Feedback": {
+                "模态框 Modal": {
+                    "version":"0.1.3",
+                    "component":"bee-modal"
+                },
+                "通知 Notification": {
+                    "version":"0.1.3",
+                    "component":"bee-notification"
+                },
+                "警告提示 Alert": {
+                    "version":"0.1.3",
+                    "component":"bee-alert"
+                },
+                "气泡弹窗 Popconfirm": {
+                    "version":"0.0.2",
+                    "component":"bee-popconfirm"
+                },
+                "消息提醒 Message": {
+                    "version":"0.0.2",
+                    "component":"bee-message"
+                },
+                "文字提示 Tooltip": {
+                    "version":"0.1.3",
+                    "component":"bee-tooltip"
+                },
+                "加载提示 Loading": {
+                    "version":"0.1.3",
+                    "component":"bee-loading"
+                },
+                "气泡卡片 Popover": {
+                    "version":"0.1.3",
+                    "component":"bee-popover"
+                }
+            },
+            "表单 Form": {
+                "表单 Form": {
+                    "version":"0.1.3",
+                    "component":"bee-form"
+                },
+                "单选 Radio": {
+                    "version":"0.1.3",
+                    "component":"bee-radio"
+                },
+                "多选 Checkbox": {
+                    "version":"0.1.3",
+                    "component":"bee-checkbox"
+                },
+                "输入框 Input": {
+                    "version":"0.1.3",
+                    "component":"bee-form-control"
+                },
+                "输入框组 InputGroup": {
+                    "version": "0.1.3",
+                    "component": "bee-input-group"
+                },
+                "表单容器 FormGroup": {
+                    "version": "0.1.3",
+                    "component": "bee-form-group"
+                },
+                "开关 Switch": {
+                    "version":"0.1.3",
+                    "component":"bee-switch"
+                },
+                "下拉框 Select": {
+                    "version":"0.1.3",
+                    "component":"bee-select"
+                },
+                "级联菜单 Cascader":{
+                    "version":"0.1.3",
+                    "component":"bee-cascader"
+                },
+                "城市选择 CitySelect":{
+                    "version":"0.0.3",
+                    "component":"bee-city-select"
+                },
+                "上传 Upload":{
+                    "version":"0.1.3",
+                    "component":"bee-upload"
+                },
+                "滑块 Slider":{
+                    "version":"0.1.3",
+                    "component":"bee-slider"
+                },
+                "穿梭框 Transfer":{
+                    "version":"0.0.3",
+                    "component":"bee-transfer"
+                },
+                "数字框 InputNumber":{
+                    "version":"0.0.8",
+                    "component":"bee-input-number"
+                },
+                "时间 TimePicker":{
+                    "version":"0.1.3",
+                    "component":"bee-timepicker"
+                },
+                "日期 DatePicker":{
+                    "version":"0.1.2",
+                    "component":"bee-datepicker"
+                },
+                "评分 Rate":{
+                    "version":"0.1.3",
+                    "component":"bee-rate"
+                },
+                "剪贴板 Clipboard":{
+                    "version":"0.1.5",
+                    "component":"bee-clipboard"
+                },
+                "自动完成 Autocomplete":{
+                    "version":"0.1.5",
+                    "component":"bee-autocomplete"
+                }
+            }
+        }
+    }
+}
