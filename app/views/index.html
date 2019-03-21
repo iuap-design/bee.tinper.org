@@ -13,7 +13,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="renderer" content="webkit">
     <link rel="icon" href="//tinper.org/assets/images/favicon.png" type="image/png" sizes="16x16">
-    <!-- <link href="//design.yonyoucloud.com/static/tinper-bee/latest/assets/tinper-bee.css" rel="stylesheet" media="screen" /> -->
+    <link href="//cdn.jsdelivr.net/highlight.js/9.8.0/styles/default.min.css" type="text/css" rel="stylesheet" />
     <link href="//design.yonyoucloud.com/static/tinper-bee/test/tinper-bee.css" rel="stylesheet" media="screen" />
     <link rel="stylesheet" href="//design.yonyoucloud.com/static/docSearch/docsearch.min.css" /> 
     <link rel="stylesheet" href="./css/atom-one-dark.css" type="text/css"/>
@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="./css/footer.css" type="text/css"/>
     <link rel="stylesheet" href="./css/rightMenus.css" type="text/css"/>
 </head>
+<script src="//cdn.jsdelivr.net/highlight.js/9.8.0/highlight.min.js"></script>
 <script src="//design.yonyoucloud.com/static/react/16.8.4/umd/react.production.min.js"></script>
 <script src="//design.yonyoucloud.com/static/react/16.8.4/umd/react-dom.production.min.js"></script>
 <script src="//design.yonyoucloud.com/static/prop-types/15.6.0/prop-types.min.js"></script>
@@ -45,6 +46,7 @@
 </body>
 <script type="text/javascript" src="//design.yonyoucloud.com/static/docSearch/docsearch.min.js"></script>
 <script>
+    hljs.initHighlightingOnLoad();
     docsearch({ 
             apiKey: 'd388a4977faabf821db64112c8abdcf7', 
             indexName: 'bee_tinper', 

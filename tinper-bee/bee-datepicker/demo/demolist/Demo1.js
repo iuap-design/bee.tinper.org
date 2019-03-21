@@ -12,11 +12,16 @@ const format = "YYYY-MM-DD dddd";
 const dateInputPlaceholder = "选择日期";
 
 class Demo1 extends Component {
-    onSelect = d => {
-        console.log(d);
+    onSelect = (d, dataString)  => {
+        console.log('select')
+        console.log(d, dataString) ;
+    }
+    onClick = d => {
+        console.log('click')
     }
     onChange = (d, dataString) => {
-        console.log(dataString);
+        console.log('change')
+        console.log(d, dataString)
     };
     render() {
         var self = this;
@@ -28,6 +33,7 @@ class Demo1 extends Component {
                             format={format}
                             onSelect={this.onSelect}
                             onChange={this.onChange}
+                            onClick={this.onClick}
                         />
                     </Col>
                 </Row>

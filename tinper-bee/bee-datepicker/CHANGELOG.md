@@ -1,5 +1,25 @@
+<a name="2.0.13"></a>
+## [2.0.13](https://github.com/tinper-bee/bee-datepicker/compare/v2.0.12...v2.0.13) (2019-03-21)
+
+
+### Bug Fixes
+
+* **bee-datepicker:** 双击加节流 ([0857c05](https://github.com/tinper-bee/bee-datepicker/commit/0857c05))
+
+
+
 <a name="2.0.12"></a>
-## [2.0.12](https://github.com/tinper-bee/bee-datepicker/compare/v2.0.10...v2.0.12) (2019-03-20)
+## [2.0.12](https://github.com/tinper-bee/bee-datepicker/compare/v2.0.11...v2.0.12) (2019-03-20)
+
+
+
+<a name="2.0.11"></a>
+## [2.0.11](https://github.com/tinper-bee/bee-datepicker/compare/v2.0.10...v2.0.11) (2019-03-19)
+
+
+
+<a name="2.0.10"></a>
+## [2.0.10](https://github.com/tinper-bee/bee-datepicker/compare/v2.0.9...v2.0.10) (2019-03-19)
 
 
 ### Bug Fixes
@@ -8,8 +28,13 @@
 
 
 
-<a name="2.0.10"></a>
-## [2.0.10](https://github.com/tinper-bee/bee-datepicker/compare/v2.0.6...v2.0.10) (2019-03-19)
+<a name="2.0.9"></a>
+## [2.0.9](https://github.com/tinper-bee/bee-datepicker/compare/v2.0.7...v2.0.9) (2019-03-13)
+
+
+
+<a name="2.0.7"></a>
+## [2.0.7](https://github.com/tinper-bee/bee-datepicker/compare/v2.0.6...v2.0.7) (2019-03-07)
 
 
 ### Bug Fixes
@@ -19,7 +44,17 @@
 
 
 <a name="2.0.6"></a>
-## [2.0.6](https://github.com/tinper-bee/bee-datepicker/compare/v2.0.2...v2.0.6) (2019-03-02)
+## [2.0.6](https://github.com/tinper-bee/bee-datepicker/compare/v2.0.5...v2.0.6) (2019-03-02)
+
+
+
+<a name="2.0.5"></a>
+## [2.0.5](https://github.com/tinper-bee/bee-datepicker/compare/v2.0.4...v2.0.5) (2019-03-01)
+
+
+
+<a name="2.0.4"></a>
+## [2.0.4](https://github.com/tinper-bee/bee-datepicker/compare/v2.0.3...v2.0.4) (2019-02-27)
 
 
 ### Features
@@ -28,21 +63,72 @@
 
 
 
+<a name="2.0.3"></a>
+## [2.0.3](https://github.com/tinper-bee/bee-datepicker/compare/v2.0.2...v2.0.3) (2019-02-26)
+
+
+
 <a name="2.0.2"></a>
-## [2.0.2](https://github.com/tinper-bee/bee-datepicker/compare/v1.3.14...v2.0.2) (2019-02-25)
+## [2.0.2](https://github.com/tinper-bee/bee-datepicker/compare/v2.0.1...v2.0.2) (2019-02-25)
+
+
+
+<a name="2.0.1"></a>
+## [2.0.1](https://github.com/tinper-bee/bee-datepicker/compare/v2.0.0...v2.0.1) (2019-02-22)
 
 
 ### Bug Fixes
 
 * **bee-datepicker:** clearbug ([1a8ce59](https://github.com/tinper-bee/bee-datepicker/commit/1a8ce59))
-* **bee-datepicker:** css修改 ([85ee1cd](https://github.com/tinper-bee/bee-datepicker/commit/85ee1cd))
+
+
+
+<a name="2.0.0"></a>
+# [2.0.0](https://github.com/tinper-bee/bee-datepicker/compare/v2.0.0-beta3...v2.0.0) (2019-02-22)
+
+
+### Features
+
+* **bee-datepicker:** 所有类型新增输入框，升级rc ([b990af1](https://github.com/tinper-bee/bee-datepicker/commit/b990af1))
+
+
+
+<a name="2.0.0-beta3"></a>
+# [2.0.0-beta3](https://github.com/tinper-bee/bee-datepicker/compare/v2.0.0-beta2...v2.0.0-beta3) (2019-02-21)
 
 
 ### Features
 
 * **bee-datepicker:** 交互修改 ([08a8264](https://github.com/tinper-bee/bee-datepicker/commit/08a8264))
+
+
+
+<a name="2.0.0-beta2"></a>
+# [2.0.0-beta2](https://github.com/tinper-bee/bee-datepicker/compare/v2.0.0-beta1...v2.0.0-beta2) (2019-02-21)
+
+
+### Features
+
 * **bee-datepicker:** 交互修改 ([6fb8560](https://github.com/tinper-bee/bee-datepicker/commit/6fb8560))
-* **bee-datepicker:** 所有类型新增输入框，升级rc ([b990af1](https://github.com/tinper-bee/bee-datepicker/commit/b990af1))
+
+
+
+<a name="2.0.0-beta1"></a>
+# [2.0.0-beta1](https://github.com/tinper-bee/bee-datepicker/compare/v2.0.0-beta...v2.0.0-beta1) (2019-02-20)
+
+
+### Bug Fixes
+
+* **bee-datepicker:** css修改 ([85ee1cd](https://github.com/tinper-bee/bee-datepicker/commit/85ee1cd))
+
+
+
+<a name="2.0.0-beta"></a>
+# [2.0.0-beta](https://github.com/tinper-bee/bee-datepicker/compare/v1.3.14...v2.0.0-beta) (2019-02-20)
+
+
+### Features
+
 * **bee-datepicker:** 所有选择新增输入时间框，新增清空功能 ([dae4ebc](https://github.com/tinper-bee/bee-datepicker/commit/dae4ebc))
 
 

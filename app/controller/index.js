@@ -112,7 +112,7 @@ module.exports = {
         listStr +
         "</div>"
       );
-    } else if(component=='changelog'){debugger
+    } else if(component=='changelog'){
         rightMenus = docsMenus[component].menus;
         changeLog = sidebar['更新日志'].changeLog;
         filePath = path.join(__dirname, `../../docs/${component}.md`);

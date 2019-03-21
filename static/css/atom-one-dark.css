@@ -24,6 +24,8 @@ hue-6-2: #e6c07b
   padding: 0.5em;
   color: #424242;
   background: #FAFAFA;
+  max-width: 100%;
+  white-space: pre-wrap;
 }
 
 .hljs-comment,
@@ -196,6 +198,7 @@ hue-6-2: #e6c07b
   top: 0;
   right: 0;
   height: 100%;
+  max-width: 50%;
 }
 .component-drawerc .drawer-top{
   top: 0;
