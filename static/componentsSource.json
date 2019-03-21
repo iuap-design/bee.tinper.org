@@ -328,5 +328,11 @@
         "versions": [
 
         ]
+    },
+    "bee-search-panel":{
+        "name":"查询面板",
+        "version":[
+            
+        ]
     }
 }

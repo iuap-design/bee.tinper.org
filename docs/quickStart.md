@@ -1,23 +1,21 @@
-# 快速上手
+# 快速开始
 
 &nbsp;&nbsp;tinper-bee 组件库 致力于提供给程序员愉悦快速的开发体验。
 
 
 
 ## 一、安装 tinper-bee 
->可使用 npm、cnpm、yarn 以及 ynpm 来安装组件库以及组件。
+可使用 npm、cnpm、yarn 以及 ynpm 来安装组件库以及组件。
 
-```js
-
+```
   npm install --save tinper-bee
 ```
 
-
 ## 二、项目中使用 tinper-bee
 
->为了方便用户单独处理样式和js文件，所以我们对js和css进行了单独的打包。
+为了方便用户单独处理样式和js文件，所以我们对js和css进行了单独的打包。
 
-```js
+```
 import React,{ Component } from 'react';
 
 //tinper-bee 组件库js引用
@@ -43,6 +41,7 @@ class Example extends Component{
 }
 
 export default Example；
+
 ```
 
 <br/>
@@ -52,7 +51,7 @@ export default Example；
 
 ## 三、使用CDN
 
-> [版本号查阅](http://bee.tinper.org/tinper-bee/changelog)
+[版本号查阅](http://bee.tinper.org/tinper-bee/changelog)
 
 - css样式
 
@@ -78,15 +77,13 @@ export default Example；
 并且，在你的webpack处，配置
 
 ```
-...
 externals: {
    'tinper-bee': 'TinperBee'
 }
-...
 ```
 
 ## 四、单个使用个别组件
-> 无法使用主题定制
+无法使用主题定制
 
 ```js
 import React,{ Component } from 'react';
@@ -117,7 +114,8 @@ Datepicker日期选择组件、Timepicker时间选择组件、Dnd拖拽组件、
 
 
 这些组件使用如下方式引入，不需要单独引入样式。
->css的引入方式不变
+css的引入方式不变
+
 ```js
 
 import Datepicker from 'tinper-bee/lib/Datepicker';

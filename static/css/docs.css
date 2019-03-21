@@ -160,7 +160,7 @@ body {
     font-size:13px;
     font-weight:500; 
     line-height:22px;
-    margin:10px 20px 20px 0;
+    margin:10px 20px 0 0;
     border-radius: 4px;
     -webkit-font-smoothing: auto;
 }
@@ -340,4 +340,11 @@ select::-ms-expand {
 
 .docs .changelogs .changelog{
     margin-top: 40px;
+}
+
+.docs .whoused ul{
+    list-style: circle;
+}
+.docs .whoused a{
+    color: #E14C46;
 }

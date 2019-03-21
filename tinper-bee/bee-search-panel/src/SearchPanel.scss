@@ -1,0 +1,91 @@
+@import "../node_modules/tinper-bee-core/scss/minxin-variables";
+@import "../node_modules/tinper-bee-core/scss/minxin-mixins";
+
+.u-search {
+    background: #F7F9FB;
+    &-header {
+        color: #424242;
+        overflow: hidden;
+        height: 48px;
+        padding: 11px 24px;
+        & > a {
+            overflow: hidden;
+        }
+    }
+
+    &-header-title {
+        float: left;
+        color: #434A54;
+        line-height: 26px;
+        font-size: 14px;
+        font-weight: 500;
+
+        & > i {
+            font-weight: 600;
+        }
+    }
+
+    &-header-oper {
+        float: right;
+        vertical-align: center;
+        line-height: 0;
+
+        .header-oper-btn {
+            display: inline-block;
+            width: 64px;
+            height: 26px;
+            text-align: center;
+            font-size: 12px;
+            line-height: 26px;
+            border-radius: 3px;
+            margin-left: 8px;
+            cursor: pointer;
+            vertical-align: middle;
+            &:hover {
+                background: #EBECF0;
+            }
+            & > i {
+                font-size: 12px;
+                padding-right: 0;
+            }
+
+            &.primary {
+                background: #5E6C84;
+                color: #ffffff;
+                &:hover {
+                    background: #344563;
+                }
+            }
+        }
+    }
+
+    &-resident {
+        padding: 0 24px 10px;
+    }
+
+    .u-panel {
+        border-radius: 0;
+        border: none;
+        margin-bottom: 0;
+        background: transparent;
+        box-shadow: none;
+
+        .u-panel-heading {
+            height: 48px;
+            padding: 11px 24px;
+            border: none;
+            background: transparent;
+        }
+
+        .u-panel-body {
+            background: transparent;
+            padding: 0 24px 10px;
+        }
+
+        .u-panel-collapse.collapsing {
+            width: 100%;
+        }
+    }
+
+}
+
