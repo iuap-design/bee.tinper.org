@@ -48,6 +48,8 @@
  },
  "devDependencies": {
   "bee-button": "latest",
+  "bee-clipboard": "^2.0.0",
+  "bee-drawer": "0.0.2",
   "bee-icon": "^1.0.3",
   "bee-layout": "latest",
   "bee-message": "^1.0.1",

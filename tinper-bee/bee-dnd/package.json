@@ -1,6 +1,6 @@
 {
  "name": "bee-dnd",
- "version": "1.0.7",
+ "version": "1.1.0",
  "description": "Dnd ui component for react",
  "keywords": [
   "react",
@@ -51,16 +51,18 @@
   "prop-types": "15.6.0"
  },
  "devDependencies": {
+  "bee-button": "latest",
+  "bee-clipboard": "^2.0.0",
+  "bee-drawer": "0.0.2",
+  "bee-layout": "latest",
+  "bee-panel": "1.2.12",
   "chai": "^3.5.0",
+  "console-polyfill": "~0.2.1",
   "enzyme": "^2.4.1",
+  "es5-shim": "~4.1.10",
   "react": "^16.6.0",
   "react-addons-test-utils": "15.3.2",
-  "react-dom": "^16.6.0",
-  "console-polyfill": "~0.2.1",
-  "es5-shim": "~4.1.10",
-  "bee-panel": "1.2.12",
-  "bee-layout": "latest",
-  "bee-button": "latest"
+  "react-dom": "^16.6.0"
  },
  "directories": {
   "doc": "docs",

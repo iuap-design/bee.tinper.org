@@ -1,77 +1,83 @@
-import {Col, Row} from 'bee-layout';
-import {Panel} from 'bee-panel';
-import Button from 'bee-button';
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import { Con, Row, Col } from 'bee-layout';
+import { Panel } from 'bee-panel';
+import Drawer from 'bee-drawer';
+import Clipboard from 'bee-clipboard'; 
+import Button from '../src';
 
 
-const CARET = <i className="uf uf-arrow-down"></i>;
 
-const CARETUP = <i className="uf uf-arrow-up"></i>;
-
-
-var Demo1 = require("./demolist/Demo1");var Demo2 = require("./demolist/Demo2");var DemoArray = [{"example":<Demo1 />,"title":" 卡片模式","code":"\r\n/**\r\n *\r\n * @title 卡片模式\r\n * @description 用于嵌套在空间有限的容器中\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\r\nimport Calendar from \"tinper-bee/lib/Calendar\";\r\n\r\n\r\nfunction onSelect(value) {\r\n    console.log(value);\r\n}\r\n\r\n\r\nclass Demo1 extends Component {\r\n    render() {\r\n        return (\r\n            <div>\r\n               <Calendar\r\n                   style={{ margin: 10 }}\r\n                   fullscreen={false}\r\n                   onSelect={onSelect}\r\n               />\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\n\r\n","desc":" 用于嵌套在空间有限的容器中"},{"example":<Demo2 />,"title":" 选择日历","code":"\r\n/**\r\n *\r\n * @title 选择日历\r\n * @description 一个通用的日历面板，支持年/月切换。\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\r\nimport Calendar from \"tinper-bee/lib/Calendar\";\r\n\r\n\r\nfunction onSelect(value) {\r\n    console.log(value);\r\n}\r\n\r\nclass Demo2 extends Component {\r\n\r\n    constructor(props, context) {\r\n        super(props, context);\r\n\r\n        this.state =  {\r\n            type:'month',\r\n        }\r\n    }\r\n\r\n    onTypeChange(type) {\r\n        this.setState({\r\n            type,\r\n        });\r\n    }\r\n\r\n    render() {\r\n        return (\r\n            <div>\r\n               <Calendar\r\n                   style={{ margin: 10 }}\r\n                   fullscreen\r\n\r\n                   onSelect={onSelect}\r\n                   type={this.state.type}\r\n                   onTypeChange={this.onTypeChange.bind(this)}\r\n\r\n               />\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\n","desc":" 一个通用的日历面板，支持年/月切换。"}]
+var Demo1 = require("./demolist/Demo1");var Demo2 = require("./demolist/Demo2");var DemoArray = [{"example":<Demo1 />,"title":" 卡片模式","code":"\n/**\n *\n * @title 卡片模式\n * @description 用于嵌套在空间有限的容器中\n *\n */\n\nimport React, { Component } from 'react';\nimport Calendar from \"tinper-bee/lib/Calendar\";\n\n\nfunction onSelect(value) {\n    console.log(value);\n}\n\n\nclass Demo1 extends Component {\n    render() {\n        return (\n            <div>\n               <Calendar\n                   style={{ margin: 10 }}\n                   fullscreen={false}\n                   onSelect={onSelect}\n               />\n            </div>\n        )\n    }\n}\n\n\n","desc":" 用于嵌套在空间有限的容器中"},{"example":<Demo2 />,"title":" 选择日历","code":"\n/**\n *\n * @title 选择日历\n * @description 一个通用的日历面板，支持年/月切换。\n *\n */\n\nimport React, { Component } from 'react';\nimport Calendar from \"tinper-bee/lib/Calendar\";\n\n\nfunction onSelect(value) {\n    console.log(value);\n}\n\nclass Demo2 extends Component {\n\n    constructor(props, context) {\n        super(props, context);\n\n        this.state =  {\n            type:'month',\n        }\n    }\n\n    onTypeChange(type) {\n        this.setState({\n            type,\n        });\n    }\n\n    render() {\n        return (\n            <div>\n               <Calendar\n                   style={{ margin: 10 }}\n                   fullscreen\n\n                   onSelect={onSelect}\n                   type={this.state.type}\n                   onTypeChange={this.onTypeChange.bind(this)}\n\n               />\n            </div>\n        )\n    }\n}\n\n","desc":" 一个通用的日历面板，支持年/月切换。"}]
 
 
 class Demo extends Component {
-    constructor(props) {
+    constructor(props){
         super(props);
         this.state = {
             open: false
         }
-        this.handleClick = this.handleClick.bind(this);
+    }
+    handleClick=()=> {
+        this.setState({ open: !this.state.open })
+    }
+    fCloseDrawer=()=>{
+        this.setState({
+            open: false
+        })
     }
 
-    handleClick() {
-        this.setState({open: !this.state.open})
-    }
-
-    render() {
-        const {title, example, code, desc, scss_code} = this.props;
-        let caret = this.state.open ? CARETUP : CARET;
-        let text = this.state.open ? "隐藏代码" : "查看代码";
+    render () {
+        const { title, example, code, desc, scss_code  } = this.props;
 
         const header = (
             <div>
-                {example}
-                <Button style={{"marginTop": "10px"}} shape="block" onClick={this.handleClick}>
-                    {caret}
-                    {text}
-                </Button>
+                <p className='component-title'>{ title }</p>
+                <p>{ desc }</p>
+                <span className='component-code' onClick={this.handleClick}> 查看源码 <i className='uf uf-arrow-right'/> </span>
             </div>
         );
         return (
-            <Col md={12} id={title.trim()} >
-                <h3>{title}</h3>
-                <p>{desc}</p>
-                <Panel collapsible headerContent expanded={this.state.open} colors='bordered' header={header}
-                       footerStyle={{padding: 0}}>
-                    <pre><code className="hljs javascript">{code}</code></pre>
-                    {!!scss_code ? <pre><code className="hljs css">{scss_code}</code></pre> : null}
-                </Panel>
-            </Col>
-        )
+            <Col md={12} id={title.trim()} className='component-demo'>
+            <Panel header={header}>
+                {example}
+            </Panel>
+           
+            <Drawer className='component-drawerc' title={title} show={this.state.open} placement='right' onClose={this.fCloseDrawer}>
+            <div className='component-code-copy'> JS代码 
+                <Clipboard action="copy" text={code}/>
+            </div>
+            <pre className="pre-js">
+                <code className="hljs javascript">{ code }</code>
+            </pre >
+            {!!scss_code ?<div className='component-code-copy copy-css'> SCSS代码 
+                <Clipboard action="copy" text={scss_code}/>
+            </div>:null }
+                { !!scss_code ? <pre className="pre-css">
+                 <code className="hljs css">{ scss_code }</code>
+                 </pre> : null }
+            </Drawer>
+        </Col>
+    )
     }
 }
 
 class DemoGroup extends Component {
-    constructor(props) {
+    constructor(props){
         super(props)
     }
-
-    render() {
+    render () {
         return (
             <Row>
-                {DemoArray.map((child, index) => {
+            {DemoArray.map((child,index) => {
 
-                    return (
-                        <Demo example={child.example} title={child.title} code={child.code} scss_code={child.scss_code}
-                              desc={child.desc} key={index}/>
-                    )
+                return (
+            <Demo example= {child.example} title= {child.title} code= {child.code} scss_code= {child.scss_code} desc= {child.desc} key= {index}/>
+    )
 
-                })}
-            </Row>
-        )
+    })}
+    </Row>
+    )
     }
 }
 

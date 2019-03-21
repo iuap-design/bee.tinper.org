@@ -19,7 +19,7 @@ class Demo6 extends Component {
     }
     render() {
         return (
-            <div>
+            <div className="demo6">
                 <Dnd bounds={{top: -50, left: -50, right: 50, bottom: 50}} onStart={this.onStart} onStop={this.onStop}>
                     <div className="demo">我只能再上下左右50px内移动</div>
                 </Dnd>

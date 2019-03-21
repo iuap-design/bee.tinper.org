@@ -89,10 +89,10 @@
         cursor: pointer; }
       .u-dropdown-menu > .u-dropdown-menu-item-selected {
         color: rgb(245, 60, 50);
-        background-color: rgb(255, 247, 231);
+        background-color: rgb(247,247,247);
         position: relative; }
         .u-dropdown-menu > .u-dropdown-menu-item-selected:hover {
-          background-color: rgb(255, 247, 231); }
+          background-color: rgb(247,247,247); }
       .u-dropdown-menu > .u-dropdown-menu-item-disabled {
         color: rgb(189,189,189);
         cursor: not-allowed; }
@@ -125,9 +125,9 @@
           background: rgb(235, 236, 240); }
         .u-dropdown-menu-item-group-list > .u-dropdown-menu-item-selected {
           color: rgb(245, 60, 50);
-          background: rgb(255, 247, 231); }
+          background: rgb(247,247,247); }
           .u-dropdown-menu-item-group-list > .u-dropdown-menu-item-selected:hover {
-            background: rgb(255, 247, 231); }
+            background: rgb(247,247,247); }
     .u-dropdown-menu-vertical .u-dropdown-menu {
       top: 0;
       position: absolute;

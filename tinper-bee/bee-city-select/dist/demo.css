@@ -243,7 +243,7 @@ ul {
   box-sizing: border-box;
   display: inline-block;
   position: relative;
-  color: #666;
+  color: #212121;
   width: 100%;
   font-size: 12px; }
   .u-select :root .u-select-arrow {
@@ -350,7 +350,7 @@ ul {
   padding-left: 5px; }
 
 .u-select-disabled {
-  color: #ccc; }
+  color: #909090; }
   .u-select-disabled .u-select-selection {
     background: #f7f7f7;
     cursor: not-allowed; }
@@ -643,10 +643,10 @@ ul {
   .u-select-dropdown .u-select-dropdown-menu-item-active {
     background-color: rgb(235, 236, 240); }
   .u-select-dropdown .u-select-dropdown-menu-item-disabled {
-    color: #ccc;
+    color: #909090;
     cursor: not-allowed; }
   .u-select-dropdown .u-select-dropdown-menu-item-disabled:hover {
-    color: #ccc;
+    color: #909090;
     background-color: #fff;
     cursor: not-allowed; }
   .u-select-dropdown .u-select-dropdown-menu-item-selected,

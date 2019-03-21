@@ -6,6 +6,7 @@
  */
 
 import React, { Component } from 'react';
+import Icon from 'bee-icon';
 import Dnd from '../../src/index';
 
 class Demo4 extends Component {
@@ -22,17 +23,9 @@ class Demo4 extends Component {
             <div className="demo-4">
                 <div>
                     <Dnd handle=".handle" onStart={this.onStart} onStop={this.onStop}>
-                        <div className="demo4 ">
-                            <div className="handle">我是把手</div>
-                            <div className="drag-context">需要拖拽把手</div>
-                        </div>
-                    </Dnd>
-                </div>
-                <div>
-                    <Dnd cancel=".handle" >
-                        <div className="demo4 ">
-                            <div className="handle">我是把手</div>
-                            <div className="drag-context">不要拖拽把手</div>
+                        <div className="demo4 demo">
+                            需要拖拽把手
+                            <div className="handle"><Icon type="uf-move"></Icon></div>
                         </div>
                     </Dnd>
                 </div>

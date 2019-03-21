@@ -248,7 +248,6 @@
     .demo6 .edit-panel .u-form-item .mast {
       width: 5px;
       min-width: auto;
-      margin-left: 4px;
       padding: 0;
       color: red; }
     .demo6 .edit-panel .u-form-item .datepicker-input-group .u-input-group-btn .uf-calendar {
@@ -319,7 +318,6 @@
     color: red;
     display: block; }
   .demo6 .edit-panel-textarea > div .mast {
-    margin-left: 4px;
     padding: 0;
     color: red; }
   .demo6 .edit-panel-textarea > div textarea {

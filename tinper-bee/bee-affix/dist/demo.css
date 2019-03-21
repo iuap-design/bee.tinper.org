@@ -2,6 +2,9 @@
 /*  Navlayout  */
 
 @charset "UTF-8";
+.demo1 {
+  float: left; }
+
 .stripes {
   width: 500px;
   height: 400px !important;

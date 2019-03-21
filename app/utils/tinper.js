@@ -44,7 +44,7 @@ function runDev(item){
  * @param {*} item 
  */
 function install(item){
-    let cmd = `cd ../../../tinper-bee/${item}/ && rm -rf node_module && npm i ` ;
+    let cmd = `cd ../../../tinper-bee/${item}/ && rm -rf node_module && ynpm i ` ;
     exec(cmd,(error)=>{
         if(error){
             console.log(`❌❌❌❌❌❌❌❌ ${item} 出错了！`)
@@ -56,11 +56,11 @@ function install(item){
 }
 
 /**
- * git push
+ * npm install 
  * @param {*} item 
  */
-function push(item){
-    let cmd = `cd ../../../tinper-bee/${item}/ && git push ` ;
+function installD(item){
+    let cmd = `cd ../../../tinper-bee/${item}/ && npm i bee-drawer bee-clipboard -D ` ;
     exec(cmd,(error)=>{
         if(error){
             console.log(`❌❌❌❌❌❌❌❌ ${item} 出错了！`)
@@ -73,8 +73,39 @@ function push(item){
 
 
 
+/**
+ * git push
+ * @param {*} item 
+ */
+function push(item){
+    let cmd = `cd ../../../tinper-bee/${item}/ && git add . && git commit -m"demo修改" && git push ` ;
+    exec(cmd,(error)=>{
+        if(error){
+            console.log(`❌❌❌❌❌❌❌❌ ${item} 出错了！`)
+            console.log(error);
+        }else{
+            console.log(`😀😀😀 ${item} 成功了！`)
+        }
+    })
+}
+
+function cp(item){
+    let cmd = `cp ../../../tinper-bee/bee-button/demo/index-demo-base.js  ../../../tinper-bee/${item}/demo && cp ../../../tinper-bee/bee-button/demo/atom-one-dark.css  ../../../tinper-bee/${item}/demo && cp ../../../tinper-bee/bee-button/index.html ../../../tinper-bee/${item}/index.html`;
+    exec(cmd,(error)=>{
+        if(error){
+            console.log(`❌❌❌❌❌❌❌❌ ${item} 出错了！`)
+            console.log(error);
+        }else{
+            console.log(`😀😀😀 ${item} 成功了！`)
+        }
+    })
+}
+
 Object.keys(componentsSource).forEach(item=>{
     // reset(item)
+    // install(item)
     push(item)
+    // runDev(item)
+    // installD(item)
     // runDev(item)
 })

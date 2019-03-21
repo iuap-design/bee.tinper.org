@@ -44,6 +44,8 @@
  },
  "devDependencies": {
   "bee-button": "^2.0.4",
+  "bee-clipboard": "^2.0.0",
+  "bee-drawer": "0.0.2",
   "bee-layout": "^1.2.7",
   "bee-panel": "^1.0.0",
   "chai": "^3.5.0",

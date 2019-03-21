@@ -35,8 +35,8 @@
     max-width: 200px;
     padding: 3px 8px;
     color: #fff;
-    background-color: #000;
-    border-radius: 4px;
+    background-color: #42526E;
+    border-radius: 3px;
     word-wrap: break-word; }
   .u-tooltip.right {
     padding: 0 5px; }
@@ -45,7 +45,7 @@
       left: 0;
       margin-top: -5px;
       border-width: 5px 5px 5px 0;
-      border-right-color: #000; }
+      border-right-color: #42526E; }
   .u-tooltip.top {
     padding: 5px 0; }
     .u-tooltip.top .tooltip-arrow {
@@ -53,7 +53,7 @@
       left: 50%;
       margin-left: -5px;
       border-width: 5px 5px 0;
-      border-top-color: #000; }
+      border-top-color: #42526E; }
   .u-tooltip.left {
     padding: 0 5px; }
     .u-tooltip.left .tooltip-arrow {
@@ -61,7 +61,7 @@
       right: 0;
       margin-top: -5px;
       border-width: 5px 0 5px 5px;
-      border-left-color: #000; }
+      border-left-color: #42526E; }
   .u-tooltip.bottom {
     padding: 5px 0; }
     .u-tooltip.bottom .tooltip-arrow {
@@ -69,40 +69,40 @@
       left: 50%;
       margin-left: -5px;
       border-width: 0 5px 5px;
-      border-bottom-color: #000; }
+      border-bottom-color: #42526E; }
   .u-tooltip.inverse-arrow.right .tooltip-arrow {
     top: 50%;
     left: auto;
     right: 0;
     margin-top: -5px;
     border-width: 5px 0 5px 5px;
-    border-left-color: #000; }
+    border-left-color: #42526E; }
   .u-tooltip.inverse-arrow.left .tooltip-arrow {
     top: 50%;
     left: 0;
     margin-top: -5px;
     border-width: 5px 5px 5px 0;
-    border-right-color: #000; }
+    border-right-color: #42526E; }
   .u-tooltip.inverse-arrow.top .tooltip-arrow {
     top: 0;
     left: 50%;
     margin-left: -5px;
     border-width: 0 5px 5px;
-    border-bottom-color: #000; }
+    border-bottom-color: #42526E; }
   .u-tooltip.inverse-arrow.bottom .tooltip-arrow {
     top: auto;
     bottom: 0;
     left: 50%;
     margin-left: -5px;
     border-width: 5px 5px 0;
-    border-top-color: #000; }
+    border-top-color: #42526E; }
   .u-tooltip.inverse.bottom .tooltip-arrow::after {
     top: 1px;
     margin-left: -5px;
     border-top-width: 0;
     border-bottom-color: #fff; }
   .u-tooltip.inverse.bottom .tooltip-arrow {
-    border-bottom-color: #d9d9d9; }
+    border-bottom-color: rgb(165, 173, 186); }
   .u-tooltip.inverse-arrow.inverse.top .tooltip-arrow::after {
     top: 1px;
     margin-left: -5px;
@@ -110,14 +110,14 @@
     border-bottom-color: #fff;
     border-bottom-width: inherit; }
   .u-tooltip.inverse-arrow.inverse.top .tooltip-arrow {
-    border-bottom-color: #d9d9d9; }
+    border-bottom-color: rgb(165, 173, 186); }
   .u-tooltip.inverse.left .tooltip-arrow::after {
     border-right-width: 0;
     top: -5px;
     margin-left: -6px;
     border-left-color: #fff; }
   .u-tooltip.inverse.left .tooltip-arrow {
-    border-left-color: #d9d9d9; }
+    border-left-color: rgb(165, 173, 186); }
   .u-tooltip.inverse-arrow.inverse.right .tooltip-arrow::after {
     border-right-width: 0;
     top: -5px;
@@ -125,14 +125,14 @@
     border-left-color: #fff;
     border-left-width: inherit; }
   .u-tooltip.inverse-arrow.inverse.right .tooltip-arrow {
-    border-left-color: #d9d9d9; }
+    border-left-color: rgb(165, 173, 186); }
   .u-tooltip.inverse.right .tooltip-arrow::after {
     border-left-width: 0;
     top: -5px;
     margin-left: 1px;
     border-right-color: #fff; }
   .u-tooltip.inverse.right .tooltip-arrow {
-    border-right-color: #d9d9d9; }
+    border-right-color: rgb(165, 173, 186); }
   .u-tooltip.inverse-arrow.inverse.left .tooltip-arrow::after {
     border-left-width: 0;
     top: -5px;
@@ -140,7 +140,7 @@
     border-right-color: #fff;
     border-right-width: inherit; }
   .u-tooltip.inverse-arrow.inverse.left .tooltip-arrow {
-    border-right-color: #d9d9d9; }
+    border-right-color: rgb(165, 173, 186); }
   .u-tooltip.inverse.top .tooltip-arrow::after {
     top: -6px;
     margin-left: -5px;
@@ -148,7 +148,7 @@
     border-bottom-color: #d9d9d9;
     border-top-color: #fff; }
   .u-tooltip.inverse.top .tooltip-arrow {
-    border-top-color: #d9d9d9; }
+    border-top-color: rgb(165, 173, 186); }
   .u-tooltip.inverse-arrow.inverse.bottom .tooltip-arrow::after {
     top: -6px;
     margin-left: -5px;
@@ -157,11 +157,11 @@
     border-top-color: #fff;
     border-top-width: inherit; }
   .u-tooltip.inverse-arrow.inverse.bottom .tooltip-arrow {
-    border-top-color: #d9d9d9; }
+    border-top-color: rgb(165, 173, 186); }
   .u-tooltip.inverse .tooltip-inner {
     background-color: #fff;
     color: #333333;
-    border: 1px solid #d9d9d9; }
+    border: 1px solid rgb(165, 173, 186); }
   .u-tooltip.inverse .tooltip-arrow::after {
     position: absolute;
     display: block;
@@ -231,7 +231,7 @@ input.u-button[type="submit"] {
   width: 38px;
   padding: 0;
   line-height: normal;
-  border: 1px solid rgb(224,224,224); }
+  border: 1px solid rgb(165, 173, 186); }
   .u-button-floating.colored {
     background: rgb(67,160,71);
     color: rgb(255,255,255);
@@ -259,16 +259,16 @@ input.u-button[type="submit"] {
 
 .u-button-border {
   color: rgb(33,33,33);
-  border: 1px solid rgb(224,224,224);
+  border: 1px solid rgb(165, 173, 186);
   background: rgb(255,255,255); }
   .u-button-border:hover {
     color: rgb(33,33,33);
     background-color: rgb(189,189,189);
-    border-color: rgb(224,224,224); }
+    border-color: rgb(165, 173, 186); }
   .u-button-border:active {
     color: rgb(33,33,33);
     background-color: rgb(189,189,189);
-    border-color: rgb(224,224,224); }
+    border-color: rgb(165, 173, 186); }
 
 .u-button.u-button-primary {
   color: rgb(255,255,255);
@@ -527,7 +527,7 @@ input.u-button[type="submit"] {
   width: 32px;
   padding: 0;
   line-height: normal;
-  border: 1px solid rgb(224,224,224); }
+  border: 1px solid rgb(165, 173, 186); }
 
 .u-button-lg {
   padding: 8px 15px;
@@ -1525,6 +1525,36 @@ input.u-button[type="submit"] {
 
 .uf-filterno:before {
   content: "\e9d1"; }
+
+.uf-clean:before {
+  content: "\e9d2"; }
+
+.uf-save:before {
+  content: "\e9d3"; }
+
+.uf-export:before {
+  content: "\e9d4"; }
+
+.uf-import:before {
+  content: "\e9d5"; }
+
+.uf-stop-c:before {
+  content: "\e9d6"; }
+
+.uf-rubber:before {
+  content: "\e9d7"; }
+
+.uf-bediting:before {
+  content: "\e9d8"; }
+
+.uf-maxmize:before {
+  content: "\e9d9"; }
+
+.uf-minimize:before {
+  content: "\e9da"; }
+
+.uf-globe:before {
+  content: "\e9db"; }
 
 /* FormGroup */
 /*  Navlayout  */

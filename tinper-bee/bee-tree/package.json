@@ -49,11 +49,13 @@
   "prop-types": "15.6.0"
  },
  "devDependencies": {
-  "bee-form-control": "latest",
   "bee-button": "latest",
+  "bee-clipboard": "^2.0.0",
+  "bee-drawer": "0.0.2",
+  "bee-form-control": "latest",
+  "bee-icon": "latest",
   "bee-layout": "latest",
   "bee-panel": "latest",
-  "bee-icon": "latest",
   "chai": "^3.5.0",
   "console-polyfill": "~0.2.1",
   "cz-conventional-changelog": "^2.1.0",

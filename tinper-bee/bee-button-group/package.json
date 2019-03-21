@@ -47,6 +47,8 @@
   "prop-types": "15.6.0"
  },
  "devDependencies": {
+  "bee-clipboard": "^2.0.0",
+  "bee-drawer": "0.0.2",
   "bee-icon": "latest",
   "bee-layout": "latest",
   "bee-panel": "latest",

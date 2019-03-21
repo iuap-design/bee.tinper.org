@@ -43,15 +43,17 @@
   "prop-types": "15.6.0"
  },
  "devDependencies": {
+  "bee-button": "latest",
+  "bee-clipboard": "^2.0.0",
+  "bee-drawer": "0.0.2",
+  "bee-layout": "latest",
+  "bee-panel": "latest",
   "chai": "^3.5.0",
+  "console-polyfill": "~0.2.1",
   "enzyme": "^2.4.1",
+  "es5-shim": "~4.1.10",
   "react": "15.3.2",
   "react-addons-test-utils": "15.3.2",
-  "react-dom": "15.3.2",
-  "console-polyfill": "~0.2.1",
-  "es5-shim": "~4.1.10",
-  "bee-panel": "latest",
-  "bee-layout": "latest",
-  "bee-button": "latest"
+  "react-dom": "15.3.2"
  }
 }

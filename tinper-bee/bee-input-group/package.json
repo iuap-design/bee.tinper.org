@@ -47,6 +47,8 @@
  },
  "devDependencies": {
   "bee-button": "latest",
+  "bee-clipboard": "^2.0.0",
+  "bee-drawer": "0.0.2",
   "bee-dropdown": "latest",
   "bee-form-control": "latest",
   "bee-form-group": "latest",
