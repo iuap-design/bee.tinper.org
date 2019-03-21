@@ -211,6 +211,9 @@
     font-size: 14px;
     margin-right: 24px; }
 
+.demo5 > .u-row .u-col-lg-4 {
+  padding: 0; }
+
 .demo6 .edit-panel {
   background: #FFF;
   padding: 15px 15px 15px 15px; }

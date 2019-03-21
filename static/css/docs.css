@@ -290,6 +290,14 @@ select::-ms-expand {
 .docs .doc-content .changelog .u-timeline-item-content {
     padding-bottom: 0;
 }
+.docs .doc-content .changelog .u-timeline-item-content .time{
+    font-size: 14px;
+    background: #FAFAFA;
+    height: 24p;
+    line-height: 24px;
+    display: inline-block;
+    padding: 0 8px;
+}
 .docs .changelog p, .docs .changelog pre{
     margin: 0;
 }

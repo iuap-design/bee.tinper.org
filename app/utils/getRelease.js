@@ -7,7 +7,7 @@ let components = require('../../static/components.json');
 
 
 const auth = {
-    token: '02394bdb0f0f3ad188daba95674677cf2bb2b0ea',
+    token: '',
     user: 'liushaozhen'
 }
 

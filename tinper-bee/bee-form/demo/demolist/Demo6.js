@@ -28,7 +28,7 @@ const Demo6 = Form.createForm()(class Demo extends Component {
             approvalState: '',
             closeState: '',
             confirmState: '',
-            voucherDate: [],
+            voucherName: [],
             orderTypes:[
                 {
                     'code':'001',
@@ -116,21 +116,22 @@ const Demo6 = Form.createForm()(class Demo extends Component {
                         </Col>
                         <Col lg={4} md={6} xs={12}>
                             <FormItem>
-                                <Label className='time'>凭证日期</Label>
-                                <RangePicker
-                                    defaultValue={this.state.voucherDate}
-                                    placeholder={'开始 ~ 结束'}
-                                    dateInputPlaceholder={['开始', '结束']}
+                                <Label >凭证名称</Label>
+                                <FormControl
                                     {
-                                    ...getFieldProps('voucherDate1', {
-                                        onChange: function (v) {
-                                            self.setState({
-                                                voucherDate1: v
-                                            })
-                                        }
-                                    })
+                                        ...getFieldProps('voucherName1', {
+                                            initialValue: '',
+                                            rules: [{
+                                                required: true, message: '请输入凭证名称',
+                                            }],
+                                        })
                                     }
                                 />
+                                <span className='error'>
+                                    {
+                                        getFieldError('voucherName1')
+                                    }
+                                </span>
                             </FormItem>
                         </Col>
                     </Row>
@@ -197,23 +198,24 @@ const Demo6 = Form.createForm()(class Demo extends Component {
 
                         <FormItem>
                             <Col md={2}>
-                                <Label>凭证日期</Label>
+                                <Label>凭证名称</Label>
                             </Col>
                             <Col md={10}>
-                                <RangePicker
-                                    defaultValue={this.state.voucherDate}
-                                    placeholder={'开始 ~ 结束'}
-                                    dateInputPlaceholder={['开始', '结束']}
+                            <FormControl
                                     {
-                                    ...getFieldProps('voucherDate2', {
-                                        onChange: function (v) {
-                                            self.setState({
-                                                voucherDate2: v
-                                            })
-                                        }
-                                    })
+                                        ...getFieldProps('voucherName2', {
+                                            initialValue: '',
+                                            rules: [{
+                                                required: true, message: '请输入凭证名称',
+                                            }],
+                                        })
                                     }
                                 />
+                                <span className='error'>
+                                    {
+                                        getFieldError('voucherName2')
+                                    }
+                                </span>
                             </Col>
                         </FormItem>
                         <FormItem>
@@ -296,21 +298,22 @@ const Demo6 = Form.createForm()(class Demo extends Component {
                         </Col>
                         <Col md={12}  >
                             <FormItem>
-                                <Label className='time'>凭证日期</Label>
-                                <RangePicker
-                                    defaultValue={this.state.voucherDate}
-                                    placeholder={'开始 ~ 结束'}
-                                    dateInputPlaceholder={['开始', '结束']}
+                                <Label >凭证名称</Label>
+                                <FormControl
                                     {
-                                    ...getFieldProps('voucherDate3', {
-                                        onChange: function (v) {
-                                            self.setState({
-                                                voucherDate3: v
-                                            })
-                                        }
-                                    })
+                                        ...getFieldProps('voucherName3', {
+                                            initialValue: '',
+                                            rules: [{
+                                                required: true, message: '请输入凭证名称',
+                                            }],
+                                        })
                                     }
                                 />
+                                <span className='error'>
+                                    {
+                                        getFieldError('voucherName3')
+                                    }
+                                </span>
                             </FormItem>
                         </Col>
                         
@@ -368,23 +371,24 @@ const Demo6 = Form.createForm()(class Demo extends Component {
                                 </span>
                             </Col>
                             <Col md={1}>
-                                <Label className='time'>凭证日期</Label>
+                                <Label >凭证名称</Label>
                             </Col>
                             <Col md={3}>
-                            <RangePicker
-                                    defaultValue={this.state.voucherDate}
-                                    placeholder={'开始 ~ 结束'}
-                                    dateInputPlaceholder={['开始', '结束']}
+                            <FormControl
                                     {
-                                    ...getFieldProps('voucherDate4', {
-                                        onChange: function (v) {
-                                            self.setState({
-                                                voucherDate3: v
-                                            })
-                                        }
-                                    })
+                                        ...getFieldProps('voucherName4', {
+                                            initialValue: '',
+                                            rules: [{
+                                                required: true, message: '请输入凭证名称',
+                                            }],
+                                        })
                                     }
                                 />
+                                <span className='error'>
+                                    {
+                                        getFieldError('voucherName4')
+                                    }
+                                </span>
                             </Col>
                             <Col md={1}>
                                 <Label className='time'>备注</Label>

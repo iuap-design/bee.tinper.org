@@ -114,29 +114,7 @@ const Demo5 = Form.createForm()(class Demo extends Component {
                                     </Col>
                                 </FormItem>
                             </Col>
-                            <Col lg={4} md={6} xs={4}>
-                                <FormItem>
-                                    <Col md={3}>
-                                        <Label className='time'>凭证日期</Label>
-                                    </Col>
-                                    <Col md={9}>
-                                        <RangePicker size="sm"
-                                            defaultValue={this.state.voucherDate}
-                                            placeholder={'开始 ~ 结束'}
-                                            dateInputPlaceholder={['开始', '结束']}
-                                            {
-                                            ...getFieldProps('voucherDate', {
-                                                onChange: function (v) {
-                                                    self.setState({
-                                                        voucherDate: v
-                                                    })
-                                                }
-                                            })
-                                            }
-                                        />
-                                    </Col>
-                                </FormItem>
-                            </Col>
+                            
                             <Col  lg={4} md={6} xs={12}>
                                 <FormItem>
                                     <Col md={3}>
