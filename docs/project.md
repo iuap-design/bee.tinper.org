@@ -57,7 +57,7 @@ npm start
 
 ### 如何访问
 
-> 访问的路径实际上就是ucf-apps文件夹内的名字，需要配合bootList进行设置
+ 访问的路径实际上就是ucf-apps文件夹内的名字，需要配合bootList进行设置
 
 
 * 访问模式一：直接访问
@@ -90,7 +90,7 @@ npm run build
 
 ## 安装组件库
 
-> 脚手架已经内置组件
+脚手架已经内置组件
 
 ```bash
 npm install tinper-bee --save
