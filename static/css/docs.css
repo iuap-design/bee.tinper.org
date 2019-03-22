@@ -285,6 +285,9 @@ select::-ms-expand {
 .docs .doc-content .changelog .u-timeline-item{
     padding: 0
 }
+.docs .doc-content .changelog .u-timeline-item:last-of-type .u-timeline-item-tail{
+    display: none;
+}
 .docs .doc-content .changelog .u-timeline-item-tail {
     border-left: 1px solid #DFDFDF;
     left: 4px;
