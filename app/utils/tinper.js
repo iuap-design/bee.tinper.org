@@ -3,6 +3,7 @@
  */
 const fs = require('fs-extra');
 const exec = require('child_process').exec;
+const path = require('path')
 let componentsSource = require('../../static/componentsSource.json');
 
 
@@ -101,11 +102,34 @@ function cp(item){
     })
 }
 
+
+async function rename(item){
+    let filePath = path.join(__dirname, `../../../../../tinper-bee/${item}/docs/api.md`);
+    let name = item.split('bee-')[1];
+    let high = '# '+name[0].toUpperCase()+name.substring(1,item.length)
+    name = '# '+componentsSource[item].name+' '+name[0].toUpperCase()+name.substring(1,item.length);
+    let data = fs.readFileSync(filePath, 'utf-8');
+    data = data.replace(high, name);
+    fs.writeFile(filePath,data).then(()=>{
+        console.log(`😀😀😀 ${name} 成功了！`)
+    })
+    .catch((error)=>{
+        console.log(`❌❌❌❌❌❌❌❌ ${name} 出错了！`)
+        console.log(error);
+    })
+}
+
+
+
+
+
+
 Object.keys(componentsSource).forEach(item=>{
     // reset(item)
     // install(item)
-    push(item)
+    // push(item)
     // runDev(item)
     // installD(item)
     // runDev(item)
+    // rename(item)
 })

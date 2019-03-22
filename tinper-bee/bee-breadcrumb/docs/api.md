@@ -1,4 +1,4 @@
-# Breadcrumb
+# 面包屑 Breadcrumb
 
 `Breadcrumb` 常用来指定当前页面位置，添加类`active`类激活Breadcrumb.Item.不要同时设置`active`和`href`,设置了`active`会将子元素渲染成`span`,覆盖`a`.
 

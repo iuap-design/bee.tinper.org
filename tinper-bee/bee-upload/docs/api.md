@@ -1,4 +1,4 @@
-# Upload
+# 上传 Upload
 
 过Upload可以将资源（web page,text,picture,video...）传到远程服务器
 

@@ -1,4 +1,4 @@
-# Collapse
+# 折叠 Collapse
 
 ## 何时使用
 折叠组件

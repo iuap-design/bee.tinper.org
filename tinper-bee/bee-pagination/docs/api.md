@@ -1,4 +1,4 @@
-# Pagination
+# 分页 Pagination
 分页组件
 
 ## 何时使用

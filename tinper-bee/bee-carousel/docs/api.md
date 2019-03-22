@@ -1,4 +1,4 @@
-# Carousel
+# 轮播图 Carousel
 轮播图组件
 
 ## 何时使用

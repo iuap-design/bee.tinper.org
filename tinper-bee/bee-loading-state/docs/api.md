@@ -1,4 +1,4 @@
-# LoadingState
+# 状态按钮 LoadingState
 
 ## 何时使用
 组件常用于在按钮上加载状态,继承Button

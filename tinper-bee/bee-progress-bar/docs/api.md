@@ -1,4 +1,4 @@
-# ProgressBar
+# 进度条 ProgressBar
 
 ## 何时使用
 记录进度或动态的显示进度变化。

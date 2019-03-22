@@ -1,4 +1,4 @@
-# FormGroup
+# 表单容器 FormGroup
 
 `FormGroup` 组件用来包裹像 `form control` `lable` `help text` `validate state`的元素
 

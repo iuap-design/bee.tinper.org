@@ -1,4 +1,4 @@
-# InputNumber
+# 数字框 InputNumber
 
 数字输入框
 

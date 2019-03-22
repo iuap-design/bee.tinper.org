@@ -98,11 +98,11 @@ module.exports = {
 
       let name = components[pack_data.name].name;
       let str =
-        data.match(/##? \w+/g) && data.match(/##? \w+/g).length ?
-        data.match(/##? \w+/g)[0] :
+        data.match(/#? \w+/g) && data.match(/#? \w+/g).length ?
+        data.match(/#? \w+/g)[0] :
         "";
       data = data.replace(
-        /##? \w+/,
+        /#? \w+/,
         str +
         "<a href='https://github.com/tinper-bee/" +
         component +

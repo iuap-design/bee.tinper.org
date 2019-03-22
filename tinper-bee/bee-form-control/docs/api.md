@@ -1,4 +1,5 @@
-# FormControl
+# 输入框 FormControl
+
 用 `<FormControl>` 来代替 `<input>`, `<textarea>`
 
 
