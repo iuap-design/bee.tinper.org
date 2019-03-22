@@ -1,6 +1,6 @@
 /**
 *
-* @title 限定最大值、最小值、间隔值
+* @title 第二种iconStyle
 * @description 自定义max=12,min=5,step=2
 *
 */

@@ -6428,9 +6428,6 @@ input.u-button[type="submit"] {
   border-radius: 0 500px 500px 0; }
 
 .demo .radio {
-  margin-right: -13px; }
-
-.demo .radio.u-col-xs-2 {
-  margin-right: 0px; }
+  margin-right: -11px; }
 
 /*# sourceMappingURL=demo.css.map */

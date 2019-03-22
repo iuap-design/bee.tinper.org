@@ -1,6 +1,6 @@
 /**
  *
- * @title 不可以状态
+ * @title 默认iconStyle不可用状态
  * @description disabled 的单输入控制
  *
  */

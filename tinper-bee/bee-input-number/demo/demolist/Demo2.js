@@ -1,7 +1,7 @@
 /**
 *
-* @title 限定最大值、最小值、间隔值
-* @description 自定义max=12,min=5,step=1
+* @title 默认 iconStyle
+* @description 自定义 最大值 max=12,min=5,step=1
 *
 */
 

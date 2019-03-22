@@ -97,12 +97,12 @@ class Demo2 extends Component {
                     <div className='demo'>
                         <Form>
                             <Row>
-                                <Col lg={4} md={4} xs={12} sm={6}>
+                                <Col xs={12} sm={6} md={4} lg={6}>
                                     <FormItem>
-                                        <Col md={4} xs={2} sm={4}>
+                                        <Col xs={4} sm={4} md={4}  lg={4}>
                                             <Label>订单编号</Label>
                                         </Col>
-                                        <Col md={8} xs={10} sm={8}>
+                                        <Col xs={8} sm={8} md={8}  lg={8}>
                                             <FormControl size="sm"
                                                 {
                                                 ...getFieldProps('orderCode', {
@@ -114,12 +114,12 @@ class Demo2 extends Component {
                                     </FormItem>
                                 </Col>
 
-                                <Col  lg={4} md={4} xs={12} sm={6}>
+                                <Col xs={12} sm={6} md={4} lg={6}>
                                     <FormItem>
-                                        <Col md={4} xs={2} sm={4}>
+                                        <Col xs={4} sm={4} md={4}  lg={4}>
                                             <Label>供应商名称</Label>
                                         </Col>
-                                        <Col md={8} xs={10} sm={8}>
+                                        <Col xs={8} sm={8} md={8}  lg={8}>
                                             <FormControl size="sm"
                                                 {
                                                 ...getFieldProps('supplierName', {
@@ -131,13 +131,12 @@ class Demo2 extends Component {
                                     </FormItem>
                                 </Col>
 
-
-                                <Col  lg={4} md={4} xs={12} sm={6}>
+                                <Col xs={12} sm={6} md={4} lg={6}>
                                     <FormItem>
-                                        <Col md={4} xs={2} sm={4}>
+                                        <Col xs={4} sm={4} md={4}  lg={4}>
                                             <Label>凭证日期</Label>
                                         </Col>
-                                        <Col md={8} xs={10} sm={8}>
+                                        <Col xs={8} sm={8} md={8}  lg={8}>
                                             <RangePicker
                                                 placeholder={'开始 ~ 结束'}
                                                 dateInputPlaceholder={['开始', '结束']}
@@ -167,12 +166,12 @@ class Demo2 extends Component {
                 <div className="demo">
                     <Form>
                         <Row>
-                            <Col lg={4} md={4} xs={12} sm={6}>
+                            <Col xs={12} sm={6} md={4} lg={6}>
                                 <FormItem>
-                                    <Col md={4} xs={2} sm={4}>
+                                    <Col xs={4} sm={4} md={4}  lg={4} className="radio">
                                         <Label>订单类型</Label>
                                     </Col>
-                                    <Col md={8} xs={10} sm={8}>
+                                    <Col xs={8} sm={8} md={8}  lg={8}>
                                         <Select size="sm"
                                             {
                                             ...getFieldProps('type', {
@@ -189,36 +188,35 @@ class Demo2 extends Component {
                                             }
                                         </Select>
                                     </Col>
-
                                 </FormItem>
                             </Col>
 
-                            <Col lg={4} md={4} xs={12} sm={6}>
+                            <Col xs={12} sm={6} md={4} lg={6}>
                                 <FormItem>
-                                    <Col md={4} xs={2} sm={4}>
+                                    <Col xs={4} sm={4} md={4}  lg={4}>
                                         <Label>采购组</Label>
                                     </Col>
-                                    <Col md={8} xs={10} sm={8}>
+                                    <Col xs={8} sm={8} md={8}  lg={8}>
                                         <CheckboxGroup 
-                                            {
-                                                ...getFieldProps('purchasingGroup',{
-                                                    initialValue:['2']
-                                                })
-                                            }
-                                        >
-                                            <Checkbox value='1'>人力</Checkbox>
-                                            <Checkbox value='2'>财务</Checkbox>
+                                                {
+                                                    ...getFieldProps('purchasingGroup',{
+                                                        initialValue:['2']
+                                                    })
+                                                }
+                                            >
+                                                <Checkbox value='1'>人力</Checkbox>
+                                                <Checkbox value='2'>财务</Checkbox>
                                         </CheckboxGroup>
                                     </Col>
                                 </FormItem>
                             </Col>
 
-                            <Col lg={4} md={4} xs={12} sm={6}>
+                            {/* <Col xs={12} sm={6} md={4} lg={6}>
                                 <FormItem>
-                                    <Col md={4} xs={2} sm={4}>
-                                        <Label>审批状态</Label>
+                                    <Col xs={4} sm={4} md={4}  lg={4}>
+                                        <Label>审批</Label>
                                     </Col>
-                                    <Col md={8} xs={10} className="radio" sm={8}>
+                                    <Col xs={8} sm={8} md={8}  lg={8} >
                                         <Radio.RadioGroup
                                                 selectedValue={this.state.approvalState}
                                                 {
@@ -235,7 +233,7 @@ class Demo2 extends Component {
                                         </Radio.RadioGroup>
                                     </Col>
                                 </FormItem>
-                            </Col>
+                            </Col> */}
                         </Row>
                     </Form>
                 </div>

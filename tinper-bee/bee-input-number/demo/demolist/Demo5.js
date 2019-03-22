@@ -1,6 +1,6 @@
 /**
 *
-* @title 不可以状态
+* @title 第二种iconStyle不可用状态
 * @description 自定义max=12,min=5,step=2 且设置 disabled 处理
 *
 */

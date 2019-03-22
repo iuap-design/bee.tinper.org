@@ -64,12 +64,12 @@ class Demo1 extends Component {
                     <div className='demo'>
                         <Form>
                             <Row>
-                                <Col lg={3} md={3} xs={12}>
+                                <Col xs={12} sm={6} md={4} lg={6}>
                                     <FormItem>
-                                        <Col md={4} xs={2}>
-                                            <Label>名称</Label>
+                                        <Col xs={4} sm={4} md={4}  lg={4}>
+                                            <Label>名 称</Label>
                                         </Col>
-                                        <Col md={8} xs={10}>
+                                        <Col xs={8} sm={8} md={8}  lg={8}>
                                             <FormControl size="sm"
                                                 {
                                                 ...getFieldProps('orderCode', {
@@ -81,12 +81,12 @@ class Demo1 extends Component {
                                     </FormItem>
                                 </Col>
 
-                                <Col  lg={3} md={3} xs={12}>
+                                <Col xs={12} sm={6} md={4}  lg={6}>
                                     <FormItem>
-                                        <Col md={4} xs={2}>
+                                        <Col xs={4} sm={4} md={4}  lg={4}>
                                             <Label>供应商</Label>
                                         </Col>
-                                        <Col md={8} xs={10}>
+                                        <Col xs={8} sm={8} md={8}  lg={8}>
                                             <FormControl size="sm"
                                                 {
                                                 ...getFieldProps('supplierName', {
@@ -98,13 +98,12 @@ class Demo1 extends Component {
                                     </FormItem>
                                 </Col>
 
-
-                                <Col  lg={3} md={3} xs={12}>
+                                <Col xs={12} sm={6} md={4}  lg={6}>
                                     <FormItem>
-                                        <Col md={4} xs={2}>
+                                        <Col xs={4} sm={4} md={4}  lg={4}>
                                             <Label>收货人</Label>
                                         </Col>
-                                        <Col md={8} xs={10}>
+                                        <Col xs={8} sm={8} md={8}  lg={8}>
                                             <FormControl size="sm"
                                                 {
                                                 ...getFieldProps('supplierName', {
@@ -116,12 +115,12 @@ class Demo1 extends Component {
                                     </FormItem>
                                 </Col>
 
-                                <Col  lg={3} md={3} xs={12}>
+                                <Col xs={12} sm={6} md={4}  lg={6}>
                                     <FormItem>
-                                        <Col md={4} xs={2}>
-                                            <Label>供应商</Label>
+                                        <Col xs={4} sm={4} md={4}  lg={4}>
+                                            <Label>电话</Label>
                                         </Col>
-                                        <Col md={8} xs={10}>
+                                        <Col xs={8} sm={8} md={8}  lg={8}>
                                             <FormControl size="sm"
                                                 {
                                                 ...getFieldProps('supplierName', {
@@ -143,10 +142,10 @@ class Demo1 extends Component {
                         <Row>
                             <Col lg={12} md={12} xs={12} >
                                 <FormItem>
-                                    <Col md={1} xs={2} className="radio">
+                                    <Col md={2} xs={2} className="radio">
                                         <Label >状态</Label>
                                     </Col>
-                                    <Col md={11} xs={10}>
+                                    <Col md={10} xs={10}>
                                         <Radio.RadioGroup
                                             name="state"
                                             selectedValue={this.state.state}
@@ -163,18 +162,16 @@ class Demo1 extends Component {
                                 </FormItem>
                             </Col>
                         </Row>
-
-
                         <Row>
-                            <Col lg={3} md={3} xs={12}>
+                            <Col xs={12} sm={6} md={4}  lg={6}>
                                 <FormItem>
-                                    <Col md={4} xs={2}>
+                                    <Col xs={4} sm={4} md={4}  lg={4} className="radio">
                                         <Label>联系人</Label>
                                     </Col>
-                                    <Col md={8} xs={10}>
+                                    <Col xs={8} sm={8} md={8}  lg={8} >
                                         <FormControl size="sm"
                                             {
-                                            ...getFieldProps('orderCode', {
+                                            ...getFieldProps('supplierName', {
                                                 initialValue: '',
                                             })
                                             }
@@ -183,15 +180,15 @@ class Demo1 extends Component {
                                 </FormItem>
                             </Col>
 
-                            <Col lg={3} md={3} xs={12}>
+                            <Col xs={12} sm={6} md={4}  lg={6}>
                                 <FormItem>
-                                    <Col md={4} xs={2}>
-                                        <Label>电话</Label>
+                                    <Col xs={4} sm={4} md={4}  lg={4} className="radio">
+                                        <Label>姓名</Label>
                                     </Col>
-                                    <Col md={8} xs={10}>
+                                    <Col xs={8} sm={8} md={8}  lg={8} >
                                         <FormControl size="sm"
                                             {
-                                            ...getFieldProps('orderCode', {
+                                            ...getFieldProps('supplierName', {
                                                 initialValue: '',
                                             })
                                             }
@@ -199,6 +196,7 @@ class Demo1 extends Component {
                                     </Col>
                                 </FormItem>
                             </Col>
+
                         </Row>
                     </Form>
                 </div>
