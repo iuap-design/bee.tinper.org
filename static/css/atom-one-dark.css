@@ -100,6 +100,8 @@ hue-6-2: #e6c07b
 .component-demo .u-panel {
   padding: 18px 20px;
   border: 1px solid #F0F0F0;
+  box-shadow: none;
+  border-radius: 0;
 }
 .component-demo .u-panel-default .u-panel-heading{
   background-color: #fff;
@@ -124,6 +126,9 @@ hue-6-2: #e6c07b
   color: #E14C46;
   font-size: 14px;
   cursor: pointer;
+}
+.component-demo .component-code .uf{
+  padding-left: 0;
 }
 .component-demo .u-panel .u-panel-body{
   padding: 0;

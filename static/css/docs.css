@@ -4,9 +4,6 @@
     padding: 0;
 }
 
-.docs .doc-content a{
-    color: #E14C46;
-}
 
 body {
     font-family: PingFang-SC-Medium,Open Sans, Helvetica Neue, Arial, Hiragino Sans GB, Microsoft YaHei, sans-serif;
@@ -198,7 +195,7 @@ body {
     top: 1px;
 }
 .docs .doc-content .title-right .title-tag .uf{
-    font-size: 14px;
+    font-size: 12px;
 }
 .docs .doc-content .title-right .title-tag>span{
     position: absolute;
@@ -237,8 +234,7 @@ body {
     left: auto;
     right: 0;
     width: 80px!important;
-    border: 1px dashed #424242;
-    box-shadow: none;
+    border: 1px solid #f0f0f0;
 }
 #tagList.select-list{
     display: none;

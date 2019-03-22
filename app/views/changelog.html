@@ -6,7 +6,9 @@
             <div class="u-timeline-item-content">
                 <p id="<%= item.tag_name %>"><%= item.tag_name %> 
                     <span class="time"> <%= item.published_at %></span>
-                    (<a href="<%= item.html_url %>" target="_blank">release地址</a>)
+                    <span style="font-size:14px">(</span>
+                        <a href="<%= item.html_url %>" target="_blank">release地址</a>
+                    <span style="font-size:14px">)</span>
                 </p>
                 <pre><%- item.body %></pre>
             </div>

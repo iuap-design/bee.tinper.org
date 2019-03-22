@@ -15,6 +15,16 @@ renderer.heading = function (text, level) {
   }
 }
 
+renderer.link = function (href,title,text) {
+  var target = '';
+  if(href){
+    target="_blank";
+  }else{
+    href = 'javacript:void(0);'
+  }
+  return `<a target="${target}" href="${href}" style="color:#E14C46" title="${text}" >${text}</a>`;
+};
+
 marked.setOptions({
   renderer: renderer,
   gfm: true,
