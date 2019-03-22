@@ -27,7 +27,7 @@ class Demo1 extends Component {
 
         return (
             <div className="demoPadding">
-                <Button onClick={this.simpleFn}>simple show</Button>
+                <Button colors="secondary" onClick={this.simpleFn}>simple show</Button>
             </div>
         )
     }

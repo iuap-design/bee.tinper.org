@@ -4,6 +4,7 @@
  */
 
 import React, { Component } from 'react';
+import FormControl from 'bee-form-control';
 import Menu from '../../src';
 
 const SubMenu = Menu.SubMenu;
@@ -19,7 +20,7 @@ class Demo4 extends Component {
     render() {
         return (
             <div>
-                <input style={{'marginBottom':'10px'}} placeholder="我是为了获得焦点"/>
+                <FormControl style={{'width':'240px','marginBottom':'10px'}} placeholder="我是为了获得焦点"/>
                 <Menu onClick={this.handleClick} keyboard={true} style={{ width: 240 }} mode="vertical">
                 <SubMenu key="sub1" title={<span><span>组织 1</span></span>}>
                     <MenuItemGroup title="Item 1">

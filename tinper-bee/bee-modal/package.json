@@ -45,7 +45,7 @@
   "bee-transition": "^0.2.2",
   "classnames": "^2.2.5",
   "dom-helpers": "3.0.0",
-  "tinper-bee-core": "latest"
+  "tinper-bee-core": "^2.0.25"
  },
  "peerDependencies": {
   "react": "^15.3.0 || ^16.0",
@@ -54,13 +54,18 @@
  },
  "devDependencies": {
   "bee-button": "latest",
+  "bee-checkbox": "latest",
   "bee-clipboard": "^2.0.0",
   "bee-drawer": "0.0.2",
+  "bee-form": "latest",
   "bee-form-control": "latest",
   "bee-form-group": "latest",
   "bee-label": "latest",
   "bee-layout": "latest",
   "bee-panel": "latest",
+  "bee-radio": "latest",
+  "bee-rate": "latest",
+  "bee-table": "latest",
   "chai": "^3.5.0",
   "console-polyfill": "~0.2.1",
   "cz-conventional-changelog": "^2.1.0",

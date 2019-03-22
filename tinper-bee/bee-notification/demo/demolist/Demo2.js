@@ -30,8 +30,8 @@ class Demo2 extends Component {
     render () {
         return (
             <div className="demoPadding">
-                <Button onClick={this.simpleLight}>light notification</Button>
-                <Button onClick={this.simpleDark} style={{ background: '#404040', color: '#fff' }}>dark notification</Button>
+                <Button colors="secondary" onClick={this.simpleLight}>light notification</Button>
+                <Button colors="dark" onClick={this.simpleDark}>dark notification</Button>
             </div>
         )
     }

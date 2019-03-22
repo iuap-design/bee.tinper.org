@@ -56,7 +56,7 @@ class Demo8 extends Component {
                     show={this.state.showModal}
                     onHide={this.close}
                 >
-                    <Modal.Header className="text-center">
+                    <Modal.Header closeButton>
                         <Modal.Title>第一个模态框</Modal.Title>
                     </Modal.Header>
 
@@ -72,7 +72,7 @@ class Demo8 extends Component {
                     </Modal.Body>
 
                     <Modal.Footer>
-                        <Button shape="border" style={{ marginRight: 8 }} onClick={this.close}>
+                        <Button colors="secondary" style={{ marginRight: 8 }} onClick={this.close}>
                             取消
                         </Button>
                         <Button colors="primary" onClick={this.close}>
@@ -84,7 +84,7 @@ class Demo8 extends Component {
                     show={this.state.showModal2}
                     onHide={this.close2}
                 >
-                    <Modal.Header className="text-center">
+                    <Modal.Header closeButton>
                         <Modal.Title>第二个模态框</Modal.Title>
                     </Modal.Header>
 
@@ -93,7 +93,7 @@ class Demo8 extends Component {
                     </Modal.Body>
 
                     <Modal.Footer>
-                        <Button shape="border" style={{ marginRight: 8 }} onClick={this.close2}>
+                        <Button colors="secondary" style={{ marginRight: 8 }} onClick={this.close2}>
                             取消
                         </Button>
                         <Button colors="primary" onClick={this.close2}>

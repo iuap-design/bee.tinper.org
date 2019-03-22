@@ -59,14 +59,14 @@ class Demo6 extends Component {
                 <Modal
                     show={this.state.showModal}
                     onHide={this.close} >
-                    <Modal.Header>
+                    <Modal.Header closeButton>
                         <Modal.Title>标题</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
                         我是模态框，我的被loading遮住了~
                     </Modal.Body>
                     <Modal.Footer>
-                        <Button onClick={this.close} shape="border" style={{ marginRight: 8 }}>关闭</Button>
+                        <Button onClick={this.close} colors="secondary" style={{ marginRight: 8 }}>关闭</Button>
                         <Button onClick={this.close} colors="primary">确认</Button>
                     </Modal.Footer>
                 </Modal>

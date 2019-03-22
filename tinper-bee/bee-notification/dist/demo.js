@@ -66,7 +66,7 @@
 	
 	var _beeClipboard2 = _interopRequireDefault(_beeClipboard);
 	
-	var _src = __webpack_require__(154);
+	var _src = __webpack_require__(157);
 	
 	var _src2 = _interopRequireDefault(_src);
 	
@@ -80,7 +80,7 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
 	
-	var Demo1 = __webpack_require__(157);var Demo2 = __webpack_require__(158);var Demo3 = __webpack_require__(159);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 默认提醒", "code": "/**\n *\n * @title 默认提醒\n * @description\n *\n */\n\nimport React, { Component } from 'react';\nimport { Notification, Button } from 'tinper-bee';\n\nlet notification = null;\nNotification.newInstance({position: 'bottomRight'}, n => notification = n);\n\n\nclass Demo1 extends Component {\n\n    simpleFn() {\n      notification.notice({\n        content: <span>这是一个提示</span>,\n        onClose() {\n          console.log('simple close');\n        },\n      });\n    }\n    render () {\n\n        return (\n            <div className=\"demoPadding\">\n                <Button onClick={this.simpleFn}>simple show</Button>\n            </div>\n        )\n    }\n}\n\n\n", "desc": "", "scss_code": ".demoPadding{\n  button {\n    margin: auto 10px;\n  }\n}" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 不同颜色的提醒", "code": "/**\n *\n * @title 不同颜色的提醒\n * @description 默认提供两种颜色，一黑一白。\n *\n */\n\nimport React, { Component } from 'react';\nimport { Notification, Button } from 'tinper-bee';\n\nlet notification = null;\nNotification.newInstance({position: 'bottomRight'}, n => notification = n);\n\nclass Demo2 extends Component {\n\n simpleLight() {\n      notification.notice({\n         title: '通知',\n        content: '明天下午李总召开会议，请您参加',\n        color: 'light'\n      });\n    }\n    simpleDark() {\n         notification.notice({\n            title: '邮箱',\n           content: '您收到一封邮件'\n         });\n       }\n    render () {\n        return (\n            <div className=\"demoPadding\">\n                <Button onClick={this.simpleLight}>light notification</Button>\n                <Button onClick={this.simpleDark} style={{ background: '#404040', color: '#fff' }}>dark notification</Button>\n            </div>\n        )\n    }\n}\n\n\n", "desc": " 默认提供两种颜色，一黑一白。", "scss_code": ".demoPadding{\n  button {\n    margin: auto 10px;\n  }\n}" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 可控制的提醒", "code": "/**\n *\n * @title 可控制的提醒\n * @description 通过设置duration:6来设置时间，null为自动控制\n *\n */\n\nimport React, { Component } from 'react';\nimport { Notification, Button } from 'tinper-bee';\n\nlet notification = null;\nNotification.newInstance({position: 'bottomRight'}, n => notification = n);\n\nclass Demo3 extends Component {\n    constructor(props){\n        super(props);\n        this.manualClose = this.manualClose.bind(this);\n    }\n closableFn() {\n      notification.notice({\n        content: <span>只可以自动关闭的提示</span>,\n        duration: null,\n        onClose() {\n          console.log('closable close');\n        },\n        duration: 6,\n        closable: false\n      });\n    }\n\n close(key) {\n      notification.removeNotice(key);\n    }\n\n manualClose() {\n      const key = Date.now();\n      notification.notice({\n        content: <div>\n          <span>只可以点击关闭的提示</span>\n          <Button onClick={this.close.bind(this, key)} size=\"sm\" style={{ position: 'absolute', right: 15, bottom: 15}}>知道了</Button>\n        </div>,\n        key,\n        duration: null,\n        closable: false\n      });\n    }\n    render () {\n        return (\n            <div className=\"demoPadding\">\n                <Button colors=\"primary\" onClick={this.closableFn}>自动关闭</Button>\n                <Button colors=\"primary\" onClick={this.manualClose}>手动关闭</Button>\n            </div>\n        )\n    }\n}\n\n\n", "desc": " 通过设置duration:6来设置时间，null为自动控制", "scss_code": ".demoPadding{\n  button {\n    margin: auto 10px;\n  }\n}\n.u-notification-notice-description{\n  span{\n    line-height: 26px;\n  }\n}" }];
+	var Demo1 = __webpack_require__(160);var Demo2 = __webpack_require__(161);var Demo3 = __webpack_require__(162);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 默认提醒", "code": "/**\r\n *\r\n * @title 默认提醒\r\n * @description\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\r\n\nimport { Notification, Button } from 'tinper-bee';\r\n\r\nlet notification = null;\r\nNotification.newInstance({position: 'bottomRight'}, n => notification = n);\r\n\r\n\r\nclass Demo1 extends Component {\r\n\r\n    simpleFn() {\r\n      notification.notice({\r\n        content: <span>这是一个提示</span>,\r\n        onClose() {\r\n          console.log('simple close');\r\n        },\r\n      });\r\n    }\r\n    render () {\r\n\r\n        return (\r\n            <div className=\"demoPadding\">\r\n                <Button colors=\"secondary\" onClick={this.simpleFn}>simple show</Button>\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\n\r\n", "desc": "", "scss_code": ".demoPadding{\r\n  button {\r\n    margin: auto 10px;\r\n  }\r\n}" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 不同颜色的提醒", "code": "/**\r\n *\r\n * @title 不同颜色的提醒\r\n * @description 默认提供两种颜色，一黑一白。\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\r\n\nimport { Notification, Button } from 'tinper-bee';\r\n\r\nlet notification = null;\r\nNotification.newInstance({position: 'bottomRight'}, n => notification = n);\r\n\r\nclass Demo2 extends Component {\r\n\r\n simpleLight() {\r\n      notification.notice({\r\n         title: '通知',\r\n        content: '明天下午李总召开会议，请您参加',\r\n        color: 'light'\r\n      });\r\n    }\r\n    simpleDark() {\r\n         notification.notice({\r\n            title: '邮箱',\r\n           content: '您收到一封邮件'\r\n         });\r\n       }\r\n    render () {\r\n        return (\r\n            <div className=\"demoPadding\">\r\n                <Button colors=\"secondary\" onClick={this.simpleLight}>light notification</Button>\r\n                <Button colors=\"dark\" onClick={this.simpleDark}>dark notification</Button>\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\n\r\n", "desc": " 默认提供两种颜色，一黑一白。", "scss_code": ".demoPadding{\r\n  button {\r\n    margin: auto 10px;\r\n  }\r\n}" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 可控制的提醒", "code": "/**\r\n *\r\n * @title 可控制的提醒\r\n * @description 通过设置duration:6来设置时间，null为自动控制\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\r\n\nimport { Notification, Button } from 'tinper-bee';\r\n\r\nlet notification = null;\r\nNotification.newInstance({position: 'bottomRight'}, n => notification = n);\r\n\r\nclass Demo3 extends Component {\r\n    constructor(props){\r\n        super(props);\r\n        this.manualClose = this.manualClose.bind(this);\r\n    }\r\n closableFn() {\r\n      notification.notice({\r\n        content: <span>只可以自动关闭的提示</span>,\r\n        duration: null,\r\n        onClose() {\r\n          console.log('closable close');\r\n        },\r\n        duration: 6,\r\n        closable: false\r\n      });\r\n    }\r\n\r\n close(key) {\r\n      notification.removeNotice(key);\r\n    }\r\n\r\n manualClose() {\r\n      const key = Date.now();\r\n      notification.notice({\r\n        content: <div>\r\n          <span>只可以点击关闭的提示</span>\r\n          <Button onClick={this.close.bind(this, key)} size=\"sm\" style={{ position: 'absolute', right: 15, bottom: 15}}>知道了</Button>\r\n        </div>,\r\n        key,\r\n        duration: null,\r\n        closable: false\r\n      });\r\n    }\r\n    render () {\r\n        return (\r\n            <div className=\"demoPadding\">\r\n                <Button colors=\"primary\" onClick={this.closableFn}>自动关闭</Button>\r\n                <Button colors=\"primary\" onClick={this.manualClose}>手动关闭</Button>\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\n\r\n", "desc": " 通过设置duration:6来设置时间，null为自动控制", "scss_code": ".demoPadding{\r\n  button {\r\n    margin: auto 10px;\r\n  }\r\n}\r\n.u-notification-notice-description{\r\n  span{\r\n    line-height: 26px;\r\n  }\r\n}" }];
 	
 	var Demo = function (_Component) {
 	    _inherits(Demo, _Component);
@@ -5604,6 +5604,16 @@
 	  var documentWidth = documentElement.scrollWidth;
 	  var documentHeight = documentElement.scrollHeight;
 	
+	  // scrollXXX on html is sync with body which means overflow: hidden on body gets wrong scrollXXX.
+	  // We should cut this ourself.
+	  var bodyStyle = window.getComputedStyle(body);
+	  if (bodyStyle.overflowX === 'hidden') {
+	    documentWidth = win.innerWidth;
+	  }
+	  if (bodyStyle.overflowY === 'hidden') {
+	    documentHeight = win.innerHeight;
+	  }
+	
 	  // Reset element position after calculate the visible area
 	  if (element.style) {
 	    element.style.position = originalPosition;
@@ -9938,21 +9948,21 @@
 	
 	var _propTypes2 = _interopRequireDefault(_propTypes);
 	
-	var _tool = __webpack_require__(129);
+	var _tool = __webpack_require__(132);
 	
-	var _i18n = __webpack_require__(130);
+	var _i18n = __webpack_require__(133);
 	
 	var _i18n2 = _interopRequireDefault(_i18n);
 	
-	var _beeModal = __webpack_require__(131);
+	var _beeModal = __webpack_require__(134);
 	
 	var _beeModal2 = _interopRequireDefault(_beeModal);
 	
-	var _beeFormControl = __webpack_require__(150);
+	var _beeFormControl = __webpack_require__(153);
 	
 	var _beeFormControl2 = _interopRequireDefault(_beeFormControl);
 	
-	var _beeButton = __webpack_require__(152);
+	var _beeButton = __webpack_require__(155);
 	
 	var _beeButton2 = _interopRequireDefault(_beeButton);
 	
@@ -11354,7 +11364,7 @@
 	
 	var _Overlay2 = _interopRequireDefault(_Overlay);
 	
-	var _createChainedFunction = __webpack_require__(128);
+	var _createChainedFunction = __webpack_require__(131);
 	
 	var _createChainedFunction2 = _interopRequireDefault(_createChainedFunction);
 	
@@ -11508,6 +11518,11 @@
 	        if ('visible' in this.props && prevProps.visible !== this.props.visible) {
 	            this.setState({
 	                show: this.props.visible
+	            });
+	        }
+	        if ('isHoverShow' in this.props && prevProps.isHoverShow !== this.props.isHoverShow) {
+	            this.setState({
+	                show: this.props.isHoverShow
 	            });
 	        }
 	    };
@@ -11999,7 +12014,7 @@
 	
 	var _tinperBeeCore = __webpack_require__(27);
 	
-	var _Fade = __webpack_require__(126);
+	var _Fade = __webpack_require__(129);
 	
 	var _Fade2 = _interopRequireDefault(_Fade);
 	
@@ -12068,7 +12083,12 @@
 	  /**
 	   * Sets the direction of the Overlay.
 	   */
-	  placement: _propTypes2["default"].oneOf(['top', 'right', 'bottom', 'left'])
+	  placement: _propTypes2["default"].oneOf(['top', 'right', 'bottom', 'left']),
+	
+	  /**
+	   * 当Overlay在placement方向放不下时的第二优先级方向
+	   */
+	  secondPlacement: _propTypes2["default"].oneOf(['top', 'right', 'bottom', 'left'])
 	});
 	
 	var defaultProps = {
@@ -12155,7 +12175,7 @@
 	
 	var _Position2 = _interopRequireDefault(_Position);
 	
-	var _RootCloseWrapper = __webpack_require__(125);
+	var _RootCloseWrapper = __webpack_require__(128);
 	
 	var _RootCloseWrapper2 = _interopRequireDefault(_RootCloseWrapper);
 	
@@ -12290,13 +12310,14 @@
 	        containerPadding = _props2.containerPadding,
 	        target = _props2.target,
 	        placement = _props2.placement,
+	        secondPlacement = _props2.secondPlacement,
 	        shouldUpdatePosition = _props2.shouldUpdatePosition,
 	        rootClose = _props2.rootClose,
 	        positionLeft = _props2.positionLeft,
 	        positionTop = _props2.positionTop,
 	        children = _props2.children,
 	        Transition = _props2.transition,
-	        props = _objectWithoutProperties(_props2, ['container', 'containerPadding', 'target', 'placement', 'shouldUpdatePosition', 'rootClose', 'positionLeft', 'positionTop', 'children', 'transition']);
+	        props = _objectWithoutProperties(_props2, ['container', 'containerPadding', 'target', 'placement', 'secondPlacement', 'shouldUpdatePosition', 'rootClose', 'positionLeft', 'positionTop', 'children', 'transition']);
 	
 	    // Don't un-render the overlay while it's transitioning out.
 	
@@ -12320,6 +12341,7 @@
 	        positionLeft: positionLeft,
 	        positionTop: positionTop,
 	        placement: placement,
+	        secondPlacement: secondPlacement,
 	        shouldUpdatePosition: shouldUpdatePosition },
 	      child
 	    );
@@ -12409,7 +12431,11 @@
 	
 	var _tinperBeeCore = __webpack_require__(27);
 	
-	var _calculatePosition = __webpack_require__(117);
+	var _requestAnimationFrame = __webpack_require__(117);
+	
+	var _requestAnimationFrame2 = _interopRequireDefault(_requestAnimationFrame);
+	
+	var _calculatePosition = __webpack_require__(118);
 	
 	var _calculatePosition2 = _interopRequireDefault(_calculatePosition);
 	
@@ -12420,6 +12446,14 @@
 	var _ownerDocument = __webpack_require__(74);
 	
 	var _ownerDocument2 = _interopRequireDefault(_ownerDocument);
+	
+	var _ownerWindow = __webpack_require__(126);
+	
+	var _ownerWindow2 = _interopRequireDefault(_ownerWindow);
+	
+	var _addEventListener = __webpack_require__(76);
+	
+	var _addEventListener2 = _interopRequireDefault(_addEventListener);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 	
@@ -12451,6 +12485,12 @@
 	     * 位置设置
 	     */
 	    placement: _propTypes2["default"].oneOf(['top', 'right', 'bottom', 'left']),
+	
+	    /**
+	     * 第二优先级位置设置
+	     */
+	    secondPlacement: _propTypes2["default"].oneOf(['top', 'right', 'bottom', 'left']),
+	
 	    /**
 	     * 是否需要更新位置
 	     */
@@ -12488,10 +12528,19 @@
 	        _this.getTarget = _this.getTarget.bind(_this);
 	        _this.maybeUpdatePosition = _this.maybeUpdatePosition.bind(_this);
 	        _this.updatePosition = _this.updatePosition.bind(_this);
+	        _this.onWindowResize = _this.onWindowResize.bind(_this);
 	        return _this;
 	    }
 	
 	    Position.prototype.componentDidMount = function componentDidMount() {
+	        var _this2 = this;
+	
+	        this._isMounted = true;
+	
+	        this._windowResizeListener = (0, _addEventListener2["default"])((0, _ownerWindow2["default"])(this), 'resize', function () {
+	            return _this2.onWindowResize();
+	        });
+	
 	        this.updatePosition(this.getTarget());
 	    };
 	
@@ -12504,6 +12553,14 @@
 	            this.needsFlush = false;
 	
 	            this.maybeUpdatePosition();
+	        }
+	    };
+	
+	    Position.prototype.componentWillUnmount = function componentWillUnmount() {
+	        this._isMounted = false;
+	
+	        if (this._windowResizeListener) {
+	            this._windowResizeListener.remove();
 	        }
 	    };
 	
@@ -12533,11 +12590,27 @@
 	        this.updatePosition(target);
 	    };
 	
+	    Position.prototype.onWindowResize = function onWindowResize() {
+	        var _this3 = this;
+	
+	        (0, _requestAnimationFrame2["default"])(function () {
+	            return _this3.updatePosition(_this3.getTarget());
+	        });
+	    };
+	
 	    /**
 	     * 更新位置
 	     */
 	
 	    Position.prototype.updatePosition = function updatePosition(target) {
+	        var _props = this.props,
+	            placement = _props.placement,
+	            secondPlacement = _props.secondPlacement;
+	
+	
+	        if (!this._isMounted) {
+	            return;
+	        }
 	        this.lastTarget = target;
 	
 	        if (!target) {
@@ -12554,14 +12627,36 @@
 	        var overlay = _reactDom2["default"].findDOMNode(this);
 	        var container = (0, _getContainer2["default"])(this.props.container, (0, _ownerDocument2["default"])(this).body);
 	
-	        this.setState((0, _calculatePosition2["default"])(this.props.placement, overlay, target, container, this.props.containerPadding));
+	        // 若设置了第二渲染位置，placement的优先级是： placement > secondPlacement > placement的反方向
+	        if ("secondPlacement" in this.props && secondPlacement) {
+	            var initPosition = (0, _calculatePosition2["default"])(placement, overlay, target, container, this.props.containerPadding);
+	            if (initPosition.inverseArrow) {
+	                var secondPosition = (0, _calculatePosition2["default"])(secondPlacement, overlay, target, container, this.props.containerPadding);
+	
+	                if (secondPosition.inverseArrow) {
+	                    this.setState(_extends({}, initPosition, {
+	                        renderPlacement: placement
+	                    }));
+	                } else {
+	                    this.setState(_extends({}, secondPosition, {
+	                        renderPlacement: secondPlacement
+	                    }));
+	                }
+	            } else {
+	                this.setState(_extends({}, initPosition, {
+	                    renderPlacement: placement
+	                }));
+	            }
+	        } else {
+	            this.setState((0, _calculatePosition2["default"])(placement, overlay, target, container, this.props.containerPadding));
+	        }
 	    };
 	
 	    Position.prototype.render = function render() {
-	        var _props = this.props,
-	            children = _props.children,
-	            className = _props.className,
-	            props = _objectWithoutProperties(_props, ['children', 'className']);
+	        var _props2 = this.props,
+	            children = _props2.children,
+	            className = _props2.className,
+	            props = _objectWithoutProperties(_props2, ['children', 'className']);
 	
 	        var _state = this.state,
 	            positionLeft = _state.positionLeft,
@@ -12603,6 +12698,65 @@
 /* 117 */
 /***/ (function(module, exports, __webpack_require__) {
 
+	"use strict";
+	
+	var _interopRequireDefault = __webpack_require__(14);
+	
+	exports.__esModule = true;
+	exports.default = void 0;
+	
+	var _inDOM = _interopRequireDefault(__webpack_require__(15));
+	
+	var vendors = ['', 'webkit', 'moz', 'o', 'ms'];
+	var cancel = 'clearTimeout';
+	var raf = fallback;
+	var compatRaf;
+	
+	var getKey = function getKey(vendor, k) {
+	  return vendor + (!vendor ? k : k[0].toUpperCase() + k.substr(1)) + 'AnimationFrame';
+	};
+	
+	if (_inDOM.default) {
+	  vendors.some(function (vendor) {
+	    var rafKey = getKey(vendor, 'request');
+	
+	    if (rafKey in window) {
+	      cancel = getKey(vendor, 'cancel');
+	      return raf = function raf(cb) {
+	        return window[rafKey](cb);
+	      };
+	    }
+	  });
+	}
+	/* https://github.com/component/raf */
+	
+	
+	var prev = new Date().getTime();
+	
+	function fallback(fn) {
+	  var curr = new Date().getTime(),
+	      ms = Math.max(0, 16 - (curr - prev)),
+	      req = setTimeout(fn, ms);
+	  prev = curr;
+	  return req;
+	}
+	
+	compatRaf = function compatRaf(cb) {
+	  return raf(cb);
+	};
+	
+	compatRaf.cancel = function (id) {
+	  window[cancel] && typeof window[cancel] === 'function' && window[cancel](id);
+	};
+	
+	var _default = compatRaf;
+	exports.default = _default;
+	module.exports = exports["default"];
+
+/***/ }),
+/* 118 */
+/***/ (function(module, exports, __webpack_require__) {
+
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
@@ -12610,15 +12764,15 @@
 	});
 	exports["default"] = calculatePosition;
 	
-	var _offset = __webpack_require__(118);
+	var _offset = __webpack_require__(119);
 	
 	var _offset2 = _interopRequireDefault(_offset);
 	
-	var _position = __webpack_require__(120);
+	var _position = __webpack_require__(121);
 	
 	var _position2 = _interopRequireDefault(_position);
 	
-	var _scrollTop = __webpack_require__(123);
+	var _scrollTop = __webpack_require__(124);
 	
 	var _scrollTop2 = _interopRequireDefault(_scrollTop);
 	
@@ -12776,7 +12930,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 118 */
+/* 119 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -12788,7 +12942,7 @@
 	
 	var _contains = _interopRequireDefault(__webpack_require__(111));
 	
-	var _isWindow = _interopRequireDefault(__webpack_require__(119));
+	var _isWindow = _interopRequireDefault(__webpack_require__(120));
 	
 	var _ownerDocument = _interopRequireDefault(__webpack_require__(75));
 	
@@ -12819,7 +12973,7 @@
 	module.exports = exports["default"];
 
 /***/ }),
-/* 119 */
+/* 120 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -12834,7 +12988,7 @@
 	module.exports = exports["default"];
 
 /***/ }),
-/* 120 */
+/* 121 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -12844,15 +12998,15 @@
 	exports.__esModule = true;
 	exports.default = position;
 	
-	var _extends2 = _interopRequireDefault(__webpack_require__(121));
+	var _extends2 = _interopRequireDefault(__webpack_require__(122));
 	
-	var _offset = _interopRequireDefault(__webpack_require__(118));
+	var _offset = _interopRequireDefault(__webpack_require__(119));
 	
-	var _offsetParent = _interopRequireDefault(__webpack_require__(122));
+	var _offsetParent = _interopRequireDefault(__webpack_require__(123));
 	
-	var _scrollTop = _interopRequireDefault(__webpack_require__(123));
+	var _scrollTop = _interopRequireDefault(__webpack_require__(124));
 	
-	var _scrollLeft = _interopRequireDefault(__webpack_require__(124));
+	var _scrollLeft = _interopRequireDefault(__webpack_require__(125));
 	
 	var _style = _interopRequireDefault(__webpack_require__(18));
 	
@@ -12888,7 +13042,7 @@
 	module.exports = exports["default"];
 
 /***/ }),
-/* 121 */
+/* 122 */
 /***/ (function(module, exports) {
 
 	function _extends() {
@@ -12912,7 +13066,7 @@
 	module.exports = _extends;
 
 /***/ }),
-/* 122 */
+/* 123 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -12944,27 +13098,6 @@
 	module.exports = exports["default"];
 
 /***/ }),
-/* 123 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	"use strict";
-	
-	var _interopRequireDefault = __webpack_require__(14);
-	
-	exports.__esModule = true;
-	exports.default = scrollTop;
-	
-	var _isWindow = _interopRequireDefault(__webpack_require__(119));
-	
-	function scrollTop(node, val) {
-	  var win = (0, _isWindow.default)(node);
-	  if (val === undefined) return win ? 'pageYOffset' in win ? win.pageYOffset : win.document.documentElement.scrollTop : node.scrollTop;
-	  if (win) win.scrollTo('pageXOffset' in win ? win.pageXOffset : win.document.documentElement.scrollLeft, val);else node.scrollTop = val;
-	}
-	
-	module.exports = exports["default"];
-
-/***/ }),
 /* 124 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -12975,7 +13108,28 @@
 	exports.__esModule = true;
 	exports.default = scrollTop;
 	
-	var _isWindow = _interopRequireDefault(__webpack_require__(119));
+	var _isWindow = _interopRequireDefault(__webpack_require__(120));
+	
+	function scrollTop(node, val) {
+	  var win = (0, _isWindow.default)(node);
+	  if (val === undefined) return win ? 'pageYOffset' in win ? win.pageYOffset : win.document.documentElement.scrollTop : node.scrollTop;
+	  if (win) win.scrollTo('pageXOffset' in win ? win.pageXOffset : win.document.documentElement.scrollLeft, val);else node.scrollTop = val;
+	}
+	
+	module.exports = exports["default"];
+
+/***/ }),
+/* 125 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	var _interopRequireDefault = __webpack_require__(14);
+	
+	exports.__esModule = true;
+	exports.default = scrollTop;
+	
+	var _isWindow = _interopRequireDefault(__webpack_require__(120));
 	
 	function scrollTop(node, val) {
 	  var win = (0, _isWindow.default)(node);
@@ -12986,7 +13140,53 @@
 	module.exports = exports["default"];
 
 /***/ }),
-/* 125 */
+/* 126 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	exports["default"] = function (componentOrElement) {
+	  return (0, _ownerWindow2["default"])(_reactDom2["default"].findDOMNode(componentOrElement));
+	};
+	
+	var _reactDom = __webpack_require__(2);
+	
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+	
+	var _ownerWindow = __webpack_require__(127);
+	
+	var _ownerWindow2 = _interopRequireDefault(_ownerWindow);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+	
+	module.exports = exports['default'];
+
+/***/ }),
+/* 127 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	var _interopRequireDefault = __webpack_require__(14);
+	
+	exports.__esModule = true;
+	exports.default = ownerWindow;
+	
+	var _ownerDocument = _interopRequireDefault(__webpack_require__(75));
+	
+	function ownerWindow(node) {
+	  var doc = (0, _ownerDocument.default)(node);
+	  return doc && doc.defaultView || doc.parentWindow;
+	}
+	
+	module.exports = exports["default"];
+
+/***/ }),
+/* 128 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -13148,7 +13348,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 126 */
+/* 129 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -13171,7 +13371,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _Transition = __webpack_require__(127);
+	var _Transition = __webpack_require__(130);
 	
 	var _Transition2 = _interopRequireDefault(_Transition);
 	
@@ -13269,7 +13469,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 127 */
+/* 130 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -13618,7 +13818,7 @@
 	exports["default"] = Transition;
 
 /***/ }),
-/* 128 */
+/* 131 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -13666,7 +13866,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 129 */
+/* 132 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -13709,7 +13909,7 @@
 	}
 
 /***/ }),
-/* 130 */
+/* 133 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -13742,7 +13942,7 @@
 	};
 
 /***/ }),
-/* 131 */
+/* 134 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -13751,7 +13951,7 @@
 	  value: true
 	});
 	
-	var _Modal = __webpack_require__(132);
+	var _Modal = __webpack_require__(135);
 	
 	var _Modal2 = _interopRequireDefault(_Modal);
 	
@@ -13761,7 +13961,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 132 */
+/* 135 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -13778,7 +13978,7 @@
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
-	var _events = __webpack_require__(133);
+	var _events = __webpack_require__(136);
 	
 	var _events2 = _interopRequireDefault(_events);
 	
@@ -13790,7 +13990,7 @@
 	
 	var _inDOM2 = _interopRequireDefault(_inDOM);
 	
-	var _scrollbarSize = __webpack_require__(137);
+	var _scrollbarSize = __webpack_require__(140);
 	
 	var _scrollbarSize2 = _interopRequireDefault(_scrollbarSize);
 	
@@ -13802,11 +14002,11 @@
 	
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 	
-	var _Modal = __webpack_require__(138);
+	var _Modal = __webpack_require__(141);
 	
 	var _Modal2 = _interopRequireDefault(_Modal);
 	
-	var _isOverflowing = __webpack_require__(141);
+	var _isOverflowing = __webpack_require__(144);
 	
 	var _isOverflowing2 = _interopRequireDefault(_isOverflowing);
 	
@@ -13814,23 +14014,23 @@
 	
 	var _beeTransition = __webpack_require__(11);
 	
-	var _ModalBody = __webpack_require__(145);
+	var _ModalBody = __webpack_require__(148);
 	
 	var _ModalBody2 = _interopRequireDefault(_ModalBody);
 	
-	var _ModalDialog = __webpack_require__(146);
+	var _ModalDialog = __webpack_require__(149);
 	
 	var _ModalDialog2 = _interopRequireDefault(_ModalDialog);
 	
-	var _ModalFooter = __webpack_require__(147);
+	var _ModalFooter = __webpack_require__(150);
 	
 	var _ModalFooter2 = _interopRequireDefault(_ModalFooter);
 	
-	var _ModalHeader = __webpack_require__(148);
+	var _ModalHeader = __webpack_require__(151);
 	
 	var _ModalHeader2 = _interopRequireDefault(_ModalHeader);
 	
-	var _ModalTitle = __webpack_require__(149);
+	var _ModalTitle = __webpack_require__(152);
 	
 	var _ModalTitle2 = _interopRequireDefault(_ModalTitle);
 	
@@ -14098,7 +14298,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 133 */
+/* 136 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -14116,11 +14316,11 @@
 	
 	exports.off = _off.default;
 	
-	var _filter = _interopRequireDefault(__webpack_require__(134));
+	var _filter = _interopRequireDefault(__webpack_require__(137));
 	
 	exports.filter = _filter.default;
 	
-	var _listen = _interopRequireDefault(__webpack_require__(136));
+	var _listen = _interopRequireDefault(__webpack_require__(139));
 	
 	exports.listen = _listen.default;
 	var _default = {
@@ -14132,7 +14332,7 @@
 	exports.default = _default;
 
 /***/ }),
-/* 134 */
+/* 137 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -14144,7 +14344,7 @@
 	
 	var _contains = _interopRequireDefault(__webpack_require__(111));
 	
-	var _querySelectorAll = _interopRequireDefault(__webpack_require__(135));
+	var _querySelectorAll = _interopRequireDefault(__webpack_require__(138));
 	
 	function filterEvents(selector, handler) {
 	  return function filterHandler(e) {
@@ -14160,7 +14360,7 @@
 	module.exports = exports["default"];
 
 /***/ }),
-/* 135 */
+/* 138 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -14196,7 +14396,7 @@
 	module.exports = exports["default"];
 
 /***/ }),
-/* 136 */
+/* 139 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -14228,7 +14428,7 @@
 	module.exports = exports["default"];
 
 /***/ }),
-/* 137 */
+/* 140 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -14263,7 +14463,7 @@
 	module.exports = exports["default"];
 
 /***/ }),
-/* 138 */
+/* 141 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -14293,7 +14493,7 @@
 	
 	var _Portal2 = _interopRequireDefault(_Portal);
 	
-	var _ModalManager = __webpack_require__(139);
+	var _ModalManager = __webpack_require__(142);
 	
 	var _ModalManager2 = _interopRequireDefault(_ModalManager);
 	
@@ -14305,7 +14505,7 @@
 	
 	var _addEventListener2 = _interopRequireDefault(_addEventListener);
 	
-	var _addFocusListener = __webpack_require__(143);
+	var _addFocusListener = __webpack_require__(146);
 	
 	var _addFocusListener2 = _interopRequireDefault(_addFocusListener);
 	
@@ -14313,7 +14513,7 @@
 	
 	var _inDOM2 = _interopRequireDefault(_inDOM);
 	
-	var _activeElement = __webpack_require__(144);
+	var _activeElement = __webpack_require__(147);
 	
 	var _activeElement2 = _interopRequireDefault(_activeElement);
 	
@@ -14807,7 +15007,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 139 */
+/* 142 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -14820,19 +15020,19 @@
 	
 	var _style2 = _interopRequireDefault(_style);
 	
-	var _class = __webpack_require__(140);
+	var _class = __webpack_require__(143);
 	
 	var _class2 = _interopRequireDefault(_class);
 	
-	var _scrollbarSize = __webpack_require__(137);
+	var _scrollbarSize = __webpack_require__(140);
 	
 	var _scrollbarSize2 = _interopRequireDefault(_scrollbarSize);
 	
-	var _isOverflowing = __webpack_require__(141);
+	var _isOverflowing = __webpack_require__(144);
 	
 	var _isOverflowing2 = _interopRequireDefault(_isOverflowing);
 	
-	var _manageAriaHidden = __webpack_require__(142);
+	var _manageAriaHidden = __webpack_require__(145);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 	
@@ -14988,7 +15188,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 140 */
+/* 143 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -15017,7 +15217,7 @@
 	exports.default = _default;
 
 /***/ }),
-/* 141 */
+/* 144 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -15027,7 +15227,7 @@
 	});
 	exports["default"] = isOverflowing;
 	
-	var _isWindow = __webpack_require__(119);
+	var _isWindow = __webpack_require__(120);
 	
 	var _isWindow2 = _interopRequireDefault(_isWindow);
 	
@@ -15063,7 +15263,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 142 */
+/* 145 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -15117,7 +15317,7 @@
 	}
 
 /***/ }),
-/* 143 */
+/* 146 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -15153,7 +15353,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 144 */
+/* 147 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -15180,7 +15380,7 @@
 	module.exports = exports["default"];
 
 /***/ }),
-/* 145 */
+/* 148 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -15256,7 +15456,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 146 */
+/* 149 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -15370,7 +15570,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 147 */
+/* 150 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -15446,7 +15646,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 148 */
+/* 151 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -15566,7 +15766,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 149 */
+/* 152 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -15642,7 +15842,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 150 */
+/* 153 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -15651,7 +15851,7 @@
 	  value: true
 	});
 	
-	var _FormControl = __webpack_require__(151);
+	var _FormControl = __webpack_require__(154);
 	
 	var _FormControl2 = _interopRequireDefault(_FormControl);
 	
@@ -15661,7 +15861,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 151 */
+/* 154 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -15944,7 +16144,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 152 */
+/* 155 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -15953,7 +16153,7 @@
 	  value: true
 	});
 	
-	var _Button = __webpack_require__(153);
+	var _Button = __webpack_require__(156);
 	
 	var _Button2 = _interopRequireDefault(_Button);
 	
@@ -15963,7 +16163,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 153 */
+/* 156 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -16113,9 +16313,7 @@
 	        if (colorsMap[colors]) {
 	            clsObj[clsPrefix + '-' + colorsMap[colors]] = true;
 	        }
-	        if (bordered) {
-	            clsObj[clsPrefix + '-border'] = bordered;
-	        }
+	        //clsObj[`${clsPrefix}-border`] = bordered;
 	        var classes = (0, _classnames2["default"])(clsPrefix, clsObj);
 	        return _react2["default"].createElement(
 	            'button',
@@ -16138,7 +16336,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 154 */
+/* 157 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -16147,7 +16345,7 @@
 	  value: true
 	});
 	
-	var _Notification = __webpack_require__(155);
+	var _Notification = __webpack_require__(158);
 	
 	var _Notification2 = _interopRequireDefault(_Notification);
 	
@@ -16157,7 +16355,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 155 */
+/* 158 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -16200,7 +16398,7 @@
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
-	var _Notice = __webpack_require__(156);
+	var _Notice = __webpack_require__(159);
 	
 	var _Notice2 = _interopRequireDefault(_Notice);
 	
@@ -16403,7 +16601,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 156 */
+/* 159 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -16546,7 +16744,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 157 */
+/* 160 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -16559,11 +16757,11 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _beeButton = __webpack_require__(152);
+	var _beeButton = __webpack_require__(155);
 	
 	var _beeButton2 = _interopRequireDefault(_beeButton);
 	
-	var _src = __webpack_require__(154);
+	var _src = __webpack_require__(157);
 	
 	var _src2 = _interopRequireDefault(_src);
 	
@@ -16616,7 +16814,7 @@
 	            { className: 'demoPadding' },
 	            _react2['default'].createElement(
 	                _beeButton2['default'],
-	                { onClick: this.simpleFn },
+	                { colors: 'secondary', onClick: this.simpleFn },
 	                'simple show'
 	            )
 	        );
@@ -16629,7 +16827,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 158 */
+/* 161 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -16642,11 +16840,11 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _beeButton = __webpack_require__(152);
+	var _beeButton = __webpack_require__(155);
 	
 	var _beeButton2 = _interopRequireDefault(_beeButton);
 	
-	var _src = __webpack_require__(154);
+	var _src = __webpack_require__(157);
 	
 	var _src2 = _interopRequireDefault(_src);
 	
@@ -16700,12 +16898,12 @@
 	            { className: 'demoPadding' },
 	            _react2['default'].createElement(
 	                _beeButton2['default'],
-	                { onClick: this.simpleLight },
+	                { colors: 'secondary', onClick: this.simpleLight },
 	                'light notification'
 	            ),
 	            _react2['default'].createElement(
 	                _beeButton2['default'],
-	                { onClick: this.simpleDark, style: { background: '#404040', color: '#fff' } },
+	                { colors: 'dark', onClick: this.simpleDark },
 	                'dark notification'
 	            )
 	        );
@@ -16718,24 +16916,24 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 159 */
+/* 162 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-	  value: true
+	    value: true
 	});
 	
 	var _react = __webpack_require__(1);
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _beeButton = __webpack_require__(152);
+	var _beeButton = __webpack_require__(155);
 	
 	var _beeButton2 = _interopRequireDefault(_beeButton);
 	
-	var _src = __webpack_require__(154);
+	var _src = __webpack_require__(157);
 	
 	var _src2 = _interopRequireDefault(_src);
 	
@@ -16758,82 +16956,82 @@
 	
 	var notification = null;
 	_src2['default'].newInstance({ position: 'bottomRight' }, function (n) {
-	  return notification = n;
+	    return notification = n;
 	});
 	
 	var Demo3 = function (_Component) {
-	  _inherits(Demo3, _Component);
+	    _inherits(Demo3, _Component);
 	
-	  function Demo3(props) {
-	    _classCallCheck(this, Demo3);
+	    function Demo3(props) {
+	        _classCallCheck(this, Demo3);
 	
-	    var _this = _possibleConstructorReturn(this, _Component.call(this, props));
+	        var _this = _possibleConstructorReturn(this, _Component.call(this, props));
 	
-	    _this.manualClose = _this.manualClose.bind(_this);
-	    return _this;
-	  }
+	        _this.manualClose = _this.manualClose.bind(_this);
+	        return _this;
+	    }
 	
-	  Demo3.prototype.closableFn = function closableFn() {
-	    var _notification$notice;
+	    Demo3.prototype.closableFn = function closableFn() {
+	        var _notification$notice;
 	
-	    notification.notice((_notification$notice = {
-	      content: _react2['default'].createElement(
-	        'span',
-	        null,
-	        '\u53EA\u53EF\u4EE5\u81EA\u52A8\u5173\u95ED\u7684\u63D0\u793A'
-	      ),
-	      duration: null,
-	      onClose: function onClose() {
-	        console.log('closable close');
-	      }
-	    }, _defineProperty(_notification$notice, 'duration', 6), _defineProperty(_notification$notice, 'closable', false), _notification$notice));
-	  };
+	        notification.notice((_notification$notice = {
+	            content: _react2['default'].createElement(
+	                'span',
+	                null,
+	                '\u53EA\u53EF\u4EE5\u81EA\u52A8\u5173\u95ED\u7684\u63D0\u793A'
+	            ),
+	            duration: null,
+	            onClose: function onClose() {
+	                console.log('closable close');
+	            }
+	        }, _defineProperty(_notification$notice, 'duration', 6), _defineProperty(_notification$notice, 'closable', false), _notification$notice));
+	    };
 	
-	  Demo3.prototype.close = function close(key) {
-	    notification.removeNotice(key);
-	  };
+	    Demo3.prototype.close = function close(key) {
+	        notification.removeNotice(key);
+	    };
 	
-	  Demo3.prototype.manualClose = function manualClose() {
-	    var key = Date.now();
-	    notification.notice({
-	      content: _react2['default'].createElement(
-	        'div',
-	        null,
-	        _react2['default'].createElement(
-	          'span',
-	          null,
-	          '\u53EA\u53EF\u4EE5\u70B9\u51FB\u5173\u95ED\u7684\u63D0\u793A'
-	        ),
-	        _react2['default'].createElement(
-	          _beeButton2['default'],
-	          { onClick: this.close.bind(this, key), size: 'sm', style: { position: 'absolute', right: 15, bottom: 15 } },
-	          '\u77E5\u9053\u4E86'
-	        )
-	      ),
-	      key: key,
-	      duration: null,
-	      closable: false
-	    });
-	  };
+	    Demo3.prototype.manualClose = function manualClose() {
+	        var key = Date.now();
+	        notification.notice({
+	            content: _react2['default'].createElement(
+	                'div',
+	                null,
+	                _react2['default'].createElement(
+	                    'span',
+	                    null,
+	                    '\u53EA\u53EF\u4EE5\u70B9\u51FB\u5173\u95ED\u7684\u63D0\u793A'
+	                ),
+	                _react2['default'].createElement(
+	                    _beeButton2['default'],
+	                    { onClick: this.close.bind(this, key), size: 'sm', style: { position: 'absolute', right: 15, bottom: 15 } },
+	                    '\u77E5\u9053\u4E86'
+	                )
+	            ),
+	            key: key,
+	            duration: null,
+	            closable: false
+	        });
+	    };
 	
-	  Demo3.prototype.render = function render() {
-	    return _react2['default'].createElement(
-	      'div',
-	      { className: 'demoPadding' },
-	      _react2['default'].createElement(
-	        _beeButton2['default'],
-	        { colors: 'primary', onClick: this.closableFn },
-	        '\u81EA\u52A8\u5173\u95ED'
-	      ),
-	      _react2['default'].createElement(
-	        _beeButton2['default'],
-	        { colors: 'primary', onClick: this.manualClose },
-	        '\u624B\u52A8\u5173\u95ED'
-	      )
-	    );
-	  };
+	    Demo3.prototype.render = function render() {
+	        return _react2['default'].createElement(
+	            'div',
+	            { className: 'demoPadding' },
+	            _react2['default'].createElement(
+	                _beeButton2['default'],
+	                { colors: 'primary', onClick: this.closableFn },
+	                '\u81EA\u52A8\u5173\u95ED'
+	            ),
+	            _react2['default'].createElement(
+	                _beeButton2['default'],
+	                { colors: 'primary', onClick: this.manualClose },
+	                '\u624B\u52A8\u5173\u95ED'
+	            )
+	        );
+	    };
 	
-	  return Demo3;
+	    return Demo3;
 	}(_react.Component);
 	
 	exports['default'] = Demo3;

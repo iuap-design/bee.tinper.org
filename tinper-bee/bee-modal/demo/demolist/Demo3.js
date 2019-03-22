@@ -65,7 +65,7 @@ class Demo3 extends Component {
                     onClick={ ()=>{this.changeSize("xlg");this.open();} }>
                     打开超大号模态框
                 </Button>
-                <Modal show={ this.state.showModal } size={ this.state.modalSize } onHide={ this.close }>
+                <Modal show={ this.state.showModal } size={ this.state.modalSize } onHide={ this.close } className="demo3-modal">
                     <Modal.Header closeButton>
                         <Modal.Title > 我来组成头部 </Modal.Title>
                     </Modal.Header >
@@ -90,7 +90,7 @@ class Demo3 extends Component {
 
                     </Modal.Body>
                     <Modal.Footer>
-                        <Button onClick={ this.close }> 关闭 </Button>
+                        <Button colors="secondary" onClick={ this.close }> 关闭 </Button>
                     </Modal.Footer>
                 </Modal>
             </div>

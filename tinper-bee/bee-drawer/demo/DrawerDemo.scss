@@ -1,0 +1,164 @@
+@import "../src/Drawer.scss";
+
+body{
+    h3,p{
+        padding-left:15px;
+    }
+    .u-button.u-button-block{
+        border-radius: 0!important;
+    }
+    .btn{
+        margin: auto 5px;
+    }
+    .divider{
+        margin: 6px 0;
+        height: 1px;
+        overflow: hidden;
+        background-color: #e0e0e0;
+    }
+    .btn{
+        background: rgb(224,224,224);
+        border: none;
+        border-radius: 4px;
+        color: rgb(0,0,0);
+        position: relative;
+        min-width: 72px;
+        padding: 5px 13px;
+        display: inline-block;
+        font-family: "Open Sans", "Helvetica Neue", Arial, "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 1;
+        letter-spacing: 0;
+        overflow: hidden;
+        will-change: box-shadow, transform;
+        outline: none;
+        cursor: pointer;
+        text-decoration: none;
+        text-align: center;
+        line-height: 1.57143;
+        vertical-align: middle;
+    }
+    .btn:active{
+        opacity: .7;
+    }
+    .btn2{
+        margin-left: 20px;
+    }
+    .input {
+        padding: 6px 12px;
+        font-size: 14px;
+        line-height: 1.4;
+        color: #555;
+        background-color: #fff;
+        background-image: none;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+        -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+        -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+        transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s
+    }
+    .input:focus {
+        border-color: #66afe9;
+        outline: 0;
+        -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6)
+    }
+}
+.demo1,.demo2,.demo4{
+    .btnc{
+        margin-top: 10px;
+    }
+    .con{
+        padding: 10px 20px;
+    }
+}
+.demo2{
+    .btnc{
+        margin-top: 20px;
+    }
+}
+.demo3{
+    .con{
+        padding: 10px 20px;
+    }
+    .form{
+        height: 500px;
+    }
+    .form-btnc{
+        margin-top: 20px;
+        text-align: right;
+    }
+    .form-row{
+        overflow: hidden;
+    }
+    .form-row:not(:first-child){
+        margin-top:20px;
+    }
+    .form-col{
+        display: inline-block;
+    }
+    .form-row .form-col:nth-child(1){
+        margin-right: 20px;
+    }
+    .input{width:260px;}
+    textarea{
+        width: 538px !important;
+        height: 156px;
+    }
+    .btn-sumbit{
+        color: #fff;
+        background-color: #1890ff;
+        border-color: #1890ff;
+    }
+}
+.demo5{
+    .con{
+        padding: 10px 20px;
+        padding-top: 0;
+    }
+    .section:first-child{
+        margin-top: 15px;
+    }
+    .section:nth-child(2){
+        margin-top: 20px;
+    }
+    .section{
+        margin-top: 30px;
+    }
+    .sec-title{
+        font-size: 22px;
+        font-weight: bold;
+    }
+    .sec-avatar{
+        width: 40px;
+        height: 40px;
+        margin-top: 10px;
+    }
+    .col{
+        display: inline-block;
+    }
+    .col:first-child{
+        margin-left: 0;
+        width: 200px;
+    }
+    .info-item{width: 300px;}
+    .info-item:first-child{
+        .item-inner{border-top-left-radius:4px;border-top-right-radius:4px;}
+    }
+    .info-item:last-child{
+        margin-top:-1px;
+        .item-inner{border-bottom-left-radius:4px;border-bottom-right-radius:4px;}
+    }
+    .item-inner{overflow: hidden;border:1px solid #ccc;padding:10px 20px;}
+    .item-left,.item-main,.item-right{float:left}
+    .item-main{padding-left:30px;}
+    .item-right{padding-left:30px;padding-top:20px;}
+    .item-avatar{width:30px;height:30px;}
+    .item-link{color:#1890ff;}
+    .item-link:link,.item-link:visited,.item-link::active,.item-link:hover{
+        color: #1890ff;
+    }
+}

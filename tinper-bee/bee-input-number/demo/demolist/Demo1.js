@@ -1,6 +1,6 @@
 /**
  *
-* @title 基础实力 
+* @title 基础示例 
  * @description 最简单输入控制
  *
  */

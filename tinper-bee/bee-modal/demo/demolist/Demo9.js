@@ -79,8 +79,8 @@ class Demo9 extends Component {
                     onHide={this.close}
                     enforceFocus={false}
                 >
-                    <Modal.Header className="text-center">
-                        <Modal.Title>第一个模态框</Modal.Title>
+                    <Modal.Header closeButton>
+                        <Modal.Title>标题</Modal.Title>
                     </Modal.Header>
 
                     <Modal.Body>
@@ -95,7 +95,7 @@ class Demo9 extends Component {
                     </Modal.Body>
 
                     <Modal.Footer className="text-center">
-                        <Button shape="border" style={{ marginRight: 8 }} onClick={this.close}>
+                        <Button colors="secondary" style={{ marginRight: 8 }} onClick={this.close}>
                             取消
                         </Button>
                         <Button colors="primary" onClick={this.close}>

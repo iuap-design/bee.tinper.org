@@ -70,13 +70,13 @@
     .u-modal .u-modal-content {
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5); }
     .u-modal .u-modal-sm {
-      width: 300px; } }
+      width: 400px; } }
   @media (min-width: 992px) {
     .u-modal .u-modal-lg {
-      width: 900px; } }
+      width: 800px; } }
   @media (min-width: 1200px) {
     .u-modal .u-modal-xlg {
-      width: 1200px; } }
+      width: 976px; } }
 
 .u-modal-open {
   overflow: hidden; }
@@ -109,6 +109,9 @@
 .demo-margin {
   margin: 5px 15px; }
 
+.demo10-modal .clear-btn {
+  float: left; }
+
 .demo-margin {
   margin: 5px 15px; }
 
@@ -122,14 +125,63 @@
   max-height: 430px;
   overflow: auto; }
 
-.demo-margin {
-  margin: 5px 15px; }
+.demo3-modal .u-modal-body {
+  background: #f7f9fb; }
 
 .demo-margin {
   margin: 5px 15px; }
 
 .demo-margin {
   margin: 5px 15px; }
+
+.demo-margin {
+  margin: 5px 15px; }
+
+.demo7-modal {
+  font-size: 14px; }
+  .demo7-modal .u-label {
+    display: inline-block;
+    min-width: 100px;
+    text-align: right;
+    padding-right: 12px; }
+  .demo7-modal .u-form-control {
+    width: auto;
+    min-width: 310px; }
+  .demo7-modal .error {
+    font-size: 12px;
+    color: red;
+    margin-left: 10px; }
+  .demo7-modal .submit {
+    padding-left: 110px; }
+  .demo7-modal .submit .login {
+    margin-left: 10px; }
+  .demo7-modal .u-select {
+    max-width: 310px; }
+  .demo7-modal textarea {
+    min-height: 100px;
+    resize: none; }
+  .demo7-modal .time > div {
+    display: inline-block; }
+  .demo7-modal .time .u-label {
+    position: relative;
+    bottom: 10px; }
+  .demo7-modal .time .error {
+    position: relative;
+    bottom: 10px; }
+  .demo7-modal .remarks .u-label {
+    position: relative;
+    bottom: 79px; }
+  .demo7-modal .u-city-select {
+    display: inline-block; }
+  .demo7-modal .u-city-select .province,
+  .demo7-modal .u-city-select .city,
+  .demo7-modal .u-city-select .area {
+    width: 120px; }
+  .demo7-modal .u-form-item {
+    min-height: auto !important; }
+
+#demo7 .rc-calendar-picker {
+  z-index: 1800; }
 
 .demo-margin {
   margin: 5px 15px; }

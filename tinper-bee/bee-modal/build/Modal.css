@@ -73,13 +73,13 @@
     .u-modal .u-modal-content {
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5); }
     .u-modal .u-modal-sm {
-      width: 300px; } }
+      width: 400px; } }
   @media (min-width: 992px) {
     .u-modal .u-modal-lg {
-      width: 900px; } }
+      width: 800px; } }
   @media (min-width: 1200px) {
     .u-modal .u-modal-xlg {
-      width: 1200px; } }
+      width: 976px; } }
 
 .u-modal-open {
   overflow: hidden; }

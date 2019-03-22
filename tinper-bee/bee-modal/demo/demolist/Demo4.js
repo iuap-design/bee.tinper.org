@@ -80,7 +80,7 @@ class Demo4 extends Component {
                         <p> 员工快乐工作， 成就事业， 分享成功的平台。 </p>
                     </Modal.Body>
                     <Modal.Footer>
-                        <Button onClick={ this.close }> 关闭 </Button>
+                        <Button colors="secondary" onClick={ this.close }> 关闭 </Button>
                     </Modal.Footer>
                 </Modal>
             </div>

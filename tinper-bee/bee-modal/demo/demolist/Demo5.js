@@ -43,7 +43,7 @@ class Demo5 extends Component {
             show = { this.state.showModal }
             onHide = { this.close } 
             width = '400'>
-                <Modal.Header>
+                <Modal.Header closeButton>
                     <Modal.Title>这是题目</Modal.Title>
                 </Modal.Header>
 
@@ -52,7 +52,7 @@ class Demo5 extends Component {
                 </Modal.Body>
 
                 <Modal.Footer>
-                    <Button onClick={ this.close } shape="border" style={{marginRight: 8}}>关闭</Button>
+                    <Button onClick={ this.close } colors="secondary" style={{marginRight: 8}}>关闭</Button>
                     <Button onClick={ this.close } colors="primary">确认</Button>
                 </Modal.Footer>
            </Modal>

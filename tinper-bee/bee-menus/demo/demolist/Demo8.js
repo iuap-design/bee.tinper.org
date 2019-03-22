@@ -5,6 +5,7 @@
 
 
 import React, { Component } from 'react';
+import FormControl from 'bee-form-control';
 import Menu from '../../src';
 
 const SubMenu = Menu.SubMenu;
@@ -64,7 +65,7 @@ class Demo3 extends Component {
     render() {
         return (
             <div>
-                <input style={{'marginBottom':'10px'}} placeholder="我是为了获得焦点"/>
+                <FormControl style={{'width':'240px','marginBottom':'10px'}} placeholder="我是为了获得焦点"/>
                 <Menu
                 mode="inline" keyboard={true}
                 openKeys={this.state.openKeys}

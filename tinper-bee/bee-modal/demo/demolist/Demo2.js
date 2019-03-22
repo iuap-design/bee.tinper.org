@@ -57,7 +57,7 @@ class Demo2 extends Component {
                     onHide={this.close}
                     style={{width: 450}}
                 >
-                    <Modal.Header className="text-center">
+                    <Modal.Header closeButton>
                         <Modal.Title>注册</Modal.Title>
                     </Modal.Header>
 
@@ -83,7 +83,7 @@ class Demo2 extends Component {
                     </Modal.Body>
 
                     <Modal.Footer className="text-center">
-                        <Button shape="border" style={{ marginRight: 8 }} onClick={this.close}>
+                        <Button colors="secondary" style={{ marginRight: 8 }} onClick={this.close}>
                             取消
                         </Button>
                         <Button colors="primary" onClick={this.close}>
