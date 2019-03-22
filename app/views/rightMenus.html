@@ -6,8 +6,8 @@
                 <% if(item.children){ %>
                     <ul class="rm-child-list">
                         <% item.children.forEach(function(it){ %>
-                            <li class="rm-list-item"> 
-                                <a href="#<%= it %>" title="<%= it %>"><%= it %> </a>
+                            <li class="rm-list-item" name="#<%= it %>"> 
+                                <a class="rm-list-item-a" href="#<%= it %>" title="<%= it %>"><%= it %> </a>
                             </li>
                         <% }) %>
                     </ul>
