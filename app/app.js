@@ -20,6 +20,6 @@ render(app, {
 router(app)
 middleware(app)
 
-app.listen(8080, () => {
-    console.log('服务运行在 http://localhost:8080')
+app.listen(3000, () => {
+    console.log('服务运行在 http://localhost:3000')
 })
