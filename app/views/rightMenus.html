@@ -1,11 +1,12 @@
 <div>
     <ul class="rm-list">
         <% for(key in rightMenus) { var item = rightMenus[key]; %>
-            <li class="rm-list-item"> <a href="#<%= key %>" title="<%= key %>"><%= key %></a></li>
+            <li class="rm-list-item" name="#<%= key %>"> 
+                <a class="rm-list-item-a" href="#<%= key %>" title="<%= key %>"><%= key %></a></li>
                 <% if(item.children){ %>
                     <ul class="rm-child-list">
                         <% item.children.forEach(function(it){ %>
-                            <li class="rm-child-item"> 
+                            <li class="rm-list-item"> 
                                 <a href="#<%= it %>" title="<%= it %>"><%= it %> </a>
                             </li>
                         <% }) %>
@@ -14,3 +15,36 @@
         <% } %>
     </ul>
 </div>
+
+<script>
+    let lists = document.querySelectorAll('.rm-list-item');
+    let as = document.querySelectorAll('.rm-list-item-a');
+    
+
+    //设置active
+    function setActive(index,anchor){
+        lists.forEach((item,i)=>{
+            let name = item.getAttribute('name');
+            if(index!=undefined){
+                if(i==index){
+                    item.setAttribute('class','rm-list-item active');
+                }else{
+                    item.setAttribute('class','rm-list-item');
+                }
+            }else if(anchor){
+                if(name==anchor){
+                    setActive(i)
+                }
+            }
+        })        
+    }
+    setActive(0)
+
+    as.forEach((item,index)=>{
+        item.onclick=function(){
+            let href = item.getAttribute('href');
+            setActive(undefined,href);
+        }
+    });
+
+</script>

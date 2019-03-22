@@ -4,7 +4,7 @@
             <li class="menu-group">
                 <% if(title.children){ var child = title.children; %>
                     <div class="menu-item menu-item-components open" >
-                        <span class="menu-item-components-text">
+                        <span class="menu-item-components-text" name="<%= title.component %>">
                             <%= key %>
                         </span>
                         <% for (heard in child) { var acs = child[heard]; %>
@@ -42,18 +42,50 @@
 
 
 <script>
+    // 展开关闭事件
     let nodeList = document.querySelectorAll('.menu-item-components-text');
-    nodeList.forEach(item=>{
+    nodeList.forEach((item,index)=>{
+        let name = item.getAttribute('name');
         item.onclick=(e)=>{
-            let outDiv = document.querySelector('.menu-item-components')
+            let outDiv = document.querySelectorAll('.menu-item-components')[index]
             let cls = outDiv.getAttribute('class');
             if(cls.indexOf('open')!=-1){//打开状态
                 outDiv.setAttribute('class','menu-item menu-item-components');
+                sessionStorage.setItem(`${name}Open`,'false');
             } else {//关闭状态
                 outDiv.setAttribute('class','menu-item menu-item-components open');
+                sessionStorage.setItem(`${name}Open`,'true');
             }
         }
     })
-    let component = "<%= active %>";
-    document.getElementById(component)&&document.getElementById(component).scrollIntoView();
+
+    //初始化展开关闭
+    let gjtxOpen = sessionStorage.getItem('gjtxOpen');//关键特性
+    let zjOpen = sessionStorage.getItem('zjOpen');//组件
+    let titls = document.querySelectorAll('.menu-item-components')
+    if(gjtxOpen=='false'){//
+        titls[0].setAttribute('class','menu-item menu-item-components')
+    }
+    if(zjOpen=='false'){
+        titls[1].setAttribute('class','menu-item menu-item-components')
+    }
+
+
+
+    //左侧滚动条定位
+    let sidebar = document.querySelector('#sidebar');
+    sidebar.onscroll=function(){
+        sessionStorage.setItem('scrollTop',sidebar.scrollTop);
+    }
+    let sessionScrollTop = sessionStorage.getItem('scrollTop');
+    if(sessionScrollTop){
+        sidebar.scrollTop = sessionScrollTop;
+    }
+
+
+
+
+
+    
+
 </script>
