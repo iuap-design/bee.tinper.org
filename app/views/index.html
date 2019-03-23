@@ -38,7 +38,7 @@
         <div class="sidebar" id="sidebar">
             <% include sidebar.html %>
         </div>
-        <div class="docs">
+        <div class="docs" id="docs">
             <% include docs.html %>
         </div>
         <div class="footer-out">
@@ -59,8 +59,18 @@
             debug: false // Set debug to true if you want to inspect the dropdown 
         }); 
 
-    new Gumshoe('#rightMenusId a',{
-        offset:document.querySelector('#rightMenusId').getBoundingClientRect().height
-    });
+
+
+
+    new Gumshoe('#rightMenusId a',{});
+    let lists = document.querySelectorAll('.rm-list-item');
+    if(window.scrollY<=160){
+        lists[0].setAttribute('class','rm-list-item active');
+    }
+    window.onscroll=function(){
+        if(window.scrollY<=160){
+            lists[0].setAttribute('class','rm-list-item active');
+        }
+    }
 </script>
 </html>

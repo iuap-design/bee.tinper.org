@@ -1,4 +1,4 @@
-<% if(changeLog.length){ %>
+<% if(changeLog.length ){ %>
     <ul class="u-timeline">
             <% changeLog.forEach(function(item){ %>
                 <li class="u-timeline-item">
@@ -16,6 +16,6 @@
                 </li>
             <% }) %>
         </ul>
-<% } else { %>
+<% } else if(isComponent==true) { %>
     暂无
 <% } %>
