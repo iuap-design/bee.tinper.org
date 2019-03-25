@@ -80,7 +80,7 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
 	
-	var Demo1 = __webpack_require__(159);var Demo2 = __webpack_require__(160);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 不同颜色的消息提醒", "code": "/**\n *\n * @title 不同颜色的消息提醒\n * @description 提供10种颜色，包括黑色白色及四个语义色及四个浅语义色\n *\n */\n\nimport React, { Component } from 'react';\nimport { Message, Button,  Panel ,  Con, Row, Col  } from 'tinper-bee';\n\n const info = function () {\n   let aa = Message.create({content: 'This is a Info message', color: 'info', duration: null});\n\n };\n const danger = function () {\n   Message.create({content: 'This is a danger message', color: 'danger'});\n };\n const success = function () {\n   Message.create({content: 'This is a success message', color: 'success'});\n };\n const warning = function () {\n   Message.create({content: 'This is a warning message', color: 'warning'});\n };\n const loading = function () {\n   Message.create({content: 'This is a dark message', color: 'dark'});\n };\n const light = function () {\n   Message.create({content: 'This is a light message', color: 'light'});\n };\nclass Demo1 extends Component {\n    constructor(props){\n        super(props);\n    }\n    render () {\n        return (\n            <div className=\"paddingDemo\">\n            <Button\n                colors=\"info\"\n                onClick={info}>\n                info\n            </Button>\n            <Button\n                colors=\"danger\"\n                onClick={danger}>\n                danger\n            </Button>\n            <Button\n                colors=\"warning\"\n                onClick={warning}>\n                warning\n            </Button>\n            <Button\n                colors=\"success\"\n                onClick={success}>\n                success\n            </Button>\n            <Button\n                colors=\"primary\"\n                onClick={loading}>\n                dark\n            </Button>\n            <Button\n                shape=\"border\"\n                onClick={light}>\n                light\n            </Button>\n            </div>\n        )\n    }\n}\n\n\n\n", "desc": " 提供10种颜色，包括黑色白色及四个语义色及四个浅语义色", "scss_code": ".paddingDemo{\n  button{\n    margin: 10px;\n  }\n}" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 不同显示位置的消息提醒", "code": "/**\n *\n * @title 不同显示位置的消息提醒\n * @description 一个页面的message只能设置一中显示位置，提供六种位置选择，查看每种示例，需每次刷新\n *\n */\n\nimport React, { Component } from 'react';\nimport { Message, Button,  Panel ,  Con, Row, Col  } from 'tinper-bee';\n\n const top = function () {\n   Message.create({content: 'This is a Info message', position: 'top'});\n };\n const bottom = function () {\n   Message.create({content: 'This is a Info message', position: 'bottom'});\n };\n const topRight = function () {\n   Message.create({content: 'This is a Info message', position: 'topRight'});\n };\n const topLeft = function () {\n   Message.create({content: 'This is a Info message', position: 'topLeft'});\n };\n const bottomRight = function () {\n   Message.create({content: 'This is a Info message', position: 'bottomRight'});\n };\n const bottomLeft = function () {\n   Message.create({content: 'This is a Info message', position: 'bottomLeft'});\n };\nclass Demo2 extends Component {\n    constructor(props){\n        super(props);\n    }\n    render () {\n        return (\n            <div className=\"paddingDemo\">\n            <Button\n                colors=\"info\"\n                onClick={top}>\n                top\n            </Button>\n            <Button\n                colors=\"info\"\n                onClick={bottom}>\n                bottom\n            </Button>\n            <Button\n                colors=\"info\"\n                onClick={topRight}>\n                topRight\n            </Button>\n            <Button\n                colors=\"info\"\n                onClick={topLeft}>\n                topLeft\n            </Button>\n            <Button\n                colors=\"info\"\n                onClick={bottomRight}>\n                bottomRight\n            </Button>\n            <Button\n                colors=\"info\"\n                onClick={bottomLeft}>\n                bottomLeft\n            </Button>\n            </div>\n        )\n    }\n}\n\n\n", "desc": " 一个页面的message只能设置一中显示位置，提供六种位置选择，查看每种示例，需每次刷新", "scss_code": ".paddingDemo{\n  button{\n    margin: 10px;\n  }\n}" }];
+	var Demo1 = __webpack_require__(159);var Demo2 = __webpack_require__(160);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 不同颜色的消息提醒", "code": "/**\r\n *\r\n * @title 不同颜色的消息提醒\r\n * @description 提供10种颜色，包括黑色白色及四个语义色及四个浅语义色\r\n *\r\n */\r\n\r\n\n\nimport React, { Component } from 'react';\r\n\nimport { Message, Button,  Panel ,  Con, Row, Col  } from 'tinper-bee';\r\n\r\n const info = function () {\r\n   let aa = Message.create({content: 'This is a Info message', color: 'info', duration: null});\r\n\r\n };\r\n const danger = function () {\r\n   Message.create({content: 'This is a danger message', color: 'danger'});\r\n };\r\n const success = function () {\r\n   Message.create({content: 'This is a success message', color: 'success'});\r\n };\r\n const warning = function () {\r\n   Message.create({content: 'This is a warning message', color: 'warning'});\r\n };\r\n const loading = function () {\r\n   Message.create({content: 'This is a dark message', color: 'dark'});\r\n };\r\n const light = function () {\r\n   Message.create({content: 'This is a light message', color: 'light'});\r\n };\r\nclass Demo1 extends Component {\r\n    constructor(props){\r\n        super(props);\r\n    }\r\n    render () {\r\n        return (\r\n            <div className=\"paddingDemo\">\r\n            <Button\r\n                colors=\"info\"\r\n                onClick={info}>\r\n                info\r\n            </Button>\r\n            <Button\r\n                colors=\"danger\"\r\n                onClick={danger}>\r\n                danger\r\n            </Button>\r\n            <Button\r\n                colors=\"warning\"\r\n                onClick={warning}>\r\n                warning\r\n            </Button>\r\n            <Button\r\n                colors=\"success\"\r\n                onClick={success}>\r\n                success\r\n            </Button>\r\n            <Button\r\n                colors=\"primary\"\r\n                onClick={loading}>\r\n                dark\r\n            </Button>\r\n            <Button\r\n                shape=\"border\"\r\n                onClick={light}>\r\n                light\r\n            </Button>\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\n\r\n\r\n", "desc": " 提供10种颜色，包括黑色白色及四个语义色及四个浅语义色", "scss_code": ".paddingDemo{\r\n  button{\r\n    margin: 10px;\r\n  }\r\n}" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 不同显示位置的消息提醒", "code": "/**\r\n *\r\n * @title 不同显示位置的消息提醒\r\n * @description 一个页面的message只能设置一中显示位置，提供六种位置选择，查看每种示例，需每次刷新\r\n *\r\n */\r\n\r\n\n\nimport React, { Component } from 'react';\r\n\nimport { Message, Button,  Panel ,  Con, Row, Col  } from 'tinper-bee';\r\n\r\n const top = function () {\r\n    Message.destroy();\r\n    Message.create({content: 'This is a Info message', position: 'top'});\r\n };\r\n const bottom = function () {\r\n    Message.destroy();\r\n    Message.create({content: 'This is a Info message', position: 'bottom'});\r\n };\r\n const topRight = function () {\r\n    Message.destroy();\r\n    Message.create({content: 'This is a Info message', position: 'topRight'});\r\n };\r\n const topLeft = function () {\r\n    Message.destroy();\r\n    Message.create({content: 'This is a Info message', position: 'topLeft'});\r\n };\r\n const bottomRight = function () {\r\n    Message.destroy();\r\n    Message.create({content: 'This is a Info message', position: 'bottomRight'});\r\n };\r\n const bottomLeft = function () {\r\n    Message.destroy();\r\n    Message.create({content: 'This is a Info message', position: 'bottomLeft'});\r\n };\r\nclass Demo2 extends Component {\r\n    constructor(props){\r\n        super(props);\r\n    }\r\n    render () {\r\n        return (\r\n            <div className=\"paddingDemo\">\r\n            <Button\r\n                colors=\"info\"\r\n                onClick={top}>\r\n                top\r\n            </Button>\r\n            <Button\r\n                colors=\"info\"\r\n                onClick={bottom}>\r\n                bottom\r\n            </Button>\r\n            <Button\r\n                colors=\"info\"\r\n                onClick={topRight}>\r\n                topRight\r\n            </Button>\r\n            <Button\r\n                colors=\"info\"\r\n                onClick={topLeft}>\r\n                topLeft\r\n            </Button>\r\n            <Button\r\n                colors=\"info\"\r\n                onClick={bottomRight}>\r\n                bottomRight\r\n            </Button>\r\n            <Button\r\n                colors=\"info\"\r\n                onClick={bottomLeft}>\r\n                bottomLeft\r\n            </Button>\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\n\r\n", "desc": " 一个页面的message只能设置一中显示位置，提供六种位置选择，查看每种示例，需每次刷新", "scss_code": ".paddingDemo{\r\n  button{\r\n    margin: 10px;\r\n  }\r\n}" }];
 	
 	var Demo = function (_Component) {
 	    _inherits(Demo, _Component);
@@ -1473,7 +1473,7 @@
 
 	function _interopRequireDefault(obj) {
 	  return obj && obj.__esModule ? obj : {
-	    default: obj
+	    "default": obj
 	  };
 	}
 	
@@ -5604,6 +5604,16 @@
 	  var documentWidth = documentElement.scrollWidth;
 	  var documentHeight = documentElement.scrollHeight;
 	
+	  // scrollXXX on html is sync with body which means overflow: hidden on body gets wrong scrollXXX.
+	  // We should cut this ourself.
+	  var bodyStyle = window.getComputedStyle(body);
+	  if (bodyStyle.overflowX === 'hidden') {
+	    documentWidth = win.innerWidth;
+	  }
+	  if (bodyStyle.overflowY === 'hidden') {
+	    documentHeight = win.innerHeight;
+	  }
+	
 	  // Reset element position after calculate the visible area
 	  if (element.style) {
 	    element.style.position = originalPosition;
@@ -8171,22 +8181,26 @@
 
 	"use strict";
 	
+	exports.__esModule = true;
+	exports.Transition = exports.TransitionGroup = exports.ReplaceTransition = exports.CSSTransition = void 0;
+	
 	var _CSSTransition = _interopRequireDefault(__webpack_require__(86));
+	
+	exports.CSSTransition = _CSSTransition.default;
 	
 	var _ReplaceTransition = _interopRequireDefault(__webpack_require__(93));
 	
+	exports.ReplaceTransition = _ReplaceTransition.default;
+	
 	var _TransitionGroup = _interopRequireDefault(__webpack_require__(94));
+	
+	exports.TransitionGroup = _TransitionGroup.default;
 	
 	var _Transition = _interopRequireDefault(__webpack_require__(90));
 	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	exports.Transition = _Transition.default;
 	
-	module.exports = {
-	  Transition: _Transition.default,
-	  TransitionGroup: _TransitionGroup.default,
-	  ReplaceTransition: _ReplaceTransition.default,
-	  CSSTransition: _CSSTransition.default
-	};
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ }),
 /* 86 */
@@ -8229,17 +8243,27 @@
 	  });
 	};
 	/**
-	 * A `Transition` component using CSS transitions and animations.
-	 * It's inspired by the excellent [ng-animate](http://www.nganimate.org/) library.
+	 * A transition component inspired by the excellent
+	 * [ng-animate](http://www.nganimate.org/) library, you should use it if you're
+	 * using CSS transitions or animations. It's built upon the
+	 * [`Transition`](https://reactcommunity.org/react-transition-group/transition)
+	 * component, so it inherits all of its props.
 	 *
 	 * `CSSTransition` applies a pair of class names during the `appear`, `enter`,
-	 * and `exit` stages of the transition. The first class is applied and then a
-	 * second "active" class in order to activate the css animation. After the animation,
-	 * matching `done` class names are applied to persist the animation state.
+	 * and `exit` states of the transition. The first class is applied and then a
+	 * second `*-active` class in order to activate the CSSS transition. After the
+	 * transition, matching `*-done` class names are applied to persist the
+	 * transition state.
 	 *
-	 * When the `in` prop is toggled to `true` the Component will get
-	 * the `example-enter` CSS class and the `example-enter-active` CSS class
-	 * added in the next tick. This is a convention based on the `classNames` prop.
+	 * When the `in` prop is set to `true`, the child component will first receive
+	 * the class `example-enter`, then the `example-enter-active` will be added in
+	 * the next tick. `CSSTransition` [forces a
+	 * reflow](https://github.com/reactjs/react-transition-group/blob/5007303e729a74be66a21c3e2205e4916821524b/src/CSSTransition.js#L208-L215)
+	 * between before adding the `example-enter-active`. This is an important trick
+	 * because it allows us to transition between `example-enter` and
+	 * `example-enter-active` even though they were added immediately one after
+	 * another. Most notably, this is what makes it possible for us to animate
+	 * _appearance_.
 	 */
 	
 	
@@ -8580,13 +8604,24 @@
 	 * it's used to animate the mounting and unmounting of a component, but can also
 	 * be used to describe in-place transition states as well.
 	 *
+	 * ---
+	 *
+	 * **Note**: `Transition` is a platform-agnostic base component. If you're using
+	 * transitions in CSS, you'll probably want to use
+	 * [`CSSTransition`](https://reactcommunity.org/react-transition-group/css-transition)
+	 * instead. It inherits all the features of `Transition`, but contains
+	 * additional features necessary to play nice with CSS transitions (hence the
+	 * name of the component).
+	 *
+	 * ---
+	 *
 	 * By default the `Transition` component does not alter the behavior of the
-	 * component it renders, it only tracks "enter" and "exit" states for the components.
-	 * It's up to you to give meaning and effect to those states. For example we can
-	 * add styles to a component when it enters or exits:
+	 * component it renders, it only tracks "enter" and "exit" states for the
+	 * components. It's up to you to give meaning and effect to those states. For
+	 * example we can add styles to a component when it enters or exits:
 	 *
 	 * ```jsx
-	 * import Transition from 'react-transition-group/Transition';
+	 * import { Transition } from 'react-transition-group';
 	 *
 	 * const duration = 300;
 	 *
@@ -8602,7 +8637,7 @@
 	 *
 	 * const Fade = ({ in: inProp }) => (
 	 *   <Transition in={inProp} timeout={duration}>
-	 *     {(state) => (
+	 *     {state => (
 	 *       <div style={{
 	 *         ...defaultStyle,
 	 *         ...transitionStyles[state]
@@ -8614,20 +8649,17 @@
 	 * );
 	 * ```
 	 *
-	 * As noted the `Transition` component doesn't _do_ anything by itself to its child component.
-	 * What it does do is track transition states over time so you can update the
-	 * component (such as by adding styles or classes) when it changes states.
-	 *
 	 * There are 4 main states a Transition can be in:
 	 *  - `'entering'`
 	 *  - `'entered'`
 	 *  - `'exiting'`
 	 *  - `'exited'`
 	 *
-	 * Transition state is toggled via the `in` prop. When `true` the component begins the
-	 * "Enter" stage. During this stage, the component will shift from its current transition state,
-	 * to `'entering'` for the duration of the transition and then to the `'entered'` stage once
-	 * it's complete. Let's take the following example:
+	 * Transition state is toggled via the `in` prop. When `true` the component
+	 * begins the "Enter" stage. During this stage, the component will shift from
+	 * its current transition state, to `'entering'` for the duration of the
+	 * transition and then to the `'entered'` stage once it's complete. Let's take
+	 * the following example:
 	 *
 	 * ```jsx
 	 * state = { in: false };
@@ -8638,36 +8670,24 @@
 	 *
 	 * render() {
 	 *   return (
-	 *     <div>
-	 *       <Transition in={this.state.in} timeout={500} />
+	 *     <>
+	 *       <Transition in={this.state.in} timeout={500}>
+	 *         {state => (
+	 *           // ...
+	 *         )}
+	 *       </Transition>
 	 *       <button onClick={this.toggleEnterState}>Click to Enter</button>
-	 *     </div>
+	 *     </>
 	 *   );
 	 * }
 	 * ```
 	 *
-	 * When the button is clicked the component will shift to the `'entering'` state and
-	 * stay there for 500ms (the value of `timeout`) before it finally switches to `'entered'`.
+	 * When the button is clicked the component will shift to the `'entering'` state
+	 * and stay there for 500ms (the value of `timeout`) before it finally switches
+	 * to `'entered'`.
 	 *
-	 * When `in` is `false` the same thing happens except the state moves from `'exiting'` to `'exited'`.
-	 *
-	 * ## Timing
-	 *
-	 * Timing is often the trickiest part of animation, mistakes can result in slight delays
-	 * that are hard to pin down. A common example is when you want to add an exit transition,
-	 * you should set the desired final styles when the state is `'exiting'`. That's when the
-	 * transition to those styles will start and, if you matched the `timeout` prop with the
-	 * CSS Transition duration, it will end exactly when the state changes to `'exited'`.
-	 *
-	 * > **Note**: For simpler transitions the `Transition` component might be enough, but
-	 * > take into account that it's platform-agnostic, while the `CSSTransition` component
-	 * > [forces reflows](https://github.com/reactjs/react-transition-group/blob/5007303e729a74be66a21c3e2205e4916821524b/src/CSSTransition.js#L208-L215)
-	 * > in order to make more complex transitions more predictable. For example, even though
-	 * > classes `example-enter` and `example-enter-active` are applied immediately one after
-	 * > another, you can still transition from one to the other because of the forced reflow
-	 * > (read [this issue](https://github.com/reactjs/react-transition-group/issues/159#issuecomment-322761171)
-	 * > for more info). Take this into account when choosing between `Transition` and
-	 * > `CSSTransition`.
+	 * When `in` is `false` the same thing happens except the state moves from
+	 * `'exiting'` to `'exited'`.
 	 */
 	
 	exports.EXITING = EXITING;
@@ -8981,15 +9001,15 @@
 	};
 	Transition.propTypes = process.env.NODE_ENV !== "production" ? {
 	  /**
-	   * A `function` child can be used instead of a React element.
-	   * This function is called with the current transition status
-	   * ('entering', 'entered', 'exiting', 'exited', 'unmounted'), which can be used
-	   * to apply context specific props to a component.
+	   * A `function` child can be used instead of a React element. This function is
+	   * called with the current transition status (`'entering'`, `'entered'`,
+	   * `'exiting'`, `'exited'`, `'unmounted'`), which can be used to apply context
+	   * specific props to a component.
 	   *
 	   * ```jsx
-	   * <Transition timeout={150}>
-	   *   {(status) => (
-	   *     <MyComponent className={`fade fade-${status}`} />
+	   * <Transition in={this.state.in} timeout={150}>
+	   *   {state => (
+	   *     <MyComponent className={`fade fade-${state}`} />
 	   *   )}
 	   * </Transition>
 	   * ```
@@ -9036,22 +9056,27 @@
 	
 	  /**
 	   * The duration of the transition, in milliseconds.
-	   * Required unless `addEndListener` is provided
+	   * Required unless `addEndListener` is provided.
 	   *
-	   * You may specify a single timeout for all transitions like: `timeout={500}`,
-	   * or individually like:
+	   * You may specify a single timeout for all transitions:
+	   *
+	   * ```jsx
+	   * timeout={500}
+	   * ```
+	   *
+	   * or individually:
 	   *
 	   * ```jsx
 	   * timeout={{
+	   *  appear: 500,
 	   *  enter: 300,
 	   *  exit: 500,
-	   *  appear: 500,
 	   * }}
 	   * ```
 	   *
-	   * If the value of `appear` is not set, then the value from enter is taken.
-	   *
-	   * If the `enter` or `exit` value is `null` or `undefined`, then the timer is set to `0`
+	   * - `appear` defaults to the value of `enter`
+	   * - `enter` defaults to `0`
+	   * - `exit` defaults to `0`
 	   *
 	   * @type {number | { enter?: number, exit?: number, appear?: number }}
 	   */
@@ -9676,12 +9701,12 @@
 	   * remember to spread them through if you are wrapping the `<Transition>` as
 	   * with our `<Fade>` example.
 	   *
-	   * While this component is meant to make it easier to animate multiple
-	   * `Transition` or `CSSTransition` children, sometimes you want to transition a
-	   * single child by changing its content, e.g. routes, slides, images in a
-	   * carousel etc. In that case you can change the `key` prop of the child
-	   * component along with its content, that way `TransitionGroup` will know that
-	   * it should transition the child.
+	   * While this component is meant for multiple `Transition` or `CSSTransition`
+	   * children, sometimes you may want to have a single transition child with
+	   * content that you want to be transitioned out and in when you change it
+	   * (e.g. routes, images etc.) In that case you can change the `key` prop of
+	   * the transition child as you change its content, this will cause
+	   * `TransitionGroup` to transition the child out and back in.
 	   */
 	  children: _propTypes.default.node,
 	
@@ -16303,7 +16328,9 @@
 	        if (colorsMap[colors]) {
 	            clsObj[clsPrefix + '-' + colorsMap[colors]] = true;
 	        }
-	        //clsObj[`${clsPrefix}-border`] = bordered;
+	        if (bordered) {
+	            clsObj[clsPrefix + '-border'] = bordered;
+	        }
 	        var classes = (0, _classnames2["default"])(clsPrefix, clsObj);
 	        return _react2["default"].createElement(
 	            'button',
@@ -16735,21 +16762,27 @@
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
 	
 	var top = function top() {
+	    _src2['default'].destroy();
 	    _src2['default'].create({ content: 'This is a Info message', position: 'top' });
 	};
 	var bottom = function bottom() {
+	    _src2['default'].destroy();
 	    _src2['default'].create({ content: 'This is a Info message', position: 'bottom' });
 	};
 	var topRight = function topRight() {
+	    _src2['default'].destroy();
 	    _src2['default'].create({ content: 'This is a Info message', position: 'topRight' });
 	};
 	var topLeft = function topLeft() {
+	    _src2['default'].destroy();
 	    _src2['default'].create({ content: 'This is a Info message', position: 'topLeft' });
 	};
 	var bottomRight = function bottomRight() {
+	    _src2['default'].destroy();
 	    _src2['default'].create({ content: 'This is a Info message', position: 'bottomRight' });
 	};
 	var bottomLeft = function bottomLeft() {
+	    _src2['default'].destroy();
 	    _src2['default'].create({ content: 'This is a Info message', position: 'bottomLeft' });
 	};
 	

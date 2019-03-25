@@ -169,12 +169,12 @@
     display: inline-block;
     width: 14px;
     height: 14px;
-    border: 1px solid #d9d9d9;
+    border: 1px solid rgb(165, 173, 186);
     border-radius: 3px;
     background-color: #fff;
     transition: all .3s; }
   .u-tree .u-tree-checkbox-disabled .u-tree-checkbox-inner {
-    border-color: #d9d9d9;
+    border-color: rgb(165, 173, 186);
     background-color: #f3f3f3; }
   .u-tree .u-tree-checkbox-indeterminate .u-tree-checkbox-inner:after {
     content: ' ';

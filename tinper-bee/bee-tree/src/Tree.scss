@@ -34,7 +34,7 @@ $treePrefixCls : "u-tree";
       display: inline-block;
       width: 14px;
       height: 14px;
-      border: 1px solid #d9d9d9;
+      border: 1px solid $border-color-base;
       border-radius: 3px;
       background-color: #fff;
       -webkit-transition: all .3s;
@@ -45,7 +45,7 @@ $treePrefixCls : "u-tree";
       // border-color: $tree-checkbox-color;
   }
   .u-tree-checkbox-disabled .u-tree-checkbox-inner {
-      border-color: #d9d9d9;
+      border-color: $border-color-base;
       background-color: #f3f3f3;
   }
   .u-tree-checkbox-indeterminate .u-tree-checkbox-inner:after {

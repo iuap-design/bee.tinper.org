@@ -12,22 +12,28 @@ import Button from 'bee-button';
 import Message from '../../src';
 
  const top = function () {
-   Message.create({content: 'This is a Info message', position: 'top'});
+    Message.destroy();
+    Message.create({content: 'This is a Info message', position: 'top'});
  };
  const bottom = function () {
-   Message.create({content: 'This is a Info message', position: 'bottom'});
+    Message.destroy();
+    Message.create({content: 'This is a Info message', position: 'bottom'});
  };
  const topRight = function () {
-   Message.create({content: 'This is a Info message', position: 'topRight'});
+    Message.destroy();
+    Message.create({content: 'This is a Info message', position: 'topRight'});
  };
  const topLeft = function () {
-   Message.create({content: 'This is a Info message', position: 'topLeft'});
+    Message.destroy();
+    Message.create({content: 'This is a Info message', position: 'topLeft'});
  };
  const bottomRight = function () {
-   Message.create({content: 'This is a Info message', position: 'bottomRight'});
+    Message.destroy();
+    Message.create({content: 'This is a Info message', position: 'bottomRight'});
  };
  const bottomLeft = function () {
-   Message.create({content: 'This is a Info message', position: 'bottomLeft'});
+    Message.destroy();
+    Message.create({content: 'This is a Info message', position: 'bottomLeft'});
  };
 class Demo2 extends Component {
     constructor(props){
