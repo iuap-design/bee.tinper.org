@@ -1,5 +1,15 @@
+<a name="2.0.5"></a>
+## [2.0.5](https://github.com/tinper-bee/bee-pagination/compare/v2.0.4...v2.0.5) (2019-03-26)
+
+
+
 <a name="2.0.4"></a>
-## [2.0.4](https://github.com/tinper-bee/bee-pagination/compare/v2.0.2...v2.0.4) (2019-03-22)
+## [2.0.4](https://github.com/tinper-bee/bee-pagination/compare/v2.0.3...v2.0.4) (2019-03-22)
+
+
+
+<a name="2.0.3"></a>
+## [2.0.3](https://github.com/tinper-bee/bee-pagination/compare/v2.0.2...v2.0.3) (2019-03-07)
 
 
 
@@ -9,17 +19,7 @@
 
 
 <a name="2.0.1"></a>
-## [2.0.1](https://github.com/tinper-bee/bee-pagination/compare/v1.1.18...v2.0.1) (2019-03-01)
-
-
-
-<a name="1.1.18"></a>
-## [1.1.18](https://github.com/tinper-bee/bee-pagination/compare/v1.1.17...v1.1.18) (2019-01-29)
-
-
-
-<a name="1.1.17"></a>
-## [1.1.17](https://github.com/tinper-bee/bee-pagination/compare/v2.0.0...v1.1.17) (2019-01-28)
+## [2.0.1](https://github.com/tinper-bee/bee-pagination/compare/v2.0.0...v2.0.1) (2019-03-01)
 
 
 

@@ -44,7 +44,7 @@ class Demo1 extends Component {
     }
     render() {
         const { getFieldProps, getFieldError } = this.props.form;
-        return (
+        return (<div className="demo">
             <SearchPanel
                 title='条件筛选'
                 onSearch={this.search}
@@ -61,15 +61,13 @@ class Demo1 extends Component {
                     console.log(status, "end")
                 }}
                 resident={
-                    <div className='demo'>
+                    <div className='demo-head'>
                         <Form>
                             <Row>
-                                <Col xs={12} sm={6} md={4} lg={6}>
+                                <Col xs={12} sm={6} md={4} lg={4}>
                                     <FormItem>
-                                        <Col xs={4} sm={4} md={4}  lg={4}>
-                                            <Label>名 称</Label>
-                                        </Col>
-                                        <Col xs={8} sm={8} md={8}  lg={8}>
+                                        <Col xs={8} sm={8} md={8}  lg={12} className="col">
+                                            <Label>名 称:</Label>
                                             <FormControl size="sm"
                                                 {
                                                 ...getFieldProps('orderCode', {
@@ -81,12 +79,10 @@ class Demo1 extends Component {
                                     </FormItem>
                                 </Col>
 
-                                <Col xs={12} sm={6} md={4}  lg={6}>
+                                <Col xs={12} sm={6} md={4}  lg={4}>
                                     <FormItem>
-                                        <Col xs={4} sm={4} md={4}  lg={4}>
-                                            <Label>供应商</Label>
-                                        </Col>
-                                        <Col xs={8} sm={8} md={8}  lg={8}>
+                                        <Col xs={8} sm={8} md={8}  lg={12} className="col">
+                                            <Label>电话:</Label>
                                             <FormControl size="sm"
                                                 {
                                                 ...getFieldProps('supplierName', {
@@ -98,12 +94,10 @@ class Demo1 extends Component {
                                     </FormItem>
                                 </Col>
 
-                                <Col xs={12} sm={6} md={4}  lg={6}>
+                                {/* <Col xs={12} sm={6} md={4}  lg={4}>
                                     <FormItem>
-                                        <Col xs={4} sm={4} md={4}  lg={4}>
-                                            <Label>收货人</Label>
-                                        </Col>
-                                        <Col xs={8} sm={8} md={8}  lg={8}>
+                                        <Col xs={8} sm={8} md={8}  lg={12} className="col">
+                                            <Label>电话:</Label>
                                             <FormControl size="sm"
                                                 {
                                                 ...getFieldProps('supplierName', {
@@ -113,33 +107,16 @@ class Demo1 extends Component {
                                             />
                                         </Col>
                                     </FormItem>
-                                </Col>
-
-                                <Col xs={12} sm={6} md={4}  lg={6}>
-                                    <FormItem>
-                                        <Col xs={4} sm={4} md={4}  lg={4}>
-                                            <Label>电话</Label>
-                                        </Col>
-                                        <Col xs={8} sm={8} md={8}  lg={8}>
-                                            <FormControl size="sm"
-                                                {
-                                                ...getFieldProps('supplierName', {
-                                                    initialValue: '',
-                                                })
-                                                }
-                                            />
-                                        </Col>
-                                    </FormItem>
-                                </Col>
+                                </Col> */}
 
                             </Row>
                         </Form>
                     </div>
                 }
             >
-                <div className="demo">
+               <div className='demo-body'>
                     <Form>
-                        <Row>
+                        {/* <Row>
                             <Col lg={12} md={12} xs={12} >
                                 <FormItem>
                                     <Col md={2} xs={2} className="radio">
@@ -161,14 +138,59 @@ class Demo1 extends Component {
 
                                 </FormItem>
                             </Col>
-                        </Row>
+                        </Row> */}
                         <Row>
-                            <Col xs={12} sm={6} md={4}  lg={6}>
+
+                            <Col xs={12} sm={6} md={4} lg={4}>
                                 <FormItem>
-                                    <Col xs={4} sm={4} md={4}  lg={4} className="radio">
-                                        <Label>联系人</Label>
+                                    <Col xs={8} sm={8} md={8} lg={12} className="col">
+                                         <Label>联系人:</Label>
+                                        <FormControl size="sm"
+                                            {
+                                            ...getFieldProps('orderCode', {
+                                                initialValue: '',
+                                            })
+                                            }
+                                        />
                                     </Col>
-                                    <Col xs={8} sm={8} md={8}  lg={8} >
+                                </FormItem>
+                            </Col>
+
+                            <Col xs={12} sm={6} md={4}  lg={4}>
+                                <FormItem>
+                                    <Col xs={8} sm={8} md={8} lg={12} className="col">
+                                        <Label>供应商:</Label>
+                                        <FormControl size="sm"
+                                            {
+                                            ...getFieldProps('supplierName', {
+                                                initialValue: '',
+                                            })
+                                            }
+                                        />
+                                    </Col>
+                                </FormItem>
+                            </Col> 
+
+                            <Col xs={12} sm={6} md={4}  lg={4}>
+                                <FormItem>
+                                    <Col xs={8} sm={8} md={8}  lg={12} className="col">
+                                        <Label>地址:</Label>
+                                        <FormControl size="sm"
+                                            {
+                                            ...getFieldProps('supplierName', {
+                                                initialValue: '',
+                                            })
+                                            }
+                                        />
+                                    </Col>
+                                </FormItem>
+                            </Col> 
+
+
+                            <Col xs={12} sm={6} md={4}  lg={4}>
+                                <FormItem>
+                                    <Col xs={8} sm={8} md={8} lg={12} className="col">
+                                        <Label>车牌:</Label>
                                         <FormControl size="sm"
                                             {
                                             ...getFieldProps('supplierName', {
@@ -180,12 +202,25 @@ class Demo1 extends Component {
                                 </FormItem>
                             </Col>
 
-                            <Col xs={12} sm={6} md={4}  lg={6}>
+                            <Col xs={12} sm={6} md={4}  lg={4}>
                                 <FormItem>
-                                    <Col xs={4} sm={4} md={4}  lg={4} className="radio">
-                                        <Label>姓名</Label>
+                                    <Col xs={8} sm={8} md={8}  lg={12} className="col">
+                                        <Label>备注:</Label>
+                                        <FormControl size="sm"
+                                            {
+                                            ...getFieldProps('supplierName', {
+                                                initialValue: '',
+                                            })
+                                            }
+                                        />
                                     </Col>
-                                    <Col xs={8} sm={8} md={8}  lg={8} >
+                                </FormItem>
+                            </Col>
+
+                            <Col xs={12} sm={6} md={4}  lg={4}>
+                                <FormItem>
+                                    <Col xs={8} sm={8} md={8}  lg={12} className="col">
+                                        <Label>编号:</Label>
                                         <FormControl size="sm"
                                             {
                                             ...getFieldProps('supplierName', {
@@ -201,6 +236,7 @@ class Demo1 extends Component {
                     </Form>
                 </div>
             </SearchPanel>
+            </div>
         )
     }
 }

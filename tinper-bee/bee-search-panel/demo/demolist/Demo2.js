@@ -77,7 +77,7 @@ class Demo2 extends Component {
     render() {
         const { getFieldProps, getFieldError } = this.props.form;
         let self = this;
-        return (
+        return (<div className="demo">
             <SearchPanel
                 title='条件筛选'
                 onSearch={this.search}
@@ -94,15 +94,13 @@ class Demo2 extends Component {
                     console.log(status, "end")
                 }}
                 resident={
-                    <div className='demo'>
+                <div className='demo-head'>
                         <Form>
                             <Row>
-                                <Col xs={12} sm={6} md={4} lg={6}>
+                                <Col xs={12} sm={6} md={4} lg={4}>
                                     <FormItem>
-                                        <Col xs={4} sm={4} md={4}  lg={4}>
-                                            <Label>订单编号</Label>
-                                        </Col>
-                                        <Col xs={8} sm={8} md={8}  lg={8}>
+                                        <Col xs={8} sm={8} md={8}  lg={12} className="col">
+                                            <Label>订单编号:</Label>
                                             <FormControl size="sm"
                                                 {
                                                 ...getFieldProps('orderCode', {
@@ -114,12 +112,10 @@ class Demo2 extends Component {
                                     </FormItem>
                                 </Col>
 
-                                <Col xs={12} sm={6} md={4} lg={6}>
+                                <Col xs={12} sm={6} md={4}  lg={4}>
                                     <FormItem>
-                                        <Col xs={4} sm={4} md={4}  lg={4}>
-                                            <Label>供应商名称</Label>
-                                        </Col>
-                                        <Col xs={8} sm={8} md={8}  lg={8}>
+                                        <Col xs={8} sm={8} md={8}  lg={12} className="col">
+                                            <Label>供应商名称:</Label>
                                             <FormControl size="sm"
                                                 {
                                                 ...getFieldProps('supplierName', {
@@ -130,48 +126,19 @@ class Demo2 extends Component {
                                         </Col>
                                     </FormItem>
                                 </Col>
-
-                                <Col xs={12} sm={6} md={4} lg={6}>
-                                    <FormItem>
-                                        <Col xs={4} sm={4} md={4}  lg={4}>
-                                            <Label>凭证日期</Label>
-                                        </Col>
-                                        <Col xs={8} sm={8} md={8}  lg={8}>
-                                            <RangePicker
-                                                placeholder={'开始 ~ 结束'}
-                                                dateInputPlaceholder={['开始', '结束']}
-                                                showClear={true}
-                                                defaultValue={this.state.value}
-                                                {...getFieldProps('voucherDate', {
-                                                    initialValue:self.state.voucherDate,
-                                                    onChange:(v)=>{
-                                                        self.setState({
-                                                            voucherDate: v
-                                                        })
-                                                    },
-                                                    rules: [{
-                                                        required: true, message: '请输入日期',
-                                                    }],
-                                                }) }
-                                            />
-                                        </Col>
-                                    </FormItem>
-                                </Col>
-
                             </Row>
                         </Form>
                     </div>
                 }
             >
-                <div className="demo">
+
+                <div className='demo-body'>
                     <Form>
                         <Row>
-                            <Col xs={12} sm={6} md={4} lg={6}>
+                            <Col xs={12} sm={6} md={4}  lg={4}>
                                 <FormItem>
-                                    <Col xs={4} sm={4} md={4}  lg={4} className="radio">
-                                        <Label>订单类型</Label>
-                                    </Col>
-                                    <Col xs={8} sm={8} md={8}  lg={8}>
+                                    <Col xs={8} sm={8} md={8}  lg={12} className="col">
+                                        <Label>订单类型:</Label>
                                         <Select size="sm"
                                             {
                                             ...getFieldProps('type', {
@@ -191,12 +158,10 @@ class Demo2 extends Component {
                                 </FormItem>
                             </Col>
 
-                            <Col xs={12} sm={6} md={4} lg={6}>
+                            <Col xs={12} sm={6} md={4}  lg={4}>
                                 <FormItem>
-                                    <Col xs={4} sm={4} md={4}  lg={4}>
+                                    <Col xs={8} sm={8} md={8}  lg={12} className="col">
                                         <Label>采购组</Label>
-                                    </Col>
-                                    <Col xs={8} sm={8} md={8}  lg={8}>
                                         <CheckboxGroup 
                                                 {
                                                     ...getFieldProps('purchasingGroup',{
@@ -211,12 +176,10 @@ class Demo2 extends Component {
                                 </FormItem>
                             </Col>
 
-                            {/* <Col xs={12} sm={6} md={4} lg={6}>
+                            <Col xs={12} sm={6} md={4}  lg={4}>
                                 <FormItem>
-                                    <Col xs={4} sm={4} md={4}  lg={4}>
+                                    <Col xs={8} sm={8} md={8}  lg={12} className="col">
                                         <Label>审批</Label>
-                                    </Col>
-                                    <Col xs={8} sm={8} md={8}  lg={8} >
                                         <Radio.RadioGroup
                                                 selectedValue={this.state.approvalState}
                                                 {
@@ -233,11 +196,12 @@ class Demo2 extends Component {
                                         </Radio.RadioGroup>
                                     </Col>
                                 </FormItem>
-                            </Col> */}
+                            </Col>
                         </Row>
                     </Form>
                 </div>
             </SearchPanel>
+            </div>
         )
     }
 }

@@ -16653,11 +16653,13 @@
 	    _this3.setState({
 	      open: open
 	    });
-	    setTimeout(function () {
-	      var value = self.state.value;
-	      props.onOpenChange(open, value, value && value.format(props.format) || '');
-	      self.inputFocus();
-	    }, 200);
+	    if (open) {
+	      setTimeout(function () {
+	        var value = self.state.value;
+	        props.onOpenChange(open, value, value && value.format(props.format) || '');
+	        self.inputFocus();
+	      }, 200);
+	    }
 	  };
 	
 	  this.handleCalendarChange = function (value) {
@@ -16707,6 +16709,7 @@
 	  };
 	
 	  this.outInputFocus = function (e) {
+	    console.log('focussssssss');
 	    if (_this3.props.hasOwnProperty('open')) e.stopPropagation();
 	    _this3.props.outInputFocus && _this3.props.outInputFocus(e);
 	  };
@@ -16758,6 +16761,11 @@
 	      value: ''
 	    });
 	    _this3.props.onChange && _this3.props.onChange('', '');
+	  };
+	
+	  this.handleSelect = function (value) {
+	    _this3.props.onSelect(value, value && value.format(_this3.props.format) || '');
+	    _reactDom2["default"].findDOMNode(_this3.outInput).focus();
 	  };
 	};
 	

@@ -21,7 +21,7 @@
 |ellipsis|显示省略按钮|bool|false|
 |boundaryLinks|显示边界按钮|bool|false|
 |gap|按钮之间有间隔|bool|false|
-|noBorder|不显示按钮边框|bool|true|
+|noBorder|不显示按钮边框|bool|false|
 |size|按钮大小oneOf:lg,sm,''|string|''|
 |showJump|是否显示跳页选择|bool|false(为了兼容老版本)|
 |onDataNumSelect|选择每页多少条的回调函数|func|() => {}|

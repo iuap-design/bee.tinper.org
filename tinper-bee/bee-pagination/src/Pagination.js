@@ -112,7 +112,7 @@ const defaultProps = {
     boundaryLinks: false,
     clsPrefix: "u-pagination",
     gap: false,
-    noBorder: true,
+    noBorder: false,
     dataNumSelect: [
         '5',
         '10',

@@ -70,11 +70,14 @@ class DatePicker extends Component {
       this.setState({
         open
       }); 
-      setTimeout(function () {
-        const value = self.state.value;
-        props.onOpenChange(open,value, (value && value.format(props.format)) || '');
-        self.inputFocus()
-      },200)
+      if(open){
+        setTimeout(function () {
+          const value = self.state.value;
+          props.onOpenChange(open,value, (value && value.format(props.format)) || '');
+          self.inputFocus()
+        },200)
+      }
+      
       
   };
   componentWillReceiveProps(nextProps) {
@@ -136,7 +139,7 @@ class DatePicker extends Component {
       this.props.onChange(null,value);
     }
   }
-  outInputFocus = (e)=>{
+  outInputFocus = (e)=>{console.log('focussssssss')
     if(this.props.hasOwnProperty('open'))e.stopPropagation();
     this.props.outInputFocus&&this.props.outInputFocus(e);
   }
@@ -183,6 +186,10 @@ class DatePicker extends Component {
       value:''
     })
     this.props.onChange&&this.props.onChange('','');
+  }
+  handleSelect=(value)=>{
+    this.props.onSelect(value, (value && value.format(this.props.format)) || '');
+    ReactDOM.findDOMNode(this.outInput).focus()
   }
   render() {
     let state = this.state;

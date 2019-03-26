@@ -1,13 +1,36 @@
 @import "../node_modules/tinper-bee-core/scss/index.scss";
 @import "../src/SearchPanel.scss";
-@import "../node_modules/bee-panel/src/Panel.scss";
-@import "../node_modules/bee-layout/src/Layout.scss";
-@import "../node_modules/bee-button/src/Button.scss";
+// @import "../node_modules/bee-panel/src/Panel.scss";
+// @import "../node_modules/bee-layout/src/Layout.scss";
+// @import "../node_modules/bee-button/src/Button.scss";
 
-.demo .radio{
-  margin-right: -11px;  
+// .demo .radio{
+//   margin-right: -11px;  
+// }
+
+// // .demo .radio.u-col-xs-2{
+// //   margin-right:0px;
+// // }
+
+
+.demo{
+  .u-label {
+    // display: inline-block;
+    width: 80px;
+    // text-align: right;
+    white-space:nowrap;
+  }
+  // .u-radio-group,
+  .u-checkbox-group,
+  .col{
+    display: inline-flex;
+  }
 }
 
-// .demo .radio.u-col-xs-2{
-//   margin-right:0px;
-// }
+.demo-head{
+  box-sizing: border-box;
+}
+
+.demo-body{
+  margin: 0 -20px;
+}

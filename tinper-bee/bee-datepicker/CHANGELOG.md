@@ -1,3 +1,13 @@
+<a name="2.0.14"></a>
+## [2.0.14](https://github.com/tinper-bee/bee-datepicker/compare/v2.0.13...v2.0.14) (2019-03-26)
+
+
+### Bug Fixes
+
+* **bee-datepicker:** 面板隐藏焦点回到输入框 ([d30bbd1](https://github.com/tinper-bee/bee-datepicker/commit/d30bbd1))
+
+
+
 <a name="2.0.13"></a>
 ## [2.0.13](https://github.com/tinper-bee/bee-datepicker/compare/v2.0.12...v2.0.13) (2019-03-21)
 
@@ -17,14 +27,14 @@
 ## [2.0.11](https://github.com/tinper-bee/bee-datepicker/compare/v2.0.10...v2.0.11) (2019-03-19)
 
 
-
-<a name="2.0.10"></a>
-## [2.0.10](https://github.com/tinper-bee/bee-datepicker/compare/v2.0.9...v2.0.10) (2019-03-19)
-
-
 ### Bug Fixes
 
 * **bee-datepicker:** ie11选年无背景色bug ([2da89e3](https://github.com/tinper-bee/bee-datepicker/commit/2da89e3))
+
+
+
+<a name="2.0.10"></a>
+## [2.0.10](https://github.com/tinper-bee/bee-datepicker/compare/v2.0.9...v2.0.10) (2019-03-19)
 
 
 

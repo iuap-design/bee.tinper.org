@@ -1,12 +1,12 @@
 /**
- * @title 显示按钮边框的Pagination
+ * @title 不显示按钮边框的Pagination
  * @description 通过noBorder参数设置是否显示按钮边框。
  */
 
 import React, { Component } from 'react';
 import Pagination from '../../src';
 
-class Demo1 extends React.Component {
+class Demo7 extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -39,7 +39,7 @@ class Demo1 extends React.Component {
                     onSelect={this.handleSelect.bind(this)}
                     onDataNumSelect={this.dataNumSelect}
                     showJump={true}
-                    noBorder={false}
+                    noBorder={true}
                     total={100}
                     dataNum={2}
                 />
@@ -49,4 +49,4 @@ class Demo1 extends React.Component {
     }
 }
 
-export default Demo1;
+export default Demo7;
