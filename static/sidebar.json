@@ -674,11 +674,11 @@
                     "version": "0.1.5",
                     "component": "bee-clipboard"
                 },
-                "自动完成 Autocomplete": {
+                "自动完成 AutoComplete": {
                     "version": "0.1.5",
                     "component": "bee-autocomplete"
                 },
-                "拾色器 Colorpicker": {
+                "拾色器 ColorPicker": {
                     "version": "0.1.5",
                     "component": "bee-colorpicker"
                 }

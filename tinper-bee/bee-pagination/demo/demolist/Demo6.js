@@ -28,12 +28,7 @@ class Demo6 extends React.Component {
 	
 	renderConfirmBtn = () => {
 		return (
-		  	<Button
-				colors="dark"
-				shape='border'
-			>
-				确认
-			</Button>
+		  	<Button bordered>确认</Button>
 		);
 	}
 
