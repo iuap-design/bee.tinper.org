@@ -32,7 +32,6 @@ import bee-loading/build/Loading.css;
 |wrapperClassName|容器样式|string|''|
 
 ## 注意事项
-
-暂无
+- bee-loading v1.0.7之后的版本将废弃 `color` API
 
 ## 更新日志

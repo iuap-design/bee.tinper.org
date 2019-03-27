@@ -96,7 +96,7 @@ class Loading extends Component {
       dom = (
         <div>
           <div className={classes}>
-            <div><Icon type="uf-loadingstate" /></div>
+            <div><img src="http://design.yonyoucloud.com/static/bee.tinper.org-demo/loading.svg"/></div>
           </div>
           {children && <div className={`${clsPrefix}-desc`}>{children}</div>}
         </div>

@@ -141,7 +141,7 @@ var Loading = function (_Component) {
           _react2["default"].createElement(
             "div",
             null,
-            _react2["default"].createElement(_beeIcon2["default"], { type: "uf-loadingstate" })
+            _react2["default"].createElement("img", { src: "http://design.yonyoucloud.com/static/bee.tinper.org-demo/loading.svg" })
           )
         ),
         children && _react2["default"].createElement(

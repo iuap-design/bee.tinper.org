@@ -76,9 +76,8 @@
   bottom: 0;
   left: 0;
   z-index: 1900;
-  opacity: .7;
   filter: blur(0.5px);
-  background-color: #fff; }
+  background-color: rgba(255, 255, 255, 0.4); }
   .u-loading-backdrop.full-screen {
     position: fixed; }
 
