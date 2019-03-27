@@ -1,34 +1,31 @@
-<a name="2.0.16"></a>
-## [2.0.16](https://github.com/tinper-bee/bee-datepicker/compare/v2.0.15...v2.0.16) (2019-03-26)
+<a name="2.0.18"></a>
+## [2.0.18](https://github.com/tinper-bee/bee-datepicker/compare/v2.0.17...v2.0.18) (2019-03-27)
 
 
 ### Bug Fixes
 
-* **bee-datepicker:** 去掉多余console ([26cfb0d](https://github.com/tinper-bee/bee-datepicker/commit/26cfb0d))
+* **bee-datepicker:** ncc展开面板无法选中输入框内容 ([bbe2943](https://github.com/tinper-bee/bee-datepicker/commit/bbe2943))
 
 
 
-<a name="2.0.15"></a>
-## [2.0.15](https://github.com/tinper-bee/bee-datepicker/compare/v2.0.15-beta...v2.0.15) (2019-03-26)
+<a name="2.0.17"></a>
+## [2.0.17](https://github.com/tinper-bee/bee-datepicker/compare/v2.0.16...v2.0.17) (2019-03-27)
+
+
+### Bug Fixes
+
+* **bee-datepicker:** 依赖包加上 trigger等 ([b488d69](https://github.com/tinper-bee/bee-datepicker/commit/b488d69))
+
+
+
+<a name="2.0.16"></a>
+## [2.0.16](https://github.com/tinper-bee/bee-datepicker/compare/v2.0.13...v2.0.16) (2019-03-26)
 
 
 ### Bug Fixes
 
 * **bee-datepicker:** openchange ([d42d17b](https://github.com/tinper-bee/bee-datepicker/commit/d42d17b))
-
-
-
-<a name="2.0.15-beta"></a>
-## [2.0.15-beta](https://github.com/tinper-bee/bee-datepicker/compare/v2.0.14...v2.0.15-beta) (2019-03-26)
-
-
-
-<a name="2.0.14"></a>
-## [2.0.14](https://github.com/tinper-bee/bee-datepicker/compare/v2.0.13...v2.0.14) (2019-03-26)
-
-
-### Bug Fixes
-
+* **bee-datepicker:** 去掉多余console ([26cfb0d](https://github.com/tinper-bee/bee-datepicker/commit/26cfb0d))
 * **bee-datepicker:** 面板隐藏焦点回到输入框 ([d30bbd1](https://github.com/tinper-bee/bee-datepicker/commit/d30bbd1))
 
 

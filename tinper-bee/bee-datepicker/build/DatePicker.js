@@ -238,6 +238,12 @@ var _initialiseProps = function _initialiseProps() {
     var self = _this3;
     _this3.setState({
       open: open
+    }, function () {
+      if (open) {
+        setTimeout(function () {
+          self.inputFocus();
+        }, 0);
+      }
     });
     var value = self.state.value;
     props.onOpenChange(open, value, value && value.format(props.format) || '');
