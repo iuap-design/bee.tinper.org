@@ -59,10 +59,15 @@
             select.onclick = (e) => {
                 showHide()
             };
-            selectOptions.forEach(item => {
+            let nowTag = selectOptions[0].innerHTML;
+            selectOptions.forEach((item,index) => {
                 item.onclick = (e) => {
                     showHide(true);
                     let selectTag = e.target.innerHTML;
+                    if(selectTag==nowTag){
+                        window.location.search='';
+                        return
+                    }
                     window.location.search='?tag='+selectTag;
                 };
             })

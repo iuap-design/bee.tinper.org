@@ -59,6 +59,7 @@ class Demo4 extends Component {
                     遮罩无事件模态框
                 </Button>
                 <Modal
+                    className="demo4-modal"
                     show={ this.state.showModal }
                     backdrop={ this.state.modalDropup }
                     onHide={ this.close }>

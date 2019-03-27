@@ -24,7 +24,7 @@ $tooltip-arrow-color: #42526E;
     font-size: 12px;
     opacity: 0;
     &.in{
-    	opacity: $tooltip-opacity !important;
+    	opacity: 1 !important;
     }
     .tooltip-arrow{
         position: absolute;

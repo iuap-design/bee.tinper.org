@@ -9,7 +9,7 @@ import Button from "bee-button";
 
 
 
-class Demo5 extends Component {
+class Demo0 extends Component {
     start = () => {
         ProgressBar.start();
     }
@@ -35,4 +35,4 @@ class Demo5 extends Component {
 	}
 }
 
-export default Demo5;
+export default Demo0;

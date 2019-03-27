@@ -1,0 +1,105 @@
+@import "../node_modules/tinper-bee-core/scss/minxin-variables";
+@import "../node_modules/tinper-bee-core/scss/minxin-mixins";
+@import "../node_modules/tinper-bee-core/scss/minxin-palette";
+
+.u-colorpicker{
+    &-form{
+        position: relative;
+        width: 450px;
+        display: flex;
+        .u-label{
+            min-width: 100px;
+            line-height: 32px;
+            text-align: right;
+            padding-right: 12px;
+            .mast{
+                color: red;
+            }
+        }
+        &-color-demo{
+            position: absolute;
+            top: 11px;
+            right: 11px;
+            width: 24px;
+            height: 24px;
+            margin: 3px;
+            background: $brand-primary;
+            border-radius: $border-radius-base;
+            cursor: pointer;
+        }
+    }
+    .error{
+        color: red;
+        padding-left: 112px;
+    }
+    &-panel-header{
+        display: flex;
+        padding: 15px;
+        border-top: 1px solid #DDE1EC;
+        border-bottom: 1px solid #DDE1EC;
+    }
+    &-panel-content{
+        height: 300px;
+        padding: 15px 0;
+    }
+    &-color-preview{
+        &-demo{
+            width: 28px;
+            height: 28px;
+            margin-right: 12px;
+            border-radius: $border-radius-base;
+        }
+    }
+    &-panel-color-plate{
+        li{
+            float: left;
+            width: 75px;
+            height: 75px;
+            margin: 0 8px 8px 0; 
+            background: $brand-primary;
+            border-radius: $border-radius-base;
+            box-shadow:0px 2px 4px 0px rgba(47,47,48,0.2);
+            text-align: center;
+            line-height: 75px;
+            cursor: pointer;
+            &:hover{
+                // box-shadow: 0 2px 7px rgba(0, 0, 0, 0.45);
+                box-shadow: 0px 2px 4px 0px rgba(47,47,48,0.45);
+            }
+            .uf{
+                color: #fff;
+            }
+        }
+    }
+    &-panel-color-info{
+        .selected-color{
+            width: 280px;
+            height: 100px;
+            border-radius: $border-radius-base;
+        }
+        .u-label{
+            line-height: 30px;
+            color: #424242;
+        }
+    }
+    &-modal.u-modal{
+        .u-modal-body{
+            padding: 0;
+            border-bottom: 1px solid #DDE1EC;
+            background: #f7f9fb;
+        }
+    }
+    &-select-option {
+        .option-overview{
+            float: left;
+            width: 28px;
+            height: 28px;
+            margin-right: 12px;
+            border-radius: $border-radius-base;
+        }
+        span{
+            float: left;
+            line-height: 28px;
+        }
+    }
+}

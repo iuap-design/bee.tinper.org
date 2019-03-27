@@ -13,7 +13,7 @@ import { Checkbox } from 'tinper-bee';
 or
 
 import Checkbox from 'bee-checkbox';
-import bee-checkbox/build/Affix.css;
+import 'bee-checkbox/build/Checkbox.css';
 
 ```
 

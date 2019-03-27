@@ -14,7 +14,7 @@ const dateInputPlaceholder = "选择日期";
 class Demo1 extends Component {
     onSelect = (d, dataString)  => {
         console.log('select')
-        console.log(d, dataString) ;
+        console.log(d, dataString);
     }
     onClick = d => {
         console.log('click')

@@ -25,7 +25,6 @@
         max-width: 310px;
     }
     textarea {
-        min-height: 100px;
         resize: none;
     }
     .time>div {
@@ -41,7 +40,7 @@
     }
     .remarks .u-label{
         position: relative;
-        bottom: 79px;
+        bottom: 12px;
     }
     .u-city-select {
         display: inline-block;
@@ -54,8 +53,9 @@
     .u-form-item {
         min-height: auto!important;
     }
-    
-
+    .u-modal-body{
+        background: #f7f9fb;
+    }
 
 }
 #demo7{
