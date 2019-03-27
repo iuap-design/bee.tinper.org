@@ -84,4 +84,12 @@
                 }
             }
         }
+
+        document.addEventListener('click',function(e){
+            let className = e.target.getAttribute('class');
+            if((!className)||(className&&className.indexOf('u-select')==-1)){
+                showHide(true);
+                langShowHide(true);
+            }
+        })
 </script>
