@@ -4,6 +4,7 @@
 $button-padding-y-md: 4px;
 $button-padding-x-md: 13px;
 $font-size-md: 14px;
+$button-border-hover-bg-color: #EBECF0;
 
 //默认 flat 样式.
 .u-button {
@@ -129,13 +130,13 @@ input.u-button[type="submit"] {
   background: $button-border-bg-color;
   &:hover {
     color: $button-default-text-color;
-    background-color: $button-hover-color;
+    background-color: $button-border-hover-bg-color;
     border-color: $button-border-color;
   }
 
   &:active {
     color: $button-default-text-color;
-    background-color: $button-hover-color;
+    background-color: $button-border-hover-bg-color;
     border-color: $button-border-color;
   }
 
