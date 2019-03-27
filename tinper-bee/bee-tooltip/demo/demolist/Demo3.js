@@ -28,6 +28,15 @@ class Demo3 extends Component {
 		}
 	}
 
+	onFocus = (e) => {
+		let value = e.target.value;
+		if (Number(value) < 5) {
+			this.setState({
+				visible: true
+			})
+		}
+	}
+
 	render () {
 		let { visible } = this.state;
 		let tip = (
@@ -47,6 +56,7 @@ class Demo3 extends Component {
 						className={classnames("input", { err: visible })}
 						type="text"
 						onChange={this.handleChange}
+						onFocus={this.onFocus}
 					/>
 				</Tooltip>
 			</div>

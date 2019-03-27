@@ -21,7 +21,7 @@
   font-size: 12px;
   opacity: 0; }
   .u-tooltip.in {
-    opacity: 0.9 !important; }
+    opacity: 1 !important; }
   .u-tooltip .tooltip-arrow {
     position: absolute;
     display: block;

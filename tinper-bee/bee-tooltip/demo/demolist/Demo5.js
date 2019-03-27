@@ -15,7 +15,18 @@ class Demo5 extends Component {
 				title: "名字",
 				dataIndex: "a",
 				key: "a",
-				width: 500
+				width: 500,
+				render: (text, record, index) => {
+					return (
+						<Tooltip
+							overlay={text}
+							container={this.container ? ReactDOM.findDOMNode(this.container).querySelector(".u-table-body") : null}
+							placement="right"
+						>
+							<span className="source">{text}</span>
+						</Tooltip>
+					)
+				}
 			}, {
 				title: "出处",
 				dataIndex: "e",
@@ -24,10 +35,9 @@ class Demo5 extends Component {
 				render: (text, record, index) => {
 					return (
 						<Tooltip
-							trigger="click"
 							overlay={text}
 							container={this.container ? ReactDOM.findDOMNode(this.container).querySelector(".u-table-body") : null}
-							placement="bottom"
+							placement="right"
 						>
 							<span className="source">{text}</span>
 						</Tooltip>
@@ -38,19 +48,52 @@ class Demo5 extends Component {
 				title: "性别",
 				dataIndex: "b",
 				key: "b",
-				width: 500
+				width: 500,
+				render: (text, record, index) => {
+					return (
+						<Tooltip
+							overlay={text}
+							container={this.container ? ReactDOM.findDOMNode(this.container).querySelector(".u-table-body") : null}
+							placement="right"
+						>
+							<span className="source">{text}</span>
+						</Tooltip>
+					)
+				}
 			},
 			{
 				title: "年龄",
 				dataIndex: "c",
 				key: "c",
-				width: 500
+				width: 500,
+				render: (text, record, index) => {
+					return (
+						<Tooltip
+							overlay={text}
+							container={this.container ? ReactDOM.findDOMNode(this.container).querySelector(".u-table-body") : null}
+							placement="right"
+						>
+							<span className="source">{text}</span>
+						</Tooltip>
+					)
+				}
 			},
 			{
 				title: "武功级别",
 				dataIndex: "d",
 				width: 500,
-				key: "d"
+				key: "d",
+				render: (text, record, index) => {
+					return (
+						<Tooltip
+							overlay={text}
+							container={this.container ? ReactDOM.findDOMNode(this.container).querySelector(".u-table-body") : null}
+							placement="right"
+						>
+							<span className="source">{text}</span>
+						</Tooltip>
+					)
+				}
 			}
 		];
 

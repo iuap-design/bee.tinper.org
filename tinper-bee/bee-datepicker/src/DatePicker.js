@@ -52,7 +52,7 @@ class DatePicker extends Component {
         if(e.keyCode == KeyCode.DELETE){
           input.value = '';
           this.props.onChange('','');
-        }else if(e.keyCode == KeyCode.ESC){
+        }else if(e.keyCode == KeyCode.ESC||e.keyCode == KeyCode.ENTER){
           this.setState({
             open:false
           });
@@ -70,15 +70,13 @@ class DatePicker extends Component {
       this.setState({
         open
       }); 
+      const value = self.state.value;
+      props.onOpenChange(open,value, (value && value.format(props.format)) || '');
       if(open){
         setTimeout(function () {
-          const value = self.state.value;
-          props.onOpenChange(open,value, (value && value.format(props.format)) || '');
           self.inputFocus()
         },200)
       }
-      
-      
   };
   componentWillReceiveProps(nextProps) {
     if ("value" in nextProps) {
@@ -139,7 +137,7 @@ class DatePicker extends Component {
       this.props.onChange(null,value);
     }
   }
-  outInputFocus = (e)=>{console.log('focussssssss')
+  outInputFocus = (e)=>{
     if(this.props.hasOwnProperty('open'))e.stopPropagation();
     this.props.outInputFocus&&this.props.outInputFocus(e);
   }
@@ -188,8 +186,11 @@ class DatePicker extends Component {
     this.props.onChange&&this.props.onChange('','');
   }
   handleSelect=(value)=>{
-    this.props.onSelect(value, (value && value.format(this.props.format)) || '');
-    ReactDOM.findDOMNode(this.outInput).focus()
+    this.setState({
+      value:value
+    })
+    this.props.onSelect&&this.props.onSelect(value, (value && value.format(this.props.format)) || '');
+    // ReactDOM.findDOMNode(this.outInput).focus()
   }
   render() {
     let state = this.state;

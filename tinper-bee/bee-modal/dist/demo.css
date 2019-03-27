@@ -110,7 +110,13 @@
   margin: 5px 15px; }
 
 .demo10-modal .clear-btn {
-  float: left; }
+  float: left;
+  background: transparent !important;
+  border-color: transparent !important; }
+  .demo10-modal .clear-btn:hover {
+    background: #EBECF0 !important; }
+  .demo10-modal .clear-btn:active {
+    background: #EBECF0 !important; }
 
 .demo-margin {
   margin: 5px 15px; }
@@ -130,6 +136,9 @@
 
 .demo-margin {
   margin: 5px 15px; }
+
+.demo4-modal .u-modal-body {
+  background: #f7f9fb; }
 
 .demo-margin {
   margin: 5px 15px; }
@@ -158,7 +167,6 @@
   .demo7-modal .u-select {
     max-width: 310px; }
   .demo7-modal textarea {
-    min-height: 100px;
     resize: none; }
   .demo7-modal .time > div {
     display: inline-block; }
@@ -170,7 +178,7 @@
     bottom: 10px; }
   .demo7-modal .remarks .u-label {
     position: relative;
-    bottom: 79px; }
+    bottom: 12px; }
   .demo7-modal .u-city-select {
     display: inline-block; }
   .demo7-modal .u-city-select .province,
@@ -179,6 +187,8 @@
     width: 120px; }
   .demo7-modal .u-form-item {
     min-height: auto !important; }
+  .demo7-modal .u-modal-body {
+    background: #f7f9fb; }
 
 #demo7 .rc-calendar-picker {
   z-index: 1800; }

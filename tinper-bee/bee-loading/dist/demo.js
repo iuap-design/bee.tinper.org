@@ -80,7 +80,7 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
 	
-	var Demo1 = __webpack_require__(159);var Demo2 = __webpack_require__(160);var Demo3 = __webpack_require__(161);var Demo4 = __webpack_require__(162);var Demo5 = __webpack_require__(163);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 基础Loading", "code": "/**\r\n *\r\n * @title 基础Loading\r\n * @description 设置`loadingType`来修改Loading样式。默认是'rotate'。\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\r\nimport { Loading, Button } from 'tinper-bee';\r\n\n\r\nclass Demo1 extends Component {\r\n  constructor(props) {\r\n    super(props);\r\n    this.state = {\r\n      showRotate: false,\r\n        showLine: false\r\n    }\r\n  }\r\n\r\n  handleShow = () => {\r\n      this.setState({\r\n          showRotate: true\r\n      })\r\n      setTimeout(() => {\r\n          this.setState({\r\n              showRotate: false\r\n          })\r\n      }, 3000)\r\n\r\n  }\r\n\r\n    handleShowLine = () => {\r\n        this.setState({\r\n            showLine: true\r\n        })\r\n        setTimeout(() => {\r\n            this.setState({\r\n                showLine: false\r\n            })\r\n        }, 3000)\r\n\r\n    }\r\n\r\n  render() {\r\n    return (\r\n      <div>\r\n        <Button\r\n            colors=\"primary\"\r\n            onClick={this.handleShow}>\r\n          点击显示默认loading\r\n        </Button>\r\n        <Loading\r\n            fullScreen\r\n            showBackDrop={true}\r\n            show={this.state.showRotate}\r\n        />\r\n        <Button\r\n            colors=\"primary\"\r\n            style={{ marginLeft: 50 }}\r\n            onClick={this.handleShowLine}>\r\n          点击显示line loading\r\n        </Button>\r\n        <Loading\r\n            showBackDrop={true}\r\n            loadingType=\"line\"\r\n            show={this.state.showLine}\r\n        />\r\n      </div>\r\n    )\r\n  }\r\n}\r\n\r\n", "desc": " 设置`loadingType`来修改Loading样式。默认是'rotate'。" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 将Loading渲染到容器中", "code": "/**\r\n *\r\n * @title 将Loading渲染到容器中\r\n * @description 通过设置`container`属性，来控制loading渲染位置\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\r\nimport { Loading } from 'tinper-bee';\r\n\r\n\r\nclass Demo2 extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            show: true\r\n        }\r\n        this.a = null;\r\n    }\r\n\r\n\r\n    render() {\r\n        return (\r\n                <div className=\"demo2\">\r\n                    <p>\r\n                        曾经有一份真诚的爱情放在我面前，我没有珍惜，等我失去的时候我才后悔莫及，人世间最痛苦的事莫过于此。\r\n                        如果上天能够给我一个再来一次的机会，我会对那个女孩子说三个字：我爱你。\r\n                        如果非要在这份爱上加上一个期限，我希望是……\r\n                        一万年\r\n                    </p>\r\n                    <Loading container={this} show={this.state.show} />\r\n                </div>\r\n        )\r\n    }\r\n}\r\n\r\n\r\n", "desc": " 通过设置`container`属性，来控制loading渲染位置", "scss_code": ".demo2{\r\n  position: relative;\r\n  height: 100px;\r\n  width: 500px;\r\n  border: 1px solid #0084ff;\r\n  overflow: hidden;\r\n  font-size: 14px;\r\n  .u-loading-backdrop{\r\n    z-index:1029;\r\n  }\r\n}" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 添加描述", "code": "/**\r\n *\r\n * @title 添加描述\r\n * @description 通过添加children，来添加Loading的文字描述\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\r\nimport { Loading } from 'tinper-bee';\r\n\r\n\r\nclass Demo3 extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            show: true\r\n        }\r\n        this.a = null;\r\n    }\r\n\r\n    render() {\r\n        return (\r\n            <div className=\"demo3\">\r\n                <p>\r\n                    曾经有一份真诚的爱情放在我面前，我没有珍惜，等我失去的时候我才后悔莫及，人世间最痛苦的事莫过于此。\r\n                    如果上天能够给我一个再来一次的机会，我会对那个女孩子说三个字：我爱你。\r\n                    如果非要在这份爱上加上一个期限，我希望是……\r\n                    一万年\r\n                </p>\r\n                <Loading\r\n                    describe={true}\r\n                    container={this}\r\n                    show={this.state.show} >\r\n                    加载中\r\n                </Loading>\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\n\r\n", "desc": " 通过添加children，来添加Loading的文字描述", "scss_code": ".demo3{\r\n  position: relative;\r\n  height: 100px;\r\n  width: 500px;\r\n  border: 1px solid #0084ff;\r\n  overflow: hidden;\r\n  font-size: 14px;\r\n  .u-loading-backdrop{\r\n    z-index:1029;\r\n  }\r\n}" }, { "example": _react2['default'].createElement(Demo4, null), "title": " 将Loading渲染到容器中", "code": "/**\r\n *\r\n * @title 将Loading渲染到容器中\r\n * @description 通过设置`container`属性，通过传入function的方式，来控制loading渲染位置\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\r\nimport { Loading } from 'tinper-bee';\r\n\r\n\r\nclass Demo4 extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            show: true\r\n        }\r\n        this.a = null;\r\n    }\r\n    getElement =()=>{\r\n        return document.getElementById('demo4')\r\n    }\r\n\r\n\r\n    render() {\r\n        return (\r\n                <div className=\"demo4\">\r\n                    <p>\r\n                        曾经有一份真诚的爱情放在我面前，我没有珍惜，等我失去的时候我才后悔莫及，人世间最痛苦的事莫过于此。\r\n                        如果上天能够给我一个再来一次的机会，我会对那个女孩子说三个字：我爱你。\r\n                        如果非要在这份爱上加上一个期限，我希望是……\r\n                        一万年\r\n                    </p>\r\n                    <p id=\"demo4\">\r\n                    \r\n                        曾经有一份真诚的爱情放在我面前，我没有珍惜，等我失去的时候我才后悔莫及，人世间最痛苦的事莫过于此。\r\n                        如果上天能够给我一个再来一次的机会，我会对那个女孩子说三个字：我爱你。\r\n                        如果非要在这份爱上加上一个期限，我希望是……\r\n                        一万年\r\n                    </p>\r\n                    <Loading container={this.getElement} show={this.state.show} />\r\n                </div>\r\n        )\r\n    }\r\n}\r\n\r\n\r\n\r\n", "desc": " 通过设置`container`属性，通过传入function的方式，来控制loading渲染位置", "scss_code": ".demo4{\r\n  position: relative;\r\n  height: 100px;\r\n  width: 500px;\r\n  border: 1px solid #0084ff;\r\n  overflow: hidden;\r\n  font-size: 14px;\r\n  .u-loading-backdrop{\r\n    z-index:1029;\r\n  }\r\n}" }, { "example": _react2['default'].createElement(Demo5, null), "title": " 页面级加载提示", "code": "/**\r\n * @title 页面级加载提示\r\n * @description 页面级加载提示推荐使用进度条组件\r\n */\r\n\r\nimport React, { Component } from 'react';\nimport { Button, ProgressBar } from 'tinper-bee';\r\n\n\n\r\n\r\n\r\nclass Demo5 extends Component {\r\n    start = () => {\r\n        ProgressBar.start();\r\n    }\r\n    set = () => {\r\n        ProgressBar.set(0.4);\r\n    }\r\n    inc = () => {\r\n        ProgressBar.inc();\r\n    }\r\n    done = () => {\r\n        ProgressBar.done();\r\n    }\r\n\trender(){\r\n        const style = {marginRight:\"10px\"};\r\n\t\treturn (\r\n\t\t\t<div>\r\n\t\t\t\t<Button style={style} onClick={this.start}>点我开始</Button>\r\n\t\t\t\t<Button style={style} onClick={this.set}>设置固定位置</Button>\r\n\t\t\t\t<Button style={style} onClick={this.inc}>点我加快</Button>\r\n\t\t\t\t<Button onClick={this.done}>点我结束</Button>\r\n\t\t\t</div>\r\n\t\t)\r\n\t}\r\n}\r\n\r\n", "desc": " 页面级加载提示推荐使用进度条组件" }];
+	var Demo0 = __webpack_require__(159);var Demo1 = __webpack_require__(163);var Demo2 = __webpack_require__(164);var Demo3 = __webpack_require__(165);var Demo4 = __webpack_require__(166);var DemoArray = [{ "example": _react2['default'].createElement(Demo0, null), "title": " 页面级加载提示", "code": "/**\r\n * @title 页面级加载提示\r\n * @description 页面级加载提示推荐使用进度条组件\r\n */\r\n\r\nimport React, { Component } from 'react';\nimport { Button, ProgressBar } from 'tinper-bee';\r\n\n\n\r\n\r\n\r\nclass Demo0 extends Component {\r\n    start = () => {\r\n        ProgressBar.start();\r\n    }\r\n    set = () => {\r\n        ProgressBar.set(0.4);\r\n    }\r\n    inc = () => {\r\n        ProgressBar.inc();\r\n    }\r\n    done = () => {\r\n        ProgressBar.done();\r\n    }\r\n\trender(){\r\n        const style = {marginRight:\"10px\"};\r\n\t\treturn (\r\n\t\t\t<div>\r\n\t\t\t\t<Button style={style} onClick={this.start}>点我开始</Button>\r\n\t\t\t\t<Button style={style} onClick={this.set}>设置固定位置</Button>\r\n\t\t\t\t<Button style={style} onClick={this.inc}>点我加快</Button>\r\n\t\t\t\t<Button onClick={this.done}>点我结束</Button>\r\n\t\t\t</div>\r\n\t\t)\r\n\t}\r\n}\r\n\r\n", "desc": " 页面级加载提示推荐使用进度条组件" }, { "example": _react2['default'].createElement(Demo1, null), "title": " 基础Loading", "code": "/**\r\n *\r\n * @title 基础Loading\r\n * @description 设置`loadingType`来修改Loading样式。默认是'rotate'。\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\r\nimport { Loading, Button } from 'tinper-bee';\r\n\n\r\nclass Demo1 extends Component {\r\n  constructor(props) {\r\n    super(props);\r\n    this.state = {\r\n      showRotate: false,\r\n        showLine: false\r\n    }\r\n  }\r\n\r\n  handleShow = () => {\r\n      this.setState({\r\n          showRotate: true\r\n      })\r\n      setTimeout(() => {\r\n          this.setState({\r\n              showRotate: false\r\n          })\r\n      }, 3000)\r\n\r\n  }\r\n\r\n    handleShowLine = () => {\r\n        this.setState({\r\n            showLine: true\r\n        })\r\n        setTimeout(() => {\r\n            this.setState({\r\n                showLine: false\r\n            })\r\n        }, 3000)\r\n\r\n    }\r\n\r\n  render() {\r\n    return (\r\n      <div>\r\n        <Button\r\n            colors=\"primary\"\r\n            onClick={this.handleShow}>\r\n          点击显示默认loading\r\n        </Button>\r\n        <Loading\r\n            fullScreen\r\n            showBackDrop={true}\r\n            show={this.state.showRotate}\r\n        />\r\n        <Button\r\n            colors=\"primary\"\r\n            style={{ marginLeft: 50 }}\r\n            onClick={this.handleShowLine}>\r\n          点击显示line loading\r\n        </Button>\r\n        <Loading\r\n            showBackDrop={true}\r\n            loadingType=\"line\"\r\n            show={this.state.showLine}\r\n        />\r\n      </div>\r\n    )\r\n  }\r\n}\r\n\r\n", "desc": " 设置`loadingType`来修改Loading样式。默认是'rotate'。" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 将Loading渲染到容器中", "code": "/**\r\n *\r\n * @title 将Loading渲染到容器中\r\n * @description 通过设置`container`属性，来控制loading渲染位置\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\r\nimport { Loading } from 'tinper-bee';\r\n\r\n\r\nclass Demo2 extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            show: true\r\n        }\r\n        this.a = null;\r\n    }\r\n\r\n\r\n    render() {\r\n        return (\r\n                <div className=\"demo2\">\r\n                    <p>\r\n                        曾经有一份真诚的爱情放在我面前，我没有珍惜，等我失去的时候我才后悔莫及，人世间最痛苦的事莫过于此。\r\n                        如果上天能够给我一个再来一次的机会，我会对那个女孩子说三个字：我爱你。\r\n                        如果非要在这份爱上加上一个期限，我希望是……\r\n                        一万年\r\n                    </p>\r\n                    <Loading container={this} show={this.state.show} />\r\n                </div>\r\n        )\r\n    }\r\n}\r\n\r\n\r\n", "desc": " 通过设置`container`属性，来控制loading渲染位置", "scss_code": ".demo2{\r\n  position: relative;\r\n  height: 100px;\r\n  width: 500px;\r\n  border: 1px solid #0084ff;\r\n  overflow: hidden;\r\n  font-size: 14px;\r\n  .u-loading-backdrop{\r\n    z-index:1029;\r\n  }\r\n}" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 添加描述", "code": "/**\r\n *\r\n * @title 添加描述\r\n * @description 通过添加children，来添加Loading的文字描述\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\r\nimport { Loading } from 'tinper-bee';\r\n\r\n\r\nclass Demo3 extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            show: true\r\n        }\r\n        this.a = null;\r\n    }\r\n\r\n    render() {\r\n        return (\r\n            <div className=\"demo3\">\r\n                <p>\r\n                    曾经有一份真诚的爱情放在我面前，我没有珍惜，等我失去的时候我才后悔莫及，人世间最痛苦的事莫过于此。\r\n                    如果上天能够给我一个再来一次的机会，我会对那个女孩子说三个字：我爱你。\r\n                    如果非要在这份爱上加上一个期限，我希望是……\r\n                    一万年\r\n                </p>\r\n                <Loading\r\n                    describe={true}\r\n                    container={this}\r\n                    show={this.state.show} >\r\n                    加载中\r\n                </Loading>\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\n\r\n", "desc": " 通过添加children，来添加Loading的文字描述", "scss_code": ".demo3{\r\n  position: relative;\r\n  height: 100px;\r\n  width: 500px;\r\n  border: 1px solid #0084ff;\r\n  overflow: hidden;\r\n  font-size: 14px;\r\n  .u-loading-backdrop{\r\n    z-index:1029;\r\n  }\r\n}" }, { "example": _react2['default'].createElement(Demo4, null), "title": " 将Loading渲染到容器中", "code": "/**\r\n *\r\n * @title 将Loading渲染到容器中\r\n * @description 通过设置`container`属性，通过传入function的方式，来控制loading渲染位置\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\r\nimport { Loading } from 'tinper-bee';\r\n\r\n\r\nclass Demo4 extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            show: true\r\n        }\r\n        this.a = null;\r\n    }\r\n    getElement =()=>{\r\n        return document.getElementById('demo4')\r\n    }\r\n\r\n\r\n    render() {\r\n        return (\r\n                <div className=\"demo4\">\r\n                    <p>\r\n                        曾经有一份真诚的爱情放在我面前，我没有珍惜，等我失去的时候我才后悔莫及，人世间最痛苦的事莫过于此。\r\n                        如果上天能够给我一个再来一次的机会，我会对那个女孩子说三个字：我爱你。\r\n                        如果非要在这份爱上加上一个期限，我希望是……\r\n                        一万年\r\n                    </p>\r\n                    <p id=\"demo4\">\r\n                    \r\n                        曾经有一份真诚的爱情放在我面前，我没有珍惜，等我失去的时候我才后悔莫及，人世间最痛苦的事莫过于此。\r\n                        如果上天能够给我一个再来一次的机会，我会对那个女孩子说三个字：我爱你。\r\n                        如果非要在这份爱上加上一个期限，我希望是……\r\n                        一万年\r\n                    </p>\r\n                    <Loading container={this.getElement} show={this.state.show} />\r\n                </div>\r\n        )\r\n    }\r\n}\r\n\r\n\r\n\r\n", "desc": " 通过设置`container`属性，通过传入function的方式，来控制loading渲染位置", "scss_code": ".demo4{\r\n  position: relative;\r\n  height: 100px;\r\n  width: 500px;\r\n  border: 1px solid #0084ff;\r\n  overflow: hidden;\r\n  font-size: 14px;\r\n  .u-loading-backdrop{\r\n    z-index:1029;\r\n  }\r\n}" }];
 	
 	var Demo = function (_Component) {
 	    _inherits(Demo, _Component);
@@ -16610,336 +16610,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _src = __webpack_require__(157);
-	
-	var _src2 = _interopRequireDefault(_src);
-	
-	var _beeButton = __webpack_require__(155);
-	
-	var _beeButton2 = _interopRequireDefault(_beeButton);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-	
-	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); } /**
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @title 基础Loading
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @description 设置`loadingType`来修改Loading样式。默认是'rotate'。
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
-	
-	var Demo1 = function (_Component) {
-	    _inherits(Demo1, _Component);
-	
-	    function Demo1(props) {
-	        _classCallCheck(this, Demo1);
-	
-	        var _this = _possibleConstructorReturn(this, _Component.call(this, props));
-	
-	        _this.handleShow = function () {
-	            _this.setState({
-	                showRotate: true
-	            });
-	            setTimeout(function () {
-	                _this.setState({
-	                    showRotate: false
-	                });
-	            }, 3000);
-	        };
-	
-	        _this.handleShowLine = function () {
-	            _this.setState({
-	                showLine: true
-	            });
-	            setTimeout(function () {
-	                _this.setState({
-	                    showLine: false
-	                });
-	            }, 3000);
-	        };
-	
-	        _this.state = {
-	            showRotate: false,
-	            showLine: false
-	        };
-	        return _this;
-	    }
-	
-	    Demo1.prototype.render = function render() {
-	        return _react2['default'].createElement(
-	            'div',
-	            null,
-	            _react2['default'].createElement(
-	                _beeButton2['default'],
-	                {
-	                    colors: 'primary',
-	                    onClick: this.handleShow },
-	                '\u70B9\u51FB\u663E\u793A\u9ED8\u8BA4loading'
-	            ),
-	            _react2['default'].createElement(_src2['default'], {
-	                fullScreen: true,
-	                showBackDrop: true,
-	                show: this.state.showRotate
-	            }),
-	            _react2['default'].createElement(
-	                _beeButton2['default'],
-	                {
-	                    colors: 'primary',
-	                    style: { marginLeft: 50 },
-	                    onClick: this.handleShowLine },
-	                '\u70B9\u51FB\u663E\u793Aline loading'
-	            ),
-	            _react2['default'].createElement(_src2['default'], {
-	                showBackDrop: true,
-	                loadingType: 'line',
-	                show: this.state.showLine
-	            })
-	        );
-	    };
-	
-	    return Demo1;
-	}(_react.Component);
-	
-	exports['default'] = Demo1;
-	module.exports = exports['default'];
-
-/***/ }),
-/* 160 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _src = __webpack_require__(157);
-	
-	var _src2 = _interopRequireDefault(_src);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-	
-	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); } /**
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @title 将Loading渲染到容器中
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @description 通过设置`container`属性，来控制loading渲染位置
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
-	
-	var Demo2 = function (_Component) {
-	    _inherits(Demo2, _Component);
-	
-	    function Demo2(props) {
-	        _classCallCheck(this, Demo2);
-	
-	        var _this = _possibleConstructorReturn(this, _Component.call(this, props));
-	
-	        _this.state = {
-	            show: true
-	        };
-	        _this.a = null;
-	        return _this;
-	    }
-	
-	    Demo2.prototype.render = function render() {
-	        return _react2['default'].createElement(
-	            'div',
-	            { className: 'demo2' },
-	            _react2['default'].createElement(
-	                'p',
-	                null,
-	                '\u66FE\u7ECF\u6709\u4E00\u4EFD\u771F\u8BDA\u7684\u7231\u60C5\u653E\u5728\u6211\u9762\u524D\uFF0C\u6211\u6CA1\u6709\u73CD\u60DC\uFF0C\u7B49\u6211\u5931\u53BB\u7684\u65F6\u5019\u6211\u624D\u540E\u6094\u83AB\u53CA\uFF0C\u4EBA\u4E16\u95F4\u6700\u75DB\u82E6\u7684\u4E8B\u83AB\u8FC7\u4E8E\u6B64\u3002 \u5982\u679C\u4E0A\u5929\u80FD\u591F\u7ED9\u6211\u4E00\u4E2A\u518D\u6765\u4E00\u6B21\u7684\u673A\u4F1A\uFF0C\u6211\u4F1A\u5BF9\u90A3\u4E2A\u5973\u5B69\u5B50\u8BF4\u4E09\u4E2A\u5B57\uFF1A\u6211\u7231\u4F60\u3002 \u5982\u679C\u975E\u8981\u5728\u8FD9\u4EFD\u7231\u4E0A\u52A0\u4E0A\u4E00\u4E2A\u671F\u9650\uFF0C\u6211\u5E0C\u671B\u662F\u2026\u2026 \u4E00\u4E07\u5E74'
-	            ),
-	            _react2['default'].createElement(_src2['default'], { container: this, show: this.state.show })
-	        );
-	    };
-	
-	    return Demo2;
-	}(_react.Component);
-	
-	exports['default'] = Demo2;
-	module.exports = exports['default'];
-
-/***/ }),
-/* 161 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _src = __webpack_require__(157);
-	
-	var _src2 = _interopRequireDefault(_src);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-	
-	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); } /**
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @title 添加描述
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @description 通过添加children，来添加Loading的文字描述
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
-	
-	var Demo3 = function (_Component) {
-	    _inherits(Demo3, _Component);
-	
-	    function Demo3(props) {
-	        _classCallCheck(this, Demo3);
-	
-	        var _this = _possibleConstructorReturn(this, _Component.call(this, props));
-	
-	        _this.state = {
-	            show: true
-	        };
-	        _this.a = null;
-	        return _this;
-	    }
-	
-	    Demo3.prototype.render = function render() {
-	        return _react2['default'].createElement(
-	            'div',
-	            { className: 'demo3' },
-	            _react2['default'].createElement(
-	                'p',
-	                null,
-	                '\u66FE\u7ECF\u6709\u4E00\u4EFD\u771F\u8BDA\u7684\u7231\u60C5\u653E\u5728\u6211\u9762\u524D\uFF0C\u6211\u6CA1\u6709\u73CD\u60DC\uFF0C\u7B49\u6211\u5931\u53BB\u7684\u65F6\u5019\u6211\u624D\u540E\u6094\u83AB\u53CA\uFF0C\u4EBA\u4E16\u95F4\u6700\u75DB\u82E6\u7684\u4E8B\u83AB\u8FC7\u4E8E\u6B64\u3002 \u5982\u679C\u4E0A\u5929\u80FD\u591F\u7ED9\u6211\u4E00\u4E2A\u518D\u6765\u4E00\u6B21\u7684\u673A\u4F1A\uFF0C\u6211\u4F1A\u5BF9\u90A3\u4E2A\u5973\u5B69\u5B50\u8BF4\u4E09\u4E2A\u5B57\uFF1A\u6211\u7231\u4F60\u3002 \u5982\u679C\u975E\u8981\u5728\u8FD9\u4EFD\u7231\u4E0A\u52A0\u4E0A\u4E00\u4E2A\u671F\u9650\uFF0C\u6211\u5E0C\u671B\u662F\u2026\u2026 \u4E00\u4E07\u5E74'
-	            ),
-	            _react2['default'].createElement(
-	                _src2['default'],
-	                {
-	                    describe: true,
-	                    container: this,
-	                    show: this.state.show },
-	                '\u52A0\u8F7D\u4E2D'
-	            )
-	        );
-	    };
-	
-	    return Demo3;
-	}(_react.Component);
-	
-	exports['default'] = Demo3;
-	module.exports = exports['default'];
-
-/***/ }),
-/* 162 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _src = __webpack_require__(157);
-	
-	var _src2 = _interopRequireDefault(_src);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-	
-	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); } /**
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @title 将Loading渲染到容器中
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @description 通过设置`container`属性，通过传入function的方式，来控制loading渲染位置
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
-	
-	var Demo4 = function (_Component) {
-	    _inherits(Demo4, _Component);
-	
-	    function Demo4(props) {
-	        _classCallCheck(this, Demo4);
-	
-	        var _this = _possibleConstructorReturn(this, _Component.call(this, props));
-	
-	        _this.getElement = function () {
-	            return document.getElementById('demo4');
-	        };
-	
-	        _this.state = {
-	            show: true
-	        };
-	        _this.a = null;
-	        return _this;
-	    }
-	
-	    Demo4.prototype.render = function render() {
-	        return _react2['default'].createElement(
-	            'div',
-	            { className: 'demo4' },
-	            _react2['default'].createElement(
-	                'p',
-	                null,
-	                '\u66FE\u7ECF\u6709\u4E00\u4EFD\u771F\u8BDA\u7684\u7231\u60C5\u653E\u5728\u6211\u9762\u524D\uFF0C\u6211\u6CA1\u6709\u73CD\u60DC\uFF0C\u7B49\u6211\u5931\u53BB\u7684\u65F6\u5019\u6211\u624D\u540E\u6094\u83AB\u53CA\uFF0C\u4EBA\u4E16\u95F4\u6700\u75DB\u82E6\u7684\u4E8B\u83AB\u8FC7\u4E8E\u6B64\u3002 \u5982\u679C\u4E0A\u5929\u80FD\u591F\u7ED9\u6211\u4E00\u4E2A\u518D\u6765\u4E00\u6B21\u7684\u673A\u4F1A\uFF0C\u6211\u4F1A\u5BF9\u90A3\u4E2A\u5973\u5B69\u5B50\u8BF4\u4E09\u4E2A\u5B57\uFF1A\u6211\u7231\u4F60\u3002 \u5982\u679C\u975E\u8981\u5728\u8FD9\u4EFD\u7231\u4E0A\u52A0\u4E0A\u4E00\u4E2A\u671F\u9650\uFF0C\u6211\u5E0C\u671B\u662F\u2026\u2026 \u4E00\u4E07\u5E74'
-	            ),
-	            _react2['default'].createElement(
-	                'p',
-	                { id: 'demo4' },
-	                '\u66FE\u7ECF\u6709\u4E00\u4EFD\u771F\u8BDA\u7684\u7231\u60C5\u653E\u5728\u6211\u9762\u524D\uFF0C\u6211\u6CA1\u6709\u73CD\u60DC\uFF0C\u7B49\u6211\u5931\u53BB\u7684\u65F6\u5019\u6211\u624D\u540E\u6094\u83AB\u53CA\uFF0C\u4EBA\u4E16\u95F4\u6700\u75DB\u82E6\u7684\u4E8B\u83AB\u8FC7\u4E8E\u6B64\u3002 \u5982\u679C\u4E0A\u5929\u80FD\u591F\u7ED9\u6211\u4E00\u4E2A\u518D\u6765\u4E00\u6B21\u7684\u673A\u4F1A\uFF0C\u6211\u4F1A\u5BF9\u90A3\u4E2A\u5973\u5B69\u5B50\u8BF4\u4E09\u4E2A\u5B57\uFF1A\u6211\u7231\u4F60\u3002 \u5982\u679C\u975E\u8981\u5728\u8FD9\u4EFD\u7231\u4E0A\u52A0\u4E0A\u4E00\u4E2A\u671F\u9650\uFF0C\u6211\u5E0C\u671B\u662F\u2026\u2026 \u4E00\u4E07\u5E74'
-	            ),
-	            _react2['default'].createElement(_src2['default'], { container: this.getElement, show: this.state.show })
-	        );
-	    };
-	
-	    return Demo4;
-	}(_react.Component);
-	
-	exports['default'] = Demo4;
-	module.exports = exports['default'];
-
-/***/ }),
-/* 163 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _beeProgressBar = __webpack_require__(164);
+	var _beeProgressBar = __webpack_require__(160);
 	
 	var _beeProgressBar2 = _interopRequireDefault(_beeProgressBar);
 	
@@ -16960,13 +16631,13 @@
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @description 页面级加载提示推荐使用进度条组件
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
 	
-	var Demo5 = function (_Component) {
-	    _inherits(Demo5, _Component);
+	var Demo0 = function (_Component) {
+	    _inherits(Demo0, _Component);
 	
-	    function Demo5() {
+	    function Demo0() {
 	        var _temp, _this, _ret;
 	
-	        _classCallCheck(this, Demo5);
+	        _classCallCheck(this, Demo0);
 	
 	        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
 	            args[_key] = arguments[_key];
@@ -16983,7 +16654,7 @@
 	        }, _temp), _possibleConstructorReturn(_this, _ret);
 	    }
 	
-	    Demo5.prototype.render = function render() {
+	    Demo0.prototype.render = function render() {
 	        var style = { marginRight: "10px" };
 	        return _react2['default'].createElement(
 	            'div',
@@ -17011,14 +16682,14 @@
 	        );
 	    };
 	
-	    return Demo5;
+	    return Demo0;
 	}(_react.Component);
 	
-	exports['default'] = Demo5;
+	exports['default'] = Demo0;
 	module.exports = exports['default'];
 
 /***/ }),
-/* 164 */
+/* 160 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -17027,7 +16698,7 @@
 	  value: true
 	});
 	
-	var _ProgressBar = __webpack_require__(165);
+	var _ProgressBar = __webpack_require__(161);
 	
 	var _ProgressBar2 = _interopRequireDefault(_ProgressBar);
 	
@@ -17037,7 +16708,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 165 */
+/* 161 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -17060,7 +16731,7 @@
 	
 	var _propTypes2 = _interopRequireDefault(_propTypes);
 	
-	var _nprogress = __webpack_require__(166);
+	var _nprogress = __webpack_require__(162);
 	
 	var _nprogress2 = _interopRequireDefault(_nprogress);
 	
@@ -17317,7 +16988,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 166 */
+/* 162 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/* NProgress, (c) 2013, 2014 Rico Sta. Cruz - http://ricostacruz.com/nprogress
@@ -17797,6 +17468,335 @@
 	});
 	
 
+
+/***/ }),
+/* 163 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _src = __webpack_require__(157);
+	
+	var _src2 = _interopRequireDefault(_src);
+	
+	var _beeButton = __webpack_require__(155);
+	
+	var _beeButton2 = _interopRequireDefault(_beeButton);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	
+	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); } /**
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @title 基础Loading
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @description 设置`loadingType`来修改Loading样式。默认是'rotate'。
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
+	
+	var Demo1 = function (_Component) {
+	    _inherits(Demo1, _Component);
+	
+	    function Demo1(props) {
+	        _classCallCheck(this, Demo1);
+	
+	        var _this = _possibleConstructorReturn(this, _Component.call(this, props));
+	
+	        _this.handleShow = function () {
+	            _this.setState({
+	                showRotate: true
+	            });
+	            setTimeout(function () {
+	                _this.setState({
+	                    showRotate: false
+	                });
+	            }, 3000);
+	        };
+	
+	        _this.handleShowLine = function () {
+	            _this.setState({
+	                showLine: true
+	            });
+	            setTimeout(function () {
+	                _this.setState({
+	                    showLine: false
+	                });
+	            }, 3000);
+	        };
+	
+	        _this.state = {
+	            showRotate: false,
+	            showLine: false
+	        };
+	        return _this;
+	    }
+	
+	    Demo1.prototype.render = function render() {
+	        return _react2['default'].createElement(
+	            'div',
+	            null,
+	            _react2['default'].createElement(
+	                _beeButton2['default'],
+	                {
+	                    colors: 'primary',
+	                    onClick: this.handleShow },
+	                '\u70B9\u51FB\u663E\u793A\u9ED8\u8BA4loading'
+	            ),
+	            _react2['default'].createElement(_src2['default'], {
+	                fullScreen: true,
+	                showBackDrop: true,
+	                show: this.state.showRotate
+	            }),
+	            _react2['default'].createElement(
+	                _beeButton2['default'],
+	                {
+	                    colors: 'primary',
+	                    style: { marginLeft: 50 },
+	                    onClick: this.handleShowLine },
+	                '\u70B9\u51FB\u663E\u793Aline loading'
+	            ),
+	            _react2['default'].createElement(_src2['default'], {
+	                showBackDrop: true,
+	                loadingType: 'line',
+	                show: this.state.showLine
+	            })
+	        );
+	    };
+	
+	    return Demo1;
+	}(_react.Component);
+	
+	exports['default'] = Demo1;
+	module.exports = exports['default'];
+
+/***/ }),
+/* 164 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _src = __webpack_require__(157);
+	
+	var _src2 = _interopRequireDefault(_src);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	
+	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); } /**
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @title 将Loading渲染到容器中
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @description 通过设置`container`属性，来控制loading渲染位置
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
+	
+	var Demo2 = function (_Component) {
+	    _inherits(Demo2, _Component);
+	
+	    function Demo2(props) {
+	        _classCallCheck(this, Demo2);
+	
+	        var _this = _possibleConstructorReturn(this, _Component.call(this, props));
+	
+	        _this.state = {
+	            show: true
+	        };
+	        _this.a = null;
+	        return _this;
+	    }
+	
+	    Demo2.prototype.render = function render() {
+	        return _react2['default'].createElement(
+	            'div',
+	            { className: 'demo2' },
+	            _react2['default'].createElement(
+	                'p',
+	                null,
+	                '\u66FE\u7ECF\u6709\u4E00\u4EFD\u771F\u8BDA\u7684\u7231\u60C5\u653E\u5728\u6211\u9762\u524D\uFF0C\u6211\u6CA1\u6709\u73CD\u60DC\uFF0C\u7B49\u6211\u5931\u53BB\u7684\u65F6\u5019\u6211\u624D\u540E\u6094\u83AB\u53CA\uFF0C\u4EBA\u4E16\u95F4\u6700\u75DB\u82E6\u7684\u4E8B\u83AB\u8FC7\u4E8E\u6B64\u3002 \u5982\u679C\u4E0A\u5929\u80FD\u591F\u7ED9\u6211\u4E00\u4E2A\u518D\u6765\u4E00\u6B21\u7684\u673A\u4F1A\uFF0C\u6211\u4F1A\u5BF9\u90A3\u4E2A\u5973\u5B69\u5B50\u8BF4\u4E09\u4E2A\u5B57\uFF1A\u6211\u7231\u4F60\u3002 \u5982\u679C\u975E\u8981\u5728\u8FD9\u4EFD\u7231\u4E0A\u52A0\u4E0A\u4E00\u4E2A\u671F\u9650\uFF0C\u6211\u5E0C\u671B\u662F\u2026\u2026 \u4E00\u4E07\u5E74'
+	            ),
+	            _react2['default'].createElement(_src2['default'], { container: this, show: this.state.show })
+	        );
+	    };
+	
+	    return Demo2;
+	}(_react.Component);
+	
+	exports['default'] = Demo2;
+	module.exports = exports['default'];
+
+/***/ }),
+/* 165 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _src = __webpack_require__(157);
+	
+	var _src2 = _interopRequireDefault(_src);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	
+	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); } /**
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @title 添加描述
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @description 通过添加children，来添加Loading的文字描述
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
+	
+	var Demo3 = function (_Component) {
+	    _inherits(Demo3, _Component);
+	
+	    function Demo3(props) {
+	        _classCallCheck(this, Demo3);
+	
+	        var _this = _possibleConstructorReturn(this, _Component.call(this, props));
+	
+	        _this.state = {
+	            show: true
+	        };
+	        _this.a = null;
+	        return _this;
+	    }
+	
+	    Demo3.prototype.render = function render() {
+	        return _react2['default'].createElement(
+	            'div',
+	            { className: 'demo3' },
+	            _react2['default'].createElement(
+	                'p',
+	                null,
+	                '\u66FE\u7ECF\u6709\u4E00\u4EFD\u771F\u8BDA\u7684\u7231\u60C5\u653E\u5728\u6211\u9762\u524D\uFF0C\u6211\u6CA1\u6709\u73CD\u60DC\uFF0C\u7B49\u6211\u5931\u53BB\u7684\u65F6\u5019\u6211\u624D\u540E\u6094\u83AB\u53CA\uFF0C\u4EBA\u4E16\u95F4\u6700\u75DB\u82E6\u7684\u4E8B\u83AB\u8FC7\u4E8E\u6B64\u3002 \u5982\u679C\u4E0A\u5929\u80FD\u591F\u7ED9\u6211\u4E00\u4E2A\u518D\u6765\u4E00\u6B21\u7684\u673A\u4F1A\uFF0C\u6211\u4F1A\u5BF9\u90A3\u4E2A\u5973\u5B69\u5B50\u8BF4\u4E09\u4E2A\u5B57\uFF1A\u6211\u7231\u4F60\u3002 \u5982\u679C\u975E\u8981\u5728\u8FD9\u4EFD\u7231\u4E0A\u52A0\u4E0A\u4E00\u4E2A\u671F\u9650\uFF0C\u6211\u5E0C\u671B\u662F\u2026\u2026 \u4E00\u4E07\u5E74'
+	            ),
+	            _react2['default'].createElement(
+	                _src2['default'],
+	                {
+	                    describe: true,
+	                    container: this,
+	                    show: this.state.show },
+	                '\u52A0\u8F7D\u4E2D'
+	            )
+	        );
+	    };
+	
+	    return Demo3;
+	}(_react.Component);
+	
+	exports['default'] = Demo3;
+	module.exports = exports['default'];
+
+/***/ }),
+/* 166 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _src = __webpack_require__(157);
+	
+	var _src2 = _interopRequireDefault(_src);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	
+	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); } /**
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @title 将Loading渲染到容器中
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @description 通过设置`container`属性，通过传入function的方式，来控制loading渲染位置
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
+	
+	var Demo4 = function (_Component) {
+	    _inherits(Demo4, _Component);
+	
+	    function Demo4(props) {
+	        _classCallCheck(this, Demo4);
+	
+	        var _this = _possibleConstructorReturn(this, _Component.call(this, props));
+	
+	        _this.getElement = function () {
+	            return document.getElementById('demo4');
+	        };
+	
+	        _this.state = {
+	            show: true
+	        };
+	        _this.a = null;
+	        return _this;
+	    }
+	
+	    Demo4.prototype.render = function render() {
+	        return _react2['default'].createElement(
+	            'div',
+	            { className: 'demo4' },
+	            _react2['default'].createElement(
+	                'p',
+	                null,
+	                '\u66FE\u7ECF\u6709\u4E00\u4EFD\u771F\u8BDA\u7684\u7231\u60C5\u653E\u5728\u6211\u9762\u524D\uFF0C\u6211\u6CA1\u6709\u73CD\u60DC\uFF0C\u7B49\u6211\u5931\u53BB\u7684\u65F6\u5019\u6211\u624D\u540E\u6094\u83AB\u53CA\uFF0C\u4EBA\u4E16\u95F4\u6700\u75DB\u82E6\u7684\u4E8B\u83AB\u8FC7\u4E8E\u6B64\u3002 \u5982\u679C\u4E0A\u5929\u80FD\u591F\u7ED9\u6211\u4E00\u4E2A\u518D\u6765\u4E00\u6B21\u7684\u673A\u4F1A\uFF0C\u6211\u4F1A\u5BF9\u90A3\u4E2A\u5973\u5B69\u5B50\u8BF4\u4E09\u4E2A\u5B57\uFF1A\u6211\u7231\u4F60\u3002 \u5982\u679C\u975E\u8981\u5728\u8FD9\u4EFD\u7231\u4E0A\u52A0\u4E0A\u4E00\u4E2A\u671F\u9650\uFF0C\u6211\u5E0C\u671B\u662F\u2026\u2026 \u4E00\u4E07\u5E74'
+	            ),
+	            _react2['default'].createElement(
+	                'p',
+	                { id: 'demo4' },
+	                '\u66FE\u7ECF\u6709\u4E00\u4EFD\u771F\u8BDA\u7684\u7231\u60C5\u653E\u5728\u6211\u9762\u524D\uFF0C\u6211\u6CA1\u6709\u73CD\u60DC\uFF0C\u7B49\u6211\u5931\u53BB\u7684\u65F6\u5019\u6211\u624D\u540E\u6094\u83AB\u53CA\uFF0C\u4EBA\u4E16\u95F4\u6700\u75DB\u82E6\u7684\u4E8B\u83AB\u8FC7\u4E8E\u6B64\u3002 \u5982\u679C\u4E0A\u5929\u80FD\u591F\u7ED9\u6211\u4E00\u4E2A\u518D\u6765\u4E00\u6B21\u7684\u673A\u4F1A\uFF0C\u6211\u4F1A\u5BF9\u90A3\u4E2A\u5973\u5B69\u5B50\u8BF4\u4E09\u4E2A\u5B57\uFF1A\u6211\u7231\u4F60\u3002 \u5982\u679C\u975E\u8981\u5728\u8FD9\u4EFD\u7231\u4E0A\u52A0\u4E0A\u4E00\u4E2A\u671F\u9650\uFF0C\u6211\u5E0C\u671B\u662F\u2026\u2026 \u4E00\u4E07\u5E74'
+	            ),
+	            _react2['default'].createElement(_src2['default'], { container: this.getElement, show: this.state.show })
+	        );
+	    };
+	
+	    return Demo4;
+	}(_react.Component);
+	
+	exports['default'] = Demo4;
+	module.exports = exports['default'];
 
 /***/ })
 /******/ ]);
