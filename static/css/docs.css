@@ -82,7 +82,7 @@ body {
 }
 .docs .doc-content h1 {
     font-size: 30px;
-    font-weight: 500;
+    font-weight: normal;
     line-height: 42px;
 }
 .docs .doc-content h2 {
@@ -326,9 +326,14 @@ select::-ms-expand {
     font-size: 14px;
     white-space: normal;
     font-family: PingFang-SC-Medium;
+    color: #424242;
 }
 .docs .changelog .u-timeline-item-content>pre>ul>li>ul{
     padding-left: 15px;
+}
+
+.docs .doc-content .changelog .u-timeline-item-content>pre>p{
+    display: none
 }
 
 /* 企业级ui交互能力 */

@@ -39,6 +39,7 @@
 .sidebar .menu-components .menu-item-components .menu-item-components-text {
     width: 100%;
     display: block;
+    user-select: none;
 }
 
 .sidebar .menu-components .menu-item-components .menu-item-components-text:before {
