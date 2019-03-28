@@ -288,12 +288,17 @@ select::-ms-expand {
 .docs .doc-content .changelog .u-timeline-item:last-of-type .u-timeline-item-tail{
     display: none;
 }
+.docs .doc-content .changelog{
+    margin-top: 40px;
+}
 .docs .doc-content .changelog .u-timeline-item-tail {
     border-left: 1px solid #DFDFDF;
     left: 4px;
 }
 .docs .doc-content .changelog .u-timeline-item-content {
     padding-bottom: 0;
+    position: relative;
+    top: -12px;
 }
 .docs .doc-content .changelog .u-timeline-item-content .time{
     font-size: 14px;
