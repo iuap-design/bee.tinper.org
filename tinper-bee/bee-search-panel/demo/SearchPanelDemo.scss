@@ -1,29 +1,27 @@
 @import "../node_modules/tinper-bee-core/scss/index.scss";
 @import "../src/SearchPanel.scss";
-// @import "../node_modules/bee-panel/src/Panel.scss";
-// @import "../node_modules/bee-layout/src/Layout.scss";
-// @import "../node_modules/bee-button/src/Button.scss";
-
-// .demo .radio{
-//   margin-right: -11px;  
-// }
-
-// // .demo .radio.u-col-xs-2{
-// //   margin-right:0px;
-// // }
-
 
 .demo{
   .u-label {
-    // display: inline-block;
-    width: 80px;
-    // text-align: right;
-    white-space:nowrap;
+    min-width: 80px;
+    white-space: nowrap;
+    text-align: right;
   }
-  // .u-radio-group,
   .u-checkbox-group,
   .col{
     display: inline-flex;
+  }
+  .u-form-item,
+  .u-row >div{
+    padding-left:0px;
+    padding-right:0px;
+  }
+  .u-search .u-panel{
+    padding-top: 0px;
+  }
+  .u-search-resident{
+    padding-bottom: 0px;
+    padding-top: 0px;
   }
 }
 

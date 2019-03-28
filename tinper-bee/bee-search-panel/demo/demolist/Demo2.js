@@ -1,7 +1,7 @@
 /**
  *
- * @title 提取所有输入信息
- * @description 针对表头中的搜索内容，进行提取键入的信息数据。【查看console的输出】
+ * @title HeadContainer 为空状态
+ * @description 目前提供 HeadContainer(常驻区)、AdvancedContainer(收起区) 两部分示例
  *
  */
 import React, {Component} from 'react';
@@ -14,6 +14,8 @@ const FormItem = Form.FormItem;
 const Option = Select.Option;
 const { RangePicker } = DatePicker;
 const CheckboxGroup = Checkbox.CheckboxGroup;
+const HeadContainer = SearchPanel.HeadContainer;
+const AdvancedContainer = SearchPanel.AdvancedContainer;
 
 class Demo2 extends Component {
     constructor(props) {
@@ -92,14 +94,14 @@ class Demo2 extends Component {
                 }}
                 onPanelChangeEnd={status => {
                     console.log(status, "end")
-                }}
-                resident={
-                <div className='demo-head'>
+                }}>
+                {/* <HeadContainer>
+                    <div className='demo-head'>
                         <Form>
                             <Row>
-                                <Col xs={12} sm={6} md={4} lg={4}>
+                                <Col xs={12} sm={6} md={4} lg={3}>
                                     <FormItem>
-                                        <Col xs={8} sm={8} md={8}  lg={12} className="col">
+                                        <Col xs={12} sm={12} md={12}  lg={12} className="col">
                                             <Label>订单编号:</Label>
                                             <FormControl size="sm"
                                                 {
@@ -112,9 +114,9 @@ class Demo2 extends Component {
                                     </FormItem>
                                 </Col>
 
-                                <Col xs={12} sm={6} md={4}  lg={4}>
+                                <Col xs={12} sm={6} md={4}  lg={3}>
                                     <FormItem>
-                                        <Col xs={8} sm={8} md={8}  lg={12} className="col">
+                                        <Col xs={12} sm={12} md={12}  lg={12} className="col">
                                             <Label>供应商名称:</Label>
                                             <FormControl size="sm"
                                                 {
@@ -129,77 +131,79 @@ class Demo2 extends Component {
                             </Row>
                         </Form>
                     </div>
-                }
-            >
+                </HeadContainer> */}
+            
 
-                <div className='demo-body'>
-                    <Form>
-                        <Row>
-                            <Col xs={12} sm={6} md={4}  lg={4}>
-                                <FormItem>
-                                    <Col xs={8} sm={8} md={8}  lg={12} className="col">
-                                        <Label>订单类型:</Label>
-                                        <Select size="sm"
-                                            {
-                                            ...getFieldProps('type', {
-                                                initialValue: '',
-                                            }
-                                            )}>
-                                            <Option value="">请选择</Option>
-                                            {
-                                                self.state.orderTypes.map((item, index) => {
-                                                    return (
-                                                        <Option key={index} value={item.code}>{item.name}</Option>
-                                                    )
-                                                })
-                                            }
-                                        </Select>
-                                    </Col>
-                                </FormItem>
-                            </Col>
-
-                            <Col xs={12} sm={6} md={4}  lg={4}>
-                                <FormItem>
-                                    <Col xs={8} sm={8} md={8}  lg={12} className="col">
-                                        <Label>采购组</Label>
-                                        <CheckboxGroup 
+                <AdvancedContainer>
+                    <div className='demo-body'>
+                        <Form>
+                            <Row>
+                                <Col xs={12} sm={6} md={4}  lg={3}>
+                                    <FormItem>
+                                        <Col xs={12} sm={12} md={12}  lg={12} className="col">
+                                            <Label>订单类型:</Label>
+                                            <Select size="sm"
                                                 {
-                                                    ...getFieldProps('purchasingGroup',{
-                                                        initialValue:['2']
+                                                ...getFieldProps('type', {
+                                                    initialValue: '',
+                                                }
+                                                )}>
+                                                <Option value="">请选择</Option>
+                                                {
+                                                    self.state.orderTypes.map((item, index) => {
+                                                        return (
+                                                            <Option key={index} value={item.code}>{item.name}</Option>
+                                                        )
                                                     })
                                                 }
-                                            >
-                                                <Checkbox value='1'>人力</Checkbox>
-                                                <Checkbox value='2'>财务</Checkbox>
-                                        </CheckboxGroup>
-                                    </Col>
-                                </FormItem>
-                            </Col>
+                                            </Select>
+                                        </Col>
+                                    </FormItem>
+                                </Col>
 
-                            <Col xs={12} sm={6} md={4}  lg={4}>
-                                <FormItem>
-                                    <Col xs={8} sm={8} md={8}  lg={12} className="col">
-                                        <Label>审批</Label>
-                                        <Radio.RadioGroup
-                                                selectedValue={this.state.approvalState}
-                                                {
-                                                ...getFieldProps('approvalState', {
-                                                    initialValue: '1',
-                                                    onChange(value) {
-                                                        self.setState({ approvalState: value });
-                                                    },
-                                                }
-                                                )}
-                                            >
-                                            <Radio value="0" >未审批</Radio>
-                                            <Radio value="1" >已审批</Radio>
-                                        </Radio.RadioGroup>
-                                    </Col>
-                                </FormItem>
-                            </Col>
-                        </Row>
-                    </Form>
-                </div>
+                                <Col xs={12} sm={6} md={4}  lg={3}>
+                                    <FormItem>
+                                        <Col xs={12} sm={12} md={12}  lg={12} className="col">
+                                            <Label>采购组</Label>
+                                            <CheckboxGroup 
+                                                    {
+                                                        ...getFieldProps('purchasingGroup',{
+                                                            initialValue:['2']
+                                                        })
+                                                    }
+                                                >
+                                                    <Checkbox value='1'>人力</Checkbox>
+                                                    <Checkbox value='2'>财务</Checkbox>
+                                            </CheckboxGroup>
+                                        </Col>
+                                    </FormItem>
+                                </Col>
+
+                                <Col xs={12} sm={6} md={4}  lg={3}>
+                                    <FormItem>
+                                        <Col xs={12} sm={12} md={12}  lg={12} className="col">
+                                            <Label>审批</Label>
+                                            <Radio.RadioGroup
+                                                    selectedValue={this.state.approvalState}
+                                                    {
+                                                    ...getFieldProps('approvalState', {
+                                                        initialValue: '1',
+                                                        onChange(value) {
+                                                            self.setState({ approvalState: value });
+                                                        },
+                                                    }
+                                                    )}
+                                                >
+                                                <Radio value="0" >未审批</Radio>
+                                                <Radio value="1" >已审批</Radio>
+                                            </Radio.RadioGroup>
+                                        </Col>
+                                    </FormItem>
+                                </Col>
+                            </Row>
+                        </Form>
+                    </div>
+                </AdvancedContainer>
             </SearchPanel>
             </div>
         )

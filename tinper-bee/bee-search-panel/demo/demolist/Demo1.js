@@ -7,6 +7,8 @@
 import React, {Component} from 'react';
 import SearchPanel from '../../src';
 import {FormControl,Row, Col,Label,Form,Radio} from 'tinper-bee';
+let HeadContainer = SearchPanel.HeadContainer;
+let AdvancedContainer = SearchPanel.AdvancedContainer;
 
 const FormItem = Form.FormItem;
 
@@ -59,14 +61,14 @@ class Demo1 extends Component {
                 }}
                 onPanelChangeEnd={status => {
                     console.log(status, "end")
-                }}
-                resident={
+                }}>
+                <HeadContainer>
                     <div className='demo-head'>
                         <Form>
                             <Row>
-                                <Col xs={12} sm={6} md={4} lg={4}>
+                                <Col xs={12} sm={6} md={4} lg={3}>
                                     <FormItem>
-                                        <Col xs={8} sm={8} md={8}  lg={12} className="col">
+                                        <Col xs={12} sm={12} md={12}  lg={12} className="col">
                                             <Label>名 称:</Label>
                                             <FormControl size="sm"
                                                 {
@@ -79,9 +81,9 @@ class Demo1 extends Component {
                                     </FormItem>
                                 </Col>
 
-                                <Col xs={12} sm={6} md={4}  lg={4}>
+                                <Col xs={12} sm={6} md={4}  lg={3}>
                                     <FormItem>
-                                        <Col xs={8} sm={8} md={8}  lg={12} className="col">
+                                        <Col xs={12} sm={12} md={12}  lg={12} className="col">
                                             <Label>电话:</Label>
                                             <FormControl size="sm"
                                                 {
@@ -93,11 +95,58 @@ class Demo1 extends Component {
                                         </Col>
                                     </FormItem>
                                 </Col>
-
-                                {/* <Col xs={12} sm={6} md={4}  lg={4}>
+                            </Row>
+                        </Form>
+                    </div>
+                </HeadContainer>
+                
+                <AdvancedContainer>
+                    <div className='demo-body'>
+                        <Form>
+                            {/* <Row>
+                                <Col lg={12} md={12} xs={12} >
                                     <FormItem>
-                                        <Col xs={8} sm={8} md={8}  lg={12} className="col">
-                                            <Label>电话:</Label>
+                                        <Col md={2} xs={2} className="radio">
+                                            <Label >状态</Label>
+                                        </Col>
+                                        <Col md={10} xs={10}>
+                                            <Radio.RadioGroup
+                                                name="state"
+                                                selectedValue={this.state.state}
+                                                onChange={this.stateChange.bind(this)}>
+                                                <Radio.RadioButton value="all">全部</Radio.RadioButton>
+                                                <Radio.RadioButton value="initial">初始化</Radio.RadioButton>
+                                                <Radio.RadioButton value="todo">待处理</Radio.RadioButton>
+                                                <Radio.RadioButton value="doing">处理中</Radio.RadioButton>
+                                                <Radio.RadioButton  value="done">已完成</Radio.RadioButton>
+                                                <Radio.RadioButton  value="closed">已完成</Radio.RadioButton>
+                                            </Radio.RadioGroup>
+                                        </Col>
+
+                                    </FormItem>
+                                </Col>
+                            </Row> */}
+                            <Row>
+
+                                <Col xs={12} sm={6} md={4} lg={3}>
+                                    <FormItem>
+                                        <Col xs={12} sm={12} md={12}  lg={12} className="col">
+                                            <Label>联系人:</Label>
+                                            <FormControl size="sm"
+                                                {
+                                                ...getFieldProps('orderCode', {
+                                                    initialValue: '',
+                                                })
+                                                }
+                                            />
+                                        </Col>
+                                    </FormItem>
+                                </Col>
+
+                                <Col xs={12} sm={6} md={4}  lg={3}>
+                                    <FormItem>
+                                        <Col xs={12} sm={12} md={12}  lg={12} className="col">
+                                            <Label>供应商:</Label>
                                             <FormControl size="sm"
                                                 {
                                                 ...getFieldProps('supplierName', {
@@ -107,134 +156,73 @@ class Demo1 extends Component {
                                             />
                                         </Col>
                                     </FormItem>
-                                </Col> */}
+                                </Col> 
+
+                                <Col xs={12} sm={6} md={4}  lg={3}>
+                                    <FormItem>
+                                        <Col xs={12} sm={12} md={12}  lg={12} className="col">
+                                            <Label>地址:</Label>
+                                            <FormControl size="sm"
+                                                {
+                                                ...getFieldProps('supplierName', {
+                                                    initialValue: '',
+                                                })
+                                                }
+                                            />
+                                        </Col>
+                                    </FormItem>
+                                </Col> 
+
+
+                                <Col xs={12} sm={6} md={4}  lg={3}>
+                                    <FormItem>
+                                        <Col xs={12} sm={12} md={12}  lg={12} className="col">
+                                            <Label>车牌:</Label>
+                                            <FormControl size="sm"
+                                                {
+                                                ...getFieldProps('supplierName', {
+                                                    initialValue: '',
+                                                })
+                                                }
+                                            />
+                                        </Col>
+                                    </FormItem>
+                                </Col>
+
+                                <Col xs={12} sm={6} md={4}  lg={3}>
+                                    <FormItem>
+                                        <Col xs={12} sm={12} md={12}  lg={12} className="col">
+                                            <Label>备注:</Label>
+                                            <FormControl size="sm"
+                                                {
+                                                ...getFieldProps('supplierName', {
+                                                    initialValue: '',
+                                                })
+                                                }
+                                            />
+                                        </Col>
+                                    </FormItem>
+                                </Col>
+
+                                <Col xs={12} sm={6} md={4}  lg={3}>
+                                    <FormItem>
+                                        <Col xs={12} sm={12} md={12}  lg={12} className="col">
+                                            <Label>编号:</Label>
+                                            <FormControl size="sm"
+                                                {
+                                                ...getFieldProps('supplierName', {
+                                                    initialValue: '',
+                                                })
+                                                }
+                                            />
+                                        </Col>
+                                    </FormItem>
+                                </Col>
 
                             </Row>
                         </Form>
-                    </div>
-                }
-            >
-               <div className='demo-body'>
-                    <Form>
-                        {/* <Row>
-                            <Col lg={12} md={12} xs={12} >
-                                <FormItem>
-                                    <Col md={2} xs={2} className="radio">
-                                        <Label >状态</Label>
-                                    </Col>
-                                    <Col md={10} xs={10}>
-                                        <Radio.RadioGroup
-                                            name="state"
-                                            selectedValue={this.state.state}
-                                            onChange={this.stateChange.bind(this)}>
-                                            <Radio.RadioButton value="all">全部</Radio.RadioButton>
-                                            <Radio.RadioButton value="initial">初始化</Radio.RadioButton>
-                                            <Radio.RadioButton value="todo">待处理</Radio.RadioButton>
-                                            <Radio.RadioButton value="doing">处理中</Radio.RadioButton>
-                                            <Radio.RadioButton  value="done">已完成</Radio.RadioButton>
-                                            <Radio.RadioButton  value="closed">已完成</Radio.RadioButton>
-                                        </Radio.RadioGroup>
-                                    </Col>
-
-                                </FormItem>
-                            </Col>
-                        </Row> */}
-                        <Row>
-
-                            <Col xs={12} sm={6} md={4} lg={4}>
-                                <FormItem>
-                                    <Col xs={8} sm={8} md={8} lg={12} className="col">
-                                         <Label>联系人:</Label>
-                                        <FormControl size="sm"
-                                            {
-                                            ...getFieldProps('orderCode', {
-                                                initialValue: '',
-                                            })
-                                            }
-                                        />
-                                    </Col>
-                                </FormItem>
-                            </Col>
-
-                            <Col xs={12} sm={6} md={4}  lg={4}>
-                                <FormItem>
-                                    <Col xs={8} sm={8} md={8} lg={12} className="col">
-                                        <Label>供应商:</Label>
-                                        <FormControl size="sm"
-                                            {
-                                            ...getFieldProps('supplierName', {
-                                                initialValue: '',
-                                            })
-                                            }
-                                        />
-                                    </Col>
-                                </FormItem>
-                            </Col> 
-
-                            <Col xs={12} sm={6} md={4}  lg={4}>
-                                <FormItem>
-                                    <Col xs={8} sm={8} md={8}  lg={12} className="col">
-                                        <Label>地址:</Label>
-                                        <FormControl size="sm"
-                                            {
-                                            ...getFieldProps('supplierName', {
-                                                initialValue: '',
-                                            })
-                                            }
-                                        />
-                                    </Col>
-                                </FormItem>
-                            </Col> 
-
-
-                            <Col xs={12} sm={6} md={4}  lg={4}>
-                                <FormItem>
-                                    <Col xs={8} sm={8} md={8} lg={12} className="col">
-                                        <Label>车牌:</Label>
-                                        <FormControl size="sm"
-                                            {
-                                            ...getFieldProps('supplierName', {
-                                                initialValue: '',
-                                            })
-                                            }
-                                        />
-                                    </Col>
-                                </FormItem>
-                            </Col>
-
-                            <Col xs={12} sm={6} md={4}  lg={4}>
-                                <FormItem>
-                                    <Col xs={8} sm={8} md={8}  lg={12} className="col">
-                                        <Label>备注:</Label>
-                                        <FormControl size="sm"
-                                            {
-                                            ...getFieldProps('supplierName', {
-                                                initialValue: '',
-                                            })
-                                            }
-                                        />
-                                    </Col>
-                                </FormItem>
-                            </Col>
-
-                            <Col xs={12} sm={6} md={4}  lg={4}>
-                                <FormItem>
-                                    <Col xs={8} sm={8} md={8}  lg={12} className="col">
-                                        <Label>编号:</Label>
-                                        <FormControl size="sm"
-                                            {
-                                            ...getFieldProps('supplierName', {
-                                                initialValue: '',
-                                            })
-                                            }
-                                        />
-                                    </Col>
-                                </FormItem>
-                            </Col>
-
-                        </Row>
-                    </Form>
-                </div>
+                    </div>                 
+                </AdvancedContainer>
             </SearchPanel>
             </div>
         )

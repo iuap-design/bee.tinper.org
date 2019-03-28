@@ -247,8 +247,18 @@
   .u-cascader-input-group .u-form-control {
     font-size: 12px;
     color: #212121; }
-    .u-cascader-input-group .u-form-control:hover {
+    .u-cascader-input-group .u-form-control:not(.u-form-control[disabled]):hover {
       border-color: #66afe9; }
+    .u-cascader-input-group .u-form-control::-webkit-input-placeholder {
+      font-size: 12px; }
+    .u-cascader-input-group .u-form-control:-moz-placeholder {
+      font-size: 12px; }
+    .u-cascader-input-group .u-form-control::-moz-placeholder {
+      font-size: 12px; }
+    .u-cascader-input-group .u-form-control:-ms-input-placeholder {
+      font-size: 12px; }
+  .u-cascader-input-group .u-form-control[disabled] + .u-input-group-btn > .uf {
+    color: #c1c7d0; }
   .u-cascader-input-group .u-input-group-btn .uf {
     color: #505F79;
     font-size: 14px; }

@@ -304,11 +304,9 @@ var Rcascader = function (_Component) {
       value: initialValue,
       prevProps: props,
       showClose: false, //是否显示清空按钮
-      inputValue: initInputValue, //输入框显示的值
-      option: initOptions //下拉面板中的数据源
+      inputValue: initInputValue //输入框显示的值
     };
     _this.defaultFieldNames = { label: 'label', value: 'value', children: 'children' };
-    _this.uniqueID = _this.uniqueID.bind(_this);
     return _this;
   }
 
@@ -337,13 +335,6 @@ var Rcascader = function (_Component) {
     }
 
     return newState;
-  };
-
-  Rcascader.prototype.uniqueID = function uniqueID() {
-    function s4() {
-      return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
-    }
-    return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
   };
 
   Rcascader.prototype.getPopupDOMNode = function getPopupDOMNode() {
@@ -403,10 +394,13 @@ var Rcascader = function (_Component) {
   Rcascader.prototype.resetValue = function resetValue(e) {
     e.stopPropagation();
     e.preventDefault();
+    this.handlePopupVisibleChange(false);
     this.setState({
       inputValue: '',
-      activeValue: []
+      activeValue: [],
+      value: []
     });
+    this.props.onChange && this.props.onChange('');
   };
 
   Rcascader.prototype.render = function render() {
@@ -417,7 +411,8 @@ var Rcascader = function (_Component) {
         popupVisible = _state.popupVisible,
         inputValue = _state.inputValue,
         options = _state.options,
-        activeValue = _state.activeValue;
+        activeValue = _state.activeValue,
+        value = _state.value;
 
     var _props3 = this.props,
         prefixCls = _props3.prefixCls,
@@ -443,7 +438,8 @@ var Rcascader = function (_Component) {
         activeValue: this.state.activeValue,
         onSelect: this.handleMenuSelect,
         onItemDoubleClick: this.handleItemDoubleClick,
-        visible: this.state.popupVisible
+        visible: this.state.popupVisible,
+        value: this.state.value
       }));
     } else {
       emptyMenuClassName = ' ' + prefixCls + '-menus-empty';
