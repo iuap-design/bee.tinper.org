@@ -77,10 +77,8 @@ class Rcascader extends Component {
       prevProps: props,
       showClose:false, //是否显示清空按钮
       inputValue: initInputValue,   //输入框显示的值
-      option : initOptions   //下拉面板中的数据源
     };
     this.defaultFieldNames = { label: 'label', value: 'value', children: 'children' };
-    this.uniqueID = this.uniqueID.bind(this);
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -106,14 +104,6 @@ class Rcascader extends Component {
     }
 
     return newState;
-  }
-
-  uniqueID() {
-    function s4(){
-        return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
-    }
-    return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
-            s4() + '-' + s4() + s4() + s4();
   }
 
   getPopupDOMNode() {
@@ -332,15 +322,18 @@ class Rcascader extends Component {
   
   resetValue(e){
     e.stopPropagation();
-		e.preventDefault();
+    e.preventDefault();
+    this.handlePopupVisibleChange(false);
     this.setState({
       inputValue: '',
-      activeValue: []
+      activeValue: [],
+      value: []
     })
+    this.props.onChange&&this.props.onChange('');
   }
 
   render() {
-    const { showClose, popupVisible, inputValue, options, activeValue } = this.state;
+    const { showClose, popupVisible, inputValue, options, activeValue, value } = this.state;
     const {
       prefixCls,
       transitionName,
@@ -367,6 +360,7 @@ class Rcascader extends Component {
           onSelect={this.handleMenuSelect}
           onItemDoubleClick={this.handleItemDoubleClick}
           visible={this.state.popupVisible}
+          value={this.state.value}
         />
       );
     } else {

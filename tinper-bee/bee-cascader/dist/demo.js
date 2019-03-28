@@ -80,7 +80,7 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
 	
-	var Demo1 = __webpack_require__(250);var Demo2 = __webpack_require__(251);var Demo3 = __webpack_require__(252);var Demo4 = __webpack_require__(253);var Demo5 = __webpack_require__(254);var Demo6 = __webpack_require__(255);var Demo7 = __webpack_require__(256);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 基础级联菜单", "code": "/**\n *\n * @title 基础级联菜单\n * @description 级联选择对数据有较严格要求，请参照示例的格式使用options，每项数据至少包含 value、label 两项，子集为 children，以此类推。\n *\n */\n\nimport React, { Component } from 'react';\nimport { Cascader,  Row, Col  } from 'tinper-bee';\n\nconst options = [{\n\tlabel: '基础组件',\n\tvalue: 'jczj',\n\tchildren: [{\n\t\tlabel: '导航',\n\t\tvalue: 'dh',\n\t\tchildren: [{\n\t\t\tlabel: '面包屑',\n\t\t\tvalue: 'mbx'\n\t\t},{\n\t\t\tlabel: '分页',\n\t\t\tvalue: 'fy'\n\t\t},{\n\t\t\tlabel: '标签',\n\t\t\tvalue: 'bq'\n\t\t},{\n\t\t\tlabel: '菜单',\n\t\t\tvalue: 'cd'\n\t\t}]\n\t},{\n\t\tlabel: '反馈',\n\t\tvalue: 'fk',\n\t\tchildren: [{\n\t\t\tlabel: '模态框',\n\t\t\tvalue: 'mtk'\n\t\t},{\n\t\t\tlabel: '通知',\n\t\t\tvalue: 'tz'\n\t\t}]\n \t},\n \t{\n\t\tlabel: '表单',\n \t    value: 'bd'\n \t}]\n\t},{\n\t\tlabel: '应用组件',\n\t\tvalue: 'yyzj',\n\t\tchildren: [{\n\t\t\tlabel: '参照',\n\t\t\tvalue: 'ref',\n\t\t\tchildren: [{\n\t\t\t\tlabel: '树参照',\n\t\t\t\tvalue: 'reftree'\n\t\t\t},{\n\t\t\t\tlabel: '表参照',\n\t\t\t\tvalue: 'reftable'\n\t\t\t},{\n\t\t\t\tlabel: '穿梭参照',\n\t\t\t\tvalue: 'reftransfer'\n\t\t\t}]\n\t\t}]\n\t}\n];\nclass Demo1 extends Component {\n\n\tonChange = (value, selectedOptions) => {\n    \tconsole.log(value, selectedOptions);\n\t}\n\t\n \trender(){\n \t\treturn(\n\t\t\t<Row>\n\t\t\t\t<Col md={4}>\n\t\t\t\t\t<div className=\"height-150\">\n\t\t\t\t\t\t<Cascader \n\t\t\t\t\t\t\toptions = {options} \n\t\t\t\t\t\t\tonChange = {this.onChange}\n\t\t\t\t\t\t\tplaceholder = \"请选择\"\n\t\t\t\t\t\t/>\n\t\t\t\t\t</div>\n\t\t\t\t</Col>\n\t\t\t</Row>\n \t\t)\n \t}\n}\n", "desc": " 级联选择对数据有较严格要求，请参照示例的格式使用options，每项数据至少包含 value、label 两项，子集为 children，以此类推。" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 默认值", "code": "/**\n *\n * @title 默认值\n * @description 默认值通过数组的方式指定。注：需要给数组的每一项指定label和value属性。\n *\n */\n\nimport React, { Component } from 'react';\nimport { Cascader,  Row, Col  } from 'tinper-bee';\n\nconst options = [{\n\tlabel: '基础组件',\n\tvalue: 'jczj',\n\tchildren: [{\n\t\tlabel: '导航',\n\t\tvalue: 'dh',\n\t\tchildren: [{\n\t\t\tlabel: '面包屑',\n\t\t\tvalue: 'mbx'\n\t\t},{\n\t\t\tlabel: '分页',\n\t\t\tvalue: 'fy'\n\t\t},{\n\t\t\tlabel: '标签',\n\t\t\tvalue: 'bq'\n\t\t},{\n\t\t\tlabel: '菜单',\n\t\t\tvalue: 'cd'\n\t\t}]\n\t},{\n\t\tlabel: '反馈',\n\t\tvalue: 'fk',\n\t\tchildren: [{\n\t\t\tlabel: '模态框',\n\t\t\tvalue: 'mtk'\n\t\t},{\n\t\t\tlabel: '通知',\n\t\t\tvalue: 'tz'\n\t\t}]\n \t},\n \t{\n\t\tlabel: '表单',\n \t    value: 'bd'\n \t}]\n\t},{\n\t\tlabel: '应用组件',\n\t\tvalue: 'yyzj',\n\t\tchildren: [{\n\t\t\tlabel: '参照',\n\t\t\tvalue: 'ref',\n\t\t\tchildren: [{\n\t\t\t\tlabel: '树参照',\n\t\t\t\tvalue: 'reftree'\n\t\t\t},{\n\t\t\t\tlabel: '表参照',\n\t\t\t\tvalue: 'reftable'\n\t\t\t},{\n\t\t\t\tlabel: '穿梭参照',\n\t\t\t\tvalue: 'reftransfer'\n\t\t\t}]\n\t\t}]\n\t}\n];\n\nconst defaultOptions = [{\n    label: '基础组件',\n    value: 'jczj',\n}, {\n    label: '导航',\n    value: 'dh',\n}, {\n    label: '菜单',\n    value: 'cd',\n}];\n\nclass Demo2 extends Component {\n\n\tonChange = (value, selectedOptions) => {\n        console.log(value, selectedOptions);\n\t}\n\t\n \trender(){\n \t\treturn(\n\t\t\t<Row>\n\t\t\t\t<Col md={4}>\n\t\t\t\t\t<div className=\"height-150\">\n                        <Cascader \n                            defaultValue={defaultOptions}\n\t\t\t\t\t\t\toptions = {options} \n\t\t\t\t\t\t\tonChange = {this.onChange}\n\t\t\t\t\t\t\tplaceholder = \"请选择\"\n\t\t\t\t\t\t/>\n\t\t\t\t\t</div>\n\t\t\t\t</Col>\n\t\t\t</Row>\n \t\t)\n \t}\n}\n", "desc": " 默认值通过数组的方式指定。注：需要给数组的每一项指定label和value属性。" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 移入展开", "code": "/**\n *\n * @title 移入展开\n * @description 鼠标hover时展开菜单子选项\n *\n */\n\nimport React, { Component } from 'react';\nimport { Cascader,  Row, Col  } from 'tinper-bee';\n\nconst options = [{\n\tlabel: '基础组件',\n\tvalue: 'jczj',\n\tchildren: [{\n\t\tlabel: '导航',\n\t\tvalue: 'dh',\n\t\tchildren: [{\n\t\t\tlabel: '面包屑',\n\t\t\tvalue: 'mbx'\n\t\t},{\n\t\t\tlabel: '分页',\n\t\t\tvalue: 'fy'\n\t\t},{\n\t\t\tlabel: '标签',\n\t\t\tvalue: 'bq'\n\t\t},{\n\t\t\tlabel: '菜单',\n\t\t\tvalue: 'cd'\n\t\t}]\n\t},{\n\t\tlabel: '反馈',\n\t\tvalue: 'fk',\n\t\tchildren: [{\n\t\t\tlabel: '模态框',\n\t\t\tvalue: 'mtk'\n\t\t},{\n\t\t\tlabel: '通知',\n\t\t\tvalue: 'tz'\n\t\t}]\n \t},\n \t{\n\t\tlabel: '表单',\n \t    value: 'bd'\n \t}]\n\t},{\n\t\tlabel: '应用组件',\n\t\tvalue: 'yyzj',\n\t\tchildren: [{\n\t\t\tlabel: '参照',\n\t\t\tvalue: 'ref',\n\t\t\tchildren: [{\n\t\t\t\tlabel: '树参照',\n\t\t\t\tvalue: 'reftree'\n\t\t\t},{\n\t\t\t\tlabel: '表参照',\n\t\t\t\tvalue: 'reftable'\n\t\t\t},{\n\t\t\t\tlabel: '穿梭参照',\n\t\t\t\tvalue: 'reftransfer'\n\t\t\t}]\n\t\t}]\n\t}\n];\n\nclass Demo3 extends Component {\n\n    onChange = (value) => {\n        console.log(value)\n    }\n\n    render(){\n        return (\n            <Row>\n                <Col md={4}>\n                    <div className=\"height-150\">\n                        <Cascader expandTrigger=\"hover\" options={options} onChange={this.onChange} placeholder=\"请选择\"/>\n                    </div>\n                </Col>\n            </Row>\n        )\n    }\n}\n\n", "desc": " 鼠标hover时展开菜单子选项" }, { "example": _react2['default'].createElement(Demo4, null), "title": " 禁用状态", "code": "/**\n *\n * @title 禁用状态\n * @description 通过`disabled`参数设置是否禁用。\n *\n */\n\nimport React, { Component } from 'react';\nimport { Cascader,  Row, Col  } from 'tinper-bee';\n\nconst options = [{\n    label: '浙江',\n    value: 'zj',\n    children: [{\n            label: '杭州',\n            value: 'hz',\n            children: [{\n                label: '西湖',\n                value: 'xh',\n                children: [{\n                    label: '白娘子',\n                    value: 'bnz'\n                },{\n                    label: '许仙',\n                    value: 'xx'\n                }]\n            }]\n        }]\n    },\n    {\n        label: '江苏',\n    value: 'js',\n    children: [{\n            label: '南京',\n            value: 'nj',\n            children: [{\n                label: '中华门',\n                value: 'zhm'\n            }]\n        }]\n    },\n    {\n        label: '山东',\n    value: 'sd'\n    }\n];\n\nclass Demo4 extends Component {  \n    render(){\n        return (\n            <Row>\n                <Col md={4}>\n                    <div className=\"height-150\">\n                        <Cascader disabled options={options} placeholder=\"请选择地址\"/>\n                    </div>\n                </Col>\n            </Row>\n        )\n    }\n}\n\n", "desc": " 通过`disabled`参数设置是否禁用。" }, { "example": _react2['default'].createElement(Demo5, null), "title": " 选择即改变", "code": "/**\n *\n * @title 选择即改变\n * @description 设置属性 `changeOnSelect` 点任何一级都可以选择。\n *\n */\n\nimport React, { Component } from 'react';\nimport { Cascader,  Row, Col  } from 'tinper-bee';\n\nconst options = [{\n\tlabel: '基础组件',\n\tvalue: 'jczj',\n\tchildren: [{\n\t\tlabel: '导航',\n\t\tvalue: 'dh',\n\t\tchildren: [{\n\t\t\tlabel: '面包屑',\n\t\t\tvalue: 'mbx'\n\t\t},{\n\t\t\tlabel: '分页',\n\t\t\tvalue: 'fy'\n\t\t},{\n\t\t\tlabel: '标签',\n\t\t\tvalue: 'bq'\n\t\t},{\n\t\t\tlabel: '菜单',\n\t\t\tvalue: 'cd'\n\t\t}]\n\t},{\n\t\tlabel: '反馈',\n\t\tvalue: 'fk',\n\t\tchildren: [{\n\t\t\tlabel: '模态框',\n\t\t\tvalue: 'mtk'\n\t\t},{\n\t\t\tlabel: '通知',\n\t\t\tvalue: 'tz'\n\t\t}]\n \t},\n \t{\n\t\tlabel: '表单',\n \t    value: 'bd'\n \t}]\n\t},{\n\t\tlabel: '应用组件',\n\t\tvalue: 'yyzj',\n\t\tchildren: [{\n\t\t\tlabel: '参照',\n\t\t\tvalue: 'ref',\n\t\t\tchildren: [{\n\t\t\t\tlabel: '树参照',\n\t\t\t\tvalue: 'reftree'\n\t\t\t},{\n\t\t\t\tlabel: '表参照',\n\t\t\t\tvalue: 'reftable'\n\t\t\t},{\n\t\t\t\tlabel: '穿梭参照',\n\t\t\t\tvalue: 'reftransfer'\n\t\t\t}]\n\t\t}]\n\t}\n];\n\nclass Demo5 extends Component {  \n    render(){\n        return (\n            <Row>\n                <Col md={4}>\n                    <div className=\"height-150\">\n                        <Cascader changeOnSelect options={options} placeholder=\"请选择\"/>\n                    </div>\n                </Col>\n            </Row>\n        )\n    }\n}\n\n", "desc": " 设置属性 `changeOnSelect` 点任何一级都可以选择。" }, { "example": _react2['default'].createElement(Demo6, null), "title": " 动态改变options", "code": "/**\n *\n * @title 动态改变options\n * @description 通过动态设置`options`参数，即可灵活改变数据源。\n *\n */\n\nimport React, { Component } from 'react';\nimport { Cascader, Button,  Row, Col  } from 'tinper-bee';\n\nconst baseOptions = [{\n    label: '基础组件',\n    value: 'jczj',\n    children: [{\n        label: '导航',\n        value: 'dh',\n        children: [{\n            label: '面包屑',\n            value: 'mbx'\n        },{\n            label: '分页',\n            value: 'fy'\n        },{\n            label: '标签',\n            value: 'bq'\n        },{\n            label: '菜单',\n            value: 'cd'\n        }]\n    },{\n        label: '反馈',\n        value: 'fk',\n        children: [{\n            label: '模态框',\n            value: 'mtk'\n        },{\n            label: '通知',\n            value: 'tz'\n        }]\n        },\n        {\n        label: '表单',\n            value: 'bd'\n        }]\n    },{\n        label: '应用组件',\n        value: 'yyzj',\n        children: [{\n            label: '参照',\n            value: 'ref',\n            children: [{\n                label: '树参照',\n                value: 'reftree'\n            },{\n                label: '表参照',\n                value: 'reftable'\n            },{\n                label: '穿梭参照',\n                value: 'reftransfer'\n            }]\n        }]\n    }\n];\n\nclass Demo6 extends Component {  \n    state = {\n        options: baseOptions\n    }\n    \n    changeOptions = () => {\n        this.setState({\n            options: [{\n                label: '北京',\n                value: 'bj',\n                children: [{\n                        label: '故宫',\n                        value: 'gg',\n                    },{\n                        label: '天坛',\n                        value: 'tt',\n                    },{\n                        label: '王府井',\n                        value: 'wfj',\n                    }]\n                },\n                {\n                    label: '江苏',\n                    value: 'js',\n                    children: [{\n                            label: '南京',\n                            value: 'nj',\n                            children: [{\n                                label: '中华门',\n                                value: 'zhm'\n                            }]\n                        }]\n                    },\n                    {\n                        label: '山东',\n                    value: 'sd'\n                }\n            ]\n        })\n    }\n\n    render(){\n        return (\n            <Row>\n                <Col md={4}>\n                    <div className=\"height-150\">\n                        <Button colors=\"primary\" onClick={this.changeOptions} style={{marginBottom:8+'px'}}>点击改变选项数组</Button>\n                        <Cascader options={this.state.options} placeholder=\"请选择\"/>\n                    </div>\n                </Col>\n            </Row>\n        )\n    }\n}\n\n", "desc": " 通过动态设置`options`参数，即可灵活改变数据源。" }, { "example": _react2['default'].createElement(Demo7, null), "title": " 不同尺寸的Cascader", "code": "/**\n *\n * @title 不同尺寸的Cascader\n * @description 通过设置`size`属性为 \"lg\" 和 \"sm\" 将输入框设置为大和小尺寸，不设置为默认（中）尺寸。\n *\n */\n\nimport React, { Component } from 'react';\nimport { Cascader, Button,  Row, Col  } from 'tinper-bee';\n\nconst options = [{\n    label: '基础组件',\n    value: 'jczj',\n    children: [{\n        label: '导航',\n        value: 'dh',\n        children: [{\n            label: '面包屑',\n            value: 'mbx'\n        },{\n            label: '分页',\n            value: 'fy'\n        },{\n            label: '标签',\n            value: 'bq'\n        },{\n            label: '菜单',\n            value: 'cd'\n        }]\n    },{\n        label: '反馈',\n        value: 'fk',\n        children: [{\n            label: '模态框',\n            value: 'mtk'\n        },{\n            label: '通知',\n            value: 'tz'\n        }]\n        },\n        {\n        label: '表单',\n            value: 'bd'\n        }]\n    },{\n        label: '应用组件',\n        value: 'yyzj',\n        children: [{\n            label: '参照',\n            value: 'ref',\n            children: [{\n                label: '树参照',\n                value: 'reftree'\n            },{\n                label: '表参照',\n                value: 'reftable'\n            },{\n                label: '穿梭参照',\n                value: 'reftransfer'\n            }]\n        }]\n    }\n];\n\nclass Demo7 extends Component {  \n\n    render(){\n        return (\n            <Row>\n                <Col md={4}>\n                    <div className=\"height-150 demo7\">\n                        <Cascader size=\"sm\" options={options} placeholder=\"请选择\"/>\n                        <Cascader options={options} placeholder=\"请选择\"/>\n                        <Cascader size=\"lg\" options={options} placeholder=\"请选择\"/>\n                    </div>\n                </Col>\n            </Row>\n        )\n    }\n}\n\n", "desc": " 通过设置`size`属性为 \"lg\" 和 \"sm\" 将输入框设置为大和小尺寸，不设置为默认（中）尺寸。", "scss_code": ".demo7{\n    span{\n        margin-bottom: 16px;\n    }\n    .u-form-control.lg{\n        width: 183px;\n    }\n}" }];
+	var Demo1 = __webpack_require__(250);var Demo2 = __webpack_require__(251);var Demo3 = __webpack_require__(252);var Demo4 = __webpack_require__(253);var Demo5 = __webpack_require__(254);var Demo6 = __webpack_require__(255);var Demo7 = __webpack_require__(256);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 基础级联菜单", "code": "/**\r\n *\r\n * @title 基础级联菜单\r\n * @description 级联选择对数据有较严格要求，请参照示例的格式使用options，每项数据至少包含 value、label 两项，子集为 children，以此类推。\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\r\n\nimport { Cascader,  Row, Col  } from 'tinper-bee';\r\n\r\nconst options = [{\r\n\tlabel: '基础组件',\r\n\tvalue: 'jczj',\r\n\tchildren: [{\r\n\t\tlabel: '导航',\r\n\t\tvalue: 'dh',\r\n\t\tchildren: [{\r\n\t\t\tlabel: '面包屑',\r\n\t\t\tvalue: 'mbx'\r\n\t\t},{\r\n\t\t\tlabel: '分页',\r\n\t\t\tvalue: 'fy'\r\n\t\t},{\r\n\t\t\tlabel: '标签',\r\n\t\t\tvalue: 'bq'\r\n\t\t},{\r\n\t\t\tlabel: '菜单',\r\n\t\t\tvalue: 'cd'\r\n\t\t}]\r\n\t},{\r\n\t\tlabel: '反馈',\r\n\t\tvalue: 'fk',\r\n\t\tchildren: [{\r\n\t\t\tlabel: '模态框',\r\n\t\t\tvalue: 'mtk'\r\n\t\t},{\r\n\t\t\tlabel: '通知',\r\n\t\t\tvalue: 'tz'\r\n\t\t}]\r\n \t},\r\n \t{\r\n\t\tlabel: '表单',\r\n \t    value: 'bd'\r\n \t}]\r\n\t},{\r\n\t\tlabel: '应用组件',\r\n\t\tvalue: 'yyzj',\r\n\t\tchildren: [{\r\n\t\t\tlabel: '参照',\r\n\t\t\tvalue: 'ref',\r\n\t\t\tchildren: [{\r\n\t\t\t\tlabel: '树参照',\r\n\t\t\t\tvalue: 'reftree'\r\n\t\t\t},{\r\n\t\t\t\tlabel: '表参照',\r\n\t\t\t\tvalue: 'reftable'\r\n\t\t\t},{\r\n\t\t\t\tlabel: '穿梭参照',\r\n\t\t\t\tvalue: 'reftransfer'\r\n\t\t\t}]\r\n\t\t}]\r\n\t}\r\n];\r\nclass Demo1 extends Component {\r\n\r\n\tonChange = (value, selectedOptions) => {\r\n    \tconsole.log(value, selectedOptions);\r\n\t}\r\n\t\r\n \trender(){\r\n \t\treturn(\r\n\t\t\t<Row>\r\n\t\t\t\t<Col md={4}>\r\n\t\t\t\t\t<div className=\"height-150\">\r\n\t\t\t\t\t\t<Cascader \r\n\t\t\t\t\t\t\toptions = {options} \r\n\t\t\t\t\t\t\tonChange = {this.onChange}\r\n\t\t\t\t\t\t\tplaceholder = \"请选择\"\r\n\t\t\t\t\t\t/>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</Col>\r\n\t\t\t</Row>\r\n \t\t)\r\n \t}\r\n}\r\n", "desc": " 级联选择对数据有较严格要求，请参照示例的格式使用options，每项数据至少包含 value、label 两项，子集为 children，以此类推。" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 默认值", "code": "/**\r\n *\r\n * @title 默认值\r\n * @description 默认值通过数组的方式指定。注：需要给数组的每一项指定label和value属性。\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\r\n\nimport { Cascader,  Row, Col  } from 'tinper-bee';\r\n\r\nconst options = [{\r\n\tlabel: '基础组件',\r\n\tvalue: 'jczj',\r\n\tchildren: [{\r\n\t\tlabel: '导航',\r\n\t\tvalue: 'dh',\r\n\t\tchildren: [{\r\n\t\t\tlabel: '面包屑',\r\n\t\t\tvalue: 'mbx'\r\n\t\t},{\r\n\t\t\tlabel: '分页',\r\n\t\t\tvalue: 'fy'\r\n\t\t},{\r\n\t\t\tlabel: '标签',\r\n\t\t\tvalue: 'bq'\r\n\t\t},{\r\n\t\t\tlabel: '菜单',\r\n\t\t\tvalue: 'cd'\r\n\t\t}]\r\n\t},{\r\n\t\tlabel: '反馈',\r\n\t\tvalue: 'fk',\r\n\t\tchildren: [{\r\n\t\t\tlabel: '模态框',\r\n\t\t\tvalue: 'mtk'\r\n\t\t},{\r\n\t\t\tlabel: '通知',\r\n\t\t\tvalue: 'tz'\r\n\t\t}]\r\n \t},\r\n \t{\r\n\t\tlabel: '表单',\r\n \t    value: 'bd'\r\n \t}]\r\n\t},{\r\n\t\tlabel: '应用组件',\r\n\t\tvalue: 'yyzj',\r\n\t\tchildren: [{\r\n\t\t\tlabel: '参照',\r\n\t\t\tvalue: 'ref',\r\n\t\t\tchildren: [{\r\n\t\t\t\tlabel: '树参照',\r\n\t\t\t\tvalue: 'reftree'\r\n\t\t\t},{\r\n\t\t\t\tlabel: '表参照',\r\n\t\t\t\tvalue: 'reftable'\r\n\t\t\t},{\r\n\t\t\t\tlabel: '穿梭参照',\r\n\t\t\t\tvalue: 'reftransfer'\r\n\t\t\t}]\r\n\t\t}]\r\n\t}\r\n];\r\n\r\nconst defaultOptions = [{\r\n    label: '基础组件',\r\n    value: 'jczj',\r\n}, {\r\n    label: '导航',\r\n    value: 'dh',\r\n}, {\r\n    label: '菜单',\r\n    value: 'cd',\r\n}];\r\n\r\nclass Demo2 extends Component {\r\n\r\n\tonChange = (value, selectedOptions) => {\r\n        console.log(value, selectedOptions);\r\n\t}\r\n\t\r\n \trender(){\r\n \t\treturn(\r\n\t\t\t<Row>\r\n\t\t\t\t<Col md={4}>\r\n\t\t\t\t\t<div className=\"height-150\">\r\n                        <Cascader \r\n                            defaultValue={defaultOptions}\r\n\t\t\t\t\t\t\toptions = {options} \r\n\t\t\t\t\t\t\tonChange = {this.onChange}\r\n\t\t\t\t\t\t\tplaceholder = \"请选择\"\r\n\t\t\t\t\t\t/>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</Col>\r\n\t\t\t</Row>\r\n \t\t)\r\n \t}\r\n}\r\n", "desc": " 默认值通过数组的方式指定。注：需要给数组的每一项指定label和value属性。" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 移入展开", "code": "/**\r\n *\r\n * @title 移入展开\r\n * @description 鼠标hover时展开菜单子选项\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\r\n\nimport { Cascader,  Row, Col  } from 'tinper-bee';\r\n\r\nconst options = [{\r\n\tlabel: '基础组件',\r\n\tvalue: 'jczj',\r\n\tchildren: [{\r\n\t\tlabel: '导航',\r\n\t\tvalue: 'dh',\r\n\t\tchildren: [{\r\n\t\t\tlabel: '面包屑',\r\n\t\t\tvalue: 'mbx'\r\n\t\t},{\r\n\t\t\tlabel: '分页',\r\n\t\t\tvalue: 'fy'\r\n\t\t},{\r\n\t\t\tlabel: '标签',\r\n\t\t\tvalue: 'bq'\r\n\t\t},{\r\n\t\t\tlabel: '菜单',\r\n\t\t\tvalue: 'cd'\r\n\t\t}]\r\n\t},{\r\n\t\tlabel: '反馈',\r\n\t\tvalue: 'fk',\r\n\t\tchildren: [{\r\n\t\t\tlabel: '模态框',\r\n\t\t\tvalue: 'mtk'\r\n\t\t},{\r\n\t\t\tlabel: '通知',\r\n\t\t\tvalue: 'tz'\r\n\t\t}]\r\n \t},\r\n \t{\r\n\t\tlabel: '表单',\r\n \t    value: 'bd'\r\n \t}]\r\n\t},{\r\n\t\tlabel: '应用组件',\r\n\t\tvalue: 'yyzj',\r\n\t\tchildren: [{\r\n\t\t\tlabel: '参照',\r\n\t\t\tvalue: 'ref',\r\n\t\t\tchildren: [{\r\n\t\t\t\tlabel: '树参照',\r\n\t\t\t\tvalue: 'reftree'\r\n\t\t\t},{\r\n\t\t\t\tlabel: '表参照',\r\n\t\t\t\tvalue: 'reftable'\r\n\t\t\t},{\r\n\t\t\t\tlabel: '穿梭参照',\r\n\t\t\t\tvalue: 'reftransfer'\r\n\t\t\t}]\r\n\t\t}]\r\n\t}\r\n];\r\n\r\nclass Demo3 extends Component {\r\n\r\n    onChange = (value) => {\r\n        console.log(value)\r\n    }\r\n\r\n    render(){\r\n        return (\r\n            <Row>\r\n                <Col md={4}>\r\n                    <div className=\"height-150\">\r\n                        <Cascader expandTrigger=\"hover\" options={options} onChange={this.onChange} placeholder=\"请选择\"/>\r\n                    </div>\r\n                </Col>\r\n            </Row>\r\n        )\r\n    }\r\n}\r\n\r\n", "desc": " 鼠标hover时展开菜单子选项" }, { "example": _react2['default'].createElement(Demo4, null), "title": " 禁用状态", "code": "/**\r\n *\r\n * @title 禁用状态\r\n * @description 通过`disabled`参数设置是否禁用。\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\r\n\nimport { Cascader,  Row, Col  } from 'tinper-bee';\r\n\r\nconst options = [{\r\n    label: '浙江',\r\n    value: 'zj',\r\n    children: [{\r\n            label: '杭州',\r\n            value: 'hz',\r\n            children: [{\r\n                label: '西湖',\r\n                value: 'xh',\r\n                children: [{\r\n                    label: '白娘子',\r\n                    value: 'bnz'\r\n                },{\r\n                    label: '许仙',\r\n                    value: 'xx'\r\n                }]\r\n            }]\r\n        }]\r\n    },\r\n    {\r\n        label: '江苏',\r\n    value: 'js',\r\n    children: [{\r\n            label: '南京',\r\n            value: 'nj',\r\n            children: [{\r\n                label: '中华门',\r\n                value: 'zhm'\r\n            }]\r\n        }]\r\n    },\r\n    {\r\n        label: '山东',\r\n    value: 'sd'\r\n    }\r\n];\r\n\r\nclass Demo4 extends Component {  \r\n    render(){\r\n        return (\r\n            <Row>\r\n                <Col md={4}>\r\n                    <div className=\"height-150\">\r\n                        <Cascader disabled options={options} placeholder=\"请选择地址\"/>\r\n                    </div>\r\n                </Col>\r\n            </Row>\r\n        )\r\n    }\r\n}\r\n\r\n", "desc": " 通过`disabled`参数设置是否禁用。" }, { "example": _react2['default'].createElement(Demo5, null), "title": " 选择即改变", "code": "/**\r\n *\r\n * @title 选择即改变\r\n * @description 设置属性 `changeOnSelect` 点任何一级都可以选择。\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\r\n\nimport { Cascader,  Row, Col  } from 'tinper-bee';\r\n\r\nconst options = [{\r\n\tlabel: '基础组件',\r\n\tvalue: 'jczj',\r\n\tchildren: [{\r\n\t\tlabel: '导航',\r\n\t\tvalue: 'dh',\r\n\t\tchildren: [{\r\n\t\t\tlabel: '面包屑',\r\n\t\t\tvalue: 'mbx'\r\n\t\t},{\r\n\t\t\tlabel: '分页',\r\n\t\t\tvalue: 'fy'\r\n\t\t},{\r\n\t\t\tlabel: '标签',\r\n\t\t\tvalue: 'bq'\r\n\t\t},{\r\n\t\t\tlabel: '菜单',\r\n\t\t\tvalue: 'cd'\r\n\t\t}]\r\n\t},{\r\n\t\tlabel: '反馈',\r\n\t\tvalue: 'fk',\r\n\t\tchildren: [{\r\n\t\t\tlabel: '模态框',\r\n\t\t\tvalue: 'mtk'\r\n\t\t},{\r\n\t\t\tlabel: '通知',\r\n\t\t\tvalue: 'tz'\r\n\t\t}]\r\n \t},\r\n \t{\r\n\t\tlabel: '表单',\r\n \t    value: 'bd'\r\n \t}]\r\n\t},{\r\n\t\tlabel: '应用组件',\r\n\t\tvalue: 'yyzj',\r\n\t\tchildren: [{\r\n\t\t\tlabel: '参照',\r\n\t\t\tvalue: 'ref',\r\n\t\t\tchildren: [{\r\n\t\t\t\tlabel: '树参照',\r\n\t\t\t\tvalue: 'reftree'\r\n\t\t\t},{\r\n\t\t\t\tlabel: '表参照',\r\n\t\t\t\tvalue: 'reftable'\r\n\t\t\t},{\r\n\t\t\t\tlabel: '穿梭参照',\r\n\t\t\t\tvalue: 'reftransfer'\r\n\t\t\t}]\r\n\t\t}]\r\n\t}\r\n];\r\n\r\nclass Demo5 extends Component {  \r\n    render(){\r\n        return (\r\n            <Row>\r\n                <Col md={4}>\r\n                    <div className=\"height-150\">\r\n                        <Cascader changeOnSelect options={options} placeholder=\"请选择\"/>\r\n                    </div>\r\n                </Col>\r\n            </Row>\r\n        )\r\n    }\r\n}\r\n\r\n", "desc": " 设置属性 `changeOnSelect` 点任何一级都可以选择。" }, { "example": _react2['default'].createElement(Demo6, null), "title": " 动态改变options", "code": "/**\r\n *\r\n * @title 动态改变options\r\n * @description 通过动态设置`options`参数，即可灵活改变数据源。\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\r\n\n\nimport { Cascader, Button,  Row, Col  } from 'tinper-bee';\r\n\r\nconst baseOptions = [{\r\n    label: '基础组件',\r\n    value: 'jczj',\r\n    children: [{\r\n        label: '导航',\r\n        value: 'dh',\r\n        children: [{\r\n            label: '面包屑',\r\n            value: 'mbx'\r\n        },{\r\n            label: '分页',\r\n            value: 'fy'\r\n        },{\r\n            label: '标签',\r\n            value: 'bq'\r\n        },{\r\n            label: '菜单',\r\n            value: 'cd'\r\n        }]\r\n    },{\r\n        label: '反馈',\r\n        value: 'fk',\r\n        children: [{\r\n            label: '模态框',\r\n            value: 'mtk'\r\n        },{\r\n            label: '通知',\r\n            value: 'tz'\r\n        }]\r\n        },\r\n        {\r\n        label: '表单',\r\n            value: 'bd'\r\n        }]\r\n    },{\r\n        label: '应用组件',\r\n        value: 'yyzj',\r\n        children: [{\r\n            label: '参照',\r\n            value: 'ref',\r\n            children: [{\r\n                label: '树参照',\r\n                value: 'reftree'\r\n            },{\r\n                label: '表参照',\r\n                value: 'reftable'\r\n            },{\r\n                label: '穿梭参照',\r\n                value: 'reftransfer'\r\n            }]\r\n        }]\r\n    }\r\n];\r\n\r\nclass Demo6 extends Component {  \r\n    state = {\r\n        options: baseOptions\r\n    }\r\n    \r\n    changeOptions = () => {\r\n        this.setState({\r\n            options: [{\r\n                label: '北京',\r\n                value: 'bj',\r\n                children: [{\r\n                        label: '故宫',\r\n                        value: 'gg',\r\n                    },{\r\n                        label: '天坛',\r\n                        value: 'tt',\r\n                    },{\r\n                        label: '王府井',\r\n                        value: 'wfj',\r\n                    }]\r\n                },\r\n                {\r\n                    label: '江苏',\r\n                    value: 'js',\r\n                    children: [{\r\n                            label: '南京',\r\n                            value: 'nj',\r\n                            children: [{\r\n                                label: '中华门',\r\n                                value: 'zhm'\r\n                            }]\r\n                        }]\r\n                    },\r\n                    {\r\n                        label: '山东',\r\n                    value: 'sd'\r\n                }\r\n            ]\r\n        })\r\n    }\r\n\r\n    render(){\r\n        return (\r\n            <Row>\r\n                <Col md={4}>\r\n                    <div className=\"height-150\">\r\n                        <Button colors=\"primary\" onClick={this.changeOptions} style={{marginBottom:8+'px'}}>点击改变选项数组</Button>\r\n                        <Cascader options={this.state.options} placeholder=\"请选择\"/>\r\n                    </div>\r\n                </Col>\r\n            </Row>\r\n        )\r\n    }\r\n}\r\n\r\n", "desc": " 通过动态设置`options`参数，即可灵活改变数据源。" }, { "example": _react2['default'].createElement(Demo7, null), "title": " 不同尺寸的Cascader", "code": "/**\r\n *\r\n * @title 不同尺寸的Cascader\r\n * @description 通过设置`size`属性为 \"lg\" 和 \"sm\" 将输入框设置为大和小尺寸，不设置为默认（中）尺寸。\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\r\n\n\nimport { Cascader, Button,  Row, Col  } from 'tinper-bee';\r\n\r\nconst options = [{\r\n    label: '基础组件',\r\n    value: 'jczj',\r\n    children: [{\r\n        label: '导航',\r\n        value: 'dh',\r\n        children: [{\r\n            label: '面包屑',\r\n            value: 'mbx'\r\n        },{\r\n            label: '分页',\r\n            value: 'fy'\r\n        },{\r\n            label: '标签',\r\n            value: 'bq'\r\n        },{\r\n            label: '菜单',\r\n            value: 'cd'\r\n        }]\r\n    },{\r\n        label: '反馈',\r\n        value: 'fk',\r\n        children: [{\r\n            label: '模态框',\r\n            value: 'mtk'\r\n        },{\r\n            label: '通知',\r\n            value: 'tz'\r\n        }]\r\n        },\r\n        {\r\n        label: '表单',\r\n            value: 'bd'\r\n        }]\r\n    },{\r\n        label: '应用组件',\r\n        value: 'yyzj',\r\n        children: [{\r\n            label: '参照',\r\n            value: 'ref',\r\n            children: [{\r\n                label: '树参照',\r\n                value: 'reftree'\r\n            },{\r\n                label: '表参照',\r\n                value: 'reftable'\r\n            },{\r\n                label: '穿梭参照',\r\n                value: 'reftransfer'\r\n            }]\r\n        }]\r\n    }\r\n];\r\n\r\nclass Demo7 extends Component {  \r\n\r\n    render(){\r\n        return (\r\n            <Row>\r\n                <Col md={4}>\r\n                    <div className=\"height-150 demo7\">\r\n                        <Cascader size=\"sm\" options={options} placeholder=\"请选择\"/>\r\n                        <Cascader options={options} placeholder=\"请选择\"/>\r\n                        <Cascader size=\"lg\" options={options} placeholder=\"请选择\"/>\r\n                    </div>\r\n                </Col>\r\n            </Row>\r\n        )\r\n    }\r\n}\r\n\r\n", "desc": " 通过设置`size`属性为 \"lg\" 和 \"sm\" 将输入框设置为大和小尺寸，不设置为默认（中）尺寸。", "scss_code": ".demo7{\r\n    span{\r\n        margin-bottom: 16px;\r\n    }\r\n    .u-form-control.lg{\r\n        width: 183px;\r\n    }\r\n}" }];
 	
 	var Demo = function (_Component) {
 	    _inherits(Demo, _Component);
@@ -5606,6 +5606,16 @@
 	  var documentWidth = documentElement.scrollWidth;
 	  var documentHeight = documentElement.scrollHeight;
 	
+	  // scrollXXX on html is sync with body which means overflow: hidden on body gets wrong scrollXXX.
+	  // We should cut this ourself.
+	  var bodyStyle = window.getComputedStyle(body);
+	  if (bodyStyle.overflowX === 'hidden') {
+	    documentWidth = win.innerWidth;
+	  }
+	  if (bodyStyle.overflowY === 'hidden') {
+	    documentHeight = win.innerHeight;
+	  }
+	
 	  // Reset element position after calculate the visible area
 	  if (element.style) {
 	    element.style.position = originalPosition;
@@ -8231,17 +8241,64 @@
 	  });
 	};
 	/**
-	 * A `Transition` component using CSS transitions and animations.
-	 * It's inspired by the excellent [ng-animate](http://www.nganimate.org/) library.
+	 * A transition component inspired by the excellent
+	 * [ng-animate](http://www.nganimate.org/) library, you should use it if you're
+	 * using CSS transitions or animations. It's built upon the
+	 * [`Transition`](https://reactcommunity.org/react-transition-group/transition)
+	 * component, so it inherits all of its props.
 	 *
 	 * `CSSTransition` applies a pair of class names during the `appear`, `enter`,
-	 * and `exit` stages of the transition. The first class is applied and then a
-	 * second "active" class in order to activate the css animation. After the animation,
-	 * matching `done` class names are applied to persist the animation state.
+	 * and `exit` states of the transition. The first class is applied and then a
+	 * second `*-active` class in order to activate the CSSS transition. After the
+	 * transition, matching `*-done` class names are applied to persist the
+	 * transition state.
 	 *
-	 * When the `in` prop is toggled to `true` the Component will get
-	 * the `example-enter` CSS class and the `example-enter-active` CSS class
-	 * added in the next tick. This is a convention based on the `classNames` prop.
+	 * ```jsx
+	 * function App() {
+	 *   const [inProp, setInProp] = useState(false);
+	 *   return (
+	 *     <div>
+	 *       <CSSTransition in={inProp} timeout={200} classNames="my-node">
+	 *         <div>
+	 *           {"I'll receive my-node-* classes"}
+	 *         </div>
+	 *       </CSSTransition>
+	 *       <button type="button" onClick={() => setInProp(true)}>
+	 *         Click to Enter
+	 *       </button>
+	 *     </div>
+	 *   );
+	 * }
+	 * ```
+	 *
+	 * When the `in` prop is set to `true`, the child component will first receive
+	 * the class `example-enter`, then the `example-enter-active` will be added in
+	 * the next tick. `CSSTransition` [forces a
+	 * reflow](https://github.com/reactjs/react-transition-group/blob/5007303e729a74be66a21c3e2205e4916821524b/src/CSSTransition.js#L208-L215)
+	 * between before adding the `example-enter-active`. This is an important trick
+	 * because it allows us to transition between `example-enter` and
+	 * `example-enter-active` even though they were added immediately one after
+	 * another. Most notably, this is what makes it possible for us to animate
+	 * _appearance_.
+	 *
+	 * ```css
+	 * .my-node-enter {
+	 *   opacity: 0;
+	 * }
+	 * .my-node-enter-active {
+	 *   opacity: 1;
+	 *   transition: opacity 200ms;
+	 * }
+	 * .my-node-exit {
+	 *   opacity: 1;
+	 * }
+	 * .my-node-exit-active {
+	 *   opacity: 0;
+	 *   transition: opacity: 200ms;
+	 * }
+	 * ```
+	 *
+	 * `*-active` classes represent which styles you want to animate **to**.
 	 */
 	
 	
@@ -8582,13 +8639,24 @@
 	 * it's used to animate the mounting and unmounting of a component, but can also
 	 * be used to describe in-place transition states as well.
 	 *
+	 * ---
+	 *
+	 * **Note**: `Transition` is a platform-agnostic base component. If you're using
+	 * transitions in CSS, you'll probably want to use
+	 * [`CSSTransition`](https://reactcommunity.org/react-transition-group/css-transition)
+	 * instead. It inherits all the features of `Transition`, but contains
+	 * additional features necessary to play nice with CSS transitions (hence the
+	 * name of the component).
+	 *
+	 * ---
+	 *
 	 * By default the `Transition` component does not alter the behavior of the
-	 * component it renders, it only tracks "enter" and "exit" states for the components.
-	 * It's up to you to give meaning and effect to those states. For example we can
-	 * add styles to a component when it enters or exits:
+	 * component it renders, it only tracks "enter" and "exit" states for the
+	 * components. It's up to you to give meaning and effect to those states. For
+	 * example we can add styles to a component when it enters or exits:
 	 *
 	 * ```jsx
-	 * import Transition from 'react-transition-group/Transition';
+	 * import { Transition } from 'react-transition-group';
 	 *
 	 * const duration = 300;
 	 *
@@ -8604,7 +8672,7 @@
 	 *
 	 * const Fade = ({ in: inProp }) => (
 	 *   <Transition in={inProp} timeout={duration}>
-	 *     {(state) => (
+	 *     {state => (
 	 *       <div style={{
 	 *         ...defaultStyle,
 	 *         ...transitionStyles[state]
@@ -8616,60 +8684,43 @@
 	 * );
 	 * ```
 	 *
-	 * As noted the `Transition` component doesn't _do_ anything by itself to its child component.
-	 * What it does do is track transition states over time so you can update the
-	 * component (such as by adding styles or classes) when it changes states.
-	 *
 	 * There are 4 main states a Transition can be in:
 	 *  - `'entering'`
 	 *  - `'entered'`
 	 *  - `'exiting'`
 	 *  - `'exited'`
 	 *
-	 * Transition state is toggled via the `in` prop. When `true` the component begins the
-	 * "Enter" stage. During this stage, the component will shift from its current transition state,
-	 * to `'entering'` for the duration of the transition and then to the `'entered'` stage once
-	 * it's complete. Let's take the following example:
+	 * Transition state is toggled via the `in` prop. When `true` the component
+	 * begins the "Enter" stage. During this stage, the component will shift from
+	 * its current transition state, to `'entering'` for the duration of the
+	 * transition and then to the `'entered'` stage once it's complete. Let's take
+	 * the following example (we'll use the
+	 * [useState](https://reactjs.org/docs/hooks-reference.html#usestate) hook):
 	 *
 	 * ```jsx
-	 * state = { in: false };
-	 *
-	 * toggleEnterState = () => {
-	 *   this.setState({ in: true });
-	 * }
-	 *
-	 * render() {
+	 * function App() {
+	 *   const [inProp, setInProp] = useState(false);
 	 *   return (
 	 *     <div>
-	 *       <Transition in={this.state.in} timeout={500} />
-	 *       <button onClick={this.toggleEnterState}>Click to Enter</button>
+	 *       <Transition in={inProp} timeout={500}>
+	 *         {state => (
+	 *           // ...
+	 *         )}
+	 *       </Transition>
+	 *       <button onClick={() => setInProp(true)}>
+	 *         Click to Enter
+	 *       </button>
 	 *     </div>
 	 *   );
 	 * }
 	 * ```
 	 *
-	 * When the button is clicked the component will shift to the `'entering'` state and
-	 * stay there for 500ms (the value of `timeout`) before it finally switches to `'entered'`.
+	 * When the button is clicked the component will shift to the `'entering'` state
+	 * and stay there for 500ms (the value of `timeout`) before it finally switches
+	 * to `'entered'`.
 	 *
-	 * When `in` is `false` the same thing happens except the state moves from `'exiting'` to `'exited'`.
-	 *
-	 * ## Timing
-	 *
-	 * Timing is often the trickiest part of animation, mistakes can result in slight delays
-	 * that are hard to pin down. A common example is when you want to add an exit transition,
-	 * you should set the desired final styles when the state is `'exiting'`. That's when the
-	 * transition to those styles will start and, if you matched the `timeout` prop with the
-	 * CSS Transition duration, it will end exactly when the state changes to `'exited'`.
-	 *
-	 * > **Note**: For simpler transitions the `Transition` component might be enough, but
-	 * > take into account that it's platform-agnostic, while the `CSSTransition` component
-	 * > [forces reflows](https://github.com/reactjs/react-transition-group/blob/5007303e729a74be66a21c3e2205e4916821524b/src/CSSTransition.js#L208-L215)
-	 * > in order to make more complex transitions more predictable. For example, even though
-	 * > classes `example-enter` and `example-enter-active` are applied immediately one after
-	 * > another, you can still transition from one to the other because of the forced reflow
-	 * > (read [this issue](https://github.com/reactjs/react-transition-group/issues/159#issuecomment-322761171)
-	 * > for more info). Take this into account when choosing between `Transition` and
-	 * > `CSSTransition`.
+	 * When `in` is `false` the same thing happens except the state moves from
+	 * `'exiting'` to `'exited'`.
 	 */
 	
 	exports.EXITING = EXITING;
@@ -8983,15 +9034,15 @@
 	};
 	Transition.propTypes = process.env.NODE_ENV !== "production" ? {
 	  /**
-	   * A `function` child can be used instead of a React element.
-	   * This function is called with the current transition status
-	   * ('entering', 'entered', 'exiting', 'exited', 'unmounted'), which can be used
-	   * to apply context specific props to a component.
+	   * A `function` child can be used instead of a React element. This function is
+	   * called with the current transition status (`'entering'`, `'entered'`,
+	   * `'exiting'`, `'exited'`, `'unmounted'`), which can be used to apply context
+	   * specific props to a component.
 	   *
 	   * ```jsx
-	   * <Transition timeout={150}>
-	   *   {(status) => (
-	   *     <MyComponent className={`fade fade-${status}`} />
+	   * <Transition in={this.state.in} timeout={150}>
+	   *   {state => (
+	   *     <MyComponent className={`fade fade-${state}`} />
 	   *   )}
 	   * </Transition>
 	   * ```
@@ -9038,22 +9089,27 @@
 	
 	  /**
 	   * The duration of the transition, in milliseconds.
-	   * Required unless `addEndListener` is provided
+	   * Required unless `addEndListener` is provided.
 	   *
-	   * You may specify a single timeout for all transitions like: `timeout={500}`,
-	   * or individually like:
+	   * You may specify a single timeout for all transitions:
+	   *
+	   * ```jsx
+	   * timeout={500}
+	   * ```
+	   *
+	   * or individually:
 	   *
 	   * ```jsx
 	   * timeout={{
+	   *  appear: 500,
 	   *  enter: 300,
 	   *  exit: 500,
-	   *  appear: 500,
 	   * }}
 	   * ```
 	   *
-	   * If the value of `appear` is not set, then the value from enter is taken.
-	   *
-	   * If the `enter` or `exit` value is `null` or `undefined`, then the timer is set to `0`
+	   * - `appear` defaults to the value of `enter`
+	   * - `enter` defaults to `0`
+	   * - `exit` defaults to `0`
 	   *
 	   * @type {number | { enter?: number, exit?: number, appear?: number }}
 	   */
@@ -9678,12 +9734,12 @@
 	   * remember to spread them through if you are wrapping the `<Transition>` as
 	   * with our `<Fade>` example.
 	   *
-	   * While this component is meant to make it easier to animate multiple
-	   * `Transition` or `CSSTransition` children, sometimes you want to transition a
-	   * single child by changing its content, e.g. routes, slides, images in a
-	   * carousel etc. In that case you can change the `key` prop of the child
-	   * component along with its content, that way `TransitionGroup` will know that
-	   * it should transition the child.
+	   * While this component is meant for multiple `Transition` or `CSSTransition`
+	   * children, sometimes you may want to have a single transition child with
+	   * content that you want to be transitioned out and in when you change it
+	   * (e.g. routes, images etc.) In that case you can change the `key` prop of
+	   * the transition child as you change its content, this will cause
+	   * `TransitionGroup` to transition the child out and back in.
 	   */
 	  children: _propTypes.default.node,
 	
@@ -16718,11 +16774,9 @@
 	      value: initialValue,
 	      prevProps: props,
 	      showClose: false, //是否显示清空按钮
-	      inputValue: initInputValue, //输入框显示的值
-	      option: initOptions //下拉面板中的数据源
+	      inputValue: initInputValue //输入框显示的值
 	    };
 	    _this.defaultFieldNames = { label: 'label', value: 'value', children: 'children' };
-	    _this.uniqueID = _this.uniqueID.bind(_this);
 	    return _this;
 	  }
 	
@@ -16751,13 +16805,6 @@
 	    }
 	
 	    return newState;
-	  };
-	
-	  Rcascader.prototype.uniqueID = function uniqueID() {
-	    function s4() {
-	      return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
-	    }
-	    return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
 	  };
 	
 	  Rcascader.prototype.getPopupDOMNode = function getPopupDOMNode() {
@@ -16817,10 +16864,13 @@
 	  Rcascader.prototype.resetValue = function resetValue(e) {
 	    e.stopPropagation();
 	    e.preventDefault();
+	    this.handlePopupVisibleChange(false);
 	    this.setState({
 	      inputValue: '',
-	      activeValue: []
+	      activeValue: [],
+	      value: []
 	    });
+	    this.props.onChange && this.props.onChange('');
 	  };
 	
 	  Rcascader.prototype.render = function render() {
@@ -16831,7 +16881,8 @@
 	        popupVisible = _state.popupVisible,
 	        inputValue = _state.inputValue,
 	        options = _state.options,
-	        activeValue = _state.activeValue;
+	        activeValue = _state.activeValue,
+	        value = _state.value;
 	
 	    var _props3 = this.props,
 	        prefixCls = _props3.prefixCls,
@@ -16857,7 +16908,8 @@
 	        activeValue: this.state.activeValue,
 	        onSelect: this.handleMenuSelect,
 	        onItemDoubleClick: this.handleItemDoubleClick,
-	        visible: this.state.popupVisible
+	        visible: this.state.popupVisible,
+	        value: this.state.value
 	      }));
 	    } else {
 	      emptyMenuClassName = ' ' + prefixCls + '-menus-empty';

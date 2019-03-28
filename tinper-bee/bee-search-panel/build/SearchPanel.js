@@ -20,6 +20,14 @@ var _propTypes = require('prop-types');
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
+var _AdvancedContainer = require('./AdvancedContainer');
+
+var _AdvancedContainer2 = _interopRequireDefault(_AdvancedContainer);
+
+var _HeadContainer = require('./HeadContainer');
+
+var _HeadContainer2 = _interopRequireDefault(_HeadContainer);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
@@ -43,8 +51,8 @@ var propTypes = {
     onPanelChangeStart: _propTypes2["default"].func, //显示或隐藏开始回调
     onPanelChangeIng: _propTypes2["default"].func, //显示或隐藏进行中回调
     onPanelChangeEnd: _propTypes2["default"].func, //显示或隐藏结束回调
-    onChange: _propTypes2["default"].func, //点击显示或隐藏回调
-    resident: _propTypes2["default"].node //常驻面板内容，不会隐藏
+    onChange: _propTypes2["default"].func //点击显示或隐藏回调
+    // resident: PropTypes.node //常驻面板内容，不会隐藏
 };
 
 var defaultProps = {
@@ -125,9 +133,19 @@ var SearchPanel = function (_Component) {
             onPanelChangeEnd && _this._onPanelChange(type, onPanelChangeEnd);
         };
 
+        _this._getChildren = function (element) {
+            if (element.type.prototype === _HeadContainer2["default"].prototype) {
+                _this._HeadContainer = element;
+            } else if (element.type.prototype === _AdvancedContainer2["default"].prototype) {
+                _this._AdvancedContainer = element;
+            }
+        };
+
         _this.state = {
             expanded: props.expanded || props.defaultExpanded
         };
+        _this._HeadContainer = null;
+        _this._AdvancedContainer = null;
         return _this;
     }
 
@@ -138,6 +156,8 @@ var SearchPanel = function (_Component) {
     };
 
     SearchPanel.prototype.render = function render() {
+        var _this2 = this;
+
         var _props = this.props,
             children = _props.children,
             clsPrefix = _props.clsPrefix,
@@ -145,11 +165,18 @@ var SearchPanel = function (_Component) {
             resetName = _props.resetName,
             searchName = _props.searchName,
             bgColor = _props.bgColor,
-            style = _props.style,
-            resident = _props.resident;
+            style = _props.style;
         var expanded = this.state.expanded;
 
         var _stype = style || {};
+        if (children instanceof Array) {
+            children.forEach(function (element) {
+                _this2._getChildren(element);
+            });
+        } else {
+            this._getChildren(children);
+        }
+
         return _react2["default"].createElement(
             'div',
             { className: clsPrefix + ' ' + className,
@@ -169,12 +196,12 @@ var SearchPanel = function (_Component) {
                 _react2["default"].createElement(
                     'div',
                     { className: clsPrefix + "-header-oper" },
-                    expanded ? _react2["default"].createElement(
+                    this._HeadContainer ? _react2["default"].createElement(
                         'span',
                         { className: 'header-oper-btn', role: 'button', onClick: this.reset },
                         resetName
                     ) : null,
-                    !!resident || expanded ? _react2["default"].createElement(
+                    this._HeadContainer ? _react2["default"].createElement(
                         'span',
                         { className: 'header-oper-btn primary', role: 'button', onClick: this.search },
                         searchName
@@ -195,11 +222,11 @@ var SearchPanel = function (_Component) {
                     )
                 )
             ),
-            resident ? _react2["default"].createElement(
+            _react2["default"].createElement(
                 'div',
                 { className: clsPrefix + '-resident' },
-                resident
-            ) : null,
+                this._HeadContainer
+            ),
             _react2["default"].createElement(
                 _beePanel.Panel,
                 {
@@ -212,7 +239,7 @@ var SearchPanel = function (_Component) {
                     , onExited: this._onPanelChangeEnd.bind(this, 0) //隐藏完成回调
                     , onEntered: this._onPanelChangeEnd.bind(this, 1) //显示后回调
                 },
-                children
+                this._AdvancedContainer
             )
         );
     };
@@ -222,5 +249,6 @@ var SearchPanel = function (_Component) {
 
 SearchPanel.propTypes = propTypes;
 SearchPanel.defaultProps = defaultProps;
+
 exports["default"] = SearchPanel;
 module.exports = exports['default'];

@@ -5320,10 +5320,26 @@ a, .mdl-accordion, .mdl-button, .mdl-card, .mdl-checkbox, .mdl-dropdown-menu,
       width: 100%; }
 
 .demo .u-label {
-  display: inline-block;
   min-width: 80px;
-  text-align: right;
-  white-space: nowrap; }
+  white-space: nowrap;
+  text-align: right; }
+
+.demo .u-checkbox-group,
+.demo .col {
+  display: -ms-inline-flexbox;
+  display: inline-flex; }
+
+.demo .u-form-item,
+.demo .u-row > div {
+  padding-left: 0px;
+  padding-right: 0px; }
+
+.demo .u-search .u-panel {
+  padding-top: 0px; }
+
+.demo .u-search-resident {
+  padding-bottom: 0px;
+  padding-top: 0px; }
 
 .demo-head {
   box-sizing: border-box; }

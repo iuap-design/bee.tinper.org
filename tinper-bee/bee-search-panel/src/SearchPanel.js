@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import {Panel} from 'bee-panel';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
+import AdvancedContainer from './AdvancedContainer';
+import HeadContainer from './HeadContainer';
 
 const emFun = () => {}
 
@@ -17,7 +19,7 @@ const propTypes =  {
     onPanelChangeIng: PropTypes.func,//显示或隐藏进行中回调
     onPanelChangeEnd: PropTypes.func,//显示或隐藏结束回调
     onChange: PropTypes.func,//点击显示或隐藏回调
-    resident: PropTypes.node //常驻面板内容，不会隐藏
+    // resident: PropTypes.node //常驻面板内容，不会隐藏
 };
 
 const defaultProps = {
@@ -38,6 +40,8 @@ class SearchPanel extends Component {
         this.state = {
             expanded: props.expanded || props.defaultExpanded
         };
+        this._HeadContainer = null;
+        this._AdvancedContainer = null;
     }
 
     componentWillReceiveProps(nextProps) {
@@ -96,10 +100,28 @@ class SearchPanel extends Component {
         const { onPanelChangeEnd } = this.props;
         onPanelChangeEnd && this._onPanelChange(type, onPanelChangeEnd)
     }
+    _getChildren = (element) => {
+        if(element.type.prototype === HeadContainer.prototype){
+            this._HeadContainer = element;
+        }else if(element.type.prototype === AdvancedContainer.prototype){
+            this._AdvancedContainer = element;
+        }
+    }
+
+
+
     render() {
-        const { children, clsPrefix, className, resetName, searchName, bgColor, style, resident } = this.props;
+        const { children, clsPrefix, className, resetName, searchName, bgColor, style } = this.props;
         const { expanded } = this.state;
         const _stype = style || {};
+        if(children instanceof  Array){
+            children.forEach(element => {
+                this._getChildren(element);
+            });
+        }else{
+            this._getChildren(children);
+        }
+    
         return (
             <div className={clsPrefix + ' ' + className}
                  style={{background: bgColor, ..._stype}}>
@@ -110,8 +132,8 @@ class SearchPanel extends Component {
                     </div>
 
                     <div className={clsPrefix + "-header-oper"}>
-                        {expanded ? <span className="header-oper-btn" role="button" onClick={this.reset}>{resetName}</span> : null}
-                        {!!resident || expanded ? <span className="header-oper-btn primary" role="button" onClick={this.search}>{searchName}</span> : null}
+                        {this._HeadContainer ? <span className="header-oper-btn" role="button" onClick={this.reset}>{resetName}</span> : null}
+                        {this._HeadContainer ? <span className="header-oper-btn primary" role="button" onClick={this.search}>{searchName}</span> : null}
                         <span
                             className="header-oper-btn"
                             role="button"
@@ -126,12 +148,12 @@ class SearchPanel extends Component {
                     </span>
                     </div>
                 </div>
-
-                {resident ? (
-                    <div className={clsPrefix + '-resident'}>
-                        {resident}
-                    </div>
-                ) : null}
+                
+              
+                <div className={clsPrefix + '-resident'}>
+                    {this._HeadContainer}
+                </div>
+              
                 <Panel
                     collapsible
                     expanded={this.state.expanded}
@@ -142,7 +164,7 @@ class SearchPanel extends Component {
                     onExited={this._onPanelChangeEnd.bind(this, 0)}//隐藏完成回调
                     onEntered={this._onPanelChangeEnd.bind(this, 1)}//显示后回调
                 >
-                    {children}
+                    {this._AdvancedContainer}
                 </Panel>
             </div>
 
@@ -151,4 +173,5 @@ class SearchPanel extends Component {
 }
 SearchPanel.propTypes = propTypes;
 SearchPanel.defaultProps = defaultProps;
+
 export default SearchPanel;
