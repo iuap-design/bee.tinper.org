@@ -1,7 +1,7 @@
 /**
  *
  * @title 添加描述
- * @description 通过添加children，来添加Loading的文字描述
+ * @description 通过添加children，来添加Loading的文字描述。size 属性设置加载图标的大小。
  *
  */
 
@@ -28,6 +28,7 @@ class Demo3 extends Component {
                     一万年
                 </p>
                 <Loading
+                    size="sm"
                     describe={true}
                     container={this}
                     show={this.state.show} >
