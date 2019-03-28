@@ -117,7 +117,7 @@ module.exports = {
         str +
         "<a href='https://github.com/tinper-bee/" +
         component +
-        "/edit/master/docs/api.md' class='pencil' style='text-decoration: underline;' target='_blank' title='在github上编辑此页'><i class='uf uf-pencil' style='font-size: 20px;padding-left: 10px;'></i></a>" +
+        "/edit/master/docs/api.md' class='pencil'  target='_blank' title='在github上编辑此页'><i class='uf uf-pencil-s' style='font-size: 20px;padding-left: 10px;'></i></a>" +
         "<div class='title-right'>" +
         "<a class='title-tag' href='https://github.com/tinper-bee/" + component + "/issues/new' target='_blank'><i class='uf uf-qm-c'></i><span>issue</span></a>" +
         listStr +
