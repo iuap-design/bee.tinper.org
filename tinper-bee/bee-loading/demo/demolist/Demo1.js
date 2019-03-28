@@ -62,6 +62,7 @@ class Demo1 extends Component {
           点击显示line loading
         </Button>
         <Loading
+            fullScreen
             showBackDrop={true}
             loadingType="line"
             show={this.state.showLine}

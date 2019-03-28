@@ -56,10 +56,13 @@ $loading-icon-color: #0084ff;
       margin-top: $loading-rotate-center;
       background: transparent !important;
       display: inline-block;
-      -webkit-animation: rotate 1.5s 0s linear infinite;
-      animation: rotate 1.5s 0s linear infinite;
+      -webkit-animation: rotate 1s 0s linear infinite;
+      animation: rotate 1s 0s linear infinite;
       text-align: center;
       line-height: $loading-rotate-size;
+      & > img{
+        width: $loading-rotate-size;
+      }
       & > .uf{
         color: $loading-icon-color;
         font-size: 40px;
@@ -73,6 +76,9 @@ $loading-icon-color: #0084ff;
         width: $loading-rotate-lg-size;
         height: $loading-rotate-lg-size;
         line-height: $loading-rotate-lg-size;
+        & > img{
+          width: $loading-rotate-lg-size;
+        }
         & > .uf{
           font-size: 60px;
         }
@@ -85,6 +91,9 @@ $loading-icon-color: #0084ff;
         width: $loading-rotate-sm-size;
         height:$loading-rotate-sm-size;
         line-height: $loading-rotate-sm-size;
+        & > img{
+          width: $loading-rotate-sm-size;
+        }
         & > .uf{
           font-size: 25px;
         }
@@ -123,7 +132,7 @@ $loading-icon-color: #0084ff;
   left: 0;
   z-index: 1900;
   // opacity: .4;
-  filter: blur(.5px);
+  // filter: blur(.5px);
   background-color:rgba(255,255,255,0.4);
   &.full-screen{
     position: fixed;
