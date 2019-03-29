@@ -112,3 +112,9 @@
 ::-webkit-scrollbar-thumb:window-inactive {
     background: #DFDFDF;
 }
+
+@media screen and (min-width:800px){
+    .uf-navmenu{
+        display:none;
+    }
+}

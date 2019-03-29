@@ -41,3 +41,147 @@
 .u-row .u-col-md-12{
     padding: 0!important;
 }
+
+.uf-close-bold{
+    display:none;
+    position:fixed;
+    left:250px;
+    top:70px;
+    z-index:2018;
+    background:white;
+    width:37px;
+    height:37px;
+    border-radius:18%;
+    -webkit-border-radius:18%;
+    -moz-border-radius:18%;
+    -ms-border-radius:18%;
+    -o-border-radius:18%;
+    box-shadow:2px 2px 5px #9C9C9C;
+    text-align:center;
+    line-height:37px;
+}
+.mask{
+    display:none;
+    position:fixed;
+    z-index:2000;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    background:rgba(0, 0, 0, 0.2);
+}
+#openbtn{
+    position:fixed;
+    left:0;
+    top:70px;
+    width:37px;
+    height:37px;
+    border-radius:18%;
+    box-shadow:2px 2px 5px #9C9C9C;
+    background:white;
+    display:block;
+    text-align:center;
+    margin:0 auto;
+    z-index:2015;
+    line-height:37px;
+}
+
+@media (max-width: 768px) {
+    .docs .right-menus{
+        display:none;
+    }
+    .content .docs{
+        margin-left:0;
+        padding-left:20px;
+        padding-right:20px;
+        width:auto;
+    }
+    .content .footer-out{
+        margin-left:0;
+    }
+    .content .sidebar{
+        left:0;
+        top:0;
+        height:100%;
+        left:-250px;
+        z-index:2000;
+    }
+    .content{
+        width: 100%;
+        overflow: auto;
+    }
+    .footer-out{
+        margin-left: 0;
+    }
+    .content .docs{
+        width: 100%;
+    }
+    .doc-content.component .docs{
+        width: auto
+    }
+}
+
+@media(min-width:768px){
+    #openbtn{
+        display:none;
+    }
+  }
+
+.mob-nav {
+    position:fixed;
+    z-index:999;
+    background:white;
+    width:100%;
+    height: 65px;
+    line-height: 65px;
+    border-bottom: 1px solid #DFDFDF;
+    font-size: 14px;
+    display: inline-block;
+    text-align: center;
+}
+
+
+.mob-nav span{
+    float: right;
+    right: 31px;
+    position: fixed;
+    z-index: 999;
+}
+
+.mob-nav a {
+    color: #424242;
+}
+
+.mob-nav ul{
+    position:fixed;
+    display:none;
+    width:240px;
+    top:60px;
+    right:24px;
+    border:1px solid #C0C0C0;
+    font-size:0;
+}
+
+.mob-nav ul li{
+    background:#FFFFFF;
+    font-size:14px;
+    margin-bottom:-1px;
+}
+.mob-nav ul li a:hover{
+    background-color:rgba(240,240,240,1);
+    color:#E14C46;
+}
+.mob-nav .lang{
+   color:#ccc;
+}
+.mob-nav .basecomp{
+    background-color:rgba(240,240,240,1);
+ }
+ .mob-nav .basecomp a{
+    color:#E14C46;
+ }
+
+/* 基础组件详情页移动端导航栏 */
+.mob-nav  .uf-navmenu{
+    margin-left:90px;
+}

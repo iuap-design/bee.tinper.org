@@ -364,3 +364,10 @@ select::-ms-expand {
 .docs .whoused a{
     color: #E14C46;
 }
+
+
+@media (max-width: 768px) {
+    .docs .doc-content{
+        margin-right:0;
+    }
+}

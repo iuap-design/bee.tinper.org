@@ -65,6 +65,18 @@
     </div>
 </div>
 
+<div class="mob-nav">
+    <img src="//iuap-design-cdn.oss-cn-beijing.aliyuncs.com/static/tinper-bee/logo/iuapdesign.svg">
+    <span class="uf uf-navmenu" onclick="displayOrHide()"> 
+        <ul id="itemList0">
+            <li><a href="/" >首页</a></li>
+            <li class="lang">设计语言</li>
+            <li class="basecomp" ><a href="/tinper-bee">基础组件</a></li>
+            <li><a href="/tinper-acs" >应用组件</a></li>
+            <li style="border-bottom:1px solid #C0C0C0;" ><a target="_blank" href="/case/preview">典型案例</a></li>
+        </ul>
+    </span>
+</div>
 
 <script>
     
@@ -75,19 +87,24 @@
     function langShowHide(hide) {
         var select = document.querySelector('#selectLang');
         var selectList = document.querySelector('#selectList');
-        var cls = selectList.getAttribute('class');
-        if (hide) {
-            selectList.setAttribute('class', 'select-list');
-            select.setAttribute('class', 'u-select u-select-focused u-select-enabled');
-        } else {
-            if (cls.indexOf('open') != -1) { //打开状态
+        try {
+            var cls = selectList.getAttribute('class');
+            if (hide) {
                 selectList.setAttribute('class', 'select-list');
                 select.setAttribute('class', 'u-select u-select-focused u-select-enabled');
-            } else { //关闭状态
-                selectList.setAttribute('class', 'select-list open');
-                select.setAttribute('class', 'u-select u-select-open u-select-focused u-select-enabled');
+            } else {
+                if (cls.indexOf('open') != -1) { //打开状态
+                    selectList.setAttribute('class', 'select-list');
+                    select.setAttribute('class', 'u-select u-select-focused u-select-enabled');
+                } else { //关闭状态
+                    selectList.setAttribute('class', 'select-list open');
+                    select.setAttribute('class', 'u-select u-select-open u-select-focused u-select-enabled');
+                }
             }
+        } catch (error) {
+            
         }
+        
     }
     select.onclick = (e) => {
         langShowHide()
@@ -97,4 +114,20 @@
             langShowHide(true)
         };
     })
+
+
+    //移动端适配
+    var hide=true;
+    function displayOrHide(){
+        var itemList=document.getElementById("itemList0");
+        if(hide){
+            //显示
+            itemList.style.display="block";
+            hide=false;
+        }else{
+            //隐藏
+            itemList.style.display="none";
+            hide=true;
+        }
+    }
 </script>
