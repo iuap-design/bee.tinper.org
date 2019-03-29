@@ -34,7 +34,7 @@
     <div class="navbar" id="navbar">
         <% include navbar.html %>
     </div>
-    <div class="mask"></div>
+    <div class="mask" id="mask"></div>
     <div id="openbtn" class="uf uf-navmenu"></div>
     <div id="closebtn" class="uf uf-close-bold"></div>
     <% if(isComponent){ %>
@@ -91,8 +91,8 @@
     //侧边栏
     let openbtn=document.getElementById('openbtn'),//汉堡按钮
     closebtn=document.getElementById('closebtn'),//关闭按钮
-    sidebarDOM=document.getElementsByClassName('sidebar')[0];//侧边栏
-    mask=document.getElementsByClassName('mask')[0];//遮罩层
+    sidebarDOM=document.getElementById('sidebar');//侧边栏
+    mask=document.getElementById('mask');//遮罩层
     //汉堡按钮显示逻辑
     openbtn.addEventListener('click', function () {
       mask.style.display='block';
