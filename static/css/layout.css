@@ -42,7 +42,7 @@
     padding: 0!important;
 }
 
-.uf-close-bold{
+#closebtn{
     display:none;
     position:fixed;
     left:250px;
