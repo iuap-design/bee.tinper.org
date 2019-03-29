@@ -28,7 +28,6 @@ class Demo3 extends Component {
                     一万年
                 </p>
                 <Loading
-                    size="sm"
                     describe={true}
                     container={this}
                     show={this.state.show} >

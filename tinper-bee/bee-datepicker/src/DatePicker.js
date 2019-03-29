@@ -11,6 +11,7 @@ import FormControl from "bee-form-control";
 import TimePickerPanel from "rc-time-picker/lib/Panel";
 import moment from "moment";
 import Icon from "bee-icon";
+import classnames from 'classnames';
 import InputGroup from 'bee-input-group';
 import zhCN from "./locale/zh_CN";
 
@@ -236,9 +237,9 @@ class DatePicker extends Component {
       keyboardInputProps.readOnly=true;
       keyboardInputProps.value=(value && value.format(props.format)) || ""
     }
-
+    let classes = classnames(props.className, "datepicker-container");
     return (
-      <div className={props.className}>
+      <div className={classes}>
         <Picker
           animation="slide-up"
           {...props}

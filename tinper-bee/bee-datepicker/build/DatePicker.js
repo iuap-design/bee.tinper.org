@@ -40,6 +40,10 @@ var _beeIcon = require("bee-icon");
 
 var _beeIcon2 = _interopRequireDefault(_beeIcon);
 
+var _classnames = require("classnames");
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
 var _beeInputGroup = require("bee-input-group");
 
 var _beeInputGroup2 = _interopRequireDefault(_beeInputGroup);
@@ -141,10 +145,10 @@ var DatePicker = function (_Component) {
       keyboardInputProps.readOnly = true;
       keyboardInputProps.value = value && value.format(props.format) || "";
     }
-
+    var classes = (0, _classnames2["default"])(props.className, "datepicker-container");
     return _react2["default"].createElement(
       "div",
-      { className: props.className },
+      { className: classes },
       _react2["default"].createElement(
         _Picker2["default"],
         _extends({

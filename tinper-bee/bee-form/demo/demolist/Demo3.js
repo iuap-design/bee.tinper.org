@@ -125,7 +125,7 @@ const Demo3 = Form.createForm()( class Demo extends Component {
                         </span>
                     </FormItem>
 
-                    <FormItem style={{'paddingLeft':'110px'}}>
+                    <FormItem style={{'paddingLeft':'106px'}}>
                         <Checkbox
                             defaultChecked={this.state.checkbox}
                             {
@@ -137,10 +137,10 @@ const Demo3 = Form.createForm()( class Demo extends Component {
                         我已经阅读并同意相关条款
                         </Checkbox>
                     </FormItem>
-                    <div className='submit'>
-                        <Button shape="border" className="reset">取消</Button>
+                    <FormItem style={{'paddingLeft':'106px'}}>
+                        <Button shape="border" className="reset" style={{"marginRight":"8px"}}>取消</Button>
                         <Button colors="primary" className="login" onClick={this.submit}>注册</Button>
-                    </div>
+                    </FormItem>
                 </Form>
             </div>
         )

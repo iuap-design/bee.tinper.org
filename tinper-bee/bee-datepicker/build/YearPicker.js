@@ -30,6 +30,10 @@ var _beeIcon = require("bee-icon");
 
 var _beeIcon2 = _interopRequireDefault(_beeIcon);
 
+var _classnames = require("classnames");
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
 var _moment = require("moment");
 
 var _moment2 = _interopRequireDefault(_moment);
@@ -96,10 +100,10 @@ var YearPicker = function (_Component) {
         }, props, { focus: function focus() {},
             showDateInput: true
         }));
-
+        var classes = (0, _classnames2["default"])(props.className, "datepicker-container");
         return _react2["default"].createElement(
             "div",
-            null,
+            { className: classes },
             _react2["default"].createElement(
                 _Picker2["default"],
                 _extends({

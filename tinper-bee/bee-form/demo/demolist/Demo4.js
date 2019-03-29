@@ -7,6 +7,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import Form from '../../src';
 import FormControl from 'bee-form-control';
+import { Col,Row } from 'bee-layout';
 import Select from 'bee-select';
 import Radio from 'bee-radio';
 import DatePicker from 'bee-datepicker';
@@ -18,14 +19,36 @@ import Rate from 'bee-rate';
 import CitySelect from 'bee-city-select';
 import Label from 'bee-label';
 import Button from 'bee-button';
+import Icon from 'bee-icon';
+import Upload from 'bee-upload';
 const FormItem = Form.FormItem;
 const Option = Select.Option;
+const CheckboxGroup = Checkbox.CheckboxGroup;
+
+const uploadProps = {
+    name: 'file',
+    action: '/upload.do',
+    headers: {
+      authorization: 'authorization-text',
+    },
+    onChange(info) {
+      if (info.file.status !== 'uploading') {
+        console.log(info.file, info.fileList);
+      }
+      if (info.file.status === 'done') {
+        console.log(`${info.file.name} file uploaded successfully`);
+      } else if (info.file.status === 'error') {
+        console.log(`${info.file.name} file upload failed.`);
+      }
+    },
+};
 
 const Demo4 = Form.createForm()(class Demo extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            selectedValue: 'man',
+            selectedValue: '',
+            selectedValue2: 'headquarters'
         };
     }
     submit = (e) => {
@@ -44,7 +67,7 @@ const Demo4 = Form.createForm()(class Demo extends Component {
             <div>
                 <Form className='demo4'>
                     <FormItem>
-                        <Label>姓名</Label>
+                        <Label><Icon type="uf-mi" className='mast'></Icon>申请人</Label>
                         <FormControl placeholder="请输入姓名"
                             {...getFieldProps('name', {
                                 validateTrigger: 'onBlur',
@@ -58,61 +81,67 @@ const Demo4 = Form.createForm()(class Demo extends Component {
                         </span>
                     </FormItem>
                     <FormItem>
-                        <Label>身份证号</Label>
-                        <FormControl placeholder="请输入身份证号"
-                            {...getFieldProps('id', {
+                        <Label><Icon type="uf-mi" className='mast'></Icon>联系方式</Label>
+                        <FormControl placeholder="请输入联系方式"
+                            {...getFieldProps('phone', {
                                 validateTrigger: 'onBlur',
                                 rules: [{
-                                    required: true, message: '请输入身份证号',
-                                },{
-                                    pattern: /^[1-9][0-9]{5}([1][9][0-9]{2}|[2][0][0|1][0-9])([0][1-9]|[1][0|1|2])([0][1-9]|[1|2][0-9]|[3][0|1])[0-9]{3}([0-9]|[X])$/, message: '身份证号格式不正确'
+                                    required: true, message: '请输入联系方式',
+                                }, {
+                                    pattern: /^\d{11}$/, message: '手机号格式不正确'
                                 }],
                             }) }
                         />
                         <span className='error'>
-                            {getFieldError('id')}
+                            {getFieldError('phone')}
                         </span>
                     </FormItem>
-                    <FormItem className='time'>
-                        <Label>出生日期</Label>
+                    <FormItem>
+                        <Label>供应商名称</Label>
+                        <FormControl placeholder="请输入供应商名称"
+                            {
+                            ...getFieldProps('supplierName', {
+                                initialValue: '',
+                            })
+                            }
+                        />
+                    </FormItem>
+                    <FormItem>
+                        <Label><Icon type="uf-mi" className='mast'></Icon>供货产品</Label>
+                        <FormControl placeholder="请输入供货产品"
+                            {
+                            ...getFieldProps('supplyProducts', {
+                                initialValue: '',
+                            })
+                            }
+                        />
+                    </FormItem>
+                    <FormItem className='time flex'>
+                        <Label className="line-height-32">需求日期</Label>
                         <DatePicker
                             {
                             ...getFieldProps('time', {
                                 validateTrigger: 'onBlur',
                                 rules: [{
-                                    required: true, message: '请选择出生日期',
+                                    required: true, message: '请选择需求日期',
                                 }, {
                                     type: 'date', message: '日期格式不正确'
                                 }],
                             }
                             ) }
-                            placeholder={'请选择出生日期'}
+                            placeholder={'请选择需求日期'}
                         />
-                        <span className='error'>
+                        <span className='error line-height-32'>
                             {getFieldError('time')}
                         </span>
                     </FormItem>
                     <FormItem>
-                        <Label>年龄</Label>
-                        <FormControl placeholder="请输入年龄"
-                            {...getFieldProps('age', {
-                                validateTrigger: 'onBlur',
-                                rules: [{
-                                    required: true, message: '请输入年龄',
-                                }],
-                            }) }
-                        />
-                        <span className='error'>
-                            {getFieldError('age')}
-                        </span>
-                    </FormItem>
-                     <FormItem>
-                        <Label>性别</Label>
+                        <Label><Icon type="uf-mi" className='mast'></Icon>物料关重程度</Label>
                         <Radio.RadioGroup
                             selectedValue={this.state.selectedValue}
                             {
-                            ...getFieldProps('sex', {
-                                initialValue: 'man',
+                            ...getFieldProps('importance', {
+                                initialValue: '',
                                 onChange(value) {
                                     self.setState({ selectedValue: value });
                                 },
@@ -120,31 +149,44 @@ const Demo4 = Form.createForm()(class Demo extends Component {
                             }
                             ) }
                         >
-                            <Radio value="man" >男</Radio>
-                            <Radio value="woman" >女</Radio>
+                            <Radio value="A" >A（关键）</Radio>
+                            <Radio value="B" >B（重要）</Radio>
+                            <Radio value="C" >C（一般）</Radio>
                         </Radio.RadioGroup>
                     </FormItem>
                     <FormItem>
-                        <Label>学历</Label>
-                        <Select
+                        <Label><Icon type="uf-mi" className='mast'></Icon>归属部门</Label>
+                        <Radio.RadioGroup
+                            selectedValue={this.state.selectedValue2}
                             {
-                            ...getFieldProps('education', {
-                                initialValue: '',
-                                rules: [{ required: true, message: '请选择学历' }]
+                            ...getFieldProps('department', {
+                                initialValue: 'headquarters',
+                                onChange(value) {
+                                    self.setState({ selectedValue2: value });
+                                },
+                                rules: [{ required: true }]
                             }
                             ) }
                         >
-                            <Option value="">请选择</Option>
-                            <Option value="nothing">无</Option>
-                            <Option value="middle">初中</Option>
-                            <Option value="senior">高中</Option>
-                            <Option value="college1">专科</Option>
-                            <Option value="college2">本科</Option>
-                            <Option value="graduate">研究生及以上</Option>
-                            <Option value="other">其它</Option>
-                        </Select>
+                            <Radio value="headquarters">总部</Radio>
+                            <Radio value="businessUnit">事业部</Radio>
+                        </Radio.RadioGroup>
+                    </FormItem>
+                    <FormItem>
+                        <Label><Icon type="uf-mi" className='mast'></Icon>采购组</Label>
+                        <CheckboxGroup 
+                                {
+                                    ...getFieldProps('purchasingGroup',{
+                                        initialValue:['2'],
+                                        rules: [{ required: true, message: '请选择采购组' }]
+                                    })
+                                }
+                            >
+                                <Checkbox value='1'>人力</Checkbox>
+                                <Checkbox value='2'>财务</Checkbox>
+                        </CheckboxGroup>
                         <span className='error'>
-                            {getFieldError('education')}
+                            {getFieldError('purchasingGroup')}
                         </span>
                     </FormItem>
                     <FormItem>
@@ -158,21 +200,26 @@ const Demo4 = Form.createForm()(class Demo extends Component {
                             ) }
                         />
                     </FormItem>
-                    <FormItem className="remarks">
-                        <Label>备注</Label>
+                    <FormItem className="flex">
+                        <Label className="line-height-32">备注</Label>
                         <FormControl componentClass='textarea'
                             {
                             ...getFieldProps('remark', {}
                             ) }
                         />
                     </FormItem>  
-                    
-
-
-                    <div className='submit'>
-                        <Button shape="border" className="reset">取消</Button>
+                    <FormItem >
+                        <Label>文件</Label>
+                        <Upload {...uploadProps}>
+                            <Button shape="border">
+                            <Icon type="uf-upload" /> Click to Upload
+                            </Button>
+                        </Upload>
+                    </FormItem>  
+                    <FormItem style={{'paddingLeft':'106px'}}>
+                        <Button shape="border" className="reset" style={{"marginRight":"8px"}}>取消</Button>
                         <Button colors="primary" className="login" onClick={this.submit}>提交</Button>
-                    </div>
+                    </FormItem>
                 </Form>
             </div>
         )

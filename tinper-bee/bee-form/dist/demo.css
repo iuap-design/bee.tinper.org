@@ -1,10 +1,59 @@
 /* FormGroup */
 /*  Navlayout  */
 .u-form-item {
-  padding: 10px; }
+  padding: 4px 10px;
+  min-height: 52px; }
+  .u-form-item.flex {
+    display: -ms-flexbox;
+    display: flex; }
+  .u-form-item .u-label {
+    display: inline-block;
+    text-align: right;
+    padding-right: 12px;
+    color: #212121;
+    font-size: 12px;
+    min-width: 96px; }
+    .u-form-item .u-label.line-height-32 {
+      line-height: 32px; }
+  .u-form-item .mast {
+    color: red;
+    font-size: 12px;
+    padding: 0; }
+  .u-form-item .error {
+    color: red;
+    font-size: 12px;
+    padding-left: 4px; }
+    .u-form-item .error.line-height-32 {
+      line-height: 32px; }
+  .u-form-item .u-form-control, .u-form-item .u-input-group .u-form-control, .u-form-item .u-select, .u-form-item .u-checkbox-group {
+    display: inline-block;
+    width: auto;
+    min-width: 210px; }
+  .u-form-item .datepicker-container, .u-form-item .calendar-picker {
+    display: inline-block; }
+  .u-form-item textarea {
+    min-height: 80px; }
+  .u-form-item .u-col-1, .u-form-item .u-col-2, .u-form-item .u-col-3, .u-form-item .u-col-4, .u-form-item .u-col-5, .u-form-item .u-col-6, .u-form-item .u-col-7, .u-form-item .u-col-8, .u-form-item .u-col-9, .u-form-item .u-col-10, .u-form-item .u-col-11, .u-form-item .u-col-12, .u-form-item .u-col-lg-1, .u-form-item .u-col-lg-2, .u-form-item .u-col-lg-3, .u-form-item .u-col-lg-4, .u-form-item .u-col-lg-5, .u-form-item .u-col-lg-6, .u-form-item .u-col-lg-7, .u-form-item .u-col-lg-8, .u-form-item .u-col-lg-9, .u-form-item .u-col-lg-10, .u-form-item .u-col-lg-11, .u-form-item .u-col-lg-12, .u-form-item .u-col-md-1, .u-form-item .u-col-md-2, .u-form-item .u-col-md-3, .u-form-item .u-col-md-4, .u-form-item .u-col-md-5, .u-form-item .u-col-md-6, .u-form-item .u-col-md-7, .u-form-item .u-col-md-8, .u-form-item .u-col-md-9, .u-form-item .u-col-md-10, .u-form-item .u-col-md-11, .u-form-item .u-col-md-12, .u-form-item .u-col-sm-1, .u-form-item .u-col-sm-2, .u-form-item .u-col-sm-3, .u-form-item .u-col-sm-4, .u-form-item .u-col-sm-5, .u-form-item .u-col-sm-6, .u-form-item .u-col-sm-7, .u-form-item .u-col-sm-8, .u-form-item .u-col-sm-9, .u-form-item .u-col-sm-10, .u-form-item .u-col-sm-11, .u-form-item .u-col-sm-12, .u-form-item .u-col-xs-1, .u-form-item .u-col-xs-2, .u-form-item .u-col-xs-3, .u-form-item .u-col-xs-4, .u-form-item .u-col-xs-5, .u-form-item .u-col-xs-6, .u-form-item .u-col-xs-7, .u-form-item .u-col-xs-8, .u-form-item .u-col-xs-9, .u-form-item .u-col-xs-10, .u-form-item .u-col-xs-11, .u-form-item .u-col-xs-12 {
+    padding: 0; }
+    .u-form-item .u-col-1 .u-label, .u-form-item .u-col-2 .u-label, .u-form-item .u-col-3 .u-label, .u-form-item .u-col-4 .u-label, .u-form-item .u-col-5 .u-label, .u-form-item .u-col-6 .u-label, .u-form-item .u-col-7 .u-label, .u-form-item .u-col-8 .u-label, .u-form-item .u-col-9 .u-label, .u-form-item .u-col-10 .u-label, .u-form-item .u-col-11 .u-label, .u-form-item .u-col-12 .u-label, .u-form-item .u-col-lg-1 .u-label, .u-form-item .u-col-lg-2 .u-label, .u-form-item .u-col-lg-3 .u-label, .u-form-item .u-col-lg-4 .u-label, .u-form-item .u-col-lg-5 .u-label, .u-form-item .u-col-lg-6 .u-label, .u-form-item .u-col-lg-7 .u-label, .u-form-item .u-col-lg-8 .u-label, .u-form-item .u-col-lg-9 .u-label, .u-form-item .u-col-lg-10 .u-label, .u-form-item .u-col-lg-11 .u-label, .u-form-item .u-col-lg-12 .u-label, .u-form-item .u-col-md-1 .u-label, .u-form-item .u-col-md-2 .u-label, .u-form-item .u-col-md-3 .u-label, .u-form-item .u-col-md-4 .u-label, .u-form-item .u-col-md-5 .u-label, .u-form-item .u-col-md-6 .u-label, .u-form-item .u-col-md-7 .u-label, .u-form-item .u-col-md-8 .u-label, .u-form-item .u-col-md-9 .u-label, .u-form-item .u-col-md-10 .u-label, .u-form-item .u-col-md-11 .u-label, .u-form-item .u-col-md-12 .u-label, .u-form-item .u-col-sm-1 .u-label, .u-form-item .u-col-sm-2 .u-label, .u-form-item .u-col-sm-3 .u-label, .u-form-item .u-col-sm-4 .u-label, .u-form-item .u-col-sm-5 .u-label, .u-form-item .u-col-sm-6 .u-label, .u-form-item .u-col-sm-7 .u-label, .u-form-item .u-col-sm-8 .u-label, .u-form-item .u-col-sm-9 .u-label, .u-form-item .u-col-sm-10 .u-label, .u-form-item .u-col-sm-11 .u-label, .u-form-item .u-col-sm-12 .u-label, .u-form-item .u-col-xs-1 .u-label, .u-form-item .u-col-xs-2 .u-label, .u-form-item .u-col-xs-3 .u-label, .u-form-item .u-col-xs-4 .u-label, .u-form-item .u-col-xs-5 .u-label, .u-form-item .u-col-xs-6 .u-label, .u-form-item .u-col-xs-7 .u-label, .u-form-item .u-col-xs-8 .u-label, .u-form-item .u-col-xs-9 .u-label, .u-form-item .u-col-xs-10 .u-label, .u-form-item .u-col-xs-11 .u-label, .u-form-item .u-col-xs-12 .u-label {
+      width: 100%; }
+    .u-form-item .u-col-1 .u-form-control, .u-form-item .u-col-1 .u-input-group .u-form-control, .u-form-item .u-col-1 .u-select, .u-form-item .u-col-1 .u-checkbox-group, .u-form-item .u-col-2 .u-form-control, .u-form-item .u-col-2 .u-input-group .u-form-control, .u-form-item .u-col-2 .u-select, .u-form-item .u-col-2 .u-checkbox-group, .u-form-item .u-col-3 .u-form-control, .u-form-item .u-col-3 .u-input-group .u-form-control, .u-form-item .u-col-3 .u-select, .u-form-item .u-col-3 .u-checkbox-group, .u-form-item .u-col-4 .u-form-control, .u-form-item .u-col-4 .u-input-group .u-form-control, .u-form-item .u-col-4 .u-select, .u-form-item .u-col-4 .u-checkbox-group, .u-form-item .u-col-5 .u-form-control, .u-form-item .u-col-5 .u-input-group .u-form-control, .u-form-item .u-col-5 .u-select, .u-form-item .u-col-5 .u-checkbox-group, .u-form-item .u-col-6 .u-form-control, .u-form-item .u-col-6 .u-input-group .u-form-control, .u-form-item .u-col-6 .u-select, .u-form-item .u-col-6 .u-checkbox-group, .u-form-item .u-col-7 .u-form-control, .u-form-item .u-col-7 .u-input-group .u-form-control, .u-form-item .u-col-7 .u-select, .u-form-item .u-col-7 .u-checkbox-group, .u-form-item .u-col-8 .u-form-control, .u-form-item .u-col-8 .u-input-group .u-form-control, .u-form-item .u-col-8 .u-select, .u-form-item .u-col-8 .u-checkbox-group, .u-form-item .u-col-9 .u-form-control, .u-form-item .u-col-9 .u-input-group .u-form-control, .u-form-item .u-col-9 .u-select, .u-form-item .u-col-9 .u-checkbox-group, .u-form-item .u-col-10 .u-form-control, .u-form-item .u-col-10 .u-input-group .u-form-control, .u-form-item .u-col-10 .u-select, .u-form-item .u-col-10 .u-checkbox-group, .u-form-item .u-col-11 .u-form-control, .u-form-item .u-col-11 .u-input-group .u-form-control, .u-form-item .u-col-11 .u-select, .u-form-item .u-col-11 .u-checkbox-group, .u-form-item .u-col-12 .u-form-control, .u-form-item .u-col-12 .u-input-group .u-form-control, .u-form-item .u-col-12 .u-select, .u-form-item .u-col-12 .u-checkbox-group, .u-form-item .u-col-lg-1 .u-form-control, .u-form-item .u-col-lg-1 .u-input-group .u-form-control, .u-form-item .u-col-lg-1 .u-select, .u-form-item .u-col-lg-1 .u-checkbox-group, .u-form-item .u-col-lg-2 .u-form-control, .u-form-item .u-col-lg-2 .u-input-group .u-form-control, .u-form-item .u-col-lg-2 .u-select, .u-form-item .u-col-lg-2 .u-checkbox-group, .u-form-item .u-col-lg-3 .u-form-control, .u-form-item .u-col-lg-3 .u-input-group .u-form-control, .u-form-item .u-col-lg-3 .u-select, .u-form-item .u-col-lg-3 .u-checkbox-group, .u-form-item .u-col-lg-4 .u-form-control, .u-form-item .u-col-lg-4 .u-input-group .u-form-control, .u-form-item .u-col-lg-4 .u-select, .u-form-item .u-col-lg-4 .u-checkbox-group, .u-form-item .u-col-lg-5 .u-form-control, .u-form-item .u-col-lg-5 .u-input-group .u-form-control, .u-form-item .u-col-lg-5 .u-select, .u-form-item .u-col-lg-5 .u-checkbox-group, .u-form-item .u-col-lg-6 .u-form-control, .u-form-item .u-col-lg-6 .u-input-group .u-form-control, .u-form-item .u-col-lg-6 .u-select, .u-form-item .u-col-lg-6 .u-checkbox-group, .u-form-item .u-col-lg-7 .u-form-control, .u-form-item .u-col-lg-7 .u-input-group .u-form-control, .u-form-item .u-col-lg-7 .u-select, .u-form-item .u-col-lg-7 .u-checkbox-group, .u-form-item .u-col-lg-8 .u-form-control, .u-form-item .u-col-lg-8 .u-input-group .u-form-control, .u-form-item .u-col-lg-8 .u-select, .u-form-item .u-col-lg-8 .u-checkbox-group, .u-form-item .u-col-lg-9 .u-form-control, .u-form-item .u-col-lg-9 .u-input-group .u-form-control, .u-form-item .u-col-lg-9 .u-select, .u-form-item .u-col-lg-9 .u-checkbox-group, .u-form-item .u-col-lg-10 .u-form-control, .u-form-item .u-col-lg-10 .u-input-group .u-form-control, .u-form-item .u-col-lg-10 .u-select, .u-form-item .u-col-lg-10 .u-checkbox-group, .u-form-item .u-col-lg-11 .u-form-control, .u-form-item .u-col-lg-11 .u-input-group .u-form-control, .u-form-item .u-col-lg-11 .u-select, .u-form-item .u-col-lg-11 .u-checkbox-group, .u-form-item .u-col-lg-12 .u-form-control, .u-form-item .u-col-lg-12 .u-input-group .u-form-control, .u-form-item .u-col-lg-12 .u-select, .u-form-item .u-col-lg-12 .u-checkbox-group, .u-form-item .u-col-md-1 .u-form-control, .u-form-item .u-col-md-1 .u-input-group .u-form-control, .u-form-item .u-col-md-1 .u-select, .u-form-item .u-col-md-1 .u-checkbox-group, .u-form-item .u-col-md-2 .u-form-control, .u-form-item .u-col-md-2 .u-input-group .u-form-control, .u-form-item .u-col-md-2 .u-select, .u-form-item .u-col-md-2 .u-checkbox-group, .u-form-item .u-col-md-3 .u-form-control, .u-form-item .u-col-md-3 .u-input-group .u-form-control, .u-form-item .u-col-md-3 .u-select, .u-form-item .u-col-md-3 .u-checkbox-group, .u-form-item .u-col-md-4 .u-form-control, .u-form-item .u-col-md-4 .u-input-group .u-form-control, .u-form-item .u-col-md-4 .u-select, .u-form-item .u-col-md-4 .u-checkbox-group, .u-form-item .u-col-md-5 .u-form-control, .u-form-item .u-col-md-5 .u-input-group .u-form-control, .u-form-item .u-col-md-5 .u-select, .u-form-item .u-col-md-5 .u-checkbox-group, .u-form-item .u-col-md-6 .u-form-control, .u-form-item .u-col-md-6 .u-input-group .u-form-control, .u-form-item .u-col-md-6 .u-select, .u-form-item .u-col-md-6 .u-checkbox-group, .u-form-item .u-col-md-7 .u-form-control, .u-form-item .u-col-md-7 .u-input-group .u-form-control, .u-form-item .u-col-md-7 .u-select, .u-form-item .u-col-md-7 .u-checkbox-group, .u-form-item .u-col-md-8 .u-form-control, .u-form-item .u-col-md-8 .u-input-group .u-form-control, .u-form-item .u-col-md-8 .u-select, .u-form-item .u-col-md-8 .u-checkbox-group, .u-form-item .u-col-md-9 .u-form-control, .u-form-item .u-col-md-9 .u-input-group .u-form-control, .u-form-item .u-col-md-9 .u-select, .u-form-item .u-col-md-9 .u-checkbox-group, .u-form-item .u-col-md-10 .u-form-control, .u-form-item .u-col-md-10 .u-input-group .u-form-control, .u-form-item .u-col-md-10 .u-select, .u-form-item .u-col-md-10 .u-checkbox-group, .u-form-item .u-col-md-11 .u-form-control, .u-form-item .u-col-md-11 .u-input-group .u-form-control, .u-form-item .u-col-md-11 .u-select, .u-form-item .u-col-md-11 .u-checkbox-group, .u-form-item .u-col-md-12 .u-form-control, .u-form-item .u-col-md-12 .u-input-group .u-form-control, .u-form-item .u-col-md-12 .u-select, .u-form-item .u-col-md-12 .u-checkbox-group, .u-form-item .u-col-sm-1 .u-form-control, .u-form-item .u-col-sm-1 .u-input-group .u-form-control, .u-form-item .u-col-sm-1 .u-select, .u-form-item .u-col-sm-1 .u-checkbox-group, .u-form-item .u-col-sm-2 .u-form-control, .u-form-item .u-col-sm-2 .u-input-group .u-form-control, .u-form-item .u-col-sm-2 .u-select, .u-form-item .u-col-sm-2 .u-checkbox-group, .u-form-item .u-col-sm-3 .u-form-control, .u-form-item .u-col-sm-3 .u-input-group .u-form-control, .u-form-item .u-col-sm-3 .u-select, .u-form-item .u-col-sm-3 .u-checkbox-group, .u-form-item .u-col-sm-4 .u-form-control, .u-form-item .u-col-sm-4 .u-input-group .u-form-control, .u-form-item .u-col-sm-4 .u-select, .u-form-item .u-col-sm-4 .u-checkbox-group, .u-form-item .u-col-sm-5 .u-form-control, .u-form-item .u-col-sm-5 .u-input-group .u-form-control, .u-form-item .u-col-sm-5 .u-select, .u-form-item .u-col-sm-5 .u-checkbox-group, .u-form-item .u-col-sm-6 .u-form-control, .u-form-item .u-col-sm-6 .u-input-group .u-form-control, .u-form-item .u-col-sm-6 .u-select, .u-form-item .u-col-sm-6 .u-checkbox-group, .u-form-item .u-col-sm-7 .u-form-control, .u-form-item .u-col-sm-7 .u-input-group .u-form-control, .u-form-item .u-col-sm-7 .u-select, .u-form-item .u-col-sm-7 .u-checkbox-group, .u-form-item .u-col-sm-8 .u-form-control, .u-form-item .u-col-sm-8 .u-input-group .u-form-control, .u-form-item .u-col-sm-8 .u-select, .u-form-item .u-col-sm-8 .u-checkbox-group, .u-form-item .u-col-sm-9 .u-form-control, .u-form-item .u-col-sm-9 .u-input-group .u-form-control, .u-form-item .u-col-sm-9 .u-select, .u-form-item .u-col-sm-9 .u-checkbox-group, .u-form-item .u-col-sm-10 .u-form-control, .u-form-item .u-col-sm-10 .u-input-group .u-form-control, .u-form-item .u-col-sm-10 .u-select, .u-form-item .u-col-sm-10 .u-checkbox-group, .u-form-item .u-col-sm-11 .u-form-control, .u-form-item .u-col-sm-11 .u-input-group .u-form-control, .u-form-item .u-col-sm-11 .u-select, .u-form-item .u-col-sm-11 .u-checkbox-group, .u-form-item .u-col-sm-12 .u-form-control, .u-form-item .u-col-sm-12 .u-input-group .u-form-control, .u-form-item .u-col-sm-12 .u-select, .u-form-item .u-col-sm-12 .u-checkbox-group, .u-form-item .u-col-xs-1 .u-form-control, .u-form-item .u-col-xs-1 .u-input-group .u-form-control, .u-form-item .u-col-xs-1 .u-select, .u-form-item .u-col-xs-1 .u-checkbox-group, .u-form-item .u-col-xs-2 .u-form-control, .u-form-item .u-col-xs-2 .u-input-group .u-form-control, .u-form-item .u-col-xs-2 .u-select, .u-form-item .u-col-xs-2 .u-checkbox-group, .u-form-item .u-col-xs-3 .u-form-control, .u-form-item .u-col-xs-3 .u-input-group .u-form-control, .u-form-item .u-col-xs-3 .u-select, .u-form-item .u-col-xs-3 .u-checkbox-group, .u-form-item .u-col-xs-4 .u-form-control, .u-form-item .u-col-xs-4 .u-input-group .u-form-control, .u-form-item .u-col-xs-4 .u-select, .u-form-item .u-col-xs-4 .u-checkbox-group, .u-form-item .u-col-xs-5 .u-form-control, .u-form-item .u-col-xs-5 .u-input-group .u-form-control, .u-form-item .u-col-xs-5 .u-select, .u-form-item .u-col-xs-5 .u-checkbox-group, .u-form-item .u-col-xs-6 .u-form-control, .u-form-item .u-col-xs-6 .u-input-group .u-form-control, .u-form-item .u-col-xs-6 .u-select, .u-form-item .u-col-xs-6 .u-checkbox-group, .u-form-item .u-col-xs-7 .u-form-control, .u-form-item .u-col-xs-7 .u-input-group .u-form-control, .u-form-item .u-col-xs-7 .u-select, .u-form-item .u-col-xs-7 .u-checkbox-group, .u-form-item .u-col-xs-8 .u-form-control, .u-form-item .u-col-xs-8 .u-input-group .u-form-control, .u-form-item .u-col-xs-8 .u-select, .u-form-item .u-col-xs-8 .u-checkbox-group, .u-form-item .u-col-xs-9 .u-form-control, .u-form-item .u-col-xs-9 .u-input-group .u-form-control, .u-form-item .u-col-xs-9 .u-select, .u-form-item .u-col-xs-9 .u-checkbox-group, .u-form-item .u-col-xs-10 .u-form-control, .u-form-item .u-col-xs-10 .u-input-group .u-form-control, .u-form-item .u-col-xs-10 .u-select, .u-form-item .u-col-xs-10 .u-checkbox-group, .u-form-item .u-col-xs-11 .u-form-control, .u-form-item .u-col-xs-11 .u-input-group .u-form-control, .u-form-item .u-col-xs-11 .u-select, .u-form-item .u-col-xs-11 .u-checkbox-group, .u-form-item .u-col-xs-12 .u-form-control, .u-form-item .u-col-xs-12 .u-input-group .u-form-control, .u-form-item .u-col-xs-12 .u-select, .u-form-item .u-col-xs-12 .u-checkbox-group {
+      width: 100%; }
 
-.u-form .u-form-item {
-  min-height: auto; }
+.u-form-control::-webkit-input-placeholder {
+  font-size: 12px; }
+
+.u-form-control:-moz-placeholder {
+  font-size: 12px; }
+
+.u-form-control::-moz-placeholder {
+  font-size: 12px; }
+
+.u-form-control:-ms-input-placeholder {
+  font-size: 12px; }
+
+.text-algin-center {
+  text-align: center; }
 
 /* FormGroup */
 /*  Navlayout  */
@@ -69,266 +118,14 @@
     .u-search .u-panel .u-panel-collapse.collapsing {
       width: 100%; }
 
-.demo1 {
-  font-size: 14px; }
-  .demo1 .u-form-item {
-    min-height: auto !important; }
-  .demo1 .u-label {
-    display: inline;
-    padding-right: 12px; }
-  .demo1 .u-form-control {
-    width: auto; }
-  .demo1 .error {
-    font-size: 12px;
-    color: red;
-    margin-left: 10px; }
 
-.demo2 {
-  font-size: 14px; }
-  .demo2 .u-label {
-    display: inline-block;
-    min-width: 80px;
-    text-align: right;
-    padding-right: 12px; }
-  .demo2 .u-form-control {
-    width: auto; }
-  .demo2 .error {
-    font-size: 12px;
-    color: red;
-    margin-left: 10px; }
-  .demo2 .submit {
-    padding-left: 90px; }
-  .demo2 .submit .login {
-    margin-left: 10px; }
-  .demo2 .u-form-item {
-    min-height: auto !important; }
 
-.demo3 {
-  font-size: 14px; }
-  .demo3 .u-label {
-    display: inline-block;
-    min-width: 105px;
-    text-align: right;
-    padding-right: 12px; }
-  .demo3 .u-form-control {
-    width: auto;
-    min-width: 300px; }
-  .demo3 .error {
-    font-size: 12px;
-    color: red;
-    margin-left: 10px; }
-  .demo3 .submit {
-    padding-left: 110px; }
-  .demo3 .submit .login {
-    margin-left: 10px; }
-  .demo3 .u-form-item {
-    min-height: auto !important; }
 
-.demo4 {
-  font-size: 14px; }
-  .demo4 .u-label {
-    display: inline-block;
-    min-width: 100px;
-    text-align: right;
-    padding-right: 12px; }
-  .demo4 .u-form-control {
-    width: auto;
-    min-width: 380px; }
-  .demo4 .error {
-    font-size: 12px;
-    color: red;
-    margin-left: 10px; }
-  .demo4 .submit {
-    padding-left: 110px; }
-  .demo4 .submit .login {
-    margin-left: 10px; }
-  .demo4 .u-select {
-    max-width: 380px; }
-  .demo4 textarea {
-    min-height: 100px;
-    resize: none; }
-  .demo4 .time > div {
-    display: inline-block; }
-  .demo4 .time .u-label {
-    position: relative;
-    bottom: 10px; }
-  .demo4 .time .error {
-    position: relative;
-    bottom: 10px; }
-  .demo4 .remarks .u-label {
-    position: relative;
-    bottom: 79px; }
-  .demo4 .u-city-select {
-    display: inline-block; }
-  .demo4 .u-city-select .province,
-  .demo4 .u-city-select .city,
-  .demo4 .u-city-select .area {
-    width: 120px; }
-  .demo4 .u-form-item {
-    min-height: auto !important; }
+.demo4 .u-form-item .u-form-control, .demo4 .u-form-item .datepicker-container {
+  min-width: 300px; }
 
-.demo5 .submit {
-  padding-left: 90px; }
 
-.demo5 .reset {
-  margin-right: 10px; }
-
-.demo5 .u-form-item {
-  min-width: 100%;
-  min-height: 43px !important;
-  padding: 0; }
-  .demo5 .u-form-item .u-col-md-3, .demo5 .u-form-item .u-col-md-9 {
-    padding: 0; }
-  .demo5 .u-form-item .u-label {
-    display: inline-block;
-    width: 100%;
-    text-align: right;
-    padding-right: 12px;
-    color: #212121; }
-  .demo5 .u-form-item .u-label + * {
-    min-width: 200px;
-    display: inline-block; }
-  .demo5 .u-form-item .datepicker-input-group .u-input-group-btn .uf-calendar {
-    padding: 0; }
-  .demo5 .u-form-item .u-switch {
-    min-width: auto; }
-  .demo5 .u-form-item .u-select {
-    width: 100%; }
-  .demo5 .u-form-item .u-form-control {
-    width: 100%; }
-  .demo5 .u-form-item .calendar-picker {
-    display: inline-block;
-    min-width: 200px;
-    width: 100%; }
-    .demo5 .u-form-item .calendar-picker input {
-      width: 100%;
-      text-align: center;
-      height: 26px;
-      line-height: 26px; }
-    .demo5 .u-form-item .calendar-picker .u-input-group-btn {
-      top: 0; }
-  .demo5 .u-form-item .u-radio .u-radio-label {
-    font-size: 14px;
-    margin-right: 24px; }
-
-.demo5 > .u-row .u-col-lg-4 {
-  padding: 0; }
-
-.demo6 .edit-panel {
-  background: #FFF;
-  padding: 15px 15px 15px 15px; }
-  .demo6 .edit-panel .reset-btn,
-  .demo6 .edit-panel .reset-btn:hover {
-    background: #fff;
-    border: 1px solid #1E7BE2;
-    color: #1E7BE2;
-    margin-right: 15px; }
-  .demo6 .edit-panel .submit-btn,
-  .demo6 .edit-panel .submit-btn:hover {
-    background: #1E7BE2;
-    color: #fff; }
-  .demo6 .edit-panel .btn-group {
-    text-align: right; }
-  .demo6 .edit-panel .u-form-item {
-    min-width: 100%;
-    margin-bottom: 10px;
-    min-height: 50px !important; }
-    .demo6 .edit-panel .u-form-item .error {
-      margin-left: 100px;
-      color: red;
-      display: block; }
-    .demo6 .edit-panel .u-form-item .u-label {
-      min-width: 100px;
-      text-align: right;
-      display: inline-block;
-      padding-right: 12px; }
-    .demo6 .edit-panel .u-form-item .u-label.time {
-      position: relative;
-      bottom: 10px; }
-    .demo6 .edit-panel .u-form-item .u-label + * {
-      min-width: 200px;
-      display: inline-block; }
-    .demo6 .edit-panel .u-form-item .mast {
-      width: 5px;
-      min-width: auto;
-      padding: 0;
-      color: red; }
-    .demo6 .edit-panel .u-form-item .datepicker-input-group .u-input-group-btn .uf-calendar {
-      padding: 0; }
-    .demo6 .edit-panel .u-form-item .u-switch {
-      min-width: auto; }
-    .demo6 .edit-panel .u-form-item .u-select {
-      width: auto; }
-    .demo6 .edit-panel .u-form-item .u-form-control {
-      width: auto; }
-    .demo6 .edit-panel .u-form-item .calendar-picker {
-      display: inline-block;
-      min-width: 200px;
-      width: auto; }
-      .demo6 .edit-panel .u-form-item .calendar-picker input {
-        width: 100%; }
-    .demo6 .edit-panel .u-form-item .u-form-control-close {
-      width: auto; }
-      .demo6 .edit-panel .u-form-item .u-form-control-close .u-form-control {
-        width: 100%; }
-  .demo6 .edit-panel .search-panel-btn {
-    text-align: right;
-    padding: 10px 0; }
-
-.demo6 .edit-panel-center {
-  text-align: center; }
-  .demo6 .edit-panel-center .u-form-item {
-    min-width: auto;
-    display: inline-block; }
-    .demo6 .edit-panel-center .u-form-item .error {
-      text-align: left; }
-
-.demo6 .edit-panel-all .u-form-item {
-  padding: 0; }
-  .demo6 .edit-panel-all .u-form-item .u-col-md-2, .demo6 .edit-panel-all .u-form-item .u-col-md-10 {
-    padding: 0; }
-  .demo6 .edit-panel-all .u-form-item .u-label {
-    width: 100%;
-    text-align: right;
-    height: 32px;
-    line-height: 32px; }
-  .demo6 .edit-panel-all .u-form-item .u-form-control {
-    width: 100%; }
-  .demo6 .edit-panel-all .u-form-item .calendar-picker {
-    width: 100%;
-    position: relative; }
-  .demo6 .edit-panel-all .u-form-item .u-select {
-    width: 100%; }
-  .demo6 .edit-panel-all .u-form-item .error {
-    margin-left: 0; }
-
-.demo6 .split {
-  height: 1px;
-  background: #e0e0e0; }
-
-.demo6 .edit-panel-textarea > div {
-  padding: 0;
-  margin-bottom: 10px;
-  min-height: 50px; }
-  .demo6 .edit-panel-textarea > div .u-label {
-    height: 32px;
-    line-height: 32px;
-    text-align: right;
-    display: block;
-    padding-right: 12px; }
-  .demo6 .edit-panel-textarea > div .error {
-    margin-left: 100px;
-    color: red;
-    display: block; }
-  .demo6 .edit-panel-textarea > div .mast {
-    padding: 0;
-    color: red; }
-  .demo6 .edit-panel-textarea > div textarea {
-    width: 100%;
-    resize: none;
-    min-height: 50px; }
-  .demo6 .edit-panel-textarea > div .calendar-picker,
-  .demo6 .edit-panel-textarea > div .u-select {
-    width: 100%; }
+.demo6 .remark textarea {
+  width: 100%; }
 
 /*# sourceMappingURL=demo.css.map */

@@ -1,7 +1,7 @@
 /**
  *
  * @title 多种布局示例
- * @description 必输项的 * ，在文字左侧或右侧均可 
+ * @description 
  */
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
@@ -71,8 +71,9 @@ const Demo6 = Form.createForm()(class Demo extends Component {
                     <Row className = 'edit-panel'>
                         <Col lg={4} md={6} xs={12}>
                             <FormItem>
-                                <Label>订单编号
+                                <Label>
                                     <Icon type="uf-mi" className='mast'></Icon>
+                                    订单编号
                                 </Label>
                                 <FormControl
                                     {
@@ -93,8 +94,9 @@ const Demo6 = Form.createForm()(class Demo extends Component {
                         </Col>
                         <Col lg={4} md={6} xs={12}>
                             <FormItem>
-                                <Label>供应商名称
+                                <Label>
                                     <Icon type="uf-mi" className='mast'></Icon>
+                                    供应商名称
                                 </Label>
                                 <FormControl
                                     {
@@ -116,7 +118,7 @@ const Demo6 = Form.createForm()(class Demo extends Component {
                         </Col>
                         <Col lg={4} md={6} xs={12}>
                             <FormItem>
-                                <Label >凭证名称</Label>
+                                <Label>凭证名称</Label>
                                 <FormControl
                                     {
                                         ...getFieldProps('voucherName1', {
@@ -247,8 +249,8 @@ const Demo6 = Form.createForm()(class Demo extends Component {
                     {/* 单列居中 */}
                     <h4>
                         单列居中
-                     </h4>
-                    <Row className = 'edit-panel edit-panel-center'>
+                    </h4>
+                    <Row className = 'text-algin-center'>
                         <Col md={12} >
                             <FormItem>
                                 <Label>
@@ -325,13 +327,10 @@ const Demo6 = Form.createForm()(class Demo extends Component {
                     <h4>
                     三列带textarea
                      </h4>
-                    <Row className = 'edit-panel edit-panel-textarea'>
-                            <Col md={1} xs={2}>
-                                <Label>订单编号
-                                    <Icon type="uf-mi" className='mast'></Icon>
-                                </Label>
-                            </Col>
-                            <Col md={3} xs={10}>
+                    <Row>
+                        <Col lg={4} md={6} xs={12}>
+                            <FormItem>
+                                <Label><Icon type="uf-mi" className='mast'></Icon>订单编号</Label>
                                 <FormControl
                                     {
                                     ...getFieldProps('orderCode4', {
@@ -347,14 +346,12 @@ const Demo6 = Form.createForm()(class Demo extends Component {
                                         getFieldError('orderCode4')
                                     }
                                 </span>
-                            </Col>
-                            <Col md={1} xs={2}>
-                                <Label>供应商
-                                    <Icon type="uf-mi" className='mast'></Icon>
-                                </Label>
-                            </Col>
-                            <Col md={3} xs={10}>
-                            <FormControl
+                            </FormItem>
+                        </Col>
+                        <Col lg={4} md={6} xs={12}>
+                            <FormItem>
+                                <Label><Icon type="uf-mi" className='mast'></Icon>供应商</Label>
+                                <FormControl
                                 {
                                     ...getFieldProps('supplierName4', {
                                         initialValue: '',
@@ -369,12 +366,12 @@ const Demo6 = Form.createForm()(class Demo extends Component {
                                         getFieldError('supplierName4')
                                     }
                                 </span>
-                            </Col>
-                            <Col md={1} xs={2}>
-                                <Label >凭证名称</Label>
-                            </Col>
-                            <Col md={3} xs={10}>
-                            <FormControl
+                            </FormItem>
+                        </Col>
+                        <Col lg={4} md={6} xs={12}>
+                            <FormItem>
+                                <Label><Icon type="uf-mi" className='mast'></Icon>凭证名称</Label>
+                                <FormControl
                                     {
                                         ...getFieldProps('voucherName4', {
                                             initialValue: '',
@@ -389,23 +386,21 @@ const Demo6 = Form.createForm()(class Demo extends Component {
                                         getFieldError('voucherName4')
                                     }
                                 </span>
-                            </Col>
-                            <Col md={1} xs={2}>
-                                <Label className='time'>备注</Label>
-                            </Col>
-                            <Col md={11} xs={10}>
-                            <textarea className='u-form-control'
-                                {
-                                    ...getFieldProps('mark', {
-                                        initialValue: '',
-                                    })
-                                }
-                                />
-                            </Col>
-
-                       
+                            </FormItem>
+                        </Col>
                     </Row>
-                    
+                    <Row>
+                        <Col md={12} xs={12}>
+                            <FormItem className="remark flex">
+                                <Label className='line-height-32'>备注</Label>
+                                <FormControl componentClass='textarea'
+                                    {
+                                    ...getFieldProps('mark', {}
+                                    ) }
+                                />
+                            </FormItem>
+                        </Col>
+                    </Row>
                 </Form>
             </div>
         )

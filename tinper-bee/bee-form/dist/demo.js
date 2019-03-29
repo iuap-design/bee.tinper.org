@@ -76,7 +76,7 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
 	
-	var Demo1 = __webpack_require__(157);var Demo2 = __webpack_require__(352);var Demo3 = __webpack_require__(353);var Demo4 = __webpack_require__(359);var Demo5 = __webpack_require__(633);var Demo6 = __webpack_require__(636);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 单个input校验", "code": '/**\r\n *\r\n * @title \u5355\u4E2Ainput\u6821\u9A8C\r\n * @description \u4F7F\u7528FormItem\r\n */\r\nimport React, { Component } from \'react\';\r\nimport { Form, Label, FormControl } from \'tinper-bee\';\r\n\n\nconst FormItem = Form.FormItem;\r\n\r\n\r\nconst Demo1 = Form.createForm()(class Demo extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n    }\r\n    render() {\r\n        const self=this;\r\n        const { getFieldProps, getFieldError } = this.props.form;\r\n        return (\r\n                <FormItem className=\'demo1\'>\r\n                    <Label>\u59D3\u540D</Label>\r\n                    <FormControl placeholder=\'\u8BF7\u8F93\u5165\u59D3\u540D\'\r\n                     {...getFieldProps(\'name\', {\r\n                        validateTrigger: \'onBlur\',\r\n                        rules: [{\r\n                            required: true, message: \'\u8BF7\u8F93\u5165\u59D3\u540D\'\r\n                        },{\r\n                            max:5,message:\'\u6700\u5927\u957F\u5EA6\u4E3A10\'\r\n                        },{\r\n                            pattern: /[\\u4e00-\\u9fa5]/, message: \'\u8BF7\u8F93\u5165\u4E2D\u6587\u5B57\u7B26\',\r\n                        }],\r\n                    }) } />\r\n                    <span className=\'error\'>\r\n                        {getFieldError(\'name\')}\r\n                    </span>   \r\n                </FormItem>\r\n        )\r\n    }\r\n})\r\n\r\n', "desc": " 使用FormItem", "scss_code": ".demo1 {\r\n    font-size: 14px;\r\n    .u-form-item {\r\n        min-height: auto!important;\r\n    }\r\n    .u-label {\r\n        display: inline;\r\n        padding-right: 12px;\r\n    }\r\n    .u-form-control {\r\n        width: auto;\r\n    }\r\n    .error {\r\n        font-size: 12px;\r\n        color: red;\r\n        margin-left: 10px;\r\n    }\r\n}" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 基本form校验", "code": "/**\r\n *\r\n * @title 基本form校验\r\n * @description 登录示例\r\n */\r\nimport React, { Component } from 'react';\r\nimport ReactDOM from 'react-dom';\r\nimport { Form, Button, Label, FormControl } from 'tinper-bee';\r\n\n\n\nconst FormItem = Form.FormItem;\r\n\r\nconst Demo2 = Form.createForm()(class Demo2 extends Component {\r\n    submit = (e) => {\r\n        e.preventDefault();\r\n        this.props.form.validateFields((err, values) => {\r\n            if (err) {\r\n                console.log('校验失败', values);\r\n            } else {\r\n                console.log('提交成功', values)\r\n            }\r\n        });\r\n    }\r\n    render() {\r\n        const { getFieldProps, getFieldError } = this.props.form;\r\n        return (\r\n            <div className=\"demo2\">\r\n                <Form >\r\n                    <FormItem>\r\n                        <Label>用户名</Label>\r\n                        <FormControl placeholder=\"请输入用户名\"\r\n                            {...getFieldProps('username', {\r\n                                validateTrigger: 'onBlur',\r\n                                rules: [{\r\n                                    required: true, message: '请输入用户名',\r\n                                }],\r\n                            }) }\r\n                        />\r\n                        <span className='error'>\r\n                            {getFieldError('username')}\r\n                        </span>\r\n                    </FormItem>\r\n                    <FormItem>\r\n                        <Label>密码</Label>\r\n                        <FormControl placeholder=\"请输入密码\" type='password'\r\n                            {...getFieldProps('password', {\r\n                                validateTrigger: 'onBlur',\r\n                                rules: [{\r\n                                    required: true, message: '请输入密码',\r\n                                }],\r\n                            }) }\r\n                        />\r\n                        <span className='error'>\r\n                            {getFieldError('password')}\r\n                        </span>\r\n                    </FormItem>\r\n                    <div className='submit'>\r\n                        <Button shape=\"border\" className=\"reset\">取消</Button>\r\n                        <Button colors=\"primary\" className=\"login\" onClick={this.submit}>登录</Button>\r\n                    </div>\r\n                </Form>\r\n            </div>\r\n        )\r\n    }\r\n})\r\n", "desc": " 登录示例", "scss_code": ".demo2 {\r\n    font-size: 14px;\r\n    .u-label {\r\n        display: inline-block;\r\n        min-width: 80px;\r\n        text-align: right;\r\n        padding-right: 12px;\r\n    }\r\n    .u-form-control {\r\n        width: auto;\r\n    }\r\n    .error {\r\n        font-size: 12px;\r\n        color: red;\r\n        margin-left: 10px;\r\n    }\r\n    .submit {\r\n        padding-left: 90px;\r\n    }\r\n    .submit .login {\r\n        margin-left: 10px;\r\n    }\r\n    .u-form-item {\r\n        min-height: auto!important;\r\n    }\r\n}" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 基本form校验", "code": "/**\r\n *\r\n * @title 基本form校验\r\n * @description 注册示例\r\n */\r\nimport React, { Component } from 'react';\r\nimport { Form, Label, Checkbox, Button, FormControl } from 'tinper-bee';\r\nconst FormItem = Form.FormItem;\r\n\n\n\n\n\r\nconst Demo3 = Form.createForm()( class Demo extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            checkbox: false\r\n        }\r\n    }\r\n    submit = (e) => {\r\n        e.preventDefault();\r\n        this.props.form.validateFields((err, values) => {\r\n            if (err) {\r\n                console.log('校验失败', values);\r\n            } else {\r\n                console.log('提交成功', values)\r\n            }\r\n        });\r\n    }\r\n    handleConfirmPassword = (rule, value, callback) => {\r\n        const { getFieldValue } = this.props.form;\r\n        if (value && value !== getFieldValue('password')) {\r\n            callback('两次输入不一致！')\r\n        }\r\n        callback();\r\n    }\r\n    render() {\r\n        const self = this;\r\n        const { getFieldProps, getFieldError } = this.props.form;\r\n        return (\r\n            <div className=\"demo3\">\r\n                <Form>\r\n                    <FormItem>\r\n                        <Label>用户名</Label>\r\n                        <FormControl placeholder=\"请输入用户名(包含数字和字母，8-15位)\"\r\n                            {...getFieldProps('username', {\r\n                                validateTrigger: 'onBlur',\r\n                                rules: [{\r\n                                    required: true, message: '请输入用户名',\r\n                                }, {\r\n                                    pattern: /^(?!\\d+$)(?![a-zA-Z]+$)[a-zA-Z0-9]{8,15}$/, message: '用户名格式错误',\r\n                                }],\r\n                            }) }\r\n                        />\r\n                        <span className='error'>\r\n                            {getFieldError('username')}\r\n                        </span>\r\n                    </FormItem>\r\n\r\n                    <FormItem>\r\n                        <Label>密码</Label>\r\n                        <FormControl placeholder=\"请输入密码\" type='password'\r\n                            {...getFieldProps('password', {\r\n                                validateTrigger: 'onBlur',\r\n                                rules: [{\r\n                                    required: true, message: '请输入密码',\r\n                                }],\r\n                            }) }\r\n                        />\r\n                        <span className='error'>\r\n                            {getFieldError('password')}\r\n                        </span>\r\n                    </FormItem>\r\n\r\n                    <FormItem>\r\n                        <Label>再次输入密码</Label>\r\n                        <FormControl placeholder=\"请输入密码\" type='password'\r\n                            {...getFieldProps('password2', {\r\n                                validateTrigger: 'onBlur',\r\n                                rules: [{\r\n                                    required: true, message: '请输入密码',\r\n                                }, {\r\n                                    validator: this.handleConfirmPassword\r\n                                }],\r\n                            }) }\r\n                        />\r\n                        <span className='error'>\r\n                            {getFieldError('password2')}\r\n                        </span>\r\n                    </FormItem>\r\n\r\n                    <FormItem>\r\n                        <Label>邮箱</Label>\r\n                        <FormControl placeholder=\"请输入邮箱\"\r\n                            {...getFieldProps('email', {\r\n                                validateTrigger: 'onBlur',\r\n                                rules: [{\r\n                                    required: true, message: '请输入邮箱',\r\n                                }, {\r\n                                    type: 'email', message: '邮箱格式不正确'\r\n                                }],\r\n                            }) }\r\n                        />\r\n                        <span className='error'>\r\n                            {getFieldError('email')}\r\n                        </span>\r\n                    </FormItem>\r\n                    <FormItem>\r\n                        <Label>手机号</Label>\r\n\r\n                        <FormControl placeholder=\"请输入手机号\"\r\n                            {...getFieldProps('phone', {\r\n                                validateTrigger: 'onBlur',\r\n                                rules: [{\r\n                                    required: true, message: '请输入手机号',\r\n                                }, {\r\n                                    pattern: /^\\d{11}$/, message: '手机号格式不正确'\r\n                                }],\r\n                            }) }\r\n                        />\r\n\r\n                        <span className='error'>\r\n                            {getFieldError('phone')}\r\n                        </span>\r\n                    </FormItem>\r\n\r\n                    <FormItem style={{'paddingLeft':'110px'}}>\r\n                        <Checkbox\r\n                            defaultChecked={this.state.checkbox}\r\n                            {\r\n                            ...getFieldProps('checkbox', {\r\n                                initialValue: false,\r\n                            }\r\n                            ) }\r\n                        >\r\n                        我已经阅读并同意相关条款\r\n                        </Checkbox>\r\n                    </FormItem>\r\n                    <div className='submit'>\r\n                        <Button shape=\"border\" className=\"reset\">取消</Button>\r\n                        <Button colors=\"primary\" className=\"login\" onClick={this.submit}>注册</Button>\r\n                    </div>\r\n                </Form>\r\n            </div>\r\n        )\r\n    }\r\n})\r\n", "desc": " 注册示例", "scss_code": ".demo3 {\r\n    font-size: 14px;\r\n    .u-label {\r\n        display: inline-block;\r\n        min-width: 105px;\r\n        text-align: right;\r\n        padding-right: 12px;\r\n    }\r\n    .u-form-control {\r\n        width: auto;\r\n        min-width: 300px;\r\n    }\r\n    .error {\r\n        font-size: 12px;\r\n        color: red;\r\n        margin-left: 10px;\r\n    }\r\n    .submit {\r\n        padding-left: 110px;\r\n    }\r\n    .submit .login {\r\n        margin-left: 10px;\r\n    }\r\n    .u-form-item {\r\n        min-height: auto!important;\r\n    }\r\n}" }, { "example": _react2['default'].createElement(Demo4, null), "title": " 表单校验", "code": "/**\r\n *\r\n * @title 表单校验\r\n * @description 用户信息录入实例\r\n */\r\nimport React, { Component } from 'react';\r\nimport ReactDOM from 'react-dom';\r\nimport { Form, Button, Label, CitySelect, Rate, InputNumber, Slider, Switch, Checkbox, DatePicker, Radio, Select, FormControl } from 'tinper-bee';\r\n\n\n\n\n\n\n\n\n\n\n\n\nconst FormItem = Form.FormItem;\r\nconst Option = Select.Option;\r\n\r\nconst Demo4 = Form.createForm()(class Demo extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            selectedValue: 'man',\r\n        };\r\n    }\r\n    submit = (e) => {\r\n        this.props.form.validateFields((err, values) => {\r\n            if (err) {\r\n                console.log('校验失败', values);\r\n            } else {\r\n                console.log('提交成功', values)\r\n            }\r\n        });\r\n    }\r\n    render() {\r\n        const { getFieldProps, getFieldError } = this.props.form;\r\n        const self = this;\r\n        return (\r\n            <div>\r\n                <Form className='demo4'>\r\n                    <FormItem>\r\n                        <Label>姓名</Label>\r\n                        <FormControl placeholder=\"请输入姓名\"\r\n                            {...getFieldProps('name', {\r\n                                validateTrigger: 'onBlur',\r\n                                rules: [{\r\n                                    required: true, message: '请输入姓名',\r\n                                }],\r\n                            }) }\r\n                        />\r\n                        <span className='error'>\r\n                            {getFieldError('name')}\r\n                        </span>\r\n                    </FormItem>\r\n                    <FormItem>\r\n                        <Label>身份证号</Label>\r\n                        <FormControl placeholder=\"请输入身份证号\"\r\n                            {...getFieldProps('id', {\r\n                                validateTrigger: 'onBlur',\r\n                                rules: [{\r\n                                    required: true, message: '请输入身份证号',\r\n                                },{\r\n                                    pattern: /^[1-9][0-9]{5}([1][9][0-9]{2}|[2][0][0|1][0-9])([0][1-9]|[1][0|1|2])([0][1-9]|[1|2][0-9]|[3][0|1])[0-9]{3}([0-9]|[X])$/, message: '身份证号格式不正确'\r\n                                }],\r\n                            }) }\r\n                        />\r\n                        <span className='error'>\r\n                            {getFieldError('id')}\r\n                        </span>\r\n                    </FormItem>\r\n                    <FormItem className='time'>\r\n                        <Label>出生日期</Label>\r\n                        <DatePicker\r\n                            {\r\n                            ...getFieldProps('time', {\r\n                                validateTrigger: 'onBlur',\r\n                                rules: [{\r\n                                    required: true, message: '请选择出生日期',\r\n                                }, {\r\n                                    type: 'date', message: '日期格式不正确'\r\n                                }],\r\n                            }\r\n                            ) }\r\n                            placeholder={'请选择出生日期'}\r\n                        />\r\n                        <span className='error'>\r\n                            {getFieldError('time')}\r\n                        </span>\r\n                    </FormItem>\r\n                    <FormItem>\r\n                        <Label>年龄</Label>\r\n                        <FormControl placeholder=\"请输入年龄\"\r\n                            {...getFieldProps('age', {\r\n                                validateTrigger: 'onBlur',\r\n                                rules: [{\r\n                                    required: true, message: '请输入年龄',\r\n                                }],\r\n                            }) }\r\n                        />\r\n                        <span className='error'>\r\n                            {getFieldError('age')}\r\n                        </span>\r\n                    </FormItem>\r\n                     <FormItem>\r\n                        <Label>性别</Label>\r\n                        <Radio.RadioGroup\r\n                            selectedValue={this.state.selectedValue}\r\n                            {\r\n                            ...getFieldProps('sex', {\r\n                                initialValue: 'man',\r\n                                onChange(value) {\r\n                                    self.setState({ selectedValue: value });\r\n                                },\r\n                                rules: [{ required: true }]\r\n                            }\r\n                            ) }\r\n                        >\r\n                            <Radio value=\"man\" >男</Radio>\r\n                            <Radio value=\"woman\" >女</Radio>\r\n                        </Radio.RadioGroup>\r\n                    </FormItem>\r\n                    <FormItem>\r\n                        <Label>学历</Label>\r\n                        <Select\r\n                            {\r\n                            ...getFieldProps('education', {\r\n                                initialValue: '',\r\n                                rules: [{ required: true, message: '请选择学历' }]\r\n                            }\r\n                            ) }\r\n                        >\r\n                            <Option value=\"\">请选择</Option>\r\n                            <Option value=\"nothing\">无</Option>\r\n                            <Option value=\"middle\">初中</Option>\r\n                            <Option value=\"senior\">高中</Option>\r\n                            <Option value=\"college1\">专科</Option>\r\n                            <Option value=\"college2\">本科</Option>\r\n                            <Option value=\"graduate\">研究生及以上</Option>\r\n                            <Option value=\"other\">其它</Option>\r\n                        </Select>\r\n                        <span className='error'>\r\n                            {getFieldError('education')}\r\n                        </span>\r\n                    </FormItem>\r\n                    <FormItem>\r\n                        <Label>保密等级</Label>\r\n                        <Rate\r\n                            {\r\n                            ...getFieldProps('rate', {\r\n                                initialValue: 0,\r\n                                rules: [{ required: true }]\r\n                            }\r\n                            ) }\r\n                        />\r\n                    </FormItem>\r\n                    <FormItem className=\"remarks\">\r\n                        <Label>备注</Label>\r\n                        <FormControl componentClass='textarea'\r\n                            {\r\n                            ...getFieldProps('remark', {}\r\n                            ) }\r\n                        />\r\n                    </FormItem>  \r\n                    \r\n\r\n\r\n                    <div className='submit'>\r\n                        <Button shape=\"border\" className=\"reset\">取消</Button>\r\n                        <Button colors=\"primary\" className=\"login\" onClick={this.submit}>提交</Button>\r\n                    </div>\r\n                </Form>\r\n            </div>\r\n        )\r\n    }\r\n})\r\n", "desc": " 用户信息录入实例", "scss_code": ".demo4 {\r\n    font-size: 14px;\r\n    .u-label {\r\n        display: inline-block;\r\n        min-width: 100px;\r\n        text-align: right;\r\n        padding-right: 12px;\r\n    }\r\n    .u-form-control {\r\n        width: auto;\r\n        min-width: 380px;\r\n    }\r\n    .error {\r\n        font-size: 12px;\r\n        color: red;\r\n        margin-left: 10px;\r\n    }\r\n    .submit {\r\n        padding-left: 110px;\r\n    }\r\n    .submit .login {\r\n        margin-left: 10px;\r\n    }\r\n    .u-select {\r\n        max-width: 380px;\r\n    }\r\n    textarea {\r\n        min-height: 100px;\r\n        resize: none;\r\n    }\r\n    .time>div {\r\n        display: inline-block;\r\n    }\r\n    .time .u-label {\r\n        position: relative;\r\n        bottom: 10px;\r\n    }\r\n    .time .error{\r\n        position: relative;\r\n        bottom: 10px;\r\n    }\r\n    .remarks .u-label{\r\n        position: relative;\r\n        bottom: 79px;\r\n    }\r\n    .u-city-select {\r\n        display: inline-block;\r\n    }\r\n    .u-city-select .province,\r\n    .u-city-select .city,\r\n    .u-city-select .area {\r\n        width: 120px;\r\n    }\r\n    .u-form-item {\r\n        min-height: auto!important;\r\n    }\r\n}" }, { "example": _react2['default'].createElement(Demo5, null), "title": " 多种表单元素示例", "code": "/**\r\n *\r\n * @title 多种表单元素示例\r\n * @description 查询面板\r\n */\r\nimport React, { Component } from 'react';\r\nimport ReactDOM from 'react-dom';\r\nimport { Form, SearchPanel, Button, Label, Switch, Checkbox, DatePicker, Radio, Select,  Col , Row , FormControl } from 'tinper-bee';\r\n\n\n\n\n\n\n\n\n\n\nimport moment from \"moment/moment\";\r\nconst FormItem = Form.FormItem;\r\nconst Option = Select.Option;\r\nconst { RangePicker } = DatePicker;\r\n\r\nconst Demo5 = Form.createForm()(class Demo extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            expanded: true,\r\n            approvalState: '',\r\n            closeState: '',\r\n            confirmState: '',\r\n            voucherDate: [],\r\n            orderTypes:[\r\n                {\r\n                    'code':'001',\r\n                    'name':'类型1'\r\n                },\r\n                {\r\n                    'code':'002',\r\n                    'name':'类型2'\r\n                },\r\n                {\r\n                    'code':'003',\r\n                    'name':'类型3'\r\n                },\r\n            ]\r\n        };\r\n    }\r\n    submit = (e) => {\r\n        this.props.form.validateFields((err, values) => {\r\n            if (err) {\r\n                console.log('校验失败', values);\r\n            } else {\r\n                console.log('提交成功', values)\r\n            }\r\n        });\r\n    }\r\n    reset = () =>{\r\n        this.props.form.resetFields();\r\n        //部分表单元素无法通过this.props.form.resetFields重置，需要手动重置，如下\r\n        this.setState({\r\n            approvalState: '',\r\n            closeState: '',\r\n            confirmState: '',\r\n            voucherDate: []\r\n        })\r\n    }\r\n    onChange = () => {\r\n        this.setState({expanded: !this.state.expanded})\r\n    }\r\n    render() {\r\n        const { getFieldProps, getFieldError } = this.props.form;\r\n        const self = this;\r\n        return (\r\n            <div>\r\n                <SearchPanel\r\n                title='基础示例'\r\n                onSearch={this.submit}\r\n                onReset={this.reset}\r\n                expanded={this.state.expanded}\r\n                onChange={this.onChange}\r\n                >\r\n                    <Form className='demo5'>\r\n                        <Row>\r\n                            <Col lg={4} md={6} xs={12}>\r\n                                <FormItem>\r\n                                    <Col md={3} xs={2}>\r\n                                        <Label>订单编号</Label>\r\n                                    </Col>\r\n                                    <Col md={9} xs={10}>\r\n                                        <FormControl size=\"sm\"\r\n                                            {\r\n                                            ...getFieldProps('orderCode', {\r\n                                                initialValue: '',\r\n                                            })\r\n                                            }\r\n                                        />\r\n                                    </Col>\r\n                                </FormItem>\r\n                            </Col>\r\n                            <Col  lg={4} md={6} xs={12}>\r\n                                <FormItem>\r\n                                    <Col md={3} xs={2}>\r\n                                        <Label>供应商</Label>\r\n                                    </Col>\r\n                                    <Col md={9} xs={10}>\r\n                                        <FormControl size=\"sm\"\r\n                                            {\r\n                                            ...getFieldProps('supplierName', {\r\n                                                initialValue: '',\r\n                                            })\r\n                                            }\r\n                                        />\r\n                                    </Col>\r\n                                </FormItem>\r\n                            </Col>\r\n                            \r\n                            <Col  lg={4} md={6} xs={12}>\r\n                                <FormItem>\r\n                                    <Col md={3} xs={2}>\r\n                                        <Label>订单类型</Label>\r\n                                    </Col>\r\n                                    <Col md={9} xs={10}>\r\n                                        <Select size=\"sm\"\r\n                                            {\r\n                                            ...getFieldProps('type', {\r\n                                                initialValue: '',\r\n                                            }\r\n                                            )}>\r\n                                            <Option value=\"\">请选择</Option>\r\n                                            {\r\n                                                self.state.orderTypes.map((item, index) => {\r\n                                                    return (\r\n                                                        <Option key={index} value={item.code}>{item.name}</Option>\r\n                                                    )\r\n                                                })\r\n                                            }\r\n                                        </Select>\r\n                                    </Col>\r\n                                </FormItem>\r\n                            </Col>\r\n                            <Col  lg={4} md={6} xs={12}>\r\n                                <FormItem>\r\n                                    <Col md={3} xs={2}>\r\n                                        <Label>采购组</Label>\r\n                                    </Col>\r\n                                    <Col md={9} xs={10}>\r\n                                        <FormControl size=\"sm\"\r\n                                            {\r\n                                            ...getFieldProps('purchasingGroup', {\r\n                                                initialValue: '',\r\n                                            })\r\n                                            }\r\n                                        />\r\n                                    </Col>\r\n                                </FormItem>\r\n                            </Col>\r\n                            <Col  lg={4} md={6} xs={12}>\r\n                                <FormItem>\r\n                                    <Col md={3} xs={2}>\r\n                                        <Label>审批状态</Label>\r\n                                    </Col>\r\n                                    <Col md={9} xs={10}>\r\n                                        <Radio.RadioGroup\r\n                                            selectedValue={this.state.approvalState}\r\n                                            {\r\n                                            ...getFieldProps('approvalState', {\r\n                                                initialValue: '1',\r\n                                                onChange(value) {\r\n                                                    self.setState({ approvalState: value });\r\n                                                },\r\n                                            }\r\n                                            )}\r\n                                        >\r\n                                            <Radio value=\"0\" >未审批</Radio>\r\n                                            <Radio value=\"1\" >已审批</Radio>\r\n                                        </Radio.RadioGroup>\r\n                                    </Col>\r\n                                </FormItem>\r\n                            </Col>\r\n                            <Col  lg={4} md={6} xs={12}>\r\n                                <FormItem>\r\n                                    <Col md={3} xs={2}>\r\n                                        <Label>关闭状态</Label>\r\n                                    </Col>\r\n                                    <Col md={9} xs={10}>\r\n                                        <Radio.RadioGroup\r\n                                            selectedValue={this.state.closeState}\r\n                                            {\r\n                                            ...getFieldProps('closeState', {\r\n                                                initialValue: '1',\r\n                                                onChange(value) {\r\n                                                    self.setState({ closeState: value });\r\n                                                },\r\n                                            }\r\n                                            )}\r\n                                        >\r\n                                            <Radio value=\"0\" >未关闭</Radio>\r\n                                            <Radio value=\"1\" >已关闭</Radio>\r\n                                        </Radio.RadioGroup>\r\n                                    </Col>\r\n                                </FormItem>\r\n                            </Col>\r\n                            <Col  lg={4} md={6} xs={12}>\r\n                                <FormItem>\r\n                                    <Col md={3} xs={2}>\r\n                                        <Label>确认状态</Label>\r\n                                    </Col>\r\n                                    <Col md={9} xs={10}>\r\n                                        <Radio.RadioGroup\r\n                                            selectedValue={this.state.confirmState}\r\n                                            {\r\n                                            ...getFieldProps('confirmState', {\r\n                                                initialValue: '1',\r\n                                                onChange(value) {\r\n                                                    self.setState({ confirmState: value });\r\n                                                },\r\n                                            }\r\n                                            )}\r\n                                        >\r\n                                            <Radio value=\"0\" >未确认</Radio>\r\n                                            <Radio value=\"1\" >已确认</Radio>\r\n                                        </Radio.RadioGroup>\r\n                                    </Col>\r\n                                </FormItem>\r\n                            </Col>\r\n                        </Row>\r\n                    </Form>\r\n                </SearchPanel>\r\n            </div>\r\n        )\r\n    }\r\n})\r\n", "desc": " 查询面板", "scss_code": ".demo5 {\r\n    .submit{\r\n        padding-left:90px\r\n    }\r\n    .reset{\r\n        margin-right:10px;\r\n    }\r\n    .u-form-item {\r\n        min-width: 100%;\r\n        min-height: 43px!important;\r\n        padding: 0;\r\n        .u-col-md-3,.u-col-md-9{\r\n            padding: 0;\r\n        }\r\n        .u-label{\r\n            display: inline-block;\r\n            width: 100%;\r\n            text-align:right;\r\n            padding-right: 12px;\r\n            color: #212121;\r\n        }\r\n        .u-label + *{\r\n            min-width: 200px;\r\n            display: inline-block;\r\n        }\r\n        .datepicker-input-group{\r\n            .u-input-group-btn{\r\n                .uf-calendar{\r\n                    padding: 0;\r\n                }\r\n            }\r\n        }\r\n        .u-switch{\r\n            min-width: auto;\r\n        }\r\n        .u-select{\r\n            width: 100%;\r\n        }\r\n        .u-form-control{\r\n            width: 100%;\r\n        }\r\n        .calendar-picker{\r\n            display: inline-block;\r\n            min-width:200px;\r\n            width: 100%;\r\n            input{\r\n                width: 100%;\r\n                text-align: center;\r\n                height: 26px;\r\n                line-height: 26px;\r\n            }\r\n            .u-input-group-btn{\r\n                top: 0;\r\n            }\r\n        }\r\n        .u-radio .u-radio-label{\r\n            font-size:14px;\r\n            margin-right: 24px;\r\n        }\r\n    }\r\n    \r\n}\r\n.demo5 >.u-row .u-col-lg-4{\r\n    padding: 0;\r\n}\r\n" }, { "example": _react2['default'].createElement(Demo6, null), "title": " 多种布局示例", "code": "/**\r\n *\r\n * @title 多种布局示例\r\n * @description 必输项的 * ，在文字左侧或右侧均可 \r\n */\r\nimport React, { Component } from 'react';\r\nimport ReactDOM from 'react-dom';\r\nimport { Form, Icon, Button, Label, Switch, Checkbox, DatePicker, Radio, Select,  Col , Row , FormControl } from 'tinper-bee';\r\n\n\n\n\n\n\n\n\n\n\nimport moment from \"moment/moment\";\r\nconst FormItem = Form.FormItem;\r\nconst Option = Select.Option;\r\nconst { RangePicker } = DatePicker;\r\n\r\nconst Demo6 = Form.createForm()(class Demo extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            approvalState: '',\r\n            closeState: '',\r\n            confirmState: '',\r\n            voucherName: [],\r\n            orderTypes:[\r\n                {\r\n                    'code':'001',\r\n                    'name':'类型1'\r\n                },\r\n                {\r\n                    'code':'002',\r\n                    'name':'类型2'\r\n                },\r\n                {\r\n                    'code':'003',\r\n                    'name':'类型3'\r\n                },\r\n            ]\r\n        };\r\n    }\r\n    render() {\r\n        const { getFieldProps, getFieldError } = this.props.form;\r\n        const self = this;\r\n        const orderTypes= [{\r\n            \"code\":\"D001\",\r\n            \"name\":\"D001\"\r\n          },{\r\n            \"code\":\"D002\",\r\n            \"name\":\"D002\"\r\n          },{\r\n            \"code\":\"D003\",\r\n            \"name\":\"D003\"\r\n          },{\r\n            \"code\":\"D004\",\r\n            \"name\":\"D004\"\r\n          }];\r\n        return (\r\n            <div>\r\n                <Form className='demo6'>\r\n                    {/* 普通栅格布局 */}\r\n                    <h4>\r\n                        普通栅格布局\r\n                    </h4>\r\n                    <Row className = 'edit-panel'>\r\n                        <Col lg={4} md={6} xs={12}>\r\n                            <FormItem>\r\n                                <Label>订单编号\r\n                                    <Icon type=\"uf-mi\" className='mast'></Icon>\r\n                                </Label>\r\n                                <FormControl\r\n                                    {\r\n                                    ...getFieldProps('orderCode1', {\r\n                                        initialValue: '',\r\n                                        rules: [{\r\n                                            required: true, message: '请输入订单编号',\r\n                                        }],\r\n                                    })\r\n                                    }\r\n                                />\r\n                                <span className='error'>\r\n                                    {\r\n                                        getFieldError('orderCode1')\r\n                                    }\r\n                                </span>\r\n                            </FormItem>\r\n                        </Col>\r\n                        <Col lg={4} md={6} xs={12}>\r\n                            <FormItem>\r\n                                <Label>供应商名称\r\n                                    <Icon type=\"uf-mi\" className='mast'></Icon>\r\n                                </Label>\r\n                                <FormControl\r\n                                    {\r\n                                        ...getFieldProps('supplierName1', {\r\n                                            initialValue: '',\r\n                                            rules: [{\r\n                                                required: true, message: '请输入供应商名称',\r\n                                            }],\r\n                                        })\r\n                                    }\r\n                                />\r\n                                <span className='error'>\r\n                                    {\r\n                                        getFieldError('supplierName1')\r\n                                    }\r\n                                </span>\r\n                            </FormItem>\r\n                            \r\n                        </Col>\r\n                        <Col lg={4} md={6} xs={12}>\r\n                            <FormItem>\r\n                                <Label >凭证名称</Label>\r\n                                <FormControl\r\n                                    {\r\n                                        ...getFieldProps('voucherName1', {\r\n                                            initialValue: '',\r\n                                            rules: [{\r\n                                                required: true, message: '请输入凭证名称',\r\n                                            }],\r\n                                        })\r\n                                    }\r\n                                />\r\n                                <span className='error'>\r\n                                    {\r\n                                        getFieldError('voucherName1')\r\n                                    }\r\n                                </span>\r\n                            </FormItem>\r\n                        </Col>\r\n                    </Row>\r\n\r\n                    <div className='split'></div>\r\n                    \r\n                    \r\n                     {/* 单列铺满 */}\r\n                     <h4>\r\n                        单列铺满\r\n                     </h4>\r\n                     <Row className = 'edit-panel edit-panel-all'>\r\n                        <FormItem>\r\n                            <Col md={2} xs={2}>\r\n                                <Label>\r\n                                    <Icon type=\"uf-mi\" className='mast'></Icon>\r\n                                    订单编号\r\n                                </Label>\r\n                            </Col>\r\n                            <Col md={10} xs={10}>\r\n                                <FormControl\r\n                                    {\r\n                                    ...getFieldProps('orderCode2', {\r\n                                        initialValue: '',\r\n                                        rules: [{\r\n                                            required: true, message: '请输入订单编号',\r\n                                        }],\r\n                                    })\r\n                                    }\r\n                                />\r\n                                <span className='error'>\r\n                                    {\r\n                                        getFieldError('orderCode2')\r\n                                    }\r\n                                </span>\r\n                            </Col>\r\n                        </FormItem>\r\n\r\n                        <FormItem>\r\n                            <Col md={2} xs={2}>\r\n                                <Label>\r\n                                    <Icon type=\"uf-mi\" className='mast'></Icon>\r\n                                    供应商名称\r\n                                </Label>\r\n                            </Col>\r\n                            <Col md={10} xs={10}>\r\n                                <FormControl\r\n                                    {\r\n                                        ...getFieldProps('supplierName2', {\r\n                                            initialValue: '',\r\n                                            rules: [{\r\n                                                required: true, message: '请输入供应商名称',\r\n                                            }],\r\n                                        })\r\n                                    }\r\n                                />\r\n                                <span className='error'>\r\n                                    {\r\n                                        getFieldError('supplierName2')\r\n                                    }\r\n                                </span>\r\n                            </Col>\r\n                        </FormItem>\r\n\r\n                        <FormItem>\r\n                            <Col md={2} xs={2}>\r\n                                <Label>凭证名称</Label>\r\n                            </Col>\r\n                            <Col md={10} xs={10}>\r\n                            <FormControl\r\n                                    {\r\n                                        ...getFieldProps('voucherName2', {\r\n                                            initialValue: '',\r\n                                            rules: [{\r\n                                                required: true, message: '请输入凭证名称',\r\n                                            }],\r\n                                        })\r\n                                    }\r\n                                />\r\n                                <span className='error'>\r\n                                    {\r\n                                        getFieldError('voucherName2')\r\n                                    }\r\n                                </span>\r\n                            </Col>\r\n                        </FormItem>\r\n                        <FormItem>\r\n                            <Col md={2} xs={2}>\r\n                                <Label>订单类型</Label>\r\n                            </Col>\r\n                            <Col md={10} xs={10}>\r\n                                <Select {\r\n                                    ...getFieldProps('type', {\r\n                                        initialValue: '',\r\n                                    }\r\n                                    )}>\r\n                                    <Option value=\"\">请选择</Option>\r\n                                    {\r\n                                        orderTypes.map((item, index) => {\r\n                                            return (\r\n                                                <Option key={index} value={item.code}>{item.name}</Option>\r\n                                            )\r\n                                        })\r\n                                    }\r\n                                </Select>\r\n                            </Col>\r\n                        </FormItem>\r\n                        \r\n                    </Row>\r\n\r\n                    <div className='split'></div>\r\n\r\n                    {/* 单列居中 */}\r\n                    <h4>\r\n                        单列居中\r\n                     </h4>\r\n                    <Row className = 'edit-panel edit-panel-center'>\r\n                        <Col md={12} >\r\n                            <FormItem>\r\n                                <Label>\r\n                                    <Icon type=\"uf-mi\" className='mast'></Icon>\r\n                                    订单编号\r\n                                </Label>\r\n                                <FormControl\r\n                                    {\r\n                                    ...getFieldProps('orderCode3', {\r\n                                        initialValue: '',\r\n                                        rules: [{\r\n                                            required: true, message: '请输入订单编号',\r\n                                        }],\r\n                                    })\r\n                                    }\r\n                                />\r\n                                <span className='error'>\r\n                                    {\r\n                                        getFieldError('orderCode3')\r\n                                    }\r\n                                </span>\r\n                            </FormItem>\r\n                        </Col>\r\n                        <Col md={12}  >\r\n                            <FormItem>\r\n                                <Label>\r\n                                    <Icon type=\"uf-mi\" className='mast'></Icon>\r\n                                    供应商名称\r\n                                </Label>\r\n                                <FormControl\r\n                                    {\r\n                                        ...getFieldProps('supplierName3', {\r\n                                            initialValue: '',\r\n                                            rules: [{\r\n                                                required: true, message: '请输入供应商名称',\r\n                                            }],\r\n                                        })\r\n                                    }\r\n                                />\r\n                                <span className='error'>\r\n                                    {\r\n                                        getFieldError('supplierName3')\r\n                                    }\r\n                                </span>\r\n                            </FormItem>\r\n                            \r\n                        </Col>\r\n                        <Col md={12}  >\r\n                            <FormItem>\r\n                                <Label >凭证名称</Label>\r\n                                <FormControl\r\n                                    {\r\n                                        ...getFieldProps('voucherName3', {\r\n                                            initialValue: '',\r\n                                            rules: [{\r\n                                                required: true, message: '请输入凭证名称',\r\n                                            }],\r\n                                        })\r\n                                    }\r\n                                />\r\n                                <span className='error'>\r\n                                    {\r\n                                        getFieldError('voucherName3')\r\n                                    }\r\n                                </span>\r\n                            </FormItem>\r\n                        </Col>\r\n                        \r\n                    </Row>\r\n\r\n                     <div className='split'></div>\r\n\r\n                    {/* 三列带textarea */}\r\n                    <h4>\r\n                    三列带textarea\r\n                     </h4>\r\n                    <Row className = 'edit-panel edit-panel-textarea'>\r\n                            <Col md={1} xs={2}>\r\n                                <Label>订单编号\r\n                                    <Icon type=\"uf-mi\" className='mast'></Icon>\r\n                                </Label>\r\n                            </Col>\r\n                            <Col md={3} xs={10}>\r\n                                <FormControl\r\n                                    {\r\n                                    ...getFieldProps('orderCode4', {\r\n                                        initialValue: '',\r\n                                        rules: [{\r\n                                            required: true, message: '请输入订单编号',\r\n                                        }],\r\n                                    })\r\n                                    }\r\n                                />\r\n                                <span className='error'>\r\n                                    {\r\n                                        getFieldError('orderCode4')\r\n                                    }\r\n                                </span>\r\n                            </Col>\r\n                            <Col md={1} xs={2}>\r\n                                <Label>供应商\r\n                                    <Icon type=\"uf-mi\" className='mast'></Icon>\r\n                                </Label>\r\n                            </Col>\r\n                            <Col md={3} xs={10}>\r\n                            <FormControl\r\n                                {\r\n                                    ...getFieldProps('supplierName4', {\r\n                                        initialValue: '',\r\n                                        rules: [{\r\n                                            required: true, message: '请输入供应商名称',\r\n                                        }],\r\n                                    })\r\n                                }\r\n                                />\r\n                                <span className='error'>\r\n                                    {\r\n                                        getFieldError('supplierName4')\r\n                                    }\r\n                                </span>\r\n                            </Col>\r\n                            <Col md={1} xs={2}>\r\n                                <Label >凭证名称</Label>\r\n                            </Col>\r\n                            <Col md={3} xs={10}>\r\n                            <FormControl\r\n                                    {\r\n                                        ...getFieldProps('voucherName4', {\r\n                                            initialValue: '',\r\n                                            rules: [{\r\n                                                required: true, message: '请输入凭证名称',\r\n                                            }],\r\n                                        })\r\n                                    }\r\n                                />\r\n                                <span className='error'>\r\n                                    {\r\n                                        getFieldError('voucherName4')\r\n                                    }\r\n                                </span>\r\n                            </Col>\r\n                            <Col md={1} xs={2}>\r\n                                <Label className='time'>备注</Label>\r\n                            </Col>\r\n                            <Col md={11} xs={10}>\r\n                            <textarea className='u-form-control'\r\n                                {\r\n                                    ...getFieldProps('mark', {\r\n                                        initialValue: '',\r\n                                    })\r\n                                }\r\n                                />\r\n                            </Col>\r\n\r\n                       \r\n                    </Row>\r\n                    \r\n                </Form>\r\n            </div>\r\n        )\r\n    }\r\n})\r\n", "desc": " 必输项的 * ，在文字左侧或右侧均可 ", "scss_code": ".demo6 {\r\n    .edit-panel {\r\n        background: #FFF;\r\n        padding: 15px 15px 15px 15px;\r\n        .reset-btn,\r\n        .reset-btn:hover {\r\n            background: #fff;\r\n            border: 1px solid #1E7BE2;\r\n            color: #1E7BE2;\r\n            margin-right: 15px;\r\n        }\r\n        .submit-btn,\r\n        .submit-btn:hover {\r\n            background: #1E7BE2;\r\n            color: #fff;\r\n        }\r\n        .btn-group {\r\n            text-align: right;\r\n        }\r\n        .u-form-item {\r\n            min-width: 100%;\r\n            margin-bottom: 10px;\r\n            min-height: 50px!important;\r\n            .error {\r\n                margin-left: 100px;\r\n                color: red;\r\n                display: block;\r\n            }\r\n            .u-label {\r\n                min-width: 100px;\r\n                text-align: right;\r\n                display: inline-block;\r\n                padding-right: 12px;\r\n            }\r\n            .u-label.time {\r\n                position: relative;\r\n                bottom: 10px;\r\n            }\r\n            .u-label+* {\r\n                min-width: 200px;\r\n                display: inline-block;\r\n            }\r\n            .mast {\r\n                width: 5px;\r\n                min-width: auto;\r\n                padding: 0;\r\n                color: red;\r\n            }\r\n            .datepicker-input-group {\r\n                .u-input-group-btn {\r\n                    .uf-calendar {\r\n                        padding: 0;\r\n                    }\r\n                }\r\n            }\r\n            .u-switch {\r\n                min-width: auto;\r\n            }\r\n            .u-select {\r\n                width: auto;\r\n            }\r\n            .u-form-control {\r\n                width: auto;\r\n            }\r\n            .calendar-picker {\r\n                display: inline-block;\r\n                min-width: 200px;\r\n                width: auto;\r\n                input {\r\n                    width: 100%;\r\n                }\r\n            }\r\n            .u-form-control-close {\r\n                width: auto;\r\n                .u-form-control {\r\n                    width: 100%\r\n                }\r\n            }\r\n        }\r\n        .search-panel-btn {\r\n            text-align: right;\r\n            padding: 10px 0;\r\n        }\r\n    }\r\n    .edit-panel-center {\r\n        text-align: center;\r\n        .u-form-item {\r\n            min-width: auto;\r\n            display: inline-block;\r\n            .error {\r\n                text-align: left;\r\n            }\r\n        }\r\n    }\r\n    .edit-panel-all {\r\n        .u-form-item {\r\n            padding: 0;\r\n            .u-col-md-2,.u-col-md-10{\r\n                padding: 0;\r\n            }\r\n            .u-label {\r\n                width: 100%;\r\n                text-align: right;\r\n                height: 32px;\r\n                line-height: 32px;\r\n            }\r\n            .u-form-control {\r\n                width: 100%;\r\n            }\r\n            .calendar-picker {\r\n                width: 100%;\r\n                position: relative;\r\n            }\r\n            .u-select {\r\n                width: 100%;\r\n            }\r\n            .error {\r\n                margin-left: 0;\r\n            }\r\n        }\r\n    }\r\n    .split {\r\n        height: 1px;\r\n        background: #e0e0e0;\r\n    }\r\n    .edit-panel-textarea {\r\n        >div {\r\n            padding: 0;\r\n            margin-bottom: 10px;\r\n            min-height: 50px;\r\n            .u-label {\r\n                height: 32px;\r\n                line-height: 32px;\r\n                text-align: right;\r\n                display: block;\r\n                padding-right: 12px;\r\n            }\r\n            .error {\r\n                margin-left: 100px;\r\n                color: red;\r\n                display: block;\r\n            }\r\n            .mast {\r\n                padding: 0;\r\n                color: red;\r\n            }\r\n            textarea {\r\n                width: 100%;\r\n                resize: none;\r\n                min-height: 50px;\r\n            }\r\n            .calendar-picker,\r\n            .u-select {\r\n                width: 100%;\r\n            }\r\n        }\r\n    }\r\n}" }];
+	var Demo1 = __webpack_require__(157);var Demo2 = __webpack_require__(352);var Demo3 = __webpack_require__(353);var Demo4 = __webpack_require__(359);var Demo5 = __webpack_require__(644);var Demo6 = __webpack_require__(647);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 单个input校验", "code": '/**\r\n *\r\n * @title \u5355\u4E2Ainput\u6821\u9A8C\r\n * @description \u4F7F\u7528FormItem\r\n */\r\nimport React, { Component } from \'react\';\r\nimport { Form, Label, FormControl } from \'tinper-bee\';\r\n\n\nconst FormItem = Form.FormItem;\r\n\r\n\r\nconst Demo1 = Form.createForm()(class Demo extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n    }\r\n    render() {\r\n        const self=this;\r\n        const { getFieldProps, getFieldError } = this.props.form;\r\n        return (\r\n                <FormItem className=\'demo1\'>\r\n                    <Label>\u59D3\u540D</Label>\r\n                    <FormControl placeholder=\'\u8BF7\u8F93\u5165\u59D3\u540D\'\r\n                     {...getFieldProps(\'name\', {\r\n                        validateTrigger: \'onBlur\',\r\n                        rules: [{\r\n                            required: true, message: \'\u8BF7\u8F93\u5165\u59D3\u540D\'\r\n                        },{\r\n                            max:5,message:\'\u6700\u5927\u957F\u5EA6\u4E3A10\'\r\n                        },{\r\n                            pattern: /[\\u4e00-\\u9fa5]/, message: \'\u8BF7\u8F93\u5165\u4E2D\u6587\u5B57\u7B26\',\r\n                        }],\r\n                    }) } />\r\n                    <span className=\'error\'>\r\n                        {getFieldError(\'name\')}\r\n                    </span>   \r\n                </FormItem>\r\n        )\r\n    }\r\n})\r\n\r\n', "desc": " 使用FormItem", "scss_code": "" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 基本form校验", "code": "/**\r\n *\r\n * @title 基本form校验\r\n * @description 登录示例\r\n */\r\nimport React, { Component } from 'react';\r\nimport ReactDOM from 'react-dom';\r\nimport { Form, Button, Label, FormControl } from 'tinper-bee';\r\n\n\n\nconst FormItem = Form.FormItem;\r\n\r\nconst Demo2 = Form.createForm()(class Demo2 extends Component {\r\n    submit = (e) => {\r\n        e.preventDefault();\r\n        this.props.form.validateFields((err, values) => {\r\n            if (err) {\r\n                console.log('校验失败', values);\r\n            } else {\r\n                console.log('提交成功', values)\r\n            }\r\n        });\r\n    }\r\n    render() {\r\n        const { getFieldProps, getFieldError } = this.props.form;\r\n        return (\r\n            <div className=\"demo2\">\r\n                <Form >\r\n                    <FormItem>\r\n                        <Label>用户名</Label>\r\n                        <FormControl placeholder=\"请输入用户名\"\r\n                            {...getFieldProps('username', {\r\n                                validateTrigger: 'onBlur',\r\n                                rules: [{\r\n                                    required: true, message: '请输入用户名',\r\n                                }],\r\n                            }) }\r\n                        />\r\n                        <span className='error'>\r\n                            {getFieldError('username')}\r\n                        </span>\r\n                    </FormItem>\r\n                    <FormItem>\r\n                        <Label>密码</Label>\r\n                        <FormControl placeholder=\"请输入密码\" type='password'\r\n                            {...getFieldProps('password', {\r\n                                validateTrigger: 'onBlur',\r\n                                rules: [{\r\n                                    required: true, message: '请输入密码',\r\n                                }],\r\n                            }) }\r\n                        />\r\n                        <span className='error'>\r\n                            {getFieldError('password')}\r\n                        </span>\r\n                    </FormItem>\r\n                    <FormItem style={{'paddingLeft':'106px'}}>\r\n                        <Button shape=\"border\" className=\"reset\" style={{\"marginRight\":\"8px\"}}>取消</Button>\r\n                        <Button colors=\"primary\" className=\"login\" onClick={this.submit}>登录</Button>\r\n                    </FormItem>\r\n                </Form>\r\n            </div>\r\n        )\r\n    }\r\n})\r\n", "desc": " 登录示例", "scss_code": "" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 基本form校验", "code": "/**\r\n *\r\n * @title 基本form校验\r\n * @description 注册示例\r\n */\r\nimport React, { Component } from 'react';\r\nimport { Form, Label, Checkbox, Button, FormControl } from 'tinper-bee';\r\nconst FormItem = Form.FormItem;\r\n\n\n\n\n\r\nconst Demo3 = Form.createForm()( class Demo extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            checkbox: false\r\n        }\r\n    }\r\n    submit = (e) => {\r\n        e.preventDefault();\r\n        this.props.form.validateFields((err, values) => {\r\n            if (err) {\r\n                console.log('校验失败', values);\r\n            } else {\r\n                console.log('提交成功', values)\r\n            }\r\n        });\r\n    }\r\n    handleConfirmPassword = (rule, value, callback) => {\r\n        const { getFieldValue } = this.props.form;\r\n        if (value && value !== getFieldValue('password')) {\r\n            callback('两次输入不一致！')\r\n        }\r\n        callback();\r\n    }\r\n    render() {\r\n        const self = this;\r\n        const { getFieldProps, getFieldError } = this.props.form;\r\n        return (\r\n            <div className=\"demo3\">\r\n                <Form>\r\n                    <FormItem>\r\n                        <Label>用户名</Label>\r\n                        <FormControl placeholder=\"请输入用户名(包含数字和字母，8-15位)\"\r\n                            {...getFieldProps('username', {\r\n                                validateTrigger: 'onBlur',\r\n                                rules: [{\r\n                                    required: true, message: '请输入用户名',\r\n                                }, {\r\n                                    pattern: /^(?!\\d+$)(?![a-zA-Z]+$)[a-zA-Z0-9]{8,15}$/, message: '用户名格式错误',\r\n                                }],\r\n                            }) }\r\n                        />\r\n                        <span className='error'>\r\n                            {getFieldError('username')}\r\n                        </span>\r\n                    </FormItem>\r\n\r\n                    <FormItem>\r\n                        <Label>密码</Label>\r\n                        <FormControl placeholder=\"请输入密码\" type='password'\r\n                            {...getFieldProps('password', {\r\n                                validateTrigger: 'onBlur',\r\n                                rules: [{\r\n                                    required: true, message: '请输入密码',\r\n                                }],\r\n                            }) }\r\n                        />\r\n                        <span className='error'>\r\n                            {getFieldError('password')}\r\n                        </span>\r\n                    </FormItem>\r\n\r\n                    <FormItem>\r\n                        <Label>再次输入密码</Label>\r\n                        <FormControl placeholder=\"请输入密码\" type='password'\r\n                            {...getFieldProps('password2', {\r\n                                validateTrigger: 'onBlur',\r\n                                rules: [{\r\n                                    required: true, message: '请输入密码',\r\n                                }, {\r\n                                    validator: this.handleConfirmPassword\r\n                                }],\r\n                            }) }\r\n                        />\r\n                        <span className='error'>\r\n                            {getFieldError('password2')}\r\n                        </span>\r\n                    </FormItem>\r\n\r\n                    <FormItem>\r\n                        <Label>邮箱</Label>\r\n                        <FormControl placeholder=\"请输入邮箱\"\r\n                            {...getFieldProps('email', {\r\n                                validateTrigger: 'onBlur',\r\n                                rules: [{\r\n                                    required: true, message: '请输入邮箱',\r\n                                }, {\r\n                                    type: 'email', message: '邮箱格式不正确'\r\n                                }],\r\n                            }) }\r\n                        />\r\n                        <span className='error'>\r\n                            {getFieldError('email')}\r\n                        </span>\r\n                    </FormItem>\r\n                    <FormItem>\r\n                        <Label>手机号</Label>\r\n\r\n                        <FormControl placeholder=\"请输入手机号\"\r\n                            {...getFieldProps('phone', {\r\n                                validateTrigger: 'onBlur',\r\n                                rules: [{\r\n                                    required: true, message: '请输入手机号',\r\n                                }, {\r\n                                    pattern: /^\\d{11}$/, message: '手机号格式不正确'\r\n                                }],\r\n                            }) }\r\n                        />\r\n\r\n                        <span className='error'>\r\n                            {getFieldError('phone')}\r\n                        </span>\r\n                    </FormItem>\r\n\r\n                    <FormItem style={{'paddingLeft':'106px'}}>\r\n                        <Checkbox\r\n                            defaultChecked={this.state.checkbox}\r\n                            {\r\n                            ...getFieldProps('checkbox', {\r\n                                initialValue: false,\r\n                            }\r\n                            ) }\r\n                        >\r\n                        我已经阅读并同意相关条款\r\n                        </Checkbox>\r\n                    </FormItem>\r\n                    <FormItem style={{'paddingLeft':'106px'}}>\r\n                        <Button shape=\"border\" className=\"reset\" style={{\"marginRight\":\"8px\"}}>取消</Button>\r\n                        <Button colors=\"primary\" className=\"login\" onClick={this.submit}>注册</Button>\r\n                    </FormItem>\r\n                </Form>\r\n            </div>\r\n        )\r\n    }\r\n})\r\n", "desc": " 注册示例", "scss_code": "" }, { "example": _react2['default'].createElement(Demo4, null), "title": " 表单校验", "code": "/**\r\n *\r\n * @title 表单校验\r\n * @description 用户信息录入实例\r\n */\r\nimport React, { Component } from 'react';\r\nimport ReactDOM from 'react-dom';\r\nimport { Form, Upload, Icon, Button, Label, CitySelect, Rate, InputNumber, Slider, Switch, Checkbox, DatePicker, Radio, Select,  Col,Row , FormControl } from 'tinper-bee';\r\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nconst FormItem = Form.FormItem;\r\nconst Option = Select.Option;\r\nconst CheckboxGroup = Checkbox.CheckboxGroup;\r\n\r\nconst uploadProps = {\r\n    name: 'file',\r\n    action: '/upload.do',\r\n    headers: {\r\n      authorization: 'authorization-text',\r\n    },\r\n    onChange(info) {\r\n      if (info.file.status !== 'uploading') {\r\n        console.log(info.file, info.fileList);\r\n      }\r\n      if (info.file.status === 'done') {\r\n        console.log(`${info.file.name} file uploaded successfully`);\r\n      } else if (info.file.status === 'error') {\r\n        console.log(`${info.file.name} file upload failed.`);\r\n      }\r\n    },\r\n};\r\n\r\nconst Demo4 = Form.createForm()(class Demo extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            selectedValue: '',\r\n            selectedValue2: 'headquarters'\r\n        };\r\n    }\r\n    submit = (e) => {\r\n        this.props.form.validateFields((err, values) => {\r\n            if (err) {\r\n                console.log('校验失败', values);\r\n            } else {\r\n                console.log('提交成功', values)\r\n            }\r\n        });\r\n    }\r\n    render() {\r\n        const { getFieldProps, getFieldError } = this.props.form;\r\n        const self = this;\r\n        return (\r\n            <div>\r\n                <Form className='demo4'>\r\n                    <FormItem>\r\n                        <Label><Icon type=\"uf-mi\" className='mast'></Icon>申请人</Label>\r\n                        <FormControl placeholder=\"请输入姓名\"\r\n                            {...getFieldProps('name', {\r\n                                validateTrigger: 'onBlur',\r\n                                rules: [{\r\n                                    required: true, message: '请输入姓名',\r\n                                }],\r\n                            }) }\r\n                        />\r\n                        <span className='error'>\r\n                            {getFieldError('name')}\r\n                        </span>\r\n                    </FormItem>\r\n                    <FormItem>\r\n                        <Label><Icon type=\"uf-mi\" className='mast'></Icon>联系方式</Label>\r\n                        <FormControl placeholder=\"请输入联系方式\"\r\n                            {...getFieldProps('phone', {\r\n                                validateTrigger: 'onBlur',\r\n                                rules: [{\r\n                                    required: true, message: '请输入联系方式',\r\n                                }, {\r\n                                    pattern: /^\\d{11}$/, message: '手机号格式不正确'\r\n                                }],\r\n                            }) }\r\n                        />\r\n                        <span className='error'>\r\n                            {getFieldError('phone')}\r\n                        </span>\r\n                    </FormItem>\r\n                    <FormItem>\r\n                        <Label>供应商名称</Label>\r\n                        <FormControl placeholder=\"请输入供应商名称\"\r\n                            {\r\n                            ...getFieldProps('supplierName', {\r\n                                initialValue: '',\r\n                            })\r\n                            }\r\n                        />\r\n                    </FormItem>\r\n                    <FormItem>\r\n                        <Label><Icon type=\"uf-mi\" className='mast'></Icon>供货产品</Label>\r\n                        <FormControl placeholder=\"请输入供货产品\"\r\n                            {\r\n                            ...getFieldProps('supplyProducts', {\r\n                                initialValue: '',\r\n                            })\r\n                            }\r\n                        />\r\n                    </FormItem>\r\n                    <FormItem className='time flex'>\r\n                        <Label className=\"line-height-32\">需求日期</Label>\r\n                        <DatePicker\r\n                            {\r\n                            ...getFieldProps('time', {\r\n                                validateTrigger: 'onBlur',\r\n                                rules: [{\r\n                                    required: true, message: '请选择需求日期',\r\n                                }, {\r\n                                    type: 'date', message: '日期格式不正确'\r\n                                }],\r\n                            }\r\n                            ) }\r\n                            placeholder={'请选择需求日期'}\r\n                        />\r\n                        <span className='error line-height-32'>\r\n                            {getFieldError('time')}\r\n                        </span>\r\n                    </FormItem>\r\n                    <FormItem>\r\n                        <Label><Icon type=\"uf-mi\" className='mast'></Icon>物料关重程度</Label>\r\n                        <Radio.RadioGroup\r\n                            selectedValue={this.state.selectedValue}\r\n                            {\r\n                            ...getFieldProps('importance', {\r\n                                initialValue: '',\r\n                                onChange(value) {\r\n                                    self.setState({ selectedValue: value });\r\n                                },\r\n                                rules: [{ required: true }]\r\n                            }\r\n                            ) }\r\n                        >\r\n                            <Radio value=\"A\" >A（关键）</Radio>\r\n                            <Radio value=\"B\" >B（重要）</Radio>\r\n                            <Radio value=\"C\" >C（一般）</Radio>\r\n                        </Radio.RadioGroup>\r\n                    </FormItem>\r\n                    <FormItem>\r\n                        <Label><Icon type=\"uf-mi\" className='mast'></Icon>归属部门</Label>\r\n                        <Radio.RadioGroup\r\n                            selectedValue={this.state.selectedValue2}\r\n                            {\r\n                            ...getFieldProps('department', {\r\n                                initialValue: 'headquarters',\r\n                                onChange(value) {\r\n                                    self.setState({ selectedValue2: value });\r\n                                },\r\n                                rules: [{ required: true }]\r\n                            }\r\n                            ) }\r\n                        >\r\n                            <Radio value=\"headquarters\">总部</Radio>\r\n                            <Radio value=\"businessUnit\">事业部</Radio>\r\n                        </Radio.RadioGroup>\r\n                    </FormItem>\r\n                    <FormItem>\r\n                        <Label><Icon type=\"uf-mi\" className='mast'></Icon>采购组</Label>\r\n                        <CheckboxGroup \r\n                                {\r\n                                    ...getFieldProps('purchasingGroup',{\r\n                                        initialValue:['2'],\r\n                                        rules: [{ required: true, message: '请选择采购组' }]\r\n                                    })\r\n                                }\r\n                            >\r\n                                <Checkbox value='1'>人力</Checkbox>\r\n                                <Checkbox value='2'>财务</Checkbox>\r\n                        </CheckboxGroup>\r\n                        <span className='error'>\r\n                            {getFieldError('purchasingGroup')}\r\n                        </span>\r\n                    </FormItem>\r\n                    <FormItem>\r\n                        <Label>保密等级</Label>\r\n                        <Rate\r\n                            {\r\n                            ...getFieldProps('rate', {\r\n                                initialValue: 0,\r\n                                rules: [{ required: true }]\r\n                            }\r\n                            ) }\r\n                        />\r\n                    </FormItem>\r\n                    <FormItem className=\"flex\">\r\n                        <Label className=\"line-height-32\">备注</Label>\r\n                        <FormControl componentClass='textarea'\r\n                            {\r\n                            ...getFieldProps('remark', {}\r\n                            ) }\r\n                        />\r\n                    </FormItem>  \r\n                    <FormItem >\r\n                        <Label>文件</Label>\r\n                        <Upload {...uploadProps}>\r\n                            <Button shape=\"border\">\r\n                            <Icon type=\"uf-upload\" /> Click to Upload\r\n                            </Button>\r\n                        </Upload>\r\n                    </FormItem>  \r\n                    <FormItem style={{'paddingLeft':'106px'}}>\r\n                        <Button shape=\"border\" className=\"reset\" style={{\"marginRight\":\"8px\"}}>取消</Button>\r\n                        <Button colors=\"primary\" className=\"login\" onClick={this.submit}>提交</Button>\r\n                    </FormItem>\r\n                </Form>\r\n            </div>\r\n        )\r\n    }\r\n})\r\n", "desc": " 用户信息录入实例", "scss_code": ".demo4{\r\n    .u-form-control, .datepicker-container{\r\n        min-width: 300px;\r\n    }\r\n}" }, { "example": _react2['default'].createElement(Demo5, null), "title": " 多种表单元素示例", "code": "/**\r\n *\r\n * @title 多种表单元素示例\r\n * @description 查询面板\r\n */\r\nimport React, { Component } from 'react';\r\nimport ReactDOM from 'react-dom';\r\nimport { Form, SearchPanel, Icon, Button, Label, Switch, Checkbox, DatePicker, Radio, Select,  Col , Row , FormControl } from 'tinper-bee';\r\n\n\n\n\n\n\n\n\n\n\n\nimport moment from \"moment/moment\";\r\nconst FormItem = Form.FormItem;\r\nconst Option = Select.Option;\r\nconst { RangePicker } = DatePicker;\r\nconst CheckboxGroup = Checkbox.CheckboxGroup;\r\n\r\nconst Demo5 = Form.createForm()(class Demo extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            expanded: true,\r\n            approvalState: '',\r\n            closeState: '',\r\n            confirmState: '',\r\n            voucherDate: [],\r\n            orderTypes:[\r\n                {\r\n                    'code':'001',\r\n                    'name':'类型1'\r\n                },\r\n                {\r\n                    'code':'002',\r\n                    'name':'类型2'\r\n                },\r\n                {\r\n                    'code':'003',\r\n                    'name':'类型3'\r\n                },\r\n            ]\r\n        };\r\n    }\r\n    submit = (e) => {\r\n        this.props.form.validateFields((err, values) => {\r\n            if (err) {\r\n                console.log('校验失败', values);\r\n            } else {\r\n                console.log('提交成功', values)\r\n            }\r\n        });\r\n    }\r\n    reset = () =>{\r\n        this.props.form.resetFields();\r\n        //部分表单元素无法通过this.props.form.resetFields重置，需要手动重置，如下\r\n        this.setState({\r\n            approvalState: '',\r\n            closeState: '',\r\n            confirmState: '',\r\n            voucherDate: []\r\n        })\r\n    }\r\n    onChange = () => {\r\n        this.setState({expanded: !this.state.expanded})\r\n    }\r\n    render() {\r\n        const { getFieldProps, getFieldError } = this.props.form;\r\n        const self = this;\r\n        return (\r\n            <div>\r\n                <SearchPanel\r\n                title='基础示例'\r\n                onSearch={this.submit}\r\n                onReset={this.reset}\r\n                expanded={this.state.expanded}\r\n                onChange={this.onChange}\r\n                >\r\n                    <Form className='demo5'>\r\n                        <Row>\r\n                            <Col lg={4} md={6} xs={12}>\r\n                                <FormItem>\r\n                                    <Col lg={4} md={4} xs={4}>\r\n                                        <Label><Icon type=\"uf-mi\" className='mast'></Icon>订单编号</Label>\r\n                                    </Col>\r\n                                    <Col lg={8} md={8} xs={8}>\r\n                                        <FormControl size=\"sm\"\r\n                                            {\r\n                                            ...getFieldProps('orderCode', {\r\n                                                initialValue: '',\r\n                                                validateTrigger: 'onBlur',\r\n                                                rules: [{\r\n                                                    required: true, message: '请输入订单编号',\r\n                                                }],\r\n                                            })\r\n                                            }\r\n                                        />\r\n                                    </Col>\r\n                                </FormItem>\r\n                            </Col>\r\n                            <Col  lg={4} md={6} xs={12}>\r\n                                <FormItem>\r\n                                    <Col lg={4} md={4} xs={4}>\r\n                                        <Label><Icon type=\"uf-mi\" className='mast'></Icon>供应商名称</Label>\r\n                                    </Col>\r\n                                    <Col lg={8} md={8} xs={8}>\r\n                                        <FormControl size=\"sm\"\r\n                                            {\r\n                                            ...getFieldProps('supplierName', {\r\n                                                initialValue: '',\r\n                                            })\r\n                                            }\r\n                                        />\r\n                                    </Col>\r\n                                </FormItem>\r\n                            </Col>\r\n                            <Col  lg={4} md={6} xs={12}>\r\n                                <FormItem>\r\n                                    <Col lg={4} md={4} xs={4}>\r\n                                        <Label><Icon type=\"uf-mi\" className='mast'></Icon>凭证名称</Label>\r\n                                    </Col>\r\n                                    <Col lg={8} md={8} xs={8}>\r\n                                        <FormControl size=\"sm\"\r\n                                            {\r\n                                            ...getFieldProps('voucherName1', {\r\n                                                initialValue: '',\r\n                                            })\r\n                                            }\r\n                                        />\r\n                                    </Col>\r\n                                </FormItem>\r\n                            </Col>\r\n                            \r\n                            <Col  lg={4} md={6} xs={12}>\r\n                                <FormItem>\r\n                                    <Col lg={4} md={4} xs={4}>\r\n                                        <Label><Icon type=\"uf-mi\" className='mast'></Icon>订单类型</Label>\r\n                                    </Col>\r\n                                    <Col lg={8} md={8} xs={8}>\r\n                                        <Select size=\"sm\"\r\n                                            {\r\n                                            ...getFieldProps('type', {\r\n                                                initialValue: '',\r\n                                            }\r\n                                            )}>\r\n                                            <Option value=\"\">请选择</Option>\r\n                                            {\r\n                                                self.state.orderTypes.map((item, index) => {\r\n                                                    return (\r\n                                                        <Option key={index} value={item.code}>{item.name}</Option>\r\n                                                    )\r\n                                                })\r\n                                            }\r\n                                        </Select>\r\n                                    </Col>\r\n                                </FormItem>\r\n                            </Col>\r\n                            <Col  lg={4} md={6} xs={12}>\r\n                                <FormItem>\r\n                                    <Col lg={4} md={4} xs={4}>\r\n                                        <Label><Icon type=\"uf-mi\" className='mast'></Icon>采购组</Label>\r\n                                    </Col>\r\n                                    <Col lg={8} md={8} xs={8}>\r\n                                        <CheckboxGroup \r\n                                            {\r\n                                                ...getFieldProps('purchasingGroup',{\r\n                                                    initialValue:['2']\r\n                                                })\r\n                                            }\r\n                                        >\r\n                                            <Checkbox value='1'>人力</Checkbox>\r\n                                            <Checkbox value='2'>财务</Checkbox>\r\n                                        </CheckboxGroup>\r\n                                    </Col>\r\n                                </FormItem>\r\n                            </Col>\r\n                            <Col  lg={4} md={6} xs={12}>\r\n                                <FormItem>\r\n                                    <Col lg={4} md={4} xs={4}>\r\n                                        <Label><Icon type=\"uf-mi\" className='mast'></Icon>审批状态</Label>\r\n                                    </Col>\r\n                                    <Col lg={8} md={8} xs={8}>\r\n                                        <Radio.RadioGroup\r\n                                            selectedValue={this.state.approvalState}\r\n                                            {\r\n                                            ...getFieldProps('approvalState', {\r\n                                                initialValue: '1',\r\n                                                onChange(value) {\r\n                                                    self.setState({ approvalState: value });\r\n                                                },\r\n                                            }\r\n                                            )}\r\n                                        >\r\n                                            <Radio value=\"0\" >未审批</Radio>\r\n                                            <Radio value=\"1\" >已审批</Radio>\r\n                                            <Radio value=\"2\" >全部</Radio>\r\n                                        </Radio.RadioGroup>\r\n                                    </Col>\r\n                                </FormItem>\r\n                            </Col>\r\n                            <Col  lg={4} md={6} xs={12}>\r\n                                <FormItem>\r\n                                    <Col lg={4} md={4} xs={4}>\r\n                                        <Label><Icon type=\"uf-mi\" className='mast'></Icon>关闭状态</Label>\r\n                                    </Col>\r\n                                    <Col lg={8} md={8} xs={8}>\r\n                                        <Radio.RadioGroup\r\n                                            selectedValue={this.state.closeState}\r\n                                            {\r\n                                            ...getFieldProps('closeState', {\r\n                                                initialValue: '1',\r\n                                                onChange(value) {\r\n                                                    self.setState({ closeState: value });\r\n                                                },\r\n                                            }\r\n                                            )}\r\n                                        >\r\n                                            <Radio value=\"0\" >未关闭</Radio>\r\n                                            <Radio value=\"1\" >已关闭</Radio>\r\n                                        </Radio.RadioGroup>\r\n                                    </Col>\r\n                                </FormItem>\r\n                            </Col>\r\n                            <Col  lg={4} md={6} xs={12}>\r\n                                <FormItem>\r\n                                    <Col lg={4} md={4} xs={4}>\r\n                                        <Label><Icon type=\"uf-mi\" className='mast'></Icon>确认状态</Label>\r\n                                    </Col>\r\n                                    <Col lg={8} md={8} xs={8}>\r\n                                        <Radio.RadioGroup\r\n                                            selectedValue={this.state.confirmState}\r\n                                            {\r\n                                            ...getFieldProps('confirmState', {\r\n                                                initialValue: '1',\r\n                                                onChange(value) {\r\n                                                    self.setState({ confirmState: value });\r\n                                                },\r\n                                            }\r\n                                            )}\r\n                                        >\r\n                                            <Radio value=\"0\" >未确认</Radio>\r\n                                            <Radio value=\"1\" >已确认</Radio>\r\n                                        </Radio.RadioGroup>\r\n                                    </Col>\r\n                                </FormItem>\r\n                            </Col>\r\n                        </Row>\r\n                    </Form>\r\n                </SearchPanel>\r\n            </div>\r\n        )\r\n    }\r\n})\r\n", "desc": " 查询面板", "scss_code": "" }, { "example": _react2['default'].createElement(Demo6, null), "title": " 多种布局示例", "code": "/**\r\n *\r\n * @title 多种布局示例\r\n * @description \r\n */\r\nimport React, { Component } from 'react';\r\nimport ReactDOM from 'react-dom';\r\nimport { Form, Icon, Button, Label, Switch, Checkbox, DatePicker, Radio, Select,  Col , Row , FormControl } from 'tinper-bee';\r\n\n\n\n\n\n\n\n\n\n\nimport moment from \"moment/moment\";\r\nconst FormItem = Form.FormItem;\r\nconst Option = Select.Option;\r\nconst { RangePicker } = DatePicker;\r\n\r\nconst Demo6 = Form.createForm()(class Demo extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            approvalState: '',\r\n            closeState: '',\r\n            confirmState: '',\r\n            voucherName: [],\r\n            orderTypes:[\r\n                {\r\n                    'code':'001',\r\n                    'name':'类型1'\r\n                },\r\n                {\r\n                    'code':'002',\r\n                    'name':'类型2'\r\n                },\r\n                {\r\n                    'code':'003',\r\n                    'name':'类型3'\r\n                },\r\n            ]\r\n        };\r\n    }\r\n    render() {\r\n        const { getFieldProps, getFieldError } = this.props.form;\r\n        const self = this;\r\n        const orderTypes= [{\r\n            \"code\":\"D001\",\r\n            \"name\":\"D001\"\r\n          },{\r\n            \"code\":\"D002\",\r\n            \"name\":\"D002\"\r\n          },{\r\n            \"code\":\"D003\",\r\n            \"name\":\"D003\"\r\n          },{\r\n            \"code\":\"D004\",\r\n            \"name\":\"D004\"\r\n          }];\r\n        return (\r\n            <div>\r\n                <Form className='demo6'>\r\n                    {/* 普通栅格布局 */}\r\n                    <h4>\r\n                        普通栅格布局\r\n                    </h4>\r\n                    <Row className = 'edit-panel'>\r\n                        <Col lg={4} md={6} xs={12}>\r\n                            <FormItem>\r\n                                <Label>\r\n                                    <Icon type=\"uf-mi\" className='mast'></Icon>\r\n                                    订单编号\r\n                                </Label>\r\n                                <FormControl\r\n                                    {\r\n                                    ...getFieldProps('orderCode1', {\r\n                                        initialValue: '',\r\n                                        rules: [{\r\n                                            required: true, message: '请输入订单编号',\r\n                                        }],\r\n                                    })\r\n                                    }\r\n                                />\r\n                                <span className='error'>\r\n                                    {\r\n                                        getFieldError('orderCode1')\r\n                                    }\r\n                                </span>\r\n                            </FormItem>\r\n                        </Col>\r\n                        <Col lg={4} md={6} xs={12}>\r\n                            <FormItem>\r\n                                <Label>\r\n                                    <Icon type=\"uf-mi\" className='mast'></Icon>\r\n                                    供应商名称\r\n                                </Label>\r\n                                <FormControl\r\n                                    {\r\n                                        ...getFieldProps('supplierName1', {\r\n                                            initialValue: '',\r\n                                            rules: [{\r\n                                                required: true, message: '请输入供应商名称',\r\n                                            }],\r\n                                        })\r\n                                    }\r\n                                />\r\n                                <span className='error'>\r\n                                    {\r\n                                        getFieldError('supplierName1')\r\n                                    }\r\n                                </span>\r\n                            </FormItem>\r\n                            \r\n                        </Col>\r\n                        <Col lg={4} md={6} xs={12}>\r\n                            <FormItem>\r\n                                <Label>凭证名称</Label>\r\n                                <FormControl\r\n                                    {\r\n                                        ...getFieldProps('voucherName1', {\r\n                                            initialValue: '',\r\n                                            rules: [{\r\n                                                required: true, message: '请输入凭证名称',\r\n                                            }],\r\n                                        })\r\n                                    }\r\n                                />\r\n                                <span className='error'>\r\n                                    {\r\n                                        getFieldError('voucherName1')\r\n                                    }\r\n                                </span>\r\n                            </FormItem>\r\n                        </Col>\r\n                    </Row>\r\n\r\n                    <div className='split'></div>\r\n                    \r\n                    \r\n                     {/* 单列铺满 */}\r\n                     <h4>\r\n                        单列铺满\r\n                     </h4>\r\n                     <Row className = 'edit-panel edit-panel-all'>\r\n                        <FormItem>\r\n                            <Col md={2} xs={2}>\r\n                                <Label>\r\n                                    <Icon type=\"uf-mi\" className='mast'></Icon>\r\n                                    订单编号\r\n                                </Label>\r\n                            </Col>\r\n                            <Col md={10} xs={10}>\r\n                                <FormControl\r\n                                    {\r\n                                    ...getFieldProps('orderCode2', {\r\n                                        initialValue: '',\r\n                                        rules: [{\r\n                                            required: true, message: '请输入订单编号',\r\n                                        }],\r\n                                    })\r\n                                    }\r\n                                />\r\n                                <span className='error'>\r\n                                    {\r\n                                        getFieldError('orderCode2')\r\n                                    }\r\n                                </span>\r\n                            </Col>\r\n                        </FormItem>\r\n\r\n                        <FormItem>\r\n                            <Col md={2} xs={2}>\r\n                                <Label>\r\n                                    <Icon type=\"uf-mi\" className='mast'></Icon>\r\n                                    供应商名称\r\n                                </Label>\r\n                            </Col>\r\n                            <Col md={10} xs={10}>\r\n                                <FormControl\r\n                                    {\r\n                                        ...getFieldProps('supplierName2', {\r\n                                            initialValue: '',\r\n                                            rules: [{\r\n                                                required: true, message: '请输入供应商名称',\r\n                                            }],\r\n                                        })\r\n                                    }\r\n                                />\r\n                                <span className='error'>\r\n                                    {\r\n                                        getFieldError('supplierName2')\r\n                                    }\r\n                                </span>\r\n                            </Col>\r\n                        </FormItem>\r\n\r\n                        <FormItem>\r\n                            <Col md={2} xs={2}>\r\n                                <Label>凭证名称</Label>\r\n                            </Col>\r\n                            <Col md={10} xs={10}>\r\n                            <FormControl\r\n                                    {\r\n                                        ...getFieldProps('voucherName2', {\r\n                                            initialValue: '',\r\n                                            rules: [{\r\n                                                required: true, message: '请输入凭证名称',\r\n                                            }],\r\n                                        })\r\n                                    }\r\n                                />\r\n                                <span className='error'>\r\n                                    {\r\n                                        getFieldError('voucherName2')\r\n                                    }\r\n                                </span>\r\n                            </Col>\r\n                        </FormItem>\r\n                        <FormItem>\r\n                            <Col md={2} xs={2}>\r\n                                <Label>订单类型</Label>\r\n                            </Col>\r\n                            <Col md={10} xs={10}>\r\n                                <Select {\r\n                                    ...getFieldProps('type', {\r\n                                        initialValue: '',\r\n                                    }\r\n                                    )}>\r\n                                    <Option value=\"\">请选择</Option>\r\n                                    {\r\n                                        orderTypes.map((item, index) => {\r\n                                            return (\r\n                                                <Option key={index} value={item.code}>{item.name}</Option>\r\n                                            )\r\n                                        })\r\n                                    }\r\n                                </Select>\r\n                            </Col>\r\n                        </FormItem>\r\n                        \r\n                    </Row>\r\n\r\n                    <div className='split'></div>\r\n\r\n                    {/* 单列居中 */}\r\n                    <h4>\r\n                        单列居中\r\n                    </h4>\r\n                    <Row className = 'text-algin-center'>\r\n                        <Col md={12} >\r\n                            <FormItem>\r\n                                <Label>\r\n                                    <Icon type=\"uf-mi\" className='mast'></Icon>\r\n                                    订单编号\r\n                                </Label>\r\n                                <FormControl\r\n                                    {\r\n                                    ...getFieldProps('orderCode3', {\r\n                                        initialValue: '',\r\n                                        rules: [{\r\n                                            required: true, message: '请输入订单编号',\r\n                                        }],\r\n                                    })\r\n                                    }\r\n                                />\r\n                                <span className='error'>\r\n                                    {\r\n                                        getFieldError('orderCode3')\r\n                                    }\r\n                                </span>\r\n                            </FormItem>\r\n                        </Col>\r\n                        <Col md={12}  >\r\n                            <FormItem>\r\n                                <Label>\r\n                                    <Icon type=\"uf-mi\" className='mast'></Icon>\r\n                                    供应商名称\r\n                                </Label>\r\n                                <FormControl\r\n                                    {\r\n                                        ...getFieldProps('supplierName3', {\r\n                                            initialValue: '',\r\n                                            rules: [{\r\n                                                required: true, message: '请输入供应商名称',\r\n                                            }],\r\n                                        })\r\n                                    }\r\n                                />\r\n                                <span className='error'>\r\n                                    {\r\n                                        getFieldError('supplierName3')\r\n                                    }\r\n                                </span>\r\n                            </FormItem>\r\n                            \r\n                        </Col>\r\n                        <Col md={12}  >\r\n                            <FormItem>\r\n                                <Label >凭证名称</Label>\r\n                                <FormControl\r\n                                    {\r\n                                        ...getFieldProps('voucherName3', {\r\n                                            initialValue: '',\r\n                                            rules: [{\r\n                                                required: true, message: '请输入凭证名称',\r\n                                            }],\r\n                                        })\r\n                                    }\r\n                                />\r\n                                <span className='error'>\r\n                                    {\r\n                                        getFieldError('voucherName3')\r\n                                    }\r\n                                </span>\r\n                            </FormItem>\r\n                        </Col>\r\n                        \r\n                    </Row>\r\n\r\n                     <div className='split'></div>\r\n\r\n                    {/* 三列带textarea */}\r\n                    <h4>\r\n                    三列带textarea\r\n                     </h4>\r\n                    <Row>\r\n                        <Col lg={4} md={6} xs={12}>\r\n                            <FormItem>\r\n                                <Label><Icon type=\"uf-mi\" className='mast'></Icon>订单编号</Label>\r\n                                <FormControl\r\n                                    {\r\n                                    ...getFieldProps('orderCode4', {\r\n                                        initialValue: '',\r\n                                        rules: [{\r\n                                            required: true, message: '请输入订单编号',\r\n                                        }],\r\n                                    })\r\n                                    }\r\n                                />\r\n                                <span className='error'>\r\n                                    {\r\n                                        getFieldError('orderCode4')\r\n                                    }\r\n                                </span>\r\n                            </FormItem>\r\n                        </Col>\r\n                        <Col lg={4} md={6} xs={12}>\r\n                            <FormItem>\r\n                                <Label><Icon type=\"uf-mi\" className='mast'></Icon>供应商</Label>\r\n                                <FormControl\r\n                                {\r\n                                    ...getFieldProps('supplierName4', {\r\n                                        initialValue: '',\r\n                                        rules: [{\r\n                                            required: true, message: '请输入供应商名称',\r\n                                        }],\r\n                                    })\r\n                                }\r\n                                />\r\n                                <span className='error'>\r\n                                    {\r\n                                        getFieldError('supplierName4')\r\n                                    }\r\n                                </span>\r\n                            </FormItem>\r\n                        </Col>\r\n                        <Col lg={4} md={6} xs={12}>\r\n                            <FormItem>\r\n                                <Label><Icon type=\"uf-mi\" className='mast'></Icon>凭证名称</Label>\r\n                                <FormControl\r\n                                    {\r\n                                        ...getFieldProps('voucherName4', {\r\n                                            initialValue: '',\r\n                                            rules: [{\r\n                                                required: true, message: '请输入凭证名称',\r\n                                            }],\r\n                                        })\r\n                                    }\r\n                                />\r\n                                <span className='error'>\r\n                                    {\r\n                                        getFieldError('voucherName4')\r\n                                    }\r\n                                </span>\r\n                            </FormItem>\r\n                        </Col>\r\n                    </Row>\r\n                    <Row>\r\n                        <Col md={12} xs={12}>\r\n                            <FormItem className=\"remark flex\">\r\n                                <Label className='line-height-32'>备注</Label>\r\n                                <FormControl componentClass='textarea'\r\n                                    {\r\n                                    ...getFieldProps('mark', {}\r\n                                    ) }\r\n                                />\r\n                            </FormItem>\r\n                        </Col>\r\n                    </Row>\r\n                </Form>\r\n            </div>\r\n        )\r\n    }\r\n})\r\n", "desc": " ", "scss_code": ".demo6{\r\n    .remark textarea{\r\n        width: 100%;\r\n    }\r\n}" }];
 	
 	var Demo = function (_Component) {
 	    _inherits(Demo, _Component);
@@ -24919,11 +24919,11 @@
 	                    )
 	                ),
 	                _react2['default'].createElement(
-	                    'div',
-	                    { className: 'submit' },
+	                    FormItem,
+	                    { style: { 'paddingLeft': '106px' } },
 	                    _react2['default'].createElement(
 	                        _beeButton2['default'],
-	                        { shape: 'border', className: 'reset' },
+	                        { shape: 'border', className: 'reset', style: { "marginRight": "8px" } },
 	                        '\u53D6\u6D88'
 	                    ),
 	                    _react2['default'].createElement(
@@ -25156,7 +25156,7 @@
 	                ),
 	                _react2['default'].createElement(
 	                    FormItem,
-	                    { style: { 'paddingLeft': '110px' } },
+	                    { style: { 'paddingLeft': '106px' } },
 	                    _react2['default'].createElement(
 	                        _beeCheckbox2['default'],
 	                        _extends({
@@ -25168,11 +25168,11 @@
 	                    )
 	                ),
 	                _react2['default'].createElement(
-	                    'div',
-	                    { className: 'submit' },
+	                    FormItem,
+	                    { style: { 'paddingLeft': '106px' } },
 	                    _react2['default'].createElement(
 	                        _beeButton2['default'],
-	                        { shape: 'border', className: 'reset' },
+	                        { shape: 'border', className: 'reset', style: { "marginRight": "8px" } },
 	                        '\u53D6\u6D88'
 	                    ),
 	                    _react2['default'].createElement(
@@ -25254,12 +25254,15 @@
 	
 	    colors: _propTypes2["default"].oneOf(['', 'dark', 'success', 'info', 'warning', 'danger', 'primary']),
 	
-	    disabled: _propTypes2["default"].bool
+	    disabled: _propTypes2["default"].bool,
+	
+	    inverse: _propTypes2["default"].bool
 	
 	};
 	
 	var defaultProps = {
 	    disabled: false,
+	    inverse: false,
 	    colors: 'primary',
 	    clsPrefix: 'u-checkbox',
 	    defaultChecked: false,
@@ -25295,6 +25298,7 @@
 	    Checkbox.prototype.render = function render() {
 	        var _props = this.props,
 	            disabled = _props.disabled,
+	            inverse = _props.inverse,
 	            colors = _props.colors,
 	            size = _props.size,
 	            className = _props.className,
@@ -25305,7 +25309,7 @@
 	            clsPrefix = _props.clsPrefix,
 	            onDoubleClick = _props.onDoubleClick,
 	            onChange = _props.onChange,
-	            others = _objectWithoutProperties(_props, ['disabled', 'colors', 'size', 'className', 'indeterminate', 'onClick', 'children', 'checked', 'clsPrefix', 'onDoubleClick', 'onChange']);
+	            others = _objectWithoutProperties(_props, ['disabled', 'inverse', 'colors', 'size', 'className', 'indeterminate', 'onClick', 'children', 'checked', 'clsPrefix', 'onDoubleClick', 'onChange']);
 	
 	        var input = _react2["default"].createElement('input', _extends({}, others, {
 	            type: 'checkbox',
@@ -25316,6 +25320,10 @@
 	            'is-checked': this.state.checked,
 	            disabled: disabled
 	        };
+	
+	        if (inverse) {
+	            classes[clsPrefix + '-inverse'] = true;
+	        }
 	
 	        if (colors) {
 	            classes[clsPrefix + '-' + colors] = true;
@@ -25445,13 +25453,15 @@
 	var propTypes = {
 	    clsPrefix: _propTypes2["default"].string,
 	    value: _propTypes2["default"].array,
-	    onChange: _propTypes2["default"].func
+	    onChange: _propTypes2["default"].func,
+	    disabled: _propTypes2["default"].bool
 	};
 	
 	var defaultProps = {
 	    clsPrefix: 'u-checkbox-group',
 	    value: [],
-	    onChange: function onChange() {}
+	    onChange: function onChange() {},
+	    disabled: false
 	};
 	
 	var CheckboxGroup = function (_React$Component) {
@@ -25494,7 +25504,8 @@
 	
 	        var _props = this.props,
 	            clsPrefix = _props.clsPrefix,
-	            className = _props.className;
+	            className = _props.className,
+	            disabled = _props.disabled;
 	
 	        var classes = clsPrefix;
 	        if (className) classes += ' ' + className;
@@ -25506,7 +25517,8 @@
 	                    onChange: function onChange() {
 	                        _this2.changeHandle(child.props.value);
 	                    },
-	                    checked: _this2.state.values.indexOf(child.props.value) != -1
+	                    checked: _this2.state.values.indexOf(child.props.value) != -1,
+	                    disabled: disabled
 	                });
 	            })
 	        );
@@ -27420,6 +27432,8 @@
 	
 	var _beeFormControl2 = _interopRequireDefault(_beeFormControl);
 	
+	var _beeLayout = __webpack_require__(3);
+	
 	var _beeSelect = __webpack_require__(360);
 	
 	var _beeSelect2 = _interopRequireDefault(_beeSelect);
@@ -27464,6 +27478,14 @@
 	
 	var _beeButton2 = _interopRequireDefault(_beeButton);
 	
+	var _beeIcon = __webpack_require__(106);
+	
+	var _beeIcon2 = _interopRequireDefault(_beeIcon);
+	
+	var _beeUpload = __webpack_require__(633);
+	
+	var _beeUpload2 = _interopRequireDefault(_beeUpload);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
 	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
@@ -27481,6 +27503,25 @@
 	
 	var FormItem = _src2['default'].FormItem;
 	var Option = _beeSelect2['default'].Option;
+	var CheckboxGroup = _beeCheckbox2['default'].CheckboxGroup;
+	
+	var uploadProps = {
+	    name: 'file',
+	    action: '/upload.do',
+	    headers: {
+	        authorization: 'authorization-text'
+	    },
+	    onChange: function onChange(info) {
+	        if (info.file.status !== 'uploading') {
+	            console.log(info.file, info.fileList);
+	        }
+	        if (info.file.status === 'done') {
+	            console.log(info.file.name + ' file uploaded successfully');
+	        } else if (info.file.status === 'error') {
+	            console.log(info.file.name + ' file upload failed.');
+	        }
+	    }
+	};
 	
 	var Demo4 = _src2['default'].createForm()(function (_Component) {
 	    _inherits(Demo, _Component);
@@ -27501,7 +27542,8 @@
 	        };
 	
 	        _this.state = {
-	            selectedValue: 'man'
+	            selectedValue: '',
+	            selectedValue2: 'headquarters'
 	        };
 	        return _this;
 	    }
@@ -27524,7 +27566,8 @@
 	                    _react2['default'].createElement(
 	                        _beeLabel2['default'],
 	                        null,
-	                        '\u59D3\u540D'
+	                        _react2['default'].createElement(_beeIcon2['default'], { type: 'uf-mi', className: 'mast' }),
+	                        '\u7533\u8BF7\u4EBA'
 	                    ),
 	                    _react2['default'].createElement(_beeFormControl2['default'], _extends({ placeholder: '\u8BF7\u8F93\u5165\u59D3\u540D'
 	                    }, getFieldProps('name', {
@@ -27545,44 +27588,72 @@
 	                    _react2['default'].createElement(
 	                        _beeLabel2['default'],
 	                        null,
-	                        '\u8EAB\u4EFD\u8BC1\u53F7'
+	                        _react2['default'].createElement(_beeIcon2['default'], { type: 'uf-mi', className: 'mast' }),
+	                        '\u8054\u7CFB\u65B9\u5F0F'
 	                    ),
-	                    _react2['default'].createElement(_beeFormControl2['default'], _extends({ placeholder: '\u8BF7\u8F93\u5165\u8EAB\u4EFD\u8BC1\u53F7'
-	                    }, getFieldProps('id', {
+	                    _react2['default'].createElement(_beeFormControl2['default'], _extends({ placeholder: '\u8BF7\u8F93\u5165\u8054\u7CFB\u65B9\u5F0F'
+	                    }, getFieldProps('phone', {
 	                        validateTrigger: 'onBlur',
 	                        rules: [{
-	                            required: true, message: '请输入身份证号'
+	                            required: true, message: '请输入联系方式'
 	                        }, {
-	                            pattern: /^[1-9][0-9]{5}([1][9][0-9]{2}|[2][0][0|1][0-9])([0][1-9]|[1][0|1|2])([0][1-9]|[1|2][0-9]|[3][0|1])[0-9]{3}([0-9]|[X])$/, message: '身份证号格式不正确'
+	                            pattern: /^\d{11}$/, message: '手机号格式不正确'
 	                        }]
 	                    }))),
 	                    _react2['default'].createElement(
 	                        'span',
 	                        { className: 'error' },
-	                        getFieldError('id')
+	                        getFieldError('phone')
 	                    )
 	                ),
 	                _react2['default'].createElement(
 	                    FormItem,
-	                    { className: 'time' },
+	                    null,
 	                    _react2['default'].createElement(
 	                        _beeLabel2['default'],
 	                        null,
-	                        '\u51FA\u751F\u65E5\u671F'
+	                        '\u4F9B\u5E94\u5546\u540D\u79F0'
+	                    ),
+	                    _react2['default'].createElement(_beeFormControl2['default'], _extends({ placeholder: '\u8BF7\u8F93\u5165\u4F9B\u5E94\u5546\u540D\u79F0'
+	                    }, getFieldProps('supplierName', {
+	                        initialValue: ''
+	                    })))
+	                ),
+	                _react2['default'].createElement(
+	                    FormItem,
+	                    null,
+	                    _react2['default'].createElement(
+	                        _beeLabel2['default'],
+	                        null,
+	                        _react2['default'].createElement(_beeIcon2['default'], { type: 'uf-mi', className: 'mast' }),
+	                        '\u4F9B\u8D27\u4EA7\u54C1'
+	                    ),
+	                    _react2['default'].createElement(_beeFormControl2['default'], _extends({ placeholder: '\u8BF7\u8F93\u5165\u4F9B\u8D27\u4EA7\u54C1'
+	                    }, getFieldProps('supplyProducts', {
+	                        initialValue: ''
+	                    })))
+	                ),
+	                _react2['default'].createElement(
+	                    FormItem,
+	                    { className: 'time flex' },
+	                    _react2['default'].createElement(
+	                        _beeLabel2['default'],
+	                        { className: 'line-height-32' },
+	                        '\u9700\u6C42\u65E5\u671F'
 	                    ),
 	                    _react2['default'].createElement(_beeDatepicker2['default'], _extends({}, getFieldProps('time', {
 	                        validateTrigger: 'onBlur',
 	                        rules: [{
-	                            required: true, message: '请选择出生日期'
+	                            required: true, message: '请选择需求日期'
 	                        }, {
 	                            type: 'date', message: '日期格式不正确'
 	                        }]
 	                    }), {
-	                        placeholder: '请选择出生日期'
+	                        placeholder: '请选择需求日期'
 	                    })),
 	                    _react2['default'].createElement(
 	                        'span',
-	                        { className: 'error' },
+	                        { className: 'error line-height-32' },
 	                        getFieldError('time')
 	                    )
 	                ),
@@ -27592,35 +27663,15 @@
 	                    _react2['default'].createElement(
 	                        _beeLabel2['default'],
 	                        null,
-	                        '\u5E74\u9F84'
-	                    ),
-	                    _react2['default'].createElement(_beeFormControl2['default'], _extends({ placeholder: '\u8BF7\u8F93\u5165\u5E74\u9F84'
-	                    }, getFieldProps('age', {
-	                        validateTrigger: 'onBlur',
-	                        rules: [{
-	                            required: true, message: '请输入年龄'
-	                        }]
-	                    }))),
-	                    _react2['default'].createElement(
-	                        'span',
-	                        { className: 'error' },
-	                        getFieldError('age')
-	                    )
-	                ),
-	                _react2['default'].createElement(
-	                    FormItem,
-	                    null,
-	                    _react2['default'].createElement(
-	                        _beeLabel2['default'],
-	                        null,
-	                        '\u6027\u522B'
+	                        _react2['default'].createElement(_beeIcon2['default'], { type: 'uf-mi', className: 'mast' }),
+	                        '\u7269\u6599\u5173\u91CD\u7A0B\u5EA6'
 	                    ),
 	                    _react2['default'].createElement(
 	                        _beeRadio2['default'].RadioGroup,
 	                        _extends({
 	                            selectedValue: this.state.selectedValue
-	                        }, getFieldProps('sex', {
-	                            initialValue: 'man',
+	                        }, getFieldProps('importance', {
+	                            initialValue: '',
 	                            onChange: function onChange(value) {
 	                                self.setState({ selectedValue: value });
 	                            },
@@ -27629,13 +27680,18 @@
 	                        })),
 	                        _react2['default'].createElement(
 	                            _beeRadio2['default'],
-	                            { value: 'man' },
-	                            '\u7537'
+	                            { value: 'A' },
+	                            'A\uFF08\u5173\u952E\uFF09'
 	                        ),
 	                        _react2['default'].createElement(
 	                            _beeRadio2['default'],
-	                            { value: 'woman' },
-	                            '\u5973'
+	                            { value: 'B' },
+	                            'B\uFF08\u91CD\u8981\uFF09'
+	                        ),
+	                        _react2['default'].createElement(
+	                            _beeRadio2['default'],
+	                            { value: 'C' },
+	                            'C\uFF08\u4E00\u822C\uFF09'
 	                        )
 	                    )
 	                ),
@@ -27645,59 +27701,63 @@
 	                    _react2['default'].createElement(
 	                        _beeLabel2['default'],
 	                        null,
-	                        '\u5B66\u5386'
+	                        _react2['default'].createElement(_beeIcon2['default'], { type: 'uf-mi', className: 'mast' }),
+	                        '\u5F52\u5C5E\u90E8\u95E8'
 	                    ),
 	                    _react2['default'].createElement(
-	                        _beeSelect2['default'],
-	                        getFieldProps('education', {
-	                            initialValue: '',
-	                            rules: [{ required: true, message: '请选择学历' }]
+	                        _beeRadio2['default'].RadioGroup,
+	                        _extends({
+	                            selectedValue: this.state.selectedValue2
+	                        }, getFieldProps('department', {
+	                            initialValue: 'headquarters',
+	                            onChange: function onChange(value) {
+	                                self.setState({ selectedValue2: value });
+	                            },
+	
+	                            rules: [{ required: true }]
+	                        })),
+	                        _react2['default'].createElement(
+	                            _beeRadio2['default'],
+	                            { value: 'headquarters' },
+	                            '\u603B\u90E8'
+	                        ),
+	                        _react2['default'].createElement(
+	                            _beeRadio2['default'],
+	                            { value: 'businessUnit' },
+	                            '\u4E8B\u4E1A\u90E8'
+	                        )
+	                    )
+	                ),
+	                _react2['default'].createElement(
+	                    FormItem,
+	                    null,
+	                    _react2['default'].createElement(
+	                        _beeLabel2['default'],
+	                        null,
+	                        _react2['default'].createElement(_beeIcon2['default'], { type: 'uf-mi', className: 'mast' }),
+	                        '\u91C7\u8D2D\u7EC4'
+	                    ),
+	                    _react2['default'].createElement(
+	                        CheckboxGroup,
+	                        getFieldProps('purchasingGroup', {
+	                            initialValue: ['2'],
+	                            rules: [{ required: true, message: '请选择采购组' }]
 	                        }),
 	                        _react2['default'].createElement(
-	                            Option,
-	                            { value: '' },
-	                            '\u8BF7\u9009\u62E9'
+	                            _beeCheckbox2['default'],
+	                            { value: '1' },
+	                            '\u4EBA\u529B'
 	                        ),
 	                        _react2['default'].createElement(
-	                            Option,
-	                            { value: 'nothing' },
-	                            '\u65E0'
-	                        ),
-	                        _react2['default'].createElement(
-	                            Option,
-	                            { value: 'middle' },
-	                            '\u521D\u4E2D'
-	                        ),
-	                        _react2['default'].createElement(
-	                            Option,
-	                            { value: 'senior' },
-	                            '\u9AD8\u4E2D'
-	                        ),
-	                        _react2['default'].createElement(
-	                            Option,
-	                            { value: 'college1' },
-	                            '\u4E13\u79D1'
-	                        ),
-	                        _react2['default'].createElement(
-	                            Option,
-	                            { value: 'college2' },
-	                            '\u672C\u79D1'
-	                        ),
-	                        _react2['default'].createElement(
-	                            Option,
-	                            { value: 'graduate' },
-	                            '\u7814\u7A76\u751F\u53CA\u4EE5\u4E0A'
-	                        ),
-	                        _react2['default'].createElement(
-	                            Option,
-	                            { value: 'other' },
-	                            '\u5176\u5B83'
+	                            _beeCheckbox2['default'],
+	                            { value: '2' },
+	                            '\u8D22\u52A1'
 	                        )
 	                    ),
 	                    _react2['default'].createElement(
 	                        'span',
 	                        { className: 'error' },
-	                        getFieldError('education')
+	                        getFieldError('purchasingGroup')
 	                    )
 	                ),
 	                _react2['default'].createElement(
@@ -27715,21 +27775,40 @@
 	                ),
 	                _react2['default'].createElement(
 	                    FormItem,
-	                    { className: 'remarks' },
+	                    { className: 'flex' },
 	                    _react2['default'].createElement(
 	                        _beeLabel2['default'],
-	                        null,
+	                        { className: 'line-height-32' },
 	                        '\u5907\u6CE8'
 	                    ),
 	                    _react2['default'].createElement(_beeFormControl2['default'], _extends({ componentClass: 'textarea'
 	                    }, getFieldProps('remark', {})))
 	                ),
 	                _react2['default'].createElement(
-	                    'div',
-	                    { className: 'submit' },
+	                    FormItem,
+	                    null,
+	                    _react2['default'].createElement(
+	                        _beeLabel2['default'],
+	                        null,
+	                        '\u6587\u4EF6'
+	                    ),
+	                    _react2['default'].createElement(
+	                        _beeUpload2['default'],
+	                        uploadProps,
+	                        _react2['default'].createElement(
+	                            _beeButton2['default'],
+	                            { shape: 'border' },
+	                            _react2['default'].createElement(_beeIcon2['default'], { type: 'uf-upload' }),
+	                            ' Click to Upload'
+	                        )
+	                    )
+	                ),
+	                _react2['default'].createElement(
+	                    FormItem,
+	                    { style: { 'paddingLeft': '106px' } },
 	                    _react2['default'].createElement(
 	                        _beeButton2['default'],
-	                        { shape: 'border', className: 'reset' },
+	                        { shape: 'border', className: 'reset', style: { "marginRight": "8px" } },
 	                        '\u53D6\u6D88'
 	                    ),
 	                    _react2['default'].createElement(
@@ -40098,6 +40177,10 @@
 	
 	var _beeIcon2 = _interopRequireDefault(_beeIcon);
 	
+	var _classnames = __webpack_require__(5);
+	
+	var _classnames2 = _interopRequireDefault(_classnames);
+	
 	var _beeInputGroup = __webpack_require__(591);
 	
 	var _beeInputGroup2 = _interopRequireDefault(_beeInputGroup);
@@ -40120,6 +40203,8 @@
 	
 	var timePickerElement = _react2["default"].createElement(_Panel2["default"], { defaultValue: (0, _moment2["default"])((0, _moment2["default"])().format("HH:mm:ss"), "HH:mm:ss") });
 	
+	var timerDatePicker = true;
+	
 	var DatePicker = function (_Component) {
 	  _inherits(DatePicker, _Component);
 	
@@ -40137,6 +40222,7 @@
 	      inputValue: props.value && props.value.format(props.format) || props.defaultValue && props.defaultValue.format(props.format) || '',
 	      showClose: false
 	    };
+	
 	    return _this;
 	  }
 	
@@ -40182,6 +40268,7 @@
 	    var calendar = _react2["default"].createElement(_rcCalendar2["default"], _extends({
 	      timePicker: props.showTime ? timePickerElement : null
 	    }, props, {
+	      onSelect: this.handleSelect,
 	      onChange: this.handleCalendarChange,
 	      value: this.state.value
 	    }));
@@ -40195,10 +40282,10 @@
 	      keyboardInputProps.readOnly = true;
 	      keyboardInputProps.value = value && value.format(props.format) || "";
 	    }
-	
+	    var classes = (0, _classnames2["default"])(props.className, "datepicker-container");
 	    return _react2["default"].createElement(
 	      "div",
-	      { className: props.className },
+	      { className: classes },
 	      _react2["default"].createElement(
 	        _Picker2["default"],
 	        _extends({
@@ -40275,7 +40362,7 @@
 	        if (e.keyCode == _tinperBeeCore.KeyCode.DELETE) {
 	          input.value = '';
 	          _this3.props.onChange('', '');
-	        } else if (e.keyCode == _tinperBeeCore.KeyCode.ESC) {
+	        } else if (e.keyCode == _tinperBeeCore.KeyCode.ESC || e.keyCode == _tinperBeeCore.KeyCode.ENTER) {
 	          _this3.setState({
 	            open: false
 	          });
@@ -40292,12 +40379,20 @@
 	    var self = _this3;
 	    _this3.setState({
 	      open: open
+	    }, function () {
+	      if (open) {
+	        setTimeout(function () {
+	          self.inputFocus();
+	        }, 0);
+	      }
 	    });
-	    setTimeout(function () {
-	      var value = self.state.value;
-	      props.onOpenChange(open, value, value && value.format(props.format) || '');
-	      self.inputFocus();
-	    }, 200);
+	    var value = self.state.value;
+	    props.onOpenChange(open, value, value && value.format(props.format) || '');
+	    if (open) {
+	      setTimeout(function () {
+	        self.inputFocus();
+	      }, 200);
+	    }
 	  };
 	
 	  this.handleCalendarChange = function (value) {
@@ -40309,7 +40404,14 @@
 	  this.handleChange = function (value) {
 	    var props = _this3.props;
 	    _this3.setState({ value: value, inputValue: value && value.format(props.format) || '' });
-	    props.onChange(value, value && value.format(props.format) || '');
+	    if (timerDatePicker) {
+	      clearTimeout(_this3.timerout);
+	      props.onChange(value, value && value.format(props.format) || '');
+	      timerDatePicker = false;
+	      _this3.timerout = window.setTimeout(function () {
+	        timerDatePicker = true;
+	      }, 300);
+	    }
 	  };
 	
 	  this.onClick = function (e) {
@@ -40391,6 +40493,14 @@
 	      value: ''
 	    });
 	    _this3.props.onChange && _this3.props.onChange('', '');
+	  };
+	
+	  this.handleSelect = function (value) {
+	    _this3.setState({
+	      value: value
+	    });
+	    _this3.props.onSelect && _this3.props.onSelect(value, value && value.format(_this3.props.format) || '');
+	    // ReactDOM.findDOMNode(this.outInput).focus()
 	  };
 	};
 	
@@ -62359,6 +62469,10 @@
 	
 	var _beeInputGroup2 = _interopRequireDefault(_beeInputGroup);
 	
+	var _classnames = __webpack_require__(5);
+	
+	var _classnames2 = _interopRequireDefault(_classnames);
+	
 	var _zh_CN = __webpack_require__(596);
 	
 	var _zh_CN2 = _interopRequireDefault(_zh_CN);
@@ -62447,9 +62561,10 @@
 	    var monthCalendar = _react2["default"].createElement(_MonthCalendar2["default"], _extends({}, props, {
 	      onChange: this.onChange
 	    }));
+	    var classes = (0, _classnames2["default"])(props.className, "datepicker-container");
 	    return _react2["default"].createElement(
 	      "div",
-	      null,
+	      { className: classes },
 	      _react2["default"].createElement(
 	        _Picker2["default"],
 	        {
@@ -64077,6 +64192,10 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
+	var _classnames = __webpack_require__(5);
+	
+	var _classnames2 = _interopRequireDefault(_classnames);
+	
 	var _Picker = __webpack_require__(585);
 	
 	var _Picker2 = _interopRequireDefault(_Picker);
@@ -64294,9 +64413,10 @@
 	      showToday: false,
 	      onClear: this.onClear
 	    });
+	    var classes = (0, _classnames2["default"])(props.className, "datepicker-container");
 	    return _react2["default"].createElement(
 	      "div",
-	      null,
+	      { className: classes },
 	      _react2["default"].createElement(
 	        _Picker2["default"],
 	        _extends({
@@ -64389,6 +64509,10 @@
 	
 	var _beeIcon2 = _interopRequireDefault(_beeIcon);
 	
+	var _classnames = __webpack_require__(5);
+	
+	var _classnames2 = _interopRequireDefault(_classnames);
+	
 	var _moment = __webpack_require__(439);
 	
 	var _moment2 = _interopRequireDefault(_moment);
@@ -64455,10 +64579,10 @@
 	        }, props, { focus: function focus() {},
 	            showDateInput: true
 	        }));
-	
+	        var classes = (0, _classnames2["default"])(props.className, "datepicker-container");
 	        return _react2["default"].createElement(
 	            "div",
-	            null,
+	            { className: classes },
 	            _react2["default"].createElement(
 	                _Picker2["default"],
 	                _extends({
@@ -73279,6 +73403,2376 @@
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _Upload = __webpack_require__(634);
+	
+	var _Upload2 = _interopRequireDefault(_Upload);
+	
+	var _uploadList = __webpack_require__(639);
+	
+	var _uploadList2 = _interopRequireDefault(_uploadList);
+	
+	var _getFileItem = __webpack_require__(643);
+	
+	var _getFileItem2 = _interopRequireDefault(_getFileItem);
+	
+	var _classnames = __webpack_require__(5);
+	
+	var _classnames2 = _interopRequireDefault(_classnames);
+	
+	var _objectAssign = __webpack_require__(44);
+	
+	var _objectAssign2 = _interopRequireDefault(_objectAssign);
+	
+	var _propTypes = __webpack_require__(6);
+	
+	var _propTypes2 = _interopRequireDefault(_propTypes);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+	
+	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
+	
+	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
+	
+	//import { UploadProps } from './interface';
+	
+	function T() {
+	  return true;
+	}
+	
+	// Fix IE file.status problem
+	// via coping a new Object
+	function fileToObject(file) {
+	  return {
+	    lastModified: file.lastModified,
+	    lastModifiedDate: file.lastModifiedDate,
+	    name: file.filename || file.name,
+	    size: file.size,
+	    type: file.type,
+	    uid: file.uid,
+	    response: file.response,
+	    error: file.error,
+	    percent: 0,
+	    originFileObj: file,
+	    status: null
+	  };
+	}
+	
+	/**
+	 * 生成Progress percent: 0.1 -> 0.98
+	 *   - for ie
+	 */
+	function genPercentAdd() {
+	  var k = 0.1;
+	  var i = 0.01;
+	  var end = 0.98;
+	  return function (s) {
+	    var start = s;
+	    if (start >= end) {
+	      return start;
+	    }
+	
+	    start += k;
+	    k = k - i;
+	    if (k < 0.001) {
+	      k = 0.001;
+	    }
+	    return start * 100;
+	  };
+	}
+	
+	function Dragger(props) {
+	  return _react2["default"].createElement(Upload, _extends({}, props, { type: 'drag', style: { height: props.height } }));
+	}
+	
+	var File = {
+	  uid: _propTypes2["default"].number,
+	  size: _propTypes2["default"].number,
+	  name: _propTypes2["default"].string,
+	  lastModifiedDate: _propTypes2["default"].date,
+	  url: _propTypes2["default"].string,
+	  status: _propTypes2["default"].oneOf(['error', 'success', 'done', 'uploading', 'removed']),
+	  percent: _propTypes2["default"].number,
+	  thumbUrl: _propTypes2["default"].string,
+	  originFileObj: File
+	};
+	
+	var UploadChangeParam = {
+	  file: File,
+	  fileList: _propTypes2["default"].array,
+	  event: _propTypes2["default"].object
+	};
+	
+	var propTypes = {
+	  type: _propTypes2["default"].oneOf(['drag', 'select']),
+	  name: _propTypes2["default"].string,
+	  defaultFileList: _propTypes2["default"].array,
+	  fileList: _propTypes2["default"].array,
+	  action: _propTypes2["default"].string,
+	  data: _propTypes2["default"].oneOfType([_propTypes2["default"].object, _propTypes2["default"].func]),
+	  headers: _propTypes2["default"].oneOfType([_propTypes2["default"].object, _propTypes2["default"].string]),
+	  showUploadList: _propTypes2["default"].bool,
+	  multiple: _propTypes2["default"].bool,
+	  accept: _propTypes2["default"].string,
+	  beforeUpload: _propTypes2["default"].func,
+	  onChange: _propTypes2["default"].func,
+	  listType: _propTypes2["default"].oneOf(['text', 'picture', 'picture-card']),
+	  className: _propTypes2["default"].string,
+	  onPreview: _propTypes2["default"].func,
+	  onRemove: _propTypes2["default"].func,
+	  supportServerRender: _propTypes2["default"].bool,
+	  style: _propTypes2["default"].object,
+	  disabled: _propTypes2["default"].bool,
+	  clsPrefix: _propTypes2["default"].string
+	};
+	
+	var defaultProps = {
+	  clsPrefix: 'u-upload',
+	  type: 'select',
+	  multiple: false,
+	  action: '',
+	  data: {},
+	  accept: '',
+	  beforeUpload: T,
+	  showUploadList: true,
+	  listType: 'text', // or pictrue
+	  className: '',
+	  disabled: false,
+	  supportServerRender: true
+	};
+	
+	var Upload = function (_Component) {
+	  _inherits(Upload, _Component);
+	
+	  function Upload(props) {
+	    _classCallCheck(this, Upload);
+	
+	    var _this = _possibleConstructorReturn(this, _Component.call(this, props));
+	
+	    _this.onStart = function (file) {
+	      var targetItem = void 0;
+	      var nextFileList = _this.state.fileList.concat();
+	      if (file.length > 0) {
+	        targetItem = file.map(function (f) {
+	          var fileObject = fileToObject(f);
+	          fileObject.status = 'uploading';
+	          return fileObject;
+	        });
+	        nextFileList = nextFileList.concat(targetItem);
+	      } else {
+	        targetItem = fileToObject(file);
+	        targetItem.status = 'uploading';
+	        nextFileList.push(targetItem);
+	      }
+	      _this.onChange({
+	        file: targetItem,
+	        fileList: nextFileList
+	      });
+	      // fix ie progress
+	      //if (!(window as any).FormData) {
+	      if (!window.FormData) {
+	        _this.autoUpdateProgress(0, targetItem);
+	      }
+	    };
+	
+	    _this.onSuccess = function (response, file) {
+	      _this.clearProgressTimer();
+	      try {
+	        if (typeof response === 'string') {
+	          response = JSON.parse(response);
+	        }
+	      } catch (e) {/* do nothing */
+	      }
+	      var fileList = _this.state.fileList;
+	      var targetItem = (0, _getFileItem2["default"])(file, fileList);
+	      // removed
+	      if (!targetItem) {
+	        return;
+	      }
+	      targetItem.status = 'done';
+	      targetItem.response = response;
+	      _this.onChange({
+	        file: targetItem,
+	        fileList: fileList
+	      });
+	    };
+	
+	    _this.onProgress = function (e, file) {
+	      var fileList = _this.state.fileList;
+	      var targetItem = (0, _getFileItem2["default"])(file, fileList);
+	      // removed
+	      if (!targetItem) {
+	        return;
+	      }
+	      targetItem.percent = e.percent;
+	      _this.onChange({
+	        event: e,
+	        file: targetItem,
+	        fileList: _this.state.fileList
+	      });
+	    };
+	
+	    _this.onError = function (error, response, file) {
+	      _this.clearProgressTimer();
+	      var fileList = _this.state.fileList;
+	      var targetItem = (0, _getFileItem2["default"])(file, fileList);
+	      // removed
+	      if (!targetItem) {
+	        return;
+	      }
+	      targetItem.error = error;
+	      targetItem.response = response;
+	      targetItem.status = 'error';
+	      _this.handleRemove(targetItem);
+	    };
+	
+	    _this.handleManualRemove = function (file) {
+	      _this.refs.upload.abort(file);
+	      file.status = 'removed'; // eslint-disable-line
+	      _this.handleRemove(file);
+	    };
+	
+	    _this.onChange = function (info) {
+	      if (!('fileList' in _this.props)) {
+	        _this.setState({ fileList: info.fileList });
+	      }
+	
+	      var onChange = _this.props.onChange;
+	      if (onChange) {
+	        onChange(info);
+	      }
+	    };
+	
+	    _this.onFileDrop = function (e) {
+	      _this.setState({
+	        dragState: e.type
+	      });
+	    };
+	
+	    _this.state = {
+	      fileList: _this.props.fileList || _this.props.defaultFileList || [],
+	      dragState: 'drop'
+	    };
+	    return _this;
+	  }
+	
+	  Upload.prototype.autoUpdateProgress = function autoUpdateProgress(_, file) {
+	    var _this2 = this;
+	
+	    var getPercent = genPercentAdd();
+	    var curPercent = 0;
+	    this.progressTimer = setInterval(function () {
+	      curPercent = getPercent(curPercent);
+	      _this2.onProgress({
+	        percent: curPercent
+	      }, file);
+	    }, 200);
+	  };
+	
+	  Upload.prototype.removeFile = function removeFile(file) {
+	    var fileList = this.state.fileList;
+	    var targetItem = (0, _getFileItem2["default"])(file, fileList);
+	    var index = fileList.indexOf(targetItem);
+	    if (index !== -1) {
+	      fileList.splice(index, 1);
+	      return fileList;
+	    }
+	    return null;
+	  };
+	
+	  Upload.prototype.handleRemove = function handleRemove(file) {
+	    var onRemove = this.props.onRemove;
+	    if (onRemove) {
+	      onRemove(file);
+	    }
+	    var fileList = this.removeFile(file);
+	    if (fileList) {
+	      this.onChange({
+	        file: file,
+	        fileList: fileList
+	      });
+	    }
+	  };
+	
+	  Upload.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
+	    if ('fileList' in nextProps) {
+	      this.setState({
+	        fileList: nextProps.fileList || []
+	      });
+	    }
+	  };
+	
+	  Upload.prototype.clearProgressTimer = function clearProgressTimer() {
+	    clearInterval(this.progressTimer);
+	  };
+	
+	  Upload.prototype.render = function render() {
+	    var _classNames2;
+	
+	    var _props = this.props,
+	        _props$clsPrefix = _props.clsPrefix,
+	        clsPrefix = _props$clsPrefix === undefined ? '' : _props$clsPrefix,
+	        showUploadList = _props.showUploadList,
+	        listType = _props.listType,
+	        onPreview = _props.onPreview,
+	        type = _props.type,
+	        disabled = _props.disabled,
+	        children = _props.children,
+	        className = _props.className;
+	
+	
+	    var rcUploadProps = (0, _objectAssign2["default"])({}, this.props, {
+	      onStart: this.onStart,
+	      onError: this.onError,
+	      onProgress: this.onProgress,
+	      onSuccess: this.onSuccess
+	    });
+	    delete rcUploadProps.className;
+	
+	    var uploadList = showUploadList ? _react2["default"].createElement(_uploadList2["default"], {
+	      listType: listType,
+	      items: this.state.fileList,
+	      onPreview: onPreview,
+	      onRemove: this.handleManualRemove
+	    }) : null;
+	
+	    if (type === 'drag') {
+	      var _classNames;
+	
+	      var dragCls = (0, _classnames2["default"])(clsPrefix, (_classNames = {}, _defineProperty(_classNames, clsPrefix + '-drag', true), _defineProperty(_classNames, clsPrefix + '-drag-uploading', this.state.fileList.some(function (file) {
+	        return file.status === 'uploading';
+	      })), _defineProperty(_classNames, clsPrefix + '-drag-hover', this.state.dragState === 'dragover'), _defineProperty(_classNames, clsPrefix + '-disabled', disabled), _classNames));
+	      return _react2["default"].createElement(
+	        'span',
+	        { className: className },
+	        _react2["default"].createElement(
+	          'div',
+	          {
+	            className: dragCls,
+	            onDrop: this.onFileDrop,
+	            onDragOver: this.onFileDrop,
+	            onDragLeave: this.onFileDrop
+	          },
+	          _react2["default"].createElement(
+	            _Upload2["default"],
+	            _extends({}, rcUploadProps, { ref: 'upload', className: clsPrefix + '-btn' }),
+	            _react2["default"].createElement(
+	              'div',
+	              { className: clsPrefix + '-drag-container' },
+	              children
+	            )
+	          )
+	        ),
+	        uploadList
+	      );
+	    }
+	
+	    var uploadButtonCls = (0, _classnames2["default"])(clsPrefix, (_classNames2 = {}, _defineProperty(_classNames2, clsPrefix + '-select', true), _defineProperty(_classNames2, clsPrefix + '-select-' + listType, true), _defineProperty(_classNames2, clsPrefix + '-disabled', disabled), _classNames2));
+	
+	    var uploadButton = _react2["default"].createElement(
+	      'div',
+	      { className: uploadButtonCls, style: { display: children ? '' : 'none' } },
+	      _react2["default"].createElement(_Upload2["default"], _extends({}, rcUploadProps, { ref: 'upload' }))
+	    );
+	
+	    if (listType === 'picture-card') {
+	      return _react2["default"].createElement(
+	        'span',
+	        { className: className },
+	        uploadList,
+	        uploadButton
+	      );
+	    }
+	    return _react2["default"].createElement(
+	      'span',
+	      { className: className },
+	      uploadButton,
+	      uploadList
+	    );
+	  };
+	
+	  return Upload;
+	}(_react.Component);
+	
+	Upload.propTypes = propTypes;
+	Upload.defaultProps = defaultProps;
+	Upload.Dragger = Dragger;
+	exports["default"] = Upload;
+	module.exports = exports['default'];
+
+/***/ }),
+/* 634 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _AjaxUploader = __webpack_require__(635);
+	
+	var _AjaxUploader2 = _interopRequireDefault(_AjaxUploader);
+	
+	var _IframeUploader = __webpack_require__(638);
+	
+	var _IframeUploader2 = _interopRequireDefault(_IframeUploader);
+	
+	var _propTypes = __webpack_require__(6);
+	
+	var _propTypes2 = _interopRequireDefault(_propTypes);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+	
+	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); } /**
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               * This source code is quoted from rc-upload.
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               * homepage: https://github.com/react-component/upload
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               */
+	
+	
+	function empty() {}
+	
+	var propTypes = {
+	  component: _propTypes2["default"].string,
+	  style: _propTypes2["default"].object,
+	  clsPrefix: _propTypes2["default"].string,
+	  action: _propTypes2["default"].string,
+	  name: _propTypes2["default"].string,
+	  multipart: _propTypes2["default"].bool,
+	  onError: _propTypes2["default"].func,
+	  onSuccess: _propTypes2["default"].func,
+	  onProgress: _propTypes2["default"].func,
+	  onStart: _propTypes2["default"].func,
+	  data: _propTypes2["default"].oneOfType([_propTypes2["default"].object, _propTypes2["default"].func]),
+	  headers: _propTypes2["default"].object,
+	  accept: _propTypes2["default"].string,
+	  multiple: _propTypes2["default"].bool,
+	  disabled: _propTypes2["default"].bool,
+	  beforeUpload: _propTypes2["default"].func,
+	  customRequest: _propTypes2["default"].func,
+	  onReady: _propTypes2["default"].func,
+	  withCredentials: _propTypes2["default"].bool,
+	  supportServerRender: _propTypes2["default"].bool
+	};
+	var defaultProps = {
+	  component: 'span',
+	  clsPrefix: 'u-upload',
+	  data: {},
+	  headers: {},
+	  name: 'file',
+	  multipart: false,
+	  onProgress: empty,
+	  onReady: empty,
+	  onStart: empty,
+	  onError: empty,
+	  onSuccess: empty,
+	  supportServerRender: false,
+	  multiple: false,
+	  beforeUpload: null,
+	  customRequest: null,
+	  withCredentials: false
+	};
+	
+	var Upload = function (_Component) {
+	  _inherits(Upload, _Component);
+	
+	  function Upload(props) {
+	    _classCallCheck(this, Upload);
+	
+	    var _this = _possibleConstructorReturn(this, _Component.call(this, props));
+	
+	    _this.state = {
+	      Component: null
+	    };
+	    _this.getComponent = _this.getComponent.bind(_this);
+	    _this.abort = _this.abort.bind(_this);
+	    return _this;
+	  }
+	
+	  Upload.prototype.componentDidMount = function componentDidMount() {
+	    if (this.props.supportServerRender) {
+	      /* eslint react/no-did-mount-set-state:0 */
+	      this.setState({
+	        Component: this.getComponent()
+	      }, this.props.onReady);
+	    }
+	  };
+	
+	  Upload.prototype.getComponent = function getComponent() {
+	    return typeof FormData !== 'undefined' ? _AjaxUploader2["default"] : _IframeUploader2["default"];
+	  };
+	
+	  Upload.prototype.abort = function abort(file) {
+	    this.refs.inner.abort(file);
+	  };
+	
+	  Upload.prototype.render = function render() {
+	    if (this.props.supportServerRender) {
+	      var _Component2 = this.state.Component;
+	
+	      if (_Component2) {
+	        return _react2["default"].createElement(_Component2, _extends({}, this.props, { ref: 'inner' }));
+	      }
+	      return null;
+	    }
+	    var Component = this.getComponent();
+	    return _react2["default"].createElement(Component, _extends({}, this.props, { ref: 'inner' }));
+	  };
+	
+	  return Upload;
+	}(_react.Component);
+	
+	;
+	
+	Upload.propTypes = propTypes;
+	Upload.defaultProps = defaultProps;
+	exports["default"] = Upload;
+	module.exports = exports['default'];
+
+/***/ }),
+/* 635 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _classnames = __webpack_require__(5);
+	
+	var _classnames2 = _interopRequireDefault(_classnames);
+	
+	var _request = __webpack_require__(636);
+	
+	var _request2 = _interopRequireDefault(_request);
+	
+	var _uid = __webpack_require__(637);
+	
+	var _uid2 = _interopRequireDefault(_uid);
+	
+	var _propTypes = __webpack_require__(6);
+	
+	var _propTypes2 = _interopRequireDefault(_propTypes);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+	
+	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
+	
+	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); } /**
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               * This source code is quoted from rc-upload.
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               * homepage: https://github.com/react-component/upload
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               */
+	
+	
+	var propTypes = {
+	  component: _propTypes2["default"].string,
+	  style: _propTypes2["default"].object,
+	  clsPrefix: _propTypes2["default"].string,
+	  className: _propTypes2["default"].string,
+	  multiple: _propTypes2["default"].bool,
+	  disabled: _propTypes2["default"].bool,
+	  accept: _propTypes2["default"].string,
+	  children: _propTypes2["default"].any,
+	  onStart: _propTypes2["default"].func,
+	  data: _propTypes2["default"].oneOfType([_propTypes2["default"].object, _propTypes2["default"].func]),
+	  headers: _propTypes2["default"].object,
+	  beforeUpload: _propTypes2["default"].func,
+	  customRequest: _propTypes2["default"].func,
+	  withCredentials: _propTypes2["default"].bool
+	};
+	
+	var AjaxUploader = function (_Component) {
+	  _inherits(AjaxUploader, _Component);
+	
+	  function AjaxUploader(props) {
+	    _classCallCheck(this, AjaxUploader);
+	
+	    var _this = _possibleConstructorReturn(this, _Component.call(this, props));
+	
+	    _this.reqs = {};
+	    _this.state = {
+	      uid: (0, _uid2["default"])()
+	    };
+	
+	    _this.onChange = _this.onChange.bind(_this);
+	    _this.onClick = _this.onClick.bind(_this);
+	    _this.onKeyDown = _this.onKeyDown.bind(_this);
+	    _this.onFileDrop = _this.onFileDrop.bind(_this);
+	    _this.uploadFiles = _this.uploadFiles.bind(_this);
+	
+	    _this.upload = _this.upload.bind(_this);
+	    _this.post = _this.post.bind(_this);
+	    _this.reset = _this.reset.bind(_this);
+	    _this.abort = _this.abort.bind(_this);
+	    return _this;
+	  }
+	
+	  AjaxUploader.prototype.componentWillUnmount = function componentWillUnmount() {
+	    this.mounted = false;
+	    this.abort();
+	  };
+	
+	  AjaxUploader.prototype.componentDidMount = function componentDidMount() {
+	    this.mounted = true;
+	  };
+	
+	  AjaxUploader.prototype.onChange = function onChange(e) {
+	    var files = e.target.files;
+	    this.uploadFiles(files);
+	    this.reset();
+	  };
+	
+	  AjaxUploader.prototype.onClick = function onClick() {
+	    var el = this.refs.file;
+	    if (!el) {
+	      return;
+	    }
+	    el.click();
+	  };
+	
+	  AjaxUploader.prototype.onKeyDown = function onKeyDown(e) {
+	    if (e.key === 'Enter') {
+	      this.onClick();
+	    }
+	  };
+	
+	  AjaxUploader.prototype.onFileDrop = function onFileDrop(e) {
+	    if (e.type === 'dragover') {
+	      e.preventDefault();
+	      return;
+	    }
+	
+	    var files = e.dataTransfer.files;
+	    this.uploadFiles(files);
+	
+	    e.preventDefault();
+	  };
+	
+	  AjaxUploader.prototype.uploadFiles = function uploadFiles(files) {
+	    var postFiles = Array.prototype.slice.call(files);
+	    var len = postFiles.length;
+	    for (var i = 0; i < len; i++) {
+	      var file = postFiles[i];
+	      file.uid = (0, _uid2["default"])();
+	      this.upload(file, postFiles);
+	    }
+	  };
+	
+	  AjaxUploader.prototype.upload = function upload(file, fileList) {
+	    var _this2 = this;
+	
+	    var props = this.props;
+	
+	    if (!props.beforeUpload) {
+	      // always async in case use react state to keep fileList
+	      return setTimeout(function () {
+	        return _this2.post(file);
+	      }, 0);
+	    }
+	
+	    var before = props.beforeUpload(file, fileList);
+	    if (before && before.then) {
+	      before.then(function (processedFile) {
+	        var processedFileType = Object.prototype.toString.call(processedFile);
+	        if (processedFileType === '[object File]' || processedFileType === '[object Blob]') {
+	          _this2.post(processedFile);
+	        } else {
+	          _this2.post(file);
+	        }
+	      });
+	    } else if (before !== false) {
+	      setTimeout(function () {
+	        return _this2.post(file);
+	      }, 0);
+	    }
+	  };
+	
+	  AjaxUploader.prototype.post = function post(file) {
+	    var _this3 = this;
+	
+	    if (!this.mounted) {
+	      return;
+	    }
+	    var props = this.props;
+	    var data = props.data;
+	    var onStart = props.onStart;
+	
+	    if (typeof data === 'function') {
+	      data = data(file);
+	    }
+	    var uid = file.uid;
+	
+	    var request = props.customRequest || _request2["default"];
+	    this.reqs[uid] = request({
+	      action: props.action,
+	      filename: props.name,
+	      file: file,
+	      data: data,
+	      headers: props.headers,
+	      withCredentials: props.withCredentials,
+	      onProgress: function onProgress(e) {
+	        props.onProgress(e, file);
+	      },
+	      onSuccess: function onSuccess(ret) {
+	        delete _this3.reqs[uid];
+	        props.onSuccess(ret, file);
+	      },
+	      onError: function onError(err, ret) {
+	        delete _this3.reqs[uid];
+	        props.onError(err, ret, file);
+	      }
+	    });
+	    onStart(file);
+	  };
+	
+	  AjaxUploader.prototype.reset = function reset() {
+	    this.setState({
+	      uid: (0, _uid2["default"])()
+	    });
+	  };
+	
+	  AjaxUploader.prototype.abort = function abort(file) {
+	    var reqs = this.reqs;
+	
+	    if (file) {
+	      var uid = file;
+	      if (file && file.uid) {
+	        uid = file.uid;
+	      }
+	      if (reqs[uid]) {
+	        reqs[uid].abort();
+	        delete reqs[uid];
+	      }
+	    } else {
+	      Object.keys(reqs).forEach(function (uid) {
+	        reqs[uid].abort();
+	        delete reqs[uid];
+	      });
+	    }
+	  };
+	
+	  AjaxUploader.prototype.render = function render() {
+	    var _classNames;
+	
+	    var _props = this.props,
+	        Tag = _props.component,
+	        clsPrefix = _props.clsPrefix,
+	        className = _props.className,
+	        disabled = _props.disabled,
+	        style = _props.style,
+	        multiple = _props.multiple,
+	        accept = _props.accept,
+	        children = _props.children;
+	
+	    var cls = (0, _classnames2["default"])((_classNames = {}, _defineProperty(_classNames, clsPrefix, true), _defineProperty(_classNames, clsPrefix + '-disabled', disabled), _defineProperty(_classNames, className, className), _classNames));
+	    var events = disabled ? {} : {
+	      onClick: this.onClick,
+	      onKeyDown: this.onKeyDown,
+	      onDrop: this.onFileDrop,
+	      onDragOver: this.onFileDrop,
+	      tabIndex: '0'
+	    };
+	    return _react2["default"].createElement(
+	      Tag,
+	      _extends({}, events, {
+	        className: cls,
+	        role: 'button',
+	        style: style
+	      }),
+	      _react2["default"].createElement('input', {
+	        type: 'file',
+	        ref: 'file',
+	        key: this.state.uid,
+	        style: { display: 'none' },
+	        accept: accept,
+	        multiple: multiple,
+	        onChange: this.onChange
+	      }),
+	      children
+	    );
+	  };
+	
+	  return AjaxUploader;
+	}(_react.Component);
+	
+	;
+	AjaxUploader.propTypes = propTypes;
+	exports["default"] = AjaxUploader;
+	module.exports = exports['default'];
+
+/***/ }),
+/* 636 */
+/***/ (function(module, exports) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports["default"] = upload;
+	/**
+	* This source code is quoted from rc-upload.
+	* homepage: https://github.com/react-component/upload
+	*/
+	function getError(option, xhr) {
+	  var msg = 'cannot post ' + option.action + ' ' + xhr.status + '\'';
+	  var err = new Error(msg);
+	  err.status = xhr.status;
+	  err.method = 'post';
+	  err.url = option.action;
+	  return err;
+	}
+	
+	function getBody(xhr) {
+	  var text = xhr.responseText || xhr.response;
+	  if (!text) {
+	    return text;
+	  }
+	
+	  try {
+	    return JSON.parse(text);
+	  } catch (e) {
+	    return text;
+	  }
+	}
+	
+	// option {
+	//  onProgress: (event: { percent: number }): void,
+	//  onError: (event: Error, body?: Object): void,
+	//  onSuccess: (body: Object): void,
+	//  data: Object,
+	//  filename: String,
+	//  file: File,
+	//  withCredentials: Boolean,
+	//  action: String,
+	//  headers: Object,
+	// }
+	function upload(option) {
+	  var xhr = new XMLHttpRequest();
+	  if (xhr.upload) {
+	    xhr.upload.onprogress = function progress(e) {
+	      if (e.total > 0) {
+	        e.percent = e.loaded / e.total * 100;
+	      }
+	      option.onProgress(e);
+	    };
+	  }
+	
+	  var formData = new FormData();
+	
+	  if (option.data) {
+	    Object.keys(option.data).map(function (key) {
+	      formData.append(key, option.data[key]);
+	    });
+	  }
+	
+	  formData.append(option.filename, option.file);
+	
+	  xhr.onerror = function error(e) {
+	    option.onError(e);
+	  };
+	
+	  xhr.onload = function onload() {
+	    // allow success when 2xx status
+	    // see https://github.com/react-component/upload/issues/34
+	    if (xhr.status < 200 || xhr.status >= 300) {
+	      return option.onError(getError(option, xhr), getBody(xhr));
+	    }
+	
+	    option.onSuccess(getBody(xhr));
+	  };
+	
+	  xhr.open('post', option.action, true);
+	
+	  // Has to be after `.open()`. See https://github.com/enyo/dropzone/issues/179
+	  if (option.withCredentials && 'withCredentials' in xhr) {
+	    xhr.withCredentials = true;
+	  }
+	
+	  var headers = option.headers || {};
+	
+	  // when set headers['X-Requested-With'] = null , can close default XHR header
+	  // see https://github.com/react-component/upload/issues/33
+	  if (headers['X-Requested-With'] !== null) {
+	    xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+	  }
+	
+	  for (var h in headers) {
+	    if (headers.hasOwnProperty(h) && headers[h] !== null) {
+	      xhr.setRequestHeader(h, headers[h]);
+	    }
+	  }
+	  xhr.send(formData);
+	
+	  return {
+	    abort: function abort() {
+	      xhr.abort();
+	    }
+	  };
+	}
+	module.exports = exports['default'];
+
+/***/ }),
+/* 637 */
+/***/ (function(module, exports) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports["default"] = uid;
+	var now = +new Date();
+	var index = 0;
+	
+	function uid() {
+	  return "u-upload-" + now + "-" + ++index;
+	}
+	module.exports = exports["default"];
+
+/***/ }),
+/* 638 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactDom = __webpack_require__(2);
+	
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+	
+	var _classnames = __webpack_require__(5);
+	
+	var _classnames2 = _interopRequireDefault(_classnames);
+	
+	var _uid = __webpack_require__(637);
+	
+	var _uid2 = _interopRequireDefault(_uid);
+	
+	var _warning = __webpack_require__(32);
+	
+	var _warning2 = _interopRequireDefault(_warning);
+	
+	var _propTypes = __webpack_require__(6);
+	
+	var _propTypes2 = _interopRequireDefault(_propTypes);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+	
+	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
+	
+	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); } /**
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               * This source code is quoted from rc-upload.
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               * homepage: https://github.com/react-component/upload
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               */
+	
+	
+	var IFRAME_STYLE = {
+	  position: 'absolute',
+	  top: 0,
+	  opacity: 0,
+	  filter: 'alpha(opacity=0)',
+	  left: 0,
+	  zIndex: 9999
+	};
+	
+	var propTypes = {
+	  component: _propTypes2["default"].string,
+	  style: _propTypes2["default"].object,
+	  disabled: _propTypes2["default"].bool,
+	  clsPrefix: _propTypes2["default"].string,
+	  className: _propTypes2["default"].string,
+	  accept: _propTypes2["default"].string,
+	  onStart: _propTypes2["default"].func,
+	  multiple: _propTypes2["default"].bool,
+	  children: _propTypes2["default"].any,
+	  data: _propTypes2["default"].oneOfType([_propTypes2["default"].object, _propTypes2["default"].func]),
+	  action: _propTypes2["default"].string,
+	  name: _propTypes2["default"].string
+	};
+	// diferent from AjaxUpload, can only upload on at one time, serial seriously
+	
+	var IframeUploader = function (_Component) {
+	  _inherits(IframeUploader, _Component);
+	
+	  function IframeUploader(props) {
+	    _classCallCheck(this, IframeUploader);
+	
+	    var _this = _possibleConstructorReturn(this, _Component.call(this, props));
+	
+	    _this.file = {};
+	    _this.state = {
+	      uploading: false
+	    };
+	
+	    _this.onLoad = _this.onLoad.bind(_this);
+	    _this.onChange = _this.onChange.bind(_this);
+	    _this.getIframeNode = _this.getIframeNode.bind(_this);
+	    _this.getIframeDocument = _this.getIframeDocument.bind(_this);
+	    _this.getFormNode = _this.getFormNode.bind(_this);
+	    _this.getFormInputNode = _this.getFormInputNode.bind(_this);
+	    _this.getFormDataNode = _this.getFormDataNode.bind(_this);
+	    _this.getFileForMultiple = _this.getFileForMultiple.bind(_this);
+	    _this.getIframeHTML = _this.getIframeHTML.bind(_this);
+	    _this.initIframeSrc = _this.initIframeSrc.bind(_this);
+	    _this.initIframe = _this.initIframe.bind(_this);
+	    _this.endUpload = _this.endUpload.bind(_this);
+	    _this.startUpload = _this.startUpload.bind(_this);
+	    _this.updateIframeWH = _this.updateIframeWH.bind(_this);
+	    _this.abort = _this.abort.bind(_this);
+	    _this.post = _this.post.bind(_this);
+	    return _this;
+	  }
+	
+	  IframeUploader.prototype.componentDidMount = function componentDidMount() {
+	    this.updateIframeWH();
+	    this.initIframe();
+	  };
+	
+	  IframeUploader.prototype.componentDidUpdate = function componentDidUpdate() {
+	    this.updateIframeWH();
+	  };
+	
+	  IframeUploader.prototype.onLoad = function onLoad() {
+	    if (!this.state.uploading) {
+	      return;
+	    }
+	    var props = this.props,
+	        file = this.file;
+	
+	    var response = void 0;
+	    try {
+	      var doc = this.getIframeDocument();
+	      var script = doc.getElementsByTagName('script')[0];
+	      if (script && script.parentNode === doc.body) {
+	        doc.body.removeChild(script);
+	      }
+	      response = doc.body.innerHTML;
+	      props.onSuccess(response, file);
+	    } catch (err) {
+	      (0, _warning2["default"])(false, 'cross domain error for Upload. Maybe server should return document.domain script. see Note from https://github.com/react-component/upload');
+	      response = 'cross-domain';
+	      props.onError(err, null, file);
+	    }
+	    this.endUpload();
+	  };
+	
+	  IframeUploader.prototype.onChange = function onChange() {
+	    var _this2 = this;
+	
+	    var target = this.getFormInputNode();
+	    // ie8/9 don't support FileList Object
+	    // http://stackoverflow.com/questions/12830058/ie8-input-type-file-get-files
+	    var file = this.file = {
+	      uid: (0, _uid2["default"])(),
+	      name: target.value
+	    };
+	    this.startUpload();
+	    var props = this.props;
+	
+	    if (!props.beforeUpload) {
+	      return this.post(file);
+	    }
+	    var before = props.beforeUpload(file);
+	    if (before && before.then) {
+	      before.then(function () {
+	        _this2.post(file);
+	      }, function () {
+	        _this2.endUpload();
+	      });
+	    } else if (before !== false) {
+	      this.post(file);
+	    } else {
+	      this.endUpload();
+	    }
+	  };
+	
+	  IframeUploader.prototype.getIframeNode = function getIframeNode() {
+	    return this.refs.iframe;
+	  };
+	
+	  IframeUploader.prototype.getIframeDocument = function getIframeDocument() {
+	    return this.getIframeNode().contentDocument;
+	  };
+	
+	  IframeUploader.prototype.getFormNode = function getFormNode() {
+	    return this.getIframeDocument().getElementById('form');
+	  };
+	
+	  IframeUploader.prototype.getFormInputNode = function getFormInputNode() {
+	    return this.getIframeDocument().getElementById('input');
+	  };
+	
+	  IframeUploader.prototype.getFormDataNode = function getFormDataNode() {
+	    return this.getIframeDocument().getElementById('data');
+	  };
+	
+	  IframeUploader.prototype.getFileForMultiple = function getFileForMultiple(file) {
+	    return this.props.multiple ? [file] : file;
+	  };
+	
+	  IframeUploader.prototype.getIframeHTML = function getIframeHTML(domain) {
+	    var domainScript = '';
+	    var domainInput = '';
+	    if (domain) {
+	      domainScript = '<script>document.domain="' + domain + '";</script>';
+	      domainInput = '<input name="_documentDomain" value="' + domain + '" />';
+	    }
+	    return '\n    <!DOCTYPE html>\n    <html>\n    <head>\n    <meta http-equiv="X-UA-Compatible" content="IE=edge" />\n    <style>\n    body,html {padding:0;margin:0;border:0;overflow:hidden;}\n    </style>\n    ' + domainScript + '\n    </head>\n    <body>\n    <form method="post"\n    encType="multipart/form-data"\n    action="' + this.props.action + '" id="form"\n    style="display:block;height:9999px;position:relative;overflow:hidden;">\n    <input id="input" type="file"\n     name="' + this.props.name + '"\n     style="position:absolute;top:0;right:0;height:9999px;font-size:9999px;cursor:pointer;"/>\n    ' + domainInput + '\n    <span id="data"></span>\n    </form>\n    </body>\n    </html>\n    ';
+	  };
+	
+	  IframeUploader.prototype.initIframeSrc = function initIframeSrc() {
+	    if (this.domain) {
+	      this.getIframeNode().src = 'javascript:void((function(){\n        var d = document;\n        d.open();\n        d.domain=\'' + this.domain + '\';\n        d.write(\'\');\n        d.close();\n      })())';
+	    }
+	  };
+	
+	  IframeUploader.prototype.initIframe = function initIframe() {
+	    var iframeNode = this.getIframeNode();
+	    var win = iframeNode.contentWindow;
+	    var doc = void 0;
+	    this.domain = this.domain || '';
+	    this.initIframeSrc();
+	    try {
+	      doc = win.document;
+	    } catch (e) {
+	      this.domain = document.domain;
+	      this.initIframeSrc();
+	      win = iframeNode.contentWindow;
+	      doc = win.document;
+	    }
+	    doc.open('text/html', 'replace');
+	    doc.write(this.getIframeHTML(this.domain));
+	    doc.close();
+	    this.getFormInputNode().onchange = this.onChange;
+	  };
+	
+	  IframeUploader.prototype.endUpload = function endUpload() {
+	    if (this.state.uploading) {
+	      this.file = {};
+	      // hack avoid batch
+	      this.state.uploading = false;
+	      this.setState({
+	        uploading: false
+	      });
+	      this.initIframe();
+	    }
+	  };
+	
+	  IframeUploader.prototype.startUpload = function startUpload() {
+	    if (!this.state.uploading) {
+	      this.state.uploading = true;
+	      this.setState({
+	        uploading: true
+	      });
+	    }
+	  };
+	
+	  IframeUploader.prototype.updateIframeWH = function updateIframeWH() {
+	    var rootNode = _reactDom2["default"].findDOMNode(this);
+	    var iframeNode = this.getIframeNode();
+	    iframeNode.style.height = rootNode.offsetHeight + 'px';
+	    iframeNode.style.width = rootNode.offsetWidth + 'px';
+	  };
+	
+	  IframeUploader.prototype.abort = function abort(file) {
+	    if (file) {
+	      var uid = file;
+	      if (file && file.uid) {
+	        uid = file.uid;
+	      }
+	      if (uid === this.file.uid) {
+	        this.endUpload();
+	      }
+	    } else {
+	      this.endUpload();
+	    }
+	  };
+	
+	  IframeUploader.prototype.post = function post(file) {
+	    var formNode = this.getFormNode();
+	    var dataSpan = this.getFormDataNode();
+	    var data = this.props.data;
+	    var onStart = this.props.onStart;
+	
+	    if (typeof data === 'function') {
+	      data = data(file);
+	    }
+	    var inputs = [];
+	    for (var key in data) {
+	      if (data.hasOwnProperty(key)) {
+	        inputs.push('<input name="' + key + '" value="' + data[key] + '"/>');
+	      }
+	    }
+	    dataSpan.innerHTML = inputs.join('');
+	    formNode.submit();
+	    dataSpan.innerHTML = '';
+	    onStart(file);
+	  };
+	
+	  IframeUploader.prototype.render = function render() {
+	    var _classNames;
+	
+	    var _props = this.props,
+	        Tag = _props.component,
+	        disabled = _props.disabled,
+	        className = _props.className,
+	        clsPrefix = _props.clsPrefix,
+	        children = _props.children,
+	        style = _props.style;
+	
+	    var iframeStyle = _extends({}, IFRAME_STYLE, {
+	      display: this.state.uploading || disabled ? 'none' : ''
+	    });
+	    var cls = (0, _classnames2["default"])((_classNames = {}, _defineProperty(_classNames, clsPrefix, true), _defineProperty(_classNames, clsPrefix + '-disabled', disabled), _defineProperty(_classNames, className, className), _classNames));
+	    return _react2["default"].createElement(
+	      Tag,
+	      {
+	        className: cls,
+	        style: _extends({ position: 'relative', zIndex: 0 }, style)
+	      },
+	      _react2["default"].createElement('iframe', {
+	        ref: 'iframe',
+	        onLoad: this.onLoad,
+	        style: iframeStyle
+	      }),
+	      children
+	    );
+	  };
+	
+	  return IframeUploader;
+	}(_react.Component);
+	
+	;
+	IframeUploader.propTypes = propTypes;
+	exports["default"] = IframeUploader;
+	module.exports = exports['default'];
+
+/***/ }),
+/* 639 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _beeAnimate = __webpack_require__(69);
+	
+	var _beeAnimate2 = _interopRequireDefault(_beeAnimate);
+	
+	var _beeIcon = __webpack_require__(106);
+	
+	var _beeIcon2 = _interopRequireDefault(_beeIcon);
+	
+	var _beeProgressBar = __webpack_require__(640);
+	
+	var _beeProgressBar2 = _interopRequireDefault(_beeProgressBar);
+	
+	var _classnames = __webpack_require__(5);
+	
+	var _classnames2 = _interopRequireDefault(_classnames);
+	
+	var _propTypes = __webpack_require__(6);
+	
+	var _propTypes2 = _interopRequireDefault(_propTypes);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+	
+	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
+	
+	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
+	
+	//import { UploadListProps } from './interface';
+	
+	// https://developer.mozilla.org/en-US/docs/Web/API/FileReader/readAsDataURL
+	var previewFile = function previewFile(file, callback) {
+	  var reader = new FileReader();
+	  reader.onloadend = function () {
+	    return callback(reader.result);
+	  };
+	  reader.readAsDataURL(file);
+	};
+	
+	var propTypes = {
+	  listType: _propTypes2["default"].oneOf(['text', 'picture', 'picture-card']),
+	  onPreview: _propTypes2["default"].func,
+	  onRemove: _propTypes2["default"].func,
+	  items: _propTypes2["default"].array,
+	  progressAttr: _propTypes2["default"].object,
+	  clsPrefix: _propTypes2["default"].string
+	};
+	
+	var defaultProps = {
+	  listType: 'text', // or picture
+	  progressAttr: {
+	    strokeWidth: 3,
+	    showInfo: false
+	  },
+	  clsPrefix: 'u-upload'
+	};
+	
+	var UploadList = function (_Component) {
+	  _inherits(UploadList, _Component);
+	
+	  function UploadList() {
+	    var _temp, _this, _ret;
+	
+	    _classCallCheck(this, UploadList);
+	
+	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+	      args[_key] = arguments[_key];
+	    }
+	
+	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, _Component.call.apply(_Component, [this].concat(args))), _this), _this.handleClose = function (file) {
+	      var onRemove = _this.props.onRemove;
+	      if (onRemove) {
+	        onRemove(file);
+	      }
+	    }, _this.handlePreview = function (file, e) {
+	      var onPreview = _this.props.onPreview;
+	
+	      if (!onPreview) {
+	        return;
+	      }
+	      e.preventDefault();
+	      return onPreview(file);
+	    }, _temp), _possibleConstructorReturn(_this, _ret);
+	  }
+	
+	  UploadList.prototype.componentDidUpdate = function componentDidUpdate() {
+	    var _this2 = this;
+	
+	    if (this.props.listType !== 'picture' && this.props.listType !== 'picture-card') {
+	      return;
+	    }
+	    (this.props.items || []).forEach(function (file) {
+	      if (typeof document === 'undefined' || typeof window === 'undefined' ||
+	      //!(window as any).FileReader || !(window as any).File ||
+	      !window.FileReader || !window.File || !(file.originFileObj instanceof File) || file.thumbUrl !== undefined) {
+	        return;
+	      }
+	      /*eslint-disable */
+	      file.thumbUrl = '';
+	      /*eslint-enable */
+	      previewFile(file.originFileObj, function (previewDataUrl) {
+	        /*eslint-disable */
+	        file.thumbUrl = previewDataUrl;
+	        /*eslint-enable */
+	        _this2.forceUpdate();
+	      });
+	    });
+	  };
+	
+	  UploadList.prototype.render = function render() {
+	    var _this3 = this,
+	        _classNames2;
+	
+	    var _props = this.props,
+	        clsPrefix = _props.clsPrefix,
+	        _props$items = _props.items,
+	        items = _props$items === undefined ? [] : _props$items,
+	        listType = _props.listType;
+	
+	    var list = items.map(function (file) {
+	      var _classNames;
+	
+	      var progress = void 0;
+	      var icon = _react2["default"].createElement(_beeIcon2["default"], { type: 'uf-link' });
+	
+	      if (listType === 'picture' || listType === 'picture-card') {
+	        if (file.status === 'uploading' || !file.thumbUrl && !file.url) {
+	          if (listType === 'picture-card') {
+	            icon = _react2["default"].createElement(
+	              'div',
+	              { className: clsPrefix + '-list-item-uploading-text' },
+	              '\u6587\u4EF6\u4E0A\u4F20\u4E2D'
+	            );
+	          } else {
+	            icon = _react2["default"].createElement(_beeIcon2["default"], { className: clsPrefix + '-list-item-thumbnail', type: 'picture' });
+	          }
+	        } else {
+	          icon = _react2["default"].createElement(
+	            'a',
+	            {
+	              className: clsPrefix + '-list-item-thumbnail',
+	              onClick: function onClick(e) {
+	                return _this3.handlePreview(file, e);
+	              },
+	              href: file.url || file.thumbUrl,
+	              target: '_blank',
+	              rel: 'noopener noreferrer'
+	            },
+	            _react2["default"].createElement('img', { src: file.url || file.thumbUrl, alt: file.name })
+	          );
+	        }
+	      }
+	
+	      if (file.status === 'uploading') {
+	        progress = _react2["default"].createElement(_beeProgressBar2["default"], { colors: 'success', size: 'sm', now: file.percent });
+	      }
+	      var infoUploadingClass = (0, _classnames2["default"])((_classNames = {}, _defineProperty(_classNames, clsPrefix + '-list-item', true), _defineProperty(_classNames, clsPrefix + '-list-item-' + file.status, true), _classNames));
+	      var preview = file.url ? _react2["default"].createElement(
+	        'a',
+	        {
+	          href: file.url,
+	          target: '_blank',
+	          rel: 'noopener noreferrer',
+	          className: clsPrefix + '-list-item-name',
+	          onClick: function onClick(e) {
+	            return _this3.handlePreview(file, e);
+	          }
+	        },
+	        file.name
+	      ) : _react2["default"].createElement(
+	        'span',
+	        {
+	          className: clsPrefix + '-list-item-name',
+	          onClick: function onClick(e) {
+	            return _this3.handlePreview(file, e);
+	          }
+	        },
+	        file.name
+	      );
+	      var style = file.url || file.thumbUrl ? undefined : {
+	        pointerEvents: 'none',
+	        opacity: 0.5
+	      };
+	      var actions = listType === 'picture-card' && file.status !== 'uploading' ? _react2["default"].createElement(
+	        'span',
+	        null,
+	        _react2["default"].createElement(
+	          'a',
+	          {
+	            href: file.url || file.thumbUrl,
+	            target: '_blank',
+	            rel: 'noopener noreferrer',
+	            style: style,
+	            onClick: function onClick(e) {
+	              return _this3.handlePreview(file, e);
+	            }
+	          },
+	          _react2["default"].createElement(_beeIcon2["default"], { type: 'eye-open' })
+	        ),
+	        _react2["default"].createElement(_beeIcon2["default"], { type: 'uf-close', title: '\u79FB\u9664\u6587\u4EF6', onClick: function onClick() {
+	            return _this3.handleClose(file);
+	          } })
+	      ) : _react2["default"].createElement(_beeIcon2["default"], { type: 'uf-close', title: '\u79FB\u9664\u6587\u4EF6', onClick: function onClick() {
+	          return _this3.handleClose(file);
+	        } });
+	
+	      return _react2["default"].createElement(
+	        'div',
+	        { className: infoUploadingClass, key: file.uid },
+	        _react2["default"].createElement(
+	          'div',
+	          { className: clsPrefix + '-list-item-info' },
+	          icon,
+	          preview,
+	          actions
+	        ),
+	        progress
+	      );
+	    });
+	    var listClassNames = (0, _classnames2["default"])((_classNames2 = {}, _defineProperty(_classNames2, clsPrefix + '-list', true), _defineProperty(_classNames2, clsPrefix + '-list-' + listType, true), _classNames2));
+	    return _react2["default"].createElement(
+	      _beeAnimate2["default"],
+	      {
+	        transitionName: clsPrefix + '-margin-top',
+	        component: 'div',
+	        className: listClassNames
+	      },
+	      list
+	    );
+	  };
+	
+	  return UploadList;
+	}(_react.Component);
+	
+	UploadList.propTypes = propTypes;
+	UploadList.defaultProps = defaultProps;
+	exports["default"] = UploadList;
+	module.exports = exports['default'];
+
+/***/ }),
+/* 640 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _ProgressBar = __webpack_require__(641);
+	
+	var _ProgressBar2 = _interopRequireDefault(_ProgressBar);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+	
+	exports["default"] = _ProgressBar2["default"];
+	module.exports = exports['default'];
+
+/***/ }),
+/* 641 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
+	var _classnames = __webpack_require__(5);
+	
+	var _classnames2 = _interopRequireDefault(_classnames);
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _propTypes = __webpack_require__(6);
+	
+	var _propTypes2 = _interopRequireDefault(_propTypes);
+	
+	var _nprogress = __webpack_require__(642);
+	
+	var _nprogress2 = _interopRequireDefault(_nprogress);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+	
+	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
+	
+	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
+	
+	var ROUND_PRECISION = 1000;
+	
+	/**
+	 * 自定义验证children是<ProgressBar>的实例.
+	 * @props 实例后的propTypes
+	 * @propName 本身propTypes的属性名 即 children
+	 * @componentName 实例后的children名 期望是ProgressBar
+	 */
+	function onlyProgressBar(props, propName, componentName) {
+	  var children = props[propName];
+	  if (!children) {
+	    return null;
+	  }
+	
+	  var error = null;
+	
+	  _react2["default"].Children.forEach(children, function (child) {
+	    if (error) {
+	      return;
+	    }
+	
+	    if (child.type === ProgressBar) {
+	      // eslint-disable-line no-use-before-define
+	      return;
+	    }
+	
+	    var childIdentifier = _react2["default"].isValidElement(child) ? child.type.displayName || child.type.name || child.type : child;
+	    error = new Error('Children of ' + componentName + ' can contain only ProgressBar ' + ('components. Found ' + childIdentifier + '.'));
+	  });
+	
+	  return error;
+	}
+	
+	var propTypes = {
+	  /**
+	   *  最小数值
+	   */
+	  min: _propTypes2["default"].number,
+	  /**
+	   *  有效数值
+	   */
+	  now: _propTypes2["default"].number,
+	  /**
+	   *  最大数值
+	   */
+	  max: _propTypes2["default"].number,
+	  /**
+	   *  文字描述标签
+	   */
+	  label: _propTypes2["default"].node,
+	  /**
+	   *  文字描述标签显示
+	   */
+	  srOnly: _propTypes2["default"].bool,
+	  /**
+	   *  条纹样式
+	   */
+	  striped: _propTypes2["default"].bool,
+	  /**
+	   *  激活状态
+	   */
+	  active: _propTypes2["default"].bool,
+	  /**
+	   *  大小
+	   */
+	  size: _propTypes2["default"].oneOf(['xs', 'sm']),
+	  /**
+	   *  labelPosition
+	   */
+	  labelPosition: _propTypes2["default"].oneOf(['right', 'left', 'center']),
+	  /**
+	   *  子组件 必须是ProgressBar
+	   */
+	  children: onlyProgressBar,
+	  /**
+	   *  子组件 必须是ProgressBar
+	   */
+	  style: _propTypes2["default"].object,
+	
+	  /**
+	   * @private
+	   */
+	  isChild: _propTypes2["default"].bool
+	};
+	
+	var defaultProps = {
+	  min: 0,
+	  max: 100,
+	  active: false,
+	  isChild: false,
+	  srOnly: false,
+	  striped: false,
+	  labelPosition: 'center',
+	  clsPrefix: 'u-progress'
+	};
+	
+	/**
+	 * 计算实际显示比例 
+	 * @now 显示的总数值
+	 * @min 最小数值
+	 * @max 最大数值
+	 */
+	function getPercentage(now, min, max) {
+	  var percentage = (now - min) / (max - min) * 100;
+	  return Math.round(percentage * ROUND_PRECISION) / ROUND_PRECISION;
+	}
+	
+	var ProgressBar = function (_React$Component) {
+	  _inherits(ProgressBar, _React$Component);
+	
+	  function ProgressBar(props) {
+	    _classCallCheck(this, ProgressBar);
+	
+	    var _this = _possibleConstructorReturn(this, _React$Component.call(this, props));
+	
+	    _this.state = {
+	      now: _this.props.now,
+	      max: _this.props.max,
+	      min: _this.props.min,
+	      active: _this.props.active
+	    };
+	
+	    return _this;
+	  }
+	
+	  ProgressBar.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
+	    this.setState({
+	      now: nextProps.now,
+	      max: nextProps.max,
+	      min: nextProps.min,
+	      active: nextProps.active
+	    });
+	  };
+	
+	  ProgressBar.prototype.renderProgressBar = function renderProgressBar(_ref) {
+	    var min = _ref.min,
+	        now = _ref.now,
+	        max = _ref.max,
+	        label = _ref.label,
+	        srOnly = _ref.srOnly,
+	        striped = _ref.striped,
+	        active = _ref.active,
+	        colors = _ref.colors,
+	        labelPosition = _ref.labelPosition,
+	        className = _ref.className,
+	        style = _ref.style,
+	        clsPrefix = _ref.clsPrefix,
+	        others = _objectWithoutProperties(_ref, ['min', 'now', 'max', 'label', 'srOnly', 'striped', 'active', 'colors', 'labelPosition', 'className', 'style', 'clsPrefix']);
+	
+	    var childClsPrefix = clsPrefix + '-bar';
+	    var classes = {
+	      active: active
+	    };
+	    if (active || striped) {
+	      classes[childClsPrefix + '-striped'] = true;
+	    }
+	    if (colors) {
+	      classes[childClsPrefix + '-' + colors] = true;
+	    }
+	
+	    var classNames = (0, _classnames2["default"])(childClsPrefix, classes);
+	
+	    //返回不敢wrapper的progressbar
+	    return _react2["default"].createElement(
+	      'div',
+	      _extends({}, others, {
+	        role: 'progressbar',
+	        className: (0, _classnames2["default"])(className, classNames),
+	        style: _extends({ width: getPercentage(now, min, max) + '%' }, style)
+	      }),
+	      _react2["default"].createElement(
+	        'span',
+	        { className: 'u-progress-label' },
+	        srOnly ? _react2["default"].createElement(
+	          'span',
+	          { className: 'sr-only' },
+	          label
+	        ) : label
+	      )
+	    );
+	  };
+	
+	  ProgressBar.prototype.render = function render() {
+	    //先处理以组ProgressBar形式使用情况
+	    var _props = this.props,
+	        isChild = _props.isChild,
+	        props = _objectWithoutProperties(_props, ['isChild']);
+	
+	    // 判断isChild是否为true,如果是true,直接渲染成bar
+	
+	
+	    if (isChild) {
+	      return this.renderProgressBar(props);
+	    }
+	
+	    var label = props.label,
+	        srOnly = props.srOnly,
+	        striped = props.striped,
+	        colors = props.colors,
+	        className = props.className,
+	        style = props.style,
+	        min = props.min,
+	        max = props.max,
+	        now = props.now,
+	        active = props.active,
+	        size = props.size,
+	        labelPosition = props.labelPosition,
+	        children = props.children,
+	        clsPrefix = props.clsPrefix,
+	        wrapperProps = _objectWithoutProperties(props, ['label', 'srOnly', 'striped', 'colors', 'className', 'style', 'min', 'max', 'now', 'active', 'size', 'labelPosition', 'children', 'clsPrefix']);
+	
+	    /**
+	     * 如果是单独直接用<ProgressBar /> 走children判断为false语句。
+	     * 如果以组的形式使用<ProgressBar><ProgressBar now={10} /><ProgressBar now={20}/></ProgressBar> 走判断语句为true，
+	     * 将children分别加上isChild=true的属性
+	     */
+	
+	
+	    return _react2["default"].createElement(
+	      'div',
+	      _extends({}, wrapperProps, {
+	        className: (0, _classnames2["default"])(className, clsPrefix, size)
+	      }),
+	      children ? _react2["default"].Children.map(children, function (child) {
+	        return (0, _react.cloneElement)(child, { isChild: true });
+	      }) : this.renderProgressBar(_extends({
+	        min: min, now: now, max: max, label: label, srOnly: srOnly, striped: striped, active: active, colors: colors, labelPosition: labelPosition, className: className, style: style, clsPrefix: clsPrefix }, wrapperProps))
+	    );
+	  };
+	
+	  return ProgressBar;
+	}(_react2["default"].Component);
+	
+	ProgressBar.propTypes = propTypes;
+	ProgressBar.defaultProps = defaultProps;
+	_extends(ProgressBar, _nprogress2["default"]);
+	
+	exports["default"] = ProgressBar;
+	module.exports = exports['default'];
+
+/***/ }),
+/* 642 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/* NProgress, (c) 2013, 2014 Rico Sta. Cruz - http://ricostacruz.com/nprogress
+	 * @license MIT */
+	
+	;(function(root, factory) {
+	
+	  if (true) {
+	    !(__WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.call(exports, __webpack_require__, exports, module)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	  } else if (typeof exports === 'object') {
+	    module.exports = factory();
+	  } else {
+	    root.NProgress = factory();
+	  }
+	
+	})(this, function() {
+	  var NProgress = {};
+	
+	  NProgress.version = '0.2.0';
+	
+	  var Settings = NProgress.settings = {
+	    minimum: 0.08,
+	    easing: 'ease',
+	    positionUsing: '',
+	    speed: 200,
+	    trickle: true,
+	    trickleRate: 0.02,
+	    trickleSpeed: 800,
+	    showSpinner: true,
+	    barSelector: '[role="bar"]',
+	    spinnerSelector: '[role="spinner"]',
+	    parent: 'body',
+	    template: '<div class="bar" role="bar"><div class="peg"></div></div><div class="spinner" role="spinner"><div class="spinner-icon"></div></div>'
+	  };
+	
+	  /**
+	   * Updates configuration.
+	   *
+	   *     NProgress.configure({
+	   *       minimum: 0.1
+	   *     });
+	   */
+	  NProgress.configure = function(options) {
+	    var key, value;
+	    for (key in options) {
+	      value = options[key];
+	      if (value !== undefined && options.hasOwnProperty(key)) Settings[key] = value;
+	    }
+	
+	    return this;
+	  };
+	
+	  /**
+	   * Last number.
+	   */
+	
+	  NProgress.status = null;
+	
+	  /**
+	   * Sets the progress bar status, where `n` is a number from `0.0` to `1.0`.
+	   *
+	   *     NProgress.set(0.4);
+	   *     NProgress.set(1.0);
+	   */
+	
+	  NProgress.set = function(n) {
+	    var started = NProgress.isStarted();
+	
+	    n = clamp(n, Settings.minimum, 1);
+	    NProgress.status = (n === 1 ? null : n);
+	
+	    var progress = NProgress.render(!started),
+	        bar      = progress.querySelector(Settings.barSelector),
+	        speed    = Settings.speed,
+	        ease     = Settings.easing;
+	
+	    progress.offsetWidth; /* Repaint */
+	
+	    queue(function(next) {
+	      // Set positionUsing if it hasn't already been set
+	      if (Settings.positionUsing === '') Settings.positionUsing = NProgress.getPositioningCSS();
+	
+	      // Add transition
+	      css(bar, barPositionCSS(n, speed, ease));
+	
+	      if (n === 1) {
+	        // Fade out
+	        css(progress, { 
+	          transition: 'none', 
+	          opacity: 1 
+	        });
+	        progress.offsetWidth; /* Repaint */
+	
+	        setTimeout(function() {
+	          css(progress, { 
+	            transition: 'all ' + speed + 'ms linear', 
+	            opacity: 0 
+	          });
+	          setTimeout(function() {
+	            NProgress.remove();
+	            next();
+	          }, speed);
+	        }, speed);
+	      } else {
+	        setTimeout(next, speed);
+	      }
+	    });
+	
+	    return this;
+	  };
+	
+	  NProgress.isStarted = function() {
+	    return typeof NProgress.status === 'number';
+	  };
+	
+	  /**
+	   * Shows the progress bar.
+	   * This is the same as setting the status to 0%, except that it doesn't go backwards.
+	   *
+	   *     NProgress.start();
+	   *
+	   */
+	  NProgress.start = function() {
+	    if (!NProgress.status) NProgress.set(0);
+	
+	    var work = function() {
+	      setTimeout(function() {
+	        if (!NProgress.status) return;
+	        NProgress.trickle();
+	        work();
+	      }, Settings.trickleSpeed);
+	    };
+	
+	    if (Settings.trickle) work();
+	
+	    return this;
+	  };
+	
+	  /**
+	   * Hides the progress bar.
+	   * This is the *sort of* the same as setting the status to 100%, with the
+	   * difference being `done()` makes some placebo effect of some realistic motion.
+	   *
+	   *     NProgress.done();
+	   *
+	   * If `true` is passed, it will show the progress bar even if its hidden.
+	   *
+	   *     NProgress.done(true);
+	   */
+	
+	  NProgress.done = function(force) {
+	    if (!force && !NProgress.status) return this;
+	
+	    return NProgress.inc(0.3 + 0.5 * Math.random()).set(1);
+	  };
+	
+	  /**
+	   * Increments by a random amount.
+	   */
+	
+	  NProgress.inc = function(amount) {
+	    var n = NProgress.status;
+	
+	    if (!n) {
+	      return NProgress.start();
+	    } else {
+	      if (typeof amount !== 'number') {
+	        amount = (1 - n) * clamp(Math.random() * n, 0.1, 0.95);
+	      }
+	
+	      n = clamp(n + amount, 0, 0.994);
+	      return NProgress.set(n);
+	    }
+	  };
+	
+	  NProgress.trickle = function() {
+	    return NProgress.inc(Math.random() * Settings.trickleRate);
+	  };
+	
+	  /**
+	   * Waits for all supplied jQuery promises and
+	   * increases the progress as the promises resolve.
+	   *
+	   * @param $promise jQUery Promise
+	   */
+	  (function() {
+	    var initial = 0, current = 0;
+	
+	    NProgress.promise = function($promise) {
+	      if (!$promise || $promise.state() === "resolved") {
+	        return this;
+	      }
+	
+	      if (current === 0) {
+	        NProgress.start();
+	      }
+	
+	      initial++;
+	      current++;
+	
+	      $promise.always(function() {
+	        current--;
+	        if (current === 0) {
+	            initial = 0;
+	            NProgress.done();
+	        } else {
+	            NProgress.set((initial - current) / initial);
+	        }
+	      });
+	
+	      return this;
+	    };
+	
+	  })();
+	
+	  /**
+	   * (Internal) renders the progress bar markup based on the `template`
+	   * setting.
+	   */
+	
+	  NProgress.render = function(fromStart) {
+	    if (NProgress.isRendered()) return document.getElementById('nprogress');
+	
+	    addClass(document.documentElement, 'nprogress-busy');
+	    
+	    var progress = document.createElement('div');
+	    progress.id = 'nprogress';
+	    progress.innerHTML = Settings.template;
+	
+	    var bar      = progress.querySelector(Settings.barSelector),
+	        perc     = fromStart ? '-100' : toBarPerc(NProgress.status || 0),
+	        parent   = document.querySelector(Settings.parent),
+	        spinner;
+	    
+	    css(bar, {
+	      transition: 'all 0 linear',
+	      transform: 'translate3d(' + perc + '%,0,0)'
+	    });
+	
+	    if (!Settings.showSpinner) {
+	      spinner = progress.querySelector(Settings.spinnerSelector);
+	      spinner && removeElement(spinner);
+	    }
+	
+	    if (parent != document.body) {
+	      addClass(parent, 'nprogress-custom-parent');
+	    }
+	
+	    parent.appendChild(progress);
+	    return progress;
+	  };
+	
+	  /**
+	   * Removes the element. Opposite of render().
+	   */
+	
+	  NProgress.remove = function() {
+	    removeClass(document.documentElement, 'nprogress-busy');
+	    removeClass(document.querySelector(Settings.parent), 'nprogress-custom-parent');
+	    var progress = document.getElementById('nprogress');
+	    progress && removeElement(progress);
+	  };
+	
+	  /**
+	   * Checks if the progress bar is rendered.
+	   */
+	
+	  NProgress.isRendered = function() {
+	    return !!document.getElementById('nprogress');
+	  };
+	
+	  /**
+	   * Determine which positioning CSS rule to use.
+	   */
+	
+	  NProgress.getPositioningCSS = function() {
+	    // Sniff on document.body.style
+	    var bodyStyle = document.body.style;
+	
+	    // Sniff prefixes
+	    var vendorPrefix = ('WebkitTransform' in bodyStyle) ? 'Webkit' :
+	                       ('MozTransform' in bodyStyle) ? 'Moz' :
+	                       ('msTransform' in bodyStyle) ? 'ms' :
+	                       ('OTransform' in bodyStyle) ? 'O' : '';
+	
+	    if (vendorPrefix + 'Perspective' in bodyStyle) {
+	      // Modern browsers with 3D support, e.g. Webkit, IE10
+	      return 'translate3d';
+	    } else if (vendorPrefix + 'Transform' in bodyStyle) {
+	      // Browsers without 3D support, e.g. IE9
+	      return 'translate';
+	    } else {
+	      // Browsers without translate() support, e.g. IE7-8
+	      return 'margin';
+	    }
+	  };
+	
+	  /**
+	   * Helpers
+	   */
+	
+	  function clamp(n, min, max) {
+	    if (n < min) return min;
+	    if (n > max) return max;
+	    return n;
+	  }
+	
+	  /**
+	   * (Internal) converts a percentage (`0..1`) to a bar translateX
+	   * percentage (`-100%..0%`).
+	   */
+	
+	  function toBarPerc(n) {
+	    return (-1 + n) * 100;
+	  }
+	
+	
+	  /**
+	   * (Internal) returns the correct CSS for changing the bar's
+	   * position given an n percentage, and speed and ease from Settings
+	   */
+	
+	  function barPositionCSS(n, speed, ease) {
+	    var barCSS;
+	
+	    if (Settings.positionUsing === 'translate3d') {
+	      barCSS = { transform: 'translate3d('+toBarPerc(n)+'%,0,0)' };
+	    } else if (Settings.positionUsing === 'translate') {
+	      barCSS = { transform: 'translate('+toBarPerc(n)+'%,0)' };
+	    } else {
+	      barCSS = { 'margin-left': toBarPerc(n)+'%' };
+	    }
+	
+	    barCSS.transition = 'all '+speed+'ms '+ease;
+	
+	    return barCSS;
+	  }
+	
+	  /**
+	   * (Internal) Queues a function to be executed.
+	   */
+	
+	  var queue = (function() {
+	    var pending = [];
+	    
+	    function next() {
+	      var fn = pending.shift();
+	      if (fn) {
+	        fn(next);
+	      }
+	    }
+	
+	    return function(fn) {
+	      pending.push(fn);
+	      if (pending.length == 1) next();
+	    };
+	  })();
+	
+	  /**
+	   * (Internal) Applies css properties to an element, similar to the jQuery 
+	   * css method.
+	   *
+	   * While this helper does assist with vendor prefixed property names, it 
+	   * does not perform any manipulation of values prior to setting styles.
+	   */
+	
+	  var css = (function() {
+	    var cssPrefixes = [ 'Webkit', 'O', 'Moz', 'ms' ],
+	        cssProps    = {};
+	
+	    function camelCase(string) {
+	      return string.replace(/^-ms-/, 'ms-').replace(/-([\da-z])/gi, function(match, letter) {
+	        return letter.toUpperCase();
+	      });
+	    }
+	
+	    function getVendorProp(name) {
+	      var style = document.body.style;
+	      if (name in style) return name;
+	
+	      var i = cssPrefixes.length,
+	          capName = name.charAt(0).toUpperCase() + name.slice(1),
+	          vendorName;
+	      while (i--) {
+	        vendorName = cssPrefixes[i] + capName;
+	        if (vendorName in style) return vendorName;
+	      }
+	
+	      return name;
+	    }
+	
+	    function getStyleProp(name) {
+	      name = camelCase(name);
+	      return cssProps[name] || (cssProps[name] = getVendorProp(name));
+	    }
+	
+	    function applyCss(element, prop, value) {
+	      prop = getStyleProp(prop);
+	      element.style[prop] = value;
+	    }
+	
+	    return function(element, properties) {
+	      var args = arguments,
+	          prop, 
+	          value;
+	
+	      if (args.length == 2) {
+	        for (prop in properties) {
+	          value = properties[prop];
+	          if (value !== undefined && properties.hasOwnProperty(prop)) applyCss(element, prop, value);
+	        }
+	      } else {
+	        applyCss(element, args[1], args[2]);
+	      }
+	    }
+	  })();
+	
+	  /**
+	   * (Internal) Determines if an element or space separated list of class names contains a class name.
+	   */
+	
+	  function hasClass(element, name) {
+	    var list = typeof element == 'string' ? element : classList(element);
+	    return list.indexOf(' ' + name + ' ') >= 0;
+	  }
+	
+	  /**
+	   * (Internal) Adds a class to an element.
+	   */
+	
+	  function addClass(element, name) {
+	    var oldList = classList(element),
+	        newList = oldList + name;
+	
+	    if (hasClass(oldList, name)) return; 
+	
+	    // Trim the opening space.
+	    element.className = newList.substring(1);
+	  }
+	
+	  /**
+	   * (Internal) Removes a class from an element.
+	   */
+	
+	  function removeClass(element, name) {
+	    var oldList = classList(element),
+	        newList;
+	
+	    if (!hasClass(element, name)) return;
+	
+	    // Replace the class name.
+	    newList = oldList.replace(' ' + name + ' ', ' ');
+	
+	    // Trim the opening and closing spaces.
+	    element.className = newList.substring(1, newList.length - 1);
+	  }
+	
+	  /**
+	   * (Internal) Gets a space separated list of the class names on the element. 
+	   * The list is wrapped with a single space on each end to facilitate finding 
+	   * matches within the list.
+	   */
+	
+	  function classList(element) {
+	    return (' ' + (element.className || '') + ' ').replace(/\s+/gi, ' ');
+	  }
+	
+	  /**
+	   * (Internal) Removes an element from the DOM.
+	   */
+	
+	  function removeElement(element) {
+	    element && element.parentNode && element.parentNode.removeChild(element);
+	  }
+	
+	  return NProgress;
+	});
+	
+
+
+/***/ }),
+/* 643 */
+/***/ (function(module, exports) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports["default"] = getFileItem;
+	/**
+	* This source code is quoted from rc-upload.
+	* homepage: https://github.com/react-component/upload
+	*/
+	function getFileItem(file, fileList) {
+	  var matchWay = !file.uid ? 'byName' : 'byUid';
+	  var target = fileList.filter(function (item) {
+	    if (matchWay === 'byName') {
+	      return item.name === file.name;
+	    }
+	    return item.uid === file.uid;
+	  })[0];
+	  return target;
+	}
+	module.exports = exports['default'];
+
+/***/ }),
+/* 644 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
 	
@@ -73330,7 +75824,11 @@
 	
 	var _beeButton2 = _interopRequireDefault(_beeButton);
 	
-	var _beeSearchPanel = __webpack_require__(634);
+	var _beeIcon = __webpack_require__(106);
+	
+	var _beeIcon2 = _interopRequireDefault(_beeIcon);
+	
+	var _beeSearchPanel = __webpack_require__(645);
 	
 	var _beeSearchPanel2 = _interopRequireDefault(_beeSearchPanel);
 	
@@ -73357,6 +75855,7 @@
 	var Option = _beeSelect2['default'].Option;
 	var RangePicker = _beeDatepicker2['default'].RangePicker;
 	
+	var CheckboxGroup = _beeCheckbox2['default'].CheckboxGroup;
 	
 	var Demo5 = _src2['default'].createForm()(function (_Component) {
 	    _inherits(Demo, _Component);
@@ -73443,19 +75942,24 @@
 	                                null,
 	                                _react2['default'].createElement(
 	                                    _beeLayout.Col,
-	                                    { md: 3, xs: 2 },
+	                                    { lg: 4, md: 4, xs: 4 },
 	                                    _react2['default'].createElement(
 	                                        _beeLabel2['default'],
 	                                        null,
+	                                        _react2['default'].createElement(_beeIcon2['default'], { type: 'uf-mi', className: 'mast' }),
 	                                        '\u8BA2\u5355\u7F16\u53F7'
 	                                    )
 	                                ),
 	                                _react2['default'].createElement(
 	                                    _beeLayout.Col,
-	                                    { md: 9, xs: 10 },
+	                                    { lg: 8, md: 8, xs: 8 },
 	                                    _react2['default'].createElement(_beeFormControl2['default'], _extends({ size: 'sm'
 	                                    }, getFieldProps('orderCode', {
-	                                        initialValue: ''
+	                                        initialValue: '',
+	                                        validateTrigger: 'onBlur',
+	                                        rules: [{
+	                                            required: true, message: '请输入订单编号'
+	                                        }]
 	                                    })))
 	                                )
 	                            )
@@ -73468,16 +75972,17 @@
 	                                null,
 	                                _react2['default'].createElement(
 	                                    _beeLayout.Col,
-	                                    { md: 3, xs: 2 },
+	                                    { lg: 4, md: 4, xs: 4 },
 	                                    _react2['default'].createElement(
 	                                        _beeLabel2['default'],
 	                                        null,
-	                                        '\u4F9B\u5E94\u5546'
+	                                        _react2['default'].createElement(_beeIcon2['default'], { type: 'uf-mi', className: 'mast' }),
+	                                        '\u4F9B\u5E94\u5546\u540D\u79F0'
 	                                    )
 	                                ),
 	                                _react2['default'].createElement(
 	                                    _beeLayout.Col,
-	                                    { md: 9, xs: 10 },
+	                                    { lg: 8, md: 8, xs: 8 },
 	                                    _react2['default'].createElement(_beeFormControl2['default'], _extends({ size: 'sm'
 	                                    }, getFieldProps('supplierName', {
 	                                        initialValue: ''
@@ -73493,16 +75998,43 @@
 	                                null,
 	                                _react2['default'].createElement(
 	                                    _beeLayout.Col,
-	                                    { md: 3, xs: 2 },
+	                                    { lg: 4, md: 4, xs: 4 },
 	                                    _react2['default'].createElement(
 	                                        _beeLabel2['default'],
 	                                        null,
+	                                        _react2['default'].createElement(_beeIcon2['default'], { type: 'uf-mi', className: 'mast' }),
+	                                        '\u51ED\u8BC1\u540D\u79F0'
+	                                    )
+	                                ),
+	                                _react2['default'].createElement(
+	                                    _beeLayout.Col,
+	                                    { lg: 8, md: 8, xs: 8 },
+	                                    _react2['default'].createElement(_beeFormControl2['default'], _extends({ size: 'sm'
+	                                    }, getFieldProps('voucherName1', {
+	                                        initialValue: ''
+	                                    })))
+	                                )
+	                            )
+	                        ),
+	                        _react2['default'].createElement(
+	                            _beeLayout.Col,
+	                            { lg: 4, md: 6, xs: 12 },
+	                            _react2['default'].createElement(
+	                                FormItem,
+	                                null,
+	                                _react2['default'].createElement(
+	                                    _beeLayout.Col,
+	                                    { lg: 4, md: 4, xs: 4 },
+	                                    _react2['default'].createElement(
+	                                        _beeLabel2['default'],
+	                                        null,
+	                                        _react2['default'].createElement(_beeIcon2['default'], { type: 'uf-mi', className: 'mast' }),
 	                                        '\u8BA2\u5355\u7C7B\u578B'
 	                                    )
 	                                ),
 	                                _react2['default'].createElement(
 	                                    _beeLayout.Col,
-	                                    { md: 9, xs: 10 },
+	                                    { lg: 8, md: 8, xs: 8 },
 	                                    _react2['default'].createElement(
 	                                        _beeSelect2['default'],
 	                                        _extends({ size: 'sm'
@@ -73533,20 +76065,33 @@
 	                                null,
 	                                _react2['default'].createElement(
 	                                    _beeLayout.Col,
-	                                    { md: 3, xs: 2 },
+	                                    { lg: 4, md: 4, xs: 4 },
 	                                    _react2['default'].createElement(
 	                                        _beeLabel2['default'],
 	                                        null,
+	                                        _react2['default'].createElement(_beeIcon2['default'], { type: 'uf-mi', className: 'mast' }),
 	                                        '\u91C7\u8D2D\u7EC4'
 	                                    )
 	                                ),
 	                                _react2['default'].createElement(
 	                                    _beeLayout.Col,
-	                                    { md: 9, xs: 10 },
-	                                    _react2['default'].createElement(_beeFormControl2['default'], _extends({ size: 'sm'
-	                                    }, getFieldProps('purchasingGroup', {
-	                                        initialValue: ''
-	                                    })))
+	                                    { lg: 8, md: 8, xs: 8 },
+	                                    _react2['default'].createElement(
+	                                        CheckboxGroup,
+	                                        getFieldProps('purchasingGroup', {
+	                                            initialValue: ['2']
+	                                        }),
+	                                        _react2['default'].createElement(
+	                                            _beeCheckbox2['default'],
+	                                            { value: '1' },
+	                                            '\u4EBA\u529B'
+	                                        ),
+	                                        _react2['default'].createElement(
+	                                            _beeCheckbox2['default'],
+	                                            { value: '2' },
+	                                            '\u8D22\u52A1'
+	                                        )
+	                                    )
 	                                )
 	                            )
 	                        ),
@@ -73558,16 +76103,17 @@
 	                                null,
 	                                _react2['default'].createElement(
 	                                    _beeLayout.Col,
-	                                    { md: 3, xs: 2 },
+	                                    { lg: 4, md: 4, xs: 4 },
 	                                    _react2['default'].createElement(
 	                                        _beeLabel2['default'],
 	                                        null,
+	                                        _react2['default'].createElement(_beeIcon2['default'], { type: 'uf-mi', className: 'mast' }),
 	                                        '\u5BA1\u6279\u72B6\u6001'
 	                                    )
 	                                ),
 	                                _react2['default'].createElement(
 	                                    _beeLayout.Col,
-	                                    { md: 9, xs: 10 },
+	                                    { lg: 8, md: 8, xs: 8 },
 	                                    _react2['default'].createElement(
 	                                        _beeRadio2['default'].RadioGroup,
 	                                        _extends({
@@ -73587,6 +76133,11 @@
 	                                            _beeRadio2['default'],
 	                                            { value: '1' },
 	                                            '\u5DF2\u5BA1\u6279'
+	                                        ),
+	                                        _react2['default'].createElement(
+	                                            _beeRadio2['default'],
+	                                            { value: '2' },
+	                                            '\u5168\u90E8'
 	                                        )
 	                                    )
 	                                )
@@ -73600,16 +76151,17 @@
 	                                null,
 	                                _react2['default'].createElement(
 	                                    _beeLayout.Col,
-	                                    { md: 3, xs: 2 },
+	                                    { lg: 4, md: 4, xs: 4 },
 	                                    _react2['default'].createElement(
 	                                        _beeLabel2['default'],
 	                                        null,
+	                                        _react2['default'].createElement(_beeIcon2['default'], { type: 'uf-mi', className: 'mast' }),
 	                                        '\u5173\u95ED\u72B6\u6001'
 	                                    )
 	                                ),
 	                                _react2['default'].createElement(
 	                                    _beeLayout.Col,
-	                                    { md: 9, xs: 10 },
+	                                    { lg: 8, md: 8, xs: 8 },
 	                                    _react2['default'].createElement(
 	                                        _beeRadio2['default'].RadioGroup,
 	                                        _extends({
@@ -73642,16 +76194,17 @@
 	                                null,
 	                                _react2['default'].createElement(
 	                                    _beeLayout.Col,
-	                                    { md: 3, xs: 2 },
+	                                    { lg: 4, md: 4, xs: 4 },
 	                                    _react2['default'].createElement(
 	                                        _beeLabel2['default'],
 	                                        null,
+	                                        _react2['default'].createElement(_beeIcon2['default'], { type: 'uf-mi', className: 'mast' }),
 	                                        '\u786E\u8BA4\u72B6\u6001'
 	                                    )
 	                                ),
 	                                _react2['default'].createElement(
 	                                    _beeLayout.Col,
-	                                    { md: 9, xs: 10 },
+	                                    { lg: 8, md: 8, xs: 8 },
 	                                    _react2['default'].createElement(
 	                                        _beeRadio2['default'].RadioGroup,
 	                                        _extends({
@@ -73688,7 +76241,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 634 */
+/* 645 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -73697,7 +76250,7 @@
 	  value: true
 	});
 	
-	var _SearchPanel = __webpack_require__(635);
+	var _SearchPanel = __webpack_require__(646);
 	
 	var _SearchPanel2 = _interopRequireDefault(_SearchPanel);
 	
@@ -73707,7 +76260,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 635 */
+/* 646 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -73938,7 +76491,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 636 */
+/* 647 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -74014,7 +76567,7 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); } /**
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @title 多种布局示例
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @description 必输项的 * ，在文字左侧或右侧均可 
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @description 
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
 	
 	
@@ -74092,8 +76645,8 @@
 	                            _react2['default'].createElement(
 	                                _beeLabel2['default'],
 	                                null,
-	                                '\u8BA2\u5355\u7F16\u53F7',
-	                                _react2['default'].createElement(_beeIcon2['default'], { type: 'uf-mi', className: 'mast' })
+	                                _react2['default'].createElement(_beeIcon2['default'], { type: 'uf-mi', className: 'mast' }),
+	                                '\u8BA2\u5355\u7F16\u53F7'
 	                            ),
 	                            _react2['default'].createElement(_beeFormControl2['default'], getFieldProps('orderCode1', {
 	                                initialValue: '',
@@ -74117,8 +76670,8 @@
 	                            _react2['default'].createElement(
 	                                _beeLabel2['default'],
 	                                null,
-	                                '\u4F9B\u5E94\u5546\u540D\u79F0',
-	                                _react2['default'].createElement(_beeIcon2['default'], { type: 'uf-mi', className: 'mast' })
+	                                _react2['default'].createElement(_beeIcon2['default'], { type: 'uf-mi', className: 'mast' }),
+	                                '\u4F9B\u5E94\u5546\u540D\u79F0'
 	                            ),
 	                            _react2['default'].createElement(_beeFormControl2['default'], getFieldProps('supplierName1', {
 	                                initialValue: '',
@@ -74297,7 +76850,7 @@
 	                ),
 	                _react2['default'].createElement(
 	                    _beeLayout.Row,
-	                    { className: 'edit-panel edit-panel-center' },
+	                    { className: 'text-algin-center' },
 	                    _react2['default'].createElement(
 	                        _beeLayout.Col,
 	                        { md: 12 },
@@ -74381,97 +76934,100 @@
 	                ),
 	                _react2['default'].createElement(
 	                    _beeLayout.Row,
-	                    { className: 'edit-panel edit-panel-textarea' },
+	                    null,
 	                    _react2['default'].createElement(
 	                        _beeLayout.Col,
-	                        { md: 1, xs: 2 },
+	                        { lg: 4, md: 6, xs: 12 },
 	                        _react2['default'].createElement(
-	                            _beeLabel2['default'],
+	                            FormItem,
 	                            null,
-	                            '\u8BA2\u5355\u7F16\u53F7',
-	                            _react2['default'].createElement(_beeIcon2['default'], { type: 'uf-mi', className: 'mast' })
+	                            _react2['default'].createElement(
+	                                _beeLabel2['default'],
+	                                null,
+	                                _react2['default'].createElement(_beeIcon2['default'], { type: 'uf-mi', className: 'mast' }),
+	                                '\u8BA2\u5355\u7F16\u53F7'
+	                            ),
+	                            _react2['default'].createElement(_beeFormControl2['default'], getFieldProps('orderCode4', {
+	                                initialValue: '',
+	                                rules: [{
+	                                    required: true, message: '请输入订单编号'
+	                                }]
+	                            })),
+	                            _react2['default'].createElement(
+	                                'span',
+	                                { className: 'error' },
+	                                getFieldError('orderCode4')
+	                            )
 	                        )
 	                    ),
 	                    _react2['default'].createElement(
 	                        _beeLayout.Col,
-	                        { md: 3, xs: 10 },
-	                        _react2['default'].createElement(_beeFormControl2['default'], getFieldProps('orderCode4', {
-	                            initialValue: '',
-	                            rules: [{
-	                                required: true, message: '请输入订单编号'
-	                            }]
-	                        })),
+	                        { lg: 4, md: 6, xs: 12 },
 	                        _react2['default'].createElement(
-	                            'span',
-	                            { className: 'error' },
-	                            getFieldError('orderCode4')
-	                        )
-	                    ),
-	                    _react2['default'].createElement(
-	                        _beeLayout.Col,
-	                        { md: 1, xs: 2 },
-	                        _react2['default'].createElement(
-	                            _beeLabel2['default'],
+	                            FormItem,
 	                            null,
-	                            '\u4F9B\u5E94\u5546',
-	                            _react2['default'].createElement(_beeIcon2['default'], { type: 'uf-mi', className: 'mast' })
+	                            _react2['default'].createElement(
+	                                _beeLabel2['default'],
+	                                null,
+	                                _react2['default'].createElement(_beeIcon2['default'], { type: 'uf-mi', className: 'mast' }),
+	                                '\u4F9B\u5E94\u5546'
+	                            ),
+	                            _react2['default'].createElement(_beeFormControl2['default'], getFieldProps('supplierName4', {
+	                                initialValue: '',
+	                                rules: [{
+	                                    required: true, message: '请输入供应商名称'
+	                                }]
+	                            })),
+	                            _react2['default'].createElement(
+	                                'span',
+	                                { className: 'error' },
+	                                getFieldError('supplierName4')
+	                            )
 	                        )
 	                    ),
 	                    _react2['default'].createElement(
 	                        _beeLayout.Col,
-	                        { md: 3, xs: 10 },
-	                        _react2['default'].createElement(_beeFormControl2['default'], getFieldProps('supplierName4', {
-	                            initialValue: '',
-	                            rules: [{
-	                                required: true, message: '请输入供应商名称'
-	                            }]
-	                        })),
+	                        { lg: 4, md: 6, xs: 12 },
 	                        _react2['default'].createElement(
-	                            'span',
-	                            { className: 'error' },
-	                            getFieldError('supplierName4')
-	                        )
-	                    ),
-	                    _react2['default'].createElement(
-	                        _beeLayout.Col,
-	                        { md: 1, xs: 2 },
-	                        _react2['default'].createElement(
-	                            _beeLabel2['default'],
+	                            FormItem,
 	                            null,
-	                            '\u51ED\u8BC1\u540D\u79F0'
+	                            _react2['default'].createElement(
+	                                _beeLabel2['default'],
+	                                null,
+	                                _react2['default'].createElement(_beeIcon2['default'], { type: 'uf-mi', className: 'mast' }),
+	                                '\u51ED\u8BC1\u540D\u79F0'
+	                            ),
+	                            _react2['default'].createElement(_beeFormControl2['default'], getFieldProps('voucherName4', {
+	                                initialValue: '',
+	                                rules: [{
+	                                    required: true, message: '请输入凭证名称'
+	                                }]
+	                            })),
+	                            _react2['default'].createElement(
+	                                'span',
+	                                { className: 'error' },
+	                                getFieldError('voucherName4')
+	                            )
 	                        )
-	                    ),
+	                    )
+	                ),
+	                _react2['default'].createElement(
+	                    _beeLayout.Row,
+	                    null,
 	                    _react2['default'].createElement(
 	                        _beeLayout.Col,
-	                        { md: 3, xs: 10 },
-	                        _react2['default'].createElement(_beeFormControl2['default'], getFieldProps('voucherName4', {
-	                            initialValue: '',
-	                            rules: [{
-	                                required: true, message: '请输入凭证名称'
-	                            }]
-	                        })),
+	                        { md: 12, xs: 12 },
 	                        _react2['default'].createElement(
-	                            'span',
-	                            { className: 'error' },
-	                            getFieldError('voucherName4')
+	                            FormItem,
+	                            { className: 'remark flex' },
+	                            _react2['default'].createElement(
+	                                _beeLabel2['default'],
+	                                { className: 'line-height-32' },
+	                                '\u5907\u6CE8'
+	                            ),
+	                            _react2['default'].createElement(_beeFormControl2['default'], _extends({ componentClass: 'textarea'
+	                            }, getFieldProps('mark', {})))
 	                        )
-	                    ),
-	                    _react2['default'].createElement(
-	                        _beeLayout.Col,
-	                        { md: 1, xs: 2 },
-	                        _react2['default'].createElement(
-	                            _beeLabel2['default'],
-	                            { className: 'time' },
-	                            '\u5907\u6CE8'
-	                        )
-	                    ),
-	                    _react2['default'].createElement(
-	                        _beeLayout.Col,
-	                        { md: 11, xs: 10 },
-	                        _react2['default'].createElement('textarea', _extends({ className: 'u-form-control'
-	                        }, getFieldProps('mark', {
-	                            initialValue: ''
-	                        })))
 	                    )
 	                )
 	            )

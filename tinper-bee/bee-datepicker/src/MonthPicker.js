@@ -8,6 +8,7 @@ import Picker from "./rc-calendar/Picker";
 import FormControl from "bee-form-control";
 import Icon from "bee-icon";
 import InputGroup from 'bee-input-group';
+import classnames from 'classnames';
 import zhCN from "./locale/zh_CN";
 
 class MonthPicker extends Component {
@@ -66,8 +67,9 @@ class MonthPicker extends Component {
     const monthCalendar = <MonthCalendar {...props}
       onChange={this.onChange}
     />;
+    let classes = classnames(props.className, "datepicker-container");
     return (
-      <div>
+      <div className={classes}>
         <Picker
           onOpenChange={this.onOpenChange}
           animation={'animation' in props ? props.animation : "slide-up"}

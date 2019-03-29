@@ -30,6 +30,10 @@ var _beeInputGroup = require("bee-input-group");
 
 var _beeInputGroup2 = _interopRequireDefault(_beeInputGroup);
 
+var _classnames = require("classnames");
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
 var _zh_CN = require("./locale/zh_CN");
 
 var _zh_CN2 = _interopRequireDefault(_zh_CN);
@@ -118,9 +122,10 @@ var MonthPicker = function (_Component) {
     var monthCalendar = _react2["default"].createElement(_MonthCalendar2["default"], _extends({}, props, {
       onChange: this.onChange
     }));
+    var classes = (0, _classnames2["default"])(props.className, "datepicker-container");
     return _react2["default"].createElement(
       "div",
-      null,
+      { className: classes },
       _react2["default"].createElement(
         _Picker2["default"],
         {

@@ -8,6 +8,7 @@ import Picker from "./rc-calendar/Picker";
 import FormControl from "bee-form-control";
 import InputGroup from 'bee-input-group';
 import Icon from "bee-icon";
+import classnames from 'classnames';
 import moment from "moment";
 
 //去掉focus报错
@@ -86,9 +87,9 @@ class YearPicker extends Component {
         {...props} focus={()=>{}} 
         showDateInput={true}
         />;
-
+        let classes = classnames(props.className, "datepicker-container");
         return (
-            <div>
+            <div className={classes}>
                 <Picker
                     animation="slide-up"
                     {...props}

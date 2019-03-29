@@ -15,11 +15,13 @@ import Checkbox from 'bee-checkbox';
 import Switch from 'bee-switch';
 import Label from 'bee-label';
 import Button from 'bee-button';
+import Icon from 'bee-icon';
 import SearchPanel from 'bee-search-panel';
 import moment from "moment/moment";
 const FormItem = Form.FormItem;
 const Option = Select.Option;
 const { RangePicker } = DatePicker;
+const CheckboxGroup = Checkbox.CheckboxGroup;
 
 const Demo5 = Form.createForm()(class Demo extends Component {
     constructor(props) {
@@ -84,14 +86,18 @@ const Demo5 = Form.createForm()(class Demo extends Component {
                         <Row>
                             <Col lg={4} md={6} xs={12}>
                                 <FormItem>
-                                    <Col md={3} xs={2}>
-                                        <Label>订单编号</Label>
+                                    <Col lg={4} md={4} xs={4}>
+                                        <Label><Icon type="uf-mi" className='mast'></Icon>订单编号</Label>
                                     </Col>
-                                    <Col md={9} xs={10}>
+                                    <Col lg={8} md={8} xs={8}>
                                         <FormControl size="sm"
                                             {
                                             ...getFieldProps('orderCode', {
                                                 initialValue: '',
+                                                validateTrigger: 'onBlur',
+                                                rules: [{
+                                                    required: true, message: '请输入订单编号',
+                                                }],
                                             })
                                             }
                                         />
@@ -100,10 +106,10 @@ const Demo5 = Form.createForm()(class Demo extends Component {
                             </Col>
                             <Col  lg={4} md={6} xs={12}>
                                 <FormItem>
-                                    <Col md={3} xs={2}>
-                                        <Label>供应商</Label>
+                                    <Col lg={4} md={4} xs={4}>
+                                        <Label><Icon type="uf-mi" className='mast'></Icon>供应商名称</Label>
                                     </Col>
-                                    <Col md={9} xs={10}>
+                                    <Col lg={8} md={8} xs={8}>
                                         <FormControl size="sm"
                                             {
                                             ...getFieldProps('supplierName', {
@@ -114,13 +120,29 @@ const Demo5 = Form.createForm()(class Demo extends Component {
                                     </Col>
                                 </FormItem>
                             </Col>
+                            <Col  lg={4} md={6} xs={12}>
+                                <FormItem>
+                                    <Col lg={4} md={4} xs={4}>
+                                        <Label><Icon type="uf-mi" className='mast'></Icon>凭证名称</Label>
+                                    </Col>
+                                    <Col lg={8} md={8} xs={8}>
+                                        <FormControl size="sm"
+                                            {
+                                            ...getFieldProps('voucherName1', {
+                                                initialValue: '',
+                                            })
+                                            }
+                                        />
+                                    </Col>
+                                </FormItem>
+                            </Col>
                             
                             <Col  lg={4} md={6} xs={12}>
                                 <FormItem>
-                                    <Col md={3} xs={2}>
-                                        <Label>订单类型</Label>
+                                    <Col lg={4} md={4} xs={4}>
+                                        <Label><Icon type="uf-mi" className='mast'></Icon>订单类型</Label>
                                     </Col>
-                                    <Col md={9} xs={10}>
+                                    <Col lg={8} md={8} xs={8}>
                                         <Select size="sm"
                                             {
                                             ...getFieldProps('type', {
@@ -141,26 +163,29 @@ const Demo5 = Form.createForm()(class Demo extends Component {
                             </Col>
                             <Col  lg={4} md={6} xs={12}>
                                 <FormItem>
-                                    <Col md={3} xs={2}>
-                                        <Label>采购组</Label>
+                                    <Col lg={4} md={4} xs={4}>
+                                        <Label><Icon type="uf-mi" className='mast'></Icon>采购组</Label>
                                     </Col>
-                                    <Col md={9} xs={10}>
-                                        <FormControl size="sm"
+                                    <Col lg={8} md={8} xs={8}>
+                                        <CheckboxGroup 
                                             {
-                                            ...getFieldProps('purchasingGroup', {
-                                                initialValue: '',
-                                            })
+                                                ...getFieldProps('purchasingGroup',{
+                                                    initialValue:['2']
+                                                })
                                             }
-                                        />
+                                        >
+                                            <Checkbox value='1'>人力</Checkbox>
+                                            <Checkbox value='2'>财务</Checkbox>
+                                        </CheckboxGroup>
                                     </Col>
                                 </FormItem>
                             </Col>
                             <Col  lg={4} md={6} xs={12}>
                                 <FormItem>
-                                    <Col md={3} xs={2}>
-                                        <Label>审批状态</Label>
+                                    <Col lg={4} md={4} xs={4}>
+                                        <Label><Icon type="uf-mi" className='mast'></Icon>审批状态</Label>
                                     </Col>
-                                    <Col md={9} xs={10}>
+                                    <Col lg={8} md={8} xs={8}>
                                         <Radio.RadioGroup
                                             selectedValue={this.state.approvalState}
                                             {
@@ -174,16 +199,17 @@ const Demo5 = Form.createForm()(class Demo extends Component {
                                         >
                                             <Radio value="0" >未审批</Radio>
                                             <Radio value="1" >已审批</Radio>
+                                            <Radio value="2" >全部</Radio>
                                         </Radio.RadioGroup>
                                     </Col>
                                 </FormItem>
                             </Col>
                             <Col  lg={4} md={6} xs={12}>
                                 <FormItem>
-                                    <Col md={3} xs={2}>
-                                        <Label>关闭状态</Label>
+                                    <Col lg={4} md={4} xs={4}>
+                                        <Label><Icon type="uf-mi" className='mast'></Icon>关闭状态</Label>
                                     </Col>
-                                    <Col md={9} xs={10}>
+                                    <Col lg={8} md={8} xs={8}>
                                         <Radio.RadioGroup
                                             selectedValue={this.state.closeState}
                                             {
@@ -203,10 +229,10 @@ const Demo5 = Form.createForm()(class Demo extends Component {
                             </Col>
                             <Col  lg={4} md={6} xs={12}>
                                 <FormItem>
-                                    <Col md={3} xs={2}>
-                                        <Label>确认状态</Label>
+                                    <Col lg={4} md={4} xs={4}>
+                                        <Label><Icon type="uf-mi" className='mast'></Icon>确认状态</Label>
                                     </Col>
-                                    <Col md={9} xs={10}>
+                                    <Col lg={8} md={8} xs={8}>
                                         <Radio.RadioGroup
                                             selectedValue={this.state.confirmState}
                                             {

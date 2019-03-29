@@ -1,57 +1,7 @@
-.demo4 {
-    font-size: 14px;
-    .u-label {
-        display: inline-block;
-        min-width: 100px;
-        text-align: right;
-        padding-right: 12px;
-    }
-    .u-form-control {
-        width: auto;
-        min-width: 380px;
-    }
-    .error {
-        font-size: 12px;
-        color: red;
-        margin-left: 10px;
-    }
-    .submit {
-        padding-left: 110px;
-    }
-    .submit .login {
-        margin-left: 10px;
-    }
-    .u-select {
-        max-width: 380px;
-    }
-    textarea {
-        min-height: 100px;
-        resize: none;
-    }
-    .time>div {
-        display: inline-block;
-    }
-    .time .u-label {
-        position: relative;
-        bottom: 10px;
-    }
-    .time .error{
-        position: relative;
-        bottom: 10px;
-    }
-    .remarks .u-label{
-        position: relative;
-        bottom: 79px;
-    }
-    .u-city-select {
-        display: inline-block;
-    }
-    .u-city-select .province,
-    .u-city-select .city,
-    .u-city-select .area {
-        width: 120px;
-    }
-    .u-form-item {
-        min-height: auto!important;
+.demo4{
+    .u-form-item{
+        .u-form-control, .datepicker-container{
+            min-width: 300px;
+        }
     }
 }

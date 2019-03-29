@@ -4,6 +4,7 @@
 
 import Calendar from "./rc-calendar";
 import React, { Component } from "react";
+import classnames from 'classnames';
 import Picker from "./rc-calendar/Picker";
 import FormControl from "bee-form-control";
 import zhCN from "./locale/zh_CN";
@@ -182,8 +183,9 @@ class WeekPicker extends Component {
         onClear={this.onClear}
       />
     );
+    let classes = classnames(props.className, "datepicker-container");
     return (
-      <div>
+      <div className={classes}>
         {/* <style dangerouslySetInnerHTML={{ __html: style }} /> */}
         <Picker
           animation="slide-up"

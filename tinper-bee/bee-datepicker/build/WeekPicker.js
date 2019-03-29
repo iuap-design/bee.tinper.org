@@ -14,6 +14,10 @@ var _react = require("react");
 
 var _react2 = _interopRequireDefault(_react);
 
+var _classnames = require("classnames");
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
 var _Picker = require("./rc-calendar/Picker");
 
 var _Picker2 = _interopRequireDefault(_Picker);
@@ -231,9 +235,10 @@ var WeekPicker = function (_Component) {
       showToday: false,
       onClear: this.onClear
     });
+    var classes = (0, _classnames2["default"])(props.className, "datepicker-container");
     return _react2["default"].createElement(
       "div",
-      null,
+      { className: classes },
       _react2["default"].createElement(
         _Picker2["default"],
         _extends({

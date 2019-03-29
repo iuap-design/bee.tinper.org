@@ -12,8 +12,8 @@
   bottom: 0;
   left: 0;
   right: 0;
-  font-size: 16px;
-  color: #000;
+  font-size: 14px;
+  color: #212121;
   text-align: center; }
 
 /**
@@ -152,7 +152,7 @@
   position: relative;
   height: 100px;
   width: 500px;
-  border: 1px solid #0084ff;
+  border: 1px solid #a5adba;
   overflow: hidden;
   font-size: 14px; }
   .demo2 .u-loading-backdrop {
@@ -162,7 +162,7 @@
   position: relative;
   height: 100px;
   width: 500px;
-  border: 1px solid #0084ff;
+  border: 1px solid #a5adba;
   overflow: hidden;
   font-size: 14px; }
   .demo3 .u-loading-backdrop {
@@ -172,10 +172,26 @@
   position: relative;
   height: 100px;
   width: 500px;
-  border: 1px solid #0084ff;
+  border: 1px solid #a5adba;
   overflow: hidden;
   font-size: 14px; }
   .demo4 .u-loading-backdrop {
     z-index: 1029; }
+
+.demo5 {
+  position: relative;
+  height: 100px;
+  width: 500px;
+  overflow: hidden;
+  font-size: 14px; }
+  .demo5 .u-loading-backdrop {
+    z-index: 1029;
+    background: rgba(255, 255, 255, 0); }
+  .demo5 .u-loading.u-loading-rotate.u-loading-rotate-sm > div {
+    left: 20%; }
+  .demo5 .u-loading.u-loading-rotate > div {
+    left: 40%; }
+  .demo5 .u-loading.u-loading-rotate.u-loading-rotate-lg > div {
+    left: 65%; }
 
 /*# sourceMappingURL=demo.css.map */

@@ -55,10 +55,10 @@ const Demo2 = Form.createForm()(class Demo2 extends Component {
                             {getFieldError('password')}
                         </span>
                     </FormItem>
-                    <div className='submit'>
-                        <Button shape="border" className="reset">取消</Button>
+                    <FormItem style={{'paddingLeft':'106px'}}>
+                        <Button shape="border" className="reset" style={{"marginRight":"8px"}}>取消</Button>
                         <Button colors="primary" className="login" onClick={this.submit}>登录</Button>
-                    </div>
+                    </FormItem>
                 </Form>
             </div>
         )
