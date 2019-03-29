@@ -101,9 +101,10 @@ class SearchPanel extends Component {
         onPanelChangeEnd && this._onPanelChange(type, onPanelChangeEnd)
     }
     _getChildren = (element) => {
-        if(element.type.prototype === HeadContainer.prototype){
+        // if(element.type.prototype === HeadContainer.prototype){
+        if(element.type.name === "HeadContainer"){
             this._HeadContainer = element;
-        }else if(element.type.prototype === AdvancedContainer.prototype){
+        }else if(element.type.name === "AdvancedContainer"){
             this._AdvancedContainer = element;
         }
     }

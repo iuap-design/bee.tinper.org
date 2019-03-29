@@ -134,9 +134,10 @@ var SearchPanel = function (_Component) {
         };
 
         _this._getChildren = function (element) {
-            if (element.type.prototype === _HeadContainer2["default"].prototype) {
+            // if(element.type.prototype === HeadContainer.prototype){
+            if (element.type.name === "HeadContainer") {
                 _this._HeadContainer = element;
-            } else if (element.type.prototype === _AdvancedContainer2["default"].prototype) {
+            } else if (element.type.name === "AdvancedContainer") {
                 _this._AdvancedContainer = element;
             }
         };

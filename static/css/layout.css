@@ -119,6 +119,9 @@
     .doc-content.component .docs{
         width: auto
     }
+    .component-drawerc .drawer-right{
+        max-width: 80%;
+    }
 }
 
 @media(min-width:768px){
