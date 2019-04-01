@@ -16619,7 +16619,7 @@
 	
 	    Anchor.prototype.componentDidMount = function componentDidMount() {
 	        var props = this.props;
-	        this.anchor = new _gumshoejs2['default']('#my-awesome-nav a', _extends({}, props));
+	        this.anchor = new _gumshoejs2['default'](props.selector, _extends({}, props));
 	        this.anchorDOM.addEventListener('gumshoeActivate', function (event) {
 	            // The list item
 	            var li = event.target; //列表

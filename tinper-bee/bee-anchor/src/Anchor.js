@@ -36,7 +36,7 @@ class Anchor extends Component {
 
     componentDidMount(){
         let props = this.props;
-        this.anchor = new Gumshoe('#my-awesome-nav a',{
+        this.anchor = new Gumshoe(props.selector,{
             ...props
         })
         this.anchorDOM.addEventListener('gumshoeActivate',(event)=>{

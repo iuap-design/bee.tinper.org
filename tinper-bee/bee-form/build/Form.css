@@ -26,8 +26,7 @@
       line-height: 32px; }
   .u-form-item .u-form-control, .u-form-item .u-input-group .u-form-control, .u-form-item .u-select, .u-form-item .u-checkbox-group {
     display: inline-block;
-    width: auto;
-    min-width: 210px; }
+    width: auto; }
   .u-form-item .datepicker-container, .u-form-item .calendar-picker {
     display: inline-block; }
   .u-form-item textarea {

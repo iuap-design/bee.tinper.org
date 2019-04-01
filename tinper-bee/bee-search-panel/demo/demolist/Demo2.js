@@ -138,9 +138,33 @@ class Demo2 extends Component {
                     <div className='demo-body'>
                         <Form>
                             <Row>
-                                <Col xs={12} sm={6} md={4}  lg={3}>
+                            <Col xs={12} sm={6} md={4} lg={4}>
                                     <FormItem>
-                                        <Col xs={12} sm={12} md={12}  lg={12} className="col">
+                                            <Label>订单编号:</Label>
+                                            <FormControl size="sm"
+                                                {
+                                                ...getFieldProps('orderCode', {
+                                                    initialValue: '',
+                                                })
+                                                }
+                                            />
+                                    </FormItem>
+                                </Col>
+
+                                <Col xs={12} sm={6} md={4}  lg={4}>
+                                    <FormItem>
+                                            <Label>供应商名称:</Label>
+                                            <FormControl size="sm"
+                                                {
+                                                ...getFieldProps('supplierName', {
+                                                    initialValue: '',
+                                                })
+                                                }
+                                            />
+                                    </FormItem>
+                                </Col>
+                                <Col xs={12} sm={6} md={4}  lg={4}>
+                                    <FormItem>
                                             <Label>订单类型:</Label>
                                             <Select size="sm"
                                                 {
@@ -157,13 +181,11 @@ class Demo2 extends Component {
                                                     })
                                                 }
                                             </Select>
-                                        </Col>
                                     </FormItem>
                                 </Col>
 
-                                <Col xs={12} sm={6} md={4}  lg={3}>
+                                <Col xs={12} sm={6} md={4}  lg={4}>
                                     <FormItem>
-                                        <Col xs={12} sm={12} md={12}  lg={12} className="col">
                                             <Label>采购组</Label>
                                             <CheckboxGroup 
                                                     {
@@ -175,13 +197,11 @@ class Demo2 extends Component {
                                                     <Checkbox value='1'>人力</Checkbox>
                                                     <Checkbox value='2'>财务</Checkbox>
                                             </CheckboxGroup>
-                                        </Col>
                                     </FormItem>
                                 </Col>
 
-                                <Col xs={12} sm={6} md={4}  lg={3}>
+                                <Col xs={12} sm={6} md={4}  lg={4}>
                                     <FormItem>
-                                        <Col xs={12} sm={12} md={12}  lg={12} className="col">
                                             <Label>审批</Label>
                                             <Radio.RadioGroup
                                                     selectedValue={this.state.approvalState}
@@ -197,7 +217,6 @@ class Demo2 extends Component {
                                                 <Radio value="0" >未审批</Radio>
                                                 <Radio value="1" >已审批</Radio>
                                             </Radio.RadioGroup>
-                                        </Col>
                                     </FormItem>
                                 </Col>
                             </Row>

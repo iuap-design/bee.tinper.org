@@ -1,3 +1,8 @@
+<a name="2.0.10"></a>
+## [2.0.10](https://github.com/tinper-bee/bee-form/compare/v2.0.9...v2.0.10) (2019-04-01)
+
+
+
 <a name="2.0.9"></a>
 ## [2.0.9](https://github.com/tinper-bee/bee-form/compare/v2.0.7...v2.0.9) (2019-03-29)
 

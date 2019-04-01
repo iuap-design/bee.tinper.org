@@ -68,7 +68,6 @@ class Demo1 extends Component {
                             <Row>
                                 <Col xs={12} sm={6} md={4} lg={3}>
                                     <FormItem>
-                                        <Col xs={12} sm={12} md={12}  lg={12} className="col">
                                             <Label>名 称:</Label>
                                             <FormControl size="sm"
                                                 {
@@ -77,13 +76,11 @@ class Demo1 extends Component {
                                                 })
                                                 }
                                             />
-                                        </Col>
                                     </FormItem>
                                 </Col>
 
                                 <Col xs={12} sm={6} md={4}  lg={3}>
                                     <FormItem>
-                                        <Col xs={12} sm={12} md={12}  lg={12} className="col">
                                             <Label>电话:</Label>
                                             <FormControl size="sm"
                                                 {
@@ -92,7 +89,6 @@ class Demo1 extends Component {
                                                 })
                                                 }
                                             />
-                                        </Col>
                                     </FormItem>
                                 </Col>
                             </Row>
@@ -130,7 +126,6 @@ class Demo1 extends Component {
 
                                 <Col xs={12} sm={6} md={4} lg={3}>
                                     <FormItem>
-                                        <Col xs={12} sm={12} md={12}  lg={12} className="col">
                                             <Label>联系人:</Label>
                                             <FormControl size="sm"
                                                 {
@@ -139,13 +134,11 @@ class Demo1 extends Component {
                                                 })
                                                 }
                                             />
-                                        </Col>
                                     </FormItem>
                                 </Col>
 
                                 <Col xs={12} sm={6} md={4}  lg={3}>
                                     <FormItem>
-                                        <Col xs={12} sm={12} md={12}  lg={12} className="col">
                                             <Label>供应商:</Label>
                                             <FormControl size="sm"
                                                 {
@@ -154,13 +147,11 @@ class Demo1 extends Component {
                                                 })
                                                 }
                                             />
-                                        </Col>
                                     </FormItem>
                                 </Col> 
 
                                 <Col xs={12} sm={6} md={4}  lg={3}>
                                     <FormItem>
-                                        <Col xs={12} sm={12} md={12}  lg={12} className="col">
                                             <Label>地址:</Label>
                                             <FormControl size="sm"
                                                 {
@@ -169,14 +160,12 @@ class Demo1 extends Component {
                                                 })
                                                 }
                                             />
-                                        </Col>
                                     </FormItem>
                                 </Col> 
 
 
                                 <Col xs={12} sm={6} md={4}  lg={3}>
                                     <FormItem>
-                                        <Col xs={12} sm={12} md={12}  lg={12} className="col">
                                             <Label>车牌:</Label>
                                             <FormControl size="sm"
                                                 {
@@ -185,13 +174,11 @@ class Demo1 extends Component {
                                                 })
                                                 }
                                             />
-                                        </Col>
                                     </FormItem>
                                 </Col>
 
                                 <Col xs={12} sm={6} md={4}  lg={3}>
                                     <FormItem>
-                                        <Col xs={12} sm={12} md={12}  lg={12} className="col">
                                             <Label>备注:</Label>
                                             <FormControl size="sm"
                                                 {
@@ -200,13 +187,11 @@ class Demo1 extends Component {
                                                 })
                                                 }
                                             />
-                                        </Col>
                                     </FormItem>
                                 </Col>
 
                                 <Col xs={12} sm={6} md={4}  lg={3}>
                                     <FormItem>
-                                        <Col xs={12} sm={12} md={12}  lg={12} className="col">
                                             <Label>编号:</Label>
                                             <FormControl size="sm"
                                                 {
@@ -215,7 +200,6 @@ class Demo1 extends Component {
                                                 })
                                                 }
                                             />
-                                        </Col>
                                     </FormItem>
                                 </Col>
 
