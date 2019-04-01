@@ -132,6 +132,11 @@
     z-index: 999;
 }
 
+.mob-nav ul li{
+    height:42px;
+    line-height:42px;
+}
+
 .mob-nav .nav-content .uf-navmenu {
     margin-left: 2px;
 }
@@ -206,13 +211,13 @@ input::-webkit-input-placeholder {
     font-size: 14px;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 768px) {
     .nav {
         display: none;
     }
 }
 
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 768px) {
     .mob-nav {
         display: none;
     }

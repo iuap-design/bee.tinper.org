@@ -30,6 +30,7 @@
     margin-left: 250px;
 }
 .footer-out {
+    background: #424242;
     margin-left: 249px;
     margin-top: 60px;
     position: relative;
@@ -56,7 +57,7 @@
     -moz-border-radius:18%;
     -ms-border-radius:18%;
     -o-border-radius:18%;
-    box-shadow:2px 2px 5px #9C9C9C;
+    box-shadow:0px 0px 5px #BDBDBD;
     text-align:center;
     line-height:37px;
 }
@@ -77,7 +78,7 @@
     width:37px;
     height:37px;
     border-radius:18%;
-    box-shadow:2px 2px 5px #9C9C9C;
+    box-shadow:0px 0px 5px #BDBDBD;
     background:white;
     display:block;
     text-align:center;
