@@ -454,7 +454,7 @@
     height: 100%;
     background-color: rgb(245, 60, 50);
     content: '';
-    border-bottom: 32px #fff solid;
+    border-bottom: 35px #fff solid;
     border-left: none; }
   .u-tabs-upborder .u-tabs-nav .u-tabs-tab-active {
     color: rgb(245, 60, 50); }

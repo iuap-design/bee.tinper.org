@@ -80,7 +80,7 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
 	
-	var Demo1 = __webpack_require__(424);var Demo2 = __webpack_require__(425);var Demo3 = __webpack_require__(426);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 拾色器", "code": "/**\n*\n* @title 拾色器\n* @description 提供预制色板的拾色器组件\n*\n*/\nimport React, { Component } from 'react';\nimport { ColorPicker } from 'tinper-bee';\n\nclass Demo1 extends Component {\n    state = {\n        value : \"#E14C46\"\n    }\n\n    handleChange = (v) => {\n        console.log(v);\n        this.setState({\n            value: v\n        })\n    }\n    render () {\n        return (\n            <ColorPicker \n                value={this.state.value} \n                onChange={this.handleChange}\n                label=\"颜色\"\n            />\n        )\n    }\n}\n", "desc": " 提供预制色板的拾色器组件" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 设置必输项", "code": "/**\r\n*\r\n* @title 设置必输项\r\n* @description `required`参数设置是否必填\r\n*\r\n*/\r\nimport React, { Component } from 'react';\r\nimport { ColorPicker } from 'tinper-bee';\r\n\r\nclass Demo2 extends Component {\r\n    state = {\r\n        value : \"#E14C46\"\r\n    }\r\n\r\n    handleChange = (value) => {\r\n        console.log(value);\r\n        this.setState({\r\n            value: value\r\n        })\r\n    }\r\n    render () {\r\n        return (\r\n            <ColorPicker \r\n                className=\"demo2\"\r\n                value={this.state.value} \r\n                onChange={this.handleChange}\r\n                label=\"颜色\"\r\n                required={true}\r\n            />\r\n        )\r\n    }\r\n}\r\n", "desc": " `required`参数设置是否必填" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 自动计算色值", "code": "/**\r\n*\r\n* @title 自动计算色值\r\n* @description 可应用于选择主色后，自动计算hover和active状态的色值\r\n*\r\n*/\r\nimport React, { Component } from 'react';\r\nimport { ColorPicker } from 'tinper-bee';\r\n\r\nclass Demo3 extends Component {\r\n    autoCalculate = (color,scale) => {\r\n        console.log(color,scale);\r\n    }\r\n    render () {\r\n        return (\r\n            <ColorPicker \r\n                className=\"demo2\"\r\n                label=\"颜色\"\r\n                autoCalculate={this.autoCalculate}\r\n            />\r\n        )\r\n    }\r\n}\r\n", "desc": " 可应用于选择主色后，自动计算hover和active状态的色值" }];
+	var Demo1 = __webpack_require__(424);var Demo2 = __webpack_require__(425);var Demo3 = __webpack_require__(426);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 拾色器", "code": "/**\n*\n* @title 拾色器\n* @description 提供预制色板的拾色器组件\n*\n*/\nimport React, { Component } from 'react';\nimport { ColorPicker } from 'tinper-bee';\n\nclass Demo1 extends Component {\n    state = {\n        value : \"#E14C46\"\n    }\n\n    handleChange = (v) => {\n        console.log(v);\n        this.setState({\n            value: v.hex || ''\n        })\n    }\n    render () {\n        return (\n            <ColorPicker \n                placeholder=\"请输入十六进制色值\"\n                value={this.state.value} \n                onChange={this.handleChange}\n                label=\"颜色\"\n            />\n        )\n    }\n}\n", "desc": " 提供预制色板的拾色器组件" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 设置必输项", "code": "/**\r\n*\r\n* @title 设置必输项\r\n* @description `required`参数设置是否必填\r\n*\r\n*/\r\nimport React, { Component } from 'react';\r\nimport { ColorPicker } from 'tinper-bee';\r\n\r\nclass Demo2 extends Component {\r\n    state = {\r\n        value : \"#E14C46\"\r\n    }\r\n\r\n    handleChange = (value) => {\r\n        console.log(value);\r\n        this.setState({\r\n            value: v.hex || ''\r\n        })\r\n    }\r\n    render () {\r\n        return (\r\n            <ColorPicker \r\n                className=\"demo2\"\r\n                placeholder=\"请输入十六进制色值\"\r\n                value={this.state.value} \r\n                onChange={this.handleChange}\r\n                label=\"颜色\"\r\n                required={true}\r\n            />\r\n        )\r\n    }\r\n}\r\n", "desc": " `required`参数设置是否必填" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 自动计算色值", "code": "/**\r\n*\r\n* @title 自动计算色值\r\n* @description 可应用于选择主色后，自动计算hover和active状态的色值\r\n*\r\n*/\r\nimport React, { Component } from 'react';\r\nimport { ColorPicker } from 'tinper-bee';\r\n\r\nclass Demo3 extends Component {\r\n    autoCalculate = (color,scale) => {\r\n        console.log(color,scale);\r\n    }\r\n    render () {\r\n        return (\r\n            <ColorPicker\r\n                placeholder=\"请输入十六进制色值\" \r\n                className=\"demo2\"\r\n                label=\"颜色\"\r\n                autoCalculate={this.autoCalculate}\r\n            />\r\n        )\r\n    }\r\n}\r\n", "desc": " 可应用于选择主色后，自动计算hover和active状态的色值" }];
 	
 	var Demo = function (_Component) {
 	    _inherits(Demo, _Component);
@@ -16504,6 +16504,7 @@
 	    value: _propTypes2['default'].string,
 	    label: _propTypes2['default'].string,
 	    className: _propTypes2['default'].string,
+	    placeholder: _propTypes2['default'].string,
 	    required: _propTypes2['default'].bool,
 	    autoCalculate: _propTypes2['default'].func,
 	    onChange: _propTypes2['default'].func
@@ -16512,6 +16513,7 @@
 	    clsPrefix: "u-colorpicker",
 	    value: "",
 	    label: "",
+	    placeholder: "",
 	    required: false,
 	    autoCalculate: false
 	}, _defineProperty(_defaultProps, 'autoCalculate', function autoCalculate() {}), _defineProperty(_defaultProps, 'onChange', function onChange() {}), _defaultProps);
@@ -16533,21 +16535,36 @@
 	        };
 	
 	        _this.submit = function () {
-	            var autoCalculate = _this.props.autoCalculate;
+	            var _this$props = _this.props,
+	                autoCalculate = _this$props.autoCalculate,
+	                onChange = _this$props.onChange;
+	            var _this$state = _this.state,
+	                selectedColor = _this$state.selectedColor,
+	                selectedScale = _this$state.selectedScale,
+	                selectedHexValue = _this$state.selectedHexValue;
 	
+	            var tempRgb = _this.colorHexToRgb(selectedHexValue);
+	            var obj = {
+	                'class': selectedColor + '-' + selectedScale,
+	                rgb: tempRgb,
+	                hex: selectedHexValue
+	            };
 	            _this.setState({
-	                formValue: _this.state.selectedHexValue,
+	                formValue: selectedHexValue,
 	                displayColorPicker: false
 	            });
 	            if (autoCalculate) {
-	                autoCalculate(_this.state.selectedColor, _this.state.selectedScale);
+	                autoCalculate(selectedColor, selectedScale);
+	            }
+	            if (onChange) {
+	                onChange(obj);
 	            }
 	        };
 	
 	        _this.handleSelectChange = function (value) {
 	            _this.setState({
 	                selectedColor: value,
-	                selectedScale: "600",
+	                selectedScale: 600,
 	                selectedRgbValue: "",
 	                selectedHexValue: ""
 	            });
@@ -16571,11 +16588,17 @@
 	                opts.push(_react2['default'].createElement(
 	                    Option,
 	                    { key: item.key, value: item.key, className: clsPrefix + '-select-option clearfix' },
-	                    _react2['default'].createElement('div', { className: 'option-overview bg-' + item.key + '-600' }),
+	                    _react2['default'].createElement(
+	                        'div',
+	                        { className: 'option-overview bg-' + item.key + '-600' },
+	                        ' '
+	                    ),
 	                    _react2['default'].createElement(
 	                        'span',
 	                        null,
-	                        item.name
+	                        ' ',
+	                        item.name,
+	                        ' '
 	                    )
 	                ));
 	            });
@@ -16607,8 +16630,14 @@
 	        _this.handleChange = function (value) {
 	            var onChange = _this.props.onChange;
 	
+	            var tempRgb = _this.colorHexToRgb(value);
+	            var obj = {
+	                'class': "",
+	                rgb: tempRgb,
+	                hex: value
+	            };
 	            if (onChange) {
-	                onChange(value);
+	                onChange(obj);
 	            }
 	            _this.setState({
 	                formValue: value
@@ -16623,8 +16652,8 @@
 	            displayColorPicker: false,
 	            selectedColor: "red",
 	            selectedScale: "600",
-	            selectedRgbValue: "",
-	            selectedHexValue: "",
+	            selectedRgbValue: _colors2['default'][0].rgbArr[6] ? 'rgb(' + _colors2['default'][0].rgbArr[6] + ')' : '',
+	            selectedHexValue: initValue,
 	            formValue: initValue
 	        };
 	        _this.input = {};
@@ -16660,14 +16689,64 @@
 	    // 渲染预制的色板，提供可选择的颜色示例
 	
 	
+	    // 把16进制颜色转换为RGB颜色
+	    ColorPicker.prototype.colorHexToRgb = function colorHexToRgb(color) {
+	        var sColor = color;
+	        sColor = sColor.toLowerCase();
+	        //十六进制颜色值的正则表达式
+	        var reg = /^#([0-9a-fA-f]{3}|[0-9a-fA-f]{6})$/;
+	        // 如果是16进制颜色
+	        if (sColor && reg.test(sColor)) {
+	            if (sColor.length === 4) {
+	                var sColorNew = "#";
+	                for (var i = 1; i < 4; i += 1) {
+	                    sColorNew += sColor.slice(i, i + 1).concat(sColor.slice(i, i + 1));
+	                }
+	                sColor = sColorNew;
+	            }
+	            //处理六位的颜色值
+	            var sColorChange = [];
+	            for (var i = 1; i < 7; i += 2) {
+	                sColorChange.push(parseInt("0x" + sColor.slice(i, i + 2)));
+	            }
+	            return "RGB(" + sColorChange.join(",") + ")";
+	        }
+	        return sColor;
+	    };
+	
 	    // 把RGB颜色转换为16进制颜色
+	
+	
 	    ColorPicker.prototype.colorRGBtoHex = function colorRGBtoHex(color) {
-	        var rgb = color.split(',');
-	        var r = parseInt(rgb[0].split('(')[1]);
-	        var g = parseInt(rgb[1]);
-	        var b = parseInt(rgb[2].split(')')[0]);
-	        var hex = "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
-	        return hex;
+	        var that = color;
+	        var reg = /^#([0-9a-fA-f]{3}|[0-9a-fA-f]{6})$/;
+	        if (/^(rgb|RGB)/.test(that)) {
+	            var aColor = that.replace(/(?:\(|\)|rgb|RGB)*/g, "").split(",");
+	            var strHex = "#";
+	            for (var i = 0; i < aColor.length; i++) {
+	                var hex = Number(aColor[i]).toString(16);
+	                if (hex.length < 2) {
+	                    hex = '0' + hex;
+	                }
+	                strHex += hex;
+	            }
+	            if (strHex.length !== 7) {
+	                strHex = that;
+	            }
+	            return strHex;
+	        } else if (reg.test(that)) {
+	            var aNum = that.replace(/#/, "").split("");
+	            if (aNum.length === 6) {
+	                return that;
+	            } else if (aNum.length === 3) {
+	                var numHex = "#";
+	                for (var _i = 0; _i < aNum.length; _i += 1) {
+	                    numHex += aNum[_i] + aNum[_i];
+	                }
+	                return numHex;
+	            }
+	        }
+	        return that;
 	    };
 	
 	    // 输入框值更改事件
@@ -16682,8 +16761,9 @@
 	            value = _props.value,
 	            label = _props.label,
 	            required = _props.required,
+	            placeholder = _props.placeholder,
 	            className = _props.className,
-	            others = _objectWithoutProperties(_props, ['clsPrefix', 'onChange', 'value', 'label', 'required', 'className']);
+	            others = _objectWithoutProperties(_props, ['clsPrefix', 'onChange', 'value', 'label', 'required', 'placeholder', 'className']);
 	
 	        var _state = this.state,
 	            selectedColor = _state.selectedColor,
@@ -16711,30 +16791,34 @@
 	            _react2['default'].createElement(
 	                FormItem,
 	                { className: clsPrefix + '-form' },
-	                _react2['default'].createElement(
+	                label ? _react2['default'].createElement(
 	                    _beeLabel2['default'],
 	                    null,
 	                    required ? _react2['default'].createElement(_beeIcon2['default'], { type: 'uf-mi', className: 'mast' }) : "",
 	                    label
-	                ),
-	                _react2['default'].createElement(_beeFormControl2['default'], {
-	                    placeholder: '\u8BF7\u8F93\u5165\u5341\u516D\u8FDB\u5236\u8272\u503C',
-	                    value: formValue,
-	                    onChange: this.handleChange
-	                    // {...getFieldProps('hexadecimal', {
-	                    //     initialValue: formValue,
-	                    //     validateTrigger: 'onBlur',
-	                    //     rules: rules,
-	                    //     onChange(value) {
-	                    //         if (onChange) {
-	                    //             onChange(value);
-	                    //         }
-	                    //     }
-	                    // }) }
-	                }),
-	                _react2['default'].createElement('div', {
-	                    className: clsPrefix + '-form-color-demo bg-' + selectedColor + '-' + selectedScale,
-	                    onClick: this.handleClick })
+	                ) : '',
+	                _react2['default'].createElement(
+	                    'span',
+	                    null,
+	                    _react2['default'].createElement(_beeFormControl2['default'], {
+	                        placeholder: placeholder,
+	                        value: formValue,
+	                        onChange: this.handleChange
+	                        // {...getFieldProps('hexadecimal', {
+	                        //     initialValue: formValue,
+	                        //     validateTrigger: 'onBlur',
+	                        //     rules: rules,
+	                        //     onChange(value) {
+	                        //         if (onChange) {
+	                        //             onChange(value);
+	                        //         }
+	                        //     }
+	                        // }) }
+	                    }),
+	                    _react2['default'].createElement('div', {
+	                        className: clsPrefix + '-form-color-demo bg-' + selectedColor + '-' + selectedScale,
+	                        onClick: this.handleClick })
+	                )
 	            ),
 	            _react2['default'].createElement(
 	                'div',
@@ -37867,19 +37951,23 @@
 	var colors = [{
 	    key: "red",
 	    name: "Red",
-	    scale: ["50", "100", "200", "300", "400", "500", "600", "700", "800", "900", "A100", "A200", "A400", "A700"]
+	    scale: ["50", "100", "200", "300", "400", "500", "600", "700", "800", "900", "A100", "A200", "A400", "A700"],
+	    rgbArr: ["255,235,238", "255,205,210", "239,154,154", "229,115,115", "239,83,80", "244,67,54", "229,57,53", "211,47,47", "198,40,40", "183,28,28", "255,138,128", "255,82,82", "255,23,68", "213,0,0"]
 	}, {
 	    key: "pink",
 	    name: "Pink",
-	    scale: ["50", "100", "200", "300", "400", "500", "600", "700", "800", "900", "A100", "A200", "A400", "A700"]
+	    scale: ["50", "100", "200", "300", "400", "500", "600", "700", "800", "900", "A100", "A200", "A400", "A700"],
+	    rgbArr: ["252,228,236", "248,187,208", "244,143,177", "240,98,146", "236,64,122", "233,30,99", "216,27,96", "194,24,91", "173,20,87", "136,14,79", "255,128,171", "255,64,129", "245,0,87", "197,17,98"]
 	}, {
 	    key: "purple",
 	    name: "Purple",
-	    scale: ["50", "100", "200", "300", "400", "500", "600", "700", "800", "900", "A100", "A200", "A400", "A700"]
+	    scale: ["50", "100", "200", "300", "400", "500", "600", "700", "800", "900", "A100", "A200", "A400", "A700"],
+	    rgbArr: ["243,229,245", "225,190,231", "206,147,216", "186,104,200", "171,71,188", "156,39,176", "142,36,170", "123,31,162", "106,27,154", "74,20,140", "234,128,252", "224,64,251", "213,0,249", "170,0,255"]
 	}, {
 	    key: "deep-purple",
 	    name: "Deep purple",
-	    scale: ["50", "100", "200", "300", "400", "500", "600", "700", "800", "900", "A100", "A200", "A400", "A700"]
+	    scale: ["50", "100", "200", "300", "400", "500", "600", "700", "800", "900", "A100", "A200", "A400", "A700"],
+	    rgbArr: ["237,231,246", "209,196,233", "179,157,219", "149,117,205", "126,87,194", "103,58,183", "94,53,177", "81,45,168", "69,39,160", "49,27,146", "179,136,255", "124,77,255", "101,31,255", "98,0,234"]
 	}, {
 	    key: "indigo",
 	    name: "Indigo",
@@ -37996,13 +38084,14 @@
 	        }, _this.handleChange = function (v) {
 	            console.log(v);
 	            _this.setState({
-	                value: v
+	                value: v.hex || ''
 	            });
 	        }, _temp), _possibleConstructorReturn(_this, _ret);
 	    }
 	
 	    Demo1.prototype.render = function render() {
 	        return _react2['default'].createElement(_src2['default'], {
+	            placeholder: '\u8BF7\u8F93\u5165\u5341\u516D\u8FDB\u5236\u8272\u503C',
 	            value: this.state.value,
 	            onChange: this.handleChange,
 	            label: '\u989C\u8272'
@@ -38066,7 +38155,7 @@
 	        }, _this.handleChange = function (value) {
 	            console.log(value);
 	            _this.setState({
-	                value: value
+	                value: v.hex || ''
 	            });
 	        }, _temp), _possibleConstructorReturn(_this, _ret);
 	    }
@@ -38074,6 +38163,7 @@
 	    Demo2.prototype.render = function render() {
 	        return _react2['default'].createElement(_src2['default'], {
 	            className: 'demo2',
+	            placeholder: '\u8BF7\u8F93\u5165\u5341\u516D\u8FDB\u5236\u8272\u503C',
 	            value: this.state.value,
 	            onChange: this.handleChange,
 	            label: '\u989C\u8272',
@@ -38140,6 +38230,7 @@
 	
 	    Demo3.prototype.render = function render() {
 	        return _react2['default'].createElement(_src2['default'], {
+	            placeholder: '\u8BF7\u8F93\u5165\u5341\u516D\u8FDB\u5236\u8272\u503C',
 	            className: 'demo2',
 	            label: '\u989C\u8272',
 	            autoCalculate: this.autoCalculate

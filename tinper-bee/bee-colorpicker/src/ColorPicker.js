@@ -18,6 +18,7 @@ const propTypes = {
     value: PropTypes.string,
     label: PropTypes.string,
     className: PropTypes.string,
+    placeholder: PropTypes.string,
     required: PropTypes.bool,
     autoCalculate: PropTypes.func,
     onChange: PropTypes.func,
@@ -26,6 +27,7 @@ const defaultProps = {
     clsPrefix: "u-colorpicker",
     value: "",
     label: "",
+    placeholder: "",
     required: false,
     autoCalculate: false,
     autoCalculate: () => {},
@@ -36,22 +38,22 @@ class ColorPicker extends Component {
     constructor(props) {
         super(props);
         let initValue = "";
-        if('value' in props){
+        if ('value' in props) {
             initValue = props.value;
         }
         this.state = {
-          displayColorPicker: false,
-          selectedColor: "red",
-          selectedScale: "600",
-          selectedRgbValue: "",
-          selectedHexValue: "",
-          formValue: initValue,
+            displayColorPicker: false,
+            selectedColor: "red",
+            selectedScale: "600",
+            selectedRgbValue: colors[0].rgbArr[6] ? `rgb(${colors[0].rgbArr[6]})` : '',
+            selectedHexValue: initValue,
+            formValue: initValue,
         };
         this.input = {};
     }
 
-    componentWillReceiveProps(nextProps){
-        if(nextProps.value !== this.props.value){
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.value !== this.props.value) {
             this.setState({
                 formValue: nextProps.value
             })
@@ -70,13 +72,23 @@ class ColorPicker extends Component {
 
     // 点击弹框确定按钮
     submit = () => {
-        let { autoCalculate } = this.props;
+        let { autoCalculate, onChange } = this.props;
+        let { selectedColor,selectedScale,selectedHexValue } = this.state;
+        let tempRgb = this.colorHexToRgb(selectedHexValue);
+        let obj = {
+            class: `${selectedColor}-${selectedScale}`,
+            rgb: tempRgb,
+            hex: selectedHexValue
+        }
         this.setState({
-            formValue: this.state.selectedHexValue,
+            formValue: selectedHexValue,
             displayColorPicker: false
         })
-        if(autoCalculate){
-            autoCalculate(this.state.selectedColor,this.state.selectedScale);
+        if (autoCalculate) {
+            autoCalculate(selectedColor, selectedScale);
+        }
+        if (onChange) {
+            onChange(obj);
         }
     }
 
@@ -84,14 +96,14 @@ class ColorPicker extends Component {
     handleSelectChange = value => {
         this.setState({
             selectedColor: value,
-            selectedScale: "600",
+            selectedScale: 600,
             selectedRgbValue: "",
             selectedHexValue: ""
         })
-    }; 
+    };
 
     // 选择色度
-    handleSelectScale = (value,e) => {
+    handleSelectScale = (value, e) => {
         let rgb = e.currentTarget.currentStyle.backgroundColor;
         let hex = this.colorRGBtoHex(rgb);
         this.setState({
@@ -106,11 +118,11 @@ class ColorPicker extends Component {
         const { clsPrefix } = this.props;
         let opts = [];
         colors.map((item) => {
-            opts.push(<Option key={item.key} value={item.key} className={`${clsPrefix}-select-option clearfix`}>
-                        <div className={`option-overview bg-${item.key}-600`}></div>
-                        <span>{item.name}</span>
-                    </Option>)
-        })
+            opts.push( <Option key = { item.key }value = { item.key } className = { `${clsPrefix}-select-option clearfix` } >
+                        <div className = { `option-overview bg-${item.key}-600` } > </div> 
+                        <span > { item.name } </span> 
+                       </Option > )
+        }) 
         return opts;
     }
 
@@ -133,28 +145,82 @@ class ColorPicker extends Component {
         return list;
     }
 
+    // 把16进制颜色转换为RGB颜色
+    colorHexToRgb(color){
+        let sColor = color;
+        sColor = sColor.toLowerCase();
+        //十六进制颜色值的正则表达式
+        var reg = /^#([0-9a-fA-f]{3}|[0-9a-fA-f]{6})$/;
+        // 如果是16进制颜色
+        if (sColor && reg.test(sColor)) {
+            if (sColor.length === 4) {
+                var sColorNew = "#";
+                for (var i=1; i<4; i+=1) {
+                    sColorNew += sColor.slice(i, i+1).concat(sColor.slice(i, i+1));    
+                }
+                sColor = sColorNew;
+            }
+            //处理六位的颜色值
+            var sColorChange = [];
+            for (var i=1; i<7; i+=2) {
+                sColorChange.push(parseInt("0x"+sColor.slice(i, i+2)));    
+            }
+            return "RGB(" + sColorChange.join(",") + ")";
+        }
+        return sColor;
+    }
+
     // 把RGB颜色转换为16进制颜色
     colorRGBtoHex(color) {
-        var rgb = color.split(',');
-        var r = parseInt(rgb[0].split('(')[1]);
-        var g = parseInt(rgb[1]);
-        var b = parseInt(rgb[2].split(')')[0]);
-        var hex = "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
-        return hex;
+        let that = color;
+        let reg = /^#([0-9a-fA-f]{3}|[0-9a-fA-f]{6})$/;
+        if (/^(rgb|RGB)/.test(that)) {
+            let aColor = that.replace(/(?:\(|\)|rgb|RGB)*/g, "").split(",");
+            let strHex = "#";
+            for (let i=0; i<aColor.length; i++) {
+                let hex = Number(aColor[i]).toString(16);
+                if (hex.length < 2) {
+                    hex = '0' + hex;    
+                }
+                strHex += hex;
+            }
+            if (strHex.length !== 7) {
+                strHex = that;    
+            }
+            return strHex;
+        } else if (reg.test(that)) {
+            let aNum = that.replace(/#/,"").split("");
+            if (aNum.length === 6) {
+                return that;    
+            } else if(aNum.length === 3) {
+                let numHex = "#";
+                for (let i=0; i<aNum.length; i+=1) {
+                    numHex += (aNum[i] + aNum[i]);
+                }
+                return numHex;
+            }
+        }
+        return that;
     }
 
     // 输入框值更改事件
     handleChange = (value) => {
-        const {onChange} = this.props;
+        const { onChange } = this.props;
+        let tempRgb = this.colorHexToRgb(value);
+        let obj = {
+            class: "",
+            rgb: tempRgb,
+            hex: value
+        }
         if (onChange) {
-            onChange(value);
+            onChange(obj);
         }
         this.setState({
             formValue: value
         })
     }
 
-    render(){
+    render() {
         let self = this;
         const {
             clsPrefix,
@@ -162,10 +228,11 @@ class ColorPicker extends Component {
             value,
             label,
             required,
+            placeholder,
             className,
             ...others
         } = this.props;
-        const { 
+        const {
             selectedColor,
             selectedScale,
             selectedRgbValue,
@@ -186,29 +253,34 @@ class ColorPicker extends Component {
         return(
             <div className={classnames(clsPrefix,className)}>
                 <FormItem className={`${clsPrefix}-form`}>
-                    <Label>
-                        {required ? <Icon type="uf-mi" className='mast'></Icon> : "" }
-                        {label}
-                    </Label>
-                    <FormControl 
-                        placeholder='请输入十六进制色值' 
-                        value={formValue} 
-                        onChange={this.handleChange}
-                        // {...getFieldProps('hexadecimal', {
-                        //     initialValue: formValue,
-                        //     validateTrigger: 'onBlur',
-                        //     rules: rules,
-                        //     onChange(value) {
-                        //         if (onChange) {
-                        //             onChange(value);
-                        //         }
-                        //     }
-                        // }) }
-                    />
-                    <div 
-                        className={`${clsPrefix}-form-color-demo bg-${selectedColor}-${selectedScale}`} 
-                        onClick={ this.handleClick }>
-                    </div>
+                    {label? 
+                        <Label>
+                            {required ? <Icon type="uf-mi" className='mast'></Icon> : "" }
+                            {label}
+                        </Label>
+                        : ''
+                    }
+                    <span>
+                        <FormControl 
+                            placeholder={placeholder} 
+                            value={formValue} 
+                            onChange={this.handleChange}
+                            // {...getFieldProps('hexadecimal', {
+                            //     initialValue: formValue,
+                            //     validateTrigger: 'onBlur',
+                            //     rules: rules,
+                            //     onChange(value) {
+                            //         if (onChange) {
+                            //             onChange(value);
+                            //         }
+                            //     }
+                            // }) }
+                        />
+                        <div 
+                            className={`${clsPrefix}-form-color-demo bg-${selectedColor}-${selectedScale}`} 
+                            onClick={ this.handleClick }>
+                        </div>
+                    </span>
                 </FormItem>
                 <div className='error'>
                     {getFieldError('hexadecimal')}
@@ -259,9 +331,9 @@ class ColorPicker extends Component {
                     </Modal.Footer>
                 </Modal>
             </div>
-        )
-    }
-};
+            )
+        }
+    };
 
 ColorPicker.propTypes = propTypes;
 ColorPicker.defaultProps = defaultProps;

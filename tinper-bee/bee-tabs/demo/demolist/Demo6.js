@@ -24,7 +24,7 @@ class Demo6 extends Component {
                     defaultActiveKey="1"
                     tabBarStyle="upborder"
                     extraContent={
-                        <Button className="add-button" colors="primary" onClick={this.add}>一些操作</Button>
+                        <Button className="add-button" size="sm" colors="primary" onClick={this.add}>一些操作</Button>
                     }
                 >
                     <TabPane tab='Tab 1' key="1">Content of Tab Pane 1</TabPane>

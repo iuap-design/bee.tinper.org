@@ -74,6 +74,7 @@ var propTypes = {
     value: _propTypes2["default"].string,
     label: _propTypes2["default"].string,
     className: _propTypes2["default"].string,
+    placeholder: _propTypes2["default"].string,
     required: _propTypes2["default"].bool,
     autoCalculate: _propTypes2["default"].func,
     onChange: _propTypes2["default"].func
@@ -82,6 +83,7 @@ var defaultProps = (_defaultProps = {
     clsPrefix: "u-colorpicker",
     value: "",
     label: "",
+    placeholder: "",
     required: false,
     autoCalculate: false
 }, _defineProperty(_defaultProps, 'autoCalculate', function autoCalculate() {}), _defineProperty(_defaultProps, 'onChange', function onChange() {}), _defaultProps);
@@ -103,21 +105,36 @@ var ColorPicker = function (_Component) {
         };
 
         _this.submit = function () {
-            var autoCalculate = _this.props.autoCalculate;
+            var _this$props = _this.props,
+                autoCalculate = _this$props.autoCalculate,
+                onChange = _this$props.onChange;
+            var _this$state = _this.state,
+                selectedColor = _this$state.selectedColor,
+                selectedScale = _this$state.selectedScale,
+                selectedHexValue = _this$state.selectedHexValue;
 
+            var tempRgb = _this.colorHexToRgb(selectedHexValue);
+            var obj = {
+                "class": selectedColor + '-' + selectedScale,
+                rgb: tempRgb,
+                hex: selectedHexValue
+            };
             _this.setState({
-                formValue: _this.state.selectedHexValue,
+                formValue: selectedHexValue,
                 displayColorPicker: false
             });
             if (autoCalculate) {
-                autoCalculate(_this.state.selectedColor, _this.state.selectedScale);
+                autoCalculate(selectedColor, selectedScale);
+            }
+            if (onChange) {
+                onChange(obj);
             }
         };
 
         _this.handleSelectChange = function (value) {
             _this.setState({
                 selectedColor: value,
-                selectedScale: "600",
+                selectedScale: 600,
                 selectedRgbValue: "",
                 selectedHexValue: ""
             });
@@ -141,11 +158,17 @@ var ColorPicker = function (_Component) {
                 opts.push(_react2["default"].createElement(
                     Option,
                     { key: item.key, value: item.key, className: clsPrefix + '-select-option clearfix' },
-                    _react2["default"].createElement('div', { className: 'option-overview bg-' + item.key + '-600' }),
+                    _react2["default"].createElement(
+                        'div',
+                        { className: 'option-overview bg-' + item.key + '-600' },
+                        ' '
+                    ),
                     _react2["default"].createElement(
                         'span',
                         null,
-                        item.name
+                        ' ',
+                        item.name,
+                        ' '
                     )
                 ));
             });
@@ -177,8 +200,14 @@ var ColorPicker = function (_Component) {
         _this.handleChange = function (value) {
             var onChange = _this.props.onChange;
 
+            var tempRgb = _this.colorHexToRgb(value);
+            var obj = {
+                "class": "",
+                rgb: tempRgb,
+                hex: value
+            };
             if (onChange) {
-                onChange(value);
+                onChange(obj);
             }
             _this.setState({
                 formValue: value
@@ -193,8 +222,8 @@ var ColorPicker = function (_Component) {
             displayColorPicker: false,
             selectedColor: "red",
             selectedScale: "600",
-            selectedRgbValue: "",
-            selectedHexValue: "",
+            selectedRgbValue: _colors2["default"][0].rgbArr[6] ? 'rgb(' + _colors2["default"][0].rgbArr[6] + ')' : '',
+            selectedHexValue: initValue,
             formValue: initValue
         };
         _this.input = {};
@@ -230,14 +259,64 @@ var ColorPicker = function (_Component) {
     // 渲染预制的色板，提供可选择的颜色示例
 
 
+    // 把16进制颜色转换为RGB颜色
+    ColorPicker.prototype.colorHexToRgb = function colorHexToRgb(color) {
+        var sColor = color;
+        sColor = sColor.toLowerCase();
+        //十六进制颜色值的正则表达式
+        var reg = /^#([0-9a-fA-f]{3}|[0-9a-fA-f]{6})$/;
+        // 如果是16进制颜色
+        if (sColor && reg.test(sColor)) {
+            if (sColor.length === 4) {
+                var sColorNew = "#";
+                for (var i = 1; i < 4; i += 1) {
+                    sColorNew += sColor.slice(i, i + 1).concat(sColor.slice(i, i + 1));
+                }
+                sColor = sColorNew;
+            }
+            //处理六位的颜色值
+            var sColorChange = [];
+            for (var i = 1; i < 7; i += 2) {
+                sColorChange.push(parseInt("0x" + sColor.slice(i, i + 2)));
+            }
+            return "RGB(" + sColorChange.join(",") + ")";
+        }
+        return sColor;
+    };
+
     // 把RGB颜色转换为16进制颜色
+
+
     ColorPicker.prototype.colorRGBtoHex = function colorRGBtoHex(color) {
-        var rgb = color.split(',');
-        var r = parseInt(rgb[0].split('(')[1]);
-        var g = parseInt(rgb[1]);
-        var b = parseInt(rgb[2].split(')')[0]);
-        var hex = "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
-        return hex;
+        var that = color;
+        var reg = /^#([0-9a-fA-f]{3}|[0-9a-fA-f]{6})$/;
+        if (/^(rgb|RGB)/.test(that)) {
+            var aColor = that.replace(/(?:\(|\)|rgb|RGB)*/g, "").split(",");
+            var strHex = "#";
+            for (var i = 0; i < aColor.length; i++) {
+                var hex = Number(aColor[i]).toString(16);
+                if (hex.length < 2) {
+                    hex = '0' + hex;
+                }
+                strHex += hex;
+            }
+            if (strHex.length !== 7) {
+                strHex = that;
+            }
+            return strHex;
+        } else if (reg.test(that)) {
+            var aNum = that.replace(/#/, "").split("");
+            if (aNum.length === 6) {
+                return that;
+            } else if (aNum.length === 3) {
+                var numHex = "#";
+                for (var _i = 0; _i < aNum.length; _i += 1) {
+                    numHex += aNum[_i] + aNum[_i];
+                }
+                return numHex;
+            }
+        }
+        return that;
     };
 
     // 输入框值更改事件
@@ -252,8 +331,9 @@ var ColorPicker = function (_Component) {
             value = _props.value,
             label = _props.label,
             required = _props.required,
+            placeholder = _props.placeholder,
             className = _props.className,
-            others = _objectWithoutProperties(_props, ['clsPrefix', 'onChange', 'value', 'label', 'required', 'className']);
+            others = _objectWithoutProperties(_props, ['clsPrefix', 'onChange', 'value', 'label', 'required', 'placeholder', 'className']);
 
         var _state = this.state,
             selectedColor = _state.selectedColor,
@@ -281,30 +361,34 @@ var ColorPicker = function (_Component) {
             _react2["default"].createElement(
                 FormItem,
                 { className: clsPrefix + '-form' },
-                _react2["default"].createElement(
+                label ? _react2["default"].createElement(
                     _beeLabel2["default"],
                     null,
                     required ? _react2["default"].createElement(_beeIcon2["default"], { type: 'uf-mi', className: 'mast' }) : "",
                     label
-                ),
-                _react2["default"].createElement(_beeFormControl2["default"], {
-                    placeholder: '\u8BF7\u8F93\u5165\u5341\u516D\u8FDB\u5236\u8272\u503C',
-                    value: formValue,
-                    onChange: this.handleChange
-                    // {...getFieldProps('hexadecimal', {
-                    //     initialValue: formValue,
-                    //     validateTrigger: 'onBlur',
-                    //     rules: rules,
-                    //     onChange(value) {
-                    //         if (onChange) {
-                    //             onChange(value);
-                    //         }
-                    //     }
-                    // }) }
-                }),
-                _react2["default"].createElement('div', {
-                    className: clsPrefix + '-form-color-demo bg-' + selectedColor + '-' + selectedScale,
-                    onClick: this.handleClick })
+                ) : '',
+                _react2["default"].createElement(
+                    'span',
+                    null,
+                    _react2["default"].createElement(_beeFormControl2["default"], {
+                        placeholder: placeholder,
+                        value: formValue,
+                        onChange: this.handleChange
+                        // {...getFieldProps('hexadecimal', {
+                        //     initialValue: formValue,
+                        //     validateTrigger: 'onBlur',
+                        //     rules: rules,
+                        //     onChange(value) {
+                        //         if (onChange) {
+                        //             onChange(value);
+                        //         }
+                        //     }
+                        // }) }
+                    }),
+                    _react2["default"].createElement('div', {
+                        className: clsPrefix + '-form-color-demo bg-' + selectedColor + '-' + selectedScale,
+                        onClick: this.handleClick })
+                )
             ),
             _react2["default"].createElement(
                 'div',

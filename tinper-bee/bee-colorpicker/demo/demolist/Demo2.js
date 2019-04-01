@@ -15,13 +15,14 @@ class Demo2 extends Component {
     handleChange = (value) => {
         console.log(value);
         this.setState({
-            value: value
+            value: v.hex || ''
         })
     }
     render () {
         return (
             <ColorPicker 
                 className="demo2"
+                placeholder="请输入十六进制色值"
                 value={this.state.value} 
                 onChange={this.handleChange}
                 label="颜色"

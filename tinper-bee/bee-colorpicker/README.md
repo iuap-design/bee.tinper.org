@@ -48,6 +48,7 @@ import "./node_modules/bee-colorpicker/build/ColorPicker.css"
 |onChange|input值发生改变触发的回调|func|-|
 |value|input当前值|string|-|
 |required|是否是必输项|bool|false|
+|placeholder|input中的提示信息|string|-|
 
 #### 开发调试
 

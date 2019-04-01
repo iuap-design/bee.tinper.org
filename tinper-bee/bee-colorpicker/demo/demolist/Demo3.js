@@ -13,7 +13,8 @@ class Demo3 extends Component {
     }
     render () {
         return (
-            <ColorPicker 
+            <ColorPicker
+                placeholder="请输入十六进制色值" 
                 className="demo2"
                 label="颜色"
                 autoCalculate={this.autoCalculate}

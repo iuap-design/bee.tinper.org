@@ -80,7 +80,7 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
 	
-	var Demo1 = __webpack_require__(161);var Demo2 = __webpack_require__(162);var Demo3 = __webpack_require__(163);var Demo4 = __webpack_require__(164);var Demo5 = __webpack_require__(165);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " Radio 基本用法", "code": "/**\n * @title Radio 基本用法\n * @description `selectedValue`参数被选中的radio值，`disabled`参数设置是否可用，`onChange`设置值改变的回调\n */\n\nimport React, { Component } from 'react'\nimport { Radio } from 'tinper-bee';\n\n\n\nclass Demo1 extends Component{\n  constructor(props) {\n  \tsuper(props);\n  \tthis.state = {\n    \tselectedValue: '2'\n    };\n  }\n  handleChange(value) {\n    this.setState({selectedValue: value});\n  }\n  render() {\n    return (\n      <Radio.RadioGroup\n        name=\"fruits\"\n        selectedValue={this.state.selectedValue}\n        onChange={this.handleChange.bind(this)}>\n          <Radio value=\"1\" disabled>苹果</Radio>\n          <Radio value=\"2\" disabled>香蕉</Radio>\n          <Radio value=\"3\" >葡萄</Radio>\n          <Radio value=\"4\" >菠萝</Radio>\n          <Radio value=\"5\" >梨</Radio>\n          <Radio value=\"6\" >石榴</Radio>\n      </Radio.RadioGroup>   \n    )\n  }\n};\n\n", "desc": " `selectedValue`参数被选中的radio值，`disabled`参数设置是否可用，`onChange`设置值改变的回调" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 不同颜色的radio", "code": "/**\n * @title 不同颜色的radio\n * @description `colors`参数控制背景色\n */\n\nimport React, { Component } from 'react'\nimport { Radio } from 'tinper-bee';\n\n\n\nclass Demo2 extends Component{\n  constructor(props) {\n  \tsuper(props);\n  \tthis.state = {\n    \tselectedValue: '3'\n    };\n  }\n  handleChange(value) {\n    this.setState({selectedValue: value});\n  }\n  render() {\n    return (\n      <Radio.RadioGroup\n        name=\"color\"\n        selectedValue={this.state.selectedValue}\n        onChange={this.handleChange.bind(this)}>\n          <Radio colors=\"primary\" value=\"1\" >苹果</Radio>\n          <Radio colors=\"success\" value=\"2\" >香蕉</Radio>\n          <Radio colors=\"info\" value=\"3\" >葡萄</Radio>\n          <Radio colors=\"warning\" value=\"4\" >菠萝</Radio>\n          <Radio colors=\"danger\" value=\"5\" >梨</Radio>\n          <Radio colors=\"dark\" value=\"6\" >石榴</Radio>\n      </Radio.RadioGroup>\n    )\n  }\n};\n\n", "desc": " `colors`参数控制背景色" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 竖方向Radio", "code": "/**\n * @title 竖方向Radio\n * @description 可以通过style来设置radio样式\n */\n\nimport React, { Component } from 'react'\nimport { Radio } from 'tinper-bee';\n\n\n\nclass Demo3 extends Component{\n  constructor(props) {\n  \tsuper(props);\n  \tthis.state = {\n    \tselectedValue: '1'\n    };\n  }\n  handleChange(value) {\n    this.setState({selectedValue: value});\n  }\n  render() {\n    const radioStyle = {\n      display: 'block'\n    };\n    return (\n      <div className=\"demo3\">\n        <Radio.RadioGroup\n          name=\"team\"\n          selectedValue={this.state.selectedValue}\n          onChange={this.handleChange.bind(this)}>\n            <Radio style={radioStyle} value=\"1\" >苹果</Radio>\n            <Radio style={radioStyle} value=\"2\" >香蕉</Radio>\n            <Radio style={radioStyle} value=\"3\" >葡萄</Radio>\n            <Radio style={radioStyle} value=\"4\" >菠萝</Radio>\n            <Radio style={radioStyle} value=\"5\" >梨</Radio>\n            <Radio style={radioStyle} value=\"6\" >石榴</Radio>\n        </Radio.RadioGroup>\n      </div>\n    )\n  }\n};\n\n", "desc": " 可以通过style来设置radio样式", "scss_code": ".demo3 .u-radio-group .u-radio{\n    margin-bottom: 8px;\n}" }, { "example": _react2['default'].createElement(Demo4, null), "title": " RadioButton 基本使用", "code": "/**\n * @title RadioButton 基本使用\n * @description `selectedValue`参数设置被选中的radio值，`onChange`设置值改变的回调\n */\n\nimport React, { Component } from 'react'\nimport { Radio } from 'tinper-bee';\n\nconst  RadioGroup = Radio.RadioGroup;\n\nclass Demo4 extends Component{\n  constructor(props) {\n  \tsuper(props);\n  \tthis.state = {\n      selectedValue: 'orange',\n      selectedValue2: 'apple'\n    };\n  }\n  handleChange(value) {\n    this.setState({selectedValue: value});\n  }\n  handleChange2(value) {\n    this.setState({selectedValue2: value});\n  }\n  render() {\n    return (\n      <div>\n        <Radio.RadioGroup\n          name=\"fruit\"\n          selectedValue={this.state.selectedValue}\n          onChange={this.handleChange.bind(this)}>\n            <Radio.RadioButton value=\"apple\">apple</Radio.RadioButton>\n            <Radio.RadioButton value=\"banana\">banana</Radio.RadioButton>\n            <Radio.RadioButton value=\"orange\">orange</Radio.RadioButton>\n        </Radio.RadioGroup>\n\n        <div style={{ marginTop: 16 }}>\n          <Radio.RadioGroup \n            selectedValue={this.state.selectedValue2}\n            onChange={this.handleChange2.bind(this)}>\n            <Radio.RadioButton value=\"apple\">apple</Radio.RadioButton>\n            <Radio.RadioButton value=\"banana\" disabled>banana</Radio.RadioButton>\n            <Radio.RadioButton value=\"orange\">orange</Radio.RadioButton>\n          </Radio.RadioGroup>\n        </div>\n\n        <div style={{ marginTop: 16 }}>\n          <Radio.RadioGroup selectedValue=\"apple\">\n            <Radio.RadioButton value=\"apple\" disabled>apple</Radio.RadioButton>\n            <Radio.RadioButton value=\"banana\" disabled>banana</Radio.RadioButton>\n            <Radio.RadioButton value=\"orange\" disabled>orange</Radio.RadioButton>\n          </Radio.RadioGroup>\n        </div>\n      </div>\n\n    )\n  }\n};\n\n", "desc": " `selectedValue`参数设置被选中的radio值，`onChange`设置值改变的回调" }, { "example": _react2['default'].createElement(Demo5, null), "title": " 红色填充的 Radio", "code": "/**\n * @title 红色填充的 Radio\n * @description `inverse` 参数设置选中为红色填充。\n */\n\nimport React, { Component } from 'react'\nimport { Radio } from 'tinper-bee';\n\n\n\nclass Demo1 extends Component{\n  constructor(props) {\n  \tsuper(props);\n  \tthis.state = {\n    \tselectedValue: '1'\n    };\n  }\n  handleChange(value) {\n    this.setState({selectedValue: value});\n  }\n  render() {\n    return (\n      <Radio.RadioGroup\n        name=\"fruits\"\n        selectedValue={this.state.selectedValue}\n        onChange={this.handleChange.bind(this)}>\n          <Radio value=\"1\" inverse>苹果</Radio>\n          <Radio value=\"2\" inverse>香蕉</Radio>\n          <Radio value=\"3\" inverse>葡萄</Radio>\n      </Radio.RadioGroup>   \n    )\n  }\n};\n\n", "desc": " `inverse` 参数设置选中为红色填充。" }];
+	var Demo1 = __webpack_require__(161);var Demo2 = __webpack_require__(162);var Demo3 = __webpack_require__(163);var Demo4 = __webpack_require__(164);var Demo5 = __webpack_require__(165);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " Radio 基本用法", "code": "/**\r\n * @title Radio 基本用法\r\n * @description `selectedValue`参数被选中的radio值，`disabled`参数设置是否可用，`onChange`设置值改变的回调\r\n */\r\n\r\nimport React, { Component } from 'react'\r\nimport { Radio } from 'tinper-bee';\r\n\r\n\r\n\r\nclass Demo1 extends Component{\r\n  constructor(props) {\r\n  \tsuper(props);\r\n  \tthis.state = {\r\n    \tselectedValue: '2'\r\n    };\r\n  }\r\n  handleChange(value) {\r\n    this.setState({selectedValue: value});\r\n  }\r\n  render() {\r\n    return (\r\n      <Radio.RadioGroup\r\n        name=\"fruits\"\r\n        selectedValue={this.state.selectedValue}\r\n        onChange={this.handleChange.bind(this)}>\r\n          <Radio value=\"1\" disabled>苹果</Radio>\r\n          <Radio value=\"2\" disabled>香蕉</Radio>\r\n          <Radio value=\"3\" >葡萄</Radio>\r\n          <Radio value=\"4\" >菠萝</Radio>\r\n          <Radio value=\"5\" >梨</Radio>\r\n          <Radio value=\"6\" >石榴</Radio>\r\n      </Radio.RadioGroup>   \r\n    )\r\n  }\r\n};\r\n\r\n", "desc": " `selectedValue`参数被选中的radio值，`disabled`参数设置是否可用，`onChange`设置值改变的回调" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 不同颜色的radio", "code": "/**\r\n * @title 不同颜色的radio\r\n * @description `colors`参数控制背景色\r\n */\r\n\r\nimport React, { Component } from 'react'\r\nimport { Radio } from 'tinper-bee';\r\n\r\n\r\n\r\nclass Demo2 extends Component{\r\n  constructor(props) {\r\n  \tsuper(props);\r\n  \tthis.state = {\r\n    \tselectedValue: '3'\r\n    };\r\n  }\r\n  handleChange(value) {\r\n    this.setState({selectedValue: value});\r\n  }\r\n  render() {\r\n    return (\r\n      <Radio.RadioGroup\r\n        name=\"color\"\r\n        selectedValue={this.state.selectedValue}\r\n        onChange={this.handleChange.bind(this)}>\r\n          <Radio colors=\"primary\" value=\"1\" >苹果</Radio>\r\n          <Radio colors=\"success\" value=\"2\" >香蕉</Radio>\r\n          <Radio colors=\"info\" value=\"3\" >葡萄</Radio>\r\n          <Radio colors=\"warning\" value=\"4\" >菠萝</Radio>\r\n          <Radio colors=\"danger\" value=\"5\" >梨</Radio>\r\n          <Radio colors=\"dark\" value=\"6\" >石榴</Radio>\r\n      </Radio.RadioGroup>\r\n    )\r\n  }\r\n};\r\n\r\n", "desc": " `colors`参数控制背景色" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 竖方向Radio", "code": "/**\r\n * @title 竖方向Radio\r\n * @description 可以通过style来设置radio样式\r\n */\r\n\r\nimport React, { Component } from 'react'\r\nimport { Radio } from 'tinper-bee';\r\n\r\n\r\n\r\nclass Demo3 extends Component{\r\n  constructor(props) {\r\n  \tsuper(props);\r\n  \tthis.state = {\r\n    \tselectedValue: '1'\r\n    };\r\n  }\r\n  handleChange(value) {\r\n    this.setState({selectedValue: value});\r\n  }\r\n  render() {\r\n    const radioStyle = {\r\n      display: 'block'\r\n    };\r\n    return (\r\n      <div className=\"demo3\">\r\n        <Radio.RadioGroup\r\n          name=\"team\"\r\n          selectedValue={this.state.selectedValue}\r\n          onChange={this.handleChange.bind(this)}>\r\n            <Radio style={radioStyle} value=\"1\" >苹果</Radio>\r\n            <Radio style={radioStyle} value=\"2\" >香蕉</Radio>\r\n            <Radio style={radioStyle} value=\"3\" >葡萄</Radio>\r\n            <Radio style={radioStyle} value=\"4\" >菠萝</Radio>\r\n            <Radio style={radioStyle} value=\"5\" >梨</Radio>\r\n            <Radio style={radioStyle} value=\"6\" >石榴</Radio>\r\n        </Radio.RadioGroup>\r\n      </div>\r\n    )\r\n  }\r\n};\r\n\r\n", "desc": " 可以通过style来设置radio样式", "scss_code": ".demo3 .u-radio-group .u-radio{\r\n    margin-bottom: 8px;\r\n}" }, { "example": _react2['default'].createElement(Demo4, null), "title": " RadioButton 基本使用", "code": "/**\r\n * @title RadioButton 基本使用\r\n * @description `selectedValue`参数设置被选中的radio值，`onChange`设置值改变的回调\r\n */\r\n\r\nimport React, { Component } from 'react'\r\nimport { Radio } from 'tinper-bee';\r\n\r\nconst  RadioGroup = Radio.RadioGroup;\r\n\r\nclass Demo4 extends Component{\r\n  constructor(props) {\r\n  \tsuper(props);\r\n  \tthis.state = {\r\n      selectedValue: 'orange',\r\n      selectedValue2: 'apple'\r\n    };\r\n  }\r\n  handleChange(value) {\r\n    this.setState({selectedValue: value});\r\n  }\r\n  handleChange2(value) {\r\n    this.setState({selectedValue2: value});\r\n  }\r\n  render() {\r\n    return (\r\n      <div>\r\n        <Radio.RadioGroup\r\n          name=\"fruit\"\r\n          selectedValue={this.state.selectedValue}\r\n          onChange={this.handleChange.bind(this)}>\r\n            <Radio.RadioButton value=\"apple\">apple</Radio.RadioButton>\r\n            <Radio.RadioButton value=\"banana\">banana</Radio.RadioButton>\r\n            <Radio.RadioButton value=\"orange\">orange</Radio.RadioButton>\r\n        </Radio.RadioGroup>\r\n\r\n        <div style={{ marginTop: 16 }}>\r\n          <Radio.RadioGroup \r\n            selectedValue={this.state.selectedValue2}\r\n            onChange={this.handleChange2.bind(this)}>\r\n            <Radio.RadioButton value=\"apple\">apple</Radio.RadioButton>\r\n            <Radio.RadioButton value=\"banana\" disabled>banana</Radio.RadioButton>\r\n            <Radio.RadioButton value=\"orange\">orange</Radio.RadioButton>\r\n          </Radio.RadioGroup>\r\n        </div>\r\n\r\n        <div style={{ marginTop: 16 }}>\r\n          <Radio.RadioGroup selectedValue=\"apple\">\r\n            <Radio.RadioButton value=\"apple\" disabled>apple</Radio.RadioButton>\r\n            <Radio.RadioButton value=\"banana\" disabled>banana</Radio.RadioButton>\r\n            <Radio.RadioButton value=\"orange\" disabled>orange</Radio.RadioButton>\r\n          </Radio.RadioGroup>\r\n        </div>\r\n      </div>\r\n\r\n    )\r\n  }\r\n};\r\n\r\n", "desc": " `selectedValue`参数设置被选中的radio值，`onChange`设置值改变的回调" }, { "example": _react2['default'].createElement(Demo5, null), "title": " 红色填充的 Radio", "code": "/**\r\n * @title 红色填充的 Radio\r\n * @description `inverse` 参数设置选中为红色填充。\r\n */\r\n\r\nimport React, { Component } from 'react'\r\nimport { Radio } from 'tinper-bee';\r\n\r\n\r\n\r\nclass Demo1 extends Component{\r\n  constructor(props) {\r\n  \tsuper(props);\r\n  \tthis.state = {\r\n    \tselectedValue: '1'\r\n    };\r\n  }\r\n  handleChange(value) {\r\n    this.setState({selectedValue: value});\r\n  }\r\n  render() {\r\n    return (\r\n      <Radio.RadioGroup\r\n        name=\"fruits\"\r\n        selectedValue={this.state.selectedValue}\r\n        onChange={this.handleChange.bind(this)}>\r\n          <Radio value=\"1\" inverse>苹果</Radio>\r\n          <Radio value=\"2\" inverse>香蕉</Radio>\r\n          <Radio value=\"3\" inverse>葡萄</Radio>\r\n      </Radio.RadioGroup>   \r\n    )\r\n  }\r\n};\r\n\r\n", "desc": " `inverse` 参数设置选中为红色填充。" }];
 	
 	var Demo = function (_Component) {
 	    _inherits(Demo, _Component);
@@ -5604,16 +5604,6 @@
 	  var documentWidth = documentElement.scrollWidth;
 	  var documentHeight = documentElement.scrollHeight;
 	
-	  // scrollXXX on html is sync with body which means overflow: hidden on body gets wrong scrollXXX.
-	  // We should cut this ourself.
-	  var bodyStyle = window.getComputedStyle(body);
-	  if (bodyStyle.overflowX === 'hidden') {
-	    documentWidth = win.innerWidth;
-	  }
-	  if (bodyStyle.overflowY === 'hidden') {
-	    documentHeight = win.innerHeight;
-	  }
-	
 	  // Reset element position after calculate the visible area
 	  if (element.style) {
 	    element.style.position = originalPosition;
@@ -8239,17 +8229,64 @@
 	  });
 	};
 	/**
-	 * A `Transition` component using CSS transitions and animations.
-	 * It's inspired by the excellent [ng-animate](http://www.nganimate.org/) library.
+	 * A transition component inspired by the excellent
+	 * [ng-animate](http://www.nganimate.org/) library, you should use it if you're
+	 * using CSS transitions or animations. It's built upon the
+	 * [`Transition`](https://reactcommunity.org/react-transition-group/transition)
+	 * component, so it inherits all of its props.
 	 *
 	 * `CSSTransition` applies a pair of class names during the `appear`, `enter`,
-	 * and `exit` stages of the transition. The first class is applied and then a
-	 * second "active" class in order to activate the css animation. After the animation,
-	 * matching `done` class names are applied to persist the animation state.
+	 * and `exit` states of the transition. The first class is applied and then a
+	 * second `*-active` class in order to activate the CSSS transition. After the
+	 * transition, matching `*-done` class names are applied to persist the
+	 * transition state.
 	 *
-	 * When the `in` prop is toggled to `true` the Component will get
-	 * the `example-enter` CSS class and the `example-enter-active` CSS class
-	 * added in the next tick. This is a convention based on the `classNames` prop.
+	 * ```jsx
+	 * function App() {
+	 *   const [inProp, setInProp] = useState(false);
+	 *   return (
+	 *     <div>
+	 *       <CSSTransition in={inProp} timeout={200} classNames="my-node">
+	 *         <div>
+	 *           {"I'll receive my-node-* classes"}
+	 *         </div>
+	 *       </CSSTransition>
+	 *       <button type="button" onClick={() => setInProp(true)}>
+	 *         Click to Enter
+	 *       </button>
+	 *     </div>
+	 *   );
+	 * }
+	 * ```
+	 *
+	 * When the `in` prop is set to `true`, the child component will first receive
+	 * the class `example-enter`, then the `example-enter-active` will be added in
+	 * the next tick. `CSSTransition` [forces a
+	 * reflow](https://github.com/reactjs/react-transition-group/blob/5007303e729a74be66a21c3e2205e4916821524b/src/CSSTransition.js#L208-L215)
+	 * between before adding the `example-enter-active`. This is an important trick
+	 * because it allows us to transition between `example-enter` and
+	 * `example-enter-active` even though they were added immediately one after
+	 * another. Most notably, this is what makes it possible for us to animate
+	 * _appearance_.
+	 *
+	 * ```css
+	 * .my-node-enter {
+	 *   opacity: 0;
+	 * }
+	 * .my-node-enter-active {
+	 *   opacity: 1;
+	 *   transition: opacity 200ms;
+	 * }
+	 * .my-node-exit {
+	 *   opacity: 1;
+	 * }
+	 * .my-node-exit-active {
+	 *   opacity: 0;
+	 *   transition: opacity: 200ms;
+	 * }
+	 * ```
+	 *
+	 * `*-active` classes represent which styles you want to animate **to**.
 	 */
 	
 	
@@ -8590,13 +8627,24 @@
 	 * it's used to animate the mounting and unmounting of a component, but can also
 	 * be used to describe in-place transition states as well.
 	 *
+	 * ---
+	 *
+	 * **Note**: `Transition` is a platform-agnostic base component. If you're using
+	 * transitions in CSS, you'll probably want to use
+	 * [`CSSTransition`](https://reactcommunity.org/react-transition-group/css-transition)
+	 * instead. It inherits all the features of `Transition`, but contains
+	 * additional features necessary to play nice with CSS transitions (hence the
+	 * name of the component).
+	 *
+	 * ---
+	 *
 	 * By default the `Transition` component does not alter the behavior of the
-	 * component it renders, it only tracks "enter" and "exit" states for the components.
-	 * It's up to you to give meaning and effect to those states. For example we can
-	 * add styles to a component when it enters or exits:
+	 * component it renders, it only tracks "enter" and "exit" states for the
+	 * components. It's up to you to give meaning and effect to those states. For
+	 * example we can add styles to a component when it enters or exits:
 	 *
 	 * ```jsx
-	 * import Transition from 'react-transition-group/Transition';
+	 * import { Transition } from 'react-transition-group';
 	 *
 	 * const duration = 300;
 	 *
@@ -8612,7 +8660,7 @@
 	 *
 	 * const Fade = ({ in: inProp }) => (
 	 *   <Transition in={inProp} timeout={duration}>
-	 *     {(state) => (
+	 *     {state => (
 	 *       <div style={{
 	 *         ...defaultStyle,
 	 *         ...transitionStyles[state]
@@ -8624,60 +8672,43 @@
 	 * );
 	 * ```
 	 *
-	 * As noted the `Transition` component doesn't _do_ anything by itself to its child component.
-	 * What it does do is track transition states over time so you can update the
-	 * component (such as by adding styles or classes) when it changes states.
-	 *
 	 * There are 4 main states a Transition can be in:
 	 *  - `'entering'`
 	 *  - `'entered'`
 	 *  - `'exiting'`
 	 *  - `'exited'`
 	 *
-	 * Transition state is toggled via the `in` prop. When `true` the component begins the
-	 * "Enter" stage. During this stage, the component will shift from its current transition state,
-	 * to `'entering'` for the duration of the transition and then to the `'entered'` stage once
-	 * it's complete. Let's take the following example:
+	 * Transition state is toggled via the `in` prop. When `true` the component
+	 * begins the "Enter" stage. During this stage, the component will shift from
+	 * its current transition state, to `'entering'` for the duration of the
+	 * transition and then to the `'entered'` stage once it's complete. Let's take
+	 * the following example (we'll use the
+	 * [useState](https://reactjs.org/docs/hooks-reference.html#usestate) hook):
 	 *
 	 * ```jsx
-	 * state = { in: false };
-	 *
-	 * toggleEnterState = () => {
-	 *   this.setState({ in: true });
-	 * }
-	 *
-	 * render() {
+	 * function App() {
+	 *   const [inProp, setInProp] = useState(false);
 	 *   return (
 	 *     <div>
-	 *       <Transition in={this.state.in} timeout={500} />
-	 *       <button onClick={this.toggleEnterState}>Click to Enter</button>
+	 *       <Transition in={inProp} timeout={500}>
+	 *         {state => (
+	 *           // ...
+	 *         )}
+	 *       </Transition>
+	 *       <button onClick={() => setInProp(true)}>
+	 *         Click to Enter
+	 *       </button>
 	 *     </div>
 	 *   );
 	 * }
 	 * ```
 	 *
-	 * When the button is clicked the component will shift to the `'entering'` state and
-	 * stay there for 500ms (the value of `timeout`) before it finally switches to `'entered'`.
+	 * When the button is clicked the component will shift to the `'entering'` state
+	 * and stay there for 500ms (the value of `timeout`) before it finally switches
+	 * to `'entered'`.
 	 *
-	 * When `in` is `false` the same thing happens except the state moves from `'exiting'` to `'exited'`.
-	 *
-	 * ## Timing
-	 *
-	 * Timing is often the trickiest part of animation, mistakes can result in slight delays
-	 * that are hard to pin down. A common example is when you want to add an exit transition,
-	 * you should set the desired final styles when the state is `'exiting'`. That's when the
-	 * transition to those styles will start and, if you matched the `timeout` prop with the
-	 * CSS Transition duration, it will end exactly when the state changes to `'exited'`.
-	 *
-	 * > **Note**: For simpler transitions the `Transition` component might be enough, but
-	 * > take into account that it's platform-agnostic, while the `CSSTransition` component
-	 * > [forces reflows](https://github.com/reactjs/react-transition-group/blob/5007303e729a74be66a21c3e2205e4916821524b/src/CSSTransition.js#L208-L215)
-	 * > in order to make more complex transitions more predictable. For example, even though
-	 * > classes `example-enter` and `example-enter-active` are applied immediately one after
-	 * > another, you can still transition from one to the other because of the forced reflow
-	 * > (read [this issue](https://github.com/reactjs/react-transition-group/issues/159#issuecomment-322761171)
-	 * > for more info). Take this into account when choosing between `Transition` and
-	 * > `CSSTransition`.
+	 * When `in` is `false` the same thing happens except the state moves from
+	 * `'exiting'` to `'exited'`.
 	 */
 	
 	exports.EXITING = EXITING;
@@ -8991,15 +9022,15 @@
 	};
 	Transition.propTypes = process.env.NODE_ENV !== "production" ? {
 	  /**
-	   * A `function` child can be used instead of a React element.
-	   * This function is called with the current transition status
-	   * ('entering', 'entered', 'exiting', 'exited', 'unmounted'), which can be used
-	   * to apply context specific props to a component.
+	   * A `function` child can be used instead of a React element. This function is
+	   * called with the current transition status (`'entering'`, `'entered'`,
+	   * `'exiting'`, `'exited'`, `'unmounted'`), which can be used to apply context
+	   * specific props to a component.
 	   *
 	   * ```jsx
-	   * <Transition timeout={150}>
-	   *   {(status) => (
-	   *     <MyComponent className={`fade fade-${status}`} />
+	   * <Transition in={this.state.in} timeout={150}>
+	   *   {state => (
+	   *     <MyComponent className={`fade fade-${state}`} />
 	   *   )}
 	   * </Transition>
 	   * ```
@@ -9046,22 +9077,27 @@
 	
 	  /**
 	   * The duration of the transition, in milliseconds.
-	   * Required unless `addEndListener` is provided
+	   * Required unless `addEndListener` is provided.
 	   *
-	   * You may specify a single timeout for all transitions like: `timeout={500}`,
-	   * or individually like:
+	   * You may specify a single timeout for all transitions:
+	   *
+	   * ```jsx
+	   * timeout={500}
+	   * ```
+	   *
+	   * or individually:
 	   *
 	   * ```jsx
 	   * timeout={{
+	   *  appear: 500,
 	   *  enter: 300,
 	   *  exit: 500,
-	   *  appear: 500,
 	   * }}
 	   * ```
 	   *
-	   * If the value of `appear` is not set, then the value from enter is taken.
-	   *
-	   * If the `enter` or `exit` value is `null` or `undefined`, then the timer is set to `0`
+	   * - `appear` defaults to the value of `enter`
+	   * - `enter` defaults to `0`
+	   * - `exit` defaults to `0`
 	   *
 	   * @type {number | { enter?: number, exit?: number, appear?: number }}
 	   */
@@ -9686,12 +9722,12 @@
 	   * remember to spread them through if you are wrapping the `<Transition>` as
 	   * with our `<Fade>` example.
 	   *
-	   * While this component is meant to make it easier to animate multiple
-	   * `Transition` or `CSSTransition` children, sometimes you want to transition a
-	   * single child by changing its content, e.g. routes, slides, images in a
-	   * carousel etc. In that case you can change the `key` prop of the child
-	   * component along with its content, that way `TransitionGroup` will know that
-	   * it should transition the child.
+	   * While this component is meant for multiple `Transition` or `CSSTransition`
+	   * children, sometimes you may want to have a single transition child with
+	   * content that you want to be transitioned out and in when you change it
+	   * (e.g. routes, images etc.) In that case you can change the `key` prop of
+	   * the transition child as you change its content, this will cause
+	   * `TransitionGroup` to transition the child out and back in.
 	   */
 	  children: _propTypes.default.node,
 	
@@ -16313,9 +16349,7 @@
 	        if (colorsMap[colors]) {
 	            clsObj[clsPrefix + '-' + colorsMap[colors]] = true;
 	        }
-	        if (bordered) {
-	            clsObj[clsPrefix + '-border'] = bordered;
-	        }
+	        //clsObj[`${clsPrefix}-border`] = bordered;
 	        var classes = (0, _classnames2["default"])(clsPrefix, clsObj);
 	        return _react2["default"].createElement(
 	            'button',
