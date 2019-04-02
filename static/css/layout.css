@@ -125,11 +125,11 @@
     }
 }
 
-@media(min-width:768px){
+ @media(min-width:769px){
     #openbtn{
         display:none;
     }
-  }
+  } 
 
 .mob-nav {
     position:fixed;
