@@ -69,7 +69,6 @@ class Demo9 extends Component {
             <div className="demo-margin">
                 <Button
                     colors="primary"
-                    size="lg"
                     onClick={this.open}
                 >
                     打开模态框

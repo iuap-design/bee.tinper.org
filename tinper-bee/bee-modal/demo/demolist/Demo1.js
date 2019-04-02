@@ -35,7 +35,6 @@ class Demo1 extends Component {
         <div>
             <Button
             colors = "primary"
-            size = "lg"
             className="demo-margin"
             onClick = { this.open }>
                 打开模态框
@@ -54,7 +53,7 @@ class Demo1 extends Component {
                 </Modal.Body>
 
                 <Modal.Footer>
-                    <Button onClick={ this.close } colors="secondary" style={{marginRight: 8}}>关闭</Button>
+                    <Button onClick={ this.close } colors="secondary" style={{marginRight: 8}}>取消</Button>
                     <Button onClick={ this.close } colors="primary">确认</Button>
                 </Modal.Footer>
            </Modal>

@@ -80,7 +80,7 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
 	
-	var Demo1 = __webpack_require__(424);var Demo2 = __webpack_require__(425);var Demo3 = __webpack_require__(426);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 拾色器", "code": "/**\n*\n* @title 拾色器\n* @description 提供预制色板的拾色器组件\n*\n*/\nimport React, { Component } from 'react';\nimport { ColorPicker } from 'tinper-bee';\n\nclass Demo1 extends Component {\n    state = {\n        value : \"#E14C46\"\n    }\n\n    handleChange = (v) => {\n        console.log(v);\n        this.setState({\n            value: v.hex || ''\n        })\n    }\n    render () {\n        return (\n            <ColorPicker \n                placeholder=\"请输入十六进制色值\"\n                value={this.state.value} \n                onChange={this.handleChange}\n                label=\"颜色\"\n            />\n        )\n    }\n}\n", "desc": " 提供预制色板的拾色器组件" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 设置必输项", "code": "/**\r\n*\r\n* @title 设置必输项\r\n* @description `required`参数设置是否必填\r\n*\r\n*/\r\nimport React, { Component } from 'react';\r\nimport { ColorPicker } from 'tinper-bee';\r\n\r\nclass Demo2 extends Component {\r\n    state = {\r\n        value : \"#E14C46\"\r\n    }\r\n\r\n    handleChange = (value) => {\r\n        console.log(value);\r\n        this.setState({\r\n            value: v.hex || ''\r\n        })\r\n    }\r\n    render () {\r\n        return (\r\n            <ColorPicker \r\n                className=\"demo2\"\r\n                placeholder=\"请输入十六进制色值\"\r\n                value={this.state.value} \r\n                onChange={this.handleChange}\r\n                label=\"颜色\"\r\n                required={true}\r\n            />\r\n        )\r\n    }\r\n}\r\n", "desc": " `required`参数设置是否必填" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 自动计算色值", "code": "/**\r\n*\r\n* @title 自动计算色值\r\n* @description 可应用于选择主色后，自动计算hover和active状态的色值\r\n*\r\n*/\r\nimport React, { Component } from 'react';\r\nimport { ColorPicker } from 'tinper-bee';\r\n\r\nclass Demo3 extends Component {\r\n    autoCalculate = (color,scale) => {\r\n        console.log(color,scale);\r\n    }\r\n    render () {\r\n        return (\r\n            <ColorPicker\r\n                placeholder=\"请输入十六进制色值\" \r\n                className=\"demo2\"\r\n                label=\"颜色\"\r\n                autoCalculate={this.autoCalculate}\r\n            />\r\n        )\r\n    }\r\n}\r\n", "desc": " 可应用于选择主色后，自动计算hover和active状态的色值" }];
+	var Demo1 = __webpack_require__(424);var Demo2 = __webpack_require__(425);var Demo3 = __webpack_require__(426);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 拾色器", "code": "/**\n*\n* @title 拾色器\n* @description 提供预制色板的拾色器组件\n*\n*/\nimport React, { Component } from 'react';\nimport { ColorPicker } from 'tinper-bee';\n\nclass Demo1 extends Component {\n    state = {\n        value : \"#E14C46\"\n    }\n\n    handleChange = (v) => {\n        console.log(\"选择的色彩信息 ：\" , v);\n        this.setState({\n            value: v.hex || ''\n        })\n    }\n    render () {\n        return (\n            <ColorPicker \n                label=\"颜色\"\n                placeholder=\"请输入十六进制色值\"\n                value={this.state.value} \n                onChange={this.handleChange}\n            />\n        )\n    }\n}\n", "desc": " 提供预制色板的拾色器组件" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 设置必输项", "code": "/**\r\n*\r\n* @title 设置必输项\r\n* @description `required`参数设置是否必填\r\n*\r\n*/\r\nimport React, { Component } from 'react';\r\nimport { ColorPicker } from 'tinper-bee';\r\n\r\nclass Demo2 extends Component {\r\n    state = {\r\n        value : \"#E14C46\"\r\n    }\r\n\r\n    handleChange = (v) => {\r\n        console.log(\"选择的色彩信息 ：\" , v);\r\n        this.setState({\r\n            value: v.hex || ''\r\n        })\r\n    }\r\n    render () {\r\n        return (\r\n            <ColorPicker \r\n                className=\"demo2\"\r\n                placeholder=\"请输入十六进制色值\"\r\n                value={this.state.value} \r\n                onChange={this.handleChange}\r\n                label=\"颜色\"\r\n                required={true}\r\n            />\r\n        )\r\n    }\r\n}\r\n", "desc": " `required`参数设置是否必填" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 自动计算色值", "code": "/**\r\n*\r\n* @title 自动计算色值\r\n* @description 根据选中的颜色自动计算比其 浅一色度/深一色度 的色值，可应用于选择主色后，自动计算hover和active状态的色值\r\n*\r\n*/\r\nimport React, { Component } from 'react';\r\nimport { ColorPicker } from 'tinper-bee';\r\n\r\nclass Demo3 extends Component {\r\n    autoCalculate = (obj) => {\r\n        console.log(\"自动计算的色值对象 ：\",obj);\r\n    }\r\n\r\n    handleChange = (v) => {\r\n        console.log(\"选择的色彩信息 ：\" , v);\r\n    }\r\n    render () {\r\n        return (\r\n            <ColorPicker\r\n                className=\"demo2\"\r\n                label=\"颜色\"\r\n                placeholder=\"请输入十六进制色值\" \r\n                autoCalculate={this.autoCalculate}\r\n                onChange={this.handleChange}\r\n            />\r\n        )\r\n    }\r\n}\r\n", "desc": " 根据选中的颜色自动计算比其 浅一色度/深一色度 的色值，可应用于选择主色后，自动计算hover和active状态的色值" }];
 	
 	var Demo = function (_Component) {
 	    _inherits(Demo, _Component);
@@ -16518,6 +16518,8 @@
 	    autoCalculate: false
 	}, _defineProperty(_defaultProps, 'autoCalculate', function autoCalculate() {}), _defineProperty(_defaultProps, 'onChange', function onChange() {}), _defaultProps);
 	
+	var initRgb = _colors2['default']['red'].rgbArr[6] ? 'rgb(' + _colors2['default']['red'].rgbArr[6] + ')' : '';
+	
 	var ColorPicker = function (_Component) {
 	    _inherits(ColorPicker, _Component);
 	
@@ -16546,7 +16548,7 @@
 	            var tempRgb = _this.colorHexToRgb(selectedHexValue);
 	            var obj = {
 	                'class': selectedColor + '-' + selectedScale,
-	                rgb: tempRgb,
+	                rgba: tempRgb,
 	                hex: selectedHexValue
 	            };
 	            _this.setState({
@@ -16554,19 +16556,49 @@
 	                displayColorPicker: false
 	            });
 	            if (autoCalculate) {
-	                autoCalculate(selectedColor, selectedScale);
+	                var result = _this.calcHoverAndActive(selectedColor, selectedScale);
+	                autoCalculate(result);
 	            }
 	            if (onChange) {
 	                onChange(obj);
 	            }
 	        };
 	
+	        _this.calcHoverAndActive = function (selectedColor, selectedScale) {
+	            var obj = {};
+	            var selectedRgbArr = _colors2['default'][selectedColor] ? _colors2['default'][selectedColor].rgbArr : '';
+	            var selectedScaleArr = _colors2['default'][selectedColor] ? _colors2['default'][selectedColor].scale : '';
+	            var index = selectedScaleArr.indexOf(selectedScale);
+	            var lighter = "",
+	                darker = "";
+	            if (index === 0) {
+	                lighter = "";
+	                darker = 'rgb(' + selectedRgbArr[index + 1] + ')';
+	                obj.lighter = lighter;
+	                obj.darker = darker;
+	            } else if (index === selectedRgbArr.length - 1) {
+	                lighter = 'rgb(' + selectedRgbArr[index - 1] + ')';
+	                darker = "";
+	                obj.lighter = lighter;
+	                obj.darker = darker;
+	            } else if (index > 0 && index < selectedRgbArr.length - 1) {
+	                lighter = 'rgb(' + selectedRgbArr[index - 1] + ')';
+	                darker = 'rgb(' + selectedRgbArr[index + 1] + ')';
+	                obj.lighter = lighter;
+	                obj.darker = darker;
+	            }
+	            return obj;
+	        };
+	
 	        _this.handleSelectChange = function (value) {
+	            var selectedRgb = 'rgb(' + _colors2['default'][value].rgbArr[6] + ')' || '';
+	            var selectedHex = _this.colorRGBtoHex(selectedRgb);
 	            _this.setState({
 	                selectedColor: value,
-	                selectedScale: 600,
-	                selectedRgbValue: "",
-	                selectedHexValue: ""
+	                selectedScale: "600",
+	                selectedRgbValue: selectedRgb,
+	                selectedHexValue: selectedHex,
+	                alpha: 255
 	            });
 	        };
 	
@@ -16584,7 +16616,8 @@
 	            var clsPrefix = _this.props.clsPrefix;
 	
 	            var opts = [];
-	            _colors2['default'].map(function (item) {
+	            for (var prop in _colors2['default']) {
+	                var item = _colors2['default'][prop];
 	                opts.push(_react2['default'].createElement(
 	                    Option,
 	                    { key: item.key, value: item.key, className: clsPrefix + '-select-option clearfix' },
@@ -16601,30 +16634,49 @@
 	                        ' '
 	                    )
 	                ));
-	            });
+	            }
 	            return opts;
 	        };
 	
 	        _this.renderColorPlate = function (selectedColor) {
-	            var selectedScale = _this.state.selectedScale;
+	            var _this$state2 = _this.state,
+	                selectedScale = _this$state2.selectedScale,
+	                selectedRgbValue = _this$state2.selectedRgbValue;
 	
 	            var list = [];
 	            var color = {};
-	            _colors2['default'].forEach(function (item) {
-	                if (item.key === selectedColor) {
-	                    color = item;
-	                }
-	            });
+	            if (_colors2['default'][selectedColor]) {
+	                color = _colors2['default'][selectedColor];
+	            }
+	            var iconClass = _this.isDark(selectedRgbValue) ? 'dark-contrast' : 'light-contrast';
 	            color.scale.map(function (item) {
 	                list.push(_react2['default'].createElement(
 	                    'li',
 	                    { key: item.key, className: 'bg-' + color.key + '-' + item, onClick: function onClick(e) {
 	                            return _this.handleSelectScale(item, e);
 	                        } },
-	                    selectedScale === item ? _react2['default'].createElement(_beeIcon2['default'], { type: 'uf-correct-2' }) : ""
+	                    selectedScale === item ? _react2['default'].createElement(_beeIcon2['default'], { type: 'uf-correct-2', className: iconClass }) : ""
 	                ));
 	            });
 	            return list;
+	        };
+	
+	        _this.isDark = function (rgbColor) {
+	            var reg = /^#([0-9a-fA-f]{3}|[0-9a-fA-f]{6})$/;
+	            var aColor = void 0;
+	            if (/^(rgb|RGB)/.test(rgbColor)) {
+	                aColor = rgbColor.replace(/(?:\(|\)|rgb|RGB)*/g, "").split(",");
+	            }
+	            var r = aColor[0],
+	                g = aColor[1],
+	                b = aColor[2];
+	            if (r * 0.299 + g * 0.578 + b * 0.114 >= 192) {
+	                //浅色
+	                return false;
+	            } else {
+	                //深色
+	                return true;
+	            }
 	        };
 	
 	        _this.handleChange = function (value) {
@@ -16633,7 +16685,7 @@
 	            var tempRgb = _this.colorHexToRgb(value);
 	            var obj = {
 	                'class': "",
-	                rgb: tempRgb,
+	                rgba: tempRgb,
 	                hex: value
 	            };
 	            if (onChange) {
@@ -16644,17 +16696,29 @@
 	            });
 	        };
 	
+	        _this.handleAlphaChange = function (value) {
+	            var reg = /^(?:0|[1-9][0-9]?|100)$/;
+	            if (value == '' || reg.test(value)) {
+	                _this.setState({
+	                    alpha: value
+	                });
+	            }
+	        };
+	
 	        var initValue = "";
+	        var initHex = "";
 	        if ('value' in props) {
 	            initValue = props.value;
+	            initHex = _this.colorRGBtoHex(initRgb);
 	        }
 	        _this.state = {
 	            displayColorPicker: false,
 	            selectedColor: "red",
 	            selectedScale: "600",
-	            selectedRgbValue: _colors2['default'][0].rgbArr[6] ? 'rgb(' + _colors2['default'][0].rgbArr[6] + ')' : '',
-	            selectedHexValue: initValue,
-	            formValue: initValue
+	            selectedRgbValue: initRgb,
+	            selectedHexValue: initHex,
+	            formValue: initValue,
+	            alpha: 255
 	        };
 	        _this.input = {};
 	        return _this;
@@ -16677,10 +16741,17 @@
 	    // 点击弹框确定按钮
 	
 	
+	    /**
+	     * 根据选中的颜色计算 深一色度和浅一色度 的色值
+	     * @param selectedColor
+	     * @param selectedScale
+	     */
+	
+	
 	    // 下拉框值更改
 	
 	
-	    // 选择色度
+	    // 选择色块
 	
 	
 	    // 渲染下拉框选项
@@ -16691,6 +16762,8 @@
 	
 	    // 把16进制颜色转换为RGB颜色
 	    ColorPicker.prototype.colorHexToRgb = function colorHexToRgb(color) {
+	        var alpha = this.state.alpha;
+	
 	        var sColor = color;
 	        sColor = sColor.toLowerCase();
 	        //十六进制颜色值的正则表达式
@@ -16706,10 +16779,13 @@
 	            }
 	            //处理六位的颜色值
 	            var sColorChange = [];
-	            for (var i = 1; i < 7; i += 2) {
-	                sColorChange.push(parseInt("0x" + sColor.slice(i, i + 2)));
+	            for (var _i = 1; _i < 7; _i += 2) {
+	                sColorChange.push(parseInt("0x" + sColor.slice(_i, _i + 2)));
 	            }
-	            return "RGB(" + sColorChange.join(",") + ")";
+	            if (alpha) {
+	                sColorChange.push(alpha);
+	            }
+	            return "rgba(" + sColorChange.join(",") + ")";
 	        }
 	        return sColor;
 	    };
@@ -16740,8 +16816,8 @@
 	                return that;
 	            } else if (aNum.length === 3) {
 	                var numHex = "#";
-	                for (var _i = 0; _i < aNum.length; _i += 1) {
-	                    numHex += aNum[_i] + aNum[_i];
+	                for (var _i2 = 0; _i2 < aNum.length; _i2 += 1) {
+	                    numHex += aNum[_i2] + aNum[_i2];
 	                }
 	                return numHex;
 	            }
@@ -16749,7 +16825,17 @@
 	        return that;
 	    };
 	
+	    /**
+	     * 根据RGB值判断 深色与浅色
+	     * @param rgbColor rgb色值
+	     * @return
+	     */
+	
+	
 	    // 输入框值更改事件
+	
+	
+	    // alpha值更改事件
 	
 	
 	    ColorPicker.prototype.render = function render() {
@@ -16770,7 +16856,8 @@
 	            selectedScale = _state.selectedScale,
 	            selectedRgbValue = _state.selectedRgbValue,
 	            selectedHexValue = _state.selectedHexValue,
-	            formValue = _state.formValue;
+	            formValue = _state.formValue,
+	            alpha = _state.alpha;
 	        var _props$form = this.props.form,
 	            getFieldProps = _props$form.getFieldProps,
 	            getFieldError = _props$form.getFieldError;
@@ -16828,7 +16915,7 @@
 	            _react2['default'].createElement(
 	                _beeModal2['default'],
 	                {
-	                    width: '800',
+	                    width: '600',
 	                    className: clsPrefix + '-modal',
 	                    show: this.state.displayColorPicker,
 	                    onHide: this.handleClose,
@@ -16867,40 +16954,72 @@
 	                        'div',
 	                        { className: clsPrefix + '-panel-content' },
 	                        _react2['default'].createElement(
-	                            _beeLayout.Col,
-	                            { md: 7, xs: 7, sm: 7 },
+	                            _beeLayout.Row,
+	                            null,
 	                            _react2['default'].createElement(
-	                                'ul',
-	                                { className: clsPrefix + '-panel-color-plate clearfix' },
-	                                this.renderColorPlate(selectedColor)
-	                            )
-	                        ),
-	                        _react2['default'].createElement(
-	                            _beeLayout.Col,
-	                            { md: 4, xs: 4, sm: 4 },
+	                                _beeLayout.Col,
+	                                { md: 7, xs: 7, sm: 7, className: 'col-7' },
+	                                _react2['default'].createElement(
+	                                    'ul',
+	                                    { className: clsPrefix + '-panel-color-plate clearfix' },
+	                                    this.renderColorPlate(selectedColor)
+	                                )
+	                            ),
 	                            _react2['default'].createElement(
-	                                'div',
-	                                { className: clsPrefix + '-panel-color-info' },
-	                                _react2['default'].createElement('div', { className: 'selected-color bg-' + selectedColor + '-' + selectedScale }),
+	                                _beeLayout.Col,
+	                                { md: 5, xs: 5, sm: 5, className: 'col-5' },
 	                                _react2['default'].createElement(
-	                                    _beeLabel2['default'],
-	                                    null,
-	                                    'Class\uFF1A',
-	                                    selectedColor + '-' + selectedScale
-	                                ),
-	                                _react2['default'].createElement('br', null),
-	                                _react2['default'].createElement(
-	                                    _beeLabel2['default'],
-	                                    null,
-	                                    'RGB\uFF1A',
-	                                    '' + selectedRgbValue
-	                                ),
-	                                _react2['default'].createElement('br', null),
-	                                _react2['default'].createElement(
-	                                    _beeLabel2['default'],
-	                                    null,
-	                                    'HEX\uFF1A',
-	                                    '' + selectedHexValue
+	                                    'div',
+	                                    { className: clsPrefix + '-panel-color-info' },
+	                                    _react2['default'].createElement('div', { className: 'selected-color bg-' + selectedColor + '-' + selectedScale }),
+	                                    _react2['default'].createElement(
+	                                        'ul',
+	                                        null,
+	                                        _react2['default'].createElement(
+	                                            'li',
+	                                            null,
+	                                            _react2['default'].createElement(
+	                                                _beeLabel2['default'],
+	                                                null,
+	                                                'Class\uFF1A'
+	                                            ),
+	                                            selectedColor + '-' + selectedScale
+	                                        ),
+	                                        _react2['default'].createElement(
+	                                            'li',
+	                                            null,
+	                                            _react2['default'].createElement(
+	                                                _beeLabel2['default'],
+	                                                null,
+	                                                'RGB\uFF1A'
+	                                            ),
+	                                            '' + selectedRgbValue
+	                                        ),
+	                                        _react2['default'].createElement(
+	                                            'li',
+	                                            null,
+	                                            _react2['default'].createElement(
+	                                                _beeLabel2['default'],
+	                                                null,
+	                                                'HEX\uFF1A'
+	                                            ),
+	                                            '' + selectedHexValue
+	                                        ),
+	                                        _react2['default'].createElement(
+	                                            'li',
+	                                            null,
+	                                            _react2['default'].createElement(
+	                                                FormItem,
+	                                                null,
+	                                                _react2['default'].createElement(
+	                                                    _beeLabel2['default'],
+	                                                    null,
+	                                                    'Alpha'
+	                                                ),
+	                                                _react2['default'].createElement(_beeFormControl2['default'], { size: 'sm', value: alpha, onChange: this.handleAlphaChange })
+	                                            )
+	                                        )
+	                                    )
 	                                )
 	                            )
 	                        )
@@ -37948,87 +38067,122 @@
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
-	var colors = [{
-	    key: "red",
-	    name: "Red",
-	    scale: ["50", "100", "200", "300", "400", "500", "600", "700", "800", "900", "A100", "A200", "A400", "A700"],
-	    rgbArr: ["255,235,238", "255,205,210", "239,154,154", "229,115,115", "239,83,80", "244,67,54", "229,57,53", "211,47,47", "198,40,40", "183,28,28", "255,138,128", "255,82,82", "255,23,68", "213,0,0"]
-	}, {
-	    key: "pink",
-	    name: "Pink",
-	    scale: ["50", "100", "200", "300", "400", "500", "600", "700", "800", "900", "A100", "A200", "A400", "A700"],
-	    rgbArr: ["252,228,236", "248,187,208", "244,143,177", "240,98,146", "236,64,122", "233,30,99", "216,27,96", "194,24,91", "173,20,87", "136,14,79", "255,128,171", "255,64,129", "245,0,87", "197,17,98"]
-	}, {
-	    key: "purple",
-	    name: "Purple",
-	    scale: ["50", "100", "200", "300", "400", "500", "600", "700", "800", "900", "A100", "A200", "A400", "A700"],
-	    rgbArr: ["243,229,245", "225,190,231", "206,147,216", "186,104,200", "171,71,188", "156,39,176", "142,36,170", "123,31,162", "106,27,154", "74,20,140", "234,128,252", "224,64,251", "213,0,249", "170,0,255"]
-	}, {
-	    key: "deep-purple",
-	    name: "Deep purple",
-	    scale: ["50", "100", "200", "300", "400", "500", "600", "700", "800", "900", "A100", "A200", "A400", "A700"],
-	    rgbArr: ["237,231,246", "209,196,233", "179,157,219", "149,117,205", "126,87,194", "103,58,183", "94,53,177", "81,45,168", "69,39,160", "49,27,146", "179,136,255", "124,77,255", "101,31,255", "98,0,234"]
-	}, {
-	    key: "indigo",
-	    name: "Indigo",
-	    scale: ["50", "100", "200", "300", "400", "500", "600", "700", "800", "900", "A100", "A200", "A400", "A700"]
-	}, {
-	    key: "blue",
-	    name: "Blue",
-	    scale: ["50", "100", "200", "300", "400", "500", "600", "700", "800", "900", "A100", "A200", "A400", "A700"]
-	}, {
-	    key: "light-blue",
-	    name: "Light blue",
-	    scale: ["50", "100", "200", "300", "400", "500", "600", "700", "800", "900", "A100", "A200", "A400", "A700"]
-	}, {
-	    key: "cyan",
-	    name: "Cyan",
-	    scale: ["50", "100", "200", "300", "400", "500", "600", "700", "800", "900", "A100", "A200", "A400", "A700"]
-	}, {
-	    key: "teal",
-	    name: "Teal",
-	    scale: ["50", "100", "200", "300", "400", "500", "600", "700", "800", "900", "A100", "A200", "A400", "A700"]
-	}, {
-	    key: "green",
-	    name: "Green",
-	    scale: ["50", "100", "200", "300", "400", "500", "600", "700", "800", "900", "A100", "A200", "A400", "A700"]
-	}, {
-	    key: "light-green",
-	    name: "Light-green",
-	    scale: ["50", "100", "200", "300", "400", "500", "600", "700", "800", "900", "A100", "A200", "A400", "A700"]
-	}, {
-	    key: "lime",
-	    name: "Lime",
-	    scale: ["50", "100", "200", "300", "400", "500", "600", "700", "800", "900", "A100", "A200", "A400", "A700"]
-	}, {
-	    key: "yellow",
-	    name: "Yellow",
-	    scale: ["50", "100", "200", "300", "400", "500", "600", "700", "800", "900", "A100", "A200", "A400", "A700"]
-	}, {
-	    key: "amber",
-	    name: "Amber",
-	    scale: ["50", "100", "200", "300", "400", "500", "600", "700", "800", "900", "A100", "A200", "A400", "A700"]
-	}, {
-	    key: "orange",
-	    name: "Orange",
-	    scale: ["50", "100", "200", "300", "400", "500", "600", "700", "800", "900", "A100", "A200", "A400", "A700"]
-	}, {
-	    key: "deep-orange",
-	    name: "Deep-orange",
-	    scale: ["50", "100", "200", "300", "400", "500", "600", "700", "800", "900", "A100", "A200", "A400", "A700"]
-	}, {
-	    key: "brown",
-	    name: "Brown",
-	    scale: ["50", "100", "200", "300", "400", "500", "600", "700", "800", "900"]
-	}, {
-	    key: "grey",
-	    name: "Grey",
-	    scale: ["50", "100", "200", "300", "400", "500", "600", "700", "800", "900"]
-	}, {
-	    key: "blue-grey",
-	    name: "Blue-grey",
-	    scale: ["50", "100", "200", "300", "400", "500", "600", "700", "800", "900"]
-	}];
+	var colors = {
+	    "red": {
+	        key: "red",
+	        name: "Red",
+	        scale: ["50", "100", "200", "300", "400", "500", "600", "700", "800", "900", "A100", "A200", "A400", "A700"],
+	        rgbArr: ["255,235,238", "255,205,210", "239,154,154", "229,115,115", "239,83,80", "244,67,54", "229,57,53", "211,47,47", "198,40,40", "183,28,28", "255,138,128", "255,82,82", "255,23,68", "213,0,0"]
+	    },
+	    "pink": {
+	        key: "pink",
+	        name: "Pink",
+	        scale: ["50", "100", "200", "300", "400", "500", "600", "700", "800", "900", "A100", "A200", "A400", "A700"],
+	        rgbArr: ["252,228,236", "248,187,208", "244,143,177", "240,98,146", "236,64,122", "233,30,99", "216,27,96", "194,24,91", "173,20,87", "136,14,79", "255,128,171", "255,64,129", "245,0,87", "197,17,98"]
+	    },
+	    "purple": {
+	        key: "purple",
+	        name: "Purple",
+	        scale: ["50", "100", "200", "300", "400", "500", "600", "700", "800", "900", "A100", "A200", "A400", "A700"],
+	        rgbArr: ["243,229,245", "225,190,231", "206,147,216", "186,104,200", "171,71,188", "156,39,176", "142,36,170", "123,31,162", "106,27,154", "74,20,140", "234,128,252", "224,64,251", "213,0,249", "170,0,255"]
+	    },
+	    "deep-purple": {
+	        key: "deep-purple",
+	        name: "Deep purple",
+	        scale: ["50", "100", "200", "300", "400", "500", "600", "700", "800", "900", "A100", "A200", "A400", "A700"],
+	        rgbArr: ["237,231,246", "209,196,233", "179,157,219", "149,117,205", "126,87,194", "103,58,183", "94,53,177", "81,45,168", "69,39,160", "49,27,146", "179,136,255", "124,77,255", "101,31,255", "98,0,234"]
+	    },
+	    "indigo": {
+	        key: "indigo",
+	        name: "Indigo",
+	        scale: ["50", "100", "200", "300", "400", "500", "600", "700", "800", "900", "A100", "A200", "A400", "A700"],
+	        rgbArr: ["232,234,246", "197,202,233", "159,168,218", "121,134,203", "92,107,192", "63,81,181", "57,73,171", "48,63,159", "40,53,147", "26,35,126", "140,158,255", "83,109,254", "61,90,254", "48,79,254"]
+	    },
+	    "blue": {
+	        key: "blue",
+	        name: "Blue",
+	        scale: ["50", "100", "200", "300", "400", "500", "600", "700", "800", "900", "A100", "A200", "A400", "A700"],
+	        rgbArr: ["227,242,253", "187,222,251", "144,202,249", "100,181,246", "66,165,245", "33,150,243", "30,136,229", "25,118,210", "21,101,192", "13,71,161", "130,177,255", "68,138,255", "41,121,255", "41,98,255"]
+	    },
+	    "light-blue": {
+	        key: "light-blue",
+	        name: "Light blue",
+	        scale: ["50", "100", "200", "300", "400", "500", "600", "700", "800", "900", "A100", "A200", "A400", "A700"],
+	        rgbArr: ["225,245,254", "179,229,252", "129,212,250", "79,195,247", "41,182,246", "3,169,244", "3,155,229", "2,136,209", "2,119,189", "1,87,155", "128,216,255", "64,196,255", "0,176,255", "0,145,234"]
+	    },
+	    "cyan": {
+	        key: "cyan",
+	        name: "Cyan",
+	        scale: ["50", "100", "200", "300", "400", "500", "600", "700", "800", "900", "A100", "A200", "A400", "A700"],
+	        rgbArr: ["224,247,250", "178,235,242", "128,222,234", "77,208,225", "38,198,218", "0,188,212", "0,172,193", "0,151,167", "0,131,143", "0,96,100", "132,255,255", "24,255,255", "0,229,255", "0,184,212"]
+	    },
+	    "teal": {
+	        key: "teal",
+	        name: "Teal",
+	        scale: ["50", "100", "200", "300", "400", "500", "600", "700", "800", "900", "A100", "A200", "A400", "A700"],
+	        rgbArr: ["224,242,241", "178,223,219", "128,203,196", "77,182,172", "38,166,154", "0,150,136", "0,137,123", "0,121,107", "0,105,92", "0,77,64", "167,255,235", "100,255,218", "29,233,182", "0,191,165"]
+	    },
+	    "green": {
+	        key: "green",
+	        name: "Green",
+	        scale: ["50", "100", "200", "300", "400", "500", "600", "700", "800", "900", "A100", "A200", "A400", "A700"],
+	        rgbArr: ["232,245,233", "200,230,201", "165,214,167", "129,199,132", "102,187,106", "76,175,80", "67,160,71", "56,142,60", "46,125,50", "27,94,32", "185,246,202", "105,240,174", "0,230,118", "0,200,83"]
+	    },
+	    "light-green": {
+	        key: "light-green",
+	        name: "Light-green",
+	        scale: ["50", "100", "200", "300", "400", "500", "600", "700", "800", "900", "A100", "A200", "A400", "A700"],
+	        rgbArr: ["241,248,233", "220,237,200", "197,225,165", "174,213,129", "156,204,101", "139,195,74", "124,179,66", "104,159,56", "85,139,47", "51,105,30", "204,255,144", "178,255,89", "118,255,3", "100,221,23"]
+	    },
+	    "lime": {
+	        key: "lime",
+	        name: "Lime",
+	        scale: ["50", "100", "200", "300", "400", "500", "600", "700", "800", "900", "A100", "A200", "A400", "A700"],
+	        rgbArr: ["249,251,231", "240,244,195", "230,238,156", "220,231,117", "212,225,87", "205,220,57", "192,202,51", "175,180,43", "158,157,36", "130,119,23", "244,255,129", "238,255,65", "198,255,0", "174,234,0"]
+	    },
+	    "yellow": {
+	        key: "yellow",
+	        name: "Yellow",
+	        scale: ["50", "100", "200", "300", "400", "500", "600", "700", "800", "900", "A100", "A200", "A400", "A700"],
+	        rgbArr: ["255,253,231", "255,249,196", "255,245,157", "255,241,118", "255,238,88", "255,235,59", "253,216,53", "251,192,45", "249,168,37", "245,127,23", "255,255,141", "255,255,0", "255,234,0", "255,214,0"]
+	    },
+	    "amber": {
+	        key: "amber",
+	        name: "Amber",
+	        scale: ["50", "100", "200", "300", "400", "500", "600", "700", "800", "900", "A100", "A200", "A400", "A700"],
+	        rgbArr: ["255,248,225", "255,236,179", "255,224,130", "255,213,79", "255,202,40", "255,193,7", "255,179,0", "255,160,0", "255,143,0", "255,111,0", "255,229,127", "255,215,64", "255,196,0", "255,171,0"]
+	    },
+	    "orange": {
+	        key: "orange",
+	        name: "Orange",
+	        scale: ["50", "100", "200", "300", "400", "500", "600", "700", "800", "900", "A100", "A200", "A400", "A700"],
+	        rgbArr: ["255,243,224", "255,224,178", "255,204,128", "255,183,77", "255,167,38", "255,152,0", "251,140,0", "245,124,0", "239,108,0", "230,81,0", "255,209,128", "255,171,64", "255,145,0", "255,109,0"]
+	    },
+	    "deep-orange": {
+	        key: "deep-orange",
+	        name: "Deep-orange",
+	        scale: ["50", "100", "200", "300", "400", "500", "600", "700", "800", "900", "A100", "A200", "A400", "A700"],
+	        rgbArr: ["251,233,231", "255,204,188", "255,171,145", "255,138,101", "255,112,67", "255,87,34", "244,81,30", "230,74,25", "216,67,21", "191,54,12", "255,158,128", "255,110,64", "255,61,0", "221,44,0"]
+	    },
+	    "brown": {
+	        key: "brown",
+	        name: "Brown",
+	        scale: ["50", "100", "200", "300", "400", "500", "600", "700", "800", "900"],
+	        rgbArr: ["239,235,233", "215,204,200", "188,170,164", "161,136,127", "141,110,99", "121,85,72", "109,76,65", "93,64,55", "78,52,46", "62,39,35"]
+	    },
+	    "grey": {
+	        key: "grey",
+	        name: "Grey",
+	        scale: ["50", "100", "200", "300", "400", "500", "600", "700", "800", "900"],
+	        rgbArr: ["250,250,250", "245,245,245", "238,238,238", "224,224,224", "189,189,189", "158,158,158", "117,117,117", "97,97,97", "66,66,66", "33,33,33"]
+	    },
+	    "blue-grey": {
+	        key: "blue-grey",
+	        name: "Blue-grey",
+	        scale: ["50", "100", "200", "300", "400", "500", "600", "700", "800", "900"],
+	        rgbArr: ["236,239,241", "207,216,220", "176,190,197", "144,164,174", "120,144,156", "96,125,139", "84,110,122", "69,90,100", "55,71,79", "38,50,56"]
+	    }
+	};
 	
 	exports["default"] = colors;
 	module.exports = exports["default"];
@@ -38082,7 +38236,7 @@
 	        return _ret = (_temp = (_this = _possibleConstructorReturn(this, _Component.call.apply(_Component, [this].concat(args))), _this), _this.state = {
 	            value: "#E14C46"
 	        }, _this.handleChange = function (v) {
-	            console.log(v);
+	            console.log("选择的色彩信息 ：", v);
 	            _this.setState({
 	                value: v.hex || ''
 	            });
@@ -38091,10 +38245,10 @@
 	
 	    Demo1.prototype.render = function render() {
 	        return _react2['default'].createElement(_src2['default'], {
+	            label: '\u989C\u8272',
 	            placeholder: '\u8BF7\u8F93\u5165\u5341\u516D\u8FDB\u5236\u8272\u503C',
 	            value: this.state.value,
-	            onChange: this.handleChange,
-	            label: '\u989C\u8272'
+	            onChange: this.handleChange
 	        });
 	    };
 	
@@ -38152,8 +38306,8 @@
 	
 	        return _ret = (_temp = (_this = _possibleConstructorReturn(this, _Component.call.apply(_Component, [this].concat(args))), _this), _this.state = {
 	            value: "#E14C46"
-	        }, _this.handleChange = function (value) {
-	            console.log(value);
+	        }, _this.handleChange = function (v) {
+	            console.log("选择的色彩信息 ：", v);
 	            _this.setState({
 	                value: v.hex || ''
 	            });
@@ -38206,7 +38360,7 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); } /**
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               *
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               * @title 自动计算色值
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               * @description 可应用于选择主色后，自动计算hover和active状态的色值
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               * @description 根据选中的颜色自动计算比其 浅一色度/深一色度 的色值，可应用于选择主色后，自动计算hover和active状态的色值
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               *
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               */
 	
@@ -38223,17 +38377,20 @@
 	            args[_key] = arguments[_key];
 	        }
 	
-	        return _ret = (_temp = (_this = _possibleConstructorReturn(this, _Component.call.apply(_Component, [this].concat(args))), _this), _this.autoCalculate = function (color, scale) {
-	            console.log(color, scale);
+	        return _ret = (_temp = (_this = _possibleConstructorReturn(this, _Component.call.apply(_Component, [this].concat(args))), _this), _this.autoCalculate = function (obj) {
+	            console.log("自动计算的色值对象 ：", obj);
+	        }, _this.handleChange = function (v) {
+	            console.log("选择的色彩信息 ：", v);
 	        }, _temp), _possibleConstructorReturn(_this, _ret);
 	    }
 	
 	    Demo3.prototype.render = function render() {
 	        return _react2['default'].createElement(_src2['default'], {
-	            placeholder: '\u8BF7\u8F93\u5165\u5341\u516D\u8FDB\u5236\u8272\u503C',
 	            className: 'demo2',
 	            label: '\u989C\u8272',
-	            autoCalculate: this.autoCalculate
+	            placeholder: '\u8BF7\u8F93\u5165\u5341\u516D\u8FDB\u5236\u8272\u503C',
+	            autoCalculate: this.autoCalculate,
+	            onChange: this.handleChange
 	        });
 	    };
 	

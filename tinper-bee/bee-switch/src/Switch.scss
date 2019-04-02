@@ -1,9 +1,10 @@
 @import "../node_modules/tinper-bee-core/scss/minxin-variables";
 @import "../node_modules/tinper-bee-core/scss/minxin-mixins";
-
+$switch-border-color: #A5ADBA;
+$switch-back-color: #A5ADBA;
 .u-switch {
   position: relative;
-  display: inline-block;
+  display: block;
   box-sizing: border-box;
   width: map-get($switch-width, default);
   height: map-get($switch-height, default);
@@ -20,11 +21,18 @@
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  .u-switch-inner {
+  &-inner {
     color: #fff;
     position: absolute;
     font-size: map_get($switch-inner-fontSize, default);
     left: map_get($switch-inner-left, default);
+  }
+  &-backdrop{
+    display: inline-block;
+    width: map-get($switch-width, default);
+    height: map-get($switch-height, default);
+    border-radius: $switch-border-radius;
+    background: #fff;
   }
   &:active:after {
     width: map_get($switch-active-width, default);
@@ -63,11 +71,15 @@
   }
   &.u-switch-disabled {
     cursor: no-drop;
-    background: #ccc;
-    border-color: #ccc;
-
+    background: #DFE1E6;
+    border-color: #DFE1E6;
+    &.is-checked {
+      border-color: $switch-checked-borColor;
+      background-color: $switch-checked-backColor;
+      opacity: 0.35;
+    }
     &:after {
-      background: #9e9e9e;
+      background: #fff;
       animation-name: none;
       cursor: no-drop;
     }

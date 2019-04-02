@@ -75,7 +75,6 @@ class Demo7 extends Component {
             <div className="demo-margin" id="demo7">
                 <Button
                     colors="primary"
-                    size="lg"
                     onClick={this.open}>
                     添加模态框
                 </Button>

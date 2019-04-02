@@ -12,8 +12,8 @@ class Demo2 extends Component {
         value : "#E14C46"
     }
 
-    handleChange = (value) => {
-        console.log(value);
+    handleChange = (v) => {
+        console.log("选择的色彩信息 ：" , v);
         this.setState({
             value: v.hex || ''
         })

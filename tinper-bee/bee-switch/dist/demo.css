@@ -2,15 +2,15 @@
 /*  Navlayout  */
 .u-switch {
   position: relative;
-  display: inline-block;
+  display: block;
   box-sizing: border-box;
   width: 44px;
   height: 22px;
   line-height: 20px;
   vertical-align: middle;
   border-radius: 20px;
-  border: 1px solid rgb(224,224,224);
-  background-color: rgb(224,224,224);
+  border: 1px solid #A5ADBA;
+  background-color: #A5ADBA;
   cursor: pointer;
   outline: 0;
   transition: all 0.3s cubic-bezier(0.78, 0.14, 0.15, 0.86);
@@ -18,11 +18,17 @@
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none; }
-  .u-switch .u-switch-inner {
+  .u-switch-inner {
     color: #fff;
     position: absolute;
     font-size: 12px;
     left: 22px; }
+  .u-switch-backdrop {
+    display: inline-block;
+    width: 44px;
+    height: 22px;
+    border-radius: 20px;
+    background: #fff; }
   .u-switch:active:after {
     width: 24px; }
   .u-switch:focus {
@@ -50,10 +56,14 @@
       left: 16px; }
   .u-switch.u-switch-disabled {
     cursor: no-drop;
-    background: #ccc;
-    border-color: #ccc; }
+    background: #DFE1E6;
+    border-color: #DFE1E6; }
+    .u-switch.u-switch-disabled.is-checked {
+      border-color: rgb(245, 60, 50);
+      background-color: rgb(245, 60, 50);
+      opacity: 0.35; }
     .u-switch.u-switch-disabled:after {
-      background: #9e9e9e;
+      background: #fff;
       animation-name: none;
       cursor: no-drop; }
     .u-switch.u-switch-disabled:hover:after {
