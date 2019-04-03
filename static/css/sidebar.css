@@ -1,5 +1,6 @@
 .sidebar .menu-components .menu-group {
-    list-style: none
+    list-style: none;
+    -webkit-overflow-scrolling: touch;
 }
 
 .sidebar .menu-components .menu-group .menu-item {
@@ -90,31 +91,34 @@
     color: #E14C46
 }
 
-::-webkit-scrollbar {
+.sidebar::-webkit-scrollbar {
     width: 0!important;
     height: 0!important;
 }
 
 /* 滚动槽 */
 
-::-webkit-scrollbar-track {
+.sidebar::-webkit-scrollbar-track {
     background: #fff;
     border-radius: 10px;
 }
 
 /* 滚动条滑块 */
 
-::-webkit-scrollbar-thumb {
+.sidebar::-webkit-scrollbar-thumb {
     background: #DFDFDF;
     border-radius: 10px;
 }
 /* 失去焦点颜色 */
-::-webkit-scrollbar-thumb:window-inactive {
+.sidebar::-webkit-scrollbar-thumb:window-inactive {
     background: #DFDFDF;
 }
 
 @media screen and (min-width:769px){
     #openbtn{
         display:none;
+    }
+    .siderbar{
+        -webkit-overflow-scrolling: touch;
     }
 }
