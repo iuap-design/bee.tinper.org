@@ -1,3 +1,6 @@
+#siderbar{
+    -webkit-overflow-scrolling: touch;  
+}
 .navbar {
     background: #808080;
     height: 65px;
@@ -143,6 +146,7 @@
     display: inline-block;
     text-align: center;
 }
+
 
 
 .mob-nav span{

@@ -1,5 +1,6 @@
 .sidebar .menu-components .menu-group {
-    list-style: none
+    list-style: none;
+    -webkit-overflow-scrolling: touch;
 }
 
 .sidebar .menu-components .menu-group .menu-item {
