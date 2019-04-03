@@ -108,7 +108,7 @@
 
     //点击侧边栏的选项时，使侧边栏不消失的控制点击侧边栏时，使侧边栏不消失的控制
     if(window.sessionStorage.getItem('openBtn')==='true'){
-       // console.log( document.getElementsByClassName('sidebar')[0].style)
+       // console.log( document.getElementsByClassName('sidebar')[0].style);
         document.getElementsByClassName('sidebar')[0].style.left = 0;
         mask.style.display='block';
         closebtn.style.display='block';
@@ -131,5 +131,28 @@
         document.body.style.position = 'relative';
         document.body.style.overflow = 'auto';  
     }, false);
+</script>
+
+
+<!-- 控制点击“查看源码”时，浮层下方的页面不能滚动，浮层消失后，页面正常滚动。 -->
+<script>
+    var openlist = document.querySelectorAll('.component-code');
+    if(openlist.length!==0){
+        for(var i in openlist){
+            openlist[i].onclick=function() {
+            document.body.style.position = 'fixed';
+            document.body.style.overflow = 'hidden';
+           };
+        }
+    }
+    var maskease = document.querySelectorAll('.drawer-mask');
+    if(maskease.lenght!==0){
+        for(var i in maskease){
+            maskease[i].onclick=function() {
+            document.body.style.position = 'relative';
+            document.body.style.overflow = 'auto';
+            }
+        }
+    }      
 </script>
 </html>
