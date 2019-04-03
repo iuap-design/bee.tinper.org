@@ -46,6 +46,33 @@
     padding: 0!important;
 }
 
+body::-webkit-scrollbar {
+    width: 0!important;
+    height: 0!important;
+}
+
+/* 滚动槽 */
+
+body::-webkit-scrollbar-track {
+    background: #fff;
+    border-radius: 10px;
+}
+
+/* 滚动条滑块 */
+
+body::-webkit-scrollbar-thumb {
+    background: #DFDFDF;
+    border-radius: 10px;
+}
+/* 失去焦点颜色 */
+body::-webkit-scrollbar-thumb:window-inactive {
+    background: #DFDFDF;
+}
+
+
+
+
+
 #closebtn{
     display:none;
     position:fixed;
