@@ -86,46 +86,13 @@
         }
     }
 
-    // //移动端适配sidebar
-    // //侧边栏
-    // let openbtn=document.getElementById('openbtn'),//汉堡按钮
-    // closebtn=document.getElementById('closebtn'),//关闭按钮
-    // sidebarDOM=document.getElementById('sidebar');//侧边栏
-    // mask=document.getElementById('mask');//遮罩层
-    // //汉堡按钮显示逻辑
-    // openbtn.addEventListener('click', function () {
-    //   mask.style.display='block';
-    //   closebtn.style.display='block';
-    //   openbtn.style.display='none';
-    //   sidebarDOM.style.left=0;
-    // });
-    // // 关闭按钮显示逻辑
-    // closebtn.addEventListener('click', function () {
-    //   closebtn.style.display='none';
-    //   mask.style.display="none";
-    //   sidebarDOM.style.left="-250px";
-    //   openbtn.style.display='block';
-    // }, false);
-
-
+    
     //移动端适配侧边栏
     let openbtn=document.getElementById('openbtn'),//汉堡按钮
     closebtn=document.getElementById('closebtn'),//关闭按钮
     sidebarDOM=document.getElementsByClassName('sidebar')[0],//侧边栏
     mask=document.getElementsByClassName('mask')[0];//遮罩层
-    //点击侧边栏的选项时，使侧边栏不消失的控制点击侧边栏时，使侧边栏不消失的控制
-    if(window.localStorage.getItem('openBtn')==='true'){
-        console.log( document.getElementsByClassName('sidebar')[0].style)
-        document.getElementsByClassName('sidebar')[0].style.left = 0;
-        mask.style.display='block';
-        closebtn.style.display='block';
-        openbtn.style.display='none';
-        sidebarDOM.style.left=0;
-        let docs=document.getElementsByClassName('docs')[0];
-        document.body.style.position = 'fixed';
-        document.body.style.overflow = 'hidden';
-        window.localStorage.setItem('openBtn',true)
-    }
+    
     //汉堡按钮显示逻辑
     openbtn.addEventListener('click', function () {
         mask.style.display='block';
@@ -136,11 +103,26 @@
         document.body.style.position = 'fixed';
         //以下document的两句代码控制当左侧抽屉遮罩层出现时，遮罩层下面的页面不可以滚动，当点击关闭按钮后，页面才可以滚动。
         document.body.style.overflow = 'hidden';
-        window.localStorage.setItem('openBtn',true)
+        window.sessionStorage.setItem('openBtn',true)
     });
+
+    //点击侧边栏的选项时，使侧边栏不消失的控制点击侧边栏时，使侧边栏不消失的控制
+    if(window.sessionStorage.getItem('openBtn')==='true'){
+       // console.log( document.getElementsByClassName('sidebar')[0].style)
+        document.getElementsByClassName('sidebar')[0].style.left = 0;
+        mask.style.display='block';
+        closebtn.style.display='block';
+        openbtn.style.display='none';
+        sidebarDOM.style.left=0;
+        let docs=document.getElementsByClassName('docs')[0];
+        document.body.style.position = 'fixed';
+        document.body.style.overflow = 'hidden';
+        window.sessionStorage.setItem('openBtn',true)
+    }
+
     // 关闭按钮显示逻辑
     closebtn.addEventListener('click', function () {
-        window.localStorage.setItem('openBtn',false)
+        window.sessionStorage.setItem('openBtn',false)
         closebtn.style.display='none';
         mask.style.display="none";
         sidebarDOM.style.left="-250px";

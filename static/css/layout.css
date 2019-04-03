@@ -1,6 +1,3 @@
-#siderbar{
-    -webkit-overflow-scrolling: touch;  
-}
 .navbar {
     background: #808080;
     height: 65px;
@@ -133,7 +130,13 @@
         display:none;
     }
   } 
-
+@media(max-width:768px){
+    .sidebar{
+        height: 100%;
+        overflow-y: scroll;
+        -webkit-overflow-scrolling: touch;
+    }
+}
 .mob-nav {
     position:fixed;
     z-index:999;
