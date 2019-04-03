@@ -118,4 +118,7 @@
     #openbtn{
         display:none;
     }
+    .siderbar{
+        -webkit-overflow-scrolling: touch;
+    }
 }
