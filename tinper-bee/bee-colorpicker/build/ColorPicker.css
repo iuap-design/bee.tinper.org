@@ -2205,39 +2205,60 @@
   border-bottom: 1px solid #DDE1EC; }
 
 .u-colorpicker-panel-content {
-  height: 300px;
-  padding: 15px 0; }
+  height: auto;
+  padding: 15px; }
+  .u-colorpicker-panel-content .u-row {
+    margin: 0; }
+  .u-colorpicker-panel-content .col-7, .u-colorpicker-panel-content .col-5 {
+    padding: 0; }
 
 .u-colorpicker-color-preview-demo {
-  width: 28px;
-  height: 28px;
-  margin-right: 12px;
+  width: 32px;
+  height: 32px;
+  margin-right: 15px;
   border-radius: 3px; }
 
 .u-colorpicker-panel-color-plate li {
   float: left;
-  width: 75px;
-  height: 75px;
-  margin: 0 8px 8px 0;
+  width: 55px;
+  height: 55px;
+  margin: 0 6px 6px 0;
   background: rgb(245, 60, 50);
   border-radius: 3px;
   box-shadow: 0px 2px 4px 0px rgba(47, 47, 48, 0.2);
   text-align: center;
-  line-height: 75px;
+  line-height: 55px;
   cursor: pointer; }
   .u-colorpicker-panel-color-plate li:hover {
     box-shadow: 0px 2px 4px 0px rgba(47, 47, 48, 0.45); }
-  .u-colorpicker-panel-color-plate li .uf {
+  .u-colorpicker-panel-color-plate li .uf.dark-contrast {
     color: #fff; }
+  .u-colorpicker-panel-color-plate li .uf.light-contrast {
+    color: #505F79; }
 
-.u-colorpicker-panel-color-info .selected-color {
-  width: 280px;
-  height: 100px;
-  border-radius: 3px; }
-
-.u-colorpicker-panel-color-info .u-label {
-  line-height: 30px;
-  color: #424242; }
+.u-colorpicker-panel-color-info {
+  font-size: 12px;
+  color: #212121; }
+  .u-colorpicker-panel-color-info .selected-color {
+    width: 216px;
+    height: 77px;
+    border-radius: 3px; }
+  .u-colorpicker-panel-color-info .u-label {
+    display: inline-block;
+    min-width: 50px;
+    text-align: right;
+    line-height: 26px;
+    color: #212121;
+    font-size: 12px; }
+  .u-colorpicker-panel-color-info .u-form-item {
+    padding: 0;
+    min-height: 26px; }
+    .u-colorpicker-panel-color-info .u-form-item .u-label {
+      min-width: 50px;
+      display: inline; }
+    .u-colorpicker-panel-color-info .u-form-item .u-form-control {
+      width: 80px;
+      min-width: auto; }
 
 .u-colorpicker-modal.u-modal .u-modal-body {
   padding: 0;

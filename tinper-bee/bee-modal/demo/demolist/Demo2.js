@@ -48,7 +48,6 @@ class Demo2 extends Component {
             <div className="demo-margin">
                 <Button
                     colors="primary"
-                    size="lg"
                     onClick={this.open}>
                     注册模态框
                 </Button>​

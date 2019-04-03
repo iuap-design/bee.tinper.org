@@ -109,17 +109,19 @@ class Switch extends Component {
     let classNames = classnames(clsPrefix, classes);
 
     return (
-      <span
-        {...others}
-        ref={this.saveNode}
-        onClick={this.clickHandler}
-        onKeyDown={this.handleKeyDown}
-        onMouseUp={this.handleMouseUp}
-        className={classnames(className, classNames)}
-        tabIndex={disabled ? -1 : 0}
-      >
-        <span className={`${clsPrefix}-inner`}>
-          {checked ? checkedChildren : unCheckedChildren}
+      <span className={disabled && checked ? `${clsPrefix}-backdrop` : ''}>
+        <span
+          {...others}
+          ref={this.saveNode}
+          onClick={this.clickHandler}
+          onKeyDown={this.handleKeyDown}
+          onMouseUp={this.handleMouseUp}
+          className={classnames(className, classNames)}
+          tabIndex={disabled ? -1 : 0}
+        >
+          <span className={`${clsPrefix}-inner`}>
+            {checked ? checkedChildren : unCheckedChildren}
+          </span>
         </span>
       </span>
     );

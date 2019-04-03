@@ -45,10 +45,11 @@ import "./node_modules/bee-colorpicker/build/ColorPicker.css"
 |参数|说明|类型|默认值|
 |:--|:---|:--|:---|
 |className|类名|string|-|
-|onChange|input值发生改变触发的回调|func|-|
 |value|input当前值|string|-|
 |required|是否是必输项|bool|false|
 |placeholder|input中的提示信息|string|-|
+|onChange|input值发生改变触发的回调|func|-|
+|autoCalculate|根据选中的颜色自动计算比其 浅一色度/深一色度 的色值|func|-|
 
 #### 开发调试
 

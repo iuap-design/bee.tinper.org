@@ -35,7 +35,7 @@
   .u-modal-content {
     position: relative;
     background-color: #fff;
-    border: 1px solid rgba(0, 0, 0, .2);
+    border: 1px solid  Rgba(9, 30, 68, 0.08);
     border-radius: $border-radius-base;
     box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
     background-clip: padding-box;
@@ -58,7 +58,6 @@
       line-height: 1;
       color: #000;
       text-shadow: 0 1px 0 #fff;
-      opacity: .2;
       filter: alpha(opacity=20);
       padding: 0;
       cursor: pointer;
@@ -67,6 +66,7 @@
       -webkit-appearance: none;
       .uf-close{
         font-size: 12px;
+        color: #505F79;
       }
     }
   }
@@ -78,6 +78,7 @@
   .u-modal-body {
     position: relative;
     padding: $modal-body-padding;
+    font-size: 12px;
   }
   .u-modal-footer {
     padding: $modal-footer-padding;
@@ -91,7 +92,7 @@
       margin: 30px auto;
     }
     .u-modal-content {
-      box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
+      box-shadow: 0 4px 6px Rgba(23, 43, 77, .3);
     }
     .u-modal-sm {
       width: $modal-sm;

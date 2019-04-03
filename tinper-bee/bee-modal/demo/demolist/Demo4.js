@@ -46,14 +46,12 @@ class Demo4 extends Component {
             <div>
                 <Button
                     colors="primary"
-                    size="lg"
                     className="demo-margin"
                     onClick={ ()=>{this.changeDropup(false);this.open();} }>
                     无遮罩层模态框
                 </Button>
                 <Button
                     colors="primary"
-                    size="lg"
                     className="demo-margin"
                     onClick={ ()=>{this.changeDropup("static");this.open();} }>
                     遮罩无事件模态框

@@ -34,20 +34,24 @@ const defaultProps = {
     onChange: () => {}
 };
 
+const initRgb = colors['red'].rgbArr[6] ? `rgb(${colors['red'].rgbArr[6]})` : '';
 class ColorPicker extends Component {
     constructor(props) {
         super(props);
         let initValue = "";
+        let initHex = "";
         if ('value' in props) {
             initValue = props.value;
+            initHex = this.colorRGBtoHex(initRgb);
         }
         this.state = {
             displayColorPicker: false,
             selectedColor: "red",
             selectedScale: "600",
-            selectedRgbValue: colors[0].rgbArr[6] ? `rgb(${colors[0].rgbArr[6]})` : '',
-            selectedHexValue: initValue,
+            selectedRgbValue: initRgb,
+            selectedHexValue: initHex,
             formValue: initValue,
+            alpha: 255
         };
         this.input = {};
     }
@@ -77,7 +81,7 @@ class ColorPicker extends Component {
         let tempRgb = this.colorHexToRgb(selectedHexValue);
         let obj = {
             class: `${selectedColor}-${selectedScale}`,
-            rgb: tempRgb,
+            rgba: tempRgb,
             hex: selectedHexValue
         }
         this.setState({
@@ -85,24 +89,58 @@ class ColorPicker extends Component {
             displayColorPicker: false
         })
         if (autoCalculate) {
-            autoCalculate(selectedColor, selectedScale);
+            let result = this.calcHoverAndActive(selectedColor, selectedScale);
+            autoCalculate(result);
         }
         if (onChange) {
             onChange(obj);
         }
     }
 
+    /**
+     * 根据选中的颜色计算 深一色度和浅一色度 的色值
+     * @param selectedColor
+     * @param selectedScale
+     */
+    calcHoverAndActive = (selectedColor,selectedScale) => {
+        let obj = {};
+        let selectedRgbArr = colors[selectedColor] ? colors[selectedColor].rgbArr : '';
+        let selectedScaleArr = colors[selectedColor] ? colors[selectedColor].scale : '';
+        let index = selectedScaleArr.indexOf(selectedScale);
+        let lighter = "", darker = "";
+        if(index === 0){
+            lighter = "";
+            darker = `rgb(${selectedRgbArr[index + 1]})`;
+            obj.lighter = lighter;
+            obj.darker = darker;
+        }else if(index === selectedRgbArr.length - 1){
+            lighter = `rgb(${selectedRgbArr[index - 1]})`;
+            darker = "";
+            obj.lighter = lighter;
+            obj.darker = darker;
+        }else if(index > 0 && index < selectedRgbArr.length - 1){
+            lighter = `rgb(${selectedRgbArr[index - 1]})`;
+            darker = `rgb(${selectedRgbArr[index + 1]})`;
+            obj.lighter = lighter;
+            obj.darker = darker;
+        }
+        return obj;
+    }
+
     // 下拉框值更改
     handleSelectChange = value => {
+        let selectedRgb = `rgb(${colors[value].rgbArr[6]})` || '';
+        let selectedHex = this.colorRGBtoHex(selectedRgb);
         this.setState({
             selectedColor: value,
-            selectedScale: 600,
-            selectedRgbValue: "",
-            selectedHexValue: ""
+            selectedScale: "600",
+            selectedRgbValue: selectedRgb,
+            selectedHexValue: selectedHex,
+            alpha: 255
         })
     };
 
-    // 选择色度
+    // 选择色块
     handleSelectScale = (value, e) => {
         let rgb = e.currentTarget.currentStyle.backgroundColor;
         let hex = this.colorRGBtoHex(rgb);
@@ -117,26 +155,30 @@ class ColorPicker extends Component {
     renderOption = () => {
         const { clsPrefix } = this.props;
         let opts = [];
-        colors.map((item) => {
+        for (let prop in colors) {
+            let item = colors[prop];
             opts.push( <Option key = { item.key }value = { item.key } className = { `${clsPrefix}-select-option clearfix` } >
-                        <div className = { `option-overview bg-${item.key}-600` } > </div> 
-                        <span > { item.name } </span> 
+                            <div className = { `option-overview bg-${item.key}-600` } > </div> 
+                            <span > { item.name } </span> 
                        </Option > )
-        }) 
+        }
         return opts;
     }
 
     // 渲染预制的色板，提供可选择的颜色示例
     renderColorPlate = (selectedColor) => {
-        let { selectedScale } = this.state;
+        let { selectedScale, selectedRgbValue } = this.state;
         let list = [];
         let color = {};
-        colors.forEach((item)=>{if(item.key === selectedColor){color = item}})
+        if(colors[selectedColor]){
+            color = colors[selectedColor]
+        }
+        let iconClass = this.isDark(selectedRgbValue) ? 'dark-contrast' : 'light-contrast';
         color.scale.map((item) => {
             list.push(<li key={item.key} className={`bg-${color.key}-${item}`} onClick={ (e)=>this.handleSelectScale(item,e) }>
                         {
                             selectedScale === item?
-                            <Icon type="uf-correct-2"></Icon>
+                            <Icon type="uf-correct-2" className={iconClass}></Icon>
                             :
                             ""
                         }
@@ -147,25 +189,29 @@ class ColorPicker extends Component {
 
     // 把16进制颜色转换为RGB颜色
     colorHexToRgb(color){
+        let { alpha } = this.state;
         let sColor = color;
         sColor = sColor.toLowerCase();
         //十六进制颜色值的正则表达式
-        var reg = /^#([0-9a-fA-f]{3}|[0-9a-fA-f]{6})$/;
+        let reg = /^#([0-9a-fA-f]{3}|[0-9a-fA-f]{6})$/;
         // 如果是16进制颜色
         if (sColor && reg.test(sColor)) {
             if (sColor.length === 4) {
-                var sColorNew = "#";
-                for (var i=1; i<4; i+=1) {
+                let sColorNew = "#";
+                for (let i=1; i<4; i+=1) {
                     sColorNew += sColor.slice(i, i+1).concat(sColor.slice(i, i+1));    
                 }
                 sColor = sColorNew;
             }
             //处理六位的颜色值
-            var sColorChange = [];
-            for (var i=1; i<7; i+=2) {
+            let sColorChange = [];
+            for (let i=1; i<7; i+=2) {
                 sColorChange.push(parseInt("0x"+sColor.slice(i, i+2)));    
             }
-            return "RGB(" + sColorChange.join(",") + ")";
+            if( alpha ){
+                sColorChange.push(alpha);
+            }
+            return "rgba(" + sColorChange.join(",") + ")";
         }
         return sColor;
     }
@@ -203,13 +249,34 @@ class ColorPicker extends Component {
         return that;
     }
 
+    /**
+     * 根据RGB值判断 深色与浅色
+     * @param rgbColor rgb色值
+     * @return
+     */
+    isDark = (rgbColor) => {
+        let reg = /^#([0-9a-fA-f]{3}|[0-9a-fA-f]{6})$/;
+        let aColor;
+        if (/^(rgb|RGB)/.test(rgbColor)) {
+            aColor = rgbColor.replace(/(?:\(|\)|rgb|RGB)*/g, "").split(",");
+        }
+        let r = aColor[0],
+            g = aColor[1],
+            b = aColor[2];
+        if(r*0.299 + g*0.578 + b*0.114 >= 192){ //浅色
+            return false;
+        }else{  //深色
+            return true;
+        }
+    }
+
     // 输入框值更改事件
     handleChange = (value) => {
         const { onChange } = this.props;
         let tempRgb = this.colorHexToRgb(value);
         let obj = {
             class: "",
-            rgb: tempRgb,
+            rgba: tempRgb,
             hex: value
         }
         if (onChange) {
@@ -218,6 +285,16 @@ class ColorPicker extends Component {
         this.setState({
             formValue: value
         })
+    }
+
+    // alpha值更改事件
+    handleAlphaChange = (value) => {
+        let reg = /^(?:0|[1-9][0-9]?|100)$/;
+        if(value == '' || reg.test(value)){
+            this.setState({
+                alpha: value
+            })
+        }
     }
 
     render() {
@@ -237,7 +314,8 @@ class ColorPicker extends Component {
             selectedScale,
             selectedRgbValue,
             selectedHexValue,
-            formValue
+            formValue,
+            alpha
         } = this.state;
         const { getFieldProps, getFieldError } = this.props.form;
 
@@ -286,7 +364,7 @@ class ColorPicker extends Component {
                     {getFieldError('hexadecimal')}
                 </div>
                 <Modal
-                width = '800'
+                width = '600'
                 className={`${clsPrefix}-modal`}
                 show = { this.state.displayColorPicker }
                 onHide = { this.handleClose } 
@@ -309,19 +387,29 @@ class ColorPicker extends Component {
                             </Select>
                         </div>
                         <div className={`${clsPrefix}-panel-content`}>
-                            <Col md={7} xs={7} sm={7}>
-                                <ul className={`${clsPrefix}-panel-color-plate clearfix`}>
-                                    {this.renderColorPlate(selectedColor)}
-                                </ul>
-                            </Col>
-                            <Col md={4} xs={4} sm={4}>
-                                <div className={`${clsPrefix}-panel-color-info`}>
-                                    <div className={`selected-color bg-${selectedColor}-${selectedScale}`}></div>
-                                    <Label>Class：{`${selectedColor}-${selectedScale}`}</Label><br/>
-                                    <Label>RGB：{`${selectedRgbValue}`}</Label><br/>
-                                    <Label>HEX：{`${selectedHexValue}`}</Label>
-                                </div>
-                            </Col>
+                            <Row>
+                                <Col md={7} xs={7} sm={7} className="col-7">
+                                    <ul className={`${clsPrefix}-panel-color-plate clearfix`}>
+                                        {this.renderColorPlate(selectedColor)}
+                                    </ul>
+                                </Col>
+                                <Col md={5} xs={5} sm={5} className="col-5">
+                                    <div className={`${clsPrefix}-panel-color-info`}>
+                                        <div className={`selected-color bg-${selectedColor}-${selectedScale}`}></div>
+                                        <ul>
+                                            <li><Label>Class：</Label>{`${selectedColor}-${selectedScale}`}</li>
+                                            <li><Label>RGB：</Label>{`${selectedRgbValue}`}</li>
+                                            <li><Label>HEX：</Label>{`${selectedHexValue}`}</li>
+                                            <li>
+                                                <FormItem>
+                                                    <Label>Alpha</Label>
+                                                    <FormControl size="sm" value={alpha} onChange={this.handleAlphaChange}/>
+                                                </FormItem>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </Col>
+                            </Row>
                         </div>
                     </Modal.Body>
 

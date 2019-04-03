@@ -48,9 +48,9 @@ import bee-modal/build/Modal.css;
 |renderBackdrop|返回背景元素的函数|function|-|
 |onEscapeKeyUp|响应ESC键时的钩子函数|function|-|
 |onBackdropClick|点击背景元素的函数|function|-|
-|backdropStyle|添加到背景元素的style|function|-|
-|backdropClassName|添加到背景元素的class|function|-|
-|containerClassName|添加到外部容器的class|function|-|
+|backdropStyle|添加到背景元素的style|object|-|
+|backdropClassName|添加到背景元素的class|string|-|
+|containerClassName|添加到外部容器的class|string|-|
 |transition|动画组件|function|-|
 |dialogTransitionTimeout|设置动画超时时间|function|-|
 |backdropTransitionTimeout|设置背景动画超时时间|function|-|

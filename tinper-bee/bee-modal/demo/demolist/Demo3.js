@@ -46,21 +46,18 @@ class Demo3 extends Component {
             <div>
                 <Button
                     colors="primary"
-                    size="lg"
                     className="demo-margin"
                     onClick={ ()=>{this.changeSize("sm");this.open();} }>
                     打开小号模态框
                 </Button>
                 <Button
                     colors="primary"
-                    size="lg"
                     className="demo-margin"
                     onClick={ ()=>{this.changeSize("lg");this.open();} }>
                     打开大号模态框
                 </Button>
                 <Button
                     colors="primary"
-                    size="lg"
                     className="demo-margin"
                     onClick={ ()=>{this.changeSize("xlg");this.open();} }>
                     打开超大号模态框

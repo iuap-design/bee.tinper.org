@@ -78,6 +78,10 @@ const propTypes = {
 
   onExited: PropTypes.func,
 
+
+  containerClassName: PropTypes.string,
+  containerClassName: PropTypes.string,
+
   /**
    * 要添加到的元素
    */
@@ -197,6 +201,8 @@ class Modal extends React.Component {
       children, // Just in case this get added to BaseModal propTypes.
       onEntering,
       onExited,
+      backdropClassName,
+      containerClassName,
       ...props
     } = this.props;
     const [baseModalProps, dialogProps] =
@@ -226,7 +232,7 @@ class Modal extends React.Component {
         onExited={createChainedFunction(onExited, this.handleExited)}
         backdrop={backdrop}
         backdropClassName={classNames(backdropClasses, inClassName)}
-        containerClassName={classNames(containerClasses)}
+        containerClassName={classNames(containerClasses, containerClassName)}
         transition={animation ? Fade : undefined}
         dialogTransitionTimeout={Modal.TRANSITION_DURATION}
         backdropTransitionTimeout={Modal.BACKDROP_TRANSITION_DURATION}
@@ -234,7 +240,7 @@ class Modal extends React.Component {
         <Dialog
           {...dialogProps}
           style={styleRes}
-          className={classNames(className, inClassName)}
+          className={classNames(className, inClassName, backdropClassName)}
           onClick={backdrop === true && !!backdropClosable ? this.handleDialogClick : null}
           size ={ size }
         >

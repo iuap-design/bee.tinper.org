@@ -88,6 +88,8 @@ var defaultProps = (_defaultProps = {
     autoCalculate: false
 }, _defineProperty(_defaultProps, 'autoCalculate', function autoCalculate() {}), _defineProperty(_defaultProps, 'onChange', function onChange() {}), _defaultProps);
 
+var initRgb = _colors2["default"]['red'].rgbArr[6] ? 'rgb(' + _colors2["default"]['red'].rgbArr[6] + ')' : '';
+
 var ColorPicker = function (_Component) {
     _inherits(ColorPicker, _Component);
 
@@ -116,7 +118,7 @@ var ColorPicker = function (_Component) {
             var tempRgb = _this.colorHexToRgb(selectedHexValue);
             var obj = {
                 "class": selectedColor + '-' + selectedScale,
-                rgb: tempRgb,
+                rgba: tempRgb,
                 hex: selectedHexValue
             };
             _this.setState({
@@ -124,19 +126,49 @@ var ColorPicker = function (_Component) {
                 displayColorPicker: false
             });
             if (autoCalculate) {
-                autoCalculate(selectedColor, selectedScale);
+                var result = _this.calcHoverAndActive(selectedColor, selectedScale);
+                autoCalculate(result);
             }
             if (onChange) {
                 onChange(obj);
             }
         };
 
+        _this.calcHoverAndActive = function (selectedColor, selectedScale) {
+            var obj = {};
+            var selectedRgbArr = _colors2["default"][selectedColor] ? _colors2["default"][selectedColor].rgbArr : '';
+            var selectedScaleArr = _colors2["default"][selectedColor] ? _colors2["default"][selectedColor].scale : '';
+            var index = selectedScaleArr.indexOf(selectedScale);
+            var lighter = "",
+                darker = "";
+            if (index === 0) {
+                lighter = "";
+                darker = 'rgb(' + selectedRgbArr[index + 1] + ')';
+                obj.lighter = lighter;
+                obj.darker = darker;
+            } else if (index === selectedRgbArr.length - 1) {
+                lighter = 'rgb(' + selectedRgbArr[index - 1] + ')';
+                darker = "";
+                obj.lighter = lighter;
+                obj.darker = darker;
+            } else if (index > 0 && index < selectedRgbArr.length - 1) {
+                lighter = 'rgb(' + selectedRgbArr[index - 1] + ')';
+                darker = 'rgb(' + selectedRgbArr[index + 1] + ')';
+                obj.lighter = lighter;
+                obj.darker = darker;
+            }
+            return obj;
+        };
+
         _this.handleSelectChange = function (value) {
+            var selectedRgb = 'rgb(' + _colors2["default"][value].rgbArr[6] + ')' || '';
+            var selectedHex = _this.colorRGBtoHex(selectedRgb);
             _this.setState({
                 selectedColor: value,
-                selectedScale: 600,
-                selectedRgbValue: "",
-                selectedHexValue: ""
+                selectedScale: "600",
+                selectedRgbValue: selectedRgb,
+                selectedHexValue: selectedHex,
+                alpha: 255
             });
         };
 
@@ -154,7 +186,8 @@ var ColorPicker = function (_Component) {
             var clsPrefix = _this.props.clsPrefix;
 
             var opts = [];
-            _colors2["default"].map(function (item) {
+            for (var prop in _colors2["default"]) {
+                var item = _colors2["default"][prop];
                 opts.push(_react2["default"].createElement(
                     Option,
                     { key: item.key, value: item.key, className: clsPrefix + '-select-option clearfix' },
@@ -171,30 +204,49 @@ var ColorPicker = function (_Component) {
                         ' '
                     )
                 ));
-            });
+            }
             return opts;
         };
 
         _this.renderColorPlate = function (selectedColor) {
-            var selectedScale = _this.state.selectedScale;
+            var _this$state2 = _this.state,
+                selectedScale = _this$state2.selectedScale,
+                selectedRgbValue = _this$state2.selectedRgbValue;
 
             var list = [];
             var color = {};
-            _colors2["default"].forEach(function (item) {
-                if (item.key === selectedColor) {
-                    color = item;
-                }
-            });
+            if (_colors2["default"][selectedColor]) {
+                color = _colors2["default"][selectedColor];
+            }
+            var iconClass = _this.isDark(selectedRgbValue) ? 'dark-contrast' : 'light-contrast';
             color.scale.map(function (item) {
                 list.push(_react2["default"].createElement(
                     'li',
                     { key: item.key, className: 'bg-' + color.key + '-' + item, onClick: function onClick(e) {
                             return _this.handleSelectScale(item, e);
                         } },
-                    selectedScale === item ? _react2["default"].createElement(_beeIcon2["default"], { type: 'uf-correct-2' }) : ""
+                    selectedScale === item ? _react2["default"].createElement(_beeIcon2["default"], { type: 'uf-correct-2', className: iconClass }) : ""
                 ));
             });
             return list;
+        };
+
+        _this.isDark = function (rgbColor) {
+            var reg = /^#([0-9a-fA-f]{3}|[0-9a-fA-f]{6})$/;
+            var aColor = void 0;
+            if (/^(rgb|RGB)/.test(rgbColor)) {
+                aColor = rgbColor.replace(/(?:\(|\)|rgb|RGB)*/g, "").split(",");
+            }
+            var r = aColor[0],
+                g = aColor[1],
+                b = aColor[2];
+            if (r * 0.299 + g * 0.578 + b * 0.114 >= 192) {
+                //浅色
+                return false;
+            } else {
+                //深色
+                return true;
+            }
         };
 
         _this.handleChange = function (value) {
@@ -203,7 +255,7 @@ var ColorPicker = function (_Component) {
             var tempRgb = _this.colorHexToRgb(value);
             var obj = {
                 "class": "",
-                rgb: tempRgb,
+                rgba: tempRgb,
                 hex: value
             };
             if (onChange) {
@@ -214,17 +266,29 @@ var ColorPicker = function (_Component) {
             });
         };
 
+        _this.handleAlphaChange = function (value) {
+            var reg = /^(?:0|[1-9][0-9]?|100)$/;
+            if (value == '' || reg.test(value)) {
+                _this.setState({
+                    alpha: value
+                });
+            }
+        };
+
         var initValue = "";
+        var initHex = "";
         if ('value' in props) {
             initValue = props.value;
+            initHex = _this.colorRGBtoHex(initRgb);
         }
         _this.state = {
             displayColorPicker: false,
             selectedColor: "red",
             selectedScale: "600",
-            selectedRgbValue: _colors2["default"][0].rgbArr[6] ? 'rgb(' + _colors2["default"][0].rgbArr[6] + ')' : '',
-            selectedHexValue: initValue,
-            formValue: initValue
+            selectedRgbValue: initRgb,
+            selectedHexValue: initHex,
+            formValue: initValue,
+            alpha: 255
         };
         _this.input = {};
         return _this;
@@ -247,10 +311,17 @@ var ColorPicker = function (_Component) {
     // 点击弹框确定按钮
 
 
+    /**
+     * 根据选中的颜色计算 深一色度和浅一色度 的色值
+     * @param selectedColor
+     * @param selectedScale
+     */
+
+
     // 下拉框值更改
 
 
-    // 选择色度
+    // 选择色块
 
 
     // 渲染下拉框选项
@@ -261,6 +332,8 @@ var ColorPicker = function (_Component) {
 
     // 把16进制颜色转换为RGB颜色
     ColorPicker.prototype.colorHexToRgb = function colorHexToRgb(color) {
+        var alpha = this.state.alpha;
+
         var sColor = color;
         sColor = sColor.toLowerCase();
         //十六进制颜色值的正则表达式
@@ -276,10 +349,13 @@ var ColorPicker = function (_Component) {
             }
             //处理六位的颜色值
             var sColorChange = [];
-            for (var i = 1; i < 7; i += 2) {
-                sColorChange.push(parseInt("0x" + sColor.slice(i, i + 2)));
+            for (var _i = 1; _i < 7; _i += 2) {
+                sColorChange.push(parseInt("0x" + sColor.slice(_i, _i + 2)));
             }
-            return "RGB(" + sColorChange.join(",") + ")";
+            if (alpha) {
+                sColorChange.push(alpha);
+            }
+            return "rgba(" + sColorChange.join(",") + ")";
         }
         return sColor;
     };
@@ -310,8 +386,8 @@ var ColorPicker = function (_Component) {
                 return that;
             } else if (aNum.length === 3) {
                 var numHex = "#";
-                for (var _i = 0; _i < aNum.length; _i += 1) {
-                    numHex += aNum[_i] + aNum[_i];
+                for (var _i2 = 0; _i2 < aNum.length; _i2 += 1) {
+                    numHex += aNum[_i2] + aNum[_i2];
                 }
                 return numHex;
             }
@@ -319,7 +395,17 @@ var ColorPicker = function (_Component) {
         return that;
     };
 
+    /**
+     * 根据RGB值判断 深色与浅色
+     * @param rgbColor rgb色值
+     * @return
+     */
+
+
     // 输入框值更改事件
+
+
+    // alpha值更改事件
 
 
     ColorPicker.prototype.render = function render() {
@@ -340,7 +426,8 @@ var ColorPicker = function (_Component) {
             selectedScale = _state.selectedScale,
             selectedRgbValue = _state.selectedRgbValue,
             selectedHexValue = _state.selectedHexValue,
-            formValue = _state.formValue;
+            formValue = _state.formValue,
+            alpha = _state.alpha;
         var _props$form = this.props.form,
             getFieldProps = _props$form.getFieldProps,
             getFieldError = _props$form.getFieldError;
@@ -398,7 +485,7 @@ var ColorPicker = function (_Component) {
             _react2["default"].createElement(
                 _beeModal2["default"],
                 {
-                    width: '800',
+                    width: '600',
                     className: clsPrefix + '-modal',
                     show: this.state.displayColorPicker,
                     onHide: this.handleClose,
@@ -437,40 +524,72 @@ var ColorPicker = function (_Component) {
                         'div',
                         { className: clsPrefix + '-panel-content' },
                         _react2["default"].createElement(
-                            _beeLayout.Col,
-                            { md: 7, xs: 7, sm: 7 },
+                            _beeLayout.Row,
+                            null,
                             _react2["default"].createElement(
-                                'ul',
-                                { className: clsPrefix + '-panel-color-plate clearfix' },
-                                this.renderColorPlate(selectedColor)
-                            )
-                        ),
-                        _react2["default"].createElement(
-                            _beeLayout.Col,
-                            { md: 4, xs: 4, sm: 4 },
+                                _beeLayout.Col,
+                                { md: 7, xs: 7, sm: 7, className: 'col-7' },
+                                _react2["default"].createElement(
+                                    'ul',
+                                    { className: clsPrefix + '-panel-color-plate clearfix' },
+                                    this.renderColorPlate(selectedColor)
+                                )
+                            ),
                             _react2["default"].createElement(
-                                'div',
-                                { className: clsPrefix + '-panel-color-info' },
-                                _react2["default"].createElement('div', { className: 'selected-color bg-' + selectedColor + '-' + selectedScale }),
+                                _beeLayout.Col,
+                                { md: 5, xs: 5, sm: 5, className: 'col-5' },
                                 _react2["default"].createElement(
-                                    _beeLabel2["default"],
-                                    null,
-                                    'Class\uFF1A',
-                                    selectedColor + '-' + selectedScale
-                                ),
-                                _react2["default"].createElement('br', null),
-                                _react2["default"].createElement(
-                                    _beeLabel2["default"],
-                                    null,
-                                    'RGB\uFF1A',
-                                    '' + selectedRgbValue
-                                ),
-                                _react2["default"].createElement('br', null),
-                                _react2["default"].createElement(
-                                    _beeLabel2["default"],
-                                    null,
-                                    'HEX\uFF1A',
-                                    '' + selectedHexValue
+                                    'div',
+                                    { className: clsPrefix + '-panel-color-info' },
+                                    _react2["default"].createElement('div', { className: 'selected-color bg-' + selectedColor + '-' + selectedScale }),
+                                    _react2["default"].createElement(
+                                        'ul',
+                                        null,
+                                        _react2["default"].createElement(
+                                            'li',
+                                            null,
+                                            _react2["default"].createElement(
+                                                _beeLabel2["default"],
+                                                null,
+                                                'Class\uFF1A'
+                                            ),
+                                            selectedColor + '-' + selectedScale
+                                        ),
+                                        _react2["default"].createElement(
+                                            'li',
+                                            null,
+                                            _react2["default"].createElement(
+                                                _beeLabel2["default"],
+                                                null,
+                                                'RGB\uFF1A'
+                                            ),
+                                            '' + selectedRgbValue
+                                        ),
+                                        _react2["default"].createElement(
+                                            'li',
+                                            null,
+                                            _react2["default"].createElement(
+                                                _beeLabel2["default"],
+                                                null,
+                                                'HEX\uFF1A'
+                                            ),
+                                            '' + selectedHexValue
+                                        ),
+                                        _react2["default"].createElement(
+                                            'li',
+                                            null,
+                                            _react2["default"].createElement(
+                                                FormItem,
+                                                null,
+                                                _react2["default"].createElement(
+                                                    _beeLabel2["default"],
+                                                    null,
+                                                    'Alpha'
+                                                ),
+                                                _react2["default"].createElement(_beeFormControl2["default"], { size: 'sm', value: alpha, onChange: this.handleAlphaChange })
+                                            )
+                                        )
+                                    )
                                 )
                             )
                         )
