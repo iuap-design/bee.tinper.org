@@ -10,6 +10,8 @@ var _MonthCalendar = require("./rc-calendar/MonthCalendar");
 
 var _MonthCalendar2 = _interopRequireDefault(_MonthCalendar);
 
+var _tinperBeeCore = require("tinper-bee-core");
+
 var _react = require("react");
 
 var _react2 = _interopRequireDefault(_react);
@@ -38,6 +40,10 @@ var _zh_CN = require("./locale/zh_CN");
 
 var _zh_CN2 = _interopRequireDefault(_zh_CN);
 
+var _moment = require("moment");
+
+var _moment2 = _interopRequireDefault(_moment);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
@@ -59,22 +65,62 @@ var MonthPicker = function (_Component) {
     var _this = _possibleConstructorReturn(this, _Component.call(this, props, context));
 
     _this.onChange = function (value) {
-      _this.setState({
-        value: value
-      });
       var _this$props = _this.props,
           onChange = _this$props.onChange,
           onClear = _this$props.onClear,
           onSelect = _this$props.onSelect,
           format = _this$props.format;
+      // if(value){
+      //   this.setState({
+      //     value:value
+      //   });
+      // }else{
+      //   this.setState({
+      //     value:moment()
+      //   })
+      // }
 
+      _this.setState({
+        value: value
+      });
       onChange && onChange(value, value ? value.format(format) : '');
     };
 
+    _this.inputFocus = function () {
+      var self = _this;
+      var input = document.querySelector('.rc-calendar-input');
+      if (input) {
+        if (input.value) {
+          input.select();
+        } else {
+          input.focus();
+        }
+        input.onkeydown = function (e) {
+          if (e.keyCode == _tinperBeeCore.KeyCode.DELETE) {
+            input.value = '';
+            self.props.onChange && self.props.onChange('', '');
+          } else if (e.keyCode == _tinperBeeCore.KeyCode.ESC) {
+            self.setState({
+              open: false
+            });
+            var v = self.state.value;
+            self.props.onOpenChange && self.props.onOpenChange(false, v, v && v.format(self.props.format) || '');
+            ReactDOM.findDOMNode(self.outInput).focus(); // 按esc时候焦点回到input输入框
+          }
+        };
+      }
+    };
+
     _this.onOpenChange = function (open) {
+      var self = _this;
       _this.setState({
         open: open
       });
+      if (open) {
+        setTimeout(function () {
+          self.inputFocus();
+        }, 200);
+      }
     };
 
     _this.onTypeChange = function (type) {
@@ -146,6 +192,9 @@ var MonthPicker = function (_Component) {
               onMouseLeave: _this2.onMouseLeave
             },
             _react2["default"].createElement(_beeFormControl2["default"], {
+              ref: function ref(_ref2) {
+                return _this2.outInput = _ref2;
+              },
               placeholder: _this2.props.placeholder,
               className: _this2.props.className,
               value: value && value.format(props.format) || "",

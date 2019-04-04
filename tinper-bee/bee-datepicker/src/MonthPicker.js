@@ -3,6 +3,7 @@
  */
 
 import MonthCalendar from "./rc-calendar/MonthCalendar";
+import { KeyCode } from 'tinper-bee-core';
 import React, { Component } from "react";
 import Picker from "./rc-calendar/Picker";
 import FormControl from "bee-form-control";
@@ -10,6 +11,7 @@ import Icon from "bee-icon";
 import InputGroup from 'bee-input-group';
 import classnames from 'classnames';
 import zhCN from "./locale/zh_CN";
+import moment from "moment";
 
 class MonthPicker extends Component {
   constructor(props, context) {
@@ -24,17 +26,55 @@ class MonthPicker extends Component {
   }
 
   onChange = (value) => {
-    this.setState({
-      value
-    });
     let { onChange,onClear,onSelect,format } = this.props;
+    // if(value){
+    //   this.setState({
+    //     value:value
+    //   });
+    // }else{
+    //   this.setState({
+    //     value:moment()
+    //   })
+    // }
+    this.setState({
+      value:value
+    });
     onChange&&onChange(value,value?value.format(format):'');
   };
-
+  inputFocus=()=>{
+    const self = this;
+    let input = document.querySelector('.rc-calendar-input');
+    if(input){
+      if(input.value){
+        input.select()
+      }else{
+        input.focus()
+      }
+      input.onkeydown=(e)=>{
+        if(e.keyCode == KeyCode.DELETE){
+          input.value = '';
+          self.props.onChange&&self.props.onChange('','');
+        }else if(e.keyCode == KeyCode.ESC){
+            self.setState({
+                open:false
+            });
+          let v = self.state.value;
+          self.props.onOpenChange&&self.props.onOpenChange(false,v, (v && v.format(self.props.format)) || '');
+          ReactDOM.findDOMNode(self.outInput).focus();// 按esc时候焦点回到input输入框
+        }
+      }
+    }
+  }
   onOpenChange = open => {
-    this.setState({
-      open
-    });
+      const self = this;
+      this.setState({
+          open
+      });
+      if(open){
+          setTimeout(()=>{
+              self.inputFocus()
+          },200)
+      }
   };
 
   onTypeChange = type => {
@@ -85,6 +125,7 @@ class MonthPicker extends Component {
                   onMouseLeave={this.onMouseLeave}
                 >
                   <FormControl
+                    ref = { ref => this.outInput = ref }
                     placeholder={this.props.placeholder}
                     className={this.props.className}
                     value={(value && value.format(props.format)) || ""}

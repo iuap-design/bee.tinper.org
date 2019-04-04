@@ -87,10 +87,10 @@
       color: #909090;
       box-shadow: none;
       cursor: not-allowed; }
-  .u-radio-group .u-radio-button:hover, .u-radio-group .u-radio-button:focus, .u-radio-group .u-radio-button.focus, .u-radio-group .u-radio-button:active, .u-radio-group .u-radio-button.active, .u-radio-group .u-radio-button.is-checked {
+  .u-radio-group .u-radio-button:hover, .u-radio-group .u-radio-button:active, .u-radio-group .u-radio-button.active, .u-radio-group .u-radio-button.is-checked {
     background: rgb(235, 236, 240);
     z-index: 2; }
-  .u-radio-group .u-radio-button:active, .u-radio-group .u-radio-button.active, .u-radio-group .u-radio-button.is-checked {
+  .u-radio-group .u-radio-button:focus, .u-radio-group .u-radio-button.focus, .u-radio-group .u-radio-button:active, .u-radio-group .u-radio-button.active, .u-radio-group .u-radio-button.is-checked {
     background: rgb(245, 60, 50);
     color: #fff; }
 
@@ -132,6 +132,8 @@
     border-color: rgb(245, 60, 50); }
   .u-radio.is-checked.u-radio-inverse .u-radio-label:after {
     background: rgb(255,255,255); }
+  .u-radio.u-radio-noContent .u-radio-label:after {
+    top: -12px; }
   .u-radio.disabled {
     cursor: not-allowed; }
     .u-radio.disabled input[type='radio'] {

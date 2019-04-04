@@ -16,7 +16,10 @@ $horizontal-padding: 8px;
 $table-hover-color: #E7F2FC;
 $table-move-in-color: $bg-color-base;
 $checkbox-height:16px;
-$table-head-font-weight: normal;
+$table-th-bottom-border:#C1C7D0;
+
+$filter-form-control-height:28px;
+$table-head-font-weight: bold;
 .u-table {
   font-size: $font-size-base;
   color: $text-color;
@@ -68,7 +71,12 @@ $table-head-font-weight: normal;
       }
     }
   }
-
+  thead{
+    tr:last-child{
+      border-bottom: 1px solid $table-th-bottom-border;
+    }
+   
+  }
   tr {
     // transition: all 0.3s ease;
     &:hover {
@@ -102,8 +110,8 @@ $table-head-font-weight: normal;
     
     &.filterable{
       th{
-        padding-top: 4px;
-        padding-bottom: 4px;
+        padding-top: 5px !important;
+        padding-bottom: 5px !important;
         .filterContext{
           height: 35px;
         }
@@ -124,6 +132,16 @@ $table-head-font-weight: normal;
       table-layout: fixed;
       // width:auto;
     }
+ 
+    .u-table-header>table {
+        border-bottom: 0;
+    }
+    .u-table-header~.u-table-body,.u-table-header~.u-table-body-outer{
+      table{
+        border-top: 0px ;
+      }
+    }
+
     th {
       border-bottom: 1px solid $table-border-color;
       box-sizing: border-box;
@@ -166,7 +184,7 @@ $table-head-font-weight: normal;
 
   &-fixed-header &-body-inner {
     height: 100%;
-    overflow: scroll;
+    // overflow: scroll;
   }
 
 
@@ -478,7 +496,7 @@ $table-head-font-weight: normal;
     }
     &-clear-setting{ 
       // border-bottom: 1px solid #ccc;
-      // cursor: pointer;
+      cursor: pointer;
       margin-bottom: 4px;
     }
     &-cont{
@@ -510,7 +528,9 @@ $table-head-font-weight: normal;
     }
     &-pop-cont-item>span{
       margin-left: -3px;
-      width: 132px;
+      max-width: 132px;
+      width: auto !important;
+      min-width: 56px;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
@@ -785,14 +805,21 @@ $table-head-font-weight: normal;
     z-index: 1800;
     .u-dropdown-menu {
         li.u-dropdown-menu-item {
-            line-height: 32px;
-            height: 32px;
+            line-height: $filter-form-control-height;
+            height: $filter-form-control-height;
             padding: 0px 16px 0 16px;
             cursor: pointer;
         }
     }
 }
-
+.filter-wrap {
+  .u-form-control{
+    height: $filter-form-control-height;
+  }
+  .u-input-number.u-input-group.simple .u-input-group-btn .icon-group {
+    height: $filter-form-control-height;
+  }
+}
 .u-row-hover{
   position: absolute;
   right: 24px;

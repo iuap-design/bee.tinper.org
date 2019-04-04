@@ -3,6 +3,7 @@
  */
 
 import YearPanel from "./rc-calendar/year/YearPanel";
+import { KeyCode } from 'tinper-bee-core';
 import React, { Component } from "react";
 import Picker from "./rc-calendar/Picker";
 import FormControl from "bee-form-control";
@@ -45,11 +46,40 @@ class YearPicker extends Component {
         });
     };
 
-
+    inputFocus=()=>{
+        const self = this;
+        let input = document.querySelector('.rc-calendar-input');
+        if(input){
+          if(input.value){
+            input.select()
+          }else{
+            input.focus()
+          }
+          input.onkeydown=(e)=>{
+            if(e.keyCode == KeyCode.DELETE){
+              input.value = '';
+              self.props.onChange&&self.props.onChange('','');
+            }else if(e.keyCode == KeyCode.ESC){
+                self.setState({
+                    open:false
+                });
+              let v = self.state.value;
+              self.props.onOpenChange&&self.props.onOpenChange(false,v, (v && v.format(self.props.format)) || '');
+              ReactDOM.findDOMNode(self.outInput).focus();// 按esc时候焦点回到input输入框
+            }
+          }
+        }
+      }
     onOpenChange = open => {
+        const self = this;
         this.setState({
             open
         });
+        if(open){
+            setTimeout(()=>{
+                self.inputFocus()
+            },200)
+        }
     };
 
     handleChange = value => {
@@ -59,21 +89,30 @@ class YearPicker extends Component {
     }
     onMouseLeave = (e) => {
         this.setState({
-          showClose: false
+            showClose: false
         })
-      }
-      onMouseEnter = (e) => {
+    }
+    onMouseEnter = (e) => {
         this.setState({
-          showClose: true
+            showClose: true
         })
-      }
-      clear = (e) => {
+    }
+    clear = (e) => {
         e.stopPropagation();
         this.setState({
-          value: ''
+            value: ''
         })
         this.props.onChange && this.props.onChange('', '');
-      }
+    }
+
+    onSelect=(value)=>{
+        let { onSelect,format } = this.props;
+        this.setState({
+            open:false
+        });
+        onSelect&&onSelect(value,value?value.format(format):'');
+        ReactDOM.findDOMNode(this.outInput).focus();
+    }
 
     render() {
         let state = this.state;
@@ -85,6 +124,7 @@ class YearPicker extends Component {
         prefixCls={'rc-calendar-picker'} 
         rootPrefixCls={'rc-calendar'}  
         {...props} focus={()=>{}} 
+        onSelect={this.onSelect}
         showDateInput={true}
         />;
         let classes = classnames(props.className, "datepicker-container");
@@ -98,6 +138,7 @@ class YearPicker extends Component {
                     calendar={Calendar}
                     prefixCls={'rc-calendar'}
                     value={state.value||moment()}
+                    open={this.state.open}
                 >
                     {({  }) => {
                         return (
@@ -106,6 +147,7 @@ class YearPicker extends Component {
                                 onMouseLeave={this.onMouseLeave}
                             >
                                 <FormControl
+                                ref = { ref => this.outInput = ref }
                                     placeholder={this.props.placeholder}
                                     className={this.props.className}
                                     disabled={props.disabled}

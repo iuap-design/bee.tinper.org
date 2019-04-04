@@ -93,6 +93,9 @@ class Radio extends React.Component {
       if (inverse) {
         classes[`${clsPrefix}-inverse`] = true;
       }
+      if (children == null) {
+        classes[`${clsPrefix}-noContent`] = true;
+      }
       let classNames = classnames(clsPrefix,classes);
       let  tabIndex=optional.checked?0:-1;
       if(focusvalue&&focusvalue==this.props.value){
