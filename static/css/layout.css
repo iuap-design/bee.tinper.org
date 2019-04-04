@@ -157,7 +157,13 @@ body::-webkit-scrollbar-thumb:window-inactive {
         display:none;
     }
   } 
-
+@media(max-width:768px){
+    .sidebar{
+        height: 100%;
+        overflow-y: scroll;
+        -webkit-overflow-scrolling: touch;
+    }
+}
 .mob-nav {
     position:fixed;
     z-index:999;
