@@ -100,7 +100,7 @@
         openbtn.style.display='none';
         sidebarDOM.style.left=0;
         let docs=document.getElementsByClassName('docs')[0];
-        document.body.style.position = 'fixed';
+        // document.body.style.position = 'fixed';
         //以下document的两句代码控制当左侧抽屉遮罩层出现时，遮罩层下面的页面不可以滚动，当点击关闭按钮后，页面才可以滚动。
         document.body.style.overflow = 'hidden';
         window.sessionStorage.setItem('openBtn',true)
@@ -115,7 +115,7 @@
         openbtn.style.display='none';
         sidebarDOM.style.left=0;
         let docs=document.getElementsByClassName('docs')[0];
-        document.body.style.position = 'fixed';
+        // document.body.style.position = 'fixed';
         document.body.style.overflow = 'hidden';
         window.sessionStorage.setItem('openBtn',true)
     }
@@ -128,7 +128,7 @@
         sidebarDOM.style.left="-250px";
         openbtn.style.display='block';
         //以下document的两句代码控制当左侧抽屉遮罩层消失时，页面才可以滚动。
-        document.body.style.position = 'relative';
+        // document.body.style.position = 'relative';
         document.body.style.overflow = 'auto';  
     }, false);
 </script>
@@ -140,7 +140,6 @@
     if(openlist.length!==0){
         for(var i in openlist){
             openlist[i].onclick=function() {
-            document.body.style.position = 'fixed';
             document.body.style.overflow = 'hidden';
            };
         }
@@ -149,7 +148,6 @@
     if(maskease.lenght!==0){
         for(var i in maskease){
             maskease[i].onclick=function() {
-            document.body.style.position = 'relative';
             document.body.style.overflow = 'auto';
             }
         }
