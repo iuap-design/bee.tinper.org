@@ -199,6 +199,7 @@ body {
 }
 .docs .doc-content .title-right .title-tag>span{
     position: absolute;
+    top:-0.8px;
     left: 32px;
     bottom: 0px;
 }
