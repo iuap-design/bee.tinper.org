@@ -150,7 +150,7 @@ var MonthCalendar = function (_React$Component) {
     var mode = state.mode,
         value = state.value;
 
-    console.log(props);
+    value = value ? value : (0, _moment2["default"])();
     var prefixCls = props.prefixCls,
         locale = props.locale,
         format = props.format,

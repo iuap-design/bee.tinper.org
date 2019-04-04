@@ -110,13 +110,13 @@ $radio-icon-checked-height: 6px;
 				cursor: not-allowed;
 			}
 	    }
-		&:hover, &:focus, &.focus, &:active, &.active, &.is-checked {
+		&:hover, &:active, &.active, &.is-checked {
 		    // color: $radio-checked-color;
 		    background: $hover-bg-color-base;
 		    // border-color: $radio-checked-color;
 		    z-index: 2;
 		}
-		&:active, &.active, &.is-checked{
+		&:focus, &.focus, &:active, &.active, &.is-checked{
 			background: $radio-checked-color;
 			color: #fff;
 		}
@@ -172,6 +172,11 @@ $radio-icon-checked-height: 6px;
 			}
 		}
 	} 
+	&.u-radio-noContent{
+		.u-radio-label:after {
+		    top: -12px;
+		}
+	}
 	&.disabled{
 		cursor: not-allowed;
 		input[type='radio'] {

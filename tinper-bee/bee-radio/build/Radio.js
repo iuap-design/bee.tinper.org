@@ -128,6 +128,9 @@ var Radio = function (_React$Component) {
     if (inverse) {
       classes[clsPrefix + '-inverse'] = true;
     }
+    if (children == null) {
+      classes[clsPrefix + '-noContent'] = true;
+    }
     var classNames = (0, _classnames2["default"])(clsPrefix, classes);
     var tabIndex = optional.checked ? 0 : -1;
     if (focusvalue && focusvalue == this.props.value) {

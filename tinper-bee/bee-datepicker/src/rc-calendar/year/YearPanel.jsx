@@ -66,7 +66,10 @@ class YearPanel extends React.Component {
     }
     return years;
   }
-
+  yearSelect=(value)=>{
+    let { onSelect,format } = this.props;
+    onSelect&&onSelect(value,value?value.format(format):'');
+  }
   showDecadePanel() {
     this.setState({
       showDecadePanel: 1,
@@ -154,6 +157,7 @@ class YearPanel extends React.Component {
             onChange={this.onInputChange}
             selectedValue={value}
             onClear={this.onClear}
+            onSelect={this.yearSelect}
           />:''
         }  
           <div className={`${prefixCls}-header`}>

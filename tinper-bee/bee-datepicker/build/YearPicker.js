@@ -10,6 +10,8 @@ var _YearPanel = require("./rc-calendar/year/YearPanel");
 
 var _YearPanel2 = _interopRequireDefault(_YearPanel);
 
+var _tinperBeeCore = require("tinper-bee-core");
+
 var _react = require("react");
 
 var _react2 = _interopRequireDefault(_react);
@@ -98,6 +100,7 @@ var YearPicker = function (_Component) {
             prefixCls: 'rc-calendar-picker',
             rootPrefixCls: 'rc-calendar'
         }, props, { focus: function focus() {},
+            onSelect: this.onSelect,
             showDateInput: true
         }));
         var classes = (0, _classnames2["default"])(props.className, "datepicker-container");
@@ -113,7 +116,8 @@ var YearPicker = function (_Component) {
                     onChange: this.handleChange,
                     calendar: Calendar,
                     prefixCls: 'rc-calendar',
-                    value: state.value || (0, _moment2["default"])()
+                    value: state.value || (0, _moment2["default"])(),
+                    open: this.state.open
                 }),
                 function (_ref) {
                     _objectDestructuringEmpty(_ref);
@@ -125,6 +129,9 @@ var YearPicker = function (_Component) {
                             onMouseLeave: _this2.onMouseLeave
                         },
                         _react2["default"].createElement(_beeFormControl2["default"], {
+                            ref: function ref(_ref2) {
+                                return _this2.outInput = _ref2;
+                            },
                             placeholder: _this2.props.placeholder,
                             className: _this2.props.className,
                             disabled: props.disabled,
@@ -159,10 +166,41 @@ var _initialiseProps = function _initialiseProps() {
         });
     };
 
+    this.inputFocus = function () {
+        var self = _this3;
+        var input = document.querySelector('.rc-calendar-input');
+        if (input) {
+            if (input.value) {
+                input.select();
+            } else {
+                input.focus();
+            }
+            input.onkeydown = function (e) {
+                if (e.keyCode == _tinperBeeCore.KeyCode.DELETE) {
+                    input.value = '';
+                    self.props.onChange && self.props.onChange('', '');
+                } else if (e.keyCode == _tinperBeeCore.KeyCode.ESC) {
+                    self.setState({
+                        open: false
+                    });
+                    var v = self.state.value;
+                    self.props.onOpenChange && self.props.onOpenChange(false, v, v && v.format(self.props.format) || '');
+                    ReactDOM.findDOMNode(self.outInput).focus(); // 按esc时候焦点回到input输入框
+                }
+            };
+        }
+    };
+
     this.onOpenChange = function (open) {
+        var self = _this3;
         _this3.setState({
             open: open
         });
+        if (open) {
+            setTimeout(function () {
+                self.inputFocus();
+            }, 200);
+        }
     };
 
     this.handleChange = function (value) {
@@ -189,6 +227,18 @@ var _initialiseProps = function _initialiseProps() {
             value: ''
         });
         _this3.props.onChange && _this3.props.onChange('', '');
+    };
+
+    this.onSelect = function (value) {
+        var _props = _this3.props,
+            onSelect = _props.onSelect,
+            format = _props.format;
+
+        _this3.setState({
+            open: false
+        });
+        onSelect && onSelect(value, value ? value.format(format) : '');
+        ReactDOM.findDOMNode(_this3.outInput).focus();
     };
 };
 

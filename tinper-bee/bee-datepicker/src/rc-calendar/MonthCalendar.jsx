@@ -112,8 +112,8 @@ class MonthCalendar extends React.Component {
 
   render() {
     const { props, state } = this;
-    const { mode, value } = state;
-    console.log(props);
+    let { mode, value } = state;
+    value = value?value:moment()
     const { prefixCls,locale,format,showDateInput,onChange,onSelect,
       onClear,showMonthInput } = props;
     const children = (

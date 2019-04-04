@@ -2181,7 +2181,8 @@
   color: rgb(255,255,255) !important; }
 
 .u-colorpicker-form span {
-  position: relative; }
+  position: relative;
+  display: inline-block; }
 
 .u-colorpicker-form-color-demo {
   position: absolute;

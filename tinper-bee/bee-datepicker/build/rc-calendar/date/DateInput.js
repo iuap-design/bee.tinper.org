@@ -223,15 +223,16 @@ var _initialiseProps = function _initialiseProps() {
     });
   };
 
-  this.onKeyDown = function (_ref) {
-    var keyCode = _ref.keyCode;
+  this.onKeyDown = function (e) {
     var _props2 = _this2.props,
         onSelect = _props2.onSelect,
-        value = _props2.value;
+        value = _props2.value,
+        onKeyDown = _props2.onKeyDown;
 
-    if (keyCode === _KeyCode2["default"].ENTER && onSelect) {
+    if (e.keyCode === _KeyCode2["default"].ENTER && onSelect) {
       onSelect(value.clone());
     }
+    onKeyDown && onKeyDown(e);
   };
 
   this.getRootDOMNode = function () {

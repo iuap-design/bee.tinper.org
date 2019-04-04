@@ -66,10 +66,18 @@ var YearPanel = function (_React$Component) {
 
     var _this = _possibleConstructorReturn(this, _React$Component.call(this, props));
 
-    _this.onInputChange = function (value) {
+    _this.yearSelect = function (value) {
       var _this$props = _this.props,
-          onChange = _this$props.onChange,
+          onSelect = _this$props.onSelect,
           format = _this$props.format;
+
+      onSelect && onSelect(value, value ? value.format(format) : '');
+    };
+
+    _this.onInputChange = function (value) {
+      var _this$props2 = _this.props,
+          onChange = _this$props2.onChange,
+          format = _this$props2.format;
 
       _this.setState({
         value: value ? value : (0, _moment2["default"])()
@@ -78,10 +86,10 @@ var YearPanel = function (_React$Component) {
     };
 
     _this.onClear = function () {
-      var _this$props2 = _this.props,
-          onChange = _this$props2.onChange,
-          format = _this$props2.format,
-          onClear = _this$props2.onClear;
+      var _this$props3 = _this.props,
+          onChange = _this$props3.onChange,
+          format = _this$props3.format,
+          onClear = _this$props3.onClear;
 
       _this.setState({
         value: (0, _moment2["default"])()
@@ -215,7 +223,8 @@ var YearPanel = function (_React$Component) {
           format: format,
           onChange: this.onInputChange,
           selectedValue: value,
-          onClear: this.onClear
+          onClear: this.onClear,
+          onSelect: this.yearSelect
         }) : '',
         _react2["default"].createElement(
           'div',
