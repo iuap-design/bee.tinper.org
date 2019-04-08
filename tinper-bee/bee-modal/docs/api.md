@@ -64,6 +64,7 @@ import bee-modal/build/Modal.css;
 |closeButton|是否显示关闭按钮|boolean|false|
 
 ### Modal.method()
+
 包括：
 - `Modal.info`
 - `Modal.success`
@@ -71,7 +72,9 @@ import bee-modal/build/Modal.css;
 - `Modal.warning`
 - `Modal.confirm`
 
+
 以上均为一个函数，参数为 object，具体属性如下：
+
 |参数|说明|类型|默认值|
 |:---|:-----|:----|:------|
 |cancelText|取消按钮文字|string|取消|
@@ -87,6 +90,7 @@ import bee-modal/build/Modal.css;
 |onOk|点击确定回调，参数为关闭函数，返回 promise 时 resolve 后自动关闭|function|-|
 
 以上函数调用后，会返回一个引用，可以通过该引用更新和关闭弹窗。
+
 ```
 const modal = Modal.info();
 
@@ -97,16 +101,19 @@ modal.update({
 
 modal.destroy();
 ```
+
 - `Modal.destroyAll`
+
 使用 Modal.destroyAll() 可以销毁弹出的确认窗（即上述的 Modal.info、Modal.success、Modal.error、Modal.warning、Modal.confirm）。通常用于路由监听当中，处理路由前进、后退不能销毁确认对话框的问题，而不用各处去使用实例的返回值进行关闭（modal.destroy() 适用于主动关闭，而不是路由这样被动关闭）
+
 ```
 import { browserHistory } from 'react-router';
-
 // router change
 browserHistory.listen(() => {
   Modal.destroyAll();
 });
 ```
+
 
 
 
