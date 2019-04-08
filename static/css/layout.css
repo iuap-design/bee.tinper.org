@@ -1,3 +1,18 @@
+/*手机端 body{overflow:hidden}不生效*/
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+html, body {
+    height: 100%;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+}
+body {
+    position: relative;
+}
+/*  */
 .navbar {
     background: #808080;
     height: 65px;
