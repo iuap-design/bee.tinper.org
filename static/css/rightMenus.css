@@ -23,6 +23,9 @@
 .right-menus .rm-list .rm-list-item.active{
     border-left: 1px solid #E14C46;
 }
+.right-menus .rm-list .rm-list-item.active a{
+    color: #E14C46;
+}
 .right-menus::-webkit-scrollbar {
     width: 0!important;
     height: 0!important;
