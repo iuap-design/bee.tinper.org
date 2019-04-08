@@ -11,6 +11,8 @@
   -webkit-overflow-scrolling: touch;
   outline: 0;
   overflow: hidden; }
+  .u-modal .u-modal-draggable .u-modal-header.dnd-handle:hover {
+    cursor: all-scroll; }
   .u-modal.fade {
     opacity: 0;
     transition: opacity 0.15s linear; }
@@ -34,7 +36,7 @@
     width: auto;
     margin: 10px; }
   .u-modal .u-modal-header {
-    padding: 15px;
+    padding: 16px;
     border-bottom: 1px solid transparent; }
     .u-modal .u-modal-header .u-close {
       margin-top: -2px;
@@ -57,12 +59,34 @@
     line-height: 1.42857143; }
   .u-modal .u-modal-body {
     position: relative;
-    padding: 15px;
+    padding: 16px;
     font-size: 12px; }
   .u-modal .u-modal-footer {
-    padding: 15px;
+    padding: 16px;
     text-align: right;
     border-top: 1px solid transparent; }
+  .u-modal-confirm.u-modal .u-modal-title > .uf {
+    font-size: 32px;
+    line-height: 32px;
+    padding: 0;
+    margin-right: 16px;
+    float: left; }
+  .u-modal-confirm.u-modal .u-modal-header {
+    padding-bottom: 0; }
+  .u-modal-confirm.u-modal .u-modal-body {
+    padding-top: 0; }
+    .u-modal-confirm.u-modal .u-modal-body .u-modal-confirm-content {
+      padding-left: 48px; }
+  .u-modal-confirm-info .u-modal-title > .uf {
+    color: rgb(0,188,212); }
+  .u-modal-confirm-success .u-modal-title > .uf {
+    color: rgb(76,175,80); }
+  .u-modal-confirm-warning .u-modal-title > .uf {
+    color: rgb(255,152,0); }
+  .u-modal-confirm-error .u-modal-title > .uf {
+    color: rgb(244,67,54); }
+  .u-modal-confirm-confirm .u-modal-title > .uf {
+    color: rgb(255,152,0); }
   @media (min-width: 768px) {
     .u-modal .u-modal-dialog {
       width: 600px;
@@ -106,6 +130,9 @@
   .u-modal-container .u-modal, .u-modal-container .u-modal-backdrop {
     position: absolute; }
 
+.react-draggable-transparent-selection * {
+  pointer-events: none !important; }
+
 .demo-margin {
   margin: 5px 15px; }
 
@@ -117,6 +144,9 @@
     background: #EBECF0 !important; }
   .demo10-modal .clear-btn:active {
     background: #EBECF0 !important; }
+
+.demo12 .u-button {
+  margin: 5px; }
 
 .demo-margin {
   margin: 5px 15px; }

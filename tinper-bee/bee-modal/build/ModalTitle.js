@@ -55,6 +55,7 @@ var ModalTitle = function (_React$Component) {
 
     var classes = {};
     classes['' + clsPrefix] = true;
+    classes['clearfix'] = true;
 
     return _react2["default"].createElement(Component, _extends({}, props, {
       className: (0, _classnames2["default"])(className, classes)

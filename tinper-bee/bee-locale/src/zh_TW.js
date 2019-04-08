@@ -36,5 +36,12 @@ export default {
         'rowFilter':'行過濾',
         'openRowFilter':'打開行過濾',
         'closeRowFilter':'關閉行過濾',
+    },
+    SearchPanel:{
+        'title': '默認篩選',
+        'resetName': '清空',
+        'searchName': '查詢',
+        'down':'展開',
+        'up':'收起',
     }
 }

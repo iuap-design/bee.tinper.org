@@ -40,20 +40,16 @@ import "./node_modules/bee-search-panel/build/SearchPanel.css"
 ## API
 
 |参数|说明|类型|默认值|
-|:--|:---:|:--:|---:|
-|expanded|是否展开|boolean|-|
-|defaultExpanded|是否默认展开|boolean|false|
-|onChange|点击收起展开按钮的回调|function|-|
-|onSearch|点击搜索按钮的回调|function|-|
-|onReset|点击清空按钮的回调|function|-|
-|searchName|查询按钮的文字|string|查询|
-|resetName|清空按钮的文字|string|清空|
-|title|搜索面板名称|string|默认筛选|
-|onPanelChangeStart|面板展开或者隐藏开始的回调(status)=>{//status="hide"或"visible"}|function|-|
-|onPanelChangeIng|面板展开或者隐藏进行中的回调(status)=>{//status="hide"或"visible"}|function|-|
-|onPanelChangeEnd|面板展开或者隐藏结束后的回调(status)=>{//status="hide"或"visible"}|function|-|
-|bgColor|面板背景颜色|string|"#F7F9FB"|
-|resident|常驻面板内容，不会隐藏|ReactNode|-|
+|:---|:-----|:----|:------|
+|expanded|是否默认展开|boolean|false|
+|onSearch|点击查询的回调|function|-|
+|onReset|点击查询的回调|function|-|
+|title|查询面板标题|string|'默认筛选'|
+|onPanelChangeStart|显示或隐藏开始回调|function|-|
+|onPanelChangeIng|显示或隐藏进行中回调|function|-|
+|onPanelChangeEnd|显示或隐藏结束回调|function|-|
+|onChange|点击显示或隐藏回调|function|-|
+|showOperation|是否显示 查询，清空操作按钮|bool|-|
 
 #### 开发调试
 

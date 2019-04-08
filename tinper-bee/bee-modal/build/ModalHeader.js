@@ -80,7 +80,7 @@ var ModalHeader = function (_React$Component) {
 
     var classes = {};
     classes['' + clsPrefix] = true;
-
+    classes['dnd-handle'] = true;
     return _react2["default"].createElement(
       'div',
       _extends({}, props, {
@@ -90,7 +90,7 @@ var ModalHeader = function (_React$Component) {
         'button',
         {
           type: 'button',
-          className: 'u-close',
+          className: 'u-close dnd-cancel',
           'aria-label': label,
           onClick: (0, _tinperBeeCore.createChainedFunction)(modal.onHide, onHide)
         },

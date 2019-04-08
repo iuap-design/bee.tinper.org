@@ -1,6 +1,9 @@
 @import "../node_modules/tinper-bee-core/scss/minxin-variables";
 @import "../node_modules/tinper-bee-core/scss/minxin-mixins";
-
+@import "../node_modules/bee-icon/src/Icon.scss";
+$modal-header-padding:16px;
+$modal-body-padding : 16px;
+$modal-footer-padding : 16px;
 .u-modal {
   display: none;
   position: fixed;
@@ -12,7 +15,11 @@
   -webkit-overflow-scrolling: touch;
   outline: 0;
   overflow: hidden;
-
+  .u-modal-draggable{
+    .u-modal-header.dnd-handle:hover{
+      cursor: all-scroll;
+    }
+  }
   &.fade {
     opacity: 0;
     transition: opacity 0.15s linear;
@@ -84,6 +91,39 @@
     text-align: right;
     border-top: 1px solid $modal-footer-border-color;
   }
+  &-confirm.u-modal{
+    .u-modal-title> .uf{
+      font-size: 32px;
+      line-height: 32px;
+      padding: 0;
+      margin-right: 16px;
+      float: left;
+    }
+    .u-modal-header {
+      padding-bottom: 0;
+    }
+    .u-modal-body {
+      padding-top: 0;
+      .u-modal-confirm-content{
+        padding-left: 48px;
+      }
+    }
+  }
+  &-confirm-info .u-modal-title> .uf{
+    color: $brand-info;
+  }
+  &-confirm-success .u-modal-title> .uf{
+    color: $brand-success;
+  }
+  &-confirm-warning .u-modal-title> .uf{
+    color: $brand-warning;
+  }
+  &-confirm-error .u-modal-title> .uf{
+    color: $brand-danger;
+  }
+  &-confirm-confirm .u-modal-title> .uf{
+    color: $brand-warning;
+  }
 
   @media (min-width: 768px) {
     .u-modal-dialog {
@@ -154,3 +194,4 @@
 }
 
 
+.react-draggable-transparent-selection * { pointer-events: none !important;}

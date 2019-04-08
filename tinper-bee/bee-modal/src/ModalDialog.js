@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import React from 'react';
 import PropTypes from 'prop-types';
+import Dnd from 'bee-dnd';
 
 const propTypes = {
   /**
@@ -16,8 +17,12 @@ const defaultProps = {
 };
 
 class ModalDialog extends React.Component {
+  onStart = () => {
+    let { draggable } = this.props;
+    return draggable;
+  }
   render() {
-    const { dialogClassName, className, clsPrefix, size, style, contentStyle, children, ...props } =
+    const { dialogClassName, className, clsPrefix, size, style, contentStyle, children,draggable, ...props } =
       this.props;
     // const [bsProps, elementProps] = splitBsProps(props);
     //
@@ -36,6 +41,9 @@ class ModalDialog extends React.Component {
     if(size){
         dialogClasses[`${clsPrefix}-${size}`] = true;
     }
+    if(draggable){
+      dialogClasses[`${clsPrefix}-draggable`] = true;
+    }
 
     return (
       <div
@@ -46,9 +54,11 @@ class ModalDialog extends React.Component {
         className={classNames(className, uClassName)}
       >
         <div className={classNames(dialogClassName, dialogClasses)} style={ style }>
-          <div style={contentStyle} className={classNames([`${clsPrefix}-content`])} role="document">
-            {children}
-          </div>
+          <Dnd handle=".dnd-handle" cancel=".dnd-cancel" onStart={this.onStart} onStop={this.onStop}>
+            <div style={contentStyle} className={classNames([`${clsPrefix}-content`])} role="document">
+              {children}
+            </div>
+          </Dnd>
         </div>
       </div>
     );

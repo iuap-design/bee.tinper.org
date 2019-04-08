@@ -18,6 +18,10 @@ var _propTypes = require('prop-types');
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
+var _beeDnd = require('bee-dnd');
+
+var _beeDnd2 = _interopRequireDefault(_beeDnd);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
@@ -49,9 +53,19 @@ var ModalDialog = function (_React$Component) {
   _inherits(ModalDialog, _React$Component);
 
   function ModalDialog() {
+    var _temp, _this, _ret;
+
     _classCallCheck(this, ModalDialog);
 
-    return _possibleConstructorReturn(this, _React$Component.apply(this, arguments));
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, _React$Component.call.apply(_React$Component, [this].concat(args))), _this), _this.onStart = function () {
+      var draggable = _this.props.draggable;
+
+      return draggable;
+    }, _temp), _possibleConstructorReturn(_this, _ret);
   }
 
   ModalDialog.prototype.render = function render() {
@@ -65,7 +79,8 @@ var ModalDialog = function (_React$Component) {
         style = _props.style,
         contentStyle = _props.contentStyle,
         children = _props.children,
-        props = _objectWithoutProperties(_props, ['dialogClassName', 'className', 'clsPrefix', 'size', 'style', 'contentStyle', 'children']);
+        draggable = _props.draggable,
+        props = _objectWithoutProperties(_props, ['dialogClassName', 'className', 'clsPrefix', 'size', 'style', 'contentStyle', 'children', 'draggable']);
     // const [bsProps, elementProps] = splitBsProps(props);
     //
 
@@ -77,6 +92,9 @@ var ModalDialog = function (_React$Component) {
     var dialogClasses = (_dialogClasses = {}, _defineProperty(_dialogClasses, uClassName, false), _defineProperty(_dialogClasses, clsPrefix + '-dialog', true), _dialogClasses);
     if (size) {
       dialogClasses[clsPrefix + '-' + size] = true;
+    }
+    if (draggable) {
+      dialogClasses[clsPrefix + '-draggable'] = true;
     }
 
     return _react2["default"].createElement(
@@ -91,9 +109,13 @@ var ModalDialog = function (_React$Component) {
         'div',
         { className: (0, _classnames2["default"])(dialogClassName, dialogClasses), style: style },
         _react2["default"].createElement(
-          'div',
-          { style: contentStyle, className: (0, _classnames2["default"])([clsPrefix + '-content']), role: 'document' },
-          children
+          _beeDnd2["default"],
+          { handle: '.dnd-handle', cancel: '.dnd-cancel', onStart: this.onStart, onStop: this.onStop },
+          _react2["default"].createElement(
+            'div',
+            { style: contentStyle, className: (0, _classnames2["default"])([clsPrefix + '-content']), role: 'document' },
+            children
+          )
         )
       )
     );

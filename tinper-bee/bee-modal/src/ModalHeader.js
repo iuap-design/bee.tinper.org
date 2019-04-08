@@ -47,7 +47,7 @@ class ModalHeader extends React.Component {
 
     const classes = {};
     classes[`${clsPrefix}`] = true;
-
+    classes['dnd-handle'] = true;
     return (
       <div
         {...props}
@@ -56,7 +56,7 @@ class ModalHeader extends React.Component {
         {closeButton &&
           <button
             type="button"
-            className="u-close"
+            className="u-close dnd-cancel"
             aria-label={label}
             onClick={createChainedFunction(modal.onHide, onHide)}
           >
