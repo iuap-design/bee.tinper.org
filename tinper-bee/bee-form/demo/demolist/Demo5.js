@@ -199,7 +199,6 @@ const Demo5 = Form.createForm()(class Demo extends Component {
                                         >
                                             <Radio value="0" >未审批</Radio>
                                             <Radio value="1" >已审批</Radio>
-                                            <Radio value="2" >全部</Radio>
                                         </Radio.RadioGroup>
                                     </Col>
                                 </FormItem>

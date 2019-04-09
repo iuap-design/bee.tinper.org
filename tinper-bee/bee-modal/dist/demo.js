@@ -16611,34 +16611,17 @@
 	var ModalFuncProps = {
 	  prefixCls: _propTypes2['default'].string,
 	  className: _propTypes2['default'].string,
-	  visible: _propTypes2['default'].bool,
+	  show: _propTypes2['default'].bool,
 	  title: _react2['default'].ReactNode,
-	  content: _react2['default'].ReactNode
-	  // onOk?: (...args: any[]) => any | PromiseLike<any>;
-	  // onCancel?: (...args: any[]) => any | PromiseLike<any>;
-	  // okButtonProps?: NativeButtonProps;
-	  // cancelButtonProps?: NativeButtonProps;
-	  // centered?: boolean;
-	  // width?: string | number;
-	  // iconClassName?: string;
-	  // okText?: React.ReactNode;
-	  // okType?: ButtonType;
-	  // cancelText?: React.ReactNode;
-	  // icon?: React.ReactNode;
-	  // /* Deprecated */
-	  // iconType?: string;
-	  // mask?: boolean;
-	  // maskClosable?: boolean;
-	  // zIndex?: number;
-	  // okCancel?: boolean;
-	  // style?: React.CSSProperties;
-	  // maskStyle?: React.CSSProperties;
-	  // type?: string;
-	  // keyboard?: boolean;
-	  // getContainer?: (instance: React.ReactInstance) => HTMLElement;
-	  // autoFocusButton?: null | 'ok' | 'cancel';
-	  // transitionName?: string;
-	  // maskTransitionName?: string;
+	  content: _react2['default'].ReactNode,
+	  onOk: _propTypes2['default'].func,
+	  onCancel: _propTypes2['default'].func,
+	  width: _propTypes2['default'].oneOfType([_propTypes2['default'].number, _propTypes2['default'].string]),
+	  okText: _propTypes2['default'].string,
+	  okType: _propTypes2['default'].string,
+	  cancelText: _propTypes2['default'].string,
+	  icon: _react2['default'].ReactNode,
+	  backdrop: _propTypes2['default'].oneOf(['static', true, false])
 	};
 	
 	var ModalFunc = function ModalFunc(props) {
