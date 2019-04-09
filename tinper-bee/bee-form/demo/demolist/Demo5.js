@@ -96,11 +96,14 @@ const Demo5 = Form.createForm()(class Demo extends Component {
                                                 initialValue: '',
                                                 validateTrigger: 'onBlur',
                                                 rules: [{
-                                                    required: true, message: '请输入订单编号',
+                                                    required: true, message: <span><Icon type="uf-exc-t"></Icon><span>请输入订单编号</span></span>,
                                                 }],
                                             })
                                             }
                                         />
+                                        <span className='error'>
+                                            {getFieldError('orderCode')}
+                                        </span>
                                     </Col>
                                 </FormItem>
                             </Col>
@@ -114,9 +117,16 @@ const Demo5 = Form.createForm()(class Demo extends Component {
                                             {
                                             ...getFieldProps('supplierName', {
                                                 initialValue: '',
+                                                validateTrigger: 'onBlur',
+                                                rules: [{
+                                                    required: true, message: <span><Icon type="uf-exc-t"></Icon><span>请输入供应商名称</span></span>,
+                                                }],
                                             })
                                             }
                                         />
+                                        <span className='error'>
+                                            {getFieldError('supplierName')}
+                                        </span>
                                     </Col>
                                 </FormItem>
                             </Col>
@@ -130,9 +140,16 @@ const Demo5 = Form.createForm()(class Demo extends Component {
                                             {
                                             ...getFieldProps('voucherName1', {
                                                 initialValue: '',
+                                                validateTrigger: 'onBlur',
+                                                rules: [{
+                                                    required: true, message: <span><Icon type="uf-exc-t"></Icon><span>请输入凭证名称</span></span>,
+                                                }],
                                             })
                                             }
                                         />
+                                        <span className='error'>
+                                            {getFieldError('voucherName1')}
+                                        </span>
                                     </Col>
                                 </FormItem>
                             </Col>
@@ -140,7 +157,7 @@ const Demo5 = Form.createForm()(class Demo extends Component {
                             <Col  lg={4} md={6} xs={12}>
                                 <FormItem>
                                     <Col lg={4} md={4} xs={4}>
-                                        <Label><Icon type="uf-mi" className='mast'></Icon>订单类型</Label>
+                                        <Label>订单类型</Label>
                                     </Col>
                                     <Col lg={8} md={8} xs={8}>
                                         <Select size="sm"
@@ -164,7 +181,7 @@ const Demo5 = Form.createForm()(class Demo extends Component {
                             <Col  lg={4} md={6} xs={12}>
                                 <FormItem>
                                     <Col lg={4} md={4} xs={4}>
-                                        <Label><Icon type="uf-mi" className='mast'></Icon>采购组</Label>
+                                        <Label>采购组</Label>
                                     </Col>
                                     <Col lg={8} md={8} xs={8}>
                                         <CheckboxGroup 
@@ -183,7 +200,7 @@ const Demo5 = Form.createForm()(class Demo extends Component {
                             <Col  lg={4} md={6} xs={12}>
                                 <FormItem>
                                     <Col lg={4} md={4} xs={4}>
-                                        <Label><Icon type="uf-mi" className='mast'></Icon>审批状态</Label>
+                                        <Label>审批状态</Label>
                                     </Col>
                                     <Col lg={8} md={8} xs={8}>
                                         <Radio.RadioGroup
@@ -206,7 +223,7 @@ const Demo5 = Form.createForm()(class Demo extends Component {
                             <Col  lg={4} md={6} xs={12}>
                                 <FormItem>
                                     <Col lg={4} md={4} xs={4}>
-                                        <Label><Icon type="uf-mi" className='mast'></Icon>关闭状态</Label>
+                                        <Label>关闭状态</Label>
                                     </Col>
                                     <Col lg={8} md={8} xs={8}>
                                         <Radio.RadioGroup
@@ -229,7 +246,7 @@ const Demo5 = Form.createForm()(class Demo extends Component {
                             <Col  lg={4} md={6} xs={12}>
                                 <FormItem>
                                     <Col lg={4} md={4} xs={4}>
-                                        <Label><Icon type="uf-mi" className='mast'></Icon>确认状态</Label>
+                                        <Label>确认状态</Label>
                                     </Col>
                                     <Col lg={8} md={8} xs={8}>
                                         <Radio.RadioGroup

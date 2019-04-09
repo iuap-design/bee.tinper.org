@@ -10,6 +10,7 @@ import FormControl from 'bee-form-control';
 import Button from 'bee-button';
 import Checkbox from 'bee-checkbox';
 import Label from 'bee-label';
+import Icon from 'bee-icon';
 
 const Demo3 = Form.createForm()( class Demo extends Component {
     constructor(props) {
@@ -31,7 +32,7 @@ const Demo3 = Form.createForm()( class Demo extends Component {
     handleConfirmPassword = (rule, value, callback) => {
         const { getFieldValue } = this.props.form;
         if (value && value !== getFieldValue('password')) {
-            callback('两次输入不一致！')
+            callback(<span><Icon type="uf-exc-t"></Icon><span>两次输入不一致！</span></span>)
         }
         callback();
     }
@@ -47,9 +48,10 @@ const Demo3 = Form.createForm()( class Demo extends Component {
                             {...getFieldProps('username', {
                                 validateTrigger: 'onBlur',
                                 rules: [{
-                                    required: true, message: '请输入用户名',
+                                    required: true, message: <span><Icon type="uf-exc-t"></Icon><span>请输入用户名</span></span>,
                                 }, {
-                                    pattern: /^(?!\d+$)(?![a-zA-Z]+$)[a-zA-Z0-9]{8,15}$/, message: '用户名格式错误',
+                                    pattern: /^(?!\d+$)(?![a-zA-Z]+$)[a-zA-Z0-9]{8,15}$/, 
+                                    message: <span><Icon type="uf-exc-t"></Icon><span>用户名格式错误</span></span>,
                                 }],
                             }) }
                         />
@@ -64,7 +66,7 @@ const Demo3 = Form.createForm()( class Demo extends Component {
                             {...getFieldProps('password', {
                                 validateTrigger: 'onBlur',
                                 rules: [{
-                                    required: true, message: '请输入密码',
+                                    required: true, message: <span><Icon type="uf-exc-t"></Icon><span>请输入密码</span></span>,
                                 }],
                             }) }
                         />
@@ -79,7 +81,7 @@ const Demo3 = Form.createForm()( class Demo extends Component {
                             {...getFieldProps('password2', {
                                 validateTrigger: 'onBlur',
                                 rules: [{
-                                    required: true, message: '请输入密码',
+                                    required: true, message: <span><Icon type="uf-exc-t"></Icon><span>请输入密码</span></span>,
                                 }, {
                                     validator: this.handleConfirmPassword
                                 }],
@@ -96,9 +98,9 @@ const Demo3 = Form.createForm()( class Demo extends Component {
                             {...getFieldProps('email', {
                                 validateTrigger: 'onBlur',
                                 rules: [{
-                                    required: true, message: '请输入邮箱',
+                                    required: true, message: <span><Icon type="uf-exc-t"></Icon><span>请输入邮箱</span></span>,
                                 }, {
-                                    type: 'email', message: '邮箱格式不正确'
+                                    type: 'email', message: <span><Icon type="uf-exc-t"></Icon><span>邮箱格式不正确</span></span>
                                 }],
                             }) }
                         />
@@ -113,9 +115,9 @@ const Demo3 = Form.createForm()( class Demo extends Component {
                             {...getFieldProps('phone', {
                                 validateTrigger: 'onBlur',
                                 rules: [{
-                                    required: true, message: '请输入手机号',
+                                    required: true, message: <span><Icon type="uf-exc-t"></Icon><span>请输入手机号</span></span>,
                                 }, {
-                                    pattern: /^\d{11}$/, message: '手机号格式不正确'
+                                    pattern: /^\d{11}$/, message: <span><Icon type="uf-exc-t"></Icon><span>手机号格式不正确</span></span>
                                 }],
                             }) }
                         />
