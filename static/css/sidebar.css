@@ -33,8 +33,8 @@
     border-radius: 50%;
     background: #e14c46;
     position: absolute;
-    top: 16px;
-    left: 55px;
+    top: 10px;
+    left: 65px;
 }
 
 .sidebar .menu-components .menu-group .menu-item a:hover {
