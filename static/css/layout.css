@@ -1,17 +1,3 @@
-/*手机端 body{overflow:hidden}不生效*/
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
-html, body {
-    height: 100%;
-    overflow: auto;
-    -webkit-overflow-scrolling: touch;
-}
-body {
-    position: relative;
-}
 /*  */
 .navbar {
     background: #808080;
@@ -26,7 +12,6 @@ body {
     width: 250px;
     display: inline-block;
     vertical-align: top;
-    /* padding-left: 40px; */
     position: fixed;
     overflow: auto;
     height: calc(100% - 65px);
@@ -79,7 +64,7 @@ body::-webkit-scrollbar-thumb {
 /* 失去焦点颜色 */
 body::-webkit-scrollbar-thumb:window-inactive {
     background: #DFDFDF;
-}
+} 
 
 
 
@@ -173,6 +158,20 @@ body::-webkit-scrollbar-thumb:window-inactive {
     }
   } 
 @media(max-width:768px){
+    /*手机端 body{overflow:hidden}不生效*/
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+    html, body {
+        height: 100%;
+        overflow: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    body {
+        position: relative;
+    }
     .sidebar{
         height: 100%;
         overflow-y: scroll;
@@ -229,7 +228,7 @@ body::-webkit-scrollbar-thumb:window-inactive {
     color:#E14C46;
  }
 
-/* 基础组件详情页移动端导航栏 */
+
 .mob-nav  .uf-navmenu{
     float: right;
     right: 3px;

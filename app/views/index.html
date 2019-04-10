@@ -71,11 +71,13 @@
 
 
     var header = document.querySelector('#navbar');
+
     new Gumshoe('#rightMenusId a',{
         offset: function () {
             return header.getBoundingClientRect().height;
         }
     });
+    
     let lists = document.querySelectorAll('.rm-list-item');
     if(window.scrollY<=160){
         lists[0].setAttribute('class','rm-list-item active');
