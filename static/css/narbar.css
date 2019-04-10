@@ -11,8 +11,6 @@
 
 .nav .nav-left .nav-logo {
     display: inline-block;
-    margin-left: 60px;
-    margin-right: 50px;
 }
 .nav .nav-left .nav-logo a{
     color: #424242;
@@ -41,7 +39,7 @@
 
 .nav .nav-left .nav-split {
     color: #ccc;
-    margin: 0 20px;
+    margin: 0 15px;
 }
 
 .nav .nav-left .nav-search {
@@ -272,7 +270,7 @@ input::-webkit-input-placeholder {
     cursor: not-allowed;
 }
 #navbar .nav .nav-left .nav-logo{
-    margin-right: 50px;
+    margin-left: 30px;
 }
 #selectList.select-list{
     display: none;
