@@ -80,7 +80,7 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
 	
-	var Demo1 = __webpack_require__(424);var Demo2 = __webpack_require__(425);var Demo3 = __webpack_require__(426);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 拾色器", "code": "/**\n*\n* @title 拾色器\n* @description 提供预制色板的拾色器组件\n*\n*/\nimport React, { Component } from 'react';\nimport { ColorPicker } from 'tinper-bee';\n\nclass Demo1 extends Component {\n    state = {\n        value : \"#E14C46\"\n    }\n\n    handleChange = (v) => {\n        console.log(\"选择的色彩信息 ：\" , v);\n        this.setState({\n            value: v.hex || ''\n        })\n    }\n    render () {\n        return (\n            <ColorPicker \n                label=\"颜色\"\n                placeholder=\"请输入十六进制色值\"\n                value={this.state.value} \n                onChange={this.handleChange}\n            />\n        )\n    }\n}\n", "desc": " 提供预制色板的拾色器组件" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 设置必输项", "code": "/**\r\n*\r\n* @title 设置必输项\r\n* @description `required`参数设置是否必填\r\n*\r\n*/\r\nimport React, { Component } from 'react';\r\nimport { ColorPicker } from 'tinper-bee';\r\n\r\nclass Demo2 extends Component {\r\n    state = {\r\n        value : \"#E14C46\"\r\n    }\r\n\r\n    handleChange = (v) => {\r\n        console.log(\"选择的色彩信息 ：\" , v);\r\n        this.setState({\r\n            value: v.hex || ''\r\n        })\r\n    }\r\n    render () {\r\n        return (\r\n            <ColorPicker \r\n                className=\"demo2\"\r\n                placeholder=\"请输入十六进制色值\"\r\n                value={this.state.value} \r\n                onChange={this.handleChange}\r\n                label=\"颜色\"\r\n                required={true}\r\n            />\r\n        )\r\n    }\r\n}\r\n", "desc": " `required`参数设置是否必填" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 自动计算色值", "code": "/**\r\n*\r\n* @title 自动计算色值\r\n* @description 根据选中的颜色自动计算比其 浅一色度/深一色度 的色值，可应用于选择主色后，自动计算hover和active状态的色值\r\n*\r\n*/\r\nimport React, { Component } from 'react';\r\nimport { ColorPicker } from 'tinper-bee';\r\n\r\nclass Demo3 extends Component {\r\n    autoCalculate = (obj) => {\r\n        console.log(\"自动计算的色值对象 ：\",obj);\r\n    }\r\n\r\n    handleChange = (v) => {\r\n        console.log(\"选择的色彩信息 ：\" , v);\r\n    }\r\n    render () {\r\n        return (\r\n            <ColorPicker\r\n                className=\"demo2\"\r\n                label=\"颜色\"\r\n                placeholder=\"请输入十六进制色值\" \r\n                autoCalculate={this.autoCalculate}\r\n                onChange={this.handleChange}\r\n            />\r\n        )\r\n    }\r\n}\r\n", "desc": " 根据选中的颜色自动计算比其 浅一色度/深一色度 的色值，可应用于选择主色后，自动计算hover和active状态的色值" }];
+	var Demo1 = __webpack_require__(429);var Demo2 = __webpack_require__(430);var Demo3 = __webpack_require__(431);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 取色板", "code": "/**\n*\n* @title 取色板\n* @description 提供预制色板的取色板组件\n*\n*/\nimport React, { Component } from 'react';\nimport { ColorPicker } from 'tinper-bee';\n\nclass Demo1 extends Component {\n    state = {\n        value : \"#E14C46\"\n    }\n\n    handleChange = (v) => {\n        console.log(\"选择的色彩信息 ：\" , v);\n        this.setState({\n            value: v.hex || ''\n        })\n    }\n    render () {\n        return (\n            <ColorPicker \n                label=\"颜色\"\n                placeholder=\"请输入十六进制色值\"\n                value={this.state.value} \n                onChange={this.handleChange}\n            />\n        )\n    }\n}\n", "desc": " 提供预制色板的取色板组件" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 设置必输项", "code": "/**\r\n*\r\n* @title 设置必输项\r\n* @description `required`参数设置是否必填\r\n*\r\n*/\r\nimport React, { Component } from 'react';\r\nimport { ColorPicker } from 'tinper-bee';\r\n\r\nclass Demo2 extends Component {\r\n    state = {\r\n        value : \"#E14C46\"\r\n    }\r\n\r\n    handleChange = (v) => {\r\n        console.log(\"选择的色彩信息 ：\" , v);\r\n        this.setState({\r\n            value: v.hex || ''\r\n        })\r\n    }\r\n    render () {\r\n        return (\r\n            <ColorPicker \r\n                className=\"demo2\"\r\n                placeholder=\"请输入十六进制色值\"\r\n                value={this.state.value} \r\n                onChange={this.handleChange}\r\n                label=\"颜色\"\r\n                required={true}\r\n            />\r\n        )\r\n    }\r\n}\r\n", "desc": " `required`参数设置是否必填" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 自动计算色值", "code": "/**\r\n*\r\n* @title 自动计算色值\r\n* @description 根据选中的颜色自动计算比其 浅一色度/深一色度 的色值，可应用于选择主色后，自动计算hover和active状态的色值\r\n*\r\n*/\r\nimport React, { Component } from 'react';\r\nimport { ColorPicker } from 'tinper-bee';\r\n\r\nclass Demo3 extends Component {\r\n    autoCalculate = (obj) => {\r\n        console.log(\"自动计算的色值对象 ：\",obj);\r\n    }\r\n\r\n    handleChange = (v) => {\r\n        console.log(\"选择的色彩信息 ：\" , v);\r\n    }\r\n    render () {\r\n        return (\r\n            <ColorPicker\r\n                className=\"demo2\"\r\n                label=\"颜色\"\r\n                placeholder=\"请输入十六进制色值\" \r\n                autoCalculate={this.autoCalculate}\r\n                onChange={this.handleChange}\r\n            />\r\n        )\r\n    }\r\n}\r\n", "desc": " 根据选中的颜色自动计算比其 浅一色度/深一色度 的色值，可应用于选择主色后，自动计算hover和active状态的色值" }];
 	
 	var Demo = function (_Component) {
 	    _inherits(Demo, _Component);
@@ -16434,6 +16434,8 @@
 	    value: true
 	});
 	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
 	var _defaultProps;
 	
 	var _react = __webpack_require__(1);
@@ -16478,7 +16480,11 @@
 	
 	var _beeLayout = __webpack_require__(3);
 	
-	var _colors = __webpack_require__(423);
+	var _beeInputGroup = __webpack_require__(423);
+	
+	var _beeInputGroup2 = _interopRequireDefault(_beeInputGroup);
+	
+	var _colors = __webpack_require__(428);
 	
 	var _colors2 = _interopRequireDefault(_colors);
 	
@@ -16528,12 +16534,29 @@
 	
 	        var _this = _possibleConstructorReturn(this, _Component.call(this, props));
 	
-	        _this.handleClick = function () {
+	        _this.handleClick = function (e) {
+	            e.stopPropagation();
 	            _this.setState({ displayColorPicker: !_this.state.displayColorPicker });
 	        };
 	
 	        _this.handleClose = function () {
-	            _this.setState({ displayColorPicker: false });
+	            var _this$cache = _this.cache,
+	                selectedColor = _this$cache.selectedColor,
+	                selectedScale = _this$cache.selectedScale,
+	                selectedRgbValue = _this$cache.selectedRgbValue,
+	                selectedHexValue = _this$cache.selectedHexValue,
+	                formValue = _this$cache.formValue,
+	                alpha = _this$cache.alpha;
+	
+	            _this.setState({
+	                displayColorPicker: false,
+	                selectedColor: selectedColor,
+	                selectedScale: selectedScale,
+	                selectedRgbValue: selectedRgbValue,
+	                selectedHexValue: selectedHexValue,
+	                formValue: formValue,
+	                alpha: alpha
+	            });
 	        };
 	
 	        _this.submit = function () {
@@ -16543,9 +16566,10 @@
 	            var _this$state = _this.state,
 	                selectedColor = _this$state.selectedColor,
 	                selectedScale = _this$state.selectedScale,
-	                selectedHexValue = _this$state.selectedHexValue;
+	                selectedHexValue = _this$state.selectedHexValue,
+	                alpha = _this$state.alpha;
 	
-	            var tempRgb = _this.colorHexToRgb(selectedHexValue);
+	            var tempRgb = _this.colorHexToRgb(selectedHexValue, alpha);
 	            var obj = {
 	                'class': selectedColor + '-' + selectedScale,
 	                rgba: tempRgb,
@@ -16554,6 +16578,14 @@
 	            _this.setState({
 	                formValue: selectedHexValue,
 	                displayColorPicker: false
+	            });
+	            _this.cache = _extends(_this.cache, {
+	                selectedColor: selectedColor,
+	                selectedScale: selectedScale,
+	                selectedRgbValue: tempRgb,
+	                selectedHexValue: selectedHexValue,
+	                formValue: selectedHexValue,
+	                alpha: alpha
 	            });
 	            if (autoCalculate) {
 	                var result = _this.calcHoverAndActive(selectedColor, selectedScale);
@@ -16598,7 +16630,7 @@
 	                selectedScale: "600",
 	                selectedRgbValue: selectedRgb,
 	                selectedHexValue: selectedHex,
-	                alpha: 255
+	                alpha: 100
 	            });
 	        };
 	
@@ -16718,9 +16750,17 @@
 	            selectedRgbValue: initRgb,
 	            selectedHexValue: initHex,
 	            formValue: initValue,
-	            alpha: 255
+	            alpha: 100
 	        };
 	        _this.input = {};
+	        _this.cache = {
+	            selectedColor: "red",
+	            selectedScale: "600",
+	            selectedRgbValue: initRgb,
+	            selectedHexValue: initHex,
+	            formValue: initValue,
+	            alpha: 100
+	        };
 	        return _this;
 	    }
 	
@@ -16735,7 +16775,7 @@
 	    // 打开色板
 	
 	
-	    // 关闭色板
+	    // 关闭色板/点击弹框取消按钮
 	
 	
 	    // 点击弹框确定按钮
@@ -16761,9 +16801,7 @@
 	
 	
 	    // 把16进制颜色转换为RGB颜色
-	    ColorPicker.prototype.colorHexToRgb = function colorHexToRgb(color) {
-	        var alpha = this.state.alpha;
-	
+	    ColorPicker.prototype.colorHexToRgb = function colorHexToRgb(color, alpha) {
 	        var sColor = color;
 	        sColor = sColor.toLowerCase();
 	        //十六进制颜色值的正则表达式
@@ -16926,7 +16964,7 @@
 	                    _react2['default'].createElement(
 	                        _beeModal2['default'].Title,
 	                        null,
-	                        'MD\u8272\u677F'
+	                        '\u53D6\u8272\u677F'
 	                    )
 	                ),
 	                _react2['default'].createElement(
@@ -16943,7 +16981,7 @@
 	                        _react2['default'].createElement(
 	                            _beeSelect2['default'],
 	                            {
-	                                defaultValue: 'red',
+	                                defaultValue: selectedColor,
 	                                style: { width: 200 },
 	                                onChange: this.handleSelectChange
 	                            },
@@ -16971,7 +17009,11 @@
 	                                _react2['default'].createElement(
 	                                    'div',
 	                                    { className: clsPrefix + '-panel-color-info' },
-	                                    _react2['default'].createElement('div', { className: 'selected-color bg-' + selectedColor + '-' + selectedScale }),
+	                                    _react2['default'].createElement(
+	                                        'div',
+	                                        { className: 'transparent-bg' },
+	                                        _react2['default'].createElement('div', { className: 'selected-color bg-' + selectedColor + '-' + selectedScale, style: { opacity: alpha / 100 } })
+	                                    ),
 	                                    _react2['default'].createElement(
 	                                        'ul',
 	                                        null,
@@ -17016,7 +17058,16 @@
 	                                                    null,
 	                                                    'Alpha'
 	                                                ),
-	                                                _react2['default'].createElement(_beeFormControl2['default'], { size: 'sm', value: alpha, onChange: this.handleAlphaChange })
+	                                                _react2['default'].createElement(
+	                                                    _beeInputGroup2['default'],
+	                                                    null,
+	                                                    _react2['default'].createElement(_beeFormControl2['default'], { size: 'sm', value: alpha, onChange: this.handleAlphaChange }),
+	                                                    _react2['default'].createElement(
+	                                                        _beeInputGroup2['default'].Addon,
+	                                                        null,
+	                                                        '%'
+	                                                    )
+	                                                )
 	                                            )
 	                                        )
 	                                    )
@@ -38060,6 +38111,239 @@
 
 /***/ }),
 /* 423 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	module.exports = __webpack_require__(424);
+
+/***/ }),
+/* 424 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
+	var _classnames = __webpack_require__(5);
+	
+	var _classnames2 = _interopRequireDefault(_classnames);
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _beeInputGroupAddon = __webpack_require__(425);
+	
+	var _beeInputGroupAddon2 = _interopRequireDefault(_beeInputGroupAddon);
+	
+	var _InputGroupButton = __webpack_require__(427);
+	
+	var _InputGroupButton2 = _interopRequireDefault(_InputGroupButton);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+	
+	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
+	
+	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
+	
+	var defaultProps = {
+	  clsPrefix: 'u-input-group',
+	  simple: false
+	};
+	
+	var InputGroup = function (_React$Component) {
+	  _inherits(InputGroup, _React$Component);
+	
+	  function InputGroup() {
+	    _classCallCheck(this, InputGroup);
+	
+	    return _possibleConstructorReturn(this, _React$Component.apply(this, arguments));
+	  }
+	
+	  InputGroup.prototype.render = function render() {
+	    var _props = this.props,
+	        className = _props.className,
+	        clsPrefix = _props.clsPrefix,
+	        simple = _props.simple,
+	        others = _objectWithoutProperties(_props, ['className', 'clsPrefix', 'simple']);
+	
+	    return _react2["default"].createElement('span', _extends({}, others, {
+	      className: (0, _classnames2["default"])(className, clsPrefix, simple && 'simple')
+	    }));
+	  };
+	
+	  return InputGroup;
+	}(_react2["default"].Component);
+	
+	/**
+	  * 将InputGroupAddon与InputGroupButton组件作为InputGroup的附属组件
+	  */
+	
+	
+	InputGroup.Addon = _beeInputGroupAddon2["default"];
+	InputGroup.Button = _InputGroupButton2["default"];
+	InputGroup.defaultProps = defaultProps;
+	exports["default"] = InputGroup;
+	module.exports = exports['default'];
+
+/***/ }),
+/* 425 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _InputGroupAddon = __webpack_require__(426);
+	
+	var _InputGroupAddon2 = _interopRequireDefault(_InputGroupAddon);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+	
+	exports["default"] = _InputGroupAddon2["default"];
+	module.exports = exports['default'];
+
+/***/ }),
+/* 426 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
+	var _classnames = __webpack_require__(5);
+	
+	var _classnames2 = _interopRequireDefault(_classnames);
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+	
+	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
+	
+	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
+	
+	var defaultProps = {
+	  clsPrefix: 'u-input-group-addon'
+	};
+	
+	var InputGroupAddon = function (_React$Component) {
+	  _inherits(InputGroupAddon, _React$Component);
+	
+	  function InputGroupAddon() {
+	    _classCallCheck(this, InputGroupAddon);
+	
+	    return _possibleConstructorReturn(this, _React$Component.apply(this, arguments));
+	  }
+	
+	  InputGroupAddon.prototype.render = function render() {
+	    var _props = this.props,
+	        className = _props.className,
+	        clsPrefix = _props.clsPrefix,
+	        others = _objectWithoutProperties(_props, ['className', 'clsPrefix']);
+	
+	    return _react2["default"].createElement('span', _extends({}, others, {
+	      className: (0, _classnames2["default"])(className, clsPrefix)
+	    }));
+	  };
+	
+	  return InputGroupAddon;
+	}(_react2["default"].Component);
+	
+	InputGroupAddon.defaultProps = defaultProps;
+	exports["default"] = InputGroupAddon;
+	module.exports = exports['default'];
+
+/***/ }),
+/* 427 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
+	var _classnames = __webpack_require__(5);
+	
+	var _classnames2 = _interopRequireDefault(_classnames);
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+	
+	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
+	
+	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
+	
+	var defaultProps = {
+	  clsPrefix: 'u-input-group-btn'
+	};
+	
+	var InputGroupButton = function (_React$Component) {
+	  _inherits(InputGroupButton, _React$Component);
+	
+	  function InputGroupButton() {
+	    _classCallCheck(this, InputGroupButton);
+	
+	    return _possibleConstructorReturn(this, _React$Component.apply(this, arguments));
+	  }
+	
+	  InputGroupButton.prototype.render = function render() {
+	    var _props = this.props,
+	        className = _props.className,
+	        clsPrefix = _props.clsPrefix,
+	        others = _objectWithoutProperties(_props, ['className', 'clsPrefix']);
+	
+	    return _react2["default"].createElement('span', _extends({}, others, {
+	      className: (0, _classnames2["default"])(className, clsPrefix)
+	    }));
+	  };
+	
+	  return InputGroupButton;
+	}(_react2["default"].Component);
+	
+	InputGroupButton.defaultProps = defaultProps;
+	exports["default"] = InputGroupButton;
+	module.exports = exports['default'];
+
+/***/ }),
+/* 428 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -38188,7 +38472,7 @@
 	module.exports = exports["default"];
 
 /***/ }),
-/* 424 */
+/* 429 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38215,8 +38499,8 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); } /**
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               *
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               * @title 拾色器
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               * @description 提供预制色板的拾色器组件
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               * @title 取色板
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               * @description 提供预制色板的取色板组件
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               *
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               */
 	
@@ -38259,7 +38543,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 425 */
+/* 430 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38332,7 +38616,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 426 */
+/* 431 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';

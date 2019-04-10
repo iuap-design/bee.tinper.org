@@ -3,8 +3,8 @@
         <% for (key in sidebar){ var title = sidebar[key]; %>
             <li class="menu-group">
                 <% if(title.children){ var child = title.children; %>
-                    <div class="menu-item menu-item-components open" >
-                        <span class="menu-item-components-text" name="<%= title.component %>">
+                    <div class="menu-item menu-item-components open" data-isComponent="<%= title.component %>">
+                        <span class="menu-item-components-text <%= title.component %>" name="<%= title.component %>">
                             <%= key %>
                         </span>
                         <% for (heard in child) { var acs = child[heard]; %>
@@ -13,11 +13,19 @@
                                 <% for (com in acs) { %>
                                     <% if(acs[com].component == active) {%>
                                         <div class="menu-item-com active" id="<%= acs[com].component %>">
-                                            <a href="./<%= acs[com].component %>" title="<%= com %>"><%= com %></a>
+                                            <% if(newComponent.indexOf(acs[com].component)!=-1) {%>
+                                                <a href="./<%= acs[com].component %>" class="doit-before" title="<%= com %>"><%= com %></a>
+                                            <%} else {%>
+                                                <a href="./<%= acs[com].component %>" title="<%= com %>"><%= com %></a>
+                                            <% } %>
                                         </div>
                                     <%} else {%>
                                         <div class="menu-item-com" id="<%= acs[com].component %>">
-                                            <a href="./<%= acs[com].component %>" title="<%= com %>"><%= com %></a>
+                                            <% if(newComponent.indexOf(acs[com].component)!=-1) {%>
+                                                <a href="./<%= acs[com].component %>" class="doit-before" title="<%= com %>"><%= com %></a>
+                                            <%} else {%>
+                                                <a href="./<%= acs[com].component %>" title="<%= com %>"><%= com %></a>
+                                            <% } %>
                                         </div>
                                     <% } %>
                                 <% } %>

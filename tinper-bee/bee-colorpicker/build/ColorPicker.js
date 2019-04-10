@@ -4,6 +4,8 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _defaultProps;
 
 var _react = require('react');
@@ -47,6 +49,10 @@ var _beeSelect = require('bee-select');
 var _beeSelect2 = _interopRequireDefault(_beeSelect);
 
 var _beeLayout = require('bee-layout');
+
+var _beeInputGroup = require('bee-input-group');
+
+var _beeInputGroup2 = _interopRequireDefault(_beeInputGroup);
 
 var _colors = require('./colors');
 
@@ -98,12 +104,29 @@ var ColorPicker = function (_Component) {
 
         var _this = _possibleConstructorReturn(this, _Component.call(this, props));
 
-        _this.handleClick = function () {
+        _this.handleClick = function (e) {
+            e.stopPropagation();
             _this.setState({ displayColorPicker: !_this.state.displayColorPicker });
         };
 
         _this.handleClose = function () {
-            _this.setState({ displayColorPicker: false });
+            var _this$cache = _this.cache,
+                selectedColor = _this$cache.selectedColor,
+                selectedScale = _this$cache.selectedScale,
+                selectedRgbValue = _this$cache.selectedRgbValue,
+                selectedHexValue = _this$cache.selectedHexValue,
+                formValue = _this$cache.formValue,
+                alpha = _this$cache.alpha;
+
+            _this.setState({
+                displayColorPicker: false,
+                selectedColor: selectedColor,
+                selectedScale: selectedScale,
+                selectedRgbValue: selectedRgbValue,
+                selectedHexValue: selectedHexValue,
+                formValue: formValue,
+                alpha: alpha
+            });
         };
 
         _this.submit = function () {
@@ -113,9 +136,10 @@ var ColorPicker = function (_Component) {
             var _this$state = _this.state,
                 selectedColor = _this$state.selectedColor,
                 selectedScale = _this$state.selectedScale,
-                selectedHexValue = _this$state.selectedHexValue;
+                selectedHexValue = _this$state.selectedHexValue,
+                alpha = _this$state.alpha;
 
-            var tempRgb = _this.colorHexToRgb(selectedHexValue);
+            var tempRgb = _this.colorHexToRgb(selectedHexValue, alpha);
             var obj = {
                 "class": selectedColor + '-' + selectedScale,
                 rgba: tempRgb,
@@ -124,6 +148,14 @@ var ColorPicker = function (_Component) {
             _this.setState({
                 formValue: selectedHexValue,
                 displayColorPicker: false
+            });
+            _this.cache = _extends(_this.cache, {
+                selectedColor: selectedColor,
+                selectedScale: selectedScale,
+                selectedRgbValue: tempRgb,
+                selectedHexValue: selectedHexValue,
+                formValue: selectedHexValue,
+                alpha: alpha
             });
             if (autoCalculate) {
                 var result = _this.calcHoverAndActive(selectedColor, selectedScale);
@@ -168,7 +200,7 @@ var ColorPicker = function (_Component) {
                 selectedScale: "600",
                 selectedRgbValue: selectedRgb,
                 selectedHexValue: selectedHex,
-                alpha: 255
+                alpha: 100
             });
         };
 
@@ -288,9 +320,17 @@ var ColorPicker = function (_Component) {
             selectedRgbValue: initRgb,
             selectedHexValue: initHex,
             formValue: initValue,
-            alpha: 255
+            alpha: 100
         };
         _this.input = {};
+        _this.cache = {
+            selectedColor: "red",
+            selectedScale: "600",
+            selectedRgbValue: initRgb,
+            selectedHexValue: initHex,
+            formValue: initValue,
+            alpha: 100
+        };
         return _this;
     }
 
@@ -305,7 +345,7 @@ var ColorPicker = function (_Component) {
     // 打开色板
 
 
-    // 关闭色板
+    // 关闭色板/点击弹框取消按钮
 
 
     // 点击弹框确定按钮
@@ -331,9 +371,7 @@ var ColorPicker = function (_Component) {
 
 
     // 把16进制颜色转换为RGB颜色
-    ColorPicker.prototype.colorHexToRgb = function colorHexToRgb(color) {
-        var alpha = this.state.alpha;
-
+    ColorPicker.prototype.colorHexToRgb = function colorHexToRgb(color, alpha) {
         var sColor = color;
         sColor = sColor.toLowerCase();
         //十六进制颜色值的正则表达式
@@ -496,7 +534,7 @@ var ColorPicker = function (_Component) {
                     _react2["default"].createElement(
                         _beeModal2["default"].Title,
                         null,
-                        'MD\u8272\u677F'
+                        '\u53D6\u8272\u677F'
                     )
                 ),
                 _react2["default"].createElement(
@@ -513,7 +551,7 @@ var ColorPicker = function (_Component) {
                         _react2["default"].createElement(
                             _beeSelect2["default"],
                             {
-                                defaultValue: 'red',
+                                defaultValue: selectedColor,
                                 style: { width: 200 },
                                 onChange: this.handleSelectChange
                             },
@@ -541,7 +579,11 @@ var ColorPicker = function (_Component) {
                                 _react2["default"].createElement(
                                     'div',
                                     { className: clsPrefix + '-panel-color-info' },
-                                    _react2["default"].createElement('div', { className: 'selected-color bg-' + selectedColor + '-' + selectedScale }),
+                                    _react2["default"].createElement(
+                                        'div',
+                                        { className: 'transparent-bg' },
+                                        _react2["default"].createElement('div', { className: 'selected-color bg-' + selectedColor + '-' + selectedScale, style: { opacity: alpha / 100 } })
+                                    ),
                                     _react2["default"].createElement(
                                         'ul',
                                         null,
@@ -586,7 +628,16 @@ var ColorPicker = function (_Component) {
                                                     null,
                                                     'Alpha'
                                                 ),
-                                                _react2["default"].createElement(_beeFormControl2["default"], { size: 'sm', value: alpha, onChange: this.handleAlphaChange })
+                                                _react2["default"].createElement(
+                                                    _beeInputGroup2["default"],
+                                                    null,
+                                                    _react2["default"].createElement(_beeFormControl2["default"], { size: 'sm', value: alpha, onChange: this.handleAlphaChange }),
+                                                    _react2["default"].createElement(
+                                                        _beeInputGroup2["default"].Addon,
+                                                        null,
+                                                        '%'
+                                                    )
+                                                )
                                             )
                                         )
                                     )

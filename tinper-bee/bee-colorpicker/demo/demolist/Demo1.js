@@ -1,7 +1,7 @@
 /**
 *
-* @title 拾色器
-* @description 提供预制色板的拾色器组件
+* @title 取色板
+* @description 提供预制色板的取色板组件
 *
 */
 import React, { Component } from 'react';

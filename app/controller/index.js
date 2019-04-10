@@ -5,8 +5,8 @@ const render = require('koa-ejs');
 const sidebar = require('../../static/sidebar.json');
 const axios = require('axios');
 const components = require('../../static/components.json');
+const newComponent = require('../../static/new.json'); //有更新的组件
 const renderer = new marked.Renderer();
-
 
 renderer.heading = function (text, level) {
   if (level > 1) {
@@ -16,11 +16,11 @@ renderer.heading = function (text, level) {
   }
 }
 
-renderer.link = function (href,title,text) {
+renderer.link = function (href, title, text) {
   var target = '';
-  if(href){
-    target="_blank";
-  }else{
+  if (href) {
+    target = "_blank";
+  } else {
     href = 'javacript:void(0);'
   }
   return `<a target="${target}" href="${href}" style="color:#E14C46" title="${text}" >${text}</a>`;
@@ -123,11 +123,11 @@ module.exports = {
         listStr +
         "</div>"
       );
-    } else if(component=='changelog'){
-        rightMenus = docsMenus[component].menus;
-        changeLog = sidebar['更新日志'].changeLog;
-        filePath = path.join(__dirname, `../../docs/${component}.md`);
-        data = await fs.readFileSync(filePath, 'utf-8');
+    } else if (component == 'changelog') {
+      rightMenus = docsMenus[component].menus;
+      changeLog = sidebar['更新日志'].changeLog;
+      filePath = path.join(__dirname, `../../docs/${component}.md`);
+      data = await fs.readFileSync(filePath, 'utf-8');
     } else {
       rightMenus = docsMenus[component].menus;
       changeLog = [];
@@ -140,6 +140,7 @@ module.exports = {
       .replace(/\<table/gi, '<div class="table-container">\n<table')
       .replace(/<\/table>/gi, "</table>\n</div>\n");
 
+    let latestVersion = sidebar['更新日志']['version'];
 
     await ctx.render('index', {
       sidebar: sidebar,
@@ -148,7 +149,9 @@ module.exports = {
       tag: tag,
       isComponent: isComponentFlag,
       rightMenus: rightMenus,
-      changeLog: changeLog
+      changeLog: changeLog,
+      newComponent: newComponent, //有更新的组件
+      latestVersion: latestVersion
     });
   }
 }

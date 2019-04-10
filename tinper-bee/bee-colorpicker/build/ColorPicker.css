@@ -2240,10 +2240,13 @@
 .u-colorpicker-panel-color-info {
   font-size: 12px;
   color: #212121; }
-  .u-colorpicker-panel-color-info .selected-color {
+  .u-colorpicker-panel-color-info .transparent-bg {
     width: 216px;
-    height: 77px;
-    border-radius: 3px; }
+    background: url("http://design.yonyoucloud.com/static/bee.tinper.org-demo/bg_alpha.svg"); }
+    .u-colorpicker-panel-color-info .transparent-bg .selected-color {
+      width: 216px;
+      height: 77px;
+      border-radius: 3px; }
   .u-colorpicker-panel-color-info .u-label {
     display: inline-block;
     min-width: 50px;
@@ -2252,14 +2255,39 @@
     color: #212121;
     font-size: 12px; }
   .u-colorpicker-panel-color-info .u-form-item {
+    display: flex;
     padding: 0;
     min-height: 26px; }
     .u-colorpicker-panel-color-info .u-form-item .u-label {
       min-width: 50px;
       display: inline; }
     .u-colorpicker-panel-color-info .u-form-item .u-form-control {
-      width: 80px;
+      width: 50px;
       min-width: auto; }
+    .u-colorpicker-panel-color-info .u-form-item .u-input-group {
+      width: 72px; }
+      .u-colorpicker-panel-color-info .u-form-item .u-input-group .u-input-group-addon {
+        padding: 5px 4px;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 1;
+        color: #555;
+        text-align: center;
+        background-color: #eee;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        width: 1%;
+        white-space: nowrap;
+        vertical-align: middle;
+        display: table-cell; }
+        .u-colorpicker-panel-color-info .u-form-item .u-input-group .u-input-group-addon:last-child {
+          border-left: 0;
+          border-top-left-radius: 0;
+          border-bottom-left-radius: 0; }
+        .u-colorpicker-panel-color-info .u-form-item .u-input-group .u-input-group-addon:first-child {
+          border-right: 0;
+          border-bottom-right-radius: 0;
+          border-top-right-radius: 0; }
 
 .u-colorpicker-modal.u-modal .u-modal-body {
   padding: 0;

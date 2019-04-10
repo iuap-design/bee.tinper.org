@@ -1,6 +1,6 @@
 const download = require('download');
 const fs = require('fs-extra');
-
+let newComponent = require('../../static/new.json'); //有更新的组件
 let components = require('../../static/components.json');
 
 
@@ -15,24 +15,36 @@ let writeDemo = (item, tag) => {
             if (!flag) {
                 download(downPath).then(data => {
                         fs.writeFileSync(filePath, data);
-                        if(fileName=='api.md'&&(data.indexOf('include')!=-1)){
-                            let reg = new RegExp(/include "([\w\W]*?)"/,'g');
-                            let reg2 = new RegExp(/"/,'g');
+                        if (fileName == 'api.md' && (data.indexOf('include') != -1)) {
+                            let reg = new RegExp(/include "([\w\W]*?)"/, 'g');
+                            let reg2 = new RegExp(/"/, 'g');
                             let dataStr = data.toString('utf-8');
                             let includes = dataStr.match(reg);
-                            if(includes){
-                                includes.forEach(item=>{
-                                    item = item.replace('include','');
-                                    item = item.replace(reg2,'').trim()
-                                    downFn(downPath.replace(fileName,item),filePath.replace(fileName,item),item)
+                            if (includes) {
+                                includes.forEach(item => {
+                                    item = item.replace('include', '');
+                                    item = item.replace(reg2, '').trim()
+                                    downFn(downPath.replace(fileName, item), filePath.replace(fileName, item), item)
                                 })
                             }
                         }
+
                         console.log(`😀写入 ${filePath} 成功 `);
+                    })
+                    .then(() => {
+                        newComponent.push(item)
+                        fs.writeJson('./static/new.json', newComponent)
+                            .then(() => {
+                                console.log('😀new.json文件写入成功!')
+                            })
+                            .catch(err => {
+                                console.log('😀new.json文件写入失败!')
+                                console.error(err)
+                            })
                     })
                     .catch(() => {
                         fs.appendFile('./static/error.txt', `请求 ${downPath} 失败 \n`);
-                        if(fileName=='api.md'){//删除没有dist/demo.js 文件的tag
+                        if (fileName == 'api.md') { //删除没有dist/demo.js 文件的tag
                             let versions = components[item].versions;
                             versions.splice(versions.indexOf(tag), 1);
                             components[item].versions = versions;

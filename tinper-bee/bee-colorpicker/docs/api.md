@@ -1,8 +1,8 @@
-# 拾色器 ColorPicker
+# 取色板 ColorPicker
 
 ## 何时使用
 
-提供预制色板的拾色器  
+提供预制色块的取色板  
 [色板链接](http://tinper.org/dist/neoui/global/color.html#)
 
 ## 如何使用

@@ -41,6 +41,7 @@
   "bee-form": "latest",
   "bee-form-control": "latest",
   "bee-icon": "latest",
+  "bee-input-group": "^2.0.2",
   "bee-label": "latest",
   "bee-modal": "latest",
   "bee-select": "latest",

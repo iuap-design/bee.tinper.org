@@ -12,6 +12,7 @@
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
+    padding-left: 40px;
 }
 
 .sidebar .menu-components .menu-group .menu-item.active {
@@ -23,6 +24,17 @@
     color: #424242;
     text-decoration: none;
     padding-left: 10px;
+}
+.sidebar .menu-components .menu-group .menu-item a.doit-before::before {
+    content: ' ';
+    width: 6px;
+    height: 6px;
+    display: inline-block;
+    border-radius: 50%;
+    background: #e14c46;
+    position: absolute;
+    top: 16px;
+    left: 55px;
 }
 
 .sidebar .menu-components .menu-group .menu-item a:hover {
@@ -44,8 +56,16 @@
     width: 100%;
     display: block;
     user-select: none;
+    padding-left: 10px;
+}
+.sidebar .menu-components .menu-group .menu-item[data-iscomponent="zj"] .menu-item-heard{
+    padding-left: 60px;
 }
 
+.sidebar .menu-components .menu-group .menu-item[data-iscomponent="zj"] .menu-item-com{
+    margin-left: -60px;
+    width: 250px;
+}
 .sidebar .menu-components .menu-item-components .menu-item-components-text:before {
     position: absolute;
     right: 0;
@@ -66,6 +86,7 @@
 
 .sidebar .menu-components .menu-item-components.open .menu-item-heard {
     display: block;
+    margin-left: -40px;
 }
 
 .sidebar .menu-components .menu-item-com,
@@ -75,7 +96,6 @@
 
 .sidebar .menu-components .menu-item-heard {
     user-select: none;
-    padding-left: 10px;
 }
 
 .sidebar .menu-components .menu-item-heard .menu-item-com {
@@ -83,6 +103,8 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    position: relative;
+    padding-left: 60px;
 }
 
 .sidebar .menu-components .menu-item-heard .menu-item-com.active {

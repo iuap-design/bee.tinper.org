@@ -26,7 +26,7 @@ body {
     width: 250px;
     display: inline-block;
     vertical-align: top;
-    padding-left: 40px;
+    /* padding-left: 40px; */
     position: fixed;
     overflow: auto;
     height: calc(100% - 65px);
@@ -194,12 +194,7 @@ body::-webkit-scrollbar-thumb:window-inactive {
 
 
 
-.mob-nav span{
-    float: right;
-    right: 31px;
-    position: fixed;
-    z-index: 999;
-}
+
 
 .mob-nav a {
     color: #424242;
@@ -236,5 +231,9 @@ body::-webkit-scrollbar-thumb:window-inactive {
 
 /* 基础组件详情页移动端导航栏 */
 .mob-nav  .uf-navmenu{
-    margin-left:90px;
+    float: right;
+    right: 3px;
+    position: fixed;
+    z-index: 999;
+    margin-right: 17px;
 }

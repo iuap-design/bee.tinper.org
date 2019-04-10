@@ -3,6 +3,7 @@
         <span class="nav-logo ">
             <a href="/">
                 <img src="//iuap-design-cdn.oss-cn-beijing.aliyuncs.com/static/tinper-bee/logo/iuapdesign.svg">
+                <span class='version'>当前 <%= latestVersion %></span>
             </a>
         </span>
         <span class="nav-split">|</span>
@@ -66,7 +67,10 @@
 </div>
 
 <div class="mob-nav">
-    <img src="//iuap-design-cdn.oss-cn-beijing.aliyuncs.com/static/tinper-bee/logo/iuapdesign.svg">
+    <a href="#">
+        <img src='//design.yonyoucloud.com/static/tinper-bee/logo/iuapdesign.svg' />
+        <span class='version'>当前 <%= latestVersion %></span>
+    </a>
     <span class="uf uf-navmenu" onclick="displayOrHide()"> 
         <ul id="itemList0">
             <li><a href="/" >首页</a></li>

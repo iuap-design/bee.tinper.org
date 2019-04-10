@@ -14,7 +14,15 @@
     margin-left: 60px;
     margin-right: 50px;
 }
+.nav .nav-left .nav-logo a{
+    color: #424242;
+}
 
+.nav .nav-left .nav-logo a .version{
+    margin-left: 10px;
+    position: relative;
+    top: 3px;
+}
 .nav .nav-left .nav-logo img {
     height: 24px;
     vertical-align: middle;
@@ -118,7 +126,14 @@
     display: inline-block;
     text-align: center;
 }
-
+.mob-nav a{
+    color: #424242;
+}
+.mob-nav a .version{
+    margin-left: 10px;
+    position: relative;
+    top: 3px;
+}
 .mob-nav img {
     display: inline-block;
     text-align: center;
