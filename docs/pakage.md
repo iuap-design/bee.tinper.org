@@ -1,8 +1,5 @@
 # babel-plugin-import-bee
 
-[![npm version](https://img.shields.io/npm/v/babel-plugin-import-bee.svg)](https://www.npmjs.com/package/babel-plugin-import-bee)
-[![NPM downloads](http://img.shields.io/npm/dt/babel-plugin-import-bee.svg?style=flat)](https://npmjs.org/package/babel-plugin-import-bee)
-
 ## 说明
 
 当你的项目只用到了部分组件，你想要更小的打包体积的时候，我们提供了按需加载的能力。
