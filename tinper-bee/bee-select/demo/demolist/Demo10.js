@@ -26,17 +26,18 @@ class Demo10 extends Component {
       <div>
         <Button onClick={this.changeOpen.bind(this)} style={{marginRight:20 + 'px'}}>change select</Button>
         <Select
-          defaultValue="lucy"
+          defaultValue="all"
           style={{ width: 200, marginRight: 6 }}
           onChange={this.changeOpen}
           open={this.state.open}
         >
-          <Option value="jack">boyuzhou111</Option>
-          <Option value="lucy">renhualiu</Option>
-          <Option value="disabled" disabled>
-            Disabled
+          <Option value="all">全部</Option>
+          <Option value="confirming">待确认</Option>
+          <Option value="executing">执行中</Option>
+          <Option value="completed" disabled>
+            已办结
           </Option>
-          <Option value="yiminghe">yuzhao</Option>
+          <Option value="termination">终止</Option>
         </Select>
       </div>
     );

@@ -12,7 +12,7 @@ class Demo1 extends Component {
     super(props);
     this.state = {
       value: "",
-      options: ["10000(博宇)", "10001(波波)", "10002(李刚)"],
+      options: ["10000", "10001", "10002"],
       placeholder: "查找关键字,请输入1",
       disabled: false
     };

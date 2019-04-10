@@ -1069,9 +1069,9 @@
     float: left;
     font-weight: 500; }
   .u-modal-confirm.u-modal .u-modal-header {
-    padding-bottom: 0; }
+    padding-bottom: 4px; }
   .u-modal-confirm.u-modal .u-modal-body {
-    padding-top: 0; }
+    padding-top: 4px; }
     .u-modal-confirm.u-modal .u-modal-body .u-modal-confirm-content {
       padding-left: 48px; }
   .u-modal-confirm-info .u-modal-title > .uf {

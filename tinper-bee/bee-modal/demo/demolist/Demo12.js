@@ -13,7 +13,7 @@ import Modal from '../../src';
 const info = function () {
     Modal.info({
         title: '提示',
-        okText: '确认',
+        okText: '知道了',
         content: (
           <div>
             <p>单据状态已更新，请在审批中心内查看。</p>

@@ -30,6 +30,9 @@ class Demo2 extends Component {
       });
     }
   };
+  handleSelectChange = value => {
+    console.log('onSelectOption',value);
+  }
   render() {
     let { value, options, placeholder, disabled } = this.state;
     return (
@@ -40,6 +43,7 @@ class Demo2 extends Component {
           options={options}
           placeholder={placeholder}
           onValueChange={value => this.onFormChange(value)}
+          onSelectOption={value => this.handleSelectChange(value)}
         />
       </div>
     );

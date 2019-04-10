@@ -1,6 +1,6 @@
 @import "../node_modules/tinper-bee-core/scss/minxin-variables";
 @import "../node_modules/tinper-bee-core/scss/minxin-mixins";
-@import "../node_modules/bee-checkbox/src/Checkbox";
+// @import "../node_modules/bee-checkbox/src/Checkbox";
 // $loading: url('./assets/img/tree-loading.gif');
 $loading:url('data:image/gif;base64,R0lGODlhEAAQAKIGAMLY8YSx5HOm4Mjc88/g9Ofw+v///wAAACH/C05FVFNDQVBFMi4wAwEAAAAh+QQFCgAGACwAAAAAEAAQAAADMGi6RbUwGjKIXCAA016PgRBElAVlG/RdLOO0X9nK61W39qvqiwz5Ls/rRqrggsdkAgAh+QQFCgAGACwCAAAABwAFAAADD2hqELAmiFBIYY4MAutdCQAh+QQFCgAGACwGAAAABwAFAAADD1hU1kaDOKMYCGAGEeYFCQAh+QQFCgAGACwKAAIABQAHAAADEFhUZjSkKdZqBQG0IELDQAIAIfkEBQoABgAsCgAGAAUABwAAAxBoVlRKgyjmlAIBqCDCzUoCACH5BAUKAAYALAYACgAHAAUAAAMPaGpFtYYMAgJgLogA610JACH5BAUKAAYALAIACgAHAAUAAAMPCAHWFiI4o1ghZZJB5i0JACH5BAUKAAYALAAABgAFAAcAAAMQCAFmIaEp1motpDQySMNFAgA7');
 
@@ -22,6 +22,7 @@ $treePrefixCls : "u-tree";
     line-height: 1;
     position: relative;
     vertical-align: middle;
+    height: 16px;
   }
   .u-tree-checkbox-checked .u-tree-checkbox-inner, .u-tree-checkbox-indeterminate .u-tree-checkbox-inner {
       // background-color: $tree-checkbox-color;
@@ -32,21 +33,22 @@ $treePrefixCls : "u-tree";
       top: 0;
       left: 0;
       display: inline-block;
-      width: 14px;
-      height: 14px;
+      width: 16px;
+      height: 16px;
       border: 1px solid $border-color-base;
       border-radius: 3px;
       background-color: #fff;
       -webkit-transition: all .3s;
       transition: all .3s;
+      box-sizing: border-box;
   }
   .u-tree-checkbox-checked .u-tree-checkbox-inner, .u-tree-checkbox-indeterminate .u-tree-checkbox-inner {
       // background-color: $tree-checkbox-color;
       // border-color: $tree-checkbox-color;
   }
   .u-tree-checkbox-disabled .u-tree-checkbox-inner {
-      border-color: $border-color-base;
-      background-color: #f3f3f3;
+      border-color: #dfe1e6;
+      background-color: #fff;
   }
   .u-tree-checkbox-indeterminate .u-tree-checkbox-inner:after {
       content: ' ';
@@ -62,12 +64,12 @@ $treePrefixCls : "u-tree";
   .u-tree-checkbox-disabled.u-tree-checkbox-checked .u-tree-checkbox-inner:after {
       -webkit-animation-name: none;
       animation-name: none;
-      border-color: #ccc;
+      border-color: #c1c7d0;
   }
   .u-tree-checkbox-disabled .u-tree-checkbox-inner:after {
       -webkit-animation-name: none;
       animation-name: none;
-      border-color: #f3f3f3;
+      border-color: #c1c7d0;
   }
   .u-tree-checkbox-checked .u-tree-checkbox-inner:after {
       -webkit-transform: rotate(45deg) scale(1);
@@ -150,7 +152,7 @@ $treePrefixCls : "u-tree";
   }
   li a {
     display: inline-block;
-    padding: 2px 5px;
+    padding: 3px 4px;
     border-radius: 2px;
     margin: 0;
     cursor: pointer;
@@ -180,9 +182,9 @@ $treePrefixCls : "u-tree";
   li span.u-tree-switcher,
   li span.u-tree-iconEle {
     margin: 0;
-    width: 16px;
-    height: 16px;
-    line-height: 16px;
+    width: 22px;
+    height: 22px;
+    line-height: 22px;
     display: inline-block;
     vertical-align: middle;
     border: 0 none;
@@ -241,6 +243,7 @@ $treePrefixCls : "u-tree";
     top: 0;
     // right: 4px;
     right: 0px;
+    left: 0;
     color: #666;
     -webkit-transition: -webkit-transform .3s ease;
     transition: -webkit-transform .3s ease;
