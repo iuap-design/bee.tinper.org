@@ -36,7 +36,7 @@
   color: #212121;
   background-color: #fff;
   border-color: rgb(165, 173, 186);
-  border-right: 0; }
+  z-index: 10; }
   .u-radio-group .u-radio-button:first-child {
     margin-left: 0;
     border-radius: 3px 0 0 3px; }
@@ -76,6 +76,7 @@
     .u-radio-group .u-radio-button.is-checked.disabled .u-radio-button-label {
       color: #fff; }
   .u-radio-group .u-radio-button.disabled {
+    z-index: 1;
     border-color: #DFE1E6;
     background-color: #F7F9FB;
     cursor: not-allowed;
@@ -88,12 +89,15 @@
       color: #909090;
       box-shadow: none;
       cursor: not-allowed; }
-  .u-radio-group .u-radio-button:hover, .u-radio-group .u-radio-button:active, .u-radio-group .u-radio-button.active, .u-radio-group .u-radio-button.is-checked {
-    background: rgb(235, 236, 240);
-    z-index: 2; }
+  .u-radio-group .u-radio-button:hover, .u-radio-group .u-radio-button.is-checked {
+    background: rgb(235, 236, 240); }
   .u-radio-group .u-radio-button:focus, .u-radio-group .u-radio-button.focus, .u-radio-group .u-radio-button:active, .u-radio-group .u-radio-button.active, .u-radio-group .u-radio-button.is-checked {
+    border-color: rgb(245, 60, 50);
     background: rgb(245, 60, 50);
     color: #fff; }
+
+.u-radio-group .u-radio-button + .u-radio-button, .u-radio-group .u-radio-button + .u-radio-group, .u-radio-group .u-radio-group + .u-radio-button, .u-radio-group .u-radio-group + .u-radio-group {
+  margin-left: -1px; }
 
 .u-radio {
   position: relative;

@@ -16,6 +16,10 @@ var _react = require("react");
 
 var _react2 = _interopRequireDefault(_react);
 
+var _reactDom = require("react-dom");
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
 var _Picker = require("./rc-calendar/Picker");
 
 var _Picker2 = _interopRequireDefault(_Picker);
@@ -105,7 +109,7 @@ var MonthPicker = function (_Component) {
             });
             var v = self.state.value;
             self.props.onOpenChange && self.props.onOpenChange(false, v, v && v.format(self.props.format) || '');
-            ReactDOM.findDOMNode(self.outInput).focus(); // 按esc时候焦点回到input输入框
+            _reactDom2["default"].findDOMNode(self.outInput).focus(); // 按esc时候焦点回到input输入框
           }
         };
       }

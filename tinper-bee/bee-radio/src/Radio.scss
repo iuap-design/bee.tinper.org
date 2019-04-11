@@ -43,7 +43,7 @@ $radio-icon-checked-height: 6px;
 	    color: $font-color-base;
 	    background-color: #fff;
 		border-color: $border-color-base;
-		border-right: 0;
+		z-index: 10;
 		&:first-child {
 		    margin-left: 0;
 		    border-radius: $border-radius-base 0 0 $border-radius-base;
@@ -96,6 +96,7 @@ $radio-icon-checked-height: 6px;
 			}
 		}
 		&.disabled {
+			z-index: 1;
 			border-color: #DFE1E6;
 		    background-color: #F7F9FB;
 		    cursor: not-allowed;
@@ -111,21 +112,20 @@ $radio-icon-checked-height: 6px;
 				cursor: not-allowed;
 			}
 	    }
-		&:hover, &:active, &.active, &.is-checked {
-		    // color: $radio-checked-color;
+		&:hover, &.is-checked {
 		    background: $hover-bg-color-base;
-		    z-index: 2;
 		}
 		&:focus, &.focus, &:active, &.active, &.is-checked{
+			border-color: $radio-checked-color;
 			background: $radio-checked-color;
 			color: #fff;
 		}
 	}
 }
 
-// .u-radio-group .u-radio-button+.u-radio-button, .u-radio-group .u-radio-button+.u-radio-group, .u-radio-group .u-radio-group+.u-radio-button, .u-radio-group .u-radio-group+.u-radio-group {
-//     margin-left: -1px;
-// }
+.u-radio-group .u-radio-button+.u-radio-button, .u-radio-group .u-radio-button+.u-radio-group, .u-radio-group .u-radio-group+.u-radio-button, .u-radio-group .u-radio-group+.u-radio-group {
+    margin-left: -1px;
+}
 
 .u-radio {
 	position: relative;

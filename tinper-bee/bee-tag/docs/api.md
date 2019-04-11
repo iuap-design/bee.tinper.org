@@ -30,6 +30,7 @@ import Tag/build/Tag.css;
 |deleted|是否可以删除(`deleted` 或 `true` `false`)|boolean|false|
 |onDelete|删除时的回调|(e) => void|-|
 |select|是否可以选择(`select` 或 `true` `false`)|boolean|false|
+
 ## 注意事项
 
 暂无

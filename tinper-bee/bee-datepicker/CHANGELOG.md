@@ -1,15 +1,25 @@
+<a name="2.0.21"></a>
+## [2.0.21](https://github.com/tinper-bee/bee-datepicker/compare/v2.0.20...v2.0.21) (2019-04-11)
+
+
+### Bug Fixes
+
+* **bee-datepicker:** reactDOM未引入bug ([9654dfd](https://github.com/tinper-bee/bee-datepicker/commit/9654dfd))
+
+
+
 <a name="2.0.20"></a>
 ## [2.0.20](https://github.com/tinper-bee/bee-datepicker/compare/v2.0.19...v2.0.20) (2019-04-03)
-
-
-
-<a name="2.0.19"></a>
-## [2.0.19](https://github.com/tinper-bee/bee-datepicker/compare/v2.0.18...v2.0.19) (2019-04-03)
 
 
 ### Features
 
 * **bee-datepicker:** yearpicker 组件 快捷键 ([d85d125](https://github.com/tinper-bee/bee-datepicker/commit/d85d125))
+
+
+
+<a name="2.0.19"></a>
+## [2.0.19](https://github.com/tinper-bee/bee-datepicker/compare/v2.0.18...v2.0.19) (2019-03-29)
 
 
 
