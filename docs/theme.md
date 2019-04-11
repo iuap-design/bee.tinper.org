@@ -5,6 +5,9 @@
     .doc-content{
         margin-right:0!important
     }
+    .footer-out{
+        display:none
+    } 
 </style>
 
 # 可视化主题定制
@@ -17,8 +20,3 @@
 在项目开始或者项目结束的时候，都可以使用我们的主题定制，为其更换基础组件的主题风格。
 
 ## 自定义主题
-
-<div style="height:1000px;overflow:auto">
-    <iframe src="https://theme-dev.yonyoucloud.com/#/" id='theme-iframe' frameborder='0'           width='100%' height='1000px'>
-    </iframe>
-</div>
