@@ -36,17 +36,21 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 var propTypes = {
     value: _propTypes2["default"].any,
+    show: _propTypes2["default"].bool,
     options: _propTypes2["default"].array,
-    onChange: _propTypes2["default"].func
+    onChange: _propTypes2["default"].func,
+    onSelectOption: _propTypes2["default"].func
 };
 var defaultProps = {
     value: "",
+    show: false,
     options: [],
     clsPrefix: 'u-autocomplete',
     onBlur: function onBlur() {},
     onKeyDown: function onKeyDown() {},
     onValueChange: function onValueChange() {},
-    onChange: function onChange() {}
+    onChange: function onChange() {},
+    onSelectOption: function onSelectOption() {}
 };
 
 var AutoComplete = function (_React$Component) {
@@ -58,7 +62,7 @@ var AutoComplete = function (_React$Component) {
         var _this = _possibleConstructorReturn(this, _React$Component.call(this, props));
 
         _this.state = {
-            show: false, //控制自动匹配列表的显示与隐藏
+            show: props.show || false, //控制自动匹配列表的显示与隐藏
             displayValue: '',
             activeItemIndex: -1,
             options: props.options,
@@ -133,6 +137,7 @@ var AutoComplete = function (_React$Component) {
         });
         this.props.onValueChange(value);
         this.props.onChange(value);
+        this.props.onSelectOption(value);
     };
 
     AutoComplete.prototype.handleKeyDown = function handleKeyDown(e) {

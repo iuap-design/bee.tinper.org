@@ -24,9 +24,9 @@
     display: none; }
 
 .u-form-control[disabled] {
-  background: #F7F9FB;
-  border-color: #DFE1E6;
-  color: #909090;
+  background: #eee;
+  border-color: #e0e0e0;
+  color: #BDBDBD;
   cursor: not-allowed; }
 
 .u-form-control.lg {
@@ -96,8 +96,7 @@
       .u-autocomplete-options > li:hover {
         cursor: pointer; }
       .u-autocomplete-options > li.active {
-        background-color: rgb(235, 236, 240);
-        color: rgb(245, 60, 50); }
+        background-color: rgb(235, 236, 240); }
   .u-autocomplete .u-form-control {
     height: 32px;
     border-color: rgb(165, 173, 186); }

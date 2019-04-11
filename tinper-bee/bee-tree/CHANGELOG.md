@@ -1,15 +1,15 @@
+<a name="2.0.9"></a>
+## [2.0.9](https://github.com/tinper-bee/bee-tree/compare/v2.0.8...v2.0.9) (2019-04-10)
+
+
+
 <a name="2.0.8"></a>
-## [2.0.8](https://github.com/tinper-bee/bee-tree/compare/v2.0.7...v2.0.8) (2019-04-09)
+## [2.0.8](https://github.com/tinper-bee/bee-tree/compare/v2.0.5...v2.0.8) (2019-04-09)
 
 
 
-<a name="2.0.7"></a>
-## [2.0.7](https://github.com/tinper-bee/bee-tree/compare/v2.0.6...v2.0.7) (2019-03-25)
-
-
-
-<a name="2.0.6"></a>
-## [2.0.6](https://github.com/tinper-bee/bee-tree/compare/v2.0.2...v2.0.6) (2019-03-19)
+<a name="2.0.5"></a>
+## [2.0.5](https://github.com/tinper-bee/bee-tree/compare/v2.0.4...v2.0.5) (2019-03-08)
 
 
 ### Bug Fixes
@@ -18,18 +18,18 @@
 
 
 
+<a name="2.0.4"></a>
+## [2.0.4](https://github.com/tinper-bee/bee-tree/compare/v2.0.3...v2.0.4) (2019-03-07)
+
+
+
+<a name="2.0.3"></a>
+## [2.0.3](https://github.com/tinper-bee/bee-tree/compare/v2.0.2...v2.0.3) (2019-03-06)
+
+
+
 <a name="2.0.2"></a>
-## [2.0.2](https://github.com/tinper-bee/bee-tree/compare/v2.0.1...v2.0.2) (2019-03-02)
-
-
-
-<a name="2.0.1"></a>
-## [2.0.1](https://github.com/tinper-bee/bee-tree/compare/v2.0.0...v2.0.1) (2019-02-28)
-
-
-
-<a name="2.0.0"></a>
-# [2.0.0](https://github.com/tinper-bee/bee-tree/compare/v1.1.16...v2.0.0) (2019-02-16)
+## [2.0.2](https://github.com/tinper-bee/bee-tree/compare/v1.1.16...v2.0.2) (2019-03-02)
 
 
 
@@ -179,34 +179,14 @@
 
 
 <a name="1.0.5"></a>
-## [1.0.5](https://github.com/tinper-bee/bee-tree/compare/v11.0.3...v1.0.5) (2018-01-25)
-
-
-### Bug Fixes
-
-* children 为0时不显示图标 ([5481ec6](https://github.com/tinper-bee/bee-tree/commit/5481ec6))
-
-
-### Features
-
-* 含有[3~[B[3~heckStrictly复选框tree ([932b9fa](https://github.com/tinper-bee/bee-tree/commit/932b9fa))
-* **子节节点children为空数组时，不显示扩展图图标:** 子节点children属性为空数组时，不显示扩展图标 ([3536f71](https://github.com/tinper-bee/bee-tree/commit/3536f71))
-
-
-### BREAKING CHANGES
-
-* 示例文档描述优化
-
-
-
-<a name="11.0.3"></a>
-## [11.0.3](https://github.com/tinper-bee/bee-tree/compare/v1.0.3...v11.0.3) (2018-01-24)
+## [1.0.5](https://github.com/tinper-bee/bee-tree/compare/v1.0.3...v1.0.5) (2018-01-25)
 
 
 ### Bug Fixes
 
 * **解决配置冲突:** 解决配置冲突 ([fb15e37](https://github.com/tinper-bee/bee-tree/commit/fb15e37))
 * checkStrictly ([5fa28b2](https://github.com/tinper-bee/bee-tree/commit/5fa28b2))
+* children 为0时不显示图标 ([5481ec6](https://github.com/tinper-bee/bee-tree/commit/5481ec6))
 * 修改示例 ([6770417](https://github.com/tinper-bee/bee-tree/commit/6770417))
 
 
@@ -228,8 +208,15 @@
 * **文档补充:** 文档补充 ([c123353](https://github.com/tinper-bee/bee-tree/commit/c123353))
 
 
+### Features
+
+* 含有[3~[B[3~heckStrictly复选框tree ([932b9fa](https://github.com/tinper-bee/bee-tree/commit/932b9fa))
+* **子节节点children为空数组时，不显示扩展图图标:** 子节点children属性为空数组时，不显示扩展图标 ([3536f71](https://github.com/tinper-bee/bee-tree/commit/3536f71))
+
+
 ### BREAKING CHANGES
 
+* 示例文档描述优化
 * **依赖修改、object-assign修改:** 依赖修改、object-assign修改
 * **依赖组件修改:** y
 * **组件依赖指向具体版本修改:** 组件依赖指向具体版本修改
