@@ -4,6 +4,7 @@ const path = require('path');
 const render = require('koa-ejs');
 const sidebar = require('../../static/sidebar.json');
 const axios = require('axios');
+const fetch = require('node-fetch');
 const components = require('../../static/components.json');
 const newComponent = require('../../static/new.json'); //有更新的组件
 const renderer = new marked.Renderer();
@@ -58,6 +59,20 @@ Object.keys(sidebar).forEach(item => {
     docsMenus[sidebar[item].component].menus = sidebar[item].menus;
   }
 })
+
+async function getTinperThemeServer(url){
+  return new Promise((resolve, reject)=> {
+      fetch('http://tinper-bee-theme-server.online.app.yyuap.com/server/'+url)
+      .then(res => res.json())
+      .then(json => {
+        resolve(json);
+      },
+      err => {
+        console.log(err);
+        reject(null);
+      });
+  })
+}
 
 
 
@@ -162,5 +177,11 @@ module.exports = {
       newComponent: newComponent, //有更新的组件
       latestVersion: latestVersion
     });
+  },
+  cliBuildScss: async(ctx, next) => {
+    ctx.response.body = await getTinperThemeServer("package");
+  },
+  getVersion: async(ctx, next) => {
+    ctx.response.body = await getTinperThemeServer("version");
   }
 }
