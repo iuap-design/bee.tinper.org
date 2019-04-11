@@ -5,6 +5,7 @@
 import YearPanel from "./rc-calendar/year/YearPanel";
 import { KeyCode } from 'tinper-bee-core';
 import React, { Component } from "react";
+import ReactDOM from 'react-dom';
 import Picker from "./rc-calendar/Picker";
 import FormControl from "bee-form-control";
 import InputGroup from 'bee-input-group';

@@ -40,7 +40,7 @@ class Demo4 extends React.Component {
       const tagChild = tags.map(this.forMap);
       return (
         <div className="demoPadding">
-              {tagChild}
+          {tagChild}
         </div>
       );
     }
