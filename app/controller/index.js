@@ -81,6 +81,8 @@ async function getTinperThemeServer(url){
 // 官网react版本
 module.exports = {
   index: async (ctx, next) => {
+    let removeFeature = ['bee-complex-grid','bee-city-select']
+
     let tag = ctx.url.split('tag=')[1]; //版本号
     let component = ctx.params.component || 'summarize';
     let data = '';
@@ -127,6 +129,11 @@ module.exports = {
         data.match(/#? \w+/g) && data.match(/#? \w+/g).length ?
         data.match(/#? \w+/g)[0] :
         "";
+
+      if(removeFeature.indexOf(component)!=-1){
+        str=`, 此组件一周后将转移到应用组件，[请移步](https://design.yonyoucloud.com/tinper-acs/${component.replace('bee-','ac-')})`
+      }
+
       data = data.replace(
         /#? \w+/,
         str +
