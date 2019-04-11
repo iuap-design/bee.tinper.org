@@ -87,6 +87,7 @@ body::-webkit-scrollbar-thumb:window-inactive {
     box-shadow:0px 0px 5px #BDBDBD;
     text-align:center;
     line-height:37px;
+    font-size: 14px;
 }
 .mask{
     display:none;

@@ -1,1 +1,18 @@
-["bee-modal","bee-select","bee-tree","bee-colorpicker","bee-autocomplete"]
+[
+    "bee-anchor",
+    "bee-table",
+    "bee-datepicker",
+    "bee-search-panel",
+    "bee-tag",
+    "bee-dnd",
+    "bee-tree",
+    "bee-colorpicker",
+    "bee-pagination",
+    "bee-tooltip",
+    "bee-button",
+    "bee-loading",
+    "bee-cascader",
+    "bee-menus",
+    "bee-checkbox",
+    "bee-form"
+]

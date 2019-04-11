@@ -46,21 +46,8 @@
 
 - [表格参照参考链接](https://design.yonyoucloud.com/tinper-acs/ref-multiple-table)
 
-- [树穿梭参照参考链接](https://design.yonyoucloud.com/tinper-acs/ref-tree-transfer)
-
 - [树表参照参考链接](https://design.yonyoucloud.com/tinper-acs/ref-tree-table)
 
-- [combobox参照参考链接](https://design.yonyoucloud.com/tinper-acs/ref-combobox)
-
-- [行内搜索参照参考链接](https://design.yonyoucloud.com/tinper-acs/ref-multiple-table-walsin)
-
-![](http://iuap-design-cdn.oss-cn-beijing.aliyuncs.com/static/tinper-bee/images/project/7-1.png)
-
-![](http://iuap-design-cdn.oss-cn-beijing.aliyuncs.com/static/tinper-bee/images/project/7-2.png)
-
-![](http://iuap-design-cdn.oss-cn-beijing.aliyuncs.com/static/tinper-bee/images/project/7-3.png)
-
-![](http://iuap-design-cdn.oss-cn-beijing.aliyuncs.com/static/tinper-bee/images/project/7-4.png)
 
 ## 8、附件管理
 
