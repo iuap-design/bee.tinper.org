@@ -131,7 +131,7 @@ module.exports = {
         "";
 
       if(removeFeature.indexOf(component)!=-1){
-        str=`, 此组件一周后将转移到应用组件，[请移步](https://design.yonyoucloud.com/tinper-acs/${component.replace('bee-','ac-')})`
+        str=`（一周后将转移到应用组件处展示，[请点击](https://design.yonyoucloud.com/tinper-acs/${component.replace('bee-','ac-')})）`
       }
 
       data = data.replace(
