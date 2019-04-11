@@ -64,8 +64,8 @@ let getApiTitle = (component,twoTitle)=>{
         })
     }
     twoTitle["API"].children = apiTitles;
-    components[component].menus = twoTitle;
-    fs.writeJson('./static/components.json', components)
+    componentsSource[component].menus = twoTitle;
+    fs.writeJson('./static/components.json', componentsSource)
     .then(() => {
         console.log(`😀json文件写入成功! 写入了 ${component} 的 API`);
     })
