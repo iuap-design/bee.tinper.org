@@ -155,6 +155,8 @@ module.exports = {
       .replace(/\<table/gi, '<div class="table-container">\n<table')
       .replace(/<\/table>/gi, "</table>\n</div>\n");
 
+
+      
     let latestVersion = sidebar['更新日志']['version'];
 
     await ctx.render('index', {
