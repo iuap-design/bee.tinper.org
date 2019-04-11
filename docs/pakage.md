@@ -11,9 +11,6 @@ import { Button } from 'tinper-bee';        // 这样会把整个组件库全部
 import Button from 'tinper-bee/lib/Button'; // 单独使用组件，按需使用
 ```
 
-**注意：插件目前是不支持vendor，CommonChunk插件和本插件不能同时使用，否则会出现vendor过大重复的问题，同时也不适合多页面程序，会导致构建体积过大重复的问题，切记。**
-
-
 ## 安装与配置
 
 通过`npm`下载安装插件
