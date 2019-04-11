@@ -147,7 +147,7 @@ body::-webkit-scrollbar-thumb:window-inactive {
         top:0;
         height:100%;
         left:-250px;
-        z-index:2000;
+        z-index:2019;
     }
     .content{
         width: 100%;
