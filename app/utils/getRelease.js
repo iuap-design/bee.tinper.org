@@ -8,7 +8,7 @@ let sidebar = require('../../static/sidebar.json');
 
 
 const auth = {
-    token: 'cd961f2af44f382bad2610e572f5ae3657b9b6ea',
+    token: '',
     user: 'liushaozhen'
 }
 
@@ -58,7 +58,8 @@ gh.list(auth, 'iuap-design', 'tinper-bee', (err,list)=>{
         console.log(err);
     } else {
         let changesArray = [];
-        let menus = {};
+        let menus = {};   
+        let latestVersion = list[0].tag_name; 
         list.forEach(item => {
             let change = {
                 published_at: moment(item.published_at).format('YYYY-MM-DD'),
@@ -72,6 +73,8 @@ gh.list(auth, 'iuap-design', 'tinper-bee', (err,list)=>{
         });
         sidebar['更新日志'].changeLog = changesArray;
         sidebar['更新日志'].menus = menus;
+        sidebar['更新日志'].version = latestVersion;
+        
         fs.writeJson('./static/sidebar.json', sidebar)
             .then(() => {
                 console.log(`😀json文件写入成功! 写入了 更新日志 的 changelog`);

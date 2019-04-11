@@ -23,6 +23,7 @@ class ModalTitle extends React.Component {
 
     const classes = {};
     classes[`${clsPrefix}`] = true;
+    classes['clearfix'] = true;
 
     return (
       <Component

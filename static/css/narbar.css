@@ -11,10 +11,16 @@
 
 .nav .nav-left .nav-logo {
     display: inline-block;
-    margin-left: 60px;
-    margin-right: 50px;
+}
+.nav .nav-left .nav-logo a{
+    color: #424242;
 }
 
+.nav .nav-left .nav-logo a .version{
+    margin-left: 10px;
+    position: relative;
+    top: 3px;
+}
 .nav .nav-left .nav-logo img {
     height: 24px;
     vertical-align: middle;
@@ -33,7 +39,7 @@
 
 .nav .nav-left .nav-split {
     color: #ccc;
-    margin: 0 20px;
+    margin: 0 15px;
 }
 
 .nav .nav-left .nav-search {
@@ -118,7 +124,14 @@
     display: inline-block;
     text-align: center;
 }
-
+.mob-nav a{
+    color: #424242;
+}
+.mob-nav a .version{
+    margin-left: 10px;
+    position: relative;
+    top: 3px;
+}
 .mob-nav img {
     display: inline-block;
     text-align: center;
@@ -257,7 +270,7 @@ input::-webkit-input-placeholder {
     cursor: not-allowed;
 }
 #navbar .nav .nav-left .nav-logo{
-    margin-right: 50px;
+    margin-left: 30px;
 }
 #selectList.select-list{
     display: none;

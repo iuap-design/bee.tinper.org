@@ -3,6 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.destroyFns = undefined;
 
 var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
 
@@ -47,6 +48,10 @@ var _isOverflowing = require('bee-overlay/build/utils/isOverflowing');
 var _isOverflowing2 = _interopRequireDefault(_isOverflowing);
 
 var _tinperBeeCore = require('tinper-bee-core');
+
+var _beeDnd = require('bee-dnd');
+
+var _beeDnd2 = _interopRequireDefault(_beeDnd);
 
 var _beeTransition = require('bee-transition');
 
@@ -147,14 +152,38 @@ var propTypes = _extends({}, _Modal2["default"].propTypes, _ModalDialog2["defaul
   onExited: _propTypes2["default"].func,
 
   containerClassName: _propTypes2["default"].string
-}, _defineProperty(_extends2, 'containerClassName', _propTypes2["default"].string), _defineProperty(_extends2, 'container', _Modal2["default"].propTypes.container), _defineProperty(_extends2, 'size', _propTypes2["default"].oneOf(["sm", "lg", "xlg", ""])), _defineProperty(_extends2, 'width', _propTypes2["default"].oneOfType([_propTypes2["default"].number, _propTypes2["default"].string])), _extends2));
+}, _defineProperty(_extends2, 'containerClassName', _propTypes2["default"].string), _defineProperty(_extends2, 'container', _Modal2["default"].propTypes.container), _defineProperty(_extends2, 'size', _propTypes2["default"].oneOf(["sm", "lg", "xlg", ""])), _defineProperty(_extends2, 'width', _propTypes2["default"].oneOfType([_propTypes2["default"].number, _propTypes2["default"].string])), _defineProperty(_extends2, 'draggable', _propTypes2["default"].bool), _extends2));
 
 var defaultProps = _extends({}, _Modal2["default"].defaultProps, {
   backdropClosable: true,
   animation: true,
   dialogComponentClass: _ModalDialog2["default"],
+  draggable: false,
   clsPrefix: 'u-modal'
 });
+
+var ModalFuncProps = {
+  prefixCls: _propTypes2["default"].string,
+  className: _propTypes2["default"].string,
+  show: _propTypes2["default"].bool,
+  title: _react2["default"].ReactNode,
+  content: _react2["default"].ReactNode,
+  onOk: _propTypes2["default"].func,
+  onCancel: _propTypes2["default"].func,
+  width: _propTypes2["default"].oneOfType([_propTypes2["default"].number, _propTypes2["default"].string]),
+  okText: _propTypes2["default"].string,
+  okType: _propTypes2["default"].string,
+  cancelText: _propTypes2["default"].string,
+  icon: _react2["default"].ReactNode,
+  backdrop: _propTypes2["default"].oneOf(['static', true, false])
+};
+
+var ModalFunc = function ModalFunc(props) {
+  destroy = function destroy() {};
+  update = function update(newConfig) {};
+};
+
+var destroyFns = exports.destroyFns = [];
 
 var childContextTypes = {
   $u_modal: _propTypes2["default"].shape({
@@ -257,7 +286,8 @@ var Modal = function (_React$Component) {
         onExited = _props.onExited,
         backdropClassName = _props.backdropClassName,
         containerClassName = _props.containerClassName,
-        props = _objectWithoutProperties(_props, ['backdrop', 'backdropClosable', 'animation', 'show', 'dialogComponentClass', 'className', 'clsPrefix', 'style', 'size', 'width', 'children', 'onEntering', 'onExited', 'backdropClassName', 'containerClassName']);
+        draggable = _props.draggable,
+        props = _objectWithoutProperties(_props, ['backdrop', 'backdropClosable', 'animation', 'show', 'dialogComponentClass', 'className', 'clsPrefix', 'style', 'size', 'width', 'children', 'onEntering', 'onExited', 'backdropClassName', 'containerClassName', 'draggable']);
 
     var _splitComponent = (0, _tinperBeeCore.splitComponent)(props, _Modal2["default"]),
         _splitComponent2 = _slicedToArray(_splitComponent, 2),
@@ -296,7 +326,8 @@ var Modal = function (_React$Component) {
           style: styleRes,
           className: (0, _classnames2["default"])(className, inClassName, backdropClassName),
           onClick: backdrop === true && !!backdropClosable ? this.handleDialogClick : null,
-          size: size
+          size: size,
+          draggable: draggable
         }),
         children
       )
@@ -305,6 +336,17 @@ var Modal = function (_React$Component) {
 
   return Modal;
 }(_react2["default"].Component);
+
+Modal.info = ModalFunc;
+Modal.success = ModalFunc;
+Modal.error = ModalFunc;
+Modal.warn = ModalFunc;
+Modal.warning = ModalFunc;
+Modal.confirm = ModalFunc;
+
+Modal.destroyAll = function () {
+  return;
+};
 
 Modal.propTypes = propTypes;
 Modal.defaultProps = defaultProps;
@@ -321,4 +363,3 @@ Modal.TRANSITION_DURATION = 200000;
 Modal.BACKDROP_TRANSITION_DURATION = 10000;
 
 exports["default"] = Modal;
-module.exports = exports['default'];

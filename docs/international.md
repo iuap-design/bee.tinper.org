@@ -1,45 +1,26 @@
 # 国际化
 
-## 组件库多语设置
+国际化解决方案，包含了多语言（内容多语和数据多语）、多时区、多币种、多语言录入、国际化手机号录入、多语翻译平台、本地化等相关内容。
 
-tinper-bee组件库提供了 `Locale` 组件来修改组件内写死的文字的语言。使用 `Locale` 组件将你的组件包裹起来，并将语言包传给 `Locale` 组件的 `locale` 属性，即可实现组件库多语。目前组件库提供两种语言包，中文 `tinper-bee/locale/zh_CN.js` 英文 `tinper-bee/locale/en_US.js`。
-示例代码如下：
+## 概述：组件库支持的多语言能力
 
-```
-import React, {Component} from 'react';
-import PropTypes from 'prop-types';
-import ReactDOM from 'react-dom';
-import { Locale } from 'tinper-bee';
-import zhCn from 'tinper-bee/locale/zh_CN.js';
+- 组件库的多语工具组件：[bee-locale](https://design.yonyoucloud.com/tinper-bee/bee-locale)
 
-class App extends Component {
-    render() {
+- 多语言录入组件：[ac-input-locale](https://design.yonyoucloud.com/tinper-acs/ac-input-locale)
 
-        return (
-            <div>
-                我是App
-            </div>
-        )
-    }
-}
+- 国际化手机号录入组件：[ac-mobile-locale](https://design.yonyoucloud.com/tinper-acs/ac-mobile-locale)
+
+- 项目级批量多语翻译工具：[lanbuild](https://www.npmjs.com/package/lanbuild)
 
 
-ReactDOM.render( (
-        <Locale locale={zhCn}>
-            <App />
-        </Locale>
-    )
-}
+## 多语言切换和多语言构建
 
-```
-
-
-## 项目国际化 方案一
-
-[示例](https://github.com/tinper-bee/bee-international-intl)
+### 多语言切换，以及批量替换工具
 
 对于项目的多语设置，我们推荐使用[react-intl](https://github.com/yahoo/react-intl)。
 简要说明如下：假设项目的入口为 App 组件，需要根据cookie判断语言
+
+[示例](https://github.com/tinper-bee/bee-international-intl)
 
 1、配置语言包，`en_US.json`,`zh_CN.json`
 
@@ -154,8 +135,22 @@ class App extends Component {
 <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
 ```
 
-## 项目国际化 方案二
 
-[示例](https://github.com/tinper-bee/bee-international-lanbuild)
+### 多语言构建
 
-使用 [lanbuild](https://www.npmjs.com/package/lanbuild) 组件，产出多种语言版本代码。 目前只支持，中文，英文，繁体中文。 后续支持多种语言以及简化配置，开发正在努力中。。。
+指通过工具将一份代码翻译成多份静态资源，如：webpack-plugin-i18n，以及自研的 [lanbuild](https://www.npmjs.com/package/lanbuild) 工具。
+
+[lanbuild 示例](https://github.com/tinper-bee/bee-international-lanbuild)
+使用 lanbuild 组件产出多种语言版本代码。 目前只支持，中文，英文，繁体中文。 后续支持多种语言以及简化配置，开发正在努力中。。。
+
+
+## 多语文件包 json格式示例
+
+```
+{
+    "Demo.welcome":"welcome",
+    "Demo.showTime":"The following is the show time.",
+    "Demo.value":"Please enter content"
+}
+
+```

@@ -4,9 +4,10 @@ const path = require('path');
 const render = require('koa-ejs');
 const sidebar = require('../../static/sidebar.json');
 const axios = require('axios');
+const fetch = require('node-fetch');
 const components = require('../../static/components.json');
+const newComponent = require('../../static/new.json'); //有更新的组件
 const renderer = new marked.Renderer();
-
 
 renderer.heading = function (text, level) {
   if (level > 1) {
@@ -16,11 +17,11 @@ renderer.heading = function (text, level) {
   }
 }
 
-renderer.link = function (href,title,text) {
+renderer.link = function (href, title, text) {
   var target = '';
-  if(href){
-    target="_blank";
-  }else{
+  if (href) {
+    target = "_blank";
+  } else {
     href = 'javacript:void(0);'
   }
   return `<a target="${target}" href="${href}" style="color:#E14C46" title="${text}" >${text}</a>`;
@@ -59,6 +60,20 @@ Object.keys(sidebar).forEach(item => {
   }
 })
 
+async function getTinperThemeServer(url){
+  return new Promise((resolve, reject)=> {
+      fetch('http://tinper-bee-theme-server.online.app.yyuap.com/server/'+url)
+      .then(res => res.json())
+      .then(json => {
+        resolve(json);
+      },
+      err => {
+        console.log(err);
+        reject(null);
+      });
+  })
+}
+
 
 
 //定义变量提取
@@ -66,6 +81,8 @@ Object.keys(sidebar).forEach(item => {
 // 官网react版本
 module.exports = {
   index: async (ctx, next) => {
+    let removeFeature = ['bee-complex-grid','bee-city-select']
+
     let tag = ctx.url.split('tag=')[1]; //版本号
     let component = ctx.params.component || 'summarize';
     let data = '';
@@ -112,6 +129,11 @@ module.exports = {
         data.match(/#? \w+/g) && data.match(/#? \w+/g).length ?
         data.match(/#? \w+/g)[0] :
         "";
+
+      if(removeFeature.indexOf(component)!=-1){
+        str=`（一周后将转移到应用组件处展示，[请点击](https://design.yonyoucloud.com/tinper-acs/${component.replace('bee-','ac-')})）`
+      }
+
       data = data.replace(
         /#? \w+/,
         str +
@@ -123,11 +145,11 @@ module.exports = {
         listStr +
         "</div>"
       );
-    } else if(component=='changelog'){
-        rightMenus = docsMenus[component].menus;
-        changeLog = sidebar['更新日志'].changeLog;
-        filePath = path.join(__dirname, `../../docs/${component}.md`);
-        data = await fs.readFileSync(filePath, 'utf-8');
+    } else if (component == 'changelog') {
+      rightMenus = docsMenus[component].menus;
+      changeLog = sidebar['更新日志'].changeLog;
+      filePath = path.join(__dirname, `../../docs/${component}.md`);
+      data = await fs.readFileSync(filePath, 'utf-8');
     } else {
       rightMenus = docsMenus[component].menus;
       changeLog = [];
@@ -141,6 +163,9 @@ module.exports = {
       .replace(/<\/table>/gi, "</table>\n</div>\n");
 
 
+      
+    let latestVersion = sidebar['更新日志']['version'];
+
     await ctx.render('index', {
       sidebar: sidebar,
       docs: data,
@@ -148,7 +173,15 @@ module.exports = {
       tag: tag,
       isComponent: isComponentFlag,
       rightMenus: rightMenus,
-      changeLog: changeLog
+      changeLog: changeLog,
+      newComponent: newComponent, //有更新的组件
+      latestVersion: latestVersion
     });
+  },
+  cliBuildScss: async(ctx, next) => {
+    ctx.response.body = await getTinperThemeServer("package");
+  },
+  getVersion: async(ctx, next) => {
+    ctx.response.body = await getTinperThemeServer("version");
   }
 }

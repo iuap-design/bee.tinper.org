@@ -8,6 +8,7 @@ import ReactDOM from 'react-dom';
 import  BaseModal  from 'bee-overlay/build/Modal';
 import isOverflowing from 'bee-overlay/build/utils/isOverflowing';
 import { elementType, splitComponent, createChainedFunction } from 'tinper-bee-core';
+import Dnd from 'bee-dnd';
 
 import { Fade } from 'bee-transition';
 import Body from './ModalBody';
@@ -95,6 +96,10 @@ const propTypes = {
    * 自定义宽度
    */
   width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  /**
+   * 是否可拖拽
+   */
+  draggable: PropTypes.bool,
 };
 
 const defaultProps = {
@@ -102,8 +107,32 @@ const defaultProps = {
   backdropClosable: true,
   animation: true,
   dialogComponentClass: ModalDialog,
+  draggable: false,
   clsPrefix: 'u-modal'
 };
+
+const ModalFuncProps = {
+  prefixCls: PropTypes.string,
+  className: PropTypes.string,
+  show: PropTypes.bool,
+  title: React.ReactNode,
+  content: React.ReactNode,
+  onOk: PropTypes.func,
+  onCancel: PropTypes.func,
+  width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  okText: PropTypes.string,
+  okType: PropTypes.string,
+  cancelText: PropTypes.string,
+  icon: React.ReactNode,
+  backdrop: PropTypes.oneOf(['static', true, false])
+}
+
+const ModalFunc = (props) => {
+  destroy = () => {};
+  update = (newConfig) => {};
+};
+
+export const destroyFns = [];
 
 const childContextTypes = {
   $u_modal: PropTypes.shape({
@@ -124,6 +153,13 @@ class Modal extends React.Component {
       style: {},
     };
   }
+  static info =  ModalFunc;
+  static success =  ModalFunc;
+  static error =  ModalFunc;
+  static warn =  ModalFunc;
+  static warning =  ModalFunc;
+  static confirm =  ModalFunc;
+  static destroyAll =  () => {return};
 
   getChildContext() {
     return {
@@ -203,6 +239,7 @@ class Modal extends React.Component {
       onExited,
       backdropClassName,
       containerClassName,
+      draggable,
       ...props
     } = this.props;
     const [baseModalProps, dialogProps] =
@@ -243,6 +280,7 @@ class Modal extends React.Component {
           className={classNames(className, inClassName, backdropClassName)}
           onClick={backdrop === true && !!backdropClosable ? this.handleDialogClick : null}
           size ={ size }
+          draggable={draggable}
         >
           {children}
         </Dialog>

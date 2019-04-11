@@ -1,6 +1,6 @@
 {
  "name": "bee-transfer",
- "version": "2.0.7",
+ "version": "2.0.8",
  "description": "Transfer ui component for react",
  "keywords": [
   "react",
@@ -41,7 +41,7 @@
   "bee-button": "latest",
   "bee-checkbox": "latest",
   "bee-form-control": "latest",
-  "bee-icon": "^1.0.4",
+  "bee-icon": "latest",
   "classnames": "^2.2.5",
   "react-lazy-load": "^3.0.12",
   "shallowequal": "^1.0.2",

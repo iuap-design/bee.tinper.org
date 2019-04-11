@@ -1,6 +1,6 @@
 {
  "name": "bee-colorpicker",
- "version": "0.0.6",
+ "version": "0.0.7",
  "description": "ColorPicker ui component for react",
  "keywords": [
   "react",
@@ -41,6 +41,7 @@
   "bee-form": "latest",
   "bee-form-control": "latest",
   "bee-icon": "latest",
+  "bee-input-group": "^2.0.2",
   "bee-label": "latest",
   "bee-modal": "latest",
   "bee-select": "latest",

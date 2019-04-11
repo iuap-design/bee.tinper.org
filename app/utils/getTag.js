@@ -35,6 +35,7 @@ let getAlltag = () => {
             })
     });
     fs.writeFileSync('./static/error.txt', '');
+    fs.writeFileSync('./static/new.json', '[]');
 }
 
 getAlltag();

@@ -18,16 +18,21 @@
         }
     }
     .mast{
-        color: red;
+        color: #f44336;
         font-size: 12px;
         padding: 0;
     }
     .error{
-        color: red;
+        color: #f44336;
         font-size: 12px;
-        padding-left: 4px;
+        padding-left: 12px;
         &.line-height-32{
             line-height: 32px;
+        }
+        .uf{
+            font-size: 12px;
+            padding: 0;
+            margin-right: 4px;
         }
     }
     .u-form-control,.u-input-group .u-form-control,.u-select,.u-checkbox-group{

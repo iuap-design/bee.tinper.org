@@ -36,5 +36,12 @@ export default {
         'rowFilter': 'rowFilter',
         'openRowFilter':'openRowFilter',
         'closeRowFilter':'closeRowFilter',
+    },
+    SearchPanel:{
+        'title': 'screening conditions',
+        'resetName': 'reset',
+        'searchName': 'submit',
+        'down':'open',
+        'up':'close',
     }
 }

@@ -40,7 +40,7 @@
         }
     },
     "更新日志": {
-        "version": "0.1.3",
+        "version": "v2.0.6",
         "component": "changelog",
         "menus": {
             "v2.0.6": {},
@@ -391,9 +391,9 @@
                     "version": "0.1.3",
                     "component": "international",
                     "menus": {
-                        "组件库多语设置": {},
-                        "项目国际化 方案一": {},
-                        "项目国际化 方案二": {}
+                        "概述：组件库支持的多语言能力": {},
+                        "多语言切换和多语言构建": {},
+                        "多语文件包 json格式示例": {}
                     }
                 },
                 "可视化主题定制": {
@@ -420,8 +420,10 @@
                     "version": "",
                     "component": "pakage",
                     "menus": {
-                        "说明": {},
-                        "安装": {}
+                        "能力及特性": {},
+                        "安装与配置": {},
+                        "使用": {},
+                        "注意事项说明": {}
                     }
                 }
             }
@@ -455,12 +457,24 @@
                 "多语 Locale": {
                     "version": "1.1.1",
                     "component": "bee-locale"
+                },
+                "剪贴板 Clipboard": {
+                    "version": "0.1.5",
+                    "component": "bee-clipboard"
+                },
+                "取色板 ColorPicker": {
+                    "version": "0.1.5",
+                    "component": "bee-colorpicker"
                 }
             },
             "视图 View": {
                 "标记 Badge": {
                     "version": "0.1.3",
                     "component": "bee-badge"
+                },
+                "标签 Tag": {
+                    "version": "0.0.1",
+                    "component": "bee-tag"
                 },
                 "按钮组 ButtonGroup": {
                     "version": "0.1.3",
@@ -517,10 +531,6 @@
                 "图片查看器 Viewer": {
                     "version": "0.1.3",
                     "component": "bee-viewer"
-                },
-                "锚点 Anchor": {
-                    "version": "0.1.3",
-                    "component": "bee-anchor"
                 }
             },
             "导航 Navigation": {
@@ -559,6 +569,10 @@
                 "回到顶部 BackTop": {
                     "version": "0.1.7",
                     "component": "bee-backtop"
+                },
+                "锚点 Anchor": {
+                    "version": "0.1.3",
+                    "component": "bee-anchor"
                 }
             },
             "反馈 Feedback": {
@@ -668,17 +682,9 @@
                     "version": "0.1.3",
                     "component": "bee-rate"
                 },
-                "剪贴板 Clipboard": {
-                    "version": "0.1.5",
-                    "component": "bee-clipboard"
-                },
                 "自动完成 AutoComplete": {
                     "version": "0.1.5",
                     "component": "bee-autocomplete"
-                },
-                "拾色器 ColorPicker": {
-                    "version": "0.1.5",
-                    "component": "bee-colorpicker"
                 }
             }
         }

@@ -178,6 +178,12 @@ moment().locale('en'); //英文
 
 ## 注意事项
 
-暂无
+DatePicker 国际化时，部分 locale 是从 moment 中读取，所以需要先设置 moment 的 locale
+
+```
+import moment from "moment";
+moment.locale('en');//设置为英文
+
+```
 
 ## 更新日志

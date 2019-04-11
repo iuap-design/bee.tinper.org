@@ -9,6 +9,7 @@
     "createFile": "node app/utils/createFile.js",
     "getMenu": "node app/utils/getRightMenu.js",
     "getRelease": "node app/utils/getRelease.js",
+    "writeFile": "node app/utils/getComponent.js && node app/utils/getTag.js && node app/utils/createFile.js && node app/utils/getRightMenu.js && node app/utils/getRelease.js",
     "dev": "node --inspect app/app.js",
     "start": "node app/app.js",
     "tinper": "node app/utils/tinper.js"
@@ -53,6 +54,7 @@
     "log4js": "^3.0.6",
     "marked": "^0.6.1",
     "moment": "^2.24.0",
+    "node-fetch": "^2.3.0",
     "nunjucks": "^3.1.6"
   }
 }

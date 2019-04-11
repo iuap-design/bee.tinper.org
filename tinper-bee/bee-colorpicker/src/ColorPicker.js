@@ -9,6 +9,7 @@ import Button from 'bee-button';
 import Icon from 'bee-icon';
 import Select from 'bee-select';
 import { Col, Row } from 'bee-layout';
+import InputGroup from "bee-input-group";
 import colors from './colors';
 const FormItem = Form.FormItem;
 const Option = Select.Option;
@@ -51,9 +52,17 @@ class ColorPicker extends Component {
             selectedRgbValue: initRgb,
             selectedHexValue: initHex,
             formValue: initValue,
-            alpha: 255
+            alpha: 100,
         };
         this.input = {};
+        this.cache = {
+            selectedColor: "red",
+            selectedScale: "600",
+            selectedRgbValue: initRgb,
+            selectedHexValue: initHex,
+            formValue: initValue,
+            alpha: 100
+        };
     }
 
     componentWillReceiveProps(nextProps) {
@@ -65,20 +74,30 @@ class ColorPicker extends Component {
     }
 
     // 打开色板
-    handleClick = () => {
+    handleClick = (e) => {
+        e.stopPropagation();
         this.setState({ displayColorPicker: !this.state.displayColorPicker })
     };
 
-    // 关闭色板
+    // 关闭色板/点击弹框取消按钮
     handleClose = () => {
-        this.setState({ displayColorPicker: false })
+        let { selectedColor,selectedScale,selectedRgbValue,selectedHexValue,formValue,alpha } = this.cache;
+        this.setState({
+            displayColorPicker: false,
+            selectedColor,
+            selectedScale,
+            selectedRgbValue,
+            selectedHexValue,
+            formValue,
+            alpha,
+        });
     };
 
     // 点击弹框确定按钮
     submit = () => {
         let { autoCalculate, onChange } = this.props;
-        let { selectedColor,selectedScale,selectedHexValue } = this.state;
-        let tempRgb = this.colorHexToRgb(selectedHexValue);
+        let { selectedColor,selectedScale,selectedHexValue,alpha } = this.state;
+        let tempRgb = this.colorHexToRgb(selectedHexValue,alpha);
         let obj = {
             class: `${selectedColor}-${selectedScale}`,
             rgba: tempRgb,
@@ -88,6 +107,14 @@ class ColorPicker extends Component {
             formValue: selectedHexValue,
             displayColorPicker: false
         })
+        this.cache = Object.assign(this.cache,{
+            selectedColor,
+            selectedScale,
+            selectedRgbValue:tempRgb,
+            selectedHexValue,
+            formValue: selectedHexValue,
+            alpha
+        });
         if (autoCalculate) {
             let result = this.calcHoverAndActive(selectedColor, selectedScale);
             autoCalculate(result);
@@ -136,7 +163,7 @@ class ColorPicker extends Component {
             selectedScale: "600",
             selectedRgbValue: selectedRgb,
             selectedHexValue: selectedHex,
-            alpha: 255
+            alpha: 100
         })
     };
 
@@ -188,8 +215,7 @@ class ColorPicker extends Component {
     }
 
     // 把16进制颜色转换为RGB颜色
-    colorHexToRgb(color){
-        let { alpha } = this.state;
+    colorHexToRgb(color,alpha){
         let sColor = color;
         sColor = sColor.toLowerCase();
         //十六进制颜色值的正则表达式
@@ -370,7 +396,7 @@ class ColorPicker extends Component {
                 onHide = { this.handleClose } 
                 backdropClosable = { false }>
                     <Modal.Header closeButton>
-                        <Modal.Title>MD色板</Modal.Title>
+                        <Modal.Title>取色板</Modal.Title>
                     </Modal.Header>
 
                     <Modal.Body>
@@ -379,7 +405,7 @@ class ColorPicker extends Component {
                                 <div className={`${clsPrefix}-color-preview-demo bg-${selectedColor}-600`}></div>
                             </div>
                             <Select
-                                defaultValue="red"
+                                defaultValue={selectedColor}
                                 style={{ width: 200 }}
                                 onChange={this.handleSelectChange}
                                 >
@@ -395,7 +421,9 @@ class ColorPicker extends Component {
                                 </Col>
                                 <Col md={5} xs={5} sm={5} className="col-5">
                                     <div className={`${clsPrefix}-panel-color-info`}>
-                                        <div className={`selected-color bg-${selectedColor}-${selectedScale}`}></div>
+                                        <div className="transparent-bg">
+                                            <div className={`selected-color bg-${selectedColor}-${selectedScale}`} style={{opacity:alpha/100}}></div>
+                                        </div>
                                         <ul>
                                             <li><Label>Class：</Label>{`${selectedColor}-${selectedScale}`}</li>
                                             <li><Label>RGB：</Label>{`${selectedRgbValue}`}</li>
@@ -403,7 +431,10 @@ class ColorPicker extends Component {
                                             <li>
                                                 <FormItem>
                                                     <Label>Alpha</Label>
-                                                    <FormControl size="sm" value={alpha} onChange={this.handleAlphaChange}/>
+                                                    <InputGroup>
+                                                        <FormControl size="sm" value={alpha} onChange={this.handleAlphaChange}/>
+                                                        <InputGroup.Addon>%</InputGroup.Addon>
+                                                    </InputGroup>
                                                 </FormItem>
                                             </li>
                                         </ul>

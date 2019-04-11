@@ -56,6 +56,12 @@
     </div>
 </body>
 <script type="text/javascript" src="//design.yonyoucloud.com/static/docSearch/docsearch.min.js"></script>
+<% if(active=='theme'){ %>
+    <script type="text/javascript" src="./theme/runtime.js"></script>
+    <script type="text/javascript" src="./theme/vendor.js"></script>
+    <script type="text/javascript" src="./theme/app.js"></script>
+    <script type="text/javascript" src="./theme/home.js"></script>
+<% } %>
 <script>
     // hljs.initHighlightingOnLoad();
     document.querySelectorAll('.drawer-body code').forEach((block) => {
@@ -71,11 +77,13 @@
 
 
     var header = document.querySelector('#navbar');
+
     new Gumshoe('#rightMenusId a',{
         offset: function () {
             return header.getBoundingClientRect().height;
         }
     });
+    
     let lists = document.querySelectorAll('.rm-list-item');
     if(window.scrollY<=160){
         lists[0].setAttribute('class','rm-list-item active');

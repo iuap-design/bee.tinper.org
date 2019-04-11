@@ -4,6 +4,9 @@ import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import AdvancedContainer from './AdvancedContainer';
 import HeadContainer from './HeadContainer';
+import i18n from './i18n';
+import { getComponentLocale } from 'bee-locale/build/tool';
+
 
 const emFun = () => {}
 
@@ -19,6 +22,7 @@ const propTypes =  {
     onPanelChangeIng: PropTypes.func,//显示或隐藏进行中回调
     onPanelChangeEnd: PropTypes.func,//显示或隐藏结束回调
     onChange: PropTypes.func,//点击显示或隐藏回调
+    showOperation: PropTypes.bool//是否显示 查询，清空
     // resident: PropTypes.node //常驻面板内容，不会隐藏
 };
 
@@ -26,11 +30,8 @@ const defaultProps = {
     className: "",
     clsPrefix: 'u-search',
     defaultExpanded: false,
-    title: "默认筛选",
-    resetName: "清空",
-    searchName: "查询",
     bgColor: "#F7F9FB",
-
+    showOperation: true
 };
 
 
@@ -101,18 +102,23 @@ class SearchPanel extends Component {
         onPanelChangeEnd && this._onPanelChange(type, onPanelChangeEnd)
     }
     _getChildren = (element) => {
-        // if(element.type.prototype === HeadContainer.prototype){
-        if(element.type.name === "HeadContainer"){
+        if(element.type.name === "HeadContainer" || element.type.prototype === HeadContainer.prototype){
+        // if(element.type.name === "HeadContainer"){
             this._HeadContainer = element;
-        }else if(element.type.name === "AdvancedContainer"){
+        }else if(element.type.name === "AdvancedContainer" || element.type.prototype === AdvancedContainer.prototype){
+        // }else if(element.type.name === "AdvancedContainer"){
             this._AdvancedContainer = element;
         }
     }
 
 
-
     render() {
-        const { children, clsPrefix, className, resetName, searchName, bgColor, style } = this.props;
+        const local = getComponentLocale(this.props, this.context, 'SearchPanel', () => i18n);
+        let { children, clsPrefix, className, resetName, searchName, title, bgColor, style, showOperation } = this.props;
+        if(!resetName)resetName=local['resetName'];
+        if(!searchName)searchName=local['searchName'];
+        if(!title)title=local['title'];
+
         const { expanded } = this.state;
         const _stype = style || {};
         if(children instanceof  Array){
@@ -128,19 +134,19 @@ class SearchPanel extends Component {
                  style={{background: bgColor, ..._stype}}>
                 <div className={clsPrefix + "-header"}>
                     <div className={clsPrefix + "-header-title"}>
-                        <span>{this.props.title}</span>
+                        <span>{title}</span>
                         {/*<Icon type="uf-arrow-c-o-down"/>*/}
                     </div>
 
                     <div className={clsPrefix + "-header-oper"}>
-                        {this._HeadContainer ? <span className="header-oper-btn" role="button" onClick={this.reset}>{resetName}</span> : null}
-                        {this._HeadContainer ? <span className="header-oper-btn primary" role="button" onClick={this.search}>{searchName}</span> : null}
+                        {(this._HeadContainer||(showOperation&&expanded)) ? <span className="header-oper-btn" role="button" onClick={this.reset}>{resetName}</span> : null}
+                        {(this._HeadContainer||(showOperation&&expanded)) ? <span className="header-oper-btn primary" role="button" onClick={this.search}>{searchName}</span> : null}
                         <span
                             className="header-oper-btn"
                             role="button"
                             onClick={this._onChange}
                         >
-                        {expanded ? '收起' : '展开'}
+                        {expanded ? local['up'] : local['down']}
                             <i className={classnames({
                                 'uf': true,
                                 'uf-arrow-down': !expanded,
@@ -174,5 +180,8 @@ class SearchPanel extends Component {
 }
 SearchPanel.propTypes = propTypes;
 SearchPanel.defaultProps = defaultProps;
+SearchPanel.contextTypes = {
+    beeLocale: PropTypes.object
+};
 
 export default SearchPanel;

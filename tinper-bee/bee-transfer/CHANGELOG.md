@@ -1,10 +1,40 @@
+<a name="2.0.8"></a>
+## [2.0.8](https://github.com/tinper-bee/bee-transfer/compare/v2.0.7...v2.0.8) (2019-04-09)
+
+
+
+<a name="2.0.7"></a>
+## [2.0.7](https://github.com/tinper-bee/bee-transfer/compare/v2.0.6...v2.0.7) (2019-03-13)
+
+
+
 <a name="2.0.6"></a>
-## [2.0.6](https://github.com/tinper-bee/bee-transfer/compare/v2.0.3...v2.0.6) (2019-03-07)
+## [2.0.6](https://github.com/tinper-bee/bee-transfer/compare/v2.0.5...v2.0.6) (2019-03-07)
+
+
+
+<a name="2.0.5"></a>
+## [2.0.5](https://github.com/tinper-bee/bee-transfer/compare/v2.0.4...v2.0.5) (2019-03-05)
+
+
+
+<a name="2.0.4"></a>
+## [2.0.4](https://github.com/tinper-bee/bee-transfer/compare/v2.0.3...v2.0.4) (2019-03-05)
 
 
 
 <a name="2.0.3"></a>
-## [2.0.3](https://github.com/tinper-bee/bee-transfer/compare/v2.0.0...v2.0.3) (2019-03-04)
+## [2.0.3](https://github.com/tinper-bee/bee-transfer/compare/v2.0.2...v2.0.3) (2019-03-04)
+
+
+
+<a name="2.0.2"></a>
+## [2.0.2](https://github.com/tinper-bee/bee-transfer/compare/v2.0.1...v2.0.2) (2019-02-28)
+
+
+
+<a name="2.0.1"></a>
+## [2.0.1](https://github.com/tinper-bee/bee-transfer/compare/v2.0.0...v2.0.1) (2019-02-28)
 
 
 

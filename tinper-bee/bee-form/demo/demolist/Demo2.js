@@ -9,6 +9,7 @@ import Form from '../../src';
 import FormControl from 'bee-form-control';
 import Label from 'bee-label';
 import Button from 'bee-button';
+import Icon from 'bee-icon';
 const FormItem = Form.FormItem;
 
 const Demo2 = Form.createForm()(class Demo2 extends Component {
@@ -33,7 +34,7 @@ const Demo2 = Form.createForm()(class Demo2 extends Component {
                             {...getFieldProps('username', {
                                 validateTrigger: 'onBlur',
                                 rules: [{
-                                    required: true, message: '请输入用户名',
+                                    required: true, message: <span><Icon type="uf-exc-t"></Icon><span>请输入用户名</span></span>,
                                 }],
                             }) }
                         />
@@ -47,7 +48,7 @@ const Demo2 = Form.createForm()(class Demo2 extends Component {
                             {...getFieldProps('password', {
                                 validateTrigger: 'onBlur',
                                 rules: [{
-                                    required: true, message: '请输入密码',
+                                    required: true, message: <span><Icon type="uf-exc-t"></Icon><span>请输入密码</span></span>,
                                 }],
                             }) }
                         />

@@ -80,7 +80,7 @@ const Demo6 = Form.createForm()(class Demo extends Component {
                                     ...getFieldProps('orderCode1', {
                                         initialValue: '',
                                         rules: [{
-                                            required: true, message: '请输入订单编号',
+                                            required: true, message: <span><Icon type="uf-exc-t"></Icon><span>请输入订单编号</span></span>,
                                         }],
                                     })
                                     }
@@ -103,7 +103,7 @@ const Demo6 = Form.createForm()(class Demo extends Component {
                                         ...getFieldProps('supplierName1', {
                                             initialValue: '',
                                             rules: [{
-                                                required: true, message: '请输入供应商名称',
+                                                required: true, message: <span><Icon type="uf-exc-t"></Icon><span>请输入供应商名称</span></span>,
                                             }],
                                         })
                                     }
@@ -124,7 +124,7 @@ const Demo6 = Form.createForm()(class Demo extends Component {
                                         ...getFieldProps('voucherName1', {
                                             initialValue: '',
                                             rules: [{
-                                                required: true, message: '请输入凭证名称',
+                                                required: true, message: <span><Icon type="uf-exc-t"></Icon><span>请输入凭证名称</span></span>,
                                             }],
                                         })
                                     }
@@ -159,7 +159,7 @@ const Demo6 = Form.createForm()(class Demo extends Component {
                                     ...getFieldProps('orderCode2', {
                                         initialValue: '',
                                         rules: [{
-                                            required: true, message: '请输入订单编号',
+                                            required: true, message: <span><Icon type="uf-exc-t"></Icon><span>请输入订单编号</span></span>,
                                         }],
                                     })
                                     }
@@ -185,7 +185,7 @@ const Demo6 = Form.createForm()(class Demo extends Component {
                                         ...getFieldProps('supplierName2', {
                                             initialValue: '',
                                             rules: [{
-                                                required: true, message: '请输入供应商名称',
+                                                required: true, message: <span><Icon type="uf-exc-t"></Icon><span>请输入供应商名称</span></span>,
                                             }],
                                         })
                                     }
@@ -208,7 +208,7 @@ const Demo6 = Form.createForm()(class Demo extends Component {
                                         ...getFieldProps('voucherName2', {
                                             initialValue: '',
                                             rules: [{
-                                                required: true, message: '请输入凭证名称',
+                                                required: true, message: <span><Icon type="uf-exc-t"></Icon><span>请输入凭证名称</span></span>,
                                             }],
                                         })
                                     }
@@ -262,7 +262,7 @@ const Demo6 = Form.createForm()(class Demo extends Component {
                                     ...getFieldProps('orderCode3', {
                                         initialValue: '',
                                         rules: [{
-                                            required: true, message: '请输入订单编号',
+                                            required: true, message: <span><Icon type="uf-exc-t"></Icon><span>请输入订单编号</span></span>,
                                         }],
                                     })
                                     }
@@ -285,7 +285,7 @@ const Demo6 = Form.createForm()(class Demo extends Component {
                                         ...getFieldProps('supplierName3', {
                                             initialValue: '',
                                             rules: [{
-                                                required: true, message: '请输入供应商名称',
+                                                required: true, message: <span><Icon type="uf-exc-t"></Icon><span>请输入供应商名称</span></span>,
                                             }],
                                         })
                                     }
@@ -306,7 +306,7 @@ const Demo6 = Form.createForm()(class Demo extends Component {
                                         ...getFieldProps('voucherName3', {
                                             initialValue: '',
                                             rules: [{
-                                                required: true, message: '请输入凭证名称',
+                                                required: true, message: <span><Icon type="uf-exc-t"></Icon><span>请输入凭证名称</span></span>,
                                             }],
                                         })
                                     }
@@ -336,7 +336,7 @@ const Demo6 = Form.createForm()(class Demo extends Component {
                                     ...getFieldProps('orderCode4', {
                                         initialValue: '',
                                         rules: [{
-                                            required: true, message: '请输入订单编号',
+                                            required: true, message: <span><Icon type="uf-exc-t"></Icon><span>请输入订单编号</span></span>,
                                         }],
                                     })
                                     }
@@ -356,7 +356,7 @@ const Demo6 = Form.createForm()(class Demo extends Component {
                                     ...getFieldProps('supplierName4', {
                                         initialValue: '',
                                         rules: [{
-                                            required: true, message: '请输入供应商名称',
+                                            required: true, message: <span><Icon type="uf-exc-t"></Icon><span>请输入供应商名称</span></span>,
                                         }],
                                     })
                                 }
@@ -376,7 +376,7 @@ const Demo6 = Form.createForm()(class Demo extends Component {
                                         ...getFieldProps('voucherName4', {
                                             initialValue: '',
                                             rules: [{
-                                                required: true, message: '请输入凭证名称',
+                                                required: true, message: <span><Icon type="uf-exc-t"></Icon><span>请输入凭证名称</span></span>,
                                             }],
                                         })
                                     }

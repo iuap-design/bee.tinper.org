@@ -11,7 +11,7 @@
 
 react colorpicker component for tinper-bee
 
-可定制的拾色器组件
+可定制的取色板组件
 
 ## 使用
 

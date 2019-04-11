@@ -64,7 +64,7 @@ class Demo1 extends Component {
 |onChange| input 的 value 变化时，调用此函数|function|-|
 |onKeyDown| 监听input的键盘事件，调用此函数|handleKeyDown()|-|
 |onBlur| input 的失去焦点时，调用此函数|function|-|
-
+|onSelectOption| 被选中时调用，参数为选中项的 value 值|function|-|
 
 #### 开发调试
 

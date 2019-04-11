@@ -72,7 +72,7 @@ const Demo4 = Form.createForm()(class Demo extends Component {
                             {...getFieldProps('name', {
                                 validateTrigger: 'onBlur',
                                 rules: [{
-                                    required: true, message: '请输入姓名',
+                                    required: true, message: <span><Icon type="uf-exc-t"></Icon><span>请输入姓名</span></span>,
                                 }],
                             }) }
                         />
@@ -86,9 +86,9 @@ const Demo4 = Form.createForm()(class Demo extends Component {
                             {...getFieldProps('phone', {
                                 validateTrigger: 'onBlur',
                                 rules: [{
-                                    required: true, message: '请输入联系方式',
+                                    required: true, message: <span><Icon type="uf-exc-t"></Icon><span>请输入联系方式</span></span>,
                                 }, {
-                                    pattern: /^\d{11}$/, message: '手机号格式不正确'
+                                    pattern: /^\d{11}$/, message: <span><Icon type="uf-exc-t"></Icon><span>手机号格式不正确</span></span>
                                 }],
                             }) }
                         />
@@ -123,9 +123,9 @@ const Demo4 = Form.createForm()(class Demo extends Component {
                             ...getFieldProps('time', {
                                 validateTrigger: 'onBlur',
                                 rules: [{
-                                    required: true, message: '请选择需求日期',
+                                    required: true, message: <span><Icon type="uf-exc-t"></Icon><span>请选择需求日期</span></span>,
                                 }, {
-                                    type: 'date', message: '日期格式不正确'
+                                    type: 'date', message: <span><Icon type="uf-exc-t"></Icon><span>日期格式不正确</span></span>
                                 }],
                             }
                             ) }
@@ -178,7 +178,7 @@ const Demo4 = Form.createForm()(class Demo extends Component {
                                 {
                                     ...getFieldProps('purchasingGroup',{
                                         initialValue:['2'],
-                                        rules: [{ required: true, message: '请选择采购组' }]
+                                        rules: [{ required: true, message: <span><Icon type="uf-exc-t"></Icon><span>请选择采购组</span></span> }]
                                     })
                                 }
                             >

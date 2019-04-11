@@ -5,17 +5,21 @@ import PropTypes from 'prop-types';
 
 const propTypes = {
     value: PropTypes.any,
+    show: PropTypes.bool,
     options: PropTypes.array,
-    onChange: PropTypes.func
+    onChange: PropTypes.func,
+    onSelectOption: PropTypes.func,
 };
 const defaultProps = {
     value: "",
+    show: false,
     options: [],
     clsPrefix: 'u-autocomplete',
     onBlur: () => {},
     onKeyDown: () => {},
     onValueChange: () => {},
-    onChange: () => {}
+    onChange: () => {},
+    onSelectOption: () => {}
 };
 
 class AutoComplete extends React.Component {
@@ -23,7 +27,7 @@ class AutoComplete extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            show: false, //控制自动匹配列表的显示与隐藏
+            show: props.show || false, //控制自动匹配列表的显示与隐藏
             displayValue: '',
             activeItemIndex: -1,
             options: props.options,
@@ -95,6 +99,7 @@ class AutoComplete extends React.Component {
         })
         this.props.onValueChange(value);
         this.props.onChange(value);
+        this.props.onSelectOption(value);
     }
 
     handleKeyDown(e) {
