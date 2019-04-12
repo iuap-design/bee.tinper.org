@@ -1,7 +1,7 @@
 @import "../node_modules/tinper-bee-core/scss/minxin-variables";
 @import "../node_modules/tinper-bee-core/scss/minxin-mixins";
 
-$tag-line-height: 18px;
+$tag-line-height: 20px;
 $tag-padding-x: 8px;
 $tag-padding-y: 1px;
 $tag-font-size: 12px;
@@ -44,7 +44,12 @@ $tag-info-background-color:#d1dde6;
     border:1px  $text-color solid;
 } 
 
+
 .u-tag{
+    *{
+        margin:0;
+        padding:0;
+    }
     display:inline-block;
     cursor:default;
     text-align:center;
@@ -56,8 +61,8 @@ $tag-info-background-color:#d1dde6;
     cursor: default;
     text-decoration: none;
     text-align: center;
-    vertical-align: middle;
-    padding: $tag-padding-y $tag-padding-x  $tag-padding-y $tag-padding-x;
+    padding-left: $tag-padding-x;
+    padding-right: $tag-padding-x;
     border-radius: $tag-border-radius;
     height:20px;
     font-weight:400;
@@ -89,7 +94,8 @@ $tag-info-background-color:#d1dde6;
 
 .u-tag-light {
     color: #212121;
-    background-color: #F7F9FB;
+    // background-color: #F7F9FB;
+    background-color: $brand-light;
     border: 1px solid #A5ADBA;
 }
 
@@ -116,7 +122,9 @@ $tag-info-background-color:#d1dde6;
 // 可删除标签
 .u-tag-delete{
     color: #212121;
-    border: 1px solid #A5ADBA; 
+    border: 1px solid #A5ADBA;
+    background-color: #F7F9FB;
+    cursor:pointer;
     .uf{
         font-size:12px;
         padding-right:0;

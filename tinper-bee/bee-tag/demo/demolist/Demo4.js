@@ -5,6 +5,7 @@
 *
 */
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import Tag from '../../src';
 
 class Demo4 extends React.Component {
@@ -34,16 +35,14 @@ class Demo4 extends React.Component {
         </span>
       );
     }
-  
     render() {
       const { tags } = this.state;
       const tagChild = tags.map(this.forMap);
       return (
-        <div className="demoPadding">
-          {tagChild}
-        </div>
+            <div className="demoPadding">
+              {tagChild}
+            </div>
       );
     }
   }
-
 export default Demo4;

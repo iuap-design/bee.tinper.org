@@ -11,6 +11,7 @@ import Select from 'bee-select';
 import { Col, Row } from 'bee-layout';
 import InputGroup from "bee-input-group";
 import colors from './colors';
+
 const FormItem = Form.FormItem;
 const Option = Select.Option;
 
@@ -116,7 +117,7 @@ class ColorPicker extends Component {
             alpha
         });
         if (autoCalculate) {
-            let result = this.calcHoverAndActive(selectedColor, selectedScale);
+            let result = this.calcHoverAndActive(selectedColor, selectedScale,selectedHexValue);
             autoCalculate(result);
         }
         if (onChange) {
@@ -129,7 +130,7 @@ class ColorPicker extends Component {
      * @param selectedColor
      * @param selectedScale
      */
-    calcHoverAndActive = (selectedColor,selectedScale) => {
+    calcHoverAndActive = (selectedColor,selectedScale,selectedHexValue) => {
         let obj = {};
         let selectedRgbArr = colors[selectedColor] ? colors[selectedColor].rgbArr : '';
         let selectedScaleArr = colors[selectedColor] ? colors[selectedColor].scale : '';
@@ -151,6 +152,7 @@ class ColorPicker extends Component {
             obj.lighter = lighter;
             obj.darker = darker;
         }
+        obj.clor = selectedHexValue;
         return obj;
     }
 
@@ -354,6 +356,9 @@ class ColorPicker extends Component {
         HTMLElement.prototype.__defineGetter__("currentStyle", function () { 
             return this.ownerDocument.defaultView.getComputedStyle(this, null); 
         });
+
+  
+
         return(
             <div className={classnames(clsPrefix,className)}>
                 <FormItem className={`${clsPrefix}-form`}>
@@ -380,8 +385,8 @@ class ColorPicker extends Component {
                             //     }
                             // }) }
                         />
-                        <div 
-                            className={`${clsPrefix}-form-color-demo bg-${selectedColor}-${selectedScale}`} 
+                        <div style={{backgroundColor:formValue}}
+                            className={`${clsPrefix}-form-color-demo`} 
                             onClick={ this.handleClick }>
                         </div>
                     </span>

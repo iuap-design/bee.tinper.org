@@ -34,10 +34,16 @@ class YearPicker extends Component {
                 value: nextProps.value
             });
         }
-        this.setState({
-            renderIcon: nextProps.renderIcon,
-            open: nextProps.open
-        });
+        if ("open" in nextProps) {
+            this.setState({
+              open: nextProps.open 
+            });
+          }
+          if ("renderIcon" in nextProps) {
+            this.setState({
+              renderIcon: nextProps.renderIcon
+            });
+          }
 
     }
 
@@ -86,7 +92,7 @@ class YearPicker extends Component {
     handleChange = value => {
         const props = this.props;
         this.setState({ value });
-        props.onChange(value, (value && value.format(props.format)) || '');
+        props.onChange&&props.onChange(value, (value && value.format(props.format)) || '');
     }
     onMouseLeave = (e) => {
         this.setState({
