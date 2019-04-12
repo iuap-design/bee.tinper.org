@@ -5,8 +5,8 @@ const path = require('path');
 const marked = require("marked");
 const fs = require('fs-extra');
 const router = require('./router')
+var bodyParser = require('koa-bodyparser')
 const middleware = require('./middleware')
-
 
 render(app, {
     root: path.join(__dirname, 'views'),
@@ -16,6 +16,8 @@ render(app, {
     debug: false,
 });
   
+// 配置ctx.body解析中间件
+app.use(bodyParser())
 
 router(app)
 middleware(app)
