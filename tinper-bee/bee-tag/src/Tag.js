@@ -5,10 +5,10 @@ import classnames from 'classnames';
 import Icon from 'bee-icon';
 
 const propTypes = {
-    /**
-     * @title 样式 
-     */
-    style: PropTypes.object,
+    // /**
+    //  * @title 样式 
+    //  */
+    // style: PropTypes.object,
 
     /**
      * @title 形状 
@@ -49,9 +49,7 @@ const propTypes = {
      * @veIgnore
      */
     className: PropTypes.string,
-
-    tagClick: PropTypes.func,
-    iconClick: PropTypes.func
+    tagClick: PropTypes.func
 };
 
 const defaultProps = {
@@ -89,6 +87,7 @@ class Tag extends Component {
     onDelete=(e)=>{
         this.props.onClose&&this.props.onClose(e)
     }
+    
     render() {
         let {colors,
             disabled,
@@ -123,7 +122,7 @@ class Tag extends Component {
                 clsObj[`${clsPrefix}-selected`] = true;
             }
         }
-
+        
         let classes = classnames(clsPrefix, clsObj);
         return(
             <span {...others} className={classes} disabled={disabled} bordered={bordered} deleted={deleted} select={select} onClick={this.click}>

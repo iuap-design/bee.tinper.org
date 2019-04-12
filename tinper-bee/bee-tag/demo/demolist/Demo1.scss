@@ -1,15 +1,17 @@
 .demoPadding{
   tag{
-      margin: auto 16px;
+    margin: auto 5px;
   }
   .divider{
-      margin: -3px 0;
-      height: 25px;
-      overflow: hidden;
-      background-color: #fff;
+    margin: 6px 0;
+    height: 1px;
+    overflow: hidden;
+    background-color: #fff;
   }
-  .divider0{
-      height: 45px;
-      background-color: #fff;
+  input::-webkit-input-placeholder {
+    width: 83px;
+    height: 20px;
+    color: #909090;
+    font-size: 12px;
   }
 }
