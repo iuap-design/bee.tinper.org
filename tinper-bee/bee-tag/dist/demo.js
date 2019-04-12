@@ -76,7 +76,7 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
 	
-	var Demo1 = __webpack_require__(262);var Demo2 = __webpack_require__(265);var Demo3 = __webpack_require__(266);var Demo4 = __webpack_require__(267);var Demo5 = __webpack_require__(268);var Demo6 = __webpack_require__(269);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 默认标签", "code": "/**\n*\n* @title 默认标签\n* @description 默认提供两种形式的标签，主要用于信息标注。\n*\n*/\nimport React, { Component } from 'react';\nimport { Tag } from 'tinper-bee';\nclass Demo1 extends Component {\n    render () { \n        return (\n            <div className=\"demoPadding\">\n                <Tag colors=\"dark\">dark</Tag>\n                <Tag colors=\"light\" bordered>light</Tag>\n            </div>\n        )\n    }\n}\n\n", "desc": " 默认提供两种形式的标签，主要用于信息标注。", "scss_code": ".demoPadding{\r\n  tag{\r\n    margin: auto 5px;\r\n  }\r\n  .divider{\r\n    margin: 6px 0;\r\n    height: 1px;\r\n    overflow: hidden;\r\n    background-color: #fff;\r\n  }\r\n  input::-webkit-input-placeholder {\r\n    width: 83px;\r\n    height: 20px;\r\n    color: #909090;\r\n    font-size: 12px;\r\n  }\r\n}" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 语意色标签", "code": "/**\r\n*\r\n* @title 语意色标签\r\n* @description 表示提示信息的标签\r\n* \r\n*/\r\nimport React, { Component } from 'react';\r\nimport { Tag } from 'tinper-bee';\r\nclass Demo2 extends Component {\r\n    render () { \r\n        return (\r\n            <div className=\"demoPadding\">\r\n                <Tag colors=\"success\">success</Tag>\r\n                <Tag colors=\"warning\">warning</Tag>\r\n                <Tag colors=\"danger\">danger</Tag>\r\n                <Tag colors=\"info\">info</Tag>\r\n             </div>\r\n        )\r\n    }\r\n}\r\n\r\n", "desc": " 表示提示信息的标签" }, { "example": _react2['default'].createElement(Demo3, null), "title": " disable标签", "code": "/**\r\n*\r\n* @title disable标签\r\n* @description 禁用的标签，不可以进行编辑。\r\n*\r\n*/\r\nimport React, { Component } from 'react';\r\nimport { Tag } from 'tinper-bee';\r\nclass Demo3 extends Component {\r\n    render () { \r\n        return (\r\n            <div className=\"demoPadding\">\r\n                <Tag disabled>disabled</Tag> \r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\n", "desc": " 禁用的标签，不可以进行编辑。" }, { "example": _react2['default'].createElement(Demo4, null), "title": " 可删除标签", "code": "/**\r\n*\r\n* @title 可删除标签\r\n* @description 用户可以手动删除的标签\r\n*\r\n*/\r\nimport React, { Component } from 'react';\r\nimport ReactDOM from 'react-dom';\r\nimport { Tag } from 'tinper-bee';\r\n\r\nclass Demo4 extends React.Component {\r\n    state = {\r\n      tags: ['员工编号', '员工姓名', '员工性别','所属部门']\r\n    };\r\n  \r\n    handleClose = (removedTag) => {\r\n      const tags = this.state.tags.filter(tag => tag !== removedTag);\r\n      this.setState({ tags });\r\n    }\r\n  \r\n    forMap = (tag) => {\r\n      const tagElem = (\r\n        <Tag visible={true} deleted \r\n          onClose={(e) => {\r\n            e.preventDefault();\r\n            this.handleClose(tag);\r\n          }}\r\n        >\r\n          {tag}\r\n        </Tag>\r\n      );\r\n      return (\r\n        <span key={tag}>\r\n          {tagElem}\r\n        </span>\r\n      );\r\n    }\r\n    \r\n    inputOnBlur = ()=> {\r\n      let ary = this.state.tags;\r\n      let value = ReactDOM.findDOMNode(this.refs.addTag).value;\r\n      if(value!=''){\r\n        ary.push(value);\r\n      }\r\n      ary=[...new Set(ary)];\r\n      this.setState({\r\n        tags: ary\r\n      })\r\n    }\r\n    \r\n    render() {\r\n      const { tags } = this.state;\r\n      const tagChild = tags.map(this.forMap);\r\n      \r\n      return (\r\n         <div className=\"demoPadding\">\r\n            <div>\r\n              {tagChild}\r\n            </div>\r\n            <div className=\"divider\"></div>\r\n            <div>\r\n             <input maxlength=\"8\" type=\"input\"  ref=\"addTag\" onBlur={this.inputOnBlur } \r\n                style={{width:83,height:20}} placeholder=\"添加标签\"/>\r\n            </div>\r\n         </div>\r\n      );\r\n    }\r\n  }\r\n", "desc": " 用户可以手动删除的标签" }, { "example": _react2['default'].createElement(Demo5, null), "title": " 可选标签", "code": "/**\r\n*\r\n* @title 可选标签\r\n* @description 可以表示选中和未选中两种状态的标签\r\n*\r\n*/\r\nimport React, { Component } from 'react';\r\nimport { Tag } from 'tinper-bee';\r\nclass Demo5 extends Component {\r\n    render () { \r\n        return (\r\n            <div className=\"demoPadding\">\r\n                <Tag select={true}>部门</Tag>\r\n                <Tag select={true}>职级</Tag>\r\n                <Tag select={true}>年份</Tag>\r\n                <Tag select={true}>月份</Tag> \r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\n", "desc": " 可以表示选中和未选中两种状态的标签" }, { "example": _react2['default'].createElement(Demo6, null), "title": "  多彩标签", "code": "/**\r\n *\r\n * @title  多彩标签\r\n * @description 包含多种预设色彩的标签样式，可以在不同场景使用，通过`colors`属性控制标签的颜色\r\n * \r\n */\r\n\r\nimport React, { Component } from 'react';\r\nimport { Tag } from 'tinper-bee';\r\n\r\n class Demo6 extends Component {\r\n\r\n    render () {\r\n        return (\r\n            <div className=\"demoPadding\">\r\n                <div>\r\n                    <Tag colors=\"success\">success</Tag>\r\n                    <Tag colors=\"warning\">warning</Tag>\r\n                    <Tag colors=\"danger\">danger</Tag>\r\n                    <Tag colors=\"info\">info</Tag>\r\n                </div>  \r\n                <div className=\"divider\"></div>\r\n                <div>\r\n                    <Tag bordered colors=\"success\">success</Tag>\r\n                    <Tag bordered colors=\"warning\">warning</Tag>\r\n                    <Tag bordered colors=\"danger\">danger</Tag>\r\n                    <Tag bordered colors=\"info\">info</Tag>\r\n                </div>       \r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\n", "desc": " 包含多种预设色彩的标签样式，可以在不同场景使用，通过`colors`属性控制标签的颜色" }];
+	var Demo1 = __webpack_require__(262);var Demo2 = __webpack_require__(265);var Demo3 = __webpack_require__(266);var Demo4 = __webpack_require__(267);var Demo5 = __webpack_require__(268);var Demo6 = __webpack_require__(269);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 默认标签", "code": "/**\n*\n* @title 默认标签\n* @description 默认提供两种形式的标签，主要用于信息标注。\n*\n*/\nimport React, { Component } from 'react';\nimport { Tag } from 'tinper-bee';\nclass Demo1 extends Component {\n    render () { \n        return (\n            <div className=\"demoPadding\">\n                <Tag colors=\"dark\">dark</Tag>\n                <Tag colors=\"light\" bordered>light</Tag>\n            </div>\n        )\n    }\n}\n\n", "desc": " 默认提供两种形式的标签，主要用于信息标注。", "scss_code": ".demoPadding{\r\n  tag{\r\n    margin: auto 5px;\r\n  }\r\n  .divider{\r\n    margin: 6px 0;\r\n    height: 1px;\r\n    overflow: hidden;\r\n    background-color: #fff;\r\n  }\r\n  input::-webkit-input-placeholder {\r\n    width: 83px;\r\n    height: 20px;\r\n    color: #909090;\r\n    font-size: 12px;\r\n  }\r\n}" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 语意色标签", "code": "/**\r\n*\r\n* @title 语意色标签\r\n* @description 表示提示信息的标签\r\n* \r\n*/\r\nimport React, { Component } from 'react';\r\nimport { Tag } from 'tinper-bee';\r\nclass Demo2 extends Component {\r\n    render () { \r\n        return (\r\n            <div className=\"demoPadding\">\r\n                <Tag colors=\"success\">success</Tag>\r\n                <Tag colors=\"warning\">warning</Tag>\r\n                <Tag colors=\"danger\">danger</Tag>\r\n                <Tag colors=\"info\">info</Tag>\r\n             </div>\r\n        )\r\n    }\r\n}\r\n\r\n", "desc": " 表示提示信息的标签" }, { "example": _react2['default'].createElement(Demo3, null), "title": " disable标签", "code": "/**\r\n*\r\n* @title disable标签\r\n* @description 禁用的标签，不可以进行编辑。\r\n*\r\n*/\r\nimport React, { Component } from 'react';\r\nimport { Tag } from 'tinper-bee';\r\nclass Demo3 extends Component {\r\n    render () { \r\n        return (\r\n            <div className=\"demoPadding\">\r\n                <Tag disabled>disabled</Tag> \r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\n", "desc": " 禁用的标签，不可以进行编辑。" }, { "example": _react2['default'].createElement(Demo4, null), "title": " 可删除标签", "code": "/**\r\n*\r\n* @title 可删除标签\r\n* @description 用户可以手动删除的标签\r\n*\r\n*/\r\nimport React, { Component } from 'react';\r\nimport ReactDOM from 'react-dom';\r\nimport { Tag, FormControl } from 'tinper-bee';\r\n\n\r\nclass Demo4 extends React.Component {\r\n    constructor(props){\r\n      super(props)\r\n      this.state = {\r\n        tags: ['员工编号', '员工姓名', '员工性别','所属部门']\r\n      };\r\n    }\r\n  \r\n    handleClose = (removedTag) => {\r\n      const tags = this.state.tags.filter(tag => tag !== removedTag);\r\n      this.setState({ tags });\r\n    }\r\n  \r\n    forMap = (tag) => {\r\n      const tagElem = (\r\n        <Tag visible={true} deleted \r\n          onClose={(e) => {\r\n            e.preventDefault();\r\n            this.handleClose(tag);\r\n          }}\r\n        >\r\n          {tag}\r\n        </Tag>\r\n      );\r\n      return (\r\n        <span key={tag}>\r\n          {tagElem}\r\n        </span>\r\n      );\r\n    }\r\n\r\n    addTag=()=>{\r\n      let value = ReactDOM.findDOMNode(this.refs.addTag).value;\r\n      if(!value) return;\r\n      let tags = this.state.tags;\r\n      if(tags.indexOf(value)==-1){\r\n        tags.push(value);\r\n        this.setState({\r\n          tags\r\n        })\r\n        ReactDOM.findDOMNode(this.refs.addTag).value='';\r\n      }else{\r\n        console.log('此tag已经存在')\r\n      }\r\n    }\r\n    blur=()=>{\r\n      this.addTag()\r\n    }\r\n    keyDown=(e)=>{\r\n      if(e.keyCode==13){\r\n        this.addTag()\r\n      }\r\n    }\r\n\r\n    render() {\r\n      const { tags } = this.state;\r\n      const tagChild = tags.map(this.forMap);\r\n      \r\n      return (\r\n         <div className=\"demoPadding\">\r\n            <div>\r\n              {tagChild}\r\n            </div>\r\n            <div className=\"divider\"></div>\r\n            <div>\r\n             <FormControl  maxlength=\"8\"  ref=\"addTag\"  onKeyDown={this.keyDown}\r\n             onBlur={this.blur}\r\n                style={{width:83,height:20}} placeholder=\"添加标签\"/>\r\n            </div>\r\n         </div>\r\n      );\r\n    }\r\n  }\r\n", "desc": " 用户可以手动删除的标签" }, { "example": _react2['default'].createElement(Demo5, null), "title": " 可选标签", "code": "/**\r\n*\r\n* @title 可选标签\r\n* @description 可以表示选中和未选中两种状态的标签\r\n*\r\n*/\r\nimport React, { Component } from 'react';\r\nimport { Tag } from 'tinper-bee';\r\nclass Demo5 extends Component {\r\n    render () { \r\n        return (\r\n            <div className=\"demoPadding\">\r\n                <Tag select={true}>部门</Tag>\r\n                <Tag select={true}>职级</Tag>\r\n                <Tag select={true}>年份</Tag>\r\n                <Tag select={true}>月份</Tag> \r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\n", "desc": " 可以表示选中和未选中两种状态的标签" }, { "example": _react2['default'].createElement(Demo6, null), "title": "  多彩标签", "code": "/**\r\n *\r\n * @title  多彩标签\r\n * @description 包含多种预设色彩的标签样式，可以在不同场景使用，\r\n * 通过`colors`属性控制标签的颜色\r\n */\r\n\r\nimport React, { Component } from 'react';\r\nimport { Tag } from 'tinper-bee';\r\n\r\n class Demo6 extends Component {\r\n\r\n    render () {\r\n        return (\r\n            <div className=\"demoPadding\">\r\n                <div>\r\n                    <Tag colors=\"success\">success</Tag>\r\n                    <Tag colors=\"warning\">warning</Tag>\r\n                    <Tag colors=\"danger\">danger</Tag>\r\n                    <Tag colors=\"info\">info</Tag>\r\n                </div>  \r\n                <div className=\"divider\"></div>\r\n                <div>\r\n                    <Tag bordered colors=\"success\">success</Tag>\r\n                    <Tag bordered colors=\"warning\">warning</Tag>\r\n                    <Tag bordered colors=\"danger\">danger</Tag>\r\n                    <Tag bordered colors=\"info\">info</Tag>\r\n                </div>       \r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\n", "desc": " 包含多种预设色彩的标签样式，可以在不同场景使用，" }];
 	
 	var Demo = function (_Component) {
 	    _inherits(Demo, _Component);
@@ -32174,13 +32174,15 @@
 	        _this.handleKeyDown = function (e) {
 	            var _this$props = _this.props,
 	                onSearch = _this$props.onSearch,
-	                type = _this$props.type;
+	                type = _this$props.type,
+	                onKeyDown = _this$props.onKeyDown;
 	
 	            if (e.keyCode === 13 && type === "search") {
 	                if (onSearch) {
 	                    onSearch(_this.input.value);
 	                }
 	            }
+	            onKeyDown && onKeyDown(e);
 	        };
 	
 	        _this.handleSearch = function (e) {
@@ -32673,10 +32675,10 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
 	
 	var propTypes = {
-	    // /**
-	    //  * @title 样式 
-	    //  */
-	    // style: PropTypes.object,
+	    /**
+	     * @title 样式 
+	     */
+	    style: _propTypes2['default'].object,
 	
 	    /**
 	     * @title 形状 
@@ -32793,8 +32795,7 @@
 	        if (deleted) {
 	            clsObj[clsPrefix + '-delete'] = deleted;
 	        }
-	
-	        // 选择标签选中时，改变标签当前状态
+	        // "选择标签"选中时，改变标签的样式，单独写了一个selected类
 	        if (this.props.select == true) {
 	            if (this.state.selected) {
 	                clsObj[clsPrefix + '-selected'] = true;
@@ -32978,11 +32979,13 @@
 	
 	var _src2 = _interopRequireDefault(_src);
 	
+	var _beeFormControl = __webpack_require__(258);
+	
+	var _beeFormControl2 = _interopRequireDefault(_beeFormControl);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
 	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
-	
-	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
@@ -32999,23 +33002,19 @@
 	var Demo4 = function (_React$Component) {
 	  _inherits(Demo4, _React$Component);
 	
-	  function Demo4() {
-	    var _temp, _this, _ret;
-	
+	  function Demo4(props) {
 	    _classCallCheck(this, Demo4);
 	
-	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-	      args[_key] = arguments[_key];
-	    }
+	    var _this = _possibleConstructorReturn(this, _React$Component.call(this, props));
 	
-	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, _React$Component.call.apply(_React$Component, [this].concat(args))), _this), _this.state = {
-	      tags: ['员工编号', '员工姓名', '员工性别', '所属部门']
-	    }, _this.handleClose = function (removedTag) {
+	    _this.handleClose = function (removedTag) {
 	      var tags = _this.state.tags.filter(function (tag) {
 	        return tag !== removedTag;
 	      });
 	      _this.setState({ tags: tags });
-	    }, _this.forMap = function (tag) {
+	    };
+	
+	    _this.forMap = function (tag) {
 	      var tagElem = _react2['default'].createElement(
 	        _src2['default'],
 	        { visible: true, deleted: true,
@@ -33031,17 +33030,37 @@
 	        { key: tag },
 	        tagElem
 	      );
-	    }, _this.inputOnBlur = function () {
-	      var ary = _this.state.tags;
+	    };
+	
+	    _this.addTag = function () {
 	      var value = _reactDom2['default'].findDOMNode(_this.refs.addTag).value;
-	      if (value != '') {
-	        ary.push(value);
+	      if (!value) return;
+	      var tags = _this.state.tags;
+	      if (tags.indexOf(value) == -1) {
+	        tags.push(value);
+	        _this.setState({
+	          tags: tags
+	        });
+	        _reactDom2['default'].findDOMNode(_this.refs.addTag).value = '';
+	      } else {
+	        console.log('此tag已经存在');
 	      }
-	      ary = [].concat(_toConsumableArray(new Set(ary)));
-	      _this.setState({
-	        tags: ary
-	      });
-	    }, _temp), _possibleConstructorReturn(_this, _ret);
+	    };
+	
+	    _this.blur = function () {
+	      _this.addTag();
+	    };
+	
+	    _this.keyDown = function (e) {
+	      if (e.keyCode == 13) {
+	        _this.addTag();
+	      }
+	    };
+	
+	    _this.state = {
+	      tags: ['员工编号', '员工姓名', '员工性别', '所属部门']
+	    };
+	    return _this;
 	  }
 	
 	  Demo4.prototype.render = function render() {
@@ -33061,7 +33080,8 @@
 	      _react2['default'].createElement(
 	        'div',
 	        null,
-	        _react2['default'].createElement('input', { maxlength: '8', type: 'input', ref: 'addTag', onBlur: this.inputOnBlur,
+	        _react2['default'].createElement(_beeFormControl2['default'], { maxlength: '8', ref: 'addTag', onKeyDown: this.keyDown,
+	          onBlur: this.blur,
 	          style: { width: 83, height: 20 }, placeholder: '\u6DFB\u52A0\u6807\u7B7E' })
 	      )
 	    );
@@ -33178,8 +33198,8 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); } /**
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @title  多彩标签
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @description 包含多种预设色彩的标签样式，可以在不同场景使用，通过`colors`属性控制标签的颜色
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * 
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @description 包含多种预设色彩的标签样式，可以在不同场景使用，
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * 通过`colors`属性控制标签的颜色
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
 	
 	var Demo6 = function (_Component) {
