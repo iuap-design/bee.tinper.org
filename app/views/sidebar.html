@@ -105,7 +105,7 @@
 
     // 点击红点
     //
-    function localStorageSet(key, value) {debugger
+    function localStorageSet(key, value) {
         var curTime = new Date().getTime();
         localStorage.setItem(key,JSON.stringify({data:value,time:curTime}));
     }
