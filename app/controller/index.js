@@ -60,9 +60,9 @@ Object.keys(sidebar).forEach(item => {
   }
 })
 
-async function getTinperThemeServer(url){
+async function getTinperThemeServer(url,option){
   return new Promise((resolve, reject)=> {
-      fetch('http://tinper-bee-theme-server.online.app.yyuap.com/server/'+url)
+      fetch('http://tinper-bee-theme-server.online.app.yyuap.com/server/'+url,option)
       .then(res => res.json())
       .then(json => {
         resolve(json);
@@ -179,9 +179,10 @@ module.exports = {
     });
   },
   cliBuildScss: async(ctx, next) => {
-    ctx.response.body = await getTinperThemeServer("package");
+    console.log("ctx.request.body ",ctx.request.body);
+    ctx.response.body = await getTinperThemeServer("package",{ method: 'POST', body:{...ctx.request.body}});
   },
   getVersion: async(ctx, next) => {
-    ctx.response.body = await getTinperThemeServer("version");
+    ctx.response.body = await getTinperThemeServer("version",{});
   }
 }
