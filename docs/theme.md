@@ -19,4 +19,8 @@
 1、组件库默认主题色不符合项目需求时，可采用主题定制功能，不需要额外写任何样式即可实现全局风格切换；<br/>
 2、项目中需要实现多主题切换时，可采用主题定制功能。
 
+## 替换本地 iconfont 替换本地
+
+在打包后的tinper-bee.css 默认引入的都是CDN的字体图标资源，也可以[下载iconfont](http://iuap-design-cdn.oss-cn-beijing.aliyuncs.com/static/tinper-bee/theme/iconfont.zip)，到本地，全局替换路径即可。
+
 ## 自定义主题
