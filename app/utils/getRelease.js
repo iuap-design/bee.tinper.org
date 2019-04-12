@@ -8,7 +8,7 @@ let sidebar = require('../../static/sidebar.json');
 
 
 const auth = {
-    token: '65bd18c1fd27766b500e54d49afbd2f9159ade8b',
+    token: '',
     user: 'liushaozhen'
 }
 
