@@ -180,7 +180,12 @@ module.exports = {
   },
   cliBuildScss: async(ctx, next) => {
     console.log("ctx.request.body ",ctx.request.body);
-    ctx.response.body = await getTinperThemeServer("package",{ method: 'POST', body:{...ctx.request.body}});
+    let option = {
+      method: 'post',
+      body:    JSON.stringify(ctx.request.body),
+      headers: { 'Content-Type': 'application/json' }
+    };
+    ctx.response.body = await getTinperThemeServer("package",option);
   },
   getVersion: async(ctx, next) => {
     ctx.response.body = await getTinperThemeServer("version",{});
