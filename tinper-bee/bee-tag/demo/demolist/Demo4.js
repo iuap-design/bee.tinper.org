@@ -35,13 +35,34 @@ class Demo4 extends React.Component {
         </span>
       );
     }
+    
+    inputOnBlur = ()=> {
+      let ary = this.state.tags;
+      let value = ReactDOM.findDOMNode(this.refs.addTag).value;
+      if(value!=''){
+        ary.push(value);
+      }
+      ary=[...new Set(ary)];
+      this.setState({
+        tags: ary
+      })
+    }
+    
     render() {
       const { tags } = this.state;
       const tagChild = tags.map(this.forMap);
+      
       return (
-            <div className="demoPadding">
+         <div className="demoPadding">
+            <div>
               {tagChild}
             </div>
+            <div className="divider"></div>
+            <div>
+             <input maxlength="8" type="input"  ref="addTag" onBlur={this.inputOnBlur } 
+                style={{width:83,height:20}} placeholder="添加标签"/>
+            </div>
+         </div>
       );
     }
   }

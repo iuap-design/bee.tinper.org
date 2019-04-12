@@ -17,7 +17,7 @@ react bee-tag component for tinper-bee
 
 ### 使用单独的tag包
 #### 组件引入
-先进行下载bee-button包
+先进行下载bee-tag包
 ```
 npm install --save bee-button
 ```
@@ -44,9 +44,13 @@ import "./node_modules/bee-tag/src/Tag.scss"
 |:---|:----:|:---:|------:|
 |colors|颜色(dark/light/success/warning/primary/message/danger)|string|''|
 |disabled|是否禁用(`disabled` 或 `true` `false`)|boolean|false|
+|bordered|是否为边框类型(`bordered` 或 `true` `false`)|boolean|false|
 |deleted|是否可以删除(`deleted` 或 `true` `false`)|boolean|false|
-|onDelete|删除时的回调|(e) => void|-|
+|visible|标签是否显示关闭图标(`visible` 或 `true` `false`)|boolean|false|
+|onClose|标签删除时的回调|(e) => void|-|
 |select|是否可以选择(`select` 或 `true` `false`)|boolean|false|
+|className|增加额外的class|string|''|
+|style|style 属性|object|''|
 
 #### 开发调试
 

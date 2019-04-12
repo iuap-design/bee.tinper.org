@@ -1,12 +1,13 @@
 /* FormGroup */
 /*  Navlayout  */
 .u-tag {
+  position: relative;
   display: inline-block;
   cursor: default;
   text-align: center;
   line-height: 20px;
   vertical-align: middle;
-  max-width: 108px;
+  max-width: 150px;
   overflow: hidden;
   outline: none;
   cursor: default;
@@ -15,13 +16,9 @@
   padding-left: 8px;
   padding-right: 8px;
   border-radius: 3px;
-  height: 20px;
   font-weight: 400;
   font-size: 12px;
   margin-right: 23px; }
-  .u-tag * {
-    margin: 0;
-    padding: 0; }
   .u-tag.u-tag[disabled] {
     cursor: not-allowed;
     background-color: #EBECF0;
@@ -41,7 +38,7 @@
 
 .u-tag-light {
   color: #212121;
-  background-color: rgb(255,255,255);
+  background-color: #F7F9FB;
   border: 1px solid #A5ADBA; }
 
 .u-tag.u-tag-success {
@@ -95,16 +92,6 @@
     background: #505F79;
     color: white; }
 
-.u-tag.u-tag-dark {
-  color: #FFFFFF;
-  background-color: rgb(97,97,97);
-  border: 1px rgb(97,97,97) solid; }
-
-.u-tag.u-tag-primary {
-  color: #FFFFFF;
-  background-color: rgb(245, 60, 50);
-  border: 1px rgb(245, 60, 50) solid; }
-
 .u-tag.u-tag-success {
   color: #FFFFFF;
   background-color: rgb(76,175,80);
@@ -125,47 +112,39 @@
   background-color: rgb(0,188,212);
   border: 1px rgb(0,188,212) solid; }
 
-.u-tag-border.u-tag-dark {
-  color: rgb(97,97,97);
-  background-color: #DADEE4;
-  border: 1px rgb(97,97,97) solid; }
-
-.u-tag-border.u-tag-primary {
-  color: rgb(245, 60, 50);
-  background-color: #f0c8c8;
-  border: 1px rgb(245, 60, 50) solid; }
-
 .u-tag-border.u-tag-success {
   color: rgb(76,175,80);
-  background-color: #E8F5E9;
+  background-color: #F1F8E9;
   border: 1px rgb(76,175,80) solid; }
 
 .u-tag-border.u-tag-warning {
   color: rgb(255,152,0);
-  background-color: #FFF3E0;
+  background-color: #FFF8E1;
   border: 1px rgb(255,152,0) solid; }
 
 .u-tag-border.u-tag-danger {
   color: rgb(244,67,54);
-  background-color: #e6d0d3;
+  background-color: #FFEBEE;
   border: 1px rgb(244,67,54) solid; }
 
 .u-tag-border.u-tag-info {
   color: rgb(0,188,212);
-  background-color: #d1dde6;
+  background-color: #E0F7FA;
   border: 1px rgb(0,188,212) solid; }
 
 .demoPadding tag {
-  margin: auto 16px; }
+  margin: auto 5px; }
 
 .demoPadding .divider {
-  margin: -3px 0;
-  height: 25px;
+  margin: 6px 0;
+  height: 1px;
   overflow: hidden;
   background-color: #fff; }
 
-.demoPadding .divider0 {
-  height: 45px;
-  background-color: #fff; }
+.demoPadding input::-webkit-input-placeholder {
+  width: 83px;
+  height: 20px;
+  color: #909090;
+  font-size: 12px; }
 
 /*# sourceMappingURL=demo.css.map */

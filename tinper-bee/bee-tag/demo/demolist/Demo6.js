@@ -14,8 +14,6 @@ import Tag from '../../src';
         return (
             <div className="demoPadding">
                 <div>
-                    <Tag colors="dark">dark</Tag>
-                    <Tag colors="primary">primary</Tag>
                     <Tag colors="success">success</Tag>
                     <Tag colors="warning">warning</Tag>
                     <Tag colors="danger">danger</Tag>
@@ -23,8 +21,6 @@ import Tag from '../../src';
                 </div>  
                 <div className="divider"></div>
                 <div>
-                    <Tag bordered colors="dark">dark</Tag>
-                    <Tag bordered colors="primary">primary</Tag>
                     <Tag bordered colors="success">success</Tag>
                     <Tag bordered colors="warning">warning</Tag>
                     <Tag bordered colors="danger">danger</Tag>

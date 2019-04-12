@@ -1,4 +1,4 @@
-# 自动完成 Autocomplete
+# 自动完成 AutoComplete
 根据用户的输入，进行自动匹配显示列表，用户可以进行按需选择自己需要的内容
 
 ## 何时使用
@@ -8,12 +8,12 @@
 ## 如何使用
 
 ```
-import { Autocomplete } from 'tinper-bee';
+import { AutoComplete } from 'tinper-bee';
 
 or
 
-import Autocomplete from 'bee-autocomplete';
-import bee-autocomplete/build/Autocomplete.css;
+import AutoComplete from 'bee-autocomplete';
+import bee-autocomplete/build/AutoComplete.css;
 
 ```
 
