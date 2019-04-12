@@ -179,7 +179,6 @@ module.exports = {
     });
   },
   cliBuildScss: async(ctx, next) => {
-    console.log("ctx.request.body ",ctx.request.body);
     let option = {
       method: 'post',
       body:    JSON.stringify(ctx.request.body),
