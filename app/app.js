@@ -8,6 +8,8 @@ const router = require('./router')
 var bodyParser = require('koa-bodyparser')
 const middleware = require('./middleware')
 
+app.use(cors());
+
 render(app, {
     root: path.join(__dirname, 'views'),
     layout: 'index',
@@ -18,6 +20,7 @@ render(app, {
   
 // 配置ctx.body解析中间件
 app.use(bodyParser())
+
 
 router(app)
 middleware(app)
