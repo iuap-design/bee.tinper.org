@@ -1,3 +1,23 @@
+<a name="2.0.23"></a>
+## [2.0.23](https://github.com/tinper-bee/bee-datepicker/compare/v2.0.22...v2.0.23) (2019-04-12)
+
+
+### Bug Fixes
+
+* **bee-datepicker:** yearpicker willReceiveProps 加判断 ([08e5974](https://github.com/tinper-bee/bee-datepicker/commit/08e5974))
+
+
+
+<a name="2.0.22"></a>
+## [2.0.22](https://github.com/tinper-bee/bee-datepicker/compare/v2.0.21...v2.0.22) (2019-04-12)
+
+
+### Bug Fixes
+
+* **bee-datepicker:** yearpicker onChange加判断 ([02edd44](https://github.com/tinper-bee/bee-datepicker/commit/02edd44))
+
+
+
 <a name="2.0.21"></a>
 ## [2.0.21](https://github.com/tinper-bee/bee-datepicker/compare/v2.0.20...v2.0.21) (2019-04-11)
 
