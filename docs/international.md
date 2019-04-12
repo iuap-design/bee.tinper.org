@@ -150,7 +150,18 @@ class App extends Component {
 {
     "Demo.welcome":"welcome",
     "Demo.showTime":"The following is the show time.",
-    "Demo.value":"Please enter content"
+    "Demo.value":"Please enter content",
+
+    "Header.back": "Back",
+
+    "SearchPanel.clear": "  Reset",
+    "SearchPanel.search": "Query",
+    "SearchPanel.open": "Open",
+    "SearchPanel.close": "Close",
+
+    "International.title":"International-example",
+    "International.local":"File Location",
+    "International.content":"I can become multi-lingual"
 }
 
 ```
