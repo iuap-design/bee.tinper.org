@@ -7,6 +7,7 @@ const fs = require('fs-extra');
 const router = require('./router')
 var bodyParser = require('koa-bodyparser')
 const middleware = require('./middleware')
+var cors = require('koa-cors');
 
 app.use(cors());
 
