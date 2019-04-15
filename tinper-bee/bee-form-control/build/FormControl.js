@@ -102,13 +102,15 @@ var FormControl = function (_React$Component) {
         _this.handleKeyDown = function (e) {
             var _this$props = _this.props,
                 onSearch = _this$props.onSearch,
-                type = _this$props.type;
+                type = _this$props.type,
+                onKeyDown = _this$props.onKeyDown;
 
             if (e.keyCode === 13 && type === "search") {
                 if (onSearch) {
                     onSearch(_this.input.value);
                 }
             }
+            onKeyDown && onKeyDown(e);
         };
 
         _this.handleSearch = function (e) {

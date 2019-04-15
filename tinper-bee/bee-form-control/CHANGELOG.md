@@ -1,5 +1,20 @@
+<a name="2.0.2"></a>
+## [2.0.2](https://github.com/tinper-bee/form-control/compare/v2.0.1...v2.0.2) (2019-04-12)
+
+
+### Features
+
+* **bee-form-control:** 新增onkeydown回调 ([2d46fb2](https://github.com/tinper-bee/form-control/commit/2d46fb2))
+
+
+
 <a name="2.0.1"></a>
-## [2.0.1](https://github.com/tinper-bee/form-control/compare/v1.1.12...v2.0.1) (2019-03-08)
+## [2.0.1](https://github.com/tinper-bee/form-control/compare/v2.0.0...v2.0.1) (2019-03-08)
+
+
+
+<a name="2.0.0"></a>
+# [2.0.0](https://github.com/tinper-bee/form-control/compare/v1.1.12...v2.0.0) (2019-03-07)
 
 
 
@@ -14,19 +29,57 @@
 
 
 <a name="1.1.10"></a>
-## [1.1.10](https://github.com/tinper-bee/form-control/compare/v1.1.3...v1.1.10) (2019-02-25)
+## [1.1.10](https://github.com/tinper-bee/form-control/compare/v1.1.9...v1.1.10) (2019-02-25)
+
+
+
+<a name="1.1.9"></a>
+## [1.1.9](https://github.com/tinper-bee/form-control/compare/v1.1.8...v1.1.9) (2019-01-08)
 
 
 ### Bug Fixes
 
 * **bee-form-control:** type=search 无法获得值 ([c21b9af](https://github.com/tinper-bee/form-control/commit/c21b9af))
+
+
+
+<a name="1.1.8"></a>
+## [1.1.8](https://github.com/tinper-bee/form-control/compare/v1.1.7...v1.1.8) (2018-11-29)
+
+
+### Bug Fixes
+
 * **bee-form-control:** type=search改造 ([42a5cbc](https://github.com/tinper-bee/form-control/commit/42a5cbc))
+
+
+
+<a name="1.1.7"></a>
+## [1.1.7](https://github.com/tinper-bee/form-control/compare/v1.1.6...v1.1.7) (2018-11-16)
 
 
 ### Features
 
 * **bee-form-control:** 新增focusSelect 获得焦点后全选内容功能 ([4a80544](https://github.com/tinper-bee/form-control/commit/4a80544))
+
+
+
+<a name="1.1.6"></a>
+## [1.1.6](https://github.com/tinper-bee/form-control/compare/v1.1.5...v1.1.6) (2018-11-15)
+
+
+
+<a name="1.1.5"></a>
+## [1.1.5](https://github.com/tinper-bee/form-control/compare/v1.1.4...v1.1.5) (2018-11-13)
+
+
+### Features
+
 * **bee-form-control:** 新增onChange，defaultSelect ([b2c5b53](https://github.com/tinper-bee/form-control/commit/b2c5b53))
+
+
+
+<a name="1.1.4"></a>
+## [1.1.4](https://github.com/tinper-bee/form-control/compare/v1.1.3...v1.1.4) (2018-11-13)
 
 
 

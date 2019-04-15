@@ -5,10 +5,10 @@ import classnames from 'classnames';
 import Icon from 'bee-icon';
 
 const propTypes = {
-    // /**
-    //  * @title 样式 
-    //  */
-    // style: PropTypes.object,
+    /**
+     * @title 样式 
+     */
+    style: PropTypes.object,
 
     /**
      * @title 形状 
@@ -115,8 +115,7 @@ class Tag extends Component {
         if(deleted){
             clsObj[`${clsPrefix}-delete`] = deleted;
         }
-        
-        // 选择标签选中时，改变标签当前状态
+        // "选择标签"选中时，改变标签的样式，单独写了一个selected类
         if(this.props.select == true){
             if(this.state.selected){
                 clsObj[`${clsPrefix}-selected`] = true;

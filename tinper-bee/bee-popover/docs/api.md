@@ -12,7 +12,7 @@ import { Popover } from 'tinper-bee';
 or
 
 import Popover from 'bee-popover';
-import bee-popover/build/Popover.css;
+import 'bee-popover/build/Popover.css';
 
 ```
 

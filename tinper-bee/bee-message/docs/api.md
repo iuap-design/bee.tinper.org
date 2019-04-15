@@ -14,7 +14,7 @@ import { Message } from 'tinper-bee';
 or
 
 import Message from 'bee-message';
-import bee-message/build/Message.css;
+import 'bee-message/build/Message.css';
 
 ```
 

@@ -13,7 +13,7 @@ import { Select } from 'tinper-bee';
 or
 
 import Select from 'bee-select';
-import bee-select/build/Select.css;
+import 'bee-select/build/Select.css';
 
 ```
 

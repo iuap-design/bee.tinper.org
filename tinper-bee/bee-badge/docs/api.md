@@ -11,7 +11,7 @@ import { Badge } from 'tinper-bee';
 or
 
 import Badge from 'bee-badge';
-import bee-badge/build/Badge.css;
+import 'bee-badge/build/Badge.css';
 
 ```
 

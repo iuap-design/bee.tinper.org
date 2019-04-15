@@ -79,7 +79,7 @@ class Demo2 extends Component {
     render() {
         const { getFieldProps, getFieldError } = this.props.form;
         let self = this;
-        return (<div className="demo">
+        return (<div className="demo demo2">
             <SearchPanel
                 title='条件筛选'
                 onSearch={this.search}

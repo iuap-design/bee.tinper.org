@@ -15,7 +15,7 @@ import { Backtop } from 'tinper-bee';
 or
 
 import Backtop from 'bee-backtop';
-import bee-backtop/build/Backtop.css;
+import 'bee-backtop/build/Backtop.css';
 
 ```
 

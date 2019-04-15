@@ -38,7 +38,7 @@
  },
  "dependencies": {
   "babel-runtime": "^6.23.0",
-  "bee-form-control": "^2.0.1",
+  "bee-form-control": "^2.0.2",
   "classnames": "^2.2.5",
   "express": "^4.16.4",
   "tinper-bee-core": "latest"

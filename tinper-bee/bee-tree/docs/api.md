@@ -10,7 +10,7 @@ import { Tree } from 'tinper-bee';
 or
 
 import Tree from 'bee-tree';
-import bee-tree/build/Tree.css;
+import 'bee-tree/build/Tree.css';
 
 ```
 

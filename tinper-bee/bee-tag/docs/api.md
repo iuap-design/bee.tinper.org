@@ -14,7 +14,7 @@ import { Tag } from 'tinper-bee';
 or
 
 import Tag from 'bee-tag';
-import Tag/build/Tag.css;
+import 'Tag/build/Tag.css';
 
 ```
 
@@ -25,7 +25,7 @@ import Tag/build/Tag.css;
 
 |参数|说明|类型|默认值|
 |:---|:----:|:---:|------:|
-|colors|颜色(dark/light/success/warning/primary/message/danger)|string|''|
+|colors|颜色(dark/light/success/warning/message/danger)|string|''|
 |disabled|是否禁用(`disabled` 或 `true` `false`)|boolean|false|
 |bordered|是否为边框类型(`bordered` 或 `true` `false`)|boolean|false|
 |deleted|是否可以删除(`deleted` 或 `true` `false`)|boolean|false|

@@ -14,7 +14,7 @@ import { Switch } from 'tinper-bee';
 or
 
 import Switch from 'bee-switch';
-import bee-switch/build/Switch.css;
+import 'bee-switch/build/Switch.css';
 
 ```
 

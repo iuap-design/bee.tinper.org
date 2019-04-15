@@ -14,7 +14,7 @@ import { Upload } from 'tinper-bee';
 or
 
 import Upload from 'bee-upload';
-import bee-upload/build/Upload.css;
+import 'bee-upload/build/Upload.css';
 
 ```
 

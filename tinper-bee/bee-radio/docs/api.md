@@ -14,7 +14,7 @@ import { Radio } from 'tinper-bee';
 or
 
 import Radio from 'bee-radio';
-import bee-radio/build/Radio.css;
+import 'bee-radio/build/Radio.css';
 
 ```
 

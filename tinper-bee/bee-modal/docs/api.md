@@ -13,7 +13,7 @@ import { Modal } from 'tinper-bee';
 or
 
 import Modal from 'bee-modal';
-import bee-modal/build/Modal.css;
+import 'bee-modal/build/Modal.css';
 
 ```
 

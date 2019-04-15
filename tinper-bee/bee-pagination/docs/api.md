@@ -4,6 +4,18 @@
 ## 何时使用
 用于内容过多，分页显示内容
 
+## 如何使用
+
+```
+import { Pagination } from 'tinper-bee';
+
+or
+
+import Pagination from 'bee-pagination';
+import 'bee-pagination/build/Pagination.css';
+
+```
+
 ## 代码演示
 
 ## API

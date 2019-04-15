@@ -14,7 +14,7 @@ import { InputNumber } from 'tinper-bee';
 or
 
 import InputNumber from 'bee-input-number';
-import bee-input-number/build/InputNumber.css;
+import 'bee-input-number/build/InputNumber.css';
 
 ```
 ## 代码演示

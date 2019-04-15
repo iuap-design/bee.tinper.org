@@ -109,6 +109,9 @@ $modal-footer-padding : 16px;
       padding-top: 4px;
       .u-modal-confirm-content{
         padding-left: 48px;
+        p{
+          margin: 0;
+        }
       }
     }
   }

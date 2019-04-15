@@ -10,7 +10,7 @@ import Dnd from "tinper-bee/lib/Dnd";
 or
 
 import Dnd from 'bee-dnd';
-import bee-dnd/build/Dnd.css;
+import 'bee-dnd/build/Dnd.css';
 
 ```
 

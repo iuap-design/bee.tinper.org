@@ -14,7 +14,7 @@ import { SearchPanel } from 'tinper-bee';
 or
 
 import SearchPanel from 'bee-search-panel';
-import bee-search-panel/build/SearchPanel.css;
+import 'bee-search-panel/build/SearchPanel.css';
 
 ```
 ## 代码演示

@@ -30,7 +30,7 @@ $tag-warning-background-color:#FFF8E1;
 $tag-danger-background-color:#FFEBEE;
 $tag-info-background-color:#E0F7FA;
 
-//標籤顏色
+//标签颜色
 @mixin tag-styles-variant($text-color,$bg-color) {
     color: $text-color;
     background-color: $bg-color;
@@ -77,7 +77,6 @@ $tag-info-background-color:#E0F7FA;
 .u-tag-border{
     color: $tag-default-text-color;
     border: $tag-border-width $tag-border-style $tag-border-color;
-    background: $tag-border-bg-color;
 }
 
 // 默认标签

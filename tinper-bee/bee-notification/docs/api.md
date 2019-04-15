@@ -12,7 +12,7 @@ import { Notification } from 'tinper-bee';
 or
 
 import Notification from 'bee-notification';
-import bee-notification/build/Notification.css;
+import 'bee-notification/build/Notification.css';
 
 ```
 

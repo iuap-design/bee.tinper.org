@@ -13,7 +13,7 @@ import { Loading } from 'tinper-bee';
 or
 
 import Loading from 'bee-loading';
-import bee-loading/build/Loading.css;
+import 'bee-loading/build/Loading.css';
 
 ```
 

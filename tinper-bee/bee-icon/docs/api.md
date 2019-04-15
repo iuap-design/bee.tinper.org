@@ -12,7 +12,7 @@ import { Icon } from 'tinper-bee';
 or
 
 import Icon from 'bee-icon';
-import bee-icon/build/Icon.css;
+import 'bee-icon/build/Icon.css';
 
 ```
 

@@ -13,7 +13,7 @@ import { Carousel } from 'tinper-bee';
 or
 
 import Carousel from 'bee-carousel';
-import bee-carousel/build/Carousel.css;
+import 'bee-carousel/build/Carousel.css';
 
 ```
 ## 代码演示

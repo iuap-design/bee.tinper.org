@@ -1074,6 +1074,8 @@
     padding-top: 4px; }
     .u-modal-confirm.u-modal .u-modal-body .u-modal-confirm-content {
       padding-left: 48px; }
+      .u-modal-confirm.u-modal .u-modal-body .u-modal-confirm-content p {
+        margin: 0; }
   .u-modal-confirm-info .u-modal-title > .uf {
     color: rgb(0,188,212); }
   .u-modal-confirm-success .u-modal-title > .uf {

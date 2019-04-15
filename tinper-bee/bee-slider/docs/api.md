@@ -13,7 +13,7 @@ import { Slider } from 'tinper-bee';
 or
 
 import Slider from 'bee-slider';
-import bee-slider/build/Slider.css;
+import 'bee-slider/build/Slider.css';
 
 ```
 

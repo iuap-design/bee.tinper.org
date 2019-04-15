@@ -35,7 +35,7 @@
  "dependencies": {
   "babel-runtime": "^6.23.0",
   "rc-trigger": "^2.6.2",
-  "tinper-bee-core": "^2.0.13"
+  "tinper-bee-core": "latest"
  },
  "peerDependencies": {
   "react": "^15.3.0 || ^16.0",
@@ -44,7 +44,7 @@
  },
  "devDependencies": {
   "bee-button": "latest",
-  "bee-clipboard": "^2.0.0",
+  "bee-clipboard": "latest",
   "bee-drawer": "0.0.2",
   "bee-layout": "latest",
   "bee-panel": "latest",

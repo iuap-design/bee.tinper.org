@@ -13,7 +13,7 @@ import { Step } from 'tinper-bee';
 or
 
 import Step from 'bee-step';
-import bee-step/build/Step.css;
+import 'bee-step/build/Step.css';
 
 ```
 

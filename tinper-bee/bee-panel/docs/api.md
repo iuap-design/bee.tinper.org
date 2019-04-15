@@ -10,7 +10,7 @@ import { Panel } from 'tinper-bee';
 or
 
 import Panel from 'bee-panel';
-import bee-panel/build/Panel.css;
+import 'bee-panel/build/Panel.css';
 
 ```
 

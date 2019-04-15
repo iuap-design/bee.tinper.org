@@ -14,7 +14,7 @@ import { FormGroup } from 'tinper-bee';
 or
 
 import FormGroup from 'bee-form-group';
-import bee-form-group/build/FormGroup.css;
+import 'bee-form-group/build/FormGroup.css';
 
 ```
 

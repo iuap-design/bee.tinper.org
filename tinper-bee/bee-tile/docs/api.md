@@ -10,7 +10,7 @@ import { Tile } from 'tinper-bee';
 or
 
 import Tile from 'bee-tile';
-import bee-tile/build/Tile.css;
+import 'bee-tile/build/Tile.css';
 
 ```
 

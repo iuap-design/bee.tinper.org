@@ -12,7 +12,7 @@ import { Rate } from 'tinper-bee';
 or
 
 import Rate from 'bee-rate';
-import bee-rate/build/Rate.css;
+import 'bee-rate/build/Rate.css';
 
 ```
 

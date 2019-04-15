@@ -7,11 +7,15 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import Tag from '../../src';
+import FormControl from 'bee-form-control';
 
 class Demo4 extends React.Component {
-    state = {
-      tags: ['员工编号', '员工姓名', '员工性别','所属部门']
-    };
+    constructor(props){
+      super(props)
+      this.state = {
+        tags: ['员工编号', '员工姓名', '员工性别','所属部门']
+      };
+    }
   
     handleClose = (removedTag) => {
       const tags = this.state.tags.filter(tag => tag !== removedTag);
@@ -35,19 +39,30 @@ class Demo4 extends React.Component {
         </span>
       );
     }
-    
-    inputOnBlur = ()=> {
-      let ary = this.state.tags;
+
+    addTag=()=>{
       let value = ReactDOM.findDOMNode(this.refs.addTag).value;
-      if(value!=''){
-        ary.push(value);
+      if(!value) return;
+      let tags = this.state.tags;
+      if(tags.indexOf(value)==-1){
+        tags.push(value);
+        this.setState({
+          tags
+        })
+        ReactDOM.findDOMNode(this.refs.addTag).value='';
+      }else{
+        console.log('此tag已经存在')
       }
-      ary=[...new Set(ary)];
-      this.setState({
-        tags: ary
-      })
     }
-    
+    blur=()=>{
+      this.addTag()
+    }
+    keyDown=(e)=>{
+      if(e.keyCode==13){
+        this.addTag()
+      }
+    }
+
     render() {
       const { tags } = this.state;
       const tagChild = tags.map(this.forMap);
@@ -59,7 +74,8 @@ class Demo4 extends React.Component {
             </div>
             <div className="divider"></div>
             <div>
-             <input maxlength="8" type="input"  ref="addTag" onBlur={this.inputOnBlur } 
+             <FormControl  maxlength="8"  ref="addTag"  onKeyDown={this.keyDown}
+             onBlur={this.blur}
                 style={{width:83,height:20}} placeholder="添加标签"/>
             </div>
          </div>
