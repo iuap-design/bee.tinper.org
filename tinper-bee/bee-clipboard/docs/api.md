@@ -11,7 +11,7 @@ import { Clipboard } from 'tinper-bee';
 or
 
 import Clipboard from 'bee-clipboard';
-import bee-clipboard/build/Clipboard.css;
+import 'bee-clipboard/build/Clipboard.css';
 
 ```
 

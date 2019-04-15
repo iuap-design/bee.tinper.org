@@ -5347,4 +5347,10 @@ a, .mdl-accordion, .mdl-button, .mdl-card, .mdl-checkbox, .mdl-dropdown-menu,
 .demo-body {
   margin: 0 -20px; }
 
+.demo2 .u-form-item .u-select {
+  min-width: 172px; }
+
+.demo3 .u-form-item .u-select {
+  min-width: 172px; }
+
 /*# sourceMappingURL=demo.css.map */

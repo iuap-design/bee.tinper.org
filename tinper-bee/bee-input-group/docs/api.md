@@ -12,15 +12,13 @@ import { InputGroup } from 'tinper-bee';
 or
 
 import InputGroup from 'bee-input-group';
-import bee-input-group/build/InputGroup.css;
+import 'bee-input-group/build/InputGroup.css';
 
 ```
 
 ## 代码演示
 
 ## API 
-
-### 小标题，没有可不加
 
 |参数|说明|类型|默认值|
 |:---|:----:|:---:|------:|

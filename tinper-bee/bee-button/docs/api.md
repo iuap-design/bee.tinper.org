@@ -14,7 +14,7 @@ import { Button } from 'tinper-bee';
 or
 
 import Button from 'bee-button';
-import bee-button/build/Button.css;
+import 'bee-button/build/Button.css';
 
 ```
 

@@ -13,7 +13,7 @@ import { TimePicker } from 'tinper-bee';
 or
 
 import TimePicker from 'bee-timepicker';
-import bee-timepicker/build/TimePicker.css;
+import 'bee-timepicker/build/TimePicker.css';
 
 ```
 

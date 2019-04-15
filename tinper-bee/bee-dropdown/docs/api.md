@@ -13,7 +13,7 @@ import { Dropdown } from 'tinper-bee';
 or
 
 import Dropdown from 'bee-dropdown';
-import bee-dropdown/build/Dropdown.css;
+import 'bee-dropdown/build/Dropdown.css';
 
 ```
 

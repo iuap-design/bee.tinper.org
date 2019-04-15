@@ -14,7 +14,7 @@ import { Affix } from 'tinper-bee';
 or
 
 import Affix from 'bee-affix';
-import bee-affix/build/Affix.css;
+import 'bee-affix/build/Affix.css';
 
 ```
 

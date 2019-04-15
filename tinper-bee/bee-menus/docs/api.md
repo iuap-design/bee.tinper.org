@@ -13,7 +13,7 @@ import { Menus } from 'tinper-bee';
 or
 
 import Menus from 'bee-menus';
-import bee-menus/build/Menus.css;
+import 'bee-menus/build/Menus.css';
 
 ```
 

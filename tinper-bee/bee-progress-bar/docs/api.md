@@ -11,7 +11,7 @@ import { ProgressBar } from 'tinper-bee';
 or
 
 import ProgressBar from 'bee-progress-bar';
-import bee-progress-bar/build/ProgressBar.css;
+import 'bee-progress-bar/build/ProgressBar.css';
 
 ```
 

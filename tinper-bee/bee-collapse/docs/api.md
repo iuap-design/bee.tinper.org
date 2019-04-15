@@ -12,7 +12,7 @@ import { Collapse } from 'tinper-bee';
 or
 
 import Collapse from 'bee-collapse';
-import bee-collapse/build/Collapse.css;
+import 'bee-collapse/build/Collapse.css';
 
 ```
 

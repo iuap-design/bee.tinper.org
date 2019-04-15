@@ -154,7 +154,7 @@ var Clipboard = function (_Component) {
 
         return _react2["default"].createElement(
             _beeTooltip2["default"],
-            {
+            { className: 'u-clipboard-tooltip',
                 positionTop: '20px',
                 overlay: tootipContent,
                 placement: 'top' },

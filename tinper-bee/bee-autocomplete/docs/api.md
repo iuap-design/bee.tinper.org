@@ -13,7 +13,7 @@ import { AutoComplete } from 'tinper-bee';
 or
 
 import AutoComplete from 'bee-autocomplete';
-import bee-autocomplete/build/AutoComplete.css;
+import 'bee-autocomplete/build/AutoComplete.css';
 
 ```
 

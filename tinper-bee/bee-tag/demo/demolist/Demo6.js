@@ -1,8 +1,8 @@
 /**
  *
  * @title  多彩标签
- * @description 包含多种预设色彩的标签样式，可以在不同场景使用，通过`colors`属性控制标签的颜色
- * 
+ * @description 包含多种预设色彩的标签样式，可以在不同场景使用，
+ * 通过`colors`属性控制标签的颜色
  */
 
 import React, { Component } from 'react';

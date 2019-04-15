@@ -13,7 +13,7 @@ import { Form } from 'tinper-bee';
 or
 
 import Form from 'bee-form';
-import bee-form/build/Form.css;
+import 'bee-form/build/Form.css';
 
 ```
 

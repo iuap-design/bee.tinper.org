@@ -50,7 +50,7 @@ class Demo6 extends Component {
                 </Button>
                 <Loading
                     showBackDrop={true}
-                    loadingType="line"
+                    // loadingType="line"
                     fullScreen
                     show={this.state.showLoading}
                 >

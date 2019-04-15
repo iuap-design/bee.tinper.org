@@ -10,7 +10,7 @@ import { Timeline } from 'tinper-bee';
 or
 
 import Timeline from 'bee-timeline';
-import bee-timeline/build/Timeline.css;
+import 'bee-timeline/build/Timeline.css';
 
 ```
 

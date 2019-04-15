@@ -80,7 +80,7 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
 	
-	var Demo1 = __webpack_require__(270);var Demo2 = __webpack_require__(271);var Demo3 = __webpack_require__(276);var Demo4 = __webpack_require__(277);var Demo5 = __webpack_require__(278);var Demo6 = __webpack_require__(279);var Demo7 = __webpack_require__(282);var Demo8 = __webpack_require__(681);var Demo9 = __webpack_require__(682);var Demo10 = __webpack_require__(687);var Demo11 = __webpack_require__(736);var Demo12 = __webpack_require__(737);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 默认的模态框", "code": "/**\r\n *\r\n * @title 默认的模态框\r\n * @description\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\r\n\nimport { Modal, Button } from 'tinper-bee';\r\n\r\n\r\nclass Demo1 extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            showModal: false\r\n        };\r\n        this.close = this.close.bind(this);\r\n        this.open = this.open.bind(this);\r\n    }\r\n\r\n    close() {\r\n        this.setState({\r\n            showModal: false\r\n        });\r\n    }\r\n    open() {\r\n        this.setState({\r\n            showModal: true\r\n        });\r\n    }\r\n    render () {\r\n        return (\r\n        <div>\r\n            <Button\r\n            colors = \"primary\"\r\n            className=\"demo-margin\"\r\n            onClick = { this.open }>\r\n                打开模态框\r\n            </Button>​\r\n            <Modal\r\n            show = { this.state.showModal }\r\n            onHide = { this.close } >\r\n                <Modal.Header closeButton>\r\n                    <Modal.Title>标题</Modal.Title>\r\n                </Modal.Header>\r\n\r\n                <Modal.Body>\r\n                    <p>Some contents...</p>\r\n                    <p>Some contents...</p>\r\n                    <p>Some contents...</p>\r\n                </Modal.Body>\r\n\r\n                <Modal.Footer>\r\n                    <Button onClick={ this.close } colors=\"secondary\" style={{marginRight: 8}}>取消</Button>\r\n                    <Button onClick={ this.close } colors=\"primary\">确认</Button>\r\n                </Modal.Footer>\r\n           </Modal>\r\n        </div>\r\n        )\r\n    }\r\n}\r\n\r\n\r\n", "desc": "", "scss_code": ".demo-margin{\r\n  margin: 5px 15px;\r\n}" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 注册的模态框", "code": "/**\r\n *\r\n * @title 注册的模态框\r\n * @description\r\n *\r\n */\r\n\r\nimport React, {Component} from 'react';\r\n\nimport { Modal, FormControl, Label, FormGroup, Button } from 'tinper-bee';\r\n\n\n\n\r\nclass Demo2 extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            showModal: false,\r\n            password: '',\r\n            name: ''\r\n        };\r\n        this.close = this.close.bind(this);\r\n        this.open = this.open.bind(this);\r\n    }\r\n\r\n    close() {\r\n        this.setState({\r\n            showModal: false\r\n        });\r\n    }\r\n\r\n    open() {\r\n        this.setState({\r\n            showModal: true\r\n        });\r\n    }\r\n\r\n    handleChange = (state) => (value) => {\r\n        this.setState({\r\n            [state]: value\r\n        })\r\n    }\r\n\r\n    render() {\r\n\r\n        return (\r\n            <div className=\"demo-margin\">\r\n                <Button\r\n                    colors=\"primary\"\r\n                    onClick={this.open}>\r\n                    注册模态框\r\n                </Button>​\r\n                <Modal\r\n                    show={this.state.showModal}\r\n                    onHide={this.close}\r\n                    style={{width: 450}}\r\n                >\r\n                    <Modal.Header closeButton>\r\n                        <Modal.Title>注册</Modal.Title>\r\n                    </Modal.Header>\r\n\r\n                    <Modal.Body>\r\n                        <div style={{ width: 300, margin: '0 auto' }}>\r\n                            <FormGroup>\r\n                                <Label>用户名</Label>\r\n                                <FormControl\r\n                                    value={this.state.name}\r\n                                    onChange={this.handleChange('name')}\r\n                                />\r\n                            </FormGroup>\r\n                            <FormGroup>\r\n                                <Label>密码</Label>\r\n                                <FormControl\r\n                                    value={this.state.password}\r\n                                    onChange={this.handleChange('password')}\r\n                                />\r\n                            </FormGroup>\r\n                        </div>\r\n\r\n\r\n                    </Modal.Body>\r\n\r\n                    <Modal.Footer className=\"text-center\">\r\n                        <Button colors=\"secondary\" style={{ marginRight: 8 }} onClick={this.close}>\r\n                            取消\r\n                        </Button>\r\n                        <Button colors=\"primary\" onClick={this.close}>\r\n                            确认\r\n                        </Button>\r\n                    </Modal.Footer>\r\n                </Modal>\r\n\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\n\r\n", "desc": "", "scss_code": ".demo-margin{\r\n  margin: 5px 15px;\r\n}\r\n.text-center{\r\n  text-align: center;\r\n}" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 不同大小的模态框", "code": "/**\r\n *\r\n * @title 不同大小的模态框\r\n * @description 通过size属性控制模态框大小\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\r\n\nimport { Modal, Button } from 'tinper-bee';\r\n\r\nclass Demo3 extends Component {\r\n\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            showModal: false,\r\n            modalSize: ''\r\n        };\r\n        this.close = this.close.bind(this);\r\n        this.open = this.open.bind(this);\r\n        this.changeSize = this.changeSize.bind(this);\r\n\r\n    }\r\n\r\n    close() {\r\n        this.setState({\r\n            showModal: false\r\n        });\r\n    }\r\n\r\n    open() {\r\n        this.setState({\r\n            showModal: true\r\n        });\r\n    }\r\n\r\n    changeSize(size) {\r\n        this.setState({\r\n            modalSize: size\r\n        });\r\n    }\r\n\r\n    render() {\r\n        return (\r\n            <div>\r\n                <Button\r\n                    colors=\"primary\"\r\n                    className=\"demo-margin\"\r\n                    onClick={ ()=>{this.changeSize(\"sm\");this.open();} }>\r\n                    打开小号模态框\r\n                </Button>\r\n                <Button\r\n                    colors=\"primary\"\r\n                    className=\"demo-margin\"\r\n                    onClick={ ()=>{this.changeSize(\"lg\");this.open();} }>\r\n                    打开大号模态框\r\n                </Button>\r\n                <Button\r\n                    colors=\"primary\"\r\n                    className=\"demo-margin\"\r\n                    onClick={ ()=>{this.changeSize(\"xlg\");this.open();} }>\r\n                    打开超大号模态框\r\n                </Button>\r\n                <Modal show={ this.state.showModal } size={ this.state.modalSize } onHide={ this.close } className=\"demo3-modal\">\r\n                    <Modal.Header closeButton>\r\n                        <Modal.Title > 我来组成头部 </Modal.Title>\r\n                    </Modal.Header >\r\n                    <Modal.Body>\r\n                        <h4> 这是一个沉默的标题 </h4>\r\n\r\n                        <p> 一些描述。。。 </p>\r\n                        <hr/>\r\n\r\n                        <p> 用创想与技术推动商业和社会进步 </p>\r\n\r\n                        <p> 我们基于创造性的思想与先进的技术（ 现阶段是信息技术）， 创新和运营高客户价值的产品与服务， 帮助客户实现发展目标， 进而推动商业和社会进步。\r\n                        </p>\r\n\r\n                        <p> 全球领先的企业与公共组织软件、 云服务、 金融服务提供商。 </p>\r\n\r\n                        <p> 员工快乐工作， 成就事业， 分享成功的平台。 </p>\r\n\r\n                        <p> 企业和公共组织是我们持续服务的客户。 软件、 云服务、 金融服务是用友新发展阶段的核心业务。 全球领先是我们必须达成的目标。 </p>\r\n\r\n                        <p> 在努力实现产业发展目标的同时， 员工在用友快乐工作、 成就事业、 分享成功也是公司的追求。 </p>\r\n\r\n                    </Modal.Body>\r\n                    <Modal.Footer>\r\n                        <Button colors=\"secondary\" onClick={ this.close }> 关闭 </Button>\r\n                    </Modal.Footer>\r\n                </Modal>\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\n\r\n", "desc": " 通过size属性控制模态框大小", "scss_code": ".demo-margin{\r\n  margin: 5px 15px;\r\n}\r\n.u-modal-body{\r\n  max-height: 430px;\r\n  overflow: auto;\r\n}\r\n\r\n.demo3-modal{\r\n  .u-modal-body{\r\n    background: #f7f9fb;\r\n  }\r\n}" }, { "example": _react2['default'].createElement(Demo4, null), "title": " 不同遮罩层状态的模态框", "code": "/**\r\n *\r\n * @title 不同遮罩层状态的模态框\r\n * @description 遮罩层可以通过backdrop属性控制状态，可以为不响应事件，可以不显示。\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\r\n\nimport { Modal, Button } from 'tinper-bee';\r\n\r\n\r\nclass Demo4 extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            showModal: false,\r\n            modalDropup: true\r\n        };\r\n        this.close = this.close.bind(this);\r\n        this.open = this.open.bind(this);\r\n        this.changeDropup = this.changeDropup.bind(this);\r\n\r\n    }\r\n\r\n    close() {\r\n        this.setState({\r\n            showModal: false\r\n        });\r\n    }\r\n\r\n    open() {\r\n        this.setState({\r\n            showModal: true\r\n        });\r\n    }\r\n\r\n    changeDropup(state) {\r\n        this.setState({\r\n            modalDropup: state\r\n        });\r\n    }\r\n\r\n    render() {\r\n        return (\r\n            <div>\r\n                <Button\r\n                    colors=\"primary\"\r\n                    className=\"demo-margin\"\r\n                    onClick={ ()=>{this.changeDropup(false);this.open();} }>\r\n                    无遮罩层模态框\r\n                </Button>\r\n                <Button\r\n                    colors=\"primary\"\r\n                    className=\"demo-margin\"\r\n                    onClick={ ()=>{this.changeDropup(\"static\");this.open();} }>\r\n                    遮罩无事件模态框\r\n                </Button>\r\n                <Modal\r\n                    className=\"demo4-modal\"\r\n                    show={ this.state.showModal }\r\n                    backdrop={ this.state.modalDropup }\r\n                    onHide={ this.close }>\r\n                    <Modal.Header closeButton>\r\n                        <Modal.Title > 我来组成头部 </Modal.Title>\r\n                    </Modal.Header >\r\n                    <Modal.Body >\r\n                        <h4> 这是一个沉默的标题 </h4>\r\n\r\n                        <p> 一些描述。。。 </p>\r\n                        <hr/>\r\n\r\n                        <p> 用创想与技术推动商业和社会进步 </p>\r\n\r\n                        <p> 我们基于创造性的思想与先进的技术（ 现阶段是信息技术）， 创新和运营高客户价值的产品与服务， 帮助客户实现发展目标， 进而推动商业和社会进步。 </p>\r\n\r\n                        <p> 全球领先的企业与公共组织软件、 云服务、 金融服务提供商。 </p>\r\n\r\n                        <p> 员工快乐工作， 成就事业， 分享成功的平台。 </p>\r\n                    </Modal.Body>\r\n                    <Modal.Footer>\r\n                        <Button colors=\"secondary\" onClick={ this.close }> 关闭 </Button>\r\n                    </Modal.Footer>\r\n                </Modal>\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\n\r\n", "desc": " 遮罩层可以通过backdrop属性控制状态，可以为不响应事件，可以不显示。", "scss_code": ".demo-margin{\r\n  margin: 5px 15px;\r\n}\r\n.demo4-modal{\r\n  .u-modal-body{\r\n    background: #f7f9fb;\r\n  }\r\n}" }, { "example": _react2['default'].createElement(Demo5, null), "title": " 自定义大小的模态框", "code": "/**\r\n *\r\n * @title 自定义大小的模态框\r\n * @description 通过width属性定义模态框大小\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\r\n\nimport { Modal, Button } from 'tinper-bee';\r\n\r\n\r\nclass Demo5 extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            showModal: false\r\n        };\r\n        this.close = this.close.bind(this);\r\n        this.open = this.open.bind(this);\r\n    }\r\n\r\n    close() {\r\n        this.setState({\r\n            showModal: false\r\n        });\r\n    }\r\n    open() {\r\n        this.setState({\r\n            showModal: true\r\n        });\r\n    }\r\n    render () {\r\n        return (\r\n        <div>\r\n            <Button\r\n            colors = \"primary\"\r\n            className=\"demo-margin\"\r\n            onClick={ ()=>{this.open()} }>\r\n                打开自定义的模态框\r\n            </Button>​\r\n            <Modal\r\n            show = { this.state.showModal }\r\n            onHide = { this.close } \r\n            width = '400'>\r\n                <Modal.Header closeButton>\r\n                    <Modal.Title>这是题目</Modal.Title>\r\n                </Modal.Header>\r\n\r\n                <Modal.Body>\r\n                    这是一些描述。。。\r\n                </Modal.Body>\r\n\r\n                <Modal.Footer>\r\n                    <Button onClick={ this.close } colors=\"secondary\" style={{marginRight: 8}}>取消</Button>\r\n                    <Button onClick={ this.close } colors=\"primary\">确认</Button>\r\n                </Modal.Footer>\r\n           </Modal>\r\n        </div>\r\n        )\r\n    }\r\n}\r\n\r\n\r\n", "desc": " 通过width属性定义模态框大小", "scss_code": ".demo-margin{\r\n    margin: 5px 15px;\r\n}" }, { "example": _react2['default'].createElement(Demo6, null), "title": " 被loading遮住的模态框", "code": "/**\r\n *\r\n * @title 被loading遮住的模态框\r\n * @description 当Modal组件和Loading组件同时出现的时候，Loading会把Modal遮住\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\r\n\n\nimport { Modal, Loading, Button } from 'tinper-bee';\r\n\r\n\r\n\r\nclass Demo6 extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            showModal: false,\r\n            showLoading: false\r\n        };\r\n    }\r\n\r\n    close = () => {\r\n        this.setState({\r\n            showModal: false,\r\n            showLoading: false\r\n        });\r\n    }\r\n    open = () => {\r\n        this.setState({\r\n            showModal: true,\r\n            showLoading: true\r\n        });\r\n        setTimeout(() => {\r\n            this.setState({\r\n                showLoading: false\r\n            })\r\n        }, 1000)\r\n    }\r\n\r\n    render() {\r\n        return (\r\n            <div>\r\n                <Button\r\n                    colors=\"primary\"\r\n                    className=\"demo-margin\"\r\n                    onClick={this.open}>\r\n                    打开模态框\r\n                </Button>\r\n                <Loading\r\n                    showBackDrop={true}\r\n                    loadingType=\"line\"\r\n                    fullScreen\r\n                    show={this.state.showLoading}\r\n                >\r\n                </Loading>\r\n                <Modal\r\n                    show={this.state.showModal}\r\n                    onHide={this.close} >\r\n                    <Modal.Header closeButton>\r\n                        <Modal.Title>标题</Modal.Title>\r\n                    </Modal.Header>\r\n                    <Modal.Body>\r\n                        我是模态框，我的被loading遮住了~\r\n                    </Modal.Body>\r\n                    <Modal.Footer>\r\n                        <Button onClick={this.close} colors=\"secondary\" style={{ marginRight: 8 }}>取消</Button>\r\n                        <Button onClick={this.close} colors=\"primary\">确认</Button>\r\n                    </Modal.Footer>\r\n                </Modal>\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\n\r\n", "desc": " 当Modal组件和Loading组件同时出现的时候，Loading会把Modal遮住", "scss_code": ".demo-margin{\r\n    margin: 5px 15px;\r\n}" }, { "example": _react2['default'].createElement(Demo7, null), "title": " 表单模态框", "code": "/**\r\n *\r\n * @title 表单模态框\r\n * @description 表单模态框\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\r\n\nimport { Modal, Radio, Rate, Form, FormControl, DatePicker, Select, Label, FormGroup, Button } from 'tinper-bee';\r\n\n\n\n\n\n\n\n\n\r\n\r\nconst FormItem = Form.FormItem;\r\nconst Option = Select.Option;\r\nclass Demo7 extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            selectedValue: \"man\",\r\n            showModal: false,\r\n            name: '',\r\n            education: '',\r\n            birthDate: ''\r\n\r\n        };\r\n    }\r\n\r\n    close = () => {\r\n        this.setState({\r\n            showModal: false\r\n        });\r\n    }\r\n\r\n    handleClose = () => {\r\n        this.props.form.validateFields((err, values) => {\r\n            if (err) {\r\n                console.log('校验失败', values);\r\n            } else {\r\n                console.log('提交成功', values)\r\n                this.close()\r\n            }\r\n        });\r\n    }\r\n\r\n    open = () => {\r\n        this.setState({\r\n            showModal: true\r\n        });\r\n    }\r\n\r\n    handleChange = (state) => (value) => {\r\n        this.setState({\r\n            [state]: value\r\n        })\r\n    }\r\n\r\n    getCalendarContainer = () => {\r\n\r\n        return document.getElementById('demo7');\r\n    }\r\n\r\n    render() {\r\n        const { getFieldProps, getFieldError } = this.props.form;\r\n        const self = this;\r\n\r\n        return (\r\n            <div className=\"demo-margin\" id=\"demo7\">\r\n                <Button\r\n                    colors=\"primary\"\r\n                    onClick={this.open}>\r\n                    添加模态框\r\n                </Button>\r\n                <Modal\r\n                    show={this.state.showModal}\r\n                    onHide={this.close}\r\n                    className=\"demo7-modal\"\r\n                >\r\n                    <Modal.Header closeButton>\r\n                        <Modal.Title>表单实践</Modal.Title>\r\n                    </Modal.Header>\r\n\r\n                    <Modal.Body>\r\n                        <div>\r\n                            <Form>\r\n                                <FormItem>\r\n                                    <Label>姓名</Label>\r\n                                    <FormControl placeholder=\"请输入姓名\"\r\n                                        {...getFieldProps('name', {\r\n                                            validateTrigger: 'onBlur',\r\n                                            rules: [{\r\n                                                required: true, message: '请输入姓名',\r\n                                            }],\r\n                                        })}\r\n                                    />\r\n                                    <span className='error'>\r\n                                        {getFieldError('name')}\r\n                                    </span>\r\n                                </FormItem>\r\n                                <FormItem>\r\n                                    <Label>身份证号</Label>\r\n                                    <FormControl placeholder=\"请输入身份证号\"\r\n                                        {...getFieldProps('id', {\r\n                                            validateTrigger: 'onBlur',\r\n                                            rules: [{\r\n                                                required: true, message: '请输入身份证号',\r\n                                            }, {\r\n                                                pattern: /^[1-9][0-9]{5}([1][9][0-9]{2}|[2][0][0|1][0-9])([0][1-9]|[1][0|1|2])([0][1-9]|[1|2][0-9]|[3][0|1])[0-9]{3}([0-9]|[X])$/, message: '身份证号格式不正确'\r\n                                            }],\r\n                                        })}\r\n                                    />\r\n                                    <span className='error'>\r\n                                        {getFieldError('id')}\r\n                                    </span>\r\n                                </FormItem>\r\n                                <FormItem className='time'>\r\n                                    <Label>出生日期</Label>\r\n                                    <DatePicker\r\n                                        {\r\n                                        ...getFieldProps('time', {\r\n                                            validateTrigger: 'onBlur',\r\n                                            rules: [{\r\n                                                required: true, message: '请选择出生日期',\r\n                                            }, {\r\n                                                type: 'date', message: '日期格式不正确'\r\n                                            }],\r\n                                        }\r\n                                        )}\r\n                                        placeholder={'请选择出生日期'}\r\n                                        getCalendarContainer={this.getCalendarContainer}\r\n                                    />\r\n                                    <span className='error'>\r\n                                        {getFieldError('time')}\r\n                                    </span>\r\n                                </FormItem>\r\n                                <FormItem>\r\n                                    <Label>年龄</Label>\r\n                                    <FormControl placeholder=\"请输入年龄\"\r\n                                        {...getFieldProps('age', {\r\n                                            validateTrigger: 'onBlur',\r\n                                            rules: [{\r\n                                                required: true, message: '请输入年龄',\r\n                                            }],\r\n                                        })}\r\n                                    />\r\n                                    <span className='error'>\r\n                                        {getFieldError('age')}\r\n                                    </span>\r\n                                </FormItem>\r\n                                <FormItem>\r\n                                    <Label>性别</Label>\r\n                                    <Radio.RadioGroup\r\n                                        selectedValue={this.state.selectedValue}\r\n                                        {\r\n                                        ...getFieldProps('sex', {\r\n                                            initialValue: 'man',\r\n                                            onChange (value) {\r\n                                                self.setState({ selectedValue: value });\r\n                                            },\r\n                                            rules: [{ required: true }]\r\n                                        }\r\n                                        )}\r\n                                    >\r\n                                        <Radio value=\"man\" >男</Radio>\r\n                                        <Radio value=\"woman\" >女</Radio>\r\n                                    </Radio.RadioGroup>\r\n                                </FormItem>\r\n                                <FormItem>\r\n                                    <Label>学历</Label>\r\n                                    <Select\r\n                                        {\r\n                                        ...getFieldProps('education', {\r\n                                            initialValue: '',\r\n                                            rules: [{ required: true, message: '请选择学历' }]\r\n                                        }\r\n                                        )}\r\n                                    >\r\n                                        <Option value=\"\">请选择</Option>\r\n                                        <Option value=\"nothing\">无</Option>\r\n                                        <Option value=\"middle\">初中</Option>\r\n                                        <Option value=\"senior\">高中</Option>\r\n                                        <Option value=\"college1\">专科</Option>\r\n                                        <Option value=\"college2\">本科</Option>\r\n                                        <Option value=\"graduate\">研究生及以上</Option>\r\n                                        <Option value=\"other\">其它</Option>\r\n                                    </Select>\r\n                                    <span className='error'>\r\n                                        {getFieldError('education')}\r\n                                    </span>\r\n                                </FormItem>\r\n                                <FormItem>\r\n                                    <Label>保密等级</Label>\r\n                                    <Rate\r\n                                        {\r\n                                        ...getFieldProps('rate', {\r\n                                            initialValue: 0,\r\n                                            rules: [{ required: true }]\r\n                                        }\r\n                                        )}\r\n                                    />\r\n                                </FormItem>\r\n                                <FormItem className=\"remarks\">\r\n                                    <Label>备注</Label>\r\n                                    <FormControl componentClass='textarea'\r\n                                        {\r\n                                        ...getFieldProps('remark', {}\r\n                                        )}\r\n                                    />\r\n                                </FormItem>\r\n                            </Form>\r\n                        </div>\r\n                    </Modal.Body>\r\n\r\n                    <Modal.Footer className=\"text-center\">\r\n                        <Button colors=\"secondary\" style={{ marginRight: 8 }} onClick={this.close}>\r\n                            取消\r\n                        </Button>\r\n                        <Button colors=\"primary\" onClick={this.handleClose}>\r\n                            确认\r\n                        </Button>\r\n                    </Modal.Footer>\r\n                </Modal>\r\n\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\n\r\n", "desc": " 表单模态框", "scss_code": ".demo7-modal {\r\n    font-size: 14px;\r\n    .u-label {\r\n        display: inline-block;\r\n        min-width: 100px;\r\n        text-align: right;\r\n        padding-right: 12px;\r\n    }\r\n    .u-form-control {\r\n        width: auto;\r\n        min-width: 310px;\r\n    }\r\n    .error {\r\n        font-size: 12px;\r\n        color: red;\r\n        margin-left: 10px;\r\n    }\r\n    .submit {\r\n        padding-left: 110px;\r\n    }\r\n    .submit .login {\r\n        margin-left: 10px;\r\n    }\r\n    .u-select {\r\n        max-width: 310px;\r\n    }\r\n    textarea {\r\n        resize: none;\r\n    }\r\n    .time>div {\r\n        display: inline-block;\r\n    }\r\n    .time .u-label {\r\n        position: relative;\r\n        bottom: 10px;\r\n    }\r\n    .time .error{\r\n        position: relative;\r\n        bottom: 10px;\r\n    }\r\n    .remarks .u-label{\r\n        position: relative;\r\n        bottom: 12px;\r\n    }\r\n    .u-city-select {\r\n        display: inline-block;\r\n    }\r\n    .u-city-select .province,\r\n    .u-city-select .city,\r\n    .u-city-select .area {\r\n        width: 120px;\r\n    }\r\n    .u-form-item {\r\n        min-height: auto!important;\r\n    }\r\n    .u-modal-body{\r\n        background: #f7f9fb;\r\n    }\r\n\r\n}\r\n#demo7{\r\n    .rc-calendar-picker{\r\n        z-index: 1800;\r\n    }\r\n}\r\n.demo-margin{\r\n    margin: 5px 15px;\r\n}" }, { "example": _react2['default'].createElement(Demo8, null), "title": " 两个模态框", "code": "/**\r\n *\r\n * @title 两个模态框\r\n * @description 当两个模态框同时出现的时候，后面出现的那个层级在上面\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\r\n\nimport { Modal, Button } from 'tinper-bee';\r\n\r\nclass Demo8 extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            showModal: false,\r\n            showModal2: false\r\n        };\r\n    }\r\n\r\n    close = () => {\r\n        this.setState({\r\n            showModal: false\r\n        });\r\n    }\r\n\r\n    open = () => {\r\n        this.setState({\r\n            showModal: true\r\n        });\r\n    }\r\n\r\n    close2 = () => {\r\n        this.setState({\r\n            showModal2: false\r\n        });\r\n    }\r\n\r\n    open2 = () => {\r\n        this.setState({\r\n            showModal2: true\r\n        });\r\n    }\r\n\r\n    render() {\r\n\r\n        return (\r\n            <div className=\"demo-margin\">\r\n                <Button\r\n                    colors=\"primary\"\r\n                    onClick={this.open}>\r\n                    打开模态框\r\n                </Button>\r\n                <Modal\r\n                    show={this.state.showModal}\r\n                    onHide={this.close}\r\n                >\r\n                    <Modal.Header closeButton>\r\n                        <Modal.Title>第一个模态框</Modal.Title>\r\n                    </Modal.Header>\r\n\r\n                    <Modal.Body>\r\n                       这是第一个模态框\r\n                        <Button\r\n                            colors=\"primary\"\r\n                            size=\"sm\"\r\n                            onClick={this.open2}\r\n                        >\r\n                            打开第二个模态框~\r\n                        </Button>\r\n                    </Modal.Body>\r\n\r\n                    <Modal.Footer>\r\n                        <Button colors=\"secondary\" style={{ marginRight: 8 }} onClick={this.close}>\r\n                            取消\r\n                        </Button>\r\n                        <Button colors=\"primary\" onClick={this.close}>\r\n                            确认\r\n                        </Button>\r\n                    </Modal.Footer>\r\n                </Modal>\r\n                <Modal\r\n                    show={this.state.showModal2}\r\n                    onHide={this.close2}\r\n                >\r\n                    <Modal.Header closeButton>\r\n                        <Modal.Title>第二个模态框</Modal.Title>\r\n                    </Modal.Header>\r\n\r\n                    <Modal.Body>\r\n                        这是第二个模态框~\r\n                    </Modal.Body>\r\n\r\n                    <Modal.Footer>\r\n                        <Button colors=\"secondary\" style={{ marginRight: 8 }} onClick={this.close2}>\r\n                            取消\r\n                        </Button>\r\n                        <Button colors=\"primary\" onClick={this.close2}>\r\n                            确认\r\n                        </Button>\r\n                    </Modal.Footer>\r\n                </Modal>\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\n\r\n", "desc": " 当两个模态框同时出现的时候，后面出现的那个层级在上面", "scss_code": ".demo-margin{\r\n    margin: 5px 15px;\r\n}" }, { "example": _react2['default'].createElement(Demo9, null), "title": " enforceFocus", "code": "/**\r\n *\r\n * @title enforceFocus\r\n * @description 打开模态框时控制焦点的聚焦和离开\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\r\n\nimport { Modal, Popconfirm, FormControl, Label, FormGroup, Button } from 'tinper-bee';\r\n\r\n\n\n\n\n// import { Popconfirm } from 'tinper-bee';\r\n\r\n\r\nclass Demo9 extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            showModal: false,\r\n            showModal2: false\r\n        };\r\n    }\r\n\r\n    close = () => {\r\n        this.setState({\r\n            showModal: false\r\n        });\r\n    }\r\n\r\n    open = () => {\r\n        this.setState({\r\n            showModal: true\r\n        });\r\n    }\r\n\r\n    close2 = () => {\r\n        this.setState({\r\n            showModal2: false\r\n        });\r\n    }\r\n\r\n    open2 = () => {\r\n        this.setState({\r\n            showModal2: true\r\n        });\r\n    }\r\n\r\n    handleChange = (state) => (value) => {\r\n      this.setState({\r\n          [state]: value\r\n      })\r\n    }\r\n\r\n    render() {\r\n      let content = (\r\n            <FormGroup>\r\n                <Label>用户名</Label>\r\n                <FormControl\r\n                    value={this.state.name}\r\n                    onChange={this.handleChange('name')}\r\n                />\r\n            </FormGroup>\r\n      );\r\n        return (\r\n            <div className=\"demo-margin\">\r\n                <Button\r\n                    colors=\"primary\"\r\n                    onClick={this.open}\r\n                >\r\n                    打开模态框\r\n                </Button>\r\n                <Modal\r\n                    show={this.state.showModal}\r\n                    onHide={this.close}\r\n                    enforceFocus={false}\r\n                >\r\n                    <Modal.Header closeButton>\r\n                        <Modal.Title>标题</Modal.Title>\r\n                    </Modal.Header>\r\n\r\n                    <Modal.Body>\r\n                       <span>\r\n                          在模态框中打开气泡组件，如果气泡组件中有文本框，文本框光标不会聚焦。需在modal中设置enforceFocus为false。\r\n                       </span>\r\n                      <div className=\"demoPadding\">\r\n                        <Popconfirm trigger=\"click\" placement=\"right\" content={content}>\r\n                            <Button colors=\"primary\">打开气泡组件</Button>\r\n                        </Popconfirm>\r\n                      </div>\r\n                    </Modal.Body>\r\n\r\n                    <Modal.Footer className=\"text-center\">\r\n                        <Button colors=\"secondary\" style={{ marginRight: 8 }} onClick={this.close}>\r\n                            取消\r\n                        </Button>\r\n                        <Button colors=\"primary\" onClick={this.close}>\r\n                            确认\r\n                        </Button>\r\n                    </Modal.Footer>\r\n                </Modal>\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\n\r\n", "desc": " 打开模态框时控制焦点的聚焦和离开", "scss_code": ".u-popconfirm {\r\n  z-index:10000;\r\n}\r\n\r\n.demoPadding {\r\n  text-align: center;\r\n}" }, { "example": _react2['default'].createElement(Demo10, null), "title": " 嵌套表格的模态框", "code": "/**\r\n *\r\n * @title 嵌套表格的模态框\r\n * @description 嵌套表格\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\r\n\n\n\nimport multiSelect from \"bee-table/build/lib/multiSelect\";\r\n\r\n\r\nimport { Modal, Table, Checkbox, Button } from 'tinper-bee';\r\n\r\nlet MultiSelectTable = multiSelect(Table, Checkbox);\r\n\r\n\r\nclass Demo10 extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            showModal: false,\r\n            data: [\r\n                { a: \"杨过\", b: \"男\", c: 30, d: '内行', key: \"2\", _checked: true },\r\n                { a: \"令狐冲\", b: \"男\", c: 41, d: '大侠', key: \"1\", _checked: true },\r\n                { a: \"郭靖\", b: \"男\", c: 25, d: '大侠', key: \"3\", _checked: true }\r\n            ]\r\n        };\r\n\r\n    }\r\n\r\n\r\n\r\n    columns = [\r\n        {\r\n            title: \"名字\",\r\n            dataIndex: \"a\",\r\n            key: \"a\",\r\n            width: \"25%\"\r\n        },\r\n        {\r\n            title: \"性别\",\r\n            dataIndex: \"b\",\r\n            key: \"b\",\r\n            width: \"25%\"\r\n        },\r\n        {\r\n            title: \"年龄\",\r\n            dataIndex: \"c\",\r\n            key: \"c\",\r\n            width: \"20%\",\r\n            sorter: (a, b) => a.c - b.c\r\n        },\r\n        {\r\n            title: \"武功级别\",\r\n            dataIndex: \"d\",\r\n            key: \"25%\"\r\n        }\r\n    ];\r\n\r\n    close = () => {\r\n        this.setState({\r\n            showModal: false\r\n        });\r\n    }\r\n    open = () => {\r\n        this.setState({\r\n            showModal: true\r\n        });\r\n    }\r\n\r\n    getSelectedDataFunc = data => {\r\n        console.log(data);\r\n    };\r\n\r\n    clear = () => {\r\n        let { data } = this.state;\r\n        data.forEach(item => item._checked = false)\r\n        this.setState({\r\n            data:JSON.parse(JSON.stringify(data))\r\n        })\r\n    }\r\n\r\n    render () {\r\n        let multiObj = {\r\n            type: \"checkbox\"\r\n        };\r\n        return (\r\n            <div>\r\n                <Button\r\n                    colors=\"primary\"\r\n                    className=\"demo-margin\"\r\n                    onClick={this.open}>\r\n                    打开模态框\r\n                </Button>\r\n                <Modal\r\n                    show={this.state.showModal}\r\n                    onHide={this.close}\r\n                    size=\"lg\"\r\n                    ref={ref => this.modal = ref}\r\n                    className=\"demo10-modal\"\r\n                >\r\n                    <Modal.Header closeButton>\r\n                        <Modal.Title>标题</Modal.Title>\r\n                    </Modal.Header>\r\n\r\n                    <Modal.Body>\r\n                        <MultiSelectTable\r\n                            columns={this.columns}\r\n                            data={this.state.data}\r\n                            multiSelect={multiObj}\r\n                            getSelectedDataFunc={this.getSelectedDataFunc} \r\n                        />\r\n                    </Modal.Body>\r\n\r\n                    <Modal.Footer>\r\n                        <Button onClick={this.clear} colors=\"secondary\" className=\"clear-btn\">清空所选</Button>\r\n                        <Button onClick={this.close} colors=\"secondary\" style={{ marginRight: 8 }}>取消</Button>\r\n                        <Button onClick={this.close} colors=\"primary\">确认</Button>\r\n                    </Modal.Footer>\r\n                </Modal>\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\n\r\n", "desc": " 嵌套表格", "scss_code": ".demo10-modal{\r\n  .clear-btn{\r\n    float: left;\r\n    background: transparent !important;\r\n    border-color: transparent !important;\r\n    &:hover{\r\n      background: #EBECF0 !important;\r\n    }\r\n    &:active{\r\n      background: #EBECF0 !important;\r\n    }\r\n  }\r\n}" }, { "example": _react2['default'].createElement(Demo11, null), "title": " 可拖拽Header的模态框", "code": "/**\r\n *\r\n * @title 可拖拽Header的模态框\r\n * @description 通过`draggable`参数设置是否可拖拽\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\r\n\n\n\nimport multiSelect from \"bee-table/build/lib/multiSelect\";\r\n\r\n\r\nimport { Modal, Table, Checkbox, Button } from 'tinper-bee';\r\n\r\nlet MultiSelectTable = multiSelect(Table, Checkbox);\r\n\r\n\r\nclass Demo11 extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            showModal: false,\r\n            data: [\r\n                { a: \"杨过\", b: \"男\", c: 30, d: '内行', key: \"2\", _checked: true },\r\n                { a: \"令狐冲\", b: \"男\", c: 41, d: '大侠', key: \"1\", _checked: true },\r\n                { a: \"郭靖\", b: \"男\", c: 25, d: '大侠', key: \"3\", _checked: true }\r\n            ]\r\n        };\r\n\r\n    }\r\n\r\n\r\n\r\n    columns = [\r\n        {\r\n            title: \"名字\",\r\n            dataIndex: \"a\",\r\n            key: \"a\",\r\n            width: \"25%\"\r\n        },\r\n        {\r\n            title: \"性别\",\r\n            dataIndex: \"b\",\r\n            key: \"b\",\r\n            width: \"25%\"\r\n        },\r\n        {\r\n            title: \"年龄\",\r\n            dataIndex: \"c\",\r\n            key: \"c\",\r\n            width: \"20%\",\r\n            sorter: (a, b) => a.c - b.c\r\n        },\r\n        {\r\n            title: \"武功级别\",\r\n            dataIndex: \"d\",\r\n            key: \"25%\"\r\n        }\r\n    ];\r\n\r\n    close = () => {\r\n        this.setState({\r\n            showModal: false\r\n        });\r\n    }\r\n    open = () => {\r\n        this.setState({\r\n            showModal: true\r\n        });\r\n    }\r\n\r\n    getSelectedDataFunc = data => {\r\n        console.log(data);\r\n    };\r\n\r\n    clear = () => {\r\n        let { data } = this.state;\r\n        data.forEach(item => item._checked = false)\r\n        this.setState({\r\n            data:JSON.parse(JSON.stringify(data))\r\n        })\r\n    }\r\n    onStart=()=>{\r\n        console.log('start');\r\n    }\r\n    onStop=()=>{\r\n        console.log('stop');\r\n    }\r\n\r\n    render () {\r\n        let multiObj = {\r\n            type: \"checkbox\"\r\n        };\r\n        return (\r\n            <div>\r\n                <Button\r\n                    colors=\"primary\"\r\n                    className=\"demo-margin\"\r\n                    onClick={this.open}>\r\n                    打开模态框\r\n                </Button>\r\n                <Modal\r\n                    show={this.state.showModal}\r\n                    onHide={this.close}\r\n                    size=\"lg\"\r\n                    ref={ref => this.modal = ref}\r\n                    className=\"demo10-modal\"\r\n                    backdrop={false}\r\n                    draggable={true}\r\n                >\r\n                    <Modal.Header closeButton>\r\n                        <Modal.Title>此标题可拖拽</Modal.Title>\r\n                    </Modal.Header>\r\n\r\n                    <Modal.Body>\r\n                        <MultiSelectTable\r\n                            columns={this.columns}\r\n                            data={this.state.data}\r\n                            multiSelect={multiObj}\r\n                            getSelectedDataFunc={this.getSelectedDataFunc} \r\n                        />\r\n                    </Modal.Body>\r\n\r\n                    <Modal.Footer>\r\n                        <Button onClick={this.clear} colors=\"secondary\" className=\"clear-btn\">清空所选</Button>\r\n                        <Button onClick={this.close} colors=\"secondary\" style={{ marginRight: 8 }}>取消</Button>\r\n                        <Button onClick={this.close} colors=\"primary\">确认</Button>\r\n                    </Modal.Footer>\r\n                </Modal>\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\n\r\n", "desc": " 通过`draggable`参数设置是否可拖拽" }, { "example": _react2['default'].createElement(Demo12, null), "title": " 信息提示", "code": "/**\r\n *\r\n * @title 信息提示\r\n * @description 提供`info`、`success`、`error`、`warning`、`confirm` API\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\r\n\n\nimport { Modal, Icon, Button } from 'tinper-bee';\r\n\r\nconst info = function () {\r\n    Modal.info({\r\n        title: '提示',\r\n        okText: '知道了',\r\n        content: (\r\n          <div>\r\n            <p>单据状态已更新，请在审批中心内查看。</p>\r\n          </div>\r\n        ),\r\n        onOk() {},\r\n    });\r\n};\r\nconst success = function () {\r\n    Modal.success({\r\n        title: '提交成功',\r\n        content: '单据提交成功，你可以在审批中心关注审批状态。',\r\n    });\r\n};\r\nconst error = function () {\r\n    Modal.error({\r\n        title: '提交失败',\r\n        content: '单据状态更新失败，请重新尝试。',\r\n    });\r\n};\r\nconst warning = function () {\r\n    Modal.warning({\r\n        title: '警告',\r\n        content: '单据状态异常，请重新提交',\r\n    });\r\n};\r\nconst confirm = function () {\r\n    Modal.confirm({\r\n        title: '确定要删除这条单据吗？',\r\n        content: '单据删除后将不能恢复。',\r\n        onOk() {\r\n            console.log('OK');\r\n        },\r\n        onCancel() {\r\n            console.log('Cancel');\r\n        },\r\n    })\r\n};\r\n\r\nclass Demo12 extends Component {\r\n    render () {\r\n        return (\r\n            <div className=\"demo12\">\r\n                <Button colors=\"info\" onClick={info}>Info</Button>\r\n                <Button colors=\"success\" onClick={success}>Success</Button>\r\n                <Button colors=\"danger\" onClick={error}>Error</Button>\r\n                <Button colors=\"warning\" onClick={warning}>Warning</Button>\r\n                <Button bordered onClick={confirm}>Confirm</Button>\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\n\r\n", "desc": " 提供`info`、`success`、`error`、`warning`、`confirm` API", "scss_code": ".demo12{\r\n    .u-button{\r\n        margin: 5px;\r\n    }\r\n}" }];
+	var Demo1 = __webpack_require__(270);var Demo2 = __webpack_require__(271);var Demo3 = __webpack_require__(276);var Demo4 = __webpack_require__(277);var Demo5 = __webpack_require__(278);var Demo6 = __webpack_require__(279);var Demo7 = __webpack_require__(282);var Demo8 = __webpack_require__(681);var Demo9 = __webpack_require__(682);var Demo10 = __webpack_require__(687);var Demo11 = __webpack_require__(731);var Demo12 = __webpack_require__(732);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 默认的模态框", "code": "/**\r\n *\r\n * @title 默认的模态框\r\n * @description\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\r\n\nimport { Modal, Button } from 'tinper-bee';\r\n\r\n\r\nclass Demo1 extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            showModal: false\r\n        };\r\n        this.close = this.close.bind(this);\r\n        this.open = this.open.bind(this);\r\n    }\r\n\r\n    close() {\r\n        this.setState({\r\n            showModal: false\r\n        });\r\n    }\r\n    open() {\r\n        this.setState({\r\n            showModal: true\r\n        });\r\n    }\r\n    render () {\r\n        return (\r\n        <div>\r\n            <Button\r\n            colors = \"primary\"\r\n            className=\"demo-margin\"\r\n            onClick = { this.open }>\r\n                打开模态框\r\n            </Button>​\r\n            <Modal\r\n            show = { this.state.showModal }\r\n            onHide = { this.close } >\r\n                <Modal.Header closeButton>\r\n                    <Modal.Title>标题</Modal.Title>\r\n                </Modal.Header>\r\n\r\n                <Modal.Body>\r\n                    <p>Some contents...</p>\r\n                    <p>Some contents...</p>\r\n                    <p>Some contents...</p>\r\n                </Modal.Body>\r\n\r\n                <Modal.Footer>\r\n                    <Button onClick={ this.close } colors=\"secondary\" style={{marginRight: 8}}>取消</Button>\r\n                    <Button onClick={ this.close } colors=\"primary\">确认</Button>\r\n                </Modal.Footer>\r\n           </Modal>\r\n        </div>\r\n        )\r\n    }\r\n}\r\n\r\n\r\n", "desc": "", "scss_code": ".demo-margin{\r\n  margin: 5px 15px;\r\n}" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 注册的模态框", "code": "/**\r\n *\r\n * @title 注册的模态框\r\n * @description\r\n *\r\n */\r\n\r\nimport React, {Component} from 'react';\r\n\nimport { Modal, FormControl, Label, FormGroup, Button } from 'tinper-bee';\r\n\n\n\n\r\nclass Demo2 extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            showModal: false,\r\n            password: '',\r\n            name: ''\r\n        };\r\n        this.close = this.close.bind(this);\r\n        this.open = this.open.bind(this);\r\n    }\r\n\r\n    close() {\r\n        this.setState({\r\n            showModal: false\r\n        });\r\n    }\r\n\r\n    open() {\r\n        this.setState({\r\n            showModal: true\r\n        });\r\n    }\r\n\r\n    handleChange = (state) => (value) => {\r\n        this.setState({\r\n            [state]: value\r\n        })\r\n    }\r\n\r\n    render() {\r\n\r\n        return (\r\n            <div className=\"demo-margin\">\r\n                <Button\r\n                    colors=\"primary\"\r\n                    onClick={this.open}>\r\n                    注册模态框\r\n                </Button>​\r\n                <Modal\r\n                    show={this.state.showModal}\r\n                    onHide={this.close}\r\n                    style={{width: 450}}\r\n                >\r\n                    <Modal.Header closeButton>\r\n                        <Modal.Title>注册</Modal.Title>\r\n                    </Modal.Header>\r\n\r\n                    <Modal.Body>\r\n                        <div style={{ width: 300, margin: '0 auto' }}>\r\n                            <FormGroup>\r\n                                <Label>用户名</Label>\r\n                                <FormControl\r\n                                    value={this.state.name}\r\n                                    onChange={this.handleChange('name')}\r\n                                />\r\n                            </FormGroup>\r\n                            <FormGroup>\r\n                                <Label>密码</Label>\r\n                                <FormControl\r\n                                    value={this.state.password}\r\n                                    onChange={this.handleChange('password')}\r\n                                />\r\n                            </FormGroup>\r\n                        </div>\r\n\r\n\r\n                    </Modal.Body>\r\n\r\n                    <Modal.Footer className=\"text-center\">\r\n                        <Button colors=\"secondary\" style={{ marginRight: 8 }} onClick={this.close}>\r\n                            取消\r\n                        </Button>\r\n                        <Button colors=\"primary\" onClick={this.close}>\r\n                            确认\r\n                        </Button>\r\n                    </Modal.Footer>\r\n                </Modal>\r\n\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\n\r\n", "desc": "", "scss_code": ".demo-margin{\r\n  margin: 5px 15px;\r\n}\r\n.text-center{\r\n  text-align: center;\r\n}" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 不同大小的模态框", "code": "/**\r\n *\r\n * @title 不同大小的模态框\r\n * @description 通过size属性控制模态框大小\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\r\n\nimport { Modal, Button } from 'tinper-bee';\r\n\r\nclass Demo3 extends Component {\r\n\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            showModal: false,\r\n            modalSize: ''\r\n        };\r\n        this.close = this.close.bind(this);\r\n        this.open = this.open.bind(this);\r\n        this.changeSize = this.changeSize.bind(this);\r\n\r\n    }\r\n\r\n    close() {\r\n        this.setState({\r\n            showModal: false\r\n        });\r\n    }\r\n\r\n    open() {\r\n        this.setState({\r\n            showModal: true\r\n        });\r\n    }\r\n\r\n    changeSize(size) {\r\n        this.setState({\r\n            modalSize: size\r\n        });\r\n    }\r\n\r\n    render() {\r\n        return (\r\n            <div>\r\n                <Button\r\n                    colors=\"primary\"\r\n                    className=\"demo-margin\"\r\n                    onClick={ ()=>{this.changeSize(\"sm\");this.open();} }>\r\n                    打开小号模态框\r\n                </Button>\r\n                <Button\r\n                    colors=\"primary\"\r\n                    className=\"demo-margin\"\r\n                    onClick={ ()=>{this.changeSize(\"lg\");this.open();} }>\r\n                    打开大号模态框\r\n                </Button>\r\n                <Button\r\n                    colors=\"primary\"\r\n                    className=\"demo-margin\"\r\n                    onClick={ ()=>{this.changeSize(\"xlg\");this.open();} }>\r\n                    打开超大号模态框\r\n                </Button>\r\n                <Modal show={ this.state.showModal } size={ this.state.modalSize } onHide={ this.close } className=\"demo3-modal\">\r\n                    <Modal.Header closeButton>\r\n                        <Modal.Title > 我来组成头部 </Modal.Title>\r\n                    </Modal.Header >\r\n                    <Modal.Body>\r\n                        <h4> 这是一个沉默的标题 </h4>\r\n\r\n                        <p> 一些描述。。。 </p>\r\n                        <hr/>\r\n\r\n                        <p> 用创想与技术推动商业和社会进步 </p>\r\n\r\n                        <p> 我们基于创造性的思想与先进的技术（ 现阶段是信息技术）， 创新和运营高客户价值的产品与服务， 帮助客户实现发展目标， 进而推动商业和社会进步。\r\n                        </p>\r\n\r\n                        <p> 全球领先的企业与公共组织软件、 云服务、 金融服务提供商。 </p>\r\n\r\n                        <p> 员工快乐工作， 成就事业， 分享成功的平台。 </p>\r\n\r\n                        <p> 企业和公共组织是我们持续服务的客户。 软件、 云服务、 金融服务是用友新发展阶段的核心业务。 全球领先是我们必须达成的目标。 </p>\r\n\r\n                        <p> 在努力实现产业发展目标的同时， 员工在用友快乐工作、 成就事业、 分享成功也是公司的追求。 </p>\r\n\r\n                    </Modal.Body>\r\n                    <Modal.Footer>\r\n                        <Button colors=\"secondary\" onClick={ this.close }> 关闭 </Button>\r\n                    </Modal.Footer>\r\n                </Modal>\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\n\r\n", "desc": " 通过size属性控制模态框大小", "scss_code": ".demo-margin{\r\n  margin: 5px 15px;\r\n}\r\n.u-modal-body{\r\n  max-height: 430px;\r\n  overflow: auto;\r\n}\r\n\r\n.demo3-modal{\r\n  .u-modal-body{\r\n    background: #f7f9fb;\r\n  }\r\n}" }, { "example": _react2['default'].createElement(Demo4, null), "title": " 不同遮罩层状态的模态框", "code": "/**\r\n *\r\n * @title 不同遮罩层状态的模态框\r\n * @description 遮罩层可以通过backdrop属性控制状态，可以为不响应事件，可以不显示。\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\r\n\nimport { Modal, Button } from 'tinper-bee';\r\n\r\n\r\nclass Demo4 extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            showModal: false,\r\n            modalDropup: true\r\n        };\r\n        this.close = this.close.bind(this);\r\n        this.open = this.open.bind(this);\r\n        this.changeDropup = this.changeDropup.bind(this);\r\n\r\n    }\r\n\r\n    close() {\r\n        this.setState({\r\n            showModal: false\r\n        });\r\n    }\r\n\r\n    open() {\r\n        this.setState({\r\n            showModal: true\r\n        });\r\n    }\r\n\r\n    changeDropup(state) {\r\n        this.setState({\r\n            modalDropup: state\r\n        });\r\n    }\r\n\r\n    render() {\r\n        return (\r\n            <div>\r\n                <Button\r\n                    colors=\"primary\"\r\n                    className=\"demo-margin\"\r\n                    onClick={ ()=>{this.changeDropup(false);this.open();} }>\r\n                    无遮罩层模态框\r\n                </Button>\r\n                <Button\r\n                    colors=\"primary\"\r\n                    className=\"demo-margin\"\r\n                    onClick={ ()=>{this.changeDropup(\"static\");this.open();} }>\r\n                    遮罩无事件模态框\r\n                </Button>\r\n                <Modal\r\n                    className=\"demo4-modal\"\r\n                    show={ this.state.showModal }\r\n                    backdrop={ this.state.modalDropup }\r\n                    onHide={ this.close }>\r\n                    <Modal.Header closeButton>\r\n                        <Modal.Title > 我来组成头部 </Modal.Title>\r\n                    </Modal.Header >\r\n                    <Modal.Body >\r\n                        <h4> 这是一个沉默的标题 </h4>\r\n\r\n                        <p> 一些描述。。。 </p>\r\n                        <hr/>\r\n\r\n                        <p> 用创想与技术推动商业和社会进步 </p>\r\n\r\n                        <p> 我们基于创造性的思想与先进的技术（ 现阶段是信息技术）， 创新和运营高客户价值的产品与服务， 帮助客户实现发展目标， 进而推动商业和社会进步。 </p>\r\n\r\n                        <p> 全球领先的企业与公共组织软件、 云服务、 金融服务提供商。 </p>\r\n\r\n                        <p> 员工快乐工作， 成就事业， 分享成功的平台。 </p>\r\n                    </Modal.Body>\r\n                    <Modal.Footer>\r\n                        <Button colors=\"secondary\" onClick={ this.close }> 关闭 </Button>\r\n                    </Modal.Footer>\r\n                </Modal>\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\n\r\n", "desc": " 遮罩层可以通过backdrop属性控制状态，可以为不响应事件，可以不显示。", "scss_code": ".demo-margin{\r\n  margin: 5px 15px;\r\n}\r\n.demo4-modal{\r\n  .u-modal-body{\r\n    background: #f7f9fb;\r\n  }\r\n}" }, { "example": _react2['default'].createElement(Demo5, null), "title": " 自定义大小的模态框", "code": "/**\r\n *\r\n * @title 自定义大小的模态框\r\n * @description 通过width属性定义模态框大小\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\r\n\nimport { Modal, Button } from 'tinper-bee';\r\n\r\n\r\nclass Demo5 extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            showModal: false\r\n        };\r\n        this.close = this.close.bind(this);\r\n        this.open = this.open.bind(this);\r\n    }\r\n\r\n    close() {\r\n        this.setState({\r\n            showModal: false\r\n        });\r\n    }\r\n    open() {\r\n        this.setState({\r\n            showModal: true\r\n        });\r\n    }\r\n    render () {\r\n        return (\r\n        <div>\r\n            <Button\r\n            colors = \"primary\"\r\n            className=\"demo-margin\"\r\n            onClick={ ()=>{this.open()} }>\r\n                打开自定义的模态框\r\n            </Button>​\r\n            <Modal\r\n            show = { this.state.showModal }\r\n            onHide = { this.close } \r\n            width = '400'>\r\n                <Modal.Header closeButton>\r\n                    <Modal.Title>这是题目</Modal.Title>\r\n                </Modal.Header>\r\n\r\n                <Modal.Body>\r\n                    这是一些描述。。。\r\n                </Modal.Body>\r\n\r\n                <Modal.Footer>\r\n                    <Button onClick={ this.close } colors=\"secondary\" style={{marginRight: 8}}>取消</Button>\r\n                    <Button onClick={ this.close } colors=\"primary\">确认</Button>\r\n                </Modal.Footer>\r\n           </Modal>\r\n        </div>\r\n        )\r\n    }\r\n}\r\n\r\n\r\n", "desc": " 通过width属性定义模态框大小", "scss_code": ".demo-margin{\r\n    margin: 5px 15px;\r\n}" }, { "example": _react2['default'].createElement(Demo6, null), "title": " 被loading遮住的模态框", "code": "/**\r\n *\r\n * @title 被loading遮住的模态框\r\n * @description 当Modal组件和Loading组件同时出现的时候，Loading会把Modal遮住\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\r\n\n\nimport { Modal, Loading, Button } from 'tinper-bee';\r\n\r\n\r\n\r\nclass Demo6 extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            showModal: false,\r\n            showLoading: false\r\n        };\r\n    }\r\n\r\n    close = () => {\r\n        this.setState({\r\n            showModal: false,\r\n            showLoading: false\r\n        });\r\n    }\r\n    open = () => {\r\n        this.setState({\r\n            showModal: true,\r\n            showLoading: true\r\n        });\r\n        setTimeout(() => {\r\n            this.setState({\r\n                showLoading: false\r\n            })\r\n        }, 1000)\r\n    }\r\n\r\n    render() {\r\n        return (\r\n            <div>\r\n                <Button\r\n                    colors=\"primary\"\r\n                    className=\"demo-margin\"\r\n                    onClick={this.open}>\r\n                    打开模态框\r\n                </Button>\r\n                <Loading\r\n                    showBackDrop={true}\r\n                    // loadingType=\"line\"\r\n                    fullScreen\r\n                    show={this.state.showLoading}\r\n                >\r\n                </Loading>\r\n                <Modal\r\n                    show={this.state.showModal}\r\n                    onHide={this.close} >\r\n                    <Modal.Header closeButton>\r\n                        <Modal.Title>标题</Modal.Title>\r\n                    </Modal.Header>\r\n                    <Modal.Body>\r\n                        我是模态框，我的被loading遮住了~\r\n                    </Modal.Body>\r\n                    <Modal.Footer>\r\n                        <Button onClick={this.close} colors=\"secondary\" style={{ marginRight: 8 }}>取消</Button>\r\n                        <Button onClick={this.close} colors=\"primary\">确认</Button>\r\n                    </Modal.Footer>\r\n                </Modal>\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\n\r\n", "desc": " 当Modal组件和Loading组件同时出现的时候，Loading会把Modal遮住", "scss_code": ".demo-margin{\r\n    margin: 5px 15px;\r\n}" }, { "example": _react2['default'].createElement(Demo7, null), "title": " 表单模态框", "code": "/**\r\n *\r\n * @title 表单模态框\r\n * @description 表单模态框\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\r\n\nimport { Modal, Radio, Rate, Form, FormControl, DatePicker, Select, Label, FormGroup, Button } from 'tinper-bee';\r\n\n\n\n\n\n\n\n\n\r\n\r\nconst FormItem = Form.FormItem;\r\nconst Option = Select.Option;\r\nclass Demo7 extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            selectedValue: \"man\",\r\n            showModal: false,\r\n            name: '',\r\n            education: '',\r\n            birthDate: ''\r\n\r\n        };\r\n    }\r\n\r\n    close = () => {\r\n        this.setState({\r\n            showModal: false\r\n        });\r\n    }\r\n\r\n    handleClose = () => {\r\n        this.props.form.validateFields((err, values) => {\r\n            if (err) {\r\n                console.log('校验失败', values);\r\n            } else {\r\n                console.log('提交成功', values)\r\n                this.close()\r\n            }\r\n        });\r\n    }\r\n\r\n    open = () => {\r\n        this.setState({\r\n            showModal: true\r\n        });\r\n    }\r\n\r\n    handleChange = (state) => (value) => {\r\n        this.setState({\r\n            [state]: value\r\n        })\r\n    }\r\n\r\n    getCalendarContainer = () => {\r\n\r\n        return document.getElementById('demo7');\r\n    }\r\n\r\n    render() {\r\n        const { getFieldProps, getFieldError } = this.props.form;\r\n        const self = this;\r\n\r\n        return (\r\n            <div className=\"demo-margin\" id=\"demo7\">\r\n                <Button\r\n                    colors=\"primary\"\r\n                    onClick={this.open}>\r\n                    添加模态框\r\n                </Button>\r\n                <Modal\r\n                    show={this.state.showModal}\r\n                    onHide={this.close}\r\n                    className=\"demo7-modal\"\r\n                >\r\n                    <Modal.Header closeButton>\r\n                        <Modal.Title>表单实践</Modal.Title>\r\n                    </Modal.Header>\r\n\r\n                    <Modal.Body>\r\n                        <div>\r\n                            <Form>\r\n                                <FormItem>\r\n                                    <Label>姓名</Label>\r\n                                    <FormControl placeholder=\"请输入姓名\"\r\n                                        {...getFieldProps('name', {\r\n                                            validateTrigger: 'onBlur',\r\n                                            rules: [{\r\n                                                required: true, message: '请输入姓名',\r\n                                            }],\r\n                                        })}\r\n                                    />\r\n                                    <span className='error'>\r\n                                        {getFieldError('name')}\r\n                                    </span>\r\n                                </FormItem>\r\n                                <FormItem>\r\n                                    <Label>身份证号</Label>\r\n                                    <FormControl placeholder=\"请输入身份证号\"\r\n                                        {...getFieldProps('id', {\r\n                                            validateTrigger: 'onBlur',\r\n                                            rules: [{\r\n                                                required: true, message: '请输入身份证号',\r\n                                            }, {\r\n                                                pattern: /^[1-9][0-9]{5}([1][9][0-9]{2}|[2][0][0|1][0-9])([0][1-9]|[1][0|1|2])([0][1-9]|[1|2][0-9]|[3][0|1])[0-9]{3}([0-9]|[X])$/, message: '身份证号格式不正确'\r\n                                            }],\r\n                                        })}\r\n                                    />\r\n                                    <span className='error'>\r\n                                        {getFieldError('id')}\r\n                                    </span>\r\n                                </FormItem>\r\n                                <FormItem className='time'>\r\n                                    <Label>出生日期</Label>\r\n                                    <DatePicker\r\n                                        {\r\n                                        ...getFieldProps('time', {\r\n                                            validateTrigger: 'onBlur',\r\n                                            rules: [{\r\n                                                required: true, message: '请选择出生日期',\r\n                                            }, {\r\n                                                type: 'date', message: '日期格式不正确'\r\n                                            }],\r\n                                        }\r\n                                        )}\r\n                                        placeholder={'请选择出生日期'}\r\n                                        getCalendarContainer={this.getCalendarContainer}\r\n                                    />\r\n                                    <span className='error'>\r\n                                        {getFieldError('time')}\r\n                                    </span>\r\n                                </FormItem>\r\n                                <FormItem>\r\n                                    <Label>年龄</Label>\r\n                                    <FormControl placeholder=\"请输入年龄\"\r\n                                        {...getFieldProps('age', {\r\n                                            validateTrigger: 'onBlur',\r\n                                            rules: [{\r\n                                                required: true, message: '请输入年龄',\r\n                                            }],\r\n                                        })}\r\n                                    />\r\n                                    <span className='error'>\r\n                                        {getFieldError('age')}\r\n                                    </span>\r\n                                </FormItem>\r\n                                <FormItem>\r\n                                    <Label>性别</Label>\r\n                                    <Radio.RadioGroup\r\n                                        selectedValue={this.state.selectedValue}\r\n                                        {\r\n                                        ...getFieldProps('sex', {\r\n                                            initialValue: 'man',\r\n                                            onChange (value) {\r\n                                                self.setState({ selectedValue: value });\r\n                                            },\r\n                                            rules: [{ required: true }]\r\n                                        }\r\n                                        )}\r\n                                    >\r\n                                        <Radio value=\"man\" >男</Radio>\r\n                                        <Radio value=\"woman\" >女</Radio>\r\n                                    </Radio.RadioGroup>\r\n                                </FormItem>\r\n                                <FormItem>\r\n                                    <Label>学历</Label>\r\n                                    <Select\r\n                                        {\r\n                                        ...getFieldProps('education', {\r\n                                            initialValue: '',\r\n                                            rules: [{ required: true, message: '请选择学历' }]\r\n                                        }\r\n                                        )}\r\n                                    >\r\n                                        <Option value=\"\">请选择</Option>\r\n                                        <Option value=\"nothing\">无</Option>\r\n                                        <Option value=\"middle\">初中</Option>\r\n                                        <Option value=\"senior\">高中</Option>\r\n                                        <Option value=\"college1\">专科</Option>\r\n                                        <Option value=\"college2\">本科</Option>\r\n                                        <Option value=\"graduate\">研究生及以上</Option>\r\n                                        <Option value=\"other\">其它</Option>\r\n                                    </Select>\r\n                                    <span className='error'>\r\n                                        {getFieldError('education')}\r\n                                    </span>\r\n                                </FormItem>\r\n                                <FormItem>\r\n                                    <Label>保密等级</Label>\r\n                                    <Rate\r\n                                        {\r\n                                        ...getFieldProps('rate', {\r\n                                            initialValue: 0,\r\n                                            rules: [{ required: true }]\r\n                                        }\r\n                                        )}\r\n                                    />\r\n                                </FormItem>\r\n                                <FormItem className=\"remarks\">\r\n                                    <Label>备注</Label>\r\n                                    <FormControl componentClass='textarea'\r\n                                        {\r\n                                        ...getFieldProps('remark', {}\r\n                                        )}\r\n                                    />\r\n                                </FormItem>\r\n                            </Form>\r\n                        </div>\r\n                    </Modal.Body>\r\n\r\n                    <Modal.Footer className=\"text-center\">\r\n                        <Button colors=\"secondary\" style={{ marginRight: 8 }} onClick={this.close}>\r\n                            取消\r\n                        </Button>\r\n                        <Button colors=\"primary\" onClick={this.handleClose}>\r\n                            确认\r\n                        </Button>\r\n                    </Modal.Footer>\r\n                </Modal>\r\n\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\n\r\n", "desc": " 表单模态框", "scss_code": ".demo7-modal {\r\n    font-size: 14px;\r\n    .u-label {\r\n        display: inline-block;\r\n        min-width: 100px;\r\n        text-align: right;\r\n        padding-right: 12px;\r\n    }\r\n    .u-form-control {\r\n        width: auto;\r\n        min-width: 310px;\r\n    }\r\n    .error {\r\n        font-size: 12px;\r\n        color: red;\r\n        margin-left: 10px;\r\n    }\r\n    .submit {\r\n        padding-left: 110px;\r\n    }\r\n    .submit .login {\r\n        margin-left: 10px;\r\n    }\r\n    .u-select {\r\n        max-width: 310px;\r\n    }\r\n    textarea {\r\n        resize: none;\r\n    }\r\n    .time>div {\r\n        display: inline-block;\r\n    }\r\n    .time .u-label {\r\n        position: relative;\r\n        bottom: 10px;\r\n    }\r\n    .time .error{\r\n        position: relative;\r\n        bottom: 10px;\r\n    }\r\n    .remarks .u-label{\r\n        position: relative;\r\n        bottom: 12px;\r\n    }\r\n    .u-city-select {\r\n        display: inline-block;\r\n    }\r\n    .u-city-select .province,\r\n    .u-city-select .city,\r\n    .u-city-select .area {\r\n        width: 120px;\r\n    }\r\n    .u-form-item {\r\n        min-height: auto!important;\r\n    }\r\n    .u-modal-body{\r\n        background: #f7f9fb;\r\n    }\r\n\r\n}\r\n#demo7{\r\n    .rc-calendar-picker{\r\n        z-index: 1800;\r\n    }\r\n}\r\n.demo-margin{\r\n    margin: 5px 15px;\r\n}" }, { "example": _react2['default'].createElement(Demo8, null), "title": " 两个模态框", "code": "/**\r\n *\r\n * @title 两个模态框\r\n * @description 当两个模态框同时出现的时候，后面出现的那个层级在上面\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\r\n\nimport { Modal, Button } from 'tinper-bee';\r\n\r\nclass Demo8 extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            showModal: false,\r\n            showModal2: false\r\n        };\r\n    }\r\n\r\n    close = () => {\r\n        this.setState({\r\n            showModal: false\r\n        });\r\n    }\r\n\r\n    open = () => {\r\n        this.setState({\r\n            showModal: true\r\n        });\r\n    }\r\n\r\n    close2 = () => {\r\n        this.setState({\r\n            showModal2: false\r\n        });\r\n    }\r\n\r\n    open2 = () => {\r\n        this.setState({\r\n            showModal2: true\r\n        });\r\n    }\r\n\r\n    render() {\r\n\r\n        return (\r\n            <div className=\"demo-margin\">\r\n                <Button\r\n                    colors=\"primary\"\r\n                    onClick={this.open}>\r\n                    打开模态框\r\n                </Button>\r\n                <Modal\r\n                    show={this.state.showModal}\r\n                    onHide={this.close}\r\n                >\r\n                    <Modal.Header closeButton>\r\n                        <Modal.Title>第一个模态框</Modal.Title>\r\n                    </Modal.Header>\r\n\r\n                    <Modal.Body>\r\n                       这是第一个模态框\r\n                        <Button\r\n                            colors=\"primary\"\r\n                            size=\"sm\"\r\n                            onClick={this.open2}\r\n                        >\r\n                            打开第二个模态框~\r\n                        </Button>\r\n                    </Modal.Body>\r\n\r\n                    <Modal.Footer>\r\n                        <Button colors=\"secondary\" style={{ marginRight: 8 }} onClick={this.close}>\r\n                            取消\r\n                        </Button>\r\n                        <Button colors=\"primary\" onClick={this.close}>\r\n                            确认\r\n                        </Button>\r\n                    </Modal.Footer>\r\n                </Modal>\r\n                <Modal\r\n                    show={this.state.showModal2}\r\n                    onHide={this.close2}\r\n                >\r\n                    <Modal.Header closeButton>\r\n                        <Modal.Title>第二个模态框</Modal.Title>\r\n                    </Modal.Header>\r\n\r\n                    <Modal.Body>\r\n                        这是第二个模态框~\r\n                    </Modal.Body>\r\n\r\n                    <Modal.Footer>\r\n                        <Button colors=\"secondary\" style={{ marginRight: 8 }} onClick={this.close2}>\r\n                            取消\r\n                        </Button>\r\n                        <Button colors=\"primary\" onClick={this.close2}>\r\n                            确认\r\n                        </Button>\r\n                    </Modal.Footer>\r\n                </Modal>\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\n\r\n", "desc": " 当两个模态框同时出现的时候，后面出现的那个层级在上面", "scss_code": ".demo-margin{\r\n    margin: 5px 15px;\r\n}" }, { "example": _react2['default'].createElement(Demo9, null), "title": " enforceFocus", "code": "/**\r\n *\r\n * @title enforceFocus\r\n * @description 打开模态框时控制焦点的聚焦和离开\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\r\n\nimport { Modal, Popconfirm, FormControl, Label, FormGroup, Button } from 'tinper-bee';\r\n\r\n\n\n\n\n// import { Popconfirm } from 'tinper-bee';\r\n\r\n\r\nclass Demo9 extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            showModal: false,\r\n            showModal2: false\r\n        };\r\n    }\r\n\r\n    close = () => {\r\n        this.setState({\r\n            showModal: false\r\n        });\r\n    }\r\n\r\n    open = () => {\r\n        this.setState({\r\n            showModal: true\r\n        });\r\n    }\r\n\r\n    close2 = () => {\r\n        this.setState({\r\n            showModal2: false\r\n        });\r\n    }\r\n\r\n    open2 = () => {\r\n        this.setState({\r\n            showModal2: true\r\n        });\r\n    }\r\n\r\n    handleChange = (state) => (value) => {\r\n      this.setState({\r\n          [state]: value\r\n      })\r\n    }\r\n\r\n    render() {\r\n      let content = (\r\n            <FormGroup>\r\n                <Label>用户名</Label>\r\n                <FormControl\r\n                    value={this.state.name}\r\n                    onChange={this.handleChange('name')}\r\n                />\r\n            </FormGroup>\r\n      );\r\n        return (\r\n            <div className=\"demo-margin\">\r\n                <Button\r\n                    colors=\"primary\"\r\n                    onClick={this.open}\r\n                >\r\n                    打开模态框\r\n                </Button>\r\n                <Modal\r\n                    show={this.state.showModal}\r\n                    onHide={this.close}\r\n                    enforceFocus={false}\r\n                >\r\n                    <Modal.Header closeButton>\r\n                        <Modal.Title>标题</Modal.Title>\r\n                    </Modal.Header>\r\n\r\n                    <Modal.Body>\r\n                       <span>\r\n                          在模态框中打开气泡组件，如果气泡组件中有文本框，文本框光标不会聚焦。需在modal中设置enforceFocus为false。\r\n                       </span>\r\n                      <div className=\"demoPadding\">\r\n                        <Popconfirm trigger=\"click\" placement=\"right\" content={content}>\r\n                            <Button colors=\"primary\">打开气泡组件</Button>\r\n                        </Popconfirm>\r\n                      </div>\r\n                    </Modal.Body>\r\n\r\n                    <Modal.Footer className=\"text-center\">\r\n                        <Button colors=\"secondary\" style={{ marginRight: 8 }} onClick={this.close}>\r\n                            取消\r\n                        </Button>\r\n                        <Button colors=\"primary\" onClick={this.close}>\r\n                            确认\r\n                        </Button>\r\n                    </Modal.Footer>\r\n                </Modal>\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\n\r\n", "desc": " 打开模态框时控制焦点的聚焦和离开", "scss_code": ".u-popconfirm {\r\n  z-index:10000;\r\n}\r\n\r\n.demoPadding {\r\n  text-align: center;\r\n}" }, { "example": _react2['default'].createElement(Demo10, null), "title": " 嵌套表格的模态框", "code": "/**\r\n *\r\n * @title 嵌套表格的模态框\r\n * @description 嵌套表格\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\r\n\n\n\nimport multiSelect from \"bee-table/build/lib/multiSelect\";\r\n\r\n\r\nimport { Modal, Table, Checkbox, Button } from 'tinper-bee';\r\n\r\nlet MultiSelectTable = multiSelect(Table, Checkbox);\r\n\r\n\r\nclass Demo10 extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            showModal: false,\r\n            data: [\r\n                { a: \"杨过\", b: \"男\", c: 30, d: '内行', key: \"2\", _checked: true },\r\n                { a: \"令狐冲\", b: \"男\", c: 41, d: '大侠', key: \"1\", _checked: true },\r\n                { a: \"郭靖\", b: \"男\", c: 25, d: '大侠', key: \"3\", _checked: true }\r\n            ]\r\n        };\r\n\r\n    }\r\n\r\n\r\n\r\n    columns = [\r\n        {\r\n            title: \"名字\",\r\n            dataIndex: \"a\",\r\n            key: \"a\",\r\n            width: \"25%\"\r\n        },\r\n        {\r\n            title: \"性别\",\r\n            dataIndex: \"b\",\r\n            key: \"b\",\r\n            width: \"25%\"\r\n        },\r\n        {\r\n            title: \"年龄\",\r\n            dataIndex: \"c\",\r\n            key: \"c\",\r\n            width: \"20%\",\r\n            sorter: (a, b) => a.c - b.c\r\n        },\r\n        {\r\n            title: \"武功级别\",\r\n            dataIndex: \"d\",\r\n            key: \"25%\"\r\n        }\r\n    ];\r\n\r\n    close = () => {\r\n        this.setState({\r\n            showModal: false\r\n        });\r\n    }\r\n    open = () => {\r\n        this.setState({\r\n            showModal: true\r\n        });\r\n    }\r\n\r\n    getSelectedDataFunc = data => {\r\n        console.log(data);\r\n    };\r\n\r\n    clear = () => {\r\n        let { data } = this.state;\r\n        data.forEach(item => item._checked = false)\r\n        this.setState({\r\n            data:JSON.parse(JSON.stringify(data))\r\n        })\r\n    }\r\n\r\n    render () {\r\n        let multiObj = {\r\n            type: \"checkbox\"\r\n        };\r\n        return (\r\n            <div>\r\n                <Button\r\n                    colors=\"primary\"\r\n                    className=\"demo-margin\"\r\n                    onClick={this.open}>\r\n                    打开模态框\r\n                </Button>\r\n                <Modal\r\n                    show={this.state.showModal}\r\n                    onHide={this.close}\r\n                    size=\"lg\"\r\n                    ref={ref => this.modal = ref}\r\n                    className=\"demo10-modal\"\r\n                >\r\n                    <Modal.Header closeButton>\r\n                        <Modal.Title>标题</Modal.Title>\r\n                    </Modal.Header>\r\n\r\n                    <Modal.Body>\r\n                        <MultiSelectTable\r\n                            columns={this.columns}\r\n                            data={this.state.data}\r\n                            multiSelect={multiObj}\r\n                            getSelectedDataFunc={this.getSelectedDataFunc} \r\n                        />\r\n                    </Modal.Body>\r\n\r\n                    <Modal.Footer>\r\n                        <Button onClick={this.clear} colors=\"secondary\" className=\"clear-btn\">清空所选</Button>\r\n                        <Button onClick={this.close} colors=\"secondary\" style={{ marginRight: 8 }}>取消</Button>\r\n                        <Button onClick={this.close} colors=\"primary\">确认</Button>\r\n                    </Modal.Footer>\r\n                </Modal>\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\n\r\n", "desc": " 嵌套表格", "scss_code": ".demo10-modal{\r\n  .clear-btn{\r\n    float: left;\r\n    background: transparent !important;\r\n    border-color: transparent !important;\r\n    &:hover{\r\n      background: #EBECF0 !important;\r\n    }\r\n    &:active{\r\n      background: #EBECF0 !important;\r\n    }\r\n  }\r\n}" }, { "example": _react2['default'].createElement(Demo11, null), "title": " 可拖拽Header的模态框", "code": "/**\r\n *\r\n * @title 可拖拽Header的模态框\r\n * @description 通过`draggable`参数设置是否可拖拽\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\r\n\n\n\nimport multiSelect from \"bee-table/build/lib/multiSelect\";\r\n\r\n\r\nimport { Modal, Table, Checkbox, Button } from 'tinper-bee';\r\n\r\nlet MultiSelectTable = multiSelect(Table, Checkbox);\r\n\r\n\r\nclass Demo11 extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            showModal: false,\r\n            data: [\r\n                { a: \"杨过\", b: \"男\", c: 30, d: '内行', key: \"2\", _checked: true },\r\n                { a: \"令狐冲\", b: \"男\", c: 41, d: '大侠', key: \"1\", _checked: true },\r\n                { a: \"郭靖\", b: \"男\", c: 25, d: '大侠', key: \"3\", _checked: true }\r\n            ]\r\n        };\r\n\r\n    }\r\n\r\n\r\n\r\n    columns = [\r\n        {\r\n            title: \"名字\",\r\n            dataIndex: \"a\",\r\n            key: \"a\",\r\n            width: \"25%\"\r\n        },\r\n        {\r\n            title: \"性别\",\r\n            dataIndex: \"b\",\r\n            key: \"b\",\r\n            width: \"25%\"\r\n        },\r\n        {\r\n            title: \"年龄\",\r\n            dataIndex: \"c\",\r\n            key: \"c\",\r\n            width: \"20%\",\r\n            sorter: (a, b) => a.c - b.c\r\n        },\r\n        {\r\n            title: \"武功级别\",\r\n            dataIndex: \"d\",\r\n            key: \"25%\"\r\n        }\r\n    ];\r\n\r\n    close = () => {\r\n        this.setState({\r\n            showModal: false\r\n        });\r\n    }\r\n    open = () => {\r\n        this.setState({\r\n            showModal: true\r\n        });\r\n    }\r\n\r\n    getSelectedDataFunc = data => {\r\n        console.log(data);\r\n    };\r\n\r\n    clear = () => {\r\n        let { data } = this.state;\r\n        data.forEach(item => item._checked = false)\r\n        this.setState({\r\n            data:JSON.parse(JSON.stringify(data))\r\n        })\r\n    }\r\n    onStart=()=>{\r\n        console.log('start');\r\n    }\r\n    onStop=()=>{\r\n        console.log('stop');\r\n    }\r\n\r\n    render () {\r\n        let multiObj = {\r\n            type: \"checkbox\"\r\n        };\r\n        return (\r\n            <div>\r\n                <Button\r\n                    colors=\"primary\"\r\n                    className=\"demo-margin\"\r\n                    onClick={this.open}>\r\n                    打开模态框\r\n                </Button>\r\n                <Modal\r\n                    show={this.state.showModal}\r\n                    onHide={this.close}\r\n                    size=\"lg\"\r\n                    ref={ref => this.modal = ref}\r\n                    className=\"demo10-modal\"\r\n                    backdrop={false}\r\n                    draggable={true}\r\n                >\r\n                    <Modal.Header closeButton>\r\n                        <Modal.Title>此标题可拖拽</Modal.Title>\r\n                    </Modal.Header>\r\n\r\n                    <Modal.Body>\r\n                        <MultiSelectTable\r\n                            columns={this.columns}\r\n                            data={this.state.data}\r\n                            multiSelect={multiObj}\r\n                            getSelectedDataFunc={this.getSelectedDataFunc} \r\n                        />\r\n                    </Modal.Body>\r\n\r\n                    <Modal.Footer>\r\n                        <Button onClick={this.clear} colors=\"secondary\" className=\"clear-btn\">清空所选</Button>\r\n                        <Button onClick={this.close} colors=\"secondary\" style={{ marginRight: 8 }}>取消</Button>\r\n                        <Button onClick={this.close} colors=\"primary\">确认</Button>\r\n                    </Modal.Footer>\r\n                </Modal>\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\n\r\n", "desc": " 通过`draggable`参数设置是否可拖拽" }, { "example": _react2['default'].createElement(Demo12, null), "title": " 信息提示", "code": "/**\r\n *\r\n * @title 信息提示\r\n * @description 提供`info`、`success`、`error`、`warning`、`confirm` API\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\r\n\n\nimport { Modal, Icon, Button } from 'tinper-bee';\r\n\r\nconst info = function () {\r\n    Modal.info({\r\n        title: '提示',\r\n        okText: '知道了',\r\n        content: (\r\n          <div>\r\n            <p>单据状态已更新，请在审批中心内查看。</p>\r\n          </div>\r\n        ),\r\n        onOk() {},\r\n    });\r\n};\r\nconst success = function () {\r\n    Modal.success({\r\n        title: '提交成功',\r\n        content: '单据提交成功，你可以在审批中心关注审批状态。',\r\n    });\r\n};\r\nconst error = function () {\r\n    Modal.error({\r\n        title: '提交失败',\r\n        content: '单据状态更新失败，请重新尝试。',\r\n    });\r\n};\r\nconst warning = function () {\r\n    Modal.warning({\r\n        title: '警告',\r\n        content: '单据状态异常，请重新提交',\r\n    });\r\n};\r\nconst confirm = function () {\r\n    Modal.confirm({\r\n        title: '确定要删除这条单据吗？',\r\n        content: '单据删除后将不能恢复。',\r\n        onOk() {\r\n            console.log('OK');\r\n        },\r\n        onCancel() {\r\n            console.log('Cancel');\r\n        },\r\n    })\r\n};\r\n\r\nclass Demo12 extends Component {\r\n    render () {\r\n        return (\r\n            <div className=\"demo12\">\r\n                <Button colors=\"info\" onClick={info}>Info</Button>\r\n                <Button colors=\"success\" onClick={success}>Success</Button>\r\n                <Button colors=\"danger\" onClick={error}>Error</Button>\r\n                <Button colors=\"warning\" onClick={warning}>Warning</Button>\r\n                <Button bordered onClick={confirm}>Confirm</Button>\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\n\r\n", "desc": " 提供`info`、`success`、`error`、`warning`、`confirm` API", "scss_code": ".demo12{\r\n    .u-button{\r\n        margin: 5px;\r\n    }\r\n}" }];
 	
 	var Demo = function (_Component) {
 	    _inherits(Demo, _Component);
@@ -34724,9 +34724,9 @@
 	                '\u6253\u5F00\u6A21\u6001\u6846'
 	            ),
 	            _react2['default'].createElement(_beeLoading2['default'], {
-	                showBackDrop: true,
-	                loadingType: 'line',
-	                fullScreen: true,
+	                showBackDrop: true
+	                // loadingType="line"
+	                , fullScreen: true,
 	                show: this.state.showLoading
 	            }),
 	            _react2['default'].createElement(
@@ -34938,7 +34938,7 @@
 	          _react2["default"].createElement(
 	            "div",
 	            null,
-	            _react2["default"].createElement(_beeIcon2["default"], { type: "uf-loadingstate" })
+	            _react2["default"].createElement("img", { src: "http://design.yonyoucloud.com/static/bee.tinper.org-demo/loading.svg" })
 	          )
 	        ),
 	        children && _react2["default"].createElement(
@@ -80772,6 +80772,9 @@
 	    if (inverse) {
 	      classes[clsPrefix + '-inverse'] = true;
 	    }
+	    if (children == null) {
+	      classes[clsPrefix + '-noContent'] = true;
+	    }
 	    var classNames = (0, _classnames2["default"])(clsPrefix, classes);
 	    var tabIndex = optional.checked ? 0 : -1;
 	    if (focusvalue && focusvalue == this.props.value) {
@@ -81851,7 +81854,7 @@
 	
 	var _beeTable2 = _interopRequireDefault(_beeTable);
 	
-	var _multiSelect = __webpack_require__(734);
+	var _multiSelect = __webpack_require__(729);
 	
 	var _multiSelect2 = _interopRequireDefault(_multiSelect);
 	
@@ -82369,8 +82372,8 @@
 	'use strict';
 	
 	var Table = __webpack_require__(692);
-	var Column = __webpack_require__(731);
-	var ColumnGroup = __webpack_require__(732);
+	var Column = __webpack_require__(726);
+	var ColumnGroup = __webpack_require__(727);
 	
 	Table.Column = Column;
 	Table.ColumnGroup = ColumnGroup;
@@ -82419,11 +82422,11 @@
 	
 	var _addEventListener2 = _interopRequireDefault(_addEventListener);
 	
-	var _ColumnManager = __webpack_require__(730);
+	var _ColumnManager = __webpack_require__(725);
 	
 	var _ColumnManager2 = _interopRequireDefault(_ColumnManager);
 	
-	var _createStore = __webpack_require__(733);
+	var _createStore = __webpack_require__(728);
 	
 	var _createStore2 = _interopRequireDefault(_createStore);
 	
@@ -82770,11 +82773,10 @@
 	      var bodyH = this.refs.bodyTable.clientHeight;
 	      var bodyContentH = this.refs.bodyTable.querySelector('table').clientHeight;
 	      var rightBodyTable = this.refs.fixedColumnsBodyRight;
-	      if (bodyContentH <= bodyH) {
-	        this.refs.bodyTable.style.overflowY = 'auto';
-	        this.refs.headTable.style.overflowY = 'auto';
-	        rightBodyTable && (rightBodyTable.style.overflowY = 'auto');
-	      }
+	      var overflowy = bodyContentH <= bodyH ? 'auto' : 'scroll';
+	      this.refs.bodyTable.style.overflowY = overflowy;
+	      this.refs.headTable.style.overflowY = overflowy;
+	      rightBodyTable && (rightBodyTable.style.overflowY = overflowy);
 	    }
 	  };
 	
@@ -83316,7 +83318,7 @@
 	
 	            if (this.domWidthDiff <= 0) {
 	              headStyle.marginBottom = scrollbarWidth + 'px';
-	              bodyStyle.marginBottom = '-' + scrollbarWidth + 'px';
+	              // bodyStyle.marginBottom = `-${scrollbarWidth}px`;
 	            } else {
 	              innerBodyStyle.overflowX = 'auto';
 	            }
@@ -83333,8 +83335,8 @@
 	              headStyle.overflow = 'hidden';
 	              innerBodyStyle.overflowX = 'auto'; //兼容expand场景、子表格含有固定列的场景
 	            } else {
-	              bodyStyle.marginBottom = '-' + scrollbarWidth + 'px';
-	            }
+	                // bodyStyle.marginBottom = `-${scrollbarWidth}px`;
+	              }
 	          } else {
 	            headStyle.marginBottom = '-' + scrollbarWidth + 'px';
 	          }
@@ -83430,7 +83432,8 @@
 	            onTouchStart: this.detectScrollTarget,
 	            onScroll: this.handleBodyScroll
 	          },
-	          renderTable(!useFixedHeader)
+	          renderTable(!useFixedHeader),
+	          _react2["default"].createElement('div', { className: 'scroll-dom', style: { height: this.scrollbarWidth + 'px' } })
 	        )
 	      );
 	    }
@@ -84731,7 +84734,7 @@
 	        var newTableWidth = _this.drag.tableWidth + diff + 'px';
 	        _this.table.table.style.width = newTableWidth; //改变table的width
 	        _this.table.innerTableBody.style.width = newTableWidth;
-	        var showScroll = contentDomWidth - newTableWidth - scrollbarWidth;
+	        var showScroll = contentDomWidth - (_this.drag.tableWidth + diff) - scrollbarWidth;
 	
 	        //表头滚动条处理
 	        if (headerScroll) {
@@ -85951,7 +85954,7 @@
 	
 	var _beeInputNumber2 = _interopRequireDefault(_beeInputNumber);
 	
-	var _FilterDropDown = __webpack_require__(709);
+	var _FilterDropDown = __webpack_require__(704);
 	
 	var _FilterDropDown2 = _interopRequireDefault(_FilterDropDown);
 	
@@ -86375,7 +86378,7 @@
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
-	var _beeInputGroup = __webpack_require__(704);
+	var _beeInputGroup = __webpack_require__(549);
 	
 	var _beeInputGroup2 = _interopRequireDefault(_beeInputGroup);
 	
@@ -86909,239 +86912,6 @@
 
 	'use strict';
 	
-	module.exports = __webpack_require__(705);
-
-/***/ }),
-/* 705 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-	
-	var _classnames = __webpack_require__(5);
-	
-	var _classnames2 = _interopRequireDefault(_classnames);
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _beeInputGroupAddon = __webpack_require__(706);
-	
-	var _beeInputGroupAddon2 = _interopRequireDefault(_beeInputGroupAddon);
-	
-	var _InputGroupButton = __webpack_require__(708);
-	
-	var _InputGroupButton2 = _interopRequireDefault(_InputGroupButton);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-	
-	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
-	
-	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
-	
-	var defaultProps = {
-	  clsPrefix: 'u-input-group',
-	  simple: false
-	};
-	
-	var InputGroup = function (_React$Component) {
-	  _inherits(InputGroup, _React$Component);
-	
-	  function InputGroup() {
-	    _classCallCheck(this, InputGroup);
-	
-	    return _possibleConstructorReturn(this, _React$Component.apply(this, arguments));
-	  }
-	
-	  InputGroup.prototype.render = function render() {
-	    var _props = this.props,
-	        className = _props.className,
-	        clsPrefix = _props.clsPrefix,
-	        simple = _props.simple,
-	        others = _objectWithoutProperties(_props, ['className', 'clsPrefix', 'simple']);
-	
-	    return _react2["default"].createElement('span', _extends({}, others, {
-	      className: (0, _classnames2["default"])(className, clsPrefix, simple && 'simple')
-	    }));
-	  };
-	
-	  return InputGroup;
-	}(_react2["default"].Component);
-	
-	/**
-	  * 将InputGroupAddon与InputGroupButton组件作为InputGroup的附属组件
-	  */
-	
-	
-	InputGroup.Addon = _beeInputGroupAddon2["default"];
-	InputGroup.Button = _InputGroupButton2["default"];
-	InputGroup.defaultProps = defaultProps;
-	exports["default"] = InputGroup;
-	module.exports = exports['default'];
-
-/***/ }),
-/* 706 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _InputGroupAddon = __webpack_require__(707);
-	
-	var _InputGroupAddon2 = _interopRequireDefault(_InputGroupAddon);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-	
-	exports["default"] = _InputGroupAddon2["default"];
-	module.exports = exports['default'];
-
-/***/ }),
-/* 707 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-	
-	var _classnames = __webpack_require__(5);
-	
-	var _classnames2 = _interopRequireDefault(_classnames);
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-	
-	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
-	
-	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
-	
-	var defaultProps = {
-	  clsPrefix: 'u-input-group-addon'
-	};
-	
-	var InputGroupAddon = function (_React$Component) {
-	  _inherits(InputGroupAddon, _React$Component);
-	
-	  function InputGroupAddon() {
-	    _classCallCheck(this, InputGroupAddon);
-	
-	    return _possibleConstructorReturn(this, _React$Component.apply(this, arguments));
-	  }
-	
-	  InputGroupAddon.prototype.render = function render() {
-	    var _props = this.props,
-	        className = _props.className,
-	        clsPrefix = _props.clsPrefix,
-	        others = _objectWithoutProperties(_props, ['className', 'clsPrefix']);
-	
-	    return _react2["default"].createElement('span', _extends({}, others, {
-	      className: (0, _classnames2["default"])(className, clsPrefix)
-	    }));
-	  };
-	
-	  return InputGroupAddon;
-	}(_react2["default"].Component);
-	
-	InputGroupAddon.defaultProps = defaultProps;
-	exports["default"] = InputGroupAddon;
-	module.exports = exports['default'];
-
-/***/ }),
-/* 708 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-	
-	var _classnames = __webpack_require__(5);
-	
-	var _classnames2 = _interopRequireDefault(_classnames);
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-	
-	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
-	
-	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
-	
-	var defaultProps = {
-	  clsPrefix: 'u-input-group-btn'
-	};
-	
-	var InputGroupButton = function (_React$Component) {
-	  _inherits(InputGroupButton, _React$Component);
-	
-	  function InputGroupButton() {
-	    _classCallCheck(this, InputGroupButton);
-	
-	    return _possibleConstructorReturn(this, _React$Component.apply(this, arguments));
-	  }
-	
-	  InputGroupButton.prototype.render = function render() {
-	    var _props = this.props,
-	        className = _props.className,
-	        clsPrefix = _props.clsPrefix,
-	        others = _objectWithoutProperties(_props, ['className', 'clsPrefix']);
-	
-	    return _react2["default"].createElement('span', _extends({}, others, {
-	      className: (0, _classnames2["default"])(className, clsPrefix)
-	    }));
-	  };
-	
-	  return InputGroupButton;
-	}(_react2["default"].Component);
-	
-	InputGroupButton.defaultProps = defaultProps;
-	exports["default"] = InputGroupButton;
-	module.exports = exports['default'];
-
-/***/ }),
-/* 709 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
@@ -87154,11 +86924,11 @@
 	
 	var _propTypes2 = _interopRequireDefault(_propTypes);
 	
-	var _beeDropdown = __webpack_require__(710);
+	var _beeDropdown = __webpack_require__(705);
 	
 	var _beeDropdown2 = _interopRequireDefault(_beeDropdown);
 	
-	var _beeMenus = __webpack_require__(713);
+	var _beeMenus = __webpack_require__(708);
 	
 	var _beeMenus2 = _interopRequireDefault(_beeMenus);
 	
@@ -87170,7 +86940,7 @@
 	
 	var _beeIcon2 = _interopRequireDefault(_beeIcon);
 	
-	var _i18n = __webpack_require__(729);
+	var _i18n = __webpack_require__(724);
 	
 	var _i18n2 = _interopRequireDefault(_i18n);
 	
@@ -87459,7 +87229,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 710 */
+/* 705 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -87468,7 +87238,7 @@
 	  value: true
 	});
 	
-	var _Dropdown = __webpack_require__(711);
+	var _Dropdown = __webpack_require__(706);
 	
 	var _Dropdown2 = _interopRequireDefault(_Dropdown);
 	
@@ -87478,7 +87248,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 711 */
+/* 706 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -87501,7 +87271,7 @@
 	
 	var _trigger2 = _interopRequireDefault(_trigger);
 	
-	var _placement = __webpack_require__(712);
+	var _placement = __webpack_require__(707);
 	
 	var _placement2 = _interopRequireDefault(_placement);
 	
@@ -87700,7 +87470,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 712 */
+/* 707 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -87757,7 +87527,7 @@
 	exports["default"] = placements;
 
 /***/ }),
-/* 713 */
+/* 708 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -87766,7 +87536,7 @@
 	  value: true
 	});
 	
-	var _VerticalMenu = __webpack_require__(714);
+	var _VerticalMenu = __webpack_require__(709);
 	
 	var _VerticalMenu2 = _interopRequireDefault(_VerticalMenu);
 	
@@ -87776,7 +87546,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 714 */
+/* 709 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -87791,15 +87561,15 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _ExportMenu = __webpack_require__(715);
+	var _ExportMenu = __webpack_require__(710);
 	
 	var _ExportMenu2 = _interopRequireDefault(_ExportMenu);
 	
-	var _openAnimation = __webpack_require__(727);
+	var _openAnimation = __webpack_require__(722);
 	
 	var _openAnimation2 = _interopRequireDefault(_openAnimation);
 	
-	var _warning = __webpack_require__(728);
+	var _warning = __webpack_require__(723);
 	
 	var _warning2 = _interopRequireDefault(_warning);
 	
@@ -87932,7 +87702,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 715 */
+/* 710 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -87942,31 +87712,31 @@
 	});
 	exports.MenuToggle = exports.SideContainer = exports.Divider = exports.ItemGroup = exports.MenuItemGroup = exports.MenuItem = exports.Item = exports.SubMenu = undefined;
 	
-	var _Menu = __webpack_require__(716);
+	var _Menu = __webpack_require__(711);
 	
 	var _Menu2 = _interopRequireDefault(_Menu);
 	
-	var _SubMenu = __webpack_require__(720);
+	var _SubMenu = __webpack_require__(715);
 	
 	var _SubMenu2 = _interopRequireDefault(_SubMenu);
 	
-	var _MenuItem = __webpack_require__(722);
+	var _MenuItem = __webpack_require__(717);
 	
 	var _MenuItem2 = _interopRequireDefault(_MenuItem);
 	
-	var _MenuItemGroup = __webpack_require__(723);
+	var _MenuItemGroup = __webpack_require__(718);
 	
 	var _MenuItemGroup2 = _interopRequireDefault(_MenuItemGroup);
 	
-	var _Divider = __webpack_require__(724);
+	var _Divider = __webpack_require__(719);
 	
 	var _Divider2 = _interopRequireDefault(_Divider);
 	
-	var _SideContainer = __webpack_require__(725);
+	var _SideContainer = __webpack_require__(720);
 	
 	var _SideContainer2 = _interopRequireDefault(_SideContainer);
 	
-	var _MenuToggle = __webpack_require__(726);
+	var _MenuToggle = __webpack_require__(721);
 	
 	var _MenuToggle2 = _interopRequireDefault(_MenuToggle);
 	
@@ -87987,7 +87757,7 @@
 	exports["default"] = _Menu2["default"];
 
 /***/ }),
-/* 716 */
+/* 711 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -88012,11 +87782,11 @@
 	
 	var _miniStore = __webpack_require__(329);
 	
-	var _SubPopupMenu = __webpack_require__(717);
+	var _SubPopupMenu = __webpack_require__(712);
 	
 	var _SubPopupMenu2 = _interopRequireDefault(_SubPopupMenu);
 	
-	var _util = __webpack_require__(718);
+	var _util = __webpack_require__(713);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 	
@@ -88285,7 +88055,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 717 */
+/* 712 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -88324,9 +88094,9 @@
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
-	var _util = __webpack_require__(718);
+	var _util = __webpack_require__(713);
 	
-	var _DOMWrap = __webpack_require__(719);
+	var _DOMWrap = __webpack_require__(714);
 	
 	var _DOMWrap2 = _interopRequireDefault(_DOMWrap);
 	
@@ -88734,7 +88504,7 @@
 	exports["default"] = connected;
 
 /***/ }),
-/* 718 */
+/* 713 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -88861,7 +88631,7 @@
 	}
 
 /***/ }),
-/* 719 */
+/* 714 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -88888,11 +88658,11 @@
 	
 	var _resizeObserverPolyfill2 = _interopRequireDefault(_resizeObserverPolyfill);
 	
-	var _SubMenu = __webpack_require__(720);
+	var _SubMenu = __webpack_require__(715);
 	
 	var _SubMenu2 = _interopRequireDefault(_SubMenu);
 	
-	var _util = __webpack_require__(718);
+	var _util = __webpack_require__(713);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 	
@@ -89236,7 +89006,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 720 */
+/* 715 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -89278,11 +89048,11 @@
 	
 	var _miniStore = __webpack_require__(329);
 	
-	var _SubPopupMenu = __webpack_require__(717);
+	var _SubPopupMenu = __webpack_require__(712);
 	
 	var _SubPopupMenu2 = _interopRequireDefault(_SubPopupMenu);
 	
-	var _placements = __webpack_require__(721);
+	var _placements = __webpack_require__(716);
 	
 	var _placements2 = _interopRequireDefault(_placements);
 	
@@ -89290,7 +89060,7 @@
 	
 	var _rcAnimate2 = _interopRequireDefault(_rcAnimate);
 	
-	var _util = __webpack_require__(718);
+	var _util = __webpack_require__(713);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 	
@@ -89885,7 +89655,7 @@
 	exports["default"] = connected;
 
 /***/ }),
-/* 721 */
+/* 716 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -89928,7 +89698,7 @@
 	exports["default"] = placements;
 
 /***/ }),
-/* 722 */
+/* 717 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -89964,7 +89734,7 @@
 	
 	var _miniStore = __webpack_require__(329);
 	
-	var _util = __webpack_require__(718);
+	var _util = __webpack_require__(713);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 	
@@ -90208,7 +89978,7 @@
 	exports["default"] = connected;
 
 /***/ }),
-/* 723 */
+/* 718 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -90227,7 +89997,7 @@
 	
 	var _propTypes2 = _interopRequireDefault(_propTypes);
 	
-	var _util = __webpack_require__(718);
+	var _util = __webpack_require__(713);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 	
@@ -90325,7 +90095,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 724 */
+/* 719 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -90395,7 +90165,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 725 */
+/* 720 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -90469,7 +90239,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 726 */
+/* 721 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -90627,7 +90397,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 727 */
+/* 722 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -90675,7 +90445,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 728 */
+/* 723 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -90702,7 +90472,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 729 */
+/* 724 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -90755,7 +90525,7 @@
 	};
 
 /***/ }),
-/* 730 */
+/* 725 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -90770,11 +90540,11 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _Column = __webpack_require__(731);
+	var _Column = __webpack_require__(726);
 	
 	var _Column2 = _interopRequireDefault(_Column);
 	
-	var _ColumnGroup = __webpack_require__(732);
+	var _ColumnGroup = __webpack_require__(727);
 	
 	var _ColumnGroup2 = _interopRequireDefault(_ColumnGroup);
 	
@@ -91073,7 +90843,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 731 */
+/* 726 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -91133,7 +90903,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 732 */
+/* 727 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -91177,7 +90947,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 733 */
+/* 728 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -91222,7 +90992,7 @@
 	module.exports = exports["default"];
 
 /***/ }),
-/* 734 */
+/* 729 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -91239,7 +91009,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _util = __webpack_require__(735);
+	var _util = __webpack_require__(730);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 	
@@ -91471,13 +91241,13 @@
 	module.exports = exports["default"];
 
 /***/ }),
-/* 735 */
+/* 730 */
 /***/ (function(module, exports) {
 
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	  value: true
 	});
 	
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -91496,29 +91266,29 @@
 	*/
 	
 	function sortBy(arr, prop, desc) {
-	    var props = [],
-	        ret = [],
-	        i = 0,
-	        len = arr.length;
-	    if (typeof prop == 'string') {
-	        for (; i < len; i++) {
-	            var oI = arr[i];
-	            (props[i] = new String(oI && oI[prop] || ''))._obj = oI;
-	        }
-	    } else if (typeof prop == 'function') {
-	        for (; i < len; i++) {
-	            var _oI = arr[i];
-	            (props[i] = new String(_oI && prop(_oI) || ''))._obj = _oI;
-	        }
-	    } else {
-	        throw '参数类型错误';
+	  var props = [],
+	      ret = [],
+	      i = 0,
+	      len = arr.length;
+	  if (typeof prop == 'string') {
+	    for (; i < len; i++) {
+	      var oI = arr[i];
+	      (props[i] = new String(oI && oI[prop] || ''))._obj = oI;
 	    }
-	    props.sort();
-	    for (i = 0; i < len; i++) {
-	        ret[i] = props[i]._obj;
+	  } else if (typeof prop == 'function') {
+	    for (; i < len; i++) {
+	      var _oI = arr[i];
+	      (props[i] = new String(_oI && prop(_oI) || ''))._obj = _oI;
 	    }
-	    if (desc) ret.reverse();
-	    return ret;
+	  } else {
+	    throw '参数类型错误';
+	  }
+	  props.sort();
+	  for (i = 0; i < len; i++) {
+	    ret[i] = props[i]._obj;
+	  }
+	  if (desc) ret.reverse();
+	  return ret;
 	};
 	
 	/**
@@ -91527,11 +91297,11 @@
 	 * @param {} property 
 	 */
 	function compare(property) {
-	    return function (a, b) {
-	        var value1 = a[property];
-	        var value2 = b[property];
-	        return value1 - value2;
-	    };
+	  return function (a, b) {
+	    var value1 = a[property];
+	    var value2 = b[property];
+	    return value1 - value2;
+	  };
 	}
 	
 	/**
@@ -91539,23 +91309,23 @@
 	 * @param {*} obj 要拷贝的对象 
 	 */
 	function ObjectAssign(obj) {
-	    var b = obj instanceof Array;
-	    var tagObj = b ? [] : {};
-	    if (b) {
-	        //数组
-	        obj.forEach(function (da) {
-	            var _da = {};
-	            _extends(_da, da);
-	            tagObj.push(_da);
-	        });
-	    } else {
-	        _extends(tagObj, obj);
-	    }
-	    return tagObj;
+	  var b = obj instanceof Array;
+	  var tagObj = b ? [] : {};
+	  if (b) {
+	    //数组
+	    obj.forEach(function (da) {
+	      var _da = {};
+	      _extends(_da, da);
+	      tagObj.push(_da);
+	    });
+	  } else {
+	    _extends(tagObj, obj);
+	  }
+	  return tagObj;
 	}
 
 /***/ }),
-/* 736 */
+/* 731 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -91580,7 +91350,7 @@
 	
 	var _beeTable2 = _interopRequireDefault(_beeTable);
 	
-	var _multiSelect = __webpack_require__(734);
+	var _multiSelect = __webpack_require__(729);
 	
 	var _multiSelect2 = _interopRequireDefault(_multiSelect);
 	
@@ -91759,7 +91529,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 737 */
+/* 732 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';

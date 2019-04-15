@@ -14,7 +14,7 @@ import { Drawer } from 'tinper-bee';
 or
 
 import Drawer from 'bee-drawer';
-import bee-drawer/build/Drawer.css;
+import 'bee-drawer/build/Drawer.css';
 
 ```
 
