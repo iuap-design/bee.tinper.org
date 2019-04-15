@@ -1,1 +1,325 @@
-webpackJsonp([1],{0:function(e,t,r){r("j1ja"),e.exports=r("lVK7")},JU1R:function(e,t,r){"use strict";(function(e){Object.defineProperty(t,"__esModule",{value:!0});var o=l(r("GiK3")),n=r("F8kA"),a=l(r("gf5I")),u=l(r("q0Fb"));function l(e){return e&&e.__esModule?e:{default:e}}!function(){var t=("undefined"!=typeof reactHotLoaderGlobal?reactHotLoaderGlobal:r("rGbO")).enterModule;t&&t(e)}();var c=function(){return o.default.createElement("div",null)},i=function(e){return function(t){return o.default.createElement(a.default,{load:e},function(e){return e?o.default.createElement(e,t):o.default.createElement(c,null)})}},d=function(){return o.default.createElement("div",null,o.default.createElement(n.HashRouter,null,o.default.createElement("div",null,o.default.createElement(n.Switch,null,o.default.createElement(n.Route,{exact:!0,path:"/",component:i(u.default)})))))},s=d;t.default=s,function(){var e=("undefined"!=typeof reactHotLoaderGlobal?reactHotLoaderGlobal:r("rGbO")).default;e&&(e.register(c,"Loading","/Users/jony/workspaces/yonyou/tinper-component/tinper-bee-theme/src/router/router.js"),e.register(i,"createComponent","/Users/jony/workspaces/yonyou/tinper-component/tinper-bee-theme/src/router/router.js"),e.register(d,"getRouter","/Users/jony/workspaces/yonyou/tinper-component/tinper-bee-theme/src/router/router.js"),e.register(s,"default","/Users/jony/workspaces/yonyou/tinper-component/tinper-bee-theme/src/router/router.js"))}(),function(){var t=("undefined"!=typeof reactHotLoaderGlobal?reactHotLoaderGlobal:r("rGbO")).leaveModule;t&&t(e)}()}).call(t,r("3IRH")(e))},gf5I:function(module,exports,__webpack_require__){"use strict";(function(module){Object.defineProperty(exports,"__esModule",{value:!0});var _getPrototypeOf=__webpack_require__("Zx67"),_getPrototypeOf2=_interopRequireDefault(_getPrototypeOf),_classCallCheck2=__webpack_require__("Zrlr"),_classCallCheck3=_interopRequireDefault(_classCallCheck2),_createClass2=__webpack_require__("wxAW"),_createClass3=_interopRequireDefault(_createClass2),_possibleConstructorReturn2=__webpack_require__("zwoO"),_possibleConstructorReturn3=_interopRequireDefault(_possibleConstructorReturn2),_inherits2=__webpack_require__("Pf15"),_inherits3=_interopRequireDefault(_inherits2),_react=__webpack_require__("GiK3"),_react2=_interopRequireDefault(_react);function _interopRequireDefault(e){return e&&e.__esModule?e:{default:e}}!function(){var e=("undefined"!=typeof reactHotLoaderGlobal?reactHotLoaderGlobal:__webpack_require__("rGbO")).enterModule;e&&e(module)}();var Bundle=function(_Component){function Bundle(){var e,t,r,o;(0,_classCallCheck3.default)(this,Bundle);for(var n=arguments.length,a=Array(n),u=0;u<n;u++)a[u]=arguments[u];return t=r=(0,_possibleConstructorReturn3.default)(this,(e=Bundle.__proto__||(0,_getPrototypeOf2.default)(Bundle)).call.apply(e,[this].concat(a))),r.state={mod:null},o=t,(0,_possibleConstructorReturn3.default)(r,o)}return(0,_inherits3.default)(Bundle,_Component),(0,_createClass3.default)(Bundle,[{key:"componentWillMount",value:function(){this.load(this.props)}},{key:"componentWillReceiveProps",value:function(e){e.load!==this.props.load&&this.load(e)}},{key:"load",value:function(e){var t=this;this.setState({mod:null}),e.load(function(e){t.setState({mod:e.default?e.default:e})})}},{key:"render",value:function(){return this.props.children(this.state.mod)}},{key:"__reactstandin__regenerateByEval",value:function __reactstandin__regenerateByEval(key,code){this[key]=eval(code)}}]),Bundle}(_react.Component),_default=Bundle;exports.default=_default,function(){var e=("undefined"!=typeof reactHotLoaderGlobal?reactHotLoaderGlobal:__webpack_require__("rGbO")).default;e&&(e.register(Bundle,"Bundle","/Users/jony/workspaces/yonyou/tinper-component/tinper-bee-theme/src/router/Bundle.js"),e.register(_default,"default","/Users/jony/workspaces/yonyou/tinper-component/tinper-bee-theme/src/router/Bundle.js"))}(),function(){var e=("undefined"!=typeof reactHotLoaderGlobal?reactHotLoaderGlobal:__webpack_require__("rGbO")).leaveModule;e&&e(module)}()}).call(exports,__webpack_require__("3IRH")(module))},lVK7:function(e,t,r){"use strict";(function(e){var t=u(r("GiK3")),o=u(r("O27J")),n=r("rGbO"),a=u(r("JU1R"));function u(e){return e&&e.__esModule?e:{default:e}}function l(e){o.default.render(t.default.createElement(n.AppContainer,null,e),document.getElementById("theme-app"))}!function(){var t=("undefined"!=typeof reactHotLoaderGlobal?reactHotLoaderGlobal:r("rGbO")).enterModule;t&&t(e)}(),l((0,a.default)()),function(){var e=("undefined"!=typeof reactHotLoaderGlobal?reactHotLoaderGlobal:r("rGbO")).default;e&&e.register(l,"renderWithHotReload","/Users/jony/workspaces/yonyou/tinper-component/tinper-bee-theme/src/index.js")}(),function(){var t=("undefined"!=typeof reactHotLoaderGlobal?reactHotLoaderGlobal:r("rGbO")).leaveModule;t&&t(e)}()}).call(t,r("3IRH")(e))},q0Fb:function(e,t,r){e.exports=function(e){new Promise(function(e){e()}).then(function(t){e(r("uI4+"))}.bind(null,r)).catch(r.oe)}}},[0]);
+webpackJsonp([1],{
+
+/***/ 0:
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__("j1ja");
+module.exports = __webpack_require__("lVK7");
+
+
+/***/ }),
+
+/***/ "JU1R":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(module) {
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__("GiK3");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRouterDom = __webpack_require__("F8kA");
+
+var _Bundle = __webpack_require__("gf5I");
+
+var _Bundle2 = _interopRequireDefault(_Bundle);
+
+var _Home = __webpack_require__("q0Fb");
+
+var _Home2 = _interopRequireDefault(_Home);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+(function () {
+  var enterModule = (typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal : __webpack_require__("rGbO")).enterModule;
+  enterModule && enterModule(module);
+})();
+
+// 按需加载
+
+
+// import Template from 'bundle-loader?lazy&name=template!pages/Template';
+
+var Loading = function Loading() {
+  return _react2.default.createElement('div', null);
+};
+
+var createComponent = function createComponent(component) {
+  return function (props) {
+    return _react2.default.createElement(
+      _Bundle2.default,
+      { load: component },
+      function (Component) {
+        return Component ? _react2.default.createElement(Component, props) : _react2.default.createElement(Loading, null);
+      }
+    );
+  };
+};
+
+var getRouter = function getRouter() {
+  return _react2.default.createElement(
+    'div',
+    null,
+    _react2.default.createElement(
+      _reactRouterDom.HashRouter,
+      null,
+      _react2.default.createElement(
+        'div',
+        null,
+        _react2.default.createElement(
+          _reactRouterDom.Switch,
+          null,
+          _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: createComponent(_Home2.default) })
+        )
+      )
+    )
+  );
+};
+
+var _default = getRouter;
+exports.default = _default;
+;
+
+(function () {
+  var reactHotLoader = (typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal : __webpack_require__("rGbO")).default;
+
+  if (!reactHotLoader) {
+    return;
+  }
+
+  reactHotLoader.register(Loading, 'Loading', '/Users/jony/workspaces/yonyou/tinper-component/tinper-bee-theme/src/router/router.js');
+  reactHotLoader.register(createComponent, 'createComponent', '/Users/jony/workspaces/yonyou/tinper-component/tinper-bee-theme/src/router/router.js');
+  reactHotLoader.register(getRouter, 'getRouter', '/Users/jony/workspaces/yonyou/tinper-component/tinper-bee-theme/src/router/router.js');
+  reactHotLoader.register(_default, 'default', '/Users/jony/workspaces/yonyou/tinper-component/tinper-bee-theme/src/router/router.js');
+})();
+
+;
+
+(function () {
+  var leaveModule = (typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal : __webpack_require__("rGbO")).leaveModule;
+  leaveModule && leaveModule(module);
+})();
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__("3IRH")(module)))
+
+/***/ }),
+
+/***/ "gf5I":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(module) {
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _getPrototypeOf = __webpack_require__("Zx67");
+
+var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+
+var _classCallCheck2 = __webpack_require__("Zrlr");
+
+var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+var _createClass2 = __webpack_require__("wxAW");
+
+var _createClass3 = _interopRequireDefault(_createClass2);
+
+var _possibleConstructorReturn2 = __webpack_require__("zwoO");
+
+var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+var _inherits2 = __webpack_require__("Pf15");
+
+var _inherits3 = _interopRequireDefault(_inherits2);
+
+var _react = __webpack_require__("GiK3");
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+(function () {
+    var enterModule = (typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal : __webpack_require__("rGbO")).enterModule;
+    enterModule && enterModule(module);
+})();
+
+var Bundle = function (_Component) {
+    (0, _inherits3.default)(Bundle, _Component);
+
+    function Bundle() {
+        var _ref;
+
+        var _temp, _this, _ret;
+
+        (0, _classCallCheck3.default)(this, Bundle);
+
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+        }
+
+        return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = Bundle.__proto__ || (0, _getPrototypeOf2.default)(Bundle)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
+            // short for "module" but that's a keyword in js, so "mod"
+            mod: null
+        }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
+    }
+
+    (0, _createClass3.default)(Bundle, [{
+        key: 'componentWillMount',
+        value: function componentWillMount() {
+            this.load(this.props);
+        }
+    }, {
+        key: 'componentWillReceiveProps',
+        value: function componentWillReceiveProps(nextProps) {
+            if (nextProps.load !== this.props.load) {
+                this.load(nextProps);
+            }
+        }
+    }, {
+        key: 'load',
+        value: function load(props) {
+            var _this2 = this;
+
+            this.setState({
+                mod: null
+            });
+            props.load(function (mod) {
+                _this2.setState({
+                    // handle both es imports and cjs
+                    mod: mod.default ? mod.default : mod
+                });
+            });
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            return this.props.children(this.state.mod);
+        }
+    }, {
+        key: '__reactstandin__regenerateByEval',
+        // @ts-ignore
+        value: function __reactstandin__regenerateByEval(key, code) {
+            // @ts-ignore
+            this[key] = eval(code);
+        }
+    }]);
+    return Bundle;
+}(_react.Component);
+
+var _default = Bundle;
+exports.default = _default;
+;
+
+(function () {
+    var reactHotLoader = (typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal : __webpack_require__("rGbO")).default;
+
+    if (!reactHotLoader) {
+        return;
+    }
+
+    reactHotLoader.register(Bundle, 'Bundle', '/Users/jony/workspaces/yonyou/tinper-component/tinper-bee-theme/src/router/Bundle.js');
+    reactHotLoader.register(_default, 'default', '/Users/jony/workspaces/yonyou/tinper-component/tinper-bee-theme/src/router/Bundle.js');
+})();
+
+;
+
+(function () {
+    var leaveModule = (typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal : __webpack_require__("rGbO")).leaveModule;
+    leaveModule && leaveModule(module);
+})();
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__("3IRH")(module)))
+
+/***/ }),
+
+/***/ "lVK7":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(module) {
+
+var _react = __webpack_require__("GiK3");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = __webpack_require__("O27J");
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
+var _reactHotLoader = __webpack_require__("rGbO");
+
+var _router = __webpack_require__("JU1R");
+
+var _router2 = _interopRequireDefault(_router);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+(function () {
+  var enterModule = (typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal : __webpack_require__("rGbO")).enterModule;
+  enterModule && enterModule(module);
+})();
+// import 'tinper-bee/assets/tinper-bee.css';
+// 引入路由
+
+
+// 引入css样式
+// import './static/style/um.css';
+// import './static/style/markdown.css';
+
+/*初始化*/
+renderWithHotReload((0, _router2.default)());
+
+/*热更新*/
+if (false) {
+  module.hot.accept('./router/router', function () {
+    var getRouter = require('router/router').default;
+    renderWithHotReload(getRouter());
+  });
+}
+
+function renderWithHotReload(RootElement) {
+  _reactDom2.default.render(_react2.default.createElement(
+    _reactHotLoader.AppContainer,
+    null,
+    RootElement
+  ), document.getElementById('theme-app'));
+}
+;
+
+(function () {
+  var reactHotLoader = (typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal : __webpack_require__("rGbO")).default;
+
+  if (!reactHotLoader) {
+    return;
+  }
+
+  reactHotLoader.register(renderWithHotReload, 'renderWithHotReload', '/Users/jony/workspaces/yonyou/tinper-component/tinper-bee-theme/src/index.js');
+})();
+
+;
+
+(function () {
+  var leaveModule = (typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal : __webpack_require__("rGbO")).leaveModule;
+  leaveModule && leaveModule(module);
+})();
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__("3IRH")(module)))
+
+/***/ }),
+
+/***/ "q0Fb":
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = function(cb) {
+	new Promise(function(resolve) { resolve(); }).then((function(require) {
+		cb(__webpack_require__("uI4+"));
+	}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
+}
+
+/***/ })
+
+},[0]);
