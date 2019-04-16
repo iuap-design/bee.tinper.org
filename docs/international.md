@@ -147,10 +147,46 @@ class App extends Component {
 ## 多语文件包 json格式示例
 
 ```
-{
-    "Demo.welcome":"welcome",
-    "Demo.showTime":"The following is the show time.",
-    "Demo.value":"Please enter content"
+{ 
+  "js.sin.src.0003": "更新成功EN",
+  "js.com.Ind1.0001": "员工编号EN",
+  "js.com.Ind1.0002": "员工姓名EN",
+  "js.com.Ind1.0003": "员工性别EN",
+  "js.com.Ind1.0004": "所属部门EN",
+  "js.com.Ind1.0005": "职级EN",
+  "js.com.Ind1.0006": "工龄EN",
+  "js.com.Ind1.0007": "司龄EN",
+  "js.com.Ind1.0008": "年份EN",
+  "js.com.Ind1.0009": "月份EN",
+  "js.com.Ind1.0010": "补贴类别EN",
+  "js.com.Ind1.0011": "补贴标准EN",
+  "js.com.Ind1.0012": "实际补贴EN",
+  "js.com.Ind1.0013": "是否超标EN",
+  "js.com.Ind1.0014": "申请时间EN",
+  "js.com.Ind1.0015": "领取方式EN",
+  "js.com.Ind1.0016": "领取时间EN",
+  "js.com.Ind1.0017": "备注EN",
+  "js.com.Ind1.0018": "请勾选数据后再新增EN",
+  "js.com.Ind1.0019": "请勾选数据后再更新EN",
+  "js.com.Ind1.0020": "数据填写不完整EN",
+  "js.com.Ind1.0021": "请勾选数据后再删除EN",
+  "js.com.Ind1.0022": "A2单表行内编辑示例EN",
+  "js.com.Ind1.0023": "按钮权限加载完成EN",
+  "js.com.Ind1.0024": "新增EN",
+  "js.com.Ind1.0025": "修改EN",
+  "js.com.Ind1.0026": "删除EN",
+  "js.com.Ind1.0027": "导出EN",
+  "js.com.Ind1.0028": "保存EN",
+  "js.com.Ind1.0029": "取消EN",
+  "js.com.Ind1.0030": "数据未保存，确定离开 ?EN",
+  "js.com.Ind1.0031": "是否要删除 ?EN",
+  "js.com.Ind2.0001": "请选择EN",
+  "js.com.Ind2.0002": "男EN",
+  "js.com.Ind2.0003": "女EN",
+  "js.com.Ind2.0004": "一月EN",
+  "js.com.Ind2.0005": "二月EN",
+  "js.com.Ind2.0006": "三月EN",
+  "js.com.Ind2.0007": "四月EN",
 }
 
 ```

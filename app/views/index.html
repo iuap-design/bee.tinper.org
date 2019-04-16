@@ -56,6 +56,12 @@
     </div>
 </body>
 <script type="text/javascript" src="//design.yonyoucloud.com/static/docSearch/docsearch.min.js"></script>
+<% if(active=='theme'){ %>
+    <script type="text/javascript" src="./theme/runtime.js"></script>
+    <script type="text/javascript" src="./theme/vendor.js"></script>
+    <script type="text/javascript" src="./theme/app.js"></script>
+    <script type="text/javascript" src="./theme/home.js"></script>
+<% } %>
 <script>
     // hljs.initHighlightingOnLoad();
     document.querySelectorAll('.drawer-body code').forEach((block) => {

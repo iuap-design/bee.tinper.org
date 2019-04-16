@@ -7,6 +7,8 @@ const HomeController = require('./controller/index.js')
 module.exports = (app) => {
   router.get( '/', HomeController.index )
   router.get( '/:component', HomeController.index )
+  router.post('/server/package', HomeController.cliBuildScss) 
+  router.get('/server/version', HomeController.getVersion)
   // 注册路由中间件
   app.use(router.routes())
     .use(router.allowedMethods())

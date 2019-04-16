@@ -87,6 +87,7 @@ body::-webkit-scrollbar-thumb:window-inactive {
     box-shadow:0px 0px 5px #BDBDBD;
     text-align:center;
     line-height:37px;
+    font-size: 14px;
 }
 .mask{
     display:none;
@@ -132,7 +133,7 @@ body::-webkit-scrollbar-thumb:window-inactive {
         top:0;
         height:100%;
         left:-250px;
-        z-index:2000;
+        z-index:2019;
     }
     .content{
         width: 100%;
@@ -230,9 +231,14 @@ body::-webkit-scrollbar-thumb:window-inactive {
 
 
 .mob-nav  .uf-navmenu{
+<<<<<<< HEAD
+    margin-left:90px;
+}
+=======
     float: right;
     right: 3px;
     position: fixed;
     z-index: 999;
     margin-right: 17px;
 }
+>>>>>>> deee79dd14f5970fcd2ac84265839958639b0c44
