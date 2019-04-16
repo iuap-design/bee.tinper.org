@@ -184,7 +184,9 @@ module.exports = {
       body:    JSON.stringify(ctx.request.body),
       headers: { 'Content-Type': 'application/json' }
     };
-    ctx.response.body = await getTinperThemeServer("package",option);
+    let data = await getTinperThemeServer("package",option);
+    console.log("--bee.tinper.org--- ",data);
+    ctx.response.body = data;
   },
   getVersion: async(ctx, next) => {
     ctx.response.body = await getTinperThemeServer("version",{});
