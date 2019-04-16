@@ -11,7 +11,7 @@ import { Layout } from 'tinper-bee';
 or
 
 import Layout from 'bee-layout';
-import bee-layout/build/Layout.css;
+import 'bee-layout/build/Layout.css';
 
 ```
 通过基础的 12 分栏，迅速简便地创建布局。

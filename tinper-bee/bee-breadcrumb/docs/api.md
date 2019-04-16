@@ -13,7 +13,7 @@ import { Breadcrumb } from 'tinper-bee';
 or
 
 import Breadcrumb from 'bee-breadcrumb';
-import bee-breadcrumb/build/Breadcrumb.css;
+import 'bee-breadcrumb/build/Breadcrumb.css';
 
 ```
 

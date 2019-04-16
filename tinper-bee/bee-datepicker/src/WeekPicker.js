@@ -4,6 +4,7 @@
 
 import Calendar from "./rc-calendar";
 import React, { Component } from "react";
+import ReactDOM from 'react-dom';
 import classnames from 'classnames';
 import Picker from "./rc-calendar/Picker";
 import FormControl from "bee-form-control";

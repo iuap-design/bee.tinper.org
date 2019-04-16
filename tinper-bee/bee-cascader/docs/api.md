@@ -17,7 +17,7 @@ import { Cascader } from 'tinper-bee';
 or
 
 import Cascader from 'bee-cascader';
-import bee-cascader/build/Cascader.css;
+import 'bee-cascader/build/Cascader.css';
 
 ```
 

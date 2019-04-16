@@ -1,7 +1,7 @@
 /**
  *
  * @title 主子表
- * @description 主表点击子表联动
+ * @description 点击主表行，子表联动切换
  *
  */
 
@@ -35,7 +35,8 @@ class Demo7 extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      children_data: []
+      children_data: [],
+      selectedRowIndex: -1
     };
   }
 
@@ -45,7 +46,8 @@ class Demo7 extends Component {
         children_data: [
           { a: "郭靖", b: "02级一班", c: "文学系", key: "1" },
           { a: "黄蓉", b: "02级一班", c: "文学系", key: "2" }
-        ]
+        ],
+        selectedRowIndex: index
       });
     } else if (record.a === "03级二班") {
       this.setState({
@@ -53,11 +55,13 @@ class Demo7 extends Component {
           { a: "杨过", b: "03级二班", c: "外语系", key: "1" },
           { a: "小龙女", b: "03级二班", c: "外语系", key: "2" },
           { a: "傻姑", b: "03级二班", c: "外语系", key: "3" }
-        ]
+        ],
+        selectedRowIndex: index
       });
     } else if (record.a === "05级三班") {
       this.setState({
-        children_data: [{ a: "金圣叹", b: "05级三班", c: "美术系", key: "1" }]
+        children_data: [{ a: "金圣叹", b: "05级三班", c: "美术系", key: "1" }],
+        selectedRowIndex: index
       });
     }
   };
@@ -69,6 +73,13 @@ class Demo7 extends Component {
           columns={columns7}
           data={data7}
           onRowClick={this.rowclick}
+          rowClassName={(record,index,indent)=>{
+            if (this.state.selectedRowIndex == index) {
+                return 'selected';
+            } else {
+                return '';
+            }
+          }}
           title={currentData => <div>标题: 我是主表</div>}
         />
         <Table

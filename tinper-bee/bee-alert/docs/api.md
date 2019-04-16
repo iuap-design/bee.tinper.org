@@ -14,7 +14,7 @@ import { Alert } from 'tinper-bee';
 or
 
 import Alert from 'bee-alert';
-import bee-alert/build/Alert.css;
+import 'bee-alert/build/Alert.css';
 
 ```
 

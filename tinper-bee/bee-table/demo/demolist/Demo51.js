@@ -1,7 +1,7 @@
 /**
 *
-* @title 固定列
-* @description 固定列到表格的某侧
+* @title 左侧固定列
+* @description 固定列到表格的左侧
 *
 */
 
@@ -51,10 +51,10 @@ const data5 = [
   }
 ];
 
-class Demo5 extends Component {
+class Demo51 extends Component {
   render() {
     return <Table columns={columns5} data={data5} scroll={{ x: "110%", y: 240 }}  />;
   }
 }
 
-export default Demo5;
+export default Demo51;

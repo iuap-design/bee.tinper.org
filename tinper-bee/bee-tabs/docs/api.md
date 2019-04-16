@@ -13,7 +13,7 @@ import { Tabs } from 'tinper-bee';
 or
 
 import Tabs from 'bee-tabs';
-import bee-tabs/build/Tabs.css;
+import 'bee-tabs/build/Tabs.css';
 
 ```
 

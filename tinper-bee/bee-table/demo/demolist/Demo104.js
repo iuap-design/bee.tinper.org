@@ -1,12 +1,11 @@
 /**
 *
-* @title 基本用法
-* 【Tooltip】
-* @description
+* @title 自定义行高
+* @description 设置`height`属性自定义表格行高，设置`headerHeight`属性自定义表头高度。
 */
 
 import React, { Component } from "react";
-import {Button,Tooltip,Popconfirm} from "tinper-bee";
+import {Button,Tooltip} from "tinper-bee";
 import Table from "../../src";
 
 const columns = [
@@ -29,29 +28,13 @@ const columns = [
     }
   },
   { id: "123", title: "性别", dataIndex: "b", key: "b", width: 500},
-  { title: "年龄", dataIndex: "c", key: "c", width: 200 },
-  {
-    title: "操作",
-    dataIndex: "d",
-    key: "d",
-    render(text, record, index) {
-      return (
-        <div style={{ position: 'relative' }} title={text} >
-          <Popconfirm trigger="click" placement="right" content={'这是第' + index + '行，内容为:' + text}>
-            <a href="javascript:;" tooltip={text}>
-              一些操作
-            </a>
-          </Popconfirm>
-        </div>
-      );
-    }
-  }
+  { title: "年龄", dataIndex: "c", key: "c", width: 200 }
 ];
 
 const data = [
-  { a: "令狐冲", b: "男", c: 41, d: "操作", key: "1" },
-  { a: "杨过叔叔的女儿黄蓉", b: "男", c: 67, d: "操作", key: "2" },
-  { a: "郭靖", b: "男", c: 25, d: "操作", key: "3" }
+  { a: "令狐冲", b: "男", c: 41, key: "1" },
+  { a: "杨过叔叔的女儿黄蓉", b: "男", c: 67, key: "2" },
+  { a: "郭靖", b: "男", c: 25, key: "3" }
 ];
 
 class Demo1 extends Component {
@@ -63,6 +46,19 @@ class Demo1 extends Component {
       selectedRowIndex: 0
     }
   }
+  handleClick = () => {
+    console.log('这是第' , this.currentIndex , '行');
+    console.log('内容：' , this.currentRecord);
+  }
+
+  onRowHover=(index,record)=>{
+    this.currentIndex = index;
+    this.currentRecord = record;
+  }
+
+  getHoverContent=()=>{
+    return <div className="opt-btns"><Button size="sm" onClick={this.handleClick}>一些操作</Button> </div>
+  }
 
   render() {
     return (
@@ -73,6 +69,8 @@ class Demo1 extends Component {
           parentNodeId='parent'
           height={40}
           headerHeight={40}
+          hoverContent={this.getHoverContent}
+          onRowHover={this.onRowHover}
           onRowClick={(record, index, indent) => {
             this.setState({
               selectedRowIndex: index

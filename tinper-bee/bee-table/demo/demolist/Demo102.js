@@ -1,6 +1,6 @@
 /**
 *
-* @title 树形表格
+* @title 层级树型展示
 * @description 通过在data中配置children数据，来自动生成树形表格
 *
 */

@@ -1,17 +1,15 @@
 /**
 *
-* @title 固定表头
-* @description 当滚动纵向滚动条时，表头固定。还可以设置scroll来支持横向或纵向滚动
+* @title 隔行换色
+* @description 可自定义斑马线颜色
 *
 */
 
 
 import React, { Component } from 'react';
 import Table from '../../src';
-import dragColumn from "../../src/lib/dragColumn";;
-const DragColumnTable = dragColumn(Table);
 
-const columns6 = [
+const columns04 = [
   {
     title: "Full Name",
     width: 100,
@@ -22,7 +20,7 @@ const columns6 = [
   { title: "Address", dataIndex: "address", key: "1" }
 ];
 
-const data6 = [
+const data04 = [
   {
     key: "1",
     name: "John Brown",
@@ -72,10 +70,10 @@ const data6 = [
   }
 ];
 
-class Demo6 extends Component {
+class Demo04 extends Component {
   render() {
-    return <DragColumnTable columns={columns6} data={data6} scroll={{y: 150 }} dragborder={true}  />;
+    return <Table className="demo04" columns={columns04} data={data04} />;
   }
 }
 
-export default Demo6; 
+export default Demo04; 

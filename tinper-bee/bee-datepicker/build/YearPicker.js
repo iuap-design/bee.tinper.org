@@ -16,6 +16,10 @@ var _react = require("react");
 
 var _react2 = _interopRequireDefault(_react);
 
+var _reactDom = require("react-dom");
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
 var _Picker = require("./rc-calendar/Picker");
 
 var _Picker2 = _interopRequireDefault(_Picker);
@@ -82,10 +86,16 @@ var YearPicker = function (_Component) {
                 value: nextProps.value
             });
         }
-        this.setState({
-            renderIcon: nextProps.renderIcon,
-            open: nextProps.open
-        });
+        if ("open" in nextProps) {
+            this.setState({
+                open: nextProps.open
+            });
+        }
+        if ("renderIcon" in nextProps) {
+            this.setState({
+                renderIcon: nextProps.renderIcon
+            });
+        }
     };
 
     YearPicker.prototype.render = function render() {
@@ -185,7 +195,7 @@ var _initialiseProps = function _initialiseProps() {
                     });
                     var v = self.state.value;
                     self.props.onOpenChange && self.props.onOpenChange(false, v, v && v.format(self.props.format) || '');
-                    ReactDOM.findDOMNode(self.outInput).focus(); // 按esc时候焦点回到input输入框
+                    _reactDom2["default"].findDOMNode(self.outInput).focus(); // 按esc时候焦点回到input输入框
                 }
             };
         }
@@ -206,7 +216,7 @@ var _initialiseProps = function _initialiseProps() {
     this.handleChange = function (value) {
         var props = _this3.props;
         _this3.setState({ value: value });
-        props.onChange(value, value && value.format(props.format) || '');
+        props.onChange && props.onChange(value, value && value.format(props.format) || '');
     };
 
     this.onMouseLeave = function (e) {
@@ -238,7 +248,7 @@ var _initialiseProps = function _initialiseProps() {
             open: false
         });
         onSelect && onSelect(value, value ? value.format(format) : '');
-        ReactDOM.findDOMNode(_this3.outInput).focus();
+        _reactDom2["default"].findDOMNode(_this3.outInput).focus();
     };
 };
 

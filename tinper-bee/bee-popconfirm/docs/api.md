@@ -2,6 +2,21 @@
 
 点击元素弹出对话框。
 
+## 何时使用
+目标元素的操作需要用户进一步的确认时，在目标元素附近弹出浮层提示，询问用户
+
+## 如何使用
+
+```
+import { Popconfirm } from 'tinper-bee';
+
+or
+
+import Popconfirm from 'bee-popconfirm';
+import 'bee-popconfirm/build/Popconfirm.css';
+
+```
+
 ## 代码演示
 
 ## API

@@ -3,8 +3,6 @@
  * @title 表格+搜索
  * @description 搜索刷新表格数据
  *
- *
- * import {Table} from 'tinper-bee';
  */
 
 import React, { Component } from "react";

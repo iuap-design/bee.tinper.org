@@ -13,7 +13,7 @@ import { Navbar } from 'tinper-bee';
 or
 
 import Navbar from 'bee-navbar';
-import bee-navbar/build/Navbar.css;
+import 'bee-navbar/build/Navbar.css';
 
 ```
 

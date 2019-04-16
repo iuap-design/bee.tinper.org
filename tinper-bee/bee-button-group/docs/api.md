@@ -13,7 +13,7 @@ import { ButtonGroup } from 'tinper-bee';
 or
 
 import ButtonGroup from 'bee-button-group';
-import bee-button-group/build/ButtonGroup.css;
+import 'bee-button-group/build/ButtonGroup.css';
 
 ```
 

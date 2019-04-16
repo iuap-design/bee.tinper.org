@@ -10,7 +10,7 @@ import { Viewer } from 'tinper-bee';
 or
 
 import Viewer from 'bee-viewer';
-import bee-viewer/build/Viewer.css;
+import 'bee-viewer/build/Viewer.css';
 
 ```
 

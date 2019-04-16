@@ -13,7 +13,7 @@ import { DatePicker } from 'tinper-bee';
 or
 
 import DatePicker from 'bee-datepicker';
-import bee-datepicker/build/DatePicker.css;
+import 'bee-datepicker/build/DatePicker.css';
 
 ```
 

@@ -12,7 +12,7 @@ import { Tooltip } from 'tinper-bee';
 or
 
 import Tooltip from 'bee-tooltip';
-import bee-tooltip/build/Tooltip.css;
+import 'bee-tooltip/build/Tooltip.css';
 
 ```
 ## 代码演示

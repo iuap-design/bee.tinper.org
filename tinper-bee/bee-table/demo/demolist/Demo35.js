@@ -105,7 +105,7 @@ function getData(){
   return data;
 }
 
-class Demo18 extends Component {
+class Demo35 extends Component {
   
   constructor(props) {
     super(props);
@@ -126,7 +126,6 @@ class Demo18 extends Component {
       <div>
         <Button 
           className="editable-add-btn"
-          type="ghost"
           onClick={this.changeData}
         >
           动态设置数据源
@@ -142,4 +141,4 @@ class Demo18 extends Component {
     );
   }
 }
-export default Demo18;
+export default Demo35;

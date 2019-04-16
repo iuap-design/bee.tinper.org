@@ -5,6 +5,7 @@
 import MonthCalendar from "./rc-calendar/MonthCalendar";
 import { KeyCode } from 'tinper-bee-core';
 import React, { Component } from "react";
+import ReactDOM from 'react-dom';
 import Picker from "./rc-calendar/Picker";
 import FormControl from "bee-form-control";
 import Icon from "bee-icon";

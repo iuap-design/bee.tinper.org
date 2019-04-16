@@ -10,7 +10,7 @@ import { LoadingState } from 'tinper-bee';
 or
 
 import LoadingState from 'bee-loading-state';
-import bee-loading-state/build/LoadingState.css;
+import 'bee-loading-state/build/LoadingState.css';
 
 ```
 

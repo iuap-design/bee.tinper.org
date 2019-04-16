@@ -14,7 +14,7 @@ import { FormControl } from 'tinper-bee';
 or
 
 import FormControl from 'bee-form-control';
-import bee-form-control/build/FormControl.css;
+import 'bee-form-control/build/FormControl.css';
 
 ```
 
@@ -28,6 +28,7 @@ import bee-form-control/build/FormControl.css;
 |componentClass|说明表单类型(`input`,`textarea`)|string|'input'|
 |type|类型(`text`,`search`, `submit`,'checkbox',...详情http://www.w3school.com.cn/html5/att_input_type.asp)|string|'text'|
 |onChange|input值发生改变触发的回调|func|-|
+|onKeyDown|keydown回调|func|-|
 |value|input当前值|string|-|
 |defaultValue|input默认值|string|-|
 |onSearch|input type="search" 回车和点击搜索按钮的回调|func|-|

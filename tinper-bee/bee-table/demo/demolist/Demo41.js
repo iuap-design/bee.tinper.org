@@ -37,7 +37,7 @@ const dataSource = [
     value: "yiminghe"
   }
 ];
-class Demo14 extends React.Component {
+class Demo41 extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -282,7 +282,6 @@ class Demo14 extends React.Component {
       <div>
         <Button
           className="editable-add-btn"
-          type="ghost"
           onClick={this.handleAdd}
         >
           添加一行
@@ -290,7 +289,6 @@ class Demo14 extends React.Component {
         <Button
           style={{marginLeft:"5px"}}
           className="editable-add-btn"
-          type="ghost"
           onClick={this.getData}
         >
           获取数据
@@ -305,4 +303,4 @@ class Demo14 extends React.Component {
   }
 }
 
-export default Demo14;
+export default Demo41;
