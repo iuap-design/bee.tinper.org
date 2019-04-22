@@ -67,9 +67,6 @@ body::-webkit-scrollbar-thumb:window-inactive {
 } 
 
 
-
-
-
 #closebtn{
     display:none;
     position:fixed;
@@ -159,7 +156,7 @@ body::-webkit-scrollbar-thumb:window-inactive {
     }
   } 
 @media(max-width:768px){
-    /*手机端 body{overflow:hidden}不生效*/
+    /*解决手机端 body{overflow:hidden}不生效*/
     * {
         padding: 0;
         margin: 0;
@@ -171,7 +168,8 @@ body::-webkit-scrollbar-thumb:window-inactive {
         -webkit-overflow-scrolling: touch;
     }
     body {
-        position: relative;
+        /* position: relative; */
+        position: absolute;
     }
     .sidebar{
         height: 100%;
@@ -191,9 +189,6 @@ body::-webkit-scrollbar-thumb:window-inactive {
     display: inline-block;
     text-align: center;
 }
-
-
-
 
 
 .mob-nav a {
@@ -228,17 +223,3 @@ body::-webkit-scrollbar-thumb:window-inactive {
  .mob-nav .basecomp a{
     color:#E14C46;
  }
-
-
-.mob-nav  .uf-navmenu{
-<<<<<<< HEAD
-    margin-left:90px;
-}
-=======
-    float: right;
-    right: 3px;
-    position: fixed;
-    z-index: 999;
-    margin-right: 17px;
-}
->>>>>>> deee79dd14f5970fcd2ac84265839958639b0c44
