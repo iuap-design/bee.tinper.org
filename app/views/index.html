@@ -79,6 +79,8 @@
     var header = document.querySelector('#navbar');
 
     new Gumshoe('#rightMenusId a',{
+        nested: true,
+        nestedClass: 'active-parent',
         offset: function () {
             return header.getBoundingClientRect().height;
         }

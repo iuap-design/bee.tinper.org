@@ -158,7 +158,7 @@ var ColorPicker = function (_Component) {
                 alpha: alpha
             });
             if (autoCalculate) {
-                var result = _this.calcHoverAndActive(selectedColor, selectedScale);
+                var result = _this.calcHoverAndActive(selectedColor, selectedScale, selectedHexValue);
                 autoCalculate(result);
             }
             if (onChange) {
@@ -166,7 +166,7 @@ var ColorPicker = function (_Component) {
             }
         };
 
-        _this.calcHoverAndActive = function (selectedColor, selectedScale) {
+        _this.calcHoverAndActive = function (selectedColor, selectedScale, selectedHexValue) {
             var obj = {};
             var selectedRgbArr = _colors2["default"][selectedColor] ? _colors2["default"][selectedColor].rgbArr : '';
             var selectedScaleArr = _colors2["default"][selectedColor] ? _colors2["default"][selectedColor].scale : '';
@@ -189,6 +189,7 @@ var ColorPicker = function (_Component) {
                 obj.lighter = lighter;
                 obj.darker = darker;
             }
+            obj.clor = selectedHexValue;
             return obj;
         };
 
@@ -480,6 +481,7 @@ var ColorPicker = function (_Component) {
         HTMLElement.prototype.__defineGetter__("currentStyle", function () {
             return this.ownerDocument.defaultView.getComputedStyle(this, null);
         });
+
         return _react2["default"].createElement(
             'div',
             { className: (0, _classnames2["default"])(clsPrefix, className) },
@@ -510,8 +512,8 @@ var ColorPicker = function (_Component) {
                         //     }
                         // }) }
                     }),
-                    _react2["default"].createElement('div', {
-                        className: clsPrefix + '-form-color-demo bg-' + selectedColor + '-' + selectedScale,
+                    _react2["default"].createElement('div', { style: { backgroundColor: formValue },
+                        className: clsPrefix + '-form-color-demo',
                         onClick: this.handleClick })
                 )
             ),

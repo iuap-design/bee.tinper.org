@@ -97,7 +97,7 @@ module.exports = {
       isComponentFlag = true;
       filePath = path.join(__dirname, `../../tinper-bee/${component}/docs/api.md`);
       data = await fs.readFileSync(filePath, 'utf-8');
-      let demo = '<div id="tinperBeeDemo"></div>';
+      let demo = '<h2 id="代码演示" class="">代码演示</h2><div id="tinperBeeDemo"></div>';
       data = data.replace(/##.*代码演示/, demo);
       let pack_data = await fs.readFileSync(path.join(__dirname, "../../tinper-bee/" + component + "/package.json"));
       if (pack_data) {
