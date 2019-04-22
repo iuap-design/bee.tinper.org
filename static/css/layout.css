@@ -1,4 +1,3 @@
-/*  */
 .navbar {
     background: #808080;
     height: 65px;
@@ -126,11 +125,15 @@ body::-webkit-scrollbar-thumb:window-inactive {
         margin-left:0;
     }
     .content .sidebar{
+        /* 解决基础组件详情页左侧导航z-index无效 */
+        position:fixed;
         left:0;
         top:0;
         height:100%;
         left:-250px;
         z-index:2019;
+        /* 解决在ios上侧边栏层级显示错误*/
+        transform: translateZ(100px);
     }
     .content{
         width: 100%;
