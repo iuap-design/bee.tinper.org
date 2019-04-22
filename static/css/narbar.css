@@ -150,8 +150,13 @@
     line-height:42px;
 }
 
-.mob-nav .nav-content .uf-navmenu {
+/* .mob-nav .nav-content .uf-navmenu {
     margin-left: 2px;
+} */
+
+.mob-nav .uf-navmenu {
+    position:absolute;
+    right:32px;
 }
 
 .mob-nav .nav-content .u-button {

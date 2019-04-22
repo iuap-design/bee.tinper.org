@@ -34,7 +34,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 var propTypes = {
     selector: _propTypes2["default"].string.isRequired, //选择器
-    offset: _propTypes2["default"].func, //偏移量
+    offset: _propTypes2["default"].any, //偏移量
     navClass: _propTypes2["default"].string, //当前被激活锚点新增的类名
     contentClass: _propTypes2["default"].string, //当前被激活的区域
     nested: _propTypes2["default"].bool,

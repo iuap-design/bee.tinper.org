@@ -197,7 +197,7 @@ var Tabs = (0, _createReactClass2["default"])({
       activeKey: this.state.activeKey,
       destroyInactiveTabPane: props.destroyInactiveTabPane,
       children: props.children,
-      style: { height: '100%' },
+      // style: { height: '100%' },
       onChange: this.setActiveKey,
       key: "tabContent"
     })];
