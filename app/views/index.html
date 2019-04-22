@@ -87,14 +87,17 @@
     });
     
     let lists = document.querySelectorAll('.rm-list-item');
-    if(window.scrollY<=160){
-        lists[0].setAttribute('class','rm-list-item active');
-    }
-    window.onscroll=function(){
+    if(lists){
         if(window.scrollY<=160){
             lists[0].setAttribute('class','rm-list-item active');
         }
+        window.onscroll=function(){
+            if(window.scrollY<=160){
+                lists[0].setAttribute('class','rm-list-item active');
+            }
+        }
     }
+    
 
     
     //移动端适配侧边栏
