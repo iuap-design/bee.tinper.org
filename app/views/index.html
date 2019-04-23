@@ -123,6 +123,11 @@
         //以下document的两句代码控制当左侧抽屉遮罩层出现时，遮罩层下面的页面不可以滚动，当点击关闭按钮后，页面才可以滚动。
         document.body.style.overflow = 'hidden';
         window.sessionStorage.setItem('openBtn',true);
+
+        var handle = function(event){
+            event.preventDefault();// 阻止元素发生默认行为
+        }
+        document.body.addEventListener('touchmove',handle,false);//添加监听事件--页面不可滚动
     });
 
     //点击侧边栏的选项时，使侧边栏不消失的控制点击侧边栏时，使侧边栏不消失的控制
@@ -142,6 +147,11 @@
         let docs=document.getElementsByClassName('docs')[0];
         document.body.style.overflow = 'hidden';
         window.sessionStorage.setItem('openBtn',true);
+
+        var handle = function(event){
+            event.preventDefault();// 阻止元素发生默认行为
+        }
+        document.body.addEventListener('touchmove',handle,false);//添加监听事件--页面不可滚动
     }
 
     // 关闭按钮显示逻辑
@@ -152,7 +162,12 @@
         sidebarDOM.style.left="-250px";
         openbtn.style.display='block';
         //以下document的两句代码控制当左侧抽屉遮罩层消失时，页面才可以滚动。
-        document.body.style.overflow = 'auto';  
+        document.body.style.overflow = 'auto';
+        
+        var handle = function(event){
+            event.preventDefault();// 阻止元素发生默认行为
+        }
+        document.body.removeEventListener('touchmove',handle,false);//移除监听事件--页面恢复可滚动
     }, false);
 </script>
 
@@ -160,10 +175,16 @@
 <!-- 控制点击“查看源码”时，浮层下方的页面不能滚动，浮层消失后，页面正常滚动。 -->
 <script>
     var openlist = document.querySelectorAll('.component-code');
+
+    var handle = function(event){
+            event.preventDefault();// 阻止元素发生默认行为
+        }
+        
     if(openlist.length!==0){
         for(var i in openlist){
             openlist[i].onclick=function() {
             document.body.style.overflow = 'hidden';
+            document.body.addEventListener('touchmove',handle,false);//添加监听事件--页面不可滚动
            };
         }
     }
@@ -172,6 +193,7 @@
         for(var i in maskease){
             maskease[i].onclick=function() {
             document.body.style.overflow = 'auto';
+            document.body.removeEventListener('touchmove',handle,false);//移除监听事件--页面恢复可滚动
             }
         }
     }
