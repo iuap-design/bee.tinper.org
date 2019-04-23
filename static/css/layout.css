@@ -1,7 +1,4 @@
 .navbar {
-    /* position:fixed;
-    z-index:999;
-    width:100%; */
     background: #808080;
     height: 65px;
 }
@@ -168,19 +165,19 @@ body::-webkit-scrollbar-thumb:window-inactive {
         margin: 0;
         box-sizing: border-box;
     }
-    /* html, body {
+    html, body {
         height: 100%;
         overflow: auto;
         -webkit-overflow-scrolling: touch;
-    } */
+    }
     body {
         position: relative;
     }
-    /* .sidebar{
+    .sidebar{
         height: 100%;
         overflow-y: scroll;
         -webkit-overflow-scrolling: touch; 
-    } */
+    }
 }
 .navbar .mob-nav{
     position:fixed;
