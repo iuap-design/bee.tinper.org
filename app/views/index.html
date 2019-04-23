@@ -76,7 +76,6 @@
         }); 
 
 
-
     var header = document.querySelector('#navbar');
 
     new Gumshoe('#rightMenusId a',{
@@ -113,6 +112,10 @@
         closebtn.style.display='block';
         openbtn.style.display='none';
         sidebarDOM.style.left=0;
+
+        //下面这一句解决在ios或者safari浏览器上mask浮层的z-index无效；
+        mask.style.left="250px";
+
         let docs=document.getElementsByClassName('docs')[0]
         //以下document的两句代码控制当左侧抽屉遮罩层出现时，遮罩层下面的页面不可以滚动，当点击关闭按钮后，页面才可以滚动。
         document.body.style.overflow = 'hidden';
@@ -127,6 +130,10 @@
         closebtn.style.display='block';
         openbtn.style.display='none';
         sidebarDOM.style.left=0;
+        
+        //下面这一句解决在ios或者safari浏览器上mask浮层的z-index无效；
+        mask.style.left="250px";
+
         let docs=document.getElementsByClassName('docs')[0];
         document.body.style.overflow = 'hidden';
         window.sessionStorage.setItem('openBtn',true)
