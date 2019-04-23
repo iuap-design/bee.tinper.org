@@ -13,14 +13,14 @@ function sortNumber(a,b){
 }
 
 /**
- * 获得 代码演示 的子标题
+ * 获得 能力特性 的子标题
  * @param {*} component 
  */
 let getDemoTitle = (component)=>{
     let twoTitle = {
         "何时使用":{},
         "如何使用":{},
-        "代码演示":{
+        "能力特性":{
             
         },
         "API":{
@@ -49,7 +49,7 @@ let getDemoTitle = (component)=>{
                 }
              }
          });
-         twoTitle["代码演示"] = demosTitle;
+         twoTitle["能力特性"] = demosTitle;
          getApiTitle(component,twoTitle);
     })
 }
