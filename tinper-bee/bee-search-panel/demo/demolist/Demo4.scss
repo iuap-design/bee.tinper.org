@@ -1,0 +1,41 @@
+.demo4 {
+    .u-label {
+        min-width: 80px;
+        white-space: nowrap;
+        text-align: right;
+    }
+    .u-checkbox-group,
+    .col {
+        display: inline-flex;
+    }
+    .u-form-item {
+        min-height: 42px;
+        .u-select {
+            min-width: 152px;
+        }
+        .u-form-control {
+            min-width: 152px;
+        }
+    }
+    .u-form-item,
+    .u-row>div {
+        padding: 0;
+    }
+    .u-search .u-panel {
+        padding-top: 0px;
+        padding-bottom: 0;
+        .u-panel-body{
+            padding-bottom: 0
+        }
+    }
+    .u-search-resident {
+        padding-bottom: 0px;
+        padding-top: 0px;
+    }
+    .demo-head {
+        box-sizing: border-box;
+    }
+    .demo-body {
+        margin: 0 -20px;
+    }
+}

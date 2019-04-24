@@ -176,6 +176,7 @@ var _initialiseProps = function _initialiseProps() {
       event.stopPropagation();
       _this2.close(_this2.focus);
     }
+    _this2.props.onKeyDown && _this2.props.onKeyDown(event);
   };
 
   this.onCalendarSelect = function (value) {
@@ -198,6 +199,7 @@ var _initialiseProps = function _initialiseProps() {
       _this2.open();
       event.preventDefault();
     }
+    _this2.props.onKeyDown && _this2.props.onKeyDown(event);
   };
 
   this.onCalendarOk = function () {

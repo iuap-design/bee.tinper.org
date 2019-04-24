@@ -19,7 +19,8 @@ const defaultProps = {
   clsPrefix: "u-select",
   showSearch: false,
   transitionName: "slide-up",
-  choiceTransitionName: "zoom"
+  choiceTransitionName: "zoom",
+  enterKeyDown:true
 };
 
 const propTypes = {
@@ -61,7 +62,9 @@ const propTypes = {
   dropdownStyle: PropTypes.object,
   dropdownMenuStyle: PropTypes.object,
   onChange: PropTypes.func,
-  scrollToEnd: PropTypes.func
+  scrollToEnd: PropTypes.func,
+  onKeyDown: PropTypes.func,
+  enterKeyDown: PropTypes.bool//是否启用 enter 和 space 键
 };
 
 class Select extends Component {

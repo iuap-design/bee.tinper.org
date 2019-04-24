@@ -46,7 +46,7 @@ class Demo1 extends Component {
     }
     render() {
         const { getFieldProps, getFieldError } = this.props.form;
-        return (<div className="demo">
+        return (<div className="demo1">
             <SearchPanel
                 title='条件筛选'
                 onSearch={this.search}
@@ -68,7 +68,7 @@ class Demo1 extends Component {
                             <Row>
                                 <Col xs={12} sm={6} md={4} lg={3}>
                                     <FormItem>
-                                            <Label>名 称:</Label>
+                                            <Label>名 称</Label>
                                             <FormControl size="sm"
                                                 {
                                                 ...getFieldProps('orderCode', {
@@ -81,7 +81,7 @@ class Demo1 extends Component {
 
                                 <Col xs={12} sm={6} md={4}  lg={3}>
                                     <FormItem>
-                                            <Label>电话:</Label>
+                                            <Label>电话</Label>
                                             <FormControl size="sm"
                                                 {
                                                 ...getFieldProps('supplierName', {
@@ -126,7 +126,7 @@ class Demo1 extends Component {
 
                                 <Col xs={12} sm={6} md={4} lg={3}>
                                     <FormItem>
-                                            <Label>联系人:</Label>
+                                            <Label>联系人</Label>
                                             <FormControl size="sm"
                                                 {
                                                 ...getFieldProps('orderCode', {
@@ -139,7 +139,7 @@ class Demo1 extends Component {
 
                                 <Col xs={12} sm={6} md={4}  lg={3}>
                                     <FormItem>
-                                            <Label>供应商:</Label>
+                                            <Label>供应商</Label>
                                             <FormControl size="sm"
                                                 {
                                                 ...getFieldProps('supplierName', {
@@ -152,7 +152,7 @@ class Demo1 extends Component {
 
                                 <Col xs={12} sm={6} md={4}  lg={3}>
                                     <FormItem>
-                                            <Label>地址:</Label>
+                                            <Label>地址</Label>
                                             <FormControl size="sm"
                                                 {
                                                 ...getFieldProps('supplierName', {
@@ -166,7 +166,7 @@ class Demo1 extends Component {
 
                                 <Col xs={12} sm={6} md={4}  lg={3}>
                                     <FormItem>
-                                            <Label>车牌:</Label>
+                                            <Label>车牌</Label>
                                             <FormControl size="sm"
                                                 {
                                                 ...getFieldProps('supplierName', {
@@ -179,7 +179,7 @@ class Demo1 extends Component {
 
                                 <Col xs={12} sm={6} md={4}  lg={3}>
                                     <FormItem>
-                                            <Label>备注:</Label>
+                                            <Label>备注</Label>
                                             <FormControl size="sm"
                                                 {
                                                 ...getFieldProps('supplierName', {
@@ -192,7 +192,7 @@ class Demo1 extends Component {
 
                                 <Col xs={12} sm={6} md={4}  lg={3}>
                                     <FormItem>
-                                            <Label>编号:</Label>
+                                            <Label>编号</Label>
                                             <FormControl size="sm"
                                                 {
                                                 ...getFieldProps('supplierName', {

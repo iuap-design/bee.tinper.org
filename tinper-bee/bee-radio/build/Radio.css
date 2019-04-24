@@ -135,7 +135,9 @@
   .u-radio.is-checked.u-radio-inverse .u-radio-label:after {
     background: rgb(255,255,255); }
   .u-radio.u-radio-noContent .u-radio-label:after {
-    top: -12px; }
+    top: -7px; }
+  .u-radio.u-radio-noContent.u-radio .u-radio-label:before {
+    bottom: -4px; }
   .u-radio.disabled {
     cursor: not-allowed; }
     .u-radio.disabled input[type='radio'] {

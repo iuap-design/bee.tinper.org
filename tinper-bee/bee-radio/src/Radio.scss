@@ -174,7 +174,10 @@ $radio-icon-checked-height: 6px;
 	} 
 	&.u-radio-noContent{
 		.u-radio-label:after {
-		    top: -12px;
+		    top: -7px;
+		}
+		&.u-radio .u-radio-label:before{
+			bottom: -4px;
 		}
 	}
 	&.disabled{

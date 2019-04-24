@@ -5,7 +5,7 @@ import Gumshoe from 'gumshoejs';
 
 const propTypes = {
     selector:PropTypes.string.isRequired,//选择器
-    offset:PropTypes.func,//偏移量
+    offset:PropTypes.any,//偏移量
     navClass:PropTypes.string,//当前被激活锚点新增的类名
     contentClass:PropTypes.string,//当前被激活的区域
     nested:PropTypes.bool,

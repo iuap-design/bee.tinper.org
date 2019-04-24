@@ -18,15 +18,12 @@ npm install --save bee-layout
 ```
 
 ```js
-import { Con, Row, Col } from 'bee-layout';
+import { Row, Col } from 'bee-layout';
 
 ReactDOM.render(
-    <Con>
-        <Row>
-            <Col md={6} >
-            </Col>
-        </Row>
-    </Con>,
+    <Row>
+        <Col md={6} ></Col>
+    </Row>,
     document.body);
 
 ```
@@ -47,13 +44,6 @@ import "./node_modules/build/Layout.css"
 
 
 ## API
-
-### Con组件
-
-|参数|说明|类型|默认值|
-|:---|:-----|:----|:------|
-|componentClass|组件根元素|element/ReactElement|div|
-|fluid|是否为非定宽|boolean|false|
 
 ### Row组件
 

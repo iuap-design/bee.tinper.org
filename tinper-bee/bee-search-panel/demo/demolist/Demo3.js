@@ -79,7 +79,7 @@ class Demo3 extends Component {
     render() {
         const { getFieldProps, getFieldError } = this.props.form;
         let self = this;
-        return (<div className="demo demo3">
+        return (<div className="demo3">
             <SearchPanel
                 title='条件筛选'
                 onSearch={this.search}
@@ -101,7 +101,7 @@ class Demo3 extends Component {
                             <Row>
                                 <Col xs={12} sm={6} md={4} lg={3}>
                                     <FormItem>
-                                            <Label>订单编号:</Label>
+                                            <Label>订单编号</Label>
                                             <FormControl size="sm"
                                                 {
                                                 ...getFieldProps('orderCode', {
@@ -114,7 +114,7 @@ class Demo3 extends Component {
 
                                 <Col xs={12} sm={6} md={4}  lg={3}>
                                     <FormItem>
-                                            <Label>供应商名称:</Label>
+                                            <Label>供应商名称</Label>
                                             <FormControl size="sm"
                                                 {
                                                 ...getFieldProps('supplierName', {
@@ -136,7 +136,7 @@ class Demo3 extends Component {
                             <Row>
                                 <Col xs={12} sm={6} md={4}  lg={3}>
                                     <FormItem>
-                                            <Label>订单类型:</Label>
+                                            <Label>订单类型</Label>
                                             <Select size="sm"
                                                 {
                                                 ...getFieldProps('type', {

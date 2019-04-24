@@ -457,6 +457,7 @@ var _initialiseProps = function _initialiseProps() {
     if (e.keyCode === 40) {
       _this3.setOpen(true);
     }
+    _this3.props.onKeyDown && _this3.props.onKeyDown(e);
   };
 };
 

@@ -1,6 +1,6 @@
 {
  "name": "bee-transfer",
- "version": "2.0.8",
+ "version": "2.0.9",
  "description": "Transfer ui component for react",
  "keywords": [
   "react",
@@ -43,6 +43,7 @@
   "bee-form-control": "latest",
   "bee-icon": "latest",
   "classnames": "^2.2.5",
+  "react-beautiful-dnd": "^9.0.2",
   "react-lazy-load": "^3.0.12",
   "shallowequal": "^1.0.2",
   "tinper-bee-core": "latest"

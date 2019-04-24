@@ -9,6 +9,7 @@ import addEventListener from 'tinper-bee-core/lib/addEventListener';
 import ColumnManager from './ColumnManager';
 import createStore from './createStore';
 import Loading from 'bee-loading';
+import Icon from 'bee-icon';
 import { Event,EventUtil,closest} from "./utils";
 
 const propTypes = {
@@ -51,7 +52,8 @@ const propTypes = {
   onFilterClear: PropTypes.func,
   syncHover: PropTypes.bool,
   tabIndex:PropTypes.string,
-  hoverContent:PropTypes.func
+  hoverContent:PropTypes.func,
+  size: PropTypes.oneOf(['sm', 'md', 'lg']),
 };
 
 const defaultProps = {
@@ -77,7 +79,7 @@ const defaultProps = {
   scroll: {},
   rowRef: () => null,
   getBodyWrapper: body => body,
-  emptyText: () => 'No Data',
+  emptyText: () => <Icon type="uf-nodata" className="table-nodata"></Icon>,
   columns:[],
   minColumnWidth: 80,
   locale:{},
@@ -85,7 +87,8 @@ const defaultProps = {
   setRowHeight:()=>{},
   setRowParentIndex:()=>{},
   tabIndex:'0',
-  heightConsistent:false
+  heightConsistent:false,
+  size: 'md'
 };
 
 class Table extends Component {
@@ -158,7 +161,7 @@ class Table extends Component {
     if (this.columnManager.isAnyColumnsFixed()) {
       this.syncFixedTableRowHeight();
       this.resizeEvent = addEventListener(
-        window, 'resize', debounce(this.syncFixedTableRowHeight, 150)
+        window, 'resize', this.resize
       );
     }
 
@@ -231,6 +234,14 @@ class Table extends Component {
     }
   }
 
+  resize = ()=>{
+    debounce(this.syncFixedTableRowHeight, 150);
+    this.computeTableWidth();
+    let renderFlag = this.state.renderFlag;
+    this.setState({
+      renderFlag: !renderFlag
+    });
+  }
   computeTableWidth() {
     
     //如果用户传了scroll.x按用户传的为主
@@ -648,6 +659,7 @@ class Table extends Component {
           fixedIndex={fixedIndex+lazyCurrentIndex}
           rootIndex = {rootIndex}
           syncHover = {props.syncHover}
+          bodyDisplayInRow = {props.bodyDisplayInRow}
         />
       );
       this.treeRowIndex++;
@@ -1173,7 +1185,7 @@ class Table extends Component {
   render() {
     const props = this.props;
     const clsPrefix = props.clsPrefix;
-
+    const hasFixedLeft = this.columnManager.isAnyColumnsLeftFixed();
     let className = props.clsPrefix;
     if (props.className) {
       className += ` ${props.className}`;
@@ -1189,6 +1201,12 @@ class Table extends Component {
     if(props.height){
       className += ' fixed-height';
     }
+    if(props.bodyDisplayInRow){
+      className += ' body-dispaly-in-row'
+    }
+    if(props.headerDisplayInRow){
+      className += ' header-dispaly-in-row'
+    }
     const isTableScroll = this.columnManager.isAnyColumnsFixed() ||
       props.scroll.x ||
       props.scroll.y;
@@ -1197,6 +1215,12 @@ class Table extends Component {
       loading = {
         show: loading,
       };
+    }
+    if (props.size) {
+      className += ` ${clsPrefix}-${props.size}`;
+    }
+    if(hasFixedLeft){
+      className += ` has-fixed-left`;
     }
 
     return (
@@ -1211,7 +1235,7 @@ class Table extends Component {
             {this.getFooter()}
           </div>
 
-          {this.columnManager.isAnyColumnsLeftFixed() &&
+          {hasFixedLeft &&
             <div className={`${clsPrefix}-fixed-left`}>
               {this.getLeftFixedTable()}
             </div>}

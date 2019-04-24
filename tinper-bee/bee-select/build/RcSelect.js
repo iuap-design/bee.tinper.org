@@ -499,7 +499,8 @@ var _initialiseProps = function _initialiseProps() {
     var open = _this2.state.open;
     var _props2 = _this2.props,
         disabled = _props2.disabled,
-        onKeyDown = _props2.onKeyDown;
+        onKeyDown = _props2.onKeyDown,
+        enterKeyDown = _props2.enterKeyDown;
 
     if (disabled) {
       return;
@@ -507,8 +508,11 @@ var _initialiseProps = function _initialiseProps() {
     var keyCode = event.keyCode;
     if (open && !_this2.getInputDOMNode()) {
       _this2.onInputKeyDown(event);
-    } else if (keyCode === _tinperBeeCore.KeyCode.ENTER || keyCode === _tinperBeeCore.KeyCode.DOWN || keyCode === _tinperBeeCore.KeyCode.SPACE) {
+    } else if (keyCode === _tinperBeeCore.KeyCode.DOWN) {
       if (!open) _this2.setOpenState(true);
+      event.preventDefault();
+    } else if (keyCode === _tinperBeeCore.KeyCode.ENTER || keyCode === _tinperBeeCore.KeyCode.SPACE) {
+      if (!open && enterKeyDown) _this2.setOpenState(true);
       event.preventDefault();
     }
     onKeyDown(event); //sp

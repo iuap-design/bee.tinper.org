@@ -14,7 +14,7 @@ import { Transfer } from 'tinper-bee';
 or
 
 import Transfer from 'bee-transfer';
-import bee-transfer/build/Transfer.css;
+import 'bee-transfer/build/Transfer.css';
 
 ```
 
@@ -37,14 +37,22 @@ import bee-transfer/build/Transfer.css;
 |operations|自定义按钮操作|[]|'>', '<'|
 |showSearch|是否显示搜索框|boolean	|false|
 |filterOption|搜索过滤方法	参数(inputValue, option)|func或者boolean	|-|
-|searchPlaceholder|搜索框的默认显示文字|string|'Search here'|
-|notFoundContent|当没有相关内容的显示内容|string或ReactNode|	'The list is empty'|
+|searchPlaceholder|搜索框的默认显示文字|string|'Search'|
+|notFoundContent|当没有相关内容的显示内容|string或ReactNode|	'Not Found'|
 |footer|渲染底部的dom|ReactNode|-|
 |lazy|懒加载dom|object|当tranfer放在bee-modal里 添加参数 lazy={container:"modal"}|
 |onSearchChange|当搜索域变化的回调函数 参数(direction: 'left'|'right', event: Event)|func|-|
+|showCheckbox|是否显示Checkbox复选框|bool|true|
+|draggable|是否可以通过拖拽进行穿梭和排序|bool|false|
 
 ## 注意事项
+按照 React 的规范，所有的组件数组必须绑定 key。在 Transfer 中，dataSource里的数据值需要指定 key 值。对于 dataSource 默认将每列数据的 key 属性作为唯一的标识。
 
-暂无
+如果你的数据没有这个属性，务必使用 rowKey 来指定数据列的主键。
+
+```
+// 比如你的数据主键是 uid
+return <Transfer rowKey={record => record.uid} />;
+```
 
 ## 更新日志
