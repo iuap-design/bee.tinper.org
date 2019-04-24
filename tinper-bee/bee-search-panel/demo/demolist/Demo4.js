@@ -53,7 +53,7 @@ class Demo4 extends Component {
             'down':'open',
             'up':'close',
         }
-        return (<div className="demo">
+        return (<div className="demo4">
             <SearchPanel locale={locale}
                 onSearch={this.search}
                 onReset={this.clear}

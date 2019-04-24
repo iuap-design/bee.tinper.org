@@ -56,7 +56,8 @@ var defaultProps = {
   clsPrefix: "u-select",
   showSearch: false,
   transitionName: "slide-up",
-  choiceTransitionName: "zoom"
+  choiceTransitionName: "zoom",
+  enterKeyDown: true
 };
 
 var propTypes = {
@@ -90,7 +91,9 @@ var propTypes = {
   dropdownStyle: _propTypes2["default"].object,
   dropdownMenuStyle: _propTypes2["default"].object,
   onChange: _propTypes2["default"].func,
-  scrollToEnd: _propTypes2["default"].func
+  scrollToEnd: _propTypes2["default"].func,
+  onKeyDown: _propTypes2["default"].func,
+  enterKeyDown: _propTypes2["default"].bool //是否启用 enter 和 space 键
 };
 
 var Select = function (_Component) {

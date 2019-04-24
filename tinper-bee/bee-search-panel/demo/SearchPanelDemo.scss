@@ -1,4 +1,3 @@
-@import "../node_modules/tinper-bee-core/scss/index.scss";
 @import "../src/SearchPanel.scss";
 
 .demo{
@@ -11,13 +10,16 @@
   .col{
     display: inline-flex;
   }
+  .u-form-item{
+    min-height: 42px;
+  }
   .u-form-item,
   .u-row >div{
-    padding-left:0px;
-    padding-right:0px;
+    padding: 0;
   }
   .u-search .u-panel{
     padding-top: 0px;
+    padding-bottom: 0;
   }
   .u-search-resident{
     padding-bottom: 0px;
@@ -25,10 +27,4 @@
   }
 }
 
-.demo-head{
-  box-sizing: border-box;
-}
 
-.demo-body{
-  margin: 0 -20px;
-}

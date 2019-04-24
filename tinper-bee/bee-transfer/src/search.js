@@ -44,6 +44,7 @@ class Search extends React.Component {
     return (
       <div>
         <FormControl
+          size="sm"
           placeholder={placeholder}
           className={prefixCls}
           value={value}

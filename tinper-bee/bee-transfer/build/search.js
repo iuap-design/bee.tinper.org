@@ -88,6 +88,7 @@ var Search = function (_React$Component) {
       'div',
       null,
       _react2["default"].createElement(_beeFormControl2["default"], {
+        size: 'sm',
         placeholder: placeholder,
         className: prefixCls,
         value: value,

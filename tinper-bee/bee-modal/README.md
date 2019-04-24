@@ -127,6 +127,14 @@ import "./node_modules/bee-modal/build/Modal.css"
 |backdropTransitionTimeout|设置背景动画超时时间|function|-|
 |manager|管理模态框状态的组件|required|-|
 |draggable|设置模态框是否可拖拽|bool|false|
+|resizable|设置模态框是否可resize|bool|false|
+|onResizeStart|resize开始时的回调|function|-|
+|onResize|resize时的回调|function|-|
+|onResizeStop|resize结束时的回调|function|-|
+|minWidth|resize时模态框的最小宽度|number/string|200|
+|minHeight|resize时模态框的最小高度|number/string|150|
+|maxWidth|resize时模态框的最大宽度|number/string|-|
+|maxHeight|resize时模态框的最大高度|number/string|-|
 
 ### Modal.Header
 

@@ -4,6 +4,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
@@ -38,6 +40,14 @@ var _beeCheckbox = require('bee-checkbox');
 
 var _beeCheckbox2 = _interopRequireDefault(_beeCheckbox);
 
+var _beeIcon = require('bee-icon');
+
+var _beeIcon2 = _interopRequireDefault(_beeIcon);
+
+var _reactBeautifulDnd = require('react-beautiful-dnd');
+
+var _tinperBeeCore = require('tinper-bee-core');
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
@@ -71,6 +81,8 @@ var TransferList = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, _React$Component.call(this, props));
 
     _this.matchFilter = function (text, item) {
+      //filter：搜索框中的内容
+      //filterOption：用户自定义的搜索过滤方法
       var _this$props = _this.props,
           filter = _this$props.filter,
           filterOption = _this$props.filterOption;
@@ -82,12 +94,14 @@ var TransferList = function (_React$Component) {
     };
 
     _this.handleSelect = function (selectedItem) {
+      // checkedKeys：已勾选的Keys数组
+      // result：是否已勾选，true：已勾选  false：未勾选
       var checkedKeys = _this.props.checkedKeys;
 
       var result = checkedKeys.some(function (key) {
         return key === selectedItem.key;
       });
-      _this.props.handleSelect(selectedItem, !result);
+      _this.props.handleSelect(selectedItem, result);
     };
 
     _this.handleFilter = function (e) {
@@ -108,6 +122,29 @@ var TransferList = function (_React$Component) {
         renderedText: isRenderResultPlain ? renderResult.value : renderResult,
         renderedEl: isRenderResultPlain ? renderResult.label : renderResult
       };
+    };
+
+    _this.onKeyDown = function (event, provided, snapshot, item) {
+      if (provided.dragHandleProps) {
+        provided.dragHandleProps.onKeyDown(event);
+      }
+
+      if (event.defaultPrevented) {
+        return;
+      }
+
+      if (snapshot.isDragging) {
+        return;
+      }
+
+      if (event.keyCode !== _tinperBeeCore.KeyCode.ENTER) {
+        return;
+      }
+
+      // 为了选择，我们使用此事件 we are using the event for selection
+      event.preventDefault();
+
+      _this.performAction(event, item);
     };
 
     _this.state = {
@@ -138,18 +175,28 @@ var TransferList = function (_React$Component) {
     return _PureRenderMixin2["default"].shouldComponentUpdate.apply(this, args);
   };
 
+  /**
+   * 获取Checkbox状态
+   * @param {*} filteredDataSource dataSource中刨去设置为disabled的部分
+   */
   TransferList.prototype.getCheckStatus = function getCheckStatus(filteredDataSource) {
     var checkedKeys = this.props.checkedKeys;
 
     if (checkedKeys.length === 0) {
-      return 'none';
+      return 'none'; //全部未选
     } else if (filteredDataSource.every(function (item) {
       return checkedKeys.indexOf(item.key) >= 0;
     })) {
-      return 'all';
+      return 'all'; //全部已选
     }
-    return 'part';
+    return 'part'; //部分已选
   };
+
+  /**
+   * 点击list item，选中或取消选中
+   * @param selectedItem 选中的item的信息，和dataSource数据源中的item信息一致
+   */
+
 
   TransferList.prototype.renderCheckbox = function renderCheckbox(_ref) {
     var _classNames,
@@ -162,7 +209,7 @@ var TransferList = function (_React$Component) {
         disabled = _ref.disabled,
         checkable = _ref.checkable;
 
-    var checkAll = !checkPart && checked;
+    var checkAll = !checkPart && checked; //非半选 && 全选
     prefixCls = "u";
     var checkboxCls = (0, _classnames2["default"])((_classNames = {}, _defineProperty(_classNames, prefixCls + '-checkbox-indeterminate', checkPart), _defineProperty(_classNames, prefixCls + '-checkbox-disabled', disabled), _classNames));
     return _react2["default"].createElement(
@@ -181,7 +228,8 @@ var TransferList = function (_React$Component) {
   };
 
   TransferList.prototype.render = function render() {
-    var _this4 = this;
+    var _classNames2,
+        _this4 = this;
 
     var _props = this.props,
         prefixCls = _props.prefixCls,
@@ -198,7 +246,11 @@ var TransferList = function (_React$Component) {
         showSearch = _props.showSearch,
         _props$render = _props.render,
         render = _props$render === undefined ? noop : _props$render,
-        style = _props.style;
+        style = _props.style,
+        id = _props.id,
+        showCheckbox = _props.showCheckbox,
+        draggable = _props.draggable,
+        droppableId = _props.droppableId;
     var _props2 = this.props,
         searchPlaceholder = _props2.searchPlaceholder,
         notFoundContent = _props2.notFoundContent;
@@ -208,11 +260,11 @@ var TransferList = function (_React$Component) {
     var footerDom = footer((0, _objectAssign2["default"])({}, this.props));
     var bodyDom = body((0, _objectAssign2["default"])({}, this.props));
 
-    var listCls = (0, _classnames2["default"])(prefixCls, _defineProperty({}, prefixCls + '-with-footer', !!footerDom));
+    var listCls = (0, _classnames2["default"])(prefixCls, (_classNames2 = {}, _defineProperty(_classNames2, prefixCls + '-with-footer', !!footerDom), _defineProperty(_classNames2, prefixCls + '-draggable', !!draggable), _classNames2));
 
     var filteredDataSource = [];
     var totalDataSource = [];
-    var showItems = dataSource.map(function (item) {
+    var showItems = dataSource.map(function (item, index) {
       var _renderItem = _this4.renderItem(item),
           renderedText = _renderItem.renderedText,
           renderedEl = _renderItem.renderedEl;
@@ -229,19 +281,41 @@ var TransferList = function (_React$Component) {
       }
 
       var checked = checkedKeys.indexOf(item.key) >= 0;
-      return _react2["default"].createElement(_item2["default"], {
-        key: item.key,
-        item: item,
-        lazy: lazy,
-        render: render,
-        renderedText: renderedText,
-        renderedEl: renderedEl,
-        filter: filter,
-        filterOption: filterOption,
-        checked: checked,
-        prefixCls: prefixCls,
-        onClick: _this4.handleSelect
-      });
+      return _react2["default"].createElement(
+        _reactBeautifulDnd.Draggable,
+        { key: item.key, index: index, draggableId: '' + item.key, isDragDisabled: draggable ? item.disabled : !draggable },
+        function (provided, snapshot) {
+          return _react2["default"].createElement(
+            'div',
+            _extends({
+              ref: provided.innerRef
+            }, provided.draggableProps, provided.dragHandleProps, {
+              // onClick={(event) =>this.handleDrag(event, provided, snapshot, item)}
+              onKeyDown: function onKeyDown(event) {
+                return _this4.onKeyDown(event, provided, snapshot, item);
+              }
+              // className={classnames({
+              //     ...getClass(this.props,snapshot.isDragging).drag
+              //   })}
+              , style: _extends({}, provided.draggableProps.style) }),
+            _react2["default"].createElement(_item2["default"]
+            // ref={provided.innerRef} //Error: provided.innerRef has not been provided with a HTMLElement
+            // key={item.key}
+            , { item: item,
+              lazy: lazy,
+              render: render,
+              renderedText: renderedText,
+              renderedEl: renderedEl,
+              filter: filter,
+              filterOption: filterOption,
+              checked: checked,
+              prefixCls: prefixCls,
+              onClick: _this4.handleSelect,
+              showCheckbox: showCheckbox
+            })
+          );
+        }
+      );
     });
 
     var unit = '';
@@ -262,7 +336,7 @@ var TransferList = function (_React$Component) {
         prefixCls: prefixCls + '-search',
         onChange: this.handleFilter,
         handleClear: this.handleClear,
-        placeholder: searchPlaceholder || 'Search',
+        placeholder: searchPlaceholder,
         value: filter
       })
     ) : null;
@@ -272,19 +346,47 @@ var TransferList = function (_React$Component) {
       { className: showSearch ? prefixCls + '-body ' + prefixCls + '-body-with-search' : prefixCls + '-body' },
       search,
       _react2["default"].createElement(
-        _beeAnimate2["default"],
-        {
-          component: 'ul',
-          className: prefixCls + '-content',
-          transitionName: this.state.mounted ? prefixCls + '-content-item-highlight' : '',
-          transitionLeave: false
-        },
-        showItems
+        _reactBeautifulDnd.Droppable,
+        { droppableId: 'droppable_' + id, direction: 'vertical', isDropDisabled: !draggable },
+        function (provided, snapshot) {
+          return _react2["default"].createElement(
+            'div',
+            { ref: provided.innerRef, isDraggingOver: snapshot.isDraggingOver, key: id, className: prefixCls + '-content' },
+            _react2["default"].createElement(
+              'div',
+              { style: { display: 'none' } },
+              provided.placeholder
+            ),
+            _react2["default"].createElement(
+              _beeAnimate2["default"],
+              {
+                component: 'ul',
+                transitionName: _this4.state.mounted ? prefixCls + '-content-item-highlight' : '',
+                transitionLeave: false
+              },
+              showItems
+            ),
+            _react2["default"].createElement(
+              'div',
+              { className: prefixCls + '-delete-selected ' + (snapshot.isDraggingOver && droppableId === 'droppable_2' ? 'show' : '') },
+              _react2["default"].createElement(
+                'div',
+                { className: prefixCls + '-del-btn' },
+                _react2["default"].createElement(_beeIcon2["default"], { type: 'uf-arrow-down-2' }),
+                _react2["default"].createElement(
+                  'span',
+                  null,
+                  '\u79FB\u9664\u5DF2\u9009'
+                )
+              )
+            )
+          );
+        }
       ),
       _react2["default"].createElement(
         'div',
-        { className: prefixCls + '-body-not-found' },
-        notFoundContent || 'Not Found'
+        { className: prefixCls + '-body-not-found ' + (dataSource.length == 0 ? "show" : "") },
+        notFoundContent
       )
     );
 
@@ -309,7 +411,7 @@ var TransferList = function (_React$Component) {
       _react2["default"].createElement(
         'div',
         { className: prefixCls + '-header' },
-        renderedCheckbox,
+        showCheckbox ? renderedCheckbox : '',
         _react2["default"].createElement(
           'span',
           { className: prefixCls + '-header-selected' },

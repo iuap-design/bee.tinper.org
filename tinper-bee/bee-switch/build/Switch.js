@@ -44,7 +44,9 @@ var propTypes = {
   checkedChildren: _propTypes2["default"].any,
   unCheckedChildren: _propTypes2["default"].any,
   onChangeHandler: _propTypes2["default"].func,
-  onChange: _propTypes2["default"].func
+  onChange: _propTypes2["default"].func,
+  onKeyDown: _propTypes2["default"].func,
+  enterKeyDown: _propTypes2["default"].bool //是否启用 enter 和 space 键
 };
 var defaultProps = {
   clsPrefix: "u-switch",
@@ -54,7 +56,9 @@ var defaultProps = {
   size: "",
   disabled: false,
   onChangeHandler: function onChangeHandler() {},
-  onChange: function onChange() {}
+  onChange: function onChange() {},
+  onKeyDown: function onKeyDown() {},
+  enterKeyDown: true
 };
 
 var Switch = function (_Component) {
@@ -172,8 +176,11 @@ var _initialiseProps = function _initialiseProps() {
       _this2.setChecked(true);
     } else if (e.keyCode === 32 || e.keyCode === 13) {
       // Space, Enter
-      _this2.clickHandler();
+      if (_this2.props.enterKeyDown) {
+        _this2.clickHandler();
+      }
     }
+    _this2.props.onKeyDown(e);
   };
 
   this.handleMouseUp = function (e) {

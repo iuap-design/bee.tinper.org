@@ -14,7 +14,7 @@ import { Transfer } from 'tinper-bee';
 or
 
 import Transfer from 'bee-transfer';
-import bee-transfer/build/Transfer.css;
+import 'bee-transfer/build/Transfer.css';
 
 ```
 
@@ -37,11 +37,13 @@ import bee-transfer/build/Transfer.css;
 |operations|自定义按钮操作|[]|'>', '<'|
 |showSearch|是否显示搜索框|boolean	|false|
 |filterOption|搜索过滤方法	参数(inputValue, option)|func或者boolean	|-|
-|searchPlaceholder|搜索框的默认显示文字|string|'Search here'|
-|notFoundContent|当没有相关内容的显示内容|string或ReactNode|	'The list is empty'|
+|searchPlaceholder|搜索框的默认显示文字|string|'Search'|
+|notFoundContent|当没有相关内容的显示内容|string或ReactNode|	'Not Found'|
 |footer|渲染底部的dom|ReactNode|-|
 |lazy|懒加载dom|object|当tranfer放在bee-modal里 添加参数 lazy={container:"modal"}|
 |onSearchChange|当搜索域变化的回调函数 参数(direction: 'left'|'right', event: Event)|func|-|
+|showCheckbox|是否显示Checkbox复选框|bool|true|
+|draggable|是否可以通过拖拽进行穿梭和排序|bool|false|
 
 ## 注意事项
 

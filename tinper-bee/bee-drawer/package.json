@@ -44,6 +44,13 @@
   },
   "devDependencies": {
     "bee-button": "latest",
+    "bee-checkbox": "^2.0.5",
+    "bee-clipboard": "^2.0.0",
+    "bee-datepicker": "^2.0.28",
+    "bee-form": "^2.0.11",
+    "bee-form-control": "^2.0.2",
+    "bee-icon": "^1.0.10",
+    "bee-label": "^1.0.0",
     "bee-layout": "latest",
     "bee-panel": "latest",
     "bee-radio": "latest",
@@ -54,8 +61,7 @@
     "es5-shim": "~4.1.10",
     "react": "^16.4.2",
     "react-addons-test-utils": "15.3.2",
-    "react-dom": "^16.4.2",
-    "bee-clipboard": "^2.0.0"
+    "react-dom": "^16.4.2"
   },
   "peerDependencies": {
     "react": "^15.3.0 || ^16.0.0",
