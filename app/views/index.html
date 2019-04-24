@@ -35,7 +35,8 @@
     <div class="navbar" id="navbar">
         <% include navbar.html %>
     </div>
-    <div class="mask" id="mask"></div>
+    <!-- H5禁止穿透滚动-->
+    <div class="mask" id="mask" @touchmove.prevent></div>
     <div id="openbtn" class="uf uf-navmenu"></div>
     <div id="closebtn" class="uf uf-close"></div>
     <% if(isComponent){ %>
@@ -50,7 +51,6 @@
         <div class="docs" id="docs">
             <% include docs.html %>
         </div>
-        
     </div>
     <div class="footer-out">
         <% include footer.html %>
@@ -116,6 +116,7 @@
         mask.style.left="250px";
         mask.style.position="fixed";
         mask.style.zIndex=2000;
+        
         sidebarDOM.style.position="fixed";
         sidebarDOM.style.zIndex=2019;
 
@@ -139,7 +140,7 @@
         sidebarDOM.style.left=0;
         sidebarDOM.style.position="fixed";
         sidebarDOM.style.zIndex=2019;//新增
-        //下面这一句解决在ios或者safari浏览器上mask浮层的z-index无效；
+        //解决在ios或者safari浏览器上mask浮层的z-index无效；
         mask.style.left="250px";
         mask.style.position="fixed";
         mask.style.zIndex=2000;//新增
@@ -152,6 +153,7 @@
             event.preventDefault();// 阻止元素发生默认行为
         }
         document.body.addEventListener('touchmove',handle,false);//添加监听事件--页面不可滚动
+        
     }
 
     // 关闭按钮显示逻辑
@@ -161,7 +163,7 @@
         mask.style.display="none";
         sidebarDOM.style.left="-250px";
         openbtn.style.display='block';
-        //以下document的两句代码控制当左侧抽屉遮罩层消失时，页面才可以滚动。
+        //控制当左侧抽屉遮罩层消失时，页面才可以滚动。
         document.body.style.overflow = 'auto';
         
         var handle = function(event){
@@ -175,11 +177,9 @@
 <!-- 控制点击“查看源码”时，浮层下方的页面不能滚动，浮层消失后，页面正常滚动。 -->
 <script>
     var openlist = document.querySelectorAll('.component-code');
-
     var handle = function(event){
-            event.preventDefault();// 阻止元素发生默认行为
-        }
-        
+             event.preventDefault();// 阻止元素发生默认行为
+    }    
     if(openlist.length!==0){
         for(var i in openlist){
             openlist[i].onclick=function() {
