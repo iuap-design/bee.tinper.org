@@ -173,11 +173,11 @@ body::-webkit-scrollbar-thumb:window-inactive {
     body {
         position: relative;
     }
-    .sidebar{
+    /* .sidebar{
         height: 100%;
         overflow-y: scroll;
         -webkit-overflow-scrolling: touch; 
-    }
+    } */
 }
 .navbar .mob-nav{
     position:fixed;
