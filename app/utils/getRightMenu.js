@@ -13,15 +13,15 @@ function sortNumber(a,b){
 }
 
 /**
- * 获得 代码演示 的子标题
+ * 获得 能力特性 的子标题
  * @param {*} component 
  */
 let getDemoTitle = (component)=>{
     let twoTitle = {
         "何时使用":{},
         "如何使用":{},
-        "代码演示":{
-            children:[]
+        "能力特性":{
+            
         },
         "API":{
             children:[]
@@ -32,16 +32,24 @@ let getDemoTitle = (component)=>{
     let baseUrl = `./tinper-bee/${component}/demo/demolist`;
     fs.readdir(baseUrl).then((file)=>{//[ Demo1.js, Demo1.scss, Demo2.js, Demo3.js]
          file = file.sort(sortNumber);
-         console.log(file);
-         let demosTitle = [];//二级标题
+         let demosTitle = {};//二级标题
+         let haveParent = false;//是否有三级标题
          file.forEach(item=>{
              if(regJs.test(item)){
                 let data = fs.readFileSync(`${baseUrl}/${item}`,"utf-8"); 
                 let title = data.match(/@title(.{0,})/)[1];
-                demosTitle.push(title.trim());
+                let parent = data.match(/@parent(.{0,})/);
+                console.log(parent)
+                if(parent){
+                    let parentObj = demosTitle[parent[1].trim()]||{}
+                    parentObj[title.trim()]=''
+                    demosTitle[parent[1].trim()]=parentObj;
+                }else{
+                    demosTitle[title.trim()]='';
+                }
              }
          });
-         twoTitle["代码演示"].children = demosTitle;
+         twoTitle["能力特性"] = demosTitle;
          getApiTitle(component,twoTitle);
     })
 }
@@ -79,3 +87,6 @@ let getApiTitle = (component,twoTitle)=>{
 Object.keys(componentsSource).forEach(item=>{
     getDemoTitle(item);
 })
+
+// getDemoTitle('bee-table');
+// getDemoTitle('bee-button');

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .demo0502 {
   .u-table-row {
     td {
@@ -30,13 +31,23 @@
     &:hover {
       line-height: 18px;
       border: 1px solid #a5adba;
+=======
+.demo501 {
+  .editable-cell-text-wrapper {
+    &:hover {
+      border: 1px dashed #A5ADBA;
+>>>>>>> b36082153ad59a20c53372f11d64331edc58b28b
     }
   }
 
   .require {
     position: absolute;
     top: 2px;
+<<<<<<< HEAD
     color: #F44336;
+=======
+    color: red;
+>>>>>>> b36082153ad59a20c53372f11d64331edc58b28b
     font-size: 20px;
   }
 }
@@ -45,7 +56,11 @@
   color: #F44336;
 }
 
+<<<<<<< HEAD
 .tp-0502 {
+=======
+.tp-501 {
+>>>>>>> b36082153ad59a20c53372f11d64331edc58b28b
   .tooltip-arrow {
     border-bottom-color: #F44336 !important;
   }

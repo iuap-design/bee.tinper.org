@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="./css/docs.css" type="text/css"/>
     <link rel="stylesheet" href="./css/footer.css" type="text/css"/>
     <link rel="stylesheet" href="./css/rightMenus.css" type="text/css"/>
+    <script type="text/javascript" src="//design.yonyoucloud.com/static/tinper-bee/js/yonyou-yyy.js"></script> 
 </head>
 <script src="//design.yonyoucloud.com/static/highlight/9.15.6/highlight.min.js"></script>
 <script src="//design.yonyoucloud.com/static/react/16.8.4/umd/react.production.min.js"></script>
@@ -75,24 +76,28 @@
         }); 
 
 
-
     var header = document.querySelector('#navbar');
 
     new Gumshoe('#rightMenusId a',{
+        nested: true,
+        nestedClass: 'active-parent',
         offset: function () {
             return header.getBoundingClientRect().height;
         }
     });
     
     let lists = document.querySelectorAll('.rm-list-item');
-    if(window.scrollY<=160){
-        lists[0].setAttribute('class','rm-list-item active');
-    }
-    window.onscroll=function(){
+    if(lists.length>0){
         if(window.scrollY<=160){
             lists[0].setAttribute('class','rm-list-item active');
         }
+        window.onscroll=function(){
+            if(window.scrollY<=160){
+                lists[0].setAttribute('class','rm-list-item active');
+            }
+        }
     }
+    
 
     
     //移动端适配侧边栏
@@ -100,30 +105,53 @@
     closebtn=document.getElementById('closebtn'),//关闭按钮
     sidebarDOM=document.getElementsByClassName('sidebar')[0],//侧边栏
     mask=document.getElementsByClassName('mask')[0];//遮罩层
-    
+    // navbar=document.getElementById('navbar');//新加
     //汉堡按钮显示逻辑
     openbtn.addEventListener('click', function () {
         mask.style.display='block';
         closebtn.style.display='block';
         openbtn.style.display='none';
         sidebarDOM.style.left=0;
-        let docs=document.getElementsByClassName('docs')[0]
+        //解决在ios或者safari浏览器上mask浮层的z-index无效；
+        mask.style.left="250px";
+        mask.style.position="fixed";
+        mask.style.zIndex=2000;
+        sidebarDOM.style.position="fixed";
+        sidebarDOM.style.zIndex=2019;
+
+        let docs=document.getElementsByClassName('docs')[0];
         //以下document的两句代码控制当左侧抽屉遮罩层出现时，遮罩层下面的页面不可以滚动，当点击关闭按钮后，页面才可以滚动。
         document.body.style.overflow = 'hidden';
-        window.sessionStorage.setItem('openBtn',true)
+        window.sessionStorage.setItem('openBtn',true);
+
+        var handle = function(event){
+            event.preventDefault();// 阻止元素发生默认行为
+        }
+        document.body.addEventListener('touchmove',handle,false);//添加监听事件--页面不可滚动
     });
 
     //点击侧边栏的选项时，使侧边栏不消失的控制点击侧边栏时，使侧边栏不消失的控制
     if(window.sessionStorage.getItem('openBtn')==='true'){
-       // console.log( document.getElementsByClassName('sidebar')[0].style);
         document.getElementsByClassName('sidebar')[0].style.left = 0;
         mask.style.display='block';
         closebtn.style.display='block';
         openbtn.style.display='none';
         sidebarDOM.style.left=0;
+        sidebarDOM.style.position="fixed";
+        sidebarDOM.style.zIndex=2019;//新增
+        //下面这一句解决在ios或者safari浏览器上mask浮层的z-index无效；
+        mask.style.left="250px";
+        mask.style.position="fixed";
+        mask.style.zIndex=2000;//新增
+
         let docs=document.getElementsByClassName('docs')[0];
         document.body.style.overflow = 'hidden';
-        window.sessionStorage.setItem('openBtn',true)
+        window.sessionStorage.setItem('openBtn',true);
+
+        var handle = function(event){
+            event.preventDefault();// 阻止元素发生默认行为
+        }
+        document.body.addEventListener('touchmove',handle,false);//添加监听事件--页面不可滚动
     }
 
     // 关闭按钮显示逻辑
@@ -134,7 +162,12 @@
         sidebarDOM.style.left="-250px";
         openbtn.style.display='block';
         //以下document的两句代码控制当左侧抽屉遮罩层消失时，页面才可以滚动。
-        document.body.style.overflow = 'auto';  
+        document.body.style.overflow = 'auto';
+        
+        var handle = function(event){
+            event.preventDefault();// 阻止元素发生默认行为
+        }
+        document.body.removeEventListener('touchmove',handle,false);//移除监听事件--页面恢复可滚动
     }, false);
 </script>
 
@@ -142,10 +175,16 @@
 <!-- 控制点击“查看源码”时，浮层下方的页面不能滚动，浮层消失后，页面正常滚动。 -->
 <script>
     var openlist = document.querySelectorAll('.component-code');
+
+    var handle = function(event){
+            event.preventDefault();// 阻止元素发生默认行为
+        }
+        
     if(openlist.length!==0){
         for(var i in openlist){
             openlist[i].onclick=function() {
             document.body.style.overflow = 'hidden';
+            document.body.addEventListener('touchmove',handle,false);//添加监听事件--页面不可滚动
            };
         }
     }
@@ -154,8 +193,9 @@
         for(var i in maskease){
             maskease[i].onclick=function() {
             document.body.style.overflow = 'auto';
+            document.body.removeEventListener('touchmove',handle,false);//移除监听事件--页面恢复可滚动
             }
         }
-    }   
+    }
 </script>
 </html>

@@ -97,7 +97,7 @@ module.exports = {
       isComponentFlag = true;
       filePath = path.join(__dirname, `../../tinper-bee/${component}/docs/api.md`);
       data = await fs.readFileSync(filePath, 'utf-8');
-      let demo = '<div id="tinperBeeDemo"></div>';
+      let demo = '<h2 id="能力特性" class="">能力特性</h2><div id="tinperBeeDemo"></div>';
       data = data.replace(/##.*代码演示/, demo);
       let pack_data = await fs.readFileSync(path.join(__dirname, "../../tinper-bee/" + component + "/package.json"));
       if (pack_data) {
@@ -184,7 +184,9 @@ module.exports = {
       body:    JSON.stringify(ctx.request.body),
       headers: { 'Content-Type': 'application/json' }
     };
-    ctx.response.body = await getTinperThemeServer("package",option);
+    let data = await getTinperThemeServer("package",option);
+    console.log("--bee.tinper.org--- ",data);
+    ctx.response.body = data;
   },
   getVersion: async(ctx, next) => {
     ctx.response.body = await getTinperThemeServer("version",{});

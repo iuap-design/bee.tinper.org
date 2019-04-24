@@ -169,7 +169,14 @@ var Transfer = function (_React$Component) {
       });
     }
   };
+  /**
+   * 从dataSource中分离出leftDataSource和rightDataSource
+   * @param {*} newTargetKeys 更新后的targetKeys
+   * @param {*} newDataSource 异步加载数据源时，从nextProps中获取的dataSource
+   */
 
+
+<<<<<<< HEAD
   /**
    * 给dataSource里的数据值指定唯一 key 值
    */
@@ -180,17 +187,34 @@ var Transfer = function (_React$Component) {
    * @param {*} newTargetKeys 更新后的targetKeys
    * @param {*} newDataSource 异步加载数据源时，从nextProps中获取的dataSource
    */
+=======
+>>>>>>> b36082153ad59a20c53372f11d64331edc58b28b
   Transfer.prototype.splitDataSource = function splitDataSource(newTargetKeys, newDataSource) {
     // targetKeys：展示在右边列表的数据集
     if (this.splitedDataSource) {
       return this.splitedDataSource;
     }
 
+<<<<<<< HEAD
     var targetKeys = newTargetKeys || this.props.targetKeys;
     //异步加载数据源时/移除已选时
     var dataSource = newDataSource || this.props.dataSource;
 
     dataSource = this.addUniqueKey(dataSource);
+=======
+    var rowKey = this.props.rowKey;
+
+    var targetKeys = newTargetKeys || this.props.targetKeys;
+    //异步加载数据源时/移除已选时
+    var dataSource = newDataSource || this.props.dataSource;
+    //TODO:移除已选时，不能自定义顺序
+    // let dataSource = isMove ? this.props.dataSource : newDataSource || this.props.dataSource;
+    if (rowKey) {
+      dataSource.forEach(function (record) {
+        record.key = rowKey(record);
+      });
+    }
+>>>>>>> b36082153ad59a20c53372f11d64331edc58b28b
 
     var leftDataSource = dataSource.filter(function (_ref) {
       var key = _ref.key;
@@ -214,9 +238,15 @@ var Transfer = function (_React$Component) {
   };
 
   /**
+<<<<<<< HEAD
    * 从自定义顺序的dataSource中分离出leftDataSource和rightDataSource（拖拽场景调用）
    * @param {*} newTargetKeys 更新后的targetKeys
    * @param {*} newDataSource 通过 leftDataSource.concat(rightDataSource) 得到的newDataSource
+=======
+   * 从dataSource中分离出leftDataSource和rightDataSource
+   * @param {*} newTargetKeys 更新后的targetKeys
+   * @param {*} newDataSource 移除已选操作时改变了顺序后的dataSource
+>>>>>>> b36082153ad59a20c53372f11d64331edc58b28b
    */
 
 
@@ -226,6 +256,7 @@ var Transfer = function (_React$Component) {
       return this.splitedDataSource;
     }
 
+<<<<<<< HEAD
     var targetKeys = newTargetKeys || this.props.targetKeys;
     //异步加载数据源时/移除已选时
     var sourceDataSource = this.props.dataSource;
@@ -234,6 +265,25 @@ var Transfer = function (_React$Component) {
     sourceDataSource = this.addUniqueKey(sourceDataSource);
 
     var leftDataSource = sourceDataSource.filter(function (_ref3) {
+=======
+    var rowKey = this.props.rowKey;
+
+    var targetKeys = newTargetKeys || this.props.targetKeys;
+    //异步加载数据源时/移除已选时
+    var dataSource = newDataSource || this.props.dataSource;
+    //TODO:移除已选时，不能自定义顺序
+    // let dataSource = isMove ? this.props.dataSource : newDataSource || this.props.dataSource;
+    if (rowKey) {
+      newDataSource.forEach(function (record) {
+        record.key = rowKey(record);
+      });
+      this.props.dataSource.forEach(function (record) {
+        record.key = rowKey(record);
+      });
+    }
+
+    var leftDataSource = this.props.dataSource.filter(function (_ref3) {
+>>>>>>> b36082153ad59a20c53372f11d64331edc58b28b
       var key = _ref3.key;
       return targetKeys.indexOf(key) === -1;
     });
