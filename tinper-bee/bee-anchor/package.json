@@ -1,6 +1,6 @@
 {
  "name": "bee-anchor",
- "version": "0.0.3",
+ "version": "0.0.4",
  "description": "Anchor ui component for react",
  "keywords": [
   "react",
@@ -40,7 +40,7 @@
   "classnames": "^2.2.5",
   "tinper-bee-core": "latest",
   "babel-runtime": "^6.23.0",
-  "gumshoejs": "^5.1.0"
+  "gumshoejs": "^5.1.1"
  },
  "devDependencies": {
   "bee-clipboard": "^2.0.0",

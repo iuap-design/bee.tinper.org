@@ -1,3 +1,13 @@
+<a name="2.0.10"></a>
+## [2.0.10](https://github.com/tinper-bee/bee-select/compare/v2.0.9...v2.0.10) (2019-04-23)
+
+
+### Features
+
+* **bee-select:** 新增onKeyDown回调，enterKeyDown开关 ([59fdfa2](https://github.com/tinper-bee/bee-select/commit/59fdfa2))
+
+
+
 <a name="2.0.9"></a>
 ## [2.0.9](https://github.com/tinper-bee/bee-select/compare/v2.0.7...v2.0.9) (2019-04-10)
 

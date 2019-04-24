@@ -146,6 +146,7 @@ export default class Picker extends Component {
     if (e.keyCode === 40) {
       this.setOpen(true);
     }
+    this.props.onKeyDown&&this.props.onKeyDown(e)
   };
 
   setValue(value) {

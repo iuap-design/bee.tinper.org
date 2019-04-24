@@ -13,7 +13,9 @@ const propTypes = {
   checkedChildren: PropTypes.any,
   unCheckedChildren: PropTypes.any,
   onChangeHandler: PropTypes.func,
-  onChange: PropTypes.func
+  onChange: PropTypes.func,
+  onKeyDown: PropTypes.func,
+  enterKeyDown: PropTypes.bool//是否启用 enter 和 space 键
 };
 const defaultProps = {
   clsPrefix: "u-switch",
@@ -23,7 +25,9 @@ const defaultProps = {
   size: "",
   disabled: false,
   onChangeHandler: function() {},
-  onChange: function() {}
+  onChange: function() {},
+  onKeyDown:()=>{},
+  enterKeyDown:true
 };
 class Switch extends Component {
   constructor(props) {
@@ -66,8 +70,11 @@ class Switch extends Component {
     } else if (e.keyCode === 39) { // Right
       this.setChecked(true);
     } else if (e.keyCode === 32 || e.keyCode === 13) { // Space, Enter
-      this.clickHandler();
+      if(this.props.enterKeyDown){
+        this.clickHandler();
+      }
     }
+    this.props.onKeyDown(e)
   }
   // Handle auto focus when click switch in Chrome
   handleMouseUp = (e) => {

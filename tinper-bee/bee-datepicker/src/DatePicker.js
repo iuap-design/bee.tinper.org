@@ -61,6 +61,7 @@ class DatePicker extends Component {
           this.props.onOpenChange(false,v, (v && v.format(this.props.format)) || '');
           ReactDOM.findDOMNode(this.outInput).focus();// 按esc时候焦点回到input输入框
         }
+        this.props.onKeyDown&&this.props.onKeyDown(e);
       }
     }
   }
@@ -296,6 +297,7 @@ DatePicker.defaultProps = {
   onChange:()=>{},
   locale:zhCN,
   showMonthInput:false,
+  onKeyDown:()=>{}
 }
 
 export default DatePicker;

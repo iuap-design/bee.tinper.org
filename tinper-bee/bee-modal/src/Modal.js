@@ -100,6 +100,27 @@ const propTypes = {
    * 是否可拖拽
    */
   draggable: PropTypes.bool,
+
+  /**
+   * 是否可以resize
+   */
+  resizable: PropTypes.bool,
+
+  /* resize开始 */
+  onResizeStart: PropTypes.func,
+
+  /* resizing */
+  onResize: PropTypes.func,
+
+  /* resize结束 */
+  onResizeStop: PropTypes.func,
+
+  /* resize 最小宽度、最小高度、最大宽度、最大高度 */
+  minWidth: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  minHeight: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  maxWidth: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  maxHeight: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+
 };
 
 const defaultProps = {
@@ -108,6 +129,7 @@ const defaultProps = {
   animation: true,
   dialogComponentClass: ModalDialog,
   draggable: false,
+  resizable: false,
   clsPrefix: 'u-modal'
 };
 

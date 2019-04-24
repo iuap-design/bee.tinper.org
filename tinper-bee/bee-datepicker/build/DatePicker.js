@@ -233,6 +233,7 @@ var _initialiseProps = function _initialiseProps() {
           _this3.props.onOpenChange(false, v, v && v.format(_this3.props.format) || '');
           _reactDom2["default"].findDOMNode(_this3.outInput).focus(); // 按esc时候焦点回到input输入框
         }
+        _this3.props.onKeyDown && _this3.props.onKeyDown(e);
       };
     }
   };
@@ -376,7 +377,8 @@ DatePicker.defaultProps = {
   onOpenChange: function onOpenChange() {},
   onChange: function onChange() {},
   locale: _zh_CN2["default"],
-  showMonthInput: false
+  showMonthInput: false,
+  onKeyDown: function onKeyDown() {}
 };
 
 exports["default"] = DatePicker;

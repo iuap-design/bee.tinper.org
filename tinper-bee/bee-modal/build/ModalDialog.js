@@ -14,6 +14,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _reactDom = require('react-dom');
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
 var _propTypes = require('prop-types');
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
@@ -21,6 +25,10 @@ var _propTypes2 = _interopRequireDefault(_propTypes);
 var _beeDnd = require('bee-dnd');
 
 var _beeDnd2 = _interopRequireDefault(_beeDnd);
+
+var _reResizable = require('re-resizable');
+
+var _reResizable2 = _interopRequireDefault(_reResizable);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -46,6 +54,8 @@ var propTypes = {
 };
 
 var defaultProps = {
+  minHeight: 150,
+  minWidth: 200,
   clsPrefix: 'u-modal'
 };
 
@@ -61,15 +71,148 @@ var ModalDialog = function (_React$Component) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, _React$Component.call.apply(_React$Component, [this].concat(args))), _this), _this.onStart = function () {
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, _React$Component.call.apply(_React$Component, [this].concat(args))), _this), _this.state = {
+      original: {
+        x: 0,
+        y: 0
+      },
+      maxWidth: Number.MAX_SAFE_INTEGER,
+      maxHeight: Number.MAX_SAFE_INTEGER
+    }, _this.onStart = function () {
       var draggable = _this.props.draggable;
 
       return draggable;
+    }, _this.onStop = function (e, delta) {
+      _this.setState({
+        original: {
+          x: delta.x,
+          y: delta.y
+        }
+      });
+    }, _this.onResizeStart = function (e, dir, elementRef) {
+      var onResizeStart = _this.props.onResizeStart;
+
+      typeof onResizeStart === "function" && onResizeStart(e, dir, elementRef);
+    }, _this.onResize = function (e, direction, elementRef, delta) {
+      var onResize = _this.props.onResize;
+      var original = _this.state.original;
+      /* resize 之前的值 */
+
+      var originX = original.x;
+      var originY = original.y;
+
+      /* 移动的位移 */
+      var moveW = delta.width;
+      var moveH = delta.height;
+
+      /* 移动的位移 */
+      var x = null,
+          y = null;
+
+      /* 处理上边缘 */
+      if (/left/i.test(direction)) {
+        x = originX - moveW;
+        y = originY;
+        _this.position = { x: x, y: y
+
+          /* 处理左边缘 */
+        };
+      } else if (/top/i.test(direction)) {
+        x = originX;
+        y = originY - moveH;
+        _this.position = { x: x, y: y };
+      } else {
+        _this.position = null;
+      }
+
+      if (x || y) {
+        elementRef.style.transform = 'translate(' + x + 'px, ' + y + 'px)';
+      }
+      if (delta.height) {
+        _this.updateBodyH();
+      }
+
+      typeof onResize === "function" && onResize(e, direction, elementRef, delta);
+    }, _this.onResizeStop = function (e, direction, elementRef, delta) {
+      var onResizeStop = _this.props.onResizeStop;
+
+
+      if (_this.position) {
+        _this.setState({
+          original: _this.position
+        });
+      }
+
+      typeof onResizeStop === "function" && onResizeStop(e, direction, elementRef, delta);
+    }, _this.updateBodyH = function () {
+      var $resizable = _reactDom2["default"].findDOMNode(_this.resizable);
+      var $header = $resizable.querySelector(".u-modal-header");
+      var $body = $resizable.querySelector(".u-modal-body");
+      var $footer = $resizable.querySelector(".u-modal-footer");
+
+      var totalH = $resizable.style.height;
+      totalH = Number(totalH.replace("px", ""));
+      if ($header) {
+        totalH -= $header.offsetHeight;
+      }
+      if ($footer) {
+        totalH -= $footer.offsetHeight;
+      }
+
+      $body.style.height = totalH + 'px';
+    }, _this.getMaxSizesFromProps = function () {
+      var backDropW = _this.backdrop && _this.backdrop.offsetWidth ? _this.backdrop.offsetWidth : Number.MAX_SAFE_INTEGER;
+      var backDropH = _this.backdrop && _this.backdrop.offsetHeight ? _this.backdrop.offsetHeight : Number.MAX_SAFE_INTEGER;
+
+      var maxWidth = typeof _this.props.maxWidth === "undefined" ? backDropW : _this.props.maxWidth;
+      var maxHeight = typeof _this.props.maxHeight === "undefined" ? backDropH : _this.props.maxHeight;
+      return { maxWidth: maxWidth, maxHeight: maxHeight };
+    }, _this.handleWH = function (value) {
+      var size = value;
+      if (typeof value === "string" && value.endsWith("px")) {
+        size = Number(value.replace("px", ""));
+      } else if (typeof Number(value) === "number" && !Number.isNaN(Number(value))) {
+        size = Number(value);
+      }
+      return size;
     }, _temp), _possibleConstructorReturn(_this, _ret);
   }
 
+  ModalDialog.prototype.componentDidUpdate = function componentDidUpdate() {
+    var _getMaxSizesFromProps = this.getMaxSizesFromProps(),
+        maxWidth = _getMaxSizesFromProps.maxWidth,
+        maxHeight = _getMaxSizesFromProps.maxHeight;
+
+    if (maxWidth != this.state.maxWidth) {
+      this.setState({
+        maxWidth: maxWidth,
+        maxHeight: maxHeight
+      });
+    }
+  };
+
+  /* 开始resize */
+
+
+  /* resizing */
+
+
+  /* resize 结束 */
+
+
+  /**
+   * 更新Modal.Body的高度
+   */
+
+
+  /**
+   * 获取最大宽度和高度
+   */
+
+
   ModalDialog.prototype.render = function render() {
-    var _dialogClasses;
+    var _dialogClasses,
+        _this2 = this;
 
     var _props = this.props,
         dialogClassName = _props.dialogClassName,
@@ -80,9 +223,13 @@ var ModalDialog = function (_React$Component) {
         contentStyle = _props.contentStyle,
         children = _props.children,
         draggable = _props.draggable,
-        props = _objectWithoutProperties(_props, ['dialogClassName', 'className', 'clsPrefix', 'size', 'style', 'contentStyle', 'children', 'draggable']);
-    // const [bsProps, elementProps] = splitBsProps(props);
-    //
+        resizable = _props.resizable,
+        props = _objectWithoutProperties(_props, ['dialogClassName', 'className', 'clsPrefix', 'size', 'style', 'contentStyle', 'children', 'draggable', 'resizable']);
+
+    var _state = this.state,
+        original = _state.original,
+        maxWidth = _state.maxWidth,
+        maxHeight = _state.maxHeight;
 
 
     var uClassName = _defineProperty({}, '' + clsPrefix, true);
@@ -103,6 +250,9 @@ var ModalDialog = function (_React$Component) {
         tabIndex: '-1',
         role: 'dialog',
         style: modalStyle,
+        ref: function ref(_ref3) {
+          return _this2.backdrop = _ref3;
+        },
         className: (0, _classnames2["default"])(className, uClassName)
       }),
       _react2["default"].createElement(
@@ -110,10 +260,41 @@ var ModalDialog = function (_React$Component) {
         { className: (0, _classnames2["default"])(dialogClassName, dialogClasses), style: style },
         _react2["default"].createElement(
           _beeDnd2["default"],
-          { handle: '.dnd-handle', cancel: '.dnd-cancel', onStart: this.onStart, onStop: this.onStop },
-          _react2["default"].createElement(
+          {
+            handle: '.dnd-handle',
+            cancel: '.dnd-cancel',
+            onStart: this.onStart,
+            onStop: this.onStop,
+            position: original
+          },
+          resizable ? _react2["default"].createElement(
+            _reResizable2["default"],
+            {
+              ref: function ref(c) {
+                if (c) {
+                  _this2.resizable = c;
+                }
+              },
+              onResizeStart: this.onResizeStart,
+              onResize: this.onResize,
+              onResizeStop: this.onResizeStop,
+              minWidth: this.handleWH(this.props.minWidth),
+              minHeight: this.handleWH(this.props.minHeight),
+              maxWidth: this.handleWH(maxWidth),
+              maxHeight: this.handleWH(maxHeight)
+            },
+            _react2["default"].createElement(
+              'div',
+              { style: _extends({}, contentStyle, { height: "100%" }), className: (0, _classnames2["default"])([clsPrefix + '-content']), role: 'document', ref: function ref(_ref) {
+                  return _this2.resize = _ref;
+                } },
+              children
+            )
+          ) : _react2["default"].createElement(
             'div',
-            { style: contentStyle, className: (0, _classnames2["default"])([clsPrefix + '-content']), role: 'document' },
+            { style: contentStyle, className: (0, _classnames2["default"])([clsPrefix + '-content']), role: 'document', ref: function ref(_ref2) {
+                return _this2.resize = _ref2;
+              } },
             children
           )
         )

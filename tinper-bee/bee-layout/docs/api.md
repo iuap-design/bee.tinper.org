@@ -6,11 +6,11 @@
 ## 如何使用
 
 ```
-import { Layout } from 'tinper-bee';
+import { Col, Row } from 'tinper-bee';
 
 or
 
-import Layout from 'bee-layout';
+import { Col, Row } from 'bee-layout';
 import 'bee-layout/build/Layout.css';
 
 ```
@@ -19,13 +19,6 @@ import 'bee-layout/build/Layout.css';
 ## 代码演示
 
 ## API
-
-### Con组件
-
-|参数|说明|类型|默认值|
-|:--|:----|:---|:----|
-|componentClass|组件根元素|element/ReactElement|div|
-|fluid|是否为非定宽|boolean|false|
 
 ### Row组件
 

@@ -48,34 +48,26 @@ var Item = function (_React$Component) {
   _inherits(Item, _React$Component);
 
   function Item() {
-    var _temp, _this, _ret;
-
     _classCallCheck(this, Item);
 
+    return _possibleConstructorReturn(this, _React$Component.apply(this, arguments));
+  }
+
+  Item.prototype.shouldComponentUpdate = function shouldComponentUpdate() {
     for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, _React$Component.call.apply(_React$Component, [this].concat(args))), _this), _this.matchFilter = function (text) {
-      var _this$props = _this.props,
-          filter = _this$props.filter,
-          filterOption = _this$props.filterOption,
-          item = _this$props.item;
-
-      if (filterOption) {
-        return filterOption(filter, item);
-      }
-      return text.indexOf(filter) >= 0;
-    }, _temp), _possibleConstructorReturn(_this, _ret);
-  }
-
-  Item.prototype.shouldComponentUpdate = function shouldComponentUpdate() {
-    for (var _len2 = arguments.length, args = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
-      args[_key2] = arguments[_key2];
-    }
-
     return _PureRenderMixin2["default"].shouldComponentUpdate.apply(this, args);
   };
+  // matchFilter = (text) => {
+  //   const { filter, filterOption, item } = this.props;
+  //   if (filterOption) {
+  //     return filterOption(filter, item);
+  //   }
+  //   return text.indexOf(filter) >= 0;
+  // }
+
 
   Item.prototype.render = function render() {
     var _classNames;
@@ -89,9 +81,10 @@ var Item = function (_React$Component) {
         prefixCls = _props.prefixCls,
         onClick = _props.onClick,
         renderedText = _props.renderedText,
-        renderedEl = _props.renderedEl;
+        renderedEl = _props.renderedEl,
+        showCheckbox = _props.showCheckbox;
 
-    var className = (0, _classnames2["default"])((_classNames = {}, _defineProperty(_classNames, prefixCls + '-content-item', true), _defineProperty(_classNames, prefixCls + '-content-item-disabled', item.disabled), _classNames));
+    var className = (0, _classnames2["default"])((_classNames = {}, _defineProperty(_classNames, prefixCls + '-content-item', true), _defineProperty(_classNames, prefixCls + '-content-item-disabled', item.disabled), _defineProperty(_classNames, prefixCls + '-content-item-selected', checked), _classNames));
 
     var lazyProps = (0, _objectAssign2["default"])({
       height: 32,
@@ -137,9 +130,9 @@ var Item = function (_React$Component) {
               return onClick(item);
             }
           },
-          _react2["default"].createElement(_beeCheckbox2["default"], { checked: checked, disabled: item.disabled, onClick: item.disabled ? undefined : function () {
+          showCheckbox ? _react2["default"].createElement(_beeCheckbox2["default"], { checked: checked, disabled: item.disabled, onClick: item.disabled ? undefined : function () {
               return onClick(item);
-            } }),
+            } }) : '',
           _react2["default"].createElement(
             'span',
             null,

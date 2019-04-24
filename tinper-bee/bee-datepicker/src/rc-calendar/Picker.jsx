@@ -84,6 +84,7 @@ class Picker extends React.Component {
       event.stopPropagation();
       this.close(this.focus);
     }
+    this.props.onKeyDown&&this.props.onKeyDown(event);
   }
 
   onCalendarSelect = (value, cause = {}) => {
@@ -108,6 +109,7 @@ class Picker extends React.Component {
       this.open();
       event.preventDefault();
     }
+    this.props.onKeyDown&&this.props.onKeyDown(event);
   }
 
   onCalendarOk = () => {

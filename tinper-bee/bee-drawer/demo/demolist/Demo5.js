@@ -1,6 +1,6 @@
 /**
  *
- * @title Drawer5列表信息示例
+ * @title Drawer列表信息示例
  * @description 弹出列表中一项的信息
  *
  */

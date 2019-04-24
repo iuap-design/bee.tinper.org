@@ -1,3 +1,49 @@
+<a name="2.0.28"></a>
+## [2.0.28](https://github.com/tinper-bee/bee-datepicker/compare/v2.0.27...v2.0.28) (2019-04-23)
+
+
+### Bug Fixes
+
+* **bee-datepicker:** keydown时机问题 ([6dab565](https://github.com/tinper-bee/bee-datepicker/commit/6dab565))
+
+
+### Features
+
+* **bee-datepicker:** keydow时机问题 ([ad3aa47](https://github.com/tinper-bee/bee-datepicker/commit/ad3aa47))
+
+
+
+<a name="2.0.27"></a>
+## [2.0.27](https://github.com/tinper-bee/bee-datepicker/compare/v2.0.26...v2.0.27) (2019-04-23)
+
+
+### Features
+
+* **bee-datepicker:** keydown 时机问题 ([d66c3fd](https://github.com/tinper-bee/bee-datepicker/commit/d66c3fd))
+
+
+
+<a name="2.0.26"></a>
+## [2.0.26](https://github.com/tinper-bee/bee-datepicker/compare/v2.0.25...v2.0.26) (2019-04-23)
+
+
+### Features
+
+* datepicker keydown事件 ([f01890f](https://github.com/tinper-bee/bee-datepicker/commit/f01890f))
+
+
+
+<a name="2.0.25"></a>
+## [2.0.25](https://github.com/tinper-bee/bee-datepicker/compare/v2.0.23...v2.0.25) (2019-04-23)
+
+
+### Features
+
+* **bee-datepicker:** datepicker 加onKeydown ([eba4480](https://github.com/tinper-bee/bee-datepicker/commit/eba4480))
+* **bee-datepicker:** datepicker 新增keydown回调 ([87be9c2](https://github.com/tinper-bee/bee-datepicker/commit/87be9c2))
+
+
+
 <a name="2.0.23"></a>
 ## [2.0.23](https://github.com/tinper-bee/bee-datepicker/compare/v2.0.22...v2.0.23) (2019-04-12)
 
