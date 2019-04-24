@@ -17,6 +17,7 @@ tinper-bee 支持快捷键从 V1.6.3 开始就有部分组件支持快捷键，�
 | bee-radio | (Space、↑、↓、←、→) |  Space: 如未选中，则检查聚焦单选按钮，反之则改变选中。  →(右箭)、↓(下箭):  将焦点移动到下一个按钮上，依次循环选中。  ←(左箭)、↑(上箭):  将焦点移动到上一个按钮上，依次循环选中。 |
 | bee-checkbox | Space(空格键) | 当复选框具有焦点时，Space按键会更改复选框的状态 |
 | bee-timePicker | delete、esc| delete清空日期。esc关闭面板|
+| bee-transfer | tab、Shift+tab、Space(空格键)、esc、↑、↓、←、→| tab从前向后选择拖拽目标。Shift+tab从后向前选择拖拽目标。Space(空格键)选择/取消选择。↑、↓、←、→开始拖拽穿梭动作。esc取消拖动|
 
 > 部分快捷键需要参考该组件的示例。
 

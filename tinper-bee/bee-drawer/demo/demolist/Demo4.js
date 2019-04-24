@@ -51,7 +51,7 @@ class Demo4 extends Component {
         return (
             <div className="demoPadding">
                 <div className="btnc">  
-                    <Button className="btn" onClick={this.fPopDrawer}>打开</Button>
+                    <Button colors="primary" onClick={this.fPopDrawer}>打开</Button>
                 </div>
                 <Drawer className={'demo4'} width={500} title={title} show={showDrawer} placement={placement} onClose={this.fCloseDrawer}>
                     <div className="con">

@@ -55,7 +55,7 @@ class Demo2 extends Component {
                     </Radio.RadioGroup>
                 </div>
                 <div className="btnc">  
-                    <Button className="btn" onClick={this.fPopDrawer}>打开</Button>
+                    <Button colors="primary" onClick={this.fPopDrawer}>打开</Button>
                 </div>
                 <Drawer className={'demo2'} title={title} show={showDrawer} placement={placement} onClose={this.fCloseDrawer}>
                     <div className="con">

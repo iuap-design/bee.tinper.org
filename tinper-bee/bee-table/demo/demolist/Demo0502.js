@@ -1,7 +1,6 @@
 /**
  *
  * @title 单元格编辑
-<<<<<<< HEAD
  * @description 可以对单元格进行编辑的表格，示例中给出输入框、下拉框、参照的编辑模式，以及两类校验。（通过对 coloums 配置 render 属性实现渲染不同格式的编辑态单元格）
  *
  */
@@ -10,15 +9,6 @@ import Table from "../../src";
 import { Icon, Select, Tooltip, Form } from "tinper-bee";
 const Option = Select.Option;
 import { RefTreeWithInput } from "ref-tree";
-=======
- * @description 可以对单元格进行编辑的表格，示例中给出输入框+必填校验、下拉框编辑模式，以及输入模式的必填校验。
- * demo0502
- */
-import React, { Component } from "react";
-import Table from "../../src";
-import { Icon, Select, Tooltip } from "tinper-bee";
-const Option = Select.Option;
->>>>>>> b36082153ad59a20c53372f11d64331edc58b28b
 
 class StringEditCell extends Component {
   constructor(props, context) {
@@ -58,11 +48,7 @@ class StringEditCell extends Component {
         {editable ? (
           <div className="editable-cell-input-wrapper">
             <input
-<<<<<<< HEAD
               className={value ? "u-form-control" : "u-form-control error"}
-=======
-              className="u-form-control"
->>>>>>> b36082153ad59a20c53372f11d64331edc58b28b
               autoFocus
               defaultValue={this.props.value}
               value={value}
@@ -73,11 +59,7 @@ class StringEditCell extends Component {
             {value === "" ? (
               <Tooltip
                 inverse
-<<<<<<< HEAD
                 className="tp-0502"
-=======
-                className="tp-501"
->>>>>>> b36082153ad59a20c53372f11d64331edc58b28b
                 placement="bottom"
                 overlay={
                   <div className="help-tip">
@@ -99,11 +81,7 @@ class StringEditCell extends Component {
   }
 }
 
-<<<<<<< HEAD
 const SELECT_SOURCE = ["男", "女"];
-=======
-const SELECT_SOURCE = ["xx供应商", "yy供应商", "zz供应商", "aa供应商", "bb供应商"];
->>>>>>> b36082153ad59a20c53372f11d64331edc58b28b
 
 class SelectEditCell extends Component {
   constructor(props, context) {
@@ -114,15 +92,9 @@ class SelectEditCell extends Component {
     };
   }
 
-<<<<<<< HEAD
   handleSelect = value => {
     this.setState({ value });
   };
-=======
-  handleSelect = (value) => {
-    this.setState({ value });
-  }
->>>>>>> b36082153ad59a20c53372f11d64331edc58b28b
 
   commitChange = () => {
     this.setState({ editable: false });
@@ -165,7 +137,6 @@ class SelectEditCell extends Component {
   }
 }
 
-<<<<<<< HEAD
 const option = {
   title: "树",
   searchable: true,
@@ -454,22 +425,10 @@ const dataSource = [
 ];
 
 class Demo0502 extends Component {
-=======
-const dataSource = [
-  { name: "NU03910001", quality: "xx供应商", level: 70, key: "1" },
-  { name: "NU03910002", quality: "yy供应商", level: 75, key: "2" },
-  { name: "NU03910003", quality: "zz供应商", level: 50, key: "3" },
-  { name: "NU03910004", quality: "aa供应商", level: 70, key: "4" },
-  { name: "NU03910005", quality: "bb供应商", level: 60, key: "5" }
-];
-
-class Demo501 extends Component {
->>>>>>> b36082153ad59a20c53372f11d64331edc58b28b
   constructor(props, context) {
     super(props);
     this.columns = [
       {
-<<<<<<< HEAD
         title: "员工编号",
         dataIndex: "a",
         key: "a"
@@ -483,21 +442,10 @@ class Demo501 extends Component {
             colName="名字"
             value={text}
             onChange={this.onCellChange(index, "b")}
-=======
-        title: "订单编号",
-        dataIndex: "name",
-        key: "name",
-        render: (text, record, index) => (
-          <StringEditCell
-            value={text}
-            colName={"订单编号"}
-            onChange={this.onCellChange(index, "name")}
->>>>>>> b36082153ad59a20c53372f11d64331edc58b28b
           />
         )
       },
       {
-<<<<<<< HEAD
         title: "性别",
         dataIndex: "c",
         key: "c",
@@ -518,26 +466,11 @@ class Demo501 extends Component {
           <RefEditCell
             value={record}
             onChange={this.onCellChange(index, "d")}
-=======
-        title: "供应商名称",
-        dataIndex: "quality",
-        key: "quality",
-        render: (text, record, index) => (
-          <SelectEditCell
-            value={text}
-            onChange={this.onCellChange(index, "quality")}
->>>>>>> b36082153ad59a20c53372f11d64331edc58b28b
           />
         )
       },
       {
-<<<<<<< HEAD
         key: "placeholder"
-=======
-        title: "采购数量",
-        dataIndex: "level",
-        key: "level"
->>>>>>> b36082153ad59a20c53372f11d64331edc58b28b
       }
     ];
 
@@ -556,19 +489,11 @@ class Demo501 extends Component {
 
   render() {
     return (
-<<<<<<< HEAD
       <div className="demo0502">
-=======
-      <div className="demo501">
->>>>>>> b36082153ad59a20c53372f11d64331edc58b28b
         <Table data={this.state.dataSource} columns={this.columns} />
       </div>
     );
   }
 }
 
-<<<<<<< HEAD
 export default Demo0502;
-=======
-export default Demo501;
->>>>>>> b36082153ad59a20c53372f11d64331edc58b28b

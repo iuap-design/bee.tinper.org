@@ -82,6 +82,8 @@
   padding-top: 40px; }
   .demo3 .drawer-body .u-form-item .error {
     display: block; }
+  .demo3 .drawer-body .u-form-item .u-checkbox-group, .demo3 .drawer-body .u-form-item .u-form-control, .demo3 .drawer-body .u-form-item .u-input-group .u-form-control, .demo3 .drawer-body .u-form-item .u-select {
+    min-width: 60%; }
 
 .demo4 .con {
   padding: 10px 20px; }
@@ -148,9 +150,9 @@
   height: 30px; }
 
 .demo5 .item-link {
-  color: #1890ff; }
+  color: #f53c32; }
 
 .demo5 .item-link:link, .demo5 .item-link:visited, .demo5 .item-link::active, .demo5 .item-link:hover {
-  color: #1890ff; }
+  color: #f53c32; }
 
 /*# sourceMappingURL=demo.css.map */
