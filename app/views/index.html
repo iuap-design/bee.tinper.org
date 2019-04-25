@@ -39,7 +39,6 @@
     <div class="mask" id="mask" @touchmove.prevent></div>
     <div id="openbtn" class="uf uf-navmenu"></div>
     <div id="closebtn" class="uf uf-close"></div>
-    <div id="upbtn" class="uf uf-top-up"></div>
     <% if(isComponent){ %>
         <div class="doc-content component">
     <% } else { %>
@@ -106,7 +105,6 @@
     closebtn=document.getElementById('closebtn'),//关闭按钮
     sidebarDOM=document.getElementsByClassName('sidebar')[0],//侧边栏
     mask=document.getElementsByClassName('mask')[0];//遮罩层
-    // navbar=document.getElementById('navbar');//新加
     //汉堡按钮显示逻辑
     openbtn.addEventListener('click', function () {
         mask.style.display='block';
@@ -114,7 +112,7 @@
         openbtn.style.display='none';
         sidebarDOM.style.left=0;
         //解决在ios或者safari浏览器上mask浮层的z-index无效；
-        mask.style.left="250px";
+        // mask.style.left="250px";
         mask.style.position="fixed";
         mask.style.zIndex=2000;
         
@@ -129,7 +127,6 @@
         var handle = function(event){
             event.preventDefault();// 阻止元素发生默认行为
         }
-        // document.body.addEventListener('touchmove',handle,false);//添加监听事件--页面不可滚动
         mask.addEventListener('touchmove',handle,false);//添加监听事件--页面不可滚动
     });
 
@@ -143,7 +140,7 @@
         sidebarDOM.style.position="fixed";
         sidebarDOM.style.zIndex=2019;//新增
         //解决在ios或者safari浏览器上mask浮层的z-index无效；
-        mask.style.left="250px";
+        // mask.style.left="250px";
         mask.style.position="fixed";
         mask.style.zIndex=2000;//新增
 
@@ -154,7 +151,6 @@
         var handle = function(event){
             event.preventDefault();// 阻止元素发生默认行为
         }
-        // document.body.addEventListener('touchmove',handle,false);//添加监听事件--页面不可滚动
         mask.addEventListener('touchmove',handle,false);//添加监听事件--页面不可滚动
     }
 
@@ -171,7 +167,6 @@
         var handle = function(event){
             event.preventDefault();// 阻止元素发生默认行为
         }
-        // document.body.removeEventListener('touchmove',handle,false);//移除监听事件--页面恢复可滚动
         mask.removeEventListener('touchmove',handle,false);
     }, false);
 </script>
@@ -179,7 +174,8 @@
 
 <!-- 控制点击“查看源码”时，浮层下方的页面不能滚动，浮层消失后，页面正常滚动。 -->
 <script>
-    var openlist = document.querySelectorAll('.component-code'); 
+    var openlist = document.querySelectorAll('.component-code');
+    var maskease = document.querySelectorAll('.drawer-mask');
     if(openlist.length!==0){
         for(var i in openlist){
             openlist[i].onclick=function() {
@@ -187,7 +183,7 @@
            };
         }
     }
-    var maskease = document.querySelectorAll('.drawer-mask');
+   
     if(maskease.length!==0){
         for(var i in maskease){
             maskease[i].onclick=function() {
@@ -196,47 +192,5 @@
         }
     }
 
-
-//返回顶部按钮
-window.onload = function(){
-    var upbtn = document.getElementById('upbtn');
-    var timer = null;
-    var isTop = true;
-    //获取页面可视区高度
-    var clientHeight = document.documentElement.clientHeight;
-    console.log(clientHeight)
-    //滚动条滚动时触发
-    window.onscroll = function() {
-        //显示回到顶部按钮
-        var osTop = document.documentElement.scrollTop || document.body.scrollTop;
-        if (osTop >= clientHeight) {
-            upbtn.style.display = "block";
-        } else {
-            upbtn.style.display = "none";
-        };
-        //回到顶部过程中用户滚动滚动条，停止定时器
-        if (!isTop) {
-            clearInterval(timer);
-        };
-        isTop = false;
-    };
- 
-    upbtn.onclick = function() {
-        //设置定时器
-        timer = setInterval(function(){
-        //获取滚动条距离顶部高度
-        var osTop = document.documentElement.scrollTop || document.body.scrollTop;
-        console.log('osTop '+osTop);
-        var ispeed = Math.floor(-osTop / 7);
-        console.log('ispeed '+ispeed);
-        document.documentElement.scrollTop = document.body.scrollTop = osTop+ispeed;
-        //到达顶部，清除定时器
-        if (osTop == 0) {
-            clearInterval(timer);
-        };
-        isTop = true;  
-        },30);
-    };
-};
 </script>
 </html>
