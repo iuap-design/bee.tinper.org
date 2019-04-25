@@ -104,7 +104,6 @@
 
 
     // 点击红点
-    //
     function localStorageSet(key, value) {
         var curTime = new Date().getTime();
         localStorage.setItem(key,JSON.stringify({data:value,time:curTime}));
@@ -146,7 +145,6 @@
                 item.setAttribute('class', '');
                 if (doitClicked.indexOf(com) == -1) {
                     doitClicked.push(com)
-
                     localStorageSet('doitClicked',doitClicked);
                 }
             }
