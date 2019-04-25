@@ -1,7 +1,7 @@
 /**
  *
- * @title 可以拖拽可resize的模态框
- * @description
+ * @title 通过拖拽调整弹框大小
+ * @description 通过 `resizable` 参数控制弹框是否可被 `resize`
  *
  */
 

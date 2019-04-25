@@ -71,6 +71,11 @@ class Demo2 extends Component{
     console.log('onSelect', info);
     this.setState({ selectedKeys });
   }
+  // keydown的钩子事件
+  onKeyDown = (e,treeNode)=>{
+    console.log('***',e);
+    return false;
+  }
   render() {
     const loop = data => data.map((item) => {
       if (item.children) {
@@ -91,6 +96,7 @@ class Demo2 extends Component{
         autoExpandParent={this.state.autoExpandParent}
         onCheck={this.onCheck} 
         onSelect={this.onSelect} 
+        keyFun={this.onKeyDown}
       >
         {loop(gData)}
       </Tree>

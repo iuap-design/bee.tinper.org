@@ -3,6 +3,7 @@ import Notification from 'bee-notification';
 import classnames from 'classnames';
 
 let defaultDuration = 1.5;
+let newDuration;
 let defaultTop = 0;
 let defaultBottom = 48;
 let bottom = 90;
@@ -85,6 +86,25 @@ function getMessageInstance(position = 'top', callback, keyboard, onEscapeKeyUp)
         callback(messageInstance);
         return;
     }
+    switch(position){
+        case 'top':
+            positionObj[position].notificationStyle.top = defaultTop;
+            break;
+        case 'bottom':
+            positionObj[position].notificationStyle.bottom = defaultBottom;
+            break;
+        case 'bottomRight':
+            positionObj[position].notificationStyle.bottom = bottom;
+            break;
+        case 'bottomLeft':
+            positionObj[position].notificationStyle.bottom = bottom;
+            break;
+        default:
+            break;
+    }
+    if( position !== 'top' && position !== 'bottom'){
+        positionObj[position].messageStyle.width = width;
+    }
     var style = positionObj[position].notificationStyle;
     let instanceObj = {
         clsPrefix,
@@ -122,7 +142,6 @@ function notice(content, duration, type, onClose, position, style, keyboard, onE
   })[type];
 
   let positionStyle = positionObj[position].messageStyle;
-
   getMessageInstance(position, instance => {
     instance.notice({
         key,
@@ -156,8 +175,11 @@ function notice(content, duration, type, onClose, position, style, keyboard, onE
 
 export default {
   create(obj) {
+      if(newDuration){ //如果在config方法里设置了duration
+        obj.duration = newDuration;
+      }
       let content = obj.content || '';
-      let duration = typeof obj.duration == undefined ? defaultDuration : obj.duration;
+      let duration = typeof obj.duration == 'undefined' ? defaultDuration : obj.duration;
       let color = obj.color || 'dark';
       let onClose = obj.onClose || noop;
       let position = obj.position || "top";
@@ -171,6 +193,7 @@ export default {
     }
     if (options.duration !== undefined) {
       defaultDuration = options.duration;
+      newDuration = defaultDuration;
     }
     if (options.clsPrefix !== undefined) {
       clsPrefix = options.clsPrefix;
@@ -182,7 +205,7 @@ export default {
       bottom = options.bottom;
     }
     if (options.width !== undefined) {
-      bottom = options.width;
+      width = options.width;
     }
   },
   destroy() {

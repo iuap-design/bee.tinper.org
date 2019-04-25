@@ -265,7 +265,8 @@ var ModalDialog = function (_React$Component) {
             cancel: '.dnd-cancel',
             onStart: this.onStart,
             onStop: this.onStop,
-            position: original
+            position: original,
+            list: []
           },
           resizable ? _react2["default"].createElement(
             _reResizable2["default"],

@@ -6,6 +6,10 @@ Object.defineProperty(exports, "__esModule", {
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
 var _Modal = require('./Modal');
 
 var _Modal2 = _interopRequireDefault(_Modal);
@@ -23,7 +27,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 _Modal2["default"].info = function (props) {
     var config = _extends({
         type: 'info',
-        icon: React.createElement(_beeIcon2["default"], { type: 'uf-i-c-2' }),
+        icon: _react2["default"].createElement(_beeIcon2["default"], { type: 'uf-i-c-2' }),
         okCancel: false
     }, props);
     return (0, _confirm2["default"])(config);
@@ -32,7 +36,7 @@ _Modal2["default"].info = function (props) {
 _Modal2["default"].success = function (props) {
     var config = _extends({
         type: 'success',
-        icon: React.createElement(_beeIcon2["default"], { type: 'uf-correct' }),
+        icon: _react2["default"].createElement(_beeIcon2["default"], { type: 'uf-correct' }),
         okCancel: false
     }, props);
     return (0, _confirm2["default"])(config);
@@ -41,7 +45,7 @@ _Modal2["default"].success = function (props) {
 _Modal2["default"].error = function (props) {
     var config = _extends({
         type: 'error',
-        icon: React.createElement(_beeIcon2["default"], { type: 'uf-close-bold' }),
+        icon: _react2["default"].createElement(_beeIcon2["default"], { type: 'uf-close-bold' }),
         okCancel: false
     }, props);
     return (0, _confirm2["default"])(config);
@@ -50,7 +54,7 @@ _Modal2["default"].error = function (props) {
 _Modal2["default"].warning = function (props) {
     var config = _extends({
         type: 'warning',
-        icon: React.createElement(_beeIcon2["default"], { type: 'uf-exc-t' }),
+        icon: _react2["default"].createElement(_beeIcon2["default"], { type: 'uf-exc-t' }),
         okCancel: false
     }, props);
     return (0, _confirm2["default"])(config);

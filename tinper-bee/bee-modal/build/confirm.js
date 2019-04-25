@@ -34,12 +34,6 @@ var _beeIcon2 = _interopRequireDefault(_beeIcon);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-// class ConfirmDialogProps extends Modal.ModalFuncProps {
-//     onHide = () => {};
-//     close = (...args) => {};
-//     autoFocusButton = null | 'ok' | 'cancel';
-// }
-
 var IS_REACT_16 = !!_reactDom2["default"].createPortal;
 
 var ConfirmDialog = function ConfirmDialog(props) {
@@ -56,11 +50,6 @@ var ConfirmDialog = function ConfirmDialog(props) {
       cancelButtonProps = props.cancelButtonProps,
       _props$iconType = props.iconType,
       iconType = _props$iconType === undefined ? 'uf-qm-c' : _props$iconType;
-  // warning(
-  //   !('iconType' in props),
-  //   'Modal',
-  //   `The property 'iconType' is deprecated. Use the property 'icon' instead.`,
-  // );
 
   // 支持传入{ icon: null }来隐藏`Modal.confirm`默认的Icon
 
@@ -100,11 +89,9 @@ var ConfirmDialog = function ConfirmDialog(props) {
   var iconNode = typeof icon === 'string' ? _react2["default"].createElement(_beeIcon2["default"], { type: icon }) : icon;
 
   return _react2["default"].createElement(
-    _Modal2["default"]
-    // size="sm"
-    ,
-    { width: width,
-      prefixCls: prefixCls,
+    _Modal2["default"],
+    {
+      width: width,
       className: classString,
       show: show,
       onHide: onHide,

@@ -205,6 +205,7 @@ class ModalDialog extends React.Component {
             onStart={this.onStart} 
             onStop={this.onStop}
             position={original}
+            list={[]}
           >
             {
               resizable ? (

@@ -2,6 +2,7 @@
 @import "../node_modules/tinper-bee-core/scss/minxin-mixins";
 @import "../node_modules/bee-icon/src/Icon.scss";
 
+$zIndex-message: 2000;
 .u-message {
     font-size: $message-font-size;
     position: fixed;
