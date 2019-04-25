@@ -1,7 +1,3 @@
-/* .sidebar{
-     -webkit-overflow-scrolling: touch;
-} */
-
 .sidebar .menu-components .menu-group {
     list-style: none;
 }
@@ -143,7 +139,4 @@
     #openbtn{
         display:none;
     }
-    /* .siderbar{
-        -webkit-overflow-scrolling: touch;
-    } */
 }

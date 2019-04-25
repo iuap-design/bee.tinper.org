@@ -158,27 +158,6 @@ body::-webkit-scrollbar-thumb:window-inactive {
         display:none;
     }
   } 
-@media(max-width:768px){
-    /*解决手机端 body{overflow:hidden}不生效*/
-    * {
-        padding: 0;
-        margin: 0;
-        box-sizing: border-box;
-    }
-    html, body {
-        height: 100%;
-        overflow: auto;
-        /* -webkit-overflow-scrolling: touch; */
-    }
-    body {
-        position: relative;
-    }
-    /* .sidebar{
-        height: 100%;
-        overflow-y: scroll;
-        -webkit-overflow-scrolling: touch; 
-    } */
-}
 .navbar .mob-nav{
     position:fixed;
     z-index:999;
