@@ -493,6 +493,9 @@ var TreeNode = function (_React$Component) {
     };
 
     var liProps = {};
+    if (props.liAttr) {
+      liProps = _extends({}, props.liAttr);
+    }
     if (props.draggable) {
       liProps.onDragEnter = this.onDragEnter;
       liProps.onDragOver = this.onDragOver;

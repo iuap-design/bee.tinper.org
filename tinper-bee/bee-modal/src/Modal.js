@@ -8,7 +8,6 @@ import ReactDOM from 'react-dom';
 import  BaseModal  from 'bee-overlay/build/Modal';
 import isOverflowing from 'bee-overlay/build/utils/isOverflowing';
 import { elementType, splitComponent, createChainedFunction } from 'tinper-bee-core';
-import Dnd from 'bee-dnd';
 
 import { Fade } from 'bee-transition';
 import Body from './ModalBody';

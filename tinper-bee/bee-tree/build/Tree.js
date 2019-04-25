@@ -539,7 +539,8 @@ var Tree = function (_React$Component) {
 
 
   Tree.prototype.onKeyDown = function onKeyDown(e, treeNode) {
-    e.stopPropagation();
+    // e.stopPropagation();
+
     var props = this.props;
     var currentPos = treeNode.props.pos;
     var currentIndex = currentPos.substr(currentPos.lastIndexOf('-') + 1);
@@ -560,6 +561,7 @@ var Tree = function (_React$Component) {
     } else if (e.keyCode == _tinperBeeCore.KeyCode.ENTER) {
       this.onDoubleClick(treeNode);
     }
+    this.props.keyFun && this.props.keyFun(e, treeNode);
     // e.preventDefault();
   };
 

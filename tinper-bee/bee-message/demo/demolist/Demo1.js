@@ -12,8 +12,7 @@ import Button from 'bee-button';
 import Message from '../../src';
 
  const info = function () {
-   let aa = Message.create({content: 'This is a Info message', color: 'info', duration: null});
-
+   Message.create({content: 'This is a Info message', color: 'info'});
  };
  const danger = function () {
    Message.create({content: 'This is a danger message', color: 'danger'});

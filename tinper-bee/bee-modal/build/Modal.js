@@ -49,10 +49,6 @@ var _isOverflowing2 = _interopRequireDefault(_isOverflowing);
 
 var _tinperBeeCore = require('tinper-bee-core');
 
-var _beeDnd = require('bee-dnd');
-
-var _beeDnd2 = _interopRequireDefault(_beeDnd);
-
 var _beeTransition = require('bee-transition');
 
 var _ModalBody = require('./ModalBody');

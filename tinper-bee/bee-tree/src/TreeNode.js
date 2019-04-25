@@ -453,7 +453,10 @@ class TreeNode extends React.Component {
       );
     };
 
-    const liProps = {};
+    let liProps = {};
+    if(props.liAttr){
+      liProps = Object.assign({},props.liAttr);
+    }
     if (props.draggable) {
       liProps.onDragEnter = this.onDragEnter;
       liProps.onDragOver = this.onDragOver;
