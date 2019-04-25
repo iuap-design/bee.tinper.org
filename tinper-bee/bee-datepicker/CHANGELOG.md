@@ -1,3 +1,13 @@
+<a name="2.0.29"></a>
+## [2.0.29](https://github.com/tinper-bee/bee-datepicker/compare/v2.0.28...v2.0.29) (2019-04-25)
+
+
+### Features
+
+* **bee-datepicker:** datepicker formate支持传入数组 ([32dc1b4](https://github.com/tinper-bee/bee-datepicker/commit/32dc1b4))
+
+
+
 <a name="2.0.28"></a>
 ## [2.0.28](https://github.com/tinper-bee/bee-datepicker/compare/v2.0.27...v2.0.28) (2019-04-23)
 

@@ -224,7 +224,9 @@ var ModalDialog = function (_React$Component) {
         children = _props.children,
         draggable = _props.draggable,
         resizable = _props.resizable,
-        props = _objectWithoutProperties(_props, ['dialogClassName', 'className', 'clsPrefix', 'size', 'style', 'contentStyle', 'children', 'draggable', 'resizable']);
+        minHeight = _props.minHeight,
+        minWidth = _props.minWidth,
+        props = _objectWithoutProperties(_props, ['dialogClassName', 'className', 'clsPrefix', 'size', 'style', 'contentStyle', 'children', 'draggable', 'resizable', 'minHeight', 'minWidth']);
 
     var _state = this.state,
         original = _state.original,
@@ -279,8 +281,8 @@ var ModalDialog = function (_React$Component) {
               onResizeStart: this.onResizeStart,
               onResize: this.onResize,
               onResizeStop: this.onResizeStop,
-              minWidth: this.handleWH(this.props.minWidth),
-              minHeight: this.handleWH(this.props.minHeight),
+              minWidth: this.handleWH(minWidth),
+              minHeight: this.handleWH(minHeight),
               maxWidth: this.handleWH(maxWidth),
               maxHeight: this.handleWH(maxHeight)
             },

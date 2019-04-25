@@ -32,6 +32,7 @@ import 'bee-search-panel/build/SearchPanel.css';
 |onPanelChangeEnd|显示或隐藏结束回调|function|-|
 |onChange|点击显示或隐藏回调|function|-|
 |showOperation|是否显示 查询，清空操作按钮|bool|-|
+|locale|多语言设置|object|-|
 
 ## 注意事项
 

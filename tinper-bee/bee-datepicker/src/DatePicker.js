@@ -29,10 +29,19 @@ class DatePicker extends Component {
       type: "month",
       value: props.value || props.defaultValue || moment.Moment,
       open: props.open||false,
-      inputValue:(props.value&&props.value.format(props.format)) || (props.defaultValue&&props.defaultValue.format(props.format)) || '',
+      inputValue:(props.value&&this.getValue(props.value)) || (props.defaultValue&&this.getValue(props.defaultValue)) || '',
       showClose:false
     };
 
+  }
+  
+  getValue = value =>{
+    let { format } = this.props;
+    if(typeof format == 'string'){
+      return value.format(format)
+    }else{
+      return value.format(format[0])
+    }
   }
 
   onChange = value => {
@@ -58,7 +67,7 @@ class DatePicker extends Component {
             open:false
           });
           let v = this.state.value;
-          this.props.onOpenChange(false,v, (v && v.format(this.props.format)) || '');
+          this.props.onOpenChange(false,v, (v && this.getValue(v)) || '');
           ReactDOM.findDOMNode(this.outInput).focus();// 按esc时候焦点回到input输入框
         }
         this.props.onKeyDown&&this.props.onKeyDown(e);
@@ -79,7 +88,7 @@ class DatePicker extends Component {
         }
       }); 
       const value = self.state.value;
-      props.onOpenChange(open,value, (value && value.format(props.format)) || '');
+      props.onOpenChange(open,value, (value && this.getValue(value)) || '');
       if(open){
         setTimeout(()=>{
           self.inputFocus()
@@ -105,15 +114,15 @@ class DatePicker extends Component {
   }
   handleCalendarChange = (value) => {
       const props = this.props;
-      this.setState({ value: value,inputValue:(value && value.format(props.format)) || '' });
-      //props.onChange(value, (value && value.format(props.format)) || '');
+      this.setState({ value: value,inputValue:(value && this.getValue(value)) || '' });
+      //props.onChange(value, (value && this.getValue(value)) || '');
   }
   handleChange = value => {
     const props = this.props;
-    this.setState({ value,inputValue:(value && value.format(props.format)) || '' });
+    this.setState({ value,inputValue:(value && this.getValue(value)) || '' });
     if(timerDatePicker){
       clearTimeout(this.timerout);
-      props.onChange(value, (value && value.format(props.format)) || '');
+      props.onChange(value, (value && this.getValue(value)) || '');
       timerDatePicker=false;
       this.timerout = window.setTimeout(()=>{
         timerDatePicker=true
@@ -127,7 +136,7 @@ class DatePicker extends Component {
     if(props.keyboardInput){
       props.onClick&&props.onClick(e.nativeEvent,value||null,this.state.inputValue);
     }else{
-      props.onClick&&props.onClick(e.nativeEvent,value||null,(value && value.format(props.format)) || '');
+      props.onClick&&props.onClick(e.nativeEvent,value||null,(value && this.getValue(value)) || '');
     }
   }
   inputChange = (value,e) => {
@@ -140,7 +149,7 @@ class DatePicker extends Component {
         value:moment(value,this.props.format)
       });
       value = moment(value,this.props.format);
-      this.props.onChange(value, (value && value.format(this.props.format)) || '');
+      this.props.onChange(value, (value && this.getValue(value)) || '');
     }else{
       this.props.onChange(null,value);
     }
@@ -168,7 +177,7 @@ class DatePicker extends Component {
           value:moment(value,this.props.format)
         });
         value = moment(value,this.props.format);
-        this.props.onChange(value, (value && value.format(this.props.format)) || '');
+        this.props.onChange(value, (value && this.getValue(value)) || '');
       }else{
         this.props.onChange(null,value);
       }
@@ -197,7 +206,7 @@ class DatePicker extends Component {
     this.setState({
       value:value
     })
-    this.props.onSelect&&this.props.onSelect(value, (value && value.format(this.props.format)) || '');
+    this.props.onSelect&&this.props.onSelect(value, (value && this.getValue(value)) || '');
     // ReactDOM.findDOMNode(this.outInput).focus()
   }
   render() {
@@ -236,7 +245,7 @@ class DatePicker extends Component {
       keyboardInputProps.value=state.inputValue;
     }else{
       keyboardInputProps.readOnly=true;
-      keyboardInputProps.value=(value && value.format(props.format)) || ""
+      keyboardInputProps.value=(value && this.getValue(value)) || ""
     }
     let classes = classnames(props.className, "datepicker-container");
     return (
