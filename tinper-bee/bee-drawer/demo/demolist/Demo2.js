@@ -69,7 +69,6 @@ class Demo2 extends Component {
     }
     render () {
         let { left,right,top,down } = this.state;
-        console.log(this.state)
         return (
             <div className="demoPadding demo2">
                 <div className="btnc">  
