@@ -83,9 +83,7 @@ var propTypes = {
      * @veIgnore
      */
     className: _propTypes2["default"].string,
-
-    tagClick: _propTypes2["default"].func,
-    iconClick: _propTypes2["default"].func
+    tagClick: _propTypes2["default"].func
 };
 
 var defaultProps = {
@@ -161,8 +159,7 @@ var Tag = function (_Component) {
         if (deleted) {
             clsObj[clsPrefix + '-delete'] = deleted;
         }
-
-        // 选择标签选中时，改变标签当前状态
+        // "选择标签"选中时，改变标签的样式，单独写了一个selected类
         if (this.props.select == true) {
             if (this.state.selected) {
                 clsObj[clsPrefix + '-selected'] = true;

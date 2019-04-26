@@ -13,6 +13,7 @@
   cursor: default;
   text-decoration: none;
   text-align: center;
+  padding-top: 0;
   padding-left: 8px;
   padding-right: 8px;
   border-radius: 3px;
@@ -131,8 +132,9 @@
   background-color: #E0F7FA;
   border: 1px rgb(0,188,212) solid; }
 
-.demoPadding tag {
-  margin: auto 5px; }
+.demoPadding .u-tag {
+  margin: auto 5px;
+  padding-top: 0; }
 
 .demoPadding .divider {
   margin: 6px 0;

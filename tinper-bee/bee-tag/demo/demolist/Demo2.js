@@ -1,7 +1,7 @@
 /**
 *
 * @title 语意色标签
-* @description 表示提示信息的标签
+* @description 表示提示信息的标签。
 * 
 */
 import React, { Component } from 'react';

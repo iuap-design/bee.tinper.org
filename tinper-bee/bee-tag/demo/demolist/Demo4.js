@@ -1,7 +1,7 @@
 /**
 *
 * @title 可删除标签
-* @description 用户可以手动删除的标签
+* @description 用户可以手动删除的标签。
 *
 */
 import React, { Component } from 'react';

@@ -1,21 +1,22 @@
 /* FormGroup */
 /*  Navlayout  */
 .u-tag {
+  position: relative;
   display: inline-block;
   cursor: default;
   text-align: center;
-  line-height: 18px;
+  line-height: 20px;
   vertical-align: middle;
-  max-width: 108px;
+  max-width: 150px;
   overflow: hidden;
   outline: none;
   cursor: default;
   text-decoration: none;
   text-align: center;
-  vertical-align: middle;
-  padding: 1px 8px 1px 8px;
+  padding-top: 0;
+  padding-left: 8px;
+  padding-right: 8px;
   border-radius: 3px;
-  height: 20px;
   font-weight: 400;
   font-size: 12px;
   margin-right: 23px; }
@@ -29,8 +30,7 @@
 
 .u-tag-border {
   color: white;
-  border: 1px solid #A5ADBA;
-  background: #F7F9FB; }
+  border: 1px solid #A5ADBA; }
 
 .u-tag-dark {
   color: #FFFFFF;
@@ -68,7 +68,9 @@
 
 .u-tag-delete {
   color: #212121;
-  border: 1px solid #A5ADBA; }
+  border: 1px solid #A5ADBA;
+  background-color: #F7F9FB;
+  cursor: pointer; }
   .u-tag-delete .uf {
     font-size: 12px;
     padding-right: 0; }
@@ -90,16 +92,6 @@
     background: #505F79;
     color: white; }
 
-.u-tag.u-tag-dark {
-  color: #FFFFFF;
-  background-color: rgb(97,97,97);
-  border: 1px rgb(97,97,97) solid; }
-
-.u-tag.u-tag-primary {
-  color: #FFFFFF;
-  background-color: rgb(245, 60, 50);
-  border: 1px rgb(245, 60, 50) solid; }
-
 .u-tag.u-tag-success {
   color: #FFFFFF;
   background-color: rgb(76,175,80);
@@ -120,32 +112,22 @@
   background-color: rgb(0,188,212);
   border: 1px rgb(0,188,212) solid; }
 
-.u-tag-border.u-tag-dark {
-  color: rgb(97,97,97);
-  background-color: #DADEE4;
-  border: 1px rgb(97,97,97) solid; }
-
-.u-tag-border.u-tag-primary {
-  color: rgb(245, 60, 50);
-  background-color: #f0c8c8;
-  border: 1px rgb(245, 60, 50) solid; }
-
 .u-tag-border.u-tag-success {
   color: rgb(76,175,80);
-  background-color: #E8F5E9;
+  background-color: #F1F8E9;
   border: 1px rgb(76,175,80) solid; }
 
 .u-tag-border.u-tag-warning {
   color: rgb(255,152,0);
-  background-color: #FFF3E0;
+  background-color: #FFF8E1;
   border: 1px rgb(255,152,0) solid; }
 
 .u-tag-border.u-tag-danger {
   color: rgb(244,67,54);
-  background-color: #e6d0d3;
+  background-color: #FFEBEE;
   border: 1px rgb(244,67,54) solid; }
 
 .u-tag-border.u-tag-info {
   color: rgb(0,188,212);
-  background-color: #d1dde6;
+  background-color: #E0F7FA;
   border: 1px rgb(0,188,212) solid; }

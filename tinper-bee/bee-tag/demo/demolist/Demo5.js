@@ -1,7 +1,7 @@
 /**
 *
 * @title 可选标签
-* @description 可以表示选中和未选中两种状态的标签
+* @description 可以表示选中和未选中两种状态的标签。
 *
 */
 import React, { Component } from 'react';
