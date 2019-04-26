@@ -1383,6 +1383,7 @@ class Select extends React.Component {
         ref={this.saveSelectTriggerRef}
         clsPrefix={`${props.clsPrefix}-dropdown`}
         menuItemSelectedIcon={props.menuItemSelectedIcon}
+        popData={props.popData}
       >
         <div
           id={props.id}

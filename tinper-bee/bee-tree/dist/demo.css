@@ -114,7 +114,7 @@
     color: #212121;
     transition: all 0.3s ease; }
     .u-tree li a.u-tree-node-content-wrapper {
-      width: calc(100% - 18px); }
+      width: calc(100% - 30px); }
   .u-tree li a:hover {
     background-color: rgb(235, 236, 240); }
   .u-tree li a.u-tree-node-selected {

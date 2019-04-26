@@ -82,7 +82,7 @@ var DatePicker = function (_Component) {
       type: "month",
       value: props.value || props.defaultValue || _moment2["default"].Moment,
       open: props.open || false,
-      inputValue: props.value && props.value.format(props.format) || props.defaultValue && props.defaultValue.format(props.format) || '',
+      inputValue: props.value && _this.getValue(props.value) || props.defaultValue && _this.getValue(props.defaultValue) || '',
       showClose: false
     };
 
@@ -143,7 +143,7 @@ var DatePicker = function (_Component) {
       keyboardInputProps.value = state.inputValue;
     } else {
       keyboardInputProps.readOnly = true;
-      keyboardInputProps.value = value && value.format(props.format) || "";
+      keyboardInputProps.value = value && this.getValue(value) || "";
     }
     var classes = (0, _classnames2["default"])(props.className, "datepicker-container");
     return _react2["default"].createElement(
@@ -207,6 +207,16 @@ var DatePicker = function (_Component) {
 var _initialiseProps = function _initialiseProps() {
   var _this3 = this;
 
+  this.getValue = function (value) {
+    var format = _this3.props.format;
+
+    if (typeof format == 'string') {
+      return value.format(format);
+    } else {
+      return value.format(format[0]);
+    }
+  };
+
   this.onChange = function (value) {
     var props = _this3.props;
 
@@ -230,7 +240,7 @@ var _initialiseProps = function _initialiseProps() {
             open: false
           });
           var v = _this3.state.value;
-          _this3.props.onOpenChange(false, v, v && v.format(_this3.props.format) || '');
+          _this3.props.onOpenChange(false, v, v && _this3.getValue(v) || '');
           _reactDom2["default"].findDOMNode(_this3.outInput).focus(); // 按esc时候焦点回到input输入框
         }
         _this3.props.onKeyDown && _this3.props.onKeyDown(e);
@@ -251,7 +261,7 @@ var _initialiseProps = function _initialiseProps() {
       }
     });
     var value = self.state.value;
-    props.onOpenChange(open, value, value && value.format(props.format) || '');
+    props.onOpenChange(open, value, value && _this3.getValue(value) || '');
     if (open) {
       setTimeout(function () {
         self.inputFocus();
@@ -261,16 +271,16 @@ var _initialiseProps = function _initialiseProps() {
 
   this.handleCalendarChange = function (value) {
     var props = _this3.props;
-    _this3.setState({ value: value, inputValue: value && value.format(props.format) || '' });
-    //props.onChange(value, (value && value.format(props.format)) || '');
+    _this3.setState({ value: value, inputValue: value && _this3.getValue(value) || '' });
+    //props.onChange(value, (value && this.getValue(value)) || '');
   };
 
   this.handleChange = function (value) {
     var props = _this3.props;
-    _this3.setState({ value: value, inputValue: value && value.format(props.format) || '' });
+    _this3.setState({ value: value, inputValue: value && _this3.getValue(value) || '' });
     if (timerDatePicker) {
       clearTimeout(_this3.timerout);
-      props.onChange(value, value && value.format(props.format) || '');
+      props.onChange(value, value && _this3.getValue(value) || '');
       timerDatePicker = false;
       _this3.timerout = window.setTimeout(function () {
         timerDatePicker = true;
@@ -285,7 +295,7 @@ var _initialiseProps = function _initialiseProps() {
     if (props.keyboardInput) {
       props.onClick && props.onClick(e.nativeEvent, value || null, _this3.state.inputValue);
     } else {
-      props.onClick && props.onClick(e.nativeEvent, value || null, value && value.format(props.format) || '');
+      props.onClick && props.onClick(e.nativeEvent, value || null, value && _this3.getValue(value) || '');
     }
   };
 
@@ -299,7 +309,7 @@ var _initialiseProps = function _initialiseProps() {
         value: (0, _moment2["default"])(value, _this3.props.format)
       });
       value = (0, _moment2["default"])(value, _this3.props.format);
-      _this3.props.onChange(value, value && value.format(_this3.props.format) || '');
+      _this3.props.onChange(value, value && _this3.getValue(value) || '');
     } else {
       _this3.props.onChange(null, value);
     }
@@ -330,7 +340,7 @@ var _initialiseProps = function _initialiseProps() {
           value: (0, _moment2["default"])(value, _this3.props.format)
         });
         value = (0, _moment2["default"])(value, _this3.props.format);
-        _this3.props.onChange(value, value && value.format(_this3.props.format) || '');
+        _this3.props.onChange(value, value && _this3.getValue(value) || '');
       } else {
         _this3.props.onChange(null, value);
       }
@@ -363,7 +373,7 @@ var _initialiseProps = function _initialiseProps() {
     _this3.setState({
       value: value
     });
-    _this3.props.onSelect && _this3.props.onSelect(value, value && value.format(_this3.props.format) || '');
+    _this3.props.onSelect && _this3.props.onSelect(value, value && _this3.getValue(value) || '');
     // ReactDOM.findDOMNode(this.outInput).focus()
   };
 };

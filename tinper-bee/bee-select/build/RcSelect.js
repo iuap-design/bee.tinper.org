@@ -272,7 +272,8 @@ var Select = function (_React$Component) {
         showAction: props.showAction,
         ref: this.saveSelectTriggerRef,
         clsPrefix: props.clsPrefix + '-dropdown',
-        menuItemSelectedIcon: props.menuItemSelectedIcon
+        menuItemSelectedIcon: props.menuItemSelectedIcon,
+        popData: props.popData
       },
       _react2["default"].createElement(
         'div',

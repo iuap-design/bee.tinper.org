@@ -89,12 +89,6 @@
 
         ]
     },
-    "bee-complex-grid": {
-        "name": "复杂表格",
-        "versions": [
-
-        ]
-    },
     "bee-tree": {
         "name": "树形控件",
         "versions": [
@@ -265,12 +259,6 @@
     },
     "bee-cascader": {
         "name": "级联菜单",
-        "versions": [
-
-        ]
-    },
-    "bee-city-select": {
-        "name": "城市选择",
         "versions": [
 
         ]
