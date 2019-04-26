@@ -54,9 +54,8 @@
     vertical-align: unset !important;
 }
 
-.nav .nav-left .nav-search input::-webkit-input-placeholde {
-    color: white;
-    font-size: 14px;
+.nav .nav-left .nav-search #componentSearch::-webkit-input-placeholder {
+    font-size: 14px!important;
 }
 
 .nav .nav-left .nav-search .u-form-control-affix-wrapper {
