@@ -1,6 +1,5 @@
 const download = require('download');
 const fs = require('fs-extra');
-let newComponent = require('../../static/new.json'); //有更新的组件
 let components = require('../../static/components.json');
 
 
@@ -30,17 +29,6 @@ let writeDemo = (item, tag) => {
                         }
 
                         console.log(`😀写入 ${filePath} 成功 `);
-                    })
-                    .then(() => {
-                        newComponent.push(item)
-                        fs.writeJson('./static/new.json', newComponent)
-                            .then(() => {
-                                console.log('😀new.json文件写入成功!')
-                            })
-                            .catch(err => {
-                                console.log('😀new.json文件写入失败!')
-                                console.error(err)
-                            })
                     })
                     .catch(() => {
                         fs.appendFile('./static/error.txt', `请求 ${downPath} 失败 \n`);

@@ -5,7 +5,7 @@ const marked = require("marked");
 let componentsSource = require('../../static/componentsSource.json');
 let components = require('../../static/components.json');
 let sidebar = require('../../static/sidebar.json');
-
+const newComReg = /- (.*)@/g;
 
 const auth = {
     token: '',
@@ -71,6 +71,7 @@ gh.list(auth, 'iuap-design', 'tinper-bee', (err,list)=>{
             changesArray.push(change);
             menus[item.tag_name] = {};
         });
+        
         sidebar['更新日志'].changeLog = changesArray;
         sidebar['更新日志'].menus = menus;
         sidebar['更新日志'].version = latestVersion;
@@ -81,6 +82,23 @@ gh.list(auth, 'iuap-design', 'tinper-bee', (err,list)=>{
             })
             .catch(err => {
                 console.log(`❌json文件写入失败! 更新日志 出错 的 changelog`);
+                console.error(err)
+            })
+
+        //写入new.json
+
+        let latestRelease = list[0].body;
+        let newAry=latestRelease.match(newComReg);
+        let newJsonAry = []
+        newAry.forEach(item=>{
+            newJsonAry.push(item.replace('- ','').replace('@',''))
+        })
+        fs.writeJson('./static/new.json', newJsonAry)
+            .then(() => {
+                console.log('😀✌️ ✌️ ✌️ ✌️ ✌️ ✌️ ✌️ ✌️ ✌️ ✌️ ✌️ ✌️ ✌️ ✌️ ✌️ new.json文件写入成功!')
+            })
+            .catch(err => {
+                console.log('😀new.json文件写入失败!')
                 console.error(err)
             })
     }
