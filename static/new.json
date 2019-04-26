@@ -1,1 +1,21 @@
-["bee-popover","bee-search-panel","bee-search-panel","bee-tree"]
+[   "bee-popover",
+    "bee-search-panel",
+    "bee-tree",
+    "bee-drawer",
+    "bee-affix",
+    "bee-carousel",
+    "bee-table",
+    "bee-switch",
+    "bee-select",
+    "bee-timepicker",
+    "bee-datepicker", 
+    "bee-anchor",
+    "bee-overlay",
+    "bee-modal",
+    "bee-tabs",
+    "bee-radio",
+    "bee-colorpicker",
+    "bee-transfer",
+    "bee-pagination",
+    "bee-message"
+]
