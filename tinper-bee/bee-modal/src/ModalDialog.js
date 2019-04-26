@@ -161,7 +161,7 @@ class ModalDialog extends React.Component {
   }
 
   render() {
-    const { dialogClassName, className, clsPrefix, size, style, contentStyle, children,draggable, resizable, ...props } =
+    const { dialogClassName, className, clsPrefix, size, style, contentStyle, children,draggable, resizable, minHeight, minWidth, ...props } =
       this.props;
     
     let {
@@ -205,6 +205,7 @@ class ModalDialog extends React.Component {
             onStart={this.onStart} 
             onStop={this.onStop}
             position={original}
+            list={[]}
           >
             {
               resizable ? (
@@ -217,8 +218,8 @@ class ModalDialog extends React.Component {
                   onResizeStart={this.onResizeStart}
                   onResize={this.onResize}
                   onResizeStop={this.onResizeStop}
-                  minWidth={this.handleWH(this.props.minWidth)}
-                  minHeight={this.handleWH(this.props.minHeight)}
+                  minWidth={this.handleWH(minWidth)}
+                  minHeight={this.handleWH(minHeight)}
                   maxWidth={this.handleWH(maxWidth)}
                   maxHeight={this.handleWH(maxHeight)}
                 >

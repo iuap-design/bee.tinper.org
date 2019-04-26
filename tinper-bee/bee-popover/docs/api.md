@@ -23,7 +23,7 @@ import 'bee-popover/build/Popover.css';
 |参数|说明|类型|默认值|
 |:---|:-----|:----|:------|
 |id|标示弹出层|string/number|-|
-|placement|弹出位置|top/left/right/bottom|right|
+|placement|弹出位置|可选 `top` `left` `right` `bottom` `topLeft` `topRight` `bottomLeft` `bottomRight` `leftTop` `leftBottom` `rightTop` `rightBottom`|`right`|
 |positionTop|弹出框向上偏移量|string/number|-|
 |positionLeft|弹出框向左偏移量|string/number|-|
 |arrowOffsetTop|弹出框箭头向上偏移量|string/number|-|

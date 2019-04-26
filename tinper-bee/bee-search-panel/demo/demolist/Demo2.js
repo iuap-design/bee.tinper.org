@@ -85,7 +85,7 @@ class Demo2 extends Component {
                 onSearch={this.search}
                 onReset={this.clear}
                 expanded={this.state.expanded}
-                onChange={this.onChange}
+                onChange={this.onChange} 
                 onPanelChangeStart={status => {
                     console.log(status, "start")
                 }}

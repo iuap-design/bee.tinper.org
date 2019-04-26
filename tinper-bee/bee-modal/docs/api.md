@@ -33,7 +33,7 @@ import 'bee-modal/build/Modal.css';
 |dialogClassName|传递给模态框的样式| class |-|
 |autoFocus|自动设置焦点|boolean|true|
 |enforceFocus|防止打开时焦点离开模态框|boolean|-|
-|show|是否打开模态框|string|-|
+|show|是否打开模态框|boolean|-|
 |width|模态框宽度，如只传数字则会拼接默认单位 `px`。例如 `100px/100/100%/100rem/100em`|string/number|-|
 |onHide|关闭时的钩子函数|function|-|
 |size|模态框尺寸|sm/lg/xlg|-|

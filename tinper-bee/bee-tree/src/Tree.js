@@ -512,7 +512,8 @@ onExpand(treeNode,keyType) {
   }
   // all keyboard events callbacks run from here at first
   onKeyDown(e,treeNode) {
-    e.stopPropagation();
+    // e.stopPropagation();
+   
     const props = this.props;
     const currentPos = treeNode.props.pos;
     const currentIndex = currentPos.substr(currentPos.lastIndexOf('-')+1);
@@ -533,8 +534,9 @@ onExpand(treeNode,keyType) {
     }else if(e.keyCode == KeyCode.ENTER){
       this.onDoubleClick(treeNode);
     }
+     this.props.keyFun && this.props.keyFun(e,treeNode);
     // e.preventDefault();
-   
+    
   }
 
   _focusDom(selectKeyDomPos,targetDom){

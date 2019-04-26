@@ -1,3 +1,13 @@
+<a name="2.0.11"></a>
+## [2.0.11](https://github.com/tinper-bee/bee-select/compare/v2.0.10...v2.0.11) (2019-04-25)
+
+
+### Features
+
+* **bee-select:** 新增下拉框popData自定义属性 ([3a9fed7](https://github.com/tinper-bee/bee-select/commit/3a9fed7))
+
+
+
 <a name="2.0.10"></a>
 ## [2.0.10](https://github.com/tinper-bee/bee-select/compare/v2.0.9...v2.0.10) (2019-04-23)
 

@@ -53,6 +53,7 @@ import 'bee-select/build/Select.css';
 |autofocus|设置是否默认打开，从属性需配合onFocus、onBlur 。|bool|false|
 |onKeyDown|按下键盘的回调|func|-|
 |Children|必填，Option组件/OptGroup组件|node|-|
+|popData|下拉框自定义属性,例如 `{"data-name":"lucian","data-sex":"man"}`，属性名不能和其它属性名重复，否则会被覆盖|Object|-|
 
 
 

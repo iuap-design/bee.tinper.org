@@ -1,3 +1,4 @@
+import React from 'react';
 import Modal, { destroyFns } from './Modal';
 import confirm from './confirm';
 import Icon from 'bee-icon';

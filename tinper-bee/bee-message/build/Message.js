@@ -4,8 +4,6 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var _react = require('react');
@@ -23,6 +21,7 @@ var _classnames2 = _interopRequireDefault(_classnames);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var defaultDuration = 1.5;
+var newDuration = void 0;
 var defaultTop = 0;
 var defaultBottom = 48;
 var bottom = 90;
@@ -110,6 +109,25 @@ function getMessageInstance() {
         callback(messageInstance);
         return;
     }
+    switch (position) {
+        case 'top':
+            positionObj[position].notificationStyle.top = defaultTop;
+            break;
+        case 'bottom':
+            positionObj[position].notificationStyle.bottom = defaultBottom;
+            break;
+        case 'bottomRight':
+            positionObj[position].notificationStyle.bottom = bottom;
+            break;
+        case 'bottomLeft':
+            positionObj[position].notificationStyle.bottom = bottom;
+            break;
+        default:
+            break;
+    }
+    if (position !== 'top' && position !== 'bottom') {
+        positionObj[position].messageStyle.width = width;
+    }
     var style = positionObj[position].notificationStyle;
     var instanceObj = {
         clsPrefix: clsPrefix,
@@ -145,7 +163,6 @@ function notice(content, duration, type, onClose, position, style, keyboard, onE
     }[type];
 
     var positionStyle = positionObj[position].messageStyle;
-
     getMessageInstance(position, function (instance) {
         instance.notice({
             key: key,
@@ -181,8 +198,12 @@ function notice(content, duration, type, onClose, position, style, keyboard, onE
 
 exports["default"] = {
     create: function create(obj) {
+        if (newDuration) {
+            //如果在config方法里设置了duration
+            obj.duration = newDuration;
+        }
         var content = obj.content || '';
-        var duration = _typeof(obj.duration) == undefined ? defaultDuration : obj.duration;
+        var duration = typeof obj.duration == 'undefined' ? defaultDuration : obj.duration;
         var color = obj.color || 'dark';
         var onClose = obj.onClose || noop;
         var position = obj.position || "top";
@@ -196,6 +217,7 @@ exports["default"] = {
         }
         if (options.duration !== undefined) {
             defaultDuration = options.duration;
+            newDuration = defaultDuration;
         }
         if (options.clsPrefix !== undefined) {
             clsPrefix = options.clsPrefix;
@@ -207,7 +229,7 @@ exports["default"] = {
             bottom = options.bottom;
         }
         if (options.width !== undefined) {
-            bottom = options.width;
+            width = options.width;
         }
     },
     destroy: function destroy() {

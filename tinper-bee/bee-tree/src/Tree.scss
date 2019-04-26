@@ -163,7 +163,7 @@ $treePrefixCls : "u-tree";
     transition: all 0.3s ease;
     // a 标签hover宽度调整
    &.u-tree-node-content-wrapper {
-      width: calc(100% - 18px);
+      width: calc(100% - 40px);
     }
    
   }

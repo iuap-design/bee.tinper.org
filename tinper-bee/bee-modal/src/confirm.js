@@ -5,12 +5,6 @@ import Modal,{ destroyFns } from './Modal';
 import Button from 'bee-button';
 import Icon from 'bee-icon';
 
-// class ConfirmDialogProps extends Modal.ModalFuncProps {
-//     onHide = () => {};
-//     close = (...args) => {};
-//     autoFocusButton = null | 'ok' | 'cancel';
-// }
-
 const IS_REACT_16 = !!ReactDOM.createPortal;
 
 const ConfirmDialog = (props) => {
@@ -28,11 +22,6 @@ const ConfirmDialog = (props) => {
       cancelButtonProps,
       iconType = 'uf-qm-c',
     } = props;
-    // warning(
-    //   !('iconType' in props),
-    //   'Modal',
-    //   `The property 'iconType' is deprecated. Use the property 'icon' instead.`,
-    // );
   
     // 支持传入{ icon: null }来隐藏`Modal.confirm`默认的Icon
     const icon = props.icon === undefined ? iconType : props.icon;
@@ -71,9 +60,7 @@ const ConfirmDialog = (props) => {
 
     return (
       <Modal
-        // size="sm"
         width={width}
-        prefixCls={prefixCls}
         className={classString}
         show = {show}
         onHide = {onHide}
