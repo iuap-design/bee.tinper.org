@@ -2,13 +2,9 @@
 /*  Navlayout  */
 
 @charset "UTF-8";
-.demo1 {
-  float: left; }
-
 .stripes {
   width: 500px;
   height: 400px !important;
-  float: left;
   margin: 10px;
   background-size: 16px 16px;
   /* 控制条纹的大小 */
@@ -19,7 +15,6 @@
 
 
 .demo3 {
-  width: 2000px;
   height: 400px; }
   .demo3 .affix-container {
     width: 200px;
