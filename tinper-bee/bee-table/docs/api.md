@@ -374,6 +374,6 @@ const CheckboxRender = renderCheckbox(Checkbox, Icon);
 需要给expandedRowRender中返回的对象添加`style=\{{height: xxx}\}`,来使扩展后的固定列扩展成一样高度。
 
 
-> 当表格场景比较复杂时，可以使用[复杂表格ComplexGrid](http://bee.tinper.org/bee-complex-grid#bee-complex-grid)。ComplexGrid将常用的过滤、多选、分页、列交换、列拖拽等功能集成在一起。使用起来超级方便。
+> 当表格场景比较复杂时，可以使用[复杂表格ComplexGrid](https://design.yonyoucloud.com/tinper-acs/bee-complex-grid)。ComplexGrid将常用的过滤、多选、分页、列交换、列拖拽等功能集成在一起。使用起来超级方便。
 
 ## 更新日志
