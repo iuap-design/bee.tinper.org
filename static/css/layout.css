@@ -113,6 +113,23 @@ body::-webkit-scrollbar-thumb:window-inactive {
     line-height:37px;
 }
 
+/* 返回顶部按钮 */
+#upbtn{
+    position:fixed;
+    z-index:2015;
+    right:8px;
+    bottom:8px;
+    font-size:20px;
+    width:37px;
+    height:37px;
+    border-radius:18%;
+    box-shadow:0px 0px 5px #BDBDBD;
+    background:white;
+    line-height:37px;
+    display:inline-block;
+    text-align:center;
+}
+
 @media (max-width: 768px) {
     .docs .right-menus{
         display:none;
