@@ -1,3 +1,18 @@
+<a name="2.0.15"></a>
+## [2.0.15](https://github.com/tinper-bee/bee-search-panel/compare/v2.0.14...v2.0.15) (2019-04-26)
+
+
+
+<a name="2.0.14"></a>
+## [2.0.14](https://github.com/tinper-bee/bee-search-panel/compare/v2.0.13...v2.0.14) (2019-04-11)
+
+
+
+<a name="2.0.13"></a>
+## [2.0.13](https://github.com/tinper-bee/bee-search-panel/compare/v2.0.12...v2.0.13) (2019-04-09)
+
+
+
 <a name="2.0.12"></a>
 ## [2.0.12](https://github.com/tinper-bee/bee-search-panel/compare/v2.0.11...v2.0.12) (2019-04-08)
 

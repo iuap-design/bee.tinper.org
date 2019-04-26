@@ -212,12 +212,12 @@ var SearchPanel = function (_Component) {
                 _react2["default"].createElement(
                     'div',
                     { className: clsPrefix + "-header-oper" },
-                    this._HeadContainer || showOperation && expanded ? _react2["default"].createElement(
+                    (this._HeadContainer || expanded) && showOperation ? _react2["default"].createElement(
                         'span',
                         { className: 'header-oper-btn', role: 'button', onClick: this.reset },
                         resetName
                     ) : null,
-                    this._HeadContainer || showOperation && expanded ? _react2["default"].createElement(
+                    (this._HeadContainer || expanded) && showOperation ? _react2["default"].createElement(
                         'span',
                         { className: 'header-oper-btn primary', role: 'button', onClick: this.search },
                         searchName

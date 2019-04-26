@@ -17,7 +17,7 @@ const propTypes = {
     /**
      * Sets the direction the Popover is positioned towards.
      */
-    placement: PropTypes.oneOf(['top', 'right', 'bottom', 'left','topLeft', 'rightTop', 'bottomLeft', 'leftTop','topRight', 'rightBottom', 'bottomRight', 'leftBottom']),
+    placement: PropTypes.oneOf(["top", "right", "bottom", "left", "topLeft", "rightTop", "bottomLeft", "leftTop", "topRight", "rightBottom", "bottomRight", "leftBottom"]) ,
 
     /**
      * The "top" position value for the Popover.

@@ -139,8 +139,8 @@ class SearchPanel extends Component {
                     </div>
 
                     <div className={clsPrefix + "-header-oper"}>
-                        {(this._HeadContainer||(showOperation&&expanded)) ? <span className="header-oper-btn" role="button" onClick={this.reset}>{resetName}</span> : null}
-                        {(this._HeadContainer||(showOperation&&expanded)) ? <span className="header-oper-btn primary" role="button" onClick={this.search}>{searchName}</span> : null}
+                        {((this._HeadContainer||expanded)&&showOperation) ? <span className="header-oper-btn" role="button" onClick={this.reset}>{resetName}</span> : null}
+                        {((this._HeadContainer||expanded)&&showOperation) ? <span className="header-oper-btn primary" role="button" onClick={this.search}>{searchName}</span> : null}
                         <span
                             className="header-oper-btn"
                             role="button"
