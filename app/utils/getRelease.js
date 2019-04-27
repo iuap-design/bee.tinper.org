@@ -8,7 +8,7 @@ let sidebar = require('../../static/sidebar.json');
 const newComReg = /- (.*)@/g;
 
 const auth = {
-    token: '',
+    token: '8c8947739fd85de71740a175a03a83af9dafe0cd',
     user: 'liushaozhen'
 }
 
