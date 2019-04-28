@@ -20,6 +20,8 @@
     color: #424242;
     text-decoration: none;
     padding-left: 10px;
+    outline: none;
+    -moz-outline-style: none; 
 }
 .sidebar .menu-components .menu-group .menu-item a.doit-before::before {
     content: ' ';
