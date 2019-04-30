@@ -175,12 +175,14 @@
     }
    
     if(maskease.length!==0){
-        for(var i in maskease){
-            maskease[i].onclick=function() {
-            document.body.style.overflow = 'auto';
+        maskease.forEach(item=>{
+            item.addEventListener('touchmove',handle,false);//控制移动端页面不滚动
+            item.onclick=function() {
+                document.body.style.overflow = 'auto';
+                item.removeEventListener('touchmove',handle,false);//控制移动端页面不滚动
             }
-        }
-    }
+        })
+    } 
 
 
 //返回顶部按钮
