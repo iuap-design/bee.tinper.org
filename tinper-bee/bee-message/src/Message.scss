@@ -3,63 +3,71 @@
 @import "../node_modules/bee-icon/src/Icon.scss";
 
 $zIndex-message: 2000;
+$message-background: #f7f9fb;
+$message-content-padding: 11px 64px 11px 4px;
 .u-message {
     font-size: $message-font-size;
     position: fixed;
     z-index: $zIndex-message;
-    width: 100%;
-
+    &-topLeft, &-topRight, &-bottomLeft, &-bottomRight {
+      .u-message-notice-description-content{
+        min-width: 132px;
+      }
+    }
 
     &-notice {
-      position: absolute;
+      position: relative;
       padding: $message-padding;
-      @include shadow-3dp();
+      // @include shadow-3dp();
+      box-shadow:0 4px 12px rgba(20, 27, 53, .2);
+      border: 1px solid #DFE1E6;
+      border-radius: $border-radius-base;
+      box-sizing: border-box;
       background: $message-background;
       line-height: 1.5;
       overflow: hidden;
-      color: #fff;
+      color: $font-color-base;
       &-description {
-          font-size: 12px;
-          word-wrap: break-word;
-          vertical-align: middle;
+        font-size: 12px;
+        word-wrap: break-word;
+        vertical-align: middle;
         &-content {
+            min-width: 250px;
+            max-width: 610px;
+            display: inline-block;
             padding: $message-content-padding;
-            margin-left: 45px;
+            margin-left: 40px;
         }
         &-icon{
             position: absolute;
             top: 0;
             left: 0;
-            height: 100%;
-            width: 45px;
+            display: inline-block;
+            padding-left: 12px;
+            padding-right: 4px;
             text-align: center;
             background-color: #000;
             .uf {
-                font-size: 30px;
+                font-size: 24px;
+                line-height: 40px;
             }
         }
       }
 
-      &-closable {
-        padding-right: 20px;
-      }
-
       &-close {
         position: absolute;
-        right: 24px;
-        top: 8px;
+        right: 16px;
+        top: 13px;
         cursor: pointer;
         outline: none;
-        font-size: 30px;
+        font-size: 12px;
         font-weight: 700;
         line-height: 1;
         text-shadow: 0 1px 0 #fff;
-        filter: alpha(opacity=80);
-        opacity: .8;
         text-decoration: none;
 
-        &-x:after {
-          content: '×';
+        &-x .uf {
+          font-size: 12px;
         }
 
         &:hover {
@@ -71,71 +79,92 @@ $zIndex-message: 2000;
       }
     }
 
+    &-notice-dark {
+      background-color: #344563;
+      border-color: #344563;
+      color: #fff;
+      .u-message-notice-description-icon{
+          background-color: #344563;
+      }
+    }
+
     &-notice-light {
-          background-color: #fff;
-          color: $gray-darkest;
+          background-color: #f7f9fb;
+          border-color: #DFE1E6;
+          color: #54698D;
           .u-message-notice-description-icon{
-              background-color: $gray-lighter;
+              background-color: #f7f9fb;
+          }
+          .u-message-notice-description-content{
+              color: $font-color-base;
           }
      }
     &-notice-success {
            background-color: $brand-success;
            color: #fff;
+           border-color: $brand-success;
            .u-message-notice-description-icon{
-               background-color: $brand-success-active;
+               background-color: $brand-success;
            }
     }
     &-notice-danger {
             background-color: $brand-danger;
             color: #fff;
+            border-color: $brand-danger;
             .u-message-notice-description-icon{
-                background-color: $brand-danger-active;
+                background-color: $brand-danger;
             }
     }
      &-notice-info {
              background-color: $brand-info;
              color: #fff;
+             border-color: $brand-info;
              .u-message-notice-description-icon{
-                 background-color: $brand-info-active;
+                 background-color: $brand-info;
              }
     }
     &-notice-warning {
              background-color:$brand-warning;
              color: #fff;
+             border-color: $brand-warning;
              .u-message-notice-description-icon{
-                 background-color: $brand-warning-active;
+                 background-color: $brand-warning;
              }
     }
     &-notice-successlight {
            background-color: $brand-light-success;
            color: #000;
+           border-color: #42C556;
            .u-message-notice-description-icon{
-               background-color: $brand-success;
-               color: #fff;
+               background-color: $brand-light-success;
+               color: $brand-success;
            }
     }
     &-notice-dangerlight {
             background-color: $brand-light-danger;
             color: #000;
+            border-color: #FE8196;
             .u-message-notice-description-icon{
-                background-color: $brand-danger;
-                color: #fff;
+                background-color: $brand-light-danger;
+                color: $brand-danger;
             }
     }
      &-notice-infolight {
              background-color: $brand-light-info;
              color: #000;
+             border-color: #4DD0E1;
              .u-message-notice-description-icon{
-                 background-color: $brand-info;
-                 color: #fff;
+                 background-color: $brand-light-info;
+                 color: $brand-info;
              }
     }
     &-notice-warninglight {
              background-color: $brand-light-warning;
              color: #000;
+             border-color: #FA9B36;
              .u-message-notice-description-icon{
-                 background-color: $brand-warning;
-                 color: #fff;
+                 background-color: $brand-light-warning;
+                 color: $brand-warning;
              }
     }
 

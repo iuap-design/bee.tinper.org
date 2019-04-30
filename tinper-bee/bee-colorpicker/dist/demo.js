@@ -80,7 +80,7 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
 	
-	var Demo1 = __webpack_require__(429);var Demo2 = __webpack_require__(430);var Demo3 = __webpack_require__(431);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 取色板", "code": "/**\n*\n* @title 取色板\n* @description 提供预制色板的取色板组件\n*\n*/\nimport React, { Component } from 'react';\nimport { ColorPicker } from 'tinper-bee';\n\nclass Demo1 extends Component {\n    state = {\n        value : \"#E14C46\"\n    }\n\n    handleChange = (v) => {\n        console.log(\"选择的色彩信息 ：\" , v);\n        this.setState({\n            value: v.hex || ''\n        })\n    }\n    render () {\n        return (\n            <ColorPicker \n                label=\"颜色\"\n                placeholder=\"请输入十六进制色值\"\n                value={this.state.value} \n                onChange={this.handleChange}\n            />\n        )\n    }\n}\n", "desc": " 提供预制色板的取色板组件" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 设置必输项", "code": "/**\r\n*\r\n* @title 设置必输项\r\n* @description `required`参数设置是否必填\r\n*\r\n*/\r\nimport React, { Component } from 'react';\r\nimport { ColorPicker } from 'tinper-bee';\r\n\r\nclass Demo2 extends Component {\r\n    state = {\r\n        value : \"#E14C46\"\r\n    }\r\n\r\n    handleChange = (v) => {\r\n        console.log(\"选择的色彩信息 ：\" , v);\r\n        this.setState({\r\n            value: v.hex || ''\r\n        })\r\n    }\r\n    render () {\r\n        return (\r\n            <ColorPicker \r\n                className=\"demo2\"\r\n                placeholder=\"请输入十六进制色值\"\r\n                value={this.state.value} \r\n                onChange={this.handleChange}\r\n                label=\"颜色\"\r\n                required={true}\r\n            />\r\n        )\r\n    }\r\n}\r\n", "desc": " `required`参数设置是否必填" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 自动计算色值", "code": "/**\r\n*\r\n* @title 自动计算色值\r\n* @description 根据选中的颜色自动计算比其 浅一色度/深一色度 的色值，可应用于选择主色后，自动计算hover和active状态的色值\r\n*\r\n*/\r\nimport React, { Component } from 'react';\r\nimport { ColorPicker } from 'tinper-bee';\r\n\r\nclass Demo3 extends Component {\r\n    autoCalculate = (obj) => {\r\n        console.log(\"自动计算的色值对象 ：\",obj);\r\n    }\r\n\r\n    handleChange = (v) => {\r\n        console.log(\"选择的色彩信息 ：\" , v);\r\n    }\r\n    render () {\r\n        return (\r\n            <ColorPicker\r\n                className=\"demo2\"\r\n                label=\"颜色\"\r\n                placeholder=\"请输入十六进制色值\" \r\n                autoCalculate={this.autoCalculate}\r\n                onChange={this.handleChange}\r\n            />\r\n        )\r\n    }\r\n}\r\n", "desc": " 根据选中的颜色自动计算比其 浅一色度/深一色度 的色值，可应用于选择主色后，自动计算hover和active状态的色值" }];
+	var Demo1 = __webpack_require__(429);var Demo2 = __webpack_require__(430);var Demo3 = __webpack_require__(431);var Demo4 = __webpack_require__(432);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 取色板", "code": "/**\n*\n* @title 取色板\n* @description 提供预制色板的取色板组件\n*\n*/\nimport React, { Component } from 'react';\nimport { ColorPicker } from 'tinper-bee';\n\nclass Demo1 extends Component {\n    state = {\n        value : \"#E14C46\"\n    }\n\n    handleChange = (v) => {\n        console.log(\"选择的色彩信息 ：\" , v);\n        this.setState({\n            value: v.hex || ''\n        })\n    }\n    render () {\n        return (\n            <ColorPicker \n                label=\"颜色\"\n                placeholder=\"请输入十六进制色值\"\n                value={this.state.value} \n                onChange={this.handleChange}\n            />\n        )\n    }\n}\n", "desc": " 提供预制色板的取色板组件" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 设置必输项", "code": "/**\r\n*\r\n* @title 设置必输项\r\n* @description `required`参数设置是否必填\r\n*\r\n*/\r\nimport React, { Component } from 'react';\r\nimport { ColorPicker } from 'tinper-bee';\r\n\r\nclass Demo2 extends Component {\r\n    state = {\r\n        value : \"#E14C46\"\r\n    }\r\n\r\n    handleChange = (v) => {\r\n        console.log(\"选择的色彩信息 ：\" , v);\r\n        this.setState({\r\n            value: v.hex || ''\r\n        })\r\n    }\r\n    render () {\r\n        return (\r\n            <ColorPicker \r\n                className=\"demo2\"\r\n                placeholder=\"请输入十六进制色值\"\r\n                value={this.state.value} \r\n                onChange={this.handleChange}\r\n                label=\"颜色\"\r\n                required={true}\r\n            />\r\n        )\r\n    }\r\n}\r\n", "desc": " `required`参数设置是否必填" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 自动计算色值", "code": "/**\r\n*\r\n* @title 自动计算色值\r\n* @description 根据选中的颜色自动计算比其 浅一色度/深一色度 的色值，可应用于选择主色后，自动计算hover和active状态的色值\r\n*\r\n*/\r\nimport React, { Component } from 'react';\r\nimport { ColorPicker } from 'tinper-bee';\r\n\r\nclass Demo3 extends Component {\r\n    autoCalculate = (obj) => {\r\n        console.log(\"自动计算的色值对象 ：\",obj);\r\n    }\r\n\r\n    handleChange = (v) => {\r\n        console.log(\"选择的色彩信息 ：\" , v);\r\n    }\r\n    render () {\r\n        return (\r\n            <ColorPicker\r\n                className=\"demo2\"\r\n                label=\"颜色\"\r\n                placeholder=\"请输入十六进制色值\" \r\n                autoCalculate={this.autoCalculate}\r\n                onChange={this.handleChange}\r\n            />\r\n        )\r\n    }\r\n}\r\n", "desc": " 根据选中的颜色自动计算比其 浅一色度/深一色度 的色值，可应用于选择主色后，自动计算hover和active状态的色值" }, { "example": _react2['default'].createElement(Demo4, null), "title": " 不可用状态", "code": "/**\n*\n* @title 不可用状态\n* @description 添加 disabled 属性即可让取色板处于不可用状态\n*\n*/\nimport React, { Component } from 'react';\nimport { ColorPicker } from 'tinper-bee';\n\nclass Demo4 extends Component {\n    state = {\n        value : \"#E14C46\"\n    }\n\n    handleChange = (v) => {\n        console.log(\"选择的色彩信息 ：\" , v);\n        this.setState({\n            value: v.hex || ''\n        })\n    }\n    render () {\n        return (\n            <ColorPicker \n                disabled\n                label=\"颜色\"\n                placeholder=\"请输入十六进制色值\"\n                value={this.state.value} \n                onChange={this.handleChange}\n            />\n        )\n    }\n}\n", "desc": " 添加 disabled 属性即可让取色板处于不可用状态" }];
 	
 	var Demo = function (_Component) {
 	    _inherits(Demo, _Component);
@@ -16512,6 +16512,7 @@
 	    className: _propTypes2['default'].string,
 	    placeholder: _propTypes2['default'].string,
 	    required: _propTypes2['default'].bool,
+	    disabled: _propTypes2['default'].bool,
 	    autoCalculate: _propTypes2['default'].func,
 	    onChange: _propTypes2['default'].func
 	};
@@ -16521,7 +16522,8 @@
 	    label: "",
 	    placeholder: "",
 	    required: false,
-	    autoCalculate: false
+	    autoCalculate: false,
+	    disabled: false
 	}, _defineProperty(_defaultProps, 'autoCalculate', function autoCalculate() {}), _defineProperty(_defaultProps, 'onChange', function onChange() {}), _defaultProps);
 	
 	var initRgb = _colors2['default']['red'].rgbArr[6] ? 'rgb(' + _colors2['default']['red'].rgbArr[6] + ')' : '';
@@ -16888,7 +16890,8 @@
 	            required = _props.required,
 	            placeholder = _props.placeholder,
 	            className = _props.className,
-	            others = _objectWithoutProperties(_props, ['clsPrefix', 'onChange', 'value', 'label', 'required', 'placeholder', 'className']);
+	            disabled = _props.disabled,
+	            others = _objectWithoutProperties(_props, ['clsPrefix', 'onChange', 'value', 'label', 'required', 'placeholder', 'className', 'disabled']);
 	
 	        var _state = this.state,
 	            selectedColor = _state.selectedColor,
@@ -16928,6 +16931,7 @@
 	                    'span',
 	                    null,
 	                    _react2['default'].createElement(_beeFormControl2['default'], {
+	                        disabled: disabled,
 	                        placeholder: placeholder,
 	                        value: formValue,
 	                        onChange: this.handleChange
@@ -16944,7 +16948,7 @@
 	                    }),
 	                    _react2['default'].createElement('div', { style: { backgroundColor: formValue },
 	                        className: clsPrefix + '-form-color-demo',
-	                        onClick: this.handleClick })
+	                        onClick: !disabled ? this.handleClick : null })
 	                )
 	            ),
 	            _react2['default'].createElement(
@@ -38684,6 +38688,78 @@
 	}(_react.Component);
 	
 	exports['default'] = Demo3;
+	module.exports = exports['default'];
+
+/***/ }),
+/* 432 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _src = __webpack_require__(155);
+	
+	var _src2 = _interopRequireDefault(_src);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	
+	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); } /**
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               *
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               * @title 不可用状态
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               * @description 添加 disabled 属性即可让取色板处于不可用状态
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               *
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               */
+	
+	
+	var Demo4 = function (_Component) {
+	    _inherits(Demo4, _Component);
+	
+	    function Demo4() {
+	        var _temp, _this, _ret;
+	
+	        _classCallCheck(this, Demo4);
+	
+	        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+	            args[_key] = arguments[_key];
+	        }
+	
+	        return _ret = (_temp = (_this = _possibleConstructorReturn(this, _Component.call.apply(_Component, [this].concat(args))), _this), _this.state = {
+	            value: "#E14C46"
+	        }, _this.handleChange = function (v) {
+	            console.log("选择的色彩信息 ：", v);
+	            _this.setState({
+	                value: v.hex || ''
+	            });
+	        }, _temp), _possibleConstructorReturn(_this, _ret);
+	    }
+	
+	    Demo4.prototype.render = function render() {
+	        return _react2['default'].createElement(_src2['default'], {
+	            disabled: true,
+	            label: '\u989C\u8272',
+	            placeholder: '\u8BF7\u8F93\u5165\u5341\u516D\u8FDB\u5236\u8272\u503C',
+	            value: this.state.value,
+	            onChange: this.handleChange
+	        });
+	    };
+	
+	    return Demo4;
+	}(_react.Component);
+	
+	exports['default'] = Demo4;
 	module.exports = exports['default'];
 
 /***/ })

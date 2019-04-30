@@ -89,8 +89,7 @@ var Dropdown = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, _React$Component.call(this, props));
 
     _this.state = {
-      visible: jadgeState(_this.props),
-      dropdownWidth: ''
+      visible: jadgeState(_this.props)
     };
     _this.onClick = _this.onClick.bind(_this);
     _this.onVisibleChange = _this.onVisibleChange.bind(_this);
@@ -177,7 +176,8 @@ var Dropdown = function (_React$Component) {
         overlayStyle = _props2.overlayStyle,
         trigger = _props2.trigger,
         getDocument = _props2.getDocument,
-        props = _objectWithoutProperties(_props2, ['clsPrefix', 'children', 'transitionName', 'animation', 'align', 'placement', 'getPopupContainer', 'showAction', 'hideAction', 'overlayClassName', 'overlayStyle', 'trigger', 'getDocument']);
+        disabled = _props2.disabled,
+        props = _objectWithoutProperties(_props2, ['clsPrefix', 'children', 'transitionName', 'animation', 'align', 'placement', 'getPopupContainer', 'showAction', 'hideAction', 'overlayClassName', 'overlayStyle', 'trigger', 'getDocument', 'disabled']);
 
     return _react2["default"].createElement(
       _trigger2["default"],
@@ -194,7 +194,7 @@ var Dropdown = function (_React$Component) {
         popupAlign: align,
         popupTransitionName: transitionName,
         popupAnimation: animation,
-        popupVisible: this.state.visible,
+        popupVisible: disabled ? false : this.state.visible,
         afterPopupVisibleChange: this.afterVisibleChange,
         popup: this.getMenuElement(),
         onPopupVisibleChange: this.onVisibleChange,

@@ -46,6 +46,8 @@
       top: 0;
       left: 0;
       width: 100%; }
+      .u-transfer-list-header .u-checkbox {
+        margin-right: 0; }
       .u-transfer-list-header-title {
         position: absolute;
         right: 15px; }
@@ -79,11 +81,15 @@
         min-height: 32px;
         transition: all 0.3s ease;
         color: #212121; }
-      .u-transfer-list-content-item-selected {
-        background: rgb(255, 247, 231); }
+        .u-transfer-list-content-item .u-checkbox {
+          margin-right: 0; }
       .u-transfer-list-content-item:not(.u-transfer-list-content-item-disabled):hover {
         cursor: pointer;
         background-color: rgb(235, 236, 240); }
+      .u-transfer-list-content-item-selected {
+        background: rgb(255, 247, 231); }
+        .u-transfer-list-content-item-selected:not(.u-transfer-list-content-item-selected-item-disabled):hover {
+          background: rgb(255, 247, 231); }
       .u-transfer-list-content-item-disabled {
         cursor: not-allowed;
         color: #909090; }
@@ -190,6 +196,6 @@
 
 @keyframes transferHighlightIn {
   0% {
-    background: rgb(245, 60, 50); }
+    background: rgb(255, 247, 231); }
   100% {
     background: transparent; } }

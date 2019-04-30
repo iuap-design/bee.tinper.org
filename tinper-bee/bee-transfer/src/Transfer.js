@@ -83,8 +83,8 @@ class Transfer extends React.Component{
         targetSelectedKeys: targetSelectedKeys.filter(existInDateSourcekey)
           .filter(data => targetKeys.filter(key => key === data).length > 0),
       });
-      //异步加载时
-      if(this.props.dataSource.length === 0){
+      //异步加载时 || 动态改变targetKeys时
+      if(this.props.dataSource.length === 0 || !this.props.draggable){
         this.splitDataSource(targetKeys,dataSource);
       }
     }

@@ -22,11 +22,11 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 
 var defaultDuration = 1.5;
 var newDuration = void 0;
-var defaultTop = 0;
+var defaultTop = 24;
 var defaultBottom = 48;
 var bottom = 90;
 var padding = 30;
-var width = 200;
+var width = 240;
 var messageInstance = void 0;
 var key = 1;
 var clsPrefix = 'u-message';
@@ -35,21 +35,21 @@ var noop = function noop() {};
 var positionObj = {
     "top": {
         messageStyle: {
-            width: "100%"
+            transform: 'translateX( -50%)'
         },
         notificationStyle: {
             top: defaultTop,
-            width: "100%"
+            left: '50%'
         },
         transitionName: 'top'
     },
     "bottom": {
         messageStyle: {
-            width: "100%"
+            transform: 'translateX( -50%)'
         },
         notificationStyle: {
             bottom: defaultBottom,
-            width: "100%"
+            left: '50%'
         },
         transitionName: 'bottom'
     },
@@ -133,7 +133,7 @@ function getMessageInstance() {
         clsPrefix: clsPrefix,
         transitionName: clsPrefix + '-' + positionObj[position].transitionName,
         style: style, // 覆盖原来的样式
-        position: ''
+        position: position
     };
     if (typeof keyboard === 'boolean') {
         instanceObj.keyboard = keyboard;
@@ -151,14 +151,14 @@ function notice(content, duration, type, onClose, position, style, keyboard, onE
     var iconType = {
         info: 'uf uf-i-c-2',
         success: 'uf uf-correct',
-        danger: 'uf uf-close-c',
+        danger: 'uf uf-exc-c',
         warning: 'uf uf-exc-t',
         light: 'uf uf-notification',
-        dark: 'uf uf-bubble',
+        dark: 'uf uf-notification',
         news: 'uf uf-bell',
         infolight: 'uf uf-i-c-2',
         successlight: 'uf uf-correct',
-        dangerlight: 'uf uf-close-c',
+        dangerlight: 'uf uf-exc-c',
         warninglight: 'uf uf-exc-t'
     }[type];
 
@@ -204,11 +204,11 @@ exports["default"] = {
         }
         var content = obj.content || '';
         var duration = typeof obj.duration == 'undefined' ? defaultDuration : obj.duration;
-        var color = obj.color || 'dark';
+        var color = obj.color || 'light';
         var onClose = obj.onClose || noop;
         var position = obj.position || "top";
         var style = obj.style || {};
-        var showIcon = obj.showIcon || false;
+        var showIcon = obj.showIcon || true;
         return notice(content, duration, color, onClose, position, style, obj.keyboard, obj.onEscapeKeyUp, showIcon);
     },
     config: function config(options) {

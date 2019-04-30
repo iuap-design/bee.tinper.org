@@ -22,11 +22,6 @@ class Demo2 extends Component {
         super(props);
         this.state = {
             expanded: true,
-            approvalState: '1',
-            purchasingGroup:'2',
-            closeState: '',
-            confirmState: '',
-            voucherDate: [moment(),moment('2019-07-20')],
             orderTypes:[
                 {
                     'code':'001',
@@ -43,24 +38,8 @@ class Demo2 extends Component {
             ]
         };
     }
-    submit = (e) => {
-        this.props.form.validateFields((err, values) => {
-            if (err) {
-                console.log('校验失败', values);
-            } else {
-                console.log('提交成功', values)
-            }
-        });
-    }
-    reset = () =>{
+    clear = () =>{
         this.props.form.resetFields();
-        //部分表单元素无法通过this.props.form.resetFields重置，需要手动重置，如下
-        this.setState({
-            approvalState: '',
-            closeState: '',
-            confirmState: '',
-            voucherDate: []
-        })
     }
     onChange = () => {
         this.setState({expanded: !this.state.expanded})
@@ -69,7 +48,7 @@ class Demo2 extends Component {
     search =()=>{
         this.props.form.validateFields((err, values) => {
             if (err) {
-                console.log('校验失败', values);
+                console.log(err);
             } else {
                 console.log('提交成功', values)
             }
@@ -95,45 +74,6 @@ class Demo2 extends Component {
                 onPanelChangeEnd={status => {
                     console.log(status, "end")
                 }}>
-                {/* <HeadContainer>
-                    <div className='demo-head'>
-                        <Form>
-                            <Row>
-                                <Col xs={12} sm={6} md={4} lg={3}>
-                                    <FormItem>
-                                        <Col xs={12} sm={12} md={12}  lg={12} className="col">
-                                            <Label>订单编号</Label>
-                                            <FormControl size="sm"
-                                                {
-                                                ...getFieldProps('orderCode', {
-                                                    initialValue: '',
-                                                })
-                                                }
-                                            />
-                                        </Col>
-                                    </FormItem>
-                                </Col>
-
-                                <Col xs={12} sm={6} md={4}  lg={3}>
-                                    <FormItem>
-                                        <Col xs={12} sm={12} md={12}  lg={12} className="col">
-                                            <Label>供应商名称</Label>
-                                            <FormControl size="sm"
-                                                {
-                                                ...getFieldProps('supplierName', {
-                                                    initialValue: '',
-                                                })
-                                                }
-                                            />
-                                        </Col>
-                                    </FormItem>
-                                </Col>
-                            </Row>
-                        </Form>
-                    </div>
-                </HeadContainer> */}
-            
-
                 <AdvancedContainer>
                     <div className='demo-body'>
                         <Form>
@@ -204,13 +144,10 @@ class Demo2 extends Component {
                                     <FormItem>
                                             <Label>审批</Label>
                                             <Radio.RadioGroup
-                                                    selectedValue={this.state.approvalState}
                                                     {
                                                     ...getFieldProps('approvalState', {
                                                         initialValue: '1',
-                                                        onChange(value) {
-                                                            self.setState({ approvalState: value });
-                                                        },
+                                                        valuePropName:"selectedValue"
                                                     }
                                                     )}
                                                 >

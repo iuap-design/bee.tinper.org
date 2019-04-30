@@ -37,9 +37,9 @@
  },
  "dependencies": {
   "bee-icon": "latest",
-  "bee-notification": "^2.0.0",
+  "bee-notification": "^2.0.1",
   "classnames": "^2.2.5",
-  "tinper-bee-core": "latest"
+  "tinper-bee-core": "^2.0.30"
  },
  "peerDependencies": {
   "react": "^15.3.0 || ^16.0",
@@ -50,8 +50,13 @@
   "bee-button": "latest",
   "bee-clipboard": "^2.0.0",
   "bee-drawer": "0.0.2",
+  "bee-form": "^2.0.11",
+  "bee-form-control": "^2.0.2",
+  "bee-label": "^1.0.0",
   "bee-layout": "latest",
+  "bee-modal": "^2.0.8",
   "bee-panel": "latest",
+  "bee-table": "^2.0.16",
   "chai": "^3.5.0",
   "console-polyfill": "~0.2.1",
   "cz-conventional-changelog": "^2.1.0",

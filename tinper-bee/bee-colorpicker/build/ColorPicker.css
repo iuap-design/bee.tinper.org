@@ -2195,6 +2195,9 @@
   border-radius: 3px;
   cursor: pointer; }
 
+.u-colorpicker-form .u-form-control[disabled] + .u-colorpicker-form-color-demo {
+  cursor: not-allowed; }
+
 .u-colorpicker .error {
   color: red;
   padding-left: 112px; }

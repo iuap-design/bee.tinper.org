@@ -241,7 +241,7 @@ class TransferList extends React.Component {
         {search}
         <Droppable droppableId={`droppable_${id}`} direction='vertical' isDropDisabled={!draggable}>
           {(provided, snapshot) => (
-            <div ref={provided.innerRef} isDraggingOver={snapshot.isDraggingOver} key={id} className={`${prefixCls}-content`}>
+            <div ref={provided.innerRef} key={id} className={`${prefixCls}-content`}>
               <div style={{display:'none'}}>{provided.placeholder}</div>
               <Animate
                 component="ul"
