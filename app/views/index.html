@@ -164,6 +164,9 @@
 
 <!-- 控制点击“查看源码”时，浮层下方的页面不能滚动，浮层消失后，页面正常滚动。 -->
 <script>
+     var handle = function(event){
+            event.preventDefault();// 阻止元素发生默认行为
+    }
     var openlist = document.querySelectorAll('.component-code');
     var maskease = document.querySelectorAll('.drawer-mask');
     if(openlist.length!==0){
