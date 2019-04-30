@@ -36,6 +36,7 @@ import 'bee-dropdown/build/Dropdown.css';
 |hideAction|隐藏时的钩子函数数组|array|[]|
 |getPopupContainer|获取要添加的容器|document.body|
 |getDocument|点击隐藏的document，适用于出现iframe的情况|function|document|
+|disabled|是否禁用|bool|false|
 
 ## 注意事项
 

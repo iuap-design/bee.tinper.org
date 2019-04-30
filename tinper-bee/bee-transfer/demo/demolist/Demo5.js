@@ -60,7 +60,6 @@ class Demo5 extends React.Component {
     return (
        <Transfer
           draggable={true}
-          showCheckbox={false}
           dataSource={mockData}
           titles={['Source', 'Target']}
           targetKeys={targetKeys}

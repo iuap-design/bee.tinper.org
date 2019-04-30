@@ -1,3 +1,13 @@
+<a name="2.0.5"></a>
+## [2.0.5](https://github.com/tinper-bee/bee-dropdown/compare/v2.0.4...v2.0.5) (2019-04-29)
+
+
+### Features
+
+* **bee-dropdown:** 新增disabled是否禁用属性 ([3dd011a](https://github.com/tinper-bee/bee-dropdown/commit/3dd011a))
+
+
+
 <a name="2.0.4"></a>
 ## [2.0.4](https://github.com/tinper-bee/bee-dropdown/compare/v2.0.3...v2.0.4) (2019-03-19)
 

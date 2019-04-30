@@ -2,9 +2,19 @@
 
 ## 何时使用
 
-- 当有大量结构化的数据需要展现时；
-- Table组件拥有多种可自由组合使用的功能，包括：大数据渲染、拖拽列、过滤列、排序、多选、分页、自定义操作、合计、搜索等复杂行为；
-- 当需要复杂表格展示数据的时候，推荐使用开箱即用的[Grid组件](https://design.yonyoucloud.com/tinper-acs/bee-complex-grid)。
+- 当有大量结构化的数据需要展现时，可使用 `Table` 组件；
+-  `Table`  组件拥有多种可自由组合使用的功能特性，包括：
+	1.  大数据渲染
+	2.  拖拽交换、拖拽改变列宽
+	3.  行选择（单选/多选）
+	4.  表体滚动
+	5.  数据操作
+	6.  支持多种表格编辑形式
+	7.  列锁定 
+	8.  列过滤
+	9.  列隐藏
+	10. 列排序
+- `Grid` 组件聚合了 `Table` 组件的所有功能特性，并在此基础上封装了导出数据、工具栏、分页、数据关联等高级功能。可达到随用随取、开箱即用的体验。当需要使用多种功能组合的 `Table` 展示时，推荐使用[Grid组件](https://design.yonyoucloud.com/tinper-acs/bee-complex-grid)。
 
 ## 如何使用
 
@@ -48,7 +58,7 @@ import 'bee-table/build/Table.css';
 | title                  | 表格标题                                     | Function                               | -               |
 | footer                 | 表格尾部                                     | Function                               | -               |
 | emptyText              | 无数据时显示的内容                                | Function                               | () => 'No Data' |
-| scroll                 | 横向或纵向支持滚动，也可用于指定滚动区域的宽高度 | ` { x: number | true | 百分比 ,  y: number }` | {}     |
+| scroll                 | 横向或纵向支持滚动，也可用于指定滚动区域的宽高度 | `{ x: number / true / 百分比 ,  y: number }` | {}     |
 | rowRef                 | 获取行的ref                                  | Function(record, index, indent):string | () => null      |
 | getBodyWrapper         | 添加对table body的包装                         | Function(body)                         | body => body    |
 | expandedRowRender      | 额外的展开行                                   | Function(record, index, indent):node | -               |
@@ -71,7 +81,7 @@ import 'bee-table/build/Table.css';
 | heightConsistent       | 当固定列内容高度超出非固定列时，内容互错行，当此属性为true会将高度同步，当行过多时会有性能影响，所以建议非固定高度如果过高时，超出内容可以显示成省略号 | bool|false 
 | height | 自定义表格行高 | number | - |
 | headerHeight | 自定义表头行高 | number | - |
-| size | 表格大小 | `sm | md | lg` | 'md' |
+| size | 表格大小 | `sm / md / lg` | 'md' |
 | headerDisplayInRow | 设置表头的内容显示一行，超出显示省略号 | bool |
 | bodyDisplayInRow |  设置表体的内容显示一行，超出显示省略号 | bool | 
 | rowDraggAble  | 是否增加行交换顺序功能 | boolean| false
@@ -122,21 +132,22 @@ import multiSelect from "tinper-bee/lib/multiSelect.js";
 
 ### multiSelect 多选功能
 
-#### multiSelect:API
+#### API
 
 Data 数组参数：
 
 | 参数                  | 说明                         | 类型       | 默认值      |
 | ------------------- | -------------------------- | -------- | -------- |
-| _checked         | 设置是否选中当前数据（设置在data数组中）           |  boolean      | true/false       |
-| _disabled   | 设置是否禁用当前数据（设置在data数组中）     |  boolean      | true/false     
+| _checked         | 设置是否选中当前数据           |  boolean      | true/false       |
+| _disabled   | 设置是否禁用当前数据     |  boolean      | true/false     |
 
 Table 组件参数：
-| 参数                  | 说明                         | 类型       | 默认值      |
-| ------------------- | -------------------------- | -------- | -------- |   
-| getSelectedDataFunc | 返回当前选中的数据数组（设置在Table组件上）                | Function | 无        |
 
-#### multiSelect:使用
+| 参数     | 说明         | 类型       | 默认值  |
+| ------ | ---------- | -------- | ---- |
+| getSelectedDataFunc | 返回当前选中的数据数组 | Function | 无    |
+
+#### 使用
 
 ```js
 import multiSelect from "tinper-bee/lib/multiSelect.js";
@@ -148,7 +159,7 @@ const MultiSelectTable = multiSelect(Table, Checkbox);
 
 ### sort 排序功能
 
-#### sort:API
+#### API
 
 column 数组参数：
 
@@ -157,7 +168,7 @@ column 数组参数：
 | sorter | 排序函数，可以自定义 | Function | 无    |
 | sorterClick | 排序钩子函数| Function | (coloum,type)    |
 
-#### sort:使用
+#### 使用
 
 ```js
 import sort from "tinper-bee/lib/sort.js";
@@ -169,7 +180,7 @@ const SortTable = sort(Table, Icon);
 
 ### sum 合计功能
 
-#### sum:API
+#### API
 
 column 数组参数：
  
@@ -177,7 +188,7 @@ column 数组参数：
 | ------ | ---------- | -------- | ---- |
 | sumCol | 该列设置为合计列，合计行中会显示合计数据 | boolean | false |
 
-#### sum:使用
+#### 使用
 
 ```js
 import sum from "tinper-bee/lib/sum.js";
@@ -189,7 +200,7 @@ const SumTable = sum(Table);
 
 ### dragColumn 拖拽列功能
 
-#### dragColumn:API
+#### API
 
 Table 组件参数：
 
@@ -200,7 +211,7 @@ Table 组件参数：
 | onDrop | 拖拽释放回调函数(交换列) | function | () => {} |
 | onDropBorder | 拖拽释放回调函数(调整列宽) | function | (e) => {} |
 
-#### dragColumn:使用
+#### 使用
 
 ```js
 import dragColumn from "tinper-bee/lib/dragColumn.js";
@@ -212,11 +223,11 @@ const DragColumnTable = dragColumn(Table);
 
 ### filterColumn 过滤功能
 
-#### filterColumn:API
+#### API
 
 无
 
-#### filterColumn:使用
+#### 使用
 
 ```js
 import filterColumn from "tinper-bee/lib/filterColumn.js";
@@ -241,12 +252,12 @@ import renderInput from "tinper-bee/lib/InputRender.js";
 
 输入框类型render
 
-#### InputRender:依赖的组件
+#### 依赖的组件
 
 该render依赖于`Icon`,`FormControl`,`Form`,`Tooltip`。
 
 
-#### InputRender:配置
+#### 配置
 
 | 参数                | 说明                                       | 类型         | 默认值    |
 | ----------------- | ---------------------------------------- | ---------- | ------ |
@@ -265,7 +276,7 @@ import renderInput from "tinper-bee/lib/InputRender.js";
 | htmlType          | 数值类型，目前支持 email/tel/IDCard/chinese/password'类型 | string     | -      |
 | reg               | 校验正则，注：设置 htmlType 后 reg 无效              | regExp     | -      |
 
-#### InputRender:使用
+#### 使用
 
 ```js
 import renderInput from "tinper-bee/lib/InputRender.js";
@@ -278,12 +289,12 @@ const InputRender = renderInput(Form, FormControl, Icon);
 
 日期类型render
 
-#### DateRender:依赖的组件
+#### 依赖的组件
 
 该render依赖于`moment`, `Datepicker`, `Icon`
 
 
-#### DateRender:配置
+#### 配置
 
 | 参数                | 说明                                       | 类型         | 默认值    |
 | ----------------- | ---------------------------------------- | ---------- | ------ |
@@ -308,11 +319,11 @@ const DateRender = renderDate(Datepicker, Icon);
 
 下拉框类型render
 
-#### SelectRender:依赖的组件
+#### 依赖的组件
 该render依赖于`Icon`,`Select`
 
 
-#### SelectRender:配置
+#### 配置
 
 | 参数             | 说明                                       | 类型      | 默认值   |
 | -------------- | ---------------------------------------- | ------- | ----- |
@@ -335,12 +346,12 @@ const SelectRender = renderSelect(Select, Icon);
 
 复选框类型render
 
-#### CheckboxRender:依赖的组件
+#### 依赖的组件
 
 该render依赖于`Icon`,`Checkbox`
 
 
-#### CheckboxRender:配置
+#### 配置
 
 | 参数             | 说明                                       | 类型      | 默认值   |
 | -------------- | ---------------------------------------- | ------- | ----- |
@@ -351,7 +362,7 @@ const SelectRender = renderSelect(Select, Icon);
 
 注:其他参数参见Checkbox组件参数配置
 
-#### CheckboxRender:使用
+#### 使用
 
 ```js
 import renderCheckbox from "tinper-bee/lib/CheckboxRender.js";

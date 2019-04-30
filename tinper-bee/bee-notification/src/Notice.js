@@ -1,6 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
+import Icon from 'bee-icon';
 
 const propTypes = {
     duration: PropTypes.number,
@@ -71,7 +72,7 @@ class Notice extends React.Component {
         </div>
         {closable ?
           <a tabIndex="0" onClick={this.close} className={`${componentClass}-close`}>
-            <span className={`${componentClass}-close-x`}></span>
+            <span className={`${componentClass}-close-x`}><Icon type="uf-close"/></span>
           </a> : null
         }
       </div>

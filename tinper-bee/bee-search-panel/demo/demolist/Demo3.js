@@ -22,11 +22,6 @@ class Demo3 extends Component {
         super(props);
         this.state = {
             expanded: true,
-            approvalState: '1',
-            purchasingGroup:'2',
-            closeState: '',
-            confirmState: '',
-            voucherDate: [moment(),moment('2019-07-20')],
             orderTypes:[
                 {
                     'code':'001',
@@ -43,24 +38,8 @@ class Demo3 extends Component {
             ]
         };
     }
-    submit = (e) => {
-        this.props.form.validateFields((err, values) => {
-            if (err) {
-                console.log('校验失败', values);
-            } else {
-                console.log('提交成功', values)
-            }
-        });
-    }
-    reset = () =>{
+    clear = () =>{
         this.props.form.resetFields();
-        //部分表单元素无法通过this.props.form.resetFields重置，需要手动重置，如下
-        this.setState({
-            approvalState: '',
-            closeState: '',
-            confirmState: '',
-            voucherDate: []
-        })
     }
     onChange = () => {
         this.setState({expanded: !this.state.expanded})
@@ -69,7 +48,7 @@ class Demo3 extends Component {
     search =()=>{
         this.props.form.validateFields((err, values) => {
             if (err) {
-                console.log('校验失败', values);
+                console.log(err);
             } else {
                 console.log('提交成功', values)
             }
@@ -173,23 +152,18 @@ class Demo3 extends Component {
 
                                 <Col xs={12} sm={6} md={4}  lg={3}>
                                     <FormItem>
-                                        {/* <Col xs={12} sm={12} md={12}  lg={12} className="col"> */}
                                             <Label>审批</Label>
                                             <Radio.RadioGroup
-                                                    selectedValue={this.state.approvalState}
                                                     {
                                                     ...getFieldProps('approvalState', {
                                                         initialValue: '1',
-                                                        onChange(value) {
-                                                            self.setState({ approvalState: value });
-                                                        },
+                                                        valuePropName:"selectedValue"
                                                     }
                                                     )}
                                                 >
                                                 <Radio value="0" >未审批</Radio>
                                                 <Radio value="1" >已审批</Radio>
                                             </Radio.RadioGroup>
-                                        {/* </Col> */}
                                     </FormItem>
                                 </Col>
                             </Row>

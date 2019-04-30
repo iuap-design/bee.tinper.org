@@ -4,6 +4,7 @@
 // @import '../node_modules/bee-form-control/src/FormControl.scss';
 // @import '../node_modules/bee-checkbox/src/Checkbox.scss';
 // @import "../node_modules/bee-icon/src/Icon.scss";
+// @import "../node_modules/bee-panel/src/Panel.scss";
 
 
 
@@ -64,7 +65,9 @@
       top: 0;
       left: 0;
       width: 100%;
-
+      .u-checkbox{ 
+        margin-right:0;
+      }
       &-title {
         position: absolute;
         right: 15px;
@@ -109,14 +112,20 @@
         min-height: 32px;
         transition: all 0.3s ease;
         color: $font-color-base;
+        .u-checkbox{ 
+          margin-right:0;
+        }
       }
-      &-item-selected{
-        background: $selected-bg-color-base;
-      }
-
       &-item:not(&-item-disabled):hover {
         cursor: pointer;
         background-color: $hover-bg-color-base;
+      }
+      
+      &-item-selected{
+        background: $selected-bg-color-base;
+        &:not(&-item-disabled):hover{
+          background: $selected-bg-color-base;
+        }
       }
 
       &-item-disabled {
@@ -274,7 +283,7 @@
 
 @keyframes transferHighlightIn {
   0% {
-    background: $checkbox-color;
+    background: $selected-bg-color-base;
   }
   100% {
     background: transparent;

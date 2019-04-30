@@ -22,6 +22,7 @@ const propTypes = {
     className: PropTypes.string,
     placeholder: PropTypes.string,
     required: PropTypes.bool,
+    disabled: PropTypes.bool,
     autoCalculate: PropTypes.func,
     onChange: PropTypes.func,
 };
@@ -32,6 +33,7 @@ const defaultProps = {
     placeholder: "",
     required: false,
     autoCalculate: false,
+    disabled: false,
     autoCalculate: () => {},
     onChange: () => {}
 };
@@ -335,6 +337,7 @@ class ColorPicker extends Component {
             required,
             placeholder,
             className,
+            disabled,
             ...others
         } = this.props;
         const {
@@ -371,6 +374,7 @@ class ColorPicker extends Component {
                     }
                     <span>
                         <FormControl 
+                            disabled={disabled}
                             placeholder={placeholder} 
                             value={formValue} 
                             onChange={this.handleChange}
@@ -387,7 +391,7 @@ class ColorPicker extends Component {
                         />
                         <div style={{backgroundColor:formValue}}
                             className={`${clsPrefix}-form-color-demo`} 
-                            onClick={ this.handleClick }>
+                            onClick={ !disabled ? this.handleClick : null }>
                         </div>
                     </span>
                 </FormItem>

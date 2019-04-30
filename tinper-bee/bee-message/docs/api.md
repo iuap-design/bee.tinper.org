@@ -48,13 +48,13 @@ Messsage.create({});
 |:---|:-----|:----|:------|
 |content|内容|string/number|-|
 |duration|显示时间|number|3|
-|color|颜色|dark/light/success/danger/warning/info/successlight/dangerlight/warninglight/infolight|'dark'|
+|color|颜色|`dark / light / success / danger / warning / info / successlight / dangerlight / warninglight / infolight`|`light`|
 |onClose|关闭时的钩子函数|function|-|
-|position|位置|top/bottom/topRight/topLeft/bottomRight/bottomLeft|top|
+|position|弹出框显示的位置|`top / bottom / topRight / topLeft / bottomRight / bottomLeft`|`top`|
 |style|样式|object|{}|
 |keyboard|esc触发关闭|boolean|true|
 |onEscapeKeyUp|响应ESC键时的钩子函数|function|-|
-|showIcon|是否显示icon|boolean|false|
+|showIcon|是否显示icon|boolean|true|
 
 ### 已支持的键盘操作
 

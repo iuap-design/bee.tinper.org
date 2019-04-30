@@ -2,10 +2,18 @@
   .u-row-hover {
     .opt-btns {
       button {
-        border-radius: 5px;
+        border-radius: 3px;
 
         &:first-child {
           margin-right: 10px;
+        }
+
+        &.btn-abort {
+          background-color: #fff;
+          color: rgb(70, 83, 105);
+          &:hover {
+            background-color: #eff0f3;
+          }
         }
       }
     }

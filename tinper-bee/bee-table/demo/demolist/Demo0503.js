@@ -1,6 +1,6 @@
 /**
  *
- * @title 行编辑 - 弹框编辑
+ * @title 弹框（表单）编辑
  * @parent 编辑 Editor
  * @description 以弹框形式以对行进行编辑的表格
  * demo0503
@@ -362,18 +362,18 @@ class EditModal extends Component {
       <Modal
         show={show}
         onHide={onHide}
-        style={{ width: 700 }}
+        style={{ width: 800 }}
         className="demo0503-m-b"
       >
         <Modal.Header closeButton>
           <Modal.Title>编辑行</Modal.Title>
         </Modal.Header>
-        <Modal.Body >
-          <Row style={{ width: 660, margin: "0 auto" }}>
+        <Modal.Body>
+          <Row style={{ width: 770, margin: "0 auto" }}>
             {
               columns.map((item, index) => {
                 return (
-                  <Col sm={6} md={6} lg={6} style={{ padding: 0 }} key={index}>
+                  <Col sm={6} md={6} lg={6} style={{ padding: "0 0 0 10px" }} key={index}>
                     <FormGroup>
                       <Label>{item.title}</Label>
                       {this.renderElm[item.key] &&
@@ -396,9 +396,10 @@ class EditModal extends Component {
             }
           </Row>
         </Modal.Body>
-        <Modal.Footer style={{textAlign: "center"}}>
+        <Modal.Footer style={{textAlign: "right"}}>
           <Button
-            colors="secondary"
+            colors="dark"
+            className="btn-abort"
             style={{ marginRight: 15 }}
             onClick={onHide}
           >
