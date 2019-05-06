@@ -7,8 +7,10 @@
 
 
 import React, { Component } from 'react';
+import Button from 'bee-button';
 import Transfer from '../../src';
 
+const AllTargetKeys = [];
 const mockData = [];
 for (let i = 0; i < 20; i++) {
   mockData.push({
@@ -18,6 +20,7 @@ for (let i = 0; i < 20; i++) {
     disabled: i % 3 < 1,
 
   });
+  AllTargetKeys.push(i.toString());
 }
 
 const targetKeys = mockData
@@ -52,12 +55,25 @@ class Demo1 extends React.Component {
     console.log('target:', e.target);
   }
 
+  moveAllToRight = () => {
+    this.setState({
+      targetKeys: AllTargetKeys
+    })
+  }
+  moveAllToLeft = () => {
+    this.setState({
+      targetKeys: []
+    })
+  }
 
   render() {
     const state = this.state;
     const targetKeys = [...this.state.targetKeys];
     return (
-       <Transfer
+      <div>
+        <Button onClick={this.moveAllToRight} style={{margin:'8px'}}>全部移到右边</Button>
+        <Button onClick={this.moveAllToLeft} style={{margin:'8px'}}>全部移到左边</Button>
+        <Transfer
           dataSource={mockData}
           titles={['Source', 'Target']}
           targetKeys={targetKeys}
@@ -67,6 +83,7 @@ class Demo1 extends React.Component {
           onScroll={this.handleScroll}
           render={item => item.title}
         />
+      </div>
     );
   }
 }

@@ -13,8 +13,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="renderer" content="webkit">
     <link rel="icon" href="//design.yonyoucloud.com/static/tinper-bee/images/favicon.png" type="image/png" sizes="16x16">
-    <link rel="stylesheet" href="//design.yonyoucloud.com/static/highlight/9.15.6/default.min.css">    
-    <link href="//design.yonyoucloud.com/static/tinper-bee/test/tinper-bee.css" rel="stylesheet" media="screen" />
+    <link rel="stylesheet" href="//design.yonyoucloud.com/static/highlight/9.15.6/default.min.css"> 
+    <link href="//design.yonyoucloud.com/static/tinper-bee/test/2.0.10-alpha.0/tinper-bee.css" rel="stylesheet" media="screen" />
     <link rel="stylesheet" href="//design.yonyoucloud.com/static/docSearch/docsearch.min.css" /> 
     <link rel="stylesheet" href="./css/atom-one-dark.css" type="text/css"/>
     <link rel="stylesheet" href="./css/layout.css" type="text/css"/>
@@ -65,6 +65,9 @@
     <script type="text/javascript" src="./theme/home.js"></script>
 <% } %>
 <script>
+    //解决:hover伪类在移动端二次点击的问题
+    document.body.addEventListener('touchstart', function(){ });
+
     // hljs.initHighlightingOnLoad();
     document.querySelectorAll('.drawer-body code').forEach((block) => {
         hljs.highlightBlock(block);
@@ -161,6 +164,9 @@
 
 <!-- 控制点击“查看源码”时，浮层下方的页面不能滚动，浮层消失后，页面正常滚动。 -->
 <script>
+     var handle = function(event){
+            event.preventDefault();// 阻止元素发生默认行为
+    }
     var openlist = document.querySelectorAll('.component-code');
     var maskease = document.querySelectorAll('.drawer-mask');
     if(openlist.length!==0){
@@ -172,12 +178,15 @@
     }
    
     if(maskease.length!==0){
-        for(var i in maskease){
-            maskease[i].onclick=function() {
-            document.body.style.overflow = 'auto';
+        maskease.forEach(item=>{
+            console.log(0000);
+            item.addEventListener('touchmove',handle,false);//控制移动端页面不滚动
+            item.onclick=function() {
+                document.body.style.overflow = 'auto';
+                item.removeEventListener('touchmove',handle,false);//控制移动端页面不滚动
             }
-        }
-    }
+        })
+    } 
 
 
 //返回顶部按钮

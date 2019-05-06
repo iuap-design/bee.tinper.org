@@ -351,7 +351,7 @@ var TransferList = function (_React$Component) {
         function (provided, snapshot) {
           return _react2["default"].createElement(
             'div',
-            { ref: provided.innerRef, isDraggingOver: snapshot.isDraggingOver, key: id, className: prefixCls + '-content' },
+            { ref: provided.innerRef, key: id, className: prefixCls + '-content' },
             _react2["default"].createElement(
               'div',
               { style: { display: 'none' } },

@@ -82,6 +82,7 @@ var propTypes = {
     className: _propTypes2["default"].string,
     placeholder: _propTypes2["default"].string,
     required: _propTypes2["default"].bool,
+    disabled: _propTypes2["default"].bool,
     autoCalculate: _propTypes2["default"].func,
     onChange: _propTypes2["default"].func
 };
@@ -91,7 +92,8 @@ var defaultProps = (_defaultProps = {
     label: "",
     placeholder: "",
     required: false,
-    autoCalculate: false
+    autoCalculate: false,
+    disabled: false
 }, _defineProperty(_defaultProps, 'autoCalculate', function autoCalculate() {}), _defineProperty(_defaultProps, 'onChange', function onChange() {}), _defaultProps);
 
 var initRgb = _colors2["default"]['red'].rgbArr[6] ? 'rgb(' + _colors2["default"]['red'].rgbArr[6] + ')' : '';
@@ -458,7 +460,8 @@ var ColorPicker = function (_Component) {
             required = _props.required,
             placeholder = _props.placeholder,
             className = _props.className,
-            others = _objectWithoutProperties(_props, ['clsPrefix', 'onChange', 'value', 'label', 'required', 'placeholder', 'className']);
+            disabled = _props.disabled,
+            others = _objectWithoutProperties(_props, ['clsPrefix', 'onChange', 'value', 'label', 'required', 'placeholder', 'className', 'disabled']);
 
         var _state = this.state,
             selectedColor = _state.selectedColor,
@@ -498,6 +501,7 @@ var ColorPicker = function (_Component) {
                     'span',
                     null,
                     _react2["default"].createElement(_beeFormControl2["default"], {
+                        disabled: disabled,
                         placeholder: placeholder,
                         value: formValue,
                         onChange: this.handleChange
@@ -514,7 +518,7 @@ var ColorPicker = function (_Component) {
                     }),
                     _react2["default"].createElement('div', { style: { backgroundColor: formValue },
                         className: clsPrefix + '-form-color-demo',
-                        onClick: this.handleClick })
+                        onClick: !disabled ? this.handleClick : null })
                 )
             ),
             _react2["default"].createElement(

@@ -51,8 +51,7 @@ class Dropdown extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            visible:jadgeState(this.props),
-            dropdownWidth:''
+            visible:jadgeState(this.props)
         };
         this.onClick = this.onClick.bind(this);
         this.onVisibleChange = this.onVisibleChange.bind(this);
@@ -98,7 +97,7 @@ class Dropdown extends React.Component {
     const { overlay, clsPrefix } = this.props;
 
     return React.cloneElement(overlay, {
-      prefixCls: `${clsPrefix}-menu`,
+      prefixCls: `${clsPrefix}-menu`, 
       clsPrefix: `${clsPrefix}-menu`,
       onClick: this.onClick,
     });
@@ -133,6 +132,7 @@ class Dropdown extends React.Component {
       overlayStyle,
       trigger,
       getDocument,
+      disabled,
       ...props,
     } = this.props;
     
@@ -150,7 +150,7 @@ class Dropdown extends React.Component {
       popupAlign={align}
       popupTransitionName={transitionName}
       popupAnimation={animation}
-      popupVisible={this.state.visible}
+      popupVisible={disabled?false:this.state.visible}
       afterPopupVisibleChange={this.afterVisibleChange}
       popup={this.getMenuElement()}
       onPopupVisibleChange={this.onVisibleChange}

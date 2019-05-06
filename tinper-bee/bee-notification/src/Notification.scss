@@ -1,6 +1,7 @@
 @import "../node_modules/tinper-bee-core/scss/minxin-variables";
 @import "../node_modules/tinper-bee-core/scss/minxin-mixins";
 @import "../node_modules/bee-button/src/Button.scss";
+@import "../node_modules/bee-icon/src/Icon.scss";
 
 .u-notification{
   position: fixed;
@@ -55,8 +56,8 @@
       opacity: .8;
       text-decoration: none;
 
-      &-x:after {
-        content: '×';
+      &-x .uf {
+        font-size: 12px;
       }
 
       &:hover {

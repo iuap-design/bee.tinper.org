@@ -4,11 +4,11 @@ import classnames from 'classnames';
 
 let defaultDuration = 1.5;
 let newDuration;
-let defaultTop = 0;
+let defaultTop = 24;
 let defaultBottom = 48;
 let bottom = 90;
 let padding = 30;
-let width =200;
+let width =240;
 let messageInstance;
 let key = 1;
 let clsPrefix = 'u-message';
@@ -17,21 +17,21 @@ const noop = () => {};
 let positionObj = {
     "top": {
         messageStyle: {
-            width: "100%"
+            transform: 'translateX( -50%)'
         },
         notificationStyle: {
             top: defaultTop,
-            width: "100%"
+            left: '50%',
         },
         transitionName: 'top'
     },
     "bottom": {
         messageStyle: {
-            width: "100%"
+            transform: 'translateX( -50%)'
         },
         notificationStyle: {
             bottom: defaultBottom,
-            width: "100%"
+            left: '50%',
         },
         transitionName: 'bottom'
     },
@@ -110,7 +110,7 @@ function getMessageInstance(position = 'top', callback, keyboard, onEscapeKeyUp)
         clsPrefix,
         transitionName: `${clsPrefix}-${positionObj[position].transitionName}`,
         style: style, // 覆盖原来的样式
-        position: '',
+        position: position,
     }
     if (typeof keyboard === 'boolean') {
         instanceObj.keyboard = keyboard;
@@ -130,14 +130,14 @@ function notice(content, duration, type, onClose, position, style, keyboard, onE
   let iconType = ({
     info: 'uf uf-i-c-2',
     success: 'uf uf-correct',
-    danger: 'uf uf-close-c',
+    danger: 'uf uf-exc-c',
     warning: 'uf uf-exc-t',
     light: 'uf uf-notification',
-    dark: 'uf uf-bubble',
+    dark: 'uf uf-notification',
     news: 'uf uf-bell',
     infolight: 'uf uf-i-c-2',
     successlight: 'uf uf-correct',
-    dangerlight: 'uf uf-close-c',
+    dangerlight: 'uf uf-exc-c',
     warninglight: 'uf uf-exc-t',
   })[type];
 
@@ -180,11 +180,11 @@ export default {
       }
       let content = obj.content || '';
       let duration = typeof obj.duration == 'undefined' ? defaultDuration : obj.duration;
-      let color = obj.color || 'dark';
+      let color = obj.color || 'light';
       let onClose = obj.onClose || noop;
       let position = obj.position || "top";
       let style = obj.style || {};
-      let showIcon = obj.showIcon || false;
+      let showIcon = obj.showIcon || true;
     return notice(content, duration, color, onClose, position, style, obj.keyboard, obj.onEscapeKeyUp, showIcon);
   },
   config(options) {

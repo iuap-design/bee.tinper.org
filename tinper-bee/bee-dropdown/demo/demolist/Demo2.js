@@ -77,7 +77,7 @@ class Demo2 extends Component {
         return (
             <div className="demoPadding">
 
-                 <Dropdown
+                 <Dropdown 
                    trigger={['click']}
                    overlay={menu1}
                    animation="slide-up"

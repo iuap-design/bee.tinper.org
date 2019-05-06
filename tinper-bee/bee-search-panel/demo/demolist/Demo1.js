@@ -16,30 +16,20 @@ class Demo1 extends Component {
     constructor(props){
         super(props);
         this.state={
-            state:'all',
             expanded: true
         }
     }
-    stateChange(value){
-        this.setState({
-            state:value
-        })
+    search=()=>{
+        this.props.form.validateFields((err, values) => {
+            if (err) {
+                console.log(err);
+            } else {
+                console.log('提交成功', values)
+            }
+        });
     }
-    typeChange(value){
-        this.setState({
-            type:value
-        })
-    }
-    degreeChange(value){
-        this.setState({
-            degree:value
-        })
-    }
-    search(){
-
-    }
-    clear(){
-
+    clear=()=>{
+        this.props.form.resetFields()
     }
     onChange = () => {
         this.setState({expanded: !this.state.expanded})
@@ -71,7 +61,7 @@ class Demo1 extends Component {
                                             <Label>名 称</Label>
                                             <FormControl size="sm"
                                                 {
-                                                ...getFieldProps('orderCode', {
+                                                ...getFieldProps('name', {
                                                     initialValue: '',
                                                 })
                                                 }
@@ -84,7 +74,7 @@ class Demo1 extends Component {
                                             <Label>电话</Label>
                                             <FormControl size="sm"
                                                 {
-                                                ...getFieldProps('supplierName', {
+                                                ...getFieldProps('phone', {
                                                     initialValue: '',
                                                 })
                                                 }
@@ -99,29 +89,6 @@ class Demo1 extends Component {
                 <AdvancedContainer>
                     <div className='demo-body'>
                         <Form>
-                            {/* <Row>
-                                <Col lg={12} md={12} xs={12} >
-                                    <FormItem>
-                                        <Col md={2} xs={2} className="radio">
-                                            <Label >状态</Label>
-                                        </Col>
-                                        <Col md={10} xs={10}>
-                                            <Radio.RadioGroup
-                                                name="state"
-                                                selectedValue={this.state.state}
-                                                onChange={this.stateChange.bind(this)}>
-                                                <Radio.RadioButton value="all">全部</Radio.RadioButton>
-                                                <Radio.RadioButton value="initial">初始化</Radio.RadioButton>
-                                                <Radio.RadioButton value="todo">待处理</Radio.RadioButton>
-                                                <Radio.RadioButton value="doing">处理中</Radio.RadioButton>
-                                                <Radio.RadioButton  value="done">已完成</Radio.RadioButton>
-                                                <Radio.RadioButton  value="closed">已完成</Radio.RadioButton>
-                                            </Radio.RadioGroup>
-                                        </Col>
-
-                                    </FormItem>
-                                </Col>
-                            </Row> */}
                             <Row>
 
                                 <Col xs={12} sm={6} md={4} lg={3}>
@@ -129,7 +96,7 @@ class Demo1 extends Component {
                                             <Label>联系人</Label>
                                             <FormControl size="sm"
                                                 {
-                                                ...getFieldProps('orderCode', {
+                                                ...getFieldProps('people', {
                                                     initialValue: '',
                                                 })
                                                 }
@@ -142,7 +109,7 @@ class Demo1 extends Component {
                                             <Label>供应商</Label>
                                             <FormControl size="sm"
                                                 {
-                                                ...getFieldProps('supplierName', {
+                                                ...getFieldProps('supplier', {
                                                     initialValue: '',
                                                 })
                                                 }
@@ -155,7 +122,7 @@ class Demo1 extends Component {
                                             <Label>地址</Label>
                                             <FormControl size="sm"
                                                 {
-                                                ...getFieldProps('supplierName', {
+                                                ...getFieldProps('address', {
                                                     initialValue: '',
                                                 })
                                                 }
@@ -169,7 +136,7 @@ class Demo1 extends Component {
                                             <Label>车牌</Label>
                                             <FormControl size="sm"
                                                 {
-                                                ...getFieldProps('supplierName', {
+                                                ...getFieldProps('carNumber', {
                                                     initialValue: '',
                                                 })
                                                 }
@@ -182,7 +149,7 @@ class Demo1 extends Component {
                                             <Label>备注</Label>
                                             <FormControl size="sm"
                                                 {
-                                                ...getFieldProps('supplierName', {
+                                                ...getFieldProps('remark', {
                                                     initialValue: '',
                                                 })
                                                 }
@@ -195,7 +162,7 @@ class Demo1 extends Component {
                                             <Label>编号</Label>
                                             <FormControl size="sm"
                                                 {
-                                                ...getFieldProps('supplierName', {
+                                                ...getFieldProps('id', {
                                                     initialValue: '',
                                                 })
                                                 }
