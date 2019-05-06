@@ -13,6 +13,9 @@ body {
     color: #737373;
     background-color: white;
 }
+.docs .doc-content li{
+    line-height: 30px;
+}
 .docs .doc-content .table-container table {
     margin: 10px 0 15px 0;
     border-collapse: collapse;
