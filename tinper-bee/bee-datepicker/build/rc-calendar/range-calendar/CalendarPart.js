@@ -113,7 +113,7 @@ var CalendarPart = function (_React$Component) {
       dateInputElement,
       _react2["default"].createElement(
         'div',
-        { style: { outline: 'none' } },
+        { style: { outline: 'none' }, tabIndex: props.tabIndex },
         _react2["default"].createElement(_CalendarHeader2["default"], _extends({}, newProps, {
           mode: mode,
           enableNext: enableNext,

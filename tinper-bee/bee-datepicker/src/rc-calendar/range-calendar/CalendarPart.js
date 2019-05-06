@@ -89,7 +89,7 @@ export default class CalendarPart extends React.Component {
         className={`${rangeClassName}-part ${rangeClassName}-${direction}`}
       >
         {dateInputElement}
-        <div style={{ outline: 'none' }}>
+        <div style={{ outline: 'none' }} tabIndex={props.tabIndex}>
           <CalendarHeader
             {...newProps}
             mode={mode}

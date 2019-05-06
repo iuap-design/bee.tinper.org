@@ -4,10 +4,11 @@
 import React, { Component } from "react";
 import RangeCalendar from "./rc-calendar/RangeCalendar";
 import FormControl from "bee-form-control";
-import DatePicker from "./rc-calendar/Picker";
+import Picker from "./rc-calendar/Picker";
 import InputGroup from 'bee-input-group';
 import Icon from "bee-icon";
 import classNames from 'classnames';
+import { KeyCode } from 'tinper-bee-core';
 
 import zhCN from "./locale/zh_CN";
 
@@ -36,12 +37,13 @@ if (cn) {
   now.locale("en-gb").utcOffset(0);
 }
 
-class Picker extends Component {
+class RangePicker extends Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
         hoverValue: [],
         value: props.value || props.defaultValue || [],
+        open:false,
     };
   }
     componentWillReceiveProps(nextProps){
@@ -101,6 +103,33 @@ class Picker extends Component {
         })
         this.props.onChange && this.props.onChange('', '');
     }
+    onOpenChange=(open)=>{
+        this.setState({
+            open
+        },()=>{
+            setTimeout(() => {
+                if(open)this.inputFocus()
+            }, 0);
+        })
+    }
+    inputFocus=()=>{
+        const { format } = this.props;
+        let inputs = document.querySelectorAll('.rc-calendar-input');
+        if(inputs[0].value){
+            inputs[0].select()
+        }else{
+            inputs[0].focus()
+        }
+        inputs[0].onkeydown=this.keydown;
+        inputs[1].onkeydown=this.keydown;
+    }
+    keydown=(e)=>{
+        if(e.keyCode == KeyCode.ESC){
+            this.setState({
+                open:false
+            });
+        }
+    }
     render() {
     const props = this.props;
     const { showValue } = props;
@@ -124,11 +153,14 @@ class Picker extends Component {
     );
 
       return (
-          <DatePicker
+          <Picker
               value = {this.state.value}
               animation={'animation' in props ? props.animation : "slide-up"}
               calendar={calendar}
               disabled={props.disabled}
+              dropdownClassName={props.dropdownClassName}
+              onOpenChange={this.onOpenChange}
+              open={this.state.open}
           >
               {
                   ({}) => {
@@ -156,13 +188,13 @@ class Picker extends Component {
                 );
                   }
               }
-          </DatePicker>);
+          </Picker>);
   }
 }
 
-Picker.defaultProps = {
+RangePicker.defaultProps = {
     renderIcon: () => <Icon type="uf-calendar" />,
     locale:zhCN
 }
 
-export default Picker;
+export default RangePicker;

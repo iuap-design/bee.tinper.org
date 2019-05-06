@@ -238,7 +238,6 @@ var RangeCalendar = function (_React$Component) {
         ref: this.saveRoot,
         className: classes,
         style: props.style,
-        tabIndex: '0',
         onKeyDown: this.onKeyDown
       },
       props.renderSidebar(),
@@ -279,7 +278,8 @@ var RangeCalendar = function (_React$Component) {
             showTimePicker: showTimePicker,
             enablePrev: true,
             enableNext: !isClosestMonths || this.isMonthYearPanelShow(mode[1]),
-            clearIcon: clearIcon
+            clearIcon: clearIcon,
+            tabIndex: '0'
           })),
           _react2["default"].createElement(
             'span',
