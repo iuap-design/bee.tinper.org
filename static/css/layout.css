@@ -131,6 +131,7 @@ body::-webkit-scrollbar-thumb:window-inactive {
     line-height:37px;
     display:inline-block;
     text-align:center;
+    cursor:pointer;
 }
 
 @media (max-width: 768px) {
