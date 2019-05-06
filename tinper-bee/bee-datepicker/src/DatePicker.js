@@ -51,6 +51,7 @@ class DatePicker extends Component {
   };
 
   inputFocus=()=>{
+    const { format } = this.props;
     let input = document.querySelector('.rc-calendar-input');
     if(input){
       if(input.value){
@@ -62,13 +63,23 @@ class DatePicker extends Component {
         if(e.keyCode == KeyCode.DELETE){
           input.value = '';
           this.props.onChange('','');
-        }else if(e.keyCode == KeyCode.ESC||e.keyCode == KeyCode.ENTER){
+        }else if(e.keyCode == KeyCode.ESC){
           this.setState({
             open:false
           });
           let v = this.state.value;
           this.props.onOpenChange(false,v, (v && this.getValue(v)) || '');
           ReactDOM.findDOMNode(this.outInput).focus();// 按esc时候焦点回到input输入框
+        }else if(e.keyCode == KeyCode.ENTER){
+          let parsed = moment(input.value, format, true);
+          if(parsed.isValid()){
+            this.setState({
+              open:false
+            });
+            let v = this.state.value;
+            this.props.onOpenChange(false,v, (v && this.getValue(v)) || '');
+            ReactDOM.findDOMNode(this.outInput).focus();
+          }
         }
         this.props.onKeyDown&&this.props.onKeyDown(e);
       }

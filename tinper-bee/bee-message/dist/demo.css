@@ -1032,7 +1032,8 @@
         background-color: #000; }
         .u-message-notice-description-icon .uf {
           font-size: 24px;
-          line-height: 40px; }
+          line-height: 40px;
+          padding: 0; }
     .u-message-notice-close {
       position: absolute;
       right: 16px;

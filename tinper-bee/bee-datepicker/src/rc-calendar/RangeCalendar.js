@@ -671,7 +671,6 @@ class RangeCalendar extends React.Component {
         ref={this.saveRoot}
         className={classes}
         style={props.style}
-        tabIndex="0"
         onKeyDown={this.onKeyDown}
       >
         {props.renderSidebar()}
@@ -710,6 +709,7 @@ class RangeCalendar extends React.Component {
               enablePrev
               enableNext={!isClosestMonths || this.isMonthYearPanelShow(mode[1])}
               clearIcon={clearIcon}
+              tabIndex='0'
             />
             <span className={`${prefixCls}-range-middle`}>{seperator}</span>
             <CalendarPart
