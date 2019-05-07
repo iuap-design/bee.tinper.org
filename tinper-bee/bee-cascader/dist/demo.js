@@ -58,11 +58,11 @@
 	
 	var _beePanel = __webpack_require__(9);
 	
-	var _beeDrawer = __webpack_require__(82);
+	var _beeDrawer = __webpack_require__(84);
 	
 	var _beeDrawer2 = _interopRequireDefault(_beeDrawer);
 	
-	var _beeClipboard = __webpack_require__(96);
+	var _beeClipboard = __webpack_require__(98);
 	
 	var _beeClipboard2 = _interopRequireDefault(_beeClipboard);
 	
@@ -80,7 +80,7 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
 	
-	var Demo1 = __webpack_require__(250);var Demo2 = __webpack_require__(251);var Demo3 = __webpack_require__(252);var Demo4 = __webpack_require__(253);var Demo5 = __webpack_require__(254);var Demo6 = __webpack_require__(255);var Demo7 = __webpack_require__(256);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 基础级联菜单", "code": "/**\r\n *\r\n * @title 基础级联菜单\r\n * @description 级联选择对数据有较严格要求，请参照示例的格式使用options，每项数据至少包含 value、label 两项，子集为 children，以此类推。\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\r\n\nimport { Cascader,  Row, Col  } from 'tinper-bee';\r\n\r\nconst options = [{\r\n\tlabel: '基础组件',\r\n\tvalue: 'jczj',\r\n\tchildren: [{\r\n\t\tlabel: '导航',\r\n\t\tvalue: 'dh',\r\n\t\tchildren: [{\r\n\t\t\tlabel: '面包屑',\r\n\t\t\tvalue: 'mbx'\r\n\t\t},{\r\n\t\t\tlabel: '分页',\r\n\t\t\tvalue: 'fy'\r\n\t\t},{\r\n\t\t\tlabel: '标签',\r\n\t\t\tvalue: 'bq'\r\n\t\t},{\r\n\t\t\tlabel: '菜单',\r\n\t\t\tvalue: 'cd'\r\n\t\t}]\r\n\t},{\r\n\t\tlabel: '反馈',\r\n\t\tvalue: 'fk',\r\n\t\tchildren: [{\r\n\t\t\tlabel: '模态框',\r\n\t\t\tvalue: 'mtk'\r\n\t\t},{\r\n\t\t\tlabel: '通知',\r\n\t\t\tvalue: 'tz'\r\n\t\t}]\r\n \t},\r\n \t{\r\n\t\tlabel: '表单',\r\n \t    value: 'bd'\r\n \t}]\r\n\t},{\r\n\t\tlabel: '应用组件',\r\n\t\tvalue: 'yyzj',\r\n\t\tchildren: [{\r\n\t\t\tlabel: '参照',\r\n\t\t\tvalue: 'ref',\r\n\t\t\tchildren: [{\r\n\t\t\t\tlabel: '树参照',\r\n\t\t\t\tvalue: 'reftree'\r\n\t\t\t},{\r\n\t\t\t\tlabel: '表参照',\r\n\t\t\t\tvalue: 'reftable'\r\n\t\t\t},{\r\n\t\t\t\tlabel: '穿梭参照',\r\n\t\t\t\tvalue: 'reftransfer'\r\n\t\t\t}]\r\n\t\t}]\r\n\t}\r\n];\r\nclass Demo1 extends Component {\r\n\r\n\tonChange = (value, selectedOptions) => {\r\n    \tconsole.log(value, selectedOptions);\r\n\t}\r\n\t\r\n \trender(){\r\n \t\treturn(\r\n\t\t\t<Row>\r\n\t\t\t\t<Col md={4}>\r\n\t\t\t\t\t<div className=\"height-150\">\r\n\t\t\t\t\t\t<Cascader \r\n\t\t\t\t\t\t\toptions = {options} \r\n\t\t\t\t\t\t\tonChange = {this.onChange}\r\n\t\t\t\t\t\t\tplaceholder = \"请选择\"\r\n\t\t\t\t\t\t/>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</Col>\r\n\t\t\t</Row>\r\n \t\t)\r\n \t}\r\n}\r\n", "desc": " 级联选择对数据有较严格要求，请参照示例的格式使用options，每项数据至少包含 value、label 两项，子集为 children，以此类推。" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 默认值", "code": "/**\r\n *\r\n * @title 默认值\r\n * @description 默认值通过数组的方式指定。注：需要给数组的每一项指定label和value属性。\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\r\n\nimport { Cascader,  Row, Col  } from 'tinper-bee';\r\n\r\nconst options = [{\r\n\tlabel: '基础组件',\r\n\tvalue: 'jczj',\r\n\tchildren: [{\r\n\t\tlabel: '导航',\r\n\t\tvalue: 'dh',\r\n\t\tchildren: [{\r\n\t\t\tlabel: '面包屑',\r\n\t\t\tvalue: 'mbx'\r\n\t\t},{\r\n\t\t\tlabel: '分页',\r\n\t\t\tvalue: 'fy'\r\n\t\t},{\r\n\t\t\tlabel: '标签',\r\n\t\t\tvalue: 'bq'\r\n\t\t},{\r\n\t\t\tlabel: '菜单',\r\n\t\t\tvalue: 'cd'\r\n\t\t}]\r\n\t},{\r\n\t\tlabel: '反馈',\r\n\t\tvalue: 'fk',\r\n\t\tchildren: [{\r\n\t\t\tlabel: '模态框',\r\n\t\t\tvalue: 'mtk'\r\n\t\t},{\r\n\t\t\tlabel: '通知',\r\n\t\t\tvalue: 'tz'\r\n\t\t}]\r\n \t},\r\n \t{\r\n\t\tlabel: '表单',\r\n \t    value: 'bd'\r\n \t}]\r\n\t},{\r\n\t\tlabel: '应用组件',\r\n\t\tvalue: 'yyzj',\r\n\t\tchildren: [{\r\n\t\t\tlabel: '参照',\r\n\t\t\tvalue: 'ref',\r\n\t\t\tchildren: [{\r\n\t\t\t\tlabel: '树参照',\r\n\t\t\t\tvalue: 'reftree'\r\n\t\t\t},{\r\n\t\t\t\tlabel: '表参照',\r\n\t\t\t\tvalue: 'reftable'\r\n\t\t\t},{\r\n\t\t\t\tlabel: '穿梭参照',\r\n\t\t\t\tvalue: 'reftransfer'\r\n\t\t\t}]\r\n\t\t}]\r\n\t}\r\n];\r\n\r\nconst defaultOptions = [{\r\n    label: '基础组件',\r\n    value: 'jczj',\r\n}, {\r\n    label: '导航',\r\n    value: 'dh',\r\n}, {\r\n    label: '菜单',\r\n    value: 'cd',\r\n}];\r\n\r\nclass Demo2 extends Component {\r\n\r\n\tonChange = (value, selectedOptions) => {\r\n        console.log(value, selectedOptions);\r\n\t}\r\n\t\r\n \trender(){\r\n \t\treturn(\r\n\t\t\t<Row>\r\n\t\t\t\t<Col md={4}>\r\n\t\t\t\t\t<div className=\"height-150\">\r\n                        <Cascader \r\n                            defaultValue={defaultOptions}\r\n\t\t\t\t\t\t\toptions = {options} \r\n\t\t\t\t\t\t\tonChange = {this.onChange}\r\n\t\t\t\t\t\t\tplaceholder = \"请选择\"\r\n\t\t\t\t\t\t/>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</Col>\r\n\t\t\t</Row>\r\n \t\t)\r\n \t}\r\n}\r\n", "desc": " 默认值通过数组的方式指定。注：需要给数组的每一项指定label和value属性。" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 移入展开", "code": "/**\r\n *\r\n * @title 移入展开\r\n * @description 鼠标hover时展开菜单子选项\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\r\n\nimport { Cascader,  Row, Col  } from 'tinper-bee';\r\n\r\nconst options = [{\r\n\tlabel: '基础组件',\r\n\tvalue: 'jczj',\r\n\tchildren: [{\r\n\t\tlabel: '导航',\r\n\t\tvalue: 'dh',\r\n\t\tchildren: [{\r\n\t\t\tlabel: '面包屑',\r\n\t\t\tvalue: 'mbx'\r\n\t\t},{\r\n\t\t\tlabel: '分页',\r\n\t\t\tvalue: 'fy'\r\n\t\t},{\r\n\t\t\tlabel: '标签',\r\n\t\t\tvalue: 'bq'\r\n\t\t},{\r\n\t\t\tlabel: '菜单',\r\n\t\t\tvalue: 'cd'\r\n\t\t}]\r\n\t},{\r\n\t\tlabel: '反馈',\r\n\t\tvalue: 'fk',\r\n\t\tchildren: [{\r\n\t\t\tlabel: '模态框',\r\n\t\t\tvalue: 'mtk'\r\n\t\t},{\r\n\t\t\tlabel: '通知',\r\n\t\t\tvalue: 'tz'\r\n\t\t}]\r\n \t},\r\n \t{\r\n\t\tlabel: '表单',\r\n \t    value: 'bd'\r\n \t}]\r\n\t},{\r\n\t\tlabel: '应用组件',\r\n\t\tvalue: 'yyzj',\r\n\t\tchildren: [{\r\n\t\t\tlabel: '参照',\r\n\t\t\tvalue: 'ref',\r\n\t\t\tchildren: [{\r\n\t\t\t\tlabel: '树参照',\r\n\t\t\t\tvalue: 'reftree'\r\n\t\t\t},{\r\n\t\t\t\tlabel: '表参照',\r\n\t\t\t\tvalue: 'reftable'\r\n\t\t\t},{\r\n\t\t\t\tlabel: '穿梭参照',\r\n\t\t\t\tvalue: 'reftransfer'\r\n\t\t\t}]\r\n\t\t}]\r\n\t}\r\n];\r\n\r\nclass Demo3 extends Component {\r\n\r\n    onChange = (value) => {\r\n        console.log(value)\r\n    }\r\n\r\n    render(){\r\n        return (\r\n            <Row>\r\n                <Col md={4}>\r\n                    <div className=\"height-150\">\r\n                        <Cascader expandTrigger=\"hover\" options={options} onChange={this.onChange} placeholder=\"请选择\"/>\r\n                    </div>\r\n                </Col>\r\n            </Row>\r\n        )\r\n    }\r\n}\r\n\r\n", "desc": " 鼠标hover时展开菜单子选项" }, { "example": _react2['default'].createElement(Demo4, null), "title": " 禁用状态", "code": "/**\r\n *\r\n * @title 禁用状态\r\n * @description 通过`disabled`参数设置是否禁用。\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\r\n\nimport { Cascader,  Row, Col  } from 'tinper-bee';\r\n\r\nconst options = [{\r\n    label: '浙江',\r\n    value: 'zj',\r\n    children: [{\r\n            label: '杭州',\r\n            value: 'hz',\r\n            children: [{\r\n                label: '西湖',\r\n                value: 'xh',\r\n                children: [{\r\n                    label: '白娘子',\r\n                    value: 'bnz'\r\n                },{\r\n                    label: '许仙',\r\n                    value: 'xx'\r\n                }]\r\n            }]\r\n        }]\r\n    },\r\n    {\r\n        label: '江苏',\r\n    value: 'js',\r\n    children: [{\r\n            label: '南京',\r\n            value: 'nj',\r\n            children: [{\r\n                label: '中华门',\r\n                value: 'zhm'\r\n            }]\r\n        }]\r\n    },\r\n    {\r\n        label: '山东',\r\n    value: 'sd'\r\n    }\r\n];\r\n\r\nclass Demo4 extends Component {  \r\n    render(){\r\n        return (\r\n            <Row>\r\n                <Col md={4}>\r\n                    <div className=\"height-150\">\r\n                        <Cascader disabled options={options} placeholder=\"请选择地址\"/>\r\n                    </div>\r\n                </Col>\r\n            </Row>\r\n        )\r\n    }\r\n}\r\n\r\n", "desc": " 通过`disabled`参数设置是否禁用。" }, { "example": _react2['default'].createElement(Demo5, null), "title": " 选择即改变", "code": "/**\r\n *\r\n * @title 选择即改变\r\n * @description 设置属性 `changeOnSelect` 点任何一级都可以选择。\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\r\n\nimport { Cascader,  Row, Col  } from 'tinper-bee';\r\n\r\nconst options = [{\r\n\tlabel: '基础组件',\r\n\tvalue: 'jczj',\r\n\tchildren: [{\r\n\t\tlabel: '导航',\r\n\t\tvalue: 'dh',\r\n\t\tchildren: [{\r\n\t\t\tlabel: '面包屑',\r\n\t\t\tvalue: 'mbx'\r\n\t\t},{\r\n\t\t\tlabel: '分页',\r\n\t\t\tvalue: 'fy'\r\n\t\t},{\r\n\t\t\tlabel: '标签',\r\n\t\t\tvalue: 'bq'\r\n\t\t},{\r\n\t\t\tlabel: '菜单',\r\n\t\t\tvalue: 'cd'\r\n\t\t}]\r\n\t},{\r\n\t\tlabel: '反馈',\r\n\t\tvalue: 'fk',\r\n\t\tchildren: [{\r\n\t\t\tlabel: '模态框',\r\n\t\t\tvalue: 'mtk'\r\n\t\t},{\r\n\t\t\tlabel: '通知',\r\n\t\t\tvalue: 'tz'\r\n\t\t}]\r\n \t},\r\n \t{\r\n\t\tlabel: '表单',\r\n \t    value: 'bd'\r\n \t}]\r\n\t},{\r\n\t\tlabel: '应用组件',\r\n\t\tvalue: 'yyzj',\r\n\t\tchildren: [{\r\n\t\t\tlabel: '参照',\r\n\t\t\tvalue: 'ref',\r\n\t\t\tchildren: [{\r\n\t\t\t\tlabel: '树参照',\r\n\t\t\t\tvalue: 'reftree'\r\n\t\t\t},{\r\n\t\t\t\tlabel: '表参照',\r\n\t\t\t\tvalue: 'reftable'\r\n\t\t\t},{\r\n\t\t\t\tlabel: '穿梭参照',\r\n\t\t\t\tvalue: 'reftransfer'\r\n\t\t\t}]\r\n\t\t}]\r\n\t}\r\n];\r\n\r\nclass Demo5 extends Component {  \r\n    render(){\r\n        return (\r\n            <Row>\r\n                <Col md={4}>\r\n                    <div className=\"height-150\">\r\n                        <Cascader changeOnSelect options={options} placeholder=\"请选择\"/>\r\n                    </div>\r\n                </Col>\r\n            </Row>\r\n        )\r\n    }\r\n}\r\n\r\n", "desc": " 设置属性 `changeOnSelect` 点任何一级都可以选择。" }, { "example": _react2['default'].createElement(Demo6, null), "title": " 动态改变options", "code": "/**\r\n *\r\n * @title 动态改变options\r\n * @description 通过动态设置`options`参数，即可灵活改变数据源。\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\r\n\n\nimport { Cascader, Button,  Row, Col  } from 'tinper-bee';\r\n\r\nconst baseOptions = [{\r\n    label: '基础组件',\r\n    value: 'jczj',\r\n    children: [{\r\n        label: '导航',\r\n        value: 'dh',\r\n        children: [{\r\n            label: '面包屑',\r\n            value: 'mbx'\r\n        },{\r\n            label: '分页',\r\n            value: 'fy'\r\n        },{\r\n            label: '标签',\r\n            value: 'bq'\r\n        },{\r\n            label: '菜单',\r\n            value: 'cd'\r\n        }]\r\n    },{\r\n        label: '反馈',\r\n        value: 'fk',\r\n        children: [{\r\n            label: '模态框',\r\n            value: 'mtk'\r\n        },{\r\n            label: '通知',\r\n            value: 'tz'\r\n        }]\r\n        },\r\n        {\r\n        label: '表单',\r\n            value: 'bd'\r\n        }]\r\n    },{\r\n        label: '应用组件',\r\n        value: 'yyzj',\r\n        children: [{\r\n            label: '参照',\r\n            value: 'ref',\r\n            children: [{\r\n                label: '树参照',\r\n                value: 'reftree'\r\n            },{\r\n                label: '表参照',\r\n                value: 'reftable'\r\n            },{\r\n                label: '穿梭参照',\r\n                value: 'reftransfer'\r\n            }]\r\n        }]\r\n    }\r\n];\r\n\r\nclass Demo6 extends Component {  \r\n    state = {\r\n        options: baseOptions\r\n    }\r\n    \r\n    changeOptions = () => {\r\n        this.setState({\r\n            options: [{\r\n                label: '北京',\r\n                value: 'bj',\r\n                children: [{\r\n                        label: '故宫',\r\n                        value: 'gg',\r\n                    },{\r\n                        label: '天坛',\r\n                        value: 'tt',\r\n                    },{\r\n                        label: '王府井',\r\n                        value: 'wfj',\r\n                    }]\r\n                },\r\n                {\r\n                    label: '江苏',\r\n                    value: 'js',\r\n                    children: [{\r\n                            label: '南京',\r\n                            value: 'nj',\r\n                            children: [{\r\n                                label: '中华门',\r\n                                value: 'zhm'\r\n                            }]\r\n                        }]\r\n                    },\r\n                    {\r\n                        label: '山东',\r\n                    value: 'sd'\r\n                }\r\n            ]\r\n        })\r\n    }\r\n\r\n    render(){\r\n        return (\r\n            <Row>\r\n                <Col md={4}>\r\n                    <div className=\"height-150\">\r\n                        <Button colors=\"primary\" onClick={this.changeOptions} style={{marginBottom:8+'px'}}>点击改变选项数组</Button>\r\n                        <Cascader options={this.state.options} placeholder=\"请选择\"/>\r\n                    </div>\r\n                </Col>\r\n            </Row>\r\n        )\r\n    }\r\n}\r\n\r\n", "desc": " 通过动态设置`options`参数，即可灵活改变数据源。" }, { "example": _react2['default'].createElement(Demo7, null), "title": " 不同尺寸的Cascader", "code": "/**\r\n *\r\n * @title 不同尺寸的Cascader\r\n * @description 通过设置`size`属性为 \"lg\" 和 \"sm\" 将输入框设置为大和小尺寸，不设置为默认（中）尺寸。\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\r\n\n\nimport { Cascader, Button,  Row, Col  } from 'tinper-bee';\r\n\r\nconst options = [{\r\n    label: '基础组件',\r\n    value: 'jczj',\r\n    children: [{\r\n        label: '导航',\r\n        value: 'dh',\r\n        children: [{\r\n            label: '面包屑',\r\n            value: 'mbx'\r\n        },{\r\n            label: '分页',\r\n            value: 'fy'\r\n        },{\r\n            label: '标签',\r\n            value: 'bq'\r\n        },{\r\n            label: '菜单',\r\n            value: 'cd'\r\n        }]\r\n    },{\r\n        label: '反馈',\r\n        value: 'fk',\r\n        children: [{\r\n            label: '模态框',\r\n            value: 'mtk'\r\n        },{\r\n            label: '通知',\r\n            value: 'tz'\r\n        }]\r\n        },\r\n        {\r\n        label: '表单',\r\n            value: 'bd'\r\n        }]\r\n    },{\r\n        label: '应用组件',\r\n        value: 'yyzj',\r\n        children: [{\r\n            label: '参照',\r\n            value: 'ref',\r\n            children: [{\r\n                label: '树参照',\r\n                value: 'reftree'\r\n            },{\r\n                label: '表参照',\r\n                value: 'reftable'\r\n            },{\r\n                label: '穿梭参照',\r\n                value: 'reftransfer'\r\n            }]\r\n        }]\r\n    }\r\n];\r\n\r\nclass Demo7 extends Component {  \r\n\r\n    render(){\r\n        return (\r\n            <Row>\r\n                <Col md={4}>\r\n                    <div className=\"height-150 demo7\">\r\n                        <Cascader size=\"sm\" options={options} placeholder=\"请选择\"/>\r\n                        <Cascader options={options} placeholder=\"请选择\"/>\r\n                        <Cascader size=\"lg\" options={options} placeholder=\"请选择\"/>\r\n                    </div>\r\n                </Col>\r\n            </Row>\r\n        )\r\n    }\r\n}\r\n\r\n", "desc": " 通过设置`size`属性为 \"lg\" 和 \"sm\" 将输入框设置为大和小尺寸，不设置为默认（中）尺寸。", "scss_code": ".demo7{\r\n    span{\r\n        margin-bottom: 16px;\r\n    }\r\n    .u-form-control.lg{\r\n        width: 183px;\r\n    }\r\n}" }];
+	var Demo1 = __webpack_require__(250);var Demo2 = __webpack_require__(251);var Demo3 = __webpack_require__(252);var Demo4 = __webpack_require__(253);var Demo5 = __webpack_require__(254);var Demo6 = __webpack_require__(255);var Demo7 = __webpack_require__(256);var Demo8 = __webpack_require__(257);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 基础级联菜单", "code": "/**\n *\n * @title 基础级联菜单\n * @description 级联选择对数据有较严格要求，请参照示例的格式使用options，每项数据至少包含 value、label 两项，子集为 children，以此类推。\n *\n */\n\nimport React, { Component } from 'react';\nimport { Cascader,  Row, Col  } from 'tinper-bee';\n\nconst options = [{\n\tlabel: '基础组件',\n\tvalue: 'jczj',\n\tchildren: [{\n\t\tlabel: '导航',\n\t\tvalue: 'dh',\n\t\tchildren: [{\n\t\t\tlabel: '面包屑',\n\t\t\tvalue: 'mbx'\n\t\t},{\n\t\t\tlabel: '分页',\n\t\t\tvalue: 'fy'\n\t\t},{\n\t\t\tlabel: '标签',\n\t\t\tvalue: 'bq'\n\t\t},{\n\t\t\tlabel: '菜单',\n\t\t\tvalue: 'cd'\n\t\t}]\n\t},{\n\t\tlabel: '反馈',\n\t\tvalue: 'fk',\n\t\tchildren: [{\n\t\t\tlabel: '模态框',\n\t\t\tvalue: 'mtk'\n\t\t},{\n\t\t\tlabel: '通知',\n\t\t\tvalue: 'tz'\n\t\t}]\n \t},\n \t{\n\t\tlabel: '表单',\n \t    value: 'bd'\n \t}]\n\t},{\n\t\tlabel: '应用组件',\n\t\tvalue: 'yyzj',\n\t\tchildren: [{\n\t\t\tlabel: '参照',\n\t\t\tvalue: 'ref',\n\t\t\tchildren: [{\n\t\t\t\tlabel: '树参照',\n\t\t\t\tvalue: 'reftree'\n\t\t\t},{\n\t\t\t\tlabel: '表参照',\n\t\t\t\tvalue: 'reftable'\n\t\t\t},{\n\t\t\t\tlabel: '穿梭参照',\n\t\t\t\tvalue: 'reftransfer'\n\t\t\t}]\n\t\t}]\n\t}\n];\nclass Demo1 extends Component {\n\n\tonChange = (value, selectedOptions) => {\n\t\tconsole.log(value, selectedOptions);\n\t}\n\t\n \trender(){\n \t\treturn(\n\t\t\t<Row>\n\t\t\t\t<Col md={4}>\n\t\t\t\t\t<div className=\"height-150\">\n\t\t\t\t\t\t<Cascader \n\t\t\t\t\t\t\toptions = {options} \n\t\t\t\t\t\t\tonChange = {this.onChange}\n\t\t\t\t\t\t\tplaceholder = \"请选择\"\n\t\t\t\t\t\t/>\n\t\t\t\t\t</div>\n\t\t\t\t</Col>\n\t\t\t</Row>\n \t\t)\n \t}\n}\n", "desc": " 级联选择对数据有较严格要求，请参照示例的格式使用options，每项数据至少包含 value、label 两项，子集为 children，以此类推。" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 默认值", "code": "/**\r\n *\r\n * @title 默认值\r\n * @description 默认值通过数组的方式指定。注：需要给数组的每一项指定label和value属性。\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\r\n\nimport { Cascader,  Row, Col  } from 'tinper-bee';\r\n\r\nconst options = [{\r\n\tlabel: '基础组件',\r\n\tvalue: 'jczj',\r\n\tchildren: [{\r\n\t\tlabel: '导航',\r\n\t\tvalue: 'dh',\r\n\t\tchildren: [{\r\n\t\t\tlabel: '面包屑',\r\n\t\t\tvalue: 'mbx'\r\n\t\t},{\r\n\t\t\tlabel: '分页',\r\n\t\t\tvalue: 'fy'\r\n\t\t},{\r\n\t\t\tlabel: '标签',\r\n\t\t\tvalue: 'bq'\r\n\t\t},{\r\n\t\t\tlabel: '菜单',\r\n\t\t\tvalue: 'cd'\r\n\t\t}]\r\n\t},{\r\n\t\tlabel: '反馈',\r\n\t\tvalue: 'fk',\r\n\t\tchildren: [{\r\n\t\t\tlabel: '模态框',\r\n\t\t\tvalue: 'mtk'\r\n\t\t},{\r\n\t\t\tlabel: '通知',\r\n\t\t\tvalue: 'tz'\r\n\t\t}]\r\n \t},\r\n \t{\r\n\t\tlabel: '表单',\r\n \t    value: 'bd'\r\n \t}]\r\n\t},{\r\n\t\tlabel: '应用组件',\r\n\t\tvalue: 'yyzj',\r\n\t\tchildren: [{\r\n\t\t\tlabel: '参照',\r\n\t\t\tvalue: 'ref',\r\n\t\t\tchildren: [{\r\n\t\t\t\tlabel: '树参照',\r\n\t\t\t\tvalue: 'reftree'\r\n\t\t\t},{\r\n\t\t\t\tlabel: '表参照',\r\n\t\t\t\tvalue: 'reftable'\r\n\t\t\t},{\r\n\t\t\t\tlabel: '穿梭参照',\r\n\t\t\t\tvalue: 'reftransfer'\r\n\t\t\t}]\r\n\t\t}]\r\n\t}\r\n];\r\n\r\nconst defaultOptions = [{\r\n    label: '基础组件',\r\n    value: 'jczj',\r\n}, {\r\n    label: '导航',\r\n    value: 'dh',\r\n}, {\r\n    label: '菜单',\r\n    value: 'cd',\r\n}];\r\n\r\nclass Demo2 extends Component {\r\n\r\n\tonChange = (value, selectedOptions) => {\r\n        console.log(value, selectedOptions);\r\n\t}\r\n\t\r\n \trender(){\r\n \t\treturn(\r\n\t\t\t<Row>\r\n\t\t\t\t<Col md={4}>\r\n\t\t\t\t\t<div className=\"height-150\">\r\n                        <Cascader \r\n                            defaultValue={defaultOptions}\r\n\t\t\t\t\t\t\toptions = {options} \r\n\t\t\t\t\t\t\tonChange = {this.onChange}\r\n\t\t\t\t\t\t\tplaceholder = \"请选择\"\r\n\t\t\t\t\t\t/>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</Col>\r\n\t\t\t</Row>\r\n \t\t)\r\n \t}\r\n}\r\n", "desc": " 默认值通过数组的方式指定。注：需要给数组的每一项指定label和value属性。" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 移入展开", "code": "/**\r\n *\r\n * @title 移入展开\r\n * @description 鼠标hover时展开菜单子选项\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\r\n\nimport { Cascader,  Row, Col  } from 'tinper-bee';\r\n\r\nconst options = [{\r\n\tlabel: '基础组件',\r\n\tvalue: 'jczj',\r\n\tchildren: [{\r\n\t\tlabel: '导航',\r\n\t\tvalue: 'dh',\r\n\t\tchildren: [{\r\n\t\t\tlabel: '面包屑',\r\n\t\t\tvalue: 'mbx'\r\n\t\t},{\r\n\t\t\tlabel: '分页',\r\n\t\t\tvalue: 'fy'\r\n\t\t},{\r\n\t\t\tlabel: '标签',\r\n\t\t\tvalue: 'bq'\r\n\t\t},{\r\n\t\t\tlabel: '菜单',\r\n\t\t\tvalue: 'cd'\r\n\t\t}]\r\n\t},{\r\n\t\tlabel: '反馈',\r\n\t\tvalue: 'fk',\r\n\t\tchildren: [{\r\n\t\t\tlabel: '模态框',\r\n\t\t\tvalue: 'mtk'\r\n\t\t},{\r\n\t\t\tlabel: '通知',\r\n\t\t\tvalue: 'tz'\r\n\t\t}]\r\n \t},\r\n \t{\r\n\t\tlabel: '表单',\r\n \t    value: 'bd'\r\n \t}]\r\n\t},{\r\n\t\tlabel: '应用组件',\r\n\t\tvalue: 'yyzj',\r\n\t\tchildren: [{\r\n\t\t\tlabel: '参照',\r\n\t\t\tvalue: 'ref',\r\n\t\t\tchildren: [{\r\n\t\t\t\tlabel: '树参照',\r\n\t\t\t\tvalue: 'reftree'\r\n\t\t\t},{\r\n\t\t\t\tlabel: '表参照',\r\n\t\t\t\tvalue: 'reftable'\r\n\t\t\t},{\r\n\t\t\t\tlabel: '穿梭参照',\r\n\t\t\t\tvalue: 'reftransfer'\r\n\t\t\t}]\r\n\t\t}]\r\n\t}\r\n];\r\n\r\nclass Demo3 extends Component {\r\n\r\n    onChange = (value) => {\r\n        console.log(value)\r\n    }\r\n\r\n    render(){\r\n        return (\r\n            <Row>\r\n                <Col md={4}>\r\n                    <div className=\"height-150\">\r\n                        <Cascader expandTrigger=\"hover\" options={options} onChange={this.onChange} placeholder=\"请选择\"/>\r\n                    </div>\r\n                </Col>\r\n            </Row>\r\n        )\r\n    }\r\n}\r\n\r\n", "desc": " 鼠标hover时展开菜单子选项" }, { "example": _react2['default'].createElement(Demo4, null), "title": " 禁用状态", "code": "/**\r\n *\r\n * @title 禁用状态\r\n * @description 通过`disabled`参数设置是否禁用。\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\r\n\nimport { Cascader,  Row, Col  } from 'tinper-bee';\r\n\r\nconst options = [{\r\n    label: '浙江',\r\n    value: 'zj',\r\n    children: [{\r\n            label: '杭州',\r\n            value: 'hz',\r\n            children: [{\r\n                label: '西湖',\r\n                value: 'xh',\r\n                children: [{\r\n                    label: '白娘子',\r\n                    value: 'bnz'\r\n                },{\r\n                    label: '许仙',\r\n                    value: 'xx'\r\n                }]\r\n            }]\r\n        }]\r\n    },\r\n    {\r\n        label: '江苏',\r\n    value: 'js',\r\n    children: [{\r\n            label: '南京',\r\n            value: 'nj',\r\n            children: [{\r\n                label: '中华门',\r\n                value: 'zhm'\r\n            }]\r\n        }]\r\n    },\r\n    {\r\n        label: '山东',\r\n    value: 'sd'\r\n    }\r\n];\r\n\r\nclass Demo4 extends Component {  \r\n    render(){\r\n        return (\r\n            <Row>\r\n                <Col md={4}>\r\n                    <div className=\"height-150\">\r\n                        <Cascader disabled options={options} placeholder=\"请选择地址\"/>\r\n                    </div>\r\n                </Col>\r\n            </Row>\r\n        )\r\n    }\r\n}\r\n\r\n", "desc": " 通过`disabled`参数设置是否禁用。" }, { "example": _react2['default'].createElement(Demo5, null), "title": " 选择即改变", "code": "/**\r\n *\r\n * @title 选择即改变\r\n * @description 设置属性 `changeOnSelect` 点任何一级都可以选择。\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\r\n\nimport { Cascader,  Row, Col  } from 'tinper-bee';\r\n\r\nconst options = [{\r\n\tlabel: '基础组件',\r\n\tvalue: 'jczj',\r\n\tchildren: [{\r\n\t\tlabel: '导航',\r\n\t\tvalue: 'dh',\r\n\t\tchildren: [{\r\n\t\t\tlabel: '面包屑',\r\n\t\t\tvalue: 'mbx'\r\n\t\t},{\r\n\t\t\tlabel: '分页',\r\n\t\t\tvalue: 'fy'\r\n\t\t},{\r\n\t\t\tlabel: '标签',\r\n\t\t\tvalue: 'bq'\r\n\t\t},{\r\n\t\t\tlabel: '菜单',\r\n\t\t\tvalue: 'cd'\r\n\t\t}]\r\n\t},{\r\n\t\tlabel: '反馈',\r\n\t\tvalue: 'fk',\r\n\t\tchildren: [{\r\n\t\t\tlabel: '模态框',\r\n\t\t\tvalue: 'mtk'\r\n\t\t},{\r\n\t\t\tlabel: '通知',\r\n\t\t\tvalue: 'tz'\r\n\t\t}]\r\n \t},\r\n \t{\r\n\t\tlabel: '表单',\r\n \t    value: 'bd'\r\n \t}]\r\n\t},{\r\n\t\tlabel: '应用组件',\r\n\t\tvalue: 'yyzj',\r\n\t\tchildren: [{\r\n\t\t\tlabel: '参照',\r\n\t\t\tvalue: 'ref',\r\n\t\t\tchildren: [{\r\n\t\t\t\tlabel: '树参照',\r\n\t\t\t\tvalue: 'reftree'\r\n\t\t\t},{\r\n\t\t\t\tlabel: '表参照',\r\n\t\t\t\tvalue: 'reftable'\r\n\t\t\t},{\r\n\t\t\t\tlabel: '穿梭参照',\r\n\t\t\t\tvalue: 'reftransfer'\r\n\t\t\t}]\r\n\t\t}]\r\n\t}\r\n];\r\n\r\nclass Demo5 extends Component {  \r\n    render(){\r\n        return (\r\n            <Row>\r\n                <Col md={4}>\r\n                    <div className=\"height-150\">\r\n                        <Cascader changeOnSelect options={options} placeholder=\"请选择\"/>\r\n                    </div>\r\n                </Col>\r\n            </Row>\r\n        )\r\n    }\r\n}\r\n\r\n", "desc": " 设置属性 `changeOnSelect` 点任何一级都可以选择。" }, { "example": _react2['default'].createElement(Demo6, null), "title": " 动态改变options", "code": "/**\r\n *\r\n * @title 动态改变options\r\n * @description 通过动态设置`options`参数，即可灵活改变数据源。\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\r\n\n\nimport { Cascader, Button,  Row, Col  } from 'tinper-bee';\r\n\r\nconst baseOptions = [{\r\n    label: '基础组件',\r\n    value: 'jczj',\r\n    children: [{\r\n        label: '导航',\r\n        value: 'dh',\r\n        children: [{\r\n            label: '面包屑',\r\n            value: 'mbx'\r\n        },{\r\n            label: '分页',\r\n            value: 'fy'\r\n        },{\r\n            label: '标签',\r\n            value: 'bq'\r\n        },{\r\n            label: '菜单',\r\n            value: 'cd'\r\n        }]\r\n    },{\r\n        label: '反馈',\r\n        value: 'fk',\r\n        children: [{\r\n            label: '模态框',\r\n            value: 'mtk'\r\n        },{\r\n            label: '通知',\r\n            value: 'tz'\r\n        }]\r\n        },\r\n        {\r\n        label: '表单',\r\n            value: 'bd'\r\n        }]\r\n    },{\r\n        label: '应用组件',\r\n        value: 'yyzj',\r\n        children: [{\r\n            label: '参照',\r\n            value: 'ref',\r\n            children: [{\r\n                label: '树参照',\r\n                value: 'reftree'\r\n            },{\r\n                label: '表参照',\r\n                value: 'reftable'\r\n            },{\r\n                label: '穿梭参照',\r\n                value: 'reftransfer'\r\n            }]\r\n        }]\r\n    }\r\n];\r\n\r\nclass Demo6 extends Component {  \r\n    state = {\r\n        options: baseOptions\r\n    }\r\n    \r\n    changeOptions = () => {\r\n        this.setState({\r\n            options: [{\r\n                label: '北京',\r\n                value: 'bj',\r\n                children: [{\r\n                        label: '故宫',\r\n                        value: 'gg',\r\n                    },{\r\n                        label: '天坛',\r\n                        value: 'tt',\r\n                    },{\r\n                        label: '王府井',\r\n                        value: 'wfj',\r\n                    }]\r\n                },\r\n                {\r\n                    label: '江苏',\r\n                    value: 'js',\r\n                    children: [{\r\n                            label: '南京',\r\n                            value: 'nj',\r\n                            children: [{\r\n                                label: '中华门',\r\n                                value: 'zhm'\r\n                            }]\r\n                        }]\r\n                    },\r\n                    {\r\n                        label: '山东',\r\n                    value: 'sd'\r\n                }\r\n            ]\r\n        })\r\n    }\r\n\r\n    render(){\r\n        return (\r\n            <Row>\r\n                <Col md={4}>\r\n                    <div className=\"height-150\">\r\n                        <Button colors=\"primary\" onClick={this.changeOptions} style={{marginBottom:8+'px'}}>点击改变选项数组</Button>\r\n                        <Cascader options={this.state.options} placeholder=\"请选择\"/>\r\n                    </div>\r\n                </Col>\r\n            </Row>\r\n        )\r\n    }\r\n}\r\n\r\n", "desc": " 通过动态设置`options`参数，即可灵活改变数据源。" }, { "example": _react2['default'].createElement(Demo7, null), "title": " 不同尺寸的Cascader", "code": "/**\r\n *\r\n * @title 不同尺寸的Cascader\r\n * @description 通过设置`size`属性为 \"lg\" 和 \"sm\" 将输入框设置为大和小尺寸，不设置为默认（中）尺寸。\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\r\n\n\nimport { Cascader, Button,  Row, Col  } from 'tinper-bee';\r\n\r\nconst options = [{\r\n    label: '基础组件',\r\n    value: 'jczj',\r\n    children: [{\r\n        label: '导航',\r\n        value: 'dh',\r\n        children: [{\r\n            label: '面包屑',\r\n            value: 'mbx'\r\n        },{\r\n            label: '分页',\r\n            value: 'fy'\r\n        },{\r\n            label: '标签',\r\n            value: 'bq'\r\n        },{\r\n            label: '菜单',\r\n            value: 'cd'\r\n        }]\r\n    },{\r\n        label: '反馈',\r\n        value: 'fk',\r\n        children: [{\r\n            label: '模态框',\r\n            value: 'mtk'\r\n        },{\r\n            label: '通知',\r\n            value: 'tz'\r\n        }]\r\n        },\r\n        {\r\n        label: '表单',\r\n            value: 'bd'\r\n        }]\r\n    },{\r\n        label: '应用组件',\r\n        value: 'yyzj',\r\n        children: [{\r\n            label: '参照',\r\n            value: 'ref',\r\n            children: [{\r\n                label: '树参照',\r\n                value: 'reftree'\r\n            },{\r\n                label: '表参照',\r\n                value: 'reftable'\r\n            },{\r\n                label: '穿梭参照',\r\n                value: 'reftransfer'\r\n            }]\r\n        }]\r\n    }\r\n];\r\n\r\nclass Demo7 extends Component {  \r\n\r\n    render(){\r\n        return (\r\n            <Row>\r\n                <Col md={4}>\r\n                    <div className=\"height-150 demo7\">\r\n                        <Cascader size=\"sm\" options={options} placeholder=\"请选择\"/>\r\n                        <Cascader options={options} placeholder=\"请选择\"/>\r\n                        <Cascader size=\"lg\" options={options} placeholder=\"请选择\"/>\r\n                    </div>\r\n                </Col>\r\n            </Row>\r\n        )\r\n    }\r\n}\r\n\r\n", "desc": " 通过设置`size`属性为 \"lg\" 和 \"sm\" 将输入框设置为大和小尺寸，不设置为默认（中）尺寸。", "scss_code": ".demo7{\r\n    span{\r\n        margin-bottom: 16px;\r\n    }\r\n    .u-form-control.lg{\r\n        width: 183px;\r\n    }\r\n}" }, { "example": _react2['default'].createElement(Demo8, null), "title": " 自定义输入框显示", "code": "/**\r\n *\r\n * @title 自定义输入框显示\r\n * @description 通过设置 `inputValue` 属性，可自定义输入框展示内容。可在 onChange 回调函数中对数据进行自定义处理。\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\r\n\nimport { Cascader,  Row, Col  } from 'tinper-bee';\r\n\r\nconst options = [{\r\n\tlabel: '基础组件',\r\n\tvalue: 'jczj',\r\n\tchildren: [{\r\n\t\tlabel: '导航',\r\n\t\tvalue: 'dh',\r\n\t\tchildren: [{\r\n\t\t\tlabel: '面包屑',\r\n\t\t\tvalue: 'mbx'\r\n\t\t},{\r\n\t\t\tlabel: '分页',\r\n\t\t\tvalue: 'fy'\r\n\t\t},{\r\n\t\t\tlabel: '标签',\r\n\t\t\tvalue: 'bq'\r\n\t\t},{\r\n\t\t\tlabel: '菜单',\r\n\t\t\tvalue: 'cd'\r\n\t\t}]\r\n\t},{\r\n\t\tlabel: '反馈',\r\n\t\tvalue: 'fk',\r\n\t\tchildren: [{\r\n\t\t\tlabel: '模态框',\r\n\t\t\tvalue: 'mtk'\r\n\t\t},{\r\n\t\t\tlabel: '通知',\r\n\t\t\tvalue: 'tz'\r\n\t\t}]\r\n \t},\r\n \t{\r\n\t\tlabel: '表单',\r\n \t    value: 'bd'\r\n \t}]\r\n\t},{\r\n\t\tlabel: '应用组件',\r\n\t\tvalue: 'yyzj',\r\n\t\tchildren: [{\r\n\t\t\tlabel: '参照',\r\n\t\t\tvalue: 'ref',\r\n\t\t\tchildren: [{\r\n\t\t\t\tlabel: '树参照',\r\n\t\t\t\tvalue: 'reftree'\r\n\t\t\t},{\r\n\t\t\t\tlabel: '表参照',\r\n\t\t\t\tvalue: 'reftable'\r\n\t\t\t},{\r\n\t\t\t\tlabel: '穿梭参照',\r\n\t\t\t\tvalue: 'reftransfer'\r\n\t\t\t}]\r\n\t\t}]\r\n\t}\r\n];\r\nclass Demo8 extends Component {\r\n\tconstructor(props){\r\n\t\tsuper(props);\r\n\t\tthis.state = {\r\n\t\t\tinputValue:\"\"\r\n\t\t}\r\n\t}\r\n\r\n\tonChange = (value, selectedOptions) => {\r\n        console.log(value, selectedOptions);\r\n        // 自定义输入框显示内容\r\n        let lastLabel = '';\r\n        if (typeof selectedOptions !== 'undefined') {\r\n            lastLabel = selectedOptions[selectedOptions.length - 1].label;\r\n        }\r\n        this.setState({ \r\n            inputValue : lastLabel\r\n        })\r\n\t}\r\n\t\r\n \trender(){\r\n \t\treturn(\r\n\t\t\t<Row>\r\n\t\t\t\t<Col md={4}>\r\n\t\t\t\t\t<div className=\"height-150\">\r\n\t\t\t\t\t\t<Cascader \r\n\t\t\t\t\t\t\toptions = {options} \r\n\t\t\t\t\t\t\tonChange = {this.onChange}\r\n\t\t\t\t\t\t\tplaceholder = \"请选择\"\r\n\t\t\t\t\t\t\tinputValue = {this.state.inputValue}\r\n\t\t\t\t\t\t/>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</Col>\r\n\t\t\t</Row>\r\n \t\t)\r\n \t}\r\n}\r\n", "desc": " 通过设置 `inputValue` 属性，可自定义输入框展示内容。可在 onChange 回调函数中对数据进行自定义处理。" }];
 	
 	var Demo = function (_Component) {
 	    _inherits(Demo, _Component);
@@ -673,7 +673,7 @@
 	
 	var _Panel3 = _interopRequireDefault(_Panel2);
 	
-	var _PanelGroup2 = __webpack_require__(81);
+	var _PanelGroup2 = __webpack_require__(83);
 	
 	var _PanelGroup3 = _interopRequireDefault(_PanelGroup2);
 	
@@ -712,7 +712,7 @@
 	
 	var _propTypes2 = _interopRequireDefault(_propTypes);
 	
-	var _copyToClipboard = __webpack_require__(79);
+	var _copyToClipboard = __webpack_require__(81);
 	
 	var _copyToClipboard2 = _interopRequireDefault(_copyToClipboard);
 	
@@ -5606,16 +5606,6 @@
 	  var documentWidth = documentElement.scrollWidth;
 	  var documentHeight = documentElement.scrollHeight;
 	
-	  // scrollXXX on html is sync with body which means overflow: hidden on body gets wrong scrollXXX.
-	  // We should cut this ourself.
-	  var bodyStyle = window.getComputedStyle(body);
-	  if (bodyStyle.overflowX === 'hidden') {
-	    documentWidth = win.innerWidth;
-	  }
-	  if (bodyStyle.overflowY === 'hidden') {
-	    documentHeight = win.innerHeight;
-	  }
-	
 	  // Reset element position after calculate the visible area
 	  if (element.style) {
 	    element.style.position = originalPosition;
@@ -6131,8 +6121,6 @@
 	    value: true
 	});
 	
-	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-	
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 	
 	var _react = __webpack_require__(1);
@@ -6150,6 +6138,7 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 	
 	var defaultDuration = 1.5;
+	var newDuration = void 0;
 	var defaultTop = 0;
 	var defaultBottom = 48;
 	var bottom = 90;
@@ -6237,6 +6226,25 @@
 	        callback(messageInstance);
 	        return;
 	    }
+	    switch (position) {
+	        case 'top':
+	            positionObj[position].notificationStyle.top = defaultTop;
+	            break;
+	        case 'bottom':
+	            positionObj[position].notificationStyle.bottom = defaultBottom;
+	            break;
+	        case 'bottomRight':
+	            positionObj[position].notificationStyle.bottom = bottom;
+	            break;
+	        case 'bottomLeft':
+	            positionObj[position].notificationStyle.bottom = bottom;
+	            break;
+	        default:
+	            break;
+	    }
+	    if (position !== 'top' && position !== 'bottom') {
+	        positionObj[position].messageStyle.width = width;
+	    }
 	    var style = positionObj[position].notificationStyle;
 	    var instanceObj = {
 	        clsPrefix: clsPrefix,
@@ -6272,7 +6280,6 @@
 	    }[type];
 	
 	    var positionStyle = positionObj[position].messageStyle;
-	
 	    getMessageInstance(position, function (instance) {
 	        instance.notice({
 	            key: key,
@@ -6308,8 +6315,12 @@
 	
 	exports["default"] = {
 	    create: function create(obj) {
+	        if (newDuration) {
+	            //如果在config方法里设置了duration
+	            obj.duration = newDuration;
+	        }
 	        var content = obj.content || '';
-	        var duration = _typeof(obj.duration) == undefined ? defaultDuration : obj.duration;
+	        var duration = typeof obj.duration == 'undefined' ? defaultDuration : obj.duration;
 	        var color = obj.color || 'dark';
 	        var onClose = obj.onClose || noop;
 	        var position = obj.position || "top";
@@ -6323,6 +6334,7 @@
 	        }
 	        if (options.duration !== undefined) {
 	            defaultDuration = options.duration;
+	            newDuration = defaultDuration;
 	        }
 	        if (options.clsPrefix !== undefined) {
 	            clsPrefix = options.clsPrefix;
@@ -6334,7 +6346,7 @@
 	            bottom = options.bottom;
 	        }
 	        if (options.width !== undefined) {
-	            bottom = options.width;
+	            width = options.width;
 	        }
 	    },
 	    destroy: function destroy() {
@@ -7431,6 +7443,10 @@
 	
 	var _propTypes2 = _interopRequireDefault(_propTypes);
 	
+	var _beeIcon = __webpack_require__(79);
+	
+	var _beeIcon2 = _interopRequireDefault(_beeIcon);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 	
 	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
@@ -7536,7 +7552,11 @@
 	      closable ? _react2["default"].createElement(
 	        'a',
 	        { tabIndex: '0', onClick: this.close, className: componentClass + '-close' },
-	        _react2["default"].createElement('span', { className: componentClass + '-close-x' })
+	        _react2["default"].createElement(
+	          'span',
+	          { className: componentClass + '-close-x' },
+	          _react2["default"].createElement(_beeIcon2["default"], { type: 'uf-close' })
+	        )
 	      ) : null
 	    );
 	  };
@@ -7558,18 +7578,124 @@
 
 	'use strict';
 	
-	var deselectCurrent = __webpack_require__(80);
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
 	
-	var defaultMessage = 'Copy to clipboard: #{key}, Enter';
+	var _Icon = __webpack_require__(80);
+	
+	var _Icon2 = _interopRequireDefault(_Icon);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+	
+	exports["default"] = _Icon2["default"];
+	module.exports = exports['default'];
+
+/***/ }),
+/* 80 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _classnames = __webpack_require__(5);
+	
+	var _classnames2 = _interopRequireDefault(_classnames);
+	
+	var _propTypes = __webpack_require__(6);
+	
+	var _propTypes2 = _interopRequireDefault(_propTypes);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+	
+	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
+	
+	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
+	
+	var propTypes = {
+		type: _propTypes2["default"].string
+	
+	};
+	/**
+	 *  badge 默认显示内容1
+	 */
+	var defaultProps = {
+		clsPrefix: 'uf'
+	};
+	
+	var Icon = function (_Component) {
+		_inherits(Icon, _Component);
+	
+		function Icon(props) {
+			_classCallCheck(this, Icon);
+	
+			return _possibleConstructorReturn(this, _Component.call(this, props));
+		}
+	
+		Icon.prototype.render = function render() {
+			var _props = this.props,
+			    type = _props.type,
+			    className = _props.className,
+			    clsPrefix = _props.clsPrefix,
+			    others = _objectWithoutProperties(_props, ['type', 'className', 'clsPrefix']);
+	
+			var clsObj = {};
+	
+			var classNames = (0, _classnames2["default"])(clsPrefix, type);
+	
+			return _react2["default"].createElement('i', _extends({}, others, { className: (0, _classnames2["default"])(classNames, className) }));
+		};
+	
+		return Icon;
+	}(_react.Component);
+	
+	Icon.defaultProps = defaultProps;
+	Icon.propTypes = propTypes;
+	
+	exports["default"] = Icon;
+	module.exports = exports['default'];
+
+/***/ }),
+/* 81 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	var deselectCurrent = __webpack_require__(82);
+	
+	var defaultMessage = "Copy to clipboard: #{key}, Enter";
 	
 	function format(message) {
-	  var copyKey = (/mac os x/i.test(navigator.userAgent) ? '⌘' : 'Ctrl') + '+C';
+	  var copyKey = (/mac os x/i.test(navigator.userAgent) ? "⌘" : "Ctrl") + "+C";
 	  return message.replace(/#{\s*key\s*}/g, copyKey);
 	}
 	
 	function copy(text, options) {
-	  var debug, message, reselectPrevious, range, selection, mark, success = false;
-	  if (!options) { options = {}; }
+	  var debug,
+	    message,
+	    reselectPrevious,
+	    range,
+	    selection,
+	    mark,
+	    success = false;
+	  if (!options) {
+	    options = {};
+	  }
 	  debug = options.debug || false;
 	  try {
 	    reselectPrevious = deselectCurrent();
@@ -7577,47 +7703,55 @@
 	    range = document.createRange();
 	    selection = document.getSelection();
 	
-	    mark = document.createElement('span');
+	    mark = document.createElement("span");
 	    mark.textContent = text;
 	    // reset user styles for span element
-	    mark.style.all = 'unset';
+	    mark.style.all = "unset";
 	    // prevents scrolling to the end of the page
-	    mark.style.position = 'fixed';
+	    mark.style.position = "fixed";
 	    mark.style.top = 0;
-	    mark.style.clip = 'rect(0, 0, 0, 0)';
+	    mark.style.clip = "rect(0, 0, 0, 0)";
 	    // used to preserve spaces and line breaks
-	    mark.style.whiteSpace = 'pre';
+	    mark.style.whiteSpace = "pre";
 	    // do not inherit user-select (it may be `none`)
-	    mark.style.webkitUserSelect = 'text';
-	    mark.style.MozUserSelect = 'text';
-	    mark.style.msUserSelect = 'text';
-	    mark.style.userSelect = 'text';
+	    mark.style.webkitUserSelect = "text";
+	    mark.style.MozUserSelect = "text";
+	    mark.style.msUserSelect = "text";
+	    mark.style.userSelect = "text";
+	    mark.addEventListener("copy", function(e) {
+	      e.stopPropagation();
+	      if (options.format) {
+	        e.preventDefault();
+	        e.clipboardData.clearData();
+	        e.clipboardData.setData(options.format, text);
+	      }
+	    });
 	
 	    document.body.appendChild(mark);
 	
-	    range.selectNode(mark);
+	    range.selectNodeContents(mark);
 	    selection.addRange(range);
 	
-	    var successful = document.execCommand('copy');
+	    var successful = document.execCommand("copy");
 	    if (!successful) {
-	      throw new Error('copy command was unsuccessful');
+	      throw new Error("copy command was unsuccessful");
 	    }
 	    success = true;
 	  } catch (err) {
-	    debug && console.error('unable to copy using execCommand: ', err);
-	    debug && console.warn('trying IE specific stuff');
+	    debug && console.error("unable to copy using execCommand: ", err);
+	    debug && console.warn("trying IE specific stuff");
 	    try {
-	      window.clipboardData.setData('text', text);
+	      window.clipboardData.setData(options.format || "text", text);
 	      success = true;
 	    } catch (err) {
-	      debug && console.error('unable to copy using clipboardData: ', err);
-	      debug && console.error('falling back to prompt');
-	      message = format('message' in options ? options.message : defaultMessage);
+	      debug && console.error("unable to copy using clipboardData: ", err);
+	      debug && console.error("falling back to prompt");
+	      message = format("message" in options ? options.message : defaultMessage);
 	      window.prompt(message, text);
 	    }
 	  } finally {
 	    if (selection) {
-	      if (typeof selection.removeRange == 'function') {
+	      if (typeof selection.removeRange == "function") {
 	        selection.removeRange(range);
 	      } else {
 	        selection.removeAllRanges();
@@ -7637,7 +7771,7 @@
 
 
 /***/ }),
-/* 80 */
+/* 82 */
 /***/ (function(module, exports) {
 
 	
@@ -7682,7 +7816,7 @@
 
 
 /***/ }),
-/* 81 */
+/* 83 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -7829,7 +7963,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 82 */
+/* 84 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -7838,7 +7972,7 @@
 	  value: true
 	});
 	
-	var _Drawer = __webpack_require__(83);
+	var _Drawer = __webpack_require__(85);
 	
 	var _Drawer2 = _interopRequireDefault(_Drawer);
 	
@@ -7848,7 +7982,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 83 */
+/* 85 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -7873,9 +8007,9 @@
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
-	var _common = __webpack_require__(84);
+	var _common = __webpack_require__(86);
 	
-	var _reactTransitionGroup = __webpack_require__(85);
+	var _reactTransitionGroup = __webpack_require__(87);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 	
@@ -8151,7 +8285,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 84 */
+/* 86 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -8178,18 +8312,18 @@
 	}
 
 /***/ }),
-/* 85 */
+/* 87 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var _CSSTransition = _interopRequireDefault(__webpack_require__(86));
+	var _CSSTransition = _interopRequireDefault(__webpack_require__(88));
 	
-	var _ReplaceTransition = _interopRequireDefault(__webpack_require__(93));
+	var _ReplaceTransition = _interopRequireDefault(__webpack_require__(95));
 	
-	var _TransitionGroup = _interopRequireDefault(__webpack_require__(94));
+	var _TransitionGroup = _interopRequireDefault(__webpack_require__(96));
 	
-	var _Transition = _interopRequireDefault(__webpack_require__(90));
+	var _Transition = _interopRequireDefault(__webpack_require__(92));
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -8201,7 +8335,7 @@
 	};
 
 /***/ }),
-/* 86 */
+/* 88 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {"use strict";
@@ -8211,15 +8345,15 @@
 	
 	var PropTypes = _interopRequireWildcard(__webpack_require__(6));
 	
-	var _addClass = _interopRequireDefault(__webpack_require__(87));
+	var _addClass = _interopRequireDefault(__webpack_require__(89));
 	
-	var _removeClass = _interopRequireDefault(__webpack_require__(89));
+	var _removeClass = _interopRequireDefault(__webpack_require__(91));
 	
 	var _react = _interopRequireDefault(__webpack_require__(1));
 	
-	var _Transition = _interopRequireDefault(__webpack_require__(90));
+	var _Transition = _interopRequireDefault(__webpack_require__(92));
 	
-	var _PropTypes = __webpack_require__(92);
+	var _PropTypes = __webpack_require__(94);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -8241,64 +8375,17 @@
 	  });
 	};
 	/**
-	 * A transition component inspired by the excellent
-	 * [ng-animate](http://www.nganimate.org/) library, you should use it if you're
-	 * using CSS transitions or animations. It's built upon the
-	 * [`Transition`](https://reactcommunity.org/react-transition-group/transition)
-	 * component, so it inherits all of its props.
+	 * A `Transition` component using CSS transitions and animations.
+	 * It's inspired by the excellent [ng-animate](http://www.nganimate.org/) library.
 	 *
 	 * `CSSTransition` applies a pair of class names during the `appear`, `enter`,
-	 * and `exit` states of the transition. The first class is applied and then a
-	 * second `*-active` class in order to activate the CSSS transition. After the
-	 * transition, matching `*-done` class names are applied to persist the
-	 * transition state.
+	 * and `exit` stages of the transition. The first class is applied and then a
+	 * second "active" class in order to activate the css animation. After the animation,
+	 * matching `done` class names are applied to persist the animation state.
 	 *
-	 * ```jsx
-	 * function App() {
-	 *   const [inProp, setInProp] = useState(false);
-	 *   return (
-	 *     <div>
-	 *       <CSSTransition in={inProp} timeout={200} classNames="my-node">
-	 *         <div>
-	 *           {"I'll receive my-node-* classes"}
-	 *         </div>
-	 *       </CSSTransition>
-	 *       <button type="button" onClick={() => setInProp(true)}>
-	 *         Click to Enter
-	 *       </button>
-	 *     </div>
-	 *   );
-	 * }
-	 * ```
-	 *
-	 * When the `in` prop is set to `true`, the child component will first receive
-	 * the class `example-enter`, then the `example-enter-active` will be added in
-	 * the next tick. `CSSTransition` [forces a
-	 * reflow](https://github.com/reactjs/react-transition-group/blob/5007303e729a74be66a21c3e2205e4916821524b/src/CSSTransition.js#L208-L215)
-	 * between before adding the `example-enter-active`. This is an important trick
-	 * because it allows us to transition between `example-enter` and
-	 * `example-enter-active` even though they were added immediately one after
-	 * another. Most notably, this is what makes it possible for us to animate
-	 * _appearance_.
-	 *
-	 * ```css
-	 * .my-node-enter {
-	 *   opacity: 0;
-	 * }
-	 * .my-node-enter-active {
-	 *   opacity: 1;
-	 *   transition: opacity 200ms;
-	 * }
-	 * .my-node-exit {
-	 *   opacity: 1;
-	 * }
-	 * .my-node-exit-active {
-	 *   opacity: 0;
-	 *   transition: opacity: 200ms;
-	 * }
-	 * ```
-	 *
-	 * `*-active` classes represent which styles you want to animate **to**.
+	 * When the `in` prop is toggled to `true` the Component will get
+	 * the `example-enter` CSS class and the `example-enter-active` CSS class
+	 * added in the next tick. This is a convention based on the `classNames` prop.
 	 */
 	
 	
@@ -8550,7 +8637,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(33)))
 
 /***/ }),
-/* 87 */
+/* 89 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -8560,7 +8647,7 @@
 	exports.__esModule = true;
 	exports.default = addClass;
 	
-	var _hasClass = _interopRequireDefault(__webpack_require__(88));
+	var _hasClass = _interopRequireDefault(__webpack_require__(90));
 	
 	function addClass(element, className) {
 	  if (element.classList) element.classList.add(className);else if (!(0, _hasClass.default)(element, className)) if (typeof element.className === 'string') element.className = element.className + ' ' + className;else element.setAttribute('class', (element.className && element.className.baseVal || '') + ' ' + className);
@@ -8569,7 +8656,7 @@
 	module.exports = exports["default"];
 
 /***/ }),
-/* 88 */
+/* 90 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -8584,7 +8671,7 @@
 	module.exports = exports["default"];
 
 /***/ }),
-/* 89 */
+/* 91 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -8598,7 +8685,7 @@
 	};
 
 /***/ }),
-/* 90 */
+/* 92 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {"use strict";
@@ -8612,9 +8699,9 @@
 	
 	var _reactDom = _interopRequireDefault(__webpack_require__(2));
 	
-	var _reactLifecyclesCompat = __webpack_require__(91);
+	var _reactLifecyclesCompat = __webpack_require__(93);
 	
-	var _PropTypes = __webpack_require__(92);
+	var _PropTypes = __webpack_require__(94);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -8639,24 +8726,13 @@
 	 * it's used to animate the mounting and unmounting of a component, but can also
 	 * be used to describe in-place transition states as well.
 	 *
-	 * ---
-	 *
-	 * **Note**: `Transition` is a platform-agnostic base component. If you're using
-	 * transitions in CSS, you'll probably want to use
-	 * [`CSSTransition`](https://reactcommunity.org/react-transition-group/css-transition)
-	 * instead. It inherits all the features of `Transition`, but contains
-	 * additional features necessary to play nice with CSS transitions (hence the
-	 * name of the component).
-	 *
-	 * ---
-	 *
 	 * By default the `Transition` component does not alter the behavior of the
-	 * component it renders, it only tracks "enter" and "exit" states for the
-	 * components. It's up to you to give meaning and effect to those states. For
-	 * example we can add styles to a component when it enters or exits:
+	 * component it renders, it only tracks "enter" and "exit" states for the components.
+	 * It's up to you to give meaning and effect to those states. For example we can
+	 * add styles to a component when it enters or exits:
 	 *
 	 * ```jsx
-	 * import { Transition } from 'react-transition-group';
+	 * import Transition from 'react-transition-group/Transition';
 	 *
 	 * const duration = 300;
 	 *
@@ -8672,7 +8748,7 @@
 	 *
 	 * const Fade = ({ in: inProp }) => (
 	 *   <Transition in={inProp} timeout={duration}>
-	 *     {state => (
+	 *     {(state) => (
 	 *       <div style={{
 	 *         ...defaultStyle,
 	 *         ...transitionStyles[state]
@@ -8684,43 +8760,60 @@
 	 * );
 	 * ```
 	 *
+	 * As noted the `Transition` component doesn't _do_ anything by itself to its child component.
+	 * What it does do is track transition states over time so you can update the
+	 * component (such as by adding styles or classes) when it changes states.
+	 *
 	 * There are 4 main states a Transition can be in:
 	 *  - `'entering'`
 	 *  - `'entered'`
 	 *  - `'exiting'`
 	 *  - `'exited'`
 	 *
-	 * Transition state is toggled via the `in` prop. When `true` the component
-	 * begins the "Enter" stage. During this stage, the component will shift from
-	 * its current transition state, to `'entering'` for the duration of the
-	 * transition and then to the `'entered'` stage once it's complete. Let's take
-	 * the following example (we'll use the
-	 * [useState](https://reactjs.org/docs/hooks-reference.html#usestate) hook):
+	 * Transition state is toggled via the `in` prop. When `true` the component begins the
+	 * "Enter" stage. During this stage, the component will shift from its current transition state,
+	 * to `'entering'` for the duration of the transition and then to the `'entered'` stage once
+	 * it's complete. Let's take the following example:
 	 *
 	 * ```jsx
-	 * function App() {
-	 *   const [inProp, setInProp] = useState(false);
+	 * state = { in: false };
+	 *
+	 * toggleEnterState = () => {
+	 *   this.setState({ in: true });
+	 * }
+	 *
+	 * render() {
 	 *   return (
 	 *     <div>
-	 *       <Transition in={inProp} timeout={500}>
-	 *         {state => (
-	 *           // ...
-	 *         )}
-	 *       </Transition>
-	 *       <button onClick={() => setInProp(true)}>
-	 *         Click to Enter
-	 *       </button>
+	 *       <Transition in={this.state.in} timeout={500} />
+	 *       <button onClick={this.toggleEnterState}>Click to Enter</button>
 	 *     </div>
 	 *   );
 	 * }
 	 * ```
 	 *
-	 * When the button is clicked the component will shift to the `'entering'` state
-	 * and stay there for 500ms (the value of `timeout`) before it finally switches
-	 * to `'entered'`.
+	 * When the button is clicked the component will shift to the `'entering'` state and
+	 * stay there for 500ms (the value of `timeout`) before it finally switches to `'entered'`.
 	 *
-	 * When `in` is `false` the same thing happens except the state moves from
-	 * `'exiting'` to `'exited'`.
+	 * When `in` is `false` the same thing happens except the state moves from `'exiting'` to `'exited'`.
+	 *
+	 * ## Timing
+	 *
+	 * Timing is often the trickiest part of animation, mistakes can result in slight delays
+	 * that are hard to pin down. A common example is when you want to add an exit transition,
+	 * you should set the desired final styles when the state is `'exiting'`. That's when the
+	 * transition to those styles will start and, if you matched the `timeout` prop with the
+	 * CSS Transition duration, it will end exactly when the state changes to `'exited'`.
+	 *
+	 * > **Note**: For simpler transitions the `Transition` component might be enough, but
+	 * > take into account that it's platform-agnostic, while the `CSSTransition` component
+	 * > [forces reflows](https://github.com/reactjs/react-transition-group/blob/5007303e729a74be66a21c3e2205e4916821524b/src/CSSTransition.js#L208-L215)
+	 * > in order to make more complex transitions more predictable. For example, even though
+	 * > classes `example-enter` and `example-enter-active` are applied immediately one after
+	 * > another, you can still transition from one to the other because of the forced reflow
+	 * > (read [this issue](https://github.com/reactjs/react-transition-group/issues/159#issuecomment-322761171)
+	 * > for more info). Take this into account when choosing between `Transition` and
+	 * > `CSSTransition`.
 	 */
 	
 	exports.EXITING = EXITING;
@@ -9034,15 +9127,15 @@
 	};
 	Transition.propTypes = process.env.NODE_ENV !== "production" ? {
 	  /**
-	   * A `function` child can be used instead of a React element. This function is
-	   * called with the current transition status (`'entering'`, `'entered'`,
-	   * `'exiting'`, `'exited'`, `'unmounted'`), which can be used to apply context
-	   * specific props to a component.
+	   * A `function` child can be used instead of a React element.
+	   * This function is called with the current transition status
+	   * ('entering', 'entered', 'exiting', 'exited', 'unmounted'), which can be used
+	   * to apply context specific props to a component.
 	   *
 	   * ```jsx
-	   * <Transition in={this.state.in} timeout={150}>
-	   *   {state => (
-	   *     <MyComponent className={`fade fade-${state}`} />
+	   * <Transition timeout={150}>
+	   *   {(status) => (
+	   *     <MyComponent className={`fade fade-${status}`} />
 	   *   )}
 	   * </Transition>
 	   * ```
@@ -9089,27 +9182,22 @@
 	
 	  /**
 	   * The duration of the transition, in milliseconds.
-	   * Required unless `addEndListener` is provided.
+	   * Required unless `addEndListener` is provided
 	   *
-	   * You may specify a single timeout for all transitions:
-	   *
-	   * ```jsx
-	   * timeout={500}
-	   * ```
-	   *
-	   * or individually:
+	   * You may specify a single timeout for all transitions like: `timeout={500}`,
+	   * or individually like:
 	   *
 	   * ```jsx
 	   * timeout={{
-	   *  appear: 500,
 	   *  enter: 300,
 	   *  exit: 500,
+	   *  appear: 500,
 	   * }}
 	   * ```
 	   *
-	   * - `appear` defaults to the value of `enter`
-	   * - `enter` defaults to `0`
-	   * - `exit` defaults to `0`
+	   * If the value of `appear` is not set, then the value from enter is taken.
+	   *
+	   * If the `enter` or `exit` value is `null` or `undefined`, then the timer is set to `0`
 	   *
 	   * @type {number | { enter?: number, exit?: number, appear?: number }}
 	   */
@@ -9213,7 +9301,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(33)))
 
 /***/ }),
-/* 91 */
+/* 93 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -9381,7 +9469,7 @@
 
 
 /***/ }),
-/* 92 */
+/* 94 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {"use strict";
@@ -9415,7 +9503,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(33)))
 
 /***/ }),
-/* 93 */
+/* 95 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {"use strict";
@@ -9429,7 +9517,7 @@
 	
 	var _reactDom = __webpack_require__(2);
 	
-	var _TransitionGroup = _interopRequireDefault(__webpack_require__(94));
+	var _TransitionGroup = _interopRequireDefault(__webpack_require__(96));
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -9571,7 +9659,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(33)))
 
 /***/ }),
-/* 94 */
+/* 96 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {"use strict";
@@ -9583,9 +9671,9 @@
 	
 	var _react = _interopRequireDefault(__webpack_require__(1));
 	
-	var _reactLifecyclesCompat = __webpack_require__(91);
+	var _reactLifecyclesCompat = __webpack_require__(93);
 	
-	var _ChildMapping = __webpack_require__(95);
+	var _ChildMapping = __webpack_require__(97);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -9734,12 +9822,12 @@
 	   * remember to spread them through if you are wrapping the `<Transition>` as
 	   * with our `<Fade>` example.
 	   *
-	   * While this component is meant for multiple `Transition` or `CSSTransition`
-	   * children, sometimes you may want to have a single transition child with
-	   * content that you want to be transitioned out and in when you change it
-	   * (e.g. routes, images etc.) In that case you can change the `key` prop of
-	   * the transition child as you change its content, this will cause
-	   * `TransitionGroup` to transition the child out and back in.
+	   * While this component is meant to make it easier to animate multiple
+	   * `Transition` or `CSSTransition` children, sometimes you want to transition a
+	   * single child by changing its content, e.g. routes, slides, images in a
+	   * carousel etc. In that case you can change the `key` prop of the child
+	   * component along with its content, that way `TransitionGroup` will know that
+	   * it should transition the child.
 	   */
 	  children: _propTypes.default.node,
 	
@@ -9785,7 +9873,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(33)))
 
 /***/ }),
-/* 95 */
+/* 97 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -9940,7 +10028,7 @@
 	}
 
 /***/ }),
-/* 96 */
+/* 98 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -9949,7 +10037,7 @@
 	  value: true
 	});
 	
-	var _Clipboard = __webpack_require__(97);
+	var _Clipboard = __webpack_require__(99);
 	
 	var _Clipboard2 = _interopRequireDefault(_Clipboard);
 	
@@ -9959,7 +10047,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 97 */
+/* 99 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -9972,7 +10060,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _clipboard = __webpack_require__(98);
+	var _clipboard = __webpack_require__(100);
 	
 	var _clipboard2 = _interopRequireDefault(_clipboard);
 	
@@ -9980,7 +10068,7 @@
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
-	var _beeIcon = __webpack_require__(106);
+	var _beeIcon = __webpack_require__(79);
 	
 	var _beeIcon2 = _interopRequireDefault(_beeIcon);
 	
@@ -10182,12 +10270,12 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 98 */
+/* 100 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function (global, factory) {
 	    if (true) {
-	        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [module, __webpack_require__(99), __webpack_require__(101), __webpack_require__(102)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [module, __webpack_require__(101), __webpack_require__(103), __webpack_require__(104)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 	    } else if (typeof exports !== "undefined") {
 	        factory(module, require('./clipboard-action'), require('tiny-emitter'), require('good-listener'));
 	    } else {
@@ -10394,12 +10482,12 @@
 	});
 
 /***/ }),
-/* 99 */
+/* 101 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function (global, factory) {
 	    if (true) {
-	        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [module, __webpack_require__(100)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [module, __webpack_require__(102)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 	    } else if (typeof exports !== "undefined") {
 	        factory(module, require('select'));
 	    } else {
@@ -10628,7 +10716,7 @@
 	});
 
 /***/ }),
-/* 100 */
+/* 102 */
 /***/ (function(module, exports) {
 
 	function select(element) {
@@ -10677,7 +10765,7 @@
 
 
 /***/ }),
-/* 101 */
+/* 103 */
 /***/ (function(module, exports) {
 
 	function E () {
@@ -10750,11 +10838,11 @@
 
 
 /***/ }),
-/* 102 */
+/* 104 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var is = __webpack_require__(103);
-	var delegate = __webpack_require__(104);
+	var is = __webpack_require__(105);
+	var delegate = __webpack_require__(106);
 	
 	/**
 	 * Validates all params and calls the right
@@ -10851,7 +10939,7 @@
 
 
 /***/ }),
-/* 103 */
+/* 105 */
 /***/ (function(module, exports) {
 
 	/**
@@ -10906,10 +10994,10 @@
 
 
 /***/ }),
-/* 104 */
+/* 106 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var closest = __webpack_require__(105);
+	var closest = __webpack_require__(107);
 	
 	/**
 	 * Delegates event to a selector.
@@ -10990,7 +11078,7 @@
 
 
 /***/ }),
-/* 105 */
+/* 107 */
 /***/ (function(module, exports) {
 
 	var DOCUMENT_NODE_TYPE = 9;
@@ -11027,104 +11115,6 @@
 	
 	module.exports = closest;
 
-
-/***/ }),
-/* 106 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _Icon = __webpack_require__(107);
-	
-	var _Icon2 = _interopRequireDefault(_Icon);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-	
-	exports["default"] = _Icon2["default"];
-	module.exports = exports['default'];
-
-/***/ }),
-/* 107 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _classnames = __webpack_require__(5);
-	
-	var _classnames2 = _interopRequireDefault(_classnames);
-	
-	var _propTypes = __webpack_require__(6);
-	
-	var _propTypes2 = _interopRequireDefault(_propTypes);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-	
-	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
-	
-	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
-	
-	var propTypes = {
-		type: _propTypes2["default"].string
-	
-	};
-	/**
-	 *  badge 默认显示内容1
-	 */
-	var defaultProps = {
-		clsPrefix: 'uf'
-	};
-	
-	var Icon = function (_Component) {
-		_inherits(Icon, _Component);
-	
-		function Icon(props) {
-			_classCallCheck(this, Icon);
-	
-			return _possibleConstructorReturn(this, _Component.call(this, props));
-		}
-	
-		Icon.prototype.render = function render() {
-			var _props = this.props,
-			    type = _props.type,
-			    className = _props.className,
-			    clsPrefix = _props.clsPrefix,
-			    others = _objectWithoutProperties(_props, ['type', 'className', 'clsPrefix']);
-	
-			var clsObj = {};
-	
-			var classNames = (0, _classnames2["default"])(clsPrefix, type);
-	
-			return _react2["default"].createElement('i', _extends({}, others, { className: (0, _classnames2["default"])(classNames, className) }));
-		};
-	
-		return Icon;
-	}(_react.Component);
-	
-	Icon.defaultProps = defaultProps;
-	Icon.propTypes = propTypes;
-	
-	exports["default"] = Icon;
-	module.exports = exports['default'];
 
 /***/ }),
 /* 108 */
@@ -15246,15 +15236,15 @@
 	exports.__esModule = true;
 	exports.default = void 0;
 	
-	var _addClass = _interopRequireDefault(__webpack_require__(87));
+	var _addClass = _interopRequireDefault(__webpack_require__(89));
 	
 	exports.addClass = _addClass.default;
 	
-	var _removeClass = _interopRequireDefault(__webpack_require__(89));
+	var _removeClass = _interopRequireDefault(__webpack_require__(91));
 	
 	exports.removeClass = _removeClass.default;
 	
-	var _hasClass = _interopRequireDefault(__webpack_require__(88));
+	var _hasClass = _interopRequireDefault(__webpack_require__(90));
 	
 	exports.hasClass = _hasClass.default;
 	var _default = {
@@ -15928,7 +15918,7 @@
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
-	var _beeIcon = __webpack_require__(106);
+	var _beeIcon = __webpack_require__(79);
 	
 	var _beeIcon2 = _interopRequireDefault(_beeIcon);
 	
@@ -16016,13 +16006,15 @@
 	        _this.handleKeyDown = function (e) {
 	            var _this$props = _this.props,
 	                onSearch = _this$props.onSearch,
-	                type = _this$props.type;
+	                type = _this$props.type,
+	                onKeyDown = _this$props.onKeyDown;
 	
 	            if (e.keyCode === 13 && type === "search") {
 	                if (onSearch) {
 	                    onSearch(_this.input.value);
 	                }
 	            }
+	            onKeyDown && onKeyDown(e);
 	        };
 	
 	        _this.handleSearch = function (e) {
@@ -16504,13 +16496,13 @@
 	
 	var _arrays2 = _interopRequireDefault(_arrays);
 	
-	var _reactLifecyclesCompat = __webpack_require__(91);
+	var _reactLifecyclesCompat = __webpack_require__(93);
 	
 	var _Menus = __webpack_require__(244);
 	
 	var _Menus2 = _interopRequireDefault(_Menus);
 	
-	var _beeIcon = __webpack_require__(106);
+	var _beeIcon = __webpack_require__(79);
 	
 	var _beeIcon2 = _interopRequireDefault(_beeIcon);
 	
@@ -16792,7 +16784,6 @@
 	      newState.value = nextProps.value || [];
 	
 	      // allow activeValue diff from value
-	      // https://github.com/ant-design/ant-design/issues/2767
 	      if (!('loadData' in nextProps)) {
 	        newState.activeValue = nextProps.value || [];
 	      }
@@ -16802,6 +16793,9 @@
 	    }
 	    if ('options' in nextProps) {
 	      newState.options = nextProps.options || [];
+	    }
+	    if ('inputValue' in nextProps) {
+	      newState.inputValue = nextProps.inputValue;
 	    }
 	
 	    return newState;
@@ -17007,7 +17001,8 @@
 	  fieldNames: _propTypes2['default'].object,
 	  filedNames: _propTypes2['default'].object, // typo but for compatibility
 	  expandIcon: _propTypes2['default'].node,
-	  loadingIcon: _propTypes2['default'].node
+	  loadingIcon: _propTypes2['default'].node,
+	  inputValue: _propTypes2['default'].string
 	};
 	
 	(0, _reactLifecyclesCompat.polyfill)(Rcascader);
@@ -22689,6 +22684,146 @@
 	}(_react.Component);
 	
 	exports['default'] = Demo7;
+	module.exports = exports['default'];
+
+/***/ }),
+/* 257 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _beeLayout = __webpack_require__(3);
+	
+	var _src = __webpack_require__(157);
+	
+	var _src2 = _interopRequireDefault(_src);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	
+	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); } /**
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @title 自定义输入框显示
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @description 通过设置 `inputValue` 属性，可自定义输入框展示内容。可在 onChange 回调函数中对数据进行自定义处理。
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
+	
+	var options = [{
+		label: '基础组件',
+		value: 'jczj',
+		children: [{
+			label: '导航',
+			value: 'dh',
+			children: [{
+				label: '面包屑',
+				value: 'mbx'
+			}, {
+				label: '分页',
+				value: 'fy'
+			}, {
+				label: '标签',
+				value: 'bq'
+			}, {
+				label: '菜单',
+				value: 'cd'
+			}]
+		}, {
+			label: '反馈',
+			value: 'fk',
+			children: [{
+				label: '模态框',
+				value: 'mtk'
+			}, {
+				label: '通知',
+				value: 'tz'
+			}]
+		}, {
+			label: '表单',
+			value: 'bd'
+		}]
+	}, {
+		label: '应用组件',
+		value: 'yyzj',
+		children: [{
+			label: '参照',
+			value: 'ref',
+			children: [{
+				label: '树参照',
+				value: 'reftree'
+			}, {
+				label: '表参照',
+				value: 'reftable'
+			}, {
+				label: '穿梭参照',
+				value: 'reftransfer'
+			}]
+		}]
+	}];
+	
+	var Demo8 = function (_Component) {
+		_inherits(Demo8, _Component);
+	
+		function Demo8(props) {
+			_classCallCheck(this, Demo8);
+	
+			var _this = _possibleConstructorReturn(this, _Component.call(this, props));
+	
+			_this.onChange = function (value, selectedOptions) {
+				console.log(value, selectedOptions);
+				// 自定义输入框显示内容
+				var lastLabel = '';
+				if (typeof selectedOptions !== 'undefined') {
+					lastLabel = selectedOptions[selectedOptions.length - 1].label;
+				}
+				_this.setState({
+					inputValue: lastLabel
+				});
+			};
+	
+			_this.state = {
+				inputValue: ""
+			};
+			return _this;
+		}
+	
+		Demo8.prototype.render = function render() {
+			return _react2['default'].createElement(
+				_beeLayout.Row,
+				null,
+				_react2['default'].createElement(
+					_beeLayout.Col,
+					{ md: 4 },
+					_react2['default'].createElement(
+						'div',
+						{ className: 'height-150' },
+						_react2['default'].createElement(_src2['default'], {
+							options: options,
+							onChange: this.onChange,
+							placeholder: '\u8BF7\u9009\u62E9',
+							inputValue: this.state.inputValue
+						})
+					)
+				)
+			);
+		};
+	
+		return Demo8;
+	}(_react.Component);
+	
+	exports['default'] = Demo8;
 	module.exports = exports['default'];
 
 /***/ })
