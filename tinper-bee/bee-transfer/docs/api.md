@@ -44,6 +44,7 @@ import 'bee-transfer/build/Transfer.css';
 |onSearchChange|当搜索域变化的回调函数 参数(direction: 'left'|'right', event: Event)|func|-|
 |showCheckbox|是否显示Checkbox复选框|bool|true|
 |draggable|是否可以通过拖拽进行穿梭和排序|bool|false|
+|appendToBottom|是否将已选项追加到右侧列表末尾|bool|false|
 
 ## 注意事项
 按照 React 的规范，所有的组件数组必须绑定 key。在 Transfer 中，dataSource里的数据值需要指定 key 值。对于 dataSource 默认将每列数据的 key 属性作为唯一的标识。

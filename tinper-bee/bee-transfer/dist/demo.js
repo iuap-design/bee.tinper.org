@@ -80,7 +80,7 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
 	
-	var Demo1 = __webpack_require__(275);var Demo2 = __webpack_require__(276);var Demo3 = __webpack_require__(277);var Demo4 = __webpack_require__(278);var Demo5 = __webpack_require__(279);var Demo6 = __webpack_require__(280);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 常用可选transfer", "code": "/**\r\n*\r\n* @title 常用可选transfer\r\n* @description targetKeys需要通过ES6的扩展运算符进行赋值，实现对象的深拷贝\r\n*\r\n*/\r\n\r\n\r\nimport React, { Component } from 'react';\r\n\nimport { Transfer, Button } from 'tinper-bee';\r\n\r\nconst AllTargetKeys = [];\r\nconst mockData = [];\r\nfor (let i = 0; i < 20; i++) {\r\n  mockData.push({\r\n    key: i.toString(),\r\n    title: `content${i + 1}`,\r\n    description: `description of content${i + 1}`,\r\n    disabled: i % 3 < 1,\r\n\r\n  });\r\n  AllTargetKeys.push(i.toString());\r\n}\r\n\r\nconst targetKeys = mockData\r\n        .filter(item => +item.key % 3 > 1)\r\n        .map(item => item.key);\r\n\r\nclass Demo1 extends React.Component {\r\n  state = {\r\n    targetKeys,\r\n    selectedKeys: [],\r\n    showModal: false,\r\n    modalSize: ''\r\n  }\r\n\r\n  handleChange = (nextTargetKeys, direction, moveKeys) => {\r\n    this.setState({ targetKeys: nextTargetKeys });\r\n\r\n    console.log('targetKeys: ', nextTargetKeys);\r\n    console.log('direction: ', direction);\r\n    console.log('moveKeys: ', moveKeys);\r\n  }\r\n\r\n  handleSelectChange = (sourceSelectedKeys, targetSelectedKeys) => {\r\n    this.setState({ selectedKeys: [...sourceSelectedKeys, ...targetSelectedKeys] });\r\n\r\n    console.log('sourceSelectedKeys: ', sourceSelectedKeys);\r\n    console.log('targetSelectedKeys: ', targetSelectedKeys);\r\n  }\r\n\r\n  handleScroll = (direction, e) => {\r\n    console.log('direction:', direction);\r\n    console.log('target:', e.target);\r\n  }\r\n\r\n  moveAllToRight = () => {\r\n    this.setState({\r\n      targetKeys: AllTargetKeys\r\n    })\r\n  }\r\n  moveAllToLeft = () => {\r\n    this.setState({\r\n      targetKeys: []\r\n    })\r\n  }\r\n\r\n  render() {\r\n    const state = this.state;\r\n    const targetKeys = [...this.state.targetKeys];\r\n    return (\r\n      <div>\r\n        <Button onClick={this.moveAllToRight} style={{margin:'8px'}}>全部移到右边</Button>\r\n        <Button onClick={this.moveAllToLeft} style={{margin:'8px'}}>全部移到左边</Button>\r\n        <Transfer\r\n          dataSource={mockData}\r\n          titles={['Source', 'Target']}\r\n          targetKeys={targetKeys}\r\n          selectedKeys={state.selectedKeys}\r\n          onChange={this.handleChange}\r\n          onSelectChange={this.handleSelectChange}\r\n          onScroll={this.handleScroll}\r\n          render={item => item.title}\r\n        />\r\n      </div>\r\n    );\r\n  }\r\n}\r\n\r\n\r\n\r\n", "desc": " targetKeys需要通过ES6的扩展运算符进行赋值，实现对象的深拷贝" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 带搜索框的tranfer", "code": "/**\r\n*\r\n* @title 带搜索框的tranfer\r\n* @description\r\n*\r\n*/\r\n\r\nimport React, { Component } from 'react';\r\nimport { Transfer } from 'tinper-bee';\r\n\r\n\r\nclass Demo2 extends React.Component {\r\n  state = {\r\n    mockData: [],\r\n    targetKeys: [],\r\n  }\r\n  componentDidMount() {\r\n    this.getMock();\r\n  }\r\n  getMock = () => {\r\n    const targetKeys = [];\r\n    const mockData = [];\r\n    for (let i = 0; i < 20; i++) {\r\n      const data = {\r\n        key: i.toString(),\r\n        title: `content${i + 1}`,\r\n        description: `description of content${i + 1}`,\r\n        chosen: Math.random() * 2 > 1,\r\n      };\r\n      if (data.chosen) {\r\n        targetKeys.push(data.key);\r\n      }\r\n      mockData.push(data);\r\n    }\r\n    this.setState({ mockData, targetKeys });\r\n  }\r\n  filterOption = (inputValue, option) => {\r\n    return option.title.indexOf(inputValue) > -1;\r\n  }\r\n  handleChange = (targetKeys) => {\r\n    this.setState({ targetKeys });\r\n  }\r\n  render() {\r\n    return (\r\n      <Transfer\r\n        dataSource={this.state.mockData}\r\n        showSearch\r\n        filterOption={this.filterOption}\r\n        targetKeys={this.state.targetKeys}\r\n        onChange={this.handleChange}\r\n        render={item => item.title}\r\n      />\r\n    );\r\n  }\r\n}\r\n\r\n\r\n\r\n", "desc": "" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 底部自定义的transfer", "code": "/**\r\n*\r\n* @title 底部自定义的transfer\r\n* @description \r\n*\r\n*/\r\n\r\nimport React, { Component } from 'react';\r\n\nimport { Transfer, Button } from 'tinper-bee';\r\n\r\nclass Demo3 extends React.Component {\r\n  state = {\r\n    mockData: [],\r\n    targetKeys: [],\r\n  }\r\n  componentDidMount() {\r\n    this.getMock();\r\n  }\r\n  getMock = () => {\r\n    const targetKeys = [];\r\n    const mockData = [];\r\n    for (let i = 0; i < 20; i++) {\r\n      const data = {\r\n        key: i.toString(),\r\n        title: `content${i + 1}`,\r\n        description: `description of content${i + 1}`,\r\n        chosen: Math.random() * 2 > 1,\r\n      };\r\n      if (data.chosen) {\r\n        targetKeys.push(data.key);\r\n      }\r\n      mockData.push(data);\r\n    }\r\n    this.setState({ mockData, targetKeys });\r\n  }\r\n  handleChange = (targetKeys) => {\r\n    this.setState({ targetKeys });\r\n  }\r\n  renderFooter = () => {\r\n    return (\r\n      <Button\r\n        size=\"sm\"\r\n        style={{ float: 'right', margin: 5 }}\r\n        onClick={this.getMock}\r\n      >\r\n        reload\r\n      </Button>\r\n    );\r\n  }\r\n  render() {\r\n    return (\r\n      <Transfer\r\n        dataSource={this.state.mockData}\r\n        showSearch\r\n        listStyle={{\r\n          width: 250,\r\n          height: 300,\r\n        }}\r\n        targetKeys={this.state.targetKeys}\r\n        onChange={this.handleChange}\r\n        render={item => `${item.title}-${item.description}`}\r\n        footer={this.renderFooter}\r\n      />\r\n    );\r\n  }\r\n}\r\n\r\n\r\n", "desc": " " }, { "example": _react2['default'].createElement(Demo4, null), "title": " 隐藏复选框", "code": "/**\r\n*\r\n* @title 隐藏复选框\r\n* @description 通过`showCheckbox`参数控制复选框显示和隐藏\r\n*\r\n*/\r\n\r\n\r\nimport React, { Component } from 'react';\r\nimport { Transfer } from 'tinper-bee';\r\n\r\nconst mockData = [];\r\nfor (let i = 0; i < 20; i++) {\r\n  mockData.push({\r\n    key: i.toString(),\r\n    title: `content${i + 1}`,\r\n    description: `description of content${i + 1}`,\r\n    disabled: i % 3 < 1,\r\n\r\n  });\r\n}\r\n\r\nconst targetKeys = mockData\r\n        .filter(item => +item.key % 3 > 1)\r\n        .map(item => item.key);\r\n\r\nclass Demo4 extends React.Component {\r\n  state = {\r\n    targetKeys,\r\n    selectedKeys: [],\r\n    showModal: false,\r\n    modalSize: ''\r\n  }\r\n\r\n  handleChange = (nextTargetKeys, direction, moveKeys) => {\r\n    this.setState({ targetKeys: nextTargetKeys });\r\n\r\n    console.log('targetKeys: ', targetKeys);\r\n    console.log('direction: ', direction);\r\n    console.log('moveKeys: ', moveKeys);\r\n  }\r\n\r\n  handleSelectChange = (sourceSelectedKeys, targetSelectedKeys) => {\r\n    this.setState({ selectedKeys: [...sourceSelectedKeys, ...targetSelectedKeys] });\r\n\r\n    console.log('sourceSelectedKeys: ', sourceSelectedKeys);\r\n    console.log('targetSelectedKeys: ', targetSelectedKeys);\r\n  }\r\n\r\n  handleScroll = (direction, e) => {\r\n    console.log('direction:', direction);\r\n    console.log('target:', e.target);\r\n  }\r\n\r\n\r\n  render() {\r\n    const state = this.state;\r\n\r\n    return (\r\n       <Transfer\r\n          dataSource={mockData}\r\n          showCheckbox={false}\r\n          titles={['Source', 'Target']}\r\n          targetKeys={state.targetKeys}\r\n          selectedKeys={state.selectedKeys}\r\n          onChange={this.handleChange}\r\n          onSelectChange={this.handleSelectChange}\r\n          onScroll={this.handleScroll}\r\n          render={item => item.title}\r\n        />\r\n    );\r\n  }\r\n}\r\n\r\n\r\n\r\n", "desc": " 通过`showCheckbox`参数控制复选框显示和隐藏" }, { "example": _react2['default'].createElement(Demo5, null), "title": " 拖拽穿梭", "code": "/**\n*\n* @title 拖拽穿梭\n* @description 通过`draggable`参数设置是否可以通过拖拽进行穿梭和排序\n*\n*/\n\n\nimport React, { Component } from 'react';\nimport { Transfer } from 'tinper-bee';\n\nconst mockData = [];\nfor (let i = 0; i < 20; i++) {\n  mockData.push({\n    key: i.toString(),\n    title: `content${i + 1}`,\n    description: `description of content${i + 1}`,\n    disabled: i % 3 < 1,\n\n  });\n}\n\nconst targetKeys = mockData\n        .filter(item => +item.key % 3 > 1)\n        .map(item => item.key);\n\nclass Demo5 extends React.Component {\n  state = {\n    targetKeys,\n    selectedKeys: [],\n    showModal: false,\n    modalSize: ''\n  }\n\n  handleChange = (nextTargetKeys, direction, moveKeys) => {\n    this.setState({ targetKeys: nextTargetKeys });\n\n    console.log('targetKeys: ', nextTargetKeys);\n    console.log('direction: ', direction);\n    console.log('moveKeys: ', moveKeys);\n  }\n\n  handleSelectChange = (sourceSelectedKeys, targetSelectedKeys) => {\n    this.setState({ selectedKeys: [...sourceSelectedKeys, ...targetSelectedKeys] });\n\n    console.log('sourceSelectedKeys: ', sourceSelectedKeys);\n    console.log('targetSelectedKeys: ', targetSelectedKeys);\n  }\n\n  handleScroll = (direction, e) => {\n    console.log('direction:', direction);\n    console.log('target:', e.target);\n  }\n\n\n  render() {\n    const state = this.state;\n    // targetKeys需要通过数组的扩展运算符进行赋值\n    const targetKeys = [...this.state.targetKeys];\n    return (\n       <Transfer\n          draggable={true}\n          dataSource={mockData}\n          titles={['Source', 'Target']}\n          targetKeys={targetKeys}\n          selectedKeys={state.selectedKeys}\n          onChange={this.handleChange}\n          onSelectChange={this.handleSelectChange}\n          onScroll={this.handleScroll}\n          render={item => item.title}\n        />\n    );\n  }\n}\n\n\n\n", "desc": " 通过`draggable`参数设置是否可以通过拖拽进行穿梭和排序" }, { "example": _react2['default'].createElement(Demo6, null), "title": " 自定义渲染行数据", "code": "/**\r\n*\r\n* @title 自定义渲染行数据\r\n* @description 自定义渲染每一个 Transfer Item，可用于渲染复杂数据。\r\n*\r\n*/\r\n\r\n\r\nimport React, { Component } from 'react';\r\n\nimport { Transfer, Button } from 'tinper-bee';\r\n\r\nconst AllTargetKeys = [];\r\nconst mockData = [];\r\nfor (let i = 0; i < 20; i++) {\r\n  mockData.push({\r\n    key: i.toString(),\r\n    title: `content${i + 1}`,\r\n    description: `description of content${i + 1}`,\r\n    disabled: i % 3 < 1,\r\n\r\n  });\r\n  AllTargetKeys.push(i.toString());\r\n}\r\n\r\nconst targetKeys = mockData\r\n        .filter(item => +item.key % 3 > 1)\r\n        .map(item => item.key);\r\n\r\nclass Demo6 extends React.Component {\r\n  state = {\r\n    targetKeys,\r\n    selectedKeys: [],\r\n    showModal: false,\r\n    modalSize: ''\r\n  }\r\n\r\n  handleChange = (nextTargetKeys, direction, moveKeys) => {\r\n    this.setState({ targetKeys: nextTargetKeys });\r\n\r\n    console.log('targetKeys: ', nextTargetKeys);\r\n    console.log('direction: ', direction);\r\n    console.log('moveKeys: ', moveKeys);\r\n  }\r\n\r\n  /**\r\n   * 自定义渲染行数据\r\n   */\r\n  renderItem = (item) => {\r\n    const customLabel = (\r\n      <span className=\"custom-item\">\r\n        {item.title}\r\n      </span>\r\n    );\r\n\r\n    return {\r\n      label: customLabel, // 显示的ReactElement节点\r\n      value: item.title, // 作为title显示\r\n    };\r\n  }\r\n\r\n  render() {\r\n    const state = this.state;\r\n    const targetKeys = [...this.state.targetKeys];\r\n    return (\r\n      <div>\r\n        <Transfer\r\n          dataSource={mockData}\r\n          titles={['Source', 'Target']}\r\n          targetKeys={targetKeys}\r\n          selectedKeys={state.selectedKeys}\r\n          onChange={this.handleChange}\r\n          render={this.renderItem}\r\n        />\r\n      </div>\r\n    );\r\n  }\r\n}\r\n\r\n\r\n\r\n", "desc": " 自定义渲染每一个 Transfer Item，可用于渲染复杂数据。" }];
+	var Demo1 = __webpack_require__(275);var Demo2 = __webpack_require__(276);var Demo3 = __webpack_require__(277);var Demo4 = __webpack_require__(278);var Demo5 = __webpack_require__(279);var Demo6 = __webpack_require__(280);var Demo7 = __webpack_require__(281);var Demo8 = __webpack_require__(282);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 常用可选transfer", "code": "/**\r\n*\r\n* @title 常用可选transfer\r\n* @description targetKeys需要通过ES6的扩展运算符进行赋值，实现对象的深拷贝\r\n*\r\n*/\r\n\r\n\r\nimport React, { Component } from 'react';\r\n\nimport { Transfer, Button } from 'tinper-bee';\r\n\r\nconst AllTargetKeys = [];\r\nconst mockData = [];\r\nfor (let i = 0; i < 20; i++) {\r\n  mockData.push({\r\n    key: i.toString(),\r\n    title: `content${i + 1}`,\r\n    description: `description of content${i + 1}`,\r\n    disabled: i % 3 < 1,\r\n\r\n  });\r\n  AllTargetKeys.push(i.toString());\r\n}\r\n\r\nconst targetKeys = mockData\r\n        .filter(item => +item.key % 3 > 1)\r\n        .map(item => item.key);\r\n\r\nclass Demo1 extends React.Component {\r\n  state = {\r\n    targetKeys,\r\n    selectedKeys: [],\r\n    showModal: false,\r\n    modalSize: ''\r\n  }\r\n\r\n  handleChange = (nextTargetKeys, direction, moveKeys) => {\r\n    this.setState({ targetKeys: nextTargetKeys });\r\n\r\n    console.log('targetKeys: ', nextTargetKeys);\r\n    console.log('direction: ', direction);\r\n    console.log('moveKeys: ', moveKeys);\r\n  }\r\n\r\n  handleSelectChange = (sourceSelectedKeys, targetSelectedKeys) => {\r\n    this.setState({ selectedKeys: [...sourceSelectedKeys, ...targetSelectedKeys] });\r\n\r\n    console.log('sourceSelectedKeys: ', sourceSelectedKeys);\r\n    console.log('targetSelectedKeys: ', targetSelectedKeys);\r\n  }\r\n\r\n  handleScroll = (direction, e) => {\r\n    console.log('direction:', direction);\r\n    console.log('target:', e.target);\r\n  }\r\n\r\n  moveAllToRight = () => {\r\n    this.setState({\r\n      targetKeys: AllTargetKeys\r\n    })\r\n  }\r\n  moveAllToLeft = () => {\r\n    this.setState({\r\n      targetKeys: []\r\n    })\r\n  }\r\n\r\n  render() {\r\n    const state = this.state;\r\n    const targetKeys = [...this.state.targetKeys];\r\n    return (\r\n      <div>\r\n        <Button onClick={this.moveAllToRight} style={{margin:'8px'}}>全部移到右边</Button>\r\n        <Button onClick={this.moveAllToLeft} style={{margin:'8px'}}>全部移到左边</Button>\r\n        <Transfer\r\n          dataSource={mockData}\r\n          titles={['Source', 'Target']}\r\n          targetKeys={targetKeys}\r\n          selectedKeys={state.selectedKeys}\r\n          onChange={this.handleChange}\r\n          onSelectChange={this.handleSelectChange}\r\n          onScroll={this.handleScroll}\r\n          render={item => item.title}\r\n        />\r\n      </div>\r\n    );\r\n  }\r\n}\r\n\r\n\r\n\r\n", "desc": " targetKeys需要通过ES6的扩展运算符进行赋值，实现对象的深拷贝" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 带搜索框的tranfer", "code": "/**\r\n*\r\n* @title 带搜索框的tranfer\r\n* @description\r\n*\r\n*/\r\n\r\nimport React, { Component } from 'react';\r\nimport { Transfer } from 'tinper-bee';\r\n\r\n\r\nclass Demo2 extends React.Component {\r\n  state = {\r\n    mockData: [],\r\n    targetKeys: [],\r\n  }\r\n  componentDidMount() {\r\n    this.getMock();\r\n  }\r\n  getMock = () => {\r\n    const targetKeys = [];\r\n    const mockData = [];\r\n    for (let i = 0; i < 20; i++) {\r\n      const data = {\r\n        key: i.toString(),\r\n        title: `content${i + 1}`,\r\n        description: `description of content${i + 1}`,\r\n        chosen: Math.random() * 2 > 1,\r\n      };\r\n      if (data.chosen) {\r\n        targetKeys.push(data.key);\r\n      }\r\n      mockData.push(data);\r\n    }\r\n    this.setState({ mockData, targetKeys });\r\n  }\r\n  filterOption = (inputValue, option) => {\r\n    return option.title.indexOf(inputValue) > -1;\r\n  }\r\n  handleChange = (targetKeys) => {\r\n    this.setState({ targetKeys });\r\n  }\r\n  render() {\r\n    return (\r\n      <Transfer\r\n        dataSource={this.state.mockData}\r\n        showSearch\r\n        filterOption={this.filterOption}\r\n        targetKeys={this.state.targetKeys}\r\n        onChange={this.handleChange}\r\n        render={item => item.title}\r\n      />\r\n    );\r\n  }\r\n}\r\n\r\n\r\n\r\n", "desc": "" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 底部自定义的transfer", "code": "/**\r\n*\r\n* @title 底部自定义的transfer\r\n* @description \r\n*\r\n*/\r\n\r\nimport React, { Component } from 'react';\r\n\nimport { Transfer, Button } from 'tinper-bee';\r\n\r\nclass Demo3 extends React.Component {\r\n  state = {\r\n    mockData: [],\r\n    targetKeys: [],\r\n  }\r\n  componentDidMount() {\r\n    this.getMock();\r\n  }\r\n  getMock = () => {\r\n    const targetKeys = [];\r\n    const mockData = [];\r\n    for (let i = 0; i < 20; i++) {\r\n      const data = {\r\n        key: i.toString(),\r\n        title: `content${i + 1}`,\r\n        description: `description of content${i + 1}`,\r\n        chosen: Math.random() * 2 > 1,\r\n      };\r\n      if (data.chosen) {\r\n        targetKeys.push(data.key);\r\n      }\r\n      mockData.push(data);\r\n    }\r\n    this.setState({ mockData, targetKeys });\r\n  }\r\n  handleChange = (targetKeys) => {\r\n    this.setState({ targetKeys });\r\n  }\r\n  renderFooter = () => {\r\n    return (\r\n      <Button\r\n        size=\"sm\"\r\n        style={{ float: 'right', margin: 5 }}\r\n        onClick={this.getMock}\r\n      >\r\n        reload\r\n      </Button>\r\n    );\r\n  }\r\n  render() {\r\n    return (\r\n      <Transfer\r\n        dataSource={this.state.mockData}\r\n        showSearch\r\n        listStyle={{\r\n          width: 250,\r\n          height: 300,\r\n        }}\r\n        targetKeys={this.state.targetKeys}\r\n        onChange={this.handleChange}\r\n        render={item => `${item.title}-${item.description}`}\r\n        footer={this.renderFooter}\r\n      />\r\n    );\r\n  }\r\n}\r\n\r\n\r\n", "desc": " " }, { "example": _react2['default'].createElement(Demo4, null), "title": " 隐藏复选框", "code": "/**\r\n*\r\n* @title 隐藏复选框\r\n* @description 通过`showCheckbox`参数控制复选框显示和隐藏\r\n*\r\n*/\r\n\r\n\r\nimport React, { Component } from 'react';\r\nimport { Transfer } from 'tinper-bee';\r\n\r\nconst mockData = [];\r\nfor (let i = 0; i < 20; i++) {\r\n  mockData.push({\r\n    key: i.toString(),\r\n    title: `content${i + 1}`,\r\n    description: `description of content${i + 1}`,\r\n    disabled: i % 3 < 1,\r\n\r\n  });\r\n}\r\n\r\nconst targetKeys = mockData\r\n        .filter(item => +item.key % 3 > 1)\r\n        .map(item => item.key);\r\n\r\nclass Demo4 extends React.Component {\r\n  state = {\r\n    targetKeys,\r\n    selectedKeys: [],\r\n    showModal: false,\r\n    modalSize: ''\r\n  }\r\n\r\n  handleChange = (nextTargetKeys, direction, moveKeys) => {\r\n    this.setState({ targetKeys: nextTargetKeys });\r\n\r\n    console.log('targetKeys: ', targetKeys);\r\n    console.log('direction: ', direction);\r\n    console.log('moveKeys: ', moveKeys);\r\n  }\r\n\r\n  handleSelectChange = (sourceSelectedKeys, targetSelectedKeys) => {\r\n    this.setState({ selectedKeys: [...sourceSelectedKeys, ...targetSelectedKeys] });\r\n\r\n    console.log('sourceSelectedKeys: ', sourceSelectedKeys);\r\n    console.log('targetSelectedKeys: ', targetSelectedKeys);\r\n  }\r\n\r\n  handleScroll = (direction, e) => {\r\n    console.log('direction:', direction);\r\n    console.log('target:', e.target);\r\n  }\r\n\r\n\r\n  render() {\r\n    const state = this.state;\r\n\r\n    return (\r\n       <Transfer\r\n          dataSource={mockData}\r\n          showCheckbox={false}\r\n          titles={['Source', 'Target']}\r\n          targetKeys={state.targetKeys}\r\n          selectedKeys={state.selectedKeys}\r\n          onChange={this.handleChange}\r\n          onSelectChange={this.handleSelectChange}\r\n          onScroll={this.handleScroll}\r\n          render={item => item.title}\r\n        />\r\n    );\r\n  }\r\n}\r\n\r\n\r\n\r\n", "desc": " 通过`showCheckbox`参数控制复选框显示和隐藏" }, { "example": _react2['default'].createElement(Demo5, null), "title": " 拖拽穿梭", "code": "/**\n*\n* @title 拖拽穿梭\n* @description 通过`draggable`参数设置是否可以通过拖拽进行穿梭和排序\n*\n*/\n\n\nimport React, { Component } from 'react';\nimport { Transfer } from 'tinper-bee';\n\nconst mockData = [];\nfor (let i = 0; i < 20; i++) {\n  mockData.push({\n    key: i.toString(),\n    title: `content${i + 1}`,\n    description: `description of content${i + 1}`,\n    disabled: i % 3 < 1,\n\n  });\n}\n\nconst targetKeys = mockData\n        .filter(item => +item.key % 3 > 1)\n        .map(item => item.key);\n\nclass Demo5 extends React.Component {\n  state = {\n    targetKeys,\n    selectedKeys: [],\n    showModal: false,\n    modalSize: ''\n  }\n\n  handleChange = (nextTargetKeys, direction, moveKeys) => {\n    this.setState({ targetKeys: nextTargetKeys });\n\n    console.log('targetKeys: ', nextTargetKeys);\n    console.log('direction: ', direction);\n    console.log('moveKeys: ', moveKeys);\n  }\n\n  handleSelectChange = (sourceSelectedKeys, targetSelectedKeys) => {\n    this.setState({ selectedKeys: [...sourceSelectedKeys, ...targetSelectedKeys] });\n\n    console.log('sourceSelectedKeys: ', sourceSelectedKeys);\n    console.log('targetSelectedKeys: ', targetSelectedKeys);\n  }\n\n  handleScroll = (direction, e) => {\n    console.log('direction:', direction);\n    console.log('target:', e.target);\n  }\n\n\n  render() {\n    const state = this.state;\n    // targetKeys需要通过数组的扩展运算符进行赋值\n    const targetKeys = [...this.state.targetKeys];\n    return (\n       <Transfer\n          draggable={true}\n          dataSource={mockData}\n          titles={['Source', 'Target']}\n          targetKeys={targetKeys}\n          selectedKeys={state.selectedKeys}\n          onChange={this.handleChange}\n          onSelectChange={this.handleSelectChange}\n          onScroll={this.handleScroll}\n          render={item => item.title}\n        />\n    );\n  }\n}\n\n\n\n", "desc": " 通过`draggable`参数设置是否可以通过拖拽进行穿梭和排序" }, { "example": _react2['default'].createElement(Demo6, null), "title": " 自定义渲染行数据", "code": "/**\r\n*\r\n* @title 自定义渲染行数据\r\n* @description 自定义渲染每一个 Transfer Item，可用于渲染复杂数据。\r\n*\r\n*/\r\n\r\n\r\nimport React, { Component } from 'react';\r\n\nimport { Transfer, Button } from 'tinper-bee';\r\n\r\nconst AllTargetKeys = [];\r\nconst mockData = [];\r\nfor (let i = 0; i < 20; i++) {\r\n  mockData.push({\r\n    key: i.toString(),\r\n    title: `content${i + 1}`,\r\n    description: `description of content${i + 1}`,\r\n    disabled: i % 3 < 1,\r\n\r\n  });\r\n  AllTargetKeys.push(i.toString());\r\n}\r\n\r\nconst targetKeys = mockData\r\n        .filter(item => +item.key % 3 > 1)\r\n        .map(item => item.key);\r\n\r\nclass Demo6 extends React.Component {\r\n  state = {\r\n    targetKeys,\r\n    selectedKeys: [],\r\n    showModal: false,\r\n    modalSize: ''\r\n  }\r\n\r\n  handleChange = (nextTargetKeys, direction, moveKeys) => {\r\n    this.setState({ targetKeys: nextTargetKeys });\r\n\r\n    console.log('targetKeys: ', nextTargetKeys);\r\n    console.log('direction: ', direction);\r\n    console.log('moveKeys: ', moveKeys);\r\n  }\r\n  \r\n  handleSelectChange = (sourceSelectedKeys, targetSelectedKeys) => {\r\n    this.setState({ selectedKeys: [...sourceSelectedKeys, ...targetSelectedKeys] });\r\n\r\n    console.log('sourceSelectedKeys: ', sourceSelectedKeys);\r\n    console.log('targetSelectedKeys: ', targetSelectedKeys);\r\n  }\r\n\r\n  /**\r\n   * 自定义渲染行数据\r\n   */\r\n  renderItem = (item) => {\r\n    const customLabel = (\r\n      <span className=\"custom-item\">\r\n        {item.title}\r\n      </span>\r\n    );\r\n\r\n    return {\r\n      label: customLabel, // 显示的ReactElement节点\r\n      value: item.title, // 作为title显示\r\n    };\r\n  }\r\n\r\n  render() {\r\n    const state = this.state;\r\n    const targetKeys = [...this.state.targetKeys];\r\n    return (\r\n      <div>\r\n        <Transfer\r\n          dataSource={mockData}\r\n          titles={['Source', 'Target']}\r\n          targetKeys={targetKeys}\r\n          selectedKeys={state.selectedKeys}\r\n          onChange={this.handleChange}\r\n          onSelectChange={this.handleSelectChange}\r\n          render={this.renderItem}\r\n        />\r\n      </div>\r\n    );\r\n  }\r\n}\r\n\r\n\r\n\r\n", "desc": " 自定义渲染每一个 Transfer Item，可用于渲染复杂数据。" }, { "example": _react2['default'].createElement(Demo7, null), "title": " 自定义右侧已选列表的排列顺序", "code": "/**\r\n*\r\n* @title 自定义右侧已选列表的排列顺序\r\n* @description `appendToBottom` 参数控制是否将已选项追加到右侧列表末尾，其默认值为false（即将已选项添加到右侧列表最上方）。可在项目中动态改变参数数组targetKeys，穿梭框会根据targetKeys中的顺序进行排序。应用场景：通过上移/下移改变右侧数据顺序。\r\n*\r\n*/\r\n\r\n\r\nimport React, { Component } from 'react';\r\n\n\nimport { Transfer, Icon, Button } from 'tinper-bee';\r\n\r\nconst AllTargetKeys = [];\r\nconst mockData = [];\r\nfor (let i = 0; i < 20; i++) {\r\n  mockData.push({\r\n    key: i.toString(),\r\n    title: `content${i + 1}`,\r\n    description: `description of content${i + 1}`,\r\n  });\r\n  AllTargetKeys.push(i.toString());\r\n}\r\n\r\nconst targetKeys = mockData\r\n        .filter(item => +item.key % 7 === 0)\r\n        .map(item => item.key);\r\n\r\nclass Demo7 extends React.Component {\r\n    state = {\r\n        targetKeys,\r\n        selectedKeys: [],\r\n        showModal: false,\r\n        modalSize: ''\r\n    }\r\n\r\n    handleChange = (nextTargetKeys, direction, moveKeys) => {\r\n        this.setState({ targetKeys: nextTargetKeys });\r\n\r\n        console.log('targetKeys: ', nextTargetKeys);\r\n        console.log('direction: ', direction);\r\n        console.log('moveKeys: ', moveKeys);\r\n    }\r\n\r\n    handleSelectChange = (sourceSelectedKeys, targetSelectedKeys) => {\r\n        this.setState({ selectedKeys: [...sourceSelectedKeys, ...targetSelectedKeys] });\r\n\r\n        console.log('sourceSelectedKeys: ', sourceSelectedKeys);\r\n        console.log('targetSelectedKeys: ', targetSelectedKeys);\r\n    }\r\n\r\n    moveAllToRight = () => {\r\n        this.setState({\r\n        targetKeys: AllTargetKeys\r\n        })\r\n    }\r\n    moveAllToLeft = () => {\r\n        this.setState({\r\n        targetKeys: []\r\n        })\r\n    }\r\n\r\n    swapItems(arr, index1, index2) {\r\n\t\tarr[index1] = arr.splice(index2, 1, arr[index1])[0];\r\n\t\treturn arr;\r\n\t};\r\n\r\n    scopeupRecord(arr, $index) {\r\n\t\tif ($index == 0) {\r\n\t\t\treturn;\r\n\t\t}\r\n\t\tthis.swapItems(arr, $index, $index - 1);\r\n\t};\r\n    \r\n    scopedownRecord(arr, $index) {\r\n\t\tif ($index == arr.length - 1) {\r\n\t\t\treturn;\r\n\t\t}\r\n\t\tthis.swapItems(arr, $index, $index + 1);\r\n\t};\r\n\r\n    moveUp = () => {\r\n        let { targetKeys, selectedKeys } = this.state\r\n\t\tlet selectedTargetKeys = []\r\n\t\ttargetKeys.forEach((v, i) => {\r\n\t\t\tselectedKeys.forEach((v2, i2) => {\r\n\t\t\t\tif (v2 == v) {\r\n\t\t\t\t\tselectedTargetKeys.push({ key: v, index: i })\r\n\t\t\t\t}\r\n\t\t\t})\r\n\t\t})\r\n\t\tif (selectedTargetKeys.length == 1) {\r\n\t\t\tthis.scopeupRecord(targetKeys, selectedTargetKeys[0].index)\r\n\t\t\tthis.setState({\r\n\t\t\t\ttargetKeys\r\n\t\t\t});\r\n\t\t}\r\n    }\r\n\r\n    moveDown = () => {\r\n        let { targetKeys, selectedKeys } = this.state\r\n\t\tlet selectedTargetKeys = []\r\n\t\ttargetKeys.forEach((v, i) => {\r\n\t\t\tselectedKeys.forEach((v2, i2) => {\r\n\t\t\t\tif (v2 == v) {\r\n\t\t\t\t\tselectedTargetKeys.push({ key: v, index: i })\r\n\t\t\t\t}\r\n\t\t\t})\r\n\t\t})\r\n\t\tconsole.log(targetKeys, selectedKeys, selectedTargetKeys)\r\n\t\tif (selectedTargetKeys.length == 1) {\r\n\t\t\tthis.scopedownRecord(targetKeys, selectedTargetKeys[0].index)\r\n\t\t\tthis.setState({\r\n\t\t\t\ttargetKeys\r\n\t\t\t});\r\n\t\t}\r\n    }\r\n\r\n    render() {\r\n        const state = this.state;\r\n        const targetKeys = [...this.state.targetKeys];\r\n        return (\r\n        <div className=\"demo7\">\r\n            <Button onClick={this.moveUp} size=\"sm\" className=\"moveUpBtn moveBtn\"><Icon type=\"uf-arrow-up\" /></Button>\r\n            <Button onClick={this.moveDown} size=\"sm\" className=\"moveDownBtn moveBtn\"><Icon type=\"uf-arrow-down\" /></Button>\r\n            <Transfer\r\n            appendToBottom={true}\r\n            dataSource={mockData}\r\n            titles={['Source', 'Target']}\r\n            targetKeys={targetKeys}\r\n            selectedKeys={state.selectedKeys}\r\n            onChange={this.handleChange}\r\n            onSelectChange={this.handleSelectChange}\r\n            render={item => item.title}\r\n            />\r\n        </div>\r\n        );\r\n    }\r\n}\r\n\r\n\r\n\r\n", "desc": " `appendToBottom` 参数控制是否将已选项追加到右侧列表末尾，其默认值为false（即将已选项添加到右侧列表最上方）。可在项目中动态改变参数数组targetKeys，穿梭框会根据targetKeys中的顺序进行排序。应用场景：通过上移/下移改变右侧数据顺序。", "scss_code": ".demo7{\r\n    width: 476px;\r\n    position: relative;\r\n    .moveBtn{\r\n        position: absolute;\r\n        right: 0;\r\n        margin: 8px;\r\n        min-width: 40px;\r\n        z-index: 10;\r\n        color: #86939E;\r\n        cursor: pointer;\r\n        &.moveUpBtn{\r\n            margin-top: 69px;\r\n        }\r\n        &.moveDownBtn{\r\n            margin-top: 100px;\r\n        }\r\n    }\r\n}" }, { "example": _react2['default'].createElement(Demo8, null), "title": " 树穿梭", "code": "/**\r\n*\r\n* @title 树穿梭\r\n* @description 结合 Tree 和 Transfer 的使用示例，解决多级数据穿梭问题。\r\n*\r\n*/\r\n\r\n\r\nimport React, { Component } from 'react';\r\n\nimport { Transfer, Tree } from 'tinper-bee';\r\n\r\nconst TreeNode = Tree.TreeNode;\r\nconst valueField = \"refcode\";\r\nconst AllTargetKeys = [];\r\n\r\nconst treeData = [{\"children\":[{\"children\":[],\"pid\":\"lkp\",\"refpk\":\"857c41b7-e1a3-11e5-aa70-0242ac11001d\",\"refcode\":\"wujd\",\"id\":\"wujd\",\"isLeaf\":\"true\",\"refname\":\"开发部\"},{\"children\":[],\"pid\":\"lkp\",\"refpk\":\"780aca16-e1a3-11e5-aa70-0242ac11001d\",\"refcode\":\"fzl\",\"id\":\"fzl\",\"isLeaf\":\"true\",\"refname\":\"人事部\"}],\"pid\":\"\",\"refpk\":\"708918f5-e1a3-11e5-aa70-0242ac11001d\",\"refcode\":\"lkp\",\"id\":\"lkp\",\"refname\":\"总公司\"}];\r\n\r\nclass Demo8 extends React.Component {\r\n    constructor(props){\r\n        super(props);\r\n        this.state = {\r\n            targetKeys: [],\r\n            selectedKeys: [],\r\n            expandedKeys: [],//记录展开节点\r\n            searchValue: '',//记录搜索内容\r\n            autoExpandParent: true,\r\n            dataList: [],\r\n            transferData : [{\"rownum_\":1,\"login_name\":\"43\",\"name\":\"花43\",\"refcode\":\"43\",\"refpk\":\"718dda50629e4f8a8833b5d17de85280\",\"id\":\"718dda50629e4f8a8833b5d17de85280\",\"refname\":\"花43\",\"key\":\"43\",\"title\":\"花43-43\"},{\"rownum_\":2,\"login_name\":\"46\",\"name\":\"花46\",\"refcode\":\"46\",\"refpk\":\"b595b95cf45348d7aadb7ae349a89a76\",\"id\":\"b595b95cf45348d7aadb7ae349a89a76\",\"refname\":\"花46\",\"key\":\"46\",\"title\":\"花46-46\"},{\"rownum_\":3,\"login_name\":\"48\",\"name\":\"花48\",\"refcode\":\"48\",\"refpk\":\"62310dd3677440ef96042b9c3ad135e2\",\"id\":\"62310dd3677440ef96042b9c3ad135e2\",\"refname\":\"花48\",\"key\":\"48\",\"title\":\"花48-48\"},{\"rownum_\":4,\"login_name\":\"53\",\"name\":\"花53\",\"refcode\":\"53\",\"refpk\":\"d64f7d6e6d014d40841415cd35a43dcf\",\"id\":\"d64f7d6e6d014d40841415cd35a43dcf\",\"refname\":\"花53\",\"key\":\"53\",\"title\":\"花53-53\"},{\"rownum_\":5,\"login_name\":\"70\",\"name\":\"花70\",\"refcode\":\"70\",\"refpk\":\"2ff33db8d1e94bcbaf9ba45e1ad6ea9c\",\"id\":\"2ff33db8d1e94bcbaf9ba45e1ad6ea9c\",\"refname\":\"花70\",\"key\":\"70\",\"title\":\"花70-70\"},{\"rownum_\":6,\"login_name\":\"73\",\"name\":\"花73\",\"refcode\":\"73\",\"refpk\":\"6d8328debfc94d5b8446f58d2b0b3cdc\",\"id\":\"6d8328debfc94d5b8446f58d2b0b3cdc\",\"refname\":\"花73\",\"key\":\"73\",\"title\":\"花73-73\"},{\"rownum_\":7,\"login_name\":\"76\",\"name\":\"花76\",\"refcode\":\"76\",\"refpk\":\"7768b51dc14544669f2cffa840edb049\",\"id\":\"7768b51dc14544669f2cffa840edb049\",\"refname\":\"花76\",\"key\":\"76\",\"title\":\"花76-76\"},{\"rownum_\":8,\"login_name\":\"80\",\"name\":\"花80\",\"refcode\":\"80\",\"refpk\":\"a89cc45ed1ec49f19bb608c18c958359\",\"id\":\"a89cc45ed1ec49f19bb608c18c958359\",\"refname\":\"花80\",\"key\":\"80\",\"title\":\"花80-80\"},{\"rownum_\":9,\"login_name\":\"78\",\"name\":\"花78\",\"refcode\":\"78\",\"refpk\":\"438d0cce9ae442e586940a582c7ee054\",\"id\":\"438d0cce9ae442e586940a582c7ee054\",\"refname\":\"花78\",\"key\":\"78\",\"title\":\"花78-78\"},{\"rownum_\":10,\"login_name\":\"79\",\"name\":\"花79\",\"refcode\":\"79\",\"refpk\":\"60adbcb7d4cb49449bc7879dd4fbf1f5\",\"id\":\"60adbcb7d4cb49449bc7879dd4fbf1f5\",\"refname\":\"花79\",\"key\":\"79\",\"title\":\"花79-79\"},{\"login_name\":\"zhao\",\"refpk\":\"14e0220f-1a86-4861-8f74-f7134cb3235b\",\"id\":\"14e0220f-1a86-4861-8f74-f7134cb3235b\",\"refcode\":\"zhao\",\"name\":\"赵宇\",\"refname\":\"赵宇\",\"key\":\"zhao\",\"title\":\"赵宇-zhao\"},{\"login_name\":\"chen\",\"refpk\":\"14e0220f-1a86-4861-8f74-f71343333b5b\",\"id\":\"14e0220f-1a86-4861-8f74-f71343333b5b\",\"refcode\":\"chen\",\"name\":\"陈辉\",\"refname\":\"陈辉\",\"key\":\"chen\",\"title\":\"陈辉-chen\"},{\"login_name\":\"yue\",\"refpk\":\"14e0220f-1a86-4861-8f74-545454547489\",\"id\":\"14e0220f-1a86-4861-8f74-545454547489\",\"refcode\":\"yue\",\"name\":\"岳明\",\"refname\":\"岳明\",\"key\":\"yue\",\"title\":\"岳明-yue\"},{\"login_name\":\"xiao\",\"refpk\":\"14e0220f-1a86-4861-8f74-543434537379\",\"id\":\"14e0220f-1a86-4861-8f74-543434537379\",\"refcode\":\"xiao\",\"name\":\"小羽\",\"refname\":\"小羽\",\"key\":\"xiao\",\"title\":\"小羽-xiao\"},{\"login_name\":\"123\",\"refpk\":\"14e0220f-1a86-4861-8f74-334455643336\",\"id\":\"14e0220f-1a86-4861-8f74-334455643336\",\"refcode\":\"123\",\"name\":\"123\",\"refname\":\"123\",\"key\":\"123\",\"title\":\"123-123\"},{\"login_name\":\"huang\",\"refpk\":\"14e0220f-1a86-4861-8f74-333387127390\",\"id\":\"14e0220f-1a86-4861-8f74-333387127390\",\"refcode\":\"huang\",\"name\":\"黄东东\",\"refname\":\"黄东东\",\"key\":\"huang\",\"title\":\"黄东东-huang\"},{\"login_name\":\"liu\",\"refpk\":\"14e0220f-1a86-4861-8f74-3332332kjffo\",\"id\":\"14e0220f-1a86-4861-8f74-3332332kjffo\",\"refcode\":\"liu\",\"name\":\"刘志鹏\",\"refname\":\"刘志鹏\",\"key\":\"liu\",\"title\":\"刘志鹏-liu\"},{\"login_name\":\"liukunlin\",\"refpk\":\"14e0220f-1a86-4861-8f74-23323e321263\",\"id\":\"14e0220f-1a86-4861-8f74-23323e321263\",\"refcode\":\"liukunlin\",\"name\":\"刘坤琳\",\"refname\":\"刘坤琳\",\"key\":\"liukunlin\",\"title\":\"刘坤琳-liukunlin\"}]\r\n        }\r\n        this.transferData = [{\"rownum_\":1,\"login_name\":\"43\",\"name\":\"花43\",\"refcode\":\"43\",\"refpk\":\"718dda50629e4f8a8833b5d17de85280\",\"id\":\"718dda50629e4f8a8833b5d17de85280\",\"refname\":\"花43\",\"key\":\"43\",\"title\":\"花43-43\"},{\"rownum_\":2,\"login_name\":\"46\",\"name\":\"花46\",\"refcode\":\"46\",\"refpk\":\"b595b95cf45348d7aadb7ae349a89a76\",\"id\":\"b595b95cf45348d7aadb7ae349a89a76\",\"refname\":\"花46\",\"key\":\"46\",\"title\":\"花46-46\"},{\"rownum_\":3,\"login_name\":\"48\",\"name\":\"花48\",\"refcode\":\"48\",\"refpk\":\"62310dd3677440ef96042b9c3ad135e2\",\"id\":\"62310dd3677440ef96042b9c3ad135e2\",\"refname\":\"花48\",\"key\":\"48\",\"title\":\"花48-48\"},{\"rownum_\":4,\"login_name\":\"53\",\"name\":\"花53\",\"refcode\":\"53\",\"refpk\":\"d64f7d6e6d014d40841415cd35a43dcf\",\"id\":\"d64f7d6e6d014d40841415cd35a43dcf\",\"refname\":\"花53\",\"key\":\"53\",\"title\":\"花53-53\"},{\"rownum_\":5,\"login_name\":\"70\",\"name\":\"花70\",\"refcode\":\"70\",\"refpk\":\"2ff33db8d1e94bcbaf9ba45e1ad6ea9c\",\"id\":\"2ff33db8d1e94bcbaf9ba45e1ad6ea9c\",\"refname\":\"花70\",\"key\":\"70\",\"title\":\"花70-70\"},{\"rownum_\":6,\"login_name\":\"73\",\"name\":\"花73\",\"refcode\":\"73\",\"refpk\":\"6d8328debfc94d5b8446f58d2b0b3cdc\",\"id\":\"6d8328debfc94d5b8446f58d2b0b3cdc\",\"refname\":\"花73\",\"key\":\"73\",\"title\":\"花73-73\"},{\"rownum_\":7,\"login_name\":\"76\",\"name\":\"花76\",\"refcode\":\"76\",\"refpk\":\"7768b51dc14544669f2cffa840edb049\",\"id\":\"7768b51dc14544669f2cffa840edb049\",\"refname\":\"花76\",\"key\":\"76\",\"title\":\"花76-76\"},{\"rownum_\":8,\"login_name\":\"80\",\"name\":\"花80\",\"refcode\":\"80\",\"refpk\":\"a89cc45ed1ec49f19bb608c18c958359\",\"id\":\"a89cc45ed1ec49f19bb608c18c958359\",\"refname\":\"花80\",\"key\":\"80\",\"title\":\"花80-80\"},{\"rownum_\":9,\"login_name\":\"78\",\"name\":\"花78\",\"refcode\":\"78\",\"refpk\":\"438d0cce9ae442e586940a582c7ee054\",\"id\":\"438d0cce9ae442e586940a582c7ee054\",\"refname\":\"花78\",\"key\":\"78\",\"title\":\"花78-78\"},{\"rownum_\":10,\"login_name\":\"79\",\"name\":\"花79\",\"refcode\":\"79\",\"refpk\":\"60adbcb7d4cb49449bc7879dd4fbf1f5\",\"id\":\"60adbcb7d4cb49449bc7879dd4fbf1f5\",\"refname\":\"花79\",\"key\":\"79\",\"title\":\"花79-79\"},{\"login_name\":\"zhao\",\"refpk\":\"14e0220f-1a86-4861-8f74-f7134cb3235b\",\"id\":\"14e0220f-1a86-4861-8f74-f7134cb3235b\",\"refcode\":\"zhao\",\"name\":\"赵宇\",\"refname\":\"赵宇\",\"key\":\"zhao\",\"title\":\"赵宇-zhao\"},{\"login_name\":\"chen\",\"refpk\":\"14e0220f-1a86-4861-8f74-f71343333b5b\",\"id\":\"14e0220f-1a86-4861-8f74-f71343333b5b\",\"refcode\":\"chen\",\"name\":\"陈辉\",\"refname\":\"陈辉\",\"key\":\"chen\",\"title\":\"陈辉-chen\"},{\"login_name\":\"yue\",\"refpk\":\"14e0220f-1a86-4861-8f74-545454547489\",\"id\":\"14e0220f-1a86-4861-8f74-545454547489\",\"refcode\":\"yue\",\"name\":\"岳明\",\"refname\":\"岳明\",\"key\":\"yue\",\"title\":\"岳明-yue\"},{\"login_name\":\"xiao\",\"refpk\":\"14e0220f-1a86-4861-8f74-543434537379\",\"id\":\"14e0220f-1a86-4861-8f74-543434537379\",\"refcode\":\"xiao\",\"name\":\"小羽\",\"refname\":\"小羽\",\"key\":\"xiao\",\"title\":\"小羽-xiao\"},{\"login_name\":\"123\",\"refpk\":\"14e0220f-1a86-4861-8f74-334455643336\",\"id\":\"14e0220f-1a86-4861-8f74-334455643336\",\"refcode\":\"123\",\"name\":\"123\",\"refname\":\"123\",\"key\":\"123\",\"title\":\"123-123\"},{\"login_name\":\"huang\",\"refpk\":\"14e0220f-1a86-4861-8f74-333387127390\",\"id\":\"14e0220f-1a86-4861-8f74-333387127390\",\"refcode\":\"huang\",\"name\":\"黄东东\",\"refname\":\"黄东东\",\"key\":\"huang\",\"title\":\"黄东东-huang\"},{\"login_name\":\"liu\",\"refpk\":\"14e0220f-1a86-4861-8f74-3332332kjffo\",\"id\":\"14e0220f-1a86-4861-8f74-3332332kjffo\",\"refcode\":\"liu\",\"name\":\"刘志鹏\",\"refname\":\"刘志鹏\",\"key\":\"liu\",\"title\":\"刘志鹏-liu\"},{\"login_name\":\"liukunlin\",\"refpk\":\"14e0220f-1a86-4861-8f74-23323e321263\",\"id\":\"14e0220f-1a86-4861-8f74-23323e321263\",\"refcode\":\"liukunlin\",\"name\":\"刘坤琳\",\"refname\":\"刘坤琳\",\"key\":\"liukunlin\",\"title\":\"刘坤琳-liukunlin\"}];\r\n    }\r\n    componentWillReceiveProps(nextProps) {\r\n\t\tconst dataList = [];\r\n\t\tconst generateList = (data) => {\r\n\t\t\tfor (let i = 0; i < data.length; i++) {\r\n\t\t\t\tconst node = data[i];\r\n\t\t\t\tconst key = node[valueField];\r\n\t\t\t\tconst title = node.refname;\r\n\t\t\t\tdataList.push({\r\n\t\t\t\t\tkey,\r\n\t\t\t\t\ttitle\r\n\t\t\t\t});\r\n\t\t\t\tif (node.children) {\r\n\t\t\t\t\tgenerateList(node.children, node.key);\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t};\r\n\t\tgenerateList(nextProps.data);\r\n\t\tthis.setState({\r\n\t\t\tdataList\r\n\t\t})\r\n\t}\r\n\r\n    handleTransferChange = (nextTargetKeys, direction, moveKeys) => {\r\n        this.setState({ targetKeys: nextTargetKeys });\r\n\r\n        console.log('targetKeys: ', nextTargetKeys);\r\n        console.log('direction: ', direction);\r\n        console.log('moveKeys: ', moveKeys);\r\n    }\r\n\r\n    handleTransferSelectChange = (sourceSelectedKeys, targetSelectedKeys) => {\r\n        this.setState({ selectedKeys: [...sourceSelectedKeys, ...targetSelectedKeys] });\r\n    \r\n        console.log('sourceSelectedKeys: ', sourceSelectedKeys);\r\n        console.log('targetSelectedKeys: ', targetSelectedKeys);\r\n    }\r\n\r\n    handleTreeSelect = (selectNode = {}) => {\r\n        let {targetKeys,transferData}  = this.state;\r\n        let startFlag,endFlag;\r\n        if(selectNode.refcode===\"fzl\"){\r\n            startFlag = 10;\r\n            endFlag = 18\r\n        }else if(selectNode.refcode === 'wujd'){\r\n            startFlag = 0;\r\n            endFlag = 10;\r\n        }else{\r\n            startFlag=0;\r\n            endFlag=18;\r\n        }\r\n        let selectedData = this.transferData.filter(v => {\r\n\t\t\treturn targetKeys.some(key => key == v['refcode'])\r\n\t\t});\r\n\t\tlet temp = this.transferData.slice(startFlag,endFlag)\r\n        let tempTransferData = temp.concat(selectedData);\r\n        console.log('=====',targetKeys,'=====')\r\n\t\tthis.setState({\r\n\t\t\ttransferData:tempTransferData,\r\n\t\t});\r\n\t}\r\n\r\n    onTreeSelect = (selectedKeys, e) => {\r\n\t\tif (selectedKeys.length === 0) {\r\n\t\t\treturn\r\n\t\t}\r\n\t\tvar fullInfo = {};\r\n\t\tconst loopSearch = (arr, key) => {\r\n\t\t\tif (!arr) { return }\r\n\t\t\tfor (let i = 0; i < arr.length; i++) {\r\n\t\t\t\tif (arr[i][valueField] == key) {\r\n\t\t\t\t\tfullInfo = arr[i];\r\n\t\t\t\t} else {\r\n\t\t\t\t\tloopSearch(arr[i].children, key)\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t}\r\n        loopSearch(treeData, selectedKeys[0])\r\n\t\tthis.handleTreeSelect(fullInfo)\r\n    }\r\n    \r\n    onExpand = (expandedKeys) => {\r\n        this.setState({\r\n            expandedKeys,\r\n            autoExpandParent: false,\r\n        });\r\n    }\r\n\r\n    render() {\r\n        const {\r\n            selectedKeys,\r\n\t\t\texpandedKeys,\r\n            autoExpandParent,\r\n            transferData,\r\n            targetKeys\r\n\t\t} = this.state;\r\n        const loop = treeData => treeData.map((item) => {\r\n            if (item.children && item.children.length > 0) {\r\n                return (\r\n                    <TreeNode key={item[valueField]} title={item.refname}>\r\n                        {loop(item.children)}\r\n                    </TreeNode>\r\n                );\r\n            }\r\n            return <TreeNode key={item[valueField]} title={item.refname} isLeaf={true} />;\r\n        });\r\n        return (\r\n        <div className=\"demo8\">\r\n            <Tree\r\n                checkStrictly={false}\r\n                multiple={false}\r\n                onExpand={this.onExpand}\r\n                defaultExpandAll={true}\r\n                expandedKeys={expandedKeys}\r\n                autoExpandParent={autoExpandParent}\r\n                onSelect={this.onTreeSelect}\r\n            >\r\n                {loop(treeData)}\r\n            </Tree>\r\n            <Transfer\r\n            dataSource={transferData}\r\n            targetKeys={targetKeys}\r\n            selectedKeys={selectedKeys}\r\n            onChange={this.handleTransferChange}\r\n            onSelectChange={this.handleTransferSelectChange}\r\n            render={item => item.title}\r\n            />\r\n        </div>\r\n        );\r\n    }\r\n}\r\n\r\n\r\n\r\n", "desc": " 结合 Tree 和 Transfer 的使用示例，解决多级数据穿梭问题。", "scss_code": ".demo8{\r\n    .u-tree{\r\n        max-width: 220px;\r\n        display: inline-block;\r\n        vertical-align: top;\r\n        width: 220px;\r\n        max-height: 525px;\r\n        box-sizing: border-box;\r\n        text-align: left;\r\n    }\r\n    .u-transfer{\r\n        display: inline-block;\r\n        vertical-align: top;\r\n        width: calc(100% - 235px);\r\n        max-height: 525px;\r\n        box-sizing: border-box;\r\n        text-align: left;\r\n        overflow: auto;\r\n    }\r\n}" }];
 	
 	var Demo = function (_Component) {
 	    _inherits(Demo, _Component);
@@ -16458,7 +16458,8 @@
 	  searchPlaceholder: 'Search',
 	  notFoundContent: 'Not Found',
 	  showCheckbox: true,
-	  draggable: false
+	  draggable: false,
+	  appendToBottom: false
 	};
 	
 	var propTypes = {
@@ -16481,7 +16482,8 @@
 	  rowKey: _propTypes2['default'].func,
 	  lazy: _propTypes2['default'].object,
 	  showCheckbox: _propTypes2['default'].bool,
-	  draggable: _propTypes2['default'].bool
+	  draggable: _propTypes2['default'].bool,
+	  appendToBottom: _propTypes2['default'].bool
 	};
 	
 	var defaultTitles = ['', ''];
@@ -16584,6 +16586,8 @@
 	   * @param {*} newDataSource 异步加载数据源时，从nextProps中获取的dataSource
 	   */
 	  Transfer.prototype.splitDataSource = function splitDataSource(newTargetKeys, newDataSource) {
+	    var _this2 = this;
+	
 	    // targetKeys：展示在右边列表的数据集
 	    if (this.splitedDataSource) {
 	      return this.splitedDataSource;
@@ -16594,14 +16598,22 @@
 	    var dataSource = newDataSource || this.props.dataSource;
 	
 	    dataSource = this.addUniqueKey(dataSource);
-	
-	    var leftDataSource = dataSource.filter(function (_ref) {
+	    this.allSourceKeys = dataSource.map(function (_ref) {
 	      var key = _ref.key;
+	      return key;
+	    });
+	
+	    var leftDataSource = dataSource.filter(function (_ref2) {
+	      var key = _ref2.key;
 	      return targetKeys.indexOf(key) === -1;
 	    });
-	    var rightDataSource = dataSource.filter(function (_ref2) {
-	      var key = _ref2.key;
-	      return targetKeys.indexOf(key) > -1;
+	    // const rightDataSource = dataSource.filter(({key}) => targetKeys.indexOf(key) > -1);
+	    // 右侧数据源根据传入的targetKeys进行排序
+	    var rightDataSource = [];
+	    var tempIndex = -1;
+	    targetKeys.forEach(function (key) {
+	      tempIndex = _this2.allSourceKeys.indexOf(key);
+	      rightDataSource.push(dataSource[tempIndex]);
 	    });
 	
 	    this.splitedDataSource = {
@@ -16828,10 +16840,10 @@
 	}(_react2['default'].Component);
 	
 	var _initialiseProps = function _initialiseProps() {
-	  var _this2 = this;
+	  var _this3 = this;
 	
 	  this.addUniqueKey = function (dataSource) {
-	    var rowKey = _this2.props.rowKey;
+	    var rowKey = _this3.props.rowKey;
 	
 	    if (rowKey) {
 	      dataSource.forEach(function (record) {
@@ -16842,13 +16854,12 @@
 	  };
 	
 	  this.moveTo = function (direction) {
-	    var _props2 = _this2.props,
+	    var _props2 = _this3.props,
 	        _props2$targetKeys = _props2.targetKeys,
 	        targetKeys = _props2$targetKeys === undefined ? [] : _props2$targetKeys,
-	        onChange = _props2.onChange;
-	    // debugger
-	
-	    var _state4 = _this2.state,
+	        onChange = _props2.onChange,
+	        appendToBottom = _props2.appendToBottom;
+	    var _state4 = _this3.state,
 	        sourceSelectedKeys = _state4.sourceSelectedKeys,
 	        targetSelectedKeys = _state4.targetSelectedKeys,
 	        leftDataSource = _state4.leftDataSource,
@@ -16856,78 +16867,78 @@
 	        droppableId = _state4.droppableId;
 	
 	    var moveKeys = direction === 'right' ? sourceSelectedKeys : targetSelectedKeys;
+	    var temp = appendToBottom ? targetKeys.concat(moveKeys) : moveKeys.concat(targetKeys);
 	    // move items to target box
-	    var newTargetKeys = direction === 'right' ? moveKeys.concat(targetKeys) : targetKeys.filter(function (targetKey) {
+	    var newTargetKeys = direction === 'right' ? temp : targetKeys.filter(function (targetKey) {
 	      return moveKeys.indexOf(targetKey) === -1;
 	    });
 	
 	    // empty checked keys
 	    var oppositeDirection = direction === 'right' ? 'left' : 'right';
-	    _this2.setState(_defineProperty({}, _this2.getSelectedKeysName(oppositeDirection), []));
-	    // debugger
-	    _this2.handleSelectChange(oppositeDirection, []);
+	    _this3.setState(_defineProperty({}, _this3.getSelectedKeysName(oppositeDirection), []));
+	    _this3.handleSelectChange(oppositeDirection, []);
 	
 	    if (onChange) {
 	      onChange(newTargetKeys, direction, moveKeys);
 	    }
 	    // 区分拖拽穿梭还是点击穿梭
 	    var newDataSource = leftDataSource.concat(rightDataSource);
-	    droppableId ? _this2.splitDataSource2(newTargetKeys, newDataSource) : _this2.splitDataSource(newTargetKeys);
+	    droppableId ? _this3.splitDataSource2(newTargetKeys, newDataSource) : _this3.splitDataSource(newTargetKeys);
 	  };
 	
 	  this.moveToLeft = function () {
-	    return _this2.moveTo('left');
+	    return _this3.moveTo('left');
 	  };
 	
 	  this.moveToRight = function () {
-	    return _this2.moveTo('right');
+	    return _this3.moveTo('right');
 	  };
 	
 	  this.handleSelectAll = function (direction, filteredDataSource, checkAll) {
 	    var holder = checkAll ? [] : filteredDataSource.map(function (item) {
 	      return item.key;
 	    });
-	    _this2.handleSelectChange(direction, holder);
+	    _this3.handleSelectChange(direction, holder);
 	
-	    if (!_this2.props.selectedKeys) {
-	      _this2.setState(_defineProperty({}, _this2.getSelectedKeysName(direction), holder));
+	    if (!_this3.props.selectedKeys) {
+	      _this3.setState(_defineProperty({}, _this3.getSelectedKeysName(direction), holder));
 	    }
 	  };
 	
 	  this.handleLeftSelectAll = function (filteredDataSource, checkAll) {
-	    _this2.handleSelectAll('left', filteredDataSource, checkAll);
+	    _this3.handleSelectAll('left', filteredDataSource, checkAll);
 	  };
 	
 	  this.handleRightSelectAll = function (filteredDataSource, checkAll) {
-	    return _this2.handleSelectAll('right', filteredDataSource, checkAll);
+	    return _this3.handleSelectAll('right', filteredDataSource, checkAll);
 	  };
 	
 	  this.handleFilter = function (direction, value) {
-	    _this2.setState(_defineProperty({}, direction + 'Filter', value));
+	    _this3.setState(_defineProperty({}, direction + 'Filter', value));
 	  };
 	
 	  this.handleLeftFilter = function (v) {
-	    return _this2.handleFilter('left', v);
+	    return _this3.handleFilter('left', v);
 	  };
 	
 	  this.handleRightFilter = function (v) {
-	    return _this2.handleFilter('right', v);
+	    return _this3.handleFilter('right', v);
 	  };
 	
 	  this.handleClear = function (direction) {
-	    _this2.setState(_defineProperty({}, direction + 'Filter', ''));
+	    _this3.setState(_defineProperty({}, direction + 'Filter', ''));
 	  };
 	
 	  this.handleLeftClear = function () {
-	    return _this2.handleClear('left');
+	    return _this3.handleClear('left');
 	  };
 	
 	  this.handleRightClear = function () {
-	    return _this2.handleClear('right');
+	    return _this3.handleClear('right');
 	  };
 	
 	  this.handleSelect = function (direction, selectedItem, checked) {
-	    var _state5 = _this2.state,
+	    var _state5 = _this3.state,
 	        sourceSelectedKeys = _state5.sourceSelectedKeys,
 	        targetSelectedKeys = _state5.targetSelectedKeys;
 	
@@ -16940,27 +16951,27 @@
 	      //未勾选
 	      holder.push(selectedItem.key);
 	    }
-	    _this2.handleSelectChange(direction, holder);
+	    _this3.handleSelectChange(direction, holder);
 	
-	    if (!_this2.props.selectedKeys) {
-	      _this2.setState(_defineProperty({}, _this2.getSelectedKeysName(direction), holder));
+	    if (!_this3.props.selectedKeys) {
+	      _this3.setState(_defineProperty({}, _this3.getSelectedKeysName(direction), holder));
 	    }
 	  };
 	
 	  this.handleLeftSelect = function (selectedItem, checked) {
-	    return _this2.handleSelect('left', selectedItem, checked);
+	    return _this3.handleSelect('left', selectedItem, checked);
 	  };
 	
 	  this.handleRightSelect = function (selectedItem, checked) {
-	    return _this2.handleSelect('right', selectedItem, checked);
+	    return _this3.handleSelect('right', selectedItem, checked);
 	  };
 	
 	  this.getTitles = function () {
-	    if (_this2.props.titles) {
-	      return _this2.props.titles;
+	    if (_this3.props.titles) {
+	      return _this3.props.titles;
 	    }
-	    if (_this2.context && _this2.context.antLocale && _this2.context.antLocale.Transfer) {
-	      return _this2.context.antLocale.Transfer.titles || [];
+	    if (_this3.context && _this3.context.antLocale && _this3.context.antLocale.Transfer) {
+	      return _this3.context.antLocale.Transfer.titles || [];
 	    }
 	    return defaultTitles;
 	  };
@@ -16971,14 +16982,14 @@
 	  };
 	
 	  this.getList = function (id) {
-	    return _this2.state[_this2.id2List[id]];
+	    return _this3.state[_this3.id2List[id]];
 	  };
 	
 	  this.onDragEnd = function (result) {
 	    var source = result.source,
 	        destination = result.destination,
 	        draggableId = result.draggableId;
-	    var _props3 = _this2.props,
+	    var _props3 = _this3.props,
 	        targetKeys = _props3.targetKeys,
 	        onChange = _props3.onChange;
 	
@@ -16995,14 +17006,14 @@
 	      // case2：在左侧列表中拖拽
 	      if (source.droppableId === destination.droppableId) return;
 	      // case3：从右往左拖拽（移除已选）
-	      _this2.moveToLeft();
+	      _this3.moveToLeft();
 	      return;
 	    }
 	
 	    // case4：在右侧列表中拖拽改变items顺序
 	    if (source.droppableId === destination.droppableId) {
-	      var items = (0, _utils.reorder)(_this2.getList(source.droppableId), targetKeys, sourceIndex, disIndex);
-	      _this2.setState({
+	      var items = (0, _utils.reorder)(_this3.getList(source.droppableId), targetKeys, sourceIndex, disIndex);
+	      _this3.setState({
 	        rightDataSource: items.dataArr,
 	        sourceSelectedKeys: [],
 	        targetSelectedKeys: []
@@ -17012,11 +17023,11 @@
 	      }
 	    } else {
 	      // case5：从左往右拖拽（添加已选）
-	      var _result = (0, _utils.move)(_this2.getList(source.droppableId), _this2.getList(destination.droppableId), source, destination, targetKeys);
+	      var _result = (0, _utils.move)(_this3.getList(source.droppableId), _this3.getList(destination.droppableId), source, destination, targetKeys);
 	      if (onChange) {
 	        onChange(_result.newTargetKeys, "", draggableId);
 	      }
-	      _this2.setState({
+	      _this3.setState({
 	        leftDataSource: _result.droppable_1,
 	        rightDataSource: _result.droppable_2,
 	        sourceSelectedKeys: [],
@@ -17032,12 +17043,12 @@
 	    selectedItem.key = result.draggableId;
 	    if (source.droppableId === 'droppable_1') {
 	      // leftMenu
-	      _this2.handleLeftSelect(selectedItem);
+	      _this3.handleLeftSelect(selectedItem);
 	    } else if (source.droppableId === 'droppable_2') {
 	      // rightMenu
-	      _this2.handleRightSelect(selectedItem);
+	      _this3.handleRightSelect(selectedItem);
 	    }
-	    _this2.setState({
+	    _this3.setState({
 	      droppableId: source.droppableId
 	    });
 	  };
@@ -33490,6 +33501,11 @@
 	      console.log('targetKeys: ', nextTargetKeys);
 	      console.log('direction: ', direction);
 	      console.log('moveKeys: ', moveKeys);
+	    }, _this.handleSelectChange = function (sourceSelectedKeys, targetSelectedKeys) {
+	      _this.setState({ selectedKeys: [].concat(_toConsumableArray(sourceSelectedKeys), _toConsumableArray(targetSelectedKeys)) });
+	
+	      console.log('sourceSelectedKeys: ', sourceSelectedKeys);
+	      console.log('targetSelectedKeys: ', targetSelectedKeys);
 	    }, _this.renderItem = function (item) {
 	      var customLabel = _react2['default'].createElement(
 	        'span',
@@ -33521,6 +33537,7 @@
 	        targetKeys: targetKeys,
 	        selectedKeys: state.selectedKeys,
 	        onChange: this.handleChange,
+	        onSelectChange: this.handleSelectChange,
 	        render: this.renderItem
 	      })
 	    );
@@ -33530,6 +33547,2513 @@
 	}(_react2['default'].Component);
 	
 	exports['default'] = Demo6;
+	module.exports = exports['default'];
+
+/***/ }),
+/* 281 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _beeButton = __webpack_require__(155);
+	
+	var _beeButton2 = _interopRequireDefault(_beeButton);
+	
+	var _beeIcon = __webpack_require__(79);
+	
+	var _beeIcon2 = _interopRequireDefault(_beeIcon);
+	
+	var _src = __webpack_require__(157);
+	
+	var _src2 = _interopRequireDefault(_src);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	
+	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
+	
+	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); } /**
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               *
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               * @title 自定义右侧已选列表的排列顺序
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               * @description `appendToBottom` 参数控制是否将已选项追加到右侧列表末尾，其默认值为false（即将已选项添加到右侧列表最上方）。可在项目中动态改变参数数组targetKeys，穿梭框会根据targetKeys中的顺序进行排序。应用场景：通过上移/下移改变右侧数据顺序。
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               *
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               */
+	
+	var AllTargetKeys = [];
+	var mockData = [];
+	for (var i = 0; i < 20; i++) {
+	    mockData.push({
+	        key: i.toString(),
+	        title: 'content' + (i + 1),
+	        description: 'description of content' + (i + 1)
+	    });
+	    AllTargetKeys.push(i.toString());
+	}
+	
+	var targetKeys = mockData.filter(function (item) {
+	    return +item.key % 7 === 0;
+	}).map(function (item) {
+	    return item.key;
+	});
+	
+	var Demo7 = function (_React$Component) {
+	    _inherits(Demo7, _React$Component);
+	
+	    function Demo7() {
+	        var _temp, _this, _ret;
+	
+	        _classCallCheck(this, Demo7);
+	
+	        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+	            args[_key] = arguments[_key];
+	        }
+	
+	        return _ret = (_temp = (_this = _possibleConstructorReturn(this, _React$Component.call.apply(_React$Component, [this].concat(args))), _this), _this.state = {
+	            targetKeys: targetKeys,
+	            selectedKeys: [],
+	            showModal: false,
+	            modalSize: ''
+	        }, _this.handleChange = function (nextTargetKeys, direction, moveKeys) {
+	            _this.setState({ targetKeys: nextTargetKeys });
+	
+	            console.log('targetKeys: ', nextTargetKeys);
+	            console.log('direction: ', direction);
+	            console.log('moveKeys: ', moveKeys);
+	        }, _this.handleSelectChange = function (sourceSelectedKeys, targetSelectedKeys) {
+	            _this.setState({ selectedKeys: [].concat(_toConsumableArray(sourceSelectedKeys), _toConsumableArray(targetSelectedKeys)) });
+	
+	            console.log('sourceSelectedKeys: ', sourceSelectedKeys);
+	            console.log('targetSelectedKeys: ', targetSelectedKeys);
+	        }, _this.moveAllToRight = function () {
+	            _this.setState({
+	                targetKeys: AllTargetKeys
+	            });
+	        }, _this.moveAllToLeft = function () {
+	            _this.setState({
+	                targetKeys: []
+	            });
+	        }, _this.moveUp = function () {
+	            var _this$state = _this.state,
+	                targetKeys = _this$state.targetKeys,
+	                selectedKeys = _this$state.selectedKeys;
+	
+	            var selectedTargetKeys = [];
+	            targetKeys.forEach(function (v, i) {
+	                selectedKeys.forEach(function (v2, i2) {
+	                    if (v2 == v) {
+	                        selectedTargetKeys.push({ key: v, index: i });
+	                    }
+	                });
+	            });
+	            if (selectedTargetKeys.length == 1) {
+	                _this.scopeupRecord(targetKeys, selectedTargetKeys[0].index);
+	                _this.setState({
+	                    targetKeys: targetKeys
+	                });
+	            }
+	        }, _this.moveDown = function () {
+	            var _this$state2 = _this.state,
+	                targetKeys = _this$state2.targetKeys,
+	                selectedKeys = _this$state2.selectedKeys;
+	
+	            var selectedTargetKeys = [];
+	            targetKeys.forEach(function (v, i) {
+	                selectedKeys.forEach(function (v2, i2) {
+	                    if (v2 == v) {
+	                        selectedTargetKeys.push({ key: v, index: i });
+	                    }
+	                });
+	            });
+	            console.log(targetKeys, selectedKeys, selectedTargetKeys);
+	            if (selectedTargetKeys.length == 1) {
+	                _this.scopedownRecord(targetKeys, selectedTargetKeys[0].index);
+	                _this.setState({
+	                    targetKeys: targetKeys
+	                });
+	            }
+	        }, _temp), _possibleConstructorReturn(_this, _ret);
+	    }
+	
+	    Demo7.prototype.swapItems = function swapItems(arr, index1, index2) {
+	        arr[index1] = arr.splice(index2, 1, arr[index1])[0];
+	        return arr;
+	    };
+	
+	    Demo7.prototype.scopeupRecord = function scopeupRecord(arr, $index) {
+	        if ($index == 0) {
+	            return;
+	        }
+	        this.swapItems(arr, $index, $index - 1);
+	    };
+	
+	    Demo7.prototype.scopedownRecord = function scopedownRecord(arr, $index) {
+	        if ($index == arr.length - 1) {
+	            return;
+	        }
+	        this.swapItems(arr, $index, $index + 1);
+	    };
+	
+	    Demo7.prototype.render = function render() {
+	        var state = this.state;
+	        var targetKeys = [].concat(_toConsumableArray(this.state.targetKeys));
+	        return _react2['default'].createElement(
+	            'div',
+	            { className: 'demo7' },
+	            _react2['default'].createElement(
+	                _beeButton2['default'],
+	                { onClick: this.moveUp, size: 'sm', className: 'moveUpBtn moveBtn' },
+	                _react2['default'].createElement(_beeIcon2['default'], { type: 'uf-arrow-up' })
+	            ),
+	            _react2['default'].createElement(
+	                _beeButton2['default'],
+	                { onClick: this.moveDown, size: 'sm', className: 'moveDownBtn moveBtn' },
+	                _react2['default'].createElement(_beeIcon2['default'], { type: 'uf-arrow-down' })
+	            ),
+	            _react2['default'].createElement(_src2['default'], {
+	                appendToBottom: true,
+	                dataSource: mockData,
+	                titles: ['Source', 'Target'],
+	                targetKeys: targetKeys,
+	                selectedKeys: state.selectedKeys,
+	                onChange: this.handleChange,
+	                onSelectChange: this.handleSelectChange,
+	                render: function render(item) {
+	                    return item.title;
+	                }
+	            })
+	        );
+	    };
+	
+	    return Demo7;
+	}(_react2['default'].Component);
+	
+	exports['default'] = Demo7;
+	module.exports = exports['default'];
+
+/***/ }),
+/* 282 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _beeTree = __webpack_require__(283);
+	
+	var _beeTree2 = _interopRequireDefault(_beeTree);
+	
+	var _src = __webpack_require__(157);
+	
+	var _src2 = _interopRequireDefault(_src);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	
+	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
+	
+	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); } /**
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               *
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               * @title 树穿梭
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               * @description 结合 Tree 和 Transfer 的使用示例，解决多级数据穿梭问题。
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               *
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               */
+	
+	var TreeNode = _beeTree2['default'].TreeNode;
+	var valueField = "refcode";
+	var AllTargetKeys = [];
+	
+	var treeData = [{ "children": [{ "children": [], "pid": "lkp", "refpk": "857c41b7-e1a3-11e5-aa70-0242ac11001d", "refcode": "wujd", "id": "wujd", "isLeaf": "true", "refname": "开发部" }, { "children": [], "pid": "lkp", "refpk": "780aca16-e1a3-11e5-aa70-0242ac11001d", "refcode": "fzl", "id": "fzl", "isLeaf": "true", "refname": "人事部" }], "pid": "", "refpk": "708918f5-e1a3-11e5-aa70-0242ac11001d", "refcode": "lkp", "id": "lkp", "refname": "总公司" }];
+	
+	var Demo8 = function (_React$Component) {
+	    _inherits(Demo8, _React$Component);
+	
+	    function Demo8(props) {
+	        _classCallCheck(this, Demo8);
+	
+	        var _this = _possibleConstructorReturn(this, _React$Component.call(this, props));
+	
+	        _this.handleTransferChange = function (nextTargetKeys, direction, moveKeys) {
+	            _this.setState({ targetKeys: nextTargetKeys });
+	
+	            console.log('targetKeys: ', nextTargetKeys);
+	            console.log('direction: ', direction);
+	            console.log('moveKeys: ', moveKeys);
+	        };
+	
+	        _this.handleTransferSelectChange = function (sourceSelectedKeys, targetSelectedKeys) {
+	            _this.setState({ selectedKeys: [].concat(_toConsumableArray(sourceSelectedKeys), _toConsumableArray(targetSelectedKeys)) });
+	
+	            console.log('sourceSelectedKeys: ', sourceSelectedKeys);
+	            console.log('targetSelectedKeys: ', targetSelectedKeys);
+	        };
+	
+	        _this.handleTreeSelect = function () {
+	            var selectNode = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+	            var _this$state = _this.state,
+	                targetKeys = _this$state.targetKeys,
+	                transferData = _this$state.transferData;
+	
+	            var startFlag = void 0,
+	                endFlag = void 0;
+	            if (selectNode.refcode === "fzl") {
+	                startFlag = 10;
+	                endFlag = 18;
+	            } else if (selectNode.refcode === 'wujd') {
+	                startFlag = 0;
+	                endFlag = 10;
+	            } else {
+	                startFlag = 0;
+	                endFlag = 18;
+	            }
+	            var selectedData = _this.transferData.filter(function (v) {
+	                return targetKeys.some(function (key) {
+	                    return key == v['refcode'];
+	                });
+	            });
+	            var temp = _this.transferData.slice(startFlag, endFlag);
+	            var tempTransferData = temp.concat(selectedData);
+	            console.log('=====', targetKeys, '=====');
+	            _this.setState({
+	                transferData: tempTransferData
+	            });
+	        };
+	
+	        _this.onTreeSelect = function (selectedKeys, e) {
+	            if (selectedKeys.length === 0) {
+	                return;
+	            }
+	            var fullInfo = {};
+	            var loopSearch = function loopSearch(arr, key) {
+	                if (!arr) {
+	                    return;
+	                }
+	                for (var i = 0; i < arr.length; i++) {
+	                    if (arr[i][valueField] == key) {
+	                        fullInfo = arr[i];
+	                    } else {
+	                        loopSearch(arr[i].children, key);
+	                    }
+	                }
+	            };
+	            loopSearch(treeData, selectedKeys[0]);
+	            _this.handleTreeSelect(fullInfo);
+	        };
+	
+	        _this.onExpand = function (expandedKeys) {
+	            _this.setState({
+	                expandedKeys: expandedKeys,
+	                autoExpandParent: false
+	            });
+	        };
+	
+	        _this.state = {
+	            targetKeys: [],
+	            selectedKeys: [],
+	            expandedKeys: [], //记录展开节点
+	            searchValue: '', //记录搜索内容
+	            autoExpandParent: true,
+	            dataList: [],
+	            transferData: [{ "rownum_": 1, "login_name": "43", "name": "花43", "refcode": "43", "refpk": "718dda50629e4f8a8833b5d17de85280", "id": "718dda50629e4f8a8833b5d17de85280", "refname": "花43", "key": "43", "title": "花43-43" }, { "rownum_": 2, "login_name": "46", "name": "花46", "refcode": "46", "refpk": "b595b95cf45348d7aadb7ae349a89a76", "id": "b595b95cf45348d7aadb7ae349a89a76", "refname": "花46", "key": "46", "title": "花46-46" }, { "rownum_": 3, "login_name": "48", "name": "花48", "refcode": "48", "refpk": "62310dd3677440ef96042b9c3ad135e2", "id": "62310dd3677440ef96042b9c3ad135e2", "refname": "花48", "key": "48", "title": "花48-48" }, { "rownum_": 4, "login_name": "53", "name": "花53", "refcode": "53", "refpk": "d64f7d6e6d014d40841415cd35a43dcf", "id": "d64f7d6e6d014d40841415cd35a43dcf", "refname": "花53", "key": "53", "title": "花53-53" }, { "rownum_": 5, "login_name": "70", "name": "花70", "refcode": "70", "refpk": "2ff33db8d1e94bcbaf9ba45e1ad6ea9c", "id": "2ff33db8d1e94bcbaf9ba45e1ad6ea9c", "refname": "花70", "key": "70", "title": "花70-70" }, { "rownum_": 6, "login_name": "73", "name": "花73", "refcode": "73", "refpk": "6d8328debfc94d5b8446f58d2b0b3cdc", "id": "6d8328debfc94d5b8446f58d2b0b3cdc", "refname": "花73", "key": "73", "title": "花73-73" }, { "rownum_": 7, "login_name": "76", "name": "花76", "refcode": "76", "refpk": "7768b51dc14544669f2cffa840edb049", "id": "7768b51dc14544669f2cffa840edb049", "refname": "花76", "key": "76", "title": "花76-76" }, { "rownum_": 8, "login_name": "80", "name": "花80", "refcode": "80", "refpk": "a89cc45ed1ec49f19bb608c18c958359", "id": "a89cc45ed1ec49f19bb608c18c958359", "refname": "花80", "key": "80", "title": "花80-80" }, { "rownum_": 9, "login_name": "78", "name": "花78", "refcode": "78", "refpk": "438d0cce9ae442e586940a582c7ee054", "id": "438d0cce9ae442e586940a582c7ee054", "refname": "花78", "key": "78", "title": "花78-78" }, { "rownum_": 10, "login_name": "79", "name": "花79", "refcode": "79", "refpk": "60adbcb7d4cb49449bc7879dd4fbf1f5", "id": "60adbcb7d4cb49449bc7879dd4fbf1f5", "refname": "花79", "key": "79", "title": "花79-79" }, { "login_name": "zhao", "refpk": "14e0220f-1a86-4861-8f74-f7134cb3235b", "id": "14e0220f-1a86-4861-8f74-f7134cb3235b", "refcode": "zhao", "name": "赵宇", "refname": "赵宇", "key": "zhao", "title": "赵宇-zhao" }, { "login_name": "chen", "refpk": "14e0220f-1a86-4861-8f74-f71343333b5b", "id": "14e0220f-1a86-4861-8f74-f71343333b5b", "refcode": "chen", "name": "陈辉", "refname": "陈辉", "key": "chen", "title": "陈辉-chen" }, { "login_name": "yue", "refpk": "14e0220f-1a86-4861-8f74-545454547489", "id": "14e0220f-1a86-4861-8f74-545454547489", "refcode": "yue", "name": "岳明", "refname": "岳明", "key": "yue", "title": "岳明-yue" }, { "login_name": "xiao", "refpk": "14e0220f-1a86-4861-8f74-543434537379", "id": "14e0220f-1a86-4861-8f74-543434537379", "refcode": "xiao", "name": "小羽", "refname": "小羽", "key": "xiao", "title": "小羽-xiao" }, { "login_name": "123", "refpk": "14e0220f-1a86-4861-8f74-334455643336", "id": "14e0220f-1a86-4861-8f74-334455643336", "refcode": "123", "name": "123", "refname": "123", "key": "123", "title": "123-123" }, { "login_name": "huang", "refpk": "14e0220f-1a86-4861-8f74-333387127390", "id": "14e0220f-1a86-4861-8f74-333387127390", "refcode": "huang", "name": "黄东东", "refname": "黄东东", "key": "huang", "title": "黄东东-huang" }, { "login_name": "liu", "refpk": "14e0220f-1a86-4861-8f74-3332332kjffo", "id": "14e0220f-1a86-4861-8f74-3332332kjffo", "refcode": "liu", "name": "刘志鹏", "refname": "刘志鹏", "key": "liu", "title": "刘志鹏-liu" }, { "login_name": "liukunlin", "refpk": "14e0220f-1a86-4861-8f74-23323e321263", "id": "14e0220f-1a86-4861-8f74-23323e321263", "refcode": "liukunlin", "name": "刘坤琳", "refname": "刘坤琳", "key": "liukunlin", "title": "刘坤琳-liukunlin" }]
+	        };
+	        _this.transferData = [{ "rownum_": 1, "login_name": "43", "name": "花43", "refcode": "43", "refpk": "718dda50629e4f8a8833b5d17de85280", "id": "718dda50629e4f8a8833b5d17de85280", "refname": "花43", "key": "43", "title": "花43-43" }, { "rownum_": 2, "login_name": "46", "name": "花46", "refcode": "46", "refpk": "b595b95cf45348d7aadb7ae349a89a76", "id": "b595b95cf45348d7aadb7ae349a89a76", "refname": "花46", "key": "46", "title": "花46-46" }, { "rownum_": 3, "login_name": "48", "name": "花48", "refcode": "48", "refpk": "62310dd3677440ef96042b9c3ad135e2", "id": "62310dd3677440ef96042b9c3ad135e2", "refname": "花48", "key": "48", "title": "花48-48" }, { "rownum_": 4, "login_name": "53", "name": "花53", "refcode": "53", "refpk": "d64f7d6e6d014d40841415cd35a43dcf", "id": "d64f7d6e6d014d40841415cd35a43dcf", "refname": "花53", "key": "53", "title": "花53-53" }, { "rownum_": 5, "login_name": "70", "name": "花70", "refcode": "70", "refpk": "2ff33db8d1e94bcbaf9ba45e1ad6ea9c", "id": "2ff33db8d1e94bcbaf9ba45e1ad6ea9c", "refname": "花70", "key": "70", "title": "花70-70" }, { "rownum_": 6, "login_name": "73", "name": "花73", "refcode": "73", "refpk": "6d8328debfc94d5b8446f58d2b0b3cdc", "id": "6d8328debfc94d5b8446f58d2b0b3cdc", "refname": "花73", "key": "73", "title": "花73-73" }, { "rownum_": 7, "login_name": "76", "name": "花76", "refcode": "76", "refpk": "7768b51dc14544669f2cffa840edb049", "id": "7768b51dc14544669f2cffa840edb049", "refname": "花76", "key": "76", "title": "花76-76" }, { "rownum_": 8, "login_name": "80", "name": "花80", "refcode": "80", "refpk": "a89cc45ed1ec49f19bb608c18c958359", "id": "a89cc45ed1ec49f19bb608c18c958359", "refname": "花80", "key": "80", "title": "花80-80" }, { "rownum_": 9, "login_name": "78", "name": "花78", "refcode": "78", "refpk": "438d0cce9ae442e586940a582c7ee054", "id": "438d0cce9ae442e586940a582c7ee054", "refname": "花78", "key": "78", "title": "花78-78" }, { "rownum_": 10, "login_name": "79", "name": "花79", "refcode": "79", "refpk": "60adbcb7d4cb49449bc7879dd4fbf1f5", "id": "60adbcb7d4cb49449bc7879dd4fbf1f5", "refname": "花79", "key": "79", "title": "花79-79" }, { "login_name": "zhao", "refpk": "14e0220f-1a86-4861-8f74-f7134cb3235b", "id": "14e0220f-1a86-4861-8f74-f7134cb3235b", "refcode": "zhao", "name": "赵宇", "refname": "赵宇", "key": "zhao", "title": "赵宇-zhao" }, { "login_name": "chen", "refpk": "14e0220f-1a86-4861-8f74-f71343333b5b", "id": "14e0220f-1a86-4861-8f74-f71343333b5b", "refcode": "chen", "name": "陈辉", "refname": "陈辉", "key": "chen", "title": "陈辉-chen" }, { "login_name": "yue", "refpk": "14e0220f-1a86-4861-8f74-545454547489", "id": "14e0220f-1a86-4861-8f74-545454547489", "refcode": "yue", "name": "岳明", "refname": "岳明", "key": "yue", "title": "岳明-yue" }, { "login_name": "xiao", "refpk": "14e0220f-1a86-4861-8f74-543434537379", "id": "14e0220f-1a86-4861-8f74-543434537379", "refcode": "xiao", "name": "小羽", "refname": "小羽", "key": "xiao", "title": "小羽-xiao" }, { "login_name": "123", "refpk": "14e0220f-1a86-4861-8f74-334455643336", "id": "14e0220f-1a86-4861-8f74-334455643336", "refcode": "123", "name": "123", "refname": "123", "key": "123", "title": "123-123" }, { "login_name": "huang", "refpk": "14e0220f-1a86-4861-8f74-333387127390", "id": "14e0220f-1a86-4861-8f74-333387127390", "refcode": "huang", "name": "黄东东", "refname": "黄东东", "key": "huang", "title": "黄东东-huang" }, { "login_name": "liu", "refpk": "14e0220f-1a86-4861-8f74-3332332kjffo", "id": "14e0220f-1a86-4861-8f74-3332332kjffo", "refcode": "liu", "name": "刘志鹏", "refname": "刘志鹏", "key": "liu", "title": "刘志鹏-liu" }, { "login_name": "liukunlin", "refpk": "14e0220f-1a86-4861-8f74-23323e321263", "id": "14e0220f-1a86-4861-8f74-23323e321263", "refcode": "liukunlin", "name": "刘坤琳", "refname": "刘坤琳", "key": "liukunlin", "title": "刘坤琳-liukunlin" }];
+	        return _this;
+	    }
+	
+	    Demo8.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
+	        var dataList = [];
+	        var generateList = function generateList(data) {
+	            for (var i = 0; i < data.length; i++) {
+	                var node = data[i];
+	                var key = node[valueField];
+	                var title = node.refname;
+	                dataList.push({
+	                    key: key,
+	                    title: title
+	                });
+	                if (node.children) {
+	                    generateList(node.children, node.key);
+	                }
+	            }
+	        };
+	        generateList(nextProps.data);
+	        this.setState({
+	            dataList: dataList
+	        });
+	    };
+	
+	    Demo8.prototype.render = function render() {
+	        var _state = this.state,
+	            selectedKeys = _state.selectedKeys,
+	            expandedKeys = _state.expandedKeys,
+	            autoExpandParent = _state.autoExpandParent,
+	            transferData = _state.transferData,
+	            targetKeys = _state.targetKeys;
+	
+	        var loop = function loop(treeData) {
+	            return treeData.map(function (item) {
+	                if (item.children && item.children.length > 0) {
+	                    return _react2['default'].createElement(
+	                        TreeNode,
+	                        { key: item[valueField], title: item.refname },
+	                        loop(item.children)
+	                    );
+	                }
+	                return _react2['default'].createElement(TreeNode, { key: item[valueField], title: item.refname, isLeaf: true });
+	            });
+	        };
+	        return _react2['default'].createElement(
+	            'div',
+	            { className: 'demo8' },
+	            _react2['default'].createElement(
+	                _beeTree2['default'],
+	                {
+	                    checkStrictly: false,
+	                    multiple: false,
+	                    onExpand: this.onExpand,
+	                    defaultExpandAll: true,
+	                    expandedKeys: expandedKeys,
+	                    autoExpandParent: autoExpandParent,
+	                    onSelect: this.onTreeSelect
+	                },
+	                loop(treeData)
+	            ),
+	            _react2['default'].createElement(_src2['default'], {
+	                dataSource: transferData,
+	                targetKeys: targetKeys,
+	                selectedKeys: selectedKeys,
+	                onChange: this.handleTransferChange,
+	                onSelectChange: this.handleTransferSelectChange,
+	                render: function render(item) {
+	                    return item.title;
+	                }
+	            })
+	        );
+	    };
+	
+	    return Demo8;
+	}(_react2['default'].Component);
+	
+	exports['default'] = Demo8;
+	module.exports = exports['default'];
+
+/***/ }),
+/* 283 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _Tree = __webpack_require__(284);
+	
+	var _Tree2 = _interopRequireDefault(_Tree);
+	
+	var _TreeNode = __webpack_require__(286);
+	
+	var _TreeNode2 = _interopRequireDefault(_TreeNode);
+	
+	var _openAnimation = __webpack_require__(287);
+	
+	var _openAnimation2 = _interopRequireDefault(_openAnimation);
+	
+	var _propTypes = __webpack_require__(6);
+	
+	var _propTypes2 = _interopRequireDefault(_propTypes);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+	
+	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
+	
+	var TreeProps = {
+	  showLine: _propTypes2["default"].bool,
+	  className: _propTypes2["default"].string,
+	  /** 是否支持多选 */
+	  multiple: _propTypes2["default"].bool,
+	  /** 是否自动展开父节点 */
+	  autoExpandParent: _propTypes2["default"].bool,
+	  /** checkable状态下节点选择完全受控（父子节点选中状态不再关联）*/
+	  checkStrictly: _propTypes2["default"].bool,
+	  /** 是否支持选中 */
+	  checkable: _propTypes2["default"].bool,
+	  /** 默认展开所有树节点 */
+	  defaultExpandAll: _propTypes2["default"].bool,
+	  /** 默认展开指定的树节点 */
+	  defaultExpandedKeys: _propTypes2["default"].array,
+	  /** （受控）展开指定的树节点 */
+	  expandedKeys: _propTypes2["default"].array,
+	  /** （受控）选中复选框的树节点 */
+	  checkedKeys: _propTypes2["default"].oneOfType([_propTypes2["default"].array, _propTypes2["default"].object]),
+	  /** 默认选中复选框的树节点 */
+	  defaultCheckedKeys: _propTypes2["default"].array,
+	  /** （受控）设置选中的树节点 */
+	  selectedKeys: _propTypes2["default"].array,
+	  /** 默认选中的树节点 */
+	  defaultSelectedKeys: _propTypes2["default"].array,
+	  /** 展开/收起节点时触发 */
+	  onExpand: _propTypes2["default"].func,
+	  /** 点击复选框触发 */
+	  onCheck: _propTypes2["default"].func,
+	  /** 点击树节点触发 */
+	  onSelect: _propTypes2["default"].func,
+	  /** filter some AntTreeNodes as you need. it should return true */
+	  filterAntTreeNode: _propTypes2["default"].func,
+	  /** 异步加载数据 */
+	  loadData: _propTypes2["default"].func,
+	  /** 响应右键点击 */
+	  onRightClick: _propTypes2["default"].func,
+	  /** 设置节点可拖拽（IE>8）*/
+	  draggable: _propTypes2["default"].bool,
+	  /** 开始拖拽时调用 */
+	  onDragStart: _propTypes2["default"].func,
+	  /** dragenter 触发时调用 */
+	  onDragEnter: _propTypes2["default"].func,
+	  /** dragover 触发时调用 */
+	  onDragOver: _propTypes2["default"].func,
+	  /** dragleave 触发时调用 */
+	  onDragLeave: _propTypes2["default"].func,
+	  /** drop 触发时调用 */
+	  onDrop: _propTypes2["default"].func,
+	  style: _react2["default"].CSSProperties,
+	  prefixCls: _propTypes2["default"].string,
+	  filterTreeNode: _propTypes2["default"].func
+	};
+	
+	var defaultProps = {
+	  prefixCls: 'u-tree',
+	  checkable: false,
+	  showIcon: false,
+	  openAnimation: _openAnimation2["default"]
+	};
+	
+	var Tree = function (_Component) {
+	  _inherits(Tree, _Component);
+	
+	  function Tree() {
+	    _classCallCheck(this, Tree);
+	
+	    return _possibleConstructorReturn(this, _Component.apply(this, arguments));
+	  }
+	
+	  Tree.prototype.render = function render() {
+	    var props = this.props;
+	    var checkable = props.checkable;
+	    return _react2["default"].createElement(
+	      _Tree2["default"],
+	      _extends({}, props, {
+	        checkable: checkable ? _react2["default"].createElement('span', { className: props.prefixCls + '-checkbox-inner' }) : checkable
+	      }),
+	      this.props.children
+	    );
+	  };
+	
+	  return Tree;
+	}(_react.Component);
+	
+	Tree.TreeNode = _TreeNode2["default"];
+	Tree.TreeProps = TreeProps;
+	Tree.defaultProps = defaultProps;
+	exports["default"] = Tree;
+	module.exports = exports['default'];
+
+/***/ }),
+/* 284 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _classnames = __webpack_require__(5);
+	
+	var _classnames2 = _interopRequireDefault(_classnames);
+	
+	var _util = __webpack_require__(285);
+	
+	var _propTypes = __webpack_require__(6);
+	
+	var _propTypes2 = _interopRequireDefault(_propTypes);
+	
+	var _tinperBeeCore = __webpack_require__(27);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+	
+	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
+	
+	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); } /* eslint no-console:0 */
+	
+	
+	function noop() {}
+	
+	var Tree = function (_React$Component) {
+	  _inherits(Tree, _React$Component);
+	
+	  function Tree(props) {
+	    _classCallCheck(this, Tree);
+	
+	    var _this = _possibleConstructorReturn(this, _React$Component.call(this, props));
+	
+	    ['onKeyDown', 'onCheck', "onUlFocus", "_focusDom", "onUlMouseEnter", "onUlMouseLeave"].forEach(function (m) {
+	      _this[m] = _this[m].bind(_this);
+	    });
+	    _this.contextmenuKeys = [];
+	    _this.checkedKeysChange = true;
+	    _this.selectKeyDomPos = '0-0';
+	    _this.state = {
+	      expandedKeys: _this.getDefaultExpandedKeys(props),
+	      checkedKeys: _this.getDefaultCheckedKeys(props),
+	      selectedKeys: _this.getDefaultSelectedKeys(props),
+	      dragNodesKeys: '',
+	      dragOverNodeKey: '',
+	      dropNodeKey: ''
+	    };
+	    return _this;
+	  }
+	
+	  Tree.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
+	    var expandedKeys = this.getDefaultExpandedKeys(nextProps, true);
+	    var checkedKeys = this.getDefaultCheckedKeys(nextProps, true);
+	    var selectedKeys = this.getDefaultSelectedKeys(nextProps, true);
+	    var st = {};
+	    // 用于记录这次data内容有没有变化
+	    this.dataChange = false;
+	    if (expandedKeys) {
+	      st.expandedKeys = expandedKeys;
+	    }
+	    if (checkedKeys) {
+	      if (nextProps.checkedKeys === this.props.checkedKeys) {
+	        this.checkedKeysChange = false;
+	      } else {
+	        this.checkedKeysChange = true;
+	      }
+	      st.checkedKeys = checkedKeys;
+	    }
+	    if (selectedKeys) {
+	      st.selectedKeys = selectedKeys;
+	    }
+	    if (nextProps.children !== this.props.children) {
+	      this.dataChange = true;
+	    }
+	    this.setState(st);
+	  };
+	
+	  Tree.prototype.onDragStart = function onDragStart(e, treeNode) {
+	    this.dragNode = treeNode;
+	    this.dragNodesKeys = this.getDragNodes(treeNode);
+	    var st = {
+	      dragNodesKeys: this.dragNodesKeys
+	    };
+	    var expandedKeys = this.getExpandedKeys(treeNode, false);
+	    if (expandedKeys) {
+	      // Controlled expand, save and then reset
+	      this.getRawExpandedKeys();
+	      st.expandedKeys = expandedKeys;
+	    }
+	    this.setState(st);
+	    this.props.onDragStart({
+	      event: e,
+	      node: treeNode
+	    });
+	    this._dropTrigger = false;
+	  };
+	
+	  Tree.prototype.onDragEnterGap = function onDragEnterGap(e, treeNode) {
+	    var offsetTop = (0, _util.getOffset)(treeNode.refs.selectHandle).top;
+	    var offsetHeight = treeNode.refs.selectHandle.offsetHeight;
+	    var pageY = e.pageY;
+	    var gapHeight = 2;
+	    if (pageY > offsetTop + offsetHeight - gapHeight) {
+	      this.dropPosition = 1;
+	      return 1;
+	    }
+	    if (pageY < offsetTop + gapHeight) {
+	      this.dropPosition = -1;
+	      return -1;
+	    }
+	    this.dropPosition = 0;
+	    return 0;
+	  };
+	
+	  Tree.prototype.onDragEnter = function onDragEnter(e, treeNode) {
+	    var enterGap = this.onDragEnterGap(e, treeNode);
+	    if (this.dragNode.props.eventKey === treeNode.props.eventKey && enterGap === 0) {
+	      this.setState({
+	        dragOverNodeKey: ''
+	      });
+	      return;
+	    }
+	    var st = {
+	      dragOverNodeKey: treeNode.props.eventKey
+	    };
+	    var expandedKeys = this.getExpandedKeys(treeNode, true);
+	    if (expandedKeys) {
+	      this.getRawExpandedKeys();
+	      st.expandedKeys = expandedKeys;
+	    }
+	    this.setState(st);
+	    this.props.onDragEnter({
+	      event: e,
+	      node: treeNode,
+	      expandedKeys: expandedKeys && [].concat(_toConsumableArray(expandedKeys)) || [].concat(_toConsumableArray(this.state.expandedKeys))
+	    });
+	  };
+	
+	  Tree.prototype.onDragOver = function onDragOver(e, treeNode) {
+	    this.props.onDragOver({
+	      event: e,
+	      node: treeNode
+	    });
+	  };
+	
+	  Tree.prototype.onDragLeave = function onDragLeave(e, treeNode) {
+	    this.props.onDragLeave({
+	      event: e,
+	      node: treeNode
+	    });
+	  };
+	
+	  Tree.prototype.onDrop = function onDrop(e, treeNode) {
+	    var key = treeNode.props.eventKey;
+	    this.setState({
+	      dragOverNodeKey: '',
+	      dropNodeKey: key
+	    });
+	    if (this.dragNodesKeys.indexOf(key) > -1) {
+	      if (console.warn) {
+	        console.warn('can not drop to dragNode(include it\'s children node)');
+	      }
+	      return false;
+	    }
+	
+	    var posArr = treeNode.props.pos.split('-');
+	    var res = {
+	      event: e,
+	      node: treeNode,
+	      dragNode: this.dragNode,
+	      dragNodesKeys: [].concat(_toConsumableArray(this.dragNodesKeys)),
+	      dropPosition: this.dropPosition + Number(posArr[posArr.length - 1])
+	    };
+	    if (this.dropPosition !== 0) {
+	      res.dropToGap = true;
+	    }
+	    if ('expandedKeys' in this.props) {
+	      res.rawExpandedKeys = [].concat(_toConsumableArray(this._rawExpandedKeys)) || [].concat(_toConsumableArray(this.state.expandedKeys));
+	    }
+	    this.props.onDrop(res);
+	    this._dropTrigger = true;
+	  };
+	
+	  Tree.prototype.onDragEnd = function onDragEnd(e, treeNode) {
+	    this.setState({
+	      dragOverNodeKey: ''
+	    });
+	    this.props.onDragEnd({
+	      event: e,
+	      node: treeNode
+	    });
+	  };
+	  /**
+	   *
+	   *
+	   * @param {*} treeNode 当前操作的节点
+	   * @param {*} keyType 键盘事件通用的key类型 left 为收起，right为展开
+	   * @returns
+	   * @memberof Tree
+	   */
+	
+	
+	  Tree.prototype.onExpand = function onExpand(treeNode, keyType) {
+	    var _this2 = this;
+	
+	    var expanded = !treeNode.props.expanded;
+	    var controlled = 'expandedKeys' in this.props;
+	    var expandedKeys = [].concat(_toConsumableArray(this.state.expandedKeys));
+	    var index = expandedKeys.indexOf(treeNode.props.eventKey);
+	
+	    if (keyType == 'left') {
+	      expanded = false;
+	    } else if (keyType == 'right') {
+	      expanded = true;
+	    }
+	
+	    if (expanded && index === -1) {
+	      expandedKeys.push(treeNode.props.eventKey);
+	    } else if (!expanded && index > -1) {
+	      expandedKeys.splice(index, 1);
+	    }
+	    if (!controlled) {
+	      this.setState({
+	        expandedKeys: expandedKeys
+	      });
+	    }
+	    this.props.onExpand(expandedKeys, {
+	      node: treeNode,
+	      expanded: expanded
+	    });
+	
+	    // after data loaded, need set new expandedKeys
+	    if (expanded && this.props.loadData) {
+	      return this.props.loadData(treeNode).then(function () {
+	        if (!controlled) {
+	          _this2.setState({
+	            expandedKeys: expandedKeys
+	          });
+	        }
+	      });
+	    }
+	  };
+	
+	  Tree.prototype.onCheck = function onCheck(treeNode) {
+	    var _this3 = this;
+	
+	    var checked = !treeNode.props.checked;
+	    if (treeNode.props.halfChecked) {
+	      checked = true;
+	    }
+	    var key = treeNode.props.eventKey;
+	    var checkedKeys = [].concat(_toConsumableArray(this.state.checkedKeys));
+	    var index = checkedKeys.indexOf(key);
+	
+	    var newSt = {
+	      event: 'check',
+	      node: treeNode,
+	      checked: checked
+	    };
+	
+	    if (this.props.checkStrictly) {
+	      if (checked && index === -1) {
+	        checkedKeys.push(key);
+	      }
+	      if (!checked && index > -1) {
+	        checkedKeys.splice(index, 1);
+	      }
+	      this.treeNodesStates[treeNode.props.pos].checked = checked;
+	      newSt.checkedNodes = [];
+	      (0, _util.loopAllChildren)(this.props.children, function (item, ind, pos, keyOrPos) {
+	        if (checkedKeys.indexOf(keyOrPos) !== -1) {
+	          newSt.checkedNodes.push(item);
+	        }
+	      });
+	      if (!('checkedKeys' in this.props)) {
+	        this.setState({
+	          checkedKeys: checkedKeys
+	        });
+	      }
+	      var halfChecked = this.props.checkedKeys ? this.props.checkedKeys.halfChecked : [];
+	      this.props.onCheck((0, _util.getStrictlyValue)(checkedKeys, halfChecked), newSt);
+	    } else {
+	      if (checked && index === -1) {
+	        this.treeNodesStates[treeNode.props.pos].checked = true;
+	        var checkedPositions = [];
+	        Object.keys(this.treeNodesStates).forEach(function (i) {
+	          if (_this3.treeNodesStates[i].checked) {
+	            checkedPositions.push(i);
+	          }
+	        });
+	        (0, _util.handleCheckState)(this.treeNodesStates, (0, _util.filterParentPosition)(checkedPositions), true);
+	      }
+	      if (!checked) {
+	        this.treeNodesStates[treeNode.props.pos].checked = false;
+	        this.treeNodesStates[treeNode.props.pos].halfChecked = false;
+	        (0, _util.handleCheckState)(this.treeNodesStates, [treeNode.props.pos], false);
+	      }
+	      var checkKeys = (0, _util.getCheck)(this.treeNodesStates);
+	      newSt.checkedNodes = checkKeys.checkedNodes;
+	      newSt.checkedNodesPositions = checkKeys.checkedNodesPositions;
+	      newSt.halfCheckedKeys = checkKeys.halfCheckedKeys;
+	      this.checkKeys = checkKeys;
+	
+	      this._checkedKeys = checkedKeys = checkKeys.checkedKeys;
+	      if (!('checkedKeys' in this.props)) {
+	        this.setState({
+	          checkedKeys: checkedKeys
+	        });
+	      }
+	      this.props.onCheck(checkedKeys, newSt);
+	    }
+	  };
+	
+	  Tree.prototype.onSelect = function onSelect(treeNode) {
+	    var props = this.props;
+	    var selectedKeys = [].concat(_toConsumableArray(this.state.selectedKeys));
+	    var eventKey = treeNode.props.eventKey || treeNode.key;
+	    var index = selectedKeys.indexOf(eventKey);
+	    var selected = void 0;
+	    //cancelUnSelect为true时第二次点击时不取消选中
+	    if (props.cancelUnSelect) {
+	      if (index == -1) {
+	        selected = true;
+	        if (!props.multiple) {
+	          selectedKeys.length = 0;
+	        }
+	        selectedKeys.push(eventKey);
+	      }
+	    } else {
+	      if (index !== -1) {
+	        selected = false;
+	        selectedKeys.splice(index, 1);
+	      } else {
+	        selected = true;
+	        if (!props.multiple) {
+	          selectedKeys.length = 0;
+	        }
+	        selectedKeys.push(eventKey);
+	      }
+	    }
+	
+	    var selectedNodes = [];
+	    if (selectedKeys.length) {
+	      (0, _util.loopAllChildren)(this.props.children, function (item) {
+	        if (selectedKeys.indexOf(item.key) !== -1) {
+	          selectedNodes.push(item);
+	        }
+	      });
+	    }
+	    var newSt = {
+	      event: 'select',
+	      node: treeNode,
+	      selected: selected,
+	      selectedNodes: selectedNodes
+	    };
+	    if (!('selectedKeys' in this.props)) {
+	      this.setState({
+	        selectedKeys: selectedKeys
+	      });
+	    }
+	    props.onSelect(selectedKeys, newSt);
+	  };
+	
+	  Tree.prototype.onDoubleClick = function onDoubleClick(treeNode) {
+	    var props = this.props;
+	    var eventKey = treeNode.props.eventKey;
+	    var newSt = {
+	      event: 'dblclick',
+	      node: treeNode
+	    };
+	    props.onDoubleClick(eventKey, newSt);
+	  };
+	
+	  Tree.prototype.onMouseEnter = function onMouseEnter(e, treeNode) {
+	    this.props.onMouseEnter({
+	      event: e,
+	      node: treeNode
+	    });
+	  };
+	
+	  Tree.prototype.onMouseLeave = function onMouseLeave(e, treeNode) {
+	    this.props.onMouseLeave({
+	      event: e,
+	      node: treeNode
+	    });
+	  };
+	
+	  Tree.prototype.onContextMenu = function onContextMenu(e, treeNode) {
+	    var selectedKeys = [].concat(_toConsumableArray(this.state.selectedKeys));
+	    var eventKey = treeNode.props.eventKey;
+	    if (this.contextmenuKeys.indexOf(eventKey) === -1) {
+	      this.contextmenuKeys.push(eventKey);
+	    }
+	    this.contextmenuKeys.forEach(function (key) {
+	      var index = selectedKeys.indexOf(key);
+	      if (index !== -1) {
+	        selectedKeys.splice(index, 1);
+	      }
+	    });
+	    if (selectedKeys.indexOf(eventKey) === -1) {
+	      selectedKeys.push(eventKey);
+	    }
+	    this.setState({
+	      selectedKeys: selectedKeys
+	    });
+	    this.props.onRightClick({
+	      event: e,
+	      node: treeNode
+	    });
+	  };
+	
+	  Tree.prototype.getTreeNode = function getTreeNode() {
+	    var props = this.props;
+	  };
+	
+	  Tree.prototype.goDown = function goDown(currentPos, currentIndex, e, treeNode) {
+	    var props = this.props;
+	    var nextIndex = parseInt(currentIndex) + 1;
+	
+	    var nextPos = void 0,
+	        backNextPos = void 0;
+	    var nextTreeNode = void 0,
+	        backNextTreeNode = void 0;
+	    var backNextPosArr = [],
+	        backNextTreeNodeArr = [],
+	        tempBackNextPosArr = [];
+	    //是否为展开的节点，如果展开获取第一个子节点的信息，如果没有取相邻节点，若也没有相邻节点则获取父节点的下一个节点
+	    if (props.expandedKeys.indexOf(treeNode.props.eventKey) > -1) {
+	      nextPos = currentPos + '-0';
+	    } else {
+	      nextPos = currentPos.substr(0, currentPos.lastIndexOf('-') + 1) + nextIndex;
+	    }
+	    //若向下的节点没有了，找到父级相邻节点
+	    var tempPosArr = currentPos.split('-');
+	    var tempPosArrLength = tempPosArr.length;
+	    //将可能是下一个节点的的位置都备份一遍
+	    while (tempPosArrLength > 1) {
+	      backNextPos = tempPosArrLength > 1 && tempPosArr.slice(0, tempPosArrLength - 1).join('-') + '-' + (parseInt(tempPosArr[tempPosArrLength - 1]) + 1);
+	      tempBackNextPosArr.push(backNextPos);
+	      tempPosArr = tempPosArr.slice(0, tempPosArrLength - 1);
+	      tempPosArrLength = tempPosArr.length;
+	    }
+	    //选中下一个相邻的节点
+	    (0, _util.loopAllChildren)(props.children, function (itemNode, index, pos, newKey) {
+	      if (pos == nextPos) {
+	        nextTreeNode = itemNode;
+	      }
+	      tempBackNextPosArr.forEach(function (item) {
+	        if (item && item == pos) {
+	          // backNextTreeNode = item;
+	          backNextTreeNodeArr.push(itemNode);
+	          backNextPosArr.push(pos);
+	        }
+	      });
+	    });
+	    //如果没有下一个节点，则获取父节点的下一个节点
+	    if (!nextTreeNode) {
+	      for (var i = 0; i < backNextTreeNodeArr.length; i++) {
+	        if (backNextTreeNodeArr[i]) {
+	          nextTreeNode = backNextTreeNodeArr[i];
+	          nextPos = backNextPosArr[i];
+	          break;
+	        }
+	      }
+	    }
+	
+	    //查询的下一个节点不为空的话，则选中
+	    if (nextTreeNode) {
+	      var queryInfo = 'a[pos="' + nextPos + '"]';
+	      var parentEle = (0, _util.closest)(e.target, ".u-tree");
+	      var focusEle = parentEle ? parentEle.querySelector(queryInfo) : null;
+	      focusEle && focusEle.focus();
+	      this.onSelect(nextTreeNode);
+	    }
+	  };
+	
+	  Tree.prototype.goUp = function goUp(currentPos, currentIndex, e, treeNode) {
+	    var props = this.props;
+	    if (currentIndex == 0 && currentPos.length === 3) {
+	      return;
+	    }
+	    // 向上键Up
+	    var preIndex = parseInt(currentIndex) - 1;
+	    var prePos = void 0;
+	    if (preIndex >= 0) {
+	      prePos = currentPos.substr(0, currentPos.lastIndexOf('-') + 1) + preIndex;
+	    } else {
+	      prePos = currentPos.substr(0, currentPos.lastIndexOf('-'));
+	    }
+	
+	    var prevTreeNode = void 0,
+	        preElement = void 0;
+	    //选中上一个相邻的节点
+	    (0, _util.loopAllChildren)(props.children, function (item, index, pos, newKey) {
+	      if (pos == prePos) {
+	        prevTreeNode = item;
+	      }
+	    });
+	    //查询的上一个节点不为空的话，则选中
+	    if (prevTreeNode) {
+	      if (preIndex >= 0) {
+	        //如果上面的节点展开则默认选择最后一个子节点
+	        if (props.expandedKeys.indexOf(prevTreeNode.key) > -1) {
+	          var preElementArr = e.target.parentElement.previousElementSibling.querySelectorAll('a');
+	          preElement = preElementArr[preElementArr.length - 1];
+	          prePos = preElement.getAttribute('pos');
+	          (0, _util.loopAllChildren)(props.children, function (item, index, pos, newKey) {
+	            if (pos == prePos) {
+	              prevTreeNode = item;
+	            }
+	          });
+	        } else {
+	          //上一个节点没有展开
+	          preElement = e.target.parentElement.previousElementSibling.querySelector('a');
+	        }
+	      } else {
+	        // 不存在上一个节点时，选中它的父节点
+	        preElement = e.target.parentElement.parentElement.parentElement.querySelector('a');
+	      }
+	    }
+	    preElement && preElement.focus();
+	    this.onSelect(prevTreeNode);
+	  };
+	  // all keyboard events callbacks run from here at first
+	
+	
+	  Tree.prototype.onKeyDown = function onKeyDown(e, treeNode) {
+	    // e.stopPropagation();
+	
+	    var props = this.props;
+	    var currentPos = treeNode.props.pos;
+	    var currentIndex = currentPos.substr(currentPos.lastIndexOf('-') + 1);
+	    //向下键down
+	    if (e.keyCode == _tinperBeeCore.KeyCode.DOWN) {
+	      this.goDown(currentPos, currentIndex, e, treeNode);
+	    } else if (e.keyCode == _tinperBeeCore.KeyCode.UP) {
+	      this.goUp(currentPos, currentIndex, e, treeNode);
+	    } else if (e.keyCode == _tinperBeeCore.KeyCode.LEFT && !treeNode.props.isLeaf) {
+	      // 收起树节点
+	      this.onExpand(treeNode, 'left');
+	    } else if (e.keyCode == _tinperBeeCore.KeyCode.RIGHT && !treeNode.props.isLeaf) {
+	      // 展开树节点
+	      this.onExpand(treeNode, 'right');
+	    } else if (e.keyCode == _tinperBeeCore.KeyCode.SPACE && props.checkable) {
+	      // 如果是多选tree则进行选中或者反选该节点
+	      this.onCheck(treeNode);
+	    } else if (e.keyCode == _tinperBeeCore.KeyCode.ENTER) {
+	      this.onDoubleClick(treeNode);
+	    }
+	    this.props.keyFun && this.props.keyFun(e, treeNode);
+	    // e.preventDefault();
+	  };
+	
+	  Tree.prototype._focusDom = function _focusDom(selectKeyDomPos, targetDom) {
+	    var queryInfo = 'a[pos="' + selectKeyDomPos + '"]';
+	    var parentEle = (0, _util.closest)(targetDom, ".u-tree");
+	    var focusEle = parentEle ? parentEle.querySelector(queryInfo) : null;
+	    focusEle && focusEle.focus();
+	  };
+	
+	  Tree.prototype.onUlFocus = function onUlFocus(e) {
+	    var _this4 = this;
+	
+	    var targetDom = e.target;
+	    if (this.refs.tree == targetDom && !this.isIn) {
+	      var onFocus = this.props.onFocus;
+	      var _state$selectedKeys = this.state.selectedKeys,
+	          selectedKeys = _state$selectedKeys === undefined ? [] : _state$selectedKeys;
+	
+	      var tabIndexKey = selectedKeys[0];
+	      var isExist = false;
+	      if (this.selectKeyDomExist && tabIndexKey || !tabIndexKey) {
+	        isExist = true;
+	        var queryInfo = 'a[pos="' + this.selectKeyDomPos + '"]';
+	        var parentEle = (0, _util.closest)(e.target, ".u-tree");
+	        var focusEle = parentEle ? parentEle.querySelector(queryInfo) : null;
+	        focusEle && focusEle.focus();
+	      }
+	      var onFocusRes = onFocus && onFocus(isExist);
+	      if (onFocusRes instanceof Promise) {
+	        onFocusRes.then(function () {
+	          _this4._focusDom(_this4.selectKeyDomPos, targetDom);
+	        });
+	      } else {
+	        this._focusDom(this.selectKeyDomPos, targetDom);
+	      }
+	    }
+	  };
+	
+	  Tree.prototype.onUlMouseEnter = function onUlMouseEnter(e) {
+	    this.isIn = true;
+	  };
+	
+	  Tree.prototype.onUlMouseLeave = function onUlMouseLeave(e) {
+	    this.isIn = false;
+	  };
+	
+	  Tree.prototype.getFilterExpandedKeys = function getFilterExpandedKeys(props, expandKeyProp, expandAll) {
+	    var keys = props[expandKeyProp];
+	    if (!expandAll && !props.autoExpandParent) {
+	      return keys || [];
+	    }
+	    var expandedPositionArr = [];
+	    if (props.autoExpandParent) {
+	      (0, _util.loopAllChildren)(props.children, function (item, index, pos, newKey) {
+	        if (keys.indexOf(newKey) > -1) {
+	          expandedPositionArr.push(pos);
+	        }
+	      });
+	    }
+	    var filterExpandedKeys = [];
+	    (0, _util.loopAllChildren)(props.children, function (item, index, pos, newKey) {
+	      if (expandAll) {
+	        filterExpandedKeys.push(newKey);
+	      } else if (props.autoExpandParent) {
+	        expandedPositionArr.forEach(function (p) {
+	          if ((p.split('-').length > pos.split('-').length && (0, _util.isInclude)(pos.split('-'), p.split('-')) || pos === p) && filterExpandedKeys.indexOf(newKey) === -1) {
+	            filterExpandedKeys.push(newKey);
+	          }
+	        });
+	      }
+	    });
+	    return filterExpandedKeys.length ? filterExpandedKeys : keys;
+	  };
+	
+	  Tree.prototype.getDefaultExpandedKeys = function getDefaultExpandedKeys(props, willReceiveProps) {
+	    var expandedKeys = willReceiveProps ? undefined : this.getFilterExpandedKeys(props, 'defaultExpandedKeys', props.defaultExpandedKeys.length ? false : props.defaultExpandAll);
+	    if ('expandedKeys' in props) {
+	      expandedKeys = (props.autoExpandParent ? this.getFilterExpandedKeys(props, 'expandedKeys', false) : props.expandedKeys) || [];
+	    }
+	    return expandedKeys;
+	  };
+	
+	  Tree.prototype.getDefaultCheckedKeys = function getDefaultCheckedKeys(props, willReceiveProps) {
+	    var checkedKeys = willReceiveProps ? undefined : props.defaultCheckedKeys;
+	    if ('checkedKeys' in props) {
+	      checkedKeys = props.checkedKeys || [];
+	      if (props.checkStrictly) {
+	        if (props.checkedKeys.checked) {
+	          checkedKeys = props.checkedKeys.checked;
+	        } else if (!Array.isArray(props.checkedKeys)) {
+	          checkedKeys = [];
+	        }
+	      }
+	    }
+	    return checkedKeys;
+	  };
+	
+	  Tree.prototype.getDefaultSelectedKeys = function getDefaultSelectedKeys(props, willReceiveProps) {
+	    var getKeys = function getKeys(keys) {
+	      if (props.multiple) {
+	        return [].concat(_toConsumableArray(keys));
+	      }
+	      if (keys.length) {
+	        return [keys[0]];
+	      }
+	      return keys;
+	    };
+	    var selectedKeys = willReceiveProps ? undefined : getKeys(props.defaultSelectedKeys);
+	    if ('selectedKeys' in props) {
+	      selectedKeys = getKeys(props.selectedKeys);
+	    }
+	    return selectedKeys;
+	  };
+	
+	  Tree.prototype.getRawExpandedKeys = function getRawExpandedKeys() {
+	    if (!this._rawExpandedKeys && 'expandedKeys' in this.props) {
+	      this._rawExpandedKeys = [].concat(_toConsumableArray(this.state.expandedKeys));
+	    }
+	  };
+	
+	  Tree.prototype.getOpenTransitionName = function getOpenTransitionName() {
+	    var props = this.props;
+	    var transitionName = props.openTransitionName;
+	    var animationName = props.openAnimation;
+	    if (!transitionName && typeof animationName === 'string') {
+	      transitionName = props.prefixCls + '-open-' + animationName;
+	    }
+	    return transitionName;
+	  };
+	
+	  Tree.prototype.getDragNodes = function getDragNodes(treeNode) {
+	    var dragNodesKeys = [];
+	    var tPArr = treeNode.props.pos.split('-');
+	    (0, _util.loopAllChildren)(this.props.children, function (item, index, pos, newKey) {
+	      var pArr = pos.split('-');
+	      if (treeNode.props.pos === pos || tPArr.length < pArr.length && (0, _util.isInclude)(tPArr, pArr)) {
+	        dragNodesKeys.push(newKey);
+	      }
+	    });
+	    return dragNodesKeys;
+	  };
+	
+	  Tree.prototype.getExpandedKeys = function getExpandedKeys(treeNode, expand) {
+	    var key = treeNode.props.eventKey;
+	    var expandedKeys = this.state.expandedKeys;
+	    var expandedIndex = expandedKeys.indexOf(key);
+	    var exKeys = void 0;
+	    if (expandedIndex > -1 && !expand) {
+	      exKeys = [].concat(_toConsumableArray(expandedKeys));
+	      exKeys.splice(expandedIndex, 1);
+	      return exKeys;
+	    }
+	    if (expand && expandedKeys.indexOf(key) === -1) {
+	      return expandedKeys.concat([key]);
+	    }
+	  };
+	
+	  Tree.prototype.filterTreeNode = function filterTreeNode(treeNode) {
+	    var filterTreeNode = this.props.filterTreeNode;
+	    if (typeof filterTreeNode !== 'function' || treeNode.props.disabled) {
+	      return false;
+	    }
+	    return filterTreeNode.call(this, treeNode);
+	  };
+	
+	  Tree.prototype.renderTreeNode = function renderTreeNode(child, index) {
+	    var level = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
+	
+	    var pos = level + '-' + index;
+	    var key = child.key || pos;
+	
+	    var state = this.state;
+	    var props = this.props;
+	    var _state$selectedKeys2 = this.state.selectedKeys,
+	        selectedKeys = _state$selectedKeys2 === undefined ? [] : _state$selectedKeys2;
+	
+	    var tabIndexKey = selectedKeys[0];
+	    if (tabIndexKey && key == tabIndexKey) {
+	      this.selectKeyDomExist = true;
+	      this.selectKeyDomPos = pos;
+	    }
+	    // prefer to child's own selectable property if passed
+	    var selectable = props.selectable;
+	    if (child.props.hasOwnProperty('selectable')) {
+	      selectable = child.props.selectable;
+	    }
+	    var draggable = props.draggable;
+	    if (child.props.hasOwnProperty('draggable')) {
+	      draggable = child.props.draggable;
+	    }
+	
+	    var cloneProps = {
+	      ref: 'treeNode-' + key,
+	      root: this,
+	      eventKey: key,
+	      pos: pos,
+	      selectable: selectable,
+	      loadData: props.loadData,
+	      onMouseEnter: props.onMouseEnter,
+	      onMouseLeave: props.onMouseLeave,
+	      onRightClick: props.onRightClick,
+	      onDoubleClick: props.onDoubleClick,
+	      onKeyDown: props.onKeyDown,
+	      prefixCls: props.prefixCls,
+	      showLine: props.showLine,
+	      showIcon: props.showIcon,
+	      draggable: draggable,
+	      dragOver: state.dragOverNodeKey === key && this.dropPosition === 0,
+	      dragOverGapTop: state.dragOverNodeKey === key && this.dropPosition === -1,
+	      dragOverGapBottom: state.dragOverNodeKey === key && this.dropPosition === 1,
+	      _dropTrigger: this._dropTrigger,
+	      expanded: state.expandedKeys.indexOf(key) !== -1,
+	      selected: state.selectedKeys.indexOf(key) !== -1,
+	      openTransitionName: this.getOpenTransitionName(),
+	      openAnimation: props.openAnimation,
+	      filterTreeNode: this.filterTreeNode.bind(this),
+	      openIcon: props.openIcon,
+	      closeIcon: props.closeIcon,
+	      focusable: props.focusable,
+	      tabIndexKey: state.selectedKeys[0],
+	      tabIndexValue: props.tabIndexValue
+	    };
+	    if (props.checkable) {
+	      cloneProps.checkable = props.checkable;
+	      if (props.checkStrictly) {
+	        if (state.checkedKeys) {
+	          cloneProps.checked = state.checkedKeys.indexOf(key) !== -1 || false;
+	        }
+	        if (props.checkedKeys && props.checkedKeys.halfChecked) {
+	          cloneProps.halfChecked = props.checkedKeys.halfChecked.indexOf(key) !== -1 || false;
+	        } else {
+	          cloneProps.halfChecked = false;
+	        }
+	      } else {
+	        if (this.checkedKeys) {
+	          cloneProps.checked = this.checkedKeys.indexOf(key) !== -1 || false;
+	        }
+	        cloneProps.halfChecked = this.halfCheckedKeys.indexOf(key) !== -1;
+	      }
+	    }
+	    if (this.treeNodesStates && this.treeNodesStates[pos]) {
+	      _extends(cloneProps, this.treeNodesStates[pos].siblingPosition);
+	    }
+	    return _react2["default"].cloneElement(child, cloneProps);
+	  };
+	
+	  Tree.prototype.render = function render() {
+	    var _this5 = this;
+	
+	    var props = this.props;
+	    var showLineCls = "";
+	    if (props.showLine) {
+	      showLineCls = props.prefixCls + '-show-line';
+	    }
+	    var domProps = {
+	      className: (0, _classnames2["default"])(props.className, props.prefixCls, showLineCls),
+	      role: 'tree-node'
+	    };
+	
+	    domProps.onFocus = this.onUlFocus;
+	    domProps.onMouseEnter = this.onUlMouseEnter;
+	    domProps.onMouseLeave = this.onUlMouseLeave;
+	    // if (props.focusable) {
+	    //   // domProps.tabIndex = '0';//需求改成了默认选择第一个节点或者选中的节点
+	    //   // domProps.onKeyDown = this.onKeyDown;//添加到具体的treeNode上了
+	    // }
+	    var getTreeNodesStates = function getTreeNodesStates() {
+	      _this5.treeNodesStates = {};
+	      (0, _util.loopAllChildren)(props.children, function (item, index, pos, keyOrPos, siblingPosition) {
+	        _this5.treeNodesStates[pos] = {
+	          siblingPosition: siblingPosition
+	        };
+	      });
+	    };
+	    if (props.showLine && !props.checkable) {
+	      getTreeNodesStates();
+	    }
+	    if (props.checkable && (this.checkedKeysChange || props.loadData || this.dataChange)) {
+	      if (props.checkStrictly) {
+	        getTreeNodesStates();
+	      } else if (props._treeNodesStates) {
+	        this.treeNodesStates = props._treeNodesStates.treeNodesStates;
+	        this.halfCheckedKeys = props._treeNodesStates.halfCheckedKeys;
+	        this.checkedKeys = props._treeNodesStates.checkedKeys;
+	      } else {
+	        var checkedKeys = this.state.checkedKeys;
+	        var checkKeys = void 0;
+	        if (!props.loadData && this.checkKeys && this._checkedKeys && (0, _util.arraysEqual)(this._checkedKeys, checkedKeys)) {
+	          // if checkedKeys the same as _checkedKeys from onCheck, use _checkedKeys.
+	          checkKeys = this.checkKeys;
+	        } else {
+	          var checkedPositions = [];
+	          this.treeNodesStates = {};
+	          (0, _util.loopAllChildren)(props.children, function (item, index, pos, keyOrPos, siblingPosition) {
+	            _this5.treeNodesStates[pos] = {
+	              node: item,
+	              key: keyOrPos,
+	              checked: false,
+	              halfChecked: false,
+	              siblingPosition: siblingPosition
+	            };
+	            if (checkedKeys.indexOf(keyOrPos) !== -1) {
+	              _this5.treeNodesStates[pos].checked = true;
+	              checkedPositions.push(pos);
+	            }
+	          });
+	          // if the parent node's key exists, it all children node will be checked
+	          (0, _util.handleCheckState)(this.treeNodesStates, (0, _util.filterParentPosition)(checkedPositions), true);
+	          checkKeys = (0, _util.getCheck)(this.treeNodesStates);
+	        }
+	        this.halfCheckedKeys = checkKeys.halfCheckedKeys;
+	        this.checkedKeys = checkKeys.checkedKeys;
+	      }
+	    }
+	    this.selectKeyDomExist = false;
+	    return _react2["default"].createElement(
+	      'ul',
+	      _extends({}, domProps, { unselectable: 'true', ref: 'tree', tabIndex: props.focusable && props.tabIndexValue }),
+	      _react2["default"].Children.map(props.children, this.renderTreeNode, this)
+	    );
+	  };
+	
+	  return Tree;
+	}(_react2["default"].Component);
+	
+	Tree.propTypes = {
+	  prefixCls: _propTypes2["default"].string,
+	  children: _propTypes2["default"].any,
+	  showLine: _propTypes2["default"].bool,
+	  showIcon: _propTypes2["default"].bool,
+	  selectable: _propTypes2["default"].bool,
+	  multiple: _propTypes2["default"].bool,
+	  checkable: _propTypes2["default"].oneOfType([_propTypes2["default"].bool, _propTypes2["default"].node]),
+	  _treeNodesStates: _propTypes2["default"].object,
+	  checkStrictly: _propTypes2["default"].bool,
+	  draggable: _propTypes2["default"].bool,
+	  autoExpandParent: _propTypes2["default"].bool,
+	  defaultExpandAll: _propTypes2["default"].bool,
+	  defaultExpandedKeys: _propTypes2["default"].arrayOf(_propTypes2["default"].string),
+	  expandedKeys: _propTypes2["default"].arrayOf(_propTypes2["default"].string),
+	  defaultCheckedKeys: _propTypes2["default"].arrayOf(_propTypes2["default"].string),
+	  checkedKeys: _propTypes2["default"].oneOfType([_propTypes2["default"].arrayOf(_propTypes2["default"].string), _propTypes2["default"].object]),
+	  defaultSelectedKeys: _propTypes2["default"].arrayOf(_propTypes2["default"].string),
+	  selectedKeys: _propTypes2["default"].arrayOf(_propTypes2["default"].string),
+	  onExpand: _propTypes2["default"].func,
+	  onCheck: _propTypes2["default"].func,
+	  onSelect: _propTypes2["default"].func,
+	  loadData: _propTypes2["default"].func,
+	  onMouseEnter: _propTypes2["default"].func,
+	  onMouseLeave: _propTypes2["default"].func,
+	  onRightClick: _propTypes2["default"].func,
+	  onDragStart: _propTypes2["default"].func,
+	  onDragEnter: _propTypes2["default"].func,
+	  onDragOver: _propTypes2["default"].func,
+	  onDragLeave: _propTypes2["default"].func,
+	  onDrop: _propTypes2["default"].func,
+	  onDragEnd: _propTypes2["default"].func,
+	  filterTreeNode: _propTypes2["default"].func,
+	  openTransitionName: _propTypes2["default"].string,
+	  focusable: _propTypes2["default"].bool,
+	  openAnimation: _propTypes2["default"].oneOfType([_propTypes2["default"].string, _propTypes2["default"].object])
+	};
+	
+	Tree.defaultProps = {
+	  prefixCls: 'rc-tree',
+	  showLine: false,
+	  showIcon: true,
+	  selectable: true,
+	  multiple: false,
+	  checkable: false,
+	  checkStrictly: false,
+	  draggable: false,
+	  autoExpandParent: true,
+	  defaultExpandAll: false,
+	  defaultExpandedKeys: [],
+	  defaultCheckedKeys: [],
+	  defaultSelectedKeys: [],
+	  onExpand: noop,
+	  onCheck: noop,
+	  onSelect: noop,
+	  onDragStart: noop,
+	  onDragEnter: noop,
+	  onDragOver: noop,
+	  onDragLeave: noop,
+	  onDrop: noop,
+	  onDragEnd: noop,
+	  tabIndexValue: 0
+	};
+	
+	exports["default"] = Tree;
+	module.exports = exports['default'];
+
+/***/ }),
+/* 285 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.browser = browser;
+	exports.getOffset = getOffset;
+	exports.loopAllChildren = loopAllChildren;
+	exports.isInclude = isInclude;
+	exports.filterParentPosition = filterParentPosition;
+	exports.handleCheckState = handleCheckState;
+	exports.getCheck = getCheck;
+	exports.getStrictlyValue = getStrictlyValue;
+	exports.arraysEqual = arraysEqual;
+	exports.closest = closest;
+	exports.isTreeNode = isTreeNode;
+	exports.toArray = toArray;
+	exports.getNodeChildren = getNodeChildren;
+	exports.warnOnlyTreeNode = warnOnlyTreeNode;
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+	
+	function browser(navigator) {
+	  var tem = void 0;
+	  var ua = navigator.userAgent;
+	  var M = ua.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || [];
+	  if (/trident/i.test(M[1])) {
+	    tem = /\brv[ :]+(\d+)/g.exec(ua) || [];
+	    return 'IE ' + (tem[1] || '');
+	  }
+	  if (M[1] === 'Chrome') {
+	    tem = ua.match(/\b(OPR|Edge)\/(\d+)/);
+	    if (tem) return tem.slice(1).join(' ').replace('OPR', 'Opera');
+	  }
+	  M = M[2] ? [M[1], M[2]] : [navigator.appName, navigator.appVersion, '-?'];
+	  tem = ua.match(/version\/(\d+)/i);
+	  if (tem) {
+	    M.splice(1, 1, tem[1]);
+	  }
+	  return M.join(' ');
+	}
+	
+	// export function getOffset(el) {
+	//   const obj = el.getBoundingClientRect();
+	//   return {
+	//     left: obj.left + document.body.scrollLeft,
+	//     top: obj.top + document.body.scrollTop,
+	//     width: obj.width,
+	//     height: obj.height
+	//   };
+	// }
+	
+	// // iscroll offset
+	// offset = function (el) {
+	//   var left = -el.offsetLeft,
+	//     top = -el.offsetTop;
+	
+	//   // jshint -W084
+	//   while (el = el.offsetParent) {
+	//     left -= el.offsetLeft;
+	//     top -= el.offsetTop;
+	//   }
+	//   // jshint +W084
+	
+	//   return {
+	//     left: left,
+	//     top: top
+	//   };
+	// }
+	
+	/* eslint-disable */
+	/* eslint no-loop-func: 0*/
+	
+	function getOffset(ele) {
+	  var doc = void 0,
+	      win = void 0,
+	      docElem = void 0,
+	      rect = void 0;
+	
+	  if (!ele.getClientRects().length) {
+	    return { top: 0, left: 0 };
+	  }
+	
+	  rect = ele.getBoundingClientRect();
+	
+	  if (rect.width || rect.height) {
+	    doc = ele.ownerDocument;
+	    win = doc.defaultView;
+	    docElem = doc.documentElement;
+	
+	    return {
+	      top: rect.top + win.pageYOffset - docElem.clientTop,
+	      left: rect.left + win.pageXOffset - docElem.clientLeft
+	    };
+	  }
+	
+	  return rect;
+	}
+	/* eslint-enable */
+	
+	function getChildrenlength(children) {
+	  var len = 1;
+	  if (Array.isArray(children)) {
+	    len = children.length;
+	  }
+	  return len;
+	}
+	
+	function getSiblingPosition(index, len, siblingPosition) {
+	  if (len === 1) {
+	    siblingPosition.first = true;
+	    siblingPosition.last = true;
+	  } else {
+	    siblingPosition.first = index === 0;
+	    siblingPosition.last = index === len - 1;
+	  }
+	  return siblingPosition;
+	}
+	
+	function loopAllChildren(childs, callback, parent) {
+	  var loop = function loop(children, level, _parent) {
+	    var len = getChildrenlength(children);
+	    _react2["default"].Children.forEach(children, function (item, index) {
+	      var pos = level + '-' + index;
+	      if (item.props.children && item.type && item.type.isTreeNode) {
+	        loop(item.props.children, pos, { node: item, pos: pos });
+	      }
+	      callback(item, index, pos, item.key || pos, getSiblingPosition(index, len, {}), _parent);
+	    });
+	  };
+	  loop(childs, 0, parent);
+	}
+	
+	function isInclude(smallArray, bigArray) {
+	  return smallArray.every(function (ii, i) {
+	    return ii === bigArray[i];
+	  });
+	}
+	// console.log(isInclude(['0', '1'], ['0', '10', '1']));
+	
+	
+	// arr.length === 628, use time: ~20ms
+	function filterParentPosition(arr) {
+	  var levelObj = {};
+	  arr.forEach(function (item) {
+	    var posLen = item.split('-').length;
+	    if (!levelObj[posLen]) {
+	      levelObj[posLen] = [];
+	    }
+	    levelObj[posLen].push(item);
+	  });
+	  var levelArr = Object.keys(levelObj).sort();
+	
+	  var _loop = function _loop(i) {
+	    if (levelArr[i + 1]) {
+	      levelObj[levelArr[i]].forEach(function (ii) {
+	        var _loop2 = function _loop2(j) {
+	          levelObj[levelArr[j]].forEach(function (_i, index) {
+	            if (isInclude(ii.split('-'), _i.split('-'))) {
+	              levelObj[levelArr[j]][index] = null;
+	            }
+	          });
+	          levelObj[levelArr[j]] = levelObj[levelArr[j]].filter(function (p) {
+	            return p;
+	          });
+	        };
+	
+	        for (var j = i + 1; j < levelArr.length; j++) {
+	          _loop2(j);
+	        }
+	      });
+	    }
+	  };
+	
+	  for (var i = 0; i < levelArr.length; i++) {
+	    _loop(i);
+	  }
+	  var nArr = [];
+	  levelArr.forEach(function (i) {
+	    nArr = nArr.concat(levelObj[i]);
+	  });
+	  return nArr;
+	}
+	// console.log(filterParentPosition(
+	//   ['0-2', '0-3-3', '0-10', '0-10-0', '0-0-1', '0-0', '0-1-1', '0-1']
+	// ));
+	
+	
+	function stripTail(str) {
+	  var arr = str.match(/(.+)(-[^-]+)$/);
+	  var st = '';
+	  if (arr && arr.length === 3) {
+	    st = arr[1];
+	  }
+	  return st;
+	}
+	function splitPosition(pos) {
+	  return pos.split('-');
+	}
+	
+	function handleCheckState(obj, checkedPositionArr, checkIt) {
+	  // console.log(stripTail('0-101-000'));
+	  var objKeys = Object.keys(obj);
+	  // let s = Date.now();
+	  objKeys.forEach(function (i, index) {
+	    var iArr = splitPosition(i);
+	    var saved = false;
+	    checkedPositionArr.forEach(function (_pos) {
+	      // 设置子节点，全选或全不选
+	      var _posArr = splitPosition(_pos);
+	      if (iArr.length > _posArr.length && isInclude(_posArr, iArr)) {
+	        obj[i].halfChecked = false;
+	        obj[i].checked = checkIt;
+	        objKeys[index] = null;
+	      }
+	      if (iArr[0] === _posArr[0] && iArr[1] === _posArr[1]) {
+	        // 如果
+	        saved = true;
+	      }
+	    });
+	    if (!saved) {
+	      objKeys[index] = null;
+	    }
+	  });
+	  // TODO: 循环 2470000 次耗时约 1400 ms。 性能瓶颈！
+	  // console.log(Date.now()-s, checkedPositionArr.length * objKeys.length);
+	  objKeys = objKeys.filter(function (i) {
+	    return i;
+	  }); // filter non null;
+	
+	  var _loop3 = function _loop3(_pIndex) {
+	    // 循环设置父节点的 选中 或 半选状态
+	    var loop = function loop(__pos) {
+	      var _posLen = splitPosition(__pos).length;
+	      if (_posLen <= 2) {
+	        // e.g. '0-0', '0-1'
+	        return;
+	      }
+	      var sibling = 0;
+	      var siblingChecked = 0;
+	      var parentPosition = stripTail(__pos);
+	      objKeys.forEach(function (i /* , index*/) {
+	        var iArr = splitPosition(i);
+	        if (iArr.length === _posLen && isInclude(splitPosition(parentPosition), iArr)) {
+	          sibling++;
+	          if (obj[i].checked) {
+	            siblingChecked++;
+	            var _i = checkedPositionArr.indexOf(i);
+	            if (_i > -1) {
+	              checkedPositionArr.splice(_i, 1);
+	              if (_i <= _pIndex) {
+	                _pIndex--;
+	              }
+	            }
+	          } else if (obj[i].halfChecked) {
+	            siblingChecked += 0.5;
+	          }
+	          // objKeys[index] = null;
+	        }
+	      });
+	      // objKeys = objKeys.filter(i => i); // filter non null;
+	      var parent = obj[parentPosition];
+	      // sibling 不会等于0
+	      // 全不选 - 全选 - 半选
+	      if (siblingChecked === 0) {
+	        parent.checked = false;
+	        parent.halfChecked = false;
+	      } else if (siblingChecked === sibling) {
+	        parent.checked = true;
+	        parent.halfChecked = false;
+	      } else {
+	        parent.halfChecked = true;
+	        parent.checked = false;
+	      }
+	      loop(parentPosition);
+	    };
+	    loop(checkedPositionArr[_pIndex], _pIndex);
+	    pIndex = _pIndex;
+	  };
+	
+	  for (var pIndex = 0; pIndex < checkedPositionArr.length; pIndex++) {
+	    _loop3(pIndex);
+	  }
+	  // console.log(Date.now()-s, objKeys.length, checkIt);
+	}
+	
+	function getCheck(treeNodesStates) {
+	  var halfCheckedKeys = [];
+	  var checkedKeys = [];
+	  var checkedNodes = [];
+	  var checkedNodesPositions = [];
+	  Object.keys(treeNodesStates).forEach(function (item) {
+	    var itemObj = treeNodesStates[item];
+	    if (itemObj.checked) {
+	      checkedKeys.push(itemObj.key);
+	      checkedNodes.push(itemObj.node);
+	      checkedNodesPositions.push({ node: itemObj.node, pos: item });
+	    } else if (itemObj.halfChecked) {
+	      halfCheckedKeys.push(itemObj.key);
+	    }
+	  });
+	  return {
+	    halfCheckedKeys: halfCheckedKeys, checkedKeys: checkedKeys, checkedNodes: checkedNodes, checkedNodesPositions: checkedNodesPositions, treeNodesStates: treeNodesStates
+	  };
+	}
+	
+	function getStrictlyValue(checkedKeys, halfChecked) {
+	  if (halfChecked) {
+	    return { checked: checkedKeys, halfChecked: halfChecked };
+	  }
+	  return checkedKeys;
+	}
+	
+	function arraysEqual(a, b) {
+	  if (a === b) return true;
+	  if (a === null || typeof a === 'undefined' || b === null || typeof b === 'undefined') {
+	    return false;
+	  }
+	  if (a.length !== b.length) return false;
+	
+	  // If you don't care about the order of the elements inside
+	  // the array, you should sort both arrays here.
+	
+	  for (var i = 0; i < a.length; ++i) {
+	    if (a[i] !== b[i]) return false;
+	  }
+	  return true;
+	}
+	
+	function closest(el, selector) {
+	  var matchesSelector = el.matches || el.webkitMatchesSelector || el.mozMatchesSelector || el.msMatchesSelector;
+	
+	  while (el) {
+	    if (matchesSelector.call(el, selector)) {
+	      return el;
+	    } else {
+	      el = el.parentElement;
+	    }
+	  }
+	  return null;
+	}
+	
+	function isTreeNode(node) {
+	  return node && node.type && node.type.isTreeNode;
+	}
+	
+	function toArray(children) {
+	  var ret = [];
+	  _react2["default"].Children.forEach(children, function (c) {
+	    ret.push(c);
+	  });
+	  return ret;
+	}
+	
+	function getNodeChildren(children) {
+	  return toArray(children).filter(isTreeNode);
+	}
+	
+	var onlyTreeNodeWarned = false;
+	
+	function warnOnlyTreeNode() {
+	  if (onlyTreeNodeWarned) return;
+	  onlyTreeNodeWarned = true;
+	  console.warn('Tree only accept TreeNode as children.');
+	}
+
+/***/ }),
+/* 286 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactDom = __webpack_require__(2);
+	
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+	
+	var _classnames = __webpack_require__(5);
+	
+	var _classnames2 = _interopRequireDefault(_classnames);
+	
+	var _beeAnimate = __webpack_require__(69);
+	
+	var _beeAnimate2 = _interopRequireDefault(_beeAnimate);
+	
+	var _util = __webpack_require__(285);
+	
+	var _propTypes = __webpack_require__(6);
+	
+	var _propTypes2 = _interopRequireDefault(_propTypes);
+	
+	var _tinperBeeCore = __webpack_require__(27);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+	
+	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
+	
+	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
+	
+	var browserUa = typeof window !== 'undefined' ? (0, _util.browser)(window.navigator) : '';
+	var ieOrEdge = /.*(IE|Edge).+/.test(browserUa);
+	// const uaArray = browserUa.split(' ');
+	// const gtIE8 = uaArray.length !== 2 || uaArray[0].indexOf('IE') === -1 || Number(uaArray[1]) > 8;
+	
+	var defaultTitle = '---';
+	
+	var TreeNode = function (_React$Component) {
+	  _inherits(TreeNode, _React$Component);
+	
+	  function TreeNode(props) {
+	    _classCallCheck(this, TreeNode);
+	
+	    var _this2 = _possibleConstructorReturn(this, _React$Component.call(this, props));
+	
+	    _this2.getNodeChildren = function () {
+	      var children = _this2.props.children;
+	
+	      var originList = (0, _util.toArray)(children).filter(function (node) {
+	        return node;
+	      });
+	      var targetList = (0, _util.getNodeChildren)(originList);
+	
+	      if (originList.length !== targetList.length) {
+	        (0, _util.warnOnlyTreeNode)();
+	      }
+	
+	      return targetList;
+	    };
+	
+	    ['onExpand', 'onCheck', 'onContextMenu', 'onMouseEnter', 'onMouseLeave', 'onDragStart', 'onDragEnter', 'onDragOver', 'onDragLeave', 'onDrop', 'onDragEnd', 'onDoubleClick', 'onKeyDown'].forEach(function (m) {
+	      _this2[m] = _this2[m].bind(_this2);
+	    });
+	    _this2.state = {
+	      dataLoading: false,
+	      dragNodeHighlight: false
+	    };
+	    return _this2;
+	  }
+	
+	  TreeNode.prototype.componentDidMount = function componentDidMount() {
+	    if (!this.props.root._treeNodeInstances) {
+	      this.props.root._treeNodeInstances = [];
+	    }
+	    this.props.root._treeNodeInstances.push(this);
+	  };
+	  // shouldComponentUpdate(nextProps) {
+	  //   if (!nextProps.expanded) {
+	  //     return false;
+	  //   }
+	  //   return true;
+	  // }
+	
+	  TreeNode.prototype.onCheck = function onCheck() {
+	
+	    this.props.root.onCheck(this);
+	  };
+	
+	  TreeNode.prototype.onSelect = function onSelect() {
+	    clearTimeout(this.doubleClickFlag);
+	    var _this = this;
+	    if (this.props.onDoubleClick) {
+	      //执行延时
+	      this.doubleClickFlag = setTimeout(function () {
+	        //do function在此处写单击事件要执行的代码
+	        _this.props.root.onSelect(_this);
+	      }, 300);
+	    } else {
+	      _this.props.root.onSelect(_this);
+	    }
+	  };
+	
+	  TreeNode.prototype.onDoubleClick = function onDoubleClick() {
+	    clearTimeout(this.doubleClickFlag);
+	    this.props.root.onDoubleClick(this);
+	  };
+	
+	  TreeNode.prototype.onMouseEnter = function onMouseEnter(e) {
+	    e.preventDefault();
+	    this.props.root.onMouseEnter(e, this);
+	  };
+	
+	  TreeNode.prototype.onMouseLeave = function onMouseLeave(e) {
+	    e.preventDefault();
+	    this.props.root.onMouseLeave(e, this);
+	  };
+	
+	  TreeNode.prototype.onContextMenu = function onContextMenu(e) {
+	    e.preventDefault();
+	    this.props.root.onContextMenu(e, this);
+	  };
+	
+	  TreeNode.prototype.onDragStart = function onDragStart(e) {
+	    // console.log('dragstart', this.props.eventKey, e);
+	    // e.preventDefault();
+	    e.stopPropagation();
+	    this.setState({
+	      dragNodeHighlight: true
+	    });
+	    this.props.root.onDragStart(e, this);
+	    try {
+	      // ie throw error
+	      // firefox-need-it
+	      e.dataTransfer.setData('text/plain', '');
+	    } finally {
+	      // empty
+	    }
+	  };
+	
+	  TreeNode.prototype.onDragEnter = function onDragEnter(e) {
+	    e.preventDefault();
+	    e.stopPropagation();
+	    this.props.root.onDragEnter(e, this);
+	  };
+	
+	  TreeNode.prototype.onDragOver = function onDragOver(e) {
+	    // todo disabled
+	    e.preventDefault();
+	    e.stopPropagation();
+	    this.props.root.onDragOver(e, this);
+	    return false;
+	  };
+	
+	  TreeNode.prototype.onDragLeave = function onDragLeave(e) {
+	    e.stopPropagation();
+	    this.props.root.onDragLeave(e, this);
+	  };
+	
+	  TreeNode.prototype.onDrop = function onDrop(e) {
+	    e.preventDefault();
+	    e.stopPropagation();
+	    this.setState({
+	      dragNodeHighlight: false
+	    });
+	    this.props.root.onDrop(e, this);
+	  };
+	
+	  TreeNode.prototype.onDragEnd = function onDragEnd(e) {
+	    e.stopPropagation();
+	    this.setState({
+	      dragNodeHighlight: false
+	    });
+	    this.props.root.onDragEnd(e, this);
+	  };
+	
+	  TreeNode.prototype.onExpand = function onExpand() {
+	    var _this3 = this;
+	
+	    var callbackPromise = this.props.root.onExpand(this);
+	    if (callbackPromise && (typeof callbackPromise === 'undefined' ? 'undefined' : _typeof(callbackPromise)) === 'object') {
+	      var setLoading = function setLoading(dataLoading) {
+	        _this3.setState({
+	          dataLoading: dataLoading
+	        });
+	      };
+	      setLoading(true);
+	      callbackPromise.then(function () {
+	        setLoading(false);
+	      }, function () {
+	        setLoading(false);
+	      });
+	    }
+	  };
+	
+	  // keyboard event support
+	
+	
+	  TreeNode.prototype.onKeyDown = function onKeyDown(e) {
+	    this.props.root.onKeyDown(e, this);
+	    if (e.keyCode == _tinperBeeCore.KeyCode.SPACE || e.keyCode == _tinperBeeCore.KeyCode.DOWN || e.keyCode == _tinperBeeCore.KeyCode.LEFT || e.keyCode == _tinperBeeCore.KeyCode.RIGHT || e.keyCode == _tinperBeeCore.KeyCode.UP) {
+	      e.preventDefault();
+	    }
+	  };
+	
+	  TreeNode.prototype.renderSwitcher = function renderSwitcher(props, expandedState) {
+	    var stateIcon = void 0;
+	    var prefixCls = props.prefixCls;
+	    var switcherCls = _defineProperty({}, prefixCls + '-switcher', true);
+	    if (!props.showLine) {
+	      switcherCls[prefixCls + '-noline_' + expandedState] = true;
+	    } else if (props.pos === '0-0') {
+	      switcherCls[prefixCls + '-roots_' + expandedState] = true;
+	    } else {
+	      switcherCls[prefixCls + '-center_' + expandedState] = !props.last;
+	      switcherCls[prefixCls + '-bottom_' + expandedState] = props.last;
+	    }
+	
+	    if (expandedState === 'open' && props.openIcon) {
+	      stateIcon = props.openIcon;
+	      switcherCls['icon-none'] = true;
+	    }
+	    if (expandedState === 'close' && props.closeIcon) {
+	      stateIcon = props.closeIcon;
+	      switcherCls['icon-none'] = true;
+	    }
+	    //switcherCls[stateIcon] = stateIcon;
+	    props.switcherClass ? switcherCls['' + props.switcherClass] = true : '';
+	    if (props.disabled) {
+	      switcherCls[prefixCls + '-switcher-disabled'] = true;
+	      return _react2["default"].createElement(
+	        'span',
+	        { className: (0, _classnames2["default"])(switcherCls), style: props.switcherStyle },
+	        stateIcon
+	      );
+	    }
+	    return _react2["default"].createElement(
+	      'span',
+	      { className: (0, _classnames2["default"])(switcherCls), style: props.switcherStyle, onClick: this.onExpand },
+	      stateIcon
+	    );
+	  };
+	
+	  TreeNode.prototype.renderCheckbox = function renderCheckbox(props) {
+	    var prefixCls = props.prefixCls;
+	    var checkboxCls = _defineProperty({}, prefixCls + '-checkbox', true);
+	    if (props.checked) {
+	      checkboxCls[prefixCls + '-checkbox-checked'] = true;
+	    } else if (props.halfChecked) {
+	      checkboxCls[prefixCls + '-checkbox-indeterminate'] = true;
+	    }
+	    var customEle = null;
+	    if (typeof props.checkable !== 'boolean') {
+	      customEle = props.checkable;
+	    }
+	    if (props.disabled || props.disableCheckbox) {
+	      checkboxCls[prefixCls + '-checkbox-disabled'] = true;
+	      return _react2["default"].createElement(
+	        'span',
+	        { ref: 'checkbox', className: (0, _classnames2["default"])(checkboxCls) },
+	        customEle
+	      );
+	    }
+	    return _react2["default"].createElement(
+	      'span',
+	      { ref: 'checkbox',
+	        className: (0, _classnames2["default"])(checkboxCls),
+	        onClick: this.onCheck
+	      },
+	      customEle
+	    );
+	  };
+	
+	  TreeNode.prototype.renderChildren = function renderChildren(props) {
+	    var renderFirst = this.renderFirst;
+	    this.renderFirst = 1;
+	    var transitionAppear = true;
+	    if (!renderFirst && props.expanded) {
+	      transitionAppear = false;
+	    }
+	    var children = props.children;
+	    var newChildren = children;
+	    // 确定所有子节点是否是TreeNode
+	    var allTreeNode = false;
+	    if (Array.isArray(children)) {
+	      for (var index = 0; index < children.length; index++) {
+	        var item = children[index];
+	        allTreeNode = item.type.isTreeNode == 1;
+	        if (!allTreeNode) {
+	          //当检查到子节点中有不是 TreeNode 的，则直接结束检查。同时不会渲染所有子节点
+	          break;
+	        }
+	      }
+	    } else if (children && children.type && children.type.isTreeNode == 1) {
+	      allTreeNode = true;
+	    }
+	    //  如果props.children的长度大于0才可以生成子对象
+	    if (allTreeNode && _react2["default"].Children.count(children)) {
+	      var _cls;
+	
+	      var cls = (_cls = {}, _defineProperty(_cls, props.prefixCls + '-child-tree', true), _defineProperty(_cls, props.prefixCls + '-child-tree-open', props.expanded), _cls);
+	      if (props.showLine) {
+	        cls[props.prefixCls + '-line'] = !props.last;
+	      }
+	      var animProps = {};
+	      if (props.openTransitionName) {
+	        animProps.transitionName = props.openTransitionName;
+	      } else if (_typeof(props.openAnimation) === 'object') {
+	        animProps.animation = _extends({}, props.openAnimation);
+	        if (!transitionAppear) {
+	          delete animProps.animation.appear;
+	        }
+	      }
+	      newChildren = _react2["default"].createElement(
+	        _beeAnimate2["default"],
+	        _extends({}, animProps, {
+	          showProp: 'data-expanded',
+	          transitionAppear: transitionAppear,
+	          component: ''
+	        }),
+	        !props.expanded ? null : _react2["default"].createElement(
+	          'ul',
+	          { className: (0, _classnames2["default"])(cls), 'data-expanded': props.expanded },
+	          _react2["default"].Children.map(children, function (item, index) {
+	            return props.root.renderTreeNode(item, index, props.pos);
+	          }, props.root)
+	        )
+	      );
+	    }
+	    return newChildren;
+	  };
+	
+	  /**
+	   *判断是否为叶子节点，isLeaf的优先级>props.children。如果是异步加载是根据isLeaf的值进行判断的
+	   *
+	   * @returns
+	   * @memberof TreeNode
+	   */
+	  TreeNode.prototype.checkIsLeaf = function checkIsLeaf() {
+	    var _props = this.props,
+	        isLeaf = _props.isLeaf,
+	        loadData = _props.loadData;
+	
+	
+	    var hasChildren = this.getNodeChildren().length !== 0;
+	
+	    if (isLeaf === false) {
+	      return false;
+	    }
+	
+	    return isLeaf || !loadData && !hasChildren;
+	  };
+	
+	  TreeNode.prototype.render = function render() {
+	    var _iconEleCls,
+	        _this4 = this;
+	
+	    var props = this.props;
+	    var prefixCls = props.prefixCls;
+	    var expandedState = props.expanded ? 'open' : 'close';
+	    var iconState = expandedState;
+	
+	    var canRenderSwitcher = true;
+	    var content = props.title;
+	    var newChildren = this.renderChildren(props);
+	    var openIconCls = false,
+	        closeIconCls = false;
+	
+	    //以下变量控制是否鼠标单机双击方法中的变量
+	    var timer = 0;
+	    var delay = 500;
+	    var prevent = false;
+	
+	    // if (!newChildren || newChildren === props.children) {
+	    //   // content = newChildren;
+	    //   newChildren = null;
+	    //   if (!props.loadData || props.isLeaf) {
+	    //     canRenderSwitcher = false;
+	    //     iconState = 'docu';
+	    //   }
+	    // }
+	    if (this.checkIsLeaf()) {
+	      canRenderSwitcher = false;
+	      iconState = 'docu';
+	    }
+	    // For performance, does't render children into dom when `!props.expanded` (move to Animate)
+	    // if (!props.expanded) {
+	    //   newChildren = null;
+	    // }
+	
+	    var iconEleCls = (_iconEleCls = {}, _defineProperty(_iconEleCls, prefixCls + '-iconEle', true), _defineProperty(_iconEleCls, prefixCls + '-icon_loading', this.state.dataLoading), _defineProperty(_iconEleCls, prefixCls + '-icon__' + iconState, true), _iconEleCls);
+	    var selectHandle = function selectHandle() {
+	      var titleClass = props.titleClass ? prefixCls + '-title' + ' ' + props.className : prefixCls + '-title';
+	      // const icon = (props.showIcon || props.loadData && this.state.dataLoading) ?
+	      //   <span className={classNames(iconEleCls)}></span> : null;
+	      var icon = void 0;
+	      if (props.showIcon && props.icon) {
+	        icon = _react2["default"].createElement(
+	          'span',
+	          {
+	            className: (0, _classnames2["default"])(prefixCls + '-iconEle', prefixCls + '-icon__customize')
+	          },
+	          typeof currentIcon === 'function' ? _react2["default"].createElement(props.icon, _extends({}, _this4.props)) : props.icon
+	        );
+	      } else if (props.showIcon || props.loadData && _this4.state.dataLoading) {
+	        icon = _react2["default"].createElement('span', { className: (0, _classnames2["default"])(iconEleCls) });
+	      }
+	      var title = _react2["default"].createElement(
+	        'span',
+	        { className: titleClass, style: props.titleStyle },
+	        content
+	      );
+	      var wrap = prefixCls + '-node-content-wrapper';
+	      var domProps = {
+	        className: wrap + ' ' + wrap + '-' + (iconState === expandedState ? iconState : 'normal')
+	      };
+	      if (!props.disabled) {
+	        if (props.selected || !props._dropTrigger && _this4.state.dragNodeHighlight) {
+	          domProps.className += ' ' + prefixCls + '-node-selected';
+	        }
+	        domProps.onClick = function (e) {
+	          var _this = _this4;
+	          e.preventDefault();
+	          if (props.selectable) {
+	            _this.onSelect();
+	          }
+	
+	          // not fire check event
+	          // if (props.checkable) {
+	          //   this.onCheck();
+	          // }
+	        };
+	
+	        if (props.onDoubleClick) {
+	          domProps.onDoubleClick = _this4.onDoubleClick;
+	        }
+	
+	        if (props.onRightClick) {
+	          domProps.onContextMenu = _this4.onContextMenu;
+	        }
+	        if (props.onMouseEnter) {
+	          domProps.onMouseEnter = _this4.onMouseEnter;
+	        }
+	        if (props.onMouseLeave) {
+	          domProps.onMouseLeave = _this4.onMouseLeave;
+	        }
+	
+	        if (props.draggable) {
+	          domProps.className += ' draggable';
+	          if (ieOrEdge) {
+	            // ie bug!
+	            domProps.href = '#';
+	          }
+	          domProps.draggable = true;
+	          domProps['aria-grabbed'] = true;
+	          domProps.onDragStart = _this4.onDragStart;
+	        }
+	      }
+	      //设置tabIndex
+	      if (props.focusable) {
+	        domProps.onKeyDown = _this4.onKeyDown;
+	        domProps.tabIndex = -1;
+	        if (props.tabIndexKey) {
+	          if (props.eventKey == props.tabIndexKey) {
+	            domProps.tabIndex = props.tabIndexValue;
+	          }
+	        } else if (props.pos == '0-0') {
+	          domProps.tabIndex = props.tabIndexValue;
+	        }
+	      }
+	
+	      return _react2["default"].createElement(
+	        'a',
+	        _extends({ ref: 'selectHandle', pos: props.pos, title: typeof content === 'string' ? content : '' }, domProps),
+	        icon,
+	        title
+	      );
+	    };
+	
+	    var liProps = {};
+	    if (props.liAttr) {
+	      liProps = _extends({}, props.liAttr);
+	    }
+	    if (props.draggable) {
+	      liProps.onDragEnter = this.onDragEnter;
+	      liProps.onDragOver = this.onDragOver;
+	      liProps.onDragLeave = this.onDragLeave;
+	      liProps.onDrop = this.onDrop;
+	      liProps.onDragEnd = this.onDragEnd;
+	    }
+	    var disabledCls = '';
+	    var dragOverCls = '';
+	    if (props.disabled) {
+	      disabledCls = prefixCls + '-treenode-disabled';
+	    } else if (props.dragOver) {
+	      dragOverCls = 'drag-over';
+	    } else if (props.dragOverGapTop) {
+	      dragOverCls = 'drag-over-gap-top';
+	    } else if (props.dragOverGapBottom) {
+	      dragOverCls = 'drag-over-gap-bottom';
+	    }
+	
+	    var filterCls = props.filterTreeNode(this) ? 'filter-node' : '';
+	
+	    var noopSwitcher = function noopSwitcher() {
+	      var _cls2;
+	
+	      var cls = (_cls2 = {}, _defineProperty(_cls2, prefixCls + '-switcher', true), _defineProperty(_cls2, prefixCls + '-switcher-noop', true), _cls2);
+	      if (props.showLine) {
+	        // console.log('line---------');
+	        cls[prefixCls + '-center_docu'] = !props.last;
+	        cls[prefixCls + '-bottom_docu'] = props.last;
+	      } else {
+	        cls[prefixCls + '-noline_docu'] = true;
+	      }
+	      return _react2["default"].createElement('span', { className: (0, _classnames2["default"])(cls) });
+	    };
+	    var selectedCls = props.selected ? prefixCls + '-treenode-selected' : '';
+	    return _react2["default"].createElement(
+	      'li',
+	      _extends({}, liProps, { ref: 'li', style: props.style,
+	        className: (0, _classnames2["default"])(props.className, disabledCls, dragOverCls, filterCls, selectedCls)
+	      }),
+	      canRenderSwitcher ? this.renderSwitcher(props, expandedState) : noopSwitcher(),
+	      props.checkable ? this.renderCheckbox(props) : null,
+	      selectHandle(),
+	      newChildren
+	    );
+	  };
+	
+	  return TreeNode;
+	}(_react2["default"].Component);
+	
+	TreeNode.isTreeNode = 1;
+	
+	TreeNode.propTypes = {
+	  prefixCls: _propTypes2["default"].string,
+	  disabled: _propTypes2["default"].bool,
+	  disableCheckbox: _propTypes2["default"].bool,
+	  expanded: _propTypes2["default"].bool,
+	  isLeaf: _propTypes2["default"].bool,
+	  root: _propTypes2["default"].object,
+	  onSelect: _propTypes2["default"].func,
+	  openIcon: _propTypes2["default"].element,
+	  closeIcon: _propTypes2["default"].element,
+	  style: _propTypes2["default"].object,
+	  className: _propTypes2["default"].string,
+	  titleClass: _propTypes2["default"].string,
+	  titleStyle: _propTypes2["default"].object,
+	  switcherClass: _propTypes2["default"].string,
+	  switcherStyle: _propTypes2["default"].object
+	};
+	
+	TreeNode.defaultProps = {
+	  title: defaultTitle,
+	  tabIndexValue: 0
+	};
+	
+	exports["default"] = TreeNode;
+	module.exports = exports['default'];
+
+/***/ }),
+/* 287 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _tinperBeeCore = __webpack_require__(27);
+	
+	function animate(node, show, done) {
+	  var height = void 0;
+	  return (0, _tinperBeeCore.cssAnimation)(node, 'u-motion-collapse', {
+	    start: function start() {
+	      if (!show) {
+	        node.style.height = node.offsetHeight + 'px';
+	      } else {
+	        height = node.offsetHeight;
+	        node.style.height = 0;
+	      }
+	    },
+	    active: function active() {
+	      node.style.height = (show ? height : 0) + 'px';
+	    },
+	    end: function end() {
+	      node.style.height = '';
+	      done();
+	    }
+	  });
+	}
+	
+	var animation = {
+	  enter: function enter(node, done) {
+	    return animate(node, true, done);
+	  },
+	  leave: function leave(node, done) {
+	    return animate(node, false, done);
+	  },
+	  appear: function appear(node, done) {
+	    return animate(node, true, done);
+	  }
+	};
+	
+	exports["default"] = animation;
 	module.exports = exports['default'];
 
 /***/ })

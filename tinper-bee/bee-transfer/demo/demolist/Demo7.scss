@@ -1,0 +1,19 @@
+.demo7{
+    width: 476px;
+    position: relative;
+    .moveBtn{
+        position: absolute;
+        right: 0;
+        margin: 8px;
+        min-width: 40px;
+        z-index: 10;
+        color: #86939E;
+        cursor: pointer;
+        &.moveUpBtn{
+            margin-top: 69px;
+        }
+        &.moveDownBtn{
+            margin-top: 100px;
+        }
+    }
+}

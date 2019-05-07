@@ -42,6 +42,13 @@ class Demo6 extends React.Component {
     console.log('direction: ', direction);
     console.log('moveKeys: ', moveKeys);
   }
+  
+  handleSelectChange = (sourceSelectedKeys, targetSelectedKeys) => {
+    this.setState({ selectedKeys: [...sourceSelectedKeys, ...targetSelectedKeys] });
+
+    console.log('sourceSelectedKeys: ', sourceSelectedKeys);
+    console.log('targetSelectedKeys: ', targetSelectedKeys);
+  }
 
   /**
    * 自定义渲染行数据
@@ -70,6 +77,7 @@ class Demo6 extends React.Component {
           targetKeys={targetKeys}
           selectedKeys={state.selectedKeys}
           onChange={this.handleChange}
+          onSelectChange={this.handleSelectChange}
           render={this.renderItem}
         />
       </div>
