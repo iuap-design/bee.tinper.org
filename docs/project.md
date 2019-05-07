@@ -152,4 +152,33 @@ export default App;
 
 ```
 
-最终演示效果：![image](https://user-images.githubusercontent.com/3817644/54670257-33bb4300-4b2e-11e9-8b70-e1147ce3bd36.png)
+最终演示效果：  ![image](https://user-images.githubusercontent.com/3817644/54670257-33bb4300-4b2e-11e9-8b70-e1147ce3bd36.png)
+
+## 需要单独引入的组件
+有几个组件因为使用的第三方的包比较大，所以我们没有将它们打包进tinper-bee.js，只是对他进行了转码，引入方式略有变化，包含组件如下。
+
+Datepicker日期选择组件、Timepicker时间选择组件、Dnd拖拽组件、Calendar日历组件。
+
+这些组件使用如下方式引入，不需要单独引入样式。 css的引入方式不变
+
+```
+import Datepicker from 'tinper-bee/lib/Datepicker';
+
+import Timepicker from 'tinper-bee/lib/Timepicker';
+
+import Dnd from 'tinper-bee/lib/Dnd';
+
+import Calendar from 'tinper-bee/lib/Calendar';
+```
+
+## 图标字体库私有化到本地仓库
+> tinper-bee 的字体文件默认加载 CDN 地址，当我们做中台系统的时候，常常在企业的内网环境，访问不到外网资源，这就需要我们在项目中将图标字体库修改为本地化部署。
+
+### 资源准备
+1. 找到项目内安装的node_modules/tinper-bee-core/scss/*复制到我们的项目上，这是我们需要部署本地化的字体文件  
+![image](https://user-images.githubusercontent.com/33412781/57274448-e55a0780-70cd-11e9-9f54-779ad73427e3.png)
+
+2. 复制组件库样式node_modules/tinper-bee/assets/tinper-bee.css到我们的项目内
+
+### 修改本地化
+修改我们刚刚复制的tinper-bee.css，搜索.woff可以看到只要带//design.yonyoucloud.com/static/iconfont/iconfont.eot这样字眼的都修改掉路径为你本地的路径就可以了，这样webpack就会按照这个按需打包出fonts的.
