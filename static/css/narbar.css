@@ -79,9 +79,6 @@
     float: right;
 }
 
-.nav .nav-right .nav-options .first-show {
-    color: #E14C46;
-}
 
 .nav .nav-right .nav-options li {
     float: left;
@@ -259,9 +256,7 @@ input::-webkit-input-placeholder {
     top: 0;
     left: 0;
 }
-#navbar .nav-options a.first-show{
-    color: #444;
-}
+
 #navbar .nav-options a[href="#"]{
     color: #E14C46;
 }
