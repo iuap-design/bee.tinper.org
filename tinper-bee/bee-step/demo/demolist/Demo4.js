@@ -1,6 +1,6 @@
 /**
 *
-* @title vertical Step
+* @title 垂直的 Step
 * @description 
 *
 */

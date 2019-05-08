@@ -54,7 +54,7 @@ var propTypes = {
 };
 
 var defaultProps = {
-    value: 0,
+    value: "",
     step: 1,
     clsPrefix: 'u-input-number',
     iconStyle: 'double',
@@ -80,14 +80,21 @@ function judgeValue(props, oldValue) {
 
     if (value) {
         currentValue = Number(value) || 0;
-    } else if (min) {
+    } else if (min && value != '') {
         currentValue = min;
-    } else if (value == 0) {
+    } else if (value === '0' || value === 0) {
         currentValue = 0;
     } else {
         //NaN
-        if (oldValue || oldValue == 0) {
+        if (oldValue || oldValue === 0 || oldValue === '0') {
             currentValue = oldValue;
+        } else {
+            //value为空
+            return {
+                value: '',
+                minusDisabled: false,
+                plusDisabled: false
+            };
         }
     }
     if (currentValue <= min) {
@@ -98,7 +105,7 @@ function judgeValue(props, oldValue) {
     }
 
     if (props.hasOwnProperty('precision')) {
-        currentValue = currentValue.toFixed(precision);
+        currentValue = Number(currentValue).toFixed(precision);
     }
 
     return {
@@ -113,6 +120,7 @@ function judgeValue(props, oldValue) {
  * @param {是否要小数点} point 
  */
 function toThousands(number, point) {
+    if (number == '') return '';
     var num = (number || 0).toString();
     var integer = num.split('.')[0];
     var decimal = num.split('.')[1] || '';
@@ -152,6 +160,13 @@ var InputNumber = function (_Component) {
                 onChange = _this$props.onChange,
                 toNumber = _this$props.toNumber;
 
+            if (value == '') {
+                onChange && onChange(value);
+                _this.setState({
+                    value: value
+                });
+                return;
+            }
             value = unThousands(value);
             if (isNaN(value) && value != '.') return;
             _this.setState({
@@ -180,7 +195,6 @@ var InputNumber = function (_Component) {
         };
 
         _this.handleBlur = function (v) {
-            v = unThousands(v);
             _this.focus = false;
             var _this$props3 = _this.props,
                 onBlur = _this$props3.onBlur,
@@ -188,6 +202,15 @@ var InputNumber = function (_Component) {
                 onChange = _this$props3.onChange,
                 toNumber = _this$props3.toNumber;
 
+            if (v == '') {
+                _this.setState({
+                    value: v
+                });
+                onBlur && onBlur(v);
+                onChange && onChange(v);
+                return;
+            }
+            v = unThousands(v);
             var value = Number(v);
             if (precision) {
                 value = value.toFixed(precision);
