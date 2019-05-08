@@ -106,7 +106,7 @@ class MonthPicker extends Component {
     let props = this.props;
 
     const monthCalendar = <MonthCalendar {...props}
-      onChange={this.onChange}
+      onChange={this.onChange} 
     />;
     let classes = classnames(props.className, "datepicker-container");
     return (
@@ -117,7 +117,8 @@ class MonthPicker extends Component {
           calendar={monthCalendar}
           open={this.state.open}
           value={state.value}
-          onChange={this.onChange}
+          onChange={this.onChange} 
+          dropdownClassName={props.dropdownClassName}
         >
           {({ value }) => {
             return (

@@ -55,6 +55,7 @@ import "./node_modules/build/bee-cascader.css"
 |size|输入框大小，可选 lg md sm|	string|'md'|
 |onChange   |选择完成后的回调| Function(value, selectedOptions)|	-|
 |onClick	|选中节点的钩子函数，返回array选中的节点| function |	-|
+|inputValue	|自定义输入框展示内容| string |	-|
 
 
 options格式如下：

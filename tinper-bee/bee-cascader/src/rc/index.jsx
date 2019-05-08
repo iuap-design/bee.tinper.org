@@ -91,7 +91,6 @@ class Rcascader extends Component {
       newState.value = nextProps.value || [];
 
       // allow activeValue diff from value
-      // https://github.com/ant-design/ant-design/issues/2767
       if (!('loadData' in nextProps)) {
         newState.activeValue = nextProps.value || [];
       }
@@ -101,6 +100,9 @@ class Rcascader extends Component {
     }
     if ('options' in nextProps) {
 			newState.options = nextProps.options || [];
+    }
+    if ('inputValue' in nextProps) {
+      newState.inputValue = nextProps.inputValue;
     }
 
     return newState;
@@ -451,6 +453,7 @@ Rcascader.propTypes = {
   filedNames: PropTypes.object, // typo but for compatibility
   expandIcon: PropTypes.node,
   loadingIcon: PropTypes.node,
+  inputValue: PropTypes.string,
 };
 
 polyfill(Rcascader);

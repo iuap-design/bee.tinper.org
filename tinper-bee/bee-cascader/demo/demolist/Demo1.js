@@ -65,7 +65,7 @@ const options = [{
 class Demo1 extends Component {
 
 	onChange = (value, selectedOptions) => {
-    	console.log(value, selectedOptions);
+		console.log(value, selectedOptions);
 	}
 	
  	render(){

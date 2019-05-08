@@ -1,3 +1,33 @@
+<a name="2.0.32"></a>
+## [2.0.32](https://github.com/tinper-bee/bee-datepicker/compare/v2.0.31...v2.0.32) (2019-05-05)
+
+
+### Features
+
+* **bee-datepicker:** rangepicker tab按键切换 ([45e5f6d](https://github.com/tinper-bee/bee-datepicker/commit/45e5f6d))
+
+
+
+<a name="2.0.31"></a>
+## [2.0.31](https://github.com/tinper-bee/bee-datepicker/compare/v2.0.30...v2.0.31) (2019-05-05)
+
+
+### Features
+
+* **bee-datepicker:** 日期校验不正确，不关闭日期面板 ([7e706fb](https://github.com/tinper-bee/bee-datepicker/commit/7e706fb))
+
+
+
+<a name="2.0.30"></a>
+## [2.0.30](https://github.com/tinper-bee/bee-datepicker/compare/v2.0.29...v2.0.30) (2019-05-05)
+
+
+### Bug Fixes
+
+* **bee-datepicker:** 新增 dropdownClassName 面板类名 ([1f0389e](https://github.com/tinper-bee/bee-datepicker/commit/1f0389e))
+
+
+
 <a name="2.0.29"></a>
 ## [2.0.29](https://github.com/tinper-bee/bee-datepicker/compare/v2.0.28...v2.0.29) (2019-04-25)
 

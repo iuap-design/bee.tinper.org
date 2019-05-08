@@ -322,7 +322,6 @@ var Rcascader = function (_Component) {
       newState.value = nextProps.value || [];
 
       // allow activeValue diff from value
-      // https://github.com/ant-design/ant-design/issues/2767
       if (!('loadData' in nextProps)) {
         newState.activeValue = nextProps.value || [];
       }
@@ -332,6 +331,9 @@ var Rcascader = function (_Component) {
     }
     if ('options' in nextProps) {
       newState.options = nextProps.options || [];
+    }
+    if ('inputValue' in nextProps) {
+      newState.inputValue = nextProps.inputValue;
     }
 
     return newState;
@@ -537,7 +539,8 @@ Rcascader.propTypes = {
   fieldNames: _propTypes2["default"].object,
   filedNames: _propTypes2["default"].object, // typo but for compatibility
   expandIcon: _propTypes2["default"].node,
-  loadingIcon: _propTypes2["default"].node
+  loadingIcon: _propTypes2["default"].node,
+  inputValue: _propTypes2["default"].string
 };
 
 (0, _reactLifecyclesCompat.polyfill)(Rcascader);

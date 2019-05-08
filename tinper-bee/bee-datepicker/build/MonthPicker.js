@@ -184,7 +184,8 @@ var MonthPicker = function (_Component) {
           calendar: monthCalendar,
           open: this.state.open,
           value: state.value,
-          onChange: this.onChange
+          onChange: this.onChange,
+          dropdownClassName: props.dropdownClassName
         },
         function (_ref) {
           var value = _ref.value;

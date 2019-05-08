@@ -8,10 +8,6 @@
 ## 如何使用
 
 ```
-import { DatePicker } from 'tinper-bee';
-
-or
-
 import DatePicker from 'bee-datepicker';
 import 'bee-datepicker/build/DatePicker.css';
 
@@ -29,7 +25,8 @@ import 'bee-datepicker/build/DatePicker.css';
 |参数|说明|类型|默认值|
 |:---|:-----|:----|:------|
 |prefixCls|组件的前缀|String| - |
-|className|添加节点的样式|String| - |
+|className|添加输入框的样式|String| - |
+|dropdownClassName|添加下拉面板的样式|String| - |
 |style|添加内联样式| Object| - |
 |dateRender|日期表格|(current, value) => React.Node| - |
 |renderSidebar|侧边栏|() => React.Node| - |

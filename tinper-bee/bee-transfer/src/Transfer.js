@@ -16,7 +16,8 @@ const defaultProps = {
   searchPlaceholder: 'Search',
   notFoundContent: 'Not Found',
   showCheckbox: true,
-  draggable: false
+  draggable: false,
+  appendToBottom: false
 };
 
 const propTypes = {
@@ -39,7 +40,8 @@ const propTypes = {
     rowKey: PropTypes.func,
     lazy: PropTypes.object,
     showCheckbox: PropTypes.bool,
-    draggable: PropTypes.bool
+    draggable: PropTypes.bool,
+    appendToBottom: PropTypes.bool
 };
 
 const defaultTitles = ['', ''];
@@ -126,9 +128,17 @@ class Transfer extends React.Component{
     let dataSource = newDataSource || this.props.dataSource;
 
     dataSource = this.addUniqueKey(dataSource);
+    this.allSourceKeys = dataSource.map(({key}) => key);
 
     const leftDataSource = dataSource.filter(({ key }) => targetKeys.indexOf(key) === -1);
-    const rightDataSource = dataSource.filter(({key}) => targetKeys.indexOf(key) > -1);
+    // const rightDataSource = dataSource.filter(({key}) => targetKeys.indexOf(key) > -1);
+    // 右侧数据源根据传入的targetKeys进行排序
+    let rightDataSource = [];
+    let tempIndex = -1;
+    targetKeys.forEach((key) => {
+      tempIndex = this.allSourceKeys.indexOf(key);
+      rightDataSource.push(dataSource[tempIndex]);
+    })
 
     this.splitedDataSource = {
       leftDataSource,
@@ -176,13 +186,13 @@ class Transfer extends React.Component{
   }
 
   moveTo = (direction) => {
-    const { targetKeys = [], onChange } = this.props;
-    // debugger
+    const { targetKeys = [], onChange, appendToBottom } = this.props;
     const { sourceSelectedKeys, targetSelectedKeys, leftDataSource, rightDataSource, droppableId } = this.state;
     const moveKeys = direction === 'right' ? sourceSelectedKeys : targetSelectedKeys;
+    let temp = appendToBottom ? targetKeys.concat(moveKeys) : moveKeys.concat(targetKeys);
     // move items to target box
     const newTargetKeys = direction === 'right'
-      ? moveKeys.concat(targetKeys)
+      ? temp
       : targetKeys.filter(targetKey => moveKeys.indexOf(targetKey) === -1);
 
     // empty checked keys
@@ -190,7 +200,6 @@ class Transfer extends React.Component{
     this.setState({
       [this.getSelectedKeysName(oppositeDirection)]: [],
     });
-    // debugger
     this.handleSelectChange(oppositeDirection, []);
 
     if (onChange) {

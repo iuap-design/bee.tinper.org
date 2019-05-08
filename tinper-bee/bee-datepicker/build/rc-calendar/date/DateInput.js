@@ -227,11 +227,19 @@ var _initialiseProps = function _initialiseProps() {
     var _props2 = _this2.props,
         onSelect = _props2.onSelect,
         value = _props2.value,
-        onKeyDown = _props2.onKeyDown;
+        onKeyDown = _props2.onKeyDown,
+        format = _props2.format;
 
-    if (e.keyCode === _KeyCode2["default"].ENTER && onSelect) {
-      onSelect(value.clone());
+    var str = e.target.value;
+    var parsed = (0, _moment2["default"])(str, format, true);
+    if (e.keyCode === _KeyCode2["default"].ENTER) {
+      if (parsed.isValid() && onSelect) {
+        onSelect(value.clone());
+      }
     }
+    // if (e.keyCode === KeyCode.ENTER && onSelect) {
+    //   onSelect(value.clone());
+    // }
     onKeyDown && onKeyDown(e);
   };
 

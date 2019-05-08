@@ -64,7 +64,7 @@ import "./node_modules/bee-transfer/build/Transfer.css"
 |参数|说明|类型|默认值|
 |:--|:---:|:--:|---:|
 |dataSource|设置数据源。当有targetKey props存在时，dataSource的数据刨去targetKey数据,剩下的都放在左边列表|[]|[]|
-|render|自定义的展示出来的item,需要展示哪些字段|Function(record)|-|
+|render|每行数据渲染函数，该函数的入参为 dataSource 中的项，返回值为 ReactElement。或者返回一个普通对象，其中 label 字段为 ReactElement，value 字段为 title|Function(record)|-|
 |targetKeys|展示在右边列表的数据集|[]|[]|
 |selectedKeys|所有选中的item的keys|[]|[]|
 |onChange|当item在穿梭成功后的回调 参数(targetKeys, direction, moveKeys)|func|-|
@@ -83,6 +83,7 @@ import "./node_modules/bee-transfer/build/Transfer.css"
 |onSearchChange|当搜索域变化的回调函数 参数(direction: 'left'|'right', event: Event)|func|-|
 |showCheckbox|是否显示Checkbox复选框|bool|true|
 |draggable|是否可以通过拖拽进行穿梭和排序|bool|false|
+|appendToBottom|是否将已选项追加到右侧列表末尾|bool|false|
 
 
 #### 开发调试

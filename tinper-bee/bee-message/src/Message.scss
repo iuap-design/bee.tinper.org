@@ -50,14 +50,15 @@ $message-content-padding: 11px 64px 11px 4px;
             .uf {
                 font-size: 24px;
                 line-height: 40px;
+                padding: 0;
             }
         }
       }
 
       &-close {
         position: absolute;
-        right: 16px;
-        top: 13px;
+        right: 14px;
+        top: 14px;
         cursor: pointer;
         outline: none;
         font-size: 12px;
@@ -68,6 +69,7 @@ $message-content-padding: 11px 64px 11px 4px;
 
         &-x .uf {
           font-size: 12px;
+          padding: 0;
         }
 
         &:hover {
@@ -271,7 +273,7 @@ $message-content-padding: 11px 64px 11px 4px;
         bottom: -78px;
       }
       100% {
-        bottom: -48px;
+        bottom: 0;
         opacity: 1;
       }
     }

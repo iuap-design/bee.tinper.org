@@ -32,6 +32,8 @@ var _classnames = require("classnames");
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
+var _tinperBeeCore = require("tinper-bee-core");
+
 var _zh_CN = require("./locale/zh_CN");
 
 var _zh_CN2 = _interopRequireDefault(_zh_CN);
@@ -77,11 +79,11 @@ if (cn) {
     now.locale("en-gb").utcOffset(0);
 }
 
-var Picker = function (_Component) {
-    _inherits(Picker, _Component);
+var RangePicker = function (_Component) {
+    _inherits(RangePicker, _Component);
 
-    function Picker(props, context) {
-        _classCallCheck(this, Picker);
+    function RangePicker(props, context) {
+        _classCallCheck(this, RangePicker);
 
         var _this = _possibleConstructorReturn(this, _Component.call(this, props, context));
 
@@ -89,12 +91,13 @@ var Picker = function (_Component) {
 
         _this.state = {
             hoverValue: [],
-            value: props.value || props.defaultValue || []
+            value: props.value || props.defaultValue || [],
+            open: false
         };
         return _this;
     }
 
-    Picker.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
+    RangePicker.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
         if ("value" in nextProps) {
             this.setState({
                 value: nextProps.value
@@ -105,7 +108,7 @@ var Picker = function (_Component) {
         });
     };
 
-    Picker.prototype.render = function render() {
+    RangePicker.prototype.render = function render() {
         var _this2 = this;
 
         var props = this.props;
@@ -134,7 +137,10 @@ var Picker = function (_Component) {
                 value: this.state.value,
                 animation: 'animation' in props ? props.animation : "slide-up",
                 calendar: calendar,
-                disabled: props.disabled
+                disabled: props.disabled,
+                dropdownClassName: props.dropdownClassName,
+                onOpenChange: this.onOpenChange,
+                open: this.state.open
             },
             function (_ref) {
                 _objectDestructuringEmpty(_ref);
@@ -165,7 +171,7 @@ var Picker = function (_Component) {
         );
     };
 
-    return Picker;
+    return RangePicker;
 }(_react.Component);
 
 var _initialiseProps = function _initialiseProps() {
@@ -217,14 +223,45 @@ var _initialiseProps = function _initialiseProps() {
         });
         _this3.props.onChange && _this3.props.onChange('', '');
     };
+
+    this.onOpenChange = function (open) {
+        _this3.setState({
+            open: open
+        }, function () {
+            setTimeout(function () {
+                if (open) _this3.inputFocus();
+            }, 0);
+        });
+    };
+
+    this.inputFocus = function () {
+        var format = _this3.props.format;
+
+        var inputs = document.querySelectorAll('.rc-calendar-input');
+        if (inputs[0].value) {
+            inputs[0].select();
+        } else {
+            inputs[0].focus();
+        }
+        inputs[0].onkeydown = _this3.keydown;
+        inputs[1].onkeydown = _this3.keydown;
+    };
+
+    this.keydown = function (e) {
+        if (e.keyCode == _tinperBeeCore.KeyCode.ESC) {
+            _this3.setState({
+                open: false
+            });
+        }
+    };
 };
 
-Picker.defaultProps = {
+RangePicker.defaultProps = {
     renderIcon: function renderIcon() {
         return _react2["default"].createElement(_beeIcon2["default"], { type: "uf-calendar" });
     },
     locale: _zh_CN2["default"]
 };
 
-exports["default"] = Picker;
+exports["default"] = RangePicker;
 module.exports = exports["default"];

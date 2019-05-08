@@ -224,6 +224,8 @@ var _initialiseProps = function _initialiseProps() {
   };
 
   this.inputFocus = function () {
+    var format = _this3.props.format;
+
     var input = document.querySelector('.rc-calendar-input');
     if (input) {
       if (input.value) {
@@ -235,13 +237,23 @@ var _initialiseProps = function _initialiseProps() {
         if (e.keyCode == _tinperBeeCore.KeyCode.DELETE) {
           input.value = '';
           _this3.props.onChange('', '');
-        } else if (e.keyCode == _tinperBeeCore.KeyCode.ESC || e.keyCode == _tinperBeeCore.KeyCode.ENTER) {
+        } else if (e.keyCode == _tinperBeeCore.KeyCode.ESC) {
           _this3.setState({
             open: false
           });
           var v = _this3.state.value;
           _this3.props.onOpenChange(false, v, v && _this3.getValue(v) || '');
           _reactDom2["default"].findDOMNode(_this3.outInput).focus(); // 按esc时候焦点回到input输入框
+        } else if (e.keyCode == _tinperBeeCore.KeyCode.ENTER) {
+          var parsed = (0, _moment2["default"])(input.value, format, true);
+          if (parsed.isValid()) {
+            _this3.setState({
+              open: false
+            });
+            var _v = _this3.state.value;
+            _this3.props.onOpenChange(false, _v, _v && _this3.getValue(_v) || '');
+            _reactDom2["default"].findDOMNode(_this3.outInput).focus();
+          }
         }
         _this3.props.onKeyDown && _this3.props.onKeyDown(e);
       };
