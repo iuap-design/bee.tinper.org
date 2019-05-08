@@ -262,7 +262,7 @@ input::-webkit-input-placeholder {
 #navbar .nav-options a.first-show{
     color: #444;
 }
-#navbar .nav-options a[href="/tinper-bee"]{
+#navbar .nav-options a[href="#"]{
     color: #E14C46;
 }
 #navbar .nav-options a[href=""]{
