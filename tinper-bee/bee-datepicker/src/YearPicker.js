@@ -165,7 +165,7 @@ class YearPicker extends Component {
                                     this.state.value&&this.state.showClose&&(!props.disabled)?(
                                     <InputGroup.Button shape="border" 
                                         onClick={this.clear}>
-                                        <i className="uf uf-close-c"></i>
+                                        { props.closeIcon() }
                                     </InputGroup.Button>
                                     ):<InputGroup.Button shape="border">
                                         { props.renderIcon() }
@@ -182,6 +182,7 @@ class YearPicker extends Component {
 
 
 YearPicker.defaultProps = {
+    closeIcon:()=><Icon type="uf-close-c"/>,
     renderIcon: () => <Icon type="uf-calendar" />,
     disabled:false
 }

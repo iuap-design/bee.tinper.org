@@ -214,7 +214,7 @@ class WeekPicker extends Component {
                         this.state.value&&this.state.showClose&&(!props.disabled)?(
                         <InputGroup.Button shape="border" 
                             onClick={this.onClear}>
-                            <i className="uf uf-close-c"></i>
+                            { props.closeIcon() }
                         </InputGroup.Button>
                         ):<InputGroup.Button shape="border">
                             { props.renderIcon() }
@@ -230,6 +230,7 @@ class WeekPicker extends Component {
 }
 
 WeekPicker.defaultProps = {
+    closeIcon:()=><Icon type="uf-close-c"/>,
     renderIcon: () => <Icon type="uf-calendar" />,
     locale:zhCN
 }

@@ -8,14 +8,18 @@
 import React, { Component } from 'react';
 import Step from '../../src';
 
+const Steps = Step.Steps;
+
 class Demo6 extends Component {
   render () {
       return (
-          <Step.Steps current={1} size="small">
-            <Step title="Finished" description="This is a description." />
-            <Step title="In Progress" description="This is a description." />
-            <Step title="Waiting" description="This is a description." />
-          </Step.Steps>
+        <div>
+          <Steps current={1} size="small">
+            <Step title="已完成" description="这是一段描述" />
+            <Step title="进行中" description="这是一段描述" />
+            <Step title="未开始" description="这是一段描述" />
+          </Steps>
+        </div>
       )
   }
 }

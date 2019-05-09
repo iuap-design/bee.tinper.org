@@ -117,6 +117,9 @@ $icon-color:#505F79;
     &.text-right{
       text-align: right;
     }
+    .expand-icon-con{
+      cursor: pointer;
+    }
   }
   &-sm {
     td {
@@ -599,6 +602,7 @@ $icon-color:#505F79;
     line-height:  $checkbox-height;
     margin:0px;
     display: block;
+    margin-left: 5px;
     .u-checkbox-label{
       line-height:  $checkbox-height;
       padding-left: 16px;
@@ -923,6 +927,14 @@ $icon-color:#505F79;
   }
   .u-input-number.u-input-group.simple .u-input-group-btn .icon-group {
     height: $filter-form-control-height;
+  }
+  .calendar-picker {
+    .u-input-group-btn{
+      line-height: 20px;
+    }
+  }
+  .u-input-number.u-input-group.simple .u-input-group-btn .icon-group .uf{
+    line-height: 12px;
   }
 }
 .u-row-hover{

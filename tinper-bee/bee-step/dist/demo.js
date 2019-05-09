@@ -58,11 +58,11 @@
 	
 	var _beePanel = __webpack_require__(9);
 	
-	var _beeDrawer = __webpack_require__(81);
+	var _beeDrawer = __webpack_require__(83);
 	
 	var _beeDrawer2 = _interopRequireDefault(_beeDrawer);
 	
-	var _beeClipboard = __webpack_require__(95);
+	var _beeClipboard = __webpack_require__(97);
 	
 	var _beeClipboard2 = _interopRequireDefault(_beeClipboard);
 	
@@ -80,7 +80,7 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
 	
-	var Demo1 = __webpack_require__(269);var Demo2 = __webpack_require__(270);var Demo3 = __webpack_require__(271);var Demo4 = __webpack_require__(272);var Demo5 = __webpack_require__(273);var Demo6 = __webpack_require__(274);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 常用基础 Step", "code": "/**\n*\n* @title 常用基础 Step\n* @description current 标记当前进行哪一步\n*\n*/\n\nimport React, { Component } from 'react';\nimport { Step } from 'tinper-bee';\n\nclass Demo1 extends Component {\n  render () {\n      return (\n          <Step.Steps current={1}>\n            <Step title=\"Finished\" description=\"This is a description.\" />\n            <Step title=\"In Progress\" description=\"This is a description.\" />\n            <Step title=\"Waiting\" description=\"This is a description.\" />\n          </Step.Steps>\n      )\n  }\n}\n\n\n", "desc": " current 标记当前进行哪一步" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 自定义icon Step", "code": "/**\n*\n* @title 自定义icon Step\n* @description\n*\n*/\n\nimport React, { Component } from 'react';\nimport { Step, Icon } from 'tinper-bee';\n\nclass Demo2 extends Component {\n  render () {\n      return (\n        <Step.Steps>\n          <Step status=\"finish\" title=\"Login\" icon={<Icon type=\"uf-users-o\" />} />\n          <Step status=\"finish\" title=\"Verification\" icon={<Icon type=\"uf-personin-o\" />} />\n          <Step status=\"process\" title=\"Pay\" icon={<Icon type=\"uf-creditcard\" />} />\n          <Step status=\"wait\" title=\"Done\" icon={<Icon type=\"uf-correct-2\" />} />\n        </Step.Steps>\n      )\n  }\n}\n\n", "desc": "" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 结合切换事件的 Step", "code": "\n/**\n*\n* @title 结合切换事件的 Step\n* @description 点击next，Step的流程跟进\n*\n*/\nimport React, { Component } from 'react';\nimport { Step, Button, Message } from 'tinper-bee';\n\nconst Steps = Step.Steps;\n\nconst steps = [{\n  title: 'First',\n  content: 'First-content',\n}, {\n  title: 'Second',\n  content: 'Second-content',\n}, {\n  title: 'Last',\n  content: 'Last-content',\n}];\n\nclass Demo3 extends Component {\n  constructor(props) {\n    super(props);\n    this.state = {\n      current: 0,\n    };\n  }\n  next() {\n    const current = this.state.current + 1;\n    this.setState({ current });\n  }\n  prev() {\n    const current = this.state.current - 1;\n    this.setState({ current });\n  }\n\n  alertDone() {\n    Message.create({content: '完成', color: 'info'});\n  }\n\n  render() {\n    const { current } = this.state;\n    return (\n      <div>\n        <Steps current={current}>\n          {steps.map(item => <Step key={item.title} title={item.title} />)}\n        </Steps>\n        <div className=\"steps-content\">{steps[this.state.current].content}</div>\n        <div className=\"steps-action\">\n          {\n            this.state.current < steps.length - 1\n            &&\n            <Button type=\"primary\" onClick={() => this.next()}>下一页</Button>\n          }\n          {\n            this.state.current === steps.length - 1\n            &&\n            <Button type=\"primary\" onClick={() => this.alertDone()}>完成</Button>\n          }\n          {\n            this.state.current > 0\n            &&\n            <Button style={{ marginLeft: 8 }} onClick={() => this.prev()}>\n              上一页\n            </Button>\n          }\n        </div>\n      </div>\n    );\n  }\n}\n\n", "desc": " 点击next，Step的流程跟进", "scss_code": ".steps-content {\n  margin-top: 16px;\n  border: 1px dashed #e9e9e9;\n  border-radius: 6px;\n  background-color: #fafafa;\n  min-height: 200px;\n  text-align: center;\n  padding-top: 80px;\n}\n\n.steps-action {\n  margin-top: 24px;\n}" }, { "example": _react2['default'].createElement(Demo4, null), "title": " 垂直的 Step", "code": "/**\n*\n* @title 垂直的 Step\n* @description \n*\n*/\n\nimport React, { Component } from 'react';\nimport { Step } from 'tinper-bee';\n\nconst Steps = Step.Steps;\n\nclass Demo4 extends Component {\n  render () {\n      return (\n        <div>\n          <Steps direction=\"vertical\" size=\"small\" current={1}>\n            <Step title=\"Finished\" description=\"This is a description.\" />\n            <Step title=\"In Progress\" description=\"This is a description.\" />\n            <Step title=\"Waiting\" description=\"This is a description.\" />\n         </Steps>\n        </div>\n      )\n  }\n}\n\n", "desc": " " }, { "example": _react2['default'].createElement(Demo5, null), "title": " 指定状态的Step", "code": "/**\n*\n* @title 指定状态的Step\n* @description  用step的status属性，指定当前step的状态\n*\n*/\n\nimport React, { Component } from 'react';\nimport { Step } from 'tinper-bee';\n\nconst Steps = Step.Steps;\n\nclass Demo5 extends Component {\n  render () {\n      return (\n        <div>\n          <Steps current={1} status=\"error\">\n            <Step title=\"Finished\" description=\"This is a description\" />\n            <Step title=\"In Process\" description=\"This is a description\" />\n            <Step title=\"Waiting\" description=\"This is a description\" />\n        </Steps>\n        </div>\n      )\n  }\n}\n\n", "desc": "  用step的status属性，指定当前step的状态" }, { "example": _react2['default'].createElement(Demo6, null), "title": " 不同尺寸的 Step", "code": "/**\r\n*\r\n* @title 不同尺寸的 Step\r\n* @description size 可设置为 small，默认是 default\r\n*\r\n*/\r\n\r\nimport React, { Component } from 'react';\r\nimport { Step } from 'tinper-bee';\r\n\r\nclass Demo6 extends Component {\r\n  render () {\r\n      return (\r\n          <Step.Steps current={1} size=\"small\">\r\n            <Step title=\"Finished\" description=\"This is a description.\" />\r\n            <Step title=\"In Progress\" description=\"This is a description.\" />\r\n            <Step title=\"Waiting\" description=\"This is a description.\" />\r\n          </Step.Steps>\r\n      )\r\n  }\r\n}\r\n\r\n\r\n", "desc": " size 可设置为 small，默认是 default" }];
+	var Demo1 = __webpack_require__(269);var Demo2 = __webpack_require__(270);var Demo3 = __webpack_require__(271);var Demo4 = __webpack_require__(272);var Demo5 = __webpack_require__(273);var Demo6 = __webpack_require__(274);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 基础 Step", "code": "/**\r\n*\r\n* @title 基础 Step\r\n* @description current 标记当前进行哪一步\r\n*\r\n*/\r\n\r\nimport React, { Component } from 'react';\r\nimport { Step } from 'tinper-bee';\r\n\r\nclass Demo1 extends Component {\r\n  render () {\r\n      return (\r\n          <Step.Steps current={1}>\r\n            <Step title=\"已完成\" description=\"这是一段描述\" />\r\n            <Step title=\"进行中\" description=\"这是一段描述\" />\r\n            <Step title=\"未开始\" description=\"这是一段描述\" />\r\n          </Step.Steps>\r\n      )\r\n  }\r\n}\r\n\r\n\r\n", "desc": " current 标记当前进行哪一步" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 自定义图标", "code": "/**\r\n*\r\n* @title 自定义图标\r\n* @description\r\n*\r\n*/\r\n\r\nimport React, { Component } from 'react';\r\n\nimport { Step, Icon } from 'tinper-bee';\r\n\r\nclass Demo2 extends Component {\r\n  render () {\r\n      return (\r\n        <Step.Steps>\r\n          <Step status=\"finish\" title=\"登录\" icon={<Icon type=\"uf-users-o\" />} />\r\n          <Step status=\"finish\" title=\"身份认证\" icon={<Icon type=\"uf-personin-o\" />} />\r\n          <Step status=\"process\" title=\"支付\" icon={<Icon type=\"uf-creditcard\" />} />\r\n          <Step status=\"wait\" title=\"交易完成\" icon={<Icon type=\"uf-correct-2\" />} />\r\n        </Step.Steps>\r\n      )\r\n  }\r\n}\r\n\r\n", "desc": "" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 结合切换事件的 Step", "code": "\r\n/**\r\n*\r\n* @title 结合切换事件的 Step\r\n* @description 点击next，Step的流程跟进\r\n*\r\n*/\r\nimport React, { Component } from 'react';\r\n\n\nimport { Step, Button, Message } from 'tinper-bee';\r\n\r\nconst Steps = Step.Steps;\r\n\r\nconst steps = [{\r\n  title: '填写申请信息',\r\n  content: '第一步：填写申请信息',\r\n}, {\r\n  title: '上传资料',\r\n  content: '第二步：上传资料',\r\n}, {\r\n  title: '提交申请',\r\n  content: '第三步：提交申请',\r\n}];\r\n\r\nclass Demo3 extends Component {\r\n  constructor(props) {\r\n    super(props);\r\n    this.state = {\r\n      current: 0,\r\n    };\r\n  }\r\n  next() {\r\n    const current = this.state.current + 1;\r\n    this.setState({ current });\r\n  }\r\n  prev() {\r\n    const current = this.state.current - 1;\r\n    this.setState({ current });\r\n  }\r\n\r\n  alertDone() {\r\n    Message.create({content: '完成', color: 'successlight'});\r\n  }\r\n\r\n  render() {\r\n    const { current } = this.state;\r\n    return (\r\n      <div>\r\n        <Steps current={current}>\r\n          {steps.map(item => <Step key={item.title} title={item.title} />)}\r\n        </Steps>\r\n        <div className=\"steps-content\">{steps[this.state.current].content}</div>\r\n        <div className=\"steps-action\">\r\n          {\r\n            this.state.current < steps.length - 1\r\n            &&\r\n            <Button type=\"primary\" onClick={() => this.next()}>下一步</Button>\r\n          }\r\n          {\r\n            this.state.current === steps.length - 1\r\n            &&\r\n            <Button type=\"primary\" onClick={() => this.alertDone()}>完成</Button>\r\n          }\r\n          {\r\n            this.state.current > 0\r\n            &&\r\n            <Button style={{ marginLeft: 8 }} onClick={() => this.prev()}>\r\n              上一步\r\n            </Button>\r\n          }\r\n        </div>\r\n      </div>\r\n    );\r\n  }\r\n}\r\n\r\n", "desc": " 点击next，Step的流程跟进", "scss_code": ".steps-content {\r\n  margin-top: 16px;\r\n  border: 1px dashed #e9e9e9;\r\n  border-radius: 6px;\r\n  background-color: #fafafa;\r\n  min-height: 200px;\r\n  text-align: center;\r\n  padding-top: 80px;\r\n}\r\n\r\n.steps-action {\r\n  margin-top: 24px;\r\n}" }, { "example": _react2['default'].createElement(Demo4, null), "title": " 竖向的 Step", "code": "/**\n*\n* @title 竖向的 Step\n* @description 通过 `direction` API设置步骤条的方向，默认是水平方向 horizontal\n*\n*/\n\nimport React, { Component } from 'react';\nimport { Step } from 'tinper-bee';\n\nconst Steps = Step.Steps;\n\nclass Demo4 extends Component {\n  render () {\n      return (\n        <div>\n          <Steps direction=\"vertical\"  current={1}>\n            <Step title=\"已完成\" description=\"这是一段描述\" />\n            <Step title=\"进行中\" description=\"这是一段描述\" />\n            <Step title=\"未开始\" description=\"这是一段描述\" />\n         </Steps>\n        </div>\n      )\n  }\n}\n\n", "desc": " 通过 `direction` API设置步骤条的方向，默认是水平方向 horizontal" }, { "example": _react2['default'].createElement(Demo5, null), "title": " 指定状态的Step", "code": "/**\r\n*\r\n* @title 指定状态的Step\r\n* @description  用step的status属性，指定当前step的状态\r\n*\r\n*/\r\n\r\nimport React, { Component } from 'react';\r\nimport { Step } from 'tinper-bee';\r\n\r\nconst Steps = Step.Steps;\r\n\r\nclass Demo5 extends Component {\r\n  render () {\r\n      return (\r\n        <div>\r\n          <Steps current={1} status=\"error\">\r\n            <Step title=\"已完成\" description=\"这是一段描述\" />\r\n            <Step title=\"进行中\" description=\"这是一段描述\" />\r\n            <Step title=\"未开始\" description=\"这是一段描述\" />\r\n          </Steps>\r\n        </div>\r\n      )\r\n  }\r\n}\r\n\r\n", "desc": "  用step的status属性，指定当前step的状态" }, { "example": _react2['default'].createElement(Demo6, null), "title": " 不同尺寸的 Step", "code": "/**\r\n*\r\n* @title 不同尺寸的 Step\r\n* @description size 可设置为 small，默认是 default\r\n*\r\n*/\r\n\r\nimport React, { Component } from 'react';\r\nimport { Step } from 'tinper-bee';\r\n\r\nconst Steps = Step.Steps;\r\n\r\nclass Demo6 extends Component {\r\n  render () {\r\n      return (\r\n        <div>\r\n          <Steps current={1} size=\"small\">\r\n            <Step title=\"已完成\" description=\"这是一段描述\" />\r\n            <Step title=\"进行中\" description=\"这是一段描述\" />\r\n            <Step title=\"未开始\" description=\"这是一段描述\" />\r\n          </Steps>\r\n        </div>\r\n      )\r\n  }\r\n}\r\n\r\n\r\n", "desc": " size 可设置为 small，默认是 default" }];
 	
 	var Demo = function (_Component) {
 	    _inherits(Demo, _Component);
@@ -673,7 +673,7 @@
 	
 	var _Panel3 = _interopRequireDefault(_Panel2);
 	
-	var _PanelGroup2 = __webpack_require__(80);
+	var _PanelGroup2 = __webpack_require__(82);
 	
 	var _PanelGroup3 = _interopRequireDefault(_PanelGroup2);
 	
@@ -712,7 +712,7 @@
 	
 	var _propTypes2 = _interopRequireDefault(_propTypes);
 	
-	var _copyToClipboard = __webpack_require__(78);
+	var _copyToClipboard = __webpack_require__(80);
 	
 	var _copyToClipboard2 = _interopRequireDefault(_copyToClipboard);
 	
@@ -6124,8 +6124,6 @@
 	    value: true
 	});
 	
-	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-	
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 	
 	var _react = __webpack_require__(1);
@@ -6143,11 +6141,12 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 	
 	var defaultDuration = 1.5;
-	var defaultTop = 0;
+	var newDuration = void 0;
+	var defaultTop = 24;
 	var defaultBottom = 48;
 	var bottom = 90;
 	var padding = 30;
-	var width = 200;
+	var width = 240;
 	var messageInstance = void 0;
 	var key = 1;
 	var clsPrefix = 'u-message';
@@ -6156,21 +6155,21 @@
 	var positionObj = {
 	    "top": {
 	        messageStyle: {
-	            width: "100%"
+	            transform: 'translateX( -50%)'
 	        },
 	        notificationStyle: {
 	            top: defaultTop,
-	            width: "100%"
+	            left: '50%'
 	        },
 	        transitionName: 'top'
 	    },
 	    "bottom": {
 	        messageStyle: {
-	            width: "100%"
+	            transform: 'translateX( -50%)'
 	        },
 	        notificationStyle: {
 	            bottom: defaultBottom,
-	            width: "100%"
+	            left: '50%'
 	        },
 	        transitionName: 'bottom'
 	    },
@@ -6230,12 +6229,31 @@
 	        callback(messageInstance);
 	        return;
 	    }
+	    switch (position) {
+	        case 'top':
+	            positionObj[position].notificationStyle.top = defaultTop;
+	            break;
+	        case 'bottom':
+	            positionObj[position].notificationStyle.bottom = defaultBottom;
+	            break;
+	        case 'bottomRight':
+	            positionObj[position].notificationStyle.bottom = bottom;
+	            break;
+	        case 'bottomLeft':
+	            positionObj[position].notificationStyle.bottom = bottom;
+	            break;
+	        default:
+	            break;
+	    }
+	    if (position !== 'top' && position !== 'bottom') {
+	        positionObj[position].messageStyle.width = width;
+	    }
 	    var style = positionObj[position].notificationStyle;
 	    var instanceObj = {
 	        clsPrefix: clsPrefix,
 	        transitionName: clsPrefix + '-' + positionObj[position].transitionName,
 	        style: style, // 覆盖原来的样式
-	        position: ''
+	        position: position
 	    };
 	    if (typeof keyboard === 'boolean') {
 	        instanceObj.keyboard = keyboard;
@@ -6253,19 +6271,18 @@
 	    var iconType = {
 	        info: 'uf uf-i-c-2',
 	        success: 'uf uf-correct',
-	        danger: 'uf uf-close-c',
+	        danger: 'uf uf-exc-c',
 	        warning: 'uf uf-exc-t',
 	        light: 'uf uf-notification',
-	        dark: 'uf uf-bubble',
+	        dark: 'uf uf-notification',
 	        news: 'uf uf-bell',
 	        infolight: 'uf uf-i-c-2',
 	        successlight: 'uf uf-correct',
-	        dangerlight: 'uf uf-close-c',
+	        dangerlight: 'uf uf-exc-c',
 	        warninglight: 'uf uf-exc-t'
 	    }[type];
 	
 	    var positionStyle = positionObj[position].messageStyle;
-	
 	    getMessageInstance(position, function (instance) {
 	        instance.notice({
 	            key: key,
@@ -6301,13 +6318,17 @@
 	
 	exports["default"] = {
 	    create: function create(obj) {
+	        if (newDuration) {
+	            //如果在config方法里设置了duration
+	            obj.duration = newDuration;
+	        }
 	        var content = obj.content || '';
-	        var duration = _typeof(obj.duration) == undefined ? defaultDuration : obj.duration;
-	        var color = obj.color || 'dark';
+	        var duration = typeof obj.duration == 'undefined' ? defaultDuration : obj.duration;
+	        var color = obj.color || 'light';
 	        var onClose = obj.onClose || noop;
 	        var position = obj.position || "top";
 	        var style = obj.style || {};
-	        var showIcon = obj.showIcon || false;
+	        var showIcon = obj.showIcon || true;
 	        return notice(content, duration, color, onClose, position, style, obj.keyboard, obj.onEscapeKeyUp, showIcon);
 	    },
 	    config: function config(options) {
@@ -6316,6 +6337,7 @@
 	        }
 	        if (options.duration !== undefined) {
 	            defaultDuration = options.duration;
+	            newDuration = defaultDuration;
 	        }
 	        if (options.clsPrefix !== undefined) {
 	            clsPrefix = options.clsPrefix;
@@ -6327,7 +6349,7 @@
 	            bottom = options.bottom;
 	        }
 	        if (options.width !== undefined) {
-	            bottom = options.width;
+	            width = options.width;
 	        }
 	    },
 	    destroy: function destroy() {
@@ -7425,6 +7447,10 @@
 	
 	var _propTypes2 = _interopRequireDefault(_propTypes);
 	
+	var _beeIcon = __webpack_require__(78);
+	
+	var _beeIcon2 = _interopRequireDefault(_beeIcon);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 	
 	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
@@ -7530,7 +7556,11 @@
 	      closable ? _react2["default"].createElement(
 	        'a',
 	        { tabIndex: '0', onClick: this.close, className: componentClass + '-close' },
-	        _react2["default"].createElement('span', { className: componentClass + '-close-x' })
+	        _react2["default"].createElement(
+	          'span',
+	          { className: componentClass + '-close-x' },
+	          _react2["default"].createElement(_beeIcon2["default"], { type: 'uf-close' })
+	        )
 	      ) : null
 	    );
 	  };
@@ -7550,9 +7580,107 @@
 /* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _Icon = __webpack_require__(79);
+	
+	var _Icon2 = _interopRequireDefault(_Icon);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+	
+	exports["default"] = _Icon2["default"];
+	module.exports = exports['default'];
+
+/***/ }),
+/* 79 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _classnames = __webpack_require__(5);
+	
+	var _classnames2 = _interopRequireDefault(_classnames);
+	
+	var _propTypes = __webpack_require__(6);
+	
+	var _propTypes2 = _interopRequireDefault(_propTypes);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+	
+	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
+	
+	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
+	
+	var propTypes = {
+		type: _propTypes2["default"].string
+	
+	};
+	/**
+	 *  badge 默认显示内容1
+	 */
+	var defaultProps = {
+		clsPrefix: 'uf'
+	};
+	
+	var Icon = function (_Component) {
+		_inherits(Icon, _Component);
+	
+		function Icon(props) {
+			_classCallCheck(this, Icon);
+	
+			return _possibleConstructorReturn(this, _Component.call(this, props));
+		}
+	
+		Icon.prototype.render = function render() {
+			var _props = this.props,
+			    type = _props.type,
+			    className = _props.className,
+			    clsPrefix = _props.clsPrefix,
+			    others = _objectWithoutProperties(_props, ['type', 'className', 'clsPrefix']);
+	
+			var clsObj = {};
+	
+			var classNames = (0, _classnames2["default"])(clsPrefix, type);
+	
+			return _react2["default"].createElement('i', _extends({}, others, { className: (0, _classnames2["default"])(classNames, className) }));
+		};
+	
+		return Icon;
+	}(_react.Component);
+	
+	Icon.defaultProps = defaultProps;
+	Icon.propTypes = propTypes;
+	
+	exports["default"] = Icon;
+	module.exports = exports['default'];
+
+/***/ }),
+/* 80 */
+/***/ (function(module, exports, __webpack_require__) {
+
 	"use strict";
 	
-	var deselectCurrent = __webpack_require__(79);
+	var deselectCurrent = __webpack_require__(81);
 	
 	var defaultMessage = "Copy to clipboard: #{key}, Enter";
 	
@@ -7647,7 +7775,7 @@
 
 
 /***/ }),
-/* 79 */
+/* 81 */
 /***/ (function(module, exports) {
 
 	
@@ -7692,7 +7820,7 @@
 
 
 /***/ }),
-/* 80 */
+/* 82 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -7839,7 +7967,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 81 */
+/* 83 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -7848,7 +7976,7 @@
 	  value: true
 	});
 	
-	var _Drawer = __webpack_require__(82);
+	var _Drawer = __webpack_require__(84);
 	
 	var _Drawer2 = _interopRequireDefault(_Drawer);
 	
@@ -7858,7 +7986,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 82 */
+/* 84 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -7883,9 +8011,9 @@
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
-	var _common = __webpack_require__(83);
+	var _common = __webpack_require__(85);
 	
-	var _reactTransitionGroup = __webpack_require__(84);
+	var _reactTransitionGroup = __webpack_require__(86);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 	
@@ -8161,7 +8289,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 83 */
+/* 85 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -8188,18 +8316,18 @@
 	}
 
 /***/ }),
-/* 84 */
+/* 86 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var _CSSTransition = _interopRequireDefault(__webpack_require__(85));
+	var _CSSTransition = _interopRequireDefault(__webpack_require__(87));
 	
-	var _ReplaceTransition = _interopRequireDefault(__webpack_require__(92));
+	var _ReplaceTransition = _interopRequireDefault(__webpack_require__(94));
 	
-	var _TransitionGroup = _interopRequireDefault(__webpack_require__(93));
+	var _TransitionGroup = _interopRequireDefault(__webpack_require__(95));
 	
-	var _Transition = _interopRequireDefault(__webpack_require__(89));
+	var _Transition = _interopRequireDefault(__webpack_require__(91));
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -8211,7 +8339,7 @@
 	};
 
 /***/ }),
-/* 85 */
+/* 87 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {"use strict";
@@ -8221,15 +8349,15 @@
 	
 	var PropTypes = _interopRequireWildcard(__webpack_require__(6));
 	
-	var _addClass = _interopRequireDefault(__webpack_require__(86));
+	var _addClass = _interopRequireDefault(__webpack_require__(88));
 	
-	var _removeClass = _interopRequireDefault(__webpack_require__(88));
+	var _removeClass = _interopRequireDefault(__webpack_require__(90));
 	
 	var _react = _interopRequireDefault(__webpack_require__(1));
 	
-	var _Transition = _interopRequireDefault(__webpack_require__(89));
+	var _Transition = _interopRequireDefault(__webpack_require__(91));
 	
-	var _PropTypes = __webpack_require__(91);
+	var _PropTypes = __webpack_require__(93);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -8581,7 +8709,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(32)))
 
 /***/ }),
-/* 86 */
+/* 88 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -8591,7 +8719,7 @@
 	});
 	exports.default = addClass;
 	
-	var _hasClass = __webpack_require__(87);
+	var _hasClass = __webpack_require__(89);
 	
 	var _hasClass2 = _interopRequireDefault(_hasClass);
 	
@@ -8603,7 +8731,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 87 */
+/* 89 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -8618,7 +8746,7 @@
 	module.exports = exports["default"];
 
 /***/ }),
-/* 88 */
+/* 90 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -8628,7 +8756,7 @@
 	};
 
 /***/ }),
-/* 89 */
+/* 91 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {"use strict";
@@ -8642,9 +8770,9 @@
 	
 	var _reactDom = _interopRequireDefault(__webpack_require__(2));
 	
-	var _reactLifecyclesCompat = __webpack_require__(90);
+	var _reactLifecyclesCompat = __webpack_require__(92);
 	
-	var _PropTypes = __webpack_require__(91);
+	var _PropTypes = __webpack_require__(93);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -9243,7 +9371,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(32)))
 
 /***/ }),
-/* 90 */
+/* 92 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -9411,7 +9539,7 @@
 
 
 /***/ }),
-/* 91 */
+/* 93 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {"use strict";
@@ -9445,7 +9573,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(32)))
 
 /***/ }),
-/* 92 */
+/* 94 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {"use strict";
@@ -9459,7 +9587,7 @@
 	
 	var _reactDom = __webpack_require__(2);
 	
-	var _TransitionGroup = _interopRequireDefault(__webpack_require__(93));
+	var _TransitionGroup = _interopRequireDefault(__webpack_require__(95));
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -9601,7 +9729,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(32)))
 
 /***/ }),
-/* 93 */
+/* 95 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {"use strict";
@@ -9613,9 +9741,9 @@
 	
 	var _react = _interopRequireDefault(__webpack_require__(1));
 	
-	var _reactLifecyclesCompat = __webpack_require__(90);
+	var _reactLifecyclesCompat = __webpack_require__(92);
 	
-	var _ChildMapping = __webpack_require__(94);
+	var _ChildMapping = __webpack_require__(96);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -9815,7 +9943,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(32)))
 
 /***/ }),
-/* 94 */
+/* 96 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -9970,7 +10098,7 @@
 	}
 
 /***/ }),
-/* 95 */
+/* 97 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -9979,7 +10107,7 @@
 	  value: true
 	});
 	
-	var _Clipboard = __webpack_require__(96);
+	var _Clipboard = __webpack_require__(98);
 	
 	var _Clipboard2 = _interopRequireDefault(_Clipboard);
 	
@@ -9989,7 +10117,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 96 */
+/* 98 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -10002,7 +10130,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _clipboard = __webpack_require__(97);
+	var _clipboard = __webpack_require__(99);
 	
 	var _clipboard2 = _interopRequireDefault(_clipboard);
 	
@@ -10010,7 +10138,7 @@
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
-	var _beeIcon = __webpack_require__(105);
+	var _beeIcon = __webpack_require__(78);
 	
 	var _beeIcon2 = _interopRequireDefault(_beeIcon);
 	
@@ -10212,12 +10340,12 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 97 */
+/* 99 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function (global, factory) {
 	    if (true) {
-	        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [module, __webpack_require__(98), __webpack_require__(100), __webpack_require__(101)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [module, __webpack_require__(100), __webpack_require__(102), __webpack_require__(103)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 	    } else if (typeof exports !== "undefined") {
 	        factory(module, require('./clipboard-action'), require('tiny-emitter'), require('good-listener'));
 	    } else {
@@ -10424,12 +10552,12 @@
 	});
 
 /***/ }),
-/* 98 */
+/* 100 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function (global, factory) {
 	    if (true) {
-	        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [module, __webpack_require__(99)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [module, __webpack_require__(101)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 	    } else if (typeof exports !== "undefined") {
 	        factory(module, require('select'));
 	    } else {
@@ -10658,7 +10786,7 @@
 	});
 
 /***/ }),
-/* 99 */
+/* 101 */
 /***/ (function(module, exports) {
 
 	function select(element) {
@@ -10707,7 +10835,7 @@
 
 
 /***/ }),
-/* 100 */
+/* 102 */
 /***/ (function(module, exports) {
 
 	function E () {
@@ -10780,11 +10908,11 @@
 
 
 /***/ }),
-/* 101 */
+/* 103 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var is = __webpack_require__(102);
-	var delegate = __webpack_require__(103);
+	var is = __webpack_require__(104);
+	var delegate = __webpack_require__(105);
 	
 	/**
 	 * Validates all params and calls the right
@@ -10881,7 +11009,7 @@
 
 
 /***/ }),
-/* 102 */
+/* 104 */
 /***/ (function(module, exports) {
 
 	/**
@@ -10936,10 +11064,10 @@
 
 
 /***/ }),
-/* 103 */
+/* 105 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var closest = __webpack_require__(104);
+	var closest = __webpack_require__(106);
 	
 	/**
 	 * Delegates event to a selector.
@@ -11020,7 +11148,7 @@
 
 
 /***/ }),
-/* 104 */
+/* 106 */
 /***/ (function(module, exports) {
 
 	var DOCUMENT_NODE_TYPE = 9;
@@ -11057,104 +11185,6 @@
 	
 	module.exports = closest;
 
-
-/***/ }),
-/* 105 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _Icon = __webpack_require__(106);
-	
-	var _Icon2 = _interopRequireDefault(_Icon);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-	
-	exports["default"] = _Icon2["default"];
-	module.exports = exports['default'];
-
-/***/ }),
-/* 106 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _classnames = __webpack_require__(5);
-	
-	var _classnames2 = _interopRequireDefault(_classnames);
-	
-	var _propTypes = __webpack_require__(6);
-	
-	var _propTypes2 = _interopRequireDefault(_propTypes);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-	
-	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
-	
-	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
-	
-	var propTypes = {
-		type: _propTypes2["default"].string
-	
-	};
-	/**
-	 *  badge 默认显示内容1
-	 */
-	var defaultProps = {
-		clsPrefix: 'uf'
-	};
-	
-	var Icon = function (_Component) {
-		_inherits(Icon, _Component);
-	
-		function Icon(props) {
-			_classCallCheck(this, Icon);
-	
-			return _possibleConstructorReturn(this, _Component.call(this, props));
-		}
-	
-		Icon.prototype.render = function render() {
-			var _props = this.props,
-			    type = _props.type,
-			    className = _props.className,
-			    clsPrefix = _props.clsPrefix,
-			    others = _objectWithoutProperties(_props, ['type', 'className', 'clsPrefix']);
-	
-			var clsObj = {};
-	
-			var classNames = (0, _classnames2["default"])(clsPrefix, type);
-	
-			return _react2["default"].createElement('i', _extends({}, others, { className: (0, _classnames2["default"])(classNames, className) }));
-		};
-	
-		return Icon;
-	}(_react.Component);
-	
-	Icon.defaultProps = defaultProps;
-	Icon.propTypes = propTypes;
-	
-	exports["default"] = Icon;
-	module.exports = exports['default'];
 
 /***/ }),
 /* 107 */
@@ -14080,7 +14110,7 @@
 	
 	var _confirm2 = _interopRequireDefault(_confirm);
 	
-	var _beeIcon = __webpack_require__(105);
+	var _beeIcon = __webpack_require__(78);
 	
 	var _beeIcon2 = _interopRequireDefault(_beeIcon);
 	
@@ -15433,15 +15463,15 @@
 	});
 	exports.hasClass = exports.removeClass = exports.addClass = undefined;
 	
-	var _addClass = __webpack_require__(86);
+	var _addClass = __webpack_require__(88);
 	
 	var _addClass2 = _interopRequireDefault(_addClass);
 	
-	var _removeClass = __webpack_require__(88);
+	var _removeClass = __webpack_require__(90);
 	
 	var _removeClass2 = _interopRequireDefault(_removeClass);
 	
-	var _hasClass = __webpack_require__(87);
+	var _hasClass = __webpack_require__(89);
 	
 	var _hasClass2 = _interopRequireDefault(_hasClass);
 	
@@ -23328,11 +23358,7 @@
 	var parse = function parse(raw) {
 	  var value = raw.slice(0, -2);
 	  var suffix = raw.slice(-2);
-	
-	  if (suffix !== 'px') {
-	    return 0;
-	  }
-	
+	  !(suffix === 'px') ? process.env.NODE_ENV !== "production" ? invariant(false, "Expected value to be a pixel value.\n      Expected form: 10px\n      Actual value: " + raw + "\n    ") : invariant(false) : void 0;
 	  var result = Number(value);
 	  !!isNaN(result) ? process.env.NODE_ENV !== "production" ? invariant(false, "Could not parse value [raw: " + raw + ", without suffix: " + value + "]") : invariant(false) : void 0;
 	  return result;
@@ -23397,14 +23423,14 @@
 	  return calculateBox(borderBox, styles);
 	};
 	
-	exports.calculateBox = calculateBox;
-	exports.createBox = createBox;
-	exports.expand = expand;
-	exports.getBox = getBox;
 	exports.getRect = getRect;
-	exports.offset = offset;
+	exports.expand = expand;
 	exports.shrink = shrink;
+	exports.createBox = createBox;
+	exports.offset = offset;
 	exports.withScroll = withScroll;
+	exports.calculateBox = calculateBox;
+	exports.getBox = getBox;
 	
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(32)))
 
@@ -33240,7 +33266,7 @@
 	
 	var _beeButton2 = _interopRequireDefault(_beeButton);
 	
-	var _beeIcon = __webpack_require__(105);
+	var _beeIcon = __webpack_require__(78);
 	
 	var _beeIcon2 = _interopRequireDefault(_beeIcon);
 	
@@ -33650,7 +33676,7 @@
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
-	var _beeIcon = __webpack_require__(105);
+	var _beeIcon = __webpack_require__(78);
 	
 	var _beeIcon2 = _interopRequireDefault(_beeIcon);
 	
@@ -34798,7 +34824,7 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); } /**
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               *
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               * @title 常用基础 Step
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               * @title 基础 Step
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               * @description current 标记当前进行哪一步
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               *
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               */
@@ -34816,9 +34842,9 @@
 	    return _react2['default'].createElement(
 	      _src2['default'].Steps,
 	      { current: 1 },
-	      _react2['default'].createElement(_src2['default'], { title: 'Finished', description: 'This is a description.' }),
-	      _react2['default'].createElement(_src2['default'], { title: 'In Progress', description: 'This is a description.' }),
-	      _react2['default'].createElement(_src2['default'], { title: 'Waiting', description: 'This is a description.' })
+	      _react2['default'].createElement(_src2['default'], { title: '\u5DF2\u5B8C\u6210', description: '\u8FD9\u662F\u4E00\u6BB5\u63CF\u8FF0' }),
+	      _react2['default'].createElement(_src2['default'], { title: '\u8FDB\u884C\u4E2D', description: '\u8FD9\u662F\u4E00\u6BB5\u63CF\u8FF0' }),
+	      _react2['default'].createElement(_src2['default'], { title: '\u672A\u5F00\u59CB', description: '\u8FD9\u662F\u4E00\u6BB5\u63CF\u8FF0' })
 	    );
 	  };
 	
@@ -34842,7 +34868,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _beeIcon = __webpack_require__(105);
+	var _beeIcon = __webpack_require__(78);
 	
 	var _beeIcon2 = _interopRequireDefault(_beeIcon);
 	
@@ -34860,7 +34886,7 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); } /**
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               *
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               * @title 自定义icon Step
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               * @title 自定义图标
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               * @description
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               *
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               */
@@ -34878,10 +34904,10 @@
 	    return _react2['default'].createElement(
 	      _src2['default'].Steps,
 	      null,
-	      _react2['default'].createElement(_src2['default'], { status: 'finish', title: 'Login', icon: _react2['default'].createElement(_beeIcon2['default'], { type: 'uf-users-o' }) }),
-	      _react2['default'].createElement(_src2['default'], { status: 'finish', title: 'Verification', icon: _react2['default'].createElement(_beeIcon2['default'], { type: 'uf-personin-o' }) }),
-	      _react2['default'].createElement(_src2['default'], { status: 'process', title: 'Pay', icon: _react2['default'].createElement(_beeIcon2['default'], { type: 'uf-creditcard' }) }),
-	      _react2['default'].createElement(_src2['default'], { status: 'wait', title: 'Done', icon: _react2['default'].createElement(_beeIcon2['default'], { type: 'uf-correct-2' }) })
+	      _react2['default'].createElement(_src2['default'], { status: 'finish', title: '\u767B\u5F55', icon: _react2['default'].createElement(_beeIcon2['default'], { type: 'uf-users-o' }) }),
+	      _react2['default'].createElement(_src2['default'], { status: 'finish', title: '\u8EAB\u4EFD\u8BA4\u8BC1', icon: _react2['default'].createElement(_beeIcon2['default'], { type: 'uf-personin-o' }) }),
+	      _react2['default'].createElement(_src2['default'], { status: 'process', title: '\u652F\u4ED8', icon: _react2['default'].createElement(_beeIcon2['default'], { type: 'uf-creditcard' }) }),
+	      _react2['default'].createElement(_src2['default'], { status: 'wait', title: '\u4EA4\u6613\u5B8C\u6210', icon: _react2['default'].createElement(_beeIcon2['default'], { type: 'uf-correct-2' }) })
 	    );
 	  };
 	
@@ -34937,14 +34963,14 @@
 	var Steps = _src2['default'].Steps;
 	
 	var steps = [{
-	  title: 'First',
-	  content: 'First-content'
+	  title: '填写申请信息',
+	  content: '第一步：填写申请信息'
 	}, {
-	  title: 'Second',
-	  content: 'Second-content'
+	  title: '上传资料',
+	  content: '第二步：上传资料'
 	}, {
-	  title: 'Last',
-	  content: 'Last-content'
+	  title: '提交申请',
+	  content: '第三步：提交申请'
 	}];
 	
 	var Demo3 = function (_Component) {
@@ -34972,7 +34998,7 @@
 	  };
 	
 	  Demo3.prototype.alertDone = function alertDone() {
-	    _beeMessage2['default'].create({ content: '完成', color: 'info' });
+	    _beeMessage2['default'].create({ content: '完成', color: 'successlight' });
 	  };
 	
 	  Demo3.prototype.render = function render() {
@@ -35003,7 +35029,7 @@
 	          { type: 'primary', onClick: function onClick() {
 	              return _this2.next();
 	            } },
-	          '\u4E0B\u4E00\u9875'
+	          '\u4E0B\u4E00\u6B65'
 	        ),
 	        this.state.current === steps.length - 1 && _react2['default'].createElement(
 	          _beeButton2['default'],
@@ -35017,7 +35043,7 @@
 	          { style: { marginLeft: 8 }, onClick: function onClick() {
 	              return _this2.prev();
 	            } },
-	          '\u4E0A\u4E00\u9875'
+	          '\u4E0A\u4E00\u6B65'
 	        )
 	      )
 	    );
@@ -35057,8 +35083,8 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); } /**
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               *
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               * @title 垂直的 Step
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               * @description 
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               * @title 竖向的 Step
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               * @description 通过 `direction` API设置步骤条的方向，默认是水平方向 horizontal
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               *
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               */
 	
@@ -35079,10 +35105,10 @@
 	      null,
 	      _react2['default'].createElement(
 	        Steps,
-	        { direction: 'vertical', size: 'small', current: 1 },
-	        _react2['default'].createElement(_src2['default'], { title: 'Finished', description: 'This is a description.' }),
-	        _react2['default'].createElement(_src2['default'], { title: 'In Progress', description: 'This is a description.' }),
-	        _react2['default'].createElement(_src2['default'], { title: 'Waiting', description: 'This is a description.' })
+	        { direction: 'vertical', current: 1 },
+	        _react2['default'].createElement(_src2['default'], { title: '\u5DF2\u5B8C\u6210', description: '\u8FD9\u662F\u4E00\u6BB5\u63CF\u8FF0' }),
+	        _react2['default'].createElement(_src2['default'], { title: '\u8FDB\u884C\u4E2D', description: '\u8FD9\u662F\u4E00\u6BB5\u63CF\u8FF0' }),
+	        _react2['default'].createElement(_src2['default'], { title: '\u672A\u5F00\u59CB', description: '\u8FD9\u662F\u4E00\u6BB5\u63CF\u8FF0' })
 	      )
 	    );
 	  };
@@ -35144,9 +35170,9 @@
 	      _react2['default'].createElement(
 	        Steps,
 	        { current: 1, status: 'error' },
-	        _react2['default'].createElement(_src2['default'], { title: 'Finished', description: 'This is a description' }),
-	        _react2['default'].createElement(_src2['default'], { title: 'In Process', description: 'This is a description' }),
-	        _react2['default'].createElement(_src2['default'], { title: 'Waiting', description: 'This is a description' })
+	        _react2['default'].createElement(_src2['default'], { title: '\u5DF2\u5B8C\u6210', description: '\u8FD9\u662F\u4E00\u6BB5\u63CF\u8FF0' }),
+	        _react2['default'].createElement(_src2['default'], { title: '\u8FDB\u884C\u4E2D', description: '\u8FD9\u662F\u4E00\u6BB5\u63CF\u8FF0' }),
+	        _react2['default'].createElement(_src2['default'], { title: '\u672A\u5F00\u59CB', description: '\u8FD9\u662F\u4E00\u6BB5\u63CF\u8FF0' })
 	      )
 	    );
 	  };
@@ -35190,6 +35216,8 @@
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               *
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               */
 	
+	var Steps = _src2['default'].Steps;
+	
 	var Demo6 = function (_Component) {
 	  _inherits(Demo6, _Component);
 	
@@ -35201,11 +35229,15 @@
 	
 	  Demo6.prototype.render = function render() {
 	    return _react2['default'].createElement(
-	      _src2['default'].Steps,
-	      { current: 1, size: 'small' },
-	      _react2['default'].createElement(_src2['default'], { title: 'Finished', description: 'This is a description.' }),
-	      _react2['default'].createElement(_src2['default'], { title: 'In Progress', description: 'This is a description.' }),
-	      _react2['default'].createElement(_src2['default'], { title: 'Waiting', description: 'This is a description.' })
+	      'div',
+	      null,
+	      _react2['default'].createElement(
+	        Steps,
+	        { current: 1, size: 'small' },
+	        _react2['default'].createElement(_src2['default'], { title: '\u5DF2\u5B8C\u6210', description: '\u8FD9\u662F\u4E00\u6BB5\u63CF\u8FF0' }),
+	        _react2['default'].createElement(_src2['default'], { title: '\u8FDB\u884C\u4E2D', description: '\u8FD9\u662F\u4E00\u6BB5\u63CF\u8FF0' }),
+	        _react2['default'].createElement(_src2['default'], { title: '\u672A\u5F00\u59CB', description: '\u8FD9\u662F\u4E00\u6BB5\u63CF\u8FF0' })
+	      )
 	    );
 	  };
 	

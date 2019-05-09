@@ -17335,6 +17335,10 @@
 	    var filteredDataSource = [];
 	    var totalDataSource = [];
 	    var showItems = dataSource.map(function (item, index) {
+	      if (!item) {
+	        return;
+	      }
+	
 	      var _renderItem = _this4.renderItem(item),
 	          renderedText = _renderItem.renderedText,
 	          renderedEl = _renderItem.renderedEl;

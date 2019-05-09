@@ -1,7 +1,7 @@
 /**
 *
-* @title 垂直的 Step
-* @description 
+* @title 竖向的 Step
+* @description 通过 `direction` API设置步骤条的方向，默认是水平方向 horizontal
 *
 */
 
@@ -14,10 +14,10 @@ class Demo4 extends Component {
   render () {
       return (
         <div>
-          <Steps direction="vertical" size="small" current={1}>
-            <Step title="Finished" description="This is a description." />
-            <Step title="In Progress" description="This is a description." />
-            <Step title="Waiting" description="This is a description." />
+          <Steps direction="vertical"  current={1}>
+            <Step title="已完成" description="这是一段描述" />
+            <Step title="进行中" description="这是一段描述" />
+            <Step title="未开始" description="这是一段描述" />
          </Steps>
         </div>
       )

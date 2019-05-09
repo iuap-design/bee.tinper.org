@@ -137,7 +137,7 @@ class MonthPicker extends Component {
                       this.state.value&&this.state.showClose&&(!props.disabled)?(
                       <InputGroup.Button shape="border" 
                           onClick={this.clear}>
-                          <i className="uf uf-close-c"></i>
+                          { props.closeIcon() }
                       </InputGroup.Button>
                       ):<InputGroup.Button shape="border">
                           { props.renderIcon() }
@@ -154,6 +154,7 @@ class MonthPicker extends Component {
 
 
 MonthPicker.defaultProps = {
+    closeIcon:()=><Icon type="uf-close-c"/>,
     renderIcon: () => <Icon type="uf-calendar" />,
     format:'YYYY-MM',
     showDateInput:true,

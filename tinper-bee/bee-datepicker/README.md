@@ -71,9 +71,11 @@ import "./node_modules/bee-datepicker/build/DatePicker.css"
 | showOk|底边栏是否显示ok按钮| Boolean | auto |
 | onSelect|选择日期的回调函数|Function(date: moment)| - |
 | onChange|日期改变的回调函数|Function(date: moment)| - |
+| onOk|点击确定按钮的回调|Function(date: moment)| - |
 | dateInputPlaceholder|日期的placeholder| String | - |
 | showTime | 是否显示时间选择面板 | Boolean | - |
 | renderIcon |更改默认的图标|Function| () => <Icon type="uf-calendar" />|
+| closeIcon |鼠标划过清空内容的icon|Function| () => <Icon type="uf-close-c" />|
 | getCalendarContainer |更改默认渲染位置|Function| - |
 | keyboardInput |外层输入框是否支持键盘输入|Boolean|false|
 | iconClick |日期按钮点击的回调|Function|-|
@@ -105,6 +107,7 @@ import "./node_modules/bee-datepicker/build/DatePicker.css"
 | dateCellRender|日期的渲染方法|function| - |
 | monthCellContentRender|自定义月份的渲染方法，将被添加渲染内容中| function| - |
 | getCalendarContainer |更改默认渲染位置|Function| - |
+| closeIcon |鼠标划过清空内容的icon|Function| () => <Icon type="uf-close-c" />|
 
 ### RangePicker
 
@@ -132,6 +135,7 @@ import "./node_modules/bee-datepicker/build/DatePicker.css"
 | dateInputPlaceholder|日期的placeholder| String | - |
 | type|是否固定开始或结束选定的值|enum('both','start', 'end')| - |
 | getCalendarContainer |更改默认渲染位置|Function| - |
+| closeIcon |鼠标划过清空内容的icon|Function| () => <Icon type="uf-close-c" />|
 
 ### WeekPicker
 
@@ -140,6 +144,7 @@ import "./node_modules/bee-datepicker/build/DatePicker.css"
 | placeholder|输入框placeholder|String| - |
 | defaultValue|默认值|moment| - |
 | getCalendarContainer |更改默认渲染位置|Function| - |
+| closeIcon |鼠标划过清空内容的icon|Function| () => <Icon type="uf-close-c" />|
 
 ### YearPicker
 
@@ -150,6 +155,7 @@ import "./node_modules/bee-datepicker/build/DatePicker.css"
 | getCalendarContainer |更改默认渲染位置|Function| - |
 | format|日期格式化| String | - |
 | disabled|是否禁用功能|Boolean| false |
+| closeIcon |鼠标划过清空内容的icon|Function| () => <Icon type="uf-close-c" />|
 
 
 

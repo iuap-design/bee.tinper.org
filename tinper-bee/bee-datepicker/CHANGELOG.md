@@ -1,3 +1,13 @@
+<a name="2.0.33"></a>
+## [2.0.33](https://github.com/tinper-bee/bee-datepicker/compare/v2.0.32...v2.0.33) (2019-05-08)
+
+
+### Features
+
+* **bee-datepicker:** 新增 closeIcon |鼠标划过清空内容的icon 内容 ([9c3b643](https://github.com/tinper-bee/bee-datepicker/commit/9c3b643))
+
+
+
 <a name="2.0.32"></a>
 ## [2.0.32](https://github.com/tinper-bee/bee-datepicker/compare/v2.0.31...v2.0.32) (2019-05-05)
 

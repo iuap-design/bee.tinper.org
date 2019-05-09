@@ -99,9 +99,11 @@ function judgeValue(props, oldValue) {
     }
     if (currentValue <= min) {
         currentMinusDisabled = true;
+        currentValue = min;
     }
     if (currentValue >= max) {
         currentPlusDisabled = true;
+        currentValue = max;
     }
 
     if (props.hasOwnProperty('precision')) {

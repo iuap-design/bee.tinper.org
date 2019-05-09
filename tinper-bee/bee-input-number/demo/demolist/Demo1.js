@@ -27,7 +27,7 @@ class Demo1 extends Component {
     render() {
         return (
             <div>
-                <InputNumber  precision={2} min={0} value={this.state.value} onChange={ this.handleChange }/>
+                <InputNumber  precision={2} min={2} value={this.state.value} onChange={ this.handleChange }/>
             </div>
         )
     }
