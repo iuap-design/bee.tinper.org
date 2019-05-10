@@ -76,7 +76,7 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
 	
-	var Demo1 = __webpack_require__(155);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 基本示例", "code": "/**\n *\n * @title 基本示例\n * @description 基本示例\n *\n */\nimport React, { Component } from 'react';\nimport { Anchor } from 'tinper-bee';\n\nclass Demo1 extends Component {\n    constructor(props){\n        super(props);\n        this.state={\n            anthors:[\n                {\n                    href:\"one\",\n                    name:\"RISE\",\n                    content:\" Welcome to the war we've only begun so \\n \"\n                    + \"Pick up your weapon and face it \\n \"\n                    + \"There's blood on the crown go and take it \\n \"\n                    + \"You get one shot to make it out alive so \\n \"\n                    + \"Higher and higher you chase it \\n \"\n                    + \"It's deep in your bones go and take it \\n \"\n                    + \"This is your moment now is your time so \\n \"\n                    + \"Prove yourself and \\n \"\n                    + \"RISE RISE\",\n                },\n                {\n                    href:\"two\",\n                    name:\"Legends\",\n                    content:\" Legends never die when the world is calling you \\n \"\n                    + \"Can you hear them screaming out your name \\n \"\n                    + \"Legends never die they become a part of you \\n \"\n                    + \"Every time you bleed for reaching greatness \\n \"\n                    + \"Relentless you survive \\n \"\n                    + \"They never lose hope when everything's cold and the fighting's near \\n \"\n                    + \"It's deep in their bones they'll run into smoke when the fire is fierce \\n \"\n                    + \"Oh pick yourself up 'cause\"\n                },\n                {\n                    href:\"three\",\n                    name:\"Ignite\",\n                    content:\" There's a fire that burns inside \\n \"\n                    + \"It's an instinct that never lies \\n \"\n                    + \"The target's tattooed between our eyes \\n \"\n                    + \"Stand and fight \\n Under the lights on the high stage \\n \"\n                    + \"A part of your life it can take away \\n \"\n                    + \"Just like the blood running through your veins \\n \"\n                    + \"Everyone's watching through your eyes\"\n                },\n                {\n                    href:\"four\",\n                    name:\"Worlds Collide\",\n                    content:\" Do we fight to hold our heads up high \\n \"\n                    + \"And beat the drum to what we love \\n \"\n                    + \"Risk the fall, oh we have felt it all \\n \"\n                    + \"Come crashing down from far above \\n \"\n                    + \"Stars arising, countless worlds colliding \\n \"\n                    + \"Only one will take it all \\n \"\n                    + \"Can we bring to fall the giants \\n \"\n                    + \"Can we make the final call\"\n                },\n                {\n                    href:\"five\",\n                    name:\"Warriors\",\n                    content:\" As a child, you would wait \\n \"\n                    + \"And watch from far away. \\n \"\n                    + \"But you always knew that you'll be the one \\n \"\n                    + \"that work while they all play. \\n \"\n                    + \"And you, you lay, awake at night and scheme \\n \"\n                    + \"of all the things that you would change \\n \"\n                    + \"but it was just a dream! \\n \"\n                    + \"Here we are, don't turn away now \\n \"\n                    + \"we are the warriors that built this town.\"\n                }\n            ]\n        }\n    }\n    render() {\n        return ( \n            <div className=\"demo1\">  \n                <div className=\"content\">\n                    {\n                        this.state.anthors.map(item=>{\n                            return (\n                                <p id={item.href}>\n                                    <pre>\n                                        {item.content}\n                                    </pre>\n                                </p>\n                            )\n                        })\n                    }\n                </div>\n                <Anchor selector=\"#my-awesome-nav a\">\n                    <ul id=\"my-awesome-nav\" >\n                    {\n                        this.state.anthors.map(item=>{\n                            return (\n                                <li><a href={`#${item.href}`}>{item.name}</a></li>\n                            )\n                        })\n                    }\n                    </ul>\n                </Anchor>\n            </div>\n           \n        )\n    }\n}\n", "desc": " 基本示例", "scss_code": ".demo1{\n    .content{\n        p{\n            height: 500px;\n        }\n        display: inline-block\n    }\n    .u-anchor{\n        display: inline-block;\n    }\n    #my-awesome-nav {\n        position: fixed;\n        top: 200px;\n        right: 300px;\n        li{\n            padding: 0 10px;\n            line-height: 30px;\n            height: 30px;\n            background: #FFF;\n            a{\n                color:#424242;\n            }\n        }\n    }\n    #my-awesome-nav li.active {\n        border-left: 2px solid #E14C46\n    }\n}" }];
+	var Demo1 = __webpack_require__(155);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 基本示例", "code": "/**\n *\n * @title 基本示例\n * @description 基本示例\n *\n */\nimport React, { Component } from 'react';\nimport { Anchor } from 'tinper-bee';\n\nclass Demo1 extends Component {\n    constructor(props){\n        super(props);\n        this.state={\n            anthors:[\n                {\n                    href:\"one\",\n                    name:\"国内要闻\",\n                    content:\" 戏曲进高校玩快闪 “圈粉”大学生 \\n \"\n                    + \"长春年近六旬男子上演花样自行车绝技 \\n \"\n                    + \"民众成都博物馆里享“餐桌上的文化之旅 \\n \"\n                    + \"更大更好吃的海蛎子有望端上青岛市民餐桌！ \\n \"\n                    + \"人民铁道“中央厨房”今日上线 \\n \"\n                    + \"住宅小区的大件垃圾有望得到回收利用 \\n \"\n                    + \"地上忽现大坑 瞬间吞掉两幢房子 \\n \",\n                },\n                {\n                    href:\"two\",\n                    name:\"国际新闻\",\n                    content:\" 一只好莱坞的 巨星猪 是怎么诞生的 \\n \"\n                    + \"追剧听相声玩手游 “歪果仁”为了学汉语也是拼了 \\n \"\n                    + \"一等奖得主齐现身 领奖不忘捐款献爱心 \\n \"\n                    + \"他或是安倍唯一不敢反对的男人！ \\n \"\n                    + \"美男摔落悬崖掉进活火山，躲过摄氏超过1000度 \\n \"\n                    + \"苏格兰媒体：凯尔特人没有向穆里尼奥开出邀约 \\n \"\n                    + \"青少年手机成瘾危害大 各国政府纷纷出招应对 \\n \",\n                },\n                {\n                    href:\"three\",\n                    name:\"财经\",\n                    content:\" 最低工资标准上调窗口开启 京鲁冀等多个省市 \\n \"\n                    + \"「重磅发布」2019年欧洲十大海上风电场排行榜！ \\n \"\n                    + \"又一80后上市公司实控人被刑拘！ \\n \"\n                    + \"五月种菜大全来了，这些蔬菜您种了没有？ \\n \"\n                    + \"记住这个落井之人 \\n \"\n                    + \"测绘准入放宽在即，新玩家新规则倒逼产业转型 \\n \"\n                    + \"回顾20年前A股那场轰轰烈烈的“519行情”\"\n                },\n                {\n                    href:\"four\",\n                    name:\"互联网\",\n                    content:\" 光明日报头版：读懂中国经济的巨大韧性 \\n \"\n                    + \"那些还在发朋友圈的朋友们，才是人间珍品 \\n \"\n                    + \"电商平台不该为“代吵架服务”设摊 \\n \"\n                    + \"《从0到1》序二——读书笔记 \\n \"\n                    + \"投资2000万美元狂赚7000倍 \\n \"\n                    + \"五一消费账单来了！这个小长假，你的钱花哪了？ \\n \"\n                    + \"让数字经济更好助力高质量发展 \\n \"\n                    + \"「评论」“小降准”的大意义\"\n                },\n                {\n                    href:\"five\",\n                    name:\"房产\",\n                    content:\" 智慧城市建设莫一哄而上 \\n \"\n                    + \"二手房产权纠纷有哪些？ \\n \"\n                    + \"如何降低购房风险？ \\n \"\n                    + \"哪些城市亮瞎眼，哪些城市很失落 \\n \"\n                    + \"北京项目近况一览 \\n \"\n                    + \"当初没好好装卫生间 现在后悔死了 \\n \"\n                    + \"小户型榻榻米的制作流程 这样准没错 \\n \"\n                    + \"如何解决室内干燥 一个加湿器是不行的 \\n \"\n                    + \"新风系统有没有用 到底要不要装呢\"\n                },\n                {\n                    href:\"six\",\n                    name:\"汽车\",\n                    content:\" 15万预算，适合年轻人的2台运动轿车，颜值高实力强 \\n \"\n                    + \"牌子大口碑好销量还高，12万左右的自动挡合资轿车 \\n \"\n                    + \"大众系SUV多到脸盲？一招教你如何选 \\n \"\n                    + \"一季度轿车市场分析 \\n \"\n                    + \"网友偶遇贴特大号“实习”标志的豪车 \\n \"\n                    + \"要想涡轮坏得快，这四个错误天天犯！ \\n \"\n                    + \"汽车保养只换机油，4个零件要是不换的 \\n \"\n                    + \"去4S店“首保”，这3个细节要注意 \\n \"\n                    + \"最均衡国产10万元SUV推荐\"\n                },\n            ]\n        }\n    }\n    render() {\n        return ( \n            <div className=\"demo1\">  \n                <div className=\"content\">\n                    {\n                        this.state.anthors.map(item=>{\n                            return (\n                                <p style={{'paddingTop':'100px'}} id={item.href}> \n                                    <pre >\n                                        {item.content}\n                                    </pre>\n                                </p>\n                            )\n                        })\n                    }\n                </div>\n                <Anchor selector=\"#my-awesome-nav a\" offset='100px'>\n                    <ul id=\"my-awesome-nav\" >\n                    {\n                        this.state.anthors.map(item=>{\n                            return (\n                                <li><a href={`#${item.href}`}>{item.name}</a></li>\n                            )\n                        })\n                    }\n                    </ul>\n                </Anchor>\n            </div>\n           \n        )\n    }\n}\n", "desc": " 基本示例", "scss_code": ".demo1{\n    .content{\n        p{\n            height: 500px;\n        }\n        display: inline-block\n    }\n    .u-anchor{\n        display: inline-block;\n    }\n    #my-awesome-nav {\n        position: fixed;\n        top: 200px;\n        right: 300px;\n        li{\n            padding: 0 10px;\n            line-height: 30px;\n            height: 30px;\n            background: #FFF;\n            a{\n                color:#424242;\n            }\n        }\n    }\n    #my-awesome-nav li.active {\n        border-left: 2px solid #E14C46\n    }\n}" }];
 	
 	var Demo = function (_Component) {
 	    _inherits(Demo, _Component);
@@ -7546,20 +7546,28 @@
 /* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 	
 	var deselectCurrent = __webpack_require__(79);
 	
-	var defaultMessage = 'Copy to clipboard: #{key}, Enter';
+	var defaultMessage = "Copy to clipboard: #{key}, Enter";
 	
 	function format(message) {
-	  var copyKey = (/mac os x/i.test(navigator.userAgent) ? '⌘' : 'Ctrl') + '+C';
+	  var copyKey = (/mac os x/i.test(navigator.userAgent) ? "⌘" : "Ctrl") + "+C";
 	  return message.replace(/#{\s*key\s*}/g, copyKey);
 	}
 	
 	function copy(text, options) {
-	  var debug, message, reselectPrevious, range, selection, mark, success = false;
-	  if (!options) { options = {}; }
+	  var debug,
+	    message,
+	    reselectPrevious,
+	    range,
+	    selection,
+	    mark,
+	    success = false;
+	  if (!options) {
+	    options = {};
+	  }
 	  debug = options.debug || false;
 	  try {
 	    reselectPrevious = deselectCurrent();
@@ -7567,47 +7575,50 @@
 	    range = document.createRange();
 	    selection = document.getSelection();
 	
-	    mark = document.createElement('span');
+	    mark = document.createElement("span");
 	    mark.textContent = text;
 	    // reset user styles for span element
-	    mark.style.all = 'unset';
+	    mark.style.all = "unset";
 	    // prevents scrolling to the end of the page
-	    mark.style.position = 'fixed';
+	    mark.style.position = "fixed";
 	    mark.style.top = 0;
-	    mark.style.clip = 'rect(0, 0, 0, 0)';
+	    mark.style.clip = "rect(0, 0, 0, 0)";
 	    // used to preserve spaces and line breaks
-	    mark.style.whiteSpace = 'pre';
+	    mark.style.whiteSpace = "pre";
 	    // do not inherit user-select (it may be `none`)
-	    mark.style.webkitUserSelect = 'text';
-	    mark.style.MozUserSelect = 'text';
-	    mark.style.msUserSelect = 'text';
-	    mark.style.userSelect = 'text';
+	    mark.style.webkitUserSelect = "text";
+	    mark.style.MozUserSelect = "text";
+	    mark.style.msUserSelect = "text";
+	    mark.style.userSelect = "text";
+	    mark.addEventListener("copy", function(e) {
+	      e.stopPropagation();
+	    });
 	
 	    document.body.appendChild(mark);
 	
-	    range.selectNode(mark);
+	    range.selectNodeContents(mark);
 	    selection.addRange(range);
 	
-	    var successful = document.execCommand('copy');
+	    var successful = document.execCommand("copy");
 	    if (!successful) {
-	      throw new Error('copy command was unsuccessful');
+	      throw new Error("copy command was unsuccessful");
 	    }
 	    success = true;
 	  } catch (err) {
-	    debug && console.error('unable to copy using execCommand: ', err);
-	    debug && console.warn('trying IE specific stuff');
+	    debug && console.error("unable to copy using execCommand: ", err);
+	    debug && console.warn("trying IE specific stuff");
 	    try {
-	      window.clipboardData.setData('text', text);
+	      window.clipboardData.setData("text", text);
 	      success = true;
 	    } catch (err) {
-	      debug && console.error('unable to copy using clipboardData: ', err);
-	      debug && console.error('falling back to prompt');
-	      message = format('message' in options ? options.message : defaultMessage);
+	      debug && console.error("unable to copy using clipboardData: ", err);
+	      debug && console.error("falling back to prompt");
+	      message = format("message" in options ? options.message : defaultMessage);
 	      window.prompt(message, text);
 	    }
 	  } finally {
 	    if (selection) {
-	      if (typeof selection.removeRange == 'function') {
+	      if (typeof selection.removeRange == "function") {
 	        selection.removeRange(range);
 	      } else {
 	        selection.removeAllRanges();
@@ -16451,24 +16462,28 @@
 	        _this.state = {
 	            anthors: [{
 	                href: "one",
-	                name: "RISE",
-	                content: " Welcome to the war we've only begun so \n " + "Pick up your weapon and face it \n " + "There's blood on the crown go and take it \n " + "You get one shot to make it out alive so \n " + "Higher and higher you chase it \n " + "It's deep in your bones go and take it \n " + "This is your moment now is your time so \n " + "Prove yourself and \n " + "RISE RISE"
+	                name: "国内要闻",
+	                content: " 戏曲进高校玩快闪 “圈粉”大学生 \n " + "长春年近六旬男子上演花样自行车绝技 \n " + "民众成都博物馆里享“餐桌上的文化之旅 \n " + "更大更好吃的海蛎子有望端上青岛市民餐桌！ \n " + "人民铁道“中央厨房”今日上线 \n " + "住宅小区的大件垃圾有望得到回收利用 \n " + "地上忽现大坑 瞬间吞掉两幢房子 \n "
 	            }, {
 	                href: "two",
-	                name: "Legends",
-	                content: " Legends never die when the world is calling you \n " + "Can you hear them screaming out your name \n " + "Legends never die they become a part of you \n " + "Every time you bleed for reaching greatness \n " + "Relentless you survive \n " + "They never lose hope when everything's cold and the fighting's near \n " + "It's deep in their bones they'll run into smoke when the fire is fierce \n " + "Oh pick yourself up 'cause"
+	                name: "国际新闻",
+	                content: " 一只好莱坞的 巨星猪 是怎么诞生的 \n " + "追剧听相声玩手游 “歪果仁”为了学汉语也是拼了 \n " + "一等奖得主齐现身 领奖不忘捐款献爱心 \n " + "他或是安倍唯一不敢反对的男人！ \n " + "美男摔落悬崖掉进活火山，躲过摄氏超过1000度 \n " + "苏格兰媒体：凯尔特人没有向穆里尼奥开出邀约 \n " + "青少年手机成瘾危害大 各国政府纷纷出招应对 \n "
 	            }, {
 	                href: "three",
-	                name: "Ignite",
-	                content: " There's a fire that burns inside \n " + "It's an instinct that never lies \n " + "The target's tattooed between our eyes \n " + "Stand and fight \n Under the lights on the high stage \n " + "A part of your life it can take away \n " + "Just like the blood running through your veins \n " + "Everyone's watching through your eyes"
+	                name: "财经",
+	                content: " 最低工资标准上调窗口开启 京鲁冀等多个省市 \n " + "「重磅发布」2019年欧洲十大海上风电场排行榜！ \n " + "又一80后上市公司实控人被刑拘！ \n " + "五月种菜大全来了，这些蔬菜您种了没有？ \n " + "记住这个落井之人 \n " + "测绘准入放宽在即，新玩家新规则倒逼产业转型 \n " + "回顾20年前A股那场轰轰烈烈的“519行情”"
 	            }, {
 	                href: "four",
-	                name: "Worlds Collide",
-	                content: " Do we fight to hold our heads up high \n " + "And beat the drum to what we love \n " + "Risk the fall, oh we have felt it all \n " + "Come crashing down from far above \n " + "Stars arising, countless worlds colliding \n " + "Only one will take it all \n " + "Can we bring to fall the giants \n " + "Can we make the final call"
+	                name: "互联网",
+	                content: " 光明日报头版：读懂中国经济的巨大韧性 \n " + "那些还在发朋友圈的朋友们，才是人间珍品 \n " + "电商平台不该为“代吵架服务”设摊 \n " + "《从0到1》序二——读书笔记 \n " + "投资2000万美元狂赚7000倍 \n " + "五一消费账单来了！这个小长假，你的钱花哪了？ \n " + "让数字经济更好助力高质量发展 \n " + "「评论」“小降准”的大意义"
 	            }, {
 	                href: "five",
-	                name: "Warriors",
-	                content: " As a child, you would wait \n " + "And watch from far away. \n " + "But you always knew that you'll be the one \n " + "that work while they all play. \n " + "And you, you lay, awake at night and scheme \n " + "of all the things that you would change \n " + "but it was just a dream! \n " + "Here we are, don't turn away now \n " + "we are the warriors that built this town."
+	                name: "房产",
+	                content: " 智慧城市建设莫一哄而上 \n " + "二手房产权纠纷有哪些？ \n " + "如何降低购房风险？ \n " + "哪些城市亮瞎眼，哪些城市很失落 \n " + "北京项目近况一览 \n " + "当初没好好装卫生间 现在后悔死了 \n " + "小户型榻榻米的制作流程 这样准没错 \n " + "如何解决室内干燥 一个加湿器是不行的 \n " + "新风系统有没有用 到底要不要装呢"
+	            }, {
+	                href: "six",
+	                name: "汽车",
+	                content: " 15万预算，适合年轻人的2台运动轿车，颜值高实力强 \n " + "牌子大口碑好销量还高，12万左右的自动挡合资轿车 \n " + "大众系SUV多到脸盲？一招教你如何选 \n " + "一季度轿车市场分析 \n " + "网友偶遇贴特大号“实习”标志的豪车 \n " + "要想涡轮坏得快，这四个错误天天犯！ \n " + "汽车保养只换机油，4个零件要是不换的 \n " + "去4S店“首保”，这3个细节要注意 \n " + "最均衡国产10万元SUV推荐"
 	            }]
 	        };
 	        return _this;
@@ -16484,7 +16499,7 @@
 	                this.state.anthors.map(function (item) {
 	                    return _react2['default'].createElement(
 	                        'p',
-	                        { id: item.href },
+	                        { style: { 'paddingTop': '100px' }, id: item.href },
 	                        _react2['default'].createElement(
 	                            'pre',
 	                            null,
@@ -16495,7 +16510,7 @@
 	            ),
 	            _react2['default'].createElement(
 	                _src2['default'],
-	                { selector: '#my-awesome-nav a' },
+	                { selector: '#my-awesome-nav a', offset: '100px' },
 	                _react2['default'].createElement(
 	                    'ul',
 	                    { id: 'my-awesome-nav' },
@@ -16680,8 +16695,8 @@
 /* 158 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(global) {/*! gumshoejs v5.1.0 | (c) 2019 Chris Ferdinandi | MIT License | http://github.com/cferdinandi/gumshoe */
-	!(function(t,e){ true?!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function(){return e(t)}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)):"object"==typeof exports?module.exports=e(t):t.Gumshoe=e(t)})("undefined"!=typeof global?global:"undefined"!=typeof window?window:this,(function(t){"use strict";var e={navClass:"active",contentClass:"active",nested:!1,nestedClass:"active",offset:0,reflow:!1,events:!0},n=function(t,e,n){if(n.settings.events){var o=new CustomEvent(t,{bubbles:!0,cancelable:!0,detail:n});e.dispatchEvent(o)}},o=function(t){var e=0;if(t.offsetParent)for(;t;)e+=t.offsetTop,t=t.offsetParent;return e>=0?e:0},s=function(t){t.sort((function(t,e){return o(t.content)<o(e.content)?-1:1}))},c=function(e,n,o){var s=e.getBoundingClientRect(),c=(function(t){return"function"==typeof t.offset?parseFloat(t.offset()):parseFloat(t.offset)})(n);return o?parseInt(s.bottom,10)<(t.innerHeight||document.documentElement.clientHeight):parseInt(s.top,10)<=c},i=function(){return t.innerHeight+t.pageYOffset>=Math.max(document.body.scrollHeight,document.documentElement.scrollHeight,document.body.offsetHeight,document.documentElement.offsetHeight,document.body.clientHeight,document.documentElement.clientHeight)},r=function(t,e){var n=t[t.length-1];if(function(t,e){return!(!i()||!c(t.content,e,!0))}(n,e))return n;for(var o=t.length-1;o>=0;o--)if(c(t[o].content,e))return t[o]},a=function(t,e){if(e.nested){var n=t.parentNode.closest("li");n&&(n.classList.remove(e.nestedClass),a(n,e))}},l=function(t,e){if(t){var o=t.nav.closest("li");o&&(o.classList.remove(e.navClass),t.content.classList.remove(e.contentClass),a(o,e),n("gumshoeDeactivate",o,{link:t.nav,content:t.content,settings:e}))}},u=function(t,e){if(e.nested){var n=t.parentNode.closest("li");n&&(n.classList.add(e.nestedClass),u(n,e))}};return function(o,c){var i,a,f,d,v,m={};m.setup=function(){i=document.querySelectorAll(o),a=[],Array.prototype.forEach.call(i,(function(t){var e=document.getElementById(decodeURIComponent(t.hash.substr(1)));e&&a.push({nav:t,content:e})})),s(a)},m.detect=function(){var t=r(a,v);t?f&&t.content===f.content||(l(f,v),(function(t,e){if(t){var o=t.nav.closest("li");o&&(o.classList.add(e.navClass),t.content.classList.add(e.contentClass),u(o,e),n("gumshoeActivate",o,{link:t.nav,content:t.content,settings:e}))}})(t,v),f=t):f&&(l(f,v),f=null)};var p=function(e){d&&t.cancelAnimationFrame(d),d=t.requestAnimationFrame(m.detect)},h=function(e){d&&t.cancelAnimationFrame(d),d=t.requestAnimationFrame((function(){s(),m.detect()}))};m.destroy=function(){f&&l(f),t.removeEventListener("scroll",p,!1),v.reflow&&t.removeEventListener("resize",h,!1),a=null,i=null,f=null,d=null,v=null};return v=(function(){var t={};return Array.prototype.forEach.call(arguments,(function(e){for(var n in e){if(!e.hasOwnProperty(n))return;t[n]=e[n]}})),t})(e,c||{}),m.setup(),m.detect(),t.addEventListener("scroll",p,!1),v.reflow&&t.addEventListener("resize",h,!1),m}}));
+	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(global) {/*! gumshoejs v5.1.1 | (c) 2019 Chris Ferdinandi | MIT License | http://github.com/cferdinandi/gumshoe */
+	!(function(t,e){ true?!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function(){return e(t)}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)):"object"==typeof exports?module.exports=e(t):t.Gumshoe=e(t)})("undefined"!=typeof global?global:"undefined"!=typeof window?window:this,(function(t){"use strict";var e={navClass:"active",contentClass:"active",nested:!1,nestedClass:"active",offset:0,reflow:!1,events:!0},n=function(t,e,n){if(n.settings.events){var o=new CustomEvent(t,{bubbles:!0,cancelable:!0,detail:n});e.dispatchEvent(o)}},o=function(t){var e=0;if(t.offsetParent)for(;t;)e+=t.offsetTop,t=t.offsetParent;return e>=0?e:0},s=function(t){t&&t.sort((function(t,e){return o(t.content)<o(e.content)?-1:1}))},c=function(e,n,o){var s=e.getBoundingClientRect(),c=(function(t){return"function"==typeof t.offset?parseFloat(t.offset()):parseFloat(t.offset)})(n);return o?parseInt(s.bottom,10)<(t.innerHeight||document.documentElement.clientHeight):parseInt(s.top,10)<=c},i=function(){return t.innerHeight+t.pageYOffset>=Math.max(document.body.scrollHeight,document.documentElement.scrollHeight,document.body.offsetHeight,document.documentElement.offsetHeight,document.body.clientHeight,document.documentElement.clientHeight)},r=function(t,e){var n=t[t.length-1];if(function(t,e){return!(!i()||!c(t.content,e,!0))}(n,e))return n;for(var o=t.length-1;o>=0;o--)if(c(t[o].content,e))return t[o]},a=function(t,e){if(e.nested){var n=t.parentNode.closest("li");n&&(n.classList.remove(e.nestedClass),a(n,e))}},l=function(t,e){if(t){var o=t.nav.closest("li");o&&(o.classList.remove(e.navClass),t.content.classList.remove(e.contentClass),a(o,e),n("gumshoeDeactivate",o,{link:t.nav,content:t.content,settings:e}))}},u=function(t,e){if(e.nested){var n=t.parentNode.closest("li");n&&(n.classList.add(e.nestedClass),u(n,e))}};return function(o,c){var i,a,f,d,v,m={};m.setup=function(){i=document.querySelectorAll(o),a=[],Array.prototype.forEach.call(i,(function(t){var e=document.getElementById(decodeURIComponent(t.hash.substr(1)));e&&a.push({nav:t,content:e})})),s(a)},m.detect=function(){var t=r(a,v);t?f&&t.content===f.content||(l(f,v),(function(t,e){if(t){var o=t.nav.closest("li");o&&(o.classList.add(e.navClass),t.content.classList.add(e.contentClass),u(o,e),n("gumshoeActivate",o,{link:t.nav,content:t.content,settings:e}))}})(t,v),f=t):f&&(l(f,v),f=null)};var p=function(e){d&&t.cancelAnimationFrame(d),d=t.requestAnimationFrame(m.detect)},h=function(e){d&&t.cancelAnimationFrame(d),d=t.requestAnimationFrame((function(){s(a),m.detect()}))};m.destroy=function(){f&&l(f,v),t.removeEventListener("scroll",p,!1),v.reflow&&t.removeEventListener("resize",h,!1),a=null,i=null,f=null,d=null,v=null};return v=(function(){var t={};return Array.prototype.forEach.call(arguments,(function(e){for(var n in e){if(!e.hasOwnProperty(n))return;t[n]=e[n]}})),t})(e,c||{}),m.setup(),m.detect(),t.addEventListener("scroll",p,!1),v.reflow&&t.addEventListener("resize",h,!1),m}}));
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ })

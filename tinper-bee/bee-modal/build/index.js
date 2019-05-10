@@ -45,7 +45,7 @@ _Modal2["default"].success = function (props) {
 _Modal2["default"].error = function (props) {
     var config = _extends({
         type: 'error',
-        icon: _react2["default"].createElement(_beeIcon2["default"], { type: 'uf-close-bold' }),
+        icon: _react2["default"].createElement(_beeIcon2["default"], { type: 'uf-exc-c' }),
         okCancel: false
     }, props);
     return (0, _confirm2["default"])(config);

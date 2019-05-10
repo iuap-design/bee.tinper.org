@@ -15,10 +15,10 @@ class Demo5 extends Component {
       return (
         <div>
           <Steps current={1} status="error">
-            <Step title="Finished" description="This is a description" />
-            <Step title="In Process" description="This is a description" />
-            <Step title="Waiting" description="This is a description" />
-        </Steps>
+            <Step title="已完成" description="这是一段描述" />
+            <Step title="进行中" description="这是一段描述" />
+            <Step title="未开始" description="这是一段描述" />
+          </Steps>
         </div>
       )
   }

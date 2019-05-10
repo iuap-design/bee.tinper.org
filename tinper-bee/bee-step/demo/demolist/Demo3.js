@@ -13,14 +13,14 @@ import Step from '../../src';
 const Steps = Step.Steps;
 
 const steps = [{
-  title: 'First',
-  content: 'First-content',
+  title: '填写申请信息',
+  content: '第一步：填写申请信息',
 }, {
-  title: 'Second',
-  content: 'Second-content',
+  title: '上传资料',
+  content: '第二步：上传资料',
 }, {
-  title: 'Last',
-  content: 'Last-content',
+  title: '提交申请',
+  content: '第三步：提交申请',
 }];
 
 class Demo3 extends Component {
@@ -40,7 +40,7 @@ class Demo3 extends Component {
   }
 
   alertDone() {
-    Message.create({content: '完成', color: 'info'});
+    Message.create({content: '完成', color: 'successlight'});
   }
 
   render() {
@@ -55,7 +55,7 @@ class Demo3 extends Component {
           {
             this.state.current < steps.length - 1
             &&
-            <Button type="primary" onClick={() => this.next()}>下一页</Button>
+            <Button type="primary" onClick={() => this.next()}>下一步</Button>
           }
           {
             this.state.current === steps.length - 1
@@ -66,7 +66,7 @@ class Demo3 extends Component {
             this.state.current > 0
             &&
             <Button style={{ marginLeft: 8 }} onClick={() => this.prev()}>
-              上一页
+              上一步
             </Button>
           }
         </div>

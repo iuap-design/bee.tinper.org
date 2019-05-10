@@ -1,3 +1,13 @@
+<a name="2.0.1"></a>
+## [2.0.1](https://github.com/tinper-bee/bee-step/compare/v2.0.0...v2.0.1) (2019-05-10)
+
+
+
+<a name="2.0.0"></a>
+# [2.0.0](https://github.com/tinper-bee/bee-step/compare/v1.1.0...v2.0.0) (2019-03-01)
+
+
+
 <a name="1.1.0"></a>
 # [1.1.0](https://github.com/tinper-bee/bee-step/compare/v1.0.3...v1.1.0) (2018-11-13)
 

@@ -26,7 +26,7 @@ Modal.success = function(props) {
 Modal.error = function(props) {
     const config = {
         type: 'error',
-        icon: <Icon type="uf-close-bold" />,
+        icon: <Icon type="uf-exc-c" />,
         okCancel: false,
         ...props,
     };

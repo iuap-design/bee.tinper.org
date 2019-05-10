@@ -152,7 +152,7 @@ var YearPicker = function (_Component) {
                             _beeInputGroup2["default"].Button,
                             { shape: "border",
                                 onClick: _this2.clear },
-                            _react2["default"].createElement("i", { className: "uf uf-close-c" })
+                            props.closeIcon()
                         ) : _react2["default"].createElement(
                             _beeInputGroup2["default"].Button,
                             { shape: "border" },
@@ -253,6 +253,9 @@ var _initialiseProps = function _initialiseProps() {
 };
 
 YearPicker.defaultProps = {
+    closeIcon: function closeIcon() {
+        return _react2["default"].createElement(_beeIcon2["default"], { type: "uf-close-c" });
+    },
     renderIcon: function renderIcon() {
         return _react2["default"].createElement(_beeIcon2["default"], { type: "uf-calendar" });
     },

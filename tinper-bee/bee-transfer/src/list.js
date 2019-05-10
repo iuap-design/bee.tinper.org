@@ -165,6 +165,7 @@ class TransferList extends React.Component {
     const filteredDataSource = [];
     const totalDataSource = [];
     const showItems = dataSource.map((item,index) => {
+      if(!item){return}
       const { renderedText, renderedEl } = this.renderItem(item);
       if (filter && filter.trim() && !this.matchFilter(renderedText, item)) {
         return null;
