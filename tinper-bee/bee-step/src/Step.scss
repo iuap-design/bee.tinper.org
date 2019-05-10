@@ -405,13 +405,9 @@
         left: 16px;
         top: 0;
         height: 100%;
-        // height: calc(100% - 46px);
         width: 1px;
         padding: 38px 0 6px;
     }
-    // &.u-steps-small>.u-steps-item>.u-steps-item-tail{
-    //     height: calc(100% - 38px);
-    // }
 }
 
 .u-steps-vertical>.u-steps-item>.u-steps-item-tail:after {

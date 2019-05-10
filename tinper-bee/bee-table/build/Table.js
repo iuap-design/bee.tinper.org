@@ -851,7 +851,9 @@ var Table = function (_Component) {
         rowDraggAble: this.props.rowDraggAble,
         onDragRow: this.onDragRow,
         contentTable: this.contentTable,
-        tableUid: this.tableUid
+        tableUid: this.tableUid,
+        expandedIcon: props.expandedIcon,
+        collapsedIcon: props.collapsedIcon
       })));
       this.treeRowIndex++;
       var subVisible = visible && isRowExpanded;
@@ -1114,8 +1116,7 @@ var Table = function (_Component) {
             onTouchStart: this.detectScrollTarget,
             onScroll: this.handleBodyScroll
           },
-          renderTable(!useFixedHeader),
-          _react2["default"].createElement('div', { className: 'scroll-dom', style: { height: this.scrollbarWidth + 'px' } })
+          renderTable(!useFixedHeader)
         )
       );
     }
