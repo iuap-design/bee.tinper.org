@@ -119,8 +119,8 @@ import "./node_modules/bee-datepicker/build/DatePicker.css"
 |dateRender|日期表格|(current, value) => React.Node| - |
 |renderSidebar|侧边栏|() => React.Node| - |
 |renderFooter|扩展底边栏|() => React.Node| - |
-| selectedValue|当前选中的区间|moment[]| - |
-| defaultSelectedValue|默认选中的区间|	moment[]| - |
+| value|当前选中的区间|moment[]| - |
+| defaultValue|默认选中的区间|	moment[]| - |
 | locale|日历的语言 | Object |en_US |
 | format|日期格式化| String | - |
 | disabledDate |禁用的日期|Function(current:moment):Boolean| - |

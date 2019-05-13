@@ -142,7 +142,6 @@ var Dropdown = function (_React$Component) {
 
     return _react2["default"].cloneElement(overlay, {
       prefixCls: clsPrefix + '-menu',
-      clsPrefix: clsPrefix + '-menu',
       onClick: this.onClick
     });
   };

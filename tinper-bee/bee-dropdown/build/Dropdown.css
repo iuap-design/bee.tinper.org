@@ -89,15 +89,15 @@
         cursor: pointer; }
       .u-dropdown-menu > .u-dropdown-menu-item-selected {
         color: rgb(245, 60, 50);
-        background-color: rgb(247,247,247);
+        background-color: rgb(255, 247, 231);
         position: relative; }
         .u-dropdown-menu > .u-dropdown-menu-item-selected:hover {
-          background-color: rgb(247,247,247); }
+          background-color: rgb(255, 247, 231); }
       .u-dropdown-menu > .u-dropdown-menu-item-disabled {
-        color: rgb(189,189,189);
+        color: #909090;
         cursor: not-allowed; }
         .u-dropdown-menu > .u-dropdown-menu-item-disabled:hover {
-          color: rgb(189,189,189);
+          color: #909090;
           background-color: #fff;
           cursor: not-allowed; }
       .u-dropdown-menu > .u-dropdown-menu-item:last-child {
@@ -125,9 +125,9 @@
           background: rgb(235, 236, 240); }
         .u-dropdown-menu-item-group-list > .u-dropdown-menu-item-selected {
           color: rgb(245, 60, 50);
-          background: rgb(247,247,247); }
+          background: rgb(255, 247, 231); }
           .u-dropdown-menu-item-group-list > .u-dropdown-menu-item-selected:hover {
-            background: rgb(247,247,247); }
+            background: rgb(255, 247, 231); }
     .u-dropdown-menu-vertical .u-dropdown-menu {
       top: 0;
       position: absolute;

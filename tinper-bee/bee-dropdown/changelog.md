@@ -1,3 +1,13 @@
+<a name="2.0.6"></a>
+## [2.0.6](https://github.com/tinper-bee/bee-dropdown/compare/v2.0.5...v2.0.6) (2019-05-13)
+
+
+### Bug Fixes
+
+* **bee-dropdown:** 去掉clsPrefix警告 ([4b4f8cc](https://github.com/tinper-bee/bee-dropdown/commit/4b4f8cc))
+
+
+
 <a name="2.0.5"></a>
 ## [2.0.5](https://github.com/tinper-bee/bee-dropdown/compare/v2.0.4...v2.0.5) (2019-04-29)
 
