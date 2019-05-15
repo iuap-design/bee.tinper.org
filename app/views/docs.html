@@ -40,7 +40,7 @@
     }
     let cookie = this.getCookie(window.tinperCookieId);
     if(cookie){
-        document.getElementById("tinper-bee-csslink").href = (window.tinperCdnUrl+cookie);
+        // document.getElementById("tinper-bee-csslink").href = (window.tinperCdnUrl+cookie);
     }
     window.addEventListener("message", function( event ) {
         console.log("tinper.bee.org message: ",event.data);
