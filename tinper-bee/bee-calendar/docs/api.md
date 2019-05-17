@@ -4,10 +4,8 @@
 当数据是日期或按照日期划分时，例如日程、课表、价格日历等，农历等。目前支持年/月切换。
 
 ## 如何使用
-```
-import { Calendar } from 'tinper-bee/lib/Calendar';
 
-or
+```
 
 import Calendar from 'bee-calendar';
 import bee-calendar/build/Calendar.css;

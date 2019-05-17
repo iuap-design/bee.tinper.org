@@ -1,13 +1,12 @@
 # 图片查看器 Viewer
 
 ## 何时使用
+
 图片查看器
 
 ## 如何使用
-```
-import { Viewer } from 'tinper-bee';
 
-or
+```
 
 import Viewer from 'bee-viewer';
 import 'bee-viewer/build/Viewer.css';

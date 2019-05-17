@@ -126,8 +126,9 @@ var RangePicker = function (_Component) {
             locale: props.locale || _zh_CN2["default"],
             onChange: this.onChange,
             disabledDate: props.disabledDate,
-            showClear: props.showClear || false,
-            showOk: props.showOk || true,
+            showClear: props.showClear,
+            showOk: props.showOk,
+            showToday: props.showToday,
             renderFooter: props.renderFooter
         });
 
@@ -263,7 +264,10 @@ RangePicker.defaultProps = {
     renderIcon: function renderIcon() {
         return _react2["default"].createElement(_beeIcon2["default"], { type: "uf-calendar" });
     },
-    locale: _zh_CN2["default"]
+    locale: _zh_CN2["default"],
+    showClear: true,
+    showToday: true,
+    showOk: true
 };
 
 exports["default"] = RangePicker;

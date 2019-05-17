@@ -1,3 +1,13 @@
+<a name="2.0.34"></a>
+## [2.0.34](https://github.com/tinper-bee/bee-datepicker/compare/v2.0.33...v2.0.34) (2019-05-17)
+
+
+### Features
+
+* **bee-datepicker:** rangepicker新增 showOk  showToday 功能 ([2f1253b](https://github.com/tinper-bee/bee-datepicker/commit/2f1253b))
+
+
+
 <a name="2.0.33"></a>
 ## [2.0.33](https://github.com/tinper-bee/bee-datepicker/compare/v2.0.32...v2.0.33) (2019-05-08)
 

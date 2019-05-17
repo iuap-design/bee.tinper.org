@@ -5,10 +5,6 @@
 
 ## 如何使用
 ```
-import Dnd from "tinper-bee/lib/Dnd";
-
-or
-
 import Dnd from 'bee-dnd';
 import 'bee-dnd/build/Dnd.css';
 
