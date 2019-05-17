@@ -12,18 +12,20 @@
     <meta name="keywords" content="react, UI, framework">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="renderer" content="webkit">
-    <link rel="icon" href="//design.yonyoucloud.com/static/tinper-bee/images/favicon.png" type="image/png" sizes="16x16">
-    <link rel="stylesheet" href="//design.yonyoucloud.com/static/highlight/9.15.6/default.min.css"> 
-    <link id="tinper-bee-csslink" href="//design.yonyoucloud.com/static/tinper-bee/alpha/assets/tinper-bee.css" rel="stylesheet" media="screen" />
-    <link rel="stylesheet" href="//design.yonyoucloud.com/static/docSearch/docsearch.min.css" /> 
-    <link rel="stylesheet" href="./css/atom-one-dark.css" type="text/css"/>
-    <link rel="stylesheet" href="./css/layout.css" type="text/css"/>
-    <link rel="stylesheet" href="./css/narbar.css" type="text/css"/>
-    <link rel="stylesheet" href="./css/sidebar.css" type="text/css"/>
-    <link rel="stylesheet" href="./css/docs.css" type="text/css"/>
-    <link rel="stylesheet" href="./css/footer.css" type="text/css"/>
-    <link rel="stylesheet" href="./css/rightMenus.css" type="text/css"/>
-    <script type="text/javascript" src="//design.yonyoucloud.com/static/tinper-bee/js/yonyou-yyy.js"></script> 
+    <link rel="icon" href="//design.yonyoucloud.com/static/tinper-bee/images/favicon.png" type="image/png"
+        sizes="16x16">
+    <link rel="stylesheet" href="//design.yonyoucloud.com/static/highlight/9.15.6/default.min.css">
+    <link id="tinper-bee-csslink" href="//design.yonyoucloud.com/static/tinper-bee/alpha/assets/tinper-bee.css"
+        rel="stylesheet" media="screen" />
+    <link rel="stylesheet" href="//design.yonyoucloud.com/static/docSearch/docsearch.min.css" />
+    <link rel="stylesheet" href="./css/atom-one-dark.css" type="text/css" />
+    <link rel="stylesheet" href="./css/layout.css" type="text/css" />
+    <link rel="stylesheet" href="./css/narbar.css" type="text/css" />
+    <link rel="stylesheet" href="./css/sidebar.css" type="text/css" />
+    <link rel="stylesheet" href="./css/docs.css" type="text/css" />
+    <link rel="stylesheet" href="./css/footer.css" type="text/css" />
+    <link rel="stylesheet" href="./css/rightMenus.css" type="text/css" />
+    <script type="text/javascript" src="//design.yonyoucloud.com/static/tinper-bee/js/yonyou-yyy.js"></script>
 </head>
 <script src="//design.yonyoucloud.com/static/highlight/9.15.6/highlight.min.js"></script>
 <script src="//design.yonyoucloud.com/static/react/16.8.4/umd/react.production.min.js"></script>
@@ -41,185 +43,190 @@
     <div id="closebtn" class="uf uf-close"></div>
     <div id="upbtn" class="uf uf-top-up"></div>
     <% if(isComponent){ %>
-        <div class="doc-content component">
-    <% } else { %>
+    <div class="doc-content component">
+        <% } else { %>
         <div class="doc-content">
-    <% } %>
-    <div class="content">
-        <div class="sidebar"  id="sidebar">
-            <% include sidebar.html %>
-        </div>
-        <div class="docs" id="docs">
-            <% include docs.html %>
-        </div>
-    </div>
-    <div class="footer-out">
-        <% include footer.html %>
-    </div>
+            <% } %>
+            <div class="content">
+                <div class="sidebar" id="sidebar">
+                    <% include sidebar.html %>
+                </div>
+                <div class="docs" id="docs">
+                    <% include docs.html %>
+                </div>
+            </div>
+            <div class="footer-out">
+                <% include footer.html %>
+            </div>
 </body>
 <script type="text/javascript" src="//design.yonyoucloud.com/static/docSearch/docsearch.min.js"></script>
 <% if(active=='theme'){ %>
-    <script type="text/javascript" src="./theme/runtime.js"></script>
-    <script type="text/javascript" src="./theme/vendor.js"></script>
-    <script type="text/javascript" src="./theme/app.js"></script>
-    <script type="text/javascript" src="./theme/home.js"></script>
+<script type="text/javascript" src="./theme/runtime.js"></script>
+<script type="text/javascript" src="./theme/vendor.js"></script>
+<script type="text/javascript" src="./theme/app.js"></script>
+<script type="text/javascript" src="./theme/home.js"></script>
 <% } %>
 <script>
     //解决:hover伪类在移动端二次点击的问题
-    document.body.addEventListener('touchstart', function(){ });
+    document.body.addEventListener('touchstart', function () { });
 
     // hljs.initHighlightingOnLoad();
     document.querySelectorAll('.drawer-body code').forEach((block) => {
         hljs.highlightBlock(block);
     });
-    docsearch({ 
-            apiKey: 'd388a4977faabf821db64112c8abdcf7', 
-            indexName: 'bee_tinper', 
-            inputSelector: '#componentSearch', 
-            debug: false // Set debug to true if you want to inspect the dropdown 
-        }); 
+    docsearch({
+        apiKey: 'd388a4977faabf821db64112c8abdcf7',
+        indexName: 'bee_tinper',
+        inputSelector: '#componentSearch',
+        debug: false // Set debug to true if you want to inspect the dropdown 
+    });
 
 
     var header = document.querySelector('#navbar');
+    try {
+        new Gumshoe('#rightMenusId a', {
+            nested: true,
+            nestedClass: 'active-parent',
+            offset: function () {
+                return header.getBoundingClientRect().height;
+            }
+        });
+    } catch (error) {
 
-    new Gumshoe('#rightMenusId a',{
-        nested: true,
-        nestedClass: 'active-parent',
-        offset: function () {
-            return header.getBoundingClientRect().height;
-        }
-    });
-    
+    }
+
+
     let lists = document.querySelectorAll('.rm-list-item');
-    if(lists.length>0){
-        if(window.scrollY<=160){
-            lists[0].setAttribute('class','rm-list-item active');
+    if (lists.length > 0) {
+        if (window.scrollY <= 160) {
+            lists[0].setAttribute('class', 'rm-list-item active');
         }
-        window.onscroll=function(){
-            if(window.scrollY<=160){
-                lists[0].setAttribute('class','rm-list-item active');
+        window.onscroll = function () {
+            if (window.scrollY <= 160) {
+                lists[0].setAttribute('class', 'rm-list-item active');
             }
         }
     }
-    
 
-    
+
+
     //移动端适配侧边栏
-    let openbtn=document.getElementById('openbtn'),//汉堡按钮
-    closebtn=document.getElementById('closebtn'),//关闭按钮
-    sidebarDOM=document.getElementsByClassName('sidebar')[0],//侧边栏
-    mask=document.getElementsByClassName('mask')[0];//遮罩层
+    let openbtn = document.getElementById('openbtn'),//汉堡按钮
+        closebtn = document.getElementById('closebtn'),//关闭按钮
+        sidebarDOM = document.getElementsByClassName('sidebar')[0],//侧边栏
+        mask = document.getElementsByClassName('mask')[0];//遮罩层
 
-    var handle = function(event){
-            event.preventDefault();// 阻止元素发生默认行为
+    var handle = function (event) {
+        event.preventDefault();// 阻止元素发生默认行为
     }
 
     //汉堡按钮显示逻辑
     openbtn.addEventListener('click', function () {
-        mask.style.display='block';
-        closebtn.style.display='block';
-        openbtn.style.display='none';
-        sidebarDOM.style.left=0;
+        mask.style.display = 'block';
+        closebtn.style.display = 'block';
+        openbtn.style.display = 'none';
+        sidebarDOM.style.left = 0;
         //解决在ios或者safari浏览器上mask浮层的z-index无效；
-        mask.style.position="fixed";
-        mask.style.zIndex=2000;
-        sidebarDOM.style.position="fixed";
-        sidebarDOM.style.zIndex=2019;
+        mask.style.position = "fixed";
+        mask.style.zIndex = 2000;
+        sidebarDOM.style.position = "fixed";
+        sidebarDOM.style.zIndex = 2019;
         //以下document的两句代码控制当左侧抽屉遮罩层出现时，遮罩层下面的页面不可以滚动，当点击关闭按钮后，页面才可以滚动。
         document.body.style.overflow = 'hidden';
-        window.sessionStorage.setItem('openBtn',true);
-        mask.addEventListener('touchmove',handle,false);//添加监听事件--页面不可滚动
+        window.sessionStorage.setItem('openBtn', true);
+        mask.addEventListener('touchmove', handle, false);//添加监听事件--页面不可滚动
     });
 
     //点击侧边栏的选项时，使侧边栏不消失的控制点击侧边栏时，使侧边栏不消失的控制
-    if(window.sessionStorage.getItem('openBtn')==='true'){
+    if (window.sessionStorage.getItem('openBtn') === 'true') {
         document.getElementsByClassName('sidebar')[0].style.left = 0;
-        mask.style.display='block';
-        closebtn.style.display='block';
-        openbtn.style.display='none';
-        sidebarDOM.style.left=0;
-        sidebarDOM.style.position="fixed";
-        sidebarDOM.style.zIndex=2019;
+        mask.style.display = 'block';
+        closebtn.style.display = 'block';
+        openbtn.style.display = 'none';
+        sidebarDOM.style.left = 0;
+        sidebarDOM.style.position = "fixed";
+        sidebarDOM.style.zIndex = 2019;
         //解决在ios或者safari浏览器上mask浮层的z-index无效；
-        mask.style.position="fixed";
-        mask.style.zIndex=2000;
+        mask.style.position = "fixed";
+        mask.style.zIndex = 2000;
         document.body.style.overflow = 'hidden';
-        window.sessionStorage.setItem('openBtn',true);
-        mask.addEventListener('touchmove',handle,false);//添加监听事件--页面不可滚动
+        window.sessionStorage.setItem('openBtn', true);
+        mask.addEventListener('touchmove', handle, false);//添加监听事件--页面不可滚动
     }
 
     // 关闭按钮显示逻辑
     closebtn.addEventListener('click', function () {
-        window.sessionStorage.setItem('openBtn',false)
-        closebtn.style.display='none';
-        mask.style.display="none";
-        sidebarDOM.style.left="-250px";
-        openbtn.style.display='block';
+        window.sessionStorage.setItem('openBtn', false)
+        closebtn.style.display = 'none';
+        mask.style.display = "none";
+        sidebarDOM.style.left = "-250px";
+        openbtn.style.display = 'block';
         //控制当左侧抽屉遮罩层消失时，页面才可以滚动。
         document.body.style.overflow = 'auto';
-        mask.removeEventListener('touchmove',handle,false);
+        mask.removeEventListener('touchmove', handle, false);
     }, false);
 </script>
 
 
 <!-- 控制点击“查看源码”时，浮层下方的页面不能滚动，浮层消失后，页面正常滚动。 -->
 <script>
-     var handle = function(event){
-            event.preventDefault();// 阻止元素发生默认行为
+    var handle = function (event) {
+        event.preventDefault();// 阻止元素发生默认行为
     }
     var openlist = document.querySelectorAll('.component-code');
     var maskease = document.querySelectorAll('.drawer-mask');
-    if(openlist.length!==0){
-        for(var i in openlist){
-            openlist[i].onclick=function() {
-            document.body.style.overflow = 'hidden';
-           };
+    if (openlist.length !== 0) {
+        for (var i in openlist) {
+            openlist[i].onclick = function () {
+                document.body.style.overflow = 'hidden';
+            };
         }
     }
-   
-    if(maskease.length!==0){
-        maskease.forEach(item=>{
+
+    if (maskease.length !== 0) {
+        maskease.forEach(item => {
             console.log(0000);
-            item.addEventListener('touchmove',handle,false);//控制移动端页面不滚动
-            item.onclick=function() {
+            item.addEventListener('touchmove', handle, false);//控制移动端页面不滚动
+            item.onclick = function () {
                 document.body.style.overflow = 'auto';
-                item.removeEventListener('touchmove',handle,false);//控制移动端页面不滚动
+                item.removeEventListener('touchmove', handle, false);//控制移动端页面不滚动
             }
         })
-    } 
-
-
-//返回顶部按钮
-window.onload = function(){   
-    var upbtn = document.getElementById("upbtn");
-    var clientHeight = document.documentElement.clientHeight;  //获取可视区域的高度
-    var timer = null;   //定义一个定时器
-    var isTop = true;   //定义一个布尔值，用于判断是否到达顶部
-    window.onscroll = function(){
-        //获取滚动条的滚动高度
-        var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-        //如果滚动高度大于可视区域高度，则显示回到顶部按钮否则隐藏
-        upbtn.style.display = scrollTop >= clientHeight ?  "block" : "none";
-        //判断当点击回到顶部按钮后滚动条在回滚过程中，若手动滚动滚动条，则清除定时器
-        if(!isTop){
-            clearInterval(timer);
-        }
-        isTop = false;
     }
-    //回到顶部按钮点击事件
-    upbtn.onclick = function(){
-        timer = setInterval( function(){
+
+
+    //返回顶部按钮
+    window.onload = function () {
+        var upbtn = document.getElementById("upbtn");
+        var clientHeight = document.documentElement.clientHeight;  //获取可视区域的高度
+        var timer = null;   //定义一个定时器
+        var isTop = true;   //定义一个布尔值，用于判断是否到达顶部
+        window.onscroll = function () {
             //获取滚动条的滚动高度
             var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-            //用于设置速度差，产生缓动的效果
-            var speed = Math.floor(-scrollTop / 6);
-            document.documentElement.scrollTop = document.body.scrollTop = scrollTop + speed;
-            isTop =true;  //用于阻止滚动事件清除定时器
-            if(scrollTop == 0){
+            //如果滚动高度大于可视区域高度，则显示回到顶部按钮否则隐藏
+            upbtn.style.display = scrollTop >= clientHeight ? "block" : "none";
+            //判断当点击回到顶部按钮后滚动条在回滚过程中，若手动滚动滚动条，则清除定时器
+            if (!isTop) {
                 clearInterval(timer);
             }
-        },50 );
+            isTop = false;
+        }
+        //回到顶部按钮点击事件
+        upbtn.onclick = function () {
+            timer = setInterval(function () {
+                //获取滚动条的滚动高度
+                var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+                //用于设置速度差，产生缓动的效果
+                var speed = Math.floor(-scrollTop / 6);
+                document.documentElement.scrollTop = document.body.scrollTop = scrollTop + speed;
+                isTop = true;  //用于阻止滚动事件清除定时器
+                if (scrollTop == 0) {
+                    clearInterval(timer);
+                }
+            }, 50);
+        }
     }
-}
 </script>
+
 </html>
