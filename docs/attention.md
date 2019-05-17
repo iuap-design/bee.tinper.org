@@ -24,46 +24,46 @@ import Carousel from 'tinper-bee/lib/Carousel';
 
 ## 图标字体库私有化
 tinper-bee 的字体文件有两种使用方式。当我们处于企业的内网环境，访问不到外网资源时，可以使用本地样式文件；如果是公有化项目，推荐使用CDN资源。     
-tinper-bee 提供了四套样式文件可供选择，包括钉耙默认红色主题、华新丽华深蓝主题、中兴浅蓝主题、科技蓝主题。  
+tinper-bee 提供了四套样式文件可供选择，包括红色主题、深蓝主题、浅蓝主题、科技蓝主题。  
 
 ### 使用本地样式文件    
-1. 钉耙默认（用友红）
+1. 用友红主题（tinper默认）
 ```js
 import "tinper-bee/assets/tinper-bee.css";
 ```
 
-2. 华新丽华
+2. 深蓝主题，实践案例：如华新丽华
 ```js
 import "tinper-bee/assets/theme/tinper-bee-indigo.css";
 ```
 
-3. 中兴
+3. 浅蓝主题，实践案例：中兴
 ```js
 import "tinper-bee/assets/theme/tinper-bee-lightBlue.css";
 ```
 
-4. 科技蓝
+4. 科技蓝主题
 ```js
 import "tinper-bee/assets/theme/tinper-bee-blue.css";
 ```    
   
 ### 使用CDN资源      
-1. 钉耙默认（用友红）
+1. 用友红主题（tinper默认）
 ```
 <link href="//design.yonyoucloud.com/static/tinper-bee/alpha/assets/tinper-bee.css"/>
 ```
 
-2. 华新丽华
+2. 深蓝主题，实践案例：如华新丽华
 ```
 <link href="//design.yonyoucloud.com/static/tinper-bee/alpha/assets/theme/tinper-bee-indigo.css"/> 
 ```
 
-3. 中兴
+3. 浅蓝主题，实践案例：中兴
 ```
 <link href="//design.yonyoucloud.com/static/tinper-bee/alpha/assets/theme/tinper-bee-lightBlue.css"/>
 ```
 
-4. 科技蓝
+4. 科技蓝主题
 ```
 <link href="//design.yonyoucloud.com/static/tinper-bee/alpha/assets/theme/tinper-bee-blue.css"/>
 ```    
