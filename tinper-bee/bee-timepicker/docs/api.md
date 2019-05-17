@@ -8,9 +8,6 @@
 ## 如何使用
 
 ```
-import { TimePicker } from 'tinper-bee';
-
-or
 
 import TimePicker from 'bee-timepicker';
 import 'bee-timepicker/build/TimePicker.css';

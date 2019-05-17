@@ -146,8 +146,9 @@ class RangePicker extends Component {
             locale={props.locale || zhCN }
             onChange={this.onChange}
             disabledDate={props.disabledDate}
-            showClear={ props.showClear||false}
-            showOk={props.showOk||true}
+            showClear={ props.showClear }
+            showOk={props.showOk}
+            showToday={props.showToday}
             renderFooter={props.renderFooter}
         />
     );
@@ -195,7 +196,10 @@ class RangePicker extends Component {
 RangePicker.defaultProps = {
     closeIcon:()=><Icon type="uf-close-c"/>,
     renderIcon: () => <Icon type="uf-calendar" />,
-    locale:zhCN
+    locale:zhCN,
+    showClear:true,
+    showToday:true,
+    showOk:true
 }
 
 export default RangePicker;

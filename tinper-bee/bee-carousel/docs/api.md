@@ -8,9 +8,6 @@
 ## 如何使用
 
 ```
-import { Carousel } from 'tinper-bee';
-
-or
 
 import Carousel from 'bee-carousel';
 import 'bee-carousel/build/Carousel.css';
