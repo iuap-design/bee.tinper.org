@@ -54,6 +54,7 @@ class Demo13 extends Component {
             draggable={true}
             backdropClosable={false}
             resizable={true}
+            resizeClassName="resize-box"
             maxWidth={"1000"}
             maxHeight={"500px"}
             minWidth={300}

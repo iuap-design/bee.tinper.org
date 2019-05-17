@@ -5,6 +5,7 @@ $tabs-border-color: rgb(233,233,233);
 .u-tabs {
   box-sizing: border-box;
   position: relative;
+  max-width: 1900px;
   .u-tabs-bar,
   .u-tabs-nav-container {
     font-size: 14px;

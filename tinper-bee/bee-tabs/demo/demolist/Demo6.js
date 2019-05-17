@@ -13,7 +13,7 @@ const {TabPane} = Tabs;
 class Demo6 extends Component {
 
     add = () => {
-        console.log("在这里添加操作 ^_^")
+        alert("在这里添加操作 ^_^")
     }
 
     render() {

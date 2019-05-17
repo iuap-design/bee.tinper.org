@@ -55,6 +55,8 @@ import "./node_modules/build/bee-switch.css"
 |unCheckedChildren	|非选中时的内容	|React| Node|
 |size|	大小设置，oneOf：`sm`, `lg`|string|''|
 |colors| 颜色设置，oneOf：`primary`,`success`,`info`,`dark`,`warning`|	string	|''|
+|onKeyDown| 键盘回调 |	Function	| - |
+|enterKeyDown| 是否启用 enter 和 space 键 | Boolean | true |
 
 #### setup develop environment
 

@@ -272,13 +272,13 @@ var TreeNode = function (_React$Component) {
       checkboxCls[prefixCls + '-checkbox-disabled'] = true;
       return _react2["default"].createElement(
         'span',
-        { ref: 'checkbox', className: (0, _classnames2["default"])(checkboxCls) },
+        { className: (0, _classnames2["default"])(checkboxCls) },
         customEle
       );
     }
     return _react2["default"].createElement(
       'span',
-      { ref: 'checkbox',
+      {
         className: (0, _classnames2["default"])(checkboxCls),
         onClick: this.onCheck
       },
@@ -356,14 +356,13 @@ var TreeNode = function (_React$Component) {
         isLeaf = _props.isLeaf,
         loadData = _props.loadData;
 
-
-    var hasChildren = this.getNodeChildren().length !== 0;
-
-    if (isLeaf === false) {
-      return false;
+    var rs = isLeaf;
+    if (rs === false || rs === true) {
+      return rs;
+    } else {
+      var hasChildren = this.getNodeChildren().length !== 0;
+      return !loadData && !hasChildren;
     }
-
-    return isLeaf || !loadData && !hasChildren;
   };
 
   TreeNode.prototype.render = function render() {
@@ -486,7 +485,9 @@ var TreeNode = function (_React$Component) {
 
       return _react2["default"].createElement(
         'a',
-        _extends({ ref: 'selectHandle', pos: props.pos, title: typeof content === 'string' ? content : '' }, domProps),
+        _extends({ ref: function ref(el) {
+            _this4.selectHandle = el;
+          }, pos: props.pos, title: typeof content === 'string' ? content : '' }, domProps),
         icon,
         title
       );
@@ -533,7 +534,7 @@ var TreeNode = function (_React$Component) {
     var selectedCls = props.selected ? prefixCls + '-treenode-selected' : '';
     return _react2["default"].createElement(
       'li',
-      _extends({}, liProps, { ref: 'li', style: props.style,
+      _extends({}, liProps, { style: props.style,
         className: (0, _classnames2["default"])(props.className, disabledCls, dragOverCls, filterCls, selectedCls)
       }),
       canRenderSwitcher ? this.renderSwitcher(props, expandedState) : noopSwitcher(),

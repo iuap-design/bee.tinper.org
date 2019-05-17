@@ -94,6 +94,8 @@ var Switch = function (_Component) {
 
 
   Switch.prototype.render = function render() {
+    var _this2 = this;
+
     var _props = this.props,
         checkedChildren = _props.checkedChildren,
         unCheckedChildren = _props.unCheckedChildren,
@@ -103,7 +105,8 @@ var Switch = function (_Component) {
         clsPrefix = _props.clsPrefix,
         disabled = _props.disabled,
         colors = _props.colors,
-        others = _objectWithoutProperties(_props, ["checkedChildren", "unCheckedChildren", "onChangeHandler", "size", "className", "clsPrefix", "disabled", "colors"]);
+        enterKeyDown = _props.enterKeyDown,
+        others = _objectWithoutProperties(_props, ["checkedChildren", "unCheckedChildren", "onChangeHandler", "size", "className", "clsPrefix", "disabled", "colors", "enterKeyDown"]);
     //获取checked
 
 
@@ -129,7 +132,9 @@ var Switch = function (_Component) {
         _extends({}, others, {
           ref: this.saveNode,
           onClick: this.clickHandler,
-          onKeyDown: this.handleKeyDown,
+          onKeyDown: function onKeyDown(e) {
+            return _this2.handleKeyDown(e, enterKeyDown);
+          },
           onMouseUp: this.handleMouseUp,
           className: (0, _classnames2["default"])(className, classNames),
           tabIndex: disabled ? -1 : 0
@@ -147,53 +152,53 @@ var Switch = function (_Component) {
 }(_react.Component);
 
 var _initialiseProps = function _initialiseProps() {
-  var _this2 = this;
+  var _this3 = this;
 
   this.setChecked = function (checked) {
-    if (_this2.props.disabled) {
+    if (_this3.props.disabled) {
       return;
     }
-    if (!('checked' in _this2.props)) {
-      _this2.setState({
+    if (!('checked' in _this3.props)) {
+      _this3.setState({
         checked: checked
       });
     }
-    _this2.props.onChangeHandler(checked);
-    _this2.props.onChange(checked);
+    _this3.props.onChangeHandler(checked);
+    _this3.props.onChange(checked);
   };
 
   this.clickHandler = function () {
-    var checked = !_this2.state.checked;
-    _this2.setChecked(checked);
+    var checked = !_this3.state.checked;
+    _this3.setChecked(checked);
   };
 
-  this.handleKeyDown = function (e) {
+  this.handleKeyDown = function (e, enterKeyDown) {
     if (e.keyCode === 37) {
       // Left
-      _this2.setChecked(false);
+      _this3.setChecked(false);
     } else if (e.keyCode === 39) {
       // Right
-      _this2.setChecked(true);
+      _this3.setChecked(true);
     } else if (e.keyCode === 32 || e.keyCode === 13) {
       // Space, Enter
-      if (_this2.props.enterKeyDown) {
-        _this2.clickHandler();
+      if (enterKeyDown) {
+        _this3.clickHandler();
       }
     }
-    _this2.props.onKeyDown(e);
+    _this3.props.onKeyDown(e);
   };
 
   this.handleMouseUp = function (e) {
-    if (_this2.node) {
-      _this2.node.blur();
+    if (_this3.node) {
+      _this3.node.blur();
     }
-    if (_this2.props.onMouseUp) {
-      _this2.props.onMouseUp(e);
+    if (_this3.props.onMouseUp) {
+      _this3.props.onMouseUp(e);
     }
   };
 
   this.saveNode = function (node) {
-    _this2.node = node;
+    _this3.node = node;
   };
 };
 

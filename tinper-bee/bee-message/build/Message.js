@@ -18,6 +18,10 @@ var _classnames = require('classnames');
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
+var _warning = require('warning');
+
+var _warning2 = _interopRequireDefault(_warning);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var defaultDuration = 1.5;
@@ -31,6 +35,9 @@ var messageInstance = void 0;
 var key = 1;
 var clsPrefix = 'u-message';
 var noop = function noop() {};
+var notificationStyle_copy = {};
+var messageStyle_copy = {};
+var positionType = ['topRight', 'bottomRight', 'top', 'bottom', 'topLeft', 'bottomLeft', ''];
 
 var positionObj = {
     "top": {
@@ -111,24 +118,24 @@ function getMessageInstance() {
     }
     switch (position) {
         case 'top':
-            positionObj[position].notificationStyle.top = defaultTop;
+            notificationStyle_copy.top = defaultTop;
             break;
         case 'bottom':
-            positionObj[position].notificationStyle.bottom = defaultBottom;
+            notificationStyle_copy.bottom = defaultBottom;
             break;
         case 'bottomRight':
-            positionObj[position].notificationStyle.bottom = bottom;
+            notificationStyle_copy.bottom = bottom;
             break;
         case 'bottomLeft':
-            positionObj[position].notificationStyle.bottom = bottom;
+            notificationStyle_copy.bottom = bottom;
             break;
         default:
             break;
     }
     if (position !== 'top' && position !== 'bottom') {
-        positionObj[position].messageStyle.width = width;
+        messageStyle_copy.width = width;
     }
-    var style = positionObj[position].notificationStyle;
+    var style = JSON.stringify(notificationStyle_copy) == "{}" ? positionObj[position].notificationStyle : notificationStyle_copy;
     var instanceObj = {
         clsPrefix: clsPrefix,
         transitionName: clsPrefix + '-' + positionObj[position].transitionName,
@@ -147,7 +154,17 @@ function getMessageInstance() {
     });
 }
 
-function notice(content, duration, type, onClose, position, style, keyboard, onEscapeKeyUp, showIcon) {
+function notice(content, duration_arg, type, onClose, position, style, keyboard, onEscapeKeyUp, showIcon) {
+    if (positionType.findIndex(function (item) {
+        return item === position;
+    }) < 0) {
+        (0, _warning2["default"])(false, 'Failed prop type: Invalid prop `position` supplied to `Message`, expected one of ["top","bottom","topRight","topLeft","bottomRight","bottomLeft"].');
+        return;
+    }
+    var duration = duration_arg !== undefined ? duration_arg : defaultDuration;
+    notificationStyle_copy = _extends({}, positionObj[position].notificationStyle);
+    messageStyle_copy = _extends({}, positionObj[position].messageStyle);
+
     var iconType = {
         info: 'uf uf-i-c-2',
         success: 'uf uf-correct',
@@ -162,7 +179,7 @@ function notice(content, duration, type, onClose, position, style, keyboard, onE
         warninglight: 'uf uf-exc-t'
     }[type];
 
-    var positionStyle = positionObj[position].messageStyle;
+    var positionStyle = JSON.stringify(messageStyle_copy) == "{}" ? positionObj[position].messageStyle : messageStyle_copy;
     getMessageInstance(position, function (instance) {
         instance.notice({
             key: key,

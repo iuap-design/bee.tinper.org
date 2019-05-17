@@ -88,9 +88,13 @@
     right: 0;
     position: absolute;
     border-radius: 3px;
-    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2); }
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2);
+    z-index: 1800; }
     .u-autocomplete-options > li {
-      padding: 3px 6px; }
+      padding: 3px 6px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis; }
       .u-autocomplete-options > li:hover {
         cursor: pointer; }
       .u-autocomplete-options > li.active {

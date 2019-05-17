@@ -92,6 +92,7 @@ import "./node_modules/build/bee-select.css"
 |combobox|输入框自动提示模式|bool|false|
 |size|选择框大小，可选 lg sm|string|default|
 |showSearch|是否可以输入搜索|bool|false|
+|supportWrite|输入搜索查询时是否支持自定义输入，需配合showSearch使用，否则无效|bool|false|
 |disabled|是否禁用|bool|false|
 |defaultActiveFirstOption|是否默认高亮第一个选项|bool|true|
 |dropdownStyle|下拉菜单的 style 属性|object|-|

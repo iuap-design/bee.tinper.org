@@ -14,7 +14,7 @@
   top: 200px;
   right: 300px; }
   .demo1 #my-awesome-nav li {
-    padding: 0 10px;
+    padding: 0 10px 0 12px;
     line-height: 30px;
     height: 30px;
     background: #FFF; }
@@ -22,6 +22,7 @@
       color: #424242; }
 
 .demo1 #my-awesome-nav li.active {
-  border-left: 2px solid #E14C46; }
+  border-left: 2px solid #E14C46;
+  padding: 0 10px; }
 
 /*# sourceMappingURL=demo.css.map */

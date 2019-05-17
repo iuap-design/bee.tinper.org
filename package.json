@@ -52,6 +52,7 @@
     "koa-nunjucks-2": "^3.0.2",
     "koa-router": "^7.4.0",
     "koa-static": "^5.0.0",
+    "latest-version": "^5.1.0",
     "log4js": "^3.0.6",
     "marked": "^0.6.1",
     "moment": "^2.24.0",

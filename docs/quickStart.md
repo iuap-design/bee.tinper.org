@@ -128,4 +128,6 @@ import Calendar from 'tinper-bee/lib/Calendar';
 
 import Carousel from 'tinper-bee/lib/Carousel';
 
+import Viewer from 'bee-viewer';
+
 ```

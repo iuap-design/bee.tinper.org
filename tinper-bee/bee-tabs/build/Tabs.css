@@ -3,7 +3,8 @@
 /*  Navlayout  */
 .u-tabs {
   box-sizing: border-box;
-  position: relative; }
+  position: relative;
+  max-width: 1900px; }
   .u-tabs .u-tabs-bar,
   .u-tabs .u-tabs-nav-container {
     font-size: 14px;

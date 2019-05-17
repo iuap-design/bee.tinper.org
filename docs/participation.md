@@ -1,182 +1,79 @@
 # 参与贡献
 
-开发者可以一起参与为 tinper-bee 贡献代码，同时也可以基于 tinper-bee 进行二次开发或封装插件。 开发者可以使用 bee-tools进行组件的开发和维护
+开发者可以一起参与为`tinper-bee`贡献代码，同时也可以基于`tinper-bee`进行二次开发或封装插件。这边文章简要介绍组件库代码管理，提交`issue`，如何开发一个标准组件等问题
 
+## issue 的提交
 
-## 如何编写标准的 tinper-bee 组件
-
-
-### 环境依赖
-
-- 需要安装node 4.0版本及以上, npm版本最好3.0以上
-
-- [sass环境依赖](https://github.com/tinper-bee/react-components-docs/blob/master/sass%E7%8E%AF%E5%A2%83%E4%BE%9D%E8%B5%96%E8%A7%A3%E5%86%B3.md)
-
-
-### 下载bee-tools开发工具
-
-如果是用友内部员工，请使用用友内部npm镜像和下载工具ynpm-tool。
+在你发现组件 bug 或者 希望组件增加一些功能的时候，可以通过提交`issue`的方法告知我们。在提交issue的时候，为了更方便的了解你的问题，我们希望你能提供信息：   [点击这里提交给我们](https://github.com/iuap-design/tinper-bee/issues/new)
 
 ```
-npm install -g ynpm-tool
-ynpm install -g bee-tools 
-```
+## 环境及版本信息
 
-也可以使用npm。
+- `tinper-bee` 版本号:  
+<!-- 请填具体版本号 -->
 
-```
-npm install -g bee-tools
-```
-使用版本号，来验证是否下载成功。
-```
-bee-tools --version
-```
-因为npm下载较慢，所以请使用cnpm或者切换为淘宝源来下载
+- 若使用单个组件，请标明该组件版本号：
+<!-- 请填具体版本号 -->
 
-- 使用cnpm
+- 当前项目中`react`的版本号：
+<!-- 请填具体版本号 -->
 
-```
-npm install -g cnpm
-cnpm install -g bee-tools
-```
-- 切换淘宝源
+- 所使用的操作系统：
+<!-- Windows/Mac -->
 
-```
-npm --registry https://registry.npm.taobao.org install -g bee-tools
-```
+- 所使用的浏览器：
+<!-- 浏览器及版本 -->
 
+## 描述这个问题:
 
+### 代码
+<!-- 请详细说明问题 -->
+<!-- 截图说明 -->
 
-### 生成组件脚手架
+### 报错信息
+<!-- 请详细说明问题 -->
+<!-- 截图说明 -->
 
-下面以创建button组件为例
+## 当前的行为：效果（可截图说明）及动作描述
+<!-- 请详细描述当前行为，以便我们复现及定位问题 -->
+<!-- 截图说明 -->
 
-- 快速创建：
-
-```
-bee-tools create bee-button
-```
-
-- 增加创建参数：
+## 期望的行为:
+<!-- 请详细描述期望达到的行为及效果，以便我们准确理解需求 -->
 
 ```
-bee-tools create bee-button --author yonyou --port 8000 --tbVersion 0.1.0 --repoUrl https://github.com/tinper-bee/bee-button
-```
+## 组件库分支管理
 
-API介绍
+我们的发布的组件都基于`master`。如果你要修改一个bug，请向`master`提交`pull request`。如果你要增加一个新功能，请重新开分支，并向我们说明，我们评估过后合并到`master`分支并发布新版本
 
-| 参数        | 说明         | 默认值  |
-|:------------ |:-------------:| -----:|
-| port      | 开发时服务监听端口 | 8000 |
-| author      | 作者名字      |   空字符串 |
-| tbVersion | 版本号     |    0.0.1 |
-| pkgName | 包名      |    bee-组件名 |
-| repoUrl | 仓库地址      |    https://github.com/tinper-bee/ + 包名|
+## 如何提交 pull request
 
-默认发布的包名为bee-组件名
+如果你对`github pull request`不熟悉，请先阅读[说明](https://help.github.com/en/articles/creating-a-pull-request)。我们会持续关注 `pull request`
+
+## 如何开发一个标准的组件
+
+我们组件都是使用 [`bee-tools`](https://github.com/tinper-bee/bee-tools)脚手架来开发的。`bee-tools` 具备以下功能：
 
 
+| # | Scripts 脚本命令 | Description 功能描述 |
+| --- | --- | --- |
+| 1 | bee-tools run dev | 打开浏览器，调试代码和demo |
+| 2 | bee-tools run build | 打包代码到build文件夹 |
+| 3 | bee-tools run dep | 下载依赖 |
+| 4 | bee-tools run update | 更新依赖 |
+| 5 | bee-tools run pub | 集成了(发布npm包、提交github、生成changelog)功能|
+| 6 | bee-tools run changelogInit | 初始化cz-conventional-changelog |
+| 7 | bee-tools run changelog | 生成CHANGELOG.md |
+| 8 | bee-tools create ac-xx/bee-xx | 创建项目(应用组件、基础组件) |
+| 9 | bee-tools run releases | 创建releases |
 
-
-### 目录结构
-
-```
--demo
- -demolist
-    -Demo1.js
- -ButtonDemo.scss
- -index-demo-base.js
- -atom-one-dark.css
- -index.js
--src
- -Button.js
- -Button.scss
- -index.js
--test
- -Button.test.js
--.gitignore
--.npmignore
--HISTORY.md
--index.html
--package.json
--README.md
-```
-
-
-### 目录说明
-
-- 在 src 目录中写源程序代码。
-- 在 demo 目录下写使用用例。
-demo示例中的引用写在index-demo-base.j文件中。
-demo示例卸载demolist文件夹内，每一个示例创建一个Demo[数字].js文件。
-- 在 test 目录下写 测试用例。
-- build目录产出打包组件。
-- 代码规范参考 [代码规范](https://github.com/tinper-bee/react-components-docs/blob/master/react%E7%BC%96%E7%A0%81%E8%A7%84%E8%8C%83.md)。
-- 根目录 中的 html 不可修改，通过 js 中的 jsx 渲染页面，通过 require css 引入 css。
-- 开发中用到其他公共库，通过 `npm install --save` 以及 `npm install --save-dev` 来安装
-
-
-
-### 代码书写规范
-
-[react编码规范](https://github.com/tinper-bee/react-components-docs/blob/master/react%E7%BC%96%E7%A0%81%E8%A7%84%E8%8C%83.md)
-[react组件测试流程和规范](https://github.com/tinper-bee/react-components-docs/blob/master/react%E7%BB%84%E4%BB%B6%E6%B5%8B%E8%AF%95%E6%B5%81%E7%A8%8B%E5%92%8C%E8%A7%84%E8%8C%83.md)
-
-
-
-### 开发调试
-
-- 在项目根目录执行 `npm install` 安装必要模块
-- 在项目根目录执行 `npm run dev` 查看demo，进行调试
-- 在项目根目录执行 `npm run build` 产出build目录代码
-- 在项目根目录执行 `npm run lint` 执行lint检查
-- 在项目根目录执行 `npm run test` 执行测试用例
-- 在项目根目录执行 `npm run coveralls` 执行测试覆盖率
-- 在项目根目录执行 `npm run chrome` 在chrome执行测试用例
-- 在项目根目录执行 `npm run browsers` 在本机多浏览器执行测试用例
-- 在项目根目录执行 `npm run pub` 进行组件发布,master分支为正式发布版，release分支为开发分支
-
-
-
-### 推送远程仓库
-
-组件开发完成，就要推送到github远程仓库了。
-
-- 首先在[http://github.com/tinper-bee](http://github.com/tinper-bee)创建一个远程仓库，仓库名称就是你的组件名。这一步最好不要在远程仓库创建任何文件。
-- 接着，关联本地仓库和远程仓库
-
-如果你已经在本地初始化过仓库，并提交过。
-
-```
-//在你的组件的根目录
-git remote add origin http://github.com/tinper-bee/[你的组件库名称].git
-git push -u origin master
-
-```
-
-如果没有初始化过仓库
-
-```
-//在你的组件的根目录
-git init
-git add .
-git commit -m "一些描述信息"
-git remote add origin http://github.com/tinper-bee/[你的组件库名称].git
-git push -u origin master
-```
-
-
-
-### 浏览器支持版本
-
-- ie9, ie9+, chrome, firefox 最新版
-
-
+[这里](https://github.com/tinper-bee/react-components-docs)我们提供了详细的组件开发文档、代码规范、组件库的简介等
 
 ## 问题反馈
 
-如在使用过程中遇到任何问题，可以在[这里](https://github.com/iuap-design/tinper-bee/issues)提交issue反馈；
+如在使用过程中遇到任何问题，可以在这里提交issue反馈
 
 或者直接fork代码到你的github仓库，提交pull request给我们。
 
-有紧急问题可以直接邮件给我（Email：guoyff@yonyou.com）
+有紧急问题可以直接邮件给我们（Email：guoyff@yonyou.com）
+

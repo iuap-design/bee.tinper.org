@@ -128,6 +128,7 @@ import "./node_modules/bee-modal/build/Modal.css"
 |manager|管理模态框状态的组件|required|-|
 |draggable|设置模态框是否可拖拽|bool|false|
 |resizable|设置模态框是否可resize|bool|false|
+|resizeClassName|设置拖拽dom的class名称|string|-|
 |onResizeStart|resize开始时的回调|function|-|
 |onResize|resize时的回调|function|-|
 |onResizeStop|resize结束时的回调|function|-|
