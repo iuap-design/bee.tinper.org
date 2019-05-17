@@ -64,13 +64,13 @@ class Switch extends Component {
     const checked = !this.state.checked;
     this.setChecked(checked);
   };
-  handleKeyDown = (e) => {
+  handleKeyDown = (e , enterKeyDown) => {
     if (e.keyCode === 37) { // Left
       this.setChecked(false);
     } else if (e.keyCode === 39) { // Right
       this.setChecked(true);
     } else if (e.keyCode === 32 || e.keyCode === 13) { // Space, Enter
-      if(this.props.enterKeyDown){
+      if(enterKeyDown){
         this.clickHandler();
       }
     }
@@ -98,6 +98,7 @@ class Switch extends Component {
       clsPrefix,
       disabled,
       colors,
+      enterKeyDown,
       ...others
     } = this.props;
     //获取checked
@@ -121,7 +122,7 @@ class Switch extends Component {
           {...others}
           ref={this.saveNode}
           onClick={this.clickHandler}
-          onKeyDown={this.handleKeyDown}
+          onKeyDown={(e) => this.handleKeyDown(e,enterKeyDown)}
           onMouseUp={this.handleMouseUp}
           className={classnames(className, classNames)}
           tabIndex={disabled ? -1 : 0}

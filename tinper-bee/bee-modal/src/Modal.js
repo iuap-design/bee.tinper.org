@@ -5,8 +5,8 @@ import canUseDOM from 'dom-helpers/util/inDOM';
 import getScrollbarSize from 'dom-helpers/util/scrollbarSize';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import  BaseModal  from 'bee-overlay/build/Modal';
-import isOverflowing from 'bee-overlay/build/utils/isOverflowing';
+import  BaseModal  from 'bee-overlay-modal/build/Modal';
+import isOverflowing from 'bee-overlay-modal/build/utils/isOverflowing';
 import { elementType, splitComponent, createChainedFunction } from 'tinper-bee-core';
 
 import { Fade } from 'bee-transition';
@@ -104,6 +104,7 @@ const propTypes = {
    * 是否可以resize
    */
   resizable: PropTypes.bool,
+  resizeClassName: PropTypes.string,
 
   /* resize开始 */
   onResizeStart: PropTypes.func,
@@ -227,9 +228,12 @@ class Modal extends React.Component {
     const dialogHeight = dialogNode.scrollHeight;
 
     const document = ownerDocument(dialogNode);
-    const bodyIsOverflowing = isOverflowing(
-      ReactDOM.findDOMNode(this.props.container || document.body)
-    );
+    let bodyIsOverflowing=false;
+    if(this.props.container){
+      bodyIsOverflowing = isOverflowing(
+        ReactDOM.findDOMNode(this.props.container)
+      );
+    }
     const modalIsOverflowing =
       dialogHeight > document.documentElement.clientHeight;
 
@@ -261,6 +265,7 @@ class Modal extends React.Component {
       backdropClassName,
       containerClassName,
       draggable,
+      resizeClassName,
       ...props
     } = this.props;
     const [baseModalProps, dialogProps] =
@@ -302,6 +307,7 @@ class Modal extends React.Component {
           onClick={backdrop === true && !!backdropClosable ? this.handleDialogClick : null}
           size ={ size }
           draggable={draggable}
+          resizeClassName={resizeClassName}
         >
           {children}
         </Dialog>

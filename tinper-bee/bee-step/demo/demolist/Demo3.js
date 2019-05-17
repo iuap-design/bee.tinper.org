@@ -53,21 +53,21 @@ class Demo3 extends Component {
         <div className="steps-content">{steps[this.state.current].content}</div>
         <div className="steps-action">
           {
+            this.state.current > 0
+            &&
+            <Button colors="primary" style={{ marginRight: 8 }} onClick={() => this.prev()}>
+              上一步
+            </Button>
+          }
+          {
             this.state.current < steps.length - 1
             &&
-            <Button type="primary" onClick={() => this.next()}>下一步</Button>
+            <Button colors="primary" onClick={() => this.next()}>下一步</Button>
           }
           {
             this.state.current === steps.length - 1
             &&
-            <Button type="primary" onClick={() => this.alertDone()}>完成</Button>
-          }
-          {
-            this.state.current > 0
-            &&
-            <Button style={{ marginLeft: 8 }} onClick={() => this.prev()}>
-              上一步
-            </Button>
+            <Button colors="primary" onClick={() => this.alertDone()}>完成</Button>
           }
         </div>
       </div>

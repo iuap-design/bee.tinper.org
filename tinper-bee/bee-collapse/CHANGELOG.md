@@ -1,5 +1,15 @@
+<a name="1.0.2"></a>
+## [1.0.2](https://github.com/tinper-bee/bee-collapse/compare/v1.0.1...v1.0.2) (2019-05-16)
+
+
+
 <a name="1.0.1"></a>
-## 1.0.1 (2017-11-02)
+## [1.0.1](https://github.com/tinper-bee/bee-collapse/compare/0bfecf7...v1.0.1) (2018-01-21)
+
+
+### Bug Fixes
+
+* 修改示例 ([664d017](https://github.com/tinper-bee/bee-collapse/commit/664d017))
 
 
 ### build

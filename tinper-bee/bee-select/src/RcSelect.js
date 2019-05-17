@@ -361,6 +361,10 @@ class Select extends React.Component {
             value = [getValuePropValue(firstOption)];
             this.fireChange(value);
           }
+          if(props.showSearch&&props.supportWrite){//查询时是否支持自定义输入
+            value = [inputValue];
+            this.fireChange(value,true);
+          }
         }
       } else if (isMultipleOrTags(props) && inputValue) {
         if (this._mouseDown) {
@@ -930,16 +934,23 @@ class Select extends React.Component {
     this.props.onSelect(this.getVLBySingleValue(value), this.getOptionBySingleValue(value));
   };
 
-  fireChange = value => {
+  /**
+   * noCheck 判断输入的值是否不需要匹配option
+   */
+  fireChange = (value,noCheck) => {
     const props = this.props;
     if (!('value' in props)) {
       this.setState({
         value,
       }, this.forcePopupAlign);
     }
-    const vls = this.getVLForOnChange(value);
-    const options = this.getOptionsBySingleValue(value);
-    props.onChange(vls, isMultipleOrTags(this.props) ? options : options[0]);
+    if(noCheck){
+      props.onChange(value,null);
+    }else{
+      const vls = this.getVLForOnChange(value);
+      const options = this.getOptionsBySingleValue(value);
+      props.onChange(vls, isMultipleOrTags(this.props) ? options : options[0]);
+    }
   };
 
   isChildDisabled = key => {

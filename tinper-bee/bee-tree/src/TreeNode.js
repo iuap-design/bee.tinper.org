@@ -225,10 +225,10 @@ class TreeNode extends React.Component {
     }
     if (props.disabled || props.disableCheckbox) {
       checkboxCls[`${prefixCls}-checkbox-disabled`] = true;
-      return <span ref="checkbox" className={classNames(checkboxCls)}>{customEle}</span>;
+      return <span  className={classNames(checkboxCls)}>{customEle}</span>;
     }
     return (
-      <span ref="checkbox"
+      <span 
         className={classNames(checkboxCls) }
         onClick={this.onCheck}
       >{customEle}</span>);
@@ -311,17 +311,16 @@ class TreeNode extends React.Component {
    * @memberof TreeNode
    */
   checkIsLeaf(){
-    const { isLeaf, loadData } = this.props;
-
-    const hasChildren = this.getNodeChildren().length !== 0;
-
-    if (isLeaf === false) {
-      return false;
+    const { isLeaf, loadData } = this.props;  
+    let rs = isLeaf
+    if (rs === false || rs === true) {
+      return rs;
+    }else{
+      const hasChildren = this.getNodeChildren().length !== 0;
+      return (!loadData && !hasChildren);
     }
 
-    return (
-      isLeaf || (!loadData && !hasChildren) 
-    );
+    
   }
 
   render() {
@@ -447,7 +446,7 @@ class TreeNode extends React.Component {
 
     
       return (
-        <a ref="selectHandle" pos={props.pos} title={typeof content === 'string' ? content : ''} {...domProps}>
+        <a ref={(el)=>{this.selectHandle=el}} pos={props.pos} title={typeof content === 'string' ? content : ''} {...domProps}>
           {icon}{title}
         </a>
       );
@@ -494,7 +493,7 @@ class TreeNode extends React.Component {
     };
     const selectedCls =  props.selected?`${prefixCls}-treenode-selected`:'';
     return (
-      <li {...liProps} ref="li" style={props.style}
+      <li {...liProps}  style={props.style}
         className={classNames(props.className, disabledCls, dragOverCls, filterCls,selectedCls) }
       >
         {canRenderSwitcher ? this.renderSwitcher(props, expandedState) : noopSwitcher()}

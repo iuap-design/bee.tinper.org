@@ -65,7 +65,7 @@ var propTypes = {
   show: _propTypes2["default"].bool,
   clsPrefix: _propTypes2["default"].string,
   style: _propTypes2["default"].object,
-  position: _propTypes2["default"].oneOf(['topRight', 'bottomRight', '']),
+  position: _propTypes2["default"].oneOf(['topRight', 'bottomRight', 'top', 'bottom', 'topLeft', 'bottomLeft', '']),
   transitionName: _propTypes2["default"].string,
   keyboard: _propTypes2["default"].bool, // 按esc键是否关闭notice
   onEscapeKeyUp: _propTypes2["default"].func, // 设置esc键特殊钩子函数

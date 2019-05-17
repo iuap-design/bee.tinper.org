@@ -1,6 +1,7 @@
 import React from 'react';
 import Notification from 'bee-notification';
 import classnames from 'classnames';
+import warning from 'warning';
 
 let defaultDuration = 1.5;
 let newDuration;
@@ -13,6 +14,9 @@ let messageInstance;
 let key = 1;
 let clsPrefix = 'u-message';
 const noop = () => {};
+let notificationStyle_copy = {};
+let messageStyle_copy = {};
+const positionType = ['topRight', 'bottomRight', 'top', 'bottom' , 'topLeft', 'bottomLeft', ''];
 
 let positionObj = {
     "top": {
@@ -88,24 +92,24 @@ function getMessageInstance(position = 'top', callback, keyboard, onEscapeKeyUp)
     }
     switch(position){
         case 'top':
-            positionObj[position].notificationStyle.top = defaultTop;
+            notificationStyle_copy.top = defaultTop;
             break;
         case 'bottom':
-            positionObj[position].notificationStyle.bottom = defaultBottom;
+            notificationStyle_copy.bottom = defaultBottom;
             break;
         case 'bottomRight':
-            positionObj[position].notificationStyle.bottom = bottom;
+            notificationStyle_copy.bottom = bottom;
             break;
         case 'bottomLeft':
-            positionObj[position].notificationStyle.bottom = bottom;
+            notificationStyle_copy.bottom = bottom;
             break;
         default:
-            break;
+            break; 
     }
     if( position !== 'top' && position !== 'bottom'){
-        positionObj[position].messageStyle.width = width;
+        messageStyle_copy.width = width;
     }
-    var style = positionObj[position].notificationStyle;
+    var style = JSON.stringify(notificationStyle_copy) == "{}" ? positionObj[position].notificationStyle : notificationStyle_copy;
     let instanceObj = {
         clsPrefix,
         transitionName: `${clsPrefix}-${positionObj[position].transitionName}`,
@@ -126,51 +130,62 @@ function getMessageInstance(position = 'top', callback, keyboard, onEscapeKeyUp)
 
 
 
-function notice(content, duration, type, onClose, position, style, keyboard, onEscapeKeyUp, showIcon) {
-  let iconType = ({
-    info: 'uf uf-i-c-2',
-    success: 'uf uf-correct',
-    danger: 'uf uf-exc-c',
-    warning: 'uf uf-exc-t',
-    light: 'uf uf-notification',
-    dark: 'uf uf-notification',
-    news: 'uf uf-bell',
-    infolight: 'uf uf-i-c-2',
-    successlight: 'uf uf-correct',
-    dangerlight: 'uf uf-exc-c',
-    warninglight: 'uf uf-exc-t',
-  })[type];
+function notice(content, duration_arg, type, onClose, position, style, keyboard, onEscapeKeyUp, showIcon) {
+    if( positionType.findIndex((item) => item === position)<0 ){
+        warning(
+            false,
+            'Failed prop type: Invalid prop `position` supplied to `Message`, expected one of ["top","bottom","topRight","topLeft","bottomRight","bottomLeft"].',
+        );
+        return
+    }
+    let duration = duration_arg !== undefined ? duration_arg : defaultDuration;
+    notificationStyle_copy = Object.assign({}, positionObj[position].notificationStyle);
+    messageStyle_copy = Object.assign({}, positionObj[position].messageStyle);
+    
+    let iconType = ({
+        info: 'uf uf-i-c-2',
+        success: 'uf uf-correct',
+        danger: 'uf uf-exc-c',
+        warning: 'uf uf-exc-t',
+        light: 'uf uf-notification',
+        dark: 'uf uf-notification',
+        news: 'uf uf-bell',
+        infolight: 'uf uf-i-c-2',
+        successlight: 'uf uf-correct',
+        dangerlight: 'uf uf-exc-c',
+        warninglight: 'uf uf-exc-t',
+    })[type];
 
-  let positionStyle = positionObj[position].messageStyle;
-  getMessageInstance(position, instance => {
-    instance.notice({
-        key,
-        duration,
-        color: type,
-        style: Object.assign({}, positionStyle, style),
-        content: (
-          <div>
-            {
-                showIcon ? (
-                    <div className={`${clsPrefix}-notice-description-icon`}>
-                        <i className= { classnames(iconType) } />
-                    </div>
-                ) : null
-            }
-            <div className={`${clsPrefix}-notice-description-content`}>{content}</div>
-          </div>
-        ),
-        onClose,
-    });
-  }, keyboard, onEscapeKeyUp)
-  return (function () {
-    let target = key++;
-    return function () {
-      if (messageInstance) {
-        messageInstance.removeNotice(target);
-      }
-    };
-  }());
+    let positionStyle = JSON.stringify(messageStyle_copy) == "{}" ? positionObj[position].messageStyle : messageStyle_copy;
+    getMessageInstance(position, instance => {
+        instance.notice({
+            key,
+            duration,
+            color: type,
+            style: Object.assign({}, positionStyle, style),
+            content: (
+            <div>
+                {
+                    showIcon ? (
+                        <div className={`${clsPrefix}-notice-description-icon`}>
+                            <i className= { classnames(iconType) } />
+                        </div>
+                    ) : null
+                }
+                <div className={`${clsPrefix}-notice-description-content`}>{content}</div>
+            </div>
+            ),
+            onClose,
+        });
+    }, keyboard, onEscapeKeyUp)
+    return (function () {
+        let target = key++;
+        return function () {
+        if (messageInstance) {
+            messageInstance.removeNotice(target);
+        }
+        };
+    }());
 }
 
 export default {

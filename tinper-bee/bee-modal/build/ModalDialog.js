@@ -179,15 +179,17 @@ var ModalDialog = function (_React$Component) {
   }
 
   ModalDialog.prototype.componentDidUpdate = function componentDidUpdate() {
-    var _getMaxSizesFromProps = this.getMaxSizesFromProps(),
-        maxWidth = _getMaxSizesFromProps.maxWidth,
-        maxHeight = _getMaxSizesFromProps.maxHeight;
+    if (this.props.resizable) {
+      var _getMaxSizesFromProps = this.getMaxSizesFromProps(),
+          maxWidth = _getMaxSizesFromProps.maxWidth,
+          maxHeight = _getMaxSizesFromProps.maxHeight;
 
-    if (maxWidth != this.state.maxWidth) {
-      this.setState({
-        maxWidth: maxWidth,
-        maxHeight: maxHeight
-      });
+      if (maxWidth != this.state.maxWidth) {
+        this.setState({
+          maxWidth: maxWidth,
+          maxHeight: maxHeight
+        });
+      }
     }
   };
 
@@ -224,9 +226,10 @@ var ModalDialog = function (_React$Component) {
         children = _props.children,
         draggable = _props.draggable,
         resizable = _props.resizable,
+        resizeClassName = _props.resizeClassName,
         minHeight = _props.minHeight,
         minWidth = _props.minWidth,
-        props = _objectWithoutProperties(_props, ['dialogClassName', 'className', 'clsPrefix', 'size', 'style', 'contentStyle', 'children', 'draggable', 'resizable', 'minHeight', 'minWidth']);
+        props = _objectWithoutProperties(_props, ['dialogClassName', 'className', 'clsPrefix', 'size', 'style', 'contentStyle', 'children', 'draggable', 'resizable', 'resizeClassName', 'minHeight', 'minWidth']);
 
     var _state = this.state,
         original = _state.original,
@@ -273,6 +276,7 @@ var ModalDialog = function (_React$Component) {
           resizable ? _react2["default"].createElement(
             _reResizable2["default"],
             {
+              className: resizeClassName,
               ref: function ref(c) {
                 if (c) {
                   _this2.resizable = c;

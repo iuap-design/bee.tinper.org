@@ -19,7 +19,7 @@ var propTypes = {
     show: PropTypes.bool,
     clsPrefix: PropTypes.string,
     style: PropTypes.object,
-    position: PropTypes.oneOf(['topRight', 'bottomRight', '']),
+    position: PropTypes.oneOf(['topRight', 'bottomRight', 'top', 'bottom' , 'topLeft', 'bottomLeft', '']),
     transitionName: PropTypes.string,
     keyboard: PropTypes.bool,// 按esc键是否关闭notice
     onEscapeKeyUp: PropTypes.func,// 设置esc键特殊钩子函数

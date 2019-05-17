@@ -1,5 +1,20 @@
+<a name="2.0.3"></a>
+## [2.0.3](https://github.com/tinper-bee/bee-auto-complete/compare/v2.0.2...v2.0.3) (2019-05-16)
+
+
+
 <a name="2.0.2"></a>
-## [2.0.2](https://github.com/tinper-bee/bee-auto-complete/compare/v1.1.2...v2.0.2) (2019-04-10)
+## [2.0.2](https://github.com/tinper-bee/bee-auto-complete/compare/v2.0.1...v2.0.2) (2019-04-10)
+
+
+
+<a name="2.0.1"></a>
+## [2.0.1](https://github.com/tinper-bee/bee-auto-complete/compare/v2.0.0...v2.0.1) (2019-03-13)
+
+
+
+<a name="2.0.0"></a>
+# [2.0.0](https://github.com/tinper-bee/bee-auto-complete/compare/v1.1.2...v2.0.0) (2019-03-13)
 
 
 ### Features

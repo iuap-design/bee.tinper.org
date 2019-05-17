@@ -7,7 +7,7 @@ const propTypes = {
     duration: PropTypes.number,
     onClose: PropTypes.func,
     children: PropTypes.any,
-  color: PropTypes.oneOf(['info', 'success', 'danger', 'warning', 'light', 'dark', 'news', 'infolight', 'successlight', 'dangerlight', 'warninglight']),
+    color: PropTypes.oneOf(['info', 'success', 'danger', 'warning', 'light', 'dark', 'news', 'infolight', 'successlight', 'dangerlight', 'warninglight']),
     title: PropTypes.any
 };
 

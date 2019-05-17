@@ -62,7 +62,7 @@ var AutoComplete = function (_React$Component) {
         var _this = _possibleConstructorReturn(this, _React$Component.call(this, props));
 
         _this.state = {
-            show: props.show || false, //控制自动匹配列表的显示与隐藏
+            show: props.show, //控制自动匹配列表的显示与隐藏
             displayValue: '',
             activeItemIndex: -1,
             options: props.options,
@@ -78,17 +78,23 @@ var AutoComplete = function (_React$Component) {
         return _this;
     }
 
-    AutoComplete.prototype.componentWillReceiveProps = function componentWillReceiveProps(props) {
-        if ('value' in props) {
-            var value = props.value;
+    AutoComplete.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
+        if ('value' in nextProps && nextProps.value !== this.props.value) {
+            var value = nextProps.value;
             this.setState({
                 value: value
             });
         }
-        if ('options' in props) {
-            var options = props.options;
+        if ('options' in nextProps && nextProps.options !== this.props.options) {
+            var options = nextProps.options;
             this.setState({
                 options: options
+            });
+        }
+        if ('show' in nextProps && nextProps.show !== this.props.show) {
+            var show = nextProps.show;
+            this.setState({
+                show: show
             });
         }
     };
@@ -235,7 +241,8 @@ var AutoComplete = function (_React$Component) {
         var _state3 = this.state,
             show = _state3.show,
             displayValue = _state3.displayValue,
-            activeItemIndex = _state3.activeItemIndex;
+            activeItemIndex = _state3.activeItemIndex,
+            options = _state3.options;
 
         var _props2 = this.props,
             disabled = _props2.disabled,
@@ -244,11 +251,26 @@ var AutoComplete = function (_React$Component) {
             onBlur = _props2.onBlur,
             onValueChange = _props2.onValueChange,
             onChange = _props2.onChange,
-            options = _props2.options,
             value = _props2.value,
             placeholder = _props2.placeholder,
-            props = _objectWithoutProperties(_props2, ['disabled', 'clsPrefix', 'onKeyDown', 'onBlur', 'onValueChange', 'onChange', 'options', 'value', 'placeholder']);
+            props = _objectWithoutProperties(_props2, ['disabled', 'clsPrefix', 'onKeyDown', 'onBlur', 'onValueChange', 'onChange', 'value', 'placeholder']);
 
+        var optionList = options.map(function (item, index) {
+            return _react2["default"].createElement(
+                'li',
+                {
+                    key: index,
+                    className: index === activeItemIndex ? "active" : '',
+                    onMouseEnter: function onMouseEnter() {
+                        return _this3.handleEnter(index);
+                    },
+                    onClick: function onClick() {
+                        return _this3.handleChangeList(item);
+                    }
+                },
+                item.text || item
+            );
+        });
         return _react2["default"].createElement(
             'div',
             { className: (0, _classnames2["default"])(clsPrefix, this.props.className) },
@@ -262,25 +284,10 @@ var AutoComplete = function (_React$Component) {
                 placeholder: this.state.placeholder,
                 onBlur: this.handLeBlur
             })),
-            show && this.state.options.length > 0 && _react2["default"].createElement(
+            show && options.length > 0 && _react2["default"].createElement(
                 'ul',
                 { className: clsPrefix + '-options', onMouseLeave: this.handleLeave },
-                this.state.options.map(function (item, index) {
-                    return _react2["default"].createElement(
-                        'li',
-                        {
-                            key: index,
-                            className: index === activeItemIndex ? "active" : '',
-                            onMouseEnter: function onMouseEnter() {
-                                return _this3.handleEnter(index);
-                            },
-                            onClick: function onClick() {
-                                return _this3.handleChangeList(item);
-                            }
-                        },
-                        item.text || item
-                    );
-                })
+                optionList
             )
         );
     };

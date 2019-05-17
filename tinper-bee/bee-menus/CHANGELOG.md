@@ -1,3 +1,8 @@
+<a name="2.0.7"></a>
+## [2.0.7](https://github.com/tinper-bee/bee-menus/compare/v2.0.6...v2.0.7) (2019-05-16)
+
+
+
 <a name="2.0.6"></a>
 ## [2.0.6](https://github.com/tinper-bee/bee-menus/compare/v2.0.5...v2.0.6) (2019-03-28)
 
@@ -14,7 +19,17 @@
 
 
 <a name="2.0.3"></a>
-## [2.0.3](https://github.com/tinper-bee/bee-menus/compare/v2.0.1...v2.0.3) (2019-03-18)
+## [2.0.3](https://github.com/tinper-bee/bee-menus/compare/v2.0.2...v2.0.3) (2019-03-18)
+
+
+
+<a name="2.0.2"></a>
+## [2.0.2](https://github.com/tinper-bee/bee-menus/compare/v1.0.11...v2.0.2) (2019-03-01)
+
+
+
+<a name="1.0.11"></a>
+## [1.0.11](https://github.com/tinper-bee/bee-menus/compare/v2.0.1...v1.0.11) (2019-02-21)
 
 
 

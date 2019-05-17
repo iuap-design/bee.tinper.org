@@ -27,7 +27,7 @@ class AutoComplete extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            show: props.show || false, //控制自动匹配列表的显示与隐藏
+            show: props.show, //控制自动匹配列表的显示与隐藏
             displayValue: '',
             activeItemIndex: -1,
             options: props.options,
@@ -42,17 +42,23 @@ class AutoComplete extends React.Component {
         this.handLeBlur = this.handLeBlur.bind(this);
     }
 
-    componentWillReceiveProps(props) {
-        if ('value' in props) {
-            let value = props.value;
+    componentWillReceiveProps(nextProps) {
+        if ('value' in nextProps && nextProps.value !== this.props.value) {
+            let value = nextProps.value;
             this.setState({
                 value: value
             })
         }
-        if ('options' in props) {
-            let options = props.options;
+        if ('options' in nextProps && nextProps.options !== this.props.options) {
+            let options = nextProps.options;
             this.setState({
                 options: options
+            })
+        }
+        if ('show' in nextProps && nextProps.show !== this.props.show) {
+            let show = nextProps.show;
+            this.setState({
+                show: show
             })
         }
     }
@@ -178,8 +184,20 @@ class AutoComplete extends React.Component {
     }
 
     render() {
-        const {show, displayValue, activeItemIndex} = this.state;
-        const {disabled, clsPrefix, onKeyDown, onBlur, onValueChange, onChange, options, value, placeholder,...props} = this.props;
+        const {show, displayValue, activeItemIndex, options} = this.state;
+        const {disabled, clsPrefix, onKeyDown, onBlur, onValueChange, onChange, value, placeholder,...props} = this.props;
+        let optionList = options.map((item, index) => {
+                            return (
+                                <li
+                                    key={index}
+                                    className={index === activeItemIndex ? "active" : ''}
+                                    onMouseEnter={() => this.handleEnter(index)}
+                                    onClick={() => this.handleChangeList(item)}
+                                >
+                                    {item.text || item}
+                                </li>
+                            );
+                        })
         return (
             <div className={classnames(clsPrefix, this.props.className)} >
                 <FormControl
@@ -195,22 +213,9 @@ class AutoComplete extends React.Component {
                     placeholder={this.state.placeholder}
                     onBlur={this.handLeBlur}
                 />
-                {show && this.state.options.length > 0 && (
+                {show && options.length > 0 && (
                     <ul className={`${clsPrefix}-options`} onMouseLeave={this.handleLeave}>
-                        {
-                            this.state.options.map((item, index) => {
-                                return (
-                                    <li
-                                        key={index}
-                                        className={index === activeItemIndex ? "active" : ''}
-                                        onMouseEnter={() => this.handleEnter(index)}
-                                        onClick={() => this.handleChangeList(item)}
-                                    >
-                                        {item.text || item}
-                                    </li>
-                                );
-                            })
-                        }
+                        { optionList }
                     </ul>
                 )}
             </div>

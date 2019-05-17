@@ -1,3 +1,13 @@
+<a name="2.0.12"></a>
+## [2.0.12](https://github.com/tinper-bee/bee-select/compare/v2.0.11...v2.0.12) (2019-05-13)
+
+
+### Features
+
+* **bee-select:** 输入搜索查询时支持自定义输入 ([0a4d90b](https://github.com/tinper-bee/bee-select/commit/0a4d90b))
+
+
+
 <a name="2.0.11"></a>
 ## [2.0.11](https://github.com/tinper-bee/bee-select/compare/v2.0.10...v2.0.11) (2019-04-25)
 

@@ -28,18 +28,17 @@ class Demo1 extends Component {
 					onClick={ ()=> this.setState({ open: !this.state.open })}>
 		          点我内容横向动态显示隐藏
 		        </Button>
-		        
-		        <Collapse
-					in={this.state.open}
-					dimension="width" >
-		          <div>
-		            我是折叠区域的内容，点击按钮我就显示，再次点击就会隐藏。快来点击按钮体验我的交互效果吧，是不是很棒！赶快使用吧~~~
-		            <br/>
-		          </div>
+		        <div style={{height: '25px'}}>
+					<Collapse
+						in={this.state.open}
+						dimension="width" >
+					<div>
+						我是折叠区域的内容，点击按钮我就显示，再次点击就会隐藏。快来点击按钮体验我的交互效果吧，是不是很棒！赶快使用吧~~~
+						<br/>
+					</div>
 
-		        </Collapse>
-
-		       
+					</Collapse>
+				</div>
 		    </div>
 		)
 

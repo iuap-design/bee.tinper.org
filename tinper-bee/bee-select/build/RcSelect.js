@@ -165,6 +165,11 @@ var Select = function (_React$Component) {
     }
   };
 
+  /**
+   * noCheck 判断输入的值是否不需要匹配option
+   */
+
+
   Select.prototype.renderClear = function renderClear() {
     var _props = this.props,
         prefixCls = _props.prefixCls,
@@ -679,6 +684,11 @@ var _initialiseProps = function _initialiseProps() {
             value = [(0, _util.getValuePropValue)(firstOption)];
             _this2.fireChange(value);
           }
+          if (props.showSearch && props.supportWrite) {
+            //查询时是否支持自定义输入
+            value = [inputValue];
+            _this2.fireChange(value, true);
+          }
         }
       } else if ((0, _util.isMultipleOrTags)(props) && inputValue) {
         if (_this2._mouseDown) {
@@ -1142,16 +1152,20 @@ var _initialiseProps = function _initialiseProps() {
     _this2.props.onSelect(_this2.getVLBySingleValue(value), _this2.getOptionBySingleValue(value));
   };
 
-  this.fireChange = function (value) {
+  this.fireChange = function (value, noCheck) {
     var props = _this2.props;
     if (!('value' in props)) {
       _this2.setState({
         value: value
       }, _this2.forcePopupAlign);
     }
-    var vls = _this2.getVLForOnChange(value);
-    var options = _this2.getOptionsBySingleValue(value);
-    props.onChange(vls, (0, _util.isMultipleOrTags)(_this2.props) ? options : options[0]);
+    if (noCheck) {
+      props.onChange(value, null);
+    } else {
+      var vls = _this2.getVLForOnChange(value);
+      var options = _this2.getOptionsBySingleValue(value);
+      props.onChange(vls, (0, _util.isMultipleOrTags)(_this2.props) ? options : options[0]);
+    }
   };
 
   this.isChildDisabled = function (key) {

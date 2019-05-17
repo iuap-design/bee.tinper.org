@@ -85,8 +85,8 @@ class Tree extends React.Component {
   }
 
   onDragEnterGap(e, treeNode) {
-    const offsetTop = (0, getOffset)(treeNode.refs.selectHandle).top;
-    const offsetHeight = treeNode.refs.selectHandle.offsetHeight;
+    const offsetTop = (0, getOffset)(treeNode.selectHandle).top;
+    const offsetHeight = treeNode.selectHandle.offsetHeight;
     const pageY = e.pageY;
     const gapHeight = 2;
     if (pageY > offsetTop + offsetHeight - gapHeight) {
@@ -241,7 +241,9 @@ onExpand(treeNode,keyType) {
       checked,
     };
 
+
     if (this.props.checkStrictly) {
+      let rsCheckedKeys = [];
       if (checked && index === -1) {
         checkedKeys.push(key);
       }
@@ -253,15 +255,16 @@ onExpand(treeNode,keyType) {
       loopAllChildren(this.props.children, (item, ind, pos, keyOrPos) => {
         if (checkedKeys.indexOf(keyOrPos) !== -1) {
           newSt.checkedNodes.push(item);
+          rsCheckedKeys.push(keyOrPos);
         }
       });
       if (!('checkedKeys' in this.props)) {
         this.setState({
-          checkedKeys,
+          checkedKeys:rsCheckedKeys
         });
       }
       const halfChecked = this.props.checkedKeys ? this.props.checkedKeys.halfChecked : [];
-      this.props.onCheck(getStrictlyValue(checkedKeys, halfChecked), newSt);
+      this.props.onCheck(getStrictlyValue(rsCheckedKeys, halfChecked), newSt);
     } else {
       if (checked && index === -1) {
         this.treeNodesStates[treeNode.props.pos].checked = true;
@@ -548,7 +551,7 @@ onExpand(treeNode,keyType) {
 
   onUlFocus(e){ 
     const targetDom = e.target;
-    if(this.refs.tree == targetDom && !this.isIn){
+    if(this.tree == targetDom && !this.isIn){
       const {onFocus} = this.props;
       const {selectedKeys=[]} = this.state;
       let tabIndexKey = selectedKeys[0]
@@ -729,7 +732,6 @@ onExpand(treeNode,keyType) {
     }
   
     const cloneProps = {
-      ref: `treeNode-${key}`,
       root: this,
       eventKey: key,
       pos,
@@ -823,7 +825,7 @@ onExpand(treeNode,keyType) {
         const checkedKeys = this.state.checkedKeys;
         let checkKeys;
         if (!props.loadData && this.checkKeys && this._checkedKeys &&
-          arraysEqual(this._checkedKeys, checkedKeys)) {
+          arraysEqual(this._checkedKeys, checkedKeys) && !this.dataChange) {
           // if checkedKeys the same as _checkedKeys from onCheck, use _checkedKeys.
           checkKeys = this.checkKeys;
         } else {
@@ -852,7 +854,7 @@ onExpand(treeNode,keyType) {
     }
     this.selectKeyDomExist = false;
     return (
-      <ul {...domProps} unselectable="true" ref="tree"  tabIndex={props.focusable && props.tabIndexValue}>
+      <ul {...domProps} unselectable="true" ref={(el)=>{this.tree = el}}  tabIndex={props.focusable && props.tabIndexValue}>
         {React.Children.map(props.children, this.renderTreeNode, this)}
       </ul>
     );

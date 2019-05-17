@@ -430,6 +430,20 @@
   content: ' ';
   opacity: 0.0001; }
 
+.u-menu-submenu-popup.u-menu-submenu-placement-rightTop:before {
+  top: 0;
+  left: -4px; }
+
+.u-menu-submenu-popup.u-menu-submenu-placement-leftTop:before {
+  top: 0;
+  left: 0;
+  right: -4px; }
+
+.u-menu-submenu-popup.u-menu-submenu-placement-topLeft:before {
+  top: 0;
+  left: 0;
+  bottom: -7px; }
+
 .u-menu-submenu > .u-menu {
   background-color: #fff;
   border-radius: 3px; }

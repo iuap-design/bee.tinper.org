@@ -30,7 +30,7 @@
 .u-progress.xs {
   height: 5px;
   width: 170px;
-  margin-left: 10px; }
+  margin-left: 32px; }
   .u-progress.xs .u-progress-label {
     left: 0;
     color: #000;
@@ -86,13 +86,14 @@
   pointer-events: none; }
 
 #nprogress .bar {
-  background: #29d;
   position: fixed;
   z-index: 1031;
   top: 0;
   left: 0;
   width: 100%;
-  height: 2px; }
+  border-width: 3px 0 0;
+  border-top-style: solid;
+  border-image: linear-gradient(139deg, #fb8817, #ff4b01, #c12127, #e02aff) 3; }
 
 /* Fancy blur effect */
 #nprogress .peg {

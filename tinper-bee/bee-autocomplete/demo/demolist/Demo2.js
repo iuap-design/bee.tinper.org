@@ -1,7 +1,7 @@
 /**
  *
- * @title 动态改变options参数
- * @description 用户可以按需进行选择，支持光标操作，回车事件
+ * @title 动态改变 options 数据源
+ * @description `onSelectOption`为下拉框选中时触发的回调函数
  *
  */
 import React, { Component } from "react";
@@ -13,33 +13,27 @@ class Demo2 extends Component {
     this.state = {
       value: "",
       options: [],
-      placeholder: "查找关键字,请输入a",
-      disabled: false
+      placeholder: "查找关键字,请输入a"
     };
   }
+
   onFormChange = value => {
-    if (value !== "a") {
-      this.setState({
-        value: value,
-        options: ["ab", "abbbbb", "abbbbb", "aaaab"]
-      });
-    } else {
-      this.setState({
-        value: value,
-        options: ["a", "aa", "aaa", "aaaa"]
-      });
-    }
+    this.setState({
+      value: value,
+      options: !value ? [] : [value, value + value, value + value + value]
+    });
   };
+
   handleSelectChange = value => {
     console.log('onSelectOption',value);
   }
+
   render() {
-    let { value, options, placeholder, disabled } = this.state;
+    let { value, options, placeholder } = this.state;
     return (
       <div className="demo" style={{ marginBottom: "110px" }}>
         <AutoComplete
           value={value}
-          disabled={disabled}
           options={options}
           placeholder={placeholder}
           onValueChange={value => this.onFormChange(value)}

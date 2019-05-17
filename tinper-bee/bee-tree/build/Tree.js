@@ -110,8 +110,8 @@ var Tree = function (_React$Component) {
   };
 
   Tree.prototype.onDragEnterGap = function onDragEnterGap(e, treeNode) {
-    var offsetTop = (0, _util.getOffset)(treeNode.refs.selectHandle).top;
-    var offsetHeight = treeNode.refs.selectHandle.offsetHeight;
+    var offsetTop = (0, _util.getOffset)(treeNode.selectHandle).top;
+    var offsetHeight = treeNode.selectHandle.offsetHeight;
     var pageY = e.pageY;
     var gapHeight = 2;
     if (pageY > offsetTop + offsetHeight - gapHeight) {
@@ -273,6 +273,7 @@ var Tree = function (_React$Component) {
     };
 
     if (this.props.checkStrictly) {
+      var rsCheckedKeys = [];
       if (checked && index === -1) {
         checkedKeys.push(key);
       }
@@ -284,15 +285,16 @@ var Tree = function (_React$Component) {
       (0, _util.loopAllChildren)(this.props.children, function (item, ind, pos, keyOrPos) {
         if (checkedKeys.indexOf(keyOrPos) !== -1) {
           newSt.checkedNodes.push(item);
+          rsCheckedKeys.push(keyOrPos);
         }
       });
       if (!('checkedKeys' in this.props)) {
         this.setState({
-          checkedKeys: checkedKeys
+          checkedKeys: rsCheckedKeys
         });
       }
       var halfChecked = this.props.checkedKeys ? this.props.checkedKeys.halfChecked : [];
-      this.props.onCheck((0, _util.getStrictlyValue)(checkedKeys, halfChecked), newSt);
+      this.props.onCheck((0, _util.getStrictlyValue)(rsCheckedKeys, halfChecked), newSt);
     } else {
       if (checked && index === -1) {
         this.treeNodesStates[treeNode.props.pos].checked = true;
@@ -576,7 +578,7 @@ var Tree = function (_React$Component) {
     var _this4 = this;
 
     var targetDom = e.target;
-    if (this.refs.tree == targetDom && !this.isIn) {
+    if (this.tree == targetDom && !this.isIn) {
       var onFocus = this.props.onFocus;
       var _state$selectedKeys = this.state.selectedKeys,
           selectedKeys = _state$selectedKeys === undefined ? [] : _state$selectedKeys;
@@ -755,7 +757,6 @@ var Tree = function (_React$Component) {
     }
 
     var cloneProps = {
-      ref: 'treeNode-' + key,
       root: this,
       eventKey: key,
       pos: pos,
@@ -850,7 +851,7 @@ var Tree = function (_React$Component) {
       } else {
         var checkedKeys = this.state.checkedKeys;
         var checkKeys = void 0;
-        if (!props.loadData && this.checkKeys && this._checkedKeys && (0, _util.arraysEqual)(this._checkedKeys, checkedKeys)) {
+        if (!props.loadData && this.checkKeys && this._checkedKeys && (0, _util.arraysEqual)(this._checkedKeys, checkedKeys) && !this.dataChange) {
           // if checkedKeys the same as _checkedKeys from onCheck, use _checkedKeys.
           checkKeys = this.checkKeys;
         } else {
@@ -880,7 +881,9 @@ var Tree = function (_React$Component) {
     this.selectKeyDomExist = false;
     return _react2["default"].createElement(
       'ul',
-      _extends({}, domProps, { unselectable: 'true', ref: 'tree', tabIndex: props.focusable && props.tabIndexValue }),
+      _extends({}, domProps, { unselectable: 'true', ref: function ref(el) {
+          _this5.tree = el;
+        }, tabIndex: props.focusable && props.tabIndexValue }),
       _react2["default"].Children.map(props.children, this.renderTreeNode, this)
     );
   };
