@@ -50,20 +50,20 @@ import "tinper-bee/assets/theme/tinper-bee-blue.css";
 ### 使用CDN资源      
 1. 用友红主题（tinper默认）
 ```
-<link href="//design.yonyoucloud.com/static/tinper-bee/alpha/assets/tinper-bee.css"/>
+<link href="//design.yonyoucloud.com/static/tinper-bee/latest/assets/tinper-bee.css"/>
 ```
 
 2. 深蓝主题，实践案例：如华新丽华
 ```
-<link href="//design.yonyoucloud.com/static/tinper-bee/alpha/assets/theme/tinper-bee-indigo.css"/> 
+<link href="//design.yonyoucloud.com/static/tinper-bee/latest/assets/theme/tinper-bee-indigo.css"/> 
 ```
 
 3. 浅蓝主题，实践案例：中兴
 ```
-<link href="//design.yonyoucloud.com/static/tinper-bee/alpha/assets/theme/tinper-bee-lightBlue.css"/>
+<link href="//design.yonyoucloud.com/static/tinper-bee/latest/assets/theme/tinper-bee-lightBlue.css"/>
 ```
 
 4. 科技蓝主题
 ```
-<link href="//design.yonyoucloud.com/static/tinper-bee/alpha/assets/theme/tinper-bee-blue.css"/>
+<link href="//design.yonyoucloud.com/static/tinper-bee/latest/assets/theme/tinper-bee-blue.css"/>
 ```    
