@@ -17,6 +17,17 @@ import 'bee-form/build/Form.css';
 
 ```
 
+## 表单域
+表单一定会包含表单域，表单域可以是输入控件，标准表单域，标签，下拉菜单，文本域等。
+
+这里我们封装了表单域 <Form.FormItem/> 。
+
+```
+const FormItem = Form.FormItem;
+
+<FormItem  {...props}>{children}</FormItem>
+```
+
 ## 代码演示
 
 ## API
