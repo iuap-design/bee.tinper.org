@@ -180,7 +180,7 @@ var FormControl = function (_React$Component) {
                     onChange: _this.handleChange,
                     onBlur: _this.handleBlur,
                     onFocus: _this.handleFocus,
-                    className: (0, _classnames2["default"])(className, classNames)
+                    className: (0, _classnames2["default"])(classNames)
                 })),
                 _react2["default"].createElement(
                     'div',
@@ -235,7 +235,7 @@ var FormControl = function (_React$Component) {
                         onKeyDown: _this.handleKeyDown,
                         onBlur: _this.handleBlur,
                         onFocus: _this.handleFocus,
-                        className: (0, _classnames2["default"])(className, clsPrefix, classes)
+                        className: (0, _classnames2["default"])(clsPrefix, classes)
                     })),
                     _react2["default"].createElement(
                         'div',

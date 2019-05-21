@@ -12,6 +12,10 @@ var _RangeCalendar = require("./rc-calendar/RangeCalendar");
 
 var _RangeCalendar2 = _interopRequireDefault(_RangeCalendar);
 
+var _Panel = require("rc-time-picker/lib/Panel");
+
+var _Panel2 = _interopRequireDefault(_Panel);
+
 var _beeFormControl = require("bee-form-control");
 
 var _beeFormControl2 = _interopRequireDefault(_beeFormControl);
@@ -79,6 +83,8 @@ if (cn) {
     now.locale("en-gb").utcOffset(0);
 }
 
+var timePickerElement = _react2["default"].createElement(_Panel2["default"], { defaultValue: (0, _moment2["default"])((0, _moment2["default"])().format("HH:mm:ss"), "HH:mm:ss") });
+
 var RangePicker = function (_Component) {
     _inherits(RangePicker, _Component);
 
@@ -129,7 +135,8 @@ var RangePicker = function (_Component) {
             showClear: props.showClear,
             showOk: props.showOk,
             showToday: props.showToday,
-            renderFooter: props.renderFooter
+            renderFooter: props.renderFooter,
+            timePicker: props.showTime ? timePickerElement : null
         });
 
         return _react2["default"].createElement(

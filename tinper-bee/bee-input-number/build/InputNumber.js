@@ -78,8 +78,17 @@ function judgeValue(props, oldValue) {
         precision = props.precision,
         onChange = props.onChange;
 
-    if (value) {
-        currentValue = Number(value) || 0;
+    if (value != undefined) {
+        if (value == '') {
+            currentValue = '';
+            return {
+                value: '',
+                minusDisabled: false,
+                plusDisabled: false
+            };
+        } else {
+            currentValue = Number(value) || 0;
+        }
     } else if (min && value != '') {
         currentValue = min;
     } else if (value === '0' || value === 0) {
@@ -119,9 +128,8 @@ function judgeValue(props, oldValue) {
 /**
  * 千分符
  * @param {要转换的数据} num 
- * @param {是否要小数点} point 
  */
-function toThousands(number, point) {
+function toThousands(number) {
     if (number == '') return '';
     var num = (number || 0).toString();
     var integer = num.split('.')[0];
@@ -406,7 +414,12 @@ var InputNumber = function (_Component) {
         return _this;
     }
 
-    InputNumber.prototype.ComponentWillMount = function ComponentWillMount() {};
+    InputNumber.prototype.componentDidMount = function componentDidMount() {
+        this.setState({
+            value: this.props.value,
+            showValue: toThousands(this.props.value)
+        });
+    };
 
     InputNumber.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
         if (this.focus) {

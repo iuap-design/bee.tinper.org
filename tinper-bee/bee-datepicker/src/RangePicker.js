@@ -3,6 +3,7 @@
  */
 import React, { Component } from "react";
 import RangeCalendar from "./rc-calendar/RangeCalendar";
+import TimePickerPanel from "rc-time-picker/lib/Panel";
 import FormControl from "bee-form-control";
 import Picker from "./rc-calendar/Picker";
 import InputGroup from 'bee-input-group';
@@ -36,6 +37,11 @@ if (cn) {
 } else {
   now.locale("en-gb").utcOffset(0);
 }
+
+const timePickerElement = (
+    <TimePickerPanel defaultValue={moment(moment().format("HH:mm:ss"), "HH:mm:ss")} />
+  );
+  
 
 class RangePicker extends Component {
   constructor(props, context) {
@@ -150,6 +156,7 @@ class RangePicker extends Component {
             showOk={props.showOk}
             showToday={props.showToday}
             renderFooter={props.renderFooter}
+            timePicker={props.showTime ? timePickerElement : null}
         />
     );
 

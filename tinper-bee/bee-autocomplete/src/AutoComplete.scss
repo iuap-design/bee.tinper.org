@@ -16,6 +16,7 @@
     position: absolute;
     border-radius: $border-radius-base;
     box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2);
+    background: #fff;
     z-index: 1800;
 
     > li {
@@ -31,10 +32,10 @@
       }
     }
   }
-  .u-form-control{
-    height: 32px;
-    border-color: $border-color-base;
-  }
+  // .u-form-control{
+  //   height: 32px;
+  //   border-color: $border-color-base;
+  // }
 }
 
 

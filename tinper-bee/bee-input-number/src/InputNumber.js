@@ -37,8 +37,17 @@ function judgeValue(props,oldValue) {
     let currentMinusDisabled = false;
     let currentPlusDisabled = false;
     let { value,min,max,precision,onChange } = props;
-    if (value) {
-        currentValue = Number(value) ||0;
+    if (value!=undefined) {
+        if(value==''){
+            currentValue='';
+            return {
+                value: '',
+                minusDisabled: false,
+                plusDisabled: false
+            }
+        }else{
+            currentValue = Number(value) ||0;
+        }
     } else if (min&&(value!='')) {
         currentValue = min;
     } else if(value==='0'||value===0){
@@ -76,9 +85,8 @@ function judgeValue(props,oldValue) {
 /**
  * 千分符
  * @param {要转换的数据} num 
- * @param {是否要小数点} point 
  */
-function toThousands(number,point) {
+function toThousands(number) {
     if(number=='')return '';
     let num = (number || 0).toString();
     let integer = num.split('.')[0];
@@ -126,8 +134,11 @@ class InputNumber extends Component {
         this.focus = false;
     }
 
-    ComponentWillMount() {
-
+    componentDidMount(){
+        this.setState({
+            value: this.props.value,
+            showValue:toThousands(this.props.value)
+        });
     }
     componentWillReceiveProps(nextProps){
         if(this.focus){

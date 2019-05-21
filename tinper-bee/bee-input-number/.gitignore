@@ -36,3 +36,5 @@ jspm_packages
 
 coverage
 .idea
+
+package-lock.json

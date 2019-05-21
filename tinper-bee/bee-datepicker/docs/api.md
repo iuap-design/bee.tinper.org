@@ -113,6 +113,7 @@ import 'bee-datepicker/build/DatePicker.css';
 | getCalendarContainer |更改默认渲染位置|Function| - |
 | locale| 语言包 | Object |zh_CN |
 | closeIcon |鼠标划过清空内容的icon|Function| () => <Icon type="uf-close-c" />|
+| showTime | 是否显示时间选择面板 | Boolean | - |
 
 ### WeekPicker
 
