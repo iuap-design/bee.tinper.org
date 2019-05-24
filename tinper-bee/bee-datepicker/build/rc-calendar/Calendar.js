@@ -118,7 +118,8 @@ var Calendar = function (_React$Component) {
         disabledTime = props.disabledTime,
         clearIcon = props.clearIcon,
         renderFooter = props.renderFooter,
-        showMonthInput = props.showMonthInput;
+        showMonthInput = props.showMonthInput,
+        renderError = props.renderError;
     var value = state.value,
         selectedValue = state.selectedValue,
         mode = state.mode;
@@ -145,7 +146,6 @@ var Calendar = function (_React$Component) {
 
       timePickerEle = _react2["default"].cloneElement(timePicker, timePickerProps);
     }
-
     var dateInputElement = props.showDateInput ? _react2["default"].createElement(_DateInput2["default"], {
       format: this.getFormat(),
       key: 'date-input',
@@ -160,7 +160,8 @@ var Calendar = function (_React$Component) {
       selectedValue: selectedValue,
       onChange: this.onDateInputChange,
       onSelect: this.onDateInputSelect,
-      clearIcon: clearIcon
+      clearIcon: clearIcon,
+      renderError: renderError
     }) : null;
 
     var children = [];

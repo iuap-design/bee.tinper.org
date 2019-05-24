@@ -157,7 +157,7 @@ class WeekPicker extends Component {
     })
   }
   onClear = (e) => { 
-    e.stopPropagation();
+    e&&e.stopPropagation&&e.stopPropagation();
     this.setState({
       value: ''
     })

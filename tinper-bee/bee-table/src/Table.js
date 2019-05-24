@@ -11,6 +11,8 @@ import createStore from './createStore';
 import Loading from 'bee-loading';
 import Icon from 'bee-icon';
 import { Event,EventUtil,closest} from "./utils";
+import i18n from "./lib/i18n";
+import { getComponentLocale } from "bee-locale/build/tool";
 
 const propTypes = {
   data: PropTypes.array,
@@ -55,6 +57,7 @@ const propTypes = {
   hoverContent:PropTypes.func,
   size: PropTypes.oneOf(['sm', 'md', 'lg']),
   rowDraggAble: PropTypes.bool,
+  onDropRow: PropTypes.func
 };
 
 const defaultProps = {
@@ -80,7 +83,7 @@ const defaultProps = {
   scroll: {},
   rowRef: () => null,
   getBodyWrapper: body => body,
-  emptyText: () => <div><Icon type="uf-nodata" className="table-nodata"></Icon><span>暂无数据</span></div>,
+  // emptyText: () => <div><Icon type="uf-nodata" className="table-nodata"></Icon><span>{locale["no_data"]}</span></div>,
   columns:[],
   minColumnWidth: 80,
   locale:{},
@@ -90,7 +93,8 @@ const defaultProps = {
   tabIndex:'0',
   heightConsistent:false,
   size: 'md',
-  rowDraggAble:false
+  rowDraggAble:false,
+  onDropRow: ()=>{}
 };
 
 class Table extends Component {
@@ -202,6 +206,11 @@ class Table extends Component {
     if(nextProps.resetScroll){
       this.resetScrollX();
     }
+    // fix:模态框中使用table，计算的滚动条宽度为0的bug
+    if(this.scrollbarWidth<=0 && this.props.scroll.y){
+      this.scrollbarWidth = measureScrollbar();
+    }
+
  
     // console.log('this.scrollTop**********',this.scrollTop);
 
@@ -226,8 +235,9 @@ class Table extends Component {
     if (prevProps.data.length === 0  || this.props.data.length === 0 ) {
       this.resetScrollX();
     }
+    
     // 是否传入 scroll中的y属性，如果传入判断是否是整数，如果是则进行比较 。bodyTable 的clientHeight进行判断
-    this.isShowScrollY();
+    // this.isShowScrollY();
   }
 
   componentWillUnmount() {
@@ -307,11 +317,11 @@ class Table extends Component {
       const overflowy = bodyContentH <= bodyH ? 'auto':'scroll';
       this.bodyTable.style.overflowY = overflowy;
     
-      this.refs.headTable.style.overflowY = overflowy;
+      this.headTable.style.overflowY = overflowy;
       rightBodyTable && (rightBodyTable.style.overflowY = overflowy);
       // 没有纵向滚动条时，表头横向滚动条根据内容动态显示 待验证
       // if(overflowy == 'auto'){
-      //   this.refs.fixedHeadTable && (this.refs.fixedHeadTable.style.overflowX = 'auto');
+      //   this.fixedHeadTable && (this.fixedHeadTable.style.overflowX = 'auto');
       //   rightBodyTable && (rightBodyTable.style.overflowX = 'auto');
       //   leftBodyTable && (leftBodyTable.style.overflowX = 'auto');
       // }
@@ -553,24 +563,39 @@ class Table extends Component {
     );
   }
 
+  /**
+   * 行拖拽结束时触发
+   * @param currentKey 当前拖拽目标的key
+   * @param targetKey 拖拽结束时，目标位置的key
+   */
   onDragRow = (currentKey,targetKey)=>{
-    let {data} = this.state,currentIndex,targetIndex;
+    let {data} = this.state,currentIndex,targetIndex,record;
     data.forEach((da,i)=>{ 
-      if(da.key == currentKey){
+      // tr 的唯一标识通过 data.key 或 rowKey 两种方式传进来
+      let trKey = da.key ? da.key : this.getRowKey(da, i);
+      if(trKey == currentKey){
         currentIndex = i;
+        record = da;
       }
-      if(da.key == targetKey){
+      if(trKey == targetKey){
         targetIndex = i;
       }
     });
-    if(currentIndex < targetIndex){
-      data.splice(targetIndex, 0, data.splice(currentIndex, 1).shift());
-    }else{
-      data.splice((targetIndex+1), 0, data.splice(currentIndex, 1).shift());
-    }
+    data = this.swapArray(data,currentIndex,targetIndex);
+    this.props.onDropRow && this.props.onDropRow(data,record);
     this.setState({
       data,
     });
+  }
+  /**
+  * 数组元素交换位置
+  * @param {array} arr 数组
+  * @param {number} index1 添加项目的位置
+  * @param {number} index2 删除项目的位置
+  */
+  swapArray = (arr, index1, index2) => {
+    arr[index1] = arr.splice(index2, 1, arr[index1])[0];
+     return arr;
   }
 
   /**
@@ -819,7 +844,7 @@ class Table extends Component {
   getTable(options = {}) {
     const { columns, fixed } = options;
     const { clsPrefix, scroll = {}, getBodyWrapper, footerScroll,headerScroll } = this.props;
-    let { useFixedHeader } = this.props;
+    let { useFixedHeader,data } = this.props;
     const bodyStyle = { ...this.props.bodyStyle };
     const headStyle = {};
     const innerBodyStyle = {};
@@ -860,7 +885,7 @@ class Table extends Component {
       
            if(this.domWidthDiff <= 0){
               headStyle.marginBottom = `${scrollbarWidth}px`;
-              // bodyStyle.marginBottom = `-${scrollbarWidth}px`;
+              bodyStyle.marginBottom = `-${scrollbarWidth}px`;
             }else{
               innerBodyStyle.overflowX = 'auto';
             }
@@ -877,11 +902,17 @@ class Table extends Component {
               headStyle.overflow = 'hidden';
               innerBodyStyle.overflowX = 'auto'; //兼容expand场景、子表格含有固定列的场景
             }else{
-              // bodyStyle.marginBottom = `-${scrollbarWidth}px`;
+              bodyStyle.marginBottom = `-${scrollbarWidth}px`;
             }
             
           }else{
-            headStyle.marginBottom = `-${scrollbarWidth}px`;
+              // 没有数据时，表头滚动条隐藏问题
+              if(data.length == 0 && this.domWidthDiff < 0){
+                headStyle.marginBottom = '0px';
+              }else{
+                headStyle.marginBottom = `-${scrollbarWidth}px`;
+              }
+            
           }
           
         }
@@ -924,7 +955,7 @@ class Table extends Component {
       headTable = (
         <div
           className={`${clsPrefix}-header`}
-          ref={fixed ? 'fixedHeadTable' : 'headTable'}
+          ref={(el)=>{fixed ? this.fixedHeadTable=el : this.headTable=el}}
           style={headStyle}
           onMouseOver={this.detectScrollTarget}
           onTouchStart={this.detectScrollTarget}
@@ -1005,7 +1036,10 @@ class Table extends Component {
   }
 
   getEmptyText() {
-    const { emptyText, clsPrefix, data } = this.props;
+    const { emptyText : defaultEmptyText, clsPrefix, data } = this.props;
+    let locale = getComponentLocale(this.props, this.context, 'Table', () => i18n);
+    let emptyText = defaultEmptyText !== undefined ? defaultEmptyText : () => <div><Icon type="uf-nodata" className="table-nodata"></Icon><span>{locale["no_data"]}</span></div>;
+
     return !data.length ? (
       <div className={`${clsPrefix}-placeholder`}>
         {emptyText()}
@@ -1029,8 +1063,8 @@ class Table extends Component {
   syncFixedTableRowHeight() {
     //this.props.height、headerHeight分别为用户传入的行高和表头高度，如果有值，所有行的高度都是固定的，主要为了避免在千行数据中有固定列时获取行高度有问题
     const { clsPrefix, height, headerHeight,columns,heightConsistent } = this.props;
-    const headRows = this.refs.headTable ?
-      this.refs.headTable.querySelectorAll('thead') :
+    const headRows = this.headTable ?
+      this.headTable.querySelectorAll('thead') :
       this.bodyTable.querySelectorAll('thead');
     const bodyRows = this.bodyTable.querySelectorAll(`.${clsPrefix}-row`) || [];
     const leftBodyRows = this.refs.fixedColumnsBodyLeft && this.refs.fixedColumnsBodyLeft.querySelectorAll(`.${clsPrefix}-row`) || [];
@@ -1077,8 +1111,8 @@ class Table extends Component {
   }
 
   resetScrollX() {
-    if (this.refs.headTable) {
-      this.refs.headTable.scrollLeft = 0;
+    if (this.headTable) {
+      this.headTable.scrollLeft = 0;
     }
     if (this.bodyTable) {
       this.bodyTable.scrollLeft = 0;
@@ -1111,9 +1145,9 @@ class Table extends Component {
   
 
   handleBodyScroll(e) {
-
+    const headTable = this.headTable;
     const { scroll = {},clsPrefix,handleScrollY, handleScrollX} = this.props;
-    const { headTable, fixedColumnsBodyLeft, fixedColumnsBodyRight } = this.refs;
+    const {fixedColumnsBodyLeft, fixedColumnsBodyRight } = this.refs;
     // Prevent scrollTop setter trigger onScroll event
     // http://stackoverflow.com/q/1386696
     if (e.currentTarget !== e.target) {
@@ -1191,8 +1225,8 @@ class Table extends Component {
         if(td){
           const scrollTop = this.lastScrollTop ?this.lastScrollTop:0
           let top = td.offsetTop -  scrollTop;
-          if(this.refs.headTable){
-            top = top + this.refs.headTable.clientHeight; 
+          if(this.headTable){
+            top = top + this.headTable.clientHeight; 
           }
           this.hoverDom.style.top = top + 'px';
           this.hoverDom.style.height = td.offsetHeight + 'px';
@@ -1309,5 +1343,8 @@ class Table extends Component {
 
 Table.propTypes = propTypes;
 Table.defaultProps = defaultProps;
+Table.contextTypes = {
+  beeLocale: PropTypes.object
+};
 
 export default Table;

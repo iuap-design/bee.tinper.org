@@ -60,7 +60,7 @@ var defaultProps = {
     iconStyle: 'double',
     autoWidth: false,
     delay: 300,
-    toNumber: true
+    toNumber: false
 };
 
 /**
@@ -78,8 +78,17 @@ function judgeValue(props, oldValue) {
         precision = props.precision,
         onChange = props.onChange;
 
-    if (value) {
-        currentValue = Number(value) || 0;
+    if (value != undefined) {
+        if (value === '') {
+            currentValue = '';
+            return {
+                value: '',
+                minusDisabled: false,
+                plusDisabled: false
+            };
+        } else {
+            currentValue = Number(value) || 0;
+        }
     } else if (min && value != '') {
         currentValue = min;
     } else if (value === '0' || value === 0) {
@@ -96,6 +105,20 @@ function judgeValue(props, oldValue) {
                 plusDisabled: false
             };
         }
+    }
+    if (currentValue == -Infinity) {
+        return {
+            value: min,
+            minusDisabled: true,
+            plusDisabled: false
+        };
+    }
+    if (currentValue == Infinity) {
+        return {
+            value: max,
+            minusDisabled: false,
+            plusDisabled: true
+        };
     }
     if (currentValue <= min) {
         currentMinusDisabled = true;
@@ -119,10 +142,10 @@ function judgeValue(props, oldValue) {
 /**
  * 千分符
  * @param {要转换的数据} num 
- * @param {是否要小数点} point 
  */
-function toThousands(number, point) {
-    if (number == '') return '';
+function toThousands(number) {
+    if (number === '') return '';
+    if (number === '0') return '0';
     var num = (number || 0).toString();
     var integer = num.split('.')[0];
     var decimal = num.split('.')[1] || '';
@@ -160,9 +183,11 @@ var InputNumber = function (_Component) {
         _this.handleChange = function (value) {
             var _this$props = _this.props,
                 onChange = _this$props.onChange,
-                toNumber = _this$props.toNumber;
+                toNumber = _this$props.toNumber,
+                max = _this$props.max,
+                min = _this$props.min;
 
-            if (value == '') {
+            if (value === '') {
                 onChange && onChange(value);
                 _this.setState({
                     value: value
@@ -170,6 +195,8 @@ var InputNumber = function (_Component) {
                 return;
             }
             value = unThousands(value);
+            if (Number(value) > max) return;
+            if (Number(value) < min) return;
             if (isNaN(value) && value != '.') return;
             _this.setState({
                 value: value,
@@ -204,7 +231,7 @@ var InputNumber = function (_Component) {
                 onChange = _this$props3.onChange,
                 toNumber = _this$props3.toNumber;
 
-            if (v == '') {
+            if (v === '') {
                 _this.setState({
                     value: v
                 });
@@ -406,14 +433,21 @@ var InputNumber = function (_Component) {
         return _this;
     }
 
-    InputNumber.prototype.ComponentWillMount = function ComponentWillMount() {};
+    InputNumber.prototype.componentDidMount = function componentDidMount() {
+        this.setState({
+            value: this.props.value,
+            showValue: toThousands(this.props.value)
+        });
+    };
 
     InputNumber.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
         if (this.focus) {
-            this.setState({
-                value: nextProps.value,
-                showValue: toThousands(nextProps.value)
-            });
+            if (nextProps.value == Infinity || nextProps.value == -Infinity) {} else {
+                this.setState({
+                    value: nextProps.value,
+                    showValue: toThousands(nextProps.value)
+                });
+            }
         } else {
             var data = judgeValue(nextProps, this.state.value);
             this.setState({

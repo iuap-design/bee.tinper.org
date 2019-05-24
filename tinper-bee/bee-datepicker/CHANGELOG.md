@@ -1,3 +1,33 @@
+<a name="2.0.37"></a>
+## [2.0.37](https://github.com/tinper-bee/bee-datepicker/compare/v2.0.36...v2.0.37) (2019-05-24)
+
+
+### Features
+
+* **bee-datepicker:** rangepicker 快捷键逻辑修改 ([f0cbf5f](https://github.com/tinper-bee/bee-datepicker/commit/f0cbf5f))
+
+
+
+<a name="2.0.36"></a>
+## [2.0.36](https://github.com/tinper-bee/bee-datepicker/compare/v2.0.35...v2.0.36) (2019-05-21)
+
+
+### Features
+
+* **bee-datepicker:** datepicker rangepicker 面板内输入框错误提示自定义,RangePicker format支持传入数组 ([ab53d57](https://github.com/tinper-bee/bee-datepicker/commit/ab53d57))
+
+
+
+<a name="2.0.35"></a>
+## [2.0.35](https://github.com/tinper-bee/bee-datepicker/compare/v2.0.34...v2.0.35) (2019-05-20)
+
+
+### Features
+
+* **bee-datepicker:** rangepicker 新增showTime ([82b21cf](https://github.com/tinper-bee/bee-datepicker/commit/82b21cf))
+
+
+
 <a name="2.0.34"></a>
 ## [2.0.34](https://github.com/tinper-bee/bee-datepicker/compare/v2.0.33...v2.0.34) (2019-05-17)
 

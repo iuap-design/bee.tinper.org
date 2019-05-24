@@ -403,7 +403,8 @@ DatePicker.defaultProps = {
   onChange: function onChange() {},
   locale: _zh_CN2["default"],
   showMonthInput: false,
-  onKeyDown: function onKeyDown() {}
+  onKeyDown: function onKeyDown() {},
+  renderError: function renderError() {}
 };
 
 exports["default"] = DatePicker;

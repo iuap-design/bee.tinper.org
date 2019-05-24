@@ -1,3 +1,33 @@
+<a name="2.0.25"></a>
+## [2.0.25](https://github.com/tinper-bee/bee-table/compare/v2.0.24...v2.0.25) (2019-05-24)
+
+
+
+<a name="2.0.24"></a>
+## [2.0.24](https://github.com/tinper-bee/bee-table/compare/v2.0.22...v2.0.24) (2019-05-22)
+
+
+
+<a name="2.0.22"></a>
+## [2.0.22](https://github.com/tinper-bee/bee-table/compare/v2.0.21...v2.0.22) (2019-05-22)
+
+
+
+<a name="2.0.21"></a>
+## [2.0.21](https://github.com/tinper-bee/bee-table/compare/v2.0.20...v2.0.21) (2019-05-22)
+
+
+### Bug Fixes
+
+* 数据没有时,表头列过多时,后面的列被隐藏 ([74f5400](https://github.com/tinper-bee/bee-table/commit/74f5400))
+
+
+
+<a name="2.0.20"></a>
+## [2.0.20](https://github.com/tinper-bee/bee-table/compare/v2.0.19...v2.0.20) (2019-05-21)
+
+
+
 <a name="2.0.19"></a>
 ## [2.0.19](https://github.com/tinper-bee/bee-table/compare/v2.0.18...v2.0.19) (2019-05-15)
 
@@ -91,17 +121,17 @@
 
 
 <a name="2.0.9"></a>
-## [2.0.9](https://github.com/tinper-bee/bee-table/compare/v2.0.7...v2.0.9) (2019-03-27)
-
-
-
-<a name="2.0.7"></a>
-## [2.0.7](https://github.com/tinper-bee/bee-table/compare/v2.0.8...v2.0.7) (2019-03-20)
+## [2.0.9](https://github.com/tinper-bee/bee-table/compare/v2.0.8...v2.0.9) (2019-03-27)
 
 
 
 <a name="2.0.8"></a>
-## [2.0.8](https://github.com/tinper-bee/bee-table/compare/v2.0.6...v2.0.8) (2019-03-20)
+## [2.0.8](https://github.com/tinper-bee/bee-table/compare/v2.0.7...v2.0.8) (2019-03-25)
+
+
+
+<a name="2.0.7"></a>
+## [2.0.7](https://github.com/tinper-bee/bee-table/compare/v2.0.6...v2.0.7) (2019-03-20)
 
 
 ### Bug Fixes

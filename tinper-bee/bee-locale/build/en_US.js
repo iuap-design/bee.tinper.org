@@ -16,7 +16,14 @@ exports["default"] = {
         'equal': 'equal',
         'unequal': 'unequal',
         'begin': 'begin',
-        'end': 'end'
+        'end': 'end',
+        'greater_than': 'greater than',
+        'great_than_equal_to': 'great than equal to',
+        'less_than': 'less than',
+        'less_than_equal_to': 'less than equal to',
+        'be_equal_to': 'be equal to',
+        'not_equal_to': 'not equal to',
+        "no_data": 'no data'
     },
     Clipboard: {
         'copy': 'copy',

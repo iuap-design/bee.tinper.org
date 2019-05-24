@@ -149,7 +149,7 @@ class FormControl extends React.Component {
                         onChange={this.handleChange}
                         onBlur={this.handleBlur}
                         onFocus={this.handleFocus}
-                        className={classnames(className, classNames)}
+                        className={classnames(classNames)}
                     />
                     <div className={`${clsPrefix}-suffix`}>
                         {
@@ -205,7 +205,7 @@ class FormControl extends React.Component {
                         onKeyDown={this.handleKeyDown}
                         onBlur={this.handleBlur}
                         onFocus={this.handleFocus}
-                        className={classnames(className, clsPrefix, classes)}
+                        className={classnames(clsPrefix, classes)}
                     />
                     <div className={`${clsPrefix}-suffix`}>
                         <Icon type="uf-search" onClick={this.handleSearch}/>

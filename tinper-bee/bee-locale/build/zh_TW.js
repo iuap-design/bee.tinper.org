@@ -16,7 +16,14 @@ exports["default"] = {
         'equal': '等於',
         'unequal': '不等於',
         'begin': '以開始',
-        'end': '以結尾'
+        'end': '以結尾',
+        'greater_than': '大於',
+        'great_than_equal_to': '大於等於',
+        'less_than': '小於',
+        'less_than_equal to': '小於等於',
+        'be_equal_to': '等於',
+        'not_equal_to': '不等於',
+        "no_data": '暫無數據'
     },
     Clipboard: {
         'copy': '複製',

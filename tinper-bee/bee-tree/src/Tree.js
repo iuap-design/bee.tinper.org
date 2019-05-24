@@ -759,7 +759,8 @@ onExpand(treeNode,keyType) {
       closeIcon: props.closeIcon,
       focusable:props.focusable,
       tabIndexKey: state.selectedKeys[0],
-      tabIndexValue:props.tabIndexValue
+      tabIndexValue:props.tabIndexValue,
+      ext:child.props.ext
     };
     if (props.checkable) {
       cloneProps.checkable = props.checkable;

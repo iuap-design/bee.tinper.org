@@ -56,7 +56,7 @@ class CheckboxGroup extends React.Component {
                         {
                             onChange:()=>{this.changeHandle(child.props.value)},
                             checked:this.state.values.indexOf(child.props.value)!=-1,
-                            disabled: disabled
+                            disabled: child.props.disabled || disabled
                         }
                     ))
                }

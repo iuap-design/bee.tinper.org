@@ -64,7 +64,7 @@ class RadioGroup extends React.Component {
         array.push(item.props.value)
       })
     }else{
-      array.push(children.props.value);
+      array.push(children[0].props.value);
     }
     return array;
   }

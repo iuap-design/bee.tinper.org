@@ -80,7 +80,7 @@ class Demo2 extends Component{
     const loop = data => data.map((item) => {
       if (item.children) {
         return (
-          <TreeNode key={item.key} title={item.key} disableCheckbox={item.key === '0-0-0'}>
+          <TreeNode key={item.key} title={item.key} disableCheckbox={item.key === '0-0-0'} ext={{'as':'sdfa'}}>
             {loop(item.children)}
           </TreeNode>
         );

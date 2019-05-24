@@ -233,21 +233,25 @@
            border-radius: 50%;
            cursor: pointer;
            float: left;
-           height: 24px;
+           height: 40px;
            overflow: hidden;
            transition: background-color .15s;
-           width: 24px;
+           width: 40px;
    
            &:hover {
              background-color: rgba(0, 0, 0, .8);
            }
    
            &::before {
-             margin: 2px;
+             margin: 10px;
            }
    
            & + li {
-             margin-left: 1px;
+             margin-left: 2px;
+           }
+
+           &:nth-child(4), &:nth-child(5), &:nth-child(8), &:nth-child(10), &:nth-child(12) {
+            margin-left: 16px;
            }
          }
    
@@ -263,13 +267,13 @@
          }
    
          & > .viewer-large {
-           height: 30px;
+           height: 48px;
            margin-bottom: -3px;
            margin-top: -3px;
-           width: 30px;
+           width: 48px;
    
            &::before {
-             margin: 5px;
+             margin: 14px;
            }
          }
        }

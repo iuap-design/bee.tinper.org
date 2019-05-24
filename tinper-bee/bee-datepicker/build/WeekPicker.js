@@ -203,7 +203,7 @@ var WeekPicker = function (_Component) {
     };
 
     _this.onClear = function (e) {
-      e.stopPropagation();
+      e && e.stopPropagation && e.stopPropagation();
       _this.setState({
         value: ''
       });

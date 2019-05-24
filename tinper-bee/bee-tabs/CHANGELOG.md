@@ -1,3 +1,8 @@
+<a name="2.0.6"></a>
+## [2.0.6](https://github.com/tinper-bee/bee-tabs/compare/v2.0.5...v2.0.6) (2019-05-21)
+
+
+
 <a name="2.0.5"></a>
 ## [2.0.5](https://github.com/tinper-bee/bee-tabs/compare/v2.0.4...v2.0.5) (2019-05-15)
 
@@ -14,17 +19,7 @@
 
 
 <a name="2.0.2"></a>
-## [2.0.2](https://github.com/tinper-bee/bee-tabs/compare/v2.0.1...v2.0.2) (2019-03-18)
-
-
-
-<a name="2.0.1"></a>
-## [2.0.1](https://github.com/tinper-bee/bee-tabs/compare/v2.0.0...v2.0.1) (2019-03-18)
-
-
-
-<a name="2.0.0"></a>
-# [2.0.0](https://github.com/tinper-bee/bee-tabs/compare/v1.0.10...v2.0.0) (2019-02-16)
+## [2.0.2](https://github.com/tinper-bee/bee-tabs/compare/v1.0.10...v2.0.2) (2019-03-18)
 
 
 

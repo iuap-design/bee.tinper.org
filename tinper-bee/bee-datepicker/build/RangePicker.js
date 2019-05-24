@@ -12,6 +12,10 @@ var _RangeCalendar = require("./rc-calendar/RangeCalendar");
 
 var _RangeCalendar2 = _interopRequireDefault(_RangeCalendar);
 
+var _Panel = require("rc-time-picker/lib/Panel");
+
+var _Panel2 = _interopRequireDefault(_Panel);
+
 var _beeFormControl = require("bee-form-control");
 
 var _beeFormControl2 = _interopRequireDefault(_beeFormControl);
@@ -33,6 +37,8 @@ var _classnames = require("classnames");
 var _classnames2 = _interopRequireDefault(_classnames);
 
 var _tinperBeeCore = require("tinper-bee-core");
+
+var _util = require("./rc-calendar/util");
 
 var _zh_CN = require("./locale/zh_CN");
 
@@ -59,9 +65,17 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 */
 
 
-function format(v, f) {
-    return v ? v.format && v.format(f) : '';
-}
+// function formatDate(value,format) {
+//     if (!value) {
+//         return '';
+//       }
+
+//       if (Array.isArray(format)) {
+//         format = format[0];
+//       }
+
+//       return value.formatDate(format);
+// }
 
 var fullFormat = "YYYY-MM-DD";
 
@@ -78,6 +92,8 @@ if (cn) {
 } else {
     now.locale("en-gb").utcOffset(0);
 }
+
+var timePickerElement = _react2["default"].createElement(_Panel2["default"], { defaultValue: (0, _moment2["default"])((0, _moment2["default"])().format("HH:mm:ss"), "HH:mm:ss") });
 
 var RangePicker = function (_Component) {
     _inherits(RangePicker, _Component);
@@ -129,7 +145,9 @@ var RangePicker = function (_Component) {
             showClear: props.showClear,
             showOk: props.showOk,
             showToday: props.showToday,
-            renderFooter: props.renderFooter
+            renderFooter: props.renderFooter,
+            timePicker: props.showTime ? timePickerElement : null,
+            renderError: props.renderError
         });
 
         return _react2["default"].createElement(
@@ -154,7 +172,7 @@ var RangePicker = function (_Component) {
                     },
                     _react2["default"].createElement(_beeFormControl2["default"], {
                         placeholder: _this2.props.placeholder ? _this2.props.placeholder : 'start ~ end',
-                        value: isValidRange(value) && format(value[0], formatStr) + " ~ " + format(value[1], formatStr) || '',
+                        value: isValidRange(value) && (0, _util.formatDate)(value[0], formatStr) + " ~ " + (0, _util.formatDate)(value[1], formatStr) || '',
                         disabled: props.disabled
                     }),
                     _this2.state.value && _this2.state.showClose && !props.disabled ? _react2["default"].createElement(
@@ -188,7 +206,7 @@ var _initialiseProps = function _initialiseProps() {
         //传入value和dateString
         if (props.onChange && isValidRange(value) || value.length == 0) {
             if (value.length > 0) {
-                props.onChange(value, "[\"" + format(value[0], formatStr) + "\" , \"" + format(value[1], formatStr) + "\"]");
+                props.onChange(value, "[\"" + (0, _util.formatDate)(value[0], formatStr) + "\" , \"" + (0, _util.formatDate)(value[1], formatStr) + "\"]");
             } else {
                 props.onChange(null);
             }
@@ -236,23 +254,37 @@ var _initialiseProps = function _initialiseProps() {
     };
 
     this.inputFocus = function () {
-        var format = _this3.props.format;
-
         var inputs = document.querySelectorAll('.rc-calendar-input');
         if (inputs[0].value) {
             inputs[0].select();
         } else {
             inputs[0].focus();
         }
-        inputs[0].onkeydown = _this3.keydown;
-        inputs[1].onkeydown = _this3.keydown;
+        inputs[0].onkeydown = _this3.keydownLeft;
+        inputs[1].onkeydown = _this3.keydownRight;
     };
 
-    this.keydown = function (e) {
+    this.keydownLeft = function (e) {
+        var inputs = document.querySelectorAll('.rc-calendar-input');
         if (e.keyCode == _tinperBeeCore.KeyCode.ESC) {
             _this3.setState({
                 open: false
             });
+        }
+        if (e.keyCode == _tinperBeeCore.KeyCode.RIGHT || e.keyCode == _tinperBeeCore.KeyCode.LEFT) {
+            inputs[1].focus();
+        }
+    };
+
+    this.keydownRight = function (e) {
+        var inputs = document.querySelectorAll('.rc-calendar-input');
+        if (e.keyCode == _tinperBeeCore.KeyCode.ESC) {
+            _this3.setState({
+                open: false
+            });
+        }
+        if (e.keyCode == _tinperBeeCore.KeyCode.LEFT || e.keyCode == _tinperBeeCore.KeyCode.RIGHT) {
+            inputs[0].focus();
         }
     };
 };

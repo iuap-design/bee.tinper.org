@@ -148,6 +148,7 @@ $tabs-border-color: rgb(233,233,233);
 
   .u-tabs-content .u-tabs-tabpane {
     overflow: auto;
+    min-width: 1px;
   }
 
   .u-tabs-content-animated {
@@ -189,6 +190,9 @@ $tabs-border-color: rgb(233,233,233);
     height: 100%;
     margin-right: 16px;
     border-right: 1px solid $tabs-border-color;
+  }
+  .u-tabs-top .u-tabs-bar {
+    height: 54px;
   }
   
   .u-tabs-nav-container {
@@ -285,6 +289,7 @@ $tabs-border-color: rgb(233,233,233);
   .u-tabs-ink-bar {
     width: 2px;
     right: 0;
+    height: auto;
   }
   
   .u-tabs-tab {
@@ -599,6 +604,7 @@ $tabs-border-color: rgb(233,233,233);
     height: 2px;
     bottom: 0;
     left: 0;
+    width: auto;
   }
   
   .u-tabs-tab {
@@ -715,6 +721,9 @@ $tabs-border-color: rgb(233,233,233);
   .u-tabs-bar, .u-tabs-nav-container {
     background: #f5f5f5;
   }
+  .u-tabs-bar {
+    border: none;
+  }
   .u-tabs-nav {
     .u-tabs-tab:first-child {
       margin-left: 5px;
@@ -725,6 +734,7 @@ $tabs-border-color: rgb(233,233,233);
       margin-right: 0;
       padding: 14px 16px 9px 16px;
       line-height: 1;
+      border-bottom: 1px solid #e9e9e9;
       &::before {
         content: '';
         position: absolute;
@@ -759,6 +769,9 @@ $tabs-border-color: rgb(233,233,233);
       }
       &-active {
         color: $brand-primary;
+        border-left: 1px solid #e9e9e9;
+        border-right: 1px solid #e9e9e9;
+        border-bottom: 1px solid #fff;
         &::after {
           // -webkit-transform: perspective(900px) rotate3d(1, 0, 0, 0deg);
           // transform: perspective(900px) rotate3d(1, 0, 0, 0deg);

@@ -24,7 +24,7 @@ const defaultProps = {
     iconStyle: 'double',
     autoWidth: false,
     delay: 300,
-    toNumber:true
+    toNumber:false
 };
 
 /**
@@ -37,8 +37,17 @@ function judgeValue(props,oldValue) {
     let currentMinusDisabled = false;
     let currentPlusDisabled = false;
     let { value,min,max,precision,onChange } = props;
-    if (value) {
-        currentValue = Number(value) ||0;
+    if (value!=undefined) {
+        if(value===''){
+            currentValue='';
+            return {
+                value: '',
+                minusDisabled: false,
+                plusDisabled: false
+            }
+        }else{
+            currentValue = Number(value) ||0;
+        }
     } else if (min&&(value!='')) {
         currentValue = min;
     } else if(value==='0'||value===0){
@@ -52,6 +61,20 @@ function judgeValue(props,oldValue) {
                 minusDisabled: false,
                 plusDisabled: false
             }
+        }
+    }
+    if(currentValue==-Infinity){
+        return {
+            value: min,
+            minusDisabled: true,
+            plusDisabled: false
+        }
+    }
+    if(currentValue==Infinity){
+        return {
+            value: max,
+            minusDisabled: false,
+            plusDisabled: true
         }
     }
     if (currentValue <= min) {
@@ -76,10 +99,10 @@ function judgeValue(props,oldValue) {
 /**
  * 千分符
  * @param {要转换的数据} num 
- * @param {是否要小数点} point 
  */
-function toThousands(number,point) {
-    if(number=='')return '';
+function toThousands(number) {
+    if(number==='')return '';
+    if(number==='0')return '0';
     let num = (number || 0).toString();
     let integer = num.split('.')[0];
     let decimal = num.split('.')[1]||'';
@@ -126,15 +149,23 @@ class InputNumber extends Component {
         this.focus = false;
     }
 
-    ComponentWillMount() {
-
+    componentDidMount(){
+        this.setState({
+            value: this.props.value,
+            showValue:toThousands(this.props.value)
+        });
     }
     componentWillReceiveProps(nextProps){
         if(this.focus){
-            this.setState({
-                value: nextProps.value,
-                showValue:toThousands(nextProps.value),
-            });
+            if(nextProps.value==Infinity||nextProps.value==-Infinity){
+                
+            }else{
+                this.setState({
+                    value: nextProps.value,
+                    showValue:toThousands(nextProps.value),
+                });
+            }
+            
         }else{
             let data = judgeValue(nextProps,this.state.value);
             this.setState({
@@ -144,7 +175,6 @@ class InputNumber extends Component {
                 plusDisabled: data.plusDisabled
             });
         }
-        
     }
 
     ComponentWillUnMount() {
@@ -152,15 +182,17 @@ class InputNumber extends Component {
     }
 
     handleChange = (value) => {
-        const { onChange,toNumber } = this.props;
-        if(value==''){
+        const { onChange,toNumber,max,min } = this.props;
+        if(value===''){
             onChange && onChange(value);
             this.setState({
                 value
             })
             return;
         }
-        value = unThousands(value)
+        value = unThousands(value);
+        if(Number(value)>max)return;
+        if(Number(value)<min)return;
         if(isNaN(value)&&(value!='.'))return;
         this.setState({
             value,
@@ -186,7 +218,7 @@ class InputNumber extends Component {
     handleBlur = (v) => {
         this.focus = false;        
         const { onBlur,precision,onChange,toNumber } = this.props;
-        if(v==''){
+        if(v===''){
             this.setState({
                 value:v
             })

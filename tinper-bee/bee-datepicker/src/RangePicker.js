@@ -3,21 +3,31 @@
  */
 import React, { Component } from "react";
 import RangeCalendar from "./rc-calendar/RangeCalendar";
+import TimePickerPanel from "rc-time-picker/lib/Panel";
 import FormControl from "bee-form-control";
 import Picker from "./rc-calendar/Picker";
 import InputGroup from 'bee-input-group';
 import Icon from "bee-icon";
 import classNames from 'classnames';
 import { KeyCode } from 'tinper-bee-core';
-
+import { formatDate } from './rc-calendar/util';
 import zhCN from "./locale/zh_CN";
+import { fireKeyEvent } from './rc-calendar/util'
 
 import moment from "moment";
 import "moment/locale/zh-cn";
 
-function format(v,f) {
-    return v ? v.format&&v.format(f) : '';
-}
+// function formatDate(value,format) {
+//     if (!value) {
+//         return '';
+//       }
+    
+//       if (Array.isArray(format)) {
+//         format = format[0];
+//       }
+    
+//       return value.formatDate(format);
+// }
 
 const fullFormat = "YYYY-MM-DD";
 
@@ -36,6 +46,11 @@ if (cn) {
 } else {
   now.locale("en-gb").utcOffset(0);
 }
+
+const timePickerElement = (
+    <TimePickerPanel defaultValue={moment(moment().format("HH:mm:ss"), "HH:mm:ss")} />
+  );
+  
 
 class RangePicker extends Component {
   constructor(props, context) {
@@ -67,7 +82,7 @@ class RangePicker extends Component {
         //传入value和dateString
         if(props.onChange&&isValidRange(value)||value.length==0){
             if(value.length>0){
-                props.onChange(value,`["${format(value[0],formatStr)}" , "${format(value[1],formatStr)}"]`);
+                props.onChange(value,`["${formatDate(value[0],formatStr)}" , "${formatDate(value[1],formatStr)}"]`);
             }
             else {
                 props.onChange(null)
@@ -113,21 +128,36 @@ class RangePicker extends Component {
         })
     }
     inputFocus=()=>{
-        const { format } = this.props;
         let inputs = document.querySelectorAll('.rc-calendar-input');
         if(inputs[0].value){
             inputs[0].select()
         }else{
             inputs[0].focus()
         }
-        inputs[0].onkeydown=this.keydown;
-        inputs[1].onkeydown=this.keydown;
+        inputs[0].onkeydown=this.keydownLeft;
+        inputs[1].onkeydown=this.keydownRight;
     }
-    keydown=(e)=>{
+
+    keydownLeft=(e)=>{
+        let inputs = document.querySelectorAll('.rc-calendar-input');
         if(e.keyCode == KeyCode.ESC){
             this.setState({
                 open:false
             });
+        }
+        if(e.keyCode == KeyCode.RIGHT||e.keyCode == KeyCode.LEFT){
+            inputs[1].focus()
+        }
+    }
+    keydownRight=(e)=>{
+        let inputs = document.querySelectorAll('.rc-calendar-input');
+        if(e.keyCode == KeyCode.ESC){
+            this.setState({
+                open:false
+            });
+        }
+        if(e.keyCode == KeyCode.LEFT||e.keyCode == KeyCode.RIGHT){
+            inputs[0].focus()
         }
     }
     render() {
@@ -150,6 +180,8 @@ class RangePicker extends Component {
             showOk={props.showOk}
             showToday={props.showToday}
             renderFooter={props.renderFooter}
+            timePicker={props.showTime ? timePickerElement : null}
+            renderError={props.renderError}
         />
     );
 
@@ -172,7 +204,7 @@ class RangePicker extends Component {
                     >
                         <FormControl
                             placeholder={this.props.placeholder?this.props.placeholder:'start ~ end'}
-                            value={isValidRange(value) && `${format(value[0],formatStr)} ~ ${format(value[1],formatStr)}` || ''}
+                            value={isValidRange(value) && `${formatDate(value[0],formatStr)} ~ ${formatDate(value[1],formatStr)}` || ''}
                             disabled={props.disabled}
                         />
                         {

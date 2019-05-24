@@ -133,6 +133,7 @@ titleStyle|名称样式|Object|-
 switcherClass|switcher类名|String|-
 switcherStyle|switcher样式|Object|-
 Children|TreeNode组件/无|node|-
+ext|用户自定义的扩展数据，可以通过treeNode.props.ext获取|Object|-
 
 
 ## 快捷键API

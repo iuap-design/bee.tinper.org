@@ -152,9 +152,10 @@ class Pagination extends React.Component {
                 items: Number.isNaN(parseInt(nextProps.dataNumSelect[nextProps.dataNum])) ? 1:Math.ceil(nextProps.total / nextProps.dataNumSelect[nextProps.dataNum])
             })
         }
-        if (nextProps.items && this.props.items !== nextProps.items) {
+        if ('items' in nextProps && this.props.items !== nextProps.items) {
+            let newItems = nextProps.items === 0 ? 1 : nextProps.items;
             this.setState({
-                items: nextProps.items,
+                items: newItems,
             })
         }
     }

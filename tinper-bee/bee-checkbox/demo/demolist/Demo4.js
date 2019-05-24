@@ -43,7 +43,7 @@ class Demo4 extends Component {
 						5
 					</Checkbox>
 				</CheckboxGroup>
-				<CheckboxGroup disabled value={this.state.value2}>
+				<CheckboxGroup disabled value={this.state.value2} >
 					<Checkbox value='1'>
 						1
 					</Checkbox>

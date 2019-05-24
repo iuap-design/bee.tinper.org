@@ -102,7 +102,7 @@ var CheckboxGroup = function (_React$Component) {
                         _this2.changeHandle(child.props.value);
                     },
                     checked: _this2.state.values.indexOf(child.props.value) != -1,
-                    disabled: disabled
+                    disabled: child.props.disabled || disabled
                 });
             })
         );

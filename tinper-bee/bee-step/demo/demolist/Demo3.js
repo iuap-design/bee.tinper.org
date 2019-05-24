@@ -55,7 +55,7 @@ class Demo3 extends Component {
           {
             this.state.current > 0
             &&
-            <Button colors="primary" style={{ marginRight: 8 }} onClick={() => this.prev()}>
+            <Button bordered style={{ marginRight: 8 }} onClick={() => this.prev()}>
               上一步
             </Button>
           }
