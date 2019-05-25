@@ -7,7 +7,7 @@ let components = require('../../static/components.json');
 let sidebar = require('../../static/sidebar.json');
 const newComReg = /- (.*)@/g;
 const auth = {
-    token: '3d063d754c3fc24d7b6e5292efd6489b36c799ce',
+    token: '',
     user: 'liushaozhen'
 }
 
