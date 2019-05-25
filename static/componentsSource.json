@@ -257,6 +257,12 @@
 
         ]
     },
+    "bee-tree-select": {
+        "name": "树选择",
+        "versions": [
+
+        ]
+    },
     "bee-cascader": {
         "name": "级联菜单",
         "versions": [

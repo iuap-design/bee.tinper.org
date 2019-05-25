@@ -217,6 +217,8 @@ body {
     width: 80px;
     display: inline-block;
     height: 24px;
+    position: relative;
+    top: 3px;
 }
 .docs .doc-content .title-right #tagSelect .u-select-selection{
     height: 24px;
@@ -231,6 +233,9 @@ body {
     color: #8D99AE;
 }
 .docs .doc-content .title-right #tagSelect .u-select-selection-rendered{
+    line-height: 24px;
+}
+.docs .doc-content .title-right #tagSelect .u-select-selection-rendered .u-select-selection-selected-value{
     line-height: 24px;
 }
 #tagList.select-list .u-select-dropdown{
