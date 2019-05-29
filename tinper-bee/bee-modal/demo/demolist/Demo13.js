@@ -51,7 +51,6 @@ class Demo13 extends Component {
             </Button>​
             <Modal
             show = { this.state.showModal }
-            draggable={true}
             backdropClosable={false}
             resizable={true}
             resizeClassName="resize-box"

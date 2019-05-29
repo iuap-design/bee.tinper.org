@@ -1,7 +1,7 @@
 /**
  *
  * @title 可拖拽Header的模态框
- * @description 通过`draggable`参数设置是否可拖拽
+ * @description 通过`draggable`参数设置是否可拖拽。注意：模态框 header 内，若有绑定事件的元素，需要添加一个 className="dnd-cancel"，才能正常触发相应事件。
  *
  */
 
@@ -22,6 +22,7 @@ class Demo11 extends Component {
         super(props);
         this.state = {
             showModal: false,
+            checked: false,
             data: [
                 { a: "杨过", b: "男", c: 30, d: '内行', key: "2", _checked: true },
                 { a: "令狐冲", b: "男", c: 41, d: '大侠', key: "1", _checked: true },
@@ -30,8 +31,6 @@ class Demo11 extends Component {
         };
 
     }
-
-
 
     columns = [
         {
@@ -89,6 +88,10 @@ class Demo11 extends Component {
         console.log('stop');
     }
 
+    changeCheck=()=> {
+        this.setState({checked:!this.state.checked});
+    }
+
     render () {
         let multiObj = {
             type: "checkbox"
@@ -111,7 +114,15 @@ class Demo11 extends Component {
                     draggable={true}
                 >
                     <Modal.Header closeButton>
-                        <Modal.Title>此标题可拖拽</Modal.Title>
+                        <Modal.Title>
+                        <Checkbox 
+                            className="dnd-cancel"
+                            checked={this.state.checked}  
+                            onChange={this.changeCheck}
+                        >
+                            可勾选的标题
+                        </Checkbox>
+                        </Modal.Title>
                     </Modal.Header>
 
                     <Modal.Body>

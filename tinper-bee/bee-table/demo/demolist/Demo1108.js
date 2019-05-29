@@ -7,6 +7,7 @@
 */
 
 import React, { Component } from "react";
+import Button from 'bee-button';
 import Table from "../../src";
 
 const renderContent = (value, row, index) => {
@@ -74,6 +75,45 @@ const columns = [{
   render: renderContent,
 }];
 
+
+const columns1 =  [{
+  title: '姓名',
+  key: "name",
+  dataIndex: 'name',
+  render: (text, row, index) => {
+    if (index < 4) {
+      return <a href="#">{text}</a>;
+    }
+    return {
+      children: <a href="#">{text}</a>,
+      props: {
+        colSpan: 5,
+      },
+    };
+  },
+}, {
+  title: '年龄',
+  key: "age",
+  dataIndex: 'age',
+  render: renderContent,
+}, {
+  title: '联系方式',
+  colSpan: 2,
+  key: "tel",
+  dataIndex: 'tel',
+  render: renderContent
+}, {
+  title: '手机号',
+  colSpan: 0,
+  key: "phone",
+  dataIndex: 'phone',
+  render: renderContent,
+}, {
+  title: '家庭住址',
+  key: "address",
+  dataIndex: 'address',
+  render: renderContent,
+}];
 const data = [{
   key: '1',
   name: '小红',
@@ -112,9 +152,26 @@ const data = [{
 }];
 
 class Demo15 extends Component {
+  constructor(props){
+    super(props);
+    this.state={
+      colFlag:false
+    }
+  }
+  onChange=()=>{
+    const colFlag = this.state.colFlag;
+    this.setState({
+      colFlag:!colFlag
+    })
+  }
   render() {
+    let cols = this.state.colFlag?columns:columns1;
     return (
-       <Table columns={columns} data={data} bordered/>
+      <div>
+        <Button onClick={this.onChange} colors="secondary" style={{marginBottom:'8px'}}>change列</Button>
+        <Table columns={cols} data={data} bordered/>
+      </div>
+      
     );
   }
 }

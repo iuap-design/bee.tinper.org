@@ -82,7 +82,7 @@ var RadioGroup = function (_React$Component) {
           array.push(item.props.value);
         });
       } else {
-        array.push(children[0].props.value);
+        array.push(children.props.value);
       }
       return array;
     };

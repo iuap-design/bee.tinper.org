@@ -112,6 +112,8 @@ var DatePicker = function (_Component) {
 
     var state = this.state;
     var props = this.props;
+    var showClose = props.showClose;
+
     var value = state.value;
     var pickerChangeHandler = {};
     var calendarHandler = {};
@@ -182,7 +184,7 @@ var DatePicker = function (_Component) {
               },
               onKeyDown: _this2.outInputKeydown
             }, keyboardInputProps, autofocus)),
-            _this2.state.value && _this2.state.showClose && !props.disabled ? _react2["default"].createElement(
+            showClose && _this2.state.value && _this2.state.showClose && !props.disabled ? _react2["default"].createElement(
               _beeInputGroup2["default"].Button,
               { shape: "border",
                 onClick: _this2.clear },
@@ -404,7 +406,8 @@ DatePicker.defaultProps = {
   locale: _zh_CN2["default"],
   showMonthInput: false,
   onKeyDown: function onKeyDown() {},
-  renderError: function renderError() {}
+  renderError: function renderError() {},
+  showClose: true
 };
 
 exports["default"] = DatePicker;

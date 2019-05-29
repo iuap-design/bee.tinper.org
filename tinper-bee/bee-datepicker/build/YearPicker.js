@@ -102,8 +102,9 @@ var YearPicker = function (_Component) {
         var _this2 = this;
 
         var state = this.state;
-
         var props = this.props;
+        var showClose = props.showClose;
+
         var value = state.value;
 
         var Calendar = _react2["default"].createElement(_YearPanel2["default"], _extends({
@@ -148,7 +149,7 @@ var YearPicker = function (_Component) {
                             readOnly: true,
                             value: value && value.format(props.format) || ""
                         }),
-                        _this2.state.value && _this2.state.showClose && !props.disabled ? _react2["default"].createElement(
+                        showClose && _this2.state.value && _this2.state.showClose && !props.disabled ? _react2["default"].createElement(
                             _beeInputGroup2["default"].Button,
                             { shape: "border",
                                 onClick: _this2.clear },
@@ -259,7 +260,8 @@ YearPicker.defaultProps = {
     renderIcon: function renderIcon() {
         return _react2["default"].createElement(_beeIcon2["default"], { type: "uf-calendar" });
     },
-    disabled: false
+    disabled: false,
+    showClose: true
 };
 
 exports["default"] = YearPicker;

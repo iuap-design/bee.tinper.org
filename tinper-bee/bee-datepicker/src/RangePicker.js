@@ -12,7 +12,6 @@ import classNames from 'classnames';
 import { KeyCode } from 'tinper-bee-core';
 import { formatDate } from './rc-calendar/util';
 import zhCN from "./locale/zh_CN";
-import { fireKeyEvent } from './rc-calendar/util'
 
 import moment from "moment";
 import "moment/locale/zh-cn";
@@ -93,6 +92,7 @@ class RangePicker extends Component {
 
     onHoverChange = (hoverValue) => {
         this.setState({ hoverValue });
+        this.props.onHoverChange&&this.props.onHoverChange(hoverValue)
     }
 
     remove = (e) => {
@@ -162,7 +162,7 @@ class RangePicker extends Component {
     }
     render() {
     const props = this.props;
-    const { showValue } = props;
+    const { showClose } = props;
     const {value} = this.state;
     let formatStr = props.format || 'YYYY-MM-DD';
 
@@ -208,7 +208,7 @@ class RangePicker extends Component {
                             disabled={props.disabled}
                         />
                         {
-                            this.state.value&&this.state.showClose&&(!props.disabled)?(
+                            showClose&&(this.state.value.length>0)&&this.state.showClose&&(!props.disabled)?(
                             <InputGroup.Button shape="border" 
                                 onClick={this.clear}>
                                 { props.closeIcon() }
@@ -231,7 +231,8 @@ RangePicker.defaultProps = {
     locale:zhCN,
     showClear:true,
     showToday:true,
-    showOk:true
+    showOk:true,
+    showClose:true
 }
 
 export default RangePicker;

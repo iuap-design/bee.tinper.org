@@ -23,6 +23,7 @@ const propTypes = {
     placeholder: PropTypes.string,
     required: PropTypes.bool,
     disabled: PropTypes.bool,
+    disabledAlpha: PropTypes.bool,
     autoCalculate: PropTypes.func,
     onChange: PropTypes.func,
 };
@@ -34,6 +35,7 @@ const defaultProps = {
     required: false,
     autoCalculate: false,
     disabled: false,
+    disabledAlpha: false,
     autoCalculate: () => {},
     onChange: () => {}
 };
@@ -338,6 +340,7 @@ class ColorPicker extends Component {
             placeholder,
             className,
             disabled,
+            disabledAlpha,
             ...others
         } = this.props;
         const {
@@ -378,16 +381,6 @@ class ColorPicker extends Component {
                             placeholder={placeholder} 
                             value={formValue} 
                             onChange={this.handleChange}
-                            // {...getFieldProps('hexadecimal', {
-                            //     initialValue: formValue,
-                            //     validateTrigger: 'onBlur',
-                            //     rules: rules,
-                            //     onChange(value) {
-                            //         if (onChange) {
-                            //             onChange(value);
-                            //         }
-                            //     }
-                            // }) }
                         />
                         <div style={{backgroundColor:formValue}}
                             className={`${clsPrefix}-form-color-demo`} 
@@ -441,7 +434,7 @@ class ColorPicker extends Component {
                                                 <FormItem>
                                                     <Label>Alpha</Label>
                                                     <InputGroup>
-                                                        <FormControl size="sm" value={alpha} onChange={this.handleAlphaChange}/>
+                                                        <FormControl size="sm" value={alpha} onChange={this.handleAlphaChange} disabled={disabledAlpha}/>
                                                         <InputGroup.Addon>%</InputGroup.Addon>
                                                     </InputGroup>
                                                 </FormItem>

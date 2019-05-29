@@ -232,13 +232,14 @@ var _initialiseProps = function _initialiseProps() {
         onSelect = _props2.onSelect,
         value = _props2.value,
         onKeyDown = _props2.onKeyDown,
-        format = _props2.format;
+        format = _props2.format,
+        isRange = _props2.isRange;
 
     var str = e.target.value;
     var parsed = (0, _moment2["default"])(str, format, true);
     if (e.keyCode === _KeyCode2["default"].ENTER) {
       if (parsed.isValid() && onSelect) {
-        onSelect(value.clone());
+        isRange ? onSelect(parsed.clone()) : onSelect(value.clone()); //FIX https://github.com/iuap-design/tinper-bee/issues/183
       }
     }
     // if (e.keyCode === KeyCode.ENTER && onSelect) {

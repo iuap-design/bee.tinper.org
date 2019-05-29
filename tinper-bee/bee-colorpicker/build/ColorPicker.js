@@ -83,6 +83,7 @@ var propTypes = {
     placeholder: _propTypes2["default"].string,
     required: _propTypes2["default"].bool,
     disabled: _propTypes2["default"].bool,
+    disabledAlpha: _propTypes2["default"].bool,
     autoCalculate: _propTypes2["default"].func,
     onChange: _propTypes2["default"].func
 };
@@ -93,7 +94,8 @@ var defaultProps = (_defaultProps = {
     placeholder: "",
     required: false,
     autoCalculate: false,
-    disabled: false
+    disabled: false,
+    disabledAlpha: false
 }, _defineProperty(_defaultProps, 'autoCalculate', function autoCalculate() {}), _defineProperty(_defaultProps, 'onChange', function onChange() {}), _defaultProps);
 
 var initRgb = _colors2["default"]['red'].rgbArr[6] ? 'rgb(' + _colors2["default"]['red'].rgbArr[6] + ')' : '';
@@ -461,7 +463,8 @@ var ColorPicker = function (_Component) {
             placeholder = _props.placeholder,
             className = _props.className,
             disabled = _props.disabled,
-            others = _objectWithoutProperties(_props, ['clsPrefix', 'onChange', 'value', 'label', 'required', 'placeholder', 'className', 'disabled']);
+            disabledAlpha = _props.disabledAlpha,
+            others = _objectWithoutProperties(_props, ['clsPrefix', 'onChange', 'value', 'label', 'required', 'placeholder', 'className', 'disabled', 'disabledAlpha']);
 
         var _state = this.state,
             selectedColor = _state.selectedColor,
@@ -505,16 +508,6 @@ var ColorPicker = function (_Component) {
                         placeholder: placeholder,
                         value: formValue,
                         onChange: this.handleChange
-                        // {...getFieldProps('hexadecimal', {
-                        //     initialValue: formValue,
-                        //     validateTrigger: 'onBlur',
-                        //     rules: rules,
-                        //     onChange(value) {
-                        //         if (onChange) {
-                        //             onChange(value);
-                        //         }
-                        //     }
-                        // }) }
                     }),
                     _react2["default"].createElement('div', { style: { backgroundColor: formValue },
                         className: clsPrefix + '-form-color-demo',
@@ -637,7 +630,7 @@ var ColorPicker = function (_Component) {
                                                 _react2["default"].createElement(
                                                     _beeInputGroup2["default"],
                                                     null,
-                                                    _react2["default"].createElement(_beeFormControl2["default"], { size: 'sm', value: alpha, onChange: this.handleAlphaChange }),
+                                                    _react2["default"].createElement(_beeFormControl2["default"], { size: 'sm', value: alpha, onChange: this.handleAlphaChange, disabled: disabledAlpha }),
                                                     _react2["default"].createElement(
                                                         _beeInputGroup2["default"].Addon,
                                                         null,

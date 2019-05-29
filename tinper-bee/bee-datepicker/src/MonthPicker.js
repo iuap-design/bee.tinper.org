@@ -104,7 +104,7 @@ class MonthPicker extends Component {
     let state = this.state;
 
     let props = this.props;
-
+    const { showClose } = props;
     const monthCalendar = <MonthCalendar {...props}
       onChange={this.onChange} 
     />;
@@ -134,7 +134,7 @@ class MonthPicker extends Component {
                     disabled={props.disabled}
                   />
                   {
-                      this.state.value&&this.state.showClose&&(!props.disabled)?(
+                      showClose&&this.state.value&&this.state.showClose&&(!props.disabled)?(
                       <InputGroup.Button shape="border" 
                           onClick={this.clear}>
                           { props.closeIcon() }
@@ -159,7 +159,8 @@ MonthPicker.defaultProps = {
     format:'YYYY-MM',
     showDateInput:true,
     showMonthInput:true,
-    locale:zhCN
+    locale:zhCN,
+    showClose:true
 }
 
 export default MonthPicker;

@@ -223,6 +223,8 @@ var WeekPicker = function (_Component) {
 
     var state = this.state;
     var props = this.props;
+    var showClose = props.showClose;
+
     var value = state.value;
     var calendar = _react2["default"].createElement(_rcCalendar2["default"], {
       className: "week-calendar",
@@ -270,7 +272,7 @@ var WeekPicker = function (_Component) {
               className: _this2.props.className,
               value: value && value.format(format) || ""
             }),
-            _this2.state.value && _this2.state.showClose && !props.disabled ? _react2["default"].createElement(
+            showClose && _this2.state.value && _this2.state.showClose && !props.disabled ? _react2["default"].createElement(
               _beeInputGroup2["default"].Button,
               { shape: "border",
                 onClick: _this2.onClear },
@@ -296,7 +298,8 @@ WeekPicker.defaultProps = {
   renderIcon: function renderIcon() {
     return _react2["default"].createElement(_beeIcon2["default"], { type: "uf-calendar" });
   },
-  locale: _zh_CN2["default"]
+  locale: _zh_CN2["default"],
+  showClose: true
 };
 
 exports["default"] = WeekPicker;

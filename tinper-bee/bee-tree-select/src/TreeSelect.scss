@@ -353,23 +353,23 @@ $selectPrefixCls: 'u-select';
   }
 
   &-dropdown {
-    background-color: white;
-    border: 1px solid #d9d9d9;
-    box-shadow: 0 0px 4px #d9d9d9;
-    border-radius: 4px;
-    box-sizing: border-box;
-    z-index: 100;
-    left: -9999px;
-    top: -9999px;
-    //border-top: none;
-    //border-top-left-radius: 0;
-    //border-top-right-radius: 0;
-    position: absolute;
-    outline: none;
+    // background-color: white;
+    // border: 1px solid #d9d9d9;
+    // box-shadow: 0 0px 4px #d9d9d9;
+    // border-radius: 4px;
+    // box-sizing: border-box;
+    // z-index: 100;
+    // left: -9999px;
+    // top: -9999px;
+    // //border-top: none;
+    // //border-top-left-radius: 0;
+    // //border-top-right-radius: 0;
+    // position: absolute;
+    // outline: none;
 
-    &-hidden {
-      display: none;
-    }
+    // &-hidden {
+    //   display: none;
+    // }
 
     &-menu {
       outline: none;

@@ -223,6 +223,7 @@ class DatePicker extends Component {
   render() {
     let state = this.state;
     let props = this.props;
+    const { showClose } = props;
     let value = state.value;
     let pickerChangeHandler = {};
     let calendarHandler = {};
@@ -289,7 +290,7 @@ class DatePicker extends Component {
                     {...autofocus}
                   />
                   {
-                    this.state.value&&this.state.showClose&&(!props.disabled)?(
+                    showClose&&this.state.value&&this.state.showClose&&(!props.disabled)?(
                       <InputGroup.Button shape="border" 
                         onClick={this.clear}>
                         { props.closeIcon() }
@@ -320,6 +321,7 @@ DatePicker.defaultProps = {
   showMonthInput:false,
   onKeyDown:()=>{},
   renderError:()=>{},
+  showClose:true
 }
 
 export default DatePicker;

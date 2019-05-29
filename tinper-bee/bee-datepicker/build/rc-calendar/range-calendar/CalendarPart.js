@@ -92,6 +92,7 @@ var CalendarPart = function (_React$Component) {
     }));
 
     var dateInputElement = props.showDateInput && _react2["default"].createElement(_DateInput2["default"], {
+      isRange: true,
       format: format,
       locale: locale,
       prefixCls: prefixCls,

@@ -168,6 +168,7 @@ var MonthPicker = function (_Component) {
     var state = this.state;
 
     var props = this.props;
+    var showClose = props.showClose;
 
     var monthCalendar = _react2["default"].createElement(_MonthCalendar2["default"], _extends({}, props, {
       onChange: this.onChange
@@ -205,7 +206,7 @@ var MonthPicker = function (_Component) {
               value: value && value.format(props.format) || "",
               disabled: props.disabled
             }),
-            _this2.state.value && _this2.state.showClose && !props.disabled ? _react2["default"].createElement(
+            showClose && _this2.state.value && _this2.state.showClose && !props.disabled ? _react2["default"].createElement(
               _beeInputGroup2["default"].Button,
               { shape: "border",
                 onClick: _this2.clear },
@@ -234,7 +235,8 @@ MonthPicker.defaultProps = {
   format: 'YYYY-MM',
   showDateInput: true,
   showMonthInput: true,
-  locale: _zh_CN2["default"]
+  locale: _zh_CN2["default"],
+  showClose: true
 };
 
 exports["default"] = MonthPicker;

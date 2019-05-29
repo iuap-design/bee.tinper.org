@@ -123,8 +123,8 @@ class YearPicker extends Component {
 
     render() {
         let state = this.state;
-
         let props = this.props;
+        const { showClose } = props;
         let value = state.value;
 
         const Calendar = <YearPanel 
@@ -162,7 +162,7 @@ class YearPicker extends Component {
                                     value={(value && value.format(props.format)) || ""}
                                 />
                                {
-                                    this.state.value&&this.state.showClose&&(!props.disabled)?(
+                                    showClose&&this.state.value&&this.state.showClose&&(!props.disabled)?(
                                     <InputGroup.Button shape="border" 
                                         onClick={this.clear}>
                                         { props.closeIcon() }
@@ -184,7 +184,8 @@ class YearPicker extends Component {
 YearPicker.defaultProps = {
     closeIcon:()=><Icon type="uf-close-c"/>,
     renderIcon: () => <Icon type="uf-calendar" />,
-    disabled:false
+    disabled:false,
+    showClose:true
 }
 
 export default YearPicker;

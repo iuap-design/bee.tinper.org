@@ -133,7 +133,18 @@ browserHistory.listen(() => {
 |esc |关闭模态框|
 
 ## 注意事项
-
-暂无
+- 使用模态框拖拽功能时，如果 Header 内有绑定事件的元素，需要添加一个 className="dnd-cancel"，才能正常触发相应事件。
+- 具体实现代码如下：
+```
+<Modal.Title>
+  <Checkbox 
+      className="dnd-cancel"
+      checked={this.state.checked}  
+      onChange={this.changeCheck}
+  >
+      可勾选的标题
+  </Checkbox>
+</Modal.Title>
+```
 
 ## 更新日志

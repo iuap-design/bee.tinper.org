@@ -116,12 +116,12 @@ class DateInput extends React.Component {
   }
 
   onKeyDown = (e) => {
-    const { onSelect, value,onKeyDown,format } = this.props;
+    const { onSelect, value,onKeyDown,format, isRange } = this.props;
     const str = e.target.value;
     const parsed = moment(str, format, true);
     if (e.keyCode === KeyCode.ENTER){
       if(parsed.isValid()&& onSelect){
-        onSelect(value.clone());
+        isRange?onSelect(parsed.clone()):onSelect(value.clone());//FIX https://github.com/iuap-design/tinper-bee/issues/183
       }
     }
     // if (e.keyCode === KeyCode.ENTER && onSelect) {

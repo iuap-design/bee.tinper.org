@@ -69,6 +69,7 @@ export default class CalendarPart extends React.Component {
 
     const dateInputElement = props.showDateInput &&
       <DateInput
+        isRange={true}
         format={format}
         locale={locale}
         prefixCls={prefixCls}

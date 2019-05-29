@@ -1,3 +1,23 @@
+<a name="2.0.39"></a>
+## [2.0.39](https://github.com/tinper-bee/bee-datepicker/compare/v2.0.38...v2.0.39) (2019-05-28)
+
+
+### Features
+
+* **bee-datepicker:** 新增showClose属性控制外层输入框关闭按钮,rangepicker新增onHoverChange回调 ([1076f0a](https://github.com/tinper-bee/bee-datepicker/commit/1076f0a))
+
+
+
+<a name="2.0.38"></a>
+## [2.0.38](https://github.com/tinper-bee/bee-datepicker/compare/v2.0.37...v2.0.38) (2019-05-27)
+
+
+### Bug Fixes
+
+* **bee-datepicker:** 日期范围控件enter无法把时间带回输入框 ([45d1959](https://github.com/tinper-bee/bee-datepicker/commit/45d1959))
+
+
+
 <a name="2.0.37"></a>
 ## [2.0.37](https://github.com/tinper-bee/bee-datepicker/compare/v2.0.36...v2.0.37) (2019-05-24)
 

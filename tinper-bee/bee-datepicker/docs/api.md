@@ -57,6 +57,7 @@ import 'bee-datepicker/build/DatePicker.css';
 | iconClick |日期按钮点击的回调|Function|-|
 | outInputFocus |外层输入框获得焦点的回调|Function|-|
 | outInputKeydown |外层输入框keydown回调|Function|-|
+| showClose |外层输入框是否显示清空按钮|Boolean|true|
 
 
 
@@ -75,7 +76,6 @@ import 'bee-datepicker/build/DatePicker.css';
 |style|添加内联样式| Object| - |
 | value |当前值，如输入框的值|moment| - |
 | defaultValue|默认值，输入框的默认值| moment| - |
-| locale|语言 | Object |en_US |
 | disabledDate |禁用的日期|Function(current:moment):Boolean| - |
 | onSelect|选择日期的回调函数|Function(date: moment)| - |
 | onChange|日期改变的回调函数|Function(date: moment)| - |
@@ -85,6 +85,7 @@ import 'bee-datepicker/build/DatePicker.css';
 | getCalendarContainer |更改默认渲染位置|Function| - |
 | locale| 语言包 | Object |zh_CN |
 | closeIcon |鼠标划过清空内容的icon|Function| () => <Icon type="uf-close-c" />|
+| showClose |外层输入框是否显示清空按钮|Boolean|true|
 
 ### RangePicker
 
@@ -109,12 +110,14 @@ import 'bee-datepicker/build/DatePicker.css';
 | showClear|是否显示清除按钮| Boolean|false|
 | onSelect|选择日期的回调函数|Function(date: moment)| - |
 | onChange|日期改变的回调函数|Function(date: moment)| - |
+| onHoverChange|日期被选中的回调|Function(date: moment)| - |
 | dateInputPlaceholder|日期的placeholder| String | - |
 | type|是否固定开始或结束选定的值|enum('both','start', 'end')| - |
 | getCalendarContainer |更改默认渲染位置|Function| - |
 | locale| 语言包 | Object |zh_CN |
 | closeIcon |鼠标划过清空内容的icon|Function| () => <Icon type="uf-close-c" />|
 | showTime | 是否显示时间选择面板 | Boolean | - |
+| showClose |外层输入框是否显示清空按钮|Boolean|true|
 
 ### WeekPicker
 
@@ -125,6 +128,7 @@ import 'bee-datepicker/build/DatePicker.css';
 | getCalendarContainer |更改默认渲染位置|Function| - |
 | locale| 语言包 | Object |zh_CN |
 | closeIcon |鼠标划过清空内容的icon|Function| () => <Icon type="uf-close-c" />|
+| showClose |外层输入框是否显示清空按钮|Boolean|true|
 
 ### YearPicker
 
@@ -137,6 +141,7 @@ import 'bee-datepicker/build/DatePicker.css';
 | disabled|是否禁用功能|Boolean| false |
 | locale| 语言包 | Object |zh_CN |
 | closeIcon |鼠标划过清空内容的icon|Function| () => <Icon type="uf-close-c" />|
+| showClose |外层输入框是否显示清空按钮|Boolean|true|
 
 
 ### Moment.js

@@ -128,7 +128,7 @@ var RangePicker = function (_Component) {
         var _this2 = this;
 
         var props = this.props;
-        var showValue = props.showValue;
+        var showClose = props.showClose;
         var value = this.state.value;
 
         var formatStr = props.format || 'YYYY-MM-DD';
@@ -175,7 +175,7 @@ var RangePicker = function (_Component) {
                         value: isValidRange(value) && (0, _util.formatDate)(value[0], formatStr) + " ~ " + (0, _util.formatDate)(value[1], formatStr) || '',
                         disabled: props.disabled
                     }),
-                    _this2.state.value && _this2.state.showClose && !props.disabled ? _react2["default"].createElement(
+                    showClose && _this2.state.value.length > 0 && _this2.state.showClose && !props.disabled ? _react2["default"].createElement(
                         _beeInputGroup2["default"].Button,
                         { shape: "border",
                             onClick: _this2.clear },
@@ -215,6 +215,7 @@ var _initialiseProps = function _initialiseProps() {
 
     this.onHoverChange = function (hoverValue) {
         _this3.setState({ hoverValue: hoverValue });
+        _this3.props.onHoverChange && _this3.props.onHoverChange(hoverValue);
     };
 
     this.remove = function (e) {
@@ -299,7 +300,8 @@ RangePicker.defaultProps = {
     locale: _zh_CN2["default"],
     showClear: true,
     showToday: true,
-    showOk: true
+    showOk: true,
+    showClose: true
 };
 
 exports["default"] = RangePicker;

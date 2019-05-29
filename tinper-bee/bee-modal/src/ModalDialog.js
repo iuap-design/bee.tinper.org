@@ -218,6 +218,7 @@ class ModalDialog extends React.Component {
           <Dnd 
             handle=".dnd-handle" 
             cancel=".dnd-cancel" 
+            bounds={{top:-20}} //防止拖拽时，Header 被导航栏覆盖
             onStart={this.onStart} 
             onStop={this.onStop}
             position={original}
