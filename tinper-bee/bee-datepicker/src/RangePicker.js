@@ -92,6 +92,8 @@ class RangePicker extends Component {
                 props.onChange(null)
             }
 
+        }else{
+            props.onPanelChange&&props.onPanelChange(value);
         }
     }
 

@@ -220,6 +220,8 @@ var _initialiseProps = function _initialiseProps() {
             } else {
                 props.onChange(null);
             }
+        } else {
+            props.onPanelChange && props.onPanelChange(value);
         }
     };
 

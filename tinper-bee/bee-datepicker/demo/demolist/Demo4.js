@@ -65,7 +65,7 @@ class Demo4 extends Component {
                             dateInputPlaceholder={['开始', '结束']}
                             showClear={true}
                             onChange={this.onChange}
-                            onHoverChange={(v)=>{console.log('onHoverChange',v)}}
+                            onPanelChange={(v)=>{console.log('onPanelChange',v)}}
                             showClose={false}
                         />
                     </Col>

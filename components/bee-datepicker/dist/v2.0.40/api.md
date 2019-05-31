@@ -121,7 +121,6 @@ import 'bee-datepicker/build/DatePicker.css';
 | showTime | 是否显示时间选择面板 | Boolean | - |
 | showClose |外层输入框是否显示清空按钮|Boolean|true|
 | onOpenChange |日期面板收起/展开状态改变时的回调|Function|-|
-| onPanelChange |日期日期改变时的回调|Function|-|
 
 ### WeekPicker
 

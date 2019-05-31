@@ -1,3 +1,13 @@
+<a name="2.0.41"></a>
+## [2.0.41](https://github.com/tinper-bee/bee-datepicker/compare/v2.0.40...v2.0.41) (2019-05-31)
+
+
+### Features
+
+* **bee-datepicker:** 新增onPanelChange日期日期改变时的回调 ([eeb9012](https://github.com/tinper-bee/bee-datepicker/commit/eeb9012))
+
+
+
 <a name="2.0.40"></a>
 ## [2.0.40](https://github.com/tinper-bee/bee-datepicker/compare/v2.0.39...v2.0.40) (2019-05-30)
 
