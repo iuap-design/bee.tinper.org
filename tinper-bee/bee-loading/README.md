@@ -90,7 +90,8 @@ import "./node_modules/bee-loading/build/Loding.css"
 
 |参数|说明|类型|默认值|
 |:---|:----|:----|:------|
-|loadingType|类型(`rotate` `line`)|string|rotate|
+|loadingType|类型(`rotate` `line` `custom`)|string|rotate|
+|indicator|加载图标，在 `loadingType` 值为 `custom` 时有效|ReactElement|-|
 |size|加载大小(`lg` `md` `sm`)|string|md|
 |color|颜色(`primary` `success``warning`)|string|''|
 |container|渲染到的容器|node|body|

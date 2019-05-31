@@ -14,7 +14,7 @@ const propTypes = {
   /**
    * @title 不同loading样式
    */
-  loadingType: PropTypes.oneOf(["rotate", "line"]),
+  loadingType: PropTypes.oneOf(["rotate", "line", "custom"]),
 
   /**
    * @title 不同尺寸
@@ -67,6 +67,7 @@ class Loading extends Component {
       children,
       fullScreen,
       wrapperClassName,
+      indicator,
       ...others
     } = this.props;
 
@@ -91,7 +92,16 @@ class Loading extends Component {
     if (wrapperClassName) {
       classes += " " + wrapperClassName;
     }
-    if (loadingType === "rotate") {
+    if (loadingType === "custom" && !!indicator) {
+      dom = (
+        <div>
+          <div className={classes}>
+            <div>{indicator}</div>
+          </div>
+          {children && <div className={`${clsPrefix}-desc`}>{children}</div>}
+        </div>
+      );
+    } else if (loadingType === "rotate") {
       dom = (
         <div>
           <div className={classes}>

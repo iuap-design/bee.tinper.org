@@ -57,13 +57,18 @@ class RangePicker extends Component {
     this.state = {
         hoverValue: [],
         value: props.value || props.defaultValue || [],
-        open:false,
+        open: props.open||false
     };
   }
     componentWillReceiveProps(nextProps){
         if ("value" in nextProps) {
             this.setState({
                 value: nextProps.value
+            });
+        }
+        if ("open" in nextProps) {
+            this.setState({
+              open: nextProps.open 
             });
         }
         this.setState({
@@ -118,15 +123,31 @@ class RangePicker extends Component {
         })
         this.props.onChange && this.props.onChange('', '');
     }
-    onOpenChange=(open)=>{
+    onOpenChange = open => {
+        const props = this.props;
+        const self = this;
         this.setState({
-            open
-        },()=>{
+          open
+        },function(){
+          if(open){
             setTimeout(() => {
-                if(open)this.inputFocus()
+              self.inputFocus()
             }, 0);
-        })
+          }
+        }); 
+        props.onOpenChange && props.onOpenChange(open);
+        if(open){
+            setTimeout(()=>{
+              self.inputFocus()
+            },200);
+        }
+    };
+
+    outInputFocus = (e)=>{
+        if(this.props.hasOwnProperty('open'))e.stopPropagation();
+        this.props.outInputFocus&&this.props.outInputFocus(e);
     }
+
     inputFocus=()=>{
         let inputs = document.querySelectorAll('.rc-calendar-input');
         if(inputs[0].value){
@@ -144,6 +165,7 @@ class RangePicker extends Component {
             this.setState({
                 open:false
             });
+            this.props.onOpenChange(false,v, (v && this.getValue(v)) || '');
         }
         if(e.keyCode == KeyCode.RIGHT||e.keyCode == KeyCode.LEFT){
             inputs[1].focus()
@@ -155,6 +177,7 @@ class RangePicker extends Component {
             this.setState({
                 open:false
             });
+            this.props.onOpenChange(false,v, (v && this.getValue(v)) || '');
         }
         if(e.keyCode == KeyCode.LEFT||e.keyCode == KeyCode.RIGHT){
             inputs[0].focus()
@@ -163,7 +186,7 @@ class RangePicker extends Component {
     render() {
     const props = this.props;
     const { showClose } = props;
-    const {value} = this.state;
+    const {value,open} = this.state;
     let formatStr = props.format || 'YYYY-MM-DD';
 
     const calendar = (
@@ -187,13 +210,13 @@ class RangePicker extends Component {
 
       return (
           <Picker
-              value = {this.state.value}
+              value = {value}
               animation={'animation' in props ? props.animation : "slide-up"}
               calendar={calendar}
               disabled={props.disabled}
               dropdownClassName={props.dropdownClassName}
               onOpenChange={this.onOpenChange}
-              open={this.state.open}
+              open={open}
           >
               {
                   ({}) => {
@@ -206,6 +229,7 @@ class RangePicker extends Component {
                             placeholder={this.props.placeholder?this.props.placeholder:'start ~ end'}
                             value={isValidRange(value) && `${formatDate(value[0],formatStr)} ~ ${formatDate(value[1],formatStr)}` || ''}
                             disabled={props.disabled}
+                            onFocus={(v,e)=>{this.outInputFocus(e)}}
                         />
                         {
                             showClose&&(this.state.value.length>0)&&this.state.showClose&&(!props.disabled)?(

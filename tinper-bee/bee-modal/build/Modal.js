@@ -315,7 +315,7 @@ var Modal = function (_React$Component) {
         onEntering: (0, _tinperBeeCore.createChainedFunction)(onEntering, this.handleEntering),
         onExited: (0, _tinperBeeCore.createChainedFunction)(onExited, this.handleExited),
         backdrop: backdrop,
-        backdropClassName: (0, _classnames2["default"])(backdropClasses, inClassName),
+        backdropClassName: (0, _classnames2["default"])(backdropClasses, inClassName, backdropClassName),
         containerClassName: (0, _classnames2["default"])(containerClasses, containerClassName),
         transition: animation ? _beeTransition.Fade : undefined,
         dialogTransitionTimeout: Modal.TRANSITION_DURATION,

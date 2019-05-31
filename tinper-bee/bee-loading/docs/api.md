@@ -23,7 +23,8 @@ import 'bee-loading/build/Loading.css';
 
 |参数|说明|类型|默认值|
 |:---|:----|:----|:------|
-|loadingType|类型(`rotate` `line`)|string|rotate|
+|loadingType|类型(`rotate` `line` `custom`)|string|rotate|
+|indicator|加载图标，在 `loadingType` 值为 `custom` 时有效|ReactElement|-|
 |size|加载大小(`lg` `md` `sm`)|string|md|
 |color|颜色(`primary` `success``warning`)|string|''|
 |container|渲染到的容器，通过this可以显示在该组件的上面，也可以通过function中return一个元素来显示在指定元素上面|this或者function|默认显示在body上面|

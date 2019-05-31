@@ -27,6 +27,13 @@
     border: 1px solid rgb(165, 173, 186);
     border-radius: 3px;
     transition: border 0.2s cubic-bezier(0.645, 0.045, 0.355, 1), background 0.2s cubic-bezier(0.645, 0.045, 0.355, 1), box-shadow 0.2s cubic-bezier(0.645, 0.045, 0.355, 1); }
+    .u-time-picker .u-time-picker-input[disabled] {
+      background: #f7f9fb;
+      border-color: #dfe1e6;
+      color: #909090;
+      cursor: not-allowed; }
+      .u-time-picker .u-time-picker-input[disabled]::-webkit-input-placeholder {
+        color: #909090; }
 
 .u-time-picker-panel {
   z-index: 1070;
@@ -35,6 +42,9 @@
   box-sizing: border-box; }
   .u-time-picker-panel * {
     box-sizing: border-box; }
+  .u-time-picker-panel.u-time-picker-panel-column-4 {
+    width: auto;
+    min-width: 170px; }
   .u-time-picker-panel .u-time-picker-panel-inner {
     display: inline-block;
     position: relative;

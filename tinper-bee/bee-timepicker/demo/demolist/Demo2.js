@@ -1,7 +1,7 @@
 /**
  *
  * @title 12小时制时间选择
- * @description 点击 Timepicker，然后可以在浮层中选择或者输入某一时间。
+ * @description 设置 `use12Hours` 使用 12 小时制的时间选择器，默认的 format 为 h:mm:ss a。
  *
  */
 

@@ -45,7 +45,7 @@ var propTypes = {
   /**
    * @title 不同loading样式
    */
-  loadingType: _propTypes2["default"].oneOf(["rotate", "line"]),
+  loadingType: _propTypes2["default"].oneOf(["rotate", "line", "custom"]),
 
   /**
    * @title 不同尺寸
@@ -105,7 +105,8 @@ var Loading = function (_Component) {
         children = _props.children,
         fullScreen = _props.fullScreen,
         wrapperClassName = _props.wrapperClassName,
-        others = _objectWithoutProperties(_props, ["clsPrefix", "loadingType", "size", "color", "show", "showBackDrop", "container", "children", "fullScreen", "wrapperClassName"]);
+        indicator = _props.indicator,
+        others = _objectWithoutProperties(_props, ["clsPrefix", "loadingType", "size", "color", "show", "showBackDrop", "container", "children", "fullScreen", "wrapperClassName", "indicator"]);
 
     var clsObj = {};
 
@@ -128,7 +129,26 @@ var Loading = function (_Component) {
     if (wrapperClassName) {
       classes += " " + wrapperClassName;
     }
-    if (loadingType === "rotate") {
+    if (loadingType === "custom" && !!indicator) {
+      dom = _react2["default"].createElement(
+        "div",
+        null,
+        _react2["default"].createElement(
+          "div",
+          { className: classes },
+          _react2["default"].createElement(
+            "div",
+            null,
+            indicator
+          )
+        ),
+        children && _react2["default"].createElement(
+          "div",
+          { className: clsPrefix + "-desc" },
+          children
+        )
+      );
+    } else if (loadingType === "rotate") {
       dom = _react2["default"].createElement(
         "div",
         null,

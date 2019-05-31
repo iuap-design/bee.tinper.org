@@ -1196,8 +1196,8 @@
     padding-left: 110px; }
   .demo7-modal .submit .login {
     margin-left: 10px; }
-  .demo7-modal .u-select {
-    max-width: 310px; }
+  .demo7-modal .u-form-item .u-select {
+    min-width: 310px; }
   .demo7-modal textarea {
     resize: none; }
   .demo7-modal .time > div {

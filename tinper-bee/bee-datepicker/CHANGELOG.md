@@ -1,3 +1,8 @@
+<a name="2.0.40"></a>
+## [2.0.40](https://github.com/tinper-bee/bee-datepicker/compare/v2.0.39...v2.0.40) (2019-05-30)
+
+
+
 <a name="2.0.39"></a>
 ## [2.0.39](https://github.com/tinper-bee/bee-datepicker/compare/v2.0.38...v2.0.39) (2019-05-28)
 

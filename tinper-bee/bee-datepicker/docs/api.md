@@ -57,6 +57,7 @@ import 'bee-datepicker/build/DatePicker.css';
 | iconClick |日期按钮点击的回调|Function|-|
 | outInputFocus |外层输入框获得焦点的回调|Function|-|
 | outInputKeydown |外层输入框keydown回调|Function|-|
+| onOpenChange |日期面板收起/展开状态改变时的回调|Function|-|
 | showClose |外层输入框是否显示清空按钮|Boolean|true|
 
 
@@ -101,6 +102,7 @@ import 'bee-datepicker/build/DatePicker.css';
 | defaultValue|默认选中的区间|	moment[]| - |
 | locale|日历的语言 | Object |en_US |
 | format|日期格式化| String | - |
+| open|日期组件隐藏、显示| Boolean | false |
 | disabledDate |禁用的日期|Function(current:moment):Boolean| - |
 | disabledTime |禁用的时间|Function(current:moment):Object| - |
 | showDateInput|显示日期输入康|Boolean| true |
@@ -118,6 +120,7 @@ import 'bee-datepicker/build/DatePicker.css';
 | closeIcon |鼠标划过清空内容的icon|Function| () => <Icon type="uf-close-c" />|
 | showTime | 是否显示时间选择面板 | Boolean | - |
 | showClose |外层输入框是否显示清空按钮|Boolean|true|
+| onOpenChange |日期面板收起/展开状态改变时的回调|Function|-|
 
 ### WeekPicker
 

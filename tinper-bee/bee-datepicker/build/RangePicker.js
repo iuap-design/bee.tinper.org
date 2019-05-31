@@ -108,7 +108,7 @@ var RangePicker = function (_Component) {
         _this.state = {
             hoverValue: [],
             value: props.value || props.defaultValue || [],
-            open: false
+            open: props.open || false
         };
         return _this;
     }
@@ -117,6 +117,11 @@ var RangePicker = function (_Component) {
         if ("value" in nextProps) {
             this.setState({
                 value: nextProps.value
+            });
+        }
+        if ("open" in nextProps) {
+            this.setState({
+                open: nextProps.open
             });
         }
         this.setState({
@@ -129,7 +134,9 @@ var RangePicker = function (_Component) {
 
         var props = this.props;
         var showClose = props.showClose;
-        var value = this.state.value;
+        var _state = this.state,
+            value = _state.value,
+            open = _state.open;
 
         var formatStr = props.format || 'YYYY-MM-DD';
 
@@ -153,13 +160,13 @@ var RangePicker = function (_Component) {
         return _react2["default"].createElement(
             _Picker2["default"],
             {
-                value: this.state.value,
+                value: value,
                 animation: 'animation' in props ? props.animation : "slide-up",
                 calendar: calendar,
                 disabled: props.disabled,
                 dropdownClassName: props.dropdownClassName,
                 onOpenChange: this.onOpenChange,
-                open: this.state.open
+                open: open
             },
             function (_ref) {
                 _objectDestructuringEmpty(_ref);
@@ -173,7 +180,10 @@ var RangePicker = function (_Component) {
                     _react2["default"].createElement(_beeFormControl2["default"], {
                         placeholder: _this2.props.placeholder ? _this2.props.placeholder : 'start ~ end',
                         value: isValidRange(value) && (0, _util.formatDate)(value[0], formatStr) + " ~ " + (0, _util.formatDate)(value[1], formatStr) || '',
-                        disabled: props.disabled
+                        disabled: props.disabled,
+                        onFocus: function onFocus(v, e) {
+                            _this2.outInputFocus(e);
+                        }
                     }),
                     showClose && _this2.state.value.length > 0 && _this2.state.showClose && !props.disabled ? _react2["default"].createElement(
                         _beeInputGroup2["default"].Button,
@@ -245,13 +255,28 @@ var _initialiseProps = function _initialiseProps() {
     };
 
     this.onOpenChange = function (open) {
+        var props = _this3.props;
+        var self = _this3;
         _this3.setState({
             open: open
         }, function () {
-            setTimeout(function () {
-                if (open) _this3.inputFocus();
-            }, 0);
+            if (open) {
+                setTimeout(function () {
+                    self.inputFocus();
+                }, 0);
+            }
         });
+        props.onOpenChange && props.onOpenChange(open);
+        if (open) {
+            setTimeout(function () {
+                self.inputFocus();
+            }, 200);
+        }
+    };
+
+    this.outInputFocus = function (e) {
+        if (_this3.props.hasOwnProperty('open')) e.stopPropagation();
+        _this3.props.outInputFocus && _this3.props.outInputFocus(e);
     };
 
     this.inputFocus = function () {
@@ -271,6 +296,7 @@ var _initialiseProps = function _initialiseProps() {
             _this3.setState({
                 open: false
             });
+            _this3.props.onOpenChange(false, v, v && _this3.getValue(v) || '');
         }
         if (e.keyCode == _tinperBeeCore.KeyCode.RIGHT || e.keyCode == _tinperBeeCore.KeyCode.LEFT) {
             inputs[1].focus();
@@ -283,6 +309,7 @@ var _initialiseProps = function _initialiseProps() {
             _this3.setState({
                 open: false
             });
+            _this3.props.onOpenChange(false, v, v && _this3.getValue(v) || '');
         }
         if (e.keyCode == _tinperBeeCore.KeyCode.LEFT || e.keyCode == _tinperBeeCore.KeyCode.RIGHT) {
             inputs[0].focus();

@@ -34,7 +34,7 @@ import 'bee-timepicker/build/TimePicker.css';
 |showHour|显示小时|Boolean|true|
 |showMinute|显示分钟|Boolean|true|
 |showSecond|显示秒|Boolean|true|
-|format|格式化|String|-|
+|format|格式化|String|'h:mm:ss a'|
 |disabledHours|禁用的小时|Function|-|
 |disabledMinutes|禁用的分钟|Function|-|
 |disabledSeconds|禁用的秒|Function|-|
