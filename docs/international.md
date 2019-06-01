@@ -4,11 +4,11 @@
 
 ## 概述：组件库支持的多语言能力
 
-- 组件库的多语工具组件：[bee-locale](https://design.yonyoucloud.com/tinper-bee/bee-locale)
+- 组件库的多语工具组件：[bee-locale](http://bee.tinper.org/tinper-bee/bee-locale)
 
-- 多语言录入组件：[ac-input-locale](https://design.yonyoucloud.com/tinper-acs/ac-input-locale)
+- 多语言录入组件：[ac-input-locale](http://bee.tinper.org/tinper-acs/ac-input-locale)
 
-- 国际化手机号录入组件：[ac-mobile-locale](https://design.yonyoucloud.com/tinper-acs/ac-mobile-locale)
+- 国际化手机号录入组件：[ac-mobile-locale](http://bee.tinper.org/tinper-acs/ac-mobile-locale)
 
 - 项目级批量多语翻译工具：[lanbuild](https://www.npmjs.com/package/lanbuild)
 

@@ -42,13 +42,13 @@
 
 ## 7、多种参照
 
-- [树形参照参考链接](https://design.yonyoucloud.com/tinper-acs/ref-tree)
+- [树形参照参考链接](http://bee.tinper.org/tinper-acs/ref-tree)
 
-- [表格参照参考链接](https://design.yonyoucloud.com/tinper-acs/ref-multiple-table)
+- [表格参照参考链接](http://bee.tinper.org/tinper-acs/ref-multiple-table)
 
-- [树表参照参考链接](https://design.yonyoucloud.com/tinper-acs/ref-tree-table)
+- [树表参照参考链接](http://bee.tinper.org/tinper-acs/ref-tree-table)
 
-- [树穿梭参照参考链接](https://design.yonyoucloud.com/tinper-acs/ref-tree-transfer)
+- [树穿梭参照参考链接](http://bee.tinper.org/tinper-acs/ref-tree-transfer)
 
 
 ## 8、附件管理
