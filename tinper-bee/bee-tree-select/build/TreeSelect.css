@@ -1363,20 +1363,36 @@ ul {
   .u-select-enabled .u-select-selection:active {
     border-color: #40a9ff; }
   .u-select-selection--single {
-    height: 28px;
     cursor: pointer;
     position: relative; }
     .u-select-selection--single .u-select-selection__rendered {
       display: block;
-      padding-left: 10px;
-      padding-right: 20px;
-      line-height: 28px; }
-    .u-select-selection--single .u-select-selection-selected-value {
-      display: block;
-      overflow: hidden;
+      margin-left: 2px;
+      margin-right: 2px;
+      position: relative;
       line-height: 30px;
+      height: 30px; }
+      .u-select-selection--single .u-select-selection__rendered .u-select-selection__placeholder {
+        position: absolute;
+        top: 50%;
+        left: 5px;
+        right: 9px;
+        color: #ccc;
+        line-height: 20px;
+        height: 20px;
+        max-width: 100%;
+        margin-top: -10px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap; }
+    .u-select-selection--single .u-select-selection-selected-value {
+      float: left;
+      overflow: hidden;
+      text-overflow: ellipsis;
       white-space: nowrap;
-      text-overflow: ellipsis; }
+      max-width: 100%;
+      padding-right: 14px;
+      padding-left: 5px; }
   .u-select-disabled {
     color: #909090;
     cursor: not-allowed; }
@@ -1388,10 +1404,14 @@ ul {
       .u-select-disabled .u-select-selection__choice__remove:hover {
         cursor: not-allowed;
         color: #909090; }
-  .u-select-sm .u-select-selection--single .u-select-selection-selected-value {
-    line-height: 24px; }
-  .u-select-lg .u-select-selection--single .u-select-selection-selected-value {
-    line-height: 40px; }
+  .u-select-sm .u-select-selection--single .u-select-selection__rendered {
+    height: 24px; }
+    .u-select-sm .u-select-selection--single .u-select-selection__rendered .u-select-selection-selected-value {
+      line-height: 24px; }
+  .u-select-lg .u-select-selection--single .u-select-selection__rendered {
+    height: 38px; }
+    .u-select-lg .u-select-selection--single .u-select-selection__rendered .u-select-selection-selected-value {
+      line-height: 38px; }
   .u-select-search__field__wrap {
     display: inline-block;
     position: relative; }
