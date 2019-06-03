@@ -1,0 +1,29 @@
+.demo3 {
+    background: #C0C5CF;
+    padding: 16px;
+    .bee-page-layout {
+
+        // Header
+        .header {
+            text-align: center;
+            line-height: 48px;
+            background: #EBECF0;
+        }
+
+        // searchArea
+        .search-area {
+            text-align: center;
+            line-height: 40px;
+            background: #F7F9FB;
+        }
+
+        //table展示区域
+        .table-container {
+            min-height: 500px;
+            text-align: center;
+            padding-top: 100px;
+            background: #fff;
+            margin-bottom: 10px;
+        }
+    }
+}

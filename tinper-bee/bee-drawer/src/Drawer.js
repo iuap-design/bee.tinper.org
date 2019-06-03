@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import {bindAll,isNumber} from './common';
 import {CSSTransition, TransitionGroup} from 'react-transition-group';
+import Icon from 'bee-icon';
 
 const propTypes = {
 	placement: PropTypes.oneOf(['left','right','top','bottom']),
@@ -107,7 +108,7 @@ class Drawer extends Component{
 	renderClose(){
 		const {showClose} = this.props;
 		return (
-			showClose ? <i className="drawer-close" onClick={this.fCloseClick}>×</i> : null
+			showClose ? <Icon type="uf-close" className="drawer-close" onClick={this.fCloseClick}/> : null
 		)
 	}
 	renderBody(){

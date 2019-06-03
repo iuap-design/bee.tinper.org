@@ -451,6 +451,10 @@
                 "栅格布局 Layout": {
                     "version": "0.1.3",
                     "component": "bee-layout"
+                },
+                "页面布局 PageLayout": {
+                    "version": "1.0.0",
+                    "component": "bee-page-layout"
                 }
             },
             "工具 Tool": {

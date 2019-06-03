@@ -17,6 +17,12 @@
 
         ]
     },
+    "bee-page-layout": {
+        "name": "页面布局",
+        "versions": [
+
+        ]
+    },
     "bee-dnd": {
         "name": "拖拽",
         "versions": [

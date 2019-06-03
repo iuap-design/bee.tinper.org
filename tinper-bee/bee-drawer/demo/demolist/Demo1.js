@@ -38,7 +38,7 @@ class Demo1 extends Component {
                 <div className="btnc">  
                     <Button onClick={this.fPopDrawer} colors="primary">打开</Button>
                 </div>
-                <Drawer className={'demo1'} title={title} show={showDrawer} placement={placement} onClose={this.fCloseDrawer}>
+                <Drawer showClose={true} className={'demo1'} title={title} show={showDrawer} placement={placement} onClose={this.fCloseDrawer}>
                     <div className="con">
                         <p>这是第一行文字</p>
                         <p>这是第二行文字</p>

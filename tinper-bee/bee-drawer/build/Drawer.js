@@ -24,6 +24,10 @@ var _common = require('./common');
 
 var _reactTransitionGroup = require('react-transition-group');
 
+var _beeIcon = require('bee-icon');
+
+var _beeIcon2 = _interopRequireDefault(_beeIcon);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
@@ -151,11 +155,7 @@ var Drawer = function (_Component) {
 	Drawer.prototype.renderClose = function renderClose() {
 		var showClose = this.props.showClose;
 
-		return showClose ? _react2["default"].createElement(
-			'i',
-			{ className: 'drawer-close', onClick: this.fCloseClick },
-			'\xD7'
-		) : null;
+		return showClose ? _react2["default"].createElement(_beeIcon2["default"], { type: 'uf-close', className: 'drawer-close', onClick: this.fCloseClick }) : null;
 	};
 
 	Drawer.prototype.renderBody = function renderBody() {
