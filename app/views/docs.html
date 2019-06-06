@@ -58,7 +58,7 @@
         if(select){
             var selectList = document.querySelector('#tagList');
             var selectOptions = selectList.querySelectorAll('.u-select-dropdown-menu-item');
-            select.onclick = (e) => {
+            select.onclick = function() {
                 showHide()
             };
             let nowTag = selectOptions[0].innerHTML;
