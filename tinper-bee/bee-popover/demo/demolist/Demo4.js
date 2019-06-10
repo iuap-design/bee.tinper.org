@@ -8,55 +8,25 @@ import {Component} from 'react';
 import Popover from '../../src';
 import Button from 'bee-button';
 
-
 class Demo4 extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            show: false
-        }
-    }
-
-    handleClose = () => {
-        this.setState({
-            show: false
-        })
-    }
-
-    show = () => {
-        this.setState({
-            show: true
-        })
-    }
-
     render() {
         let content = (
-            <div>
-                <p>请确认您的包裹已签收！</p>
-                <div>
-                    <Button
-                        colors="primary"
-                        onClick={ this.handleClose }
-                        size="sm">
-                        关闭
-                    </Button>
-                </div>
-            </div>
+            <p>
+                请确认您的包裹已签收！
+            </p>
         )
         return (
             <div>
                 <Popover
-                    placement="right"
-                    // positionTop={1059}
-                    // positionLeft={106}
-                    content={content}
-                    show={this.state.show}
                     id="demo4"
+                    placement="right"
+                    trigger="click"
+                    // positionTop={1050}
+                    // positionLeft={106}
+                    title={<p>消息</p>}
+                    content={content}
                 >
-                    <Button
-                        colors="primary"
-                        onClick={ this.show }
-                        >确认按钮</Button>
+                    <Button colors="primary">确认按钮</Button>
                 </Popover>
             </div>
         )

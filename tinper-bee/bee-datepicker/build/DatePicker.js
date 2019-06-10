@@ -106,6 +106,8 @@ var DatePicker = function (_Component) {
       });
     }
   };
+  //日期面板中输入框的失焦事件
+
 
   DatePicker.prototype.render = function render() {
     var _this2 = this;
@@ -135,7 +137,8 @@ var DatePicker = function (_Component) {
     }, props, {
       onSelect: this.handleSelect,
       onChange: this.handleCalendarChange,
-      value: this.state.value
+      value: this.state.value,
+      onInputBlur: this.onDateInputBlur
     }));
 
     var keyboardInputProps = {};
@@ -389,6 +392,15 @@ var _initialiseProps = function _initialiseProps() {
     });
     _this3.props.onSelect && _this3.props.onSelect(value, value && _this3.getValue(value) || '');
     // ReactDOM.findDOMNode(this.outInput).focus()
+  };
+
+  this.onDateInputBlur = function (e) {
+    var input = document.querySelector('.rc-calendar-input');
+    var value = void 0;
+    if (input) {
+      value = input.value ? input.value : '';
+    }
+    _this3.props.onDateInputBlur && _this3.props.onDateInputBlur(e, value);
   };
 };
 

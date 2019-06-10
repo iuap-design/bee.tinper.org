@@ -45,6 +45,7 @@ import 'bee-radio/build/Radio.css';
 |参数|说明|类型|默认值|
 |:---|:----|:---|:------|
 |onChange|暴露在外层的触发radio是否选中的方法|func|-|
+|defaultValue|默认选中的radio值|string|-|
 |selectedValue|被选中的radio值|string|-|
 |name|radio组名|string|''|
 |Children|必填，Radio子组件|node|-|

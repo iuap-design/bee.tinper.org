@@ -119,6 +119,7 @@ var Content = function (_React$Component) {
         var _classes;
 
         var _props = this.props,
+            title = _props.title,
             placement = _props.placement,
             positionTop = _props.positionTop,
             positionLeft = _props.positionLeft,
@@ -130,7 +131,7 @@ var Content = function (_React$Component) {
             id = _props.id,
             children = _props.children,
             trigger = _props.trigger,
-            others = _objectWithoutProperties(_props, ['placement', 'positionTop', 'positionLeft', 'arrowOffsetTop', 'arrowOffsetLeft', 'clsPrefix', 'className', 'style', 'id', 'children', 'trigger']);
+            others = _objectWithoutProperties(_props, ['title', 'placement', 'positionTop', 'positionLeft', 'arrowOffsetTop', 'arrowOffsetLeft', 'clsPrefix', 'className', 'style', 'id', 'children', 'trigger']);
 
         var resPlacement = this.getInversePlacement(className, placement);
         var classes = (_classes = {}, _defineProperty(_classes, '' + clsPrefix, true), _defineProperty(_classes, PLACECLASS[resPlacement], true), _classes);
@@ -141,20 +142,18 @@ var Content = function (_React$Component) {
             left: positionLeft
         }, style);
 
-        /* const arrowStyle = {
-            top: arrowOffsetTop,
-            left: arrowOffsetLeft,
-        }; */
-
+        // const arrowStyle = {
+        //     top: arrowOffsetTop,
+        //     left: arrowOffsetLeft,
+        // }; 
         return _react2["default"].createElement(
             'div',
-            _extends({
-                role: 'tooltip',
-                id: id,
-                className: (0, _classnames2["default"])(className, classes),
-                style: outerStyle
-            }, others),
-            _react2["default"].createElement('div', { className: 'arrow' }),
+            null,
+            title && _react2["default"].createElement(
+                'div',
+                { className: (0, _classnames2["default"])(clsPrefix + '-title') },
+                title
+            ),
             _react2["default"].createElement(
                 'div',
                 { className: (0, _classnames2["default"])(clsPrefix + '-content') },

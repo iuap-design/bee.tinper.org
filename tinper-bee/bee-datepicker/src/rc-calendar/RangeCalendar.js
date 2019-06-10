@@ -606,7 +606,7 @@ class RangeCalendar extends React.Component {
     const {
       prefixCls, dateInputPlaceholder, seperator,
       timePicker, showOk, locale, showClear,
-      showToday, type, clearIcon,
+      showToday, type, clearIcon,onStartInputBlur,onEndInputBlur
     } = props;
     const {
       hoverValue,
@@ -709,6 +709,7 @@ class RangeCalendar extends React.Component {
               enableNext={!isClosestMonths || this.isMonthYearPanelShow(mode[1])}
               clearIcon={clearIcon}
               tabIndex='0'
+              onInputBlur={onStartInputBlur}
             />
             <span className={`${prefixCls}-range-middle`}>{seperator}</span>
             <CalendarPart
@@ -735,6 +736,7 @@ class RangeCalendar extends React.Component {
               clearIcon={clearIcon}
               tabIndex='0'
               inputTabIndex='-1'
+              onInputBlur={onEndInputBlur}
             />
           </div>
           <div className={cls}>

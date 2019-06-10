@@ -80,7 +80,7 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
 	
-	var Demo1 = __webpack_require__(266);var Demo2 = __webpack_require__(267);var Demo3 = __webpack_require__(268);var Demo4 = __webpack_require__(269);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 气泡卡片默认样式", "code": "/**\n *\n * @title 气泡卡片默认样式\n * @description 支持12个位置\n */\n\nimport {Component} from 'react';\nimport { Popover, Button } from 'tinper-bee';\n\n\n class Demo1 extends Component {\n    constructor(props) {\n        super(props);\n    }\n\n    onHide = () => {\n        console.log('onHide')\n    }\n\n    render() {\n        let content = (\n            <div>\n                <h3>消息</h3>\n                <ul>\n                    <li>您的服务器已宕机，请处理。</li>\n                    <li>您的手机已停机，请续费。</li>\n                    <li>你的工资已到账，请查收。</li>\n                </ul>\n            </div>\n        )\n        return (\n            <div style={{position: 'relative', height: 320, marginTop: 100, marginLeft: 250}}>\n                <Popover\n                    placement=\"leftTop\"\n                    content={content}\n                    onHide={this.onHide}\n                    trigger=\"hover\"\n                    id=\"leftTop\"\n                >\n                    <Button\n                        colors=\"primary\"\n                        style={{\n                            position: 'absolute',\n                            top: 5,\n                            left: 0\n                        }}>左上</Button>\n                </Popover>\n                <Popover\n                    placement=\"left\"\n                    content={content}\n                    trigger=\"hover\"\n                    id=\"left\"\n                >\n                    <Button\n                        colors=\"primary\"\n                        style={{\n                            position: 'absolute',\n                            top: 55,\n                            left: 0\n                        }}>左\n                    </Button>\n                </Popover>\n                <Popover\n                    placement=\"leftBottom\"\n                    content={content}\n                    trigger=\"hover\"\n                    id=\"leftBottom\"\n                >\n                    <Button\n                        colors=\"primary\"\n                        style={{\n                            position: 'absolute',\n                            top: 110,\n                            left: 0\n                        }}>左下</Button>\n                </Popover>\n                <Popover\n                    placement=\"topLeft\"\n                    content={content}\n                    trigger=\"hover\"\n                    id=\"topLeft\"\n                >\n                    <Button\n                        colors=\"primary\"\n                        style={{\n                            position: 'absolute',\n                            top: 0,\n                            left: 100\n                        }}>上左\n                    </Button>\n                </Popover>\n                <Popover\n                    placement=\"top\"\n                    content={content}\n                    trigger=\"hover\"\n                    id=\"top\"\n                >\n                    <Button\n                        colors=\"primary\"\n                        style={{\n                            position: 'absolute',\n                            top: 0,\n                            left: 200\n                        }}>上\n                    </Button>\n                </Popover>\n                <Popover\n                    placement=\"topRight\"\n                    content={content}\n                    trigger=\"hover\"\n                    id=\"topRight\"\n                >\n                    <Button\n                        colors=\"primary\"\n                        style={{\n                            position: 'absolute',\n                            top: 0,\n                            left: 300\n                        }}>\n                        上右\n                    </Button>\n                </Popover>\n                <Popover\n                    placement=\"rightTop\"\n                    content={content}\n                    trigger=\"hover\"\n                    id=\"rightTop\"\n                >\n                    <Button\n                        colors=\"primary\"\n                        style={{\n                            position: 'absolute',\n                            top: 5,\n                            left: 400\n                        }}>右上\n                    </Button>\n                </Popover>\n                <Popover\n                    placement=\"right\"\n                    content={content}\n                    trigger=\"hover\"\n                    id=\"right\"\n                >\n                    <Button\n                        colors=\"primary\"\n                        style={{\n                            position: 'absolute',\n                            top: 55,\n                            left: 400\n                        }}>右</Button>\n                </Popover>\n                <Popover\n                    placement=\"rightBottom\"\n                    content={content}\n                    trigger=\"hover\"\n                    id=\"rightBottom\"\n                >\n                    <Button\n                        colors=\"primary\"\n                        style={{\n                            position: 'absolute',\n                            top: 110,\n                            left: 400\n                        }}>右下</Button>\n                </Popover>\n                <Popover\n                    placement=\"bottomLeft\"\n                    content={content}\n                    trigger=\"hover\"\n                    id=\"bottomLeft\"\n                >\n                    <Button\n                        colors=\"primary\"\n                        style={{\n                            position: 'absolute',\n                            top: 115,\n                            left: 100\n                        }}>下左</Button>\n                </Popover>\n                <Popover\n                    placement=\"bottom\"\n                    content={content}\n                    trigger=\"hover\"\n                    id=\"bottom\"\n                >\n                    <Button\n                        colors=\"primary\"\n                        style={{\n                            position: 'absolute',\n                            top: 115,\n                            left: 200\n                        }}>下</Button>\n                </Popover>\n                <Popover\n                    placement=\"bottomRight\"\n                    content={content}\n                    trigger=\"hover\"\n                    id=\"bottomRight\"\n                >\n                    <Button\n                        colors=\"primary\"\n                        style={{\n                            position: 'absolute',\n                            top: 115,\n                            left: 300\n                        }}>下右</Button>\n                </Popover>\n            </div>\n        )\n    }\n}\n\n", "desc": " 支持12个位置", "scss_code": ".demoPadding{\r\n  button{\r\n    margin: 10px;\r\n  }\r\n}\r\n\r\nul,li{\r\n  list-style: none;\r\n}" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 受控制的气泡卡片", "code": "/**\n *\n * @title 受控制的气泡卡片\n * @description 通过设置show，来控制气泡卡片的显示和隐藏\n */\n\nimport {Component} from 'react';\nimport { Popover, Button } from 'tinper-bee';\n\n\nclass Demo2 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            show: false\n        }\n    }\n\n    handleClose = () => {\n        this.setState({\n            show: false\n        })\n    }\n\n    show = () => {\n        this.setState({\n            show: true\n        })\n    }\n\n    render() {\n        let content = (\n            <div>\n                <p>请确认您的包裹已签收！</p>\n                <div>\n                    <Button\n                        colors=\"primary\"\n                        onClick={ this.handleClose }\n                        size=\"sm\">\n                        关闭\n                    </Button>\n                </div>\n            </div>\n        )\n        return (\n            <div>\n                <Popover\n                    placement=\"right\"\n                    content={content}\n                    show={this.state.show}\n                    id=\"demo2\"\n                >\n                    <Button\n                        colors=\"primary\"\n                        onClick={ this.show }\n                        >确认按钮</Button>\n                </Popover>\n            </div>\n        )\n    }\n}\n\n\n", "desc": " 通过设置show，来控制气泡卡片的显示和隐藏" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 提示类组件支持出现在可配置的container中", "code": "/**\n * @title 提示类组件支持出现在可配置的container中\n * @description \"container\"可以是DOM元素/React组件/或者返回React组件的函数，注意，容器需要设置定位\n */\n\nimport React, { Component } from 'react';\nimport { Popover } from 'tinper-bee';\n\nclass Demo3 extends Component {\n    state = {\n        show: false\n    }\n\n    content = (\n        <div>\n            <p>我会跟着移动！</p>\n        </div>\n    )\n\n    show = () => {\n        this.setState({\n            show: true\n        })\n    }\n\n    close = () => {\n        this.setState({\n            show: false\n        })\n    }\n\n    render () {\n        let { show } = this.state;\n\n        return (\n            <div className=\"demo-popover\">\n                <div className=\"demo-popover-box\">\n                    <div className=\"demo-popover-wrapper\" ref={ref => this.container = ref}>\n                        <Popover\n                            placement=\"right\"\n                            content={this.content}\n                            container={this.container ? this.container : null}\n                            show={show}\n                            id=\"demo3\"\n                        >\n                            <span className=\"demo-popover-text\" onClick={this.show}>点击我，popover会跟随我移动</span>\n                        </Popover>\n                    </div>\n                </div>\n            </div>\n        );\n    }\n}\n\n", "desc": " \"container\"可以是DOM元素/React组件/或者返回React组件的函数，注意，容器需要设置定位", "scss_code": ".demo-popover {\r\n  &-box {\r\n    width: 100%;\r\n    height: 200px;\r\n    line-height: 100px;\r\n    overflow: auto;\r\n    border: 1px solid #ccc;\r\n    border-radius: 5px;\r\n  }\r\n\r\n  &-wrapper {\r\n    width: 120%;\r\n    position: relative;\r\n  }\r\n\r\n  &-text{\r\n    font-size: 14px;\r\n    cursor: pointer;\r\n  }\r\n\r\n}" }, { "example": _react2['default'].createElement(Demo4, null), "title": " 自定义弹出框向上/向左偏移量", "code": "/**\n *\n * @title 自定义弹出框向上/向左偏移量\n * @description 通过设置 `positionTop` 和 `positionLeft`，可自定义弹出框向上/向左偏移量。指定的数值分别代表弹出框距离浏览器窗口上侧和左侧的距离。\n */\n\nimport {Component} from 'react';\nimport { Popover, Button } from 'tinper-bee';\n\n\nclass Demo4 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            show: false\n        }\n    }\n\n    handleClose = () => {\n        this.setState({\n            show: false\n        })\n    }\n\n    show = () => {\n        this.setState({\n            show: true\n        })\n    }\n\n    render() {\n        let content = (\n            <div>\n                <p>请确认您的包裹已签收！</p>\n                <div>\n                    <Button\n                        colors=\"primary\"\n                        onClick={ this.handleClose }\n                        size=\"sm\">\n                        关闭\n                    </Button>\n                </div>\n            </div>\n        )\n        return (\n            <div>\n                <Popover\n                    placement=\"right\"\n                    // positionTop={1059}\n                    // positionLeft={106}\n                    content={content}\n                    show={this.state.show}\n                    id=\"demo4\"\n                >\n                    <Button\n                        colors=\"primary\"\n                        onClick={ this.show }\n                        >确认按钮</Button>\n                </Popover>\n            </div>\n        )\n    }\n}\n\n\n", "desc": " 通过设置 `positionTop` 和 `positionLeft`，可自定义弹出框向上/向左偏移量。指定的数值分别代表弹出框距离浏览器窗口上侧和左侧的距离。" }];
+	var Demo1 = __webpack_require__(266);var Demo2 = __webpack_require__(267);var Demo3 = __webpack_require__(268);var Demo4 = __webpack_require__(269);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 气泡卡片默认样式", "code": "/**\n *\n * @title 气泡卡片默认样式\n * @description 支持12个位置\n */\n\nimport {Component} from 'react';\nimport { Popover, Button } from 'tinper-bee';\n\n\n class Demo1 extends Component {\n    constructor(props) {\n        super(props);\n    }\n\n    render() {\n        let content = (\n            <div>\n                <h3>消息</h3>\n                <ul>\n                    <li>您的服务器已宕机，请处理。</li>\n                    <li>您的手机已停机，请续费。</li>\n                    <li>你的工资已到账，请查收。</li>\n                </ul>\n            </div>\n        );\n        const buttonWidth = 72;\n        return (\n            <div className=\"demo1\">\n                <div style={{ marginLeft: buttonWidth, whiteSpace: 'nowrap' }}>\n                    <Popover placement=\"topLeft\" content={content}>\n                        <Button colors=\"primary\">左上</Button>\n                    </Popover>\n                    <Popover placement=\"top\" content={content}>\n                        <Button colors=\"primary\">上</Button>\n                    </Popover>\n                    <Popover placement=\"topRight\" content={content}>\n                        <Button colors=\"primary\">上右</Button>\n                    </Popover>\n                    </div>\n                    <div style={{ width: buttonWidth, float: 'left' }}>\n                    <Popover placement=\"leftTop\" content={content}>\n                        <Button colors=\"primary\">左上</Button>\n                    </Popover>\n                    <Popover placement=\"left\" content={content}>\n                        <Button colors=\"primary\">左</Button>\n                    </Popover>\n                    <Popover placement=\"leftBottom\" content={content}>\n                        <Button colors=\"primary\">左下</Button>\n                    </Popover>\n                    </div>\n                    <div style={{ width: buttonWidth, marginLeft: buttonWidth * 4 + 24 }}>\n                    <Popover placement=\"rightTop\" content={content}>\n                        <Button colors=\"primary\">右上</Button>\n                    </Popover>\n                    <Popover placement=\"right\" content={content}>\n                        <Button colors=\"primary\">右</Button>\n                    </Popover>\n                    <Popover placement=\"rightBottom\" content={content}>\n                        <Button colors=\"primary\">右下</Button>\n                    </Popover>\n                    </div>\n                    <div style={{ marginLeft: buttonWidth, clear: 'both', whiteSpace: 'nowrap' }}>\n                    <Popover placement=\"bottomLeft\" content={content}>\n                        <Button colors=\"primary\">下左</Button>\n                    </Popover>\n                    <Popover placement=\"bottom\" content={content}>\n                        <Button colors=\"primary\">下</Button>\n                    </Popover>\n                    <Popover placement=\"bottomRight\" content={content}>\n                        <Button colors=\"primary\">下右</Button>\n                    </Popover>\n                </div>\n            </div>\n        )\n    }\n}\n\n", "desc": " 支持12个位置", "scss_code": ".demo1 {\n  margin: 100px 0 100px 250px;\n  .u-button {\n      margin-right: 8px;\n      margin-bottom: 8px;\n  }\n  .u-tooltip .tooltip-inner {\n      h3 {\n          margin: 16px 0;\n      }\n  }\n}" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 受控制的气泡卡片", "code": "/**\n *\n * @title 受控制的气泡卡片\n * @description 通过设置show，来控制气泡卡片的显示和隐藏。注意：需要和 onHide 事件结合使用\n */\n\nimport {Component} from 'react';\nimport { Popover, Button } from 'tinper-bee';\n\n\nclass Demo2 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            show: false\n        }\n    }\n\n    handleClose = () => {\n        this.setState({\n            show: false\n        })\n    }\n\n    show = () => {\n        this.setState({\n            show: true\n        })\n    }\n\n    onHide = (visible) => {\n        this.setState({\n            show: visible\n        })\n    }\n\n    render() {\n        let content = (\n            <div>\n                <Button\n                    colors=\"primary\"\n                    onClick={ this.handleClose }\n                    size=\"sm\">\n                    关闭\n                </Button>\n            </div>\n        )\n        return (\n            <div>\n                <Popover\n                    id=\"demo2\"\n                    placement=\"right\"\n                    title={<h3>请确认您的包裹已签收！</h3>}\n                    content={content}\n                    show={this.state.show}\n                    onHide={this.onHide}\n                >\n                    <Button\n                        colors=\"primary\"\n                        onClick={ this.show }\n                        >确认按钮</Button>\n                </Popover>\n            </div>\n        )\n    }\n}\n\n\n", "desc": " 通过设置show，来控制气泡卡片的显示和隐藏。注意：需要和 onHide 事件结合使用" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 提示类组件支持出现在可配置的container中", "code": "/**\n * @title 提示类组件支持出现在可配置的container中\n * @description \"container\"可以是DOM元素/React组件/或者返回React组件的函数，注意，容器需要设置定位\n */\n\nimport React, { Component } from 'react';\nimport { Popover } from 'tinper-bee';\n\nclass Demo3 extends Component {\n    state = {\n        show: false\n    }\n\n    content = (\n        <div>\n            <p>我会跟着移动！</p>\n        </div>\n    )\n\n    show = () => {\n        this.setState({\n            show: true\n        })\n    }\n\n    handleVisibleChange = visible => {\n        console.log('onVisibleChange：',visible)\n    };\n\n    handleHide = (visible) => {\n        console.log('onHide：',visible);\n        this.setState({\n            show: visible\n        })\n    }\n\n    render () {\n        let { show } = this.state;\n\n        return (\n            <div className=\"demo-popover\">\n                <div className=\"demo-popover-box\">\n                    <div className=\"demo-popover-wrapper\" ref={ref => this.container = ref}>\n                        <Popover\n                            id=\"demo3\"\n                            trigger=\"click\"\n                            content={this.content}\n                            container={this.container ? this.container : null}\n                            show={show}\n                            onVisibleChange={this.handleVisibleChange}\n                            onHide={this.handleHide}\n                        >\n                            <span className=\"demo-popover-text\" onClick={this.show}>点击我，popover会跟随我移动</span>\n                        </Popover>\n                    </div>\n                </div>\n            </div>\n        );\n    }\n}\n\n", "desc": " \"container\"可以是DOM元素/React组件/或者返回React组件的函数，注意，容器需要设置定位", "scss_code": ".demo-popover {\n  &-box {\n    width: 100%;\n    height: 200px;\n    line-height: 100px;\n    overflow: auto;\n    border: 1px solid #ccc;\n    border-radius: 5px;\n  }\n\n  &-wrapper {\n    width: 120%;\n    position: relative;\n  }\n\n  &-text{\n    font-size: 14px;\n    cursor: pointer;\n  }\n\n}" }, { "example": _react2['default'].createElement(Demo4, null), "title": " 自定义弹出框向上/向左偏移量", "code": "/**\n *\n * @title 自定义弹出框向上/向左偏移量\n * @description 通过设置 `positionTop` 和 `positionLeft`，可自定义弹出框向上/向左偏移量。指定的数值分别代表弹出框距离浏览器窗口上侧和左侧的距离。\n */\n\nimport {Component} from 'react';\nimport { Popover, Button } from 'tinper-bee';\n\nclass Demo4 extends Component {\n    render() {\n        let content = (\n            <p>\n                请确认您的包裹已签收！\n            </p>\n        )\n        return (\n            <div>\n                <Popover\n                    id=\"demo4\"\n                    placement=\"right\"\n                    trigger=\"click\"\n                    // positionTop={1050}\n                    // positionLeft={106}\n                    title={<p>消息</p>}\n                    content={content}\n                >\n                    <Button colors=\"primary\">确认按钮</Button>\n                </Popover>\n            </div>\n        )\n    }\n}\n\n\n", "desc": " 通过设置 `positionTop` 和 `positionLeft`，可自定义弹出框向上/向左偏移量。指定的数值分别代表弹出框距离浏览器窗口上侧和左侧的距离。" }];
 	
 	var Demo = function (_Component) {
 	    _inherits(Demo, _Component);
@@ -11228,7 +11228,7 @@
 	    /**
 	     * 相对目标元素显示上下左右的位置
 	     */
-	    placement: _propTypes2["default"].oneOf(['top', 'right', 'bottom', 'left']),
+	    placement: _propTypes2["default"].oneOf(['top', 'right', 'bottom', 'left', 'topLeft', 'topRight', 'bottomLeft', 'bottomRight', 'leftTop', 'leftBottom', 'rightTop', 'rightBottom']),
 	
 	    /**
 	     * 绝对定位上边距.
@@ -11254,25 +11254,23 @@
 	    clsPrefix: 'u-tooltip'
 	};
 	function OverlayNode(props) {
-	    var className = props.className,
+	    var id = props.id,
+	        className = props.className,
 	        classNames = props.classNames,
 	        style = props.style,
-	        overlay = props.overlay,
-	        arrowOffsetTop = props.arrowOffsetTop,
-	        arrowOffsetLeft = props.arrowOffsetLeft;
+	        overlay = props.overlay;
 	
 	    return _react2["default"].createElement(
 	        'div',
 	        {
+	            id: id,
+	            role: 'tooltip',
 	            className: (0, _classnames2["default"])(className, classNames),
 	            onMouseEnter: props.onMouseEnter,
 	            onMouseLeave: props.onMouseLeave,
 	            style: style
 	        },
-	        overlay ? _react2["default"].createElement('div', { className: 'tooltip-arrow', style: {
-	                top: arrowOffsetTop,
-	                left: arrowOffsetLeft
-	            } }) : '',
+	        overlay ? _react2["default"].createElement('div', { className: 'tooltip-arrow' }) : '',
 	        overlay ? _react2["default"].createElement(
 	            'div',
 	            { className: 'tooltip-inner' },
@@ -11290,15 +11288,27 @@
 	        var _this = _possibleConstructorReturn(this, _React$Component.call(this, props));
 	
 	        _this.onMouseEnter = function () {
+	            var trigger = _this.props.trigger;
+	
+	            if (trigger === 'click') return;
 	            _this.setState({
 	                isHoverShow: true
 	            });
 	        };
 	
 	        _this.onMouseLeave = function () {
+	            var trigger = _this.props.trigger;
+	
+	            if (trigger === 'click') return;
 	            _this.setState({
 	                isHoverShow: false
 	            });
+	        };
+	
+	        _this.handleOnHide = function () {
+	            var onHide = _this.props.onHide;
+	
+	            onHide && onHide(false);
 	        };
 	
 	        var initState = {
@@ -11342,8 +11352,7 @@
 	
 	        var _props2 = this.props,
 	            placement = _props2.placement,
-	            positionTop = _props2.positionTop,
-	            positionLeft = _props2.positionLeft,
+	            id = _props2.id,
 	            arrowOffsetTop = _props2.arrowOffsetTop,
 	            arrowOffsetLeft = _props2.arrowOffsetLeft,
 	            className = _props2.className,
@@ -11352,14 +11361,9 @@
 	            clsPrefix = _props2.clsPrefix,
 	            overlay = _props2.overlay,
 	            inverse = _props2.inverse,
-	            others = _objectWithoutProperties(_props2, ['placement', 'positionTop', 'positionLeft', 'arrowOffsetTop', 'arrowOffsetLeft', 'className', 'style', 'children', 'clsPrefix', 'overlay', 'inverse']);
+	            others = _objectWithoutProperties(_props2, ['placement', 'id', 'arrowOffsetTop', 'arrowOffsetLeft', 'className', 'style', 'children', 'clsPrefix', 'overlay', 'inverse']);
 	
 	        var classes = (_classes = {}, _defineProperty(_classes, placement, true), _defineProperty(_classes, 'inverse', inverse), _classes);
-	
-	        var outerStyle = _extends({
-	            top: positionTop,
-	            left: positionLeft
-	        }, style);
 	
 	        var arrowStyle = {
 	            top: arrowOffsetTop,
@@ -11369,26 +11373,43 @@
 	        var classNames = (0, _classnames2["default"])(clsPrefix, classes);
 	
 	        var overlayNode = _react2["default"].createElement(OverlayNode, {
+	            id: id,
 	            className: className,
 	            classNames: classNames,
 	            overlay: overlay,
 	            onMouseEnter: this.onMouseEnter,
 	            onMouseLeave: this.onMouseLeave,
-	            style: true,
-	            arrowOffsetTop: true,
-	            arrowOffsetLeft: true
+	            style: style,
+	            arrowOffsetTop: arrowOffsetTop,
+	            arrowOffsetLeft: arrowOffsetLeft
 	        });
 	        return 'visible' in this.props ? _react2["default"].createElement(
 	            _OverlayTrigger2["default"],
-	            _extends({ visible: this.state.visible, ref: function ref(_ref) {
+	            _extends({
+	                visible: this.state.visible,
+	                ref: function ref(_ref) {
 	                    return _this2.trigger = _ref;
-	                }, shouldUpdatePosition: true, placement: placement }, others, { overlay: overlayNode }),
+	                },
+	                shouldUpdatePosition: true,
+	                placement: placement
+	            }, others, {
+	                overlay: overlayNode,
+	                onHide: this.handleOnHide
+	            }),
 	            children
 	        ) : _react2["default"].createElement(
 	            _OverlayTrigger2["default"],
-	            _extends({ isHoverShow: this.state.isHoverShow, ref: function ref(_ref2) {
+	            _extends({
+	                isHoverShow: this.state.isHoverShow,
+	                ref: function ref(_ref2) {
 	                    return _this2.trigger = _ref2;
-	                }, shouldUpdatePosition: true, placement: placement }, others, { overlay: overlayNode }),
+	                },
+	                shouldUpdatePosition: true,
+	                placement: placement
+	            }, others, {
+	                overlay: overlayNode,
+	                onHide: this.handleOnHide
+	            }),
 	            children
 	        );
 	    };
@@ -11538,11 +11559,11 @@
 	    /**
 	     * @private
 	     */
-	    onHide: _propTypes2["default"].oneOf([null]),
+	    onHide: _propTypes2["default"].func,
 	    /**
 	     * @private
 	     */
-	    show: _propTypes2["default"].oneOf([null])
+	    show: _propTypes2["default"].bool
 	});
 	
 	var defaultProps = {
@@ -11698,6 +11719,7 @@
 	
 	    OverlayTrigger.prototype.hide = function hide() {
 	        this.setState({ show: false });
+	        this.props.onHide && this.props.onHide();
 	    };
 	
 	    OverlayTrigger.prototype.makeOverlay = function makeOverlay(overlay, props) {
@@ -12206,7 +12228,8 @@
 	    return _react2["default"].createElement(
 	      _BaseOverlay2["default"],
 	      _extends({}, props, {
-	        transition: transition
+	        transition: transition,
+	        onHide: props.onHide
 	      }),
 	      child
 	    );
@@ -15067,7 +15090,7 @@
 	
 	
 	  BaseModal.prototype.getDialogElement = function getDialogElement() {
-	    var node = this.refs.modal;
+	    var node = this.modal;
 	    return node && node.lastChild;
 	  };
 	
@@ -15117,6 +15140,8 @@
 	  };
 	
 	  BaseModal.prototype.render = function render() {
+	    var _this3 = this;
+	
 	    var _props4 = this.props,
 	        show = _props4.show,
 	        container = _props4.container,
@@ -15180,7 +15205,9 @@
 	      _react2["default"].createElement(
 	        'div',
 	        {
-	          ref: 'modal',
+	          ref: function ref(el) {
+	            _this3.modal = el;
+	          },
 	          role: role || 'dialog',
 	          style: style,
 	          className: className
@@ -32947,6 +32974,10 @@
 	
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 	
+	var _classnames = __webpack_require__(5);
+	
+	var _classnames2 = _interopRequireDefault(_classnames);
+	
 	var _createChainedFunction = __webpack_require__(37);
 	
 	var _createChainedFunction2 = _interopRequireDefault(_createChainedFunction);
@@ -32963,17 +32994,13 @@
 	
 	var _Overlay2 = _interopRequireDefault(_Overlay);
 	
-	var _Portal = __webpack_require__(112);
-	
-	var _Portal2 = _interopRequireDefault(_Portal);
-	
 	var _Content = __webpack_require__(265);
 	
 	var _Content2 = _interopRequireDefault(_Content);
 	
-	var _contains = __webpack_require__(111);
+	var _beeTooltip = __webpack_require__(108);
 	
-	var _contains2 = _interopRequireDefault(_contains);
+	var _beeTooltip2 = _interopRequireDefault(_beeTooltip);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
@@ -33009,12 +33036,16 @@
 	
 	var propTypes = _extends({}, _Overlay2['default'].propTypes, {
 	
+	    id: _propTypes2['default'].oneOfType([_propTypes2['default'].number, _propTypes2['default'].string]),
 	    // FIXME: This should be `defaultShow`.
 	    /**
 	     * 覆盖的初始可见性状态。对于更细微的可见性控制，请考虑直接使用覆盖组件。
 	     */
 	    defaultOverlayShown: _propTypes2['default'].bool,
-	
+	    /**
+	     * 弹出框标题
+	     */
+	    title: _propTypes2['default'].oneOfType([_propTypes2['default'].node, _propTypes2['default'].string]),
 	    /**
 	     * 要覆盖在目标旁边的元素或文本。
 	     */
@@ -33047,13 +33078,17 @@
 	    /**
 	     * @private
 	     */
-	    onHide: _propTypes2['default'].oneOf([null]),
+	    onHide: _propTypes2['default'].func,
 	    /**
 	     * @private
 	     */
 	    show: _propTypes2['default'].bool,
 	
 	    trigger: _propTypes2['default'].oneOfType([triggerType, _propTypes2['default'].arrayOf(triggerType)]),
+	    /**
+	     * @private
+	     */
+	    rootClose: _propTypes2['default'].bool,
 	    /**
 	     * @private
 	     */
@@ -33091,15 +33126,14 @@
 	
 	        _this._mountNode = null;
 	
+	        var visible = void 0;
+	        if ('show' in props) {
+	            visible = !!props.show;
+	        } else {
+	            visible = !!props.defaultOverlayShown;
+	        }
 	        _this.state = {
-	            show: props.defaultOverlayShown
-	        };
-	
-	        _this.handleMouseOver = function (e) {
-	            return _this.handleMouseOverOut(_this.handleDelayedShow, e);
-	        };
-	        _this.handleMouseOut = function (e) {
-	            return _this.handleMouseOverOut(_this.handleDelayedHide, e);
+	            show: visible
 	        };
 	        return _this;
 	    }
@@ -33109,34 +33143,24 @@
 	        !isReact16 && this.renderOverlay();
 	    };
 	
-	    Popover.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
-	        if (nextProps.hasOwnProperty('show')) {
-	            if (nextProps.show) {
-	                this.handleShow();
-	            } else {
-	                this.handleHide();
-	            }
+	    Popover.prototype.componentDidUpdate = function componentDidUpdate(prevProps) {
+	        !isReact16 && this.renderOverlay();
+	        if ('show' in this.props && prevProps.show !== this.props.show) {
+	            this.setState({
+	                show: this.props.show
+	            });
 	        }
 	    };
 	
-	    Popover.prototype.componentDidUpdate = function componentDidUpdate() {
-	        !isReact16 && this.renderOverlay();
-	    };
-	
-	    Popover.prototype.componentWillUnmount = function componentWillUnmount() {
-	        !isReact16 && _reactDom2['default'].unmountComponentAtNode(this._mountNode);
-	        this._mountNode = null;
-	    };
-	
-	    // 简单实现mouseEnter和mouseLeave。
-	    // React的内置版本是有问题的：https://github.com/facebook/react/issues/4251
-	    //在触发器被禁用的情况下，mouseOut / Over可能导致闪烁
-	    //从一个子元素移动到另一个子元素。
-	
-	
 	    Popover.prototype.render = function render() {
+	        var _this2 = this;
+	
 	        var _props = this.props,
+	            id = _props.id,
+	            clsPrefix = _props.clsPrefix,
+	            className = _props.className,
 	            content = _props.content,
+	            title = _props.title,
 	            children = _props.children,
 	            onClick = _props.onClick,
 	            trigger = _props.trigger,
@@ -33144,7 +33168,11 @@
 	            onFocus = _props.onFocus,
 	            onMouseOut = _props.onMouseOut,
 	            onMouseOver = _props.onMouseOver,
-	            props = _objectWithoutProperties(_props, ['content', 'children', 'onClick', 'trigger', 'onBlur', 'onFocus', 'onMouseOut', 'onMouseOver']);
+	            positionTop = _props.positionTop,
+	            positionLeft = _props.positionLeft,
+	            rootClose = _props.rootClose,
+	            defaultOverlayShown = _props.defaultOverlayShown,
+	            props = _objectWithoutProperties(_props, ['id', 'clsPrefix', 'className', 'content', 'title', 'children', 'onClick', 'trigger', 'onBlur', 'onFocus', 'onMouseOut', 'onMouseOver', 'positionTop', 'positionLeft', 'rootClose', 'defaultOverlayShown']);
 	
 	        delete props.delay;
 	        delete props.delayShow;
@@ -33161,7 +33189,7 @@
 	
 	        var overlay = _react2['default'].createElement(
 	            _Content2['default'],
-	            _extends({ placement: props.placement }, confirmProps),
+	            _extends({ placement: props.placement }, confirmProps, { title: title, id: 'u-popover-content' }),
 	            content
 	        );
 	
@@ -33173,21 +33201,6 @@
 	
 	        triggerProps.onClick = (0, _createChainedFunction2['default'])(childProps.onClick, onClick);
 	
-	        if (isOneOf('click', trigger)) {
-	            triggerProps.onClick = (0, _createChainedFunction2['default'])(triggerProps.onClick, this.handleToggle);
-	        }
-	
-	        if (isOneOf('hover', trigger)) {
-	
-	            triggerProps.onMouseOver = (0, _createChainedFunction2['default'])(childProps.onMouseOver, onMouseOver, this.handleMouseOver);
-	            triggerProps.onMouseOut = (0, _createChainedFunction2['default'])(childProps.onMouseOut, onMouseOut, this.handleMouseOut);
-	        }
-	
-	        if (isOneOf('focus', trigger)) {
-	            triggerProps.onFocus = (0, _createChainedFunction2['default'])(childProps.onFocus, onFocus, this.handleDelayedShow);
-	            triggerProps.onBlur = (0, _createChainedFunction2['default'])(childProps.onBlur, onBlur, this.handleDelayedHide);
-	        }
-	
 	        this._overlay = this.makeOverlay(overlay, overlayProps);
 	
 	        if (!isReact16) {
@@ -33196,124 +33209,56 @@
 	        triggerProps.key = 'overlay';
 	
 	        var portal = _react2['default'].createElement(
-	            _Portal2['default'],
-	            {
-	                key: 'portal',
-	                container: props.container },
-	            this._overlay
+	            _beeTooltip2['default'],
+	            _extends({}, props, {
+	                className: (0, _classnames2['default'])(className, clsPrefix, 'u-popover-tooltip'),
+	                id: id,
+	                inverse: true,
+	                overlay: this._overlay,
+	                trigger: trigger,
+	                placement: props.placement,
+	                container: props.container,
+	                positionTop: positionTop,
+	                positionLeft: positionLeft,
+	                rootClose: rootClose,
+	                defaultOverlayShown: defaultOverlayShown,
+	                onVisibleChange: this.onVisibleChange,
+	                onHide: function onHide() {
+	                    return _this2.hide(false);
+	                }
+	            }),
+	            this.props.children
 	        );
 	
-	        return [(0, _react.cloneElement)(child, triggerProps), portal];
+	        return 'show' in this.props ? (0, _react.cloneElement)(portal, {
+	            visible: this.state.show
+	        }) : portal;
 	    };
 	
 	    return Popover;
 	}(_react.Component);
 	
 	var _initialiseProps = function _initialiseProps() {
-	    var _this2 = this;
-	
-	    this.handleToggle = function () {
-	        if (!_this2.state.show) {
-	            _this2.show();
-	        } else {
-	            _this2.hide();
-	        }
-	    };
-	
-	    this.handleDelayedShow = function () {
-	        if (_this2._hoverHideDelay != null) {
-	            clearTimeout(_this2._hoverHideDelay);
-	            _this2._hoverHideDelay = null;
-	            return;
-	        }
-	
-	        if (_this2.state.show || _this2._hoverShowDelay != null) {
-	            return;
-	        }
-	
-	        var delay = _this2.props.delayShow != null ? _this2.props.delayShow : _this2.props.delay;
-	
-	        if (!delay) {
-	            _this2.show();
-	            return;
-	        }
-	
-	        _this2._hoverShowDelay = setTimeout(function () {
-	            _this2._hoverShowDelay = null;
-	            _this2.show();
-	        }, delay);
-	    };
-	
-	    this.handleDelayedHide = function () {
-	        if (_this2._hoverShowDelay != null) {
-	            clearTimeout(_this2._hoverShowDelay);
-	            _this2._hoverShowDelay = null;
-	            return;
-	        }
-	
-	        if (!_this2.state.show || _this2._hoverHideDelay != null) {
-	            return;
-	        }
-	
-	        var delay = _this2.props.delayHide != null ? _this2.props.delayHide : _this2.props.delay;
-	
-	        if (!delay) {
-	            _this2.hide();
-	            return;
-	        }
-	
-	        _this2._hoverHideDelay = setTimeout(function () {
-	            _this2._hoverHideDelay = null;
-	            _this2.hide();
-	        }, delay);
-	    };
-	
-	    this.handleMouseOverOut = function (handler, e) {
-	        var target = e.currentTarget;
-	        var related = e.relatedTarget || e.nativeEvent.toElement;
-	
-	        if (!related || related !== target && !(0, _contains2['default'])(target, related)) {
-	            handler(e);
-	        }
-	    };
-	
-	    this.handleHide = function () {
-	        if (_this2.state.show) {
-	            _this2.hide();
-	        }
-	    };
-	
-	    this.handleShow = function () {
-	        if (!_this2.state.show) {
-	            _this2.show();
-	        }
-	    };
-	
-	    this.show = function () {
-	        _this2.setState({ show: true });
-	    };
-	
-	    this.hide = function () {
-	        var onHide = _this2.props.onHide;
-	
-	        onHide && onHide();
-	        _this2.setState({ show: false });
-	    };
+	    var _this3 = this;
 	
 	    this.makeOverlay = function (overlay, props) {
 	        return _react2['default'].createElement(
-	            _Overlay2['default'],
-	            _extends({}, props, {
-	                show: _this2.state.show,
-	                onHide: _this2.handleHide,
-	                target: _this2
-	            }),
+	            'div',
+	            null,
 	            overlay
 	        );
 	    };
 	
-	    this.renderOverlay = function () {
-	        _reactDom2['default'].unstable_renderSubtreeIntoContainer(_this2, _this2._overlay, _this2._mountNode);
+	    this.onVisibleChange = function (visible) {
+	        if (!visible) {
+	            _this3.hide(visible);
+	        }
+	    };
+	
+	    this.hide = function (visible) {
+	        var onHide = _this3.props.onHide;
+	
+	        onHide && onHide(visible);
 	    };
 	};
 	
@@ -33448,6 +33393,7 @@
 	        var _classes;
 	
 	        var _props = this.props,
+	            title = _props.title,
 	            placement = _props.placement,
 	            positionTop = _props.positionTop,
 	            positionLeft = _props.positionLeft,
@@ -33459,7 +33405,7 @@
 	            id = _props.id,
 	            children = _props.children,
 	            trigger = _props.trigger,
-	            others = _objectWithoutProperties(_props, ['placement', 'positionTop', 'positionLeft', 'arrowOffsetTop', 'arrowOffsetLeft', 'clsPrefix', 'className', 'style', 'id', 'children', 'trigger']);
+	            others = _objectWithoutProperties(_props, ['title', 'placement', 'positionTop', 'positionLeft', 'arrowOffsetTop', 'arrowOffsetLeft', 'clsPrefix', 'className', 'style', 'id', 'children', 'trigger']);
 	
 	        var resPlacement = this.getInversePlacement(className, placement);
 	        var classes = (_classes = {}, _defineProperty(_classes, '' + clsPrefix, true), _defineProperty(_classes, PLACECLASS[resPlacement], true), _classes);
@@ -33470,20 +33416,18 @@
 	            left: positionLeft
 	        }, style);
 	
-	        /* const arrowStyle = {
-	            top: arrowOffsetTop,
-	            left: arrowOffsetLeft,
-	        }; */
-	
+	        // const arrowStyle = {
+	        //     top: arrowOffsetTop,
+	        //     left: arrowOffsetLeft,
+	        // }; 
 	        return _react2['default'].createElement(
 	            'div',
-	            _extends({
-	                role: 'tooltip',
-	                id: id,
-	                className: (0, _classnames2['default'])(className, classes),
-	                style: outerStyle
-	            }, others),
-	            _react2['default'].createElement('div', { className: 'arrow' }),
+	            null,
+	            title && _react2['default'].createElement(
+	                'div',
+	                { className: (0, _classnames2['default'])(clsPrefix + '-title') },
+	                title
+	            ),
 	            _react2['default'].createElement(
 	                'div',
 	                { className: (0, _classnames2['default'])(clsPrefix + '-content') },
@@ -33541,13 +33485,7 @@
 	    function Demo1(props) {
 	        _classCallCheck(this, Demo1);
 	
-	        var _this = _possibleConstructorReturn(this, _Component.call(this, props));
-	
-	        _this.onHide = function () {
-	            console.log('onHide');
-	        };
-	
-	        return _this;
+	        return _possibleConstructorReturn(this, _Component.call(this, props));
 	    }
 	
 	    Demo1.prototype.render = function render() {
@@ -33579,248 +33517,132 @@
 	                )
 	            )
 	        );
+	        var buttonWidth = 72;
 	        return React.createElement(
 	            'div',
-	            { style: { position: 'relative', height: 320, marginTop: 100, marginLeft: 250 } },
+	            { className: 'demo1' },
 	            React.createElement(
-	                _src2['default'],
-	                {
-	                    placement: 'leftTop',
-	                    content: content,
-	                    onHide: this.onHide,
-	                    trigger: 'hover',
-	                    id: 'leftTop'
-	                },
+	                'div',
+	                { style: { marginLeft: buttonWidth, whiteSpace: 'nowrap' } },
 	                React.createElement(
-	                    _beeButton2['default'],
-	                    {
-	                        colors: 'primary',
-	                        style: {
-	                            position: 'absolute',
-	                            top: 5,
-	                            left: 0
-	                        } },
-	                    '\u5DE6\u4E0A'
+	                    _src2['default'],
+	                    { placement: 'topLeft', content: content },
+	                    React.createElement(
+	                        _beeButton2['default'],
+	                        { colors: 'primary' },
+	                        '\u5DE6\u4E0A'
+	                    )
+	                ),
+	                React.createElement(
+	                    _src2['default'],
+	                    { placement: 'top', content: content },
+	                    React.createElement(
+	                        _beeButton2['default'],
+	                        { colors: 'primary' },
+	                        '\u4E0A'
+	                    )
+	                ),
+	                React.createElement(
+	                    _src2['default'],
+	                    { placement: 'topRight', content: content },
+	                    React.createElement(
+	                        _beeButton2['default'],
+	                        { colors: 'primary' },
+	                        '\u4E0A\u53F3'
+	                    )
 	                )
 	            ),
 	            React.createElement(
-	                _src2['default'],
-	                {
-	                    placement: 'left',
-	                    content: content,
-	                    trigger: 'hover',
-	                    id: 'left'
-	                },
+	                'div',
+	                { style: { width: buttonWidth, float: 'left' } },
 	                React.createElement(
-	                    _beeButton2['default'],
-	                    {
-	                        colors: 'primary',
-	                        style: {
-	                            position: 'absolute',
-	                            top: 55,
-	                            left: 0
-	                        } },
-	                    '\u5DE6'
+	                    _src2['default'],
+	                    { placement: 'leftTop', content: content },
+	                    React.createElement(
+	                        _beeButton2['default'],
+	                        { colors: 'primary' },
+	                        '\u5DE6\u4E0A'
+	                    )
+	                ),
+	                React.createElement(
+	                    _src2['default'],
+	                    { placement: 'left', content: content },
+	                    React.createElement(
+	                        _beeButton2['default'],
+	                        { colors: 'primary' },
+	                        '\u5DE6'
+	                    )
+	                ),
+	                React.createElement(
+	                    _src2['default'],
+	                    { placement: 'leftBottom', content: content },
+	                    React.createElement(
+	                        _beeButton2['default'],
+	                        { colors: 'primary' },
+	                        '\u5DE6\u4E0B'
+	                    )
 	                )
 	            ),
 	            React.createElement(
-	                _src2['default'],
-	                {
-	                    placement: 'leftBottom',
-	                    content: content,
-	                    trigger: 'hover',
-	                    id: 'leftBottom'
-	                },
+	                'div',
+	                { style: { width: buttonWidth, marginLeft: buttonWidth * 4 + 24 } },
 	                React.createElement(
-	                    _beeButton2['default'],
-	                    {
-	                        colors: 'primary',
-	                        style: {
-	                            position: 'absolute',
-	                            top: 110,
-	                            left: 0
-	                        } },
-	                    '\u5DE6\u4E0B'
+	                    _src2['default'],
+	                    { placement: 'rightTop', content: content },
+	                    React.createElement(
+	                        _beeButton2['default'],
+	                        { colors: 'primary' },
+	                        '\u53F3\u4E0A'
+	                    )
+	                ),
+	                React.createElement(
+	                    _src2['default'],
+	                    { placement: 'right', content: content },
+	                    React.createElement(
+	                        _beeButton2['default'],
+	                        { colors: 'primary' },
+	                        '\u53F3'
+	                    )
+	                ),
+	                React.createElement(
+	                    _src2['default'],
+	                    { placement: 'rightBottom', content: content },
+	                    React.createElement(
+	                        _beeButton2['default'],
+	                        { colors: 'primary' },
+	                        '\u53F3\u4E0B'
+	                    )
 	                )
 	            ),
 	            React.createElement(
-	                _src2['default'],
-	                {
-	                    placement: 'topLeft',
-	                    content: content,
-	                    trigger: 'hover',
-	                    id: 'topLeft'
-	                },
+	                'div',
+	                { style: { marginLeft: buttonWidth, clear: 'both', whiteSpace: 'nowrap' } },
 	                React.createElement(
-	                    _beeButton2['default'],
-	                    {
-	                        colors: 'primary',
-	                        style: {
-	                            position: 'absolute',
-	                            top: 0,
-	                            left: 100
-	                        } },
-	                    '\u4E0A\u5DE6'
-	                )
-	            ),
-	            React.createElement(
-	                _src2['default'],
-	                {
-	                    placement: 'top',
-	                    content: content,
-	                    trigger: 'hover',
-	                    id: 'top'
-	                },
+	                    _src2['default'],
+	                    { placement: 'bottomLeft', content: content },
+	                    React.createElement(
+	                        _beeButton2['default'],
+	                        { colors: 'primary' },
+	                        '\u4E0B\u5DE6'
+	                    )
+	                ),
 	                React.createElement(
-	                    _beeButton2['default'],
-	                    {
-	                        colors: 'primary',
-	                        style: {
-	                            position: 'absolute',
-	                            top: 0,
-	                            left: 200
-	                        } },
-	                    '\u4E0A'
-	                )
-	            ),
-	            React.createElement(
-	                _src2['default'],
-	                {
-	                    placement: 'topRight',
-	                    content: content,
-	                    trigger: 'hover',
-	                    id: 'topRight'
-	                },
+	                    _src2['default'],
+	                    { placement: 'bottom', content: content },
+	                    React.createElement(
+	                        _beeButton2['default'],
+	                        { colors: 'primary' },
+	                        '\u4E0B'
+	                    )
+	                ),
 	                React.createElement(
-	                    _beeButton2['default'],
-	                    {
-	                        colors: 'primary',
-	                        style: {
-	                            position: 'absolute',
-	                            top: 0,
-	                            left: 300
-	                        } },
-	                    '\u4E0A\u53F3'
-	                )
-	            ),
-	            React.createElement(
-	                _src2['default'],
-	                {
-	                    placement: 'rightTop',
-	                    content: content,
-	                    trigger: 'hover',
-	                    id: 'rightTop'
-	                },
-	                React.createElement(
-	                    _beeButton2['default'],
-	                    {
-	                        colors: 'primary',
-	                        style: {
-	                            position: 'absolute',
-	                            top: 5,
-	                            left: 400
-	                        } },
-	                    '\u53F3\u4E0A'
-	                )
-	            ),
-	            React.createElement(
-	                _src2['default'],
-	                {
-	                    placement: 'right',
-	                    content: content,
-	                    trigger: 'hover',
-	                    id: 'right'
-	                },
-	                React.createElement(
-	                    _beeButton2['default'],
-	                    {
-	                        colors: 'primary',
-	                        style: {
-	                            position: 'absolute',
-	                            top: 55,
-	                            left: 400
-	                        } },
-	                    '\u53F3'
-	                )
-	            ),
-	            React.createElement(
-	                _src2['default'],
-	                {
-	                    placement: 'rightBottom',
-	                    content: content,
-	                    trigger: 'hover',
-	                    id: 'rightBottom'
-	                },
-	                React.createElement(
-	                    _beeButton2['default'],
-	                    {
-	                        colors: 'primary',
-	                        style: {
-	                            position: 'absolute',
-	                            top: 110,
-	                            left: 400
-	                        } },
-	                    '\u53F3\u4E0B'
-	                )
-	            ),
-	            React.createElement(
-	                _src2['default'],
-	                {
-	                    placement: 'bottomLeft',
-	                    content: content,
-	                    trigger: 'hover',
-	                    id: 'bottomLeft'
-	                },
-	                React.createElement(
-	                    _beeButton2['default'],
-	                    {
-	                        colors: 'primary',
-	                        style: {
-	                            position: 'absolute',
-	                            top: 115,
-	                            left: 100
-	                        } },
-	                    '\u4E0B\u5DE6'
-	                )
-	            ),
-	            React.createElement(
-	                _src2['default'],
-	                {
-	                    placement: 'bottom',
-	                    content: content,
-	                    trigger: 'hover',
-	                    id: 'bottom'
-	                },
-	                React.createElement(
-	                    _beeButton2['default'],
-	                    {
-	                        colors: 'primary',
-	                        style: {
-	                            position: 'absolute',
-	                            top: 115,
-	                            left: 200
-	                        } },
-	                    '\u4E0B'
-	                )
-	            ),
-	            React.createElement(
-	                _src2['default'],
-	                {
-	                    placement: 'bottomRight',
-	                    content: content,
-	                    trigger: 'hover',
-	                    id: 'bottomRight'
-	                },
-	                React.createElement(
-	                    _beeButton2['default'],
-	                    {
-	                        colors: 'primary',
-	                        style: {
-	                            position: 'absolute',
-	                            top: 115,
-	                            left: 300
-	                        } },
-	                    '\u4E0B\u53F3'
+	                    _src2['default'],
+	                    { placement: 'bottomRight', content: content },
+	                    React.createElement(
+	                        _beeButton2['default'],
+	                        { colors: 'primary' },
+	                        '\u4E0B\u53F3'
+	                    )
 	                )
 	            )
 	        );
@@ -33863,7 +33685,7 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); } /**
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @title 受控制的气泡卡片
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @description 通过设置show，来控制气泡卡片的显示和隐藏
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @description 通过设置show，来控制气泡卡片的显示和隐藏。注意：需要和 onHide 事件结合使用
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
 	
 	var Demo2 = function (_Component) {
@@ -33886,6 +33708,12 @@
 	            });
 	        };
 	
+	        _this.onHide = function (visible) {
+	            _this.setState({
+	                show: visible
+	            });
+	        };
+	
 	        _this.state = {
 	            show: false
 	        };
@@ -33897,21 +33725,12 @@
 	            'div',
 	            null,
 	            React.createElement(
-	                'p',
-	                null,
-	                '\u8BF7\u786E\u8BA4\u60A8\u7684\u5305\u88F9\u5DF2\u7B7E\u6536\uFF01'
-	            ),
-	            React.createElement(
-	                'div',
-	                null,
-	                React.createElement(
-	                    _beeButton2['default'],
-	                    {
-	                        colors: 'primary',
-	                        onClick: this.handleClose,
-	                        size: 'sm' },
-	                    '\u5173\u95ED'
-	                )
+	                _beeButton2['default'],
+	                {
+	                    colors: 'primary',
+	                    onClick: this.handleClose,
+	                    size: 'sm' },
+	                '\u5173\u95ED'
 	            )
 	        );
 	        return React.createElement(
@@ -33920,10 +33739,16 @@
 	            React.createElement(
 	                _src2['default'],
 	                {
+	                    id: 'demo2',
 	                    placement: 'right',
+	                    title: React.createElement(
+	                        'h3',
+	                        null,
+	                        '\u8BF7\u786E\u8BA4\u60A8\u7684\u5305\u88F9\u5DF2\u7B7E\u6536\uFF01'
+	                    ),
 	                    content: content,
 	                    show: this.state.show,
-	                    id: 'demo2'
+	                    onHide: this.onHide
 	                },
 	                React.createElement(
 	                    _beeButton2['default'],
@@ -34000,9 +33825,12 @@
 	            _this.setState({
 	                show: true
 	            });
-	        }, _this.close = function () {
+	        }, _this.handleVisibleChange = function (visible) {
+	            console.log('onVisibleChange：', visible);
+	        }, _this.handleHide = function (visible) {
+	            console.log('onHide：', visible);
 	            _this.setState({
-	                show: false
+	                show: visible
 	            });
 	        }, _temp), _possibleConstructorReturn(_this, _ret);
 	    }
@@ -34027,11 +33855,13 @@
 	                    _react2['default'].createElement(
 	                        _src2['default'],
 	                        {
-	                            placement: 'right',
+	                            id: 'demo3',
+	                            trigger: 'click',
 	                            content: this.content,
 	                            container: this.container ? this.container : null,
 	                            show: show,
-	                            id: 'demo3'
+	                            onVisibleChange: this.handleVisibleChange,
+	                            onHide: this.handleHide
 	                        },
 	                        _react2['default'].createElement(
 	                            'span',
@@ -34087,50 +33917,17 @@
 	var Demo4 = function (_Component) {
 	    _inherits(Demo4, _Component);
 	
-	    function Demo4(props) {
+	    function Demo4() {
 	        _classCallCheck(this, Demo4);
 	
-	        var _this = _possibleConstructorReturn(this, _Component.call(this, props));
-	
-	        _this.handleClose = function () {
-	            _this.setState({
-	                show: false
-	            });
-	        };
-	
-	        _this.show = function () {
-	            _this.setState({
-	                show: true
-	            });
-	        };
-	
-	        _this.state = {
-	            show: false
-	        };
-	        return _this;
+	        return _possibleConstructorReturn(this, _Component.apply(this, arguments));
 	    }
 	
 	    Demo4.prototype.render = function render() {
 	        var content = React.createElement(
-	            'div',
+	            'p',
 	            null,
-	            React.createElement(
-	                'p',
-	                null,
-	                '\u8BF7\u786E\u8BA4\u60A8\u7684\u5305\u88F9\u5DF2\u7B7E\u6536\uFF01'
-	            ),
-	            React.createElement(
-	                'div',
-	                null,
-	                React.createElement(
-	                    _beeButton2['default'],
-	                    {
-	                        colors: 'primary',
-	                        onClick: this.handleClose,
-	                        size: 'sm' },
-	                    '\u5173\u95ED'
-	                )
-	            )
+	            '\u8BF7\u786E\u8BA4\u60A8\u7684\u5305\u88F9\u5DF2\u7B7E\u6536\uFF01'
 	        );
 	        return React.createElement(
 	            'div',
@@ -34138,19 +33935,21 @@
 	            React.createElement(
 	                _src2['default'],
 	                {
-	                    placement: 'right'
-	                    // positionTop={1059}
+	                    id: 'demo4',
+	                    placement: 'right',
+	                    trigger: 'click'
+	                    // positionTop={1050}
 	                    // positionLeft={106}
-	                    , content: content,
-	                    show: this.state.show,
-	                    id: 'demo4'
+	                    , title: React.createElement(
+	                        'p',
+	                        null,
+	                        '\u6D88\u606F'
+	                    ),
+	                    content: content
 	                },
 	                React.createElement(
 	                    _beeButton2['default'],
-	                    {
-	                        colors: 'primary',
-	                        onClick: this.show
-	                    },
+	                    { colors: 'primary' },
 	                    '\u786E\u8BA4\u6309\u94AE'
 	                )
 	            )

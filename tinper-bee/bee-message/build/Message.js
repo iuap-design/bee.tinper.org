@@ -38,25 +38,24 @@ var noop = function noop() {};
 var notificationStyle_copy = {};
 var messageStyle_copy = {};
 var positionType = ['topRight', 'bottomRight', 'top', 'bottom', 'topLeft', 'bottomLeft', ''];
+var defaultStyle = {};
 
 var positionObj = {
     "top": {
-        messageStyle: {
-            transform: 'translateX( -50%)'
-        },
+        messageStyle: {},
         notificationStyle: {
             top: defaultTop,
-            left: '50%'
+            left: '50%',
+            transform: 'translateX( -50%)'
         },
         transitionName: 'top'
     },
     "bottom": {
-        messageStyle: {
-            transform: 'translateX( -50%)'
-        },
+        messageStyle: {},
         notificationStyle: {
             bottom: defaultBottom,
-            left: '50%'
+            left: '50%',
+            transform: 'translateX( -50%)'
         },
         transitionName: 'bottom'
     },
@@ -139,7 +138,7 @@ function getMessageInstance() {
     var instanceObj = {
         clsPrefix: clsPrefix,
         transitionName: clsPrefix + '-' + positionObj[position].transitionName,
-        style: style, // 覆盖原来的样式
+        style: _extends({}, style, defaultStyle), // 覆盖原来的样式
         position: position
     };
     if (typeof keyboard === 'boolean') {
@@ -180,6 +179,7 @@ function notice(content, duration_arg, type, onClose, position, style, keyboard,
     }[type];
 
     var positionStyle = JSON.stringify(messageStyle_copy) == "{}" ? positionObj[position].messageStyle : messageStyle_copy;
+    defaultStyle = _extends({}, positionStyle, style);
     getMessageInstance(position, function (instance) {
         instance.notice({
             key: key,
@@ -253,6 +253,16 @@ exports["default"] = {
         if (messageInstance) {
             messageInstance.destroy();
             messageInstance = null;
+            defaultDuration = 1.5;
+            newDuration = undefined;
+            defaultTop = 24;
+            defaultBottom = 48;
+            bottom = 90;
+            padding = 30;
+            width = 240;
+            notificationStyle_copy = null;
+            messageStyle_copy = null;
+            defaultStyle = null;
         }
     }
 };

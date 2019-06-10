@@ -17,25 +17,28 @@ const noop = () => {};
 let notificationStyle_copy = {};
 let messageStyle_copy = {};
 const positionType = ['topRight', 'bottomRight', 'top', 'bottom' , 'topLeft', 'bottomLeft', ''];
+let defaultStyle = {};
 
 let positionObj = {
     "top": {
         messageStyle: {
-            transform: 'translateX( -50%)'
+            
         },
         notificationStyle: {
             top: defaultTop,
             left: '50%',
+            transform: 'translateX( -50%)'
         },
         transitionName: 'top'
     },
     "bottom": {
         messageStyle: {
-            transform: 'translateX( -50%)'
+
         },
         notificationStyle: {
             bottom: defaultBottom,
             left: '50%',
+            transform: 'translateX( -50%)'
         },
         transitionName: 'bottom'
     },
@@ -113,7 +116,7 @@ function getMessageInstance(position = 'top', callback, keyboard, onEscapeKeyUp)
     let instanceObj = {
         clsPrefix,
         transitionName: `${clsPrefix}-${positionObj[position].transitionName}`,
-        style: style, // 覆盖原来的样式
+        style: Object.assign({}, style, defaultStyle), // 覆盖原来的样式
         position: position,
     }
     if (typeof keyboard === 'boolean') {
@@ -157,6 +160,7 @@ function notice(content, duration_arg, type, onClose, position, style, keyboard,
     })[type];
 
     let positionStyle = JSON.stringify(messageStyle_copy) == "{}" ? positionObj[position].messageStyle : messageStyle_copy;
+    defaultStyle = Object.assign({}, positionStyle, style);
     getMessageInstance(position, instance => {
         instance.notice({
             key,
@@ -227,6 +231,16 @@ export default {
     if (messageInstance) {
       messageInstance.destroy();
       messageInstance = null;
+      defaultDuration = 1.5;
+      newDuration = undefined;
+      defaultTop = 24;
+      defaultBottom = 48;
+      bottom = 90;
+      padding = 30;
+      width = 240;
+      notificationStyle_copy = null;
+      messageStyle_copy = null;
+      defaultStyle = null;
     }
   },
 };

@@ -119,7 +119,8 @@ var Calendar = function (_React$Component) {
         clearIcon = props.clearIcon,
         renderFooter = props.renderFooter,
         showMonthInput = props.showMonthInput,
-        renderError = props.renderError;
+        renderError = props.renderError,
+        onInputBlur = props.onInputBlur;
     var value = state.value,
         selectedValue = state.selectedValue,
         mode = state.mode;
@@ -161,7 +162,8 @@ var Calendar = function (_React$Component) {
       onChange: this.onDateInputChange,
       onSelect: this.onDateInputSelect,
       clearIcon: clearIcon,
-      renderError: renderError
+      renderError: renderError,
+      onBlur: onInputBlur
     }) : null;
 
     var children = [];

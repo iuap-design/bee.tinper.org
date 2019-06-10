@@ -220,6 +220,15 @@ class DatePicker extends Component {
     this.props.onSelect&&this.props.onSelect(value, (value && this.getValue(value)) || '');
     // ReactDOM.findDOMNode(this.outInput).focus()
   }
+  //日期面板中输入框的失焦事件
+  onDateInputBlur = (e) => {
+    let input = document.querySelector('.rc-calendar-input');
+    let value;
+    if(input) {
+      value = input.value ? input.value : '';
+    }
+    this.props.onDateInputBlur && this.props.onDateInputBlur(e,value);
+  }
   render() {
     let state = this.state;
     let props = this.props;
@@ -247,6 +256,7 @@ class DatePicker extends Component {
         onSelect={this.handleSelect}
         onChange={this.handleCalendarChange}
         value={this.state.value}
+        onInputBlur={this.onDateInputBlur}
       />
     );
 

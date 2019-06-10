@@ -1,12 +1,12 @@
 import React, { Component, cloneElement } from 'react';
 import ReactDOM from 'react-dom';
+import classnames from 'classnames';
 import createChainedFunction from 'tinper-bee-core/lib/createChainedFunction';
 import splitComponentProps from 'tinper-bee-core/lib/splitComponent';
 import PropTypes from 'prop-types';
 import Overlay from 'bee-overlay/build/Overlay';
-import Portal from 'bee-overlay/build/Portal';
 import Content from './Content';
-import contains from 'dom-helpers/query/contains';
+import Tooltip from 'bee-tooltip';
 
 //TODO: 当多个Popover在一个组件内时，显示一个会触发多个渲染。见demo1.
 
@@ -31,13 +31,20 @@ function isOneOf(one, of) {
 const propTypes = {
     ...Overlay.propTypes,
 
-
+    id: PropTypes.oneOfType([
+        PropTypes.number, PropTypes.string,
+    ]),
     // FIXME: This should be `defaultShow`.
     /**
      * 覆盖的初始可见性状态。对于更细微的可见性控制，请考虑直接使用覆盖组件。
      */
     defaultOverlayShown: PropTypes.bool,
-
+    /**
+     * 弹出框标题
+     */
+    title: PropTypes.oneOfType([
+        PropTypes.node, PropTypes.string,
+    ]),
     /**
      * 要覆盖在目标旁边的元素或文本。
      */
@@ -71,7 +78,7 @@ const propTypes = {
     /**
      * @private
      */
-    onHide: PropTypes.oneOf([null]),
+    onHide: PropTypes.func,
     /**
      * @private
      */
@@ -80,6 +87,10 @@ const propTypes = {
     trigger: PropTypes.oneOfType([
         triggerType, PropTypes.arrayOf(triggerType),
     ]),
+    /**
+     * @private
+     */
+    rootClose: PropTypes.bool,
     /**
      * @private
      */
@@ -112,16 +123,15 @@ class Popover extends Component{
 
         this._mountNode = null;
 
+        let visible;
+        if ('show' in props) {
+            visible = !!props.show;
+        } else {
+            visible = !!props.defaultOverlayShown;
+        }
         this.state = {
-            show: props.defaultOverlayShown,
+            show: visible,
         };
-
-        this.handleMouseOver = e => (
-            this.handleMouseOverOut(this.handleDelayedShow, e)
-        );
-        this.handleMouseOut = e => (
-            this.handleMouseOverOut(this.handleDelayedHide, e)
-        );
     }
 
     componentDidMount() {
@@ -129,142 +139,41 @@ class Popover extends Component{
         !isReact16 && this.renderOverlay();
     }
 
-    componentWillReceiveProps(nextProps) {
-        if(nextProps.hasOwnProperty('show')){
-            if(nextProps.show){
-                this.handleShow();
-            }else{
-                this.handleHide();
-            }
-        }
-    }
-
-    componentDidUpdate() {
+    componentDidUpdate(prevProps) {
         !isReact16 && this.renderOverlay();
-    }
-
-    componentWillUnmount() {
-        !isReact16 && ReactDOM.unmountComponentAtNode(this._mountNode);
-        this._mountNode = null;
-
-    }
-
-    handleToggle = () => {
-        if (!this.state.show) {
-            this.show();
-        }else{
-            this.hide();
+        if ('show' in this.props && prevProps.show !== this.props.show) {
+            this.setState({
+                show: this.props.show
+            })
         }
-    }
-
-    handleDelayedShow = () => {
-        if (this._hoverHideDelay != null) {
-            clearTimeout(this._hoverHideDelay);
-            this._hoverHideDelay = null;
-            return;
-        }
-
-        if (this.state.show || this._hoverShowDelay != null) {
-            return;
-        }
-
-        const delay = this.props.delayShow != null ?
-            this.props.delayShow : this.props.delay;
-
-        if (!delay) {
-            this.show();
-            return;
-        }
-
-        this._hoverShowDelay = setTimeout(() => {
-            this._hoverShowDelay = null;
-            this.show();
-        }, delay);
-    }
-
-    handleDelayedHide = () => {
-        if (this._hoverShowDelay != null) {
-            clearTimeout(this._hoverShowDelay);
-            this._hoverShowDelay = null;
-            return;
-        }
-
-        if (!this.state.show || this._hoverHideDelay != null) {
-            return;
-        }
-
-        const delay = this.props.delayHide != null ?
-            this.props.delayHide : this.props.delay;
-
-        if (!delay) {
-            this.hide();
-            return;
-        }
-
-        this._hoverHideDelay = setTimeout(() => {
-            this._hoverHideDelay = null;
-            this.hide();
-        }, delay);
-    }
-
-    // 简单实现mouseEnter和mouseLeave。
-    // React的内置版本是有问题的：https://github.com/facebook/react/issues/4251
-    //在触发器被禁用的情况下，mouseOut / Over可能导致闪烁
-    //从一个子元素移动到另一个子元素。
-    handleMouseOverOut = (handler, e) => {
-        const target = e.currentTarget;
-        const related = e.relatedTarget || e.nativeEvent.toElement;
-
-        if (!related || related !== target && !contains(target, related)) {
-            handler(e);
-        }
-    }
-
-
-    handleHide = () => {
-        if(this.state.show){
-            this.hide();
-        }
-    }
-
-    handleShow = () => {
-        if(!this.state.show){
-            this.show();
-        }
-    }
-
-    show = () => {
-        this.setState({ show: true });
-    }
-
-    hide = () => {
-        let { onHide } = this.props;
-        onHide && onHide()
-        this.setState({ show: false });
     }
 
     makeOverlay = (overlay, props) => {
         return (
-            <Overlay
-                {...props}
-                show={this.state.show}
-                onHide={this.handleHide}
-                target={this}
-            >
-                {overlay}
-            </Overlay>
+            <div>
+				{overlay}
+			</div>
         );
     }
 
-    renderOverlay = () => {
-        ReactDOM.unstable_renderSubtreeIntoContainer(
-            this, this._overlay, this._mountNode
-        );
+    onVisibleChange = (visible) => {
+        if(!visible){
+            this.hide(visible);
+        }
+    }
+
+    hide = (visible) => {
+        let { onHide } = this.props;
+        onHide && onHide(visible);
     }
 
     render() {
         const {
+            id,
+            clsPrefix,
+            className,
             content,
+            title,
             children,
             onClick,
             trigger,
@@ -272,6 +181,10 @@ class Popover extends Component{
             onFocus,
             onMouseOut,
             onMouseOver,
+            positionTop,
+            positionLeft,
+            rootClose,
+            defaultOverlayShown,
             ...props
         } = this.props;
 
@@ -286,7 +199,7 @@ class Popover extends Component{
         const childProps = child.props;
 
         let overlay = (
-            <Content placement={ props.placement } {...confirmProps} >
+            <Content placement={ props.placement } {...confirmProps} title={title} id="u-popover-content">
                 {content}
             </Content>
         );
@@ -299,32 +212,6 @@ class Popover extends Component{
 
         triggerProps.onClick = createChainedFunction(childProps.onClick, onClick);
 
-        if (isOneOf('click', trigger)) {
-            triggerProps.onClick = createChainedFunction(
-                triggerProps.onClick, this.handleToggle
-            );
-        }
-
-        if (isOneOf('hover', trigger)) {
-
-            triggerProps.onMouseOver = createChainedFunction(
-                childProps.onMouseOver, onMouseOver, this.handleMouseOver
-            );
-            triggerProps.onMouseOut = createChainedFunction(
-                childProps.onMouseOut, onMouseOut, this.handleMouseOut
-            );
-        }
-
-        if (isOneOf('focus', trigger)) {
-            triggerProps.onFocus = createChainedFunction(
-                childProps.onFocus, onFocus, this.handleDelayedShow
-            );
-            triggerProps.onBlur = createChainedFunction(
-                childProps.onBlur, onBlur, this.handleDelayedHide
-            );
-        }
-
-
         this._overlay = this.makeOverlay(overlay, overlayProps);
 
         if (!isReact16) {
@@ -333,18 +220,33 @@ class Popover extends Component{
         triggerProps.key = 'overlay';
 
         let portal = (
-            <Portal
-                key="portal"
-                container={props.container}>
-                { this._overlay }
-            </Portal>
+            <Tooltip 
+            {...props}
+            className={classnames(className, clsPrefix, 'u-popover-tooltip')}
+            id={id}
+            inverse 
+            overlay={this._overlay} 
+            trigger={trigger} 
+            placement={props.placement} 
+            container={props.container}
+            positionTop={positionTop}
+            positionLeft={positionLeft}
+            rootClose={rootClose}
+            defaultOverlayShown={defaultOverlayShown}
+            onVisibleChange={this.onVisibleChange}
+            onHide={() => this.hide(false)}
+            >
+                { this.props.children }
+            </Tooltip>
         )
 
-
-        return [
-            cloneElement(child, triggerProps),
+        return 'show' in this.props ? (
+            cloneElement(portal, {
+                visible : this.state.show
+            })
+        ) : (
             portal
-        ]
+        )
     }
 
 }

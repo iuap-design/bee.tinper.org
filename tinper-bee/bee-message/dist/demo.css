@@ -1226,21 +1226,22 @@
     padding-bottom: 0;
     max-height: 0; } }
 
+
 .paddingDemo button {
   margin: 10px; }
 
 .paddingDemo button {
   margin: 8px; }
 
-.demo3 .u-button {
+.demo6 .u-button {
   margin: 8px 8px 8px 0; }
 
-.demo3 .u-table .u-button {
+.demo6 .u-table .u-button {
   margin: 0 4px;
   color: #fff;
   background: #505F79;
   border-color: #505F79; }
-  .demo3 .u-table .u-button:hover, .demo3 .u-table .u-button:active {
+  .demo6 .u-table .u-button:hover, .demo6 .u-table .u-button:active {
     background: #344563;
     border-color: #505F79; }
 

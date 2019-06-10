@@ -51,7 +51,8 @@ var propTypes = {
 	width: _propTypes2["default"].oneOfType([_propTypes2["default"].string, _propTypes2["default"].number]),
 	height: _propTypes2["default"].oneOfType([_propTypes2["default"].string, _propTypes2["default"].number]),
 	destroyOnClose: _propTypes2["default"].bool,
-	container: _propTypes2["default"].string
+	container: _propTypes2["default"].string,
+	closeIcon: _propTypes2["default"].node
 };
 
 var defaultProps = {
@@ -65,7 +66,8 @@ var defaultProps = {
 	width: 'auto',
 	height: 'auto',
 	destroyOnClose: false,
-	container: 'body'
+	container: 'body',
+	closeIcon: null
 };
 
 var DrawerContext = _react2["default"].createContext(null);
@@ -153,28 +155,35 @@ var Drawer = function (_Component) {
 	};
 
 	Drawer.prototype.renderClose = function renderClose() {
-		var showClose = this.props.showClose;
+		var _props2 = this.props,
+		    showClose = _props2.showClose,
+		    closeIcon = _props2.closeIcon;
 
-		return showClose ? _react2["default"].createElement(_beeIcon2["default"], { type: 'uf-close', className: 'drawer-close', onClick: this.fCloseClick }) : null;
+		var closeDom = closeIcon || _react2["default"].createElement(_beeIcon2["default"], { type: 'uf-close' });
+		return showClose ? _react2["default"].createElement(
+			'span',
+			{ className: 'drawer-close', onClick: this.fCloseClick },
+			closeDom
+		) : null;
 	};
 
 	Drawer.prototype.renderBody = function renderBody() {
 		var _this2 = this;
 
-		var _props2 = this.props,
-		    destroyOnClose = _props2.destroyOnClose,
-		    show = _props2.show;
+		var _props3 = this.props,
+		    destroyOnClose = _props3.destroyOnClose,
+		    show = _props3.show;
 
 		if (destroyOnClose && !show) {
 			return null;
 		}
-		var _props3 = this.props,
-		    hasHeader = _props3.hasHeader,
-		    title = _props3.title,
-		    children = _props3.children,
-		    width = _props3.width,
-		    height = _props3.height,
-		    placement = _props3.placement;
+		var _props4 = this.props,
+		    hasHeader = _props4.hasHeader,
+		    title = _props4.title,
+		    children = _props4.children,
+		    width = _props4.width,
+		    height = _props4.height,
+		    placement = _props4.placement;
 		var push = this.state.push;
 		//抽屉类
 
@@ -251,10 +260,10 @@ var Drawer = function (_Component) {
 	};
 
 	Drawer.prototype.renderAll = function renderAll(value) {
-		var _props4 = this.props,
-		    show = _props4.show,
-		    className = _props4.className,
-		    zIndex = _props4.zIndex;
+		var _props5 = this.props,
+		    show = _props5.show,
+		    className = _props5.className,
+		    zIndex = _props5.zIndex;
 		//容器类
 
 		var drawercClass = (0, _classnames2["default"])('drawerc', className);

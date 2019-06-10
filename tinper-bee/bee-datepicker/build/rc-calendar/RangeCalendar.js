@@ -187,7 +187,9 @@ var RangeCalendar = function (_React$Component) {
         showClear = props.showClear,
         showToday = props.showToday,
         type = props.type,
-        clearIcon = props.clearIcon;
+        clearIcon = props.clearIcon,
+        onStartInputBlur = props.onStartInputBlur,
+        onEndInputBlur = props.onEndInputBlur;
     var hoverValue = state.hoverValue,
         selectedValue = state.selectedValue,
         mode = state.mode,
@@ -278,7 +280,8 @@ var RangeCalendar = function (_React$Component) {
             enablePrev: true,
             enableNext: !isClosestMonths || this.isMonthYearPanelShow(mode[1]),
             clearIcon: clearIcon,
-            tabIndex: '0'
+            tabIndex: '0',
+            onInputBlur: onStartInputBlur
           })),
           _react2["default"].createElement(
             'span',
@@ -306,7 +309,8 @@ var RangeCalendar = function (_React$Component) {
             enableNext: true,
             clearIcon: clearIcon,
             tabIndex: '0',
-            inputTabIndex: '-1'
+            inputTabIndex: '-1',
+            onInputBlur: onEndInputBlur
           }))
         ),
         _react2["default"].createElement(

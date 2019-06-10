@@ -108,11 +108,12 @@ class DateInput extends React.Component {
     this.setState({ hasFocus: true });
   }
 
-  onBlur = () => {
+  onBlur = (e) => {
     this.setState((prevState, prevProps) => ({
       hasFocus: false,
       str: formatDate(prevProps.value, prevProps.format),
     }));
+    this.props.onBlur && this.props.onBlur(e);
   }
 
   onKeyDown = (e) => {

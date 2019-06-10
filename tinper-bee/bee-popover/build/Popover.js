@@ -16,6 +16,10 @@ var _reactDom = require('react-dom');
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
+var _classnames = require('classnames');
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
 var _createChainedFunction = require('tinper-bee-core/lib/createChainedFunction');
 
 var _createChainedFunction2 = _interopRequireDefault(_createChainedFunction);
@@ -32,17 +36,13 @@ var _Overlay = require('bee-overlay/build/Overlay');
 
 var _Overlay2 = _interopRequireDefault(_Overlay);
 
-var _Portal = require('bee-overlay/build/Portal');
-
-var _Portal2 = _interopRequireDefault(_Portal);
-
 var _Content = require('./Content');
 
 var _Content2 = _interopRequireDefault(_Content);
 
-var _contains = require('dom-helpers/query/contains');
+var _beeTooltip = require('bee-tooltip');
 
-var _contains2 = _interopRequireDefault(_contains);
+var _beeTooltip2 = _interopRequireDefault(_beeTooltip);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -78,12 +78,16 @@ function isOneOf(one, of) {
 
 var propTypes = _extends({}, _Overlay2["default"].propTypes, {
 
+    id: _propTypes2["default"].oneOfType([_propTypes2["default"].number, _propTypes2["default"].string]),
     // FIXME: This should be `defaultShow`.
     /**
      * 覆盖的初始可见性状态。对于更细微的可见性控制，请考虑直接使用覆盖组件。
      */
     defaultOverlayShown: _propTypes2["default"].bool,
-
+    /**
+     * 弹出框标题
+     */
+    title: _propTypes2["default"].oneOfType([_propTypes2["default"].node, _propTypes2["default"].string]),
     /**
      * 要覆盖在目标旁边的元素或文本。
      */
@@ -116,13 +120,17 @@ var propTypes = _extends({}, _Overlay2["default"].propTypes, {
     /**
      * @private
      */
-    onHide: _propTypes2["default"].oneOf([null]),
+    onHide: _propTypes2["default"].func,
     /**
      * @private
      */
     show: _propTypes2["default"].bool,
 
     trigger: _propTypes2["default"].oneOfType([triggerType, _propTypes2["default"].arrayOf(triggerType)]),
+    /**
+     * @private
+     */
+    rootClose: _propTypes2["default"].bool,
     /**
      * @private
      */
@@ -160,15 +168,14 @@ var Popover = function (_Component) {
 
         _this._mountNode = null;
 
+        var visible = void 0;
+        if ('show' in props) {
+            visible = !!props.show;
+        } else {
+            visible = !!props.defaultOverlayShown;
+        }
         _this.state = {
-            show: props.defaultOverlayShown
-        };
-
-        _this.handleMouseOver = function (e) {
-            return _this.handleMouseOverOut(_this.handleDelayedShow, e);
-        };
-        _this.handleMouseOut = function (e) {
-            return _this.handleMouseOverOut(_this.handleDelayedHide, e);
+            show: visible
         };
         return _this;
     }
@@ -178,34 +185,24 @@ var Popover = function (_Component) {
         !isReact16 && this.renderOverlay();
     };
 
-    Popover.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
-        if (nextProps.hasOwnProperty('show')) {
-            if (nextProps.show) {
-                this.handleShow();
-            } else {
-                this.handleHide();
-            }
+    Popover.prototype.componentDidUpdate = function componentDidUpdate(prevProps) {
+        !isReact16 && this.renderOverlay();
+        if ('show' in this.props && prevProps.show !== this.props.show) {
+            this.setState({
+                show: this.props.show
+            });
         }
     };
 
-    Popover.prototype.componentDidUpdate = function componentDidUpdate() {
-        !isReact16 && this.renderOverlay();
-    };
-
-    Popover.prototype.componentWillUnmount = function componentWillUnmount() {
-        !isReact16 && _reactDom2["default"].unmountComponentAtNode(this._mountNode);
-        this._mountNode = null;
-    };
-
-    // 简单实现mouseEnter和mouseLeave。
-    // React的内置版本是有问题的：https://github.com/facebook/react/issues/4251
-    //在触发器被禁用的情况下，mouseOut / Over可能导致闪烁
-    //从一个子元素移动到另一个子元素。
-
-
     Popover.prototype.render = function render() {
+        var _this2 = this;
+
         var _props = this.props,
+            id = _props.id,
+            clsPrefix = _props.clsPrefix,
+            className = _props.className,
             content = _props.content,
+            title = _props.title,
             children = _props.children,
             onClick = _props.onClick,
             trigger = _props.trigger,
@@ -213,7 +210,11 @@ var Popover = function (_Component) {
             onFocus = _props.onFocus,
             onMouseOut = _props.onMouseOut,
             onMouseOver = _props.onMouseOver,
-            props = _objectWithoutProperties(_props, ['content', 'children', 'onClick', 'trigger', 'onBlur', 'onFocus', 'onMouseOut', 'onMouseOver']);
+            positionTop = _props.positionTop,
+            positionLeft = _props.positionLeft,
+            rootClose = _props.rootClose,
+            defaultOverlayShown = _props.defaultOverlayShown,
+            props = _objectWithoutProperties(_props, ['id', 'clsPrefix', 'className', 'content', 'title', 'children', 'onClick', 'trigger', 'onBlur', 'onFocus', 'onMouseOut', 'onMouseOver', 'positionTop', 'positionLeft', 'rootClose', 'defaultOverlayShown']);
 
         delete props.delay;
         delete props.delayShow;
@@ -230,7 +231,7 @@ var Popover = function (_Component) {
 
         var overlay = _react2["default"].createElement(
             _Content2["default"],
-            _extends({ placement: props.placement }, confirmProps),
+            _extends({ placement: props.placement }, confirmProps, { title: title, id: 'u-popover-content' }),
             content
         );
 
@@ -242,21 +243,6 @@ var Popover = function (_Component) {
 
         triggerProps.onClick = (0, _createChainedFunction2["default"])(childProps.onClick, onClick);
 
-        if (isOneOf('click', trigger)) {
-            triggerProps.onClick = (0, _createChainedFunction2["default"])(triggerProps.onClick, this.handleToggle);
-        }
-
-        if (isOneOf('hover', trigger)) {
-
-            triggerProps.onMouseOver = (0, _createChainedFunction2["default"])(childProps.onMouseOver, onMouseOver, this.handleMouseOver);
-            triggerProps.onMouseOut = (0, _createChainedFunction2["default"])(childProps.onMouseOut, onMouseOut, this.handleMouseOut);
-        }
-
-        if (isOneOf('focus', trigger)) {
-            triggerProps.onFocus = (0, _createChainedFunction2["default"])(childProps.onFocus, onFocus, this.handleDelayedShow);
-            triggerProps.onBlur = (0, _createChainedFunction2["default"])(childProps.onBlur, onBlur, this.handleDelayedHide);
-        }
-
         this._overlay = this.makeOverlay(overlay, overlayProps);
 
         if (!isReact16) {
@@ -265,124 +251,56 @@ var Popover = function (_Component) {
         triggerProps.key = 'overlay';
 
         var portal = _react2["default"].createElement(
-            _Portal2["default"],
-            {
-                key: 'portal',
-                container: props.container },
-            this._overlay
+            _beeTooltip2["default"],
+            _extends({}, props, {
+                className: (0, _classnames2["default"])(className, clsPrefix, 'u-popover-tooltip'),
+                id: id,
+                inverse: true,
+                overlay: this._overlay,
+                trigger: trigger,
+                placement: props.placement,
+                container: props.container,
+                positionTop: positionTop,
+                positionLeft: positionLeft,
+                rootClose: rootClose,
+                defaultOverlayShown: defaultOverlayShown,
+                onVisibleChange: this.onVisibleChange,
+                onHide: function onHide() {
+                    return _this2.hide(false);
+                }
+            }),
+            this.props.children
         );
 
-        return [(0, _react.cloneElement)(child, triggerProps), portal];
+        return 'show' in this.props ? (0, _react.cloneElement)(portal, {
+            visible: this.state.show
+        }) : portal;
     };
 
     return Popover;
 }(_react.Component);
 
 var _initialiseProps = function _initialiseProps() {
-    var _this2 = this;
-
-    this.handleToggle = function () {
-        if (!_this2.state.show) {
-            _this2.show();
-        } else {
-            _this2.hide();
-        }
-    };
-
-    this.handleDelayedShow = function () {
-        if (_this2._hoverHideDelay != null) {
-            clearTimeout(_this2._hoverHideDelay);
-            _this2._hoverHideDelay = null;
-            return;
-        }
-
-        if (_this2.state.show || _this2._hoverShowDelay != null) {
-            return;
-        }
-
-        var delay = _this2.props.delayShow != null ? _this2.props.delayShow : _this2.props.delay;
-
-        if (!delay) {
-            _this2.show();
-            return;
-        }
-
-        _this2._hoverShowDelay = setTimeout(function () {
-            _this2._hoverShowDelay = null;
-            _this2.show();
-        }, delay);
-    };
-
-    this.handleDelayedHide = function () {
-        if (_this2._hoverShowDelay != null) {
-            clearTimeout(_this2._hoverShowDelay);
-            _this2._hoverShowDelay = null;
-            return;
-        }
-
-        if (!_this2.state.show || _this2._hoverHideDelay != null) {
-            return;
-        }
-
-        var delay = _this2.props.delayHide != null ? _this2.props.delayHide : _this2.props.delay;
-
-        if (!delay) {
-            _this2.hide();
-            return;
-        }
-
-        _this2._hoverHideDelay = setTimeout(function () {
-            _this2._hoverHideDelay = null;
-            _this2.hide();
-        }, delay);
-    };
-
-    this.handleMouseOverOut = function (handler, e) {
-        var target = e.currentTarget;
-        var related = e.relatedTarget || e.nativeEvent.toElement;
-
-        if (!related || related !== target && !(0, _contains2["default"])(target, related)) {
-            handler(e);
-        }
-    };
-
-    this.handleHide = function () {
-        if (_this2.state.show) {
-            _this2.hide();
-        }
-    };
-
-    this.handleShow = function () {
-        if (!_this2.state.show) {
-            _this2.show();
-        }
-    };
-
-    this.show = function () {
-        _this2.setState({ show: true });
-    };
-
-    this.hide = function () {
-        var onHide = _this2.props.onHide;
-
-        onHide && onHide();
-        _this2.setState({ show: false });
-    };
+    var _this3 = this;
 
     this.makeOverlay = function (overlay, props) {
         return _react2["default"].createElement(
-            _Overlay2["default"],
-            _extends({}, props, {
-                show: _this2.state.show,
-                onHide: _this2.handleHide,
-                target: _this2
-            }),
+            'div',
+            null,
             overlay
         );
     };
 
-    this.renderOverlay = function () {
-        _reactDom2["default"].unstable_renderSubtreeIntoContainer(_this2, _this2._overlay, _this2._mountNode);
+    this.onVisibleChange = function (visible) {
+        if (!visible) {
+            _this3.hide(visible);
+        }
+    };
+
+    this.hide = function (visible) {
+        var onHide = _this3.props.onHide;
+
+        onHide && onHide(visible);
     };
 };
 

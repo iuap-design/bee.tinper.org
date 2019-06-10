@@ -218,13 +218,14 @@ var _initialiseProps = function _initialiseProps() {
     _this2.setState({ hasFocus: true });
   };
 
-  this.onBlur = function () {
+  this.onBlur = function (e) {
     _this2.setState(function (prevState, prevProps) {
       return {
         hasFocus: false,
         str: (0, _util.formatDate)(prevProps.value, prevProps.format)
       };
     });
+    _this2.props.onBlur && _this2.props.onBlur(e);
   };
 
   this.onKeyDown = function (e) {

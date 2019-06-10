@@ -53,13 +53,12 @@ import "./node_modules/bee-popconfirm/build/Popconfirm.css"
 |参数|说明|类型|默认值|
 |:---|:-----|:----|:------|
 |id|标示弹出层|string/number|-|
+|title|卡片标题|string/ReactNode|-|
+|content|卡片内容|string/ReactNode|-|
 |placement|弹出位置|可选 `top` `left` `right` `bottom` `topLeft` `topRight` `bottomLeft` `bottomRight` `leftTop` `leftBottom` `rightTop` `rightBottom`|`right`|
 |positionTop|弹出框向上偏移量|string/number|-|
 |positionLeft|弹出框向左偏移量|string/number|-|
-|arrowOffsetTop|弹出框箭头向上偏移量|string/number|-|
-|arrowOffsetLeft|弹出框箭头向左偏移量|string/number|-|
-|title|标题|node|-|
-|container|标题|node/function|body|
+|container|容器|ReactNode/function|body|
 |trigger|触发现实和隐藏的事件类型|click/hover/focus|hover|
 |show|控制显示和隐藏|bool|-|
 |defaultOverlayShown|默认显示的状态|bool|false|

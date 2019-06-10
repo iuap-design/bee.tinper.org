@@ -1,9 +1,12 @@
-.demoPadding{
-  button{
-    margin: 10px;
+.demo1 {
+  margin: 100px 0 100px 250px;
+  .u-button {
+      margin-right: 8px;
+      margin-bottom: 8px;
   }
-}
-
-ul,li{
-  list-style: none;
+  .u-tooltip .tooltip-inner {
+      h3 {
+          margin: 16px 0;
+      }
+  }
 }

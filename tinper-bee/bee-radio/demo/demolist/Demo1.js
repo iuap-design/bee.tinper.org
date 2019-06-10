@@ -1,29 +1,25 @@
 /**
  * @title Radio 基本用法
- * @description `selectedValue`参数被选中的radio值，`disabled`参数设置是否可用，`onChange`设置值改变的回调
+ * @description `defaultValue`设置默认被选中的radio值，`disabled`参数设置是否可用，`onChange`是值改变的回调
  */
 
 import React, { Component } from 'react'
 import Radio from '../../src'
 
-
-
 class Demo1 extends Component{
   constructor(props) {
   	super(props);
-  	this.state = {
-    	selectedValue: '2'
-    };
   }
-  handleChange(value) {
-    this.setState({selectedValue: value});
+  handleChange = (value) => {
+    console.log('onChange：',value)
   }
   render() {
     return (
       <Radio.RadioGroup
         name="fruits"
-        selectedValue={this.state.selectedValue}
-        onChange={this.handleChange.bind(this)}>
+        defaultValue="1"
+        onChange={this.handleChange}
+        >
           <Radio value="1" disabled>苹果</Radio>
           <Radio value="2" disabled>香蕉</Radio>
           <Radio value="3" >葡萄</Radio>

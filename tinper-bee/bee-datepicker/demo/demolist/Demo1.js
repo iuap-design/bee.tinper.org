@@ -23,6 +23,9 @@ class Demo1 extends Component {
         console.log('change')
         console.log(d, dataString)
     };
+    onDateInputBlur = (e,v) => {
+        console.log(e,v);
+    }
     render() {
         var self = this;
         return (
@@ -34,6 +37,7 @@ class Demo1 extends Component {
                             onSelect={this.onSelect}
                             onChange={this.onChange}
                             onClick={this.onClick}
+                            onDateInputBlur={this.onDateInputBlur}
                         />
                     </Col>
                 </Row>

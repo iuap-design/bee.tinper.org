@@ -40,18 +40,19 @@ import 'ac-drawer/dist/ac-drawer.css';
 
 |参数|说明|类型|默认值|
 |:--|:---:|:--:|---:|
-show | `string` | | 是否显示抽屉组件
-placement | `string` | `right` | 抽屉的位置。有四个预置的选项: `left`,`right`,`top`,`bottom`
-hasHeader | `boolean` | `true` | 是否显示抽屉的头部
-title | `string` |  |  抽屉的头部的标题
-className | `string` | | 抽屉容器的class, 用来自定义组件样式
-showMask | `boolean` | `true` | 是否显示遮罩
-maskClosable | `boolean` | `false` |  点击遮罩是否可以关闭抽屉
-zIndex | `number` | `100000` | 抽屉容器的层级，可以修改层级
-showClose | `boolean`  | `false` | 是否显示关闭按钮
-width | `number` `string` |  | 抽屉的宽度
-height | `number` `string` |  | 抽屉的高度
-destroyOnClose | `boolean` |  | 关闭时候是否销毁抽屉的内容
+| show| 是否显示抽屉组件 | `string` | 
+| placement| 抽屉的位置。有四个预置的选项: `left`,`right`,`top`,`bottom` | `string` | `right` | 
+| hasHeader| 是否显示抽屉的头部 | `boolean` | `true` | 
+| title|  抽屉的头部的标题 | `string` | - |  
+| className| 抽屉容器的class, 用来自定义组件样式 | `string` | 
+| showMask| 是否显示遮罩 | `boolean` | `true` | 
+| maskClosable|  点击遮罩是否可以关闭抽屉 | `boolean` | `false` | 
+| zIndex| 抽屉容器的层级，可以修改层级 | `number` | `100000` | 
+| showClose| 是否显示关闭按钮 | `boolean`  | `false` | 
+| closeIcon| 自定义关闭图标 | `ReactNode` | `<Icon type="uf-close"/>` |
+| width | 抽屉的宽度| `number` `string` | - | 
+| height| 抽屉的高度 | `number` `string` | - | 
+| destroyOnClose| 关闭时候是否销毁抽屉的内容 | `boolean` |  
 
 #### 开发调试
 

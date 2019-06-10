@@ -6,6 +6,14 @@ import PropTypes from 'prop-types';
 const propTypes = {
   name: PropTypes.string,
   /**
+   * 默认选中的值
+   */
+  defaultValue: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+    PropTypes.bool,
+  ]),
+  /**
    * 选中的值
    */
   selectedValue: PropTypes.oneOfType([
@@ -33,7 +41,8 @@ const propTypes = {
 
 const defaultProps = {
   Component: 'div',
-  clsPrefix: 'u-radio-group'
+  clsPrefix: 'u-radio-group',
+  defaultValue: ''
 };
 
 /**
@@ -47,8 +56,10 @@ class RadioGroup extends React.Component {
 
   constructor(props, context) {
     super(props, context);
+
     this.state={
-      focusvalue:''
+      focusvalue:'',
+      selectedValue: props.selectedValue ? props.selectedValue : props.defaultValue
     }
   }
   
@@ -77,7 +88,7 @@ class RadioGroup extends React.Component {
     }
   }
 
-  componentWillReceiveProps(){
+  componentWillReceiveProps(nextProps){
     let array = this.getValues();
     if(array.indexOf(this.props.selectedValue)==-1){
         this.setState({
@@ -88,14 +99,29 @@ class RadioGroup extends React.Component {
         focusvalue:''
       })
     }
+    if('selectedValue' in nextProps) {
+      this.setState({
+        selectedValue: nextProps.selectedValue
+      })
+    }
   } 
+
+  handleChange = (value) => {
+    let { onChange } = this.props;
+    this.setState({
+      selectedValue: value
+    })
+    onChange && onChange(value);
+  }
 
   /**
     * 一旦外层change方法触发本身props发生改变，则调用getChildContext更新与子Radio的通信信息（radioGroup）
     */
 
   getChildContext() {
-    const {name, selectedValue, onChange,size} = this.props;
+    const {name, size} = this.props;
+    let { selectedValue } = this.state;
+    let onChange = this.handleChange;
     return {
       radioGroup: {
         name, selectedValue, onChange,size,focusvalue:this.state.focusvalue

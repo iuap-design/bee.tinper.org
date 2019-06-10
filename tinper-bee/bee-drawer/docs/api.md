@@ -34,6 +34,7 @@ import 'bee-drawer/build/Drawer.css';
 | maskClosable|  点击遮罩是否可以关闭抽屉 | `boolean` | `false` | 
 | zIndex| 抽屉容器的层级，可以修改层级 | `number` | `100000` | 
 | showClose| 是否显示关闭按钮 | `boolean`  | `false` | 
+| closeIcon| 自定义关闭图标 | `ReactNode` | `<Icon type="uf-close"/>` |
 | width | 抽屉的宽度| `number` `string` | - | 
 | height| 抽屉的高度 | `number` `string` | - | 
 | destroyOnClose| 关闭时候是否销毁抽屉的内容 | `boolean` |  

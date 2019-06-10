@@ -23,9 +23,14 @@ class Demo3 extends Component {
         })
     }
 
-    close = () => {
+    handleVisibleChange = visible => {
+        console.log('onVisibleChange：',visible)
+    };
+
+    handleHide = (visible) => {
+        console.log('onHide：',visible);
         this.setState({
-            show: false
+            show: visible
         })
     }
 
@@ -37,11 +42,13 @@ class Demo3 extends Component {
                 <div className="demo-popover-box">
                     <div className="demo-popover-wrapper" ref={ref => this.container = ref}>
                         <Popover
-                            placement="right"
+                            id="demo3"
+                            trigger="click"
                             content={this.content}
                             container={this.container ? this.container : null}
                             show={show}
-                            id="demo3"
+                            onVisibleChange={this.handleVisibleChange}
+                            onHide={this.handleHide}
                         >
                             <span className="demo-popover-text" onClick={this.show}>点击我，popover会跟随我移动</span>
                         </Popover>

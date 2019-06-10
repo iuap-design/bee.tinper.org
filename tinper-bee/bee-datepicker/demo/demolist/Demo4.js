@@ -25,6 +25,12 @@ class Demo4 extends Component {
     onClear = () => {
         console.log('clear')
     }
+    onStartInputBlur = (e,v) => {
+        console.log('RangePicker面板 左输入框的失焦事件',v)
+    }
+    onEndInputBlur = (e,v) => {
+        console.log('RangePicker面板 右输入框的失焦事件',v)
+    }
     render() {
         return (
             <div>
@@ -67,6 +73,8 @@ class Demo4 extends Component {
                             onChange={this.onChange}
                             onPanelChange={(v)=>{console.log('onPanelChange',v)}}
                             showClose={false}
+                            onStartInputBlur={this.onStartInputBlur}
+                            onEndInputBlur={this.onEndInputBlur}
                         />
                     </Col>
                 </Row>

@@ -33,6 +33,10 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var propTypes = {
   name: _propTypes2["default"].string,
   /**
+   * 默认选中的值
+   */
+  defaultValue: _propTypes2["default"].oneOfType([_propTypes2["default"].string, _propTypes2["default"].number, _propTypes2["default"].bool]),
+  /**
    * 选中的值
    */
   selectedValue: _propTypes2["default"].oneOfType([_propTypes2["default"].string, _propTypes2["default"].number, _propTypes2["default"].bool]),
@@ -52,7 +56,8 @@ var propTypes = {
 
 var defaultProps = {
   Component: 'div',
-  clsPrefix: 'u-radio-group'
+  clsPrefix: 'u-radio-group',
+  defaultValue: ''
 };
 
 /**
@@ -87,8 +92,18 @@ var RadioGroup = function (_React$Component) {
       return array;
     };
 
+    _this.handleChange = function (value) {
+      var onChange = _this.props.onChange;
+
+      _this.setState({
+        selectedValue: value
+      });
+      onChange && onChange(value);
+    };
+
     _this.state = {
-      focusvalue: ''
+      focusvalue: '',
+      selectedValue: props.selectedValue ? props.selectedValue : props.defaultValue
     };
     return _this;
   }
@@ -102,7 +117,7 @@ var RadioGroup = function (_React$Component) {
     }
   };
 
-  RadioGroup.prototype.componentWillReceiveProps = function componentWillReceiveProps() {
+  RadioGroup.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
     var array = this.getValues();
     if (array.indexOf(this.props.selectedValue) == -1) {
       this.setState({
@@ -111,6 +126,11 @@ var RadioGroup = function (_React$Component) {
     } else {
       this.setState({
         focusvalue: ''
+      });
+    }
+    if ('selectedValue' in nextProps) {
+      this.setState({
+        selectedValue: nextProps.selectedValue
       });
     }
   };
@@ -122,10 +142,10 @@ var RadioGroup = function (_React$Component) {
   RadioGroup.prototype.getChildContext = function getChildContext() {
     var _props = this.props,
         name = _props.name,
-        selectedValue = _props.selectedValue,
-        onChange = _props.onChange,
         size = _props.size;
+    var selectedValue = this.state.selectedValue;
 
+    var onChange = this.handleChange;
     return {
       radioGroup: {
         name: name, selectedValue: selectedValue, onChange: onChange, size: size, focusvalue: this.state.focusvalue

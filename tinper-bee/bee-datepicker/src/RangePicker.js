@@ -185,6 +185,23 @@ class RangePicker extends Component {
             inputs[0].focus()
         }
     }
+    //日期面板中输入框的失焦事件
+    onStartInputBlur=(e)=>{
+        let inputs = document.querySelectorAll('.rc-calendar-input');
+        let startValue;
+        if(inputs) {
+            startValue = inputs[0].value ? inputs[0].value : '';
+        }
+        this.props.onStartInputBlur && this.props.onStartInputBlur(e,startValue);
+    }
+    onEndInputBlur=(e)=>{
+        let inputs = document.querySelectorAll('.rc-calendar-input');
+        let endValue;
+        if(inputs) {
+            endValue = inputs[1].value ? inputs[1].value : '';
+        }
+        this.props.onEndInputBlur && this.props.onEndInputBlur(e,endValue);
+    }
     render() {
     const props = this.props;
     const { showClose } = props;
@@ -207,6 +224,8 @@ class RangePicker extends Component {
             renderFooter={props.renderFooter}
             timePicker={props.showTime ? timePickerElement : null}
             renderError={props.renderError}
+            onStartInputBlur={this.onStartInputBlur}
+            onEndInputBlur={this.onEndInputBlur}
         />
     );
 

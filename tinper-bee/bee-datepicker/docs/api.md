@@ -59,6 +59,7 @@ import 'bee-datepicker/build/DatePicker.css';
 | outInputKeydown |外层输入框keydown回调|Function|-|
 | onOpenChange |日期面板收起/展开状态改变时的回调|Function|-|
 | showClose |外层输入框是否显示清空按钮|Boolean|true|
+| onDateInputBlur |日期面板中输入框失去焦点的回调|Function|-|
 
 
 
@@ -122,6 +123,8 @@ import 'bee-datepicker/build/DatePicker.css';
 | showClose |外层输入框是否显示清空按钮|Boolean|true|
 | onOpenChange |日期面板收起/展开状态改变时的回调|Function|-|
 | onPanelChange |日期日期改变时的回调|Function|-|
+| onStartInputBlur |日期面板中 左输入框失去焦点的回调|Function|-|
+| onEndInputBlur |日期面板中 右输入框失去焦点的回调|Function|-|
 
 ### WeekPicker
 

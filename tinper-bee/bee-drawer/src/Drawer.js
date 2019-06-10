@@ -19,7 +19,8 @@ const propTypes = {
 	width: PropTypes.oneOfType([PropTypes.string,PropTypes.number]),
 	height: PropTypes.oneOfType([PropTypes.string,PropTypes.number]),
 	destroyOnClose: PropTypes.bool,
-	container: PropTypes.string
+	container: PropTypes.string,
+	closeIcon: PropTypes.node
 }
 
 const defaultProps = {
@@ -33,7 +34,8 @@ const defaultProps = {
 	width: 'auto',
 	height: 'auto',
 	destroyOnClose: false,
-	container: 'body'
+	container: 'body',
+	closeIcon: null
 }
 
 const DrawerContext = React.createContext(null);
@@ -106,9 +108,10 @@ class Drawer extends Component{
 		)
 	}
 	renderClose(){
-		const {showClose} = this.props;
+		const {showClose,closeIcon} = this.props;
+		let closeDom = closeIcon || <Icon type="uf-close"/>;
 		return (
-			showClose ? <Icon type="uf-close" className="drawer-close" onClick={this.fCloseClick}/> : null
+			showClose ? <span className="drawer-close" onClick={this.fCloseClick}>{closeDom}</span> : null
 		)
 	}
 	renderBody(){

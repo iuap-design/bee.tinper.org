@@ -1,7 +1,7 @@
 /**
  *
  * @title 受控制的气泡卡片
- * @description 通过设置show，来控制气泡卡片的显示和隐藏
+ * @description 通过设置show，来控制气泡卡片的显示和隐藏。注意：需要和 onHide 事件结合使用
  */
 
 import {Component} from 'react';
@@ -29,27 +29,32 @@ class Demo2 extends Component {
         })
     }
 
+    onHide = (visible) => {
+        this.setState({
+            show: visible
+        })
+    }
+
     render() {
         let content = (
             <div>
-                <p>请确认您的包裹已签收！</p>
-                <div>
-                    <Button
-                        colors="primary"
-                        onClick={ this.handleClose }
-                        size="sm">
-                        关闭
-                    </Button>
-                </div>
+                <Button
+                    colors="primary"
+                    onClick={ this.handleClose }
+                    size="sm">
+                    关闭
+                </Button>
             </div>
         )
         return (
             <div>
                 <Popover
+                    id="demo2"
                     placement="right"
+                    title={<h3>请确认您的包裹已签收！</h3>}
                     content={content}
                     show={this.state.show}
-                    id="demo2"
+                    onHide={this.onHide}
                 >
                     <Button
                         colors="primary"

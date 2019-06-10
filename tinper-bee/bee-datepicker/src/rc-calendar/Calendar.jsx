@@ -243,7 +243,7 @@ class Calendar extends React.Component {
     const {
       locale, prefixCls, disabledDate,
       dateInputPlaceholder, timePicker,
-      disabledTime, clearIcon, renderFooter,showMonthInput, renderError
+      disabledTime, clearIcon, renderFooter,showMonthInput, renderError, onInputBlur
     } = props;
     const { value, selectedValue, mode } = state;
     const showTimePicker = mode === 'time';
@@ -287,6 +287,7 @@ class Calendar extends React.Component {
         onSelect={this.onDateInputSelect}
         clearIcon={clearIcon}
         renderError={renderError}
+        onBlur={onInputBlur}
       />
     ) : null;
 

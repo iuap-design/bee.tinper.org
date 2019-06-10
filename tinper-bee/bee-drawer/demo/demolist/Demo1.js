@@ -8,6 +8,7 @@
 import React, { Component } from 'react';
 import Button from 'bee-button';
 import Drawer from '../../src/index';
+import Icon from 'bee-icon';
 
 class Demo1 extends Component {
     constructor(props){
@@ -38,7 +39,7 @@ class Demo1 extends Component {
                 <div className="btnc">  
                     <Button onClick={this.fPopDrawer} colors="primary">打开</Button>
                 </div>
-                <Drawer showClose={true} className={'demo1'} title={title} show={showDrawer} placement={placement} onClose={this.fCloseDrawer}>
+                <Drawer closeIcon={<Icon type="uf-close-c"/>} showClose={true} className={'demo1'} title={title} show={showDrawer} placement={placement} onClose={this.fCloseDrawer}>
                     <div className="con">
                         <p>这是第一行文字</p>
                         <p>这是第二行文字</p>

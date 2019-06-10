@@ -1,6 +1,6 @@
 {
  "name": "bee-popover",
- "version": "2.0.2",
+ "version": "3.0.0",
  "description": "popover ui component for react",
  "keywords": [
   "react",
@@ -13,10 +13,10 @@
  "engines": {
   "node": ">=4.0.0"
  },
- "homepage": "https://github.com/tinper-beebee-popconfirm.git",
+ "homepage": "https://github.com/tinper-bee/bee-popover.git",
  "author": "Yonyou FED",
- "repository": "http://github.com/tinper-bee/bee-popconfirm",
- "bugs": "https://github.com/tinper-beebee-popconfirm.git/issues",
+ "repository": "http://github.com/tinper-bee/bee-popover",
+ "bugs": "https://github.com/tinper-bee/bee-popover.git/issues",
  "license": "MIT",
  "main": "./build/index.js",
  "config": {
@@ -37,7 +37,8 @@
  },
  "dependencies": {
   "babel-runtime": "^6.26.0",
-  "bee-overlay": "^1.0.25",
+  "bee-overlay": "^1.0.29",
+  "bee-tooltip": "^2.1.1",
   "classnames": "^2.2.5",
   "dom-helpers": "^3.2.1",
   "tinper-bee-core": "latest"

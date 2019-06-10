@@ -90,6 +90,7 @@ class Content extends React.Component {
     }
     render() {
         const {
+            title,
             placement,
             positionTop,
             positionLeft,
@@ -117,24 +118,14 @@ class Content extends React.Component {
             ...style,
         };
 
-        /* const arrowStyle = {
-            top: arrowOffsetTop,
-            left: arrowOffsetLeft,
-        }; */
-
+        // const arrowStyle = {
+        //     top: arrowOffsetTop,
+        //     left: arrowOffsetLeft,
+        // }; 
         return (
-            <div
-                role="tooltip"
-                id={id}
-                className={classnames(className, classes)}
-                style={outerStyle}
-                {...others}
-            >
-                <div className="arrow"/>
-
-                <div className={classnames(`${clsPrefix}-content`)}>
-                    { children }
-                </div>
+            <div>
+                {title && <div className={classnames(`${clsPrefix}-title`)}>{title}</div>}
+                <div className={classnames(`${clsPrefix}-content`)}>{children}</div>
             </div>
         );
     }

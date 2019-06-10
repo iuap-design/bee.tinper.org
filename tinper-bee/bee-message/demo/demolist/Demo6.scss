@@ -1,0 +1,15 @@
+.demo6{
+    .u-button{
+      margin: 8px 8px 8px 0;   
+    }
+    .u-table .u-button{
+        margin: 0 4px;
+        color: #fff;
+        background: #505F79;
+        border-color: #505F79;
+        &:hover, &:active{
+          background: #344563;
+          border-color: #505F79;
+        }
+    }
+}

@@ -36,6 +36,10 @@ class Demo3 extends Component {
 			})
 		}
 	}
+	//使用控制弹出层显示时的钩子函数
+	onVisibleChange = () => {
+		console.log('visible changed.')
+	}
 
 	render () {
 		let { visible } = this.state;
@@ -49,6 +53,7 @@ class Demo3 extends Component {
 			<div className="demo-tooltip">
 				<Tooltip
 					visible={visible}
+					onVisibleChange={this.onVisibleChange}
 					inverse
 					placement="right"
 					overlay={tip}>
