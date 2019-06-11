@@ -86,6 +86,8 @@ var RadioGroup = function (_React$Component) {
         children.map(function (item) {
           array.push(item.props.value);
         });
+      } else if (children.length === 1) {
+        array.push(children[0].props.value);
       } else {
         array.push(children.props.value);
       }

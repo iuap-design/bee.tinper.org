@@ -41,6 +41,9 @@ $disable-border-color:#dfe1e6;
     //     border-left: 1px solid $border-color-base;
     //     border-top-right-radius:  $border-radius;
     // }
+    &.u-input-group>span{
+        background: #fff;
+    }
     &.u-input-group>span:hover{
         background: #ebecf0;
     }
@@ -84,7 +87,7 @@ $disable-border-color:#dfe1e6;
 
                 &.disabled {
                     cursor: not-allowed;
-                    background: transparent !important;
+                    background: #fff !important;
                     color: #C1C7D0;
                 }
                 &.disabled-cursor {
@@ -117,7 +120,7 @@ $disable-border-color:#dfe1e6;
                 // font-weight: 700;
                 &.disabled {
                     cursor: not-allowed;
-                    background: transparent !important;
+                    background: #fff !important;
                     color: #C1C7D0;
                 }
                 &.disabled-cursor {
@@ -192,12 +195,13 @@ $disable-border-color:#dfe1e6;
         user-select: none;
         -moz-user-select: none;
         background: transparent;
+        border:none;
         // border:1px solid $border-color;
         &.disabled {
             cursor: not-allowed;
             // background: #ffe;
             color: #C1C7D0;
-            background: transparent !important;
+            background: #fff !important;
         }
         &.disabled-cursor {
             cursor: not-allowed;

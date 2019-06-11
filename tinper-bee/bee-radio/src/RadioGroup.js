@@ -74,6 +74,8 @@ class RadioGroup extends React.Component {
       children.map((item)=>{
         array.push(item.props.value)
       })
+    }else if(children.length === 1){
+      array.push(children[0].props.value)
     }else{
       array.push(children.props.value);
     }

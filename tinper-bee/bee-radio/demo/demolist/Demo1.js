@@ -8,7 +8,7 @@ import Radio from '../../src'
 
 class Demo1 extends Component{
   constructor(props) {
-  	super(props);
+    super(props);
   }
   handleChange = (value) => {
     console.log('onChange：',value)
