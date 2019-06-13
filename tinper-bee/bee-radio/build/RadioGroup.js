@@ -41,6 +41,10 @@ var propTypes = {
    */
   selectedValue: _propTypes2["default"].oneOfType([_propTypes2["default"].string, _propTypes2["default"].number, _propTypes2["default"].bool]),
   /**
+   * 选中的值,作用与selectedValue一致，添加value属性是为了配合form表单校验初始化等一起使用
+   */
+  value: _propTypes2["default"].oneOfType([_propTypes2["default"].string, _propTypes2["default"].number, _propTypes2["default"].bool]),
+  /**
   * 暴露给用户，且与子Radio通信的方法
   */
   onChange: _propTypes2["default"].func,
@@ -105,7 +109,7 @@ var RadioGroup = function (_React$Component) {
 
     _this.state = {
       focusvalue: '',
-      selectedValue: props.selectedValue ? props.selectedValue : props.defaultValue
+      selectedValue: props.value ? props.value : props.selectedValue ? props.selectedValue : props.defaultValue
     };
     return _this;
   }
@@ -121,7 +125,7 @@ var RadioGroup = function (_React$Component) {
 
   RadioGroup.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
     var array = this.getValues();
-    if (array.indexOf(this.props.selectedValue) == -1) {
+    if (array.indexOf(this.props.selectedValue) == -1 || array.indexOf(this.props.value) == -1) {
       this.setState({
         focusvalue: array[0]
       });
@@ -130,9 +134,9 @@ var RadioGroup = function (_React$Component) {
         focusvalue: ''
       });
     }
-    if ('selectedValue' in nextProps) {
+    if ('selectedValue' in nextProps || 'value' in nextProps) {
       this.setState({
-        selectedValue: nextProps.selectedValue
+        selectedValue: nextProps.selectedValue || nextProps.value
       });
     }
   };

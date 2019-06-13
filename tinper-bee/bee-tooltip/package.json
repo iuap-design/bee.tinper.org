@@ -1,6 +1,6 @@
 {
  "name": "bee-tooltip",
- "version": "2.1.1",
+ "version": "2.1.2",
  "description": "bee-tooltip ui component for react",
  "keywords": [
   "react",
@@ -38,7 +38,7 @@
  },
  "dependencies": {
   "babel-runtime": "^6.20.0",
-  "bee-overlay": "^1.0.29",
+  "bee-overlay": "latest",
   "classnames": "^2.2.5",
   "tinper-bee-core": "latest"
  },
