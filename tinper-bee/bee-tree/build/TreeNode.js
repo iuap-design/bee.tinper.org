@@ -516,7 +516,7 @@ var TreeNode = function (_React$Component) {
       dragOverCls = 'drag-over-gap-bottom';
     }
 
-    var filterCls = props.filterTreeNode(this) ? 'filter-node' : '';
+    var filterCls = props.filterTreeNode ? props.filterTreeNode(this) ? 'filter-node' : '' : '';
 
     var noopSwitcher = function noopSwitcher() {
       var _cls2;

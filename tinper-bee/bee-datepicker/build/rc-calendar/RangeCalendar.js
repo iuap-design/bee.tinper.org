@@ -847,6 +847,9 @@ var _initialiseProps = function _initialiseProps() {
       _this2.setState({ firstSelectedValue: selectedValue[0] });
       _this2.fireHoverValueChange(selectedValue.concat());
     }
+    selectedValue.map(function (item) {
+      item._type = 'range';
+    });
     _this2.props.onChange(selectedValue);
     if (direct || selectedValue[0] && selectedValue[1]) {
       _this2.setState({

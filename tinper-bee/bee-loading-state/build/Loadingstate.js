@@ -18,6 +18,10 @@ var _beeLoading = require('bee-loading');
 
 var _beeLoading2 = _interopRequireDefault(_beeLoading);
 
+var _beeIcon = require('bee-icon');
+
+var _beeIcon2 = _interopRequireDefault(_beeIcon);
+
 var _propTypes = require('prop-types');
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
@@ -88,14 +92,18 @@ var LoadingState = function (_React$Component) {
 
         var labelClass = (0, _classnames3["default"])(_defineProperty({}, clsPrefix + '-label', show));
         var loadingStateClass = (0, _classnames3["default"])(clsPrefix, className);
-
+        var beeIcon = _react2["default"].createElement(
+            'div',
+            { className: 'rotate-icon-container' },
+            _react2["default"].createElement(_beeIcon2["default"], { type: 'uf-loadingstate' })
+        );
         return _react2["default"].createElement(
             _beeButton2["default"],
             _extends({
                 className: loadingStateClass,
                 disabled: show
             }, others),
-            _react2["default"].createElement(_beeLoading2["default"], { show: show, container: this, showBackDrop: showBackDrop }),
+            _react2["default"].createElement(_beeLoading2["default"], { show: show, container: this, showBackDrop: showBackDrop, loadingType: 'custom', indicator: beeIcon }),
             _react2["default"].createElement(
                 'div',
                 { className: labelClass },

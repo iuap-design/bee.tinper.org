@@ -292,9 +292,12 @@ var _initialiseProps = function _initialiseProps() {
     };
 
     this.onVisibleChange = function (visible) {
+        var onVisibleChange = _this3.props.onVisibleChange;
+
         if (!visible) {
             _this3.hide(visible);
         }
+        onVisibleChange && onVisibleChange(visible);
     };
 
     this.hide = function (visible) {

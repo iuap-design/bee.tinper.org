@@ -28,7 +28,6 @@ class Demo3 extends Component {
     };
 
     handleHide = (visible) => {
-        console.log('onHide：',visible);
         this.setState({
             show: visible
         })

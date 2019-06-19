@@ -1,6 +1,7 @@
 import React, {Component}from 'react';
 import Button from 'bee-button';
 import Loading from 'bee-loading';
+import Icon from 'bee-icon';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
@@ -42,13 +43,13 @@ class LoadingState extends React.Component {
 
         let labelClass = classnames({[`${clsPrefix}-label`]: show});
         let loadingStateClass = classnames(clsPrefix, className);
-
+        let beeIcon = <div className="rotate-icon-container"><Icon type="uf-loadingstate"/></div>;
         return (
             <Button
                 className={loadingStateClass}
                 disabled={show}
                 {...others}>
-                <Loading show={show} container={ this } showBackDrop={ showBackDrop }>
+                <Loading show={show} container={ this } showBackDrop={ showBackDrop } loadingType="custom" indicator={beeIcon}>
                     {/* { loadingText } */}
                 </Loading>
                 <div className={labelClass}>{show && loadingText ? loadingText : children}</div>

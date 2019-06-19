@@ -38,7 +38,7 @@ class MonthPicker extends Component {
     //   })
     // }
     this.setState({
-      value:value
+      value:Object.assign(value, {_type:'month'}) 
     });
     onChange&&onChange(value,value?value.format(format):'');
   };

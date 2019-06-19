@@ -130,7 +130,10 @@ class DatePicker extends Component {
   }
   handleChange = value => {
     const props = this.props;
-    this.setState({ value,inputValue:(value && this.getValue(value)) || '' });
+    this.setState({ 
+      value: Object.assign(value, {_type:'date'}),
+      inputValue:(value && this.getValue(value)) || '' 
+    });
     if(timerDatePicker){
       clearTimeout(this.timerout);
       props.onChange(value, (value && this.getValue(value)) || '');

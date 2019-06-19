@@ -216,7 +216,9 @@ var _initialiseProps = function _initialiseProps() {
 
     this.handleChange = function (value) {
         var props = _this3.props;
-        _this3.setState({ value: value });
+        _this3.setState({
+            value: _extends(value, { _type: 'year' })
+        });
         props.onChange && props.onChange(value, value && value.format(props.format) || '');
     };
 

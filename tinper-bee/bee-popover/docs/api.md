@@ -33,6 +33,7 @@ import 'bee-popover/build/Popover.css';
 |show|控制显示和隐藏，注意：需要和 onHide 事件结合使用|bool|-|
 |defaultOverlayShown|默认显示的状态|bool|false|
 |onHide|隐藏时的回调|function|-|
+|onVisibleChange|显示状态改变时触发的回调|function|-|
 
 ## 注意事项
 - trigger 为 "click" 时，点击除弹出层外的任意地方，默认会隐藏弹出层。

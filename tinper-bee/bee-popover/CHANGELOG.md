@@ -1,3 +1,8 @@
+<a name="3.0.2"></a>
+## [3.0.2](https://github.com/tinper-bee/bee-popover/compare/v3.0.1...v3.0.2) (2019-06-17)
+
+
+
 <a name="3.0.1"></a>
 ## [3.0.1](https://github.com/tinper-bee/bee-popover/compare/v3.0.0...v3.0.1) (2019-06-13)
 

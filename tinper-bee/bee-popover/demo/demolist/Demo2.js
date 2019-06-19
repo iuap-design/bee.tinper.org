@@ -35,6 +35,10 @@ class Demo2 extends Component {
         })
     }
 
+    onVisibleChange = (visible) => {
+        console.log('显示状态改变时触发的回调: ',visible);
+    }
+
     render() {
         let content = (
             <div>
@@ -55,6 +59,7 @@ class Demo2 extends Component {
                     content={content}
                     show={this.state.show}
                     onHide={this.onHide}
+                    onVisibleChange={this.onVisibleChange}
                 >
                     <Button
                         colors="primary"

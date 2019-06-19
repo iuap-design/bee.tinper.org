@@ -187,7 +187,9 @@ var WeekPicker = function (_Component) {
     };
 
     _this.handleCalendarChange = function (value) {
-      _this.setState({ value: value });
+      _this.setState({
+        value: _extends(value, { _type: 'week' })
+      });
     };
 
     _this.onMouseLeave = function (e) {

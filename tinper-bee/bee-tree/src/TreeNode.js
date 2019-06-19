@@ -475,7 +475,7 @@ class TreeNode extends React.Component {
       dragOverCls = 'drag-over-gap-bottom';
     }
 
-    const filterCls = props.filterTreeNode(this) ? 'filter-node' : '';
+    const filterCls = props.filterTreeNode ? (props.filterTreeNode(this) ? 'filter-node' : '') : '';
 
     const noopSwitcher = () => {
       const cls = {
