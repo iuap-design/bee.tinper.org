@@ -6139,6 +6139,10 @@
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
+	var _warning = __webpack_require__(32);
+	
+	var _warning2 = _interopRequireDefault(_warning);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 	
 	var defaultDuration = 1.5;
@@ -6152,25 +6156,27 @@
 	var key = 1;
 	var clsPrefix = 'u-message';
 	var noop = function noop() {};
+	var notificationStyle_copy = {};
+	var messageStyle_copy = {};
+	var positionType = ['topRight', 'bottomRight', 'top', 'bottom', 'topLeft', 'bottomLeft', ''];
+	var defaultStyle = {};
 	
 	var positionObj = {
 	    "top": {
-	        messageStyle: {
-	            transform: 'translateX( -50%)'
-	        },
+	        messageStyle: {},
 	        notificationStyle: {
 	            top: defaultTop,
-	            left: '50%'
+	            left: '50%',
+	            transform: 'translateX( -50%)'
 	        },
 	        transitionName: 'top'
 	    },
 	    "bottom": {
-	        messageStyle: {
-	            transform: 'translateX( -50%)'
-	        },
+	        messageStyle: {},
 	        notificationStyle: {
 	            bottom: defaultBottom,
-	            left: '50%'
+	            left: '50%',
+	            transform: 'translateX( -50%)'
 	        },
 	        transitionName: 'bottom'
 	    },
@@ -6232,28 +6238,28 @@
 	    }
 	    switch (position) {
 	        case 'top':
-	            positionObj[position].notificationStyle.top = defaultTop;
+	            notificationStyle_copy.top = defaultTop;
 	            break;
 	        case 'bottom':
-	            positionObj[position].notificationStyle.bottom = defaultBottom;
+	            notificationStyle_copy.bottom = defaultBottom;
 	            break;
 	        case 'bottomRight':
-	            positionObj[position].notificationStyle.bottom = bottom;
+	            notificationStyle_copy.bottom = bottom;
 	            break;
 	        case 'bottomLeft':
-	            positionObj[position].notificationStyle.bottom = bottom;
+	            notificationStyle_copy.bottom = bottom;
 	            break;
 	        default:
 	            break;
 	    }
 	    if (position !== 'top' && position !== 'bottom') {
-	        positionObj[position].messageStyle.width = width;
+	        messageStyle_copy.width = width;
 	    }
-	    var style = positionObj[position].notificationStyle;
+	    var style = JSON.stringify(notificationStyle_copy) == "{}" ? positionObj[position].notificationStyle : notificationStyle_copy;
 	    var instanceObj = {
 	        clsPrefix: clsPrefix,
 	        transitionName: clsPrefix + '-' + positionObj[position].transitionName,
-	        style: style, // 覆盖原来的样式
+	        style: _extends({}, style, defaultStyle), // 覆盖原来的样式
 	        position: position
 	    };
 	    if (typeof keyboard === 'boolean') {
@@ -6268,7 +6274,17 @@
 	    });
 	}
 	
-	function notice(content, duration, type, onClose, position, style, keyboard, onEscapeKeyUp, showIcon) {
+	function notice(content, duration_arg, type, onClose, position, style, keyboard, onEscapeKeyUp, showIcon) {
+	    if (positionType.findIndex(function (item) {
+	        return item === position;
+	    }) < 0) {
+	        (0, _warning2["default"])(false, 'Failed prop type: Invalid prop `position` supplied to `Message`, expected one of ["top","bottom","topRight","topLeft","bottomRight","bottomLeft"].');
+	        return;
+	    }
+	    var duration = duration_arg !== undefined ? duration_arg : defaultDuration;
+	    notificationStyle_copy = _extends({}, positionObj[position].notificationStyle);
+	    messageStyle_copy = _extends({}, positionObj[position].messageStyle);
+	
 	    var iconType = {
 	        info: 'uf uf-i-c-2',
 	        success: 'uf uf-correct',
@@ -6283,7 +6299,8 @@
 	        warninglight: 'uf uf-exc-t'
 	    }[type];
 	
-	    var positionStyle = positionObj[position].messageStyle;
+	    var positionStyle = JSON.stringify(messageStyle_copy) == "{}" ? positionObj[position].messageStyle : messageStyle_copy;
+	    defaultStyle = _extends({}, positionStyle, style);
 	    getMessageInstance(position, function (instance) {
 	        instance.notice({
 	            key: key,
@@ -6357,6 +6374,16 @@
 	        if (messageInstance) {
 	            messageInstance.destroy();
 	            messageInstance = null;
+	            defaultDuration = 1.5;
+	            newDuration = undefined;
+	            defaultTop = 24;
+	            defaultBottom = 48;
+	            bottom = 90;
+	            padding = 30;
+	            width = 240;
+	            notificationStyle_copy = null;
+	            messageStyle_copy = null;
+	            defaultStyle = null;
 	        }
 	    }
 	};
@@ -6452,7 +6479,7 @@
 	  show: _propTypes2["default"].bool,
 	  clsPrefix: _propTypes2["default"].string,
 	  style: _propTypes2["default"].object,
-	  position: _propTypes2["default"].oneOf(['topRight', 'bottomRight', '']),
+	  position: _propTypes2["default"].oneOf(['topRight', 'bottomRight', 'top', 'bottom', 'topLeft', 'bottomLeft', '']),
 	  transitionName: _propTypes2["default"].string,
 	  keyboard: _propTypes2["default"].bool, // 按esc键是否关闭notice
 	  onEscapeKeyUp: _propTypes2["default"].func, // 设置esc键特殊钩子函数

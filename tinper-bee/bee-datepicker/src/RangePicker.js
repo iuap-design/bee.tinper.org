@@ -119,11 +119,11 @@ class RangePicker extends Component {
         })
     }
     clear = (e) => {
-        e.stopPropagation();
+        e&&e.stopPropagation&&e.stopPropagation();
         this.setState({
-            value: ''
+            value: []
         })
-        this.props.onChange && this.props.onChange('', '');
+        this.props.onChange && this.props.onChange([], []);
     }
     onOpenChange = open => {
         const props = this.props;
@@ -226,6 +226,7 @@ class RangePicker extends Component {
             renderError={props.renderError}
             onStartInputBlur={this.onStartInputBlur}
             onEndInputBlur={this.onEndInputBlur}
+            onClear={this.clear}
         />
     );
 
@@ -253,7 +254,7 @@ class RangePicker extends Component {
                             onFocus={(v,e)=>{this.outInputFocus(e)}}
                         />
                         {
-                            showClose&&(this.state.value.length>0)&&this.state.showClose&&(!props.disabled)?(
+                            showClose&&(this.state.value&&this.state.value.length>0)&&this.state.showClose&&(!props.disabled)?(
                             <InputGroup.Button shape="border" 
                                 onClick={this.clear}>
                                 { props.closeIcon() }

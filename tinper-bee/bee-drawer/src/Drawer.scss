@@ -33,7 +33,15 @@
     position: fixed;
     background-color: #fff;
     transition: transform 300ms ease-in-out;
-        overflow: auto;
+    overflow: auto;
+    //使用bee-dnd时，组件错位问题
+    .drawer-body{
+        .u-drop {
+            .u-drag {
+                position: unset!important;
+            }
+        }
+    }
 }
 .drawer-left{
     top: 0;

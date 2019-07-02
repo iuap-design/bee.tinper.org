@@ -1,3 +1,13 @@
+<a name="2.1.1"></a>
+## [2.1.1](https://github.com/tinper-bee/bee-message/compare/v2.1.0...v2.1.1) (2019-06-24)
+
+
+### Features
+
+* **bee-message:** 升级icon组件 ([da30010](https://github.com/tinper-bee/bee-message/commit/da30010))
+
+
+
 <a name="2.1.0"></a>
 # [2.1.0](https://github.com/tinper-bee/bee-message/compare/v2.0.4...v2.1.0) (2019-06-05)
 

@@ -1,3 +1,13 @@
+<a name="0.0.5"></a>
+## [0.0.5](https://github.com/tinper-bee/bee-drawer/compare/v0.0.4...v0.0.5) (2019-06-25)
+
+
+### Features
+
+* **bee-drawer:** 使用bee-dnd时,组件错位问题适配 ([9a23dde](https://github.com/tinper-bee/bee-drawer/commit/9a23dde))
+
+
+
 <a name="0.0.4"></a>
 ## [0.0.4](https://github.com/tinper-bee/bee-drawer/compare/v0.0.3...v0.0.4) (2019-06-03)
 

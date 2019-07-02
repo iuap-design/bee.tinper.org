@@ -80,7 +80,7 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
 	
-	var Demo1 = __webpack_require__(506);var Demo2 = __webpack_require__(507);var Demo3 = __webpack_require__(508);var Demo4 = __webpack_require__(509);var Demo5 = __webpack_require__(510);var Demo6 = __webpack_require__(511);var Demo7 = __webpack_require__(512);var Demo8 = __webpack_require__(513);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 选择日期", "code": "/**\r\n *\r\n * @title 选择日期\r\n * @description 以「日期」为基本单位，基础的日期选择控件\r\n */\r\n\r\nimport React, {Component} from \"react\";\r\n\nimport DatePicker from \"tinper-bee/lib/Datepicker\";\nimport { Row, Col } from 'tinper-bee';\r\n\r\nconst format = \"YYYY-MM-DD dddd\";\r\nconst dateInputPlaceholder = \"选择日期\";\r\n\r\nclass Demo1 extends Component {\r\n    onSelect = (d, dataString)  => {\r\n        console.log('select')\r\n        console.log(d, dataString);\r\n    }\r\n    onClick = d => {\r\n        console.log('click')\r\n    }\r\n    onChange = (d, dataString) => {\r\n        console.log('change')\r\n        console.log(d, dataString)\r\n    };\r\n    onDateInputBlur = (e,v) => {\r\n        console.log(e,v);\r\n    }\r\n    render() {\r\n        var self = this;\r\n        return (\r\n            <div>\r\n                <Row>\r\n                    <Col md={6}>\r\n                        <DatePicker\r\n                            format={format}\r\n                            onSelect={this.onSelect}\r\n                            onChange={this.onChange}\r\n                            onClick={this.onClick}\r\n                            onDateInputBlur={this.onDateInputBlur}\r\n                        />\r\n                    </Col>\r\n                </Row>\r\n            </div>\r\n        );\r\n    }\r\n}\r\n\r\n\r\n", "desc": " 以「日期」为基本单位，基础的日期选择控件" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 禁用日期", "code": "/**\r\n *\r\n * @title 禁用日期\r\n * @description 设置 disabled\r\n */\r\n\r\nimport React, {Component} from \"react\";\r\n\nimport DatePicker from \"tinper-bee/lib/Datepicker\";\nimport { Row, Col } from 'tinper-bee';\r\nimport moment from \"moment\";\r\n\r\nconst format = \"YYYY-MM-DD dddd\";\r\nconst dateInputPlaceholder = \"选择日期\";\r\n\r\nclass Demo2 extends Component {\r\n    onSelect = d => {\r\n        console.log(d);\r\n    }\r\n    onChange = (d, dataString) => {\r\n        console.log(dataString);\r\n    };\r\n    render() {\r\n        var self = this;\r\n        return (\r\n            <div>\r\n                <Row>\r\n                    <Col md={6}>\r\n                        <DatePicker\r\n                            format={format}\r\n                            onSelect={this.onSelect}\r\n                            onChange={this.onChange}\r\n                            disabled\r\n                            defaultValue={moment()}\r\n                        />\r\n                    </Col>\r\n                </Row>\r\n            </div>\r\n        );\r\n    }\r\n}\r\n\r\n\r\n", "desc": " 设置 disabled" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 不可选择日期和时间", "code": "/**\r\n *\r\n * @title 不可选择日期和时间\r\n * @description 可用 disabledDate 和 disabledTime 分别禁止选择部分日期和时间，其中 disabledTime 需要和 showTime 一起使用。\r\n */\r\n\r\nimport React, { Component } from \"react\";\r\n\nimport DatePicker from \"tinper-bee/lib/Datepicker\";\nimport {  Row, Col  } from 'tinper-bee';\r\n\r\nimport zhCN from \"tinper-bee/lib/zh_CN\";;\r\nimport moment from \"moment\";\r\n\r\nconst format = \"YYYY-MM-DD\";\r\n\r\nconst dateInputPlaceholder = \"选择日期\";\r\n\r\n\r\nfunction disabledDate(current) {\r\n  return current && current.valueOf() < Date.now();\r\n}\r\n\r\nclass Demo3 extends Component {\r\n  onSelect = d => {\r\n    console.log(d);\r\n  }\r\n  \r\n  onChange = d => {\r\n    console.log(d);\r\n  }\r\n  render() {\r\n    return (\r\n      <div>\r\n        <Row>\r\n          <Col md={6}>\r\n            <DatePicker\r\n              format={format}\r\n              onSelect={this.onSelect}\r\n              onChange={this.onChange}\r\n              locale={zhCN}\r\n              disabledDate={disabledDate}\r\n              defaultValue={moment()}\r\n              placeholder={dateInputPlaceholder}\r\n            />\r\n          </Col>\r\n        </Row>\r\n      </div>\r\n    );\r\n  }\r\n}\r\n\r\n\r\n", "desc": " 可用 disabledDate 和 disabledTime 分别禁止选择部分日期和时间，其中 disabledTime 需要和 showTime 一起使用。" }, { "example": _react2['default'].createElement(Demo4, null), "title": " 选择年，年月，周，日期范围", "code": "/**\n *\n * @title 选择年，年月，周，日期范围\n * @description 选择年，年月，周，日期范围基本示例\n */\n\nimport React, { Component } from \"react\";\nimport DatePicker from \"tinper-bee/lib/Datepicker\";\nimport {  Row, Col  } from 'tinper-bee';\nimport moment from \"moment\";\nimport zhCN from \"tinper-bee/lib/zh_CN\";;\nconst { YearPicker,MonthPicker,WeekPicker,RangePicker } = DatePicker;\n\n\nclass Demo4 extends Component {\n    onChange = (d, dataString) => {\n        console.log('change')\n        console.log(d);\n        console.log(dataString);\n    };\n    onSelect = d => {\n        console.log('select')\n        console.log(d);\n    }\n    onClear = () => {\n        console.log('clear')\n    }\n    onStartInputBlur = (e,v) => {\n        console.log('RangePicker面板 左输入框的失焦事件',v)\n    }\n    onEndInputBlur = (e,v) => {\n        console.log('RangePicker面板 右输入框的失焦事件',v)\n    }\n    render() {\n        return (\n            <div>\n                <Row style={{'marginBottom':'10px'}}>\n                    <Col md={6}>\n                        <YearPicker\n                            format=\"YYYY\"\n                            onChange={this.onChange}\n                            onSelect={this.onSelect}\n                            locale={zhCN}\n                            placeholder=\"选择年\"\n                            defaultValue={moment()}\n                            showClose={false}\n                        />\n                    </Col>\n                    <Col md={6} style={{'marginBottom':'10px'}}>\n                        <MonthPicker\n                            format=\"YYYY-MM\"\n                            onSelect={this.onSelect}\n                            onChange={this.onChange}\n                            locale={zhCN}\n                            defaultValue={moment()}\n                            placeholder=\"选择年月\"\n                            onClear={this.onClear} showClose={false}\n                        />\n                    </Col>\n                    <Col md={6} style={{'marginBottom':'10px'}}>\n                        <WeekPicker \n                        defaultValue={moment()}\n                        onSelect={this.onSelect}\n                        onChange={this.onChange}\n                        placeholder=\"选择周\" showClose={false}\n                        />\n                    </Col>\n                    <Col md={6} style={{'marginBottom':'10px'}}>\n                        <RangePicker\n                            placeholder={'开始 ~ 结束'}\n                            dateInputPlaceholder={['开始', '结束']}\n                            showClear={true}\n                            onChange={this.onChange}\n                            onPanelChange={(v)=>{console.log('onPanelChange',v)}}\n                            showClose={false}\n                            onStartInputBlur={this.onStartInputBlur}\n                            onEndInputBlur={this.onEndInputBlur}\n                        />\n                    </Col>\n                </Row>\n            </div>\n        );\n    }\n}\n\n\n", "desc": " 选择年，年月，周，日期范围基本示例" }, { "example": _react2['default'].createElement(Demo5, null), "title": " 动态的改变时间", "code": "/**\r\n *\r\n * @title 动态的改变时间\r\n * @description 以「日期时间」为基本单位，基础的日期时间选择控件\r\n */\r\n\r\nimport React, { Component } from \"react\";\r\nimport DatePicker from \"tinper-bee/lib/Datepicker\";\nimport { Button,  Row, Col  } from 'tinper-bee';\r\nimport moment from \"moment\";\r\nimport zhCN from \"tinper-bee/lib/zh_CN\";;\r\n\n\nconst format = \"YYYY-MM-DD HH:mm:ss\";\r\nconst dateInputPlaceholder = \"选择日期\";\r\n\r\nclass Demo5 extends Component {\r\n  constructor(props) {\r\n    super(props);\r\n    this.state = {\r\n      value: moment()\r\n    };\r\n  }\r\n\r\n  handleChange = value => {\r\n    this.setState({\r\n      value: value\r\n    });\r\n  };\r\n  onSelect = d => {\r\n    console.log(d);\r\n  };\r\n\r\n  handlerChangeDate = () => {\r\n    this.setState({\r\n      value: moment(\"2011-11-11 11:11:11\")\r\n    });\r\n    console.log(\"click\");\r\n  };\r\n  render() {\r\n    return (\r\n      <div>\r\n        <Row>\r\n          <Col md={6}>\r\n            <DatePicker\r\n              format={format}\r\n              locale={zhCN}\r\n              onSelect={this.onSelect}\r\n              onChange={this.handleChange}\r\n              value={this.state.value}\r\n              placeholder={dateInputPlaceholder}\r\n            />\r\n          </Col>\r\n          <Col md={3}>\r\n            <Button onClick={this.handlerChangeDate}>变</Button>\r\n          </Col>\r\n        </Row>\r\n      </div>\r\n    );\r\n  }\r\n}\r\n\r\n\r\n", "desc": " 以「日期时间」为基本单位，基础的日期时间选择控件" }, { "example": _react2['default'].createElement(Demo6, null), "title": " 自定义日期渲染父级容器，扩展底边栏\t", "code": "/**\r\n *\r\n * @title 自定义日期渲染父级容器，扩展底边栏\t\r\n * @description getCalendarContainer自定义日期渲染父级容器，renderFooter扩展底边栏\r\n */\r\n\r\nimport React, { Component } from \"react\";\r\n\nimport DatePicker from \"tinper-bee/lib/Datepicker\";\nimport {  Row, Col  } from 'tinper-bee';\r\n\r\nimport zhCN from \"tinper-bee/lib/zh_CN\";;\r\nimport enUS from \"tinper-bee/lib/en_US\";;\r\nimport moment from \"moment\";\r\n\r\nconst format = \"YYYY-MM-DD\";\r\n\r\nconst dateInputPlaceholder = \"选择日期\";\r\n\r\nclass Demo6 extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n    }\r\n    getCalendarContainer() {\r\n        return this.d || document.getElementById('d');\r\n    }\r\n    onChange = d => {\r\n        console.log(d);\r\n    };\r\n    render() {\r\n        return (\r\n            <div id=\"d\" >\r\n                <Row>\r\n                    <Col md={6}>\r\n                        <DatePicker\r\n                            format={format}\r\n                            onChange={this.onChange}\r\n                            locale={zhCN}\r\n                            defaultValue={moment()}\r\n                            placeholder={dateInputPlaceholder}\r\n                            getCalendarContainer={this.getCalendarContainer}\r\n                            showToday={false}//是否显示今天\r\n                            renderFooter={()=>{\r\n                                return (\r\n                                    <span> 我是底部 </span>\r\n                                )\r\n                            }}\r\n                        />\r\n                    </Col>\r\n                </Row>\r\n            </div>\r\n        );\r\n    }\r\n}\r\n\r\n\r\n", "desc": " getCalendarContainer自定义日期渲染父级容器，renderFooter扩展底边栏" }, { "example": _react2['default'].createElement(Demo7, null), "title": " 自定义展示日期面板，外层输入框可输入", "code": "/**\n *\n * @title 自定义展示日期面板，外层输入框可输入\n * @description open设置面板展开收起，keyboardInput外层input是否可输入，showDateInput是否显示内层input\n */\n\nimport React, {Component} from \"react\";\nimport DatePicker from \"tinper-bee/lib/Datepicker\";\nimport { Icon, Row, Col } from 'tinper-bee';\nimport zhCN from \"tinper-bee/lib/zh_CN\";;\nimport enUS from \"tinper-bee/lib/en_US\";;\nimport moment from \"moment\";\nimport 'moment/locale/zh-cn';\n\nmoment.locale('zh-cn');\n\nconst format = \"YYYY-MM-DD\";\n\nconst dateInputPlaceholder = \"选择日期\";\n\nclass Demo7 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            value: '',\n            open: false\n        };\n    }\n    onSelect = d=> {\n        console.log(d);\n    }\n    onChange = (d, dataString) => {\n        this.setState({\n            value:d\n        })\n        console.log('onChange',dataString)\n    };\n    onOpenChange = open => {\n        console.log(open)\n    }\n    open = d => {\n        this.setState({\n            open: !this.state.open\n        })\n    }\n    onClick = (e,d,str) => {\n        console.log(d);\n    }\n    outInputKeydown = ()=>{\n        console.log('keydown')\n    }\n    render() {\n        return (\n            <div>\n                <Row>\n                    <Col md={6}>\n                        <DatePicker\n                            format={format}\n                            onSelect={this.onSelect}\n                            onChange={this.onChange}\n                            locale={zhCN}\n                            open={this.state.open}\n                            defaultValue={moment('2018-01-01')}\n                            value={this.state.value}\n                            onOpenChange={this.onOpenChange}\n                            placeholder={dateInputPlaceholder}\n                            className={\"Demo7\"}\n                            onClick={this.onClick}\n                            keyboardInput={true}\n                            showDateInput={false}\n                        />\n                    </Col>\n                    <Col md={3}>\n                        <button className=\"u-button\" onClick={this.open}>展开面板</button>\n                    </Col>\n                </Row>\n            </div>\n        );\n    }\n}\n\n\n", "desc": " open设置面板展开收起，keyboardInput外层input是否可输入，showDateInput是否显示内层input" }, { "example": _react2['default'].createElement(Demo8, null), "title": " 自定义展示日期面板，外层输入框可输入，配合form使用", "code": "/**\r\n *\r\n * @title 自定义展示日期面板，外层输入框可输入，配合form使用\r\n * @description open设置面板展开收起，keyboardInput外层input是否可输入，showDateInput是否显示内层input\r\n */\r\n\r\nimport React, {Component} from \"react\";\r\n\nimport DatePicker from \"tinper-bee/lib/Datepicker\";\nimport { Form, Row, Col } from 'tinper-bee';\r\nimport zhCN from \"tinper-bee/lib/zh_CN\";;\r\nimport enUS from \"tinper-bee/lib/en_US\";;\r\nimport moment from \"moment\";\r\nimport 'moment/locale/zh-cn';\r\n\n\r\nmoment.locale('zh-cn');\r\n\r\nconst format = \"YYYY-MM-DD\";\r\n\r\nconst dateInputPlaceholder = \"选择日期\";\r\n\r\n\r\nclass Demo8 extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            value: '',\r\n            open: false\r\n        };\r\n    }\r\n    onOpenChange = open => {\r\n        console.log(open)\r\n    }\r\n    open = d => {\r\n        this.setState({\r\n            open: !this.state.open\r\n        })\r\n    }\r\n    onClick = (e,d,str) => {\r\n        console.log(d);\r\n    }\r\n    onSelect(d) {\r\n        console.log(\"select:\"+d);\r\n    }\r\n    outInputKeydown = ()=>{\r\n        console.log('keydown')\r\n    }\r\n    submit = (e) => {\r\n        this.props.form.validateFields((err, values) => {\r\n            if (err) {\r\n                console.log('校验失败', values);\r\n            } else {\r\n                console.log('提交成功', values, moment(values.date).format('YYYY-MM-DD'));\r\n            }\r\n        });\r\n    }\r\n    render() {\r\n        var self = this; \r\n        const { getFieldProps, getFieldError } = this.props.form;\r\n        return (\r\n            <div>\r\n                <Row>\r\n                    <Col md={6}>\r\n                        <DatePicker\r\n                            format={format}\r\n                            onSelect={this.onSelect}\r\n                            onChange={this.onChange}\r\n                            locale={zhCN}\r\n                            open={this.state.open}\r\n                            onOpenChange={this.onOpenChange.bind(this)}\r\n                            placeholder={dateInputPlaceholder}\r\n                            className={\"demo11\"}\r\n                            onClick={this.onClick}\r\n                            keyboardInput={true}\r\n                            showDateInput={false}\r\n                            iconClick={this.open}\r\n                            outInputKeydown={this.outInputKeydown}\r\n                            {...getFieldProps('date', {\r\n                                validateTrigger: 'onBlur',\r\n                                initialValue:moment('2018-01-01'),\r\n                                rules: [{\r\n                                    required: true, message: '请输入日期',\r\n                                }],\r\n                            }) }\r\n                        />\r\n                    </Col>\r\n                    <Col md={3}>\r\n                        <button className=\"u-button\" onClick={this.open}>展开/收起面板</button>\r\n                        <button className=\"u-button\" onClick={this.submit}>获得值</button>\r\n                    </Col>\r\n                </Row>\r\n            </div>\r\n        );\r\n    }\r\n}\r\n\r\n\r\n", "desc": " open设置面板展开收起，keyboardInput外层input是否可输入，showDateInput是否显示内层input" }];
+	var Demo1 = __webpack_require__(506);var Demo2 = __webpack_require__(507);var Demo3 = __webpack_require__(508);var Demo4 = __webpack_require__(509);var Demo5 = __webpack_require__(510);var Demo6 = __webpack_require__(511);var Demo7 = __webpack_require__(512);var Demo8 = __webpack_require__(513);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 选择日期", "code": "/**\r\n *\r\n * @title 选择日期\r\n * @description 以「日期」为基本单位，基础的日期选择控件\r\n */\r\n\r\nimport React, {Component} from \"react\";\r\n\nimport DatePicker from \"tinper-bee/lib/Datepicker\";\nimport { Row, Col } from 'tinper-bee';\r\n\r\nconst format = \"YYYY-MM-DD dddd\";\r\nconst dateInputPlaceholder = \"选择日期\";\r\n\r\nclass Demo1 extends Component {\r\n    onSelect = (d, dataString)  => {\r\n        console.log('select')\r\n        console.log(d, dataString);\r\n    }\r\n    onClick = d => {\r\n        console.log('click')\r\n    }\r\n    onChange = (d, dataString) => {\r\n        console.log('change')\r\n        console.log(d, dataString)\r\n    };\r\n    onDateInputBlur = (e,v) => {\r\n        console.log(e,v);\r\n    }\r\n    render() {\r\n        var self = this;\r\n        return (\r\n            <div>\r\n                <Row>\r\n                    <Col md={6}>\r\n                        <DatePicker\r\n                            format={format}\r\n                            onSelect={this.onSelect}\r\n                            onChange={this.onChange}\r\n                            onClick={this.onClick}\r\n                            onDateInputBlur={this.onDateInputBlur}\r\n                        />\r\n                    </Col>\r\n                </Row>\r\n            </div>\r\n        );\r\n    }\r\n}\r\n\r\n\r\n", "desc": " 以「日期」为基本单位，基础的日期选择控件" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 禁用日期", "code": "/**\n *\n * @title 禁用日期\n * @description 设置 disabled\n */\n\nimport React, {Component} from \"react\";\nimport DatePicker from \"tinper-bee/lib/Datepicker\";\nimport { Row, Col } from 'tinper-bee';\nimport moment from \"moment\";\n\nconst format = \"YYYY-MM-DD dddd\";\nconst dateInputPlaceholder = \"选择日期\";\n\nclass Demo2 extends Component {\n    onSelect = d => {\n        console.log(d);\n    }\n    onChange = (d, dataString) => {\n        console.log(dataString);\n    };\n    render() {\n        var self = this;\n        return (\n            <div>\n                <Row>\n                    <Col md={6}>\n                        <DatePicker\n                            format={format}\n                            onSelect={this.onSelect}\n                            onChange={this.onChange}\n                            disabled\n                            defaultValue={moment()}\n                        />\n                    </Col>\n                </Row>\n            </div>\n        );\n    }\n}\n\n\n", "desc": " 设置 disabled" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 不可选择日期和时间", "code": "/**\n *\n * @title 不可选择日期和时间\n * @description 可用 disabledDate 和 disabledTime 分别禁止选择部分日期和时间，其中 disabledTime 需要和 showTime 一起使用。\n */\n\nimport React, { Component } from \"react\";\nimport DatePicker from \"tinper-bee/lib/Datepicker\";\nimport {  Row, Col  } from 'tinper-bee';\n\nimport zhCN from \"tinper-bee/lib/zh_CN\";;\nimport moment from \"moment\";\n\nconst format = \"YYYY-MM-DD\";\n\nconst dateInputPlaceholder = \"选择日期\";\n\n\nfunction disabledDate(current) {\n  return current && current.valueOf() < Date.now();\n}\n\nclass Demo3 extends Component {\n  onSelect = d => {\n    console.log(d);\n  }\n  \n  onChange = d => {\n    console.log(d);\n  }\n  render() {\n    return (\n      <div>\n        <Row>\n          <Col md={6}>\n            <DatePicker\n              format={format}\n              onSelect={this.onSelect}\n              onChange={this.onChange}\n              locale={zhCN}\n              disabledDate={disabledDate}\n              defaultValue={moment()}\n              placeholder={dateInputPlaceholder}\n            />\n          </Col>\n        </Row>\n      </div>\n    );\n  }\n}\n\n\n", "desc": " 可用 disabledDate 和 disabledTime 分别禁止选择部分日期和时间，其中 disabledTime 需要和 showTime 一起使用。" }, { "example": _react2['default'].createElement(Demo4, null), "title": " 选择年，年月，周，日期范围", "code": "/**\n *\n * @title 选择年，年月，周，日期范围\n * @description 选择年，年月，周，日期范围基本示例\n */\n\nimport React, { Component } from \"react\";\nimport DatePicker from \"tinper-bee/lib/Datepicker\";\nimport {  Row, Col  } from 'tinper-bee';\nimport moment from \"moment\";\nimport zhCN from \"tinper-bee/lib/zh_CN\";;\nconst { YearPicker,MonthPicker,WeekPicker,RangePicker } = DatePicker;\n\n\nclass Demo4 extends Component {\n    onChange = (d, dataString) => {\n        console.log('change')\n        console.log(d);\n        console.log(dataString);\n    };\n    onSelect = d => {\n        console.log('select')\n        console.log(d);\n    }\n    onClear = () => {\n        console.log('clear')\n    }\n    onStartInputBlur = (e,v) => {\n        console.log('RangePicker面板 左输入框的失焦事件',v)\n    }\n    onEndInputBlur = (e,v) => {\n        console.log('RangePicker面板 右输入框的失焦事件',v)\n    }\n    render() {\n        return (\n            <div>\n                <Row style={{'marginBottom':'10px'}}>\n                    <Col md={6}>\n                        <YearPicker\n                            format=\"YYYY\"\n                            onChange={this.onChange}\n                            onSelect={this.onSelect}\n                            locale={zhCN}\n                            placeholder=\"选择年\"\n                            defaultValue={moment()}\n                            showClose={false}\n                        />\n                    </Col>\n                    <Col md={6} style={{'marginBottom':'10px'}}>\n                        <MonthPicker\n                            format=\"YYYY-MM\"\n                            onSelect={this.onSelect}\n                            onChange={this.onChange}\n                            locale={zhCN}\n                            defaultValue={moment()}\n                            placeholder=\"选择年月\"\n                            onClear={this.onClear} showClose={false}\n                        />\n                    </Col>\n                    <Col md={6} style={{'marginBottom':'10px'}}>\n                        <WeekPicker \n                        defaultValue={moment()}\n                        onSelect={this.onSelect}\n                        onChange={this.onChange}\n                        placeholder=\"选择周\" showClose={false}\n                        />\n                    </Col>\n                    <Col md={6} style={{'marginBottom':'10px'}}>\n                        <RangePicker\n                            placeholder={'开始 ~ 结束'}\n                            dateInputPlaceholder={['开始', '结束']}\n                            showClear={true}\n                            onChange={this.onChange}\n                            onPanelChange={(v)=>{console.log('onPanelChange',v)}}\n                            showClose={false}\n                            onStartInputBlur={this.onStartInputBlur}\n                            onEndInputBlur={this.onEndInputBlur}\n                        />\n                    </Col>\n                </Row>\n            </div>\n        );\n    }\n}\n\n\n", "desc": " 选择年，年月，周，日期范围基本示例" }, { "example": _react2['default'].createElement(Demo5, null), "title": " 动态的改变时间", "code": "/**\n *\n * @title 动态的改变时间\n * @description 以「日期时间」为基本单位，基础的日期时间选择控件\n */\n\nimport React, { Component } from \"react\";\nimport DatePicker from \"tinper-bee/lib/Datepicker\";\nimport { Button,  Row, Col  } from 'tinper-bee';\nimport moment from \"moment\";\nimport zhCN from \"tinper-bee/lib/zh_CN\";;\nconst format = \"YYYY-MM-DD HH:mm:ss\";\nconst dateInputPlaceholder = \"选择日期\";\n\nclass Demo5 extends Component {\n  constructor(props) {\n    super(props);\n    this.state = {\n      value: moment()\n    };\n  }\n\n  handleChange = value => {\n    this.setState({\n      value: value\n    });\n  };\n  onSelect = d => {\n    console.log(d);\n  };\n\n  handlerChangeDate = () => {\n    this.setState({\n      value: moment(\"2011-11-11 11:11:11\")\n    });\n    console.log(\"click\");\n  };\n  render() {\n    return (\n      <div>\n        <Row>\n          <Col md={6}>\n            <DatePicker\n              format={format}\n              locale={zhCN}\n              onSelect={this.onSelect}\n              onChange={this.handleChange}\n              value={this.state.value}\n              placeholder={dateInputPlaceholder}\n            />\n          </Col>\n          <Col md={3}>\n            <Button onClick={this.handlerChangeDate}>变</Button>\n          </Col>\n        </Row>\n      </div>\n    );\n  }\n}\n\n\n", "desc": " 以「日期时间」为基本单位，基础的日期时间选择控件" }, { "example": _react2['default'].createElement(Demo6, null), "title": " 自定义日期渲染父级容器，扩展底边栏\t", "code": "/**\n *\n * @title 自定义日期渲染父级容器，扩展底边栏\t\n * @description getCalendarContainer自定义日期渲染父级容器，renderFooter扩展底边栏\n */\n\nimport React, { Component } from \"react\";\nimport DatePicker from \"tinper-bee/lib/Datepicker\";\nimport {  Row, Col  } from 'tinper-bee';\n\nimport zhCN from \"tinper-bee/lib/zh_CN\";;\nimport enUS from \"tinper-bee/lib/en_US\";;\nimport moment from \"moment\";\n\nconst format = \"YYYY-MM-DD\";\n\nconst dateInputPlaceholder = \"选择日期\";\n\nclass Demo6 extends Component {\n    constructor(props) {\n        super(props);\n    }\n    getCalendarContainer() {\n        return this.d || document.getElementById('d');\n    }\n    onChange = d => {\n        console.log(d);\n    };\n    render() {\n        return (\n            <div id=\"d\" >\n                <Row>\n                    <Col md={6}>\n                        <DatePicker\n                            format={format}\n                            onChange={this.onChange}\n                            locale={zhCN}\n                            defaultValue={moment()}\n                            placeholder={dateInputPlaceholder}\n                            getCalendarContainer={this.getCalendarContainer}\n                            showToday={false}//是否显示今天\n                            renderFooter={()=>{\n                                return (\n                                    <span> 我是底部 </span>\n                                )\n                            }}\n                        />\n                    </Col>\n                </Row>\n            </div>\n        );\n    }\n}\n\n\n", "desc": " getCalendarContainer自定义日期渲染父级容器，renderFooter扩展底边栏" }, { "example": _react2['default'].createElement(Demo7, null), "title": " 自定义展示日期面板，外层输入框可输入", "code": "/**\n *\n * @title 自定义展示日期面板，外层输入框可输入\n * @description open设置面板展开收起，keyboardInput外层input是否可输入，showDateInput是否显示内层input\n */\n\nimport React, {Component} from \"react\";\nimport DatePicker from \"tinper-bee/lib/Datepicker\";\nimport { Icon, Row, Col } from 'tinper-bee';\nimport zhCN from \"tinper-bee/lib/zh_CN\";;\nimport enUS from \"tinper-bee/lib/en_US\";;\nimport moment from \"moment\";\nimport 'moment/locale/zh-cn';\n\nmoment.locale('zh-cn');\n\nconst format = \"YYYY-MM-DD\";\n\nconst dateInputPlaceholder = \"选择日期\";\n\nclass Demo7 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            value: '',\n            open: false\n        };\n    }\n    onSelect = d=> {\n        console.log(d);\n    }\n    onChange = (d, dataString) => {\n        this.setState({\n            value:d\n        })\n        console.log('onChange',dataString)\n    };\n    onOpenChange = open => {\n        console.log(open)\n    }\n    open = d => {\n        this.setState({\n            open: !this.state.open\n        })\n    }\n    onClick = (e,d,str) => {\n        console.log(d);\n    }\n    outInputKeydown = ()=>{\n        console.log('keydown')\n    }\n    render() {\n        return (\n            <div>\n                <Row>\n                    <Col md={6}>\n                        <DatePicker\n                            format={format}\n                            onSelect={this.onSelect}\n                            onChange={this.onChange}\n                            locale={zhCN}\n                            open={this.state.open}\n                            defaultValue={moment('2018-01-01')}\n                            value={this.state.value}\n                            onOpenChange={this.onOpenChange}\n                            placeholder={dateInputPlaceholder}\n                            className={\"Demo7\"}\n                            onClick={this.onClick}\n                            keyboardInput={true}\n                            showDateInput={false}\n                        />\n                    </Col>\n                    <Col md={3}>\n                        <button className=\"u-button\" onClick={this.open}>展开面板</button>\n                    </Col>\n                </Row>\n            </div>\n        );\n    }\n}\n\n\n", "desc": " open设置面板展开收起，keyboardInput外层input是否可输入，showDateInput是否显示内层input" }, { "example": _react2['default'].createElement(Demo8, null), "title": " 自定义展示日期面板，外层输入框可输入，配合form使用", "code": "/**\n *\n * @title 自定义展示日期面板，外层输入框可输入，配合form使用\n * @description open设置面板展开收起，keyboardInput外层input是否可输入，showDateInput是否显示内层input\n */\n\nimport React, {Component} from \"react\";\nimport DatePicker from \"tinper-bee/lib/Datepicker\";\nimport { Form, Row, Col } from 'tinper-bee';\nimport zhCN from \"tinper-bee/lib/zh_CN\";;\nimport enUS from \"tinper-bee/lib/en_US\";;\nimport moment from \"moment\";\nimport 'moment/locale/zh-cn';\n\nmoment.locale('zh-cn');\n\nconst format = \"YYYY-MM-DD\";\n\nconst dateInputPlaceholder = \"选择日期\";\n\n\nclass Demo8 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            value: '',\n            open: false\n        };\n    }\n    onOpenChange = open => {\n        console.log(open)\n    }\n    open = d => {\n        this.setState({\n            open: !this.state.open\n        })\n    }\n    onClick = (e,d,str) => {\n        console.log(d);\n    }\n    onSelect(d) {\n        console.log(\"select:\"+d);\n    }\n    outInputKeydown = ()=>{\n        console.log('keydown')\n    }\n    submit = (e) => {\n        this.props.form.validateFields((err, values) => {\n            if (err) {\n                console.log('校验失败', values);\n            } else {\n                console.log('提交成功', values, moment(values.date).format('YYYY-MM-DD'));\n            }\n        });\n    }\n    render() {\n        var self = this; \n        const { getFieldProps, getFieldError } = this.props.form;\n        return (\n            <div>\n                <Row>\n                    <Col md={6}>\n                        <DatePicker\n                            format={format}\n                            onSelect={this.onSelect}\n                            onChange={this.onChange}\n                            locale={zhCN}\n                            open={this.state.open}\n                            onOpenChange={this.onOpenChange.bind(this)}\n                            placeholder={dateInputPlaceholder}\n                            className={\"demo11\"}\n                            onClick={this.onClick}\n                            keyboardInput={true}\n                            showDateInput={false}\n                            iconClick={this.open}\n                            outInputKeydown={this.outInputKeydown}\n                            {...getFieldProps('date', {\n                                validateTrigger: 'onBlur',\n                                initialValue:moment('2018-01-01'),\n                                rules: [{\n                                    required: true, message: '请输入日期',\n                                }],\n                            }) }\n                        />\n                    </Col>\n                    <Col md={3}>\n                        <button className=\"u-button\" onClick={this.open}>展开/收起面板</button>\n                        <button className=\"u-button\" onClick={this.submit}>获得值</button>\n                    </Col>\n                </Row>\n            </div>\n        );\n    }\n}\n\n\n", "desc": " open设置面板展开收起，keyboardInput外层input是否可输入，showDateInput是否显示内层input" }];
 	
 	var Demo = function (_Component) {
 	    _inherits(Demo, _Component);
@@ -6158,25 +6158,24 @@
 	var notificationStyle_copy = {};
 	var messageStyle_copy = {};
 	var positionType = ['topRight', 'bottomRight', 'top', 'bottom', 'topLeft', 'bottomLeft', ''];
+	var defaultStyle = {};
 	
 	var positionObj = {
 	    "top": {
-	        messageStyle: {
-	            transform: 'translateX( -50%)'
-	        },
+	        messageStyle: {},
 	        notificationStyle: {
 	            top: defaultTop,
-	            left: '50%'
+	            left: '50%',
+	            transform: 'translateX( -50%)'
 	        },
 	        transitionName: 'top'
 	    },
 	    "bottom": {
-	        messageStyle: {
-	            transform: 'translateX( -50%)'
-	        },
+	        messageStyle: {},
 	        notificationStyle: {
 	            bottom: defaultBottom,
-	            left: '50%'
+	            left: '50%',
+	            transform: 'translateX( -50%)'
 	        },
 	        transitionName: 'bottom'
 	    },
@@ -6259,7 +6258,7 @@
 	    var instanceObj = {
 	        clsPrefix: clsPrefix,
 	        transitionName: clsPrefix + '-' + positionObj[position].transitionName,
-	        style: style, // 覆盖原来的样式
+	        style: _extends({}, style, defaultStyle), // 覆盖原来的样式
 	        position: position
 	    };
 	    if (typeof keyboard === 'boolean') {
@@ -6300,6 +6299,7 @@
 	    }[type];
 	
 	    var positionStyle = JSON.stringify(messageStyle_copy) == "{}" ? positionObj[position].messageStyle : messageStyle_copy;
+	    defaultStyle = _extends({}, positionStyle, style);
 	    getMessageInstance(position, function (instance) {
 	        instance.notice({
 	            key: key,
@@ -6373,6 +6373,16 @@
 	        if (messageInstance) {
 	            messageInstance.destroy();
 	            messageInstance = null;
+	            defaultDuration = 1.5;
+	            newDuration = undefined;
+	            defaultTop = 24;
+	            defaultBottom = 48;
+	            bottom = 90;
+	            padding = 30;
+	            width = 240;
+	            notificationStyle_copy = null;
+	            messageStyle_copy = null;
+	            defaultStyle = null;
 	        }
 	    }
 	};
@@ -11275,7 +11285,7 @@
 	    /**
 	     * 相对目标元素显示上下左右的位置
 	     */
-	    placement: _propTypes2["default"].oneOf(['top', 'right', 'bottom', 'left']),
+	    placement: _propTypes2["default"].oneOf(['top', 'right', 'bottom', 'left', 'topLeft', 'topRight', 'bottomLeft', 'bottomRight', 'leftTop', 'leftBottom', 'rightTop', 'rightBottom']),
 	
 	    /**
 	     * 绝对定位上边距.
@@ -11301,25 +11311,23 @@
 	    clsPrefix: 'u-tooltip'
 	};
 	function OverlayNode(props) {
-	    var className = props.className,
+	    var id = props.id,
+	        className = props.className,
 	        classNames = props.classNames,
 	        style = props.style,
-	        overlay = props.overlay,
-	        arrowOffsetTop = props.arrowOffsetTop,
-	        arrowOffsetLeft = props.arrowOffsetLeft;
+	        overlay = props.overlay;
 	
 	    return _react2["default"].createElement(
 	        'div',
 	        {
+	            id: id,
+	            role: 'tooltip',
 	            className: (0, _classnames2["default"])(className, classNames),
 	            onMouseEnter: props.onMouseEnter,
 	            onMouseLeave: props.onMouseLeave,
 	            style: style
 	        },
-	        overlay ? _react2["default"].createElement('div', { className: 'tooltip-arrow', style: {
-	                top: arrowOffsetTop,
-	                left: arrowOffsetLeft
-	            } }) : '',
+	        overlay ? _react2["default"].createElement('div', { className: 'tooltip-arrow' }) : '',
 	        overlay ? _react2["default"].createElement(
 	            'div',
 	            { className: 'tooltip-inner' },
@@ -11337,15 +11345,27 @@
 	        var _this = _possibleConstructorReturn(this, _React$Component.call(this, props));
 	
 	        _this.onMouseEnter = function () {
+	            var trigger = _this.props.trigger;
+	
+	            if (trigger === 'click') return;
 	            _this.setState({
 	                isHoverShow: true
 	            });
 	        };
 	
 	        _this.onMouseLeave = function () {
+	            var trigger = _this.props.trigger;
+	
+	            if (trigger === 'click') return;
 	            _this.setState({
 	                isHoverShow: false
 	            });
+	        };
+	
+	        _this.handleOnHide = function () {
+	            var onHide = _this.props.onHide;
+	
+	            onHide && onHide(false);
 	        };
 	
 	        var initState = {
@@ -11389,8 +11409,7 @@
 	
 	        var _props2 = this.props,
 	            placement = _props2.placement,
-	            positionTop = _props2.positionTop,
-	            positionLeft = _props2.positionLeft,
+	            id = _props2.id,
 	            arrowOffsetTop = _props2.arrowOffsetTop,
 	            arrowOffsetLeft = _props2.arrowOffsetLeft,
 	            className = _props2.className,
@@ -11399,14 +11418,9 @@
 	            clsPrefix = _props2.clsPrefix,
 	            overlay = _props2.overlay,
 	            inverse = _props2.inverse,
-	            others = _objectWithoutProperties(_props2, ['placement', 'positionTop', 'positionLeft', 'arrowOffsetTop', 'arrowOffsetLeft', 'className', 'style', 'children', 'clsPrefix', 'overlay', 'inverse']);
+	            others = _objectWithoutProperties(_props2, ['placement', 'id', 'arrowOffsetTop', 'arrowOffsetLeft', 'className', 'style', 'children', 'clsPrefix', 'overlay', 'inverse']);
 	
 	        var classes = (_classes = {}, _defineProperty(_classes, placement, true), _defineProperty(_classes, 'inverse', inverse), _classes);
-	
-	        var outerStyle = _extends({
-	            top: positionTop,
-	            left: positionLeft
-	        }, style);
 	
 	        var arrowStyle = {
 	            top: arrowOffsetTop,
@@ -11416,26 +11430,43 @@
 	        var classNames = (0, _classnames2["default"])(clsPrefix, classes);
 	
 	        var overlayNode = _react2["default"].createElement(OverlayNode, {
+	            id: id,
 	            className: className,
 	            classNames: classNames,
 	            overlay: overlay,
 	            onMouseEnter: this.onMouseEnter,
 	            onMouseLeave: this.onMouseLeave,
-	            style: true,
-	            arrowOffsetTop: true,
-	            arrowOffsetLeft: true
+	            style: style,
+	            arrowOffsetTop: arrowOffsetTop,
+	            arrowOffsetLeft: arrowOffsetLeft
 	        });
 	        return 'visible' in this.props ? _react2["default"].createElement(
 	            _OverlayTrigger2["default"],
-	            _extends({ visible: this.state.visible, ref: function ref(_ref) {
+	            _extends({
+	                visible: this.state.visible,
+	                ref: function ref(_ref) {
 	                    return _this2.trigger = _ref;
-	                }, shouldUpdatePosition: true, placement: placement }, others, { overlay: overlayNode }),
+	                },
+	                shouldUpdatePosition: true,
+	                placement: placement
+	            }, others, {
+	                overlay: overlayNode,
+	                onHide: this.handleOnHide
+	            }),
 	            children
 	        ) : _react2["default"].createElement(
 	            _OverlayTrigger2["default"],
-	            _extends({ isHoverShow: this.state.isHoverShow, ref: function ref(_ref2) {
+	            _extends({
+	                isHoverShow: this.state.isHoverShow,
+	                ref: function ref(_ref2) {
 	                    return _this2.trigger = _ref2;
-	                }, shouldUpdatePosition: true, placement: placement }, others, { overlay: overlayNode }),
+	                },
+	                shouldUpdatePosition: true,
+	                placement: placement
+	            }, others, {
+	                overlay: overlayNode,
+	                onHide: this.handleOnHide
+	            }),
 	            children
 	        );
 	    };
@@ -11585,11 +11616,11 @@
 	    /**
 	     * @private
 	     */
-	    onHide: _propTypes2["default"].oneOf([null]),
+	    onHide: _propTypes2["default"].func,
 	    /**
 	     * @private
 	     */
-	    show: _propTypes2["default"].oneOf([null])
+	    show: _propTypes2["default"].bool
 	});
 	
 	var defaultProps = {
@@ -11745,6 +11776,7 @@
 	
 	    OverlayTrigger.prototype.hide = function hide() {
 	        this.setState({ show: false });
+	        this.props.onHide && this.props.onHide();
 	    };
 	
 	    OverlayTrigger.prototype.makeOverlay = function makeOverlay(overlay, props) {
@@ -11796,7 +11828,12 @@
 	        }
 	
 	        if (isOneOf('hover', trigger) && !('visible' in this.props)) {
-	            (0, _warning2["default"])(!(trigger === 'hover'), '[react-bootstrap] Specifying only the `"hover"` trigger limits the ' + 'visibility of the overlay to just mouse users. Consider also ' + 'including the `"focus"` trigger so that touch and keyboard only ' + 'users can see the overlay as well.');
+	            // warning(!(trigger === 'hover'),
+	            //     '[react-bootstrap] Specifying only the `"hover"` trigger limits the ' +
+	            //     'visibility of the overlay to just mouse users. Consider also ' +
+	            //     'including the `"focus"` trigger so that touch and keyboard only ' +
+	            //     'users can see the overlay as well.'
+	            // );
 	
 	            triggerProps.onMouseOver = (0, _createChainedFunction2["default"])(childProps.onMouseOver, onMouseOver, this.handleMouseOver);
 	            triggerProps.onMouseOut = (0, _createChainedFunction2["default"])(childProps.onMouseOut, onMouseOut, this.handleMouseOut);
@@ -12249,7 +12286,8 @@
 	    return _react2["default"].createElement(
 	      _BaseOverlay2["default"],
 	      _extends({}, props, {
-	        transition: transition
+	        transition: transition,
+	        onHide: props.onHide
 	      }),
 	      child
 	    );
@@ -14509,7 +14547,7 @@
 	        onEntering: (0, _tinperBeeCore.createChainedFunction)(onEntering, this.handleEntering),
 	        onExited: (0, _tinperBeeCore.createChainedFunction)(onExited, this.handleExited),
 	        backdrop: backdrop,
-	        backdropClassName: (0, _classnames2["default"])(backdropClasses, inClassName),
+	        backdropClassName: (0, _classnames2["default"])(backdropClasses, inClassName, backdropClassName),
 	        containerClassName: (0, _classnames2["default"])(containerClasses, containerClassName),
 	        transition: animation ? _beeTransition.Fade : undefined,
 	        dialogTransitionTimeout: Modal.TRANSITION_DURATION,
@@ -23825,7 +23863,7 @@
 	  var calledOnce = false;
 	
 	  var isNewArgEqualToLast = function isNewArgEqualToLast(newArg, index) {
-	    return isEqual(newArg, lastArgs[index]);
+	    return isEqual(newArg, lastArgs[index], index);
 	  };
 	
 	  var result = function result() {
@@ -24589,12 +24627,12 @@
 
 	'use strict';
 	
-	var index = (function (fn) {
+	var rafSchd = function rafSchd(fn) {
 	  var lastArgs = [];
 	  var frameId = null;
 	
 	  var wrapperFn = function wrapperFn() {
-	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+	    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
 	      args[_key] = arguments[_key];
 	    }
 	
@@ -24606,7 +24644,7 @@
 	
 	    frameId = requestAnimationFrame(function () {
 	      frameId = null;
-	      fn.apply(undefined, lastArgs);
+	      fn.apply(void 0, lastArgs);
 	    });
 	  };
 	
@@ -24619,12 +24657,10 @@
 	    frameId = null;
 	  };
 	
-	  var resultFn = wrapperFn;
+	  return wrapperFn;
+	};
 	
-	  return resultFn;
-	});
-	
-	module.exports = index;
+	module.exports = rafSchd;
 
 
 /***/ }),
@@ -34584,6 +34620,7 @@
 	  this.onOpenChange = function (open) {
 	    var props = _this3.props;
 	    var self = _this3;
+	    if ('open' in props) return;
 	    _this3.setState({
 	      open: open
 	    }, function () {
@@ -56507,7 +56544,10 @@
 	    }
 	    _this5.preClickTime = 0;
 	    _this5.preTouchTime = 0;
-	    if (event && event.preventDefault) {
+	
+	    // Only prevent default when all the action is click.
+	    // https://github.com/ant-design/ant-design/issues/17043
+	    if (_this5.isClickToShow() && _this5.isClickToHide() && event && event.preventDefault) {
 	      event.preventDefault();
 	    }
 	    var nextVisible = !_this5.state.popupVisible;
@@ -60207,6 +60247,7 @@
 	        disabledSeconds: disabledSeconds,
 	        onCurrentSelectPanelChange: this.onCurrentSelectPanelChange,
 	        use12Hours: use12Hours,
+	        onEsc: onEsc,
 	        isAM: this.isAM()
 	      }), addon(this));
 	    }
@@ -60653,7 +60694,8 @@
 	          hourOptions = _this$props2.hourOptions,
 	          disabledHours = _this$props2.disabledHours,
 	          showHour = _this$props2.showHour,
-	          use12Hours = _this$props2.use12Hours;
+	          use12Hours = _this$props2.use12Hours,
+	          onEsc = _this$props2.onEsc;
 	
 	      if (!showHour) {
 	        return null;
@@ -60683,7 +60725,8 @@
 	        onSelect: this.onItemChange,
 	        onMouseEnter: function onMouseEnter() {
 	          return _this2.onEnterSelectPanel('hour');
-	        }
+	        },
+	        onEsc: onEsc
 	      });
 	    }
 	  }, {
@@ -60697,7 +60740,8 @@
 	          disabledMinutes = _this$props3.disabledMinutes,
 	          defaultOpenValue = _this$props3.defaultOpenValue,
 	          showMinute = _this$props3.showMinute,
-	          propValue = _this$props3.value;
+	          propValue = _this$props3.value,
+	          onEsc = _this$props3.onEsc;
 	
 	      if (!showMinute) {
 	        return null;
@@ -60715,7 +60759,8 @@
 	        onSelect: this.onItemChange,
 	        onMouseEnter: function onMouseEnter() {
 	          return _this3.onEnterSelectPanel('minute');
-	        }
+	        },
+	        onEsc: onEsc
 	      });
 	    }
 	  }, {
@@ -60729,7 +60774,8 @@
 	          disabledSeconds = _this$props4.disabledSeconds,
 	          showSecond = _this$props4.showSecond,
 	          defaultOpenValue = _this$props4.defaultOpenValue,
-	          propValue = _this$props4.value;
+	          propValue = _this$props4.value,
+	          onEsc = _this$props4.onEsc;
 	
 	      if (!showSecond) {
 	        return null;
@@ -60747,7 +60793,8 @@
 	        onSelect: this.onItemChange,
 	        onMouseEnter: function onMouseEnter() {
 	          return _this4.onEnterSelectPanel('second');
-	        }
+	        },
+	        onEsc: onEsc
 	      });
 	    }
 	  }, {
@@ -60759,7 +60806,8 @@
 	          prefixCls = _this$props5.prefixCls,
 	          use12Hours = _this$props5.use12Hours,
 	          format = _this$props5.format,
-	          isAM = _this$props5.isAM;
+	          isAM = _this$props5.isAM,
+	          onEsc = _this$props5.onEsc;
 	
 	      if (!use12Hours) {
 	        return null;
@@ -60782,7 +60830,8 @@
 	        onSelect: this.onItemChange,
 	        onMouseEnter: function onMouseEnter() {
 	          return _this5.onEnterSelectPanel('ampm');
-	        }
+	        },
+	        onEsc: onEsc
 	      });
 	    }
 	  }, {
@@ -60820,6 +60869,7 @@
 	  disabledSeconds: _propTypes["default"].func,
 	  onCurrentSelectPanelChange: _propTypes["default"].func,
 	  use12Hours: _propTypes["default"].bool,
+	  onEsc: _propTypes["default"].func,
 	  isAM: _propTypes["default"].bool
 	});
 	
@@ -60962,7 +61012,8 @@
 	      var _this$props2 = this.props,
 	          options = _this$props2.options,
 	          selectedIndex = _this$props2.selectedIndex,
-	          prefixCls = _this$props2.prefixCls;
+	          prefixCls = _this$props2.prefixCls,
+	          onEsc = _this$props2.onEsc;
 	      return options.map(function (item, index) {
 	        var _classNames;
 	
@@ -60970,12 +61021,19 @@
 	        var onClick = item.disabled ? undefined : function () {
 	          _this2.onSelect(item.value);
 	        };
+	
+	        var onKeyDown = function onKeyDown(e) {
+	          if (e.keyCode === 13) onClick();else if (e.keyCode === 27) onEsc();
+	        };
+	
 	        return _react["default"].createElement("li", {
 	          role: "button",
 	          onClick: onClick,
 	          className: cls,
 	          key: index,
-	          disabled: item.disabled
+	          disabled: item.disabled,
+	          tabIndex: "0",
+	          onKeyDown: onKeyDown
 	        }, item.value);
 	      });
 	    }
@@ -61035,7 +61093,8 @@
 	  selectedIndex: _propTypes["default"].number,
 	  type: _propTypes["default"].string,
 	  onSelect: _propTypes["default"].func,
-	  onMouseEnter: _propTypes["default"].func
+	  onMouseEnter: _propTypes["default"].func,
+	  onEsc: _propTypes["default"].func
 	});
 	
 	var _default = Select;
@@ -61953,7 +62012,8 @@
 	            timePicker: props.showTime ? timePickerElement : null,
 	            renderError: props.renderError,
 	            onStartInputBlur: this.onStartInputBlur,
-	            onEndInputBlur: this.onEndInputBlur
+	            onEndInputBlur: this.onEndInputBlur,
+	            onClear: this.clear
 	        });
 	
 	        return _react2["default"].createElement(
@@ -61984,7 +62044,7 @@
 	                            _this2.outInputFocus(e);
 	                        }
 	                    }),
-	                    showClose && _this2.state.value.length > 0 && _this2.state.showClose && !props.disabled ? _react2["default"].createElement(
+	                    showClose && _this2.state.value && _this2.state.value.length > 0 && _this2.state.showClose && !props.disabled ? _react2["default"].createElement(
 	                        _beeInputGroup2["default"].Button,
 	                        { shape: "border",
 	                            onClick: _this2.clear },
@@ -62048,11 +62108,11 @@
 	    };
 	
 	    this.clear = function (e) {
-	        e.stopPropagation();
+	        e && e.stopPropagation && e.stopPropagation();
 	        _this3.setState({
-	            value: ''
+	            value: []
 	        });
-	        _this3.props.onChange && _this3.props.onChange('', '');
+	        _this3.props.onChange && _this3.props.onChange([], []);
 	    };
 	
 	    this.onOpenChange = function (open) {
@@ -62297,7 +62357,7 @@
 	
 	    _initialiseProps.call(_this);
 	
-	    var selectedValue = props.selectedValue || props.defaultSelectedValue;
+	    var selectedValue = props.selectedValue || props.defaultSelectedValue || [];
 	    var value = normalizeAnchor(props, 1);
 	    _this.state = {
 	      selectedValue: selectedValue,
@@ -63040,7 +63100,7 @@
 	
 	  this.clear = function () {
 	    _this2.fireSelectValueChange([], true);
-	    _this2.props.onClear();
+	    _this2.props.onClear([]);
 	  };
 	
 	  this.disabledStartTime = function (time) {
@@ -64821,7 +64881,7 @@
 	
 	var _Form2 = _interopRequireDefault(_Form);
 	
-	var _FormItem = __webpack_require__(622);
+	var _FormItem = __webpack_require__(612);
 	
 	var _FormItem2 = _interopRequireDefault(_FormItem);
 	
@@ -64915,49 +64975,54 @@
 /* 516 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.createForm = exports.formShape = exports.createFormField = undefined;
+	Object.defineProperty(exports, "createForm", {
+	  enumerable: true,
+	  get: function get() {
+	    return _createForm["default"];
+	  }
+	});
+	Object.defineProperty(exports, "createFormField", {
+	  enumerable: true,
+	  get: function get() {
+	    return _createFormField["default"];
+	  }
+	});
+	Object.defineProperty(exports, "formShape", {
+	  enumerable: true,
+	  get: function get() {
+	    return _propTypes["default"];
+	  }
+	});
 	
-	var _createForm = __webpack_require__(517);
+	var _createForm = _interopRequireDefault(__webpack_require__(517));
 	
-	var _createForm2 = _interopRequireDefault(_createForm);
+	var _createFormField = _interopRequireDefault(__webpack_require__(609));
 	
-	var _createFormField = __webpack_require__(619);
+	var _propTypes = _interopRequireDefault(__webpack_require__(611));
 	
-	var _createFormField2 = _interopRequireDefault(_createFormField);
-	
-	var _propTypes = __webpack_require__(621);
-	
-	var _propTypes2 = _interopRequireDefault(_propTypes);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-	
-	exports.createFormField = _createFormField2['default'];
-	exports.formShape = _propTypes2['default'];
-	exports.createForm = _createForm2['default']; // export this package's api
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 /***/ }),
 /* 517 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.mixin = undefined;
+	exports["default"] = exports.mixin = void 0;
 	
-	var _createBaseForm = __webpack_require__(518);
+	var _createBaseForm = _interopRequireDefault(__webpack_require__(518));
 	
-	var _createBaseForm2 = _interopRequireDefault(_createBaseForm);
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-	
-	var mixin = exports.mixin = {
+	var mixin = {
 	  getForm: function getForm() {
 	    return {
 	      getFieldsValue: this.fieldsStore.getFieldsValue,
@@ -64981,77 +65046,63 @@
 	    };
 	  }
 	};
+	exports.mixin = mixin;
 	
 	function createForm(options) {
-	  return (0, _createBaseForm2['default'])(options, [mixin]);
+	  return (0, _createBaseForm["default"])(options, [mixin]);
 	}
 	
-	exports['default'] = createForm;
+	var _default = createForm;
+	exports["default"] = _default;
 
 /***/ }),
 /* 518 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
+	/* WEBPACK VAR INJECTION */(function(process) {"use strict";
 	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
+	exports["default"] = void 0;
 	
-	var _objectWithoutProperties2 = __webpack_require__(488);
+	var _react = _interopRequireDefault(__webpack_require__(1));
 	
-	var _objectWithoutProperties3 = _interopRequireDefault(_objectWithoutProperties2);
+	var _createReactClass = _interopRequireDefault(__webpack_require__(519));
 	
-	var _defineProperty2 = __webpack_require__(480);
+	var _asyncValidator = _interopRequireDefault(__webpack_require__(525));
 	
-	var _defineProperty3 = _interopRequireDefault(_defineProperty2);
+	var _warning = _interopRequireDefault(__webpack_require__(31));
 	
-	var _extends5 = __webpack_require__(426);
+	var _get = _interopRequireDefault(__webpack_require__(550));
 	
-	var _extends6 = _interopRequireDefault(_extends5);
+	var _set = _interopRequireDefault(__webpack_require__(602));
 	
-	var _toConsumableArray2 = __webpack_require__(519);
+	var _eq = _interopRequireDefault(__webpack_require__(587));
 	
-	var _toConsumableArray3 = _interopRequireDefault(_toConsumableArray2);
+	var _createFieldsStore = _interopRequireDefault(__webpack_require__(608));
 	
-	var _react = __webpack_require__(1);
+	var _utils = __webpack_require__(610);
 	
-	var _react2 = _interopRequireDefault(_react);
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 	
-	var _createReactClass = __webpack_require__(529);
+	function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
 	
-	var _createReactClass2 = _interopRequireDefault(_createReactClass);
+	function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 	
-	var _asyncValidator = __webpack_require__(535);
+	function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
 	
-	var _asyncValidator2 = _interopRequireDefault(_asyncValidator);
+	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 	
-	var _warning = __webpack_require__(31);
+	function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
 	
-	var _warning2 = _interopRequireDefault(_warning);
+	function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
 	
-	var _get = __webpack_require__(560);
+	function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
 	
-	var _get2 = _interopRequireDefault(_get);
+	function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
 	
-	var _set = __webpack_require__(612);
-	
-	var _set2 = _interopRequireDefault(_set);
-	
-	var _eq = __webpack_require__(597);
-	
-	var _eq2 = _interopRequireDefault(_eq);
-	
-	var _createFieldsStore = __webpack_require__(618);
-	
-	var _createFieldsStore2 = _interopRequireDefault(_createFieldsStore);
-	
-	var _utils = __webpack_require__(620);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-	
-	var DEFAULT_TRIGGER = 'onChange'; /* eslint-disable react/prefer-es6-class */
-	/* eslint-disable prefer-promise-reject-errors */
+	var DEFAULT_TRIGGER = 'onChange';
 	
 	function createBaseForm() {
 	  var option = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
@@ -65060,48 +65111,41 @@
 	      onFieldsChange = option.onFieldsChange,
 	      onValuesChange = option.onValuesChange,
 	      _option$mapProps = option.mapProps,
-	      mapProps = _option$mapProps === undefined ? _utils.identity : _option$mapProps,
+	      mapProps = _option$mapProps === void 0 ? _utils.identity : _option$mapProps,
 	      mapPropsToFields = option.mapPropsToFields,
 	      fieldNameProp = option.fieldNameProp,
 	      fieldMetaProp = option.fieldMetaProp,
 	      fieldDataProp = option.fieldDataProp,
 	      _option$formPropName = option.formPropName,
-	      formPropName = _option$formPropName === undefined ? 'form' : _option$formPropName,
+	      formPropName = _option$formPropName === void 0 ? 'form' : _option$formPropName,
 	      formName = option.name,
 	      withRef = option.withRef;
-	
-	
 	  return function decorate(WrappedComponent) {
-	    var Form = (0, _createReactClass2['default'])({
-	      displayName: 'Form',
-	
+	    var Form = (0, _createReactClass["default"])({
+	      displayName: "Form",
 	      mixins: mixins,
-	
 	      getInitialState: function getInitialState() {
 	        var _this = this;
 	
 	        var fields = mapPropsToFields && mapPropsToFields(this.props);
-	        this.fieldsStore = (0, _createFieldsStore2['default'])(fields || {});
-	
+	        this.fieldsStore = (0, _createFieldsStore["default"])(fields || {});
 	        this.instances = {};
 	        this.cachedBind = {};
 	        this.clearedFieldMetaCache = {};
-	
 	        this.renderFields = {};
-	        this.domFields = {};
+	        this.domFields = {}; // HACK: https://github.com/ant-design/ant-design/issues/6406
 	
-	        // HACK: https://github.com/ant-design/ant-design/issues/6406
 	        ['getFieldsValue', 'getFieldValue', 'setFieldsInitialValue', 'getFieldsError', 'getFieldError', 'isFieldValidating', 'isFieldsValidating', 'isFieldsTouched', 'isFieldTouched'].forEach(function (key) {
 	          _this[key] = function () {
-	            var _fieldsStore;
+	            var _this$fieldsStore;
 	
 	            if (process.env.NODE_ENV !== 'production') {
-	              (0, _warning2['default'])(false, 'you should not use `ref` on enhanced form, please use `wrappedComponentRef`. ' + 'See: https://github.com/react-component/form#note-use-wrappedcomponentref-instead-of-withref-after-rc-form140');
+	              (0, _warning["default"])(false, 'you should not use `ref` on enhanced form, please use `wrappedComponentRef`. ' + 'See: https://github.com/react-component/form#note-use-wrappedcomponentref-instead-of-withref-after-rc-form140');
 	            }
-	            return (_fieldsStore = _this.fieldsStore)[key].apply(_fieldsStore, arguments);
+	
+	            return (_this$fieldsStore = _this.fieldsStore)[key].apply(_this$fieldsStore, arguments);
 	          };
 	        });
-	
 	        return {
 	          submitting: false
 	        };
@@ -65119,61 +65163,70 @@
 	      },
 	      onCollectCommon: function onCollectCommon(name, action, args) {
 	        var fieldMeta = this.fieldsStore.getFieldMeta(name);
+	
 	        if (fieldMeta[action]) {
-	          fieldMeta[action].apply(fieldMeta, (0, _toConsumableArray3['default'])(args));
+	          fieldMeta[action].apply(fieldMeta, _toConsumableArray(args));
 	        } else if (fieldMeta.originalProps && fieldMeta.originalProps[action]) {
 	          var _fieldMeta$originalPr;
 	
-	          (_fieldMeta$originalPr = fieldMeta.originalProps)[action].apply(_fieldMeta$originalPr, (0, _toConsumableArray3['default'])(args));
+	          (_fieldMeta$originalPr = fieldMeta.originalProps)[action].apply(_fieldMeta$originalPr, _toConsumableArray(args));
 	        }
-	        var value = fieldMeta.getValueFromEvent ? fieldMeta.getValueFromEvent.apply(fieldMeta, (0, _toConsumableArray3['default'])(args)) : _utils.getValueFromEvent.apply(undefined, (0, _toConsumableArray3['default'])(args));
+	
+	        var value = fieldMeta.getValueFromEvent ? fieldMeta.getValueFromEvent.apply(fieldMeta, _toConsumableArray(args)) : _utils.getValueFromEvent.apply(void 0, _toConsumableArray(args));
+	
 	        if (onValuesChange && value !== this.fieldsStore.getFieldValue(name)) {
 	          var valuesAll = this.fieldsStore.getAllValues();
 	          var valuesAllSet = {};
 	          valuesAll[name] = value;
 	          Object.keys(valuesAll).forEach(function (key) {
-	            return (0, _set2['default'])(valuesAllSet, key, valuesAll[key]);
+	            return (0, _set["default"])(valuesAllSet, key, valuesAll[key]);
 	          });
-	          onValuesChange((0, _extends6['default'])((0, _defineProperty3['default'])({}, formPropName, this.getForm()), this.props), (0, _set2['default'])({}, name, value), valuesAllSet);
+	          onValuesChange(_objectSpread(_defineProperty({}, formPropName, this.getForm()), this.props), (0, _set["default"])({}, name, value), valuesAllSet);
 	        }
+	
 	        var field = this.fieldsStore.getField(name);
-	        return { name: name, field: (0, _extends6['default'])({}, field, { value: value, touched: true }), fieldMeta: fieldMeta };
+	        return {
+	          name: name,
+	          field: _objectSpread({}, field, {
+	            value: value,
+	            touched: true
+	          }),
+	          fieldMeta: fieldMeta
+	        };
 	      },
 	      onCollect: function onCollect(name_, action) {
-	        for (var _len = arguments.length, args = Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
+	        for (var _len = arguments.length, args = new Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
 	          args[_key - 2] = arguments[_key];
 	        }
 	
-	        var _onCollectCommon = this.onCollectCommon(name_, action, args),
-	            name = _onCollectCommon.name,
-	            field = _onCollectCommon.field,
-	            fieldMeta = _onCollectCommon.fieldMeta;
+	        var _this$onCollectCommon = this.onCollectCommon(name_, action, args),
+	            name = _this$onCollectCommon.name,
+	            field = _this$onCollectCommon.field,
+	            fieldMeta = _this$onCollectCommon.fieldMeta;
 	
 	        var validate = fieldMeta.validate;
-	
-	
 	        this.fieldsStore.setFieldsAsDirty();
 	
-	        var newField = (0, _extends6['default'])({}, field, {
+	        var newField = _objectSpread({}, field, {
 	          dirty: (0, _utils.hasRules)(validate)
 	        });
-	        this.setFields((0, _defineProperty3['default'])({}, name, newField));
+	
+	        this.setFields(_defineProperty({}, name, newField));
 	      },
 	      onCollectValidate: function onCollectValidate(name_, action) {
-	        for (var _len2 = arguments.length, args = Array(_len2 > 2 ? _len2 - 2 : 0), _key2 = 2; _key2 < _len2; _key2++) {
+	        for (var _len2 = arguments.length, args = new Array(_len2 > 2 ? _len2 - 2 : 0), _key2 = 2; _key2 < _len2; _key2++) {
 	          args[_key2 - 2] = arguments[_key2];
 	        }
 	
-	        var _onCollectCommon2 = this.onCollectCommon(name_, action, args),
-	            field = _onCollectCommon2.field,
-	            fieldMeta = _onCollectCommon2.fieldMeta;
+	        var _this$onCollectCommon2 = this.onCollectCommon(name_, action, args),
+	            field = _this$onCollectCommon2.field,
+	            fieldMeta = _this$onCollectCommon2.fieldMeta;
 	
-	        var newField = (0, _extends6['default'])({}, field, {
+	        var newField = _objectSpread({}, field, {
 	          dirty: true
 	        });
 	
 	        this.fieldsStore.setFieldsAsDirty();
-	
 	        this.validateFieldsInternal([newField], {
 	          action: action,
 	          options: {
@@ -65185,13 +65238,16 @@
 	        if (!this.cachedBind[name]) {
 	          this.cachedBind[name] = {};
 	        }
+	
 	        var cache = this.cachedBind[name];
+	
 	        if (!cache[action] || cache[action].oriFn !== fn) {
 	          cache[action] = {
 	            fn: fn.bind(this, name, action),
 	            oriFn: fn
 	          };
 	        }
+	
 	        return cache[action].fn;
 	      },
 	      getFieldDecorator: function getFieldDecorator(name, fieldOption) {
@@ -65203,16 +65259,19 @@
 	          _this2.renderFields[name] = true;
 	
 	          var fieldMeta = _this2.fieldsStore.getFieldMeta(name);
+	
 	          var originalProps = fieldElem.props;
+	
 	          if (process.env.NODE_ENV !== 'production') {
 	            var valuePropName = fieldMeta.valuePropName;
-	            (0, _warning2['default'])(!(valuePropName in originalProps), '`getFieldDecorator` will override `' + valuePropName + '`, ' + ('so please don\'t set `' + valuePropName + '` directly ') + 'and use `setFieldsValue` to set it.');
-	            var defaultValuePropName = 'default' + valuePropName[0].toUpperCase() + valuePropName.slice(1);
-	            (0, _warning2['default'])(!(defaultValuePropName in originalProps), '`' + defaultValuePropName + '` is invalid ' + ('for `getFieldDecorator` will set `' + valuePropName + '`,') + ' please use `option.initialValue` instead.');
+	            (0, _warning["default"])(!(valuePropName in originalProps), "`getFieldDecorator` will override `".concat(valuePropName, "`, ") + "so please don't set `".concat(valuePropName, "` directly ") + "and use `setFieldsValue` to set it.");
+	            var defaultValuePropName = "default".concat(valuePropName[0].toUpperCase()).concat(valuePropName.slice(1));
+	            (0, _warning["default"])(!(defaultValuePropName in originalProps), "`".concat(defaultValuePropName, "` is invalid ") + "for `getFieldDecorator` will set `".concat(valuePropName, "`,") + " please use `option.initialValue` instead.");
 	          }
+	
 	          fieldMeta.originalProps = originalProps;
 	          fieldMeta.ref = fieldElem.ref;
-	          return _react2['default'].cloneElement(fieldElem, (0, _extends6['default'])({}, props, _this2.fieldsStore.getFieldValuePropValue(fieldMeta)));
+	          return _react["default"].cloneElement(fieldElem, _objectSpread({}, props, _this2.fieldsStore.getFieldValuePropValue(fieldMeta)));
 	        };
 	      },
 	      getFieldProps: function getFieldProps(name) {
@@ -65223,14 +65282,15 @@
 	        if (!name) {
 	          throw new Error('Must call `getFieldProps` with valid name string!');
 	        }
+	
 	        if (process.env.NODE_ENV !== 'production') {
-	          (0, _warning2['default'])(this.fieldsStore.isValidNestedFieldName(name), 'One field name cannot be part of another, e.g. `a` and `a.b`. Check field: ' + name);
-	          (0, _warning2['default'])(!('exclusive' in usersFieldOption), '`option.exclusive` of `getFieldProps`|`getFieldDecorator` had been remove.');
+	          (0, _warning["default"])(this.fieldsStore.isValidNestedFieldName(name), "One field name cannot be part of another, e.g. `a` and `a.b`. Check field: ".concat(name));
+	          (0, _warning["default"])(!('exclusive' in usersFieldOption), '`option.exclusive` of `getFieldProps`|`getFieldDecorator` had been remove.');
 	        }
 	
 	        delete this.clearedFieldMetaCache[name];
 	
-	        var fieldOption = (0, _extends6['default'])({
+	        var fieldOption = _objectSpread({
 	          name: name,
 	          trigger: DEFAULT_TRIGGER,
 	          valuePropName: 'value',
@@ -65240,20 +65300,20 @@
 	        var rules = fieldOption.rules,
 	            trigger = fieldOption.trigger,
 	            _fieldOption$validate = fieldOption.validateTrigger,
-	            validateTrigger = _fieldOption$validate === undefined ? trigger : _fieldOption$validate,
+	            validateTrigger = _fieldOption$validate === void 0 ? trigger : _fieldOption$validate,
 	            validate = fieldOption.validate;
-	
-	
 	        var fieldMeta = this.fieldsStore.getFieldMeta(name);
+	
 	        if ('initialValue' in fieldOption) {
 	          fieldMeta.initialValue = fieldOption.initialValue;
 	        }
 	
-	        var inputProps = (0, _extends6['default'])({}, this.fieldsStore.getFieldValuePropValue(fieldOption), {
-	          ref: this.getCacheBind(name, name + '__ref', this.saveRef)
+	        var inputProps = _objectSpread({}, this.fieldsStore.getFieldValuePropValue(fieldOption), {
+	          ref: this.getCacheBind(name, "".concat(name, "__ref"), this.saveRef)
 	        });
+	
 	        if (fieldNameProp) {
-	          inputProps[fieldNameProp] = formName ? formName + '_' + name : name;
+	          inputProps[fieldNameProp] = formName ? "".concat(formName, "_").concat(name) : name;
 	        }
 	
 	        var validateRules = (0, _utils.normalizeValidateRules)(validate, rules, validateTrigger);
@@ -65261,28 +65321,28 @@
 	        validateTriggers.forEach(function (action) {
 	          if (inputProps[action]) return;
 	          inputProps[action] = _this3.getCacheBind(name, action, _this3.onCollectValidate);
-	        });
+	        }); // make sure that the value will be collect
 	
-	        // make sure that the value will be collect
 	        if (trigger && validateTriggers.indexOf(trigger) === -1) {
 	          inputProps[trigger] = this.getCacheBind(name, trigger, this.onCollect);
 	        }
 	
-	        var meta = (0, _extends6['default'])({}, fieldMeta, fieldOption, {
+	        var meta = _objectSpread({}, fieldMeta, fieldOption, {
 	          validate: validateRules
 	        });
+	
 	        this.fieldsStore.setFieldMeta(name, meta);
+	
 	        if (fieldMetaProp) {
 	          inputProps[fieldMetaProp] = meta;
 	        }
 	
 	        if (fieldDataProp) {
 	          inputProps[fieldDataProp] = this.fieldsStore.getField(name);
-	        }
+	        } // This field is rendered, record it
 	
-	        // This field is rendered, record it
+	
 	        this.renderFields[name] = true;
-	
 	        return inputProps;
 	      },
 	      getFieldInstance: function getFieldInstance(name) {
@@ -65301,40 +65361,46 @@
 	
 	        var fields = this.fieldsStore.flattenRegisteredFields(maybeNestedFields);
 	        this.fieldsStore.setFields(fields);
+	
 	        if (onFieldsChange) {
 	          var changedFields = Object.keys(fields).reduce(function (acc, name) {
-	            return (0, _set2['default'])(acc, name, _this4.fieldsStore.getField(name));
+	            return (0, _set["default"])(acc, name, _this4.fieldsStore.getField(name));
 	          }, {});
-	          onFieldsChange((0, _extends6['default'])((0, _defineProperty3['default'])({}, formPropName, this.getForm()), this.props), changedFields, this.fieldsStore.getNestedAllFields());
+	          onFieldsChange(_objectSpread(_defineProperty({}, formPropName, this.getForm()), this.props), changedFields, this.fieldsStore.getNestedAllFields());
 	        }
+	
 	        this.forceUpdate(callback);
 	      },
 	      setFieldsValue: function setFieldsValue(changedValues, callback) {
 	        var fieldsMeta = this.fieldsStore.fieldsMeta;
-	
 	        var values = this.fieldsStore.flattenRegisteredFields(changedValues);
 	        var newFields = Object.keys(values).reduce(function (acc, name) {
 	          var isRegistered = fieldsMeta[name];
+	
 	          if (process.env.NODE_ENV !== 'production') {
-	            (0, _warning2['default'])(isRegistered, 'Cannot use `setFieldsValue` until ' + 'you use `getFieldDecorator` or `getFieldProps` to register it.');
+	            (0, _warning["default"])(isRegistered, 'Cannot use `setFieldsValue` until ' + 'you use `getFieldDecorator` or `getFieldProps` to register it.');
 	          }
+	
 	          if (isRegistered) {
 	            var value = values[name];
 	            acc[name] = {
 	              value: value
 	            };
 	          }
+	
 	          return acc;
 	        }, {});
 	        this.setFields(newFields, callback);
+	
 	        if (onValuesChange) {
 	          var allValues = this.fieldsStore.getAllValues();
-	          onValuesChange((0, _extends6['default'])((0, _defineProperty3['default'])({}, formPropName, this.getForm()), this.props), changedValues, allValues);
+	          onValuesChange(_objectSpread(_defineProperty({}, formPropName, this.getForm()), this.props), changedValues, allValues);
 	        }
 	      },
 	      saveRef: function saveRef(name, _, component) {
 	        if (!component) {
 	          var _fieldMeta = this.fieldsStore.getFieldMeta(name);
+	
 	          if (!_fieldMeta.preserve) {
 	            // after destroy, delete data
 	            this.clearedFieldMetaCache[name] = {
@@ -65343,17 +65409,21 @@
 	            };
 	            this.clearField(name);
 	          }
+	
 	          delete this.domFields[name];
 	          return;
 	        }
+	
 	        this.domFields[name] = true;
 	        this.recoverClearedField(name);
 	        var fieldMeta = this.fieldsStore.getFieldMeta(name);
+	
 	        if (fieldMeta) {
 	          var ref = fieldMeta.ref;
+	
 	          if (ref) {
 	            if (typeof ref === 'string') {
-	              throw new Error('can not set ref string for ' + name);
+	              throw new Error("can not set ref string for ".concat(name));
 	            } else if (typeof ref === 'function') {
 	              ref(component);
 	            } else if (Object.prototype.hasOwnProperty.call(ref, 'current')) {
@@ -65361,6 +65431,7 @@
 	            }
 	          }
 	        }
+	
 	        this.instances[name] = component;
 	      },
 	      cleanUpUselessFields: function cleanUpUselessFields() {
@@ -65369,11 +65440,14 @@
 	        var fieldList = this.fieldsStore.getAllFieldsName();
 	        var removedList = fieldList.filter(function (field) {
 	          var fieldMeta = _this5.fieldsStore.getFieldMeta(field);
+	
 	          return !_this5.renderFields[field] && !_this5.domFields[field] && !fieldMeta.preserve;
 	        });
+	
 	        if (removedList.length) {
 	          removedList.forEach(this.clearField);
 	        }
+	
 	        this.renderFields = {};
 	      },
 	      clearField: function clearField(name) {
@@ -65385,9 +65459,11 @@
 	        var _this6 = this;
 	
 	        var newFields = this.fieldsStore.resetFields(ns);
+	
 	        if (Object.keys(newFields).length > 0) {
 	          this.setFields(newFields);
 	        }
+	
 	        if (ns) {
 	          var names = Array.isArray(ns) ? ns : [ns];
 	          names.forEach(function (name) {
@@ -65399,7 +65475,7 @@
 	      },
 	      recoverClearedField: function recoverClearedField(name) {
 	        if (this.clearedFieldMetaCache[name]) {
-	          this.fieldsStore.setFields((0, _defineProperty3['default'])({}, name, this.clearedFieldMetaCache[name].field));
+	          this.fieldsStore.setFields(_defineProperty({}, name, this.clearedFieldMetaCache[name].field));
 	          this.fieldsStore.setFieldMeta(name, this.clearedFieldMetaCache[name].meta);
 	          delete this.clearedFieldMetaCache[name];
 	        }
@@ -65410,22 +65486,28 @@
 	        var fieldNames = _ref.fieldNames,
 	            action = _ref.action,
 	            _ref$options = _ref.options,
-	            options = _ref$options === undefined ? {} : _ref$options;
-	
+	            options = _ref$options === void 0 ? {} : _ref$options;
 	        var allRules = {};
 	        var allValues = {};
 	        var allFields = {};
 	        var alreadyErrors = {};
 	        fields.forEach(function (field) {
 	          var name = field.name;
+	
 	          if (options.force !== true && field.dirty === false) {
 	            if (field.errors) {
-	              (0, _set2['default'])(alreadyErrors, name, { errors: field.errors });
+	              (0, _set["default"])(alreadyErrors, name, {
+	                errors: field.errors
+	              });
 	            }
+	
 	            return;
 	          }
+	
 	          var fieldMeta = _this7.fieldsStore.getFieldMeta(name);
-	          var newField = (0, _extends6['default'])({}, field);
+	
+	          var newField = _objectSpread({}, field);
+	
 	          newField.errors = undefined;
 	          newField.validating = true;
 	          newField.dirty = true;
@@ -65433,70 +65515,80 @@
 	          allValues[name] = newField.value;
 	          allFields[name] = newField;
 	        });
-	        this.setFields(allFields);
-	        // in case normalize
+	        this.setFields(allFields); // in case normalize
+	
 	        Object.keys(allValues).forEach(function (f) {
 	          allValues[f] = _this7.fieldsStore.getFieldValue(f);
 	        });
+	
 	        if (callback && (0, _utils.isEmptyObject)(allFields)) {
 	          callback((0, _utils.isEmptyObject)(alreadyErrors) ? null : alreadyErrors, this.fieldsStore.getFieldsValue(fieldNames));
 	          return;
 	        }
-	        var validator = new _asyncValidator2['default'](allRules);
+	
+	        var validator = new _asyncValidator["default"](allRules);
+	
 	        if (validateMessages) {
 	          validator.messages(validateMessages);
 	        }
+	
 	        validator.validate(allValues, options, function (errors) {
-	          var errorsGroup = (0, _extends6['default'])({}, alreadyErrors);
+	          var errorsGroup = _objectSpread({}, alreadyErrors);
+	
 	          if (errors && errors.length) {
 	            errors.forEach(function (e) {
 	              var errorFieldName = e.field;
-	              var fieldName = errorFieldName;
-	
-	              // Handle using array validation rule.
+	              var fieldName = errorFieldName; // Handle using array validation rule.
 	              // ref: https://github.com/ant-design/ant-design/issues/14275
-	              Object.keys(allRules).some(function (ruleFieldName) {
-	                var rules = allRules[ruleFieldName] || [];
 	
-	                // Exist if match rule
+	              Object.keys(allRules).some(function (ruleFieldName) {
+	                var rules = allRules[ruleFieldName] || []; // Exist if match rule
+	
 	                if (ruleFieldName === errorFieldName) {
 	                  fieldName = ruleFieldName;
 	                  return true;
-	                }
+	                } // Skip if not match array type
 	
-	                // Skip if not match array type
+	
 	                if (rules.every(function (_ref2) {
 	                  var type = _ref2.type;
 	                  return type !== 'array';
 	                }) && errorFieldName.indexOf(ruleFieldName) !== 0) {
 	                  return false;
-	                }
+	                } // Exist if match the field name
 	
-	                // Exist if match the field name
+	
 	                var restPath = errorFieldName.slice(ruleFieldName.length + 1);
-	                if (/\d+/.test(restPath)) {
+	
+	                if (/^\d+$/.test(restPath)) {
 	                  fieldName = ruleFieldName;
 	                  return true;
 	                }
 	
 	                return false;
 	              });
+	              var field = (0, _get["default"])(errorsGroup, fieldName);
 	
-	              var field = (0, _get2['default'])(errorsGroup, fieldName);
 	              if (typeof field !== 'object' || Array.isArray(field)) {
-	                (0, _set2['default'])(errorsGroup, fieldName, { errors: [] });
+	                (0, _set["default"])(errorsGroup, fieldName, {
+	                  errors: []
+	                });
 	              }
-	              var fieldErrors = (0, _get2['default'])(errorsGroup, fieldName.concat('.errors'));
+	
+	              var fieldErrors = (0, _get["default"])(errorsGroup, fieldName.concat('.errors'));
 	              fieldErrors.push(e);
 	            });
 	          }
+	
 	          var expired = [];
 	          var nowAllFields = {};
 	          Object.keys(allRules).forEach(function (name) {
-	            var fieldErrors = (0, _get2['default'])(errorsGroup, name);
-	            var nowField = _this7.fieldsStore.getField(name);
-	            // avoid concurrency problems
-	            if (!(0, _eq2['default'])(nowField.value, allValues[name])) {
+	            var fieldErrors = (0, _get["default"])(errorsGroup, name);
+	
+	            var nowField = _this7.fieldsStore.getField(name); // avoid concurrency problems
+	
+	
+	            if (!(0, _eq["default"])(nowField.value, allValues[name])) {
 	              expired.push({
 	                name: name
 	              });
@@ -65508,17 +65600,18 @@
 	              nowAllFields[name] = nowField;
 	            }
 	          });
+	
 	          _this7.setFields(nowAllFields);
+	
 	          if (callback) {
 	            if (expired.length) {
 	              expired.forEach(function (_ref3) {
 	                var name = _ref3.name;
-	
 	                var fieldErrors = [{
-	                  message: name + ' need to revalidate',
+	                  message: "".concat(name, " need to revalidate"),
 	                  field: name
 	                }];
-	                (0, _set2['default'])(errorsGroup, name, {
+	                (0, _set["default"])(errorsGroup, name, {
 	                  expired: true,
 	                  errors: fieldErrors
 	                });
@@ -65542,300 +65635,117 @@
 	
 	          if (!callback || typeof callback === 'function') {
 	            var oldCb = callback;
+	
 	            callback = function callback(errors, values) {
 	              if (oldCb) {
 	                oldCb(errors, values);
 	              } else if (errors) {
-	                reject({ errors: errors, values: values });
+	                reject({
+	                  errors: errors,
+	                  values: values
+	                });
 	              } else {
 	                resolve(values);
 	              }
 	            };
 	          }
+	
 	          var fieldNames = names ? _this8.fieldsStore.getValidFieldsFullName(names) : _this8.fieldsStore.getValidFieldsName();
 	          var fields = fieldNames.filter(function (name) {
 	            var fieldMeta = _this8.fieldsStore.getFieldMeta(name);
+	
 	            return (0, _utils.hasRules)(fieldMeta.validate);
 	          }).map(function (name) {
 	            var field = _this8.fieldsStore.getField(name);
+	
 	            field.value = _this8.fieldsStore.getFieldValue(name);
 	            return field;
 	          });
+	
 	          if (!fields.length) {
 	            callback(null, _this8.fieldsStore.getFieldsValue(fieldNames));
 	            return;
 	          }
+	
 	          if (!('firstFields' in options)) {
 	            options.firstFields = fieldNames.filter(function (name) {
 	              var fieldMeta = _this8.fieldsStore.getFieldMeta(name);
+	
 	              return !!fieldMeta.validateFirst;
 	            });
 	          }
+	
 	          _this8.validateFieldsInternal(fields, {
 	            fieldNames: fieldNames,
 	            options: options
 	          }, callback);
 	        });
-	        pending['catch'](function (e) {
+	        pending["catch"](function (e) {
 	          if (console.error && process.env.NODE_ENV !== 'production') {
 	            console.error(e);
 	          }
+	
 	          return e;
 	        });
 	        return pending;
 	      },
 	      isSubmitting: function isSubmitting() {
 	        if (process.env.NODE_ENV !== 'production' && process.env.NODE_ENV !== 'test') {
-	          (0, _warning2['default'])(false, '`isSubmitting` is deprecated. ' + 'Actually, it\'s more convenient to handle submitting status by yourself.');
+	          (0, _warning["default"])(false, '`isSubmitting` is deprecated. ' + 'Actually, it\'s more convenient to handle submitting status by yourself.');
 	        }
+	
 	        return this.state.submitting;
 	      },
 	      submit: function submit(callback) {
 	        var _this9 = this;
 	
 	        if (process.env.NODE_ENV !== 'production' && process.env.NODE_ENV !== 'test') {
-	          (0, _warning2['default'])(false, '`submit` is deprecated. ' + 'Actually, it\'s more convenient to handle submitting status by yourself.');
+	          (0, _warning["default"])(false, '`submit` is deprecated. ' + 'Actually, it\'s more convenient to handle submitting status by yourself.');
 	        }
+	
 	        var fn = function fn() {
 	          _this9.setState({
 	            submitting: false
 	          });
 	        };
+	
 	        this.setState({
 	          submitting: true
 	        });
 	        callback(fn);
 	      },
 	      render: function render() {
-	        var _props = this.props,
-	            wrappedComponentRef = _props.wrappedComponentRef,
-	            restProps = (0, _objectWithoutProperties3['default'])(_props, ['wrappedComponentRef']); // eslint-disable-line
+	        var _this$props = this.props,
+	            wrappedComponentRef = _this$props.wrappedComponentRef,
+	            restProps = _objectWithoutProperties(_this$props, ["wrappedComponentRef"]); // eslint-disable-line
 	
-	        var formProps = (0, _defineProperty3['default'])({}, formPropName, this.getForm());
+	
+	        var formProps = _defineProperty({}, formPropName, this.getForm());
+	
 	        if (withRef) {
 	          if (process.env.NODE_ENV !== 'production' && process.env.NODE_ENV !== 'test') {
-	            (0, _warning2['default'])(false, '`withRef` is deprecated, please use `wrappedComponentRef` instead. ' + 'See: https://github.com/react-component/form#note-use-wrappedcomponentref-instead-of-withref-after-rc-form140');
+	            (0, _warning["default"])(false, '`withRef` is deprecated, please use `wrappedComponentRef` instead. ' + 'See: https://github.com/react-component/form#note-use-wrappedcomponentref-instead-of-withref-after-rc-form140');
 	          }
+	
 	          formProps.ref = 'wrappedComponent';
 	        } else if (wrappedComponentRef) {
 	          formProps.ref = wrappedComponentRef;
 	        }
-	        var props = mapProps.call(this, (0, _extends6['default'])({}, formProps, restProps));
-	        return _react2['default'].createElement(WrappedComponent, props);
+	
+	        var props = mapProps.call(this, _objectSpread({}, formProps, restProps));
+	        return _react["default"].createElement(WrappedComponent, props);
 	      }
 	    });
-	
 	    return (0, _utils.argumentContainer)(Form, WrappedComponent);
 	  };
 	}
 	
-	exports['default'] = createBaseForm;
-	module.exports = exports['default'];
+	var _default = createBaseForm;
+	exports["default"] = _default;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(32)))
 
 /***/ }),
 /* 519 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	"use strict";
-	
-	exports.__esModule = true;
-	
-	var _from = __webpack_require__(520);
-	
-	var _from2 = _interopRequireDefault(_from);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	exports.default = function (arr) {
-	  if (Array.isArray(arr)) {
-	    for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) {
-	      arr2[i] = arr[i];
-	    }
-	
-	    return arr2;
-	  } else {
-	    return (0, _from2.default)(arr);
-	  }
-	};
-
-/***/ }),
-/* 520 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	module.exports = { "default": __webpack_require__(521), __esModule: true };
-
-/***/ }),
-/* 521 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	__webpack_require__(433);
-	__webpack_require__(522);
-	module.exports = __webpack_require__(161).Array.from;
-
-
-/***/ }),
-/* 522 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-	var ctx = __webpack_require__(162);
-	var $export = __webpack_require__(159);
-	var toObject = __webpack_require__(193);
-	var call = __webpack_require__(523);
-	var isArrayIter = __webpack_require__(524);
-	var toLength = __webpack_require__(183);
-	var createProperty = __webpack_require__(525);
-	var getIterFn = __webpack_require__(526);
-	
-	$export($export.S + $export.F * !__webpack_require__(528)(function (iter) { Array.from(iter); }), 'Array', {
-	  // 22.1.2.1 Array.from(arrayLike, mapfn = undefined, thisArg = undefined)
-	  from: function from(arrayLike /* , mapfn = undefined, thisArg = undefined */) {
-	    var O = toObject(arrayLike);
-	    var C = typeof this == 'function' ? this : Array;
-	    var aLen = arguments.length;
-	    var mapfn = aLen > 1 ? arguments[1] : undefined;
-	    var mapping = mapfn !== undefined;
-	    var index = 0;
-	    var iterFn = getIterFn(O);
-	    var length, result, step, iterator;
-	    if (mapping) mapfn = ctx(mapfn, aLen > 2 ? arguments[2] : undefined, 2);
-	    // if object isn't iterable or it's array with default iterator - use simple case
-	    if (iterFn != undefined && !(C == Array && isArrayIter(iterFn))) {
-	      for (iterator = iterFn.call(O), result = new C(); !(step = iterator.next()).done; index++) {
-	        createProperty(result, index, mapping ? call(iterator, mapfn, [step.value, index], true) : step.value);
-	      }
-	    } else {
-	      length = toLength(O.length);
-	      for (result = new C(length); length > index; index++) {
-	        createProperty(result, index, mapping ? mapfn(O[index], index) : O[index]);
-	      }
-	    }
-	    result.length = index;
-	    return result;
-	  }
-	});
-
-
-/***/ }),
-/* 523 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	// call something on iterator step with safe closing on error
-	var anObject = __webpack_require__(166);
-	module.exports = function (iterator, fn, value, entries) {
-	  try {
-	    return entries ? fn(anObject(value)[0], value[1]) : fn(value);
-	  // 7.4.6 IteratorClose(iterator, completion)
-	  } catch (e) {
-	    var ret = iterator['return'];
-	    if (ret !== undefined) anObject(ret.call(iterator));
-	    throw e;
-	  }
-	};
-
-
-/***/ }),
-/* 524 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	// check on default Array iterator
-	var Iterators = __webpack_require__(437);
-	var ITERATOR = __webpack_require__(440)('iterator');
-	var ArrayProto = Array.prototype;
-	
-	module.exports = function (it) {
-	  return it !== undefined && (Iterators.Array === it || ArrayProto[ITERATOR] === it);
-	};
-
-
-/***/ }),
-/* 525 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-	var $defineProperty = __webpack_require__(165);
-	var createDesc = __webpack_require__(173);
-	
-	module.exports = function (object, index, value) {
-	  if (index in object) $defineProperty.f(object, index, createDesc(0, value));
-	  else object[index] = value;
-	};
-
-
-/***/ }),
-/* 526 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	var classof = __webpack_require__(527);
-	var ITERATOR = __webpack_require__(440)('iterator');
-	var Iterators = __webpack_require__(437);
-	module.exports = __webpack_require__(161).getIteratorMethod = function (it) {
-	  if (it != undefined) return it[ITERATOR]
-	    || it['@@iterator']
-	    || Iterators[classof(it)];
-	};
-
-
-/***/ }),
-/* 527 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	// getting tag from 19.1.3.6 Object.prototype.toString()
-	var cof = __webpack_require__(180);
-	var TAG = __webpack_require__(440)('toStringTag');
-	// ES3 wrong here
-	var ARG = cof(function () { return arguments; }()) == 'Arguments';
-	
-	// fallback for IE11 Script Access Denied error
-	var tryGet = function (it, key) {
-	  try {
-	    return it[key];
-	  } catch (e) { /* empty */ }
-	};
-	
-	module.exports = function (it) {
-	  var O, T, B;
-	  return it === undefined ? 'Undefined' : it === null ? 'Null'
-	    // @@toStringTag case
-	    : typeof (T = tryGet(O = Object(it), TAG)) == 'string' ? T
-	    // builtinTag case
-	    : ARG ? cof(O)
-	    // ES3 arguments fallback
-	    : (B = cof(O)) == 'Object' && typeof O.callee == 'function' ? 'Arguments' : B;
-	};
-
-
-/***/ }),
-/* 528 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	var ITERATOR = __webpack_require__(440)('iterator');
-	var SAFE_CLOSING = false;
-	
-	try {
-	  var riter = [7][ITERATOR]();
-	  riter['return'] = function () { SAFE_CLOSING = true; };
-	  // eslint-disable-next-line no-throw-literal
-	  Array.from(riter, function () { throw 2; });
-	} catch (e) { /* empty */ }
-	
-	module.exports = function (exec, skipClosing) {
-	  if (!skipClosing && !SAFE_CLOSING) return false;
-	  var safe = false;
-	  try {
-	    var arr = [7];
-	    var iter = arr[ITERATOR]();
-	    iter.next = function () { return { done: safe = true }; };
-	    arr[ITERATOR] = function () { return iter; };
-	    exec(arr);
-	  } catch (e) { /* empty */ }
-	  return safe;
-	};
-
-
-/***/ }),
-/* 529 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
@@ -65849,7 +65759,7 @@
 	'use strict';
 	
 	var React = __webpack_require__(1);
-	var factory = __webpack_require__(530);
+	var factory = __webpack_require__(520);
 	
 	if (typeof React === 'undefined') {
 	  throw Error(
@@ -65869,7 +65779,7 @@
 
 
 /***/ }),
-/* 530 */
+/* 520 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -65884,11 +65794,11 @@
 	
 	var _assign = __webpack_require__(43);
 	
-	var emptyObject = __webpack_require__(531);
-	var _invariant = __webpack_require__(532);
+	var emptyObject = __webpack_require__(521);
+	var _invariant = __webpack_require__(522);
 	
 	if (process.env.NODE_ENV !== 'production') {
-	  var warning = __webpack_require__(533);
+	  var warning = __webpack_require__(523);
 	}
 	
 	var MIXINS_KEY = 'mixins';
@@ -66802,7 +66712,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(32)))
 
 /***/ }),
-/* 531 */
+/* 521 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -66825,7 +66735,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(32)))
 
 /***/ }),
-/* 532 */
+/* 522 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -66884,7 +66794,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(32)))
 
 /***/ }),
-/* 533 */
+/* 523 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -66897,7 +66807,7 @@
 	
 	'use strict';
 	
-	var emptyFunction = __webpack_require__(534);
+	var emptyFunction = __webpack_require__(524);
 	
 	/**
 	 * Similar to invariant but only logs a warning if the condition is not met.
@@ -66952,7 +66862,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(32)))
 
 /***/ }),
-/* 534 */
+/* 524 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -66993,7 +66903,7 @@
 	module.exports = emptyFunction;
 
 /***/ }),
-/* 535 */
+/* 525 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -67010,13 +66920,13 @@
 	
 	var _typeof3 = _interopRequireDefault(_typeof2);
 	
-	var _util = __webpack_require__(536);
+	var _util = __webpack_require__(526);
 	
-	var _validator = __webpack_require__(537);
+	var _validator = __webpack_require__(527);
 	
 	var _validator2 = _interopRequireDefault(_validator);
 	
-	var _messages2 = __webpack_require__(559);
+	var _messages2 = __webpack_require__(549);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
@@ -67279,7 +67189,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 536 */
+/* 526 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -67495,7 +67405,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(32)))
 
 /***/ }),
-/* 537 */
+/* 527 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -67504,59 +67414,59 @@
 	  value: true
 	});
 	
-	var _string = __webpack_require__(538);
+	var _string = __webpack_require__(528);
 	
 	var _string2 = _interopRequireDefault(_string);
 	
-	var _method = __webpack_require__(546);
+	var _method = __webpack_require__(536);
 	
 	var _method2 = _interopRequireDefault(_method);
 	
-	var _number = __webpack_require__(547);
+	var _number = __webpack_require__(537);
 	
 	var _number2 = _interopRequireDefault(_number);
 	
-	var _boolean = __webpack_require__(548);
+	var _boolean = __webpack_require__(538);
 	
 	var _boolean2 = _interopRequireDefault(_boolean);
 	
-	var _regexp = __webpack_require__(549);
+	var _regexp = __webpack_require__(539);
 	
 	var _regexp2 = _interopRequireDefault(_regexp);
 	
-	var _integer = __webpack_require__(550);
+	var _integer = __webpack_require__(540);
 	
 	var _integer2 = _interopRequireDefault(_integer);
 	
-	var _float = __webpack_require__(551);
+	var _float = __webpack_require__(541);
 	
 	var _float2 = _interopRequireDefault(_float);
 	
-	var _array = __webpack_require__(552);
+	var _array = __webpack_require__(542);
 	
 	var _array2 = _interopRequireDefault(_array);
 	
-	var _object = __webpack_require__(553);
+	var _object = __webpack_require__(543);
 	
 	var _object2 = _interopRequireDefault(_object);
 	
-	var _enum = __webpack_require__(554);
+	var _enum = __webpack_require__(544);
 	
 	var _enum2 = _interopRequireDefault(_enum);
 	
-	var _pattern = __webpack_require__(555);
+	var _pattern = __webpack_require__(545);
 	
 	var _pattern2 = _interopRequireDefault(_pattern);
 	
-	var _date = __webpack_require__(556);
+	var _date = __webpack_require__(546);
 	
 	var _date2 = _interopRequireDefault(_date);
 	
-	var _required = __webpack_require__(557);
+	var _required = __webpack_require__(547);
 	
 	var _required2 = _interopRequireDefault(_required);
 	
-	var _type = __webpack_require__(558);
+	var _type = __webpack_require__(548);
 	
 	var _type2 = _interopRequireDefault(_type);
 	
@@ -67583,7 +67493,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 538 */
+/* 528 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -67592,11 +67502,11 @@
 	  value: true
 	});
 	
-	var _rule = __webpack_require__(539);
+	var _rule = __webpack_require__(529);
 	
 	var _rule2 = _interopRequireDefault(_rule);
 	
-	var _util = __webpack_require__(536);
+	var _util = __webpack_require__(526);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
@@ -67634,7 +67544,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 539 */
+/* 529 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -67643,27 +67553,27 @@
 	  value: true
 	});
 	
-	var _required = __webpack_require__(540);
+	var _required = __webpack_require__(530);
 	
 	var _required2 = _interopRequireDefault(_required);
 	
-	var _whitespace = __webpack_require__(541);
+	var _whitespace = __webpack_require__(531);
 	
 	var _whitespace2 = _interopRequireDefault(_whitespace);
 	
-	var _type = __webpack_require__(542);
+	var _type = __webpack_require__(532);
 	
 	var _type2 = _interopRequireDefault(_type);
 	
-	var _range = __webpack_require__(543);
+	var _range = __webpack_require__(533);
 	
 	var _range2 = _interopRequireDefault(_range);
 	
-	var _enum = __webpack_require__(544);
+	var _enum = __webpack_require__(534);
 	
 	var _enum2 = _interopRequireDefault(_enum);
 	
-	var _pattern = __webpack_require__(545);
+	var _pattern = __webpack_require__(535);
 	
 	var _pattern2 = _interopRequireDefault(_pattern);
 	
@@ -67680,7 +67590,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 540 */
+/* 530 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -67689,7 +67599,7 @@
 	  value: true
 	});
 	
-	var _util = __webpack_require__(536);
+	var _util = __webpack_require__(526);
 	
 	var util = _interopRequireWildcard(_util);
 	
@@ -67716,7 +67626,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 541 */
+/* 531 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -67725,7 +67635,7 @@
 	  value: true
 	});
 	
-	var _util = __webpack_require__(536);
+	var _util = __webpack_require__(526);
 	
 	var util = _interopRequireWildcard(_util);
 	
@@ -67752,7 +67662,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 542 */
+/* 532 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -67765,11 +67675,11 @@
 	
 	var _typeof3 = _interopRequireDefault(_typeof2);
 	
-	var _util = __webpack_require__(536);
+	var _util = __webpack_require__(526);
 	
 	var util = _interopRequireWildcard(_util);
 	
-	var _required = __webpack_require__(540);
+	var _required = __webpack_require__(530);
 	
 	var _required2 = _interopRequireDefault(_required);
 	
@@ -67864,7 +67774,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 543 */
+/* 533 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -67873,7 +67783,7 @@
 	  value: true
 	});
 	
-	var _util = __webpack_require__(536);
+	var _util = __webpack_require__(526);
 	
 	var util = _interopRequireWildcard(_util);
 	
@@ -67938,7 +67848,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 544 */
+/* 534 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -67947,7 +67857,7 @@
 	  value: true
 	});
 	
-	var _util = __webpack_require__(536);
+	var _util = __webpack_require__(526);
 	
 	var util = _interopRequireWildcard(_util);
 	
@@ -67977,7 +67887,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 545 */
+/* 535 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -67986,7 +67896,7 @@
 	  value: true
 	});
 	
-	var _util = __webpack_require__(536);
+	var _util = __webpack_require__(526);
 	
 	var util = _interopRequireWildcard(_util);
 	
@@ -68026,7 +67936,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 546 */
+/* 536 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -68035,11 +67945,11 @@
 	  value: true
 	});
 	
-	var _rule = __webpack_require__(539);
+	var _rule = __webpack_require__(529);
 	
 	var _rule2 = _interopRequireDefault(_rule);
 	
-	var _util = __webpack_require__(536);
+	var _util = __webpack_require__(526);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
@@ -68072,7 +67982,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 547 */
+/* 537 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -68081,11 +67991,11 @@
 	  value: true
 	});
 	
-	var _rule = __webpack_require__(539);
+	var _rule = __webpack_require__(529);
 	
 	var _rule2 = _interopRequireDefault(_rule);
 	
-	var _util = __webpack_require__(536);
+	var _util = __webpack_require__(526);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
@@ -68119,7 +68029,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 548 */
+/* 538 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -68128,9 +68038,9 @@
 	  value: true
 	});
 	
-	var _util = __webpack_require__(536);
+	var _util = __webpack_require__(526);
 	
-	var _rule = __webpack_require__(539);
+	var _rule = __webpack_require__(529);
 	
 	var _rule2 = _interopRequireDefault(_rule);
 	
@@ -68165,7 +68075,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 549 */
+/* 539 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -68174,11 +68084,11 @@
 	  value: true
 	});
 	
-	var _rule = __webpack_require__(539);
+	var _rule = __webpack_require__(529);
 	
 	var _rule2 = _interopRequireDefault(_rule);
 	
-	var _util = __webpack_require__(536);
+	var _util = __webpack_require__(526);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
@@ -68211,7 +68121,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 550 */
+/* 540 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -68220,11 +68130,11 @@
 	  value: true
 	});
 	
-	var _rule = __webpack_require__(539);
+	var _rule = __webpack_require__(529);
 	
 	var _rule2 = _interopRequireDefault(_rule);
 	
-	var _util = __webpack_require__(536);
+	var _util = __webpack_require__(526);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
@@ -68258,7 +68168,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 551 */
+/* 541 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -68267,11 +68177,11 @@
 	  value: true
 	});
 	
-	var _rule = __webpack_require__(539);
+	var _rule = __webpack_require__(529);
 	
 	var _rule2 = _interopRequireDefault(_rule);
 	
-	var _util = __webpack_require__(536);
+	var _util = __webpack_require__(526);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
@@ -68305,7 +68215,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 552 */
+/* 542 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -68314,11 +68224,11 @@
 	  value: true
 	});
 	
-	var _rule = __webpack_require__(539);
+	var _rule = __webpack_require__(529);
 	
 	var _rule2 = _interopRequireDefault(_rule);
 	
-	var _util = __webpack_require__(536);
+	var _util = __webpack_require__(526);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
@@ -68352,7 +68262,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 553 */
+/* 543 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -68361,11 +68271,11 @@
 	  value: true
 	});
 	
-	var _rule = __webpack_require__(539);
+	var _rule = __webpack_require__(529);
 	
 	var _rule2 = _interopRequireDefault(_rule);
 	
-	var _util = __webpack_require__(536);
+	var _util = __webpack_require__(526);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
@@ -68398,7 +68308,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 554 */
+/* 544 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -68407,11 +68317,11 @@
 	  value: true
 	});
 	
-	var _rule = __webpack_require__(539);
+	var _rule = __webpack_require__(529);
 	
 	var _rule2 = _interopRequireDefault(_rule);
 	
-	var _util = __webpack_require__(536);
+	var _util = __webpack_require__(526);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
@@ -68446,7 +68356,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 555 */
+/* 545 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -68455,11 +68365,11 @@
 	  value: true
 	});
 	
-	var _rule = __webpack_require__(539);
+	var _rule = __webpack_require__(529);
 	
 	var _rule2 = _interopRequireDefault(_rule);
 	
-	var _util = __webpack_require__(536);
+	var _util = __webpack_require__(526);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
@@ -68495,7 +68405,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 556 */
+/* 546 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -68504,11 +68414,11 @@
 	  value: true
 	});
 	
-	var _rule = __webpack_require__(539);
+	var _rule = __webpack_require__(529);
 	
 	var _rule2 = _interopRequireDefault(_rule);
 	
-	var _util = __webpack_require__(536);
+	var _util = __webpack_require__(526);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
@@ -68544,7 +68454,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 557 */
+/* 547 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -68557,7 +68467,7 @@
 	
 	var _typeof3 = _interopRequireDefault(_typeof2);
 	
-	var _rule = __webpack_require__(539);
+	var _rule = __webpack_require__(529);
 	
 	var _rule2 = _interopRequireDefault(_rule);
 	
@@ -68574,7 +68484,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 558 */
+/* 548 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -68583,11 +68493,11 @@
 	  value: true
 	});
 	
-	var _rule = __webpack_require__(539);
+	var _rule = __webpack_require__(529);
 	
 	var _rule2 = _interopRequireDefault(_rule);
 	
-	var _util = __webpack_require__(536);
+	var _util = __webpack_require__(526);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
@@ -68611,7 +68521,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 559 */
+/* 549 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -68678,10 +68588,10 @@
 	var messages = exports.messages = newMessages();
 
 /***/ }),
-/* 560 */
+/* 550 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var baseGet = __webpack_require__(561);
+	var baseGet = __webpack_require__(551);
 	
 	/**
 	 * Gets the value at `path` of `object`. If the resolved value is
@@ -68717,11 +68627,11 @@
 
 
 /***/ }),
-/* 561 */
+/* 551 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var castPath = __webpack_require__(562),
-	    toKey = __webpack_require__(611);
+	var castPath = __webpack_require__(552),
+	    toKey = __webpack_require__(601);
 	
 	/**
 	 * The base implementation of `_.get` without support for default values.
@@ -68747,13 +68657,13 @@
 
 
 /***/ }),
-/* 562 */
+/* 552 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var isArray = __webpack_require__(563),
-	    isKey = __webpack_require__(564),
-	    stringToPath = __webpack_require__(573),
-	    toString = __webpack_require__(608);
+	var isArray = __webpack_require__(553),
+	    isKey = __webpack_require__(554),
+	    stringToPath = __webpack_require__(563),
+	    toString = __webpack_require__(598);
 	
 	/**
 	 * Casts `value` to a path array if it's not one.
@@ -68774,7 +68684,7 @@
 
 
 /***/ }),
-/* 563 */
+/* 553 */
 /***/ (function(module, exports) {
 
 	/**
@@ -68806,11 +68716,11 @@
 
 
 /***/ }),
-/* 564 */
+/* 554 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var isArray = __webpack_require__(563),
-	    isSymbol = __webpack_require__(565);
+	var isArray = __webpack_require__(553),
+	    isSymbol = __webpack_require__(555);
 	
 	/** Used to match property names within property paths. */
 	var reIsDeepProp = /\.|\[(?:[^[\]]*|(["'])(?:(?!\1)[^\\]|\\.)*?\1)\]/,
@@ -68841,11 +68751,11 @@
 
 
 /***/ }),
-/* 565 */
+/* 555 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var baseGetTag = __webpack_require__(566),
-	    isObjectLike = __webpack_require__(572);
+	var baseGetTag = __webpack_require__(556),
+	    isObjectLike = __webpack_require__(562);
 	
 	/** `Object#toString` result references. */
 	var symbolTag = '[object Symbol]';
@@ -68876,12 +68786,12 @@
 
 
 /***/ }),
-/* 566 */
+/* 556 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var Symbol = __webpack_require__(567),
-	    getRawTag = __webpack_require__(570),
-	    objectToString = __webpack_require__(571);
+	var Symbol = __webpack_require__(557),
+	    getRawTag = __webpack_require__(560),
+	    objectToString = __webpack_require__(561);
 	
 	/** `Object#toString` result references. */
 	var nullTag = '[object Null]',
@@ -68910,10 +68820,10 @@
 
 
 /***/ }),
-/* 567 */
+/* 557 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var root = __webpack_require__(568);
+	var root = __webpack_require__(558);
 	
 	/** Built-in value references. */
 	var Symbol = root.Symbol;
@@ -68922,10 +68832,10 @@
 
 
 /***/ }),
-/* 568 */
+/* 558 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var freeGlobal = __webpack_require__(569);
+	var freeGlobal = __webpack_require__(559);
 	
 	/** Detect free variable `self`. */
 	var freeSelf = typeof self == 'object' && self && self.Object === Object && self;
@@ -68937,7 +68847,7 @@
 
 
 /***/ }),
-/* 569 */
+/* 559 */
 /***/ (function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/** Detect free variable `global` from Node.js. */
@@ -68948,10 +68858,10 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ }),
-/* 570 */
+/* 560 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var Symbol = __webpack_require__(567);
+	var Symbol = __webpack_require__(557);
 	
 	/** Used for built-in method references. */
 	var objectProto = Object.prototype;
@@ -69000,7 +68910,7 @@
 
 
 /***/ }),
-/* 571 */
+/* 561 */
 /***/ (function(module, exports) {
 
 	/** Used for built-in method references. */
@@ -69028,7 +68938,7 @@
 
 
 /***/ }),
-/* 572 */
+/* 562 */
 /***/ (function(module, exports) {
 
 	/**
@@ -69063,10 +68973,10 @@
 
 
 /***/ }),
-/* 573 */
+/* 563 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var memoizeCapped = __webpack_require__(574);
+	var memoizeCapped = __webpack_require__(564);
 	
 	/** Used to match property names within property paths. */
 	var rePropName = /[^.[\]]+|\[(?:(-?\d+(?:\.\d+)?)|(["'])((?:(?!\2)[^\\]|\\.)*?)\2)\]|(?=(?:\.|\[\])(?:\.|\[\]|$))/g;
@@ -69096,10 +69006,10 @@
 
 
 /***/ }),
-/* 574 */
+/* 564 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var memoize = __webpack_require__(575);
+	var memoize = __webpack_require__(565);
 	
 	/** Used as the maximum memoize cache size. */
 	var MAX_MEMOIZE_SIZE = 500;
@@ -69128,10 +69038,10 @@
 
 
 /***/ }),
-/* 575 */
+/* 565 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var MapCache = __webpack_require__(576);
+	var MapCache = __webpack_require__(566);
 	
 	/** Error message constants. */
 	var FUNC_ERROR_TEXT = 'Expected a function';
@@ -69207,14 +69117,14 @@
 
 
 /***/ }),
-/* 576 */
+/* 566 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var mapCacheClear = __webpack_require__(577),
-	    mapCacheDelete = __webpack_require__(602),
-	    mapCacheGet = __webpack_require__(605),
-	    mapCacheHas = __webpack_require__(606),
-	    mapCacheSet = __webpack_require__(607);
+	var mapCacheClear = __webpack_require__(567),
+	    mapCacheDelete = __webpack_require__(592),
+	    mapCacheGet = __webpack_require__(595),
+	    mapCacheHas = __webpack_require__(596),
+	    mapCacheSet = __webpack_require__(597);
 	
 	/**
 	 * Creates a map cache object to store key-value pairs.
@@ -69245,12 +69155,12 @@
 
 
 /***/ }),
-/* 577 */
+/* 567 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var Hash = __webpack_require__(578),
-	    ListCache = __webpack_require__(593),
-	    Map = __webpack_require__(601);
+	var Hash = __webpack_require__(568),
+	    ListCache = __webpack_require__(583),
+	    Map = __webpack_require__(591);
 	
 	/**
 	 * Removes all key-value entries from the map.
@@ -69272,14 +69182,14 @@
 
 
 /***/ }),
-/* 578 */
+/* 568 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var hashClear = __webpack_require__(579),
-	    hashDelete = __webpack_require__(589),
-	    hashGet = __webpack_require__(590),
-	    hashHas = __webpack_require__(591),
-	    hashSet = __webpack_require__(592);
+	var hashClear = __webpack_require__(569),
+	    hashDelete = __webpack_require__(579),
+	    hashGet = __webpack_require__(580),
+	    hashHas = __webpack_require__(581),
+	    hashSet = __webpack_require__(582);
 	
 	/**
 	 * Creates a hash object.
@@ -69310,10 +69220,10 @@
 
 
 /***/ }),
-/* 579 */
+/* 569 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var nativeCreate = __webpack_require__(580);
+	var nativeCreate = __webpack_require__(570);
 	
 	/**
 	 * Removes all key-value entries from the hash.
@@ -69331,10 +69241,10 @@
 
 
 /***/ }),
-/* 580 */
+/* 570 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var getNative = __webpack_require__(581);
+	var getNative = __webpack_require__(571);
 	
 	/* Built-in method references that are verified to be native. */
 	var nativeCreate = getNative(Object, 'create');
@@ -69343,11 +69253,11 @@
 
 
 /***/ }),
-/* 581 */
+/* 571 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var baseIsNative = __webpack_require__(582),
-	    getValue = __webpack_require__(588);
+	var baseIsNative = __webpack_require__(572),
+	    getValue = __webpack_require__(578);
 	
 	/**
 	 * Gets the native function at `key` of `object`.
@@ -69366,13 +69276,13 @@
 
 
 /***/ }),
-/* 582 */
+/* 572 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var isFunction = __webpack_require__(583),
-	    isMasked = __webpack_require__(585),
-	    isObject = __webpack_require__(584),
-	    toSource = __webpack_require__(587);
+	var isFunction = __webpack_require__(573),
+	    isMasked = __webpack_require__(575),
+	    isObject = __webpack_require__(574),
+	    toSource = __webpack_require__(577);
 	
 	/**
 	 * Used to match `RegExp`
@@ -69419,11 +69329,11 @@
 
 
 /***/ }),
-/* 583 */
+/* 573 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var baseGetTag = __webpack_require__(566),
-	    isObject = __webpack_require__(584);
+	var baseGetTag = __webpack_require__(556),
+	    isObject = __webpack_require__(574);
 	
 	/** `Object#toString` result references. */
 	var asyncTag = '[object AsyncFunction]',
@@ -69462,7 +69372,7 @@
 
 
 /***/ }),
-/* 584 */
+/* 574 */
 /***/ (function(module, exports) {
 
 	/**
@@ -69499,10 +69409,10 @@
 
 
 /***/ }),
-/* 585 */
+/* 575 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var coreJsData = __webpack_require__(586);
+	var coreJsData = __webpack_require__(576);
 	
 	/** Used to detect methods masquerading as native. */
 	var maskSrcKey = (function() {
@@ -69525,10 +69435,10 @@
 
 
 /***/ }),
-/* 586 */
+/* 576 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var root = __webpack_require__(568);
+	var root = __webpack_require__(558);
 	
 	/** Used to detect overreaching core-js shims. */
 	var coreJsData = root['__core-js_shared__'];
@@ -69537,7 +69447,7 @@
 
 
 /***/ }),
-/* 587 */
+/* 577 */
 /***/ (function(module, exports) {
 
 	/** Used for built-in method references. */
@@ -69569,7 +69479,7 @@
 
 
 /***/ }),
-/* 588 */
+/* 578 */
 /***/ (function(module, exports) {
 
 	/**
@@ -69588,7 +69498,7 @@
 
 
 /***/ }),
-/* 589 */
+/* 579 */
 /***/ (function(module, exports) {
 
 	/**
@@ -69611,10 +69521,10 @@
 
 
 /***/ }),
-/* 590 */
+/* 580 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var nativeCreate = __webpack_require__(580);
+	var nativeCreate = __webpack_require__(570);
 	
 	/** Used to stand-in for `undefined` hash values. */
 	var HASH_UNDEFINED = '__lodash_hash_undefined__';
@@ -69647,10 +69557,10 @@
 
 
 /***/ }),
-/* 591 */
+/* 581 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var nativeCreate = __webpack_require__(580);
+	var nativeCreate = __webpack_require__(570);
 	
 	/** Used for built-in method references. */
 	var objectProto = Object.prototype;
@@ -69676,10 +69586,10 @@
 
 
 /***/ }),
-/* 592 */
+/* 582 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var nativeCreate = __webpack_require__(580);
+	var nativeCreate = __webpack_require__(570);
 	
 	/** Used to stand-in for `undefined` hash values. */
 	var HASH_UNDEFINED = '__lodash_hash_undefined__';
@@ -69705,14 +69615,14 @@
 
 
 /***/ }),
-/* 593 */
+/* 583 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var listCacheClear = __webpack_require__(594),
-	    listCacheDelete = __webpack_require__(595),
-	    listCacheGet = __webpack_require__(598),
-	    listCacheHas = __webpack_require__(599),
-	    listCacheSet = __webpack_require__(600);
+	var listCacheClear = __webpack_require__(584),
+	    listCacheDelete = __webpack_require__(585),
+	    listCacheGet = __webpack_require__(588),
+	    listCacheHas = __webpack_require__(589),
+	    listCacheSet = __webpack_require__(590);
 	
 	/**
 	 * Creates an list cache object.
@@ -69743,7 +69653,7 @@
 
 
 /***/ }),
-/* 594 */
+/* 584 */
 /***/ (function(module, exports) {
 
 	/**
@@ -69762,10 +69672,10 @@
 
 
 /***/ }),
-/* 595 */
+/* 585 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var assocIndexOf = __webpack_require__(596);
+	var assocIndexOf = __webpack_require__(586);
 	
 	/** Used for built-in method references. */
 	var arrayProto = Array.prototype;
@@ -69803,10 +69713,10 @@
 
 
 /***/ }),
-/* 596 */
+/* 586 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var eq = __webpack_require__(597);
+	var eq = __webpack_require__(587);
 	
 	/**
 	 * Gets the index at which the `key` is found in `array` of key-value pairs.
@@ -69830,7 +69740,7 @@
 
 
 /***/ }),
-/* 597 */
+/* 587 */
 /***/ (function(module, exports) {
 
 	/**
@@ -69873,10 +69783,10 @@
 
 
 /***/ }),
-/* 598 */
+/* 588 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var assocIndexOf = __webpack_require__(596);
+	var assocIndexOf = __webpack_require__(586);
 	
 	/**
 	 * Gets the list cache value for `key`.
@@ -69898,10 +69808,10 @@
 
 
 /***/ }),
-/* 599 */
+/* 589 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var assocIndexOf = __webpack_require__(596);
+	var assocIndexOf = __webpack_require__(586);
 	
 	/**
 	 * Checks if a list cache value for `key` exists.
@@ -69920,10 +69830,10 @@
 
 
 /***/ }),
-/* 600 */
+/* 590 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var assocIndexOf = __webpack_require__(596);
+	var assocIndexOf = __webpack_require__(586);
 	
 	/**
 	 * Sets the list cache `key` to `value`.
@@ -69952,11 +69862,11 @@
 
 
 /***/ }),
-/* 601 */
+/* 591 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var getNative = __webpack_require__(581),
-	    root = __webpack_require__(568);
+	var getNative = __webpack_require__(571),
+	    root = __webpack_require__(558);
 	
 	/* Built-in method references that are verified to be native. */
 	var Map = getNative(root, 'Map');
@@ -69965,10 +69875,10 @@
 
 
 /***/ }),
-/* 602 */
+/* 592 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var getMapData = __webpack_require__(603);
+	var getMapData = __webpack_require__(593);
 	
 	/**
 	 * Removes `key` and its value from the map.
@@ -69989,10 +69899,10 @@
 
 
 /***/ }),
-/* 603 */
+/* 593 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var isKeyable = __webpack_require__(604);
+	var isKeyable = __webpack_require__(594);
 	
 	/**
 	 * Gets the data for `map`.
@@ -70013,7 +69923,7 @@
 
 
 /***/ }),
-/* 604 */
+/* 594 */
 /***/ (function(module, exports) {
 
 	/**
@@ -70034,10 +69944,10 @@
 
 
 /***/ }),
-/* 605 */
+/* 595 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var getMapData = __webpack_require__(603);
+	var getMapData = __webpack_require__(593);
 	
 	/**
 	 * Gets the map value for `key`.
@@ -70056,10 +69966,10 @@
 
 
 /***/ }),
-/* 606 */
+/* 596 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var getMapData = __webpack_require__(603);
+	var getMapData = __webpack_require__(593);
 	
 	/**
 	 * Checks if a map value for `key` exists.
@@ -70078,10 +69988,10 @@
 
 
 /***/ }),
-/* 607 */
+/* 597 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var getMapData = __webpack_require__(603);
+	var getMapData = __webpack_require__(593);
 	
 	/**
 	 * Sets the map `key` to `value`.
@@ -70106,10 +70016,10 @@
 
 
 /***/ }),
-/* 608 */
+/* 598 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var baseToString = __webpack_require__(609);
+	var baseToString = __webpack_require__(599);
 	
 	/**
 	 * Converts `value` to a string. An empty string is returned for `null`
@@ -70140,13 +70050,13 @@
 
 
 /***/ }),
-/* 609 */
+/* 599 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var Symbol = __webpack_require__(567),
-	    arrayMap = __webpack_require__(610),
-	    isArray = __webpack_require__(563),
-	    isSymbol = __webpack_require__(565);
+	var Symbol = __webpack_require__(557),
+	    arrayMap = __webpack_require__(600),
+	    isArray = __webpack_require__(553),
+	    isSymbol = __webpack_require__(555);
 	
 	/** Used as references for various `Number` constants. */
 	var INFINITY = 1 / 0;
@@ -70183,7 +70093,7 @@
 
 
 /***/ }),
-/* 610 */
+/* 600 */
 /***/ (function(module, exports) {
 
 	/**
@@ -70210,10 +70120,10 @@
 
 
 /***/ }),
-/* 611 */
+/* 601 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var isSymbol = __webpack_require__(565);
+	var isSymbol = __webpack_require__(555);
 	
 	/** Used as references for various `Number` constants. */
 	var INFINITY = 1 / 0;
@@ -70237,10 +70147,10 @@
 
 
 /***/ }),
-/* 612 */
+/* 602 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var baseSet = __webpack_require__(613);
+	var baseSet = __webpack_require__(603);
 	
 	/**
 	 * Sets the value at `path` of `object`. If a portion of `path` doesn't exist,
@@ -70278,14 +70188,14 @@
 
 
 /***/ }),
-/* 613 */
+/* 603 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var assignValue = __webpack_require__(614),
-	    castPath = __webpack_require__(562),
-	    isIndex = __webpack_require__(617),
-	    isObject = __webpack_require__(584),
-	    toKey = __webpack_require__(611);
+	var assignValue = __webpack_require__(604),
+	    castPath = __webpack_require__(552),
+	    isIndex = __webpack_require__(607),
+	    isObject = __webpack_require__(574),
+	    toKey = __webpack_require__(601);
 	
 	/**
 	 * The base implementation of `_.set`.
@@ -70331,11 +70241,11 @@
 
 
 /***/ }),
-/* 614 */
+/* 604 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var baseAssignValue = __webpack_require__(615),
-	    eq = __webpack_require__(597);
+	var baseAssignValue = __webpack_require__(605),
+	    eq = __webpack_require__(587);
 	
 	/** Used for built-in method references. */
 	var objectProto = Object.prototype;
@@ -70365,10 +70275,10 @@
 
 
 /***/ }),
-/* 615 */
+/* 605 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var defineProperty = __webpack_require__(616);
+	var defineProperty = __webpack_require__(606);
 	
 	/**
 	 * The base implementation of `assignValue` and `assignMergeValue` without
@@ -70396,10 +70306,10 @@
 
 
 /***/ }),
-/* 616 */
+/* 606 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var getNative = __webpack_require__(581);
+	var getNative = __webpack_require__(571);
 	
 	var defineProperty = (function() {
 	  try {
@@ -70413,7 +70323,7 @@
 
 
 /***/ }),
-/* 617 */
+/* 607 */
 /***/ (function(module, exports) {
 
 	/** Used as references for various `Number` constants. */
@@ -70444,44 +70354,35 @@
 
 
 /***/ }),
-/* 618 */
+/* 608 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
+	exports["default"] = createFieldsStore;
 	
-	var _defineProperty2 = __webpack_require__(480);
+	var _set = _interopRequireDefault(__webpack_require__(602));
 	
-	var _defineProperty3 = _interopRequireDefault(_defineProperty2);
+	var _createFormField = _interopRequireWildcard(__webpack_require__(609));
 	
-	var _extends2 = __webpack_require__(426);
+	var _utils = __webpack_require__(610);
 	
-	var _extends3 = _interopRequireDefault(_extends2);
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj["default"] = obj; return newObj; } }
 	
-	var _classCallCheck2 = __webpack_require__(428);
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 	
-	var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+	function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
 	
-	var _createClass2 = __webpack_require__(469);
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
-	var _createClass3 = _interopRequireDefault(_createClass2);
+	function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 	
-	exports['default'] = createFieldsStore;
+	function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 	
-	var _set = __webpack_require__(612);
-	
-	var _set2 = _interopRequireDefault(_set);
-	
-	var _createFormField = __webpack_require__(619);
-	
-	var _createFormField2 = _interopRequireDefault(_createFormField);
-	
-	var _utils = __webpack_require__(620);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 	
 	function partOf(a, b) {
 	  return b.indexOf(a) === 0 && ['.', '['].indexOf(b[a.length]) !== -1;
@@ -70493,23 +70394,91 @@
 	  }, 'You must wrap field data with `createFormField`.');
 	}
 	
-	var FieldsStore = function () {
-	  function FieldsStore(fields) {
-	    (0, _classCallCheck3['default'])(this, FieldsStore);
+	var FieldsStore =
+	/*#__PURE__*/
+	function () {
+	  function FieldsStore(_fields) {
+	    var _this = this;
 	
-	    _initialiseProps.call(this);
+	    _classCallCheck(this, FieldsStore);
 	
-	    this.fields = internalFlattenFields(fields);
+	    _defineProperty(this, "setFieldsInitialValue", function (initialValues) {
+	      var flattenedInitialValues = _this.flattenRegisteredFields(initialValues);
+	
+	      var fieldsMeta = _this.fieldsMeta;
+	      Object.keys(flattenedInitialValues).forEach(function (name) {
+	        if (fieldsMeta[name]) {
+	          _this.setFieldMeta(name, _objectSpread({}, _this.getFieldMeta(name), {
+	            initialValue: flattenedInitialValues[name]
+	          }));
+	        }
+	      });
+	    });
+	
+	    _defineProperty(this, "getAllValues", function () {
+	      var fieldsMeta = _this.fieldsMeta,
+	          fields = _this.fields;
+	      return Object.keys(fieldsMeta).reduce(function (acc, name) {
+	        return (0, _set["default"])(acc, name, _this.getValueFromFields(name, fields));
+	      }, {});
+	    });
+	
+	    _defineProperty(this, "getFieldsValue", function (names) {
+	      return _this.getNestedFields(names, _this.getFieldValue);
+	    });
+	
+	    _defineProperty(this, "getFieldValue", function (name) {
+	      var fields = _this.fields;
+	      return _this.getNestedField(name, function (fullName) {
+	        return _this.getValueFromFields(fullName, fields);
+	      });
+	    });
+	
+	    _defineProperty(this, "getFieldsError", function (names) {
+	      return _this.getNestedFields(names, _this.getFieldError);
+	    });
+	
+	    _defineProperty(this, "getFieldError", function (name) {
+	      return _this.getNestedField(name, function (fullName) {
+	        return (0, _utils.getErrorStrs)(_this.getFieldMember(fullName, 'errors'));
+	      });
+	    });
+	
+	    _defineProperty(this, "isFieldValidating", function (name) {
+	      return _this.getFieldMember(name, 'validating');
+	    });
+	
+	    _defineProperty(this, "isFieldsValidating", function (ns) {
+	      var names = ns || _this.getValidFieldsName();
+	
+	      return names.some(function (n) {
+	        return _this.isFieldValidating(n);
+	      });
+	    });
+	
+	    _defineProperty(this, "isFieldTouched", function (name) {
+	      return _this.getFieldMember(name, 'touched');
+	    });
+	
+	    _defineProperty(this, "isFieldsTouched", function (ns) {
+	      var names = ns || _this.getValidFieldsName();
+	
+	      return names.some(function (n) {
+	        return _this.isFieldTouched(n);
+	      });
+	    });
+	
+	    this.fields = internalFlattenFields(_fields);
 	    this.fieldsMeta = {};
 	  }
 	
-	  (0, _createClass3['default'])(FieldsStore, [{
-	    key: 'updateFields',
+	  _createClass(FieldsStore, [{
+	    key: "updateFields",
 	    value: function updateFields(fields) {
 	      this.fields = internalFlattenFields(fields);
 	    }
 	  }, {
-	    key: 'flattenRegisteredFields',
+	    key: "flattenRegisteredFields",
 	    value: function flattenRegisteredFields(fields) {
 	      var validFieldsName = this.getAllFieldsName();
 	      return (0, _utils.flattenFields)(fields, function (path) {
@@ -70517,23 +70486,28 @@
 	      }, 'You cannot set a form field before rendering a field associated with the value.');
 	    }
 	  }, {
-	    key: 'setFields',
+	    key: "setFields",
 	    value: function setFields(fields) {
-	      var _this = this;
+	      var _this2 = this;
 	
 	      var fieldsMeta = this.fieldsMeta;
-	      var nowFields = (0, _extends3['default'])({}, this.fields, fields);
+	
+	      var nowFields = _objectSpread({}, this.fields, fields);
+	
 	      var nowValues = {};
 	      Object.keys(fieldsMeta).forEach(function (f) {
-	        nowValues[f] = _this.getValueFromFields(f, nowFields);
+	        nowValues[f] = _this2.getValueFromFields(f, nowFields);
 	      });
 	      Object.keys(nowValues).forEach(function (f) {
 	        var value = nowValues[f];
-	        var fieldMeta = _this.getFieldMeta(f);
+	
+	        var fieldMeta = _this2.getFieldMeta(f);
+	
 	        if (fieldMeta && fieldMeta.normalize) {
-	          var nowValue = fieldMeta.normalize(value, _this.getValueFromFields(f, _this.fields), nowValues);
+	          var nowValue = fieldMeta.normalize(value, _this2.getValueFromFields(f, _this2.fields), nowValues);
+	
 	          if (nowValue !== value) {
-	            nowFields[f] = (0, _extends3['default'])({}, nowFields[f], {
+	            nowFields[f] = _objectSpread({}, nowFields[f], {
 	              value: nowValue
 	            });
 	          }
@@ -70542,75 +70516,77 @@
 	      this.fields = nowFields;
 	    }
 	  }, {
-	    key: 'resetFields',
+	    key: "resetFields",
 	    value: function resetFields(ns) {
 	      var fields = this.fields;
-	
 	      var names = ns ? this.getValidFieldsFullName(ns) : this.getAllFieldsName();
 	      return names.reduce(function (acc, name) {
 	        var field = fields[name];
+	
 	        if (field && 'value' in field) {
 	          acc[name] = {};
 	        }
+	
 	        return acc;
 	      }, {});
 	    }
 	  }, {
-	    key: 'setFieldMeta',
+	    key: "setFieldMeta",
 	    value: function setFieldMeta(name, meta) {
 	      this.fieldsMeta[name] = meta;
 	    }
 	  }, {
-	    key: 'setFieldsAsDirty',
+	    key: "setFieldsAsDirty",
 	    value: function setFieldsAsDirty() {
-	      var _this2 = this;
+	      var _this3 = this;
 	
 	      Object.keys(this.fields).forEach(function (name) {
-	        var field = _this2.fields[name];
-	        var fieldMeta = _this2.fieldsMeta[name];
+	        var field = _this3.fields[name];
+	        var fieldMeta = _this3.fieldsMeta[name];
+	
 	        if (field && fieldMeta && (0, _utils.hasRules)(fieldMeta.validate)) {
-	          _this2.fields[name] = (0, _extends3['default'])({}, field, {
+	          _this3.fields[name] = _objectSpread({}, field, {
 	            dirty: true
 	          });
 	        }
 	      });
 	    }
 	  }, {
-	    key: 'getFieldMeta',
+	    key: "getFieldMeta",
 	    value: function getFieldMeta(name) {
 	      this.fieldsMeta[name] = this.fieldsMeta[name] || {};
 	      return this.fieldsMeta[name];
 	    }
 	  }, {
-	    key: 'getValueFromFields',
+	    key: "getValueFromFields",
 	    value: function getValueFromFields(name, fields) {
 	      var field = fields[name];
+	
 	      if (field && 'value' in field) {
 	        return field.value;
 	      }
+	
 	      var fieldMeta = this.getFieldMeta(name);
 	      return fieldMeta && fieldMeta.initialValue;
 	    }
 	  }, {
-	    key: 'getValidFieldsName',
+	    key: "getValidFieldsName",
 	    value: function getValidFieldsName() {
-	      var _this3 = this;
+	      var _this4 = this;
 	
 	      var fieldsMeta = this.fieldsMeta;
-	
 	      return fieldsMeta ? Object.keys(fieldsMeta).filter(function (name) {
-	        return !_this3.getFieldMeta(name).hidden;
+	        return !_this4.getFieldMeta(name).hidden;
 	      }) : [];
 	    }
 	  }, {
-	    key: 'getAllFieldsName',
+	    key: "getAllFieldsName",
 	    value: function getAllFieldsName() {
 	      var fieldsMeta = this.fieldsMeta;
-	
 	      return fieldsMeta ? Object.keys(fieldsMeta) : [];
 	    }
 	  }, {
-	    key: 'getValidFieldsFullName',
+	    key: "getValidFieldsFullName",
 	    value: function getValidFieldsFullName(maybePartialName) {
 	      var maybePartialNames = Array.isArray(maybePartialName) ? maybePartialName : [maybePartialName];
 	      return this.getValidFieldsName().filter(function (fullName) {
@@ -70620,85 +70596,86 @@
 	      });
 	    }
 	  }, {
-	    key: 'getFieldValuePropValue',
+	    key: "getFieldValuePropValue",
 	    value: function getFieldValuePropValue(fieldMeta) {
 	      var name = fieldMeta.name,
 	          getValueProps = fieldMeta.getValueProps,
 	          valuePropName = fieldMeta.valuePropName;
-	
 	      var field = this.getField(name);
 	      var fieldValue = 'value' in field ? field.value : fieldMeta.initialValue;
+	
 	      if (getValueProps) {
 	        return getValueProps(fieldValue);
 	      }
-	      return (0, _defineProperty3['default'])({}, valuePropName, fieldValue);
+	
+	      return _defineProperty({}, valuePropName, fieldValue);
 	    }
 	  }, {
-	    key: 'getField',
+	    key: "getField",
 	    value: function getField(name) {
-	      return (0, _extends3['default'])({}, this.fields[name], {
+	      return _objectSpread({}, this.fields[name], {
 	        name: name
 	      });
 	    }
 	  }, {
-	    key: 'getNotCollectedFields',
+	    key: "getNotCollectedFields",
 	    value: function getNotCollectedFields() {
-	      var _this4 = this;
+	      var _this5 = this;
 	
 	      var fieldsName = this.getValidFieldsName();
 	      return fieldsName.filter(function (name) {
-	        return !_this4.fields[name];
+	        return !_this5.fields[name];
 	      }).map(function (name) {
 	        return {
 	          name: name,
 	          dirty: false,
-	          value: _this4.getFieldMeta(name).initialValue
+	          value: _this5.getFieldMeta(name).initialValue
 	        };
 	      }).reduce(function (acc, field) {
-	        return (0, _set2['default'])(acc, field.name, (0, _createFormField2['default'])(field));
+	        return (0, _set["default"])(acc, field.name, (0, _createFormField["default"])(field));
 	      }, {});
 	    }
 	  }, {
-	    key: 'getNestedAllFields',
+	    key: "getNestedAllFields",
 	    value: function getNestedAllFields() {
-	      var _this5 = this;
+	      var _this6 = this;
 	
 	      return Object.keys(this.fields).reduce(function (acc, name) {
-	        return (0, _set2['default'])(acc, name, (0, _createFormField2['default'])(_this5.fields[name]));
+	        return (0, _set["default"])(acc, name, (0, _createFormField["default"])(_this6.fields[name]));
 	      }, this.getNotCollectedFields());
 	    }
 	  }, {
-	    key: 'getFieldMember',
+	    key: "getFieldMember",
 	    value: function getFieldMember(name, member) {
 	      return this.getField(name)[member];
 	    }
 	  }, {
-	    key: 'getNestedFields',
+	    key: "getNestedFields",
 	    value: function getNestedFields(names, getter) {
 	      var fields = names || this.getValidFieldsName();
 	      return fields.reduce(function (acc, f) {
-	        return (0, _set2['default'])(acc, f, getter(f));
+	        return (0, _set["default"])(acc, f, getter(f));
 	      }, {});
 	    }
 	  }, {
-	    key: 'getNestedField',
+	    key: "getNestedField",
 	    value: function getNestedField(name, getter) {
 	      var fullNames = this.getValidFieldsFullName(name);
+	
 	      if (fullNames.length === 0 || // Not registered
 	      fullNames.length === 1 && fullNames[0] === name // Name already is full name.
 	      ) {
 	          return getter(name);
 	        }
+	
 	      var isArrayValue = fullNames[0][name.length] === '[';
 	      var suffixNameStartIndex = isArrayValue ? name.length : name.length + 1;
 	      return fullNames.reduce(function (acc, fullName) {
-	        return (0, _set2['default'])(acc, fullName.slice(suffixNameStartIndex), getter(fullName));
+	        return (0, _set["default"])(acc, fullName.slice(suffixNameStartIndex), getter(fullName));
 	      }, isArrayValue ? [] : {});
 	    }
 	  }, {
-	    key: 'isValidNestedFieldName',
-	
-	
+	    key: "isValidNestedFieldName",
 	    // @private
 	    // BG: `a` and `a.b` cannot be use in the same form
 	    value: function isValidNestedFieldName(name) {
@@ -70708,116 +70685,40 @@
 	      });
 	    }
 	  }, {
-	    key: 'clearField',
+	    key: "clearField",
 	    value: function clearField(name) {
 	      delete this.fields[name];
 	      delete this.fieldsMeta[name];
 	    }
 	  }]);
+	
 	  return FieldsStore;
 	}();
-	
-	var _initialiseProps = function _initialiseProps() {
-	  var _this6 = this;
-	
-	  this.setFieldsInitialValue = function (initialValues) {
-	    var flattenedInitialValues = _this6.flattenRegisteredFields(initialValues);
-	    var fieldsMeta = _this6.fieldsMeta;
-	    Object.keys(flattenedInitialValues).forEach(function (name) {
-	      if (fieldsMeta[name]) {
-	        _this6.setFieldMeta(name, (0, _extends3['default'])({}, _this6.getFieldMeta(name), {
-	          initialValue: flattenedInitialValues[name]
-	        }));
-	      }
-	    });
-	  };
-	
-	  this.getAllValues = function () {
-	    var fieldsMeta = _this6.fieldsMeta,
-	        fields = _this6.fields;
-	
-	    return Object.keys(fieldsMeta).reduce(function (acc, name) {
-	      return (0, _set2['default'])(acc, name, _this6.getValueFromFields(name, fields));
-	    }, {});
-	  };
-	
-	  this.getFieldsValue = function (names) {
-	    return _this6.getNestedFields(names, _this6.getFieldValue);
-	  };
-	
-	  this.getFieldValue = function (name) {
-	    var fields = _this6.fields;
-	
-	    return _this6.getNestedField(name, function (fullName) {
-	      return _this6.getValueFromFields(fullName, fields);
-	    });
-	  };
-	
-	  this.getFieldsError = function (names) {
-	    return _this6.getNestedFields(names, _this6.getFieldError);
-	  };
-	
-	  this.getFieldError = function (name) {
-	    return _this6.getNestedField(name, function (fullName) {
-	      return (0, _utils.getErrorStrs)(_this6.getFieldMember(fullName, 'errors'));
-	    });
-	  };
-	
-	  this.isFieldValidating = function (name) {
-	    return _this6.getFieldMember(name, 'validating');
-	  };
-	
-	  this.isFieldsValidating = function (ns) {
-	    var names = ns || _this6.getValidFieldsName();
-	    return names.some(function (n) {
-	      return _this6.isFieldValidating(n);
-	    });
-	  };
-	
-	  this.isFieldTouched = function (name) {
-	    return _this6.getFieldMember(name, 'touched');
-	  };
-	
-	  this.isFieldsTouched = function (ns) {
-	    var names = ns || _this6.getValidFieldsName();
-	    return names.some(function (n) {
-	      return _this6.isFieldTouched(n);
-	    });
-	  };
-	};
 	
 	function createFieldsStore(fields) {
 	  return new FieldsStore(fields);
 	}
-	module.exports = exports['default'];
 
 /***/ }),
-/* 619 */
-/***/ (function(module, exports, __webpack_require__) {
+/* 609 */
+/***/ (function(module, exports) {
 
 	"use strict";
 	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	
-	var _extends2 = __webpack_require__(426);
-	
-	var _extends3 = _interopRequireDefault(_extends2);
-	
-	var _classCallCheck2 = __webpack_require__(428);
-	
-	var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
-	
 	exports.isFormField = isFormField;
 	exports["default"] = createFormField;
 	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+	function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
 	var Field = function Field(fields) {
-	  (0, _classCallCheck3["default"])(this, Field);
+	  _classCallCheck(this, Field);
 	
-	  (0, _extends3["default"])(this, fields);
+	  _extends(this, fields);
 	};
 	
 	function isFormField(obj) {
@@ -70828,23 +70729,19 @@
 	  if (isFormField(field)) {
 	    return field;
 	  }
+	
 	  return new Field(field);
 	}
 
 /***/ }),
-/* 620 */
+/* 610 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	
-	var _extends2 = __webpack_require__(426);
-	
-	var _extends3 = _interopRequireDefault(_extends2);
-	
 	exports.argumentContainer = argumentContainer;
 	exports.identity = identity;
 	exports.flattenArray = flattenArray;
@@ -70859,15 +70756,15 @@
 	exports.hasRules = hasRules;
 	exports.startsWith = startsWith;
 	
-	var _hoistNonReactStatics = __webpack_require__(224);
+	var _hoistNonReactStatics = _interopRequireDefault(__webpack_require__(224));
 	
-	var _hoistNonReactStatics2 = _interopRequireDefault(_hoistNonReactStatics);
+	var _warning = _interopRequireDefault(__webpack_require__(31));
 	
-	var _warning = __webpack_require__(31);
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 	
-	var _warning2 = _interopRequireDefault(_warning);
+	function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
 	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 	
 	function getDisplayName(WrappedComponent) {
 	  return WrappedComponent.displayName || WrappedComponent.name || 'WrappedComponent';
@@ -70875,9 +70772,9 @@
 	
 	function argumentContainer(Container, WrappedComponent) {
 	  /* eslint no-param-reassign:0 */
-	  Container.displayName = 'Form(' + getDisplayName(WrappedComponent) + ')';
+	  Container.displayName = "Form(".concat(getDisplayName(WrappedComponent), ")");
 	  Container.WrappedComponent = WrappedComponent;
-	  return (0, _hoistNonReactStatics2['default'])(Container, WrappedComponent);
+	  return (0, _hoistNonReactStatics["default"])(Container, WrappedComponent);
 	}
 	
 	function identity(obj) {
@@ -70890,28 +70787,28 @@
 	
 	function treeTraverse() {
 	  var path = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
-	  var tree = arguments[1];
-	  var isLeafNode = arguments[2];
-	  var errorMessage = arguments[3];
-	  var callback = arguments[4];
+	  var tree = arguments.length > 1 ? arguments[1] : undefined;
+	  var isLeafNode = arguments.length > 2 ? arguments[2] : undefined;
+	  var errorMessage = arguments.length > 3 ? arguments[3] : undefined;
+	  var callback = arguments.length > 4 ? arguments[4] : undefined;
 	
 	  if (isLeafNode(path, tree)) {
 	    callback(path, tree);
-	  } else if (tree === undefined || tree === null) {
-	    // Do nothing
+	  } else if (tree === undefined || tree === null) {// Do nothing
 	  } else if (Array.isArray(tree)) {
 	    tree.forEach(function (subTree, index) {
-	      return treeTraverse(path + '[' + index + ']', subTree, isLeafNode, errorMessage, callback);
+	      return treeTraverse("".concat(path, "[").concat(index, "]"), subTree, isLeafNode, errorMessage, callback);
 	    });
 	  } else {
 	    // It's object and not a leaf node
 	    if (typeof tree !== 'object') {
-	      (0, _warning2['default'])(false, errorMessage);
+	      (0, _warning["default"])(false, errorMessage);
 	      return;
 	    }
+	
 	    Object.keys(tree).forEach(function (subTreeKey) {
 	      var subTree = tree[subTreeKey];
-	      treeTraverse('' + path + (path ? '.' : '') + subTreeKey, subTree, isLeafNode, errorMessage, callback);
+	      treeTraverse("".concat(path).concat(path ? '.' : '').concat(subTreeKey), subTree, isLeafNode, errorMessage, callback);
 	    });
 	  }
 	}
@@ -70926,20 +70823,24 @@
 	
 	function normalizeValidateRules(validate, rules, validateTrigger) {
 	  var validateRules = validate.map(function (item) {
-	    var newItem = (0, _extends3['default'])({}, item, {
+	    var newItem = _objectSpread({}, item, {
 	      trigger: item.trigger || []
 	    });
+	
 	    if (typeof newItem.trigger === 'string') {
 	      newItem.trigger = [newItem.trigger];
 	    }
+	
 	    return newItem;
 	  });
+	
 	  if (rules) {
 	    validateRules.push({
 	      trigger: validateTrigger ? [].concat(validateTrigger) : [],
 	      rules: rules
 	    });
 	  }
+	
 	  return validateRules;
 	}
 	
@@ -70958,8 +70859,8 @@
 	  if (!e || !e.target) {
 	    return e;
 	  }
-	  var target = e.target;
 	
+	  var target = e.target;
 	  return target.type === 'checkbox' ? target.checked : target.value;
 	}
 	
@@ -70969,9 +70870,11 @@
 	      if (e && e.message) {
 	        return e.message;
 	      }
+	
 	      return e;
 	    });
 	  }
+	
 	  return errors;
 	}
 	
@@ -70979,6 +70882,7 @@
 	  var names = ns;
 	  var options = opt;
 	  var callback = cb;
+	
 	  if (cb === undefined) {
 	    if (typeof names === 'function') {
 	      callback = names;
@@ -70997,6 +70901,7 @@
 	      names = undefined;
 	    }
 	  }
+	
 	  return {
 	    names: names,
 	    options: options,
@@ -71014,6 +70919,7 @@
 	      return item.rules && item.rules.length;
 	    });
 	  }
+	
 	  return false;
 	}
 	
@@ -71022,47 +70928,46 @@
 	}
 
 /***/ }),
-/* 621 */
+/* 611 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
+	exports["default"] = void 0;
 	
-	var _propTypes = __webpack_require__(6);
+	var _propTypes = _interopRequireDefault(__webpack_require__(6));
 	
-	var _propTypes2 = _interopRequireDefault(_propTypes);
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-	
-	var formShape = _propTypes2['default'].shape({
-	  getFieldsValue: _propTypes2['default'].func,
-	  getFieldValue: _propTypes2['default'].func,
-	  getFieldInstance: _propTypes2['default'].func,
-	  setFieldsValue: _propTypes2['default'].func,
-	  setFields: _propTypes2['default'].func,
-	  setFieldsInitialValue: _propTypes2['default'].func,
-	  getFieldDecorator: _propTypes2['default'].func,
-	  getFieldProps: _propTypes2['default'].func,
-	  getFieldsError: _propTypes2['default'].func,
-	  getFieldError: _propTypes2['default'].func,
-	  isFieldValidating: _propTypes2['default'].func,
-	  isFieldsValidating: _propTypes2['default'].func,
-	  isFieldsTouched: _propTypes2['default'].func,
-	  isFieldTouched: _propTypes2['default'].func,
-	  isSubmitting: _propTypes2['default'].func,
-	  submit: _propTypes2['default'].func,
-	  validateFields: _propTypes2['default'].func,
-	  resetFields: _propTypes2['default'].func
+	var formShape = _propTypes["default"].shape({
+	  getFieldsValue: _propTypes["default"].func,
+	  getFieldValue: _propTypes["default"].func,
+	  getFieldInstance: _propTypes["default"].func,
+	  setFieldsValue: _propTypes["default"].func,
+	  setFields: _propTypes["default"].func,
+	  setFieldsInitialValue: _propTypes["default"].func,
+	  getFieldDecorator: _propTypes["default"].func,
+	  getFieldProps: _propTypes["default"].func,
+	  getFieldsError: _propTypes["default"].func,
+	  getFieldError: _propTypes["default"].func,
+	  isFieldValidating: _propTypes["default"].func,
+	  isFieldsValidating: _propTypes["default"].func,
+	  isFieldsTouched: _propTypes["default"].func,
+	  isFieldTouched: _propTypes["default"].func,
+	  isSubmitting: _propTypes["default"].func,
+	  submit: _propTypes["default"].func,
+	  validateFields: _propTypes["default"].func,
+	  resetFields: _propTypes["default"].func
 	});
 	
-	exports['default'] = formShape;
-	module.exports = exports['default'];
+	var _default = formShape;
+	exports["default"] = _default;
 
 /***/ }),
-/* 622 */
+/* 612 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';

@@ -1020,6 +1020,8 @@
   .u-modal.in .u-modal-dialog {
     -webkit-transform: translate(0);
     transform: translate(0); }
+    .u-modal.in .u-modal-dialog.u-modal-draging, .u-modal.in .u-modal-dialog.u-modal-draged {
+      margin: 0; }
   .u-modal .u-modal-content {
     position: relative;
     background-color: #fff;

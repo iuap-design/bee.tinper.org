@@ -1,3 +1,13 @@
+<a name="2.0.7"></a>
+## [2.0.7](https://github.com/tinper-bee/bee-dropdown/compare/v2.0.6...v2.0.7) (2019-06-25)
+
+
+### Features
+
+* **bee-dropdown:** 新增延迟显示隐藏api ([8c543ee](https://github.com/tinper-bee/bee-dropdown/commit/8c543ee))
+
+
+
 <a name="2.0.6"></a>
 ## [2.0.6](https://github.com/tinper-bee/bee-dropdown/compare/v2.0.5...v2.0.6) (2019-05-13)
 

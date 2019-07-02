@@ -37,6 +37,9 @@ $modal-footer-padding : 16px;
   &.in .u-modal-dialog {
     -webkit-transform: translate(0);
     transform: translate(0);
+    &.u-modal-draging,&.u-modal-draged{
+      margin: 0;
+    }
   }
 
   .u-modal-content {

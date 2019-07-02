@@ -120,6 +120,9 @@ const propTypes = {
   minHeight: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   maxWidth: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   maxHeight: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  bounds:PropTypes.oneOfType([
+    PropTypes.string,PropTypes.Object
+  ])
 
 };
 
@@ -266,6 +269,7 @@ class Modal extends React.Component {
       containerClassName,
       draggable,
       resizeClassName,
+      bounds,
       ...props
     } = this.props;
     const [baseModalProps, dialogProps] =
@@ -307,6 +311,7 @@ class Modal extends React.Component {
           onClick={backdrop === true && !!backdropClosable ? this.handleDialogClick : null}
           size ={ size }
           draggable={draggable}
+          bounds={bounds}
           resizeClassName={resizeClassName}
         >
           {children}

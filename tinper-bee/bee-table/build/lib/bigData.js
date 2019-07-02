@@ -84,6 +84,8 @@ function bigData(Table) {
         _this.endIndex = _this.currentIndex + _this.loadCount; //数据结束位置
       }
       if (nextProps.data !== props.data) {
+        _this.cachedRowHeight = []; //缓存每行的高度
+        _this.cachedRowParentIndex = [];
         _this.computeCachedRowParentIndex(nextProps.data);
         if (nextProps.data.length > 0) {
           _this.endIndex = _this.currentIndex - nextProps.loadBuffer + _this.loadCount; //数据结束位置
@@ -335,6 +337,7 @@ function bigData(Table) {
       var isTree = _this4.props.isTree;
 
       var isTreeType = isTree ? true : _this4.checkIsTreeType();
+      treeTypeIndex = 0;
       if (isTreeType) {
         data.forEach(function (item, index) {
           _this4.firstLevelKey[index] = _this4.getRowKey(item, index);

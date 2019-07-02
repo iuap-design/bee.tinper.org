@@ -33,6 +33,8 @@
   background-color: #fff;
   transition: transform 300ms ease-in-out;
   overflow: auto; }
+  .drawer .drawer-body .u-drop .u-drag {
+    position: unset !important; }
 
 .drawer-left {
   top: 0;

@@ -785,7 +785,8 @@ var Tree = function (_React$Component) {
       focusable: props.focusable,
       tabIndexKey: state.selectedKeys[0],
       tabIndexValue: props.tabIndexValue,
-      ext: child.props.ext
+      ext: child.props.ext,
+      mustExpandable: props.mustExpandable
     };
     if (props.checkable) {
       cloneProps.checkable = props.checkable;

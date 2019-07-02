@@ -1,6 +1,6 @@
 {
  "name": "bee-modal",
- "version": "2.0.15",
+ "version": "2.0.19",
  "description": "ModalDialogl ui component for react",
  "keywords": [
   "react",
@@ -39,6 +39,7 @@
  "dependencies": {
   "bee-datepicker": "^2.0.6",
   "bee-dnd": "^1.1.2",
+  "bee-icon": "^1.0.11",
   "bee-loading": "^1.0.9",
   "bee-overlay-modal": "^0.0.1",
   "bee-popconfirm": "^2.0.0",

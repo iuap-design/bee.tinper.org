@@ -37,6 +37,10 @@ import 'bee-dropdown/build/Dropdown.css';
 |getPopupContainer|获取要添加的容器|document.body|
 |getDocument|点击隐藏的document，适用于出现iframe的情况|function|document|
 |disabled|是否禁用|bool|false|
+|delay|延迟显示隐藏时间，单位毫秒|number|-|
+|delayShow|延迟显示时间，单位毫秒|number|-|
+|delayHide|延迟隐藏时间，单位毫秒|number|-|
+|minOverlayWidthMatchTrigger|是否设置下拉的最小宽度|bool|true|
 
 ## 注意事项
 

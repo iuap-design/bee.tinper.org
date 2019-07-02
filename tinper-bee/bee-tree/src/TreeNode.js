@@ -202,7 +202,7 @@ class TreeNode extends React.Component {
     }
     //switcherCls[stateIcon] = stateIcon;
     props.switcherClass?switcherCls[`${props.switcherClass}`]=true:'';
-    if (props.disabled) {
+    if (props.disabled && !props.mustExpandable) {
       switcherCls[`${prefixCls}-switcher-disabled`] = true;
       return <span className={classNames(switcherCls)} style={props.switcherStyle}>{stateIcon}</span>;
     }
@@ -527,7 +527,8 @@ TreeNode.propTypes = {
 
 TreeNode.defaultProps = {
   title: defaultTitle,
-  tabIndexValue:0
+  tabIndexValue:0,
+  mustExpandable:false
 };
 
 export default TreeNode;

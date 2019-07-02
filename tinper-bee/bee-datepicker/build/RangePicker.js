@@ -158,7 +158,8 @@ var RangePicker = function (_Component) {
             timePicker: props.showTime ? timePickerElement : null,
             renderError: props.renderError,
             onStartInputBlur: this.onStartInputBlur,
-            onEndInputBlur: this.onEndInputBlur
+            onEndInputBlur: this.onEndInputBlur,
+            onClear: this.clear
         });
 
         return _react2["default"].createElement(
@@ -189,7 +190,7 @@ var RangePicker = function (_Component) {
                             _this2.outInputFocus(e);
                         }
                     }),
-                    showClose && _this2.state.value.length > 0 && _this2.state.showClose && !props.disabled ? _react2["default"].createElement(
+                    showClose && _this2.state.value && _this2.state.value.length > 0 && _this2.state.showClose && !props.disabled ? _react2["default"].createElement(
                         _beeInputGroup2["default"].Button,
                         { shape: "border",
                             onClick: _this2.clear },
@@ -253,11 +254,11 @@ var _initialiseProps = function _initialiseProps() {
     };
 
     this.clear = function (e) {
-        e.stopPropagation();
+        e && e.stopPropagation && e.stopPropagation();
         _this3.setState({
-            value: ''
+            value: []
         });
-        _this3.props.onChange && _this3.props.onChange('', '');
+        _this3.props.onChange && _this3.props.onChange([], []);
     };
 
     this.onOpenChange = function (open) {

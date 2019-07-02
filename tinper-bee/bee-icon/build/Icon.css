@@ -2,9 +2,9 @@
 /*  Navlayout  */
 @font-face {
   font-family: "uf";
-  src: url("//design.yonyoucloud.com/static/iconfont/iconfont.eot");
+  src: url("../node_modules/tinper-bee-core/scss/iconfont.eot");
   /* IE9*/
-  src: url("//design.yonyoucloud.com/static/iconfont/iconfont.eot") format("embedded-opentype"), url("//design.yonyoucloud.com/static/iconfont/iconfont.woff") format("woff"), url("//design.yonyoucloud.com/static/iconfont/iconfont.ttf") format("truetype"), url("//design.yonyoucloud.com/static/iconfont/iconfont.svg") format("svg");
+  src: url("../node_modules/tinper-bee-core/scss/iconfont.eot") format("embedded-opentype"), url("../node_modules/tinper-bee-core/scss/iconfont.woff") format("woff"), url("../node_modules/tinper-bee-core/scss/iconfont.ttf") format("truetype"), url("../node_modules/tinper-bee-core/scss/iconfont.svg") format("svg");
   /* iOS 4.1- */ }
 
 .uf {

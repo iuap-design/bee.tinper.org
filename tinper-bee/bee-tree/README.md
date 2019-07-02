@@ -119,7 +119,7 @@ onDragEnd当拖拽结束触发的方法|function({event,node})|-
 onDrop|当节点放下触发方法function({event, node, dragNode, dragNodesKeys})|-
 onDoubleClick|当双击发生触发的方法|function(checkedKeys, e:{node, event})|-
 Children|必填，TreeNode组件|node|-
-
+|mustExpandable|支持disabled的节点可以自定义展开收起，默认disabled的节点不可以展开收起|bool|false
 ## TreeNode
 |参数|说明|类型|默认值|
 |:---|:-----|:----|:------|

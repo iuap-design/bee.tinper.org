@@ -268,6 +268,7 @@ var _initialiseProps = function _initialiseProps() {
   this.onOpenChange = function (open) {
     var props = _this3.props;
     var self = _this3;
+    if ('open' in props) return;
     _this3.setState({
       open: open
     }, function () {

@@ -68,6 +68,30 @@ class Dropdown extends React.Component {
       });
     }
   }
+  delayFire=(visible,callBack)=>{
+    let { delayShow , delayHide , delay } = this.props;
+    let delayShowTime=delayShow||delay||false;
+    let delayHideTime=delayHide||delay||false;
+    if(delayShowTime){
+      if(visible){
+        clearTimeout(this.timer)
+        this.timer=setTimeout(() => {
+          callBack()
+        }, delayShowTime);
+        return
+      }
+    }
+    if(delayHideTime){
+      if(!visible){
+        clearTimeout(this.timer)
+        this.timer=setTimeout(() => {
+          callBack()
+        }, delayHideTime);
+        return
+      }
+    }
+    callBack()
+  }
 
   onClick(e) {
     const props = this.props;
@@ -85,12 +109,14 @@ class Dropdown extends React.Component {
 
   onVisibleChange(visible) {
     const props = this.props;
-    if (!('visible' in props)) {
-      this.setState({
-        visible,
-      });
-    }
-    props.onVisibleChange(visible);
+    this.delayFire(visible,() => {
+      if (!('visible' in props)) {
+        this.setState({
+          visible,
+        });
+      }
+      props.onVisibleChange(visible);
+    });
   }
 
   getMenuElement() {
@@ -134,7 +160,6 @@ class Dropdown extends React.Component {
       disabled,
       ...props,
     } = this.props;
-    
     return (<Trigger
       {...props}
       clsPrefix={clsPrefix}

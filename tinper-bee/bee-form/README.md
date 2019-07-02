@@ -165,7 +165,7 @@ export default Form.createForm()(Demo2);
 |option.initialValue|设置默认值|any|-|
 |option.validateTrigger|设置校验时机|String|onChange|
 |option.rules|设置校验规则|Object|-|
-|option.validateFirst|当第一个校验失败时候是否继续校验下一个校验规则|boolean|false|
+|option.validateFirst|当第一个校验失败时候是否阻止校验下一个校验规则|boolean|false|
 |option.hidden|是否在验证时忽略当前字段|boolean|false|
 |option.onChange|代替组件上的onChange方法|function|-|
 

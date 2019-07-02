@@ -17,11 +17,14 @@ const propTypes = {
 const defaultProps = {
     minHeight: 150,
     minWidth: 200,
-    clsPrefix: 'u-modal'
+    clsPrefix: 'u-modal',
+    bounds:{top:-20}
 };
 
 class ModalDialog extends React.Component {
   state = {
+    draging:false,
+    draged:false,
     original: {
       x: 0,
       y: 0
@@ -45,11 +48,16 @@ class ModalDialog extends React.Component {
 
   onStart = () => {
     let { draggable } = this.props;
+    this.setState({
+      draging:true
+    })
     return draggable;
   }
 
   onStop = (e, delta) => {
     this.setState({
+      draged:true,
+      draging:false,
       original: {
         x: delta.x,
         y: delta.y
@@ -177,13 +185,16 @@ class ModalDialog extends React.Component {
       resizeClassName,
       minHeight,
       minWidth,
+      bounds,
       ...props
     } = this.props;
     
     let {
       original,
       maxWidth,
-      maxHeight
+      maxHeight,
+      draging,
+      draged
     } = this.state; 
 
      const uClassName = {
@@ -204,6 +215,9 @@ class ModalDialog extends React.Component {
     if(draggable){
       dialogClasses[`${clsPrefix}-draggable`] = true;
     }
+    if(draging)dialogClasses[`${clsPrefix}-draging`]=true;
+
+    if(draged)dialogClasses[`${clsPrefix}-draged`]=true;
 
     return (
       <div
@@ -218,7 +232,7 @@ class ModalDialog extends React.Component {
           <Dnd 
             handle=".dnd-handle" 
             cancel=".dnd-cancel" 
-            bounds={{top:-20}} //防止拖拽时，Header 被导航栏覆盖
+            bounds={bounds} //防止拖拽时，Header 被导航栏覆盖
             onStart={this.onStart} 
             onStop={this.onStop}
             position={original}

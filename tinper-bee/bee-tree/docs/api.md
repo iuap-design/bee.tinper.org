@@ -53,6 +53,8 @@ import 'bee-tree/build/Tree.css';
 |focusable|是否开启快捷键功能，使用Tab 键导航获取焦点↓↑选中下、上一个节点，→←展开或者收起一个节点,enter键为节点双击事件|bool|-
 |tabIndexValue|节点获取焦点时，自定义tabIndex的值|Number|0
 |Children|必填，TreeNode组件|node|-
+|mustExpandable|支持disabled的节点可以自定义展开收起，默认disabled的节点不可以展开收起|bool|false
+
 
 ## TreeNode
 |参数|说明|类型|默认值|

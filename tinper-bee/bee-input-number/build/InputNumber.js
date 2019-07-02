@@ -375,7 +375,7 @@ var InputNumber = function (_Component) {
         };
 
         _this.separate = function (value) {
-            value = value.toString();
+            value = value !== null && value.toString();
             if (value.indexOf('.') > -1) {
                 return value.split('.')[1];
             } else {

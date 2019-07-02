@@ -1,3 +1,23 @@
+<a name="2.0.46"></a>
+## [2.0.46](https://github.com/tinper-bee/bee-datepicker/compare/v2.0.45...v2.0.46) (2019-06-27)
+
+
+### Bug Fixes
+
+* **bee-datepicker:** rangepicker清空值为空数组 ([0947072](https://github.com/tinper-bee/bee-datepicker/commit/0947072))
+
+
+
+<a name="2.0.45"></a>
+## [2.0.45](https://github.com/tinper-bee/bee-datepicker/compare/v2.0.44...v2.0.45) (2019-06-26)
+
+
+### Bug Fixes
+
+* **bee-datepicker:** open 不可用bug ([fed58c0](https://github.com/tinper-bee/bee-datepicker/commit/fed58c0))
+
+
+
 <a name="2.0.44"></a>
 ## [2.0.44](https://github.com/tinper-bee/bee-datepicker/compare/v2.0.43...v2.0.44) (2019-06-17)
 

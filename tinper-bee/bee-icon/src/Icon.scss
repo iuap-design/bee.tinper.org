@@ -3,11 +3,11 @@
 
 
 @font-face {font-family: "uf";
-  src: url('//design.yonyoucloud.com/static/iconfont/iconfont.eot'); /* IE9*/
-  src: url('//design.yonyoucloud.com/static/iconfont/iconfont.eot') format('embedded-opentype'), /* IE6-IE8 */
-  url('//design.yonyoucloud.com/static/iconfont/iconfont.woff') format('woff'), /* chrome, firefox */
-  url('//design.yonyoucloud.com/static/iconfont/iconfont.ttf') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
-  url('//design.yonyoucloud.com/static/iconfont/iconfont.svg') format('svg'); /* iOS 4.1- */
+  src: url('../node_modules/tinper-bee-core/scss/iconfont.eot'); /* IE9*/
+  src: url('../node_modules/tinper-bee-core/scss/iconfont.eot') format('embedded-opentype'), /* IE6-IE8 */
+  url('../node_modules/tinper-bee-core/scss/iconfont.woff') format('woff'), /* chrome, firefox */
+  url('../node_modules/tinper-bee-core/scss/iconfont.ttf') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('../node_modules/tinper-bee-core/scss/iconfont.svg') format('svg'); /* iOS 4.1- */
 }
 
 .uf {

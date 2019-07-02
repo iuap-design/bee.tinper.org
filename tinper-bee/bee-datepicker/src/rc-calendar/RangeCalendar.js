@@ -121,7 +121,7 @@ class RangeCalendar extends React.Component {
 
   constructor(props) {
     super(props);
-    const selectedValue = props.selectedValue || props.defaultSelectedValue;
+    const selectedValue = props.selectedValue || props.defaultSelectedValue||[];
     const value = normalizeAnchor(props, 1);
     this.state = {
       selectedValue,
@@ -581,7 +581,7 @@ class RangeCalendar extends React.Component {
 
   clear = () => {
     this.fireSelectValueChange([], true);
-    this.props.onClear();
+    this.props.onClear([]);
   }
 
   disabledStartTime = (time) => {

@@ -360,7 +360,7 @@ class InputNumber extends Component {
      * @returns {*}
      */
     separate = (value) => {
-        value = value.toString();
+        value = value !== null && value.toString();
         if (value.indexOf('.') > -1) {
             return value.split('.')[1];
         } else {

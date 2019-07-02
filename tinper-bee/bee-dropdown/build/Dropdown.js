@@ -88,6 +88,35 @@ var Dropdown = function (_React$Component) {
 
     var _this = _possibleConstructorReturn(this, _React$Component.call(this, props));
 
+    _this.delayFire = function (visible, callBack) {
+      var _this$props = _this.props,
+          delayShow = _this$props.delayShow,
+          delayHide = _this$props.delayHide,
+          delay = _this$props.delay;
+
+      var delayShowTime = delayShow || delay || false;
+      var delayHideTime = delayHide || delay || false;
+      if (delayShowTime) {
+        if (visible) {
+          clearTimeout(_this.timer);
+          _this.timer = setTimeout(function () {
+            callBack();
+          }, delayShowTime);
+          return;
+        }
+      }
+      if (delayHideTime) {
+        if (!visible) {
+          clearTimeout(_this.timer);
+          _this.timer = setTimeout(function () {
+            callBack();
+          }, delayHideTime);
+          return;
+        }
+      }
+      callBack();
+    };
+
     _this.state = {
       visible: jadgeState(_this.props)
     };
@@ -125,13 +154,17 @@ var Dropdown = function (_React$Component) {
   };
 
   Dropdown.prototype.onVisibleChange = function onVisibleChange(visible) {
+    var _this2 = this;
+
     var props = this.props;
-    if (!('visible' in props)) {
-      this.setState({
-        visible: visible
-      });
-    }
-    props.onVisibleChange(visible);
+    this.delayFire(visible, function () {
+      if (!('visible' in props)) {
+        _this2.setState({
+          visible: visible
+        });
+      }
+      props.onVisibleChange(visible);
+    });
   };
 
   Dropdown.prototype.getMenuElement = function getMenuElement() {

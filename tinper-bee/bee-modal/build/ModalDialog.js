@@ -56,7 +56,8 @@ var propTypes = {
 var defaultProps = {
   minHeight: 150,
   minWidth: 200,
-  clsPrefix: 'u-modal'
+  clsPrefix: 'u-modal',
+  bounds: { top: -20 }
 };
 
 var ModalDialog = function (_React$Component) {
@@ -72,6 +73,8 @@ var ModalDialog = function (_React$Component) {
     }
 
     return _ret = (_temp = (_this = _possibleConstructorReturn(this, _React$Component.call.apply(_React$Component, [this].concat(args))), _this), _this.state = {
+      draging: false,
+      draged: false,
       original: {
         x: 0,
         y: 0
@@ -81,9 +84,14 @@ var ModalDialog = function (_React$Component) {
     }, _this.onStart = function () {
       var draggable = _this.props.draggable;
 
+      _this.setState({
+        draging: true
+      });
       return draggable;
     }, _this.onStop = function (e, delta) {
       _this.setState({
+        draged: true,
+        draging: false,
         original: {
           x: delta.x,
           y: delta.y
@@ -229,12 +237,15 @@ var ModalDialog = function (_React$Component) {
         resizeClassName = _props.resizeClassName,
         minHeight = _props.minHeight,
         minWidth = _props.minWidth,
-        props = _objectWithoutProperties(_props, ['dialogClassName', 'className', 'clsPrefix', 'size', 'style', 'contentStyle', 'children', 'draggable', 'resizable', 'resizeClassName', 'minHeight', 'minWidth']);
+        bounds = _props.bounds,
+        props = _objectWithoutProperties(_props, ['dialogClassName', 'className', 'clsPrefix', 'size', 'style', 'contentStyle', 'children', 'draggable', 'resizable', 'resizeClassName', 'minHeight', 'minWidth', 'bounds']);
 
     var _state = this.state,
         original = _state.original,
         maxWidth = _state.maxWidth,
-        maxHeight = _state.maxHeight;
+        maxHeight = _state.maxHeight,
+        draging = _state.draging,
+        draged = _state.draged;
 
 
     var uClassName = _defineProperty({}, '' + clsPrefix, true);
@@ -248,6 +259,9 @@ var ModalDialog = function (_React$Component) {
     if (draggable) {
       dialogClasses[clsPrefix + '-draggable'] = true;
     }
+    if (draging) dialogClasses[clsPrefix + '-draging'] = true;
+
+    if (draged) dialogClasses[clsPrefix + '-draged'] = true;
 
     return _react2["default"].createElement(
       'div',
@@ -268,7 +282,7 @@ var ModalDialog = function (_React$Component) {
           {
             handle: '.dnd-handle',
             cancel: '.dnd-cancel',
-            bounds: { top: -20 } //防止拖拽时，Header 被导航栏覆盖
+            bounds: bounds //防止拖拽时，Header 被导航栏覆盖
             , onStart: this.onStart,
             onStop: this.onStop,
             position: original,
