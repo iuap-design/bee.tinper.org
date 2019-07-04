@@ -2,8 +2,8 @@
 
 ## 安装cli工具
 
-![image](https://user-images.githubusercontent.com/3817644/54671311-a3cac880-4b30-11e9-98e8-2f21456433be.png)
-
+<!-- ![image](https://user-images.githubusercontent.com/3817644/54671311-a3cac880-4b30-11e9-98e8-2f21456433be.png) -->
+![avatar](/images/54671311-a3cac880-4b30-11e9-98e8-2f21456433be.png)
 
 安装cli工具来获得最新微服务工程框架，通过npm安装全局使用(注意权限问题)：
 
@@ -152,4 +152,7 @@ export default App;
 
 ```
 
-最终演示效果：  ![image](https://user-images.githubusercontent.com/3817644/54670257-33bb4300-4b2e-11e9-8b70-e1147ce3bd36.png)
+最终演示效果：  
+<!-- ![image](https://user-images.githubusercontent.com/3817644/54670257-33bb4300-4b2e-11e9-8b70-e1147ce3bd36.png) -->
+
+![avatar](/images/54670257-33bb4300-4b2e-11e9-8b70-e1147ce3bd36.png)
