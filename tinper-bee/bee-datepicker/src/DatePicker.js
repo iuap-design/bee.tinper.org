@@ -89,7 +89,6 @@ class DatePicker extends Component {
   onOpenChange = open => {
       const props = this.props;
       const self = this;
-      if('open' in props)return;
       this.setState({
         open
       },function(){

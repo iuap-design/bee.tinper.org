@@ -76,7 +76,7 @@ class TableHeader extends Component {
       table.cols = tableDome.getElementsByTagName("col");
       table.ths = tableDome.getElementsByTagName("th");
       table.tr = tableDome.getElementsByTagName("tr");
-      table.tableBodyCols = contentTable.querySelector('.u-table-scroll .u-table-body').getElementsByTagName("col");
+      table.tableBodyCols = contentTable.querySelector('.u-table-scroll .u-table-body') && contentTable.querySelector('.u-table-scroll .u-table-body').getElementsByTagName("col");
     }
 
     table.fixedLeftHeaderTable = contentTable.querySelector('.u-table-fixed-left .u-table-header') ;
@@ -146,10 +146,12 @@ class TableHeader extends Component {
     this.eventListen(events,'remove',this.table.tr[0]);
   }
 
-
-
   eventListen(events,type,eventSource){
     if(!this.table)return;
+    if(!eventSource){
+      console.log("Please set the attributes of column !");
+      return;
+    }
     let {tr} = this.table;
     for (let i = 0; i < events.length; i++) {
       const _event = events[i];
@@ -475,7 +477,7 @@ class TableHeader extends Component {
     if(!currentIndex || parseInt(currentIndex) === this.drag.currIndex)return;
     if(target.nodeName.toUpperCase() === "TH"){
       // target.style.border = "2px dashed rgba(5,0,0,0.25)";
-      target.setAttribute("style","border-right:2px dashed rgba(5,0,0,0.25)");
+      target.setAttribute("style","border-right:2px dashed rgb(30, 136, 229)");
       // target.style.backgroundColor = 'rgb(235, 236, 240)';
     }
   }

@@ -52,14 +52,14 @@ const timePickerElement = (
   
 
 class RangePicker extends Component {
-  constructor(props, context) {
-    super(props, context);
-    this.state = {
-        hoverValue: [],
-        value: props.value || props.defaultValue || [],
-        open: props.open||false
-    };
-  }
+    constructor(props, context) {
+        super(props, context);
+        this.state = {
+            hoverValue: [],
+            value: props.value || props.defaultValue || [],
+            open: props.open||false
+        };
+    }
     componentWillReceiveProps(nextProps){
         if ("value" in nextProps) {
             this.setState({
@@ -76,9 +76,12 @@ class RangePicker extends Component {
         });
     }
 
+    clearHoverValue = () => this.setState({ hoverValue: [] });
+
     onChange = (value) => {
         const props = this.props;
         let formatStr = props.format || 'YYYY-MM-DD';
+        if(value.length < 2){ return }
         this.setState({
             value:value
         });
@@ -128,6 +131,11 @@ class RangePicker extends Component {
     onOpenChange = open => {
         const props = this.props;
         const self = this;
+
+        if (open === false) {
+            this.clearHoverValue();
+        }
+        
         this.setState({
           open
         },function(){
@@ -152,6 +160,7 @@ class RangePicker extends Component {
 
     inputFocus=()=>{
         let inputs = document.querySelectorAll('.rc-calendar-input');
+        if(!inputs){ return }
         if(inputs[0].value){
             inputs[0].select()
         }else{

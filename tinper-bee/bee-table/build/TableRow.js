@@ -252,7 +252,7 @@ var TableRow = function (_Component) {
         }
       }
       if (type) {
-        currentObj && currentObj.setAttribute("style", "border-bottom:2px dashed rgba(5,0,0,0.25)");
+        currentObj && currentObj.setAttribute("style", "border-bottom:2px dashed rgb(30, 136, 229)");
       } else {
         currentObj && currentObj.setAttribute("style", "");
       }
@@ -533,7 +533,9 @@ var TableRow = function (_Component) {
         bodyDisplayInRow = _props9.bodyDisplayInRow,
         expandedIcon = _props9.expandedIcon,
         collapsedIcon = _props9.collapsedIcon,
-        hoverKey = _props9.hoverKey;
+        hoverKey = _props9.hoverKey,
+        lazyStartIndex = _props9.lazyStartIndex,
+        lazyEndIndex = _props9.lazyEndIndex;
 
     var showSum = false;
     var className = this.props.className;
@@ -582,7 +584,9 @@ var TableRow = function (_Component) {
         fixed: fixed,
         showSum: showSum,
         expandIcon: isColumnHaveExpandIcon ? expandIcon : null,
-        bodyDisplayInRow: bodyDisplayInRow
+        bodyDisplayInRow: bodyDisplayInRow,
+        lazyStartIndex: lazyStartIndex,
+        lazyEndIndex: lazyEndIndex
       }));
     }
     var style = { height: height };

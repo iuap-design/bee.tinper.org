@@ -290,7 +290,7 @@ class TableRow extends Component{
       }
     }
     if(type){
-      currentObj && currentObj.setAttribute("style","border-bottom:2px dashed rgba(5,0,0,0.25)");
+      currentObj && currentObj.setAttribute("style","border-bottom:2px dashed rgb(30, 136, 229)");
     }else{
       currentObj && currentObj.setAttribute("style","");
     }
@@ -418,7 +418,7 @@ class TableRow extends Component{
       clsPrefix, columns, record, height, visible, index,
       expandIconColumnIndex, expandIconAsCell, expanded, expandRowByClick,rowDraggAble,
       expandable, onExpand, needIndentSpaced, indent, indentSize,isHiddenExpandIcon,fixed,bodyDisplayInRow
-      ,expandedIcon,collapsedIcon, hoverKey
+      ,expandedIcon,collapsedIcon, hoverKey,lazyStartIndex,lazyEndIndex
     } = this.props;
     let showSum = false;
     let { className } = this.props;
@@ -471,6 +471,8 @@ class TableRow extends Component{
           showSum={showSum}
           expandIcon={(isColumnHaveExpandIcon) ? expandIcon : null}
           bodyDisplayInRow =  {bodyDisplayInRow}
+          lazyStartIndex={lazyStartIndex}
+          lazyEndIndex={lazyEndIndex}
         />
       );
     }
