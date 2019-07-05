@@ -34,6 +34,7 @@ class Tree extends React.Component {
       dragNodesKeys: '',
       dragOverNodeKey: '',
       dropNodeKey: '',
+      focusKey: '', //上下箭头选择树节点时，用于标识focus状态
     };
   }
 
@@ -461,7 +462,11 @@ onExpand(treeNode,keyType) {
       const parentEle = closest(e.target,".u-tree")
       const focusEle = parentEle?parentEle.querySelector(queryInfo):null;
       focusEle && focusEle.focus()
-      this.onSelect(nextTreeNode);
+      const eventKey = nextTreeNode.props.eventKey || nextTreeNode.key;
+      this.setState({
+        focusKey: eventKey
+      })
+      // this.onSelect(nextTreeNode);
     }
   }
 
@@ -511,7 +516,11 @@ onExpand(treeNode,keyType) {
       
     }
     preElement && preElement.focus();
-    this.onSelect(prevTreeNode);
+    const eventKey = prevTreeNode.props.eventKey || prevTreeNode.key;
+    this.setState({
+      focusKey: eventKey
+    })
+    // this.onSelect(prevTreeNode);
   }
   // all keyboard events callbacks run from here at first
   onKeyDown(e,treeNode) {
@@ -532,6 +541,7 @@ onExpand(treeNode,keyType) {
       // 展开树节点
       this.onExpand(treeNode,'right');
     }else if (e.keyCode == KeyCode.SPACE && props.checkable){
+      this.onSelect(treeNode);
       // 如果是多选tree则进行选中或者反选该节点
       this.onCheck(treeNode);
     }else if(e.keyCode == KeyCode.ENTER){
@@ -546,12 +556,20 @@ onExpand(treeNode,keyType) {
     const queryInfo = `a[pos="${selectKeyDomPos}"]`;
     const parentEle = closest(targetDom,".u-tree")
     const focusEle = parentEle?parentEle.querySelector(queryInfo):null;
-    focusEle && focusEle.focus();
+    if(document.activeElement !== focusEle){
+      focusEle && focusEle.focus();
+    }
   }
 
+  /**
+   * 此方法为了解决树快捷键，当有的元素隐藏，按tab键也要显示的问题
+   * @param {*} e 
+   */
   onUlFocus(e){ 
     const targetDom = e.target;
-    if(this.tree == targetDom && !this.isIn){
+ 
+    // 如果当前tree节点不包括上一个焦点节点会触发此方法
+    if(this.tree == targetDom && !this.isIn && !this.tree.contains(e.relatedTarget)){
       const {onFocus} = this.props;
       const {selectedKeys=[]} = this.state;
       let tabIndexKey = selectedKeys[0]
@@ -581,9 +599,12 @@ onExpand(treeNode,keyType) {
 
   onUlMouseEnter(e){
     this.isIn = true;
+    console.log('onUlMouseEnter----isIn-----',this.isIn);
   }
   onUlMouseLeave(e){
     this.isIn = false;
+    console.log('onUlMouseLeave----isIn-----',this.isIn);
+
   }
   
   getFilterExpandedKeys(props, expandKeyProp, expandAll) {
@@ -752,6 +773,7 @@ onExpand(treeNode,keyType) {
       _dropTrigger: this._dropTrigger,
       expanded: state.expandedKeys.indexOf(key) !== -1,
       selected: state.selectedKeys.indexOf(key) !== -1,
+      focused: state.focusKey === key,
       openTransitionName: this.getOpenTransitionName(),
       openAnimation: props.openAnimation,
       filterTreeNode: this.filterTreeNode.bind(this),
@@ -798,9 +820,12 @@ onExpand(treeNode,keyType) {
       role: 'tree-node',
     };
 
-    domProps.onFocus = this.onUlFocus;
-    domProps.onMouseEnter = this.onUlMouseEnter;
-    domProps.onMouseLeave = this.onUlMouseLeave;
+    if (props.focusable) {
+      domProps.onFocus = this.onUlFocus;
+      domProps.onMouseEnter = this.onUlMouseEnter;
+      domProps.onMouseLeave = this.onUlMouseLeave;
+    }
+
     // if (props.focusable) {
     //   // domProps.tabIndex = '0';//需求改成了默认选择第一个节点或者选中的节点
     //   // domProps.onKeyDown = this.onKeyDown;//添加到具体的treeNode上了

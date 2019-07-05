@@ -25,11 +25,21 @@ class Demo4 extends Component {
     onClear = () => {
         console.log('clear')
     }
-    onStartInputBlur = (e,v) => {
-        console.log('RangePicker面板 左输入框的失焦事件',v)
+    /**
+     *@param e 事件对象
+     *@param startValue 开始时间
+     *@param array 包含开始时间和结束时间的数组
+     */
+    onStartInputBlur = (e,startValue,array) => {
+        console.log('RangePicker面板 左输入框的失焦事件',startValue,array)
     }
-    onEndInputBlur = (e,v) => {
-        console.log('RangePicker面板 右输入框的失焦事件',v)
+    /**
+     *@param e 事件对象
+     *@param endValue 结束时间
+     *@param array 包含开始时间和结束时间的数组
+     */
+    onEndInputBlur = (e,endValue,array) => {
+        console.log('RangePicker面板 右输入框的失焦事件',endValue,array)
     }
     render() {
         return (

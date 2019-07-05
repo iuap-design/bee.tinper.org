@@ -340,20 +340,24 @@ var _initialiseProps = function _initialiseProps() {
 
     this.onStartInputBlur = function (e) {
         var inputs = document.querySelectorAll('.rc-calendar-input');
-        var startValue = void 0;
+        var startValue = void 0,
+            endValue = void 0;
         if (inputs) {
             startValue = inputs[0].value ? inputs[0].value : '';
+            endValue = inputs[1].value ? inputs[1].value : '';
         }
-        _this3.props.onStartInputBlur && _this3.props.onStartInputBlur(e, startValue);
+        _this3.props.onStartInputBlur && _this3.props.onStartInputBlur(e, startValue, "[\"" + startValue + "\" , \"" + endValue + "\"]");
     };
 
     this.onEndInputBlur = function (e) {
         var inputs = document.querySelectorAll('.rc-calendar-input');
-        var endValue = void 0;
+        var startValue = void 0,
+            endValue = void 0;
         if (inputs) {
+            startValue = inputs[0].value ? inputs[0].value : '';
             endValue = inputs[1].value ? inputs[1].value : '';
         }
-        _this3.props.onEndInputBlur && _this3.props.onEndInputBlur(e, endValue);
+        _this3.props.onEndInputBlur && _this3.props.onEndInputBlur(e, endValue, "[\"" + startValue + "\" , \"" + endValue + "\"]");
     };
 };
 

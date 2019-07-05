@@ -176,6 +176,9 @@ $treePrefixCls : "u-tree";
       color: $brand-primary;
     }
   }
+  li.u-tree-treenode-focused>a{
+    background-color: $tree-node-bg-color;
+  }
   li span.u-checkbox {
     margin: 2px 4px 0 0;
   }

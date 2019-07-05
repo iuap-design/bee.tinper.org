@@ -133,6 +133,8 @@
     background-color: rgb(255, 247, 231); }
     .u-tree li a.u-tree-node-selected .u-tree-title {
       color: rgb(245, 60, 50); }
+  .u-tree li.u-tree-treenode-focused > a {
+    background-color: rgb(235, 236, 240); }
   .u-tree li span.u-checkbox {
     margin: 2px 4px 0 0; }
   .u-tree li span.u-tree-switcher,

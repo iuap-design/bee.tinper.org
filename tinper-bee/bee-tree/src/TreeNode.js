@@ -492,9 +492,10 @@ class TreeNode extends React.Component {
       return <span className={classNames(cls)}></span>;
     };
     const selectedCls =  props.selected?`${prefixCls}-treenode-selected`:'';
+    const focusedCls = props.focused ? `${prefixCls}-treenode-focused` : '';
     return (
       <li {...liProps}  style={props.style}
-        className={classNames(props.className, disabledCls, dragOverCls, filterCls,selectedCls) }
+        className={classNames(props.className, disabledCls, dragOverCls, filterCls,selectedCls,focusedCls) }
       >
         {canRenderSwitcher ? this.renderSwitcher(props, expandedState) : noopSwitcher()}
         {props.checkable ? this.renderCheckbox(props) : null}

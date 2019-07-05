@@ -549,7 +549,11 @@ class RangeCalendar extends React.Component {
       this.setState({ firstSelectedValue: selectedValue[0] });
       this.fireHoverValueChange(selectedValue.concat());
     }
-    selectedValue.map((item)=>{item._type = 'range'})
+    selectedValue.map((item)=>{
+      if(item){
+        item._type = 'range'
+      }
+    })
     this.props.onChange(selectedValue);
     if (direct || selectedValue[0] && selectedValue[1]) {
       this.setState({
