@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
-import KeyCode from 'rc-util/lib/KeyCode';
+import { KeyCode } from 'tinper-bee-core';
 import { polyfill } from 'react-lifecycles-compat';
 import moment from 'moment';
 import { formatDate } from '../util';
@@ -60,7 +60,7 @@ class DateInput extends React.Component {
     if (!str) {
       onChange(null);
       this.setState({
-        invalid: false,
+        // invalid: false,
         str,
       });
       return;
@@ -70,7 +70,7 @@ class DateInput extends React.Component {
     const parsed = moment(str, format, true);
     if (!parsed.isValid()) {
       this.setState({
-        invalid: true,
+        // invalid: true,
         str,
       });
       return;
@@ -87,7 +87,7 @@ class DateInput extends React.Component {
 
     if (!value || (disabledDate && disabledDate(value))) {
       this.setState({
-        invalid: true,
+        // invalid: true,
         str,
       });
       return;
@@ -97,7 +97,7 @@ class DateInput extends React.Component {
       selectedValue && value && !selectedValue.isSame(value)
     )) {
       this.setState({
-        invalid: false,
+        // invalid: false,
         str,
       });
       onChange(value);
@@ -109,6 +109,50 @@ class DateInput extends React.Component {
   }
 
   onBlur = (e) => {
+    const str = e.target.value;
+    const { disabledDate, format, onChange, selectedValue } = this.props;
+
+    // 没有内容，合法并直接退出
+    if (!str) {
+      this.setState({
+        invalid: false
+      });
+      return;
+    }
+
+    // 不合法直接退出
+    const parsed = moment(str, format, true);
+    if (!parsed.isValid()) {
+      this.setState({
+        invalid: true
+      });
+      return;
+    }
+
+    const value = this.props.value.clone();
+    value
+      .year(parsed.year())
+      .month(parsed.month())
+      .date(parsed.date())
+      .hour(parsed.hour())
+      .minute(parsed.minute())
+      .second(parsed.second());
+
+    if (!value || (disabledDate && disabledDate(value))) {
+      this.setState({
+        invalid: true
+      });
+      return;
+    }
+
+    if (selectedValue !== value || (
+      selectedValue && value && !selectedValue.isSame(value)
+    )) {
+      this.setState({
+        invalid: false
+      });
+    }
+
     this.setState((prevState, prevProps) => ({
       hasFocus: false,
       str: formatDate(prevProps.value, prevProps.format),
@@ -123,6 +167,20 @@ class DateInput extends React.Component {
     if (e.keyCode === KeyCode.ENTER){
       if(parsed.isValid()&& onSelect){
         isRange?onSelect(parsed.clone()):onSelect(value.clone());//FIX https://github.com/iuap-design/tinper-bee/issues/183
+      }
+      // 没有内容，回填默认值，并关闭面板
+      if (!str) {
+        this.setState({
+          invalid: false
+        });
+        onSelect && onSelect(moment());
+        return;
+      }
+      // 有内容，判断是否合法
+      if (!parsed.isValid()) {
+        this.setState({
+          invalid: true
+        });
       }
     }
     // if (e.keyCode === KeyCode.ENTER && onSelect) {

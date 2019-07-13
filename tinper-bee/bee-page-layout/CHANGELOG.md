@@ -1,3 +1,8 @@
+<a name="1.0.1"></a>
+## [1.0.1](https://github.com/tinper-bee/bee-page-layout/compare/v1.0.0...v1.0.1) (2019-07-11)
+
+
+
 <a name="1.0.0"></a>
 # [1.0.0](https://github.com/tinper-bee/bee-page-layout/compare/v0.0.1...v1.0.0) (2019-06-03)
 

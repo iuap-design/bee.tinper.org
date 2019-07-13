@@ -47,7 +47,7 @@ class Demo8 extends Component {
         return (
             <div className="demo-margin">
                 <Button
-                    colors="primary"
+                    bordered
                     onClick={this.open}>
                     打开模态框
                 </Button>
@@ -62,7 +62,7 @@ class Demo8 extends Component {
                     <Modal.Body>
                        这是第一个模态框
                         <Button
-                            colors="primary"
+                            bordered
                             size="sm"
                             onClick={this.open2}
                         >
@@ -74,7 +74,7 @@ class Demo8 extends Component {
                         <Button colors="secondary" style={{ marginRight: 8 }} onClick={this.close}>
                             取消
                         </Button>
-                        <Button colors="primary" onClick={this.close}>
+                        <Button bordered onClick={this.close}>
                             确认
                         </Button>
                     </Modal.Footer>
@@ -95,7 +95,7 @@ class Demo8 extends Component {
                         <Button colors="secondary" style={{ marginRight: 8 }} onClick={this.close2}>
                             取消
                         </Button>
-                        <Button colors="primary" onClick={this.close2}>
+                        <Button bordered onClick={this.close2}>
                             确认
                         </Button>
                     </Modal.Footer>

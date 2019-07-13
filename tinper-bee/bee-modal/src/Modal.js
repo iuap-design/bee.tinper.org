@@ -122,8 +122,10 @@ const propTypes = {
   maxHeight: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   bounds:PropTypes.oneOfType([
     PropTypes.string,PropTypes.Object
-  ])
-
+  ]),
+  className: PropTypes.string,
+  /* 模态框是否居中显示 */
+  centered: PropTypes.bool
 };
 
 const defaultProps = {
@@ -133,7 +135,8 @@ const defaultProps = {
   dialogComponentClass: ModalDialog,
   draggable: false,
   resizable: false,
-  clsPrefix: 'u-modal'
+  clsPrefix: 'u-modal',
+  className: ''
 };
 
 const ModalFuncProps = {
@@ -270,6 +273,7 @@ class Modal extends React.Component {
       draggable,
       resizeClassName,
       bounds,
+      centered,
       ...props
     } = this.props;
     const [baseModalProps, dialogProps] =
@@ -284,6 +288,9 @@ class Modal extends React.Component {
     const containerClasses = {
         [`${clsPrefix}-open`]: true
     };
+    if(!!centered){
+      className += ` ${clsPrefix}-centered`
+    }
     if(Number(width))width += 'px';
 
     let styleRes = { ...this.state.style, ...style };

@@ -136,7 +136,7 @@ var RadioGroup = function (_React$Component) {
     }
     if ('selectedValue' in nextProps || 'value' in nextProps) {
       this.setState({
-        selectedValue: nextProps.selectedValue || nextProps.value
+        selectedValue: typeof nextProps.selectedValue !== 'undifined' ? nextProps.selectedValue : nextProps.value
       });
     }
   };

@@ -189,11 +189,7 @@ var Select = function (_React$Component) {
       }, _util.UNSELECTABLE_ATTRIBUTE, {
         onClick: this.onClearSelection
       }),
-      clearIcon || _react2["default"].createElement(
-        'i',
-        { className: prefixCls + '-selection-clear-icon' },
-        '\xD7'
-      )
+      clearIcon || _react2["default"].createElement('i', { className: prefixCls + '-selection-clear-icon' })
     );
     if (!allowClear) {
       return null;

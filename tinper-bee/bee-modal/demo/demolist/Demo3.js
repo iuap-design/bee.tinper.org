@@ -45,22 +45,22 @@ class Demo3 extends Component {
         return (
             <div>
                 <Button
-                    colors="primary"
+                    bordered
                     className="demo-margin"
                     onClick={ ()=>{this.changeSize("sm");this.open();} }>
-                    打开小号模态框
+                    小号模态框
                 </Button>
                 <Button
-                    colors="primary"
+                    bordered
                     className="demo-margin"
                     onClick={ ()=>{this.changeSize("lg");this.open();} }>
-                    打开大号模态框
+                    大号模态框
                 </Button>
                 <Button
-                    colors="primary"
+                    bordered
                     className="demo-margin"
                     onClick={ ()=>{this.changeSize("xlg");this.open();} }>
-                    打开超大号模态框
+                    超大号模态框
                 </Button>
                 <Modal show={ this.state.showModal } size={ this.state.modalSize } onHide={ this.close } className="demo3-modal">
                     <Modal.Header closeButton>

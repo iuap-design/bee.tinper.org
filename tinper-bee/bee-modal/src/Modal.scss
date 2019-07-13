@@ -15,9 +15,25 @@ $modal-footer-padding : 16px;
   -webkit-overflow-scrolling: touch;
   outline: 0;
   overflow: hidden;
-  .u-modal-draggable{
+  &-draggable{
     .u-modal-header.dnd-handle:hover{
       cursor: all-scroll;
+    }
+  }
+  &-centered {
+    text-align: center;
+    &::before {
+      display: inline-block;
+      width: 0;
+      height: 100%;
+      vertical-align: middle;
+      content: '';
+    }
+    .u-modal-dialog {
+      top: 0;
+      display: inline-block;
+      text-align: left;
+      vertical-align: middle;
     }
   }
   &.fade {

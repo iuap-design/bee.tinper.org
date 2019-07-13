@@ -88,35 +88,6 @@ var Dropdown = function (_React$Component) {
 
     var _this = _possibleConstructorReturn(this, _React$Component.call(this, props));
 
-    _this.delayFire = function (visible, callBack) {
-      var _this$props = _this.props,
-          delayShow = _this$props.delayShow,
-          delayHide = _this$props.delayHide,
-          delay = _this$props.delay;
-
-      var delayShowTime = delayShow || delay || false;
-      var delayHideTime = delayHide || delay || false;
-      if (delayShowTime) {
-        if (visible) {
-          clearTimeout(_this.timer);
-          _this.timer = setTimeout(function () {
-            callBack();
-          }, delayShowTime);
-          return;
-        }
-      }
-      if (delayHideTime) {
-        if (!visible) {
-          clearTimeout(_this.timer);
-          _this.timer = setTimeout(function () {
-            callBack();
-          }, delayHideTime);
-          return;
-        }
-      }
-      callBack();
-    };
-
     _this.state = {
       visible: jadgeState(_this.props)
     };
@@ -154,17 +125,13 @@ var Dropdown = function (_React$Component) {
   };
 
   Dropdown.prototype.onVisibleChange = function onVisibleChange(visible) {
-    var _this2 = this;
-
     var props = this.props;
-    this.delayFire(visible, function () {
-      if (!('visible' in props)) {
-        _this2.setState({
-          visible: visible
-        });
-      }
-      props.onVisibleChange(visible);
-    });
+    if (!('visible' in props)) {
+      this.setState({
+        visible: visible
+      });
+    }
+    props.onVisibleChange(visible);
   };
 
   Dropdown.prototype.getMenuElement = function getMenuElement() {
@@ -209,7 +176,10 @@ var Dropdown = function (_React$Component) {
         trigger = _props2.trigger,
         getDocument = _props2.getDocument,
         disabled = _props2.disabled,
-        props = _objectWithoutProperties(_props2, ['clsPrefix', 'children', 'transitionName', 'animation', 'align', 'placement', 'getPopupContainer', 'showAction', 'hideAction', 'overlayClassName', 'overlayStyle', 'trigger', 'getDocument', 'disabled']);
+        delay = _props2.delay,
+        delayShow = _props2.delayShow,
+        delayHide = _props2.delayHide,
+        props = _objectWithoutProperties(_props2, ['clsPrefix', 'children', 'transitionName', 'animation', 'align', 'placement', 'getPopupContainer', 'showAction', 'hideAction', 'overlayClassName', 'overlayStyle', 'trigger', 'getDocument', 'disabled', 'delay', 'delayShow', 'delayHide']);
 
     return _react2["default"].createElement(
       _trigger2["default"],
@@ -231,7 +201,9 @@ var Dropdown = function (_React$Component) {
         popup: this.getMenuElement(),
         onPopupVisibleChange: this.onVisibleChange,
         getPopupContainer: getPopupContainer,
-        getDocument: getDocument
+        getDocument: getDocument,
+        mouseEnterDelay: delayShow && delayShow / 1000 || delay && delay / 1000,
+        mouseLeaveDelay: delayHide && delayHide / 1000 || delay && delay / 1000
       }),
       children
     );

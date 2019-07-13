@@ -31,8 +31,6 @@ class Demo10 extends Component {
 
     }
 
-
-
     columns = [
         {
             title: "名字",
@@ -90,7 +88,7 @@ class Demo10 extends Component {
         return (
             <div>
                 <Button
-                    colors="primary"
+                    bordered
                     className="demo-margin"
                     onClick={this.open}>
                     打开模态框
@@ -118,7 +116,7 @@ class Demo10 extends Component {
                     <Modal.Footer>
                         <Button onClick={this.clear} colors="secondary" className="clear-btn">清空所选</Button>
                         <Button onClick={this.close} colors="secondary" style={{ marginRight: 8 }}>取消</Button>
-                        <Button onClick={this.close} colors="primary">确认</Button>
+                        <Button onClick={this.close} bordered>确认</Button>
                     </Modal.Footer>
                 </Modal>
             </div>

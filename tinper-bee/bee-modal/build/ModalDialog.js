@@ -57,7 +57,7 @@ var defaultProps = {
   minHeight: 150,
   minWidth: 200,
   clsPrefix: 'u-modal',
-  bounds: { top: -20 }
+  bounds: null
 };
 
 var ModalDialog = function (_React$Component) {
@@ -183,6 +183,53 @@ var ModalDialog = function (_React$Component) {
         size = Number(value);
       }
       return size;
+    }, _this.renderModalContent = function () {
+      var _this$props = _this.props,
+          clsPrefix = _this$props.clsPrefix,
+          children = _this$props.children,
+          resizable = _this$props.resizable,
+          contentStyle = _this$props.contentStyle,
+          minHeight = _this$props.minHeight,
+          minWidth = _this$props.minWidth,
+          resizeClassName = _this$props.resizeClassName;
+      var _this$state = _this.state,
+          maxWidth = _this$state.maxWidth,
+          maxHeight = _this$state.maxHeight;
+
+      if (!resizable) {
+        return _react2["default"].createElement(
+          'div',
+          { style: contentStyle, className: (0, _classnames2["default"])([clsPrefix + '-content']), role: 'document', ref: function ref(_ref) {
+              return _this.resize = _ref;
+            } },
+          children
+        );
+      }
+      return _react2["default"].createElement(
+        _reResizable2["default"],
+        {
+          className: resizeClassName,
+          ref: function ref(c) {
+            if (c) {
+              _this.resizable = c;
+            }
+          },
+          onResizeStart: _this.onResizeStart,
+          onResize: _this.onResize,
+          onResizeStop: _this.onResizeStop,
+          minWidth: _this.handleWH(minWidth),
+          minHeight: _this.handleWH(minHeight),
+          maxWidth: _this.handleWH(maxWidth),
+          maxHeight: _this.handleWH(maxHeight)
+        },
+        _react2["default"].createElement(
+          'div',
+          { style: _extends({}, contentStyle, { height: "100%" }), className: (0, _classnames2["default"])([clsPrefix + '-content']), role: 'document', ref: function ref(_ref2) {
+              return _this.resize = _ref2;
+            } },
+          children
+        )
+      );
     }, _temp), _possibleConstructorReturn(_this, _ret);
   }
 
@@ -277,7 +324,7 @@ var ModalDialog = function (_React$Component) {
       _react2["default"].createElement(
         'div',
         { className: (0, _classnames2["default"])(dialogClassName, dialogClasses), style: style },
-        _react2["default"].createElement(
+        draggable ? _react2["default"].createElement(
           _beeDnd2["default"],
           {
             handle: '.dnd-handle',
@@ -288,38 +335,8 @@ var ModalDialog = function (_React$Component) {
             position: original,
             list: []
           },
-          resizable ? _react2["default"].createElement(
-            _reResizable2["default"],
-            {
-              className: resizeClassName,
-              ref: function ref(c) {
-                if (c) {
-                  _this2.resizable = c;
-                }
-              },
-              onResizeStart: this.onResizeStart,
-              onResize: this.onResize,
-              onResizeStop: this.onResizeStop,
-              minWidth: this.handleWH(minWidth),
-              minHeight: this.handleWH(minHeight),
-              maxWidth: this.handleWH(maxWidth),
-              maxHeight: this.handleWH(maxHeight)
-            },
-            _react2["default"].createElement(
-              'div',
-              { style: _extends({}, contentStyle, { height: "100%" }), className: (0, _classnames2["default"])([clsPrefix + '-content']), role: 'document', ref: function ref(_ref) {
-                  return _this2.resize = _ref;
-                } },
-              children
-            )
-          ) : _react2["default"].createElement(
-            'div',
-            { style: contentStyle, className: (0, _classnames2["default"])([clsPrefix + '-content']), role: 'document', ref: function ref(_ref2) {
-                return _this2.resize = _ref2;
-              } },
-            children
-          )
-        )
+          this.renderModalContent()
+        ) : this.renderModalContent()
       )
     );
   };

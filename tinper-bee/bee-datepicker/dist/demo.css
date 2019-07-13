@@ -1513,8 +1513,14 @@ li.rc-time-picker-panel-select-option-disabled:hover {
 .datepicker-input-group.u-input-group:hover > input {
   border-color: #66afe9; }
 
+.datepicker-input-group.u-input-group:hover > .u-form-control[disabled] {
+  border-color: #dfe1e6; }
+
 .calendar-picker.u-input-group:hover > input {
   border-color: #66afe9; }
+
+.calendar-picker.u-input-group:hover > .u-form-control[disabled] {
+  border-color: #dfe1e6; }
 
 .u-input-group {
   width: 100%; }

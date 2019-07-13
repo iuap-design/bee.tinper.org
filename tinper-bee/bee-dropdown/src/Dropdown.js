@@ -68,30 +68,6 @@ class Dropdown extends React.Component {
       });
     }
   }
-  delayFire=(visible,callBack)=>{
-    let { delayShow , delayHide , delay } = this.props;
-    let delayShowTime=delayShow||delay||false;
-    let delayHideTime=delayHide||delay||false;
-    if(delayShowTime){
-      if(visible){
-        clearTimeout(this.timer)
-        this.timer=setTimeout(() => {
-          callBack()
-        }, delayShowTime);
-        return
-      }
-    }
-    if(delayHideTime){
-      if(!visible){
-        clearTimeout(this.timer)
-        this.timer=setTimeout(() => {
-          callBack()
-        }, delayHideTime);
-        return
-      }
-    }
-    callBack()
-  }
 
   onClick(e) {
     const props = this.props;
@@ -109,14 +85,12 @@ class Dropdown extends React.Component {
 
   onVisibleChange(visible) {
     const props = this.props;
-    this.delayFire(visible,() => {
-      if (!('visible' in props)) {
-        this.setState({
-          visible,
-        });
-      }
-      props.onVisibleChange(visible);
-    });
+    if (!('visible' in props)) {
+      this.setState({
+        visible,
+      });
+    }
+    props.onVisibleChange(visible);
   }
 
   getMenuElement() {
@@ -158,6 +132,9 @@ class Dropdown extends React.Component {
       trigger,
       getDocument,
       disabled,
+      delay,
+      delayShow,
+      delayHide,
       ...props,
     } = this.props;
     return (<Trigger
@@ -180,6 +157,8 @@ class Dropdown extends React.Component {
       onPopupVisibleChange={this.onVisibleChange}
       getPopupContainer={getPopupContainer}
       getDocument={getDocument}
+      mouseEnterDelay={(delayShow && delayShow/1000) || (delay && delay/1000)}
+      mouseLeaveDelay={(delayHide && delayHide/1000) || (delay && delay/1000)}
     >{children}</Trigger>);
   }
 };

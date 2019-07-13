@@ -18,7 +18,7 @@ const defaultProps = {
     minHeight: 150,
     minWidth: 200,
     clsPrefix: 'u-modal',
-    bounds:{top:-20}
+    bounds:null
 };
 
 class ModalDialog extends React.Component {
@@ -171,6 +171,39 @@ class ModalDialog extends React.Component {
     return size;
   }
 
+  renderModalContent = () => {
+    let { clsPrefix,children,resizable,contentStyle,minHeight,minWidth,resizeClassName } = this.props;
+    let {  maxWidth,maxHeight } = this.state;
+    if(!resizable){
+      return (
+        <div style={contentStyle} className={classNames([`${clsPrefix}-content`])} role="document" ref={ref => this.resize = ref}>
+          {children}
+        </div>
+      )
+    }
+    return (
+      <Resizable
+        className={resizeClassName}
+        ref={c => {
+          if (c) {
+            this.resizable = c;
+          }
+        }}
+        onResizeStart={this.onResizeStart}
+        onResize={this.onResize}
+        onResizeStop={this.onResizeStop}
+        minWidth={this.handleWH(minWidth)}
+        minHeight={this.handleWH(minHeight)}
+        maxWidth={this.handleWH(maxWidth)}
+        maxHeight={this.handleWH(maxHeight)}
+      >
+        <div style={{...contentStyle, height: "100%"}} className={classNames([`${clsPrefix}-content`])} role="document" ref={ref => this.resize = ref}>
+          {children}
+        </div>
+      </Resizable>
+    )
+  }
+
   render() {
     const {
       dialogClassName,
@@ -229,44 +262,21 @@ class ModalDialog extends React.Component {
         className={classNames(className, uClassName)}
       >
         <div className={classNames(dialogClassName, dialogClasses)} style={ style }>
-          <Dnd 
-            handle=".dnd-handle" 
-            cancel=".dnd-cancel" 
-            bounds={bounds} //防止拖拽时，Header 被导航栏覆盖
-            onStart={this.onStart} 
-            onStop={this.onStop}
-            position={original}
-            list={[]}
-          >
-            {
-              resizable ? (
-                <Resizable
-                  className={resizeClassName}
-                  ref={c => {
-                    if (c) {
-                      this.resizable = c;
-                    }
-                  }}
-                  onResizeStart={this.onResizeStart}
-                  onResize={this.onResize}
-                  onResizeStop={this.onResizeStop}
-                  minWidth={this.handleWH(minWidth)}
-                  minHeight={this.handleWH(minHeight)}
-                  maxWidth={this.handleWH(maxWidth)}
-                  maxHeight={this.handleWH(maxHeight)}
-                >
-                <div style={{...contentStyle, height: "100%"}} className={classNames([`${clsPrefix}-content`])} role="document" ref={ref => this.resize = ref}>
-                  
-                  {children}
-                </div>
-                </Resizable>
-              ) : (
-                <div style={contentStyle} className={classNames([`${clsPrefix}-content`])} role="document" ref={ref => this.resize = ref}>
-                  {children}
-                </div>
-              )
-            }
-          </Dnd>
+          {
+            draggable ? (
+              <Dnd 
+                handle=".dnd-handle" 
+                cancel=".dnd-cancel" 
+                bounds={bounds} //防止拖拽时，Header 被导航栏覆盖
+                onStart={this.onStart} 
+                onStop={this.onStop}
+                position={original}
+                list={[]}
+              >
+                {this.renderModalContent()}
+              </Dnd>
+            ) : this.renderModalContent()
+          }
         </div>
       </div>
     );

@@ -74,7 +74,7 @@ class Demo7 extends Component {
         return (
             <div className="demo-margin" id="demo7">
                 <Button
-                    colors="primary"
+                    bordered
                     onClick={this.open}>
                     添加模态框
                 </Button>
@@ -222,7 +222,7 @@ class Demo7 extends Component {
                         <Button colors="secondary" style={{ marginRight: 8 }} onClick={this.close}>
                             取消
                         </Button>
-                        <Button colors="primary" onClick={this.handleClose}>
+                        <Button bordered onClick={this.handleClose}>
                             确认
                         </Button>
                     </Modal.Footer>

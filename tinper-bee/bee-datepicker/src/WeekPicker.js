@@ -145,7 +145,7 @@ class WeekPicker extends Component {
 
   handleCalendarChange = (value) => {
     this.setState({ 
-      value: Object.assign(value, {_type:'week'}) 
+      value: value && Object.assign(value, {_type:'week'}) || value
     });
   }
   onMouseLeave = (e) => {

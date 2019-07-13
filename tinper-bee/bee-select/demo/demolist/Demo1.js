@@ -22,6 +22,7 @@ class Demo1 extends Component {
           style={{ width: 200, marginRight: 6 }}
           onChange={this.handleChange}
           showSearch={true}
+          allowClear={true}
         >
           <Option value="all">全部</Option>
           <Option value="confirming">待确认</Option>

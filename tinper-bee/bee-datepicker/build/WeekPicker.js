@@ -188,7 +188,7 @@ var WeekPicker = function (_Component) {
 
     _this.handleCalendarChange = function (value) {
       _this.setState({
-        value: _extends(value, { _type: 'week' })
+        value: value && _extends(value, { _type: 'week' }) || value
       });
     };
 

@@ -131,7 +131,7 @@ class DatePicker extends Component {
   handleChange = value => {
     const props = this.props;
     this.setState({ 
-      value: Object.assign(value, {_type:'date'}),
+      value: value && Object.assign(value, {_type:'date'}) || value,
       inputValue:(value && this.getValue(value)) || '' 
     });
     if(timerDatePicker){
@@ -235,7 +235,7 @@ class DatePicker extends Component {
   render() {
     let state = this.state;
     let props = this.props;
-    const { showClose } = props;
+    const { showClose,defaultPanelShown } = props;
     let value = state.value;
     let pickerChangeHandler = {};
     let calendarHandler = {};
@@ -282,7 +282,7 @@ class DatePicker extends Component {
           onOpenChange={this.onOpenChange}
           calendar={calendar}
           mode = {'year'}
-          open={this.state.open}
+          open={'defaultPanelShown' in props ? defaultPanelShown : this.state.open}
           value={state.value}
         >
           {() => {

@@ -1297,7 +1297,7 @@ class Select extends React.Component {
         style={UNSELECTABLE_STYLE}
         {...UNSELECTABLE_ATTRIBUTE}
         onClick={this.onClearSelection}
-      >{clearIcon || <i className={`${prefixCls}-selection-clear-icon`}>×</i>}</span>
+      >{clearIcon || <i className={`${prefixCls}-selection-clear-icon`}></i>}</span>
     );
     if (!allowClear) {
       return null;

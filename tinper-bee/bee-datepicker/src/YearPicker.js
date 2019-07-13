@@ -92,7 +92,7 @@ class YearPicker extends Component {
     handleChange = value => {
         const props = this.props;
         this.setState({ 
-            value: Object.assign(value, {_type:'year'})
+            value: value && Object.assign(value, {_type:'year'}) || value
         });
         props.onChange&&props.onChange(value, (value && value.format(props.format)) || '');
     }

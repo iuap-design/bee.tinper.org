@@ -150,6 +150,7 @@ $treePrefixCls : "u-tree";
     margin: 0;
     padding: 0 0 0 18px;
   }
+  
   li a {
     display: inline-block;
     padding: 3px 4px;
@@ -163,9 +164,16 @@ $treePrefixCls : "u-tree";
     transition: all 0.3s ease;
     // a 标签hover宽度调整
    &.u-tree-node-content-wrapper {
-      width: calc(100% - 40px);
+      width: calc(100%);
     }
    
+  }
+  li .u-tree-checkbox+a{
+    // a 标签hover宽度调整
+   &.u-tree-node-content-wrapper {
+      
+      width: calc(100% - 40px);
+    }
   }
   li a:hover {
     background-color: $tree-node-bg-color;

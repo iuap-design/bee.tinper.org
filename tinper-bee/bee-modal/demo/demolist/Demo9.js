@@ -68,7 +68,7 @@ class Demo9 extends Component {
         return (
             <div className="demo-margin">
                 <Button
-                    colors="primary"
+                    bordered
                     onClick={this.open}
                 >
                     打开模态框
@@ -88,7 +88,7 @@ class Demo9 extends Component {
                        </span>
                       <div className="demoPadding">
                         <Popconfirm trigger="click" placement="right" content={content}>
-                            <Button colors="primary">打开气泡组件</Button>
+                            <Button bordered>打开气泡组件</Button>
                         </Popconfirm>
                       </div>
                     </Modal.Body>
@@ -97,7 +97,7 @@ class Demo9 extends Component {
                         <Button colors="secondary" style={{ marginRight: 8 }} onClick={this.close}>
                             取消
                         </Button>
-                        <Button colors="primary" onClick={this.close}>
+                        <Button bordered onClick={this.close}>
                             确认
                         </Button>
                     </Modal.Footer>

@@ -4,9 +4,9 @@
 /*  Navlayout  */
 @font-face {
   font-family: "uf";
-  src: url("/node_modules/tinper-bee-core/scss/iconfont.eot");
+  src: url("//design.yonyoucloud.com/static/iconfont/iconfont.eot");
   /* IE9*/
-  src: url("/node_modules/tinper-bee-core/scss/iconfont.eot") format("embedded-opentype"), url("/node_modules/tinper-bee-core/scss/iconfont.woff") format("woff"), url("/node_modules/tinper-bee-core/scss/iconfont.ttf") format("truetype"), url("/node_modules/tinper-bee-core/scss/iconfont.svg") format("svg");
+  src: url("//design.yonyoucloud.com/static/iconfont/iconfont.eot") format("embedded-opentype"), url("//design.yonyoucloud.com/static/iconfont/iconfont.woff") format("woff"), url("//design.yonyoucloud.com/static/iconfont/iconfont.ttf") format("truetype"), url("//design.yonyoucloud.com/static/iconfont/iconfont.svg") format("svg");
   /* iOS 4.1- */ }
 
 .uf {
@@ -1005,8 +1005,21 @@
   -webkit-overflow-scrolling: touch;
   outline: 0;
   overflow: hidden; }
-  .u-modal .u-modal-draggable .u-modal-header.dnd-handle:hover {
+  .u-modal-draggable .u-modal-header.dnd-handle:hover {
     cursor: all-scroll; }
+  .u-modal-centered {
+    text-align: center; }
+    .u-modal-centered::before {
+      display: inline-block;
+      width: 0;
+      height: 100%;
+      vertical-align: middle;
+      content: ''; }
+    .u-modal-centered .u-modal-dialog {
+      top: 0;
+      display: inline-block;
+      text-align: left;
+      vertical-align: middle; }
   .u-modal.fade {
     opacity: 0;
     transition: opacity 0.15s linear; }

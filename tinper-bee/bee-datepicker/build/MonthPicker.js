@@ -85,7 +85,7 @@ var MonthPicker = function (_Component) {
       // }
 
       _this.setState({
-        value: _extends(value, { _type: 'month' })
+        value: value && _extends(value, { _type: 'month' }) || value
       });
       onChange && onChange(value, value ? value.format(format) : '');
     };

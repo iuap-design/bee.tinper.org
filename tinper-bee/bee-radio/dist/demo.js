@@ -58,11 +58,11 @@
 	
 	var _beePanel = __webpack_require__(9);
 	
-	var _beeDrawer = __webpack_require__(84);
+	var _beeDrawer = __webpack_require__(82);
 	
 	var _beeDrawer2 = _interopRequireDefault(_beeDrawer);
 	
-	var _beeClipboard = __webpack_require__(98);
+	var _beeClipboard = __webpack_require__(96);
 	
 	var _beeClipboard2 = _interopRequireDefault(_beeClipboard);
 	
@@ -80,7 +80,7 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
 	
-	var Demo1 = __webpack_require__(161);var Demo2 = __webpack_require__(162);var Demo3 = __webpack_require__(163);var Demo4 = __webpack_require__(164);var Demo5 = __webpack_require__(165);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " Radio 基本用法", "code": "/**\n * @title Radio 基本用法\n * @description `defaultValue`设置默认被选中的radio值，`disabled`参数设置是否可用，`onChange`是值改变的回调\n */\n\nimport React, { Component } from 'react'\nimport { Radio } from 'tinper-bee';\n\nclass Demo1 extends Component{\n  constructor(props) {\n    super(props);\n  }\n  handleChange = (value) => {\n    console.log('onChange：',value)\n  }\n  render() {\n    return (\n      <Radio.RadioGroup\n        name=\"fruits\"\n        defaultValue=\"1\"\n        onChange={this.handleChange}\n        >\n          <Radio value=\"1\" disabled>苹果</Radio>\n          <Radio value=\"2\" disabled>香蕉</Radio>\n          <Radio value=\"3\" >葡萄</Radio>\n          <Radio value=\"4\" >菠萝</Radio>\n          <Radio value=\"5\" >梨</Radio>\n          <Radio value=\"6\" >石榴</Radio>\n      </Radio.RadioGroup>   \n    )\n  }\n};\n\n", "desc": " `defaultValue`设置默认被选中的radio值，`disabled`参数设置是否可用，`onChange`是值改变的回调" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 不同颜色的radio", "code": "/**\n * @title 不同颜色的radio\n * @description `colors`参数控制背景色\n */\n\nimport React, { Component } from 'react'\nimport { Radio } from 'tinper-bee';\n\n\n\nclass Demo2 extends Component{\n  constructor(props) {\n  \tsuper(props);\n  \tthis.state = {\n    \tselectedValue: '3'\n    };\n  }\n  handleChange(value) {\n    this.setState({selectedValue: value});\n  }\n  render() {\n    return (\n      <Radio.RadioGroup\n        name=\"color\"\n        selectedValue={this.state.selectedValue}\n        onChange={this.handleChange.bind(this)}>\n          <Radio colors=\"primary\" value=\"1\" >苹果</Radio>\n          <Radio colors=\"success\" value=\"2\" >香蕉</Radio>\n          <Radio colors=\"info\" value=\"3\" >葡萄</Radio>\n          <Radio colors=\"warning\" value=\"4\" >菠萝</Radio>\n          <Radio colors=\"danger\" value=\"5\" >梨</Radio>\n          <Radio colors=\"dark\" value=\"6\" >石榴</Radio>\n      </Radio.RadioGroup>\n    )\n  }\n};\n\n", "desc": " `colors`参数控制背景色" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 竖方向Radio", "code": "/**\n * @title 竖方向Radio\n * @description 可以通过style来设置radio样式\n */\n\nimport React, { Component } from 'react'\nimport { Radio } from 'tinper-bee';\n\n\n\nclass Demo3 extends Component{\n  constructor(props) {\n  \tsuper(props);\n  \tthis.state = {\n    \tselectedValue: '1'\n    };\n  }\n  handleChange(value) {\n    this.setState({selectedValue: value});\n  }\n  render() {\n    const radioStyle = {\n      display: 'block'\n    };\n    return (\n      <div className=\"demo3\">\n        <Radio.RadioGroup\n          name=\"team\"\n          selectedValue={this.state.selectedValue}\n          onChange={this.handleChange.bind(this)}>\n            <Radio style={radioStyle} value=\"1\" >苹果</Radio>\n            <Radio style={radioStyle} value=\"2\" >香蕉</Radio>\n            <Radio style={radioStyle} value=\"3\" >葡萄</Radio>\n            <Radio style={radioStyle} value=\"4\" >菠萝</Radio>\n            <Radio style={radioStyle} value=\"5\" >梨</Radio>\n            <Radio style={radioStyle} value=\"6\" >石榴</Radio>\n        </Radio.RadioGroup>\n      </div>\n    )\n  }\n};\n\n", "desc": " 可以通过style来设置radio样式", "scss_code": ".demo3 .u-radio-group .u-radio{\n    margin-bottom: 8px;\n}" }, { "example": _react2['default'].createElement(Demo4, null), "title": " RadioButton 基本使用", "code": "/**\n * @title RadioButton 基本使用\n * @description `selectedValue`参数设置被选中的radio值，`onChange`设置值改变的回调\n */\n\nimport React, { Component } from 'react'\nimport { Radio } from 'tinper-bee';\n\nconst  RadioGroup = Radio.RadioGroup;\n\nclass Demo4 extends Component{\n  constructor(props) {\n  \tsuper(props);\n  \tthis.state = {\n      selectedValue: 'orange',\n      selectedValue2: 'apple'\n    };\n  }\n  handleChange(value) {\n    this.setState({selectedValue: value});\n  }\n  handleChange2(value) {\n    this.setState({selectedValue2: value});\n  }\n  render() {\n    return (\n      <div>\n        <Radio.RadioGroup\n          name=\"fruit\"\n          selectedValue={this.state.selectedValue}\n          onChange={this.handleChange.bind(this)}>\n            <Radio.RadioButton value=\"apple\">apple</Radio.RadioButton>\n            <Radio.RadioButton value=\"banana\">banana</Radio.RadioButton>\n            <Radio.RadioButton value=\"orange\">orange</Radio.RadioButton>\n        </Radio.RadioGroup>\n\n        <div style={{ marginTop: 16 }}>\n          <Radio.RadioGroup \n            selectedValue={this.state.selectedValue2}\n            onChange={this.handleChange2.bind(this)}>\n            <Radio.RadioButton value=\"apple\">apple</Radio.RadioButton>\n            <Radio.RadioButton value=\"banana\" disabled>banana</Radio.RadioButton>\n            <Radio.RadioButton value=\"orange\">orange</Radio.RadioButton>\n          </Radio.RadioGroup>\n        </div>\n\n        <div style={{ marginTop: 16 }}>\n          <Radio.RadioGroup selectedValue=\"apple\">\n            <Radio.RadioButton value=\"apple\" disabled>apple</Radio.RadioButton>\n            <Radio.RadioButton value=\"banana\" disabled>banana</Radio.RadioButton>\n            <Radio.RadioButton value=\"orange\" disabled>orange</Radio.RadioButton>\n          </Radio.RadioGroup>\n        </div>\n      </div>\n\n    )\n  }\n};\n\n", "desc": " `selectedValue`参数设置被选中的radio值，`onChange`设置值改变的回调" }, { "example": _react2['default'].createElement(Demo5, null), "title": " 红色填充的 Radio", "code": "/**\n * @title 红色填充的 Radio\n * @description `inverse` 参数设置选中为红色填充。\n */\n\nimport React, { Component } from 'react'\nimport { Radio } from 'tinper-bee';\n\n\n\nclass Demo1 extends Component{\n  constructor(props) {\n  \tsuper(props);\n  \tthis.state = {\n    \tselectedValue: '1'\n    };\n  }\n  handleChange(value) {\n    this.setState({selectedValue: value});\n  }\n  render() {\n    return (\n      <Radio.RadioGroup\n        name=\"fruits\"\n        selectedValue={this.state.selectedValue}\n        onChange={this.handleChange.bind(this)}>\n          <Radio value=\"1\" inverse>苹果</Radio>\n          <Radio value=\"2\" inverse>香蕉</Radio>\n          <Radio value=\"3\" inverse>葡萄</Radio>\n      </Radio.RadioGroup>   \n    )\n  }\n};\n\n", "desc": " `inverse` 参数设置选中为红色填充。" }];
+	var Demo1 = __webpack_require__(161);var Demo2 = __webpack_require__(162);var Demo3 = __webpack_require__(163);var Demo4 = __webpack_require__(164);var Demo5 = __webpack_require__(165);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " Radio 基本用法", "code": "/**\n * @title Radio 基本用法\n * @description `defaultValue`设置默认被选中的radio值，`disabled`参数设置是否可用，`onChange`是值改变的回调\n */\n\nimport React, { Component } from 'react'\nimport {  } from 'tinper-bee';\nimport Radio from \"tinper-bee/lib/src\";\n\nclass Demo1 extends Component{\n  constructor(props) {\n    super(props);\n  }\n  handleChange = (value) => {\n    console.log('onChange：',value)\n  }\n  render() {\n    return (\n      <Radio.RadioGroup\n        name=\"fruits\"\n        defaultValue=\"1\"\n        onChange={this.handleChange}\n        >\n          <Radio value=\"1\" disabled>苹果</Radio>\n          <Radio value=\"2\" disabled>香蕉</Radio>\n          <Radio value=\"3\" >葡萄</Radio>\n          <Radio value=\"4\" >菠萝</Radio>\n          <Radio value=\"5\" >梨</Radio>\n          <Radio value=\"6\" >石榴</Radio>\n      </Radio.RadioGroup>   \n    )\n  }\n};\n\n", "desc": " `defaultValue`设置默认被选中的radio值，`disabled`参数设置是否可用，`onChange`是值改变的回调" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 不同颜色的radio", "code": "/**\r\n * @title 不同颜色的radio\r\n * @description `colors`参数控制背景色\r\n */\r\n\r\nimport React, { Component } from 'react'\nimport {  } from 'tinper-bee';\r\nimport Radio from \"tinper-bee/lib/src\";\r\n\r\n\r\n\r\nclass Demo2 extends Component{\r\n  constructor(props) {\r\n  \tsuper(props);\r\n  \tthis.state = {\r\n    \tselectedValue: '3'\r\n    };\r\n  }\r\n  handleChange(value) {\r\n    this.setState({selectedValue: value});\r\n  }\r\n  render() {\r\n    return (\r\n      <Radio.RadioGroup\r\n        name=\"color\"\r\n        selectedValue={this.state.selectedValue}\r\n        onChange={this.handleChange.bind(this)}>\r\n          <Radio colors=\"primary\" value=\"1\" >苹果</Radio>\r\n          <Radio colors=\"success\" value=\"2\" >香蕉</Radio>\r\n          <Radio colors=\"info\" value=\"3\" >葡萄</Radio>\r\n          <Radio colors=\"warning\" value=\"4\" >菠萝</Radio>\r\n          <Radio colors=\"danger\" value=\"5\" >梨</Radio>\r\n          <Radio colors=\"dark\" value=\"6\" >石榴</Radio>\r\n      </Radio.RadioGroup>\r\n    )\r\n  }\r\n};\r\n\r\n", "desc": " `colors`参数控制背景色" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 竖方向Radio", "code": "/**\n * @title 竖方向Radio\n * @description 可以通过style来设置radio样式\n */\n\nimport React, { Component } from 'react'\nimport {  } from 'tinper-bee';\nimport Radio from \"tinper-bee/lib/src\";\n\n\n\nclass Demo3 extends Component{\n  constructor(props) {\n  \tsuper(props);\n  \tthis.state = {\n    \tselectedValue: '1'\n    };\n  }\n  handleChange(value) {\n    this.setState({selectedValue: value});\n  }\n  render() {\n    const radioStyle = {\n      display: 'block'\n    };\n    return (\n      <div className=\"demo3\">\n        <Radio.RadioGroup\n          name=\"team\"\n          selectedValue={this.state.selectedValue}\n          onChange={this.handleChange.bind(this)}>\n            <Radio style={radioStyle} value=\"1\" >苹果</Radio>\n            <Radio style={radioStyle} value=\"2\" >香蕉</Radio>\n            <Radio style={radioStyle} value=\"3\" >葡萄</Radio>\n            <Radio style={radioStyle} value=\"4\" >菠萝</Radio>\n            <Radio style={radioStyle} value=\"5\" >梨</Radio>\n            <Radio style={radioStyle} value=\"6\" >石榴</Radio>\n        </Radio.RadioGroup>\n      </div>\n    )\n  }\n};\n\n", "desc": " 可以通过style来设置radio样式", "scss_code": ".demo3 .u-radio-group .u-radio{\r\n    margin-bottom: 8px;\r\n}" }, { "example": _react2['default'].createElement(Demo4, null), "title": " RadioButton 基本使用", "code": "/**\r\n * @title RadioButton 基本使用\r\n * @description `selectedValue`参数设置被选中的radio值，`onChange`设置值改变的回调\r\n */\r\n\r\nimport React, { Component } from 'react'\nimport {  } from 'tinper-bee';\r\nimport Radio from \"tinper-bee/lib/src\";\r\n\r\nconst  RadioGroup = Radio.RadioGroup;\r\n\r\nclass Demo4 extends Component{\r\n  constructor(props) {\r\n  \tsuper(props);\r\n  \tthis.state = {\r\n      selectedValue: 'orange',\r\n      selectedValue2: 'apple'\r\n    };\r\n  }\r\n  handleChange(value) {\r\n    this.setState({selectedValue: value});\r\n  }\r\n  handleChange2(value) {\r\n    this.setState({selectedValue2: value});\r\n  }\r\n  render() {\r\n    return (\r\n      <div>\r\n        <Radio.RadioGroup\r\n          name=\"fruit\"\r\n          selectedValue={this.state.selectedValue}\r\n          onChange={this.handleChange.bind(this)}>\r\n            <Radio.RadioButton value=\"apple\">apple</Radio.RadioButton>\r\n            <Radio.RadioButton value=\"banana\">banana</Radio.RadioButton>\r\n            <Radio.RadioButton value=\"orange\">orange</Radio.RadioButton>\r\n        </Radio.RadioGroup>\r\n\r\n        <div style={{ marginTop: 16 }}>\r\n          <Radio.RadioGroup \r\n            selectedValue={this.state.selectedValue2}\r\n            onChange={this.handleChange2.bind(this)}>\r\n            <Radio.RadioButton value=\"apple\">apple</Radio.RadioButton>\r\n            <Radio.RadioButton value=\"banana\" disabled>banana</Radio.RadioButton>\r\n            <Radio.RadioButton value=\"orange\">orange</Radio.RadioButton>\r\n          </Radio.RadioGroup>\r\n        </div>\r\n\r\n        <div style={{ marginTop: 16 }}>\r\n          <Radio.RadioGroup selectedValue=\"apple\">\r\n            <Radio.RadioButton value=\"apple\" disabled>apple</Radio.RadioButton>\r\n            <Radio.RadioButton value=\"banana\" disabled>banana</Radio.RadioButton>\r\n            <Radio.RadioButton value=\"orange\" disabled>orange</Radio.RadioButton>\r\n          </Radio.RadioGroup>\r\n        </div>\r\n      </div>\r\n\r\n    )\r\n  }\r\n};\r\n\r\n", "desc": " `selectedValue`参数设置被选中的radio值，`onChange`设置值改变的回调" }, { "example": _react2['default'].createElement(Demo5, null), "title": " 红色填充的 Radio", "code": "/**\r\n * @title 红色填充的 Radio\r\n * @description `inverse` 参数设置选中为红色填充。\r\n */\r\n\r\nimport React, { Component } from 'react'\nimport {  } from 'tinper-bee';\r\nimport Radio from \"tinper-bee/lib/src\";\r\n\r\n\r\n\r\nclass Demo1 extends Component{\r\n  constructor(props) {\r\n  \tsuper(props);\r\n  \tthis.state = {\r\n    \tselectedValue: '1'\r\n    };\r\n  }\r\n  handleChange(value) {\r\n    this.setState({selectedValue: value});\r\n  }\r\n  render() {\r\n    return (\r\n      <Radio.RadioGroup\r\n        name=\"fruits\"\r\n        selectedValue={this.state.selectedValue}\r\n        onChange={this.handleChange.bind(this)}>\r\n          <Radio value=\"1\" inverse>苹果</Radio>\r\n          <Radio value=\"2\" inverse>香蕉</Radio>\r\n          <Radio value=\"3\" inverse>葡萄</Radio>\r\n      </Radio.RadioGroup>   \r\n    )\r\n  }\r\n};\r\n\r\n", "desc": " `inverse` 参数设置选中为红色填充。" }];
 	
 	var Demo = function (_Component) {
 	    _inherits(Demo, _Component);
@@ -673,7 +673,7 @@
 	
 	var _Panel3 = _interopRequireDefault(_Panel2);
 	
-	var _PanelGroup2 = __webpack_require__(83);
+	var _PanelGroup2 = __webpack_require__(81);
 	
 	var _PanelGroup3 = _interopRequireDefault(_PanelGroup2);
 	
@@ -712,7 +712,7 @@
 	
 	var _propTypes2 = _interopRequireDefault(_propTypes);
 	
-	var _copyToClipboard = __webpack_require__(81);
+	var _copyToClipboard = __webpack_require__(79);
 	
 	var _copyToClipboard2 = _interopRequireDefault(_copyToClipboard);
 	
@@ -6119,6 +6119,8 @@
 	    value: true
 	});
 	
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+	
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 	
 	var _react = __webpack_require__(1);
@@ -6133,44 +6135,37 @@
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
-	var _warning = __webpack_require__(32);
-	
-	var _warning2 = _interopRequireDefault(_warning);
-	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 	
 	var defaultDuration = 1.5;
-	var newDuration = void 0;
-	var defaultTop = 24;
+	var defaultTop = 0;
 	var defaultBottom = 48;
 	var bottom = 90;
 	var padding = 30;
-	var width = 240;
+	var width = 200;
 	var messageInstance = void 0;
 	var key = 1;
 	var clsPrefix = 'u-message';
 	var noop = function noop() {};
-	var notificationStyle_copy = {};
-	var messageStyle_copy = {};
-	var positionType = ['topRight', 'bottomRight', 'top', 'bottom', 'topLeft', 'bottomLeft', ''];
-	var defaultStyle = {};
 	
 	var positionObj = {
 	    "top": {
-	        messageStyle: {},
+	        messageStyle: {
+	            width: "100%"
+	        },
 	        notificationStyle: {
 	            top: defaultTop,
-	            left: '50%',
-	            transform: 'translateX( -50%)'
+	            width: "100%"
 	        },
 	        transitionName: 'top'
 	    },
 	    "bottom": {
-	        messageStyle: {},
+	        messageStyle: {
+	            width: "100%"
+	        },
 	        notificationStyle: {
 	            bottom: defaultBottom,
-	            left: '50%',
-	            transform: 'translateX( -50%)'
+	            width: "100%"
 	        },
 	        transitionName: 'bottom'
 	    },
@@ -6230,31 +6225,12 @@
 	        callback(messageInstance);
 	        return;
 	    }
-	    switch (position) {
-	        case 'top':
-	            notificationStyle_copy.top = defaultTop;
-	            break;
-	        case 'bottom':
-	            notificationStyle_copy.bottom = defaultBottom;
-	            break;
-	        case 'bottomRight':
-	            notificationStyle_copy.bottom = bottom;
-	            break;
-	        case 'bottomLeft':
-	            notificationStyle_copy.bottom = bottom;
-	            break;
-	        default:
-	            break;
-	    }
-	    if (position !== 'top' && position !== 'bottom') {
-	        messageStyle_copy.width = width;
-	    }
-	    var style = JSON.stringify(notificationStyle_copy) == "{}" ? positionObj[position].notificationStyle : notificationStyle_copy;
+	    var style = positionObj[position].notificationStyle;
 	    var instanceObj = {
 	        clsPrefix: clsPrefix,
 	        transitionName: clsPrefix + '-' + positionObj[position].transitionName,
-	        style: _extends({}, style, defaultStyle), // 覆盖原来的样式
-	        position: position
+	        style: style, // 覆盖原来的样式
+	        position: ''
 	    };
 	    if (typeof keyboard === 'boolean') {
 	        instanceObj.keyboard = keyboard;
@@ -6268,33 +6244,23 @@
 	    });
 	}
 	
-	function notice(content, duration_arg, type, onClose, position, style, keyboard, onEscapeKeyUp, showIcon) {
-	    if (positionType.findIndex(function (item) {
-	        return item === position;
-	    }) < 0) {
-	        (0, _warning2["default"])(false, 'Failed prop type: Invalid prop `position` supplied to `Message`, expected one of ["top","bottom","topRight","topLeft","bottomRight","bottomLeft"].');
-	        return;
-	    }
-	    var duration = duration_arg !== undefined ? duration_arg : defaultDuration;
-	    notificationStyle_copy = _extends({}, positionObj[position].notificationStyle);
-	    messageStyle_copy = _extends({}, positionObj[position].messageStyle);
-	
+	function notice(content, duration, type, onClose, position, style, keyboard, onEscapeKeyUp, showIcon) {
 	    var iconType = {
 	        info: 'uf uf-i-c-2',
 	        success: 'uf uf-correct',
-	        danger: 'uf uf-exc-c',
+	        danger: 'uf uf-close-c',
 	        warning: 'uf uf-exc-t',
 	        light: 'uf uf-notification',
-	        dark: 'uf uf-notification',
+	        dark: 'uf uf-bubble',
 	        news: 'uf uf-bell',
 	        infolight: 'uf uf-i-c-2',
 	        successlight: 'uf uf-correct',
-	        dangerlight: 'uf uf-exc-c',
+	        dangerlight: 'uf uf-close-c',
 	        warninglight: 'uf uf-exc-t'
 	    }[type];
 	
-	    var positionStyle = JSON.stringify(messageStyle_copy) == "{}" ? positionObj[position].messageStyle : messageStyle_copy;
-	    defaultStyle = _extends({}, positionStyle, style);
+	    var positionStyle = positionObj[position].messageStyle;
+	
 	    getMessageInstance(position, function (instance) {
 	        instance.notice({
 	            key: key,
@@ -6330,17 +6296,13 @@
 	
 	exports["default"] = {
 	    create: function create(obj) {
-	        if (newDuration) {
-	            //如果在config方法里设置了duration
-	            obj.duration = newDuration;
-	        }
 	        var content = obj.content || '';
-	        var duration = typeof obj.duration == 'undefined' ? defaultDuration : obj.duration;
-	        var color = obj.color || 'light';
+	        var duration = _typeof(obj.duration) == undefined ? defaultDuration : obj.duration;
+	        var color = obj.color || 'dark';
 	        var onClose = obj.onClose || noop;
 	        var position = obj.position || "top";
 	        var style = obj.style || {};
-	        var showIcon = obj.showIcon || true;
+	        var showIcon = obj.showIcon || false;
 	        return notice(content, duration, color, onClose, position, style, obj.keyboard, obj.onEscapeKeyUp, showIcon);
 	    },
 	    config: function config(options) {
@@ -6349,7 +6311,6 @@
 	        }
 	        if (options.duration !== undefined) {
 	            defaultDuration = options.duration;
-	            newDuration = defaultDuration;
 	        }
 	        if (options.clsPrefix !== undefined) {
 	            clsPrefix = options.clsPrefix;
@@ -6361,23 +6322,13 @@
 	            bottom = options.bottom;
 	        }
 	        if (options.width !== undefined) {
-	            width = options.width;
+	            bottom = options.width;
 	        }
 	    },
 	    destroy: function destroy() {
 	        if (messageInstance) {
 	            messageInstance.destroy();
 	            messageInstance = null;
-	            defaultDuration = 1.5;
-	            newDuration = undefined;
-	            defaultTop = 24;
-	            defaultBottom = 48;
-	            bottom = 90;
-	            padding = 30;
-	            width = 240;
-	            notificationStyle_copy = null;
-	            messageStyle_copy = null;
-	            defaultStyle = null;
 	        }
 	    }
 	};
@@ -6473,7 +6424,7 @@
 	  show: _propTypes2["default"].bool,
 	  clsPrefix: _propTypes2["default"].string,
 	  style: _propTypes2["default"].object,
-	  position: _propTypes2["default"].oneOf(['topRight', 'bottomRight', 'top', 'bottom', 'topLeft', 'bottomLeft', '']),
+	  position: _propTypes2["default"].oneOf(['topRight', 'bottomRight', '']),
 	  transitionName: _propTypes2["default"].string,
 	  keyboard: _propTypes2["default"].bool, // 按esc键是否关闭notice
 	  onEscapeKeyUp: _propTypes2["default"].func, // 设置esc键特殊钩子函数
@@ -7468,10 +7419,6 @@
 	
 	var _propTypes2 = _interopRequireDefault(_propTypes);
 	
-	var _beeIcon = __webpack_require__(79);
-	
-	var _beeIcon2 = _interopRequireDefault(_beeIcon);
-	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 	
 	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
@@ -7577,11 +7524,7 @@
 	      closable ? _react2["default"].createElement(
 	        'a',
 	        { tabIndex: '0', onClick: this.close, className: componentClass + '-close' },
-	        _react2["default"].createElement(
-	          'span',
-	          { className: componentClass + '-close-x' },
-	          _react2["default"].createElement(_beeIcon2["default"], { type: 'uf-close' })
-	        )
+	        _react2["default"].createElement('span', { className: componentClass + '-close-x' })
 	      ) : null
 	    );
 	  };
@@ -7603,124 +7546,18 @@
 
 	'use strict';
 	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
+	var deselectCurrent = __webpack_require__(80);
 	
-	var _Icon = __webpack_require__(80);
-	
-	var _Icon2 = _interopRequireDefault(_Icon);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-	
-	exports["default"] = _Icon2["default"];
-	module.exports = exports['default'];
-
-/***/ }),
-/* 80 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _classnames = __webpack_require__(5);
-	
-	var _classnames2 = _interopRequireDefault(_classnames);
-	
-	var _propTypes = __webpack_require__(6);
-	
-	var _propTypes2 = _interopRequireDefault(_propTypes);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-	
-	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
-	
-	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
-	
-	var propTypes = {
-		type: _propTypes2["default"].string
-	
-	};
-	/**
-	 *  badge 默认显示内容1
-	 */
-	var defaultProps = {
-		clsPrefix: 'uf'
-	};
-	
-	var Icon = function (_Component) {
-		_inherits(Icon, _Component);
-	
-		function Icon(props) {
-			_classCallCheck(this, Icon);
-	
-			return _possibleConstructorReturn(this, _Component.call(this, props));
-		}
-	
-		Icon.prototype.render = function render() {
-			var _props = this.props,
-			    type = _props.type,
-			    className = _props.className,
-			    clsPrefix = _props.clsPrefix,
-			    others = _objectWithoutProperties(_props, ['type', 'className', 'clsPrefix']);
-	
-			var clsObj = {};
-	
-			var classNames = (0, _classnames2["default"])(clsPrefix, type);
-	
-			return _react2["default"].createElement('i', _extends({}, others, { className: (0, _classnames2["default"])(classNames, className) }));
-		};
-	
-		return Icon;
-	}(_react.Component);
-	
-	Icon.defaultProps = defaultProps;
-	Icon.propTypes = propTypes;
-	
-	exports["default"] = Icon;
-	module.exports = exports['default'];
-
-/***/ }),
-/* 81 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	"use strict";
-	
-	var deselectCurrent = __webpack_require__(82);
-	
-	var defaultMessage = "Copy to clipboard: #{key}, Enter";
+	var defaultMessage = 'Copy to clipboard: #{key}, Enter';
 	
 	function format(message) {
-	  var copyKey = (/mac os x/i.test(navigator.userAgent) ? "⌘" : "Ctrl") + "+C";
+	  var copyKey = (/mac os x/i.test(navigator.userAgent) ? '⌘' : 'Ctrl') + '+C';
 	  return message.replace(/#{\s*key\s*}/g, copyKey);
 	}
 	
 	function copy(text, options) {
-	  var debug,
-	    message,
-	    reselectPrevious,
-	    range,
-	    selection,
-	    mark,
-	    success = false;
-	  if (!options) {
-	    options = {};
-	  }
+	  var debug, message, reselectPrevious, range, selection, mark, success = false;
+	  if (!options) { options = {}; }
 	  debug = options.debug || false;
 	  try {
 	    reselectPrevious = deselectCurrent();
@@ -7728,55 +7565,47 @@
 	    range = document.createRange();
 	    selection = document.getSelection();
 	
-	    mark = document.createElement("span");
+	    mark = document.createElement('span');
 	    mark.textContent = text;
 	    // reset user styles for span element
-	    mark.style.all = "unset";
+	    mark.style.all = 'unset';
 	    // prevents scrolling to the end of the page
-	    mark.style.position = "fixed";
+	    mark.style.position = 'fixed';
 	    mark.style.top = 0;
-	    mark.style.clip = "rect(0, 0, 0, 0)";
+	    mark.style.clip = 'rect(0, 0, 0, 0)';
 	    // used to preserve spaces and line breaks
-	    mark.style.whiteSpace = "pre";
+	    mark.style.whiteSpace = 'pre';
 	    // do not inherit user-select (it may be `none`)
-	    mark.style.webkitUserSelect = "text";
-	    mark.style.MozUserSelect = "text";
-	    mark.style.msUserSelect = "text";
-	    mark.style.userSelect = "text";
-	    mark.addEventListener("copy", function(e) {
-	      e.stopPropagation();
-	      if (options.format) {
-	        e.preventDefault();
-	        e.clipboardData.clearData();
-	        e.clipboardData.setData(options.format, text);
-	      }
-	    });
+	    mark.style.webkitUserSelect = 'text';
+	    mark.style.MozUserSelect = 'text';
+	    mark.style.msUserSelect = 'text';
+	    mark.style.userSelect = 'text';
 	
 	    document.body.appendChild(mark);
 	
-	    range.selectNodeContents(mark);
+	    range.selectNode(mark);
 	    selection.addRange(range);
 	
-	    var successful = document.execCommand("copy");
+	    var successful = document.execCommand('copy');
 	    if (!successful) {
-	      throw new Error("copy command was unsuccessful");
+	      throw new Error('copy command was unsuccessful');
 	    }
 	    success = true;
 	  } catch (err) {
-	    debug && console.error("unable to copy using execCommand: ", err);
-	    debug && console.warn("trying IE specific stuff");
+	    debug && console.error('unable to copy using execCommand: ', err);
+	    debug && console.warn('trying IE specific stuff');
 	    try {
-	      window.clipboardData.setData(options.format || "text", text);
+	      window.clipboardData.setData('text', text);
 	      success = true;
 	    } catch (err) {
-	      debug && console.error("unable to copy using clipboardData: ", err);
-	      debug && console.error("falling back to prompt");
-	      message = format("message" in options ? options.message : defaultMessage);
+	      debug && console.error('unable to copy using clipboardData: ', err);
+	      debug && console.error('falling back to prompt');
+	      message = format('message' in options ? options.message : defaultMessage);
 	      window.prompt(message, text);
 	    }
 	  } finally {
 	    if (selection) {
-	      if (typeof selection.removeRange == "function") {
+	      if (typeof selection.removeRange == 'function') {
 	        selection.removeRange(range);
 	      } else {
 	        selection.removeAllRanges();
@@ -7796,7 +7625,7 @@
 
 
 /***/ }),
-/* 82 */
+/* 80 */
 /***/ (function(module, exports) {
 
 	
@@ -7841,7 +7670,7 @@
 
 
 /***/ }),
-/* 83 */
+/* 81 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -7988,7 +7817,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 84 */
+/* 82 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -7997,7 +7826,7 @@
 	  value: true
 	});
 	
-	var _Drawer = __webpack_require__(85);
+	var _Drawer = __webpack_require__(83);
 	
 	var _Drawer2 = _interopRequireDefault(_Drawer);
 	
@@ -8007,7 +7836,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 85 */
+/* 83 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -8032,9 +7861,9 @@
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
-	var _common = __webpack_require__(86);
+	var _common = __webpack_require__(84);
 	
-	var _reactTransitionGroup = __webpack_require__(87);
+	var _reactTransitionGroup = __webpack_require__(85);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 	
@@ -8310,7 +8139,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 86 */
+/* 84 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -8337,18 +8166,18 @@
 	}
 
 /***/ }),
-/* 87 */
+/* 85 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var _CSSTransition = _interopRequireDefault(__webpack_require__(88));
+	var _CSSTransition = _interopRequireDefault(__webpack_require__(86));
 	
-	var _ReplaceTransition = _interopRequireDefault(__webpack_require__(95));
+	var _ReplaceTransition = _interopRequireDefault(__webpack_require__(93));
 	
-	var _TransitionGroup = _interopRequireDefault(__webpack_require__(96));
+	var _TransitionGroup = _interopRequireDefault(__webpack_require__(94));
 	
-	var _Transition = _interopRequireDefault(__webpack_require__(92));
+	var _Transition = _interopRequireDefault(__webpack_require__(90));
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -8360,7 +8189,7 @@
 	};
 
 /***/ }),
-/* 88 */
+/* 86 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {"use strict";
@@ -8370,15 +8199,15 @@
 	
 	var PropTypes = _interopRequireWildcard(__webpack_require__(6));
 	
-	var _addClass = _interopRequireDefault(__webpack_require__(89));
+	var _addClass = _interopRequireDefault(__webpack_require__(87));
 	
-	var _removeClass = _interopRequireDefault(__webpack_require__(91));
+	var _removeClass = _interopRequireDefault(__webpack_require__(89));
 	
 	var _react = _interopRequireDefault(__webpack_require__(1));
 	
-	var _Transition = _interopRequireDefault(__webpack_require__(92));
+	var _Transition = _interopRequireDefault(__webpack_require__(90));
 	
-	var _PropTypes = __webpack_require__(94);
+	var _PropTypes = __webpack_require__(92);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -8709,7 +8538,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(33)))
 
 /***/ }),
-/* 89 */
+/* 87 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -8719,7 +8548,7 @@
 	exports.__esModule = true;
 	exports.default = addClass;
 	
-	var _hasClass = _interopRequireDefault(__webpack_require__(90));
+	var _hasClass = _interopRequireDefault(__webpack_require__(88));
 	
 	function addClass(element, className) {
 	  if (element.classList) element.classList.add(className);else if (!(0, _hasClass.default)(element, className)) if (typeof element.className === 'string') element.className = element.className + ' ' + className;else element.setAttribute('class', (element.className && element.className.baseVal || '') + ' ' + className);
@@ -8728,7 +8557,7 @@
 	module.exports = exports["default"];
 
 /***/ }),
-/* 90 */
+/* 88 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -8743,7 +8572,7 @@
 	module.exports = exports["default"];
 
 /***/ }),
-/* 91 */
+/* 89 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -8757,7 +8586,7 @@
 	};
 
 /***/ }),
-/* 92 */
+/* 90 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {"use strict";
@@ -8771,9 +8600,9 @@
 	
 	var _reactDom = _interopRequireDefault(__webpack_require__(2));
 	
-	var _reactLifecyclesCompat = __webpack_require__(93);
+	var _reactLifecyclesCompat = __webpack_require__(91);
 	
-	var _PropTypes = __webpack_require__(94);
+	var _PropTypes = __webpack_require__(92);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -9372,7 +9201,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(33)))
 
 /***/ }),
-/* 93 */
+/* 91 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -9540,7 +9369,7 @@
 
 
 /***/ }),
-/* 94 */
+/* 92 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {"use strict";
@@ -9574,7 +9403,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(33)))
 
 /***/ }),
-/* 95 */
+/* 93 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {"use strict";
@@ -9588,7 +9417,7 @@
 	
 	var _reactDom = __webpack_require__(2);
 	
-	var _TransitionGroup = _interopRequireDefault(__webpack_require__(96));
+	var _TransitionGroup = _interopRequireDefault(__webpack_require__(94));
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -9730,7 +9559,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(33)))
 
 /***/ }),
-/* 96 */
+/* 94 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {"use strict";
@@ -9742,9 +9571,9 @@
 	
 	var _react = _interopRequireDefault(__webpack_require__(1));
 	
-	var _reactLifecyclesCompat = __webpack_require__(93);
+	var _reactLifecyclesCompat = __webpack_require__(91);
 	
-	var _ChildMapping = __webpack_require__(97);
+	var _ChildMapping = __webpack_require__(95);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -9944,7 +9773,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(33)))
 
 /***/ }),
-/* 97 */
+/* 95 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -10099,7 +9928,7 @@
 	}
 
 /***/ }),
-/* 98 */
+/* 96 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -10108,7 +9937,7 @@
 	  value: true
 	});
 	
-	var _Clipboard = __webpack_require__(99);
+	var _Clipboard = __webpack_require__(97);
 	
 	var _Clipboard2 = _interopRequireDefault(_Clipboard);
 	
@@ -10118,7 +9947,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 99 */
+/* 97 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -10131,7 +9960,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _clipboard = __webpack_require__(100);
+	var _clipboard = __webpack_require__(98);
 	
 	var _clipboard2 = _interopRequireDefault(_clipboard);
 	
@@ -10139,7 +9968,7 @@
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
-	var _beeIcon = __webpack_require__(79);
+	var _beeIcon = __webpack_require__(106);
 	
 	var _beeIcon2 = _interopRequireDefault(_beeIcon);
 	
@@ -10341,12 +10170,12 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 100 */
+/* 98 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function (global, factory) {
 	    if (true) {
-	        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [module, __webpack_require__(101), __webpack_require__(103), __webpack_require__(104)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [module, __webpack_require__(99), __webpack_require__(101), __webpack_require__(102)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 	    } else if (typeof exports !== "undefined") {
 	        factory(module, require('./clipboard-action'), require('tiny-emitter'), require('good-listener'));
 	    } else {
@@ -10553,12 +10382,12 @@
 	});
 
 /***/ }),
-/* 101 */
+/* 99 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function (global, factory) {
 	    if (true) {
-	        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [module, __webpack_require__(102)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [module, __webpack_require__(100)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 	    } else if (typeof exports !== "undefined") {
 	        factory(module, require('select'));
 	    } else {
@@ -10787,7 +10616,7 @@
 	});
 
 /***/ }),
-/* 102 */
+/* 100 */
 /***/ (function(module, exports) {
 
 	function select(element) {
@@ -10836,7 +10665,7 @@
 
 
 /***/ }),
-/* 103 */
+/* 101 */
 /***/ (function(module, exports) {
 
 	function E () {
@@ -10909,11 +10738,11 @@
 
 
 /***/ }),
-/* 104 */
+/* 102 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var is = __webpack_require__(105);
-	var delegate = __webpack_require__(106);
+	var is = __webpack_require__(103);
+	var delegate = __webpack_require__(104);
 	
 	/**
 	 * Validates all params and calls the right
@@ -11010,7 +10839,7 @@
 
 
 /***/ }),
-/* 105 */
+/* 103 */
 /***/ (function(module, exports) {
 
 	/**
@@ -11065,10 +10894,10 @@
 
 
 /***/ }),
-/* 106 */
+/* 104 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var closest = __webpack_require__(107);
+	var closest = __webpack_require__(105);
 	
 	/**
 	 * Delegates event to a selector.
@@ -11149,7 +10978,7 @@
 
 
 /***/ }),
-/* 107 */
+/* 105 */
 /***/ (function(module, exports) {
 
 	var DOCUMENT_NODE_TYPE = 9;
@@ -11186,6 +11015,104 @@
 	
 	module.exports = closest;
 
+
+/***/ }),
+/* 106 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _Icon = __webpack_require__(107);
+	
+	var _Icon2 = _interopRequireDefault(_Icon);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+	
+	exports["default"] = _Icon2["default"];
+	module.exports = exports['default'];
+
+/***/ }),
+/* 107 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _classnames = __webpack_require__(5);
+	
+	var _classnames2 = _interopRequireDefault(_classnames);
+	
+	var _propTypes = __webpack_require__(6);
+	
+	var _propTypes2 = _interopRequireDefault(_propTypes);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+	
+	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
+	
+	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
+	
+	var propTypes = {
+		type: _propTypes2["default"].string
+	
+	};
+	/**
+	 *  badge 默认显示内容1
+	 */
+	var defaultProps = {
+		clsPrefix: 'uf'
+	};
+	
+	var Icon = function (_Component) {
+		_inherits(Icon, _Component);
+	
+		function Icon(props) {
+			_classCallCheck(this, Icon);
+	
+			return _possibleConstructorReturn(this, _Component.call(this, props));
+		}
+	
+		Icon.prototype.render = function render() {
+			var _props = this.props,
+			    type = _props.type,
+			    className = _props.className,
+			    clsPrefix = _props.clsPrefix,
+			    others = _objectWithoutProperties(_props, ['type', 'className', 'clsPrefix']);
+	
+			var clsObj = {};
+	
+			var classNames = (0, _classnames2["default"])(clsPrefix, type);
+	
+			return _react2["default"].createElement('i', _extends({}, others, { className: (0, _classnames2["default"])(classNames, className) }));
+		};
+	
+		return Icon;
+	}(_react.Component);
+	
+	Icon.defaultProps = defaultProps;
+	Icon.propTypes = propTypes;
+	
+	exports["default"] = Icon;
+	module.exports = exports['default'];
 
 /***/ }),
 /* 108 */
@@ -15307,15 +15234,15 @@
 	exports.__esModule = true;
 	exports.default = void 0;
 	
-	var _addClass = _interopRequireDefault(__webpack_require__(89));
+	var _addClass = _interopRequireDefault(__webpack_require__(87));
 	
 	exports.addClass = _addClass.default;
 	
-	var _removeClass = _interopRequireDefault(__webpack_require__(91));
+	var _removeClass = _interopRequireDefault(__webpack_require__(89));
 	
 	exports.removeClass = _removeClass.default;
 	
-	var _hasClass = _interopRequireDefault(__webpack_require__(90));
+	var _hasClass = _interopRequireDefault(__webpack_require__(88));
 	
 	exports.hasClass = _hasClass.default;
 	var _default = {
@@ -15989,7 +15916,7 @@
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
-	var _beeIcon = __webpack_require__(79);
+	var _beeIcon = __webpack_require__(106);
 	
 	var _beeIcon2 = _interopRequireDefault(_beeIcon);
 	
@@ -16422,9 +16349,7 @@
 	        if (colorsMap[colors]) {
 	            clsObj[clsPrefix + '-' + colorsMap[colors]] = true;
 	        }
-	        if (bordered) {
-	            clsObj[clsPrefix + '-border'] = bordered;
-	        }
+	        //clsObj[`${clsPrefix}-border`] = bordered;
 	        var classes = (0, _classnames2["default"])(clsPrefix, clsObj);
 	        return _react2["default"].createElement(
 	            'button',
@@ -16618,7 +16543,7 @@
 	    }
 	    if ('selectedValue' in nextProps || 'value' in nextProps) {
 	      this.setState({
-	        selectedValue: nextProps.selectedValue || nextProps.value
+	        selectedValue: typeof nextProps.selectedValue !== 'undifined' ? nextProps.selectedValue : nextProps.value
 	      });
 	    }
 	  };

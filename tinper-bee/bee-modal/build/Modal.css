@@ -1005,8 +1005,21 @@
   -webkit-overflow-scrolling: touch;
   outline: 0;
   overflow: hidden; }
-  .u-modal .u-modal-draggable .u-modal-header.dnd-handle:hover {
+  .u-modal-draggable .u-modal-header.dnd-handle:hover {
     cursor: all-scroll; }
+  .u-modal-centered {
+    text-align: center; }
+    .u-modal-centered::before {
+      display: inline-block;
+      width: 0;
+      height: 100%;
+      vertical-align: middle;
+      content: ''; }
+    .u-modal-centered .u-modal-dialog {
+      top: 0;
+      display: inline-block;
+      text-align: left;
+      vertical-align: middle; }
   .u-modal.fade {
     opacity: 0;
     transition: opacity 0.15s linear; }

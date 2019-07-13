@@ -1404,9 +1404,19 @@ li.rc-time-picker-panel-select-option-disabled:hover {
   position: relative;
   top: -2px;
 }
-.datepicker-input-group.u-input-group:hover>input{
-  border-color: #66afe9;
+.datepicker-input-group.u-input-group:hover{
+  & > input {
+    border-color: #66afe9;
+  }
+  & > .u-form-control[disabled]{
+    border-color: #dfe1e6;
+  }
 }
-.calendar-picker.u-input-group:hover>input{
-  border-color: #66afe9;
+.calendar-picker.u-input-group:hover{
+  & > input {
+    border-color: #66afe9;
+  }
+  & > .u-form-control[disabled]{
+    border-color: #dfe1e6;
+  }
 }
