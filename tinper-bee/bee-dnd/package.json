@@ -43,6 +43,7 @@
   "lodash.isequal": "^4.5.0",
   "react-beautiful-dnd": "^9.0.2",
   "react-draggable": "^3.0.2",
+  "react-grid-layout": "^0.16.6",
   "tinper-bee-core": "latest"
  },
  "peerDependencies": {

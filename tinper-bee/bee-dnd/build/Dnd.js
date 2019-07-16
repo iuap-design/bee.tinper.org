@@ -32,6 +32,10 @@ var _Between = require('./Between');
 
 var _Between2 = _interopRequireDefault(_Between);
 
+var _GridLayout = require('./GridLayout');
+
+var _GridLayout2 = _interopRequireDefault(_GridLayout);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
@@ -143,5 +147,6 @@ Dnd.Drag = _reactDraggable2["default"];
 Dnd.DragDropContext = _reactBeautifulDnd.DragDropContext;
 Dnd.Droppable = _reactBeautifulDnd.Droppable;
 Dnd.Draggable = _reactBeautifulDnd.Draggable;
+Dnd.GridLayout = _GridLayout2["default"];
 exports["default"] = Dnd;
 module.exports = exports['default'];

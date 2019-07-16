@@ -12,10 +12,6 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = require('react-dom');
-
-var _reactDom2 = _interopRequireDefault(_reactDom);
-
 var _reactBeautifulDnd = require('react-beautiful-dnd');
 
 var _util = require('./util');

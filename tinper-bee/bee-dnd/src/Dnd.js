@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import isEqual from 'lodash.isequal';
 import SortList from './SortList';
 import Between from './Between';
+import GridLayout from './GridLayout';
 
 
 const propTypes = {
@@ -110,4 +111,5 @@ Dnd.Drag = Drag;
 Dnd.DragDropContext = DragDropContext;
 Dnd.Droppable = Droppable;
 Dnd.Draggable = Draggable;
+Dnd.GridLayout = GridLayout;
 export default Dnd;
