@@ -34,6 +34,7 @@ const { Item } = Menu;
 
         const menu1 = (
             <Menu ref='menurefs'
+                keyboard={true}
                 onSelect={this.onSelect}>
                 <Item key="1">借款合同</Item>
                 <Item key="2">抵/质押合同</Item>
@@ -41,7 +42,7 @@ const { Item } = Menu;
                 <Item key="4">联保合同</Item>
                 <Item key="5">合同审批</Item>
                 <Item key="6">抵/质押合同跟踪</Item>
-              </Menu>
+            </Menu>
           );
         return (
             <div className="demoPadding">

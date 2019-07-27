@@ -1,3 +1,13 @@
+<a name="3.0.1"></a>
+## [3.0.1](https://github.com/tinper-bee/bee-search-panel/compare/v3.0.0...v3.0.1) (2019-07-24)
+
+
+
+<a name="3.0.0"></a>
+# [3.0.0](https://github.com/tinper-bee/bee-search-panel/compare/v2.0.15...v3.0.0) (2019-04-26)
+
+
+
 <a name="2.0.15"></a>
 ## [2.0.15](https://github.com/tinper-bee/bee-search-panel/compare/v2.0.14...v2.0.15) (2019-04-26)
 

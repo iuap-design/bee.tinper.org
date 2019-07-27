@@ -238,6 +238,10 @@ class Calendar extends React.Component {
     );
   }
 
+  onMouseOver = (e) => {
+    e.stopPropagation();
+  }
+
   render() {
     const { props, state } = this;
     const {
@@ -300,6 +304,7 @@ class Calendar extends React.Component {
       <div
         tabIndex={this.props.focusablePanel ? 0 : undefined}
         className={`${prefixCls}-date-panel`}
+        onMouseOver={this.onMouseOver}
       >
         <CalendarHeader
           locale={locale}

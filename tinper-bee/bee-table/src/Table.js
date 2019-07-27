@@ -3,14 +3,14 @@ import PropTypes from 'prop-types';
 import classes from 'component-classes';
 import TableRow from './TableRow';
 import TableHeader from './TableHeader';
-import { measureScrollbar, debounce, warningOnce ,getMaxColChildrenLength} from './utils';
+import { measureScrollbar, debounce, warningOnce ,getMaxColChildrenLength} from './lib/utils';
 import shallowequal from 'shallowequal';
 import addEventListener from 'tinper-bee-core/lib/addEventListener';
 import ColumnManager from './ColumnManager';
 import createStore from './createStore';
 import Loading from 'bee-loading';
 import Icon from 'bee-icon';
-import { Event,EventUtil,closest} from "./utils";
+import { Event,EventUtil,closest} from "./lib/utils";
 import i18n from "./lib/i18n";
 import { getComponentLocale } from "bee-locale/build/tool";
 
@@ -153,6 +153,7 @@ class Table extends Component {
     this.computeTableWidth = this.computeTableWidth.bind(this);
     this.onBodyMouseLeave = this.onBodyMouseLeave.bind(this);
     this.tableUid = null;
+    this.contentTable = null;
   }
 
   componentDidMount() {
@@ -243,6 +244,7 @@ class Table extends Component {
   }
 
   componentWillUnmount() {
+    this.contentTable = null;
     EventUtil.removeHandler(this.contentTable,'keydown',this.onKeyDown);
     EventUtil.removeHandler(this.contentTable,'focus',this.onFocus);
     if (this.resizeEvent) {

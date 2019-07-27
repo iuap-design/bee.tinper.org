@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import ReactDOM from 'react-dom';
 import PropTypes from "prop-types";
 import { debounce } from "throttle-debounce";
-import { Event,EventUtil} from "./utils";
+import { Event,EventUtil} from "./lib/utils";
 import FilterType from "./FilterType";
 
 const propTypes = {
@@ -32,6 +32,7 @@ class TableHeader extends Component {
     this._thead = null;//当前对象
     this.event = false;//避免多次绑定问题
     this.lastColumWidth = null;//非固定列最后一列的初始化宽度
+    this.fixedTable = {};
   }
 
   static defaultProps = {
@@ -51,6 +52,7 @@ class TableHeader extends Component {
   }
 
   componentWillUnmount(){
+    this.fixedTable = null;
     if(!this.table)return;
     if (this.props.draggable){
       this.removeDragAbleEvent();
@@ -59,6 +61,7 @@ class TableHeader extends Component {
       this.removeDragBorderEvent();
     }
     this.eventListen([{key:'mousedown',fun:this.onTrMouseDown}],'remove',this.table.tr[0]);
+    this.eventListen([{key:'mouseup',fun:this.bodyonLineMouseUp}],'remove',document.body);
   }
 
   /**
@@ -106,7 +109,11 @@ class TableHeader extends Component {
    * 事件初始化
    */
   initEvent(){
-    let {dragborder,draggable} = this.props;
+    let {dragborder,draggable,rows} = this.props;
+    // 当传入的 columns 为空时，不绑定拖拽事件
+    if(Object.prototype.toString.call(rows) === '[object Array]' && rows.length === 0){
+      return;
+    }
     if(!this.event){ //避免多次绑定问题。
       this.event = true;
       if(dragborder){
@@ -383,7 +390,8 @@ class TableHeader extends Component {
     if(table){
       const innerTable = table.querySelector('.u-table-body-inner');
       if(innerTable){
-        overflow.x && (innerTable.style.overflowX = overflow.x);
+        //fixbug: 拖拽列宽后，滚动条滚到表格底部，会导致固定列和非固定列错行
+        // overflow.x && (innerTable.style.overflowX = overflow.x);
         overflow.y && (innerTable.style.overflowY = overflow.y);
       }
      

@@ -121,7 +121,11 @@ function onInputSelect(direction, value, cause) {
   var selectedValue = originalValue.concat();
   var index = direction === 'left' ? 0 : 1;
   selectedValue[index] = value;
+  // console.log(selectedValue[0], selectedValue[1], this.compare(selectedValue[0], selectedValue[1]))
   if (selectedValue[0] && this.compare(selectedValue[0], selectedValue[1]) > 0) {
+    selectedValue[1] = this.state.showTimePicker ? selectedValue[index] : undefined;
+  }
+  if (selectedValue[0] && !selectedValue[1]) {
     selectedValue[1 - index] = this.state.showTimePicker ? selectedValue[index] : undefined;
   }
   this.props.onInputSelect(selectedValue);
@@ -244,7 +248,7 @@ var RangeCalendar = function (_React$Component) {
       props.renderSidebar(),
       _react2["default"].createElement(
         'div',
-        { className: prefixCls + '-panel' },
+        { className: prefixCls + '-panel', onMouseOver: this.onMouseOver },
         showClear && selectedValue[0] && selectedValue[1] ? _react2["default"].createElement(
           'a',
           {
@@ -810,7 +814,7 @@ var _initialiseProps = function _initialiseProps() {
     if (_this2.props.timePicker) {
       return v1.diff(v2);
     }
-    return v1.diff(v2, 'days');
+    return v1 && v1.diff(v2, 'days');
   };
 
   this.fireSelectValueChange = function (selectedValue, direct, cause) {
@@ -904,6 +908,10 @@ var _initialiseProps = function _initialiseProps() {
     var value = _this2.state.value;
 
     return month.isSameOrBefore(value[0], 'month');
+  };
+
+  this.onMouseOver = function (e) {
+    e.stopPropagation();
   };
 };
 

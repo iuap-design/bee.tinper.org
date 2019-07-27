@@ -284,7 +284,7 @@ var _initialiseProps = function _initialiseProps() {
   };
 
   this.focus = function () {
-    (0, _util.fireKeyEvent)(_reactDom2["default"].findDOMNode(_this3.innerMenu), 'keydown', 40);
+    // fireKeyEvent(ReactDOM.findDOMNode(this.innerMenu),'keydown',40);
     _this3.props.onFocus && _this3.props.onFocus();
   };
 };

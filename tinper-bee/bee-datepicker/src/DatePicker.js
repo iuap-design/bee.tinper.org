@@ -25,9 +25,11 @@ let timerDatePicker = true;
 class DatePicker extends Component {
   constructor(props, context) {
     super(props, context);
+    let value = props.value && moment(props.value),
+        defaultValue = props.defaultValue && moment(props.defaultValue);
     this.state = {
       type: "month",
-      value: props.value || props.defaultValue || moment.Moment,
+      value: value || defaultValue || moment.Moment,
       open: props.open||false,
       inputValue:(props.value&&this.getValue(props.value)) || (props.defaultValue&&this.getValue(props.defaultValue)) || '',
       showClose:false
@@ -109,7 +111,7 @@ class DatePicker extends Component {
   componentWillReceiveProps(nextProps) {
     if ("value" in nextProps) {
       this.setState({
-        value: nextProps.value
+        value: nextProps.value && moment(nextProps.value)
       });
     }
     if ("open" in nextProps) {

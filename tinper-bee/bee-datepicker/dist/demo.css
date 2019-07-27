@@ -231,6 +231,8 @@
   line-height: 1.5;
   outline: 0;
   height: 22px; }
+  .rc-calendar-input::-ms-clear {
+    display: none; }
 
 .rc-calendar-input-invalid {
   border-color: red; }
@@ -247,18 +249,6 @@
   line-height: 20px;
   top: 6px;
   margin: 0; }
-
-.rc-calendar-clear-btn:after {
-  content: "x";
-  font-size: 12px;
-  color: #aaa;
-  display: inline-block;
-  line-height: 1;
-  width: 20px;
-  transition: color 0.3s ease; }
-
-.rc-calendar-clear-btn:hover:after {
-  color: #212121; }
 
 .rc-calendar-clear-btn.uf {
   color: #424242;

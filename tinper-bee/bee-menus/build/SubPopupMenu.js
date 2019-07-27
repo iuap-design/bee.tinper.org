@@ -181,7 +181,7 @@ var SubPopupMenu = exports.SubPopupMenu = function (_React$Component) {
     }
     if (props.focusable) {
       domProps.tabIndex = this.props.tabIndex;
-      domProps.onKeyDown = this.onKeyDown;
+      domProps.onKeyDown = props.keyboard && this.onKeyDown;
     }
     var prefixCls = props.prefixCls,
         eventKey = props.eventKey,

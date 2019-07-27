@@ -207,7 +207,7 @@ class Menu extends React.Component {
     }
   }
   focus=()=>{
-    fireKeyEvent(ReactDOM.findDOMNode(this.innerMenu),'keydown',40);
+    // fireKeyEvent(ReactDOM.findDOMNode(this.innerMenu),'keydown',40);
     this.props.onFocus&&this.props.onFocus();
   }
 

@@ -271,7 +271,10 @@ var _initialiseProps = function _initialiseProps() {
     this.onOpenChange = function (open) {
         var props = _this3.props;
         var self = _this3;
-
+        // let {value} = this.state;
+        // if(!isValidRange(value)){
+        //     debugger
+        // }
         if (open === false) {
             _this3.clearHoverValue();
         }

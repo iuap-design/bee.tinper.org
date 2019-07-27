@@ -131,7 +131,10 @@ class RangePicker extends Component {
     onOpenChange = open => {
         const props = this.props;
         const self = this;
-
+        // let {value} = this.state;
+        // if(!isValidRange(value)){
+        //     debugger
+        // }
         if (open === false) {
             this.clearHoverValue();
         }

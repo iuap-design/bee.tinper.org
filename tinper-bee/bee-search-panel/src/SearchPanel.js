@@ -11,7 +11,8 @@ import { getComponentLocale } from 'bee-locale/build/tool';
 const emFun = () => {}
 
 const propTypes =  {
-    defaultExpanded: PropTypes.bool,
+    isExpandedBtn: PropTypes.bool,//是否显示展开按钮
+    defaultExpanded: PropTypes.bool,//展开和收起的默认状态
     expanded: PropTypes.bool,//是否默认展开，false默认关闭
     onSearch: PropTypes.func,//点击查询的回调
     onReset: PropTypes.func,//点击重置的回调
@@ -27,6 +28,7 @@ const propTypes =  {
 };
 
 const defaultProps = {
+    isExpandedBtn:true,
     className: "",
     clsPrefix: 'u-search',
     defaultExpanded: false,
@@ -128,7 +130,7 @@ class SearchPanel extends Component {
         }else{
             this._getChildren(children);
         }
-    
+
         return (
             <div className={clsPrefix + ' ' + className}
                  style={{background: bgColor, ..._stype}}>
@@ -141,26 +143,26 @@ class SearchPanel extends Component {
                     <div className={clsPrefix + "-header-oper"}>
                         {((this._HeadContainer||expanded)&&showOperation) ? <span className="header-oper-btn" role="button" onClick={this.reset}>{resetName}</span> : null}
                         {((this._HeadContainer||expanded)&&showOperation) ? <span className="header-oper-btn primary" role="button" onClick={this.search}>{searchName}</span> : null}
-                        <span
+                        {this.props.isExpandedBtn&&<span
                             className="header-oper-btn"
                             role="button"
                             onClick={this._onChange}
                         >
-                        {expanded ? local['up'] : local['down']}
+                        {(expanded ? local['up'] : local['down'])}
                             <i className={classnames({
                                 'uf': true,
                                 'uf-arrow-down': !expanded,
                                 'uf-arrow-up': expanded
                             })} />
-                    </span>
+                    </span>}
                     </div>
                 </div>
-                
-              
+
+
                 <div className={clsPrefix + '-resident'}>
                     {this._HeadContainer}
                 </div>
-              
+
                 <Panel
                     collapsible
                     expanded={this.state.expanded}

@@ -47,7 +47,8 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var emFun = function emFun() {};
 
 var propTypes = {
-    defaultExpanded: _propTypes2["default"].bool,
+    isExpandedBtn: _propTypes2["default"].bool, //是否显示展开按钮
+    defaultExpanded: _propTypes2["default"].bool, //展开和收起的默认状态
     expanded: _propTypes2["default"].bool, //是否默认展开，false默认关闭
     onSearch: _propTypes2["default"].func, //点击查询的回调
     onReset: _propTypes2["default"].func, //点击重置的回调
@@ -63,6 +64,7 @@ var propTypes = {
 };
 
 var defaultProps = {
+    isExpandedBtn: true,
     className: "",
     clsPrefix: 'u-search',
     defaultExpanded: false,
@@ -222,7 +224,7 @@ var SearchPanel = function (_Component) {
                         { className: 'header-oper-btn primary', role: 'button', onClick: this.search },
                         searchName
                     ) : null,
-                    _react2["default"].createElement(
+                    this.props.isExpandedBtn && _react2["default"].createElement(
                         'span',
                         {
                             className: 'header-oper-btn',

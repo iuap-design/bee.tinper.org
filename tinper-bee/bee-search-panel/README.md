@@ -41,6 +41,8 @@ import "./node_modules/bee-search-panel/build/SearchPanel.css"
 
 |参数|说明|类型|默认值|
 |:---|:-----|:----|:------|
+|isExpandedBtn|是否显示展开按钮|boolean|true|
+|defaultExpanded|展开和收起的默认状态|boolean|false|
 |expanded|是否默认展开|boolean|false|
 |onSearch|点击查询的回调|function|-|
 |onReset|点击查询的回调|function|-|

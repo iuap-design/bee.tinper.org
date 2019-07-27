@@ -178,7 +178,8 @@ var Calendar = function (_React$Component) {
         'div',
         {
           tabIndex: this.props.focusablePanel ? 0 : undefined,
-          className: prefixCls + '-date-panel'
+          className: prefixCls + '-date-panel',
+          onMouseOver: this.onMouseOver
         },
         _react2["default"].createElement(_CalendarHeader2["default"], {
           locale: locale,
@@ -424,6 +425,10 @@ var _initialiseProps = function _initialiseProps() {
 
   this.goTime = function (direction, unit) {
     _this2.setValue((0, _toTime.goTime)(_this2.state.value, direction, unit));
+  };
+
+  this.onMouseOver = function (e) {
+    e.stopPropagation();
   };
 };
 

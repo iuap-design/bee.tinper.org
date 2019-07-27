@@ -80,7 +80,7 @@ export default class CalendarHeader extends React.Component {
     const prefixCls = props.prefixCls;
     const locale = props.locale;
     const value = props.value;
-    const localeData = value.localeData();
+    const localeData = value.localeData && value.localeData();
     const monthBeforeYear = locale.monthBeforeYear;
     const selectClassName = `${prefixCls}-${monthBeforeYear ? 'my-select' : 'ym-select'}`;
     const timeClassName = showTimePicker ? ` ${prefixCls}-time-status` : '';
