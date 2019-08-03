@@ -266,6 +266,7 @@ var _initialiseProps = function _initialiseProps() {
             value: []
         });
         _this3.props.onChange && _this3.props.onChange([], []);
+        _this3.props.onFormControlClear && _this3.props.onFormControlClear();
     };
 
     this.onOpenChange = function (open) {

@@ -1,3 +1,13 @@
+<a name="2.0.10"></a>
+## [2.0.10](https://github.com/tinper-bee/bee-dropdown/compare/v2.0.9...v2.0.10) (2019-08-01)
+
+
+### Features
+
+* **bee-dropdown:** getDocument支持数组 ([91f3dcc](https://github.com/tinper-bee/bee-dropdown/commit/91f3dcc))
+
+
+
 <a name="2.0.9"></a>
 ## [2.0.9](https://github.com/tinper-bee/bee-dropdown/compare/v2.0.8...v2.0.9) (2019-07-12)
 

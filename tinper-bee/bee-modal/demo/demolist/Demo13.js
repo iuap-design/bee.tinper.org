@@ -1,7 +1,7 @@
 /**
  *
  * @title 通过拖拽调整弹框大小
- * @description 通过 `resizable` 参数控制弹框是否可被 `resize`
+ * @description 通过 `resizable` 参数控制弹框是否可被 `resize`。通过 `centered` 参数设置弹框垂直居中展示。
  *
  */
 
@@ -50,6 +50,7 @@ class Demo13 extends Component {
                 打开模态框
             </Button>​
             <Modal
+            centered
             show = { this.state.showModal }
             backdropClosable={false}
             resizable={true}

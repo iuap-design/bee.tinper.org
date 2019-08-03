@@ -197,7 +197,8 @@ class TableHeader extends Component {
     let event = Event.getEvent(e) ,
     targetEvent = Event.getTarget(event);
     const { clsPrefix, contentTable,lastShowIndex } = this.props;
-    let currentElement = this.getOnLineObject(targetEvent);
+    // let currentElement = this.getOnLineObject(targetEvent);
+    let currentElement = this.getTargetToTh(targetEvent);
     if(!currentElement)return;
     let type = currentElement.getAttribute('data-type');
     if(!this.props.dragborder && !this.props.draggable)return;
@@ -263,7 +264,7 @@ class TableHeader extends Component {
    */
   onTrMouseMove = (e) => {
     if(!this.props.dragborder && !this.props.draggable)return;
-    const { clsPrefix ,dragborder,contentDomWidth,scrollbarWidth,contentTable,headerScroll,lastShowIndex} = this.props;
+    const { clsPrefix ,dragborder,contentDomWidth,scrollbarWidth,contentTable,headerScroll,lastShowIndex,onDraggingBorder} = this.props;
     Event.stopPropagation(e); 
     let event = Event.getEvent(e);  
     if(this.props.dragborder && this.drag.option == "border"){
@@ -331,6 +332,8 @@ class TableHeader extends Component {
     }else{
       // console.log("onTrMouseMove dragborder or draggable is all false !");
     }
+    // 增加拖拽列宽动作的回调函数
+    this.drag.newWidth && onDraggingBorder && onDraggingBorder(event, this.drag.newWidth);
   }
 
     /**

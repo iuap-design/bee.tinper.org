@@ -234,6 +234,10 @@ class DatePicker extends Component {
     }
     this.props.onDateInputBlur && this.props.onDateInputBlur(e,value);
   }
+  onBlur = ()=>{
+    let value = this.state.value;
+    this.props.onChange&&this.props.onChange(value, (value && this.getValue(value)) || '')
+  }
   render() {
     let state = this.state;
     let props = this.props;
@@ -276,7 +280,7 @@ class DatePicker extends Component {
     }
     let classes = classnames(props.className, "datepicker-container");
     return (
-      <div className={classes}>
+      <div className={classes} onMouseEnter={this.onBlur}>
         <Picker
           animation="slide-up"
           {...props}

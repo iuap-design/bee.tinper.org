@@ -69,6 +69,7 @@ class ModalDialog extends React.Component {
   onResizeStart = (e, dir, elementRef) => {
     let { onResizeStart } = this.props;
     typeof onResizeStart === "function" && onResizeStart(e, dir, elementRef);
+    this.props.clearCenteredCls && this.props.clearCenteredCls();
   };
 
   /* resizing */

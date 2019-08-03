@@ -42,14 +42,16 @@ var propTypes = {
     onChange: _propTypes2["default"].func,
     onBlur: _propTypes2["default"].func,
     showClose: _propTypes2["default"].bool,
-    focusSelect: _propTypes2["default"].bool
+    focusSelect: _propTypes2["default"].bool,
+    debounceDelay: _propTypes2["default"].number
 };
 
 var defaultProps = {
     componentClass: 'input',
     clsPrefix: 'u-form-control',
     type: 'text',
-    size: 'md'
+    size: 'md',
+    debounceDelay: 0
 };
 
 var FormControl = function (_React$Component) {
@@ -74,15 +76,20 @@ var FormControl = function (_React$Component) {
         };
 
         _this.handleChange = function (e) {
-            var onChange = _this.props.onChange;
+            var now = new Date().getTime();
+            if (now - _this.lastScrollCall < _this.props.debounceDelay) return;
+            _this.lastScrollCall = now;
+            setTimeout(function () {
+                var onChange = _this.props.onChange;
 
-            var value = _this.input.value;
-            _this.setState({
-                showClose: true
+                var value = _this.input.value;
+                _this.setState({
+                    showClose: true
+                });
+                if (onChange) {
+                    onChange(value, e);
+                }
             });
-            if (onChange) {
-                onChange(value, e);
-            }
         };
 
         _this.clearValue = function () {

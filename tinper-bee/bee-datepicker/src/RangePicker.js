@@ -127,6 +127,7 @@ class RangePicker extends Component {
             value: []
         })
         this.props.onChange && this.props.onChange([], []);
+        this.props.onFormControlClear&&this.props.onFormControlClear();
     }
     onOpenChange = open => {
         const props = this.props;

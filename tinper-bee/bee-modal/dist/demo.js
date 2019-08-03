@@ -80,7 +80,7 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
 	
-	var Demo1 = __webpack_require__(276);var Demo2 = __webpack_require__(277);var Demo3 = __webpack_require__(282);var Demo4 = __webpack_require__(283);var Demo5 = __webpack_require__(284);var Demo6 = __webpack_require__(285);var Demo7 = __webpack_require__(288);var Demo8 = __webpack_require__(687);var Demo9 = __webpack_require__(688);var Demo10 = __webpack_require__(693);var Demo11 = __webpack_require__(737);var Demo12 = __webpack_require__(738);var Demo13 = __webpack_require__(739);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 默认的模态框", "code": "/**\n *\n * @title 默认的模态框\n * @description\n *\n */\n\nimport React, { Component } from 'react';\nimport { Button } from 'tinper-bee';\nimport Modal from \"tinper-bee/lib/src\";;\n\n\nclass Demo1 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            showModal: false\n        };\n        this.close = this.close.bind(this);\n        this.open = this.open.bind(this);\n    }\n\n    close() {\n        this.setState({\n            showModal: false\n        });\n    }\n    open() {\n        this.setState({\n            showModal: true\n        });\n    }\n    render () {\n        return (\n        <div>\n            <Button\n            bordered\n            className=\"demo-margin\"\n            onClick = { this.open }>\n                打开模态框\n            </Button>​\n            <Modal\n            show = { this.state.showModal }\n            onHide = { this.close } >\n                <Modal.Header closeButton>\n                    <Modal.Title>标题</Modal.Title>\n                </Modal.Header>\n\n                <Modal.Body>\n                    <p>Some contents...</p>\n                    <p>Some contents...</p>\n                    <p>Some contents...</p>\n                </Modal.Body>\n\n                <Modal.Footer>\n                    <Button onClick={ this.close } colors=\"secondary\" style={{marginRight: 8}}>取消</Button>\n                    <Button onClick={ this.close } bordered>确认</Button>\n                </Modal.Footer>\n           </Modal>\n        </div>\n        )\n    }\n}\n\n\n", "desc": "", "scss_code": ".demo-margin{\n  margin: 5px 15px;\n}" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 注册的模态框", "code": "/**\r\n *\r\n * @title 注册的模态框\r\n * @description\r\n *\r\n */\r\n\r\nimport React, {Component} from 'react';\nimport { FormControl, Label, FormGroup, Button } from 'tinper-bee';\r\n\nimport Modal from \"tinper-bee/lib/src\";;\r\n\n\n\n\r\nclass Demo2 extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            showModal: false,\r\n            password: '',\r\n            name: ''\r\n        };\r\n        this.close = this.close.bind(this);\r\n        this.open = this.open.bind(this);\r\n    }\r\n\r\n    close() {\r\n        this.setState({\r\n            showModal: false\r\n        });\r\n    }\r\n\r\n    open() {\r\n        this.setState({\r\n            showModal: true\r\n        });\r\n    }\r\n\r\n    handleChange = (state) => (value) => {\r\n        this.setState({\r\n            [state]: value\r\n        })\r\n    }\r\n\r\n    render() {\r\n\r\n        return (\r\n            <div className=\"demo-margin\">\r\n                <Button\r\n                    bordered\r\n                    onClick={this.open}>\r\n                    注册模态框\r\n                </Button>​\r\n                <Modal\r\n                    show={this.state.showModal}\r\n                    onHide={this.close}\r\n                    style={{width: 450}}\r\n                >\r\n                    <Modal.Header closeButton>\r\n                        <Modal.Title>注册</Modal.Title>\r\n                    </Modal.Header>\r\n\r\n                    <Modal.Body>\r\n                        <div style={{ width: 300, margin: '0 auto' }}>\r\n                            <FormGroup>\r\n                                <Label>用户名</Label>\r\n                                <FormControl\r\n                                    value={this.state.name}\r\n                                    onChange={this.handleChange('name')}\r\n                                />\r\n                            </FormGroup>\r\n                            <FormGroup>\r\n                                <Label>密码</Label>\r\n                                <FormControl\r\n                                    value={this.state.password}\r\n                                    onChange={this.handleChange('password')}\r\n                                />\r\n                            </FormGroup>\r\n                        </div>\r\n\r\n\r\n                    </Modal.Body>\r\n\r\n                    <Modal.Footer className=\"text-center\">\r\n                        <Button colors=\"secondary\" style={{ marginRight: 8 }} onClick={this.close}>\r\n                            取消\r\n                        </Button>\r\n                        <Button bordered onClick={this.close}>\r\n                            确认\r\n                        </Button>\r\n                    </Modal.Footer>\r\n                </Modal>\r\n\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\n\r\n", "desc": "", "scss_code": ".demo-margin{\r\n  margin: 5px 15px;\r\n}\r\n.text-center{\r\n  text-align: center;\r\n}" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 不同大小的模态框", "code": "/**\r\n *\r\n * @title 不同大小的模态框\r\n * @description 通过size属性控制模态框大小\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\nimport { Button } from 'tinper-bee';\r\n\nimport Modal from \"tinper-bee/lib/src\";;\r\n\r\nclass Demo3 extends Component {\r\n\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            showModal: false,\r\n            modalSize: ''\r\n        };\r\n        this.close = this.close.bind(this);\r\n        this.open = this.open.bind(this);\r\n        this.changeSize = this.changeSize.bind(this);\r\n\r\n    }\r\n\r\n    close() {\r\n        this.setState({\r\n            showModal: false\r\n        });\r\n    }\r\n\r\n    open() {\r\n        this.setState({\r\n            showModal: true\r\n        });\r\n    }\r\n\r\n    changeSize(size) {\r\n        this.setState({\r\n            modalSize: size\r\n        });\r\n    }\r\n\r\n    render() {\r\n        return (\r\n            <div>\r\n                <Button\r\n                    bordered\r\n                    className=\"demo-margin\"\r\n                    onClick={ ()=>{this.changeSize(\"sm\");this.open();} }>\r\n                    小号模态框\r\n                </Button>\r\n                <Button\r\n                    bordered\r\n                    className=\"demo-margin\"\r\n                    onClick={ ()=>{this.changeSize(\"lg\");this.open();} }>\r\n                    大号模态框\r\n                </Button>\r\n                <Button\r\n                    bordered\r\n                    className=\"demo-margin\"\r\n                    onClick={ ()=>{this.changeSize(\"xlg\");this.open();} }>\r\n                    超大号模态框\r\n                </Button>\r\n                <Modal show={ this.state.showModal } size={ this.state.modalSize } onHide={ this.close } className=\"demo3-modal\">\r\n                    <Modal.Header closeButton>\r\n                        <Modal.Title > 我来组成头部 </Modal.Title>\r\n                    </Modal.Header >\r\n                    <Modal.Body>\r\n                        <h4> 这是一个沉默的标题 </h4>\r\n\r\n                        <p> 一些描述。。。 </p>\r\n                        <hr/>\r\n\r\n                        <p> 用创想与技术推动商业和社会进步 </p>\r\n\r\n                        <p> 我们基于创造性的思想与先进的技术（ 现阶段是信息技术）， 创新和运营高客户价值的产品与服务， 帮助客户实现发展目标， 进而推动商业和社会进步。\r\n                        </p>\r\n\r\n                        <p> 全球领先的企业与公共组织软件、 云服务、 金融服务提供商。 </p>\r\n\r\n                        <p> 员工快乐工作， 成就事业， 分享成功的平台。 </p>\r\n\r\n                        <p> 企业和公共组织是我们持续服务的客户。 软件、 云服务、 金融服务是用友新发展阶段的核心业务。 全球领先是我们必须达成的目标。 </p>\r\n\r\n                        <p> 在努力实现产业发展目标的同时， 员工在用友快乐工作、 成就事业、 分享成功也是公司的追求。 </p>\r\n\r\n                    </Modal.Body>\r\n                    <Modal.Footer>\r\n                        <Button colors=\"secondary\" onClick={ this.close }> 关闭 </Button>\r\n                    </Modal.Footer>\r\n                </Modal>\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\n\r\n", "desc": " 通过size属性控制模态框大小", "scss_code": ".demo-margin{\r\n  margin: 5px 15px;\r\n}\r\n.u-modal-body{\r\n  max-height: 430px;\r\n  overflow: auto;\r\n}\r\n\r\n.demo3-modal{\r\n  .u-modal-body{\r\n    background: #f7f9fb;\r\n  }\r\n}" }, { "example": _react2['default'].createElement(Demo4, null), "title": " 不同遮罩层状态的模态框", "code": "/**\r\n *\r\n * @title 不同遮罩层状态的模态框\r\n * @description 遮罩层可以通过backdrop属性控制状态，可以为不响应事件，可以不显示。\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\nimport { Button } from 'tinper-bee';\r\n\nimport Modal from \"tinper-bee/lib/src\";;\r\n\r\n\r\nclass Demo4 extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            showModal: false,\r\n            modalDropup: true\r\n        };\r\n        this.close = this.close.bind(this);\r\n        this.open = this.open.bind(this);\r\n        this.changeDropup = this.changeDropup.bind(this);\r\n\r\n    }\r\n\r\n    close() {\r\n        this.setState({\r\n            showModal: false\r\n        });\r\n    }\r\n\r\n    open() {\r\n        this.setState({\r\n            showModal: true\r\n        });\r\n    }\r\n\r\n    changeDropup(state) {\r\n        this.setState({\r\n            modalDropup: state\r\n        });\r\n    }\r\n\r\n    render() {\r\n        return (\r\n            <div>\r\n                <Button\r\n                    bordered\r\n                    className=\"demo-margin\"\r\n                    onClick={ ()=>{this.changeDropup(false);this.open();} }>\r\n                    无遮罩层模态框\r\n                </Button>\r\n                <Button\r\n                    bordered\r\n                    className=\"demo-margin\"\r\n                    onClick={ ()=>{this.changeDropup(\"static\");this.open();} }>\r\n                    遮罩无事件模态框\r\n                </Button>\r\n                <Modal\r\n                    className=\"demo4-modal\"\r\n                    show={ this.state.showModal }\r\n                    backdrop={ this.state.modalDropup }\r\n                    onHide={ this.close }>\r\n                    <Modal.Header closeButton>\r\n                        <Modal.Title > 我来组成头部 </Modal.Title>\r\n                    </Modal.Header >\r\n                    <Modal.Body >\r\n                        <h4> 这是一个沉默的标题 </h4>\r\n\r\n                        <p> 一些描述。。。 </p>\r\n                        <hr/>\r\n\r\n                        <p> 用创想与技术推动商业和社会进步 </p>\r\n\r\n                        <p> 我们基于创造性的思想与先进的技术（ 现阶段是信息技术）， 创新和运营高客户价值的产品与服务， 帮助客户实现发展目标， 进而推动商业和社会进步。 </p>\r\n\r\n                        <p> 全球领先的企业与公共组织软件、 云服务、 金融服务提供商。 </p>\r\n\r\n                        <p> 员工快乐工作， 成就事业， 分享成功的平台。 </p>\r\n                    </Modal.Body>\r\n                    <Modal.Footer>\r\n                        <Button colors=\"secondary\" onClick={ this.close }> 关闭 </Button>\r\n                    </Modal.Footer>\r\n                </Modal>\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\n\r\n", "desc": " 遮罩层可以通过backdrop属性控制状态，可以为不响应事件，可以不显示。", "scss_code": ".demo-margin{\r\n  margin: 5px 15px;\r\n}\r\n.demo4-modal{\r\n  .u-modal-body{\r\n    background: #f7f9fb;\r\n  }\r\n}" }, { "example": _react2['default'].createElement(Demo5, null), "title": " 自定义大小的模态框", "code": "/**\r\n *\r\n * @title 自定义大小的模态框\r\n * @description 通过width属性定义模态框大小\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\nimport { Button } from 'tinper-bee';\r\n\nimport Modal from \"tinper-bee/lib/src\";;\r\n\r\n\r\nclass Demo5 extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            showModal: false\r\n        };\r\n        this.close = this.close.bind(this);\r\n        this.open = this.open.bind(this);\r\n    }\r\n\r\n    close() {\r\n        this.setState({\r\n            showModal: false\r\n        });\r\n    }\r\n    open() {\r\n        this.setState({\r\n            showModal: true\r\n        });\r\n    }\r\n    render () {\r\n        return (\r\n        <div>\r\n            <Button\r\n            bordered\r\n            className=\"demo-margin\"\r\n            onClick={ ()=>{this.open()} }>\r\n                自定义大小的模态框\r\n            </Button>​\r\n            <Modal\r\n            show = { this.state.showModal }\r\n            onHide = { this.close } \r\n            width = '400'>\r\n                <Modal.Header closeButton>\r\n                    <Modal.Title>这是题目</Modal.Title>\r\n                </Modal.Header>\r\n\r\n                <Modal.Body>\r\n                    这是一些描述。。。\r\n                </Modal.Body>\r\n\r\n                <Modal.Footer>\r\n                    <Button onClick={ this.close } colors=\"secondary\" style={{marginRight: 8}}>取消</Button>\r\n                    <Button onClick={ this.close } bordered>确认</Button>\r\n                </Modal.Footer>\r\n           </Modal>\r\n        </div>\r\n        )\r\n    }\r\n}\r\n\r\n\r\n", "desc": " 通过width属性定义模态框大小", "scss_code": ".demo-margin{\r\n    margin: 5px 15px;\r\n}" }, { "example": _react2['default'].createElement(Demo6, null), "title": " 被loading遮住的模态框", "code": "/**\r\n *\r\n * @title 被loading遮住的模态框\r\n * @description 当Modal组件和Loading组件同时出现的时候，Loading会把Modal遮住\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\nimport { Loading, Button } from 'tinper-bee';\r\n\n\nimport Modal from \"tinper-bee/lib/src\";;\r\n\r\n\r\n\r\nclass Demo6 extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            showModal: false,\r\n            showLoading: false\r\n        };\r\n    }\r\n\r\n    close = () => {\r\n        this.setState({\r\n            showModal: false,\r\n            showLoading: false\r\n        });\r\n    }\r\n    open = () => {\r\n        this.setState({\r\n            showModal: true,\r\n            showLoading: true\r\n        });\r\n        setTimeout(() => {\r\n            this.setState({\r\n                showLoading: false\r\n            })\r\n        }, 1000)\r\n    }\r\n\r\n    render() {\r\n        return (\r\n            <div>\r\n                <Button\r\n                    bordered\r\n                    className=\"demo-margin\"\r\n                    onClick={this.open}>\r\n                    打开模态框\r\n                </Button>\r\n                <Loading\r\n                    showBackDrop={true}\r\n                    // loadingType=\"line\"\r\n                    fullScreen\r\n                    show={this.state.showLoading}\r\n                >\r\n                </Loading>\r\n                <Modal\r\n                    show={this.state.showModal}\r\n                    onHide={this.close} >\r\n                    <Modal.Header closeButton>\r\n                        <Modal.Title>标题</Modal.Title>\r\n                    </Modal.Header>\r\n                    <Modal.Body>\r\n                        我是模态框，我的被loading遮住了~\r\n                    </Modal.Body>\r\n                    <Modal.Footer>\r\n                        <Button onClick={this.close} colors=\"secondary\" style={{ marginRight: 8 }}>取消</Button>\r\n                        <Button onClick={this.close} bordered>确认</Button>\r\n                    </Modal.Footer>\r\n                </Modal>\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\n\r\n", "desc": " 当Modal组件和Loading组件同时出现的时候，Loading会把Modal遮住", "scss_code": ".demo-margin{\r\n    margin: 5px 15px;\r\n}" }, { "example": _react2['default'].createElement(Demo7, null), "title": " 表单模态框", "code": "/**\r\n *\r\n * @title 表单模态框\r\n * @description 表单模态框\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\nimport { Radio, Rate, Form, FormControl, DatePicker, Select, Label, FormGroup, Button } from 'tinper-bee';\r\n\nimport Modal from \"tinper-bee/lib/src\";;\r\n\n\n\n\n\n\n\n\n\r\n\r\nconst FormItem = Form.FormItem;\r\nconst Option = Select.Option;\r\nclass Demo7 extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            selectedValue: \"man\",\r\n            showModal: false,\r\n            name: '',\r\n            education: '',\r\n            birthDate: ''\r\n\r\n        };\r\n    }\r\n\r\n    close = () => {\r\n        this.setState({\r\n            showModal: false\r\n        });\r\n    }\r\n\r\n    handleClose = () => {\r\n        this.props.form.validateFields((err, values) => {\r\n            if (err) {\r\n                console.log('校验失败', values);\r\n            } else {\r\n                console.log('提交成功', values)\r\n                this.close()\r\n            }\r\n        });\r\n    }\r\n\r\n    open = () => {\r\n        this.setState({\r\n            showModal: true\r\n        });\r\n    }\r\n\r\n    handleChange = (state) => (value) => {\r\n        this.setState({\r\n            [state]: value\r\n        })\r\n    }\r\n\r\n    getCalendarContainer = () => {\r\n\r\n        return document.getElementById('demo7');\r\n    }\r\n\r\n    render() {\r\n        const { getFieldProps, getFieldError } = this.props.form;\r\n        const self = this;\r\n\r\n        return (\r\n            <div className=\"demo-margin\" id=\"demo7\">\r\n                <Button\r\n                    bordered\r\n                    onClick={this.open}>\r\n                    添加模态框\r\n                </Button>\r\n                <Modal\r\n                    show={this.state.showModal}\r\n                    onHide={this.close}\r\n                    className=\"demo7-modal\"\r\n                >\r\n                    <Modal.Header closeButton>\r\n                        <Modal.Title>表单实践</Modal.Title>\r\n                    </Modal.Header>\r\n\r\n                    <Modal.Body>\r\n                        <div>\r\n                            <Form>\r\n                                <FormItem>\r\n                                    <Label>姓名</Label>\r\n                                    <FormControl placeholder=\"请输入姓名\"\r\n                                        {...getFieldProps('name', {\r\n                                            validateTrigger: 'onBlur',\r\n                                            rules: [{\r\n                                                required: true, message: '请输入姓名',\r\n                                            }],\r\n                                        })}\r\n                                    />\r\n                                    <span className='error'>\r\n                                        {getFieldError('name')}\r\n                                    </span>\r\n                                </FormItem>\r\n                                <FormItem>\r\n                                    <Label>身份证号</Label>\r\n                                    <FormControl placeholder=\"请输入身份证号\"\r\n                                        {...getFieldProps('id', {\r\n                                            validateTrigger: 'onBlur',\r\n                                            rules: [{\r\n                                                required: true, message: '请输入身份证号',\r\n                                            }, {\r\n                                                pattern: /^[1-9][0-9]{5}([1][9][0-9]{2}|[2][0][0|1][0-9])([0][1-9]|[1][0|1|2])([0][1-9]|[1|2][0-9]|[3][0|1])[0-9]{3}([0-9]|[X])$/, message: '身份证号格式不正确'\r\n                                            }],\r\n                                        })}\r\n                                    />\r\n                                    <span className='error'>\r\n                                        {getFieldError('id')}\r\n                                    </span>\r\n                                </FormItem>\r\n                                <FormItem className='time'>\r\n                                    <Label>出生日期</Label>\r\n                                    <DatePicker\r\n                                        {\r\n                                        ...getFieldProps('time', {\r\n                                            validateTrigger: 'onBlur',\r\n                                            rules: [{\r\n                                                required: true, message: '请选择出生日期',\r\n                                            }, {\r\n                                                type: 'date', message: '日期格式不正确'\r\n                                            }],\r\n                                        }\r\n                                        )}\r\n                                        placeholder={'请选择出生日期'}\r\n                                        getCalendarContainer={this.getCalendarContainer}\r\n                                    />\r\n                                    <span className='error'>\r\n                                        {getFieldError('time')}\r\n                                    </span>\r\n                                </FormItem>\r\n                                <FormItem>\r\n                                    <Label>年龄</Label>\r\n                                    <FormControl placeholder=\"请输入年龄\"\r\n                                        {...getFieldProps('age', {\r\n                                            validateTrigger: 'onBlur',\r\n                                            rules: [{\r\n                                                required: true, message: '请输入年龄',\r\n                                            }],\r\n                                        })}\r\n                                    />\r\n                                    <span className='error'>\r\n                                        {getFieldError('age')}\r\n                                    </span>\r\n                                </FormItem>\r\n                                <FormItem>\r\n                                    <Label>性别</Label>\r\n                                    <Radio.RadioGroup\r\n                                        selectedValue={this.state.selectedValue}\r\n                                        {\r\n                                        ...getFieldProps('sex', {\r\n                                            initialValue: 'man',\r\n                                            onChange (value) {\r\n                                                self.setState({ selectedValue: value });\r\n                                            },\r\n                                            rules: [{ required: true }]\r\n                                        }\r\n                                        )}\r\n                                    >\r\n                                        <Radio value=\"man\" >男</Radio>\r\n                                        <Radio value=\"woman\" >女</Radio>\r\n                                    </Radio.RadioGroup>\r\n                                </FormItem>\r\n                                <FormItem>\r\n                                    <Label>学历</Label>\r\n                                    <Select\r\n                                        {\r\n                                        ...getFieldProps('education', {\r\n                                            initialValue: '',\r\n                                            rules: [{ required: true, message: '请选择学历' }]\r\n                                        }\r\n                                        )}\r\n                                    >\r\n                                        <Option value=\"\">请选择</Option>\r\n                                        <Option value=\"nothing\">无</Option>\r\n                                        <Option value=\"middle\">初中</Option>\r\n                                        <Option value=\"senior\">高中</Option>\r\n                                        <Option value=\"college1\">专科</Option>\r\n                                        <Option value=\"college2\">本科</Option>\r\n                                        <Option value=\"graduate\">研究生及以上</Option>\r\n                                        <Option value=\"other\">其它</Option>\r\n                                    </Select>\r\n                                    <span className='error'>\r\n                                        {getFieldError('education')}\r\n                                    </span>\r\n                                </FormItem>\r\n                                <FormItem>\r\n                                    <Label>保密等级</Label>\r\n                                    <Rate\r\n                                        {\r\n                                        ...getFieldProps('rate', {\r\n                                            initialValue: 0,\r\n                                            rules: [{ required: true }]\r\n                                        }\r\n                                        )}\r\n                                    />\r\n                                </FormItem>\r\n                                <FormItem className=\"remarks\">\r\n                                    <Label>备注</Label>\r\n                                    <FormControl componentClass='textarea'\r\n                                        {\r\n                                        ...getFieldProps('remark', {}\r\n                                        )}\r\n                                    />\r\n                                </FormItem>\r\n                            </Form>\r\n                        </div>\r\n                    </Modal.Body>\r\n\r\n                    <Modal.Footer className=\"text-center\">\r\n                        <Button colors=\"secondary\" style={{ marginRight: 8 }} onClick={this.close}>\r\n                            取消\r\n                        </Button>\r\n                        <Button bordered onClick={this.handleClose}>\r\n                            确认\r\n                        </Button>\r\n                    </Modal.Footer>\r\n                </Modal>\r\n\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\n\r\n", "desc": " 表单模态框", "scss_code": ".demo7-modal {\r\n    font-size: 14px;\r\n    .u-label {\r\n        display: inline-block;\r\n        min-width: 100px;\r\n        text-align: right;\r\n        padding-right: 12px;\r\n    }\r\n    .u-form-control {\r\n        width: auto;\r\n        min-width: 310px;\r\n    }\r\n    .error {\r\n        font-size: 12px;\r\n        color: red;\r\n        margin-left: 10px;\r\n    }\r\n    .submit {\r\n        padding-left: 110px;\r\n    }\r\n    .submit .login {\r\n        margin-left: 10px;\r\n    }\r\n    .u-form-item .u-select {\r\n        min-width: 310px;\r\n    }\r\n    textarea {\r\n        resize: none;\r\n    }\r\n    .time>div {\r\n        display: inline-block;\r\n    }\r\n    .time .u-label {\r\n        position: relative;\r\n        bottom: 10px;\r\n    }\r\n    .time .error{\r\n        position: relative;\r\n        bottom: 10px;\r\n    }\r\n    .remarks .u-label{\r\n        position: relative;\r\n        bottom: 12px;\r\n    }\r\n    .u-city-select {\r\n        display: inline-block;\r\n    }\r\n    .u-city-select .province,\r\n    .u-city-select .city,\r\n    .u-city-select .area {\r\n        width: 120px;\r\n    }\r\n    .u-form-item {\r\n        min-height: auto!important;\r\n    }\r\n    .u-modal-body{\r\n        background: #f7f9fb;\r\n    }\r\n\r\n}\r\n#demo7{\r\n    .rc-calendar-picker{\r\n        z-index: 1800;\r\n    }\r\n}\r\n.demo-margin{\r\n    margin: 5px 15px;\r\n}" }, { "example": _react2['default'].createElement(Demo8, null), "title": " 两个模态框", "code": "/**\r\n *\r\n * @title 两个模态框\r\n * @description 当两个模态框同时出现的时候，后面出现的那个层级在上面\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\nimport { Button } from 'tinper-bee';\r\n\nimport Modal from \"tinper-bee/lib/src\";;\r\n\r\nclass Demo8 extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            showModal: false,\r\n            showModal2: false\r\n        };\r\n    }\r\n\r\n    close = () => {\r\n        this.setState({\r\n            showModal: false\r\n        });\r\n    }\r\n\r\n    open = () => {\r\n        this.setState({\r\n            showModal: true\r\n        });\r\n    }\r\n\r\n    close2 = () => {\r\n        this.setState({\r\n            showModal2: false\r\n        });\r\n    }\r\n\r\n    open2 = () => {\r\n        this.setState({\r\n            showModal2: true\r\n        });\r\n    }\r\n\r\n    render() {\r\n\r\n        return (\r\n            <div className=\"demo-margin\">\r\n                <Button\r\n                    bordered\r\n                    onClick={this.open}>\r\n                    打开模态框\r\n                </Button>\r\n                <Modal\r\n                    show={this.state.showModal}\r\n                    onHide={this.close}\r\n                >\r\n                    <Modal.Header closeButton>\r\n                        <Modal.Title>第一个模态框</Modal.Title>\r\n                    </Modal.Header>\r\n\r\n                    <Modal.Body>\r\n                       这是第一个模态框\r\n                        <Button\r\n                            bordered\r\n                            size=\"sm\"\r\n                            onClick={this.open2}\r\n                        >\r\n                            打开第二个模态框~\r\n                        </Button>\r\n                    </Modal.Body>\r\n\r\n                    <Modal.Footer>\r\n                        <Button colors=\"secondary\" style={{ marginRight: 8 }} onClick={this.close}>\r\n                            取消\r\n                        </Button>\r\n                        <Button bordered onClick={this.close}>\r\n                            确认\r\n                        </Button>\r\n                    </Modal.Footer>\r\n                </Modal>\r\n                <Modal\r\n                    show={this.state.showModal2}\r\n                    onHide={this.close2}\r\n                >\r\n                    <Modal.Header closeButton>\r\n                        <Modal.Title>第二个模态框</Modal.Title>\r\n                    </Modal.Header>\r\n\r\n                    <Modal.Body>\r\n                        这是第二个模态框~\r\n                    </Modal.Body>\r\n\r\n                    <Modal.Footer>\r\n                        <Button colors=\"secondary\" style={{ marginRight: 8 }} onClick={this.close2}>\r\n                            取消\r\n                        </Button>\r\n                        <Button bordered onClick={this.close2}>\r\n                            确认\r\n                        </Button>\r\n                    </Modal.Footer>\r\n                </Modal>\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\n\r\n", "desc": " 当两个模态框同时出现的时候，后面出现的那个层级在上面", "scss_code": ".demo-margin{\r\n    margin: 5px 15px;\r\n}" }, { "example": _react2['default'].createElement(Demo9, null), "title": " enforceFocus", "code": "/**\r\n *\r\n * @title enforceFocus\r\n * @description 打开模态框时控制焦点的聚焦和离开\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\nimport { Popconfirm, FormControl, Label, FormGroup, Button } from 'tinper-bee';\r\n\nimport Modal from \"tinper-bee/lib/src\";;\r\n\r\n\n\n\n\n// import { Popconfirm } from 'tinper-bee';\r\n\r\n\r\nclass Demo9 extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            showModal: false,\r\n            showModal2: false\r\n        };\r\n    }\r\n\r\n    close = () => {\r\n        this.setState({\r\n            showModal: false\r\n        });\r\n    }\r\n\r\n    open = () => {\r\n        this.setState({\r\n            showModal: true\r\n        });\r\n    }\r\n\r\n    close2 = () => {\r\n        this.setState({\r\n            showModal2: false\r\n        });\r\n    }\r\n\r\n    open2 = () => {\r\n        this.setState({\r\n            showModal2: true\r\n        });\r\n    }\r\n\r\n    handleChange = (state) => (value) => {\r\n      this.setState({\r\n          [state]: value\r\n      })\r\n    }\r\n\r\n    render() {\r\n      let content = (\r\n            <FormGroup>\r\n                <Label>用户名</Label>\r\n                <FormControl\r\n                    value={this.state.name}\r\n                    onChange={this.handleChange('name')}\r\n                />\r\n            </FormGroup>\r\n      );\r\n        return (\r\n            <div className=\"demo-margin\">\r\n                <Button\r\n                    bordered\r\n                    onClick={this.open}\r\n                >\r\n                    打开模态框\r\n                </Button>\r\n                <Modal\r\n                    show={this.state.showModal}\r\n                    onHide={this.close}\r\n                    enforceFocus={false}\r\n                >\r\n                    <Modal.Header closeButton>\r\n                        <Modal.Title>标题</Modal.Title>\r\n                    </Modal.Header>\r\n\r\n                    <Modal.Body>\r\n                       <span>\r\n                          在模态框中打开气泡组件，如果气泡组件中有文本框，文本框光标不会聚焦。需在modal中设置enforceFocus为false。\r\n                       </span>\r\n                      <div className=\"demoPadding\">\r\n                        <Popconfirm trigger=\"click\" placement=\"right\" content={content}>\r\n                            <Button bordered>打开气泡组件</Button>\r\n                        </Popconfirm>\r\n                      </div>\r\n                    </Modal.Body>\r\n\r\n                    <Modal.Footer className=\"text-center\">\r\n                        <Button colors=\"secondary\" style={{ marginRight: 8 }} onClick={this.close}>\r\n                            取消\r\n                        </Button>\r\n                        <Button bordered onClick={this.close}>\r\n                            确认\r\n                        </Button>\r\n                    </Modal.Footer>\r\n                </Modal>\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\n\r\n", "desc": " 打开模态框时控制焦点的聚焦和离开", "scss_code": ".u-popconfirm {\r\n  z-index:10000;\r\n}\r\n\r\n.demoPadding {\r\n  text-align: center;\r\n}" }, { "example": _react2['default'].createElement(Demo10, null), "title": " 嵌套表格的模态框", "code": "/**\n *\n * @title 嵌套表格的模态框\n * @description 嵌套表格\n *\n */\n\nimport React, { Component } from 'react';\nimport { Table, Checkbox, Button } from 'tinper-bee';\nimport multiSelect from \"bee-table/build/lib/multiSelect\";\n\n\nimport Modal from \"tinper-bee/lib/src\";;\n\nlet MultiSelectTable = multiSelect(Table, Checkbox);\n\n\nclass Demo10 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            showModal: false,\n            data: [\n                { a: \"杨过\", b: \"男\", c: 30, d: '内行', key: \"2\", _checked: true },\n                { a: \"令狐冲\", b: \"男\", c: 41, d: '大侠', key: \"1\", _checked: true },\n                { a: \"郭靖\", b: \"男\", c: 25, d: '大侠', key: \"3\", _checked: true }\n            ]\n        };\n\n    }\n\n    columns = [\n        {\n            title: \"名字\",\n            dataIndex: \"a\",\n            key: \"a\",\n            width: \"25%\"\n        },\n        {\n            title: \"性别\",\n            dataIndex: \"b\",\n            key: \"b\",\n            width: \"25%\"\n        },\n        {\n            title: \"年龄\",\n            dataIndex: \"c\",\n            key: \"c\",\n            width: \"20%\",\n            sorter: (a, b) => a.c - b.c\n        },\n        {\n            title: \"武功级别\",\n            dataIndex: \"d\",\n            key: \"25%\"\n        }\n    ];\n\n    close = () => {\n        this.setState({\n            showModal: false\n        });\n    }\n    open = () => {\n        this.setState({\n            showModal: true\n        });\n    }\n\n    getSelectedDataFunc = data => {\n        console.log(data);\n    };\n\n    clear = () => {\n        let { data } = this.state;\n        data.forEach(item => item._checked = false)\n        this.setState({\n            data:JSON.parse(JSON.stringify(data))\n        })\n    }\n\n    render () {\n        let multiObj = {\n            type: \"checkbox\"\n        };\n        return (\n            <div>\n                <Button\n                    bordered\n                    className=\"demo-margin\"\n                    onClick={this.open}>\n                    打开模态框\n                </Button>\n                <Modal\n                    show={this.state.showModal}\n                    onHide={this.close}\n                    size=\"lg\"\n                    ref={ref => this.modal = ref}\n                    className=\"demo10-modal\"\n                >\n                    <Modal.Header closeButton>\n                        <Modal.Title>标题</Modal.Title>\n                    </Modal.Header>\n\n                    <Modal.Body>\n                        <MultiSelectTable\n                            columns={this.columns}\n                            data={this.state.data}\n                            multiSelect={multiObj}\n                            getSelectedDataFunc={this.getSelectedDataFunc} \n                        />\n                    </Modal.Body>\n\n                    <Modal.Footer>\n                        <Button onClick={this.clear} colors=\"secondary\" className=\"clear-btn\">清空所选</Button>\n                        <Button onClick={this.close} colors=\"secondary\" style={{ marginRight: 8 }}>取消</Button>\n                        <Button onClick={this.close} bordered>确认</Button>\n                    </Modal.Footer>\n                </Modal>\n            </div>\n        )\n    }\n}\n\n\n", "desc": " 嵌套表格", "scss_code": ".demo10-modal{\r\n  .clear-btn{\r\n    float: left;\r\n    background: transparent !important;\r\n    border-color: transparent !important;\r\n    &:hover{\r\n      background: #EBECF0 !important;\r\n    }\r\n    &:active{\r\n      background: #EBECF0 !important;\r\n    }\r\n  }\r\n}" }, { "example": _react2['default'].createElement(Demo11, null), "title": " 可拖拽Header的模态框", "code": "/**\r\n *\r\n * @title 可拖拽Header的模态框\r\n * @description 通过`draggable`参数设置是否可拖拽。注意：模态框 header 内，若有绑定事件的元素，需要添加一个 className=\"dnd-cancel\"，才能正常触发相应事件。\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\nimport { Checkbox, Button } from 'tinper-bee';\r\n\n\nimport Modal from \"tinper-bee/lib/src\";;\r\n\r\nclass Demo11 extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            showModal: false,\r\n            checked: false,\r\n        };\r\n    }\r\n\r\n    close = () => {\r\n        this.setState({\r\n            showModal: false\r\n        });\r\n    }\r\n    open = () => {\r\n        this.setState({\r\n            showModal: true\r\n        });\r\n    }\r\n\r\n    changeCheck=()=> {\r\n        this.setState({checked:!this.state.checked});\r\n    }\r\n\r\n    render () {\r\n        return (\r\n            <div className='demo12'>\r\n                <Button\r\n                    bordered\r\n                    className=\"demo-margin\"\r\n                    onClick={this.open}>\r\n                    打开模态框\r\n                </Button>\r\n                <Modal\r\n                    show={this.state.showModal}\r\n                    onHide={this.close}\r\n                    size=\"lg\"\r\n                    ref={ref => this.modal = ref}\r\n                    className=\"demo10-modal\"\r\n                    backdrop={false}\r\n                    draggable={true}\r\n                    bounds={'body'}//可拖拽范围为当前可见区域\r\n                >\r\n                    <Modal.Header closeButton>\r\n                        <Modal.Title>\r\n                        <Checkbox \r\n                            className=\"dnd-cancel\"\r\n                            checked={this.state.checked}  \r\n                            onChange={this.changeCheck}\r\n                        >\r\n                            可勾选的标题\r\n                        </Checkbox>\r\n                        </Modal.Title>\r\n                    </Modal.Header>\r\n\r\n                    <Modal.Body>\r\n                        <p>Some contents...</p>\r\n                        <p>Some contents...</p>\r\n                        <p>Some contents...</p>\r\n                        \r\n                    </Modal.Body>\r\n\r\n                    <Modal.Footer>\r\n                        <Button onClick={this.close} colors=\"secondary\" style={{ marginRight: 8 }}>取消</Button>\r\n                        <Button onClick={this.close} bordered>确认</Button>\r\n                    </Modal.Footer>\r\n                </Modal>\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\n\r\n", "desc": " 通过`draggable`参数设置是否可拖拽。注意：模态框 header 内，若有绑定事件的元素，需要添加一个 className=\"dnd-cancel\"，才能正常触发相应事件。" }, { "example": _react2['default'].createElement(Demo12, null), "title": " 信息提示", "code": "/**\r\n *\r\n * @title 信息提示\r\n * @description 提供`info`、`success`、`error`、`warning`、`confirm` API\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\nimport { Icon, Button } from 'tinper-bee';\r\n\n\nimport Modal from \"tinper-bee/lib/src\";;\r\n\r\nconst info = function () {\r\n    Modal.info({\r\n        title: '提示',\r\n        okText: '知道了',\r\n        content: (\r\n          <div>\r\n            <p>单据状态已更新，请在审批中心内查看。</p>\r\n          </div>\r\n        ),\r\n        onOk() {},\r\n    });\r\n};\r\nconst success = function () {\r\n    Modal.success({\r\n        title: '提交成功',\r\n        content: '单据提交成功，你可以在审批中心关注审批状态。',\r\n    });\r\n};\r\nconst error = function () {\r\n    Modal.error({\r\n        title: '提交失败',\r\n        content: '单据状态更新失败，请重新尝试。',\r\n    });\r\n};\r\nconst warning = function () {\r\n    Modal.warning({\r\n        title: '警告',\r\n        content: '单据状态异常，请重新提交',\r\n    });\r\n};\r\nconst confirm = function () {\r\n    Modal.confirm({\r\n        title: '确定要删除这条单据吗？',\r\n        content: '单据删除后将不能恢复。',\r\n        onOk() {\r\n            console.log('OK');\r\n        },\r\n        onCancel() {\r\n            console.log('Cancel');\r\n        },\r\n    })\r\n};\r\n\r\nclass Demo12 extends Component {\r\n    render () {\r\n        return (\r\n            <div className=\"demo12\">\r\n                <Button colors=\"info\" onClick={info}>Info</Button>\r\n                <Button colors=\"success\" onClick={success}>Success</Button>\r\n                <Button colors=\"danger\" onClick={error}>Error</Button>\r\n                <Button colors=\"warning\" onClick={warning}>Warning</Button>\r\n                <Button bordered onClick={confirm}>Confirm</Button>\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\n\r\n", "desc": " 提供`info`、`success`、`error`、`warning`、`confirm` API", "scss_code": ".demo12{\r\n    .u-button{\r\n        margin: 5px;\r\n    }\r\n}" }, { "example": _react2['default'].createElement(Demo13, null), "title": " 通过拖拽调整弹框大小", "code": "/**\n *\n * @title 通过拖拽调整弹框大小\n * @description 通过 `resizable` 参数控制弹框是否可被 `resize`\n *\n */\n\nimport React, { Component } from 'react';\nimport { Button } from 'tinper-bee';\nimport Modal from \"tinper-bee/lib/src\";;\n\n\nclass Demo13 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            showModal: false\n        };\n        this.close = this.close.bind(this);\n        this.open = this.open.bind(this);\n    }\n\n    close() {\n        this.setState({\n            showModal: false\n        });\n    }\n    open() {\n        this.setState({\n            showModal: true\n        });\n    }\n    onResizeStart = (e, dir, elementRef) => {\n        console.log(\"onResizeStart\", e, dir, elementRef)\n    }\n    onResize = (e, dir, elementRef, delta) => {\n        console.log(\"onResize\", e, dir, elementRef, delta)\n    }\n    onResizeStop = (e, dir, elementRef, delta) => {\n        console.log(\"onResizeStop\", e, dir, elementRef, delta)\n    }\n\n    render () {\n        return (\n        <div>\n            <Button\n            bordered\n            className=\"demo-margin\"\n            onClick = { this.open }>\n                打开模态框\n            </Button>​\n            <Modal\n            show = { this.state.showModal }\n            backdropClosable={false}\n            resizable={true}\n            resizeClassName=\"resize-box\"\n            maxWidth={\"1000\"}\n            maxHeight={\"500px\"}\n            minWidth={300}\n            minHeight={150}\n            onResizeStart={this.onResizeStart}\n            onResize={this.onResize}\n            onResizeStop={this.onResizeStop}\n            onHide = { this.close } >\n                <Modal.Header closeButton>\n                    <Modal.Title>标题</Modal.Title>\n                </Modal.Header>\n\n                <Modal.Body>\n                    <p>Some contents...</p>\n                    <p>Some contents...</p>\n                    <p>Some contents...</p>\n                </Modal.Body>\n\n                <Modal.Footer>\n                    <Button onClick={ this.close } colors=\"secondary\" style={{marginRight: 8}}>取消</Button>\n                    <Button onClick={ this.close } bordered>确认</Button>\n                </Modal.Footer>\n           </Modal>\n        </div>\n        )\n    }\n}\n\n\n", "desc": " 通过 `resizable` 参数控制弹框是否可被 `resize`", "scss_code": ".demo13{\n    .u-button{\n        margin: 5px;\n    }\n}" }];
+	var Demo1 = __webpack_require__(276);var Demo2 = __webpack_require__(277);var Demo3 = __webpack_require__(282);var Demo4 = __webpack_require__(283);var Demo5 = __webpack_require__(284);var Demo6 = __webpack_require__(285);var Demo7 = __webpack_require__(288);var Demo8 = __webpack_require__(687);var Demo9 = __webpack_require__(688);var Demo10 = __webpack_require__(693);var Demo11 = __webpack_require__(737);var Demo12 = __webpack_require__(738);var Demo13 = __webpack_require__(739);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 默认的模态框", "code": "/**\n *\n * @title 默认的模态框\n * @description\n *\n */\n\nimport React, { Component } from 'react';\nimport { Button } from 'tinper-bee';\nimport Modal from \"tinper-bee/lib/src\";;\n\n\nclass Demo1 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            showModal: false\n        };\n        this.close = this.close.bind(this);\n        this.open = this.open.bind(this);\n    }\n\n    close() {\n        this.setState({\n            showModal: false\n        });\n    }\n    open() {\n        this.setState({\n            showModal: true\n        });\n    }\n    render () {\n        return (\n        <div>\n            <Button\n            bordered\n            className=\"demo-margin\"\n            onClick = { this.open }>\n                打开模态框\n            </Button>​\n            <Modal\n            show = { this.state.showModal }\n            onHide = { this.close } >\n                <Modal.Header closeButton>\n                    <Modal.Title>标题</Modal.Title>\n                </Modal.Header>\n\n                <Modal.Body>\n                    <p>Some contents...</p>\n                    <p>Some contents...</p>\n                    <p>Some contents...</p>\n                </Modal.Body>\n\n                <Modal.Footer>\n                    <Button onClick={ this.close } colors=\"secondary\" style={{marginRight: 8}}>取消</Button>\n                    <Button onClick={ this.close } bordered>确认</Button>\n                </Modal.Footer>\n           </Modal>\n        </div>\n        )\n    }\n}\n\n\n", "desc": "", "scss_code": ".demo-margin{\n  margin: 5px 15px;\n}" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 注册的模态框", "code": "/**\r\n *\r\n * @title 注册的模态框\r\n * @description\r\n *\r\n */\r\n\r\nimport React, {Component} from 'react';\nimport { FormControl, Label, FormGroup, Button } from 'tinper-bee';\r\n\nimport Modal from \"tinper-bee/lib/src\";;\r\n\n\n\n\r\nclass Demo2 extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            showModal: false,\r\n            password: '',\r\n            name: ''\r\n        };\r\n        this.close = this.close.bind(this);\r\n        this.open = this.open.bind(this);\r\n    }\r\n\r\n    close() {\r\n        this.setState({\r\n            showModal: false\r\n        });\r\n    }\r\n\r\n    open() {\r\n        this.setState({\r\n            showModal: true\r\n        });\r\n    }\r\n\r\n    handleChange = (state) => (value) => {\r\n        this.setState({\r\n            [state]: value\r\n        })\r\n    }\r\n\r\n    render() {\r\n\r\n        return (\r\n            <div className=\"demo-margin\">\r\n                <Button\r\n                    bordered\r\n                    onClick={this.open}>\r\n                    注册模态框\r\n                </Button>​\r\n                <Modal\r\n                    show={this.state.showModal}\r\n                    onHide={this.close}\r\n                    style={{width: 450}}\r\n                >\r\n                    <Modal.Header closeButton>\r\n                        <Modal.Title>注册</Modal.Title>\r\n                    </Modal.Header>\r\n\r\n                    <Modal.Body>\r\n                        <div style={{ width: 300, margin: '0 auto' }}>\r\n                            <FormGroup>\r\n                                <Label>用户名</Label>\r\n                                <FormControl\r\n                                    value={this.state.name}\r\n                                    onChange={this.handleChange('name')}\r\n                                />\r\n                            </FormGroup>\r\n                            <FormGroup>\r\n                                <Label>密码</Label>\r\n                                <FormControl\r\n                                    value={this.state.password}\r\n                                    onChange={this.handleChange('password')}\r\n                                />\r\n                            </FormGroup>\r\n                        </div>\r\n\r\n\r\n                    </Modal.Body>\r\n\r\n                    <Modal.Footer className=\"text-center\">\r\n                        <Button colors=\"secondary\" style={{ marginRight: 8 }} onClick={this.close}>\r\n                            取消\r\n                        </Button>\r\n                        <Button bordered onClick={this.close}>\r\n                            确认\r\n                        </Button>\r\n                    </Modal.Footer>\r\n                </Modal>\r\n\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\n\r\n", "desc": "", "scss_code": ".demo-margin{\r\n  margin: 5px 15px;\r\n}\r\n.text-center{\r\n  text-align: center;\r\n}" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 不同大小的模态框", "code": "/**\r\n *\r\n * @title 不同大小的模态框\r\n * @description 通过size属性控制模态框大小\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\nimport { Button } from 'tinper-bee';\r\n\nimport Modal from \"tinper-bee/lib/src\";;\r\n\r\nclass Demo3 extends Component {\r\n\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            showModal: false,\r\n            modalSize: ''\r\n        };\r\n        this.close = this.close.bind(this);\r\n        this.open = this.open.bind(this);\r\n        this.changeSize = this.changeSize.bind(this);\r\n\r\n    }\r\n\r\n    close() {\r\n        this.setState({\r\n            showModal: false\r\n        });\r\n    }\r\n\r\n    open() {\r\n        this.setState({\r\n            showModal: true\r\n        });\r\n    }\r\n\r\n    changeSize(size) {\r\n        this.setState({\r\n            modalSize: size\r\n        });\r\n    }\r\n\r\n    render() {\r\n        return (\r\n            <div>\r\n                <Button\r\n                    bordered\r\n                    className=\"demo-margin\"\r\n                    onClick={ ()=>{this.changeSize(\"sm\");this.open();} }>\r\n                    小号模态框\r\n                </Button>\r\n                <Button\r\n                    bordered\r\n                    className=\"demo-margin\"\r\n                    onClick={ ()=>{this.changeSize(\"lg\");this.open();} }>\r\n                    大号模态框\r\n                </Button>\r\n                <Button\r\n                    bordered\r\n                    className=\"demo-margin\"\r\n                    onClick={ ()=>{this.changeSize(\"xlg\");this.open();} }>\r\n                    超大号模态框\r\n                </Button>\r\n                <Modal show={ this.state.showModal } size={ this.state.modalSize } onHide={ this.close } className=\"demo3-modal\">\r\n                    <Modal.Header closeButton>\r\n                        <Modal.Title > 我来组成头部 </Modal.Title>\r\n                    </Modal.Header >\r\n                    <Modal.Body>\r\n                        <h4> 这是一个沉默的标题 </h4>\r\n\r\n                        <p> 一些描述。。。 </p>\r\n                        <hr/>\r\n\r\n                        <p> 用创想与技术推动商业和社会进步 </p>\r\n\r\n                        <p> 我们基于创造性的思想与先进的技术（ 现阶段是信息技术）， 创新和运营高客户价值的产品与服务， 帮助客户实现发展目标， 进而推动商业和社会进步。\r\n                        </p>\r\n\r\n                        <p> 全球领先的企业与公共组织软件、 云服务、 金融服务提供商。 </p>\r\n\r\n                        <p> 员工快乐工作， 成就事业， 分享成功的平台。 </p>\r\n\r\n                        <p> 企业和公共组织是我们持续服务的客户。 软件、 云服务、 金融服务是用友新发展阶段的核心业务。 全球领先是我们必须达成的目标。 </p>\r\n\r\n                        <p> 在努力实现产业发展目标的同时， 员工在用友快乐工作、 成就事业、 分享成功也是公司的追求。 </p>\r\n\r\n                    </Modal.Body>\r\n                    <Modal.Footer>\r\n                        <Button colors=\"secondary\" onClick={ this.close }> 关闭 </Button>\r\n                    </Modal.Footer>\r\n                </Modal>\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\n\r\n", "desc": " 通过size属性控制模态框大小", "scss_code": ".demo-margin{\r\n  margin: 5px 15px;\r\n}\r\n.u-modal-body{\r\n  max-height: 430px;\r\n  overflow: auto;\r\n}\r\n\r\n.demo3-modal{\r\n  .u-modal-body{\r\n    background: #f7f9fb;\r\n  }\r\n}" }, { "example": _react2['default'].createElement(Demo4, null), "title": " 不同遮罩层状态的模态框", "code": "/**\r\n *\r\n * @title 不同遮罩层状态的模态框\r\n * @description 遮罩层可以通过backdrop属性控制状态，可以为不响应事件，可以不显示。\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\nimport { Button } from 'tinper-bee';\r\n\nimport Modal from \"tinper-bee/lib/src\";;\r\n\r\n\r\nclass Demo4 extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            showModal: false,\r\n            modalDropup: true\r\n        };\r\n        this.close = this.close.bind(this);\r\n        this.open = this.open.bind(this);\r\n        this.changeDropup = this.changeDropup.bind(this);\r\n\r\n    }\r\n\r\n    close() {\r\n        this.setState({\r\n            showModal: false\r\n        });\r\n    }\r\n\r\n    open() {\r\n        this.setState({\r\n            showModal: true\r\n        });\r\n    }\r\n\r\n    changeDropup(state) {\r\n        this.setState({\r\n            modalDropup: state\r\n        });\r\n    }\r\n\r\n    render() {\r\n        return (\r\n            <div>\r\n                <Button\r\n                    bordered\r\n                    className=\"demo-margin\"\r\n                    onClick={ ()=>{this.changeDropup(false);this.open();} }>\r\n                    无遮罩层模态框\r\n                </Button>\r\n                <Button\r\n                    bordered\r\n                    className=\"demo-margin\"\r\n                    onClick={ ()=>{this.changeDropup(\"static\");this.open();} }>\r\n                    遮罩无事件模态框\r\n                </Button>\r\n                <Modal\r\n                    className=\"demo4-modal\"\r\n                    show={ this.state.showModal }\r\n                    backdrop={ this.state.modalDropup }\r\n                    onHide={ this.close }>\r\n                    <Modal.Header closeButton>\r\n                        <Modal.Title > 我来组成头部 </Modal.Title>\r\n                    </Modal.Header >\r\n                    <Modal.Body >\r\n                        <h4> 这是一个沉默的标题 </h4>\r\n\r\n                        <p> 一些描述。。。 </p>\r\n                        <hr/>\r\n\r\n                        <p> 用创想与技术推动商业和社会进步 </p>\r\n\r\n                        <p> 我们基于创造性的思想与先进的技术（ 现阶段是信息技术）， 创新和运营高客户价值的产品与服务， 帮助客户实现发展目标， 进而推动商业和社会进步。 </p>\r\n\r\n                        <p> 全球领先的企业与公共组织软件、 云服务、 金融服务提供商。 </p>\r\n\r\n                        <p> 员工快乐工作， 成就事业， 分享成功的平台。 </p>\r\n                    </Modal.Body>\r\n                    <Modal.Footer>\r\n                        <Button colors=\"secondary\" onClick={ this.close }> 关闭 </Button>\r\n                    </Modal.Footer>\r\n                </Modal>\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\n\r\n", "desc": " 遮罩层可以通过backdrop属性控制状态，可以为不响应事件，可以不显示。", "scss_code": ".demo-margin{\r\n  margin: 5px 15px;\r\n}\r\n.demo4-modal{\r\n  .u-modal-body{\r\n    background: #f7f9fb;\r\n  }\r\n}" }, { "example": _react2['default'].createElement(Demo5, null), "title": " 自定义大小的模态框", "code": "/**\r\n *\r\n * @title 自定义大小的模态框\r\n * @description 通过width属性定义模态框大小\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\nimport { Button } from 'tinper-bee';\r\n\nimport Modal from \"tinper-bee/lib/src\";;\r\n\r\n\r\nclass Demo5 extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            showModal: false\r\n        };\r\n        this.close = this.close.bind(this);\r\n        this.open = this.open.bind(this);\r\n    }\r\n\r\n    close() {\r\n        this.setState({\r\n            showModal: false\r\n        });\r\n    }\r\n    open() {\r\n        this.setState({\r\n            showModal: true\r\n        });\r\n    }\r\n    render () {\r\n        return (\r\n        <div>\r\n            <Button\r\n            bordered\r\n            className=\"demo-margin\"\r\n            onClick={ ()=>{this.open()} }>\r\n                自定义大小的模态框\r\n            </Button>​\r\n            <Modal\r\n            show = { this.state.showModal }\r\n            onHide = { this.close } \r\n            width = '400'>\r\n                <Modal.Header closeButton>\r\n                    <Modal.Title>这是题目</Modal.Title>\r\n                </Modal.Header>\r\n\r\n                <Modal.Body>\r\n                    这是一些描述。。。\r\n                </Modal.Body>\r\n\r\n                <Modal.Footer>\r\n                    <Button onClick={ this.close } colors=\"secondary\" style={{marginRight: 8}}>取消</Button>\r\n                    <Button onClick={ this.close } bordered>确认</Button>\r\n                </Modal.Footer>\r\n           </Modal>\r\n        </div>\r\n        )\r\n    }\r\n}\r\n\r\n\r\n", "desc": " 通过width属性定义模态框大小", "scss_code": ".demo-margin{\r\n    margin: 5px 15px;\r\n}" }, { "example": _react2['default'].createElement(Demo6, null), "title": " 被loading遮住的模态框", "code": "/**\r\n *\r\n * @title 被loading遮住的模态框\r\n * @description 当Modal组件和Loading组件同时出现的时候，Loading会把Modal遮住\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\nimport { Loading, Button } from 'tinper-bee';\r\n\n\nimport Modal from \"tinper-bee/lib/src\";;\r\n\r\n\r\n\r\nclass Demo6 extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            showModal: false,\r\n            showLoading: false\r\n        };\r\n    }\r\n\r\n    close = () => {\r\n        this.setState({\r\n            showModal: false,\r\n            showLoading: false\r\n        });\r\n    }\r\n    open = () => {\r\n        this.setState({\r\n            showModal: true,\r\n            showLoading: true\r\n        });\r\n        setTimeout(() => {\r\n            this.setState({\r\n                showLoading: false\r\n            })\r\n        }, 1000)\r\n    }\r\n\r\n    render() {\r\n        return (\r\n            <div>\r\n                <Button\r\n                    bordered\r\n                    className=\"demo-margin\"\r\n                    onClick={this.open}>\r\n                    打开模态框\r\n                </Button>\r\n                <Loading\r\n                    showBackDrop={true}\r\n                    // loadingType=\"line\"\r\n                    fullScreen\r\n                    show={this.state.showLoading}\r\n                >\r\n                </Loading>\r\n                <Modal\r\n                    show={this.state.showModal}\r\n                    onHide={this.close} >\r\n                    <Modal.Header closeButton>\r\n                        <Modal.Title>标题</Modal.Title>\r\n                    </Modal.Header>\r\n                    <Modal.Body>\r\n                        我是模态框，我的被loading遮住了~\r\n                    </Modal.Body>\r\n                    <Modal.Footer>\r\n                        <Button onClick={this.close} colors=\"secondary\" style={{ marginRight: 8 }}>取消</Button>\r\n                        <Button onClick={this.close} bordered>确认</Button>\r\n                    </Modal.Footer>\r\n                </Modal>\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\n\r\n", "desc": " 当Modal组件和Loading组件同时出现的时候，Loading会把Modal遮住", "scss_code": ".demo-margin{\r\n    margin: 5px 15px;\r\n}" }, { "example": _react2['default'].createElement(Demo7, null), "title": " 表单模态框", "code": "/**\r\n *\r\n * @title 表单模态框\r\n * @description 表单模态框\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\nimport { Radio, Rate, Form, FormControl, DatePicker, Select, Label, FormGroup, Button } from 'tinper-bee';\r\n\nimport Modal from \"tinper-bee/lib/src\";;\r\n\n\n\n\n\n\n\n\n\r\n\r\nconst FormItem = Form.FormItem;\r\nconst Option = Select.Option;\r\nclass Demo7 extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            selectedValue: \"man\",\r\n            showModal: false,\r\n            name: '',\r\n            education: '',\r\n            birthDate: ''\r\n\r\n        };\r\n    }\r\n\r\n    close = () => {\r\n        this.setState({\r\n            showModal: false\r\n        });\r\n    }\r\n\r\n    handleClose = () => {\r\n        this.props.form.validateFields((err, values) => {\r\n            if (err) {\r\n                console.log('校验失败', values);\r\n            } else {\r\n                console.log('提交成功', values)\r\n                this.close()\r\n            }\r\n        });\r\n    }\r\n\r\n    open = () => {\r\n        this.setState({\r\n            showModal: true\r\n        });\r\n    }\r\n\r\n    handleChange = (state) => (value) => {\r\n        this.setState({\r\n            [state]: value\r\n        })\r\n    }\r\n\r\n    getCalendarContainer = () => {\r\n\r\n        return document.getElementById('demo7');\r\n    }\r\n\r\n    render() {\r\n        const { getFieldProps, getFieldError } = this.props.form;\r\n        const self = this;\r\n\r\n        return (\r\n            <div className=\"demo-margin\" id=\"demo7\">\r\n                <Button\r\n                    bordered\r\n                    onClick={this.open}>\r\n                    添加模态框\r\n                </Button>\r\n                <Modal\r\n                    show={this.state.showModal}\r\n                    onHide={this.close}\r\n                    className=\"demo7-modal\"\r\n                >\r\n                    <Modal.Header closeButton>\r\n                        <Modal.Title>表单实践</Modal.Title>\r\n                    </Modal.Header>\r\n\r\n                    <Modal.Body>\r\n                        <div>\r\n                            <Form>\r\n                                <FormItem>\r\n                                    <Label>姓名</Label>\r\n                                    <FormControl placeholder=\"请输入姓名\"\r\n                                        {...getFieldProps('name', {\r\n                                            validateTrigger: 'onBlur',\r\n                                            rules: [{\r\n                                                required: true, message: '请输入姓名',\r\n                                            }],\r\n                                        })}\r\n                                    />\r\n                                    <span className='error'>\r\n                                        {getFieldError('name')}\r\n                                    </span>\r\n                                </FormItem>\r\n                                <FormItem>\r\n                                    <Label>身份证号</Label>\r\n                                    <FormControl placeholder=\"请输入身份证号\"\r\n                                        {...getFieldProps('id', {\r\n                                            validateTrigger: 'onBlur',\r\n                                            rules: [{\r\n                                                required: true, message: '请输入身份证号',\r\n                                            }, {\r\n                                                pattern: /^[1-9][0-9]{5}([1][9][0-9]{2}|[2][0][0|1][0-9])([0][1-9]|[1][0|1|2])([0][1-9]|[1|2][0-9]|[3][0|1])[0-9]{3}([0-9]|[X])$/, message: '身份证号格式不正确'\r\n                                            }],\r\n                                        })}\r\n                                    />\r\n                                    <span className='error'>\r\n                                        {getFieldError('id')}\r\n                                    </span>\r\n                                </FormItem>\r\n                                <FormItem className='time'>\r\n                                    <Label>出生日期</Label>\r\n                                    <DatePicker\r\n                                        {\r\n                                        ...getFieldProps('time', {\r\n                                            validateTrigger: 'onBlur',\r\n                                            rules: [{\r\n                                                required: true, message: '请选择出生日期',\r\n                                            }, {\r\n                                                type: 'date', message: '日期格式不正确'\r\n                                            }],\r\n                                        }\r\n                                        )}\r\n                                        placeholder={'请选择出生日期'}\r\n                                        getCalendarContainer={this.getCalendarContainer}\r\n                                    />\r\n                                    <span className='error'>\r\n                                        {getFieldError('time')}\r\n                                    </span>\r\n                                </FormItem>\r\n                                <FormItem>\r\n                                    <Label>年龄</Label>\r\n                                    <FormControl placeholder=\"请输入年龄\"\r\n                                        {...getFieldProps('age', {\r\n                                            validateTrigger: 'onBlur',\r\n                                            rules: [{\r\n                                                required: true, message: '请输入年龄',\r\n                                            }],\r\n                                        })}\r\n                                    />\r\n                                    <span className='error'>\r\n                                        {getFieldError('age')}\r\n                                    </span>\r\n                                </FormItem>\r\n                                <FormItem>\r\n                                    <Label>性别</Label>\r\n                                    <Radio.RadioGroup\r\n                                        selectedValue={this.state.selectedValue}\r\n                                        {\r\n                                        ...getFieldProps('sex', {\r\n                                            initialValue: 'man',\r\n                                            onChange (value) {\r\n                                                self.setState({ selectedValue: value });\r\n                                            },\r\n                                            rules: [{ required: true }]\r\n                                        }\r\n                                        )}\r\n                                    >\r\n                                        <Radio value=\"man\" >男</Radio>\r\n                                        <Radio value=\"woman\" >女</Radio>\r\n                                    </Radio.RadioGroup>\r\n                                </FormItem>\r\n                                <FormItem>\r\n                                    <Label>学历</Label>\r\n                                    <Select\r\n                                        {\r\n                                        ...getFieldProps('education', {\r\n                                            initialValue: '',\r\n                                            rules: [{ required: true, message: '请选择学历' }]\r\n                                        }\r\n                                        )}\r\n                                    >\r\n                                        <Option value=\"\">请选择</Option>\r\n                                        <Option value=\"nothing\">无</Option>\r\n                                        <Option value=\"middle\">初中</Option>\r\n                                        <Option value=\"senior\">高中</Option>\r\n                                        <Option value=\"college1\">专科</Option>\r\n                                        <Option value=\"college2\">本科</Option>\r\n                                        <Option value=\"graduate\">研究生及以上</Option>\r\n                                        <Option value=\"other\">其它</Option>\r\n                                    </Select>\r\n                                    <span className='error'>\r\n                                        {getFieldError('education')}\r\n                                    </span>\r\n                                </FormItem>\r\n                                <FormItem>\r\n                                    <Label>保密等级</Label>\r\n                                    <Rate\r\n                                        {\r\n                                        ...getFieldProps('rate', {\r\n                                            initialValue: 0,\r\n                                            rules: [{ required: true }]\r\n                                        }\r\n                                        )}\r\n                                    />\r\n                                </FormItem>\r\n                                <FormItem className=\"remarks\">\r\n                                    <Label>备注</Label>\r\n                                    <FormControl componentClass='textarea'\r\n                                        {\r\n                                        ...getFieldProps('remark', {}\r\n                                        )}\r\n                                    />\r\n                                </FormItem>\r\n                            </Form>\r\n                        </div>\r\n                    </Modal.Body>\r\n\r\n                    <Modal.Footer className=\"text-center\">\r\n                        <Button colors=\"secondary\" style={{ marginRight: 8 }} onClick={this.close}>\r\n                            取消\r\n                        </Button>\r\n                        <Button bordered onClick={this.handleClose}>\r\n                            确认\r\n                        </Button>\r\n                    </Modal.Footer>\r\n                </Modal>\r\n\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\n\r\n", "desc": " 表单模态框", "scss_code": ".demo7-modal {\r\n    font-size: 14px;\r\n    .u-label {\r\n        display: inline-block;\r\n        min-width: 100px;\r\n        text-align: right;\r\n        padding-right: 12px;\r\n    }\r\n    .u-form-control {\r\n        width: auto;\r\n        min-width: 310px;\r\n    }\r\n    .error {\r\n        font-size: 12px;\r\n        color: red;\r\n        margin-left: 10px;\r\n    }\r\n    .submit {\r\n        padding-left: 110px;\r\n    }\r\n    .submit .login {\r\n        margin-left: 10px;\r\n    }\r\n    .u-form-item .u-select {\r\n        min-width: 310px;\r\n    }\r\n    textarea {\r\n        resize: none;\r\n    }\r\n    .time>div {\r\n        display: inline-block;\r\n    }\r\n    .time .u-label {\r\n        position: relative;\r\n        bottom: 10px;\r\n    }\r\n    .time .error{\r\n        position: relative;\r\n        bottom: 10px;\r\n    }\r\n    .remarks .u-label{\r\n        position: relative;\r\n        bottom: 12px;\r\n    }\r\n    .u-city-select {\r\n        display: inline-block;\r\n    }\r\n    .u-city-select .province,\r\n    .u-city-select .city,\r\n    .u-city-select .area {\r\n        width: 120px;\r\n    }\r\n    .u-form-item {\r\n        min-height: auto!important;\r\n    }\r\n    .u-modal-body{\r\n        background: #f7f9fb;\r\n    }\r\n\r\n}\r\n#demo7{\r\n    .rc-calendar-picker{\r\n        z-index: 1800;\r\n    }\r\n}\r\n.demo-margin{\r\n    margin: 5px 15px;\r\n}" }, { "example": _react2['default'].createElement(Demo8, null), "title": " 两个模态框", "code": "/**\r\n *\r\n * @title 两个模态框\r\n * @description 当两个模态框同时出现的时候，后面出现的那个层级在上面\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\nimport { Button } from 'tinper-bee';\r\n\nimport Modal from \"tinper-bee/lib/src\";;\r\n\r\nclass Demo8 extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            showModal: false,\r\n            showModal2: false\r\n        };\r\n    }\r\n\r\n    close = () => {\r\n        this.setState({\r\n            showModal: false\r\n        });\r\n    }\r\n\r\n    open = () => {\r\n        this.setState({\r\n            showModal: true\r\n        });\r\n    }\r\n\r\n    close2 = () => {\r\n        this.setState({\r\n            showModal2: false\r\n        });\r\n    }\r\n\r\n    open2 = () => {\r\n        this.setState({\r\n            showModal2: true\r\n        });\r\n    }\r\n\r\n    render() {\r\n\r\n        return (\r\n            <div className=\"demo-margin\">\r\n                <Button\r\n                    bordered\r\n                    onClick={this.open}>\r\n                    打开模态框\r\n                </Button>\r\n                <Modal\r\n                    show={this.state.showModal}\r\n                    onHide={this.close}\r\n                >\r\n                    <Modal.Header closeButton>\r\n                        <Modal.Title>第一个模态框</Modal.Title>\r\n                    </Modal.Header>\r\n\r\n                    <Modal.Body>\r\n                       这是第一个模态框\r\n                        <Button\r\n                            bordered\r\n                            size=\"sm\"\r\n                            onClick={this.open2}\r\n                        >\r\n                            打开第二个模态框~\r\n                        </Button>\r\n                    </Modal.Body>\r\n\r\n                    <Modal.Footer>\r\n                        <Button colors=\"secondary\" style={{ marginRight: 8 }} onClick={this.close}>\r\n                            取消\r\n                        </Button>\r\n                        <Button bordered onClick={this.close}>\r\n                            确认\r\n                        </Button>\r\n                    </Modal.Footer>\r\n                </Modal>\r\n                <Modal\r\n                    show={this.state.showModal2}\r\n                    onHide={this.close2}\r\n                >\r\n                    <Modal.Header closeButton>\r\n                        <Modal.Title>第二个模态框</Modal.Title>\r\n                    </Modal.Header>\r\n\r\n                    <Modal.Body>\r\n                        这是第二个模态框~\r\n                    </Modal.Body>\r\n\r\n                    <Modal.Footer>\r\n                        <Button colors=\"secondary\" style={{ marginRight: 8 }} onClick={this.close2}>\r\n                            取消\r\n                        </Button>\r\n                        <Button bordered onClick={this.close2}>\r\n                            确认\r\n                        </Button>\r\n                    </Modal.Footer>\r\n                </Modal>\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\n\r\n", "desc": " 当两个模态框同时出现的时候，后面出现的那个层级在上面", "scss_code": ".demo-margin{\r\n    margin: 5px 15px;\r\n}" }, { "example": _react2['default'].createElement(Demo9, null), "title": " enforceFocus", "code": "/**\r\n *\r\n * @title enforceFocus\r\n * @description 打开模态框时控制焦点的聚焦和离开\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\nimport { Popconfirm, FormControl, Label, FormGroup, Button } from 'tinper-bee';\r\n\nimport Modal from \"tinper-bee/lib/src\";;\r\n\r\n\n\n\n\n// import { Popconfirm } from 'tinper-bee';\r\n\r\n\r\nclass Demo9 extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            showModal: false,\r\n            showModal2: false\r\n        };\r\n    }\r\n\r\n    close = () => {\r\n        this.setState({\r\n            showModal: false\r\n        });\r\n    }\r\n\r\n    open = () => {\r\n        this.setState({\r\n            showModal: true\r\n        });\r\n    }\r\n\r\n    close2 = () => {\r\n        this.setState({\r\n            showModal2: false\r\n        });\r\n    }\r\n\r\n    open2 = () => {\r\n        this.setState({\r\n            showModal2: true\r\n        });\r\n    }\r\n\r\n    handleChange = (state) => (value) => {\r\n      this.setState({\r\n          [state]: value\r\n      })\r\n    }\r\n\r\n    render() {\r\n      let content = (\r\n            <FormGroup>\r\n                <Label>用户名</Label>\r\n                <FormControl\r\n                    value={this.state.name}\r\n                    onChange={this.handleChange('name')}\r\n                />\r\n            </FormGroup>\r\n      );\r\n        return (\r\n            <div className=\"demo-margin\">\r\n                <Button\r\n                    bordered\r\n                    onClick={this.open}\r\n                >\r\n                    打开模态框\r\n                </Button>\r\n                <Modal\r\n                    show={this.state.showModal}\r\n                    onHide={this.close}\r\n                    enforceFocus={false}\r\n                >\r\n                    <Modal.Header closeButton>\r\n                        <Modal.Title>标题</Modal.Title>\r\n                    </Modal.Header>\r\n\r\n                    <Modal.Body>\r\n                       <span>\r\n                          在模态框中打开气泡组件，如果气泡组件中有文本框，文本框光标不会聚焦。需在modal中设置enforceFocus为false。\r\n                       </span>\r\n                      <div className=\"demoPadding\">\r\n                        <Popconfirm trigger=\"click\" placement=\"right\" content={content}>\r\n                            <Button bordered>打开气泡组件</Button>\r\n                        </Popconfirm>\r\n                      </div>\r\n                    </Modal.Body>\r\n\r\n                    <Modal.Footer className=\"text-center\">\r\n                        <Button colors=\"secondary\" style={{ marginRight: 8 }} onClick={this.close}>\r\n                            取消\r\n                        </Button>\r\n                        <Button bordered onClick={this.close}>\r\n                            确认\r\n                        </Button>\r\n                    </Modal.Footer>\r\n                </Modal>\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\n\r\n", "desc": " 打开模态框时控制焦点的聚焦和离开", "scss_code": ".u-popconfirm {\r\n  z-index:10000;\r\n}\r\n\r\n.demoPadding {\r\n  text-align: center;\r\n}" }, { "example": _react2['default'].createElement(Demo10, null), "title": " 嵌套表格的模态框", "code": "/**\n *\n * @title 嵌套表格的模态框\n * @description 嵌套表格\n *\n */\n\nimport React, { Component } from 'react';\nimport { Table, Checkbox, Button } from 'tinper-bee';\nimport multiSelect from \"bee-table/build/lib/multiSelect\";\n\n\nimport Modal from \"tinper-bee/lib/src\";;\n\nlet MultiSelectTable = multiSelect(Table, Checkbox);\n\n\nclass Demo10 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            showModal: false,\n            data: [\n                { a: \"杨过\", b: \"男\", c: 30, d: '内行', key: \"2\", _checked: true },\n                { a: \"令狐冲\", b: \"男\", c: 41, d: '大侠', key: \"1\", _checked: true },\n                { a: \"郭靖\", b: \"男\", c: 25, d: '大侠', key: \"3\", _checked: true }\n            ]\n        };\n\n    }\n\n    columns = [\n        {\n            title: \"名字\",\n            dataIndex: \"a\",\n            key: \"a\",\n            width: \"25%\"\n        },\n        {\n            title: \"性别\",\n            dataIndex: \"b\",\n            key: \"b\",\n            width: \"25%\"\n        },\n        {\n            title: \"年龄\",\n            dataIndex: \"c\",\n            key: \"c\",\n            width: \"20%\",\n            sorter: (a, b) => a.c - b.c\n        },\n        {\n            title: \"武功级别\",\n            dataIndex: \"d\",\n            key: \"25%\"\n        }\n    ];\n\n    close = () => {\n        this.setState({\n            showModal: false\n        });\n    }\n    open = () => {\n        this.setState({\n            showModal: true\n        });\n    }\n\n    getSelectedDataFunc = data => {\n        console.log(data);\n    };\n\n    clear = () => {\n        let { data } = this.state;\n        data.forEach(item => item._checked = false)\n        this.setState({\n            data:JSON.parse(JSON.stringify(data))\n        })\n    }\n\n    render () {\n        let multiObj = {\n            type: \"checkbox\"\n        };\n        return (\n            <div>\n                <Button\n                    bordered\n                    className=\"demo-margin\"\n                    onClick={this.open}>\n                    打开模态框\n                </Button>\n                <Modal\n                    show={this.state.showModal}\n                    onHide={this.close}\n                    size=\"lg\"\n                    ref={ref => this.modal = ref}\n                    className=\"demo10-modal\"\n                >\n                    <Modal.Header closeButton>\n                        <Modal.Title>标题</Modal.Title>\n                    </Modal.Header>\n\n                    <Modal.Body>\n                        <MultiSelectTable\n                            columns={this.columns}\n                            data={this.state.data}\n                            multiSelect={multiObj}\n                            getSelectedDataFunc={this.getSelectedDataFunc} \n                        />\n                    </Modal.Body>\n\n                    <Modal.Footer>\n                        <Button onClick={this.clear} colors=\"secondary\" className=\"clear-btn\">清空所选</Button>\n                        <Button onClick={this.close} colors=\"secondary\" style={{ marginRight: 8 }}>取消</Button>\n                        <Button onClick={this.close} bordered>确认</Button>\n                    </Modal.Footer>\n                </Modal>\n            </div>\n        )\n    }\n}\n\n\n", "desc": " 嵌套表格", "scss_code": ".demo10-modal{\r\n  .clear-btn{\r\n    float: left;\r\n    background: transparent !important;\r\n    border-color: transparent !important;\r\n    &:hover{\r\n      background: #EBECF0 !important;\r\n    }\r\n    &:active{\r\n      background: #EBECF0 !important;\r\n    }\r\n  }\r\n}" }, { "example": _react2['default'].createElement(Demo11, null), "title": " 可拖拽Header的模态框", "code": "/**\r\n *\r\n * @title 可拖拽Header的模态框\r\n * @description 通过`draggable`参数设置是否可拖拽。注意：模态框 header 内，若有绑定事件的元素，需要添加一个 className=\"dnd-cancel\"，才能正常触发相应事件。\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\nimport { Checkbox, Button } from 'tinper-bee';\r\n\n\nimport Modal from \"tinper-bee/lib/src\";;\r\n\r\nclass Demo11 extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            showModal: false,\r\n            checked: false,\r\n        };\r\n    }\r\n\r\n    close = () => {\r\n        this.setState({\r\n            showModal: false\r\n        });\r\n    }\r\n    open = () => {\r\n        this.setState({\r\n            showModal: true\r\n        });\r\n    }\r\n\r\n    changeCheck=()=> {\r\n        this.setState({checked:!this.state.checked});\r\n    }\r\n\r\n    render () {\r\n        return (\r\n            <div className='demo12'>\r\n                <Button\r\n                    bordered\r\n                    className=\"demo-margin\"\r\n                    onClick={this.open}>\r\n                    打开模态框\r\n                </Button>\r\n                <Modal\r\n                    show={this.state.showModal}\r\n                    onHide={this.close}\r\n                    size=\"lg\"\r\n                    ref={ref => this.modal = ref}\r\n                    className=\"demo10-modal\"\r\n                    backdrop={false}\r\n                    draggable={true}\r\n                    bounds={'body'}//可拖拽范围为当前可见区域\r\n                >\r\n                    <Modal.Header closeButton>\r\n                        <Modal.Title>\r\n                        <Checkbox \r\n                            className=\"dnd-cancel\"\r\n                            checked={this.state.checked}  \r\n                            onChange={this.changeCheck}\r\n                        >\r\n                            可勾选的标题\r\n                        </Checkbox>\r\n                        </Modal.Title>\r\n                    </Modal.Header>\r\n\r\n                    <Modal.Body>\r\n                        <p>Some contents...</p>\r\n                        <p>Some contents...</p>\r\n                        <p>Some contents...</p>\r\n                        \r\n                    </Modal.Body>\r\n\r\n                    <Modal.Footer>\r\n                        <Button onClick={this.close} colors=\"secondary\" style={{ marginRight: 8 }}>取消</Button>\r\n                        <Button onClick={this.close} bordered>确认</Button>\r\n                    </Modal.Footer>\r\n                </Modal>\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\n\r\n", "desc": " 通过`draggable`参数设置是否可拖拽。注意：模态框 header 内，若有绑定事件的元素，需要添加一个 className=\"dnd-cancel\"，才能正常触发相应事件。" }, { "example": _react2['default'].createElement(Demo12, null), "title": " 信息提示", "code": "/**\r\n *\r\n * @title 信息提示\r\n * @description 提供`info`、`success`、`error`、`warning`、`confirm` API\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\nimport { Icon, Button } from 'tinper-bee';\r\n\n\nimport Modal from \"tinper-bee/lib/src\";;\r\n\r\nconst info = function () {\r\n    Modal.info({\r\n        title: '提示',\r\n        okText: '知道了',\r\n        content: (\r\n          <div>\r\n            <p>单据状态已更新，请在审批中心内查看。</p>\r\n          </div>\r\n        ),\r\n        onOk() {},\r\n    });\r\n};\r\nconst success = function () {\r\n    Modal.success({\r\n        title: '提交成功',\r\n        content: '单据提交成功，你可以在审批中心关注审批状态。',\r\n    });\r\n};\r\nconst error = function () {\r\n    Modal.error({\r\n        title: '提交失败',\r\n        content: '单据状态更新失败，请重新尝试。',\r\n    });\r\n};\r\nconst warning = function () {\r\n    Modal.warning({\r\n        title: '警告',\r\n        content: '单据状态异常，请重新提交',\r\n    });\r\n};\r\nconst confirm = function () {\r\n    Modal.confirm({\r\n        title: '确定要删除这条单据吗？',\r\n        content: '单据删除后将不能恢复。',\r\n        onOk() {\r\n            console.log('OK');\r\n        },\r\n        onCancel() {\r\n            console.log('Cancel');\r\n        },\r\n    })\r\n};\r\n\r\nclass Demo12 extends Component {\r\n    render () {\r\n        return (\r\n            <div className=\"demo12\">\r\n                <Button colors=\"info\" onClick={info}>Info</Button>\r\n                <Button colors=\"success\" onClick={success}>Success</Button>\r\n                <Button colors=\"danger\" onClick={error}>Error</Button>\r\n                <Button colors=\"warning\" onClick={warning}>Warning</Button>\r\n                <Button bordered onClick={confirm}>Confirm</Button>\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\n\r\n", "desc": " 提供`info`、`success`、`error`、`warning`、`confirm` API", "scss_code": ".demo12{\r\n    .u-button{\r\n        margin: 5px;\r\n    }\r\n}" }, { "example": _react2['default'].createElement(Demo13, null), "title": " 通过拖拽调整弹框大小", "code": "/**\n *\n * @title 通过拖拽调整弹框大小\n * @description 通过 `resizable` 参数控制弹框是否可被 `resize`。通过 `centered` 参数设置弹框垂直居中展示。\n *\n */\n\nimport React, { Component } from 'react';\nimport { Button } from 'tinper-bee';\nimport Modal from \"tinper-bee/lib/src\";;\n\n\nclass Demo13 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            showModal: false\n        };\n        this.close = this.close.bind(this);\n        this.open = this.open.bind(this);\n    }\n\n    close() {\n        this.setState({\n            showModal: false\n        });\n    }\n    open() {\n        this.setState({\n            showModal: true\n        });\n    }\n    onResizeStart = (e, dir, elementRef) => {\n        console.log(\"onResizeStart\", e, dir, elementRef)\n    }\n    onResize = (e, dir, elementRef, delta) => {\n        console.log(\"onResize\", e, dir, elementRef, delta)\n    }\n    onResizeStop = (e, dir, elementRef, delta) => {\n        console.log(\"onResizeStop\", e, dir, elementRef, delta)\n    }\n\n    render () {\n        return (\n        <div>\n            <Button\n            bordered\n            className=\"demo-margin\"\n            onClick = { this.open }>\n                打开模态框\n            </Button>​\n            <Modal\n            centered\n            show = { this.state.showModal }\n            backdropClosable={false}\n            resizable={true}\n            resizeClassName=\"resize-box\"\n            maxWidth={\"1000\"}\n            maxHeight={\"500px\"}\n            minWidth={300}\n            minHeight={150}\n            onResizeStart={this.onResizeStart}\n            onResize={this.onResize}\n            onResizeStop={this.onResizeStop}\n            onHide = { this.close } >\n                <Modal.Header closeButton>\n                    <Modal.Title>标题</Modal.Title>\n                </Modal.Header>\n\n                <Modal.Body>\n                    <p>Some contents...</p>\n                    <p>Some contents...</p>\n                    <p>Some contents...</p>\n                </Modal.Body>\n\n                <Modal.Footer>\n                    <Button onClick={ this.close } colors=\"secondary\" style={{marginRight: 8}}>取消</Button>\n                    <Button onClick={ this.close } bordered>确认</Button>\n                </Modal.Footer>\n           </Modal>\n        </div>\n        )\n    }\n}\n\n\n", "desc": " 通过 `resizable` 参数控制弹框是否可被 `resize`。通过 `centered` 参数设置弹框垂直居中展示。", "scss_code": ".demo13{\n    .u-button{\n        margin: 5px;\n    }\n}" }];
 	
 	var Demo = function (_Component) {
 	    _inherits(Demo, _Component);
@@ -11156,7 +11156,7 @@
 	    /**
 	     * 相对目标元素显示上下左右的位置
 	     */
-	    placement: _propTypes2["default"].oneOf(['top', 'right', 'bottom', 'left']),
+	    placement: _propTypes2["default"].oneOf(['top', 'right', 'bottom', 'left', 'topLeft', 'topRight', 'bottomLeft', 'bottomRight', 'leftTop', 'leftBottom', 'rightTop', 'rightBottom']),
 	
 	    /**
 	     * 绝对定位上边距.
@@ -11182,25 +11182,23 @@
 	    clsPrefix: 'u-tooltip'
 	};
 	function OverlayNode(props) {
-	    var className = props.className,
+	    var id = props.id,
+	        className = props.className,
 	        classNames = props.classNames,
 	        style = props.style,
-	        overlay = props.overlay,
-	        arrowOffsetTop = props.arrowOffsetTop,
-	        arrowOffsetLeft = props.arrowOffsetLeft;
+	        overlay = props.overlay;
 	
 	    return _react2["default"].createElement(
 	        'div',
 	        {
+	            id: id,
+	            role: 'tooltip',
 	            className: (0, _classnames2["default"])(className, classNames),
 	            onMouseEnter: props.onMouseEnter,
 	            onMouseLeave: props.onMouseLeave,
 	            style: style
 	        },
-	        overlay ? _react2["default"].createElement('div', { className: 'tooltip-arrow', style: {
-	                top: arrowOffsetTop,
-	                left: arrowOffsetLeft
-	            } }) : '',
+	        overlay ? _react2["default"].createElement('div', { className: 'tooltip-arrow' }) : '',
 	        overlay ? _react2["default"].createElement(
 	            'div',
 	            { className: 'tooltip-inner' },
@@ -11218,15 +11216,27 @@
 	        var _this = _possibleConstructorReturn(this, _React$Component.call(this, props));
 	
 	        _this.onMouseEnter = function () {
+	            var trigger = _this.props.trigger;
+	
+	            if (trigger === 'click') return;
 	            _this.setState({
 	                isHoverShow: true
 	            });
 	        };
 	
 	        _this.onMouseLeave = function () {
+	            var trigger = _this.props.trigger;
+	
+	            if (trigger === 'click') return;
 	            _this.setState({
 	                isHoverShow: false
 	            });
+	        };
+	
+	        _this.handleOnHide = function () {
+	            var onHide = _this.props.onHide;
+	
+	            onHide && onHide(false);
 	        };
 	
 	        var initState = {
@@ -11270,8 +11280,7 @@
 	
 	        var _props2 = this.props,
 	            placement = _props2.placement,
-	            positionTop = _props2.positionTop,
-	            positionLeft = _props2.positionLeft,
+	            id = _props2.id,
 	            arrowOffsetTop = _props2.arrowOffsetTop,
 	            arrowOffsetLeft = _props2.arrowOffsetLeft,
 	            className = _props2.className,
@@ -11280,14 +11289,9 @@
 	            clsPrefix = _props2.clsPrefix,
 	            overlay = _props2.overlay,
 	            inverse = _props2.inverse,
-	            others = _objectWithoutProperties(_props2, ['placement', 'positionTop', 'positionLeft', 'arrowOffsetTop', 'arrowOffsetLeft', 'className', 'style', 'children', 'clsPrefix', 'overlay', 'inverse']);
+	            others = _objectWithoutProperties(_props2, ['placement', 'id', 'arrowOffsetTop', 'arrowOffsetLeft', 'className', 'style', 'children', 'clsPrefix', 'overlay', 'inverse']);
 	
 	        var classes = (_classes = {}, _defineProperty(_classes, placement, true), _defineProperty(_classes, 'inverse', inverse), _classes);
-	
-	        var outerStyle = _extends({
-	            top: positionTop,
-	            left: positionLeft
-	        }, style);
 	
 	        var arrowStyle = {
 	            top: arrowOffsetTop,
@@ -11297,26 +11301,43 @@
 	        var classNames = (0, _classnames2["default"])(clsPrefix, classes);
 	
 	        var overlayNode = _react2["default"].createElement(OverlayNode, {
+	            id: id,
 	            className: className,
 	            classNames: classNames,
 	            overlay: overlay,
 	            onMouseEnter: this.onMouseEnter,
 	            onMouseLeave: this.onMouseLeave,
-	            style: true,
-	            arrowOffsetTop: true,
-	            arrowOffsetLeft: true
+	            style: style,
+	            arrowOffsetTop: arrowOffsetTop,
+	            arrowOffsetLeft: arrowOffsetLeft
 	        });
 	        return 'visible' in this.props ? _react2["default"].createElement(
 	            _OverlayTrigger2["default"],
-	            _extends({ visible: this.state.visible, ref: function ref(_ref) {
+	            _extends({
+	                visible: this.state.visible,
+	                ref: function ref(_ref) {
 	                    return _this2.trigger = _ref;
-	                }, shouldUpdatePosition: true, placement: placement }, others, { overlay: overlayNode }),
+	                },
+	                shouldUpdatePosition: true,
+	                placement: placement
+	            }, others, {
+	                overlay: overlayNode,
+	                onHide: this.handleOnHide
+	            }),
 	            children
 	        ) : _react2["default"].createElement(
 	            _OverlayTrigger2["default"],
-	            _extends({ isHoverShow: this.state.isHoverShow, ref: function ref(_ref2) {
+	            _extends({
+	                isHoverShow: this.state.isHoverShow,
+	                ref: function ref(_ref2) {
 	                    return _this2.trigger = _ref2;
-	                }, shouldUpdatePosition: true, placement: placement }, others, { overlay: overlayNode }),
+	                },
+	                shouldUpdatePosition: true,
+	                placement: placement
+	            }, others, {
+	                overlay: overlayNode,
+	                onHide: this.handleOnHide
+	            }),
 	            children
 	        );
 	    };
@@ -15106,7 +15127,6 @@
 	        dialog
 	      );
 	    }
-	
 	    return _react2["default"].createElement(
 	      _Portal2["default"],
 	      {
@@ -34182,6 +34202,10 @@
 	
 	var _scrollbarSize2 = _interopRequireDefault(_scrollbarSize);
 	
+	var _scrollTop = __webpack_require__(122);
+	
+	var _scrollTop2 = _interopRequireDefault(_scrollTop);
+	
 	var _react = __webpack_require__(1);
 	
 	var _react2 = _interopRequireDefault(_react);
@@ -34348,14 +34372,27 @@
 	
 	    var _this = _possibleConstructorReturn(this, _React$Component.call(this, props, context));
 	
+	    _this.clearCenteredCls = function () {
+	      var centered = _this.state.centered;
+	
+	      if (!centered) {
+	        return;
+	      }
+	      _this.offsetTop = _this.getOffsetTop();
+	      _this.setState({
+	        centered: false
+	      });
+	    };
+	
+	    _this.state = {
+	      style: {},
+	      centered: props.centered
+	    };
+	    _this.offsetTop = 0;
 	    _this.handleEntering = _this.handleEntering.bind(_this);
 	    _this.handleExited = _this.handleExited.bind(_this);
 	    _this.handleWindowResize = _this.handleWindowResize.bind(_this);
 	    _this.handleDialogClick = _this.handleDialogClick.bind(_this);
-	
-	    _this.state = {
-	      style: {}
-	    };
 	    return _this;
 	  }
 	
@@ -34417,6 +34454,16 @@
 	      }
 	    });
 	  };
+	  //ResizeStart 时，若模态框设置了 `centered` ，需要把居中属性移除，并通过 offsetTop 制造垂直居中的假象
+	  //fixbug: Resize 和 centered 一起使用时，拖拽交互不正确
+	
+	
+	  //计算 ModalDialog 的 offsetTop
+	  Modal.prototype.getOffsetTop = function getOffsetTop() {
+	    var modalDialog = document.getElementsByClassName("u-modal-dialog") && document.getElementsByClassName("u-modal-dialog")[0];
+	    var topPos = modalDialog && modalDialog.offsetTop;
+	    return topPos;
+	  };
 	
 	  Modal.prototype.render = function render() {
 	    var _this2 = this;
@@ -34441,8 +34488,14 @@
 	        draggable = _props.draggable,
 	        resizeClassName = _props.resizeClassName,
 	        bounds = _props.bounds,
-	        centered = _props.centered,
-	        props = _objectWithoutProperties(_props, ['backdrop', 'backdropClosable', 'animation', 'show', 'dialogComponentClass', 'className', 'clsPrefix', 'style', 'size', 'width', 'children', 'onEntering', 'onExited', 'backdropClassName', 'containerClassName', 'draggable', 'resizeClassName', 'bounds', 'centered']);
+	        container = _props.container,
+	        props = _objectWithoutProperties(_props, ['backdrop', 'backdropClosable', 'animation', 'show', 'dialogComponentClass', 'className', 'clsPrefix', 'style', 'size', 'width', 'children', 'onEntering', 'onExited', 'backdropClassName', 'containerClassName', 'draggable', 'resizeClassName', 'bounds', 'container']);
+	
+	    var centered = this.state.centered;
+	
+	    var dialogMarginTop = 30;
+	    //ResizeStart 时，计算 ModalDialog 的 offsetTop
+	    var topPosStyle = this.offsetTop > 0 ? { top: this.offsetTop - dialogMarginTop } : null;
 	
 	    var _splitComponent = (0, _tinperBeeCore.splitComponent)(props, _Modal2['default']),
 	        _splitComponent2 = _slicedToArray(_splitComponent, 2),
@@ -34458,7 +34511,7 @@
 	    }
 	    if (Number(width)) width += 'px';
 	
-	    var styleRes = _extends({}, this.state.style, style);
+	    var styleRes = _extends({}, this.state.style, style, topPosStyle);
 	    if (width) {
 	      _extends(styleRes, { width: width });
 	    }
@@ -34487,7 +34540,8 @@
 	          size: size,
 	          draggable: draggable,
 	          bounds: bounds,
-	          resizeClassName: resizeClassName
+	          resizeClassName: resizeClassName,
+	          clearCenteredCls: this.clearCenteredCls
 	        }),
 	        children
 	      )
@@ -34707,6 +34761,7 @@
 	      var onResizeStart = _this.props.onResizeStart;
 	
 	      typeof onResizeStart === "function" && onResizeStart(e, dir, elementRef);
+	      _this.props.clearCenteredCls && _this.props.clearCenteredCls();
 	    }, _this.onResize = function (e, direction, elementRef, delta) {
 	      var onResize = _this.props.onResize;
 	      var original = _this.state.original;
@@ -84206,11 +84261,11 @@
 	
 	var _TableRow2 = _interopRequireDefault(_TableRow);
 	
-	var _TableHeader = __webpack_require__(705);
+	var _TableHeader = __webpack_require__(703);
 	
 	var _TableHeader2 = _interopRequireDefault(_TableHeader);
 	
-	var _utils = __webpack_require__(700);
+	var _utils = __webpack_require__(705);
 	
 	var _shallowequal = __webpack_require__(339);
 	
@@ -84231,16 +84286,6 @@
 	var _beeLoading = __webpack_require__(286);
 	
 	var _beeLoading2 = _interopRequireDefault(_beeLoading);
-	
-	var _beeIcon = __webpack_require__(105);
-	
-	var _beeIcon2 = _interopRequireDefault(_beeIcon);
-	
-	var _i18n = __webpack_require__(730);
-	
-	var _i18n2 = _interopRequireDefault(_i18n);
-	
-	var _tool = __webpack_require__(130);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 	
@@ -84294,10 +84339,7 @@
 	  onFilterClear: _propTypes2["default"].func,
 	  syncHover: _propTypes2["default"].bool,
 	  tabIndex: _propTypes2["default"].string,
-	  hoverContent: _propTypes2["default"].func,
-	  size: _propTypes2["default"].oneOf(['sm', 'md', 'lg']),
-	  rowDraggAble: _propTypes2["default"].bool,
-	  onDropRow: _propTypes2["default"].func
+	  hoverContent: _propTypes2["default"].func
 	};
 	
 	var defaultProps = {
@@ -84332,7 +84374,9 @@
 	  getBodyWrapper: function getBodyWrapper(body) {
 	    return body;
 	  },
-	  // emptyText: () => <div><Icon type="uf-nodata" className="table-nodata"></Icon><span>{locale["no_data"]}</span></div>,
+	  emptyText: function emptyText() {
+	    return 'No Data';
+	  },
 	  columns: [],
 	  minColumnWidth: 80,
 	  locale: {},
@@ -84340,10 +84384,7 @@
 	  setRowHeight: function setRowHeight() {},
 	  setRowParentIndex: function setRowParentIndex() {},
 	  tabIndex: '0',
-	  heightConsistent: false,
-	  size: 'md',
-	  rowDraggAble: false,
-	  onDropRow: function onDropRow() {}
+	  heightConsistent: false
 	};
 	
 	var Table = function (_Component) {
@@ -84353,53 +84394,6 @@
 	    _classCallCheck(this, Table);
 	
 	    var _this = _possibleConstructorReturn(this, _Component.call(this, props));
-	
-	    _this.resize = function () {
-	      (0, _utils.debounce)(_this.syncFixedTableRowHeight, 150);
-	      _this.computeTableWidth();
-	      var renderFlag = _this.state.renderFlag;
-	      _this.setState({
-	        renderFlag: !renderFlag
-	      });
-	    };
-	
-	    _this.getTableUID = function () {
-	      var uid = "_table_uid_" + new Date().getTime();
-	      _this.tableUid = uid;
-	      var div = document.createElement("div");
-	      // div.className = "u-table-drag-hidden-cont";
-	      div.className = "u-table-drag-hidden-cont";
-	      div.id = uid;
-	      _this.contentTable.appendChild(div);
-	    };
-	
-	    _this.onDragRow = function (currentKey, targetKey) {
-	      var data = _this.state.data,
-	          currentIndex = void 0,
-	          targetIndex = void 0,
-	          record = void 0;
-	      data.forEach(function (da, i) {
-	        // tr 的唯一标识通过 data.key 或 rowKey 两种方式传进来
-	        var trKey = da.key ? da.key : _this.getRowKey(da, i);
-	        if (trKey == currentKey) {
-	          currentIndex = i;
-	          record = da;
-	        }
-	        if (trKey == targetKey) {
-	          targetIndex = i;
-	        }
-	      });
-	      data = _this.swapArray(data, currentIndex, targetIndex);
-	      _this.props.onDropRow && _this.props.onDropRow(data, record);
-	      _this.setState({
-	        data: data
-	      });
-	    };
-	
-	    _this.swapArray = function (arr, index1, index2) {
-	      arr[index1] = arr.splice(index2, 1, arr[index1])[0];
-	      return arr;
-	    };
 	
 	    _this.renderDragHideTable = function () {
 	      var _this$props = _this.props,
@@ -84450,7 +84444,7 @@
 	
 	    var expandedRowKeys = [];
 	    var rows = [].concat(_toConsumableArray(props.data));
-	    _this.columnManager = new _ColumnManager2["default"](props.columns, props.children, props.originWidth, props.rowDraggAble);
+	    _this.columnManager = new _ColumnManager2["default"](props.columns, props.children, props.originWidth);
 	    _this.store = (0, _createStore2["default"])({ currentHoverKey: null });
 	    _this.firstDid = true;
 	    if (props.defaultExpandAllRows) {
@@ -84498,12 +84492,10 @@
 	    _this.handleRowHover = _this.handleRowHover.bind(_this);
 	    _this.computeTableWidth = _this.computeTableWidth.bind(_this);
 	    _this.onBodyMouseLeave = _this.onBodyMouseLeave.bind(_this);
-	    _this.tableUid = null;
 	    return _this;
 	  }
 	
 	  Table.prototype.componentDidMount = function componentDidMount() {
-	    this.getTableUID();
 	    _utils.EventUtil.addHandler(this.contentTable, 'keydown', this.onKeyDown);
 	    _utils.EventUtil.addHandler(this.contentTable, 'focus', this.onFocus);
 	    setTimeout(this.resetScrollX, 300);
@@ -84517,7 +84509,7 @@
 	    }
 	    if (this.columnManager.isAnyColumnsFixed()) {
 	      this.syncFixedTableRowHeight();
-	      this.resizeEvent = (0, _addEventListener2["default"])(window, 'resize', this.resize);
+	      this.resizeEvent = (0, _addEventListener2["default"])(window, 'resize', (0, _utils.debounce)(this.syncFixedTableRowHeight, 150));
 	    }
 	  };
 	
@@ -84534,15 +84526,15 @@
 	    }
 	    if (nextProps.columns && nextProps.columns !== this.props.columns) {
 	      this.columnManager.reset(nextProps.columns);
-	      if (nextProps.columns.length !== this.props.columns.length && this.refs && this.bodyTable) {
-	        this.scrollTop = this.bodyTable.scrollTop;
+	      if (nextProps.columns.length !== this.props.columns.length && this.refs && this.refs.bodyTable) {
+	        this.scrollTop = this.refs.bodyTable.scrollTop;
 	      }
 	    } else if (nextProps.children !== this.props.children) {
 	      this.columnManager.reset(null, nextProps.children);
 	    }
 	    //适配lazyload
 	    if (nextProps.scrollTop > -1) {
-	      // this.bodyTable.scrollTop = nextProps.scrollTop;
+	      // this.refs.bodyTable.scrollTop = nextProps.scrollTop;
 	      this.scrollTop = nextProps.scrollTop;
 	    }
 	    if (!nextProps.originWidth) {
@@ -84551,10 +84543,6 @@
 	    }
 	    if (nextProps.resetScroll) {
 	      this.resetScrollX();
-	    }
-	    // fix:模态框中使用table，计算的滚动条宽度为0的bug
-	    if (this.scrollbarWidth <= 0 && this.props.scroll.y) {
-	      this.scrollbarWidth = (0, _utils.measureScrollbar)();
 	    }
 	
 	    // console.log('this.scrollTop**********',this.scrollTop);
@@ -84573,13 +84561,12 @@
 	    if (this.scrollTop > -1) {
 	      this.refs.fixedColumnsBodyLeft && (this.refs.fixedColumnsBodyLeft.scrollTop = this.scrollTop);
 	      this.refs.fixedColumnsBodyRight && (this.refs.fixedColumnsBodyRight.scrollTop = this.scrollTop);
-	      this.bodyTable.scrollTop = this.scrollTop;
+	      this.refs.bodyTable.scrollTop = this.scrollTop;
 	      this.scrollTop = -1;
 	    }
 	    if (prevProps.data.length === 0 || this.props.data.length === 0) {
 	      this.resetScrollX();
 	    }
-	
 	    // 是否传入 scroll中的y属性，如果传入判断是否是整数，如果是则进行比较 。bodyTable 的clientHeight进行判断
 	    this.isShowScrollY();
 	  };
@@ -84636,22 +84623,14 @@
 	    var props = this.props;
 	    var y = props.scroll && props.scroll.y;
 	    if (y) {
-	      var bodyH = this.bodyTable.clientHeight;
-	      var bodyContentH = this.bodyTable.querySelector('table').clientHeight;
+	      var bodyH = this.refs.bodyTable.clientHeight;
+	      var bodyContentH = this.refs.bodyTable.querySelector('table').clientHeight;
 	      var rightBodyTable = this.refs.fixedColumnsBodyRight;
-	      // const leftBodyTable = this.refs.fixedColumnsBodyLeft;
-	      var overflowy = bodyContentH <= bodyH ? 'auto' : 'scroll';
-	      this.bodyTable.style.overflowY = overflowy;
-	
-	      this.headTable.style.overflowY = overflowy;
-	      rightBodyTable && (rightBodyTable.style.overflowY = overflowy);
-	      // 没有纵向滚动条时，表头横向滚动条根据内容动态显示 待验证
-	      // if(overflowy == 'auto'){
-	      //   this.fixedHeadTable && (this.fixedHeadTable.style.overflowX = 'auto');
-	      //   rightBodyTable && (rightBodyTable.style.overflowX = 'auto');
-	      //   leftBodyTable && (leftBodyTable.style.overflowX = 'auto');
-	      // }
-	
+	      if (bodyContentH <= bodyH) {
+	        this.refs.bodyTable.style.overflowY = 'auto';
+	        this.refs.headTable.style.overflowY = 'auto';
+	        rightBodyTable && (rightBodyTable.style.overflowY = 'auto');
+	      }
 	    }
 	  };
 	
@@ -84910,26 +84889,9 @@
 	      indent: 1,
 	      expandable: false,
 	      store: this.store,
-	      dragborderKey: this.props.dragborderKey,
-	      rowDraggAble: this.props.rowDraggAble,
-	      onDragRow: this.onDragRow
+	      dragborderKey: this.props.dragborderKey
 	    });
 	  };
-	
-	  /**
-	   * 行拖拽结束时触发
-	   * @param currentKey 当前拖拽目标的key
-	   * @param targetKey 拖拽结束时，目标位置的key
-	   */
-	
-	  /**
-	  * 数组元素交换位置
-	  * @param {array} arr 数组
-	  * @param {number} index1 添加项目的位置
-	  * @param {number} index2 删除项目的位置
-	  */
-	
-	
 	  /**
 	   *
 	   *
@@ -84942,6 +84904,8 @@
 	   * @returns
 	   * @memberof Table
 	   */
+	
+	
 	  Table.prototype.getRowsByData = function getRowsByData(data, visible, indent, columns, fixed) {
 	    var rootIndex = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : -1;
 	
@@ -85031,7 +84995,7 @@
 	        indent: indent,
 	        indentSize: props.indentSize,
 	        needIndentSpaced: needIndentSpaced,
-	        className: className + ' ' + (this.props.rowDraggAble ? ' row-dragg-able ' : ''),
+	        className: className,
 	        record: record,
 	        expandIconAsCell: expandIconAsCell,
 	        onDestroy: this.onRowDestroy,
@@ -85061,14 +85025,7 @@
 	        treeType: childrenColumn || this.treeType ? true : false,
 	        fixedIndex: fixedIndex + lazyCurrentIndex,
 	        rootIndex: rootIndex,
-	        syncHover: props.syncHover,
-	        bodyDisplayInRow: props.bodyDisplayInRow,
-	        rowDraggAble: this.props.rowDraggAble,
-	        onDragRow: this.onDragRow,
-	        contentTable: this.contentTable,
-	        tableUid: this.tableUid,
-	        expandedIcon: props.expandedIcon,
-	        collapsedIcon: props.collapsedIcon
+	        syncHover: props.syncHover
 	      })));
 	      this.treeRowIndex++;
 	      var subVisible = visible && isRowExpanded;
@@ -85137,7 +85094,7 @@
 	      if (!fixed && c.fixed) {
 	        fixedClass = ' ' + _this3.props.clsPrefix + '-row-fixed-columns-in-body';
 	      }
-	      return _react2["default"].createElement('col', { key: c.key, style: { width: width, minWidth: c.width }, className: fixedClass });
+	      return _react2["default"].createElement('col', { key: c.key, style: { width: width, minWidth: _this3.props.minColumnWidth }, className: fixedClass });
 	    }));
 	    return _react2["default"].createElement(
 	      'colgroup',
@@ -85173,9 +85130,7 @@
 	        getBodyWrapper = _props3.getBodyWrapper,
 	        footerScroll = _props3.footerScroll,
 	        headerScroll = _props3.headerScroll;
-	    var _props4 = this.props,
-	        useFixedHeader = _props4.useFixedHeader,
-	        data = _props4.data;
+	    var useFixedHeader = this.props.useFixedHeader;
 	
 	    var bodyStyle = _extends({}, this.props.bodyStyle);
 	    var headStyle = {};
@@ -85237,12 +85192,7 @@
 	              bodyStyle.marginBottom = '-' + scrollbarWidth + 'px';
 	            }
 	          } else {
-	            // 没有数据时，表头滚动条隐藏问题
-	            if (data.length == 0 && this.domWidthDiff < 0) {
-	              headStyle.marginBottom = '0px';
-	            } else {
-	              headStyle.marginBottom = '-' + scrollbarWidth + 'px';
-	            }
+	            headStyle.marginBottom = '-' + scrollbarWidth + 'px';
 	          }
 	        }
 	      }
@@ -85273,7 +85223,7 @@
 	      var _drag_class = _this4.props.dragborder ? "table-drag-bordered" : "";
 	      return _react2["default"].createElement(
 	        'table',
-	        { className: ' ' + tableClassName + '  table-bordered ' + _drag_class + ' ', style: tableStyle },
+	        { id: 'bee-table-uid', className: ' ' + tableClassName + '  table-bordered ' + _drag_class + ' ', style: tableStyle },
 	        _this4.getColGroup(columns, fixed),
 	        hasHead ? _this4.getHeader(columns, fixed) : null,
 	        tableBody
@@ -85287,9 +85237,7 @@
 	        'div',
 	        {
 	          className: clsPrefix + '-header',
-	          ref: function ref(el) {
-	            fixed ? _this4.fixedHeadTable = el : _this4.headTable = el;
-	          },
+	          ref: fixed ? null : 'headTable',
 	          style: headStyle,
 	          onMouseOver: this.detectScrollTarget,
 	          onTouchStart: this.detectScrollTarget,
@@ -85303,9 +85251,7 @@
 	      {
 	        className: clsPrefix + '-body',
 	        style: bodyStyle,
-	        ref: function ref(el) {
-	          _this4.bodyTable = el;
-	        },
+	        ref: 'bodyTable',
 	        onMouseOver: this.detectScrollTarget,
 	        onTouchStart: this.detectScrollTarget,
 	        onScroll: this.handleBodyScroll,
@@ -85359,9 +85305,9 @@
 	  };
 	
 	  Table.prototype.getTitle = function getTitle() {
-	    var _props5 = this.props,
-	        title = _props5.title,
-	        clsPrefix = _props5.clsPrefix;
+	    var _props4 = this.props,
+	        title = _props4.title,
+	        clsPrefix = _props4.clsPrefix;
 	
 	    return title ? _react2["default"].createElement(
 	      'div',
@@ -85371,9 +85317,9 @@
 	  };
 	
 	  Table.prototype.getFooter = function getFooter() {
-	    var _props6 = this.props,
-	        footer = _props6.footer,
-	        clsPrefix = _props6.clsPrefix;
+	    var _props5 = this.props,
+	        footer = _props5.footer,
+	        clsPrefix = _props5.clsPrefix;
 	
 	    return footer ? _react2["default"].createElement(
 	      'div',
@@ -85383,26 +85329,10 @@
 	  };
 	
 	  Table.prototype.getEmptyText = function getEmptyText() {
-	    var _props7 = this.props,
-	        defaultEmptyText = _props7.emptyText,
-	        clsPrefix = _props7.clsPrefix,
-	        data = _props7.data;
-	
-	    var locale = (0, _tool.getComponentLocale)(this.props, this.context, 'Table', function () {
-	      return _i18n2["default"];
-	    });
-	    var emptyText = defaultEmptyText !== undefined ? defaultEmptyText : function () {
-	      return _react2["default"].createElement(
-	        'div',
-	        null,
-	        _react2["default"].createElement(_beeIcon2["default"], { type: 'uf-nodata', className: 'table-nodata' }),
-	        _react2["default"].createElement(
-	          'span',
-	          null,
-	          locale["no_data"]
-	        )
-	      );
-	    };
+	    var _props6 = this.props,
+	        emptyText = _props6.emptyText,
+	        clsPrefix = _props6.clsPrefix,
+	        data = _props6.data;
 	
 	    return !data.length ? _react2["default"].createElement(
 	      'div',
@@ -85427,15 +85357,15 @@
 	
 	  Table.prototype.syncFixedTableRowHeight = function syncFixedTableRowHeight() {
 	    //this.props.height、headerHeight分别为用户传入的行高和表头高度，如果有值，所有行的高度都是固定的，主要为了避免在千行数据中有固定列时获取行高度有问题
-	    var _props8 = this.props,
-	        clsPrefix = _props8.clsPrefix,
-	        height = _props8.height,
-	        headerHeight = _props8.headerHeight,
-	        columns = _props8.columns,
-	        heightConsistent = _props8.heightConsistent;
+	    var _props7 = this.props,
+	        clsPrefix = _props7.clsPrefix,
+	        height = _props7.height,
+	        headerHeight = _props7.headerHeight,
+	        columns = _props7.columns,
+	        heightConsistent = _props7.heightConsistent;
 	
-	    var headRows = this.headTable ? this.headTable.querySelectorAll('thead') : this.bodyTable.querySelectorAll('thead');
-	    var bodyRows = this.bodyTable.querySelectorAll('.' + clsPrefix + '-row') || [];
+	    var headRows = this.refs.headTable ? this.refs.headTable.querySelectorAll('thead') : this.refs.bodyTable.querySelectorAll('thead');
+	    var bodyRows = this.refs.bodyTable.querySelectorAll('.' + clsPrefix + '-row') || [];
 	    var leftBodyRows = this.refs.fixedColumnsBodyLeft && this.refs.fixedColumnsBodyLeft.querySelectorAll('.' + clsPrefix + '-row') || [];
 	    var rightBodyRows = this.refs.fixedColumnsBodyRight && this.refs.fixedColumnsBodyRight.querySelectorAll('.' + clsPrefix + '-row') || [];
 	    var fixedColumnsHeadRowsHeight = [].map.call(headRows, function (row) {
@@ -85477,11 +85407,11 @@
 	  };
 	
 	  Table.prototype.resetScrollX = function resetScrollX() {
-	    if (this.headTable) {
-	      this.headTable.scrollLeft = 0;
+	    if (this.refs.headTable) {
+	      this.refs.headTable.scrollLeft = 0;
 	    }
-	    if (this.bodyTable) {
-	      this.bodyTable.scrollLeft = 0;
+	    if (this.refs.bodyTable) {
+	      this.refs.bodyTable.scrollLeft = 0;
 	    }
 	  };
 	
@@ -85515,14 +85445,15 @@
 	  };
 	
 	  Table.prototype.handleBodyScroll = function handleBodyScroll(e) {
-	    var headTable = this.headTable;
-	    var _props9 = this.props,
-	        _props9$scroll = _props9.scroll,
-	        scroll = _props9$scroll === undefined ? {} : _props9$scroll,
-	        clsPrefix = _props9.clsPrefix,
-	        handleScrollY = _props9.handleScrollY,
-	        handleScrollX = _props9.handleScrollX;
+	    var _props8 = this.props,
+	        _props8$scroll = _props8.scroll,
+	        scroll = _props8$scroll === undefined ? {} : _props8$scroll,
+	        clsPrefix = _props8.clsPrefix,
+	        handleScrollY = _props8.handleScrollY,
+	        handleScrollX = _props8.handleScrollX;
 	    var _refs = this.refs,
+	        headTable = _refs.headTable,
+	        bodyTable = _refs.bodyTable,
 	        fixedColumnsBodyLeft = _refs.fixedColumnsBodyLeft,
 	        fixedColumnsBodyRight = _refs.fixedColumnsBodyRight;
 	    // Prevent scrollTop setter trigger onScroll event
@@ -85533,10 +85464,10 @@
 	    }
 	    if (e.target.scrollLeft !== this.lastScrollLeft) {
 	      var position = '';
-	      if (e.target === this.bodyTable && headTable) {
+	      if (e.target === bodyTable && headTable) {
 	        headTable.scrollLeft = e.target.scrollLeft;
-	      } else if (e.target === headTable && this.bodyTable) {
-	        this.bodyTable.scrollLeft = e.target.scrollLeft;
+	      } else if (e.target === headTable && bodyTable) {
+	        bodyTable.scrollLeft = e.target.scrollLeft;
 	      }
 	      if (e.target.scrollLeft === 0) {
 	        position = 'left';
@@ -85560,8 +85491,8 @@
 	      if (fixedColumnsBodyRight && e.target !== fixedColumnsBodyRight) {
 	        fixedColumnsBodyRight.scrollTop = e.target.scrollTop;
 	      }
-	      if (this.bodyTable && e.target !== this.bodyTable) {
-	        this.bodyTable.scrollTop = e.target.scrollTop;
+	      if (bodyTable && e.target !== bodyTable) {
+	        bodyTable.scrollTop = e.target.scrollTop;
 	      }
 	      if (this.hoverDom) {
 	        this.hoverDom.style.display = 'none';
@@ -85578,10 +85509,10 @@
 	
 	  Table.prototype.handleRowHover = function handleRowHover(isHover, key, event, currentIndex) {
 	    //增加新的API，设置是否同步Hover状态，提高性能，避免无关的渲染
-	    var _props10 = this.props,
-	        syncHover = _props10.syncHover,
-	        onRowHover = _props10.onRowHover,
-	        data = _props10.data;
+	    var _props9 = this.props,
+	        syncHover = _props9.syncHover,
+	        onRowHover = _props9.onRowHover,
+	        data = _props9.data;
 	
 	    var record = data[currentIndex];
 	    // 固定列、或者含有hoverdom时情况下同步hover状态
@@ -85598,8 +85529,8 @@
 	        if (td) {
 	          var scrollTop = this.lastScrollTop ? this.lastScrollTop : 0;
 	          var top = td.offsetTop - scrollTop;
-	          if (this.headTable) {
-	            top = top + this.headTable.clientHeight;
+	          if (this.refs.headTable) {
+	            top = top + this.refs.headTable.clientHeight;
 	          }
 	          this.hoverDom.style.top = top + 'px';
 	          this.hoverDom.style.height = td.offsetHeight + 'px';
@@ -85617,7 +85548,7 @@
 	
 	    var props = this.props;
 	    var clsPrefix = props.clsPrefix;
-	    var hasFixedLeft = this.columnManager.isAnyColumnsLeftFixed();
+	
 	    var className = props.clsPrefix;
 	    if (props.className) {
 	      className += ' ' + props.className;
@@ -85633,24 +85564,12 @@
 	    if (props.height) {
 	      className += ' fixed-height';
 	    }
-	    if (props.bodyDisplayInRow) {
-	      className += ' body-dispaly-in-row';
-	    }
-	    if (props.headerDisplayInRow) {
-	      className += ' header-dispaly-in-row';
-	    }
 	    var isTableScroll = this.columnManager.isAnyColumnsFixed() || props.scroll.x || props.scroll.y;
 	    var loading = props.loading;
 	    if (typeof loading === 'boolean') {
 	      loading = {
 	        show: loading
 	      };
-	    }
-	    if (props.size) {
-	      className += ' ' + clsPrefix + '-' + props.size;
-	    }
-	    if (hasFixedLeft) {
-	      className += ' has-fixed-left';
 	    }
 	
 	    return _react2["default"].createElement(
@@ -85670,7 +85589,7 @@
 	          this.getEmptyText(),
 	          this.getFooter()
 	        ),
-	        hasFixedLeft && _react2["default"].createElement(
+	        this.columnManager.isAnyColumnsLeftFixed() && _react2["default"].createElement(
 	          'div',
 	          { className: clsPrefix + '-fixed-left' },
 	          this.getLeftFixedTable()
@@ -85702,9 +85621,6 @@
 	
 	Table.propTypes = propTypes;
 	Table.defaultProps = defaultProps;
-	Table.contextTypes = {
-	  beeLocale: _propTypes2["default"].object
-	};
 	
 	exports["default"] = Table;
 	module.exports = exports['default'];
@@ -85727,13 +85643,11 @@
 	
 	var _propTypes2 = _interopRequireDefault(_propTypes);
 	
-	var _utils = __webpack_require__(700);
-	
-	var _TableCell = __webpack_require__(702);
+	var _TableCell = __webpack_require__(700);
 	
 	var _TableCell2 = _interopRequireDefault(_TableCell);
 	
-	var _ExpandIcon = __webpack_require__(704);
+	var _ExpandIcon = __webpack_require__(702);
 	
 	var _ExpandIcon2 = _interopRequireDefault(_ExpandIcon);
 	
@@ -85769,9 +85683,7 @@
 	  indentSize: _propTypes2["default"].number,
 	  expandIconAsCell: _propTypes2["default"].bool,
 	  expandRowByClick: _propTypes2["default"].bool,
-	  store: _propTypes2["default"].object.isRequired,
-	  rowDraggAble: _propTypes2["default"].bool,
-	  onDragRow: _propTypes2["default"].func
+	  store: _propTypes2["default"].object.isRequired
 	};
 	
 	var defaultProps = {
@@ -85784,9 +85696,7 @@
 	  onHover: function onHover() {},
 	
 	  className: '',
-	  setRowParentIndex: function setRowParentIndex() {},
-	  rowDraggAble: false
-	  // onDragRow:()=>{}
+	  setRowParentIndex: function setRowParentIndex() {}
 	};
 	
 	var TableRow = function (_Component) {
@@ -85796,206 +85706,6 @@
 	    _classCallCheck(this, TableRow);
 	
 	    var _this = _possibleConstructorReturn(this, _Component.call(this, props));
-	
-	    _this.initEvent = function () {
-	      var events = [{ key: 'touchstart', fun: _this.onTouchStart }, //手指触摸到一个 DOM 元素时触发
-	      { key: 'touchmove', fun: _this.onTouchMove }, //手指在一个 DOM 元素上滑动时触发
-	      { key: 'touchend', fun: _this.onTouchEnd }, //手指从一个 DOM 元素上移开时触发
-	
-	      { key: 'dragstart', fun: _this.onDragStart }, //用户开始拖动元素时触发
-	      { key: 'dragover', fun: _this.onDragOver }, //当某被拖动的对象在另一对象容器范围内拖动时触发此事件
-	      { key: 'drop', fun: _this.onDrop }, //在一个拖动过程中，释放鼠标键时触发此事件 
-	      { key: 'dragenter', fun: _this.onDragEnter }, { key: 'dragleave', fun: _this.onDragLeave }];
-	      _this.eventListen(events, '', _this.element);
-	    };
-	
-	    _this.removeDragAbleEvent = function () {
-	      var events = [{ key: 'touchstart', fun: _this.onTouchStart }, //手指触摸到一个 DOM 元素时触发
-	      { key: 'touchmove', fun: _this.onTouchMove }, //手指在一个 DOM 元素上滑动时触发
-	      { key: 'touchend', fun: _this.onTouchEnd }, //手指从一个 DOM 元素上移开时触发
-	
-	      { key: 'dragstart', fun: _this.onDragStart }, //用户开始拖动元素时触发
-	      { key: 'dragover', fun: _this.onDragOver }, //当某被拖动的对象在另一对象容器范围内拖动时触发此事件
-	      { key: 'drop', fun: _this.onDrop }, //在一个拖动过程中，释放鼠标键时触发此事件 
-	      { key: 'dragenter', fun: _this.onDragEnter }, { key: 'dragleave', fun: _this.onDragLeave }];
-	      _this.eventListen(events, 'remove', _this.element);
-	    };
-	
-	    _this.onDragStart = function (e) {
-	      if (!_this.props.rowDraggAble) return;
-	      var event = _utils.Event.getEvent(e),
-	          target = _utils.Event.getTarget(event);
-	      _this.currentIndex = target.getAttribute("data-row-key");
-	      _this._dragCurrent = target;
-	
-	      //TODO 自定义图像后续需要增加。
-	      //  let crt = this.synchronizeTableTrShadow(); 
-	      //  document.getElementById(this.props.tableUid).appendChild(crt);
-	      // event.dataTransfer.setDragImage(crt, 0, 0);
-	      event.dataTransfer.effectAllowed = "move";
-	      event.dataTransfer.setData("Text", _this.currentIndex);
-	    };
-	
-	    _this.onDragOver = function (e) {
-	      var event = _utils.Event.getEvent(e);
-	      event.preventDefault();
-	    };
-	
-	    _this.onDrop = function (e) {
-	      var _this$props = _this.props,
-	          rowDraggAble = _this$props.rowDraggAble,
-	          onDragRow = _this$props.onDragRow;
-	
-	      var event = _utils.Event.getEvent(e),
-	          _target = _utils.Event.getTarget(event),
-	          target = _target.parentNode;
-	
-	      var currentKey = event.dataTransfer.getData("text");
-	      var targetKey = target.getAttribute("data-row-key");
-	
-	      if (!targetKey || targetKey === currentKey) return;
-	      if (target.nodeName.toUpperCase() === "TR") {
-	        _this.synchronizeTableTr(currentKey, null);
-	        _this.synchronizeTableTr(targetKey, null);
-	        // target.setAttribute("style","");
-	        // this.synchronizeTrStyle(this.currentIndex,false);
-	      }
-	      onDragRow && onDragRow(currentKey, targetKey);
-	    };
-	
-	    _this.getTouchDom = function (event) {
-	      var currentLocation = event.changedTouches[0];
-	      var realTarget = document.elementFromPoint(currentLocation.clientX, currentLocation.clientY);
-	      return realTarget;
-	    };
-	
-	    _this.onTouchStart = function (e) {
-	      var event = _utils.Event.getEvent(e),
-	          _target = _utils.Event.getTarget(event),
-	          target = _target.parentNode;
-	      _this.currentIndex = target.getAttribute("data-row-key");
-	    };
-	
-	    _this.onTouchMove = function (e) {
-	      var event = _utils.Event.getEvent(e);
-	      event.preventDefault();
-	      var touchTarget = _this.getTouchDom(event),
-	          target = touchTarget.parentNode,
-	          targetKey = target.getAttribute("data-row-key");
-	      if (!targetKey || targetKey === _this.currentIndex) return;
-	      if (target.nodeName.toUpperCase() === "TR") {
-	        if (_this.cacheCurrentIndex !== targetKey) {
-	          //模拟 touchenter toucheleave 事件
-	          _this.cacheCurrentIndex && _this.synchronizeTableTr(_this.cacheCurrentIndex, null); //去掉虚线
-	          _this.synchronizeTableTr(targetKey, true); //添加虚线
-	        }
-	      }
-	    };
-	
-	    _this.onTouchEnd = function (e) {
-	      var onDragRow = _this.props.onDragRow;
-	
-	      var event = _utils.Event.getEvent(e),
-	          currentKey = _this.currentIndex,
-	          //拖拽行的key
-	      touchTarget = _this.getTouchDom(event),
-	          //当前触摸的DOM节点
-	      target = touchTarget.parentNode,
-	          //目标位置的行
-	      targetKey = target.getAttribute("data-row-key"); //目标位置的行key
-	      if (!targetKey || targetKey === currentKey) return;
-	      if (target.nodeName.toUpperCase() === "TR") {
-	        _this.synchronizeTableTr(currentKey, null);
-	        _this.synchronizeTableTr(targetKey, null);
-	      }
-	
-	      onDragRow && onDragRow(currentKey, targetKey);
-	    };
-	
-	    _this.synchronizeTableTrShadow = function () {
-	      var _this$props2 = _this.props,
-	          contentTable = _this$props2.contentTable,
-	          index = _this$props2.index;
-	
-	
-	      var cont = contentTable.querySelector('.u-table-scroll table tbody').getElementsByTagName("tr")[index],
-	          trs = cont.getBoundingClientRect(),
-	          fixed_left_trs = contentTable.querySelector('.u-table-fixed-left table tbody'),
-	          fixed_right_trs = contentTable.querySelector('.u-table-fixed-right table tbody');
-	      fixed_left_trs = fixed_left_trs && fixed_left_trs.getElementsByTagName("tr")[index].getBoundingClientRect();
-	      fixed_right_trs = fixed_right_trs && fixed_right_trs.getElementsByTagName("tr")[index].getBoundingClientRect();
-	
-	      var div = document.createElement("div");
-	      var style = "wdith:" + (trs.width + (fixed_left_trs ? fixed_left_trs.width : 0) + (fixed_right_trs ? fixed_right_trs.width : 0)) + "px";
-	      style += ";height:" + trs.height + "px";
-	      style += ";classname:" + cont.className;
-	      div.setAttribute("style", style);
-	      return div;
-	    };
-	
-	    _this.synchronizeTableTr = function (currentIndex, type) {
-	      if (type) {
-	        //同步 this.cacheCurrentIndex
-	        _this.cacheCurrentIndex = currentIndex;
-	      }
-	      var contentTable = _this.props.contentTable;
-	
-	      var _table_trs = contentTable.querySelector('.u-table-scroll table tbody'),
-	          _table_fixed_left_trs = contentTable.querySelector('.u-table-fixed-left table tbody'),
-	          _table_fixed_right_trs = contentTable.querySelector('.u-table-fixed-right table tbody');
-	
-	      _table_trs = _table_trs ? _table_trs : contentTable.querySelector('.u-table table tbody');
-	
-	      _this.synchronizeTrStyle(_table_trs, currentIndex, type);
-	      if (_table_fixed_left_trs) {
-	        _this.synchronizeTrStyle(_table_fixed_left_trs, currentIndex, type);
-	      }
-	      if (_table_fixed_right_trs) {
-	        _this.synchronizeTrStyle(_table_fixed_right_trs, currentIndex, type);
-	      }
-	    };
-	
-	    _this.synchronizeTrStyle = function (_elementBody, id, type) {
-	      var contentTable = _this.props.contentTable,
-	          trs = _elementBody.getElementsByTagName("tr"),
-	          currentObj = void 0;
-	
-	      for (var index = 0; index < trs.length; index++) {
-	        var element = trs[index];
-	        if (element.getAttribute("data-row-key") == id) {
-	          currentObj = element;
-	        }
-	      }
-	      if (type) {
-	        currentObj && currentObj.setAttribute("style", "border-bottom:2px dashed rgba(5,0,0,0.25)");
-	      } else {
-	        currentObj && currentObj.setAttribute("style", "");
-	      }
-	    };
-	
-	    _this.onDragEnter = function (e) {
-	      var event = _utils.Event.getEvent(e),
-	          _target = _utils.Event.getTarget(event),
-	          target = _target.parentNode;
-	      var currentIndex = target.getAttribute("data-row-key");
-	      if (!currentIndex || currentIndex === _this.currentIndex) return;
-	      if (target.nodeName.toUpperCase() === "TR") {
-	        _this.synchronizeTableTr(currentIndex, true);
-	        // target.setAttribute("style","border-bottom:2px dashed rgba(5,0,0,0.25)");
-	        // // target.style.backgroundColor = 'rgb(235, 236, 240)'; 
-	      }
-	    };
-	
-	    _this.onDragLeave = function (e) {
-	      var event = _utils.Event.getEvent(e),
-	          _target = _utils.Event.getTarget(event),
-	          target = _target.parentNode;
-	      var currentIndex = target.getAttribute("data-row-key");
-	      if (!currentIndex || currentIndex === _this.currentIndex) return;
-	      if (target.nodeName.toUpperCase() === "TR") {
-	        _this.synchronizeTableTr(currentIndex, null);
-	      }
-	    };
 	
 	    _this.set = function (fn) {
 	      _this.clear();
@@ -86021,8 +85731,6 @@
 	    _this.onMouseEnter = _this.onMouseEnter.bind(_this);
 	    _this.onMouseLeave = _this.onMouseLeave.bind(_this);
 	    _this.expandHeight = 0;
-	    _this.event = false;
-	    _this.cacheCurrentIndex = null;
 	    return _this;
 	  }
 	
@@ -86032,8 +85740,7 @@
 	    var _props = this.props,
 	        store = _props.store,
 	        hoverKey = _props.hoverKey,
-	        treeType = _props.treeType,
-	        rowDraggAble = _props.rowDraggAble;
+	        treeType = _props.treeType;
 	
 	    this.unsubscribe = store.subscribe(function () {
 	      if (store.getState().currentHoverKey === hoverKey) {
@@ -86049,82 +85756,7 @@
 	    }
 	  };
 	
-	  /**
-	   * 事件初始化
-	   */
-	
-	
-	  /**
-	   * 事件移除，提供性能以及内存泄漏等问题。
-	   */
-	
-	
-	  /**
-	   * 事件绑定和移除函数
-	   */
-	  TableRow.prototype.eventListen = function eventListen(events, type, eventSource) {
-	    for (var i = 0; i < events.length; i++) {
-	      var _event = events[i];
-	      if (type === "remove") {
-	        _utils.EventUtil.removeHandler(eventSource, _event.key, _event.fun);
-	      } else {
-	        _utils.EventUtil.addHandler(eventSource, _event.key, _event.fun);
-	      }
-	    }
-	  };
-	
-	  /**
-	   * 开始调整交换列的事件
-	   */
-	
-	
-	  /**
-	   * 在一个拖动过程中，释放鼠标键时触发此事件。【目标事件】
-	   * @memberof TableHeader
-	   */
-	
-	
-	  /**
-	   * 获取当前触摸的Dom节点
-	   */
-	
-	
-	  /**
-	   * 开始调整交换行的事件
-	   */
-	
-	
-	  /**
-	   * 手指移开时触发
-	   */
-	
-	
-	  /**
-	   *同步当前拖拽到阴影
-	   * @memberof TableRow
-	   */
-	
-	
-	  /**
-	   * 同步自己,也需要同步当前行的行显示
-	   */
-	
-	
-	  /**
-	   * 设置同步的style
-	   */
-	
-	
 	  TableRow.prototype.componentDidUpdate = function componentDidUpdate(prevProps) {
-	    var rowDraggAble = this.props.rowDraggAble;
-	
-	    if (!this.event) {
-	      this.event = true;
-	      if (rowDraggAble) {
-	        this.initEvent();
-	      }
-	    }
-	
 	    if (this.props.treeType) {
 	      this.setRowParentIndex();
 	    }
@@ -86135,15 +85767,11 @@
 	    var _props2 = this.props,
 	        record = _props2.record,
 	        onDestroy = _props2.onDestroy,
-	        index = _props2.index,
-	        rowDraggAble = _props2.rowDraggAble;
+	        index = _props2.index;
 	
 	    onDestroy(record, index);
 	    if (this.unsubscribe) {
 	      this.unsubscribe();
-	    }
-	    if (rowDraggAble) {
-	      this.removeDragAbleEvent();
 	    }
 	  };
 	
@@ -86165,6 +85793,7 @@
 	        setRowParentIndex = _props4.setRowParentIndex,
 	        fixedIndex = _props4.fixedIndex,
 	        rootIndex = _props4.rootIndex;
+	    // console.log('rootIndex',rootIndex<0?index:rootIndex,'index',fixedIndex);
 	
 	    setRowParentIndex(rootIndex < 0 ? index : rootIndex, fixedIndex);
 	  };
@@ -86237,18 +85866,13 @@
 	        expandIconAsCell = _props9.expandIconAsCell,
 	        expanded = _props9.expanded,
 	        expandRowByClick = _props9.expandRowByClick,
-	        rowDraggAble = _props9.rowDraggAble,
 	        expandable = _props9.expandable,
 	        onExpand = _props9.onExpand,
 	        needIndentSpaced = _props9.needIndentSpaced,
 	        indent = _props9.indent,
 	        indentSize = _props9.indentSize,
 	        isHiddenExpandIcon = _props9.isHiddenExpandIcon,
-	        fixed = _props9.fixed,
-	        bodyDisplayInRow = _props9.bodyDisplayInRow,
-	        expandedIcon = _props9.expandedIcon,
-	        collapsedIcon = _props9.collapsedIcon,
-	        hoverKey = _props9.hoverKey;
+	        fixed = _props9.fixed;
 	
 	    var showSum = false;
 	    var className = this.props.className;
@@ -86256,6 +85880,7 @@
 	    if (this.state.hovered) {
 	      className += ' ' + clsPrefix + '-hover';
 	    }
+	    // console.log('className--'+className,index);
 	    //判断是否为合计行
 	    if (className.indexOf('sumrow') > -1) {
 	      showSum = true;
@@ -86269,8 +85894,6 @@
 	      needIndentSpaced: needIndentSpaced,
 	      expanded: expanded,
 	      record: record,
-	      expandedIcon: expandedIcon,
-	      collapsedIcon: collapsedIcon,
 	      isHiddenExpandIcon: isHiddenExpandIcon
 	    });
 	
@@ -86296,26 +85919,22 @@
 	        key: index + "_" + (columns[i].key || columns[i].dataIndex || i),
 	        fixed: fixed,
 	        showSum: showSum,
-	        expandIcon: isColumnHaveExpandIcon ? expandIcon : null,
-	        bodyDisplayInRow: bodyDisplayInRow
+	        expandIcon: isColumnHaveExpandIcon ? expandIcon : null
 	      }));
 	    }
 	    var style = { height: height };
 	    if (!visible) {
 	      style.display = 'none';
 	    }
-	
 	    return _react2["default"].createElement(
 	      'tr',
 	      {
-	        draggable: rowDraggAble,
 	        onClick: this.onRowClick,
 	        onDoubleClick: this.onRowDoubleClick,
 	        onMouseEnter: this.onMouseEnter,
 	        onMouseLeave: this.onMouseLeave,
 	        className: clsPrefix + ' ' + className + ' ' + clsPrefix + '-level-' + indent,
-	        style: style,
-	        'data-row-key': record && record.key ? record.key : hoverKey
+	        style: style
 	        // key={hoverKey}
 	        , ref: this.bindElement
 	      },
@@ -86343,379 +85962,6 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.Event = exports.EventUtil = exports.tryParseInt = undefined;
-	
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-	
-	exports.measureScrollbar = measureScrollbar;
-	exports.debounce = debounce;
-	exports.warningOnce = warningOnce;
-	exports.getOffset = getOffset;
-	exports.addClass = addClass;
-	exports.removeClass = removeClass;
-	exports.ObjectAssign = ObjectAssign;
-	exports.closest = closest;
-	exports.getMaxColChildrenLength = getMaxColChildrenLength;
-	exports.getColChildrenLength = getColChildrenLength;
-	exports.DicimalFormater = DicimalFormater;
-	exports.checkDicimalInvalid = checkDicimalInvalid;
-	
-	var _warning = __webpack_require__(31);
-	
-	var _warning2 = _interopRequireDefault(_warning);
-	
-	var _parseInt = __webpack_require__(701);
-	
-	var _parseInt2 = _interopRequireDefault(_parseInt);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-	
-	var scrollbarSize = void 0;
-	
-	// Measure scrollbar width for padding body during modal show/hide
-	var scrollbarMeasure = {
-	  position: 'absolute',
-	  top: '-9999px',
-	  width: '50px',
-	  height: '50px',
-	  overflow: 'scroll'
-	};
-	
-	function measureScrollbar() {
-	  var direction = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'vertical';
-	
-	
-	  if (typeof document === 'undefined' || typeof window === 'undefined') {
-	    return 0;
-	  }
-	  var tableDom = document.querySelector('.u-table');
-	  var currentDom = tableDom ? tableDom : document.body;
-	
-	  if (scrollbarSize) {
-	    return scrollbarSize;
-	  }
-	  var scrollDiv = document.createElement('div');
-	  Object.keys(scrollbarMeasure).forEach(function (scrollProp) {
-	    scrollDiv.style[scrollProp] = scrollbarMeasure[scrollProp];
-	  });
-	  currentDom.appendChild(scrollDiv);
-	  var size = 0;
-	  if (direction === 'vertical') {
-	    size = scrollDiv.offsetWidth - scrollDiv.clientWidth;
-	  } else if (direction === 'horizontal') {
-	    size = scrollDiv.offsetHeight - scrollDiv.clientHeight;
-	  }
-	
-	  currentDom.removeChild(scrollDiv);
-	  scrollbarSize = size;
-	  return scrollbarSize;
-	}
-	
-	function debounce(func, wait, immediate) {
-	  var timeout = void 0;
-	  return function debounceFunc() {
-	    var context = this;
-	    var args = arguments;
-	    // https://fb.me/react-event-pooling
-	    if (args[0] && args[0].persist) {
-	      args[0].persist();
-	    }
-	    var later = function later() {
-	      timeout = null;
-	      if (!immediate) {
-	        func.apply(context, args);
-	      }
-	    };
-	    var callNow = immediate && !timeout;
-	    clearTimeout(timeout);
-	    timeout = setTimeout(later, wait);
-	    if (callNow) {
-	      func.apply(context, args);
-	    }
-	  };
-	}
-	
-	var warned = {};
-	function warningOnce(condition, format, args) {
-	  if (!warned[format]) {
-	    (0, _warning2["default"])(condition, format, args);
-	    warned[format] = true;
-	  }
-	}
-	function getOffset(Node, offset) {
-	  if (!offset) {
-	    offset = {};
-	    offset.top = 0;
-	    offset.left = 0;
-	  }
-	  if (Node == document.body) {
-	    return offset;
-	  }
-	  offset.top += Node.offsetTop;
-	  offset.left += Node.offsetLeft;
-	  if (Node.offsetParent) return getOffset(Node.offsetParent, offset);else return offset;
-	};
-	
-	var tryParseInt = exports.tryParseInt = function tryParseInt(value) {
-	  var defaultValue = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
-	
-	  var resultValue = (0, _parseInt2["default"])(value);
-	
-	  if (isNaN(resultValue)) {
-	    return defaultValue;
-	  }
-	  return resultValue;
-	};
-	
-	function addClass(elm, className) {
-	  if (!className) return;
-	
-	  var els = Array.isArray(elm) ? elm : [elm];
-	
-	  els.forEach(function (el) {
-	    if (el.classList) {
-	      el.classList.add(className.split(' '));
-	    } else {
-	      el.className += ' ' + className;
-	    }
-	  });
-	}
-	
-	function removeClass(elm, className) {
-	  if (!className) return;
-	
-	  var els = Array.isArray(elm) ? elm : [elm];
-	
-	  els.forEach(function (el) {
-	    if (el.classList) {
-	      el.classList.remove(className.split(' '));
-	    } else {
-	      el.className = el.className.replace(new RegExp('(^|\\b)' + className.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
-	    }
-	  });
-	}
-	
-	/**
-	 * 简单数组数据对象拷贝
-	 * @param {*} obj 要拷贝的对象 
-	 */
-	function ObjectAssign(obj) {
-	  var b = obj instanceof Array;
-	  var tagObj = b ? [] : {};
-	  if (b) {
-	    //数组
-	    obj.forEach(function (da) {
-	      var _da = {};
-	      _extends(_da, da);
-	      tagObj.push(_da);
-	    });
-	  } else {
-	    _extends(tagObj, obj);
-	  }
-	  return tagObj;
-	}
-	/**
-	 * 获取某个父元素
-	 * */
-	
-	function closest(ele, selector) {
-	  var matches = ele.matches || ele.webkitMatchesSelector || ele.mozMatchesSelector || ele.msMatchesSelector;
-	  if (matches) {
-	    while (ele) {
-	      if (matches.call(ele, selector)) {
-	        return ele;
-	      } else {
-	        ele = ele.parentElement;
-	      }
-	    }
-	  }
-	  return null;
-	}
-	
-	function getMaxColChildrenLength(columns) {
-	  var arr = [];
-	  arr = columns.map(function (item, index) {
-	    var chilrenLen = 0;
-	    if (item.children) {
-	      chilrenLen = getColChildrenLength(item.children, chilrenLen + 1);
-	    }
-	    return chilrenLen;
-	  });
-	  var max = Math.max.apply(null, arr);
-	  return max;
-	}
-	
-	function getColChildrenLength(columns, chilrenLen) {
-	  columns.forEach(function (item, index) {
-	    if (item.children) {
-	      chilrenLen = getColChildrenLength(item.children, chilrenLen + 1);
-	    }
-	  });
-	  return chilrenLen;
-	}
-	
-	function addHandler(element, type, handler) {
-	  var event = null;
-	  if (element.addEventListener) {
-	    //检测是否为DOM2级方法
-	    event = element.addEventListener(type, handler, false);
-	  } else if (element.attachEvent) {
-	    //检测是否为IE级方法
-	    event = element.attachEvent("on" + type, handler);
-	  } else {
-	    //检测是否为DOM0级方法
-	    event = element["on" + type] = handler;
-	  }
-	  return event;
-	}
-	
-	function removeHandler(element, type, handler) {
-	  if (element && element.removeEventListener) {
-	    //element&& ie11报错兼容
-	    element.removeEventListener(type, handler, false);
-	  } else if (element && element.detachEvent) {
-	    element.detachEvent("on" + type, handler);
-	  } else if (element) {
-	    element["on" + type] = null;
-	  }
-	}
-	
-	//获取事件对象的兼容性写法
-	function getEvent(event) {
-	  return event ? event : window.event;
-	}
-	
-	//获取事件对象目标的兼容性写法
-	function getTarget(event) {
-	  return event.target || event.srcElement;
-	}
-	
-	function preventDefault(event) {
-	  if (event.preventDefault) {
-	    event.preventDefault();
-	  } else {
-	    event.returnValue = false;
-	  }
-	}
-	
-	function stopPropagation(event) {
-	  if (event.stopPropagation) {
-	    event.stopPropagation();
-	  } else {
-	    event.cancelBubble = true;
-	  }
-	}
-	
-	//用事件冒泡方式，如果想兼容事件捕获只需要添加个bool参数
-	var EventUtil = exports.EventUtil = {
-	  addHandler: function addHandler(element, type, handler) {
-	    if (element.addEventListener) {
-	      element.addEventListener(type, handler, false);
-	    } else if (element.attachEvent) {
-	      element.attachEvent('on' + type, handler);
-	    } else {
-	      element['on' + type] = handler;
-	    }
-	  },
-	
-	  removeHandler: function removeHandler(element, type, handler) {
-	    //element&& ie11报错兼容
-	    if (element && element.removeEventListener) {
-	      element.removeEventListener(type, handler, false);
-	    } else if (element && element.detachEvent) {
-	      element.detachEvent('on' + type, handler);
-	    } else if (element) {
-	      element['on' + type] = null;
-	    }
-	  }
-	
-	  /*
-	   * 处理精度
-	   */
-	};function DicimalFormater(value, precision) {
-	  var value = value + '',
-	      precision = precision ? precision : 0;
-	  for (var i = 0; i < value.length; i++) {
-	    if ("-0123456789.".indexOf(value.charAt(i)) == -1) return "";
-	  }
-	  return checkDicimalInvalid(value, precision);
-	};
-	function checkDicimalInvalid(value, precision) {
-	  if (value == null || isNaN(value)) return "";
-	  // 浮点数总位数不能超过10位
-	  var digit = parseFloat(value);
-	  var result = (digit * Math.pow(10, precision) / Math.pow(10, precision)).toFixed(precision);
-	  if (result == "NaN") return "";
-	  return result;
-	};
-	
-	var Event = exports.Event = {
-	  addHandler: addHandler,
-	  removeHandler: removeHandler,
-	  getEvent: getEvent,
-	  getTarget: getTarget,
-	  preventDefault: preventDefault,
-	  stopPropagation: stopPropagation
-	};
-
-/***/ }),
-/* 701 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	var root = __webpack_require__(622),
-	    toString = __webpack_require__(662);
-	
-	/** Used to match leading and trailing whitespace. */
-	var reTrimStart = /^\s+/;
-	
-	/* Built-in method references for those with the same name as other `lodash` methods. */
-	var nativeParseInt = root.parseInt;
-	
-	/**
-	 * Converts `string` to an integer of the specified radix. If `radix` is
-	 * `undefined` or `0`, a `radix` of `10` is used unless `value` is a
-	 * hexadecimal, in which case a `radix` of `16` is used.
-	 *
-	 * **Note:** This method aligns with the
-	 * [ES5 implementation](https://es5.github.io/#x15.1.2.2) of `parseInt`.
-	 *
-	 * @static
-	 * @memberOf _
-	 * @since 1.1.0
-	 * @category String
-	 * @param {string} string The string to convert.
-	 * @param {number} [radix=10] The radix to interpret `value` by.
-	 * @param- {Object} [guard] Enables use as an iteratee for methods like `_.map`.
-	 * @returns {number} Returns the converted integer.
-	 * @example
-	 *
-	 * _.parseInt('08');
-	 * // => 8
-	 *
-	 * _.map(['6', '08', '10'], _.parseInt);
-	 * // => [6, 8, 10]
-	 */
-	function parseInt(string, radix, guard) {
-	  if (guard || radix == null) {
-	    radix = 0;
-	  } else if (radix) {
-	    radix = +radix;
-	  }
-	  return nativeParseInt(toString(string).replace(reTrimStart, ''), radix || 0);
-	}
-	
-	module.exports = parseInt;
-
-
-/***/ }),
-/* 702 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
 	
 	var _react = __webpack_require__(1);
 	
@@ -86725,7 +85971,7 @@
 	
 	var _propTypes2 = _interopRequireDefault(_propTypes);
 	
-	var _objectPath = __webpack_require__(703);
+	var _objectPath = __webpack_require__(701);
 	
 	var _objectPath2 = _interopRequireDefault(_objectPath);
 	
@@ -86786,8 +86032,7 @@
 	        expandIcon = _props2.expandIcon,
 	        column = _props2.column,
 	        fixed = _props2.fixed,
-	        showSum = _props2.showSum,
-	        bodyDisplayInRow = _props2.bodyDisplayInRow;
+	        showSum = _props2.showSum;
 	    var dataIndex = column.dataIndex,
 	        render = column.render;
 	    var _column$className = column.className,
@@ -86797,8 +86042,7 @@
 	    var text = _objectPath2["default"].get(record, dataIndex);
 	    var tdProps = void 0;
 	    var colSpan = void 0;
-	    var rowSpan = void 0,
-	        title = void 0;
+	    var rowSpan = void 0;
 	
 	    if (render && !showSum) {
 	      text = render(text, record, index);
@@ -86829,17 +86073,13 @@
 	    if (column.textAlign) {
 	      className = className + (' text-' + column.textAlign);
 	    }
-	    if (typeof text == 'string' && bodyDisplayInRow) {
-	      title = text;
-	    }
 	    return _react2["default"].createElement(
 	      'td',
 	      {
 	        colSpan: colSpan,
 	        rowSpan: rowSpan,
 	        className: className,
-	        onClick: this.handleClick,
-	        title: title
+	        onClick: this.handleClick
 	      },
 	      indentText,
 	      expandIcon,
@@ -86858,7 +86098,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 703 */
+/* 701 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function (root, factory){
@@ -87156,7 +86396,7 @@
 
 
 /***/ }),
-/* 704 */
+/* 702 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -87217,27 +86457,16 @@
 	        needIndentSpaced = _props.needIndentSpaced,
 	        expanded = _props.expanded,
 	        record = _props.record,
-	        isHiddenExpandIcon = _props.isHiddenExpandIcon,
-	        expandedIcon = _props.expandedIcon,
-	        collapsedIcon = _props.collapsedIcon;
+	        isHiddenExpandIcon = _props.isHiddenExpandIcon;
 	
 	    if (expandable && !isHiddenExpandIcon) {
 	      var expandClassName = expanded ? 'expanded' : 'collapsed';
-	      var currentIcon = _react2["default"].createElement('span', {
-	        className: clsPrefix + '-expand-icon ' + clsPrefix + '-' + expandClassName
+	      return _react2["default"].createElement('span', {
+	        className: clsPrefix + '-expand-icon ' + clsPrefix + '-' + expandClassName,
+	        onClick: function onClick(e) {
+	          return onExpand(!expanded, record, e);
+	        }
 	      });
-	      if (expanded && expandedIcon) {
-	        currentIcon = expandedIcon;
-	      } else if (!expanded && collapsedIcon) {
-	        currentIcon = collapsedIcon;
-	      }
-	      return _react2["default"].createElement(
-	        'span',
-	        { onClick: function onClick(e) {
-	            return onExpand(!expanded, record, e);
-	          }, className: 'expand-icon-con' },
-	        currentIcon
-	      );
 	    } else if (needIndentSpaced || isHiddenExpandIcon) {
 	      return _react2["default"].createElement('span', { className: clsPrefix + '-expand-icon ' + clsPrefix + '-spaced' });
 	    }
@@ -87255,7 +86484,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 705 */
+/* 703 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -87278,9 +86507,9 @@
 	
 	var _propTypes2 = _interopRequireDefault(_propTypes);
 	
-	var _throttleDebounce = __webpack_require__(706);
+	var _throttleDebounce = __webpack_require__(704);
 	
-	var _utils = __webpack_require__(700);
+	var _utils = __webpack_require__(705);
 	
 	var _FilterType = __webpack_require__(707);
 	
@@ -87356,7 +86585,7 @@
 	        _this.drag.oldWidth = parseInt(currentObj.style.width);
 	        _this.drag.minWidth = currentObj.style.minWidth != "" ? parseInt(currentObj.style.minWidth) : defaultWidth;
 	        _this.drag.tableWidth = parseInt(_this.table.table.style.width ? _this.table.table.style.width : _this.table.table.scrollWidth);
-	        console.log(" ----- ", _this.drag);
+	        // console.log(" ----- ",this.drag);
 	        if (!_this.tableOldWidth) {
 	          _this.tableOldWidth = _this.drag.tableWidth; //this.getTableWidth();
 	          // console.log(" this.tableOldWidth--- ",this.tableOldWidth);
@@ -87416,8 +86645,7 @@
 	        var currentCols = _this.table.cols[_this.drag.currIndex];
 	        var diff = event.x - _this.drag.oldLeft;
 	        var newWidth = _this.drag.oldWidth + diff;
-	        _this.drag.newWidth = newWidth;
-	
+	        _this.drag.newWidth = newWidth > 0 ? newWidth : _this.minWidth;
 	        // if(newWidth > this.drag.minWidth){
 	        if (newWidth > _this.minWidth) {
 	          currentCols.style.width = newWidth + 'px';
@@ -87470,6 +86698,8 @@
 	              _this.optTableScroll(_this.table.fixedRightBodyTable, { x: 'auto' });
 	            }
 	          }
+	        } else {
+	          _this.drag.newWidth = _this.minWidth;
 	        }
 	      } else if (_this.props.draggable && _this.drag.option == "draggable") {
 	        // console.log(" --onTrMouseMove--draggable- ",this.drag.option);
@@ -87725,7 +86955,7 @@
 	    _this.drag = {
 	      option: ''
 	    };
-	    _this.minWidth = 80; //确定最小宽度就是80
+	    _this.minWidth = props.minColumnWidth ? props.minColumnWidth : 80; //确定最小宽度就是80
 	    _this.table = null;
 	    _this._thead = null; //当前对象
 	    _this.event = false; //避免多次绑定问题
@@ -87774,7 +87004,9 @@
 	      table.cols = tableDome.getElementsByTagName("col");
 	      table.ths = tableDome.getElementsByTagName("th");
 	      table.tr = tableDome.getElementsByTagName("tr");
-	      table.tableBodyCols = contentTable.querySelector('.u-table-scroll .u-table-body').getElementsByTagName("col");
+	      if (contentTable.querySelector('.u-table-scroll .u-table-body')) {
+	        table.tableBodyCols = contentTable.querySelector('.u-table-scroll .u-table-body') && contentTable.querySelector('.u-table-scroll .u-table-body').getElementsByTagName("col");
+	      }
 	    }
 	
 	    table.fixedLeftHeaderTable = contentTable.querySelector('.u-table-fixed-left .u-table-header');
@@ -87849,6 +87081,10 @@
 	
 	  TableHeader.prototype.eventListen = function eventListen(events, type, eventSource) {
 	    if (!this.table) return;
+	    if (!eventSource) {
+	      console.log("Please set the attributes of column !");
+	      return;
+	    }
 	    var tr = this.table.tr;
 	
 	    for (var i = 0; i < events.length; i++) {
@@ -88122,7 +87358,7 @@
 	module.exports = exports["default"];
 
 /***/ }),
-/* 706 */
+/* 704 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -88266,6 +87502,376 @@
 	
 	exports.throttle = throttle;
 	exports.debounce = debounce;
+
+
+/***/ }),
+/* 705 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.Event = exports.EventUtil = exports.tryParseInt = undefined;
+	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
+	exports.measureScrollbar = measureScrollbar;
+	exports.debounce = debounce;
+	exports.warningOnce = warningOnce;
+	exports.getOffset = getOffset;
+	exports.addClass = addClass;
+	exports.removeClass = removeClass;
+	exports.ObjectAssign = ObjectAssign;
+	exports.closest = closest;
+	exports.getMaxColChildrenLength = getMaxColChildrenLength;
+	exports.getColChildrenLength = getColChildrenLength;
+	exports.DicimalFormater = DicimalFormater;
+	exports.checkDicimalInvalid = checkDicimalInvalid;
+	
+	var _warning = __webpack_require__(31);
+	
+	var _warning2 = _interopRequireDefault(_warning);
+	
+	var _parseInt = __webpack_require__(706);
+	
+	var _parseInt2 = _interopRequireDefault(_parseInt);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+	
+	var scrollbarSize = void 0;
+	
+	// Measure scrollbar width for padding body during modal show/hide
+	var scrollbarMeasure = {
+	  position: 'absolute',
+	  top: '-9999px',
+	  width: '50px',
+	  height: '50px',
+	  overflow: 'scroll'
+	};
+	
+	function measureScrollbar() {
+	  var direction = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'vertical';
+	
+	  if (typeof document === 'undefined' || typeof window === 'undefined') {
+	    return 0;
+	  }
+	  var tableDom = document.querySelector('.u-table');
+	  var currentDom = tableDom ? tableDom : document.body;
+	
+	  if (scrollbarSize) {
+	    return scrollbarSize;
+	  }
+	  var scrollDiv = document.createElement('div');
+	  Object.keys(scrollbarMeasure).forEach(function (scrollProp) {
+	    scrollDiv.style[scrollProp] = scrollbarMeasure[scrollProp];
+	  });
+	  currentDom.appendChild(scrollDiv);
+	  var size = 0;
+	  if (direction === 'vertical') {
+	    size = scrollDiv.offsetWidth - scrollDiv.clientWidth;
+	  } else if (direction === 'horizontal') {
+	    size = scrollDiv.offsetHeight - scrollDiv.clientHeight;
+	  }
+	
+	  currentDom.removeChild(scrollDiv);
+	  scrollbarSize = size;
+	  return scrollbarSize;
+	}
+	
+	function debounce(func, wait, immediate) {
+	  var timeout = void 0;
+	  return function debounceFunc() {
+	    var context = this;
+	    var args = arguments;
+	    // https://fb.me/react-event-pooling
+	    if (args[0] && args[0].persist) {
+	      args[0].persist();
+	    }
+	    var later = function later() {
+	      timeout = null;
+	      if (!immediate) {
+	        func.apply(context, args);
+	      }
+	    };
+	    var callNow = immediate && !timeout;
+	    clearTimeout(timeout);
+	    timeout = setTimeout(later, wait);
+	    if (callNow) {
+	      func.apply(context, args);
+	    }
+	  };
+	}
+	
+	var warned = {};
+	function warningOnce(condition, format, args) {
+	  if (!warned[format]) {
+	    (0, _warning2["default"])(condition, format, args);
+	    warned[format] = true;
+	  }
+	}
+	function getOffset(Node, offset) {
+	  if (!offset) {
+	    offset = {};
+	    offset.top = 0;
+	    offset.left = 0;
+	  }
+	  if (Node == document.body) {
+	    return offset;
+	  }
+	  offset.top += Node.offsetTop;
+	  offset.left += Node.offsetLeft;
+	  if (Node.offsetParent) return getOffset(Node.offsetParent, offset);else return offset;
+	};
+	
+	var tryParseInt = exports.tryParseInt = function tryParseInt(value) {
+	  var defaultValue = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+	
+	  var resultValue = (0, _parseInt2["default"])(value);
+	
+	  if (isNaN(resultValue)) {
+	    return defaultValue;
+	  }
+	  return resultValue;
+	};
+	
+	function addClass(elm, className) {
+	  if (!className) return;
+	
+	  var els = Array.isArray(elm) ? elm : [elm];
+	
+	  els.forEach(function (el) {
+	    if (el.classList) {
+	      el.classList.add(className.split(' '));
+	    } else {
+	      el.className += ' ' + className;
+	    }
+	  });
+	}
+	
+	function removeClass(elm, className) {
+	  if (!className) return;
+	
+	  var els = Array.isArray(elm) ? elm : [elm];
+	
+	  els.forEach(function (el) {
+	    if (el.classList) {
+	      el.classList.remove(className.split(' '));
+	    } else {
+	      el.className = el.className.replace(new RegExp('(^|\\b)' + className.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
+	    }
+	  });
+	}
+	
+	/**
+	 * 简单数组数据对象拷贝
+	 * @param {*} obj 要拷贝的对象 
+	 */
+	function ObjectAssign(obj) {
+	  var b = obj instanceof Array;
+	  var tagObj = b ? [] : {};
+	  if (b) {
+	    //数组
+	    obj.forEach(function (da) {
+	      var _da = {};
+	      _extends(_da, da);
+	      tagObj.push(_da);
+	    });
+	  } else {
+	    _extends(tagObj, obj);
+	  }
+	  return tagObj;
+	}
+	/**
+	 * 获取某个父元素
+	 * */
+	
+	function closest(ele, selector) {
+	  var matches = ele.matches || ele.webkitMatchesSelector || ele.mozMatchesSelector || ele.msMatchesSelector;
+	  if (matches) {
+	    while (ele) {
+	      if (matches.call(ele, selector)) {
+	        return ele;
+	      } else {
+	        ele = ele.parentElement;
+	      }
+	    }
+	  }
+	  return null;
+	}
+	
+	function getMaxColChildrenLength(columns) {
+	  var arr = [];
+	  arr = columns.map(function (item, index) {
+	    var chilrenLen = 0;
+	    if (item.children) {
+	      chilrenLen = getColChildrenLength(item.children, chilrenLen + 1);
+	    }
+	    return chilrenLen;
+	  });
+	  var max = Math.max.apply(null, arr);
+	  return max;
+	}
+	
+	function getColChildrenLength(columns, chilrenLen) {
+	  columns.forEach(function (item, index) {
+	    if (item.children) {
+	      chilrenLen = getColChildrenLength(item.children, chilrenLen + 1);
+	    }
+	  });
+	  return chilrenLen;
+	}
+	
+	function addHandler(element, type, handler) {
+	  var event = null;
+	  if (element.addEventListener) {
+	    //检测是否为DOM2级方法
+	    event = element.addEventListener(type, handler, false);
+	  } else if (element.attachEvent) {
+	    //检测是否为IE级方法
+	    event = element.attachEvent("on" + type, handler);
+	  } else {
+	    //检测是否为DOM0级方法
+	    event = element["on" + type] = handler;
+	  }
+	  return event;
+	}
+	
+	function removeHandler(element, type, handler) {
+	  if (element.removeEventListener) {
+	    element.removeEventListener(type, handler, false);
+	  } else if (element.detachEvent) {
+	    element.detachEvent("on" + type, handler);
+	  } else {
+	    element["on" + type] = null;
+	  }
+	}
+	
+	//获取事件对象的兼容性写法
+	function getEvent(event) {
+	  return event ? event : window.event;
+	}
+	
+	//获取事件对象目标的兼容性写法
+	function getTarget(event) {
+	  return event.target || event.srcElement;
+	}
+	
+	function preventDefault(event) {
+	  if (event.preventDefault) {
+	    event.preventDefault();
+	  } else {
+	    event.returnValue = false;
+	  }
+	}
+	
+	function stopPropagation(event) {
+	  if (event.stopPropagation) {
+	    event.stopPropagation();
+	  } else {
+	    event.cancelBubble = true;
+	  }
+	}
+	
+	//用事件冒泡方式，如果想兼容事件捕获只需要添加个bool参数
+	var EventUtil = exports.EventUtil = {
+	  addHandler: function addHandler(element, type, handler) {
+	    if (element.addEventListener) {
+	      element.addEventListener(type, handler, false);
+	    } else if (element.attachEvent) {
+	      element.attachEvent('on' + type, handler);
+	    } else {
+	      element['on' + type] = handler;
+	    }
+	  },
+	
+	  removeHandler: function removeHandler(element, type, handler) {
+	    if (element.removeEventListener) {
+	      element.removeEventListener(type, handler, false);
+	    } else if (element.detachEvent) {
+	      element.detachEvent('on' + type, handler);
+	    } else {
+	      element['on' + type] = null;
+	    }
+	  }
+	
+	  /*
+	   * 处理精度
+	   */
+	};function DicimalFormater(value, precision) {
+	  var value = value + '',
+	      precision = precision ? precision : 0;
+	  for (var i = 0; i < value.length; i++) {
+	    if ("-0123456789.".indexOf(value.charAt(i)) == -1) return "";
+	  }
+	  return checkDicimalInvalid(value, precision);
+	};
+	function checkDicimalInvalid(value, precision) {
+	  if (value == null || isNaN(value)) return "";
+	  // 浮点数总位数不能超过10位
+	  var digit = parseFloat(value);
+	  var result = (digit * Math.pow(10, precision) / Math.pow(10, precision)).toFixed(precision);
+	  if (result == "NaN") return "";
+	  return result;
+	};
+	
+	var Event = exports.Event = {
+	  addHandler: addHandler,
+	  removeHandler: removeHandler,
+	  getEvent: getEvent,
+	  getTarget: getTarget,
+	  preventDefault: preventDefault,
+	  stopPropagation: stopPropagation
+	};
+
+/***/ }),
+/* 706 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	var root = __webpack_require__(622),
+	    toString = __webpack_require__(662);
+	
+	/** Used to match leading and trailing whitespace. */
+	var reTrimStart = /^\s+/;
+	
+	/* Built-in method references for those with the same name as other `lodash` methods. */
+	var nativeParseInt = root.parseInt;
+	
+	/**
+	 * Converts `string` to an integer of the specified radix. If `radix` is
+	 * `undefined` or `0`, a `radix` of `10` is used unless `value` is a
+	 * hexadecimal, in which case a `radix` of `16` is used.
+	 *
+	 * **Note:** This method aligns with the
+	 * [ES5 implementation](https://es5.github.io/#x15.1.2.2) of `parseInt`.
+	 *
+	 * @static
+	 * @memberOf _
+	 * @since 1.1.0
+	 * @category String
+	 * @param {string} string The string to convert.
+	 * @param {number} [radix=10] The radix to interpret `value` by.
+	 * @param- {Object} [guard] Enables use as an iteratee for methods like `_.map`.
+	 * @returns {number} Returns the converted integer.
+	 * @example
+	 *
+	 * _.parseInt('08');
+	 * // => 8
+	 *
+	 * _.map(['6', '08', '10'], _.parseInt);
+	 * // => [6, 8, 10]
+	 */
+	function parseInt(string, radix, guard) {
+	  if (guard || radix == null) {
+	    radix = 0;
+	  } else if (radix) {
+	    radix = +radix;
+	  }
+	  return nativeParseInt(toString(string).replace(reTrimStart, ''), radix || 0);
+	}
+	
+	module.exports = parseInt;
 
 
 /***/ }),
@@ -88522,7 +88128,6 @@
 	                        'div',
 	                        { className: clsPrefix + ' filter-wrap' },
 	                        _react2["default"].createElement(_beeSelect2["default"], _extends({}, _this.props, {
-	                            size: 'sm',
 	                            value: _this.state.value,
 	                            onChange: _this.changeSelect
 	                        })),
@@ -89609,7 +89214,7 @@
 	                    _beeButton2["default"],
 	                    {
 	                        shape: 'border',
-	                        style: { marginLeft: "2px", minWidth: "0px", width: "26px", lineHeight: "24px", padding: 0 }
+	                        style: { marginLeft: "3px", minWidth: "0px", width: "24px", padding: 0 }
 	                    },
 	                    _react2["default"].createElement(_beeIcon2["default"], { style: { padding: 0, color: '#585858' }, type: 'uf-filter' })
 	                )
@@ -89619,7 +89224,7 @@
 	                {
 	                    onClick: this.onClickClear,
 	                    shape: 'border',
-	                    style: { marginLeft: "2px", minWidth: "0px", width: "26px", lineHeight: "24px", padding: 0, "visibility": this.props.isShowClear || this.state.selectValue.length > 0 ? "visible" : "hidden" }
+	                    style: { marginLeft: "1px", minWidth: "0px", width: "24px", padding: 0, "visibility": this.props.isShowClear || this.state.selectValue.length > 0 ? "visible" : "hidden" }
 	                },
 	                _react2["default"].createElement(_beeIcon2["default"], { style: { padding: 0, color: '#585858', "visibility": this.props.isShowClear || this.state.selectValue.length > 0 ? "visible" : "hidden" }, type: 'uf-filterno' })
 	            )
@@ -89755,35 +89360,6 @@
 	
 	    var _this = _possibleConstructorReturn(this, _React$Component.call(this, props));
 	
-	    _this.delayFire = function (visible, callBack) {
-	      var _this$props = _this.props,
-	          delayShow = _this$props.delayShow,
-	          delayHide = _this$props.delayHide,
-	          delay = _this$props.delay;
-	
-	      var delayShowTime = delayShow || delay || false;
-	      var delayHideTime = delayHide || delay || false;
-	      if (delayShowTime) {
-	        if (visible) {
-	          clearTimeout(_this.timer);
-	          _this.timer = setTimeout(function () {
-	            callBack();
-	          }, delayShowTime);
-	          return;
-	        }
-	      }
-	      if (delayHideTime) {
-	        if (!visible) {
-	          clearTimeout(_this.timer);
-	          _this.timer = setTimeout(function () {
-	            callBack();
-	          }, delayHideTime);
-	          return;
-	        }
-	      }
-	      callBack();
-	    };
-	
 	    _this.state = {
 	      visible: jadgeState(_this.props)
 	    };
@@ -89821,17 +89397,13 @@
 	  };
 	
 	  Dropdown.prototype.onVisibleChange = function onVisibleChange(visible) {
-	    var _this2 = this;
-	
 	    var props = this.props;
-	    this.delayFire(visible, function () {
-	      if (!('visible' in props)) {
-	        _this2.setState({
-	          visible: visible
-	        });
-	      }
-	      props.onVisibleChange(visible);
-	    });
+	    if (!('visible' in props)) {
+	      this.setState({
+	        visible: visible
+	      });
+	    }
+	    props.onVisibleChange(visible);
 	  };
 	
 	  Dropdown.prototype.getMenuElement = function getMenuElement() {
@@ -89876,7 +89448,10 @@
 	        trigger = _props2.trigger,
 	        getDocument = _props2.getDocument,
 	        disabled = _props2.disabled,
-	        props = _objectWithoutProperties(_props2, ['clsPrefix', 'children', 'transitionName', 'animation', 'align', 'placement', 'getPopupContainer', 'showAction', 'hideAction', 'overlayClassName', 'overlayStyle', 'trigger', 'getDocument', 'disabled']);
+	        delay = _props2.delay,
+	        delayShow = _props2.delayShow,
+	        delayHide = _props2.delayHide,
+	        props = _objectWithoutProperties(_props2, ['clsPrefix', 'children', 'transitionName', 'animation', 'align', 'placement', 'getPopupContainer', 'showAction', 'hideAction', 'overlayClassName', 'overlayStyle', 'trigger', 'getDocument', 'disabled', 'delay', 'delayShow', 'delayHide']);
 	
 	    return _react2["default"].createElement(
 	      _trigger2["default"],
@@ -89898,7 +89473,9 @@
 	        popup: this.getMenuElement(),
 	        onPopupVisibleChange: this.onVisibleChange,
 	        getPopupContainer: getPopupContainer,
-	        getDocument: getDocument
+	        getDocument: getDocument,
+	        mouseEnterDelay: delayShow && delayShow / 1000 || delay && delay / 1000,
+	        mouseLeaveDelay: delayHide && delayHide / 1000 || delay && delay / 1000
 	      }),
 	      children
 	    );
@@ -92938,7 +92515,6 @@
 	    'less_than_equal_to': '小于等于',
 	    'be_equal_to': '等于',
 	    'not_equal_to': '不等于',
-	    "no_data": '暂无数据',
 	    'en-us': {
 	        'resetSettings': 'reset settings',
 	        'include': 'include',
@@ -92952,8 +92528,7 @@
 	        'less_than': 'less than',
 	        'less_than_equal_to': 'less than equal to',
 	        'be_equal_to': 'be equal to',
-	        'not_equal_to': 'not equal to',
-	        "no_data": 'no data'
+	        'not_equal_to': 'not equal to'
 	    },
 	    'zh-tw': {
 	        'resetSettings': '還原設置',
@@ -92968,8 +92543,7 @@
 	        'less_than': '小於',
 	        'less_than_equal to': '小於等於',
 	        'be_equal_to': '等於',
-	        'not_equal_to': '不等於',
-	        "no_data": '暫無數據'
+	        'not_equal_to': '不等於'
 	    }
 	};
 
@@ -92997,10 +92571,6 @@
 	
 	var _ColumnGroup2 = _interopRequireDefault(_ColumnGroup);
 	
-	var _beeIcon = __webpack_require__(105);
-	
-	var _beeIcon2 = _interopRequireDefault(_beeIcon);
-	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 	
 	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
@@ -93008,27 +92578,13 @@
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
 	//行控制管理
+	
 	var ColumnManager = function () {
-	  function ColumnManager(columns, elements, originWidth, rowDraggAble) {
+	  function ColumnManager(columns, elements, originWidth) {
 	    _classCallCheck(this, ColumnManager);
 	
 	    this._cached = {};
 	
-	    //判断是否使用行拖拽
-	    if (rowDraggAble) {
-	      var dragHandleColumn = [{
-	        className: "drag-handle-column",
-	        title: "",
-	        key: "dragHandle",
-	        dataIndex: "dragHandle",
-	        fixed: "left",
-	        width: 49,
-	        render: function render() {
-	          return _react2["default"].createElement(_beeIcon2["default"], { type: 'uf-navmenu' });
-	        }
-	      }];
-	      columns = dragHandleColumn.concat(columns);
-	    }
 	    this.columns = columns || this.normalize(elements);
 	    this.originWidth = originWidth;
 	  }
@@ -93517,7 +93073,7 @@
 	    }
 	
 	    MultiSelect.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
-	      if ('data' in nextProps) {
+	      if (this.props.data != nextProps.data) {
 	        var obj = this.getCheckedOrIndeter(nextProps.data);
 	        this.setState(_extends({}, obj, {
 	          data: (0, _util.ObjectAssign)(nextProps.data)
@@ -93561,7 +93117,7 @@
 	      var count = 0;
 	      var disabledCount = 0;
 	      data.forEach(function (da) {
-	        if (da._checked && !da._disabled) {
+	        if (da._checked) {
 	          count++;
 	        }
 	        if (da._disabled) {
@@ -93569,7 +93125,7 @@
 	        }
 	      });
 	
-	      if (data.length == count + disabledCount && count > 0) {
+	      if (data.length == count + disabledCount) {
 	        return "all";
 	      }
 	      return count == 0 ? false : "indeter";
@@ -93687,7 +93243,7 @@
 	        key: "checkbox",
 	        dataIndex: "checkbox",
 	        fixed: "left",
-	        width: 49,
+	        width: 50,
 	        render: function render(text, record, index) {
 	          var attr = {};
 	          record._disabled ? attr.disabled = record._disabled : "";
@@ -93714,7 +93270,7 @@
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-	  value: true
+	    value: true
 	});
 	
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -93733,29 +93289,29 @@
 	*/
 	
 	function sortBy(arr, prop, desc) {
-	  var props = [],
-	      ret = [],
-	      i = 0,
-	      len = arr.length;
-	  if (typeof prop == 'string') {
-	    for (; i < len; i++) {
-	      var oI = arr[i];
-	      (props[i] = new String(oI && oI[prop] || ''))._obj = oI;
+	    var props = [],
+	        ret = [],
+	        i = 0,
+	        len = arr.length;
+	    if (typeof prop == 'string') {
+	        for (; i < len; i++) {
+	            var oI = arr[i];
+	            (props[i] = new String(oI && oI[prop] || ''))._obj = oI;
+	        }
+	    } else if (typeof prop == 'function') {
+	        for (; i < len; i++) {
+	            var _oI = arr[i];
+	            (props[i] = new String(_oI && prop(_oI) || ''))._obj = _oI;
+	        }
+	    } else {
+	        throw '参数类型错误';
 	    }
-	  } else if (typeof prop == 'function') {
-	    for (; i < len; i++) {
-	      var _oI = arr[i];
-	      (props[i] = new String(_oI && prop(_oI) || ''))._obj = _oI;
+	    props.sort();
+	    for (i = 0; i < len; i++) {
+	        ret[i] = props[i]._obj;
 	    }
-	  } else {
-	    throw '参数类型错误';
-	  }
-	  props.sort();
-	  for (i = 0; i < len; i++) {
-	    ret[i] = props[i]._obj;
-	  }
-	  if (desc) ret.reverse();
-	  return ret;
+	    if (desc) ret.reverse();
+	    return ret;
 	};
 	
 	/**
@@ -93764,11 +93320,11 @@
 	 * @param {} property 
 	 */
 	function compare(property) {
-	  return function (a, b) {
-	    var value1 = a[property];
-	    var value2 = b[property];
-	    return value1 - value2;
-	  };
+	    return function (a, b) {
+	        var value1 = a[property];
+	        var value2 = b[property];
+	        return value1 - value2;
+	    };
 	}
 	
 	/**
@@ -93776,19 +93332,19 @@
 	 * @param {*} obj 要拷贝的对象 
 	 */
 	function ObjectAssign(obj) {
-	  var b = obj instanceof Array;
-	  var tagObj = b ? [] : {};
-	  if (b) {
-	    //数组
-	    obj.forEach(function (da) {
-	      var _da = {};
-	      _extends(_da, da);
-	      tagObj.push(_da);
-	    });
-	  } else {
-	    _extends(tagObj, obj);
-	  }
-	  return tagObj;
+	    var b = obj instanceof Array;
+	    var tagObj = b ? [] : {};
+	    if (b) {
+	        //数组
+	        obj.forEach(function (da) {
+	            var _da = {};
+	            _extends(_da, da);
+	            tagObj.push(_da);
+	        });
+	    } else {
+	        _extends(tagObj, obj);
+	    }
+	    return tagObj;
 	}
 
 /***/ }),
@@ -94119,7 +93675,7 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); } /**
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @title 通过拖拽调整弹框大小
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @description 通过 `resizable` 参数控制弹框是否可被 `resize`
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @description 通过 `resizable` 参数控制弹框是否可被 `resize`。通过 `centered` 参数设置弹框垂直居中展示。
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
 	
@@ -94179,6 +93735,7 @@
 	            _react2['default'].createElement(
 	                _src2['default'],
 	                {
+	                    centered: true,
 	                    show: this.state.showModal,
 	                    backdropClosable: false,
 	                    resizable: true,

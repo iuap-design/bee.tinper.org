@@ -3,6 +3,7 @@ import events from 'dom-helpers/events';
 import ownerDocument from 'dom-helpers/ownerDocument';
 import canUseDOM from 'dom-helpers/util/inDOM';
 import getScrollbarSize from 'dom-helpers/util/scrollbarSize';
+import getScrollTop from 'dom-helpers/query/scrollTop';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import  BaseModal  from 'bee-overlay-modal/build/Modal';
@@ -171,15 +172,15 @@ const childContextTypes = {
 class Modal extends React.Component {
   constructor(props, context) {
     super(props, context);
-
+    this.state = {
+      style: {},
+      centered: props.centered
+    }
+    this.offsetTop = 0;
     this.handleEntering = this.handleEntering.bind(this);
     this.handleExited = this.handleExited.bind(this);
     this.handleWindowResize = this.handleWindowResize.bind(this);
     this.handleDialogClick = this.handleDialogClick.bind(this);
-
-    this.state = {
-      style: {},
-    };
   }
   static info =  ModalFunc;
   static success =  ModalFunc;
@@ -252,6 +253,22 @@ class Modal extends React.Component {
       }
     });
   }
+  //ResizeStart 时，若模态框设置了 `centered` ，需要把居中属性移除，并通过 offsetTop 制造垂直居中的假象
+  //fixbug: Resize 和 centered 一起使用时，拖拽交互不正确
+  clearCenteredCls = () => {
+    let { centered } = this.state;
+    if(!centered){ return; }
+    this.offsetTop = this.getOffsetTop();
+    this.setState({
+      centered: false
+    })
+  }
+  //计算 ModalDialog 的 offsetTop
+  getOffsetTop() {
+    let modalDialog = document.getElementsByClassName("u-modal-dialog") && document.getElementsByClassName("u-modal-dialog")[0];
+    let topPos = modalDialog && modalDialog.offsetTop;
+    return topPos;
+  }
 
   render() {
     let {
@@ -273,9 +290,13 @@ class Modal extends React.Component {
       draggable,
       resizeClassName,
       bounds,
-      centered,
+      container,
       ...props
     } = this.props;
+    let { centered } = this.state;
+    const dialogMarginTop = 30;
+    //ResizeStart 时，计算 ModalDialog 的 offsetTop
+    let topPosStyle = this.offsetTop > 0 ? {top: this.offsetTop - dialogMarginTop} : null;
     const [baseModalProps, dialogProps] =
       splitComponent(props, BaseModal);
 
@@ -293,7 +314,7 @@ class Modal extends React.Component {
     }
     if(Number(width))width += 'px';
 
-    let styleRes = { ...this.state.style, ...style };
+    let styleRes = { ...this.state.style, ...style, ...topPosStyle };
     if (width) {
       Object.assign(styleRes, { width: width })
     }
@@ -320,6 +341,7 @@ class Modal extends React.Component {
           draggable={draggable}
           bounds={bounds}
           resizeClassName={resizeClassName}
+          clearCenteredCls={this.clearCenteredCls}
         >
           {children}
         </Dialog>

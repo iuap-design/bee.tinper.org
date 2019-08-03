@@ -28,6 +28,7 @@ import 'bee-form-control/build/FormControl.css';
 |componentClass|说明表单类型(`input`,`textarea`)|string|'input'|
 |type|类型(`text`,`search`, `submit`,'checkbox',...详情http://www.w3school.com.cn/html5/att_input_type.asp)|string|'text'|
 |onChange|input值发生改变触发的回调|func|-|
+|debounceDelay|函数防抖时间间隔|number|-|
 |onKeyDown|keydown回调|func|-|
 |value|input当前值|string|-|
 |defaultValue|input默认值|string|-|
