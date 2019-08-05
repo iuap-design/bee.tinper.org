@@ -31,6 +31,10 @@ var _scrollbarSize = require('dom-helpers/util/scrollbarSize');
 
 var _scrollbarSize2 = _interopRequireDefault(_scrollbarSize);
 
+var _scrollTop = require('dom-helpers/query/scrollTop');
+
+var _scrollTop2 = _interopRequireDefault(_scrollTop);
+
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
@@ -197,14 +201,27 @@ var Modal = function (_React$Component) {
 
     var _this = _possibleConstructorReturn(this, _React$Component.call(this, props, context));
 
+    _this.clearCenteredCls = function () {
+      var centered = _this.state.centered;
+
+      if (!centered) {
+        return;
+      }
+      _this.offsetTop = _this.getOffsetTop();
+      _this.setState({
+        centered: false
+      });
+    };
+
+    _this.state = {
+      style: {},
+      centered: props.centered
+    };
+    _this.offsetTop = 0;
     _this.handleEntering = _this.handleEntering.bind(_this);
     _this.handleExited = _this.handleExited.bind(_this);
     _this.handleWindowResize = _this.handleWindowResize.bind(_this);
     _this.handleDialogClick = _this.handleDialogClick.bind(_this);
-
-    _this.state = {
-      style: {}
-    };
     return _this;
   }
 
@@ -266,6 +283,16 @@ var Modal = function (_React$Component) {
       }
     });
   };
+  //ResizeStart 时，若模态框设置了 `centered` ，需要把居中属性移除，并通过 offsetTop 制造垂直居中的假象
+  //fixbug: Resize 和 centered 一起使用时，拖拽交互不正确
+
+
+  //计算 ModalDialog 的 offsetTop
+  Modal.prototype.getOffsetTop = function getOffsetTop() {
+    var modalDialog = document.getElementsByClassName("u-modal-dialog") && document.getElementsByClassName("u-modal-dialog")[0];
+    var topPos = modalDialog && modalDialog.offsetTop;
+    return topPos;
+  };
 
   Modal.prototype.render = function render() {
     var _this2 = this;
@@ -290,8 +317,14 @@ var Modal = function (_React$Component) {
         draggable = _props.draggable,
         resizeClassName = _props.resizeClassName,
         bounds = _props.bounds,
-        centered = _props.centered,
-        props = _objectWithoutProperties(_props, ['backdrop', 'backdropClosable', 'animation', 'show', 'dialogComponentClass', 'className', 'clsPrefix', 'style', 'size', 'width', 'children', 'onEntering', 'onExited', 'backdropClassName', 'containerClassName', 'draggable', 'resizeClassName', 'bounds', 'centered']);
+        container = _props.container,
+        props = _objectWithoutProperties(_props, ['backdrop', 'backdropClosable', 'animation', 'show', 'dialogComponentClass', 'className', 'clsPrefix', 'style', 'size', 'width', 'children', 'onEntering', 'onExited', 'backdropClassName', 'containerClassName', 'draggable', 'resizeClassName', 'bounds', 'container']);
+
+    var centered = this.state.centered;
+
+    var dialogMarginTop = 30;
+    //ResizeStart 时，计算 ModalDialog 的 offsetTop
+    var topPosStyle = this.offsetTop > 0 ? { top: this.offsetTop - dialogMarginTop } : null;
 
     var _splitComponent = (0, _tinperBeeCore.splitComponent)(props, _Modal2["default"]),
         _splitComponent2 = _slicedToArray(_splitComponent, 2),
@@ -307,7 +340,7 @@ var Modal = function (_React$Component) {
     }
     if (Number(width)) width += 'px';
 
-    var styleRes = _extends({}, this.state.style, style);
+    var styleRes = _extends({}, this.state.style, style, topPosStyle);
     if (width) {
       _extends(styleRes, { width: width });
     }
@@ -336,7 +369,8 @@ var Modal = function (_React$Component) {
           size: size,
           draggable: draggable,
           bounds: bounds,
-          resizeClassName: resizeClassName
+          resizeClassName: resizeClassName,
+          clearCenteredCls: this.clearCenteredCls
         }),
         children
       )

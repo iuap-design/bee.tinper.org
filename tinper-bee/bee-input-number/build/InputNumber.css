@@ -301,6 +301,17 @@
   .u-input-number input[type="number"] {
     -moz-appearance: textfield; }
 
+.u-input-number-group .u-input-number-out {
+  width: calc( 50% - 20px);
+  display: inline-block; }
+
+.u-input-number-group-split {
+  width: 20px;
+  display: inline-block;
+  text-align: center;
+  position: relative;
+  top: -10px; }
+
 .u-table .u-table-tbody .u-table-row .u-input-number .u-input-group-addon:first-of-type {
   position: relative;
   left: 2px; }

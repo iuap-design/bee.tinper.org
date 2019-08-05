@@ -26,6 +26,9 @@ const propTypes = {
     disabledAlpha: PropTypes.bool,
     autoCalculate: PropTypes.func,
     onChange: PropTypes.func,
+    title: PropTypes.string,
+    cacelBtn:PropTypes.string,
+    confirmBtn:PropTypes.string,
 };
 const defaultProps = {
     clsPrefix: "u-colorpicker",
@@ -37,7 +40,10 @@ const defaultProps = {
     disabled: false,
     disabledAlpha: false,
     autoCalculate: () => {},
-    onChange: () => {}
+    onChange: () => {},
+    title:'取色板',
+    cacelBtn:'取消',
+    confirmBtn:'确认',
 };
 
 const initRgb = colors['red'].rgbArr[6] ? `rgb(${colors['red'].rgbArr[6]})` : '';
@@ -191,8 +197,8 @@ class ColorPicker extends Component {
         for (let prop in colors) {
             let item = colors[prop];
             opts.push( <Option key = { item.key }value = { item.key } className = { `${clsPrefix}-select-option clearfix` } >
-                            <div className = { `option-overview bg-${item.key}-600` } > </div> 
-                            <span > { item.name } </span> 
+                            <div className = { `option-overview bg-${item.key}-600` } > </div>
+                            <span > { item.name } </span>
                        </Option > )
         }
         return opts;
@@ -231,14 +237,14 @@ class ColorPicker extends Component {
             if (sColor.length === 4) {
                 let sColorNew = "#";
                 for (let i=1; i<4; i+=1) {
-                    sColorNew += sColor.slice(i, i+1).concat(sColor.slice(i, i+1));    
+                    sColorNew += sColor.slice(i, i+1).concat(sColor.slice(i, i+1));
                 }
                 sColor = sColorNew;
             }
             //处理六位的颜色值
             let sColorChange = [];
             for (let i=1; i<7; i+=2) {
-                sColorChange.push(parseInt("0x"+sColor.slice(i, i+2)));    
+                sColorChange.push(parseInt("0x"+sColor.slice(i, i+2)));
             }
             if( alpha ){
                 sColorChange.push(alpha);
@@ -258,18 +264,18 @@ class ColorPicker extends Component {
             for (let i=0; i<aColor.length; i++) {
                 let hex = Number(aColor[i]).toString(16);
                 if (hex.length < 2) {
-                    hex = '0' + hex;    
+                    hex = '0' + hex;
                 }
                 strHex += hex;
             }
             if (strHex.length !== 7) {
-                strHex = that;    
+                strHex = that;
             }
             return strHex;
         } else if (reg.test(that)) {
             let aNum = that.replace(/#/,"").split("");
             if (aNum.length === 6) {
-                return that;    
+                return that;
             } else if(aNum.length === 3) {
                 let numHex = "#";
                 for (let i=0; i<aNum.length; i+=1) {
@@ -359,16 +365,16 @@ class ColorPicker extends Component {
             pattern: /^#[0-9a-fA-F]{6}$/, message: '色值格式不正确'
         }] : null;
 
-        HTMLElement.prototype.__defineGetter__("currentStyle", function () { 
-            return this.ownerDocument.defaultView.getComputedStyle(this, null); 
+        HTMLElement.prototype.__defineGetter__("currentStyle", function () {
+            return this.ownerDocument.defaultView.getComputedStyle(this, null);
         });
 
-  
+
 
         return(
             <div className={classnames(clsPrefix,className)}>
                 <FormItem className={`${clsPrefix}-form`}>
-                    {label? 
+                    {label?
                         <Label>
                             {required ? <Icon type="uf-mi" className='mast'></Icon> : "" }
                             {label}
@@ -376,14 +382,14 @@ class ColorPicker extends Component {
                         : ''
                     }
                     <span>
-                        <FormControl 
+                        <FormControl
                             disabled={disabled}
-                            placeholder={placeholder} 
-                            value={formValue} 
+                            placeholder={placeholder}
+                            value={formValue}
                             onChange={this.handleChange}
                         />
                         <div style={{backgroundColor:formValue}}
-                            className={`${clsPrefix}-form-color-demo`} 
+                            className={`${clsPrefix}-form-color-demo`}
                             onClick={ !disabled ? this.handleClick : null }>
                         </div>
                     </span>
@@ -395,10 +401,10 @@ class ColorPicker extends Component {
                 width = '600'
                 className={`${clsPrefix}-modal`}
                 show = { this.state.displayColorPicker }
-                onHide = { this.handleClose } 
+                onHide = { this.handleClose }
                 backdropClosable = { false }>
                     <Modal.Header closeButton>
-                        <Modal.Title>取色板</Modal.Title>
+                        <Modal.Title>{this.props.title}</Modal.Title>
                     </Modal.Header>
 
                     <Modal.Body>
@@ -447,8 +453,8 @@ class ColorPicker extends Component {
                     </Modal.Body>
 
                     <Modal.Footer>
-                        <Button onClick={ this.handleClose } shape="border" style={{marginRight: 15}}>取消</Button>
-                        <Button onClick={ this.submit } colors="primary">确定</Button>
+                        <Button onClick={ this.handleClose } shape="border" style={{marginRight: 15}}>{this.props.cacelBtn}</Button>
+                        <Button onClick={ this.submit } colors="primary">{this.props.confirmBtn}</Button>
                     </Modal.Footer>
                 </Modal>
             </div>

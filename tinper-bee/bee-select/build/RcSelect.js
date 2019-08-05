@@ -32,6 +32,10 @@ var _componentClasses2 = _interopRequireDefault(_componentClasses);
 
 var _rcMenu = require('rc-menu');
 
+var _MenuItem = require('rc-menu/lib/MenuItem');
+
+var _MenuItem2 = _interopRequireDefault(_MenuItem);
+
 var _warning = require('warning');
 
 var _warning2 = _interopRequireDefault(_warning);
@@ -1198,7 +1202,7 @@ var _initialiseProps = function _initialiseProps() {
       value.forEach(function (singleValue) {
         var key = singleValue;
         var menuItem = _react2["default"].createElement(
-          _rcMenu.Item,
+          _MenuItem2["default"],
           {
             style: _util.UNSELECTABLE_STYLE,
             role: 'option',
@@ -1227,7 +1231,7 @@ var _initialiseProps = function _initialiseProps() {
         });
         if (notFindInputItem) {
           options.unshift(_react2["default"].createElement(
-            _rcMenu.Item,
+            _MenuItem2["default"],
             {
               style: _util.UNSELECTABLE_STYLE,
               role: 'option',
@@ -1243,7 +1247,7 @@ var _initialiseProps = function _initialiseProps() {
 
     if (!options.length && notFoundContent) {
       options = [_react2["default"].createElement(
-        _rcMenu.Item,
+        _MenuItem2["default"],
         {
           style: _util.UNSELECTABLE_STYLE,
           attribute: _util.UNSELECTABLE_ATTRIBUTE,
@@ -1294,7 +1298,7 @@ var _initialiseProps = function _initialiseProps() {
       (0, _util.validateOptionValue)(childValue, _this2.props);
 
       if (_this2.filterOption(inputValue, child)) {
-        var menuItem = _react2["default"].createElement(_rcMenu.Item, _extends({
+        var menuItem = _react2["default"].createElement(_MenuItem2["default"], _extends({
           style: _util.UNSELECTABLE_STYLE,
           attribute: _util.UNSELECTABLE_ATTRIBUTE,
           value: childValue,

@@ -519,7 +519,7 @@ var InputNumber = function (_Component) {
         var disabledCon = disabled ? ' disabled-con' : '';
         return _react2["default"].createElement(
             'div',
-            null,
+            { className: clsPrefix + '-out' },
             iconStyle === 'double' ? _react2["default"].createElement(
                 _beeInputGroup2["default"],
                 { className: (0, _classnames2["default"])(className, classes, disabledCon) },

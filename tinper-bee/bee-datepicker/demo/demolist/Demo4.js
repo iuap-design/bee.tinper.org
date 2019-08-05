@@ -82,7 +82,7 @@ class Demo4 extends Component {
                             showClear={true}
                             onChange={this.onChange}
                             onPanelChange={(v)=>{console.log('onPanelChange',v)}}
-                            showClose={false}
+                            showClose={true}
                             onStartInputBlur={this.onStartInputBlur}
                             onEndInputBlur={this.onEndInputBlur}
                         />

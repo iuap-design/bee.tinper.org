@@ -1,3 +1,33 @@
+<a name="2.2.5"></a>
+## [2.2.5](https://github.com/tinper-bee/bee-datepicker/compare/v2.2.4...v2.2.5) (2019-08-01)
+
+
+### Features
+
+* **bee-datepicker:** 新增外层输入框点击关闭的回调 ([b8dc751](https://github.com/tinper-bee/bee-datepicker/commit/b8dc751))
+
+
+
+<a name="2.2.4"></a>
+## [2.2.4](https://github.com/tinper-bee/bee-datepicker/compare/v2.2.3...v2.2.4) (2019-07-29)
+
+
+
+<a name="2.2.3"></a>
+## [2.2.3](https://github.com/tinper-bee/bee-datepicker/compare/v2.2.2...v2.2.3) (2019-07-26)
+
+
+
+<a name="2.2.2"></a>
+## [2.2.2](https://github.com/tinper-bee/bee-datepicker/compare/v2.2.1...v2.2.2) (2019-07-17)
+
+
+
+<a name="2.2.1"></a>
+## [2.2.1](https://github.com/tinper-bee/bee-datepicker/compare/v2.2.0...v2.2.1) (2019-07-17)
+
+
+
 <a name="2.2.0"></a>
 # [2.2.0](https://github.com/tinper-bee/bee-datepicker/compare/v2.1.2...v2.2.0) (2019-07-13)
 

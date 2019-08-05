@@ -1,3 +1,13 @@
+<a name="2.0.15"></a>
+## [2.0.15](https://github.com/tinper-bee/bee-select/compare/v2.0.14...v2.0.15) (2019-07-29)
+
+
+### Bug Fixes
+
+* **bee-select:** MenuItem引入方式改为从 lib中 ([c50ffd5](https://github.com/tinper-bee/bee-select/commit/c50ffd5))
+
+
+
 <a name="2.0.14"></a>
 ## [2.0.14](https://github.com/tinper-bee/bee-select/compare/v2.0.13...v2.0.14) (2019-07-08)
 

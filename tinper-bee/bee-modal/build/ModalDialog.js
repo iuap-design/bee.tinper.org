@@ -101,6 +101,7 @@ var ModalDialog = function (_React$Component) {
       var onResizeStart = _this.props.onResizeStart;
 
       typeof onResizeStart === "function" && onResizeStart(e, dir, elementRef);
+      _this.props.clearCenteredCls && _this.props.clearCenteredCls();
     }, _this.onResize = function (e, direction, elementRef, delta) {
       var onResize = _this.props.onResize;
       var original = _this.state.original;

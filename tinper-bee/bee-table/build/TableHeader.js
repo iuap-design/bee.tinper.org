@@ -20,7 +20,7 @@ var _propTypes2 = _interopRequireDefault(_propTypes);
 
 var _throttleDebounce = require("throttle-debounce");
 
-var _utils = require("./utils");
+var _utils = require("./lib/utils");
 
 var _FilterType = require("./FilterType");
 
@@ -79,8 +79,9 @@ var TableHeader = function (_Component) {
           clsPrefix = _this$props.clsPrefix,
           contentTable = _this$props.contentTable,
           lastShowIndex = _this$props.lastShowIndex;
+      // let currentElement = this.getOnLineObject(targetEvent);
 
-      var currentElement = _this.getOnLineObject(targetEvent);
+      var currentElement = _this.getTargetToTh(targetEvent);
       if (!currentElement) return;
       var type = currentElement.getAttribute('data-type');
       if (!_this.props.dragborder && !_this.props.draggable) return;
@@ -147,7 +148,8 @@ var TableHeader = function (_Component) {
           scrollbarWidth = _this$props2.scrollbarWidth,
           contentTable = _this$props2.contentTable,
           headerScroll = _this$props2.headerScroll,
-          lastShowIndex = _this$props2.lastShowIndex;
+          lastShowIndex = _this$props2.lastShowIndex,
+          onDraggingBorder = _this$props2.onDraggingBorder;
 
       _utils.Event.stopPropagation(e);
       var event = _utils.Event.getEvent(e);
@@ -214,9 +216,11 @@ var TableHeader = function (_Component) {
         }
       } else if (_this.props.draggable && _this.drag.option == "draggable") {
         // console.log(" --onTrMouseMove--draggable- ",this.drag.option);
-      } else {
-          // console.log("onTrMouseMove dragborder or draggable is all false !");
-        }
+      } else {}
+        // console.log("onTrMouseMove dragborder or draggable is all false !");
+
+        // 增加拖拽列宽动作的回调函数
+      _this.drag.newWidth && onDraggingBorder && onDraggingBorder(event, _this.drag.newWidth);
     };
 
     _this.onTrMouseUp = function (e) {
@@ -250,7 +254,8 @@ var TableHeader = function (_Component) {
       if (table) {
         var innerTable = table.querySelector('.u-table-body-inner');
         if (innerTable) {
-          overflow.x && (innerTable.style.overflowX = overflow.x);
+          //fixbug: 拖拽列宽后，滚动条滚到表格底部，会导致固定列和非固定列错行
+          // overflow.x && (innerTable.style.overflowX = overflow.x);
           overflow.y && (innerTable.style.overflowY = overflow.y);
         }
       }
@@ -471,6 +476,7 @@ var TableHeader = function (_Component) {
     _this._thead = null; //当前对象
     _this.event = false; //避免多次绑定问题
     _this.lastColumWidth = null; //非固定列最后一列的初始化宽度
+    _this.fixedTable = {};
     return _this;
   }
 
@@ -487,6 +493,7 @@ var TableHeader = function (_Component) {
   };
 
   TableHeader.prototype.componentWillUnmount = function componentWillUnmount() {
+    this.fixedTable = null;
     if (!this.table) return;
     if (this.props.draggable) {
       this.removeDragAbleEvent();
@@ -495,6 +502,7 @@ var TableHeader = function (_Component) {
       this.removeDragBorderEvent();
     }
     this.eventListen([{ key: 'mousedown', fun: this.onTrMouseDown }], 'remove', this.table.tr[0]);
+    this.eventListen([{ key: 'mouseup', fun: this.bodyonLineMouseUp }], 'remove', document.body);
   };
 
   /**
@@ -549,8 +557,13 @@ var TableHeader = function (_Component) {
   TableHeader.prototype.initEvent = function initEvent() {
     var _props = this.props,
         dragborder = _props.dragborder,
-        draggable = _props.draggable;
+        draggable = _props.draggable,
+        rows = _props.rows;
+    // 当传入的 columns 为空时，不绑定拖拽事件
 
+    if (Object.prototype.toString.call(rows) === '[object Array]' && rows.length === 0) {
+      return;
+    }
     if (!this.event) {
       //避免多次绑定问题。
       this.event = true;

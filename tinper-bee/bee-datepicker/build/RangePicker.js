@@ -266,12 +266,16 @@ var _initialiseProps = function _initialiseProps() {
             value: []
         });
         _this3.props.onChange && _this3.props.onChange([], []);
+        _this3.props.onFormControlClear && _this3.props.onFormControlClear();
     };
 
     this.onOpenChange = function (open) {
         var props = _this3.props;
         var self = _this3;
-
+        // let {value} = this.state;
+        // if(!isValidRange(value)){
+        //     debugger
+        // }
         if (open === false) {
             _this3.clearHoverValue();
         }

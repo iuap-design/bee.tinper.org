@@ -14,14 +14,16 @@ const propTypes = {
     onChange: PropTypes.func,
     onBlur: PropTypes.func,
     showClose: PropTypes.bool,
-    focusSelect:PropTypes.bool
+    focusSelect:PropTypes.bool,
+    debounceDelay:PropTypes.number,
 };
 
 const defaultProps = {
     componentClass: 'input',
     clsPrefix: 'u-form-control',
     type: 'text',
-    size: 'md'
+    size: 'md',
+    debounceDelay:0
 };
 
 
@@ -56,6 +58,10 @@ class FormControl extends React.Component {
     }
 
     handleChange = (e) => {
+        const now = new Date().getTime()
+        if (now - this.lastScrollCall < this.props.debounceDelay) return
+        this.lastScrollCall = now
+        
         const {onChange} = this.props;
         let value = this.input.value;
         this.setState({
@@ -209,11 +215,6 @@ class FormControl extends React.Component {
                     />
                     <div className={`${clsPrefix}-suffix`}>
                         <Icon type="uf-search" onClick={this.handleSearch}/>
-                        {/* {
-                            this.state.showSearch || others.disabled
-                            ? <Icon type="uf-search" onClick={this.handleSearch}/>
-                            : <Icon onClick={this.clearValue} type="uf-close-c"/>
-                        } */}
                     </div>
                 </div>
             );

@@ -85,7 +85,10 @@ var propTypes = {
     disabled: _propTypes2["default"].bool,
     disabledAlpha: _propTypes2["default"].bool,
     autoCalculate: _propTypes2["default"].func,
-    onChange: _propTypes2["default"].func
+    onChange: _propTypes2["default"].func,
+    title: _propTypes2["default"].string,
+    cacelBtn: _propTypes2["default"].string,
+    confirmBtn: _propTypes2["default"].string
 };
 var defaultProps = (_defaultProps = {
     clsPrefix: "u-colorpicker",
@@ -96,7 +99,7 @@ var defaultProps = (_defaultProps = {
     autoCalculate: false,
     disabled: false,
     disabledAlpha: false
-}, _defineProperty(_defaultProps, 'autoCalculate', function autoCalculate() {}), _defineProperty(_defaultProps, 'onChange', function onChange() {}), _defaultProps);
+}, _defineProperty(_defaultProps, 'autoCalculate', function autoCalculate() {}), _defineProperty(_defaultProps, 'onChange', function onChange() {}), _defineProperty(_defaultProps, 'title', '取色板'), _defineProperty(_defaultProps, 'cacelBtn', '取消'), _defineProperty(_defaultProps, 'confirmBtn', '确认'), _defaultProps);
 
 var initRgb = _colors2["default"]['red'].rgbArr[6] ? 'rgb(' + _colors2["default"]['red'].rgbArr[6] + ')' : '';
 
@@ -533,7 +536,7 @@ var ColorPicker = function (_Component) {
                     _react2["default"].createElement(
                         _beeModal2["default"].Title,
                         null,
-                        '\u53D6\u8272\u677F'
+                        this.props.title
                     )
                 ),
                 _react2["default"].createElement(
@@ -651,12 +654,12 @@ var ColorPicker = function (_Component) {
                     _react2["default"].createElement(
                         _beeButton2["default"],
                         { onClick: this.handleClose, shape: 'border', style: { marginRight: 15 } },
-                        '\u53D6\u6D88'
+                        this.props.cacelBtn
                     ),
                     _react2["default"].createElement(
                         _beeButton2["default"],
                         { onClick: this.submit, colors: 'primary' },
-                        '\u786E\u5B9A'
+                        this.props.confirmBtn
                     )
                 )
             )

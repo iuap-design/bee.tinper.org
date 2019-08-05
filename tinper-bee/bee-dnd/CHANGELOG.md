@@ -1,3 +1,8 @@
+<a name="1.1.3"></a>
+## [1.1.3](https://github.com/tinper-bee/bee-dnd/compare/v1.1.2...v1.1.3) (2019-07-26)
+
+
+
 <a name="1.1.2"></a>
 ## [1.1.2](https://github.com/tinper-bee/bee-dnd/compare/v1.1.1...v1.1.2) (2019-03-22)
 

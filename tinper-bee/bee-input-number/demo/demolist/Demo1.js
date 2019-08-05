@@ -8,6 +8,7 @@
 
 import React, {Component} from 'react';
 import InputNumber from '../../src';
+import Form from 'bee-form';
 
 class Demo1 extends Component {
     constructor(props) {
@@ -25,12 +26,22 @@ class Demo1 extends Component {
     }
 
     render() {
+        let {getFieldProps} = this.props.form;
         return (
             <div>
-                <InputNumber precision={2} min={0}  value={this.state.value} onChange={ this.handleChange }/>
+                {/* <InputNumber precision={2} min={0}  value={this.state.value} onChange={ this.handleChange }/> */}
+                <InputNumber
+                iconStyle="one"
+                precision={2}
+                min={0}
+                max={999999}
+                {...getFieldProps("valueStd", {
+                    initialValue: 0
+                })}
+                />
             </div>
         )
     }
 }
 
-export default Demo1;
+export default Form.createForm()(Demo1);

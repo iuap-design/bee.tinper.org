@@ -3,14 +3,14 @@ import PropTypes from 'prop-types';
 import classes from 'component-classes';
 import TableRow from './TableRow';
 import TableHeader from './TableHeader';
-import { measureScrollbar, debounce, warningOnce ,getMaxColChildrenLength} from './utils';
+import { measureScrollbar, debounce, warningOnce ,getMaxColChildrenLength} from './lib/utils';
 import shallowequal from 'shallowequal';
 import addEventListener from 'tinper-bee-core/lib/addEventListener';
 import ColumnManager from './ColumnManager';
 import createStore from './createStore';
 import Loading from 'bee-loading';
 import Icon from 'bee-icon';
-import { Event,EventUtil,closest} from "./utils";
+import { Event,EventUtil,closest} from "./lib/utils";
 import i18n from "./lib/i18n";
 import { getComponentLocale } from "bee-locale/build/tool";
 
@@ -153,6 +153,7 @@ class Table extends Component {
     this.computeTableWidth = this.computeTableWidth.bind(this);
     this.onBodyMouseLeave = this.onBodyMouseLeave.bind(this);
     this.tableUid = null;
+    this.contentTable = null;
   }
 
   componentDidMount() {
@@ -243,6 +244,7 @@ class Table extends Component {
   }
 
   componentWillUnmount() {
+    this.contentTable = null;
     EventUtil.removeHandler(this.contentTable,'keydown',this.onKeyDown);
     EventUtil.removeHandler(this.contentTable,'focus',this.onFocus);
     if (this.resizeEvent) {
@@ -393,7 +395,7 @@ class Table extends Component {
 
   getHeader(columns, fixed) {
     const { filterDelay, onFilterChange, onFilterClear, filterable, showHeader, expandIconAsCell, clsPrefix, onDragStart, onDragEnter, onDragOver, onDrop, draggable,
-      onMouseDown, onMouseMove, onMouseUp, dragborder, onThMouseMove, dragborderKey, minColumnWidth, headerHeight,afterDragColWidth,headerScroll ,bordered,onDropBorder} = this.props;
+      onMouseDown, onMouseMove, onMouseUp, dragborder, onThMouseMove, dragborderKey, minColumnWidth, headerHeight,afterDragColWidth,headerScroll ,bordered,onDropBorder,onDraggingBorder} = this.props;
     const rows = this.getHeaderRows(columns);
     if (expandIconAsCell && fixed !== 'right') {
       rows[0].unshift({
@@ -406,7 +408,7 @@ class Table extends Component {
 
     const trStyle = headerHeight&&!fixed ? { height: headerHeight } : (fixed ? this.getHeaderRowStyle(columns, rows) : null);
     let drop = draggable ? { onDragStart, onDragOver, onDrop, onDragEnter, draggable } : {};
-    let dragBorder = dragborder ? { onMouseDown, onMouseMove, onMouseUp, dragborder, onThMouseMove, dragborderKey,onDropBorder } : {};
+    let dragBorder = dragborder ? { onMouseDown, onMouseMove, onMouseUp, dragborder, onThMouseMove, dragborderKey,onDropBorder,onDraggingBorder } : {};
     let contentWidthDiff = 0;
     //非固定表格,宽度不够时自动扩充
     if (!fixed) {
@@ -520,7 +522,8 @@ class Table extends Component {
     } else if (fixed === 'right') {
       colCount = this.columnManager.rightLeafColumns().length;
     } else {
-      colCount = this.columnManager.leafColumns().length;
+      // colCount = this.columnManager.leafColumns().length;
+      colCount = this.columnManager.centerColumns().length; //计算非固定列的个数，fix: 嵌套表格场景，右侧列断开的问题
     }
 
     function contentContainer() {

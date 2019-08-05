@@ -80,7 +80,7 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
 	
-	var Demo1 = __webpack_require__(274);var Demo2 = __webpack_require__(275);var Demo3 = __webpack_require__(276);var Demo4 = __webpack_require__(277);var Demo5 = __webpack_require__(278);var Demo6 = __webpack_require__(279);var Demo7 = __webpack_require__(280);var Demo8 = __webpack_require__(281);var Demo9 = __webpack_require__(282);var Demo90 = __webpack_require__(283);var Demo91 = __webpack_require__(284);var Demo92 = __webpack_require__(285);var Demo93 = __webpack_require__(286);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 基础拖拽", "code": "\n/**\n *\n * @title 基础拖拽\n * @description 将某个元素设置为可拖拽\n *\n */\n\nimport React, { Component } from 'react';\nimport Dnd from \"tinper-bee/lib/Dnd\";\nimport { Button } from 'tinper-bee';\n\nclass Demo1 extends Component {\n\n    onStart=()=>{\n        console.log('start');\n    }\n    onStop=()=>{\n        console.log('stop');\n    }\n    render() {\n        return (\n            <div>\n                <Dnd onStart={this.onStart} onStop={this.onStop}>\n                    <div className=\"demo\">我可随意拖拽</div>\n                </Dnd>\n            </div>\n\n        );\n    }\n}\n\n", "desc": " 将某个元素设置为可拖拽", "scss_code": ".demo {\r\n    width:167px;\r\n    height:32px;\r\n    background:rgba(247,249,251,1);\r\n    border-radius:3px;\r\n    border:1px solid rgba(165,173,186,1);\r\n    line-height: 32px;\r\n    font-size: 12px;\r\n    color: #212121;\r\n    text-align: center;\r\n    cursor: grab;\r\n    &:hover{\r\n      background:rgba(235,236,240,1);\r\n      border-radius:3px;\r\n    }\r\n}\r\n/*拖动状态*/\r\n.react-draggable-transparent-selection{\r\n    .demo{\r\n        box-shadow:0px 2px 4px 0px rgba(31,37,52,0.3);\r\n        opacity:0.8;\r\n        cursor: grabbing;\r\n    }\r\n}" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 单个元素沿x轴y轴拖拽", "code": "\n/**\n *\n * @title 单个元素沿x轴y轴拖拽\n * @description 设置axis=\"x\"只可以沿着x轴拖拽，同理axis=\"y\"只可以沿着y轴拖拽\n *\n */\n\nimport React, { Component } from 'react';\nimport Dnd from \"tinper-bee/lib/Dnd\";\nimport { Button } from 'tinper-bee';\n\nclass Demo2 extends Component {\n\n    onStart=()=>{\n        console.log('start');\n    }\n    onStop=()=>{\n        console.log('stop');\n    }\n    render() {\n        return (\n            <div>\n                <Dnd axis=\"x\" onStart={this.onStart} onStop={this.onStop}>\n                    <div className=\"demo\">我只可延X轴拖拽</div>\n                </Dnd>\n            </div>\n\n        );\n    }\n}\n\n", "desc": " 设置axis=\"x\"只可以沿着x轴拖拽，同理axis=\"y\"只可以沿着y轴拖拽", "scss_code": ".demo {\r\n  width:167px;\r\n  height:32px;\r\n  background:rgba(247,249,251,1);\r\n  border-radius:3px;\r\n  border:1px solid rgba(165,173,186,1);\r\n  line-height: 32px;\r\n  font-size: 12px;\r\n  color: #212121;\r\n  text-align: center;\r\n  cursor: grab;\r\n  &:hover{\r\n    background:rgba(235,236,240,1);\r\n    border-radius:3px;\r\n  }\r\n}\r\n/*拖动状态*/\r\n.react-draggable-transparent-selection{\r\n  .demo{\r\n      box-shadow:0px 2px 4px 0px rgba(31,37,52,0.3);\r\n      opacity:0.8;\r\n      cursor: grabbing;\r\n  }\r\n}" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 设置元素不可拖拽", "code": "\r\n/**\r\n *\r\n * @title 设置元素不可拖拽\r\n * @description 设置 onStart 的返回值为false，则不可以拖拽\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\r\n\nimport Dnd from \"tinper-bee/lib/Dnd\";\nimport { Button } from 'tinper-bee';\r\n\r\nclass Demo3 extends Component {\r\n\r\n    onStart=()=>{\r\n        console.log('start');\r\n        return false;\r\n    }\r\n    onStop=()=>{\r\n        console.log('stop');\r\n    }\r\n    render() {\r\n        return (\r\n            <div className=\"demo-3\">\r\n                <Dnd onStart={this.onStart}  onStop={this.onStop}>\r\n                    <div className=\"demo3 demo\">我不可以拖拽</div>\r\n                </Dnd>\r\n            </div>\r\n\r\n        );\r\n    }\r\n}\r\n", "desc": " 设置 onStart 的返回值为false，则不可以拖拽", "scss_code": ".demo-3{\r\n  .demo3:hover{\r\n    background:rgba(247,249,251,1);\r\n    cursor: not-allowed;\r\n  }\r\n}" }, { "example": _react2['default'].createElement(Demo4, null), "title": " 单个元素拖拽把手", "code": "/**\r\n *\r\n * @title 单个元素拖拽把手\r\n * @description 设置 handle，值为选择器，例如 '.handle'\r\n *              设置不可拖拽区域 cancel，值为选择器，例如 '.handle'\r\n */\r\n\r\nimport React, { Component } from 'react';\r\n\nimport Dnd from \"tinper-bee/lib/Dnd\";\nimport { Icon } from 'tinper-bee';\r\n\r\nclass Demo4 extends Component {\r\n\r\n    onStart=()=>{\r\n        console.log('start');\r\n    }\r\n    onStop=()=>{\r\n        console.log('stop');\r\n    }\r\n\r\n    render() {\r\n        return (\r\n            <div className=\"demo-4\">\r\n                <div>\r\n                    <Dnd handle=\".handle\" onStart={this.onStart} onStop={this.onStop}>\r\n                        <div className=\"demo4 demo\">\r\n                            需要拖拽把手\r\n                            <div className=\"handle\"><Icon type=\"uf-move\"></Icon></div>\r\n                        </div>\r\n                    </Dnd>\r\n                </div>\r\n            </div>\r\n\r\n\r\n        );\r\n    }\r\n}\r\n\r\n", "desc": " 设置 handle，值为选择器，例如 '.handle'", "scss_code": "\r\n.demo-4 .demo4 {\r\n  position: relative;\r\n  cursor: default;\r\n  &:hover{\r\n    background:rgba(247,249,251,1);\r\n    cursor: default;\r\n  }\r\n}\r\n\r\n.demo4 .handle {\r\n  position: absolute;\r\n  right: -1px;\r\n  top: -1px;\r\n  height: 32px;\r\n  line-height: 30px;\r\n  background:rgba(223,225,230,1);\r\n  border-radius:0px 3px 3px 0px;\r\n  border:1px solid rgba(165,173,186,1);\r\n  cursor: grab;\r\n  &:hover{\r\n    background:rgba(179,186,197,1);\r\n  }\r\n}\r\n/*拖动状态*/\r\n.react-draggable-transparent-selection{\r\n  .demo4 .handle{\r\n    background:rgba(179,186,197,1);\r\n    cursor: grabbing;\r\n  }\r\n}" }, { "example": _react2['default'].createElement(Demo5, null), "title": " 每次拖拽移动距离", "code": "\r\n/**\r\n *\r\n * @title 每次拖拽移动距离\r\n * @description 设置 grid={[x,y]}\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\r\n\nimport Dnd from \"tinper-bee/lib/Dnd\";\nimport { Button } from 'tinper-bee';\r\n\r\nclass Demo5 extends Component {\r\n\r\n    onStart=()=>{\r\n        console.log('start');\r\n    }\r\n    onStop=()=>{\r\n        console.log('stop');\r\n    }\r\n    render() {\r\n        return (\r\n            <div>\r\n                <Dnd grid={[25, 25]} onStart={this.onStart}  onStop={this.onStop}>\r\n                    <div className=\"demo\">我每次拖拽可移动25px</div>\r\n                </Dnd>\r\n            </div>\r\n\r\n        );\r\n    }\r\n}\r\n\r\n", "desc": " 设置 grid={[x,y]}", "scss_code": ".demo {\r\n  width:167px;\r\n  height:32px;\r\n  background:rgba(247,249,251,1);\r\n  border-radius:3px;\r\n  border:1px solid rgba(165,173,186,1);\r\n  line-height: 32px;\r\n  font-size: 12px;\r\n  color: #212121;\r\n  text-align: center;\r\n  cursor: grab;\r\n  &:hover{\r\n    background:rgba(235,236,240,1);\r\n    border-radius:3px;\r\n  }\r\n}\r\n/*拖动状态*/\r\n.react-draggable-transparent-selection{\r\n  .demo{\r\n      box-shadow:0px 2px 4px 0px rgba(31,37,52,0.3);\r\n      opacity:0.8;\r\n      cursor: grabbing;\r\n  }\r\n}" }, { "example": _react2['default'].createElement(Demo6, null), "title": " 元素拖拽范围", "code": "\r\n/**\r\n *\r\n * @title 元素拖拽范围\r\n * @description 设置上下左右可拖拽范围 bounds={{top: -xxx, left: -xxx, right: xxx, bottom: xx}}\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\r\nimport Dnd from \"tinper-bee/lib/Dnd\";\r\n\r\nclass Demo6 extends Component {\r\n\r\n    onStart=()=>{\r\n        console.log('start');\r\n    }\r\n    onStop=()=>{\r\n        console.log('stop');\r\n    }\r\n    render() {\r\n        return (\r\n            <div className=\"demo6\">\r\n                <Dnd bounds={{top: -50, left: -50, right: 50, bottom: 50}} onStart={this.onStart} onStop={this.onStop}>\r\n                    <div className=\"demo\">我只能再上下左右50px内移动</div>\r\n                </Dnd>\r\n            </div>\r\n\r\n        );\r\n    }\r\n}\r\n\r\n", "desc": " 设置上下左右可拖拽范围 bounds={{top: -xxx, left: -xxx, right: xxx, bottom: xx}}", "scss_code": ".demo {\r\n  width:167px;\r\n  height:32px;\r\n  background:rgba(247,249,251,1);\r\n  border-radius:3px;\r\n  border:1px solid rgba(165,173,186,1);\r\n  line-height: 32px;\r\n  font-size: 12px;\r\n  color: #212121;\r\n  text-align: center;\r\n  cursor: grab;\r\n  &:hover{\r\n    background:rgba(235,236,240,1);\r\n    border-radius:3px;\r\n  }\r\n}\r\n/*拖动状态*/\r\n.react-draggable-transparent-selection{\r\n  .demo{\r\n      box-shadow:0px 2px 4px 0px rgba(31,37,52,0.3);\r\n      opacity:0.8;\r\n      cursor: grabbing;\r\n  }\r\n}\r\n.demo6{\r\n  height: 100px;\r\n}" }, { "example": _react2['default'].createElement(Demo7, null), "title": " 在指定容器中拖拽", "code": "\r\n/**\r\n *\r\n * @title 在指定容器中拖拽\r\n * @description 设置只可以在指定容器中移动\r\n * bounds的也可以设置为选择器,bounds=\".demo8-parent\"意为在class=demo8-parent的容器中移动\r\n */\r\n\r\nimport React, { Component } from 'react';\r\n\nimport Dnd from \"tinper-bee/lib/Dnd\";\nimport { Button } from 'tinper-bee';\r\n\r\nclass Demo7 extends Component {\r\n\r\n    onStart=()=>{\r\n        console.log('start');\r\n    }\r\n    onStop=()=>{\r\n        console.log('stop');\r\n    }\r\n    render() {\r\n        return (\r\n            <div>\r\n                <div className=\"demo7-parent\">\r\n                    <Dnd bounds=\".demo7-parent\" onStart={this.onStart} onStop={this.onStop}>\r\n                        <div className=\"demo\">我只能在父级元素中移动</div>\r\n                    </Dnd>\r\n                </div>\r\n            </div>\r\n\r\n\r\n        );\r\n    }\r\n}\r\n\r\n", "desc": " 设置只可以在指定容器中移动", "scss_code": ".demo {\r\n  width:167px;\r\n  height:32px;\r\n  background:rgba(247,249,251,1);\r\n  border-radius:3px;\r\n  border:1px solid rgba(165,173,186,1);\r\n  line-height: 32px;\r\n  font-size: 12px;\r\n  color: #212121;\r\n  text-align: center;\r\n  cursor: grab;\r\n  &:hover{\r\n    background:rgba(235,236,240,1);\r\n    border-radius:3px;\r\n  }\r\n}\r\n/*拖动状态*/\r\n.react-draggable-transparent-selection{\r\n  .demo{\r\n    box-shadow:0px 2px 4px 0px rgba(31,37,52,0.3);\r\n    opacity:0.8;\r\n    cursor: grabbing;\r\n  }\r\n}\r\n\r\n.demo7-parent {\r\n  width: 300px;\r\n  height: 200px;\r\n  background: rgba(247,249,251,1);\r\n  border: 1px solid rgba(235,236,240,1);\r\n  position: relative;\r\n}" }, { "example": _react2['default'].createElement(Demo8, null), "title": " 数据集合拖拽列表排序", "code": "/**\r\n *\r\n * @title 数据集合拖拽列表排序\r\n * @description 增加list 可以为 [1,2,3]数组，\r\n *              也可以为 [{},{}...]，需要配置 showKey 。\r\n *              也可以为 dom集合，见后边示例\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\r\nimport Dnd from \"tinper-bee/lib/Dnd\";\r\n\r\nclass Demo8 extends Component {\r\n    \r\n    onDragStart=(result,list)=>{\r\n        console.log('开始');\r\n    }\r\n    onDragEnd=(result,list)=>{   \r\n        console.log('结束');\r\n    }\r\n    onDragUpdate=(result)=>{\r\n        console.log('update')\r\n    }\r\n    render() {\r\n        let list=[\r\n            {\r\n                name:'第一',\r\n                code:'a'\r\n            },\r\n            {\r\n                name:'第二',\r\n                code:'b'\r\n            },\r\n            {\r\n                name:'第三',\r\n                code:'c'\r\n            },\r\n            {\r\n                name:'第四',\r\n                code:'d'\r\n            },\r\n            {\r\n                name:'第五',\r\n                code:'e'\r\n            },\r\n        ];\r\n        return (\r\n            <Dnd showKey='name' list={list} onDragUpdate={this.onDragUpdate} onStart={this.onDragStart} onStop={this.onDragEnd}/>\r\n        );\r\n    }\r\n}\r\n\r\n", "desc": " 增加list 可以为 [1,2,3]数组，", "scss_code": "" }, { "example": _react2['default'].createElement(Demo9, null), "title": " DOM集合拖拽列表排序", "code": "\r\n/**\r\n *\r\n * @title DOM集合拖拽列表排序\r\n * @description list传dom集合\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\r\nimport Dnd from \"tinper-bee/lib/Dnd\";\r\n\r\nclass Demo9 extends Component {\r\n\r\n    onDragStart=(result,list)=>{\r\n        console.log('开始');\r\n    }\r\n    onDragEnd=(result,list)=>{\r\n        console.log('结束');\r\n    }\r\n    render() {\r\n        let list=[<div>DOM第一</div>,<div>DOM第二</div>,<div>DOM第三</div>,<div>DOM第四</div>,<div>DOM第五</div>];\r\n        return (\r\n           <Dnd list={list} onStart={this.onDragStart} onStop={this.onDragEnd} />\r\n        );\r\n    }\r\n}\r\n\r\n", "desc": " list传dom集合" }, { "example": _react2['default'].createElement(Demo90, null), "title": " 横向拖拽列表排序", "code": "\r\n/**\r\n *\r\n * @title 横向拖拽列表排序\r\n * @description type='horizontal'\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\nimport {  } from 'tinper-bee';\r\nimport Dnd from \"tinper-bee/lib/Dnd\";;\r\n\r\nclass Demo90 extends Component {\r\n\r\n    render() {\r\n        let list=['第一','第二','第三','第四','第五'];\r\n        return (\r\n           <Dnd list={list} type='horizontal'  />\r\n        );\r\n    }\r\n}\r\n\r\n", "desc": " type='horizontal'" }, { "example": _react2['default'].createElement(Demo91, null), "title": " 两列纵向拖拽", "code": "\r\n/**\r\n *\r\n * @title 两列纵向拖拽\r\n * @description 设置 type='betweenVertical'。 如果不设置高度以及 overflow: scroll; 则高度会自动撑开\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\nimport {  } from 'tinper-bee';\r\nimport Dnd from \"tinper-bee/lib/Dnd\";;\r\n\r\nclass Demo90 extends Component {\r\n\r\n    render() {\r\n        let list1=['第一','第二','第三','第四','第五'];\r\n        let list2=['1','2','3','4','5'];\r\n        return (\r\n           <Dnd className='demo91' list={list1} otherList={list2} type='betweenVertical'  />\r\n        );\r\n    }\r\n}\r\n\r\n", "desc": " 设置 type='betweenVertical'。 如果不设置高度以及 overflow: scroll; 则高度会自动撑开", "scss_code": ".u-drop{\r\n    overflow: scroll;\r\n}\r\n.u-drag-between{\r\n    height: 300px;\r\n}" }, { "example": _react2['default'].createElement(Demo92, null), "title": " 两列横向拖拽", "code": "\r\n/**\r\n *\r\n * @title 两列横向拖拽\r\n * @description 设置 type='betweenVertical'\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\nimport {  } from 'tinper-bee';\r\nimport Dnd from \"tinper-bee/lib/Dnd\";;\r\n\r\nclass Demo90 extends Component {\r\n    onDragStart=(result,list)=>{\r\n        console.log('开始');\r\n    }\r\n    onDragEnd=(result,listObj)=>{\r\n        console.log('结束');\r\n        console.log(listObj)\r\n    }\r\n    render() {\r\n        let list1=['第一','第二','第三','第四','第五'];\r\n        let list2=['1','2','3','4','5'];\r\n        return (\r\n           <Dnd list={list1} otherList={list2} type='betweenHorizontal' onStart={this.onDragStart} onStop={this.onDragEnd} />\r\n        );\r\n    }\r\n}\r\n\r\n", "desc": " 设置 type='betweenVertical'", "scss_code": ".u-drop{\r\n    overflow: scroll;\r\n}\r\n.u-drag-between-horizontal{\r\n    height: 200px;\r\n}" }, { "example": _react2['default'].createElement(Demo93, null), "title": " 网格排序", "code": "\r\n/**\r\n *\r\n * @title 网格排序\r\n * @description \r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\nimport {  } from 'tinper-bee';\r\nimport Dnd from \"tinper-bee/lib/Dnd\";;\r\n\r\nconst GridLayout = Dnd.GridLayout;\r\n\r\nclass Demo93 extends Component {\r\n    render() {\r\n        let layout = [\r\n            {i: 'a', x: 0, y: 0, w: 1, h: 2},\r\n            {i: 'b', x: 1, y: 0, w: 3, h: 2},\r\n            {i: 'c', x: 4, y: 0, w: 1, h: 2, static: true},\r\n            {i: 'd', x: 0, y: 1, w: 1, h: 1},\r\n            {i: 'e', x: 2, y: 2, w: 1, h: 2},\r\n            {i: 'f', x: 3, y: 3, w: 1, h: 2}\r\n        ];\r\n        return (\r\n            <GridLayout className=\"layout\" layout={layout} cols={6} rowHeight={30} width={500}>\r\n                <div key=\"a\">a</div>\r\n                <div key=\"b\">b</div>\r\n                <div key=\"c\">static</div>\r\n                <div key=\"d\">d</div>\r\n                <div key=\"e\">e</div>\r\n                <div key=\"f\">f</div>\r\n            </GridLayout>\r\n        );\r\n    }\r\n}\r\n\r\n", "desc": " ", "scss_code": ".layout{\r\n    background: #f7f9fb;\r\n    border: 1px solid #ebecf0;\r\n    padding: 12px;\r\n    color: #212121;\r\n    div{\r\n        margin: 4px;\r\n        background: white;\r\n        border-radius: 3px;\r\n        border: 1px solid #a5adba;\r\n        padding: 6px 0;\r\n        font-size: 12px;\r\n        text-align: center;\r\n    }\r\n}" }];
+	var Demo1 = __webpack_require__(274);var Demo2 = __webpack_require__(275);var Demo3 = __webpack_require__(276);var Demo4 = __webpack_require__(277);var Demo5 = __webpack_require__(278);var Demo6 = __webpack_require__(279);var Demo7 = __webpack_require__(280);var Demo8 = __webpack_require__(281);var Demo9 = __webpack_require__(282);var Demo90 = __webpack_require__(283);var Demo91 = __webpack_require__(284);var Demo92 = __webpack_require__(285);var Demo93 = __webpack_require__(286);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 基础拖拽", "code": "\n/**\n *\n * @title 基础拖拽\n * @description 将某个元素设置为可拖拽\n *\n */\n\nimport React, { Component } from 'react';\nimport Dnd from \"tinper-bee/lib/Dnd\";\nimport { Button } from 'tinper-bee';\n\nclass Demo1 extends Component {\n\n    onStart=()=>{\n        console.log('start');\n    }\n    onStop=()=>{\n        console.log('stop');\n    }\n    render() {\n        return (\n            <div>\n                <Dnd onStart={this.onStart} onStop={this.onStop}>\n                    <div className=\"demo\">我可随意拖拽</div>\n                </Dnd>\n            </div>\n\n        );\n    }\n}\n\n", "desc": " 将某个元素设置为可拖拽", "scss_code": ".demo {\r\n    width:167px;\r\n    height:32px;\r\n    background:rgba(247,249,251,1);\r\n    border-radius:3px;\r\n    border:1px solid rgba(165,173,186,1);\r\n    line-height: 32px;\r\n    font-size: 12px;\r\n    color: #212121;\r\n    text-align: center;\r\n    cursor: grab;\r\n    &:hover{\r\n      background:rgba(235,236,240,1);\r\n      border-radius:3px;\r\n    }\r\n}\r\n/*拖动状态*/\r\n.react-draggable-transparent-selection{\r\n    .demo{\r\n        box-shadow:0px 2px 4px 0px rgba(31,37,52,0.3);\r\n        opacity:0.8;\r\n        cursor: grabbing;\r\n    }\r\n}" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 单个元素沿x轴y轴拖拽", "code": "\n/**\n *\n * @title 单个元素沿x轴y轴拖拽\n * @description 设置axis=\"x\"只可以沿着x轴拖拽，同理axis=\"y\"只可以沿着y轴拖拽\n *\n */\n\nimport React, { Component } from 'react';\nimport Dnd from \"tinper-bee/lib/Dnd\";\nimport { Button } from 'tinper-bee';\n\nclass Demo2 extends Component {\n\n    onStart=()=>{\n        console.log('start');\n    }\n    onStop=()=>{\n        console.log('stop');\n    }\n    render() {\n        return (\n            <div>\n                <Dnd axis=\"x\" onStart={this.onStart} onStop={this.onStop}>\n                    <div className=\"demo\">我只可延X轴拖拽</div>\n                </Dnd>\n            </div>\n\n        );\n    }\n}\n\n", "desc": " 设置axis=\"x\"只可以沿着x轴拖拽，同理axis=\"y\"只可以沿着y轴拖拽", "scss_code": ".demo {\r\n  width:167px;\r\n  height:32px;\r\n  background:rgba(247,249,251,1);\r\n  border-radius:3px;\r\n  border:1px solid rgba(165,173,186,1);\r\n  line-height: 32px;\r\n  font-size: 12px;\r\n  color: #212121;\r\n  text-align: center;\r\n  cursor: grab;\r\n  &:hover{\r\n    background:rgba(235,236,240,1);\r\n    border-radius:3px;\r\n  }\r\n}\r\n/*拖动状态*/\r\n.react-draggable-transparent-selection{\r\n  .demo{\r\n      box-shadow:0px 2px 4px 0px rgba(31,37,52,0.3);\r\n      opacity:0.8;\r\n      cursor: grabbing;\r\n  }\r\n}" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 设置元素不可拖拽", "code": "\r\n/**\r\n *\r\n * @title 设置元素不可拖拽\r\n * @description 设置 onStart 的返回值为false，则不可以拖拽\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\r\n\nimport Dnd from \"tinper-bee/lib/Dnd\";\nimport { Button } from 'tinper-bee';\r\n\r\nclass Demo3 extends Component {\r\n\r\n    onStart=()=>{\r\n        console.log('start');\r\n        return false;\r\n    }\r\n    onStop=()=>{\r\n        console.log('stop');\r\n    }\r\n    render() {\r\n        return (\r\n            <div className=\"demo-3\">\r\n                <Dnd onStart={this.onStart}  onStop={this.onStop}>\r\n                    <div className=\"demo3 demo\">我不可以拖拽</div>\r\n                </Dnd>\r\n            </div>\r\n\r\n        );\r\n    }\r\n}\r\n", "desc": " 设置 onStart 的返回值为false，则不可以拖拽", "scss_code": ".demo-3{\r\n  .demo3:hover{\r\n    background:rgba(247,249,251,1);\r\n    cursor: not-allowed;\r\n  }\r\n}" }, { "example": _react2['default'].createElement(Demo4, null), "title": " 单个元素拖拽把手", "code": "/**\r\n *\r\n * @title 单个元素拖拽把手\r\n * @description 设置 handle，值为选择器，例如 '.handle'\r\n *              设置不可拖拽区域 cancel，值为选择器，例如 '.handle'\r\n */\r\n\r\nimport React, { Component } from 'react';\r\n\nimport Dnd from \"tinper-bee/lib/Dnd\";\nimport { Icon } from 'tinper-bee';\r\n\r\nclass Demo4 extends Component {\r\n\r\n    onStart=()=>{\r\n        console.log('start');\r\n    }\r\n    onStop=()=>{\r\n        console.log('stop');\r\n    }\r\n\r\n    render() {\r\n        return (\r\n            <div className=\"demo-4\">\r\n                <div>\r\n                    <Dnd handle=\".handle\" onStart={this.onStart} onStop={this.onStop}>\r\n                        <div className=\"demo4 demo\">\r\n                            需要拖拽把手\r\n                            <div className=\"handle\"><Icon type=\"uf-move\"></Icon></div>\r\n                        </div>\r\n                    </Dnd>\r\n                </div>\r\n            </div>\r\n\r\n\r\n        );\r\n    }\r\n}\r\n\r\n", "desc": " 设置 handle，值为选择器，例如 '.handle'", "scss_code": "\r\n.demo-4 .demo4 {\r\n  position: relative;\r\n  cursor: default;\r\n  &:hover{\r\n    background:rgba(247,249,251,1);\r\n    cursor: default;\r\n  }\r\n}\r\n\r\n.demo4 .handle {\r\n  position: absolute;\r\n  right: -1px;\r\n  top: -1px;\r\n  height: 32px;\r\n  line-height: 30px;\r\n  background:rgba(223,225,230,1);\r\n  border-radius:0px 3px 3px 0px;\r\n  border:1px solid rgba(165,173,186,1);\r\n  cursor: grab;\r\n  &:hover{\r\n    background:rgba(179,186,197,1);\r\n  }\r\n}\r\n/*拖动状态*/\r\n.react-draggable-transparent-selection{\r\n  .demo4 .handle{\r\n    background:rgba(179,186,197,1);\r\n    cursor: grabbing;\r\n  }\r\n}" }, { "example": _react2['default'].createElement(Demo5, null), "title": " 每次拖拽移动距离", "code": "\r\n/**\r\n *\r\n * @title 每次拖拽移动距离\r\n * @description 设置 grid={[x,y]}\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\r\n\nimport Dnd from \"tinper-bee/lib/Dnd\";\nimport { Button } from 'tinper-bee';\r\n\r\nclass Demo5 extends Component {\r\n\r\n    onStart=()=>{\r\n        console.log('start');\r\n    }\r\n    onStop=()=>{\r\n        console.log('stop');\r\n    }\r\n    render() {\r\n        return (\r\n            <div>\r\n                <Dnd grid={[25, 25]} onStart={this.onStart}  onStop={this.onStop}>\r\n                    <div className=\"demo\">我每次拖拽可移动25px</div>\r\n                </Dnd>\r\n            </div>\r\n\r\n        );\r\n    }\r\n}\r\n\r\n", "desc": " 设置 grid={[x,y]}", "scss_code": ".demo {\r\n  width:167px;\r\n  height:32px;\r\n  background:rgba(247,249,251,1);\r\n  border-radius:3px;\r\n  border:1px solid rgba(165,173,186,1);\r\n  line-height: 32px;\r\n  font-size: 12px;\r\n  color: #212121;\r\n  text-align: center;\r\n  cursor: grab;\r\n  &:hover{\r\n    background:rgba(235,236,240,1);\r\n    border-radius:3px;\r\n  }\r\n}\r\n/*拖动状态*/\r\n.react-draggable-transparent-selection{\r\n  .demo{\r\n      box-shadow:0px 2px 4px 0px rgba(31,37,52,0.3);\r\n      opacity:0.8;\r\n      cursor: grabbing;\r\n  }\r\n}" }, { "example": _react2['default'].createElement(Demo6, null), "title": " 元素拖拽范围", "code": "\r\n/**\r\n *\r\n * @title 元素拖拽范围\r\n * @description 设置上下左右可拖拽范围 bounds={{top: -xxx, left: -xxx, right: xxx, bottom: xx}}\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\r\nimport Dnd from \"tinper-bee/lib/Dnd\";\r\n\r\nclass Demo6 extends Component {\r\n\r\n    onStart=()=>{\r\n        console.log('start');\r\n    }\r\n    onStop=()=>{\r\n        console.log('stop');\r\n    }\r\n    render() {\r\n        return (\r\n            <div className=\"demo6\">\r\n                <Dnd bounds={{top: -50, left: -50, right: 50, bottom: 50}} onStart={this.onStart} onStop={this.onStop}>\r\n                    <div className=\"demo\">我只能再上下左右50px内移动</div>\r\n                </Dnd>\r\n            </div>\r\n\r\n        );\r\n    }\r\n}\r\n\r\n", "desc": " 设置上下左右可拖拽范围 bounds={{top: -xxx, left: -xxx, right: xxx, bottom: xx}}", "scss_code": ".demo {\r\n  width:167px;\r\n  height:32px;\r\n  background:rgba(247,249,251,1);\r\n  border-radius:3px;\r\n  border:1px solid rgba(165,173,186,1);\r\n  line-height: 32px;\r\n  font-size: 12px;\r\n  color: #212121;\r\n  text-align: center;\r\n  cursor: grab;\r\n  &:hover{\r\n    background:rgba(235,236,240,1);\r\n    border-radius:3px;\r\n  }\r\n}\r\n/*拖动状态*/\r\n.react-draggable-transparent-selection{\r\n  .demo{\r\n      box-shadow:0px 2px 4px 0px rgba(31,37,52,0.3);\r\n      opacity:0.8;\r\n      cursor: grabbing;\r\n  }\r\n}\r\n.demo6{\r\n  height: 100px;\r\n}" }, { "example": _react2['default'].createElement(Demo7, null), "title": " 在指定容器中拖拽", "code": "\r\n/**\r\n *\r\n * @title 在指定容器中拖拽\r\n * @description 设置只可以在指定容器中移动\r\n * bounds的也可以设置为选择器,bounds=\".demo8-parent\"意为在class=demo8-parent的容器中移动\r\n */\r\n\r\nimport React, { Component } from 'react';\r\n\nimport Dnd from \"tinper-bee/lib/Dnd\";\nimport { Button } from 'tinper-bee';\r\n\r\nclass Demo7 extends Component {\r\n\r\n    onStart=()=>{\r\n        console.log('start');\r\n    }\r\n    onStop=()=>{\r\n        console.log('stop');\r\n    }\r\n    render() {\r\n        return (\r\n            <div>\r\n                <div className=\"demo7-parent\">\r\n                    <Dnd bounds=\".demo7-parent\" onStart={this.onStart} onStop={this.onStop}>\r\n                        <div className=\"demo\">我只能在父级元素中移动</div>\r\n                    </Dnd>\r\n                </div>\r\n            </div>\r\n\r\n\r\n        );\r\n    }\r\n}\r\n\r\n", "desc": " 设置只可以在指定容器中移动", "scss_code": ".demo {\r\n  width:167px;\r\n  height:32px;\r\n  background:rgba(247,249,251,1);\r\n  border-radius:3px;\r\n  border:1px solid rgba(165,173,186,1);\r\n  line-height: 32px;\r\n  font-size: 12px;\r\n  color: #212121;\r\n  text-align: center;\r\n  cursor: grab;\r\n  &:hover{\r\n    background:rgba(235,236,240,1);\r\n    border-radius:3px;\r\n  }\r\n}\r\n/*拖动状态*/\r\n.react-draggable-transparent-selection{\r\n  .demo{\r\n    box-shadow:0px 2px 4px 0px rgba(31,37,52,0.3);\r\n    opacity:0.8;\r\n    cursor: grabbing;\r\n  }\r\n}\r\n\r\n.demo7-parent {\r\n  width: 300px;\r\n  height: 200px;\r\n  background: rgba(247,249,251,1);\r\n  border: 1px solid rgba(235,236,240,1);\r\n  position: relative;\r\n}" }, { "example": _react2['default'].createElement(Demo8, null), "title": " 数据集合拖拽列表排序", "code": "/**\n *\n * @title 数据集合拖拽列表排序\n * @description 增加list 可以为 [1,2,3]数组，\n *              也可以为 [{},{}...]，需要配置 showKey 。\n *              也可以为 dom集合，见后边示例\n *\n */\n\nimport React, { Component } from 'react';\nimport Dnd from \"tinper-bee/lib/Dnd\";\n\nclass Demo8 extends Component {\n    \n    onDragStart=(result,list)=>{\n        console.log('开始');\n    }\n    onDragEnd=(result,list)=>{   \n        console.log('结束');\n    }\n    onDragUpdate=(result)=>{\n        console.log('update')\n    }\n    render() {\n        let list=[\n            {\n                name:'第一',\n                code:'a'\n            },\n            {\n                name:'第二',\n                code:'b'\n            },\n            {\n                name:'第三',\n                code:'c'\n            },\n            {\n                name:'第四',\n                code:'d'\n            },\n            {\n                name:'第五',\n                code:'e'\n            },\n        ];\n        return (\n            <Dnd showKey='name' list={list} onDragUpdate={this.onDragUpdate} onStart={this.onDragStart} onStop={this.onDragEnd}/>\n        );\n    }\n}\n\n", "desc": " 增加list 可以为 [1,2,3]数组，", "scss_code": "" }, { "example": _react2['default'].createElement(Demo9, null), "title": " DOM集合拖拽列表排序", "code": "\r\n/**\r\n *\r\n * @title DOM集合拖拽列表排序\r\n * @description list传dom集合\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\r\nimport Dnd from \"tinper-bee/lib/Dnd\";\r\n\r\nclass Demo9 extends Component {\r\n\r\n    onDragStart=(result,list)=>{\r\n        console.log('开始');\r\n    }\r\n    onDragEnd=(result,list)=>{\r\n        console.log('结束');\r\n    }\r\n    render() {\r\n        let list=[<div>DOM第一</div>,<div>DOM第二</div>,<div>DOM第三</div>,<div>DOM第四</div>,<div>DOM第五</div>];\r\n        return (\r\n           <Dnd list={list} onStart={this.onDragStart} onStop={this.onDragEnd} />\r\n        );\r\n    }\r\n}\r\n\r\n", "desc": " list传dom集合" }, { "example": _react2['default'].createElement(Demo90, null), "title": " 横向拖拽列表排序", "code": "\r\n/**\r\n *\r\n * @title 横向拖拽列表排序\r\n * @description type='horizontal'\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\nimport {  } from 'tinper-bee';\r\nimport Dnd from \"tinper-bee/lib/Dnd\";;\r\n\r\nclass Demo90 extends Component {\r\n\r\n    render() {\r\n        let list=['第一','第二','第三','第四','第五'];\r\n        return (\r\n           <Dnd list={list} type='horizontal'  />\r\n        );\r\n    }\r\n}\r\n\r\n", "desc": " type='horizontal'" }, { "example": _react2['default'].createElement(Demo91, null), "title": " 两列纵向拖拽", "code": "\r\n/**\r\n *\r\n * @title 两列纵向拖拽\r\n * @description 设置 type='betweenVertical'。 如果不设置高度以及 overflow: scroll; 则高度会自动撑开\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\nimport {  } from 'tinper-bee';\r\nimport Dnd from \"tinper-bee/lib/Dnd\";;\r\n\r\nclass Demo90 extends Component {\r\n\r\n    render() {\r\n        let list1=['第一','第二','第三','第四','第五'];\r\n        let list2=['1','2','3','4','5'];\r\n        return (\r\n           <Dnd className='demo91' list={list1} otherList={list2} type='betweenVertical'  />\r\n        );\r\n    }\r\n}\r\n\r\n", "desc": " 设置 type='betweenVertical'。 如果不设置高度以及 overflow: scroll; 则高度会自动撑开", "scss_code": ".u-drop{\r\n    overflow: scroll;\r\n}\r\n.u-drag-between{\r\n    height: 300px;\r\n}" }, { "example": _react2['default'].createElement(Demo92, null), "title": " 两列横向拖拽", "code": "\r\n/**\r\n *\r\n * @title 两列横向拖拽\r\n * @description 设置 type='betweenVertical'\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\nimport {  } from 'tinper-bee';\r\nimport Dnd from \"tinper-bee/lib/Dnd\";;\r\n\r\nclass Demo90 extends Component {\r\n    onDragStart=(result,list)=>{\r\n        console.log('开始');\r\n    }\r\n    onDragEnd=(result,listObj)=>{\r\n        console.log('结束');\r\n        console.log(listObj)\r\n    }\r\n    render() {\r\n        let list1=['第一','第二','第三','第四','第五'];\r\n        let list2=['1','2','3','4','5'];\r\n        return (\r\n           <Dnd list={list1} otherList={list2} type='betweenHorizontal' onStart={this.onDragStart} onStop={this.onDragEnd} />\r\n        );\r\n    }\r\n}\r\n\r\n", "desc": " 设置 type='betweenVertical'", "scss_code": ".u-drop{\r\n    overflow: scroll;\r\n}\r\n.u-drag-between-horizontal{\r\n    height: 200px;\r\n}" }, { "example": _react2['default'].createElement(Demo93, null), "title": " 网格排序", "code": "\r\n/**\r\n *\r\n * @title 网格排序\r\n * @description \r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\nimport {  } from 'tinper-bee';\r\nimport Dnd from \"tinper-bee/lib/Dnd\";;\r\n\r\nconst GridLayout = Dnd.GridLayout;\r\n\r\nclass Demo93 extends Component {\r\n    render() {\r\n        let layout = [\r\n            {i: 'a', x: 0, y: 0, w: 1, h: 2},\r\n            {i: 'b', x: 1, y: 0, w: 3, h: 2},\r\n            {i: 'c', x: 4, y: 0, w: 1, h: 2, static: true},\r\n            {i: 'd', x: 0, y: 1, w: 1, h: 1},\r\n            {i: 'e', x: 2, y: 2, w: 1, h: 2},\r\n            {i: 'f', x: 3, y: 3, w: 1, h: 2}\r\n        ];\r\n        return (\r\n            <GridLayout className=\"layout\" layout={layout} cols={6} rowHeight={30} width={500}>\r\n                <div key=\"a\">a</div>\r\n                <div key=\"b\">b</div>\r\n                <div key=\"c\">static</div>\r\n                <div key=\"d\">d</div>\r\n                <div key=\"e\">e</div>\r\n                <div key=\"f\">f</div>\r\n            </GridLayout>\r\n        );\r\n    }\r\n}\r\n\r\n", "desc": " ", "scss_code": ".layout{\r\n    background: #f7f9fb;\r\n    border: 1px solid #ebecf0;\r\n    padding: 12px;\r\n    color: #212121;\r\n    div{\r\n        margin: 4px;\r\n        background: white;\r\n        border-radius: 3px;\r\n        border: 1px solid #a5adba;\r\n        padding: 6px 0;\r\n        font-size: 12px;\r\n        text-align: center;\r\n    }\r\n}" }];
 	
 	var Demo = function (_Component) {
 	    _inherits(Demo, _Component);
@@ -8021,17 +8021,64 @@
 	  });
 	};
 	/**
-	 * A `Transition` component using CSS transitions and animations.
-	 * It's inspired by the excellent [ng-animate](http://www.nganimate.org/) library.
+	 * A transition component inspired by the excellent
+	 * [ng-animate](http://www.nganimate.org/) library, you should use it if you're
+	 * using CSS transitions or animations. It's built upon the
+	 * [`Transition`](https://reactcommunity.org/react-transition-group/transition)
+	 * component, so it inherits all of its props.
 	 *
 	 * `CSSTransition` applies a pair of class names during the `appear`, `enter`,
-	 * and `exit` stages of the transition. The first class is applied and then a
-	 * second "active" class in order to activate the css animation. After the animation,
-	 * matching `done` class names are applied to persist the animation state.
+	 * and `exit` states of the transition. The first class is applied and then a
+	 * second `*-active` class in order to activate the CSSS transition. After the
+	 * transition, matching `*-done` class names are applied to persist the
+	 * transition state.
 	 *
-	 * When the `in` prop is toggled to `true` the Component will get
-	 * the `example-enter` CSS class and the `example-enter-active` CSS class
-	 * added in the next tick. This is a convention based on the `classNames` prop.
+	 * ```jsx
+	 * function App() {
+	 *   const [inProp, setInProp] = useState(false);
+	 *   return (
+	 *     <div>
+	 *       <CSSTransition in={inProp} timeout={200} classNames="my-node">
+	 *         <div>
+	 *           {"I'll receive my-node-* classes"}
+	 *         </div>
+	 *       </CSSTransition>
+	 *       <button type="button" onClick={() => setInProp(true)}>
+	 *         Click to Enter
+	 *       </button>
+	 *     </div>
+	 *   );
+	 * }
+	 * ```
+	 *
+	 * When the `in` prop is set to `true`, the child component will first receive
+	 * the class `example-enter`, then the `example-enter-active` will be added in
+	 * the next tick. `CSSTransition` [forces a
+	 * reflow](https://github.com/reactjs/react-transition-group/blob/5007303e729a74be66a21c3e2205e4916821524b/src/CSSTransition.js#L208-L215)
+	 * between before adding the `example-enter-active`. This is an important trick
+	 * because it allows us to transition between `example-enter` and
+	 * `example-enter-active` even though they were added immediately one after
+	 * another. Most notably, this is what makes it possible for us to animate
+	 * _appearance_.
+	 *
+	 * ```css
+	 * .my-node-enter {
+	 *   opacity: 0;
+	 * }
+	 * .my-node-enter-active {
+	 *   opacity: 1;
+	 *   transition: opacity 200ms;
+	 * }
+	 * .my-node-exit {
+	 *   opacity: 1;
+	 * }
+	 * .my-node-exit-active {
+	 *   opacity: 0;
+	 *   transition: opacity: 200ms;
+	 * }
+	 * ```
+	 *
+	 * `*-active` classes represent which styles you want to animate **to**.
 	 */
 	
 	
@@ -8074,8 +8121,11 @@
 	    };
 	
 	    _this.onEntered = function (node, appearing) {
-	      var _this$getClassNames3 = _this.getClassNames('enter'),
-	          doneClassName = _this$getClassNames3.doneClassName;
+	      var appearClassName = _this.getClassNames('appear').doneClassName;
+	
+	      var enterClassName = _this.getClassNames('enter').doneClassName;
+	
+	      var doneClassName = appearing ? appearClassName + " " + enterClassName : enterClassName;
 	
 	      _this.removeClasses(node, appearing ? 'appear' : 'enter');
 	
@@ -8087,8 +8137,8 @@
 	    };
 	
 	    _this.onExit = function (node) {
-	      var _this$getClassNames4 = _this.getClassNames('exit'),
-	          className = _this$getClassNames4.className;
+	      var _this$getClassNames3 = _this.getClassNames('exit'),
+	          className = _this$getClassNames3.className;
 	
 	      _this.removeClasses(node, 'appear');
 	
@@ -8102,8 +8152,8 @@
 	    };
 	
 	    _this.onExiting = function (node) {
-	      var _this$getClassNames5 = _this.getClassNames('exit'),
-	          activeClassName = _this$getClassNames5.activeClassName;
+	      var _this$getClassNames4 = _this.getClassNames('exit'),
+	          activeClassName = _this$getClassNames4.activeClassName;
 	
 	      _this.reflowAndAddClass(node, activeClassName);
 	
@@ -8113,8 +8163,8 @@
 	    };
 	
 	    _this.onExited = function (node) {
-	      var _this$getClassNames6 = _this.getClassNames('exit'),
-	          doneClassName = _this$getClassNames6.doneClassName;
+	      var _this$getClassNames5 = _this.getClassNames('exit'),
+	          doneClassName = _this$getClassNames5.doneClassName;
 	
 	      _this.removeClasses(node, 'exit');
 	
@@ -8127,9 +8177,11 @@
 	
 	    _this.getClassNames = function (type) {
 	      var classNames = _this.props.classNames;
-	      var className = typeof classNames !== 'string' ? classNames[type] : classNames + '-' + type;
-	      var activeClassName = typeof classNames !== 'string' ? classNames[type + 'Active'] : className + '-active';
-	      var doneClassName = typeof classNames !== 'string' ? classNames[type + 'Done'] : className + '-done';
+	      var isStringClassNames = typeof classNames === 'string';
+	      var prefix = isStringClassNames && classNames ? classNames + '-' : '';
+	      var className = isStringClassNames ? prefix + type : classNames[type];
+	      var activeClassName = isStringClassNames ? className + '-active' : classNames[type + 'Active'];
+	      var doneClassName = isStringClassNames ? className + '-done' : classNames[type + 'Done'];
 	      return {
 	        className: className,
 	        activeClassName: activeClassName,
@@ -8143,10 +8195,10 @@
 	  var _proto = CSSTransition.prototype;
 	
 	  _proto.removeClasses = function removeClasses(node, type) {
-	    var _this$getClassNames7 = this.getClassNames(type),
-	        className = _this$getClassNames7.className,
-	        activeClassName = _this$getClassNames7.activeClassName,
-	        doneClassName = _this$getClassNames7.doneClassName;
+	    var _this$getClassNames6 = this.getClassNames(type),
+	        className = _this$getClassNames6.className,
+	        activeClassName = _this$getClassNames6.activeClassName,
+	        doneClassName = _this$getClassNames6.doneClassName;
 	
 	    className && removeClass(node, className);
 	    activeClassName && removeClass(node, activeClassName);
@@ -8182,19 +8234,34 @@
 	  return CSSTransition;
 	}(_react.default.Component);
 	
+	CSSTransition.defaultProps = {
+	  classNames: ''
+	};
 	CSSTransition.propTypes = process.env.NODE_ENV !== "production" ? _extends({}, _Transition.default.propTypes, {
 	  /**
-	   * The animation classNames applied to the component as it enters, exits or has finished the transition.
-	   * A single name can be provided and it will be suffixed for each stage: e.g.
+	   * The animation classNames applied to the component as it enters, exits or
+	   * has finished the transition. A single name can be provided and it will be
+	   * suffixed for each stage: e.g.
 	   *
-	   * `classNames="fade"` applies `fade-enter`, `fade-enter-active`, `fade-enter-done`,
-	   * `fade-exit`, `fade-exit-active`, `fade-exit-done`, `fade-appear`, and `fade-appear-active`.
+	   * `classNames="fade"` applies `fade-enter`, `fade-enter-active`,
+	   * `fade-enter-done`, `fade-exit`, `fade-exit-active`, `fade-exit-done`,
+	   * `fade-appear`, `fade-appear-active`, and `fade-appear-done`.
+	   *
+	   * **Note**: `fade-appear-done` and `fade-enter-done` will _both_ be applied.
+	   * This allows you to define different behavior for when appearing is done and
+	   * when regular entering is done, using selectors like
+	   * `.fade-enter-done:not(.fade-appear-done)`. For example, you could apply an
+	   * epic entrance animation when element first appears in the DOM using
+	   * [Animate.css](https://daneden.github.io/animate.css/). Otherwise you can
+	   * simply use `fade-enter-done` for defining both cases.
+	   *
 	   * Each individual classNames can also be specified independently like:
 	   *
 	   * ```js
 	   * classNames={{
 	   *  appear: 'my-appear',
 	   *  appearActive: 'my-active-appear',
+	   *  appearDone: 'my-done-appear',
 	   *  enter: 'my-enter',
 	   *  enterActive: 'my-active-enter',
 	   *  enterDone: 'my-done-enter',
@@ -8210,8 +8277,8 @@
 	   * import styles from './styles.css';
 	   * ```
 	   *
-	   * you might want to use camelCase in your CSS file, that way could simply spread
-	   * them instead of listing them one by one:
+	   * you might want to use camelCase in your CSS file, that way could simply
+	   * spread them instead of listing them one by one:
 	   *
 	   * ```js
 	   * classNames={{ ...styles }}
@@ -8220,6 +8287,7 @@
 	   * @type {string | {
 	   *  appear?: string,
 	   *  appearActive?: string,
+	   *  appearDone?: string,
 	   *  enter?: string,
 	   *  enterActive?: string,
 	   *  enterDone?: string,
@@ -8372,13 +8440,24 @@
 	 * it's used to animate the mounting and unmounting of a component, but can also
 	 * be used to describe in-place transition states as well.
 	 *
+	 * ---
+	 *
+	 * **Note**: `Transition` is a platform-agnostic base component. If you're using
+	 * transitions in CSS, you'll probably want to use
+	 * [`CSSTransition`](https://reactcommunity.org/react-transition-group/css-transition)
+	 * instead. It inherits all the features of `Transition`, but contains
+	 * additional features necessary to play nice with CSS transitions (hence the
+	 * name of the component).
+	 *
+	 * ---
+	 *
 	 * By default the `Transition` component does not alter the behavior of the
-	 * component it renders, it only tracks "enter" and "exit" states for the components.
-	 * It's up to you to give meaning and effect to those states. For example we can
-	 * add styles to a component when it enters or exits:
+	 * component it renders, it only tracks "enter" and "exit" states for the
+	 * components. It's up to you to give meaning and effect to those states. For
+	 * example we can add styles to a component when it enters or exits:
 	 *
 	 * ```jsx
-	 * import Transition from 'react-transition-group/Transition';
+	 * import { Transition } from 'react-transition-group';
 	 *
 	 * const duration = 300;
 	 *
@@ -8394,7 +8473,7 @@
 	 *
 	 * const Fade = ({ in: inProp }) => (
 	 *   <Transition in={inProp} timeout={duration}>
-	 *     {(state) => (
+	 *     {state => (
 	 *       <div style={{
 	 *         ...defaultStyle,
 	 *         ...transitionStyles[state]
@@ -8406,60 +8485,43 @@
 	 * );
 	 * ```
 	 *
-	 * As noted the `Transition` component doesn't _do_ anything by itself to its child component.
-	 * What it does do is track transition states over time so you can update the
-	 * component (such as by adding styles or classes) when it changes states.
-	 *
 	 * There are 4 main states a Transition can be in:
 	 *  - `'entering'`
 	 *  - `'entered'`
 	 *  - `'exiting'`
 	 *  - `'exited'`
 	 *
-	 * Transition state is toggled via the `in` prop. When `true` the component begins the
-	 * "Enter" stage. During this stage, the component will shift from its current transition state,
-	 * to `'entering'` for the duration of the transition and then to the `'entered'` stage once
-	 * it's complete. Let's take the following example:
+	 * Transition state is toggled via the `in` prop. When `true` the component
+	 * begins the "Enter" stage. During this stage, the component will shift from
+	 * its current transition state, to `'entering'` for the duration of the
+	 * transition and then to the `'entered'` stage once it's complete. Let's take
+	 * the following example (we'll use the
+	 * [useState](https://reactjs.org/docs/hooks-reference.html#usestate) hook):
 	 *
 	 * ```jsx
-	 * state = { in: false };
-	 *
-	 * toggleEnterState = () => {
-	 *   this.setState({ in: true });
-	 * }
-	 *
-	 * render() {
+	 * function App() {
+	 *   const [inProp, setInProp] = useState(false);
 	 *   return (
 	 *     <div>
-	 *       <Transition in={this.state.in} timeout={500} />
-	 *       <button onClick={this.toggleEnterState}>Click to Enter</button>
+	 *       <Transition in={inProp} timeout={500}>
+	 *         {state => (
+	 *           // ...
+	 *         )}
+	 *       </Transition>
+	 *       <button onClick={() => setInProp(true)}>
+	 *         Click to Enter
+	 *       </button>
 	 *     </div>
 	 *   );
 	 * }
 	 * ```
 	 *
-	 * When the button is clicked the component will shift to the `'entering'` state and
-	 * stay there for 500ms (the value of `timeout`) before it finally switches to `'entered'`.
+	 * When the button is clicked the component will shift to the `'entering'` state
+	 * and stay there for 500ms (the value of `timeout`) before it finally switches
+	 * to `'entered'`.
 	 *
-	 * When `in` is `false` the same thing happens except the state moves from `'exiting'` to `'exited'`.
-	 *
-	 * ## Timing
-	 *
-	 * Timing is often the trickiest part of animation, mistakes can result in slight delays
-	 * that are hard to pin down. A common example is when you want to add an exit transition,
-	 * you should set the desired final styles when the state is `'exiting'`. That's when the
-	 * transition to those styles will start and, if you matched the `timeout` prop with the
-	 * CSS Transition duration, it will end exactly when the state changes to `'exited'`.
-	 *
-	 * > **Note**: For simpler transitions the `Transition` component might be enough, but
-	 * > take into account that it's platform-agnostic, while the `CSSTransition` component
-	 * > [forces reflows](https://github.com/reactjs/react-transition-group/blob/5007303e729a74be66a21c3e2205e4916821524b/src/CSSTransition.js#L208-L215)
-	 * > in order to make more complex transitions more predictable. For example, even though
-	 * > classes `example-enter` and `example-enter-active` are applied immediately one after
-	 * > another, you can still transition from one to the other because of the forced reflow
-	 * > (read [this issue](https://github.com/reactjs/react-transition-group/issues/159#issuecomment-322761171)
-	 * > for more info). Take this into account when choosing between `Transition` and
-	 * > `CSSTransition`.
+	 * When `in` is `false` the same thing happens except the state moves from
+	 * `'exiting'` to `'exited'`.
 	 */
 	
 	exports.EXITING = EXITING;
@@ -8773,15 +8835,15 @@
 	};
 	Transition.propTypes = process.env.NODE_ENV !== "production" ? {
 	  /**
-	   * A `function` child can be used instead of a React element.
-	   * This function is called with the current transition status
-	   * ('entering', 'entered', 'exiting', 'exited', 'unmounted'), which can be used
-	   * to apply context specific props to a component.
+	   * A `function` child can be used instead of a React element. This function is
+	   * called with the current transition status (`'entering'`, `'entered'`,
+	   * `'exiting'`, `'exited'`, `'unmounted'`), which can be used to apply context
+	   * specific props to a component.
 	   *
 	   * ```jsx
-	   * <Transition timeout={150}>
-	   *   {(status) => (
-	   *     <MyComponent className={`fade fade-${status}`} />
+	   * <Transition in={this.state.in} timeout={150}>
+	   *   {state => (
+	   *     <MyComponent className={`fade fade-${state}`} />
 	   *   )}
 	   * </Transition>
 	   * ```
@@ -8828,27 +8890,32 @@
 	
 	  /**
 	   * The duration of the transition, in milliseconds.
-	   * Required unless `addEndListener` is provided
+	   * Required unless `addEndListener` is provided.
 	   *
-	   * You may specify a single timeout for all transitions like: `timeout={500}`,
-	   * or individually like:
+	   * You may specify a single timeout for all transitions:
+	   *
+	   * ```jsx
+	   * timeout={500}
+	   * ```
+	   *
+	   * or individually:
 	   *
 	   * ```jsx
 	   * timeout={{
+	   *  appear: 500,
 	   *  enter: 300,
 	   *  exit: 500,
-	   *  appear: 500,
 	   * }}
 	   * ```
 	   *
-	   * If the value of `appear` is not set, then the value from enter is taken.
-	   *
-	   * If the `enter` or `exit` value is `null` or `undefined`, then the timer is set to `0`
+	   * - `appear` defaults to the value of `enter`
+	   * - `enter` defaults to `0`
+	   * - `exit` defaults to `0`
 	   *
 	   * @type {number | { enter?: number, exit?: number, appear?: number }}
 	   */
 	  timeout: function timeout(props) {
-	    var pt = process.env.NODE_ENV !== "production" ? _PropTypes.timeoutsShape : {};;
+	    var pt = _PropTypes.timeoutsShape;
 	    if (!props.addEndListener) pt = pt.isRequired;
 	
 	    for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
@@ -9468,12 +9535,12 @@
 	   * remember to spread them through if you are wrapping the `<Transition>` as
 	   * with our `<Fade>` example.
 	   *
-	   * While this component is meant to make it easier to animate multiple
-	   * `Transition` or `CSSTransition` children, sometimes you want to transition a
-	   * single child by changing its content, e.g. routes, slides, images in a
-	   * carousel etc. In that case you can change the `key` prop of the child
-	   * component along with its content, that way `TransitionGroup` will know that
-	   * it should transition the child.
+	   * While this component is meant for multiple `Transition` or `CSSTransition`
+	   * children, sometimes you may want to have a single transition child with
+	   * content that you want to be transitioned out and in when you change it
+	   * (e.g. routes, images etc.) In that case you can change the `key` prop of
+	   * the transition child as you change its content, this will cause
+	   * `TransitionGroup` to transition the child out and back in.
 	   */
 	  children: _propTypes.default.node,
 	
@@ -32386,10 +32453,6 @@
 	var _react = __webpack_require__(1);
 	
 	var _react2 = _interopRequireDefault(_react);
-	
-	var _reactDom = __webpack_require__(2);
-	
-	var _reactDom2 = _interopRequireDefault(_reactDom);
 	
 	var _reactBeautifulDnd = __webpack_require__(159);
 	

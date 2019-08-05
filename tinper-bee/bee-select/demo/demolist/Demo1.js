@@ -5,9 +5,7 @@
 
 import React, { Component } from "react";
 import Select from "../../src";
-import ReactDOM from "react-dom";
 const Option = Select.Option;
-const OptGroup = Select.OptGroup;
 
 class Demo1 extends Component {
   handleChange = value => {

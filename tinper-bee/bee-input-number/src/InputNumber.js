@@ -413,7 +413,7 @@ class InputNumber extends Component {
         let disabledCursor = disabled? ' disabled-cursor':'';
         let disabledCon = disabled? ' disabled-con':'';
         return (
-            <div>
+            <div className={`${clsPrefix}-out`}>
                 {
                     iconStyle === 'double' ? (
                         <InputGroup className={classnames(className, classes,disabledCon)}>

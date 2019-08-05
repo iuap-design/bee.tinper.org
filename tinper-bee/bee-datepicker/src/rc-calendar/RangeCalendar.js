@@ -65,7 +65,11 @@ function onInputSelect(direction, value, cause) {
   const selectedValue = originalValue.concat();
   const index = direction === 'left' ? 0 : 1;
   selectedValue[index] = value;
+  // console.log(selectedValue[0], selectedValue[1], this.compare(selectedValue[0], selectedValue[1]))
   if (selectedValue[0] && this.compare(selectedValue[0], selectedValue[1]) > 0) {
+    selectedValue[1] = this.state.showTimePicker ? selectedValue[index] : undefined;
+  }
+  if(selectedValue[0] && !selectedValue[1]) {
     selectedValue[1 - index] = this.state.showTimePicker ? selectedValue[index] : undefined;
   }
   this.props.onInputSelect(selectedValue);
@@ -513,7 +517,7 @@ class RangeCalendar extends React.Component {
     if (this.props.timePicker) {
       return v1.diff(v2);
     }
-    return v1.diff(v2, 'days');
+    return v1 && v1.diff(v2, 'days');
   }
 
   fireSelectValueChange = (selectedValue, direct, cause) => {
@@ -606,6 +610,10 @@ class RangeCalendar extends React.Component {
     return month.isSameOrBefore(value[0], 'month');
   }
 
+  onMouseOver = (e) => {
+    e.stopPropagation();
+  }
+
   render() {
     const { props, state } = this;
     const {
@@ -678,7 +686,7 @@ class RangeCalendar extends React.Component {
         onKeyDown={this.onKeyDown}
       >
         {props.renderSidebar()}
-        <div className={`${prefixCls}-panel`}>
+        <div className={`${prefixCls}-panel`} onMouseOver={this.onMouseOver}>
           {showClear && selectedValue[0] && selectedValue[1] ?
             <a
               role="button"

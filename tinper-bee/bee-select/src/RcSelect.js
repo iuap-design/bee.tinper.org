@@ -9,7 +9,8 @@ import { KeyCode, toArray as childrenToArray  } from 'tinper-bee-core';
 import classnames from 'classnames';
 import Animate from 'bee-animate';
 import classes from 'component-classes';
-import { Item as MenuItem, ItemGroup as MenuItemGroup } from 'rc-menu';
+import { ItemGroup as MenuItemGroup } from 'rc-menu';
+import MenuItem from 'rc-menu/lib/MenuItem'
 import warning from 'warning';
 import Option from './Option';
 
