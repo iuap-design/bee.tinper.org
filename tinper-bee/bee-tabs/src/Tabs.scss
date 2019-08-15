@@ -1173,3 +1173,18 @@ $tabs-border-color: rgb(233,233,233);
     }
   }
 }
+
+
+.u-search-tabs{
+  &-item{
+      cursor: pointer;
+      &.active{
+          color: $brand-primary;
+      }
+  }
+  &-split{
+      margin: 0 15px;
+      color: #555;
+      font-size: 12px;
+  }
+}

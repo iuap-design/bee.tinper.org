@@ -241,7 +241,7 @@ var InputNumber = function (_Component) {
             }
             v = unThousands(v);
             var value = Number(v);
-            if (precision) {
+            if (_this.props.hasOwnProperty('precision')) {
                 value = value.toFixed(precision);
             }
             _this.setState({

@@ -55,6 +55,7 @@ Messsage.create({});
 |keyboard|esc触发关闭|boolean|true|
 |onEscapeKeyUp|响应ESC键时的钩子函数|function|-|
 |showIcon|是否显示icon|boolean|true|
+|icon|自定义显示icon图标[参考这里](http://bee.tinper.org/tinper-bee/bee-icon)|string|-|
 
 ### 已支持的键盘操作
 

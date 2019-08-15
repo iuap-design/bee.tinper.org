@@ -38,7 +38,7 @@ const defaultProps = {
 	closeIcon: null
 }
 
-const DrawerContext = React.createContext(null);
+const DrawerContext = React.createContext&&React.createContext(null);
 
 class Drawer extends Component{
     constructor(props){

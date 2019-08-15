@@ -18,24 +18,25 @@ import 'bee-tree/build/Tree.css';
 
 ## API
 
-## Tree
+### Tree
+
 |参数|说明|类型|默认值|
 |:---|:-----|:----|:------|
 |multiple|是否允许选择多个树节点|bool|false
-|checkable|是否支持添加在树节点前添加Checkbox|bool|false
-|defaultExpandAll|默认是否展开所有节点|bool|false
-|defaultExpandedKeys|默认展开指定的节点|String[]|[]
-|expandedKeys|指定展开的节点(controlled)|String[]|[]
-|autoExpandParent|是否自定展开父节点|bool|true
-|defaultCheckedKeys|指定默认被选中的节点key|String[]|[]
-|checkedKeys|指定被选中的节点(controlled)（PS：当指定的是父节点，所有的子节点也会被指定；当指定的是子节点，父节点也会被选中。当checkable和checkStrictly都为true,子节点与父节点的选择情况都不会影响到对方|String[]/{checked:Array,halfChecked:Array}|[]
-|checkStrictly|checkable状态下节点选择完全受控（父子节点选中状态不再关联）|bool|false
-|defaultSelectedKeys|指定选中的节点key|String[]|[]
-|selectedKeys|指定选中的节点keys(controlled)|String[]|-
+|checkable|节点前添加 Checkbox 复选框|bool|false
+|defaultExpandAll|默认展开所有树节点|bool|false
+|defaultExpandedKeys|默认展开指定的树节点|String[]|[]
+|expandedKeys|（受控）展开指定的树节点|String[]|[]
+|autoExpandParent|是否自动展开父节点|bool|true
+|defaultCheckedKeys|默认选中复选框的树节点|String[]|[]
+|checkedKeys|（受控）选中复选框的树节点（注意：父子节点有关联，如果传入父节点 key，则子节点自动选中；相应当子节点 key 都传入，父节点也自动选中。当设置checkable和checkStrictly，它是一个有checked和halfChecked属性的对象，并且父子节点的选中与否不再关联|String[]/{checked:Array,halfChecked:Array}|[]
+|checkStrictly|checkable 状态下节点选择完全受控（父子节点选中状态不再关联）|bool|false
+|defaultSelectedKeys|默认选中的树节点|String[]|[]
+|selectedKeys|（受控）设置选中的树节点|String[]|-
 |cancelUnSelect|选中的节点第二次点击时还是选中，不自动取消选中|bool|false
 |showLine|是否显示连接线|bool|false
-|openIcon|自定义展开节点图标的名称[参考这里](http://bee.tinper.org/bee-icon)String[]|-
-|closeIcon|自定义关闭节点图标的名称[参考这里](http://bee.tinper.org/bee-icon)String[]|-
+|openIcon|自定义展开节点图标的名称[参考这里](http://bee.tinper.org/tinper-bee/bee-icon)String[]|-
+|closeIcon|自定义关闭节点图标的名称[参考这里](http://bee.tinper.org/tinper-bee/bee-icon)String[]|-
 |onExpand|当打开或关闭树节点触发的方法|function(expandedKeys, {expanded: bool, node})|-
 |onCheck|当用户点击复选框checkbox触发的回调方法|function(checkedKeys, e:{checked: bool, checkedNodes, node, event})|-
 |onSelect|当用户选择树节点触发的回调函数|function(selectedKeys, e:{selected: bool, selectedNodes, node, event})|-
@@ -54,9 +55,13 @@ import 'bee-tree/build/Tree.css';
 |tabIndexValue|节点获取焦点时，自定义tabIndex的值|Number|0
 |Children|必填，TreeNode组件|node|-
 |mustExpandable|支持disabled的节点可以自定义展开收起，默认disabled的节点不可以展开收起|bool|false
+|treeData|treeNodes 数据，如果设置则不需要手动构造 TreeNode 节点（key 在整个树范围内唯一）|array\<{key, title, children, [disabled, selectable]}>|-
+|lazyLoad|是否使用懒加载（适用于大数据场景），[如何使用](http://bee.tinper.org/tinper-bee/bee-tree#%E6%BB%9A%E5%8A%A8%E5%8A%A0%E8%BD%BD%E6%A0%91%E8%8A%82%E7%82%B9)|bool|false
+|renderTitle|使用 treeData 渲染树时使用，可通过此函数自定义树节点内容|Function(item)|-
 
 
-## TreeNode
+### TreeNode
+
 |参数|说明|类型|默认值|
 |:---|:-----|:----|:------|
 |disabled|节点是否不可用|bool|false
@@ -72,7 +77,7 @@ import 'bee-tree/build/Tree.css';
 
 
 
-## 快捷键API
+### 快捷键API
 
 | 快捷键 | 类型 |快捷键说明 | 
 |  --- | :---: | --- |

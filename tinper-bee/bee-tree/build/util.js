@@ -3,6 +3,9 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; /* eslint no-loop-func: 0*/
+
 exports.browser = browser;
 exports.getOffset = getOffset;
 exports.loopAllChildren = loopAllChildren;
@@ -17,6 +20,9 @@ exports.isTreeNode = isTreeNode;
 exports.toArray = toArray;
 exports.getNodeChildren = getNodeChildren;
 exports.warnOnlyTreeNode = warnOnlyTreeNode;
+exports.convertListToTree = convertListToTree;
+exports.debounce = debounce;
+exports.throttle = throttle;
 
 var _react = require('react');
 
@@ -73,8 +79,6 @@ function browser(navigator) {
 // }
 
 /* eslint-disable */
-/* eslint no-loop-func: 0*/
-
 function getOffset(ele) {
   var doc = void 0,
       win = void 0,
@@ -366,4 +370,137 @@ function warnOnlyTreeNode() {
   if (onlyTreeNodeWarned) return;
   onlyTreeNodeWarned = true;
   console.warn('Tree only accept TreeNode as children.');
+}
+
+/**
+ * 将一维数组转换为树结构
+ * @param {*} treeData  扁平结构的 List 数组
+ * @param {*} attr 属性配置设置
+ * @param {*} flatTreeKeysMap 存储所有 key-value 的映射，方便获取各节点信息
+ */
+function convertListToTree(treeData, attr, flatTreeKeysMap) {
+  var tree = [];
+  var resData = treeData,
+      resKeysMap = {};
+  resData.map(function (element) {
+    resKeysMap[element.key] = element;
+  });
+  // 查找父节点，为了补充不完整的数据结构
+  var findParentNode = function findParentNode(node) {
+    var parentKey = node[attr.parendId];
+    if (!resKeysMap.hasOwnProperty(parentKey)) {
+      var obj = {
+        key: flatTreeKeysMap[parentKey][attr.id],
+        title: flatTreeKeysMap[parentKey][attr.name],
+        children: []
+      };
+      tree.push(obj);
+      resKeysMap[obj.key] = obj;
+    }
+    return flatTreeKeysMap[parentKey];
+  };
+
+  for (var i = 0; i < resData.length; i++) {
+    if (resData[i].parentKey === attr.rootId) {
+      var obj = {
+        key: resData[i][attr.id],
+        title: resData[i][attr.name],
+        isLeaf: resData[i][attr.isLeaf],
+        children: []
+      };
+      tree.push(obj);
+      resData.splice(i, 1);
+      i--;
+    } else {
+      var parentNode = flatTreeKeysMap[resData[i][attr.id]],
+          parentKey = parentNode[attr.parendId];
+      while (parentKey !== attr.rootId) {
+        parentNode = findParentNode(parentNode);
+        parentKey = parentNode[attr.parendId];
+      }
+    }
+  }
+  // console.log('tree',tree);
+  var run = function run(treeArrs) {
+    if (resData.length > 0) {
+      for (var _i2 = 0; _i2 < treeArrs.length; _i2++) {
+        for (var j = 0; j < resData.length; j++) {
+          if (treeArrs[_i2].key === resData[j][attr.parendId]) {
+            var _obj = {
+              key: resData[j][attr.id],
+              title: resData[j][attr.name],
+              isLeaf: resData[j][attr.isLeaf],
+              children: []
+            };
+            treeArrs[_i2].children.push(_obj);
+            resData.splice(j, 1);
+            j--;
+          }
+        }
+        run(treeArrs[_i2].children);
+      }
+    }
+  };
+  run(tree);
+  return tree;
+}
+
+function isObject(value) {
+  var type = typeof value === 'undefined' ? 'undefined' : _typeof(value);
+  return value != null && (type == 'object' || type == 'function');
+}
+
+/**
+ * 函数防抖
+ * @param {*} func 
+ * @param {*} wait 
+ * @param {*} immediate 
+ */
+function debounce(func, wait, immediate) {
+  var timeout = void 0;
+  return function debounceFunc() {
+    var context = this;
+    var args = arguments;
+    // https://fb.me/react-event-pooling
+    if (args[0] && args[0].persist) {
+      args[0].persist();
+    }
+    var later = function later() {
+      timeout = null;
+      if (!immediate) {
+        func.apply(context, args);
+      }
+    };
+    var callNow = immediate && !timeout;
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+    if (callNow) {
+      func.apply(context, args);
+    }
+  };
+}
+
+/**
+ * 函数节流
+ * @param {*} func 延时调用函数
+ * @param {*} wait 延迟多长时间
+ * @param {*} options 至少多长时间触发一次
+ * @return Function 延迟执行的方法
+ */
+function throttle(func, wait, options) {
+  var leading = true;
+  var trailing = true;
+
+  if (typeof func !== 'function') {
+    throw new TypeError('Expected a function');
+  }
+  if (isObject(options)) {
+    leading = 'leading' in options ? !!options.leading : leading;
+    trailing = 'trailing' in options ? !!options.trailing : trailing;
+  }
+  return debounce(func, wait, {
+    leading: leading,
+    trailing: trailing,
+    'maxWait': wait
+  });
 }

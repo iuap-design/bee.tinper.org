@@ -70,7 +70,7 @@ var defaultProps = {
 	closeIcon: null
 };
 
-var DrawerContext = _react2["default"].createContext(null);
+var DrawerContext = _react2["default"].createContext && _react2["default"].createContext(null);
 
 var Drawer = function (_Component) {
 	_inherits(Drawer, _Component);

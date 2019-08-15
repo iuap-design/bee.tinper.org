@@ -6346,7 +6346,7 @@
 	        var onClose = obj.onClose || noop;
 	        var position = obj.position || "top";
 	        var style = obj.style || {};
-	        var showIcon = obj.showIcon || true;
+	        var showIcon = obj.hasOwnProperty('showIcon') ? obj.showIcon : true;
 	        return notice(content, duration, color, onClose, position, style, obj.keyboard, obj.onEscapeKeyUp, showIcon);
 	    },
 	    config: function config(options) {
@@ -8088,7 +8088,7 @@
 		closeIcon: null
 	};
 	
-	var DrawerContext = _react2['default'].createContext(null);
+	var DrawerContext = _react2['default'].createContext && _react2['default'].createContext(null);
 	
 	var Drawer = function (_Component) {
 		_inherits(Drawer, _Component);

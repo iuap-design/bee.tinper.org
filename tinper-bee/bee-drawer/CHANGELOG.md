@@ -1,3 +1,13 @@
+<a name="0.0.6"></a>
+## [0.0.6](https://github.com/tinper-bee/bee-drawer/compare/v0.0.5...v0.0.6) (2019-08-06)
+
+
+### Features
+
+* **bee-drawer:** React.createContext适配 ([1debb02](https://github.com/tinper-bee/bee-drawer/commit/1debb02))
+
+
+
 <a name="0.0.5"></a>
 ## [0.0.5](https://github.com/tinper-bee/bee-drawer/compare/v0.0.4...v0.0.5) (2019-06-25)
 

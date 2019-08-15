@@ -230,7 +230,16 @@ var Table = function (_Component) {
     };
 
     _this.swapArray = function (arr, index1, index2) {
-      arr[index1] = arr.splice(index2, 1, arr[index1])[0];
+      var value1 = arr[index1];
+      arr.splice(index1, 1);
+      if (index1 < index2) {
+        console.log('向下拖');
+        arr.splice(index2, 0, value1);
+      } else {
+        console.log('向上拖');
+        arr.splice(index2 + 1, 0, value1);
+      }
+
       return arr;
     };
 
@@ -387,6 +396,7 @@ var Table = function (_Component) {
       this.resetScrollX();
     }
     // fix:模态框中使用table，计算的滚动条宽度为0的bug
+    // fix:表格首次渲染时 display:none，再显示时，未重新计算，导致表行出现错位的bug
     if (this.scrollbarWidth <= 0 && this.props.scroll.y) {
       this.scrollbarWidth = (0, _utils.measureScrollbar)();
     }
@@ -452,7 +462,7 @@ var Table = function (_Component) {
       this.domWidthDiff = this.contentDomWidth - this.contentWidth;
     }
 
-    if (this.computeWidth < this.contentWidth) {
+    if (this.computeWidth <= this.contentWidth) {
       var contentWidthDiff = this.scrollbarWidth ? this.contentWidth - this.computeWidth - this.scrollbarWidth : this.contentWidth - this.computeWidth;
       //bordered的表格需要减去边框的差值1
       if (this.props.bordered) {

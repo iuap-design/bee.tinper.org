@@ -126,7 +126,7 @@ var Switch = function (_Component) {
 
     return _react2["default"].createElement(
       "span",
-      { className: disabled && checked ? clsPrefix + "-backdrop" : '' },
+      { className: disabled && checked ? clsPrefix + "-backdrop " + clsPrefix + "-span" : clsPrefix + "-span" },
       _react2["default"].createElement(
         "span",
         _extends({}, others, {

@@ -73,12 +73,6 @@ var InputNumberGroup = function (_Component) {
         _this.onChange = function (index, v) {
             var value = _this.state.value;
 
-            if (index == 1) {
-                if (v < value[0]) {
-                    console.error('The second value must be greater than or equal to the first value');
-                    return;
-                }
-            }
             value[index] = v;
             _this.setState({
                 value: value
@@ -99,10 +93,16 @@ var InputNumberGroup = function (_Component) {
         _this.onBlur = function (index, v) {
             var value = _this.state.value;
 
+            if (index == 1) {
+                if (v < value[0]) {
+                    console.warn('The second value must be greater than or equal to the first value');
+                }
+            }
             value[index] = v;
             _this.setState({
                 value: value
             });
+
             _this.props.onBlur(value);
         };
 
@@ -129,7 +129,10 @@ var InputNumberGroup = function (_Component) {
             value = _props.value,
             onChange = _props.onChange,
             placeholder = _props.placeholder,
-            other = _objectWithoutProperties(_props, ['className', 'clsfix', 'value', 'onChange', 'placeholder']);
+            split = _props.split,
+            onBlur = _props.onBlur,
+            onFocus = _props.onFocus,
+            other = _objectWithoutProperties(_props, ['className', 'clsfix', 'value', 'onChange', 'placeholder', 'split', 'onBlur', 'onFocus']);
 
         var stateValue = this.state.value;
 
@@ -149,7 +152,7 @@ var InputNumberGroup = function (_Component) {
                 value: stateValue[0],
                 placeholder: placeholder[0]
             }, other)),
-            _react2["default"].createElement(
+            split ? split : _react2["default"].createElement(
                 'span',
                 { className: clsfix + '-group-split' },
                 '~'

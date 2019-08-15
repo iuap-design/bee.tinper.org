@@ -4,6 +4,8 @@
 import createClass from 'create-react-class';
 import React from "react";
 import { Tabs as TabsInner } from './Tabs';
+import SearchTabs from './SearchTabs';
+import Tab from './Tab'
 
 const Tabs = createClass({
     render() {
@@ -16,6 +18,10 @@ const Tabs = createClass({
         return (<TabsInner  {...this.props} {...disableProps}/>)
     }
 });
+
 Tabs.TabPane = TabsInner.TabPane;
+Tabs.SearchTabs = SearchTabs;
+Tabs.SearchTabs.Item = Tab;
+
 export default Tabs;
 

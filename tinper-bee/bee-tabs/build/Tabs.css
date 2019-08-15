@@ -743,3 +743,13 @@
       height: 4px;
       background: rgb(245, 60, 50);
       content: ''; }
+
+.u-search-tabs-item {
+  cursor: pointer; }
+  .u-search-tabs-item.active {
+    color: rgb(245, 60, 50); }
+
+.u-search-tabs-split {
+  margin: 0 15px;
+  color: #555;
+  font-size: 12px; }

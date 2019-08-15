@@ -153,7 +153,7 @@ function getMessageInstance() {
     });
 }
 
-function notice(content, duration_arg, type, onClose, position, style, keyboard, onEscapeKeyUp, showIcon) {
+function notice(content, duration_arg, type, onClose, position, style, keyboard, onEscapeKeyUp, showIcon, icon) {
     if (positionType.findIndex(function (item) {
         return item === position;
     }) < 0) {
@@ -192,7 +192,7 @@ function notice(content, duration_arg, type, onClose, position, style, keyboard,
                 showIcon ? _react2["default"].createElement(
                     'div',
                     { className: clsPrefix + '-notice-description-icon' },
-                    _react2["default"].createElement('i', { className: (0, _classnames2["default"])(iconType) })
+                    icon ? _react2["default"].createElement('i', { className: (0, _classnames2["default"])('uf ' + icon) }) : _react2["default"].createElement('i', { className: (0, _classnames2["default"])(iconType) })
                 ) : null,
                 _react2["default"].createElement(
                     'div',
@@ -225,8 +225,9 @@ exports["default"] = {
         var onClose = obj.onClose || noop;
         var position = obj.position || "top";
         var style = obj.style || {};
-        var showIcon = obj.showIcon || true;
-        return notice(content, duration, color, onClose, position, style, obj.keyboard, obj.onEscapeKeyUp, showIcon);
+        var showIcon = obj.hasOwnProperty('showIcon') ? obj.showIcon : true;
+        var icon = obj.hasOwnProperty('icon') ? obj.icon : false;
+        return notice(content, duration, color, onClose, position, style, obj.keyboard, obj.onEscapeKeyUp, showIcon, icon);
     },
     config: function config(options) {
         if (options.top !== undefined) {

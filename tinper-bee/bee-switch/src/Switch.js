@@ -117,7 +117,7 @@ class Switch extends Component {
     let classNames = classnames(clsPrefix, classes);
 
     return (
-      <span className={disabled && checked ? `${clsPrefix}-backdrop` : ''}>
+      <span className={disabled && checked ? `${clsPrefix}-backdrop ${clsPrefix}-span` : `${clsPrefix}-span`}>
         <span
           {...others}
           ref={this.saveNode}

@@ -32,7 +32,6 @@ class Demo1 extends Component {
                 {/* <InputNumber precision={2} min={0}  value={this.state.value} onChange={ this.handleChange }/> */}
                 <InputNumber
                 iconStyle="one"
-                precision={2}
                 min={0}
                 max={999999}
                 {...getFieldProps("valueStd", {

@@ -55,12 +55,6 @@ class InputNumberGroup extends Component {
 
     onChange=(index,v)=>{
         let { value } = this.state;
-        if(index==1){
-            if(v<value[0]){
-                console.error('The second value must be greater than or equal to the first value');
-                return;
-            }
-        }
         value[index] = v;
         this.setState({
             value
@@ -77,15 +71,21 @@ class InputNumberGroup extends Component {
     }
     onBlur=(index,v)=>{
         let { value } = this.state;
+        if(index==1){
+            if(v<value[0]){
+                console.warn('The second value must be greater than or equal to the first value');
+            }
+        }
         value[index] = v;
         this.setState({
             value
         })
+        
         this.props.onBlur(value)
     }
 
     render(){
-        let { className,clsfix,value,onChange,placeholder, ...other } = this.props;
+        let { className,clsfix,value,onChange,placeholder,split,onBlur,onFocus, ...other } = this.props;
         let { value:stateValue } = this.state;
         return (
             <div className={`${clsfix}-group ${className}`}>
@@ -96,7 +96,9 @@ class InputNumberGroup extends Component {
                     value={stateValue[0]} 
                     placeholder={placeholder[0]}
                     {...other}/>
-                    <span className={`${clsfix}-group-split`}>~</span>
+                    {
+                        split?split:<span className={`${clsfix}-group-split`}>~</span>
+                    }
                 <InputNumber 
                     onChange={(value)=>{this.onChange(1,value)}} 
                     onBlur={(value)=>{this.onBlur(1,value)}} 

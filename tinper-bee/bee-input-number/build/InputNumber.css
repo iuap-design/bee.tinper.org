@@ -302,7 +302,7 @@
     -moz-appearance: textfield; }
 
 .u-input-number-group .u-input-number-out {
-  width: calc( 50% - 20px);
+  width: calc( 50% - 10px);
   display: inline-block; }
 
 .u-input-number-group-split {

@@ -22,7 +22,7 @@ let defaultStyle = {};
 let positionObj = {
     "top": {
         messageStyle: {
-            
+
         },
         notificationStyle: {
             top: defaultTop,
@@ -107,7 +107,7 @@ function getMessageInstance(position = 'top', callback, keyboard, onEscapeKeyUp)
             notificationStyle_copy.bottom = bottom;
             break;
         default:
-            break; 
+            break;
     }
     if( position !== 'top' && position !== 'bottom'){
         messageStyle_copy.width = width;
@@ -133,7 +133,7 @@ function getMessageInstance(position = 'top', callback, keyboard, onEscapeKeyUp)
 
 
 
-function notice(content, duration_arg, type, onClose, position, style, keyboard, onEscapeKeyUp, showIcon) {
+function notice(content, duration_arg, type, onClose, position, style, keyboard, onEscapeKeyUp, showIcon, icon) {
     if( positionType.findIndex((item) => item === position)<0 ){
         warning(
             false,
@@ -144,7 +144,7 @@ function notice(content, duration_arg, type, onClose, position, style, keyboard,
     let duration = duration_arg !== undefined ? duration_arg : defaultDuration;
     notificationStyle_copy = Object.assign({}, positionObj[position].notificationStyle);
     messageStyle_copy = Object.assign({}, positionObj[position].messageStyle);
-    
+
     let iconType = ({
         info: 'uf uf-i-c-2',
         success: 'uf uf-correct',
@@ -172,7 +172,7 @@ function notice(content, duration_arg, type, onClose, position, style, keyboard,
                 {
                     showIcon ? (
                         <div className={`${clsPrefix}-notice-description-icon`}>
-                            <i className= { classnames(iconType) } />
+                            {icon ? <i className= { classnames(`uf ${icon}`) } /> : <i className= { classnames(iconType) } />}
                         </div>
                     ) : null
                 }
@@ -203,8 +203,9 @@ export default {
       let onClose = obj.onClose || noop;
       let position = obj.position || "top";
       let style = obj.style || {};
-      let showIcon = obj.showIcon || true;
-    return notice(content, duration, color, onClose, position, style, obj.keyboard, obj.onEscapeKeyUp, showIcon);
+      let showIcon = obj.hasOwnProperty('showIcon') ? obj.showIcon : true;
+      let icon = obj.hasOwnProperty('icon') ? obj.icon : false;
+    return notice(content, duration, color, onClose, position, style, obj.keyboard, obj.onEscapeKeyUp, showIcon, icon);
   },
   config(options) {
     if (options.top !== undefined) {

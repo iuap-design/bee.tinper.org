@@ -5,6 +5,7 @@
 ## 何时使用
 
 例如：切换不同tab展示不同内容时
+
 ## 如何使用
 
 ```
@@ -51,6 +52,19 @@ import 'bee-tabs/build/Tabs.css';
 | forceRender | 在选项卡中强制渲染内容，而不是在单击选项卡后呈现延迟。 | Boolean           | false |
 | placeholder | 懒加载时显示的内容 | React:Node | - |
 
+
+### SearchTabs
+
+|参数|说明|类型|默认值|
+|:---|:-----|:----|:------|
+|onChange|数据改变的回调|func|-|
+|value|被选中的值|string|-|
+
+### SearchTabs.Item
+
+|参数|说明|类型|默认值|
+|:---|:-----|:----|:------|
+|value|Item的标示|string|-|
 
 
 ## 注意事项

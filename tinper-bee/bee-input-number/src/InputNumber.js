@@ -228,7 +228,7 @@ class InputNumber extends Component {
         }
         v = unThousands(v)
         let value = Number(v);
-        if(precision){
+        if(this.props.hasOwnProperty('precision')){
             value = value.toFixed(precision);
         }
         this.setState({
