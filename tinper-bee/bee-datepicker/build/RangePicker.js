@@ -130,6 +130,8 @@ var RangePicker = function (_Component) {
     };
     //日期面板中输入框的失焦事件
 
+    //阻止组件内部事件冒泡到组件外部容器
+
 
     RangePicker.prototype.render = function render() {
         var _this2 = this;
@@ -163,45 +165,49 @@ var RangePicker = function (_Component) {
         });
 
         return _react2["default"].createElement(
-            _Picker2["default"],
-            {
-                value: value,
-                animation: 'animation' in props ? props.animation : "slide-up",
-                calendar: calendar,
-                disabled: props.disabled,
-                dropdownClassName: props.dropdownClassName,
-                onOpenChange: this.onOpenChange,
-                open: open
-            },
-            function (_ref) {
-                _objectDestructuringEmpty(_ref);
+            "div",
+            { onClick: this.stopPropagation, onMouseOver: this.stopPropagation },
+            _react2["default"].createElement(
+                _Picker2["default"],
+                {
+                    value: value,
+                    animation: 'animation' in props ? props.animation : "slide-up",
+                    calendar: calendar,
+                    disabled: props.disabled,
+                    dropdownClassName: props.dropdownClassName,
+                    onOpenChange: this.onOpenChange,
+                    open: open
+                },
+                function (_ref) {
+                    _objectDestructuringEmpty(_ref);
 
-                return _react2["default"].createElement(
-                    "div",
-                    { className: (0, _classnames2["default"])('calendar-picker', 'u-input-group', 'simple', props.className),
-                        onMouseEnter: _this2.onMouseEnter,
-                        onMouseLeave: _this2.onMouseLeave
-                    },
-                    _react2["default"].createElement(_beeFormControl2["default"], {
-                        placeholder: _this2.props.placeholder ? _this2.props.placeholder : 'start ~ end',
-                        value: isValidRange(value) && (0, _util.formatDate)(value[0], formatStr) + " ~ " + (0, _util.formatDate)(value[1], formatStr) || '',
-                        disabled: props.disabled,
-                        onFocus: function onFocus(v, e) {
-                            _this2.outInputFocus(e);
-                        }
-                    }),
-                    showClose && _this2.state.value && _this2.state.value.length > 0 && _this2.state.showClose && !props.disabled ? _react2["default"].createElement(
-                        _beeInputGroup2["default"].Button,
-                        { shape: "border",
-                            onClick: _this2.clear },
-                        props.closeIcon()
-                    ) : _react2["default"].createElement(
-                        _beeInputGroup2["default"].Button,
-                        { shape: "border" },
-                        props.renderIcon()
-                    )
-                );
-            }
+                    return _react2["default"].createElement(
+                        "div",
+                        { className: (0, _classnames2["default"])('calendar-picker', 'u-input-group', 'simple', props.className),
+                            onMouseEnter: _this2.onMouseEnter,
+                            onMouseLeave: _this2.onMouseLeave
+                        },
+                        _react2["default"].createElement(_beeFormControl2["default"], {
+                            placeholder: _this2.props.placeholder ? _this2.props.placeholder : 'start ~ end',
+                            value: isValidRange(value) && (0, _util.formatDate)(value[0], formatStr) + " ~ " + (0, _util.formatDate)(value[1], formatStr) || '',
+                            disabled: props.disabled,
+                            onFocus: function onFocus(v, e) {
+                                _this2.outInputFocus(e);
+                            }
+                        }),
+                        showClose && _this2.state.value && _this2.state.value.length > 0 && _this2.state.showClose && !props.disabled ? _react2["default"].createElement(
+                            _beeInputGroup2["default"].Button,
+                            { shape: "border",
+                                onClick: _this2.clear },
+                            props.closeIcon()
+                        ) : _react2["default"].createElement(
+                            _beeInputGroup2["default"].Button,
+                            { shape: "border" },
+                            props.renderIcon()
+                        )
+                    );
+                }
+            )
         );
     };
 
@@ -362,6 +368,10 @@ var _initialiseProps = function _initialiseProps() {
             endValue = inputs[1].value ? inputs[1].value : '';
         }
         _this3.props.onEndInputBlur && _this3.props.onEndInputBlur(e, endValue, "[\"" + startValue + "\" , \"" + endValue + "\"]");
+    };
+
+    this.stopPropagation = function (e) {
+        e.stopPropagation();
     };
 };
 

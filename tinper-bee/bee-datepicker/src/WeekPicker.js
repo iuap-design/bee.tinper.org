@@ -165,6 +165,10 @@ class WeekPicker extends Component {
     })
     this.props.onChange && this.props.onChange('', '');
   }
+  //阻止组件内部事件冒泡到组件外部容器
+  stopPropagation = (e) => {
+    e.stopPropagation();
+  }
   render() {
     const state = this.state;
     const props = this.props;
@@ -189,7 +193,7 @@ class WeekPicker extends Component {
     );
     let classes = classnames(props.className, "datepicker-container");
     return (
-      <div className={classes}>
+      <div className={classes} onClick={this.stopPropagation} onMouseOver={this.stopPropagation}>
         {/* <style dangerouslySetInnerHTML={{ __html: style }} /> */}
         <Picker
           animation="slide-up"

@@ -172,7 +172,7 @@ function notice(content, duration_arg, type, onClose, position, style, keyboard,
                 {
                     showIcon ? (
                         <div className={`${clsPrefix}-notice-description-icon`}>
-                            {icon ? <i className= { classnames(`uf ${icon}`) } /> : <i className= { classnames(iconType) } />}
+                            {icon ? <i className= { classnames(`${icon}`) } /> : <i className= { classnames(iconType) } />}
                         </div>
                     ) : null
                 }

@@ -1,6 +1,6 @@
 @import "../node_modules/tinper-bee-core/scss/minxin-variables";
 @import "../node_modules/tinper-bee-core/scss/minxin-mixins";
-
+@import "../node_modules/bee-icon/src/Icon";
 
 // Styling for the input element.
 .u-form-control {
@@ -67,8 +67,6 @@
     }
 }
 
-
-
 .u-form-control-affix-wrapper {
     position: relative;
     display: inline-block;
@@ -83,5 +81,15 @@
         line-height: 0;
         right: 7px;
         color: rgba(0,0,0,.65);
+    }
+}
+
+.u-form-control-close {
+    .uf-close-c {
+        opacity: 0;
+        transition: .3s all;
+    }
+    &:hover .uf-close-c {
+        opacity: 1;
     }
 }

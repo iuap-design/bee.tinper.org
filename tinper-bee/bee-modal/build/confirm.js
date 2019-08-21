@@ -94,7 +94,7 @@ var ConfirmDialog = function ConfirmDialog(props) {
       width: width,
       className: classString,
       show: show,
-      onHide: onHide,
+      onHide: close,
       backdrop: backdrop },
     _react2["default"].createElement(
       _Modal2["default"].Header,

@@ -63,7 +63,7 @@ const ConfirmDialog = (props) => {
         width={width}
         className={classString}
         show = {show}
-        onHide = {onHide}
+        onHide = {close}
         backdrop = {backdrop} >
           <Modal.Header>
               <Modal.Title>{iconNode}<span className={`${contentPrefixCls}-title`}>{props.title}</span></Modal.Title>

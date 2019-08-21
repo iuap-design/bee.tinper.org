@@ -116,7 +116,7 @@ var Vertical = function (_Component) {
             _this2.state.items.map(function (item, index) {
               return _react2["default"].createElement(
                 _reactBeautifulDnd.Draggable,
-                { key: index, draggableId: index, index: index },
+                { key: index, draggableId: '' + index, index: index },
                 function (provided, snapshot) {
                   return _react2["default"].createElement(
                     'div',

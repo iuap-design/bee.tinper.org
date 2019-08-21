@@ -238,6 +238,10 @@ class DatePicker extends Component {
     let value = this.state.value;
     this.props.onChange&&this.props.onChange(value, (value && this.getValue(value)) || '')
   }
+  //阻止组件内部事件冒泡到组件外部容器
+  stopPropagation = (e) => {
+    e.stopPropagation();
+  }
   render() {
     let state = this.state;
     let props = this.props;
@@ -280,7 +284,8 @@ class DatePicker extends Component {
     }
     let classes = classnames(props.className, "datepicker-container");
     return (
-      <div className={classes} onMouseEnter={this.onBlur}>
+      // <div className={classes} onMouseEnter={this.onBlur}>
+      <div className={classes} onMouseEnter={this.onBlur} onClick={this.stopPropagation} onMouseOver={this.stopPropagation}>
         <Picker
           animation="slide-up"
           {...props}

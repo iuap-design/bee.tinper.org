@@ -83,6 +83,7 @@ const Tabs = createClass({
   },
 
   onTabClick(activeKey) {
+    this.props.onTabClick && this.props.onTabClick(activeKey);
     if (this.tabBar.props.onTabClick) {
       this.tabBar.props.onTabClick(activeKey);
     }

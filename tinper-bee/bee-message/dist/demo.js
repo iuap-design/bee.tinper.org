@@ -37053,7 +37053,7 @@
 	                showIcon ? _react2['default'].createElement(
 	                    'div',
 	                    { className: clsPrefix + '-notice-description-icon' },
-	                    icon ? _react2['default'].createElement('i', { className: (0, _classnames2['default'])('uf ' + icon) }) : _react2['default'].createElement('i', { className: (0, _classnames2['default'])(iconType) })
+	                    icon ? _react2['default'].createElement('i', { className: (0, _classnames2['default'])('' + icon) }) : _react2['default'].createElement('i', { className: (0, _classnames2['default'])(iconType) })
 	                ) : null,
 	                _react2['default'].createElement(
 	                    'div',
@@ -93125,7 +93125,7 @@
 	
 	var light = function light() {
 	    _src2['default'].destroy();
-	    _src2['default'].create({ content: '自定义图标展示。', color: "light", icon: 'uf-tinperzc-col' });
+	    _src2['default'].create({ content: '自定义图标展示。', color: "light", icon: 'uf uf-tinperzc-col' });
 	};
 	
 	var Demo8 = function (_Component) {

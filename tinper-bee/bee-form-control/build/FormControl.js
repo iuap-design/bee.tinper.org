@@ -83,9 +83,7 @@ var FormControl = function (_React$Component) {
             var onChange = _this.props.onChange;
 
             var value = _this.input.value;
-            _this.setState({
-                showClose: true
-            });
+
             if (onChange) {
                 onChange(value, e);
             }
@@ -96,8 +94,7 @@ var FormControl = function (_React$Component) {
 
             _this.setState({
                 showSearch: true,
-                value: "",
-                showClose: false
+                value: ""
             });
             if (onChange) {
                 onChange("");
@@ -191,7 +188,7 @@ var FormControl = function (_React$Component) {
                 _react2["default"].createElement(
                     'div',
                     { className: clsPrefix + '-suffix' },
-                    _this.state.showClose ? _react2["default"].createElement(_beeIcon2["default"], { onClick: _this.clearValue, type: 'uf-close-c' }) : ''
+                    value ? _react2["default"].createElement(_beeIcon2["default"], { onClick: _this.clearValue, type: 'uf-close-c' }) : ''
                 )
             ) : _react2["default"].createElement(Component, _extends({}, others, {
                 type: type,
@@ -254,8 +251,7 @@ var FormControl = function (_React$Component) {
 
         _this.state = {
             showSearch: !props.value,
-            value: props.value == null ? "" : props.value,
-            showClose: false
+            value: props.value == null ? "" : props.value
         };
         _this.input = {};
         return _this;

@@ -123,6 +123,11 @@ class YearPicker extends Component {
         ReactDOM.findDOMNode(this.outInput).focus();
     }
 
+    //阻止组件内部事件冒泡到组件外部容器
+    stopPropagation = (e) => {
+        e.stopPropagation();
+    }
+
     render() {
         let state = this.state;
         let props = this.props;
@@ -138,7 +143,7 @@ class YearPicker extends Component {
         />;
         let classes = classnames(props.className, "datepicker-container");
         return (
-            <div className={classes}>
+            <div className={classes} onClick={this.stopPropagation} onMouseOver={this.stopPropagation}>
                 <Picker
                     animation="slide-up"
                     {...props}

@@ -80,7 +80,7 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
 	
-	var Demo1 = __webpack_require__(255);var Demo2 = __webpack_require__(256);var Demo3 = __webpack_require__(257);var Demo4 = __webpack_require__(258);var Demo5 = __webpack_require__(369);var Demo6 = __webpack_require__(370);var Demo7 = __webpack_require__(371);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 基础Tab", "code": "/**\n *  @title 基础Tab\n *  @description 通过Tabs和TabPane配合完成Tab功能\n *\n */\n\nimport React, {Component} from 'react';\nimport {  } from 'tinper-bee';\nimport Tabs from \"tinper-bee/lib/src\";;\n\nconst {TabPane} = Tabs;\n\nclass Demo1 extends Component {\n    state = {\n        activeKey: \"1\"\n    }\n\n    onChange = (activeKey) => {\n        console.log(`onChange ${activeKey} o-^-o`);\n        this.setState({\n            activeKey,\n        });\n    }\n\n    render() {\n        return (\n            <Tabs\n                defaultActiveKey=\"1\"\n                onChange={this.onChange}\n                className=\"demo1-tabs\"\n            >\n                <TabPane tab='Tab 1' key=\"1\">Content of Tab Pane 1</TabPane>\n                <TabPane tab='Tab 2' key=\"2\">Content of Tab Pane 2</TabPane>\n                <TabPane tab='Tab 3' key=\"3\">Content of Tab Pane 3</TabPane>\n            </Tabs>\n        )\n    }\n}\n\n", "desc": " 通过Tabs和TabPane配合完成Tab功能", "scss_code": ".demo1-tabs{\n  margin-bottom: 40px;\n}" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 禁用", "code": "/**\n *  @title 禁用\n *  @description 禁用某一项。\n *\n */\n\nimport React, {Component} from 'react';\nimport {  } from 'tinper-bee';\nimport Tabs from \"tinper-bee/lib/src\";;\n\nconst {TabPane} = Tabs;\n\nclass Demo2 extends Component {\n    render() {\n        return (\n            <Tabs defaultActiveKey=\"1\">\n                <TabPane tab='Tab 1' key=\"1\">Content of Tab Pane 1</TabPane>\n                <TabPane tab='Tab 2' disabled key=\"2\">Content of Tab Pane 2</TabPane>\n                <TabPane tab='Tab 3' key=\"3\">Content of Tab Pane 3</TabPane>\n            </Tabs>\n        )\n    }\n}\n\n", "desc": " 禁用某一项。" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 图标", "code": "/**\n *  @title 图标\n *  @description 有图标的标签。\n *\n */\n\nimport React, {Component} from 'react';\nimport { Icon } from 'tinper-bee';\nimport Tabs from \"tinper-bee/lib/src\";;\n\nconst {TabPane} = Tabs;\n\nclass Demo3 extends Component {\n    render() {\n        return (\n            <Tabs defaultActiveKey=\"1\">\n                <TabPane tab={<span><Icon type=\"uf-home\"></Icon>主页</span>} key=\"1\">Content of Tab Pane 1</TabPane>\n                <TabPane tab={<span><Icon type=\"uf-settings\"></Icon>设置</span>} key=\"2\">Content of Tab Pane 2</TabPane>\n                <TabPane tab={<span><Icon type=\"uf-folder-o\"></Icon>文件</span>} key=\"3\">Content of Tab Pane 3</TabPane>\n            </Tabs>\n        )\n    }\n}\n\n", "desc": " 有图标的标签。" }, { "example": _react2['default'].createElement(Demo4, null), "title": " 位置", "code": "/**\n *\n * @title 位置\n * @description tab页签头的位置，可以在['top','bottom','left','right']中选择。当页签宽度超过容器宽度时，可以左右、上下滑动，容纳更多标签。\n *\n */\n\nimport React, { Component } from 'react';\nimport { Select } from 'tinper-bee';\nimport Tabs from \"tinper-bee/lib/src\";;\n\nconst {TabPane} = Tabs;\nconst {Option} = Select;\n\nclass Demo4 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = ({\n            activeKey: \"1\",\n            start: 0,\n            tabBarPosition: \"left\"\n        })\n    }\n    onChange = (activeKey) => {\n        console.log(`onChange ${activeKey}o-^-o`);\n        this.setState({\n            activeKey,\n        });\n    }\n\n    onTabClick = (key) => {\n        console.log(`onTabClick ${key}o^o`);\n        if (key === this.state.activeKey) {\n            this.setState({\n                activeKey: '',\n            });\n        }\n    }\n\n    changeTabPosition = (tabBarPosition) => {\n        this.setState({ tabBarPosition });\n    }\n\n    render() {\n\n        return (\n            <div className=\"demo4\">\n                <div style={{ marginBottom: 16 }}>\n                    Tab position：\n                    <Select\n                        value={this.state.tabBarPosition}\n                        onChange={this.changeTabPosition}\n                    >\n                        <Option value=\"top\">top</Option>\n                        <Option value=\"bottom\">bottom</Option>\n                        <Option value=\"left\">left</Option>\n                        <Option value=\"right\">right</Option>\n                    </Select>\n                </div>\n                <Tabs\n                    activeKey={this.state.activeKey}\n                    tabBarPosition={this.state.tabBarPosition}\n                    onChange={this.onChange}\n                    defaultActiveKey=\"1\"\n                    className=\"demo4-tabs\"\n                >\n                    <TabPane tab='Tab 1' key=\"1\">Content of Tab Pane 1</TabPane>\n                    <TabPane tab='Tab 2' key=\"2\">Content of Tab Pane 2</TabPane>\n                    <TabPane tab='Tab 3' key=\"3\">Content of Tab Pane 3</TabPane>\n                    <TabPane tab='Tab 4' key=\"4\">Content of Tab Pane 4</TabPane>\n                    <TabPane tab='Tab 5' key=\"5\">Content of Tab Pane 5</TabPane>\n                    <TabPane tab='Tab 6' key=\"6\">Content of Tab Pane 6</TabPane>\n                    <TabPane tab='Tab 7' key=\"7\">Content of Tab Pane 7</TabPane>\n                    <TabPane tab='Tab 8' key=\"8\">Content of Tab Pane 8</TabPane>\n                </Tabs>\n            </div>\n        )\n    }\n}\n\n", "desc": " tab页签头的位置，可以在['top','bottom','left','right']中选择。当页签宽度超过容器宽度时，可以左右、上下滑动，容纳更多标签。", "scss_code": ".demo4{\n  width: 600px;\n  margin: 20px;\n  .demo4-tabs{\n    &.u-tabs-left, &.u-tabs-right{\n      height: 300px;\n    }\n  }\n  .u-select{\n    width: 100px;\n  }\n}" }, { "example": _react2['default'].createElement(Demo5, null), "title": " 顶部border", "code": "/**\n *\n * @title 顶部border\n * @description `tabBarStyle`参数设置不同的tabBar样式，取值可以是'primary'、'simple'或'upborder'。\n *\n */\n\nimport React, { Component } from 'react';\nimport {  } from 'tinper-bee';\nimport Tabs from \"tinper-bee/lib/src\";;\n\nconst {TabPane} = Tabs;\n\nclass Demo5 extends Component {\n    render() {\n\n        return (\n            <div className=\"Demo5\">\n                <Tabs\n                    className=\"Demo5-tabs\"\n                    defaultActiveKey=\"1\"\n                    tabBarStyle=\"upborder\"\n                >\n                    <TabPane tab='Tab 1' key=\"1\">Content of Tab Pane 1</TabPane>\n                    <TabPane tab='Tab 2' key=\"2\">Content of Tab Pane 2</TabPane>\n                    <TabPane tab='Tab 3' key=\"3\">Content of Tab Pane 3</TabPane>\n                    <TabPane tab='Tab 4' key=\"4\">Content of Tab Pane 4</TabPane>\n                    <TabPane tab='Tab 5' key=\"5\">Content of Tab Pane 5</TabPane>\n                </Tabs>\n            </div>\n        )\n    }\n}\n\n", "desc": " `tabBarStyle`参数设置不同的tabBar样式，取值可以是'primary'、'simple'或'upborder'。" }, { "example": _react2['default'].createElement(Demo6, null), "title": " 附加操作", "code": "/**\r\n *\r\n * @title 附加操作\r\n * @description `extraContent`参数可以在页签右边自定义附加操作。\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\nimport { Button } from 'tinper-bee';\r\n\nimport Tabs from \"tinper-bee/lib/src\";;\r\n\r\nconst {TabPane} = Tabs;\r\nclass Demo6 extends Component {\r\n\r\n    add = () => {\r\n        alert(\"在这里添加操作 ^_^\")\r\n    }\r\n\r\n    render() {\r\n        return (\r\n            <div className=\"Demo6\">\r\n                <Tabs\r\n                    className=\"Demo6-tabs\"\r\n                    defaultActiveKey=\"1\"\r\n                    tabBarStyle=\"upborder\"\r\n                    extraContent={\r\n                        <Button className=\"add-button\" size=\"sm\" colors=\"primary\" onClick={this.add}>一些操作</Button>\r\n                    }\r\n                >\r\n                    <TabPane tab='Tab 1' key=\"1\">Content of Tab Pane 1</TabPane>\r\n                    <TabPane tab='Tab 2' key=\"2\">Content of Tab Pane 2</TabPane>\r\n                    <TabPane tab='Tab 3' key=\"3\">Content of Tab Pane 3</TabPane>\r\n                </Tabs>\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\n", "desc": " `extraContent`参数可以在页签右边自定义附加操作。", "scss_code": ".Demo6-tabs{\n  .add-button{\n    margin: 3px;\n  }\n}" }, { "example": _react2['default'].createElement(Demo7, null), "title": " 查询形式tab", "code": "/**\n *  @title 查询形式tab\n *  @description SearchTabs = Tabs.SearchTabs\n *\n */\n\nimport React, {Component} from 'react';\nimport { Button } from 'tinper-bee';\nimport Tabs from \"tinper-bee/lib/src\";;\n\nconst SearchTabs = Tabs.SearchTabs;\n\nclass Demo1 extends Component {\n    constructor(props){\n        super(props);\n        this.state={\n            tabList:[\n                {\n                    name:\"待提交(9)\",value:'1'\n                },\n                {\n                    name:\"审批中(12)\",value:'2'\n                },\n                {\n                    name:\"执行中(5)\",value:'3'\n                },\n                {\n                    name:\"已完成(123)\",value:'4'\n                },\n                {\n                    name:\"已删除(0)\",value:'5'\n                },\n                {\n                    name:\"全部(149)\",value:'6'\n                },\n            ],\n            selectValue:'3'\n        }\n    }\n    getData=()=>{\n        this.setState({\n            selectValue:'1',\n            tabList:[\n                {\n                    name:\"已删除(0)\",value:'1'\n                },\n                {\n                    name:\"全部(70)\",value:'2'\n                },\n                {\n                    name:\"待提交(3)\",value:'3'\n                },\n                {\n                    name:\"审批中(67)\",value:'4'\n                },\n            ]\n        })\n    }\n\n    render () {\n        return (\n            <div>\n                <Button colors='primary' onClick={this.getData} style={{'marginBottom':'10px'}}>更改数据</Button>\n                <SearchTabs value={this.state.selectValue} onChange={(v)=>{console.log('onchange',v)}}>\n                    {\n                        this.state.tabList.map(item=>\n                            <SearchTabs.Item value={item.value}>{item.name}</SearchTabs.Item >)\n                    }\n                </SearchTabs>\n            </div>\n        )\n    }\n}\n", "desc": " SearchTabs = Tabs.SearchTabs" }];
+	var Demo1 = __webpack_require__(255);var Demo2 = __webpack_require__(256);var Demo3 = __webpack_require__(257);var Demo4 = __webpack_require__(258);var Demo5 = __webpack_require__(369);var Demo6 = __webpack_require__(370);var Demo7 = __webpack_require__(371);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 基础Tab", "code": "/**\r\n *  @title 基础Tab\r\n *  @description 通过Tabs和TabPane配合完成Tab功能\r\n *\r\n */\r\n\r\nimport React, {Component} from 'react';\nimport {  } from 'tinper-bee';\r\nimport Tabs from \"tinper-bee/lib/src\";;\r\n\r\nconst {TabPane} = Tabs;\r\n\r\nclass Demo1 extends Component {\r\n    state = {\r\n        activeKey: \"1\"\r\n    }\r\n\r\n    onChange = (activeKey) => {\r\n        console.log(`onChange ${activeKey} o-^-o`);\r\n        this.setState({\r\n            activeKey,\r\n        });\r\n    }\r\n\r\n    render() {\r\n        return (\r\n            <Tabs\r\n                defaultActiveKey=\"1\"\r\n                onChange={this.onChange}\r\n                className=\"demo1-tabs\"\r\n            >\r\n                <TabPane tab='Tab 1' key=\"1\">Content of Tab Pane 1</TabPane>\r\n                <TabPane tab='Tab 2' key=\"2\">Content of Tab Pane 2</TabPane>\r\n                <TabPane tab='Tab 3' key=\"3\">Content of Tab Pane 3</TabPane>\r\n            </Tabs>\r\n        )\r\n    }\r\n}\r\n\r\n", "desc": " 通过Tabs和TabPane配合完成Tab功能", "scss_code": ".demo1-tabs{\r\n  margin-bottom: 40px;\r\n}" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 禁用", "code": "/**\r\n *  @title 禁用\r\n *  @description 禁用某一项。\r\n *\r\n */\r\n\r\nimport React, {Component} from 'react';\nimport {  } from 'tinper-bee';\r\nimport Tabs from \"tinper-bee/lib/src\";;\r\n\r\nconst {TabPane} = Tabs;\r\n\r\nclass Demo2 extends Component {\r\n    render() {\r\n        return (\r\n            <Tabs defaultActiveKey=\"1\">\r\n                <TabPane tab='Tab 1' key=\"1\">Content of Tab Pane 1</TabPane>\r\n                <TabPane tab='Tab 2' disabled key=\"2\">Content of Tab Pane 2</TabPane>\r\n                <TabPane tab='Tab 3' key=\"3\">Content of Tab Pane 3</TabPane>\r\n            </Tabs>\r\n        )\r\n    }\r\n}\r\n\r\n", "desc": " 禁用某一项。" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 图标", "code": "/**\r\n *  @title 图标\r\n *  @description 有图标的标签。\r\n *\r\n */\r\n\r\nimport React, {Component} from 'react';\nimport { Icon } from 'tinper-bee';\r\n\nimport Tabs from \"tinper-bee/lib/src\";;\r\n\r\nconst {TabPane} = Tabs;\r\n\r\nclass Demo3 extends Component {\r\n    render() {\r\n        return (\r\n            <Tabs defaultActiveKey=\"1\">\r\n                <TabPane tab={<span><Icon type=\"uf-home\"></Icon>主页</span>} key=\"1\">Content of Tab Pane 1</TabPane>\r\n                <TabPane tab={<span><Icon type=\"uf-settings\"></Icon>设置</span>} key=\"2\">Content of Tab Pane 2</TabPane>\r\n                <TabPane tab={<span><Icon type=\"uf-folder-o\"></Icon>文件</span>} key=\"3\">Content of Tab Pane 3</TabPane>\r\n            </Tabs>\r\n        )\r\n    }\r\n}\r\n\r\n", "desc": " 有图标的标签。" }, { "example": _react2['default'].createElement(Demo4, null), "title": " 位置", "code": "/**\r\n *\r\n * @title 位置\r\n * @description tab页签头的位置，可以在['top','bottom','left','right']中选择。当页签宽度超过容器宽度时，可以左右、上下滑动，容纳更多标签。\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\nimport { Select } from 'tinper-bee';\r\n\nimport Tabs from \"tinper-bee/lib/src\";;\r\n\r\nconst {TabPane} = Tabs;\r\nconst {Option} = Select;\r\n\r\nclass Demo4 extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = ({\r\n            activeKey: \"1\",\r\n            start: 0,\r\n            tabBarPosition: \"left\"\r\n        })\r\n    }\r\n    onChange = (activeKey) => {\r\n        console.log(`onChange ${activeKey}o-^-o`);\r\n        this.setState({\r\n            activeKey,\r\n        });\r\n    }\r\n\r\n    onTabClick = (key) => {\r\n        console.log(`onTabClick ${key}o^o`);\r\n        if (key === this.state.activeKey) {\r\n            this.setState({\r\n                activeKey: '',\r\n            });\r\n        }\r\n    }\r\n\r\n    changeTabPosition = (tabBarPosition) => {\r\n        this.setState({ tabBarPosition });\r\n    }\r\n\r\n    render() {\r\n\r\n        return (\r\n            <div className=\"demo4\">\r\n                <div style={{ marginBottom: 16 }}>\r\n                    Tab position：\r\n                    <Select\r\n                        value={this.state.tabBarPosition}\r\n                        onChange={this.changeTabPosition}\r\n                    >\r\n                        <Option value=\"top\">top</Option>\r\n                        <Option value=\"bottom\">bottom</Option>\r\n                        <Option value=\"left\">left</Option>\r\n                        <Option value=\"right\">right</Option>\r\n                    </Select>\r\n                </div>\r\n                <Tabs\r\n                    activeKey={this.state.activeKey}\r\n                    tabBarPosition={this.state.tabBarPosition}\r\n                    onChange={this.onChange}\r\n                    defaultActiveKey=\"1\"\r\n                    className=\"demo4-tabs\"\r\n                    onTabClick={this.onTabClick}\r\n                >\r\n                    <TabPane tab='Tab 1' key=\"1\">Content of Tab Pane 1</TabPane>\r\n                    <TabPane tab='Tab 2' key=\"2\">Content of Tab Pane 2</TabPane>\r\n                    <TabPane tab='Tab 3' key=\"3\">Content of Tab Pane 3</TabPane>\r\n                    <TabPane tab='Tab 4' key=\"4\">Content of Tab Pane 4</TabPane>\r\n                    <TabPane tab='Tab 5' key=\"5\">Content of Tab Pane 5</TabPane>\r\n                    <TabPane tab='Tab 6' key=\"6\">Content of Tab Pane 6</TabPane>\r\n                    <TabPane tab='Tab 7' key=\"7\">Content of Tab Pane 7</TabPane>\r\n                    <TabPane tab='Tab 8' key=\"8\">Content of Tab Pane 8</TabPane>\r\n                </Tabs>\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\n", "desc": " tab页签头的位置，可以在['top','bottom','left','right']中选择。当页签宽度超过容器宽度时，可以左右、上下滑动，容纳更多标签。", "scss_code": ".demo4{\r\n  width: 600px;\r\n  margin: 20px;\r\n  .demo4-tabs{\r\n    &.u-tabs-left, &.u-tabs-right{\r\n      height: 300px;\r\n    }\r\n  }\r\n  .u-select{\r\n    width: 100px;\r\n  }\r\n}" }, { "example": _react2['default'].createElement(Demo5, null), "title": " 顶部border", "code": "/**\r\n *\r\n * @title 顶部border\r\n * @description `tabBarStyle`参数设置不同的tabBar样式，取值可以是'primary'、'simple'或'upborder'。\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\nimport {  } from 'tinper-bee';\r\nimport Tabs from \"tinper-bee/lib/src\";;\r\n\r\nconst {TabPane} = Tabs;\r\n\r\nclass Demo5 extends Component {\r\n    render() {\r\n\r\n        return (\r\n            <div className=\"Demo5\">\r\n                <Tabs\r\n                    className=\"Demo5-tabs\"\r\n                    defaultActiveKey=\"1\"\r\n                    tabBarStyle=\"upborder\"\r\n                >\r\n                    <TabPane tab='Tab 1' key=\"1\">Content of Tab Pane 1</TabPane>\r\n                    <TabPane tab='Tab 2' key=\"2\">Content of Tab Pane 2</TabPane>\r\n                    <TabPane tab='Tab 3' key=\"3\">Content of Tab Pane 3</TabPane>\r\n                    <TabPane tab='Tab 4' key=\"4\">Content of Tab Pane 4</TabPane>\r\n                    <TabPane tab='Tab 5' key=\"5\">Content of Tab Pane 5</TabPane>\r\n                </Tabs>\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\n", "desc": " `tabBarStyle`参数设置不同的tabBar样式，取值可以是'primary'、'simple'或'upborder'。" }, { "example": _react2['default'].createElement(Demo6, null), "title": " 附加操作", "code": "/**\r\n *\r\n * @title 附加操作\r\n * @description `extraContent`参数可以在页签右边自定义附加操作。\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\nimport { Button } from 'tinper-bee';\r\n\nimport Tabs from \"tinper-bee/lib/src\";;\r\n\r\nconst {TabPane} = Tabs;\r\nclass Demo6 extends Component {\r\n\r\n    add = () => {\r\n        alert(\"在这里添加操作 ^_^\")\r\n    }\r\n\r\n    render() {\r\n        return (\r\n            <div className=\"Demo6\">\r\n                <Tabs\r\n                    className=\"Demo6-tabs\"\r\n                    defaultActiveKey=\"1\"\r\n                    tabBarStyle=\"upborder\"\r\n                    extraContent={\r\n                        <Button className=\"add-button\" size=\"sm\" colors=\"primary\" onClick={this.add}>一些操作</Button>\r\n                    }\r\n                >\r\n                    <TabPane tab='Tab 1' key=\"1\">Content of Tab Pane 1</TabPane>\r\n                    <TabPane tab='Tab 2' key=\"2\">Content of Tab Pane 2</TabPane>\r\n                    <TabPane tab='Tab 3' key=\"3\">Content of Tab Pane 3</TabPane>\r\n                </Tabs>\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\n", "desc": " `extraContent`参数可以在页签右边自定义附加操作。", "scss_code": ".Demo6-tabs{\r\n  .add-button{\r\n    margin: 3px;\r\n  }\r\n}" }, { "example": _react2['default'].createElement(Demo7, null), "title": " 查询形式tab", "code": "/**\r\n *  @title 查询形式tab\r\n *  @description SearchTabs = Tabs.SearchTabs\r\n *\r\n */\r\n\r\nimport React, {Component} from 'react';\nimport { Button } from 'tinper-bee';\r\n\nimport Tabs from \"tinper-bee/lib/src\";;\r\n\r\nconst SearchTabs = Tabs.SearchTabs;\r\n\r\nclass Demo1 extends Component {\r\n    constructor(props){\r\n        super(props);\r\n        this.state={\r\n            tabList:[\r\n                {\r\n                    name:\"待提交(9)\",value:'1'\r\n                },\r\n                {\r\n                    name:\"审批中(12)\",value:'2'\r\n                },\r\n                {\r\n                    name:\"执行中(5)\",value:'3'\r\n                },\r\n                {\r\n                    name:\"已完成(123)\",value:'4'\r\n                },\r\n                {\r\n                    name:\"已删除(0)\",value:'5'\r\n                },\r\n                {\r\n                    name:\"全部(149)\",value:'6'\r\n                },\r\n            ],\r\n            selectValue:'3'\r\n        }\r\n    }\r\n    getData=()=>{\r\n        this.setState({\r\n            selectValue:'1',\r\n            tabList:[\r\n                {\r\n                    name:\"已删除(0)\",value:'1'\r\n                },\r\n                {\r\n                    name:\"全部(70)\",value:'2'\r\n                },\r\n                {\r\n                    name:\"待提交(3)\",value:'3'\r\n                },\r\n                {\r\n                    name:\"审批中(67)\",value:'4'\r\n                },\r\n            ]\r\n        })\r\n    }\r\n\r\n    render () {\r\n        return (\r\n            <div>\r\n                <Button colors='primary' onClick={this.getData} style={{'marginBottom':'10px'}}>更改数据</Button>\r\n                <SearchTabs value={this.state.selectValue} onChange={(v)=>{console.log('onchange',v)}}>\r\n                    {\r\n                        this.state.tabList.map(item=>\r\n                            <SearchTabs.Item value={item.value}>{item.name}</SearchTabs.Item >)\r\n                    }\r\n                </SearchTabs>\r\n            </div>\r\n        )\r\n    }\r\n}\r\n", "desc": " SearchTabs = Tabs.SearchTabs" }];
 	
 	var Demo = function (_Component) {
 	    _inherits(Demo, _Component);
@@ -6140,6 +6140,10 @@
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
+	var _warning = __webpack_require__(31);
+	
+	var _warning2 = _interopRequireDefault(_warning);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 	
 	var defaultDuration = 1.5;
@@ -6153,25 +6157,27 @@
 	var key = 1;
 	var clsPrefix = 'u-message';
 	var noop = function noop() {};
+	var notificationStyle_copy = {};
+	var messageStyle_copy = {};
+	var positionType = ['topRight', 'bottomRight', 'top', 'bottom', 'topLeft', 'bottomLeft', ''];
+	var defaultStyle = {};
 	
 	var positionObj = {
 	    "top": {
-	        messageStyle: {
-	            transform: 'translateX( -50%)'
-	        },
+	        messageStyle: {},
 	        notificationStyle: {
 	            top: defaultTop,
-	            left: '50%'
+	            left: '50%',
+	            transform: 'translateX( -50%)'
 	        },
 	        transitionName: 'top'
 	    },
 	    "bottom": {
-	        messageStyle: {
-	            transform: 'translateX( -50%)'
-	        },
+	        messageStyle: {},
 	        notificationStyle: {
 	            bottom: defaultBottom,
-	            left: '50%'
+	            left: '50%',
+	            transform: 'translateX( -50%)'
 	        },
 	        transitionName: 'bottom'
 	    },
@@ -6233,28 +6239,28 @@
 	    }
 	    switch (position) {
 	        case 'top':
-	            positionObj[position].notificationStyle.top = defaultTop;
+	            notificationStyle_copy.top = defaultTop;
 	            break;
 	        case 'bottom':
-	            positionObj[position].notificationStyle.bottom = defaultBottom;
+	            notificationStyle_copy.bottom = defaultBottom;
 	            break;
 	        case 'bottomRight':
-	            positionObj[position].notificationStyle.bottom = bottom;
+	            notificationStyle_copy.bottom = bottom;
 	            break;
 	        case 'bottomLeft':
-	            positionObj[position].notificationStyle.bottom = bottom;
+	            notificationStyle_copy.bottom = bottom;
 	            break;
 	        default:
 	            break;
 	    }
 	    if (position !== 'top' && position !== 'bottom') {
-	        positionObj[position].messageStyle.width = width;
+	        messageStyle_copy.width = width;
 	    }
-	    var style = positionObj[position].notificationStyle;
+	    var style = JSON.stringify(notificationStyle_copy) == "{}" ? positionObj[position].notificationStyle : notificationStyle_copy;
 	    var instanceObj = {
 	        clsPrefix: clsPrefix,
 	        transitionName: clsPrefix + '-' + positionObj[position].transitionName,
-	        style: style, // 覆盖原来的样式
+	        style: _extends({}, style, defaultStyle), // 覆盖原来的样式
 	        position: position
 	    };
 	    if (typeof keyboard === 'boolean') {
@@ -6269,7 +6275,17 @@
 	    });
 	}
 	
-	function notice(content, duration, type, onClose, position, style, keyboard, onEscapeKeyUp, showIcon) {
+	function notice(content, duration_arg, type, onClose, position, style, keyboard, onEscapeKeyUp, showIcon, icon) {
+	    if (positionType.findIndex(function (item) {
+	        return item === position;
+	    }) < 0) {
+	        (0, _warning2["default"])(false, 'Failed prop type: Invalid prop `position` supplied to `Message`, expected one of ["top","bottom","topRight","topLeft","bottomRight","bottomLeft"].');
+	        return;
+	    }
+	    var duration = duration_arg !== undefined ? duration_arg : defaultDuration;
+	    notificationStyle_copy = _extends({}, positionObj[position].notificationStyle);
+	    messageStyle_copy = _extends({}, positionObj[position].messageStyle);
+	
 	    var iconType = {
 	        info: 'uf uf-i-c-2',
 	        success: 'uf uf-correct',
@@ -6284,7 +6300,8 @@
 	        warninglight: 'uf uf-exc-t'
 	    }[type];
 	
-	    var positionStyle = positionObj[position].messageStyle;
+	    var positionStyle = JSON.stringify(messageStyle_copy) == "{}" ? positionObj[position].messageStyle : messageStyle_copy;
+	    defaultStyle = _extends({}, positionStyle, style);
 	    getMessageInstance(position, function (instance) {
 	        instance.notice({
 	            key: key,
@@ -6297,7 +6314,7 @@
 	                showIcon ? _react2["default"].createElement(
 	                    'div',
 	                    { className: clsPrefix + '-notice-description-icon' },
-	                    _react2["default"].createElement('i', { className: (0, _classnames2["default"])(iconType) })
+	                    icon ? _react2["default"].createElement('i', { className: (0, _classnames2["default"])('' + icon) }) : _react2["default"].createElement('i', { className: (0, _classnames2["default"])(iconType) })
 	                ) : null,
 	                _react2["default"].createElement(
 	                    'div',
@@ -6330,8 +6347,9 @@
 	        var onClose = obj.onClose || noop;
 	        var position = obj.position || "top";
 	        var style = obj.style || {};
-	        var showIcon = obj.showIcon || true;
-	        return notice(content, duration, color, onClose, position, style, obj.keyboard, obj.onEscapeKeyUp, showIcon);
+	        var showIcon = obj.hasOwnProperty('showIcon') ? obj.showIcon : true;
+	        var icon = obj.hasOwnProperty('icon') ? obj.icon : false;
+	        return notice(content, duration, color, onClose, position, style, obj.keyboard, obj.onEscapeKeyUp, showIcon, icon);
 	    },
 	    config: function config(options) {
 	        if (options.top !== undefined) {
@@ -6358,6 +6376,16 @@
 	        if (messageInstance) {
 	            messageInstance.destroy();
 	            messageInstance = null;
+	            defaultDuration = 1.5;
+	            newDuration = undefined;
+	            defaultTop = 24;
+	            defaultBottom = 48;
+	            bottom = 90;
+	            padding = 30;
+	            width = 240;
+	            notificationStyle_copy = null;
+	            messageStyle_copy = null;
+	            defaultStyle = null;
 	        }
 	    }
 	};
@@ -6453,7 +6481,7 @@
 	  show: _propTypes2["default"].bool,
 	  clsPrefix: _propTypes2["default"].string,
 	  style: _propTypes2["default"].object,
-	  position: _propTypes2["default"].oneOf(['topRight', 'bottomRight', '']),
+	  position: _propTypes2["default"].oneOf(['topRight', 'bottomRight', 'top', 'bottom', 'topLeft', 'bottomLeft', '']),
 	  transitionName: _propTypes2["default"].string,
 	  keyboard: _propTypes2["default"].bool, // 按esc键是否关闭notice
 	  onEscapeKeyUp: _propTypes2["default"].func, // 设置esc键特殊钩子函数
@@ -34827,6 +34855,7 @@
 	    }
 	  },
 	  onTabClick: function onTabClick(activeKey) {
+	    this.props.onTabClick && this.props.onTabClick(activeKey);
 	    if (this.tabBar.props.onTabClick) {
 	      this.tabBar.props.onTabClick(activeKey);
 	    }
@@ -36445,7 +36474,8 @@
 	                    tabBarPosition: this.state.tabBarPosition,
 	                    onChange: this.onChange,
 	                    defaultActiveKey: '1',
-	                    className: 'demo4-tabs'
+	                    className: 'demo4-tabs',
+	                    onTabClick: this.onTabClick
 	                },
 	                _react2['default'].createElement(
 	                    TabPane,
@@ -36749,6 +36779,10 @@
 	
 	var _rcMenu = __webpack_require__(262);
 	
+	var _MenuItem = __webpack_require__(351);
+	
+	var _MenuItem2 = _interopRequireDefault(_MenuItem);
+	
 	var _warning = __webpack_require__(31);
 	
 	var _warning2 = _interopRequireDefault(_warning);
@@ -36906,11 +36940,7 @@
 	      }, _util.UNSELECTABLE_ATTRIBUTE, {
 	        onClick: this.onClearSelection
 	      }),
-	      clearIcon || _react2["default"].createElement(
-	        'i',
-	        { className: prefixCls + '-selection-clear-icon' },
-	        '\xD7'
-	      )
+	      clearIcon || _react2["default"].createElement('i', { className: prefixCls + '-selection-clear-icon' })
 	    );
 	    if (!allowClear) {
 	      return null;
@@ -37919,7 +37949,7 @@
 	      value.forEach(function (singleValue) {
 	        var key = singleValue;
 	        var menuItem = _react2["default"].createElement(
-	          _rcMenu.Item,
+	          _MenuItem2["default"],
 	          {
 	            style: _util.UNSELECTABLE_STYLE,
 	            role: 'option',
@@ -37948,7 +37978,7 @@
 	        });
 	        if (notFindInputItem) {
 	          options.unshift(_react2["default"].createElement(
-	            _rcMenu.Item,
+	            _MenuItem2["default"],
 	            {
 	              style: _util.UNSELECTABLE_STYLE,
 	              role: 'option',
@@ -37964,7 +37994,7 @@
 	
 	    if (!options.length && notFoundContent) {
 	      options = [_react2["default"].createElement(
-	        _rcMenu.Item,
+	        _MenuItem2["default"],
 	        {
 	          style: _util.UNSELECTABLE_STYLE,
 	          attribute: _util.UNSELECTABLE_ATTRIBUTE,
@@ -38015,7 +38045,7 @@
 	      (0, _util.validateOptionValue)(childValue, _this2.props);
 	
 	      if (_this2.filterOption(inputValue, child)) {
-	        var menuItem = _react2["default"].createElement(_rcMenu.Item, _extends({
+	        var menuItem = _react2["default"].createElement(_MenuItem2["default"], _extends({
 	          style: _util.UNSELECTABLE_STYLE,
 	          attribute: _util.UNSELECTABLE_ATTRIBUTE,
 	          value: childValue,

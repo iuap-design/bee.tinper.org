@@ -34,7 +34,6 @@ class FormControl extends React.Component {
         this.state = {
             showSearch: !props.value,
             value: props.value == null ? "" : props.value,
-            showClose:false
         }
         this.input = {};
     }
@@ -61,12 +60,10 @@ class FormControl extends React.Component {
         const now = new Date().getTime()
         if (now - this.lastScrollCall < this.props.debounceDelay) return
         this.lastScrollCall = now
-        
+
         const {onChange} = this.props;
         let value = this.input.value;
-        this.setState({
-            showClose:true
-        })
+
         if (onChange) {
             onChange(value,e);
         }
@@ -75,9 +72,8 @@ class FormControl extends React.Component {
     clearValue = () => {
         const {onChange} = this.props;
         this.setState({
-            showSearch: true, 
+            showSearch: true,
             value: "",
-            showClose:false
         });
         if (onChange) {
             onChange("");
@@ -159,7 +155,7 @@ class FormControl extends React.Component {
                     />
                     <div className={`${clsPrefix}-suffix`}>
                         {
-                            this.state.showClose? <Icon onClick={this.clearValue} type="uf-close-c"/>:''
+                            value ? <Icon onClick={this.clearValue} type="uf-close-c"/>:''
                         }
                     </div>
                 </div>
@@ -175,7 +171,6 @@ class FormControl extends React.Component {
                     className={classnames(className, classNames)}
                 />
             )
-           
         );
     }
 

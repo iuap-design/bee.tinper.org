@@ -110,6 +110,7 @@ var Tabs = (0, _createReactClass2["default"])({
     }
   },
   onTabClick: function onTabClick(activeKey) {
+    this.props.onTabClick && this.props.onTabClick(activeKey);
     if (this.tabBar.props.onTabClick) {
       this.tabBar.props.onTabClick(activeKey);
     }

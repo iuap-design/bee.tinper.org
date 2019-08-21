@@ -217,6 +217,10 @@ class RangePicker extends Component {
         }
         this.props.onEndInputBlur && this.props.onEndInputBlur(e, endValue, `["${startValue}" , "${endValue}"]`);
     }
+    //阻止组件内部事件冒泡到组件外部容器
+    stopPropagation = (e) => {
+        e.stopPropagation();
+    }
     render() {
     const props = this.props;
     const { showClose } = props;
@@ -246,6 +250,7 @@ class RangePicker extends Component {
     );
 
       return (
+          <div onClick={this.stopPropagation} onMouseOver={this.stopPropagation}>
           <Picker
               value = {value}
               animation={'animation' in props ? props.animation : "slide-up"}
@@ -282,7 +287,8 @@ class RangePicker extends Component {
                 );
                   }
               }
-          </Picker>);
+          </Picker>
+        </div>);
   }
 }
 

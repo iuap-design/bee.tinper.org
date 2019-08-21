@@ -64,7 +64,7 @@ class Vertical extends Component {
               })}
             >
               {this.state.items.map((item, index) => (
-                <Draggable key={index} draggableId={index} index={index}>
+                <Draggable key={index} draggableId={`${index}`} index={index}>
                   {(provided, snapshot) => (
                     <div
                       ref={provided.innerRef}

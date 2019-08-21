@@ -7,6 +7,8 @@
 import React, { Component } from 'react';
 import Tree from '../../src';
 
+const {TreeNode} = Tree;
+
 const x = 1000;
 const y = 1;
 const z = 1;
@@ -72,9 +74,20 @@ class Demo13 extends Component{
     return false;
   }
 
-  //自定义树节点内容
-  renderTitle = item => {
-    return item.key
+  //使用 treeData 渲染树节点时，可使用该函数自定义节点显示内容（非必须）
+  //注意：isLeaf 属性是必传的，否则节点层级和展示会有问题
+  renderTreeNodes = (data) => {
+    const loop = data => data.map((item) => {
+      if (item.children) {
+        return (
+          <TreeNode key={item.key} title={item.key} isLeaf={item.isLeaf}>
+            {loop(item.children)}
+          </TreeNode>
+        );
+      }
+      return <TreeNode key={item.key} title={item.key} isLeaf={true}/>;
+    });
+    return loop(data);
   }
 
   render() {
@@ -85,7 +98,7 @@ class Demo13 extends Component{
           focusable
           treeData={gData}
           lazyLoad={true}
-          renderTitle={this.renderTitle}
+          renderTreeNodes={this.renderTreeNodes}
           onExpand={this.onExpand}
           defaultExpandAll={true} 
           expandedKeys={this.state.expandedKeys}

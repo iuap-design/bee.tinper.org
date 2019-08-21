@@ -28,7 +28,7 @@ class Demo9 extends Component {
 
     render() {
         return (
-            <div>
+            <div className='demo9'>
                 <InputNumberGroup 
                 iconStyle='two'
                 onChange={this.handleChange} 

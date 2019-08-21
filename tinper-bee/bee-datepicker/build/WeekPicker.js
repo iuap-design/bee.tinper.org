@@ -212,6 +212,10 @@ var WeekPicker = function (_Component) {
       _this.props.onChange && _this.props.onChange('', '');
     };
 
+    _this.stopPropagation = function (e) {
+      e.stopPropagation();
+    };
+
     _this.state = {
       value: props.value || props.defaultValue,
       open: false,
@@ -219,6 +223,8 @@ var WeekPicker = function (_Component) {
     };
     return _this;
   }
+  //阻止组件内部事件冒泡到组件外部容器
+
 
   WeekPicker.prototype.render = function render() {
     var _this2 = this;
@@ -246,7 +252,7 @@ var WeekPicker = function (_Component) {
     var classes = (0, _classnames2["default"])(props.className, "datepicker-container");
     return _react2["default"].createElement(
       "div",
-      { className: classes },
+      { className: classes, onClick: this.stopPropagation, onMouseOver: this.stopPropagation },
       _react2["default"].createElement(
         _Picker2["default"],
         _extends({

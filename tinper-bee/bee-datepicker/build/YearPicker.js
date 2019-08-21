@@ -98,6 +98,9 @@ var YearPicker = function (_Component) {
         }
     };
 
+    //阻止组件内部事件冒泡到组件外部容器
+
+
     YearPicker.prototype.render = function render() {
         var _this2 = this;
 
@@ -117,7 +120,7 @@ var YearPicker = function (_Component) {
         var classes = (0, _classnames2["default"])(props.className, "datepicker-container");
         return _react2["default"].createElement(
             "div",
-            { className: classes },
+            { className: classes, onClick: this.stopPropagation, onMouseOver: this.stopPropagation },
             _react2["default"].createElement(
                 _Picker2["default"],
                 _extends({
@@ -252,6 +255,10 @@ var _initialiseProps = function _initialiseProps() {
         });
         onSelect && onSelect(value, value ? value.format(format) : '');
         _reactDom2["default"].findDOMNode(_this3.outInput).focus();
+    };
+
+    this.stopPropagation = function (e) {
+        e.stopPropagation();
     };
 };
 

@@ -11,7 +11,7 @@ import Message from '../../src';
 
 const light = function () {
     Message.destroy();
-    Message.create({content: '自定义图标展示。', color: "light", icon: 'uf-tinperzc-col'});
+    Message.create({content: '自定义图标展示。', color: "light", icon: 'uf uf-tinperzc-col'});
 };
 
 class Demo8 extends Component {

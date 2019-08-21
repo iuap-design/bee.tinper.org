@@ -192,7 +192,7 @@ function notice(content, duration_arg, type, onClose, position, style, keyboard,
                 showIcon ? _react2["default"].createElement(
                     'div',
                     { className: clsPrefix + '-notice-description-icon' },
-                    icon ? _react2["default"].createElement('i', { className: (0, _classnames2["default"])('uf ' + icon) }) : _react2["default"].createElement('i', { className: (0, _classnames2["default"])(iconType) })
+                    icon ? _react2["default"].createElement('i', { className: (0, _classnames2["default"])('' + icon) }) : _react2["default"].createElement('i', { className: (0, _classnames2["default"])(iconType) })
                 ) : null,
                 _react2["default"].createElement(
                     'div',

@@ -4,7 +4,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; /* eslint no-loop-func: 0*/
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 exports.browser = browser;
 exports.getOffset = getOffset;
@@ -29,6 +31,8 @@ var _react = require('react');
 var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; } /* eslint no-loop-func: 0*/
 
 function browser(navigator) {
   var tem = void 0;
@@ -389,12 +393,17 @@ function convertListToTree(treeData, attr, flatTreeKeysMap) {
   var findParentNode = function findParentNode(node) {
     var parentKey = node[attr.parendId];
     if (!resKeysMap.hasOwnProperty(parentKey)) {
+      var key = node.key,
+          title = node.title,
+          children = node.children,
+          otherProps = _objectWithoutProperties(node, ['key', 'title', 'children']);
+
       var obj = {
         key: flatTreeKeysMap[parentKey][attr.id],
         title: flatTreeKeysMap[parentKey][attr.name],
         children: []
       };
-      tree.push(obj);
+      tree.push(_extends(obj, _extends({}, otherProps)));
       resKeysMap[obj.key] = obj;
     }
     return flatTreeKeysMap[parentKey];
@@ -402,13 +411,19 @@ function convertListToTree(treeData, attr, flatTreeKeysMap) {
 
   for (var i = 0; i < resData.length; i++) {
     if (resData[i].parentKey === attr.rootId) {
+      var _resData$i = resData[i],
+          key = _resData$i.key,
+          title = _resData$i.title,
+          children = _resData$i.children,
+          otherProps = _objectWithoutProperties(_resData$i, ['key', 'title', 'children']);
+
       var obj = {
         key: resData[i][attr.id],
         title: resData[i][attr.name],
         isLeaf: resData[i][attr.isLeaf],
         children: []
       };
-      tree.push(obj);
+      tree.push(_extends(obj, _extends({}, otherProps)));
       resData.splice(i, 1);
       i--;
     } else {
@@ -426,13 +441,19 @@ function convertListToTree(treeData, attr, flatTreeKeysMap) {
       for (var _i2 = 0; _i2 < treeArrs.length; _i2++) {
         for (var j = 0; j < resData.length; j++) {
           if (treeArrs[_i2].key === resData[j][attr.parendId]) {
+            var _resData$j = resData[j],
+                _key = _resData$j.key,
+                _title = _resData$j.title,
+                _children = _resData$j.children,
+                _otherProps = _objectWithoutProperties(_resData$j, ['key', 'title', 'children']);
+
             var _obj = {
               key: resData[j][attr.id],
               title: resData[j][attr.name],
               isLeaf: resData[j][attr.isLeaf],
               children: []
             };
-            treeArrs[_i2].children.push(_obj);
+            treeArrs[_i2].children.push(_extends(_obj, _extends({}, _otherProps)));
             resData.splice(j, 1);
             j--;
           }

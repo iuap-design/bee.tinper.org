@@ -100,6 +100,10 @@ class MonthPicker extends Component {
     })
     this.props.onChange && this.props.onChange('', '');
   }
+  //阻止组件内部事件冒泡到组件外部容器
+  stopPropagation = (e) => {
+    e.stopPropagation();
+  }
   render() {
     let state = this.state;
 
@@ -110,7 +114,7 @@ class MonthPicker extends Component {
     />;
     let classes = classnames(props.className, "datepicker-container");
     return (
-      <div className={classes}>
+      <div className={classes} onClick={this.stopPropagation} onMouseOver={this.stopPropagation}>
         <Picker
           onOpenChange={this.onOpenChange}
           animation={'animation' in props ? props.animation : "slide-up"}

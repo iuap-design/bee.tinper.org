@@ -340,12 +340,13 @@ export function convertListToTree(treeData, attr, flatTreeKeysMap) {
     let findParentNode = (node) => {
       let parentKey = node[attr.parendId];
       if (!resKeysMap.hasOwnProperty(parentKey) ) {
+        let { key, title, children, ...otherProps } = node;
         let obj = {
           key: flatTreeKeysMap[parentKey][attr.id],
           title: flatTreeKeysMap[parentKey][attr.name],
           children: []
         };
-        tree.push(obj);
+        tree.push(Object.assign(obj, {...otherProps}));
         resKeysMap[obj.key] = obj;
       }
       return flatTreeKeysMap[parentKey];
@@ -353,13 +354,14 @@ export function convertListToTree(treeData, attr, flatTreeKeysMap) {
 
     for (let i = 0; i < resData.length; i++) {
         if (resData[i].parentKey === attr.rootId) {
+            let { key, title, children, ...otherProps } = resData[i];
             let obj = {
                 key: resData[i][attr.id],
                 title: resData[i][attr.name],
                 isLeaf: resData[i][attr.isLeaf],
                 children: []
             };
-            tree.push(obj);
+            tree.push(Object.assign(obj, {...otherProps}));
             resData.splice(i, 1);
             i--;
         }else {
@@ -377,13 +379,14 @@ export function convertListToTree(treeData, attr, flatTreeKeysMap) {
             for (let i = 0; i < treeArrs.length; i++) {
                 for (let j = 0; j < resData.length; j++) {
                     if (treeArrs[i].key === resData[j][attr.parendId]) {
+                        let { key, title, children, ...otherProps } = resData[j];
                         let obj = {
                             key: resData[j][attr.id],
                             title: resData[j][attr.name],
                             isLeaf: resData[j][attr.isLeaf],
                             children: []
                         };
-                        treeArrs[i].children.push(obj);
+                        treeArrs[i].children.push(Object.assign(obj, {...otherProps}));
                         resData.splice(j, 1);
                         j--;
                     }
