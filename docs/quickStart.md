@@ -118,15 +118,15 @@ css的引入方式不变
 
 ```js
 
-import Datepicker from 'tinper-bee/lib/Datepicker';
+import Datepicker from 'bee-datepicker';
 
-import Timepicker from 'tinper-bee/lib/Timepicker';
+import Timepicker from 'bee-timepicker';
 
-import Dnd from 'tinper-bee/lib/Dnd';
+import Dnd from 'bee-dnd';
 
-import Calendar from 'tinper-bee/lib/Calendar';
+import Calendar from 'bee-calendar';
 
-import Carousel from 'tinper-bee/lib/Carousel';
+import Carousel from 'bee-carousel';
 
 import Viewer from 'bee-viewer';
 
