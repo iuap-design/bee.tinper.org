@@ -330,60 +330,70 @@ export function warnOnlyTreeNode() {
  * @param {*} flatTreeKeysMap 存储所有 key-value 的映射，方便获取各节点信息
  */
 export function convertListToTree(treeData, attr, flatTreeKeysMap) {
-    let tree = [];
-    let resData = treeData,
-        resKeysMap = {};
+  let tree = []; //存储所有一级节点
+    let resData = treeData, //resData 存储截取的节点 + 父节点（除一级节点外）
+        resKeysMap = {}, //resData 的Map映射
+        treeKeysMap = {}; //tree 的Map映射
     resData.map((element) => {
-        resKeysMap[element.key] = element;
-    });
+      let key = attr.id;
+      resKeysMap[element[key]] = element;
+    });
     // 查找父节点，为了补充不完整的数据结构
     let findParentNode = (node) => {
       let parentKey = node[attr.parendId];
-      if (!resKeysMap.hasOwnProperty(parentKey) ) {
-        let { key, title, children, ...otherProps } = node;
-        let obj = {
-          key: flatTreeKeysMap[parentKey][attr.id],
-          title: flatTreeKeysMap[parentKey][attr.name],
-          children: []
-        };
-        tree.push(Object.assign(obj, {...otherProps}));
-        resKeysMap[obj.key] = obj;
+      if(parentKey !== attr.rootId) { //如果不是根节点，则继续递归
+        let item = flatTreeKeysMap[parentKey];
+        // 用 resKeysMap 判断，避免重复计算某节点的父节点
+        if(resKeysMap.hasOwnProperty(item[attr.id])) return;
+        resData.unshift(item);
+        resKeysMap[item[attr.id]] = item;
+        findParentNode(item);
+      }else{
+        // 用 treeKeysMap 判断，避免重复累加
+        if (!treeKeysMap.hasOwnProperty(node[attr.id]) ) {
+          let { key, title, children, isLeaf, ...otherProps } = node;
+          let obj = {
+                key,
+                title,
+                isLeaf,
+                children: []
+              }
+          tree.push(Object.assign(obj, {...otherProps}));
+          treeKeysMap[key] = node;
+        }
       }
-      return flatTreeKeysMap[parentKey];
     }
-
+    // 遍历 resData ，找到所有的一级节点
     for (let i = 0; i < resData.length; i++) {
-        if (resData[i].parentKey === attr.rootId) {
-            let { key, title, children, ...otherProps } = resData[i];
+        let item = resData[i];
+        if (item[attr.parendId] === attr.rootId && !treeKeysMap.hasOwnProperty(item[attr.id])) { //如果是根节点，就存放进 tree 对象中
+            let { key, title, children, ...otherProps } = item;
             let obj = {
-                key: resData[i][attr.id],
-                title: resData[i][attr.name],
-                isLeaf: resData[i][attr.isLeaf],
+                key: item[attr.id],
+                title: item[attr.name],
+                isLeaf: item[attr.isLeaf],
                 children: []
             };
             tree.push(Object.assign(obj, {...otherProps}));
+            treeKeysMap[key] = item;
             resData.splice(i, 1);
             i--;
-        }else {
-            let parentNode = flatTreeKeysMap[resData[i][attr.id]],
-                parentKey = parentNode[attr.parendId];
-            while(parentKey !== attr.rootId){
-              parentNode = findParentNode(parentNode);
-              parentKey = parentNode[attr.parendId];
-            }
+        }else { //递归查找根节点信息
+          findParentNode(item);
         }
     }
-    // console.log('tree',tree);
+    // console.log('resData',resKeysMap);
     var run = function(treeArrs) {
         if (resData.length > 0) {
             for (let i = 0; i < treeArrs.length; i++) {
                 for (let j = 0; j < resData.length; j++) {
-                    if (treeArrs[i].key === resData[j][attr.parendId]) {
-                        let { key, title, children, ...otherProps } = resData[j];
+                    let item = resData[j];
+                    if (treeArrs[i].key === item[attr.parendId]) {
+                        let { key, title, children, ...otherProps } = item;
                         let obj = {
-                            key: resData[j][attr.id],
-                            title: resData[j][attr.name],
-                            isLeaf: resData[j][attr.isLeaf],
+                            key: item[attr.id],
+                            title: item[attr.name],
+                            isLeaf: item[attr.isLeaf],
                             children: []
                         };
                         treeArrs[i].children.push(Object.assign(obj, {...otherProps}));

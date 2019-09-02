@@ -89,6 +89,17 @@ var ModalDialog = function (_React$Component) {
       });
       return draggable;
     }, _this.onStop = function (e, delta) {
+      var dialogWidth = _this.modalDialog && _this.modalDialog.offsetWidth;
+      var clientWidth = e && e.target && e.target.clientWidth;
+      if (delta.x > 0 && clientWidth - delta.x < 50) {
+        return;
+      }
+      if (delta.x < 0 && dialogWidth + delta.x < 50) {
+        return;
+      }
+      if (delta.y < 0) {
+        return;
+      }
       _this.setState({
         draged: true,
         draging: false,
@@ -248,6 +259,8 @@ var ModalDialog = function (_React$Component) {
       }
     }
   };
+  // 当ModalDialog留在可视区的宽度 < 50px 时，拖拽不生效
+
 
   /* 开始resize */
 
@@ -317,14 +330,16 @@ var ModalDialog = function (_React$Component) {
         tabIndex: '-1',
         role: 'dialog',
         style: modalStyle,
-        ref: function ref(_ref3) {
-          return _this2.backdrop = _ref3;
+        ref: function ref(_ref4) {
+          return _this2.backdrop = _ref4;
         },
         className: (0, _classnames2["default"])(className, uClassName)
       }),
       _react2["default"].createElement(
         'div',
-        { className: (0, _classnames2["default"])(dialogClassName, dialogClasses), style: style },
+        { className: (0, _classnames2["default"])(dialogClassName, dialogClasses), style: style, ref: function ref(_ref3) {
+            return _this2.modalDialog = _ref3;
+          } },
         draggable ? _react2["default"].createElement(
           _beeDnd2["default"],
           {

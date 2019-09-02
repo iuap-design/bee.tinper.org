@@ -58,11 +58,11 @@
 	
 	var _beePanel = __webpack_require__(9);
 	
-	var _beeDrawer = __webpack_require__(82);
+	var _beeDrawer = __webpack_require__(84);
 	
 	var _beeDrawer2 = _interopRequireDefault(_beeDrawer);
 	
-	var _beeClipboard = __webpack_require__(96);
+	var _beeClipboard = __webpack_require__(98);
 	
 	var _beeClipboard2 = _interopRequireDefault(_beeClipboard);
 	
@@ -80,7 +80,7 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
 	
-	var Demo1 = __webpack_require__(267);var Demo2 = __webpack_require__(268);var Demo3 = __webpack_require__(269);var Demo4 = __webpack_require__(270);var Demo5 = __webpack_require__(271);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 不同方向的气泡确认框", "code": "/**\r\n *\r\n * @title 不同方向的气泡确认框\r\n *\r\n */\r\n\r\nimport React, {Component} from 'react';\r\n\nimport { Popconfirm, Button } from 'tinper-bee';\r\n\r\nclass Demo1 extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n    }\r\n\r\n    render() {\r\n        const content = '您喜欢使用tinper-bee组件库吗？';\r\n        return (\r\n            <div className=\"demoPadding\">\r\n                <Popconfirm trigger=\"click\" placement=\"right\" content={content}>\r\n                    <Button colors=\"primary\">向右!</Button>\r\n                </Popconfirm>\r\n                <Popconfirm trigger=\"click\" placement=\"top\" content={content}>\r\n                    <Button colors=\"primary\">向上!</Button>\r\n                </Popconfirm>\r\n                <Popconfirm trigger=\"click\" placement=\"bottom\" content={content}>\r\n                    <Button colors=\"primary\">向下!</Button>\r\n                </Popconfirm>\r\n                <Popconfirm trigger=\"click\" placement=\"left\" content={content} animation={false}>\r\n                    <Button colors=\"primary\">向左!</Button>\r\n                </Popconfirm>\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\n\r\n", "desc": "", "scss_code": ".demoPadding{\r\n  button{\r\n    margin: auto 10px;\r\n  }\r\n}" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 不同颜色气泡确认框", "code": "/**\r\n *\r\n * @title 不同颜色气泡确认框\r\n * @description 气泡确认框提供黑和白两种颜色，并且支持是否能被全局点击事件关闭。\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\r\n\nimport { Popconfirm, Button } from 'tinper-bee';\r\n\r\nclass Demo2 extends Component {\r\n\r\n    render () {\r\n        const content = '您喜欢使用tinper-bee组件库吗？';\r\n        return (\r\n            <div className=\"demoPadding\">\r\n            <Popconfirm trigger=\"click\" placement=\"bottom\" content={content} color='dark'>\r\n              <Button colors=\"primary\">黑色</Button>\r\n            </Popconfirm>\r\n            <Popconfirm trigger=\"click\" rootClose placement=\"bottom\" content={content}>\r\n              <Button colors=\"primary\">点击其他关闭</Button>\r\n            </Popconfirm>\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\n\r\n", "desc": " 气泡确认框提供黑和白两种颜色，并且支持是否能被全局点击事件关闭。", "scss_code": ".demoPadding{\r\n  button{\r\n    margin: auto 10px;\r\n  }\r\n}" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 气泡确认框修改显示语言", "code": "/**\r\n *\r\n * @title 气泡确认框修改显示语言\r\n *\r\n */\r\nimport React, { Component } from 'react';\r\n\nimport { Popconfirm, Button } from 'tinper-bee';\r\n\r\nclass Demo3 extends Component {\r\n    constructor(props){\r\n        super(props);\r\n    }\r\n\r\n    render () {\r\n        const content = 'Do you like tinper-bee UI Components Library？';\r\n        let locale = {\r\n            lang: 'en',\r\n            ok: 'OK',\r\n            cancel: 'Cancel'\r\n        };\r\n        return (\r\n            <div className=\"demoPadding\">\r\n                <Popconfirm trigger=\"click\" placement=\"right\" content={content} locale={locale}>\r\n                    <Button colors=\"primary\">Click me</Button>\r\n                </Popconfirm>\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\n\r\n", "desc": "", "scss_code": ".demoPadding{\r\n  button{\r\n    margin: auto 10px;\r\n  }\r\n}" }, { "example": _react2['default'].createElement(Demo4, null), "title": " 控制显示和隐藏", "code": "/**\r\n *\r\n * @title 控制显示和隐藏\r\n *\r\n */\r\n\r\nimport React, {Component} from 'react';\r\n\nimport { Popconfirm, Button } from 'tinper-bee';\r\n\r\nclass Demo4 extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            show: false\r\n        }\r\n    }\r\n\r\n    handleShow = () => {\r\n        this.setState({\r\n            show: !this.state.show\r\n        })\r\n    }\r\n\r\n    cancel = () => {\r\n        this.setState({\r\n            show: false\r\n        })\r\n    }\r\n\r\n    close = () => {\r\n        this.setState({\r\n            show: false\r\n        })\r\n    }\r\n\r\n    onRootClose = () => {\r\n        this.setState({\r\n            show: false\r\n        })\r\n    }\r\n\r\n    render() {\r\n        let {show} = this.state;\r\n        const content = '您喜欢使用tinper-bee组件库吗？';\r\n        return (\r\n            <div className=\"demoPadding\">\r\n                <div className=\"demoPadding-btn-box\">\r\n                    <Button colors=\"primary\" onClick={this.handleShow}>{show ? \"隐藏popConfirm\" : \"显示popConfirm\"}</Button>\r\n                </div>\r\n                <Popconfirm \r\n                    trigger=\"click\" \r\n                    placement=\"right\" \r\n                    content={content}\r\n                    show={show}\r\n                    onClick={() => console.log(1234)}\r\n                    onCancel={this.cancel}\r\n                    onClose={this.close}\r\n                    rootClose\r\n                    onRootClose={this.onRootClose}\r\n                >\r\n                    <Button colors=\"primary\">向右!</Button>\r\n                </Popconfirm>\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\n\r\n", "desc": "", "scss_code": ".demoPadding{\r\n  &-btn-box{\r\n    margin: 10px 0;\r\n  }\r\n  button{\r\n    margin: auto 10px;\r\n  }\r\n}" }, { "example": _react2['default'].createElement(Demo5, null), "title": " 传入自定义“确认”和“取消”按钮", "code": "/**\r\n *\r\n * @title 传入自定义“确认”和“取消”按钮\r\n *\r\n */\r\n\r\nimport React, { Component } from \"react\";\r\n\nimport { Popconfirm, Button } from 'tinper-bee';\r\n\r\n\r\nfunction CloseBtn() {\r\n  return (\r\n    <Button colors=\"info\" size=\"sm\">\r\n      确定\r\n    </Button>\r\n  );\r\n}\r\nclass Demo5 extends Component {\r\n  cancel = () => {\r\n    console.log(\"cancel\");\r\n  };\r\n\r\n  close = () => {\r\n    console.log(\"close\");\r\n  };\r\n\r\n  render() {\r\n    const content = \"您喜欢使用tinper-bee组件库吗？\";\r\n    return (\r\n      <div className=\"demoPadding\">\r\n        <Popconfirm\r\n          trigger=\"click\"\r\n          placement=\"right\"\r\n          content={content}\r\n          onCancel={this.cancel}\r\n          onClose={this.close}\r\n          cancel_btn={\r\n            <Button shape=\"border\" colors=\"info\" size=\"sm\">\r\n              取消\r\n            </Button>\r\n          }\r\n          close_btn={CloseBtn()}\r\n        >\r\n          <Button colors=\"primary\">Popconfirm</Button>\r\n        </Popconfirm>\r\n      </div>\r\n    );\r\n  }\r\n}\r\n\r\n\r\n", "desc": "" }];
+	var Demo1 = __webpack_require__(267);var Demo2 = __webpack_require__(268);var Demo3 = __webpack_require__(269);var Demo4 = __webpack_require__(270);var Demo5 = __webpack_require__(271);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 不同方向的气泡确认框", "code": "/**\n *\n * @title 不同方向的气泡确认框\n *\n */\n\nimport React, {Component} from 'react';\nimport { Button, Popconfirm } from 'tinper-bee';\n\n\nclass Demo1 extends Component {\n    constructor(props) {\n        super(props);\n    }\n\n    render() {\n        const content = '您喜欢使用tinper-bee组件库吗？';\n        return (\n            <div className=\"demoPadding\">\n                <Popconfirm trigger=\"click\" placement=\"right\" content={content}>\n                    <Button colors=\"primary\">向右!</Button>\n                </Popconfirm>\n                <Popconfirm trigger=\"click\" placement=\"top\" content={content}>\n                    <Button colors=\"primary\">向上!</Button>\n                </Popconfirm>\n                <Popconfirm trigger=\"click\" placement=\"bottom\" content={content}>\n                    <Button colors=\"primary\">向下!</Button>\n                </Popconfirm>\n                <Popconfirm trigger=\"click\" placement=\"left\" content={content} animation={false}>\n                    <Button colors=\"primary\">向左!</Button>\n                </Popconfirm>\n            </div>\n        )\n    }\n}\n\nexport default Demo1;\n", "desc": "", "scss_code": ".demoPadding{\n  button{\n    margin: auto 10px;\n  }\n}" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 不同颜色气泡确认框", "code": "/**\n *\n * @title 不同颜色气泡确认框\n * @description 气泡确认框提供黑和白两种颜色，并且支持是否能被全局点击事件关闭。\n *\n */\n\nimport React, { Component } from 'react';\nimport { Button, Popconfirm } from 'tinper-bee';\n\n\nclass Demo2 extends Component {\n\n    render () {\n        const content = '您喜欢使用tinper-bee组件库吗？';\n        return (\n            <div className=\"demoPadding\">\n            <Popconfirm trigger=\"click\" placement=\"bottom\" content={content} color='dark'>\n              <Button colors=\"primary\">黑色</Button>\n            </Popconfirm>\n            <Popconfirm trigger=\"click\" rootClose placement=\"bottom\" content={content}>\n              <Button colors=\"primary\">点击其他关闭</Button>\n            </Popconfirm>\n            </div>\n        )\n    }\n}\n\nexport default Demo2;\n", "desc": " 气泡确认框提供黑和白两种颜色，并且支持是否能被全局点击事件关闭。", "scss_code": ".demoPadding{\n  button{\n    margin: auto 10px;\n  }\n}" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 气泡确认框修改显示语言", "code": "/**\n *\n * @title 气泡确认框修改显示语言\n *\n */\nimport React, { Component } from 'react';\nimport { Button, Popconfirm } from 'tinper-bee';\n\n\nclass Demo3 extends Component {\n    constructor(props){\n        super(props);\n    }\n\n    render () {\n        const content = 'Do you like tinper-bee UI Components Library？';\n        let locale = {\n            lang: 'en',\n            ok: 'OK',\n            cancel: 'Cancel'\n        };\n        return (\n            <div className=\"demoPadding\">\n                <Popconfirm trigger=\"click\" placement=\"right\" content={content} locale={locale}>\n                    <Button colors=\"primary\">Click me</Button>\n                </Popconfirm>\n            </div>\n        )\n    }\n}\n\nexport default Demo3;\n", "desc": "", "scss_code": ".demoPadding{\n  button{\n    margin: auto 10px;\n  }\n}" }, { "example": _react2['default'].createElement(Demo4, null), "title": " 控制显示和隐藏", "code": "/**\n *\n * @title 控制显示和隐藏\n *\n */\n\nimport React, {Component} from 'react';\nimport { Button, Popconfirm } from 'tinper-bee';\n\n\nclass Demo4 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            show: false\n        }\n    }\n\n    handleShow = () => {\n        this.setState({\n            show: !this.state.show\n        })\n    }\n\n    cancel = () => {\n        this.setState({\n            show: false\n        })\n    }\n\n    close = () => {\n        this.setState({\n            show: false\n        })\n    }\n\n    onRootClose = () => {\n        this.setState({\n            show: false\n        })\n    }\n\n    render() {\n        let {show} = this.state;\n        const content = '您喜欢使用tinper-bee组件库吗？';\n        return (\n            <div className=\"demoPadding\">\n                <div className=\"demoPadding-btn-box\">\n                    <Button colors=\"primary\" onClick={this.handleShow}>{show ? \"隐藏popConfirm\" : \"显示popConfirm\"}</Button>\n                </div>\n                <Popconfirm \n                    trigger=\"click\" \n                    placement=\"right\" \n                    content={content}\n                    show={show}\n                    onClick={() => console.log(1234)}\n                    onCancel={this.cancel}\n                    onClose={this.close}\n                    rootClose\n                    onRootClose={this.onRootClose}\n                >\n                    <Button colors=\"primary\">向右!</Button>\n                </Popconfirm>\n            </div>\n        )\n    }\n}\n\nexport default Demo4;\n", "desc": "", "scss_code": ".demoPadding{\n  &-btn-box{\n    margin: 10px 0;\n  }\n  button{\n    margin: auto 10px;\n  }\n}" }, { "example": _react2['default'].createElement(Demo5, null), "title": " 传入自定义“确认”和“取消”按钮", "code": "/**\n *\n * @title 传入自定义“确认”和“取消”按钮\n *\n */\n\nimport React, { Component } from \"react\";\nimport { Button, Popconfirm } from 'tinper-bee';\n\n\n\nfunction CloseBtn() {\n  return (\n    <Button colors=\"info\" size=\"sm\">\n      确定\n    </Button>\n  );\n}\nclass Demo5 extends Component {\n  cancel = () => {\n    console.log(\"cancel\");\n  };\n\n  close = () => {\n    console.log(\"close\");\n  };\n\n  render() {\n    const content = \"您喜欢使用tinper-bee组件库吗？\";\n    return (\n      <div className=\"demoPadding\">\n        <Popconfirm\n          trigger=\"click\"\n          placement=\"right\"\n          content={content}\n          onCancel={this.cancel}\n          onClose={this.close}\n          cancel_btn={\n            <Button shape=\"border\" colors=\"info\" size=\"sm\">\n              取消\n            </Button>\n          }\n          close_btn={CloseBtn()}\n        >\n          <Button colors=\"primary\">Popconfirm</Button>\n        </Popconfirm>\n      </div>\n    );\n  }\n}\n\nexport default Demo5;\n", "desc": "" }];
 	
 	var Demo = function (_Component) {
 	    _inherits(Demo, _Component);
@@ -673,7 +673,7 @@
 	
 	var _Panel3 = _interopRequireDefault(_Panel2);
 	
-	var _PanelGroup2 = __webpack_require__(81);
+	var _PanelGroup2 = __webpack_require__(83);
 	
 	var _PanelGroup3 = _interopRequireDefault(_PanelGroup2);
 	
@@ -712,7 +712,7 @@
 	
 	var _propTypes2 = _interopRequireDefault(_propTypes);
 	
-	var _copyToClipboard = __webpack_require__(79);
+	var _copyToClipboard = __webpack_require__(81);
 	
 	var _copyToClipboard2 = _interopRequireDefault(_copyToClipboard);
 	
@@ -6119,8 +6119,6 @@
 	    value: true
 	});
 	
-	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-	
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 	
 	var _react = __webpack_require__(1);
@@ -6135,37 +6133,44 @@
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
+	var _warning = __webpack_require__(32);
+	
+	var _warning2 = _interopRequireDefault(_warning);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 	
 	var defaultDuration = 1.5;
-	var defaultTop = 0;
+	var newDuration = void 0;
+	var defaultTop = 24;
 	var defaultBottom = 48;
 	var bottom = 90;
 	var padding = 30;
-	var width = 200;
+	var width = 240;
 	var messageInstance = void 0;
 	var key = 1;
 	var clsPrefix = 'u-message';
 	var noop = function noop() {};
+	var notificationStyle_copy = {};
+	var messageStyle_copy = {};
+	var positionType = ['topRight', 'bottomRight', 'top', 'bottom', 'topLeft', 'bottomLeft', ''];
+	var defaultStyle = {};
 	
 	var positionObj = {
 	    "top": {
-	        messageStyle: {
-	            width: "100%"
-	        },
+	        messageStyle: {},
 	        notificationStyle: {
 	            top: defaultTop,
-	            width: "100%"
+	            left: '50%',
+	            transform: 'translateX( -50%)'
 	        },
 	        transitionName: 'top'
 	    },
 	    "bottom": {
-	        messageStyle: {
-	            width: "100%"
-	        },
+	        messageStyle: {},
 	        notificationStyle: {
 	            bottom: defaultBottom,
-	            width: "100%"
+	            left: '50%',
+	            transform: 'translateX( -50%)'
 	        },
 	        transitionName: 'bottom'
 	    },
@@ -6225,12 +6230,31 @@
 	        callback(messageInstance);
 	        return;
 	    }
-	    var style = positionObj[position].notificationStyle;
+	    switch (position) {
+	        case 'top':
+	            notificationStyle_copy.top = defaultTop;
+	            break;
+	        case 'bottom':
+	            notificationStyle_copy.bottom = defaultBottom;
+	            break;
+	        case 'bottomRight':
+	            notificationStyle_copy.bottom = bottom;
+	            break;
+	        case 'bottomLeft':
+	            notificationStyle_copy.bottom = bottom;
+	            break;
+	        default:
+	            break;
+	    }
+	    if (position !== 'top' && position !== 'bottom') {
+	        messageStyle_copy.width = width;
+	    }
+	    var style = JSON.stringify(notificationStyle_copy) == "{}" ? positionObj[position].notificationStyle : notificationStyle_copy;
 	    var instanceObj = {
 	        clsPrefix: clsPrefix,
 	        transitionName: clsPrefix + '-' + positionObj[position].transitionName,
-	        style: style, // 覆盖原来的样式
-	        position: ''
+	        style: _extends({}, style, defaultStyle), // 覆盖原来的样式
+	        position: position
 	    };
 	    if (typeof keyboard === 'boolean') {
 	        instanceObj.keyboard = keyboard;
@@ -6244,23 +6268,33 @@
 	    });
 	}
 	
-	function notice(content, duration, type, onClose, position, style, keyboard, onEscapeKeyUp, showIcon) {
+	function notice(content, duration_arg, type, onClose, position, style, keyboard, onEscapeKeyUp, showIcon, icon) {
+	    if (positionType.findIndex(function (item) {
+	        return item === position;
+	    }) < 0) {
+	        (0, _warning2["default"])(false, 'Failed prop type: Invalid prop `position` supplied to `Message`, expected one of ["top","bottom","topRight","topLeft","bottomRight","bottomLeft"].');
+	        return;
+	    }
+	    var duration = duration_arg !== undefined ? duration_arg : defaultDuration;
+	    notificationStyle_copy = _extends({}, positionObj[position].notificationStyle);
+	    messageStyle_copy = _extends({}, positionObj[position].messageStyle);
+	
 	    var iconType = {
 	        info: 'uf uf-i-c-2',
 	        success: 'uf uf-correct',
-	        danger: 'uf uf-close-c',
+	        danger: 'uf uf-exc-c',
 	        warning: 'uf uf-exc-t',
 	        light: 'uf uf-notification',
-	        dark: 'uf uf-bubble',
+	        dark: 'uf uf-notification',
 	        news: 'uf uf-bell',
 	        infolight: 'uf uf-i-c-2',
 	        successlight: 'uf uf-correct',
-	        dangerlight: 'uf uf-close-c',
+	        dangerlight: 'uf uf-exc-c',
 	        warninglight: 'uf uf-exc-t'
 	    }[type];
 	
-	    var positionStyle = positionObj[position].messageStyle;
-	
+	    var positionStyle = JSON.stringify(messageStyle_copy) == "{}" ? positionObj[position].messageStyle : messageStyle_copy;
+	    defaultStyle = _extends({}, positionStyle, style);
 	    getMessageInstance(position, function (instance) {
 	        instance.notice({
 	            key: key,
@@ -6273,7 +6307,7 @@
 	                showIcon ? _react2["default"].createElement(
 	                    'div',
 	                    { className: clsPrefix + '-notice-description-icon' },
-	                    _react2["default"].createElement('i', { className: (0, _classnames2["default"])(iconType) })
+	                    icon ? _react2["default"].createElement('i', { className: (0, _classnames2["default"])('' + icon) }) : _react2["default"].createElement('i', { className: (0, _classnames2["default"])(iconType) })
 	                ) : null,
 	                _react2["default"].createElement(
 	                    'div',
@@ -6296,14 +6330,19 @@
 	
 	exports["default"] = {
 	    create: function create(obj) {
+	        if (newDuration) {
+	            //如果在config方法里设置了duration
+	            obj.duration = newDuration;
+	        }
 	        var content = obj.content || '';
-	        var duration = _typeof(obj.duration) == undefined ? defaultDuration : obj.duration;
-	        var color = obj.color || 'dark';
+	        var duration = typeof obj.duration == 'undefined' ? defaultDuration : obj.duration;
+	        var color = obj.color || 'light';
 	        var onClose = obj.onClose || noop;
 	        var position = obj.position || "top";
 	        var style = obj.style || {};
-	        var showIcon = obj.showIcon || false;
-	        return notice(content, duration, color, onClose, position, style, obj.keyboard, obj.onEscapeKeyUp, showIcon);
+	        var showIcon = obj.hasOwnProperty('showIcon') ? obj.showIcon : true;
+	        var icon = obj.hasOwnProperty('icon') ? obj.icon : false;
+	        return notice(content, duration, color, onClose, position, style, obj.keyboard, obj.onEscapeKeyUp, showIcon, icon);
 	    },
 	    config: function config(options) {
 	        if (options.top !== undefined) {
@@ -6311,6 +6350,7 @@
 	        }
 	        if (options.duration !== undefined) {
 	            defaultDuration = options.duration;
+	            newDuration = defaultDuration;
 	        }
 	        if (options.clsPrefix !== undefined) {
 	            clsPrefix = options.clsPrefix;
@@ -6322,13 +6362,23 @@
 	            bottom = options.bottom;
 	        }
 	        if (options.width !== undefined) {
-	            bottom = options.width;
+	            width = options.width;
 	        }
 	    },
 	    destroy: function destroy() {
 	        if (messageInstance) {
 	            messageInstance.destroy();
 	            messageInstance = null;
+	            defaultDuration = 1.5;
+	            newDuration = undefined;
+	            defaultTop = 24;
+	            defaultBottom = 48;
+	            bottom = 90;
+	            padding = 30;
+	            width = 240;
+	            notificationStyle_copy = null;
+	            messageStyle_copy = null;
+	            defaultStyle = null;
 	        }
 	    }
 	};
@@ -6424,7 +6474,7 @@
 	  show: _propTypes2["default"].bool,
 	  clsPrefix: _propTypes2["default"].string,
 	  style: _propTypes2["default"].object,
-	  position: _propTypes2["default"].oneOf(['topRight', 'bottomRight', '']),
+	  position: _propTypes2["default"].oneOf(['topRight', 'bottomRight', 'top', 'bottom', 'topLeft', 'bottomLeft', '']),
 	  transitionName: _propTypes2["default"].string,
 	  keyboard: _propTypes2["default"].bool, // 按esc键是否关闭notice
 	  onEscapeKeyUp: _propTypes2["default"].func, // 设置esc键特殊钩子函数
@@ -7419,6 +7469,10 @@
 	
 	var _propTypes2 = _interopRequireDefault(_propTypes);
 	
+	var _beeIcon = __webpack_require__(79);
+	
+	var _beeIcon2 = _interopRequireDefault(_beeIcon);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 	
 	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
@@ -7524,7 +7578,11 @@
 	      closable ? _react2["default"].createElement(
 	        'a',
 	        { tabIndex: '0', onClick: this.close, className: componentClass + '-close' },
-	        _react2["default"].createElement('span', { className: componentClass + '-close-x' })
+	        _react2["default"].createElement(
+	          'span',
+	          { className: componentClass + '-close-x' },
+	          _react2["default"].createElement(_beeIcon2["default"], { type: 'uf-close' })
+	        )
 	      ) : null
 	    );
 	  };
@@ -7546,7 +7604,105 @@
 
 	'use strict';
 	
-	var deselectCurrent = __webpack_require__(80);
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _Icon = __webpack_require__(80);
+	
+	var _Icon2 = _interopRequireDefault(_Icon);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+	
+	exports["default"] = _Icon2["default"];
+	module.exports = exports['default'];
+
+/***/ }),
+/* 80 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _classnames = __webpack_require__(5);
+	
+	var _classnames2 = _interopRequireDefault(_classnames);
+	
+	var _propTypes = __webpack_require__(6);
+	
+	var _propTypes2 = _interopRequireDefault(_propTypes);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+	
+	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
+	
+	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
+	
+	var propTypes = {
+		type: _propTypes2["default"].string
+	
+	};
+	/**
+	 *  badge 默认显示内容1
+	 */
+	var defaultProps = {
+		clsPrefix: 'uf'
+	};
+	
+	var Icon = function (_Component) {
+		_inherits(Icon, _Component);
+	
+		function Icon(props) {
+			_classCallCheck(this, Icon);
+	
+			return _possibleConstructorReturn(this, _Component.call(this, props));
+		}
+	
+		Icon.prototype.render = function render() {
+			var _props = this.props,
+			    type = _props.type,
+			    className = _props.className,
+			    clsPrefix = _props.clsPrefix,
+			    others = _objectWithoutProperties(_props, ['type', 'className', 'clsPrefix']);
+	
+			var clsObj = {};
+	
+			var classNames = (0, _classnames2["default"])(clsPrefix, type);
+	
+			return _react2["default"].createElement('i', _extends({}, others, { className: (0, _classnames2["default"])(classNames, className) }));
+		};
+	
+		return Icon;
+	}(_react.Component);
+	
+	Icon.defaultProps = defaultProps;
+	Icon.propTypes = propTypes;
+	
+	exports["default"] = Icon;
+	module.exports = exports['default'];
+
+/***/ }),
+/* 81 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var deselectCurrent = __webpack_require__(82);
 	
 	var defaultMessage = 'Copy to clipboard: #{key}, Enter';
 	
@@ -7625,7 +7781,7 @@
 
 
 /***/ }),
-/* 80 */
+/* 82 */
 /***/ (function(module, exports) {
 
 	
@@ -7670,7 +7826,7 @@
 
 
 /***/ }),
-/* 81 */
+/* 83 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -7817,7 +7973,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 82 */
+/* 84 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -7826,7 +7982,7 @@
 	  value: true
 	});
 	
-	var _Drawer = __webpack_require__(83);
+	var _Drawer = __webpack_require__(85);
 	
 	var _Drawer2 = _interopRequireDefault(_Drawer);
 	
@@ -7836,7 +7992,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 83 */
+/* 85 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -7861,9 +8017,9 @@
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
-	var _common = __webpack_require__(84);
+	var _common = __webpack_require__(86);
 	
-	var _reactTransitionGroup = __webpack_require__(85);
+	var _reactTransitionGroup = __webpack_require__(87);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 	
@@ -8139,7 +8295,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 84 */
+/* 86 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -8166,18 +8322,18 @@
 	}
 
 /***/ }),
-/* 85 */
+/* 87 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var _CSSTransition = _interopRequireDefault(__webpack_require__(86));
+	var _CSSTransition = _interopRequireDefault(__webpack_require__(88));
 	
-	var _ReplaceTransition = _interopRequireDefault(__webpack_require__(93));
+	var _ReplaceTransition = _interopRequireDefault(__webpack_require__(95));
 	
-	var _TransitionGroup = _interopRequireDefault(__webpack_require__(94));
+	var _TransitionGroup = _interopRequireDefault(__webpack_require__(96));
 	
-	var _Transition = _interopRequireDefault(__webpack_require__(90));
+	var _Transition = _interopRequireDefault(__webpack_require__(92));
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -8189,7 +8345,7 @@
 	};
 
 /***/ }),
-/* 86 */
+/* 88 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {"use strict";
@@ -8199,15 +8355,15 @@
 	
 	var PropTypes = _interopRequireWildcard(__webpack_require__(6));
 	
-	var _addClass = _interopRequireDefault(__webpack_require__(87));
+	var _addClass = _interopRequireDefault(__webpack_require__(89));
 	
-	var _removeClass = _interopRequireDefault(__webpack_require__(89));
+	var _removeClass = _interopRequireDefault(__webpack_require__(91));
 	
 	var _react = _interopRequireDefault(__webpack_require__(1));
 	
-	var _Transition = _interopRequireDefault(__webpack_require__(90));
+	var _Transition = _interopRequireDefault(__webpack_require__(92));
 	
-	var _PropTypes = __webpack_require__(92);
+	var _PropTypes = __webpack_require__(94);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -8559,7 +8715,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(33)))
 
 /***/ }),
-/* 87 */
+/* 89 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -8569,7 +8725,7 @@
 	exports.__esModule = true;
 	exports.default = addClass;
 	
-	var _hasClass = _interopRequireDefault(__webpack_require__(88));
+	var _hasClass = _interopRequireDefault(__webpack_require__(90));
 	
 	function addClass(element, className) {
 	  if (element.classList) element.classList.add(className);else if (!(0, _hasClass.default)(element, className)) if (typeof element.className === 'string') element.className = element.className + ' ' + className;else element.setAttribute('class', (element.className && element.className.baseVal || '') + ' ' + className);
@@ -8578,7 +8734,7 @@
 	module.exports = exports["default"];
 
 /***/ }),
-/* 88 */
+/* 90 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -8593,7 +8749,7 @@
 	module.exports = exports["default"];
 
 /***/ }),
-/* 89 */
+/* 91 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -8607,7 +8763,7 @@
 	};
 
 /***/ }),
-/* 90 */
+/* 92 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {"use strict";
@@ -8621,9 +8777,9 @@
 	
 	var _reactDom = _interopRequireDefault(__webpack_require__(2));
 	
-	var _reactLifecyclesCompat = __webpack_require__(91);
+	var _reactLifecyclesCompat = __webpack_require__(93);
 	
-	var _PropTypes = __webpack_require__(92);
+	var _PropTypes = __webpack_require__(94);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -9222,7 +9378,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(33)))
 
 /***/ }),
-/* 91 */
+/* 93 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -9390,7 +9546,7 @@
 
 
 /***/ }),
-/* 92 */
+/* 94 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {"use strict";
@@ -9424,7 +9580,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(33)))
 
 /***/ }),
-/* 93 */
+/* 95 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {"use strict";
@@ -9438,7 +9594,7 @@
 	
 	var _reactDom = __webpack_require__(2);
 	
-	var _TransitionGroup = _interopRequireDefault(__webpack_require__(94));
+	var _TransitionGroup = _interopRequireDefault(__webpack_require__(96));
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -9580,7 +9736,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(33)))
 
 /***/ }),
-/* 94 */
+/* 96 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {"use strict";
@@ -9592,9 +9748,9 @@
 	
 	var _react = _interopRequireDefault(__webpack_require__(1));
 	
-	var _reactLifecyclesCompat = __webpack_require__(91);
+	var _reactLifecyclesCompat = __webpack_require__(93);
 	
-	var _ChildMapping = __webpack_require__(95);
+	var _ChildMapping = __webpack_require__(97);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -9794,7 +9950,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(33)))
 
 /***/ }),
-/* 95 */
+/* 97 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -9949,7 +10105,7 @@
 	}
 
 /***/ }),
-/* 96 */
+/* 98 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -9958,7 +10114,7 @@
 	  value: true
 	});
 	
-	var _Clipboard = __webpack_require__(97);
+	var _Clipboard = __webpack_require__(99);
 	
 	var _Clipboard2 = _interopRequireDefault(_Clipboard);
 	
@@ -9968,7 +10124,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 97 */
+/* 99 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -9981,7 +10137,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _clipboard = __webpack_require__(98);
+	var _clipboard = __webpack_require__(100);
 	
 	var _clipboard2 = _interopRequireDefault(_clipboard);
 	
@@ -9989,7 +10145,7 @@
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
-	var _beeIcon = __webpack_require__(106);
+	var _beeIcon = __webpack_require__(79);
 	
 	var _beeIcon2 = _interopRequireDefault(_beeIcon);
 	
@@ -10191,12 +10347,12 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 98 */
+/* 100 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function (global, factory) {
 	    if (true) {
-	        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [module, __webpack_require__(99), __webpack_require__(101), __webpack_require__(102)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [module, __webpack_require__(101), __webpack_require__(103), __webpack_require__(104)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 	    } else if (typeof exports !== "undefined") {
 	        factory(module, require('./clipboard-action'), require('tiny-emitter'), require('good-listener'));
 	    } else {
@@ -10403,12 +10559,12 @@
 	});
 
 /***/ }),
-/* 99 */
+/* 101 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function (global, factory) {
 	    if (true) {
-	        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [module, __webpack_require__(100)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [module, __webpack_require__(102)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 	    } else if (typeof exports !== "undefined") {
 	        factory(module, require('select'));
 	    } else {
@@ -10637,7 +10793,7 @@
 	});
 
 /***/ }),
-/* 100 */
+/* 102 */
 /***/ (function(module, exports) {
 
 	function select(element) {
@@ -10686,7 +10842,7 @@
 
 
 /***/ }),
-/* 101 */
+/* 103 */
 /***/ (function(module, exports) {
 
 	function E () {
@@ -10759,11 +10915,11 @@
 
 
 /***/ }),
-/* 102 */
+/* 104 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var is = __webpack_require__(103);
-	var delegate = __webpack_require__(104);
+	var is = __webpack_require__(105);
+	var delegate = __webpack_require__(106);
 	
 	/**
 	 * Validates all params and calls the right
@@ -10860,7 +11016,7 @@
 
 
 /***/ }),
-/* 103 */
+/* 105 */
 /***/ (function(module, exports) {
 
 	/**
@@ -10915,10 +11071,10 @@
 
 
 /***/ }),
-/* 104 */
+/* 106 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var closest = __webpack_require__(105);
+	var closest = __webpack_require__(107);
 	
 	/**
 	 * Delegates event to a selector.
@@ -10999,7 +11155,7 @@
 
 
 /***/ }),
-/* 105 */
+/* 107 */
 /***/ (function(module, exports) {
 
 	var DOCUMENT_NODE_TYPE = 9;
@@ -11036,104 +11192,6 @@
 	
 	module.exports = closest;
 
-
-/***/ }),
-/* 106 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _Icon = __webpack_require__(107);
-	
-	var _Icon2 = _interopRequireDefault(_Icon);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-	
-	exports["default"] = _Icon2["default"];
-	module.exports = exports['default'];
-
-/***/ }),
-/* 107 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _classnames = __webpack_require__(5);
-	
-	var _classnames2 = _interopRequireDefault(_classnames);
-	
-	var _propTypes = __webpack_require__(6);
-	
-	var _propTypes2 = _interopRequireDefault(_propTypes);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-	
-	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
-	
-	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
-	
-	var propTypes = {
-		type: _propTypes2["default"].string
-	
-	};
-	/**
-	 *  badge 默认显示内容1
-	 */
-	var defaultProps = {
-		clsPrefix: 'uf'
-	};
-	
-	var Icon = function (_Component) {
-		_inherits(Icon, _Component);
-	
-		function Icon(props) {
-			_classCallCheck(this, Icon);
-	
-			return _possibleConstructorReturn(this, _Component.call(this, props));
-		}
-	
-		Icon.prototype.render = function render() {
-			var _props = this.props,
-			    type = _props.type,
-			    className = _props.className,
-			    clsPrefix = _props.clsPrefix,
-			    others = _objectWithoutProperties(_props, ['type', 'className', 'clsPrefix']);
-	
-			var clsObj = {};
-	
-			var classNames = (0, _classnames2["default"])(clsPrefix, type);
-	
-			return _react2["default"].createElement('i', _extends({}, others, { className: (0, _classnames2["default"])(classNames, className) }));
-		};
-	
-		return Icon;
-	}(_react.Component);
-	
-	Icon.defaultProps = defaultProps;
-	Icon.propTypes = propTypes;
-	
-	exports["default"] = Icon;
-	module.exports = exports['default'];
 
 /***/ }),
 /* 108 */
@@ -14013,7 +14071,7 @@
 	
 	var _confirm2 = _interopRequireDefault(_confirm);
 	
-	var _beeIcon = __webpack_require__(106);
+	var _beeIcon = __webpack_require__(79);
 	
 	var _beeIcon2 = _interopRequireDefault(_beeIcon);
 	
@@ -15345,15 +15403,15 @@
 	exports.__esModule = true;
 	exports.default = void 0;
 	
-	var _addClass = _interopRequireDefault(__webpack_require__(87));
+	var _addClass = _interopRequireDefault(__webpack_require__(89));
 	
 	exports.addClass = _addClass.default;
 	
-	var _removeClass = _interopRequireDefault(__webpack_require__(89));
+	var _removeClass = _interopRequireDefault(__webpack_require__(91));
 	
 	exports.removeClass = _removeClass.default;
 	
-	var _hasClass = _interopRequireDefault(__webpack_require__(88));
+	var _hasClass = _interopRequireDefault(__webpack_require__(90));
 	
 	exports.hasClass = _hasClass.default;
 	var _default = {
@@ -32167,7 +32225,7 @@
 	
 	var _beeButton2 = _interopRequireDefault(_beeButton);
 	
-	var _beeIcon = __webpack_require__(106);
+	var _beeIcon = __webpack_require__(79);
 	
 	var _beeIcon2 = _interopRequireDefault(_beeIcon);
 	
@@ -32527,7 +32585,9 @@
 	        if (colorsMap[colors]) {
 	            clsObj[clsPrefix + '-' + colorsMap[colors]] = true;
 	        }
-	        //clsObj[`${clsPrefix}-border`] = bordered;
+	        if (bordered) {
+	            clsObj[clsPrefix + '-border'] = bordered;
+	        }
 	        var classes = (0, _classnames2["default"])(clsPrefix, clsObj);
 	        return _react2["default"].createElement(
 	            'button',
@@ -32588,7 +32648,7 @@
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
-	var _beeIcon = __webpack_require__(106);
+	var _beeIcon = __webpack_require__(79);
 	
 	var _beeIcon2 = _interopRequireDefault(_beeIcon);
 	

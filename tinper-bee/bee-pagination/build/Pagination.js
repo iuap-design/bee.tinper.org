@@ -34,6 +34,10 @@ var _objectAssign = require("object-assign");
 
 var _objectAssign2 = _interopRequireDefault(_objectAssign);
 
+var _reactCookies = require("react-cookies");
+
+var _reactCookies2 = _interopRequireDefault(_reactCookies);
+
 var _propTypes = require("prop-types");
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
@@ -141,7 +145,12 @@ var propTypes = {
     /**
      *  渲染确认按钮的dom
      */
-    confirmBtn: _propTypes2["default"].func
+    confirmBtn: _propTypes2["default"].func,
+
+    /**
+     * 通过cookie来确定分页的size,需设定唯一的key值
+     */
+    sizeWithCookie: _propTypes2["default"].string
 };
 
 var defaultProps = {
@@ -162,7 +171,8 @@ var defaultProps = {
     locale: {},
     disabled: false,
     btnType: { shape: 'border' },
-    confirmBtn: function confirmBtn() {}
+    confirmBtn: function confirmBtn() {},
+    sizeWithCookie: ''
 };
 
 var Pagination = function (_React$Component) {
@@ -209,7 +219,8 @@ var Pagination = function (_React$Component) {
             // console.log(value);
             var _this$props = _this.props,
                 onDataNumSelect = _this$props.onDataNumSelect,
-                total = _this$props.total;
+                total = _this$props.total,
+                sizeWithCookie = _this$props.sizeWithCookie;
 
             var dataNumValue = _this.props.dataNumSelect[value];
             // console.log("dataNumValue", dataNumValue);
@@ -222,35 +233,54 @@ var Pagination = function (_React$Component) {
             _this.setState({
                 dataNum: value
             });
+            // 塞cookie
+            if (sizeWithCookie) {
+                _reactCookies2["default"].save(sizeWithCookie, dataNumValue, { maxAge: 60 * 60 * 24 * 7 });
+            }
             if (typeof onDataNumSelect === 'function') {
                 onDataNumSelect(value, dataNumValue);
             }
         };
 
+        var size = props.dataNumSelect.findIndex(function (item) {
+            return String(item) === String(_reactCookies2["default"].load(props.sizeWithCookie));
+        });
+        var dataNum = size === -1 ? props.dataNum : size;
         _this.state = {
             activePage: _this.props.activePage, //当前的页码
-            dataNum: props.dataNum,
-            items: props.items ? props.items : props.total ? Math.ceil(props.total / props.dataNumSelect[props.dataNum]) : 1,
+            dataNum: dataNum,
+            items: props.items ? props.items : props.total ? Math.ceil(props.total / props.dataNumSelect[dataNum]) : 1,
             jumpPageState: ''
         };
         return _this;
     }
 
     Pagination.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
-        if (this.state.activePage !== nextProps.activePage) {
+        var activePage = nextProps.activePage,
+            dataNum = nextProps.dataNum,
+            sizeWithCookie = nextProps.sizeWithCookie,
+            dataNumSelect = nextProps.dataNumSelect,
+            total = nextProps.total,
+            items = nextProps.items;
+
+        if (this.state.activePage !== activePage) {
             this.setState({
-                activePage: nextProps.activePage
+                activePage: activePage
             });
         }
-        if ((nextProps.dataNum === 0 || nextProps.dataNum) && this.props.dataNum !== nextProps.dataNum) {
+        // 判断条件从 this.props.dataNum !== dataNum  改为 this.state.dataNum !== dataNum; Hua
+        if ((dataNum === 0 || dataNum) && this.state.dataNum !== dataNum) {
+            if (sizeWithCookie) {
+                _reactCookies2["default"].save(sizeWithCookie, dataNumSelect[dataNum], { maxAge: 60 * 60 * 24 * 7 });
+            }
             this.setState({
-                dataNum: nextProps.dataNum,
+                dataNum: dataNum,
                 // 20181210因为dataNumSelect的某项不是数字或者数字字符串
-                items: Number.isNaN(parseInt(nextProps.dataNumSelect[nextProps.dataNum])) ? 1 : Math.ceil(nextProps.total / nextProps.dataNumSelect[nextProps.dataNum])
+                items: Number.isNaN(parseInt(dataNumSelect[dataNum])) ? 1 : Math.ceil(total / dataNumSelect[dataNum])
             });
         }
-        if ('items' in nextProps && this.props.items !== nextProps.items) {
-            var newItems = nextProps.items === 0 ? 1 : nextProps.items;
+        if ('items' in nextProps && this.props.items !== items) {
+            var newItems = items === 0 ? 1 : items;
             this.setState({
                 items: newItems
             });

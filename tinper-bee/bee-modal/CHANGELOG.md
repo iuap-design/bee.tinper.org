@@ -1,5 +1,5 @@
-<a name="2.0.22"></a>
-## [2.0.22](https://github.com/tinper-bee/bee-modal/compare/v2.0.21...v2.0.22) (2019-08-20)
+<a name="2.1.0"></a>
+# [2.1.0](https://github.com/tinper-bee/bee-modal/compare/v2.0.21...v2.1.0) (2019-08-31)
 
 
 
@@ -39,12 +39,17 @@
 
 
 <a name="2.0.16"></a>
-## [2.0.16](https://github.com/tinper-bee/bee-modal/compare/v2.0.14...v2.0.16) (2019-06-24)
+## [2.0.16](https://github.com/tinper-bee/bee-modal/compare/v2.0.15...v2.0.16) (2019-06-24)
 
 
 ### Features
 
 * **bee-modal:** 升级icon ([9791cd8](https://github.com/tinper-bee/bee-modal/commit/9791cd8))
+
+
+
+<a name="2.0.15"></a>
+## [2.0.15](https://github.com/tinper-bee/bee-modal/compare/v2.0.14...v2.0.15) (2019-05-31)
 
 
 

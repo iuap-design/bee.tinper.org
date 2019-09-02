@@ -68,10 +68,7 @@ var InfiniteScroll = function (_Component) {
       var parentNode = _this.getParentElement(el);
 
       _this.scrollTop = parentNode.scrollTop;
-
       (0, _util.throttle)(_this.handleScrollY, 500)();
-
-      _this.handleScrollY();
     };
 
     _this.handleScrollY = function () {
@@ -128,14 +125,13 @@ var InfiniteScroll = function (_Component) {
     };
 
     _this.sliceTreeList = function (startIndex, endIndex) {
-      var flatTreeData = JSON.parse(JSON.stringify(_this.treeList)),
-          newTreeList = []; //存储截取后的新数据
+      var newTreeList = []; //存储截取后的新数据
       // console.log(
       //   "**startIndex**" + startIndex,
       //   "**endIndex**" + endIndex
       // );
-      newTreeList = flatTreeData.slice(startIndex, endIndex);
-      // console.log('截取后', JSON.stringify(newTreeList))
+      newTreeList = _this.treeList.slice(startIndex, endIndex);
+      // console.log(JSON.stringify(newTreeList))
       _this.props.handleTreeListChange && _this.props.handleTreeListChange(newTreeList, startIndex, endIndex);
     };
 

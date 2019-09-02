@@ -179,10 +179,10 @@
   -ms-touch-action: none;
   touch-action: none;
   box-sizing: border-box;
-  -webkit-tap-highlight-color: transparent; }
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
   .u-slider * {
     box-sizing: border-box;
-    -webkit-tap-highlight-color: transparent; }
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
   .u-slider .u-slider-rail {
     position: absolute;
     width: 100%;
@@ -329,10 +329,10 @@
   top: -9999px;
   visibility: visible;
   box-sizing: border-box;
-  -webkit-tap-highlight-color: transparent; }
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
   .u-slider-tooltip * {
     box-sizing: border-box;
-    -webkit-tap-highlight-color: transparent; }
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
   .u-slider-tooltip .u-slider-tooltip-hidden {
     display: none; }
   .u-slider-tooltip .u-slider-tooltip-placement-top {

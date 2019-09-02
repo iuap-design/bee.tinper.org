@@ -1,3 +1,13 @@
+<a name="0.0.13"></a>
+## [0.0.13](https://github.com/tinper-bee/bee-colorpicker/compare/v0.0.12...v0.0.13) (2019-08-30)
+
+
+
+<a name="0.0.12"></a>
+## [0.0.12](https://github.com/tinper-bee/bee-colorpicker/compare/v0.0.11...v0.0.12) (2019-08-27)
+
+
+
 <a name="0.0.11"></a>
 ## [0.0.11](https://github.com/tinper-bee/bee-colorpicker/compare/v0.0.10...v0.0.11) (2019-07-26)
 

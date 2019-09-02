@@ -29,6 +29,8 @@ const propTypes = {
     title: PropTypes.string,
     cacelBtn:PropTypes.string,
     confirmBtn:PropTypes.string,
+    isParameterArea:PropTypes.bool,
+    modalProps:PropTypes.object,
 };
 const defaultProps = {
     clsPrefix: "u-colorpicker",
@@ -36,7 +38,6 @@ const defaultProps = {
     label: "",
     placeholder: "",
     required: false,
-    autoCalculate: false,
     disabled: false,
     disabledAlpha: false,
     autoCalculate: () => {},
@@ -44,6 +45,7 @@ const defaultProps = {
     title:'取色板',
     cacelBtn:'取消',
     confirmBtn:'确认',
+    isParameterArea:true,
 };
 
 const initRgb = colors['red'].rgbArr[6] ? `rgb(${colors['red'].rgbArr[6]})` : '';
@@ -92,14 +94,13 @@ class ColorPicker extends Component {
 
     // 关闭色板/点击弹框取消按钮
     handleClose = () => {
-        let { selectedColor,selectedScale,selectedRgbValue,selectedHexValue,formValue,alpha } = this.cache;
+        let { selectedColor,selectedScale,selectedRgbValue,selectedHexValue,alpha } = this.cache;
         this.setState({
             displayColorPicker: false,
             selectedColor,
             selectedScale,
             selectedRgbValue,
             selectedHexValue,
-            formValue,
             alpha,
         });
     };
@@ -347,6 +348,7 @@ class ColorPicker extends Component {
             className,
             disabled,
             disabledAlpha,
+            isParameterArea,
             ...others
         } = this.props;
         const {
@@ -398,11 +400,12 @@ class ColorPicker extends Component {
                     {getFieldError('hexadecimal')}
                 </div>
                 <Modal
-                width = '600'
+                width = {isParameterArea?'600':'350'}
                 className={`${clsPrefix}-modal`}
                 show = { this.state.displayColorPicker }
                 onHide = { this.handleClose }
-                backdropClosable = { false }>
+                backdropClosable = { false }
+                {...this.props.modalProps}>
                     <Modal.Header closeButton>
                         <Modal.Title>{this.props.title}</Modal.Title>
                     </Modal.Header>
@@ -422,12 +425,12 @@ class ColorPicker extends Component {
                         </div>
                         <div className={`${clsPrefix}-panel-content`}>
                             <Row>
-                                <Col md={7} xs={7} sm={7} className="col-7">
+                                <Col md={7} xs={7} sm={7} style={isParameterArea?{}:{width:'100%',marginLeft:'10.5px'}} className="col-7">
                                     <ul className={`${clsPrefix}-panel-color-plate clearfix`}>
                                         {this.renderColorPlate(selectedColor)}
                                     </ul>
                                 </Col>
-                                <Col md={5} xs={5} sm={5} className="col-5">
+                                {isParameterArea&&<Col md={5} xs={5} sm={5} className="col-5">
                                     <div className={`${clsPrefix}-panel-color-info`}>
                                         <div className="transparent-bg">
                                             <div className={`selected-color bg-${selectedColor}-${selectedScale}`} style={{opacity:alpha/100}}></div>
@@ -447,7 +450,7 @@ class ColorPicker extends Component {
                                             </li>
                                         </ul>
                                     </div>
-                                </Col>
+                                </Col>}
                             </Row>
                         </div>
                     </Modal.Body>

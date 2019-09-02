@@ -7,7 +7,7 @@
 
 import React, { Component } from 'react';
 import Button from 'bee-button';
-import Drawer from '../../src/index';
+import Drawer from '../../src';
 import Icon from 'bee-icon';
 
 class Demo1 extends Component {

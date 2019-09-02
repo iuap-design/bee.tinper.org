@@ -6,7 +6,7 @@
  */
 
 import React, { Component } from 'react';
-import Drawer from '../../src/index';
+import Drawer from '../../src';
 import Button from 'bee-button';
 import Form from 'bee-form';
 import FormControl from 'bee-form-control';

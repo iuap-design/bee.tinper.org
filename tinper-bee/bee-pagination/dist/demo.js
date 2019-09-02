@@ -80,7 +80,7 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
 	
-	var Demo1 = __webpack_require__(309);var Demo2 = __webpack_require__(310);var Demo3 = __webpack_require__(311);var Demo4 = __webpack_require__(312);var Demo5 = __webpack_require__(313);var Demo6 = __webpack_require__(314);var Demo7 = __webpack_require__(315);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 少页数Pagination", "code": "/**\n * @title 少页数Pagination\n * @description 所有页数均显示。默认无确认按钮。\n */\n\nimport React, { Component } from 'react';\nimport { Pagination } from 'tinper-bee';\n\nclass Demo1 extends React.Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            activePage: 1\n        }\n    }\n    handleSelect(eventKey) {\n        console.log(eventKey);\n        this.setState({\n            activePage: eventKey\n        });\n    }\n\n    dataNumSelect = (index, value) => {\n        console.log(index, value);\n\n    }\n\n    render() {\n        return (\n            <div>\n                <Pagination\n                    first\n                    last\n                    prev\n                    next\n                    maxButtons={5}\n                    boundaryLinks\n                    activePage={this.state.activePage}\n                    onSelect={this.handleSelect.bind(this)}\n                    onDataNumSelect={this.dataNumSelect}\n                    showJump={true}\n                    total={100}\n                    dataNum={2}\n                />\n\n            </div>\n        );\n    }\n}\n\n", "desc": " 所有页数均显示。默认无确认按钮。" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 多页数Pagination", "code": "/**\r\n * @title 多页数Pagination\r\n * @description 可根据参数设置功能按钮的显示，部分页数隐藏。\r\n */\r\n\r\nimport React, { Component } from 'react';\r\nimport { Pagination } from 'tinper-bee';\r\n\r\nclass Demo2 extends React.Component {\r\n\tconstructor(props) {\r\n\t\tsuper(props);\r\n\t\tthis.state = {\r\n\t\t\tactivePage:1\r\n\t\t}\r\n\t}\r\n\thandleSelect(eventKey) {\r\n\t    this.setState({\r\n\t      activePage: eventKey\r\n\t    });\r\n\t}\r\n\trender() {\r\n\t    return (\r\n\t      <div>\r\n\t        <Pagination\r\n\t        \tfirst\r\n\t        \tlast\r\n\t        \tprev\r\n\t        \tnext\r\n\t        \tboundaryLinks\r\n\t\t        items={11}\r\n\t\t        maxButtons={5}\r\n\t\t        activePage={this.state.activePage}\r\n\t\t        onSelect={this.handleSelect.bind(this)}\r\n\t\t\t/>\r\n\t      </div>\r\n\t    );\r\n\t}\r\n}\r\n", "desc": " 可根据参数设置功能按钮的显示，部分页数隐藏。" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 有间隔Pagination", "code": "/**\r\n * @title 有间隔Pagination\r\n * @description 有间隔Pagination\r\n */\r\n\r\nimport React, { Component } from \"react\";\r\nimport { Pagination } from 'tinper-bee';\r\n\r\nclass Demo3 extends React.Component {\r\n  constructor(props) {\r\n    super(props);\r\n    this.state = {\r\n      activePage: 1\r\n    };\r\n  }\r\n  handleSelect(eventKey) {\r\n    this.setState({\r\n      activePage: eventKey\r\n    });\r\n  }\r\n  render() {\r\n    return (\r\n      <Pagination\r\n        prev\r\n        next\r\n        size=\"sm\"\r\n        gap={true}\r\n        items={5}\r\n        maxButtons={5}\r\n        activePage={this.state.activePage}\r\n        onSelect={this.handleSelect.bind(this)}\r\n      />\r\n    );\r\n  }\r\n}\r\n\r\n", "desc": " 有间隔Pagination" }, { "example": _react2['default'].createElement(Demo4, null), "title": " 多语示例", "code": "/**\r\n * @title 多语示例\r\n * @description 所有页数均显示。\r\n */\r\n\r\nimport React, { Component } from 'react';\r\nimport { Pagination } from 'tinper-bee';\r\n\r\nclass Demo4 extends React.Component {\r\n\tconstructor(props) {\r\n\t\tsuper(props);\r\n\t\tthis.state = {\r\n\t\t\tactivePage:1\r\n\t\t}\r\n\t}\r\n\thandleSelect(eventKey) {\r\n\t    this.setState({\r\n\t      activePage: eventKey\r\n\t    });\r\n\t}\r\n\r\n    dataNumSelect = (index,value) =>{\r\n        console.log(index,value);\r\n\r\n    }\r\n\trender() {\r\n\t\tvar local={\r\n\t\t\t'lang':'en',\r\n\t\t\t'total': 'Total',\r\n\t\t\t'items': 'Items',\r\n\t\t\t'show': 'page',\r\n\t\t\t'goto':'goto',\r\n\t\t\t'page':'',\r\n\t\t\t'ok':'ok'\r\n\t\t}\r\n\t    return (\r\n\t      <div>\r\n\t        <Pagination\r\n\t\t\t\tfirst\r\n\t\t\t\tlast\r\n\t\t\t\tprev\r\n\t\t\t\tnext\r\n\t\t\t\tmaxButtons={5}\r\n\t        \tboundaryLinks\r\n\t\t        activePage={this.state.activePage}\r\n\t\t        onSelect={this.handleSelect.bind(this)}\r\n\t\t\t\tonDataNumSelect={this.dataNumSelect}\r\n\t\t\t\tshowJump={true}\r\n\t\t\t\ttotal={100}\r\n\t\t\t\tdataNum={2}\r\n\t\t\t\tlocale={local}\r\n\t\t\t/>\r\n\t      </div>\r\n\t    );\r\n\t}\r\n}\r\n\r\n", "desc": " 所有页数均显示。" }, { "example": _react2['default'].createElement(Demo5, null), "title": " 不可用pagiantion", "code": "/**\r\n * @title 不可用pagiantion\r\n * @description pagination不可使用状态\r\n */\r\n\r\nimport React, { Component } from 'react';\r\nimport { Pagination } from 'tinper-bee';\r\n\r\nclass Demo5 extends React.Component {\r\n\tconstructor(props) {\r\n\t\tsuper(props);\r\n\t\tthis.state = {\r\n\t\t\tactivePage:1\r\n\t\t}\r\n\t}\r\n\thandleSelect(eventKey) {\r\n\t\tconsole.log(eventKey);\r\n\t    this.setState({\r\n\t      activePage: eventKey\r\n\t    });\r\n\t}\r\n\r\n    dataNumSelect = (index,value) =>{\r\n        console.log(index,value);\r\n\r\n    }\r\n\trender() {\r\n\t    return (\r\n\t      <div>\r\n\t        <Pagination\r\n\t\t\t\tfirst\r\n\t\t\t\tlast\r\n\t\t\t\tprev\r\n\t\t\t\tnext\r\n\t\t\t\tmaxButtons={5}\r\n\t        \tboundaryLinks\r\n\t\t        activePage={this.state.activePage}\r\n\t\t        onSelect={this.handleSelect.bind(this)}\r\n\t\t\t\tonDataNumSelect={this.dataNumSelect}\r\n\t\t\t\tshowJump={true}\r\n\t\t\t\ttotal={100}\r\n\t\t\t\tdataNum={2}\r\n\t\t\t\tdisabled={true}\r\n\t\t\t/>\r\n\t      </div>\r\n\t    );\r\n\t}\r\n}\r\n\r\n", "desc": " pagination不可使用状态" }, { "example": _react2['default'].createElement(Demo6, null), "title": " 自定义按钮的Pagination", "code": "/**\r\n * @title 自定义按钮的Pagination\r\n * @description 通过confirmBtn参数自定义确认按钮，默认不显示按钮。\r\n */\r\n\r\nimport React, { Component } from 'react';\r\nimport { Pagination, Button } from 'tinper-bee';\r\n\n\r\nclass Demo6 extends React.Component {\r\n\tconstructor(props) {\r\n\t\tsuper(props);\r\n\t\tthis.state = {\r\n\t\t\tactivePage:1\r\n\t\t}\r\n\t}\r\n\thandleSelect(eventKey) {\r\n\t\tconsole.log(eventKey);\r\n\t    this.setState({\r\n\t      activePage: eventKey\r\n\t    });\r\n\t}\r\n\r\n    dataNumSelect = (index,value) =>{\r\n        console.log(index,value);\r\n\r\n\t}\r\n\t\r\n\trenderConfirmBtn = () => {\r\n\t\treturn (\r\n\t\t  \t<Button bordered>确认</Button>\r\n\t\t);\r\n\t}\r\n\r\n\trender() {\r\n\t    return (\r\n\t      <div>\r\n\t        <Pagination\r\n\t\t\t\tfirst\r\n\t\t\t\tlast\r\n\t\t\t\tprev\r\n\t\t\t\tnext\r\n\t\t\t\tmaxButtons={5}\r\n\t        \tboundaryLinks\r\n\t\t        activePage={this.state.activePage}\r\n\t\t        onSelect={this.handleSelect.bind(this)}\r\n\t\t\t\tonDataNumSelect={this.dataNumSelect}\r\n\t\t\t\tshowJump={true}\r\n\t\t\t\ttotal={100}\r\n\t\t\t\tdataNum={2}\r\n\t\t\t\tconfirmBtn={this.renderConfirmBtn}\r\n\t\t\t/>\r\n\t      </div>\r\n\t    );\r\n\t}\r\n}\r\n\r\n", "desc": " 通过confirmBtn参数自定义确认按钮，默认不显示按钮。" }, { "example": _react2['default'].createElement(Demo7, null), "title": " 不显示按钮边框的Pagination", "code": "/**\r\n * @title 不显示按钮边框的Pagination\r\n * @description 通过noBorder参数设置是否显示按钮边框。\r\n */\r\n\r\nimport React, { Component } from 'react';\r\nimport { Pagination } from 'tinper-bee';\r\n\r\nclass Demo7 extends React.Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            activePage: 1\r\n        }\r\n    }\r\n    handleSelect(eventKey) {\r\n        console.log(eventKey);\r\n        this.setState({\r\n            activePage: eventKey\r\n        });\r\n    }\r\n\r\n    dataNumSelect = (index, value) => {\r\n        console.log(index, value);\r\n\r\n    }\r\n\r\n    render() {\r\n        return (\r\n            <div>\r\n                <Pagination\r\n                    first\r\n                    last\r\n                    prev\r\n                    next\r\n                    maxButtons={5}\r\n                    boundaryLinks\r\n                    activePage={this.state.activePage}\r\n                    onSelect={this.handleSelect.bind(this)}\r\n                    onDataNumSelect={this.dataNumSelect}\r\n                    showJump={true}\r\n                    noBorder={true}\r\n                    total={100}\r\n                    dataNum={2}\r\n                />\r\n\r\n            </div>\r\n        );\r\n    }\r\n}\r\n\r\n", "desc": " 通过noBorder参数设置是否显示按钮边框。" }];
+	var Demo1 = __webpack_require__(311);var Demo2 = __webpack_require__(312);var Demo3 = __webpack_require__(313);var Demo4 = __webpack_require__(314);var Demo5 = __webpack_require__(315);var Demo6 = __webpack_require__(316);var Demo7 = __webpack_require__(317);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 少页数Pagination", "code": "/**\r\n * @title 少页数Pagination\r\n * @description 所有页数均显示。默认无确认按钮。\r\n */\r\n\r\nimport React, { Component } from 'react';\nimport { Pagination } from 'tinper-bee';\r\n\r\n\r\nclass Demo1 extends React.Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            activePage: 1\r\n        }\r\n    }\r\n    handleSelect(eventKey) {\r\n        console.log(eventKey);\r\n        this.setState({\r\n            activePage: eventKey\r\n        });\r\n    }\r\n\r\n    dataNumSelect = (index, value) => {\r\n        console.log(index, value);\r\n\r\n    }\r\n\r\n    render() {\r\n        return (\r\n            <div>\r\n                <Pagination\r\n                    first\r\n                    last\r\n                    prev\r\n                    next\r\n                    maxButtons={5}\r\n                    boundaryLinks\r\n                    activePage={this.state.activePage}\r\n                    onSelect={this.handleSelect.bind(this)}\r\n                    onDataNumSelect={this.dataNumSelect}\r\n                    showJump={true}\r\n                    total={100}\r\n                    dataNum={2}\r\n                />\r\n\r\n            </div>\r\n        );\r\n    }\r\n}\r\n\r\nexport default Demo1;", "desc": " 所有页数均显示。默认无确认按钮。" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 多页数Pagination", "code": "/**\r\n * @title 多页数Pagination\r\n * @description 可根据参数设置功能按钮的显示，部分页数隐藏。\r\n */\r\n\r\nimport React, { Component } from 'react';\nimport { Pagination } from 'tinper-bee';\r\n\r\n\r\nclass Demo2 extends React.Component {\r\n\tconstructor(props) {\r\n\t\tsuper(props);\r\n\t\tthis.state = {\r\n\t\t\tactivePage:1\r\n\t\t}\r\n\t}\r\n\thandleSelect(eventKey) {\r\n\t    this.setState({\r\n\t      activePage: eventKey\r\n\t    });\r\n\t}\r\n\trender() {\r\n\t    return (\r\n\t      <div>\r\n\t        <Pagination\r\n\t        \tfirst\r\n\t        \tlast\r\n\t        \tprev\r\n\t        \tnext\r\n\t        \tboundaryLinks\r\n\t\t        items={11}\r\n\t\t        maxButtons={5}\r\n\t\t        activePage={this.state.activePage}\r\n\t\t        onSelect={this.handleSelect.bind(this)}\r\n\t\t\t/>\r\n\t      </div>\r\n\t    );\r\n\t}\r\n}\r\nexport default Demo2;", "desc": " 可根据参数设置功能按钮的显示，部分页数隐藏。" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 有间隔Pagination", "code": "/**\r\n * @title 有间隔Pagination\r\n * @description 有间隔Pagination\r\n */\r\n\r\nimport React, { Component } from \"react\";\nimport { Pagination } from 'tinper-bee';\r\n\r\n\r\nclass Demo3 extends React.Component {\r\n  constructor(props) {\r\n    super(props);\r\n    this.state = {\r\n      activePage: 1\r\n    };\r\n  }\r\n  handleSelect(eventKey) {\r\n    this.setState({\r\n      activePage: eventKey\r\n    });\r\n  }\r\n  render() {\r\n    return (\r\n      <Pagination\r\n        prev\r\n        next\r\n        size=\"sm\"\r\n        gap={true}\r\n        items={5}\r\n        maxButtons={5}\r\n        activePage={this.state.activePage}\r\n        onSelect={this.handleSelect.bind(this)}\r\n      />\r\n    );\r\n  }\r\n}\r\nexport default Demo3;\r\n", "desc": " 有间隔Pagination" }, { "example": _react2['default'].createElement(Demo4, null), "title": " 多语示例", "code": "/**\r\n * @title 多语示例\r\n * @description 所有页数均显示。\r\n */\r\n\r\nimport React, { Component } from 'react';\nimport { Pagination } from 'tinper-bee';\r\n\r\n\r\nclass Demo4 extends React.Component {\r\n\tconstructor(props) {\r\n\t\tsuper(props);\r\n\t\tthis.state = {\r\n\t\t\tactivePage:1\r\n\t\t}\r\n\t}\r\n\thandleSelect(eventKey) {\r\n\t    this.setState({\r\n\t      activePage: eventKey\r\n\t    });\r\n\t}\r\n\r\n    dataNumSelect = (index,value) =>{\r\n        console.log(index,value);\r\n\r\n    }\r\n\trender() {\r\n\t\tvar local={\r\n\t\t\t'lang':'en',\r\n\t\t\t'total': 'Total',\r\n\t\t\t'items': 'Items',\r\n\t\t\t'show': 'page',\r\n\t\t\t'goto':'goto',\r\n\t\t\t'page':'',\r\n\t\t\t'ok':'ok'\r\n\t\t}\r\n\t    return (\r\n\t      <div>\r\n\t        <Pagination\r\n\t\t\t\tfirst\r\n\t\t\t\tlast\r\n\t\t\t\tprev\r\n\t\t\t\tnext\r\n\t\t\t\tmaxButtons={5}\r\n\t        \tboundaryLinks\r\n\t\t        activePage={this.state.activePage}\r\n\t\t        onSelect={this.handleSelect.bind(this)}\r\n\t\t\t\tonDataNumSelect={this.dataNumSelect}\r\n\t\t\t\tshowJump={true}\r\n\t\t\t\ttotal={100}\r\n\t\t\t\tdataNum={2}\r\n\t\t\t\tlocale={local}\r\n\t\t\t/>\r\n\t      </div>\r\n\t    );\r\n\t}\r\n}\r\n\r\nexport default Demo4;", "desc": " 所有页数均显示。" }, { "example": _react2['default'].createElement(Demo5, null), "title": " 不可用pagiantion", "code": "/**\r\n * @title 不可用pagiantion\r\n * @description pagination不可使用状态\r\n */\r\n\r\nimport React, { Component } from 'react';\nimport { Pagination } from 'tinper-bee';\r\n\r\n\r\nclass Demo5 extends React.Component {\r\n\tconstructor(props) {\r\n\t\tsuper(props);\r\n\t\tthis.state = {\r\n\t\t\tactivePage:1\r\n\t\t}\r\n\t}\r\n\thandleSelect(eventKey) {\r\n\t\tconsole.log(eventKey);\r\n\t    this.setState({\r\n\t      activePage: eventKey\r\n\t    });\r\n\t}\r\n\r\n    dataNumSelect = (index,value) =>{\r\n        console.log(index,value);\r\n\r\n    }\r\n\trender() {\r\n\t    return (\r\n\t      <div>\r\n\t        <Pagination\r\n\t\t\t\tfirst\r\n\t\t\t\tlast\r\n\t\t\t\tprev\r\n\t\t\t\tnext\r\n\t\t\t\tmaxButtons={5}\r\n\t        \tboundaryLinks\r\n\t\t        activePage={this.state.activePage}\r\n\t\t        onSelect={this.handleSelect.bind(this)}\r\n\t\t\t\tonDataNumSelect={this.dataNumSelect}\r\n\t\t\t\tshowJump={true}\r\n\t\t\t\ttotal={100}\r\n\t\t\t\tdataNum={2}\r\n\t\t\t\tdisabled={true}\r\n\t\t\t/>\r\n\t      </div>\r\n\t    );\r\n\t}\r\n}\r\n\r\nexport default Demo5;", "desc": " pagination不可使用状态" }, { "example": _react2['default'].createElement(Demo6, null), "title": " 自定义按钮的Pagination", "code": "/**\r\n * @title 自定义按钮的Pagination\r\n * @description 通过confirmBtn参数自定义确认按钮，默认不显示按钮。\r\n */\r\n\r\nimport React, { Component } from 'react';\nimport { Button, Pagination } from 'tinper-bee';\r\n\r\n\n\r\nclass Demo6 extends React.Component {\r\n\tconstructor(props) {\r\n\t\tsuper(props);\r\n\t\tthis.state = {\r\n\t\t\tactivePage:1\r\n\t\t}\r\n\t}\r\n\thandleSelect(eventKey) {\r\n\t\tconsole.log(eventKey);\r\n\t    this.setState({\r\n\t      activePage: eventKey\r\n\t    });\r\n\t}\r\n\r\n    dataNumSelect = (index,value) =>{\r\n        console.log(index,value);\r\n\r\n\t}\r\n\t\r\n\trenderConfirmBtn = () => {\r\n\t\treturn (\r\n\t\t  \t<Button bordered>确认</Button>\r\n\t\t);\r\n\t}\r\n\r\n\trender() {\r\n\t    return (\r\n\t      <div>\r\n\t        <Pagination\r\n\t\t\t\tfirst\r\n\t\t\t\tlast\r\n\t\t\t\tprev\r\n\t\t\t\tnext\r\n\t\t\t\tmaxButtons={5}\r\n\t        \tboundaryLinks\r\n\t\t        activePage={this.state.activePage}\r\n\t\t        onSelect={this.handleSelect.bind(this)}\r\n\t\t\t\tonDataNumSelect={this.dataNumSelect}\r\n\t\t\t\tshowJump={true}\r\n\t\t\t\ttotal={100}\r\n\t\t\t\tdataNum={2}\r\n\t\t\t\tconfirmBtn={this.renderConfirmBtn}\r\n\t\t\t/>\r\n\t      </div>\r\n\t    );\r\n\t}\r\n}\r\n\r\nexport default Demo6;", "desc": " 通过confirmBtn参数自定义确认按钮，默认不显示按钮。" }, { "example": _react2['default'].createElement(Demo7, null), "title": " 不显示按钮边框的Pagination", "code": "/**\r\n * @title 不显示按钮边框的Pagination\r\n * @description 通过noBorder参数设置是否显示按钮边框。\r\n */\r\n\r\nimport React, { Component } from 'react';\nimport { Pagination } from 'tinper-bee';\r\n\r\n\r\nclass Demo7 extends React.Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            activePage: 1\r\n        }\r\n    }\r\n    handleSelect(eventKey) {\r\n        console.log(eventKey);\r\n        this.setState({\r\n            activePage: eventKey\r\n        });\r\n    }\r\n\r\n    dataNumSelect = (index, value) => {\r\n        console.log(index, value);\r\n\r\n    }\r\n\r\n    render() {\r\n        return (\r\n            <div>\r\n                <Pagination\r\n                    first\r\n                    last\r\n                    prev\r\n                    next\r\n                    maxButtons={5}\r\n                    boundaryLinks\r\n                    activePage={this.state.activePage}\r\n                    onSelect={this.handleSelect.bind(this)}\r\n                    onDataNumSelect={this.dataNumSelect}\r\n                    showJump={true}\r\n                    noBorder={true}\r\n                    total={100}\r\n                    dataNum={2}\r\n                />\r\n\r\n            </div>\r\n        );\r\n    }\r\n}\r\n\r\nexport default Demo7;", "desc": " 通过noBorder参数设置是否显示按钮边框。" }];
 	
 	var Demo = function (_Component) {
 	    _inherits(Demo, _Component);
@@ -16402,11 +16402,15 @@
 	
 	var _objectAssign2 = _interopRequireDefault(_objectAssign);
 	
+	var _reactCookies = __webpack_require__(308);
+	
+	var _reactCookies2 = _interopRequireDefault(_reactCookies);
+	
 	var _propTypes = __webpack_require__(6);
 	
 	var _propTypes2 = _interopRequireDefault(_propTypes);
 	
-	var _i18n = __webpack_require__(308);
+	var _i18n = __webpack_require__(310);
 	
 	var _i18n2 = _interopRequireDefault(_i18n);
 	
@@ -16509,7 +16513,12 @@
 	    /**
 	     *  渲染确认按钮的dom
 	     */
-	    confirmBtn: _propTypes2["default"].func
+	    confirmBtn: _propTypes2["default"].func,
+	
+	    /**
+	     * 通过cookie来确定分页的size,需设定唯一的key值
+	     */
+	    sizeWithCookie: _propTypes2["default"].string
 	};
 	
 	var defaultProps = {
@@ -16530,7 +16539,8 @@
 	    locale: {},
 	    disabled: false,
 	    btnType: { shape: 'border' },
-	    confirmBtn: function confirmBtn() {}
+	    confirmBtn: function confirmBtn() {},
+	    sizeWithCookie: ''
 	};
 	
 	var Pagination = function (_React$Component) {
@@ -16577,7 +16587,8 @@
 	            // console.log(value);
 	            var _this$props = _this.props,
 	                onDataNumSelect = _this$props.onDataNumSelect,
-	                total = _this$props.total;
+	                total = _this$props.total,
+	                sizeWithCookie = _this$props.sizeWithCookie;
 	
 	            var dataNumValue = _this.props.dataNumSelect[value];
 	            // console.log("dataNumValue", dataNumValue);
@@ -16590,35 +16601,54 @@
 	            _this.setState({
 	                dataNum: value
 	            });
+	            // 塞cookie
+	            if (sizeWithCookie) {
+	                _reactCookies2["default"].save(sizeWithCookie, dataNumValue, { maxAge: 60 * 60 * 24 * 7 });
+	            }
 	            if (typeof onDataNumSelect === 'function') {
 	                onDataNumSelect(value, dataNumValue);
 	            }
 	        };
 	
+	        var size = props.dataNumSelect.findIndex(function (item) {
+	            return String(item) === String(_reactCookies2["default"].load(props.sizeWithCookie));
+	        });
+	        var dataNum = size === -1 ? props.dataNum : size;
 	        _this.state = {
 	            activePage: _this.props.activePage, //当前的页码
-	            dataNum: props.dataNum,
-	            items: props.items ? props.items : props.total ? Math.ceil(props.total / props.dataNumSelect[props.dataNum]) : 1,
+	            dataNum: dataNum,
+	            items: props.items ? props.items : props.total ? Math.ceil(props.total / props.dataNumSelect[dataNum]) : 1,
 	            jumpPageState: ''
 	        };
 	        return _this;
 	    }
 	
 	    Pagination.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
-	        if (this.state.activePage !== nextProps.activePage) {
+	        var activePage = nextProps.activePage,
+	            dataNum = nextProps.dataNum,
+	            sizeWithCookie = nextProps.sizeWithCookie,
+	            dataNumSelect = nextProps.dataNumSelect,
+	            total = nextProps.total,
+	            items = nextProps.items;
+	
+	        if (this.state.activePage !== activePage) {
 	            this.setState({
-	                activePage: nextProps.activePage
+	                activePage: activePage
 	            });
 	        }
-	        if ((nextProps.dataNum === 0 || nextProps.dataNum) && this.props.dataNum !== nextProps.dataNum) {
+	        // 判断条件从 this.props.dataNum !== dataNum  改为 this.state.dataNum !== dataNum; Hua
+	        if ((dataNum === 0 || dataNum) && this.state.dataNum !== dataNum) {
+	            if (sizeWithCookie) {
+	                _reactCookies2["default"].save(sizeWithCookie, dataNumSelect[dataNum], { maxAge: 60 * 60 * 24 * 7 });
+	            }
 	            this.setState({
-	                dataNum: nextProps.dataNum,
+	                dataNum: dataNum,
 	                // 20181210因为dataNumSelect的某项不是数字或者数字字符串
-	                items: Number.isNaN(parseInt(nextProps.dataNumSelect[nextProps.dataNum])) ? 1 : Math.ceil(nextProps.total / nextProps.dataNumSelect[nextProps.dataNum])
+	                items: Number.isNaN(parseInt(dataNumSelect[dataNum])) ? 1 : Math.ceil(total / dataNumSelect[dataNum])
 	            });
 	        }
-	        if ('items' in nextProps && this.props.items !== nextProps.items) {
-	            var newItems = nextProps.items === 0 ? 1 : nextProps.items;
+	        if ('items' in nextProps && this.props.items !== items) {
+	            var newItems = items === 0 ? 1 : items;
 	            this.setState({
 	                items: newItems
 	            });
@@ -30516,6 +30546,385 @@
 
 /***/ }),
 /* 308 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+	
+	exports.load = load;
+	exports.loadAll = loadAll;
+	exports.select = select;
+	exports.save = save;
+	exports.remove = remove;
+	exports.setRawCookie = setRawCookie;
+	exports.plugToRequest = plugToRequest;
+	
+	var _cookie = __webpack_require__(309);
+	
+	var _cookie2 = _interopRequireDefault(_cookie);
+	
+	var _objectAssign = __webpack_require__(44);
+	
+	var _objectAssign2 = _interopRequireDefault(_objectAssign);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var IS_NODE = typeof document === 'undefined' || typeof process !== 'undefined' && process.env && process.env.NODE_ENV === 'test';
+	var _rawCookie = {};
+	var _res = void 0;
+	
+	function _isResWritable() {
+	  return _res && !_res.headersSent;
+	}
+	
+	function load(name, doNotParse) {
+	  var cookies = IS_NODE ? _rawCookie : _cookie2.default.parse(document.cookie);
+	  var cookieVal = cookies && cookies[name];
+	
+	  if (typeof doNotParse === 'undefined') {
+	    doNotParse = !cookieVal || cookieVal[0] !== '{' && cookieVal[0] !== '[';
+	  }
+	
+	  if (!doNotParse) {
+	    try {
+	      cookieVal = JSON.parse(cookieVal);
+	    } catch (err) {
+	      // Not serialized object
+	    }
+	  }
+	
+	  return cookieVal;
+	}
+	
+	function loadAll(doNotParse) {
+	  var cookies = IS_NODE ? _rawCookie : _cookie2.default.parse(document.cookie);
+	  var cookieVal = cookies;
+	
+	  if (typeof doNotParse === 'undefined') {
+	    doNotParse = !cookieVal || cookieVal[0] !== '{' && cookieVal[0] !== '[';
+	  }
+	
+	  if (!doNotParse) {
+	    try {
+	      cookieVal = JSON.parse(cookieVal);
+	    } catch (err) {
+	      // Not serialized object
+	    }
+	  }
+	
+	  return cookieVal;
+	}
+	
+	function select(regex) {
+	  var cookies = IS_NODE ? _rawCookie : _cookie2.default.parse(document.cookie);
+	
+	  if (!cookies) {
+	    return {};
+	  }
+	
+	  if (!regex) {
+	    return cookies;
+	  }
+	
+	  return Object.keys(cookies).reduce(function (accumulator, name) {
+	    if (!regex.test(name)) {
+	      return accumulator;
+	    }
+	
+	    var newCookie = {};
+	    newCookie[name] = cookies[name];
+	    return (0, _objectAssign2.default)({}, accumulator, newCookie);
+	  }, {});
+	}
+	
+	function save(name, val, opt) {
+	  _rawCookie[name] = val;
+	
+	  // Allow you to work with cookies as objects.
+	  if ((typeof val === 'undefined' ? 'undefined' : _typeof(val)) === 'object') {
+	    _rawCookie[name] = JSON.stringify(val);
+	  }
+	
+	  // Cookies only work in the browser
+	  if (!IS_NODE) {
+	    document.cookie = _cookie2.default.serialize(name, _rawCookie[name], opt);
+	  }
+	
+	  if (_isResWritable() && _res.cookie) {
+	    _res.cookie(name, val, opt);
+	  }
+	}
+	
+	function remove(name, opt) {
+	  delete _rawCookie[name];
+	
+	  if (typeof opt === 'undefined') {
+	    opt = {};
+	  } else if (typeof opt === 'string') {
+	    // Will be deprecated in future versions
+	    opt = { path: opt };
+	  } else {
+	    // Prevent mutation of opt below
+	    opt = (0, _objectAssign2.default)({}, opt);
+	  }
+	
+	  if (typeof document !== 'undefined') {
+	    opt.expires = new Date(1970, 1, 1, 0, 0, 1);
+	    opt.maxAge = 0;
+	    document.cookie = _cookie2.default.serialize(name, '', opt);
+	  }
+	
+	  if (_isResWritable() && _res.clearCookie) {
+	    _res.clearCookie(name, opt);
+	  }
+	}
+	
+	function setRawCookie(rawCookie) {
+	  if (rawCookie) {
+	    _rawCookie = _cookie2.default.parse(rawCookie);
+	  } else {
+	    _rawCookie = {};
+	  }
+	}
+	
+	function plugToRequest(req, res) {
+	  if (req.cookie) {
+	    _rawCookie = req.cookie;
+	  } else if (req.cookies) {
+	    _rawCookie = req.cookies;
+	  } else if (req.headers && req.headers.cookie) {
+	    setRawCookie(req.headers.cookie);
+	  } else {
+	    _rawCookie = {};
+	  }
+	
+	  _res = res;
+	
+	  return function unplug() {
+	    _res = null;
+	    _rawCookie = {};
+	  };
+	}
+	
+	exports.default = {
+	  setRawCookie: setRawCookie,
+	  load: load,
+	  loadAll: loadAll,
+	  select: select,
+	  save: save,
+	  remove: remove,
+	  plugToRequest: plugToRequest
+	};
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(33)))
+
+/***/ }),
+/* 309 */
+/***/ (function(module, exports) {
+
+	/*!
+	 * cookie
+	 * Copyright(c) 2012-2014 Roman Shtylman
+	 * Copyright(c) 2015 Douglas Christopher Wilson
+	 * MIT Licensed
+	 */
+	
+	'use strict';
+	
+	/**
+	 * Module exports.
+	 * @public
+	 */
+	
+	exports.parse = parse;
+	exports.serialize = serialize;
+	
+	/**
+	 * Module variables.
+	 * @private
+	 */
+	
+	var decode = decodeURIComponent;
+	var encode = encodeURIComponent;
+	var pairSplitRegExp = /; */;
+	
+	/**
+	 * RegExp to match field-content in RFC 7230 sec 3.2
+	 *
+	 * field-content = field-vchar [ 1*( SP / HTAB ) field-vchar ]
+	 * field-vchar   = VCHAR / obs-text
+	 * obs-text      = %x80-FF
+	 */
+	
+	var fieldContentRegExp = /^[\u0009\u0020-\u007e\u0080-\u00ff]+$/;
+	
+	/**
+	 * Parse a cookie header.
+	 *
+	 * Parse the given cookie header string into an object
+	 * The object has the various cookies as keys(names) => values
+	 *
+	 * @param {string} str
+	 * @param {object} [options]
+	 * @return {object}
+	 * @public
+	 */
+	
+	function parse(str, options) {
+	  if (typeof str !== 'string') {
+	    throw new TypeError('argument str must be a string');
+	  }
+	
+	  var obj = {}
+	  var opt = options || {};
+	  var pairs = str.split(pairSplitRegExp);
+	  var dec = opt.decode || decode;
+	
+	  for (var i = 0; i < pairs.length; i++) {
+	    var pair = pairs[i];
+	    var eq_idx = pair.indexOf('=');
+	
+	    // skip things that don't look like key=value
+	    if (eq_idx < 0) {
+	      continue;
+	    }
+	
+	    var key = pair.substr(0, eq_idx).trim()
+	    var val = pair.substr(++eq_idx, pair.length).trim();
+	
+	    // quoted values
+	    if ('"' == val[0]) {
+	      val = val.slice(1, -1);
+	    }
+	
+	    // only assign once
+	    if (undefined == obj[key]) {
+	      obj[key] = tryDecode(val, dec);
+	    }
+	  }
+	
+	  return obj;
+	}
+	
+	/**
+	 * Serialize data into a cookie header.
+	 *
+	 * Serialize the a name value pair into a cookie string suitable for
+	 * http headers. An optional options object specified cookie parameters.
+	 *
+	 * serialize('foo', 'bar', { httpOnly: true })
+	 *   => "foo=bar; httpOnly"
+	 *
+	 * @param {string} name
+	 * @param {string} val
+	 * @param {object} [options]
+	 * @return {string}
+	 * @public
+	 */
+	
+	function serialize(name, val, options) {
+	  var opt = options || {};
+	  var enc = opt.encode || encode;
+	
+	  if (typeof enc !== 'function') {
+	    throw new TypeError('option encode is invalid');
+	  }
+	
+	  if (!fieldContentRegExp.test(name)) {
+	    throw new TypeError('argument name is invalid');
+	  }
+	
+	  var value = enc(val);
+	
+	  if (value && !fieldContentRegExp.test(value)) {
+	    throw new TypeError('argument val is invalid');
+	  }
+	
+	  var str = name + '=' + value;
+	
+	  if (null != opt.maxAge) {
+	    var maxAge = opt.maxAge - 0;
+	    if (isNaN(maxAge)) throw new Error('maxAge should be a Number');
+	    str += '; Max-Age=' + Math.floor(maxAge);
+	  }
+	
+	  if (opt.domain) {
+	    if (!fieldContentRegExp.test(opt.domain)) {
+	      throw new TypeError('option domain is invalid');
+	    }
+	
+	    str += '; Domain=' + opt.domain;
+	  }
+	
+	  if (opt.path) {
+	    if (!fieldContentRegExp.test(opt.path)) {
+	      throw new TypeError('option path is invalid');
+	    }
+	
+	    str += '; Path=' + opt.path;
+	  }
+	
+	  if (opt.expires) {
+	    if (typeof opt.expires.toUTCString !== 'function') {
+	      throw new TypeError('option expires is invalid');
+	    }
+	
+	    str += '; Expires=' + opt.expires.toUTCString();
+	  }
+	
+	  if (opt.httpOnly) {
+	    str += '; HttpOnly';
+	  }
+	
+	  if (opt.secure) {
+	    str += '; Secure';
+	  }
+	
+	  if (opt.sameSite) {
+	    var sameSite = typeof opt.sameSite === 'string'
+	      ? opt.sameSite.toLowerCase() : opt.sameSite;
+	
+	    switch (sameSite) {
+	      case true:
+	        str += '; SameSite=Strict';
+	        break;
+	      case 'lax':
+	        str += '; SameSite=Lax';
+	        break;
+	      case 'strict':
+	        str += '; SameSite=Strict';
+	        break;
+	      default:
+	        throw new TypeError('option sameSite is invalid');
+	    }
+	  }
+	
+	  return str;
+	}
+	
+	/**
+	 * Try decoding a string using a decoding function.
+	 *
+	 * @param {string} str
+	 * @param {function} decode
+	 * @private
+	 */
+	
+	function tryDecode(str, decode) {
+	  try {
+	    return decode(str);
+	  } catch (e) {
+	    return str;
+	  }
+	}
+
+
+/***/ }),
+/* 310 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -30545,7 +30954,7 @@
 	};
 
 /***/ }),
-/* 309 */
+/* 311 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30628,7 +31037,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 310 */
+/* 312 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30703,7 +31112,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 311 */
+/* 313 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -30773,7 +31182,7 @@
 	module.exports = exports["default"];
 
 /***/ }),
-/* 312 */
+/* 314 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30865,7 +31274,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 313 */
+/* 315 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30949,7 +31358,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 314 */
+/* 316 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31045,7 +31454,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 315 */
+/* 317 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';

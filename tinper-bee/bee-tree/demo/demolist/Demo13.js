@@ -92,7 +92,7 @@ class Demo13 extends Component{
 
   render() {
     return (
-      <div style={{height:'300px', border:'1px solid', overflow:'auto'}}>
+      <div style={{height:'300px', overflow:'auto'}}>
         <Tree
           checkable
           focusable

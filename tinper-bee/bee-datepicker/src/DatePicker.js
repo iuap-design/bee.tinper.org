@@ -234,9 +234,18 @@ class DatePicker extends Component {
     }
     this.props.onDateInputBlur && this.props.onDateInputBlur(e,value);
   }
-  onBlur = ()=>{
-    let value = this.state.value;
-    this.props.onChange&&this.props.onChange(value, (value && this.getValue(value)) || '')
+  //fix:更改系统时区后，日期框需要触发 onChange 事件
+  onDateHover = ()=>{
+    let {format} = this.props;
+    let {value} = this.state,
+        newValue = value && this.getValue(value);
+      
+    let inputValue = this.outInput.state.value;
+    inputValue = format ? inputValue : ( inputValue && this.getValue(moment(inputValue)) );
+    
+    if(newValue && inputValue !== newValue) {
+      this.props.onChange && this.props.onChange(value, newValue || '')
+    }
   }
   //阻止组件内部事件冒泡到组件外部容器
   stopPropagation = (e) => {
@@ -284,8 +293,7 @@ class DatePicker extends Component {
     }
     let classes = classnames(props.className, "datepicker-container");
     return (
-      // <div className={classes} onMouseEnter={this.onBlur}>
-      <div className={classes} onMouseEnter={this.onBlur} onClick={this.stopPropagation} onMouseOver={this.stopPropagation}>
+      <div className={classes} onMouseEnter={this.onDateHover} onClick={this.stopPropagation} onMouseOver={this.stopPropagation}>
         <Picker
           animation="slide-up"
           {...props}

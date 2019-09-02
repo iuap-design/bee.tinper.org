@@ -110,6 +110,8 @@ var DatePicker = function (_Component) {
   };
   //日期面板中输入框的失焦事件
 
+  //fix:更改系统时区后，日期框需要触发 onChange 事件
+
   //阻止组件内部事件冒泡到组件外部容器
 
 
@@ -156,60 +158,57 @@ var DatePicker = function (_Component) {
       keyboardInputProps.value = value && this.getValue(value) || "";
     }
     var classes = (0, _classnames2["default"])(props.className, "datepicker-container");
-    return (
-      // <div className={classes} onMouseEnter={this.onBlur}>
+    return _react2["default"].createElement(
+      "div",
+      { className: classes, onMouseEnter: this.onDateHover, onClick: this.stopPropagation, onMouseOver: this.stopPropagation },
       _react2["default"].createElement(
-        "div",
-        { className: classes, onMouseEnter: this.onBlur, onClick: this.stopPropagation, onMouseOver: this.stopPropagation },
-        _react2["default"].createElement(
-          _Picker2["default"],
-          _extends({
-            animation: "slide-up"
-          }, props, pickerChangeHandler, {
-            onOpenChange: this.onOpenChange,
-            calendar: calendar,
-            mode: 'year',
-            open: 'defaultPanelShown' in props ? defaultPanelShown : this.state.open,
-            value: state.value
-          }),
-          function () {
-            return _react2["default"].createElement(
-              _beeInputGroup2["default"],
-              { simple: true, className: "datepicker-input-group",
-                onMouseEnter: _this2.onMouseEnter,
-                onMouseLeave: _this2.onMouseLeave
+        _Picker2["default"],
+        _extends({
+          animation: "slide-up"
+        }, props, pickerChangeHandler, {
+          onOpenChange: this.onOpenChange,
+          calendar: calendar,
+          mode: 'year',
+          open: 'defaultPanelShown' in props ? defaultPanelShown : this.state.open,
+          value: state.value
+        }),
+        function () {
+          return _react2["default"].createElement(
+            _beeInputGroup2["default"],
+            { simple: true, className: "datepicker-input-group",
+              onMouseEnter: _this2.onMouseEnter,
+              onMouseLeave: _this2.onMouseLeave
+            },
+            _react2["default"].createElement(_beeFormControl2["default"], _extends({
+              ref: function ref(_ref) {
+                return _this2.outInput = _ref;
               },
-              _react2["default"].createElement(_beeFormControl2["default"], _extends({
-                ref: function ref(_ref) {
-                  return _this2.outInput = _ref;
-                },
-                disabled: props.disabled,
-                placeholder: _this2.props.placeholder,
-                onClick: function onClick(event) {
-                  _this2.onClick(event);
-                },
-                focusSelect: props.defaultSelected,
-                onFocus: function onFocus(v, e) {
-                  _this2.outInputFocus(e);
-                },
-                onKeyDown: _this2.outInputKeydown
-              }, keyboardInputProps, autofocus)),
-              showClose && _this2.state.value && _this2.state.showClose && !props.disabled ? _react2["default"].createElement(
-                _beeInputGroup2["default"].Button,
-                { shape: "border",
-                  onClick: _this2.clear },
-                props.closeIcon()
-              ) : _react2["default"].createElement(
-                _beeInputGroup2["default"].Button,
-                { shape: "border",
-                  onClick: function onClick(e) {
-                    props.keyboardInput ? _this2.iconClick(e) : '';
-                  } },
-                props.renderIcon()
-              )
-            );
-          }
-        )
+              disabled: props.disabled,
+              placeholder: _this2.props.placeholder,
+              onClick: function onClick(event) {
+                _this2.onClick(event);
+              },
+              focusSelect: props.defaultSelected,
+              onFocus: function onFocus(v, e) {
+                _this2.outInputFocus(e);
+              },
+              onKeyDown: _this2.outInputKeydown
+            }, keyboardInputProps, autofocus)),
+            showClose && _this2.state.value && _this2.state.showClose && !props.disabled ? _react2["default"].createElement(
+              _beeInputGroup2["default"].Button,
+              { shape: "border",
+                onClick: _this2.clear },
+              props.closeIcon()
+            ) : _react2["default"].createElement(
+              _beeInputGroup2["default"].Button,
+              { shape: "border",
+                onClick: function onClick(e) {
+                  props.keyboardInput ? _this2.iconClick(e) : '';
+                } },
+              props.renderIcon()
+            )
+          );
+        }
       )
     );
   };
@@ -414,9 +413,18 @@ var _initialiseProps = function _initialiseProps() {
     _this3.props.onDateInputBlur && _this3.props.onDateInputBlur(e, value);
   };
 
-  this.onBlur = function () {
-    var value = _this3.state.value;
-    _this3.props.onChange && _this3.props.onChange(value, value && _this3.getValue(value) || '');
+  this.onDateHover = function () {
+    var format = _this3.props.format;
+    var value = _this3.state.value,
+        newValue = value && _this3.getValue(value);
+
+
+    var inputValue = _this3.outInput.state.value;
+    inputValue = format ? inputValue : inputValue && _this3.getValue((0, _moment2["default"])(inputValue));
+
+    if (newValue && inputValue !== newValue) {
+      _this3.props.onChange && _this3.props.onChange(value, newValue || '');
+    }
   };
 
   this.stopPropagation = function (e) {

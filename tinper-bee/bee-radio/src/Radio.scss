@@ -142,7 +142,7 @@ $radio-icon-checked-height: 6px;
 		height: 100%;
 	}
 	input[type='radio']:focus + .u-radio-label:before{
-    	border-color: $radio-checked-color;
+    	// border-color: $radio-checked-color;
 	}
 	&.is-checked {
 		.u-radio-label:before{
@@ -260,7 +260,7 @@ $radio-icon-checked-height: 6px;
 	    
 	}
 	input[type='radio']:focus + .u-radio-label:before{
-    	border-color: $radio-success-bg;
+    	// border-color: $radio-success-bg;
 	} 
 }
 // Modifier: `radio-warning`
@@ -282,7 +282,7 @@ $radio-icon-checked-height: 6px;
 	    color: $radio-warning-bg;
 	}
 	input[type='radio']:focus + .u-radio-label:before{
-    	border-color: $radio-warning-bg;
+    	// border-color: $radio-warning-bg;
 	} 
 }
 // Modifier: `radio-danger`
@@ -304,7 +304,7 @@ $radio-icon-checked-height: 6px;
 	    color: $radio-danger-bg;
 	}
 	input[type='radio']:focus + .u-radio-label:before{
-    	border-color: $radio-danger-bg;
+    	// border-color: $radio-danger-bg;
 	} 
 }
 
@@ -328,7 +328,7 @@ $radio-icon-checked-height: 6px;
 	    
 	}
 	input[type='radio']:focus + .u-radio-label:before{
-    	border-color: $radio-info-bg;
+    	// border-color: $radio-info-bg;
 	} 
 }
 
@@ -352,6 +352,6 @@ $radio-icon-checked-height: 6px;
 	    
 	}
 	input[type='radio']:focus + .u-radio-label:before{
-    	border-color: $radio-dark-bg;
+    	// border-color: $radio-dark-bg;
 	} 
 }

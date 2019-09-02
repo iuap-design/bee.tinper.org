@@ -138,26 +138,13 @@ var Tree = function (_React$Component) {
     }
     if (nextProps.hasOwnProperty('treeData') && nextProps.treeData !== this.props.treeData) {
       this.dataChange = true;
-      st.treeData = treeData;
+      st.treeData = nextProps.treeData;
     }
     if (nextProps.children !== this.props.children) {
       this.dataChange = true;
     }
     this.setState(st);
   };
-
-  // componentWillUpdate(nextProps, nextState){
-  //   const { expandedKeys,treeData } = this.state;
-  //   if(nextState.expandedKeys !== expandedKeys) {
-  //     this.cacheExpandedKeys = expandedKeys;
-  //     if(this.props.lazyLoad){
-  //       let flatTreeData = this.deepTraversal(treeData);
-  //       this.setState({
-  //         flatTreeData
-  //       })
-  //     }
-  //   }
-  // }
 
   Tree.prototype.onDragStart = function onDragStart(e, treeNode) {
     this.dragNode = treeNode;
@@ -468,6 +455,9 @@ var Tree = function (_React$Component) {
       event: 'dblclick',
       node: treeNode
     };
+    if (props.expandWhenDoubleClick) {
+      this.onExpand(treeNode);
+    }
     props.onDoubleClick(eventKey, newSt);
   };
 
@@ -971,7 +961,7 @@ var Tree = function (_React$Component) {
         checkStrictly = _props3.checkStrictly,
         tabIndexValue = _props3.tabIndexValue,
         lazyLoad = _props3.lazyLoad,
-        offsetHeight = _props3.offsetHeight;
+        getScrollContainer = _props3.getScrollContainer;
     var _state = this.state,
         treeData = _state.treeData,
         flatTreeData = _state.flatTreeData;
@@ -1066,7 +1056,7 @@ var Tree = function (_React$Component) {
         className: 'u-tree-infinite-scroll',
         treeList: flatTreeData,
         handleTreeListChange: this.handleTreeListChange,
-        offsetHeight: offsetHeight
+        getScrollParent: getScrollContainer
       },
       _react2["default"].createElement(
         'ul',
@@ -1105,7 +1095,6 @@ var _initialiseProps = function _initialiseProps() {
 
     _this7.startIndex = typeof startIndex !== "undefined" ? startIndex : _this7.startIndex;
     _this7.endIndex = typeof endIndex !== "undefined" ? endIndex : _this7.endIndex;
-
     _this7.setState({
       treeData: treeData
     });
@@ -1117,7 +1106,7 @@ var _initialiseProps = function _initialiseProps() {
     var expandedKeys = _this7.state.expandedKeys,
         flatTreeData = [],
         flatTreeKeysMap = _this7.flatTreeKeysMap,
-        dataCopy = JSON.parse(JSON.stringify(treeData));
+        dataCopy = treeData;
 
     if (Array.isArray(dataCopy)) {
       for (var i = 0, l = dataCopy.length; i < l; i++) {
@@ -1127,25 +1116,27 @@ var _initialiseProps = function _initialiseProps() {
             children = _dataCopy$i.children,
             props = _objectWithoutProperties(_dataCopy$i, ['key', 'title', 'children']);
 
+        var dataCopyI = new Object();
         var isLeaf = children ? false : true,
             isExpanded = _this7.cacheExpandedKeys ? _this7.cacheExpandedKeys.indexOf(key) !== -1 : expandedKeys.indexOf(key) !== -1;
-        dataCopy[i].isExpanded = isExpanded;
-        dataCopy[i].parentKey = parentKey || null;
-        dataCopy[i].isShown = isShown;
-        dataCopy[i].isLeaf = isLeaf;
+        dataCopyI = _extends(dataCopyI, {
+          key: key,
+          title: title,
+          isExpanded: isExpanded,
+          parentKey: parentKey || null,
+          isShown: isShown,
+          isLeaf: isLeaf
+        }, _extends({}, props));
         //该节点的父节点是展开状态 或 该节点是根节点
         if (isShown || parentKey === null) {
-          flatTreeData.push(_extends(dataCopy[i], _extends({}, props))); // 取每项数据放入一个新数组
-          flatTreeKeysMap[key] = dataCopy[i];
+          flatTreeData.push(dataCopyI); // 取每项数据放入一个新数组
+          flatTreeKeysMap[key] = dataCopyI;
         }
-        if (Array.isArray(dataCopy[i]["children"]) && dataCopy[i]["children"].length > 0) {
+        if (Array.isArray(children) && children.length > 0) {
           // 若存在children则递归调用，把数据拼接到新数组中，并且删除该children
-          flatTreeData = flatTreeData.concat(_this7.deepTraversal(dataCopy[i]["children"], key, isExpanded));
-          delete dataCopy[i]["children"];
+          flatTreeData = flatTreeData.concat(_this7.deepTraversal(children, key, isExpanded));
         }
       }
-    } else {
-      flatTreeData.push(dataCopy); // 取每项数据放入一个新数组
     }
     return flatTreeData;
   };
@@ -1175,6 +1166,9 @@ var _initialiseProps = function _initialiseProps() {
 
   this.getSumHeight = function (start, end) {
     var sumHeight = 0;
+    if (start > end) {
+      return sumHeight;
+    }
     var span = Math.abs(end - start);
     if (span) {
       sumHeight = span * _config2["default"].defaultHeight;
@@ -1222,7 +1216,9 @@ Tree.propTypes = {
   lazyLoad: _propTypes2["default"].bool,
   treeData: _propTypes2["default"].array,
   renderTreeNodes: _propTypes2["default"].func,
-  autoSelectWhenFocus: _propTypes2["default"].bool
+  autoSelectWhenFocus: _propTypes2["default"].bool,
+  getScrollContainer: _propTypes2["default"].func,
+  expandWhenDoubleClick: _propTypes2["default"].bool
 };
 
 Tree.defaultProps = {
@@ -1250,7 +1246,9 @@ Tree.defaultProps = {
   onDragEnd: noop,
   tabIndexValue: 0,
   lazyLoad: false,
-  autoSelectWhenFocus: false
+  autoSelectWhenFocus: false,
+  getScrollContainer: noop,
+  expandWhenDoubleClick: false
 };
 
 exports["default"] = Tree;

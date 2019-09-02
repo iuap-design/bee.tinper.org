@@ -80,7 +80,7 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
 	
-	var Demo1 = __webpack_require__(265);var Demo2 = __webpack_require__(266);var Demo3 = __webpack_require__(267);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 根据输入框的内容，进行自动匹配列表显示", "code": "/**\n *\n * @title 根据输入框的内容，进行自动匹配列表显示\n * @description 通过`options`设置自动完成的数据源。支持光标操作，回车事件。\n *\n */\nimport React, { Component } from \"react\";\nimport { AutoComplete } from 'tinper-bee';\n\nclass Demo1 extends Component {\n  constructor(props) {\n    super(props);\n    this.state = {\n      value: \"\",\n      options: [\"10000\", \"10001\", \"10002\", \"11000\", \"12010\"],\n      placeholder: \"查找关键字,请输入1\",\n      disabled: false\n    };\n  }\n  onFormChange = value => {\n    console.log(value);\n    this.setState({\n      value: value\n    });\n  };\n  render() {\n    let { value, options, placeholder, disabled } = this.state;\n    return (\n      <div className=\"demo\" style={{ marginBottom: \"90px\" }}>\n        <AutoComplete\n          value={value}\n          disabled={disabled}\n          options={options}\n          placeholder={placeholder}\n          onValueChange={value => this.onFormChange(value)}\n        />\n      </div>\n    );\n  }\n}\n\n\n", "desc": " 通过`options`设置自动完成的数据源。支持光标操作，回车事件。" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 动态改变 options 数据源", "code": "/**\r\n *\r\n * @title 动态改变 options 数据源\r\n * @description `onSelectOption`为下拉框选中时触发的回调函数\r\n *\r\n */\r\nimport React, { Component } from \"react\";\r\nimport { AutoComplete } from 'tinper-bee';\r\n\r\nclass Demo2 extends Component {\r\n  constructor(props) {\r\n    super(props);\r\n    this.state = {\r\n      value: \"\",\r\n      options: [],\r\n      placeholder: \"查找关键字,请输入a\"\r\n    };\r\n  }\r\n\r\n  onFormChange = value => {\r\n    this.setState({\r\n      value: value,\r\n      options: !value ? [] : [value, value + value, value + value + value]\r\n    });\r\n  };\r\n\r\n  handleSelectChange = value => {\r\n    console.log('onSelectOption',value);\r\n  }\r\n\r\n  render() {\r\n    let { value, options, placeholder } = this.state;\r\n    return (\r\n      <div className=\"demo\" style={{ marginBottom: \"110px\" }}>\r\n        <AutoComplete\r\n          value={value}\r\n          options={options}\r\n          placeholder={placeholder}\r\n          onValueChange={value => this.onFormChange(value)}\r\n          onSelectOption={value => this.handleSelectChange(value)}\r\n        />\r\n      </div>\r\n    );\r\n  }\r\n}\r\n\r\n\r\n", "desc": " `onSelectOption`为下拉框选中时触发的回调函数" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 受控的`AutoComplete`", "code": "/**\r\n *\r\n * @title 受控的`AutoComplete`\r\n * @description `show`参数控制下拉框展开收起，`disabled`参数设置是否禁用\r\n *\r\n */\r\nimport React, { Component } from \"react\";\r\n\nimport { AutoComplete, Button } from 'tinper-bee';\r\n\r\nclass Demo3 extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            value: \"\",\r\n            options: [\"10000\", \"10001\", \"10002\", \"11000\", \"12010\"],\r\n            placeholder: \"查找关键字,请输入1\",\r\n            open: true,\r\n            disabled: false\r\n        };\r\n    }\r\n\r\n    handleChange = value => {\r\n        this.setState({\r\n            value: value,\r\n        });\r\n    };\r\n\r\n    changeOpen = () => {\r\n        this.setState({\r\n            open: !this.state.open,\r\n        });\r\n    }\r\n\r\n    changeDisabled = () => {\r\n        this.setState({\r\n            disabled: !this.state.disabled,\r\n        });\r\n    }\r\n\r\n    render() {\r\n        let { value, options, placeholder, open, disabled } = this.state;\r\n        return (\r\n        <div className=\"demo\" style={{ marginBottom: \"110px\" }}>\r\n            <div style={{marginBottom:16 + 'px'}}>\r\n                <Button onClick={this.changeOpen} style={{marginRight:16 + 'px'}}>{open ? '隐藏面板' : '显示面板'}</Button>\r\n                <Button onClick={this.changeDisabled}>{disabled ? '启用' : '禁用'}</Button>\r\n            </div>\r\n            <AutoComplete\r\n            show={open}\r\n            disabled={disabled}\r\n            value={value}\r\n            options={options}\r\n            placeholder={placeholder}\r\n            onChange={value => this.handleChange(value)}\r\n            />\r\n        </div>\r\n        );\r\n    }\r\n}\r\n\r\n\r\n", "desc": " `show`参数控制下拉框展开收起，`disabled`参数设置是否禁用" }];
+	var Demo1 = __webpack_require__(265);var Demo2 = __webpack_require__(266);var Demo3 = __webpack_require__(267);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 根据输入框的内容，进行自动匹配列表显示", "code": "/**\n *\n * @title 根据输入框的内容，进行自动匹配列表显示\n * @description 通过`options`设置自动完成的数据源。支持光标操作，回车事件。\n *\n */\nimport React, { Component } from \"react\";\nimport { AutoComplete } from 'tinper-bee';\n\n\nclass Demo1 extends Component {\n  constructor(props) {\n    super(props);\n    this.state = {\n      value: \"\",\n      options: [\"10000\", \"10001\", \"10002\", \"11000\", \"12010\"],\n      placeholder: \"查找关键字,请输入1\",\n      disabled: false\n    };\n  }\n  onFormChange = value => {\n    console.log(value);\n    this.setState({\n      value: value\n    });\n  };\n  render() {\n    let { value, options, placeholder, disabled } = this.state;\n    return (\n      <div className=\"demo\" style={{ marginBottom: \"90px\" }}>\n        <AutoComplete\n          value={value}\n          disabled={disabled}\n          options={options}\n          placeholder={placeholder}\n          onValueChange={value => this.onFormChange(value)}\n        />\n      </div>\n    );\n  }\n}\n\nexport default Demo1;\n", "desc": " 通过`options`设置自动完成的数据源。支持光标操作，回车事件。" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 动态改变 options 数据源", "code": "/**\r\n *\r\n * @title 动态改变 options 数据源\r\n * @description `onSelectOption`为下拉框选中时触发的回调函数\r\n *\r\n */\r\nimport React, { Component } from \"react\";\nimport { AutoComplete } from 'tinper-bee';\r\n\r\n\r\nclass Demo2 extends Component {\r\n  constructor(props) {\r\n    super(props);\r\n    this.state = {\r\n      value: \"\",\r\n      options: [],\r\n      placeholder: \"查找关键字,请输入a\"\r\n    };\r\n  }\r\n\r\n  onFormChange = value => {\r\n    this.setState({\r\n      value: value,\r\n      options: !value ? [] : [value, value + value, value + value + value]\r\n    });\r\n  };\r\n\r\n  handleSelectChange = value => {\r\n    console.log('onSelectOption',value);\r\n  }\r\n\r\n  render() {\r\n    let { value, options, placeholder } = this.state;\r\n    return (\r\n      <div className=\"demo\" style={{ marginBottom: \"110px\" }}>\r\n        <AutoComplete\r\n          value={value}\r\n          options={options}\r\n          placeholder={placeholder}\r\n          onValueChange={value => this.onFormChange(value)}\r\n          onSelectOption={value => this.handleSelectChange(value)}\r\n        />\r\n      </div>\r\n    );\r\n  }\r\n}\r\n\r\nexport default Demo2;\r\n", "desc": " `onSelectOption`为下拉框选中时触发的回调函数" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 受控的`AutoComplete`", "code": "/**\r\n *\r\n * @title 受控的`AutoComplete`\r\n * @description `show`参数控制下拉框展开收起，`disabled`参数设置是否禁用\r\n *\r\n */\r\nimport React, { Component } from \"react\";\nimport { Button, AutoComplete } from 'tinper-bee';\r\n\n\r\n\r\nclass Demo3 extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            value: \"\",\r\n            options: [\"10000\", \"10001\", \"10002\", \"11000\", \"12010\"],\r\n            placeholder: \"查找关键字,请输入1\",\r\n            open: true,\r\n            disabled: false\r\n        };\r\n    }\r\n\r\n    handleChange = value => {\r\n        this.setState({\r\n            value: value,\r\n        });\r\n    };\r\n\r\n    changeOpen = () => {\r\n        this.setState({\r\n            open: !this.state.open,\r\n        });\r\n    }\r\n\r\n    changeDisabled = () => {\r\n        this.setState({\r\n            disabled: !this.state.disabled,\r\n        });\r\n    }\r\n\r\n    render() {\r\n        let { value, options, placeholder, open, disabled } = this.state;\r\n        return (\r\n        <div className=\"demo\" style={{ marginBottom: \"110px\" }}>\r\n            <div style={{marginBottom:16 + 'px'}}>\r\n                <Button onClick={this.changeOpen} style={{marginRight:16 + 'px'}}>{open ? '隐藏面板' : '显示面板'}</Button>\r\n                <Button onClick={this.changeDisabled}>{disabled ? '启用' : '禁用'}</Button>\r\n            </div>\r\n            <AutoComplete\r\n            show={open}\r\n            disabled={disabled}\r\n            value={value}\r\n            options={options}\r\n            placeholder={placeholder}\r\n            onChange={value => this.handleChange(value)}\r\n            />\r\n        </div>\r\n        );\r\n    }\r\n}\r\n\r\nexport default Demo3;\r\n", "desc": " `show`参数控制下拉框展开收起，`disabled`参数设置是否禁用" }];
 	
 	var Demo = function (_Component) {
 	    _inherits(Demo, _Component);
@@ -32696,14 +32696,16 @@
 	    onChange: _propTypes2["default"].func,
 	    onBlur: _propTypes2["default"].func,
 	    showClose: _propTypes2["default"].bool,
-	    focusSelect: _propTypes2["default"].bool
+	    focusSelect: _propTypes2["default"].bool,
+	    debounceDelay: _propTypes2["default"].number
 	};
 	
 	var defaultProps = {
 	    componentClass: 'input',
 	    clsPrefix: 'u-form-control',
 	    type: 'text',
-	    size: 'md'
+	    size: 'md',
+	    debounceDelay: 0
 	};
 	
 	var FormControl = function (_React$Component) {
@@ -32728,12 +32730,14 @@
 	        };
 	
 	        _this.handleChange = function (e) {
+	            var now = new Date().getTime();
+	            if (now - _this.lastScrollCall < _this.props.debounceDelay) return;
+	            _this.lastScrollCall = now;
+	
 	            var onChange = _this.props.onChange;
 	
 	            var value = _this.input.value;
-	            _this.setState({
-	                showClose: true
-	            });
+	
 	            if (onChange) {
 	                onChange(value, e);
 	            }
@@ -32744,8 +32748,7 @@
 	
 	            _this.setState({
 	                showSearch: true,
-	                value: "",
-	                showClose: false
+	                value: ""
 	            });
 	            if (onChange) {
 	                onChange("");
@@ -32834,12 +32837,12 @@
 	                    onChange: _this.handleChange,
 	                    onBlur: _this.handleBlur,
 	                    onFocus: _this.handleFocus,
-	                    className: (0, _classnames2["default"])(className, classNames)
+	                    className: (0, _classnames2["default"])(classNames)
 	                })),
 	                _react2["default"].createElement(
 	                    'div',
 	                    { className: clsPrefix + '-suffix' },
-	                    _this.state.showClose ? _react2["default"].createElement(_beeIcon2["default"], { onClick: _this.clearValue, type: 'uf-close-c' }) : ''
+	                    value ? _react2["default"].createElement(_beeIcon2["default"], { onClick: _this.clearValue, type: 'uf-close-c' }) : ''
 	                )
 	            ) : _react2["default"].createElement(Component, _extends({}, others, {
 	                type: type,
@@ -32889,7 +32892,7 @@
 	                        onKeyDown: _this.handleKeyDown,
 	                        onBlur: _this.handleBlur,
 	                        onFocus: _this.handleFocus,
-	                        className: (0, _classnames2["default"])(className, clsPrefix, classes)
+	                        className: (0, _classnames2["default"])(clsPrefix, classes)
 	                    })),
 	                    _react2["default"].createElement(
 	                        'div',
@@ -32902,8 +32905,7 @@
 	
 	        _this.state = {
 	            showSearch: !props.value,
-	            value: props.value == null ? "" : props.value,
-	            showClose: false
+	            value: props.value == null ? "" : props.value
 	        };
 	        _this.input = {};
 	        return _this;

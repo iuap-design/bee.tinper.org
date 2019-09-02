@@ -32,7 +32,7 @@
         position: relative;
         display: block;
         white-space: nowrap;
-        padding: 0px 16px 0 28px;
+        padding: 0px 16px 0 16px;
         line-height: 42px;
         height: 42px;
         overflow: hidden;
@@ -76,7 +76,7 @@
     .u-dropdown-menu > .u-dropdown-menu-item {
       position: relative;
       display: block;
-      padding: 0px 16px 0 28px;
+      padding: 0px 16px 0 16px;
       line-height: 42px;
       height: 42px;
       overflow: hidden;
@@ -116,7 +116,7 @@
     .u-dropdown-menu-item-group-list {
       padding: 0; }
       .u-dropdown-menu-item-group-list > .u-dropdown-menu-item {
-        padding: 0px 16px 0 28px;
+        padding: 0px 16px 0 16px;
         line-height: 42px;
         height: 42px;
         overflow: hidden;

@@ -488,16 +488,23 @@ class TableHeader extends Component {
    */
   onDrop = (e) => {
     if (!this.props.draggable) return;
-    if(this.drag && this.drag.option != 'dragAble'){return;}
+    let props = this.getCurrentEventData(this._dragCurrent)
+    e.column = {props};
+    if(this.drag && this.drag.option != 'dragAble'){
+      this.props.onDrop(e);
+      return;
+    }
     let event = Event.getEvent(e) ,
     target = Event.getTarget(event);
     this.currentDome.setAttribute('draggable',false);//添加交换列效果
-
-    let data = this.getCurrentEventData(this._dragCurrent);
-    if(!data)return;
+    // let data = this.getCurrentEventData(this._dragCurrent);
+    // if(!data){
+    //   this.props.onDrop(e);
+    //   return;
+    // }
     if(!this.props.onDrop)return;
     // this.props.onDrop(event,target);
-    this.props.onDrop(event,{dragSource:this.currentObj,dragTarg:data});
+    this.props.onDrop(event,{dragSource:this.currentObj,dragTarg:colum});
   };
 
 
@@ -745,10 +752,15 @@ class TableHeader extends Component {
                 canDotDrag = "th-can-not-drag";
               }
               let thClassName = `${da.className}`?`${da.className}`:'';
-              if(da.textAlign){
+              if(da.titleAlign){
+                thClassName += ` text-${da.titleAlign} `;
+              }
+              else if(da.textAlign){
                 thClassName += ` text-${da.textAlign} `;
               }
+              
               delete da.textAlign;
+              delete da.titleAlign;
               const keyTemp = {};
               //避免key为undefined
               // if(da.dataindex && da.key ===undefined ){
@@ -779,6 +791,7 @@ class TableHeader extends Component {
               if(!da.fixed ){
                   return (<th {...da}  {...keyTemp} className={thClassName} data-th-fixed={da.fixed} data-line-key={da.key}
                   data-line-index={columIndex} data-th-width={da.width} data-type="draggable">
+                      {da.required ? <span className='required'>*</span>:''}
                       {da.children}
                       {
                         dragborder && columIndex != _rowLeng? <div ref={el => (this.gap = el)} data-line-key={da.key}

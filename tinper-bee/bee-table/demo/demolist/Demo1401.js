@@ -62,18 +62,27 @@ class Demo30 extends Component {
     }
   }
 
+  /**
+   * 表体滚动加载时触发的回调函数
+   * @param endIndex 可视区最后一条数据的 index 序号
+   */
+  handleBodyScroll = endIndex => {
+    console.log('endIndex：', endIndex);
+  }
+
   render() {
     return (
+      <div>
         <BigDataTable
           columns={columns}
-          data={data}
+          data={this.state.data}
           scroll={{y:300}}
           onRowClick={(record, index, indent) => {
             console.log('currentIndex--'+index);
           }}
+          onBodyScroll={this.handleBodyScroll}
         />
-
-     
+      </div>
     );
   }
 }

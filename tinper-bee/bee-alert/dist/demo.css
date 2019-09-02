@@ -23,28 +23,28 @@
     cursor: pointer; }
 
 .u-alert-success.u-alert {
-  background-color: rgb(200,230,201);
-  border-color: rgb(200,230,201);
+  background-color: rgb(232,245,233);
+  border-color: rgb(232,245,233);
   color: rgb(76,175,80); }
 
 .u-alert-news.u-alert {
-  background-color: rgb(187,222,251);
-  border-color: rgb(187,222,251);
+  background-color: rgb(227,242,253);
+  border-color: rgb(227,242,253);
   color: rgb(33,150,243); }
 
 .u-alert-info.u-alert {
-  background-color: rgb(178,235,242);
-  border-color: rgb(178,235,242);
+  background-color: rgb(224,247,250);
+  border-color: rgb(224,247,250);
   color: rgb(0,188,212); }
 
 .u-alert-warning.u-alert {
-  background-color: rgb(255,224,178);
-  border-color: rgb(255,224,178);
+  background-color: rgb(255,243,224);
+  border-color: rgb(255,243,224);
   color: rgb(255,152,0); }
 
 .u-alert-danger.u-alert {
-  background-color: rgb(255,205,210);
-  border-color: rgb(255,205,210);
+  background-color: rgb(255,235,238);
+  border-color: rgb(255,235,238);
   color: rgb(244,67,54); }
 
 .dark.u-alert-success.u-alert {

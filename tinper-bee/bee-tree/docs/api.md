@@ -37,10 +37,10 @@ import 'bee-tree/build/Tree.css';
 |showLine|是否显示连接线|bool|false
 |openIcon|自定义展开节点图标的名称[参考这里](http://bee.tinper.org/tinper-bee/bee-icon)String[]|-
 |closeIcon|自定义关闭节点图标的名称[参考这里](http://bee.tinper.org/tinper-bee/bee-icon)String[]|-
-|onExpand|当打开或关闭树节点触发的方法|function(expandedKeys, {expanded: bool, node})|-
-|onCheck|当用户点击复选框checkbox触发的回调方法|function(checkedKeys, e:{checked: bool, checkedNodes, node, event})|-
-|onSelect|当用户选择树节点触发的回调函数|function(selectedKeys, e:{selected: bool, selectedNodes, node, event})|-
-|filterTreeNode|过滤树节点的方法（highlight）,当返回true,相关联的节点会高亮|function(node)|-
+|onExpand|展开/收起节点时触发的回调函数|function(expandedKeys, {expanded: bool, node})|-
+|onCheck|点击复选框触发的回调方法|function(checkedKeys, e:{checked: bool, checkedNodes, node, event})|-
+|onSelect|点击树节点触发的回调函数|function(selectedKeys, e:{selected: bool, selectedNodes, node, event})|-
+|filterTreeNode|按需筛选树节点（高亮）,当返回true,相关联的节点会高亮|function(node)|-
 |loadData|异步加载数据|function(node)|-
 |onRightClick|当用户点击右键触发的回调函数|function({event,node})|-
 |draggable|树是否可拖拽（IE>8| bool|false
@@ -55,11 +55,13 @@ import 'bee-tree/build/Tree.css';
 |tabIndexValue|节点获取焦点时，自定义tabIndex的值|Number|0
 |Children|必填，TreeNode组件|node|-
 |mustExpandable|支持disabled的节点可以自定义展开收起，默认disabled的节点不可以展开收起|bool|false
+|autoSelectWhenFocus|使用“↑、↓”快捷键切换焦点时，是否自动选中树节点|bool|false
+|expandWhenDoubleClick|双击树节点的时候，是否触发收起/展开动作|bool|false
 |treeData|treeNodes 数据，如果设置则不需要手动构造 TreeNode 节点（key 在整个树范围内唯一）|array\<{key, title, children, [disabled, selectable]}>|-
 |lazyLoad|是否使用懒加载（适用于大数据场景），[如何使用](http://bee.tinper.org/tinper-bee/bee-tree#%E6%BB%9A%E5%8A%A8%E5%8A%A0%E8%BD%BD%E6%A0%91%E8%8A%82%E7%82%B9)|bool|false
 |renderTitle|使用 treeData 渲染树时使用，可通过此函数自定义树节点内容|Function(item)|-
 |renderTreeNodes|使用 treeData 渲染树节点时，可使用该函数自定义节点显示内容（非必须）|Function(data)|-
-|autoSelectWhenFocus|使用“↑、↓”快捷键切换焦点时，是否自动选中树节点|bool|false
+|getScrollContainer|用于滚动加载场景，自定义滚动事件监听的容器|Function(data)|-
 
 
 ### TreeNode

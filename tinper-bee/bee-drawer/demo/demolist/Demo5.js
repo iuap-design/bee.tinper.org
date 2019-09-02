@@ -6,7 +6,7 @@
  */
 
 import React, { Component } from 'react';
-import Drawer from '../../src/index';
+import Drawer from '../../src';
 
 class Demo5 extends Component {
     constructor(props){

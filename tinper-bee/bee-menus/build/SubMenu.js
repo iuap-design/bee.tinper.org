@@ -111,8 +111,6 @@ var SubMenu = exports.SubMenu = function (_React$Component) {
   };
 
   SubMenu.prototype.componentDidUpdate = function componentDidUpdate() {
-    var _this2 = this;
-
     var _props = this.props,
         mode = _props.mode,
         parentMenu = _props.parentMenu,
@@ -128,9 +126,8 @@ var SubMenu = exports.SubMenu = function (_React$Component) {
       return;
     }
 
-    this.minWidthTimeout = setTimeout(function () {
-      return _this2.adjustWidth();
-    }, 0);
+    // this.minWidthTimeout = setTimeout(() => this.adjustWidth(), 0);
+    this.adjustWidth();
   };
 
   SubMenu.prototype.componentWillUnmount = function componentWillUnmount() {
@@ -143,9 +140,9 @@ var SubMenu = exports.SubMenu = function (_React$Component) {
     }
 
     /* istanbul ignore if */
-    if (this.minWidthTimeout) {
-      clearTimeout(this.minWidthTimeout);
-    }
+    /* if (this.minWidthTimeout) {
+       clearTimeout(this.minWidthTimeout);
+     }*/
 
     /* istanbul ignore if */
     if (this.mouseenterTimeout) {
@@ -397,25 +394,25 @@ SubMenu.defaultProps = {
 };
 
 var _initialiseProps = function _initialiseProps() {
-  var _this3 = this;
+  var _this2 = this;
 
   this.onDestroy = function (key) {
-    _this3.props.onDestroy(key);
+    _this2.props.onDestroy(key);
   };
 
   this.onKeyDown = function (e) {
     var keyCode = e.keyCode;
-    var menu = _this3.menuInstance;
-    var _props3 = _this3.props,
+    var menu = _this2.menuInstance;
+    var _props3 = _this2.props,
         isOpen = _props3.isOpen,
         store = _props3.store;
 
-    if (_this3.props.store.getState().keyboard) {
+    if (_this2.props.store.getState().keyboard) {
       //是否启用键盘操作
       if (keyCode === _tinperBeeCore.KeyCode.ENTER) {
         // this.onTitleClick(e);
         menu && menu.onKeyDown && menu.onKeyDown(e);
-        updateDefaultActiveFirst(store, _this3.props.eventKey, true);
+        updateDefaultActiveFirst(store, _this2.props.eventKey, true);
         return true;
       }
 
@@ -423,9 +420,9 @@ var _initialiseProps = function _initialiseProps() {
         if (isOpen) {
           menu.onKeyDown(e);
         } else {
-          _this3.triggerOpenChange(true);
+          _this2.triggerOpenChange(true);
           // need to update current menu's defaultActiveFirst value
-          updateDefaultActiveFirst(store, _this3.props.eventKey, true);
+          updateDefaultActiveFirst(store, _this2.props.eventKey, true);
         }
         return true;
       }
@@ -437,7 +434,7 @@ var _initialiseProps = function _initialiseProps() {
           return undefined;
         }
         if (!handled) {
-          _this3.triggerOpenChange(false);
+          _this2.triggerOpenChange(false);
           handled = true;
         }
         return handled;
@@ -449,20 +446,20 @@ var _initialiseProps = function _initialiseProps() {
   };
 
   this.onOpenChange = function (e) {
-    _this3.props.onOpenChange(e);
+    _this2.props.onOpenChange(e);
   };
 
   this.onPopupVisibleChange = function (visible) {
-    _this3.triggerOpenChange(visible, visible ? 'mouseenter' : 'mouseleave');
+    _this2.triggerOpenChange(visible, visible ? 'mouseenter' : 'mouseleave');
   };
 
   this.onMouseEnter = function (e) {
-    var _props4 = _this3.props,
+    var _props4 = _this2.props,
         key = _props4.eventKey,
         onMouseEnter = _props4.onMouseEnter,
         store = _props4.store;
 
-    updateDefaultActiveFirst(store, _this3.props.eventKey, false);
+    updateDefaultActiveFirst(store, _this2.props.eventKey, false);
     onMouseEnter({
       key: key,
       domEvent: e
@@ -470,12 +467,12 @@ var _initialiseProps = function _initialiseProps() {
   };
 
   this.onMouseLeave = function (e) {
-    var _props5 = _this3.props,
+    var _props5 = _this2.props,
         parentMenu = _props5.parentMenu,
         eventKey = _props5.eventKey,
         onMouseLeave = _props5.onMouseLeave;
 
-    parentMenu.subMenuInstance = _this3;
+    parentMenu.subMenuInstance = _this2;
     onMouseLeave({
       key: eventKey,
       domEvent: e
@@ -483,7 +480,7 @@ var _initialiseProps = function _initialiseProps() {
   };
 
   this.onTitleMouseEnter = function (domEvent) {
-    var _props6 = _this3.props,
+    var _props6 = _this2.props,
         key = _props6.eventKey,
         onItemHover = _props6.onItemHover,
         onTitleMouseEnter = _props6.onTitleMouseEnter;
@@ -499,13 +496,13 @@ var _initialiseProps = function _initialiseProps() {
   };
 
   this.onTitleMouseLeave = function (e) {
-    var _props7 = _this3.props,
+    var _props7 = _this2.props,
         parentMenu = _props7.parentMenu,
         eventKey = _props7.eventKey,
         onItemHover = _props7.onItemHover,
         onTitleMouseLeave = _props7.onTitleMouseLeave;
 
-    parentMenu.subMenuInstance = _this3;
+    parentMenu.subMenuInstance = _this2;
     onItemHover({
       key: eventKey,
       hover: false
@@ -517,7 +514,7 @@ var _initialiseProps = function _initialiseProps() {
   };
 
   this.onTitleClick = function (e) {
-    var props = _this3.props;
+    var props = _this2.props;
 
     props.onTitleClick({
       key: props.eventKey,
@@ -526,70 +523,70 @@ var _initialiseProps = function _initialiseProps() {
     if (props.triggerSubMenuAction === 'hover') {
       return;
     }
-    _this3.triggerOpenChange(!props.isOpen, 'click');
-    updateDefaultActiveFirst(props.store, _this3.props.eventKey, false);
+    _this2.triggerOpenChange(!props.isOpen, 'click');
+    updateDefaultActiveFirst(props.store, _this2.props.eventKey, false);
   };
 
   this.onSubMenuClick = function (info) {
     // in the case of overflowed submenu
     // onClick is not copied over
-    if (typeof _this3.props.onClick === 'function') {
-      _this3.props.onClick(_this3.addKeyPath(info));
+    if (typeof _this2.props.onClick === 'function') {
+      _this2.props.onClick(_this2.addKeyPath(info));
     }
   };
 
   this.onSelect = function (info) {
-    _this3.props.onSelect(info);
+    _this2.props.onSelect(info);
   };
 
   this.onDeselect = function (info) {
-    _this3.props.onDeselect(info);
+    _this2.props.onDeselect(info);
   };
 
   this.getPrefixCls = function () {
-    return _this3.props.rootPrefixCls + '-submenu';
+    return _this2.props.rootPrefixCls + '-submenu';
   };
 
   this.getActiveClassName = function () {
-    return _this3.getPrefixCls() + '-active';
+    return _this2.getPrefixCls() + '-active';
   };
 
   this.getDisabledClassName = function () {
-    return _this3.getPrefixCls() + '-disabled';
+    return _this2.getPrefixCls() + '-disabled';
   };
 
   this.getSelectedClassName = function () {
-    return _this3.getPrefixCls() + '-selected';
+    return _this2.getPrefixCls() + '-selected';
   };
 
   this.getOpenClassName = function () {
-    return _this3.props.rootPrefixCls + '-submenu-open';
+    return _this2.props.rootPrefixCls + '-submenu-open';
   };
 
   this.saveMenuInstance = function (c) {
     // children menu instance
-    _this3.menuInstance = c;
+    _this2.menuInstance = c;
   };
 
   this.addKeyPath = function (info) {
     return _extends({}, info, {
-      keyPath: (info.keyPath || []).concat(_this3.props.eventKey)
+      keyPath: (info.keyPath || []).concat(_this2.props.eventKey)
     });
   };
 
   this.triggerOpenChange = function (open, type) {
-    var key = _this3.props.eventKey;
+    var key = _this2.props.eventKey;
     var openChange = function openChange() {
-      _this3.onOpenChange({
+      _this2.onOpenChange({
         key: key,
-        item: _this3,
+        item: _this2,
         trigger: type,
         open: open
       });
     };
     if (type === 'mouseenter') {
       // make sure mouseenter happen after other menu item's mouseleave
-      _this3.mouseenterTimeout = setTimeout(function () {
+      _this2.mouseenterTimeout = setTimeout(function () {
         openChange();
       }, 0);
     } else {
@@ -599,30 +596,30 @@ var _initialiseProps = function _initialiseProps() {
 
   this.isChildrenSelected = function () {
     var ret = { find: false };
-    (0, _util.loopMenuItemRecursively)(_this3.props.children, _this3.props.selectedKeys, ret);
+    (0, _util.loopMenuItemRecursively)(_this2.props.children, _this2.props.selectedKeys, ret);
     return ret.find;
   };
 
   this.isOpen = function () {
-    return _this3.props.openKeys.indexOf(_this3.props.eventKey) !== -1;
+    return _this2.props.openKeys.indexOf(_this2.props.eventKey) !== -1;
   };
 
   this.adjustWidth = function () {
     /* istanbul ignore if */
-    if (!_this3.subMenuTitle || !_this3.menuInstance) {
+    if (!_this2.subMenuTitle || !_this2.menuInstance) {
       return;
     }
-    var popupMenu = _reactDom2["default"].findDOMNode(_this3.menuInstance);
-    if (popupMenu.offsetWidth >= _this3.subMenuTitle.offsetWidth) {
+    var popupMenu = _reactDom2["default"].findDOMNode(_this2.menuInstance);
+    if (popupMenu.offsetWidth >= _this2.subMenuTitle.offsetWidth) {
       return;
     }
 
     /* istanbul ignore next */
-    popupMenu.style.minWidth = _this3.subMenuTitle.offsetWidth + 'px';
+    popupMenu.style.minWidth = _this2.subMenuTitle.offsetWidth + 'px'; //bug是因为在这里加了一个minWidth
   };
 
   this.saveSubMenuTitle = function (subMenuTitle) {
-    _this3.subMenuTitle = subMenuTitle;
+    _this2.subMenuTitle = subMenuTitle;
   };
 };
 

@@ -6,8 +6,6 @@ Object.defineProperty(exports, "__esModule", {
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var _defaultProps;
-
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
@@ -70,8 +68,6 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 var FormItem = _beeForm2["default"].FormItem;
 var Option = _beeSelect2["default"].Option;
 
@@ -88,18 +84,25 @@ var propTypes = {
     onChange: _propTypes2["default"].func,
     title: _propTypes2["default"].string,
     cacelBtn: _propTypes2["default"].string,
-    confirmBtn: _propTypes2["default"].string
+    confirmBtn: _propTypes2["default"].string,
+    isParameterArea: _propTypes2["default"].bool,
+    modalProps: _propTypes2["default"].object
 };
-var defaultProps = (_defaultProps = {
+var defaultProps = {
     clsPrefix: "u-colorpicker",
     value: "",
     label: "",
     placeholder: "",
     required: false,
-    autoCalculate: false,
     disabled: false,
-    disabledAlpha: false
-}, _defineProperty(_defaultProps, 'autoCalculate', function autoCalculate() {}), _defineProperty(_defaultProps, 'onChange', function onChange() {}), _defineProperty(_defaultProps, 'title', '取色板'), _defineProperty(_defaultProps, 'cacelBtn', '取消'), _defineProperty(_defaultProps, 'confirmBtn', '确认'), _defaultProps);
+    disabledAlpha: false,
+    autoCalculate: function autoCalculate() {},
+    onChange: function onChange() {},
+    title: '取色板',
+    cacelBtn: '取消',
+    confirmBtn: '确认',
+    isParameterArea: true
+};
 
 var initRgb = _colors2["default"]['red'].rgbArr[6] ? 'rgb(' + _colors2["default"]['red'].rgbArr[6] + ')' : '';
 
@@ -122,7 +125,6 @@ var ColorPicker = function (_Component) {
                 selectedScale = _this$cache.selectedScale,
                 selectedRgbValue = _this$cache.selectedRgbValue,
                 selectedHexValue = _this$cache.selectedHexValue,
-                formValue = _this$cache.formValue,
                 alpha = _this$cache.alpha;
 
             _this.setState({
@@ -131,7 +133,6 @@ var ColorPicker = function (_Component) {
                 selectedScale: selectedScale,
                 selectedRgbValue: selectedRgbValue,
                 selectedHexValue: selectedHexValue,
-                formValue: formValue,
                 alpha: alpha
             });
         };
@@ -467,7 +468,8 @@ var ColorPicker = function (_Component) {
             className = _props.className,
             disabled = _props.disabled,
             disabledAlpha = _props.disabledAlpha,
-            others = _objectWithoutProperties(_props, ['clsPrefix', 'onChange', 'value', 'label', 'required', 'placeholder', 'className', 'disabled', 'disabledAlpha']);
+            isParameterArea = _props.isParameterArea,
+            others = _objectWithoutProperties(_props, ['clsPrefix', 'onChange', 'value', 'label', 'required', 'placeholder', 'className', 'disabled', 'disabledAlpha', 'isParameterArea']);
 
         var _state = this.state,
             selectedColor = _state.selectedColor,
@@ -524,12 +526,13 @@ var ColorPicker = function (_Component) {
             ),
             _react2["default"].createElement(
                 _beeModal2["default"],
-                {
-                    width: '600',
+                _extends({
+                    width: isParameterArea ? '600' : '350',
                     className: clsPrefix + '-modal',
                     show: this.state.displayColorPicker,
                     onHide: this.handleClose,
-                    backdropClosable: false },
+                    backdropClosable: false
+                }, this.props.modalProps),
                 _react2["default"].createElement(
                     _beeModal2["default"].Header,
                     { closeButton: true },
@@ -568,14 +571,14 @@ var ColorPicker = function (_Component) {
                             null,
                             _react2["default"].createElement(
                                 _beeLayout.Col,
-                                { md: 7, xs: 7, sm: 7, className: 'col-7' },
+                                { md: 7, xs: 7, sm: 7, style: isParameterArea ? {} : { width: '100%', marginLeft: '10.5px' }, className: 'col-7' },
                                 _react2["default"].createElement(
                                     'ul',
                                     { className: clsPrefix + '-panel-color-plate clearfix' },
                                     this.renderColorPlate(selectedColor)
                                 )
                             ),
-                            _react2["default"].createElement(
+                            isParameterArea && _react2["default"].createElement(
                                 _beeLayout.Col,
                                 { md: 5, xs: 5, sm: 5, className: 'col-5' },
                                 _react2["default"].createElement(

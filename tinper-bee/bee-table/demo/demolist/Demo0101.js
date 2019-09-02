@@ -7,7 +7,6 @@
 */
 
 import React, { Component } from "react";
-import {Button,Tooltip} from "tinper-bee";
 import Table from "../../src";
 
 const columns = [
@@ -30,6 +29,7 @@ class Demo0101 extends Component {
         <Table
           columns={columns}
           data={data}
+          showRowNum={true}
         />
     );
   }

@@ -58,11 +58,11 @@
 	
 	var _beePanel = __webpack_require__(9);
 	
-	var _beeDrawer = __webpack_require__(82);
+	var _beeDrawer = __webpack_require__(84);
 	
 	var _beeDrawer2 = _interopRequireDefault(_beeDrawer);
 	
-	var _beeClipboard = __webpack_require__(96);
+	var _beeClipboard = __webpack_require__(98);
 	
 	var _beeClipboard2 = _interopRequireDefault(_beeClipboard);
 	
@@ -76,7 +76,7 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
 	
-	var Demo1 = __webpack_require__(157);var Demo2 = __webpack_require__(352);var Demo3 = __webpack_require__(353);var Demo4 = __webpack_require__(359);var Demo5 = __webpack_require__(644);var Demo6 = __webpack_require__(647);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 单个input校验", "code": '/**\r\n *\r\n * @title \u5355\u4E2Ainput\u6821\u9A8C\r\n * @description \u4F7F\u7528FormItem\r\n */\r\nimport React, { Component } from \'react\';\r\nimport { Form, Icon, Label, FormControl } from \'tinper-bee\';\r\n\n\n\nconst FormItem = Form.FormItem;\r\n\r\n\r\nconst Demo1 = Form.createForm()(class Demo extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n    }\r\n    render() {\r\n        const self=this;\r\n        const { getFieldProps, getFieldError } = this.props.form;\r\n        return (\r\n                <FormItem className=\'demo1\'>\r\n                    <Label>\u59D3\u540D</Label>\r\n                    <FormControl placeholder=\'\u8BF7\u8F93\u5165\u59D3\u540D\'\r\n                     {...getFieldProps(\'name\', {\r\n                        validateTrigger: \'onBlur\',\r\n                        rules: [{\r\n                            required: true, message: <span><Icon type="uf-exc-t"></Icon><span>\u8BF7\u8F93\u5165\u59D3\u540D</span></span>\r\n                        },{\r\n                            max:5,message:<span><Icon type="uf-exc-t"></Icon><span>\u6700\u5927\u957F\u5EA6\u4E3A10</span></span>\r\n                        },{\r\n                            pattern: /[\\u4e00-\\u9fa5]/, message: <span><Icon type="uf-exc-t"></Icon><span>\u8BF7\u8F93\u5165\u4E2D\u6587\u5B57\u7B26</span></span>,\r\n                        }],\r\n                    }) } />\r\n                    <span className=\'error\'>\r\n                        {getFieldError(\'name\')}\r\n                    </span>   \r\n                </FormItem>\r\n        )\r\n    }\r\n})\r\n\r\n', "desc": " 使用FormItem", "scss_code": "" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 基本form校验", "code": "/**\r\n *\r\n * @title 基本form校验\r\n * @description 登录示例\r\n */\r\nimport React, { Component } from 'react';\r\nimport ReactDOM from 'react-dom';\r\nimport { Form, Icon, Button, Label, FormControl } from 'tinper-bee';\r\n\n\n\n\nconst FormItem = Form.FormItem;\r\n\r\nconst Demo2 = Form.createForm()(class Demo2 extends Component {\r\n    submit = (e) => {\r\n        e.preventDefault();\r\n        this.props.form.validateFields((err, values) => {\r\n            if (err) {\r\n                console.log('校验失败', values);\r\n            } else {\r\n                console.log('提交成功', values)\r\n            }\r\n        });\r\n    }\r\n    render() {\r\n        const { getFieldProps, getFieldError } = this.props.form;\r\n        return (\r\n            <div className=\"demo2\">\r\n                <Form >\r\n                    <FormItem>\r\n                        <Label>用户名</Label>\r\n                        <FormControl placeholder=\"请输入用户名\"\r\n                            {...getFieldProps('username', {\r\n                                validateTrigger: 'onBlur',\r\n                                rules: [{\r\n                                    required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请输入用户名</span></span>,\r\n                                }],\r\n                            }) }\r\n                        />\r\n                        <span className='error'>\r\n                            {getFieldError('username')}\r\n                        </span>\r\n                    </FormItem>\r\n                    <FormItem>\r\n                        <Label>密码</Label>\r\n                        <FormControl placeholder=\"请输入密码\" type='password'\r\n                            {...getFieldProps('password', {\r\n                                validateTrigger: 'onBlur',\r\n                                rules: [{\r\n                                    required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请输入密码</span></span>,\r\n                                }],\r\n                            }) }\r\n                        />\r\n                        <span className='error'>\r\n                            {getFieldError('password')}\r\n                        </span>\r\n                    </FormItem>\r\n                    <FormItem style={{'paddingLeft':'106px'}}>\r\n                        <Button shape=\"border\" className=\"reset\" style={{\"marginRight\":\"8px\"}}>取消</Button>\r\n                        <Button colors=\"primary\" className=\"login\" onClick={this.submit}>登录</Button>\r\n                    </FormItem>\r\n                </Form>\r\n            </div>\r\n        )\r\n    }\r\n})\r\n", "desc": " 登录示例", "scss_code": "" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 基本form校验", "code": "/**\r\n *\r\n * @title 基本form校验\r\n * @description 注册示例\r\n */\r\nimport React, { Component } from 'react';\r\nimport { Form, Icon, Label, Checkbox, Button, FormControl } from 'tinper-bee';\r\nconst FormItem = Form.FormItem;\r\n\n\n\n\n\n\r\nconst Demo3 = Form.createForm()( class Demo extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            checkbox: false\r\n        }\r\n    }\r\n    submit = (e) => {\r\n        e.preventDefault();\r\n        this.props.form.validateFields((err, values) => {\r\n            if (err) {\r\n                console.log('校验失败', values);\r\n            } else {\r\n                console.log('提交成功', values)\r\n            }\r\n        });\r\n    }\r\n    handleConfirmPassword = (rule, value, callback) => {\r\n        const { getFieldValue } = this.props.form;\r\n        if (value && value !== getFieldValue('password')) {\r\n            callback(<span><Icon type=\"uf-exc-t\"></Icon><span>两次输入不一致！</span></span>)\r\n        }\r\n        callback();\r\n    }\r\n    render() {\r\n        const self = this;\r\n        const { getFieldProps, getFieldError } = this.props.form;\r\n        return (\r\n            <div className=\"demo3\">\r\n                <Form>\r\n                    <FormItem>\r\n                        <Label>用户名</Label>\r\n                        <FormControl placeholder=\"请输入用户名(包含数字和字母，8-15位)\"\r\n                            {...getFieldProps('username', {\r\n                                validateTrigger: 'onBlur',\r\n                                rules: [{\r\n                                    required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请输入用户名</span></span>,\r\n                                }, {\r\n                                    pattern: /^(?!\\d+$)(?![a-zA-Z]+$)[a-zA-Z0-9]{8,15}$/, \r\n                                    message: <span><Icon type=\"uf-exc-t\"></Icon><span>用户名格式错误</span></span>,\r\n                                }],\r\n                            }) }\r\n                        />\r\n                        <span className='error'>\r\n                            {getFieldError('username')}\r\n                        </span>\r\n                    </FormItem>\r\n\r\n                    <FormItem>\r\n                        <Label>密码</Label>\r\n                        <FormControl placeholder=\"请输入密码\" type='password'\r\n                            {...getFieldProps('password', {\r\n                                validateTrigger: 'onBlur',\r\n                                rules: [{\r\n                                    required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请输入密码</span></span>,\r\n                                }],\r\n                            }) }\r\n                        />\r\n                        <span className='error'>\r\n                            {getFieldError('password')}\r\n                        </span>\r\n                    </FormItem>\r\n\r\n                    <FormItem>\r\n                        <Label>再次输入密码</Label>\r\n                        <FormControl placeholder=\"请输入密码\" type='password'\r\n                            {...getFieldProps('password2', {\r\n                                validateTrigger: 'onBlur',\r\n                                rules: [{\r\n                                    required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请输入密码</span></span>,\r\n                                }, {\r\n                                    validator: this.handleConfirmPassword\r\n                                }],\r\n                            }) }\r\n                        />\r\n                        <span className='error'>\r\n                            {getFieldError('password2')}\r\n                        </span>\r\n                    </FormItem>\r\n\r\n                    <FormItem>\r\n                        <Label>邮箱</Label>\r\n                        <FormControl placeholder=\"请输入邮箱\"\r\n                            {...getFieldProps('email', {\r\n                                validateTrigger: 'onBlur',\r\n                                rules: [{\r\n                                    required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请输入邮箱</span></span>,\r\n                                }, {\r\n                                    type: 'email', message: <span><Icon type=\"uf-exc-t\"></Icon><span>邮箱格式不正确</span></span>\r\n                                }],\r\n                            }) }\r\n                        />\r\n                        <span className='error'>\r\n                            {getFieldError('email')}\r\n                        </span>\r\n                    </FormItem>\r\n                    <FormItem>\r\n                        <Label>手机号</Label>\r\n\r\n                        <FormControl placeholder=\"请输入手机号\"\r\n                            {...getFieldProps('phone', {\r\n                                validateTrigger: 'onBlur',\r\n                                rules: [{\r\n                                    required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请输入手机号</span></span>,\r\n                                }, {\r\n                                    pattern: /^\\d{11}$/, message: <span><Icon type=\"uf-exc-t\"></Icon><span>手机号格式不正确</span></span>\r\n                                }],\r\n                            }) }\r\n                        />\r\n\r\n                        <span className='error'>\r\n                            {getFieldError('phone')}\r\n                        </span>\r\n                    </FormItem>\r\n\r\n                    <FormItem style={{'paddingLeft':'106px'}}>\r\n                        <Checkbox\r\n                            defaultChecked={this.state.checkbox}\r\n                            {\r\n                            ...getFieldProps('checkbox', {\r\n                                initialValue: false,\r\n                            }\r\n                            ) }\r\n                        >\r\n                        我已经阅读并同意相关条款\r\n                        </Checkbox>\r\n                    </FormItem>\r\n                    <FormItem style={{'paddingLeft':'106px'}}>\r\n                        <Button shape=\"border\" className=\"reset\" style={{\"marginRight\":\"8px\"}}>取消</Button>\r\n                        <Button colors=\"primary\" className=\"login\" onClick={this.submit}>注册</Button>\r\n                    </FormItem>\r\n                </Form>\r\n            </div>\r\n        )\r\n    }\r\n})\r\n", "desc": " 注册示例", "scss_code": "" }, { "example": _react2['default'].createElement(Demo4, null), "title": " 表单校验", "code": "/**\r\n *\r\n * @title 表单校验\r\n * @description 用户信息录入实例\r\n */\r\nimport React, { Component } from 'react';\r\nimport ReactDOM from 'react-dom';\r\nimport { Form, Upload, Icon, Button, Label, CitySelect, Rate, InputNumber, Slider, Switch, Checkbox, DatePicker, Radio, Select,  Col,Row , FormControl } from 'tinper-bee';\r\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nconst FormItem = Form.FormItem;\r\nconst Option = Select.Option;\r\nconst CheckboxGroup = Checkbox.CheckboxGroup;\r\n\r\nconst uploadProps = {\r\n    name: 'file',\r\n    action: '/upload.do',\r\n    headers: {\r\n      authorization: 'authorization-text',\r\n    },\r\n    onChange(info) {\r\n      if (info.file.status !== 'uploading') {\r\n        console.log(info.file, info.fileList);\r\n      }\r\n      if (info.file.status === 'done') {\r\n        console.log(`${info.file.name} file uploaded successfully`);\r\n      } else if (info.file.status === 'error') {\r\n        console.log(`${info.file.name} file upload failed.`);\r\n      }\r\n    },\r\n};\r\n\r\nconst Demo4 = Form.createForm()(class Demo extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            selectedValue: '',\r\n            selectedValue2: 'headquarters'\r\n        };\r\n    }\r\n    submit = (e) => {\r\n        this.props.form.validateFields((err, values) => {\r\n            if (err) {\r\n                console.log('校验失败', values);\r\n            } else {\r\n                console.log('提交成功', values)\r\n            }\r\n        });\r\n    }\r\n    render() {\r\n        const { getFieldProps, getFieldError } = this.props.form;\r\n        const self = this;\r\n        return (\r\n            <div>\r\n                <Form className='demo4'>\r\n                    <FormItem>\r\n                        <Label><Icon type=\"uf-mi\" className='mast'></Icon>申请人</Label>\r\n                        <FormControl placeholder=\"请输入姓名\"\r\n                            {...getFieldProps('name', {\r\n                                validateTrigger: 'onBlur',\r\n                                rules: [{\r\n                                    required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请输入姓名</span></span>,\r\n                                }],\r\n                            }) }\r\n                        />\r\n                        <span className='error'>\r\n                            {getFieldError('name')}\r\n                        </span>\r\n                    </FormItem>\r\n                    <FormItem>\r\n                        <Label><Icon type=\"uf-mi\" className='mast'></Icon>联系方式</Label>\r\n                        <FormControl placeholder=\"请输入联系方式\"\r\n                            {...getFieldProps('phone', {\r\n                                validateTrigger: 'onBlur',\r\n                                rules: [{\r\n                                    required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请输入联系方式</span></span>,\r\n                                }, {\r\n                                    pattern: /^\\d{11}$/, message: <span><Icon type=\"uf-exc-t\"></Icon><span>手机号格式不正确</span></span>\r\n                                }],\r\n                            }) }\r\n                        />\r\n                        <span className='error'>\r\n                            {getFieldError('phone')}\r\n                        </span>\r\n                    </FormItem>\r\n                    <FormItem>\r\n                        <Label>供应商名称</Label>\r\n                        <FormControl placeholder=\"请输入供应商名称\"\r\n                            {\r\n                            ...getFieldProps('supplierName', {\r\n                                initialValue: '',\r\n                            })\r\n                            }\r\n                        />\r\n                    </FormItem>\r\n                    <FormItem>\r\n                        <Label><Icon type=\"uf-mi\" className='mast'></Icon>供货产品</Label>\r\n                        <FormControl placeholder=\"请输入供货产品\"\r\n                            {\r\n                            ...getFieldProps('supplyProducts', {\r\n                                validateTrigger: 'onBlur',\r\n                                rules: [{\r\n                                    required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请输入供货产品</span></span>,\r\n                                }],\r\n                                initialValue: '',\r\n                            })\r\n                            }\r\n                        />\r\n                        <span className='error line-height-32'>\r\n                            {getFieldError('supplyProducts')}\r\n                        </span>\r\n                    </FormItem>\r\n                    <FormItem className='time flex'>\r\n                        <Label className=\"line-height-32\">需求日期</Label>\r\n                        <DatePicker\r\n                            {\r\n                            ...getFieldProps('time', {\r\n                            }\r\n                            ) }\r\n                            placeholder={'请选择需求日期'}\r\n                        />\r\n                    </FormItem>\r\n                    <FormItem>\r\n                        <Label><Icon type=\"uf-mi\" className='mast'></Icon>物料关重程度</Label>\r\n                        <Radio.RadioGroup\r\n                            selectedValue={this.state.selectedValue}\r\n                            {\r\n                            ...getFieldProps('importance', {\r\n                                initialValue: '',\r\n                                onChange(value) {\r\n                                    self.setState({ selectedValue: value });\r\n                                },\r\n                                rules: [{ required: true }]\r\n                            }\r\n                            ) }\r\n                        >\r\n                            <Radio value=\"A\" >A（关键）</Radio>\r\n                            <Radio value=\"B\" >B（重要）</Radio>\r\n                            <Radio value=\"C\" >C（一般）</Radio>\r\n                        </Radio.RadioGroup>\r\n                    </FormItem>\r\n                    <FormItem>\r\n                        <Label><Icon type=\"uf-mi\" className='mast'></Icon>归属部门</Label>\r\n                        <Radio.RadioGroup\r\n                            selectedValue={this.state.selectedValue2}\r\n                            {\r\n                            ...getFieldProps('department', {\r\n                                initialValue: 'headquarters',\r\n                                onChange(value) {\r\n                                    self.setState({ selectedValue2: value });\r\n                                },\r\n                                rules: [{ required: true }]\r\n                            }\r\n                            ) }\r\n                        >\r\n                            <Radio value=\"headquarters\">总部</Radio>\r\n                            <Radio value=\"businessUnit\">事业部</Radio>\r\n                        </Radio.RadioGroup>\r\n                    </FormItem>\r\n                    <FormItem>\r\n                        <Label><Icon type=\"uf-mi\" className='mast'></Icon>采购组</Label>\r\n                        <CheckboxGroup \r\n                                {\r\n                                    ...getFieldProps('purchasingGroup',{\r\n                                        initialValue:['2'],\r\n                                        rules: [{ required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请选择采购组</span></span> }]\r\n                                    })\r\n                                }\r\n                            >\r\n                                <Checkbox value='1'>人力</Checkbox>\r\n                                <Checkbox value='2'>财务</Checkbox>\r\n                        </CheckboxGroup>\r\n                        <span className='error'>\r\n                            {getFieldError('purchasingGroup')}\r\n                        </span>\r\n                    </FormItem>\r\n                    <FormItem>\r\n                        <Label>保密等级</Label>\r\n                        <Rate\r\n                            {\r\n                            ...getFieldProps('rate', {\r\n                                initialValue: 0,\r\n                                rules: [{ required: true }]\r\n                            }\r\n                            ) }\r\n                        />\r\n                    </FormItem>\r\n                    <FormItem className=\"flex\">\r\n                        <Label className=\"line-height-32\">备注</Label>\r\n                        <FormControl componentClass='textarea'\r\n                            {\r\n                            ...getFieldProps('remark', {}\r\n                            ) }\r\n                        />\r\n                    </FormItem>  \r\n                    <FormItem >\r\n                        <Label>文件</Label>\r\n                        <Upload {...uploadProps}>\r\n                            <Button shape=\"border\">\r\n                            <Icon type=\"uf-upload\" /> Click to Upload\r\n                            </Button>\r\n                        </Upload>\r\n                    </FormItem>  \r\n                    <FormItem style={{'paddingLeft':'106px'}}>\r\n                        <Button shape=\"border\" className=\"reset\" style={{\"marginRight\":\"8px\"}}>取消</Button>\r\n                        <Button colors=\"primary\" className=\"login\" onClick={this.submit}>提交</Button>\r\n                    </FormItem>\r\n                </Form>\r\n            </div>\r\n        )\r\n    }\r\n})\r\n", "desc": " 用户信息录入实例", "scss_code": ".demo4{\r\n    .u-form-item{\r\n        .u-form-control, .datepicker-container{\r\n            min-width: 300px;\r\n        }\r\n    }\r\n}" }, { "example": _react2['default'].createElement(Demo5, null), "title": " 多种表单元素示例", "code": "/**\r\n *\r\n * @title 多种表单元素示例\r\n * @description 查询面板\r\n */\r\nimport React, { Component } from 'react';\r\nimport ReactDOM from 'react-dom';\r\nimport { Form, SearchPanel, Icon, Button, Label, Switch, Checkbox, DatePicker, Radio, Select,  Col , Row , FormControl } from 'tinper-bee';\r\n\n\n\n\n\n\n\n\n\n\n\nimport moment from \"moment/moment\";\r\nconst FormItem = Form.FormItem;\r\nconst Option = Select.Option;\r\nconst { RangePicker } = DatePicker;\r\nconst CheckboxGroup = Checkbox.CheckboxGroup;\r\n\r\nconst Demo5 = Form.createForm()(class Demo extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            expanded: true,\r\n            approvalState: '',\r\n            closeState: '',\r\n            confirmState: '',\r\n            voucherDate: [],\r\n            orderTypes:[\r\n                {\r\n                    'code':'001',\r\n                    'name':'类型1'\r\n                },\r\n                {\r\n                    'code':'002',\r\n                    'name':'类型2'\r\n                },\r\n                {\r\n                    'code':'003',\r\n                    'name':'类型3'\r\n                },\r\n            ]\r\n        };\r\n    }\r\n    submit = (e) => {\r\n        this.props.form.validateFields((err, values) => {\r\n            if (err) {\r\n                console.log('校验失败', values);\r\n            } else {\r\n                console.log('提交成功', values)\r\n            }\r\n        });\r\n    }\r\n    reset = () =>{\r\n        this.props.form.resetFields();\r\n        //部分表单元素无法通过this.props.form.resetFields重置，需要手动重置，如下\r\n        this.setState({\r\n            approvalState: '',\r\n            closeState: '',\r\n            confirmState: '',\r\n            voucherDate: []\r\n        })\r\n    }\r\n    onChange = () => {\r\n        this.setState({expanded: !this.state.expanded})\r\n    }\r\n    render() {\r\n        const { getFieldProps, getFieldError } = this.props.form;\r\n        const self = this;\r\n        return (\r\n            <div>\r\n                <SearchPanel\r\n                title='基础示例'\r\n                onSearch={this.submit}\r\n                onReset={this.reset}\r\n                expanded={this.state.expanded}\r\n                onChange={this.onChange}\r\n                >\r\n                    <Form className='demo5'>\r\n                        <Row>\r\n                            <Col lg={4} md={6} xs={12}>\r\n                                <FormItem>\r\n                                    <Col lg={4} md={4} xs={4}>\r\n                                        <Label><Icon type=\"uf-mi\" className='mast'></Icon>订单编号</Label>\r\n                                    </Col>\r\n                                    <Col lg={8} md={8} xs={8}>\r\n                                        <FormControl size=\"sm\"\r\n                                            {\r\n                                            ...getFieldProps('orderCode', {\r\n                                                initialValue: '',\r\n                                                validateTrigger: 'onBlur',\r\n                                                rules: [{\r\n                                                    required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请输入订单编号</span></span>,\r\n                                                }],\r\n                                            })\r\n                                            }\r\n                                        />\r\n                                        <span className='error'>\r\n                                            {getFieldError('orderCode')}\r\n                                        </span>\r\n                                    </Col>\r\n                                </FormItem>\r\n                            </Col>\r\n                            <Col  lg={4} md={6} xs={12}>\r\n                                <FormItem>\r\n                                    <Col lg={4} md={4} xs={4}>\r\n                                        <Label><Icon type=\"uf-mi\" className='mast'></Icon>供应商名称</Label>\r\n                                    </Col>\r\n                                    <Col lg={8} md={8} xs={8}>\r\n                                        <FormControl size=\"sm\"\r\n                                            {\r\n                                            ...getFieldProps('supplierName', {\r\n                                                initialValue: '',\r\n                                                validateTrigger: 'onBlur',\r\n                                                rules: [{\r\n                                                    required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请输入供应商名称</span></span>,\r\n                                                }],\r\n                                            })\r\n                                            }\r\n                                        />\r\n                                        <span className='error'>\r\n                                            {getFieldError('supplierName')}\r\n                                        </span>\r\n                                    </Col>\r\n                                </FormItem>\r\n                            </Col>\r\n                            <Col  lg={4} md={6} xs={12}>\r\n                                <FormItem>\r\n                                    <Col lg={4} md={4} xs={4}>\r\n                                        <Label><Icon type=\"uf-mi\" className='mast'></Icon>凭证名称</Label>\r\n                                    </Col>\r\n                                    <Col lg={8} md={8} xs={8}>\r\n                                        <FormControl size=\"sm\"\r\n                                            {\r\n                                            ...getFieldProps('voucherName1', {\r\n                                                initialValue: '',\r\n                                                validateTrigger: 'onBlur',\r\n                                                rules: [{\r\n                                                    required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请输入凭证名称</span></span>,\r\n                                                }],\r\n                                            })\r\n                                            }\r\n                                        />\r\n                                        <span className='error'>\r\n                                            {getFieldError('voucherName1')}\r\n                                        </span>\r\n                                    </Col>\r\n                                </FormItem>\r\n                            </Col>\r\n                            \r\n                            <Col  lg={4} md={6} xs={12}>\r\n                                <FormItem>\r\n                                    <Col lg={4} md={4} xs={4}>\r\n                                        <Label>订单类型</Label>\r\n                                    </Col>\r\n                                    <Col lg={8} md={8} xs={8}>\r\n                                        <Select size=\"sm\"\r\n                                            {\r\n                                            ...getFieldProps('type', {\r\n                                                initialValue: '',\r\n                                            }\r\n                                            )}>\r\n                                            <Option value=\"\">请选择</Option>\r\n                                            {\r\n                                                self.state.orderTypes.map((item, index) => {\r\n                                                    return (\r\n                                                        <Option key={index} value={item.code}>{item.name}</Option>\r\n                                                    )\r\n                                                })\r\n                                            }\r\n                                        </Select>\r\n                                    </Col>\r\n                                </FormItem>\r\n                            </Col>\r\n                            <Col  lg={4} md={6} xs={12}>\r\n                                <FormItem>\r\n                                    <Col lg={4} md={4} xs={4}>\r\n                                        <Label>采购组</Label>\r\n                                    </Col>\r\n                                    <Col lg={8} md={8} xs={8}>\r\n                                        <CheckboxGroup \r\n                                            {\r\n                                                ...getFieldProps('purchasingGroup',{\r\n                                                    initialValue:['2']\r\n                                                })\r\n                                            }\r\n                                        >\r\n                                            <Checkbox value='1'>人力</Checkbox>\r\n                                            <Checkbox value='2'>财务</Checkbox>\r\n                                        </CheckboxGroup>\r\n                                    </Col>\r\n                                </FormItem>\r\n                            </Col>\r\n                            <Col  lg={4} md={6} xs={12}>\r\n                                <FormItem>\r\n                                    <Col lg={4} md={4} xs={4}>\r\n                                        <Label>审批状态</Label>\r\n                                    </Col>\r\n                                    <Col lg={8} md={8} xs={8}>\r\n                                        <Radio.RadioGroup\r\n                                            selectedValue={this.state.approvalState}\r\n                                            {\r\n                                            ...getFieldProps('approvalState', {\r\n                                                initialValue: '1',\r\n                                                onChange(value) {\r\n                                                    self.setState({ approvalState: value });\r\n                                                },\r\n                                            }\r\n                                            )}\r\n                                        >\r\n                                            <Radio value=\"0\" >未审批</Radio>\r\n                                            <Radio value=\"1\" >已审批</Radio>\r\n                                        </Radio.RadioGroup>\r\n                                    </Col>\r\n                                </FormItem>\r\n                            </Col>\r\n                            <Col  lg={4} md={6} xs={12}>\r\n                                <FormItem>\r\n                                    <Col lg={4} md={4} xs={4}>\r\n                                        <Label>关闭状态</Label>\r\n                                    </Col>\r\n                                    <Col lg={8} md={8} xs={8}>\r\n                                        <Radio.RadioGroup\r\n                                            selectedValue={this.state.closeState}\r\n                                            {\r\n                                            ...getFieldProps('closeState', {\r\n                                                initialValue: '1',\r\n                                                onChange(value) {\r\n                                                    self.setState({ closeState: value });\r\n                                                },\r\n                                            }\r\n                                            )}\r\n                                        >\r\n                                            <Radio value=\"0\" >未关闭</Radio>\r\n                                            <Radio value=\"1\" >已关闭</Radio>\r\n                                        </Radio.RadioGroup>\r\n                                    </Col>\r\n                                </FormItem>\r\n                            </Col>\r\n                            <Col  lg={4} md={6} xs={12}>\r\n                                <FormItem>\r\n                                    <Col lg={4} md={4} xs={4}>\r\n                                        <Label>确认状态</Label>\r\n                                    </Col>\r\n                                    <Col lg={8} md={8} xs={8}>\r\n                                        <Radio.RadioGroup\r\n                                            selectedValue={this.state.confirmState}\r\n                                            {\r\n                                            ...getFieldProps('confirmState', {\r\n                                                initialValue: '1',\r\n                                                onChange(value) {\r\n                                                    self.setState({ confirmState: value });\r\n                                                },\r\n                                            }\r\n                                            )}\r\n                                        >\r\n                                            <Radio value=\"0\" >未确认</Radio>\r\n                                            <Radio value=\"1\" >已确认</Radio>\r\n                                        </Radio.RadioGroup>\r\n                                    </Col>\r\n                                </FormItem>\r\n                            </Col>\r\n                        </Row>\r\n                    </Form>\r\n                </SearchPanel>\r\n            </div>\r\n        )\r\n    }\r\n})\r\n", "desc": " 查询面板", "scss_code": ".demo5{\r\n    .u-form-item .error{\r\n        padding-left: 0;\r\n    }\r\n}" }, { "example": _react2['default'].createElement(Demo6, null), "title": " 多种布局示例", "code": "/**\r\n *\r\n * @title 多种布局示例\r\n * @description \r\n */\r\nimport React, { Component } from 'react';\r\nimport ReactDOM from 'react-dom';\r\nimport { Form, Icon, Button, Label, Switch, Checkbox, DatePicker, Radio, Select,  Col , Row , FormControl } from 'tinper-bee';\r\n\n\n\n\n\n\n\n\n\n\nimport moment from \"moment/moment\";\r\nconst FormItem = Form.FormItem;\r\nconst Option = Select.Option;\r\nconst { RangePicker } = DatePicker;\r\n\r\nconst Demo6 = Form.createForm()(class Demo extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            approvalState: '',\r\n            closeState: '',\r\n            confirmState: '',\r\n            voucherName: [],\r\n            orderTypes:[\r\n                {\r\n                    'code':'001',\r\n                    'name':'类型1'\r\n                },\r\n                {\r\n                    'code':'002',\r\n                    'name':'类型2'\r\n                },\r\n                {\r\n                    'code':'003',\r\n                    'name':'类型3'\r\n                },\r\n            ]\r\n        };\r\n    }\r\n    render() {\r\n        const { getFieldProps, getFieldError } = this.props.form;\r\n        const self = this;\r\n        const orderTypes= [{\r\n            \"code\":\"D001\",\r\n            \"name\":\"D001\"\r\n          },{\r\n            \"code\":\"D002\",\r\n            \"name\":\"D002\"\r\n          },{\r\n            \"code\":\"D003\",\r\n            \"name\":\"D003\"\r\n          },{\r\n            \"code\":\"D004\",\r\n            \"name\":\"D004\"\r\n          }];\r\n        return (\r\n            <div>\r\n                <Form className='demo6'>\r\n                    {/* 普通栅格布局 */}\r\n                    <h4>\r\n                        普通栅格布局\r\n                    </h4>\r\n                    <Row className = 'edit-panel'>\r\n                        <Col lg={4} md={6} xs={12}>\r\n                            <FormItem>\r\n                                <Label>\r\n                                    <Icon type=\"uf-mi\" className='mast'></Icon>\r\n                                    订单编号\r\n                                </Label>\r\n                                <FormControl\r\n                                    {\r\n                                    ...getFieldProps('orderCode1', {\r\n                                        initialValue: '',\r\n                                        rules: [{\r\n                                            required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请输入订单编号</span></span>,\r\n                                        }],\r\n                                    })\r\n                                    }\r\n                                />\r\n                                <span className='error'>\r\n                                    {\r\n                                        getFieldError('orderCode1')\r\n                                    }\r\n                                </span>\r\n                            </FormItem>\r\n                        </Col>\r\n                        <Col lg={4} md={6} xs={12}>\r\n                            <FormItem>\r\n                                <Label>\r\n                                    <Icon type=\"uf-mi\" className='mast'></Icon>\r\n                                    供应商名称\r\n                                </Label>\r\n                                <FormControl\r\n                                    {\r\n                                        ...getFieldProps('supplierName1', {\r\n                                            initialValue: '',\r\n                                            rules: [{\r\n                                                required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请输入供应商名称</span></span>,\r\n                                            }],\r\n                                        })\r\n                                    }\r\n                                />\r\n                                <span className='error'>\r\n                                    {\r\n                                        getFieldError('supplierName1')\r\n                                    }\r\n                                </span>\r\n                            </FormItem>\r\n                            \r\n                        </Col>\r\n                        <Col lg={4} md={6} xs={12}>\r\n                            <FormItem>\r\n                                <Label>凭证名称</Label>\r\n                                <FormControl\r\n                                    {\r\n                                        ...getFieldProps('voucherName1', {\r\n                                            initialValue: '',\r\n                                            rules: [{\r\n                                                required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请输入凭证名称</span></span>,\r\n                                            }],\r\n                                        })\r\n                                    }\r\n                                />\r\n                                <span className='error'>\r\n                                    {\r\n                                        getFieldError('voucherName1')\r\n                                    }\r\n                                </span>\r\n                            </FormItem>\r\n                        </Col>\r\n                    </Row>\r\n\r\n                    <div className='split'></div>\r\n                    \r\n                    \r\n                     {/* 单列铺满 */}\r\n                     <h4>\r\n                        单列铺满\r\n                     </h4>\r\n                     <Row className = 'edit-panel edit-panel-all'>\r\n                        <FormItem>\r\n                            <Col md={2} xs={2}>\r\n                                <Label>\r\n                                    <Icon type=\"uf-mi\" className='mast'></Icon>\r\n                                    订单编号\r\n                                </Label>\r\n                            </Col>\r\n                            <Col md={10} xs={10}>\r\n                                <FormControl\r\n                                    {\r\n                                    ...getFieldProps('orderCode2', {\r\n                                        initialValue: '',\r\n                                        rules: [{\r\n                                            required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请输入订单编号</span></span>,\r\n                                        }],\r\n                                    })\r\n                                    }\r\n                                />\r\n                                <span className='error'>\r\n                                    {\r\n                                        getFieldError('orderCode2')\r\n                                    }\r\n                                </span>\r\n                            </Col>\r\n                        </FormItem>\r\n\r\n                        <FormItem>\r\n                            <Col md={2} xs={2}>\r\n                                <Label>\r\n                                    <Icon type=\"uf-mi\" className='mast'></Icon>\r\n                                    供应商名称\r\n                                </Label>\r\n                            </Col>\r\n                            <Col md={10} xs={10}>\r\n                                <FormControl\r\n                                    {\r\n                                        ...getFieldProps('supplierName2', {\r\n                                            initialValue: '',\r\n                                            rules: [{\r\n                                                required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请输入供应商名称</span></span>,\r\n                                            }],\r\n                                        })\r\n                                    }\r\n                                />\r\n                                <span className='error'>\r\n                                    {\r\n                                        getFieldError('supplierName2')\r\n                                    }\r\n                                </span>\r\n                            </Col>\r\n                        </FormItem>\r\n\r\n                        <FormItem>\r\n                            <Col md={2} xs={2}>\r\n                                <Label>凭证名称</Label>\r\n                            </Col>\r\n                            <Col md={10} xs={10}>\r\n                            <FormControl\r\n                                    {\r\n                                        ...getFieldProps('voucherName2', {\r\n                                            initialValue: '',\r\n                                            rules: [{\r\n                                                required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请输入凭证名称</span></span>,\r\n                                            }],\r\n                                        })\r\n                                    }\r\n                                />\r\n                                <span className='error'>\r\n                                    {\r\n                                        getFieldError('voucherName2')\r\n                                    }\r\n                                </span>\r\n                            </Col>\r\n                        </FormItem>\r\n                        <FormItem>\r\n                            <Col md={2} xs={2}>\r\n                                <Label>订单类型</Label>\r\n                            </Col>\r\n                            <Col md={10} xs={10}>\r\n                                <Select {\r\n                                    ...getFieldProps('type', {\r\n                                        initialValue: '',\r\n                                    }\r\n                                    )}>\r\n                                    <Option value=\"\">请选择</Option>\r\n                                    {\r\n                                        orderTypes.map((item, index) => {\r\n                                            return (\r\n                                                <Option key={index} value={item.code}>{item.name}</Option>\r\n                                            )\r\n                                        })\r\n                                    }\r\n                                </Select>\r\n                            </Col>\r\n                        </FormItem>\r\n                        \r\n                    </Row>\r\n\r\n                    <div className='split'></div>\r\n\r\n                    {/* 单列居中 */}\r\n                    <h4>\r\n                        单列居中\r\n                    </h4>\r\n                    <Row className = 'text-algin-center'>\r\n                        <Col md={12} >\r\n                            <FormItem>\r\n                                <Label>\r\n                                    <Icon type=\"uf-mi\" className='mast'></Icon>\r\n                                    订单编号\r\n                                </Label>\r\n                                <FormControl\r\n                                    {\r\n                                    ...getFieldProps('orderCode3', {\r\n                                        initialValue: '',\r\n                                        rules: [{\r\n                                            required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请输入订单编号</span></span>,\r\n                                        }],\r\n                                    })\r\n                                    }\r\n                                />\r\n                                <span className='error'>\r\n                                    {\r\n                                        getFieldError('orderCode3')\r\n                                    }\r\n                                </span>\r\n                            </FormItem>\r\n                        </Col>\r\n                        <Col md={12}  >\r\n                            <FormItem>\r\n                                <Label>\r\n                                    <Icon type=\"uf-mi\" className='mast'></Icon>\r\n                                    供应商名称\r\n                                </Label>\r\n                                <FormControl\r\n                                    {\r\n                                        ...getFieldProps('supplierName3', {\r\n                                            initialValue: '',\r\n                                            rules: [{\r\n                                                required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请输入供应商名称</span></span>,\r\n                                            }],\r\n                                        })\r\n                                    }\r\n                                />\r\n                                <span className='error'>\r\n                                    {\r\n                                        getFieldError('supplierName3')\r\n                                    }\r\n                                </span>\r\n                            </FormItem>\r\n                            \r\n                        </Col>\r\n                        <Col md={12}  >\r\n                            <FormItem>\r\n                                <Label >凭证名称</Label>\r\n                                <FormControl\r\n                                    {\r\n                                        ...getFieldProps('voucherName3', {\r\n                                            initialValue: '',\r\n                                            rules: [{\r\n                                                required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请输入凭证名称</span></span>,\r\n                                            }],\r\n                                        })\r\n                                    }\r\n                                />\r\n                                <span className='error'>\r\n                                    {\r\n                                        getFieldError('voucherName3')\r\n                                    }\r\n                                </span>\r\n                            </FormItem>\r\n                        </Col>\r\n                        \r\n                    </Row>\r\n\r\n                     <div className='split'></div>\r\n\r\n                    {/* 三列带textarea */}\r\n                    <h4>\r\n                    三列带textarea\r\n                     </h4>\r\n                    <Row>\r\n                        <Col lg={4} md={6} xs={12}>\r\n                            <FormItem>\r\n                                <Label><Icon type=\"uf-mi\" className='mast'></Icon>订单编号</Label>\r\n                                <FormControl\r\n                                    {\r\n                                    ...getFieldProps('orderCode4', {\r\n                                        initialValue: '',\r\n                                        rules: [{\r\n                                            required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请输入订单编号</span></span>,\r\n                                        }],\r\n                                    })\r\n                                    }\r\n                                />\r\n                                <span className='error'>\r\n                                    {\r\n                                        getFieldError('orderCode4')\r\n                                    }\r\n                                </span>\r\n                            </FormItem>\r\n                        </Col>\r\n                        <Col lg={4} md={6} xs={12}>\r\n                            <FormItem>\r\n                                <Label><Icon type=\"uf-mi\" className='mast'></Icon>供应商</Label>\r\n                                <FormControl\r\n                                {\r\n                                    ...getFieldProps('supplierName4', {\r\n                                        initialValue: '',\r\n                                        rules: [{\r\n                                            required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请输入供应商名称</span></span>,\r\n                                        }],\r\n                                    })\r\n                                }\r\n                                />\r\n                                <span className='error'>\r\n                                    {\r\n                                        getFieldError('supplierName4')\r\n                                    }\r\n                                </span>\r\n                            </FormItem>\r\n                        </Col>\r\n                        <Col lg={4} md={6} xs={12}>\r\n                            <FormItem>\r\n                                <Label><Icon type=\"uf-mi\" className='mast'></Icon>凭证名称</Label>\r\n                                <FormControl\r\n                                    {\r\n                                        ...getFieldProps('voucherName4', {\r\n                                            initialValue: '',\r\n                                            rules: [{\r\n                                                required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请输入凭证名称</span></span>,\r\n                                            }],\r\n                                        })\r\n                                    }\r\n                                />\r\n                                <span className='error'>\r\n                                    {\r\n                                        getFieldError('voucherName4')\r\n                                    }\r\n                                </span>\r\n                            </FormItem>\r\n                        </Col>\r\n                    </Row>\r\n                    <Row>\r\n                        <Col md={12} xs={12}>\r\n                            <FormItem className=\"remark flex\">\r\n                                <Label className='line-height-32'>备注</Label>\r\n                                <FormControl componentClass='textarea'\r\n                                    {\r\n                                    ...getFieldProps('mark', {}\r\n                                    ) }\r\n                                />\r\n                            </FormItem>\r\n                        </Col>\r\n                    </Row>\r\n                </Form>\r\n            </div>\r\n        )\r\n    }\r\n})\r\n", "desc": " ", "scss_code": ".demo6{\r\n    .remark textarea{\r\n        width: 100%;\r\n    }\r\n}" }];
+	var Demo1 = __webpack_require__(157);var Demo2 = __webpack_require__(352);var Demo3 = __webpack_require__(353);var Demo4 = __webpack_require__(359);var Demo5 = __webpack_require__(645);var Demo6 = __webpack_require__(651);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 单个input校验", "code": '/**\n *\n * @title \u5355\u4E2Ainput\u6821\u9A8C\n * @description \u4F7F\u7528FormItem\n */\nimport React, { Component } from \'react\';\nimport { Icon, Label, FormControl, Form } from \'tinper-bee\';\n\nconst FormItem = Form.FormItem;\n\n\nconst Demo1 = Form.createForm()(class Demo extends Component {\n    constructor(props) {\n        super(props);\n    }\n    render() {\n        const self=this;\n        const { getFieldProps, getFieldError } = this.props.form;\n        return (\n                <FormItem className=\'demo1\'>\n                    <Label>\u59D3\u540D</Label>\n                    <FormControl placeholder=\'\u8BF7\u8F93\u5165\u59D3\u540D\'\n                     {...getFieldProps(\'name\', {\n                        validateTrigger: \'onBlur\',\n                        rules: [{\n                            required: true, message: <span><Icon type="uf-exc-t"></Icon><span>\u8BF7\u8F93\u5165\u59D3\u540D</span></span>\n                        },{\n                            max:5,message:<span><Icon type="uf-exc-t"></Icon><span>\u6700\u5927\u957F\u5EA6\u4E3A10</span></span>\n                        },{\n                            pattern: /[\\u4e00-\\u9fa5]/, message: <span><Icon type="uf-exc-t"></Icon><span>\u8BF7\u8F93\u5165\u4E2D\u6587\u5B57\u7B26</span></span>,\n                        }],\n                    }) } />\n                    <span className=\'error\'>\n                        {getFieldError(\'name\')}\n                    </span>   \n                </FormItem>\n        )\n    }\n})\n\nexport default Demo1;', "desc": " 使用FormItem", "scss_code": "" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 基本form校验", "code": "/**\n *\n * @title 基本form校验\n * @description 登录示例\n */\nimport React, { Component } from 'react';\nimport { Icon, Button, Label, FormControl, Form } from 'tinper-bee';\nimport ReactDOM from 'react-dom';\n\nconst FormItem = Form.FormItem;\n\nconst Demo2 = Form.createForm()(class Demo2 extends Component {\n    submit = (e) => {\n        e.preventDefault();\n        this.props.form.validateFields((err, values) => {\n            if (err) {\n                console.log('校验失败', values);\n            } else {\n                console.log('提交成功', values)\n            }\n        });\n    }\n    render() {\n        const { getFieldProps, getFieldError } = this.props.form;\n        return (\n            <div className=\"demo2\">\n                <Form >\n                    <FormItem>\n                        <Label>用户名</Label>\n                        <FormControl placeholder=\"请输入用户名\"\n                            {...getFieldProps('username', {\n                                validateTrigger: 'onBlur',\n                                rules: [{\n                                    required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请输入用户名</span></span>,\n                                }],\n                            }) }\n                        />\n                        <span className='error'>\n                            {getFieldError('username')}\n                        </span>\n                    </FormItem>\n                    <FormItem>\n                        <Label>密码</Label>\n                        <FormControl placeholder=\"请输入密码\" type='password'\n                            {...getFieldProps('password', {\n                                validateTrigger: 'onBlur',\n                                rules: [{\n                                    required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请输入密码</span></span>,\n                                }],\n                            }) }\n                        />\n                        <span className='error'>\n                            {getFieldError('password')}\n                        </span>\n                    </FormItem>\n                    <FormItem style={{'paddingLeft':'106px'}}>\n                        <Button shape=\"border\" className=\"reset\" style={{\"marginRight\":\"8px\"}}>取消</Button>\n                        <Button colors=\"primary\" className=\"login\" onClick={this.submit}>登录</Button>\n                    </FormItem>\n                </Form>\n            </div>\n        )\n    }\n})\nexport default Demo2;", "desc": " 登录示例", "scss_code": "" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 基本form校验", "code": "/**\n *\n * @title 基本form校验\n * @description 注册示例\n */\nimport React, { Component } from 'react';\nimport { Icon, Label, Checkbox, Button, FormControl, Form } from 'tinper-bee';\n\nconst FormItem = Form.FormItem;\n\nconst Demo3 = Form.createForm()( class Demo extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            checkbox: false\n        }\n    }\n    submit = (e) => {\n        e.preventDefault();\n        this.props.form.validateFields((err, values) => {\n            if (err) {\n                console.log('校验失败', values);\n            } else {\n                console.log('提交成功', values)\n            }\n        });\n    }\n    handleConfirmPassword = (rule, value, callback) => {\n        const { getFieldValue } = this.props.form;\n        if (value && value !== getFieldValue('password')) {\n            callback(<span><Icon type=\"uf-exc-t\"></Icon><span>两次输入不一致！</span></span>)\n        }\n        callback();\n    }\n    render() {\n        const self = this;\n        const { getFieldProps, getFieldError } = this.props.form;\n        return (\n            <div className=\"demo3\">\n                <Form>\n                    <FormItem>\n                        <Label>用户名</Label>\n                        <FormControl placeholder=\"请输入用户名(包含数字和字母，8-15位)\"\n                            {...getFieldProps('username', {\n                                validateTrigger: 'onBlur',\n                                rules: [{\n                                    required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请输入用户名</span></span>,\n                                }, {\n                                    pattern: /^(?!\\d+$)(?![a-zA-Z]+$)[a-zA-Z0-9]{8,15}$/, \n                                    message: <span><Icon type=\"uf-exc-t\"></Icon><span>用户名格式错误</span></span>,\n                                }],\n                            }) }\n                        />\n                        <span className='error'>\n                            {getFieldError('username')}\n                        </span>\n                    </FormItem>\n\n                    <FormItem>\n                        <Label>密码</Label>\n                        <FormControl placeholder=\"请输入密码\" type='password'\n                            {...getFieldProps('password', {\n                                validateTrigger: 'onBlur',\n                                rules: [{\n                                    required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请输入密码</span></span>,\n                                }],\n                            }) }\n                        />\n                        <span className='error'>\n                            {getFieldError('password')}\n                        </span>\n                    </FormItem>\n\n                    <FormItem>\n                        <Label>再次输入密码</Label>\n                        <FormControl placeholder=\"请输入密码\" type='password'\n                            {...getFieldProps('password2', {\n                                validateTrigger: 'onBlur',\n                                rules: [{\n                                    required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请输入密码</span></span>,\n                                }, {\n                                    validator: this.handleConfirmPassword\n                                }],\n                            }) }\n                        />\n                        <span className='error'>\n                            {getFieldError('password2')}\n                        </span>\n                    </FormItem>\n\n                    <FormItem>\n                        <Label>邮箱</Label>\n                        <FormControl placeholder=\"请输入邮箱\"\n                            {...getFieldProps('email', {\n                                validateTrigger: 'onBlur',\n                                rules: [{\n                                    required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请输入邮箱</span></span>,\n                                }, {\n                                    type: 'email', message: <span><Icon type=\"uf-exc-t\"></Icon><span>邮箱格式不正确</span></span>\n                                }],\n                            }) }\n                        />\n                        <span className='error'>\n                            {getFieldError('email')}\n                        </span>\n                    </FormItem>\n                    <FormItem>\n                        <Label>手机号</Label>\n\n                        <FormControl placeholder=\"请输入手机号\"\n                            {...getFieldProps('phone', {\n                                validateTrigger: 'onBlur',\n                                rules: [{\n                                    required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请输入手机号</span></span>,\n                                }, {\n                                    pattern: /^\\d{11}$/, message: <span><Icon type=\"uf-exc-t\"></Icon><span>手机号格式不正确</span></span>\n                                }],\n                            }) }\n                        />\n\n                        <span className='error'>\n                            {getFieldError('phone')}\n                        </span>\n                    </FormItem>\n\n                    <FormItem style={{'paddingLeft':'106px'}}>\n                        <Checkbox\n                            defaultChecked={this.state.checkbox}\n                            {\n                            ...getFieldProps('checkbox', {\n                                initialValue: false,\n                            }\n                            ) }\n                        >\n                        我已经阅读并同意相关条款\n                        </Checkbox>\n                    </FormItem>\n                    <FormItem style={{'paddingLeft':'106px'}}>\n                        <Button shape=\"border\" className=\"reset\" style={{\"marginRight\":\"8px\"}}>取消</Button>\n                        <Button colors=\"primary\" className=\"login\" onClick={this.submit}>注册</Button>\n                    </FormItem>\n                </Form>\n            </div>\n        )\n    }\n})\nexport default Demo3;", "desc": " 注册示例", "scss_code": "" }, { "example": _react2['default'].createElement(Demo4, null), "title": " 表单校验", "code": "/**\r\n *\r\n * @title 表单校验\r\n * @description 用户信息录入实例\r\n */\r\nimport React, { Component } from 'react';\nimport { Upload, Icon, Button, Label, CitySelect, Rate, InputNumber, Slider, Switch, Checkbox, Radio, Select,  Col,Row , FormControl, Form } from 'tinper-bee';\r\nimport ReactDOM from 'react-dom';\r\n\r\n\n\n\n\nimport DatePicker from 'bee-datepicker';\r\n\n\n\n\n\n\n\n\n\n\nconst FormItem = Form.FormItem;\r\nconst Option = Select.Option;\r\nconst CheckboxGroup = Checkbox.CheckboxGroup;\r\n\r\nconst uploadProps = {\r\n    name: 'file',\r\n    action: '/upload.do',\r\n    headers: {\r\n      authorization: 'authorization-text',\r\n    },\r\n    onChange(info) {\r\n      if (info.file.status !== 'uploading') {\r\n        console.log(info.file, info.fileList);\r\n      }\r\n      if (info.file.status === 'done') {\r\n        console.log(`${info.file.name} file uploaded successfully`);\r\n      } else if (info.file.status === 'error') {\r\n        console.log(`${info.file.name} file upload failed.`);\r\n      }\r\n    },\r\n};\r\n\r\nconst Demo4 = Form.createForm()(class Demo extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            selectedValue: '',\r\n            selectedValue2: 'headquarters'\r\n        };\r\n    }\r\n    submit = (e) => {\r\n        this.props.form.validateFields((err, values) => {\r\n            if (err) {\r\n                console.log('校验失败', values);\r\n            } else {\r\n                console.log('提交成功', values)\r\n            }\r\n        });\r\n    }\r\n    render() {\r\n        const { getFieldProps, getFieldError } = this.props.form;\r\n        const self = this;\r\n        return (\r\n            <div>\r\n                <Form className='demo4'>\r\n                    <FormItem>\r\n                        <Label><Icon type=\"uf-mi\" className='mast'></Icon>申请人</Label>\r\n                        <FormControl placeholder=\"请输入姓名\"\r\n                            {...getFieldProps('name', {\r\n                                validateTrigger: 'onBlur',\r\n                                rules: [{\r\n                                    required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请输入姓名</span></span>,\r\n                                }],\r\n                            }) }\r\n                        />\r\n                        <span className='error'>\r\n                            {getFieldError('name')}\r\n                        </span>\r\n                    </FormItem>\r\n                    <FormItem>\r\n                        <Label><Icon type=\"uf-mi\" className='mast'></Icon>联系方式</Label>\r\n                        <FormControl placeholder=\"请输入联系方式\"\r\n                            {...getFieldProps('phone', {\r\n                                validateTrigger: 'onBlur',\r\n                                rules: [{\r\n                                    required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请输入联系方式</span></span>,\r\n                                }, {\r\n                                    pattern: /^\\d{11}$/, message: <span><Icon type=\"uf-exc-t\"></Icon><span>手机号格式不正确</span></span>\r\n                                }],\r\n                            }) }\r\n                        />\r\n                        <span className='error'>\r\n                            {getFieldError('phone')}\r\n                        </span>\r\n                    </FormItem>\r\n                    <FormItem>\r\n                        <Label>供应商名称</Label>\r\n                        <FormControl placeholder=\"请输入供应商名称\"\r\n                            {\r\n                            ...getFieldProps('supplierName', {\r\n                                initialValue: '',\r\n                            })\r\n                            }\r\n                        />\r\n                    </FormItem>\r\n                    <FormItem>\r\n                        <Label><Icon type=\"uf-mi\" className='mast'></Icon>供货产品</Label>\r\n                        <FormControl placeholder=\"请输入供货产品\"\r\n                            {\r\n                            ...getFieldProps('supplyProducts', {\r\n                                validateTrigger: 'onBlur',\r\n                                rules: [{\r\n                                    required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请输入供货产品</span></span>,\r\n                                }],\r\n                                initialValue: '',\r\n                            })\r\n                            }\r\n                        />\r\n                        <span className='error line-height-32'>\r\n                            {getFieldError('supplyProducts')}\r\n                        </span>\r\n                    </FormItem>\r\n                    <FormItem className='time flex'>\r\n                        <Label className=\"line-height-32\">需求日期</Label>\r\n                        <DatePicker\r\n                            {\r\n                            ...getFieldProps('time', {\r\n                            }\r\n                            ) }\r\n                            placeholder={'请选择需求日期'}\r\n                        />\r\n                    </FormItem>\r\n                    <FormItem>\r\n                        <Label><Icon type=\"uf-mi\" className='mast'></Icon>物料关重程度</Label>\r\n                        <Radio.RadioGroup\r\n                            selectedValue={this.state.selectedValue}\r\n                            {\r\n                            ...getFieldProps('importance', {\r\n                                initialValue: '',\r\n                                onChange(value) {\r\n                                    self.setState({ selectedValue: value });\r\n                                },\r\n                                rules: [{ required: true }]\r\n                            }\r\n                            ) }\r\n                        >\r\n                            <Radio value=\"A\" >A（关键）</Radio>\r\n                            <Radio value=\"B\" >B（重要）</Radio>\r\n                            <Radio value=\"C\" >C（一般）</Radio>\r\n                        </Radio.RadioGroup>\r\n                    </FormItem>\r\n                    <FormItem>\r\n                        <Label><Icon type=\"uf-mi\" className='mast'></Icon>归属部门</Label>\r\n                        <Radio.RadioGroup\r\n                            selectedValue={this.state.selectedValue2}\r\n                            {\r\n                            ...getFieldProps('department', {\r\n                                initialValue: 'headquarters',\r\n                                onChange(value) {\r\n                                    self.setState({ selectedValue2: value });\r\n                                },\r\n                                rules: [{ required: true }]\r\n                            }\r\n                            ) }\r\n                        >\r\n                            <Radio value=\"headquarters\">总部</Radio>\r\n                            <Radio value=\"businessUnit\">事业部</Radio>\r\n                        </Radio.RadioGroup>\r\n                    </FormItem>\r\n                    <FormItem>\r\n                        <Label><Icon type=\"uf-mi\" className='mast'></Icon>采购组</Label>\r\n                        <CheckboxGroup \r\n                                {\r\n                                    ...getFieldProps('purchasingGroup',{\r\n                                        initialValue:['2'],\r\n                                        rules: [{ required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请选择采购组</span></span> }]\r\n                                    })\r\n                                }\r\n                            >\r\n                                <Checkbox value='1'>人力</Checkbox>\r\n                                <Checkbox value='2'>财务</Checkbox>\r\n                        </CheckboxGroup>\r\n                        <span className='error'>\r\n                            {getFieldError('purchasingGroup')}\r\n                        </span>\r\n                    </FormItem>\r\n                    <FormItem>\r\n                        <Label>保密等级</Label>\r\n                        <Rate\r\n                            {\r\n                            ...getFieldProps('rate', {\r\n                                initialValue: 0,\r\n                                rules: [{ required: true }]\r\n                            }\r\n                            ) }\r\n                        />\r\n                    </FormItem>\r\n                    <FormItem className=\"flex\">\r\n                        <Label className=\"line-height-32\">备注</Label>\r\n                        <FormControl componentClass='textarea'\r\n                            {\r\n                            ...getFieldProps('remark', {}\r\n                            ) }\r\n                        />\r\n                    </FormItem>  \r\n                    <FormItem >\r\n                        <Label>文件</Label>\r\n                        <Upload {...uploadProps}>\r\n                            <Button shape=\"border\">\r\n                            <Icon type=\"uf-upload\" /> Click to Upload\r\n                            </Button>\r\n                        </Upload>\r\n                    </FormItem>  \r\n                    <FormItem style={{'paddingLeft':'106px'}}>\r\n                        <Button shape=\"border\" className=\"reset\" style={{\"marginRight\":\"8px\"}}>取消</Button>\r\n                        <Button colors=\"primary\" className=\"login\" onClick={this.submit}>提交</Button>\r\n                    </FormItem>\r\n                </Form>\r\n            </div>\r\n        )\r\n    }\r\n})\r\nexport default Demo4;", "desc": " 用户信息录入实例", "scss_code": ".demo4{\n    .u-form-item{\n        .u-form-control, .datepicker-container{\n            min-width: 300px;\n        }\n    }\n}" }, { "example": _react2['default'].createElement(Demo5, null), "title": " 多种表单元素示例", "code": "/**\n *\n * @title 多种表单元素示例\n * @description 查询面板\n */\nimport React, { Component } from 'react';\nimport { SearchPanel, Icon, Button, Label, Switch, Checkbox, Radio, Select,  Col , Row , FormControl, Form } from 'tinper-bee';\nimport ReactDOM from 'react-dom';\n\nimport DatePicker from 'bee-datepicker';\nimport moment from \"moment/moment\";\nconst FormItem = Form.FormItem;\nconst Option = Select.Option;\nconst { RangePicker } = DatePicker;\nconst CheckboxGroup = Checkbox.CheckboxGroup;\n\nconst Demo5 = Form.createForm()(class Demo extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            expanded: true,\n            approvalState: '',\n            closeState: '',\n            confirmState: '',\n            voucherDate: [],\n            orderTypes:[\n                {\n                    'code':'001',\n                    'name':'类型1'\n                },\n                {\n                    'code':'002',\n                    'name':'类型2'\n                },\n                {\n                    'code':'003',\n                    'name':'类型3'\n                },\n            ]\n        };\n    }\n    submit = (e) => {\n        this.props.form.validateFields((err, values) => {\n            if (err) {\n                console.log('校验失败', values);\n            } else {\n                console.log('提交成功', values)\n            }\n        });\n    }\n    reset = () =>{\n        this.props.form.resetFields();\n        //部分表单元素无法通过this.props.form.resetFields重置，需要手动重置，如下\n        this.setState({\n            approvalState: '',\n            closeState: '',\n            confirmState: '',\n            voucherDate: []\n        })\n    }\n    onChange = () => {\n        this.setState({expanded: !this.state.expanded})\n    }\n    render() {\n        const { getFieldProps, getFieldError } = this.props.form;\n        const self = this;\n        return (\n            <div>\n                <SearchPanel\n                title='基础示例'\n                onSearch={this.submit}\n                onReset={this.reset}\n                expanded={this.state.expanded}\n                onChange={this.onChange}\n                >\n                    <Form className='demo5'>\n                        <Row>\n                            <Col lg={4} md={6} xs={12}>\n                                <FormItem>\n                                    <Col lg={4} md={4} xs={4}>\n                                        <Label><Icon type=\"uf-mi\" className='mast'></Icon>订单编号</Label>\n                                    </Col>\n                                    <Col lg={8} md={8} xs={8}>\n                                        <FormControl size=\"sm\"\n                                            {\n                                            ...getFieldProps('orderCode', {\n                                                initialValue: '',\n                                                validateTrigger: 'onBlur',\n                                                rules: [{\n                                                    required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请输入订单编号</span></span>,\n                                                }],\n                                            })\n                                            }\n                                        />\n                                        <span className='error'>\n                                            {getFieldError('orderCode')}\n                                        </span>\n                                    </Col>\n                                </FormItem>\n                            </Col>\n                            <Col  lg={4} md={6} xs={12}>\n                                <FormItem>\n                                    <Col lg={4} md={4} xs={4}>\n                                        <Label><Icon type=\"uf-mi\" className='mast'></Icon>供应商名称</Label>\n                                    </Col>\n                                    <Col lg={8} md={8} xs={8}>\n                                        <FormControl size=\"sm\"\n                                            {\n                                            ...getFieldProps('supplierName', {\n                                                initialValue: '',\n                                                validateTrigger: 'onBlur',\n                                                rules: [{\n                                                    required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请输入供应商名称</span></span>,\n                                                }],\n                                            })\n                                            }\n                                        />\n                                        <span className='error'>\n                                            {getFieldError('supplierName')}\n                                        </span>\n                                    </Col>\n                                </FormItem>\n                            </Col>\n                            <Col  lg={4} md={6} xs={12}>\n                                <FormItem>\n                                    <Col lg={4} md={4} xs={4}>\n                                        <Label><Icon type=\"uf-mi\" className='mast'></Icon>凭证名称</Label>\n                                    </Col>\n                                    <Col lg={8} md={8} xs={8}>\n                                        <FormControl size=\"sm\"\n                                            {\n                                            ...getFieldProps('voucherName1', {\n                                                initialValue: '',\n                                                validateTrigger: 'onBlur',\n                                                rules: [{\n                                                    required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请输入凭证名称</span></span>,\n                                                }],\n                                            })\n                                            }\n                                        />\n                                        <span className='error'>\n                                            {getFieldError('voucherName1')}\n                                        </span>\n                                    </Col>\n                                </FormItem>\n                            </Col>\n                            \n                            <Col  lg={4} md={6} xs={12}>\n                                <FormItem>\n                                    <Col lg={4} md={4} xs={4}>\n                                        <Label>订单类型</Label>\n                                    </Col>\n                                    <Col lg={8} md={8} xs={8}>\n                                        <Select size=\"sm\"\n                                            {\n                                            ...getFieldProps('type', {\n                                                initialValue: '',\n                                            }\n                                            )}>\n                                            <Option value=\"\">请选择</Option>\n                                            {\n                                                self.state.orderTypes.map((item, index) => {\n                                                    return (\n                                                        <Option key={index} value={item.code}>{item.name}</Option>\n                                                    )\n                                                })\n                                            }\n                                        </Select>\n                                    </Col>\n                                </FormItem>\n                            </Col>\n                            <Col  lg={4} md={6} xs={12}>\n                                <FormItem>\n                                    <Col lg={4} md={4} xs={4}>\n                                        <Label>采购组</Label>\n                                    </Col>\n                                    <Col lg={8} md={8} xs={8}>\n                                        <CheckboxGroup \n                                            {\n                                                ...getFieldProps('purchasingGroup',{\n                                                    initialValue:['2']\n                                                })\n                                            }\n                                        >\n                                            <Checkbox value='1'>人力</Checkbox>\n                                            <Checkbox value='2'>财务</Checkbox>\n                                        </CheckboxGroup>\n                                    </Col>\n                                </FormItem>\n                            </Col>\n                            <Col  lg={4} md={6} xs={12}>\n                                <FormItem>\n                                    <Col lg={4} md={4} xs={4}>\n                                        <Label>审批状态</Label>\n                                    </Col>\n                                    <Col lg={8} md={8} xs={8}>\n                                        <Radio.RadioGroup\n                                            selectedValue={this.state.approvalState}\n                                            {\n                                            ...getFieldProps('approvalState', {\n                                                initialValue: '1',\n                                                onChange(value) {\n                                                    self.setState({ approvalState: value });\n                                                },\n                                            }\n                                            )}\n                                        >\n                                            <Radio value=\"0\" >未审批</Radio>\n                                            <Radio value=\"1\" >已审批</Radio>\n                                        </Radio.RadioGroup>\n                                    </Col>\n                                </FormItem>\n                            </Col>\n                            <Col  lg={4} md={6} xs={12}>\n                                <FormItem>\n                                    <Col lg={4} md={4} xs={4}>\n                                        <Label>关闭状态</Label>\n                                    </Col>\n                                    <Col lg={8} md={8} xs={8}>\n                                        <Radio.RadioGroup\n                                            selectedValue={this.state.closeState}\n                                            {\n                                            ...getFieldProps('closeState', {\n                                                initialValue: '1',\n                                                onChange(value) {\n                                                    self.setState({ closeState: value });\n                                                },\n                                            }\n                                            )}\n                                        >\n                                            <Radio value=\"0\" >未关闭</Radio>\n                                            <Radio value=\"1\" >已关闭</Radio>\n                                        </Radio.RadioGroup>\n                                    </Col>\n                                </FormItem>\n                            </Col>\n                            <Col  lg={4} md={6} xs={12}>\n                                <FormItem>\n                                    <Col lg={4} md={4} xs={4}>\n                                        <Label>确认状态</Label>\n                                    </Col>\n                                    <Col lg={8} md={8} xs={8}>\n                                        <Radio.RadioGroup\n                                            selectedValue={this.state.confirmState}\n                                            {\n                                            ...getFieldProps('confirmState', {\n                                                initialValue: '1',\n                                                onChange(value) {\n                                                    self.setState({ confirmState: value });\n                                                },\n                                            }\n                                            )}\n                                        >\n                                            <Radio value=\"0\" >未确认</Radio>\n                                            <Radio value=\"1\" >已确认</Radio>\n                                        </Radio.RadioGroup>\n                                    </Col>\n                                </FormItem>\n                            </Col>\n                        </Row>\n                    </Form>\n                </SearchPanel>\n            </div>\n        )\n    }\n})\nexport default Demo5;", "desc": " 查询面板", "scss_code": ".demo5{\n    .u-form-item .error{\n        padding-left: 0;\n    }\n}" }, { "example": _react2['default'].createElement(Demo6, null), "title": " 多种布局示例", "code": "/**\n *\n * @title 多种布局示例\n * @description \n */\nimport React, { Component } from 'react';\nimport { Icon, Button, Label, Switch, Checkbox, Radio, Select,  Col , Row , FormControl, Form } from 'tinper-bee';\nimport ReactDOM from 'react-dom';\n\nimport DatePicker from 'bee-datepicker';\nimport moment from \"moment/moment\";\nconst FormItem = Form.FormItem;\nconst Option = Select.Option;\nconst { RangePicker } = DatePicker;\n\nconst Demo6 = Form.createForm()(class Demo extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            approvalState: '',\n            closeState: '',\n            confirmState: '',\n            voucherName: [],\n            orderTypes:[\n                {\n                    'code':'001',\n                    'name':'类型1'\n                },\n                {\n                    'code':'002',\n                    'name':'类型2'\n                },\n                {\n                    'code':'003',\n                    'name':'类型3'\n                },\n            ]\n        };\n    }\n    render() {\n        const { getFieldProps, getFieldError } = this.props.form;\n        const self = this;\n        const orderTypes= [{\n            \"code\":\"D001\",\n            \"name\":\"D001\"\n          },{\n            \"code\":\"D002\",\n            \"name\":\"D002\"\n          },{\n            \"code\":\"D003\",\n            \"name\":\"D003\"\n          },{\n            \"code\":\"D004\",\n            \"name\":\"D004\"\n          }];\n        return (\n            <div>\n                <Form className='demo6'>\n                    {/* 普通栅格布局 */}\n                    <h4>\n                        普通栅格布局\n                    </h4>\n                    <Row className = 'edit-panel'>\n                        <Col lg={4} md={6} xs={12}>\n                            <FormItem>\n                                <Label>\n                                    <Icon type=\"uf-mi\" className='mast'></Icon>\n                                    订单编号\n                                </Label>\n                                <FormControl\n                                    {\n                                    ...getFieldProps('orderCode1', {\n                                        initialValue: '',\n                                        rules: [{\n                                            required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请输入订单编号</span></span>,\n                                        }],\n                                    })\n                                    }\n                                />\n                                <span className='error'>\n                                    {\n                                        getFieldError('orderCode1')\n                                    }\n                                </span>\n                            </FormItem>\n                        </Col>\n                        <Col lg={4} md={6} xs={12}>\n                            <FormItem>\n                                <Label>\n                                    <Icon type=\"uf-mi\" className='mast'></Icon>\n                                    供应商名称\n                                </Label>\n                                <FormControl\n                                    {\n                                        ...getFieldProps('supplierName1', {\n                                            initialValue: '',\n                                            rules: [{\n                                                required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请输入供应商名称</span></span>,\n                                            }],\n                                        })\n                                    }\n                                />\n                                <span className='error'>\n                                    {\n                                        getFieldError('supplierName1')\n                                    }\n                                </span>\n                            </FormItem>\n                            \n                        </Col>\n                        <Col lg={4} md={6} xs={12}>\n                            <FormItem>\n                                <Label>凭证名称</Label>\n                                <FormControl\n                                    {\n                                        ...getFieldProps('voucherName1', {\n                                            initialValue: '',\n                                            rules: [{\n                                                required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请输入凭证名称</span></span>,\n                                            }],\n                                        })\n                                    }\n                                />\n                                <span className='error'>\n                                    {\n                                        getFieldError('voucherName1')\n                                    }\n                                </span>\n                            </FormItem>\n                        </Col>\n                    </Row>\n\n                    <div className='split'></div>\n                    \n                    \n                     {/* 单列铺满 */}\n                     <h4>\n                        单列铺满\n                     </h4>\n                     <Row className = 'edit-panel edit-panel-all'>\n                        <FormItem>\n                            <Col md={2} xs={2}>\n                                <Label>\n                                    <Icon type=\"uf-mi\" className='mast'></Icon>\n                                    订单编号\n                                </Label>\n                            </Col>\n                            <Col md={10} xs={10}>\n                                <FormControl\n                                    {\n                                    ...getFieldProps('orderCode2', {\n                                        initialValue: '',\n                                        rules: [{\n                                            required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请输入订单编号</span></span>,\n                                        }],\n                                    })\n                                    }\n                                />\n                                <span className='error'>\n                                    {\n                                        getFieldError('orderCode2')\n                                    }\n                                </span>\n                            </Col>\n                        </FormItem>\n\n                        <FormItem>\n                            <Col md={2} xs={2}>\n                                <Label>\n                                    <Icon type=\"uf-mi\" className='mast'></Icon>\n                                    供应商名称\n                                </Label>\n                            </Col>\n                            <Col md={10} xs={10}>\n                                <FormControl\n                                    {\n                                        ...getFieldProps('supplierName2', {\n                                            initialValue: '',\n                                            rules: [{\n                                                required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请输入供应商名称</span></span>,\n                                            }],\n                                        })\n                                    }\n                                />\n                                <span className='error'>\n                                    {\n                                        getFieldError('supplierName2')\n                                    }\n                                </span>\n                            </Col>\n                        </FormItem>\n\n                        <FormItem>\n                            <Col md={2} xs={2}>\n                                <Label>凭证名称</Label>\n                            </Col>\n                            <Col md={10} xs={10}>\n                            <FormControl\n                                    {\n                                        ...getFieldProps('voucherName2', {\n                                            initialValue: '',\n                                            rules: [{\n                                                required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请输入凭证名称</span></span>,\n                                            }],\n                                        })\n                                    }\n                                />\n                                <span className='error'>\n                                    {\n                                        getFieldError('voucherName2')\n                                    }\n                                </span>\n                            </Col>\n                        </FormItem>\n                        <FormItem>\n                            <Col md={2} xs={2}>\n                                <Label>订单类型</Label>\n                            </Col>\n                            <Col md={10} xs={10}>\n                                <Select {\n                                    ...getFieldProps('type', {\n                                        initialValue: '',\n                                    }\n                                    )}>\n                                    <Option value=\"\">请选择</Option>\n                                    {\n                                        orderTypes.map((item, index) => {\n                                            return (\n                                                <Option key={index} value={item.code}>{item.name}</Option>\n                                            )\n                                        })\n                                    }\n                                </Select>\n                            </Col>\n                        </FormItem>\n                        \n                    </Row>\n\n                    <div className='split'></div>\n\n                    {/* 单列居中 */}\n                    <h4>\n                        单列居中\n                    </h4>\n                    <Row className = 'text-algin-center'>\n                        <Col md={12} >\n                            <FormItem>\n                                <Label>\n                                    <Icon type=\"uf-mi\" className='mast'></Icon>\n                                    订单编号\n                                </Label>\n                                <FormControl\n                                    {\n                                    ...getFieldProps('orderCode3', {\n                                        initialValue: '',\n                                        rules: [{\n                                            required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请输入订单编号</span></span>,\n                                        }],\n                                    })\n                                    }\n                                />\n                                <span className='error'>\n                                    {\n                                        getFieldError('orderCode3')\n                                    }\n                                </span>\n                            </FormItem>\n                        </Col>\n                        <Col md={12}  >\n                            <FormItem>\n                                <Label>\n                                    <Icon type=\"uf-mi\" className='mast'></Icon>\n                                    供应商名称\n                                </Label>\n                                <FormControl\n                                    {\n                                        ...getFieldProps('supplierName3', {\n                                            initialValue: '',\n                                            rules: [{\n                                                required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请输入供应商名称</span></span>,\n                                            }],\n                                        })\n                                    }\n                                />\n                                <span className='error'>\n                                    {\n                                        getFieldError('supplierName3')\n                                    }\n                                </span>\n                            </FormItem>\n                            \n                        </Col>\n                        <Col md={12}  >\n                            <FormItem>\n                                <Label >凭证名称</Label>\n                                <FormControl\n                                    {\n                                        ...getFieldProps('voucherName3', {\n                                            initialValue: '',\n                                            rules: [{\n                                                required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请输入凭证名称</span></span>,\n                                            }],\n                                        })\n                                    }\n                                />\n                                <span className='error'>\n                                    {\n                                        getFieldError('voucherName3')\n                                    }\n                                </span>\n                            </FormItem>\n                        </Col>\n                        \n                    </Row>\n\n                     <div className='split'></div>\n\n                    {/* 三列带textarea */}\n                    <h4>\n                    三列带textarea\n                     </h4>\n                    <Row>\n                        <Col lg={4} md={6} xs={12}>\n                            <FormItem>\n                                <Label><Icon type=\"uf-mi\" className='mast'></Icon>订单编号</Label>\n                                <FormControl\n                                    {\n                                    ...getFieldProps('orderCode4', {\n                                        initialValue: '',\n                                        rules: [{\n                                            required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请输入订单编号</span></span>,\n                                        }],\n                                    })\n                                    }\n                                />\n                                <span className='error'>\n                                    {\n                                        getFieldError('orderCode4')\n                                    }\n                                </span>\n                            </FormItem>\n                        </Col>\n                        <Col lg={4} md={6} xs={12}>\n                            <FormItem>\n                                <Label><Icon type=\"uf-mi\" className='mast'></Icon>供应商</Label>\n                                <FormControl\n                                {\n                                    ...getFieldProps('supplierName4', {\n                                        initialValue: '',\n                                        rules: [{\n                                            required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请输入供应商名称</span></span>,\n                                        }],\n                                    })\n                                }\n                                />\n                                <span className='error'>\n                                    {\n                                        getFieldError('supplierName4')\n                                    }\n                                </span>\n                            </FormItem>\n                        </Col>\n                        <Col lg={4} md={6} xs={12}>\n                            <FormItem>\n                                <Label><Icon type=\"uf-mi\" className='mast'></Icon>凭证名称</Label>\n                                <FormControl\n                                    {\n                                        ...getFieldProps('voucherName4', {\n                                            initialValue: '',\n                                            rules: [{\n                                                required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请输入凭证名称</span></span>,\n                                            }],\n                                        })\n                                    }\n                                />\n                                <span className='error'>\n                                    {\n                                        getFieldError('voucherName4')\n                                    }\n                                </span>\n                            </FormItem>\n                        </Col>\n                    </Row>\n                    <Row>\n                        <Col md={12} xs={12}>\n                            <FormItem className=\"remark flex\">\n                                <Label className='line-height-32'>备注</Label>\n                                <FormControl componentClass='textarea'\n                                    {\n                                    ...getFieldProps('mark', {}\n                                    ) }\n                                />\n                            </FormItem>\n                        </Col>\n                    </Row>\n                </Form>\n            </div>\n        )\n    }\n})\nexport default Demo6;", "desc": " ", "scss_code": ".demo6{\n    .remark textarea{\n        width: 100%;\n    }\n}" }];
 	
 	var Demo = function (_Component) {
 	    _inherits(Demo, _Component);
@@ -669,7 +669,7 @@
 	
 	var _Panel3 = _interopRequireDefault(_Panel2);
 	
-	var _PanelGroup2 = __webpack_require__(81);
+	var _PanelGroup2 = __webpack_require__(83);
 	
 	var _PanelGroup3 = _interopRequireDefault(_PanelGroup2);
 	
@@ -708,7 +708,7 @@
 	
 	var _propTypes2 = _interopRequireDefault(_propTypes);
 	
-	var _copyToClipboard = __webpack_require__(79);
+	var _copyToClipboard = __webpack_require__(81);
 	
 	var _copyToClipboard2 = _interopRequireDefault(_copyToClipboard);
 	
@@ -6125,8 +6125,6 @@
 	    value: true
 	});
 	
-	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-	
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 	
 	var _react = __webpack_require__(1);
@@ -6141,37 +6139,44 @@
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
+	var _warning = __webpack_require__(32);
+	
+	var _warning2 = _interopRequireDefault(_warning);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 	
 	var defaultDuration = 1.5;
-	var defaultTop = 0;
+	var newDuration = void 0;
+	var defaultTop = 24;
 	var defaultBottom = 48;
 	var bottom = 90;
 	var padding = 30;
-	var width = 200;
+	var width = 240;
 	var messageInstance = void 0;
 	var key = 1;
 	var clsPrefix = 'u-message';
 	var noop = function noop() {};
+	var notificationStyle_copy = {};
+	var messageStyle_copy = {};
+	var positionType = ['topRight', 'bottomRight', 'top', 'bottom', 'topLeft', 'bottomLeft', ''];
+	var defaultStyle = {};
 	
 	var positionObj = {
 	    "top": {
-	        messageStyle: {
-	            width: "100%"
-	        },
+	        messageStyle: {},
 	        notificationStyle: {
 	            top: defaultTop,
-	            width: "100%"
+	            left: '50%',
+	            transform: 'translateX( -50%)'
 	        },
 	        transitionName: 'top'
 	    },
 	    "bottom": {
-	        messageStyle: {
-	            width: "100%"
-	        },
+	        messageStyle: {},
 	        notificationStyle: {
 	            bottom: defaultBottom,
-	            width: "100%"
+	            left: '50%',
+	            transform: 'translateX( -50%)'
 	        },
 	        transitionName: 'bottom'
 	    },
@@ -6231,12 +6236,31 @@
 	        callback(messageInstance);
 	        return;
 	    }
-	    var style = positionObj[position].notificationStyle;
+	    switch (position) {
+	        case 'top':
+	            notificationStyle_copy.top = defaultTop;
+	            break;
+	        case 'bottom':
+	            notificationStyle_copy.bottom = defaultBottom;
+	            break;
+	        case 'bottomRight':
+	            notificationStyle_copy.bottom = bottom;
+	            break;
+	        case 'bottomLeft':
+	            notificationStyle_copy.bottom = bottom;
+	            break;
+	        default:
+	            break;
+	    }
+	    if (position !== 'top' && position !== 'bottom') {
+	        messageStyle_copy.width = width;
+	    }
+	    var style = JSON.stringify(notificationStyle_copy) == "{}" ? positionObj[position].notificationStyle : notificationStyle_copy;
 	    var instanceObj = {
 	        clsPrefix: clsPrefix,
 	        transitionName: clsPrefix + '-' + positionObj[position].transitionName,
-	        style: style, // 覆盖原来的样式
-	        position: ''
+	        style: _extends({}, style, defaultStyle), // 覆盖原来的样式
+	        position: position
 	    };
 	    if (typeof keyboard === 'boolean') {
 	        instanceObj.keyboard = keyboard;
@@ -6250,23 +6274,33 @@
 	    });
 	}
 	
-	function notice(content, duration, type, onClose, position, style, keyboard, onEscapeKeyUp, showIcon) {
+	function notice(content, duration_arg, type, onClose, position, style, keyboard, onEscapeKeyUp, showIcon, icon) {
+	    if (positionType.findIndex(function (item) {
+	        return item === position;
+	    }) < 0) {
+	        (0, _warning2["default"])(false, 'Failed prop type: Invalid prop `position` supplied to `Message`, expected one of ["top","bottom","topRight","topLeft","bottomRight","bottomLeft"].');
+	        return;
+	    }
+	    var duration = duration_arg !== undefined ? duration_arg : defaultDuration;
+	    notificationStyle_copy = _extends({}, positionObj[position].notificationStyle);
+	    messageStyle_copy = _extends({}, positionObj[position].messageStyle);
+	
 	    var iconType = {
 	        info: 'uf uf-i-c-2',
 	        success: 'uf uf-correct',
-	        danger: 'uf uf-close-c',
+	        danger: 'uf uf-exc-c',
 	        warning: 'uf uf-exc-t',
 	        light: 'uf uf-notification',
-	        dark: 'uf uf-bubble',
+	        dark: 'uf uf-notification',
 	        news: 'uf uf-bell',
 	        infolight: 'uf uf-i-c-2',
 	        successlight: 'uf uf-correct',
-	        dangerlight: 'uf uf-close-c',
+	        dangerlight: 'uf uf-exc-c',
 	        warninglight: 'uf uf-exc-t'
 	    }[type];
 	
-	    var positionStyle = positionObj[position].messageStyle;
-	
+	    var positionStyle = JSON.stringify(messageStyle_copy) == "{}" ? positionObj[position].messageStyle : messageStyle_copy;
+	    defaultStyle = _extends({}, positionStyle, style);
 	    getMessageInstance(position, function (instance) {
 	        instance.notice({
 	            key: key,
@@ -6279,7 +6313,7 @@
 	                showIcon ? _react2["default"].createElement(
 	                    'div',
 	                    { className: clsPrefix + '-notice-description-icon' },
-	                    _react2["default"].createElement('i', { className: (0, _classnames2["default"])(iconType) })
+	                    icon ? _react2["default"].createElement('i', { className: (0, _classnames2["default"])('' + icon) }) : _react2["default"].createElement('i', { className: (0, _classnames2["default"])(iconType) })
 	                ) : null,
 	                _react2["default"].createElement(
 	                    'div',
@@ -6302,14 +6336,19 @@
 	
 	exports["default"] = {
 	    create: function create(obj) {
+	        if (newDuration) {
+	            //如果在config方法里设置了duration
+	            obj.duration = newDuration;
+	        }
 	        var content = obj.content || '';
-	        var duration = _typeof(obj.duration) == undefined ? defaultDuration : obj.duration;
-	        var color = obj.color || 'dark';
+	        var duration = typeof obj.duration == 'undefined' ? defaultDuration : obj.duration;
+	        var color = obj.color || 'light';
 	        var onClose = obj.onClose || noop;
 	        var position = obj.position || "top";
 	        var style = obj.style || {};
-	        var showIcon = obj.showIcon || false;
-	        return notice(content, duration, color, onClose, position, style, obj.keyboard, obj.onEscapeKeyUp, showIcon);
+	        var showIcon = obj.hasOwnProperty('showIcon') ? obj.showIcon : true;
+	        var icon = obj.hasOwnProperty('icon') ? obj.icon : false;
+	        return notice(content, duration, color, onClose, position, style, obj.keyboard, obj.onEscapeKeyUp, showIcon, icon);
 	    },
 	    config: function config(options) {
 	        if (options.top !== undefined) {
@@ -6317,6 +6356,7 @@
 	        }
 	        if (options.duration !== undefined) {
 	            defaultDuration = options.duration;
+	            newDuration = defaultDuration;
 	        }
 	        if (options.clsPrefix !== undefined) {
 	            clsPrefix = options.clsPrefix;
@@ -6328,13 +6368,23 @@
 	            bottom = options.bottom;
 	        }
 	        if (options.width !== undefined) {
-	            bottom = options.width;
+	            width = options.width;
 	        }
 	    },
 	    destroy: function destroy() {
 	        if (messageInstance) {
 	            messageInstance.destroy();
 	            messageInstance = null;
+	            defaultDuration = 1.5;
+	            newDuration = undefined;
+	            defaultTop = 24;
+	            defaultBottom = 48;
+	            bottom = 90;
+	            padding = 30;
+	            width = 240;
+	            notificationStyle_copy = null;
+	            messageStyle_copy = null;
+	            defaultStyle = null;
 	        }
 	    }
 	};
@@ -6430,7 +6480,7 @@
 	  show: _propTypes2["default"].bool,
 	  clsPrefix: _propTypes2["default"].string,
 	  style: _propTypes2["default"].object,
-	  position: _propTypes2["default"].oneOf(['topRight', 'bottomRight', '']),
+	  position: _propTypes2["default"].oneOf(['topRight', 'bottomRight', 'top', 'bottom', 'topLeft', 'bottomLeft', '']),
 	  transitionName: _propTypes2["default"].string,
 	  keyboard: _propTypes2["default"].bool, // 按esc键是否关闭notice
 	  onEscapeKeyUp: _propTypes2["default"].func, // 设置esc键特殊钩子函数
@@ -7425,6 +7475,10 @@
 	
 	var _propTypes2 = _interopRequireDefault(_propTypes);
 	
+	var _beeIcon = __webpack_require__(79);
+	
+	var _beeIcon2 = _interopRequireDefault(_beeIcon);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 	
 	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
@@ -7530,7 +7584,11 @@
 	      closable ? _react2["default"].createElement(
 	        'a',
 	        { tabIndex: '0', onClick: this.close, className: componentClass + '-close' },
-	        _react2["default"].createElement('span', { className: componentClass + '-close-x' })
+	        _react2["default"].createElement(
+	          'span',
+	          { className: componentClass + '-close-x' },
+	          _react2["default"].createElement(_beeIcon2["default"], { type: 'uf-close' })
+	        )
 	      ) : null
 	    );
 	  };
@@ -7552,7 +7610,105 @@
 
 	'use strict';
 	
-	var deselectCurrent = __webpack_require__(80);
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _Icon = __webpack_require__(80);
+	
+	var _Icon2 = _interopRequireDefault(_Icon);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+	
+	exports["default"] = _Icon2["default"];
+	module.exports = exports['default'];
+
+/***/ }),
+/* 80 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _classnames = __webpack_require__(5);
+	
+	var _classnames2 = _interopRequireDefault(_classnames);
+	
+	var _propTypes = __webpack_require__(6);
+	
+	var _propTypes2 = _interopRequireDefault(_propTypes);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+	
+	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
+	
+	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
+	
+	var propTypes = {
+		type: _propTypes2["default"].string
+	
+	};
+	/**
+	 *  badge 默认显示内容1
+	 */
+	var defaultProps = {
+		clsPrefix: 'uf'
+	};
+	
+	var Icon = function (_Component) {
+		_inherits(Icon, _Component);
+	
+		function Icon(props) {
+			_classCallCheck(this, Icon);
+	
+			return _possibleConstructorReturn(this, _Component.call(this, props));
+		}
+	
+		Icon.prototype.render = function render() {
+			var _props = this.props,
+			    type = _props.type,
+			    className = _props.className,
+			    clsPrefix = _props.clsPrefix,
+			    others = _objectWithoutProperties(_props, ['type', 'className', 'clsPrefix']);
+	
+			var clsObj = {};
+	
+			var classNames = (0, _classnames2["default"])(clsPrefix, type);
+	
+			return _react2["default"].createElement('i', _extends({}, others, { className: (0, _classnames2["default"])(classNames, className) }));
+		};
+	
+		return Icon;
+	}(_react.Component);
+	
+	Icon.defaultProps = defaultProps;
+	Icon.propTypes = propTypes;
+	
+	exports["default"] = Icon;
+	module.exports = exports['default'];
+
+/***/ }),
+/* 81 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var deselectCurrent = __webpack_require__(82);
 	
 	var defaultMessage = 'Copy to clipboard: #{key}, Enter';
 	
@@ -7631,7 +7787,7 @@
 
 
 /***/ }),
-/* 80 */
+/* 82 */
 /***/ (function(module, exports) {
 
 	
@@ -7676,7 +7832,7 @@
 
 
 /***/ }),
-/* 81 */
+/* 83 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -7823,7 +7979,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 82 */
+/* 84 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -7832,7 +7988,7 @@
 	  value: true
 	});
 	
-	var _Drawer = __webpack_require__(83);
+	var _Drawer = __webpack_require__(85);
 	
 	var _Drawer2 = _interopRequireDefault(_Drawer);
 	
@@ -7842,7 +7998,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 83 */
+/* 85 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -7867,9 +8023,9 @@
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
-	var _common = __webpack_require__(84);
+	var _common = __webpack_require__(86);
 	
-	var _reactTransitionGroup = __webpack_require__(85);
+	var _reactTransitionGroup = __webpack_require__(87);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 	
@@ -8145,7 +8301,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 84 */
+/* 86 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -8172,18 +8328,18 @@
 	}
 
 /***/ }),
-/* 85 */
+/* 87 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var _CSSTransition = _interopRequireDefault(__webpack_require__(86));
+	var _CSSTransition = _interopRequireDefault(__webpack_require__(88));
 	
-	var _ReplaceTransition = _interopRequireDefault(__webpack_require__(93));
+	var _ReplaceTransition = _interopRequireDefault(__webpack_require__(95));
 	
-	var _TransitionGroup = _interopRequireDefault(__webpack_require__(94));
+	var _TransitionGroup = _interopRequireDefault(__webpack_require__(96));
 	
-	var _Transition = _interopRequireDefault(__webpack_require__(90));
+	var _Transition = _interopRequireDefault(__webpack_require__(92));
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -8195,7 +8351,7 @@
 	};
 
 /***/ }),
-/* 86 */
+/* 88 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {"use strict";
@@ -8205,15 +8361,15 @@
 	
 	var PropTypes = _interopRequireWildcard(__webpack_require__(6));
 	
-	var _addClass = _interopRequireDefault(__webpack_require__(87));
+	var _addClass = _interopRequireDefault(__webpack_require__(89));
 	
-	var _removeClass = _interopRequireDefault(__webpack_require__(89));
+	var _removeClass = _interopRequireDefault(__webpack_require__(91));
 	
 	var _react = _interopRequireDefault(__webpack_require__(1));
 	
-	var _Transition = _interopRequireDefault(__webpack_require__(90));
+	var _Transition = _interopRequireDefault(__webpack_require__(92));
 	
-	var _PropTypes = __webpack_require__(92);
+	var _PropTypes = __webpack_require__(94);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -8497,7 +8653,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(33)))
 
 /***/ }),
-/* 87 */
+/* 89 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -8507,7 +8663,7 @@
 	exports.__esModule = true;
 	exports.default = addClass;
 	
-	var _hasClass = _interopRequireDefault(__webpack_require__(88));
+	var _hasClass = _interopRequireDefault(__webpack_require__(90));
 	
 	function addClass(element, className) {
 	  if (element.classList) element.classList.add(className);else if (!(0, _hasClass.default)(element, className)) if (typeof element.className === 'string') element.className = element.className + ' ' + className;else element.setAttribute('class', (element.className && element.className.baseVal || '') + ' ' + className);
@@ -8516,7 +8672,7 @@
 	module.exports = exports["default"];
 
 /***/ }),
-/* 88 */
+/* 90 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -8531,7 +8687,7 @@
 	module.exports = exports["default"];
 
 /***/ }),
-/* 89 */
+/* 91 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -8545,7 +8701,7 @@
 	};
 
 /***/ }),
-/* 90 */
+/* 92 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {"use strict";
@@ -8559,9 +8715,9 @@
 	
 	var _reactDom = _interopRequireDefault(__webpack_require__(2));
 	
-	var _reactLifecyclesCompat = __webpack_require__(91);
+	var _reactLifecyclesCompat = __webpack_require__(93);
 	
-	var _PropTypes = __webpack_require__(92);
+	var _PropTypes = __webpack_require__(94);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -9161,7 +9317,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(33)))
 
 /***/ }),
-/* 91 */
+/* 93 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -9329,7 +9485,7 @@
 
 
 /***/ }),
-/* 92 */
+/* 94 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {"use strict";
@@ -9363,7 +9519,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(33)))
 
 /***/ }),
-/* 93 */
+/* 95 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {"use strict";
@@ -9377,7 +9533,7 @@
 	
 	var _reactDom = __webpack_require__(2);
 	
-	var _TransitionGroup = _interopRequireDefault(__webpack_require__(94));
+	var _TransitionGroup = _interopRequireDefault(__webpack_require__(96));
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -9519,7 +9675,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(33)))
 
 /***/ }),
-/* 94 */
+/* 96 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {"use strict";
@@ -9531,9 +9687,9 @@
 	
 	var _react = _interopRequireDefault(__webpack_require__(1));
 	
-	var _reactLifecyclesCompat = __webpack_require__(91);
+	var _reactLifecyclesCompat = __webpack_require__(93);
 	
-	var _ChildMapping = __webpack_require__(95);
+	var _ChildMapping = __webpack_require__(97);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -9733,7 +9889,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(33)))
 
 /***/ }),
-/* 95 */
+/* 97 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -9888,7 +10044,7 @@
 	}
 
 /***/ }),
-/* 96 */
+/* 98 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -9897,7 +10053,7 @@
 	  value: true
 	});
 	
-	var _Clipboard = __webpack_require__(97);
+	var _Clipboard = __webpack_require__(99);
 	
 	var _Clipboard2 = _interopRequireDefault(_Clipboard);
 	
@@ -9907,7 +10063,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 97 */
+/* 99 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -9920,7 +10076,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _clipboard = __webpack_require__(98);
+	var _clipboard = __webpack_require__(100);
 	
 	var _clipboard2 = _interopRequireDefault(_clipboard);
 	
@@ -9928,7 +10084,7 @@
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
-	var _beeIcon = __webpack_require__(106);
+	var _beeIcon = __webpack_require__(79);
 	
 	var _beeIcon2 = _interopRequireDefault(_beeIcon);
 	
@@ -10130,12 +10286,12 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 98 */
+/* 100 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function (global, factory) {
 	    if (true) {
-	        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [module, __webpack_require__(99), __webpack_require__(101), __webpack_require__(102)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [module, __webpack_require__(101), __webpack_require__(103), __webpack_require__(104)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 	    } else if (typeof exports !== "undefined") {
 	        factory(module, require('./clipboard-action'), require('tiny-emitter'), require('good-listener'));
 	    } else {
@@ -10342,12 +10498,12 @@
 	});
 
 /***/ }),
-/* 99 */
+/* 101 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function (global, factory) {
 	    if (true) {
-	        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [module, __webpack_require__(100)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [module, __webpack_require__(102)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 	    } else if (typeof exports !== "undefined") {
 	        factory(module, require('select'));
 	    } else {
@@ -10576,7 +10732,7 @@
 	});
 
 /***/ }),
-/* 100 */
+/* 102 */
 /***/ (function(module, exports) {
 
 	function select(element) {
@@ -10625,7 +10781,7 @@
 
 
 /***/ }),
-/* 101 */
+/* 103 */
 /***/ (function(module, exports) {
 
 	function E () {
@@ -10698,11 +10854,11 @@
 
 
 /***/ }),
-/* 102 */
+/* 104 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var is = __webpack_require__(103);
-	var delegate = __webpack_require__(104);
+	var is = __webpack_require__(105);
+	var delegate = __webpack_require__(106);
 	
 	/**
 	 * Validates all params and calls the right
@@ -10799,7 +10955,7 @@
 
 
 /***/ }),
-/* 103 */
+/* 105 */
 /***/ (function(module, exports) {
 
 	/**
@@ -10854,10 +11010,10 @@
 
 
 /***/ }),
-/* 104 */
+/* 106 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var closest = __webpack_require__(105);
+	var closest = __webpack_require__(107);
 	
 	/**
 	 * Delegates event to a selector.
@@ -10938,7 +11094,7 @@
 
 
 /***/ }),
-/* 105 */
+/* 107 */
 /***/ (function(module, exports) {
 
 	var DOCUMENT_NODE_TYPE = 9;
@@ -10975,104 +11131,6 @@
 	
 	module.exports = closest;
 
-
-/***/ }),
-/* 106 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _Icon = __webpack_require__(107);
-	
-	var _Icon2 = _interopRequireDefault(_Icon);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-	
-	exports["default"] = _Icon2["default"];
-	module.exports = exports['default'];
-
-/***/ }),
-/* 107 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _classnames = __webpack_require__(5);
-	
-	var _classnames2 = _interopRequireDefault(_classnames);
-	
-	var _propTypes = __webpack_require__(6);
-	
-	var _propTypes2 = _interopRequireDefault(_propTypes);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-	
-	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
-	
-	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
-	
-	var propTypes = {
-		type: _propTypes2["default"].string
-	
-	};
-	/**
-	 *  badge 默认显示内容1
-	 */
-	var defaultProps = {
-		clsPrefix: 'uf'
-	};
-	
-	var Icon = function (_Component) {
-		_inherits(Icon, _Component);
-	
-		function Icon(props) {
-			_classCallCheck(this, Icon);
-	
-			return _possibleConstructorReturn(this, _Component.call(this, props));
-		}
-	
-		Icon.prototype.render = function render() {
-			var _props = this.props,
-			    type = _props.type,
-			    className = _props.className,
-			    clsPrefix = _props.clsPrefix,
-			    others = _objectWithoutProperties(_props, ['type', 'className', 'clsPrefix']);
-	
-			var clsObj = {};
-	
-			var classNames = (0, _classnames2["default"])(clsPrefix, type);
-	
-			return _react2["default"].createElement('i', _extends({}, others, { className: (0, _classnames2["default"])(classNames, className) }));
-		};
-	
-		return Icon;
-	}(_react.Component);
-	
-	Icon.defaultProps = defaultProps;
-	Icon.propTypes = propTypes;
-	
-	exports["default"] = Icon;
-	module.exports = exports['default'];
 
 /***/ }),
 /* 108 */
@@ -15194,15 +15252,15 @@
 	exports.__esModule = true;
 	exports.default = void 0;
 	
-	var _addClass = _interopRequireDefault(__webpack_require__(87));
+	var _addClass = _interopRequireDefault(__webpack_require__(89));
 	
 	exports.addClass = _addClass.default;
 	
-	var _removeClass = _interopRequireDefault(__webpack_require__(89));
+	var _removeClass = _interopRequireDefault(__webpack_require__(91));
 	
 	exports.removeClass = _removeClass.default;
 	
-	var _hasClass = _interopRequireDefault(__webpack_require__(88));
+	var _hasClass = _interopRequireDefault(__webpack_require__(90));
 	
 	exports.hasClass = _hasClass.default;
 	var _default = {
@@ -15876,7 +15934,7 @@
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
-	var _beeIcon = __webpack_require__(106);
+	var _beeIcon = __webpack_require__(79);
 	
 	var _beeIcon2 = _interopRequireDefault(_beeIcon);
 	
@@ -15904,14 +15962,16 @@
 	    onChange: _propTypes2["default"].func,
 	    onBlur: _propTypes2["default"].func,
 	    showClose: _propTypes2["default"].bool,
-	    focusSelect: _propTypes2["default"].bool
+	    focusSelect: _propTypes2["default"].bool,
+	    debounceDelay: _propTypes2["default"].number
 	};
 	
 	var defaultProps = {
 	    componentClass: 'input',
 	    clsPrefix: 'u-form-control',
 	    type: 'text',
-	    size: 'md'
+	    size: 'md',
+	    debounceDelay: 0
 	};
 	
 	var FormControl = function (_React$Component) {
@@ -15936,12 +15996,14 @@
 	        };
 	
 	        _this.handleChange = function (e) {
+	            var now = new Date().getTime();
+	            if (now - _this.lastScrollCall < _this.props.debounceDelay) return;
+	            _this.lastScrollCall = now;
+	
 	            var onChange = _this.props.onChange;
 	
 	            var value = _this.input.value;
-	            _this.setState({
-	                showClose: true
-	            });
+	
 	            if (onChange) {
 	                onChange(value, e);
 	            }
@@ -15952,8 +16014,7 @@
 	
 	            _this.setState({
 	                showSearch: true,
-	                value: "",
-	                showClose: false
+	                value: ""
 	            });
 	            if (onChange) {
 	                onChange("");
@@ -15964,13 +16025,15 @@
 	        _this.handleKeyDown = function (e) {
 	            var _this$props = _this.props,
 	                onSearch = _this$props.onSearch,
-	                type = _this$props.type;
+	                type = _this$props.type,
+	                onKeyDown = _this$props.onKeyDown;
 	
 	            if (e.keyCode === 13 && type === "search") {
 	                if (onSearch) {
 	                    onSearch(_this.input.value);
 	                }
 	            }
+	            onKeyDown && onKeyDown(e);
 	        };
 	
 	        _this.handleSearch = function (e) {
@@ -16040,12 +16103,12 @@
 	                    onChange: _this.handleChange,
 	                    onBlur: _this.handleBlur,
 	                    onFocus: _this.handleFocus,
-	                    className: (0, _classnames2["default"])(className, classNames)
+	                    className: (0, _classnames2["default"])(classNames)
 	                })),
 	                _react2["default"].createElement(
 	                    'div',
 	                    { className: clsPrefix + '-suffix' },
-	                    _this.state.showClose ? _react2["default"].createElement(_beeIcon2["default"], { onClick: _this.clearValue, type: 'uf-close-c' }) : ''
+	                    value ? _react2["default"].createElement(_beeIcon2["default"], { onClick: _this.clearValue, type: 'uf-close-c' }) : ''
 	                )
 	            ) : _react2["default"].createElement(Component, _extends({}, others, {
 	                type: type,
@@ -16095,7 +16158,7 @@
 	                        onKeyDown: _this.handleKeyDown,
 	                        onBlur: _this.handleBlur,
 	                        onFocus: _this.handleFocus,
-	                        className: (0, _classnames2["default"])(className, clsPrefix, classes)
+	                        className: (0, _classnames2["default"])(clsPrefix, classes)
 	                    })),
 	                    _react2["default"].createElement(
 	                        'div',
@@ -16108,8 +16171,7 @@
 	
 	        _this.state = {
 	            showSearch: !props.value,
-	            value: props.value == null ? "" : props.value,
-	            showClose: false
+	            value: props.value == null ? "" : props.value
 	        };
 	        _this.input = {};
 	        return _this;
@@ -16361,7 +16423,7 @@
 	
 	var _beeLabel2 = _interopRequireDefault(_beeLabel);
 	
-	var _beeIcon = __webpack_require__(106);
+	var _beeIcon = __webpack_require__(79);
 	
 	var _beeIcon2 = _interopRequireDefault(_beeIcon);
 	
@@ -24855,7 +24917,7 @@
 	
 	var _beeButton2 = _interopRequireDefault(_beeButton);
 	
-	var _beeIcon = __webpack_require__(106);
+	var _beeIcon = __webpack_require__(79);
 	
 	var _beeIcon2 = _interopRequireDefault(_beeIcon);
 	
@@ -25030,7 +25092,7 @@
 	
 	var _beeLabel2 = _interopRequireDefault(_beeLabel);
 	
-	var _beeIcon = __webpack_require__(106);
+	var _beeIcon = __webpack_require__(79);
 	
 	var _beeIcon2 = _interopRequireDefault(_beeIcon);
 	
@@ -25657,7 +25719,7 @@
 	                        _this2.changeHandle(child.props.value);
 	                    },
 	                    checked: _this2.state.values.indexOf(child.props.value) != -1,
-	                    disabled: disabled
+	                    disabled: child.props.disabled || disabled
 	                });
 	            })
 	        );
@@ -27601,11 +27663,11 @@
 	
 	var _beeInputNumber2 = _interopRequireDefault(_beeInputNumber);
 	
-	var _beeRate = __webpack_require__(620);
+	var _beeRate = __webpack_require__(621);
 	
 	var _beeRate2 = _interopRequireDefault(_beeRate);
 	
-	var _beeCitySelect = __webpack_require__(626);
+	var _beeCitySelect = __webpack_require__(627);
 	
 	var _beeCitySelect2 = _interopRequireDefault(_beeCitySelect);
 	
@@ -27617,11 +27679,11 @@
 	
 	var _beeButton2 = _interopRequireDefault(_beeButton);
 	
-	var _beeIcon = __webpack_require__(106);
+	var _beeIcon = __webpack_require__(79);
 	
 	var _beeIcon2 = _interopRequireDefault(_beeIcon);
 	
-	var _beeUpload = __webpack_require__(633);
+	var _beeUpload = __webpack_require__(634);
 	
 	var _beeUpload2 = _interopRequireDefault(_beeUpload);
 	
@@ -28100,7 +28162,8 @@
 	  clsPrefix: "u-select",
 	  showSearch: false,
 	  transitionName: "slide-up",
-	  choiceTransitionName: "zoom"
+	  choiceTransitionName: "zoom",
+	  enterKeyDown: true
 	};
 	
 	var propTypes = {
@@ -28134,7 +28197,9 @@
 	  dropdownStyle: _propTypes2["default"].object,
 	  dropdownMenuStyle: _propTypes2["default"].object,
 	  onChange: _propTypes2["default"].func,
-	  scrollToEnd: _propTypes2["default"].func
+	  scrollToEnd: _propTypes2["default"].func,
+	  onKeyDown: _propTypes2["default"].func,
+	  enterKeyDown: _propTypes2["default"].bool //是否启用 enter 和 space 键
 	};
 	
 	var Select = function (_Component) {
@@ -28238,7 +28303,7 @@
 	
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 	
-	var _reactLifecyclesCompat = __webpack_require__(91);
+	var _reactLifecyclesCompat = __webpack_require__(93);
 	
 	var _tinperBeeCore = __webpack_require__(27);
 	
@@ -28255,6 +28320,10 @@
 	var _componentClasses2 = _interopRequireDefault(_componentClasses);
 	
 	var _rcMenu = __webpack_require__(363);
+	
+	var _MenuItem = __webpack_require__(408);
+	
+	var _MenuItem2 = _interopRequireDefault(_MenuItem);
 	
 	var _warning = __webpack_require__(32);
 	
@@ -28389,6 +28458,11 @@
 	    }
 	  };
 	
+	  /**
+	   * noCheck 判断输入的值是否不需要匹配option
+	   */
+	
+	
 	  Select.prototype.renderClear = function renderClear() {
 	    var _props = this.props,
 	        prefixCls = _props.prefixCls,
@@ -28408,11 +28482,7 @@
 	      }, _util.UNSELECTABLE_ATTRIBUTE, {
 	        onClick: this.onClearSelection
 	      }),
-	      clearIcon || _react2["default"].createElement(
-	        'i',
-	        { className: prefixCls + '-selection-clear-icon' },
-	        '\xD7'
-	      )
+	      clearIcon || _react2["default"].createElement('i', { className: prefixCls + '-selection-clear-icon' })
 	    );
 	    if (!allowClear) {
 	      return null;
@@ -28496,7 +28566,8 @@
 	        showAction: props.showAction,
 	        ref: this.saveSelectTriggerRef,
 	        clsPrefix: props.clsPrefix + '-dropdown',
-	        menuItemSelectedIcon: props.menuItemSelectedIcon
+	        menuItemSelectedIcon: props.menuItemSelectedIcon,
+	        popData: props.popData
 	      },
 	      _react2["default"].createElement(
 	        'div',
@@ -28723,7 +28794,8 @@
 	    var open = _this2.state.open;
 	    var _props2 = _this2.props,
 	        disabled = _props2.disabled,
-	        onKeyDown = _props2.onKeyDown;
+	        onKeyDown = _props2.onKeyDown,
+	        enterKeyDown = _props2.enterKeyDown;
 	
 	    if (disabled) {
 	      return;
@@ -28731,8 +28803,11 @@
 	    var keyCode = event.keyCode;
 	    if (open && !_this2.getInputDOMNode()) {
 	      _this2.onInputKeyDown(event);
-	    } else if (keyCode === _tinperBeeCore.KeyCode.ENTER || keyCode === _tinperBeeCore.KeyCode.DOWN || keyCode === _tinperBeeCore.KeyCode.SPACE) {
+	    } else if (keyCode === _tinperBeeCore.KeyCode.DOWN) {
 	      if (!open) _this2.setOpenState(true);
+	      event.preventDefault();
+	    } else if (keyCode === _tinperBeeCore.KeyCode.ENTER || keyCode === _tinperBeeCore.KeyCode.SPACE) {
+	      if (!open && enterKeyDown) _this2.setOpenState(true);
 	      event.preventDefault();
 	    }
 	    onKeyDown(event); //sp
@@ -28897,6 +28972,11 @@
 	          if (firstOption) {
 	            value = [(0, _util.getValuePropValue)(firstOption)];
 	            _this2.fireChange(value);
+	          }
+	          if (props.showSearch && props.supportWrite) {
+	            //查询时是否支持自定义输入
+	            value = [inputValue];
+	            _this2.fireChange(value, true);
 	          }
 	        }
 	      } else if ((0, _util.isMultipleOrTags)(props) && inputValue) {
@@ -29361,16 +29441,20 @@
 	    _this2.props.onSelect(_this2.getVLBySingleValue(value), _this2.getOptionBySingleValue(value));
 	  };
 	
-	  this.fireChange = function (value) {
+	  this.fireChange = function (value, noCheck) {
 	    var props = _this2.props;
 	    if (!('value' in props)) {
 	      _this2.setState({
 	        value: value
 	      }, _this2.forcePopupAlign);
 	    }
-	    var vls = _this2.getVLForOnChange(value);
-	    var options = _this2.getOptionsBySingleValue(value);
-	    props.onChange(vls, (0, _util.isMultipleOrTags)(_this2.props) ? options : options[0]);
+	    if (noCheck) {
+	      props.onChange(value, null);
+	    } else {
+	      var vls = _this2.getVLForOnChange(value);
+	      var options = _this2.getOptionsBySingleValue(value);
+	      props.onChange(vls, (0, _util.isMultipleOrTags)(_this2.props) ? options : options[0]);
+	    }
 	  };
 	
 	  this.isChildDisabled = function (key) {
@@ -29407,7 +29491,7 @@
 	      value.forEach(function (singleValue) {
 	        var key = singleValue;
 	        var menuItem = _react2["default"].createElement(
-	          _rcMenu.Item,
+	          _MenuItem2["default"],
 	          {
 	            style: _util.UNSELECTABLE_STYLE,
 	            role: 'option',
@@ -29436,7 +29520,7 @@
 	        });
 	        if (notFindInputItem) {
 	          options.unshift(_react2["default"].createElement(
-	            _rcMenu.Item,
+	            _MenuItem2["default"],
 	            {
 	              style: _util.UNSELECTABLE_STYLE,
 	              role: 'option',
@@ -29452,7 +29536,7 @@
 	
 	    if (!options.length && notFoundContent) {
 	      options = [_react2["default"].createElement(
-	        _rcMenu.Item,
+	        _MenuItem2["default"],
 	        {
 	          style: _util.UNSELECTABLE_STYLE,
 	          attribute: _util.UNSELECTABLE_ATTRIBUTE,
@@ -29503,7 +29587,7 @@
 	      (0, _util.validateOptionValue)(childValue, _this2.props);
 	
 	      if (_this2.filterOption(inputValue, child)) {
-	        var menuItem = _react2["default"].createElement(_rcMenu.Item, _extends({
+	        var menuItem = _react2["default"].createElement(_MenuItem2["default"], _extends({
 	          style: _util.UNSELECTABLE_STYLE,
 	          attribute: _util.UNSELECTABLE_ATTRIBUTE,
 	          value: childValue,
@@ -29619,7 +29703,8 @@
 	        );
 	      }
 	      if ((0, _util.isMultipleOrTags)(props)) {
-	        selectedValueNodes = limitedCountValue.map(function (singleValue) {
+	        selectedValueNodes = limitedCountValue.map(function (singleValue, index) {
+	          var key = singleValue || index;
 	          var info = _this2.getOptionInfoBySingleValue(singleValue);
 	          var content = info.label;
 	          var title = info.title || content;
@@ -29635,7 +29720,7 @@
 	            }, _util.UNSELECTABLE_ATTRIBUTE, {
 	              onMouseDown: _util.preventDefaultEvent,
 	              className: choiceClassName,
-	              key: singleValue,
+	              key: key,
 	              title: (0, _util.toTitle)(title)
 	            }),
 	            _react2["default"].createElement(
@@ -30318,7 +30403,7 @@
 	
 	var _hoistNonReactStatics2 = _interopRequireDefault(_hoistNonReactStatics);
 	
-	var _reactLifecyclesCompat = __webpack_require__(91);
+	var _reactLifecyclesCompat = __webpack_require__(93);
 	
 	var _PropTypes = __webpack_require__(376);
 	
@@ -39911,9 +39996,17 @@
 	var propTypes = {
 	  name: _propTypes2["default"].string,
 	  /**
+	   * 默认选中的值
+	   */
+	  defaultValue: _propTypes2["default"].oneOfType([_propTypes2["default"].string, _propTypes2["default"].number, _propTypes2["default"].bool]),
+	  /**
 	   * 选中的值
 	   */
 	  selectedValue: _propTypes2["default"].oneOfType([_propTypes2["default"].string, _propTypes2["default"].number, _propTypes2["default"].bool]),
+	  /**
+	   * 选中的值,作用与selectedValue一致，添加value属性是为了配合form表单校验初始化等一起使用
+	   */
+	  value: _propTypes2["default"].oneOfType([_propTypes2["default"].string, _propTypes2["default"].number, _propTypes2["default"].bool]),
 	  /**
 	  * 暴露给用户，且与子Radio通信的方法
 	  */
@@ -39930,7 +40023,8 @@
 	
 	var defaultProps = {
 	  Component: 'div',
-	  clsPrefix: 'u-radio-group'
+	  clsPrefix: 'u-radio-group',
+	  defaultValue: ''
 	};
 	
 	/**
@@ -39959,14 +40053,26 @@
 	        children.map(function (item) {
 	          array.push(item.props.value);
 	        });
+	      } else if (children.length === 1) {
+	        array.push(children[0].props.value);
 	      } else {
 	        array.push(children.props.value);
 	      }
 	      return array;
 	    };
 	
+	    _this.handleChange = function (value) {
+	      var onChange = _this.props.onChange;
+	
+	      _this.setState({
+	        selectedValue: value
+	      });
+	      onChange && onChange(value);
+	    };
+	
 	    _this.state = {
-	      focusvalue: ''
+	      focusvalue: '',
+	      selectedValue: props.value ? props.value : props.selectedValue ? props.selectedValue : props.defaultValue
 	    };
 	    return _this;
 	  }
@@ -39980,15 +40086,20 @@
 	    }
 	  };
 	
-	  RadioGroup.prototype.componentWillReceiveProps = function componentWillReceiveProps() {
+	  RadioGroup.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
 	    var array = this.getValues();
-	    if (array.indexOf(this.props.selectedValue) == -1) {
+	    if (array.indexOf(this.props.selectedValue) == -1 || array.indexOf(this.props.value) == -1) {
 	      this.setState({
 	        focusvalue: array[0]
 	      });
 	    } else {
 	      this.setState({
 	        focusvalue: ''
+	      });
+	    }
+	    if ('selectedValue' in nextProps || 'value' in nextProps) {
+	      this.setState({
+	        selectedValue: nextProps.selectedValue !== undefined ? nextProps.selectedValue : nextProps.value
 	      });
 	    }
 	  };
@@ -40000,10 +40111,10 @@
 	  RadioGroup.prototype.getChildContext = function getChildContext() {
 	    var _props = this.props,
 	        name = _props.name,
-	        selectedValue = _props.selectedValue,
-	        onChange = _props.onChange,
 	        size = _props.size;
+	    var selectedValue = this.state.selectedValue;
 	
+	    var onChange = this.handleChange;
 	    return {
 	      radioGroup: {
 	        name: name, selectedValue: selectedValue, onChange: onChange, size: size, focusvalue: this.state.focusvalue
@@ -40173,6 +40284,9 @@
 	    }
 	    if (inverse) {
 	      classes[clsPrefix + '-inverse'] = true;
+	    }
+	    if (children == null) {
+	      classes[clsPrefix + '-noContent'] = true;
 	    }
 	    var classNames = (0, _classnames2["default"])(clsPrefix, classes);
 	    var tabIndex = optional.checked ? 0 : -1;
@@ -40354,7 +40468,7 @@
 	
 	var _moment2 = _interopRequireDefault(_moment);
 	
-	var _beeIcon = __webpack_require__(106);
+	var _beeIcon = __webpack_require__(79);
 	
 	var _beeIcon2 = _interopRequireDefault(_beeIcon);
 	
@@ -40396,11 +40510,13 @@
 	
 	    _initialiseProps.call(_this);
 	
+	    var value = props.value && (0, _moment2["default"])(props.value),
+	        defaultValue = props.defaultValue && (0, _moment2["default"])(props.defaultValue);
 	    _this.state = {
 	      type: "month",
-	      value: props.value || props.defaultValue || _moment2["default"].Moment,
+	      value: value || defaultValue || _moment2["default"].Moment,
 	      open: props.open || false,
-	      inputValue: props.value && props.value.format(props.format) || props.defaultValue && props.defaultValue.format(props.format) || '',
+	      inputValue: props.value && _this.getValue(props.value) || props.defaultValue && _this.getValue(props.defaultValue) || '',
 	      showClose: false
 	    };
 	
@@ -40410,7 +40526,7 @@
 	  DatePicker.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
 	    if ("value" in nextProps) {
 	      this.setState({
-	        value: nextProps.value
+	        value: nextProps.value && (0, _moment2["default"])(nextProps.value)
 	      });
 	    }
 	    if ("open" in nextProps) {
@@ -40424,12 +40540,19 @@
 	      });
 	    }
 	  };
+	  //日期面板中输入框的失焦事件
+	
+	  //阻止组件内部事件冒泡到组件外部容器
+	
 	
 	  DatePicker.prototype.render = function render() {
 	    var _this2 = this;
 	
 	    var state = this.state;
 	    var props = this.props;
+	    var showClose = props.showClose,
+	        defaultPanelShown = props.defaultPanelShown;
+	
 	    var value = state.value;
 	    var pickerChangeHandler = {};
 	    var calendarHandler = {};
@@ -40451,7 +40574,8 @@
 	    }, props, {
 	      onSelect: this.handleSelect,
 	      onChange: this.handleCalendarChange,
-	      value: this.state.value
+	      value: this.state.value,
+	      onInputBlur: this.onDateInputBlur
 	    }));
 	
 	    var keyboardInputProps = {};
@@ -40461,60 +40585,63 @@
 	      keyboardInputProps.value = state.inputValue;
 	    } else {
 	      keyboardInputProps.readOnly = true;
-	      keyboardInputProps.value = value && value.format(props.format) || "";
+	      keyboardInputProps.value = value && this.getValue(value) || "";
 	    }
 	    var classes = (0, _classnames2["default"])(props.className, "datepicker-container");
-	    return _react2["default"].createElement(
-	      "div",
-	      { className: classes },
+	    return (
+	      // <div className={classes} onMouseEnter={this.onBlur}>
 	      _react2["default"].createElement(
-	        _Picker2["default"],
-	        _extends({
-	          animation: "slide-up"
-	        }, props, pickerChangeHandler, {
-	          onOpenChange: this.onOpenChange,
-	          calendar: calendar,
-	          mode: 'year',
-	          open: this.state.open,
-	          value: state.value
-	        }),
-	        function () {
-	          return _react2["default"].createElement(
-	            _beeInputGroup2["default"],
-	            { simple: true, className: "datepicker-input-group",
-	              onMouseEnter: _this2.onMouseEnter,
-	              onMouseLeave: _this2.onMouseLeave
-	            },
-	            _react2["default"].createElement(_beeFormControl2["default"], _extends({
-	              ref: function ref(_ref) {
-	                return _this2.outInput = _ref;
+	        "div",
+	        { className: classes, onMouseEnter: this.onBlur, onClick: this.stopPropagation, onMouseOver: this.stopPropagation },
+	        _react2["default"].createElement(
+	          _Picker2["default"],
+	          _extends({
+	            animation: "slide-up"
+	          }, props, pickerChangeHandler, {
+	            onOpenChange: this.onOpenChange,
+	            calendar: calendar,
+	            mode: 'year',
+	            open: 'defaultPanelShown' in props ? defaultPanelShown : this.state.open,
+	            value: state.value
+	          }),
+	          function () {
+	            return _react2["default"].createElement(
+	              _beeInputGroup2["default"],
+	              { simple: true, className: "datepicker-input-group",
+	                onMouseEnter: _this2.onMouseEnter,
+	                onMouseLeave: _this2.onMouseLeave
 	              },
-	              disabled: props.disabled,
-	              placeholder: _this2.props.placeholder,
-	              onClick: function onClick(event) {
-	                _this2.onClick(event);
-	              },
-	              focusSelect: props.defaultSelected,
-	              onFocus: function onFocus(v, e) {
-	                _this2.outInputFocus(e);
-	              },
-	              onKeyDown: _this2.outInputKeydown
-	            }, keyboardInputProps, autofocus)),
-	            _this2.state.value && _this2.state.showClose && !props.disabled ? _react2["default"].createElement(
-	              _beeInputGroup2["default"].Button,
-	              { shape: "border",
-	                onClick: _this2.clear },
-	              _react2["default"].createElement("i", { className: "uf uf-close-c" })
-	            ) : _react2["default"].createElement(
-	              _beeInputGroup2["default"].Button,
-	              { shape: "border",
-	                onClick: function onClick(e) {
-	                  props.keyboardInput ? _this2.iconClick(e) : '';
-	                } },
-	              props.renderIcon()
-	            )
-	          );
-	        }
+	              _react2["default"].createElement(_beeFormControl2["default"], _extends({
+	                ref: function ref(_ref) {
+	                  return _this2.outInput = _ref;
+	                },
+	                disabled: props.disabled,
+	                placeholder: _this2.props.placeholder,
+	                onClick: function onClick(event) {
+	                  _this2.onClick(event);
+	                },
+	                focusSelect: props.defaultSelected,
+	                onFocus: function onFocus(v, e) {
+	                  _this2.outInputFocus(e);
+	                },
+	                onKeyDown: _this2.outInputKeydown
+	              }, keyboardInputProps, autofocus)),
+	              showClose && _this2.state.value && _this2.state.showClose && !props.disabled ? _react2["default"].createElement(
+	                _beeInputGroup2["default"].Button,
+	                { shape: "border",
+	                  onClick: _this2.clear },
+	                props.closeIcon()
+	              ) : _react2["default"].createElement(
+	                _beeInputGroup2["default"].Button,
+	                { shape: "border",
+	                  onClick: function onClick(e) {
+	                    props.keyboardInput ? _this2.iconClick(e) : '';
+	                  } },
+	                props.renderIcon()
+	              )
+	            );
+	          }
+	        )
 	      )
 	    );
 	  };
@@ -40525,6 +40652,16 @@
 	var _initialiseProps = function _initialiseProps() {
 	  var _this3 = this;
 	
+	  this.getValue = function (value) {
+	    var format = _this3.props.format;
+	
+	    if (typeof format == 'string') {
+	      return value.format(format);
+	    } else {
+	      return value.format(format[0]);
+	    }
+	  };
+	
 	  this.onChange = function (value) {
 	    var props = _this3.props;
 	
@@ -40532,6 +40669,8 @@
 	  };
 	
 	  this.inputFocus = function () {
+	    var format = _this3.props.format;
+	
 	    var input = document.querySelector('.rc-calendar-input');
 	    if (input) {
 	      if (input.value) {
@@ -40543,14 +40682,25 @@
 	        if (e.keyCode == _tinperBeeCore.KeyCode.DELETE) {
 	          input.value = '';
 	          _this3.props.onChange('', '');
-	        } else if (e.keyCode == _tinperBeeCore.KeyCode.ESC || e.keyCode == _tinperBeeCore.KeyCode.ENTER) {
+	        } else if (e.keyCode == _tinperBeeCore.KeyCode.ESC) {
 	          _this3.setState({
 	            open: false
 	          });
 	          var v = _this3.state.value;
-	          _this3.props.onOpenChange(false, v, v && v.format(_this3.props.format) || '');
+	          _this3.props.onOpenChange(false, v, v && _this3.getValue(v) || '');
 	          _reactDom2["default"].findDOMNode(_this3.outInput).focus(); // 按esc时候焦点回到input输入框
+	        } else if (e.keyCode == _tinperBeeCore.KeyCode.ENTER) {
+	          var parsed = (0, _moment2["default"])(input.value, format, true);
+	          if (parsed.isValid()) {
+	            _this3.setState({
+	              open: false
+	            });
+	            var _v = _this3.state.value;
+	            _this3.props.onOpenChange(false, _v, _v && _this3.getValue(_v) || '');
+	            _reactDom2["default"].findDOMNode(_this3.outInput).focus();
+	          }
 	        }
+	        _this3.props.onKeyDown && _this3.props.onKeyDown(e);
 	      };
 	    }
 	  };
@@ -40568,7 +40718,7 @@
 	      }
 	    });
 	    var value = self.state.value;
-	    props.onOpenChange(open, value, value && value.format(props.format) || '');
+	    props.onOpenChange(open, value, value && _this3.getValue(value) || '');
 	    if (open) {
 	      setTimeout(function () {
 	        self.inputFocus();
@@ -40578,16 +40728,19 @@
 	
 	  this.handleCalendarChange = function (value) {
 	    var props = _this3.props;
-	    _this3.setState({ value: value, inputValue: value && value.format(props.format) || '' });
-	    //props.onChange(value, (value && value.format(props.format)) || '');
+	    _this3.setState({ value: value, inputValue: value && _this3.getValue(value) || '' });
+	    //props.onChange(value, (value && this.getValue(value)) || '');
 	  };
 	
 	  this.handleChange = function (value) {
 	    var props = _this3.props;
-	    _this3.setState({ value: value, inputValue: value && value.format(props.format) || '' });
+	    _this3.setState({
+	      value: value && _extends(value, { _type: 'date' }) || value,
+	      inputValue: value && _this3.getValue(value) || ''
+	    });
 	    if (timerDatePicker) {
 	      clearTimeout(_this3.timerout);
-	      props.onChange(value, value && value.format(props.format) || '');
+	      props.onChange(value, value && _this3.getValue(value) || '');
 	      timerDatePicker = false;
 	      _this3.timerout = window.setTimeout(function () {
 	        timerDatePicker = true;
@@ -40602,7 +40755,7 @@
 	    if (props.keyboardInput) {
 	      props.onClick && props.onClick(e.nativeEvent, value || null, _this3.state.inputValue);
 	    } else {
-	      props.onClick && props.onClick(e.nativeEvent, value || null, value && value.format(props.format) || '');
+	      props.onClick && props.onClick(e.nativeEvent, value || null, value && _this3.getValue(value) || '');
 	    }
 	  };
 	
@@ -40616,7 +40769,7 @@
 	        value: (0, _moment2["default"])(value, _this3.props.format)
 	      });
 	      value = (0, _moment2["default"])(value, _this3.props.format);
-	      _this3.props.onChange(value, value && value.format(_this3.props.format) || '');
+	      _this3.props.onChange(value, value && _this3.getValue(value) || '');
 	    } else {
 	      _this3.props.onChange(null, value);
 	    }
@@ -40647,7 +40800,7 @@
 	          value: (0, _moment2["default"])(value, _this3.props.format)
 	        });
 	        value = (0, _moment2["default"])(value, _this3.props.format);
-	        _this3.props.onChange(value, value && value.format(_this3.props.format) || '');
+	        _this3.props.onChange(value, value && _this3.getValue(value) || '');
 	      } else {
 	        _this3.props.onChange(null, value);
 	      }
@@ -40680,12 +40833,33 @@
 	    _this3.setState({
 	      value: value
 	    });
-	    _this3.props.onSelect && _this3.props.onSelect(value, value && value.format(_this3.props.format) || '');
+	    _this3.props.onSelect && _this3.props.onSelect(value, value && _this3.getValue(value) || '');
 	    // ReactDOM.findDOMNode(this.outInput).focus()
+	  };
+	
+	  this.onDateInputBlur = function (e) {
+	    var input = document.querySelector('.rc-calendar-input');
+	    var value = void 0;
+	    if (input) {
+	      value = input.value ? input.value : '';
+	    }
+	    _this3.props.onDateInputBlur && _this3.props.onDateInputBlur(e, value);
+	  };
+	
+	  this.onBlur = function () {
+	    var value = _this3.state.value;
+	    _this3.props.onChange && _this3.props.onChange(value, value && _this3.getValue(value) || '');
+	  };
+	
+	  this.stopPropagation = function (e) {
+	    e.stopPropagation();
 	  };
 	};
 	
 	DatePicker.defaultProps = {
+	  closeIcon: function closeIcon() {
+	    return _react2["default"].createElement(_beeIcon2["default"], { type: "uf-close-c" });
+	  },
 	  renderIcon: function renderIcon() {
 	    return _react2["default"].createElement(_beeIcon2["default"], { type: "uf-calendar" });
 	  },
@@ -40694,7 +40868,10 @@
 	  onOpenChange: function onOpenChange() {},
 	  onChange: function onChange() {},
 	  locale: _zh_CN2["default"],
-	  showMonthInput: false
+	  showMonthInput: false,
+	  onKeyDown: function onKeyDown() {},
+	  renderError: function renderError() {},
+	  showClose: true
 	};
 	
 	exports["default"] = DatePicker;
@@ -40747,7 +40924,7 @@
 	
 	var _KeyCode2 = _interopRequireDefault(_KeyCode);
 	
-	var _reactLifecyclesCompat = __webpack_require__(91);
+	var _reactLifecyclesCompat = __webpack_require__(93);
 	
 	var _DateTable = __webpack_require__(436);
 	
@@ -40843,7 +41020,9 @@
 	        disabledTime = props.disabledTime,
 	        clearIcon = props.clearIcon,
 	        renderFooter = props.renderFooter,
-	        showMonthInput = props.showMonthInput;
+	        showMonthInput = props.showMonthInput,
+	        renderError = props.renderError,
+	        onInputBlur = props.onInputBlur;
 	    var value = state.value,
 	        selectedValue = state.selectedValue,
 	        mode = state.mode;
@@ -40870,7 +41049,6 @@
 	
 	      timePickerEle = _react2["default"].cloneElement(timePicker, timePickerProps);
 	    }
-	
 	    var dateInputElement = props.showDateInput ? _react2["default"].createElement(_DateInput2["default"], {
 	      format: this.getFormat(),
 	      key: 'date-input',
@@ -40885,7 +41063,9 @@
 	      selectedValue: selectedValue,
 	      onChange: this.onDateInputChange,
 	      onSelect: this.onDateInputSelect,
-	      clearIcon: clearIcon
+	      clearIcon: clearIcon,
+	      renderError: renderError,
+	      onBlur: onInputBlur
 	    }) : null;
 	
 	    var children = [];
@@ -40900,7 +41080,8 @@
 	        'div',
 	        {
 	          tabIndex: this.props.focusablePanel ? 0 : undefined,
-	          className: prefixCls + '-date-panel'
+	          className: prefixCls + '-date-panel',
+	          onMouseOver: this.onMouseOver
 	        },
 	        _react2["default"].createElement(_CalendarHeader2["default"], {
 	          locale: locale,
@@ -41024,6 +41205,8 @@
 	  this.onKeyDown = function (event) {
 	    if (event.target.nodeName.toLowerCase() === 'input') {
 	      return undefined;
+	    } else {
+	      _this2.props.onKeyDown && _this2.props.onKeyDown(event);
 	    }
 	    var keyCode = event.keyCode;
 	    // mac
@@ -41079,9 +41262,6 @@
 	          });
 	        }
 	        event.preventDefault();
-	        return 1;
-	      default:
-	        _this2.props.onKeyDown(event);
 	        return 1;
 	    }
 	  };
@@ -41147,6 +41327,10 @@
 	
 	  this.goTime = function (direction, unit) {
 	    _this2.setValue((0, _toTime.goTime)(_this2.state.value, direction, unit));
+	  };
+	
+	  this.onMouseOver = function (e) {
+	    e.stopPropagation();
 	  };
 	};
 	
@@ -58759,7 +58943,9 @@
 	
 	function getTodayTime(value) {
 	  var today = (0, _moment2["default"])();
-	  today.locale(value.locale()).utcOffset(value.utcOffset());
+	  if (typeof value !== 'undefined') {
+	    today.locale(value.locale()).utcOffset(value.utcOffset());
+	  }
 	  return today;
 	}
 	
@@ -59068,7 +59254,7 @@
 	    var prefixCls = props.prefixCls;
 	    var locale = props.locale;
 	    var value = props.value;
-	    var localeData = value.localeData();
+	    var localeData = value.localeData && value.localeData();
 	    var monthBeforeYear = locale.monthBeforeYear;
 	    var selectClassName = prefixCls + '-' + (monthBeforeYear ? 'my-select' : 'ym-select');
 	    var timeClassName = showTimePicker ? ' ' + prefixCls + '-time-status' : '';
@@ -59181,7 +59367,7 @@
 	
 	var _propTypes2 = _interopRequireDefault(_propTypes);
 	
-	var _reactLifecyclesCompat = __webpack_require__(91);
+	var _reactLifecyclesCompat = __webpack_require__(93);
 	
 	var _MonthTable = __webpack_require__(573);
 	
@@ -59569,11 +59755,9 @@
 	
 	var _propTypes2 = _interopRequireDefault(_propTypes);
 	
-	var _KeyCode = __webpack_require__(381);
+	var _tinperBeeCore = __webpack_require__(27);
 	
-	var _KeyCode2 = _interopRequireDefault(_KeyCode);
-	
-	var _reactLifecyclesCompat = __webpack_require__(91);
+	var _reactLifecyclesCompat = __webpack_require__(93);
 	
 	var _moment = __webpack_require__(439);
 	
@@ -59652,7 +59836,9 @@
 	    var locale = props.locale,
 	        prefixCls = props.prefixCls,
 	        placeholder = props.placeholder,
-	        clearIcon = props.clearIcon;
+	        clearIcon = props.clearIcon,
+	        renderError = props.renderError,
+	        inputTabIndex = props.inputTabIndex;
 	
 	    var invalidClass = invalid ? prefixCls + '-input-invalid' : '';
 	    return _react2["default"].createElement(
@@ -59670,8 +59856,10 @@
 	          onChange: this.onInputChange,
 	          onKeyDown: this.onKeyDown,
 	          onFocus: this.onFocus,
-	          onBlur: this.onBlur
-	        })
+	          onBlur: this.onBlur,
+	          tabIndex: inputTabIndex
+	        }),
+	        invalid && renderError ? renderError() : ''
 	      ),
 	      props.showClear ? _react2["default"].createElement(
 	        'a',
@@ -59727,7 +59915,7 @@
 	    if (!str) {
 	      onChange(null);
 	      _this2.setState({
-	        invalid: false,
+	        // invalid: false,
 	        str: str
 	      });
 	      return;
@@ -59737,7 +59925,7 @@
 	    var parsed = (0, _moment2["default"])(str, format, true);
 	    if (!parsed.isValid()) {
 	      _this2.setState({
-	        invalid: true,
+	        // invalid: true,
 	        str: str
 	      });
 	      return;
@@ -59748,7 +59936,7 @@
 	
 	    if (!value || disabledDate && disabledDate(value)) {
 	      _this2.setState({
-	        invalid: true,
+	        // invalid: true,
 	        str: str
 	      });
 	      return;
@@ -59756,7 +59944,7 @@
 	
 	    if (selectedValue !== value || selectedValue && value && !selectedValue.isSame(value)) {
 	      _this2.setState({
-	        invalid: false,
+	        // invalid: false,
 	        str: str
 	      });
 	      onChange(value);
@@ -59767,24 +59955,90 @@
 	    _this2.setState({ hasFocus: true });
 	  };
 	
-	  this.onBlur = function () {
+	  this.onBlur = function (e) {
+	    var str = e.target.value;
+	    var _props2 = _this2.props,
+	        disabledDate = _props2.disabledDate,
+	        format = _props2.format,
+	        onChange = _props2.onChange,
+	        selectedValue = _props2.selectedValue;
+	
+	    // 没有内容，合法并直接退出
+	
+	    if (!str) {
+	      _this2.setState({
+	        invalid: false
+	      });
+	      return;
+	    }
+	
+	    // 不合法直接退出
+	    var parsed = (0, _moment2["default"])(str, format, true);
+	    if (!parsed.isValid()) {
+	      _this2.setState({
+	        invalid: true
+	      });
+	      return;
+	    }
+	
+	    var value = _this2.props.value.clone();
+	    value.year(parsed.year()).month(parsed.month()).date(parsed.date()).hour(parsed.hour()).minute(parsed.minute()).second(parsed.second());
+	
+	    if (!value || disabledDate && disabledDate(value)) {
+	      _this2.setState({
+	        invalid: true
+	      });
+	      return;
+	    }
+	
+	    if (selectedValue !== value || selectedValue && value && !selectedValue.isSame(value)) {
+	      _this2.setState({
+	        invalid: false
+	      });
+	    }
+	
 	    _this2.setState(function (prevState, prevProps) {
 	      return {
 	        hasFocus: false,
 	        str: (0, _util.formatDate)(prevProps.value, prevProps.format)
 	      };
 	    });
+	    _this2.props.onBlur && _this2.props.onBlur(e);
 	  };
 	
-	  this.onKeyDown = function (_ref) {
-	    var keyCode = _ref.keyCode;
-	    var _props2 = _this2.props,
-	        onSelect = _props2.onSelect,
-	        value = _props2.value;
+	  this.onKeyDown = function (e) {
+	    var _props3 = _this2.props,
+	        onSelect = _props3.onSelect,
+	        value = _props3.value,
+	        onKeyDown = _props3.onKeyDown,
+	        format = _props3.format,
+	        isRange = _props3.isRange;
 	
-	    if (keyCode === _KeyCode2["default"].ENTER && onSelect) {
-	      onSelect(value.clone());
+	    var str = e.target.value;
+	    var parsed = (0, _moment2["default"])(str, format, true);
+	    if (e.keyCode === _tinperBeeCore.KeyCode.ENTER) {
+	      if (parsed.isValid() && onSelect) {
+	        isRange ? onSelect(parsed.clone()) : onSelect(value.clone()); //FIX https://github.com/iuap-design/tinper-bee/issues/183
+	      }
+	      // 没有内容，回填默认值，并关闭面板
+	      if (!str) {
+	        _this2.setState({
+	          invalid: false
+	        });
+	        onSelect && onSelect((0, _moment2["default"])());
+	        return;
+	      }
+	      // 有内容，判断是否合法
+	      if (!parsed.isValid()) {
+	        _this2.setState({
+	          invalid: true
+	        });
+	      }
 	    }
+	    // if (e.keyCode === KeyCode.ENTER && onSelect) {
+	    //   onSelect(value.clone());
+	    // }
+	    onKeyDown && onKeyDown(e);
 	  };
 	
 	  this.getRootDOMNode = function () {
@@ -59879,10 +60133,18 @@
 	
 	    var _this = _possibleConstructorReturn(this, _React$Component.call(this, props));
 	
-	    _this.onInputChange = function (value) {
+	    _this.yearSelect = function (value) {
 	      var _this$props = _this.props,
-	          onChange = _this$props.onChange,
+	          onSelect = _this$props.onSelect,
 	          format = _this$props.format;
+	
+	      onSelect && onSelect(value, value ? value.format(format) : '');
+	    };
+	
+	    _this.onInputChange = function (value) {
+	      var _this$props2 = _this.props,
+	          onChange = _this$props2.onChange,
+	          format = _this$props2.format;
 	
 	      _this.setState({
 	        value: value ? value : (0, _moment2["default"])()
@@ -59891,10 +60153,10 @@
 	    };
 	
 	    _this.onClear = function () {
-	      var _this$props2 = _this.props,
-	          onChange = _this$props2.onChange,
-	          format = _this$props2.format,
-	          onClear = _this$props2.onClear;
+	      var _this$props3 = _this.props,
+	          onChange = _this$props3.onChange,
+	          format = _this$props3.format,
+	          onClear = _this$props3.onClear;
 	
 	      _this.setState({
 	        value: (0, _moment2["default"])()
@@ -60028,7 +60290,8 @@
 	          format: format,
 	          onChange: this.onInputChange,
 	          selectedValue: value,
-	          onClear: this.onClear
+	          onClear: this.onClear,
+	          onSelect: this.yearSelect
 	        }) : '',
 	        _react2["default"].createElement(
 	          'div',
@@ -60957,7 +61220,7 @@
 	
 	var _propTypes2 = _interopRequireDefault(_propTypes);
 	
-	var _reactLifecyclesCompat = __webpack_require__(91);
+	var _reactLifecyclesCompat = __webpack_require__(93);
 	
 	var _createChainedFunction = __webpack_require__(382);
 	
@@ -61117,6 +61380,7 @@
 	      event.stopPropagation();
 	      _this2.close(_this2.focus);
 	    }
+	    _this2.props.onKeyDown && _this2.props.onKeyDown(event);
 	  };
 	
 	  this.onCalendarSelect = function (value) {
@@ -61139,6 +61403,7 @@
 	      _this2.open();
 	      event.preventDefault();
 	    }
+	    _this2.props.onKeyDown && _this2.props.onKeyDown(event);
 	  };
 	
 	  this.onCalendarOk = function () {
@@ -62630,9 +62895,15 @@
 	
 	var _MonthCalendar2 = _interopRequireDefault(_MonthCalendar);
 	
+	var _tinperBeeCore = __webpack_require__(27);
+	
 	var _react = __webpack_require__(1);
 	
 	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactDom = __webpack_require__(2);
+	
+	var _reactDom2 = _interopRequireDefault(_reactDom);
 	
 	var _Picker = __webpack_require__(585);
 	
@@ -62642,7 +62913,7 @@
 	
 	var _beeFormControl2 = _interopRequireDefault(_beeFormControl);
 	
-	var _beeIcon = __webpack_require__(106);
+	var _beeIcon = __webpack_require__(79);
 	
 	var _beeIcon2 = _interopRequireDefault(_beeIcon);
 	
@@ -62657,6 +62928,10 @@
 	var _zh_CN = __webpack_require__(596);
 	
 	var _zh_CN2 = _interopRequireDefault(_zh_CN);
+	
+	var _moment = __webpack_require__(439);
+	
+	var _moment2 = _interopRequireDefault(_moment);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 	
@@ -62679,22 +62954,62 @@
 	    var _this = _possibleConstructorReturn(this, _Component.call(this, props, context));
 	
 	    _this.onChange = function (value) {
-	      _this.setState({
-	        value: value
-	      });
 	      var _this$props = _this.props,
 	          onChange = _this$props.onChange,
 	          onClear = _this$props.onClear,
 	          onSelect = _this$props.onSelect,
 	          format = _this$props.format;
+	      // if(value){
+	      //   this.setState({
+	      //     value:value
+	      //   });
+	      // }else{
+	      //   this.setState({
+	      //     value:moment()
+	      //   })
+	      // }
 	
+	      _this.setState({
+	        value: value && _extends(value, { _type: 'month' }) || value
+	      });
 	      onChange && onChange(value, value ? value.format(format) : '');
 	    };
 	
+	    _this.inputFocus = function () {
+	      var self = _this;
+	      var input = document.querySelector('.rc-calendar-input');
+	      if (input) {
+	        if (input.value) {
+	          input.select();
+	        } else {
+	          input.focus();
+	        }
+	        input.onkeydown = function (e) {
+	          if (e.keyCode == _tinperBeeCore.KeyCode.DELETE) {
+	            input.value = '';
+	            self.props.onChange && self.props.onChange('', '');
+	          } else if (e.keyCode == _tinperBeeCore.KeyCode.ESC) {
+	            self.setState({
+	              open: false
+	            });
+	            var v = self.state.value;
+	            self.props.onOpenChange && self.props.onOpenChange(false, v, v && v.format(self.props.format) || '');
+	            _reactDom2["default"].findDOMNode(self.outInput).focus(); // 按esc时候焦点回到input输入框
+	          }
+	        };
+	      }
+	    };
+	
 	    _this.onOpenChange = function (open) {
+	      var self = _this;
 	      _this.setState({
 	        open: open
 	      });
+	      if (open) {
+	        setTimeout(function () {
+	          self.inputFocus();
+	        }, 200);
+	      }
 	    };
 	
 	    _this.onTypeChange = function (type) {
@@ -62723,6 +63038,10 @@
 	      _this.props.onChange && _this.props.onChange('', '');
 	    };
 	
+	    _this.stopPropagation = function (e) {
+	      e.stopPropagation();
+	    };
+	
 	    _this.state = {
 	      type: "month",
 	      value: props.value || props.defaultValue,
@@ -62731,6 +63050,8 @@
 	    };
 	    return _this;
 	  }
+	  //阻止组件内部事件冒泡到组件外部容器
+	
 	
 	  MonthPicker.prototype.render = function render() {
 	    var _this2 = this;
@@ -62738,6 +63059,7 @@
 	    var state = this.state;
 	
 	    var props = this.props;
+	    var showClose = props.showClose;
 	
 	    var monthCalendar = _react2["default"].createElement(_MonthCalendar2["default"], _extends({}, props, {
 	      onChange: this.onChange
@@ -62745,7 +63067,7 @@
 	    var classes = (0, _classnames2["default"])(props.className, "datepicker-container");
 	    return _react2["default"].createElement(
 	      "div",
-	      { className: classes },
+	      { className: classes, onClick: this.stopPropagation, onMouseOver: this.stopPropagation },
 	      _react2["default"].createElement(
 	        _Picker2["default"],
 	        {
@@ -62754,7 +63076,8 @@
 	          calendar: monthCalendar,
 	          open: this.state.open,
 	          value: state.value,
-	          onChange: this.onChange
+	          onChange: this.onChange,
+	          dropdownClassName: props.dropdownClassName
 	        },
 	        function (_ref) {
 	          var value = _ref.value;
@@ -62766,16 +63089,19 @@
 	              onMouseLeave: _this2.onMouseLeave
 	            },
 	            _react2["default"].createElement(_beeFormControl2["default"], {
+	              ref: function ref(_ref2) {
+	                return _this2.outInput = _ref2;
+	              },
 	              placeholder: _this2.props.placeholder,
 	              className: _this2.props.className,
 	              value: value && value.format(props.format) || "",
 	              disabled: props.disabled
 	            }),
-	            _this2.state.value && _this2.state.showClose && !props.disabled ? _react2["default"].createElement(
+	            showClose && _this2.state.value && _this2.state.showClose && !props.disabled ? _react2["default"].createElement(
 	              _beeInputGroup2["default"].Button,
 	              { shape: "border",
 	                onClick: _this2.clear },
-	              _react2["default"].createElement("i", { className: "uf uf-close-c" })
+	              props.closeIcon()
 	            ) : _react2["default"].createElement(
 	              _beeInputGroup2["default"].Button,
 	              { shape: "border" },
@@ -62791,13 +63117,17 @@
 	}(_react.Component);
 	
 	MonthPicker.defaultProps = {
+	  closeIcon: function closeIcon() {
+	    return _react2["default"].createElement(_beeIcon2["default"], { type: "uf-close-c" });
+	  },
 	  renderIcon: function renderIcon() {
 	    return _react2["default"].createElement(_beeIcon2["default"], { type: "uf-calendar" });
 	  },
 	  format: 'YYYY-MM',
 	  showDateInput: true,
 	  showMonthInput: true,
-	  locale: _zh_CN2["default"]
+	  locale: _zh_CN2["default"],
+	  showClose: true
 	};
 	
 	exports["default"] = MonthPicker;
@@ -62959,7 +63289,7 @@
 	    var mode = state.mode,
 	        value = state.value;
 	
-	    console.log(props);
+	    value = value ? value : (0, _moment2["default"])();
 	    var prefixCls = props.prefixCls,
 	        locale = props.locale,
 	        format = props.format,
@@ -63047,6 +63377,10 @@
 	
 	var _RangeCalendar2 = _interopRequireDefault(_RangeCalendar);
 	
+	var _Panel = __webpack_require__(587);
+	
+	var _Panel2 = _interopRequireDefault(_Panel);
+	
 	var _beeFormControl = __webpack_require__(153);
 	
 	var _beeFormControl2 = _interopRequireDefault(_beeFormControl);
@@ -63059,13 +63393,17 @@
 	
 	var _beeInputGroup2 = _interopRequireDefault(_beeInputGroup);
 	
-	var _beeIcon = __webpack_require__(106);
+	var _beeIcon = __webpack_require__(79);
 	
 	var _beeIcon2 = _interopRequireDefault(_beeIcon);
 	
 	var _classnames = __webpack_require__(5);
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
+	
+	var _tinperBeeCore = __webpack_require__(27);
+	
+	var _util = __webpack_require__(569);
 	
 	var _zh_CN = __webpack_require__(596);
 	
@@ -63092,9 +63430,17 @@
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
 	
 	
-	function format(v, f) {
-	    return v ? v.format && v.format(f) : '';
-	}
+	// function formatDate(value,format) {
+	//     if (!value) {
+	//         return '';
+	//       }
+	
+	//       if (Array.isArray(format)) {
+	//         format = format[0];
+	//       }
+	
+	//       return value.formatDate(format);
+	// }
 	
 	var fullFormat = "YYYY-MM-DD";
 	
@@ -63112,11 +63458,13 @@
 	    now.locale("en-gb").utcOffset(0);
 	}
 	
-	var Picker = function (_Component) {
-	    _inherits(Picker, _Component);
+	var timePickerElement = _react2["default"].createElement(_Panel2["default"], { defaultValue: (0, _moment2["default"])((0, _moment2["default"])().format("HH:mm:ss"), "HH:mm:ss") });
 	
-	    function Picker(props, context) {
-	        _classCallCheck(this, Picker);
+	var RangePicker = function (_Component) {
+	    _inherits(RangePicker, _Component);
+	
+	    function RangePicker(props, context) {
+	        _classCallCheck(this, RangePicker);
 	
 	        var _this = _possibleConstructorReturn(this, _Component.call(this, props, context));
 	
@@ -63124,28 +63472,40 @@
 	
 	        _this.state = {
 	            hoverValue: [],
-	            value: props.value || props.defaultValue || []
+	            value: props.value || props.defaultValue || [],
+	            open: props.open || false
 	        };
 	        return _this;
 	    }
 	
-	    Picker.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
+	    RangePicker.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
 	        if ("value" in nextProps) {
 	            this.setState({
 	                value: nextProps.value
+	            });
+	        }
+	        if ("open" in nextProps) {
+	            this.setState({
+	                open: nextProps.open
 	            });
 	        }
 	        this.setState({
 	            renderIcon: nextProps.renderIcon
 	        });
 	    };
+	    //日期面板中输入框的失焦事件
 	
-	    Picker.prototype.render = function render() {
+	    //阻止组件内部事件冒泡到组件外部容器
+	
+	
+	    RangePicker.prototype.render = function render() {
 	        var _this2 = this;
 	
 	        var props = this.props;
-	        var showValue = props.showValue;
-	        var value = this.state.value;
+	        var showClose = props.showClose;
+	        var _state = this.state,
+	            value = _state.value,
+	            open = _state.open;
 	
 	        var formatStr = props.format || 'YYYY-MM-DD';
 	
@@ -63158,57 +63518,80 @@
 	            locale: props.locale || _zh_CN2["default"],
 	            onChange: this.onChange,
 	            disabledDate: props.disabledDate,
-	            showClear: props.showClear || false,
-	            showOk: props.showOk || true,
-	            renderFooter: props.renderFooter
+	            showClear: props.showClear,
+	            showOk: props.showOk,
+	            showToday: props.showToday,
+	            renderFooter: props.renderFooter,
+	            timePicker: props.showTime ? timePickerElement : null,
+	            renderError: props.renderError,
+	            onStartInputBlur: this.onStartInputBlur,
+	            onEndInputBlur: this.onEndInputBlur,
+	            onClear: this.clear
 	        });
 	
 	        return _react2["default"].createElement(
-	            _Picker2["default"],
-	            {
-	                value: this.state.value,
-	                animation: 'animation' in props ? props.animation : "slide-up",
-	                calendar: calendar,
-	                disabled: props.disabled
-	            },
-	            function (_ref) {
-	                _objectDestructuringEmpty(_ref);
+	            "div",
+	            { onClick: this.stopPropagation, onMouseOver: this.stopPropagation },
+	            _react2["default"].createElement(
+	                _Picker2["default"],
+	                {
+	                    value: value,
+	                    animation: 'animation' in props ? props.animation : "slide-up",
+	                    calendar: calendar,
+	                    disabled: props.disabled,
+	                    dropdownClassName: props.dropdownClassName,
+	                    onOpenChange: this.onOpenChange,
+	                    open: open
+	                },
+	                function (_ref) {
+	                    _objectDestructuringEmpty(_ref);
 	
-	                return _react2["default"].createElement(
-	                    "div",
-	                    { className: (0, _classnames2["default"])('calendar-picker', 'u-input-group', 'simple', props.className),
-	                        onMouseEnter: _this2.onMouseEnter,
-	                        onMouseLeave: _this2.onMouseLeave
-	                    },
-	                    _react2["default"].createElement(_beeFormControl2["default"], {
-	                        placeholder: _this2.props.placeholder ? _this2.props.placeholder : 'start ~ end',
-	                        value: isValidRange(value) && format(value[0], formatStr) + " ~ " + format(value[1], formatStr) || '',
-	                        disabled: props.disabled
-	                    }),
-	                    _this2.state.value && _this2.state.showClose && !props.disabled ? _react2["default"].createElement(
-	                        _beeInputGroup2["default"].Button,
-	                        { shape: "border",
-	                            onClick: _this2.clear },
-	                        _react2["default"].createElement("i", { className: "uf uf-close-c" })
-	                    ) : _react2["default"].createElement(
-	                        _beeInputGroup2["default"].Button,
-	                        { shape: "border" },
-	                        props.renderIcon()
-	                    )
-	                );
-	            }
+	                    return _react2["default"].createElement(
+	                        "div",
+	                        { className: (0, _classnames2["default"])('calendar-picker', 'u-input-group', 'simple', props.className),
+	                            onMouseEnter: _this2.onMouseEnter,
+	                            onMouseLeave: _this2.onMouseLeave
+	                        },
+	                        _react2["default"].createElement(_beeFormControl2["default"], {
+	                            placeholder: _this2.props.placeholder ? _this2.props.placeholder : 'start ~ end',
+	                            value: isValidRange(value) && (0, _util.formatDate)(value[0], formatStr) + " ~ " + (0, _util.formatDate)(value[1], formatStr) || '',
+	                            disabled: props.disabled,
+	                            onFocus: function onFocus(v, e) {
+	                                _this2.outInputFocus(e);
+	                            }
+	                        }),
+	                        showClose && _this2.state.value && _this2.state.value.length > 0 && _this2.state.showClose && !props.disabled ? _react2["default"].createElement(
+	                            _beeInputGroup2["default"].Button,
+	                            { shape: "border",
+	                                onClick: _this2.clear },
+	                            props.closeIcon()
+	                        ) : _react2["default"].createElement(
+	                            _beeInputGroup2["default"].Button,
+	                            { shape: "border" },
+	                            props.renderIcon()
+	                        )
+	                    );
+	                }
+	            )
 	        );
 	    };
 	
-	    return Picker;
+	    return RangePicker;
 	}(_react.Component);
 	
 	var _initialiseProps = function _initialiseProps() {
 	    var _this3 = this;
 	
+	    this.clearHoverValue = function () {
+	        return _this3.setState({ hoverValue: [] });
+	    };
+	
 	    this.onChange = function (value) {
 	        var props = _this3.props;
 	        var formatStr = props.format || 'YYYY-MM-DD';
+	        if (value.length < 2) {
+	            return;
+	        }
 	        _this3.setState({
 	            value: value
 	        });
@@ -63216,15 +63599,18 @@
 	        //传入value和dateString
 	        if (props.onChange && isValidRange(value) || value.length == 0) {
 	            if (value.length > 0) {
-	                props.onChange(value, "[\"" + format(value[0], formatStr) + "\" , \"" + format(value[1], formatStr) + "\"]");
+	                props.onChange(value, "[\"" + (0, _util.formatDate)(value[0], formatStr) + "\" , \"" + (0, _util.formatDate)(value[1], formatStr) + "\"]");
 	            } else {
 	                props.onChange(null);
 	            }
+	        } else {
+	            props.onPanelChange && props.onPanelChange(value);
 	        }
 	    };
 	
 	    this.onHoverChange = function (hoverValue) {
 	        _this3.setState({ hoverValue: hoverValue });
+	        _this3.props.onHoverChange && _this3.props.onHoverChange(hoverValue);
 	    };
 	
 	    this.remove = function (e) {
@@ -63246,22 +63632,129 @@
 	    };
 	
 	    this.clear = function (e) {
-	        e.stopPropagation();
+	        e && e.stopPropagation && e.stopPropagation();
 	        _this3.setState({
-	            value: ''
+	            value: []
 	        });
-	        _this3.props.onChange && _this3.props.onChange('', '');
+	        _this3.props.onChange && _this3.props.onChange([], []);
+	        _this3.props.onFormControlClear && _this3.props.onFormControlClear();
+	    };
+	
+	    this.onOpenChange = function (open) {
+	        var props = _this3.props;
+	        var self = _this3;
+	        // let {value} = this.state;
+	        // if(!isValidRange(value)){
+	        //     debugger
+	        // }
+	        if (open === false) {
+	            _this3.clearHoverValue();
+	        }
+	
+	        _this3.setState({
+	            open: open
+	        }, function () {
+	            if (open) {
+	                setTimeout(function () {
+	                    self.inputFocus();
+	                }, 0);
+	            }
+	        });
+	        props.onOpenChange && props.onOpenChange(open);
+	        if (open) {
+	            setTimeout(function () {
+	                self.inputFocus();
+	            }, 200);
+	        }
+	    };
+	
+	    this.outInputFocus = function (e) {
+	        if (_this3.props.hasOwnProperty('open')) e.stopPropagation();
+	        _this3.props.outInputFocus && _this3.props.outInputFocus(e);
+	    };
+	
+	    this.inputFocus = function () {
+	        var inputs = document.querySelectorAll('.rc-calendar-input');
+	        if (!inputs) {
+	            return;
+	        }
+	        if (inputs[0].value) {
+	            inputs[0].select();
+	        } else {
+	            inputs[0].focus();
+	        }
+	        inputs[0].onkeydown = _this3.keydownLeft;
+	        inputs[1].onkeydown = _this3.keydownRight;
+	    };
+	
+	    this.keydownLeft = function (e) {
+	        var inputs = document.querySelectorAll('.rc-calendar-input');
+	        if (e.keyCode == _tinperBeeCore.KeyCode.ESC) {
+	            _this3.setState({
+	                open: false
+	            });
+	            _this3.props.onOpenChange(false, v, v && _this3.getValue(v) || '');
+	        }
+	        if (e.keyCode == _tinperBeeCore.KeyCode.RIGHT || e.keyCode == _tinperBeeCore.KeyCode.LEFT) {
+	            inputs[1].focus();
+	        }
+	    };
+	
+	    this.keydownRight = function (e) {
+	        var inputs = document.querySelectorAll('.rc-calendar-input');
+	        if (e.keyCode == _tinperBeeCore.KeyCode.ESC) {
+	            _this3.setState({
+	                open: false
+	            });
+	            _this3.props.onOpenChange(false, v, v && _this3.getValue(v) || '');
+	        }
+	        if (e.keyCode == _tinperBeeCore.KeyCode.LEFT || e.keyCode == _tinperBeeCore.KeyCode.RIGHT) {
+	            inputs[0].focus();
+	        }
+	    };
+	
+	    this.onStartInputBlur = function (e) {
+	        var inputs = document.querySelectorAll('.rc-calendar-input');
+	        var startValue = void 0,
+	            endValue = void 0;
+	        if (inputs) {
+	            startValue = inputs[0].value ? inputs[0].value : '';
+	            endValue = inputs[1].value ? inputs[1].value : '';
+	        }
+	        _this3.props.onStartInputBlur && _this3.props.onStartInputBlur(e, startValue, "[\"" + startValue + "\" , \"" + endValue + "\"]");
+	    };
+	
+	    this.onEndInputBlur = function (e) {
+	        var inputs = document.querySelectorAll('.rc-calendar-input');
+	        var startValue = void 0,
+	            endValue = void 0;
+	        if (inputs) {
+	            startValue = inputs[0].value ? inputs[0].value : '';
+	            endValue = inputs[1].value ? inputs[1].value : '';
+	        }
+	        _this3.props.onEndInputBlur && _this3.props.onEndInputBlur(e, endValue, "[\"" + startValue + "\" , \"" + endValue + "\"]");
+	    };
+	
+	    this.stopPropagation = function (e) {
+	        e.stopPropagation();
 	    };
 	};
 	
-	Picker.defaultProps = {
+	RangePicker.defaultProps = {
+	    closeIcon: function closeIcon() {
+	        return _react2["default"].createElement(_beeIcon2["default"], { type: "uf-close-c" });
+	    },
 	    renderIcon: function renderIcon() {
 	        return _react2["default"].createElement(_beeIcon2["default"], { type: "uf-calendar" });
 	    },
-	    locale: _zh_CN2["default"]
+	    locale: _zh_CN2["default"],
+	    showClear: true,
+	    showToday: true,
+	    showOk: true,
+	    showClose: true
 	};
 	
-	exports["default"] = Picker;
+	exports["default"] = RangePicker;
 	module.exports = exports["default"];
 
 /***/ }),
@@ -63294,7 +63787,7 @@
 	
 	var _classnames3 = _interopRequireDefault(_classnames2);
 	
-	var _reactLifecyclesCompat = __webpack_require__(91);
+	var _reactLifecyclesCompat = __webpack_require__(93);
 	
 	var _KeyCode = __webpack_require__(381);
 	
@@ -63391,7 +63884,11 @@
 	  var selectedValue = originalValue.concat();
 	  var index = direction === 'left' ? 0 : 1;
 	  selectedValue[index] = value;
+	  // console.log(selectedValue[0], selectedValue[1], this.compare(selectedValue[0], selectedValue[1]))
 	  if (selectedValue[0] && this.compare(selectedValue[0], selectedValue[1]) > 0) {
+	    selectedValue[1] = this.state.showTimePicker ? selectedValue[index] : undefined;
+	  }
+	  if (selectedValue[0] && !selectedValue[1]) {
 	    selectedValue[1 - index] = this.state.showTimePicker ? selectedValue[index] : undefined;
 	  }
 	  this.props.onInputSelect(selectedValue);
@@ -63408,7 +63905,7 @@
 	
 	    _initialiseProps.call(_this);
 	
-	    var selectedValue = props.selectedValue || props.defaultSelectedValue;
+	    var selectedValue = props.selectedValue || props.defaultSelectedValue || [];
 	    var value = normalizeAnchor(props, 1);
 	    _this.state = {
 	      selectedValue: selectedValue,
@@ -63457,7 +63954,9 @@
 	        showClear = props.showClear,
 	        showToday = props.showToday,
 	        type = props.type,
-	        clearIcon = props.clearIcon;
+	        clearIcon = props.clearIcon,
+	        onStartInputBlur = props.onStartInputBlur,
+	        onEndInputBlur = props.onEndInputBlur;
 	    var hoverValue = state.hoverValue,
 	        selectedValue = state.selectedValue,
 	        mode = state.mode,
@@ -63501,20 +64000,18 @@
 	    // console.log('end:', endValue.format('YYYY-MM-DD'));
 	
 	    var extraFooter = props.renderFooter();
-	
 	    return _react2["default"].createElement(
 	      'div',
 	      {
 	        ref: this.saveRoot,
 	        className: classes,
 	        style: props.style,
-	        tabIndex: '0',
 	        onKeyDown: this.onKeyDown
 	      },
 	      props.renderSidebar(),
 	      _react2["default"].createElement(
 	        'div',
-	        { className: prefixCls + '-panel' },
+	        { className: prefixCls + '-panel', onMouseOver: this.onMouseOver },
 	        showClear && selectedValue[0] && selectedValue[1] ? _react2["default"].createElement(
 	          'a',
 	          {
@@ -63549,7 +64046,9 @@
 	            showTimePicker: showTimePicker,
 	            enablePrev: true,
 	            enableNext: !isClosestMonths || this.isMonthYearPanelShow(mode[1]),
-	            clearIcon: clearIcon
+	            clearIcon: clearIcon,
+	            tabIndex: '0',
+	            onInputBlur: onStartInputBlur
 	          })),
 	          _react2["default"].createElement(
 	            'span',
@@ -63575,7 +64074,10 @@
 	            disabledMonth: this.disabledEndMonth,
 	            enablePrev: !isClosestMonths || this.isMonthYearPanelShow(mode[0]),
 	            enableNext: true,
-	            clearIcon: clearIcon
+	            clearIcon: clearIcon,
+	            tabIndex: '0',
+	            inputTabIndex: '-1',
+	            onInputBlur: onEndInputBlur
 	          }))
 	        ),
 	        _react2["default"].createElement(
@@ -64075,7 +64577,7 @@
 	    if (_this2.props.timePicker) {
 	      return v1.diff(v2);
 	    }
-	    return v1.diff(v2, 'days');
+	    return v1 && v1.diff(v2, 'days');
 	  };
 	
 	  this.fireSelectValueChange = function (selectedValue, direct, cause) {
@@ -64112,6 +64614,11 @@
 	      _this2.setState({ firstSelectedValue: selectedValue[0] });
 	      _this2.fireHoverValueChange(selectedValue.concat());
 	    }
+	    selectedValue.map(function (item) {
+	      if (item) {
+	        item._type = 'range';
+	      }
+	    });
 	    _this2.props.onChange(selectedValue);
 	    if (direct || selectedValue[0] && selectedValue[1]) {
 	      _this2.setState({
@@ -64143,7 +64650,7 @@
 	
 	  this.clear = function () {
 	    _this2.fireSelectValueChange([], true);
-	    _this2.props.onClear();
+	    _this2.props.onClear([]);
 	  };
 	
 	  this.disabledStartTime = function (time) {
@@ -64164,6 +64671,10 @@
 	    var value = _this2.state.value;
 	
 	    return month.isSameOrBefore(value[0], 'month');
+	  };
+	
+	  this.onMouseOver = function (e) {
+	    e.stopPropagation();
 	  };
 	};
 	
@@ -64245,7 +64756,10 @@
 	        onInputSelect = props.onInputSelect,
 	        enablePrev = props.enablePrev,
 	        enableNext = props.enableNext,
-	        clearIcon = props.clearIcon;
+	        clearIcon = props.clearIcon,
+	        renderError = props.renderError,
+	        inputTabIndex = props.inputTabIndex,
+	        onInputBlur = props.onInputBlur;
 	
 	    var shouldShowTimePicker = showTimePicker && timePicker;
 	    var disabledTimeConfig = shouldShowTimePicker && disabledTime ? (0, _index.getTimeConfig)(selectedValue, disabledTime) : null;
@@ -64268,6 +64782,7 @@
 	    }));
 	
 	    var dateInputElement = props.showDateInput && _react2["default"].createElement(_DateInput2["default"], {
+	      isRange: true,
 	      format: format,
 	      locale: locale,
 	      prefixCls: prefixCls,
@@ -64280,7 +64795,10 @@
 	      selectedValue: selectedValue[index],
 	      onChange: onInputChange,
 	      onSelect: onInputSelect,
-	      clearIcon: clearIcon
+	      clearIcon: clearIcon,
+	      renderError: renderError,
+	      inputTabIndex: inputTabIndex,
+	      onBlur: onInputBlur
 	    });
 	
 	    return _react2["default"].createElement(
@@ -64291,7 +64809,7 @@
 	      dateInputElement,
 	      _react2["default"].createElement(
 	        'div',
-	        { style: { outline: 'none' } },
+	        { style: { outline: 'none' }, tabIndex: props.tabIndex, className: rangeClassName + '-out' },
 	        _react2["default"].createElement(_CalendarHeader2["default"], _extends({}, newProps, {
 	          mode: mode,
 	          enableNext: enableNext,
@@ -64373,6 +64891,10 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
+	var _reactDom = __webpack_require__(2);
+	
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+	
 	var _classnames = __webpack_require__(5);
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
@@ -64393,7 +64915,7 @@
 	
 	var _en_US2 = _interopRequireDefault(_en_US);
 	
-	var _beeIcon = __webpack_require__(106);
+	var _beeIcon = __webpack_require__(79);
 	
 	var _beeIcon2 = _interopRequireDefault(_beeIcon);
 	
@@ -64542,7 +65064,9 @@
 	    };
 	
 	    _this.handleCalendarChange = function (value) {
-	      _this.setState({ value: value });
+	      _this.setState({
+	        value: value && _extends(value, { _type: 'week' }) || value
+	      });
 	    };
 	
 	    _this.onMouseLeave = function (e) {
@@ -64558,11 +65082,15 @@
 	    };
 	
 	    _this.onClear = function (e) {
-	      e.stopPropagation();
+	      e && e.stopPropagation && e.stopPropagation();
 	      _this.setState({
 	        value: ''
 	      });
 	      _this.props.onChange && _this.props.onChange('', '');
+	    };
+	
+	    _this.stopPropagation = function (e) {
+	      e.stopPropagation();
 	    };
 	
 	    _this.state = {
@@ -64572,12 +65100,16 @@
 	    };
 	    return _this;
 	  }
+	  //阻止组件内部事件冒泡到组件外部容器
+	
 	
 	  WeekPicker.prototype.render = function render() {
 	    var _this2 = this;
 	
 	    var state = this.state;
 	    var props = this.props;
+	    var showClose = props.showClose;
+	
 	    var value = state.value;
 	    var calendar = _react2["default"].createElement(_rcCalendar2["default"], {
 	      className: "week-calendar",
@@ -64597,7 +65129,7 @@
 	    var classes = (0, _classnames2["default"])(props.className, "datepicker-container");
 	    return _react2["default"].createElement(
 	      "div",
-	      { className: classes },
+	      { className: classes, onClick: this.stopPropagation, onMouseOver: this.stopPropagation },
 	      _react2["default"].createElement(
 	        _Picker2["default"],
 	        _extends({
@@ -64625,11 +65157,11 @@
 	              className: _this2.props.className,
 	              value: value && value.format(format) || ""
 	            }),
-	            _this2.state.value && _this2.state.showClose && !props.disabled ? _react2["default"].createElement(
+	            showClose && _this2.state.value && _this2.state.showClose && !props.disabled ? _react2["default"].createElement(
 	              _beeInputGroup2["default"].Button,
 	              { shape: "border",
 	                onClick: _this2.onClear },
-	              _react2["default"].createElement("i", { className: "uf uf-close-c" })
+	              props.closeIcon()
 	            ) : _react2["default"].createElement(
 	              _beeInputGroup2["default"].Button,
 	              { shape: "border" },
@@ -64645,10 +65177,14 @@
 	}(_react.Component);
 	
 	WeekPicker.defaultProps = {
+	  closeIcon: function closeIcon() {
+	    return _react2["default"].createElement(_beeIcon2["default"], { type: "uf-close-c" });
+	  },
 	  renderIcon: function renderIcon() {
 	    return _react2["default"].createElement(_beeIcon2["default"], { type: "uf-calendar" });
 	  },
-	  locale: _zh_CN2["default"]
+	  locale: _zh_CN2["default"],
+	  showClose: true
 	};
 	
 	exports["default"] = WeekPicker;
@@ -64670,9 +65206,15 @@
 	
 	var _YearPanel2 = _interopRequireDefault(_YearPanel);
 	
+	var _tinperBeeCore = __webpack_require__(27);
+	
 	var _react = __webpack_require__(1);
 	
 	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactDom = __webpack_require__(2);
+	
+	var _reactDom2 = _interopRequireDefault(_reactDom);
 	
 	var _Picker = __webpack_require__(585);
 	
@@ -64686,7 +65228,7 @@
 	
 	var _beeInputGroup2 = _interopRequireDefault(_beeInputGroup);
 	
-	var _beeIcon = __webpack_require__(106);
+	var _beeIcon = __webpack_require__(79);
 	
 	var _beeIcon2 = _interopRequireDefault(_beeIcon);
 	
@@ -64740,30 +65282,41 @@
 	                value: nextProps.value
 	            });
 	        }
-	        this.setState({
-	            renderIcon: nextProps.renderIcon,
-	            open: nextProps.open
-	        });
+	        if ("open" in nextProps) {
+	            this.setState({
+	                open: nextProps.open
+	            });
+	        }
+	        if ("renderIcon" in nextProps) {
+	            this.setState({
+	                renderIcon: nextProps.renderIcon
+	            });
+	        }
 	    };
+	
+	    //阻止组件内部事件冒泡到组件外部容器
+	
 	
 	    YearPicker.prototype.render = function render() {
 	        var _this2 = this;
 	
 	        var state = this.state;
-	
 	        var props = this.props;
+	        var showClose = props.showClose;
+	
 	        var value = state.value;
 	
 	        var Calendar = _react2["default"].createElement(_YearPanel2["default"], _extends({
 	            prefixCls: 'rc-calendar-picker',
 	            rootPrefixCls: 'rc-calendar'
 	        }, props, { focus: function focus() {},
+	            onSelect: this.onSelect,
 	            showDateInput: true
 	        }));
 	        var classes = (0, _classnames2["default"])(props.className, "datepicker-container");
 	        return _react2["default"].createElement(
 	            "div",
-	            { className: classes },
+	            { className: classes, onClick: this.stopPropagation, onMouseOver: this.stopPropagation },
 	            _react2["default"].createElement(
 	                _Picker2["default"],
 	                _extends({
@@ -64773,7 +65326,8 @@
 	                    onChange: this.handleChange,
 	                    calendar: Calendar,
 	                    prefixCls: 'rc-calendar',
-	                    value: state.value || (0, _moment2["default"])()
+	                    value: state.value || (0, _moment2["default"])(),
+	                    open: this.state.open
 	                }),
 	                function (_ref) {
 	                    _objectDestructuringEmpty(_ref);
@@ -64785,17 +65339,20 @@
 	                            onMouseLeave: _this2.onMouseLeave
 	                        },
 	                        _react2["default"].createElement(_beeFormControl2["default"], {
+	                            ref: function ref(_ref2) {
+	                                return _this2.outInput = _ref2;
+	                            },
 	                            placeholder: _this2.props.placeholder,
 	                            className: _this2.props.className,
 	                            disabled: props.disabled,
 	                            readOnly: true,
 	                            value: value && value.format(props.format) || ""
 	                        }),
-	                        _this2.state.value && _this2.state.showClose && !props.disabled ? _react2["default"].createElement(
+	                        showClose && _this2.state.value && _this2.state.showClose && !props.disabled ? _react2["default"].createElement(
 	                            _beeInputGroup2["default"].Button,
 	                            { shape: "border",
 	                                onClick: _this2.clear },
-	                            _react2["default"].createElement("i", { className: "uf uf-close-c" })
+	                            props.closeIcon()
 	                        ) : _react2["default"].createElement(
 	                            _beeInputGroup2["default"].Button,
 	                            { shape: "border" },
@@ -64819,16 +65376,49 @@
 	        });
 	    };
 	
+	    this.inputFocus = function () {
+	        var self = _this3;
+	        var input = document.querySelector('.rc-calendar-input');
+	        if (input) {
+	            if (input.value) {
+	                input.select();
+	            } else {
+	                input.focus();
+	            }
+	            input.onkeydown = function (e) {
+	                if (e.keyCode == _tinperBeeCore.KeyCode.DELETE) {
+	                    input.value = '';
+	                    self.props.onChange && self.props.onChange('', '');
+	                } else if (e.keyCode == _tinperBeeCore.KeyCode.ESC) {
+	                    self.setState({
+	                        open: false
+	                    });
+	                    var v = self.state.value;
+	                    self.props.onOpenChange && self.props.onOpenChange(false, v, v && v.format(self.props.format) || '');
+	                    _reactDom2["default"].findDOMNode(self.outInput).focus(); // 按esc时候焦点回到input输入框
+	                }
+	            };
+	        }
+	    };
+	
 	    this.onOpenChange = function (open) {
+	        var self = _this3;
 	        _this3.setState({
 	            open: open
 	        });
+	        if (open) {
+	            setTimeout(function () {
+	                self.inputFocus();
+	            }, 200);
+	        }
 	    };
 	
 	    this.handleChange = function (value) {
 	        var props = _this3.props;
-	        _this3.setState({ value: value });
-	        props.onChange(value, value && value.format(props.format) || '');
+	        _this3.setState({
+	            value: value && _extends(value, { _type: 'year' }) || value
+	        });
+	        props.onChange && props.onChange(value, value && value.format(props.format) || '');
 	    };
 	
 	    this.onMouseLeave = function (e) {
@@ -64850,13 +65440,33 @@
 	        });
 	        _this3.props.onChange && _this3.props.onChange('', '');
 	    };
+	
+	    this.onSelect = function (value) {
+	        var _props = _this3.props,
+	            onSelect = _props.onSelect,
+	            format = _props.format;
+	
+	        _this3.setState({
+	            open: false
+	        });
+	        onSelect && onSelect(value, value ? value.format(format) : '');
+	        _reactDom2["default"].findDOMNode(_this3.outInput).focus();
+	    };
+	
+	    this.stopPropagation = function (e) {
+	        e.stopPropagation();
+	    };
 	};
 	
 	YearPicker.defaultProps = {
+	    closeIcon: function closeIcon() {
+	        return _react2["default"].createElement(_beeIcon2["default"], { type: "uf-close-c" });
+	    },
 	    renderIcon: function renderIcon() {
 	        return _react2["default"].createElement(_beeIcon2["default"], { type: "uf-calendar" });
 	    },
-	    disabled: false
+	    disabled: false,
+	    showClose: true
 	};
 	
 	exports["default"] = YearPicker;
@@ -64919,7 +65529,11 @@
 	
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); } /**
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               * This source code is quoted from rc-switch.
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               * homepage: https://github.com/react-component/switch
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               */
+	
 	
 	var propTypes = {
 	  clsPrefix: _propTypes2["default"].string,
@@ -64927,7 +65541,9 @@
 	  checkedChildren: _propTypes2["default"].any,
 	  unCheckedChildren: _propTypes2["default"].any,
 	  onChangeHandler: _propTypes2["default"].func,
-	  onChange: _propTypes2["default"].func
+	  onChange: _propTypes2["default"].func,
+	  onKeyDown: _propTypes2["default"].func,
+	  enterKeyDown: _propTypes2["default"].bool //是否启用 enter 和 space 键
 	};
 	var defaultProps = {
 	  clsPrefix: "u-switch",
@@ -64937,7 +65553,9 @@
 	  size: "",
 	  disabled: false,
 	  onChangeHandler: function onChangeHandler() {},
-	  onChange: function onChange() {}
+	  onChange: function onChange() {},
+	  onKeyDown: function onKeyDown() {},
+	  enterKeyDown: true
 	};
 	
 	var Switch = function (_Component) {
@@ -64973,6 +65591,8 @@
 	
 	
 	  Switch.prototype.render = function render() {
+	    var _this2 = this;
+	
 	    var _props = this.props,
 	        checkedChildren = _props.checkedChildren,
 	        unCheckedChildren = _props.unCheckedChildren,
@@ -64982,7 +65602,8 @@
 	        clsPrefix = _props.clsPrefix,
 	        disabled = _props.disabled,
 	        colors = _props.colors,
-	        others = _objectWithoutProperties(_props, ["checkedChildren", "unCheckedChildren", "onChangeHandler", "size", "className", "clsPrefix", "disabled", "colors"]);
+	        enterKeyDown = _props.enterKeyDown,
+	        others = _objectWithoutProperties(_props, ["checkedChildren", "unCheckedChildren", "onChangeHandler", "size", "className", "clsPrefix", "disabled", "colors", "enterKeyDown"]);
 	    //获取checked
 	
 	
@@ -65002,18 +65623,24 @@
 	
 	    return _react2["default"].createElement(
 	      "span",
-	      _extends({}, others, {
-	        ref: this.saveNode,
-	        onClick: this.clickHandler,
-	        onKeyDown: this.handleKeyDown,
-	        onMouseUp: this.handleMouseUp,
-	        className: (0, _classnames2["default"])(className, classNames),
-	        tabIndex: disabled ? -1 : 0
-	      }),
+	      { className: disabled && checked ? clsPrefix + "-backdrop " + clsPrefix + "-span" : clsPrefix + "-span" },
 	      _react2["default"].createElement(
 	        "span",
-	        { className: clsPrefix + "-inner" },
-	        checked ? checkedChildren : unCheckedChildren
+	        _extends({}, others, {
+	          ref: this.saveNode,
+	          onClick: this.clickHandler,
+	          onKeyDown: function onKeyDown(e) {
+	            return _this2.handleKeyDown(e, enterKeyDown);
+	          },
+	          onMouseUp: this.handleMouseUp,
+	          className: (0, _classnames2["default"])(className, classNames),
+	          tabIndex: disabled ? -1 : 0
+	        }),
+	        _react2["default"].createElement(
+	          "span",
+	          { className: clsPrefix + "-inner" },
+	          checked ? checkedChildren : unCheckedChildren
+	        )
 	      )
 	    );
 	  };
@@ -65022,50 +65649,53 @@
 	}(_react.Component);
 	
 	var _initialiseProps = function _initialiseProps() {
-	  var _this2 = this;
+	  var _this3 = this;
 	
 	  this.setChecked = function (checked) {
-	    if (_this2.props.disabled) {
+	    if (_this3.props.disabled) {
 	      return;
 	    }
-	    if (!('checked' in _this2.props)) {
-	      _this2.setState({
+	    if (!('checked' in _this3.props)) {
+	      _this3.setState({
 	        checked: checked
 	      });
 	    }
-	    _this2.props.onChangeHandler(checked);
-	    _this2.props.onChange(checked);
+	    _this3.props.onChangeHandler(checked);
+	    _this3.props.onChange(checked);
 	  };
 	
 	  this.clickHandler = function () {
-	    var checked = !_this2.state.checked;
-	    _this2.setChecked(checked);
+	    var checked = !_this3.state.checked;
+	    _this3.setChecked(checked);
 	  };
 	
-	  this.handleKeyDown = function (e) {
+	  this.handleKeyDown = function (e, enterKeyDown) {
 	    if (e.keyCode === 37) {
 	      // Left
-	      _this2.setChecked(false);
+	      _this3.setChecked(false);
 	    } else if (e.keyCode === 39) {
 	      // Right
-	      _this2.setChecked(true);
+	      _this3.setChecked(true);
 	    } else if (e.keyCode === 32 || e.keyCode === 13) {
 	      // Space, Enter
-	      _this2.clickHandler();
+	      if (enterKeyDown) {
+	        _this3.clickHandler();
+	      }
 	    }
+	    _this3.props.onKeyDown(e);
 	  };
 	
 	  this.handleMouseUp = function (e) {
-	    if (_this2.node) {
-	      _this2.node.blur();
+	    if (_this3.node) {
+	      _this3.node.blur();
 	    }
-	    if (_this2.props.onMouseUp) {
-	      _this2.props.onMouseUp(e);
+	    if (_this3.props.onMouseUp) {
+	      _this3.props.onMouseUp(e);
 	    }
 	  };
 	
 	  this.saveNode = function (node) {
-	    _this2.node = node;
+	    _this3.node = node;
 	  };
 	};
 	
@@ -66948,7 +67578,13 @@
 	
 	var _InputNumber2 = _interopRequireDefault(_InputNumber);
 	
+	var _InputNumberGroup = __webpack_require__(620);
+	
+	var _InputNumberGroup2 = _interopRequireDefault(_InputNumberGroup);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+	
+	_InputNumber2["default"].InputNumberGroup = _InputNumberGroup2["default"];
 	
 	exports["default"] = _InputNumber2["default"];
 	module.exports = exports['default'];
@@ -67013,13 +67649,13 @@
 	};
 	
 	var defaultProps = {
-	    value: 0,
+	    value: "",
 	    step: 1,
 	    clsPrefix: 'u-input-number',
 	    iconStyle: 'double',
 	    autoWidth: false,
 	    delay: 300,
-	    toNumber: true
+	    toNumber: false
 	};
 	
 	/**
@@ -67037,27 +67673,59 @@
 	        precision = props.precision,
 	        onChange = props.onChange;
 	
-	    if (value) {
-	        currentValue = Number(value) || 0;
-	    } else if (min) {
+	    if (value != undefined) {
+	        if (value === '') {
+	            currentValue = '';
+	            return {
+	                value: '',
+	                minusDisabled: false,
+	                plusDisabled: false
+	            };
+	        } else {
+	            currentValue = Number(value) || 0;
+	        }
+	    } else if (min && value != '') {
 	        currentValue = min;
-	    } else if (value == 0) {
+	    } else if (value === '0' || value === 0) {
 	        currentValue = 0;
 	    } else {
 	        //NaN
-	        if (oldValue || oldValue == 0) {
+	        if (oldValue || oldValue === 0 || oldValue === '0') {
 	            currentValue = oldValue;
+	        } else {
+	            //value为空
+	            return {
+	                value: '',
+	                minusDisabled: false,
+	                plusDisabled: false
+	            };
 	        }
+	    }
+	    if (currentValue == -Infinity) {
+	        return {
+	            value: min,
+	            minusDisabled: true,
+	            plusDisabled: false
+	        };
+	    }
+	    if (currentValue == Infinity) {
+	        return {
+	            value: max,
+	            minusDisabled: false,
+	            plusDisabled: true
+	        };
 	    }
 	    if (currentValue <= min) {
 	        currentMinusDisabled = true;
+	        currentValue = min;
 	    }
 	    if (currentValue >= max) {
 	        currentPlusDisabled = true;
+	        currentValue = max;
 	    }
 	
 	    if (props.hasOwnProperty('precision')) {
-	        currentValue = currentValue.toFixed(precision);
+	        currentValue = Number(currentValue).toFixed(precision);
 	    }
 	
 	    return {
@@ -67069,9 +67737,10 @@
 	/**
 	 * 千分符
 	 * @param {要转换的数据} num 
-	 * @param {是否要小数点} point 
 	 */
-	function toThousands(number, point) {
+	function toThousands(number) {
+	    if (number === '') return '';
+	    if (number === '0') return '0';
 	    var num = (number || 0).toString();
 	    var integer = num.split('.')[0];
 	    var decimal = num.split('.')[1] || '';
@@ -67109,9 +67778,20 @@
 	        _this.handleChange = function (value) {
 	            var _this$props = _this.props,
 	                onChange = _this$props.onChange,
-	                toNumber = _this$props.toNumber;
+	                toNumber = _this$props.toNumber,
+	                max = _this$props.max,
+	                min = _this$props.min;
 	
+	            if (value === '') {
+	                onChange && onChange(value);
+	                _this.setState({
+	                    value: value
+	                });
+	                return;
+	            }
 	            value = unThousands(value);
+	            if (Number(value) > max) return;
+	            if (Number(value) < min) return;
 	            if (isNaN(value) && value != '.') return;
 	            _this.setState({
 	                value: value,
@@ -67139,7 +67819,6 @@
 	        };
 	
 	        _this.handleBlur = function (v) {
-	            v = unThousands(v);
 	            _this.focus = false;
 	            var _this$props3 = _this.props,
 	                onBlur = _this$props3.onBlur,
@@ -67147,8 +67826,17 @@
 	                onChange = _this$props3.onChange,
 	                toNumber = _this$props3.toNumber;
 	
+	            if (v === '') {
+	                _this.setState({
+	                    value: v
+	                });
+	                onBlur && onBlur(v);
+	                onChange && onChange(v);
+	                return;
+	            }
+	            v = unThousands(v);
 	            var value = Number(v);
-	            if (precision) {
+	            if (_this.props.hasOwnProperty('precision')) {
 	                value = value.toFixed(precision);
 	            }
 	            _this.setState({
@@ -67282,7 +67970,7 @@
 	        };
 	
 	        _this.separate = function (value) {
-	            value = value.toString();
+	            value = value !== null && value.toString();
 	            if (value.indexOf('.') > -1) {
 	                return value.split('.')[1];
 	            } else {
@@ -67340,14 +68028,21 @@
 	        return _this;
 	    }
 	
-	    InputNumber.prototype.ComponentWillMount = function ComponentWillMount() {};
+	    InputNumber.prototype.componentDidMount = function componentDidMount() {
+	        this.setState({
+	            value: this.props.value,
+	            showValue: toThousands(this.props.value)
+	        });
+	    };
 	
 	    InputNumber.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
 	        if (this.focus) {
-	            this.setState({
-	                value: nextProps.value,
-	                showValue: toThousands(nextProps.value)
-	            });
+	            if (nextProps.value == Infinity || nextProps.value == -Infinity) {} else {
+	                this.setState({
+	                    value: nextProps.value,
+	                    showValue: toThousands(nextProps.value)
+	                });
+	            }
 	        } else {
 	            var data = judgeValue(nextProps, this.state.value);
 	            this.setState({
@@ -67416,13 +68111,13 @@
 	        value = format ? format(value) : value;
 	
 	        var disabledCursor = disabled ? ' disabled-cursor' : '';
-	
+	        var disabledCon = disabled ? ' disabled-con' : '';
 	        return _react2["default"].createElement(
 	            'div',
-	            null,
+	            { className: clsPrefix + '-out' },
 	            iconStyle === 'double' ? _react2["default"].createElement(
 	                _beeInputGroup2["default"],
-	                { className: (0, _classnames2["default"])(className, classes) },
+	                { className: (0, _classnames2["default"])(className, classes, disabledCon) },
 	                _react2["default"].createElement(
 	                    _beeInputGroup2["default"].Addon,
 	                    {
@@ -67451,7 +68146,7 @@
 	            ) : _react2["default"].createElement(
 	                _beeInputGroup2["default"],
 	                {
-	                    className: (0, _classnames2["default"])(className, classes),
+	                    className: (0, _classnames2["default"])(className, classes, disabledCon),
 	                    simple: true
 	                },
 	                _react2["default"].createElement(_beeFormControl2["default"], _extends({}, others, {
@@ -67508,10 +68203,201 @@
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _propTypes = __webpack_require__(6);
+	
+	var _propTypes2 = _interopRequireDefault(_propTypes);
+	
+	var _InputNumber = __webpack_require__(619);
+	
+	var _InputNumber2 = _interopRequireDefault(_InputNumber);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+	
+	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
+	
+	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
+	
+	var noop = function noop() {};
+	
+	var propsTypes = {
+	    clsfix: _propTypes2["default"].string,
+	    className: _propTypes2["default"].string,
+	    value: _propTypes2["default"].array,
+	    onChange: _propTypes2["default"].func,
+	    onBlur: _propTypes2["default"].func,
+	    onFocus: _propTypes2["default"].func,
+	    placeholder: _propTypes2["default"].array,
+	
+	    max: _propTypes2["default"].number,
+	    min: _propTypes2["default"].number,
+	    step: _propTypes2["default"].number,
+	    precision: _propTypes2["default"].number,
+	    format: _propTypes2["default"].func,
+	    delay: _propTypes2["default"].number,
+	    disabled: _propTypes2["default"].bool,
+	    toThousands: _propTypes2["default"].bool,
+	    toNumber: _propTypes2["default"].bool
+	};
+	
+	var defaultProps = {
+	    clsfix: 'u-input-number',
+	    className: '',
+	    value: [],
+	    placeholder: [],
+	    onChange: noop,
+	    onBlur: noop,
+	    onFocus: noop
+	};
+	
+	var InputNumberGroup = function (_Component) {
+	    _inherits(InputNumberGroup, _Component);
+	
+	    function InputNumberGroup(props) {
+	        _classCallCheck(this, InputNumberGroup);
+	
+	        var _this = _possibleConstructorReturn(this, _Component.call(this, props));
+	
+	        _this.onChange = function (index, v) {
+	            var value = _this.state.value;
+	
+	            value[index] = v;
+	            _this.setState({
+	                value: value
+	            });
+	            _this.props.onChange(value);
+	        };
+	
+	        _this.onFocus = function (index, v) {
+	            var value = _this.state.value;
+	
+	            value[index] = v;
+	            _this.setState({
+	                value: value
+	            });
+	            _this.props.onFocus(value);
+	        };
+	
+	        _this.onBlur = function (index, v) {
+	            var value = _this.state.value;
+	
+	            if (index == 1) {
+	                if (v < value[0]) {
+	                    console.warn('The second value must be greater than or equal to the first value');
+	                }
+	            }
+	            value[index] = v;
+	            _this.setState({
+	                value: value
+	            });
+	
+	            _this.props.onBlur(value);
+	        };
+	
+	        _this.state = {
+	            value: props.value || []
+	        };
+	        return _this;
+	    }
+	
+	    InputNumberGroup.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
+	        if ('value' in nextProps) {
+	            this.setState({
+	                value: nextProps.value
+	            });
+	        }
+	    };
+	
+	    InputNumberGroup.prototype.render = function render() {
+	        var _this2 = this;
+	
+	        var _props = this.props,
+	            className = _props.className,
+	            clsfix = _props.clsfix,
+	            value = _props.value,
+	            onChange = _props.onChange,
+	            placeholder = _props.placeholder,
+	            split = _props.split,
+	            onBlur = _props.onBlur,
+	            onFocus = _props.onFocus,
+	            other = _objectWithoutProperties(_props, ['className', 'clsfix', 'value', 'onChange', 'placeholder', 'split', 'onBlur', 'onFocus']);
+	
+	        var stateValue = this.state.value;
+	
+	        return _react2["default"].createElement(
+	            'div',
+	            { className: clsfix + '-group ' + className },
+	            _react2["default"].createElement(_InputNumber2["default"], _extends({
+	                onChange: function onChange(value) {
+	                    _this2.onChange(0, value);
+	                },
+	                onBlur: function onBlur(value) {
+	                    _this2.onBlur(0, value);
+	                },
+	                onFocus: function onFocus(value) {
+	                    _this2.onFocus(0, value);
+	                },
+	                value: stateValue[0],
+	                placeholder: placeholder[0]
+	            }, other)),
+	            split ? split : _react2["default"].createElement(
+	                'span',
+	                { className: clsfix + '-group-split' },
+	                '~'
+	            ),
+	            _react2["default"].createElement(_InputNumber2["default"], _extends({
+	                onChange: function onChange(value) {
+	                    _this2.onChange(1, value);
+	                },
+	                onBlur: function onBlur(value) {
+	                    _this2.onBlur(1, value);
+	                },
+	                onFocus: function onFocus(value) {
+	                    _this2.onFocus(1, value);
+	                },
+	                value: stateValue[1],
+	                placeholder: placeholder[1]
+	            }, other))
+	        );
+	    };
+	
+	    return InputNumberGroup;
+	}(_react.Component);
+	
+	InputNumberGroup.displayName = 'InputNumberGroup';
+	
+	
+	InputNumberGroup.propsTypes = propsTypes;
+	InputNumberGroup.defaultProps = defaultProps;
+	
+	exports["default"] = InputNumberGroup;
+	module.exports = exports['default'];
+
+/***/ }),
+/* 621 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
 	
-	var _Rate = __webpack_require__(621);
+	var _Rate = __webpack_require__(622);
 	
 	var _Rate2 = _interopRequireDefault(_Rate);
 	
@@ -67521,7 +68407,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 621 */
+/* 622 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -67534,11 +68420,11 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _rcRate = __webpack_require__(622);
+	var _rcRate = __webpack_require__(623);
 	
 	var _rcRate2 = _interopRequireDefault(_rcRate);
 	
-	var _beeIcon = __webpack_require__(106);
+	var _beeIcon = __webpack_require__(79);
 	
 	var _beeIcon2 = _interopRequireDefault(_beeIcon);
 	
@@ -67621,7 +68507,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 622 */
+/* 623 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -67631,7 +68517,7 @@
 	});
 	exports["default"] = void 0;
 	
-	var _Rate = _interopRequireDefault(__webpack_require__(623));
+	var _Rate = _interopRequireDefault(__webpack_require__(624));
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 	
@@ -67639,7 +68525,7 @@
 	exports["default"] = _default;
 
 /***/ }),
-/* 623 */
+/* 624 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -67657,13 +68543,13 @@
 	
 	var _classnames = _interopRequireDefault(__webpack_require__(5));
 	
-	var _reactLifecyclesCompat = __webpack_require__(91);
+	var _reactLifecyclesCompat = __webpack_require__(93);
 	
 	var _KeyCode = _interopRequireDefault(__webpack_require__(381));
 	
-	var _util = __webpack_require__(624);
+	var _util = __webpack_require__(625);
 	
-	var _Star = _interopRequireDefault(__webpack_require__(625));
+	var _Star = _interopRequireDefault(__webpack_require__(626));
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 	
@@ -68004,7 +68890,7 @@
 	exports["default"] = _default;
 
 /***/ }),
-/* 624 */
+/* 625 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -68059,7 +68945,7 @@
 	}
 
 /***/ }),
-/* 625 */
+/* 626 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -68228,7 +69114,7 @@
 	});
 
 /***/ }),
-/* 626 */
+/* 627 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -68237,7 +69123,7 @@
 	  value: true
 	});
 	
-	var _CitySelect = __webpack_require__(627);
+	var _CitySelect = __webpack_require__(628);
 	
 	var _CitySelect2 = _interopRequireDefault(_CitySelect);
 	
@@ -68247,7 +69133,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 627 */
+/* 628 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -68272,11 +69158,11 @@
 	
 	var _beeSelect2 = _interopRequireDefault(_beeSelect);
 	
-	var _lodash = __webpack_require__(628);
+	var _lodash = __webpack_require__(629);
 	
 	var _lodash2 = _interopRequireDefault(_lodash);
 	
-	var _provinceData = __webpack_require__(629);
+	var _provinceData = __webpack_require__(630);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 	
@@ -68510,7 +69396,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 628 */
+/* 629 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global, module) {/**
@@ -70911,7 +71797,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(358)(module)))
 
 /***/ }),
-/* 629 */
+/* 630 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -70921,15 +71807,15 @@
 	});
 	exports.en = exports.tw = exports.zh = undefined;
 	
-	var _citys = __webpack_require__(630);
+	var _citys = __webpack_require__(631);
 	
 	var _citys2 = _interopRequireDefault(_citys);
 	
-	var _citysTw = __webpack_require__(631);
+	var _citysTw = __webpack_require__(632);
 	
 	var _citysTw2 = _interopRequireDefault(_citysTw);
 	
-	var _citysEn = __webpack_require__(632);
+	var _citysEn = __webpack_require__(633);
 	
 	var _citysEn2 = _interopRequireDefault(_citysEn);
 	
@@ -70951,7 +71837,7 @@
 	};
 
 /***/ }),
-/* 630 */
+/* 631 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -72226,7 +73112,7 @@
 	module.exports = exports["default"];
 
 /***/ }),
-/* 631 */
+/* 632 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -73501,84 +74387,84 @@
 	module.exports = exports["default"];
 
 /***/ }),
-/* 632 */
+/* 633 */
 /***/ (function(module, exports) {
 
 	"use strict";
 	
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	            value: true
 	});
 	var provinceData = [{ "name": "Beijing", "city": [{ "name": "Beijing", "area": ["Dongcheng District", "Xicheng District", "Chongwen District", "Xuanwu District", "Chaoyang District", "Fengtai District", "Shijingshan District", "Haidian District", "Mentougou District", "Fangshan District", "Tongzhou District", "Shunyi District", "Changping District", "Daxing District", "Pinggu District", "Huairou District", "Miyun County", "Yanqing County"] }] }, { "name": "Tianjin", "city": [{ "name": "Tianjin", "area": ["Heping District", "Hedong District", "Hexi District", "Nankai District", "Hebei District", "Hongqiao District", "Tanggu District", "Hangu District", "Dagang District", "Dongli District", "Xiqing District", "Jinnan District", "Beichen District", "Wuqing District", "Baodi District", "Ninghe County", "Jinghai County", "Ji County"] }] }, {
-	    "name": "Hebei", "city": [{ "name": "Shijiazhuang", "area": ["Chang'an District", "Qiaodong District", "Qiaoxi District", "Xinhua District", "Suburb", "Jingxing Mining Area", "Jingxing County", "Zhengding County", "Luancheng County", "Xingtang County", "Lingshou County", "Gaoyi County", "Shenze County", "Zanhuang County", "Wuji County", "Pingshan County", "Yuanshi County", "Zhao County", "Xinji City", "Gao", "Jinzhou City", "Xinle City", "Luquan City"] }, { "name": "Tangshan", "area": ["Lunan District", "Lubei District", "Guye District", "Kaiping District", "New District", "Fengrun County", "Luan County", "Luannan County", "Laoting County", "Qianxi County", "Yutian County", "Tanghai County", "Zunhua City", "Fengnan City", "Qian'an City"] }, { "name": "Qinhuangdao", "area": ["Haigang District", "Shanhaiguan District", "Beidaihe District", "Qinglong Manchu Autonomous County", "Changli County", "Funing County", "Lulong County"] }, { "name": "Handan", "area": ["Hanshan District", "Congtai District", "Fuxing District", "Fengfeng Mining Area", "Handan County", "Linzhang County", "Cheng'an County", "Daming County", "She County", "Ci County", "Feixiang County", "Yongnian County", "Qiu County", "Jize County", "Guangping County", "Guantao County", "Wei County", "Quzhou County", "Wu'an City"] }, { "name": "Xingtai", "area": ["Qiaodong District", "Qiaoxi District", "Xingtai County", "Lincheng County", "Neiqiu County", "Baixiang County", "Longyao County", "Ren County", "Nanhe County", "Ningjin County", "Julu County", "Xinhe County", "Guangzong County", "Pingxiang County", "Wei County", "Qinghe County", "Linxi County", "Nangong City", "Shahe City"] }, { "name": "Baoding", "area": ["New Urban District", "North Urban District", "South Urban District", "Mancheng County", "Qingyuan County", "Laishui County", "Fuping County", "Xushui County", "Dingxing County", "Tang County", "Gaoyang County", "Rongcheng County", "Laiyuan County", "Wangdu County", "Anxin County", "Yi County", "Quyang County", "Li County", "Shunping County", "Boye", "Xiong County", "Zhuozhou City", "Dingzhou City", "Anguo City", "Gaobeidian City"] }, { "name": "Zhangjiakou", "area": ["Qiaodong District", "Qiaoxi District", "Xuanhua District", "Xiahuayuan District", "Xuanhua County", "Zhangbei County", "Kangbao County", "Guyuan County", "Shangyi County", "Yu County", "Yangyuan County", "Huai'an County", "Wanquan County", "Huailai County", "Zhuolu County", "Chicheng County", "Chongli County"] }, { "name": "Chengde", "area": ["Shuangqiao District", "Shuangluan District", "Yingshouyingzi Mining Area", "Chengde County", "Xinglong County", "Pingquan County", "Luanping County", "Longhua County", "Fengning Manchu Autonomous County", "Kuancheng Manchu Autonomous County", "Weichang Manchu Mongolian Autonomous County"] }, { "name": "Cangzhou", "area": ["Xinhua District", "Yunhe District", "Cang County", "Qing County", "Dongguang County", "Haixing County", "Yanshan County", "Suning County", "Nanpi County", "Wuqiao County", "Xian County", "Mengcun Hui Nationality Autonomous County", "Botou City", "Renqiu City", "Huanghua City", "Hejian City"] }, { "name": "Langfang", "area": ["Anci District", "Gu'an County", "Yongqing County", "Xianghe County", "Dacheng County", "Wen'an County", "Dachang Hui Nationality Autonomous County", "Bazhou City", "Sanhe City"] }, { "name": "Hengshui", "area": ["Taocheng District", "Zaoqiang County", "Wuyi County", "Wuqiang County", "Raoyang County", "Anping County", "Gucheng County", "Jing County", "Yucheng County", "Quzhou City", "Shenzhou City"] }]
+	            "name": "Hebei", "city": [{ "name": "Shijiazhuang", "area": ["Chang'an District", "Qiaodong District", "Qiaoxi District", "Xinhua District", "Suburb", "Jingxing Mining Area", "Jingxing County", "Zhengding County", "Luancheng County", "Xingtang County", "Lingshou County", "Gaoyi County", "Shenze County", "Zanhuang County", "Wuji County", "Pingshan County", "Yuanshi County", "Zhao County", "Xinji City", "Gao", "Jinzhou City", "Xinle City", "Luquan City"] }, { "name": "Tangshan", "area": ["Lunan District", "Lubei District", "Guye District", "Kaiping District", "New District", "Fengrun County", "Luan County", "Luannan County", "Laoting County", "Qianxi County", "Yutian County", "Tanghai County", "Zunhua City", "Fengnan City", "Qian'an City"] }, { "name": "Qinhuangdao", "area": ["Haigang District", "Shanhaiguan District", "Beidaihe District", "Qinglong Manchu Autonomous County", "Changli County", "Funing County", "Lulong County"] }, { "name": "Handan", "area": ["Hanshan District", "Congtai District", "Fuxing District", "Fengfeng Mining Area", "Handan County", "Linzhang County", "Cheng'an County", "Daming County", "She County", "Ci County", "Feixiang County", "Yongnian County", "Qiu County", "Jize County", "Guangping County", "Guantao County", "Wei County", "Quzhou County", "Wu'an City"] }, { "name": "Xingtai", "area": ["Qiaodong District", "Qiaoxi District", "Xingtai County", "Lincheng County", "Neiqiu County", "Baixiang County", "Longyao County", "Ren County", "Nanhe County", "Ningjin County", "Julu County", "Xinhe County", "Guangzong County", "Pingxiang County", "Wei County", "Qinghe County", "Linxi County", "Nangong City", "Shahe City"] }, { "name": "Baoding", "area": ["New Urban District", "North Urban District", "South Urban District", "Mancheng County", "Qingyuan County", "Laishui County", "Fuping County", "Xushui County", "Dingxing County", "Tang County", "Gaoyang County", "Rongcheng County", "Laiyuan County", "Wangdu County", "Anxin County", "Yi County", "Quyang County", "Li County", "Shunping County", "Boye", "Xiong County", "Zhuozhou City", "Dingzhou City", "Anguo City", "Gaobeidian City"] }, { "name": "Zhangjiakou", "area": ["Qiaodong District", "Qiaoxi District", "Xuanhua District", "Xiahuayuan District", "Xuanhua County", "Zhangbei County", "Kangbao County", "Guyuan County", "Shangyi County", "Yu County", "Yangyuan County", "Huai'an County", "Wanquan County", "Huailai County", "Zhuolu County", "Chicheng County", "Chongli County"] }, { "name": "Chengde", "area": ["Shuangqiao District", "Shuangluan District", "Yingshouyingzi Mining Area", "Chengde County", "Xinglong County", "Pingquan County", "Luanping County", "Longhua County", "Fengning Manchu Autonomous County", "Kuancheng Manchu Autonomous County", "Weichang Manchu Mongolian Autonomous County"] }, { "name": "Cangzhou", "area": ["Xinhua District", "Yunhe District", "Cang County", "Qing County", "Dongguang County", "Haixing County", "Yanshan County", "Suning County", "Nanpi County", "Wuqiao County", "Xian County", "Mengcun Hui Nationality Autonomous County", "Botou City", "Renqiu City", "Huanghua City", "Hejian City"] }, { "name": "Langfang", "area": ["Anci District", "Gu'an County", "Yongqing County", "Xianghe County", "Dacheng County", "Wen'an County", "Dachang Hui Nationality Autonomous County", "Bazhou City", "Sanhe City"] }, { "name": "Hengshui", "area": ["Taocheng District", "Zaoqiang County", "Wuyi County", "Wuqiang County", "Raoyang County", "Anping County", "Gucheng County", "Jing County", "Yucheng County", "Quzhou City", "Shenzhou City"] }]
 	}, {
-	    "name": "Shanxi", "city": [{ "name": "Taiyuan", "area": ["Xiaodian District", "Yingze District", "Xinghualing District", "Jiancaoping District", "Wanbolin District", "Jinyuan District", "Qingxu County", "Yangqu County", "Loufan County", "Gujiao City"] }, { "name": "Datong", "area": ["Urban Area", "Mining Area", "Southern Suburb", "Xinrong District", "Yanggao County", "Tianzhen County", "Guangling County", "Lingqiu County", "Wuyuan County", "Zuoyun County", "Datong County"] }, { "name": "Yangquan", "area": ["Urban Area", "Mining Area", "Suburbs", "Pingding County", "Yu County"] }, { "name": "Changzhi", "area": ["Urban Area", "Suburbs", "Changzhi County", "Xiangyuan County", "Tunliu County", "Pingshun County", "Licheng County", "Huguan County", "Changzi County", "Wuxiang County", "Qin County", "Qinyuan County", "Lucheng City"] }, { "name": "Jincheng", "area": ["Urban Area", "Qinshui County", "Yangcheng County", "Lingchuan County", "Zezhou County", "Gaoping City"] }, { "name": "Shuozhou", "area": ["Shuocheng District", "Pinglu District", "Shanyin County", "Ying County", "Youyu County", "Huairen County"] }, { "name": "Xinzhou", "area": ["Xinfu District", "Yuanping City", "Dingxiang County", "Wutai County", "Dai County", "Fanzhi County", "Ningwu County", "Jingle County", "Shenchi County", "Wuzhai County", "Kelan County", "Hequ County", "Baode County", "Pianguan County"] }, { "name": "Lvliang", "area": ["Lishi District", "Xiaoyi City", "Fenyang City", "Wenshui County", "Jiaocheng County", "Xing County", "Lin County", "Liulin County", "Shilou County", "Lan County", "Fangshan County", "Zhongyang County", "Jiaokou County"] }, { "name": "Jinzhong", "area": ["Yuci City", "Jiexiu City", "Yushe County", "Zuoquan County", "Heshun County", "Xiyang County", "Shouyang County", "Taigu County", "Qi County", "Pingyao County", "Lingshi County"] }, { "name": "Linyi", "area": ["Linyi City", "Houma City", "Huozhou City", "Quwo County", "Yicheng County", "Xiangfen County", "Hongdong County", "Gu county", "Anze County", "Fushan County", "Ji County", "Xiangning County", "Pu County", "Daning County", "Yonghe County", "Xi County", "Fenxi County"] }, { "name": "Yuncheng", "area": ["Yuncheng City", "Yongji City", "Hejin City", "Ruicheng County", "Linyi County", "Wanrong County", "Xinjiang County", "Jishan County", "Wenxi County", "Xia County", "Jiang County", "Pinglu County", "Yuanqu County"] }]
+	            "name": "Shanxi", "city": [{ "name": "Taiyuan", "area": ["Xiaodian District", "Yingze District", "Xinghualing District", "Jiancaoping District", "Wanbolin District", "Jinyuan District", "Qingxu County", "Yangqu County", "Loufan County", "Gujiao City"] }, { "name": "Datong", "area": ["Urban Area", "Mining Area", "Southern Suburb", "Xinrong District", "Yanggao County", "Tianzhen County", "Guangling County", "Lingqiu County", "Wuyuan County", "Zuoyun County", "Datong County"] }, { "name": "Yangquan", "area": ["Urban Area", "Mining Area", "Suburbs", "Pingding County", "Yu County"] }, { "name": "Changzhi", "area": ["Urban Area", "Suburbs", "Changzhi County", "Xiangyuan County", "Tunliu County", "Pingshun County", "Licheng County", "Huguan County", "Changzi County", "Wuxiang County", "Qin County", "Qinyuan County", "Lucheng City"] }, { "name": "Jincheng", "area": ["Urban Area", "Qinshui County", "Yangcheng County", "Lingchuan County", "Zezhou County", "Gaoping City"] }, { "name": "Shuozhou", "area": ["Shuocheng District", "Pinglu District", "Shanyin County", "Ying County", "Youyu County", "Huairen County"] }, { "name": "Xinzhou", "area": ["Xinfu District", "Yuanping City", "Dingxiang County", "Wutai County", "Dai County", "Fanzhi County", "Ningwu County", "Jingle County", "Shenchi County", "Wuzhai County", "Kelan County", "Hequ County", "Baode County", "Pianguan County"] }, { "name": "Lvliang", "area": ["Lishi District", "Xiaoyi City", "Fenyang City", "Wenshui County", "Jiaocheng County", "Xing County", "Lin County", "Liulin County", "Shilou County", "Lan County", "Fangshan County", "Zhongyang County", "Jiaokou County"] }, { "name": "Jinzhong", "area": ["Yuci City", "Jiexiu City", "Yushe County", "Zuoquan County", "Heshun County", "Xiyang County", "Shouyang County", "Taigu County", "Qi County", "Pingyao County", "Lingshi County"] }, { "name": "Linyi", "area": ["Linyi City", "Houma City", "Huozhou City", "Quwo County", "Yicheng County", "Xiangfen County", "Hongdong County", "Gu county", "Anze County", "Fushan County", "Ji County", "Xiangning County", "Pu County", "Daning County", "Yonghe County", "Xi County", "Fenxi County"] }, { "name": "Yuncheng", "area": ["Yuncheng City", "Yongji City", "Hejin City", "Ruicheng County", "Linyi County", "Wanrong County", "Xinjiang County", "Jishan County", "Wenxi County", "Xia County", "Jiang County", "Pinglu County", "Yuanqu County"] }]
 	}, {
-	    "name": "Inner Mongolia", "city": [{ "name": "Hohhot", "area": ["New Urban Area", "Huimin District", "Yuquan District", "Suburbs", "Tumut Left Banner", "Tokto County", "Horinger County", "Qingshuihe County", "Wuchuan County"] }, { "name": "Baotou", "area": ["Donghe District", "Kundulun District", "Qingshan District", "Shiguai Mining Area", "Baiyun Mining Area", "Suburbs", "Tumut Right Banner", "Guyang County", "Dalhan Maomingan United Banner"] }, { "name": "Wuhai", "area": ["Haibowan District", "Hainan District", "Wuda District"] }, { "name": "Chifeng", "area": ["Hongshan District", "Yuanbaoshan Area", "Songshan District", "Aruker Banner", "Bahrain Left Banner", "Bahrain Right Banner", "Linxi County", "Keshiketeng Banner", "Weng Niute Banner", "Kalaqin Banner", "Ningcheng County", "Aohan Banner"] }, { "name": "Hulunbeier", "area": ["Hailar City", "Manzhouli City", "Zhalantun City", "Yakeshi City", "Genhe City", "Ergun City", "Arong Banner", "Molidawada Muir Autonomous Banner", "Oroqen Autonomous Banner", "Ewenki Autonomous Banner", "New Barr Right Banner", "New Bay Tiger Left Banner", "Chen Baerhu Banner"] }, { "name": "Xing'an League", "area": ["Ulanhot City", "Aershan", "Horqin Right Wing Front Banner", "Horqin Right Wing Middle Banner", "Zhabit Banner", "Tuquan County"] }, { "name": "Tongliao", "area": ["Horqin District", "Hollingol City", "Kerqin Left Wing Middle Banner", "Horqin Left Wing Back Banner", "Kailu County", "Kulun Banner", "Naiman Banner", "Zalute Banner"] }, { "name": "Xilin Gol League", "area": ["Erlianhot City", "Xilinhot City", "Abaqi Banner", "Sunite Left Banner", "Sunite Right Banner", "East Ujimqin Banner", "Xiwuzhumuqi Banner", "Taipu Temple Banner", "Xianghuang Banner", "Zhengxiangbai Banner", "Zhenglan Banner", "Duolun County"] }, { "name": "Ulanchabu League", "area": ["Jining City", "Fengzhen City", "Zhuozi County", "Huade County", "Shangdu County", "Xinghe County", "Liangcheng County", "Chahar Right Front Banner", "Chahar Right Wing Middle Banner", "Chahar Right Back Banner", "Siziwang Banner"] }, { "name": "Ikezhao League", "area": ["Dongsheng City", "Dalat Banner", "Zhungeer Banner", "Etuokeqian Banner", "Etuoke Banner", "Hangjin Banner", "Wushen Banner", "Yijinhuoluo Banner"] }, { "name": "Bayannaoer League", "area": ["Linhe City", "Wuyuan County", "Dengkou County", "Urad Front Banner", "Urad Middle Banner", "Urad Back Banner", "Hangjin Back Banner"] }, { "name": "Alxa League", "area": ["Alxa Left Banner", "Alxa Right Banner", "Ejina Banner"] }]
+	            "name": "Inner Mongolia", "city": [{ "name": "Hohhot", "area": ["New Urban Area", "Huimin District", "Yuquan District", "Suburbs", "Tumut Left Banner", "Tokto County", "Horinger County", "Qingshuihe County", "Wuchuan County"] }, { "name": "Baotou", "area": ["Donghe District", "Kundulun District", "Qingshan District", "Shiguai Mining Area", "Baiyun Mining Area", "Suburbs", "Tumut Right Banner", "Guyang County", "Dalhan Maomingan United Banner"] }, { "name": "Wuhai", "area": ["Haibowan District", "Hainan District", "Wuda District"] }, { "name": "Chifeng", "area": ["Hongshan District", "Yuanbaoshan Area", "Songshan District", "Aruker Banner", "Bahrain Left Banner", "Bahrain Right Banner", "Linxi County", "Keshiketeng Banner", "Weng Niute Banner", "Kalaqin Banner", "Ningcheng County", "Aohan Banner"] }, { "name": "Hulunbeier", "area": ["Hailar City", "Manzhouli City", "Zhalantun City", "Yakeshi City", "Genhe City", "Ergun City", "Arong Banner", "Molidawada Muir Autonomous Banner", "Oroqen Autonomous Banner", "Ewenki Autonomous Banner", "New Barr Right Banner", "New Bay Tiger Left Banner", "Chen Baerhu Banner"] }, { "name": "Xing'an League", "area": ["Ulanhot City", "Aershan", "Horqin Right Wing Front Banner", "Horqin Right Wing Middle Banner", "Zhabit Banner", "Tuquan County"] }, { "name": "Tongliao", "area": ["Horqin District", "Hollingol City", "Kerqin Left Wing Middle Banner", "Horqin Left Wing Back Banner", "Kailu County", "Kulun Banner", "Naiman Banner", "Zalute Banner"] }, { "name": "Xilin Gol League", "area": ["Erlianhot City", "Xilinhot City", "Abaqi Banner", "Sunite Left Banner", "Sunite Right Banner", "East Ujimqin Banner", "Xiwuzhumuqi Banner", "Taipu Temple Banner", "Xianghuang Banner", "Zhengxiangbai Banner", "Zhenglan Banner", "Duolun County"] }, { "name": "Ulanchabu League", "area": ["Jining City", "Fengzhen City", "Zhuozi County", "Huade County", "Shangdu County", "Xinghe County", "Liangcheng County", "Chahar Right Front Banner", "Chahar Right Wing Middle Banner", "Chahar Right Back Banner", "Siziwang Banner"] }, { "name": "Ikezhao League", "area": ["Dongsheng City", "Dalat Banner", "Zhungeer Banner", "Etuokeqian Banner", "Etuoke Banner", "Hangjin Banner", "Wushen Banner", "Yijinhuoluo Banner"] }, { "name": "Bayannaoer League", "area": ["Linhe City", "Wuyuan County", "Dengkou County", "Urad Front Banner", "Urad Middle Banner", "Urad Back Banner", "Hangjin Back Banner"] }, { "name": "Alxa League", "area": ["Alxa Left Banner", "Alxa Right Banner", "Ejina Banner"] }]
 	}, {
-	    "name": "Liaoning", "city": [{ "name": "Shenyang", "area": ["Shenhe District", "Huanggu District", "Heping District", "Dadong District", "Tiexi District", "Sujiatun District", "Dongling District", "Yuhong District", "Xinmin City", "Faku County", "Liaozhong County", "Kangping County", "Xinchengzi District", "Other"] }, { "name": "Dalian", "area": ["Xigang District", "Zhongshan District", "Shahekou District", "Ganjingzi District", "Lvshunkou District", "Jinzhou District", "Wafangdian City", "Pulandian City", "Zhuanghe City", "Changhai County", "Other"] }, { "name": "Anshan", "area": ["Tiedong District", "Tiexi District", "Lishan District", "Qianshan District", "Haicheng city", "Tai'an County", "Xiuyan Manchu Autonomous County", "Other"] }, { "name": "Fushun", "area": ["Shuncheng District", "Xinfu District", "Dongzhou District", "Wanghua District", "Fushun County", "Qingyuan Manchu Autonomous County", "Xinbin Manchu Autonomous County", "Other"] }, { "name": "Benxi", "area": ["Pingshan District", "Mingshan District", "Xihu District", "Nanfen District", "Benxi Manchu Autonomous County", "Huanren Manchu Autonomous County", "Other"] }, { "name": "Dandong", "area": ["Zhenxing District", "Yuanbao District", "Zhen'an District", "Donggang City", "Fengcheng", "Kuandian Manchu Autonomous County", "Other"] }, { "name": "Jinzhou", "area": ["Taihe District", "Guta District", "Linghe District", "Linghai City", "Heishan County", "Yi County", "Beining City", "Other"] }, { "name": "Yingkou", "area": ["Zhanqian District", "West Urban District", "Bayuquan District", "Laobian District", "Dashiqiao City", "Gaizhou City", "Other"] }, { "name": "Fuxin", "area": ["Haizhou District", "Xinqiu District", "Taiping District", "Qinghemen District", "Xihe District", "Zhangwu County", "Fuxin Mongolian Autonomous County", "Other"] }, { "name": "Liaoyang", "area": ["Baita District", "Wensheng District", "Hongwei District", "Taizihe District", "Gongchangling District", "Dengta City", "Liaoyang County", "Other"] }, { "name": "Panjin", "area": ["Shuangtaizi District", "Xinglongtai District", "Panshan County", "Dawa County", "Other"] }, { "name": "Tieling", "area": ["Yinzhou District", "Qinghe District", "Diaobingshan City", "Kaiyuan City", "Tieling County", "Changtu County", "Xifeng County", "Other"] }, { "name": "Chaoyang", "area": ["Shuangta District", "Longcheng District", "Lingyuan City", "Beipiao City", "Chaoyang County", "Jianping County", "Karachi Left Mongolian Autonomous County", "Other"] }, { "name": "Huludao", "area": ["Longgang District", "Nanpiao District", "Lianshan District", "Xingcheng City", "Suizhong County", "Jianchang County", "Other"] }, { "name": "Other", "area": ["Other"] }]
+	            "name": "Liaoning", "city": [{ "name": "Shenyang", "area": ["Shenhe District", "Huanggu District", "Heping District", "Dadong District", "Tiexi District", "Sujiatun District", "Dongling District", "Yuhong District", "Xinmin City", "Faku County", "Liaozhong County", "Kangping County", "Xinchengzi District", "Other"] }, { "name": "Dalian", "area": ["Xigang District", "Zhongshan District", "Shahekou District", "Ganjingzi District", "Lvshunkou District", "Jinzhou District", "Wafangdian City", "Pulandian City", "Zhuanghe City", "Changhai County", "Other"] }, { "name": "Anshan", "area": ["Tiedong District", "Tiexi District", "Lishan District", "Qianshan District", "Haicheng city", "Tai'an County", "Xiuyan Manchu Autonomous County", "Other"] }, { "name": "Fushun", "area": ["Shuncheng District", "Xinfu District", "Dongzhou District", "Wanghua District", "Fushun County", "Qingyuan Manchu Autonomous County", "Xinbin Manchu Autonomous County", "Other"] }, { "name": "Benxi", "area": ["Pingshan District", "Mingshan District", "Xihu District", "Nanfen District", "Benxi Manchu Autonomous County", "Huanren Manchu Autonomous County", "Other"] }, { "name": "Dandong", "area": ["Zhenxing District", "Yuanbao District", "Zhen'an District", "Donggang City", "Fengcheng", "Kuandian Manchu Autonomous County", "Other"] }, { "name": "Jinzhou", "area": ["Taihe District", "Guta District", "Linghe District", "Linghai City", "Heishan County", "Yi County", "Beining City", "Other"] }, { "name": "Yingkou", "area": ["Zhanqian District", "West Urban District", "Bayuquan District", "Laobian District", "Dashiqiao City", "Gaizhou City", "Other"] }, { "name": "Fuxin", "area": ["Haizhou District", "Xinqiu District", "Taiping District", "Qinghemen District", "Xihe District", "Zhangwu County", "Fuxin Mongolian Autonomous County", "Other"] }, { "name": "Liaoyang", "area": ["Baita District", "Wensheng District", "Hongwei District", "Taizihe District", "Gongchangling District", "Dengta City", "Liaoyang County", "Other"] }, { "name": "Panjin", "area": ["Shuangtaizi District", "Xinglongtai District", "Panshan County", "Dawa County", "Other"] }, { "name": "Tieling", "area": ["Yinzhou District", "Qinghe District", "Diaobingshan City", "Kaiyuan City", "Tieling County", "Changtu County", "Xifeng County", "Other"] }, { "name": "Chaoyang", "area": ["Shuangta District", "Longcheng District", "Lingyuan City", "Beipiao City", "Chaoyang County", "Jianping County", "Karachi Left Mongolian Autonomous County", "Other"] }, { "name": "Huludao", "area": ["Longgang District", "Nanpiao District", "Lianshan District", "Xingcheng City", "Suizhong County", "Jianchang County", "Other"] }, { "name": "Other", "area": ["Other"] }]
 	}, {
-	    "name": "Jilin", "city": [{ "name": "Changchun", "area": ["Chaoyang District", "Kuancheng District", "Erdao District", "Nanguan District", "Lvyuan District", "Shuangyang District", "Jiutai City", "Yushu City", "Dehui City", "Nong'an County", "Other"] }, { "name": "Jilin", "area": ["Chuanying District", "Changyi District", "Longtan District", "Fengman District", "Shulan City", "Huadian City", "Jiaohe City", "Panshi City", "Yongji County", "Other"] }, { "name": "Siping", "area": ["Tiexi District", "Tiedong District", "Gongzhuling City", "Shuangliao City", "Lishu County", "Yitong Manchu Autonomous County", "Other"] }, { "name": "Liaoyuan", "area": ["Longshan District", "Xi'an District", "Dongliao County", "Dongfeng County", "Other"] }, { "name": "Tonghua", "area": ["Dongchang District", "Erdaojiang District", "Meihekou City", "Ji'an City", "Tonghua County", "Huinan County", "Liuhe County", "Other"] }, { "name": "Baishan", "area": ["Badaojiang District", "Jiangyuan District", "Linjiang City", "Jingyu County", "Fusong County", "Changbai Korean Autonomous County", "Other"] }, { "name": "Songyuan", "area": ["Ningjiang District", "Qian'an County", "Changling County", "Fuyu County", "Qianguoerluosi Mongolian Autonomous County", "Other"] }, { "name": "Baicheng", "area": ["Taobei District", "Da'an City", "Taonan City", "Zhenlai County", "Tongyu County", "Other"] }, { "name": "Yanbian Korean Autonomous Prefecture", "area": ["Yanji City", "Tumen City", "Dunhua City", "Longjing City", "Hunchun City", "Helong City", "Antu County", "Wangqing County", "Other"] }, { "name": "Other", "area": ["Other"] }]
+	            "name": "Jilin", "city": [{ "name": "Changchun", "area": ["Chaoyang District", "Kuancheng District", "Erdao District", "Nanguan District", "Lvyuan District", "Shuangyang District", "Jiutai City", "Yushu City", "Dehui City", "Nong'an County", "Other"] }, { "name": "Jilin", "area": ["Chuanying District", "Changyi District", "Longtan District", "Fengman District", "Shulan City", "Huadian City", "Jiaohe City", "Panshi City", "Yongji County", "Other"] }, { "name": "Siping", "area": ["Tiexi District", "Tiedong District", "Gongzhuling City", "Shuangliao City", "Lishu County", "Yitong Manchu Autonomous County", "Other"] }, { "name": "Liaoyuan", "area": ["Longshan District", "Xi'an District", "Dongliao County", "Dongfeng County", "Other"] }, { "name": "Tonghua", "area": ["Dongchang District", "Erdaojiang District", "Meihekou City", "Ji'an City", "Tonghua County", "Huinan County", "Liuhe County", "Other"] }, { "name": "Baishan", "area": ["Badaojiang District", "Jiangyuan District", "Linjiang City", "Jingyu County", "Fusong County", "Changbai Korean Autonomous County", "Other"] }, { "name": "Songyuan", "area": ["Ningjiang District", "Qian'an County", "Changling County", "Fuyu County", "Qianguoerluosi Mongolian Autonomous County", "Other"] }, { "name": "Baicheng", "area": ["Taobei District", "Da'an City", "Taonan City", "Zhenlai County", "Tongyu County", "Other"] }, { "name": "Yanbian Korean Autonomous Prefecture", "area": ["Yanji City", "Tumen City", "Dunhua City", "Longjing City", "Hunchun City", "Helong City", "Antu County", "Wangqing County", "Other"] }, { "name": "Other", "area": ["Other"] }]
 	}, {
-	    "name": "Heilongjiang", "city": [{ "name": "Harbin", "area": ["Songbei District", "Daoli District", "Nangang District", "Pingfang District", "Xiangfang District", "Daowai District", "Hulan District", "Acheng District", "Shuangcheng City", "Shangzhi City", "Wuchang City", "Bin County", "Fangzheng County", "Tonghe County", "Bayan County", "Yanshou County", "Mulan County", "Yilan County", "Other"] }, { "name": "Qiqihar", "area": ["Longsha District", "Ang'angxi District", "Tiefeng District", "Jianhua District", "Fulaerki District", "Nianzishan District", "Merisda Daur District", "Nehe City", "Fuyu County", "Baiquan County", "Gannan County", "Yi'an County", "Keshan County", "Tailai County", "Kedong County", "Longjiang County", "Other"] }, { "name": "Hegang", "area": ["Xingshan District", "Gongnong District", "Nanshan District", "Xing'an District", "Xiangyang District", "Dongshan District", "Luobei County", "Suibin County", "Other"] }, { "name": "Shuangyashan", "area": ["Jianshan District", "Lingdong District", "Sifangtai District", "Baoshan District", "Jixian County", "Baoqing County", "Youyi County", "Raohe County", "Other"] }, { "name": "Jixi", "area": ["Jiguan District", "Hengshan District", "Chengzihe District", "Didao District", "Lishu District", "Mashan District", "Mishan City", "Hulin City", "Jidong County", "Other"] }, { "name": "Daqing", "area": ["Saltu District", "Honggang District", "Longfeng District", "Ranghulu District", "Datong District", "Lindian County", "Zhaozhou County", "Zhaoyuan County", "Durbert Mongolian Autonomous County", "Other"] }, { "name": "Yichun", "area": ["Yichun District", "Dailing District", "Nancha District", "Jinshanyu District", "Xilin District", "Meixi District", "Wumahe District", "Cuiyu District", "Youhao District", "Shangganling District", "Wuying District", "Hongxing District", "Xinqing District", "Tangwanghe District", "Wuyiling District", "Tieli City", "Jiayin County", "Other"] }, { "name": "Mudanjiang", "area": ["Aimin District", "Dong'an District", "Yangming District", "Xi'an District", "Suifenhe City", "Ning'an City", "Hailin City", "Muling City", "Linkou County", "Dongning County", "Other"] }, { "name": "Jiamusi", "area": ["Xiangyang District", "Qianjin District", "Dongfeng District", "Suburbs", "Tongjiang City", "Fujin City", "Huachuan County", "Fuyuan County", "Huanan County", "Tangyuan County", "Other"] }, { "name": "Qitaihe", "area": ["Taoshan District", "Xinxing District", "Qiezihe District", "Boli County", "Other"] }, { "name": "Heihe", "area": ["Aihui District", "Bei'an City", "Wudalianchi City", "Xunke County", "Nenjiang County", "Sun Wu County", "Other"] }, { "name": "Suihua", "area": ["Beilin District", "Anda City", "Zhaodong City", "Hailun City", "Suiling County", "Lanxi County", "Mingshui County", "Qinggang County", "Qing'an County", "Wangkui County", "Other"] }, { "name": "Daxing'anling area", "area": ["Huma County", "Tahe County", "Mohe County", "Daxing'anling District", "Other"] }, { "name": "Other", "area": ["Other"] }]
+	            "name": "Heilongjiang", "city": [{ "name": "Harbin", "area": ["Songbei District", "Daoli District", "Nangang District", "Pingfang District", "Xiangfang District", "Daowai District", "Hulan District", "Acheng District", "Shuangcheng City", "Shangzhi City", "Wuchang City", "Bin County", "Fangzheng County", "Tonghe County", "Bayan County", "Yanshou County", "Mulan County", "Yilan County", "Other"] }, { "name": "Qiqihar", "area": ["Longsha District", "Ang'angxi District", "Tiefeng District", "Jianhua District", "Fulaerki District", "Nianzishan District", "Merisda Daur District", "Nehe City", "Fuyu County", "Baiquan County", "Gannan County", "Yi'an County", "Keshan County", "Tailai County", "Kedong County", "Longjiang County", "Other"] }, { "name": "Hegang", "area": ["Xingshan District", "Gongnong District", "Nanshan District", "Xing'an District", "Xiangyang District", "Dongshan District", "Luobei County", "Suibin County", "Other"] }, { "name": "Shuangyashan", "area": ["Jianshan District", "Lingdong District", "Sifangtai District", "Baoshan District", "Jixian County", "Baoqing County", "Youyi County", "Raohe County", "Other"] }, { "name": "Jixi", "area": ["Jiguan District", "Hengshan District", "Chengzihe District", "Didao District", "Lishu District", "Mashan District", "Mishan City", "Hulin City", "Jidong County", "Other"] }, { "name": "Daqing", "area": ["Saltu District", "Honggang District", "Longfeng District", "Ranghulu District", "Datong District", "Lindian County", "Zhaozhou County", "Zhaoyuan County", "Durbert Mongolian Autonomous County", "Other"] }, { "name": "Yichun", "area": ["Yichun District", "Dailing District", "Nancha District", "Jinshanyu District", "Xilin District", "Meixi District", "Wumahe District", "Cuiyu District", "Youhao District", "Shangganling District", "Wuying District", "Hongxing District", "Xinqing District", "Tangwanghe District", "Wuyiling District", "Tieli City", "Jiayin County", "Other"] }, { "name": "Mudanjiang", "area": ["Aimin District", "Dong'an District", "Yangming District", "Xi'an District", "Suifenhe City", "Ning'an City", "Hailin City", "Muling City", "Linkou County", "Dongning County", "Other"] }, { "name": "Jiamusi", "area": ["Xiangyang District", "Qianjin District", "Dongfeng District", "Suburbs", "Tongjiang City", "Fujin City", "Huachuan County", "Fuyuan County", "Huanan County", "Tangyuan County", "Other"] }, { "name": "Qitaihe", "area": ["Taoshan District", "Xinxing District", "Qiezihe District", "Boli County", "Other"] }, { "name": "Heihe", "area": ["Aihui District", "Bei'an City", "Wudalianchi City", "Xunke County", "Nenjiang County", "Sun Wu County", "Other"] }, { "name": "Suihua", "area": ["Beilin District", "Anda City", "Zhaodong City", "Hailun City", "Suiling County", "Lanxi County", "Mingshui County", "Qinggang County", "Qing'an County", "Wangkui County", "Other"] }, { "name": "Daxing'anling area", "area": ["Huma County", "Tahe County", "Mohe County", "Daxing'anling District", "Other"] }, { "name": "Other", "area": ["Other"] }]
 	}, {
-	    "name": "Shanghai", "city": [{ "name": "Shanghai", "area": ["Huangpu District", "Luwan District", "Xuhui District", "Changning District", "Jing'an District", "Putuo District", "Zhabei District", "Hongkou District", "Yangpu District", "Baoshan District", "Minhang District", "Jiading District", "Songjiang District", "Jinshan District", "Qingpu District", "Nanhui District", "Fengxian District", "Pudong New District", "Chongming County", "Other"] }]
+	            "name": "Shanghai", "city": [{ "name": "Shanghai", "area": ["Huangpu District", "Luwan District", "Xuhui District", "Changning District", "Jing'an District", "Putuo District", "Zhabei District", "Hongkou District", "Yangpu District", "Baoshan District", "Minhang District", "Jiading District", "Songjiang District", "Jinshan District", "Qingpu District", "Nanhui District", "Fengxian District", "Pudong New District", "Chongming County", "Other"] }]
 	}, {
-	    "name": "Jiangsu", "city": [{ "name": "Nanjing", "area": ["Xuanwu District", "White area", "Qinhuai District", "Jianye District", "Gulou District", "Xiaguan District", "Qixia District", "Yuhuatai District", "Pukou District", "Jiangning District", "Liuhe District", "Lishui County", "Gaochun County", "Other"] }, { "name": "Suzhou", "area": ["Jinchang District", "Pingjiang District", "Canglang District", "Huqiu District", "Wuzhong District", "Xiangcheng District", "Changshu City", "Zhangjiagang City", "Kunshan City", "Wujiang City", "Taicang City", "Other"] }, { "name": "Wuxi", "area": ["Chong'an District", "Nanchang District", "Beitang District", "Binhu District", "Xishan District", "Huishan District", "Jiangyin City", "Yixing City", "Other"] }, { "name": "Changzhou", "area": ["Zhonglou District", "Tianning District", "Qishuyan District", "Xinbei District", "Wujin District", "Jintan City", "Liyang City", "Other"] }, { "name": "Zhenjiang", "area": ["Jingkou District", "Runzhou District", "Dantu District", "Danyang City", "Yangzhong City", "Jurong City", "Other"] }, { "name": "Nantong", "area": ["Chongchuan District", "Gangzha District", "Tongzhou City", "Rugao City", "Haimen City", "Qidong City", "Hai'an County", "Rudong County", "Other"] }, { "name": "Taizhou", "area": ["Hailing District", "Gaogang District", "Jiangyan City", "Taixing City", "Jingjiang City", "Xinghua City", "Other"] }, { "name": "Yangzhou", "area": ["Guangling District", "Weiyang District", "Hanjiang District", "Jiangdu City", "Yizheng City", "Gaoyou City", "Baoying County", "Other"] }, { "name": "Yancheng", "area": ["Tinghu District", "Yandu District", "Dafeng City", "Dongtai City", "Jianhu County", "Sheyang County", "Funing County", "Binhai County", "Xiangshui County", "Other"] }, { "name": "Lianyungang", "area": ["Xinpu District", "Haizhou District", "Lianyun District", "Donghai County", "Guanyun County", "Ganyu County", "Guannan County", "Other"] }, { "name": "Xuzhou", "area": ["Yunlong District", "Gulou District", "Jiuli District", "Quanshan District", "Jiawang District", "Pizhou City", "Xinyi City", "Tongshan County", "Suining County", "Pei County", "Feng County", "Other"] }, { "name": "Huai'an", "area": ["Qinghe District", "Qingpu District", "Chuzhou District", "Huaiyin District", "Yishui County", "Hongze County", "Jinhu County", "Xuyi County", "Other"] }, { "name": "Suqian", "area": ["Sucheng District", "Suyu District", "Shuyang County", "Siyang County", "Sihong County", "Other"] }, { "name": "Other", "area": ["Other"] }]
+	            "name": "Jiangsu", "city": [{ "name": "Nanjing", "area": ["Xuanwu District", "White area", "Qinhuai District", "Jianye District", "Gulou District", "Xiaguan District", "Qixia District", "Yuhuatai District", "Pukou District", "Jiangning District", "Liuhe District", "Lishui County", "Gaochun County", "Other"] }, { "name": "Suzhou", "area": ["Jinchang District", "Pingjiang District", "Canglang District", "Huqiu District", "Wuzhong District", "Xiangcheng District", "Changshu City", "Zhangjiagang City", "Kunshan City", "Wujiang City", "Taicang City", "Other"] }, { "name": "Wuxi", "area": ["Chong'an District", "Nanchang District", "Beitang District", "Binhu District", "Xishan District", "Huishan District", "Jiangyin City", "Yixing City", "Other"] }, { "name": "Changzhou", "area": ["Zhonglou District", "Tianning District", "Qishuyan District", "Xinbei District", "Wujin District", "Jintan City", "Liyang City", "Other"] }, { "name": "Zhenjiang", "area": ["Jingkou District", "Runzhou District", "Dantu District", "Danyang City", "Yangzhong City", "Jurong City", "Other"] }, { "name": "Nantong", "area": ["Chongchuan District", "Gangzha District", "Tongzhou City", "Rugao City", "Haimen City", "Qidong City", "Hai'an County", "Rudong County", "Other"] }, { "name": "Taizhou", "area": ["Hailing District", "Gaogang District", "Jiangyan City", "Taixing City", "Jingjiang City", "Xinghua City", "Other"] }, { "name": "Yangzhou", "area": ["Guangling District", "Weiyang District", "Hanjiang District", "Jiangdu City", "Yizheng City", "Gaoyou City", "Baoying County", "Other"] }, { "name": "Yancheng", "area": ["Tinghu District", "Yandu District", "Dafeng City", "Dongtai City", "Jianhu County", "Sheyang County", "Funing County", "Binhai County", "Xiangshui County", "Other"] }, { "name": "Lianyungang", "area": ["Xinpu District", "Haizhou District", "Lianyun District", "Donghai County", "Guanyun County", "Ganyu County", "Guannan County", "Other"] }, { "name": "Xuzhou", "area": ["Yunlong District", "Gulou District", "Jiuli District", "Quanshan District", "Jiawang District", "Pizhou City", "Xinyi City", "Tongshan County", "Suining County", "Pei County", "Feng County", "Other"] }, { "name": "Huai'an", "area": ["Qinghe District", "Qingpu District", "Chuzhou District", "Huaiyin District", "Yishui County", "Hongze County", "Jinhu County", "Xuyi County", "Other"] }, { "name": "Suqian", "area": ["Sucheng District", "Suyu District", "Shuyang County", "Siyang County", "Sihong County", "Other"] }, { "name": "Other", "area": ["Other"] }]
 	}, {
-	    "name": "Zhejiang", "city": [{ "name": "Hangzhou", "area": ["Gongshu District", "West Lake District", "Up Urban Area", "Down Urban Area", "Jianggan District", "Binjiang District", "Yuhang District", "Xiaoshan Strict", "Jiande City", "Fuyang City", "Lin'an City", "Tonglu County", "Chun'an County", "Other"] }, { "name": "Ningbo", "area": ["Haishu District", "Jiangdong District", "Jiangbei District", "Zhenhai District", "Beilun District", "Yinzhou District", "Yuyao City", "Cixi City", "Fenghua City", "Ninghai County", "Xiangshan County", "Other"] }, { "name": "Wenzhou", "area": ["Lucheng District", "Longwan District", "Ouhai District", "Ruian City", "Yueqing City", "Yongjia County", "Dongtou County", "Pingyang County", "Cangnan County", "Wencheng County", "Taishun County", "Other"] }, { "name": "Jiaxing", "area": ["Xiucheng District", "Xiuzhou District", "Haining City", "Pinghu City", "Tongxiang City", "Jiashan County", "Haiyan County", "Other"] }, { "name": "Huzhou", "area": ["Wuxing District", "Nanxun District", "Changxing County", "Deqing County", "Anji County", "Other"] }, { "name": "Shaoxing", "area": ["Yuecheng District", "Zhuji City", "Shangyu City", "Shengzhou City", "Shaoxing County", "Xinchang County", "Other"] }, { "name": "Jinhua", "area": ["Wucheng District", "Jindong District", "Lanxi City", "Yiwu City", "Dongyang City", "Yongkang City", "Wuyi County", "Pujiang County", "Pan'an County", "Other"] }, { "name": "Quzhou", "area": ["Kecheng District", "Qujiang District", "Jiangshan City", "Longyou County", "Changshan County", "Kaihua County", "Other"] }, { "name": "Zhoushan", "area": ["Dinghai District", "Putuo District", "Daishan County", "Shengsi County", "Other"] }, { "name": "Taizhou", "area": ["Jiaojiang District", "Huangyan District", "Luqiao District", "Linhai City", "Wenling City", "Yuhuan County", "Tiantai County", "Xianju County", "Sanmen County", "Other"] }, { "name": "Lishui", "area": ["Liandu District", "Longquan City", "Jinyun County", "Qingtian County", "Yunhe County", "Suichang County", "Songyang County", "Qingyuan County", "Jingning Yi Autonomous County", "Other"] }, { "name": "Other", "area": ["Other"] }]
+	            "name": "Zhejiang", "city": [{ "name": "Hangzhou", "area": ["Gongshu District", "West Lake District", "Up Urban Area", "Down Urban Area", "Jianggan District", "Binjiang District", "Yuhang District", "Xiaoshan Strict", "Jiande City", "Fuyang City", "Lin'an City", "Tonglu County", "Chun'an County", "Other"] }, { "name": "Ningbo", "area": ["Haishu District", "Jiangdong District", "Jiangbei District", "Zhenhai District", "Beilun District", "Yinzhou District", "Yuyao City", "Cixi City", "Fenghua City", "Ninghai County", "Xiangshan County", "Other"] }, { "name": "Wenzhou", "area": ["Lucheng District", "Longwan District", "Ouhai District", "Ruian City", "Yueqing City", "Yongjia County", "Dongtou County", "Pingyang County", "Cangnan County", "Wencheng County", "Taishun County", "Other"] }, { "name": "Jiaxing", "area": ["Xiucheng District", "Xiuzhou District", "Haining City", "Pinghu City", "Tongxiang City", "Jiashan County", "Haiyan County", "Other"] }, { "name": "Huzhou", "area": ["Wuxing District", "Nanxun District", "Changxing County", "Deqing County", "Anji County", "Other"] }, { "name": "Shaoxing", "area": ["Yuecheng District", "Zhuji City", "Shangyu City", "Shengzhou City", "Shaoxing County", "Xinchang County", "Other"] }, { "name": "Jinhua", "area": ["Wucheng District", "Jindong District", "Lanxi City", "Yiwu City", "Dongyang City", "Yongkang City", "Wuyi County", "Pujiang County", "Pan'an County", "Other"] }, { "name": "Quzhou", "area": ["Kecheng District", "Qujiang District", "Jiangshan City", "Longyou County", "Changshan County", "Kaihua County", "Other"] }, { "name": "Zhoushan", "area": ["Dinghai District", "Putuo District", "Daishan County", "Shengsi County", "Other"] }, { "name": "Taizhou", "area": ["Jiaojiang District", "Huangyan District", "Luqiao District", "Linhai City", "Wenling City", "Yuhuan County", "Tiantai County", "Xianju County", "Sanmen County", "Other"] }, { "name": "Lishui", "area": ["Liandu District", "Longquan City", "Jinyun County", "Qingtian County", "Yunhe County", "Suichang County", "Songyang County", "Qingyuan County", "Jingning Yi Autonomous County", "Other"] }, { "name": "Other", "area": ["Other"] }]
 	}, {
-	    "name": "Anhui", "city": [{ "name": "Hefei", "area": ["Luyang District", "Yaohai District", "Laoshan District", "Baohe District", "Changfeng County", "Feidong County", "Feixi County", "Other"] }, { "name": "Wuhu", "area": ["Jinghu District", "Yijiang District", "Jiujiang District", "Sanshan District", "Wuhu County", "Nanling County", "Fanchang County", "Other"] }, { "name": "Bengbu", "area": ["Bengshan District", "Longzihu District", "Yuhui District", "Huaishang District", "Huaiyuan County", "Guzhen County", "Wuhe County", "Other"] }, { "name": "Huainan", "area": ["Tianjia'an District", "Datong District", "Xiejiaji District", "Bagongshan District", "Panji District", "Fengtai County", "Other"] }, { "name": "Ma'anshan", "area": ["Yushan District", "Huashan District", "Jinjiazhuang District", "Dangtu County", "Other"] }, { "name": "Huaibei", "area": ["Xiangshan", "Duji District", "Lieshan District", "Suixi County", "Other"] }, { "name": "Tongling", "area": ["Tongguanshan District", "Shizishan District", "Suburbs", "Tongling County", "Other"] }, { "name": "Anqing", "area": ["Yingjiang District", "Daguan District", "Yixiu District", "Tongcheng City", "Susong County", "Zongyang County", "Taihu County", "Huaining County", "Yuexi County", "Wangjiang County", "Qianshan County", "Other"] }, { "name": "Huangshan", "area": ["Tunxi District", "Huangshan District", "Huizhou District", "Xiuning County", "She County", "Qimen County", "Ji County", "Other"] }, { "name": "Chuzhou District", "area": ["Langya District", "Nanqiao District", "Tianchang City", "Mingguang City", "Quanjiao County", "Lai'an County", "Dingyuan County", "Fengyang County", "Other"] }, { "name": "Fuyang", "area": ["Yingzhou District", "Yingdong District", "Yingquan District", "Jieshou City", "Linquan County", "Yingshang County", "Funan County", "Taihe County", "Other"] }, { "name": "Suzhou", "area": ["Yongqiao District", "Xiao County", "Si County", "Dangshan County", "Lingbi County", "Other"] }, { "name": "Chaohu", "area": ["Juchao District", "Hanshan County", "Wuwei County", "Lujiang County", "He county", "Other"] }, { "name": "Lu'an", "area": ["Jin'an District", "Yu'an District", "Shou County", "Huoshan County", "Huoqiu County", "Shucheng County", "Jinzhai County", "Other"] }, { "name": "Bozhou", "area": ["Qiaocheng District", "Lixin County", "Woyang County", "Mengcheng County", "Other"] }, { "name": "Chizhou", "area": ["Guichi District", "Dongzhi County", "Shitai County", "Qingyang County", "Other"] }, { "name": "Xuancheng", "area": ["Xuanzhou District", "Ningguo City", "Guangde County", "Langxi County", "Jing County", "Jingde County", "Jixi County", "Other"] }, { "name": "Other", "area": ["Other"] }]
+	            "name": "Anhui", "city": [{ "name": "Hefei", "area": ["Luyang District", "Yaohai District", "Laoshan District", "Baohe District", "Changfeng County", "Feidong County", "Feixi County", "Other"] }, { "name": "Wuhu", "area": ["Jinghu District", "Yijiang District", "Jiujiang District", "Sanshan District", "Wuhu County", "Nanling County", "Fanchang County", "Other"] }, { "name": "Bengbu", "area": ["Bengshan District", "Longzihu District", "Yuhui District", "Huaishang District", "Huaiyuan County", "Guzhen County", "Wuhe County", "Other"] }, { "name": "Huainan", "area": ["Tianjia'an District", "Datong District", "Xiejiaji District", "Bagongshan District", "Panji District", "Fengtai County", "Other"] }, { "name": "Ma'anshan", "area": ["Yushan District", "Huashan District", "Jinjiazhuang District", "Dangtu County", "Other"] }, { "name": "Huaibei", "area": ["Xiangshan", "Duji District", "Lieshan District", "Suixi County", "Other"] }, { "name": "Tongling", "area": ["Tongguanshan District", "Shizishan District", "Suburbs", "Tongling County", "Other"] }, { "name": "Anqing", "area": ["Yingjiang District", "Daguan District", "Yixiu District", "Tongcheng City", "Susong County", "Zongyang County", "Taihu County", "Huaining County", "Yuexi County", "Wangjiang County", "Qianshan County", "Other"] }, { "name": "Huangshan", "area": ["Tunxi District", "Huangshan District", "Huizhou District", "Xiuning County", "She County", "Qimen County", "Ji County", "Other"] }, { "name": "Chuzhou District", "area": ["Langya District", "Nanqiao District", "Tianchang City", "Mingguang City", "Quanjiao County", "Lai'an County", "Dingyuan County", "Fengyang County", "Other"] }, { "name": "Fuyang", "area": ["Yingzhou District", "Yingdong District", "Yingquan District", "Jieshou City", "Linquan County", "Yingshang County", "Funan County", "Taihe County", "Other"] }, { "name": "Suzhou", "area": ["Yongqiao District", "Xiao County", "Si County", "Dangshan County", "Lingbi County", "Other"] }, { "name": "Chaohu", "area": ["Juchao District", "Hanshan County", "Wuwei County", "Lujiang County", "He county", "Other"] }, { "name": "Lu'an", "area": ["Jin'an District", "Yu'an District", "Shou County", "Huoshan County", "Huoqiu County", "Shucheng County", "Jinzhai County", "Other"] }, { "name": "Bozhou", "area": ["Qiaocheng District", "Lixin County", "Woyang County", "Mengcheng County", "Other"] }, { "name": "Chizhou", "area": ["Guichi District", "Dongzhi County", "Shitai County", "Qingyang County", "Other"] }, { "name": "Xuancheng", "area": ["Xuanzhou District", "Ningguo City", "Guangde County", "Langxi County", "Jing County", "Jingde County", "Jixi County", "Other"] }, { "name": "Other", "area": ["Other"] }]
 	}, {
-	    "name": "Fujian", "city": [{ "name": "Fuzhou", "area": ["Gulou District", "Taijiang District", "Cangshan District", "Mawei District", "Jin'an District", "Fuqing City", "Changle City", "Minhou County", "Minqing County", "Yongtai County", "Lianjiang County", "Luoyuan County", "Pingtan County", "Other"] }, { "name": "Xiamen", "area": ["Siming District", "Haishu District", "Huli District", "Jimei District", "Tong'an District", "Xiang'an District", "Other"] }, { "name": "Putian", "area": ["Chengxiang District", "Hanjiang District", "Licheng District", "Xiuyu District", "Xianyou County", "Other"] }, { "name": "Sanming", "area": ["Meilie District", "Sanyuan District", "Yong'an City", "Mingxi County", "Jiangle County", "Datian County", "Ninghua County", "Jianning County", "Sha County", "Youxi County", "Qingliu County", "Taining County", "Other"] }, { "name": "Quanzhou", "area": ["Licheng District", "Fengze District", "Luojiang District", "Quangang District", "Shishi City", "Jinjiang City", "Nan'an City", "Hui'an County", "Yongchun County", "Anxi County", "Dehua County", "Jinmen County", "Other"] }, { "name": "Zhangzhou", "area": ["Xiangcheng District", "Longwen District", "Longhai City", "Pinghe County", "Nanjing County", "Zhao'an County", "Zhangpu County", "Hua'an County", "Dongshan County", "Changtai County", "Yunxiao County", "Other"] }, { "name": "Nanping", "area": ["Yanping District", "Jian'ou City", "Shaowu City", "Wuyishan City", "Jianyang City", "Songxi County", "Guangze County", "Shunchang County", "Pucheng County", "Zhenghe County", "Other"] }, { "name": "Longyan", "area": ["Xinluo District", "Zhangping City", "Changting County", "Wuping County", "Shanghang County", "Yongding County", "Liancheng County", "Other"] }, { "name": "Ningde", "area": ["Jiaocheng District", "Fu'an City", "Fuding City", "Shouning County", "Xiapu County", "Zherong County", "Pingnan County", "Gutian County", "Zhouning County", "Other"] }, { "name": "Other", "area": ["Other"] }]
+	            "name": "Fujian", "city": [{ "name": "Fuzhou", "area": ["Gulou District", "Taijiang District", "Cangshan District", "Mawei District", "Jin'an District", "Fuqing City", "Changle City", "Minhou County", "Minqing County", "Yongtai County", "Lianjiang County", "Luoyuan County", "Pingtan County", "Other"] }, { "name": "Xiamen", "area": ["Siming District", "Haishu District", "Huli District", "Jimei District", "Tong'an District", "Xiang'an District", "Other"] }, { "name": "Putian", "area": ["Chengxiang District", "Hanjiang District", "Licheng District", "Xiuyu District", "Xianyou County", "Other"] }, { "name": "Sanming", "area": ["Meilie District", "Sanyuan District", "Yong'an City", "Mingxi County", "Jiangle County", "Datian County", "Ninghua County", "Jianning County", "Sha County", "Youxi County", "Qingliu County", "Taining County", "Other"] }, { "name": "Quanzhou", "area": ["Licheng District", "Fengze District", "Luojiang District", "Quangang District", "Shishi City", "Jinjiang City", "Nan'an City", "Hui'an County", "Yongchun County", "Anxi County", "Dehua County", "Jinmen County", "Other"] }, { "name": "Zhangzhou", "area": ["Xiangcheng District", "Longwen District", "Longhai City", "Pinghe County", "Nanjing County", "Zhao'an County", "Zhangpu County", "Hua'an County", "Dongshan County", "Changtai County", "Yunxiao County", "Other"] }, { "name": "Nanping", "area": ["Yanping District", "Jian'ou City", "Shaowu City", "Wuyishan City", "Jianyang City", "Songxi County", "Guangze County", "Shunchang County", "Pucheng County", "Zhenghe County", "Other"] }, { "name": "Longyan", "area": ["Xinluo District", "Zhangping City", "Changting County", "Wuping County", "Shanghang County", "Yongding County", "Liancheng County", "Other"] }, { "name": "Ningde", "area": ["Jiaocheng District", "Fu'an City", "Fuding City", "Shouning County", "Xiapu County", "Zherong County", "Pingnan County", "Gutian County", "Zhouning County", "Other"] }, { "name": "Other", "area": ["Other"] }]
 	}, {
-	    "name": "Jiangxi", "city": [{ "name": "Nanchang", "area": ["Donghu District", "Xihu District", "Qingyunpu District", "Wanli District", "Qingshanhu District", "Xinjian County", "Nanchang County", "Jinxian County", "Anyi County", "Other"] }, { "name": "Jingdezhen", "area": ["Zhushan District", "Changjiang District", "Leping City", "Fuliang County", "Other"] }, { "name": "Pingxiang", "area": ["Anyuan District", "Xiangdong District", "Lianhua County", "Shangli County", "Luxi County", "Other"] }, { "name": "Jiujiang", "area": ["Xunyang District", "Lushan District", "Ruichang City", "Jiujiang County", "Xingzi County", "Wuning County", "Pengze County", "Yongxiu County", "Xiushui County", "Hukou County", "De'an County", "Duchang County", "Other"] }, { "name": "Xinyu", "area": ["Yushui District", "Fenyi County", "Other"] }, { "name": "Yingtan", "area": ["Yuehu District", "Guixi City", "Yujiang County", "Other"] }, { "name": "Ganzhou", "area": ["Zhanggong District", "Ruijin City", "Nankang City", "Shicheng County", "Anyuan County", "Gan County", "Ningdu County", "Xunwu County", "Xingguo County", "Dingnan County", "Shangyou County", "Yudu County", "Longnan County", "Chongyi County", "Xinfeng County", "Quannan County", "Dayu County", "Huichang County", "Other"] }, { "name": "Ji'an", "area": ["Jizhou District", "Qingyuan District", "Jinggangshan City", "Ji'an County", "Yongfeng County", "Yongxin County", "Xingan County", "Taihe County", "Xiajiang County", "Suichuan County", "Anfu County", "Jishui County", "Wan'an County", "Other"] }, { "name": "Yichun", "area": ["Yuanzhou District", "Fengcheng City", "Zhangshu City", "Gao'an City", "Tonggu County", "Jing'an County", "Yifeng County", "Fengxin County", "Wanzai County", "Shanggao County", "Other"] }, { "name": "Fuzhou", "area": ["Linchuan District", "Nanfeng County", "Le'an County", "Jinxi County", "Nancheng County", "Dongxiang County", "Zixi County", "Yihuang County", "Guangchang County", "Lichuan County", "Chongren County", "Other"] }, { "name": "Shangrao", "area": ["Xinzhou District", "Dexing City", "Shangrao County", "Guangfeng County", "Poyang County", "Wuyuan County", "Qianshan County", "Yugan County", "Hengfeng County", "Yiyang County", "Yushan County", "Wannian County", "Other"] }, { "name": "Other", "area": ["Other"] }]
+	            "name": "Jiangxi", "city": [{ "name": "Nanchang", "area": ["Donghu District", "Xihu District", "Qingyunpu District", "Wanli District", "Qingshanhu District", "Xinjian County", "Nanchang County", "Jinxian County", "Anyi County", "Other"] }, { "name": "Jingdezhen", "area": ["Zhushan District", "Changjiang District", "Leping City", "Fuliang County", "Other"] }, { "name": "Pingxiang", "area": ["Anyuan District", "Xiangdong District", "Lianhua County", "Shangli County", "Luxi County", "Other"] }, { "name": "Jiujiang", "area": ["Xunyang District", "Lushan District", "Ruichang City", "Jiujiang County", "Xingzi County", "Wuning County", "Pengze County", "Yongxiu County", "Xiushui County", "Hukou County", "De'an County", "Duchang County", "Other"] }, { "name": "Xinyu", "area": ["Yushui District", "Fenyi County", "Other"] }, { "name": "Yingtan", "area": ["Yuehu District", "Guixi City", "Yujiang County", "Other"] }, { "name": "Ganzhou", "area": ["Zhanggong District", "Ruijin City", "Nankang City", "Shicheng County", "Anyuan County", "Gan County", "Ningdu County", "Xunwu County", "Xingguo County", "Dingnan County", "Shangyou County", "Yudu County", "Longnan County", "Chongyi County", "Xinfeng County", "Quannan County", "Dayu County", "Huichang County", "Other"] }, { "name": "Ji'an", "area": ["Jizhou District", "Qingyuan District", "Jinggangshan City", "Ji'an County", "Yongfeng County", "Yongxin County", "Xingan County", "Taihe County", "Xiajiang County", "Suichuan County", "Anfu County", "Jishui County", "Wan'an County", "Other"] }, { "name": "Yichun", "area": ["Yuanzhou District", "Fengcheng City", "Zhangshu City", "Gao'an City", "Tonggu County", "Jing'an County", "Yifeng County", "Fengxin County", "Wanzai County", "Shanggao County", "Other"] }, { "name": "Fuzhou", "area": ["Linchuan District", "Nanfeng County", "Le'an County", "Jinxi County", "Nancheng County", "Dongxiang County", "Zixi County", "Yihuang County", "Guangchang County", "Lichuan County", "Chongren County", "Other"] }, { "name": "Shangrao", "area": ["Xinzhou District", "Dexing City", "Shangrao County", "Guangfeng County", "Poyang County", "Wuyuan County", "Qianshan County", "Yugan County", "Hengfeng County", "Yiyang County", "Yushan County", "Wannian County", "Other"] }, { "name": "Other", "area": ["Other"] }]
 	}, {
-	    "name": "Shandong", "city": [{ "name": "Jinan", "area": ["Central District", "Lixia District", "Tianqiao District", "Huaiyin District", "Licheng District", "Changqing District", "Zhangqiu City", "Pingyin County", "Jiyang County", "Shanghe County", "Other"] }, { "name": "Qingdao", "area": ["City Southern District", "City Northern District", "Chengyang District", "Sifang District", "Licang District", "Huangdao District", "Laoshan District", "Jiaonan City", "Jiaozhou City", "Pingdu City", "Laixi City", "Jimo City", "Other"] }, { "name": "Zibo", "area": ["Zhangdian District", "Linzi District", "Zichuan District", "Boshan District", "Zhoucun District", "Huantai County", "Gaoqing County", "Yiyuan County", "Other"] }, { "name": "Zaozhuang", "area": ["Central District", "Shanting District", "Yicheng District", "Taierzhuang District", "Xuecheng District", "Tengzhou City", "Other"] }, { "name": "Dongying", "area": ["Dongying District", "Hekou District", "Kenli County", "Guangrao County", "Lijin County", "Other"] }, { "name": "Yantai", "area": ["Zhifu District", "Fushan District", "Muping District", "Laishan District", "Longkou City", "Laiyang City", "Laizhou City", "Zhaoyuan City", "Penglai City", "Qixia City", "Haiyang City", "Long Island County", "Other"] }, { "name": "Weifang", "area": ["Weicheng Qu", "Hanting District", "Fangzi District", "Kuiwen District", "Qingzhou City", "Zhucheng", "Shouguang City", "Anqiu City", "Gaomi City", "Changyi City", "Changle County", "Linqu County", "Other"] }, { "name": "Jining", "area": ["Central District", "Rencheng District", "Qufu City", "Yanzhou City", "Zoucheng City", "Yutai County", "Jinxiang County", "Jiaxiang County", "Weishan County", "Wenshang County", "Yishui County", "Liangshan County", "Other"] }, { "name": "Taian", "area": ["Taishan District", "Daiyue District", "Xintai City", "Feicheng city", "Ningyang County", "Dongping County", "Other"] }, { "name": "Weihai", "area": ["Huancui District", "Rushan City", "Wendeng City", "Rongcheng City", "Other"] }, { "name": "Rizhao", "area": ["Donggang District", "Lanshan District", "Wulian County", "Ju County", "Other"] }, { "name": "Laiwu", "area": ["Laicheng District", "Tongcheng District", "Other"] }, { "name": "Linyi", "area": ["Lanshan District", "Luozhuang District", "Hedong District", "Yinan County", "Tancheng County", "Yishui County", "Cangshan County", "Fei County", "Pingyi County", "Junan County", "Mengyin County", "Linshu County", "Other"] }, { "name": "Dezhou", "area": ["Decheng District", "Leling City", "Yucheng city", "Ling County", "Ningjin County", "Qihe County", "Wucheng County", "Qingyun County", "Pingyuan County", "Xiajin County", "Linyi County", "Other"] }, { "name": "Liaocheng", "area": ["Dongchangfu District", "Linqing City", "Gaotang County", "Yanggu County", "Chiping County", "Shen County", "Dong'a County", "Guan County", "Other"] }, { "name": "Binzhou", "area": ["Bincheng District", "Zouping County", "Zhanhua County", "Huimin County", "Boxing County", "Yangxin County", "Wudi County", "Other"] }, { "name": "Heze", "area": ["Mudan District", "Juancheng County", "Shan county", "Yuncheng County", "Cao County", "Dingtao County", "Juye County", "Dongming County", "Chengwu County", "Other"] }, { "name": "Other", "area": ["Other"] }]
+	            "name": "Shandong", "city": [{ "name": "Jinan", "area": ["Central District", "Lixia District", "Tianqiao District", "Huaiyin District", "Licheng District", "Changqing District", "Zhangqiu City", "Pingyin County", "Jiyang County", "Shanghe County", "Other"] }, { "name": "Qingdao", "area": ["City Southern District", "City Northern District", "Chengyang District", "Sifang District", "Licang District", "Huangdao District", "Laoshan District", "Jiaonan City", "Jiaozhou City", "Pingdu City", "Laixi City", "Jimo City", "Other"] }, { "name": "Zibo", "area": ["Zhangdian District", "Linzi District", "Zichuan District", "Boshan District", "Zhoucun District", "Huantai County", "Gaoqing County", "Yiyuan County", "Other"] }, { "name": "Zaozhuang", "area": ["Central District", "Shanting District", "Yicheng District", "Taierzhuang District", "Xuecheng District", "Tengzhou City", "Other"] }, { "name": "Dongying", "area": ["Dongying District", "Hekou District", "Kenli County", "Guangrao County", "Lijin County", "Other"] }, { "name": "Yantai", "area": ["Zhifu District", "Fushan District", "Muping District", "Laishan District", "Longkou City", "Laiyang City", "Laizhou City", "Zhaoyuan City", "Penglai City", "Qixia City", "Haiyang City", "Long Island County", "Other"] }, { "name": "Weifang", "area": ["Weicheng Qu", "Hanting District", "Fangzi District", "Kuiwen District", "Qingzhou City", "Zhucheng", "Shouguang City", "Anqiu City", "Gaomi City", "Changyi City", "Changle County", "Linqu County", "Other"] }, { "name": "Jining", "area": ["Central District", "Rencheng District", "Qufu City", "Yanzhou City", "Zoucheng City", "Yutai County", "Jinxiang County", "Jiaxiang County", "Weishan County", "Wenshang County", "Yishui County", "Liangshan County", "Other"] }, { "name": "Taian", "area": ["Taishan District", "Daiyue District", "Xintai City", "Feicheng city", "Ningyang County", "Dongping County", "Other"] }, { "name": "Weihai", "area": ["Huancui District", "Rushan City", "Wendeng City", "Rongcheng City", "Other"] }, { "name": "Rizhao", "area": ["Donggang District", "Lanshan District", "Wulian County", "Ju County", "Other"] }, { "name": "Laiwu", "area": ["Laicheng District", "Tongcheng District", "Other"] }, { "name": "Linyi", "area": ["Lanshan District", "Luozhuang District", "Hedong District", "Yinan County", "Tancheng County", "Yishui County", "Cangshan County", "Fei County", "Pingyi County", "Junan County", "Mengyin County", "Linshu County", "Other"] }, { "name": "Dezhou", "area": ["Decheng District", "Leling City", "Yucheng city", "Ling County", "Ningjin County", "Qihe County", "Wucheng County", "Qingyun County", "Pingyuan County", "Xiajin County", "Linyi County", "Other"] }, { "name": "Liaocheng", "area": ["Dongchangfu District", "Linqing City", "Gaotang County", "Yanggu County", "Chiping County", "Shen County", "Dong'a County", "Guan County", "Other"] }, { "name": "Binzhou", "area": ["Bincheng District", "Zouping County", "Zhanhua County", "Huimin County", "Boxing County", "Yangxin County", "Wudi County", "Other"] }, { "name": "Heze", "area": ["Mudan District", "Juancheng County", "Shan county", "Yuncheng County", "Cao County", "Dingtao County", "Juye County", "Dongming County", "Chengwu County", "Other"] }, { "name": "Other", "area": ["Other"] }]
 	}, {
-	    "name": "Henan", "city": [{ "name": "Zhengzhou", "area": ["Zhongyuan District", "Jinshui District", "Erqi District", "Guancheng Hui Nationality District", "Shangxin District", "Huiji District", "Gongyi City", "Xinzheng City", "Xinmi City", "Dengfeng City", "Xingyang City", "Zhongmu County", "Other"] }, { "name": "Kaifeng", "area": ["Gulou District", "Longting District", "Shunhe Hui Nationality District", "Wangwangtai District", "Jinming District", "Kaifeng County", "Weishi County", "Lankao County", "Qi County", "Tongxu County", "Other"] }, { "name": "Luoyang", "area": ["Xigong District", "Laocheng District", "Jianxi District", "Chanhe Hui Nationality Area", "Luolong District", "Jili District", "Yanshi City", "Mengjin County", "Ruyang County", "Yichuan County", "Luoning County", "Song County", "Yiyang County", "Xin'an County", "Luanchuan County", "Other"] }, { "name": "Pingdingshan", "area": ["Xinhua District", "Weidong District", "Zhanhe District", "Shilong District", "Ruzhou City", "Wugang City", "Baofeng County", "Ye County", "Jia County", "Lushan County", "Other"] }, { "name": "Anyang", "area": ["Beiguan District", "Wenfeng District", "Yindu District", "Long'an District", "Linzhou City", "Anyang County", "Hua County", "Neihuang County", "Tangyin County", "Other"] }, { "name": "Hebi", "area": ["Qibin District", "Shancheng District", "Heshan District", "Xun County", "Qi County", "Other"] }, { "name": "Xinxiang", "area": ["Weibin District", "Hongqi District", "Fengquan District", "Muye District", "Weihui City", "Huixian City", "Xinxiang County", "Huojia County", "Yuanyang County", "Changyuan County", "Fengqiu County", "Yanjin County", "Other"] }, { "name": "Jiaozuo", "area": ["Jiefang District", "Zhongzhan District", "Macun District", "Shanyang District", "Qinyang City", "Mengzhou City", "Xiuwu County", "Wen County", "Wuzhi County", "Bo'ai County", "Other"] }, { "name": "Puyang", "area": ["Hualong District", "Shuyang County", "Nanle County", "Taiqian County", "Qingfeng County", "Fan County", "Other"] }, { "name": "Xu Chang", "area": ["Weidu District", "Yuzhou City", "Changge City", "Xuchang County", "Yanling County", "Xiangcheng County", "Other"] }, { "name": "Luohe", "area": ["Yuanhui District", "Yancheng District", "Zhaoling District", "Linying County", "Wuyang County", "Other"] }, { "name": "Sanmenxia", "area": ["Hubin District", "Yima City", "Lingbao City", "Mianchi County", "Lushi County", "Shan County", "Other"] }, { "name": "Nanyang", "area": ["Wolong District", "Wancheng District", "Dengzhou City", "Tongbai County", "Fangcheng County", "Xichuan County", "Zhenping County", "Tanghe County", "Nanzhao County", "Neixiang County", "Xinye County", "Sheqi County", "Xixia County", "Other"] }, { "name": "Shangqiu", "area": ["Liangyuan District", "Suiyang District", "Yongcheng City", "Ningling County", "Yucheng County", "Minquan County", "Xiayi County", "Zhecheng County", "Sui County", "Other"] }, { "name": "Xinyang", "area": ["Shihe District", "Pingqiao District", "Huangchuan County", "Huaibin County", "Xi County", "Xin County", "Shangcheng County", "Gushi County", "Luoshan County", "Guangshan County", "Other"] }, { "name": "Zhoukou", "area": ["Chuanhui District", "Xiangcheng City", "Shangshui County", "Huaiyang County", "Taikang County", "Luyi County", "Xihua County", "Fugou County", "Shenqiu County", "Dancheng County", "Other"] }, { "name": "Zhumadian", "area": ["Yicheng District", "Queshan County", "Xincai County", "Shangcai County", "Xiping County", "Biyang County", "Pingyu County", "Runan County", "Suiping County", "Zhengyang County", "Other"] }, { "name": "Jiaozuo", "area": ["Jiyuan City", "Other"] }, { "name": "Other", "area": ["Other"] }]
+	            "name": "Henan", "city": [{ "name": "Zhengzhou", "area": ["Zhongyuan District", "Jinshui District", "Erqi District", "Guancheng Hui Nationality District", "Shangxin District", "Huiji District", "Gongyi City", "Xinzheng City", "Xinmi City", "Dengfeng City", "Xingyang City", "Zhongmu County", "Other"] }, { "name": "Kaifeng", "area": ["Gulou District", "Longting District", "Shunhe Hui Nationality District", "Wangwangtai District", "Jinming District", "Kaifeng County", "Weishi County", "Lankao County", "Qi County", "Tongxu County", "Other"] }, { "name": "Luoyang", "area": ["Xigong District", "Laocheng District", "Jianxi District", "Chanhe Hui Nationality Area", "Luolong District", "Jili District", "Yanshi City", "Mengjin County", "Ruyang County", "Yichuan County", "Luoning County", "Song County", "Yiyang County", "Xin'an County", "Luanchuan County", "Other"] }, { "name": "Pingdingshan", "area": ["Xinhua District", "Weidong District", "Zhanhe District", "Shilong District", "Ruzhou City", "Wugang City", "Baofeng County", "Ye County", "Jia County", "Lushan County", "Other"] }, { "name": "Anyang", "area": ["Beiguan District", "Wenfeng District", "Yindu District", "Long'an District", "Linzhou City", "Anyang County", "Hua County", "Neihuang County", "Tangyin County", "Other"] }, { "name": "Hebi", "area": ["Qibin District", "Shancheng District", "Heshan District", "Xun County", "Qi County", "Other"] }, { "name": "Xinxiang", "area": ["Weibin District", "Hongqi District", "Fengquan District", "Muye District", "Weihui City", "Huixian City", "Xinxiang County", "Huojia County", "Yuanyang County", "Changyuan County", "Fengqiu County", "Yanjin County", "Other"] }, { "name": "Jiaozuo", "area": ["Jiefang District", "Zhongzhan District", "Macun District", "Shanyang District", "Qinyang City", "Mengzhou City", "Xiuwu County", "Wen County", "Wuzhi County", "Bo'ai County", "Other"] }, { "name": "Puyang", "area": ["Hualong District", "Shuyang County", "Nanle County", "Taiqian County", "Qingfeng County", "Fan County", "Other"] }, { "name": "Xu Chang", "area": ["Weidu District", "Yuzhou City", "Changge City", "Xuchang County", "Yanling County", "Xiangcheng County", "Other"] }, { "name": "Luohe", "area": ["Yuanhui District", "Yancheng District", "Zhaoling District", "Linying County", "Wuyang County", "Other"] }, { "name": "Sanmenxia", "area": ["Hubin District", "Yima City", "Lingbao City", "Mianchi County", "Lushi County", "Shan County", "Other"] }, { "name": "Nanyang", "area": ["Wolong District", "Wancheng District", "Dengzhou City", "Tongbai County", "Fangcheng County", "Xichuan County", "Zhenping County", "Tanghe County", "Nanzhao County", "Neixiang County", "Xinye County", "Sheqi County", "Xixia County", "Other"] }, { "name": "Shangqiu", "area": ["Liangyuan District", "Suiyang District", "Yongcheng City", "Ningling County", "Yucheng County", "Minquan County", "Xiayi County", "Zhecheng County", "Sui County", "Other"] }, { "name": "Xinyang", "area": ["Shihe District", "Pingqiao District", "Huangchuan County", "Huaibin County", "Xi County", "Xin County", "Shangcheng County", "Gushi County", "Luoshan County", "Guangshan County", "Other"] }, { "name": "Zhoukou", "area": ["Chuanhui District", "Xiangcheng City", "Shangshui County", "Huaiyang County", "Taikang County", "Luyi County", "Xihua County", "Fugou County", "Shenqiu County", "Dancheng County", "Other"] }, { "name": "Zhumadian", "area": ["Yicheng District", "Queshan County", "Xincai County", "Shangcai County", "Xiping County", "Biyang County", "Pingyu County", "Runan County", "Suiping County", "Zhengyang County", "Other"] }, { "name": "Jiaozuo", "area": ["Jiyuan City", "Other"] }, { "name": "Other", "area": ["Other"] }]
 	}, {
-	    "name": "Hubei", "city": [{ "name": "Wuhan", "area": ["Jiang'an District", "Wuchang District", "Jianghan District", "Qiaokou District", "Hanyang District", "Qingshan District", "Hongshan District", "Dongxihu District", "Hannan District", "Caidian District", "Jiangxia District", "Huangpi District", "Xinzhou District", "Other"] }, { "name": "Huangshi", "area": ["Huangshi Port Area", "Xisaishan District", "Lower Land Area", "Tieshan District", "Daye City", "Yangxin County", "Other"] }, { "name": "Shiyan", "area": ["Zhangwan District", "Maojian District", "Danjiangkou City", "Yun County", "Zhushan County", "Fang County", "Yunxi County", "Zhuxi County", "Other"] }, { "name": "Jingzhou", "area": ["Shashi District", "Jingzhou District", "Honghu City", "Shishou City", "Songzi City", "Jianli County", "Gong'an County", "Jiangling County", "Other"] }, { "name": "Yichang", "area": ["Xiling District", "Wujiagang District", "Dianjun District", "Xiaoting District", "Yiling District", "Yidu City", "Dangyang City", "Zhijiang City", "Zigui County", "Yuan'an County", "Xingshan County", "Wufeng Tujia Autonomous County", "Changyang Tujia Autonomous County", "Other"] }, { "name": "Xiangfan", "area": ["Xiangcheng District", "Fancheng District", "Xiangyang District", "Laohekou City", "Zaoyang City", "Yicheng City", "Nanzhang County", "Gucheng County", "Baokang County", "Other"] }, { "name": "Ezhou", "area": ["Echeng District", "Huarong District", "Liangzihu District", "Other"] }, { "name": "Jingmen", "area": ["Dongbao District", "Duodao District", "Zhongxiang City", "Jingshan County", "Shayang County", "Other"] }, { "name": "Xiaogan", "area": ["Xiaonan District", "Yingcheng City", "Anlu City", "Hanchuan City", "Yunmeng County", "Dawu County", "Xiaochang County", "Other"] }, { "name": "Huanggang", "area": ["Huangzhou District", "Macheng", "Wuxue City", "Hong'an County", "Luotian County", "Xishui County", "Qichun County", "Huangmei County", "Yingshan County", "Tuanfeng County", "Other"] }, { "name": "Xianning", "area": ["Xian'an District", "Chibi City", "Jiayu County", "Tongshan County", "Chongyang County", "Tongcheng County", "Other"] }, { "name": "Suizhou", "area": ["Zengdu District", "Guangshui City", "Other"] }, { "name": "Enshi Tujia and Miao Autonomous Prefecture", "area": ["Enshi City", "Lichuan City", "Jianshi County", "Laifeng County", "Badong County", "Hefeng County", "Xuan'en County", "Xianfeng County", "Other"] }, { "name": "Xiantao", "area": ["Xiantao"] }, { "name": "Tianmen", "area": ["Tianmen"] }, { "name": "Qianjiang", "area": ["Qianjiang"] }, { "name": "Shennongjia Forest Area", "area": ["Shennongjia Forest Area"] }, { "name": "Other", "area": ["Other"] }]
+	            "name": "Hubei", "city": [{ "name": "Wuhan", "area": ["Jiang'an District", "Wuchang District", "Jianghan District", "Qiaokou District", "Hanyang District", "Qingshan District", "Hongshan District", "Dongxihu District", "Hannan District", "Caidian District", "Jiangxia District", "Huangpi District", "Xinzhou District", "Other"] }, { "name": "Huangshi", "area": ["Huangshi Port Area", "Xisaishan District", "Lower Land Area", "Tieshan District", "Daye City", "Yangxin County", "Other"] }, { "name": "Shiyan", "area": ["Zhangwan District", "Maojian District", "Danjiangkou City", "Yun County", "Zhushan County", "Fang County", "Yunxi County", "Zhuxi County", "Other"] }, { "name": "Jingzhou", "area": ["Shashi District", "Jingzhou District", "Honghu City", "Shishou City", "Songzi City", "Jianli County", "Gong'an County", "Jiangling County", "Other"] }, { "name": "Yichang", "area": ["Xiling District", "Wujiagang District", "Dianjun District", "Xiaoting District", "Yiling District", "Yidu City", "Dangyang City", "Zhijiang City", "Zigui County", "Yuan'an County", "Xingshan County", "Wufeng Tujia Autonomous County", "Changyang Tujia Autonomous County", "Other"] }, { "name": "Xiangfan", "area": ["Xiangcheng District", "Fancheng District", "Xiangyang District", "Laohekou City", "Zaoyang City", "Yicheng City", "Nanzhang County", "Gucheng County", "Baokang County", "Other"] }, { "name": "Ezhou", "area": ["Echeng District", "Huarong District", "Liangzihu District", "Other"] }, { "name": "Jingmen", "area": ["Dongbao District", "Duodao District", "Zhongxiang City", "Jingshan County", "Shayang County", "Other"] }, { "name": "Xiaogan", "area": ["Xiaonan District", "Yingcheng City", "Anlu City", "Hanchuan City", "Yunmeng County", "Dawu County", "Xiaochang County", "Other"] }, { "name": "Huanggang", "area": ["Huangzhou District", "Macheng", "Wuxue City", "Hong'an County", "Luotian County", "Xishui County", "Qichun County", "Huangmei County", "Yingshan County", "Tuanfeng County", "Other"] }, { "name": "Xianning", "area": ["Xian'an District", "Chibi City", "Jiayu County", "Tongshan County", "Chongyang County", "Tongcheng County", "Other"] }, { "name": "Suizhou", "area": ["Zengdu District", "Guangshui City", "Other"] }, { "name": "Enshi Tujia and Miao Autonomous Prefecture", "area": ["Enshi City", "Lichuan City", "Jianshi County", "Laifeng County", "Badong County", "Hefeng County", "Xuan'en County", "Xianfeng County", "Other"] }, { "name": "Xiantao", "area": ["Xiantao"] }, { "name": "Tianmen", "area": ["Tianmen"] }, { "name": "Qianjiang", "area": ["Qianjiang"] }, { "name": "Shennongjia Forest Area", "area": ["Shennongjia Forest Area"] }, { "name": "Other", "area": ["Other"] }]
 	}, {
-	    "name": "Hu'nan", "city": [{ "name": "Changsha", "area": ["Yuelu District", "Furong District", "Tianxin District", "Kaifu District", "Yuhua District", "Liuyang City", "Changsha County", "Wangcheng County", "Ningxiang County", "Other"] }, { "name": "Zhuzhou", "area": ["Tianyuan District", "Hetang District", "Lusong District", "Shifeng District", "Liling City", "Zhuzhou County", "Yanling County", "Chaling County", "You County", "Other"] }, { "name": "Xiangtan", "area": ["Yuetang District", "Yuhu District", "Xiangxiang City", "Shaoshan City", "Xiangtan County", "Other"] }, { "name": "Hengyang", "area": ["Yanfeng District", "Zhuhui District", "Shigu District", "Zhengxiang District", "Nanyue District", "Leiyang City", "Changning City", "Hengyang County", "Hengdong County", "Hengshan County", "Hengnan County", "Qidong County", "Other"] }, { "name": "Shaoyang", "area": ["Shuangqing District", "Daxiang District", "Beita District", "Wugang City", "Shaodong County", "Dongkou County", "Xinshao County", "Suining County", "Xinning County", "Shaoyang County", "Longhui County", "Chengbu Miao Autonomous County", "Other"] }, { "name": "Yueyang", "area": ["Yueyang Building District", "Yunxi District", "Junshan District", "Linxiang City", "Miluo City", "Yueyang County", "Xiangyin County", "Pingjiang County", "Huarong County", "Other"] }, { "name": "Changde", "area": ["Wuling District", "Dingcheng District", "Jinshi City", "Li County", "Linli County", "Taoyuan County", "Hanshou County", "Anxiang County", "Shimen County", "Other"] }, { "name": "Zhangjiajie", "area": ["Yongding District", "Wulingyuan District", "Cili County", "Sangzhi County", "Other"] }, { "name": "Yiyang", "area": ["Heshan District", "Ziyang District", "Yuanjiang City", "Taojiang County", "Nan County", "Anhua County", "Other"] }, { "name": "Chenzhou", "area": ["Beihu District", "Suxian District", "Zixing City", "Yizhang County", "Yucheng County", "Anren County", "Jiahe County", "Linwu County", "Guidong County", "Yongxing County", "Guiyang County", "Other"] }, { "name": "Yongzhou", "area": ["Lengshuitan District", "Lingling District", "Qiyang County", "Lanshan County", "Ningyuan County", "Xintian County", "Dong'an County", "Jiangyong County", "Dao County", "Shuangpai County", "Jianghua Yao Autonomous County", "Other"] }, { "name": "Huaihua", "area": ["Hecheng District", "Hongjiang City", "Huitong County", "Yanling County", "Chenxi County", "Xupu County", "Zhongfang County", "Xinhuang Dong Autonomous County", "Minjiang Dong Autonomous County", "Channel Dong Autonomous County", "Jingzhou Miao and Dong Autonomous County", "Mayang Miao Autonomous County", "Other"] }, { "name": "Bottom", "area": ["Comet area", "Lengshuijiang City", "Lianyuan City", "Xinhua County", "Shuangfeng County", "Other"] }, { "name": "Xiangxi Tujia and Miao Autonomous Prefecture", "area": ["Jishou City", "Guzhang County", "Longshan County", "Yongshun County", "Fenghuang County", "Luxi County", "Baojing County", "Huayuan County", "Other"] }, { "name": "Other", "area": ["Other"] }]
+	            "name": "Hu'nan", "city": [{ "name": "Changsha", "area": ["Yuelu District", "Furong District", "Tianxin District", "Kaifu District", "Yuhua District", "Liuyang City", "Changsha County", "Wangcheng County", "Ningxiang County", "Other"] }, { "name": "Zhuzhou", "area": ["Tianyuan District", "Hetang District", "Lusong District", "Shifeng District", "Liling City", "Zhuzhou County", "Yanling County", "Chaling County", "You County", "Other"] }, { "name": "Xiangtan", "area": ["Yuetang District", "Yuhu District", "Xiangxiang City", "Shaoshan City", "Xiangtan County", "Other"] }, { "name": "Hengyang", "area": ["Yanfeng District", "Zhuhui District", "Shigu District", "Zhengxiang District", "Nanyue District", "Leiyang City", "Changning City", "Hengyang County", "Hengdong County", "Hengshan County", "Hengnan County", "Qidong County", "Other"] }, { "name": "Shaoyang", "area": ["Shuangqing District", "Daxiang District", "Beita District", "Wugang City", "Shaodong County", "Dongkou County", "Xinshao County", "Suining County", "Xinning County", "Shaoyang County", "Longhui County", "Chengbu Miao Autonomous County", "Other"] }, { "name": "Yueyang", "area": ["Yueyang Building District", "Yunxi District", "Junshan District", "Linxiang City", "Miluo City", "Yueyang County", "Xiangyin County", "Pingjiang County", "Huarong County", "Other"] }, { "name": "Changde", "area": ["Wuling District", "Dingcheng District", "Jinshi City", "Li County", "Linli County", "Taoyuan County", "Hanshou County", "Anxiang County", "Shimen County", "Other"] }, { "name": "Zhangjiajie", "area": ["Yongding District", "Wulingyuan District", "Cili County", "Sangzhi County", "Other"] }, { "name": "Yiyang", "area": ["Heshan District", "Ziyang District", "Yuanjiang City", "Taojiang County", "Nan County", "Anhua County", "Other"] }, { "name": "Chenzhou", "area": ["Beihu District", "Suxian District", "Zixing City", "Yizhang County", "Yucheng County", "Anren County", "Jiahe County", "Linwu County", "Guidong County", "Yongxing County", "Guiyang County", "Other"] }, { "name": "Yongzhou", "area": ["Lengshuitan District", "Lingling District", "Qiyang County", "Lanshan County", "Ningyuan County", "Xintian County", "Dong'an County", "Jiangyong County", "Dao County", "Shuangpai County", "Jianghua Yao Autonomous County", "Other"] }, { "name": "Huaihua", "area": ["Hecheng District", "Hongjiang City", "Huitong County", "Yanling County", "Chenxi County", "Xupu County", "Zhongfang County", "Xinhuang Dong Autonomous County", "Minjiang Dong Autonomous County", "Channel Dong Autonomous County", "Jingzhou Miao and Dong Autonomous County", "Mayang Miao Autonomous County", "Other"] }, { "name": "Bottom", "area": ["Comet area", "Lengshuijiang City", "Lianyuan City", "Xinhua County", "Shuangfeng County", "Other"] }, { "name": "Xiangxi Tujia and Miao Autonomous Prefecture", "area": ["Jishou City", "Guzhang County", "Longshan County", "Yongshun County", "Fenghuang County", "Luxi County", "Baojing County", "Huayuan County", "Other"] }, { "name": "Other", "area": ["Other"] }]
 	}, {
-	    "name": "Guangdong", "city": [{ "name": "Guangzhou", "area": ["Yuexiu District", "Liwan District", "Haizhu District", "Tianhe District", "Baiyun District", "Huangpu District", "Fanyu District", "Huadu District", "Nansha District", "Luogang District", "Zengcheng City", "Conghua City", "Other"] }, { "name": "Shenzhen", "area": ["Futian District", "Luohu District", "Nanshan District", "Bao'an District", "Longgang District", "Yantian District", "Other"] }, { "name": "Dongguan", "area": ["Guancheng", "Changping", "Tangxia", "Tangxia", "Tangxia", "Other"] }, { "name": "Zhongshan", "area": ["Zhongshan"] }, { "name": "Chaozhou", "area": ["Xiangqiao District", "Chao'an County", "Raoping County", "Other"] }, { "name": "Jieyang", "area": ["Rongcheng District", "Jiedong County", "Jiexi County", "Huilai County", "Puning City", "Other"] }, { "name": "Yunfu", "area": ["Yuncheng District", "Xinxing County", "Yunan County", "Yun'an County", "Luoding City", "Other"] }, { "name": "Zhuhai", "area": ["Xiangzhou District", "Doumen District", "Jinwan District", "Other"] }, { "name": "Shantou", "area": ["Jinping District", "Haojiang District", "Longhu District", "Chaoyang District", "Chaonan District", "Chenghai District", "Nan'ao County", "Other"] }, { "name": "Shaoguan", "area": ["Zhenjiang District", "Wujiang District", "Qujiang District", "Lechang City", "Nanxiong City", "Shixing County", "Renhua County", "Wengyuan County", "Xinfeng County", "Ruyuan Yao Autonomous County", "Other"] }, { "name": "Foshan", "area": ["Chancheng District", "Nanhai District", "Shunde District", "Sanshui District", "Gaoming District", "Other"] }, { "name": "Jiangmen", "area": ["Pengjiang District", "Jianghai District", "Xinhui District", "Enping City", "Taishan City", "Kaiping City", "Heshan City", "Other"] }, { "name": "Zhanjiang", "area": ["Chikan District", "Xiashan District", "Potou District", "Mazhang District", "Wuchuan City", "Lianjiang City", "Leizhou City", "Suixi County", "Xuwen County", "Other"] }, { "name": "Maoming", "area": ["Maonan District", "Maogang District", "Huazhou City", "Xinyi City", "Gaozhou", "Dianbai County", "Other"] }, { "name": "Zhaoqing", "area": ["Duanzhou District", "Dinghu District", "Gaoyao City", "Sihui City", "Guangning County", "Huaiji County", "Fengkai County", "Deqing County", "Other"] }, { "name": "Huizhou", "area": ["Huicheng District", "Huiyang District", "Boluo County", "Huidong County", "Longmen County", "Other"] }, { "name": "Meizhou", "area": ["Meijiang District", "Xingning City", "Mei County", "Dapu County", "Fengshun County", "Wuhua County", "Pingyuan County", "Jiaoling County", "Other"] }, { "name": "Shanwei", "area": ["Urban Area", "Lufeng City", "Haifeng County", "Luhe County", "Other"] }, { "name": "Heyuan", "area": ["Yuancheng District", "Zijin County", "Longchuan County", "Lianping County", "Heping County", "Dongyuan County", "Other"] }, { "name": "Yangjiang", "area": ["Jiangcheng District", "Yangchun City", "Yangxi County", "Yangdong County", "Other"] }, { "name": "Qingyuan", "area": ["Qingcheng District", "Yingde City", "Lianzhou City", "Fogang County", "Yangshan County", "Qingxin County", "Lianshan Zhuang and Yao Autonomous County", "Liannan Yao Autonomous County", "Other"] }]
+	            "name": "Guangdong", "city": [{ "name": "Guangzhou", "area": ["Yuexiu District", "Liwan District", "Haizhu District", "Tianhe District", "Baiyun District", "Huangpu District", "Fanyu District", "Huadu District", "Nansha District", "Luogang District", "Zengcheng City", "Conghua City", "Other"] }, { "name": "Shenzhen", "area": ["Futian District", "Luohu District", "Nanshan District", "Bao'an District", "Longgang District", "Yantian District", "Other"] }, { "name": "Dongguan", "area": ["Guancheng", "Changping", "Tangxia", "Tangxia", "Tangxia", "Other"] }, { "name": "Zhongshan", "area": ["Zhongshan"] }, { "name": "Chaozhou", "area": ["Xiangqiao District", "Chao'an County", "Raoping County", "Other"] }, { "name": "Jieyang", "area": ["Rongcheng District", "Jiedong County", "Jiexi County", "Huilai County", "Puning City", "Other"] }, { "name": "Yunfu", "area": ["Yuncheng District", "Xinxing County", "Yunan County", "Yun'an County", "Luoding City", "Other"] }, { "name": "Zhuhai", "area": ["Xiangzhou District", "Doumen District", "Jinwan District", "Other"] }, { "name": "Shantou", "area": ["Jinping District", "Haojiang District", "Longhu District", "Chaoyang District", "Chaonan District", "Chenghai District", "Nan'ao County", "Other"] }, { "name": "Shaoguan", "area": ["Zhenjiang District", "Wujiang District", "Qujiang District", "Lechang City", "Nanxiong City", "Shixing County", "Renhua County", "Wengyuan County", "Xinfeng County", "Ruyuan Yao Autonomous County", "Other"] }, { "name": "Foshan", "area": ["Chancheng District", "Nanhai District", "Shunde District", "Sanshui District", "Gaoming District", "Other"] }, { "name": "Jiangmen", "area": ["Pengjiang District", "Jianghai District", "Xinhui District", "Enping City", "Taishan City", "Kaiping City", "Heshan City", "Other"] }, { "name": "Zhanjiang", "area": ["Chikan District", "Xiashan District", "Potou District", "Mazhang District", "Wuchuan City", "Lianjiang City", "Leizhou City", "Suixi County", "Xuwen County", "Other"] }, { "name": "Maoming", "area": ["Maonan District", "Maogang District", "Huazhou City", "Xinyi City", "Gaozhou", "Dianbai County", "Other"] }, { "name": "Zhaoqing", "area": ["Duanzhou District", "Dinghu District", "Gaoyao City", "Sihui City", "Guangning County", "Huaiji County", "Fengkai County", "Deqing County", "Other"] }, { "name": "Huizhou", "area": ["Huicheng District", "Huiyang District", "Boluo County", "Huidong County", "Longmen County", "Other"] }, { "name": "Meizhou", "area": ["Meijiang District", "Xingning City", "Mei County", "Dapu County", "Fengshun County", "Wuhua County", "Pingyuan County", "Jiaoling County", "Other"] }, { "name": "Shanwei", "area": ["Urban Area", "Lufeng City", "Haifeng County", "Luhe County", "Other"] }, { "name": "Heyuan", "area": ["Yuancheng District", "Zijin County", "Longchuan County", "Lianping County", "Heping County", "Dongyuan County", "Other"] }, { "name": "Yangjiang", "area": ["Jiangcheng District", "Yangchun City", "Yangxi County", "Yangdong County", "Other"] }, { "name": "Qingyuan", "area": ["Qingcheng District", "Yingde City", "Lianzhou City", "Fogang County", "Yangshan County", "Qingxin County", "Lianshan Zhuang and Yao Autonomous County", "Liannan Yao Autonomous County", "Other"] }]
 	}, {
-	    "name": "Guangxi", "city": [{ "name": "Nanning", "area": ["Qingxiu District", "Xingning District", "Xixiangtang District", "Liangqing District", "Jiangnan District", "Yongning District", "Wuming County", "Longan County", "Mashan County", "Shanglin County", "Binyang County", "Heng County", "Other"] }, { "name": "Liuzhou", "area": ["Chengzhong District", "Yufeng District", "Liubei District", "Liunan District", "Liujiang County", "Liucheng County", "Luzhai County", "Rong'an County", "Rongshui Miao Autonomous County", "Sanjiang Dong Autonomous County", "Other"] }, { "name": "Guilin", "area": ["Xiangshan District", "Xiufeng District", "Stacking area", "Qixing District", "Yanshan District", "Yangshuo County", "Lingui County", "Lingchuan County", "Quanzhou County", "Pingle County", "Xing'an County", "Guanyang County", "Lipu County", "Ziyuan County", "Yongfu County", "Longsheng Multinational Autonomous County ", "Gongcheng Yao Autonomous County", "Other"] }, { "name": "Wuzhou", "area": ["Wanxiu District", "Dieshan District", "Changzhou District", "Cenxi City", "Cangwu County", "Teng County", "Mengshan County", "Other"] }, { "name": "Beihai", "area": ["Haicheng District", "Yinhai District", "Tieshan Port Area", "Hepu County", "Other"] }, { "name": "Fangchenggang", "area": ["Port Area", "Fangcheng District", "Dongxing City", "Shangsi County", "Other"] }, { "name": "Qinzhou", "area": ["Qinnan District", "Qinbei District", "Lingshan County", "Pubei County", "Other"] }, { "name": "Guigang", "area": ["Gangbei District", "Gangnam District", "Qintang District", "Guiping City", "Pingnan County", "Other"] }, { "name": "Yulin", "area": ["Yuzhou District", "Beiliu City", "Rong County", "Luchuan County", "Bobai County", "Xingye County", "Other"] }, { "name": "Baise", "area": ["Youjiang District", "Lingyun County", "Pingguo County", "Xilin County", "Leye County", "Debao County", "Tianlin County", "Tianyang County", "Jingxi County", "Tiandong County", "Napo County", "Longlin Multinational Autonomous County", "Other"] }, { "name": "Hezhou", "area": ["Babu District", "Zhongshan County", "Zhaoping County", "Fuchuan Yao Autonomous County", "Other"] }, { "name": "Hechi", "area": ["Jinchengjiang District", "Yizhou City", "Tian'e County", "Fengshan County", "Nandan County", "Donglan County", "Du'an Yao Autonomous County", "Luocheng Mulam Autonomous County", "Bama Yao Autonomous County", "Huanjiang Maonan Autonomous County", "Dahua Yao Autonomous County", "Other"] }, { "name": "Guest", "area": ["Xingbin District", "Heshan City", "Xiangzhou County", "Wuxuan County", "Xincheng County", "Jinxiu Yao Autonomous County", "Other"] }, { "name": "Chongzuo", "area": ["Jiangzhou District", "Pingxiang City", "Ningming County", "Fusui County", "Longzhou County", "Daxin County", "Tiandeng County", "Other"] }, { "name": "Other", "area": ["Other"] }]
+	            "name": "Guangxi", "city": [{ "name": "Nanning", "area": ["Qingxiu District", "Xingning District", "Xixiangtang District", "Liangqing District", "Jiangnan District", "Yongning District", "Wuming County", "Longan County", "Mashan County", "Shanglin County", "Binyang County", "Heng County", "Other"] }, { "name": "Liuzhou", "area": ["Chengzhong District", "Yufeng District", "Liubei District", "Liunan District", "Liujiang County", "Liucheng County", "Luzhai County", "Rong'an County", "Rongshui Miao Autonomous County", "Sanjiang Dong Autonomous County", "Other"] }, { "name": "Guilin", "area": ["Xiangshan District", "Xiufeng District", "Stacking area", "Qixing District", "Yanshan District", "Yangshuo County", "Lingui County", "Lingchuan County", "Quanzhou County", "Pingle County", "Xing'an County", "Guanyang County", "Lipu County", "Ziyuan County", "Yongfu County", "Longsheng Multinational Autonomous County ", "Gongcheng Yao Autonomous County", "Other"] }, { "name": "Wuzhou", "area": ["Wanxiu District", "Dieshan District", "Changzhou District", "Cenxi City", "Cangwu County", "Teng County", "Mengshan County", "Other"] }, { "name": "Beihai", "area": ["Haicheng District", "Yinhai District", "Tieshan Port Area", "Hepu County", "Other"] }, { "name": "Fangchenggang", "area": ["Port Area", "Fangcheng District", "Dongxing City", "Shangsi County", "Other"] }, { "name": "Qinzhou", "area": ["Qinnan District", "Qinbei District", "Lingshan County", "Pubei County", "Other"] }, { "name": "Guigang", "area": ["Gangbei District", "Gangnam District", "Qintang District", "Guiping City", "Pingnan County", "Other"] }, { "name": "Yulin", "area": ["Yuzhou District", "Beiliu City", "Rong County", "Luchuan County", "Bobai County", "Xingye County", "Other"] }, { "name": "Baise", "area": ["Youjiang District", "Lingyun County", "Pingguo County", "Xilin County", "Leye County", "Debao County", "Tianlin County", "Tianyang County", "Jingxi County", "Tiandong County", "Napo County", "Longlin Multinational Autonomous County", "Other"] }, { "name": "Hezhou", "area": ["Babu District", "Zhongshan County", "Zhaoping County", "Fuchuan Yao Autonomous County", "Other"] }, { "name": "Hechi", "area": ["Jinchengjiang District", "Yizhou City", "Tian'e County", "Fengshan County", "Nandan County", "Donglan County", "Du'an Yao Autonomous County", "Luocheng Mulam Autonomous County", "Bama Yao Autonomous County", "Huanjiang Maonan Autonomous County", "Dahua Yao Autonomous County", "Other"] }, { "name": "Guest", "area": ["Xingbin District", "Heshan City", "Xiangzhou County", "Wuxuan County", "Xincheng County", "Jinxiu Yao Autonomous County", "Other"] }, { "name": "Chongzuo", "area": ["Jiangzhou District", "Pingxiang City", "Ningming County", "Fusui County", "Longzhou County", "Daxin County", "Tiandeng County", "Other"] }, { "name": "Other", "area": ["Other"] }]
 	}, {
-	    "name": "Hainan", "city": [{ "name": "Haikou", "area": ["Longhua District", "Xiuying District", "Qiongshan District", "Meilan District", "Other"] }, { "name": "Sanya", "area": ["Sanya City", "Other"] }, { "name": "Wuzhishan", "area": ["Wuzhishan"] }, { "name": "Qionghai", "area": ["Qionghai"] }, { "name": "Danzhou", "area": ["Danzhou"] }, { "name": "Wenchang", "area": ["Wenchang"] }, { "name": "Wanning", "area": ["Wanning"] }, { "name": "Dongfang", "area": ["Dongfang"] }, { "name": "Chengmai County", "area": ["Chengmai County"] }, { "name": "Ding'an County", "area": ["Ding'an County"] }, { "name": "Tunchang County", "area": ["Tunchang County"] }, { "name": "Lingao County", "area": ["Lingao County"] }, { "name": "Baisha Li Autonomous County", "area": ["Baisha Li Autonomous County"] }, { "name": "Changjiang Li Autonomous County", "area": ["Changjiang Li Autonomous County"] }, { "name": "Ledong Li Autonomous County", "area": ["Ledong Li Autonomous County"] }, { "name": "Lingshui Li Autonomous County", "area": ["Lingshui Li Autonomous County"] }, { "name": "Baoting Li and Miao Autonomous County", "area": ["Baoting Li and Miao Autonomous County"] }, { "name": "Qiongzhong Li and Miao Autonomous County", "area": ["Qiongzhong Li and Miao Autonomous County"] }, { "name": "Other", "area": ["Other"] }]
+	            "name": "Hainan", "city": [{ "name": "Haikou", "area": ["Longhua District", "Xiuying District", "Qiongshan District", "Meilan District", "Other"] }, { "name": "Sanya", "area": ["Sanya City", "Other"] }, { "name": "Wuzhishan", "area": ["Wuzhishan"] }, { "name": "Qionghai", "area": ["Qionghai"] }, { "name": "Danzhou", "area": ["Danzhou"] }, { "name": "Wenchang", "area": ["Wenchang"] }, { "name": "Wanning", "area": ["Wanning"] }, { "name": "Dongfang", "area": ["Dongfang"] }, { "name": "Chengmai County", "area": ["Chengmai County"] }, { "name": "Ding'an County", "area": ["Ding'an County"] }, { "name": "Tunchang County", "area": ["Tunchang County"] }, { "name": "Lingao County", "area": ["Lingao County"] }, { "name": "Baisha Li Autonomous County", "area": ["Baisha Li Autonomous County"] }, { "name": "Changjiang Li Autonomous County", "area": ["Changjiang Li Autonomous County"] }, { "name": "Ledong Li Autonomous County", "area": ["Ledong Li Autonomous County"] }, { "name": "Lingshui Li Autonomous County", "area": ["Lingshui Li Autonomous County"] }, { "name": "Baoting Li and Miao Autonomous County", "area": ["Baoting Li and Miao Autonomous County"] }, { "name": "Qiongzhong Li and Miao Autonomous County", "area": ["Qiongzhong Li and Miao Autonomous County"] }, { "name": "Other", "area": ["Other"] }]
 	}, {
-	    "name": "Chongqing", "city": [{ "name": "Chongqing", "area": ["Yuzhong District", "Dadukou District", "Jiangbei District", "Nan'an District", "Beibei District", "Yubei District", "Banan District", "Changshou District", "Shuangqiao District", "Shapingba District", "Wansheng District", "Wanzhou District", "Fuling District", "Qianjiang District", "Yongchuan District", "Hechuan District", "Jiangjin District", "Jiulongpo District", "Nanchuan District", "Qijiang County", "Tongnan District", "Rongchang County", "Bishan County", "Dazu County", "Tongliang County", "Liangping County", "Kai County", "Zhong County", "Chengkou County", "Dianjiang County", "Wulong County", "Fengdu County", "Fengjie County", "Yunyang County", "Wuxi County", "Wushan County", "Shizhu Tujia Autonomous County", "Xiushan Tujia and Miao Autonomous County", "Xiangyang Tujia and Miao Autonomous County", "Pengshui Miao and Tujia Autonomous County", "Other"] }]
+	            "name": "Chongqing", "city": [{ "name": "Chongqing", "area": ["Yuzhong District", "Dadukou District", "Jiangbei District", "Nan'an District", "Beibei District", "Yubei District", "Banan District", "Changshou District", "Shuangqiao District", "Shapingba District", "Wansheng District", "Wanzhou District", "Fuling District", "Qianjiang District", "Yongchuan District", "Hechuan District", "Jiangjin District", "Jiulongpo District", "Nanchuan District", "Qijiang County", "Tongnan District", "Rongchang County", "Bishan County", "Dazu County", "Tongliang County", "Liangping County", "Kai County", "Zhong County", "Chengkou County", "Dianjiang County", "Wulong County", "Fengdu County", "Fengjie County", "Yunyang County", "Wuxi County", "Wushan County", "Shizhu Tujia Autonomous County", "Xiushan Tujia and Miao Autonomous County", "Xiangyang Tujia and Miao Autonomous County", "Pengshui Miao and Tujia Autonomous County", "Other"] }]
 	}, {
-	    "name": "Sichuan", "city": [{ "name": "Chengdu", "area": ["Qingyang District", "Jinjiang District", "Jinniu District", "Wuhou District", "Chenghua District", "Longquanyi District", "Qingbaijiang District", "Xindu District", "Wenjiang District", "Dujiangyan City", "Pengzhou City", "Qionglai City", "Chongzhou City", "Jintang County", "Pi County", "Xinjin County", "Shuangliu County", "Pujiang County", "Dayi County", "Other"] }, { "name": "Zigong", "area": ["Daan District", "Ziliujing District", "Gongjing District", "Yantan District", "Rong County", "Fushun County", "Other"] }, { "name": "Panzhihua", "area": ["Renhe District", "Miyi County", "Yanbian County", "Eastern District", "Western District", "Other"] }, { "name": "Luzhou", "area": ["Jiangyang District", "Naxi District", "Longmatan District", "Lu County", "Hejiang County", "Xuyong County", "Gulin County", "Other"] }, { "name": "Deyang", "area": ["Jingyang District", "Guanghan City", "Shifang City", "Mianzhu City", "Luojiang County", "Zhongjiang County", "Other"] }, { "name": "Mianyang", "area": ["Fucheng District", "Youxian District", "Jiangyou City", "Yanting County", "Santai County", "Pingwu County", "An County", "Zitong County", "Beichuan Qiang Autonomous County", "Other"] }, { "name": "Guangyuan", "area": ["Yuanba District", "Chaotian District", "Qingchuan County", "Wangcang County", "Jiange County", "Cangxi County", "Shizhong District", "Other"] }, { "name": "Suining", "area": ["Chuanshan District", "Anju District", "Shehong County", "Pengxi County", "Daying County", "Other"] }, { "name": "Neijiang", "area": ["Shizhong District", "Dongxing District", "Zizhong County", "Longchang County", "Weiyuan County", "Other"] }, { "name": "Leshan", "area": ["Shizhong District", "Wutongqiao District", "Shawan District", "Jinkouhe District", "Emeishan City", "Jiajiang County", "Jingyan County", "Qianwei County", "Muchuan County", "Mabian Yi Autonomous County", "Yibian Yi Autonomous County", "Other"] }, { "name": "Nanchong", "area": ["Shunqing District", "Gaoping District", "Jialing District", "Langzhong City", "Yingshan County", "Peng'an County", "Yilong County", "Nanbu County", "Xichong County", "Other"] }, { "name": "Meishan", "area": ["Dongpo District", "Renshou County", "Pengshan County", "Hongya County", "Danling County", "Qingshen County", "Other"] }, { "name": "Yibin", "area": ["Cuiping District", "Yibin County", "Xingwen County", "Nanxi County", "Gong County", "Changning County", "Gao County", "Jiang'an County", "Junlian County", "Pingshan County", "Other"] }, { "name": "Guang'an", "area": ["Guang'an District", "Huaying City", "Yuechi County", "Linshui County", "Wusheng County", "Other"] }, { "name": "Dazhou", "area": ["Tongchuan District", "Wanyuan City", "Daxian", "Qu County", "Xuanhan County", "Kaijiang County", "Dazhu County", "Other"] }, { "name": "Yaan", "area": ["Yucheng District", "Lushan County", "Shimian County", "Mingshan County", "Tianquan County", "Yingjing County", "Baoxing County", "Hanyuan County", "Other"] }, { "name": "Bazhong", "area": ["Bazhou District", "Nanjiang County", "Pingchang County", "Tongjiang County", "Other"] }, { "name": "Ziyang", "area": ["Yanjiang District", "Jianyang City", "Anyue County", "Lezhi County", "Other"] }, { "name": "Aba Tibetan and Qiang Autonomous Prefecture", "area": ["Malcom County", "Jiuzhaigou County", "Hongyuan County", "Wenchuan County", "Aba County", "Li County", "Ruoergai County", "Xiaojin County", "Heishui County", "Jinchuan County", "Songpan County", "Xiangtang County", "Mao County", "Other"] }, { "name": "Ganzi Tibetan Autonomous Prefecture", "area": ["Kangding County", "Danba County", "Luhuo County", "Jiulong County", "Ganzi County", "Yajiang County", "Xinlong County", "Daofu County", "Baiyu County", "Litang County", "Dege County", "Xiangcheng County", "Shiqu County", "Daocheng County", "Seda County", "Batang County", "Luding County", "Derong County", "Other"] }, { "name": "Liangshan Yi Autonomous Prefecture", "area": ["Xichang City", "Meigu County", "Zhaojue County", "Jinyang County", "Ganluo County", "Butuo County", "Leibo County", "Puge County", "Ningnan County", "Xide County", "Huidong County", "Yuexi County", "Huili County", "Yanyuan County", "Dechang County", "Mianning County", "Muli Tibetan Autonomous County", "Other"] }, { "name": "Other", "area": ["Other"] }]
+	            "name": "Sichuan", "city": [{ "name": "Chengdu", "area": ["Qingyang District", "Jinjiang District", "Jinniu District", "Wuhou District", "Chenghua District", "Longquanyi District", "Qingbaijiang District", "Xindu District", "Wenjiang District", "Dujiangyan City", "Pengzhou City", "Qionglai City", "Chongzhou City", "Jintang County", "Pi County", "Xinjin County", "Shuangliu County", "Pujiang County", "Dayi County", "Other"] }, { "name": "Zigong", "area": ["Daan District", "Ziliujing District", "Gongjing District", "Yantan District", "Rong County", "Fushun County", "Other"] }, { "name": "Panzhihua", "area": ["Renhe District", "Miyi County", "Yanbian County", "Eastern District", "Western District", "Other"] }, { "name": "Luzhou", "area": ["Jiangyang District", "Naxi District", "Longmatan District", "Lu County", "Hejiang County", "Xuyong County", "Gulin County", "Other"] }, { "name": "Deyang", "area": ["Jingyang District", "Guanghan City", "Shifang City", "Mianzhu City", "Luojiang County", "Zhongjiang County", "Other"] }, { "name": "Mianyang", "area": ["Fucheng District", "Youxian District", "Jiangyou City", "Yanting County", "Santai County", "Pingwu County", "An County", "Zitong County", "Beichuan Qiang Autonomous County", "Other"] }, { "name": "Guangyuan", "area": ["Yuanba District", "Chaotian District", "Qingchuan County", "Wangcang County", "Jiange County", "Cangxi County", "Shizhong District", "Other"] }, { "name": "Suining", "area": ["Chuanshan District", "Anju District", "Shehong County", "Pengxi County", "Daying County", "Other"] }, { "name": "Neijiang", "area": ["Shizhong District", "Dongxing District", "Zizhong County", "Longchang County", "Weiyuan County", "Other"] }, { "name": "Leshan", "area": ["Shizhong District", "Wutongqiao District", "Shawan District", "Jinkouhe District", "Emeishan City", "Jiajiang County", "Jingyan County", "Qianwei County", "Muchuan County", "Mabian Yi Autonomous County", "Yibian Yi Autonomous County", "Other"] }, { "name": "Nanchong", "area": ["Shunqing District", "Gaoping District", "Jialing District", "Langzhong City", "Yingshan County", "Peng'an County", "Yilong County", "Nanbu County", "Xichong County", "Other"] }, { "name": "Meishan", "area": ["Dongpo District", "Renshou County", "Pengshan County", "Hongya County", "Danling County", "Qingshen County", "Other"] }, { "name": "Yibin", "area": ["Cuiping District", "Yibin County", "Xingwen County", "Nanxi County", "Gong County", "Changning County", "Gao County", "Jiang'an County", "Junlian County", "Pingshan County", "Other"] }, { "name": "Guang'an", "area": ["Guang'an District", "Huaying City", "Yuechi County", "Linshui County", "Wusheng County", "Other"] }, { "name": "Dazhou", "area": ["Tongchuan District", "Wanyuan City", "Daxian", "Qu County", "Xuanhan County", "Kaijiang County", "Dazhu County", "Other"] }, { "name": "Yaan", "area": ["Yucheng District", "Lushan County", "Shimian County", "Mingshan County", "Tianquan County", "Yingjing County", "Baoxing County", "Hanyuan County", "Other"] }, { "name": "Bazhong", "area": ["Bazhou District", "Nanjiang County", "Pingchang County", "Tongjiang County", "Other"] }, { "name": "Ziyang", "area": ["Yanjiang District", "Jianyang City", "Anyue County", "Lezhi County", "Other"] }, { "name": "Aba Tibetan and Qiang Autonomous Prefecture", "area": ["Malcom County", "Jiuzhaigou County", "Hongyuan County", "Wenchuan County", "Aba County", "Li County", "Ruoergai County", "Xiaojin County", "Heishui County", "Jinchuan County", "Songpan County", "Xiangtang County", "Mao County", "Other"] }, { "name": "Ganzi Tibetan Autonomous Prefecture", "area": ["Kangding County", "Danba County", "Luhuo County", "Jiulong County", "Ganzi County", "Yajiang County", "Xinlong County", "Daofu County", "Baiyu County", "Litang County", "Dege County", "Xiangcheng County", "Shiqu County", "Daocheng County", "Seda County", "Batang County", "Luding County", "Derong County", "Other"] }, { "name": "Liangshan Yi Autonomous Prefecture", "area": ["Xichang City", "Meigu County", "Zhaojue County", "Jinyang County", "Ganluo County", "Butuo County", "Leibo County", "Puge County", "Ningnan County", "Xide County", "Huidong County", "Yuexi County", "Huili County", "Yanyuan County", "Dechang County", "Mianning County", "Muli Tibetan Autonomous County", "Other"] }, { "name": "Other", "area": ["Other"] }]
 	}, {
-	    "name": "Guizhou", "city": [{ "name": "Guiyang", "area": ["Nanming District", "Yunyan District", "Huaxi District", "Wudang District", "Baiyun District", "Xiaohe District", "Qingzhen City", "Kaiyang County", "Xiuwen County", "Xifeng County", "Other"] }, { "name": "Liupanshui", "area": ["Zhongshan District", "Shuicheng County", "Pan County", "Liuzhite District", "Other"] }, { "name": "Zunyi", "area": ["Honghuagang District", "Huichuan District", "Chishui City", "Renhuai City", "Zunyi County", "Suiyang County", "Tongzi County", "Xishui County", "Fenggang County", "Zheng'an County", "Yuqing County", "Meitan County", "Daozhen Gelao and Miao Autonomous County", "Wuchuan Gelao and Miao Autonomous County", "Other"] }, { "name": "Anshun", "area": ["Xixiu District", "Puding County", "Pingba County", "Zhenning Buyi and Miao Autonomous County", "Ziyun Buyi and Miao Autonomous County", "Guanling Buyi and Miao Autonomous County", "Other"] }, { "name": "Tongren Area", "area": ["Tongren City", "Dejiang County", "Jiangkou County", "Sinan County", "Shiqian County", "Yuping Dong Autonomous County", "Songtao Miao Autonomous County", "Yinjiang Tujia and Miao Autonomous County", "Yanhe Tujia Autonomous County", "Wanshan Special Area", "Other"] }, { "name": "Bijie Area", "area": ["Bijie City", "Qianxi County", "Dafang County", "Zhijin County", "Jinsha County", "Hezhang County", "Nayong County", "Weining Yi Hui and Miao Autonomous County", "Other"] }, { "name": "Southwest Qian Buyi and Miao Autonomous Prefecture", "area": ["Xingyi City", "Wangmo County", "Xingren County", "Pu'an County", "Ceheng County", "Qinglong County", "Zhenfeng County", "Anlong County", "Other"] }, { "name": "Southeast Qian Miao and Dong Autonomous Prefecture", "area": ["Kaili City", "Shibing County", "Congjiang County", "Jinping County", "Zhenyuan County", "Majiang County", "Taijiang County", "Tianzhu County", "Huangping County", "Rongjiang County", "Jianhe County", "Sansui County", "Leishan County", "Liping County", "Cengong County", "Danzhai County", "Other"] }, { "name": "South Qian Buyi and Miao Autonomous Prefecture", "area": ["Duyun City", "Fuquan City", "Guiding County", "Huishui County", "Luodian County", "Chun'an County", "Libo County", "Longli County", "Pingtang County", "Changshun County", "Dushan County", "Sandu Shui Autonomous County", "Other"] }, { "name": "Other", "area": ["Other"] }]
+	            "name": "Guizhou", "city": [{ "name": "Guiyang", "area": ["Nanming District", "Yunyan District", "Huaxi District", "Wudang District", "Baiyun District", "Xiaohe District", "Qingzhen City", "Kaiyang County", "Xiuwen County", "Xifeng County", "Other"] }, { "name": "Liupanshui", "area": ["Zhongshan District", "Shuicheng County", "Pan County", "Liuzhite District", "Other"] }, { "name": "Zunyi", "area": ["Honghuagang District", "Huichuan District", "Chishui City", "Renhuai City", "Zunyi County", "Suiyang County", "Tongzi County", "Xishui County", "Fenggang County", "Zheng'an County", "Yuqing County", "Meitan County", "Daozhen Gelao and Miao Autonomous County", "Wuchuan Gelao and Miao Autonomous County", "Other"] }, { "name": "Anshun", "area": ["Xixiu District", "Puding County", "Pingba County", "Zhenning Buyi and Miao Autonomous County", "Ziyun Buyi and Miao Autonomous County", "Guanling Buyi and Miao Autonomous County", "Other"] }, { "name": "Tongren Area", "area": ["Tongren City", "Dejiang County", "Jiangkou County", "Sinan County", "Shiqian County", "Yuping Dong Autonomous County", "Songtao Miao Autonomous County", "Yinjiang Tujia and Miao Autonomous County", "Yanhe Tujia Autonomous County", "Wanshan Special Area", "Other"] }, { "name": "Bijie Area", "area": ["Bijie City", "Qianxi County", "Dafang County", "Zhijin County", "Jinsha County", "Hezhang County", "Nayong County", "Weining Yi Hui and Miao Autonomous County", "Other"] }, { "name": "Southwest Qian Buyi and Miao Autonomous Prefecture", "area": ["Xingyi City", "Wangmo County", "Xingren County", "Pu'an County", "Ceheng County", "Qinglong County", "Zhenfeng County", "Anlong County", "Other"] }, { "name": "Southeast Qian Miao and Dong Autonomous Prefecture", "area": ["Kaili City", "Shibing County", "Congjiang County", "Jinping County", "Zhenyuan County", "Majiang County", "Taijiang County", "Tianzhu County", "Huangping County", "Rongjiang County", "Jianhe County", "Sansui County", "Leishan County", "Liping County", "Cengong County", "Danzhai County", "Other"] }, { "name": "South Qian Buyi and Miao Autonomous Prefecture", "area": ["Duyun City", "Fuquan City", "Guiding County", "Huishui County", "Luodian County", "Chun'an County", "Libo County", "Longli County", "Pingtang County", "Changshun County", "Dushan County", "Sandu Shui Autonomous County", "Other"] }, { "name": "Other", "area": ["Other"] }]
 	}, {
-	    "name": "Yunnan", "city": [{ "name": "Kunming", "area": ["Panlong District", "Wuhua District", "Guandu District", "Xishan District", "Dongchuan District", "Anning City", "Chenggong County", "Jinning County", "Fumin County", "Yiliang County", "Songming County", "Shilin Yi Autonomous County", "Luquan Yi and Miao Autonomous County", "Xundian Hui and Yi Autonomous County", "Other"] }, { "name": "Qujing", "area": ["Qilin District", "Xuanwei City", "Malong County", "Zhanyi County", "Fuyuan County", "Luoping County", "Shizong County", "Luliang County", "Huize County", "Other"] }, { "name": "Yuxi", "area": ["Hongta District", "Jiangchuan County", "Chengjiang County", "Tonghai County", "Huaning County", "Yimen County", "Eshan Yi Autonomous County", "Xinping Yi and Dong Autonomous County", "Yuanjiang Hani Dai and Yi Autonomous County", "Other"] }, { "name": "Baoshan", "area": ["Longyang District", "Shidian County", "Tengchong County", "Longling County", "Changning County", "Other"] }, { "name": "Zhaotong", "area": ["Zhaoyang District", "Ludian County", "Qiaojia County", "Yanjin County", "Daguan County", "Yongshan County", "Suijiang County", "Zhenxiong County", "Yiliang County", "Weixin County", "Shuifu County", "Other"] }, { "name": "Lijiang", "area": ["Gucheng District", "Yongsheng County", "Huaping County", "Yulong Naxi Autonomous County", "Ninglang Yi Autonomous County", "Other"] }, { "name": "Pu'er", "area": ["Simao District", "Pu'er Hani and Yi Autonomous County", "Mojiang Hani Autonomous County", "Jingdong Yi Autonomous County", "Jinggu Yi and Dai Autonomous County", "Zhenuan Yi Hani ad Lahu Autonomous County", "Jiangcheng Hani and Yi Autonomous County", "Menglian Dai Lahu and Wa Autonomous County", "Lancang Lagu Autonomous County", "Ximeng Wa Autonomous County", "Other"] }, { "name": "Lincang", "area": ["Linxiang District", "Fengqing County", "Yun County", "Yongde County", "Zhenkang County", "Shuangjiang Lahu Wa Blang and Dai Autonomous County", "Gengma Dai and Wa Autonomous County", "Cangyuan Wa Autonomous County", "Other"] }, { "name": "Dehong Dai and Jingpo Autonomous Prefecture", "area": ["Luxi City", "Ruili City", "Lianghe County", "Yingjiang County", "Longchuan County", "Other"] }, { "name": "Nujiang Lisu Autonomous Prefecture", "area": ["Lushui County", "Fugong County", "Gongshan Dulong and Nu Autonomous County", "Lanping Baizu and Pumi Autonomous County", "Other"] }, { "name": "Diqing Tibetan Autonomous Prefecture", "area": ["Shangri-La County", "Deqin County", "Weixi Lisu Autonomous County", "Other"] }, { "name": "Dali Bai Autonomous Prefecture", "area": ["Dali City", "Xiangyun County", "Binchuan County", "Midu County", "Yongping County", "Yunlong County", "Eryuan County", "Jianchuan County", "Heqing County", "Yangbi Yi Autonomous County", "Nanjian Yi Autonomous County", "Weishan Yi and Hui Autonomous County", "Other"] }, { "name": "Chuxiong Yi Autonomous Prefecture", "area": ["Chuxiong City", "Shuangbai County", "Muding County", "Nanhua County", "Yao'an County", "Dayao County", "Yongren County", "Yuanmou County", "Wuding County", "Lufeng County", "Other"] }, { "name": "Honghe Hani and Yi Autonomous Prefecture", "area": ["Mengzi County", "Gejiu City", "Kaiyuan City", "LVchun County", "Jianshui County", "Shiping County", "Mile County", "Luxi County", "Yuanyang County", "Honghe County", "Jinping Miao Yao and Dai Autonomous County", "Hekou Yao Autonomous County", "Pingbian Miao Autonomous County", "Other"] }, { "name": "Wenshan Zhuang and Miao Autonomous Prefecture", "area": ["Wenshan County", "Yanshan County", "Xichou County", "Malipo County", "Maguan County", "Qiubei County", "Guangnan County", "Funing County", "Other"] }, { "name": "Xishuangbanna Dai Autonomous Prefecture", "area": ["Jinghong City", "Menghai County", "Mengla County", "Other"] }, { "name": "Other", "area": ["Other"] }]
+	            "name": "Yunnan", "city": [{ "name": "Kunming", "area": ["Panlong District", "Wuhua District", "Guandu District", "Xishan District", "Dongchuan District", "Anning City", "Chenggong County", "Jinning County", "Fumin County", "Yiliang County", "Songming County", "Shilin Yi Autonomous County", "Luquan Yi and Miao Autonomous County", "Xundian Hui and Yi Autonomous County", "Other"] }, { "name": "Qujing", "area": ["Qilin District", "Xuanwei City", "Malong County", "Zhanyi County", "Fuyuan County", "Luoping County", "Shizong County", "Luliang County", "Huize County", "Other"] }, { "name": "Yuxi", "area": ["Hongta District", "Jiangchuan County", "Chengjiang County", "Tonghai County", "Huaning County", "Yimen County", "Eshan Yi Autonomous County", "Xinping Yi and Dong Autonomous County", "Yuanjiang Hani Dai and Yi Autonomous County", "Other"] }, { "name": "Baoshan", "area": ["Longyang District", "Shidian County", "Tengchong County", "Longling County", "Changning County", "Other"] }, { "name": "Zhaotong", "area": ["Zhaoyang District", "Ludian County", "Qiaojia County", "Yanjin County", "Daguan County", "Yongshan County", "Suijiang County", "Zhenxiong County", "Yiliang County", "Weixin County", "Shuifu County", "Other"] }, { "name": "Lijiang", "area": ["Gucheng District", "Yongsheng County", "Huaping County", "Yulong Naxi Autonomous County", "Ninglang Yi Autonomous County", "Other"] }, { "name": "Pu'er", "area": ["Simao District", "Pu'er Hani and Yi Autonomous County", "Mojiang Hani Autonomous County", "Jingdong Yi Autonomous County", "Jinggu Yi and Dai Autonomous County", "Zhenuan Yi Hani ad Lahu Autonomous County", "Jiangcheng Hani and Yi Autonomous County", "Menglian Dai Lahu and Wa Autonomous County", "Lancang Lagu Autonomous County", "Ximeng Wa Autonomous County", "Other"] }, { "name": "Lincang", "area": ["Linxiang District", "Fengqing County", "Yun County", "Yongde County", "Zhenkang County", "Shuangjiang Lahu Wa Blang and Dai Autonomous County", "Gengma Dai and Wa Autonomous County", "Cangyuan Wa Autonomous County", "Other"] }, { "name": "Dehong Dai and Jingpo Autonomous Prefecture", "area": ["Luxi City", "Ruili City", "Lianghe County", "Yingjiang County", "Longchuan County", "Other"] }, { "name": "Nujiang Lisu Autonomous Prefecture", "area": ["Lushui County", "Fugong County", "Gongshan Dulong and Nu Autonomous County", "Lanping Baizu and Pumi Autonomous County", "Other"] }, { "name": "Diqing Tibetan Autonomous Prefecture", "area": ["Shangri-La County", "Deqin County", "Weixi Lisu Autonomous County", "Other"] }, { "name": "Dali Bai Autonomous Prefecture", "area": ["Dali City", "Xiangyun County", "Binchuan County", "Midu County", "Yongping County", "Yunlong County", "Eryuan County", "Jianchuan County", "Heqing County", "Yangbi Yi Autonomous County", "Nanjian Yi Autonomous County", "Weishan Yi and Hui Autonomous County", "Other"] }, { "name": "Chuxiong Yi Autonomous Prefecture", "area": ["Chuxiong City", "Shuangbai County", "Muding County", "Nanhua County", "Yao'an County", "Dayao County", "Yongren County", "Yuanmou County", "Wuding County", "Lufeng County", "Other"] }, { "name": "Honghe Hani and Yi Autonomous Prefecture", "area": ["Mengzi County", "Gejiu City", "Kaiyuan City", "LVchun County", "Jianshui County", "Shiping County", "Mile County", "Luxi County", "Yuanyang County", "Honghe County", "Jinping Miao Yao and Dai Autonomous County", "Hekou Yao Autonomous County", "Pingbian Miao Autonomous County", "Other"] }, { "name": "Wenshan Zhuang and Miao Autonomous Prefecture", "area": ["Wenshan County", "Yanshan County", "Xichou County", "Malipo County", "Maguan County", "Qiubei County", "Guangnan County", "Funing County", "Other"] }, { "name": "Xishuangbanna Dai Autonomous Prefecture", "area": ["Jinghong City", "Menghai County", "Mengla County", "Other"] }, { "name": "Other", "area": ["Other"] }]
 	}, {
-	    "name": "Tibet", "city": [{ "name": "Lhasa", "area": ["Chengguan District", "Linzhou County", "Dangxiong County", "Nimu County", "Qushui County", "Duilongdeqing County", "Dazi County", "Mozhugongka County", "Other"] }, { "name": "Naqu Area", "area": ["Naqu County", "Jiali County", "Biru county", "Nierong County", "Anduo County", "Shenzha County", "Suo County", "Bange County", "Baqing County", "Nima County", "Other"] }, { "name": "Changdu Area", "area": ["Changdu County", "Jiangda County", "Gongjue County", "Leiwuqi County", "Dingqing County", "Chaya County", "Basu County", "Zuogong County", "Mangkang County", "Luolong County", "Bianba County", "Other"] }, { "name": "Linzhi Area", "area": ["Linzhi County", "Gongbujiangda County", "Milin County", "Medog County", "Bomi County", "Chayu County", "Lang County", "Other"] }, { "name": "Shannan Area", "area": ["Naidong County", "Chanang County", "Gongga County", "Sangri County", "Qiongjie County", "Qusong County", "Cuomei County", "Loza County", "Jiacha County", "Longzi County", "Cuona County", "Langkazi County", "Other"] }, { "name": "Shigatse Area", "area": ["Shigatse City", "Nanmling County", "Jiangzi County", "Dingri County", "Sag'ya County", "Lazi County", "Angren County", "Xietongmen County", "Bailang County", "Renbu County", "Kangma County", "Dingjie County", "Zhongba County", "Yadong County", "Jilong County", "Nyalam County", "Saga County", "Gamba County", "Other"] }, { "name": "Ali area", "area": ["Gar County", "Pulan County", "Zanda County", "Ritu County", "Geji County", "Gerze county", "Coqen County", "Other"] }, { "name": "Other", "area": ["Other"] }]
+	            "name": "Tibet", "city": [{ "name": "Lhasa", "area": ["Chengguan District", "Linzhou County", "Dangxiong County", "Nimu County", "Qushui County", "Duilongdeqing County", "Dazi County", "Mozhugongka County", "Other"] }, { "name": "Naqu Area", "area": ["Naqu County", "Jiali County", "Biru county", "Nierong County", "Anduo County", "Shenzha County", "Suo County", "Bange County", "Baqing County", "Nima County", "Other"] }, { "name": "Changdu Area", "area": ["Changdu County", "Jiangda County", "Gongjue County", "Leiwuqi County", "Dingqing County", "Chaya County", "Basu County", "Zuogong County", "Mangkang County", "Luolong County", "Bianba County", "Other"] }, { "name": "Linzhi Area", "area": ["Linzhi County", "Gongbujiangda County", "Milin County", "Medog County", "Bomi County", "Chayu County", "Lang County", "Other"] }, { "name": "Shannan Area", "area": ["Naidong County", "Chanang County", "Gongga County", "Sangri County", "Qiongjie County", "Qusong County", "Cuomei County", "Loza County", "Jiacha County", "Longzi County", "Cuona County", "Langkazi County", "Other"] }, { "name": "Shigatse Area", "area": ["Shigatse City", "Nanmling County", "Jiangzi County", "Dingri County", "Sag'ya County", "Lazi County", "Angren County", "Xietongmen County", "Bailang County", "Renbu County", "Kangma County", "Dingjie County", "Zhongba County", "Yadong County", "Jilong County", "Nyalam County", "Saga County", "Gamba County", "Other"] }, { "name": "Ali area", "area": ["Gar County", "Pulan County", "Zanda County", "Ritu County", "Geji County", "Gerze county", "Coqen County", "Other"] }, { "name": "Other", "area": ["Other"] }]
 	}, {
-	    "name": "Shaanxi", "city": [{ "name": "Xi'an", "area": ["Lianhu District", "New Urban Area", "Beilin District", "Yanta District", "Baqiao District", "Weiyang District", "Yanliang District", "Lintong District", "Chang'an District", "Gaoling County", "Lantian County", "Hu County", "Zhouzhi County", "Other"] }, { "name": "Tongchuan", "area": ["Yaozhou District", "Wangyi District", "Yintai District", "Yijun County", "Other"] }, { "name": "Baoji", "area": ["Weibin District", "Jintai District", "Chencang District", "Qishan County", "Fengxiang County", "Long County", "Taibai County", "Linyou County", "Fufeng County", "Qianyang County", "Mei County", "Feng County", "Other"] }, { "name": "Xianyang", "area": ["Qindu District", "Weicheng District", "Yangling District", "Xingping City", "Liquan County", "Jingyang County", "Yongshou County", "Sanyuan County", "Bin County", "Xunyi County", "Changwu County", "Qian County", "Wugong County", "Chunhua County", "Other"] }, { "name": "Weinan", "area": ["Linyi District", "Hancheng City", "Huayin City", "Pucheng County", "Tongguan County", "Baishui County", "Chengcheng County", "Hua County", "Heyang County", "Fuping County", "Dali County", "Other"] }, { "name": "Yan'an", "area": ["Baota District", "Ansai County", "Luochuan County", "Zichang County", "Huangling County", "Yanchuan County", "Fu County", "Yanchang County", "Ganquan County", "Yichuan County", "Zhidan County", "Huanglong County", "Wuqi County", "Other"] }, { "name": "Hanzhong", "area": ["Hantai District", "Liuba County", "Zhenba County", "Chenggu County", "Nanzheng County", "Yang County", "Ningqiang County", "Foping County", "Mian County", "Xixiang County", "Lueyang County", "Other"] }, { "name": "Yulin", "area": ["Yuyang District", "Qingjian County", "Suide County", "Shenmu County", "Jia County", "Fugu County", "Zizhou County", "Jingbian County", "Hengshan County", "Mizhi County", "Wubao County", "Dingbian County", "Other"] }, { "name": "Ankang", "area": ["Hanbin District", "Ziyang County", "Langao County", "Xunyang County", "Zhenping County", "Pingli County", "Shiquan County", "Ningshan County", "Baihe County", "Hanyin County", "Other"] }, { "name": "Shangluo", "area": ["Shangzhou District", "Zhen'an County", "Shanyang County", "Luonan County", "Shangnan County", "Danfeng County", "Zhashui County", "Other"] }, { "name": "Other", "area": ["Other"] }]
+	            "name": "Shaanxi", "city": [{ "name": "Xi'an", "area": ["Lianhu District", "New Urban Area", "Beilin District", "Yanta District", "Baqiao District", "Weiyang District", "Yanliang District", "Lintong District", "Chang'an District", "Gaoling County", "Lantian County", "Hu County", "Zhouzhi County", "Other"] }, { "name": "Tongchuan", "area": ["Yaozhou District", "Wangyi District", "Yintai District", "Yijun County", "Other"] }, { "name": "Baoji", "area": ["Weibin District", "Jintai District", "Chencang District", "Qishan County", "Fengxiang County", "Long County", "Taibai County", "Linyou County", "Fufeng County", "Qianyang County", "Mei County", "Feng County", "Other"] }, { "name": "Xianyang", "area": ["Qindu District", "Weicheng District", "Yangling District", "Xingping City", "Liquan County", "Jingyang County", "Yongshou County", "Sanyuan County", "Bin County", "Xunyi County", "Changwu County", "Qian County", "Wugong County", "Chunhua County", "Other"] }, { "name": "Weinan", "area": ["Linyi District", "Hancheng City", "Huayin City", "Pucheng County", "Tongguan County", "Baishui County", "Chengcheng County", "Hua County", "Heyang County", "Fuping County", "Dali County", "Other"] }, { "name": "Yan'an", "area": ["Baota District", "Ansai County", "Luochuan County", "Zichang County", "Huangling County", "Yanchuan County", "Fu County", "Yanchang County", "Ganquan County", "Yichuan County", "Zhidan County", "Huanglong County", "Wuqi County", "Other"] }, { "name": "Hanzhong", "area": ["Hantai District", "Liuba County", "Zhenba County", "Chenggu County", "Nanzheng County", "Yang County", "Ningqiang County", "Foping County", "Mian County", "Xixiang County", "Lueyang County", "Other"] }, { "name": "Yulin", "area": ["Yuyang District", "Qingjian County", "Suide County", "Shenmu County", "Jia County", "Fugu County", "Zizhou County", "Jingbian County", "Hengshan County", "Mizhi County", "Wubao County", "Dingbian County", "Other"] }, { "name": "Ankang", "area": ["Hanbin District", "Ziyang County", "Langao County", "Xunyang County", "Zhenping County", "Pingli County", "Shiquan County", "Ningshan County", "Baihe County", "Hanyin County", "Other"] }, { "name": "Shangluo", "area": ["Shangzhou District", "Zhen'an County", "Shanyang County", "Luonan County", "Shangnan County", "Danfeng County", "Zhashui County", "Other"] }, { "name": "Other", "area": ["Other"] }]
 	}, {
-	    "name": "Gansu", "city": [{ "name": "Lanzhou", "area": ["Chengguan District", "Qilihe District", "Xigu District", "Anning District", "Honggu District", "Yongdeng County", "Gaolan County", "Yuzhong County", "Other"] }, { "name": "Jiayuguan", "area": ["Jiayuguan City", "Other"] }, { "name": "Jinchang", "area": ["Jinchuan District", "Yongchang County", "Other"] }, { "name": "Baiyin", "area": ["Baiyin area", "Pingchuan District", "Jingyuan County", "Huining County", "Jingtai County", "Other"] }, { "name": "Tianshui", "area": ["Qingshui County", "Qin'an County", "Gangu County", "Wushan County", "Zhangjiachuan Hui Autonomous County", "Beidao District", "Qincheng District", "Other"] }, { "name": "Wuwei", "area": ["Liangzhou District", "Minqin County", "Gulang County", "Tianzhu Tibetan Autonomous County", "Other"] }, { "name": "Jiuquan", "area": ["Suzhou District", "Yumen City", "Dunhuang City", "Jinta County", "Subei Mongolian Autonomous County", "Akesai Kazakh Autonomous County", "Anxi County", "Other"] }, { "name": "Zhangye", "area": ["Ganzhou District", "Minle County", "Linze County", "Gaotai County", "Shandan County", "Sunan Yugu Autonomous County", "Other"] }, { "name": "Qingyang", "area": ["Xifeng District", "Qingcheng County", "Huan County", "Huachi County", "Heshui County", "Zhengning County", "Ning County", "Zhenyuan County", "Other"] }, { "name": "Pingliang", "area": ["Kongtong District", "Jingchuan County", "Lingtai County", "Chongxin County", "Huating County", "Zhuanglang County", "Jingning County", "Other"] }, { "name": "Dingxi", "area": ["Anding District", "Tongwei County", "Lintao County", "Zhang County", "Min County", "Weiyuan County", "Longxi County", "Other"] }, { "name": "Longnan", "area": ["Wudu District", "Cheng County", "Tanchang County", "Kang County", "Wen County", "Xihe County", "Li County", "Liangdang County", "Hui County", "Other"] }, { "name": "Linxia Hui Autonomous Prefecture", "area": ["Linxia City", "Linxia County", "Kangle County", "Yongjing County", "Guanghe County", "Hezheng County", "Dongxiang Autonomous County", "Jishishan Baoan Dongxiang Sala Autonomous County", "Other"] }, { "name": "Gannan Tibetan Autonomous Prefecture", "area": ["Hezuo City", "Lintan County", "Zhuoni County", "Zhouqu County", "Diebu County", "Maqu County", "Luqu County", "Xiahe County", "Other"] }, { "name": "Other", "area": ["Other"] }]
+	            "name": "Gansu", "city": [{ "name": "Lanzhou", "area": ["Chengguan District", "Qilihe District", "Xigu District", "Anning District", "Honggu District", "Yongdeng County", "Gaolan County", "Yuzhong County", "Other"] }, { "name": "Jiayuguan", "area": ["Jiayuguan City", "Other"] }, { "name": "Jinchang", "area": ["Jinchuan District", "Yongchang County", "Other"] }, { "name": "Baiyin", "area": ["Baiyin area", "Pingchuan District", "Jingyuan County", "Huining County", "Jingtai County", "Other"] }, { "name": "Tianshui", "area": ["Qingshui County", "Qin'an County", "Gangu County", "Wushan County", "Zhangjiachuan Hui Autonomous County", "Beidao District", "Qincheng District", "Other"] }, { "name": "Wuwei", "area": ["Liangzhou District", "Minqin County", "Gulang County", "Tianzhu Tibetan Autonomous County", "Other"] }, { "name": "Jiuquan", "area": ["Suzhou District", "Yumen City", "Dunhuang City", "Jinta County", "Subei Mongolian Autonomous County", "Akesai Kazakh Autonomous County", "Anxi County", "Other"] }, { "name": "Zhangye", "area": ["Ganzhou District", "Minle County", "Linze County", "Gaotai County", "Shandan County", "Sunan Yugu Autonomous County", "Other"] }, { "name": "Qingyang", "area": ["Xifeng District", "Qingcheng County", "Huan County", "Huachi County", "Heshui County", "Zhengning County", "Ning County", "Zhenyuan County", "Other"] }, { "name": "Pingliang", "area": ["Kongtong District", "Jingchuan County", "Lingtai County", "Chongxin County", "Huating County", "Zhuanglang County", "Jingning County", "Other"] }, { "name": "Dingxi", "area": ["Anding District", "Tongwei County", "Lintao County", "Zhang County", "Min County", "Weiyuan County", "Longxi County", "Other"] }, { "name": "Longnan", "area": ["Wudu District", "Cheng County", "Tanchang County", "Kang County", "Wen County", "Xihe County", "Li County", "Liangdang County", "Hui County", "Other"] }, { "name": "Linxia Hui Autonomous Prefecture", "area": ["Linxia City", "Linxia County", "Kangle County", "Yongjing County", "Guanghe County", "Hezheng County", "Dongxiang Autonomous County", "Jishishan Baoan Dongxiang Sala Autonomous County", "Other"] }, { "name": "Gannan Tibetan Autonomous Prefecture", "area": ["Hezuo City", "Lintan County", "Zhuoni County", "Zhouqu County", "Diebu County", "Maqu County", "Luqu County", "Xiahe County", "Other"] }, { "name": "Other", "area": ["Other"] }]
 	}, {
-	    "name": "Qinghai", "city": [{ "name": "Xining", "area": ["Chengzhong District", "Chengdong District", "Chengxi District", "Chengbei District", "Huangyuan County", "Huangzhong County", "Datong Hui Nationality Autonomous County", "Other"] }, { "name": "Haidong area", "area": ["Pingan County", "Ledu County", "Minhe Hui and Tu Autonomous County", "Huzhu Tu Autonomous County", "Hualong Hui Autonomous County", "Xunhua Sala Autonomous County", "Other"] }, { "name": "Haibei Tibetan Autonomous Prefecture", "area": ["Haiyan County", "Qilian County", "Gangcha County", "Menyuan Hui Autonomous County", "Other"] }, { "name": "Hainan Tibetan Autonomous Prefecture", "area": ["Gonghe County", "Tongde County", "Guide County", "Xinghai County", "Guinan County", "Other"] }, { "name": "Huangnan Tibetan Autonomous Prefecture", "area": ["Tongren County", "Jianzha County", "Zeku County", "Henan Mongolian Autonomous County", "Other"] }, { "name": "Guoluo Tibetan Autonomous Prefecture", "area": ["Maqin County", "Banma County", "Gande County", "Dari County", "Jiuzhi County", "Maduo County", "Other"] }, { "name": "Yushu Tibetan Autonomous Prefecture", "area": ["Yushu County", "Zaduo County", "Chengduo County", "Zhiduo County", "Nangqian County", "Qumalai County", "Other"] }, { "name": "Haixi Mongolian and Tibetan Autonomous Prefecture", "area": ["Delingha City", "Golmud City", "Wulan County", "Dulan County", "Tianjun County", "Other"] }, { "name": "Other", "area": ["Other"] }]
+	            "name": "Qinghai", "city": [{ "name": "Xining", "area": ["Chengzhong District", "Chengdong District", "Chengxi District", "Chengbei District", "Huangyuan County", "Huangzhong County", "Datong Hui Nationality Autonomous County", "Other"] }, { "name": "Haidong area", "area": ["Pingan County", "Ledu County", "Minhe Hui and Tu Autonomous County", "Huzhu Tu Autonomous County", "Hualong Hui Autonomous County", "Xunhua Sala Autonomous County", "Other"] }, { "name": "Haibei Tibetan Autonomous Prefecture", "area": ["Haiyan County", "Qilian County", "Gangcha County", "Menyuan Hui Autonomous County", "Other"] }, { "name": "Hainan Tibetan Autonomous Prefecture", "area": ["Gonghe County", "Tongde County", "Guide County", "Xinghai County", "Guinan County", "Other"] }, { "name": "Huangnan Tibetan Autonomous Prefecture", "area": ["Tongren County", "Jianzha County", "Zeku County", "Henan Mongolian Autonomous County", "Other"] }, { "name": "Guoluo Tibetan Autonomous Prefecture", "area": ["Maqin County", "Banma County", "Gande County", "Dari County", "Jiuzhi County", "Maduo County", "Other"] }, { "name": "Yushu Tibetan Autonomous Prefecture", "area": ["Yushu County", "Zaduo County", "Chengduo County", "Zhiduo County", "Nangqian County", "Qumalai County", "Other"] }, { "name": "Haixi Mongolian and Tibetan Autonomous Prefecture", "area": ["Delingha City", "Golmud City", "Wulan County", "Dulan County", "Tianjun County", "Other"] }, { "name": "Other", "area": ["Other"] }]
 	}, {
-	    "name": "Ningxia", "city": [{ "name": "Yinchuan", "area": ["Xingqing District", "Xixia District", "Jinfeng District", "Lingwu City", "Yongning County", "Helan County", "Other"] }, { "name": "Shizuishan", "area": ["Dawukou District", "Huinong District", "Pingluo County", "Other"] }, { "name": "Wuzhong", "area": ["Litong District", "Qingtongxia City", "Yanchi County", "Tongxin County", "Other"] }, { "name": "Guyuan", "area": ["Yuanzhou District", "Xiji County", "Longde County", "Jingyuan County", "Pengyang County", "Other"] }, { "name": "Zhongwei", "area": ["Shapotou District", "Zhongning County", "Haiyuan County", "Other"] }, { "name": "Other", "area": ["Other"] }]
+	            "name": "Ningxia", "city": [{ "name": "Yinchuan", "area": ["Xingqing District", "Xixia District", "Jinfeng District", "Lingwu City", "Yongning County", "Helan County", "Other"] }, { "name": "Shizuishan", "area": ["Dawukou District", "Huinong District", "Pingluo County", "Other"] }, { "name": "Wuzhong", "area": ["Litong District", "Qingtongxia City", "Yanchi County", "Tongxin County", "Other"] }, { "name": "Guyuan", "area": ["Yuanzhou District", "Xiji County", "Longde County", "Jingyuan County", "Pengyang County", "Other"] }, { "name": "Zhongwei", "area": ["Shapotou District", "Zhongning County", "Haiyuan County", "Other"] }, { "name": "Other", "area": ["Other"] }]
 	}, {
-	    "name": "Xinjiang", "city": [{ "name": "Urumqi", "area": ["Tianshan District", "Shaybak District", "New Urban Area", "Shuimogou District", "Toutunhe District", "Dabancheng District", "Dongshan District", "Urumqi County", "Other"] }, { "name": "Karamay", "area": ["Karamay District", "Dushanzi District", "Baijitan area", "Urho District", "Other"] }, { "name": "Turpan Area", "area": ["Turpan City", "Toksun County", "Shanshan County", "Other"] }, { "name": "Hami area", "area": ["Hami City", "Yiwu County", "Balikun Kazakh Autonomous County", "Other"] }, { "name": "Hotan area", "area": ["Hotan City", "Hotan County", "Luopu County", "Minfeng County", "Pishan County", "Celle County", "Yutian County", "Moyu County", "Other"] }, { "name": "Aksu Area", "area": ["Aksu City", "Wensu County", "Shaya County", "Baicheng County", "Awati County", "Kuche County", "Keping County", "Xinhe County", "Wushi County", "Other"] }, { "name": "Kashgar Area", "area": ["Kashgar City", "Bachu County", "Zepu County", "Jiashi County", "Yecheng County", "Yuepuhu County", "Shule County", "Makati County", "Yingjisha County", "Shache County", "Shufu County", "Tashkurgan Tajik Autonomous County", "Other"] }, { "name": "Kizilsu Kirghiz Autonomous Prefecture", "area": ["Atushi City", "Aheqi County", "Wuqia County", "Akto County", "Other"] }, { "name": "Bayin Guoyu Mongolian Autonomous Prefecture", "area": ["Korla City", "Hejing County", "Yuli County", "Heshuo County", "Qiemo County", "Bohu County", "Luntai County", "Ruoqiang County", "Yanqi Hui Autonomous County", "Other"] }, { "name": "Changji Hui Autonomous Prefecture", "area": ["Changji City", "Fukang City", "Qitai County", "Manas County", "Jimsar County", "Hutubi County", "Mulei Kazakh Autonomous County", "Miquan City", "Other"] }, { "name": "Bortala Mongolian Autonomous Prefecture", "area": ["Bole City", "Jinghe County", "Wenquan County", "Other"] }, { "name": "Shihezi", "area": ["Shihezi"] }, { "name": "Alar", "area": ["Alar"] }, { "name": "Tumushuk", "area": ["Tumushuk"] }, { "name": "Wujiaqu", "area": ["Wujiaqu"] }, { "name": "Ili Kazakh Autonomous Prefecture", "area": ["Yining City", "Kuitun City", "Yining County", "Turks County", "Nilek County", "Zhaosu County", "Xinyuan County", "Huocheng County", "Gongliu County", "Chabuchar Xibe Autonomous County", "Tacheng Area", "Altay Area", "Other"] }, { "name": "Other", "area": ["Other"] }]
+	            "name": "Xinjiang", "city": [{ "name": "Urumqi", "area": ["Tianshan District", "Shaybak District", "New Urban Area", "Shuimogou District", "Toutunhe District", "Dabancheng District", "Dongshan District", "Urumqi County", "Other"] }, { "name": "Karamay", "area": ["Karamay District", "Dushanzi District", "Baijitan area", "Urho District", "Other"] }, { "name": "Turpan Area", "area": ["Turpan City", "Toksun County", "Shanshan County", "Other"] }, { "name": "Hami area", "area": ["Hami City", "Yiwu County", "Balikun Kazakh Autonomous County", "Other"] }, { "name": "Hotan area", "area": ["Hotan City", "Hotan County", "Luopu County", "Minfeng County", "Pishan County", "Celle County", "Yutian County", "Moyu County", "Other"] }, { "name": "Aksu Area", "area": ["Aksu City", "Wensu County", "Shaya County", "Baicheng County", "Awati County", "Kuche County", "Keping County", "Xinhe County", "Wushi County", "Other"] }, { "name": "Kashgar Area", "area": ["Kashgar City", "Bachu County", "Zepu County", "Jiashi County", "Yecheng County", "Yuepuhu County", "Shule County", "Makati County", "Yingjisha County", "Shache County", "Shufu County", "Tashkurgan Tajik Autonomous County", "Other"] }, { "name": "Kizilsu Kirghiz Autonomous Prefecture", "area": ["Atushi City", "Aheqi County", "Wuqia County", "Akto County", "Other"] }, { "name": "Bayin Guoyu Mongolian Autonomous Prefecture", "area": ["Korla City", "Hejing County", "Yuli County", "Heshuo County", "Qiemo County", "Bohu County", "Luntai County", "Ruoqiang County", "Yanqi Hui Autonomous County", "Other"] }, { "name": "Changji Hui Autonomous Prefecture", "area": ["Changji City", "Fukang City", "Qitai County", "Manas County", "Jimsar County", "Hutubi County", "Mulei Kazakh Autonomous County", "Miquan City", "Other"] }, { "name": "Bortala Mongolian Autonomous Prefecture", "area": ["Bole City", "Jinghe County", "Wenquan County", "Other"] }, { "name": "Shihezi", "area": ["Shihezi"] }, { "name": "Alar", "area": ["Alar"] }, { "name": "Tumushuk", "area": ["Tumushuk"] }, { "name": "Wujiaqu", "area": ["Wujiaqu"] }, { "name": "Ili Kazakh Autonomous Prefecture", "area": ["Yining City", "Kuitun City", "Yining County", "Turks County", "Nilek County", "Zhaosu County", "Xinyuan County", "Huocheng County", "Gongliu County", "Chabuchar Xibe Autonomous County", "Tacheng Area", "Altay Area", "Other"] }, { "name": "Other", "area": ["Other"] }]
 	}, {
-	    "name": "Taiwan", "city": [{ "name": "Taiwan", "area": ["Taipei City", "Kaohsiung City", "Taipei County", "Taoyuan County", "Hsinchu County", "Miaoli County", "Taichung County", "Changhua County", "Nantou County", "Yunlin County", "Chiayi County", "Tainan County", "Kaohsiung County", "Pingtung County", "Yilan County", "Hualien County", "Taitung County", "Wuhu County", "Keelung City", "Hsinchu City", "Taichung City", "Chiayi City", "Tainan City", "Other"] }, { "name": "Other", "area": ["Other"] }]
+	            "name": "Taiwan", "city": [{ "name": "Taiwan", "area": ["Taipei City", "Kaohsiung City", "Taipei County", "Taoyuan County", "Hsinchu County", "Miaoli County", "Taichung County", "Changhua County", "Nantou County", "Yunlin County", "Chiayi County", "Tainan County", "Kaohsiung County", "Pingtung County", "Yilan County", "Hualien County", "Taitung County", "Wuhu County", "Keelung City", "Hsinchu City", "Taichung City", "Chiayi City", "Tainan City", "Other"] }, { "name": "Other", "area": ["Other"] }]
 	}, {
-	    "name": "Macao", "city": [{ "name": "Macao", "area": ["Huadi Matang District", "Freguesia De Santo António ", "Sé Freguesias", "Wangdetang District", "Fengshuntang District", "Jiamotang District", "San Francesco Di Assisi District", "Ludang", "Other"] }]
+	            "name": "Macao", "city": [{ "name": "Macao", "area": ["Huadi Matang District", "Freguesia De Santo António ", "Sé Freguesias", "Wangdetang District", "Fengshuntang District", "Jiamotang District", "San Francesco Di Assisi District", "Ludang", "Other"] }]
 	}, {
-	    "name": "Hong Kong", "city": [{ "name": "Hong Kong", "area": ["Central and Western District", "Wanchai District", "Eastern District", "Southern District", "Sham Shui Po District", "Yau Tsim Mong District", "Kowloon City District", "Wong Tai Sin District", "Kwun Tong District", "Northern District", "Tai Po District", "Sha Tin District", "Sai Kung District", "Yuen Long District", "Tuen Mun District", "Quanwan District", "Kwai Tsing District", "Lidao District", "Other"] }]
+	            "name": "Hong Kong", "city": [{ "name": "Hong Kong", "area": ["Central and Western District", "Wanchai District", "Eastern District", "Southern District", "Sham Shui Po District", "Yau Tsim Mong District", "Kowloon City District", "Wong Tai Sin District", "Kwun Tong District", "Northern District", "Tai Po District", "Sha Tin District", "Sai Kung District", "Yuen Long District", "Tuen Mun District", "Quanwan District", "Kwai Tsing District", "Lidao District", "Other"] }]
 	}];
 	exports["default"] = provinceData;
 	module.exports = exports["default"];
 
 /***/ }),
-/* 633 */
+/* 634 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -73593,15 +74479,15 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _Upload = __webpack_require__(634);
+	var _Upload = __webpack_require__(635);
 	
 	var _Upload2 = _interopRequireDefault(_Upload);
 	
-	var _uploadList = __webpack_require__(639);
+	var _uploadList = __webpack_require__(640);
 	
 	var _uploadList2 = _interopRequireDefault(_uploadList);
 	
-	var _getFileItem = __webpack_require__(643);
+	var _getFileItem = __webpack_require__(644);
 	
 	var _getFileItem2 = _interopRequireDefault(_getFileItem);
 	
@@ -73996,7 +74882,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 634 */
+/* 635 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -74011,11 +74897,11 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _AjaxUploader = __webpack_require__(635);
+	var _AjaxUploader = __webpack_require__(636);
 	
 	var _AjaxUploader2 = _interopRequireDefault(_AjaxUploader);
 	
-	var _IframeUploader = __webpack_require__(638);
+	var _IframeUploader = __webpack_require__(639);
 	
 	var _IframeUploader2 = _interopRequireDefault(_IframeUploader);
 	
@@ -74137,7 +75023,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 635 */
+/* 636 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -74156,11 +75042,11 @@
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
-	var _request = __webpack_require__(636);
+	var _request = __webpack_require__(637);
 	
 	var _request2 = _interopRequireDefault(_request);
 	
-	var _uid = __webpack_require__(637);
+	var _uid = __webpack_require__(638);
 	
 	var _uid2 = _interopRequireDefault(_uid);
 	
@@ -74421,7 +75307,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 636 */
+/* 637 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -74533,7 +75419,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 637 */
+/* 638 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -74551,7 +75437,7 @@
 	module.exports = exports["default"];
 
 /***/ }),
-/* 638 */
+/* 639 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -74574,7 +75460,7 @@
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
-	var _uid = __webpack_require__(637);
+	var _uid = __webpack_require__(638);
 	
 	var _uid2 = _interopRequireDefault(_uid);
 	
@@ -74884,7 +75770,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 639 */
+/* 640 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -74901,11 +75787,11 @@
 	
 	var _beeAnimate2 = _interopRequireDefault(_beeAnimate);
 	
-	var _beeIcon = __webpack_require__(106);
+	var _beeIcon = __webpack_require__(79);
 	
 	var _beeIcon2 = _interopRequireDefault(_beeIcon);
 	
-	var _beeProgressBar = __webpack_require__(640);
+	var _beeProgressBar = __webpack_require__(641);
 	
 	var _beeProgressBar2 = _interopRequireDefault(_beeProgressBar);
 	
@@ -75141,7 +76027,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 640 */
+/* 641 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -75150,7 +76036,7 @@
 	  value: true
 	});
 	
-	var _ProgressBar = __webpack_require__(641);
+	var _ProgressBar = __webpack_require__(642);
 	
 	var _ProgressBar2 = _interopRequireDefault(_ProgressBar);
 	
@@ -75160,7 +76046,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 641 */
+/* 642 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -75183,7 +76069,7 @@
 	
 	var _propTypes2 = _interopRequireDefault(_propTypes);
 	
-	var _nprogress = __webpack_require__(642);
+	var _nprogress = __webpack_require__(643);
 	
 	var _nprogress2 = _interopRequireDefault(_nprogress);
 	
@@ -75440,7 +76326,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 642 */
+/* 643 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/* NProgress, (c) 2013, 2014 Rico Sta. Cruz - http://ricostacruz.com/nprogress
@@ -75922,7 +76808,7 @@
 
 
 /***/ }),
-/* 643 */
+/* 644 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -75948,7 +76834,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 644 */
+/* 645 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -76005,11 +76891,11 @@
 	
 	var _beeButton2 = _interopRequireDefault(_beeButton);
 	
-	var _beeIcon = __webpack_require__(106);
+	var _beeIcon = __webpack_require__(79);
 	
 	var _beeIcon2 = _interopRequireDefault(_beeIcon);
 	
-	var _beeSearchPanel = __webpack_require__(645);
+	var _beeSearchPanel = __webpack_require__(646);
 	
 	var _beeSearchPanel2 = _interopRequireDefault(_beeSearchPanel);
 	
@@ -76462,7 +77348,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 645 */
+/* 646 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -76471,17 +77357,28 @@
 	  value: true
 	});
 	
-	var _SearchPanel = __webpack_require__(646);
+	var _SearchPanel = __webpack_require__(647);
 	
 	var _SearchPanel2 = _interopRequireDefault(_SearchPanel);
 	
+	var _AdvancedContainer = __webpack_require__(648);
+	
+	var _AdvancedContainer2 = _interopRequireDefault(_AdvancedContainer);
+	
+	var _HeadContainer = __webpack_require__(649);
+	
+	var _HeadContainer2 = _interopRequireDefault(_HeadContainer);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+	
+	_SearchPanel2["default"].HeadContainer = _HeadContainer2["default"];
+	_SearchPanel2["default"].AdvancedContainer = _AdvancedContainer2["default"];
 	
 	exports["default"] = _SearchPanel2["default"];
 	module.exports = exports['default'];
 
 /***/ }),
-/* 646 */
+/* 647 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -76506,6 +77403,20 @@
 	
 	var _propTypes2 = _interopRequireDefault(_propTypes);
 	
+	var _AdvancedContainer = __webpack_require__(648);
+	
+	var _AdvancedContainer2 = _interopRequireDefault(_AdvancedContainer);
+	
+	var _HeadContainer = __webpack_require__(649);
+	
+	var _HeadContainer2 = _interopRequireDefault(_HeadContainer);
+	
+	var _i18n = __webpack_require__(650);
+	
+	var _i18n2 = _interopRequireDefault(_i18n);
+	
+	var _tool = __webpack_require__(132);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 	
 	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
@@ -76519,7 +77430,8 @@
 	var emFun = function emFun() {};
 	
 	var propTypes = {
-	    defaultExpanded: _propTypes2["default"].bool,
+	    isExpandedBtn: _propTypes2["default"].bool, //是否显示展开按钮
+	    defaultExpanded: _propTypes2["default"].bool, //展开和收起的默认状态
 	    expanded: _propTypes2["default"].bool, //是否默认展开，false默认关闭
 	    onSearch: _propTypes2["default"].func, //点击查询的回调
 	    onReset: _propTypes2["default"].func, //点击重置的回调
@@ -76530,18 +77442,17 @@
 	    onPanelChangeIng: _propTypes2["default"].func, //显示或隐藏进行中回调
 	    onPanelChangeEnd: _propTypes2["default"].func, //显示或隐藏结束回调
 	    onChange: _propTypes2["default"].func, //点击显示或隐藏回调
-	    resident: _propTypes2["default"].node //常驻面板内容，不会隐藏
+	    showOperation: _propTypes2["default"].bool //是否显示 查询，清空
+	    // resident: PropTypes.node //常驻面板内容，不会隐藏
 	};
 	
 	var defaultProps = {
+	    isExpandedBtn: true,
 	    className: "",
 	    clsPrefix: 'u-search',
 	    defaultExpanded: false,
-	    title: "默认筛选",
-	    resetName: "清空",
-	    searchName: "查询",
-	    bgColor: "#F7F9FB"
-	
+	    bgColor: "#F7F9FB",
+	    showOperation: true
 	};
 	
 	var SearchPanel = function (_Component) {
@@ -76611,9 +77522,21 @@
 	            onPanelChangeEnd && _this._onPanelChange(type, onPanelChangeEnd);
 	        };
 	
+	        _this._getChildren = function (element) {
+	            if (element.type.name === "HeadContainer" || element.type.prototype === _HeadContainer2["default"].prototype) {
+	                // if(element.type.name === "HeadContainer"){
+	                _this._HeadContainer = element;
+	            } else if (element.type.name === "AdvancedContainer" || element.type.prototype === _AdvancedContainer2["default"].prototype) {
+	                // }else if(element.type.name === "AdvancedContainer"){
+	                _this._AdvancedContainer = element;
+	            }
+	        };
+	
 	        _this.state = {
 	            expanded: props.expanded || props.defaultExpanded
 	        };
+	        _this._HeadContainer = null;
+	        _this._AdvancedContainer = null;
 	        return _this;
 	    }
 	
@@ -76624,18 +77547,37 @@
 	    };
 	
 	    SearchPanel.prototype.render = function render() {
+	        var _this2 = this;
+	
+	        var local = (0, _tool.getComponentLocale)(this.props, this.context, 'SearchPanel', function () {
+	            return _i18n2["default"];
+	        });
 	        var _props = this.props,
 	            children = _props.children,
 	            clsPrefix = _props.clsPrefix,
 	            className = _props.className,
 	            resetName = _props.resetName,
 	            searchName = _props.searchName,
+	            title = _props.title,
 	            bgColor = _props.bgColor,
 	            style = _props.style,
-	            resident = _props.resident;
+	            showOperation = _props.showOperation;
+	
+	        if (!resetName) resetName = local['resetName'];
+	        if (!searchName) searchName = local['searchName'];
+	        if (!title) title = local['title'];
+	
 	        var expanded = this.state.expanded;
 	
 	        var _stype = style || {};
+	        if (children instanceof Array) {
+	            children.forEach(function (element) {
+	                _this2._getChildren(element);
+	            });
+	        } else {
+	            this._getChildren(children);
+	        }
+	
 	        return _react2["default"].createElement(
 	            'div',
 	            { className: clsPrefix + ' ' + className,
@@ -76649,30 +77591,30 @@
 	                    _react2["default"].createElement(
 	                        'span',
 	                        null,
-	                        this.props.title
+	                        title
 	                    )
 	                ),
 	                _react2["default"].createElement(
 	                    'div',
 	                    { className: clsPrefix + "-header-oper" },
-	                    expanded ? _react2["default"].createElement(
+	                    (this._HeadContainer || expanded) && showOperation ? _react2["default"].createElement(
 	                        'span',
 	                        { className: 'header-oper-btn', role: 'button', onClick: this.reset },
 	                        resetName
 	                    ) : null,
-	                    !!resident || expanded ? _react2["default"].createElement(
+	                    (this._HeadContainer || expanded) && showOperation ? _react2["default"].createElement(
 	                        'span',
 	                        { className: 'header-oper-btn primary', role: 'button', onClick: this.search },
 	                        searchName
 	                    ) : null,
-	                    _react2["default"].createElement(
+	                    this.props.isExpandedBtn && _react2["default"].createElement(
 	                        'span',
 	                        {
 	                            className: 'header-oper-btn',
 	                            role: 'button',
 	                            onClick: this._onChange
 	                        },
-	                        expanded ? '收起' : '展开',
+	                        expanded ? local['up'] : local['down'],
 	                        _react2["default"].createElement('i', { className: (0, _classnames2["default"])({
 	                                'uf': true,
 	                                'uf-arrow-down': !expanded,
@@ -76681,11 +77623,11 @@
 	                    )
 	                )
 	            ),
-	            resident ? _react2["default"].createElement(
+	            _react2["default"].createElement(
 	                'div',
 	                { className: clsPrefix + '-resident' },
-	                resident
-	            ) : null,
+	                this._HeadContainer
+	            ),
 	            _react2["default"].createElement(
 	                _beePanel.Panel,
 	                {
@@ -76698,7 +77640,7 @@
 	                    , onExited: this._onPanelChangeEnd.bind(this, 0) //隐藏完成回调
 	                    , onEntered: this._onPanelChangeEnd.bind(this, 1) //显示后回调
 	                },
-	                children
+	                this._AdvancedContainer
 	            )
 	        );
 	    };
@@ -76708,11 +77650,141 @@
 	
 	SearchPanel.propTypes = propTypes;
 	SearchPanel.defaultProps = defaultProps;
+	SearchPanel.contextTypes = {
+	    beeLocale: _propTypes2["default"].object
+	};
+	
 	exports["default"] = SearchPanel;
 	module.exports = exports['default'];
 
 /***/ }),
-/* 647 */
+/* 648 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+	
+	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
+	
+	var AdvancedContainer = function (_React$Component) {
+	  _inherits(AdvancedContainer, _React$Component);
+	
+	  function AdvancedContainer() {
+	    _classCallCheck(this, AdvancedContainer);
+	
+	    return _possibleConstructorReturn(this, _React$Component.apply(this, arguments));
+	  }
+	
+	  AdvancedContainer.prototype.render = function render() {
+	    return this.props.children;
+	  };
+	
+	  return AdvancedContainer;
+	}(_react2["default"].Component);
+	
+	AdvancedContainer.show = true;
+	exports["default"] = AdvancedContainer;
+	module.exports = exports['default'];
+
+/***/ }),
+/* 649 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+	
+	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
+	
+	var HeadContainer = function (_React$Component) {
+	  _inherits(HeadContainer, _React$Component);
+	
+	  function HeadContainer() {
+	    _classCallCheck(this, HeadContainer);
+	
+	    return _possibleConstructorReturn(this, _React$Component.apply(this, arguments));
+	  }
+	
+	  HeadContainer.prototype.render = function render() {
+	    var _props = this.props,
+	        children = _props.children,
+	        clsPrefix = _props.clsPrefix,
+	        _className = _props.className;
+	
+	    var ht = children ? _react2["default"].createElement(
+	      'div',
+	      null,
+	      children
+	    ) : null;
+	    return ht;
+	  };
+	
+	  return HeadContainer;
+	}(_react2["default"].Component);
+	
+	exports["default"] = HeadContainer;
+	module.exports = exports['default'];
+
+/***/ }),
+/* 650 */
+/***/ (function(module, exports) {
+
+	'use strict';
+	
+	module.exports = {
+	    'lang': 'zh-cn',
+	    'title': '默认筛选',
+	    'resetName': '清空',
+	    'searchName': '查询',
+	    'down': '展开',
+	    'up': '收起',
+	    'en-us': {
+	        'title': 'screening conditions',
+	        'resetName': 'reset',
+	        'searchName': 'submit',
+	        'down': 'open',
+	        'up': 'close'
+	    },
+	    'zh-tw': {
+	        'title': '默認篩選',
+	        'resetName': '清空',
+	        'searchName': '查詢',
+	        'down': '展開',
+	        'up': '收起'
+	    }
+	};
+
+/***/ }),
+/* 651 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -76769,7 +77841,7 @@
 	
 	var _beeButton2 = _interopRequireDefault(_beeButton);
 	
-	var _beeIcon = __webpack_require__(106);
+	var _beeIcon = __webpack_require__(79);
 	
 	var _beeIcon2 = _interopRequireDefault(_beeIcon);
 	

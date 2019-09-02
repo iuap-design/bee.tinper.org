@@ -53,8 +53,19 @@ class ModalDialog extends React.Component {
     })
     return draggable;
   }
-
+  // 当ModalDialog留在可视区的宽度 < 50px 时，拖拽不生效
   onStop = (e, delta) => {
+    let dialogWidth = this.modalDialog && this.modalDialog.offsetWidth;
+    let clientWidth = e && e.target && e.target.clientWidth;
+    if(delta.x > 0 && clientWidth - delta.x < 50){
+      return
+    }
+    if(delta.x < 0 && dialogWidth + delta.x < 50){
+      return
+    }
+    if(delta.y < 0 ){
+      return
+    }
     this.setState({
       draged:true,
       draging:false,
@@ -262,7 +273,7 @@ class ModalDialog extends React.Component {
         ref={ref => this.backdrop = ref }
         className={classNames(className, uClassName)}
       >
-        <div className={classNames(dialogClassName, dialogClasses)} style={ style }>
+        <div className={classNames(dialogClassName, dialogClasses)} style={ style } ref={ref => this.modalDialog = ref }>
           {
             draggable ? (
               <Dnd 

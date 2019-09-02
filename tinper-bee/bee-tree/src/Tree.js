@@ -95,26 +95,13 @@ class Tree extends React.Component {
     }
     if(nextProps.hasOwnProperty('treeData') && nextProps.treeData !== this.props.treeData){
       this.dataChange = true;
-      st.treeData = treeData;
+      st.treeData = nextProps.treeData;
     }
     if(nextProps.children !== this.props.children){
       this.dataChange = true;
     }
     this.setState(st);
   }
-
-  // componentWillUpdate(nextProps, nextState){
-  //   const { expandedKeys,treeData } = this.state;
-  //   if(nextState.expandedKeys !== expandedKeys) {
-  //     this.cacheExpandedKeys = expandedKeys;
-  //     if(this.props.lazyLoad){
-  //       let flatTreeData = this.deepTraversal(treeData);
-  //       this.setState({
-  //         flatTreeData
-  //       })
-  //     }
-  //   }
-  // }
 
   onDragStart(e, treeNode) {
     this.dragNode = treeNode;
@@ -418,6 +405,9 @@ onExpand(treeNode,keyType) {
       event: 'dblclick',
       node: treeNode
     };
+    if(props.expandWhenDoubleClick) {
+      this.onExpand(treeNode);
+    }
     props.onDoubleClick(eventKey,newSt);
   }
 
@@ -813,7 +803,6 @@ onExpand(treeNode,keyType) {
 
     this.startIndex = typeof(startIndex) !== "undefined" ? startIndex : this.startIndex;
     this.endIndex = typeof(endIndex) !== "undefined" ? endIndex : this.endIndex;
-
     this.setState({
       treeData : treeData
     })
@@ -829,29 +818,31 @@ onExpand(treeNode,keyType) {
     let {expandedKeys} = this.state,
         flatTreeData = [],
         flatTreeKeysMap = this.flatTreeKeysMap, //存储所有 key-value 的映射，方便获取各节点信息
-        dataCopy = JSON.parse(JSON.stringify(treeData));
+        dataCopy = treeData;
     if(Array.isArray(dataCopy)){
       for (let i=0, l=dataCopy.length; i<l; i++) {
         let { key, title, children, ...props } = dataCopy[i];
+        let dataCopyI = new Object();
         let isLeaf = children ? false : true,
             isExpanded = this.cacheExpandedKeys ? this.cacheExpandedKeys.indexOf(key) !== -1 : expandedKeys.indexOf(key) !== -1;
-        dataCopy[i].isExpanded = isExpanded;
-        dataCopy[i].parentKey = parentKey || null;
-        dataCopy[i].isShown = isShown;
-        dataCopy[i].isLeaf = isLeaf;
+        dataCopyI = Object.assign(dataCopyI,{
+          key,
+          title,
+          isExpanded,
+          parentKey : parentKey || null,
+          isShown,
+          isLeaf
+        },{...props});
         //该节点的父节点是展开状态 或 该节点是根节点
         if(isShown || parentKey === null){
-          flatTreeData.push(Object.assign(dataCopy[i], {...props})); // 取每项数据放入一个新数组
-          flatTreeKeysMap[key] = dataCopy[i];
+          flatTreeData.push(dataCopyI); // 取每项数据放入一个新数组
+          flatTreeKeysMap[key] = dataCopyI;
         }
-        if (Array.isArray(dataCopy[i]["children"]) && dataCopy[i]["children"].length > 0){
+        if (Array.isArray(children) && children.length > 0){
           // 若存在children则递归调用，把数据拼接到新数组中，并且删除该children
-          flatTreeData = flatTreeData.concat(this.deepTraversal(dataCopy[i]["children"], key, isExpanded));
-          delete dataCopy[i]["children"]
+          flatTreeData = flatTreeData.concat(this.deepTraversal(children, key, isExpanded));
         }
       }
-    }else {
-      flatTreeData.push(dataCopy); // 取每项数据放入一个新数组
     }
     return flatTreeData;
   }
@@ -888,6 +879,9 @@ onExpand(treeNode,keyType) {
    */
   getSumHeight = (start, end) => {
     let sumHeight = 0;
+    if(start > end) {
+      return sumHeight;
+    }
     let span = Math.abs(end - start);
     if(span) {
       sumHeight = span * CONFIG.defaultHeight;
@@ -981,7 +975,7 @@ onExpand(treeNode,keyType) {
 
   render() {
     const props = this.props;
-    const { showLine, prefixCls, className, focusable, checkable, loadData, checkStrictly, tabIndexValue, lazyLoad, offsetHeight } = this.props;
+    const { showLine, prefixCls, className, focusable, checkable, loadData, checkStrictly, tabIndexValue, lazyLoad, getScrollContainer } = this.props;
     const { treeData,flatTreeData } = this.state;
     let { startIndex, endIndex } = this, //数据截取的开始位置和结束位置
         preHeight = 0, //前置占位高度
@@ -1072,7 +1066,7 @@ onExpand(treeNode,keyType) {
           className="u-tree-infinite-scroll"
           treeList={flatTreeData}
           handleTreeListChange={this.handleTreeListChange}
-          offsetHeight={offsetHeight}
+          getScrollParent={getScrollContainer}
         >
           <ul {...domProps} unselectable="true" ref={(el)=>{this.tree = el}}  tabIndex={focusable && tabIndexValue}>
               <li style={{height : preHeight}} className='u-treenode-start' key={'tree_node_start'}></li>
@@ -1133,7 +1127,9 @@ Tree.propTypes = {
   lazyLoad: PropTypes.bool,
   treeData: PropTypes.array,
   renderTreeNodes: PropTypes.func,
-  autoSelectWhenFocus: PropTypes.bool
+  autoSelectWhenFocus: PropTypes.bool,
+  getScrollContainer: PropTypes.func,
+  expandWhenDoubleClick: PropTypes.bool
 };
 
 Tree.defaultProps = {
@@ -1161,7 +1157,9 @@ Tree.defaultProps = {
   onDragEnd: noop,
   tabIndexValue:0,
   lazyLoad: false,
-  autoSelectWhenFocus: false
+  autoSelectWhenFocus: false,
+  getScrollContainer: noop,
+  expandWhenDoubleClick: false
 };
 
 export default Tree;

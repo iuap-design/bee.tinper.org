@@ -112,8 +112,6 @@
     padding: 0;
     width: 100%;
     height: 100%; }
-  .u-radio input[type='radio']:focus + .u-radio-label:before {
-    border-color: rgb(245, 60, 50); }
   .u-radio.is-checked .u-radio-label:before {
     box-shadow: inset 0 0 0 10px rgb(255,255,255);
     border-color: rgb(165, 173, 186); }
@@ -188,9 +186,6 @@
 .u-radio.u-radio-success .u-radio-label {
   color: rgb(76,175,80); }
 
-.u-radio.u-radio-success input[type='radio']:focus + .u-radio-label:before {
-  border-color: rgb(76,175,80); }
-
 .u-radio.u-radio-warning.is-checked .u-radio-label:before {
   box-shadow: inset 0 0 0 10px #fff;
   border-color: rgb(165, 173, 186); }
@@ -200,9 +195,6 @@
 
 .u-radio.u-radio-warning .u-radio-label {
   color: rgb(255,152,0); }
-
-.u-radio.u-radio-warning input[type='radio']:focus + .u-radio-label:before {
-  border-color: rgb(255,152,0); }
 
 .u-radio.u-radio-danger.is-checked .u-radio-label:before {
   box-shadow: inset 0 0 0 10px #fff;
@@ -214,9 +206,6 @@
 .u-radio.u-radio-danger .u-radio-label {
   color: rgb(244,67,54); }
 
-.u-radio.u-radio-danger input[type='radio']:focus + .u-radio-label:before {
-  border-color: rgb(244,67,54); }
-
 .u-radio.u-radio-info.is-checked .u-radio-label:before {
   box-shadow: inset 0 0 0 10px #fff;
   border-color: rgb(165, 173, 186); }
@@ -227,9 +216,6 @@
 .u-radio.u-radio-info .u-radio-label {
   color: rgb(0,188,212); }
 
-.u-radio.u-radio-info input[type='radio']:focus + .u-radio-label:before {
-  border-color: rgb(0,188,212); }
-
 .u-radio.u-radio-dark.is-checked .u-radio-label:before {
   box-shadow: inset 0 0 0 10px #fff;
   border-color: rgb(165, 173, 186); }
@@ -239,9 +225,6 @@
 
 .u-radio.u-radio-dark .u-radio-label {
   color: rgb(97,97,97); }
-
-.u-radio.u-radio-dark input[type='radio']:focus + .u-radio-label:before {
-  border-color: rgb(97,97,97); }
 
 .demo3 .u-radio-group .u-radio {
   margin-bottom: 8px; }

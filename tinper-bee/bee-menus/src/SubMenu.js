@@ -115,7 +115,8 @@ export class SubMenu extends React.Component {
       return;
     }
 
-    this.minWidthTimeout = setTimeout(() => this.adjustWidth(), 0);
+    // this.minWidthTimeout = setTimeout(() => this.adjustWidth(), 0);
+    this.adjustWidth()
   }
 
   componentWillUnmount() {
@@ -125,9 +126,9 @@ export class SubMenu extends React.Component {
     }
 
     /* istanbul ignore if */
-    if (this.minWidthTimeout) {
+   /* if (this.minWidthTimeout) {
       clearTimeout(this.minWidthTimeout);
-    }
+    }*/
 
     /* istanbul ignore if */
     if (this.mouseenterTimeout) {
@@ -153,7 +154,7 @@ export class SubMenu extends React.Component {
         updateDefaultActiveFirst(store, this.props.eventKey, true);
         return true;
       }
-  
+
       if (keyCode === KeyCode.RIGHT) {
         if (isOpen) {
           menu.onKeyDown(e);
@@ -340,7 +341,7 @@ export class SubMenu extends React.Component {
     }
 
     /* istanbul ignore next */
-    popupMenu.style.minWidth = `${this.subMenuTitle.offsetWidth}px`;
+    popupMenu.style.minWidth = `${this.subMenuTitle.offsetWidth}px`;   //bug是因为在这里加了一个minWidth
   };
 
   saveSubMenuTitle = (subMenuTitle) => {
@@ -420,7 +421,7 @@ export class SubMenu extends React.Component {
   }
 
   render() {
-    
+
     const props = { ...this.props };
     const isOpen = props.isOpen;
     const prefixCls = this.getPrefixCls();
