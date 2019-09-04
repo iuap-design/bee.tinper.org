@@ -104,6 +104,7 @@ var BUILT_IN_PLACEMENTS = {
     }
   }
 };
+var self = void 0;
 
 var Rcascader = function (_Component) {
   _inherits(Rcascader, _Component);
@@ -280,12 +281,19 @@ var Rcascader = function (_Component) {
       });
     };
 
-    var initialValue = [];
-    var initInputValue = "";
+    self = _this;
+    var initialValue = []; //用于传给后台
+    var initInputValue = ""; //用于显示的
     var initOptions = [];
     if ('value' in props) {
-      initialValue = props.value || [];
+      //包裹在表单中走value
+      var objectValue = _this.convertStringToObject(props.options, props, [], 0);
+      initialValue = objectValue || [];
+      initInputValue = objectValue.map(function (o) {
+        return o.label;
+      }).join('/ ') || '';
     } else if ('defaultValue' in props) {
+      //单独使用则直接设置defaultValue
       initialValue = props.defaultValue.map(function (o) {
         return o.value;
       }) || [];
@@ -325,6 +333,9 @@ var Rcascader = function (_Component) {
       if (!('loadData' in nextProps)) {
         newState.activeValue = nextProps.value || [];
       }
+      newState.inputValue = self.convertStringToObject(self.props.options, nextProps, [], 0).map(function (o) {
+        return o.label;
+      }).join('/ ') || '';
     }
     if ('popupVisible' in nextProps) {
       newState.popupVisible = nextProps.popupVisible;
@@ -403,6 +414,45 @@ var Rcascader = function (_Component) {
       value: []
     });
     this.props.onChange && this.props.onChange('');
+  };
+
+  Rcascader.prototype.convertStringToObject = function convertStringToObject(options, props, objectValue, count) {
+    var _iteratorNormalCompletion = true;
+    var _didIteratorError = false;
+    var _iteratorError = undefined;
+
+    try {
+      for (var _iterator = options[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+        var item = _step.value;
+
+        if (item.value === props.value[count]) {
+          var deepCopyItem = JSON.parse(JSON.stringify(item));
+          if (item.children) {
+            delete deepCopyItem.children;
+            objectValue.push(deepCopyItem);
+            this.convertStringToObject(item.children, props, objectValue, ++count);
+          } else {
+            objectValue.push(deepCopyItem);
+            break;
+          }
+        }
+      }
+    } catch (err) {
+      _didIteratorError = true;
+      _iteratorError = err;
+    } finally {
+      try {
+        if (!_iteratorNormalCompletion && _iterator["return"]) {
+          _iterator["return"]();
+        }
+      } finally {
+        if (_didIteratorError) {
+          throw _iteratorError;
+        }
+      }
+    }
+
+    return objectValue;
   };
 
   Rcascader.prototype.render = function render() {

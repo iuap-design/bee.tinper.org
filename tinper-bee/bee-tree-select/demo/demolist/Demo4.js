@@ -10,20 +10,20 @@ import TreeSelect,{TreeNode} from '../../src';
 const SHOW_PARENT = TreeSelect.SHOW_PARENT;
 
 const treeData = [{
-  title: 'Node1',
+  title: '0-0',
   value: '0-0',
   key: '0-0',
   children: [{
-    title: 'Child Node1',
+    title: '0-0-1',
     value: '0-0-1',
     key: '0-0-1',
   }, {
-    title: 'Child Node2',
+    title: '0-0-2',
     value: '0-0-2',
     key: '0-0-2',
   }],
 }, {
-  title: 'Node2',
+  title: '0-1',
   value: '0-1',
   key: '0-1',
 }];
@@ -48,6 +48,7 @@ class Demo4 extends Component {
                 showCheckedStrategy={SHOW_PARENT}
                 treeDefaultExpandAll
                 onChange={this.onChange}
+                showSearch
             />
 
     )

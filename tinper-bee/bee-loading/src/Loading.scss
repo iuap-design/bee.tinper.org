@@ -5,34 +5,21 @@
 $loading-icon-color: #0084ff;
 
 /**
-  * 加载背景
-  */
-//.u-loading-back{
-//  position:relative;
-//  text-align: center;
-//  width:$loading-back-width;
-//  height:$loading-back-height;
-//  margin:0 auto;
-//  &.light{
-//    background: #fff;
-//  }
-//  &.dark{
-//    background: #000;
-//  }
-//}
-/**
   * 文字
   */
 .u-loading-desc {
+  width: 100%;
   position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  top: 50%;
+  padding-top: 32px;
   font-size: $font-size-base;
   color: $font-color-base;
   text-align: center;
 }
 
+.u-loading-container {
+  position: relative;
+}
 
 /**
   * default样式 单个圆圈加载
@@ -42,12 +29,10 @@ $loading-icon-color: #0084ff;
   &.u-loading-rotate {
     & > div {
       position: absolute;
-      border-radius: 100%;
       margin: 2px;
       -webkit-animation-fill-mode: both;
       animation-fill-mode: both;
-      // border: 2px solid #0084ff;
-      // border-bottom-color: transparent;
+      border: none !important; //兼容老版本，避免因引入组件的 js 和 css 版本不一致，导致样式混乱的问题
       width: $loading-rotate-size;
       height: $loading-rotate-size;
       top: $loading-center-top;
@@ -56,8 +41,8 @@ $loading-icon-color: #0084ff;
       margin-top: $loading-rotate-center;
       background: transparent !important;
       display: inline-block;
-      -webkit-animation: rotate 1s 0s linear infinite;
-      animation: rotate 1s 0s linear infinite;
+      -webkit-animation: rotate1 1s 0s linear infinite !important; //兼容老版本
+      animation: rotate1 1s 0s linear infinite !important; //兼容老版本
       text-align: center;
       line-height: $loading-rotate-size;
       & > img{
@@ -83,6 +68,9 @@ $loading-icon-color: #0084ff;
           font-size: 60px;
         }
       }
+      & > .u-loading-desc {
+        padding-top: 38px;
+      }
     }
     &.u-loading-rotate-sm {
       & > div {
@@ -98,26 +86,23 @@ $loading-icon-color: #0084ff;
           font-size: 25px;
         }
       }
+      & > .u-loading-desc {
+        padding-top: 25px;
+      }
     }
     &.u-loading-rotate-primary {
       & > div > .uf{
         color: $loading-loadprimary;
-        // border: 2px solid $loading-loadprimary;
-        // border-bottom-color: transparent;
       }
     }
     &.u-loading-rotate-success {
       & > div > .uf{
         color: $loading-loadsuccess;
-        // border: 2px solid $loading-loadsuccess;
-        // border-bottom-color: transparent;
       }
     }
     &.u-loading-rotate-warning {
       & > div > .uf{
         color: $loading-loadwarn;
-        // border: 2px solid $loading-loadwarn;
-        // border-bottom-color: transparent;
       }
     }
   }
@@ -131,15 +116,13 @@ $loading-icon-color: #0084ff;
   bottom: 0;
   left: 0;
   z-index: 1900;
-  // opacity: .4;
-  // filter: blur(.5px);
   background-color:rgba(255,255,255,0.4);
   &.full-screen{
     position: fixed;
   }
 }
 
-@keyframes rotate {
+@keyframes rotate1 {
   0% {
     -webkit-transform: rotate(0deg) scale(1);
     transform: rotate(0deg) scale(1);

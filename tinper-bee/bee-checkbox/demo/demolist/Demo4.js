@@ -1,65 +1,44 @@
 /**
  * @title CheckboxGroup基本使用
- * @description `value` 参数设置默认值，`onChange`设置值改变的回调，`disabled`设置是否可用
+ * @description 方便的从数组生成 Checkbox 组。
  */
 
 import React, { Component } from 'react';
 import Checkbox from '../../src';
-
-
 const CheckboxGroup = Checkbox.CheckboxGroup;
+
+const plainOptions = ['Apple', 'Pear', 'Orange'];
+const options = [
+  { label: 'Apple', value: 'Apple' },
+  { label: 'Pear', value: 'Pear' },
+  { label: 'Orange', value: 'Orange' },
+];
+const optionsWithDisabled = [
+  { label: 'Apple', value: 'Apple' },
+  { label: 'Pear', value: 'Pear' },
+  { label: 'Orange', value: 'Orange', disabled: false },
+];
 
 class Demo4 extends Component {
 	constructor(props) {
 		super(props);
-		this.state = {
-			value1:['3','4'],
-			value2:['3','4']
-		}
 	}
-	change=(value)=>{
-		console.log(value)
-		this.setState({
-			value1:value
-		})
+	onChange(checkedValues) {
+		console.log('checked = ', checkedValues);
 	}
 	render () {
 		return (
 			<div className="demo-checkbox">
-				<CheckboxGroup value={this.state.value1} onChange={this.change}>
-					<Checkbox value='1'>
-						1
-					</Checkbox>
-					<Checkbox value='2'>
-						2
-					</Checkbox>
-					<Checkbox value='3'>
-						3
-					</Checkbox>
-					<Checkbox value='4'>
-						4
-					</Checkbox>
-					<Checkbox value='5'>
-						5
-					</Checkbox>
-				</CheckboxGroup>
-				<CheckboxGroup disabled value={this.state.value2} >
-					<Checkbox value='1'>
-						1
-					</Checkbox>
-					<Checkbox value='2'>
-						2
-					</Checkbox>
-					<Checkbox value='3'>
-						3
-					</Checkbox>
-					<Checkbox value='4'>
-						4
-					</Checkbox>
-					<Checkbox value='5'>
-						5
-					</Checkbox>
-				</CheckboxGroup>
+				<CheckboxGroup options={plainOptions} defaultValue={['Apple']} onChange={this.onChange} />
+		
+				<CheckboxGroup options={options} defaultValue={['Pear']} onChange={this.onChange} />
+			
+				<CheckboxGroup
+				options={optionsWithDisabled}
+				disabled
+				defaultValue={['Apple']}
+				onChange={this.onChange}
+				/>
 			</div>
 		)
 	}

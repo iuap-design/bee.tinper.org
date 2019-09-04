@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from 'prop-types';
 import {ObjectAssign} from './util';
 /**
  * 参数: 过滤表头
@@ -11,10 +12,14 @@ import {ObjectAssign} from './util';
 export default function multiSelect(Table, Checkbox) {
 
   return class MultiSelect extends Component {
+    static propTypes = {
+      autoCheckedByClickRows: PropTypes.bool, //行点击时，是否自动勾选复选框
+    };
     static defaultProps = {
       prefixCls: "u-table-mult-select",
       getSelectedDataFunc:()=>{},
-      autoSelect: false
+      autoSelect: false,
+      autoCheckedByClickRows: true
     }
 
     constructor(props) {
@@ -283,10 +288,11 @@ export default function multiSelect(Table, Checkbox) {
 
     // 实现行点击时触发多选框勾选的需求
     onRowClick = (record,index,event) =>{
-      this.onCheckboxChange('',record, index)();
-      if( this.props.onRowClick ){
-        this.props.onRowClick(record,index,event);
+      let { autoCheckedByClickRows, onRowClick } = this.props;
+      if(autoCheckedByClickRows) {
+        this.onCheckboxChange('',record, index)();
       }
+      onRowClick && onRowClick(record,index,event);
     }
 
     render() {

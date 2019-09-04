@@ -8,20 +8,20 @@ import React, { Component } from 'react';
 import TreeSelect,{TreeNode} from '../../src';
 
 const treeData = [{
-  title: 'Node1',
+  title: '0-0',
   value: '0-0',
   key: '0-0',
   children: [{
-    title: 'Child Node1',
+    title: '0-0-1',
     value: '0-0-1',
     key: '0-0-1',
   }, {
-    title: 'Child Node2',
+    title: '0-0-2',
     value: '0-0-2',
     key: '0-0-2',
   }],
 }, {
-  title: 'Node2',
+  title: '0-1',
   value: '0-1',
   key: '0-1',
 }];
@@ -45,6 +45,7 @@ class Demo3 extends Component {
             multiple
             treeDefaultExpandAll
             onChange={this.onChange}
+            showSearch
         />
 
     )

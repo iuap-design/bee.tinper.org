@@ -29,18 +29,17 @@ class TreeSelect extends Component {
 
     constructor(props) {
         super(props);
-    
+
         warning(
           props.multiple !== false || !props.treeCheckable,
           'TreeSelect',
           '`multiple` will alway be `true` when `treeCheckable` is true',
         );
     }
-
     focus() {
         this.rcTreeSelect.focus();
     }
-    
+
     blur() {
         this.rcTreeSelect.blur();
     }
@@ -91,7 +90,7 @@ class TreeSelect extends Component {
         if (checkable) {
             checkable = <span className={`${prefixCls}-tree-checkbox-inner`} />;
         }
-        
+
         const inputIcon = (suffixIcon &&
         (React.isValidElement(suffixIcon)
             ? React.cloneElement(suffixIcon)
@@ -121,6 +120,7 @@ class TreeSelect extends Component {
                 notFoundContent={notFoundContent}
                 treeCheckable={checkable}
                 ref={this.saveTreeSelect}
+                searchPlaceholder="请搜索"
             />
         )
     }

@@ -1,6 +1,6 @@
 /**
  *
- * @title 基础Loading
+ * @title 基本用法
  * @description 设置`loadingType`来修改Loading样式。默认是'rotate'。
  *
  */

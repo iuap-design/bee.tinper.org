@@ -375,18 +375,18 @@ $selectPrefixCls: 'u-select';
           &-selected {
             background-color: #ddd;
           }
-  
+
           &-active {
             background-color: #5897fb;
             color: white;
             cursor: pointer;
           }
-  
+
           &-disabled {
             color: #ccc;
             cursor: not-allowed;
           }
-  
+
           &-divider {
             height: 1px;
             margin: 1px 0;
@@ -395,9 +395,9 @@ $selectPrefixCls: 'u-select';
             line-height: 0;
           }
         }
-       
 
-        
+
+
       }
     }
 
@@ -568,6 +568,9 @@ $selectPrefixCls: 'u-select';
       > a {
         color: #a60000!important;
         font-weight: bold!important;
+      }
+      span.#{$treePrefixCls}-node-content-wrapper{
+        color: #f50;
       }
     }
     span.#{$treePrefixCls}-node-content-wrapper {

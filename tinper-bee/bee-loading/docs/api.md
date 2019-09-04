@@ -23,13 +23,12 @@ import 'bee-loading/build/Loading.css';
 
 |参数|说明|类型|默认值|
 |:---|:----|:----|:------|
-|loadingType|类型(`rotate` `line` `custom`)|string|rotate|
-|indicator|加载图标，在 `loadingType` 值为 `custom` 时有效|ReactElement|-|
-|size|加载大小(`lg` `md` `sm`)|string|md|
-|color|颜色(`primary` `success``warning`)|string|''|
+|loadingType|Loading类型，可选值为 `rotate` `line` `custom`|string|rotate|
+|indicator|自定义加载图标，**注意：必须设置 loadingType='custom'**|ReactElement|-|
+|size|加载大小，可选值为 `lg` `md` `sm`|string|md|
 |container|渲染到的容器，通过this可以显示在该组件的上面，也可以通过function中return一个元素来显示在指定元素上面|this或者function|默认显示在body上面|
-|showBackDrop|是否显示遮罩|boolean|true|
-|fullScreen|是否全屏显示，或者只传入fullScreen即可|boolean|false|
+|showBackDrop|是否显示遮罩层|boolean|true|
+|fullScreen|是否全屏显示，若Loading显示在 body 上，建议设置该属性|boolean|false|
 |wrapperClassName|容器样式|string|''|
 
 ## 注意事项

@@ -8,13 +8,17 @@ var _react = require("react");
 
 var _react2 = _interopRequireDefault(_react);
 
+var _reactDom = require("react-dom");
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
 var _propTypes = require("prop-types");
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _classnames = require("classnames");
+var _classnames2 = require("classnames");
 
-var _classnames2 = _interopRequireDefault(_classnames);
+var _classnames3 = _interopRequireDefault(_classnames2);
 
 var _Portal = require("bee-overlay/build/Portal");
 
@@ -59,7 +63,8 @@ var propTypes = {
    * @title 是否全屏loading
    */
   fullScreen: _propTypes2["default"].bool,
-  wrapperClassName: _propTypes2["default"].string
+  wrapperClassName: _propTypes2["default"].string,
+  tip: _propTypes2["default"].string
 };
 
 var defaultProps = {
@@ -72,15 +77,7 @@ var defaultProps = {
   wrapperClassName: ""
 };
 
-var sizeMap = {
-  sm: "sm",
-  lg: "lg"
-},
-    colorsMap = {
-  primary: "primary",
-  success: "success",
-  warning: "warning"
-};
+var isReact16 = _reactDom2["default"].createPortal !== undefined;
 
 var Loading = function (_Component) {
   _inherits(Loading, _Component);
@@ -91,44 +88,48 @@ var Loading = function (_Component) {
     return _possibleConstructorReturn(this, _Component.call(this, props));
   }
 
-  Loading.prototype.render = function render() {
-    var _backClassObj;
-
+  Loading.prototype.componentDidMount = function componentDidMount() {
     var _props = this.props,
         clsPrefix = _props.clsPrefix,
-        loadingType = _props.loadingType,
-        size = _props.size,
-        color = _props.color,
-        show = _props.show,
-        showBackDrop = _props.showBackDrop,
-        container = _props.container,
-        children = _props.children,
-        fullScreen = _props.fullScreen,
-        wrapperClassName = _props.wrapperClassName,
-        indicator = _props.indicator,
-        others = _objectWithoutProperties(_props, ["clsPrefix", "loadingType", "size", "color", "show", "showBackDrop", "container", "children", "fullScreen", "wrapperClassName", "indicator"]);
+        container = _props.container;
 
-    var clsObj = {};
+    if (isReact16 && container) {
+      this.portalContainerNode = this.getContainer(this.props.container);
+      this.portalContainerNode.className += " " + clsPrefix + "-container";
+    }
+  };
+
+  Loading.prototype.getContainer = function getContainer(container, defaultContainer) {
+    container = typeof container === 'function' ? container() : container;
+    return _reactDom2["default"].findDOMNode(container) || defaultContainer;
+  };
+
+  Loading.prototype.render = function render() {
+    var _classnames, _backClassObj;
+
+    var _props2 = this.props,
+        clsPrefix = _props2.clsPrefix,
+        loadingType = _props2.loadingType,
+        size = _props2.size,
+        color = _props2.color,
+        show = _props2.show,
+        showBackDrop = _props2.showBackDrop,
+        container = _props2.container,
+        children = _props2.children,
+        fullScreen = _props2.fullScreen,
+        wrapperClassName = _props2.wrapperClassName,
+        indicator = _props2.indicator,
+        tip = _props2.tip,
+        others = _objectWithoutProperties(_props2, ["clsPrefix", "loadingType", "size", "color", "show", "showBackDrop", "container", "children", "fullScreen", "wrapperClassName", "indicator", "tip"]);
 
     if (!show) return null;
 
-    clsObj[clsPrefix + "-" + loadingType] = true;
+    var clsObj = (0, _classnames3["default"])(clsPrefix, (_classnames = {}, _defineProperty(_classnames, clsPrefix + "-" + loadingType, true), _defineProperty(_classnames, clsPrefix + "-" + loadingType + "-sm", size === 'sm'), _defineProperty(_classnames, clsPrefix + "-" + loadingType + "-lg", size === 'lg'), _defineProperty(_classnames, clsPrefix + "-" + loadingType + "-" + color, !!color), _defineProperty(_classnames, clsPrefix + "-show-text", !!tip), _classnames), wrapperClassName);
 
-    if (sizeMap[size]) {
-      clsObj[clsPrefix + "-" + loadingType + "-" + sizeMap[size]] = true;
-    }
-
-    if (colorsMap[color]) {
-      clsObj[clsPrefix + "-" + loadingType + "-" + colorsMap[color]] = true;
-    }
-
-    var classes = (0, _classnames2["default"])(clsPrefix, clsObj);
+    var classes = (0, _classnames3["default"])(clsPrefix, clsObj);
 
     var dom = "";
 
-    if (wrapperClassName) {
-      classes += " " + wrapperClassName;
-    }
     if (loadingType === "custom" && !!indicator) {
       dom = _react2["default"].createElement(
         "div",
@@ -138,14 +139,14 @@ var Loading = function (_Component) {
           { className: classes },
           _react2["default"].createElement(
             "div",
-            null,
+            { className: clsPrefix + "-spin" },
             indicator
-          )
-        ),
-        children && _react2["default"].createElement(
-          "div",
-          { className: clsPrefix + "-desc" },
-          children
+          ),
+          tip ? _react2["default"].createElement(
+            "div",
+            { className: clsPrefix + "-desc" },
+            tip
+          ) : null
         )
       );
     } else if (loadingType === "rotate") {
@@ -157,14 +158,14 @@ var Loading = function (_Component) {
           { className: classes },
           _react2["default"].createElement(
             "div",
-            null,
+            { className: clsPrefix + "-spin" },
             _react2["default"].createElement("img", { src: loadImg })
-          )
-        ),
-        children && _react2["default"].createElement(
-          "div",
-          { className: clsPrefix + "-desc" },
-          children
+          ),
+          tip ? _react2["default"].createElement(
+            "p",
+            { className: clsPrefix + "-desc" },
+            tip
+          ) : null
         )
       );
     } else if (loadingType === "line") {
@@ -193,11 +194,10 @@ var Loading = function (_Component) {
     if (showBackDrop) {
       dom = _react2["default"].createElement(
         "div",
-        { className: (0, _classnames2["default"])(backClassObj) },
+        { className: (0, _classnames3["default"])(backClassObj) },
         dom
       );
     }
-    //console.log(container);
 
     return _react2["default"].createElement(
       _Portal2["default"],

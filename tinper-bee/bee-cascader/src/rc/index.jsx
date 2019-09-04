@@ -49,16 +49,19 @@ const BUILT_IN_PLACEMENTS = {
     },
   },
 };
-
+let self
 class Rcascader extends Component {
   constructor(props) {
     super(props);
-    let initialValue = [];
-    let initInputValue = "";
+    self = this
+    let initialValue = [];      //用于传给后台
+    let initInputValue = "";  //用于显示的
     let initOptions = [];
-    if ('value' in props) {
-      initialValue = props.value || [];
-    } else if ('defaultValue' in props) {
+    if ('value' in props) {   //包裹在表单中走value
+      var objectValue = this.convertStringToObject(props.options,props,[],0)
+      initialValue = objectValue || [];
+      initInputValue = objectValue.map(o => o.label).join('/ ') || ''
+    } else if ('defaultValue' in props) {  //单独使用则直接设置defaultValue
       initialValue = props.defaultValue.map(o => o.value) || [];
       initInputValue = props.defaultValue.map(o => o.label).join('/ ') || ''
     } else if ('options' in props) {
@@ -94,6 +97,7 @@ class Rcascader extends Component {
       if (!('loadData' in nextProps)) {
         newState.activeValue = nextProps.value || [];
       }
+      newState.inputValue = self.convertStringToObject(self.props.options,nextProps,[],0,).map(o =>o.label).join('/ ') || ''
     }
     if ('popupVisible' in nextProps) {
       newState.popupVisible = nextProps.popupVisible;
@@ -321,7 +325,7 @@ class Rcascader extends Component {
 			showClose:true
 		})
   }
-  
+
   resetValue(e){
     e.stopPropagation();
     e.preventDefault();
@@ -333,7 +337,22 @@ class Rcascader extends Component {
     })
     this.props.onChange&&this.props.onChange('');
   }
-
+  convertStringToObject (options,props,objectValue,count) {
+    for(var item of options){
+      if(item.value === props.value[count]){
+        var deepCopyItem = JSON.parse(JSON.stringify(item))
+        if(item.children){
+          delete deepCopyItem.children
+          objectValue.push(deepCopyItem)
+          this.convertStringToObject(item.children,props,objectValue,++count)
+        }else {
+          objectValue.push(deepCopyItem)
+          break
+        }
+      }
+    }
+    return objectValue
+  }
   render() {
     const { showClose, popupVisible, inputValue, options, activeValue, value } = this.state;
     const {
@@ -398,11 +417,11 @@ class Rcascader extends Component {
           />
           {
             inputValue && showClose?(
-            <InputGroup.Button shape="border" 
+            <InputGroup.Button shape="border"
               onClick={(e) => this.resetValue(e)}>
               <i className="uf uf-close-c"></i>
             </InputGroup.Button>
-            ):<InputGroup.Button shape="border" 
+            ):<InputGroup.Button shape="border"
               onClick={(e)=>{props.keyboardInput?this.iconClick(e):''}}>
               <i className={`uf ${iconClass}`}></i>
             </InputGroup.Button>

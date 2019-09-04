@@ -4,10 +4,6 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _classnames = require('classnames');
-
-var _classnames2 = _interopRequireDefault(_classnames);
-
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
@@ -38,14 +34,16 @@ var propTypes = {
     clsPrefix: _propTypes2["default"].string,
     value: _propTypes2["default"].array,
     onChange: _propTypes2["default"].func,
-    disabled: _propTypes2["default"].bool
+    disabled: _propTypes2["default"].bool,
+    options: _propTypes2["default"].array,
+    defaultValue: _propTypes2["default"].array
 };
 
 var defaultProps = {
     clsPrefix: 'u-checkbox-group',
-    value: [],
     onChange: function onChange() {},
-    disabled: false
+    disabled: false,
+    options: []
 };
 
 var CheckboxGroup = function (_React$Component) {
@@ -66,11 +64,26 @@ var CheckboxGroup = function (_React$Component) {
             _this.setState({
                 values: values
             });
-            _this.props.onChange(values);
+            var onChange = _this.props.onChange;
+
+            if (onChange) {
+                var options = _this.getOptions();
+                onChange(values.filter(function (val) {
+                    return values.indexOf(val) !== -1;
+                }).sort(function (a, b) {
+                    var indexA = options.findIndex(function (opt) {
+                        return opt.value === a;
+                    });
+                    var indexB = options.findIndex(function (opt) {
+                        return opt.value === b;
+                    });
+                    return indexA - indexB;
+                }));
+            }
         };
 
         _this.state = {
-            values: props.value
+            values: props.value || props.defaultValue || []
         };
         return _this;
     }
@@ -83,25 +96,57 @@ var CheckboxGroup = function (_React$Component) {
         }
     };
 
+    CheckboxGroup.prototype.getOptions = function getOptions() {
+        var options = this.props.options;
+
+        return options.map(function (option) {
+            if (typeof option === 'string') {
+                return {
+                    label: option,
+                    value: option
+                };
+            }
+            return option;
+        });
+    };
+
     CheckboxGroup.prototype.render = function render() {
         var _this2 = this;
 
-        var _props = this.props,
-            clsPrefix = _props.clsPrefix,
-            className = _props.className,
-            disabled = _props.disabled;
+        var state = this.state;
+        var props = this.props;
+        var clsPrefix = props.clsPrefix,
+            className = props.className,
+            disabled = props.disabled,
+            children = props.children,
+            options = props.options;
 
         var classes = clsPrefix;
         if (className) classes += ' ' + className;
+        if (options && options.length > 0) {
+            children = this.getOptions().map(function (option) {
+                return _react2["default"].createElement(
+                    _Checkbox2["default"],
+                    {
+                        key: option.value.toString(),
+                        disabled: 'disabled' in option ? option.disabled : props.disabled,
+                        value: option.value,
+                        checked: state.values.indexOf(option.value) !== -1,
+                        onChange: option.onChange
+                    },
+                    option.label
+                );
+            });
+        }
         return _react2["default"].createElement(
             'div',
             { className: classes },
-            _react2["default"].Children.map(this.props.children, function (child) {
+            _react2["default"].Children.map(children, function (child) {
                 return _react2["default"].cloneElement(child, {
                     onChange: function onChange() {
                         _this2.changeHandle(child.props.value);
                     },
-                    checked: _this2.state.values.indexOf(child.props.value) != -1,
+                    checked: state.values.indexOf(child.props.value) != -1,
                     disabled: child.props.disabled || disabled
                 });
             })

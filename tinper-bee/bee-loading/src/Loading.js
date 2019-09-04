@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { findDOMNode } from "react";
+import ReactDOM from 'react-dom';
 import PropTypes from "prop-types";
 import classnames from "classnames";
 import Portal from "bee-overlay/build/Portal"; 
@@ -28,7 +28,8 @@ const propTypes = {
    * @title 是否全屏loading
    */
   fullScreen: PropTypes.bool,
-  wrapperClassName: PropTypes.string
+  wrapperClassName: PropTypes.string,
+  tip: PropTypes.string
 };
 
 const defaultProps = {
@@ -41,19 +42,21 @@ const defaultProps = {
   wrapperClassName: ""
 };
 
-const sizeMap = {
-    sm: "sm",
-    lg: "lg"
-  },
-  colorsMap = {
-    primary: "primary",
-    success: "success",
-    warning: "warning"
-  };
-
+const isReact16 = ReactDOM.createPortal !== undefined;
 class Loading extends Component {
   constructor(props) {
     super(props);
+  }
+  componentDidMount(){
+    let { clsPrefix, container } = this.props;
+    if(isReact16 && container){
+      this.portalContainerNode = this.getContainer(this.props.container);
+      this.portalContainerNode.className += ` ${clsPrefix}-container`;
+    }
+  }
+  getContainer(container, defaultContainer){
+    container = typeof container === 'function' ? container() : container;
+    return ReactDOM.findDOMNode(container) || defaultContainer;
   }
   render() {
     const {
@@ -68,47 +71,46 @@ class Loading extends Component {
       fullScreen,
       wrapperClassName,
       indicator,
+      tip,
       ...others
     } = this.props;
 
-    let clsObj = {};
-
     if (!show) return null;
 
-    clsObj[`${clsPrefix}-${loadingType}`] = true;
-
-    if (sizeMap[size]) {
-      clsObj[`${clsPrefix}-${loadingType}-${sizeMap[size]}`] = true;
-    }
-
-    if (colorsMap[color]) {
-      clsObj[`${clsPrefix}-${loadingType}-${colorsMap[color]}`] = true;
-    }
+    const clsObj = classnames(
+      clsPrefix,
+      {
+        [`${clsPrefix}-${loadingType}`]: true,
+        [`${clsPrefix}-${loadingType}-sm`]: size === 'sm',
+        [`${clsPrefix}-${loadingType}-lg`]: size === 'lg',
+        [`${clsPrefix}-${loadingType}-${color}`]: !!color,
+        [`${clsPrefix}-show-text`]: !!tip,
+      },
+      wrapperClassName,
+    );
 
     let classes = classnames(clsPrefix, clsObj);
 
     let dom = "";
 
-    if (wrapperClassName) {
-      classes += " " + wrapperClassName;
-    }
     if (loadingType === "custom" && !!indicator) {
       dom = (
         <div>
           <div className={classes}>
-            <div>{indicator}</div>
+            <div className={`${clsPrefix}-spin`}>{indicator}</div>
+            {tip ? <div className={`${clsPrefix}-desc`}>{tip}</div> : null}
           </div>
-          {children && <div className={`${clsPrefix}-desc`}>{children}</div>}
+          {/* {children && <div className={`${clsPrefix}-desc`}>{children}</div>} */}
         </div>
       );
     } else if (loadingType === "rotate") {
       dom = (
         <div>
           <div className={classes}>
-            <div><img src={loadImg}/></div>
-            {/* <div className={`${clsPrefix}-image`}></div> */}
+            <div className={`${clsPrefix}-spin`}><img src={loadImg}/></div>
+            {tip ? <p className={`${clsPrefix}-desc`}>{tip}</p> : null}
           </div>
-          {children && <div className={`${clsPrefix}-desc`}>{children}</div>}
+          {/* {children && <div className={`${clsPrefix}-desc`}>{children}</div>} */}
         </div>
       );
     } else if (loadingType === "line") {
@@ -134,7 +136,6 @@ class Loading extends Component {
     if (showBackDrop) {
       dom = <div className={classnames(backClassObj)}>{dom}</div>;
     }
-    //console.log(container);
 
     return <Portal container={container}>{dom}</Portal>;
   }

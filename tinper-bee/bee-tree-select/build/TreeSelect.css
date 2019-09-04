@@ -1687,6 +1687,8 @@ ul {
     .u-select-tree li.filter-node > a {
       color: #a60000 !important;
       font-weight: bold !important; }
+    .u-select-tree li.filter-node span.u-select-tree-node-content-wrapper {
+      color: #f50; }
     .u-select-tree li span.u-select-tree-node-content-wrapper {
       width: calc(100% - 48px);
       display: inline-block;

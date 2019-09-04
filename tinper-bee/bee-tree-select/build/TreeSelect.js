@@ -152,7 +152,8 @@ var TreeSelect = function (_Component) {
             dropdownStyle: _extends({ maxHeight: '100vh', overflow: 'auto' }, dropdownStyle),
             notFoundContent: notFoundContent,
             treeCheckable: checkable,
-            ref: this.saveTreeSelect
+            ref: this.saveTreeSelect,
+            searchPlaceholder: '\u8BF7\u641C\u7D22'
         }));
     };
 
