@@ -128,14 +128,18 @@ var Rcascader = function (_Component) {
     };
 
     _this.handleChange = function (options, setProps, e) {
+      var _this$props = _this.props,
+          onChange = _this$props.onChange,
+          separator = _this$props.separator;
+
       if (e.type !== 'keydown' || e.keyCode === _tinperBeeCore2["default"].ENTER) {
-        _this.props.onChange(options.map(function (o) {
+        onChange(options.map(function (o) {
           return o[_this.getFieldName('value')];
         }), options);
         _this.setState({
           inputValue: options.map(function (o) {
             return o[_this.getFieldName('label')];
-          }).join('/ ')
+          }).join(separator)
         });
         _this.setPopupVisible(setProps.visible);
       }
@@ -151,10 +155,10 @@ var Rcascader = function (_Component) {
       if (triggerNode && triggerNode.focus) {
         triggerNode.focus();
       }
-      var _this$props = _this.props,
-          changeOnSelect = _this$props.changeOnSelect,
-          loadData = _this$props.loadData,
-          expandTrigger = _this$props.expandTrigger;
+      var _this$props2 = _this.props,
+          changeOnSelect = _this$props2.changeOnSelect,
+          loadData = _this$props2.loadData,
+          expandTrigger = _this$props2.expandTrigger;
 
       if (!targetOption || targetOption.disabled) {
         return;
@@ -291,7 +295,7 @@ var Rcascader = function (_Component) {
       initialValue = objectValue || [];
       initInputValue = objectValue.map(function (o) {
         return o.label;
-      }).join('/ ') || '';
+      }).join(props.separator) || '';
     } else if ('defaultValue' in props) {
       //单独使用则直接设置defaultValue
       initialValue = props.defaultValue.map(function (o) {
@@ -299,7 +303,7 @@ var Rcascader = function (_Component) {
       }) || [];
       initInputValue = props.defaultValue.map(function (o) {
         return o.label;
-      }).join('/ ') || '';
+      }).join(props.separator) || '';
     } else if ('options' in props) {
       initOptions = props.options || [];
     }
@@ -335,7 +339,7 @@ var Rcascader = function (_Component) {
       }
       newState.inputValue = self.convertStringToObject(self.props.options, nextProps, [], 0).map(function (o) {
         return o.label;
-      }).join('/ ') || '';
+      }).join(nextProps.separator) || '';
     }
     if ('popupVisible' in nextProps) {
       newState.popupVisible = nextProps.popupVisible;
@@ -563,7 +567,8 @@ Rcascader.defaultProps = {
   builtinPlacements: BUILT_IN_PLACEMENTS,
   expandTrigger: 'click',
   fieldNames: { label: 'label', value: 'value', children: 'children' },
-  expandIcon: _react2["default"].createElement(_beeIcon2["default"], { type: 'uf-arrow-right' })
+  expandIcon: _react2["default"].createElement(_beeIcon2["default"], { type: 'uf-arrow-right' }),
+  separator: '/ '
 };
 
 Rcascader.propTypes = {
@@ -590,7 +595,8 @@ Rcascader.propTypes = {
   filedNames: _propTypes2["default"].object, // typo but for compatibility
   expandIcon: _propTypes2["default"].node,
   loadingIcon: _propTypes2["default"].node,
-  inputValue: _propTypes2["default"].string
+  inputValue: _propTypes2["default"].string,
+  separator: _propTypes2["default"].string
 };
 
 (0, _reactLifecyclesCompat.polyfill)(Rcascader);

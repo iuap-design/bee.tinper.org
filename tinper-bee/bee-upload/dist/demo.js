@@ -80,7 +80,7 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
 	
-	var Demo1 = __webpack_require__(168);var Demo2 = __webpack_require__(169);var Demo3 = __webpack_require__(170);var Demo4 = __webpack_require__(171);var Demo5 = __webpack_require__(172);var Demo6 = __webpack_require__(173);var Demo7 = __webpack_require__(174);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 常用按钮Upload", "code": "/**\n * @title 常用按钮Upload\n * @description 通过定义props，来自定义上传文件和服务地址等信息。在onChange方法的参数info，是上传返回的回调参数。常用的是上传的状态。\n */\n\n\nimport React, { Component } from 'react';\nimport { Button, Icon, Upload } from 'tinper-bee';\n\n\nconst props = {\n  name: 'file',\n  action: '/upload.do',\n  headers: {\n    authorization: 'authorization-text',\n  },\n  onChange(info) {\n    if (info.file.status !== 'uploading') {\n      console.log(info.file, info.fileList);\n    }\n    if (info.file.status === 'done') {\n      console.log(`${info.file.name} file uploaded successfully`);\n    } else if (info.file.status === 'error') {\n      console.log(`${info.file.name} file upload failed.`);\n    }\n  },\n};\n\nclass Demo1 extends Component {\n\trender(){\n\t\treturn( \n\t\t\t<Upload {...props}>\n        <Button shape=\"border\">\n          <Icon type=\"uf-upload\" /> Click to Upload\n        </Button>\n      </Upload>\n\t\t)\n\t}\n}\n\nexport default Demo1;", "desc": " 通过定义props，来自定义上传文件和服务地址等信息。在onChange方法的参数info，是上传返回的回调参数。常用的是上传的状态。" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 列表`Upload`", "code": "/**\n * @title 列表`Upload`\n * @description 自定义已上传文件列表。\n */\n\nimport React, { Component } from 'react';\nimport { Button, Icon, Upload } from 'tinper-bee';\n\n\nconst demo2props = {\n  action: '/upload.do',\n  onChange(info) {\n    if (info.file.status !== 'uploading') {\n      console.log(info.file);\n      console.log(info.fileList);\n    }\n  },\n  defaultFileList: [{\n    uid: -1,\n    name: 'xxx.png',\n    status: 'done',\n    url: 'http://www.baidu.com/xxx.png',\n  }, {\n    uid: -2,\n    name: 'yyy.png',\n    status: 'done',\n    url: 'http://www.baidu.com/yyy.png',\n  }],\n};\nclass Demo2 extends Component {\n  render(){\n    return( \n      <Upload {...demo2props}>\n        <Button type=\"primary\" shape=\"border\">\n          <Icon type=\"uf-upload\" /> Click to Upload\n        </Button>\n      </Upload>\n    )\n  }\n}\n\nexport default Demo2;", "desc": " 自定义已上传文件列表。" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 图片列表`Upload`", "code": "/**\n * @title 图片列表`Upload`\n * @description 图片文件列表以图片的形式展示。关键参数 `listType:picture`。\n */\n\nimport React, { Component } from 'react';\nimport { Button, Icon, Upload } from 'tinper-bee';\n\n\nconst demo4props = {\n  action: '/upload.do',\n  listType: 'picture',\n  defaultFileList: [{\n    uid: -1,\n    name: 'xxx.png',\n    status: 'done',\n    url: 'http://design.yyuap.com/images/icon1.png',\n    thumbUrl: 'http://design.yyuap.com/images/icon1.png',\n  }, {\n    uid: -2,\n    name: 'yyy.png',\n    status: 'done',\n    url: 'http://design.yyuap.com/images/icon1.png',\n    thumbUrl: 'http://design.yyuap.com/images/icon1.png',\n  }],\n};\n\nclass Demo3 extends Component {\n  render(){\n    return( \n      <div>\n        <Upload {...demo4props}>\n          <Button type=\"primary\" shape=\"border\">\n            <Icon type=\"uf-upload\" /> upload\n          </Button>\n        </Upload>\n      </div>\n    )\n  }\n}\n\nexport default Demo3;", "desc": " 图片文件列表以图片的形式展示。关键参数 `listType:picture`。" }, { "example": _react2['default'].createElement(Demo4, null), "title": " 自定义`Upload`", "code": "/**\n * @title 自定义`Upload`\n * @description 自定义上传文件的数量，且最近上传的文件会替代老文件。\n */\n\nimport React, { Component } from 'react';\nimport { Button, Icon, Upload } from 'tinper-bee';\n\n\nclass Demo4 extends Component{\n  constructor(props) {\n    super(props);\n    this.state = {\n      fileList: [{\n        uid: -1,\n        name: 'xxx.png',\n        status: 'done',\n        url: 'http://www.baidu.com/xxx.png',\n      }],\n    };\n  }\n  handleChange(info) {\n    let fileList = info.fileList;\n\n    //  自定义上传数量，只显示最近上传的文件   \n    fileList = fileList.slice(-2);\n\n    // 读取返回数据，并显示成文件链接形式\n    fileList = fileList.map((file) => {\n      if (file.response) {\n        //组件会显示文件链接为超链接形式\n        file.url = file.response.url;\n      }\n      return file;\n    });\n\n    // 通过从服务器返回的结果，过滤上传成功的文件\n    fileList = fileList.filter((file) => {\n      if (file.response) {\n        return file.response.status === 'success';\n      }\n      return true;\n    });\n\n    this.setState({ fileList });\n  }\n  render() {\n    const props = {\n      action: '/upload.do',\n      onChange: this.handleChange.bind(this),\n      multiple: true,\n    };\n    return (\n      <Upload {...props} fileList={this.state.fileList}>\n        <Button colors=\"primary\" shape=\"border\">\n          <Icon type=\"uf-upload\" /> upload\n        </Button>\n      </Upload>\n    );\n  }\n};\n\nexport default Demo4;", "desc": " 自定义上传文件的数量，且最近上传的文件会替代老文件。" }, { "example": _react2['default'].createElement(Demo5, null), "title": " 拖拽`Upload`", "code": "/**\n * @title 拖拽`Upload`\n * @description 文件以拖拽的形式上传。\n */\n\nimport React, { Component } from 'react';\nimport { Button, Icon, Upload } from 'tinper-bee';\n\n\nconst Dragger = Upload.Dragger;\n\nconst demo6props = {\n  name: 'file',\n  multiple: true,\n  showUploadList: false,\n  action: '/upload.do',\n  onChange(info) {\n    const status = info.file.status;\n    if (status !== 'uploading') {\n      console.log(info.file, info.fileList);\n    }\n    if (status === 'done') {\n\n      console.log(`${info.file.name} file uploaded successfully.`);\n    } else if (status === 'error') {\n      console.log(`${info.file.name} file upload failed.`);\n    }\n  },\n};\n\n\nclass Demo5 extends Component {\n  render(){\n    return( \n      <div style={{ marginTop: 16, height: 180 }}>\n        <Dragger {...demo6props}>\n          <p className=\"u-upload-drag-icon\">\n            <Icon type=\"inbox\" className=\"uf-upload\" />\n          </p>\n          <p className=\"u-upload-text\">Click or drag file to this area to upload</p>\n          <p className=\"u-upload-hint\">Support for a single or bulk upload. Strictly prohibit from uploading company data or other band files</p>\n        </Dragger>\n      </div>\n    )\n  }\n}\n\nexport default Demo5;", "desc": " 文件以拖拽的形式上传。" }, { "example": _react2['default'].createElement(Demo6, null), "title": " 限制文件类型", "code": "/**\n * @title 限制文件类型\n * @description 自定义上传文件的类型。关键参数accept:image/* 所有图片格式  accept:image/png,image/gif  限制个别文件类型\n */\n\nimport React, { Component } from 'react';\nimport { Button, Icon, Upload } from 'tinper-bee';\n\n\nconst demo6props = {\n  name: 'file',\n  action: '/upload.do',\n  accept:\"image/*\",\n  // accept:\"image/png,image/gif\", //限制个别图片类型\n  size:300,\n  headers: {\n    authorization: 'authorization-text',\n  }\n};\n\nclass Demo6 extends Component {\n\trender(){\n\t\treturn( \n\t\t\t<Upload {...demo6props}>\n        <Button shape=\"border\">\n          <Icon type=\"uf-upload\" /> Click to Upload\n        </Button>\n      </Upload>\n\t\t)\n\t}\n}\n\nexport default Demo6;", "desc": " 自定义上传文件的类型。关键参数accept:image/* 所有图片格式  accept:image/png,image/gif  限制个别文件类型" }, { "example": _react2['default'].createElement(Demo7, null), "title": " 限制文件大小", "code": "/**\n * @title 限制文件大小\n * @description 限制自定义上传文件的大小。选中文件后触发beforeUpload回调，通过true/false来确定是否继续上传【file.size/1024*100 单位 KB、file.size/1024 单位 M 】\n */\n\nimport React, { Component } from 'react';\nimport { Button, Icon, Upload } from 'tinper-bee';\n\n\nconst demo7props = {\n  name: 'file',\n  action: '/upload.do',\n  accept:\"image/*\",\n  size:300,\n  headers: {\n    authorization: 'authorization-text',\n  },\n  beforeUpload(file){\n      let maxsize = 3000;\n      return (file.size/1024*100)>= maxsize?false:true;\n  },\n};\n\nclass Demo7 extends Component {\n\trender(){\n\t\treturn( \n\t\t\t<Upload {...demo7props}>\n        <Button shape=\"border\">\n          <Icon type=\"uf-upload\" /> Click to Upload\n        </Button>\n      </Upload>\n\t\t)\n\t}\n}\n\nexport default Demo7;", "desc": " 限制自定义上传文件的大小。选中文件后触发beforeUpload回调，通过true/false来确定是否继续上传【file.size/1024*100 单位 KB、file.size/1024 单位 M 】" }];
+	var Demo1 = __webpack_require__(168);var Demo2 = __webpack_require__(169);var Demo3 = __webpack_require__(170);var Demo4 = __webpack_require__(171);var Demo5 = __webpack_require__(172);var Demo6 = __webpack_require__(173);var Demo7 = __webpack_require__(174);var Demo8 = __webpack_require__(175);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 点击上传", "code": "/**\r\n * @title 点击上传\r\n * @description 通过定义props，来自定义上传文件和服务地址等信息。在onChange方法的参数info，是上传返回的回调参数。常用的是上传的状态。\r\n */\r\n\r\n\r\nimport React, { Component } from 'react';\nimport { Button, Icon, Upload } from 'tinper-bee';\r\n\n\n\r\n\r\nconst props = {\r\n  name: 'file',\r\n  action: '/upload.do',\r\n  headers: {\r\n    authorization: 'authorization-text',\r\n  },\r\n  onChange(info) {\r\n    if (info.file.status !== 'uploading') {\r\n      console.log(info.file, info.fileList);\r\n    }\r\n    if (info.file.status === 'done') {\r\n      console.log(`${info.file.name} file uploaded successfully`);\r\n    } else if (info.file.status === 'error') {\r\n      console.log(`${info.file.name} file upload failed.`);\r\n    }\r\n  },\r\n};\r\n\r\nclass Demo1 extends Component {\r\n\trender(){\r\n\t\treturn( \r\n\t\t\t<Upload {...props}>\r\n        <Button shape=\"border\">\r\n          <Icon type=\"uf-upload\" /> 点击上传\r\n        </Button>\r\n      </Upload>\r\n\t\t)\r\n\t}\r\n}\r\n\r\nexport default Demo1;", "desc": " 通过定义props，来自定义上传文件和服务地址等信息。在onChange方法的参数info，是上传返回的回调参数。常用的是上传的状态。" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 已上传的文件列表", "code": "/**\r\n * @title 已上传的文件列表\r\n * @description 使用 `defaultFileList` 自定义已上传的文件列表。\r\n */\r\n\r\nimport React, { Component } from 'react';\nimport { Button, Icon, Upload } from 'tinper-bee';\r\n\n\n\r\n\r\nconst demo2props = {\r\n  action: '/upload.do',\r\n  onChange(info) {\r\n    if (info.file.status !== 'uploading') {\r\n      console.log(info.file);\r\n      console.log(info.fileList);\r\n    }\r\n  },\r\n  defaultFileList: [{\r\n    uid: -1,\r\n    name: 'xxx.png',\r\n    status: 'done',\r\n    url: 'http://www.baidu.com/xxx.png',\r\n  }, {\r\n    uid: -2,\r\n    name: 'yyy.png',\r\n    status: 'done',\r\n    url: 'http://www.baidu.com/yyy.png',\r\n  }],\r\n};\r\nclass Demo2 extends Component {\r\n  render(){\r\n    return( \r\n      <Upload {...demo2props}>\r\n        <Button type=\"primary\" shape=\"border\">\r\n          <Icon type=\"uf-upload\" /> 点击上传\r\n        </Button>\r\n      </Upload>\r\n    )\r\n  }\r\n}\r\n\r\nexport default Demo2;", "desc": " 使用 `defaultFileList` 自定义已上传的文件列表。" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 图片列表", "code": "/**\n * @title 图片列表\n * @description 设置 `listType = picture`，图片文件列表以图片的形式展示。\n */\n\nimport React, { Component } from 'react';\nimport { Button, Icon, Upload } from 'tinper-bee';\n\n\nconst demo3props = {\n  action: '/upload.do',\n  listType: 'picture',\n  defaultFileList: [{\n    uid: -1,\n    name: 'xxx.png',\n    status: 'done',\n    url: 'https://p0.ssl.qhimgs4.com/t01f7d55ce57edb3d46.jpg',\n    thumbUrl: 'https://p0.ssl.qhimgs4.com/t01f7d55ce57edb3d46.jpg',\n  }, {\n    uid: -2,\n    name: 'zzz.png',\n    status: 'done',\n    url: 'https://p0.ssl.qhimgs4.com/t010e11ecf2cbfe5fd2.png',\n    thumbUrl: 'https://p0.ssl.qhimgs4.com/t010e11ecf2cbfe5fd2.png',\n  }],\n};\n\nclass Demo3 extends Component {\n  render(){\n    return(\n      <div>\n        <Upload {...demo3props}>\n          <Button type=\"primary\" shape=\"border\">\n            <Icon type=\"uf-upload\" /> 上传\n          </Button>\n        </Upload>\n      </div>\n    )\n  }\n}\n\nexport default Demo3;\n", "desc": " 设置 `listType = picture`，图片文件列表以图片的形式展示。" }, { "example": _react2['default'].createElement(Demo4, null), "title": " 照片墙", "code": "/**\r\n * @title 照片墙\r\n * @description 设置 `listType = picture-card`，支持图片预览。\r\n */\r\n\r\nimport React, { Component } from 'react';\nimport { Icon, Upload } from 'tinper-bee';\r\n\n\r\n\r\nconst demo4props = {\r\n  action: '/upload.do',\r\n  listType: 'picture-card',\r\n  defaultFileList: [{\r\n    uid: -1,\r\n    name: 'xxx.png',\r\n    status: 'done',\r\n    url: 'https://p0.ssl.qhimgs4.com/t01f7d55ce57edb3d46.jpg',\r\n    thumbUrl: 'https://p0.ssl.qhimgs4.com/t01f7d55ce57edb3d46.jpg',\r\n  }, {\r\n    uid: -2,\r\n    name: 'zzz.png',\r\n    status: 'done',\r\n    url: 'https://p0.ssl.qhimgs4.com/t010e11ecf2cbfe5fd2.png',\r\n    thumbUrl: 'https://p0.ssl.qhimgs4.com/t010e11ecf2cbfe5fd2.png',\r\n  }],\r\n};\r\n\r\nclass Demo4 extends Component {\r\n  render(){\r\n    return(\r\n      <div>\r\n        <Upload {...demo4props}>\r\n          <Icon type=\"uf-plus\" style={{fontSize:'22px'}}/> \r\n          <p>上传</p>\r\n        </Upload>\r\n      </div>\r\n    )\r\n  }\r\n}\r\n\r\nexport default Demo4;\r\n", "desc": " 设置 `listType = picture-card`，支持图片预览。" }, { "example": _react2['default'].createElement(Demo5, null), "title": " 自定义`Upload`", "code": "/**\r\n * @title 自定义`Upload`\r\n * @description 自定义上传文件的数量，且最近上传的文件会替代老文件。\r\n */\r\n\r\nimport React, { Component } from 'react';\nimport { Button, Icon, Upload } from 'tinper-bee';\r\n\n\n\r\n\r\nclass Demo5 extends Component{\r\n  constructor(props) {\r\n    super(props);\r\n    this.state = {\r\n      fileList: [{\r\n        uid: -1,\r\n        name: 'xxx.png',\r\n        status: 'done',\r\n        url: 'http://www.baidu.com/xxx.png',\r\n      }],\r\n    };\r\n  }\r\n  handleChange(info) {\r\n    let fileList = info.fileList;\r\n\r\n    //  自定义上传数量，只显示最近上传的文件   \r\n    fileList = fileList.slice(-2);\r\n\r\n    // 读取返回数据，并显示成文件链接形式\r\n    fileList = fileList.map((file) => {\r\n      if (file.response) {\r\n        //组件会显示文件链接为超链接形式\r\n        file.url = file.response.url;\r\n      }\r\n      return file;\r\n    });\r\n\r\n    // 通过从服务器返回的结果，过滤上传成功的文件\r\n    fileList = fileList.filter((file) => {\r\n      if (file.response) {\r\n        return file.response.status === 'success';\r\n      }\r\n      return true;\r\n    });\r\n\r\n    this.setState({ fileList });\r\n  }\r\n  render() {\r\n    const props = {\r\n      action: '/upload.do',\r\n      onChange: this.handleChange.bind(this),\r\n      multiple: true,\r\n    };\r\n    return (\r\n      <Upload {...props} fileList={this.state.fileList}>\r\n        <Button shape=\"border\">\r\n          <Icon type=\"uf-upload\" /> 点击上传\r\n        </Button>\r\n      </Upload>\r\n    );\r\n  }\r\n};\r\n\r\nexport default Demo5;", "desc": " 自定义上传文件的数量，且最近上传的文件会替代老文件。" }, { "example": _react2['default'].createElement(Demo6, null), "title": " 拖拽上传", "code": "/**\r\n * @title 拖拽上传\r\n * @description 文件以拖拽的形式上传。\r\n */\r\n\r\nimport React, { Component } from 'react';\nimport { Icon, Upload } from 'tinper-bee';\r\n\n\r\n\r\nconst Dragger = Upload.Dragger;\r\n\r\nconst demo6props = {\r\n  name: 'file',\r\n  multiple: true,\r\n  showUploadList: false,\r\n  action: '/upload.do',\r\n  onChange(info) {\r\n    const status = info.file.status;\r\n    if (status !== 'uploading') {\r\n      console.log(info.file, info.fileList);\r\n    }\r\n    if (status === 'done') {\r\n\r\n      console.log(`${info.file.name} file uploaded successfully.`);\r\n    } else if (status === 'error') {\r\n      console.log(`${info.file.name} file upload failed.`);\r\n    }\r\n  },\r\n};\r\n\r\n\r\nclass Demo6 extends Component {\r\n  render(){\r\n    return( \r\n      <div style={{ marginTop: 16, height: 180 }}>\r\n        <Dragger {...demo6props}>\r\n          <p className=\"u-upload-drag-icon\">\r\n            <Icon type=\"inbox\" className=\"uf-upload\" />\r\n          </p>\r\n          <p className=\"u-upload-text\">把文件拖入指定区域，完成上传，同样支持点击上传。</p>\r\n          <p className=\"u-upload-hint\">支持单个或批量上传。严禁上传公司数据或其他 band 文件。</p>\r\n        </Dragger>\r\n      </div>\r\n    )\r\n  }\r\n}\r\n\r\nexport default Demo6;", "desc": " 文件以拖拽的形式上传。" }, { "example": _react2['default'].createElement(Demo7, null), "title": " 限制文件类型", "code": "/**\r\n * @title 限制文件类型\r\n * @description 自定义上传文件的类型。关键参数accept:image/* 所有图片格式  accept:image/png,image/gif  限制个别文件类型\r\n */\r\n\r\nimport React, { Component } from 'react';\nimport { Button, Icon, Upload } from 'tinper-bee';\r\n\n\n\r\n\r\nconst demo7props = {\r\n  name: 'file',\r\n  action: '/upload.do',\r\n  accept:\"image/*\",\r\n  // accept:\"image/png,image/gif\", //限制个别图片类型\r\n  size:300,\r\n  headers: {\r\n    authorization: 'authorization-text',\r\n  }\r\n};\r\n\r\nclass Demo7 extends Component {\r\n\trender(){\r\n\t\treturn( \r\n\t\t\t<Upload {...demo7props}>\r\n        <Button shape=\"border\">\r\n          <Icon type=\"uf-upload\" /> 点击上传\r\n        </Button>\r\n      </Upload>\r\n\t\t)\r\n\t}\r\n}\r\n\r\nexport default Demo7;", "desc": " 自定义上传文件的类型。关键参数accept:image/* 所有图片格式  accept:image/png,image/gif  限制个别文件类型" }, { "example": _react2['default'].createElement(Demo8, null), "title": " 限制文件大小", "code": "/**\r\n * @title 限制文件大小\r\n * @description 限制自定义上传文件的大小。选中文件后触发beforeUpload回调，通过true/false来确定是否继续上传【file.size/1024*100 单位 KB、file.size/1024 单位 M 】\r\n */\r\n\r\nimport React, { Component } from 'react';\nimport { Button, Icon, Upload } from 'tinper-bee';\r\n\n\n\r\n\r\nconst demo8props = {\r\n  name: 'file',\r\n  action: '/upload.do',\r\n  accept:\"image/*\",\r\n  size:300,\r\n  headers: {\r\n    authorization: 'authorization-text',\r\n  },\r\n  beforeUpload(file){\r\n      let maxsize = 3000;\r\n      return (file.size/1024*100)>= maxsize?false:true;\r\n  },\r\n};\r\n\r\nclass Demo8 extends Component {\r\n\trender(){\r\n\t\treturn( \r\n\t\t\t<Upload {...demo8props}>\r\n        <Button shape=\"border\">\r\n          <Icon type=\"uf-upload\" /> 点击上传\r\n        </Button>\r\n      </Upload>\r\n\t\t)\r\n\t}\r\n}\r\n\r\nexport default Demo8;", "desc": " 限制自定义上传文件的大小。选中文件后触发beforeUpload回调，通过true/false来确定是否继续上传【file.size/1024*100 单位 KB、file.size/1024 单位 M 】" }];
 	
 	var Demo = function (_Component) {
 	    _inherits(Demo, _Component);
@@ -5604,16 +5604,6 @@
 	  var documentWidth = documentElement.scrollWidth;
 	  var documentHeight = documentElement.scrollHeight;
 	
-	  // scrollXXX on html is sync with body which means overflow: hidden on body gets wrong scrollXXX.
-	  // We should cut this ourself.
-	  var bodyStyle = window.getComputedStyle(body);
-	  if (bodyStyle.overflowX === 'hidden') {
-	    documentWidth = win.innerWidth;
-	  }
-	  if (bodyStyle.overflowY === 'hidden') {
-	    documentHeight = win.innerHeight;
-	  }
-	
 	  // Reset element position after calculate the visible area
 	  if (element.style) {
 	    element.style.position = originalPosition;
@@ -8239,17 +8229,64 @@
 	  });
 	};
 	/**
-	 * A `Transition` component using CSS transitions and animations.
-	 * It's inspired by the excellent [ng-animate](http://www.nganimate.org/) library.
+	 * A transition component inspired by the excellent
+	 * [ng-animate](http://www.nganimate.org/) library, you should use it if you're
+	 * using CSS transitions or animations. It's built upon the
+	 * [`Transition`](https://reactcommunity.org/react-transition-group/transition)
+	 * component, so it inherits all of its props.
 	 *
 	 * `CSSTransition` applies a pair of class names during the `appear`, `enter`,
-	 * and `exit` stages of the transition. The first class is applied and then a
-	 * second "active" class in order to activate the css animation. After the animation,
-	 * matching `done` class names are applied to persist the animation state.
+	 * and `exit` states of the transition. The first class is applied and then a
+	 * second `*-active` class in order to activate the CSSS transition. After the
+	 * transition, matching `*-done` class names are applied to persist the
+	 * transition state.
 	 *
-	 * When the `in` prop is toggled to `true` the Component will get
-	 * the `example-enter` CSS class and the `example-enter-active` CSS class
-	 * added in the next tick. This is a convention based on the `classNames` prop.
+	 * ```jsx
+	 * function App() {
+	 *   const [inProp, setInProp] = useState(false);
+	 *   return (
+	 *     <div>
+	 *       <CSSTransition in={inProp} timeout={200} classNames="my-node">
+	 *         <div>
+	 *           {"I'll receive my-node-* classes"}
+	 *         </div>
+	 *       </CSSTransition>
+	 *       <button type="button" onClick={() => setInProp(true)}>
+	 *         Click to Enter
+	 *       </button>
+	 *     </div>
+	 *   );
+	 * }
+	 * ```
+	 *
+	 * When the `in` prop is set to `true`, the child component will first receive
+	 * the class `example-enter`, then the `example-enter-active` will be added in
+	 * the next tick. `CSSTransition` [forces a
+	 * reflow](https://github.com/reactjs/react-transition-group/blob/5007303e729a74be66a21c3e2205e4916821524b/src/CSSTransition.js#L208-L215)
+	 * between before adding the `example-enter-active`. This is an important trick
+	 * because it allows us to transition between `example-enter` and
+	 * `example-enter-active` even though they were added immediately one after
+	 * another. Most notably, this is what makes it possible for us to animate
+	 * _appearance_.
+	 *
+	 * ```css
+	 * .my-node-enter {
+	 *   opacity: 0;
+	 * }
+	 * .my-node-enter-active {
+	 *   opacity: 1;
+	 *   transition: opacity 200ms;
+	 * }
+	 * .my-node-exit {
+	 *   opacity: 1;
+	 * }
+	 * .my-node-exit-active {
+	 *   opacity: 0;
+	 *   transition: opacity: 200ms;
+	 * }
+	 * ```
+	 *
+	 * `*-active` classes represent which styles you want to animate **to**.
 	 */
 	
 	
@@ -8590,13 +8627,24 @@
 	 * it's used to animate the mounting and unmounting of a component, but can also
 	 * be used to describe in-place transition states as well.
 	 *
+	 * ---
+	 *
+	 * **Note**: `Transition` is a platform-agnostic base component. If you're using
+	 * transitions in CSS, you'll probably want to use
+	 * [`CSSTransition`](https://reactcommunity.org/react-transition-group/css-transition)
+	 * instead. It inherits all the features of `Transition`, but contains
+	 * additional features necessary to play nice with CSS transitions (hence the
+	 * name of the component).
+	 *
+	 * ---
+	 *
 	 * By default the `Transition` component does not alter the behavior of the
-	 * component it renders, it only tracks "enter" and "exit" states for the components.
-	 * It's up to you to give meaning and effect to those states. For example we can
-	 * add styles to a component when it enters or exits:
+	 * component it renders, it only tracks "enter" and "exit" states for the
+	 * components. It's up to you to give meaning and effect to those states. For
+	 * example we can add styles to a component when it enters or exits:
 	 *
 	 * ```jsx
-	 * import Transition from 'react-transition-group/Transition';
+	 * import { Transition } from 'react-transition-group';
 	 *
 	 * const duration = 300;
 	 *
@@ -8612,7 +8660,7 @@
 	 *
 	 * const Fade = ({ in: inProp }) => (
 	 *   <Transition in={inProp} timeout={duration}>
-	 *     {(state) => (
+	 *     {state => (
 	 *       <div style={{
 	 *         ...defaultStyle,
 	 *         ...transitionStyles[state]
@@ -8624,60 +8672,43 @@
 	 * );
 	 * ```
 	 *
-	 * As noted the `Transition` component doesn't _do_ anything by itself to its child component.
-	 * What it does do is track transition states over time so you can update the
-	 * component (such as by adding styles or classes) when it changes states.
-	 *
 	 * There are 4 main states a Transition can be in:
 	 *  - `'entering'`
 	 *  - `'entered'`
 	 *  - `'exiting'`
 	 *  - `'exited'`
 	 *
-	 * Transition state is toggled via the `in` prop. When `true` the component begins the
-	 * "Enter" stage. During this stage, the component will shift from its current transition state,
-	 * to `'entering'` for the duration of the transition and then to the `'entered'` stage once
-	 * it's complete. Let's take the following example:
+	 * Transition state is toggled via the `in` prop. When `true` the component
+	 * begins the "Enter" stage. During this stage, the component will shift from
+	 * its current transition state, to `'entering'` for the duration of the
+	 * transition and then to the `'entered'` stage once it's complete. Let's take
+	 * the following example (we'll use the
+	 * [useState](https://reactjs.org/docs/hooks-reference.html#usestate) hook):
 	 *
 	 * ```jsx
-	 * state = { in: false };
-	 *
-	 * toggleEnterState = () => {
-	 *   this.setState({ in: true });
-	 * }
-	 *
-	 * render() {
+	 * function App() {
+	 *   const [inProp, setInProp] = useState(false);
 	 *   return (
 	 *     <div>
-	 *       <Transition in={this.state.in} timeout={500} />
-	 *       <button onClick={this.toggleEnterState}>Click to Enter</button>
+	 *       <Transition in={inProp} timeout={500}>
+	 *         {state => (
+	 *           // ...
+	 *         )}
+	 *       </Transition>
+	 *       <button onClick={() => setInProp(true)}>
+	 *         Click to Enter
+	 *       </button>
 	 *     </div>
 	 *   );
 	 * }
 	 * ```
 	 *
-	 * When the button is clicked the component will shift to the `'entering'` state and
-	 * stay there for 500ms (the value of `timeout`) before it finally switches to `'entered'`.
+	 * When the button is clicked the component will shift to the `'entering'` state
+	 * and stay there for 500ms (the value of `timeout`) before it finally switches
+	 * to `'entered'`.
 	 *
-	 * When `in` is `false` the same thing happens except the state moves from `'exiting'` to `'exited'`.
-	 *
-	 * ## Timing
-	 *
-	 * Timing is often the trickiest part of animation, mistakes can result in slight delays
-	 * that are hard to pin down. A common example is when you want to add an exit transition,
-	 * you should set the desired final styles when the state is `'exiting'`. That's when the
-	 * transition to those styles will start and, if you matched the `timeout` prop with the
-	 * CSS Transition duration, it will end exactly when the state changes to `'exited'`.
-	 *
-	 * > **Note**: For simpler transitions the `Transition` component might be enough, but
-	 * > take into account that it's platform-agnostic, while the `CSSTransition` component
-	 * > [forces reflows](https://github.com/reactjs/react-transition-group/blob/5007303e729a74be66a21c3e2205e4916821524b/src/CSSTransition.js#L208-L215)
-	 * > in order to make more complex transitions more predictable. For example, even though
-	 * > classes `example-enter` and `example-enter-active` are applied immediately one after
-	 * > another, you can still transition from one to the other because of the forced reflow
-	 * > (read [this issue](https://github.com/reactjs/react-transition-group/issues/159#issuecomment-322761171)
-	 * > for more info). Take this into account when choosing between `Transition` and
-	 * > `CSSTransition`.
+	 * When `in` is `false` the same thing happens except the state moves from
+	 * `'exiting'` to `'exited'`.
 	 */
 	
 	exports.EXITING = EXITING;
@@ -8991,15 +9022,15 @@
 	};
 	Transition.propTypes = process.env.NODE_ENV !== "production" ? {
 	  /**
-	   * A `function` child can be used instead of a React element.
-	   * This function is called with the current transition status
-	   * ('entering', 'entered', 'exiting', 'exited', 'unmounted'), which can be used
-	   * to apply context specific props to a component.
+	   * A `function` child can be used instead of a React element. This function is
+	   * called with the current transition status (`'entering'`, `'entered'`,
+	   * `'exiting'`, `'exited'`, `'unmounted'`), which can be used to apply context
+	   * specific props to a component.
 	   *
 	   * ```jsx
-	   * <Transition timeout={150}>
-	   *   {(status) => (
-	   *     <MyComponent className={`fade fade-${status}`} />
+	   * <Transition in={this.state.in} timeout={150}>
+	   *   {state => (
+	   *     <MyComponent className={`fade fade-${state}`} />
 	   *   )}
 	   * </Transition>
 	   * ```
@@ -9046,22 +9077,27 @@
 	
 	  /**
 	   * The duration of the transition, in milliseconds.
-	   * Required unless `addEndListener` is provided
+	   * Required unless `addEndListener` is provided.
 	   *
-	   * You may specify a single timeout for all transitions like: `timeout={500}`,
-	   * or individually like:
+	   * You may specify a single timeout for all transitions:
+	   *
+	   * ```jsx
+	   * timeout={500}
+	   * ```
+	   *
+	   * or individually:
 	   *
 	   * ```jsx
 	   * timeout={{
+	   *  appear: 500,
 	   *  enter: 300,
 	   *  exit: 500,
-	   *  appear: 500,
 	   * }}
 	   * ```
 	   *
-	   * If the value of `appear` is not set, then the value from enter is taken.
-	   *
-	   * If the `enter` or `exit` value is `null` or `undefined`, then the timer is set to `0`
+	   * - `appear` defaults to the value of `enter`
+	   * - `enter` defaults to `0`
+	   * - `exit` defaults to `0`
 	   *
 	   * @type {number | { enter?: number, exit?: number, appear?: number }}
 	   */
@@ -9686,12 +9722,12 @@
 	   * remember to spread them through if you are wrapping the `<Transition>` as
 	   * with our `<Fade>` example.
 	   *
-	   * While this component is meant to make it easier to animate multiple
-	   * `Transition` or `CSSTransition` children, sometimes you want to transition a
-	   * single child by changing its content, e.g. routes, slides, images in a
-	   * carousel etc. In that case you can change the `key` prop of the child
-	   * component along with its content, that way `TransitionGroup` will know that
-	   * it should transition the child.
+	   * While this component is meant for multiple `Transition` or `CSSTransition`
+	   * children, sometimes you may want to have a single transition child with
+	   * content that you want to be transitioned out and in when you change it
+	   * (e.g. routes, images etc.) In that case you can change the `key` prop of
+	   * the transition child as you change its content, this will cause
+	   * `TransitionGroup` to transition the child out and back in.
 	   */
 	  children: _propTypes.default.node,
 	
@@ -16313,9 +16349,7 @@
 	        if (colorsMap[colors]) {
 	            clsObj[clsPrefix + '-' + colorsMap[colors]] = true;
 	        }
-	        if (bordered) {
-	            clsObj[clsPrefix + '-border'] = bordered;
-	        }
+	        //clsObj[`${clsPrefix}-border`] = bordered;
 	        var classes = (0, _classnames2["default"])(clsPrefix, clsObj);
 	        return _react2["default"].createElement(
 	            'button',
@@ -16376,6 +16410,10 @@
 	var _propTypes = __webpack_require__(6);
 	
 	var _propTypes2 = _interopRequireDefault(_propTypes);
+	
+	var _beeModal = __webpack_require__(134);
+	
+	var _beeModal2 = _interopRequireDefault(_beeModal);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
@@ -16440,6 +16478,19 @@
 	  return _react2['default'].createElement(Upload, _extends({}, props, { type: 'drag', style: { height: props.height } }));
 	}
 	
+	function getBase64(file) {
+	  return new Promise(function (resolve, reject) {
+	    var reader = new FileReader();
+	    reader.readAsDataURL(file);
+	    reader.onload = function () {
+	      return resolve(reader.result);
+	    };
+	    reader.onerror = function (error) {
+	      return reject(error);
+	    };
+	  });
+	}
+	
 	var File = {
 	  uid: _propTypes2['default'].number,
 	  size: _propTypes2['default'].number,
@@ -16473,7 +16524,7 @@
 	  onChange: _propTypes2['default'].func,
 	  listType: _propTypes2['default'].oneOf(['text', 'picture', 'picture-card']),
 	  className: _propTypes2['default'].string,
-	  onPreview: _propTypes2['default'].func,
+	  // onPreview: PropTypes.func,
 	  onRemove: _propTypes2['default'].func,
 	  supportServerRender: _propTypes2['default'].bool,
 	  style: _propTypes2['default'].object,
@@ -16499,10 +16550,22 @@
 	var Upload = function (_Component) {
 	  _inherits(Upload, _Component);
 	
+	  // recentUploadStatus: boolean | PromiseLike<any>;
+	  // progressTimer: any;
+	  // refs: {
+	  //   [key: string]: any;
+	  //   upload: any;
+	  // };
+	
 	  function Upload(props) {
 	    _classCallCheck(this, Upload);
 	
 	    var _this = _possibleConstructorReturn(this, _Component.call(this, props));
+	
+	    _this.state = {
+	      previewVisible: false,
+	      previewImage: ''
+	    };
 	
 	    _this.onStart = function (file) {
 	      var targetItem = void 0;
@@ -16604,6 +16667,24 @@
 	      });
 	    };
 	
+	    _this.handlePreview = function (file) {
+	      var displayPreview = function displayPreview() {
+	        _this.setState({
+	          previewImage: file.url || file.thumbUrl,
+	          previewVisible: true
+	        });
+	      };
+	      if (!file.url && !file.thumbUrl) {
+	        getBase64(file.originFileObj).then(displayPreview);
+	      } else {
+	        displayPreview();
+	      }
+	    };
+	
+	    _this.handleCancel = function () {
+	      return _this.setState({ previewVisible: false });
+	    };
+	
 	    _this.state = {
 	      fileList: _this.props.fileList || _this.props.defaultFileList || [],
 	      dragState: 'drop'
@@ -16669,11 +16750,15 @@
 	        clsPrefix = _props$clsPrefix === undefined ? '' : _props$clsPrefix,
 	        showUploadList = _props.showUploadList,
 	        listType = _props.listType,
-	        onPreview = _props.onPreview,
 	        type = _props.type,
 	        disabled = _props.disabled,
 	        children = _props.children,
 	        className = _props.className;
+	    var showRemoveIcon = showUploadList.showRemoveIcon,
+	        showPreviewIcon = showUploadList.showPreviewIcon;
+	    var _state = this.state,
+	        previewVisible = _state.previewVisible,
+	        previewImage = _state.previewImage;
 	
 	
 	    var rcUploadProps = (0, _objectAssign2['default'])({}, this.props, {
@@ -16687,8 +16772,10 @@
 	    var uploadList = showUploadList ? _react2['default'].createElement(_uploadList2['default'], {
 	      listType: listType,
 	      items: this.state.fileList,
-	      onPreview: onPreview,
-	      onRemove: this.handleManualRemove
+	      onPreview: this.handlePreview,
+	      onRemove: this.handleManualRemove,
+	      showRemoveIcon: !disabled && showRemoveIcon,
+	      showPreviewIcon: showPreviewIcon
 	    }) : null;
 	
 	    if (type === 'drag') {
@@ -16732,10 +16819,32 @@
 	
 	    if (listType === 'picture-card') {
 	      return _react2['default'].createElement(
-	        'span',
-	        { className: className },
-	        uploadList,
-	        uploadButton
+	        'div',
+	        null,
+	        _react2['default'].createElement(
+	          'span',
+	          { className: className },
+	          uploadList,
+	          uploadButton
+	        ),
+	        _react2['default'].createElement(
+	          _beeModal2['default'],
+	          { show: previewVisible, onHide: this.handleCancel },
+	          _react2['default'].createElement(
+	            _beeModal2['default'].Header,
+	            { closeButton: true },
+	            _react2['default'].createElement(
+	              _beeModal2['default'].Title,
+	              null,
+	              '\u5927\u56FE\u9884\u89C8'
+	            )
+	          ),
+	          _react2['default'].createElement(
+	            _beeModal2['default'].Body,
+	            null,
+	            _react2['default'].createElement('img', { alt: 'example', style: { width: '100%' }, src: previewImage })
+	          )
+	        )
 	      );
 	    }
 	    return _react2['default'].createElement(
@@ -17715,7 +17824,9 @@
 	    strokeWidth: 3,
 	    showInfo: false
 	  },
-	  clsPrefix: 'u-upload'
+	  clsPrefix: 'u-upload',
+	  showRemoveIcon: true,
+	  showPreviewIcon: true
 	};
 	
 	var UploadList = function (_Component) {
@@ -17778,7 +17889,9 @@
 	        clsPrefix = _props.clsPrefix,
 	        _props$items = _props.items,
 	        items = _props$items === undefined ? [] : _props$items,
-	        listType = _props.listType;
+	        listType = _props.listType,
+	        showRemoveIcon = _props.showRemoveIcon,
+	        showPreviewIcon = _props.showPreviewIcon;
 	
 	    var list = items.map(function (file) {
 	      var _classNames;
@@ -17844,28 +17957,31 @@
 	        pointerEvents: 'none',
 	        opacity: 0.5
 	      };
+	      var previewIcon = showPreviewIcon ? _react2['default'].createElement(
+	        'a',
+	        {
+	          href: file.url || file.thumbUrl,
+	          target: '_blank',
+	          rel: 'noopener noreferrer',
+	          style: style,
+	          onClick: function onClick(e) {
+	            return _this3.handlePreview(file, e);
+	          }
+	        },
+	        _react2['default'].createElement(_beeIcon2['default'], { type: 'uf-eye-o' })
+	      ) : null;
+	      var removeIcon = showRemoveIcon ? _react2['default'].createElement(_beeIcon2['default'], { type: 'uf-del', title: '\u79FB\u9664\u6587\u4EF6', onClick: function onClick() {
+	          return _this3.handleClose(file);
+	        } }) : null;
+	      var removeIconClose = showRemoveIcon ? _react2['default'].createElement(_beeIcon2['default'], { type: 'uf-close', title: '\u79FB\u9664\u6587\u4EF6', onClick: function onClick() {
+	          return _this3.handleClose(file);
+	        } }) : null;
 	      var actions = listType === 'picture-card' && file.status !== 'uploading' ? _react2['default'].createElement(
 	        'span',
 	        null,
-	        _react2['default'].createElement(
-	          'a',
-	          {
-	            href: file.url || file.thumbUrl,
-	            target: '_blank',
-	            rel: 'noopener noreferrer',
-	            style: style,
-	            onClick: function onClick(e) {
-	              return _this3.handlePreview(file, e);
-	            }
-	          },
-	          _react2['default'].createElement(_beeIcon2['default'], { type: 'eye-open' })
-	        ),
-	        _react2['default'].createElement(_beeIcon2['default'], { type: 'uf-close', title: '\u79FB\u9664\u6587\u4EF6', onClick: function onClick() {
-	            return _this3.handleClose(file);
-	          } })
-	      ) : _react2['default'].createElement(_beeIcon2['default'], { type: 'uf-close', title: '\u79FB\u9664\u6587\u4EF6', onClick: function onClick() {
-	          return _this3.handleClose(file);
-	        } });
+	        previewIcon,
+	        removeIcon
+	      ) : removeIconClose;
 	
 	      return _react2['default'].createElement(
 	        'div',
@@ -18742,7 +18858,7 @@
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); } /**
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @title 常用按钮Upload
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @title 点击上传
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @description 通过定义props，来自定义上传文件和服务地址等信息。在onChange方法的参数info，是上传返回的回调参数。常用的是上传的状态。
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
 	
@@ -18781,7 +18897,7 @@
 	        _beeButton2['default'],
 	        { shape: 'border' },
 	        _react2['default'].createElement(_beeIcon2['default'], { type: 'uf-upload' }),
-	        ' Click to Upload'
+	        ' \u70B9\u51FB\u4E0A\u4F20'
 	      )
 	    );
 	  };
@@ -18827,8 +18943,8 @@
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); } /**
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @title 列表`Upload`
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @description 自定义已上传文件列表。
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @title 已上传的文件列表
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @description 使用 `defaultFileList` 自定义已上传的文件列表。
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
 	
 	var demo2props = {
@@ -18870,7 +18986,7 @@
 	        _beeButton2['default'],
 	        { type: 'primary', shape: 'border' },
 	        _react2['default'].createElement(_beeIcon2['default'], { type: 'uf-upload' }),
-	        ' Click to Upload'
+	        ' \u70B9\u51FB\u4E0A\u4F20'
 	      )
 	    );
 	  };
@@ -18899,13 +19015,13 @@
 	
 	var _beeIcon2 = _interopRequireDefault(_beeIcon);
 	
-	var _beeButton = __webpack_require__(155);
-	
-	var _beeButton2 = _interopRequireDefault(_beeButton);
-	
 	var _src = __webpack_require__(157);
 	
 	var _src2 = _interopRequireDefault(_src);
+	
+	var _beeButton = __webpack_require__(155);
+	
+	var _beeButton2 = _interopRequireDefault(_beeButton);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
@@ -18916,25 +19032,25 @@
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); } /**
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @title 图片列表`Upload`
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @description 图片文件列表以图片的形式展示。关键参数 `listType:picture`。
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @title 图片列表
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @description 设置 `listType = picture`，图片文件列表以图片的形式展示。
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
 	
-	var demo4props = {
+	var demo3props = {
 	  action: '/upload.do',
 	  listType: 'picture',
 	  defaultFileList: [{
 	    uid: -1,
 	    name: 'xxx.png',
 	    status: 'done',
-	    url: 'http://design.yyuap.com/images/icon1.png',
-	    thumbUrl: 'http://design.yyuap.com/images/icon1.png'
+	    url: 'https://p0.ssl.qhimgs4.com/t01f7d55ce57edb3d46.jpg',
+	    thumbUrl: 'https://p0.ssl.qhimgs4.com/t01f7d55ce57edb3d46.jpg'
 	  }, {
 	    uid: -2,
-	    name: 'yyy.png',
+	    name: 'zzz.png',
 	    status: 'done',
-	    url: 'http://design.yyuap.com/images/icon1.png',
-	    thumbUrl: 'http://design.yyuap.com/images/icon1.png'
+	    url: 'https://p0.ssl.qhimgs4.com/t010e11ecf2cbfe5fd2.png',
+	    thumbUrl: 'https://p0.ssl.qhimgs4.com/t010e11ecf2cbfe5fd2.png'
 	  }]
 	};
 	
@@ -18953,12 +19069,12 @@
 	      null,
 	      _react2['default'].createElement(
 	        _src2['default'],
-	        demo4props,
+	        demo3props,
 	        _react2['default'].createElement(
 	          _beeButton2['default'],
 	          { type: 'primary', shape: 'border' },
 	          _react2['default'].createElement(_beeIcon2['default'], { type: 'uf-upload' }),
-	          ' upload'
+	          ' \u4E0A\u4F20'
 	        )
 	      )
 	    );
@@ -18972,6 +19088,91 @@
 
 /***/ }),
 /* 171 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _beeIcon = __webpack_require__(106);
+	
+	var _beeIcon2 = _interopRequireDefault(_beeIcon);
+	
+	var _src = __webpack_require__(157);
+	
+	var _src2 = _interopRequireDefault(_src);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	
+	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); } /**
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @title 照片墙
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @description 设置 `listType = picture-card`，支持图片预览。
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
+	
+	var demo4props = {
+	  action: '/upload.do',
+	  listType: 'picture-card',
+	  defaultFileList: [{
+	    uid: -1,
+	    name: 'xxx.png',
+	    status: 'done',
+	    url: 'https://p0.ssl.qhimgs4.com/t01f7d55ce57edb3d46.jpg',
+	    thumbUrl: 'https://p0.ssl.qhimgs4.com/t01f7d55ce57edb3d46.jpg'
+	  }, {
+	    uid: -2,
+	    name: 'zzz.png',
+	    status: 'done',
+	    url: 'https://p0.ssl.qhimgs4.com/t010e11ecf2cbfe5fd2.png',
+	    thumbUrl: 'https://p0.ssl.qhimgs4.com/t010e11ecf2cbfe5fd2.png'
+	  }]
+	};
+	
+	var Demo4 = function (_Component) {
+	  _inherits(Demo4, _Component);
+	
+	  function Demo4() {
+	    _classCallCheck(this, Demo4);
+	
+	    return _possibleConstructorReturn(this, _Component.apply(this, arguments));
+	  }
+	
+	  Demo4.prototype.render = function render() {
+	    return _react2['default'].createElement(
+	      'div',
+	      null,
+	      _react2['default'].createElement(
+	        _src2['default'],
+	        demo4props,
+	        _react2['default'].createElement(_beeIcon2['default'], { type: 'uf-plus', style: { fontSize: '22px' } }),
+	        _react2['default'].createElement(
+	          'p',
+	          null,
+	          '\u4E0A\u4F20'
+	        )
+	      )
+	    );
+	  };
+	
+	  return Demo4;
+	}(_react.Component);
+	
+	exports['default'] = Demo4;
+	module.exports = exports['default'];
+
+/***/ }),
+/* 172 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -19011,11 +19212,11 @@
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @description 自定义上传文件的数量，且最近上传的文件会替代老文件。
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
 	
-	var Demo4 = function (_Component) {
-	  _inherits(Demo4, _Component);
+	var Demo5 = function (_Component) {
+	  _inherits(Demo5, _Component);
 	
-	  function Demo4(props) {
-	    _classCallCheck(this, Demo4);
+	  function Demo5(props) {
+	    _classCallCheck(this, Demo5);
 	
 	    var _this = _possibleConstructorReturn(this, _Component.call(this, props));
 	
@@ -19030,7 +19231,7 @@
 	    return _this;
 	  }
 	
-	  Demo4.prototype.handleChange = function handleChange(info) {
+	  Demo5.prototype.handleChange = function handleChange(info) {
 	    var fileList = info.fileList;
 	
 	    //  自定义上传数量，只显示最近上传的文件   
@@ -19056,7 +19257,7 @@
 	    this.setState({ fileList: fileList });
 	  };
 	
-	  Demo4.prototype.render = function render() {
+	  Demo5.prototype.render = function render() {
 	    var props = {
 	      action: '/upload.do',
 	      onChange: this.handleChange.bind(this),
@@ -19067,23 +19268,23 @@
 	      _extends({}, props, { fileList: this.state.fileList }),
 	      _react2['default'].createElement(
 	        _beeButton2['default'],
-	        { colors: 'primary', shape: 'border' },
+	        { shape: 'border' },
 	        _react2['default'].createElement(_beeIcon2['default'], { type: 'uf-upload' }),
-	        ' upload'
+	        ' \u70B9\u51FB\u4E0A\u4F20'
 	      )
 	    );
 	  };
 	
-	  return Demo4;
+	  return Demo5;
 	}(_react.Component);
 	
 	;
 	
-	exports['default'] = Demo4;
+	exports['default'] = Demo5;
 	module.exports = exports['default'];
 
 /***/ }),
-/* 172 */
+/* 173 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -19100,10 +19301,6 @@
 	
 	var _beeIcon2 = _interopRequireDefault(_beeIcon);
 	
-	var _beeButton = __webpack_require__(155);
-	
-	var _beeButton2 = _interopRequireDefault(_beeButton);
-	
 	var _src = __webpack_require__(157);
 	
 	var _src2 = _interopRequireDefault(_src);
@@ -19117,7 +19314,7 @@
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); } /**
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @title 拖拽`Upload`
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @title 拖拽上传
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @description 文件以拖拽的形式上传。
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
 	
@@ -19142,16 +19339,16 @@
 	  }
 	};
 	
-	var Demo5 = function (_Component) {
-	  _inherits(Demo5, _Component);
+	var Demo6 = function (_Component) {
+	  _inherits(Demo6, _Component);
 	
-	  function Demo5() {
-	    _classCallCheck(this, Demo5);
+	  function Demo6() {
+	    _classCallCheck(this, Demo6);
 	
 	    return _possibleConstructorReturn(this, _Component.apply(this, arguments));
 	  }
 	
-	  Demo5.prototype.render = function render() {
+	  Demo6.prototype.render = function render() {
 	    return _react2['default'].createElement(
 	      'div',
 	      { style: { marginTop: 16, height: 180 } },
@@ -19166,91 +19363,13 @@
 	        _react2['default'].createElement(
 	          'p',
 	          { className: 'u-upload-text' },
-	          'Click or drag file to this area to upload'
+	          '\u628A\u6587\u4EF6\u62D6\u5165\u6307\u5B9A\u533A\u57DF\uFF0C\u5B8C\u6210\u4E0A\u4F20\uFF0C\u540C\u6837\u652F\u6301\u70B9\u51FB\u4E0A\u4F20\u3002'
 	        ),
 	        _react2['default'].createElement(
 	          'p',
 	          { className: 'u-upload-hint' },
-	          'Support for a single or bulk upload. Strictly prohibit from uploading company data or other band files'
+	          '\u652F\u6301\u5355\u4E2A\u6216\u6279\u91CF\u4E0A\u4F20\u3002\u4E25\u7981\u4E0A\u4F20\u516C\u53F8\u6570\u636E\u6216\u5176\u4ED6 band \u6587\u4EF6\u3002'
 	        )
-	      )
-	    );
-	  };
-	
-	  return Demo5;
-	}(_react.Component);
-	
-	exports['default'] = Demo5;
-	module.exports = exports['default'];
-
-/***/ }),
-/* 173 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _beeIcon = __webpack_require__(106);
-	
-	var _beeIcon2 = _interopRequireDefault(_beeIcon);
-	
-	var _beeButton = __webpack_require__(155);
-	
-	var _beeButton2 = _interopRequireDefault(_beeButton);
-	
-	var _src = __webpack_require__(157);
-	
-	var _src2 = _interopRequireDefault(_src);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-	
-	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); } /**
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @title 限制文件类型
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @description 自定义上传文件的类型。关键参数accept:image/* 所有图片格式  accept:image/png,image/gif  限制个别文件类型
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
-	
-	var demo6props = {
-	  name: 'file',
-	  action: '/upload.do',
-	  accept: "image/*",
-	  // accept:"image/png,image/gif", //限制个别图片类型
-	  size: 300,
-	  headers: {
-	    authorization: 'authorization-text'
-	  }
-	};
-	
-	var Demo6 = function (_Component) {
-	  _inherits(Demo6, _Component);
-	
-	  function Demo6() {
-	    _classCallCheck(this, Demo6);
-	
-	    return _possibleConstructorReturn(this, _Component.apply(this, arguments));
-	  }
-	
-	  Demo6.prototype.render = function render() {
-	    return _react2['default'].createElement(
-	      _src2['default'],
-	      demo6props,
-	      _react2['default'].createElement(
-	        _beeButton2['default'],
-	        { shape: 'border' },
-	        _react2['default'].createElement(_beeIcon2['default'], { type: 'uf-upload' }),
-	        ' Click to Upload'
 	      )
 	    );
 	  };
@@ -19296,21 +19415,18 @@
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); } /**
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @title 限制文件大小
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @description 限制自定义上传文件的大小。选中文件后触发beforeUpload回调，通过true/false来确定是否继续上传【file.size/1024*100 单位 KB、file.size/1024 单位 M 】
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @title 限制文件类型
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @description 自定义上传文件的类型。关键参数accept:image/* 所有图片格式  accept:image/png,image/gif  限制个别文件类型
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
 	
 	var demo7props = {
 	  name: 'file',
 	  action: '/upload.do',
 	  accept: "image/*",
+	  // accept:"image/png,image/gif", //限制个别图片类型
 	  size: 300,
 	  headers: {
 	    authorization: 'authorization-text'
-	  },
-	  beforeUpload: function beforeUpload(file) {
-	    var maxsize = 3000;
-	    return file.size / 1024 * 100 >= maxsize ? false : true;
 	  }
 	};
 	
@@ -19331,7 +19447,7 @@
 	        _beeButton2['default'],
 	        { shape: 'border' },
 	        _react2['default'].createElement(_beeIcon2['default'], { type: 'uf-upload' }),
-	        ' Click to Upload'
+	        ' \u70B9\u51FB\u4E0A\u4F20'
 	      )
 	    );
 	  };
@@ -19340,6 +19456,87 @@
 	}(_react.Component);
 	
 	exports['default'] = Demo7;
+	module.exports = exports['default'];
+
+/***/ }),
+/* 175 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _beeIcon = __webpack_require__(106);
+	
+	var _beeIcon2 = _interopRequireDefault(_beeIcon);
+	
+	var _beeButton = __webpack_require__(155);
+	
+	var _beeButton2 = _interopRequireDefault(_beeButton);
+	
+	var _src = __webpack_require__(157);
+	
+	var _src2 = _interopRequireDefault(_src);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	
+	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); } /**
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @title 限制文件大小
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @description 限制自定义上传文件的大小。选中文件后触发beforeUpload回调，通过true/false来确定是否继续上传【file.size/1024*100 单位 KB、file.size/1024 单位 M 】
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
+	
+	var demo8props = {
+	  name: 'file',
+	  action: '/upload.do',
+	  accept: "image/*",
+	  size: 300,
+	  headers: {
+	    authorization: 'authorization-text'
+	  },
+	  beforeUpload: function beforeUpload(file) {
+	    var maxsize = 3000;
+	    return file.size / 1024 * 100 >= maxsize ? false : true;
+	  }
+	};
+	
+	var Demo8 = function (_Component) {
+	  _inherits(Demo8, _Component);
+	
+	  function Demo8() {
+	    _classCallCheck(this, Demo8);
+	
+	    return _possibleConstructorReturn(this, _Component.apply(this, arguments));
+	  }
+	
+	  Demo8.prototype.render = function render() {
+	    return _react2['default'].createElement(
+	      _src2['default'],
+	      demo8props,
+	      _react2['default'].createElement(
+	        _beeButton2['default'],
+	        { shape: 'border' },
+	        _react2['default'].createElement(_beeIcon2['default'], { type: 'uf-upload' }),
+	        ' \u70B9\u51FB\u4E0A\u4F20'
+	      )
+	    );
+	  };
+	
+	  return Demo8;
+	}(_react.Component);
+	
+	exports['default'] = Demo8;
 	module.exports = exports['default'];
 
 /***/ })

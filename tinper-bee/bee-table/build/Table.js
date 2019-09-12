@@ -241,10 +241,8 @@ var Table = function (_Component) {
       var value1 = arr[index1];
       arr.splice(index1, 1);
       if (index1 < index2) {
-        console.log('向下拖');
         arr.splice(index2, 0, value1);
       } else {
-        console.log('向上拖');
         arr.splice(index2 + 1, 0, value1);
       }
 
@@ -318,7 +316,8 @@ var Table = function (_Component) {
       currentHoverKey: null,
       scrollPosition: 'left',
       fixedColumnsHeadRowsHeight: [],
-      fixedColumnsBodyRowsHeight: []
+      fixedColumnsBodyRowsHeight: [],
+      fixedColumnsExpandedRowsHeight: {} //扩展行的高度
     };
 
     _this.onExpandedRowsChange = _this.onExpandedRowsChange.bind(_this);
@@ -738,10 +737,10 @@ var Table = function (_Component) {
     } else if (fixed === 'right') {
       colCount = this.columnManager.rightLeafColumns().length;
     } else {
-      // colCount = this.columnManager.leafColumns().length;
       colCount = this.columnManager.centerColumns().length; //计算非固定列的个数，fix: 嵌套表格场景，右侧列断开的问题
     }
 
+    var expandedRowHeight = this.state.fixedColumnsExpandedRowsHeight[key] || 'auto';
     function contentContainer() {
       if (content && content.props && content.props.style) {
         return _react2["default"].createElement('div', { style: { height: content.props.style.height } });
@@ -781,7 +780,8 @@ var Table = function (_Component) {
       dragborderKey: this.props.dragborderKey,
       rowDraggAble: this.props.rowDraggAble,
       onDragRow: this.onDragRow,
-      onDragRowStart: this.onDragRowStart
+      onDragRowStart: this.onDragRowStart,
+      height: expandedRowHeight
     });
   };
 
@@ -827,7 +827,6 @@ var Table = function (_Component) {
     var fixedColumnsBodyRowsHeight = this.state.fixedColumnsBodyRowsHeight;
 
     var rst = [];
-
     var height = void 0;
     var rowClassName = props.rowClassName;
     var rowRef = props.rowRef;
@@ -976,6 +975,7 @@ var Table = function (_Component) {
         rst.push(this.getExpandedRow(key, expandedRowContent, subVisible, expandedRowClassName(record, i, indent), fixed));
       }
       if (childrenColumn) {
+        this.isTreeType = true; //增加该标志位，为了兼容老版本，不修改以前的 `this.treeType` 的相关逻辑
         this.treeType = true; //证明是tree表形式visible = {true}
         rst = rst.concat(this.getRowsByData(childrenColumn, subVisible, indent + 1, columns, fixed, paramRootIndex));
       }
@@ -984,12 +984,17 @@ var Table = function (_Component) {
     if (props.lazyLoad && props.lazyLoad.sufHeight && indent == 0) {
       rst.push(_react2["default"].createElement(_TableRow2["default"], { height: props.lazyLoad.sufHeight, key: 'table_row_end', columns: [], className: '', store: this.store, visible: true }));
     }
+    if (!this.isTreeType) {
+      this.treeType = false;
+    }
     return rst;
   };
 
   Table.prototype.getRows = function getRows(columns, fixed) {
     //统计index，只有含有树表结构才有用，因为树表结构时，固定列的索引取值有问题
     this.treeRowIndex = 0;
+    //每次遍历 data 前，将this.isTreeType置为 false，若遍历完 data，此变量仍为 false，说明是普通表格
+    this.isTreeType = false;
     var rs = this.getRowsByData(this.state.data, true, 0, columns, fixed);
     return rs;
   };
@@ -1346,6 +1351,7 @@ var Table = function (_Component) {
         bodyDisplayInRow = _props8.bodyDisplayInRow;
 
     var headRows = this.headTable ? this.headTable.querySelectorAll('thead') : this.bodyTable.querySelectorAll('thead');
+    var expandedRows = this.bodyTable.querySelectorAll('.' + clsPrefix + '-expanded-row') || [];
     var bodyRows = this.bodyTable.querySelectorAll('.' + clsPrefix + '-row') || [];
     var leftBodyRows = this.refs.fixedColumnsBodyLeft && this.refs.fixedColumnsBodyLeft.querySelectorAll('.' + clsPrefix + '-row') || [];
     var rightBodyRows = this.refs.fixedColumnsBodyRight && this.refs.fixedColumnsBodyRight.querySelectorAll('.' + clsPrefix + '-row') || [];
@@ -1378,13 +1384,19 @@ var Table = function (_Component) {
         }
       }
     });
-
-    if ((0, _shallowequal2["default"])(this.state.fixedColumnsHeadRowsHeight, fixedColumnsHeadRowsHeight) && (0, _shallowequal2["default"])(this.state.fixedColumnsBodyRowsHeight, fixedColumnsBodyRowsHeight)) {
+    var fixedColumnsExpandedRowsHeight = {};
+    expandedRows.length > 0 && expandedRows.forEach(function (row) {
+      var parentRowKey = row && row.previousSibling && row.previousSibling.getAttribute("data-row-key"),
+          height = row && row.getBoundingClientRect().height || 'auto';
+      fixedColumnsExpandedRowsHeight[parentRowKey] = height;
+    });
+    if ((0, _shallowequal2["default"])(this.state.fixedColumnsHeadRowsHeight, fixedColumnsHeadRowsHeight) && (0, _shallowequal2["default"])(this.state.fixedColumnsBodyRowsHeight, fixedColumnsBodyRowsHeight) && (0, _shallowequal2["default"])(this.state.fixedColumnsExpandedRowsHeight, fixedColumnsExpandedRowsHeight)) {
       return;
     }
     this.setState({
       fixedColumnsHeadRowsHeight: fixedColumnsHeadRowsHeight,
-      fixedColumnsBodyRowsHeight: fixedColumnsBodyRowsHeight
+      fixedColumnsBodyRowsHeight: fixedColumnsBodyRowsHeight,
+      fixedColumnsExpandedRowsHeight: fixedColumnsExpandedRowsHeight
     });
   };
 

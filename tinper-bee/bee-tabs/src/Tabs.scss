@@ -17,6 +17,9 @@ $tabs-border-color: rgb(233,233,233);
     outline: none;
     zoom: 1;
   }
+  .u-tabs-extra-content {
+    line-height: 38px;
+  }
 
   .u-tabs-ink-bar {
     z-index: 1;
@@ -196,7 +199,7 @@ $tabs-border-color: rgb(233,233,233);
   }
   
   .u-tabs-nav-container {
-    height: 100%;
+    height: calc(100% - 38px);
   }
   
   .u-tabs-nav-container-scrolling {
@@ -310,7 +313,7 @@ $tabs-border-color: rgb(233,233,233);
   }
   
   .u-tabs-nav-container {
-    height: 100%;
+    height: calc(100% - 38px);
   }
   
   .u-tabs-nav-container-scrolling {
@@ -951,6 +954,56 @@ $tabs-border-color: rgb(233,233,233);
         &:hover {
           color: #fff;
         }
+      }
+    }
+  }
+  .u-content-list {
+    border: none;
+  }
+}
+
+/*可编辑card*/
+.u-tabs-editable-card {
+  .u-tabs-bar {
+    line-height: 38px;
+  }
+  .u-tabs-nav {
+    .u-tabs-ink-bar {
+      height: 0;
+    }
+    background: map_get($tabs-fill-tab, back);
+    .u-tabs-tab {
+      margin-right: $tabs-fill-tab-maright;
+      color: map_get($tabs-fill-tab, color);
+      transition: color 0.3s;
+      background: #f5f5f5;
+      border: 1px solid #e9e9e9;
+      border-bottom-color: #f5f5f5;
+      border-top-left-radius: $tabs-simple-activeTopRadius;
+      border-top-right-radius: $tabs-simple-activeTopRadius;
+      .u-tabs-close-x{
+        font-size: 12px;
+      }
+      &:hover {
+        color: $brand-primary;
+      }
+      &::after {
+        position: absolute;
+        top: $tabs-fill-after-top;
+        left: $tabs-fill-after-left;
+        z-index: -1;
+        width: $tabs-fill-after-width;
+        height: $tabs-fill-after-height;
+        background: map_get($tabs-fill-tab, afterBack);
+        content: '';
+      }
+      &:hover::after, &:focus::after, &.u-tabs-tab-active::after {
+        background: #fff;
+      }
+      &-active {
+        color: $brand-primary;
+        border-color: #e9e9e9;
+        border-bottom: 1px solid #fff;
       }
     }
   }

@@ -28,7 +28,9 @@ const defaultProps = {
       strokeWidth: 3,
       showInfo: false,
     },
-    clsPrefix: 'u-upload'
+    clsPrefix: 'u-upload',
+    showRemoveIcon: true,
+    showPreviewIcon: true,
   };
 
 class UploadList extends Component{
@@ -76,7 +78,7 @@ class UploadList extends Component{
   }
 
   render() {
-    const { clsPrefix, items = [], listType } = this.props;
+    const { clsPrefix, items = [], listType, showRemoveIcon, showPreviewIcon } = this.props;
     const list = items.map(file => {
       let progress;
       let icon = <Icon type="uf-link" />;
@@ -134,21 +136,30 @@ class UploadList extends Component{
         pointerEvents: 'none',
         opacity: 0.5,
       };
+      const previewIcon = showPreviewIcon ? (
+        <a
+          href={file.url || file.thumbUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          style={style}
+          onClick={e => this.handlePreview(file, e)}
+        >
+          <Icon type="uf-eye-o" />
+        </a>
+      ) : null;
+      const removeIcon = showRemoveIcon ? (
+        <Icon type="uf-del" title="移除文件" onClick={() => this.handleClose(file)} />
+      ) : null;
+      const removeIconClose = showRemoveIcon ? (
+        <Icon type="uf-close" title="移除文件" onClick={() => this.handleClose(file)} />
+      ) : null;
       const actions = (listType === 'picture-card' && file.status !== 'uploading') ? (
         <span>
-          <a
-            href={file.url || file.thumbUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            style={style}
-            onClick={e => this.handlePreview(file, e)}
-          >
-            <Icon type="eye-open" />
-          </a>
-          <Icon type="uf-close" title="移除文件" onClick={() => this.handleClose(file)} />
+          {previewIcon}
+          {removeIcon}
         </span>
       ) : (
-        <Icon type="uf-close" title="移除文件" onClick={() => this.handleClose(file)} />
+        removeIconClose
       );
 
       return (

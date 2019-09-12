@@ -9,7 +9,6 @@
 import React, { Component } from 'react';
 import Calendar from '../../src/index';
 
-
 function onSelect(value) {
     console.log(value);
 }

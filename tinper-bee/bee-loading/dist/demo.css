@@ -11,7 +11,8 @@
   padding-top: 32px;
   font-size: 14px;
   color: #212121;
-  text-align: center; }
+  text-align: center;
+  line-height: 22px; }
 
 .u-loading-container {
   position: relative; }

@@ -1,6 +1,6 @@
 {
  "name": "bee-calendar",
- "version": "2.0.4",
+ "version": "2.1.0",
  "description": "Calendar ui component for react",
  "keywords": [
   "react",
@@ -37,7 +37,7 @@
   "tinper-bee-core": "latest",
   "babel-runtime": "^6.23.0",
   "moment": "^2.18.1",
-  "rc-calendar": "^8.4.4",
+  "rc-calendar": "^9.15.5",
   "rc-select": "^6.8.6"
  },
  "peerDependencies": {

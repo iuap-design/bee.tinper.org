@@ -292,7 +292,8 @@ var Picker = function (_Component) {
         autoFocus = _props6.autoFocus,
         inputReadOnly = _props6.inputReadOnly,
         inputIcon = _props6.inputIcon,
-        popupStyle = _props6.popupStyle;
+        popupStyle = _props6.popupStyle,
+        showClear = _props6.showClear;
     var _state = this.state,
         open = _state.open,
         value = _state.value;
@@ -336,7 +337,7 @@ var Picker = function (_Component) {
           id: id
         }),
         inputIcon || _react2["default"].createElement('span', { className: prefixCls + '-icon' }),
-        this.renderClearButton()
+        showClear && !disabled && this.renderClearButton()
       )
     );
   };
@@ -422,7 +423,8 @@ Picker.defaultProps = {
   addon: noop,
   use12Hours: false,
   focusOnOpen: false,
-  onKeyDown: noop
+  onKeyDown: noop,
+  showClear: true
 };
 
 var _initialiseProps = function _initialiseProps() {

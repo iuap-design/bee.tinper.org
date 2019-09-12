@@ -18,7 +18,7 @@ const propTypes = {
 const defaultProps = {
     offsetTop: 0,
     horizontal: false,
-    container: document.body,
+    // container: document.body,
     target: () => window,
     onChange: (affixed) => ({}),
     onTargetChange: (state) => ({}),

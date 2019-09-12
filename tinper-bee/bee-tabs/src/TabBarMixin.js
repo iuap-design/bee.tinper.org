@@ -2,12 +2,8 @@
 * This source code is quoted from rc-tabs.
 * homepage: https://github.com/react-component/tabs
 */
-import React from 'react';
+import React from "react";
 import classnames from 'classnames';
-
-const tabBarExtraContentStyle = {
-  float: 'right',
-};
 
 export default {
   getDefaultProps() {
@@ -62,11 +58,29 @@ export default {
     return rst;
   },
   getRootNode(contents) {
-    const { clsPrefix, onKeyDown, className, extraContent, style, tabIndex } = this.props;
+    const { clsPrefix, onKeyDown, className, extraContent, style, tabIndex, tabBarPosition } = this.props;
     const cls = classnames({
       [`${clsPrefix}-bar`]: 1,
       [className]: !!className,
     });
+    const topOrBottom = (tabBarPosition === 'top' || tabBarPosition === 'bottom');
+    const tabBarExtraContentStyle = topOrBottom ? { float: 'right' } : {};
+    let newChildren = contents;
+    if (extraContent) {
+      newChildren = [
+        React.cloneElement(
+          <div
+            style={tabBarExtraContentStyle}
+            key="extra"
+            className={`${clsPrefix}-extra-content`}
+          >
+            {extraContent}
+          </div>
+        ),
+        React.cloneElement(contents)
+      ];
+      newChildren = topOrBottom ? newChildren : newChildren.reverse();
+    }
     return (
       <div
         role="tablist"
@@ -76,14 +90,15 @@ export default {
         onKeyDown={onKeyDown}
         style={style}
       >
-        {extraContent ?
+        {/* {extraContent ?
           (<div
             style={tabBarExtraContentStyle}
             key="extra"
+            className={`${clsPrefix}-extra-content`}
           >
             {extraContent}
-          </div>) : null}
-        {contents}
+          </div>) : null} */}
+        {newChildren}
       </div>);
   },
 };

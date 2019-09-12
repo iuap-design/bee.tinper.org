@@ -1,6 +1,6 @@
 {
  "name": "bee-tabs",
- "version": "2.1.1",
+ "version": "2.1.2",
  "description": "tabs ui component for react",
  "keywords": [
   "react",
@@ -33,6 +33,7 @@
   "pub": "bee-tools run pub"
  },
  "dependencies": {
+  "bee-icon": "latest",
   "classnames": "^2.2.5",
   "react-router": "^4.2.0",
   "tinper-bee-core": "latest"
@@ -46,7 +47,6 @@
   "bee-button": "latest",
   "bee-clipboard": "^2.0.0",
   "bee-drawer": "0.0.2",
-  "bee-icon": "latest",
   "bee-layout": "latest",
   "bee-panel": "latest",
   "bee-select": "latest",

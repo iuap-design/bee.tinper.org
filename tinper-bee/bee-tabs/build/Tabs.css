@@ -15,6 +15,8 @@
     white-space: nowrap;
     outline: none;
     zoom: 1; }
+  .u-tabs .u-tabs-extra-content {
+    line-height: 38px; }
   .u-tabs .u-tabs-ink-bar {
     z-index: 1;
     position: absolute;
@@ -129,7 +131,7 @@
   .u-tabs-left .u-tabs-top .u-tabs-bar {
     height: 54px; }
   .u-tabs-left .u-tabs-nav-container {
-    height: 100%; }
+    height: calc(100% - 38px); }
   .u-tabs-left .u-tabs-nav-container-scrolling {
     padding-top: 32px;
     padding-bottom: 32px; }
@@ -202,7 +204,7 @@
     margin-left: 16px;
     border-left: 1px solid #e9e9e9; }
   .u-tabs-right .u-tabs-nav-container {
-    height: 100%; }
+    height: calc(100% - 38px); }
   .u-tabs-right .u-tabs-nav-container-scrolling {
     padding-top: 32px;
     padding-bottom: 32px; }
@@ -590,6 +592,46 @@
         color: #fff; }
 
 .u-tabs-fill .u-content-list {
+  border: none; }
+
+/*可编辑card*/
+.u-tabs-editable-card .u-tabs-bar {
+  line-height: 38px; }
+
+.u-tabs-editable-card .u-tabs-nav {
+  background: #fff; }
+  .u-tabs-editable-card .u-tabs-nav .u-tabs-ink-bar {
+    height: 0; }
+  .u-tabs-editable-card .u-tabs-nav .u-tabs-tab {
+    margin-right: 5px;
+    color: #666;
+    transition: color 0.3s;
+    background: #f5f5f5;
+    border: 1px solid #e9e9e9;
+    border-bottom-color: #f5f5f5;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px; }
+    .u-tabs-editable-card .u-tabs-nav .u-tabs-tab .u-tabs-close-x {
+      font-size: 12px; }
+    .u-tabs-editable-card .u-tabs-nav .u-tabs-tab:hover {
+      color: rgb(245, 60, 50); }
+    .u-tabs-editable-card .u-tabs-nav .u-tabs-tab::after {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      width: 100%;
+      height: 100%;
+      background: #d2d8d6;
+      content: ''; }
+    .u-tabs-editable-card .u-tabs-nav .u-tabs-tab:hover::after, .u-tabs-editable-card .u-tabs-nav .u-tabs-tab:focus::after, .u-tabs-editable-card .u-tabs-nav .u-tabs-tab.u-tabs-tab-active::after {
+      background: #fff; }
+    .u-tabs-editable-card .u-tabs-nav .u-tabs-tab-active {
+      color: rgb(245, 60, 50);
+      border-color: #e9e9e9;
+      border-bottom: 1px solid #fff; }
+
+.u-tabs-editable-card .u-content-list {
   border: none; }
 
 /*基础tab3*/

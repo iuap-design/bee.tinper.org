@@ -47,7 +47,7 @@ var propTypes = {
 var defaultProps = {
     offsetTop: 0,
     horizontal: false,
-    container: document.body,
+    // container: document.body,
     target: function target() {
         return window;
     },

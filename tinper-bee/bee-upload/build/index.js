@@ -34,6 +34,10 @@ var _propTypes = require('prop-types');
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
+var _beeModal = require('bee-modal');
+
+var _beeModal2 = _interopRequireDefault(_beeModal);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
@@ -97,6 +101,19 @@ function Dragger(props) {
   return _react2["default"].createElement(Upload, _extends({}, props, { type: 'drag', style: { height: props.height } }));
 }
 
+function getBase64(file) {
+  return new Promise(function (resolve, reject) {
+    var reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = function () {
+      return resolve(reader.result);
+    };
+    reader.onerror = function (error) {
+      return reject(error);
+    };
+  });
+}
+
 var File = {
   uid: _propTypes2["default"].number,
   size: _propTypes2["default"].number,
@@ -130,7 +147,7 @@ var propTypes = {
   onChange: _propTypes2["default"].func,
   listType: _propTypes2["default"].oneOf(['text', 'picture', 'picture-card']),
   className: _propTypes2["default"].string,
-  onPreview: _propTypes2["default"].func,
+  // onPreview: PropTypes.func,
   onRemove: _propTypes2["default"].func,
   supportServerRender: _propTypes2["default"].bool,
   style: _propTypes2["default"].object,
@@ -156,10 +173,22 @@ var defaultProps = {
 var Upload = function (_Component) {
   _inherits(Upload, _Component);
 
+  // recentUploadStatus: boolean | PromiseLike<any>;
+  // progressTimer: any;
+  // refs: {
+  //   [key: string]: any;
+  //   upload: any;
+  // };
+
   function Upload(props) {
     _classCallCheck(this, Upload);
 
     var _this = _possibleConstructorReturn(this, _Component.call(this, props));
+
+    _this.state = {
+      previewVisible: false,
+      previewImage: ''
+    };
 
     _this.onStart = function (file) {
       var targetItem = void 0;
@@ -261,6 +290,24 @@ var Upload = function (_Component) {
       });
     };
 
+    _this.handlePreview = function (file) {
+      var displayPreview = function displayPreview() {
+        _this.setState({
+          previewImage: file.url || file.thumbUrl,
+          previewVisible: true
+        });
+      };
+      if (!file.url && !file.thumbUrl) {
+        getBase64(file.originFileObj).then(displayPreview);
+      } else {
+        displayPreview();
+      }
+    };
+
+    _this.handleCancel = function () {
+      return _this.setState({ previewVisible: false });
+    };
+
     _this.state = {
       fileList: _this.props.fileList || _this.props.defaultFileList || [],
       dragState: 'drop'
@@ -326,11 +373,15 @@ var Upload = function (_Component) {
         clsPrefix = _props$clsPrefix === undefined ? '' : _props$clsPrefix,
         showUploadList = _props.showUploadList,
         listType = _props.listType,
-        onPreview = _props.onPreview,
         type = _props.type,
         disabled = _props.disabled,
         children = _props.children,
         className = _props.className;
+    var showRemoveIcon = showUploadList.showRemoveIcon,
+        showPreviewIcon = showUploadList.showPreviewIcon;
+    var _state = this.state,
+        previewVisible = _state.previewVisible,
+        previewImage = _state.previewImage;
 
 
     var rcUploadProps = (0, _objectAssign2["default"])({}, this.props, {
@@ -344,8 +395,10 @@ var Upload = function (_Component) {
     var uploadList = showUploadList ? _react2["default"].createElement(_uploadList2["default"], {
       listType: listType,
       items: this.state.fileList,
-      onPreview: onPreview,
-      onRemove: this.handleManualRemove
+      onPreview: this.handlePreview,
+      onRemove: this.handleManualRemove,
+      showRemoveIcon: !disabled && showRemoveIcon,
+      showPreviewIcon: showPreviewIcon
     }) : null;
 
     if (type === 'drag') {
@@ -389,10 +442,32 @@ var Upload = function (_Component) {
 
     if (listType === 'picture-card') {
       return _react2["default"].createElement(
-        'span',
-        { className: className },
-        uploadList,
-        uploadButton
+        'div',
+        null,
+        _react2["default"].createElement(
+          'span',
+          { className: className },
+          uploadList,
+          uploadButton
+        ),
+        _react2["default"].createElement(
+          _beeModal2["default"],
+          { show: previewVisible, onHide: this.handleCancel },
+          _react2["default"].createElement(
+            _beeModal2["default"].Header,
+            { closeButton: true },
+            _react2["default"].createElement(
+              _beeModal2["default"].Title,
+              null,
+              '\u5927\u56FE\u9884\u89C8'
+            )
+          ),
+          _react2["default"].createElement(
+            _beeModal2["default"].Body,
+            null,
+            _react2["default"].createElement('img', { alt: 'example', style: { width: '100%' }, src: previewImage })
+          )
+        )
       );
     }
     return _react2["default"].createElement(

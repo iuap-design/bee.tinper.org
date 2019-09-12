@@ -102,6 +102,11 @@ import 'bee-table/build/Table.css';
 | onDragRowStart | 行拖拽开始时的回调函数 | function(record,index) | `record` : 当前行的数据 <br> `index` : 当前行的index|
 | onDropRow | 行拖拽结束后的回调函数 | function(data,record) | `data` : 拖拽后的新data数组<br> `record` : 拖拽行的数据 |
 
+### Data
+
+|参数|说明|类型|默认值|
+|:--|:---|:--|:---|
+| style | 该行的样式，严格按照react的样式书写规则，即对象内每一个属性的键为小写驼峰式，值为字符串 | object | - |
 
 ### Column
 
@@ -141,6 +146,7 @@ import 'bee-table/build/Table.css';
 | [v2.2.2新增]required | 必填项的列标题展示红色星号 | bool | false |
 | isShow | 是否展示该列数据 | bool | true |
 | cellMenu | 渲染单元格内操作按钮 | object | - |
+| style | 该列的样式，严格按照react的样式书写规则，即对象内每一个属性的键为小写驼峰式，值为字符串 | object | - |
 
 #### [v2.2.x新增] cellMenu
 
@@ -286,6 +292,7 @@ Table 组件参数：
 | 参数     | 说明         | 类型       | 返回值  |
 | ------ | ---------- | -------- | ---- |
 | getSelectedDataFunc | 返回当前选中的数据数组 | Function | `selectedList` : 当前选中的行数据集合<br>`record` :  当前操作行数据<br>`index` : 当前操作行索引   |
+| multiSelectConfig | 自定义 Checkbox 属性，如设置复选框为红色填充 | Object | - |
 
 Data 数组参数：
 

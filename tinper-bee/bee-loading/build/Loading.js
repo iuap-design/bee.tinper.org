@@ -199,9 +199,13 @@ var Loading = function (_Component) {
       );
     }
 
-    return _react2["default"].createElement(
+    return typeof window !== 'undefined' ? _react2["default"].createElement(
       _Portal2["default"],
       { container: container },
+      dom
+    ) : _react2["default"].createElement(
+      "div",
+      null,
       dom
     );
   };

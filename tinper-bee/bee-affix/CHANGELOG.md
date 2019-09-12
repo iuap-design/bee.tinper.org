@@ -1,3 +1,13 @@
+<a name="1.0.16"></a>
+## [1.0.16](https://github.com/tinper-bee/bee-affix/compare/1.0.15...1.0.16) (2019-09-11)
+
+
+
+<a name="1.0.15"></a>
+## [1.0.15](https://github.com/tinper-bee/bee-affix/compare/v1.0.14...1.0.15) (2019-03-14)
+
+
+
 <a name="1.0.14"></a>
 ## [1.0.14](https://github.com/tinper-bee/bee-affix/compare/v1.0.12...v1.0.14) (2018-11-16)
 

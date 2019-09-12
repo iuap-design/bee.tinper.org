@@ -22,10 +22,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var tabBarExtraContentStyle = {
-  "float": 'right'
-};
-
 exports["default"] = {
   getDefaultProps: function getDefaultProps() {
     return {
@@ -90,9 +86,25 @@ exports["default"] = {
         className = _props.className,
         extraContent = _props.extraContent,
         style = _props.style,
-        tabIndex = _props.tabIndex;
+        tabIndex = _props.tabIndex,
+        tabBarPosition = _props.tabBarPosition;
 
     var cls = (0, _classnames3["default"])((_classnames = {}, _defineProperty(_classnames, clsPrefix + '-bar', 1), _defineProperty(_classnames, className, !!className), _classnames));
+    var topOrBottom = tabBarPosition === 'top' || tabBarPosition === 'bottom';
+    var tabBarExtraContentStyle = topOrBottom ? { "float": 'right' } : {};
+    var newChildren = contents;
+    if (extraContent) {
+      newChildren = [_react2["default"].cloneElement(_react2["default"].createElement(
+        'div',
+        {
+          style: tabBarExtraContentStyle,
+          key: 'extra',
+          className: clsPrefix + '-extra-content'
+        },
+        extraContent
+      )), _react2["default"].cloneElement(contents)];
+      newChildren = topOrBottom ? newChildren : newChildren.reverse();
+    }
     return _react2["default"].createElement(
       'div',
       {
@@ -103,15 +115,7 @@ exports["default"] = {
         onKeyDown: onKeyDown,
         style: style
       },
-      extraContent ? _react2["default"].createElement(
-        'div',
-        {
-          style: tabBarExtraContentStyle,
-          key: 'extra'
-        },
-        extraContent
-      ) : null,
-      contents
+      newChildren
     );
   }
 };

@@ -93,6 +93,7 @@ export default class Picker extends Component {
     use12Hours: false,
     focusOnOpen: false,
     onKeyDown: noop,
+    showClear: true
   };
 
   constructor(props) {
@@ -333,6 +334,7 @@ export default class Picker extends Component {
       inputReadOnly,
       inputIcon,
       popupStyle,
+      showClear,
     } = this.props;
     const { open, value } = this.state;
     const popupClassName = this.getPopupClassName();
@@ -371,7 +373,7 @@ export default class Picker extends Component {
             id={id}
           />
           {inputIcon || <span className={`${prefixCls}-icon`} />}
-          {this.renderClearButton()}
+          {showClear && !disabled && this.renderClearButton()}
         </span>
       </Trigger>
     );

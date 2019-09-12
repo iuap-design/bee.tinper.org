@@ -6,9 +6,8 @@
  */
 
 import React, { Component } from 'react';
-import { Row, Col } from 'bee-layout';
 import Cascader from '../../src';
-import FormControl from 'bee-form-control'
+import Button from 'bee-button';
 import Form from 'bee-form';
 const FormItem = Form.FormItem;
 
@@ -100,37 +99,30 @@ class Demo2 extends Component {
 		let { form: { getFieldProps } } = this.props;
 		return (
 			<div>
-				<Row>
-					<Col md={4}>
-						<p>单独的Cascader</p>
-						<div className="height-150" style={{paddingLeft:'12px'}}>
-							<Cascader
-								defaultValue={defaultOptions}
-								options={options}
-								onChange={this.onChange}
-								placeholder="请选择"
-							/>
-						</div>
-					</Col>
-				</Row>
-				<Row>
-					<Col md={4}>
-						<div className="height-150">
-							<p>form表单包裹的Cascader</p>
-							<FormItem onSubmit={this.onSubmit}>
-								<Cascader
-									options={options}
-									placeholder="请选择"
-									{...getFieldProps('area', { initialValue: defaultOptions1, onChange: this.onChange})}
-								/>
-							</FormItem>
-							<div style={{paddingLeft:'12px'}}>
-								<button onClick={this.onSubmit}>提交</button>
-								<button onClick={this.onRest}>清除</button>
-							</div>
-						</div>
-					</Col>
-				</Row>
+				<p>单独的Cascader</p>
+				<div className="height-150" style={{paddingLeft:'12px'}}>
+					<Cascader
+						defaultValue={defaultOptions}
+						options={options}
+						onChange={this.onChange}
+						placeholder="请选择"
+					/>
+				</div>
+				<br />
+				<div className="height-150">
+					<p>form表单包裹的Cascader</p>
+					<FormItem onSubmit={this.onSubmit}>
+						<Cascader
+							options={options}
+							placeholder="请选择"
+							{...getFieldProps('area', { initialValue: defaultOptions1, onChange: this.onChange})}
+						/>
+					</FormItem>
+					<div style={{paddingLeft:'12px'}}>
+						<Button bordered onClick={this.onRest} style={{marginRight:'8px'}}>清除</Button>
+						<Button colors="primary" onClick={this.onSubmit}>提交</Button>
+					</div>
+				</div>
 			</div>
 		)
 	}

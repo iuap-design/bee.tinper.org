@@ -19,7 +19,8 @@ export default function multiSelect(Table, Checkbox) {
       prefixCls: "u-table-mult-select",
       getSelectedDataFunc:()=>{},
       autoSelect: false,
-      autoCheckedByClickRows: true
+      autoCheckedByClickRows: true,
+      multiSelectConfig: {}
     }
 
     constructor(props) {
@@ -243,6 +244,7 @@ export default function multiSelect(Table, Checkbox) {
     
 
     getDefaultColumns=(columns)=>{
+      let {multiSelectConfig} = this.props;
       let {checkedAll,indeterminate} = this.state;
       let checkAttr = {checked:checkedAll?true:false};
       const data = this.props.data;
@@ -262,6 +264,7 @@ export default function multiSelect(Table, Checkbox) {
             <Checkbox
               className="table-checkbox"
               {...checkAttr}
+              {...multiSelectConfig}
               disabled={disabledCount==dataLength?true:false}
               onChange={this.onAllCheckChange}
             />
@@ -277,6 +280,7 @@ export default function multiSelect(Table, Checkbox) {
                 key={index}
                 className="table-checkbox"
                 {...attr}
+                {...multiSelectConfig}
                 checked={record._checked}
                 onClick={this.handleClick}
                 onChange={this.onCheckboxChange(text, record, index)}
@@ -288,6 +292,7 @@ export default function multiSelect(Table, Checkbox) {
 
     // 实现行点击时触发多选框勾选的需求
     onRowClick = (record,index,event) =>{
+      if(record._disabled) return;
       let { autoCheckedByClickRows, onRowClick } = this.props;
       if(autoCheckedByClickRows) {
         this.onCheckboxChange('',record, index)();

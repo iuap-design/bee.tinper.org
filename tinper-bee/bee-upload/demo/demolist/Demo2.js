@@ -1,6 +1,6 @@
 /**
- * @title 列表`Upload`
- * @description 自定义已上传文件列表。
+ * @title 已上传的文件列表
+ * @description 使用 `defaultFileList` 自定义已上传的文件列表。
  */
 
 import React, { Component } from 'react';
@@ -33,7 +33,7 @@ class Demo2 extends Component {
     return( 
       <Upload {...demo2props}>
         <Button type="primary" shape="border">
-          <Icon type="uf-upload" /> Click to Upload
+          <Icon type="uf-upload" /> 点击上传
         </Button>
       </Upload>
     )

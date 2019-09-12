@@ -116,7 +116,7 @@ var Tree = function (_React$Component) {
   };
 
   Tree.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
-    var expandedKeys = this.getDefaultExpandedKeys(nextProps, true);
+    var expandedKeys = this.getDefaultExpandedKeys(nextProps);
     var checkedKeys = this.getDefaultCheckedKeys(nextProps, true);
     var selectedKeys = this.getDefaultSelectedKeys(nextProps, true);
     var st = {};

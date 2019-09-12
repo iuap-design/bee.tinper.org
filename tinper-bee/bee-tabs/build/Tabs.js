@@ -37,6 +37,10 @@ var _createReactClass = require("create-react-class");
 
 var _createReactClass2 = _interopRequireDefault(_createReactClass);
 
+var _beeIcon = require("bee-icon");
+
+var _beeIcon2 = _interopRequireDefault(_beeIcon);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; } /**
@@ -68,7 +72,7 @@ var Tabs = (0, _createReactClass2["default"])({
     className: _propTypes2["default"].string,
     tabBarPosition: _propTypes2["default"].string,
     style: _propTypes2["default"].object,
-    tabBarStyle: _propTypes2["default"].oneOf(["simple", "fill", "primary", "upborder", "fade", "downborder", "trapezoid"])
+    tabBarStyle: _propTypes2["default"].oneOf(["simple", "fill", "primary", "upborder", "fade", "downborder", "trapezoid", "editable-card"])
   },
 
   getDefaultProps: function getDefaultProps() {
@@ -163,8 +167,34 @@ var Tabs = (0, _createReactClass2["default"])({
     });
     return ret;
   },
+  onPrevClick: function onPrevClick(e) {
+    this.props.onPrevClick && this.props.onPrevClick(e);
+  },
+  onNextClick: function onNextClick(e) {
+    this.props.onNextClick && this.props.onNextClick(e);
+  },
+  createNewTab: function createNewTab(targetKey) {
+    var onEdit = this.props.onEdit;
+
+    if (onEdit) {
+      onEdit(targetKey, 'add');
+    }
+  },
+  removeTab: function removeTab(targetKey, e) {
+    e.stopPropagation();
+    if (!targetKey) {
+      return;
+    }
+
+    var onEdit = this.props.onEdit;
+
+    if (onEdit) {
+      onEdit(targetKey, 'remove');
+    }
+  },
   render: function render() {
-    var _classnames;
+    var _classnames,
+        _this = this;
 
     var props = this.props;
     var clsPrefix = props.clsPrefix,
@@ -175,22 +205,65 @@ var Tabs = (0, _createReactClass2["default"])({
         tabBarStyle = props.tabBarStyle,
         extraContent = props.extraContent,
         animated = props.animated,
-        tabIndex = props.tabIndex;
+        tabIndex = props.tabIndex,
+        children = props.children,
+        hideAdd = props.hideAdd;
 
 
     var cls = (0, _classnames3["default"])((_classnames = {}, _defineProperty(_classnames, clsPrefix, true), _defineProperty(_classnames, clsPrefix + "-" + tabBarPosition, true), _defineProperty(_classnames, className, !!className), _defineProperty(_classnames, clsPrefix + "-" + tabBarStyle, true), _classnames));
 
     this.tabBar = renderTabBar();
+
+    // only card type tabs can be added and closed
+    var childrenWithClose = [],
+        tabBarExtraContent = extraContent;
+    if (tabBarStyle === 'editable-card') {
+      childrenWithClose = [];
+      _react2["default"].Children.forEach(children, function (child, index) {
+        if (!_react2["default"].isValidElement(child)) return child;
+        var closable = child.props.closable;
+
+        closable = typeof closable === 'undefined' ? true : closable;
+        var closeIcon = closable ? _react2["default"].createElement(_beeIcon2["default"], {
+          type: "uf-close",
+          className: clsPrefix + "-close-x",
+          onClick: function onClick(e) {
+            return _this.removeTab(child.key, e);
+          }
+        }) : null;
+        childrenWithClose.push(_react2["default"].cloneElement(child, {
+          tab: _react2["default"].createElement(
+            "div",
+            { className: closable ? undefined : clsPrefix + "-tab-unclosable" },
+            child.props.tab,
+            closeIcon
+          ),
+          key: child.key || index
+        }));
+      });
+      // Add new tab handler
+      if (!hideAdd) {
+        tabBarExtraContent = _react2["default"].createElement(
+          "span",
+          null,
+          _react2["default"].createElement(_beeIcon2["default"], { type: "uf-add-s-o", className: clsPrefix + "-new-tab", onClick: this.createNewTab }),
+          extraContent
+        );
+      }
+    }
+
     var contents = [_react2["default"].cloneElement(this.tabBar, {
       clsPrefix: clsPrefix,
       key: "tabBar",
       onKeyDown: this.onNavKeyDown,
       tabBarPosition: tabBarPosition,
-      extraContent: extraContent,
+      extraContent: tabBarExtraContent,
       onTabClick: this.onTabClick,
-      panels: props.children,
+      panels: childrenWithClose.length > 0 ? childrenWithClose : children,
       activeKey: this.state.activeKey,
-      tabIndex: tabIndex
+      tabIndex: tabIndex,
+      onPrevClick: this.onPrevClick,
+      onNextClick: this.onNextClick
     }), _react2["default"].cloneElement(renderTabContent(), {
       clsPrefix: clsPrefix,
       tabBarPosition: tabBarPosition,

@@ -10,6 +10,7 @@ import TabContent from "./TabContent";
 import ScrollableInkTabBar from "./ScrollableInkTabBar";
 import PropTypes from 'prop-types';
 import createClass from 'create-react-class';
+import Icon from 'bee-icon';
 
 function noop() {}
 
@@ -41,7 +42,8 @@ const Tabs = createClass({
       "upborder",
       "fade",
       "downborder",
-      "trapezoid"
+      "trapezoid",
+      "editable-card"
     ])
   },
 
@@ -139,6 +141,29 @@ const Tabs = createClass({
     });
     return ret;
   },
+  onPrevClick(e){
+    this.props.onPrevClick && this.props.onPrevClick(e)
+  },
+  onNextClick(e){
+    this.props.onNextClick && this.props.onNextClick(e)
+  },
+  createNewTab(targetKey){
+    const { onEdit } = this.props;
+    if (onEdit) {
+      onEdit(targetKey, 'add');
+    }
+  },
+  removeTab(targetKey, e){
+    e.stopPropagation();
+    if (!targetKey) {
+      return;
+    }
+
+    const { onEdit } = this.props;
+    if (onEdit) {
+      onEdit(targetKey, 'remove');
+    }
+  },
 
   render() {
     const props = this.props;
@@ -149,9 +174,11 @@ const Tabs = createClass({
       renderTabContent,
       renderTabBar,
       tabBarStyle,
-        extraContent,
-        animated,
-        tabIndex,
+      extraContent,
+      animated,
+      tabIndex,
+      children,
+      hideAdd,
     } = props;
 
     const cls = classnames({
@@ -162,17 +189,59 @@ const Tabs = createClass({
     });
 
     this.tabBar = renderTabBar();
+
+    // only card type tabs can be added and closed
+    let childrenWithClose = [],
+        tabBarExtraContent = extraContent;
+    if (tabBarStyle === 'editable-card') {
+      childrenWithClose = [];
+      React.Children.forEach(children, (child, index) => {
+        if (!React.isValidElement(child)) return child;
+        let { closable } = child.props;
+        closable = typeof closable === 'undefined' ? true : closable;
+        const closeIcon = closable ? (
+          <Icon
+            type="uf-close"
+            className={`${clsPrefix}-close-x`}
+            onClick={e => this.removeTab(child.key, e)}
+          />
+        ) : null;
+        childrenWithClose.push(
+          React.cloneElement(child, {
+            tab: (
+              <div className={closable ? undefined : `${clsPrefix}-tab-unclosable`}>
+                {child.props.tab}
+                {closeIcon}
+              </div>
+            ),
+            key: child.key || index,
+          }),
+        );
+      });
+      // Add new tab handler
+      if (!hideAdd) {
+        tabBarExtraContent = (
+          <span>
+            <Icon type="uf-add-s-o" className={`${clsPrefix}-new-tab`} onClick={this.createNewTab} />
+            {extraContent}
+          </span>
+        );
+      }
+    }
+
     const contents = [
       React.cloneElement(this.tabBar, {
         clsPrefix,
         key: "tabBar",
         onKeyDown: this.onNavKeyDown,
         tabBarPosition,
-          extraContent,
+        extraContent: tabBarExtraContent,
         onTabClick: this.onTabClick,
-        panels: props.children,
+        panels: childrenWithClose.length > 0 ? childrenWithClose : children,
         activeKey: this.state.activeKey,
-        tabIndex
+        tabIndex,
+        onPrevClick: this.onPrevClick,
+        onNextClick: this.onNextClick,
       }),
       React.cloneElement(renderTabContent(), {
         clsPrefix,

@@ -36944,15 +36944,6 @@
 	  wrapperClassName: ""
 	};
 	
-	var sizeMap = {
-	  sm: "sm",
-	  lg: "lg"
-	},
-	    colorsMap = {
-	  primary: "primary",
-	  success: "success",
-	  warning: "warning"
-	};
 	var isReact16 = _reactDom2["default"].createPortal !== undefined;
 	
 	var Loading = function (_Component) {
@@ -36998,19 +36989,7 @@
 	        tip = _props2.tip,
 	        others = _objectWithoutProperties(_props2, ["clsPrefix", "loadingType", "size", "color", "show", "showBackDrop", "container", "children", "fullScreen", "wrapperClassName", "indicator", "tip"]);
 	
-	    // let clsObj = {};
-	
 	    if (!show) return null;
-	
-	    // clsObj[`${clsPrefix}-${loadingType}`] = true;
-	
-	    // if (sizeMap[size]) {
-	    //   clsObj[`${clsPrefix}-${loadingType}-${sizeMap[size]}`] = true;
-	    // }
-	
-	    // if (colorsMap[color]) {
-	    //   clsObj[`${clsPrefix}-${loadingType}-${colorsMap[color]}`] = true;
-	    // }
 	
 	    var clsObj = (0, _classnames3["default"])(clsPrefix, (_classnames = {}, _defineProperty(_classnames, clsPrefix + "-" + loadingType, true), _defineProperty(_classnames, clsPrefix + "-" + loadingType + "-sm", size === 'sm'), _defineProperty(_classnames, clsPrefix + "-" + loadingType + "-lg", size === 'lg'), _defineProperty(_classnames, clsPrefix + "-" + loadingType + "-" + color, !!color), _defineProperty(_classnames, clsPrefix + "-show-text", !!tip), _classnames), wrapperClassName);
 	
@@ -37018,9 +36997,6 @@
 	
 	    var dom = "";
 	
-	    // if (wrapperClassName) {
-	    //   classes += " " + wrapperClassName;
-	    // }
 	    if (loadingType === "custom" && !!indicator) {
 	      dom = _react2["default"].createElement(
 	        "div",
@@ -37090,9 +37066,13 @@
 	      );
 	    }
 	
-	    return _react2["default"].createElement(
+	    return typeof window !== 'undefined' ? _react2["default"].createElement(
 	      _Portal2["default"],
 	      { container: container },
+	      dom
+	    ) : _react2["default"].createElement(
+	      "div",
+	      null,
 	      dom
 	    );
 	  };

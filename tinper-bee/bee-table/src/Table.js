@@ -131,6 +131,7 @@ class Table extends Component {
       scrollPosition: 'left',
       fixedColumnsHeadRowsHeight: [],
       fixedColumnsBodyRowsHeight: [],
+      fixedColumnsExpandedRowsHeight: {}, //扩展行的高度
     }
 
     this.onExpandedRowsChange = this.onExpandedRowsChange.bind(this);
@@ -542,10 +543,10 @@ class Table extends Component {
     } else if (fixed === 'right') {
       colCount = this.columnManager.rightLeafColumns().length;
     } else {
-      // colCount = this.columnManager.leafColumns().length;
       colCount = this.columnManager.centerColumns().length; //计算非固定列的个数，fix: 嵌套表格场景，右侧列断开的问题
     }
 
+    let expandedRowHeight = this.state.fixedColumnsExpandedRowsHeight[key] || 'auto';
     function contentContainer() {
       if (content && content.props && content.props.style) {
         return (
@@ -585,6 +586,7 @@ class Table extends Component {
         rowDraggAble={this.props.rowDraggAble}
         onDragRow={this.onDragRow}
         onDragRowStart={this.onDragRowStart}
+        height={expandedRowHeight}
       />
     );
   }
@@ -640,11 +642,9 @@ class Table extends Component {
     var value1 = arr[index1]
     arr.splice(index1,1)
     if(index1<index2){
-      console.log('向下拖')
       arr.splice(index2,0,value1)
 
     }else {
-      console.log('向上拖')
       arr.splice(index2+1,0,value1)
     }
 
@@ -670,7 +670,6 @@ class Table extends Component {
     const expandRowByClick = props.expandRowByClick;
     const { fixedColumnsBodyRowsHeight } = this.state;
     let rst = [];
-
     let height;
     const rowClassName = props.rowClassName;
     const rowRef = props.rowRef;
@@ -825,6 +824,7 @@ class Table extends Component {
         ));
       }
       if (childrenColumn) {
+        this.isTreeType = true; //增加该标志位，为了兼容老版本，不修改以前的 `this.treeType` 的相关逻辑
         this.treeType = true;//证明是tree表形式visible = {true}
         rst = rst.concat(this.getRowsByData(
           childrenColumn, subVisible, indent + 1, columns, fixed,paramRootIndex
@@ -837,12 +837,17 @@ class Table extends Component {
         <TableRow height={props.lazyLoad.sufHeight} key={'table_row_end'} columns={[]} className='' store={this.store} visible = {true}/>
       )
     }
+    if (!this.isTreeType) {
+      this.treeType = false;
+    }
     return rst;
   }
 
   getRows(columns, fixed) {
     //统计index，只有含有树表结构才有用，因为树表结构时，固定列的索引取值有问题
     this.treeRowIndex = 0;
+    //每次遍历 data 前，将this.isTreeType置为 false，若遍历完 data，此变量仍为 false，说明是普通表格
+    this.isTreeType = false;
     let rs = this.getRowsByData(this.state.data, true, 0, columns, fixed);
     return rs;
   }
@@ -1150,6 +1155,7 @@ class Table extends Component {
     const headRows = this.headTable ?
       this.headTable.querySelectorAll('thead') :
       this.bodyTable.querySelectorAll('thead');
+    const expandedRows = this.bodyTable.querySelectorAll(`.${clsPrefix}-expanded-row`) || [];
     const bodyRows = this.bodyTable.querySelectorAll(`.${clsPrefix}-row`) || [];
     const leftBodyRows = this.refs.fixedColumnsBodyLeft && this.refs.fixedColumnsBodyLeft.querySelectorAll(`.${clsPrefix}-row`) || [];
     const rightBodyRows = this.refs.fixedColumnsBodyRight && this.refs.fixedColumnsBodyRight.querySelectorAll(`.${clsPrefix}-row`) || [];
@@ -1180,18 +1186,23 @@ class Table extends Component {
             return row.getBoundingClientRect().height || 'auto'
           }
         }
-
-
       }
     );
-
+    const fixedColumnsExpandedRowsHeight = {};
+    expandedRows.length > 0 && expandedRows.forEach(row => {
+      let parentRowKey = row && row.previousSibling && row.previousSibling.getAttribute("data-row-key"),
+          height = row && row.getBoundingClientRect().height || 'auto';
+      fixedColumnsExpandedRowsHeight[parentRowKey] = height;
+    })
     if (shallowequal(this.state.fixedColumnsHeadRowsHeight, fixedColumnsHeadRowsHeight) &&
-      shallowequal(this.state.fixedColumnsBodyRowsHeight, fixedColumnsBodyRowsHeight)) {
+      shallowequal(this.state.fixedColumnsBodyRowsHeight, fixedColumnsBodyRowsHeight) &&
+      shallowequal(this.state.fixedColumnsExpandedRowsHeight, fixedColumnsExpandedRowsHeight)) {
       return;
     }
     this.setState({
       fixedColumnsHeadRowsHeight,
       fixedColumnsBodyRowsHeight,
+      fixedColumnsExpandedRowsHeight,
     });
   }
 

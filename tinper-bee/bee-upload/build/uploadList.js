@@ -66,7 +66,9 @@ var defaultProps = {
     strokeWidth: 3,
     showInfo: false
   },
-  clsPrefix: 'u-upload'
+  clsPrefix: 'u-upload',
+  showRemoveIcon: true,
+  showPreviewIcon: true
 };
 
 var UploadList = function (_Component) {
@@ -129,7 +131,9 @@ var UploadList = function (_Component) {
         clsPrefix = _props.clsPrefix,
         _props$items = _props.items,
         items = _props$items === undefined ? [] : _props$items,
-        listType = _props.listType;
+        listType = _props.listType,
+        showRemoveIcon = _props.showRemoveIcon,
+        showPreviewIcon = _props.showPreviewIcon;
 
     var list = items.map(function (file) {
       var _classNames;
@@ -195,28 +199,31 @@ var UploadList = function (_Component) {
         pointerEvents: 'none',
         opacity: 0.5
       };
+      var previewIcon = showPreviewIcon ? _react2["default"].createElement(
+        'a',
+        {
+          href: file.url || file.thumbUrl,
+          target: '_blank',
+          rel: 'noopener noreferrer',
+          style: style,
+          onClick: function onClick(e) {
+            return _this3.handlePreview(file, e);
+          }
+        },
+        _react2["default"].createElement(_beeIcon2["default"], { type: 'uf-eye-o' })
+      ) : null;
+      var removeIcon = showRemoveIcon ? _react2["default"].createElement(_beeIcon2["default"], { type: 'uf-del', title: '\u79FB\u9664\u6587\u4EF6', onClick: function onClick() {
+          return _this3.handleClose(file);
+        } }) : null;
+      var removeIconClose = showRemoveIcon ? _react2["default"].createElement(_beeIcon2["default"], { type: 'uf-close', title: '\u79FB\u9664\u6587\u4EF6', onClick: function onClick() {
+          return _this3.handleClose(file);
+        } }) : null;
       var actions = listType === 'picture-card' && file.status !== 'uploading' ? _react2["default"].createElement(
         'span',
         null,
-        _react2["default"].createElement(
-          'a',
-          {
-            href: file.url || file.thumbUrl,
-            target: '_blank',
-            rel: 'noopener noreferrer',
-            style: style,
-            onClick: function onClick(e) {
-              return _this3.handlePreview(file, e);
-            }
-          },
-          _react2["default"].createElement(_beeIcon2["default"], { type: 'eye-open' })
-        ),
-        _react2["default"].createElement(_beeIcon2["default"], { type: 'uf-close', title: '\u79FB\u9664\u6587\u4EF6', onClick: function onClick() {
-            return _this3.handleClose(file);
-          } })
-      ) : _react2["default"].createElement(_beeIcon2["default"], { type: 'uf-close', title: '\u79FB\u9664\u6587\u4EF6', onClick: function onClick() {
-          return _this3.handleClose(file);
-        } });
+        previewIcon,
+        removeIcon
+      ) : removeIconClose;
 
       return _react2["default"].createElement(
         'div',

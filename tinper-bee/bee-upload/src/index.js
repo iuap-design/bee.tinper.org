@@ -1,10 +1,11 @@
-import React,{Component} from 'react';
+import React, {Component} from 'react';
 import RcUpload from './Upload';
 import UploadList from './uploadList';
 import getFileItem from './getFileItem';
 import classNames from 'classnames';
 import assign from 'object-assign';
 import PropTypes from 'prop-types';
+import Modal from 'bee-modal'
 //import { UploadProps } from './interface';
 
 function T() {
@@ -13,7 +14,7 @@ function T() {
 
 // Fix IE file.status problem
 // via coping a new Object
-function fileToObject(file): any {
+function fileToObject(file) {
   return {
     lastModified: file.lastModified,
     lastModifiedDate: file.lastModifiedDate,
@@ -54,10 +55,19 @@ function genPercentAdd() {
 
 
 function Dragger(props) {
-  return <Upload {...props} type="drag" style={{ height: props.height }}/>;
+  return <Upload {...props} type="drag" style={{height: props.height}}/>;
 }
 
-const File ={
+function getBase64(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = error => reject(error);
+  });
+}
+
+const File = {
   uid: PropTypes.number,
   size: PropTypes.number,
   name: PropTypes.string,
@@ -69,25 +79,25 @@ const File ={
   originFileObj: File
 }
 
-const UploadChangeParam ={
+const UploadChangeParam = {
   file: File,
   fileList: PropTypes.array,
   event: PropTypes.object
 }
 
-const propTypes ={
+const propTypes = {
   type: PropTypes.oneOf(['drag', 'select']),
   name: PropTypes.string,
   defaultFileList: PropTypes.array,
   fileList: PropTypes.array,
   action: PropTypes.string,
   data: PropTypes.oneOfType([
-      PropTypes.object,
-      PropTypes.func
+    PropTypes.object,
+    PropTypes.func
   ]),
   headers: PropTypes.oneOfType([
-      PropTypes.object,
-      PropTypes.string
+    PropTypes.object,
+    PropTypes.string
   ]),
   showUploadList: PropTypes.bool,
   multiple: PropTypes.bool,
@@ -96,7 +106,7 @@ const propTypes ={
   onChange: PropTypes.func,
   listType: PropTypes.oneOf(['text', 'picture', 'picture-card']),
   className: PropTypes.string,
-  onPreview: PropTypes.func,
+  // onPreview: PropTypes.func,
   onRemove: PropTypes.func,
   supportServerRender: PropTypes.bool,
   style: PropTypes.object,
@@ -105,27 +115,27 @@ const propTypes ={
 }
 
 const defaultProps = {
-    clsPrefix: 'u-upload',
-    type: 'select',
-    multiple: false,
-    action: '',
-    data: {},
-    accept: '',
-    beforeUpload: T,
-    showUploadList: true,
-    listType: 'text', // or pictrue
-    className: '',
-    disabled: false,
-    supportServerRender: true,
+  clsPrefix: 'u-upload',
+  type: 'select',
+  multiple: false,
+  action: '',
+  data: {},
+  accept: '',
+  beforeUpload: T,
+  showUploadList: true,
+  listType: 'text', // or pictrue
+  className: '',
+  disabled: false,
+  supportServerRender: true,
 };
 
 class Upload extends Component {
-  recentUploadStatus: boolean | PromiseLike<any>;
-  progressTimer: any;
-  refs: {
-    [key: string]: any;
-    upload: any;
-  };
+  // recentUploadStatus: boolean | PromiseLike<any>;
+  // progressTimer: any;
+  // refs: {
+  //   [key: string]: any;
+  //   upload: any;
+  // };
 
   constructor(props) {
     super(props);
@@ -134,7 +144,10 @@ class Upload extends Component {
       dragState: 'drop',
     };
   }
-
+  state = {
+    previewVisible: false,
+    previewImage: '',
+  }
   onStart = (file) => {
     let targetItem;
     let nextFileList = this.state.fileList.concat();
@@ -256,7 +269,7 @@ class Upload extends Component {
 
   onChange = (info) => {
     if (!('fileList' in this.props)) {
-      this.setState({ fileList: info.fileList });
+      this.setState({fileList: info.fileList});
     }
 
     const onChange = this.props.onChange;
@@ -282,12 +295,27 @@ class Upload extends Component {
   clearProgressTimer() {
     clearInterval(this.progressTimer);
   }
-
+  handlePreview = file => {
+    var displayPreview = ()=>{
+      this.setState({
+        previewImage: file.url || file.thumbUrl,
+        previewVisible: true,
+      });
+    }
+    if (!file.url && !file.thumbUrl) {
+      getBase64(file.originFileObj).then(displayPreview)
+    }else {
+      displayPreview()
+    }
+  }
+  handleCancel = () => this.setState({ previewVisible: false })
   render() {
     const {
-      clsPrefix = '', showUploadList, listType, onPreview,
+      clsPrefix = '', showUploadList, listType,
       type, disabled, children, className,
     } = this.props;
+    const { showRemoveIcon, showPreviewIcon } = showUploadList;
+    const { previewVisible, previewImage } = this.state
 
     const rcUploadProps = assign({}, this.props, {
       onStart: this.onStart,
@@ -301,8 +329,10 @@ class Upload extends Component {
       <UploadList
         listType={listType}
         items={this.state.fileList}
-        onPreview={onPreview}
+        onPreview={this.handlePreview}
         onRemove={this.handleManualRemove}
+        showRemoveIcon={!disabled && showRemoveIcon}
+        showPreviewIcon={showPreviewIcon}
       />
     ) : null;
 
@@ -339,17 +369,28 @@ class Upload extends Component {
     });
 
     const uploadButton = (
-      <div className={uploadButtonCls} style={{ display: children ? '' : 'none'}}>
-        <RcUpload {...rcUploadProps} ref="upload" />
+      <div className={uploadButtonCls} style={{display: children ? '' : 'none'}}>
+        <RcUpload {...rcUploadProps} ref="upload"/>
       </div>
     );
 
     if (listType === 'picture-card') {
       return (
-        <span className={className}>
+        <div>
+          <span className={className}>
           {uploadList}
-          {uploadButton}
-        </span>
+            {uploadButton}
+          </span>
+          <Modal show={previewVisible} onHide={this.handleCancel}>
+            <Modal.Header closeButton>
+              <Modal.Title>大图预览</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <img alt="example" style={{width: '100%'}} src={previewImage}/>
+            </Modal.Body>
+          </Modal>
+        </div>
+
       );
     }
     return (
@@ -360,6 +401,7 @@ class Upload extends Component {
     );
   }
 }
+
 Upload.propTypes = propTypes;
 Upload.defaultProps = defaultProps;
 Upload.Dragger = Dragger;

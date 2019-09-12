@@ -60,10 +60,10 @@ class Rcascader extends Component {
     if ('value' in props) {   //包裹在表单中走value
       var objectValue = this.convertStringToObject(props.options,props,[],0)
       initialValue = objectValue || [];
-      initInputValue = objectValue.map(o => o.label).join('/ ') || ''
+      initInputValue = objectValue.map(o => o.label).join(props.separator) || ''
     } else if ('defaultValue' in props) {  //单独使用则直接设置defaultValue
       initialValue = props.defaultValue.map(o => o.value) || [];
-      initInputValue = props.defaultValue.map(o => o.label).join('/ ') || ''
+      initInputValue = props.defaultValue.map(o => o.label).join(props.separator) || ''
     } else if ('options' in props) {
       initOptions = props.options || []
     }
@@ -97,7 +97,7 @@ class Rcascader extends Component {
       if (!('loadData' in nextProps)) {
         newState.activeValue = nextProps.value || [];
       }
-      newState.inputValue = self.convertStringToObject(self.props.options,nextProps,[],0,).map(o =>o.label).join('/ ') || ''
+      newState.inputValue = self.convertStringToObject(self.props.options,nextProps,[],0,).map(o =>o.label).join(nextProps.separator) || ''
     }
     if ('popupVisible' in nextProps) {
       newState.popupVisible = nextProps.popupVisible;
@@ -163,10 +163,11 @@ class Rcascader extends Component {
     this.props.onPopupVisibleChange(popupVisible);
   };
   handleChange = (options, setProps, e) => {
+    const {onChange, separator} = this.props;
     if (e.type !== 'keydown' || e.keyCode === KeyCode.ENTER) {
-      this.props.onChange(options.map(o => o[this.getFieldName('value')]), options);
+      onChange(options.map(o => o[this.getFieldName('value')]), options);
       this.setState({
-        inputValue: options.map(o => o[this.getFieldName('label')]).join('/ ')
+        inputValue: options.map(o => o[this.getFieldName('label')]).join(separator)
       })
       this.setPopupVisible(setProps.visible);
     }
@@ -446,6 +447,7 @@ Rcascader.defaultProps = {
   expandTrigger: 'click',
   fieldNames: { label: 'label', value: 'value', children: 'children' },
   expandIcon: <Icon type="uf-arrow-right"></Icon>,
+  separator: '/ '
 };
 
 Rcascader.propTypes = {
@@ -473,6 +475,7 @@ Rcascader.propTypes = {
   expandIcon: PropTypes.node,
   loadingIcon: PropTypes.node,
   inputValue: PropTypes.string,
+  separator: PropTypes.string
 };
 
 polyfill(Rcascader);

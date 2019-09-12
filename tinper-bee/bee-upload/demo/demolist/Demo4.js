@@ -1,64 +1,41 @@
 /**
- * @title 自定义`Upload`
- * @description 自定义上传文件的数量，且最近上传的文件会替代老文件。
+ * @title 照片墙
+ * @description 设置 `listType = picture-card`，支持图片预览。
  */
 
 import React, { Component } from 'react';
 import Icon from 'bee-icon';
-import Button from 'bee-button';
 import Upload from '../../src';
 
-class Demo4 extends Component{
-  constructor(props) {
-    super(props);
-    this.state = {
-      fileList: [{
-        uid: -1,
-        name: 'xxx.png',
-        status: 'done',
-        url: 'http://www.baidu.com/xxx.png',
-      }],
-    };
-  }
-  handleChange(info) {
-    let fileList = info.fileList;
-
-    //  自定义上传数量，只显示最近上传的文件   
-    fileList = fileList.slice(-2);
-
-    // 读取返回数据，并显示成文件链接形式
-    fileList = fileList.map((file) => {
-      if (file.response) {
-        //组件会显示文件链接为超链接形式
-        file.url = file.response.url;
-      }
-      return file;
-    });
-
-    // 通过从服务器返回的结果，过滤上传成功的文件
-    fileList = fileList.filter((file) => {
-      if (file.response) {
-        return file.response.status === 'success';
-      }
-      return true;
-    });
-
-    this.setState({ fileList });
-  }
-  render() {
-    const props = {
-      action: '/upload.do',
-      onChange: this.handleChange.bind(this),
-      multiple: true,
-    };
-    return (
-      <Upload {...props} fileList={this.state.fileList}>
-        <Button colors="primary" shape="border">
-          <Icon type="uf-upload" /> upload
-        </Button>
-      </Upload>
-    );
-  }
+const demo4props = {
+  action: '/upload.do',
+  listType: 'picture-card',
+  defaultFileList: [{
+    uid: -1,
+    name: 'xxx.png',
+    status: 'done',
+    url: 'https://p0.ssl.qhimgs4.com/t01f7d55ce57edb3d46.jpg',
+    thumbUrl: 'https://p0.ssl.qhimgs4.com/t01f7d55ce57edb3d46.jpg',
+  }, {
+    uid: -2,
+    name: 'zzz.png',
+    status: 'done',
+    url: 'https://p0.ssl.qhimgs4.com/t010e11ecf2cbfe5fd2.png',
+    thumbUrl: 'https://p0.ssl.qhimgs4.com/t010e11ecf2cbfe5fd2.png',
+  }],
 };
+
+class Demo4 extends Component {
+  render(){
+    return(
+      <div>
+        <Upload {...demo4props}>
+          <Icon type="uf-plus" style={{fontSize:'22px'}}/> 
+          <p>上传</p>
+        </Upload>
+      </div>
+    )
+  }
+}
 
 export default Demo4;
