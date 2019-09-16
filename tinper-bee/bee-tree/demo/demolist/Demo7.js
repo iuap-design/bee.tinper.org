@@ -187,6 +187,7 @@ class Demo7 extends Component {
     console.log('defaultKeys--' + this.state.defaultExpandedKeys);
     return (
       <div>
+        <Button colors="primary" onClick={this.clickFun}>增加节点</Button>
         <Tree 
         className="myCls"
         onSelect={this.onSelect} 
@@ -196,9 +197,6 @@ class Demo7 extends Component {
         onDrop={this.onDrop}>
           {treeNodes}
         </Tree>
-        <Button colors="primary" onClick={this.clickFun}>
-        增加节点
-        </Button>
       </div>
     );
   }

@@ -67,15 +67,24 @@ class MonthPicker extends Component {
     }
   }
   onOpenChange = open => {
-      const self = this;
-      this.setState({
-          open
-      });
+    const props = this.props;
+    const self = this;
+    this.setState({
+      open
+    },function(){
       if(open){
-          setTimeout(()=>{
-              self.inputFocus()
-          },200)
+        setTimeout(() => {
+          self.inputFocus()
+        }, 0);
       }
+    }); 
+    const value = self.state.value;
+    props.onOpenChange && props.onOpenChange(open,value, (value && value.format(self.props.format)) || '');
+    if(open){
+      setTimeout(()=>{
+        self.inputFocus()
+      },200);
+    }
   };
 
   onTypeChange = type => {

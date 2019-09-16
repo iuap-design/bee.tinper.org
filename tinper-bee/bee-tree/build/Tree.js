@@ -116,6 +116,9 @@ var Tree = function (_React$Component) {
   };
 
   Tree.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
+    var startIndex = this.startIndex,
+        endIndex = this.endIndex;
+
     var expandedKeys = this.getDefaultExpandedKeys(nextProps);
     var checkedKeys = this.getDefaultCheckedKeys(nextProps, true);
     var selectedKeys = this.getDefaultSelectedKeys(nextProps, true);
@@ -138,7 +141,13 @@ var Tree = function (_React$Component) {
     }
     if (nextProps.hasOwnProperty('treeData') && nextProps.treeData !== this.props.treeData) {
       this.dataChange = true;
-      st.treeData = nextProps.treeData;
+      //treeData更新时，需要重新处理一次数据
+      if (nextProps.lazyLoad) {
+        var flatTreeData = this.deepTraversal(nextProps.treeData);
+        st.flatTreeData = flatTreeData;
+        var newTreeList = flatTreeData.slice(startIndex, endIndex);
+        this.handleTreeListChange(newTreeList, startIndex, endIndex);
+      }
     }
     if (nextProps.children !== this.props.children) {
       this.dataChange = true;
@@ -315,7 +324,7 @@ var Tree = function (_React$Component) {
       });
     }
     //收起和展开时，缓存 expandedKeys
-    this.cacheExpandedKeys = expandedKeys;
+    this.cacheExpandedKeys = new Set(expandedKeys);
     //启用懒加载，把 Tree 结构拍平，为后续动态截取数据做准备
     if (lazyLoad) {
       var flatTreeData = this.deepTraversal(treeData);
@@ -1104,6 +1113,7 @@ var _initialiseProps = function _initialiseProps() {
     var parentKey = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
     var isShown = arguments[2];
     var expandedKeys = _this7.state.expandedKeys,
+        expandedKeysSet = _this7.cacheExpandedKeys ? _this7.cacheExpandedKeys : new Set(expandedKeys),
         flatTreeData = [],
         flatTreeKeysMap = _this7.flatTreeKeysMap,
         dataCopy = treeData;
@@ -1114,11 +1124,13 @@ var _initialiseProps = function _initialiseProps() {
             key = _dataCopy$i.key,
             title = _dataCopy$i.title,
             children = _dataCopy$i.children,
-            props = _objectWithoutProperties(_dataCopy$i, ['key', 'title', 'children']);
+            props = _objectWithoutProperties(_dataCopy$i, ['key', 'title', 'children']),
+            dataCopyI = new Object(),
+            isLeaf = children ? false : true;
+        //如果父节点是收起状态，则子节点的展开状态无意义。（一级节点或根节点直接判断自身状态即可）
 
-        var dataCopyI = new Object();
-        var isLeaf = children ? false : true,
-            isExpanded = _this7.cacheExpandedKeys ? _this7.cacheExpandedKeys.indexOf(key) !== -1 : expandedKeys.indexOf(key) !== -1;
+
+        var isExpanded = parentKey === null || expandedKeysSet.has(parentKey) ? expandedKeysSet.has(key) : false;
         dataCopyI = _extends(dataCopyI, {
           key: key,
           title: title,

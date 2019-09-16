@@ -116,6 +116,7 @@ import 'bee-datepicker/build/DatePicker.css';
 | showClear|是否显示清除按钮| Boolean|false|
 | onSelect|选择日期的回调函数|Function(date: moment)| - |
 | onChange|日期改变的回调函数|Function(date: moment)| - |
+| onOk|点击确定按钮的回调|Function(dates: moment[])| - |
 | onHoverChange|日期被选中的回调|Function(date: moment)| - |
 | dateInputPlaceholder|日期的placeholder| String | - |
 | type|是否固定开始或结束选定的值|enum('both','start', 'end')| - |

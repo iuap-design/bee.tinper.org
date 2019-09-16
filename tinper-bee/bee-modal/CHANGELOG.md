@@ -1,5 +1,15 @@
+<a name="2.1.1"></a>
+## [2.1.1](https://github.com/tinper-bee/bee-modal/compare/v2.1.0...v2.1.1) (2019-09-16)
+
+
+
 <a name="2.1.0"></a>
-# [2.1.0](https://github.com/tinper-bee/bee-modal/compare/v2.0.21...v2.1.0) (2019-08-31)
+# [2.1.0](https://github.com/tinper-bee/bee-modal/compare/v2.0.22...v2.1.0) (2019-08-31)
+
+
+
+<a name="2.0.22"></a>
+## [2.0.22](https://github.com/tinper-bee/bee-modal/compare/v2.0.21...v2.0.22) (2019-08-20)
 
 
 

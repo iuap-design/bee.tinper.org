@@ -17,7 +17,7 @@ const ConfirmDialog = (props) => {
       keyboard,
       centered,
       getContainer,
-      maskStyle,
+      backdropStyle,
       okButtonProps,
       cancelButtonProps,
       iconType = 'uf-qm-c',
@@ -34,7 +34,7 @@ const ConfirmDialog = (props) => {
     const style = props.style || {};
     const backdrop = props.backdrop === undefined ? true : props.backdrop;
     // 默认为 false，保持旧版默认行为
-    const maskClosable = props.maskClosable === undefined ? false : props.maskClosable;
+    const backdropClosable = props.backdropClosable === undefined ? true : props.backdropClosable;
     // const runtimeLocale = getConfirmLocale();
     const okText = props.okText || (okCancel ? "确定" : "知道了");
     const cancelText = props.cancelText || "取消";
@@ -64,7 +64,11 @@ const ConfirmDialog = (props) => {
         className={classString}
         show = {show}
         onHide = {close}
-        backdrop = {backdrop} >
+        backdrop = {backdrop} 
+        backdropClosable = {backdropClosable}
+        centered = {centered}
+        keyboard = {keyboard}
+        backdropStyle = {backdropStyle}>
           <Modal.Header>
               <Modal.Title>{iconNode}<span className={`${contentPrefixCls}-title`}>{props.title}</span></Modal.Title>
           </Modal.Header>

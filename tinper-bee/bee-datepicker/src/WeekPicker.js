@@ -16,7 +16,7 @@ import moment from "moment";
 import "moment/locale/zh-cn";
 import "moment/locale/en-gb";
 
-const cn = location.search.indexOf("cn") !== -1;
+const cn = typeof window !== 'undefined' ? location.search.indexOf("cn") !== -1 : true;
 
 const now = moment();
 if (cn) {

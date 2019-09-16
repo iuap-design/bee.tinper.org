@@ -5,6 +5,7 @@
 */
 
 import React, { Component } from 'react';
+import Button from 'bee-button';
 import Tree from '../../src';
 
 const {TreeNode} = Tree;
@@ -37,6 +38,11 @@ const generateData = (_level, _preKey, _tns) => {
 };
 generateData(z);
 
+const data = [ ...new Array(10000) ].map((e, i) => {
+  const rs = { key: i + 'a', title: i + 'a'};
+  return rs;
+})
+
 class Demo13 extends Component{
   constructor(props) {
   	super(props);
@@ -45,6 +51,7 @@ class Demo13 extends Component{
       autoExpandParent: true,
       checkedKeys: ['0-0-0'],
       selectedKeys: [],
+      treeData: data
     };
     this.onExpand = this.onExpand.bind(this);
     this.onCheck = this.onCheck.bind(this);
@@ -90,24 +97,33 @@ class Demo13 extends Component{
     return loop(data);
   }
 
+  changeTreeData = () => {
+    this.setState({
+      treeData: gData
+    })
+  }
+
   render() {
     return (
-      <div style={{height:'300px', overflow:'auto'}}>
-        <Tree
-          checkable
-          focusable
-          treeData={gData}
-          lazyLoad={true}
-          renderTreeNodes={this.renderTreeNodes}
-          onExpand={this.onExpand}
-          defaultExpandAll={true} 
-          expandedKeys={this.state.expandedKeys}
-          autoExpandParent={this.state.autoExpandParent}
-          onCheck={this.onCheck} 
-          onSelect={this.onSelect} 
-          keyFun={this.onKeyDown}
-        >
-        </Tree>
+      <div>
+        <Button onClick={this.changeTreeData}>改变数据源</Button>
+        <div style={{height:'300px', overflow:'auto'}}>
+          <Tree
+            checkable
+            focusable
+            treeData={this.state.treeData}
+            lazyLoad={true}
+            renderTreeNodes={this.renderTreeNodes}
+            onExpand={this.onExpand}
+            defaultExpandAll={true} 
+            expandedKeys={this.state.expandedKeys}
+            autoExpandParent={this.state.autoExpandParent}
+            onCheck={this.onCheck} 
+            onSelect={this.onSelect} 
+            keyFun={this.onKeyDown}
+          >
+          </Tree>
+        </div>
       </div>
     );
   }

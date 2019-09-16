@@ -68,7 +68,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 * Created by chief on 17/4/6.
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 */
 
-var cn = location.search.indexOf("cn") !== -1;
+var cn = typeof window !== 'undefined' ? location.search.indexOf("cn") !== -1 : true;
 
 var now = (0, _moment2["default"])();
 if (cn) {

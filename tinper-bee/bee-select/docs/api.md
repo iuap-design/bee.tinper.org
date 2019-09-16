@@ -36,8 +36,11 @@ import 'bee-select/build/Select.css';
 |onSearch|文本框值变化时回调|func|-|
 |onBlur|失去焦点的时回调|bool|-|
 |onFocus|获得焦点时回调|func|-|
+|onMouseEnter|鼠标移入时回调|func|-|
+|onMouseLeave|鼠标移出时回调|func|-|
 |placeholder|选择框默认文字	|string|-|
 |notFoundContent|当下拉列表为空时显示的内容|string|'Not Found'|
+|optionFilterProp|搜索时过滤对应的 option 属性，如设置为 children 表示对内嵌内容进行搜索。[示例](http://bee.tinper.org/tinper-bee/bee-select#%E6%90%9C%E7%B4%A2%E5%8D%95%E9%80%89%60Select%60)|string|value|
 |dropdownMatchSelectWidth|下拉菜单和选择器同宽|true|-|
 |optionLabelProp|回填到选择框的 Option 的属性值，默认是 Option 的子元素。比如在子元素需要高亮效果时，此值可以设为 value|string/number|children （combobox 模式下)为 value|
 |combobox|输入框自动提示模式|bool|false|
@@ -66,6 +69,7 @@ import 'bee-select/build/Select.css';
 |key|如果 react 需要你设置此项，此项值与 value 的值相同，然后可以省略 value 设置|string|-|
 |value|默认根据此属性值进行筛选	|string|-|
 |disabled|是否禁用|bool|false|
+|className|Option 选择器类名|string|-|
 
 
 ### OptGroup

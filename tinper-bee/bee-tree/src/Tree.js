@@ -73,6 +73,7 @@ class Tree extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    const {startIndex,endIndex} = this;
     const expandedKeys = this.getDefaultExpandedKeys(nextProps);
     const checkedKeys = this.getDefaultCheckedKeys(nextProps, true);
     const selectedKeys = this.getDefaultSelectedKeys(nextProps, true);
@@ -95,7 +96,13 @@ class Tree extends React.Component {
     }
     if(nextProps.hasOwnProperty('treeData') && nextProps.treeData !== this.props.treeData){
       this.dataChange = true;
-      st.treeData = nextProps.treeData;
+      //treeData更新时，需要重新处理一次数据
+      if(nextProps.lazyLoad) {
+        let flatTreeData = this.deepTraversal(nextProps.treeData);
+        st.flatTreeData = flatTreeData;
+        let newTreeList = flatTreeData.slice(startIndex,endIndex);
+        this.handleTreeListChange(newTreeList, startIndex, endIndex);
+      }
     }
     if(nextProps.children !== this.props.children){
       this.dataChange = true;
@@ -265,7 +272,7 @@ onExpand(treeNode,keyType) {
       });
     }
     //收起和展开时，缓存 expandedKeys
-    this.cacheExpandedKeys = expandedKeys;
+    this.cacheExpandedKeys = new Set(expandedKeys);
     //启用懒加载，把 Tree 结构拍平，为后续动态截取数据做准备
     if(lazyLoad) {
       let flatTreeData = this.deepTraversal(treeData);
@@ -816,15 +823,17 @@ onExpand(treeNode,keyType) {
    */
   deepTraversal = (treeData, parentKey=null, isShown) => {
     let {expandedKeys} = this.state,
+        expandedKeysSet = this.cacheExpandedKeys ? this.cacheExpandedKeys : new Set(expandedKeys),
         flatTreeData = [],
         flatTreeKeysMap = this.flatTreeKeysMap, //存储所有 key-value 的映射，方便获取各节点信息
         dataCopy = treeData;
     if(Array.isArray(dataCopy)){
       for (let i=0, l=dataCopy.length; i<l; i++) {
-        let { key, title, children, ...props } = dataCopy[i];
-        let dataCopyI = new Object();
-        let isLeaf = children ? false : true,
-            isExpanded = this.cacheExpandedKeys ? this.cacheExpandedKeys.indexOf(key) !== -1 : expandedKeys.indexOf(key) !== -1;
+        let { key, title, children, ...props } = dataCopy[i],
+            dataCopyI = new Object(),
+            isLeaf = children ? false : true;
+        //如果父节点是收起状态，则子节点的展开状态无意义。（一级节点或根节点直接判断自身状态即可）
+        let isExpanded = (parentKey === null || expandedKeysSet.has(parentKey)) ? expandedKeysSet.has(key) : false;
         dataCopyI = Object.assign(dataCopyI,{
           key,
           title,

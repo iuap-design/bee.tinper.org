@@ -79,7 +79,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 var fullFormat = "YYYY-MM-DD";
 
-var cn = location.search.indexOf("cn") !== -1;
+var cn = typeof window !== 'undefined' ? location.search.indexOf("cn") !== -1 : true;
 
 var now = (0, _moment2["default"])();
 
@@ -161,7 +161,8 @@ var RangePicker = function (_Component) {
             renderError: props.renderError,
             onStartInputBlur: this.onStartInputBlur,
             onEndInputBlur: this.onEndInputBlur,
-            onClear: this.clear
+            onClear: this.clear,
+            onOk: this.onOk
         });
 
         return _react2["default"].createElement(
@@ -372,6 +373,10 @@ var _initialiseProps = function _initialiseProps() {
 
     this.stopPropagation = function (e) {
         e.stopPropagation();
+    };
+
+    this.onOk = function (value) {
+        _this3.props.onOk && _this3.props.onOk(value);
     };
 };
 

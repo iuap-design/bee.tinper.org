@@ -68,94 +68,7 @@ var MonthPicker = function (_Component) {
 
     var _this = _possibleConstructorReturn(this, _Component.call(this, props, context));
 
-    _this.onChange = function (value) {
-      var _this$props = _this.props,
-          onChange = _this$props.onChange,
-          onClear = _this$props.onClear,
-          onSelect = _this$props.onSelect,
-          format = _this$props.format;
-      // if(value){
-      //   this.setState({
-      //     value:value
-      //   });
-      // }else{
-      //   this.setState({
-      //     value:moment()
-      //   })
-      // }
-
-      _this.setState({
-        value: value && _extends(value, { _type: 'month' }) || value
-      });
-      onChange && onChange(value, value ? value.format(format) : '');
-    };
-
-    _this.inputFocus = function () {
-      var self = _this;
-      var input = document.querySelector('.rc-calendar-input');
-      if (input) {
-        if (input.value) {
-          input.select();
-        } else {
-          input.focus();
-        }
-        input.onkeydown = function (e) {
-          if (e.keyCode == _tinperBeeCore.KeyCode.DELETE) {
-            input.value = '';
-            self.props.onChange && self.props.onChange('', '');
-          } else if (e.keyCode == _tinperBeeCore.KeyCode.ESC) {
-            self.setState({
-              open: false
-            });
-            var v = self.state.value;
-            self.props.onOpenChange && self.props.onOpenChange(false, v, v && v.format(self.props.format) || '');
-            _reactDom2["default"].findDOMNode(self.outInput).focus(); // 按esc时候焦点回到input输入框
-          }
-        };
-      }
-    };
-
-    _this.onOpenChange = function (open) {
-      var self = _this;
-      _this.setState({
-        open: open
-      });
-      if (open) {
-        setTimeout(function () {
-          self.inputFocus();
-        }, 200);
-      }
-    };
-
-    _this.onTypeChange = function (type) {
-      _this.setState({
-        type: type
-      });
-    };
-
-    _this.onMouseLeave = function (e) {
-      _this.setState({
-        showClose: false
-      });
-    };
-
-    _this.onMouseEnter = function (e) {
-      _this.setState({
-        showClose: true
-      });
-    };
-
-    _this.clear = function (e) {
-      e.stopPropagation();
-      _this.setState({
-        value: ''
-      });
-      _this.props.onChange && _this.props.onChange('', '');
-    };
-
-    _this.stopPropagation = function (e) {
-      e.stopPropagation();
-    };
+    _initialiseProps.call(_this);
 
     _this.state = {
       type: "month",
@@ -230,6 +143,108 @@ var MonthPicker = function (_Component) {
 
   return MonthPicker;
 }(_react.Component);
+
+var _initialiseProps = function _initialiseProps() {
+  var _this3 = this;
+
+  this.onChange = function (value) {
+    var _props = _this3.props,
+        onChange = _props.onChange,
+        onClear = _props.onClear,
+        onSelect = _props.onSelect,
+        format = _props.format;
+    // if(value){
+    //   this.setState({
+    //     value:value
+    //   });
+    // }else{
+    //   this.setState({
+    //     value:moment()
+    //   })
+    // }
+
+    _this3.setState({
+      value: value && _extends(value, { _type: 'month' }) || value
+    });
+    onChange && onChange(value, value ? value.format(format) : '');
+  };
+
+  this.inputFocus = function () {
+    var self = _this3;
+    var input = document.querySelector('.rc-calendar-input');
+    if (input) {
+      if (input.value) {
+        input.select();
+      } else {
+        input.focus();
+      }
+      input.onkeydown = function (e) {
+        if (e.keyCode == _tinperBeeCore.KeyCode.DELETE) {
+          input.value = '';
+          self.props.onChange && self.props.onChange('', '');
+        } else if (e.keyCode == _tinperBeeCore.KeyCode.ESC) {
+          self.setState({
+            open: false
+          });
+          var v = self.state.value;
+          self.props.onOpenChange && self.props.onOpenChange(false, v, v && v.format(self.props.format) || '');
+          _reactDom2["default"].findDOMNode(self.outInput).focus(); // 按esc时候焦点回到input输入框
+        }
+      };
+    }
+  };
+
+  this.onOpenChange = function (open) {
+    var props = _this3.props;
+    var self = _this3;
+    _this3.setState({
+      open: open
+    }, function () {
+      if (open) {
+        setTimeout(function () {
+          self.inputFocus();
+        }, 0);
+      }
+    });
+    var value = self.state.value;
+    props.onOpenChange && props.onOpenChange(open, value, value && value.format(self.props.format) || '');
+    if (open) {
+      setTimeout(function () {
+        self.inputFocus();
+      }, 200);
+    }
+  };
+
+  this.onTypeChange = function (type) {
+    _this3.setState({
+      type: type
+    });
+  };
+
+  this.onMouseLeave = function (e) {
+    _this3.setState({
+      showClose: false
+    });
+  };
+
+  this.onMouseEnter = function (e) {
+    _this3.setState({
+      showClose: true
+    });
+  };
+
+  this.clear = function (e) {
+    e.stopPropagation();
+    _this3.setState({
+      value: ''
+    });
+    _this3.props.onChange && _this3.props.onChange('', '');
+  };
+
+  this.stopPropagation = function (e) {
+    e.stopPropagation();
+  };
+};
 
 MonthPicker.defaultProps = {
   closeIcon: function closeIcon() {

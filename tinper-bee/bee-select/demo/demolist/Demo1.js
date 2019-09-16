@@ -5,6 +5,7 @@
 
 import React, { Component } from "react";
 import Select from "../../src";
+
 const Option = Select.Option;
 
 class Demo1 extends Component {

@@ -30,7 +30,7 @@ import "moment/locale/zh-cn";
 
 const fullFormat = "YYYY-MM-DD";
 
-const cn = location.search.indexOf("cn") !== -1;
+const cn = typeof window !== 'undefined' ? location.search.indexOf("cn") !== -1 : true;
 
 const now = moment();
 
@@ -221,6 +221,9 @@ class RangePicker extends Component {
     stopPropagation = (e) => {
         e.stopPropagation();
     }
+    onOk = (value) => {
+        this.props.onOk && this.props.onOk(value);
+    }
     render() {
     const props = this.props;
     const { showClose } = props;
@@ -246,6 +249,7 @@ class RangePicker extends Component {
             onStartInputBlur={this.onStartInputBlur}
             onEndInputBlur={this.onEndInputBlur}
             onClear={this.clear}
+            onOk={this.onOk}
         />
     );
 

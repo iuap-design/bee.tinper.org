@@ -60,7 +60,6 @@
   "bee-form": "latest",
   "bee-layout": "latest",
   "bee-panel": "latest",
-  "bee-tools": "latest",
   "chai": "^3.5.0",
   "console-polyfill": "~0.2.1",
   "cz-conventional-changelog": "^2.1.0",

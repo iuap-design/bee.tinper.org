@@ -80,7 +80,7 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
 	
-	var Demo1 = __webpack_require__(288);var Demo2 = __webpack_require__(289);var Demo3 = __webpack_require__(294);var Demo4 = __webpack_require__(295);var Demo5 = __webpack_require__(296);var Demo6 = __webpack_require__(297);var Demo7 = __webpack_require__(300);var Demo8 = __webpack_require__(699);var Demo9 = __webpack_require__(700);var Demo10 = __webpack_require__(705);var Demo11 = __webpack_require__(750);var Demo12 = __webpack_require__(751);var Demo13 = __webpack_require__(752);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 默认的模态框", "code": "/**\n *\n * @title 默认的模态框\n * @description\n *\n */\n\nimport React, { Component } from 'react';\nimport { Button, Modal } from 'tinper-bee';\n\n\n\nclass Demo1 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            showModal: false\n        };\n        this.close = this.close.bind(this);\n        this.open = this.open.bind(this);\n    }\n\n    close() {\n        this.setState({\n            showModal: false\n        });\n    }\n    open() {\n        this.setState({\n            showModal: true\n        });\n    }\n    render () {\n        return (\n        <div>\n            <Button\n            bordered\n            className=\"demo-margin\"\n            onClick = { this.open }>\n                打开模态框\n            </Button>​\n            <Modal\n            show = { this.state.showModal }\n            onHide = { this.close } >\n                <Modal.Header closeButton>\n                    <Modal.Title>标题</Modal.Title>\n                </Modal.Header>\n\n                <Modal.Body>\n                    <p>Some contents...</p>\n                    <p>Some contents...</p>\n                    <p>Some contents...</p>\n                </Modal.Body>\n\n                <Modal.Footer>\n                    <Button onClick={ this.close } colors=\"secondary\" style={{marginRight: 8}}>取消</Button>\n                    <Button onClick={ this.close } bordered>确认</Button>\n                </Modal.Footer>\n           </Modal>\n        </div>\n        )\n    }\n}\n\nexport default Demo1;\n", "desc": "", "scss_code": ".demo-margin{\n  margin: 5px 15px;\n}" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 注册的模态框", "code": "/**\r\n *\r\n * @title 注册的模态框\r\n * @description\r\n *\r\n */\r\n\r\nimport React, {Component} from 'react';\nimport { FormControl, Label, FormGroup, Button, Modal } from 'tinper-bee';\r\n\n\r\n\n\n\n\r\nclass Demo2 extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            showModal: false,\r\n            password: '',\r\n            name: ''\r\n        };\r\n        this.close = this.close.bind(this);\r\n        this.open = this.open.bind(this);\r\n    }\r\n\r\n    close() {\r\n        this.setState({\r\n            showModal: false\r\n        });\r\n    }\r\n\r\n    open() {\r\n        this.setState({\r\n            showModal: true\r\n        });\r\n    }\r\n\r\n    handleChange = (state) => (value) => {\r\n        this.setState({\r\n            [state]: value\r\n        })\r\n    }\r\n\r\n    render() {\r\n\r\n        return (\r\n            <div className=\"demo-margin\">\r\n                <Button\r\n                    bordered\r\n                    onClick={this.open}>\r\n                    注册模态框\r\n                </Button>​\r\n                <Modal\r\n                    show={this.state.showModal}\r\n                    onHide={this.close}\r\n                    style={{width: 450}}\r\n                >\r\n                    <Modal.Header closeButton>\r\n                        <Modal.Title>注册</Modal.Title>\r\n                    </Modal.Header>\r\n\r\n                    <Modal.Body>\r\n                        <div style={{ width: 300, margin: '0 auto' }}>\r\n                            <FormGroup>\r\n                                <Label>用户名</Label>\r\n                                <FormControl\r\n                                    value={this.state.name}\r\n                                    onChange={this.handleChange('name')}\r\n                                />\r\n                            </FormGroup>\r\n                            <FormGroup>\r\n                                <Label>密码</Label>\r\n                                <FormControl\r\n                                    value={this.state.password}\r\n                                    onChange={this.handleChange('password')}\r\n                                />\r\n                            </FormGroup>\r\n                        </div>\r\n\r\n\r\n                    </Modal.Body>\r\n\r\n                    <Modal.Footer className=\"text-center\">\r\n                        <Button colors=\"secondary\" style={{ marginRight: 8 }} onClick={this.close}>\r\n                            取消\r\n                        </Button>\r\n                        <Button bordered onClick={this.close}>\r\n                            确认\r\n                        </Button>\r\n                    </Modal.Footer>\r\n                </Modal>\r\n\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\n\r\nexport default Demo2;", "desc": "", "scss_code": ".demo-margin{\r\n  margin: 5px 15px;\r\n}\r\n.text-center{\r\n  text-align: center;\r\n}" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 不同大小的模态框", "code": "/**\r\n *\r\n * @title 不同大小的模态框\r\n * @description 通过size属性控制模态框大小\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\nimport { Button, Modal } from 'tinper-bee';\r\n\n\r\n\r\nclass Demo3 extends Component {\r\n\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            showModal: false,\r\n            modalSize: ''\r\n        };\r\n        this.close = this.close.bind(this);\r\n        this.open = this.open.bind(this);\r\n        this.changeSize = this.changeSize.bind(this);\r\n\r\n    }\r\n\r\n    close() {\r\n        this.setState({\r\n            showModal: false\r\n        });\r\n    }\r\n\r\n    open() {\r\n        this.setState({\r\n            showModal: true\r\n        });\r\n    }\r\n\r\n    changeSize(size) {\r\n        this.setState({\r\n            modalSize: size\r\n        });\r\n    }\r\n\r\n    render() {\r\n        return (\r\n            <div>\r\n                <Button\r\n                    bordered\r\n                    className=\"demo-margin\"\r\n                    onClick={ ()=>{this.changeSize(\"sm\");this.open();} }>\r\n                    小号模态框\r\n                </Button>\r\n                <Button\r\n                    bordered\r\n                    className=\"demo-margin\"\r\n                    onClick={ ()=>{this.changeSize(\"lg\");this.open();} }>\r\n                    大号模态框\r\n                </Button>\r\n                <Button\r\n                    bordered\r\n                    className=\"demo-margin\"\r\n                    onClick={ ()=>{this.changeSize(\"xlg\");this.open();} }>\r\n                    超大号模态框\r\n                </Button>\r\n                <Modal show={ this.state.showModal } size={ this.state.modalSize } onHide={ this.close } className=\"demo3-modal\">\r\n                    <Modal.Header closeButton>\r\n                        <Modal.Title > 我来组成头部 </Modal.Title>\r\n                    </Modal.Header >\r\n                    <Modal.Body>\r\n                        <h4> 这是一个沉默的标题 </h4>\r\n\r\n                        <p> 一些描述。。。 </p>\r\n                        <hr/>\r\n\r\n                        <p> 用创想与技术推动商业和社会进步 </p>\r\n\r\n                        <p> 我们基于创造性的思想与先进的技术（ 现阶段是信息技术）， 创新和运营高客户价值的产品与服务， 帮助客户实现发展目标， 进而推动商业和社会进步。\r\n                        </p>\r\n\r\n                        <p> 全球领先的企业与公共组织软件、 云服务、 金融服务提供商。 </p>\r\n\r\n                        <p> 员工快乐工作， 成就事业， 分享成功的平台。 </p>\r\n\r\n                        <p> 企业和公共组织是我们持续服务的客户。 软件、 云服务、 金融服务是用友新发展阶段的核心业务。 全球领先是我们必须达成的目标。 </p>\r\n\r\n                        <p> 在努力实现产业发展目标的同时， 员工在用友快乐工作、 成就事业、 分享成功也是公司的追求。 </p>\r\n\r\n                    </Modal.Body>\r\n                    <Modal.Footer>\r\n                        <Button colors=\"secondary\" onClick={ this.close }> 关闭 </Button>\r\n                    </Modal.Footer>\r\n                </Modal>\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\nexport default Demo3;\r\n", "desc": " 通过size属性控制模态框大小", "scss_code": ".demo-margin{\r\n  margin: 5px 15px;\r\n}\r\n.u-modal-body{\r\n  max-height: 430px;\r\n  overflow: auto;\r\n}\r\n\r\n.demo3-modal{\r\n  .u-modal-body{\r\n    background: #f7f9fb;\r\n  }\r\n}" }, { "example": _react2['default'].createElement(Demo4, null), "title": " 不同遮罩层状态的模态框", "code": "/**\r\n *\r\n * @title 不同遮罩层状态的模态框\r\n * @description 遮罩层可以通过backdrop属性控制状态，可以为不响应事件，可以不显示。\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\nimport { Button, Modal } from 'tinper-bee';\r\n\n\r\n\r\n\r\nclass Demo4 extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            showModal: false,\r\n            modalDropup: true\r\n        };\r\n        this.close = this.close.bind(this);\r\n        this.open = this.open.bind(this);\r\n        this.changeDropup = this.changeDropup.bind(this);\r\n\r\n    }\r\n\r\n    close() {\r\n        this.setState({\r\n            showModal: false\r\n        });\r\n    }\r\n\r\n    open() {\r\n        this.setState({\r\n            showModal: true\r\n        });\r\n    }\r\n\r\n    changeDropup(state) {\r\n        this.setState({\r\n            modalDropup: state\r\n        });\r\n    }\r\n\r\n    render() {\r\n        return (\r\n            <div>\r\n                <Button\r\n                    bordered\r\n                    className=\"demo-margin\"\r\n                    onClick={ ()=>{this.changeDropup(false);this.open();} }>\r\n                    无遮罩层模态框\r\n                </Button>\r\n                <Button\r\n                    bordered\r\n                    className=\"demo-margin\"\r\n                    onClick={ ()=>{this.changeDropup(\"static\");this.open();} }>\r\n                    遮罩无事件模态框\r\n                </Button>\r\n                <Modal\r\n                    className=\"demo4-modal\"\r\n                    show={ this.state.showModal }\r\n                    backdrop={ this.state.modalDropup }\r\n                    onHide={ this.close }>\r\n                    <Modal.Header closeButton>\r\n                        <Modal.Title > 我来组成头部 </Modal.Title>\r\n                    </Modal.Header >\r\n                    <Modal.Body >\r\n                        <h4> 这是一个沉默的标题 </h4>\r\n\r\n                        <p> 一些描述。。。 </p>\r\n                        <hr/>\r\n\r\n                        <p> 用创想与技术推动商业和社会进步 </p>\r\n\r\n                        <p> 我们基于创造性的思想与先进的技术（ 现阶段是信息技术）， 创新和运营高客户价值的产品与服务， 帮助客户实现发展目标， 进而推动商业和社会进步。 </p>\r\n\r\n                        <p> 全球领先的企业与公共组织软件、 云服务、 金融服务提供商。 </p>\r\n\r\n                        <p> 员工快乐工作， 成就事业， 分享成功的平台。 </p>\r\n                    </Modal.Body>\r\n                    <Modal.Footer>\r\n                        <Button colors=\"secondary\" onClick={ this.close }> 关闭 </Button>\r\n                    </Modal.Footer>\r\n                </Modal>\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\nexport default Demo4;\r\n", "desc": " 遮罩层可以通过backdrop属性控制状态，可以为不响应事件，可以不显示。", "scss_code": ".demo-margin{\r\n  margin: 5px 15px;\r\n}\r\n.demo4-modal{\r\n  .u-modal-body{\r\n    background: #f7f9fb;\r\n  }\r\n}" }, { "example": _react2['default'].createElement(Demo5, null), "title": " 自定义大小的模态框", "code": "/**\r\n *\r\n * @title 自定义大小的模态框\r\n * @description 通过width属性定义模态框大小\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\nimport { Button, Modal } from 'tinper-bee';\r\n\n\r\n\r\n\r\nclass Demo5 extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            showModal: false\r\n        };\r\n        this.close = this.close.bind(this);\r\n        this.open = this.open.bind(this);\r\n    }\r\n\r\n    close() {\r\n        this.setState({\r\n            showModal: false\r\n        });\r\n    }\r\n    open() {\r\n        this.setState({\r\n            showModal: true\r\n        });\r\n    }\r\n    render () {\r\n        return (\r\n        <div>\r\n            <Button\r\n            bordered\r\n            className=\"demo-margin\"\r\n            onClick={ ()=>{this.open()} }>\r\n                自定义大小的模态框\r\n            </Button>​\r\n            <Modal\r\n            show = { this.state.showModal }\r\n            onHide = { this.close } \r\n            width = '400'>\r\n                <Modal.Header closeButton>\r\n                    <Modal.Title>这是题目</Modal.Title>\r\n                </Modal.Header>\r\n\r\n                <Modal.Body>\r\n                    这是一些描述。。。\r\n                </Modal.Body>\r\n\r\n                <Modal.Footer>\r\n                    <Button onClick={ this.close } colors=\"secondary\" style={{marginRight: 8}}>取消</Button>\r\n                    <Button onClick={ this.close } bordered>确认</Button>\r\n                </Modal.Footer>\r\n           </Modal>\r\n        </div>\r\n        )\r\n    }\r\n}\r\n\r\nexport default Demo5;\r\n", "desc": " 通过width属性定义模态框大小", "scss_code": ".demo-margin{\r\n    margin: 5px 15px;\r\n}" }, { "example": _react2['default'].createElement(Demo6, null), "title": " 被loading遮住的模态框", "code": "/**\r\n *\r\n * @title 被loading遮住的模态框\r\n * @description 当Modal组件和Loading组件同时出现的时候，Loading会把Modal遮住\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\nimport { Loading, Button, Modal } from 'tinper-bee';\r\n\n\n\r\n\r\n\r\n\r\nclass Demo6 extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            showModal: false,\r\n            showLoading: false\r\n        };\r\n    }\r\n\r\n    close = () => {\r\n        this.setState({\r\n            showModal: false,\r\n            showLoading: false\r\n        });\r\n    }\r\n    open = () => {\r\n        this.setState({\r\n            showModal: true,\r\n            showLoading: true\r\n        });\r\n        setTimeout(() => {\r\n            this.setState({\r\n                showLoading: false\r\n            })\r\n        }, 1000)\r\n    }\r\n\r\n    render() {\r\n        return (\r\n            <div>\r\n                <Button\r\n                    bordered\r\n                    className=\"demo-margin\"\r\n                    onClick={this.open}>\r\n                    打开模态框\r\n                </Button>\r\n                <Loading\r\n                    showBackDrop={true}\r\n                    // loadingType=\"line\"\r\n                    fullScreen\r\n                    show={this.state.showLoading}\r\n                >\r\n                </Loading>\r\n                <Modal\r\n                    show={this.state.showModal}\r\n                    onHide={this.close} >\r\n                    <Modal.Header closeButton>\r\n                        <Modal.Title>标题</Modal.Title>\r\n                    </Modal.Header>\r\n                    <Modal.Body>\r\n                        我是模态框，我的被loading遮住了~\r\n                    </Modal.Body>\r\n                    <Modal.Footer>\r\n                        <Button onClick={this.close} colors=\"secondary\" style={{ marginRight: 8 }}>取消</Button>\r\n                        <Button onClick={this.close} bordered>确认</Button>\r\n                    </Modal.Footer>\r\n                </Modal>\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\nexport default Demo6;\r\n", "desc": " 当Modal组件和Loading组件同时出现的时候，Loading会把Modal遮住", "scss_code": ".demo-margin{\r\n    margin: 5px 15px;\r\n}" }, { "example": _react2['default'].createElement(Demo7, null), "title": " 表单模态框", "code": "/**\r\n *\r\n * @title 表单模态框\r\n * @description 表单模态框\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\nimport { Radio, Rate, Form, FormControl, Select, Label, FormGroup, Button, Modal } from 'tinper-bee';\r\n\n\r\n\n\n\nimport DatePicker from 'bee-datepicker'\r\n\n\n\n\n\r\n\r\nconst FormItem = Form.FormItem;\r\nconst Option = Select.Option;\r\nclass Demo7 extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            selectedValue: \"man\",\r\n            showModal: false,\r\n            name: '',\r\n            education: '',\r\n            birthDate: ''\r\n\r\n        };\r\n    }\r\n\r\n    close = () => {\r\n        this.setState({\r\n            showModal: false\r\n        });\r\n    }\r\n\r\n    handleClose = () => {\r\n        this.props.form.validateFields((err, values) => {\r\n            if (err) {\r\n                console.log('校验失败', values);\r\n            } else {\r\n                console.log('提交成功', values)\r\n                this.close()\r\n            }\r\n        });\r\n    }\r\n\r\n    open = () => {\r\n        this.setState({\r\n            showModal: true\r\n        });\r\n    }\r\n\r\n    handleChange = (state) => (value) => {\r\n        this.setState({\r\n            [state]: value\r\n        })\r\n    }\r\n\r\n    getCalendarContainer = () => {\r\n\r\n        return document.getElementById('demo7');\r\n    }\r\n\r\n    render() {\r\n        const { getFieldProps, getFieldError } = this.props.form;\r\n        const self = this;\r\n\r\n        return (\r\n            <div className=\"demo-margin\" id=\"demo7\">\r\n                <Button\r\n                    bordered\r\n                    onClick={this.open}>\r\n                    添加模态框\r\n                </Button>\r\n                <Modal\r\n                    show={this.state.showModal}\r\n                    onHide={this.close}\r\n                    className=\"demo7-modal\"\r\n                >\r\n                    <Modal.Header closeButton>\r\n                        <Modal.Title>表单实践</Modal.Title>\r\n                    </Modal.Header>\r\n\r\n                    <Modal.Body>\r\n                        <div>\r\n                            <Form>\r\n                                <FormItem>\r\n                                    <Label>姓名</Label>\r\n                                    <FormControl placeholder=\"请输入姓名\"\r\n                                        {...getFieldProps('name', {\r\n                                            validateTrigger: 'onBlur',\r\n                                            rules: [{\r\n                                                required: true, message: '请输入姓名',\r\n                                            }],\r\n                                        })}\r\n                                    />\r\n                                    <span className='error'>\r\n                                        {getFieldError('name')}\r\n                                    </span>\r\n                                </FormItem>\r\n                                <FormItem>\r\n                                    <Label>身份证号</Label>\r\n                                    <FormControl placeholder=\"请输入身份证号\"\r\n                                        {...getFieldProps('id', {\r\n                                            validateTrigger: 'onBlur',\r\n                                            rules: [{\r\n                                                required: true, message: '请输入身份证号',\r\n                                            }, {\r\n                                                pattern: /^[1-9][0-9]{5}([1][9][0-9]{2}|[2][0][0|1][0-9])([0][1-9]|[1][0|1|2])([0][1-9]|[1|2][0-9]|[3][0|1])[0-9]{3}([0-9]|[X])$/, message: '身份证号格式不正确'\r\n                                            }],\r\n                                        })}\r\n                                    />\r\n                                    <span className='error'>\r\n                                        {getFieldError('id')}\r\n                                    </span>\r\n                                </FormItem>\r\n                                <FormItem className='time'>\r\n                                    <Label>出生日期</Label>\r\n                                    <DatePicker\r\n                                        {\r\n                                        ...getFieldProps('time', {\r\n                                            validateTrigger: 'onBlur',\r\n                                            rules: [{\r\n                                                required: true, message: '请选择出生日期',\r\n                                            }, {\r\n                                                type: 'date', message: '日期格式不正确'\r\n                                            }],\r\n                                        }\r\n                                        )}\r\n                                        placeholder={'请选择出生日期'}\r\n                                        getCalendarContainer={this.getCalendarContainer}\r\n                                    />\r\n                                    <span className='error'>\r\n                                        {getFieldError('time')}\r\n                                    </span>\r\n                                </FormItem>\r\n                                <FormItem>\r\n                                    <Label>年龄</Label>\r\n                                    <FormControl placeholder=\"请输入年龄\"\r\n                                        {...getFieldProps('age', {\r\n                                            validateTrigger: 'onBlur',\r\n                                            rules: [{\r\n                                                required: true, message: '请输入年龄',\r\n                                            }],\r\n                                        })}\r\n                                    />\r\n                                    <span className='error'>\r\n                                        {getFieldError('age')}\r\n                                    </span>\r\n                                </FormItem>\r\n                                <FormItem>\r\n                                    <Label>性别</Label>\r\n                                    <Radio.RadioGroup\r\n                                        selectedValue={this.state.selectedValue}\r\n                                        {\r\n                                        ...getFieldProps('sex', {\r\n                                            initialValue: 'man',\r\n                                            onChange (value) {\r\n                                                self.setState({ selectedValue: value });\r\n                                            },\r\n                                            rules: [{ required: true }]\r\n                                        }\r\n                                        )}\r\n                                    >\r\n                                        <Radio value=\"man\" >男</Radio>\r\n                                        <Radio value=\"woman\" >女</Radio>\r\n                                    </Radio.RadioGroup>\r\n                                </FormItem>\r\n                                <FormItem>\r\n                                    <Label>学历</Label>\r\n                                    <Select\r\n                                        {\r\n                                        ...getFieldProps('education', {\r\n                                            initialValue: '',\r\n                                            rules: [{ required: true, message: '请选择学历' }]\r\n                                        }\r\n                                        )}\r\n                                    >\r\n                                        <Option value=\"\">请选择</Option>\r\n                                        <Option value=\"nothing\">无</Option>\r\n                                        <Option value=\"middle\">初中</Option>\r\n                                        <Option value=\"senior\">高中</Option>\r\n                                        <Option value=\"college1\">专科</Option>\r\n                                        <Option value=\"college2\">本科</Option>\r\n                                        <Option value=\"graduate\">研究生及以上</Option>\r\n                                        <Option value=\"other\">其它</Option>\r\n                                    </Select>\r\n                                    <span className='error'>\r\n                                        {getFieldError('education')}\r\n                                    </span>\r\n                                </FormItem>\r\n                                <FormItem>\r\n                                    <Label>保密等级</Label>\r\n                                    <Rate\r\n                                        {\r\n                                        ...getFieldProps('rate', {\r\n                                            initialValue: 0,\r\n                                            rules: [{ required: true }]\r\n                                        }\r\n                                        )}\r\n                                    />\r\n                                </FormItem>\r\n                                <FormItem className=\"remarks\">\r\n                                    <Label>备注</Label>\r\n                                    <FormControl componentClass='textarea'\r\n                                        {\r\n                                        ...getFieldProps('remark', {}\r\n                                        )}\r\n                                    />\r\n                                </FormItem>\r\n                            </Form>\r\n                        </div>\r\n                    </Modal.Body>\r\n\r\n                    <Modal.Footer className=\"text-center\">\r\n                        <Button colors=\"secondary\" style={{ marginRight: 8 }} onClick={this.close}>\r\n                            取消\r\n                        </Button>\r\n                        <Button bordered onClick={this.handleClose}>\r\n                            确认\r\n                        </Button>\r\n                    </Modal.Footer>\r\n                </Modal>\r\n\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\n\r\nexport default Form.createForm()(Demo7);", "desc": " 表单模态框", "scss_code": ".demo7-modal {\r\n    font-size: 14px;\r\n    .u-label {\r\n        display: inline-block;\r\n        min-width: 100px;\r\n        text-align: right;\r\n        padding-right: 12px;\r\n    }\r\n    .u-form-control {\r\n        width: auto;\r\n        min-width: 310px;\r\n    }\r\n    .error {\r\n        font-size: 12px;\r\n        color: red;\r\n        margin-left: 10px;\r\n    }\r\n    .submit {\r\n        padding-left: 110px;\r\n    }\r\n    .submit .login {\r\n        margin-left: 10px;\r\n    }\r\n    .u-form-item .u-select {\r\n        min-width: 310px;\r\n    }\r\n    textarea {\r\n        resize: none;\r\n    }\r\n    .time>div {\r\n        display: inline-block;\r\n    }\r\n    .time .u-label {\r\n        position: relative;\r\n        bottom: 10px;\r\n    }\r\n    .time .error{\r\n        position: relative;\r\n        bottom: 10px;\r\n    }\r\n    .remarks .u-label{\r\n        position: relative;\r\n        bottom: 12px;\r\n    }\r\n    .u-city-select {\r\n        display: inline-block;\r\n    }\r\n    .u-city-select .province,\r\n    .u-city-select .city,\r\n    .u-city-select .area {\r\n        width: 120px;\r\n    }\r\n    .u-form-item {\r\n        min-height: auto!important;\r\n    }\r\n    .u-modal-body{\r\n        background: #f7f9fb;\r\n    }\r\n\r\n}\r\n#demo7{\r\n    .rc-calendar-picker{\r\n        z-index: 1800;\r\n    }\r\n}\r\n.demo-margin{\r\n    margin: 5px 15px;\r\n}" }, { "example": _react2['default'].createElement(Demo8, null), "title": " 两个模态框", "code": "/**\r\n *\r\n * @title 两个模态框\r\n * @description 当两个模态框同时出现的时候，后面出现的那个层级在上面\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\nimport { Button, Modal } from 'tinper-bee';\r\n\n\r\n\r\nclass Demo8 extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            showModal: false,\r\n            showModal2: false\r\n        };\r\n    }\r\n\r\n    close = () => {\r\n        this.setState({\r\n            showModal: false\r\n        });\r\n    }\r\n\r\n    open = () => {\r\n        this.setState({\r\n            showModal: true\r\n        });\r\n    }\r\n\r\n    close2 = () => {\r\n        this.setState({\r\n            showModal2: false\r\n        });\r\n    }\r\n\r\n    open2 = () => {\r\n        this.setState({\r\n            showModal2: true\r\n        });\r\n    }\r\n\r\n    render() {\r\n\r\n        return (\r\n            <div className=\"demo-margin\">\r\n                <Button\r\n                    bordered\r\n                    onClick={this.open}>\r\n                    打开模态框\r\n                </Button>\r\n                <Modal\r\n                    show={this.state.showModal}\r\n                    onHide={this.close}\r\n                >\r\n                    <Modal.Header closeButton>\r\n                        <Modal.Title>第一个模态框</Modal.Title>\r\n                    </Modal.Header>\r\n\r\n                    <Modal.Body>\r\n                       这是第一个模态框\r\n                        <Button\r\n                            bordered\r\n                            size=\"sm\"\r\n                            onClick={this.open2}\r\n                        >\r\n                            打开第二个模态框~\r\n                        </Button>\r\n                    </Modal.Body>\r\n\r\n                    <Modal.Footer>\r\n                        <Button colors=\"secondary\" style={{ marginRight: 8 }} onClick={this.close}>\r\n                            取消\r\n                        </Button>\r\n                        <Button bordered onClick={this.close}>\r\n                            确认\r\n                        </Button>\r\n                    </Modal.Footer>\r\n                </Modal>\r\n                <Modal\r\n                    show={this.state.showModal2}\r\n                    onHide={this.close2}\r\n                >\r\n                    <Modal.Header closeButton>\r\n                        <Modal.Title>第二个模态框</Modal.Title>\r\n                    </Modal.Header>\r\n\r\n                    <Modal.Body>\r\n                        这是第二个模态框~\r\n                    </Modal.Body>\r\n\r\n                    <Modal.Footer>\r\n                        <Button colors=\"secondary\" style={{ marginRight: 8 }} onClick={this.close2}>\r\n                            取消\r\n                        </Button>\r\n                        <Button bordered onClick={this.close2}>\r\n                            确认\r\n                        </Button>\r\n                    </Modal.Footer>\r\n                </Modal>\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\n\r\nexport default Demo8;", "desc": " 当两个模态框同时出现的时候，后面出现的那个层级在上面", "scss_code": ".demo-margin{\r\n    margin: 5px 15px;\r\n}" }, { "example": _react2['default'].createElement(Demo9, null), "title": " enforceFocus", "code": "/**\r\n *\r\n * @title enforceFocus\r\n * @description 打开模态框时控制焦点的聚焦和离开\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\nimport { Popconfirm, FormControl, Label, FormGroup, Button, Modal,  Popconfirm  } from 'tinper-bee';\r\n\n\r\n\r\n\n\n\n\n// \r\n\r\n\r\nclass Demo9 extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            showModal: false,\r\n            showModal2: false\r\n        };\r\n    }\r\n\r\n    close = () => {\r\n        this.setState({\r\n            showModal: false\r\n        });\r\n    }\r\n\r\n    open = () => {\r\n        this.setState({\r\n            showModal: true\r\n        });\r\n    }\r\n\r\n    close2 = () => {\r\n        this.setState({\r\n            showModal2: false\r\n        });\r\n    }\r\n\r\n    open2 = () => {\r\n        this.setState({\r\n            showModal2: true\r\n        });\r\n    }\r\n\r\n    handleChange = (state) => (value) => {\r\n      this.setState({\r\n          [state]: value\r\n      })\r\n    }\r\n\r\n    render() {\r\n      let content = (\r\n            <FormGroup>\r\n                <Label>用户名</Label>\r\n                <FormControl\r\n                    value={this.state.name}\r\n                    onChange={this.handleChange('name')}\r\n                />\r\n            </FormGroup>\r\n      );\r\n        return (\r\n            <div className=\"demo-margin\">\r\n                <Button\r\n                    bordered\r\n                    onClick={this.open}\r\n                >\r\n                    打开模态框\r\n                </Button>\r\n                <Modal\r\n                    show={this.state.showModal}\r\n                    onHide={this.close}\r\n                    enforceFocus={false}\r\n                >\r\n                    <Modal.Header closeButton>\r\n                        <Modal.Title>标题</Modal.Title>\r\n                    </Modal.Header>\r\n\r\n                    <Modal.Body>\r\n                       <span>\r\n                          在模态框中打开气泡组件，如果气泡组件中有文本框，文本框光标不会聚焦。需在modal中设置enforceFocus为false。\r\n                       </span>\r\n                      <div className=\"demoPadding\">\r\n                        <Popconfirm trigger=\"click\" placement=\"right\" content={content}>\r\n                            <Button bordered>打开气泡组件</Button>\r\n                        </Popconfirm>\r\n                      </div>\r\n                    </Modal.Body>\r\n\r\n                    <Modal.Footer className=\"text-center\">\r\n                        <Button colors=\"secondary\" style={{ marginRight: 8 }} onClick={this.close}>\r\n                            取消\r\n                        </Button>\r\n                        <Button bordered onClick={this.close}>\r\n                            确认\r\n                        </Button>\r\n                    </Modal.Footer>\r\n                </Modal>\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\n\r\nexport default Demo9;", "desc": " 打开模态框时控制焦点的聚焦和离开", "scss_code": ".u-popconfirm {\r\n  z-index:10000;\r\n}\r\n\r\n.demoPadding {\r\n  text-align: center;\r\n}" }, { "example": _react2['default'].createElement(Demo10, null), "title": " 嵌套表格的模态框", "code": "/**\n *\n * @title 嵌套表格的模态框\n * @description 嵌套表格\n *\n */\n\nimport React, { Component } from 'react';\nimport { Table, Checkbox, Button, Modal } from 'tinper-bee';\nimport multiSelect from \"bee-table/build/lib/multiSelect\";\n\n\n\n\nlet MultiSelectTable = multiSelect(Table, Checkbox);\n\n\nclass Demo10 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            showModal: false,\n            data: [\n                { a: \"杨过\", b: \"男\", c: 30, d: '内行', key: \"2\", _checked: true },\n                { a: \"令狐冲\", b: \"男\", c: 41, d: '大侠', key: \"1\", _checked: true },\n                { a: \"郭靖\", b: \"男\", c: 25, d: '大侠', key: \"3\", _checked: true }\n            ]\n        };\n\n    }\n\n    columns = [\n        {\n            title: \"名字\",\n            dataIndex: \"a\",\n            key: \"a\",\n            width: \"25%\"\n        },\n        {\n            title: \"性别\",\n            dataIndex: \"b\",\n            key: \"b\",\n            width: \"25%\"\n        },\n        {\n            title: \"年龄\",\n            dataIndex: \"c\",\n            key: \"c\",\n            width: \"20%\",\n            sorter: (a, b) => a.c - b.c\n        },\n        {\n            title: \"武功级别\",\n            dataIndex: \"d\",\n            key: \"25%\"\n        }\n    ];\n\n    close = () => {\n        this.setState({\n            showModal: false\n        });\n    }\n    open = () => {\n        this.setState({\n            showModal: true\n        });\n    }\n\n    getSelectedDataFunc = data => {\n        console.log(data);\n    };\n\n    clear = () => {\n        let { data } = this.state;\n        data.forEach(item => item._checked = false)\n        this.setState({\n            data:JSON.parse(JSON.stringify(data))\n        })\n    }\n\n    render () {\n        let multiObj = {\n            type: \"checkbox\"\n        };\n        return (\n            <div>\n                <Button\n                    bordered\n                    className=\"demo-margin\"\n                    onClick={this.open}>\n                    打开模态框\n                </Button>\n                <Modal\n                    show={this.state.showModal}\n                    onHide={this.close}\n                    size=\"lg\"\n                    ref={ref => this.modal = ref}\n                    className=\"demo10-modal\"\n                >\n                    <Modal.Header closeButton>\n                        <Modal.Title>标题</Modal.Title>\n                    </Modal.Header>\n\n                    <Modal.Body>\n                        <MultiSelectTable\n                            columns={this.columns}\n                            data={this.state.data}\n                            multiSelect={multiObj}\n                            getSelectedDataFunc={this.getSelectedDataFunc} \n                        />\n                    </Modal.Body>\n\n                    <Modal.Footer>\n                        <Button onClick={this.clear} colors=\"secondary\" className=\"clear-btn\">清空所选</Button>\n                        <Button onClick={this.close} colors=\"secondary\" style={{ marginRight: 8 }}>取消</Button>\n                        <Button onClick={this.close} bordered>确认</Button>\n                    </Modal.Footer>\n                </Modal>\n            </div>\n        )\n    }\n}\n\nexport default Demo10;\n", "desc": " 嵌套表格", "scss_code": ".demo10-modal{\r\n  .clear-btn{\r\n    float: left;\r\n    background: transparent !important;\r\n    border-color: transparent !important;\r\n    &:hover{\r\n      background: #EBECF0 !important;\r\n    }\r\n    &:active{\r\n      background: #EBECF0 !important;\r\n    }\r\n  }\r\n}" }, { "example": _react2['default'].createElement(Demo11, null), "title": " 可拖拽Header的模态框", "code": "/**\r\n *\r\n * @title 可拖拽Header的模态框\r\n * @description 通过`draggable`参数设置是否可拖拽。注意：模态框 header 内，若有绑定事件的元素，需要添加一个 className=\"dnd-cancel\"，才能正常触发相应事件。\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\nimport { Checkbox, Button, Modal } from 'tinper-bee';\r\n\n\n\r\n\r\nclass Demo11 extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            showModal: false,\r\n            checked: false,\r\n        };\r\n    }\r\n\r\n    close = () => {\r\n        this.setState({\r\n            showModal: false\r\n        });\r\n    }\r\n    open = () => {\r\n        this.setState({\r\n            showModal: true\r\n        });\r\n    }\r\n\r\n    changeCheck=()=> {\r\n        this.setState({checked:!this.state.checked});\r\n    }\r\n\r\n    render () {\r\n        return (\r\n            <div className='demo12'>\r\n                <Button\r\n                    bordered\r\n                    className=\"demo-margin\"\r\n                    onClick={this.open}>\r\n                    打开模态框\r\n                </Button>\r\n                <Modal\r\n                    show={this.state.showModal}\r\n                    onHide={this.close}\r\n                    size=\"lg\"\r\n                    ref={ref => this.modal = ref}\r\n                    className=\"demo10-modal\"\r\n                    backdrop={false}\r\n                    draggable={true}\r\n                    bounds={'body'}//可拖拽范围为当前可见区域\r\n                >\r\n                    <Modal.Header closeButton>\r\n                        <Modal.Title>\r\n                        <Checkbox \r\n                            className=\"dnd-cancel\"\r\n                            checked={this.state.checked}  \r\n                            onChange={this.changeCheck}\r\n                        >\r\n                            可勾选的标题\r\n                        </Checkbox>\r\n                        </Modal.Title>\r\n                    </Modal.Header>\r\n\r\n                    <Modal.Body>\r\n                        <p>Some contents...</p>\r\n                        <p>Some contents...</p>\r\n                        <p>Some contents...</p>\r\n                        \r\n                    </Modal.Body>\r\n\r\n                    <Modal.Footer>\r\n                        <Button onClick={this.close} colors=\"secondary\" style={{ marginRight: 8 }}>取消</Button>\r\n                        <Button onClick={this.close} bordered>确认</Button>\r\n                    </Modal.Footer>\r\n                </Modal>\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\nexport default Demo11;\r\n", "desc": " 通过`draggable`参数设置是否可拖拽。注意：模态框 header 内，若有绑定事件的元素，需要添加一个 className=\"dnd-cancel\"，才能正常触发相应事件。" }, { "example": _react2['default'].createElement(Demo12, null), "title": " 信息提示", "code": "/**\r\n *\r\n * @title 信息提示\r\n * @description 提供`info`、`success`、`error`、`warning`、`confirm` API\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\nimport { Icon, Button, Modal } from 'tinper-bee';\r\n\n\n\r\n\r\nconst info = function () {\r\n    Modal.info({\r\n        title: '提示',\r\n        okText: '知道了',\r\n        content: (\r\n          <div>\r\n            <p>单据状态已更新，请在审批中心内查看。</p>\r\n          </div>\r\n        ),\r\n        onOk() {},\r\n    });\r\n};\r\nconst success = function () {\r\n    Modal.success({\r\n        title: '提交成功',\r\n        content: '单据提交成功，你可以在审批中心关注审批状态。',\r\n    });\r\n};\r\nconst error = function () {\r\n    Modal.error({\r\n        title: '提交失败',\r\n        content: '单据状态更新失败，请重新尝试。',\r\n    });\r\n};\r\nconst warning = function () {\r\n    Modal.warning({\r\n        title: '警告',\r\n        content: '单据状态异常，请重新提交',\r\n    });\r\n};\r\nconst confirm = function () {\r\n    Modal.confirm({\r\n        title: '确定要删除这条单据吗？',\r\n        content: '单据删除后将不能恢复。',\r\n        onOk() {\r\n            console.log('OK');\r\n        },\r\n        onCancel() {\r\n            console.log('Cancel');\r\n        },\r\n    })\r\n};\r\n\r\nclass Demo12 extends Component {\r\n    render () {\r\n        return (\r\n            <div className=\"demo12\">\r\n                <Button colors=\"info\" onClick={info}>Info</Button>\r\n                <Button colors=\"success\" onClick={success}>Success</Button>\r\n                <Button colors=\"danger\" onClick={error}>Error</Button>\r\n                <Button colors=\"warning\" onClick={warning}>Warning</Button>\r\n                <Button bordered onClick={confirm}>Confirm</Button>\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\nexport default Demo12;\r\n", "desc": " 提供`info`、`success`、`error`、`warning`、`confirm` API", "scss_code": ".demo12{\r\n    .u-button{\r\n        margin: 5px;\r\n    }\r\n}" }, { "example": _react2['default'].createElement(Demo13, null), "title": " 通过拖拽调整弹框大小", "code": "/**\n *\n * @title 通过拖拽调整弹框大小\n * @description 通过 `resizable` 参数控制弹框是否可被 `resize`。通过 `centered` 参数设置弹框垂直居中展示。\n *\n */\n\nimport React, { Component } from 'react';\nimport { Button, Modal } from 'tinper-bee';\n\n\n\nclass Demo13 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            showModal: false\n        };\n        this.close = this.close.bind(this);\n        this.open = this.open.bind(this);\n    }\n\n    close() {\n        this.setState({\n            showModal: false\n        });\n    }\n    open() {\n        this.setState({\n            showModal: true\n        });\n    }\n    onResizeStart = (e, dir, elementRef) => {\n        console.log(\"onResizeStart\", e, dir, elementRef)\n    }\n    onResize = (e, dir, elementRef, delta) => {\n        console.log(\"onResize\", e, dir, elementRef, delta)\n    }\n    onResizeStop = (e, dir, elementRef, delta) => {\n        console.log(\"onResizeStop\", e, dir, elementRef, delta)\n    }\n\n    render () {\n        return (\n        <div>\n            <Button\n            bordered\n            className=\"demo-margin\"\n            onClick = { this.open }>\n                打开模态框\n            </Button>​\n            <Modal\n            centered\n            show = { this.state.showModal }\n            backdropClosable={false}\n            resizable={true}\n            resizeClassName=\"resize-box\"\n            maxWidth={\"1000\"}\n            maxHeight={\"500px\"}\n            minWidth={300}\n            minHeight={150}\n            onResizeStart={this.onResizeStart}\n            onResize={this.onResize}\n            onResizeStop={this.onResizeStop}\n            onHide = { this.close } >\n                <Modal.Header closeButton>\n                    <Modal.Title>标题</Modal.Title>\n                </Modal.Header>\n\n                <Modal.Body>\n                    <p>Some contents...</p>\n                    <p>Some contents...</p>\n                    <p>Some contents...</p>\n                </Modal.Body>\n\n                <Modal.Footer>\n                    <Button onClick={ this.close } colors=\"secondary\" style={{marginRight: 8}}>取消</Button>\n                    <Button onClick={ this.close } bordered>确认</Button>\n                </Modal.Footer>\n           </Modal>\n        </div>\n        )\n    }\n}\n\nexport default Demo13;\n", "desc": " 通过 `resizable` 参数控制弹框是否可被 `resize`。通过 `centered` 参数设置弹框垂直居中展示。", "scss_code": ".demo13{\n    .u-button{\n        margin: 5px;\n    }\n}" }];
+	var Demo1 = __webpack_require__(288);var Demo2 = __webpack_require__(289);var Demo3 = __webpack_require__(294);var Demo4 = __webpack_require__(295);var Demo5 = __webpack_require__(296);var Demo6 = __webpack_require__(297);var Demo7 = __webpack_require__(300);var Demo8 = __webpack_require__(699);var Demo9 = __webpack_require__(700);var Demo10 = __webpack_require__(705);var Demo11 = __webpack_require__(750);var Demo12 = __webpack_require__(751);var Demo13 = __webpack_require__(752);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 默认的模态框", "code": "/**\n *\n * @title 默认的模态框\n * @description\n *\n */\n\nimport React, { Component } from 'react';\nimport { Button, Modal } from 'tinper-bee';\n\n\n\nclass Demo1 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            showModal: false\n        };\n        this.close = this.close.bind(this);\n        this.open = this.open.bind(this);\n    }\n\n    close() {\n        this.setState({\n            showModal: false\n        });\n    }\n    open() {\n        this.setState({\n            showModal: true\n        });\n    }\n    render () {\n        return (\n        <div>\n            <Button\n            bordered\n            className=\"demo-margin\"\n            onClick = { this.open }>\n                打开模态框\n            </Button>​\n            <Modal\n            show = { this.state.showModal }\n            onHide = { this.close } >\n                <Modal.Header closeButton>\n                    <Modal.Title>标题</Modal.Title>\n                </Modal.Header>\n\n                <Modal.Body>\n                    <p>Some contents...</p>\n                    <p>Some contents...</p>\n                    <p>Some contents...</p>\n                </Modal.Body>\n\n                <Modal.Footer>\n                    <Button onClick={ this.close } colors=\"secondary\" style={{marginRight: 8}}>取消</Button>\n                    <Button onClick={ this.close } bordered>确认</Button>\n                </Modal.Footer>\n           </Modal>\n        </div>\n        )\n    }\n}\n\nexport default Demo1;\n", "desc": "", "scss_code": ".demo-margin{\n  margin: 5px 15px;\n}" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 注册的模态框", "code": "/**\r\n *\r\n * @title 注册的模态框\r\n * @description\r\n *\r\n */\r\n\r\nimport React, {Component} from 'react';\nimport { FormControl, Label, FormGroup, Button, Modal } from 'tinper-bee';\r\n\n\r\n\n\n\n\r\nclass Demo2 extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            showModal: false,\r\n            password: '',\r\n            name: ''\r\n        };\r\n        this.close = this.close.bind(this);\r\n        this.open = this.open.bind(this);\r\n    }\r\n\r\n    close() {\r\n        this.setState({\r\n            showModal: false\r\n        });\r\n    }\r\n\r\n    open() {\r\n        this.setState({\r\n            showModal: true\r\n        });\r\n    }\r\n\r\n    handleChange = (state) => (value) => {\r\n        this.setState({\r\n            [state]: value\r\n        })\r\n    }\r\n\r\n    render() {\r\n\r\n        return (\r\n            <div className=\"demo-margin\">\r\n                <Button\r\n                    bordered\r\n                    onClick={this.open}>\r\n                    注册模态框\r\n                </Button>​\r\n                <Modal\r\n                    show={this.state.showModal}\r\n                    onHide={this.close}\r\n                    style={{width: 450}}\r\n                >\r\n                    <Modal.Header closeButton>\r\n                        <Modal.Title>注册</Modal.Title>\r\n                    </Modal.Header>\r\n\r\n                    <Modal.Body>\r\n                        <div style={{ width: 300, margin: '0 auto' }}>\r\n                            <FormGroup>\r\n                                <Label>用户名</Label>\r\n                                <FormControl\r\n                                    value={this.state.name}\r\n                                    onChange={this.handleChange('name')}\r\n                                />\r\n                            </FormGroup>\r\n                            <FormGroup>\r\n                                <Label>密码</Label>\r\n                                <FormControl\r\n                                    value={this.state.password}\r\n                                    onChange={this.handleChange('password')}\r\n                                />\r\n                            </FormGroup>\r\n                        </div>\r\n\r\n\r\n                    </Modal.Body>\r\n\r\n                    <Modal.Footer className=\"text-center\">\r\n                        <Button colors=\"secondary\" style={{ marginRight: 8 }} onClick={this.close}>\r\n                            取消\r\n                        </Button>\r\n                        <Button bordered onClick={this.close}>\r\n                            确认\r\n                        </Button>\r\n                    </Modal.Footer>\r\n                </Modal>\r\n\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\n\r\nexport default Demo2;", "desc": "", "scss_code": ".demo-margin{\r\n  margin: 5px 15px;\r\n}\r\n.text-center{\r\n  text-align: center;\r\n}" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 不同大小的模态框", "code": "/**\r\n *\r\n * @title 不同大小的模态框\r\n * @description 通过size属性控制模态框大小\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\nimport { Button, Modal } from 'tinper-bee';\r\n\n\r\n\r\nclass Demo3 extends Component {\r\n\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            showModal: false,\r\n            modalSize: ''\r\n        };\r\n        this.close = this.close.bind(this);\r\n        this.open = this.open.bind(this);\r\n        this.changeSize = this.changeSize.bind(this);\r\n\r\n    }\r\n\r\n    close() {\r\n        this.setState({\r\n            showModal: false\r\n        });\r\n    }\r\n\r\n    open() {\r\n        this.setState({\r\n            showModal: true\r\n        });\r\n    }\r\n\r\n    changeSize(size) {\r\n        this.setState({\r\n            modalSize: size\r\n        });\r\n    }\r\n\r\n    render() {\r\n        return (\r\n            <div>\r\n                <Button\r\n                    bordered\r\n                    className=\"demo-margin\"\r\n                    onClick={ ()=>{this.changeSize(\"sm\");this.open();} }>\r\n                    小号模态框\r\n                </Button>\r\n                <Button\r\n                    bordered\r\n                    className=\"demo-margin\"\r\n                    onClick={ ()=>{this.changeSize(\"lg\");this.open();} }>\r\n                    大号模态框\r\n                </Button>\r\n                <Button\r\n                    bordered\r\n                    className=\"demo-margin\"\r\n                    onClick={ ()=>{this.changeSize(\"xlg\");this.open();} }>\r\n                    超大号模态框\r\n                </Button>\r\n                <Modal show={ this.state.showModal } size={ this.state.modalSize } onHide={ this.close } className=\"demo3-modal\">\r\n                    <Modal.Header closeButton>\r\n                        <Modal.Title > 我来组成头部 </Modal.Title>\r\n                    </Modal.Header >\r\n                    <Modal.Body>\r\n                        <h4> 这是一个沉默的标题 </h4>\r\n\r\n                        <p> 一些描述。。。 </p>\r\n                        <hr/>\r\n\r\n                        <p> 用创想与技术推动商业和社会进步 </p>\r\n\r\n                        <p> 我们基于创造性的思想与先进的技术（ 现阶段是信息技术）， 创新和运营高客户价值的产品与服务， 帮助客户实现发展目标， 进而推动商业和社会进步。\r\n                        </p>\r\n\r\n                        <p> 全球领先的企业与公共组织软件、 云服务、 金融服务提供商。 </p>\r\n\r\n                        <p> 员工快乐工作， 成就事业， 分享成功的平台。 </p>\r\n\r\n                        <p> 企业和公共组织是我们持续服务的客户。 软件、 云服务、 金融服务是用友新发展阶段的核心业务。 全球领先是我们必须达成的目标。 </p>\r\n\r\n                        <p> 在努力实现产业发展目标的同时， 员工在用友快乐工作、 成就事业、 分享成功也是公司的追求。 </p>\r\n\r\n                    </Modal.Body>\r\n                    <Modal.Footer>\r\n                        <Button colors=\"secondary\" onClick={ this.close }> 关闭 </Button>\r\n                    </Modal.Footer>\r\n                </Modal>\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\nexport default Demo3;\r\n", "desc": " 通过size属性控制模态框大小", "scss_code": ".demo-margin{\r\n  margin: 5px 15px;\r\n}\r\n.u-modal-body{\r\n  max-height: 430px;\r\n  overflow: auto;\r\n}\r\n\r\n.demo3-modal{\r\n  .u-modal-body{\r\n    background: #f7f9fb;\r\n  }\r\n}" }, { "example": _react2['default'].createElement(Demo4, null), "title": " 不同遮罩层状态的模态框", "code": "/**\r\n *\r\n * @title 不同遮罩层状态的模态框\r\n * @description 遮罩层可以通过backdrop属性控制状态，可以为不响应事件，可以不显示。\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\nimport { Button, Modal } from 'tinper-bee';\r\n\n\r\n\r\n\r\nclass Demo4 extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            showModal: false,\r\n            modalDropup: true\r\n        };\r\n        this.close = this.close.bind(this);\r\n        this.open = this.open.bind(this);\r\n        this.changeDropup = this.changeDropup.bind(this);\r\n\r\n    }\r\n\r\n    close() {\r\n        this.setState({\r\n            showModal: false\r\n        });\r\n    }\r\n\r\n    open() {\r\n        this.setState({\r\n            showModal: true\r\n        });\r\n    }\r\n\r\n    changeDropup(state) {\r\n        this.setState({\r\n            modalDropup: state\r\n        });\r\n    }\r\n\r\n    render() {\r\n        return (\r\n            <div>\r\n                <Button\r\n                    bordered\r\n                    className=\"demo-margin\"\r\n                    onClick={ ()=>{this.changeDropup(false);this.open();} }>\r\n                    无遮罩层模态框\r\n                </Button>\r\n                <Button\r\n                    bordered\r\n                    className=\"demo-margin\"\r\n                    onClick={ ()=>{this.changeDropup(\"static\");this.open();} }>\r\n                    遮罩无事件模态框\r\n                </Button>\r\n                <Modal\r\n                    className=\"demo4-modal\"\r\n                    show={ this.state.showModal }\r\n                    backdrop={ this.state.modalDropup }\r\n                    onHide={ this.close }>\r\n                    <Modal.Header closeButton>\r\n                        <Modal.Title > 我来组成头部 </Modal.Title>\r\n                    </Modal.Header >\r\n                    <Modal.Body >\r\n                        <h4> 这是一个沉默的标题 </h4>\r\n\r\n                        <p> 一些描述。。。 </p>\r\n                        <hr/>\r\n\r\n                        <p> 用创想与技术推动商业和社会进步 </p>\r\n\r\n                        <p> 我们基于创造性的思想与先进的技术（ 现阶段是信息技术）， 创新和运营高客户价值的产品与服务， 帮助客户实现发展目标， 进而推动商业和社会进步。 </p>\r\n\r\n                        <p> 全球领先的企业与公共组织软件、 云服务、 金融服务提供商。 </p>\r\n\r\n                        <p> 员工快乐工作， 成就事业， 分享成功的平台。 </p>\r\n                    </Modal.Body>\r\n                    <Modal.Footer>\r\n                        <Button colors=\"secondary\" onClick={ this.close }> 关闭 </Button>\r\n                    </Modal.Footer>\r\n                </Modal>\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\nexport default Demo4;\r\n", "desc": " 遮罩层可以通过backdrop属性控制状态，可以为不响应事件，可以不显示。", "scss_code": ".demo-margin{\r\n  margin: 5px 15px;\r\n}\r\n.demo4-modal{\r\n  .u-modal-body{\r\n    background: #f7f9fb;\r\n  }\r\n}" }, { "example": _react2['default'].createElement(Demo5, null), "title": " 自定义大小的模态框", "code": "/**\r\n *\r\n * @title 自定义大小的模态框\r\n * @description 通过width属性定义模态框大小\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\nimport { Button, Modal } from 'tinper-bee';\r\n\n\r\n\r\n\r\nclass Demo5 extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            showModal: false\r\n        };\r\n        this.close = this.close.bind(this);\r\n        this.open = this.open.bind(this);\r\n    }\r\n\r\n    close() {\r\n        this.setState({\r\n            showModal: false\r\n        });\r\n    }\r\n    open() {\r\n        this.setState({\r\n            showModal: true\r\n        });\r\n    }\r\n    render () {\r\n        return (\r\n        <div>\r\n            <Button\r\n            bordered\r\n            className=\"demo-margin\"\r\n            onClick={ ()=>{this.open()} }>\r\n                自定义大小的模态框\r\n            </Button>​\r\n            <Modal\r\n            show = { this.state.showModal }\r\n            onHide = { this.close } \r\n            width = '400'>\r\n                <Modal.Header closeButton>\r\n                    <Modal.Title>这是题目</Modal.Title>\r\n                </Modal.Header>\r\n\r\n                <Modal.Body>\r\n                    这是一些描述。。。\r\n                </Modal.Body>\r\n\r\n                <Modal.Footer>\r\n                    <Button onClick={ this.close } colors=\"secondary\" style={{marginRight: 8}}>取消</Button>\r\n                    <Button onClick={ this.close } bordered>确认</Button>\r\n                </Modal.Footer>\r\n           </Modal>\r\n        </div>\r\n        )\r\n    }\r\n}\r\n\r\nexport default Demo5;\r\n", "desc": " 通过width属性定义模态框大小", "scss_code": ".demo-margin{\r\n    margin: 5px 15px;\r\n}" }, { "example": _react2['default'].createElement(Demo6, null), "title": " 被loading遮住的模态框", "code": "/**\r\n *\r\n * @title 被loading遮住的模态框\r\n * @description 当Modal组件和Loading组件同时出现的时候，Loading会把Modal遮住\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\nimport { Loading, Button, Modal } from 'tinper-bee';\r\n\n\n\r\n\r\n\r\n\r\nclass Demo6 extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            showModal: false,\r\n            showLoading: false\r\n        };\r\n    }\r\n\r\n    close = () => {\r\n        this.setState({\r\n            showModal: false,\r\n            showLoading: false\r\n        });\r\n    }\r\n    open = () => {\r\n        this.setState({\r\n            showModal: true,\r\n            showLoading: true\r\n        });\r\n        setTimeout(() => {\r\n            this.setState({\r\n                showLoading: false\r\n            })\r\n        }, 1000)\r\n    }\r\n\r\n    render() {\r\n        return (\r\n            <div>\r\n                <Button\r\n                    bordered\r\n                    className=\"demo-margin\"\r\n                    onClick={this.open}>\r\n                    打开模态框\r\n                </Button>\r\n                <Loading\r\n                    showBackDrop={true}\r\n                    // loadingType=\"line\"\r\n                    fullScreen\r\n                    show={this.state.showLoading}\r\n                >\r\n                </Loading>\r\n                <Modal\r\n                    show={this.state.showModal}\r\n                    onHide={this.close} >\r\n                    <Modal.Header closeButton>\r\n                        <Modal.Title>标题</Modal.Title>\r\n                    </Modal.Header>\r\n                    <Modal.Body>\r\n                        我是模态框，我的被loading遮住了~\r\n                    </Modal.Body>\r\n                    <Modal.Footer>\r\n                        <Button onClick={this.close} colors=\"secondary\" style={{ marginRight: 8 }}>取消</Button>\r\n                        <Button onClick={this.close} bordered>确认</Button>\r\n                    </Modal.Footer>\r\n                </Modal>\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\nexport default Demo6;\r\n", "desc": " 当Modal组件和Loading组件同时出现的时候，Loading会把Modal遮住", "scss_code": ".demo-margin{\r\n    margin: 5px 15px;\r\n}" }, { "example": _react2['default'].createElement(Demo7, null), "title": " 表单模态框", "code": "/**\r\n *\r\n * @title 表单模态框\r\n * @description 表单模态框\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\nimport { Radio, Rate, Form, FormControl, Select, Label, FormGroup, Button, Modal } from 'tinper-bee';\r\n\n\r\n\n\n\nimport DatePicker from 'bee-datepicker'\r\n\n\n\n\n\r\n\r\nconst FormItem = Form.FormItem;\r\nconst Option = Select.Option;\r\nclass Demo7 extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            selectedValue: \"man\",\r\n            showModal: false,\r\n            name: '',\r\n            education: '',\r\n            birthDate: ''\r\n\r\n        };\r\n    }\r\n\r\n    close = () => {\r\n        this.setState({\r\n            showModal: false\r\n        });\r\n    }\r\n\r\n    handleClose = () => {\r\n        this.props.form.validateFields((err, values) => {\r\n            if (err) {\r\n                console.log('校验失败', values);\r\n            } else {\r\n                console.log('提交成功', values)\r\n                this.close()\r\n            }\r\n        });\r\n    }\r\n\r\n    open = () => {\r\n        this.setState({\r\n            showModal: true\r\n        });\r\n    }\r\n\r\n    handleChange = (state) => (value) => {\r\n        this.setState({\r\n            [state]: value\r\n        })\r\n    }\r\n\r\n    getCalendarContainer = () => {\r\n\r\n        return document.getElementById('demo7');\r\n    }\r\n\r\n    render() {\r\n        const { getFieldProps, getFieldError } = this.props.form;\r\n        const self = this;\r\n\r\n        return (\r\n            <div className=\"demo-margin\" id=\"demo7\">\r\n                <Button\r\n                    bordered\r\n                    onClick={this.open}>\r\n                    添加模态框\r\n                </Button>\r\n                <Modal\r\n                    show={this.state.showModal}\r\n                    onHide={this.close}\r\n                    className=\"demo7-modal\"\r\n                >\r\n                    <Modal.Header closeButton>\r\n                        <Modal.Title>表单实践</Modal.Title>\r\n                    </Modal.Header>\r\n\r\n                    <Modal.Body>\r\n                        <div>\r\n                            <Form>\r\n                                <FormItem>\r\n                                    <Label>姓名</Label>\r\n                                    <FormControl placeholder=\"请输入姓名\"\r\n                                        {...getFieldProps('name', {\r\n                                            validateTrigger: 'onBlur',\r\n                                            rules: [{\r\n                                                required: true, message: '请输入姓名',\r\n                                            }],\r\n                                        })}\r\n                                    />\r\n                                    <span className='error'>\r\n                                        {getFieldError('name')}\r\n                                    </span>\r\n                                </FormItem>\r\n                                <FormItem>\r\n                                    <Label>身份证号</Label>\r\n                                    <FormControl placeholder=\"请输入身份证号\"\r\n                                        {...getFieldProps('id', {\r\n                                            validateTrigger: 'onBlur',\r\n                                            rules: [{\r\n                                                required: true, message: '请输入身份证号',\r\n                                            }, {\r\n                                                pattern: /^[1-9][0-9]{5}([1][9][0-9]{2}|[2][0][0|1][0-9])([0][1-9]|[1][0|1|2])([0][1-9]|[1|2][0-9]|[3][0|1])[0-9]{3}([0-9]|[X])$/, message: '身份证号格式不正确'\r\n                                            }],\r\n                                        })}\r\n                                    />\r\n                                    <span className='error'>\r\n                                        {getFieldError('id')}\r\n                                    </span>\r\n                                </FormItem>\r\n                                <FormItem className='time'>\r\n                                    <Label>出生日期</Label>\r\n                                    <DatePicker\r\n                                        {\r\n                                        ...getFieldProps('time', {\r\n                                            validateTrigger: 'onBlur',\r\n                                            rules: [{\r\n                                                required: true, message: '请选择出生日期',\r\n                                            }, {\r\n                                                type: 'date', message: '日期格式不正确'\r\n                                            }],\r\n                                        }\r\n                                        )}\r\n                                        placeholder={'请选择出生日期'}\r\n                                        getCalendarContainer={this.getCalendarContainer}\r\n                                    />\r\n                                    <span className='error'>\r\n                                        {getFieldError('time')}\r\n                                    </span>\r\n                                </FormItem>\r\n                                <FormItem>\r\n                                    <Label>年龄</Label>\r\n                                    <FormControl placeholder=\"请输入年龄\"\r\n                                        {...getFieldProps('age', {\r\n                                            validateTrigger: 'onBlur',\r\n                                            rules: [{\r\n                                                required: true, message: '请输入年龄',\r\n                                            }],\r\n                                        })}\r\n                                    />\r\n                                    <span className='error'>\r\n                                        {getFieldError('age')}\r\n                                    </span>\r\n                                </FormItem>\r\n                                <FormItem>\r\n                                    <Label>性别</Label>\r\n                                    <Radio.RadioGroup\r\n                                        selectedValue={this.state.selectedValue}\r\n                                        {\r\n                                        ...getFieldProps('sex', {\r\n                                            initialValue: 'man',\r\n                                            onChange (value) {\r\n                                                self.setState({ selectedValue: value });\r\n                                            },\r\n                                            rules: [{ required: true }]\r\n                                        }\r\n                                        )}\r\n                                    >\r\n                                        <Radio value=\"man\" >男</Radio>\r\n                                        <Radio value=\"woman\" >女</Radio>\r\n                                    </Radio.RadioGroup>\r\n                                </FormItem>\r\n                                <FormItem>\r\n                                    <Label>学历</Label>\r\n                                    <Select\r\n                                        {\r\n                                        ...getFieldProps('education', {\r\n                                            initialValue: '',\r\n                                            rules: [{ required: true, message: '请选择学历' }]\r\n                                        }\r\n                                        )}\r\n                                    >\r\n                                        <Option value=\"\">请选择</Option>\r\n                                        <Option value=\"nothing\">无</Option>\r\n                                        <Option value=\"middle\">初中</Option>\r\n                                        <Option value=\"senior\">高中</Option>\r\n                                        <Option value=\"college1\">专科</Option>\r\n                                        <Option value=\"college2\">本科</Option>\r\n                                        <Option value=\"graduate\">研究生及以上</Option>\r\n                                        <Option value=\"other\">其它</Option>\r\n                                    </Select>\r\n                                    <span className='error'>\r\n                                        {getFieldError('education')}\r\n                                    </span>\r\n                                </FormItem>\r\n                                <FormItem>\r\n                                    <Label>保密等级</Label>\r\n                                    <Rate\r\n                                        {\r\n                                        ...getFieldProps('rate', {\r\n                                            initialValue: 0,\r\n                                            rules: [{ required: true }]\r\n                                        }\r\n                                        )}\r\n                                    />\r\n                                </FormItem>\r\n                                <FormItem className=\"remarks\">\r\n                                    <Label>备注</Label>\r\n                                    <FormControl componentClass='textarea'\r\n                                        {\r\n                                        ...getFieldProps('remark', {}\r\n                                        )}\r\n                                    />\r\n                                </FormItem>\r\n                            </Form>\r\n                        </div>\r\n                    </Modal.Body>\r\n\r\n                    <Modal.Footer className=\"text-center\">\r\n                        <Button colors=\"secondary\" style={{ marginRight: 8 }} onClick={this.close}>\r\n                            取消\r\n                        </Button>\r\n                        <Button bordered onClick={this.handleClose}>\r\n                            确认\r\n                        </Button>\r\n                    </Modal.Footer>\r\n                </Modal>\r\n\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\n\r\nexport default Form.createForm()(Demo7);", "desc": " 表单模态框", "scss_code": ".demo7-modal {\r\n    font-size: 14px;\r\n    .u-label {\r\n        display: inline-block;\r\n        min-width: 100px;\r\n        text-align: right;\r\n        padding-right: 12px;\r\n    }\r\n    .u-form-control {\r\n        width: auto;\r\n        min-width: 310px;\r\n    }\r\n    .error {\r\n        font-size: 12px;\r\n        color: red;\r\n        margin-left: 10px;\r\n    }\r\n    .submit {\r\n        padding-left: 110px;\r\n    }\r\n    .submit .login {\r\n        margin-left: 10px;\r\n    }\r\n    .u-form-item .u-select {\r\n        min-width: 310px;\r\n    }\r\n    textarea {\r\n        resize: none;\r\n    }\r\n    .time>div {\r\n        display: inline-block;\r\n    }\r\n    .time .u-label {\r\n        position: relative;\r\n        bottom: 10px;\r\n    }\r\n    .time .error{\r\n        position: relative;\r\n        bottom: 10px;\r\n    }\r\n    .remarks .u-label{\r\n        position: relative;\r\n        bottom: 12px;\r\n    }\r\n    .u-city-select {\r\n        display: inline-block;\r\n    }\r\n    .u-city-select .province,\r\n    .u-city-select .city,\r\n    .u-city-select .area {\r\n        width: 120px;\r\n    }\r\n    .u-form-item {\r\n        min-height: auto!important;\r\n    }\r\n    .u-modal-body{\r\n        background: #f7f9fb;\r\n    }\r\n\r\n}\r\n#demo7{\r\n    .rc-calendar-picker{\r\n        z-index: 1800;\r\n    }\r\n}\r\n.demo-margin{\r\n    margin: 5px 15px;\r\n}" }, { "example": _react2['default'].createElement(Demo8, null), "title": " 两个模态框", "code": "/**\r\n *\r\n * @title 两个模态框\r\n * @description 当两个模态框同时出现的时候，后面出现的那个层级在上面\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\nimport { Button, Modal } from 'tinper-bee';\r\n\n\r\n\r\nclass Demo8 extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            showModal: false,\r\n            showModal2: false\r\n        };\r\n    }\r\n\r\n    close = () => {\r\n        this.setState({\r\n            showModal: false\r\n        });\r\n    }\r\n\r\n    open = () => {\r\n        this.setState({\r\n            showModal: true\r\n        });\r\n    }\r\n\r\n    close2 = () => {\r\n        this.setState({\r\n            showModal2: false\r\n        });\r\n    }\r\n\r\n    open2 = () => {\r\n        this.setState({\r\n            showModal2: true\r\n        });\r\n    }\r\n\r\n    render() {\r\n\r\n        return (\r\n            <div className=\"demo-margin\">\r\n                <Button\r\n                    bordered\r\n                    onClick={this.open}>\r\n                    打开模态框\r\n                </Button>\r\n                <Modal\r\n                    show={this.state.showModal}\r\n                    onHide={this.close}\r\n                >\r\n                    <Modal.Header closeButton>\r\n                        <Modal.Title>第一个模态框</Modal.Title>\r\n                    </Modal.Header>\r\n\r\n                    <Modal.Body>\r\n                       这是第一个模态框\r\n                        <Button\r\n                            bordered\r\n                            size=\"sm\"\r\n                            onClick={this.open2}\r\n                        >\r\n                            打开第二个模态框~\r\n                        </Button>\r\n                    </Modal.Body>\r\n\r\n                    <Modal.Footer>\r\n                        <Button colors=\"secondary\" style={{ marginRight: 8 }} onClick={this.close}>\r\n                            取消\r\n                        </Button>\r\n                        <Button bordered onClick={this.close}>\r\n                            确认\r\n                        </Button>\r\n                    </Modal.Footer>\r\n                </Modal>\r\n                <Modal\r\n                    show={this.state.showModal2}\r\n                    onHide={this.close2}\r\n                >\r\n                    <Modal.Header closeButton>\r\n                        <Modal.Title>第二个模态框</Modal.Title>\r\n                    </Modal.Header>\r\n\r\n                    <Modal.Body>\r\n                        这是第二个模态框~\r\n                    </Modal.Body>\r\n\r\n                    <Modal.Footer>\r\n                        <Button colors=\"secondary\" style={{ marginRight: 8 }} onClick={this.close2}>\r\n                            取消\r\n                        </Button>\r\n                        <Button bordered onClick={this.close2}>\r\n                            确认\r\n                        </Button>\r\n                    </Modal.Footer>\r\n                </Modal>\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\n\r\nexport default Demo8;", "desc": " 当两个模态框同时出现的时候，后面出现的那个层级在上面", "scss_code": ".demo-margin{\r\n    margin: 5px 15px;\r\n}" }, { "example": _react2['default'].createElement(Demo9, null), "title": " enforceFocus", "code": "/**\r\n *\r\n * @title enforceFocus\r\n * @description 打开模态框时控制焦点的聚焦和离开\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\nimport { Popconfirm, FormControl, Label, FormGroup, Button, Modal,  Popconfirm  } from 'tinper-bee';\r\n\n\r\n\r\n\n\n\n\n// \r\n\r\n\r\nclass Demo9 extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            showModal: false,\r\n            showModal2: false\r\n        };\r\n    }\r\n\r\n    close = () => {\r\n        this.setState({\r\n            showModal: false\r\n        });\r\n    }\r\n\r\n    open = () => {\r\n        this.setState({\r\n            showModal: true\r\n        });\r\n    }\r\n\r\n    close2 = () => {\r\n        this.setState({\r\n            showModal2: false\r\n        });\r\n    }\r\n\r\n    open2 = () => {\r\n        this.setState({\r\n            showModal2: true\r\n        });\r\n    }\r\n\r\n    handleChange = (state) => (value) => {\r\n      this.setState({\r\n          [state]: value\r\n      })\r\n    }\r\n\r\n    render() {\r\n      let content = (\r\n            <FormGroup>\r\n                <Label>用户名</Label>\r\n                <FormControl\r\n                    value={this.state.name}\r\n                    onChange={this.handleChange('name')}\r\n                />\r\n            </FormGroup>\r\n      );\r\n        return (\r\n            <div className=\"demo-margin\">\r\n                <Button\r\n                    bordered\r\n                    onClick={this.open}\r\n                >\r\n                    打开模态框\r\n                </Button>\r\n                <Modal\r\n                    show={this.state.showModal}\r\n                    onHide={this.close}\r\n                    enforceFocus={false}\r\n                >\r\n                    <Modal.Header closeButton>\r\n                        <Modal.Title>标题</Modal.Title>\r\n                    </Modal.Header>\r\n\r\n                    <Modal.Body>\r\n                       <span>\r\n                          在模态框中打开气泡组件，如果气泡组件中有文本框，文本框光标不会聚焦。需在modal中设置enforceFocus为false。\r\n                       </span>\r\n                      <div className=\"demoPadding\">\r\n                        <Popconfirm trigger=\"click\" placement=\"right\" content={content}>\r\n                            <Button bordered>打开气泡组件</Button>\r\n                        </Popconfirm>\r\n                      </div>\r\n                    </Modal.Body>\r\n\r\n                    <Modal.Footer className=\"text-center\">\r\n                        <Button colors=\"secondary\" style={{ marginRight: 8 }} onClick={this.close}>\r\n                            取消\r\n                        </Button>\r\n                        <Button bordered onClick={this.close}>\r\n                            确认\r\n                        </Button>\r\n                    </Modal.Footer>\r\n                </Modal>\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\n\r\nexport default Demo9;", "desc": " 打开模态框时控制焦点的聚焦和离开", "scss_code": ".u-popconfirm {\r\n  z-index:10000;\r\n}\r\n\r\n.demoPadding {\r\n  text-align: center;\r\n}" }, { "example": _react2['default'].createElement(Demo10, null), "title": " 嵌套表格的模态框", "code": "/**\n *\n * @title 嵌套表格的模态框\n * @description 嵌套表格\n *\n */\n\nimport React, { Component } from 'react';\nimport { Table, Checkbox, Button, Modal } from 'tinper-bee';\nimport multiSelect from \"bee-table/build/lib/multiSelect\";\n\n\n\n\nlet MultiSelectTable = multiSelect(Table, Checkbox);\n\n\nclass Demo10 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            showModal: false,\n            data: [\n                { a: \"杨过\", b: \"男\", c: 30, d: '内行', key: \"2\", _checked: true },\n                { a: \"令狐冲\", b: \"男\", c: 41, d: '大侠', key: \"1\", _checked: true },\n                { a: \"郭靖\", b: \"男\", c: 25, d: '大侠', key: \"3\", _checked: true }\n            ]\n        };\n\n    }\n\n    columns = [\n        {\n            title: \"名字\",\n            dataIndex: \"a\",\n            key: \"a\",\n            width: \"25%\"\n        },\n        {\n            title: \"性别\",\n            dataIndex: \"b\",\n            key: \"b\",\n            width: \"25%\"\n        },\n        {\n            title: \"年龄\",\n            dataIndex: \"c\",\n            key: \"c\",\n            width: \"20%\",\n            sorter: (a, b) => a.c - b.c\n        },\n        {\n            title: \"武功级别\",\n            dataIndex: \"d\",\n            key: \"25%\"\n        }\n    ];\n\n    close = () => {\n        this.setState({\n            showModal: false\n        });\n    }\n    open = () => {\n        this.setState({\n            showModal: true\n        });\n    }\n\n    getSelectedDataFunc = data => {\n        console.log(data);\n    };\n\n    clear = () => {\n        let { data } = this.state;\n        data.forEach(item => item._checked = false)\n        this.setState({\n            data:JSON.parse(JSON.stringify(data))\n        })\n    }\n\n    render () {\n        let multiObj = {\n            type: \"checkbox\"\n        };\n        return (\n            <div>\n                <Button\n                    bordered\n                    className=\"demo-margin\"\n                    onClick={this.open}>\n                    打开模态框\n                </Button>\n                <Modal\n                    show={this.state.showModal}\n                    onHide={this.close}\n                    size=\"lg\"\n                    ref={ref => this.modal = ref}\n                    className=\"demo10-modal\"\n                >\n                    <Modal.Header closeButton>\n                        <Modal.Title>标题</Modal.Title>\n                    </Modal.Header>\n\n                    <Modal.Body>\n                        <MultiSelectTable\n                            columns={this.columns}\n                            data={this.state.data}\n                            multiSelect={multiObj}\n                            getSelectedDataFunc={this.getSelectedDataFunc} \n                        />\n                    </Modal.Body>\n\n                    <Modal.Footer>\n                        <Button onClick={this.clear} colors=\"secondary\" className=\"clear-btn\">清空所选</Button>\n                        <Button onClick={this.close} colors=\"secondary\" style={{ marginRight: 8 }}>取消</Button>\n                        <Button onClick={this.close} bordered>确认</Button>\n                    </Modal.Footer>\n                </Modal>\n            </div>\n        )\n    }\n}\n\nexport default Demo10;\n", "desc": " 嵌套表格", "scss_code": ".demo10-modal{\r\n  .clear-btn{\r\n    float: left;\r\n    background: transparent !important;\r\n    border-color: transparent !important;\r\n    &:hover{\r\n      background: #EBECF0 !important;\r\n    }\r\n    &:active{\r\n      background: #EBECF0 !important;\r\n    }\r\n  }\r\n}" }, { "example": _react2['default'].createElement(Demo11, null), "title": " 可拖拽Header的模态框", "code": "/**\r\n *\r\n * @title 可拖拽Header的模态框\r\n * @description 通过`draggable`参数设置是否可拖拽。注意：模态框 header 内，若有绑定事件的元素，需要添加一个 className=\"dnd-cancel\"，才能正常触发相应事件。\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\nimport { Checkbox, Button, Modal } from 'tinper-bee';\r\n\n\n\r\n\r\nclass Demo11 extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            showModal: false,\r\n            checked: false,\r\n        };\r\n    }\r\n\r\n    close = () => {\r\n        this.setState({\r\n            showModal: false\r\n        });\r\n    }\r\n    open = () => {\r\n        this.setState({\r\n            showModal: true\r\n        });\r\n    }\r\n\r\n    changeCheck=()=> {\r\n        this.setState({checked:!this.state.checked});\r\n    }\r\n\r\n    render () {\r\n        return (\r\n            <div className='demo12'>\r\n                <Button\r\n                    bordered\r\n                    className=\"demo-margin\"\r\n                    onClick={this.open}>\r\n                    打开模态框\r\n                </Button>\r\n                <Modal\r\n                    show={this.state.showModal}\r\n                    onHide={this.close}\r\n                    size=\"lg\"\r\n                    ref={ref => this.modal = ref}\r\n                    className=\"demo10-modal\"\r\n                    backdrop={false}\r\n                    draggable={true}\r\n                    bounds={'body'}//可拖拽范围为当前可见区域\r\n                >\r\n                    <Modal.Header closeButton>\r\n                        <Modal.Title>\r\n                        <Checkbox \r\n                            className=\"dnd-cancel\"\r\n                            checked={this.state.checked}  \r\n                            onChange={this.changeCheck}\r\n                        >\r\n                            可勾选的标题\r\n                        </Checkbox>\r\n                        </Modal.Title>\r\n                    </Modal.Header>\r\n\r\n                    <Modal.Body>\r\n                        <p>Some contents...</p>\r\n                        <p>Some contents...</p>\r\n                        <p>Some contents...</p>\r\n                        \r\n                    </Modal.Body>\r\n\r\n                    <Modal.Footer>\r\n                        <Button onClick={this.close} colors=\"secondary\" style={{ marginRight: 8 }}>取消</Button>\r\n                        <Button onClick={this.close} bordered>确认</Button>\r\n                    </Modal.Footer>\r\n                </Modal>\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\nexport default Demo11;\r\n", "desc": " 通过`draggable`参数设置是否可拖拽。注意：模态框 header 内，若有绑定事件的元素，需要添加一个 className=\"dnd-cancel\"，才能正常触发相应事件。" }, { "example": _react2['default'].createElement(Demo12, null), "title": " 信息提示", "code": "/**\r\n *\r\n * @title 信息提示\r\n * @description 提供`info`、`success`、`error`、`warning`、`confirm` API\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\nimport { Icon, Button, Modal } from 'tinper-bee';\r\n\n\n\r\n\r\nconst info = function () {\r\n    Modal.info({\r\n        title: '提示',\r\n        okText: '知道了',\r\n        content: (\r\n          <div>\r\n            <p>单据状态已更新，请在审批中心内查看。</p>\r\n          </div>\r\n        ),\r\n        onOk() {},\r\n    });\r\n};\r\nconst success = function () {\r\n    Modal.success({\r\n        title: '提交成功',\r\n        content: '单据提交成功，你可以在审批中心关注审批状态。',\r\n    });\r\n};\r\nconst error = function () {\r\n    Modal.error({\r\n        title: '提交失败',\r\n        content: '单据状态更新失败，请重新尝试。',\r\n        backdropClosable: false,\r\n    });\r\n};\r\nconst warning = function () {\r\n    Modal.warning({\r\n        title: '警告',\r\n        content: '单据状态异常，请重新提交',\r\n    });\r\n};\r\nconst confirm = function () {\r\n    Modal.confirm({\r\n        title: '确定要删除这条单据吗？',\r\n        content: '单据删除后将不能恢复。',\r\n        onOk() {\r\n            console.log('OK');\r\n        },\r\n        onCancel() {\r\n            console.log('Cancel');\r\n        },\r\n    })\r\n};\r\n\r\nclass Demo12 extends Component {\r\n    render () {\r\n        return (\r\n            <div className=\"demo12\">\r\n                <Button colors=\"info\" onClick={info}>Info</Button>\r\n                <Button colors=\"success\" onClick={success}>Success</Button>\r\n                <Button colors=\"danger\" onClick={error}>Error</Button>\r\n                <Button colors=\"warning\" onClick={warning}>Warning</Button>\r\n                <Button bordered onClick={confirm}>Confirm</Button>\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\nexport default Demo12;\r\n", "desc": " 提供`info`、`success`、`error`、`warning`、`confirm` API", "scss_code": ".demo12{\r\n    .u-button{\r\n        margin: 5px;\r\n    }\r\n}" }, { "example": _react2['default'].createElement(Demo13, null), "title": " 通过拖拽调整弹框大小", "code": "/**\n *\n * @title 通过拖拽调整弹框大小\n * @description 通过 `resizable` 参数控制弹框是否可被 `resize`。通过 `centered` 参数设置弹框垂直居中展示。\n *\n */\n\nimport React, { Component } from 'react';\nimport { Button, Modal } from 'tinper-bee';\n\n\n\nclass Demo13 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            showModal: false\n        };\n        this.close = this.close.bind(this);\n        this.open = this.open.bind(this);\n    }\n\n    close() {\n        this.setState({\n            showModal: false\n        });\n    }\n    open() {\n        this.setState({\n            showModal: true\n        });\n    }\n    onResizeStart = (e, dir, elementRef) => {\n        console.log(\"onResizeStart\", e, dir, elementRef)\n    }\n    onResize = (e, dir, elementRef, delta) => {\n        console.log(\"onResize\", e, dir, elementRef, delta)\n    }\n    onResizeStop = (e, dir, elementRef, delta) => {\n        console.log(\"onResizeStop\", e, dir, elementRef, delta)\n    }\n\n    render () {\n        return (\n        <div>\n            <Button\n            bordered\n            className=\"demo-margin\"\n            onClick = { this.open }>\n                打开模态框\n            </Button>​\n            <Modal\n            centered\n            show = { this.state.showModal }\n            backdropClosable={false}\n            resizable={true}\n            resizeClassName=\"resize-box\"\n            maxWidth={\"1000\"}\n            maxHeight={\"500px\"}\n            minWidth={300}\n            minHeight={150}\n            onResizeStart={this.onResizeStart}\n            onResize={this.onResize}\n            onResizeStop={this.onResizeStop}\n            onHide = { this.close } >\n                <Modal.Header closeButton>\n                    <Modal.Title>标题</Modal.Title>\n                </Modal.Header>\n\n                <Modal.Body>\n                    <p>Some contents...</p>\n                    <p>Some contents...</p>\n                    <p>Some contents...</p>\n                </Modal.Body>\n\n                <Modal.Footer>\n                    <Button onClick={ this.close } colors=\"secondary\" style={{marginRight: 8}}>取消</Button>\n                    <Button onClick={ this.close } bordered>确认</Button>\n                </Modal.Footer>\n           </Modal>\n        </div>\n        )\n    }\n}\n\nexport default Demo13;\n", "desc": " 通过 `resizable` 参数控制弹框是否可被 `resize`。通过 `centered` 参数设置弹框垂直居中展示。", "scss_code": ".demo13{\n    .u-button{\n        margin: 5px;\n    }\n}" }];
 	
 	var Demo = function (_Component) {
 	    _inherits(Demo, _Component);
@@ -37999,7 +37999,7 @@
 	      keyboard = props.keyboard,
 	      centered = props.centered,
 	      getContainer = props.getContainer,
-	      maskStyle = props.maskStyle,
+	      backdropStyle = props.backdropStyle,
 	      okButtonProps = props.okButtonProps,
 	      cancelButtonProps = props.cancelButtonProps,
 	      _props$iconType = props.iconType,
@@ -38017,7 +38017,7 @@
 	  var style = props.style || {};
 	  var backdrop = props.backdrop === undefined ? true : props.backdrop;
 	  // 默认为 false，保持旧版默认行为
-	  var maskClosable = props.maskClosable === undefined ? false : props.maskClosable;
+	  var backdropClosable = props.backdropClosable === undefined ? true : props.backdropClosable;
 	  // const runtimeLocale = getConfirmLocale();
 	  var okText = props.okText || (okCancel ? "确定" : "知道了");
 	  var cancelText = props.cancelText || "取消";
@@ -38049,7 +38049,11 @@
 	      className: classString,
 	      show: show,
 	      onHide: close,
-	      backdrop: backdrop },
+	      backdrop: backdrop,
+	      backdropClosable: backdropClosable,
+	      centered: centered,
+	      keyboard: keyboard,
+	      backdropStyle: backdropStyle },
 	    _react2['default'].createElement(
 	      _Modal2['default'].Header,
 	      null,
@@ -86951,7 +86955,7 @@
 	
 	var _TableRow2 = _interopRequireDefault(_TableRow);
 	
-	var _TableHeader = __webpack_require__(717);
+	var _TableHeader = __webpack_require__(737);
 	
 	var _TableHeader2 = _interopRequireDefault(_TableHeader);
 	
@@ -86981,7 +86985,7 @@
 	
 	var _beeIcon2 = _interopRequireDefault(_beeIcon);
 	
-	var _i18n = __webpack_require__(743);
+	var _i18n = __webpack_require__(716);
 	
 	var _i18n2 = _interopRequireDefault(_i18n);
 	
@@ -87043,7 +87047,11 @@
 	  size: _propTypes2["default"].oneOf(['sm', 'md', 'lg']),
 	  rowDraggAble: _propTypes2["default"].bool,
 	  onDropRow: _propTypes2["default"].func,
-	  onDragRowStart: _propTypes2["default"].func
+	  onDragRowStart: _propTypes2["default"].func,
+	  onBodyScroll: _propTypes2["default"].func,
+	  bodyDisplayInRow: _propTypes2["default"].bool, // 表格内容超出列宽度时进行换行 or 以...形式展现
+	  headerDisplayInRow: _propTypes2["default"].bool, // 表头内容超出列宽度时进行换行 or 以...形式展现
+	  showRowNum: _propTypes2["default"].oneOfType([_propTypes2["default"].bool, _propTypes2["default"].object]) // 表格是否自动生成序号,格式为{base:number || 0,defaultKey:string || '_index',defaultName:string || '序号'}
 	};
 	
 	var defaultProps = {
@@ -87090,7 +87098,11 @@
 	  size: 'md',
 	  rowDraggAble: false,
 	  onDropRow: function onDropRow() {},
-	  onDragRowStart: function onDragRowStart() {}
+	  onDragRowStart: function onDragRowStart() {},
+	  onBodyScroll: function onBodyScroll() {},
+	  bodyDisplayInRow: true,
+	  headerDisplayInRow: true,
+	  showRowNum: false
 	};
 	
 	var Table = function (_Component) {
@@ -87162,10 +87174,8 @@
 	      var value1 = arr[index1];
 	      arr.splice(index1, 1);
 	      if (index1 < index2) {
-	        console.log('向下拖');
 	        arr.splice(index2, 0, value1);
 	      } else {
-	        console.log('向上拖');
 	        arr.splice(index2 + 1, 0, value1);
 	      }
 	
@@ -87221,7 +87231,7 @@
 	
 	    var expandedRowKeys = [];
 	    var rows = [].concat(_toConsumableArray(props.data));
-	    _this.columnManager = new _ColumnManager2["default"](props.columns, props.children, props.originWidth, props.rowDraggAble);
+	    _this.columnManager = new _ColumnManager2["default"](props.columns, props.children, props.originWidth, props.rowDraggAble, props.showRowNum); // 加入props.showRowNum参数
 	    _this.store = (0, _createStore2["default"])({ currentHoverKey: null });
 	    _this.firstDid = true;
 	    if (props.defaultExpandAllRows) {
@@ -87239,7 +87249,8 @@
 	      currentHoverKey: null,
 	      scrollPosition: 'left',
 	      fixedColumnsHeadRowsHeight: [],
-	      fixedColumnsBodyRowsHeight: []
+	      fixedColumnsBodyRowsHeight: [],
+	      fixedColumnsExpandedRowsHeight: {} //扩展行的高度
 	    };
 	
 	    _this.onExpandedRowsChange = _this.onExpandedRowsChange.bind(_this);
@@ -87271,8 +87282,15 @@
 	    _this.onBodyMouseLeave = _this.onBodyMouseLeave.bind(_this);
 	    _this.tableUid = null;
 	    _this.contentTable = null;
+	    _this.leftColumnsLength; //左侧固定列的长度
+	    _this.centerColumnsLength; //非固定列的长度
 	    return _this;
 	  }
+	
+	  Table.prototype.componentWillMount = function componentWillMount() {
+	    this.centerColumnsLength = this.columnManager.centerColumns().length;
+	    this.leftColumnsLength = this.columnManager.leftColumns().length;
+	  };
 	
 	  Table.prototype.componentDidMount = function componentDidMount() {
 	    this.getTableUID();
@@ -87305,12 +87323,12 @@
 	      });
 	    }
 	    if (nextProps.columns && nextProps.columns !== this.props.columns) {
-	      this.columnManager.reset(nextProps.columns);
+	      this.columnManager.reset(nextProps.columns, null, this.props.showRowNum); // 加入this.props.showRowNum参数
 	      if (nextProps.columns.length !== this.props.columns.length && this.refs && this.bodyTable) {
 	        this.scrollTop = this.bodyTable.scrollTop;
 	      }
 	    } else if (nextProps.children !== this.props.children) {
-	      this.columnManager.reset(null, nextProps.children);
+	      this.columnManager.reset(null, nextProps.children, this.porps.showRowNum); // 加入this.props.showRowNum参数
 	    }
 	    //适配lazyload
 	    if (nextProps.scrollTop > -1) {
@@ -87358,6 +87376,7 @@
 	  };
 	
 	  Table.prototype.componentWillUnmount = function componentWillUnmount() {
+	    // 移除绑定事件,避免内存泄漏
 	    this.contentTable = null;
 	    _utils.EventUtil.removeHandler(this.contentTable, 'keydown', this.onKeyDown);
 	    _utils.EventUtil.removeHandler(this.contentTable, 'focus', this.onFocus);
@@ -87592,7 +87611,9 @@
 	        fixed: column.fixed,
 	        width: width,
 	        dataindex: column.dataIndex,
-	        textAlign: column.textAlign
+	        textAlign: column.textAlign,
+	        titleAlign: column.titleAlign, // 标题水平对齐方式
+	        required: column.required // 标题是否展示必填标志
 	      };
 	      if (column.onHeadCellClick) {
 	        cell.onClick = column.onHeadCellClick;
@@ -87649,10 +87670,10 @@
 	    } else if (fixed === 'right') {
 	      colCount = this.columnManager.rightLeafColumns().length;
 	    } else {
-	      // colCount = this.columnManager.leafColumns().length;
 	      colCount = this.columnManager.centerColumns().length; //计算非固定列的个数，fix: 嵌套表格场景，右侧列断开的问题
 	    }
 	
+	    var expandedRowHeight = this.state.fixedColumnsExpandedRowsHeight[key] || 'auto';
 	    function contentContainer() {
 	      if (content && content.props && content.props.style) {
 	        return _react2["default"].createElement('div', { style: { height: content.props.style.height } });
@@ -87692,7 +87713,8 @@
 	      dragborderKey: this.props.dragborderKey,
 	      rowDraggAble: this.props.rowDraggAble,
 	      onDragRow: this.onDragRow,
-	      onDragRowStart: this.onDragRowStart
+	      onDragRowStart: this.onDragRowStart,
+	      height: expandedRowHeight
 	    });
 	  };
 	
@@ -87750,7 +87772,7 @@
 	    var onRowDoubleClick = props.onRowDoubleClick;
 	
 	    var expandIconAsCell = fixed !== 'right' ? props.expandIconAsCell : false;
-	    var expandIconColumnIndex = fixed !== 'right' ? props.expandIconColumnIndex : -1;
+	    var expandIconColumnIndex = props.expandIconColumnIndex;
 	    if (props.lazyLoad && props.lazyLoad.preHeight && indent == 0) {
 	      rst.push(_react2["default"].createElement(_TableRow2["default"], { height: props.lazyLoad.preHeight, columns: [], className: '', key: 'table_row_first', store: this.store, visible: true }));
 	    }
@@ -87759,9 +87781,27 @@
 	    var lazyEndIndex = props.lazyLoad && props.lazyLoad.endIndex ? props.lazyLoad.endIndex : -1;
 	    for (var i = 0; i < data.length; i++) {
 	      var isHiddenExpandIcon = void 0;
+	      // if ( props.showRowNum ){
+	      //   switch(props.showRowNum.type){
+	      //     case 'number':{
+	      //       data[i][props.showRowNum.key || '_index'] = (props.showRowNum.base || 0) + i;
+	      //       break;
+	      //     }
+	      //     case 'ascii': {
+	      //       data[i][props.showRowNum.key || '_index'] = String.fromCharCode(i + (props.showRowNum.base || '0').charCodeAt());
+	      //       break;
+	      //     }
+	      //     default: {
+	      //       data[i][props.showRowNum.key || '_index'] = (props.showRowNum.base || 0) + i;
+	      //       break;
+	      //     }
+	      //   }
+	
+	      // } 
 	      var record = data[i];
 	      var key = this.getRowKey(record, i);
-	      var childrenColumn = record[childrenColumnName];
+	      var isLeaf = typeof record['isLeaf'] === 'boolean' && record['isLeaf'] || false;
+	      var childrenColumn = isLeaf ? false : record[childrenColumnName];
 	      var isRowExpanded = this.isRowExpanded(record, i);
 	      var expandedRowContent = void 0;
 	      var expandedContentHeight = 0;
@@ -87784,7 +87824,7 @@
 	
 	      onHoverProps.onHover = this.handleRowHover;
 	
-	      if (props.height) {
+	      if (props.bodyDisplayInRow && props.height) {
 	        height = props.height;
 	      } else if (fixed || props.heightConsistent) {
 	        height = fixedColumnsBodyRowsHeight[fixedIndex];
@@ -87858,7 +87898,9 @@
 	        expandedIcon: props.expandedIcon,
 	        collapsedIcon: props.collapsedIcon,
 	        lazyStartIndex: lazyCurrentIndex,
-	        lazyEndIndex: lazyEndIndex
+	        lazyEndIndex: lazyEndIndex,
+	        centerColumnsLength: this.centerColumnsLength,
+	        leftColumnsLength: this.leftColumnsLength
 	      })));
 	      this.treeRowIndex++;
 	      var subVisible = visible && isRowExpanded;
@@ -87970,7 +88012,7 @@
 	        useFixedHeader = _props4.useFixedHeader,
 	        data = _props4.data;
 	
-	    var bodyStyle = _extends({}, this.props.bodyStyle);
+	    var bodyStyle = _extends({}, this.props.bodyStyle); // 这里为什么不写在上面?
 	    var headStyle = {};
 	    var innerBodyStyle = {};
 	    var leftFixedWidth = this.columnManager.getLeftColumnsWidth(this.contentWidth);
@@ -88233,9 +88275,11 @@
 	        height = _props8.height,
 	        headerHeight = _props8.headerHeight,
 	        columns = _props8.columns,
-	        heightConsistent = _props8.heightConsistent;
+	        heightConsistent = _props8.heightConsistent,
+	        bodyDisplayInRow = _props8.bodyDisplayInRow;
 	
 	    var headRows = this.headTable ? this.headTable.querySelectorAll('thead') : this.bodyTable.querySelectorAll('thead');
+	    var expandedRows = this.bodyTable.querySelectorAll('.' + clsPrefix + '-expanded-row') || [];
 	    var bodyRows = this.bodyTable.querySelectorAll('.' + clsPrefix + '-row') || [];
 	    var leftBodyRows = this.refs.fixedColumnsBodyLeft && this.refs.fixedColumnsBodyLeft.querySelectorAll('.' + clsPrefix + '-row') || [];
 	    var rightBodyRows = this.refs.fixedColumnsBodyRight && this.refs.fixedColumnsBodyRight.querySelectorAll('.' + clsPrefix + '-row') || [];
@@ -88248,11 +88292,12 @@
 	    });
 	    var fixedColumnsBodyRowsHeight = [].map.call(bodyRows, function (row, index) {
 	      var rsHeight = height;
-	      if (rsHeight) {
+	      if (bodyDisplayInRow && rsHeight) {
 	        return rsHeight;
 	      } else {
 	        // 为了提高性能，默认获取主表的高度，但是有的场景中固定列的高度比主表的高度高，所以提供此属性，会统计所有列的高度取最大的，设置
-	        if (heightConsistent) {
+	        // 内容折行显示，并又设置了 height 的情况下，也要获取主表高度
+	        if (heightConsistent || !bodyDisplayInRow && rsHeight) {
 	          var leftHeight = void 0,
 	              rightHeight = void 0,
 	              currentHeight = void 0,
@@ -88267,13 +88312,19 @@
 	        }
 	      }
 	    });
-	
-	    if ((0, _shallowequal2["default"])(this.state.fixedColumnsHeadRowsHeight, fixedColumnsHeadRowsHeight) && (0, _shallowequal2["default"])(this.state.fixedColumnsBodyRowsHeight, fixedColumnsBodyRowsHeight)) {
+	    var fixedColumnsExpandedRowsHeight = {};
+	    expandedRows.length > 0 && expandedRows.forEach(function (row) {
+	      var parentRowKey = row && row.previousSibling && row.previousSibling.getAttribute("data-row-key"),
+	          height = row && row.getBoundingClientRect().height || 'auto';
+	      fixedColumnsExpandedRowsHeight[parentRowKey] = height;
+	    });
+	    if ((0, _shallowequal2["default"])(this.state.fixedColumnsHeadRowsHeight, fixedColumnsHeadRowsHeight) && (0, _shallowequal2["default"])(this.state.fixedColumnsBodyRowsHeight, fixedColumnsBodyRowsHeight) && (0, _shallowequal2["default"])(this.state.fixedColumnsExpandedRowsHeight, fixedColumnsExpandedRowsHeight)) {
 	      return;
 	    }
 	    this.setState({
 	      fixedColumnsHeadRowsHeight: fixedColumnsHeadRowsHeight,
-	      fixedColumnsBodyRowsHeight: fixedColumnsBodyRowsHeight
+	      fixedColumnsBodyRowsHeight: fixedColumnsBodyRowsHeight,
+	      fixedColumnsExpandedRowsHeight: fixedColumnsExpandedRowsHeight
 	    });
 	  };
 	
@@ -88322,7 +88373,8 @@
 	        scroll = _props9$scroll === undefined ? {} : _props9$scroll,
 	        clsPrefix = _props9.clsPrefix,
 	        handleScrollY = _props9.handleScrollY,
-	        handleScrollX = _props9.handleScrollX;
+	        handleScrollX = _props9.handleScrollX,
+	        onBodyScroll = _props9.onBodyScroll;
 	    var _refs = this.refs,
 	        fixedColumnsBodyLeft = _refs.fixedColumnsBodyLeft,
 	        fixedColumnsBodyRight = _refs.fixedColumnsBodyRight;
@@ -88369,7 +88421,7 @@
 	      }
 	      this.lastScrollTop = e.target.scrollTop;
 	      if (handleScrollY) {
-	        (0, _utils.debounce)(handleScrollY(this.lastScrollTop, this.treeType), 300);
+	        (0, _utils.debounce)(handleScrollY(this.lastScrollTop, this.treeType, onBodyScroll), 300);
 	      }
 	    }
 	
@@ -88434,7 +88486,8 @@
 	    }
 	    className += ' ' + clsPrefix + '-scroll-position-' + this.state.scrollPosition;
 	    //如果传入height说明是固定高度
-	    if (props.height) {
+	    //内容过多折行显示时，height 属性会失效，为了避免产生错行
+	    if (props.bodyDisplayInRow && props.height) {
 	      className += ' fixed-height';
 	    }
 	    if (props.bodyDisplayInRow) {
@@ -88523,6 +88576,8 @@
 	  value: true
 	});
 	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
 	var _react = __webpack_require__(1);
 	
 	var _react2 = _interopRequireDefault(_react);
@@ -88537,7 +88592,7 @@
 	
 	var _TableCell2 = _interopRequireDefault(_TableCell);
 	
-	var _ExpandIcon = __webpack_require__(716);
+	var _ExpandIcon = __webpack_require__(736);
 	
 	var _ExpandIcon2 = _interopRequireDefault(_ExpandIcon);
 	
@@ -89112,6 +89167,12 @@
 	      isHiddenExpandIcon: isHiddenExpandIcon
 	    });
 	    var isExpandIconAsCell = expandIconAsCell ? clsPrefix + '-expand-columns-in-body' : '';
+	    var expandIndexInThisTable;
+	    if (this.props.fixed === 'right') {
+	      expandIndexInThisTable = expandIconColumnIndex - this.props.leftColumnsLength - this.props.centerColumnsLength;
+	    } else {
+	      expandIndexInThisTable = expandIconColumnIndex;
+	    }
 	    for (var i = 0; i < columns.length; i++) {
 	      if (expandIconAsCell && i === 0 && !showSum) {
 	        cells.push(_react2["default"].createElement(
@@ -89123,7 +89184,7 @@
 	          expandIcon
 	        ));
 	      }
-	      var isColumnHaveExpandIcon = expandIconAsCell || expandRowByClick || showSum ? false : i === expandIconColumnIndex;
+	      var isColumnHaveExpandIcon = expandIconAsCell || expandRowByClick || showSum ? false : i === expandIndexInThisTable;
 	      cells.push(_react2["default"].createElement(_TableCell2["default"], {
 	        clsPrefix: clsPrefix,
 	        record: record,
@@ -89140,11 +89201,13 @@
 	        lazyEndIndex: lazyEndIndex
 	      }));
 	    }
-	    var style = { height: height };
+	    var style = _extends({ height: height }, record ? record.style : undefined);
 	    if (!visible) {
 	      style.display = 'none';
 	    }
-	
+	    if (record && record._checked) {
+	      className += ' selected';
+	    }
 	    return _react2["default"].createElement(
 	      'tr',
 	      {
@@ -89159,7 +89222,7 @@
 	        // key={hoverKey}
 	        , ref: this.bindElement
 	      },
-	      cells.length > 0 ? cells : _react2["default"].createElement('td', null)
+	      cells.length > 0 ? cells : _react2["default"].createElement('td', { style: { width: 0, padding: 0 } })
 	    );
 	  };
 	
@@ -89199,6 +89262,8 @@
 	exports.getColChildrenLength = getColChildrenLength;
 	exports.DicimalFormater = DicimalFormater;
 	exports.checkDicimalInvalid = checkDicimalInvalid;
+	exports.formatMoney = formatMoney;
+	exports.convertListToTree = convertListToTree;
 	
 	var _warning = __webpack_require__(31);
 	
@@ -89209,6 +89274,8 @@
 	var _parseInt2 = _interopRequireDefault(_parseInt);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+	
+	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 	
 	var scrollbarSize = void 0;
 	
@@ -89489,6 +89556,22 @@
 	  return result;
 	};
 	
+	/**
+	 * 将数值转化为货币类型
+	 * @param {*} number 数值
+	 * @param {*} places 精度
+	 * @param {*} thousand 是否展示千分位
+	 */
+	function formatMoney(number, places, thousand) {
+	  number = number || 0;
+	  places = !isNaN(places = Math.abs(places)) ? places : 2;
+	  var thousandSymbol = thousand ? "," : '';
+	  var negative = number < 0 ? "-" : "";
+	  var i = (0, _parseInt2["default"])(number = Math.abs(+number || 0).toFixed(places), 10) + "";
+	  var j = (j = i.length) > 3 ? j % 3 : 0;
+	  return negative + (j ? i.substr(0, j) + thousandSymbol : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + thousandSymbol) + (places ? '.' + Math.abs(number - i).toFixed(places).slice(2) : "");
+	}
+	
 	var Event = exports.Event = {
 	  addHandler: addHandler,
 	  removeHandler: removeHandler,
@@ -89496,7 +89579,108 @@
 	  getTarget: getTarget,
 	  preventDefault: preventDefault,
 	  stopPropagation: stopPropagation
-	};
+	
+	  /**
+	   * 将一维数组转换为树结构
+	   * @param {*} treeData  扁平结构的 List 数组
+	   * @param {*} attr 属性配置设置
+	   * @param {*} flatTreeKeysMap 存储所有 key-value 的映射，方便获取各节点信息
+	   */
+	};function convertListToTree(treeData, attr, flatTreeKeysMap) {
+	  var tree = []; //存储所有一级节点
+	  var resData = treeData,
+	      //resData 存储截取的节点 + 父节点（除一级节点外）
+	  resKeysMap = {},
+	      //resData 的Map映射
+	  treeKeysMap = {}; //tree 的Map映射
+	  resData.map(function (element) {
+	    var key = attr.id;
+	    resKeysMap[element[key]] = element;
+	  });
+	  // 查找父节点，为了补充不完整的数据结构
+	  var findParentNode = function findParentNode(node) {
+	    var parentKey = node[attr.parendId];
+	    if (parentKey !== attr.rootId) {
+	      //如果不是根节点，则继续递归
+	      var item = flatTreeKeysMap[parentKey];
+	      // 用 resKeysMap 判断，避免重复计算某节点的父节点
+	      if (resKeysMap.hasOwnProperty(item[attr.id])) return;
+	      resData.unshift(item);
+	      resKeysMap[item[attr.id]] = item;
+	      findParentNode(item);
+	    } else {
+	      // 用 treeKeysMap 判断，避免重复累加
+	      if (!treeKeysMap.hasOwnProperty(node[attr.id])) {
+	        var key = node.key,
+	            title = node.title,
+	            children = node.children,
+	            isLeaf = node.isLeaf,
+	            otherProps = _objectWithoutProperties(node, ['key', 'title', 'children', 'isLeaf']);
+	
+	        var obj = {
+	          key: key,
+	          title: title,
+	          isLeaf: isLeaf,
+	          children: []
+	        };
+	        tree.push(_extends(obj, _extends({}, otherProps)));
+	        treeKeysMap[key] = node;
+	      }
+	    }
+	  };
+	  // 遍历 resData ，找到所有的一级节点
+	  for (var i = 0; i < resData.length; i++) {
+	    var item = resData[i];
+	    if (item[attr.parendId] === attr.rootId && !treeKeysMap.hasOwnProperty(item[attr.id])) {
+	      //如果是根节点，就存放进 tree 对象中
+	      var key = item.key,
+	          title = item.title,
+	          children = item.children,
+	          otherProps = _objectWithoutProperties(item, ['key', 'title', 'children']);
+	
+	      var obj = {
+	        key: item[attr.id],
+	        isLeaf: item[attr.isLeaf],
+	        children: []
+	      };
+	      tree.push(_extends(obj, _extends({}, otherProps)));
+	      treeKeysMap[key] = item;
+	      resData.splice(i, 1);
+	      i--;
+	    } else {
+	      //递归查找根节点信息
+	      findParentNode(item);
+	    }
+	  }
+	  // console.log('resData',resKeysMap);
+	  var run = function run(treeArrs) {
+	    if (resData.length > 0) {
+	      for (var _i = 0; _i < treeArrs.length; _i++) {
+	        for (var j = 0; j < resData.length; j++) {
+	          var _item = resData[j];
+	          if (treeArrs[_i].key === _item[attr.parendId]) {
+	            var _key = _item.key,
+	                _title = _item.title,
+	                _children = _item.children,
+	                _otherProps = _objectWithoutProperties(_item, ['key', 'title', 'children']);
+	
+	            var _obj = {
+	              key: _item[attr.id],
+	              isLeaf: _item[attr.isLeaf],
+	              children: []
+	            };
+	            treeArrs[_i].children.push(_extends(_obj, _extends({}, _otherProps)));
+	            resData.splice(j, 1);
+	            j--;
+	          }
+	        }
+	        run(treeArrs[_i].children);
+	      }
+	    }
+	  };
+	  run(tree);
+	  return tree;
+	}
 
 /***/ }),
 /* 713 */
@@ -89557,6 +89741,8 @@
 	  value: true
 	});
 	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
 	var _react = __webpack_require__(1);
 	
 	var _react2 = _interopRequireDefault(_react);
@@ -89569,6 +89755,22 @@
 	
 	var _objectPath2 = _interopRequireDefault(_objectPath);
 	
+	var _i18n = __webpack_require__(716);
+	
+	var _i18n2 = _interopRequireDefault(_i18n);
+	
+	var _tool = __webpack_require__(130);
+	
+	var _utils = __webpack_require__(712);
+	
+	var _beeDropdown = __webpack_require__(717);
+	
+	var _beeDropdown2 = _interopRequireDefault(_beeDropdown);
+	
+	var _beeMenus = __webpack_require__(720);
+	
+	var _beeMenus2 = _interopRequireDefault(_beeMenus);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 	
 	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
@@ -89578,6 +89780,8 @@
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
+	
+	var Item = _beeMenus2["default"].Item;
 	
 	var propTypes = {
 	  record: _propTypes2["default"].object,
@@ -89597,8 +89801,200 @@
 	
 	    var _this = _possibleConstructorReturn(this, _Component.call(this, props));
 	
+	    _this.renderLinkType = function (data, record, index) {
+	      var config = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : {};
+	      var url = config.url,
+	          urlIndex = config.urlIndex,
+	          linkType = config.linkType,
+	          className = config.className,
+	          underline = config.underline,
+	          descIndex = config.descIndex,
+	          desc = config.desc,
+	          linkColor = config.linkColor;
+	
+	      var linkUrl = '';
+	      if (url) {
+	        linkUrl = url(data, record, index);
+	      } else if (urlIndex) {
+	        linkUrl = record[urlIndex];
+	      }
+	      if (linkUrl) {
+	        var link = function link() {
+	          window.open(linkUrl, linkType || '_blank');
+	        };
+	        var cls = 'u-table-link u-table-fieldtype ';
+	        if (className) {
+	          cls += className + ' ';
+	        }
+	        if (underline) {
+	          cls += 'u-table-link-underline ';
+	        }
+	        var title = '';
+	
+	        if (desc === true) {
+	          title = linkUrl;
+	        } else if (typeof desc === 'string') {
+	          title = desc;
+	        } else if (typeof desc === 'function') {
+	          title = desc(data, record, index);
+	        } else if (descIndex) {
+	          title = record[descIndex];
+	        }
+	        return _react2["default"].createElement(
+	          'span',
+	          { onClick: link, className: cls, style: { color: linkColor || '' }, title: title },
+	          data
+	        );
+	      }
+	      return data;
+	    };
+	
+	    _this.renderBoolType = function (data) {
+	      var config = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+	
+	      var locale = (0, _tool.getComponentLocale)(_this.props, _this.context, 'Table', function () {
+	        return _i18n2["default"];
+	      });
+	      var boolConfig = _extends({ trueText: locale['bool_true'], falseText: locale['bool_false'] }, config);
+	      if (typeof data === 'string') {
+	        if (data === 'false' || data === '0') {
+	          return boolConfig.falseText;
+	        }
+	      } else if (!data) {
+	        return boolConfig.falseText;
+	      }
+	      return boolConfig.trueText;
+	    };
+	
+	    _this.renderNumber = function (data) {
+	      var config = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+	      var width = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 200;
+	      var precision = config.precision,
+	          thousand = config.thousand,
+	          makeUp = config.makeUp,
+	          preSymbol = config.preSymbol,
+	          nextSymbol = config.nextSymbol;
+	
+	      var number = (0, _utils.formatMoney)(data, precision, thousand);
+	      if (makeUp === false && number.indexOf('.') !== -1) {
+	        number = number.replace(/0*$/, '').replace(/\.$/, '');
+	      }
+	      var numberWidth = parseInt(width) - 16; // 减去默认的左右padding共计16px
+	      var res = _react2["default"].createElement(
+	        'span',
+	        { className: 'u-table-currency-number' },
+	        number
+	      );
+	      var pre = preSymbol ? _react2["default"].createElement(
+	        'span',
+	        { className: 'u-table-currency-pre' },
+	        preSymbol
+	      ) : null;
+	      var next = nextSymbol ? _react2["default"].createElement(
+	        'span',
+	        { className: 'u-table-currency-next' },
+	        nextSymbol
+	      ) : null;
+	      var title = '';
+	      title += typeof preSymbol === 'string' ? preSymbol : '';
+	      title += number;
+	      title += typeof nextSymbol === 'string' ? nextSymbol : '';
+	      return _react2["default"].createElement(
+	        'span',
+	        { className: 'u-table-currency u-table-fieldtype', style: { width: numberWidth }, title: title },
+	        pre,
+	        res,
+	        next
+	      );
+	    };
+	
+	    _this.renderDate = function (data) {
+	      var config = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+	      var moment = config.moment,
+	          format = config.format;
+	
+	      if (!moment) return data;
+	      return moment(data).format(format || 'YYYY-MM-DD');
+	    };
+	
+	    _this.renderSelect = function (data) {
+	      var config = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+	
+	      if (config.options) {
+	        data = config.options[data] || config.defaultShow;
+	      }
+	      return data;
+	    };
+	
+	    _this.renderColumnMenu = function (colMenu, text, record, index) {
+	      if (!colMenu) return null;
+	      var menu = colMenu.menu,
+	          _colMenu$trigger = colMenu.trigger,
+	          trigger = _colMenu$trigger === undefined ? 'hover' : _colMenu$trigger,
+	          _colMenu$className = colMenu.className,
+	          className = _colMenu$className === undefined ? '' : _colMenu$className,
+	          _colMenu$icon = colMenu.icon,
+	          icon = _colMenu$icon === undefined ? _react2["default"].createElement('i', { className: 'uf uf-3dot-h' }) : _colMenu$icon,
+	          _colMenu$iconSize = colMenu.iconSize,
+	          iconSize = _colMenu$iconSize === undefined ? 21 : _colMenu$iconSize;
+	
+	      var items = [];
+	      items = menu.map(function (item) {
+	        return _react2["default"].createElement(
+	          Item,
+	          { key: item.key, onClick: function onClick() {
+	              _this.onClickColMenu(item.callback, text, record, index);
+	            } },
+	          item.icon,
+	          item.text
+	        );
+	      });
+	      if (items.length === 0) return null;
+	      className += ' u-table-inline-op-dropdowm';
+	      var menus = _react2["default"].createElement(
+	        _beeMenus2["default"],
+	        { className: className },
+	        items
+	      );
+	      var top = 'calc(50% - ' + iconSize / 2 + 'px)';
+	      var visibility = _this.state.showDropdowm ? 'visible' : '';
+	      var iconClassName = 'u-table-inline-op-icon u-table-inline-op-icon-hover';
+	      return _react2["default"].createElement(
+	        _beeDropdown2["default"],
+	        {
+	          trigger: [trigger],
+	          overlay: menus,
+	          animation: 'slide-up',
+	          onVisibleChange: _this.changeShowDropdowm
+	        },
+	        _react2["default"].createElement(
+	          'span',
+	          { className: iconClassName, style: { fontSize: iconSize, top: top, visibility: visibility } },
+	          icon
+	        )
+	      );
+	    };
+	
+	    _this.changeShowDropdowm = function (val) {
+	      _this.setState({
+	        showDropdowm: val
+	      });
+	    };
+	
+	    _this.onClickColMenu = function (callback, text, record, index) {
+	      if (callback) {
+	        callback(text, record, index);
+	      }
+	      _this.setState({
+	        showDropdowm: false
+	      });
+	    };
+	
 	    _this.isInvalidRenderCellText = _this.isInvalidRenderCellText.bind(_this);
 	    _this.handleClick = _this.handleClick.bind(_this);
+	    _this.state = {
+	      showDropdowm: false
+	    };
 	    return _this;
 	  }
 	
@@ -89616,6 +90012,30 @@
 	    }
 	  };
 	
+	  //  渲染链接类型
+	
+	
+	  // 渲染布尔类型
+	
+	
+	  // 渲染整数/货币类型
+	
+	
+	  // 渲染时间类型-l
+	
+	
+	  // 渲染下拉类型，主要为编辑表格铺垫
+	
+	
+	  // 渲染行内菜单
+	
+	
+	  // 下拉按钮状态改变，点击后保持图标常驻
+	
+	
+	  // 菜单点击事件
+	
+	
 	  TableCell.prototype.render = function render() {
 	    var _props2 = this.props,
 	        record = _props2.record,
@@ -89631,7 +90051,11 @@
 	        lazyStartIndex = _props2.lazyStartIndex,
 	        lazyEndIndex = _props2.lazyEndIndex;
 	    var dataIndex = column.dataIndex,
-	        render = column.render;
+	        render = column.render,
+	        fieldType = column.fieldType,
+	        linkConfig = column.linkConfig,
+	        fontColor = column.fontColor,
+	        bgColor = column.bgColor;
 	    var _column$className = column.className,
 	        className = _column$className === undefined ? '' : _column$className;
 	
@@ -89649,6 +90073,61 @@
 	        rowSpan = tdProps.rowSpan > lazyEndIndex && lazyEndIndex > 5 ? lazyEndIndex - index : tdProps.rowSpan;
 	        colSpan = tdProps.colSpan;
 	        text = text.children;
+	      }
+	    }
+	
+	    var colMenu = this.renderColumnMenu(column.cellMenu, text, record, index);
+	    // 根据 fieldType 来渲染数据
+	    if (!render) {
+	      switch (column.fieldType) {
+	        case 'link':
+	          {
+	            text = this.renderLinkType(text, record, index, column.linkConfig);
+	            break;
+	          }
+	        case 'bool':
+	          {
+	            text = this.renderBoolType(text, column.boolConfig);
+	            break;
+	          }
+	        case 'currency':
+	          {
+	            var config = {
+	              precision: 2, // 精度值,需要大于0
+	              thousand: true, // 是否显示千分符号
+	              makeUp: true, // 末位是否补零
+	              preSymbol: '', // 前置符号
+	              nextSymbol: '' // 后置符号
+	            };
+	            text = this.renderNumber(text, _extends({}, config, column.currencyConfig), column.width);
+	            break;
+	          }
+	        case 'number':
+	          {
+	            var _config = {
+	              precision: 0, // 精度值,需要大于0
+	              thousand: true, // 是否显示千分符号
+	              makeUp: false, // 末位是否补零
+	              preSymbol: '', // 前置符号
+	              nextSymbol: '' // 后置符号
+	            };
+	            text = this.renderNumber(text, _extends({}, _config, column.numberConfig), column.width);
+	            break;
+	          }
+	        case 'date':
+	          {
+	            text = this.renderDate(text, column.dateConfig);
+	            break;
+	          }
+	        case 'select':
+	          {
+	            text = this.renderSelect(text, column.selectConfig);
+	            break;
+	          }
+	        default:
+	          {
+	            break;
+	          }
 	      }
 	    }
 	
@@ -89672,14 +90151,19 @@
 	    if (column.fixed && !fixed) {
 	      className = className + (' ' + clsPrefix + '-fixed-columns-in-body');
 	    }
-	    if (column.textAlign) {
+	    if (column.contentAlign) {
+	      className = className + (' text-' + column.contentAlign);
+	    } else if (column.textAlign) {
 	      className = className + (' text-' + column.textAlign);
 	    }
-	    if (typeof text == 'string' && bodyDisplayInRow) {
+	    if ((typeof text == 'string' || typeof text === 'number') && bodyDisplayInRow) {
 	      title = text;
 	    }
 	    if (expandIcon && expandIcon.props.expandable) {
 	      className = className + (' ' + clsPrefix + '-has-expandIcon');
+	    }
+	    if (colMenu) {
+	      className += ' u-table-inline-icon';
 	    }
 	    return _react2["default"].createElement(
 	      'td',
@@ -89688,12 +90172,13 @@
 	        rowSpan: rowSpan,
 	        className: className,
 	        onClick: this.handleClick,
-	        title: title
-	
+	        title: title,
+	        style: _extends({ color: fontColor, backgroundColor: bgColor }, column.style)
 	      },
 	      indentText,
 	      expandIcon,
-	      text
+	      text,
+	      colMenu
 	    );
 	  };
 	
@@ -90007,6 +90492,3315 @@
 
 /***/ }),
 /* 716 */
+/***/ (function(module, exports) {
+
+	'use strict';
+	
+	module.exports = {
+	    'lang': 'zh-cn',
+	    'resetSettings': '还原设置',
+	    'include': '包含',
+	    'exclusive': '不包含',
+	    'equal': '等于',
+	    'unequal': '不等于',
+	    'begin': '以开始',
+	    'end': '以结尾',
+	    'greater_than': '大于',
+	    'great_than_equal_to': '大于等于',
+	    'less_than': '小于',
+	    'less_than_equal_to': '小于等于',
+	    'be_equal_to': '等于',
+	    'not_equal_to': '不等于',
+	    "no_data": '暂无数据',
+	    "bool_true": "是",
+	    "bool_false": "否",
+	    'en-us': {
+	        'resetSettings': 'reset settings',
+	        'include': 'include',
+	        'exclusive': 'exclusive',
+	        'equal': 'equal',
+	        'unequal': 'unequal',
+	        'begin': 'begin',
+	        'end': 'end',
+	        'greater_than': 'greater than',
+	        'great_than_equal_to': 'great than equal to',
+	        'less_than': 'less than',
+	        'less_than_equal_to': 'less than equal to',
+	        'be_equal_to': 'be equal to',
+	        'not_equal_to': 'not equal to',
+	        "no_data": 'no data',
+	        "bool_true": "true",
+	        "bool_false": "false"
+	    },
+	    'zh-tw': {
+	        'resetSettings': '還原設置',
+	        'include': '包含',
+	        'exclusive': '不包含',
+	        'equal': '等於',
+	        'unequal': '不等於',
+	        'begin': '以開始',
+	        'end': '以結尾',
+	        'greater_than': '大於',
+	        'great_than_equal_to': '大於等於',
+	        'less_than': '小於',
+	        'less_than_equal to': '小於等於',
+	        'be_equal_to': '等於',
+	        'not_equal_to': '不等於',
+	        "no_data": '暫無數據',
+	        "bool_true": "是",
+	        "bool_false": "否"
+	    }
+	};
+
+/***/ }),
+/* 717 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _Dropdown = __webpack_require__(718);
+	
+	var _Dropdown2 = _interopRequireDefault(_Dropdown);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+	
+	exports["default"] = _Dropdown2["default"];
+	module.exports = exports['default'];
+
+/***/ }),
+/* 718 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactDom = __webpack_require__(2);
+	
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+	
+	var _trigger = __webpack_require__(399);
+	
+	var _trigger2 = _interopRequireDefault(_trigger);
+	
+	var _placement = __webpack_require__(719);
+	
+	var _placement2 = _interopRequireDefault(_placement);
+	
+	var _propTypes = __webpack_require__(6);
+	
+	var _propTypes2 = _interopRequireDefault(_propTypes);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+	
+	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
+	
+	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); } /**
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               * This source code is quoted from rc-dropdown.
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               * homepage: https://github.com/react-component/dropdown
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               */
+	
+	
+	var propTypes = {
+	  minOverlayWidthMatchTrigger: _propTypes2["default"].bool,
+	  onVisibleChange: _propTypes2["default"].func,
+	  clsPrefix: _propTypes2["default"].string,
+	  children: _propTypes2["default"].any,
+	  transitionName: _propTypes2["default"].string,
+	  overlayClassName: _propTypes2["default"].string,
+	  animation: _propTypes2["default"].any,
+	  align: _propTypes2["default"].object,
+	  overlayStyle: _propTypes2["default"].object,
+	  placement: _propTypes2["default"].string,
+	  trigger: _propTypes2["default"].array,
+	  showAction: _propTypes2["default"].array,
+	  hideAction: _propTypes2["default"].array,
+	  getPopupContainer: _propTypes2["default"].func
+	};
+	
+	var defaultProps = {
+	  minOverlayWidthMatchTrigger: true,
+	  clsPrefix: 'u-dropdown',
+	  trigger: ['hover'],
+	  showAction: [],
+	  hideAction: [],
+	  overlayClassName: '',
+	  overlayStyle: {},
+	  defaultVisible: false,
+	  onVisibleChange: function onVisibleChange() {},
+	
+	  placement: 'bottomLeft'
+	};
+	
+	var jadgeState = function jadgeState(props) {
+	  if ('visible' in props) {
+	    return props.visible;
+	  }
+	  return props.defaultVisible;
+	};
+	
+	var Dropdown = function (_React$Component) {
+	  _inherits(Dropdown, _React$Component);
+	
+	  function Dropdown(props) {
+	    _classCallCheck(this, Dropdown);
+	
+	    var _this = _possibleConstructorReturn(this, _React$Component.call(this, props));
+	
+	    _this.state = {
+	      visible: jadgeState(_this.props)
+	    };
+	    _this.onClick = _this.onClick.bind(_this);
+	    _this.onVisibleChange = _this.onVisibleChange.bind(_this);
+	    _this.getMenuElement = _this.getMenuElement.bind(_this);
+	    _this.getPopupDomNode = _this.getPopupDomNode.bind(_this);
+	    _this.afterVisibleChange = _this.afterVisibleChange.bind(_this);
+	
+	    return _this;
+	  }
+	
+	  Dropdown.prototype.componentWillReceiveProps = function componentWillReceiveProps(_ref) {
+	    var visible = _ref.visible;
+	
+	    if (visible !== undefined) {
+	      this.setState({
+	        visible: visible
+	      });
+	    }
+	  };
+	
+	  Dropdown.prototype.onClick = function onClick(e) {
+	    var props = this.props;
+	    var overlayProps = props.overlay.props;
+	    // do no call onVisibleChange, if you need click to hide, use onClick and control visible
+	    if (!('visible' in props)) {
+	      this.setState({
+	        visible: false
+	      });
+	    }
+	    if (overlayProps.onClick) {
+	      overlayProps.onClick(e);
+	    }
+	  };
+	
+	  Dropdown.prototype.onVisibleChange = function onVisibleChange(visible) {
+	    var props = this.props;
+	    if (!('visible' in props)) {
+	      this.setState({
+	        visible: visible
+	      });
+	    }
+	    props.onVisibleChange(visible);
+	  };
+	
+	  Dropdown.prototype.getMenuElement = function getMenuElement() {
+	    var _props = this.props,
+	        overlay = _props.overlay,
+	        clsPrefix = _props.clsPrefix;
+	
+	
+	    return _react2["default"].cloneElement(overlay, {
+	      prefixCls: clsPrefix + '-menu',
+	      onClick: this.onClick
+	    });
+	  };
+	
+	  Dropdown.prototype.getPopupDomNode = function getPopupDomNode() {
+	    return this.refs.trigger.getPopupDomNode();
+	  };
+	
+	  Dropdown.prototype.afterVisibleChange = function afterVisibleChange(visible) {
+	    if (visible && this.props.minOverlayWidthMatchTrigger) {
+	      var overlayNode = this.getPopupDomNode();
+	      var rootNode = _reactDom2["default"].findDOMNode(this);
+	      if (rootNode.offsetWidth > overlayNode.offsetWidth) {
+	        overlayNode.style['min-width'] = rootNode.offsetWidth + 'px';
+	      }
+	    }
+	  };
+	
+	  Dropdown.prototype.render = function render() {
+	    var _props2 = this.props,
+	        clsPrefix = _props2.clsPrefix,
+	        children = _props2.children,
+	        transitionName = _props2.transitionName,
+	        animation = _props2.animation,
+	        align = _props2.align,
+	        placement = _props2.placement,
+	        getPopupContainer = _props2.getPopupContainer,
+	        showAction = _props2.showAction,
+	        hideAction = _props2.hideAction,
+	        overlayClassName = _props2.overlayClassName,
+	        overlayStyle = _props2.overlayStyle,
+	        trigger = _props2.trigger,
+	        getDocument = _props2.getDocument,
+	        disabled = _props2.disabled,
+	        delay = _props2.delay,
+	        delayShow = _props2.delayShow,
+	        delayHide = _props2.delayHide,
+	        props = _objectWithoutProperties(_props2, ['clsPrefix', 'children', 'transitionName', 'animation', 'align', 'placement', 'getPopupContainer', 'showAction', 'hideAction', 'overlayClassName', 'overlayStyle', 'trigger', 'getDocument', 'disabled', 'delay', 'delayShow', 'delayHide']);
+	
+	    return _react2["default"].createElement(
+	      _trigger2["default"],
+	      _extends({}, props, {
+	        clsPrefix: clsPrefix,
+	        ref: 'trigger',
+	        popupClassName: overlayClassName,
+	        popupStyle: overlayStyle,
+	        builtinPlacements: _placement2["default"],
+	        action: trigger,
+	        showAction: showAction,
+	        hideAction: hideAction,
+	        popupPlacement: placement,
+	        popupAlign: align,
+	        popupTransitionName: transitionName,
+	        popupAnimation: animation,
+	        popupVisible: disabled ? false : this.state.visible,
+	        afterPopupVisibleChange: this.afterVisibleChange,
+	        popup: this.getMenuElement(),
+	        onPopupVisibleChange: this.onVisibleChange,
+	        getPopupContainer: getPopupContainer,
+	        getDocument: getDocument,
+	        mouseEnterDelay: delayShow && delayShow / 1000 || delay && delay / 1000,
+	        mouseLeaveDelay: delayHide && delayHide / 1000 || delay && delay / 1000
+	      }),
+	      children
+	    );
+	  };
+	
+	  return Dropdown;
+	}(_react2["default"].Component);
+	
+	;
+	
+	Dropdown.propTypes = propTypes;
+	Dropdown.defaultProps = defaultProps;
+	
+	exports["default"] = Dropdown;
+	module.exports = exports['default'];
+
+/***/ }),
+/* 719 */
+/***/ (function(module, exports) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	var autoAdjustOverflow = {
+	  adjustX: 1,
+	  adjustY: 1
+	};
+	
+	var targetOffset = [0, 0];
+	
+	var placements = exports.placements = {
+	  topLeft: {
+	    points: ['bl', 'tl'],
+	    overflow: autoAdjustOverflow,
+	    offset: [0, -4],
+	    targetOffset: targetOffset
+	  },
+	  topCenter: {
+	    points: ['bc', 'tc'],
+	    overflow: autoAdjustOverflow,
+	    offset: [0, -4],
+	    targetOffset: targetOffset
+	  },
+	  topRight: {
+	    points: ['br', 'tr'],
+	    overflow: autoAdjustOverflow,
+	    offset: [0, -4],
+	    targetOffset: targetOffset
+	  },
+	  bottomLeft: {
+	    points: ['tl', 'bl'],
+	    overflow: autoAdjustOverflow,
+	    offset: [0, 4],
+	    targetOffset: targetOffset
+	  },
+	  bottomCenter: {
+	    points: ['tc', 'bc'],
+	    overflow: autoAdjustOverflow,
+	    offset: [0, 4],
+	    targetOffset: targetOffset
+	  },
+	  bottomRight: {
+	    points: ['tr', 'br'],
+	    overflow: autoAdjustOverflow,
+	    offset: [0, 4],
+	    targetOffset: targetOffset
+	  }
+	};
+	
+	exports["default"] = placements;
+
+/***/ }),
+/* 720 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _VerticalMenu = __webpack_require__(721);
+	
+	var _VerticalMenu2 = _interopRequireDefault(_VerticalMenu);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+	
+	exports["default"] = _VerticalMenu2["default"];
+	module.exports = exports['default'];
+
+/***/ }),
+/* 721 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _ExportMenu = __webpack_require__(722);
+	
+	var _ExportMenu2 = _interopRequireDefault(_ExportMenu);
+	
+	var _openAnimation = __webpack_require__(734);
+	
+	var _openAnimation2 = _interopRequireDefault(_openAnimation);
+	
+	var _warning = __webpack_require__(735);
+	
+	var _warning2 = _interopRequireDefault(_warning);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+	
+	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
+	
+	var Menu = function (_React$Component) {
+	  _inherits(Menu, _React$Component);
+	
+	  function Menu(props) {
+	    _classCallCheck(this, Menu);
+	
+	    var _this = _possibleConstructorReturn(this, _React$Component.call(this, props));
+	
+	    _this.handleClick = function (e) {
+	      _this.setOpenKeys([]);
+	
+	      var onClick = _this.props.onClick;
+	      if (onClick) {
+	        onClick(e);
+	      }
+	    };
+	
+	    _this.handleOpenChange = function (openKeys) {
+	      _this.setOpenKeys(openKeys);
+	
+	      var onOpenChange = _this.props.onOpenChange;
+	      if (onOpenChange) {
+	        onOpenChange(openKeys);
+	      }
+	    };
+	
+	    (0, _warning2["default"])(!('onOpen' in props || 'onClose' in props), '`onOpen` and `onClose` are removed, please use `onOpenChange` instead.');
+	
+	    _this.state = {
+	      openKeys: []
+	    };
+	    _this.rcMenu = {};
+	    return _this;
+	  }
+	
+	  Menu.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
+	    if (this.props.mode === 'inline' && nextProps.mode !== 'inline') {
+	      this.switchModeFromInline = true;
+	    }
+	    if ('openKeys' in nextProps) {
+	      this.setOpenKeys(nextProps.openKeys);
+	    }
+	  };
+	
+	  Menu.prototype.setOpenKeys = function setOpenKeys(openKeys) {
+	    if (!('openKeys' in this.props)) {
+	      this.setState({ openKeys: openKeys });
+	    }
+	  };
+	
+	  Menu.prototype.render = function render() {
+	    var _this2 = this;
+	
+	    var openAnimation = this.props.openAnimation || this.props.openTransitionName;
+	    if (!openAnimation) {
+	      switch (this.props.mode) {
+	        case 'horizontal':
+	          openAnimation = '';
+	          break;
+	        case 'vertical':
+	          // When mode switch from inline
+	          // submenu should hide without animation
+	          if (this.switchModeFromInline) {
+	            openAnimation = _openAnimation2["default"];
+	            this.switchModeFromInline = false;
+	          } else {
+	            openAnimation = 'zoom-big';
+	          }
+	          break;
+	        case 'inline':
+	          openAnimation = _openAnimation2["default"];
+	          break;
+	        default:
+	      }
+	    }
+	
+	    var props = {};
+	    var className = this.props.className + ' ' + this.props.prefixCls + '-' + this.props.theme;
+	    if (this.props.mode !== 'inline') {
+	      // 这组属性的目的是
+	      // 弹出型的菜单需要点击后立即关闭
+	      // 另外，弹出型的菜单的受控模式没有使用场景
+	      props = {
+	        openKeys: this.state.openKeys,
+	        onClick: this.handleClick,
+	        onOpenChange: this.handleOpenChange,
+	        openTransitionName: openAnimation,
+	        className: className
+	      };
+	    } else {
+	      props = {
+	        openAnimation: openAnimation,
+	        className: className
+	      };
+	    }
+	    return _react2["default"].createElement(_ExportMenu2["default"], _extends({ ref: function ref(el) {
+	        return _this2.rcMenu = el;
+	      } }, this.props, props));
+	  };
+	
+	  return Menu;
+	}(_react2["default"].Component);
+	
+	Menu.defaultProps = {
+	  prefixCls: 'u-menu',
+	  className: '',
+	  theme: 'light' // or dark
+	};
+	
+	Menu.Divider = _ExportMenu.Divider;
+	Menu.Item = _ExportMenu.Item;
+	Menu.SubMenu = _ExportMenu.SubMenu;
+	Menu.ItemGroup = _ExportMenu.ItemGroup;
+	Menu.MenuToggle = _ExportMenu.MenuToggle;
+	Menu.SideContainer = _ExportMenu.SideContainer;
+	exports["default"] = Menu;
+	module.exports = exports['default'];
+
+/***/ }),
+/* 722 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.MenuToggle = exports.SideContainer = exports.Divider = exports.ItemGroup = exports.MenuItemGroup = exports.MenuItem = exports.Item = exports.SubMenu = undefined;
+	
+	var _Menu = __webpack_require__(723);
+	
+	var _Menu2 = _interopRequireDefault(_Menu);
+	
+	var _SubMenu = __webpack_require__(727);
+	
+	var _SubMenu2 = _interopRequireDefault(_SubMenu);
+	
+	var _MenuItem = __webpack_require__(729);
+	
+	var _MenuItem2 = _interopRequireDefault(_MenuItem);
+	
+	var _MenuItemGroup = __webpack_require__(730);
+	
+	var _MenuItemGroup2 = _interopRequireDefault(_MenuItemGroup);
+	
+	var _Divider = __webpack_require__(731);
+	
+	var _Divider2 = _interopRequireDefault(_Divider);
+	
+	var _SideContainer = __webpack_require__(732);
+	
+	var _SideContainer2 = _interopRequireDefault(_SideContainer);
+	
+	var _MenuToggle = __webpack_require__(733);
+	
+	var _MenuToggle2 = _interopRequireDefault(_MenuToggle);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+	
+	exports.SubMenu = _SubMenu2["default"];
+	exports.Item = _MenuItem2["default"];
+	exports.MenuItem = _MenuItem2["default"];
+	exports.MenuItemGroup = _MenuItemGroup2["default"];
+	exports.ItemGroup = _MenuItemGroup2["default"];
+	exports.Divider = _Divider2["default"];
+	exports.SideContainer = _SideContainer2["default"];
+	exports.MenuToggle = _MenuToggle2["default"]; /**
+	                                           * This source code is quoted from rc-menu.
+	                                           * homepage: https://github.com/react-component/menu
+	                                           */
+	
+	exports["default"] = _Menu2["default"];
+
+/***/ }),
+/* 723 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactDom = __webpack_require__(2);
+	
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+	
+	var _propTypes = __webpack_require__(6);
+	
+	var _propTypes2 = _interopRequireDefault(_propTypes);
+	
+	var _miniStore = __webpack_require__(347);
+	
+	var _SubPopupMenu = __webpack_require__(724);
+	
+	var _SubPopupMenu2 = _interopRequireDefault(_SubPopupMenu);
+	
+	var _util = __webpack_require__(725);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+	
+	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
+	
+	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); } /**
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               * This source code is quoted from rc-menu.
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               * homepage: https://github.com/react-component/menu
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               */
+	
+	
+	var Menu = function (_React$Component) {
+	  _inherits(Menu, _React$Component);
+	
+	  function Menu(props) {
+	    _classCallCheck(this, Menu);
+	
+	    var _this = _possibleConstructorReturn(this, _React$Component.call(this, props));
+	
+	    _initialiseProps.call(_this);
+	
+	    _this.isRootMenu = true;
+	
+	    var selectedKeys = props.defaultSelectedKeys;
+	    var openKeys = props.defaultOpenKeys;
+	    if ('selectedKeys' in props) {
+	      selectedKeys = props.selectedKeys || [];
+	    }
+	    if ('openKeys' in props) {
+	      openKeys = props.openKeys || [];
+	    }
+	
+	    _this.store = (0, _miniStore.create)({
+	      selectedKeys: selectedKeys,
+	      openKeys: openKeys,
+	      activeKey: { '0-menu-': (0, _SubPopupMenu.getActiveKey)(props, props.activeKey) }
+	    });
+	    return _this;
+	  }
+	
+	  Menu.prototype.componentDidMount = function componentDidMount() {
+	    this.updateMiniStore();
+	  };
+	
+	  Menu.prototype.componentDidUpdate = function componentDidUpdate() {
+	    this.updateMiniStore();
+	  };
+	
+	  // onKeyDown needs to be exposed as a instance method
+	  // e.g., in rc-select, we need to navigate menu item while
+	  // current active item is rc-select input box rather than the menu itself
+	
+	
+	  Menu.prototype.updateMiniStore = function updateMiniStore() {
+	    if ('selectedKeys' in this.props) {
+	      this.store.setState({
+	        selectedKeys: this.props.selectedKeys || [],
+	        keyboard: this.props.keyboard || false
+	      });
+	    }
+	    if ('openKeys' in this.props) {
+	      this.store.setState({
+	        openKeys: this.props.openKeys || [],
+	        keyboard: this.props.keyboard || false
+	      });
+	    }
+	  };
+	
+	  Menu.prototype.render = function render() {
+	    var _this2 = this;
+	
+	    var props = _objectWithoutProperties(this.props, []);
+	
+	    props.className += ' ' + props.prefixCls + '-root';
+	    props = _extends({}, props, {
+	      onClick: this.onClick,
+	      onOpenChange: this.onOpenChange,
+	      onDeselect: this.onDeselect,
+	      onSelect: this.onSelect,
+	      openTransitionName: this.getOpenTransitionName(),
+	      parentMenu: this
+	    });
+	    return _react2["default"].createElement(
+	      _miniStore.Provider,
+	      { store: this.store },
+	      _react2["default"].createElement(
+	        _SubPopupMenu2["default"],
+	        _extends({}, props, { onFocus: this.focus, ref: function ref(c) {
+	            return _this2.innerMenu = c;
+	          } }),
+	        this.props.children
+	      )
+	    );
+	  };
+	
+	  return Menu;
+	}(_react2["default"].Component);
+	
+	Menu.propTypes = {
+	  defaultSelectedKeys: _propTypes2["default"].arrayOf(_propTypes2["default"].string),
+	  defaultActiveFirst: _propTypes2["default"].bool,
+	  selectedKeys: _propTypes2["default"].arrayOf(_propTypes2["default"].string),
+	  defaultOpenKeys: _propTypes2["default"].arrayOf(_propTypes2["default"].string),
+	  openKeys: _propTypes2["default"].arrayOf(_propTypes2["default"].string),
+	  mode: _propTypes2["default"].oneOf(['horizontal', 'vertical', 'vertical-left', 'vertical-right', 'inline']),
+	  getPopupContainer: _propTypes2["default"].func,
+	  onClick: _propTypes2["default"].func,
+	  onSelect: _propTypes2["default"].func,
+	  onDeselect: _propTypes2["default"].func,
+	  onDestroy: _propTypes2["default"].func,
+	  openTransitionName: _propTypes2["default"].string,
+	  openAnimation: _propTypes2["default"].oneOfType([_propTypes2["default"].string, _propTypes2["default"].object]),
+	  subMenuOpenDelay: _propTypes2["default"].number,
+	  subMenuCloseDelay: _propTypes2["default"].number,
+	  forceSubMenuRender: _propTypes2["default"].bool,
+	  triggerSubMenuAction: _propTypes2["default"].string,
+	  level: _propTypes2["default"].number,
+	  selectable: _propTypes2["default"].bool,
+	  multiple: _propTypes2["default"].bool,
+	  children: _propTypes2["default"].any,
+	  className: _propTypes2["default"].string,
+	  style: _propTypes2["default"].object,
+	  activeKey: _propTypes2["default"].string,
+	  prefixCls: _propTypes2["default"].string,
+	  builtinPlacements: _propTypes2["default"].object,
+	  itemIcon: _propTypes2["default"].oneOfType([_propTypes2["default"].func, _propTypes2["default"].node]),
+	  expandIcon: _propTypes2["default"].oneOfType([_propTypes2["default"].func, _propTypes2["default"].node]),
+	  overflowedIndicator: _propTypes2["default"].node,
+	  keyboard: _propTypes2["default"].bool
+	};
+	Menu.defaultProps = {
+	  selectable: true,
+	  onClick: _util.noop,
+	  onSelect: _util.noop,
+	  onOpenChange: _util.noop,
+	  onDeselect: _util.noop,
+	  defaultSelectedKeys: [],
+	  defaultOpenKeys: [],
+	  subMenuOpenDelay: 0.1,
+	  subMenuCloseDelay: 0.1,
+	  triggerSubMenuAction: 'hover',
+	  prefixCls: 'rc-menu',
+	  className: '',
+	  mode: 'vertical',
+	  style: {},
+	  builtinPlacements: {},
+	  overflowedIndicator: _react2["default"].createElement(
+	    'span',
+	    null,
+	    '\xB7\xB7\xB7'
+	  ),
+	  keyboard: false,
+	  tabIndex: '0'
+	};
+	
+	var _initialiseProps = function _initialiseProps() {
+	  var _this3 = this;
+	
+	  this.onSelect = function (selectInfo) {
+	    var props = _this3.props;
+	    if (props.selectable) {
+	      // root menu
+	      var selectedKeys = _this3.store.getState().selectedKeys;
+	      var selectedKey = selectInfo.key;
+	      if (props.multiple) {
+	        selectedKeys = selectedKeys.concat([selectedKey]);
+	      } else {
+	        selectedKeys = [selectedKey];
+	      }
+	      if (!('selectedKeys' in props)) {
+	        _this3.store.setState({
+	          selectedKeys: selectedKeys
+	        });
+	      }
+	      props.onSelect(_extends({}, selectInfo, {
+	        selectedKeys: selectedKeys
+	      }));
+	    }
+	  };
+	
+	  this.onClick = function (e) {
+	    _this3.props.onClick(e);
+	  };
+	
+	  this.onKeyDown = function (e, callback) {
+	    _this3.innerMenu.getWrappedInstance().onKeyDown(e, callback);
+	  };
+	
+	  this.onOpenChange = function (event) {
+	    var props = _this3.props;
+	    var openKeys = _this3.store.getState().openKeys.concat();
+	    var changed = false;
+	    var processSingle = function processSingle(e) {
+	      var oneChanged = false;
+	      if (e.open) {
+	        oneChanged = openKeys.indexOf(e.key) === -1;
+	        if (oneChanged) {
+	          openKeys.push(e.key);
+	        }
+	      } else {
+	        var index = openKeys.indexOf(e.key);
+	        oneChanged = index !== -1;
+	        if (oneChanged) {
+	          openKeys.splice(index, 1);
+	        }
+	      }
+	      changed = changed || oneChanged;
+	    };
+	    if (Array.isArray(event)) {
+	      // batch change call
+	      event.forEach(processSingle);
+	    } else {
+	      processSingle(event);
+	    }
+	    if (changed) {
+	      if (!('openKeys' in _this3.props)) {
+	        _this3.store.setState({ openKeys: openKeys });
+	      }
+	      props.onOpenChange(openKeys);
+	    }
+	  };
+	
+	  this.onDeselect = function (selectInfo) {
+	    var props = _this3.props;
+	    if (props.selectable) {
+	      var selectedKeys = _this3.store.getState().selectedKeys.concat();
+	      var selectedKey = selectInfo.key;
+	      var index = selectedKeys.indexOf(selectedKey);
+	      if (index !== -1) {
+	        selectedKeys.splice(index, 1);
+	      }
+	      if (!('selectedKeys' in props)) {
+	        _this3.store.setState({
+	          selectedKeys: selectedKeys
+	        });
+	      }
+	      props.onDeselect(_extends({}, selectInfo, {
+	        selectedKeys: selectedKeys
+	      }));
+	    }
+	  };
+	
+	  this.getOpenTransitionName = function () {
+	    var props = _this3.props;
+	    var transitionName = props.openTransitionName;
+	    var animationName = props.openAnimation;
+	    if (!transitionName && typeof animationName === 'string') {
+	      transitionName = props.prefixCls + '-open-' + animationName;
+	    }
+	    return transitionName;
+	  };
+	
+	  this.focus = function () {
+	    (0, _util.fireKeyEvent)(_reactDom2["default"].findDOMNode(_this3.innerMenu), 'keydown', 40);
+	    _this3.props.onFocus && _this3.props.onFocus();
+	  };
+	};
+	
+	exports["default"] = Menu;
+	module.exports = exports['default'];
+
+/***/ }),
+/* 724 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.SubPopupMenu = undefined;
+	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; /**
+	                                                                                                                                                                                                                                                                  * This source code is quoted from rc-menu.
+	                                                                                                                                                                                                                                                                  * homepage: https://github.com/react-component/menu
+	                                                                                                                                                                                                                                                                  */
+	
+	
+	exports.getActiveKey = getActiveKey;
+	exports.saveRef = saveRef;
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _propTypes = __webpack_require__(6);
+	
+	var _propTypes2 = _interopRequireDefault(_propTypes);
+	
+	var _miniStore = __webpack_require__(347);
+	
+	var _tinperBeeCore = __webpack_require__(26);
+	
+	var _createChainedFunction = __webpack_require__(359);
+	
+	var _createChainedFunction2 = _interopRequireDefault(_createChainedFunction);
+	
+	var _classnames = __webpack_require__(5);
+	
+	var _classnames2 = _interopRequireDefault(_classnames);
+	
+	var _util = __webpack_require__(725);
+	
+	var _DOMWrap = __webpack_require__(726);
+	
+	var _DOMWrap2 = _interopRequireDefault(_DOMWrap);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+	
+	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
+	
+	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
+	
+	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+	
+	function allDisabled(arr) {
+	  if (!arr.length) {
+	    return true;
+	  }
+	  return arr.every(function (c) {
+	    return !!c.props.disabled;
+	  });
+	}
+	
+	function updateActiveKey(store, menuId, activeKey) {
+	  var state = store.getState();
+	  store.setState({
+	    activeKey: _extends({}, state.activeKey, _defineProperty({}, menuId, activeKey))
+	  });
+	}
+	
+	function getEventKey(props) {
+	  // when eventKey not available ,it's menu and return menu id '0-menu-'
+	  return props.eventKey || '0-menu-';
+	}
+	
+	function getActiveKey(props, originalActiveKey) {
+	  var activeKey = originalActiveKey;
+	  var children = props.children,
+	      eventKey = props.eventKey;
+	
+	  if (activeKey) {
+	    var found = void 0;
+	    (0, _util.loopMenuItem)(children, function (c, i) {
+	      if (c && !c.props.disabled && activeKey === (0, _util.getKeyFromChildrenIndex)(c, eventKey, i)) {
+	        found = true;
+	      }
+	    });
+	    if (found) {
+	      return activeKey;
+	    }
+	  }
+	  activeKey = null;
+	  if (props.defaultActiveFirst) {
+	    (0, _util.loopMenuItem)(children, function (c, i) {
+	      if (!activeKey && c && !c.props.disabled) {
+	        activeKey = (0, _util.getKeyFromChildrenIndex)(c, eventKey, i);
+	      }
+	    });
+	    return activeKey;
+	  }
+	  return activeKey;
+	}
+	
+	function saveRef(c) {
+	  if (c) {
+	    var index = this.instanceArray.indexOf(c);
+	    if (index !== -1) {
+	      // update component if it's already inside instanceArray
+	      this.instanceArray[index] = c;
+	    } else {
+	      // add component if it's not in instanceArray yet;
+	      this.instanceArray.push(c);
+	    }
+	  }
+	}
+	
+	var SubPopupMenu = exports.SubPopupMenu = function (_React$Component) {
+	  _inherits(SubPopupMenu, _React$Component);
+	
+	  function SubPopupMenu(props) {
+	    _classCallCheck(this, SubPopupMenu);
+	
+	    var _this = _possibleConstructorReturn(this, _React$Component.call(this, props));
+	
+	    _initialiseProps.call(_this);
+	
+	    props.store.setState({
+	      activeKey: _extends({}, props.store.getState().activeKey, _defineProperty({}, props.eventKey, getActiveKey(props, props.activeKey)))
+	    });
+	
+	    _this.instanceArray = [];
+	    return _this;
+	  }
+	
+	  SubPopupMenu.prototype.componentDidMount = function componentDidMount() {
+	    // invoke customized ref to expose component to mixin
+	    if (this.props.manualRef) {
+	      this.props.manualRef(this);
+	    }
+	  };
+	
+	  SubPopupMenu.prototype.shouldComponentUpdate = function shouldComponentUpdate(nextProps) {
+	    return this.props.visible || nextProps.visible;
+	  };
+	
+	  SubPopupMenu.prototype.componentDidUpdate = function componentDidUpdate(prevProps) {
+	    var props = this.props;
+	    var originalActiveKey = 'activeKey' in props ? props.activeKey : props.store.getState().activeKey[getEventKey(props)];
+	    var activeKey = getActiveKey(props, originalActiveKey);
+	    if (activeKey !== originalActiveKey) {
+	      updateActiveKey(props.store, getEventKey(props), activeKey);
+	    } else if ('activeKey' in prevProps) {
+	      // If prev activeKey is not same as current activeKey,
+	      // we should set it.
+	      var prevActiveKey = getActiveKey(prevProps, prevProps.activeKey);
+	      if (activeKey !== prevActiveKey) {
+	        updateActiveKey(props.store, getEventKey(props), activeKey);
+	      }
+	    }
+	  };
+	
+	  // all keyboard events callbacks run from here at first
+	
+	
+	  SubPopupMenu.prototype.render = function render() {
+	    var _this2 = this;
+	
+	    var props = _objectWithoutProperties(this.props, []);
+	
+	    this.instanceArray = [];
+	    var className = (0, _classnames2["default"])(props.prefixCls, props.className, props.prefixCls + '-' + props.mode);
+	    var domProps = {
+	      className: className,
+	      // role could be 'select' and by default set to menu
+	      role: props.role || 'menu'
+	    };
+	    if (props.id) {
+	      domProps.id = props.id;
+	    }
+	    if (props.focusable) {
+	      domProps.tabIndex = this.props.tabIndex;
+	      domProps.onKeyDown = this.onKeyDown;
+	    }
+	    var prefixCls = props.prefixCls,
+	        eventKey = props.eventKey,
+	        visible = props.visible,
+	        level = props.level,
+	        mode = props.mode,
+	        overflowedIndicator = props.overflowedIndicator,
+	        theme = props.theme;
+	
+	    _util.menuAllProps.forEach(function (key) {
+	      return delete props[key];
+	    });
+	
+	    // Otherwise, the propagated click event will trigger another onClick
+	    delete props.onClick;
+	    delete props.keyboard;
+	
+	    return (
+	      // ESLint is not smart enough to know that the type of `children` was checked.
+	      /* eslint-disable */
+	      _react2["default"].createElement(
+	        _DOMWrap2["default"],
+	        _extends({}, props, {
+	          prefixCls: prefixCls,
+	          mode: mode,
+	          tag: 'ul',
+	          level: level,
+	          theme: theme,
+	          hiddenClassName: prefixCls + '-hidden',
+	          visible: visible,
+	          overflowedIndicator: overflowedIndicator
+	        }, domProps),
+	        _react2["default"].Children.map(props.children, function (c, i) {
+	          return _this2.renderMenuItem(c, i, eventKey || '0-menu-');
+	        })
+	      )
+	      /*eslint-enable */
+	
+	    );
+	  };
+	
+	  return SubPopupMenu;
+	}(_react2["default"].Component);
+	
+	SubPopupMenu.propTypes = {
+	  onSelect: _propTypes2["default"].func,
+	  onClick: _propTypes2["default"].func,
+	  onDeselect: _propTypes2["default"].func,
+	  onOpenChange: _propTypes2["default"].func,
+	  onDestroy: _propTypes2["default"].func,
+	  openTransitionName: _propTypes2["default"].string,
+	  openAnimation: _propTypes2["default"].oneOfType([_propTypes2["default"].string, _propTypes2["default"].object]),
+	  openKeys: _propTypes2["default"].arrayOf(_propTypes2["default"].string),
+	  visible: _propTypes2["default"].bool,
+	  children: _propTypes2["default"].any,
+	  parentMenu: _propTypes2["default"].object,
+	  eventKey: _propTypes2["default"].string,
+	  store: _propTypes2["default"].shape({
+	    getState: _propTypes2["default"].func,
+	    setState: _propTypes2["default"].func
+	  }),
+	
+	  // adding in refactor
+	  focusable: _propTypes2["default"].bool,
+	  multiple: _propTypes2["default"].bool,
+	  style: _propTypes2["default"].object,
+	  defaultActiveFirst: _propTypes2["default"].bool,
+	  activeKey: _propTypes2["default"].string,
+	  selectedKeys: _propTypes2["default"].arrayOf(_propTypes2["default"].string),
+	  defaultSelectedKeys: _propTypes2["default"].arrayOf(_propTypes2["default"].string),
+	  defaultOpenKeys: _propTypes2["default"].arrayOf(_propTypes2["default"].string),
+	  level: _propTypes2["default"].number,
+	  mode: _propTypes2["default"].oneOf(['horizontal', 'vertical', 'vertical-left', 'vertical-right', 'inline']),
+	  triggerSubMenuAction: _propTypes2["default"].oneOf(['click', 'hover']),
+	  inlineIndent: _propTypes2["default"].oneOfType([_propTypes2["default"].number, _propTypes2["default"].string]),
+	  manualRef: _propTypes2["default"].func,
+	  itemIcon: _propTypes2["default"].oneOfType([_propTypes2["default"].func, _propTypes2["default"].node]),
+	  expandIcon: _propTypes2["default"].oneOfType([_propTypes2["default"].func, _propTypes2["default"].node])
+	};
+	SubPopupMenu.defaultProps = {
+	  prefixCls: 'rc-menu',
+	  className: '',
+	  mode: 'vertical',
+	  level: 1,
+	  inlineIndent: 24,
+	  visible: true,
+	  focusable: true,
+	  style: {},
+	  manualRef: _util.noop
+	};
+	
+	var _initialiseProps = function _initialiseProps() {
+	  var _this3 = this;
+	
+	  this.onKeyDown = function (e, callback) {
+	    var keyCode = e.keyCode;
+	    var handled = void 0;
+	    _this3.getFlatInstanceArray().forEach(function (obj) {
+	      if (obj && obj.props.active && obj.onKeyDown) {
+	        handled = obj.onKeyDown(e);
+	      }
+	    });
+	    if (handled) {
+	      return 1;
+	    }
+	    var activeItem = null;
+	    if (keyCode === _tinperBeeCore.KeyCode.UP || keyCode === _tinperBeeCore.KeyCode.DOWN) {
+	      if (_this3.props.store.getState().keyboard) {
+	        //是否启用键盘操作
+	        activeItem = _this3.step(keyCode === _tinperBeeCore.KeyCode.UP ? -2 : 2);
+	      }
+	    }
+	
+	    if (activeItem) {
+	      e.preventDefault();
+	      updateActiveKey(_this3.props.store, getEventKey(_this3.props), activeItem.props.eventKey);
+	
+	      if (typeof callback === 'function') {
+	        callback(activeItem);
+	      }
+	
+	      return 1;
+	    }
+	  };
+	
+	  this.onItemHover = function (e) {
+	    var key = e.key,
+	        hover = e.hover;
+	
+	    updateActiveKey(_this3.props.store, getEventKey(_this3.props), hover ? key : null);
+	  };
+	
+	  this.onDeselect = function (selectInfo) {
+	    _this3.props.onDeselect(selectInfo);
+	  };
+	
+	  this.onSelect = function (selectInfo) {
+	    _this3.props.onSelect(selectInfo);
+	  };
+	
+	  this.onClick = function (e) {
+	    _this3.props.onClick(e);
+	  };
+	
+	  this.onOpenChange = function (e) {
+	    _this3.props.onOpenChange(e);
+	  };
+	
+	  this.onDestroy = function (key) {
+	    /* istanbul ignore next */
+	    _this3.props.onDestroy(key);
+	  };
+	
+	  this.getFlatInstanceArray = function () {
+	    return _this3.instanceArray;
+	  };
+	
+	  this.getOpenTransitionName = function () {
+	    return _this3.props.openTransitionName;
+	  };
+	
+	  this.step = function (direction) {
+	    var children = _this3.getFlatInstanceArray();
+	    var activeKey = _this3.props.store.getState().activeKey[getEventKey(_this3.props)];
+	    var len = children.length;
+	    if (!len) {
+	      return null;
+	    }
+	    if (direction < 0) {
+	      children = children.concat().reverse();
+	    }
+	    // find current activeIndex
+	    var activeIndex = -1;
+	    children.every(function (c, ci) {
+	      if (c && c.props.eventKey === activeKey) {
+	        activeIndex = ci;
+	        return false;
+	      }
+	      return true;
+	    });
+	    if (!_this3.props.defaultActiveFirst && activeIndex !== -1 && allDisabled(children.slice(activeIndex, len - 1))) {
+	      return undefined;
+	    }
+	    var start = (activeIndex + 1) % len;
+	    var i = start;
+	
+	    do {
+	      var child = children[i];
+	      if (!child || child.props.disabled) {
+	        i = (i + 1) % len;
+	      } else {
+	        return child;
+	      }
+	    } while (i !== start);
+	
+	    return null;
+	  };
+	
+	  this.renderCommonMenuItem = function (child, i, extraProps) {
+	    var state = _this3.props.store.getState();
+	    var props = _this3.props;
+	    var key = (0, _util.getKeyFromChildrenIndex)(child, props.eventKey, i);
+	    var childProps = child.props;
+	    var isActive = key === state.activeKey;
+	    var newChildProps = _extends({
+	      mode: childProps.mode || props.mode,
+	      level: props.level,
+	      inlineIndent: props.inlineIndent,
+	      renderMenuItem: _this3.renderMenuItem,
+	      rootPrefixCls: props.prefixCls,
+	      index: i,
+	      parentMenu: props.parentMenu,
+	      // customized ref function, need to be invoked manually in child's componentDidMount
+	      manualRef: childProps.disabled ? undefined : (0, _createChainedFunction2["default"])(child.ref, saveRef.bind(_this3)),
+	      eventKey: key,
+	      active: !childProps.disabled && isActive,
+	      multiple: props.multiple,
+	      onClick: function onClick(e) {
+	        (childProps.onClick || _util.noop)(e);
+	        _this3.onClick(e);
+	      },
+	      onItemHover: _this3.onItemHover,
+	      openTransitionName: _this3.getOpenTransitionName(),
+	      openAnimation: props.openAnimation,
+	      subMenuOpenDelay: props.subMenuOpenDelay,
+	      subMenuCloseDelay: props.subMenuCloseDelay,
+	      forceSubMenuRender: props.forceSubMenuRender,
+	      onOpenChange: _this3.onOpenChange,
+	      onDeselect: _this3.onDeselect,
+	      onSelect: _this3.onSelect,
+	      builtinPlacements: props.builtinPlacements,
+	      itemIcon: childProps.itemIcon || _this3.props.itemIcon,
+	      expandIcon: childProps.expandIcon || _this3.props.expandIcon
+	    }, extraProps);
+	    if (props.mode === 'inline') {
+	      newChildProps.triggerSubMenuAction = 'click';
+	    }
+	    return _react2["default"].cloneElement(child, newChildProps);
+	  };
+	
+	  this.renderMenuItem = function (c, i, subMenuKey) {
+	    /* istanbul ignore if */
+	
+	    if (!c) {
+	      return null;
+	    }
+	    var state = _this3.props.store.getState();
+	    var extraProps = {
+	      openKeys: state.openKeys,
+	      selectedKeys: state.selectedKeys,
+	      triggerSubMenuAction: _this3.props.triggerSubMenuAction,
+	      subMenuKey: subMenuKey
+	    };
+	    return _this3.renderCommonMenuItem(c, i, extraProps);
+	  };
+	};
+	
+	var connected = (0, _miniStore.connect)()(SubPopupMenu);
+	
+	exports["default"] = connected;
+
+/***/ }),
+/* 725 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.setStyle = exports.getWidth = exports.menuAllProps = undefined;
+	
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; /**
+	                                                                                                                                                                                                                                                                              * This source code is quoted from rc-menu.
+	                                                                                                                                                                                                                                                                              * homepage: https://github.com/react-component/menu
+	                                                                                                                                                                                                                                                                              */
+	
+	
+	exports.noop = noop;
+	exports.getKeyFromChildrenIndex = getKeyFromChildrenIndex;
+	exports.getMenuIdFromSubMenuEventKey = getMenuIdFromSubMenuEventKey;
+	exports.loopMenuItem = loopMenuItem;
+	exports.loopMenuItemRecursively = loopMenuItemRecursively;
+	exports.fireKeyEvent = fireKeyEvent;
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+	
+	function noop() {}
+	
+	function getKeyFromChildrenIndex(child, menuEventKey, index) {
+	  var prefix = menuEventKey || '';
+	  return child.key || prefix + 'item_' + index;
+	}
+	
+	function getMenuIdFromSubMenuEventKey(eventKey) {
+	  return eventKey + '-menu-';
+	}
+	
+	function loopMenuItem(children, cb) {
+	  var index = -1;
+	  _react2["default"].Children.forEach(children, function (c) {
+	    index++;
+	    if (c && c.type && c.type.isMenuItemGroup) {
+	      _react2["default"].Children.forEach(c.props.children, function (c2) {
+	        index++;
+	        cb(c2, index);
+	      });
+	    } else {
+	      cb(c, index);
+	    }
+	  });
+	}
+	
+	function loopMenuItemRecursively(children, keys, ret) {
+	  /* istanbul ignore if */
+	  if (!children || ret.find) {
+	    return;
+	  }
+	  _react2["default"].Children.forEach(children, function (c) {
+	    if (c) {
+	      var construct = c.type;
+	      if (!construct || !(construct.isSubMenu || construct.isMenuItem || construct.isMenuItemGroup)) {
+	        return;
+	      }
+	      if (keys.indexOf(c.key) !== -1) {
+	        ret.find = true;
+	      } else if (c.props.children) {
+	        loopMenuItemRecursively(c.props.children, keys, ret);
+	      }
+	    }
+	  });
+	}
+	
+	var menuAllProps = exports.menuAllProps = ['defaultSelectedKeys', 'selectedKeys', 'defaultOpenKeys', 'openKeys', 'mode', 'getPopupContainer', 'onSelect', 'onDeselect', 'onDestroy', 'openTransitionName', 'openAnimation', 'subMenuOpenDelay', 'subMenuCloseDelay', 'forceSubMenuRender', 'triggerSubMenuAction', 'level', 'selectable', 'multiple', 'onOpenChange', 'visible', 'focusable', 'defaultActiveFirst', 'prefixCls', 'inlineIndent', 'parentMenu', 'title', 'rootPrefixCls', 'eventKey', 'active', 'onItemHover', 'onTitleMouseEnter', 'onTitleMouseLeave', 'onTitleClick', 'popupAlign', 'popupOffset', 'isOpen', 'renderMenuItem', 'manualRef', 'subMenuKey', 'disabled', 'index', 'isSelected', 'store', 'activeKey', 'builtinPlacements', 'overflowedIndicator',
+	
+	// the following keys found need to be removed from test regression
+	'attribute', 'value', 'popupClassName', 'inlineCollapsed', 'menu', 'theme', 'itemIcon', 'expandIcon'];
+	
+	var getWidth = exports.getWidth = function getWidth(elem) {
+	  return elem && typeof elem.getBoundingClientRect === 'function' && elem.getBoundingClientRect().width || 0;
+	};
+	
+	var setStyle = exports.setStyle = function setStyle(elem, styleProperty, value) {
+	  if (elem && _typeof(elem.style) === 'object') {
+	    elem.style[styleProperty] = value;
+	  }
+	};
+	
+	function fireKeyEvent(el, evtType, keyCode) {
+	  var evtObj;
+	  if (document.createEvent) {
+	    if (window.KeyEvent) {
+	      //firefox 浏览器下模拟事件
+	      evtObj = document.createEvent('KeyEvents');
+	      evtObj.initKeyEvent(evtType, true, true, window, true, false, false, false, keyCode, 0);
+	    } else {
+	      //chrome 浏览器下模拟事件
+	      evtObj = document.createEvent('UIEvents');
+	      evtObj.initUIEvent(evtType, true, true, window, 1);
+	
+	      delete evtObj.keyCode;
+	      if (typeof evtObj.keyCode === "undefined") {
+	        //为了模拟keycode
+	        Object.defineProperty(evtObj, "keyCode", { value: keyCode });
+	      } else {
+	        evtObj.key = String.fromCharCode(keyCode);
+	      }
+	
+	      if (typeof evtObj.ctrlKey === 'undefined') {
+	        //为了模拟ctrl键
+	        Object.defineProperty(evtObj, "ctrlKey", { value: true });
+	      } else {
+	        evtObj.ctrlKey = true;
+	      }
+	    }
+	    el.dispatchEvent(evtObj);
+	  } else if (document.createEventObject) {
+	    //IE 浏览器下模拟事件
+	    evtObj = document.createEventObject();
+	    evtObj.keyCode = keyCode;
+	    el.fireEvent('on' + evtType, evtObj);
+	  }
+	}
+
+/***/ }),
+/* 726 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactDom = __webpack_require__(2);
+	
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+	
+	var _propTypes = __webpack_require__(6);
+	
+	var _propTypes2 = _interopRequireDefault(_propTypes);
+	
+	var _resizeObserverPolyfill = __webpack_require__(363);
+	
+	var _resizeObserverPolyfill2 = _interopRequireDefault(_resizeObserverPolyfill);
+	
+	var _SubMenu = __webpack_require__(727);
+	
+	var _SubMenu2 = _interopRequireDefault(_SubMenu);
+	
+	var _util = __webpack_require__(725);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+	
+	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
+	
+	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+	
+	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); } /**
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               * This source code is quoted from rc-menu.
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               * homepage: https://github.com/react-component/menu
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               */
+	
+	
+	var canUseDOM = !!(typeof window !== 'undefined' && window.document && window.document.createElement);
+	
+	var MENUITEM_OVERFLOWED_CLASSNAME = 'menuitem-overflowed';
+	
+	// Fix ssr
+	if (canUseDOM) {
+	  __webpack_require__(389);
+	}
+	
+	var DOMWrap = function (_React$Component) {
+	  _inherits(DOMWrap, _React$Component);
+	
+	  function DOMWrap() {
+	    var _temp, _this, _ret;
+	
+	    _classCallCheck(this, DOMWrap);
+	
+	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+	      args[_key] = arguments[_key];
+	    }
+	
+	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, _React$Component.call.apply(_React$Component, [this].concat(args))), _this), _this.state = {
+	      lastVisibleIndex: undefined
+	    }, _this.getMenuItemNodes = function () {
+	      var prefixCls = _this.props.prefixCls;
+	
+	      var ul = _reactDom2["default"].findDOMNode(_this);
+	      if (!ul) {
+	        return [];
+	      }
+	
+	      // filter out all overflowed indicator placeholder
+	      return [].slice.call(ul.children).filter(function (node) {
+	        return node.className.split(' ').indexOf(prefixCls + '-overflowed-submenu') < 0;
+	      });
+	    }, _this.getOverflowedSubMenuItem = function (keyPrefix, overflowedItems, renderPlaceholder) {
+	      var _this$props = _this.props,
+	          overflowedIndicator = _this$props.overflowedIndicator,
+	          level = _this$props.level,
+	          mode = _this$props.mode,
+	          prefixCls = _this$props.prefixCls,
+	          theme = _this$props.theme,
+	          propStyle = _this$props.style;
+	
+	      if (level !== 1 || mode !== 'horizontal') {
+	        return null;
+	      }
+	      // put all the overflowed item inside a submenu
+	      // with a title of overflow indicator ('...')
+	      var copy = _this.props.children[0];
+	
+	      var _copy$props = copy.props,
+	          throwAway = _copy$props.children,
+	          title = _copy$props.title,
+	          eventKey = _copy$props.eventKey,
+	          rest = _objectWithoutProperties(_copy$props, ['children', 'title', 'eventKey']);
+	
+	      var style = _extends({}, propStyle);
+	      var key = keyPrefix + '-overflowed-indicator';
+	
+	      if (overflowedItems.length === 0 && renderPlaceholder !== true) {
+	        style = _extends({}, style, {
+	          display: 'none'
+	        });
+	      } else if (renderPlaceholder) {
+	        style = _extends({}, style, {
+	          visibility: 'hidden',
+	          // prevent from taking normal dom space
+	          position: 'absolute'
+	        });
+	        key = key + '-placeholder';
+	      }
+	
+	      var popupClassName = theme ? prefixCls + '-' + theme : '';
+	      var props = {};
+	      _util.menuAllProps.forEach(function (k) {
+	        if (rest[k] !== undefined) {
+	          props[k] = rest[k];
+	        }
+	      });
+	
+	      return _react2["default"].createElement(
+	        _SubMenu2["default"],
+	        _extends({
+	          title: overflowedIndicator,
+	          className: prefixCls + '-overflowed-submenu',
+	          popupClassName: popupClassName
+	        }, props, {
+	          key: key,
+	          eventKey: keyPrefix + '-overflowed-indicator',
+	          disabled: false,
+	          style: style
+	        }),
+	        overflowedItems
+	      );
+	    }, _this.setChildrenWidthAndResize = function () {
+	      if (_this.props.mode !== 'horizontal') {
+	        return;
+	      }
+	      var ul = _reactDom2["default"].findDOMNode(_this);
+	
+	      if (!ul) {
+	        return;
+	      }
+	
+	      var ulChildrenNodes = ul.children;
+	
+	      if (!ulChildrenNodes || ulChildrenNodes.length === 0) {
+	        return;
+	      }
+	
+	      var lastOverflowedIndicatorPlaceholder = ul.children[ulChildrenNodes.length - 1];
+	
+	      // need last overflowed indicator for calculating length;
+	      (0, _util.setStyle)(lastOverflowedIndicatorPlaceholder, 'display', 'inline-block');
+	
+	      var menuItemNodes = _this.getMenuItemNodes();
+	
+	      // reset display attribute for all hidden elements caused by overflow to calculate updated width
+	      // and then reset to original state after width calculation
+	
+	      var overflowedItems = menuItemNodes.filter(function (c) {
+	        return c.className.split(' ').indexOf(MENUITEM_OVERFLOWED_CLASSNAME) >= 0;
+	      });
+	
+	      overflowedItems.forEach(function (c) {
+	        (0, _util.setStyle)(c, 'display', 'inline-block');
+	      });
+	
+	      _this.menuItemSizes = menuItemNodes.map(function (c) {
+	        return (0, _util.getWidth)(c);
+	      });
+	
+	      overflowedItems.forEach(function (c) {
+	        (0, _util.setStyle)(c, 'display', 'none');
+	      });
+	      _this.overflowedIndicatorWidth = (0, _util.getWidth)(ul.children[ul.children.length - 1]);
+	      _this.originalTotalWidth = _this.menuItemSizes.reduce(function (acc, cur) {
+	        return acc + cur;
+	      }, 0);
+	      _this.handleResize();
+	      // prevent the overflowed indicator from taking space;
+	      (0, _util.setStyle)(lastOverflowedIndicatorPlaceholder, 'display', 'none');
+	    }, _this.resizeObserver = null, _this.mutationObserver = null, _this.originalTotalWidth = 0, _this.overflowedItems = [], _this.menuItemSizes = [], _this.handleResize = function () {
+	      if (_this.props.mode !== 'horizontal') {
+	        return;
+	      }
+	
+	      var ul = _reactDom2["default"].findDOMNode(_this);
+	      if (!ul) {
+	        return;
+	      }
+	      var width = (0, _util.getWidth)(ul);
+	
+	      _this.overflowedItems = [];
+	      var currentSumWidth = 0;
+	
+	      // index for last visible child in horizontal mode
+	      var lastVisibleIndex = undefined;
+	
+	      if (_this.originalTotalWidth > width) {
+	        lastVisibleIndex = -1;
+	
+	        _this.menuItemSizes.forEach(function (liWidth) {
+	          currentSumWidth += liWidth;
+	          if (currentSumWidth + _this.overflowedIndicatorWidth <= width) {
+	            lastVisibleIndex++;
+	          }
+	        });
+	      }
+	
+	      _this.setState({ lastVisibleIndex: lastVisibleIndex });
+	    }, _temp), _possibleConstructorReturn(_this, _ret);
+	  }
+	
+	  DOMWrap.prototype.componentDidMount = function componentDidMount() {
+	    var _this2 = this;
+	
+	    this.setChildrenWidthAndResize();
+	    if (this.props.level === 1 && this.props.mode === 'horizontal') {
+	      var menuUl = _reactDom2["default"].findDOMNode(this);
+	      if (!menuUl) {
+	        return;
+	      }
+	      this.resizeObserver = new _resizeObserverPolyfill2["default"](function (entries) {
+	        entries.forEach(_this2.setChildrenWidthAndResize);
+	      });
+	
+	      [].slice.call(menuUl.children).concat(menuUl).forEach(function (el) {
+	        _this2.resizeObserver.observe(el);
+	      });
+	
+	      if (typeof MutationObserver !== 'undefined') {
+	        this.mutationObserver = new MutationObserver(function () {
+	          _this2.resizeObserver.disconnect();
+	          [].slice.call(menuUl.children).concat(menuUl).forEach(function (el) {
+	            _this2.resizeObserver.observe(el);
+	          });
+	          _this2.setChildrenWidthAndResize();
+	        });
+	        this.mutationObserver.observe(menuUl, { attributes: false, childList: true, subTree: false });
+	      }
+	    }
+	  };
+	
+	  DOMWrap.prototype.componentWillUnmount = function componentWillUnmount() {
+	    if (this.resizeObserver) {
+	      this.resizeObserver.disconnect();
+	    }
+	    if (this.mutationObserver) {
+	      this.resizeObserver.disconnect();
+	    }
+	  };
+	
+	  // get all valid menuItem nodes
+	
+	
+	  // memorize rendered menuSize
+	
+	
+	  // original scroll size of the list
+	
+	
+	  // copy of overflowed items
+	
+	
+	  // cache item of the original items (so we can track the size and order)
+	
+	
+	  DOMWrap.prototype.renderChildren = function renderChildren(children) {
+	    var _this3 = this;
+	
+	    // need to take care of overflowed items in horizontal mode
+	    var lastVisibleIndex = this.state.lastVisibleIndex;
+	
+	    return (children || []).reduce(function (acc, childNode, index) {
+	      var item = childNode;
+	      if (_this3.props.mode === 'horizontal') {
+	        var overflowed = _this3.getOverflowedSubMenuItem(childNode.props.eventKey, []);
+	        if (lastVisibleIndex !== undefined && _this3.props.className.indexOf(_this3.props.prefixCls + '-root') !== -1) {
+	          if (index > lastVisibleIndex) {
+	            item = _react2["default"].cloneElement(childNode,
+	            // 这里修改 eventKey 是为了防止隐藏状态下还会触发 openkeys 事件
+	            {
+	              style: { display: 'none' },
+	              eventKey: childNode.props.eventKey + '-hidden',
+	              className: childNode.className + ' ' + MENUITEM_OVERFLOWED_CLASSNAME
+	            });
+	          }
+	          if (index === lastVisibleIndex + 1) {
+	            _this3.overflowedItems = children.slice(lastVisibleIndex + 1).map(function (c) {
+	              return _react2["default"].cloneElement(c,
+	              // children[index].key will become '.$key' in clone by default,
+	              // we have to overwrite with the correct key explicitly
+	              { key: c.props.eventKey, mode: 'vertical-left' });
+	            });
+	
+	            overflowed = _this3.getOverflowedSubMenuItem(childNode.props.eventKey, _this3.overflowedItems);
+	          }
+	        }
+	
+	        // const ret = [...acc, overflowed, item];//更改
+	        var ret = [].concat(_toConsumableArray(acc), [item]);
+	
+	        if (index === children.length - 1) {
+	          // need a placeholder for calculating overflowed indicator width
+	          ret.push(_this3.getOverflowedSubMenuItem(childNode.props.eventKey, [], true));
+	        }
+	        return ret;
+	      }
+	      return [].concat(_toConsumableArray(acc), [item]);
+	    }, []);
+	  };
+	
+	  DOMWrap.prototype.render = function render() {
+	    var _props = this.props,
+	        hiddenClassName = _props.hiddenClassName,
+	        visible = _props.visible,
+	        prefixCls = _props.prefixCls,
+	        overflowedIndicator = _props.overflowedIndicator,
+	        mode = _props.mode,
+	        level = _props.level,
+	        Tag = _props.tag,
+	        children = _props.children,
+	        theme = _props.theme,
+	        rest = _objectWithoutProperties(_props, ['hiddenClassName', 'visible', 'prefixCls', 'overflowedIndicator', 'mode', 'level', 'tag', 'children', 'theme']);
+	
+	    if (!visible) {
+	      rest.className += ' ' + hiddenClassName;
+	    }
+	
+	    return _react2["default"].createElement(
+	      Tag,
+	      rest,
+	      this.renderChildren(this.props.children)
+	    );
+	  };
+	
+	  return DOMWrap;
+	}(_react2["default"].Component);
+	
+	DOMWrap.propTypes = {
+	  className: _propTypes2["default"].string,
+	  children: _propTypes2["default"].node,
+	  mode: _propTypes2["default"].oneOf(['horizontal', 'vertical', 'vertical-left', 'vertical-right', 'inline']),
+	  prefixCls: _propTypes2["default"].string,
+	  level: _propTypes2["default"].number,
+	  theme: _propTypes2["default"].string,
+	  overflowedIndicator: _propTypes2["default"].node,
+	  visible: _propTypes2["default"].bool,
+	  hiddenClassName: _propTypes2["default"].string,
+	  tag: _propTypes2["default"].string,
+	  style: _propTypes2["default"].object
+	};
+	
+	DOMWrap.defaultProps = {
+	  tag: 'div',
+	  className: ''
+	};
+	
+	exports["default"] = DOMWrap;
+	module.exports = exports['default'];
+
+/***/ }),
+/* 727 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.SubMenu = undefined;
+	
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; /**
+	                                                                                                                                                                                                                                                                  * This source code is quoted from rc-menu.
+	                                                                                                                                                                                                                                                                  * homepage: https://github.com/react-component/menu
+	                                                                                                                                                                                                                                                                  */
+	
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactDom = __webpack_require__(2);
+	
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+	
+	var _propTypes = __webpack_require__(6);
+	
+	var _propTypes2 = _interopRequireDefault(_propTypes);
+	
+	var _rcTrigger = __webpack_require__(365);
+	
+	var _rcTrigger2 = _interopRequireDefault(_rcTrigger);
+	
+	var _tinperBeeCore = __webpack_require__(26);
+	
+	var _classnames = __webpack_require__(5);
+	
+	var _classnames2 = _interopRequireDefault(_classnames);
+	
+	var _miniStore = __webpack_require__(347);
+	
+	var _SubPopupMenu = __webpack_require__(724);
+	
+	var _SubPopupMenu2 = _interopRequireDefault(_SubPopupMenu);
+	
+	var _placements = __webpack_require__(728);
+	
+	var _placements2 = _interopRequireDefault(_placements);
+	
+	var _rcAnimate = __webpack_require__(379);
+	
+	var _rcAnimate2 = _interopRequireDefault(_rcAnimate);
+	
+	var _util = __webpack_require__(725);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+	
+	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
+	
+	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+	
+	var guid = 0;
+	
+	var popupPlacementMap = {
+	  horizontal: 'bottomLeft',
+	  vertical: 'rightTop',
+	  'vertical-left': 'rightTop',
+	  'vertical-right': 'leftTop'
+	};
+	
+	var updateDefaultActiveFirst = function updateDefaultActiveFirst(store, eventKey, defaultActiveFirst) {
+	  var menuId = (0, _util.getMenuIdFromSubMenuEventKey)(eventKey);
+	  var state = store.getState();
+	  store.setState({
+	    defaultActiveFirst: _extends({}, state.defaultActiveFirst, _defineProperty({}, menuId, defaultActiveFirst))
+	  });
+	};
+	
+	var SubMenu = exports.SubMenu = function (_React$Component) {
+	  _inherits(SubMenu, _React$Component);
+	
+	  function SubMenu(props) {
+	    _classCallCheck(this, SubMenu);
+	
+	    var _this = _possibleConstructorReturn(this, _React$Component.call(this, props));
+	
+	    _initialiseProps.call(_this);
+	
+	    var store = props.store;
+	    var eventKey = props.eventKey;
+	    var defaultActiveFirst = store.getState().defaultActiveFirst;
+	
+	    _this.isRootMenu = false;
+	
+	    var value = false;
+	
+	    if (defaultActiveFirst) {
+	      value = defaultActiveFirst[eventKey];
+	    }
+	
+	    updateDefaultActiveFirst(store, eventKey, value);
+	    return _this;
+	  }
+	
+	  SubMenu.prototype.componentDidMount = function componentDidMount() {
+	    this.componentDidUpdate();
+	  };
+	
+	  SubMenu.prototype.componentDidUpdate = function componentDidUpdate() {
+	    var _this2 = this;
+	
+	    var _props = this.props,
+	        mode = _props.mode,
+	        parentMenu = _props.parentMenu,
+	        manualRef = _props.manualRef;
+	
+	    // invoke customized ref to expose component to mixin
+	
+	    if (manualRef) {
+	      manualRef(this);
+	    }
+	
+	    if (mode !== 'horizontal' || !parentMenu.isRootMenu || !this.props.isOpen) {
+	      return;
+	    }
+	
+	    this.minWidthTimeout = setTimeout(function () {
+	      return _this2.adjustWidth();
+	    }, 0);
+	  };
+	
+	  SubMenu.prototype.componentWillUnmount = function componentWillUnmount() {
+	    var _props2 = this.props,
+	        onDestroy = _props2.onDestroy,
+	        eventKey = _props2.eventKey;
+	
+	    if (onDestroy) {
+	      onDestroy(eventKey);
+	    }
+	
+	    /* istanbul ignore if */
+	    if (this.minWidthTimeout) {
+	      clearTimeout(this.minWidthTimeout);
+	    }
+	
+	    /* istanbul ignore if */
+	    if (this.mouseenterTimeout) {
+	      clearTimeout(this.mouseenterTimeout);
+	    }
+	  };
+	
+	  SubMenu.prototype.renderChildren = function renderChildren(children) {
+	    var props = this.props;
+	    var baseProps = {
+	      mode: props.mode === 'horizontal' ? 'vertical' : props.mode,
+	      visible: this.props.isOpen,
+	      level: props.level + 1,
+	      inlineIndent: props.inlineIndent,
+	      focusable: false,
+	      onClick: this.onSubMenuClick,
+	      onSelect: this.onSelect,
+	      onDeselect: this.onDeselect,
+	      onDestroy: this.onDestroy,
+	      selectedKeys: props.selectedKeys,
+	      eventKey: props.eventKey + '-menu-',
+	      openKeys: props.openKeys,
+	      openTransitionName: props.openTransitionName,
+	      openAnimation: props.openAnimation,
+	      onOpenChange: this.onOpenChange,
+	      subMenuOpenDelay: props.subMenuOpenDelay,
+	      parentMenu: this,
+	      subMenuCloseDelay: props.subMenuCloseDelay,
+	      forceSubMenuRender: props.forceSubMenuRender,
+	      triggerSubMenuAction: props.triggerSubMenuAction,
+	      builtinPlacements: props.builtinPlacements,
+	      defaultActiveFirst: props.store.getState().defaultActiveFirst[(0, _util.getMenuIdFromSubMenuEventKey)(props.eventKey)],
+	      multiple: props.multiple,
+	      prefixCls: props.rootPrefixCls,
+	      id: this._menuId,
+	      manualRef: this.saveMenuInstance,
+	      itemIcon: props.itemIcon,
+	      expandIcon: props.expandIcon
+	    };
+	
+	    var haveRendered = this.haveRendered;
+	    this.haveRendered = true;
+	
+	    this.haveOpened = this.haveOpened || baseProps.visible || baseProps.forceSubMenuRender;
+	    // never rendered not planning to, don't render
+	    if (!this.haveOpened) {
+	      return _react2["default"].createElement('div', null);
+	    }
+	
+	    // don't show transition on first rendering (no animation for opened menu)
+	    // show appear transition if it's not visible (not sure why)
+	    // show appear transition if it's not inline mode
+	    var transitionAppear = haveRendered || !baseProps.visible || !baseProps.mode === 'inline';
+	
+	    baseProps.className = ' ' + baseProps.prefixCls + '-sub';
+	    var animProps = {};
+	
+	    if (baseProps.openTransitionName) {
+	      animProps.transitionName = baseProps.openTransitionName;
+	    } else if (_typeof(baseProps.openAnimation) === 'object') {
+	      animProps.animation = _extends({}, baseProps.openAnimation);
+	      if (!transitionAppear) {
+	        delete animProps.animation.appear;
+	      }
+	    }
+	
+	    return _react2["default"].createElement(
+	      _rcAnimate2["default"],
+	      _extends({}, animProps, {
+	        showProp: 'visible',
+	        component: '',
+	        transitionAppear: transitionAppear
+	      }),
+	      _react2["default"].createElement(
+	        _SubPopupMenu2["default"],
+	        _extends({}, baseProps, { id: this._menuId }),
+	        children
+	      )
+	    );
+	  };
+	
+	  SubMenu.prototype.render = function render() {
+	    var _classNames;
+	
+	    var props = _extends({}, this.props);
+	    var isOpen = props.isOpen;
+	    var prefixCls = this.getPrefixCls();
+	    var isInlineMode = props.mode === 'inline';
+	    var className = (0, _classnames2["default"])(prefixCls, prefixCls + '-' + props.mode, (_classNames = {}, _defineProperty(_classNames, props.className, !!props.className), _defineProperty(_classNames, this.getOpenClassName(), isOpen), _defineProperty(_classNames, this.getActiveClassName(), props.active || isOpen && !isInlineMode), _defineProperty(_classNames, this.getDisabledClassName(), props.disabled), _defineProperty(_classNames, this.getSelectedClassName(), this.isChildrenSelected()), _classNames));
+	
+	    if (!this._menuId) {
+	      if (props.eventKey) {
+	        this._menuId = props.eventKey + '$Menu';
+	      } else {
+	        this._menuId = '$__$' + ++guid + '$Menu';
+	      }
+	    }
+	
+	    var mouseEvents = {};
+	    var titleClickEvents = {};
+	    var titleMouseEvents = {};
+	    if (!props.disabled) {
+	      mouseEvents = {
+	        onMouseLeave: this.onMouseLeave,
+	        onMouseEnter: this.onMouseEnter
+	      };
+	
+	      // only works in title, not outer li
+	      titleClickEvents = {
+	        onClick: this.onTitleClick
+	      };
+	      titleMouseEvents = {
+	        onMouseEnter: this.onTitleMouseEnter,
+	        onMouseLeave: this.onTitleMouseLeave
+	      };
+	    }
+	
+	    var style = {};
+	    if (isInlineMode) {
+	      style.paddingLeft = props.inlineIndent * props.level;
+	    }
+	
+	    var ariaOwns = {};
+	    // only set aria-owns when menu is open
+	    // otherwise it would be an invalid aria-owns value
+	    // since corresponding node cannot be found
+	    if (this.props.isOpen) {
+	      ariaOwns = {
+	        'aria-owns': this._menuId
+	      };
+	    }
+	
+	    // expand custom icon should NOT be displayed in menu with horizontal mode.
+	    var icon = null;
+	    if (props.mode !== 'horizontal') {
+	      icon = this.props.expandIcon; // ReactNode
+	      if (typeof this.props.expandIcon === 'function') {
+	        icon = _react2["default"].createElement(this.props.expandIcon, _extends({}, this.props));
+	      }
+	    }
+	
+	    var title = _react2["default"].createElement(
+	      'div',
+	      _extends({
+	        ref: this.saveSubMenuTitle,
+	        style: style,
+	        className: prefixCls + '-title'
+	      }, titleMouseEvents, titleClickEvents, {
+	        'aria-expanded': isOpen
+	      }, ariaOwns, {
+	        'aria-haspopup': 'true',
+	        title: typeof props.title === 'string' ? props.title : undefined
+	      }),
+	      props.title,
+	      icon || _react2["default"].createElement('i', { className: prefixCls + '-arrow' })
+	    );
+	    var children = this.renderChildren(props.children);
+	
+	    var getPopupContainer = function getPopupContainer(triggerNode) {
+	      return triggerNode.parentNode;
+	    };
+	    var popupPlacement = popupPlacementMap[props.mode];
+	    var popupAlign = props.popupOffset ? { offset: props.popupOffset } : {};
+	    var popupClassName = props.mode === 'inline' ? '' : props.popupClassName;
+	    var disabled = props.disabled,
+	        triggerSubMenuAction = props.triggerSubMenuAction,
+	        subMenuOpenDelay = props.subMenuOpenDelay,
+	        forceSubMenuRender = props.forceSubMenuRender,
+	        subMenuCloseDelay = props.subMenuCloseDelay,
+	        builtinPlacements = props.builtinPlacements;
+	
+	    _util.menuAllProps.forEach(function (key) {
+	      return delete props[key];
+	    });
+	    // Set onClick to null, to ignore propagated onClick event
+	    delete props.onClick;
+	    return _react2["default"].createElement(
+	      'li',
+	      _extends({}, props, mouseEvents, {
+	        className: className,
+	        role: 'menuitem'
+	      }),
+	      isInlineMode && title,
+	      isInlineMode && children,
+	      !isInlineMode && _react2["default"].createElement(
+	        _rcTrigger2["default"],
+	        {
+	          prefixCls: prefixCls,
+	          popupClassName: prefixCls + '-popup ' + popupClassName,
+	          getPopupContainer: getPopupContainer,
+	          builtinPlacements: _extends({}, _placements2["default"], builtinPlacements),
+	          popupPlacement: popupPlacement,
+	          popupVisible: isOpen,
+	          popupAlign: popupAlign,
+	          popup: children,
+	          action: disabled ? [] : [triggerSubMenuAction],
+	          mouseEnterDelay: subMenuOpenDelay,
+	          mouseLeaveDelay: subMenuCloseDelay,
+	          onPopupVisibleChange: this.onPopupVisibleChange,
+	          forceRender: forceSubMenuRender
+	        },
+	        title
+	      )
+	    );
+	  };
+	
+	  return SubMenu;
+	}(_react2["default"].Component);
+	
+	SubMenu.propTypes = {
+	  parentMenu: _propTypes2["default"].object,
+	  title: _propTypes2["default"].node,
+	  children: _propTypes2["default"].any,
+	  selectedKeys: _propTypes2["default"].array,
+	  openKeys: _propTypes2["default"].array,
+	  onClick: _propTypes2["default"].func,
+	  onOpenChange: _propTypes2["default"].func,
+	  rootPrefixCls: _propTypes2["default"].string,
+	  eventKey: _propTypes2["default"].string,
+	  multiple: _propTypes2["default"].bool,
+	  active: _propTypes2["default"].bool, // TODO: remove
+	  onItemHover: _propTypes2["default"].func,
+	  onSelect: _propTypes2["default"].func,
+	  triggerSubMenuAction: _propTypes2["default"].string,
+	  onDeselect: _propTypes2["default"].func,
+	  onDestroy: _propTypes2["default"].func,
+	  onMouseEnter: _propTypes2["default"].func,
+	  onMouseLeave: _propTypes2["default"].func,
+	  onTitleMouseEnter: _propTypes2["default"].func,
+	  onTitleMouseLeave: _propTypes2["default"].func,
+	  onTitleClick: _propTypes2["default"].func,
+	  popupOffset: _propTypes2["default"].array,
+	  isOpen: _propTypes2["default"].bool,
+	  store: _propTypes2["default"].object,
+	  mode: _propTypes2["default"].oneOf(['horizontal', 'vertical', 'vertical-left', 'vertical-right', 'inline']),
+	  manualRef: _propTypes2["default"].func,
+	  itemIcon: _propTypes2["default"].oneOfType([_propTypes2["default"].func, _propTypes2["default"].node]),
+	  expandIcon: _propTypes2["default"].oneOfType([_propTypes2["default"].func, _propTypes2["default"].node])
+	};
+	SubMenu.defaultProps = {
+	  onMouseEnter: _util.noop,
+	  onMouseLeave: _util.noop,
+	  onTitleMouseEnter: _util.noop,
+	  onTitleMouseLeave: _util.noop,
+	  onTitleClick: _util.noop,
+	  manualRef: _util.noop,
+	  mode: 'vertical',
+	  title: ''
+	};
+	
+	var _initialiseProps = function _initialiseProps() {
+	  var _this3 = this;
+	
+	  this.onDestroy = function (key) {
+	    _this3.props.onDestroy(key);
+	  };
+	
+	  this.onKeyDown = function (e) {
+	    var keyCode = e.keyCode;
+	    var menu = _this3.menuInstance;
+	    var _props3 = _this3.props,
+	        isOpen = _props3.isOpen,
+	        store = _props3.store;
+	
+	    if (_this3.props.store.getState().keyboard) {
+	      //是否启用键盘操作
+	      if (keyCode === _tinperBeeCore.KeyCode.ENTER) {
+	        // this.onTitleClick(e);
+	        menu && menu.onKeyDown && menu.onKeyDown(e);
+	        updateDefaultActiveFirst(store, _this3.props.eventKey, true);
+	        return true;
+	      }
+	
+	      if (keyCode === _tinperBeeCore.KeyCode.RIGHT) {
+	        if (isOpen) {
+	          menu.onKeyDown(e);
+	        } else {
+	          _this3.triggerOpenChange(true);
+	          // need to update current menu's defaultActiveFirst value
+	          updateDefaultActiveFirst(store, _this3.props.eventKey, true);
+	        }
+	        return true;
+	      }
+	      if (keyCode === _tinperBeeCore.KeyCode.LEFT) {
+	        var handled = void 0;
+	        if (isOpen) {
+	          handled = menu.onKeyDown(e);
+	        } else {
+	          return undefined;
+	        }
+	        if (!handled) {
+	          _this3.triggerOpenChange(false);
+	          handled = true;
+	        }
+	        return handled;
+	      }
+	      if (isOpen && (keyCode === _tinperBeeCore.KeyCode.UP || keyCode === _tinperBeeCore.KeyCode.DOWN)) {
+	        return menu.onKeyDown(e);
+	      }
+	    }
+	  };
+	
+	  this.onOpenChange = function (e) {
+	    _this3.props.onOpenChange(e);
+	  };
+	
+	  this.onPopupVisibleChange = function (visible) {
+	    _this3.triggerOpenChange(visible, visible ? 'mouseenter' : 'mouseleave');
+	  };
+	
+	  this.onMouseEnter = function (e) {
+	    var _props4 = _this3.props,
+	        key = _props4.eventKey,
+	        onMouseEnter = _props4.onMouseEnter,
+	        store = _props4.store;
+	
+	    updateDefaultActiveFirst(store, _this3.props.eventKey, false);
+	    onMouseEnter({
+	      key: key,
+	      domEvent: e
+	    });
+	  };
+	
+	  this.onMouseLeave = function (e) {
+	    var _props5 = _this3.props,
+	        parentMenu = _props5.parentMenu,
+	        eventKey = _props5.eventKey,
+	        onMouseLeave = _props5.onMouseLeave;
+	
+	    parentMenu.subMenuInstance = _this3;
+	    onMouseLeave({
+	      key: eventKey,
+	      domEvent: e
+	    });
+	  };
+	
+	  this.onTitleMouseEnter = function (domEvent) {
+	    var _props6 = _this3.props,
+	        key = _props6.eventKey,
+	        onItemHover = _props6.onItemHover,
+	        onTitleMouseEnter = _props6.onTitleMouseEnter;
+	
+	    onItemHover({
+	      key: key,
+	      hover: true
+	    });
+	    onTitleMouseEnter({
+	      key: key,
+	      domEvent: domEvent
+	    });
+	  };
+	
+	  this.onTitleMouseLeave = function (e) {
+	    var _props7 = _this3.props,
+	        parentMenu = _props7.parentMenu,
+	        eventKey = _props7.eventKey,
+	        onItemHover = _props7.onItemHover,
+	        onTitleMouseLeave = _props7.onTitleMouseLeave;
+	
+	    parentMenu.subMenuInstance = _this3;
+	    onItemHover({
+	      key: eventKey,
+	      hover: false
+	    });
+	    onTitleMouseLeave({
+	      key: eventKey,
+	      domEvent: e
+	    });
+	  };
+	
+	  this.onTitleClick = function (e) {
+	    var props = _this3.props;
+	
+	    props.onTitleClick({
+	      key: props.eventKey,
+	      domEvent: e
+	    });
+	    if (props.triggerSubMenuAction === 'hover') {
+	      return;
+	    }
+	    _this3.triggerOpenChange(!props.isOpen, 'click');
+	    updateDefaultActiveFirst(props.store, _this3.props.eventKey, false);
+	  };
+	
+	  this.onSubMenuClick = function (info) {
+	    // in the case of overflowed submenu
+	    // onClick is not copied over
+	    if (typeof _this3.props.onClick === 'function') {
+	      _this3.props.onClick(_this3.addKeyPath(info));
+	    }
+	  };
+	
+	  this.onSelect = function (info) {
+	    _this3.props.onSelect(info);
+	  };
+	
+	  this.onDeselect = function (info) {
+	    _this3.props.onDeselect(info);
+	  };
+	
+	  this.getPrefixCls = function () {
+	    return _this3.props.rootPrefixCls + '-submenu';
+	  };
+	
+	  this.getActiveClassName = function () {
+	    return _this3.getPrefixCls() + '-active';
+	  };
+	
+	  this.getDisabledClassName = function () {
+	    return _this3.getPrefixCls() + '-disabled';
+	  };
+	
+	  this.getSelectedClassName = function () {
+	    return _this3.getPrefixCls() + '-selected';
+	  };
+	
+	  this.getOpenClassName = function () {
+	    return _this3.props.rootPrefixCls + '-submenu-open';
+	  };
+	
+	  this.saveMenuInstance = function (c) {
+	    // children menu instance
+	    _this3.menuInstance = c;
+	  };
+	
+	  this.addKeyPath = function (info) {
+	    return _extends({}, info, {
+	      keyPath: (info.keyPath || []).concat(_this3.props.eventKey)
+	    });
+	  };
+	
+	  this.triggerOpenChange = function (open, type) {
+	    var key = _this3.props.eventKey;
+	    var openChange = function openChange() {
+	      _this3.onOpenChange({
+	        key: key,
+	        item: _this3,
+	        trigger: type,
+	        open: open
+	      });
+	    };
+	    if (type === 'mouseenter') {
+	      // make sure mouseenter happen after other menu item's mouseleave
+	      _this3.mouseenterTimeout = setTimeout(function () {
+	        openChange();
+	      }, 0);
+	    } else {
+	      openChange();
+	    }
+	  };
+	
+	  this.isChildrenSelected = function () {
+	    var ret = { find: false };
+	    (0, _util.loopMenuItemRecursively)(_this3.props.children, _this3.props.selectedKeys, ret);
+	    return ret.find;
+	  };
+	
+	  this.isOpen = function () {
+	    return _this3.props.openKeys.indexOf(_this3.props.eventKey) !== -1;
+	  };
+	
+	  this.adjustWidth = function () {
+	    /* istanbul ignore if */
+	    if (!_this3.subMenuTitle || !_this3.menuInstance) {
+	      return;
+	    }
+	    var popupMenu = _reactDom2["default"].findDOMNode(_this3.menuInstance);
+	    if (popupMenu.offsetWidth >= _this3.subMenuTitle.offsetWidth) {
+	      return;
+	    }
+	
+	    /* istanbul ignore next */
+	    popupMenu.style.minWidth = _this3.subMenuTitle.offsetWidth + 'px';
+	  };
+	
+	  this.saveSubMenuTitle = function (subMenuTitle) {
+	    _this3.subMenuTitle = subMenuTitle;
+	  };
+	};
+	
+	var connected = (0, _miniStore.connect)(function (_ref, _ref2) {
+	  var openKeys = _ref.openKeys,
+	      activeKey = _ref.activeKey,
+	      selectedKeys = _ref.selectedKeys;
+	  var eventKey = _ref2.eventKey,
+	      subMenuKey = _ref2.subMenuKey;
+	  return {
+	    isOpen: openKeys.indexOf(eventKey) > -1,
+	    active: activeKey[subMenuKey] === eventKey,
+	    selectedKeys: selectedKeys
+	  };
+	})(SubMenu);
+	
+	connected.isSubMenu = true;
+	
+	exports["default"] = connected;
+
+/***/ }),
+/* 728 */
+/***/ (function(module, exports) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	/**
+	* This source code is quoted from rc-menu.
+	* homepage: https://github.com/react-component/menu
+	*/
+	var autoAdjustOverflow = {
+	  adjustX: 1,
+	  adjustY: 1
+	};
+	
+	var placements = exports.placements = {
+	  topLeft: {
+	    points: ['bl', 'tl'],
+	    overflow: autoAdjustOverflow,
+	    offset: [0, -7]
+	  },
+	  bottomLeft: {
+	    points: ['tl', 'bl'],
+	    overflow: autoAdjustOverflow,
+	    offset: [0, 7]
+	  },
+	  leftTop: {
+	    points: ['tr', 'tl'],
+	    overflow: autoAdjustOverflow,
+	    offset: [-4, 0]
+	  },
+	  rightTop: {
+	    points: ['tl', 'tr'],
+	    overflow: autoAdjustOverflow,
+	    offset: [4, 0]
+	  }
+	};
+	
+	exports["default"] = placements;
+
+/***/ }),
+/* 729 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.MenuItem = undefined;
+	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactDom = __webpack_require__(2);
+	
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+	
+	var _propTypes = __webpack_require__(6);
+	
+	var _propTypes2 = _interopRequireDefault(_propTypes);
+	
+	var _tinperBeeCore = __webpack_require__(26);
+	
+	var _classnames = __webpack_require__(5);
+	
+	var _classnames2 = _interopRequireDefault(_classnames);
+	
+	var _domScrollIntoView = __webpack_require__(391);
+	
+	var _domScrollIntoView2 = _interopRequireDefault(_domScrollIntoView);
+	
+	var _miniStore = __webpack_require__(347);
+	
+	var _util = __webpack_require__(725);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+	
+	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
+	
+	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); } /**
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               * This source code is quoted from rc-menu.
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               * homepage: https://github.com/react-component/menu
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               */
+	
+	
+	/* eslint react/no-is-mounted:0 */
+	
+	var MenuItem = exports.MenuItem = function (_React$Component) {
+	  _inherits(MenuItem, _React$Component);
+	
+	  function MenuItem(props) {
+	    _classCallCheck(this, MenuItem);
+	
+	    var _this = _possibleConstructorReturn(this, _React$Component.call(this, props));
+	
+	    _this.onKeyDown = function (e) {
+	      var keyCode = e.keyCode;
+	      if (keyCode === _tinperBeeCore.KeyCode.ENTER) {
+	        _this.onClick(e);
+	        return true;
+	      }
+	    };
+	
+	    _this.onMouseLeave = function (e) {
+	      var _this$props = _this.props,
+	          eventKey = _this$props.eventKey,
+	          onItemHover = _this$props.onItemHover,
+	          onMouseLeave = _this$props.onMouseLeave;
+	
+	      onItemHover({
+	        key: eventKey,
+	        hover: false
+	      });
+	      onMouseLeave({
+	        key: eventKey,
+	        domEvent: e
+	      });
+	    };
+	
+	    _this.onMouseEnter = function (e) {
+	      var _this$props2 = _this.props,
+	          eventKey = _this$props2.eventKey,
+	          onItemHover = _this$props2.onItemHover,
+	          onMouseEnter = _this$props2.onMouseEnter;
+	
+	      onItemHover({
+	        key: eventKey,
+	        hover: true
+	      });
+	      onMouseEnter({
+	        key: eventKey,
+	        domEvent: e
+	      });
+	    };
+	
+	    _this.onClick = function (e) {
+	      var _this$props3 = _this.props,
+	          eventKey = _this$props3.eventKey,
+	          multiple = _this$props3.multiple,
+	          onClick = _this$props3.onClick,
+	          onSelect = _this$props3.onSelect,
+	          onDeselect = _this$props3.onDeselect,
+	          isSelected = _this$props3.isSelected;
+	
+	      var info = {
+	        key: eventKey,
+	        keyPath: [eventKey],
+	        item: _this,
+	        domEvent: e
+	      };
+	      onClick(info);
+	      if (multiple) {
+	        if (isSelected) {
+	          onDeselect(info);
+	        } else {
+	          onSelect(info);
+	        }
+	      } else if (!isSelected) {
+	        onSelect(info);
+	      }
+	    };
+	
+	    return _this;
+	  }
+	
+	  MenuItem.prototype.componentDidMount = function componentDidMount() {
+	    // invoke customized ref to expose component to mixin
+	    this.callRef();
+	  };
+	
+	  MenuItem.prototype.componentDidUpdate = function componentDidUpdate() {
+	    if (this.props.active) {
+	      (0, _domScrollIntoView2["default"])(_reactDom2["default"].findDOMNode(this), _reactDom2["default"].findDOMNode(this.props.parentMenu), {
+	        onlyScrollIfNeeded: true
+	      });
+	    }
+	    this.callRef();
+	  };
+	
+	  MenuItem.prototype.componentWillUnmount = function componentWillUnmount() {
+	    var props = this.props;
+	    if (props.onDestroy) {
+	      props.onDestroy(props.eventKey);
+	    }
+	  };
+	
+	  MenuItem.prototype.getPrefixCls = function getPrefixCls() {
+	    return this.props.rootPrefixCls + '-item';
+	  };
+	
+	  MenuItem.prototype.getActiveClassName = function getActiveClassName() {
+	    return this.getPrefixCls() + '-active';
+	  };
+	
+	  MenuItem.prototype.getSelectedClassName = function getSelectedClassName() {
+	    return this.getPrefixCls() + '-selected';
+	  };
+	
+	  MenuItem.prototype.getDisabledClassName = function getDisabledClassName() {
+	    return this.getPrefixCls() + '-disabled';
+	  };
+	
+	  MenuItem.prototype.callRef = function callRef() {
+	    if (this.props.manualRef) {
+	      this.props.manualRef(this);
+	    }
+	  };
+	
+	  MenuItem.prototype.render = function render() {
+	    var _classNames;
+	
+	    var props = _extends({}, this.props);
+	    var className = (0, _classnames2["default"])(this.getPrefixCls(), props.className, (_classNames = {}, _defineProperty(_classNames, this.getActiveClassName(), !props.disabled && props.active), _defineProperty(_classNames, this.getSelectedClassName(), props.isSelected), _defineProperty(_classNames, this.getDisabledClassName(), props.disabled), _classNames));
+	    var attrs = _extends({}, props.attribute, {
+	      title: props.title,
+	      className: className,
+	      // set to menuitem by default
+	      role: props.role || 'menuitem',
+	      'aria-disabled': props.disabled
+	    });
+	
+	    if (props.role === 'option') {
+	      // overwrite to option
+	      attrs = _extends({}, attrs, {
+	        role: 'option',
+	        'aria-selected': props.isSelected
+	      });
+	    } else if (props.role === null || props.role === 'none') {
+	      // sometimes we want to specify role inside <li/> element
+	      // <li><a role='menuitem'>Link</a></li> would be a good example
+	      // in this case the role on <li/> should be "none" to
+	      // remove the implied listitem role.
+	      // https://www.w3.org/TR/wai-aria-practices-1.1/examples/menubar/menubar-1/menubar-1.html
+	      attrs.role = 'none';
+	    }
+	    // In case that onClick/onMouseLeave/onMouseEnter is passed down from owner
+	    var mouseEvent = {
+	      onClick: props.disabled ? null : this.onClick,
+	      onMouseLeave: props.disabled ? null : this.onMouseLeave,
+	      onMouseEnter: props.disabled ? null : this.onMouseEnter
+	    };
+	    var style = _extends({}, props.style);
+	    if (props.mode === 'inline') {
+	      style.paddingLeft = props.inlineIndent * props.level;
+	    }
+	    _util.menuAllProps.forEach(function (key) {
+	      return delete props[key];
+	    });
+	    var icon = this.props.itemIcon;
+	    if (typeof this.props.itemIcon === 'function') {
+	      icon = _react2["default"].createElement(this.props.itemIcon, this.props);
+	    }
+	    return _react2["default"].createElement(
+	      'li',
+	      _extends({}, props, attrs, mouseEvent, {
+	        style: style
+	      }),
+	      props.children,
+	      icon
+	    );
+	  };
+	
+	  return MenuItem;
+	}(_react2["default"].Component);
+	
+	MenuItem.propTypes = {
+	  attribute: _propTypes2["default"].object,
+	  rootPrefixCls: _propTypes2["default"].string,
+	  eventKey: _propTypes2["default"].string,
+	  active: _propTypes2["default"].bool,
+	  children: _propTypes2["default"].any,
+	  selectedKeys: _propTypes2["default"].array,
+	  disabled: _propTypes2["default"].bool,
+	  title: _propTypes2["default"].string,
+	  onItemHover: _propTypes2["default"].func,
+	  onSelect: _propTypes2["default"].func,
+	  onClick: _propTypes2["default"].func,
+	  onDeselect: _propTypes2["default"].func,
+	  parentMenu: _propTypes2["default"].object,
+	  onDestroy: _propTypes2["default"].func,
+	  onMouseEnter: _propTypes2["default"].func,
+	  onMouseLeave: _propTypes2["default"].func,
+	  multiple: _propTypes2["default"].bool,
+	  isSelected: _propTypes2["default"].bool,
+	  manualRef: _propTypes2["default"].func,
+	  itemIcon: _propTypes2["default"].oneOfType([_propTypes2["default"].func, _propTypes2["default"].node])
+	};
+	MenuItem.defaultProps = {
+	  onSelect: _util.noop,
+	  onMouseEnter: _util.noop,
+	  onMouseLeave: _util.noop,
+	  manualRef: _util.noop
+	};
+	
+	
+	MenuItem.isMenuItem = true;
+	
+	var connected = (0, _miniStore.connect)(function (_ref, _ref2) {
+	  var activeKey = _ref.activeKey,
+	      selectedKeys = _ref.selectedKeys;
+	  var eventKey = _ref2.eventKey,
+	      subMenuKey = _ref2.subMenuKey;
+	  return {
+	    active: activeKey[subMenuKey] === eventKey,
+	    isSelected: selectedKeys.indexOf(eventKey) !== -1
+	  };
+	})(MenuItem);
+	
+	exports["default"] = connected;
+
+/***/ }),
+/* 730 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _propTypes = __webpack_require__(6);
+	
+	var _propTypes2 = _interopRequireDefault(_propTypes);
+	
+	var _util = __webpack_require__(725);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+	
+	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
+	
+	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); } /**
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               * This source code is quoted from rc-menu.
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               * homepage: https://github.com/react-component/menu
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               */
+	
+	
+	var MenuItemGroup = function (_React$Component) {
+	  _inherits(MenuItemGroup, _React$Component);
+	
+	  function MenuItemGroup() {
+	    var _temp, _this, _ret;
+	
+	    _classCallCheck(this, MenuItemGroup);
+	
+	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+	      args[_key] = arguments[_key];
+	    }
+	
+	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, _React$Component.call.apply(_React$Component, [this].concat(args))), _this), _this.renderInnerMenuItem = function (item) {
+	      var _this$props = _this.props,
+	          renderMenuItem = _this$props.renderMenuItem,
+	          index = _this$props.index;
+	
+	      return renderMenuItem(item, index, _this.props.subMenuKey);
+	    }, _temp), _possibleConstructorReturn(_this, _ret);
+	  }
+	
+	  MenuItemGroup.prototype.render = function render() {
+	    var props = _objectWithoutProperties(this.props, []);
+	
+	    var _props$className = props.className,
+	        className = _props$className === undefined ? '' : _props$className,
+	        rootPrefixCls = props.rootPrefixCls;
+	
+	    var titleClassName = rootPrefixCls + '-item-group-title';
+	    var listClassName = rootPrefixCls + '-item-group-list';
+	    var title = props.title,
+	        children = props.children;
+	
+	    _util.menuAllProps.forEach(function (key) {
+	      return delete props[key];
+	    });
+	
+	    // Set onClick to null, to ignore propagated onClick event
+	    delete props.onClick;
+	
+	    return _react2["default"].createElement(
+	      'li',
+	      _extends({}, props, { className: className + ' ' + rootPrefixCls + '-item-group' }),
+	      _react2["default"].createElement(
+	        'div',
+	        {
+	          className: titleClassName,
+	          title: typeof title === 'string' ? title : undefined
+	        },
+	        title
+	      ),
+	      _react2["default"].createElement(
+	        'ul',
+	        { className: listClassName },
+	        _react2["default"].Children.map(children, this.renderInnerMenuItem)
+	      )
+	    );
+	  };
+	
+	  return MenuItemGroup;
+	}(_react2["default"].Component);
+	
+	MenuItemGroup.propTypes = {
+	  renderMenuItem: _propTypes2["default"].func,
+	  index: _propTypes2["default"].number,
+	  className: _propTypes2["default"].string,
+	  subMenuKey: _propTypes2["default"].string,
+	  rootPrefixCls: _propTypes2["default"].string
+	};
+	MenuItemGroup.defaultProps = {
+	  disabled: true
+	};
+	
+	
+	MenuItemGroup.isMenuItemGroup = true;
+	
+	exports["default"] = MenuItemGroup;
+	module.exports = exports['default'];
+
+/***/ }),
+/* 731 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _propTypes = __webpack_require__(6);
+	
+	var _propTypes2 = _interopRequireDefault(_propTypes);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+	
+	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); } /**
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               * This source code is quoted from rc-menu.
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               * homepage: https://github.com/react-component/menu
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               */
+	
+	
+	var Divider = function (_React$Component) {
+	  _inherits(Divider, _React$Component);
+	
+	  function Divider() {
+	    _classCallCheck(this, Divider);
+	
+	    return _possibleConstructorReturn(this, _React$Component.apply(this, arguments));
+	  }
+	
+	  Divider.prototype.render = function render() {
+	    var _props = this.props,
+	        className = _props.className,
+	        rootPrefixCls = _props.rootPrefixCls,
+	        style = _props.style;
+	
+	    return _react2["default"].createElement('li', {
+	      className: className + ' ' + rootPrefixCls + '-item-divider',
+	      style: style
+	    });
+	  };
+	
+	  return Divider;
+	}(_react2["default"].Component);
+	
+	Divider.propTypes = {
+	  className: _propTypes2["default"].string,
+	  rootPrefixCls: _propTypes2["default"].string,
+	  style: _propTypes2["default"].object
+	};
+	Divider.defaultProps = {
+	  // To fix keyboard UX.
+	  disabled: true,
+	  className: '',
+	  style: {}
+	};
+	exports["default"] = Divider;
+	module.exports = exports['default'];
+
+/***/ }),
+/* 732 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _classnames = __webpack_require__(5);
+	
+	var _classnames2 = _interopRequireDefault(_classnames);
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _propTypes = __webpack_require__(6);
+	
+	var _propTypes2 = _interopRequireDefault(_propTypes);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+	
+	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
+	
+	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
+	
+	var defaultProps = {
+	  clsPrefix: "u-navbar-side-container",
+	  sideActive: false
+	};
+	
+	var NavSideContainer = function (_React$Component) {
+	  _inherits(NavSideContainer, _React$Component);
+	
+	  function NavSideContainer() {
+	    _classCallCheck(this, NavSideContainer);
+	
+	    return _possibleConstructorReturn(this, _React$Component.apply(this, arguments));
+	  }
+	
+	  NavSideContainer.prototype.render = function render() {
+	    var _props = this.props,
+	        className = _props.className,
+	        children = _props.children,
+	        clsPrefix = _props.clsPrefix,
+	        sideActive = _props.sideActive,
+	        expanded = _props.expanded,
+	        props = _objectWithoutProperties(_props, ['className', 'children', 'clsPrefix', 'sideActive', 'expanded']);
+	
+	    //const navbarProps = this.context.u_navbar;
+	
+	    return _react2["default"].createElement(
+	      'div',
+	      { className: (0, _classnames2["default"])(className, clsPrefix, expanded && 'expanded') },
+	      children
+	    );
+	  };
+	
+	  return NavSideContainer;
+	}(_react2["default"].Component);
+	
+	NavSideContainer.defaultProps = defaultProps;
+	
+	exports["default"] = NavSideContainer;
+	module.exports = exports['default'];
+
+/***/ }),
+/* 733 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
+	var _classnames = __webpack_require__(5);
+	
+	var _classnames2 = _interopRequireDefault(_classnames);
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _propTypes = __webpack_require__(6);
+	
+	var _propTypes2 = _interopRequireDefault(_propTypes);
+	
+	var _createChainedFunction = __webpack_require__(36);
+	
+	var _createChainedFunction2 = _interopRequireDefault(_createChainedFunction);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+	
+	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
+	
+	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
+	
+	var propTypes = {
+	  onClick: _propTypes2["default"].func,
+	  /**
+	   * The toggle content, if left empty it will render the default toggle (seen above).
+	   */
+	  show: _propTypes2["default"].bool,
+	  children: _propTypes2["default"].node
+	};
+	
+	var contextTypes = {
+	  u_navbar: _propTypes2["default"].shape({
+	    expanded: _propTypes2["default"].bool,
+	    onToggle: _propTypes2["default"].func
+	  })
+	};
+	
+	var defaultProps = {
+	  clsPrefix: 'u-navbar-toggle',
+	  show: false
+	};
+	
+	var MenuToggle = function (_React$Component) {
+	  _inherits(MenuToggle, _React$Component);
+	
+	  function MenuToggle(props) {
+	    _classCallCheck(this, MenuToggle);
+	
+	    var _this = _possibleConstructorReturn(this, _React$Component.call(this, props));
+	
+	    _this.state = {
+	      toggleState: false
+	      //this.handleRender = this.handleRender.bind(this);
+	    };return _this;
+	  }
+	
+	  MenuToggle.prototype.handleClick = function handleClick() {
+	    var _context$u_navbar = this.context.u_navbar,
+	        expanded = _context$u_navbar.expanded,
+	        onToggle = _context$u_navbar.onToggle;
+	
+	    this.setState({ toggleState: !this.state.toggleState });
+	    if (onToggle) {
+	      onToggle(!expanded);
+	    }
+	  };
+	
+	  MenuToggle.prototype.render = function render() {
+	    var _props = this.props,
+	        onClick = _props.onClick,
+	        className = _props.className,
+	        children = _props.children,
+	        clsPrefix = _props.clsPrefix,
+	        show = _props.show,
+	        props = _objectWithoutProperties(_props, ['onClick', 'className', 'children', 'clsPrefix', 'show']);
+	    //const navbarProps = this.context.u_navbar || { bsClass: 'navbar' };
+	    //console.log(navbarProps.onToggle, navbarProps.expanded);
+	
+	    var buttonProps = _extends({
+	      type: 'button'
+	    }, props, {
+	      onClick: (0, _createChainedFunction2["default"])(onClick, this.handleClick.bind(this)),
+	      className: (0, _classnames2["default"])(className, clsPrefix, show && 'show')
+	      //!this.context.u_navbar.expanded && 'collapsed',
+	    });
+	
+	    if (children) {
+	      return _react2["default"].createElement(
+	        'button',
+	        buttonProps,
+	        children
+	      );
+	    }
+	    //当show存在时，渲染左侧静态面包按钮
+	    return _react2["default"].createElement(
+	      'div',
+	      null,
+	      show && this.state.toggleState && _react2["default"].createElement(
+	        'button',
+	        buttonProps,
+	        _react2["default"].createElement(
+	          'span',
+	          { className: 'sr-only' },
+	          'Toggle navigation'
+	        ),
+	        _react2["default"].createElement('span', { className: 'icon-bar' }),
+	        _react2["default"].createElement('span', { className: 'icon-bar' }),
+	        _react2["default"].createElement('span', { className: 'icon-bar' })
+	      ),
+	      show && !this.state.toggleState && _react2["default"].createElement(
+	        'button',
+	        buttonProps,
+	        _react2["default"].createElement('span', { className: 'uf uf-arrow-left' })
+	      ),
+	      !show && !this.state.toggleState && _react2["default"].createElement(
+	        'button',
+	        buttonProps,
+	        _react2["default"].createElement(
+	          'span',
+	          { className: 'sr-only' },
+	          'Toggle navigation'
+	        ),
+	        _react2["default"].createElement('span', { className: 'icon-bar' }),
+	        _react2["default"].createElement('span', { className: 'icon-bar' }),
+	        _react2["default"].createElement('span', { className: 'icon-bar' })
+	      )
+	    );
+	  };
+	
+	  return MenuToggle;
+	}(_react2["default"].Component);
+	
+	MenuToggle.propTypes = propTypes;
+	MenuToggle.defaultProps = defaultProps;
+	MenuToggle.contextTypes = contextTypes;
+	
+	exports["default"] = MenuToggle;
+	module.exports = exports['default'];
+
+/***/ }),
+/* 734 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _tinperBeeCore = __webpack_require__(26);
+	
+	function animate(node, show, done) {
+	  var height = void 0;
+	  return (0, _tinperBeeCore.cssAnimation)(node, 'u-motion-collapse', {
+	    start: function start() {
+	      if (!show) {
+	        node.style.height = node.offsetHeight + 'px';
+	      } else {
+	        height = node.offsetHeight;
+	        node.style.height = 0;
+	      }
+	    },
+	    active: function active() {
+	      node.style.height = (show ? height : 0) + 'px';
+	    },
+	    end: function end() {
+	      node.style.height = '';
+	      done();
+	    }
+	  });
+	}
+	
+	var animation = {
+	  enter: function enter(node, done) {
+	    return animate(node, true, done);
+	  },
+	  leave: function leave(node, done) {
+	    return animate(node, false, done);
+	  },
+	  appear: function appear(node, done) {
+	    return animate(node, true, done);
+	  }
+	};
+	
+	exports["default"] = animation;
+	module.exports = exports['default'];
+
+/***/ }),
+/* 735 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _warning = __webpack_require__(31);
+	
+	var _warning2 = _interopRequireDefault(_warning);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+	
+	var warned = {};
+	
+	exports["default"] = function (valid, message) {
+	  if (!valid && !warned[message]) {
+	    (0, _warning2["default"])(false, message);
+	    warned[message] = true;
+	  }
+	};
+	
+	module.exports = exports['default'];
+
+/***/ }),
+/* 736 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -90052,7 +93846,16 @@
 	  function ExpandIcon(props) {
 	    _classCallCheck(this, ExpandIcon);
 	
-	    return _possibleConstructorReturn(this, _Component.call(this, props));
+	    var _this = _possibleConstructorReturn(this, _Component.call(this, props));
+	
+	    _this.onExpand = function (status, record, e) {
+	      var onExpand = _this.props.onExpand;
+	
+	      e.stopPropagation();
+	      onExpand(status, record, e);
+	    };
+	
+	    return _this;
 	  }
 	
 	  ExpandIcon.prototype.shouldComponentUpdate = function shouldComponentUpdate(nextProps) {
@@ -90060,6 +93863,8 @@
 	  };
 	
 	  ExpandIcon.prototype.render = function render() {
+	    var _this2 = this;
+	
 	    var _props = this.props,
 	        expandable = _props.expandable,
 	        clsPrefix = _props.clsPrefix,
@@ -90084,7 +93889,7 @@
 	      return _react2["default"].createElement(
 	        'span',
 	        { onClick: function onClick(e) {
-	            return onExpand(!expanded, record, e);
+	            return _this2.onExpand(!expanded, record, e);
 	          }, className: 'expand-icon-con' },
 	        currentIcon
 	      );
@@ -90105,7 +93910,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 717 */
+/* 737 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -90128,11 +93933,11 @@
 	
 	var _propTypes2 = _interopRequireDefault(_propTypes);
 	
-	var _throttleDebounce = __webpack_require__(718);
+	var _throttleDebounce = __webpack_require__(738);
 	
 	var _utils = __webpack_require__(712);
 	
-	var _FilterType = __webpack_require__(719);
+	var _FilterType = __webpack_require__(739);
 	
 	var _FilterType2 = _interopRequireDefault(_FilterType);
 	
@@ -90167,433 +93972,7 @@
 	
 	    var _this = _possibleConstructorReturn(this, _Component.call(this, props));
 	
-	    _this.getOnLineObject = function (_element) {
-	      var type = _element.getAttribute('data-type'),
-	          elementObj = null;
-	      if (!type) {
-	        var element = _element.parentElement || parentNode; //兼容写法。
-	        if (element.getAttribute('data-type')) {
-	          elementObj = element;
-	        }
-	      } else {
-	        elementObj = _element;
-	      }
-	      return elementObj;
-	    };
-	
-	    _this.onTrMouseDown = function (e) {
-	      _utils.Event.stopPropagation(e);
-	      var event = _utils.Event.getEvent(e),
-	          targetEvent = _utils.Event.getTarget(event);
-	      var _this$props = _this.props,
-	          clsPrefix = _this$props.clsPrefix,
-	          contentTable = _this$props.contentTable,
-	          lastShowIndex = _this$props.lastShowIndex;
-	      // let currentElement = this.getOnLineObject(targetEvent);
-	
-	      var currentElement = _this.getTargetToType(targetEvent);
-	      if (!currentElement) return;
-	      var type = currentElement.getAttribute('data-type');
-	      if (!_this.props.dragborder && !_this.props.draggable) return;
-	      if (type == 'online' && _this.props.dragborder) {
-	        if (!_this.props.dragborder) return;
-	        targetEvent.setAttribute('draggable', false); //添加交换列效果
-	        var currentIndex = parseInt(currentElement.getAttribute("data-line-index"));
-	        var defaultWidth = currentElement.getAttribute("data-th-width");
-	        var currentObj = _this.table.cols[currentIndex];
-	        _this.drag.option = "border"; //拖拽操作
-	        _this.drag.currIndex = currentIndex;
-	        _this.drag.oldLeft = event.x;
-	        _this.drag.oldWidth = parseInt(currentObj.style.width);
-	        _this.drag.minWidth = currentObj.style.minWidth != "" ? parseInt(currentObj.style.minWidth) : defaultWidth;
-	        _this.drag.tableWidth = parseInt(_this.table.table.style.width ? _this.table.table.style.width : _this.table.table.scrollWidth);
-	        // console.log(" ----- ",this.drag);
-	        if (!_this.tableOldWidth) {
-	          _this.tableOldWidth = _this.drag.tableWidth; //this.getTableWidth();
-	          // console.log(" this.tableOldWidth--- ",this.tableOldWidth);
-	        }
-	        if (!_this.lastColumWidth) {
-	          _this.lastColumWidth = parseInt(_this.table.cols[lastShowIndex].style.width);
-	        }
-	      } else if (type != 'online' && _this.props.draggable) {
-	        // if (!this.props.draggable || targetEvent.nodeName.toUpperCase() != "TH") return;
-	        if (!_this.props.draggable) return;
-	        var th = _this.getTargetToType(targetEvent);
-	        th.setAttribute('draggable', true); //添加交换列效果
-	        _this.drag.option = 'dragAble';
-	        _this.currentDome = th;
-	        var _currentIndex = parseInt(th.getAttribute("data-line-index"));
-	        _this.drag.currIndex = _currentIndex;
-	      } else {
-	        // console.log("onTrMouseDown dragborder or draggable is all false !");
-	        return;
-	      }
-	    };
-	
-	    _this.getTableWidth = function () {
-	      var tableWidth = 0,
-	          offWidth = 0; //this.table.cols.length;
-	      for (var index = 0; index < _this.table.cols.length; index++) {
-	        var da = _this.table.cols[index];
-	        tableWidth += parseInt(da.style.width);
-	      }
-	      return tableWidth - offWidth;
-	    };
-	
-	    _this.getTargetToType = function (targetEvent) {
-	      var tag = targetEvent;
-	      if (targetEvent && !targetEvent.getAttribute("data-type")) {
-	        tag = _this.getTargetToType(targetEvent.parentElement);
-	      }
-	      return tag;
-	    };
-	
-	    _this.getTargetToTh = function (targetEvent) {
-	      var th = targetEvent;
-	      if (targetEvent.nodeName.toUpperCase() != "TH") {
-	        th = _this.getThDome(targetEvent);
-	      }
-	      console.log(" getTargetToTh: ", th);
-	      return th;
-	    };
-	
-	    _this.onTrMouseMove = function (e) {
-	      if (!_this.props.dragborder && !_this.props.draggable) return;
-	      var _this$props2 = _this.props,
-	          clsPrefix = _this$props2.clsPrefix,
-	          dragborder = _this$props2.dragborder,
-	          contentDomWidth = _this$props2.contentDomWidth,
-	          scrollbarWidth = _this$props2.scrollbarWidth,
-	          contentTable = _this$props2.contentTable,
-	          headerScroll = _this$props2.headerScroll,
-	          lastShowIndex = _this$props2.lastShowIndex,
-	          onDraggingBorder = _this$props2.onDraggingBorder,
-	          leftFixedWidth = _this$props2.leftFixedWidth,
-	          rightFixedWidth = _this$props2.rightFixedWidth;
-	
-	      _utils.Event.stopPropagation(e);
-	      var event = _utils.Event.getEvent(e);
-	      if (_this.props.dragborder && _this.drag.option == "border") {
-	        //移动改变宽度
-	        var currentCols = _this.table.cols[_this.drag.currIndex];
-	        var diff = event.x - _this.drag.oldLeft;
-	        var newWidth = _this.drag.oldWidth + diff;
-	        _this.drag.newWidth = newWidth > 0 ? newWidth : _this.minWidth;
-	        // if(newWidth > this.drag.minWidth){
-	        if (newWidth > _this.minWidth) {
-	          currentCols.style.width = newWidth + 'px';
-	          //hao 支持固定表头拖拽 修改表体的width
-	          if (_this.fixedTable.cols) {
-	            _this.fixedTable.cols[_this.drag.currIndex].style.width = newWidth + "px";
-	          }
-	
-	          // const newTableWidth = this.drag.tableWidth + diff;// +'px';
-	          // this.table.table.style.width  = newTableWidth+'px';;//改变table的width
-	          // if(this.table.innerTableBody){//TODO 后续需要处理此处
-	          //   this.table.innerTableBody.style.width  = newTableWidth+'px';
-	
-	          // }
-	
-	          var newDiff = parseInt(currentCols.style.minWidth) - parseInt(currentCols.style.width);
-	          if (newDiff > 0) {
-	            //缩小
-	            var lastWidth = _this.lastColumWidth + newDiff;
-	            _this.table.cols[lastShowIndex].style.width = lastWidth + "px"; //同步表头
-	            _this.table.tableBodyCols[lastShowIndex].style.width = lastWidth + "px"; //同步表体
-	          }
-	          var showScroll = contentDomWidth - (leftFixedWidth + rightFixedWidth) - (_this.drag.tableWidth + diff) - scrollbarWidth;
-	          //表头滚动条处理
-	          if (headerScroll) {
-	            if (showScroll < 0) {
-	              //小于 0 出现滚动条
-	              //找到固定列表格，设置表头的marginBottom值为scrollbarWidth;
-	              _this.table.contentTableHeader.style.overflowX = 'scroll';
-	              _this.optTableMargin(_this.table.fixedLeftHeaderTable, scrollbarWidth);
-	              _this.optTableMargin(_this.table.fixedRighHeadertTable, scrollbarWidth);
-	              // fixedLeftHeaderTable && (fixedLeftHeaderTable.style.marginBottom = scrollbarWidth + "px");
-	              // fixedRighHeadertTable && (fixedRighHeadertTable.style.marginBottom = scrollbarWidth + "px");
-	              //todo inner scroll-x去掉；outer marginbottom 设置成-15px】
-	            } else {
-	              //大于 0 不显示滚动条
-	              _this.table.contentTableHeader.style.overflowX = 'hidden';
-	              _this.optTableMargin(_this.table.fixedLeftHeaderTable, 0);
-	              _this.optTableMargin(_this.table.fixedRighHeadertTable, 0);
-	            }
-	          } else {
-	            if (showScroll < 0) {
-	              _this.table.tableBody.style.overflowX = 'auto';
-	              _this.optTableMargin(_this.table.fixedLeftBodyTable, '-' + scrollbarWidth);
-	              _this.optTableMargin(_this.table.fixedRightBodyTable, '-' + scrollbarWidth);
-	              _this.optTableScroll(_this.table.fixedLeftBodyTable, { x: 'scroll' });
-	              _this.optTableScroll(_this.table.fixedRightBodyTable, { x: 'scroll' });
-	            } else {
-	              _this.table.tableBody.style.overflowX = 'hidden';
-	              _this.optTableMargin(_this.table.fixedLeftBodyTable, 0);
-	              _this.optTableMargin(_this.table.fixedRightBodyTable, 0);
-	              _this.optTableScroll(_this.table.fixedLeftBodyTable, { x: 'auto' });
-	              _this.optTableScroll(_this.table.fixedRightBodyTable, { x: 'auto' });
-	            }
-	          }
-	        } else {
-	          _this.drag.newWidth = _this.minWidth;
-	        }
-	      } else if (_this.props.draggable && _this.drag.option == "draggable") {
-	        // console.log(" --onTrMouseMove--draggable- ",this.drag.option);
-	      } else {}
-	        // console.log("onTrMouseMove dragborder or draggable is all false !");
-	
-	        // 增加拖拽列宽动作的回调函数
-	      _this.drag.newWidth && onDraggingBorder && onDraggingBorder(event, _this.drag.newWidth);
-	    };
-	
-	    _this.onTrMouseUp = function (e) {
-	      var event = _utils.Event.getEvent(e);
-	      var width = _this.drag.newWidth;
-	      _this.mouseClear();
-	      _this.props.onDropBorder && _this.props.onDropBorder(event, width);
-	    };
-	
-	    _this.clearThsDr = function () {
-	      var ths = _this.table.ths;
-	      for (var index = 0; index < ths.length; index++) {
-	        ths[index].setAttribute('draggable', false); //去掉交换列效果
-	      }
-	    };
-	
-	    _this.bodyonLineMouseUp = function (events, type) {
-	      if (!_this.drag || !_this.drag.option) return;
-	      _this.mouseClear();
-	    };
-	
-	    _this.optTableMargin = function (table, scrollbarWidth) {
-	      if (table) {
-	        table.style.marginBottom = scrollbarWidth + "px";
-	      }
-	    };
-	
-	    _this.optTableScroll = function (table) {
-	      var overflow = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-	
-	      if (table) {
-	        var innerTable = table.querySelector('.u-table-body-inner');
-	        if (innerTable) {
-	          //fixbug: 拖拽列宽后，滚动条滚到表格底部，会导致固定列和非固定列错行
-	          overflow.x && (innerTable.style.overflowX = overflow.x);
-	          overflow.y && (innerTable.style.overflowY = overflow.y);
-	        }
-	      }
-	    };
-	
-	    _this.onDragStart = function (e) {
-	      if (!_this.props.draggable) return;
-	      if (_this.drag && _this.drag.option != 'dragAble') {
-	        return;
-	      }
-	      var event = _utils.Event.getEvent(e),
-	
-	      // target = Event.getTarget(event);
-	      target = _this.getTargetToTh(_utils.Event.getTarget(event));
-	      var currentIndex = parseInt(target.getAttribute("data-line-index"));
-	      var currentKey = target.getAttribute('data-line-key');
-	
-	      if (event.dataTransfer.setDragImage) {
-	        var crt = target.cloneNode(true);
-	        crt.style.backgroundColor = "#ebecf0";
-	        crt.style.width = _this.table.cols[currentIndex].style.width; //拖动后再交换列的时候，阴影效果可同步
-	        crt.style.height = "40px";
-	        // crt.style['line-height'] = "40px";
-	        // document.body.appendChild(crt);
-	        document.getElementById(_this._table_none_cont_id).appendChild(crt);
-	        event.dataTransfer.setDragImage(crt, 0, 0);
-	      }
-	
-	      event.dataTransfer.effectAllowed = "move";
-	      event.dataTransfer.setData("Text", currentKey);
-	      _this.currentObj = _this.props.rows[0][currentIndex];
-	    };
-	
-	    _this.onDragOver = function (e) {
-	      var event = _utils.Event.getEvent(e);
-	      event.preventDefault();
-	    };
-	
-	    _this.onDrop = function (e) {
-	      if (!_this.props.draggable) return;
-	      if (_this.drag && _this.drag.option != 'dragAble') {
-	        return;
-	      }
-	      var event = _utils.Event.getEvent(e),
-	          target = _utils.Event.getTarget(event);
-	      _this.currentDome.setAttribute('draggable', false); //添加交换列效果
-	
-	      var data = _this.getCurrentEventData(_this._dragCurrent);
-	      if (!data) return;
-	      if (!_this.props.onDrop) return;
-	      // this.props.onDrop(event,target);
-	      _this.props.onDrop(event, { dragSource: _this.currentObj, dragTarg: data });
-	    };
-	
-	    _this.onDragEnter = function (e) {
-	      var event = _utils.Event.getEvent(e),
-	          target = _utils.Event.getTarget(event);
-	      _this._dragCurrent = target;
-	      var currentIndex = target.getAttribute("data-line-index");
-	      if (!currentIndex || parseInt(currentIndex) === _this.drag.currIndex) return;
-	      if (target.nodeName.toUpperCase() === "TH") {
-	        // target.style.border = "2px dashed rgba(5,0,0,0.25)";
-	        target.setAttribute("style", "border-right:2px dashed rgb(30, 136, 229)");
-	        // target.style.backgroundColor = 'rgb(235, 236, 240)';
-	      }
-	    };
-	
-	    _this.onDragEnd = function (e) {
-	      var event = _utils.Event.getEvent(e),
-	          target = _utils.Event.getTarget(event);
-	      _this._dragCurrent.setAttribute("style", "");
-	      // this._dragCurrent.style = "";
-	      document.getElementById(_this._table_none_cont_id).innerHTML = "";
-	
-	      var data = _this.getCurrentEventData(_this._dragCurrent);
-	      if (!data) return;
-	      if (!_this.currentObj || _this.currentObj.key == data.key) return;
-	      if (!_this.props.onDragEnd) return;
-	      _this.props.onDragEnd(event, { dragSource: _this.currentObj, dragTarg: data });
-	    };
-	
-	    _this.onDragLeave = function (e) {
-	      var event = _utils.Event.getEvent(e),
-	          target = _utils.Event.getTarget(event);
-	      var currentIndex = target.getAttribute("data-line-index");
-	      if (!currentIndex || parseInt(currentIndex) === _this.drag.currIndex) return;
-	      if (target.nodeName.toUpperCase() === "TH") {
-	        target.setAttribute("style", "");
-	        // this._dragCurrent.style = "";
-	      }
-	    };
-	
-	    _this.handlerFilterChange = function (key, value, condition) {
-	      var onFilterChange = _this.props.onFilterChange;
-	
-	      if (onFilterChange) {
-	        onFilterChange(key, value, condition);
-	      }
-	    };
-	
-	    _this.handlerFilterClear = function (field) {
-	      var onFilterClear = _this.props.onFilterClear;
-	
-	      if (onFilterClear) {
-	        onFilterClear(field);
-	      }
-	    };
-	
-	    _this.filterRenderType = function (type, dataIndex, index) {
-	      var _this$props3 = _this.props,
-	          clsPrefix = _this$props3.clsPrefix,
-	          rows = _this$props3.rows,
-	          filterDelay = _this$props3.filterDelay,
-	          locale = _this$props3.locale;
-	
-	      switch (type) {
-	        //文本输入
-	        case "text":
-	          return _react2["default"].createElement(_FilterType2["default"], {
-	            locale: locale //多语
-	            , rendertype: type //渲染类型
-	            , clsPrefix: clsPrefix //css前缀
-	            , className: clsPrefix + " filter-text",
-	            dataIndex: dataIndex //字段
-	            , onFilterChange: _this.handlerFilterChange //输入框回调
-	            , onFilterClear: _this.handlerFilterClear //清除回调
-	            , filterDropdown: rows[1][index]["filterdropdown"] //是否显示下拉条件
-	            , filterDropdownType: rows[1][index]["filterdropdowntype"] //下拉的条件类型为string,number
-	            , filterDropdownIncludeKeys: rows[1][index]["filterdropdownincludekeys"] //下拉条件按照指定的keys去显示
-	          });
-	        //数值输入
-	        case "number":
-	          return _react2["default"].createElement(_FilterType2["default"], {
-	            locale: locale,
-	            rendertype: type,
-	            clsPrefix: clsPrefix,
-	            className: clsPrefix + " filter-text",
-	            dataIndex: dataIndex //字段
-	            , onFilterChange: (0, _throttleDebounce.debounce)(filterDelay || 300, _this.handlerFilterChange) //输入框回调并且函数防抖动
-	            , onFilterClear: _this.handlerFilterClear //清除回调
-	            , filterDropdown: rows[1][index]["filterdropdown"],
-	            filterDropdownType: rows[1][index]["filterdropdowntype"] //下拉的条件类型为string,number
-	            , filterDropdownIncludeKeys: rows[1][index]["filterdropdownincludekeys"] //下拉条件按照指定的keys去显示
-	            , filterInputNumberOptions: rows[1][index]["filterinputnumberoptions"] //设置数值框内的详细属性
-	          });
-	        //下拉框选择
-	        case "dropdown":
-	          var selectDataSource = [];
-	          //处理没有输入数据源的时候，系统自动查找自带的数据筛选后注入
-	          if (rows.length > 0 && (rows[1][index]["filterdropdownauto"] || "auto") == "auto") {
-	            var hash = {};
-	            //处理下拉重复对象组装dropdown
-	            selectDataSource = Array.from(rows[1][0].datasource, function (x) {
-	              return {
-	                key: x[dataIndex],
-	                value: x[dataIndex]
-	              };
-	            });
-	            selectDataSource = selectDataSource.reduceRight(function (item, next) {
-	              hash[next.key] ? "" : hash[next.key] = true && item.push(next);
-	              return item;
-	            }, []);
-	          } else {
-	            //从外部数据源加载系统数据
-	            selectDataSource = rows[1][index]["filterdropdowndata"];
-	          }
-	          return _react2["default"].createElement(_FilterType2["default"], {
-	            locale: locale,
-	            rendertype: type,
-	            className: clsPrefix + " filter-dropdown",
-	            data: selectDataSource,
-	            notFoundContent: "Loading" //没有数据显示的默认字
-	            , dataIndex: dataIndex //字段
-	            , onFilterChange: _this.handlerFilterChange //输入框回调
-	            , onFilterClear: _this.handlerFilterClear //清除回调
-	            , filterDropdown: rows[1][index]["filterdropdown"],
-	            onFocus: rows[1][index]["filterdropdownfocus"],
-	            filterDropdownType: rows[1][index]["filterdropdowntype"] //下拉的条件类型为string,number
-	            , filterDropdownIncludeKeys: rows[1][index]["filterdropdownincludekeys"] //下拉条件按照指定的keys去显示
-	          });
-	        //日期
-	        case "date":
-	          return _react2["default"].createElement(_FilterType2["default"], {
-	            locale: locale,
-	            rendertype: type,
-	            className: "filter-date",
-	            onClick: function onClick() {},
-	            format: rows[1][index]["format"] || "YYYY-MM-DD",
-	            dataIndex: dataIndex //字段
-	            , onFilterChange: _this.handlerFilterChange //输入框回调
-	            , onFilterClear: _this.handlerFilterClear //清除回调
-	            , filterDropdown: rows[1][index]["filterdropdown"],
-	            filterDropdownType: rows[1][index]["filterdropdowntype"] //下拉的条件类型为string,number
-	            , filterDropdownIncludeKeys: rows[1][index]["filterdropdownincludekeys"] //下拉条件按照指定的keys去显示
-	          });
-	        //日期范围
-	        case "daterange":
-	          return _react2["default"].createElement(_FilterType2["default"], {
-	            locale: locale,
-	            rendertype: type,
-	            className: "filter-date",
-	            onClick: function onClick() {},
-	            format: rows[1][index]["format"] || "YYYY-MM-DD",
-	            dataIndex: dataIndex //字段
-	            , onFilterChange: _this.handlerFilterChange //输入框回调
-	            , onFilterClear: _this.handlerFilterClear //清除回调
-	            , filterDropdown: rows[1][index]["filterdropdown"],
-	            filterDropdownType: rows[1][index]["filterdropdowntype"] //下拉的条件类型为string,number
-	            , filterDropdownIncludeKeys: rows[1][index]["filterdropdownincludekeys"] //下拉条件按照指定的keys去显示
-	          });
-	        default:
-	          //不匹配类型默认文本输入
-	          return _react2["default"].createElement("div", null);
-	      }
-	    };
+	    _initialiseProps.call(_this);
 	
 	    _this.currentObj = null;
 	    _this.theadKey = new Date().getTime();
@@ -90945,10 +94324,14 @@
 	              canDotDrag = "th-can-not-drag";
 	            }
 	            var thClassName = "" + da.className ? "" + da.className : '';
-	            if (da.textAlign) {
+	            if (da.titleAlign) {
+	              thClassName += " text-" + da.titleAlign + " ";
+	            } else if (da.textAlign) {
 	              thClassName += " text-" + da.textAlign + " ";
 	            }
+	
 	            delete da.textAlign;
+	            delete da.titleAlign;
 	            var keyTemp = {};
 	            //避免key为undefined
 	            // if(da.dataindex && da.key ===undefined ){
@@ -90977,6 +94360,11 @@
 	                "th",
 	                _extends({}, da, keyTemp, { className: thClassName, "data-th-fixed": da.fixed, "data-line-key": da.key,
 	                  "data-line-index": columIndex, "data-th-width": da.width, "data-type": "draggable" }),
+	                da.required ? _react2["default"].createElement(
+	                  "span",
+	                  { className: "required" },
+	                  "*"
+	                ) : '',
 	                da.children,
 	                dragborder && columIndex != _rowLeng ? _react2["default"].createElement(
 	                  "div",
@@ -91010,13 +94398,449 @@
 	  contentWidthDiff: 0
 	};
 	
+	var _initialiseProps = function _initialiseProps() {
+	  var _this3 = this;
+	
+	  this.getOnLineObject = function (_element) {
+	    var type = _element.getAttribute('data-type'),
+	        elementObj = null;
+	    if (!type) {
+	      var element = _element.parentElement || parentNode; //兼容写法。
+	      if (element.getAttribute('data-type')) {
+	        elementObj = element;
+	      }
+	    } else {
+	      elementObj = _element;
+	    }
+	    return elementObj;
+	  };
+	
+	  this.onTrMouseDown = function (e) {
+	    _utils.Event.stopPropagation(e);
+	    var event = _utils.Event.getEvent(e),
+	        targetEvent = _utils.Event.getTarget(event);
+	    var _props3 = _this3.props,
+	        clsPrefix = _props3.clsPrefix,
+	        contentTable = _props3.contentTable,
+	        lastShowIndex = _props3.lastShowIndex;
+	    // let currentElement = this.getOnLineObject(targetEvent);
+	
+	    var currentElement = _this3.getTargetToType(targetEvent);
+	    if (!currentElement) return;
+	    var type = currentElement.getAttribute('data-type');
+	    if (!_this3.props.dragborder && !_this3.props.draggable) return;
+	    if (type == 'online' && _this3.props.dragborder) {
+	      if (!_this3.props.dragborder) return;
+	      targetEvent.setAttribute('draggable', false); //添加交换列效果
+	      var currentIndex = parseInt(currentElement.getAttribute("data-line-index"));
+	      var defaultWidth = currentElement.getAttribute("data-th-width");
+	      var currentObj = _this3.table.cols[currentIndex];
+	      _this3.drag.option = "border"; //拖拽操作
+	      _this3.drag.currIndex = currentIndex;
+	      _this3.drag.oldLeft = event.x;
+	      _this3.drag.oldWidth = parseInt(currentObj.style.width);
+	      _this3.drag.minWidth = currentObj.style.minWidth != "" ? parseInt(currentObj.style.minWidth) : defaultWidth;
+	      _this3.drag.tableWidth = parseInt(_this3.table.table.style.width ? _this3.table.table.style.width : _this3.table.table.scrollWidth);
+	      // console.log(" ----- ",this.drag);
+	      if (!_this3.tableOldWidth) {
+	        _this3.tableOldWidth = _this3.drag.tableWidth; //this.getTableWidth();
+	        // console.log(" this.tableOldWidth--- ",this.tableOldWidth);
+	      }
+	      if (!_this3.lastColumWidth) {
+	        _this3.lastColumWidth = parseInt(_this3.table.cols[lastShowIndex].style.width);
+	      }
+	    } else if (type != 'online' && _this3.props.draggable) {
+	      // if (!this.props.draggable || targetEvent.nodeName.toUpperCase() != "TH") return;
+	      if (!_this3.props.draggable) return;
+	      var th = _this3.getTargetToType(targetEvent);
+	      th.setAttribute('draggable', true); //添加交换列效果
+	      _this3.drag.option = 'dragAble';
+	      _this3.currentDome = th;
+	      var _currentIndex = parseInt(th.getAttribute("data-line-index"));
+	      _this3.drag.currIndex = _currentIndex;
+	    } else {
+	      // console.log("onTrMouseDown dragborder or draggable is all false !");
+	      return;
+	    }
+	  };
+	
+	  this.getTableWidth = function () {
+	    var tableWidth = 0,
+	        offWidth = 0; //this.table.cols.length;
+	    for (var index = 0; index < _this3.table.cols.length; index++) {
+	      var da = _this3.table.cols[index];
+	      tableWidth += parseInt(da.style.width);
+	    }
+	    return tableWidth - offWidth;
+	  };
+	
+	  this.getTargetToType = function (targetEvent) {
+	    var tag = targetEvent;
+	    if (targetEvent && !targetEvent.getAttribute("data-type")) {
+	      tag = _this3.getTargetToType(targetEvent.parentElement);
+	    }
+	    return tag;
+	  };
+	
+	  this.getTargetToTh = function (targetEvent) {
+	    var th = targetEvent;
+	    if (targetEvent.nodeName.toUpperCase() != "TH") {
+	      th = _this3.getThDome(targetEvent);
+	    }
+	    console.log(" getTargetToTh: ", th);
+	    return th;
+	  };
+	
+	  this.onTrMouseMove = function (e) {
+	    if (!_this3.props.dragborder && !_this3.props.draggable) return;
+	    var _props4 = _this3.props,
+	        clsPrefix = _props4.clsPrefix,
+	        dragborder = _props4.dragborder,
+	        contentDomWidth = _props4.contentDomWidth,
+	        scrollbarWidth = _props4.scrollbarWidth,
+	        contentTable = _props4.contentTable,
+	        headerScroll = _props4.headerScroll,
+	        lastShowIndex = _props4.lastShowIndex,
+	        onDraggingBorder = _props4.onDraggingBorder,
+	        leftFixedWidth = _props4.leftFixedWidth,
+	        rightFixedWidth = _props4.rightFixedWidth;
+	
+	    _utils.Event.stopPropagation(e);
+	    var event = _utils.Event.getEvent(e);
+	    if (_this3.props.dragborder && _this3.drag.option == "border") {
+	      //移动改变宽度
+	      var currentCols = _this3.table.cols[_this3.drag.currIndex];
+	      var diff = event.x - _this3.drag.oldLeft;
+	      var newWidth = _this3.drag.oldWidth + diff;
+	      _this3.drag.newWidth = newWidth > 0 ? newWidth : _this3.minWidth;
+	      // if(newWidth > this.drag.minWidth){
+	      if (newWidth > _this3.minWidth) {
+	        currentCols.style.width = newWidth + 'px';
+	        //hao 支持固定表头拖拽 修改表体的width
+	        if (_this3.fixedTable.cols) {
+	          _this3.fixedTable.cols[_this3.drag.currIndex].style.width = newWidth + "px";
+	        }
+	
+	        // const newTableWidth = this.drag.tableWidth + diff;// +'px';
+	        // this.table.table.style.width  = newTableWidth+'px';;//改变table的width
+	        // if(this.table.innerTableBody){//TODO 后续需要处理此处
+	        //   this.table.innerTableBody.style.width  = newTableWidth+'px';
+	
+	        // }
+	
+	        var newDiff = parseInt(currentCols.style.minWidth) - parseInt(currentCols.style.width);
+	        if (newDiff > 0) {
+	          //缩小
+	          var lastWidth = _this3.lastColumWidth + newDiff;
+	          _this3.table.cols[lastShowIndex].style.width = lastWidth + "px"; //同步表头
+	          _this3.table.tableBodyCols[lastShowIndex].style.width = lastWidth + "px"; //同步表体
+	        }
+	        var showScroll = contentDomWidth - (leftFixedWidth + rightFixedWidth) - (_this3.drag.tableWidth + diff) - scrollbarWidth;
+	        //表头滚动条处理
+	        if (headerScroll) {
+	          if (showScroll < 0) {
+	            //小于 0 出现滚动条
+	            //找到固定列表格，设置表头的marginBottom值为scrollbarWidth;
+	            _this3.table.contentTableHeader.style.overflowX = 'scroll';
+	            _this3.optTableMargin(_this3.table.fixedLeftHeaderTable, scrollbarWidth);
+	            _this3.optTableMargin(_this3.table.fixedRighHeadertTable, scrollbarWidth);
+	            // fixedLeftHeaderTable && (fixedLeftHeaderTable.style.marginBottom = scrollbarWidth + "px");
+	            // fixedRighHeadertTable && (fixedRighHeadertTable.style.marginBottom = scrollbarWidth + "px");
+	            //todo inner scroll-x去掉；outer marginbottom 设置成-15px】
+	          } else {
+	            //大于 0 不显示滚动条
+	            _this3.table.contentTableHeader.style.overflowX = 'hidden';
+	            _this3.optTableMargin(_this3.table.fixedLeftHeaderTable, 0);
+	            _this3.optTableMargin(_this3.table.fixedRighHeadertTable, 0);
+	          }
+	        } else {
+	          if (showScroll < 0) {
+	            _this3.table.tableBody.style.overflowX = 'auto';
+	            _this3.optTableMargin(_this3.table.fixedLeftBodyTable, '-' + scrollbarWidth);
+	            _this3.optTableMargin(_this3.table.fixedRightBodyTable, '-' + scrollbarWidth);
+	            _this3.optTableScroll(_this3.table.fixedLeftBodyTable, { x: 'scroll' });
+	            _this3.optTableScroll(_this3.table.fixedRightBodyTable, { x: 'scroll' });
+	          } else {
+	            _this3.table.tableBody.style.overflowX = 'hidden';
+	            _this3.optTableMargin(_this3.table.fixedLeftBodyTable, 0);
+	            _this3.optTableMargin(_this3.table.fixedRightBodyTable, 0);
+	            _this3.optTableScroll(_this3.table.fixedLeftBodyTable, { x: 'auto' });
+	            _this3.optTableScroll(_this3.table.fixedRightBodyTable, { x: 'auto' });
+	          }
+	        }
+	      } else {
+	        _this3.drag.newWidth = _this3.minWidth;
+	      }
+	    } else if (_this3.props.draggable && _this3.drag.option == "draggable") {
+	      // console.log(" --onTrMouseMove--draggable- ",this.drag.option);
+	    } else {}
+	      // console.log("onTrMouseMove dragborder or draggable is all false !");
+	
+	      // 增加拖拽列宽动作的回调函数
+	    _this3.drag.newWidth && onDraggingBorder && onDraggingBorder(event, _this3.drag.newWidth);
+	  };
+	
+	  this.onTrMouseUp = function (e) {
+	    var event = _utils.Event.getEvent(e);
+	    var width = _this3.drag.newWidth;
+	    _this3.mouseClear();
+	    _this3.props.onDropBorder && _this3.props.onDropBorder(event, width);
+	  };
+	
+	  this.clearThsDr = function () {
+	    var ths = _this3.table.ths;
+	    for (var index = 0; index < ths.length; index++) {
+	      ths[index].setAttribute('draggable', false); //去掉交换列效果
+	    }
+	  };
+	
+	  this.bodyonLineMouseUp = function (events, type) {
+	    if (!_this3.drag || !_this3.drag.option) return;
+	    _this3.mouseClear();
+	  };
+	
+	  this.optTableMargin = function (table, scrollbarWidth) {
+	    if (table) {
+	      table.style.marginBottom = scrollbarWidth + "px";
+	    }
+	  };
+	
+	  this.optTableScroll = function (table) {
+	    var overflow = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+	
+	    if (table) {
+	      var innerTable = table.querySelector('.u-table-body-inner');
+	      if (innerTable) {
+	        //fixbug: 拖拽列宽后，滚动条滚到表格底部，会导致固定列和非固定列错行
+	        overflow.x && (innerTable.style.overflowX = overflow.x);
+	        overflow.y && (innerTable.style.overflowY = overflow.y);
+	      }
+	    }
+	  };
+	
+	  this.onDragStart = function (e) {
+	    if (!_this3.props.draggable) return;
+	    if (_this3.drag && _this3.drag.option != 'dragAble') {
+	      return;
+	    }
+	    var event = _utils.Event.getEvent(e),
+	
+	    // target = Event.getTarget(event);
+	    target = _this3.getTargetToTh(_utils.Event.getTarget(event));
+	    var currentIndex = parseInt(target.getAttribute("data-line-index"));
+	    var currentKey = target.getAttribute('data-line-key');
+	
+	    if (event.dataTransfer.setDragImage) {
+	      var crt = target.cloneNode(true);
+	      crt.style.backgroundColor = "#ebecf0";
+	      crt.style.width = _this3.table.cols[currentIndex].style.width; //拖动后再交换列的时候，阴影效果可同步
+	      crt.style.height = "40px";
+	      // crt.style['line-height'] = "40px";
+	      // document.body.appendChild(crt);
+	      document.getElementById(_this3._table_none_cont_id).appendChild(crt);
+	      event.dataTransfer.setDragImage(crt, 0, 0);
+	    }
+	
+	    event.dataTransfer.effectAllowed = "move";
+	    event.dataTransfer.setData("Text", currentKey);
+	    _this3.currentObj = _this3.props.rows[0][currentIndex];
+	  };
+	
+	  this.onDragOver = function (e) {
+	    var event = _utils.Event.getEvent(e);
+	    event.preventDefault();
+	  };
+	
+	  this.onDrop = function (e) {
+	    if (!_this3.props.draggable) return;
+	    var props = _this3.getCurrentEventData(_this3._dragCurrent);
+	    e.column = { props: props };
+	    if (_this3.drag && _this3.drag.option != 'dragAble') {
+	      _this3.props.onDrop(e);
+	      return;
+	    }
+	    var event = _utils.Event.getEvent(e),
+	        target = _utils.Event.getTarget(event);
+	    _this3.currentDome.setAttribute('draggable', false); //添加交换列效果
+	    // let data = this.getCurrentEventData(this._dragCurrent);
+	    // if(!data){
+	    //   this.props.onDrop(e);
+	    //   return;
+	    // }
+	    if (!_this3.props.onDrop) return;
+	    // this.props.onDrop(event,target);
+	    _this3.props.onDrop(event, { dragSource: _this3.currentObj, dragTarg: e.column });
+	  };
+	
+	  this.onDragEnter = function (e) {
+	    var event = _utils.Event.getEvent(e),
+	        target = _utils.Event.getTarget(event);
+	    _this3._dragCurrent = target;
+	    var currentIndex = target.getAttribute("data-line-index");
+	    if (!currentIndex || parseInt(currentIndex) === _this3.drag.currIndex) return;
+	    if (target.nodeName.toUpperCase() === "TH") {
+	      // target.style.border = "2px dashed rgba(5,0,0,0.25)";
+	      target.setAttribute("style", "border-right:2px dashed rgb(30, 136, 229)");
+	      // target.style.backgroundColor = 'rgb(235, 236, 240)';
+	    }
+	  };
+	
+	  this.onDragEnd = function (e) {
+	    var event = _utils.Event.getEvent(e),
+	        target = _utils.Event.getTarget(event);
+	    _this3._dragCurrent.setAttribute("style", "");
+	    // this._dragCurrent.style = "";
+	    document.getElementById(_this3._table_none_cont_id).innerHTML = "";
+	
+	    var data = _this3.getCurrentEventData(_this3._dragCurrent);
+	    if (!data) return;
+	    if (!_this3.currentObj || _this3.currentObj.key == data.key) return;
+	    if (!_this3.props.onDragEnd) return;
+	    _this3.props.onDragEnd(event, { dragSource: _this3.currentObj, dragTarg: data });
+	  };
+	
+	  this.onDragLeave = function (e) {
+	    var event = _utils.Event.getEvent(e),
+	        target = _utils.Event.getTarget(event);
+	    var currentIndex = target.getAttribute("data-line-index");
+	    if (!currentIndex || parseInt(currentIndex) === _this3.drag.currIndex) return;
+	    if (target.nodeName.toUpperCase() === "TH") {
+	      target.setAttribute("style", "");
+	      // this._dragCurrent.style = "";
+	    }
+	  };
+	
+	  this.handlerFilterChange = function (key, value, condition) {
+	    var onFilterChange = _this3.props.onFilterChange;
+	
+	    if (onFilterChange) {
+	      onFilterChange(key, value, condition);
+	    }
+	  };
+	
+	  this.handlerFilterClear = function (field) {
+	    var onFilterClear = _this3.props.onFilterClear;
+	
+	    if (onFilterClear) {
+	      onFilterClear(field);
+	    }
+	  };
+	
+	  this.filterRenderType = function (type, dataIndex, index) {
+	    var _props5 = _this3.props,
+	        clsPrefix = _props5.clsPrefix,
+	        rows = _props5.rows,
+	        filterDelay = _props5.filterDelay,
+	        locale = _props5.locale;
+	
+	    switch (type) {
+	      //文本输入
+	      case "text":
+	        return _react2["default"].createElement(_FilterType2["default"], {
+	          locale: locale //多语
+	          , rendertype: type //渲染类型
+	          , clsPrefix: clsPrefix //css前缀
+	          , className: clsPrefix + " filter-text",
+	          dataIndex: dataIndex //字段
+	          , onFilterChange: _this3.handlerFilterChange //输入框回调
+	          , onFilterClear: _this3.handlerFilterClear //清除回调
+	          , filterDropdown: rows[1][index]["filterdropdown"] //是否显示下拉条件
+	          , filterDropdownType: rows[1][index]["filterdropdowntype"] //下拉的条件类型为string,number
+	          , filterDropdownIncludeKeys: rows[1][index]["filterdropdownincludekeys"] //下拉条件按照指定的keys去显示
+	        });
+	      //数值输入
+	      case "number":
+	        return _react2["default"].createElement(_FilterType2["default"], {
+	          locale: locale,
+	          rendertype: type,
+	          clsPrefix: clsPrefix,
+	          className: clsPrefix + " filter-text",
+	          dataIndex: dataIndex //字段
+	          , onFilterChange: (0, _throttleDebounce.debounce)(filterDelay || 300, _this3.handlerFilterChange) //输入框回调并且函数防抖动
+	          , onFilterClear: _this3.handlerFilterClear //清除回调
+	          , filterDropdown: rows[1][index]["filterdropdown"],
+	          filterDropdownType: rows[1][index]["filterdropdowntype"] //下拉的条件类型为string,number
+	          , filterDropdownIncludeKeys: rows[1][index]["filterdropdownincludekeys"] //下拉条件按照指定的keys去显示
+	          , filterInputNumberOptions: rows[1][index]["filterinputnumberoptions"] //设置数值框内的详细属性
+	        });
+	      //下拉框选择
+	      case "dropdown":
+	        var selectDataSource = [];
+	        //处理没有输入数据源的时候，系统自动查找自带的数据筛选后注入
+	        if (rows.length > 0 && (rows[1][index]["filterdropdownauto"] || "auto") == "auto") {
+	          var hash = {};
+	          //处理下拉重复对象组装dropdown
+	          selectDataSource = Array.from(rows[1][0].datasource, function (x) {
+	            return {
+	              key: x[dataIndex],
+	              value: x[dataIndex]
+	            };
+	          });
+	          selectDataSource = selectDataSource.reduceRight(function (item, next) {
+	            hash[next.key] ? "" : hash[next.key] = true && item.push(next);
+	            return item;
+	          }, []);
+	        } else {
+	          //从外部数据源加载系统数据
+	          selectDataSource = rows[1][index]["filterdropdowndata"];
+	        }
+	        return _react2["default"].createElement(_FilterType2["default"], {
+	          locale: locale,
+	          rendertype: type,
+	          className: clsPrefix + " filter-dropdown",
+	          data: selectDataSource,
+	          notFoundContent: "Loading" //没有数据显示的默认字
+	          , dataIndex: dataIndex //字段
+	          , onFilterChange: _this3.handlerFilterChange //输入框回调
+	          , onFilterClear: _this3.handlerFilterClear //清除回调
+	          , filterDropdown: rows[1][index]["filterdropdown"],
+	          onFocus: rows[1][index]["filterdropdownfocus"],
+	          filterDropdownType: rows[1][index]["filterdropdowntype"] //下拉的条件类型为string,number
+	          , filterDropdownIncludeKeys: rows[1][index]["filterdropdownincludekeys"] //下拉条件按照指定的keys去显示
+	        });
+	      //日期
+	      case "date":
+	        return _react2["default"].createElement(_FilterType2["default"], {
+	          locale: locale,
+	          rendertype: type,
+	          className: "filter-date",
+	          onClick: function onClick() {},
+	          format: rows[1][index]["format"] || "YYYY-MM-DD",
+	          dataIndex: dataIndex //字段
+	          , onFilterChange: _this3.handlerFilterChange //输入框回调
+	          , onFilterClear: _this3.handlerFilterClear //清除回调
+	          , filterDropdown: rows[1][index]["filterdropdown"],
+	          filterDropdownType: rows[1][index]["filterdropdowntype"] //下拉的条件类型为string,number
+	          , filterDropdownIncludeKeys: rows[1][index]["filterdropdownincludekeys"] //下拉条件按照指定的keys去显示
+	        });
+	      //日期范围
+	      case "daterange":
+	        return _react2["default"].createElement(_FilterType2["default"], {
+	          locale: locale,
+	          rendertype: type,
+	          className: "filter-date",
+	          onClick: function onClick() {},
+	          format: rows[1][index]["format"] || "YYYY-MM-DD",
+	          dataIndex: dataIndex //字段
+	          , onFilterChange: _this3.handlerFilterChange //输入框回调
+	          , onFilterClear: _this3.handlerFilterClear //清除回调
+	          , filterDropdown: rows[1][index]["filterdropdown"],
+	          filterDropdownType: rows[1][index]["filterdropdowntype"] //下拉的条件类型为string,number
+	          , filterDropdownIncludeKeys: rows[1][index]["filterdropdownincludekeys"] //下拉条件按照指定的keys去显示
+	        });
+	      default:
+	        //不匹配类型默认文本输入
+	        return _react2["default"].createElement("div", null);
+	    }
+	  };
+	};
 	
 	TableHeader.propTypes = propTypes;
 	exports["default"] = TableHeader;
 	module.exports = exports["default"];
 
 /***/ }),
-/* 718 */
+/* 738 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -91163,7 +94987,7 @@
 
 
 /***/ }),
-/* 719 */
+/* 739 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -91198,11 +95022,11 @@
 	
 	var _beeSelect2 = _interopRequireDefault(_beeSelect);
 	
-	var _beeInputNumber = __webpack_require__(720);
+	var _beeInputNumber = __webpack_require__(740);
 	
 	var _beeInputNumber2 = _interopRequireDefault(_beeInputNumber);
 	
-	var _FilterDropDown = __webpack_require__(723);
+	var _FilterDropDown = __webpack_require__(743);
 	
 	var _FilterDropDown2 = _interopRequireDefault(_FilterDropDown);
 	
@@ -91589,7 +95413,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 720 */
+/* 740 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -91598,11 +95422,11 @@
 	  value: true
 	});
 	
-	var _InputNumber = __webpack_require__(721);
+	var _InputNumber = __webpack_require__(741);
 	
 	var _InputNumber2 = _interopRequireDefault(_InputNumber);
 	
-	var _InputNumberGroup = __webpack_require__(722);
+	var _InputNumberGroup = __webpack_require__(742);
 	
 	var _InputNumberGroup2 = _interopRequireDefault(_InputNumberGroup);
 	
@@ -91614,7 +95438,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 721 */
+/* 741 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -92221,7 +96045,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 722 */
+/* 742 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -92240,7 +96064,7 @@
 	
 	var _propTypes2 = _interopRequireDefault(_propTypes);
 	
-	var _InputNumber = __webpack_require__(721);
+	var _InputNumber = __webpack_require__(741);
 	
 	var _InputNumber2 = _interopRequireDefault(_InputNumber);
 	
@@ -92412,7 +96236,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 723 */
+/* 743 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -92429,11 +96253,11 @@
 	
 	var _propTypes2 = _interopRequireDefault(_propTypes);
 	
-	var _beeDropdown = __webpack_require__(724);
+	var _beeDropdown = __webpack_require__(717);
 	
 	var _beeDropdown2 = _interopRequireDefault(_beeDropdown);
 	
-	var _beeMenus = __webpack_require__(727);
+	var _beeMenus = __webpack_require__(720);
 	
 	var _beeMenus2 = _interopRequireDefault(_beeMenus);
 	
@@ -92445,7 +96269,7 @@
 	
 	var _beeIcon2 = _interopRequireDefault(_beeIcon);
 	
-	var _i18n = __webpack_require__(743);
+	var _i18n = __webpack_require__(716);
 	
 	var _i18n2 = _interopRequireDefault(_i18n);
 	
@@ -92734,3309 +96558,6 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 724 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _Dropdown = __webpack_require__(725);
-	
-	var _Dropdown2 = _interopRequireDefault(_Dropdown);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-	
-	exports["default"] = _Dropdown2["default"];
-	module.exports = exports['default'];
-
-/***/ }),
-/* 725 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _reactDom = __webpack_require__(2);
-	
-	var _reactDom2 = _interopRequireDefault(_reactDom);
-	
-	var _trigger = __webpack_require__(399);
-	
-	var _trigger2 = _interopRequireDefault(_trigger);
-	
-	var _placement = __webpack_require__(726);
-	
-	var _placement2 = _interopRequireDefault(_placement);
-	
-	var _propTypes = __webpack_require__(6);
-	
-	var _propTypes2 = _interopRequireDefault(_propTypes);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-	
-	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
-	
-	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); } /**
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               * This source code is quoted from rc-dropdown.
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               * homepage: https://github.com/react-component/dropdown
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               */
-	
-	
-	var propTypes = {
-	  minOverlayWidthMatchTrigger: _propTypes2["default"].bool,
-	  onVisibleChange: _propTypes2["default"].func,
-	  clsPrefix: _propTypes2["default"].string,
-	  children: _propTypes2["default"].any,
-	  transitionName: _propTypes2["default"].string,
-	  overlayClassName: _propTypes2["default"].string,
-	  animation: _propTypes2["default"].any,
-	  align: _propTypes2["default"].object,
-	  overlayStyle: _propTypes2["default"].object,
-	  placement: _propTypes2["default"].string,
-	  trigger: _propTypes2["default"].array,
-	  showAction: _propTypes2["default"].array,
-	  hideAction: _propTypes2["default"].array,
-	  getPopupContainer: _propTypes2["default"].func
-	};
-	
-	var defaultProps = {
-	  minOverlayWidthMatchTrigger: true,
-	  clsPrefix: 'u-dropdown',
-	  trigger: ['hover'],
-	  showAction: [],
-	  hideAction: [],
-	  overlayClassName: '',
-	  overlayStyle: {},
-	  defaultVisible: false,
-	  onVisibleChange: function onVisibleChange() {},
-	
-	  placement: 'bottomLeft'
-	};
-	
-	var jadgeState = function jadgeState(props) {
-	  if ('visible' in props) {
-	    return props.visible;
-	  }
-	  return props.defaultVisible;
-	};
-	
-	var Dropdown = function (_React$Component) {
-	  _inherits(Dropdown, _React$Component);
-	
-	  function Dropdown(props) {
-	    _classCallCheck(this, Dropdown);
-	
-	    var _this = _possibleConstructorReturn(this, _React$Component.call(this, props));
-	
-	    _this.state = {
-	      visible: jadgeState(_this.props)
-	    };
-	    _this.onClick = _this.onClick.bind(_this);
-	    _this.onVisibleChange = _this.onVisibleChange.bind(_this);
-	    _this.getMenuElement = _this.getMenuElement.bind(_this);
-	    _this.getPopupDomNode = _this.getPopupDomNode.bind(_this);
-	    _this.afterVisibleChange = _this.afterVisibleChange.bind(_this);
-	
-	    return _this;
-	  }
-	
-	  Dropdown.prototype.componentWillReceiveProps = function componentWillReceiveProps(_ref) {
-	    var visible = _ref.visible;
-	
-	    if (visible !== undefined) {
-	      this.setState({
-	        visible: visible
-	      });
-	    }
-	  };
-	
-	  Dropdown.prototype.onClick = function onClick(e) {
-	    var props = this.props;
-	    var overlayProps = props.overlay.props;
-	    // do no call onVisibleChange, if you need click to hide, use onClick and control visible
-	    if (!('visible' in props)) {
-	      this.setState({
-	        visible: false
-	      });
-	    }
-	    if (overlayProps.onClick) {
-	      overlayProps.onClick(e);
-	    }
-	  };
-	
-	  Dropdown.prototype.onVisibleChange = function onVisibleChange(visible) {
-	    var props = this.props;
-	    if (!('visible' in props)) {
-	      this.setState({
-	        visible: visible
-	      });
-	    }
-	    props.onVisibleChange(visible);
-	  };
-	
-	  Dropdown.prototype.getMenuElement = function getMenuElement() {
-	    var _props = this.props,
-	        overlay = _props.overlay,
-	        clsPrefix = _props.clsPrefix;
-	
-	
-	    return _react2["default"].cloneElement(overlay, {
-	      prefixCls: clsPrefix + '-menu',
-	      onClick: this.onClick
-	    });
-	  };
-	
-	  Dropdown.prototype.getPopupDomNode = function getPopupDomNode() {
-	    return this.refs.trigger.getPopupDomNode();
-	  };
-	
-	  Dropdown.prototype.afterVisibleChange = function afterVisibleChange(visible) {
-	    if (visible && this.props.minOverlayWidthMatchTrigger) {
-	      var overlayNode = this.getPopupDomNode();
-	      var rootNode = _reactDom2["default"].findDOMNode(this);
-	      if (rootNode.offsetWidth > overlayNode.offsetWidth) {
-	        overlayNode.style['min-width'] = rootNode.offsetWidth + 'px';
-	      }
-	    }
-	  };
-	
-	  Dropdown.prototype.render = function render() {
-	    var _props2 = this.props,
-	        clsPrefix = _props2.clsPrefix,
-	        children = _props2.children,
-	        transitionName = _props2.transitionName,
-	        animation = _props2.animation,
-	        align = _props2.align,
-	        placement = _props2.placement,
-	        getPopupContainer = _props2.getPopupContainer,
-	        showAction = _props2.showAction,
-	        hideAction = _props2.hideAction,
-	        overlayClassName = _props2.overlayClassName,
-	        overlayStyle = _props2.overlayStyle,
-	        trigger = _props2.trigger,
-	        getDocument = _props2.getDocument,
-	        disabled = _props2.disabled,
-	        delay = _props2.delay,
-	        delayShow = _props2.delayShow,
-	        delayHide = _props2.delayHide,
-	        props = _objectWithoutProperties(_props2, ['clsPrefix', 'children', 'transitionName', 'animation', 'align', 'placement', 'getPopupContainer', 'showAction', 'hideAction', 'overlayClassName', 'overlayStyle', 'trigger', 'getDocument', 'disabled', 'delay', 'delayShow', 'delayHide']);
-	
-	    return _react2["default"].createElement(
-	      _trigger2["default"],
-	      _extends({}, props, {
-	        clsPrefix: clsPrefix,
-	        ref: 'trigger',
-	        popupClassName: overlayClassName,
-	        popupStyle: overlayStyle,
-	        builtinPlacements: _placement2["default"],
-	        action: trigger,
-	        showAction: showAction,
-	        hideAction: hideAction,
-	        popupPlacement: placement,
-	        popupAlign: align,
-	        popupTransitionName: transitionName,
-	        popupAnimation: animation,
-	        popupVisible: disabled ? false : this.state.visible,
-	        afterPopupVisibleChange: this.afterVisibleChange,
-	        popup: this.getMenuElement(),
-	        onPopupVisibleChange: this.onVisibleChange,
-	        getPopupContainer: getPopupContainer,
-	        getDocument: getDocument,
-	        mouseEnterDelay: delayShow && delayShow / 1000 || delay && delay / 1000,
-	        mouseLeaveDelay: delayHide && delayHide / 1000 || delay && delay / 1000
-	      }),
-	      children
-	    );
-	  };
-	
-	  return Dropdown;
-	}(_react2["default"].Component);
-	
-	;
-	
-	Dropdown.propTypes = propTypes;
-	Dropdown.defaultProps = defaultProps;
-	
-	exports["default"] = Dropdown;
-	module.exports = exports['default'];
-
-/***/ }),
-/* 726 */
-/***/ (function(module, exports) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	var autoAdjustOverflow = {
-	  adjustX: 1,
-	  adjustY: 1
-	};
-	
-	var targetOffset = [0, 0];
-	
-	var placements = exports.placements = {
-	  topLeft: {
-	    points: ['bl', 'tl'],
-	    overflow: autoAdjustOverflow,
-	    offset: [0, -4],
-	    targetOffset: targetOffset
-	  },
-	  topCenter: {
-	    points: ['bc', 'tc'],
-	    overflow: autoAdjustOverflow,
-	    offset: [0, -4],
-	    targetOffset: targetOffset
-	  },
-	  topRight: {
-	    points: ['br', 'tr'],
-	    overflow: autoAdjustOverflow,
-	    offset: [0, -4],
-	    targetOffset: targetOffset
-	  },
-	  bottomLeft: {
-	    points: ['tl', 'bl'],
-	    overflow: autoAdjustOverflow,
-	    offset: [0, 4],
-	    targetOffset: targetOffset
-	  },
-	  bottomCenter: {
-	    points: ['tc', 'bc'],
-	    overflow: autoAdjustOverflow,
-	    offset: [0, 4],
-	    targetOffset: targetOffset
-	  },
-	  bottomRight: {
-	    points: ['tr', 'br'],
-	    overflow: autoAdjustOverflow,
-	    offset: [0, 4],
-	    targetOffset: targetOffset
-	  }
-	};
-	
-	exports["default"] = placements;
-
-/***/ }),
-/* 727 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _VerticalMenu = __webpack_require__(728);
-	
-	var _VerticalMenu2 = _interopRequireDefault(_VerticalMenu);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-	
-	exports["default"] = _VerticalMenu2["default"];
-	module.exports = exports['default'];
-
-/***/ }),
-/* 728 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _ExportMenu = __webpack_require__(729);
-	
-	var _ExportMenu2 = _interopRequireDefault(_ExportMenu);
-	
-	var _openAnimation = __webpack_require__(741);
-	
-	var _openAnimation2 = _interopRequireDefault(_openAnimation);
-	
-	var _warning = __webpack_require__(742);
-	
-	var _warning2 = _interopRequireDefault(_warning);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-	
-	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
-	
-	var Menu = function (_React$Component) {
-	  _inherits(Menu, _React$Component);
-	
-	  function Menu(props) {
-	    _classCallCheck(this, Menu);
-	
-	    var _this = _possibleConstructorReturn(this, _React$Component.call(this, props));
-	
-	    _this.handleClick = function (e) {
-	      _this.setOpenKeys([]);
-	
-	      var onClick = _this.props.onClick;
-	      if (onClick) {
-	        onClick(e);
-	      }
-	    };
-	
-	    _this.handleOpenChange = function (openKeys) {
-	      _this.setOpenKeys(openKeys);
-	
-	      var onOpenChange = _this.props.onOpenChange;
-	      if (onOpenChange) {
-	        onOpenChange(openKeys);
-	      }
-	    };
-	
-	    (0, _warning2["default"])(!('onOpen' in props || 'onClose' in props), '`onOpen` and `onClose` are removed, please use `onOpenChange` instead.');
-	
-	    _this.state = {
-	      openKeys: []
-	    };
-	    _this.rcMenu = {};
-	    return _this;
-	  }
-	
-	  Menu.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
-	    if (this.props.mode === 'inline' && nextProps.mode !== 'inline') {
-	      this.switchModeFromInline = true;
-	    }
-	    if ('openKeys' in nextProps) {
-	      this.setOpenKeys(nextProps.openKeys);
-	    }
-	  };
-	
-	  Menu.prototype.setOpenKeys = function setOpenKeys(openKeys) {
-	    if (!('openKeys' in this.props)) {
-	      this.setState({ openKeys: openKeys });
-	    }
-	  };
-	
-	  Menu.prototype.render = function render() {
-	    var _this2 = this;
-	
-	    var openAnimation = this.props.openAnimation || this.props.openTransitionName;
-	    if (!openAnimation) {
-	      switch (this.props.mode) {
-	        case 'horizontal':
-	          openAnimation = '';
-	          break;
-	        case 'vertical':
-	          // When mode switch from inline
-	          // submenu should hide without animation
-	          if (this.switchModeFromInline) {
-	            openAnimation = _openAnimation2["default"];
-	            this.switchModeFromInline = false;
-	          } else {
-	            openAnimation = 'zoom-big';
-	          }
-	          break;
-	        case 'inline':
-	          openAnimation = _openAnimation2["default"];
-	          break;
-	        default:
-	      }
-	    }
-	
-	    var props = {};
-	    var className = this.props.className + ' ' + this.props.prefixCls + '-' + this.props.theme;
-	    if (this.props.mode !== 'inline') {
-	      // 这组属性的目的是
-	      // 弹出型的菜单需要点击后立即关闭
-	      // 另外，弹出型的菜单的受控模式没有使用场景
-	      props = {
-	        openKeys: this.state.openKeys,
-	        onClick: this.handleClick,
-	        onOpenChange: this.handleOpenChange,
-	        openTransitionName: openAnimation,
-	        className: className
-	      };
-	    } else {
-	      props = {
-	        openAnimation: openAnimation,
-	        className: className
-	      };
-	    }
-	    return _react2["default"].createElement(_ExportMenu2["default"], _extends({ ref: function ref(el) {
-	        return _this2.rcMenu = el;
-	      } }, this.props, props));
-	  };
-	
-	  return Menu;
-	}(_react2["default"].Component);
-	
-	Menu.defaultProps = {
-	  prefixCls: 'u-menu',
-	  className: '',
-	  theme: 'light' // or dark
-	};
-	
-	Menu.Divider = _ExportMenu.Divider;
-	Menu.Item = _ExportMenu.Item;
-	Menu.SubMenu = _ExportMenu.SubMenu;
-	Menu.ItemGroup = _ExportMenu.ItemGroup;
-	Menu.MenuToggle = _ExportMenu.MenuToggle;
-	Menu.SideContainer = _ExportMenu.SideContainer;
-	exports["default"] = Menu;
-	module.exports = exports['default'];
-
-/***/ }),
-/* 729 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.MenuToggle = exports.SideContainer = exports.Divider = exports.ItemGroup = exports.MenuItemGroup = exports.MenuItem = exports.Item = exports.SubMenu = undefined;
-	
-	var _Menu = __webpack_require__(730);
-	
-	var _Menu2 = _interopRequireDefault(_Menu);
-	
-	var _SubMenu = __webpack_require__(734);
-	
-	var _SubMenu2 = _interopRequireDefault(_SubMenu);
-	
-	var _MenuItem = __webpack_require__(736);
-	
-	var _MenuItem2 = _interopRequireDefault(_MenuItem);
-	
-	var _MenuItemGroup = __webpack_require__(737);
-	
-	var _MenuItemGroup2 = _interopRequireDefault(_MenuItemGroup);
-	
-	var _Divider = __webpack_require__(738);
-	
-	var _Divider2 = _interopRequireDefault(_Divider);
-	
-	var _SideContainer = __webpack_require__(739);
-	
-	var _SideContainer2 = _interopRequireDefault(_SideContainer);
-	
-	var _MenuToggle = __webpack_require__(740);
-	
-	var _MenuToggle2 = _interopRequireDefault(_MenuToggle);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-	
-	exports.SubMenu = _SubMenu2["default"];
-	exports.Item = _MenuItem2["default"];
-	exports.MenuItem = _MenuItem2["default"];
-	exports.MenuItemGroup = _MenuItemGroup2["default"];
-	exports.ItemGroup = _MenuItemGroup2["default"];
-	exports.Divider = _Divider2["default"];
-	exports.SideContainer = _SideContainer2["default"];
-	exports.MenuToggle = _MenuToggle2["default"]; /**
-	                                           * This source code is quoted from rc-menu.
-	                                           * homepage: https://github.com/react-component/menu
-	                                           */
-	
-	exports["default"] = _Menu2["default"];
-
-/***/ }),
-/* 730 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _reactDom = __webpack_require__(2);
-	
-	var _reactDom2 = _interopRequireDefault(_reactDom);
-	
-	var _propTypes = __webpack_require__(6);
-	
-	var _propTypes2 = _interopRequireDefault(_propTypes);
-	
-	var _miniStore = __webpack_require__(347);
-	
-	var _SubPopupMenu = __webpack_require__(731);
-	
-	var _SubPopupMenu2 = _interopRequireDefault(_SubPopupMenu);
-	
-	var _util = __webpack_require__(732);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-	
-	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
-	
-	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); } /**
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               * This source code is quoted from rc-menu.
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               * homepage: https://github.com/react-component/menu
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               */
-	
-	
-	var Menu = function (_React$Component) {
-	  _inherits(Menu, _React$Component);
-	
-	  function Menu(props) {
-	    _classCallCheck(this, Menu);
-	
-	    var _this = _possibleConstructorReturn(this, _React$Component.call(this, props));
-	
-	    _initialiseProps.call(_this);
-	
-	    _this.isRootMenu = true;
-	
-	    var selectedKeys = props.defaultSelectedKeys;
-	    var openKeys = props.defaultOpenKeys;
-	    if ('selectedKeys' in props) {
-	      selectedKeys = props.selectedKeys || [];
-	    }
-	    if ('openKeys' in props) {
-	      openKeys = props.openKeys || [];
-	    }
-	
-	    _this.store = (0, _miniStore.create)({
-	      selectedKeys: selectedKeys,
-	      openKeys: openKeys,
-	      activeKey: { '0-menu-': (0, _SubPopupMenu.getActiveKey)(props, props.activeKey) }
-	    });
-	    return _this;
-	  }
-	
-	  Menu.prototype.componentDidMount = function componentDidMount() {
-	    this.updateMiniStore();
-	  };
-	
-	  Menu.prototype.componentDidUpdate = function componentDidUpdate() {
-	    this.updateMiniStore();
-	  };
-	
-	  // onKeyDown needs to be exposed as a instance method
-	  // e.g., in rc-select, we need to navigate menu item while
-	  // current active item is rc-select input box rather than the menu itself
-	
-	
-	  Menu.prototype.updateMiniStore = function updateMiniStore() {
-	    if ('selectedKeys' in this.props) {
-	      this.store.setState({
-	        selectedKeys: this.props.selectedKeys || [],
-	        keyboard: this.props.keyboard || false
-	      });
-	    }
-	    if ('openKeys' in this.props) {
-	      this.store.setState({
-	        openKeys: this.props.openKeys || [],
-	        keyboard: this.props.keyboard || false
-	      });
-	    }
-	  };
-	
-	  Menu.prototype.render = function render() {
-	    var _this2 = this;
-	
-	    var props = _objectWithoutProperties(this.props, []);
-	
-	    props.className += ' ' + props.prefixCls + '-root';
-	    props = _extends({}, props, {
-	      onClick: this.onClick,
-	      onOpenChange: this.onOpenChange,
-	      onDeselect: this.onDeselect,
-	      onSelect: this.onSelect,
-	      openTransitionName: this.getOpenTransitionName(),
-	      parentMenu: this
-	    });
-	    return _react2["default"].createElement(
-	      _miniStore.Provider,
-	      { store: this.store },
-	      _react2["default"].createElement(
-	        _SubPopupMenu2["default"],
-	        _extends({}, props, { onFocus: this.focus, ref: function ref(c) {
-	            return _this2.innerMenu = c;
-	          } }),
-	        this.props.children
-	      )
-	    );
-	  };
-	
-	  return Menu;
-	}(_react2["default"].Component);
-	
-	Menu.propTypes = {
-	  defaultSelectedKeys: _propTypes2["default"].arrayOf(_propTypes2["default"].string),
-	  defaultActiveFirst: _propTypes2["default"].bool,
-	  selectedKeys: _propTypes2["default"].arrayOf(_propTypes2["default"].string),
-	  defaultOpenKeys: _propTypes2["default"].arrayOf(_propTypes2["default"].string),
-	  openKeys: _propTypes2["default"].arrayOf(_propTypes2["default"].string),
-	  mode: _propTypes2["default"].oneOf(['horizontal', 'vertical', 'vertical-left', 'vertical-right', 'inline']),
-	  getPopupContainer: _propTypes2["default"].func,
-	  onClick: _propTypes2["default"].func,
-	  onSelect: _propTypes2["default"].func,
-	  onDeselect: _propTypes2["default"].func,
-	  onDestroy: _propTypes2["default"].func,
-	  openTransitionName: _propTypes2["default"].string,
-	  openAnimation: _propTypes2["default"].oneOfType([_propTypes2["default"].string, _propTypes2["default"].object]),
-	  subMenuOpenDelay: _propTypes2["default"].number,
-	  subMenuCloseDelay: _propTypes2["default"].number,
-	  forceSubMenuRender: _propTypes2["default"].bool,
-	  triggerSubMenuAction: _propTypes2["default"].string,
-	  level: _propTypes2["default"].number,
-	  selectable: _propTypes2["default"].bool,
-	  multiple: _propTypes2["default"].bool,
-	  children: _propTypes2["default"].any,
-	  className: _propTypes2["default"].string,
-	  style: _propTypes2["default"].object,
-	  activeKey: _propTypes2["default"].string,
-	  prefixCls: _propTypes2["default"].string,
-	  builtinPlacements: _propTypes2["default"].object,
-	  itemIcon: _propTypes2["default"].oneOfType([_propTypes2["default"].func, _propTypes2["default"].node]),
-	  expandIcon: _propTypes2["default"].oneOfType([_propTypes2["default"].func, _propTypes2["default"].node]),
-	  overflowedIndicator: _propTypes2["default"].node,
-	  keyboard: _propTypes2["default"].bool
-	};
-	Menu.defaultProps = {
-	  selectable: true,
-	  onClick: _util.noop,
-	  onSelect: _util.noop,
-	  onOpenChange: _util.noop,
-	  onDeselect: _util.noop,
-	  defaultSelectedKeys: [],
-	  defaultOpenKeys: [],
-	  subMenuOpenDelay: 0.1,
-	  subMenuCloseDelay: 0.1,
-	  triggerSubMenuAction: 'hover',
-	  prefixCls: 'rc-menu',
-	  className: '',
-	  mode: 'vertical',
-	  style: {},
-	  builtinPlacements: {},
-	  overflowedIndicator: _react2["default"].createElement(
-	    'span',
-	    null,
-	    '\xB7\xB7\xB7'
-	  ),
-	  keyboard: false,
-	  tabIndex: '0'
-	};
-	
-	var _initialiseProps = function _initialiseProps() {
-	  var _this3 = this;
-	
-	  this.onSelect = function (selectInfo) {
-	    var props = _this3.props;
-	    if (props.selectable) {
-	      // root menu
-	      var selectedKeys = _this3.store.getState().selectedKeys;
-	      var selectedKey = selectInfo.key;
-	      if (props.multiple) {
-	        selectedKeys = selectedKeys.concat([selectedKey]);
-	      } else {
-	        selectedKeys = [selectedKey];
-	      }
-	      if (!('selectedKeys' in props)) {
-	        _this3.store.setState({
-	          selectedKeys: selectedKeys
-	        });
-	      }
-	      props.onSelect(_extends({}, selectInfo, {
-	        selectedKeys: selectedKeys
-	      }));
-	    }
-	  };
-	
-	  this.onClick = function (e) {
-	    _this3.props.onClick(e);
-	  };
-	
-	  this.onKeyDown = function (e, callback) {
-	    _this3.innerMenu.getWrappedInstance().onKeyDown(e, callback);
-	  };
-	
-	  this.onOpenChange = function (event) {
-	    var props = _this3.props;
-	    var openKeys = _this3.store.getState().openKeys.concat();
-	    var changed = false;
-	    var processSingle = function processSingle(e) {
-	      var oneChanged = false;
-	      if (e.open) {
-	        oneChanged = openKeys.indexOf(e.key) === -1;
-	        if (oneChanged) {
-	          openKeys.push(e.key);
-	        }
-	      } else {
-	        var index = openKeys.indexOf(e.key);
-	        oneChanged = index !== -1;
-	        if (oneChanged) {
-	          openKeys.splice(index, 1);
-	        }
-	      }
-	      changed = changed || oneChanged;
-	    };
-	    if (Array.isArray(event)) {
-	      // batch change call
-	      event.forEach(processSingle);
-	    } else {
-	      processSingle(event);
-	    }
-	    if (changed) {
-	      if (!('openKeys' in _this3.props)) {
-	        _this3.store.setState({ openKeys: openKeys });
-	      }
-	      props.onOpenChange(openKeys);
-	    }
-	  };
-	
-	  this.onDeselect = function (selectInfo) {
-	    var props = _this3.props;
-	    if (props.selectable) {
-	      var selectedKeys = _this3.store.getState().selectedKeys.concat();
-	      var selectedKey = selectInfo.key;
-	      var index = selectedKeys.indexOf(selectedKey);
-	      if (index !== -1) {
-	        selectedKeys.splice(index, 1);
-	      }
-	      if (!('selectedKeys' in props)) {
-	        _this3.store.setState({
-	          selectedKeys: selectedKeys
-	        });
-	      }
-	      props.onDeselect(_extends({}, selectInfo, {
-	        selectedKeys: selectedKeys
-	      }));
-	    }
-	  };
-	
-	  this.getOpenTransitionName = function () {
-	    var props = _this3.props;
-	    var transitionName = props.openTransitionName;
-	    var animationName = props.openAnimation;
-	    if (!transitionName && typeof animationName === 'string') {
-	      transitionName = props.prefixCls + '-open-' + animationName;
-	    }
-	    return transitionName;
-	  };
-	
-	  this.focus = function () {
-	    (0, _util.fireKeyEvent)(_reactDom2["default"].findDOMNode(_this3.innerMenu), 'keydown', 40);
-	    _this3.props.onFocus && _this3.props.onFocus();
-	  };
-	};
-	
-	exports["default"] = Menu;
-	module.exports = exports['default'];
-
-/***/ }),
-/* 731 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.SubPopupMenu = undefined;
-	
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; /**
-	                                                                                                                                                                                                                                                                  * This source code is quoted from rc-menu.
-	                                                                                                                                                                                                                                                                  * homepage: https://github.com/react-component/menu
-	                                                                                                                                                                                                                                                                  */
-	
-	
-	exports.getActiveKey = getActiveKey;
-	exports.saveRef = saveRef;
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _propTypes = __webpack_require__(6);
-	
-	var _propTypes2 = _interopRequireDefault(_propTypes);
-	
-	var _miniStore = __webpack_require__(347);
-	
-	var _tinperBeeCore = __webpack_require__(26);
-	
-	var _createChainedFunction = __webpack_require__(359);
-	
-	var _createChainedFunction2 = _interopRequireDefault(_createChainedFunction);
-	
-	var _classnames = __webpack_require__(5);
-	
-	var _classnames2 = _interopRequireDefault(_classnames);
-	
-	var _util = __webpack_require__(732);
-	
-	var _DOMWrap = __webpack_require__(733);
-	
-	var _DOMWrap2 = _interopRequireDefault(_DOMWrap);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-	
-	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
-	
-	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
-	
-	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-	
-	function allDisabled(arr) {
-	  if (!arr.length) {
-	    return true;
-	  }
-	  return arr.every(function (c) {
-	    return !!c.props.disabled;
-	  });
-	}
-	
-	function updateActiveKey(store, menuId, activeKey) {
-	  var state = store.getState();
-	  store.setState({
-	    activeKey: _extends({}, state.activeKey, _defineProperty({}, menuId, activeKey))
-	  });
-	}
-	
-	function getEventKey(props) {
-	  // when eventKey not available ,it's menu and return menu id '0-menu-'
-	  return props.eventKey || '0-menu-';
-	}
-	
-	function getActiveKey(props, originalActiveKey) {
-	  var activeKey = originalActiveKey;
-	  var children = props.children,
-	      eventKey = props.eventKey;
-	
-	  if (activeKey) {
-	    var found = void 0;
-	    (0, _util.loopMenuItem)(children, function (c, i) {
-	      if (c && !c.props.disabled && activeKey === (0, _util.getKeyFromChildrenIndex)(c, eventKey, i)) {
-	        found = true;
-	      }
-	    });
-	    if (found) {
-	      return activeKey;
-	    }
-	  }
-	  activeKey = null;
-	  if (props.defaultActiveFirst) {
-	    (0, _util.loopMenuItem)(children, function (c, i) {
-	      if (!activeKey && c && !c.props.disabled) {
-	        activeKey = (0, _util.getKeyFromChildrenIndex)(c, eventKey, i);
-	      }
-	    });
-	    return activeKey;
-	  }
-	  return activeKey;
-	}
-	
-	function saveRef(c) {
-	  if (c) {
-	    var index = this.instanceArray.indexOf(c);
-	    if (index !== -1) {
-	      // update component if it's already inside instanceArray
-	      this.instanceArray[index] = c;
-	    } else {
-	      // add component if it's not in instanceArray yet;
-	      this.instanceArray.push(c);
-	    }
-	  }
-	}
-	
-	var SubPopupMenu = exports.SubPopupMenu = function (_React$Component) {
-	  _inherits(SubPopupMenu, _React$Component);
-	
-	  function SubPopupMenu(props) {
-	    _classCallCheck(this, SubPopupMenu);
-	
-	    var _this = _possibleConstructorReturn(this, _React$Component.call(this, props));
-	
-	    _initialiseProps.call(_this);
-	
-	    props.store.setState({
-	      activeKey: _extends({}, props.store.getState().activeKey, _defineProperty({}, props.eventKey, getActiveKey(props, props.activeKey)))
-	    });
-	
-	    _this.instanceArray = [];
-	    return _this;
-	  }
-	
-	  SubPopupMenu.prototype.componentDidMount = function componentDidMount() {
-	    // invoke customized ref to expose component to mixin
-	    if (this.props.manualRef) {
-	      this.props.manualRef(this);
-	    }
-	  };
-	
-	  SubPopupMenu.prototype.shouldComponentUpdate = function shouldComponentUpdate(nextProps) {
-	    return this.props.visible || nextProps.visible;
-	  };
-	
-	  SubPopupMenu.prototype.componentDidUpdate = function componentDidUpdate(prevProps) {
-	    var props = this.props;
-	    var originalActiveKey = 'activeKey' in props ? props.activeKey : props.store.getState().activeKey[getEventKey(props)];
-	    var activeKey = getActiveKey(props, originalActiveKey);
-	    if (activeKey !== originalActiveKey) {
-	      updateActiveKey(props.store, getEventKey(props), activeKey);
-	    } else if ('activeKey' in prevProps) {
-	      // If prev activeKey is not same as current activeKey,
-	      // we should set it.
-	      var prevActiveKey = getActiveKey(prevProps, prevProps.activeKey);
-	      if (activeKey !== prevActiveKey) {
-	        updateActiveKey(props.store, getEventKey(props), activeKey);
-	      }
-	    }
-	  };
-	
-	  // all keyboard events callbacks run from here at first
-	
-	
-	  SubPopupMenu.prototype.render = function render() {
-	    var _this2 = this;
-	
-	    var props = _objectWithoutProperties(this.props, []);
-	
-	    this.instanceArray = [];
-	    var className = (0, _classnames2["default"])(props.prefixCls, props.className, props.prefixCls + '-' + props.mode);
-	    var domProps = {
-	      className: className,
-	      // role could be 'select' and by default set to menu
-	      role: props.role || 'menu'
-	    };
-	    if (props.id) {
-	      domProps.id = props.id;
-	    }
-	    if (props.focusable) {
-	      domProps.tabIndex = this.props.tabIndex;
-	      domProps.onKeyDown = this.onKeyDown;
-	    }
-	    var prefixCls = props.prefixCls,
-	        eventKey = props.eventKey,
-	        visible = props.visible,
-	        level = props.level,
-	        mode = props.mode,
-	        overflowedIndicator = props.overflowedIndicator,
-	        theme = props.theme;
-	
-	    _util.menuAllProps.forEach(function (key) {
-	      return delete props[key];
-	    });
-	
-	    // Otherwise, the propagated click event will trigger another onClick
-	    delete props.onClick;
-	    delete props.keyboard;
-	
-	    return (
-	      // ESLint is not smart enough to know that the type of `children` was checked.
-	      /* eslint-disable */
-	      _react2["default"].createElement(
-	        _DOMWrap2["default"],
-	        _extends({}, props, {
-	          prefixCls: prefixCls,
-	          mode: mode,
-	          tag: 'ul',
-	          level: level,
-	          theme: theme,
-	          hiddenClassName: prefixCls + '-hidden',
-	          visible: visible,
-	          overflowedIndicator: overflowedIndicator
-	        }, domProps),
-	        _react2["default"].Children.map(props.children, function (c, i) {
-	          return _this2.renderMenuItem(c, i, eventKey || '0-menu-');
-	        })
-	      )
-	      /*eslint-enable */
-	
-	    );
-	  };
-	
-	  return SubPopupMenu;
-	}(_react2["default"].Component);
-	
-	SubPopupMenu.propTypes = {
-	  onSelect: _propTypes2["default"].func,
-	  onClick: _propTypes2["default"].func,
-	  onDeselect: _propTypes2["default"].func,
-	  onOpenChange: _propTypes2["default"].func,
-	  onDestroy: _propTypes2["default"].func,
-	  openTransitionName: _propTypes2["default"].string,
-	  openAnimation: _propTypes2["default"].oneOfType([_propTypes2["default"].string, _propTypes2["default"].object]),
-	  openKeys: _propTypes2["default"].arrayOf(_propTypes2["default"].string),
-	  visible: _propTypes2["default"].bool,
-	  children: _propTypes2["default"].any,
-	  parentMenu: _propTypes2["default"].object,
-	  eventKey: _propTypes2["default"].string,
-	  store: _propTypes2["default"].shape({
-	    getState: _propTypes2["default"].func,
-	    setState: _propTypes2["default"].func
-	  }),
-	
-	  // adding in refactor
-	  focusable: _propTypes2["default"].bool,
-	  multiple: _propTypes2["default"].bool,
-	  style: _propTypes2["default"].object,
-	  defaultActiveFirst: _propTypes2["default"].bool,
-	  activeKey: _propTypes2["default"].string,
-	  selectedKeys: _propTypes2["default"].arrayOf(_propTypes2["default"].string),
-	  defaultSelectedKeys: _propTypes2["default"].arrayOf(_propTypes2["default"].string),
-	  defaultOpenKeys: _propTypes2["default"].arrayOf(_propTypes2["default"].string),
-	  level: _propTypes2["default"].number,
-	  mode: _propTypes2["default"].oneOf(['horizontal', 'vertical', 'vertical-left', 'vertical-right', 'inline']),
-	  triggerSubMenuAction: _propTypes2["default"].oneOf(['click', 'hover']),
-	  inlineIndent: _propTypes2["default"].oneOfType([_propTypes2["default"].number, _propTypes2["default"].string]),
-	  manualRef: _propTypes2["default"].func,
-	  itemIcon: _propTypes2["default"].oneOfType([_propTypes2["default"].func, _propTypes2["default"].node]),
-	  expandIcon: _propTypes2["default"].oneOfType([_propTypes2["default"].func, _propTypes2["default"].node])
-	};
-	SubPopupMenu.defaultProps = {
-	  prefixCls: 'rc-menu',
-	  className: '',
-	  mode: 'vertical',
-	  level: 1,
-	  inlineIndent: 24,
-	  visible: true,
-	  focusable: true,
-	  style: {},
-	  manualRef: _util.noop
-	};
-	
-	var _initialiseProps = function _initialiseProps() {
-	  var _this3 = this;
-	
-	  this.onKeyDown = function (e, callback) {
-	    var keyCode = e.keyCode;
-	    var handled = void 0;
-	    _this3.getFlatInstanceArray().forEach(function (obj) {
-	      if (obj && obj.props.active && obj.onKeyDown) {
-	        handled = obj.onKeyDown(e);
-	      }
-	    });
-	    if (handled) {
-	      return 1;
-	    }
-	    var activeItem = null;
-	    if (keyCode === _tinperBeeCore.KeyCode.UP || keyCode === _tinperBeeCore.KeyCode.DOWN) {
-	      if (_this3.props.store.getState().keyboard) {
-	        //是否启用键盘操作
-	        activeItem = _this3.step(keyCode === _tinperBeeCore.KeyCode.UP ? -2 : 2);
-	      }
-	    }
-	
-	    if (activeItem) {
-	      e.preventDefault();
-	      updateActiveKey(_this3.props.store, getEventKey(_this3.props), activeItem.props.eventKey);
-	
-	      if (typeof callback === 'function') {
-	        callback(activeItem);
-	      }
-	
-	      return 1;
-	    }
-	  };
-	
-	  this.onItemHover = function (e) {
-	    var key = e.key,
-	        hover = e.hover;
-	
-	    updateActiveKey(_this3.props.store, getEventKey(_this3.props), hover ? key : null);
-	  };
-	
-	  this.onDeselect = function (selectInfo) {
-	    _this3.props.onDeselect(selectInfo);
-	  };
-	
-	  this.onSelect = function (selectInfo) {
-	    _this3.props.onSelect(selectInfo);
-	  };
-	
-	  this.onClick = function (e) {
-	    _this3.props.onClick(e);
-	  };
-	
-	  this.onOpenChange = function (e) {
-	    _this3.props.onOpenChange(e);
-	  };
-	
-	  this.onDestroy = function (key) {
-	    /* istanbul ignore next */
-	    _this3.props.onDestroy(key);
-	  };
-	
-	  this.getFlatInstanceArray = function () {
-	    return _this3.instanceArray;
-	  };
-	
-	  this.getOpenTransitionName = function () {
-	    return _this3.props.openTransitionName;
-	  };
-	
-	  this.step = function (direction) {
-	    var children = _this3.getFlatInstanceArray();
-	    var activeKey = _this3.props.store.getState().activeKey[getEventKey(_this3.props)];
-	    var len = children.length;
-	    if (!len) {
-	      return null;
-	    }
-	    if (direction < 0) {
-	      children = children.concat().reverse();
-	    }
-	    // find current activeIndex
-	    var activeIndex = -1;
-	    children.every(function (c, ci) {
-	      if (c && c.props.eventKey === activeKey) {
-	        activeIndex = ci;
-	        return false;
-	      }
-	      return true;
-	    });
-	    if (!_this3.props.defaultActiveFirst && activeIndex !== -1 && allDisabled(children.slice(activeIndex, len - 1))) {
-	      return undefined;
-	    }
-	    var start = (activeIndex + 1) % len;
-	    var i = start;
-	
-	    do {
-	      var child = children[i];
-	      if (!child || child.props.disabled) {
-	        i = (i + 1) % len;
-	      } else {
-	        return child;
-	      }
-	    } while (i !== start);
-	
-	    return null;
-	  };
-	
-	  this.renderCommonMenuItem = function (child, i, extraProps) {
-	    var state = _this3.props.store.getState();
-	    var props = _this3.props;
-	    var key = (0, _util.getKeyFromChildrenIndex)(child, props.eventKey, i);
-	    var childProps = child.props;
-	    var isActive = key === state.activeKey;
-	    var newChildProps = _extends({
-	      mode: childProps.mode || props.mode,
-	      level: props.level,
-	      inlineIndent: props.inlineIndent,
-	      renderMenuItem: _this3.renderMenuItem,
-	      rootPrefixCls: props.prefixCls,
-	      index: i,
-	      parentMenu: props.parentMenu,
-	      // customized ref function, need to be invoked manually in child's componentDidMount
-	      manualRef: childProps.disabled ? undefined : (0, _createChainedFunction2["default"])(child.ref, saveRef.bind(_this3)),
-	      eventKey: key,
-	      active: !childProps.disabled && isActive,
-	      multiple: props.multiple,
-	      onClick: function onClick(e) {
-	        (childProps.onClick || _util.noop)(e);
-	        _this3.onClick(e);
-	      },
-	      onItemHover: _this3.onItemHover,
-	      openTransitionName: _this3.getOpenTransitionName(),
-	      openAnimation: props.openAnimation,
-	      subMenuOpenDelay: props.subMenuOpenDelay,
-	      subMenuCloseDelay: props.subMenuCloseDelay,
-	      forceSubMenuRender: props.forceSubMenuRender,
-	      onOpenChange: _this3.onOpenChange,
-	      onDeselect: _this3.onDeselect,
-	      onSelect: _this3.onSelect,
-	      builtinPlacements: props.builtinPlacements,
-	      itemIcon: childProps.itemIcon || _this3.props.itemIcon,
-	      expandIcon: childProps.expandIcon || _this3.props.expandIcon
-	    }, extraProps);
-	    if (props.mode === 'inline') {
-	      newChildProps.triggerSubMenuAction = 'click';
-	    }
-	    return _react2["default"].cloneElement(child, newChildProps);
-	  };
-	
-	  this.renderMenuItem = function (c, i, subMenuKey) {
-	    /* istanbul ignore if */
-	
-	    if (!c) {
-	      return null;
-	    }
-	    var state = _this3.props.store.getState();
-	    var extraProps = {
-	      openKeys: state.openKeys,
-	      selectedKeys: state.selectedKeys,
-	      triggerSubMenuAction: _this3.props.triggerSubMenuAction,
-	      subMenuKey: subMenuKey
-	    };
-	    return _this3.renderCommonMenuItem(c, i, extraProps);
-	  };
-	};
-	
-	var connected = (0, _miniStore.connect)()(SubPopupMenu);
-	
-	exports["default"] = connected;
-
-/***/ }),
-/* 732 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.setStyle = exports.getWidth = exports.menuAllProps = undefined;
-	
-	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; /**
-	                                                                                                                                                                                                                                                                              * This source code is quoted from rc-menu.
-	                                                                                                                                                                                                                                                                              * homepage: https://github.com/react-component/menu
-	                                                                                                                                                                                                                                                                              */
-	
-	
-	exports.noop = noop;
-	exports.getKeyFromChildrenIndex = getKeyFromChildrenIndex;
-	exports.getMenuIdFromSubMenuEventKey = getMenuIdFromSubMenuEventKey;
-	exports.loopMenuItem = loopMenuItem;
-	exports.loopMenuItemRecursively = loopMenuItemRecursively;
-	exports.fireKeyEvent = fireKeyEvent;
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-	
-	function noop() {}
-	
-	function getKeyFromChildrenIndex(child, menuEventKey, index) {
-	  var prefix = menuEventKey || '';
-	  return child.key || prefix + 'item_' + index;
-	}
-	
-	function getMenuIdFromSubMenuEventKey(eventKey) {
-	  return eventKey + '-menu-';
-	}
-	
-	function loopMenuItem(children, cb) {
-	  var index = -1;
-	  _react2["default"].Children.forEach(children, function (c) {
-	    index++;
-	    if (c && c.type && c.type.isMenuItemGroup) {
-	      _react2["default"].Children.forEach(c.props.children, function (c2) {
-	        index++;
-	        cb(c2, index);
-	      });
-	    } else {
-	      cb(c, index);
-	    }
-	  });
-	}
-	
-	function loopMenuItemRecursively(children, keys, ret) {
-	  /* istanbul ignore if */
-	  if (!children || ret.find) {
-	    return;
-	  }
-	  _react2["default"].Children.forEach(children, function (c) {
-	    if (c) {
-	      var construct = c.type;
-	      if (!construct || !(construct.isSubMenu || construct.isMenuItem || construct.isMenuItemGroup)) {
-	        return;
-	      }
-	      if (keys.indexOf(c.key) !== -1) {
-	        ret.find = true;
-	      } else if (c.props.children) {
-	        loopMenuItemRecursively(c.props.children, keys, ret);
-	      }
-	    }
-	  });
-	}
-	
-	var menuAllProps = exports.menuAllProps = ['defaultSelectedKeys', 'selectedKeys', 'defaultOpenKeys', 'openKeys', 'mode', 'getPopupContainer', 'onSelect', 'onDeselect', 'onDestroy', 'openTransitionName', 'openAnimation', 'subMenuOpenDelay', 'subMenuCloseDelay', 'forceSubMenuRender', 'triggerSubMenuAction', 'level', 'selectable', 'multiple', 'onOpenChange', 'visible', 'focusable', 'defaultActiveFirst', 'prefixCls', 'inlineIndent', 'parentMenu', 'title', 'rootPrefixCls', 'eventKey', 'active', 'onItemHover', 'onTitleMouseEnter', 'onTitleMouseLeave', 'onTitleClick', 'popupAlign', 'popupOffset', 'isOpen', 'renderMenuItem', 'manualRef', 'subMenuKey', 'disabled', 'index', 'isSelected', 'store', 'activeKey', 'builtinPlacements', 'overflowedIndicator',
-	
-	// the following keys found need to be removed from test regression
-	'attribute', 'value', 'popupClassName', 'inlineCollapsed', 'menu', 'theme', 'itemIcon', 'expandIcon'];
-	
-	var getWidth = exports.getWidth = function getWidth(elem) {
-	  return elem && typeof elem.getBoundingClientRect === 'function' && elem.getBoundingClientRect().width || 0;
-	};
-	
-	var setStyle = exports.setStyle = function setStyle(elem, styleProperty, value) {
-	  if (elem && _typeof(elem.style) === 'object') {
-	    elem.style[styleProperty] = value;
-	  }
-	};
-	
-	function fireKeyEvent(el, evtType, keyCode) {
-	  var evtObj;
-	  if (document.createEvent) {
-	    if (window.KeyEvent) {
-	      //firefox 浏览器下模拟事件
-	      evtObj = document.createEvent('KeyEvents');
-	      evtObj.initKeyEvent(evtType, true, true, window, true, false, false, false, keyCode, 0);
-	    } else {
-	      //chrome 浏览器下模拟事件
-	      evtObj = document.createEvent('UIEvents');
-	      evtObj.initUIEvent(evtType, true, true, window, 1);
-	
-	      delete evtObj.keyCode;
-	      if (typeof evtObj.keyCode === "undefined") {
-	        //为了模拟keycode
-	        Object.defineProperty(evtObj, "keyCode", { value: keyCode });
-	      } else {
-	        evtObj.key = String.fromCharCode(keyCode);
-	      }
-	
-	      if (typeof evtObj.ctrlKey === 'undefined') {
-	        //为了模拟ctrl键
-	        Object.defineProperty(evtObj, "ctrlKey", { value: true });
-	      } else {
-	        evtObj.ctrlKey = true;
-	      }
-	    }
-	    el.dispatchEvent(evtObj);
-	  } else if (document.createEventObject) {
-	    //IE 浏览器下模拟事件
-	    evtObj = document.createEventObject();
-	    evtObj.keyCode = keyCode;
-	    el.fireEvent('on' + evtType, evtObj);
-	  }
-	}
-
-/***/ }),
-/* 733 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _reactDom = __webpack_require__(2);
-	
-	var _reactDom2 = _interopRequireDefault(_reactDom);
-	
-	var _propTypes = __webpack_require__(6);
-	
-	var _propTypes2 = _interopRequireDefault(_propTypes);
-	
-	var _resizeObserverPolyfill = __webpack_require__(363);
-	
-	var _resizeObserverPolyfill2 = _interopRequireDefault(_resizeObserverPolyfill);
-	
-	var _SubMenu = __webpack_require__(734);
-	
-	var _SubMenu2 = _interopRequireDefault(_SubMenu);
-	
-	var _util = __webpack_require__(732);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-	
-	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
-	
-	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-	
-	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); } /**
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               * This source code is quoted from rc-menu.
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               * homepage: https://github.com/react-component/menu
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               */
-	
-	
-	var canUseDOM = !!(typeof window !== 'undefined' && window.document && window.document.createElement);
-	
-	var MENUITEM_OVERFLOWED_CLASSNAME = 'menuitem-overflowed';
-	
-	// Fix ssr
-	if (canUseDOM) {
-	  __webpack_require__(389);
-	}
-	
-	var DOMWrap = function (_React$Component) {
-	  _inherits(DOMWrap, _React$Component);
-	
-	  function DOMWrap() {
-	    var _temp, _this, _ret;
-	
-	    _classCallCheck(this, DOMWrap);
-	
-	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-	      args[_key] = arguments[_key];
-	    }
-	
-	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, _React$Component.call.apply(_React$Component, [this].concat(args))), _this), _this.state = {
-	      lastVisibleIndex: undefined
-	    }, _this.getMenuItemNodes = function () {
-	      var prefixCls = _this.props.prefixCls;
-	
-	      var ul = _reactDom2["default"].findDOMNode(_this);
-	      if (!ul) {
-	        return [];
-	      }
-	
-	      // filter out all overflowed indicator placeholder
-	      return [].slice.call(ul.children).filter(function (node) {
-	        return node.className.split(' ').indexOf(prefixCls + '-overflowed-submenu') < 0;
-	      });
-	    }, _this.getOverflowedSubMenuItem = function (keyPrefix, overflowedItems, renderPlaceholder) {
-	      var _this$props = _this.props,
-	          overflowedIndicator = _this$props.overflowedIndicator,
-	          level = _this$props.level,
-	          mode = _this$props.mode,
-	          prefixCls = _this$props.prefixCls,
-	          theme = _this$props.theme,
-	          propStyle = _this$props.style;
-	
-	      if (level !== 1 || mode !== 'horizontal') {
-	        return null;
-	      }
-	      // put all the overflowed item inside a submenu
-	      // with a title of overflow indicator ('...')
-	      var copy = _this.props.children[0];
-	
-	      var _copy$props = copy.props,
-	          throwAway = _copy$props.children,
-	          title = _copy$props.title,
-	          eventKey = _copy$props.eventKey,
-	          rest = _objectWithoutProperties(_copy$props, ['children', 'title', 'eventKey']);
-	
-	      var style = _extends({}, propStyle);
-	      var key = keyPrefix + '-overflowed-indicator';
-	
-	      if (overflowedItems.length === 0 && renderPlaceholder !== true) {
-	        style = _extends({}, style, {
-	          display: 'none'
-	        });
-	      } else if (renderPlaceholder) {
-	        style = _extends({}, style, {
-	          visibility: 'hidden',
-	          // prevent from taking normal dom space
-	          position: 'absolute'
-	        });
-	        key = key + '-placeholder';
-	      }
-	
-	      var popupClassName = theme ? prefixCls + '-' + theme : '';
-	      var props = {};
-	      _util.menuAllProps.forEach(function (k) {
-	        if (rest[k] !== undefined) {
-	          props[k] = rest[k];
-	        }
-	      });
-	
-	      return _react2["default"].createElement(
-	        _SubMenu2["default"],
-	        _extends({
-	          title: overflowedIndicator,
-	          className: prefixCls + '-overflowed-submenu',
-	          popupClassName: popupClassName
-	        }, props, {
-	          key: key,
-	          eventKey: keyPrefix + '-overflowed-indicator',
-	          disabled: false,
-	          style: style
-	        }),
-	        overflowedItems
-	      );
-	    }, _this.setChildrenWidthAndResize = function () {
-	      if (_this.props.mode !== 'horizontal') {
-	        return;
-	      }
-	      var ul = _reactDom2["default"].findDOMNode(_this);
-	
-	      if (!ul) {
-	        return;
-	      }
-	
-	      var ulChildrenNodes = ul.children;
-	
-	      if (!ulChildrenNodes || ulChildrenNodes.length === 0) {
-	        return;
-	      }
-	
-	      var lastOverflowedIndicatorPlaceholder = ul.children[ulChildrenNodes.length - 1];
-	
-	      // need last overflowed indicator for calculating length;
-	      (0, _util.setStyle)(lastOverflowedIndicatorPlaceholder, 'display', 'inline-block');
-	
-	      var menuItemNodes = _this.getMenuItemNodes();
-	
-	      // reset display attribute for all hidden elements caused by overflow to calculate updated width
-	      // and then reset to original state after width calculation
-	
-	      var overflowedItems = menuItemNodes.filter(function (c) {
-	        return c.className.split(' ').indexOf(MENUITEM_OVERFLOWED_CLASSNAME) >= 0;
-	      });
-	
-	      overflowedItems.forEach(function (c) {
-	        (0, _util.setStyle)(c, 'display', 'inline-block');
-	      });
-	
-	      _this.menuItemSizes = menuItemNodes.map(function (c) {
-	        return (0, _util.getWidth)(c);
-	      });
-	
-	      overflowedItems.forEach(function (c) {
-	        (0, _util.setStyle)(c, 'display', 'none');
-	      });
-	      _this.overflowedIndicatorWidth = (0, _util.getWidth)(ul.children[ul.children.length - 1]);
-	      _this.originalTotalWidth = _this.menuItemSizes.reduce(function (acc, cur) {
-	        return acc + cur;
-	      }, 0);
-	      _this.handleResize();
-	      // prevent the overflowed indicator from taking space;
-	      (0, _util.setStyle)(lastOverflowedIndicatorPlaceholder, 'display', 'none');
-	    }, _this.resizeObserver = null, _this.mutationObserver = null, _this.originalTotalWidth = 0, _this.overflowedItems = [], _this.menuItemSizes = [], _this.handleResize = function () {
-	      if (_this.props.mode !== 'horizontal') {
-	        return;
-	      }
-	
-	      var ul = _reactDom2["default"].findDOMNode(_this);
-	      if (!ul) {
-	        return;
-	      }
-	      var width = (0, _util.getWidth)(ul);
-	
-	      _this.overflowedItems = [];
-	      var currentSumWidth = 0;
-	
-	      // index for last visible child in horizontal mode
-	      var lastVisibleIndex = undefined;
-	
-	      if (_this.originalTotalWidth > width) {
-	        lastVisibleIndex = -1;
-	
-	        _this.menuItemSizes.forEach(function (liWidth) {
-	          currentSumWidth += liWidth;
-	          if (currentSumWidth + _this.overflowedIndicatorWidth <= width) {
-	            lastVisibleIndex++;
-	          }
-	        });
-	      }
-	
-	      _this.setState({ lastVisibleIndex: lastVisibleIndex });
-	    }, _temp), _possibleConstructorReturn(_this, _ret);
-	  }
-	
-	  DOMWrap.prototype.componentDidMount = function componentDidMount() {
-	    var _this2 = this;
-	
-	    this.setChildrenWidthAndResize();
-	    if (this.props.level === 1 && this.props.mode === 'horizontal') {
-	      var menuUl = _reactDom2["default"].findDOMNode(this);
-	      if (!menuUl) {
-	        return;
-	      }
-	      this.resizeObserver = new _resizeObserverPolyfill2["default"](function (entries) {
-	        entries.forEach(_this2.setChildrenWidthAndResize);
-	      });
-	
-	      [].slice.call(menuUl.children).concat(menuUl).forEach(function (el) {
-	        _this2.resizeObserver.observe(el);
-	      });
-	
-	      if (typeof MutationObserver !== 'undefined') {
-	        this.mutationObserver = new MutationObserver(function () {
-	          _this2.resizeObserver.disconnect();
-	          [].slice.call(menuUl.children).concat(menuUl).forEach(function (el) {
-	            _this2.resizeObserver.observe(el);
-	          });
-	          _this2.setChildrenWidthAndResize();
-	        });
-	        this.mutationObserver.observe(menuUl, { attributes: false, childList: true, subTree: false });
-	      }
-	    }
-	  };
-	
-	  DOMWrap.prototype.componentWillUnmount = function componentWillUnmount() {
-	    if (this.resizeObserver) {
-	      this.resizeObserver.disconnect();
-	    }
-	    if (this.mutationObserver) {
-	      this.resizeObserver.disconnect();
-	    }
-	  };
-	
-	  // get all valid menuItem nodes
-	
-	
-	  // memorize rendered menuSize
-	
-	
-	  // original scroll size of the list
-	
-	
-	  // copy of overflowed items
-	
-	
-	  // cache item of the original items (so we can track the size and order)
-	
-	
-	  DOMWrap.prototype.renderChildren = function renderChildren(children) {
-	    var _this3 = this;
-	
-	    // need to take care of overflowed items in horizontal mode
-	    var lastVisibleIndex = this.state.lastVisibleIndex;
-	
-	    return (children || []).reduce(function (acc, childNode, index) {
-	      var item = childNode;
-	      if (_this3.props.mode === 'horizontal') {
-	        var overflowed = _this3.getOverflowedSubMenuItem(childNode.props.eventKey, []);
-	        if (lastVisibleIndex !== undefined && _this3.props.className.indexOf(_this3.props.prefixCls + '-root') !== -1) {
-	          if (index > lastVisibleIndex) {
-	            item = _react2["default"].cloneElement(childNode,
-	            // 这里修改 eventKey 是为了防止隐藏状态下还会触发 openkeys 事件
-	            {
-	              style: { display: 'none' },
-	              eventKey: childNode.props.eventKey + '-hidden',
-	              className: childNode.className + ' ' + MENUITEM_OVERFLOWED_CLASSNAME
-	            });
-	          }
-	          if (index === lastVisibleIndex + 1) {
-	            _this3.overflowedItems = children.slice(lastVisibleIndex + 1).map(function (c) {
-	              return _react2["default"].cloneElement(c,
-	              // children[index].key will become '.$key' in clone by default,
-	              // we have to overwrite with the correct key explicitly
-	              { key: c.props.eventKey, mode: 'vertical-left' });
-	            });
-	
-	            overflowed = _this3.getOverflowedSubMenuItem(childNode.props.eventKey, _this3.overflowedItems);
-	          }
-	        }
-	
-	        // const ret = [...acc, overflowed, item];//更改
-	        var ret = [].concat(_toConsumableArray(acc), [item]);
-	
-	        if (index === children.length - 1) {
-	          // need a placeholder for calculating overflowed indicator width
-	          ret.push(_this3.getOverflowedSubMenuItem(childNode.props.eventKey, [], true));
-	        }
-	        return ret;
-	      }
-	      return [].concat(_toConsumableArray(acc), [item]);
-	    }, []);
-	  };
-	
-	  DOMWrap.prototype.render = function render() {
-	    var _props = this.props,
-	        hiddenClassName = _props.hiddenClassName,
-	        visible = _props.visible,
-	        prefixCls = _props.prefixCls,
-	        overflowedIndicator = _props.overflowedIndicator,
-	        mode = _props.mode,
-	        level = _props.level,
-	        Tag = _props.tag,
-	        children = _props.children,
-	        theme = _props.theme,
-	        rest = _objectWithoutProperties(_props, ['hiddenClassName', 'visible', 'prefixCls', 'overflowedIndicator', 'mode', 'level', 'tag', 'children', 'theme']);
-	
-	    if (!visible) {
-	      rest.className += ' ' + hiddenClassName;
-	    }
-	
-	    return _react2["default"].createElement(
-	      Tag,
-	      rest,
-	      this.renderChildren(this.props.children)
-	    );
-	  };
-	
-	  return DOMWrap;
-	}(_react2["default"].Component);
-	
-	DOMWrap.propTypes = {
-	  className: _propTypes2["default"].string,
-	  children: _propTypes2["default"].node,
-	  mode: _propTypes2["default"].oneOf(['horizontal', 'vertical', 'vertical-left', 'vertical-right', 'inline']),
-	  prefixCls: _propTypes2["default"].string,
-	  level: _propTypes2["default"].number,
-	  theme: _propTypes2["default"].string,
-	  overflowedIndicator: _propTypes2["default"].node,
-	  visible: _propTypes2["default"].bool,
-	  hiddenClassName: _propTypes2["default"].string,
-	  tag: _propTypes2["default"].string,
-	  style: _propTypes2["default"].object
-	};
-	
-	DOMWrap.defaultProps = {
-	  tag: 'div',
-	  className: ''
-	};
-	
-	exports["default"] = DOMWrap;
-	module.exports = exports['default'];
-
-/***/ }),
-/* 734 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.SubMenu = undefined;
-	
-	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-	
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; /**
-	                                                                                                                                                                                                                                                                  * This source code is quoted from rc-menu.
-	                                                                                                                                                                                                                                                                  * homepage: https://github.com/react-component/menu
-	                                                                                                                                                                                                                                                                  */
-	
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _reactDom = __webpack_require__(2);
-	
-	var _reactDom2 = _interopRequireDefault(_reactDom);
-	
-	var _propTypes = __webpack_require__(6);
-	
-	var _propTypes2 = _interopRequireDefault(_propTypes);
-	
-	var _rcTrigger = __webpack_require__(365);
-	
-	var _rcTrigger2 = _interopRequireDefault(_rcTrigger);
-	
-	var _tinperBeeCore = __webpack_require__(26);
-	
-	var _classnames = __webpack_require__(5);
-	
-	var _classnames2 = _interopRequireDefault(_classnames);
-	
-	var _miniStore = __webpack_require__(347);
-	
-	var _SubPopupMenu = __webpack_require__(731);
-	
-	var _SubPopupMenu2 = _interopRequireDefault(_SubPopupMenu);
-	
-	var _placements = __webpack_require__(735);
-	
-	var _placements2 = _interopRequireDefault(_placements);
-	
-	var _rcAnimate = __webpack_require__(379);
-	
-	var _rcAnimate2 = _interopRequireDefault(_rcAnimate);
-	
-	var _util = __webpack_require__(732);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-	
-	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
-	
-	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-	
-	var guid = 0;
-	
-	var popupPlacementMap = {
-	  horizontal: 'bottomLeft',
-	  vertical: 'rightTop',
-	  'vertical-left': 'rightTop',
-	  'vertical-right': 'leftTop'
-	};
-	
-	var updateDefaultActiveFirst = function updateDefaultActiveFirst(store, eventKey, defaultActiveFirst) {
-	  var menuId = (0, _util.getMenuIdFromSubMenuEventKey)(eventKey);
-	  var state = store.getState();
-	  store.setState({
-	    defaultActiveFirst: _extends({}, state.defaultActiveFirst, _defineProperty({}, menuId, defaultActiveFirst))
-	  });
-	};
-	
-	var SubMenu = exports.SubMenu = function (_React$Component) {
-	  _inherits(SubMenu, _React$Component);
-	
-	  function SubMenu(props) {
-	    _classCallCheck(this, SubMenu);
-	
-	    var _this = _possibleConstructorReturn(this, _React$Component.call(this, props));
-	
-	    _initialiseProps.call(_this);
-	
-	    var store = props.store;
-	    var eventKey = props.eventKey;
-	    var defaultActiveFirst = store.getState().defaultActiveFirst;
-	
-	    _this.isRootMenu = false;
-	
-	    var value = false;
-	
-	    if (defaultActiveFirst) {
-	      value = defaultActiveFirst[eventKey];
-	    }
-	
-	    updateDefaultActiveFirst(store, eventKey, value);
-	    return _this;
-	  }
-	
-	  SubMenu.prototype.componentDidMount = function componentDidMount() {
-	    this.componentDidUpdate();
-	  };
-	
-	  SubMenu.prototype.componentDidUpdate = function componentDidUpdate() {
-	    var _this2 = this;
-	
-	    var _props = this.props,
-	        mode = _props.mode,
-	        parentMenu = _props.parentMenu,
-	        manualRef = _props.manualRef;
-	
-	    // invoke customized ref to expose component to mixin
-	
-	    if (manualRef) {
-	      manualRef(this);
-	    }
-	
-	    if (mode !== 'horizontal' || !parentMenu.isRootMenu || !this.props.isOpen) {
-	      return;
-	    }
-	
-	    this.minWidthTimeout = setTimeout(function () {
-	      return _this2.adjustWidth();
-	    }, 0);
-	  };
-	
-	  SubMenu.prototype.componentWillUnmount = function componentWillUnmount() {
-	    var _props2 = this.props,
-	        onDestroy = _props2.onDestroy,
-	        eventKey = _props2.eventKey;
-	
-	    if (onDestroy) {
-	      onDestroy(eventKey);
-	    }
-	
-	    /* istanbul ignore if */
-	    if (this.minWidthTimeout) {
-	      clearTimeout(this.minWidthTimeout);
-	    }
-	
-	    /* istanbul ignore if */
-	    if (this.mouseenterTimeout) {
-	      clearTimeout(this.mouseenterTimeout);
-	    }
-	  };
-	
-	  SubMenu.prototype.renderChildren = function renderChildren(children) {
-	    var props = this.props;
-	    var baseProps = {
-	      mode: props.mode === 'horizontal' ? 'vertical' : props.mode,
-	      visible: this.props.isOpen,
-	      level: props.level + 1,
-	      inlineIndent: props.inlineIndent,
-	      focusable: false,
-	      onClick: this.onSubMenuClick,
-	      onSelect: this.onSelect,
-	      onDeselect: this.onDeselect,
-	      onDestroy: this.onDestroy,
-	      selectedKeys: props.selectedKeys,
-	      eventKey: props.eventKey + '-menu-',
-	      openKeys: props.openKeys,
-	      openTransitionName: props.openTransitionName,
-	      openAnimation: props.openAnimation,
-	      onOpenChange: this.onOpenChange,
-	      subMenuOpenDelay: props.subMenuOpenDelay,
-	      parentMenu: this,
-	      subMenuCloseDelay: props.subMenuCloseDelay,
-	      forceSubMenuRender: props.forceSubMenuRender,
-	      triggerSubMenuAction: props.triggerSubMenuAction,
-	      builtinPlacements: props.builtinPlacements,
-	      defaultActiveFirst: props.store.getState().defaultActiveFirst[(0, _util.getMenuIdFromSubMenuEventKey)(props.eventKey)],
-	      multiple: props.multiple,
-	      prefixCls: props.rootPrefixCls,
-	      id: this._menuId,
-	      manualRef: this.saveMenuInstance,
-	      itemIcon: props.itemIcon,
-	      expandIcon: props.expandIcon
-	    };
-	
-	    var haveRendered = this.haveRendered;
-	    this.haveRendered = true;
-	
-	    this.haveOpened = this.haveOpened || baseProps.visible || baseProps.forceSubMenuRender;
-	    // never rendered not planning to, don't render
-	    if (!this.haveOpened) {
-	      return _react2["default"].createElement('div', null);
-	    }
-	
-	    // don't show transition on first rendering (no animation for opened menu)
-	    // show appear transition if it's not visible (not sure why)
-	    // show appear transition if it's not inline mode
-	    var transitionAppear = haveRendered || !baseProps.visible || !baseProps.mode === 'inline';
-	
-	    baseProps.className = ' ' + baseProps.prefixCls + '-sub';
-	    var animProps = {};
-	
-	    if (baseProps.openTransitionName) {
-	      animProps.transitionName = baseProps.openTransitionName;
-	    } else if (_typeof(baseProps.openAnimation) === 'object') {
-	      animProps.animation = _extends({}, baseProps.openAnimation);
-	      if (!transitionAppear) {
-	        delete animProps.animation.appear;
-	      }
-	    }
-	
-	    return _react2["default"].createElement(
-	      _rcAnimate2["default"],
-	      _extends({}, animProps, {
-	        showProp: 'visible',
-	        component: '',
-	        transitionAppear: transitionAppear
-	      }),
-	      _react2["default"].createElement(
-	        _SubPopupMenu2["default"],
-	        _extends({}, baseProps, { id: this._menuId }),
-	        children
-	      )
-	    );
-	  };
-	
-	  SubMenu.prototype.render = function render() {
-	    var _classNames;
-	
-	    var props = _extends({}, this.props);
-	    var isOpen = props.isOpen;
-	    var prefixCls = this.getPrefixCls();
-	    var isInlineMode = props.mode === 'inline';
-	    var className = (0, _classnames2["default"])(prefixCls, prefixCls + '-' + props.mode, (_classNames = {}, _defineProperty(_classNames, props.className, !!props.className), _defineProperty(_classNames, this.getOpenClassName(), isOpen), _defineProperty(_classNames, this.getActiveClassName(), props.active || isOpen && !isInlineMode), _defineProperty(_classNames, this.getDisabledClassName(), props.disabled), _defineProperty(_classNames, this.getSelectedClassName(), this.isChildrenSelected()), _classNames));
-	
-	    if (!this._menuId) {
-	      if (props.eventKey) {
-	        this._menuId = props.eventKey + '$Menu';
-	      } else {
-	        this._menuId = '$__$' + ++guid + '$Menu';
-	      }
-	    }
-	
-	    var mouseEvents = {};
-	    var titleClickEvents = {};
-	    var titleMouseEvents = {};
-	    if (!props.disabled) {
-	      mouseEvents = {
-	        onMouseLeave: this.onMouseLeave,
-	        onMouseEnter: this.onMouseEnter
-	      };
-	
-	      // only works in title, not outer li
-	      titleClickEvents = {
-	        onClick: this.onTitleClick
-	      };
-	      titleMouseEvents = {
-	        onMouseEnter: this.onTitleMouseEnter,
-	        onMouseLeave: this.onTitleMouseLeave
-	      };
-	    }
-	
-	    var style = {};
-	    if (isInlineMode) {
-	      style.paddingLeft = props.inlineIndent * props.level;
-	    }
-	
-	    var ariaOwns = {};
-	    // only set aria-owns when menu is open
-	    // otherwise it would be an invalid aria-owns value
-	    // since corresponding node cannot be found
-	    if (this.props.isOpen) {
-	      ariaOwns = {
-	        'aria-owns': this._menuId
-	      };
-	    }
-	
-	    // expand custom icon should NOT be displayed in menu with horizontal mode.
-	    var icon = null;
-	    if (props.mode !== 'horizontal') {
-	      icon = this.props.expandIcon; // ReactNode
-	      if (typeof this.props.expandIcon === 'function') {
-	        icon = _react2["default"].createElement(this.props.expandIcon, _extends({}, this.props));
-	      }
-	    }
-	
-	    var title = _react2["default"].createElement(
-	      'div',
-	      _extends({
-	        ref: this.saveSubMenuTitle,
-	        style: style,
-	        className: prefixCls + '-title'
-	      }, titleMouseEvents, titleClickEvents, {
-	        'aria-expanded': isOpen
-	      }, ariaOwns, {
-	        'aria-haspopup': 'true',
-	        title: typeof props.title === 'string' ? props.title : undefined
-	      }),
-	      props.title,
-	      icon || _react2["default"].createElement('i', { className: prefixCls + '-arrow' })
-	    );
-	    var children = this.renderChildren(props.children);
-	
-	    var getPopupContainer = function getPopupContainer(triggerNode) {
-	      return triggerNode.parentNode;
-	    };
-	    var popupPlacement = popupPlacementMap[props.mode];
-	    var popupAlign = props.popupOffset ? { offset: props.popupOffset } : {};
-	    var popupClassName = props.mode === 'inline' ? '' : props.popupClassName;
-	    var disabled = props.disabled,
-	        triggerSubMenuAction = props.triggerSubMenuAction,
-	        subMenuOpenDelay = props.subMenuOpenDelay,
-	        forceSubMenuRender = props.forceSubMenuRender,
-	        subMenuCloseDelay = props.subMenuCloseDelay,
-	        builtinPlacements = props.builtinPlacements;
-	
-	    _util.menuAllProps.forEach(function (key) {
-	      return delete props[key];
-	    });
-	    // Set onClick to null, to ignore propagated onClick event
-	    delete props.onClick;
-	    return _react2["default"].createElement(
-	      'li',
-	      _extends({}, props, mouseEvents, {
-	        className: className,
-	        role: 'menuitem'
-	      }),
-	      isInlineMode && title,
-	      isInlineMode && children,
-	      !isInlineMode && _react2["default"].createElement(
-	        _rcTrigger2["default"],
-	        {
-	          prefixCls: prefixCls,
-	          popupClassName: prefixCls + '-popup ' + popupClassName,
-	          getPopupContainer: getPopupContainer,
-	          builtinPlacements: _extends({}, _placements2["default"], builtinPlacements),
-	          popupPlacement: popupPlacement,
-	          popupVisible: isOpen,
-	          popupAlign: popupAlign,
-	          popup: children,
-	          action: disabled ? [] : [triggerSubMenuAction],
-	          mouseEnterDelay: subMenuOpenDelay,
-	          mouseLeaveDelay: subMenuCloseDelay,
-	          onPopupVisibleChange: this.onPopupVisibleChange,
-	          forceRender: forceSubMenuRender
-	        },
-	        title
-	      )
-	    );
-	  };
-	
-	  return SubMenu;
-	}(_react2["default"].Component);
-	
-	SubMenu.propTypes = {
-	  parentMenu: _propTypes2["default"].object,
-	  title: _propTypes2["default"].node,
-	  children: _propTypes2["default"].any,
-	  selectedKeys: _propTypes2["default"].array,
-	  openKeys: _propTypes2["default"].array,
-	  onClick: _propTypes2["default"].func,
-	  onOpenChange: _propTypes2["default"].func,
-	  rootPrefixCls: _propTypes2["default"].string,
-	  eventKey: _propTypes2["default"].string,
-	  multiple: _propTypes2["default"].bool,
-	  active: _propTypes2["default"].bool, // TODO: remove
-	  onItemHover: _propTypes2["default"].func,
-	  onSelect: _propTypes2["default"].func,
-	  triggerSubMenuAction: _propTypes2["default"].string,
-	  onDeselect: _propTypes2["default"].func,
-	  onDestroy: _propTypes2["default"].func,
-	  onMouseEnter: _propTypes2["default"].func,
-	  onMouseLeave: _propTypes2["default"].func,
-	  onTitleMouseEnter: _propTypes2["default"].func,
-	  onTitleMouseLeave: _propTypes2["default"].func,
-	  onTitleClick: _propTypes2["default"].func,
-	  popupOffset: _propTypes2["default"].array,
-	  isOpen: _propTypes2["default"].bool,
-	  store: _propTypes2["default"].object,
-	  mode: _propTypes2["default"].oneOf(['horizontal', 'vertical', 'vertical-left', 'vertical-right', 'inline']),
-	  manualRef: _propTypes2["default"].func,
-	  itemIcon: _propTypes2["default"].oneOfType([_propTypes2["default"].func, _propTypes2["default"].node]),
-	  expandIcon: _propTypes2["default"].oneOfType([_propTypes2["default"].func, _propTypes2["default"].node])
-	};
-	SubMenu.defaultProps = {
-	  onMouseEnter: _util.noop,
-	  onMouseLeave: _util.noop,
-	  onTitleMouseEnter: _util.noop,
-	  onTitleMouseLeave: _util.noop,
-	  onTitleClick: _util.noop,
-	  manualRef: _util.noop,
-	  mode: 'vertical',
-	  title: ''
-	};
-	
-	var _initialiseProps = function _initialiseProps() {
-	  var _this3 = this;
-	
-	  this.onDestroy = function (key) {
-	    _this3.props.onDestroy(key);
-	  };
-	
-	  this.onKeyDown = function (e) {
-	    var keyCode = e.keyCode;
-	    var menu = _this3.menuInstance;
-	    var _props3 = _this3.props,
-	        isOpen = _props3.isOpen,
-	        store = _props3.store;
-	
-	    if (_this3.props.store.getState().keyboard) {
-	      //是否启用键盘操作
-	      if (keyCode === _tinperBeeCore.KeyCode.ENTER) {
-	        // this.onTitleClick(e);
-	        menu && menu.onKeyDown && menu.onKeyDown(e);
-	        updateDefaultActiveFirst(store, _this3.props.eventKey, true);
-	        return true;
-	      }
-	
-	      if (keyCode === _tinperBeeCore.KeyCode.RIGHT) {
-	        if (isOpen) {
-	          menu.onKeyDown(e);
-	        } else {
-	          _this3.triggerOpenChange(true);
-	          // need to update current menu's defaultActiveFirst value
-	          updateDefaultActiveFirst(store, _this3.props.eventKey, true);
-	        }
-	        return true;
-	      }
-	      if (keyCode === _tinperBeeCore.KeyCode.LEFT) {
-	        var handled = void 0;
-	        if (isOpen) {
-	          handled = menu.onKeyDown(e);
-	        } else {
-	          return undefined;
-	        }
-	        if (!handled) {
-	          _this3.triggerOpenChange(false);
-	          handled = true;
-	        }
-	        return handled;
-	      }
-	      if (isOpen && (keyCode === _tinperBeeCore.KeyCode.UP || keyCode === _tinperBeeCore.KeyCode.DOWN)) {
-	        return menu.onKeyDown(e);
-	      }
-	    }
-	  };
-	
-	  this.onOpenChange = function (e) {
-	    _this3.props.onOpenChange(e);
-	  };
-	
-	  this.onPopupVisibleChange = function (visible) {
-	    _this3.triggerOpenChange(visible, visible ? 'mouseenter' : 'mouseleave');
-	  };
-	
-	  this.onMouseEnter = function (e) {
-	    var _props4 = _this3.props,
-	        key = _props4.eventKey,
-	        onMouseEnter = _props4.onMouseEnter,
-	        store = _props4.store;
-	
-	    updateDefaultActiveFirst(store, _this3.props.eventKey, false);
-	    onMouseEnter({
-	      key: key,
-	      domEvent: e
-	    });
-	  };
-	
-	  this.onMouseLeave = function (e) {
-	    var _props5 = _this3.props,
-	        parentMenu = _props5.parentMenu,
-	        eventKey = _props5.eventKey,
-	        onMouseLeave = _props5.onMouseLeave;
-	
-	    parentMenu.subMenuInstance = _this3;
-	    onMouseLeave({
-	      key: eventKey,
-	      domEvent: e
-	    });
-	  };
-	
-	  this.onTitleMouseEnter = function (domEvent) {
-	    var _props6 = _this3.props,
-	        key = _props6.eventKey,
-	        onItemHover = _props6.onItemHover,
-	        onTitleMouseEnter = _props6.onTitleMouseEnter;
-	
-	    onItemHover({
-	      key: key,
-	      hover: true
-	    });
-	    onTitleMouseEnter({
-	      key: key,
-	      domEvent: domEvent
-	    });
-	  };
-	
-	  this.onTitleMouseLeave = function (e) {
-	    var _props7 = _this3.props,
-	        parentMenu = _props7.parentMenu,
-	        eventKey = _props7.eventKey,
-	        onItemHover = _props7.onItemHover,
-	        onTitleMouseLeave = _props7.onTitleMouseLeave;
-	
-	    parentMenu.subMenuInstance = _this3;
-	    onItemHover({
-	      key: eventKey,
-	      hover: false
-	    });
-	    onTitleMouseLeave({
-	      key: eventKey,
-	      domEvent: e
-	    });
-	  };
-	
-	  this.onTitleClick = function (e) {
-	    var props = _this3.props;
-	
-	    props.onTitleClick({
-	      key: props.eventKey,
-	      domEvent: e
-	    });
-	    if (props.triggerSubMenuAction === 'hover') {
-	      return;
-	    }
-	    _this3.triggerOpenChange(!props.isOpen, 'click');
-	    updateDefaultActiveFirst(props.store, _this3.props.eventKey, false);
-	  };
-	
-	  this.onSubMenuClick = function (info) {
-	    // in the case of overflowed submenu
-	    // onClick is not copied over
-	    if (typeof _this3.props.onClick === 'function') {
-	      _this3.props.onClick(_this3.addKeyPath(info));
-	    }
-	  };
-	
-	  this.onSelect = function (info) {
-	    _this3.props.onSelect(info);
-	  };
-	
-	  this.onDeselect = function (info) {
-	    _this3.props.onDeselect(info);
-	  };
-	
-	  this.getPrefixCls = function () {
-	    return _this3.props.rootPrefixCls + '-submenu';
-	  };
-	
-	  this.getActiveClassName = function () {
-	    return _this3.getPrefixCls() + '-active';
-	  };
-	
-	  this.getDisabledClassName = function () {
-	    return _this3.getPrefixCls() + '-disabled';
-	  };
-	
-	  this.getSelectedClassName = function () {
-	    return _this3.getPrefixCls() + '-selected';
-	  };
-	
-	  this.getOpenClassName = function () {
-	    return _this3.props.rootPrefixCls + '-submenu-open';
-	  };
-	
-	  this.saveMenuInstance = function (c) {
-	    // children menu instance
-	    _this3.menuInstance = c;
-	  };
-	
-	  this.addKeyPath = function (info) {
-	    return _extends({}, info, {
-	      keyPath: (info.keyPath || []).concat(_this3.props.eventKey)
-	    });
-	  };
-	
-	  this.triggerOpenChange = function (open, type) {
-	    var key = _this3.props.eventKey;
-	    var openChange = function openChange() {
-	      _this3.onOpenChange({
-	        key: key,
-	        item: _this3,
-	        trigger: type,
-	        open: open
-	      });
-	    };
-	    if (type === 'mouseenter') {
-	      // make sure mouseenter happen after other menu item's mouseleave
-	      _this3.mouseenterTimeout = setTimeout(function () {
-	        openChange();
-	      }, 0);
-	    } else {
-	      openChange();
-	    }
-	  };
-	
-	  this.isChildrenSelected = function () {
-	    var ret = { find: false };
-	    (0, _util.loopMenuItemRecursively)(_this3.props.children, _this3.props.selectedKeys, ret);
-	    return ret.find;
-	  };
-	
-	  this.isOpen = function () {
-	    return _this3.props.openKeys.indexOf(_this3.props.eventKey) !== -1;
-	  };
-	
-	  this.adjustWidth = function () {
-	    /* istanbul ignore if */
-	    if (!_this3.subMenuTitle || !_this3.menuInstance) {
-	      return;
-	    }
-	    var popupMenu = _reactDom2["default"].findDOMNode(_this3.menuInstance);
-	    if (popupMenu.offsetWidth >= _this3.subMenuTitle.offsetWidth) {
-	      return;
-	    }
-	
-	    /* istanbul ignore next */
-	    popupMenu.style.minWidth = _this3.subMenuTitle.offsetWidth + 'px';
-	  };
-	
-	  this.saveSubMenuTitle = function (subMenuTitle) {
-	    _this3.subMenuTitle = subMenuTitle;
-	  };
-	};
-	
-	var connected = (0, _miniStore.connect)(function (_ref, _ref2) {
-	  var openKeys = _ref.openKeys,
-	      activeKey = _ref.activeKey,
-	      selectedKeys = _ref.selectedKeys;
-	  var eventKey = _ref2.eventKey,
-	      subMenuKey = _ref2.subMenuKey;
-	  return {
-	    isOpen: openKeys.indexOf(eventKey) > -1,
-	    active: activeKey[subMenuKey] === eventKey,
-	    selectedKeys: selectedKeys
-	  };
-	})(SubMenu);
-	
-	connected.isSubMenu = true;
-	
-	exports["default"] = connected;
-
-/***/ }),
-/* 735 */
-/***/ (function(module, exports) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	/**
-	* This source code is quoted from rc-menu.
-	* homepage: https://github.com/react-component/menu
-	*/
-	var autoAdjustOverflow = {
-	  adjustX: 1,
-	  adjustY: 1
-	};
-	
-	var placements = exports.placements = {
-	  topLeft: {
-	    points: ['bl', 'tl'],
-	    overflow: autoAdjustOverflow,
-	    offset: [0, -7]
-	  },
-	  bottomLeft: {
-	    points: ['tl', 'bl'],
-	    overflow: autoAdjustOverflow,
-	    offset: [0, 7]
-	  },
-	  leftTop: {
-	    points: ['tr', 'tl'],
-	    overflow: autoAdjustOverflow,
-	    offset: [-4, 0]
-	  },
-	  rightTop: {
-	    points: ['tl', 'tr'],
-	    overflow: autoAdjustOverflow,
-	    offset: [4, 0]
-	  }
-	};
-	
-	exports["default"] = placements;
-
-/***/ }),
-/* 736 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.MenuItem = undefined;
-	
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _reactDom = __webpack_require__(2);
-	
-	var _reactDom2 = _interopRequireDefault(_reactDom);
-	
-	var _propTypes = __webpack_require__(6);
-	
-	var _propTypes2 = _interopRequireDefault(_propTypes);
-	
-	var _tinperBeeCore = __webpack_require__(26);
-	
-	var _classnames = __webpack_require__(5);
-	
-	var _classnames2 = _interopRequireDefault(_classnames);
-	
-	var _domScrollIntoView = __webpack_require__(391);
-	
-	var _domScrollIntoView2 = _interopRequireDefault(_domScrollIntoView);
-	
-	var _miniStore = __webpack_require__(347);
-	
-	var _util = __webpack_require__(732);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-	
-	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
-	
-	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); } /**
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               * This source code is quoted from rc-menu.
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               * homepage: https://github.com/react-component/menu
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               */
-	
-	
-	/* eslint react/no-is-mounted:0 */
-	
-	var MenuItem = exports.MenuItem = function (_React$Component) {
-	  _inherits(MenuItem, _React$Component);
-	
-	  function MenuItem(props) {
-	    _classCallCheck(this, MenuItem);
-	
-	    var _this = _possibleConstructorReturn(this, _React$Component.call(this, props));
-	
-	    _this.onKeyDown = function (e) {
-	      var keyCode = e.keyCode;
-	      if (keyCode === _tinperBeeCore.KeyCode.ENTER) {
-	        _this.onClick(e);
-	        return true;
-	      }
-	    };
-	
-	    _this.onMouseLeave = function (e) {
-	      var _this$props = _this.props,
-	          eventKey = _this$props.eventKey,
-	          onItemHover = _this$props.onItemHover,
-	          onMouseLeave = _this$props.onMouseLeave;
-	
-	      onItemHover({
-	        key: eventKey,
-	        hover: false
-	      });
-	      onMouseLeave({
-	        key: eventKey,
-	        domEvent: e
-	      });
-	    };
-	
-	    _this.onMouseEnter = function (e) {
-	      var _this$props2 = _this.props,
-	          eventKey = _this$props2.eventKey,
-	          onItemHover = _this$props2.onItemHover,
-	          onMouseEnter = _this$props2.onMouseEnter;
-	
-	      onItemHover({
-	        key: eventKey,
-	        hover: true
-	      });
-	      onMouseEnter({
-	        key: eventKey,
-	        domEvent: e
-	      });
-	    };
-	
-	    _this.onClick = function (e) {
-	      var _this$props3 = _this.props,
-	          eventKey = _this$props3.eventKey,
-	          multiple = _this$props3.multiple,
-	          onClick = _this$props3.onClick,
-	          onSelect = _this$props3.onSelect,
-	          onDeselect = _this$props3.onDeselect,
-	          isSelected = _this$props3.isSelected;
-	
-	      var info = {
-	        key: eventKey,
-	        keyPath: [eventKey],
-	        item: _this,
-	        domEvent: e
-	      };
-	      onClick(info);
-	      if (multiple) {
-	        if (isSelected) {
-	          onDeselect(info);
-	        } else {
-	          onSelect(info);
-	        }
-	      } else if (!isSelected) {
-	        onSelect(info);
-	      }
-	    };
-	
-	    return _this;
-	  }
-	
-	  MenuItem.prototype.componentDidMount = function componentDidMount() {
-	    // invoke customized ref to expose component to mixin
-	    this.callRef();
-	  };
-	
-	  MenuItem.prototype.componentDidUpdate = function componentDidUpdate() {
-	    if (this.props.active) {
-	      (0, _domScrollIntoView2["default"])(_reactDom2["default"].findDOMNode(this), _reactDom2["default"].findDOMNode(this.props.parentMenu), {
-	        onlyScrollIfNeeded: true
-	      });
-	    }
-	    this.callRef();
-	  };
-	
-	  MenuItem.prototype.componentWillUnmount = function componentWillUnmount() {
-	    var props = this.props;
-	    if (props.onDestroy) {
-	      props.onDestroy(props.eventKey);
-	    }
-	  };
-	
-	  MenuItem.prototype.getPrefixCls = function getPrefixCls() {
-	    return this.props.rootPrefixCls + '-item';
-	  };
-	
-	  MenuItem.prototype.getActiveClassName = function getActiveClassName() {
-	    return this.getPrefixCls() + '-active';
-	  };
-	
-	  MenuItem.prototype.getSelectedClassName = function getSelectedClassName() {
-	    return this.getPrefixCls() + '-selected';
-	  };
-	
-	  MenuItem.prototype.getDisabledClassName = function getDisabledClassName() {
-	    return this.getPrefixCls() + '-disabled';
-	  };
-	
-	  MenuItem.prototype.callRef = function callRef() {
-	    if (this.props.manualRef) {
-	      this.props.manualRef(this);
-	    }
-	  };
-	
-	  MenuItem.prototype.render = function render() {
-	    var _classNames;
-	
-	    var props = _extends({}, this.props);
-	    var className = (0, _classnames2["default"])(this.getPrefixCls(), props.className, (_classNames = {}, _defineProperty(_classNames, this.getActiveClassName(), !props.disabled && props.active), _defineProperty(_classNames, this.getSelectedClassName(), props.isSelected), _defineProperty(_classNames, this.getDisabledClassName(), props.disabled), _classNames));
-	    var attrs = _extends({}, props.attribute, {
-	      title: props.title,
-	      className: className,
-	      // set to menuitem by default
-	      role: props.role || 'menuitem',
-	      'aria-disabled': props.disabled
-	    });
-	
-	    if (props.role === 'option') {
-	      // overwrite to option
-	      attrs = _extends({}, attrs, {
-	        role: 'option',
-	        'aria-selected': props.isSelected
-	      });
-	    } else if (props.role === null || props.role === 'none') {
-	      // sometimes we want to specify role inside <li/> element
-	      // <li><a role='menuitem'>Link</a></li> would be a good example
-	      // in this case the role on <li/> should be "none" to
-	      // remove the implied listitem role.
-	      // https://www.w3.org/TR/wai-aria-practices-1.1/examples/menubar/menubar-1/menubar-1.html
-	      attrs.role = 'none';
-	    }
-	    // In case that onClick/onMouseLeave/onMouseEnter is passed down from owner
-	    var mouseEvent = {
-	      onClick: props.disabled ? null : this.onClick,
-	      onMouseLeave: props.disabled ? null : this.onMouseLeave,
-	      onMouseEnter: props.disabled ? null : this.onMouseEnter
-	    };
-	    var style = _extends({}, props.style);
-	    if (props.mode === 'inline') {
-	      style.paddingLeft = props.inlineIndent * props.level;
-	    }
-	    _util.menuAllProps.forEach(function (key) {
-	      return delete props[key];
-	    });
-	    var icon = this.props.itemIcon;
-	    if (typeof this.props.itemIcon === 'function') {
-	      icon = _react2["default"].createElement(this.props.itemIcon, this.props);
-	    }
-	    return _react2["default"].createElement(
-	      'li',
-	      _extends({}, props, attrs, mouseEvent, {
-	        style: style
-	      }),
-	      props.children,
-	      icon
-	    );
-	  };
-	
-	  return MenuItem;
-	}(_react2["default"].Component);
-	
-	MenuItem.propTypes = {
-	  attribute: _propTypes2["default"].object,
-	  rootPrefixCls: _propTypes2["default"].string,
-	  eventKey: _propTypes2["default"].string,
-	  active: _propTypes2["default"].bool,
-	  children: _propTypes2["default"].any,
-	  selectedKeys: _propTypes2["default"].array,
-	  disabled: _propTypes2["default"].bool,
-	  title: _propTypes2["default"].string,
-	  onItemHover: _propTypes2["default"].func,
-	  onSelect: _propTypes2["default"].func,
-	  onClick: _propTypes2["default"].func,
-	  onDeselect: _propTypes2["default"].func,
-	  parentMenu: _propTypes2["default"].object,
-	  onDestroy: _propTypes2["default"].func,
-	  onMouseEnter: _propTypes2["default"].func,
-	  onMouseLeave: _propTypes2["default"].func,
-	  multiple: _propTypes2["default"].bool,
-	  isSelected: _propTypes2["default"].bool,
-	  manualRef: _propTypes2["default"].func,
-	  itemIcon: _propTypes2["default"].oneOfType([_propTypes2["default"].func, _propTypes2["default"].node])
-	};
-	MenuItem.defaultProps = {
-	  onSelect: _util.noop,
-	  onMouseEnter: _util.noop,
-	  onMouseLeave: _util.noop,
-	  manualRef: _util.noop
-	};
-	
-	
-	MenuItem.isMenuItem = true;
-	
-	var connected = (0, _miniStore.connect)(function (_ref, _ref2) {
-	  var activeKey = _ref.activeKey,
-	      selectedKeys = _ref.selectedKeys;
-	  var eventKey = _ref2.eventKey,
-	      subMenuKey = _ref2.subMenuKey;
-	  return {
-	    active: activeKey[subMenuKey] === eventKey,
-	    isSelected: selectedKeys.indexOf(eventKey) !== -1
-	  };
-	})(MenuItem);
-	
-	exports["default"] = connected;
-
-/***/ }),
-/* 737 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _propTypes = __webpack_require__(6);
-	
-	var _propTypes2 = _interopRequireDefault(_propTypes);
-	
-	var _util = __webpack_require__(732);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-	
-	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
-	
-	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); } /**
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               * This source code is quoted from rc-menu.
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               * homepage: https://github.com/react-component/menu
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               */
-	
-	
-	var MenuItemGroup = function (_React$Component) {
-	  _inherits(MenuItemGroup, _React$Component);
-	
-	  function MenuItemGroup() {
-	    var _temp, _this, _ret;
-	
-	    _classCallCheck(this, MenuItemGroup);
-	
-	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-	      args[_key] = arguments[_key];
-	    }
-	
-	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, _React$Component.call.apply(_React$Component, [this].concat(args))), _this), _this.renderInnerMenuItem = function (item) {
-	      var _this$props = _this.props,
-	          renderMenuItem = _this$props.renderMenuItem,
-	          index = _this$props.index;
-	
-	      return renderMenuItem(item, index, _this.props.subMenuKey);
-	    }, _temp), _possibleConstructorReturn(_this, _ret);
-	  }
-	
-	  MenuItemGroup.prototype.render = function render() {
-	    var props = _objectWithoutProperties(this.props, []);
-	
-	    var _props$className = props.className,
-	        className = _props$className === undefined ? '' : _props$className,
-	        rootPrefixCls = props.rootPrefixCls;
-	
-	    var titleClassName = rootPrefixCls + '-item-group-title';
-	    var listClassName = rootPrefixCls + '-item-group-list';
-	    var title = props.title,
-	        children = props.children;
-	
-	    _util.menuAllProps.forEach(function (key) {
-	      return delete props[key];
-	    });
-	
-	    // Set onClick to null, to ignore propagated onClick event
-	    delete props.onClick;
-	
-	    return _react2["default"].createElement(
-	      'li',
-	      _extends({}, props, { className: className + ' ' + rootPrefixCls + '-item-group' }),
-	      _react2["default"].createElement(
-	        'div',
-	        {
-	          className: titleClassName,
-	          title: typeof title === 'string' ? title : undefined
-	        },
-	        title
-	      ),
-	      _react2["default"].createElement(
-	        'ul',
-	        { className: listClassName },
-	        _react2["default"].Children.map(children, this.renderInnerMenuItem)
-	      )
-	    );
-	  };
-	
-	  return MenuItemGroup;
-	}(_react2["default"].Component);
-	
-	MenuItemGroup.propTypes = {
-	  renderMenuItem: _propTypes2["default"].func,
-	  index: _propTypes2["default"].number,
-	  className: _propTypes2["default"].string,
-	  subMenuKey: _propTypes2["default"].string,
-	  rootPrefixCls: _propTypes2["default"].string
-	};
-	MenuItemGroup.defaultProps = {
-	  disabled: true
-	};
-	
-	
-	MenuItemGroup.isMenuItemGroup = true;
-	
-	exports["default"] = MenuItemGroup;
-	module.exports = exports['default'];
-
-/***/ }),
-/* 738 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _propTypes = __webpack_require__(6);
-	
-	var _propTypes2 = _interopRequireDefault(_propTypes);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-	
-	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); } /**
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               * This source code is quoted from rc-menu.
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               * homepage: https://github.com/react-component/menu
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               */
-	
-	
-	var Divider = function (_React$Component) {
-	  _inherits(Divider, _React$Component);
-	
-	  function Divider() {
-	    _classCallCheck(this, Divider);
-	
-	    return _possibleConstructorReturn(this, _React$Component.apply(this, arguments));
-	  }
-	
-	  Divider.prototype.render = function render() {
-	    var _props = this.props,
-	        className = _props.className,
-	        rootPrefixCls = _props.rootPrefixCls,
-	        style = _props.style;
-	
-	    return _react2["default"].createElement('li', {
-	      className: className + ' ' + rootPrefixCls + '-item-divider',
-	      style: style
-	    });
-	  };
-	
-	  return Divider;
-	}(_react2["default"].Component);
-	
-	Divider.propTypes = {
-	  className: _propTypes2["default"].string,
-	  rootPrefixCls: _propTypes2["default"].string,
-	  style: _propTypes2["default"].object
-	};
-	Divider.defaultProps = {
-	  // To fix keyboard UX.
-	  disabled: true,
-	  className: '',
-	  style: {}
-	};
-	exports["default"] = Divider;
-	module.exports = exports['default'];
-
-/***/ }),
-/* 739 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _classnames = __webpack_require__(5);
-	
-	var _classnames2 = _interopRequireDefault(_classnames);
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _propTypes = __webpack_require__(6);
-	
-	var _propTypes2 = _interopRequireDefault(_propTypes);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-	
-	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
-	
-	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
-	
-	var defaultProps = {
-	  clsPrefix: "u-navbar-side-container",
-	  sideActive: false
-	};
-	
-	var NavSideContainer = function (_React$Component) {
-	  _inherits(NavSideContainer, _React$Component);
-	
-	  function NavSideContainer() {
-	    _classCallCheck(this, NavSideContainer);
-	
-	    return _possibleConstructorReturn(this, _React$Component.apply(this, arguments));
-	  }
-	
-	  NavSideContainer.prototype.render = function render() {
-	    var _props = this.props,
-	        className = _props.className,
-	        children = _props.children,
-	        clsPrefix = _props.clsPrefix,
-	        sideActive = _props.sideActive,
-	        expanded = _props.expanded,
-	        props = _objectWithoutProperties(_props, ['className', 'children', 'clsPrefix', 'sideActive', 'expanded']);
-	
-	    //const navbarProps = this.context.u_navbar;
-	
-	    return _react2["default"].createElement(
-	      'div',
-	      { className: (0, _classnames2["default"])(className, clsPrefix, expanded && 'expanded') },
-	      children
-	    );
-	  };
-	
-	  return NavSideContainer;
-	}(_react2["default"].Component);
-	
-	NavSideContainer.defaultProps = defaultProps;
-	
-	exports["default"] = NavSideContainer;
-	module.exports = exports['default'];
-
-/***/ }),
-/* 740 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-	
-	var _classnames = __webpack_require__(5);
-	
-	var _classnames2 = _interopRequireDefault(_classnames);
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _propTypes = __webpack_require__(6);
-	
-	var _propTypes2 = _interopRequireDefault(_propTypes);
-	
-	var _createChainedFunction = __webpack_require__(36);
-	
-	var _createChainedFunction2 = _interopRequireDefault(_createChainedFunction);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-	
-	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
-	
-	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
-	
-	var propTypes = {
-	  onClick: _propTypes2["default"].func,
-	  /**
-	   * The toggle content, if left empty it will render the default toggle (seen above).
-	   */
-	  show: _propTypes2["default"].bool,
-	  children: _propTypes2["default"].node
-	};
-	
-	var contextTypes = {
-	  u_navbar: _propTypes2["default"].shape({
-	    expanded: _propTypes2["default"].bool,
-	    onToggle: _propTypes2["default"].func
-	  })
-	};
-	
-	var defaultProps = {
-	  clsPrefix: 'u-navbar-toggle',
-	  show: false
-	};
-	
-	var MenuToggle = function (_React$Component) {
-	  _inherits(MenuToggle, _React$Component);
-	
-	  function MenuToggle(props) {
-	    _classCallCheck(this, MenuToggle);
-	
-	    var _this = _possibleConstructorReturn(this, _React$Component.call(this, props));
-	
-	    _this.state = {
-	      toggleState: false
-	      //this.handleRender = this.handleRender.bind(this);
-	    };return _this;
-	  }
-	
-	  MenuToggle.prototype.handleClick = function handleClick() {
-	    var _context$u_navbar = this.context.u_navbar,
-	        expanded = _context$u_navbar.expanded,
-	        onToggle = _context$u_navbar.onToggle;
-	
-	    this.setState({ toggleState: !this.state.toggleState });
-	    if (onToggle) {
-	      onToggle(!expanded);
-	    }
-	  };
-	
-	  MenuToggle.prototype.render = function render() {
-	    var _props = this.props,
-	        onClick = _props.onClick,
-	        className = _props.className,
-	        children = _props.children,
-	        clsPrefix = _props.clsPrefix,
-	        show = _props.show,
-	        props = _objectWithoutProperties(_props, ['onClick', 'className', 'children', 'clsPrefix', 'show']);
-	    //const navbarProps = this.context.u_navbar || { bsClass: 'navbar' };
-	    //console.log(navbarProps.onToggle, navbarProps.expanded);
-	
-	    var buttonProps = _extends({
-	      type: 'button'
-	    }, props, {
-	      onClick: (0, _createChainedFunction2["default"])(onClick, this.handleClick.bind(this)),
-	      className: (0, _classnames2["default"])(className, clsPrefix, show && 'show')
-	      //!this.context.u_navbar.expanded && 'collapsed',
-	    });
-	
-	    if (children) {
-	      return _react2["default"].createElement(
-	        'button',
-	        buttonProps,
-	        children
-	      );
-	    }
-	    //当show存在时，渲染左侧静态面包按钮
-	    return _react2["default"].createElement(
-	      'div',
-	      null,
-	      show && this.state.toggleState && _react2["default"].createElement(
-	        'button',
-	        buttonProps,
-	        _react2["default"].createElement(
-	          'span',
-	          { className: 'sr-only' },
-	          'Toggle navigation'
-	        ),
-	        _react2["default"].createElement('span', { className: 'icon-bar' }),
-	        _react2["default"].createElement('span', { className: 'icon-bar' }),
-	        _react2["default"].createElement('span', { className: 'icon-bar' })
-	      ),
-	      show && !this.state.toggleState && _react2["default"].createElement(
-	        'button',
-	        buttonProps,
-	        _react2["default"].createElement('span', { className: 'uf uf-arrow-left' })
-	      ),
-	      !show && !this.state.toggleState && _react2["default"].createElement(
-	        'button',
-	        buttonProps,
-	        _react2["default"].createElement(
-	          'span',
-	          { className: 'sr-only' },
-	          'Toggle navigation'
-	        ),
-	        _react2["default"].createElement('span', { className: 'icon-bar' }),
-	        _react2["default"].createElement('span', { className: 'icon-bar' }),
-	        _react2["default"].createElement('span', { className: 'icon-bar' })
-	      )
-	    );
-	  };
-	
-	  return MenuToggle;
-	}(_react2["default"].Component);
-	
-	MenuToggle.propTypes = propTypes;
-	MenuToggle.defaultProps = defaultProps;
-	MenuToggle.contextTypes = contextTypes;
-	
-	exports["default"] = MenuToggle;
-	module.exports = exports['default'];
-
-/***/ }),
-/* 741 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _tinperBeeCore = __webpack_require__(26);
-	
-	function animate(node, show, done) {
-	  var height = void 0;
-	  return (0, _tinperBeeCore.cssAnimation)(node, 'u-motion-collapse', {
-	    start: function start() {
-	      if (!show) {
-	        node.style.height = node.offsetHeight + 'px';
-	      } else {
-	        height = node.offsetHeight;
-	        node.style.height = 0;
-	      }
-	    },
-	    active: function active() {
-	      node.style.height = (show ? height : 0) + 'px';
-	    },
-	    end: function end() {
-	      node.style.height = '';
-	      done();
-	    }
-	  });
-	}
-	
-	var animation = {
-	  enter: function enter(node, done) {
-	    return animate(node, true, done);
-	  },
-	  leave: function leave(node, done) {
-	    return animate(node, false, done);
-	  },
-	  appear: function appear(node, done) {
-	    return animate(node, true, done);
-	  }
-	};
-	
-	exports["default"] = animation;
-	module.exports = exports['default'];
-
-/***/ }),
-/* 742 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _warning = __webpack_require__(31);
-	
-	var _warning2 = _interopRequireDefault(_warning);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-	
-	var warned = {};
-	
-	exports["default"] = function (valid, message) {
-	  if (!valid && !warned[message]) {
-	    (0, _warning2["default"])(false, message);
-	    warned[message] = true;
-	  }
-	};
-	
-	module.exports = exports['default'];
-
-/***/ }),
-/* 743 */
-/***/ (function(module, exports) {
-
-	'use strict';
-	
-	module.exports = {
-	    'lang': 'zh-cn',
-	    'resetSettings': '还原设置',
-	    'include': '包含',
-	    'exclusive': '不包含',
-	    'equal': '等于',
-	    'unequal': '不等于',
-	    'begin': '以开始',
-	    'end': '以结尾',
-	    'greater_than': '大于',
-	    'great_than_equal_to': '大于等于',
-	    'less_than': '小于',
-	    'less_than_equal_to': '小于等于',
-	    'be_equal_to': '等于',
-	    'not_equal_to': '不等于',
-	    "no_data": '暂无数据',
-	    'en-us': {
-	        'resetSettings': 'reset settings',
-	        'include': 'include',
-	        'exclusive': 'exclusive',
-	        'equal': 'equal',
-	        'unequal': 'unequal',
-	        'begin': 'begin',
-	        'end': 'end',
-	        'greater_than': 'greater than',
-	        'great_than_equal_to': 'great than equal to',
-	        'less_than': 'less than',
-	        'less_than_equal_to': 'less than equal to',
-	        'be_equal_to': 'be equal to',
-	        'not_equal_to': 'not equal to',
-	        "no_data": 'no data'
-	    },
-	    'zh-tw': {
-	        'resetSettings': '還原設置',
-	        'include': '包含',
-	        'exclusive': '不包含',
-	        'equal': '等於',
-	        'unequal': '不等於',
-	        'begin': '以開始',
-	        'end': '以結尾',
-	        'greater_than': '大於',
-	        'great_than_equal_to': '大於等於',
-	        'less_than': '小於',
-	        'less_than_equal to': '小於等於',
-	        'be_equal_to': '等於',
-	        'not_equal_to': '不等於',
-	        "no_data": '暫無數據'
-	    }
-	};
-
-/***/ }),
 /* 744 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -96072,10 +96593,10 @@
 	
 	//行控制管理
 	var ColumnManager = function () {
-	  function ColumnManager(columns, elements, originWidth, rowDraggAble) {
+	  function ColumnManager(columns, elements, originWidth, rowDraggAble, showRowNum) {
 	    _classCallCheck(this, ColumnManager);
 	
-	    this._cached = {};
+	    _initialiseProps.call(this);
 	
 	    //判断是否使用行拖拽
 	    if (rowDraggAble) {
@@ -96092,9 +96613,18 @@
 	      }];
 	      columns = dragHandleColumn.concat(columns);
 	    }
+	    columns = this.addOrderColumn(columns, showRowNum);
+	    columns = this.deleteColumnNotShow(columns);
 	    this.columns = columns || this.normalize(elements);
+	
 	    this.originWidth = originWidth;
 	  }
+	
+	  // delete the column which does not show
+	
+	
+	  // 向数据列中添加一列:序号
+	
 	
 	  ColumnManager.prototype.isAnyColumnsFixed = function isAnyColumnsFixed() {
 	    var _this = this;
@@ -96268,7 +96798,9 @@
 	    return element && (element.type === _Column2["default"] || element.type === _ColumnGroup2["default"]);
 	  };
 	
-	  ColumnManager.prototype.reset = function reset(columns, elements) {
+	  ColumnManager.prototype.reset = function reset(columns, elements, showRowNum) {
+	    columns = this.addOrderColumn(columns, showRowNum);
+	    columns = this.deleteColumnNotShow(columns);
 	    this.columns = columns || this.normalize(elements);
 	    this._cached = {};
 	  };
@@ -96369,6 +96901,61 @@
 	  return ColumnManager;
 	}();
 	
+	var _initialiseProps = function _initialiseProps() {
+	  this._cached = {};
+	
+	  this.deleteColumnNotShow = function (columns) {
+	    var len = columns.length;
+	    for (var i = 0; i < len; i++) {
+	      if (columns && columns[i] && columns[i].isShow === false) {
+	        columns.splice(i, 1);
+	        i--;
+	      }
+	    }
+	    return columns;
+	  };
+	
+	  this.addOrderColumn = function (columns, showRowNum) {
+	    if (!showRowNum) {
+	      return columns;
+	    }
+	    var key = showRowNum.key,
+	        fixed = showRowNum.fixed,
+	        width = showRowNum.width,
+	        name = showRowNum.name,
+	        type = showRowNum.type,
+	        base = showRowNum.base;
+	
+	    var order = {
+	      dataIndex: key || '_index',
+	      key: '_index',
+	      fixed: fixed || 'left',
+	      width: width || 50,
+	      title: name || '序号',
+	      render: function render(text, record, index) {
+	        switch (type) {
+	          case 'ascii':
+	            {
+	              return String.fromCharCode((base || 'a').charCodeAt() + index);
+	            }
+	          case 'number':
+	          default:
+	            {
+	              return (base || 0) + index;
+	            }
+	        }
+	      }
+	    };
+	    if (columns.length > 0 && columns[0].dataIndex !== 'checkbox' && columns[0].dataIndex !== 'radio') {
+	      // 多选表格/单选表格时放在第二列,其他情况放到第一列
+	      columns = [order].concat(columns);
+	    } else {
+	      columns.splice(1, 0, order); // splice方法改变原数组,返回切割出的数组,此处为[]
+	    }
+	    return columns;
+	  };
+	};
+	
 	exports["default"] = ColumnManager;
 	module.exports = exports['default'];
 
@@ -96407,7 +96994,8 @@
 	  fixed: _propTypes2["default"].oneOf([true, 'left', 'right']),
 	  render: _propTypes2["default"].func,
 	  onCellClick: _propTypes2["default"].func,
-	  ifshow: _propTypes2["default"].bool
+	  ifshow: _propTypes2["default"].bool,
+	  fieldType: _propTypes2["default"].string // 类型
 	};
 	
 	var Column = function (_Component) {
@@ -96525,7 +97113,7 @@
 /* 748 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -96538,6 +97126,10 @@
 	var _react = __webpack_require__(1);
 	
 	var _react2 = _interopRequireDefault(_react);
+	
+	var _propTypes = __webpack_require__(6);
+	
+	var _propTypes2 = _interopRequireDefault(_propTypes);
 	
 	var _util = __webpack_require__(749);
 	
@@ -96595,7 +97187,7 @@
 	
 	    MultiSelect.prototype.getCheckedOrIndeter = function getCheckedOrIndeter(data) {
 	      var obj = {};
-	      var checkStatus = this.setChecked(data);
+	      var checkStatus = this.checkAllSelected(data);
 	      if (!checkStatus) {
 	        obj.checkedAll = false;
 	        obj.indeterminate = false;
@@ -96614,7 +97206,7 @@
 	    /**
 	     * 判断数据是否全部选中
 	     * @param {*} data 
-	     * reutnr  string  all(全选)、indeter(半选)
+	     * return  string  all(全选)、indeter(半选)
 	     */
 	
 	
@@ -96639,28 +97231,81 @@
 	    };
 	
 	    /**
-	     * 判断是否是数组
-	     * @param {*} o 
+	     * 重写：判断数据是否全部选中
 	     */
 	
 	
+	    /**
+	     * 判断是否是数组
+	     * @param {*} o 
+	     */
 	    MultiSelect.prototype.isArray = function isArray(o) {
 	      return Object.prototype.toString.call(o) == '[object Array]';
 	    };
 	
+	    /**
+	     * 遍历树节点和它的子孙节点，设置_checked
+	     */
+	
+	
+	    /**
+	     * 遍历树节点和它的子孙节点，获取对应状态的节点数组
+	     */
+	
+	
+	    // 实现行点击时触发多选框勾选的需求
+	
+	
 	    MultiSelect.prototype.render = function render() {
-	      var columns = this.props.columns;
+	      var _props = this.props,
+	          columns = _props.columns,
+	          expandIconColumnIndex = _props.expandIconColumnIndex;
 	      var data = this.state.data;
 	
-	      return _react2["default"].createElement(Table, _extends({}, this.props, { columns: this.getDefaultColumns(columns), data: data }));
+	      return _react2["default"].createElement(Table, _extends({}, this.props, {
+	        columns: this.getDefaultColumns(columns),
+	        data: data,
+	        onRowClick: this.onRowClick,
+	        expandIconColumnIndex: expandIconColumnIndex ? expandIconColumnIndex + 1 : 1
+	      }));
 	    };
 	
 	    return MultiSelect;
-	  }(_react.Component), _class.defaultProps = {
+	  }(_react.Component), _class.propTypes = {
+	    autoCheckedByClickRows: _propTypes2["default"].bool //行点击时，是否自动勾选复选框
+	  }, _class.defaultProps = {
 	    prefixCls: "u-table-mult-select",
-	    getSelectedDataFunc: function getSelectedDataFunc() {}
+	    getSelectedDataFunc: function getSelectedDataFunc() {},
+	    autoSelect: false,
+	    autoCheckedByClickRows: true
 	  }, _initialiseProps = function _initialiseProps() {
 	    var _this2 = this;
+	
+	    this.checkAllSelected = function (data) {
+	      if (!_this2.isArray(data)) return false;
+	      if (data.length == 0) return false;
+	      var count = 0;
+	      var disabledCount = 0;
+	      var length = 0;
+	      var getTree = function getTree(arr) {
+	        arr.forEach(function (item) {
+	          length++;
+	          if (item._checked && !item._disabled) {
+	            count++;
+	          } else if (item._disabled) {
+	            disabledCount++;
+	          }
+	          if (item.children) {
+	            getTree(item.children);
+	          }
+	        });
+	      };
+	      getTree(data);
+	      if (length == count + disabledCount && count > 0) {
+	        return "all";
+	      }
+	      return count == 0 ? false : "indeter";
+	    };
 	
 	    this.onAllCheckChange = function () {
 	      var _state = _this2.state,
@@ -96682,12 +97327,17 @@
 	      var selectList = [];
 	
 	      data.forEach(function (item) {
-	        if (!item._disabled) {
-	          item._checked = check;
-	        }
+	        if (item.children) {
+	          var res = _this2.setTree(item, check, true);
+	          selectList = selectList.concat(res);
+	        } else {
+	          if (!item._disabled) {
+	            item._checked = check;
+	          }
 	
-	        if (item._checked) {
-	          selectList.push(item);
+	          if (item._checked) {
+	            selectList.push(item);
+	          }
 	        }
 	      });
 	      if (selectList.length > 0) {
@@ -96702,6 +97352,41 @@
 	      _this2.props.getSelectedDataFunc(selectList);
 	    };
 	
+	    this.setTree = function (node, flag, autoSelect) {
+	      var res = [];
+	      var setTreeNodeFlag = function setTreeNodeFlag(node, flag) {
+	        if (!node._disabled) {
+	          node._checked = flag;
+	        }
+	        if (flag) {
+	          res.push(node);
+	        }
+	        if (node.children && autoSelect) {
+	          node.children.forEach(function (item) {
+	            setTreeNodeFlag(item, flag);
+	          });
+	        }
+	      };
+	      setTreeNodeFlag(node, flag);
+	      return res;
+	    };
+	
+	    this.getTree = function (node, key, value) {
+	      var res = [];
+	      var getTreeNodeByFlag = function getTreeNodeByFlag(node) {
+	        if (node[key] === value) {
+	          res.push(node);
+	        }
+	        if (node.children) {
+	          node.children.forEach(function (item) {
+	            getTreeNodeByFlag(item);
+	          });
+	        }
+	      };
+	      getTreeNodeByFlag(node);
+	      return res;
+	    };
+	
 	    this.handleClick = function () {};
 	
 	    this.onCheckboxChange = function (text, record, index) {
@@ -96709,13 +97394,21 @@
 	        var data = _this2.state.data;
 	
 	        var selectList = [];
-	        record._checked = record._checked ? false : true;
+	        // record._checked = record._checked?false:true;
+	        var flag = record._checked ? false : true;
+	        if (record.children) {
+	          _this2.setTree(record, flag, _this2.props.autoSelect);
+	        } else {
+	          record._checked = flag;
+	        }
 	        var obj = _this2.getCheckedOrIndeter(data);
 	        _this2.setState(_extends({
 	          data: data
 	        }, obj));
 	        data.forEach(function (da) {
-	          if (da._checked) {
+	          if (da.children) {
+	            selectList = selectList.concat(_this2.getTree(da, '_checked', true));
+	          } else if (da._checked) {
 	            selectList.push(da);
 	          }
 	        });
@@ -96743,7 +97436,7 @@
 	      var _defaultColumns = [{
 	        className: 'u-table-multiSelect-column',
 	        title: _react2["default"].createElement(Checkbox, _extends({
-	          className: "table-checkbox"
+	          className: 'table-checkbox'
 	        }, checkAttr, {
 	          disabled: disabledCount == dataLength ? true : false,
 	          onChange: _this2.onAllCheckChange
@@ -96757,7 +97450,7 @@
 	          record._disabled ? attr.disabled = record._disabled : "";
 	          return _react2["default"].createElement(Checkbox, _extends({
 	            key: index,
-	            className: "table-checkbox"
+	            className: 'table-checkbox'
 	          }, attr, {
 	            checked: record._checked,
 	            onClick: _this2.handleClick,
@@ -96767,9 +97460,21 @@
 	      }];
 	      return _defaultColumns.concat(columns);
 	    };
+	
+	    this.onRowClick = function (record, index, event) {
+	      if (record._disabled) return;
+	      var _props2 = _this2.props,
+	          autoCheckedByClickRows = _props2.autoCheckedByClickRows,
+	          onRowClick = _props2.onRowClick;
+	
+	      if (autoCheckedByClickRows) {
+	        _this2.onCheckboxChange('', record, index)();
+	      }
+	      onRowClick && onRowClick(record, index, event);
+	    };
 	  }, _temp;
 	}
-	module.exports = exports["default"];
+	module.exports = exports['default'];
 
 /***/ }),
 /* 749 */
@@ -97081,7 +97786,8 @@
 	var error = function error() {
 	    _src2['default'].error({
 	        title: '提交失败',
-	        content: '单据状态更新失败，请重新尝试。'
+	        content: '单据状态更新失败，请重新尝试。',
+	        backdropClosable: false
 	    });
 	};
 	var warning = function warning() {
