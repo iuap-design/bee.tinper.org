@@ -9,7 +9,7 @@ export default function OkButton({ prefixCls, locale, okDisabled, onOk }) {
   return (<Button
     className={className}
     size="sm" colors="primary"
-    disabled={okDisabled}
+    disabled={!!okDisabled}
     onClick={okDisabled ? null : onOk}
   >
     {locale.ok}

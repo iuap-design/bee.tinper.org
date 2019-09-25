@@ -53,7 +53,7 @@ export default class CalendarFooter extends React.Component {
       if (nowEl || timePickerBtn || okBtn || extraFooter) {
         footerBtn = (
           <span className={`${prefixCls}-footer-btn`}>
-            {extraFooter}
+            {extraFooter ? <div className={`${prefixCls}-footer-extra`}>{extraFooter}</div> : null}
             {toFragment([nowEl, timePickerBtn, okBtn])}
           </span>
         );

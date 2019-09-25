@@ -4,6 +4,8 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _react = require("react");
 
 var _react2 = _interopRequireDefault(_react);
@@ -44,6 +46,10 @@ var _zh_CN = require("./locale/zh_CN");
 
 var _zh_CN2 = _interopRequireDefault(_zh_CN);
 
+var _omit = require("omit.js");
+
+var _omit2 = _interopRequireDefault(_omit);
+
 var _moment = require("moment");
 
 var _moment2 = _interopRequireDefault(_moment);
@@ -55,6 +61,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
 
 function _objectDestructuringEmpty(obj) { if (obj == null) throw new TypeError("Cannot destructure undefined"); }
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -137,7 +145,10 @@ var RangePicker = function (_Component) {
         var _this2 = this;
 
         var props = this.props;
-        var showClose = props.showClose;
+
+        var showClose = props.showClose,
+            others = _objectWithoutProperties(props, ["showClose"]);
+
         var _state = this.state,
             value = _state.value,
             open = _state.open;
@@ -167,7 +178,8 @@ var RangePicker = function (_Component) {
 
         return _react2["default"].createElement(
             "div",
-            { onClick: this.stopPropagation, onMouseOver: this.stopPropagation },
+            _extends({ onClick: this.stopPropagation, onMouseOver: this.stopPropagation
+            }, (0, _omit2["default"])(others, ['closeIcon', 'renderIcon', 'showClear', 'showToday', 'locale', 'placeholder', 'showOk', 'dateInputPlaceholder', 'onPanelChange', 'onStartInputBlur', 'onEndInputBlur', 'renderFooter', 'showTime'])),
             _react2["default"].createElement(
                 _Picker2["default"],
                 {

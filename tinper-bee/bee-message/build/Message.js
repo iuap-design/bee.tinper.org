@@ -153,7 +153,7 @@ function getMessageInstance() {
     });
 }
 
-function notice(content, duration_arg, type, onClose, position, style, keyboard, onEscapeKeyUp, showIcon, icon) {
+function notice(content, duration_arg, type, onClose, position, style, keyboard, onEscapeKeyUp, showIcon, icon, props) {
     if (positionType.findIndex(function (item) {
         return item === position;
     }) < 0) {
@@ -181,7 +181,7 @@ function notice(content, duration_arg, type, onClose, position, style, keyboard,
     var positionStyle = JSON.stringify(messageStyle_copy) == "{}" ? positionObj[position].messageStyle : messageStyle_copy;
     defaultStyle = _extends({}, positionStyle, style);
     getMessageInstance(position, function (instance) {
-        instance.notice({
+        instance.notice(_extends({}, props, {
             key: key,
             duration: duration,
             color: type,
@@ -201,7 +201,7 @@ function notice(content, duration_arg, type, onClose, position, style, keyboard,
                 )
             ),
             onClose: onClose
-        });
+        }));
     }, keyboard, onEscapeKeyUp);
     return function () {
         var target = key++;
@@ -227,7 +227,7 @@ exports["default"] = {
         var style = obj.style || {};
         var showIcon = obj.hasOwnProperty('showIcon') ? obj.showIcon : true;
         var icon = obj.hasOwnProperty('icon') ? obj.icon : false;
-        return notice(content, duration, color, onClose, position, style, obj.keyboard, obj.onEscapeKeyUp, showIcon, icon);
+        return notice(content, duration, color, onClose, position, style, obj.keyboard, obj.onEscapeKeyUp, showIcon, icon, obj);
     },
     config: function config(options) {
         if (options.top !== undefined) {

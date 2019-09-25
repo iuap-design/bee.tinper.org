@@ -4,6 +4,8 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
@@ -25,6 +27,8 @@ var _utils = require('./utils');
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -238,9 +242,21 @@ var Affix = function (_Component) {
             fixStyle = _calculate.fixStyle,
             boxStyle = _calculate.boxStyle;
 
+        var _props = this.props,
+            offsetTop = _props.offsetTop,
+            horizontal = _props.horizontal,
+            container = _props.container,
+            target = _props.target,
+            onChange = _props.onChange,
+            onTargetChange = _props.onTargetChange,
+            zIndex = _props.zIndex,
+            canHidden = _props.canHidden,
+            childrenRef = _props.childrenRef,
+            others = _objectWithoutProperties(_props, ['offsetTop', 'horizontal', 'container', 'target', 'onChange', 'onTargetChange', 'zIndex', 'canHidden', 'childrenRef']);
+
         return _react2["default"].createElement(
             'div',
-            { className: (0, _classnames2["default"])("u-affix-container", this.props.className), id: this.state.containerId, style: boxStyle },
+            _extends({}, others, { className: (0, _classnames2["default"])("u-affix-container", this.props.className), id: this.state.containerId, style: boxStyle }),
             _react2["default"].createElement(
                 'div',
                 { className: 'u-affix-content', style: fixStyle },

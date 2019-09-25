@@ -42,7 +42,7 @@ class SearchTabs extends Component {
                 )
                 if(index < children.length-1){
                     childs.push(
-                        <span className={`${clsfix}-split`}>|</span>
+                        <span className={`${clsfix}-split`} key={`split-${index}`}>|</span>
                     )
                 }
             })
@@ -66,10 +66,10 @@ class SearchTabs extends Component {
 
     render(){
 
-        let { clsfix,children } = this.props;
+        let { clsfix,children, onChange, value, ...others } = this.props;
 
         return(
-            <div className={`${clsfix}`}>
+            <div className={`${clsfix}`} {...others}>
                 {
                     this.getChildren()
                 }

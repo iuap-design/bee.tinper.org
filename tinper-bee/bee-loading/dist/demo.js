@@ -36871,6 +36871,8 @@
 	  value: true
 	});
 	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
 	var _react = __webpack_require__(1);
 	
 	var _react2 = _interopRequireDefault(_react);
@@ -36976,6 +36978,7 @@
 	
 	    var _props2 = this.props,
 	        clsPrefix = _props2.clsPrefix,
+	        clsLoadBack = _props2.clsLoadBack,
 	        loadingType = _props2.loadingType,
 	        size = _props2.size,
 	        color = _props2.color,
@@ -36987,7 +36990,7 @@
 	        wrapperClassName = _props2.wrapperClassName,
 	        indicator = _props2.indicator,
 	        tip = _props2.tip,
-	        others = _objectWithoutProperties(_props2, ["clsPrefix", "loadingType", "size", "color", "show", "showBackDrop", "container", "children", "fullScreen", "wrapperClassName", "indicator", "tip"]);
+	        others = _objectWithoutProperties(_props2, ["clsPrefix", "clsLoadBack", "loadingType", "size", "color", "show", "showBackDrop", "container", "children", "fullScreen", "wrapperClassName", "indicator", "tip"]);
 	
 	    if (!show) return null;
 	
@@ -37003,7 +37006,7 @@
 	        null,
 	        _react2["default"].createElement(
 	          "div",
-	          { className: classes },
+	          _extends({ className: classes }, others),
 	          _react2["default"].createElement(
 	            "div",
 	            { className: clsPrefix + "-spin" },
@@ -37014,6 +37017,11 @@
 	            { className: clsPrefix + "-desc" },
 	            tip
 	          ) : null
+	        ),
+	        !tip && children && _react2["default"].createElement(
+	          "div",
+	          { className: clsPrefix + "-desc" },
+	          children
 	        )
 	      );
 	    } else if (loadingType === "rotate") {
@@ -37022,7 +37030,7 @@
 	        null,
 	        _react2["default"].createElement(
 	          "div",
-	          { className: classes },
+	          _extends({ className: classes }, others),
 	          _react2["default"].createElement(
 	            "div",
 	            { className: clsPrefix + "-spin" },
@@ -37033,6 +37041,11 @@
 	            { className: clsPrefix + "-desc" },
 	            tip
 	          ) : null
+	        ),
+	        !tip && children && _react2["default"].createElement(
+	          "div",
+	          { className: clsPrefix + "-desc" },
+	          children
 	        )
 	      );
 	    } else if (loadingType === "line") {
@@ -37041,7 +37054,7 @@
 	        null,
 	        _react2["default"].createElement(
 	          "div",
-	          { className: classes },
+	          _extends({ className: classes }, others),
 	          _react2["default"].createElement("div", null),
 	          _react2["default"].createElement("div", null),
 	          _react2["default"].createElement("div", null),

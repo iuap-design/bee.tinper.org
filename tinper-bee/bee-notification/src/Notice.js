@@ -52,7 +52,7 @@ class Notice extends React.Component {
   }
 
   render() {
-    const { closable, clsPrefix, className, style, children, color, title } = this.props;
+    const { closable, clsPrefix, className, style, children, color, title, content, onEnd, onClose, duration, ...others } = this.props;
     const componentClass = `${clsPrefix}-notice`;
     const classes = {
       [`${componentClass}`]: 1,
@@ -63,7 +63,7 @@ class Notice extends React.Component {
         classes[`${componentClass}-${color}`] = true;
     }
     return (
-      <div className={classNames(classes)} style={style} onClick={ this.close }>
+      <div className={classNames(classes)} style={style} onClick={ this.close } {...others}>
         <div className={`${componentClass}-content`}>
             {title && (<div className={`${componentClass}-title`}>{title}</div>)}
             <div className={`${componentClass}-description`}>

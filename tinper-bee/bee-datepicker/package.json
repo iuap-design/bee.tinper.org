@@ -1,6 +1,6 @@
 {
  "name": "bee-datepicker",
- "version": "2.2.7",
+ "version": "2.2.8",
  "description": "DatePicker ui component for react",
  "keywords": [
   "react",
@@ -42,6 +42,7 @@
   "bee-input-group": "latest",
   "classnames": "^2.2.5",
   "moment": "^2.17.1",
+  "omit.js": "^1.0.2",
   "rc-time-picker": "^3.1.0",
   "rc-trigger": "^2.2.0",
   "rc-util": "^4.1.1",

@@ -1,6 +1,6 @@
 {
  "name": "bee-tree",
- "version": "2.1.4",
+ "version": "2.1.8",
  "description": "Tree ui component for react",
  "keywords": [
   "react",
@@ -42,6 +42,7 @@
   "bee-checkbox": "latest",
   "bee-modal": "^2.0.13",
   "classnames": "^2.2.5",
+  "omit.js": "^1.0.2",
   "tinper-bee-core": "latest"
  },
  "peerDependencies": {

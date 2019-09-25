@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Swiper from 'swiper/dist/js/swiper.js';
+import omit from 'omit.js';
 
 import PropTypes from 'prop-types';
 
@@ -452,11 +453,22 @@ class Carousel extends React.Component {
   }
 
   render() {
-    const { containerClass, wrapperClass, children, rtl } = this.props;
+    const { containerClass, wrapperClass, children, rtl, ...others } = this.props;
     const rtlProp = rtl ? { dir: 'rtl' } : {};
-
+    const customProps = {...omit(others, [
+        'pagination',
+        'navigation',
+        'spaceBetween',
+        'slideClass',
+        'containerClass',
+        'wrapperClass',
+        'slideClass',
+        'effect',
+        'slidesPerView',
+        'breakpoints'
+    ])};
     return (
-      <div className={containerClass} {...rtlProp}>
+      <div className={containerClass} {...rtlProp} {...customProps}>
         {this.renderParallax()}
         <div className={wrapperClass}>
           {React.Children.map(children, this.renderContent)}

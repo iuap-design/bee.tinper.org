@@ -755,7 +755,7 @@ class RangeCalendar extends React.Component {
           <div className={cls}>
             {(showToday || props.timePicker || showOkButton || extraFooter) ? (
               <div className={`${prefixCls}-footer-btn`}>
-                {extraFooter}
+                {extraFooter ? <div className={`${prefixCls}-footer-extra`}>{extraFooter}</div> : null}
                 {showToday ? (
                   <TodayButton
                     {...props}

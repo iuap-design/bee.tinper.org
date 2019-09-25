@@ -182,9 +182,21 @@ class Affix extends Component {
     }
 
     render() {
-        const { fixStyle, boxStyle }= this.calculate()
+        const { fixStyle, boxStyle }= this.calculate();
+        const {
+            offsetTop,
+            horizontal,
+            container,
+            target,
+            onChange,
+            onTargetChange,
+            zIndex,
+            canHidden,
+            childrenRef,
+            ...others
+        } = this.props;
         return (
-            <div className={classnames("u-affix-container",this.props.className)} id={this.state.containerId}style={boxStyle}>
+            <div {...others} className={classnames("u-affix-container",this.props.className)} id={this.state.containerId} style={boxStyle}>
                 <div className="u-affix-content" style={fixStyle}>
                     {this.props.children}
                 </div>

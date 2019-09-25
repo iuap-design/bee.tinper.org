@@ -182,11 +182,9 @@ var Popover = function (_Component) {
 
     Popover.prototype.componentDidMount = function componentDidMount() {
         this._mountNode = document.createElement('div');
-        !isReact16 && this.renderOverlay();
     };
 
     Popover.prototype.componentDidUpdate = function componentDidUpdate(prevProps) {
-        !isReact16 && this.renderOverlay();
         if ('show' in this.props && prevProps.show !== this.props.show) {
             this.setState({
                 show: this.props.show
@@ -214,7 +212,9 @@ var Popover = function (_Component) {
             positionLeft = _props.positionLeft,
             rootClose = _props.rootClose,
             defaultOverlayShown = _props.defaultOverlayShown,
-            props = _objectWithoutProperties(_props, ['id', 'clsPrefix', 'className', 'content', 'title', 'children', 'onClick', 'trigger', 'onBlur', 'onFocus', 'onMouseOut', 'onMouseOver', 'positionTop', 'positionLeft', 'rootClose', 'defaultOverlayShown']);
+            container = _props.container,
+            show = _props.show,
+            props = _objectWithoutProperties(_props, ['id', 'clsPrefix', 'className', 'content', 'title', 'children', 'onClick', 'trigger', 'onBlur', 'onFocus', 'onMouseOut', 'onMouseOver', 'positionTop', 'positionLeft', 'rootClose', 'defaultOverlayShown', 'container', 'show']);
 
         delete props.delay;
         delete props.delayShow;
@@ -245,9 +245,6 @@ var Popover = function (_Component) {
 
         this._overlay = this.makeOverlay(overlay, overlayProps);
 
-        if (!isReact16) {
-            return (0, _react.cloneElement)(child, triggerProps);
-        }
         triggerProps.key = 'overlay';
 
         var portal = _react2["default"].createElement(
@@ -259,7 +256,7 @@ var Popover = function (_Component) {
                 overlay: this._overlay,
                 trigger: trigger,
                 placement: props.placement,
-                container: props.container,
+                container: container,
                 positionTop: positionTop,
                 positionLeft: positionLeft,
                 rootClose: rootClose,

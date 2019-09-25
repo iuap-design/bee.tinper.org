@@ -72,6 +72,10 @@ var InfiniteScroll = function (_Component) {
     };
 
     _this.handleScrollY = function () {
+      var rowHeight = _this.props.store.getState().rowHeight;
+      //默认显示20条，rowsInView根据定高算的。在非固定高下，这个只是一个大概的值。
+      _this.rowsInView = scrollY ? Math.floor(scrollY / rowHeight) : _config2["default"].defaultRowsInView;
+
       var currentIndex = _this.currentIndex,
           startIndex = _this.startIndex,
           endIndex = _this.endIndex,
@@ -83,7 +87,7 @@ var InfiniteScroll = function (_Component) {
       var tempScrollTop = _this.scrollTop;
       //根据 scrollTop 计算 currentIndex
       while (tempScrollTop > 0) {
-        tempScrollTop -= _config2["default"].defaultHeight;
+        tempScrollTop -= rowHeight;
         if (tempScrollTop > 0) {
           index += 1;
         }
@@ -233,17 +237,18 @@ var InfiniteScroll = function (_Component) {
 
 
   InfiniteScroll.prototype.attachScrollListener = function attachScrollListener() {
-    var parentElement = this.getParentElement(this.scrollComponent);
+    var store = this.props.store;
 
+    var parentElement = this.getParentElement(this.scrollComponent);
     if (!parentElement) {
       return;
     }
-
     var scrollEl = parentElement;
     var scrollY = scrollEl && scrollEl.clientHeight;
 
+    var rowHeight = store.getState().rowHeight;
     //默认显示20条，rowsInView根据定高算的。在非固定高下，这个只是一个大概的值。
-    this.rowsInView = scrollY ? Math.floor(scrollY / _config2["default"].defaultHeight) : _config2["default"].defaultRowsInView;
+    this.rowsInView = scrollY ? Math.floor(scrollY / rowHeight) : _config2["default"].defaultRowsInView;
 
     scrollEl.addEventListener('scroll', this.scrollListener, this.options ? this.options : this.props.useCapture);
     scrollEl.addEventListener('resize', this.scrollListener, this.options ? this.options : this.props.useCapture);
@@ -274,7 +279,9 @@ var InfiniteScroll = function (_Component) {
         ref = _props.ref,
         getScrollParent = _props.getScrollParent,
         treeList = _props.treeList,
-        props = _objectWithoutProperties(_props, ['children', 'element', 'ref', 'getScrollParent', 'treeList']);
+        handleTreeListChange = _props.handleTreeListChange,
+        store = _props.store,
+        props = _objectWithoutProperties(_props, ['children', 'element', 'ref', 'getScrollParent', 'treeList', 'handleTreeListChange', 'store']);
 
     props.ref = function (node) {
       _this2.scrollComponent = node;

@@ -44,6 +44,10 @@ var _Option = require('./Option');
 
 var _Option2 = _interopRequireDefault(_Option);
 
+var _omit = require('omit.js');
+
+var _omit2 = _interopRequireDefault(_omit);
+
 var _util = require('./util');
 
 var _SelectTrigger = require('./SelectTrigger');
@@ -230,6 +234,7 @@ var Select = function (_React$Component) {
     var realOpen = this.getRealOpenState();
     var options = this._options || [];
     var dataOrAriaAttributeProps = {};
+    var customProps = _extends({}, (0, _omit2["default"])(props, ['transitionName', 'choiceTransitionName', 'optionLabelProp', 'notFoundContent', 'clsPrefix', 'prefixCls', 'placeholder', 'dropdownStyle', 'dropdownMenuStyle', 'optionFilterProp', 'showAction', 'tokenSeparators', 'showSearch', 'allowClear', 'enterKeyDown', 'defaultOpen', 'labelInValue', 'defaultActiveFirstOption', 'onSearch', 'onDeselect', 'onInputKeyDown', 'showArrow', 'dropdownMatchSelectWidth', 'autoClearSearchValue', 'searchPlaceholder', 'scrollToEnd', 'filterOption', 'backfill', 'tags', 'combobox', 'supportWrite', 'onChange', 'onFocus', 'onBlur', 'onSelect', 'onSearch', 'onDeselect', 'onInputKeyDown', 'onKeyDown']));
     for (var key in props) {
       if (Object.prototype.hasOwnProperty.call(props, key) && (key.substr(0, 5) === 'data-' || key.substr(0, 5) === 'aria-' || key === 'role')) {
         dataOrAriaAttributeProps[key] = props[key];
@@ -282,7 +287,7 @@ var Select = function (_React$Component) {
       },
       _react2["default"].createElement(
         'div',
-        {
+        _extends({}, customProps, {
           id: props.id,
           style: props.style,
           ref: this.saveRootRef,
@@ -293,7 +298,7 @@ var Select = function (_React$Component) {
           onMouseDown: this.markMouseDown,
           onMouseUp: this.markMouseLeave,
           onMouseOut: this.markMouseLeave
-        },
+        }),
         _react2["default"].createElement(
           'div',
           _extends({

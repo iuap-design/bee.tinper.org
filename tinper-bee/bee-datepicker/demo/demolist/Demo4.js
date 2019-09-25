@@ -64,7 +64,8 @@ class Demo4 extends Component {
                             locale={zhCN}
                             defaultValue={moment()}
                             placeholder="选择年月"
-                            onClear={this.onClear} showClose={false}
+                            onClear={this.onClear} 
+                            showClose={false}
                         />
                     </Col>
                     <Col md={6} style={{'marginBottom':'10px'}}>
@@ -72,7 +73,8 @@ class Demo4 extends Component {
                         defaultValue={moment()}
                         onSelect={this.onSelect}
                         onChange={this.onChange}
-                        placeholder="选择周" showClose={false}
+                        placeholder="选择周" 
+                        showClose={false}
                         />
                     </Col>
                     <Col md={6} style={{'marginBottom':'10px'}}>

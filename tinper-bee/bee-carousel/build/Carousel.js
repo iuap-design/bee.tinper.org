@@ -18,6 +18,10 @@ var _swiper = require('swiper/dist/js/swiper.js');
 
 var _swiper2 = _interopRequireDefault(_swiper);
 
+var _omit = require('omit.js');
+
+var _omit2 = _interopRequireDefault(_omit);
+
 var _propTypes = require('prop-types');
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
@@ -25,6 +29,8 @@ var _propTypes2 = _interopRequireDefault(_propTypes);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -462,13 +468,14 @@ var Carousel = function (_React$Component) {
             containerClass = _props.containerClass,
             wrapperClass = _props.wrapperClass,
             children = _props.children,
-            rtl = _props.rtl;
+            rtl = _props.rtl,
+            others = _objectWithoutProperties(_props, ['containerClass', 'wrapperClass', 'children', 'rtl']);
 
         var rtlProp = rtl ? { dir: 'rtl' } : {};
-
+        var customProps = _extends({}, (0, _omit2["default"])(others, ['pagination', 'navigation', 'spaceBetween', 'slideClass', 'containerClass', 'wrapperClass', 'slideClass', 'effect', 'slidesPerView', 'breakpoints']));
         return _react2["default"].createElement(
             'div',
-            _extends({ className: containerClass }, rtlProp),
+            _extends({ className: containerClass }, rtlProp, customProps),
             this.renderParallax(),
             _react2["default"].createElement(
                 'div',

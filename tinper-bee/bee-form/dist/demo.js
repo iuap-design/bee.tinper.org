@@ -76,7 +76,7 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
 	
-	var Demo1 = __webpack_require__(157);var Demo2 = __webpack_require__(352);var Demo3 = __webpack_require__(353);var Demo4 = __webpack_require__(359);var Demo5 = __webpack_require__(645);var Demo6 = __webpack_require__(651);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 单个input校验", "code": '/**\n *\n * @title \u5355\u4E2Ainput\u6821\u9A8C\n * @description \u4F7F\u7528FormItem\n */\nimport React, { Component } from \'react\';\nimport { Icon, Label, FormControl, Form } from \'tinper-bee\';\n\nconst FormItem = Form.FormItem;\n\n\nconst Demo1 = Form.createForm()(class Demo extends Component {\n    constructor(props) {\n        super(props);\n    }\n    render() {\n        const self=this;\n        const { getFieldProps, getFieldError } = this.props.form;\n        return (\n                <FormItem className=\'demo1\'>\n                    <Label>\u59D3\u540D</Label>\n                    <FormControl placeholder=\'\u8BF7\u8F93\u5165\u59D3\u540D\'\n                     {...getFieldProps(\'name\', {\n                        validateTrigger: \'onBlur\',\n                        rules: [{\n                            required: true, message: <span><Icon type="uf-exc-t"></Icon><span>\u8BF7\u8F93\u5165\u59D3\u540D</span></span>\n                        },{\n                            max:5,message:<span><Icon type="uf-exc-t"></Icon><span>\u6700\u5927\u957F\u5EA6\u4E3A10</span></span>\n                        },{\n                            pattern: /[\\u4e00-\\u9fa5]/, message: <span><Icon type="uf-exc-t"></Icon><span>\u8BF7\u8F93\u5165\u4E2D\u6587\u5B57\u7B26</span></span>,\n                        }],\n                    }) } />\n                    <span className=\'error\'>\n                        {getFieldError(\'name\')}\n                    </span>   \n                </FormItem>\n        )\n    }\n})\n\nexport default Demo1;', "desc": " 使用FormItem", "scss_code": "" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 基本form校验", "code": "/**\n *\n * @title 基本form校验\n * @description 登录示例\n */\nimport React, { Component } from 'react';\nimport { Icon, Button, Label, FormControl, Form } from 'tinper-bee';\nimport ReactDOM from 'react-dom';\n\nconst FormItem = Form.FormItem;\n\nconst Demo2 = Form.createForm()(class Demo2 extends Component {\n    submit = (e) => {\n        e.preventDefault();\n        this.props.form.validateFields((err, values) => {\n            if (err) {\n                console.log('校验失败', values);\n            } else {\n                console.log('提交成功', values)\n            }\n        });\n    }\n    render() {\n        const { getFieldProps, getFieldError } = this.props.form;\n        return (\n            <div className=\"demo2\">\n                <Form >\n                    <FormItem>\n                        <Label>用户名</Label>\n                        <FormControl placeholder=\"请输入用户名\"\n                            {...getFieldProps('username', {\n                                validateTrigger: 'onBlur',\n                                rules: [{\n                                    required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请输入用户名</span></span>,\n                                }],\n                            }) }\n                        />\n                        <span className='error'>\n                            {getFieldError('username')}\n                        </span>\n                    </FormItem>\n                    <FormItem>\n                        <Label>密码</Label>\n                        <FormControl placeholder=\"请输入密码\" type='password'\n                            {...getFieldProps('password', {\n                                validateTrigger: 'onBlur',\n                                rules: [{\n                                    required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请输入密码</span></span>,\n                                }],\n                            }) }\n                        />\n                        <span className='error'>\n                            {getFieldError('password')}\n                        </span>\n                    </FormItem>\n                    <FormItem style={{'paddingLeft':'106px'}}>\n                        <Button shape=\"border\" className=\"reset\" style={{\"marginRight\":\"8px\"}}>取消</Button>\n                        <Button colors=\"primary\" className=\"login\" onClick={this.submit}>登录</Button>\n                    </FormItem>\n                </Form>\n            </div>\n        )\n    }\n})\nexport default Demo2;", "desc": " 登录示例", "scss_code": "" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 基本form校验", "code": "/**\n *\n * @title 基本form校验\n * @description 注册示例\n */\nimport React, { Component } from 'react';\nimport { Icon, Label, Checkbox, Button, FormControl, Form } from 'tinper-bee';\n\nconst FormItem = Form.FormItem;\n\nconst Demo3 = Form.createForm()( class Demo extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            checkbox: false\n        }\n    }\n    submit = (e) => {\n        e.preventDefault();\n        this.props.form.validateFields((err, values) => {\n            if (err) {\n                console.log('校验失败', values);\n            } else {\n                console.log('提交成功', values)\n            }\n        });\n    }\n    handleConfirmPassword = (rule, value, callback) => {\n        const { getFieldValue } = this.props.form;\n        if (value && value !== getFieldValue('password')) {\n            callback(<span><Icon type=\"uf-exc-t\"></Icon><span>两次输入不一致！</span></span>)\n        }\n        callback();\n    }\n    render() {\n        const self = this;\n        const { getFieldProps, getFieldError } = this.props.form;\n        return (\n            <div className=\"demo3\">\n                <Form>\n                    <FormItem>\n                        <Label>用户名</Label>\n                        <FormControl placeholder=\"请输入用户名(包含数字和字母，8-15位)\"\n                            {...getFieldProps('username', {\n                                validateTrigger: 'onBlur',\n                                rules: [{\n                                    required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请输入用户名</span></span>,\n                                }, {\n                                    pattern: /^(?!\\d+$)(?![a-zA-Z]+$)[a-zA-Z0-9]{8,15}$/, \n                                    message: <span><Icon type=\"uf-exc-t\"></Icon><span>用户名格式错误</span></span>,\n                                }],\n                            }) }\n                        />\n                        <span className='error'>\n                            {getFieldError('username')}\n                        </span>\n                    </FormItem>\n\n                    <FormItem>\n                        <Label>密码</Label>\n                        <FormControl placeholder=\"请输入密码\" type='password'\n                            {...getFieldProps('password', {\n                                validateTrigger: 'onBlur',\n                                rules: [{\n                                    required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请输入密码</span></span>,\n                                }],\n                            }) }\n                        />\n                        <span className='error'>\n                            {getFieldError('password')}\n                        </span>\n                    </FormItem>\n\n                    <FormItem>\n                        <Label>再次输入密码</Label>\n                        <FormControl placeholder=\"请输入密码\" type='password'\n                            {...getFieldProps('password2', {\n                                validateTrigger: 'onBlur',\n                                rules: [{\n                                    required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请输入密码</span></span>,\n                                }, {\n                                    validator: this.handleConfirmPassword\n                                }],\n                            }) }\n                        />\n                        <span className='error'>\n                            {getFieldError('password2')}\n                        </span>\n                    </FormItem>\n\n                    <FormItem>\n                        <Label>邮箱</Label>\n                        <FormControl placeholder=\"请输入邮箱\"\n                            {...getFieldProps('email', {\n                                validateTrigger: 'onBlur',\n                                rules: [{\n                                    required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请输入邮箱</span></span>,\n                                }, {\n                                    type: 'email', message: <span><Icon type=\"uf-exc-t\"></Icon><span>邮箱格式不正确</span></span>\n                                }],\n                            }) }\n                        />\n                        <span className='error'>\n                            {getFieldError('email')}\n                        </span>\n                    </FormItem>\n                    <FormItem>\n                        <Label>手机号</Label>\n\n                        <FormControl placeholder=\"请输入手机号\"\n                            {...getFieldProps('phone', {\n                                validateTrigger: 'onBlur',\n                                rules: [{\n                                    required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请输入手机号</span></span>,\n                                }, {\n                                    pattern: /^\\d{11}$/, message: <span><Icon type=\"uf-exc-t\"></Icon><span>手机号格式不正确</span></span>\n                                }],\n                            }) }\n                        />\n\n                        <span className='error'>\n                            {getFieldError('phone')}\n                        </span>\n                    </FormItem>\n\n                    <FormItem style={{'paddingLeft':'106px'}}>\n                        <Checkbox\n                            defaultChecked={this.state.checkbox}\n                            {\n                            ...getFieldProps('checkbox', {\n                                initialValue: false,\n                            }\n                            ) }\n                        >\n                        我已经阅读并同意相关条款\n                        </Checkbox>\n                    </FormItem>\n                    <FormItem style={{'paddingLeft':'106px'}}>\n                        <Button shape=\"border\" className=\"reset\" style={{\"marginRight\":\"8px\"}}>取消</Button>\n                        <Button colors=\"primary\" className=\"login\" onClick={this.submit}>注册</Button>\n                    </FormItem>\n                </Form>\n            </div>\n        )\n    }\n})\nexport default Demo3;", "desc": " 注册示例", "scss_code": "" }, { "example": _react2['default'].createElement(Demo4, null), "title": " 表单校验", "code": "/**\r\n *\r\n * @title 表单校验\r\n * @description 用户信息录入实例\r\n */\r\nimport React, { Component } from 'react';\nimport { Upload, Icon, Button, Label, CitySelect, Rate, InputNumber, Slider, Switch, Checkbox, Radio, Select,  Col,Row , FormControl, Form } from 'tinper-bee';\r\nimport ReactDOM from 'react-dom';\r\n\r\n\n\n\n\nimport DatePicker from 'bee-datepicker';\r\n\n\n\n\n\n\n\n\n\n\nconst FormItem = Form.FormItem;\r\nconst Option = Select.Option;\r\nconst CheckboxGroup = Checkbox.CheckboxGroup;\r\n\r\nconst uploadProps = {\r\n    name: 'file',\r\n    action: '/upload.do',\r\n    headers: {\r\n      authorization: 'authorization-text',\r\n    },\r\n    onChange(info) {\r\n      if (info.file.status !== 'uploading') {\r\n        console.log(info.file, info.fileList);\r\n      }\r\n      if (info.file.status === 'done') {\r\n        console.log(`${info.file.name} file uploaded successfully`);\r\n      } else if (info.file.status === 'error') {\r\n        console.log(`${info.file.name} file upload failed.`);\r\n      }\r\n    },\r\n};\r\n\r\nconst Demo4 = Form.createForm()(class Demo extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            selectedValue: '',\r\n            selectedValue2: 'headquarters'\r\n        };\r\n    }\r\n    submit = (e) => {\r\n        this.props.form.validateFields((err, values) => {\r\n            if (err) {\r\n                console.log('校验失败', values);\r\n            } else {\r\n                console.log('提交成功', values)\r\n            }\r\n        });\r\n    }\r\n    render() {\r\n        const { getFieldProps, getFieldError } = this.props.form;\r\n        const self = this;\r\n        return (\r\n            <div>\r\n                <Form className='demo4'>\r\n                    <FormItem>\r\n                        <Label><Icon type=\"uf-mi\" className='mast'></Icon>申请人</Label>\r\n                        <FormControl placeholder=\"请输入姓名\"\r\n                            {...getFieldProps('name', {\r\n                                validateTrigger: 'onBlur',\r\n                                rules: [{\r\n                                    required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请输入姓名</span></span>,\r\n                                }],\r\n                            }) }\r\n                        />\r\n                        <span className='error'>\r\n                            {getFieldError('name')}\r\n                        </span>\r\n                    </FormItem>\r\n                    <FormItem>\r\n                        <Label><Icon type=\"uf-mi\" className='mast'></Icon>联系方式</Label>\r\n                        <FormControl placeholder=\"请输入联系方式\"\r\n                            {...getFieldProps('phone', {\r\n                                validateTrigger: 'onBlur',\r\n                                rules: [{\r\n                                    required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请输入联系方式</span></span>,\r\n                                }, {\r\n                                    pattern: /^\\d{11}$/, message: <span><Icon type=\"uf-exc-t\"></Icon><span>手机号格式不正确</span></span>\r\n                                }],\r\n                            }) }\r\n                        />\r\n                        <span className='error'>\r\n                            {getFieldError('phone')}\r\n                        </span>\r\n                    </FormItem>\r\n                    <FormItem>\r\n                        <Label>供应商名称</Label>\r\n                        <FormControl placeholder=\"请输入供应商名称\"\r\n                            {\r\n                            ...getFieldProps('supplierName', {\r\n                                initialValue: '',\r\n                            })\r\n                            }\r\n                        />\r\n                    </FormItem>\r\n                    <FormItem>\r\n                        <Label><Icon type=\"uf-mi\" className='mast'></Icon>供货产品</Label>\r\n                        <FormControl placeholder=\"请输入供货产品\"\r\n                            {\r\n                            ...getFieldProps('supplyProducts', {\r\n                                validateTrigger: 'onBlur',\r\n                                rules: [{\r\n                                    required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请输入供货产品</span></span>,\r\n                                }],\r\n                                initialValue: '',\r\n                            })\r\n                            }\r\n                        />\r\n                        <span className='error line-height-32'>\r\n                            {getFieldError('supplyProducts')}\r\n                        </span>\r\n                    </FormItem>\r\n                    <FormItem className='time flex'>\r\n                        <Label className=\"line-height-32\">需求日期</Label>\r\n                        <DatePicker\r\n                            {\r\n                            ...getFieldProps('time', {\r\n                            }\r\n                            ) }\r\n                            placeholder={'请选择需求日期'}\r\n                        />\r\n                    </FormItem>\r\n                    <FormItem>\r\n                        <Label><Icon type=\"uf-mi\" className='mast'></Icon>物料关重程度</Label>\r\n                        <Radio.RadioGroup\r\n                            selectedValue={this.state.selectedValue}\r\n                            {\r\n                            ...getFieldProps('importance', {\r\n                                initialValue: '',\r\n                                onChange(value) {\r\n                                    self.setState({ selectedValue: value });\r\n                                },\r\n                                rules: [{ required: true }]\r\n                            }\r\n                            ) }\r\n                        >\r\n                            <Radio value=\"A\" >A（关键）</Radio>\r\n                            <Radio value=\"B\" >B（重要）</Radio>\r\n                            <Radio value=\"C\" >C（一般）</Radio>\r\n                        </Radio.RadioGroup>\r\n                    </FormItem>\r\n                    <FormItem>\r\n                        <Label><Icon type=\"uf-mi\" className='mast'></Icon>归属部门</Label>\r\n                        <Radio.RadioGroup\r\n                            selectedValue={this.state.selectedValue2}\r\n                            {\r\n                            ...getFieldProps('department', {\r\n                                initialValue: 'headquarters',\r\n                                onChange(value) {\r\n                                    self.setState({ selectedValue2: value });\r\n                                },\r\n                                rules: [{ required: true }]\r\n                            }\r\n                            ) }\r\n                        >\r\n                            <Radio value=\"headquarters\">总部</Radio>\r\n                            <Radio value=\"businessUnit\">事业部</Radio>\r\n                        </Radio.RadioGroup>\r\n                    </FormItem>\r\n                    <FormItem>\r\n                        <Label><Icon type=\"uf-mi\" className='mast'></Icon>采购组</Label>\r\n                        <CheckboxGroup \r\n                                {\r\n                                    ...getFieldProps('purchasingGroup',{\r\n                                        initialValue:['2'],\r\n                                        rules: [{ required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请选择采购组</span></span> }]\r\n                                    })\r\n                                }\r\n                            >\r\n                                <Checkbox value='1'>人力</Checkbox>\r\n                                <Checkbox value='2'>财务</Checkbox>\r\n                        </CheckboxGroup>\r\n                        <span className='error'>\r\n                            {getFieldError('purchasingGroup')}\r\n                        </span>\r\n                    </FormItem>\r\n                    <FormItem>\r\n                        <Label>保密等级</Label>\r\n                        <Rate\r\n                            {\r\n                            ...getFieldProps('rate', {\r\n                                initialValue: 0,\r\n                                rules: [{ required: true }]\r\n                            }\r\n                            ) }\r\n                        />\r\n                    </FormItem>\r\n                    <FormItem className=\"flex\">\r\n                        <Label className=\"line-height-32\">备注</Label>\r\n                        <FormControl componentClass='textarea'\r\n                            {\r\n                            ...getFieldProps('remark', {}\r\n                            ) }\r\n                        />\r\n                    </FormItem>  \r\n                    <FormItem >\r\n                        <Label>文件</Label>\r\n                        <Upload {...uploadProps}>\r\n                            <Button shape=\"border\">\r\n                            <Icon type=\"uf-upload\" /> Click to Upload\r\n                            </Button>\r\n                        </Upload>\r\n                    </FormItem>  \r\n                    <FormItem style={{'paddingLeft':'106px'}}>\r\n                        <Button shape=\"border\" className=\"reset\" style={{\"marginRight\":\"8px\"}}>取消</Button>\r\n                        <Button colors=\"primary\" className=\"login\" onClick={this.submit}>提交</Button>\r\n                    </FormItem>\r\n                </Form>\r\n            </div>\r\n        )\r\n    }\r\n})\r\nexport default Demo4;", "desc": " 用户信息录入实例", "scss_code": ".demo4{\n    .u-form-item{\n        .u-form-control, .datepicker-container{\n            min-width: 300px;\n        }\n    }\n}" }, { "example": _react2['default'].createElement(Demo5, null), "title": " 多种表单元素示例", "code": "/**\n *\n * @title 多种表单元素示例\n * @description 查询面板\n */\nimport React, { Component } from 'react';\nimport { SearchPanel, Icon, Button, Label, Switch, Checkbox, Radio, Select,  Col , Row , FormControl, Form } from 'tinper-bee';\nimport ReactDOM from 'react-dom';\n\nimport DatePicker from 'bee-datepicker';\nimport moment from \"moment/moment\";\nconst FormItem = Form.FormItem;\nconst Option = Select.Option;\nconst { RangePicker } = DatePicker;\nconst CheckboxGroup = Checkbox.CheckboxGroup;\n\nconst Demo5 = Form.createForm()(class Demo extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            expanded: true,\n            approvalState: '',\n            closeState: '',\n            confirmState: '',\n            voucherDate: [],\n            orderTypes:[\n                {\n                    'code':'001',\n                    'name':'类型1'\n                },\n                {\n                    'code':'002',\n                    'name':'类型2'\n                },\n                {\n                    'code':'003',\n                    'name':'类型3'\n                },\n            ]\n        };\n    }\n    submit = (e) => {\n        this.props.form.validateFields((err, values) => {\n            if (err) {\n                console.log('校验失败', values);\n            } else {\n                console.log('提交成功', values)\n            }\n        });\n    }\n    reset = () =>{\n        this.props.form.resetFields();\n        //部分表单元素无法通过this.props.form.resetFields重置，需要手动重置，如下\n        this.setState({\n            approvalState: '',\n            closeState: '',\n            confirmState: '',\n            voucherDate: []\n        })\n    }\n    onChange = () => {\n        this.setState({expanded: !this.state.expanded})\n    }\n    render() {\n        const { getFieldProps, getFieldError } = this.props.form;\n        const self = this;\n        return (\n            <div>\n                <SearchPanel\n                title='基础示例'\n                onSearch={this.submit}\n                onReset={this.reset}\n                expanded={this.state.expanded}\n                onChange={this.onChange}\n                >\n                    <Form className='demo5'>\n                        <Row>\n                            <Col lg={4} md={6} xs={12}>\n                                <FormItem>\n                                    <Col lg={4} md={4} xs={4}>\n                                        <Label><Icon type=\"uf-mi\" className='mast'></Icon>订单编号</Label>\n                                    </Col>\n                                    <Col lg={8} md={8} xs={8}>\n                                        <FormControl size=\"sm\"\n                                            {\n                                            ...getFieldProps('orderCode', {\n                                                initialValue: '',\n                                                validateTrigger: 'onBlur',\n                                                rules: [{\n                                                    required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请输入订单编号</span></span>,\n                                                }],\n                                            })\n                                            }\n                                        />\n                                        <span className='error'>\n                                            {getFieldError('orderCode')}\n                                        </span>\n                                    </Col>\n                                </FormItem>\n                            </Col>\n                            <Col  lg={4} md={6} xs={12}>\n                                <FormItem>\n                                    <Col lg={4} md={4} xs={4}>\n                                        <Label><Icon type=\"uf-mi\" className='mast'></Icon>供应商名称</Label>\n                                    </Col>\n                                    <Col lg={8} md={8} xs={8}>\n                                        <FormControl size=\"sm\"\n                                            {\n                                            ...getFieldProps('supplierName', {\n                                                initialValue: '',\n                                                validateTrigger: 'onBlur',\n                                                rules: [{\n                                                    required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请输入供应商名称</span></span>,\n                                                }],\n                                            })\n                                            }\n                                        />\n                                        <span className='error'>\n                                            {getFieldError('supplierName')}\n                                        </span>\n                                    </Col>\n                                </FormItem>\n                            </Col>\n                            <Col  lg={4} md={6} xs={12}>\n                                <FormItem>\n                                    <Col lg={4} md={4} xs={4}>\n                                        <Label><Icon type=\"uf-mi\" className='mast'></Icon>凭证名称</Label>\n                                    </Col>\n                                    <Col lg={8} md={8} xs={8}>\n                                        <FormControl size=\"sm\"\n                                            {\n                                            ...getFieldProps('voucherName1', {\n                                                initialValue: '',\n                                                validateTrigger: 'onBlur',\n                                                rules: [{\n                                                    required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请输入凭证名称</span></span>,\n                                                }],\n                                            })\n                                            }\n                                        />\n                                        <span className='error'>\n                                            {getFieldError('voucherName1')}\n                                        </span>\n                                    </Col>\n                                </FormItem>\n                            </Col>\n                            \n                            <Col  lg={4} md={6} xs={12}>\n                                <FormItem>\n                                    <Col lg={4} md={4} xs={4}>\n                                        <Label>订单类型</Label>\n                                    </Col>\n                                    <Col lg={8} md={8} xs={8}>\n                                        <Select size=\"sm\"\n                                            {\n                                            ...getFieldProps('type', {\n                                                initialValue: '',\n                                            }\n                                            )}>\n                                            <Option value=\"\">请选择</Option>\n                                            {\n                                                self.state.orderTypes.map((item, index) => {\n                                                    return (\n                                                        <Option key={index} value={item.code}>{item.name}</Option>\n                                                    )\n                                                })\n                                            }\n                                        </Select>\n                                    </Col>\n                                </FormItem>\n                            </Col>\n                            <Col  lg={4} md={6} xs={12}>\n                                <FormItem>\n                                    <Col lg={4} md={4} xs={4}>\n                                        <Label>采购组</Label>\n                                    </Col>\n                                    <Col lg={8} md={8} xs={8}>\n                                        <CheckboxGroup \n                                            {\n                                                ...getFieldProps('purchasingGroup',{\n                                                    initialValue:['2']\n                                                })\n                                            }\n                                        >\n                                            <Checkbox value='1'>人力</Checkbox>\n                                            <Checkbox value='2'>财务</Checkbox>\n                                        </CheckboxGroup>\n                                    </Col>\n                                </FormItem>\n                            </Col>\n                            <Col  lg={4} md={6} xs={12}>\n                                <FormItem>\n                                    <Col lg={4} md={4} xs={4}>\n                                        <Label>审批状态</Label>\n                                    </Col>\n                                    <Col lg={8} md={8} xs={8}>\n                                        <Radio.RadioGroup\n                                            selectedValue={this.state.approvalState}\n                                            {\n                                            ...getFieldProps('approvalState', {\n                                                initialValue: '1',\n                                                onChange(value) {\n                                                    self.setState({ approvalState: value });\n                                                },\n                                            }\n                                            )}\n                                        >\n                                            <Radio value=\"0\" >未审批</Radio>\n                                            <Radio value=\"1\" >已审批</Radio>\n                                        </Radio.RadioGroup>\n                                    </Col>\n                                </FormItem>\n                            </Col>\n                            <Col  lg={4} md={6} xs={12}>\n                                <FormItem>\n                                    <Col lg={4} md={4} xs={4}>\n                                        <Label>关闭状态</Label>\n                                    </Col>\n                                    <Col lg={8} md={8} xs={8}>\n                                        <Radio.RadioGroup\n                                            selectedValue={this.state.closeState}\n                                            {\n                                            ...getFieldProps('closeState', {\n                                                initialValue: '1',\n                                                onChange(value) {\n                                                    self.setState({ closeState: value });\n                                                },\n                                            }\n                                            )}\n                                        >\n                                            <Radio value=\"0\" >未关闭</Radio>\n                                            <Radio value=\"1\" >已关闭</Radio>\n                                        </Radio.RadioGroup>\n                                    </Col>\n                                </FormItem>\n                            </Col>\n                            <Col  lg={4} md={6} xs={12}>\n                                <FormItem>\n                                    <Col lg={4} md={4} xs={4}>\n                                        <Label>确认状态</Label>\n                                    </Col>\n                                    <Col lg={8} md={8} xs={8}>\n                                        <Radio.RadioGroup\n                                            selectedValue={this.state.confirmState}\n                                            {\n                                            ...getFieldProps('confirmState', {\n                                                initialValue: '1',\n                                                onChange(value) {\n                                                    self.setState({ confirmState: value });\n                                                },\n                                            }\n                                            )}\n                                        >\n                                            <Radio value=\"0\" >未确认</Radio>\n                                            <Radio value=\"1\" >已确认</Radio>\n                                        </Radio.RadioGroup>\n                                    </Col>\n                                </FormItem>\n                            </Col>\n                        </Row>\n                    </Form>\n                </SearchPanel>\n            </div>\n        )\n    }\n})\nexport default Demo5;", "desc": " 查询面板", "scss_code": ".demo5{\n    .u-form-item .error{\n        padding-left: 0;\n    }\n}" }, { "example": _react2['default'].createElement(Demo6, null), "title": " 多种布局示例", "code": "/**\n *\n * @title 多种布局示例\n * @description \n */\nimport React, { Component } from 'react';\nimport { Icon, Button, Label, Switch, Checkbox, Radio, Select,  Col , Row , FormControl, Form } from 'tinper-bee';\nimport ReactDOM from 'react-dom';\n\nimport DatePicker from 'bee-datepicker';\nimport moment from \"moment/moment\";\nconst FormItem = Form.FormItem;\nconst Option = Select.Option;\nconst { RangePicker } = DatePicker;\n\nconst Demo6 = Form.createForm()(class Demo extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            approvalState: '',\n            closeState: '',\n            confirmState: '',\n            voucherName: [],\n            orderTypes:[\n                {\n                    'code':'001',\n                    'name':'类型1'\n                },\n                {\n                    'code':'002',\n                    'name':'类型2'\n                },\n                {\n                    'code':'003',\n                    'name':'类型3'\n                },\n            ]\n        };\n    }\n    render() {\n        const { getFieldProps, getFieldError } = this.props.form;\n        const self = this;\n        const orderTypes= [{\n            \"code\":\"D001\",\n            \"name\":\"D001\"\n          },{\n            \"code\":\"D002\",\n            \"name\":\"D002\"\n          },{\n            \"code\":\"D003\",\n            \"name\":\"D003\"\n          },{\n            \"code\":\"D004\",\n            \"name\":\"D004\"\n          }];\n        return (\n            <div>\n                <Form className='demo6'>\n                    {/* 普通栅格布局 */}\n                    <h4>\n                        普通栅格布局\n                    </h4>\n                    <Row className = 'edit-panel'>\n                        <Col lg={4} md={6} xs={12}>\n                            <FormItem>\n                                <Label>\n                                    <Icon type=\"uf-mi\" className='mast'></Icon>\n                                    订单编号\n                                </Label>\n                                <FormControl\n                                    {\n                                    ...getFieldProps('orderCode1', {\n                                        initialValue: '',\n                                        rules: [{\n                                            required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请输入订单编号</span></span>,\n                                        }],\n                                    })\n                                    }\n                                />\n                                <span className='error'>\n                                    {\n                                        getFieldError('orderCode1')\n                                    }\n                                </span>\n                            </FormItem>\n                        </Col>\n                        <Col lg={4} md={6} xs={12}>\n                            <FormItem>\n                                <Label>\n                                    <Icon type=\"uf-mi\" className='mast'></Icon>\n                                    供应商名称\n                                </Label>\n                                <FormControl\n                                    {\n                                        ...getFieldProps('supplierName1', {\n                                            initialValue: '',\n                                            rules: [{\n                                                required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请输入供应商名称</span></span>,\n                                            }],\n                                        })\n                                    }\n                                />\n                                <span className='error'>\n                                    {\n                                        getFieldError('supplierName1')\n                                    }\n                                </span>\n                            </FormItem>\n                            \n                        </Col>\n                        <Col lg={4} md={6} xs={12}>\n                            <FormItem>\n                                <Label>凭证名称</Label>\n                                <FormControl\n                                    {\n                                        ...getFieldProps('voucherName1', {\n                                            initialValue: '',\n                                            rules: [{\n                                                required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请输入凭证名称</span></span>,\n                                            }],\n                                        })\n                                    }\n                                />\n                                <span className='error'>\n                                    {\n                                        getFieldError('voucherName1')\n                                    }\n                                </span>\n                            </FormItem>\n                        </Col>\n                    </Row>\n\n                    <div className='split'></div>\n                    \n                    \n                     {/* 单列铺满 */}\n                     <h4>\n                        单列铺满\n                     </h4>\n                     <Row className = 'edit-panel edit-panel-all'>\n                        <FormItem>\n                            <Col md={2} xs={2}>\n                                <Label>\n                                    <Icon type=\"uf-mi\" className='mast'></Icon>\n                                    订单编号\n                                </Label>\n                            </Col>\n                            <Col md={10} xs={10}>\n                                <FormControl\n                                    {\n                                    ...getFieldProps('orderCode2', {\n                                        initialValue: '',\n                                        rules: [{\n                                            required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请输入订单编号</span></span>,\n                                        }],\n                                    })\n                                    }\n                                />\n                                <span className='error'>\n                                    {\n                                        getFieldError('orderCode2')\n                                    }\n                                </span>\n                            </Col>\n                        </FormItem>\n\n                        <FormItem>\n                            <Col md={2} xs={2}>\n                                <Label>\n                                    <Icon type=\"uf-mi\" className='mast'></Icon>\n                                    供应商名称\n                                </Label>\n                            </Col>\n                            <Col md={10} xs={10}>\n                                <FormControl\n                                    {\n                                        ...getFieldProps('supplierName2', {\n                                            initialValue: '',\n                                            rules: [{\n                                                required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请输入供应商名称</span></span>,\n                                            }],\n                                        })\n                                    }\n                                />\n                                <span className='error'>\n                                    {\n                                        getFieldError('supplierName2')\n                                    }\n                                </span>\n                            </Col>\n                        </FormItem>\n\n                        <FormItem>\n                            <Col md={2} xs={2}>\n                                <Label>凭证名称</Label>\n                            </Col>\n                            <Col md={10} xs={10}>\n                            <FormControl\n                                    {\n                                        ...getFieldProps('voucherName2', {\n                                            initialValue: '',\n                                            rules: [{\n                                                required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请输入凭证名称</span></span>,\n                                            }],\n                                        })\n                                    }\n                                />\n                                <span className='error'>\n                                    {\n                                        getFieldError('voucherName2')\n                                    }\n                                </span>\n                            </Col>\n                        </FormItem>\n                        <FormItem>\n                            <Col md={2} xs={2}>\n                                <Label>订单类型</Label>\n                            </Col>\n                            <Col md={10} xs={10}>\n                                <Select {\n                                    ...getFieldProps('type', {\n                                        initialValue: '',\n                                    }\n                                    )}>\n                                    <Option value=\"\">请选择</Option>\n                                    {\n                                        orderTypes.map((item, index) => {\n                                            return (\n                                                <Option key={index} value={item.code}>{item.name}</Option>\n                                            )\n                                        })\n                                    }\n                                </Select>\n                            </Col>\n                        </FormItem>\n                        \n                    </Row>\n\n                    <div className='split'></div>\n\n                    {/* 单列居中 */}\n                    <h4>\n                        单列居中\n                    </h4>\n                    <Row className = 'text-algin-center'>\n                        <Col md={12} >\n                            <FormItem>\n                                <Label>\n                                    <Icon type=\"uf-mi\" className='mast'></Icon>\n                                    订单编号\n                                </Label>\n                                <FormControl\n                                    {\n                                    ...getFieldProps('orderCode3', {\n                                        initialValue: '',\n                                        rules: [{\n                                            required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请输入订单编号</span></span>,\n                                        }],\n                                    })\n                                    }\n                                />\n                                <span className='error'>\n                                    {\n                                        getFieldError('orderCode3')\n                                    }\n                                </span>\n                            </FormItem>\n                        </Col>\n                        <Col md={12}  >\n                            <FormItem>\n                                <Label>\n                                    <Icon type=\"uf-mi\" className='mast'></Icon>\n                                    供应商名称\n                                </Label>\n                                <FormControl\n                                    {\n                                        ...getFieldProps('supplierName3', {\n                                            initialValue: '',\n                                            rules: [{\n                                                required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请输入供应商名称</span></span>,\n                                            }],\n                                        })\n                                    }\n                                />\n                                <span className='error'>\n                                    {\n                                        getFieldError('supplierName3')\n                                    }\n                                </span>\n                            </FormItem>\n                            \n                        </Col>\n                        <Col md={12}  >\n                            <FormItem>\n                                <Label >凭证名称</Label>\n                                <FormControl\n                                    {\n                                        ...getFieldProps('voucherName3', {\n                                            initialValue: '',\n                                            rules: [{\n                                                required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请输入凭证名称</span></span>,\n                                            }],\n                                        })\n                                    }\n                                />\n                                <span className='error'>\n                                    {\n                                        getFieldError('voucherName3')\n                                    }\n                                </span>\n                            </FormItem>\n                        </Col>\n                        \n                    </Row>\n\n                     <div className='split'></div>\n\n                    {/* 三列带textarea */}\n                    <h4>\n                    三列带textarea\n                     </h4>\n                    <Row>\n                        <Col lg={4} md={6} xs={12}>\n                            <FormItem>\n                                <Label><Icon type=\"uf-mi\" className='mast'></Icon>订单编号</Label>\n                                <FormControl\n                                    {\n                                    ...getFieldProps('orderCode4', {\n                                        initialValue: '',\n                                        rules: [{\n                                            required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请输入订单编号</span></span>,\n                                        }],\n                                    })\n                                    }\n                                />\n                                <span className='error'>\n                                    {\n                                        getFieldError('orderCode4')\n                                    }\n                                </span>\n                            </FormItem>\n                        </Col>\n                        <Col lg={4} md={6} xs={12}>\n                            <FormItem>\n                                <Label><Icon type=\"uf-mi\" className='mast'></Icon>供应商</Label>\n                                <FormControl\n                                {\n                                    ...getFieldProps('supplierName4', {\n                                        initialValue: '',\n                                        rules: [{\n                                            required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请输入供应商名称</span></span>,\n                                        }],\n                                    })\n                                }\n                                />\n                                <span className='error'>\n                                    {\n                                        getFieldError('supplierName4')\n                                    }\n                                </span>\n                            </FormItem>\n                        </Col>\n                        <Col lg={4} md={6} xs={12}>\n                            <FormItem>\n                                <Label><Icon type=\"uf-mi\" className='mast'></Icon>凭证名称</Label>\n                                <FormControl\n                                    {\n                                        ...getFieldProps('voucherName4', {\n                                            initialValue: '',\n                                            rules: [{\n                                                required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请输入凭证名称</span></span>,\n                                            }],\n                                        })\n                                    }\n                                />\n                                <span className='error'>\n                                    {\n                                        getFieldError('voucherName4')\n                                    }\n                                </span>\n                            </FormItem>\n                        </Col>\n                    </Row>\n                    <Row>\n                        <Col md={12} xs={12}>\n                            <FormItem className=\"remark flex\">\n                                <Label className='line-height-32'>备注</Label>\n                                <FormControl componentClass='textarea'\n                                    {\n                                    ...getFieldProps('mark', {}\n                                    ) }\n                                />\n                            </FormItem>\n                        </Col>\n                    </Row>\n                </Form>\n            </div>\n        )\n    }\n})\nexport default Demo6;", "desc": " ", "scss_code": ".demo6{\n    .remark textarea{\n        width: 100%;\n    }\n}" }];
+	var Demo1 = __webpack_require__(157);var Demo2 = __webpack_require__(352);var Demo3 = __webpack_require__(353);var Demo4 = __webpack_require__(359);var Demo5 = __webpack_require__(646);var Demo6 = __webpack_require__(652);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 单个input校验", "code": '/**\n *\n * @title \u5355\u4E2Ainput\u6821\u9A8C\n * @description \u4F7F\u7528FormItem\n */\nimport React, { Component } from \'react\';\nimport { Icon, Label, FormControl, Form } from \'tinper-bee\';\n\nconst FormItem = Form.FormItem;\n\n\nconst Demo1 = Form.createForm()(class Demo extends Component {\n    constructor(props) {\n        super(props);\n    }\n    render() {\n        const self=this;\n        const { getFieldProps, getFieldError } = this.props.form;\n        return (\n                <FormItem className=\'demo1\'>\n                    <Label>\u59D3\u540D</Label>\n                    <FormControl placeholder=\'\u8BF7\u8F93\u5165\u59D3\u540D\'\n                     {...getFieldProps(\'name\', {\n                        validateTrigger: \'onBlur\',\n                        rules: [{\n                            required: true, message: <span><Icon type="uf-exc-t"></Icon><span>\u8BF7\u8F93\u5165\u59D3\u540D</span></span>\n                        },{\n                            max:5,message:<span><Icon type="uf-exc-t"></Icon><span>\u6700\u5927\u957F\u5EA6\u4E3A10</span></span>\n                        },{\n                            pattern: /[\\u4e00-\\u9fa5]/, message: <span><Icon type="uf-exc-t"></Icon><span>\u8BF7\u8F93\u5165\u4E2D\u6587\u5B57\u7B26</span></span>,\n                        }],\n                    }) } />\n                    <span className=\'error\'>\n                        {getFieldError(\'name\')}\n                    </span>   \n                </FormItem>\n        )\n    }\n})\n\nexport default Demo1;', "desc": " 使用FormItem", "scss_code": "" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 基本form校验", "code": "/**\r\n *\r\n * @title 基本form校验\r\n * @description 登录示例\r\n */\r\nimport React, { Component } from 'react';\nimport { Icon, Button, Label, FormControl, Form } from 'tinper-bee';\r\nimport ReactDOM from 'react-dom';\r\n\r\n\n\n\n\nconst FormItem = Form.FormItem;\r\n\r\nconst Demo2 = Form.createForm()(class Demo2 extends Component {\r\n    submit = (e) => {\r\n        e.preventDefault();\r\n        this.props.form.validateFields((err, values) => {\r\n            if (err) {\r\n                console.log('校验失败', values);\r\n            } else {\r\n                console.log('提交成功', values)\r\n            }\r\n        });\r\n    }\r\n    render() {\r\n        const { getFieldProps, getFieldError } = this.props.form;\r\n        return (\r\n            <div className=\"demo2\">\r\n                <Form >\r\n                    <FormItem>\r\n                        <Label>用户名</Label>\r\n                        <FormControl placeholder=\"请输入用户名\"\r\n                            {...getFieldProps('username', {\r\n                                validateTrigger: 'onBlur',\r\n                                rules: [{\r\n                                    required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请输入用户名</span></span>,\r\n                                }],\r\n                            }) }\r\n                        />\r\n                        <span className='error'>\r\n                            {getFieldError('username')}\r\n                        </span>\r\n                    </FormItem>\r\n                    <FormItem>\r\n                        <Label>密码</Label>\r\n                        <FormControl placeholder=\"请输入密码\" type='password'\r\n                            {...getFieldProps('password', {\r\n                                validateTrigger: 'onBlur',\r\n                                rules: [{\r\n                                    required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请输入密码</span></span>,\r\n                                }],\r\n                            }) }\r\n                        />\r\n                        <span className='error'>\r\n                            {getFieldError('password')}\r\n                        </span>\r\n                    </FormItem>\r\n                    <FormItem style={{'paddingLeft':'106px'}}>\r\n                        <Button shape=\"border\" className=\"reset\" style={{\"marginRight\":\"8px\"}}>取消</Button>\r\n                        <Button colors=\"primary\" className=\"login\" onClick={this.submit}>登录</Button>\r\n                    </FormItem>\r\n                </Form>\r\n            </div>\r\n        )\r\n    }\r\n})\r\nexport default Demo2;", "desc": " 登录示例", "scss_code": "" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 基本form校验", "code": "/**\r\n *\r\n * @title 基本form校验\r\n * @description 注册示例\r\n */\r\nimport React, { Component } from 'react';\nimport { Icon, Label, Checkbox, Button, FormControl, Form } from 'tinper-bee';\r\n\r\nconst FormItem = Form.FormItem;\r\n\n\n\n\n\n\r\nconst Demo3 = Form.createForm()( class Demo extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            checkbox: false\r\n        }\r\n    }\r\n    submit = (e) => {\r\n        e.preventDefault();\r\n        this.props.form.validateFields((err, values) => {\r\n            if (err) {\r\n                console.log('校验失败', values);\r\n            } else {\r\n                console.log('提交成功', values)\r\n            }\r\n        });\r\n    }\r\n    handleConfirmPassword = (rule, value, callback) => {\r\n        const { getFieldValue } = this.props.form;\r\n        if (value && value !== getFieldValue('password')) {\r\n            callback(<span><Icon type=\"uf-exc-t\"></Icon><span>两次输入不一致！</span></span>)\r\n        }\r\n        callback();\r\n    }\r\n    render() {\r\n        const self = this;\r\n        const { getFieldProps, getFieldError } = this.props.form;\r\n        return (\r\n            <div className=\"demo3\">\r\n                <Form>\r\n                    <FormItem>\r\n                        <Label>用户名</Label>\r\n                        <FormControl placeholder=\"请输入用户名(包含数字和字母，8-15位)\"\r\n                            {...getFieldProps('username', {\r\n                                validateTrigger: 'onBlur',\r\n                                rules: [{\r\n                                    required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请输入用户名</span></span>,\r\n                                }, {\r\n                                    pattern: /^(?!\\d+$)(?![a-zA-Z]+$)[a-zA-Z0-9]{8,15}$/, \r\n                                    message: <span><Icon type=\"uf-exc-t\"></Icon><span>用户名格式错误</span></span>,\r\n                                }],\r\n                            }) }\r\n                        />\r\n                        <span className='error'>\r\n                            {getFieldError('username')}\r\n                        </span>\r\n                    </FormItem>\r\n\r\n                    <FormItem>\r\n                        <Label>密码</Label>\r\n                        <FormControl placeholder=\"请输入密码\" type='password'\r\n                            {...getFieldProps('password', {\r\n                                validateTrigger: 'onBlur',\r\n                                rules: [{\r\n                                    required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请输入密码</span></span>,\r\n                                }],\r\n                            }) }\r\n                        />\r\n                        <span className='error'>\r\n                            {getFieldError('password')}\r\n                        </span>\r\n                    </FormItem>\r\n\r\n                    <FormItem>\r\n                        <Label>再次输入密码</Label>\r\n                        <FormControl placeholder=\"请输入密码\" type='password'\r\n                            {...getFieldProps('password2', {\r\n                                validateTrigger: 'onBlur',\r\n                                rules: [{\r\n                                    required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请输入密码</span></span>,\r\n                                }, {\r\n                                    validator: this.handleConfirmPassword\r\n                                }],\r\n                            }) }\r\n                        />\r\n                        <span className='error'>\r\n                            {getFieldError('password2')}\r\n                        </span>\r\n                    </FormItem>\r\n\r\n                    <FormItem>\r\n                        <Label>邮箱</Label>\r\n                        <FormControl placeholder=\"请输入邮箱\"\r\n                            {...getFieldProps('email', {\r\n                                validateTrigger: 'onBlur',\r\n                                rules: [{\r\n                                    required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请输入邮箱</span></span>,\r\n                                }, {\r\n                                    type: 'email', message: <span><Icon type=\"uf-exc-t\"></Icon><span>邮箱格式不正确</span></span>\r\n                                }],\r\n                            }) }\r\n                        />\r\n                        <span className='error'>\r\n                            {getFieldError('email')}\r\n                        </span>\r\n                    </FormItem>\r\n                    <FormItem>\r\n                        <Label>手机号</Label>\r\n\r\n                        <FormControl placeholder=\"请输入手机号\"\r\n                            {...getFieldProps('phone', {\r\n                                validateTrigger: 'onBlur',\r\n                                rules: [{\r\n                                    required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请输入手机号</span></span>,\r\n                                }, {\r\n                                    pattern: /^\\d{11}$/, message: <span><Icon type=\"uf-exc-t\"></Icon><span>手机号格式不正确</span></span>\r\n                                }],\r\n                            }) }\r\n                        />\r\n\r\n                        <span className='error'>\r\n                            {getFieldError('phone')}\r\n                        </span>\r\n                    </FormItem>\r\n\r\n                    <FormItem style={{'paddingLeft':'106px'}}>\r\n                        <Checkbox\r\n                            defaultChecked={this.state.checkbox}\r\n                            {\r\n                            ...getFieldProps('checkbox', {\r\n                                initialValue: false,\r\n                            }\r\n                            ) }\r\n                        >\r\n                        我已经阅读并同意相关条款\r\n                        </Checkbox>\r\n                    </FormItem>\r\n                    <FormItem style={{'paddingLeft':'106px'}}>\r\n                        <Button shape=\"border\" className=\"reset\" style={{\"marginRight\":\"8px\"}}>取消</Button>\r\n                        <Button colors=\"primary\" className=\"login\" onClick={this.submit}>注册</Button>\r\n                    </FormItem>\r\n                </Form>\r\n            </div>\r\n        )\r\n    }\r\n})\r\nexport default Demo3;", "desc": " 注册示例", "scss_code": "" }, { "example": _react2['default'].createElement(Demo4, null), "title": " 表单校验", "code": "/**\r\n *\r\n * @title 表单校验\r\n * @description 用户信息录入实例\r\n */\r\nimport React, { Component } from 'react';\nimport { Upload, Icon, Button, Label, CitySelect, Rate, InputNumber, Slider, Switch, Checkbox, Radio, Select,  Col,Row , FormControl, Form } from 'tinper-bee';\r\nimport ReactDOM from 'react-dom';\r\n\r\n\n\n\n\nimport DatePicker from 'bee-datepicker';\r\n\n\n\n\n\n\n\n\n\n\nconst FormItem = Form.FormItem;\r\nconst Option = Select.Option;\r\nconst CheckboxGroup = Checkbox.CheckboxGroup;\r\n\r\nconst uploadProps = {\r\n    name: 'file',\r\n    action: '/upload.do',\r\n    headers: {\r\n      authorization: 'authorization-text',\r\n    },\r\n    onChange(info) {\r\n      if (info.file.status !== 'uploading') {\r\n        console.log(info.file, info.fileList);\r\n      }\r\n      if (info.file.status === 'done') {\r\n        console.log(`${info.file.name} file uploaded successfully`);\r\n      } else if (info.file.status === 'error') {\r\n        console.log(`${info.file.name} file upload failed.`);\r\n      }\r\n    },\r\n};\r\n\r\nconst Demo4 = Form.createForm()(class Demo extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            selectedValue: '',\r\n            selectedValue2: 'headquarters'\r\n        };\r\n    }\r\n    submit = (e) => {\r\n        this.props.form.validateFields((err, values) => {\r\n            if (err) {\r\n                console.log('校验失败', values);\r\n            } else {\r\n                console.log('提交成功', values)\r\n            }\r\n        });\r\n    }\r\n    render() {\r\n        const { getFieldProps, getFieldError } = this.props.form;\r\n        const self = this;\r\n        return (\r\n            <div>\r\n                <Form className='demo4'>\r\n                    <FormItem>\r\n                        <Label><Icon type=\"uf-mi\" className='mast'></Icon>申请人</Label>\r\n                        <FormControl placeholder=\"请输入姓名\"\r\n                            {...getFieldProps('name', {\r\n                                validateTrigger: 'onBlur',\r\n                                rules: [{\r\n                                    required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请输入姓名</span></span>,\r\n                                }],\r\n                            }) }\r\n                        />\r\n                        <span className='error'>\r\n                            {getFieldError('name')}\r\n                        </span>\r\n                    </FormItem>\r\n                    <FormItem>\r\n                        <Label><Icon type=\"uf-mi\" className='mast'></Icon>联系方式</Label>\r\n                        <FormControl placeholder=\"请输入联系方式\"\r\n                            {...getFieldProps('phone', {\r\n                                validateTrigger: 'onBlur',\r\n                                rules: [{\r\n                                    required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请输入联系方式</span></span>,\r\n                                }, {\r\n                                    pattern: /^\\d{11}$/, message: <span><Icon type=\"uf-exc-t\"></Icon><span>手机号格式不正确</span></span>\r\n                                }],\r\n                            }) }\r\n                        />\r\n                        <span className='error'>\r\n                            {getFieldError('phone')}\r\n                        </span>\r\n                    </FormItem>\r\n                    <FormItem>\r\n                        <Label>供应商名称</Label>\r\n                        <FormControl placeholder=\"请输入供应商名称\"\r\n                            {\r\n                            ...getFieldProps('supplierName', {\r\n                                initialValue: '',\r\n                            })\r\n                            }\r\n                        />\r\n                    </FormItem>\r\n                    <FormItem>\r\n                        <Label><Icon type=\"uf-mi\" className='mast'></Icon>供货产品</Label>\r\n                        <FormControl placeholder=\"请输入供货产品\"\r\n                            {\r\n                            ...getFieldProps('supplyProducts', {\r\n                                validateTrigger: 'onBlur',\r\n                                rules: [{\r\n                                    required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请输入供货产品</span></span>,\r\n                                }],\r\n                                initialValue: '',\r\n                            })\r\n                            }\r\n                        />\r\n                        <span className='error line-height-32'>\r\n                            {getFieldError('supplyProducts')}\r\n                        </span>\r\n                    </FormItem>\r\n                    <FormItem className='time flex'>\r\n                        <Label className=\"line-height-32\">需求日期</Label>\r\n                        <DatePicker\r\n                            {\r\n                            ...getFieldProps('time', {\r\n                            }\r\n                            ) }\r\n                            placeholder={'请选择需求日期'}\r\n                        />\r\n                    </FormItem>\r\n                    <FormItem>\r\n                        <Label><Icon type=\"uf-mi\" className='mast'></Icon>物料关重程度</Label>\r\n                        <Radio.RadioGroup\r\n                            selectedValue={this.state.selectedValue}\r\n                            {\r\n                            ...getFieldProps('importance', {\r\n                                initialValue: '',\r\n                                onChange(value) {\r\n                                    self.setState({ selectedValue: value });\r\n                                },\r\n                                rules: [{ required: true }]\r\n                            }\r\n                            ) }\r\n                        >\r\n                            <Radio value=\"A\" >A（关键）</Radio>\r\n                            <Radio value=\"B\" >B（重要）</Radio>\r\n                            <Radio value=\"C\" >C（一般）</Radio>\r\n                        </Radio.RadioGroup>\r\n                    </FormItem>\r\n                    <FormItem>\r\n                        <Label><Icon type=\"uf-mi\" className='mast'></Icon>归属部门</Label>\r\n                        <Radio.RadioGroup\r\n                            selectedValue={this.state.selectedValue2}\r\n                            {\r\n                            ...getFieldProps('department', {\r\n                                initialValue: 'headquarters',\r\n                                onChange(value) {\r\n                                    self.setState({ selectedValue2: value });\r\n                                },\r\n                                rules: [{ required: true }]\r\n                            }\r\n                            ) }\r\n                        >\r\n                            <Radio value=\"headquarters\">总部</Radio>\r\n                            <Radio value=\"businessUnit\">事业部</Radio>\r\n                        </Radio.RadioGroup>\r\n                    </FormItem>\r\n                    <FormItem>\r\n                        <Label><Icon type=\"uf-mi\" className='mast'></Icon>采购组</Label>\r\n                        <CheckboxGroup \r\n                                {\r\n                                    ...getFieldProps('purchasingGroup',{\r\n                                        initialValue:['2'],\r\n                                        rules: [{ required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请选择采购组</span></span> }]\r\n                                    })\r\n                                }\r\n                            >\r\n                                <Checkbox value='1'>人力</Checkbox>\r\n                                <Checkbox value='2'>财务</Checkbox>\r\n                        </CheckboxGroup>\r\n                        <span className='error'>\r\n                            {getFieldError('purchasingGroup')}\r\n                        </span>\r\n                    </FormItem>\r\n                    <FormItem>\r\n                        <Label>保密等级</Label>\r\n                        <Rate\r\n                            {\r\n                            ...getFieldProps('rate', {\r\n                                initialValue: 0,\r\n                                rules: [{ required: true }]\r\n                            }\r\n                            ) }\r\n                        />\r\n                    </FormItem>\r\n                    <FormItem className=\"flex\">\r\n                        <Label className=\"line-height-32\">备注</Label>\r\n                        <FormControl componentClass='textarea'\r\n                            {\r\n                            ...getFieldProps('remark', {}\r\n                            ) }\r\n                        />\r\n                    </FormItem>  \r\n                    <FormItem >\r\n                        <Label>文件</Label>\r\n                        <Upload {...uploadProps}>\r\n                            <Button shape=\"border\">\r\n                            <Icon type=\"uf-upload\" /> Click to Upload\r\n                            </Button>\r\n                        </Upload>\r\n                    </FormItem>  \r\n                    <FormItem style={{'paddingLeft':'106px'}}>\r\n                        <Button shape=\"border\" className=\"reset\" style={{\"marginRight\":\"8px\"}}>取消</Button>\r\n                        <Button colors=\"primary\" className=\"login\" onClick={this.submit}>提交</Button>\r\n                    </FormItem>\r\n                </Form>\r\n            </div>\r\n        )\r\n    }\r\n})\r\nexport default Demo4;", "desc": " 用户信息录入实例", "scss_code": ".demo4{\r\n    .u-form-item{\r\n        .u-form-control, .datepicker-container{\r\n            min-width: 300px;\r\n        }\r\n    }\r\n}" }, { "example": _react2['default'].createElement(Demo5, null), "title": " 多种表单元素示例", "code": "/**\n *\n * @title 多种表单元素示例\n * @description 查询面板\n */\nimport React, { Component } from 'react';\nimport { SearchPanel, Icon, Label, Checkbox, Radio, Select,  Col , Row , FormControl, Form } from 'tinper-bee';\n\nimport DatePicker from 'bee-datepicker';\nconst FormItem = Form.FormItem;\nconst Option = Select.Option;\nconst CheckboxGroup = Checkbox.CheckboxGroup;\nconst AdvancedContainer = SearchPanel.AdvancedContainer;\n\nconst Demo5 = Form.createForm()(class Demo extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            expanded: true,\n            approvalState: '',\n            closeState: '',\n            confirmState: '',\n            voucherDate: [],\n            orderTypes:[\n                {\n                    'code':'001',\n                    'name':'类型1'\n                },\n                {\n                    'code':'002',\n                    'name':'类型2'\n                },\n                {\n                    'code':'003',\n                    'name':'类型3'\n                },\n            ]\n        };\n    }\n    submit = (e) => {\n        this.props.form.validateFields((err, values) => {\n            if (err) {\n                console.log('校验失败', values);\n            } else {\n                console.log('提交成功', values)\n            }\n        });\n    }\n    reset = () =>{\n        this.props.form.resetFields();\n        //部分表单元素无法通过this.props.form.resetFields重置，需要手动重置，如下\n        this.setState({\n            approvalState: '',\n            closeState: '',\n            confirmState: '',\n            voucherDate: []\n        })\n    }\n    onChange = () => {\n        this.setState({expanded: !this.state.expanded})\n    }\n    render() {\n        const { getFieldProps, getFieldError } = this.props.form;\n        const self = this;\n        return (\n            <div>\n                <SearchPanel\n                title='基础示例'\n                onSearch={this.submit}\n                onReset={this.reset}\n                expanded={this.state.expanded}\n                onChange={this.onChange}\n                >\n                    <AdvancedContainer>\n                        <Form className='demo5'>\n                            <Row>\n                                <Col lg={4} md={6} xs={12}>\n                                    <FormItem>\n                                        <Col lg={4} md={4} xs={4}>\n                                            <Label><Icon type=\"uf-mi\" className='mast'></Icon>订单编号</Label>\n                                        </Col>\n                                        <Col lg={8} md={8} xs={8}>\n                                            <FormControl size=\"sm\"\n                                                {\n                                                ...getFieldProps('orderCode', {\n                                                    initialValue: '',\n                                                    validateTrigger: 'onBlur',\n                                                    rules: [{\n                                                        required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请输入订单编号</span></span>,\n                                                    }],\n                                                })\n                                                }\n                                            />\n                                            <span className='error'>\n                                                {getFieldError('orderCode')}\n                                            </span>\n                                        </Col>\n                                    </FormItem>\n                                </Col>\n                                <Col  lg={4} md={6} xs={12}>\n                                    <FormItem>\n                                        <Col lg={4} md={4} xs={4}>\n                                            <Label><Icon type=\"uf-mi\" className='mast'></Icon>供应商名称</Label>\n                                        </Col>\n                                        <Col lg={8} md={8} xs={8}>\n                                            <FormControl size=\"sm\"\n                                                {\n                                                ...getFieldProps('supplierName', {\n                                                    initialValue: '',\n                                                    validateTrigger: 'onBlur',\n                                                    rules: [{\n                                                        required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请输入供应商名称</span></span>,\n                                                    }],\n                                                })\n                                                }\n                                            />\n                                            <span className='error'>\n                                                {getFieldError('supplierName')}\n                                            </span>\n                                        </Col>\n                                    </FormItem>\n                                </Col>\n                                <Col  lg={4} md={6} xs={12}>\n                                    <FormItem>\n                                        <Col lg={4} md={4} xs={4}>\n                                            <Label><Icon type=\"uf-mi\" className='mast'></Icon>凭证名称</Label>\n                                        </Col>\n                                        <Col lg={8} md={8} xs={8}>\n                                            <FormControl size=\"sm\"\n                                                {\n                                                ...getFieldProps('voucherName1', {\n                                                    initialValue: '',\n                                                    validateTrigger: 'onBlur',\n                                                    rules: [{\n                                                        required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请输入凭证名称</span></span>,\n                                                    }],\n                                                })\n                                                }\n                                            />\n                                            <span className='error'>\n                                                {getFieldError('voucherName1')}\n                                            </span>\n                                        </Col>\n                                    </FormItem>\n                                </Col>\n                                \n                                <Col  lg={4} md={6} xs={12}>\n                                    <FormItem>\n                                        <Col lg={4} md={4} xs={4}>\n                                            <Label>订单类型</Label>\n                                        </Col>\n                                        <Col lg={8} md={8} xs={8}>\n                                            <Select size=\"sm\"\n                                                {\n                                                ...getFieldProps('type', {\n                                                    initialValue: '',\n                                                }\n                                                )}>\n                                                <Option value=\"\">请选择</Option>\n                                                {\n                                                    self.state.orderTypes.map((item, index) => {\n                                                        return (\n                                                            <Option key={index} value={item.code}>{item.name}</Option>\n                                                        )\n                                                    })\n                                                }\n                                            </Select>\n                                        </Col>\n                                    </FormItem>\n                                </Col>\n                                <Col  lg={4} md={6} xs={12}>\n                                    <FormItem>\n                                        <Col lg={4} md={4} xs={4}>\n                                            <Label>采购组</Label>\n                                        </Col>\n                                        <Col lg={8} md={8} xs={8}>\n                                            <CheckboxGroup \n                                                {\n                                                    ...getFieldProps('purchasingGroup',{\n                                                        initialValue:['2']\n                                                    })\n                                                }\n                                            >\n                                                <Checkbox value='1'>人力</Checkbox>\n                                                <Checkbox value='2'>财务</Checkbox>\n                                            </CheckboxGroup>\n                                        </Col>\n                                    </FormItem>\n                                </Col>\n                                <Col  lg={4} md={6} xs={12}>\n                                    <FormItem>\n                                        <Col lg={4} md={4} xs={4}>\n                                            <Label>审批状态</Label>\n                                        </Col>\n                                        <Col lg={8} md={8} xs={8}>\n                                            <Radio.RadioGroup\n                                                selectedValue={this.state.approvalState}\n                                                {\n                                                ...getFieldProps('approvalState', {\n                                                    initialValue: '1',\n                                                    onChange(value) {\n                                                        self.setState({ approvalState: value });\n                                                    },\n                                                }\n                                                )}\n                                            >\n                                                <Radio value=\"0\" >未审批</Radio>\n                                                <Radio value=\"1\" >已审批</Radio>\n                                            </Radio.RadioGroup>\n                                        </Col>\n                                    </FormItem>\n                                </Col>\n                                <Col  lg={4} md={6} xs={12}>\n                                    <FormItem>\n                                        <Col lg={4} md={4} xs={4}>\n                                            <Label>关闭状态</Label>\n                                        </Col>\n                                        <Col lg={8} md={8} xs={8}>\n                                            <Radio.RadioGroup\n                                                selectedValue={this.state.closeState}\n                                                {\n                                                ...getFieldProps('closeState', {\n                                                    initialValue: '1',\n                                                    onChange(value) {\n                                                        self.setState({ closeState: value });\n                                                    },\n                                                }\n                                                )}\n                                            >\n                                                <Radio value=\"0\" >未关闭</Radio>\n                                                <Radio value=\"1\" >已关闭</Radio>\n                                            </Radio.RadioGroup>\n                                        </Col>\n                                    </FormItem>\n                                </Col>\n                                <Col  lg={4} md={6} xs={12}>\n                                    <FormItem>\n                                        <Col lg={4} md={4} xs={4}>\n                                            <Label>确认状态</Label>\n                                        </Col>\n                                        <Col lg={8} md={8} xs={8}>\n                                            <Radio.RadioGroup\n                                                selectedValue={this.state.confirmState}\n                                                {\n                                                ...getFieldProps('confirmState', {\n                                                    initialValue: '1',\n                                                    onChange(value) {\n                                                        self.setState({ confirmState: value });\n                                                    },\n                                                }\n                                                )}\n                                            >\n                                                <Radio value=\"0\" >未确认</Radio>\n                                                <Radio value=\"1\" >已确认</Radio>\n                                            </Radio.RadioGroup>\n                                        </Col>\n                                    </FormItem>\n                                </Col>\n                            </Row>\n                        </Form>\n                    </AdvancedContainer>\n                </SearchPanel>\n            </div>\n        )\n    }\n})\nexport default Demo5;", "desc": " 查询面板", "scss_code": ".demo5{\r\n    .u-form-item .error{\r\n        padding-left: 0;\r\n    }\r\n}" }, { "example": _react2['default'].createElement(Demo6, null), "title": " 多种布局示例", "code": "/**\r\n *\r\n * @title 多种布局示例\r\n * @description \r\n */\r\nimport React, { Component } from 'react';\nimport { Icon, Button, Label, Switch, Checkbox, Radio, Select,  Col , Row , FormControl, Form } from 'tinper-bee';\r\nimport ReactDOM from 'react-dom';\r\n\r\n\n\n\n\nimport DatePicker from 'bee-datepicker';\r\n\n\n\n\n\nimport moment from \"moment/moment\";\r\nconst FormItem = Form.FormItem;\r\nconst Option = Select.Option;\r\nconst { RangePicker } = DatePicker;\r\n\r\nconst Demo6 = Form.createForm()(class Demo extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            approvalState: '',\r\n            closeState: '',\r\n            confirmState: '',\r\n            voucherName: [],\r\n            orderTypes:[\r\n                {\r\n                    'code':'001',\r\n                    'name':'类型1'\r\n                },\r\n                {\r\n                    'code':'002',\r\n                    'name':'类型2'\r\n                },\r\n                {\r\n                    'code':'003',\r\n                    'name':'类型3'\r\n                },\r\n            ]\r\n        };\r\n    }\r\n    render() {\r\n        const { getFieldProps, getFieldError } = this.props.form;\r\n        const self = this;\r\n        const orderTypes= [{\r\n            \"code\":\"D001\",\r\n            \"name\":\"D001\"\r\n          },{\r\n            \"code\":\"D002\",\r\n            \"name\":\"D002\"\r\n          },{\r\n            \"code\":\"D003\",\r\n            \"name\":\"D003\"\r\n          },{\r\n            \"code\":\"D004\",\r\n            \"name\":\"D004\"\r\n          }];\r\n        return (\r\n            <div>\r\n                <Form className='demo6'>\r\n                    {/* 普通栅格布局 */}\r\n                    <h4>\r\n                        普通栅格布局\r\n                    </h4>\r\n                    <Row className = 'edit-panel'>\r\n                        <Col lg={4} md={6} xs={12}>\r\n                            <FormItem>\r\n                                <Label>\r\n                                    <Icon type=\"uf-mi\" className='mast'></Icon>\r\n                                    订单编号\r\n                                </Label>\r\n                                <FormControl\r\n                                    {\r\n                                    ...getFieldProps('orderCode1', {\r\n                                        initialValue: '',\r\n                                        rules: [{\r\n                                            required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请输入订单编号</span></span>,\r\n                                        }],\r\n                                    })\r\n                                    }\r\n                                />\r\n                                <span className='error'>\r\n                                    {\r\n                                        getFieldError('orderCode1')\r\n                                    }\r\n                                </span>\r\n                            </FormItem>\r\n                        </Col>\r\n                        <Col lg={4} md={6} xs={12}>\r\n                            <FormItem>\r\n                                <Label>\r\n                                    <Icon type=\"uf-mi\" className='mast'></Icon>\r\n                                    供应商名称\r\n                                </Label>\r\n                                <FormControl\r\n                                    {\r\n                                        ...getFieldProps('supplierName1', {\r\n                                            initialValue: '',\r\n                                            rules: [{\r\n                                                required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请输入供应商名称</span></span>,\r\n                                            }],\r\n                                        })\r\n                                    }\r\n                                />\r\n                                <span className='error'>\r\n                                    {\r\n                                        getFieldError('supplierName1')\r\n                                    }\r\n                                </span>\r\n                            </FormItem>\r\n                            \r\n                        </Col>\r\n                        <Col lg={4} md={6} xs={12}>\r\n                            <FormItem>\r\n                                <Label>凭证名称</Label>\r\n                                <FormControl\r\n                                    {\r\n                                        ...getFieldProps('voucherName1', {\r\n                                            initialValue: '',\r\n                                            rules: [{\r\n                                                required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请输入凭证名称</span></span>,\r\n                                            }],\r\n                                        })\r\n                                    }\r\n                                />\r\n                                <span className='error'>\r\n                                    {\r\n                                        getFieldError('voucherName1')\r\n                                    }\r\n                                </span>\r\n                            </FormItem>\r\n                        </Col>\r\n                    </Row>\r\n\r\n                    <div className='split'></div>\r\n                    \r\n                    \r\n                     {/* 单列铺满 */}\r\n                     <h4>\r\n                        单列铺满\r\n                     </h4>\r\n                     <Row className = 'edit-panel edit-panel-all'>\r\n                        <FormItem>\r\n                            <Col md={2} xs={2}>\r\n                                <Label>\r\n                                    <Icon type=\"uf-mi\" className='mast'></Icon>\r\n                                    订单编号\r\n                                </Label>\r\n                            </Col>\r\n                            <Col md={10} xs={10}>\r\n                                <FormControl\r\n                                    {\r\n                                    ...getFieldProps('orderCode2', {\r\n                                        initialValue: '',\r\n                                        rules: [{\r\n                                            required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请输入订单编号</span></span>,\r\n                                        }],\r\n                                    })\r\n                                    }\r\n                                />\r\n                                <span className='error'>\r\n                                    {\r\n                                        getFieldError('orderCode2')\r\n                                    }\r\n                                </span>\r\n                            </Col>\r\n                        </FormItem>\r\n\r\n                        <FormItem>\r\n                            <Col md={2} xs={2}>\r\n                                <Label>\r\n                                    <Icon type=\"uf-mi\" className='mast'></Icon>\r\n                                    供应商名称\r\n                                </Label>\r\n                            </Col>\r\n                            <Col md={10} xs={10}>\r\n                                <FormControl\r\n                                    {\r\n                                        ...getFieldProps('supplierName2', {\r\n                                            initialValue: '',\r\n                                            rules: [{\r\n                                                required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请输入供应商名称</span></span>,\r\n                                            }],\r\n                                        })\r\n                                    }\r\n                                />\r\n                                <span className='error'>\r\n                                    {\r\n                                        getFieldError('supplierName2')\r\n                                    }\r\n                                </span>\r\n                            </Col>\r\n                        </FormItem>\r\n\r\n                        <FormItem>\r\n                            <Col md={2} xs={2}>\r\n                                <Label>凭证名称</Label>\r\n                            </Col>\r\n                            <Col md={10} xs={10}>\r\n                            <FormControl\r\n                                    {\r\n                                        ...getFieldProps('voucherName2', {\r\n                                            initialValue: '',\r\n                                            rules: [{\r\n                                                required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请输入凭证名称</span></span>,\r\n                                            }],\r\n                                        })\r\n                                    }\r\n                                />\r\n                                <span className='error'>\r\n                                    {\r\n                                        getFieldError('voucherName2')\r\n                                    }\r\n                                </span>\r\n                            </Col>\r\n                        </FormItem>\r\n                        <FormItem>\r\n                            <Col md={2} xs={2}>\r\n                                <Label>订单类型</Label>\r\n                            </Col>\r\n                            <Col md={10} xs={10}>\r\n                                <Select {\r\n                                    ...getFieldProps('type', {\r\n                                        initialValue: '',\r\n                                    }\r\n                                    )}>\r\n                                    <Option value=\"\">请选择</Option>\r\n                                    {\r\n                                        orderTypes.map((item, index) => {\r\n                                            return (\r\n                                                <Option key={index} value={item.code}>{item.name}</Option>\r\n                                            )\r\n                                        })\r\n                                    }\r\n                                </Select>\r\n                            </Col>\r\n                        </FormItem>\r\n                        \r\n                    </Row>\r\n\r\n                    <div className='split'></div>\r\n\r\n                    {/* 单列居中 */}\r\n                    <h4>\r\n                        单列居中\r\n                    </h4>\r\n                    <Row className = 'text-algin-center'>\r\n                        <Col md={12} >\r\n                            <FormItem>\r\n                                <Label>\r\n                                    <Icon type=\"uf-mi\" className='mast'></Icon>\r\n                                    订单编号\r\n                                </Label>\r\n                                <FormControl\r\n                                    {\r\n                                    ...getFieldProps('orderCode3', {\r\n                                        initialValue: '',\r\n                                        rules: [{\r\n                                            required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请输入订单编号</span></span>,\r\n                                        }],\r\n                                    })\r\n                                    }\r\n                                />\r\n                                <span className='error'>\r\n                                    {\r\n                                        getFieldError('orderCode3')\r\n                                    }\r\n                                </span>\r\n                            </FormItem>\r\n                        </Col>\r\n                        <Col md={12}  >\r\n                            <FormItem>\r\n                                <Label>\r\n                                    <Icon type=\"uf-mi\" className='mast'></Icon>\r\n                                    供应商名称\r\n                                </Label>\r\n                                <FormControl\r\n                                    {\r\n                                        ...getFieldProps('supplierName3', {\r\n                                            initialValue: '',\r\n                                            rules: [{\r\n                                                required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请输入供应商名称</span></span>,\r\n                                            }],\r\n                                        })\r\n                                    }\r\n                                />\r\n                                <span className='error'>\r\n                                    {\r\n                                        getFieldError('supplierName3')\r\n                                    }\r\n                                </span>\r\n                            </FormItem>\r\n                            \r\n                        </Col>\r\n                        <Col md={12}  >\r\n                            <FormItem>\r\n                                <Label >凭证名称</Label>\r\n                                <FormControl\r\n                                    {\r\n                                        ...getFieldProps('voucherName3', {\r\n                                            initialValue: '',\r\n                                            rules: [{\r\n                                                required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请输入凭证名称</span></span>,\r\n                                            }],\r\n                                        })\r\n                                    }\r\n                                />\r\n                                <span className='error'>\r\n                                    {\r\n                                        getFieldError('voucherName3')\r\n                                    }\r\n                                </span>\r\n                            </FormItem>\r\n                        </Col>\r\n                        \r\n                    </Row>\r\n\r\n                     <div className='split'></div>\r\n\r\n                    {/* 三列带textarea */}\r\n                    <h4>\r\n                    三列带textarea\r\n                     </h4>\r\n                    <Row>\r\n                        <Col lg={4} md={6} xs={12}>\r\n                            <FormItem>\r\n                                <Label><Icon type=\"uf-mi\" className='mast'></Icon>订单编号</Label>\r\n                                <FormControl\r\n                                    {\r\n                                    ...getFieldProps('orderCode4', {\r\n                                        initialValue: '',\r\n                                        rules: [{\r\n                                            required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请输入订单编号</span></span>,\r\n                                        }],\r\n                                    })\r\n                                    }\r\n                                />\r\n                                <span className='error'>\r\n                                    {\r\n                                        getFieldError('orderCode4')\r\n                                    }\r\n                                </span>\r\n                            </FormItem>\r\n                        </Col>\r\n                        <Col lg={4} md={6} xs={12}>\r\n                            <FormItem>\r\n                                <Label><Icon type=\"uf-mi\" className='mast'></Icon>供应商</Label>\r\n                                <FormControl\r\n                                {\r\n                                    ...getFieldProps('supplierName4', {\r\n                                        initialValue: '',\r\n                                        rules: [{\r\n                                            required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请输入供应商名称</span></span>,\r\n                                        }],\r\n                                    })\r\n                                }\r\n                                />\r\n                                <span className='error'>\r\n                                    {\r\n                                        getFieldError('supplierName4')\r\n                                    }\r\n                                </span>\r\n                            </FormItem>\r\n                        </Col>\r\n                        <Col lg={4} md={6} xs={12}>\r\n                            <FormItem>\r\n                                <Label><Icon type=\"uf-mi\" className='mast'></Icon>凭证名称</Label>\r\n                                <FormControl\r\n                                    {\r\n                                        ...getFieldProps('voucherName4', {\r\n                                            initialValue: '',\r\n                                            rules: [{\r\n                                                required: true, message: <span><Icon type=\"uf-exc-t\"></Icon><span>请输入凭证名称</span></span>,\r\n                                            }],\r\n                                        })\r\n                                    }\r\n                                />\r\n                                <span className='error'>\r\n                                    {\r\n                                        getFieldError('voucherName4')\r\n                                    }\r\n                                </span>\r\n                            </FormItem>\r\n                        </Col>\r\n                    </Row>\r\n                    <Row>\r\n                        <Col md={12} xs={12}>\r\n                            <FormItem className=\"remark flex\">\r\n                                <Label className='line-height-32'>备注</Label>\r\n                                <FormControl componentClass='textarea'\r\n                                    {\r\n                                    ...getFieldProps('mark', {}\r\n                                    ) }\r\n                                />\r\n                            </FormItem>\r\n                        </Col>\r\n                    </Row>\r\n                </Form>\r\n            </div>\r\n        )\r\n    }\r\n})\r\nexport default Demo6;", "desc": " ", "scss_code": ".demo6{\r\n    .remark textarea{\r\n        width: 100%;\r\n    }\r\n}" }];
 	
 	var Demo = function (_Component) {
 	    _inherits(Demo, _Component);
@@ -6274,7 +6274,7 @@
 	    });
 	}
 	
-	function notice(content, duration_arg, type, onClose, position, style, keyboard, onEscapeKeyUp, showIcon, icon) {
+	function notice(content, duration_arg, type, onClose, position, style, keyboard, onEscapeKeyUp, showIcon, icon, props) {
 	    if (positionType.findIndex(function (item) {
 	        return item === position;
 	    }) < 0) {
@@ -6302,7 +6302,7 @@
 	    var positionStyle = JSON.stringify(messageStyle_copy) == "{}" ? positionObj[position].messageStyle : messageStyle_copy;
 	    defaultStyle = _extends({}, positionStyle, style);
 	    getMessageInstance(position, function (instance) {
-	        instance.notice({
+	        instance.notice(_extends({}, props, {
 	            key: key,
 	            duration: duration,
 	            color: type,
@@ -6322,7 +6322,7 @@
 	                )
 	            ),
 	            onClose: onClose
-	        });
+	        }));
 	    }, keyboard, onEscapeKeyUp);
 	    return function () {
 	        var target = key++;
@@ -6348,7 +6348,7 @@
 	        var style = obj.style || {};
 	        var showIcon = obj.hasOwnProperty('showIcon') ? obj.showIcon : true;
 	        var icon = obj.hasOwnProperty('icon') ? obj.icon : false;
-	        return notice(content, duration, color, onClose, position, style, obj.keyboard, obj.onEscapeKeyUp, showIcon, icon);
+	        return notice(content, duration, color, onClose, position, style, obj.keyboard, obj.onEscapeKeyUp, showIcon, icon, obj);
 	    },
 	    config: function config(options) {
 	        if (options.top !== undefined) {
@@ -7463,6 +7463,8 @@
 	  value: true
 	});
 	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
 	var _react = __webpack_require__(1);
 	
 	var _react2 = _interopRequireDefault(_react);
@@ -7484,6 +7486,8 @@
 	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
 	
 	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+	
+	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
@@ -7557,7 +7561,12 @@
 	        style = _props.style,
 	        children = _props.children,
 	        color = _props.color,
-	        title = _props.title;
+	        title = _props.title,
+	        content = _props.content,
+	        onEnd = _props.onEnd,
+	        onClose = _props.onClose,
+	        duration = _props.duration,
+	        others = _objectWithoutProperties(_props, ['closable', 'clsPrefix', 'className', 'style', 'children', 'color', 'title', 'content', 'onEnd', 'onClose', 'duration']);
 	
 	    var componentClass = clsPrefix + '-notice';
 	    var classes = (_classes = {}, _defineProperty(_classes, '' + componentClass, 1), _defineProperty(_classes, componentClass + '-closable', closable), _defineProperty(_classes, className, !!className), _classes);
@@ -7566,7 +7575,7 @@
 	    }
 	    return _react2["default"].createElement(
 	      'div',
-	      { className: (0, _classnames2["default"])(classes), style: style, onClick: this.close },
+	      _extends({ className: (0, _classnames2["default"])(classes), style: style, onClick: this.close }, others),
 	      _react2["default"].createElement(
 	        'div',
 	        { className: componentClass + '-content' },
@@ -7706,20 +7715,28 @@
 /* 81 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 	
 	var deselectCurrent = __webpack_require__(82);
 	
-	var defaultMessage = 'Copy to clipboard: #{key}, Enter';
+	var defaultMessage = "Copy to clipboard: #{key}, Enter";
 	
 	function format(message) {
-	  var copyKey = (/mac os x/i.test(navigator.userAgent) ? '⌘' : 'Ctrl') + '+C';
+	  var copyKey = (/mac os x/i.test(navigator.userAgent) ? "⌘" : "Ctrl") + "+C";
 	  return message.replace(/#{\s*key\s*}/g, copyKey);
 	}
 	
 	function copy(text, options) {
-	  var debug, message, reselectPrevious, range, selection, mark, success = false;
-	  if (!options) { options = {}; }
+	  var debug,
+	    message,
+	    reselectPrevious,
+	    range,
+	    selection,
+	    mark,
+	    success = false;
+	  if (!options) {
+	    options = {};
+	  }
 	  debug = options.debug || false;
 	  try {
 	    reselectPrevious = deselectCurrent();
@@ -7727,47 +7744,55 @@
 	    range = document.createRange();
 	    selection = document.getSelection();
 	
-	    mark = document.createElement('span');
+	    mark = document.createElement("span");
 	    mark.textContent = text;
 	    // reset user styles for span element
-	    mark.style.all = 'unset';
+	    mark.style.all = "unset";
 	    // prevents scrolling to the end of the page
-	    mark.style.position = 'fixed';
+	    mark.style.position = "fixed";
 	    mark.style.top = 0;
-	    mark.style.clip = 'rect(0, 0, 0, 0)';
+	    mark.style.clip = "rect(0, 0, 0, 0)";
 	    // used to preserve spaces and line breaks
-	    mark.style.whiteSpace = 'pre';
+	    mark.style.whiteSpace = "pre";
 	    // do not inherit user-select (it may be `none`)
-	    mark.style.webkitUserSelect = 'text';
-	    mark.style.MozUserSelect = 'text';
-	    mark.style.msUserSelect = 'text';
-	    mark.style.userSelect = 'text';
+	    mark.style.webkitUserSelect = "text";
+	    mark.style.MozUserSelect = "text";
+	    mark.style.msUserSelect = "text";
+	    mark.style.userSelect = "text";
+	    mark.addEventListener("copy", function(e) {
+	      e.stopPropagation();
+	      if (options.format) {
+	        e.preventDefault();
+	        e.clipboardData.clearData();
+	        e.clipboardData.setData(options.format, text);
+	      }
+	    });
 	
 	    document.body.appendChild(mark);
 	
-	    range.selectNode(mark);
+	    range.selectNodeContents(mark);
 	    selection.addRange(range);
 	
-	    var successful = document.execCommand('copy');
+	    var successful = document.execCommand("copy");
 	    if (!successful) {
-	      throw new Error('copy command was unsuccessful');
+	      throw new Error("copy command was unsuccessful");
 	    }
 	    success = true;
 	  } catch (err) {
-	    debug && console.error('unable to copy using execCommand: ', err);
-	    debug && console.warn('trying IE specific stuff');
+	    debug && console.error("unable to copy using execCommand: ", err);
+	    debug && console.warn("trying IE specific stuff");
 	    try {
-	      window.clipboardData.setData('text', text);
+	      window.clipboardData.setData(options.format || "text", text);
 	      success = true;
 	    } catch (err) {
-	      debug && console.error('unable to copy using clipboardData: ', err);
-	      debug && console.error('falling back to prompt');
-	      message = format('message' in options ? options.message : defaultMessage);
+	      debug && console.error("unable to copy using clipboardData: ", err);
+	      debug && console.error("falling back to prompt");
+	      message = format("message" in options ? options.message : defaultMessage);
 	      window.prompt(message, text);
 	    }
 	  } finally {
 	    if (selection) {
-	      if (typeof selection.removeRange == 'function') {
+	      if (typeof selection.removeRange == "function") {
 	        selection.removeRange(range);
 	      } else {
 	        selection.removeAllRanges();
@@ -15944,9 +15969,9 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 	
-	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
-	
 	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+	
+	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
@@ -15970,9 +15995,15 @@
 	    componentClass: 'input',
 	    clsPrefix: 'u-form-control',
 	    type: 'text',
-	    size: 'md',
-	    debounceDelay: 0
+	    size: 'md'
 	};
+	
+	function fixControlledValue(value) {
+	    if (typeof value === 'undefined' || value === null) {
+	        return '';
+	    }
+	    return value;
+	}
 	
 	var FormControl = function (_React$Component) {
 	    _inherits(FormControl, _React$Component);
@@ -15982,196 +16013,12 @@
 	
 	        var _this = _possibleConstructorReturn(this, _React$Component.call(this, props));
 	
-	        _this.handleSearchChange = function (e) {
-	            var onChange = _this.props.onChange;
+	        _initialiseProps.call(_this);
 	
-	            var value = _this.input.value;
-	            _this.setState({
-	                value: value,
-	                showSearch: value == null || value === ""
-	            });
-	            if (onChange) {
-	                onChange(value, e);
-	            }
-	        };
-	
-	        _this.handleChange = function (e) {
-	            var now = new Date().getTime();
-	            if (now - _this.lastScrollCall < _this.props.debounceDelay) return;
-	            _this.lastScrollCall = now;
-	
-	            var onChange = _this.props.onChange;
-	
-	            var value = _this.input.value;
-	
-	            if (onChange) {
-	                onChange(value, e);
-	            }
-	        };
-	
-	        _this.clearValue = function () {
-	            var onChange = _this.props.onChange;
-	
-	            _this.setState({
-	                showSearch: true,
-	                value: ""
-	            });
-	            if (onChange) {
-	                onChange("");
-	            }
-	            _this.input.focus();
-	        };
-	
-	        _this.handleKeyDown = function (e) {
-	            var _this$props = _this.props,
-	                onSearch = _this$props.onSearch,
-	                type = _this$props.type,
-	                onKeyDown = _this$props.onKeyDown;
-	
-	            if (e.keyCode === 13 && type === "search") {
-	                if (onSearch) {
-	                    onSearch(_this.input.value);
-	                }
-	            }
-	            onKeyDown && onKeyDown(e);
-	        };
-	
-	        _this.handleSearch = function (e) {
-	            var onSearch = _this.props.onSearch;
-	
-	            if (onSearch) onSearch(_this.input.value);
-	        };
-	
-	        _this.handleBlur = function (e) {
-	            var value = _this.state.value;
-	            var onBlur = _this.props.onBlur;
-	
-	
-	            if (onBlur) {
-	                onBlur(value, e);
-	            }
-	        };
-	
-	        _this.handleFocus = function (e) {
-	            var value = _this.state.value;
-	            var onFocus = _this.props.onFocus;
-	
-	            if (_this.props.focusSelect) {
-	                _this.input.select();
-	            }
-	            if (onFocus) {
-	                onFocus(value, e);
-	            }
-	        };
-	
-	        _this.renderInput = function () {
-	            var _this$props2 = _this.props,
-	                Component = _this$props2.componentClass,
-	                type = _this$props2.type,
-	                className = _this$props2.className,
-	                size = _this$props2.size,
-	                clsPrefix = _this$props2.clsPrefix,
-	                value = _this$props2.value,
-	                onChange = _this$props2.onChange,
-	                onSearch = _this$props2.onSearch,
-	                onBlur = _this$props2.onBlur,
-	                showClose = _this$props2.showClose,
-	                focusSelect = _this$props2.focusSelect,
-	                others = _objectWithoutProperties(_this$props2, ['componentClass', 'type', 'className', 'size', 'clsPrefix', 'value', 'onChange', 'onSearch', 'onBlur', 'showClose', 'focusSelect']);
-	            // input[type="file"] 不应该有类名 .form-control.
-	
-	
-	            var classes = {};
-	            if (size) {
-	                classes['' + size] = true;
-	            }
-	
-	            var classNames = void 0;
-	            if (type !== 'file') {
-	                classNames = (0, _classnames2["default"])(clsPrefix, classes);
-	            }
-	
-	            return showClose ? _react2["default"].createElement(
-	                'div',
-	                { className: (0, _classnames2["default"])(clsPrefix + '-close', clsPrefix + '-affix-wrapper', className) },
-	                _react2["default"].createElement(Component, _extends({}, others, {
-	                    type: type,
-	                    ref: function ref(el) {
-	                        return _this.input = el;
-	                    },
-	                    value: value,
-	                    onChange: _this.handleChange,
-	                    onBlur: _this.handleBlur,
-	                    onFocus: _this.handleFocus,
-	                    className: (0, _classnames2["default"])(classNames)
-	                })),
-	                _react2["default"].createElement(
-	                    'div',
-	                    { className: clsPrefix + '-suffix' },
-	                    value ? _react2["default"].createElement(_beeIcon2["default"], { onClick: _this.clearValue, type: 'uf-close-c' }) : ''
-	                )
-	            ) : _react2["default"].createElement(Component, _extends({}, others, {
-	                type: type,
-	                ref: function ref(el) {
-	                    return _this.input = el;
-	                },
-	                value: value,
-	                onChange: _this.handleChange,
-	                onBlur: _this.handleBlur,
-	                onFocus: _this.handleFocus,
-	                className: (0, _classnames2["default"])(className, classNames)
-	            }));
-	        };
-	
-	        _this.renderSearch = function () {
-	            var _this$props3 = _this.props,
-	                Component = _this$props3.componentClass,
-	                type = _this$props3.type,
-	                className = _this$props3.className,
-	                size = _this$props3.size,
-	                clsPrefix = _this$props3.clsPrefix,
-	                value = _this$props3.value,
-	                onChange = _this$props3.onChange,
-	                onSearch = _this$props3.onSearch,
-	                onBlur = _this$props3.onBlur,
-	                others = _objectWithoutProperties(_this$props3, ['componentClass', 'type', 'className', 'size', 'clsPrefix', 'value', 'onChange', 'onSearch', 'onBlur']);
-	            // input[type="file"] 不应该有类名 .form-control.
-	
-	
-	            var classes = {};
-	            if (size) {
-	                classes['' + size] = true;
-	            }
-	            classes[clsPrefix + '-search'] = true;
-	
-	            if (type === "search") {
-	                return _react2["default"].createElement(
-	                    'div',
-	                    { className: (0, _classnames2["default"])(clsPrefix + '-search', clsPrefix + '-affix-wrapper', className) },
-	                    _react2["default"].createElement(Component, _extends({}, others, {
-	                        type: type,
-	                        ref: function ref(el) {
-	                            return _this.input = el;
-	                        },
-	                        onChange: _this.handleSearchChange,
-	                        value: value,
-	                        onKeyDown: _this.handleKeyDown,
-	                        onBlur: _this.handleBlur,
-	                        onFocus: _this.handleFocus,
-	                        className: (0, _classnames2["default"])(clsPrefix, classes)
-	                    })),
-	                    _react2["default"].createElement(
-	                        'div',
-	                        { className: clsPrefix + '-suffix' },
-	                        _react2["default"].createElement(_beeIcon2["default"], { type: 'uf-search', onClick: _this.handleSearch })
-	                    )
-	                );
-	            }
-	        };
-	
+	        var value = typeof props.value === 'undefined' ? props.defaultValue : props.value;
 	        _this.state = {
 	            showSearch: !props.value,
-	            value: props.value == null ? "" : props.value
+	            value: value
 	        };
 	        _this.input = {};
 	        return _this;
@@ -16194,6 +16041,204 @@
 	
 	    return FormControl;
 	}(_react2["default"].Component);
+	
+	var _initialiseProps = function _initialiseProps() {
+	    var _this2 = this;
+	
+	    this.handleSearchChange = function (e) {
+	        var onChange = _this2.props.onChange;
+	
+	        var value = _this2.input.value;
+	        _this2.setState({
+	            value: value,
+	            showSearch: value == null || value === ""
+	        });
+	        if (onChange) {
+	            onChange(value, e);
+	        }
+	    };
+	
+	    this.handleChange = function (e) {
+	        var _props$debounceDelay = _this2.props.debounceDelay,
+	            debounceDelay = _props$debounceDelay === undefined ? 0 : _props$debounceDelay;
+	
+	        var now = new Date().getTime();
+	        if (now - _this2.lastScrollCall < debounceDelay) return;
+	        _this2.lastScrollCall = now;
+	
+	        var onChange = _this2.props.onChange;
+	
+	        var value = _this2.input.value;
+	        if (!('value' in _this2.props)) {
+	            _this2.setState({ value: value });
+	        }
+	        if (onChange) {
+	            onChange(value, e);
+	        }
+	    };
+	
+	    this.clearValue = function () {
+	        var onChange = _this2.props.onChange;
+	
+	        _this2.setState({
+	            showSearch: true,
+	            value: ""
+	        });
+	        if (onChange) {
+	            onChange("");
+	        }
+	        _this2.input.focus();
+	    };
+	
+	    this.handleKeyDown = function (e) {
+	        var _props = _this2.props,
+	            onSearch = _props.onSearch,
+	            type = _props.type,
+	            onKeyDown = _props.onKeyDown;
+	
+	        if (e.keyCode === 13 && type === "search") {
+	            if (onSearch) {
+	                onSearch(_this2.input.value);
+	            }
+	        }
+	        onKeyDown && onKeyDown(e);
+	    };
+	
+	    this.handleSearch = function (e) {
+	        var onSearch = _this2.props.onSearch;
+	
+	        if (onSearch) onSearch(_this2.input.value);
+	    };
+	
+	    this.handleBlur = function (e) {
+	        var value = _this2.state.value;
+	        var onBlur = _this2.props.onBlur;
+	
+	
+	        if (onBlur) {
+	            onBlur(value, e);
+	        }
+	    };
+	
+	    this.handleFocus = function (e) {
+	        var value = _this2.state.value;
+	        var onFocus = _this2.props.onFocus;
+	
+	        if (_this2.props.focusSelect) {
+	            _this2.input.select();
+	        }
+	        if (onFocus) {
+	            onFocus(value, e);
+	        }
+	    };
+	
+	    this.renderInput = function () {
+	        var _props2 = _this2.props,
+	            Component = _props2.componentClass,
+	            type = _props2.type,
+	            className = _props2.className,
+	            size = _props2.size,
+	            clsPrefix = _props2.clsPrefix,
+	            onChange = _props2.onChange,
+	            onSearch = _props2.onSearch,
+	            onBlur = _props2.onBlur,
+	            showClose = _props2.showClose,
+	            focusSelect = _props2.focusSelect,
+	            others = _objectWithoutProperties(_props2, ['componentClass', 'type', 'className', 'size', 'clsPrefix', 'onChange', 'onSearch', 'onBlur', 'showClose', 'focusSelect']);
+	        // input[type="file"] 不应该有类名 .form-control.
+	
+	
+	        var value = _this2.state.value;
+	
+	        var classes = {};
+	        if (size) {
+	            classes['' + size] = true;
+	        }
+	
+	        var classNames = void 0;
+	        if (type !== 'file') {
+	            classNames = (0, _classnames2["default"])(clsPrefix, classes);
+	        }
+	
+	        return showClose ? _react2["default"].createElement(
+	            'div',
+	            { className: (0, _classnames2["default"])(clsPrefix + '-close', clsPrefix + '-affix-wrapper', className) },
+	            _react2["default"].createElement(Component, _extends({}, others, {
+	                type: type,
+	                ref: function ref(el) {
+	                    return _this2.input = el;
+	                },
+	                value: fixControlledValue(value),
+	                onChange: _this2.handleChange,
+	                onBlur: _this2.handleBlur,
+	                onFocus: _this2.handleFocus,
+	                className: (0, _classnames2["default"])(classNames)
+	            })),
+	            _react2["default"].createElement(
+	                'div',
+	                { className: clsPrefix + '-suffix' },
+	                value ? _react2["default"].createElement(_beeIcon2["default"], { onClick: _this2.clearValue, type: 'uf-close-c' }) : ''
+	            )
+	        ) : _react2["default"].createElement(Component, _extends({}, others, {
+	            type: type,
+	            ref: function ref(el) {
+	                return _this2.input = el;
+	            },
+	            value: fixControlledValue(value),
+	            onChange: _this2.handleChange,
+	            onBlur: _this2.handleBlur,
+	            onFocus: _this2.handleFocus,
+	            className: (0, _classnames2["default"])(className, classNames)
+	        }));
+	    };
+	
+	    this.renderSearch = function () {
+	        var _props3 = _this2.props,
+	            Component = _props3.componentClass,
+	            type = _props3.type,
+	            className = _props3.className,
+	            size = _props3.size,
+	            clsPrefix = _props3.clsPrefix,
+	            onChange = _props3.onChange,
+	            onSearch = _props3.onSearch,
+	            onBlur = _props3.onBlur,
+	            others = _objectWithoutProperties(_props3, ['componentClass', 'type', 'className', 'size', 'clsPrefix', 'onChange', 'onSearch', 'onBlur']);
+	        // input[type="file"] 不应该有类名 .form-control.
+	
+	
+	        var value = _this2.state.value;
+	
+	        var classes = {};
+	        if (size) {
+	            classes['' + size] = true;
+	        }
+	        classes[clsPrefix + '-search'] = true;
+	
+	        if (type === "search") {
+	            return _react2["default"].createElement(
+	                'div',
+	                { className: (0, _classnames2["default"])(clsPrefix + '-search', clsPrefix + '-affix-wrapper', className) },
+	                _react2["default"].createElement(Component, _extends({}, others, {
+	                    type: type,
+	                    ref: function ref(el) {
+	                        return _this2.input = el;
+	                    },
+	                    onChange: _this2.handleSearchChange,
+	                    value: fixControlledValue(value),
+	                    onKeyDown: _this2.handleKeyDown,
+	                    onBlur: _this2.handleBlur,
+	                    onFocus: _this2.handleFocus,
+	                    className: (0, _classnames2["default"])(clsPrefix, classes)
+	                })),
+	                _react2["default"].createElement(
+	                    'div',
+	                    { className: clsPrefix + '-suffix' },
+	                    _react2["default"].createElement(_beeIcon2["default"], { type: 'uf-search', onClick: _this2.handleSearch })
+	                )
+	            );
+	        }
+	    };
+	};
 	
 	FormControl.propTypes = propTypes;
 	FormControl.defaultProps = defaultProps;
@@ -16553,6 +16598,8 @@
 	    value: true
 	});
 	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
 	var _react = __webpack_require__(1);
 	
 	var _react2 = _interopRequireDefault(_react);
@@ -16570,6 +16617,8 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
 	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
+	
+	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
@@ -16602,12 +16651,13 @@
 	            className = _props$className === undefined ? '' : _props$className,
 	            children = _props.children,
 	            style = _props.style,
-	            onSubmit = _props.onSubmit;
+	            onSubmit = _props.onSubmit,
+	            others = _objectWithoutProperties(_props, ['prefixCls', 'className', 'children', 'style', 'onSubmit']);
 	
 	        var formClassName = (0, _classnames2['default'])(prefixCls, className);
 	        return _react2['default'].createElement(
 	            'form',
-	            { className: prefixCls + ' ' + className, style: style, onSubmit: onSubmit },
+	            _extends({ className: prefixCls + ' ' + className, style: style, onSubmit: onSubmit }, others),
 	            children
 	        );
 	    };
@@ -24721,6 +24771,8 @@
 	    value: true
 	});
 	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
 	var _react = __webpack_require__(1);
 	
 	var _react2 = _interopRequireDefault(_react);
@@ -24736,6 +24788,8 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
 	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
+	
+	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
@@ -24765,11 +24819,12 @@
 	            _props$className = _props.className,
 	            className = _props$className === undefined ? '' : _props$className,
 	            prefixCls = _props.prefixCls,
-	            style = _props.style;
+	            style = _props.style,
+	            others = _objectWithoutProperties(_props, ['children', 'className', 'prefixCls', 'style']);
 	
 	        return _react2['default'].createElement(
 	            'div',
-	            { className: prefixCls + '-item' + ' ' + className, style: style },
+	            _extends({ className: prefixCls + '-item' + ' ' + className, style: style }, others),
 	            children
 	        );
 	    };
@@ -25621,10 +25676,6 @@
 	    value: true
 	});
 	
-	var _classnames = __webpack_require__(5);
-	
-	var _classnames2 = _interopRequireDefault(_classnames);
-	
 	var _react = __webpack_require__(1);
 	
 	var _react2 = _interopRequireDefault(_react);
@@ -25655,14 +25706,16 @@
 	    clsPrefix: _propTypes2["default"].string,
 	    value: _propTypes2["default"].array,
 	    onChange: _propTypes2["default"].func,
-	    disabled: _propTypes2["default"].bool
+	    disabled: _propTypes2["default"].bool,
+	    options: _propTypes2["default"].array,
+	    defaultValue: _propTypes2["default"].array
 	};
 	
 	var defaultProps = {
 	    clsPrefix: 'u-checkbox-group',
-	    value: [],
 	    onChange: function onChange() {},
-	    disabled: false
+	    disabled: false,
+	    options: []
 	};
 	
 	var CheckboxGroup = function (_React$Component) {
@@ -25683,11 +25736,26 @@
 	            _this.setState({
 	                values: values
 	            });
-	            _this.props.onChange(values);
+	            var onChange = _this.props.onChange;
+	
+	            if (onChange) {
+	                var options = _this.getOptions();
+	                onChange(values.filter(function (val) {
+	                    return values.indexOf(val) !== -1;
+	                }).sort(function (a, b) {
+	                    var indexA = options.findIndex(function (opt) {
+	                        return opt.value === a;
+	                    });
+	                    var indexB = options.findIndex(function (opt) {
+	                        return opt.value === b;
+	                    });
+	                    return indexA - indexB;
+	                }));
+	            }
 	        };
 	
 	        _this.state = {
-	            values: props.value
+	            values: props.value || props.defaultValue || []
 	        };
 	        return _this;
 	    }
@@ -25700,25 +25768,57 @@
 	        }
 	    };
 	
+	    CheckboxGroup.prototype.getOptions = function getOptions() {
+	        var options = this.props.options;
+	
+	        return options.map(function (option) {
+	            if (typeof option === 'string') {
+	                return {
+	                    label: option,
+	                    value: option
+	                };
+	            }
+	            return option;
+	        });
+	    };
+	
 	    CheckboxGroup.prototype.render = function render() {
 	        var _this2 = this;
 	
-	        var _props = this.props,
-	            clsPrefix = _props.clsPrefix,
-	            className = _props.className,
-	            disabled = _props.disabled;
+	        var state = this.state;
+	        var props = this.props;
+	        var clsPrefix = props.clsPrefix,
+	            className = props.className,
+	            disabled = props.disabled,
+	            children = props.children,
+	            options = props.options;
 	
 	        var classes = clsPrefix;
 	        if (className) classes += ' ' + className;
+	        if (options && options.length > 0) {
+	            children = this.getOptions().map(function (option) {
+	                return _react2["default"].createElement(
+	                    _Checkbox2["default"],
+	                    {
+	                        key: option.value.toString(),
+	                        disabled: 'disabled' in option ? option.disabled : props.disabled,
+	                        value: option.value,
+	                        checked: state.values.indexOf(option.value) !== -1,
+	                        onChange: option.onChange
+	                    },
+	                    option.label
+	                );
+	            });
+	        }
 	        return _react2["default"].createElement(
 	            'div',
 	            { className: classes },
-	            _react2["default"].Children.map(this.props.children, function (child) {
+	            _react2["default"].Children.map(children, function (child) {
 	                return _react2["default"].cloneElement(child, {
 	                    onChange: function onChange() {
 	                        _this2.changeHandle(child.props.value);
 	                    },
-	                    checked: _this2.state.values.indexOf(child.props.value) != -1,
+	                    checked: state.values.indexOf(child.props.value) != -1,
 	                    disabled: child.props.disabled || disabled
 	                });
 	            })
@@ -27639,11 +27739,11 @@
 	
 	var _beeSelect2 = _interopRequireDefault(_beeSelect);
 	
-	var _beeRadio = __webpack_require__(428);
+	var _beeRadio = __webpack_require__(429);
 	
 	var _beeRadio2 = _interopRequireDefault(_beeRadio);
 	
-	var _beeDatepicker = __webpack_require__(432);
+	var _beeDatepicker = __webpack_require__(433);
 	
 	var _beeDatepicker2 = _interopRequireDefault(_beeDatepicker);
 	
@@ -27651,23 +27751,23 @@
 	
 	var _beeCheckbox2 = _interopRequireDefault(_beeCheckbox);
 	
-	var _beeSwitch = __webpack_require__(604);
+	var _beeSwitch = __webpack_require__(605);
 	
 	var _beeSwitch2 = _interopRequireDefault(_beeSwitch);
 	
-	var _beeSlider = __webpack_require__(606);
+	var _beeSlider = __webpack_require__(607);
 	
 	var _beeSlider2 = _interopRequireDefault(_beeSlider);
 	
-	var _beeInputNumber = __webpack_require__(618);
+	var _beeInputNumber = __webpack_require__(619);
 	
 	var _beeInputNumber2 = _interopRequireDefault(_beeInputNumber);
 	
-	var _beeRate = __webpack_require__(621);
+	var _beeRate = __webpack_require__(622);
 	
 	var _beeRate2 = _interopRequireDefault(_beeRate);
 	
-	var _beeCitySelect = __webpack_require__(627);
+	var _beeCitySelect = __webpack_require__(628);
 	
 	var _beeCitySelect2 = _interopRequireDefault(_beeCitySelect);
 	
@@ -27683,7 +27783,7 @@
 	
 	var _beeIcon2 = _interopRequireDefault(_beeIcon);
 	
-	var _beeUpload = __webpack_require__(634);
+	var _beeUpload = __webpack_require__(635);
 	
 	var _beeUpload2 = _interopRequireDefault(_beeUpload);
 	
@@ -28087,9 +28187,9 @@
 	
 	var _Option2 = _interopRequireDefault(_Option);
 	
-	var _PropTypes = __webpack_require__(426);
+	var _PropTypes = __webpack_require__(427);
 	
-	var _OptGroup = __webpack_require__(427);
+	var _OptGroup = __webpack_require__(428);
 	
 	var _OptGroup2 = _interopRequireDefault(_OptGroup);
 	
@@ -28128,7 +28228,7 @@
 	
 	var _Option2 = _interopRequireDefault(_Option);
 	
-	var _OptGroup = __webpack_require__(427);
+	var _OptGroup = __webpack_require__(428);
 	
 	var _OptGroup2 = _interopRequireDefault(_OptGroup);
 	
@@ -28333,13 +28433,17 @@
 	
 	var _Option2 = _interopRequireDefault(_Option);
 	
-	var _util = __webpack_require__(415);
+	var _omit = __webpack_require__(415);
 	
-	var _SelectTrigger = __webpack_require__(416);
+	var _omit2 = _interopRequireDefault(_omit);
+	
+	var _util = __webpack_require__(416);
+	
+	var _SelectTrigger = __webpack_require__(417);
 	
 	var _SelectTrigger2 = _interopRequireDefault(_SelectTrigger);
 	
-	var _PropTypes = __webpack_require__(426);
+	var _PropTypes = __webpack_require__(427);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 	
@@ -28519,6 +28623,7 @@
 	    var realOpen = this.getRealOpenState();
 	    var options = this._options || [];
 	    var dataOrAriaAttributeProps = {};
+	    var customProps = _extends({}, (0, _omit2["default"])(props, ['transitionName', 'choiceTransitionName', 'optionLabelProp', 'notFoundContent', 'clsPrefix', 'prefixCls', 'placeholder', 'dropdownStyle', 'dropdownMenuStyle', 'optionFilterProp', 'showAction', 'tokenSeparators', 'showSearch', 'allowClear', 'enterKeyDown', 'defaultOpen', 'labelInValue', 'defaultActiveFirstOption', 'onSearch', 'onDeselect', 'onInputKeyDown', 'showArrow', 'dropdownMatchSelectWidth', 'autoClearSearchValue', 'searchPlaceholder', 'scrollToEnd', 'filterOption', 'backfill', 'tags', 'combobox', 'supportWrite', 'onChange', 'onFocus', 'onBlur', 'onSelect', 'onSearch', 'onDeselect', 'onInputKeyDown', 'onKeyDown']));
 	    for (var key in props) {
 	      if (Object.prototype.hasOwnProperty.call(props, key) && (key.substr(0, 5) === 'data-' || key.substr(0, 5) === 'aria-' || key === 'role')) {
 	        dataOrAriaAttributeProps[key] = props[key];
@@ -28571,7 +28676,7 @@
 	      },
 	      _react2["default"].createElement(
 	        'div',
-	        {
+	        _extends({}, customProps, {
 	          id: props.id,
 	          style: props.style,
 	          ref: this.saveRootRef,
@@ -28582,7 +28687,7 @@
 	          onMouseDown: this.markMouseDown,
 	          onMouseUp: this.markMouseLeave,
 	          onMouseOut: this.markMouseLeave
-	        },
+	        }),
 	        _react2["default"].createElement(
 	          'div',
 	          _extends({
@@ -30732,7 +30837,7 @@
 	  if (activeKey) {
 	    var found = void 0;
 	    (0, _util.loopMenuItem)(children, function (c, i) {
-	      if (c && !c.props.disabled && activeKey === (0, _util.getKeyFromChildrenIndex)(c, eventKey, i)) {
+	      if (c && c.props && !c.props.disabled && activeKey === (0, _util.getKeyFromChildrenIndex)(c, eventKey, i)) {
 	        found = true;
 	      }
 	    });
@@ -30849,27 +30954,21 @@
 	    // Otherwise, the propagated click event will trigger another onClick
 	    delete props.onClick;
 	
-	    return (
-	      // ESLint is not smart enough to know that the type of `children` was checked.
-	      /* eslint-disable */
-	      _react2['default'].createElement(
-	        _DOMWrap2['default'],
-	        (0, _extends5['default'])({}, props, {
-	          prefixCls: prefixCls,
-	          mode: mode,
-	          tag: 'ul',
-	          level: level,
-	          theme: theme,
-	          hiddenClassName: prefixCls + '-hidden',
-	          visible: visible,
-	          overflowedIndicator: overflowedIndicator
-	        }, domProps),
-	        _react2['default'].Children.map(props.children, function (c, i) {
-	          return _this2.renderMenuItem(c, i, eventKey || '0-menu-');
-	        })
-	      )
-	      /*eslint-enable */
-	
+	    return _react2['default'].createElement(
+	      _DOMWrap2['default'],
+	      (0, _extends5['default'])({}, props, {
+	        prefixCls: prefixCls,
+	        mode: mode,
+	        tag: 'ul',
+	        level: level,
+	        theme: theme,
+	        hiddenClassName: prefixCls + '-hidden',
+	        visible: visible,
+	        overflowedIndicator: overflowedIndicator
+	      }, domProps),
+	      _react2['default'].Children.map(props.children, function (c, i) {
+	        return _this2.renderMenuItem(c, i, eventKey || '0-menu-');
+	      })
 	    );
 	  };
 	
@@ -31031,6 +31130,10 @@
 	    var props = _this3.props;
 	    var key = (0, _util.getKeyFromChildrenIndex)(child, props.eventKey, i);
 	    var childProps = child.props;
+	    // https://github.com/ant-design/ant-design/issues/11517#issuecomment-477403055
+	    if (!childProps || typeof child.type === 'string') {
+	      return child;
+	    }
 	    var isActive = key === state.activeKey;
 	    var newChildProps = (0, _extends5['default'])({
 	      mode: childProps.mode || props.mode,
@@ -31093,453 +31196,583 @@
 /* 381 */
 /***/ (function(module, exports) {
 
-	'use strict';
+	"use strict";
 	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
+	exports.default = void 0;
+	
 	/**
 	 * @ignore
 	 * some key-codes definition and utils from closure-library
 	 * @author yiminghe@gmail.com
 	 */
-	
 	var KeyCode = {
 	  /**
 	   * MAC_ENTER
 	   */
 	  MAC_ENTER: 3,
+	
 	  /**
 	   * BACKSPACE
 	   */
 	  BACKSPACE: 8,
+	
 	  /**
 	   * TAB
 	   */
 	  TAB: 9,
+	
 	  /**
 	   * NUMLOCK on FF/Safari Mac
 	   */
-	  NUM_CENTER: 12, // NUMLOCK on FF/Safari Mac
+	  NUM_CENTER: 12,
+	  // NUMLOCK on FF/Safari Mac
+	
 	  /**
 	   * ENTER
 	   */
 	  ENTER: 13,
+	
 	  /**
 	   * SHIFT
 	   */
 	  SHIFT: 16,
+	
 	  /**
 	   * CTRL
 	   */
 	  CTRL: 17,
+	
 	  /**
 	   * ALT
 	   */
 	  ALT: 18,
+	
 	  /**
 	   * PAUSE
 	   */
 	  PAUSE: 19,
+	
 	  /**
 	   * CAPS_LOCK
 	   */
 	  CAPS_LOCK: 20,
+	
 	  /**
 	   * ESC
 	   */
 	  ESC: 27,
+	
 	  /**
 	   * SPACE
 	   */
 	  SPACE: 32,
+	
 	  /**
 	   * PAGE_UP
 	   */
-	  PAGE_UP: 33, // also NUM_NORTH_EAST
+	  PAGE_UP: 33,
+	  // also NUM_NORTH_EAST
+	
 	  /**
 	   * PAGE_DOWN
 	   */
-	  PAGE_DOWN: 34, // also NUM_SOUTH_EAST
+	  PAGE_DOWN: 34,
+	  // also NUM_SOUTH_EAST
+	
 	  /**
 	   * END
 	   */
-	  END: 35, // also NUM_SOUTH_WEST
+	  END: 35,
+	  // also NUM_SOUTH_WEST
+	
 	  /**
 	   * HOME
 	   */
-	  HOME: 36, // also NUM_NORTH_WEST
+	  HOME: 36,
+	  // also NUM_NORTH_WEST
+	
 	  /**
 	   * LEFT
 	   */
-	  LEFT: 37, // also NUM_WEST
+	  LEFT: 37,
+	  // also NUM_WEST
+	
 	  /**
 	   * UP
 	   */
-	  UP: 38, // also NUM_NORTH
+	  UP: 38,
+	  // also NUM_NORTH
+	
 	  /**
 	   * RIGHT
 	   */
-	  RIGHT: 39, // also NUM_EAST
+	  RIGHT: 39,
+	  // also NUM_EAST
+	
 	  /**
 	   * DOWN
 	   */
-	  DOWN: 40, // also NUM_SOUTH
+	  DOWN: 40,
+	  // also NUM_SOUTH
+	
 	  /**
 	   * PRINT_SCREEN
 	   */
 	  PRINT_SCREEN: 44,
+	
 	  /**
 	   * INSERT
 	   */
-	  INSERT: 45, // also NUM_INSERT
+	  INSERT: 45,
+	  // also NUM_INSERT
+	
 	  /**
 	   * DELETE
 	   */
-	  DELETE: 46, // also NUM_DELETE
+	  DELETE: 46,
+	  // also NUM_DELETE
+	
 	  /**
 	   * ZERO
 	   */
 	  ZERO: 48,
+	
 	  /**
 	   * ONE
 	   */
 	  ONE: 49,
+	
 	  /**
 	   * TWO
 	   */
 	  TWO: 50,
+	
 	  /**
 	   * THREE
 	   */
 	  THREE: 51,
+	
 	  /**
 	   * FOUR
 	   */
 	  FOUR: 52,
+	
 	  /**
 	   * FIVE
 	   */
 	  FIVE: 53,
+	
 	  /**
 	   * SIX
 	   */
 	  SIX: 54,
+	
 	  /**
 	   * SEVEN
 	   */
 	  SEVEN: 55,
+	
 	  /**
 	   * EIGHT
 	   */
 	  EIGHT: 56,
+	
 	  /**
 	   * NINE
 	   */
 	  NINE: 57,
+	
 	  /**
 	   * QUESTION_MARK
 	   */
-	  QUESTION_MARK: 63, // needs localization
+	  QUESTION_MARK: 63,
+	  // needs localization
+	
 	  /**
 	   * A
 	   */
 	  A: 65,
+	
 	  /**
 	   * B
 	   */
 	  B: 66,
+	
 	  /**
 	   * C
 	   */
 	  C: 67,
+	
 	  /**
 	   * D
 	   */
 	  D: 68,
+	
 	  /**
 	   * E
 	   */
 	  E: 69,
+	
 	  /**
 	   * F
 	   */
 	  F: 70,
+	
 	  /**
 	   * G
 	   */
 	  G: 71,
+	
 	  /**
 	   * H
 	   */
 	  H: 72,
+	
 	  /**
 	   * I
 	   */
 	  I: 73,
+	
 	  /**
 	   * J
 	   */
 	  J: 74,
+	
 	  /**
 	   * K
 	   */
 	  K: 75,
+	
 	  /**
 	   * L
 	   */
 	  L: 76,
+	
 	  /**
 	   * M
 	   */
 	  M: 77,
+	
 	  /**
 	   * N
 	   */
 	  N: 78,
+	
 	  /**
 	   * O
 	   */
 	  O: 79,
+	
 	  /**
 	   * P
 	   */
 	  P: 80,
+	
 	  /**
 	   * Q
 	   */
 	  Q: 81,
+	
 	  /**
 	   * R
 	   */
 	  R: 82,
+	
 	  /**
 	   * S
 	   */
 	  S: 83,
+	
 	  /**
 	   * T
 	   */
 	  T: 84,
+	
 	  /**
 	   * U
 	   */
 	  U: 85,
+	
 	  /**
 	   * V
 	   */
 	  V: 86,
+	
 	  /**
 	   * W
 	   */
 	  W: 87,
+	
 	  /**
 	   * X
 	   */
 	  X: 88,
+	
 	  /**
 	   * Y
 	   */
 	  Y: 89,
+	
 	  /**
 	   * Z
 	   */
 	  Z: 90,
+	
 	  /**
 	   * META
 	   */
-	  META: 91, // WIN_KEY_LEFT
+	  META: 91,
+	  // WIN_KEY_LEFT
+	
 	  /**
 	   * WIN_KEY_RIGHT
 	   */
 	  WIN_KEY_RIGHT: 92,
+	
 	  /**
 	   * CONTEXT_MENU
 	   */
 	  CONTEXT_MENU: 93,
+	
 	  /**
 	   * NUM_ZERO
 	   */
 	  NUM_ZERO: 96,
+	
 	  /**
 	   * NUM_ONE
 	   */
 	  NUM_ONE: 97,
+	
 	  /**
 	   * NUM_TWO
 	   */
 	  NUM_TWO: 98,
+	
 	  /**
 	   * NUM_THREE
 	   */
 	  NUM_THREE: 99,
+	
 	  /**
 	   * NUM_FOUR
 	   */
 	  NUM_FOUR: 100,
+	
 	  /**
 	   * NUM_FIVE
 	   */
 	  NUM_FIVE: 101,
+	
 	  /**
 	   * NUM_SIX
 	   */
 	  NUM_SIX: 102,
+	
 	  /**
 	   * NUM_SEVEN
 	   */
 	  NUM_SEVEN: 103,
+	
 	  /**
 	   * NUM_EIGHT
 	   */
 	  NUM_EIGHT: 104,
+	
 	  /**
 	   * NUM_NINE
 	   */
 	  NUM_NINE: 105,
+	
 	  /**
 	   * NUM_MULTIPLY
 	   */
 	  NUM_MULTIPLY: 106,
+	
 	  /**
 	   * NUM_PLUS
 	   */
 	  NUM_PLUS: 107,
+	
 	  /**
 	   * NUM_MINUS
 	   */
 	  NUM_MINUS: 109,
+	
 	  /**
 	   * NUM_PERIOD
 	   */
 	  NUM_PERIOD: 110,
+	
 	  /**
 	   * NUM_DIVISION
 	   */
 	  NUM_DIVISION: 111,
+	
 	  /**
 	   * F1
 	   */
 	  F1: 112,
+	
 	  /**
 	   * F2
 	   */
 	  F2: 113,
+	
 	  /**
 	   * F3
 	   */
 	  F3: 114,
+	
 	  /**
 	   * F4
 	   */
 	  F4: 115,
+	
 	  /**
 	   * F5
 	   */
 	  F5: 116,
+	
 	  /**
 	   * F6
 	   */
 	  F6: 117,
+	
 	  /**
 	   * F7
 	   */
 	  F7: 118,
+	
 	  /**
 	   * F8
 	   */
 	  F8: 119,
+	
 	  /**
 	   * F9
 	   */
 	  F9: 120,
+	
 	  /**
 	   * F10
 	   */
 	  F10: 121,
+	
 	  /**
 	   * F11
 	   */
 	  F11: 122,
+	
 	  /**
 	   * F12
 	   */
 	  F12: 123,
+	
 	  /**
 	   * NUMLOCK
 	   */
 	  NUMLOCK: 144,
+	
 	  /**
 	   * SEMICOLON
 	   */
-	  SEMICOLON: 186, // needs localization
+	  SEMICOLON: 186,
+	  // needs localization
+	
 	  /**
 	   * DASH
 	   */
-	  DASH: 189, // needs localization
+	  DASH: 189,
+	  // needs localization
+	
 	  /**
 	   * EQUALS
 	   */
-	  EQUALS: 187, // needs localization
+	  EQUALS: 187,
+	  // needs localization
+	
 	  /**
 	   * COMMA
 	   */
-	  COMMA: 188, // needs localization
+	  COMMA: 188,
+	  // needs localization
+	
 	  /**
 	   * PERIOD
 	   */
-	  PERIOD: 190, // needs localization
+	  PERIOD: 190,
+	  // needs localization
+	
 	  /**
 	   * SLASH
 	   */
-	  SLASH: 191, // needs localization
+	  SLASH: 191,
+	  // needs localization
+	
 	  /**
 	   * APOSTROPHE
 	   */
-	  APOSTROPHE: 192, // needs localization
+	  APOSTROPHE: 192,
+	  // needs localization
+	
 	  /**
 	   * SINGLE_QUOTE
 	   */
-	  SINGLE_QUOTE: 222, // needs localization
+	  SINGLE_QUOTE: 222,
+	  // needs localization
+	
 	  /**
 	   * OPEN_SQUARE_BRACKET
 	   */
-	  OPEN_SQUARE_BRACKET: 219, // needs localization
+	  OPEN_SQUARE_BRACKET: 219,
+	  // needs localization
+	
 	  /**
 	   * BACKSLASH
 	   */
-	  BACKSLASH: 220, // needs localization
+	  BACKSLASH: 220,
+	  // needs localization
+	
 	  /**
 	   * CLOSE_SQUARE_BRACKET
 	   */
-	  CLOSE_SQUARE_BRACKET: 221, // needs localization
+	  CLOSE_SQUARE_BRACKET: 221,
+	  // needs localization
+	
 	  /**
 	   * WIN_KEY
 	   */
 	  WIN_KEY: 224,
+	
 	  /**
 	   * MAC_FF_META
 	   */
-	  MAC_FF_META: 224, // Firefox (Gecko) fires this for the meta key instead of 91
+	  MAC_FF_META: 224,
+	  // Firefox (Gecko) fires this for the meta key instead of 91
+	
 	  /**
 	   * WIN_IME
 	   */
 	  WIN_IME: 229
 	};
-	
 	/*
 	 whether text and modified key is entered at the same time.
 	 */
+	
 	KeyCode.isTextModifyingKeyEvent = function isTextModifyingKeyEvent(e) {
 	  var keyCode = e.keyCode;
-	  if (e.altKey && !e.ctrlKey || e.metaKey ||
-	  // Function keys don't generate text
+	
+	  if (e.altKey && !e.ctrlKey || e.metaKey || // Function keys don't generate text
 	  keyCode >= KeyCode.F1 && keyCode <= KeyCode.F12) {
 	    return false;
-	  }
-	
-	  // The following keys are quite harmless, even in combination with
+	  } // The following keys are quite harmless, even in combination with
 	  // CTRL, ALT or SHIFT.
+	
+	
 	  switch (keyCode) {
 	    case KeyCode.ALT:
 	    case KeyCode.CAPS_LOCK:
@@ -31565,14 +31798,16 @@
 	    case KeyCode.WIN_KEY:
 	    case KeyCode.WIN_KEY_RIGHT:
 	      return false;
+	
 	    default:
 	      return true;
 	  }
 	};
-	
 	/*
 	 whether character is entered.
 	 */
+	
+	
 	KeyCode.isCharacterKey = function isCharacterKey(keyCode) {
 	  if (keyCode >= KeyCode.ZERO && keyCode <= KeyCode.NINE) {
 	    return true;
@@ -31584,9 +31819,9 @@
 	
 	  if (keyCode >= KeyCode.A && keyCode <= KeyCode.Z) {
 	    return true;
-	  }
+	  } // Safari sends zero key code for non-latin characters.
 	
-	  // Safari sends zero key code for non-latin characters.
+	
 	  if (window.navigation.userAgent.indexOf('WebKit') !== -1 && keyCode === 0) {
 	    return true;
 	  }
@@ -31610,13 +31845,14 @@
 	    case KeyCode.BACKSLASH:
 	    case KeyCode.CLOSE_SQUARE_BRACKET:
 	      return true;
+	
 	    default:
 	      return false;
 	  }
 	};
 	
-	exports['default'] = KeyCode;
-	module.exports = exports['default'];
+	var _default = KeyCode;
+	exports.default = _default;
 
 /***/ }),
 /* 382 */
@@ -31627,7 +31863,8 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports["default"] = createChainedFunction;
+	exports.default = createChainedFunction;
+	
 	/**
 	 * Safe chained function
 	 *
@@ -31638,6 +31875,7 @@
 	 */
 	function createChainedFunction() {
 	  var args = [].slice.call(arguments, 0);
+	
 	  if (args.length === 1) {
 	    return args[0];
 	  }
@@ -31650,7 +31888,6 @@
 	    }
 	  };
 	}
-	module.exports = exports['default'];
 
 /***/ }),
 /* 383 */
@@ -31752,7 +31989,7 @@
 /* 384 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!function(e){var n=/iPhone/i,t=/iPod/i,r=/iPad/i,a=/\bAndroid(?:.+)Mobile\b/i,p=/Android/i,l=/\bAndroid(?:.+)SD4930UR\b/i,b=/\bAndroid(?:.+)(?:KF[A-Z]{2,4})\b/i,f=/Windows Phone/i,u=/\bWindows(?:.+)ARM\b/i,c=/BlackBerry/i,s=/BB10/i,v=/Opera Mini/i,h=/\b(CriOS|Chrome)(?:.+)Mobile/i,w=/\Mobile(?:.+)Firefox\b/i;function m(e,i){return e.test(i)}function i(e){var i=e||("undefined"!=typeof navigator?navigator.userAgent:""),o=i.split("[FBAN");void 0!==o[1]&&(i=o[0]),void 0!==(o=i.split("Twitter"))[1]&&(i=o[0]);var d={apple:{phone:m(n,i)&&!m(f,i),ipod:m(t,i),tablet:!m(n,i)&&m(r,i)&&!m(f,i),device:(m(n,i)||m(t,i)||m(r,i))&&!m(f,i)},amazon:{phone:m(l,i),tablet:!m(l,i)&&m(b,i),device:m(l,i)||m(b,i)},android:{phone:!m(f,i)&&m(l,i)||!m(f,i)&&m(a,i),tablet:!m(f,i)&&!m(l,i)&&!m(a,i)&&(m(b,i)||m(p,i)),device:!m(f,i)&&(m(l,i)||m(b,i)||m(a,i)||m(p,i))},windows:{phone:m(f,i),tablet:m(u,i),device:m(f,i)||m(u,i)},other:{blackberry:m(c,i),blackberry10:m(s,i),opera:m(v,i),firefox:m(w,i),chrome:m(h,i),device:m(c,i)||m(s,i)||m(v,i)||m(w,i)||m(h,i)}};return d.any=d.apple.device||d.android.device||d.windows.device||d.other.device,d.phone=d.apple.phone||d.android.phone||d.windows.phone,d.tablet=d.apple.tablet||d.android.tablet||d.windows.tablet,d}"undefined"!=typeof module&&module.exports&&"undefined"==typeof window?module.exports=i:"undefined"!=typeof module&&module.exports&&"undefined"!=typeof window?module.exports=i(): true?!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_FACTORY__ = (e.isMobile=i()), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)):e.isMobile=i()}(this);
+	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!function(e){var n=/iPhone/i,t=/iPod/i,r=/iPad/i,a=/\bAndroid(?:.+)Mobile\b/i,p=/Android/i,b=/\bAndroid(?:.+)SD4930UR\b/i,l=/\bAndroid(?:.+)(?:KF[A-Z]{2,4})\b/i,f=/Windows Phone/i,s=/\bWindows(?:.+)ARM\b/i,u=/BlackBerry/i,c=/BB10/i,h=/Opera Mini/i,v=/\b(CriOS|Chrome)(?:.+)Mobile/i,w=/Mobile(?:.+)Firefox\b/i;function m(e,i){return e.test(i)}function i(e){var i=e||("undefined"!=typeof navigator?navigator.userAgent:""),o=i.split("[FBAN");void 0!==o[1]&&(i=o[0]),void 0!==(o=i.split("Twitter"))[1]&&(i=o[0]);var d={apple:{phone:m(n,i)&&!m(f,i),ipod:m(t,i),tablet:!m(n,i)&&m(r,i)&&!m(f,i),device:(m(n,i)||m(t,i)||m(r,i))&&!m(f,i)},amazon:{phone:m(b,i),tablet:!m(b,i)&&m(l,i),device:m(b,i)||m(l,i)},android:{phone:!m(f,i)&&m(b,i)||!m(f,i)&&m(a,i),tablet:!m(f,i)&&!m(b,i)&&!m(a,i)&&(m(l,i)||m(p,i)),device:!m(f,i)&&(m(b,i)||m(l,i)||m(a,i)||m(p,i))||m(/\bokhttp\b/i,i)},windows:{phone:m(f,i),tablet:m(s,i),device:m(f,i)||m(s,i)},other:{blackberry:m(u,i),blackberry10:m(c,i),opera:m(h,i),firefox:m(w,i),chrome:m(v,i),device:m(u,i)||m(c,i)||m(h,i)||m(w,i)||m(v,i)}};return d.any=d.apple.device||d.android.device||d.windows.device||d.other.device,d.phone=d.apple.phone||d.android.phone||d.windows.phone,d.tablet=d.apple.tablet||d.android.tablet||d.windows.tablet,d}"undefined"!=typeof module&&module.exports&&"undefined"==typeof window?module.exports=i:"undefined"!=typeof module&&module.exports&&"undefined"!=typeof window?(module.exports=i(),module.exports.isMobile=i): true?!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_FACTORY__ = (e.isMobile=i()), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)):e.isMobile=i()}(this);
 
 /***/ }),
 /* 385 */
@@ -31848,8 +32085,7 @@
 	          level = _this$props.level,
 	          mode = _this$props.mode,
 	          prefixCls = _this$props.prefixCls,
-	          theme = _this$props.theme,
-	          propStyle = _this$props.style;
+	          theme = _this$props.theme;
 	
 	      if (level !== 1 || mode !== 'horizontal') {
 	        return null;
@@ -31860,12 +32096,13 @@
 	      var _copy$props = copy.props,
 	          throwAway = _copy$props.children,
 	          title = _copy$props.title,
-	          eventKey = _copy$props.eventKey,
-	          rest = (0, _objectWithoutProperties3['default'])(_copy$props, ['children', 'title', 'eventKey']);
+	          propStyle = _copy$props.style,
+	          rest = (0, _objectWithoutProperties3['default'])(_copy$props, ['children', 'title', 'style']);
 	
 	
 	      var style = (0, _extends3['default'])({}, propStyle);
 	      var key = keyPrefix + '-overflowed-indicator';
+	      var eventKey = keyPrefix + '-overflowed-indicator';
 	
 	      if (overflowedItems.length === 0 && renderPlaceholder !== true) {
 	        style = (0, _extends3['default'])({}, style, {
@@ -31878,6 +32115,7 @@
 	          position: 'absolute'
 	        });
 	        key = key + '-placeholder';
+	        eventKey = eventKey + '-placeholder';
 	      }
 	
 	      var popupClassName = theme ? prefixCls + '-' + theme : '';
@@ -31896,7 +32134,7 @@
 	          popupClassName: popupClassName
 	        }, props, {
 	          key: key,
-	          eventKey: keyPrefix + '-overflowed-indicator',
+	          eventKey: eventKey,
 	          disabled: false,
 	          style: style
 	        }),
@@ -33280,7 +33518,7 @@
 	    // don't show transition on first rendering (no animation for opened menu)
 	    // show appear transition if it's not visible (not sure why)
 	    // show appear transition if it's not inline mode
-	    var transitionAppear = haveRendered || !baseProps.visible || !baseProps.mode === 'inline';
+	    var transitionAppear = haveRendered || !baseProps.visible || baseProps.mode !== 'inline';
 	
 	    baseProps.className = ' ' + baseProps.prefixCls + '-sub';
 	    var animProps = {};
@@ -33758,6 +33996,8 @@
 	
 	var _reactDom = __webpack_require__(2);
 	
+	var _reactLifecyclesCompat = __webpack_require__(93);
+	
 	var _contains = __webpack_require__(389);
 	
 	var _contains2 = _interopRequireDefault(_contains);
@@ -33823,11 +34063,16 @@
 	      popupVisible = !!props.defaultPopupVisible;
 	    }
 	
-	    _this.prevPopupVisible = popupVisible;
-	
 	    _this.state = {
+	      prevPopupVisible: popupVisible,
 	      popupVisible: popupVisible
 	    };
+	
+	    ALL_HANDLERS.forEach(function (h) {
+	      _this['fire' + h] = function (e) {
+	        _this.fireEvents(h, e);
+	      };
+	    });
 	    return _this;
 	  }
 	
@@ -33839,30 +34084,10 @@
 	    };
 	  };
 	
-	  Trigger.prototype.componentWillMount = function componentWillMount() {
-	    var _this2 = this;
-	
-	    ALL_HANDLERS.forEach(function (h) {
-	      _this2['fire' + h] = function (e) {
-	        _this2.fireEvents(h, e);
-	      };
-	    });
-	  };
-	
 	  Trigger.prototype.componentDidMount = function componentDidMount() {
 	    this.componentDidUpdate({}, {
 	      popupVisible: this.state.popupVisible
 	    });
-	  };
-	
-	  Trigger.prototype.componentWillReceiveProps = function componentWillReceiveProps(_ref) {
-	    var popupVisible = _ref.popupVisible;
-	
-	    if (popupVisible !== undefined) {
-	      this.setState({
-	        popupVisible: popupVisible
-	      });
-	    }
 	  };
 	
 	  Trigger.prototype.componentDidUpdate = function componentDidUpdate(_, prevState) {
@@ -33876,8 +34101,6 @@
 	    if (!IS_REACT_16) {
 	      this.renderComponent(null, triggerAfterPopupVisibleChange);
 	    }
-	
-	    this.prevPopupVisible = prevState.popupVisible;
 	
 	    // We must listen to `mousedown` or `touchstart`, edge case:
 	    // https://github.com/ant-design/ant-design/issues/5804
@@ -33915,6 +34138,19 @@
 	    clearTimeout(this.mouseDownTimeout);
 	  };
 	
+	  Trigger.getDerivedStateFromProps = function getDerivedStateFromProps(_ref, prevState) {
+	    var popupVisible = _ref.popupVisible;
+	
+	    var newState = {};
+	
+	    if (popupVisible !== undefined && prevState.popupVisible !== popupVisible) {
+	      newState.popupVisible = popupVisible;
+	      newState.prevPopupVisible = prevState.popupVisible;
+	    }
+	
+	    return newState;
+	  };
+	
 	  Trigger.prototype.getPopupDomNode = function getPopupDomNode() {
 	    // for test
 	    if (this._component && this._component.getPopupDomNode) {
@@ -33941,13 +34177,14 @@
 	   */
 	  Trigger.prototype.setPopupVisible = function setPopupVisible(popupVisible, event) {
 	    var alignPoint = this.props.alignPoint;
+	    var prevPopupVisible = this.state.popupVisible;
 	
 	
 	    this.clearDelayTimer();
 	
-	    if (this.state.popupVisible !== popupVisible) {
+	    if (prevPopupVisible !== popupVisible) {
 	      if (!('popupVisible' in this.props)) {
-	        this.setState({ popupVisible: popupVisible });
+	        this.setState({ popupVisible: popupVisible, prevPopupVisible: prevPopupVisible });
 	      }
 	      this.props.onPopupVisibleChange(popupVisible);
 	    }
@@ -33959,15 +34196,15 @@
 	  };
 	
 	  Trigger.prototype.delaySetPopupVisible = function delaySetPopupVisible(visible, delayS, event) {
-	    var _this3 = this;
+	    var _this2 = this;
 	
 	    var delay = delayS * 1000;
 	    this.clearDelayTimer();
 	    if (delay) {
 	      var point = event ? { pageX: event.pageX, pageY: event.pageY } : null;
 	      this.delayTimer = setTimeout(function () {
-	        _this3.setPopupVisible(visible, point);
-	        _this3.clearDelayTimer();
+	        _this2.setPopupVisible(visible, point);
+	        _this2.clearDelayTimer();
 	      }, delay);
 	    } else {
 	      this.setPopupVisible(visible, event);
@@ -34090,7 +34327,7 @@
 	  };
 	
 	  Trigger.prototype.render = function render() {
-	    var _this4 = this;
+	    var _this3 = this;
 	
 	    var popupVisible = this.state.popupVisible;
 	    var _props8 = this.props,
@@ -34158,7 +34395,7 @@
 	        function (_ref2) {
 	          var renderComponent = _ref2.renderComponent;
 	
-	          _this4.renderComponent = renderComponent;
+	          _this3.renderComponent = renderComponent;
 	          return trigger;
 	        }
 	      );
@@ -34169,11 +34406,7 @@
 	    if (popupVisible || this._component || forceRender) {
 	      portal = _react2['default'].createElement(
 	        _Portal2['default'],
-	        {
-	          key: 'portal',
-	          getContainer: this.getContainer,
-	          didUpdate: this.handlePortalUpdate
-	        },
+	        { key: 'portal', getContainer: this.getContainer, didUpdate: this.handlePortalUpdate },
 	        this.getComponent()
 	      );
 	    }
@@ -34247,115 +34480,119 @@
 	};
 	
 	var _initialiseProps = function _initialiseProps() {
-	  var _this5 = this;
+	  var _this4 = this;
 	
 	  this.onMouseEnter = function (e) {
-	    var mouseEnterDelay = _this5.props.mouseEnterDelay;
+	    var mouseEnterDelay = _this4.props.mouseEnterDelay;
 	
-	    _this5.fireEvents('onMouseEnter', e);
-	    _this5.delaySetPopupVisible(true, mouseEnterDelay, mouseEnterDelay ? null : e);
+	    _this4.fireEvents('onMouseEnter', e);
+	    _this4.delaySetPopupVisible(true, mouseEnterDelay, mouseEnterDelay ? null : e);
 	  };
 	
 	  this.onMouseMove = function (e) {
-	    _this5.fireEvents('onMouseMove', e);
-	    _this5.setPoint(e);
+	    _this4.fireEvents('onMouseMove', e);
+	    _this4.setPoint(e);
 	  };
 	
 	  this.onMouseLeave = function (e) {
-	    _this5.fireEvents('onMouseLeave', e);
-	    _this5.delaySetPopupVisible(false, _this5.props.mouseLeaveDelay);
+	    _this4.fireEvents('onMouseLeave', e);
+	    _this4.delaySetPopupVisible(false, _this4.props.mouseLeaveDelay);
 	  };
 	
 	  this.onPopupMouseEnter = function () {
-	    _this5.clearDelayTimer();
+	    _this4.clearDelayTimer();
 	  };
 	
 	  this.onPopupMouseLeave = function (e) {
 	    // https://github.com/react-component/trigger/pull/13
 	    // react bug?
-	    if (e.relatedTarget && !e.relatedTarget.setTimeout && _this5._component && _this5._component.getPopupDomNode && (0, _contains2['default'])(_this5._component.getPopupDomNode(), e.relatedTarget)) {
+	    if (e.relatedTarget && !e.relatedTarget.setTimeout && _this4._component && _this4._component.getPopupDomNode && (0, _contains2['default'])(_this4._component.getPopupDomNode(), e.relatedTarget)) {
 	      return;
 	    }
-	    _this5.delaySetPopupVisible(false, _this5.props.mouseLeaveDelay);
+	    _this4.delaySetPopupVisible(false, _this4.props.mouseLeaveDelay);
 	  };
 	
 	  this.onFocus = function (e) {
-	    _this5.fireEvents('onFocus', e);
+	    _this4.fireEvents('onFocus', e);
 	    // incase focusin and focusout
-	    _this5.clearDelayTimer();
-	    if (_this5.isFocusToShow()) {
-	      _this5.focusTime = Date.now();
-	      _this5.delaySetPopupVisible(true, _this5.props.focusDelay);
+	    _this4.clearDelayTimer();
+	    if (_this4.isFocusToShow()) {
+	      _this4.focusTime = Date.now();
+	      _this4.delaySetPopupVisible(true, _this4.props.focusDelay);
 	    }
 	  };
 	
 	  this.onMouseDown = function (e) {
-	    _this5.fireEvents('onMouseDown', e);
-	    _this5.preClickTime = Date.now();
+	    _this4.fireEvents('onMouseDown', e);
+	    _this4.preClickTime = Date.now();
 	  };
 	
 	  this.onTouchStart = function (e) {
-	    _this5.fireEvents('onTouchStart', e);
-	    _this5.preTouchTime = Date.now();
+	    _this4.fireEvents('onTouchStart', e);
+	    _this4.preTouchTime = Date.now();
 	  };
 	
 	  this.onBlur = function (e) {
-	    _this5.fireEvents('onBlur', e);
-	    _this5.clearDelayTimer();
-	    if (_this5.isBlurToHide()) {
-	      _this5.delaySetPopupVisible(false, _this5.props.blurDelay);
+	    _this4.fireEvents('onBlur', e);
+	    _this4.clearDelayTimer();
+	    if (_this4.isBlurToHide()) {
+	      _this4.delaySetPopupVisible(false, _this4.props.blurDelay);
 	    }
 	  };
 	
 	  this.onContextMenu = function (e) {
 	    e.preventDefault();
-	    _this5.fireEvents('onContextMenu', e);
-	    _this5.setPopupVisible(true, e);
+	    _this4.fireEvents('onContextMenu', e);
+	    _this4.setPopupVisible(true, e);
 	  };
 	
 	  this.onContextMenuClose = function () {
-	    if (_this5.isContextMenuToShow()) {
-	      _this5.close();
+	    if (_this4.isContextMenuToShow()) {
+	      _this4.close();
 	    }
 	  };
 	
 	  this.onClick = function (event) {
-	    _this5.fireEvents('onClick', event);
+	    _this4.fireEvents('onClick', event);
 	    // focus will trigger click
-	    if (_this5.focusTime) {
+	    if (_this4.focusTime) {
 	      var preTime = void 0;
-	      if (_this5.preClickTime && _this5.preTouchTime) {
-	        preTime = Math.min(_this5.preClickTime, _this5.preTouchTime);
-	      } else if (_this5.preClickTime) {
-	        preTime = _this5.preClickTime;
-	      } else if (_this5.preTouchTime) {
-	        preTime = _this5.preTouchTime;
+	      if (_this4.preClickTime && _this4.preTouchTime) {
+	        preTime = Math.min(_this4.preClickTime, _this4.preTouchTime);
+	      } else if (_this4.preClickTime) {
+	        preTime = _this4.preClickTime;
+	      } else if (_this4.preTouchTime) {
+	        preTime = _this4.preTouchTime;
 	      }
-	      if (Math.abs(preTime - _this5.focusTime) < 20) {
+	      if (Math.abs(preTime - _this4.focusTime) < 20) {
 	        return;
 	      }
-	      _this5.focusTime = 0;
+	      _this4.focusTime = 0;
 	    }
-	    _this5.preClickTime = 0;
-	    _this5.preTouchTime = 0;
-	    if (event && event.preventDefault) {
+	    _this4.preClickTime = 0;
+	    _this4.preTouchTime = 0;
+	
+	    // Only prevent default when all the action is click.
+	    // https://github.com/ant-design/ant-design/issues/17043
+	    // https://github.com/ant-design/ant-design/issues/17291
+	    if (_this4.isClickToShow() && (_this4.isClickToHide() || _this4.isBlurToHide()) && event && event.preventDefault) {
 	      event.preventDefault();
 	    }
-	    var nextVisible = !_this5.state.popupVisible;
-	    if (_this5.isClickToHide() && !nextVisible || nextVisible && _this5.isClickToShow()) {
-	      _this5.setPopupVisible(!_this5.state.popupVisible, event);
+	    var nextVisible = !_this4.state.popupVisible;
+	    if (_this4.isClickToHide() && !nextVisible || nextVisible && _this4.isClickToShow()) {
+	      _this4.setPopupVisible(!_this4.state.popupVisible, event);
 	    }
 	  };
 	
 	  this.onPopupMouseDown = function () {
-	    var _context$rcTrigger = _this5.context.rcTrigger,
+	    var _context$rcTrigger = _this4.context.rcTrigger,
 	        rcTrigger = _context$rcTrigger === undefined ? {} : _context$rcTrigger;
 	
-	    _this5.hasPopupMouseDown = true;
+	    _this4.hasPopupMouseDown = true;
 	
-	    clearTimeout(_this5.mouseDownTimeout);
-	    _this5.mouseDownTimeout = setTimeout(function () {
-	      _this5.hasPopupMouseDown = false;
+	    clearTimeout(_this4.mouseDownTimeout);
+	    _this4.mouseDownTimeout = setTimeout(function () {
+	      _this4.hasPopupMouseDown = false;
 	    }, 0);
 	
 	    if (rcTrigger.onPopupMouseDown) {
@@ -34364,24 +34601,24 @@
 	  };
 	
 	  this.onDocumentClick = function (event) {
-	    if (_this5.props.mask && !_this5.props.maskClosable) {
+	    if (_this4.props.mask && !_this4.props.maskClosable) {
 	      return;
 	    }
 	
 	    var target = event.target;
-	    var root = (0, _reactDom.findDOMNode)(_this5);
-	    if (!(0, _contains2['default'])(root, target) && !_this5.hasPopupMouseDown) {
-	      _this5.close();
+	    var root = (0, _reactDom.findDOMNode)(_this4);
+	    if (!(0, _contains2['default'])(root, target) && !_this4.hasPopupMouseDown) {
+	      _this4.close();
 	    }
 	  };
 	
 	  this.getRootDomNode = function () {
-	    return (0, _reactDom.findDOMNode)(_this5);
+	    return (0, _reactDom.findDOMNode)(_this4);
 	  };
 	
 	  this.getPopupClassNameFromAlign = function (align) {
 	    var className = [];
-	    var _props9 = _this5.props,
+	    var _props9 = _this4.props,
 	        popupPlacement = _props9.popupPlacement,
 	        builtinPlacements = _props9.builtinPlacements,
 	        prefixCls = _props9.prefixCls,
@@ -34398,7 +34635,7 @@
 	  };
 	
 	  this.getComponent = function () {
-	    var _props10 = _this5.props,
+	    var _props10 = _this4.props,
 	        prefixCls = _props10.prefixCls,
 	        destroyPopupOnHide = _props10.destroyPopupOnHide,
 	        popupClassName = _props10.popupClassName,
@@ -34414,23 +34651,23 @@
 	        popup = _props10.popup,
 	        stretch = _props10.stretch,
 	        alignPoint = _props10.alignPoint;
-	    var _state = _this5.state,
+	    var _state = _this4.state,
 	        popupVisible = _state.popupVisible,
 	        point = _state.point;
 	
 	
-	    var align = _this5.getPopupAlign();
+	    var align = _this4.getPopupAlign();
 	
 	    var mouseProps = {};
-	    if (_this5.isMouseEnterToShow()) {
-	      mouseProps.onMouseEnter = _this5.onPopupMouseEnter;
+	    if (_this4.isMouseEnterToShow()) {
+	      mouseProps.onMouseEnter = _this4.onPopupMouseEnter;
 	    }
-	    if (_this5.isMouseLeaveToHide()) {
-	      mouseProps.onMouseLeave = _this5.onPopupMouseLeave;
+	    if (_this4.isMouseLeaveToHide()) {
+	      mouseProps.onMouseLeave = _this4.onPopupMouseLeave;
 	    }
 	
-	    mouseProps.onMouseDown = _this5.onPopupMouseDown;
-	    mouseProps.onTouchStart = _this5.onPopupMouseDown;
+	    mouseProps.onMouseDown = _this4.onPopupMouseDown;
+	    mouseProps.onTouchStart = _this4.onPopupMouseDown;
 	
 	    return _react2['default'].createElement(
 	      _Popup2['default'],
@@ -34444,24 +34681,24 @@
 	        align: align,
 	        onAlign: onPopupAlign,
 	        animation: popupAnimation,
-	        getClassNameFromAlign: _this5.getPopupClassNameFromAlign
+	        getClassNameFromAlign: _this4.getPopupClassNameFromAlign
 	      }, mouseProps, {
 	        stretch: stretch,
-	        getRootDomNode: _this5.getRootDomNode,
+	        getRootDomNode: _this4.getRootDomNode,
 	        style: popupStyle,
 	        mask: mask,
 	        zIndex: zIndex,
 	        transitionName: popupTransitionName,
 	        maskAnimation: maskAnimation,
 	        maskTransitionName: maskTransitionName,
-	        ref: _this5.savePopup
+	        ref: _this4.savePopup
 	      }),
 	      typeof popup === 'function' ? popup() : popup
 	    );
 	  };
 	
 	  this.getContainer = function () {
-	    var props = _this5.props;
+	    var props = _this4.props;
 	
 	    var popupContainer = document.createElement('div');
 	    // Make sure default popup container will never cause scrollbar appearing
@@ -34470,17 +34707,17 @@
 	    popupContainer.style.top = '0';
 	    popupContainer.style.left = '0';
 	    popupContainer.style.width = '100%';
-	    var mountNode = props.getPopupContainer ? props.getPopupContainer((0, _reactDom.findDOMNode)(_this5)) : props.getDocument().body;
+	    var mountNode = props.getPopupContainer ? props.getPopupContainer((0, _reactDom.findDOMNode)(_this4)) : props.getDocument().body;
 	    mountNode.appendChild(popupContainer);
 	    return popupContainer;
 	  };
 	
 	  this.setPoint = function (point) {
-	    var alignPoint = _this5.props.alignPoint;
+	    var alignPoint = _this4.props.alignPoint;
 	
 	    if (!alignPoint || !point) return;
 	
-	    _this5.setState({
+	    _this4.setState({
 	      point: {
 	        pageX: point.pageX,
 	        pageY: point.pageY
@@ -34489,15 +34726,17 @@
 	  };
 	
 	  this.handlePortalUpdate = function () {
-	    if (_this5.prevPopupVisible !== _this5.state.popupVisible) {
-	      _this5.props.afterPopupVisibleChange(_this5.state.popupVisible);
+	    if (_this4.state.prevPopupVisible !== _this4.state.popupVisible) {
+	      _this4.props.afterPopupVisibleChange(_this4.state.popupVisible);
 	    }
 	  };
 	
 	  this.savePopup = function (node) {
-	    _this5._component = node;
+	    _this4._component = node;
 	  };
 	};
+	
+	(0, _reactLifecyclesCompat.polyfill)(Trigger);
 	
 	exports['default'] = Trigger;
 	module.exports = exports['default'];
@@ -34511,111 +34750,113 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports["default"] = contains;
+	exports.default = contains;
+	
 	function contains(root, n) {
 	  var node = n;
+	
 	  while (node) {
 	    if (node === root) {
 	      return true;
 	    }
+	
 	    node = node.parentNode;
 	  }
 	
 	  return false;
 	}
-	module.exports = exports['default'];
 
 /***/ }),
 /* 390 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports['default'] = addEventListenerWrap;
+	exports.default = addEventListenerWrap;
 	
-	var _addDomEventListener = __webpack_require__(41);
+	var _addDomEventListener = _interopRequireDefault(__webpack_require__(41));
 	
-	var _addDomEventListener2 = _interopRequireDefault(_addDomEventListener);
+	var _reactDom = _interopRequireDefault(__webpack_require__(2));
 	
-	var _reactDom = __webpack_require__(2);
-	
-	var _reactDom2 = _interopRequireDefault(_reactDom);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function addEventListenerWrap(target, eventType, cb, option) {
 	  /* eslint camelcase: 2 */
-	  var callback = _reactDom2['default'].unstable_batchedUpdates ? function run(e) {
-	    _reactDom2['default'].unstable_batchedUpdates(cb, e);
+	  var callback = _reactDom.default.unstable_batchedUpdates ? function run(e) {
+	    _reactDom.default.unstable_batchedUpdates(cb, e);
 	  } : cb;
-	  return (0, _addDomEventListener2['default'])(target, eventType, callback, option);
+	  return (0, _addDomEventListener.default)(target, eventType, callback, option);
 	}
-	module.exports = exports['default'];
 
 /***/ }),
 /* 391 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
+	exports.default = void 0;
 	
-	var _classCallCheck2 = __webpack_require__(340);
+	var _react = _interopRequireDefault(__webpack_require__(1));
 	
-	var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+	var _reactDom = _interopRequireDefault(__webpack_require__(2));
 	
-	var _createClass2 = __webpack_require__(341);
+	var _propTypes = _interopRequireDefault(__webpack_require__(6));
 	
-	var _createClass3 = _interopRequireDefault(_createClass2);
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	var _possibleConstructorReturn2 = __webpack_require__(365);
+	function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 	
-	var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
-	var _inherits2 = __webpack_require__(366);
+	function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 	
-	var _inherits3 = _interopRequireDefault(_inherits2);
+	function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 	
-	var _react = __webpack_require__(1);
+	function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 	
-	var _react2 = _interopRequireDefault(_react);
+	function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 	
-	var _reactDom = __webpack_require__(2);
+	function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 	
-	var _reactDom2 = _interopRequireDefault(_reactDom);
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 	
-	var _propTypes = __webpack_require__(6);
+	function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 	
-	var _propTypes2 = _interopRequireDefault(_propTypes);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-	
-	var ContainerRender = function (_React$Component) {
-	  (0, _inherits3['default'])(ContainerRender, _React$Component);
+	var ContainerRender =
+	/*#__PURE__*/
+	function (_React$Component) {
+	  _inherits(ContainerRender, _React$Component);
 	
 	  function ContainerRender() {
-	    var _ref;
+	    var _getPrototypeOf2;
 	
-	    var _temp, _this, _ret;
+	    var _this;
 	
-	    (0, _classCallCheck3['default'])(this, ContainerRender);
+	    _classCallCheck(this, ContainerRender);
 	
-	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+	    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
 	      args[_key] = arguments[_key];
 	    }
 	
-	    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3['default'])(this, (_ref = ContainerRender.__proto__ || Object.getPrototypeOf(ContainerRender)).call.apply(_ref, [this].concat(args))), _this), _this.removeContainer = function () {
+	    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(ContainerRender)).call.apply(_getPrototypeOf2, [this].concat(args)));
+	
+	    _this.removeContainer = function () {
 	      if (_this.container) {
-	        _reactDom2['default'].unmountComponentAtNode(_this.container);
+	        _reactDom.default.unmountComponentAtNode(_this.container);
+	
 	        _this.container.parentNode.removeChild(_this.container);
+	
 	        _this.container = null;
 	      }
-	    }, _this.renderComponent = function (props, ready) {
+	    };
+	
+	    _this.renderComponent = function (props, ready) {
 	      var _this$props = _this.props,
 	          visible = _this$props.visible,
 	          getComponent = _this$props.getComponent,
@@ -34627,38 +34868,41 @@
 	        if (!_this.container) {
 	          _this.container = getContainer();
 	        }
-	        _reactDom2['default'].unstable_renderSubtreeIntoContainer(parent, getComponent(props), _this.container, function callback() {
+	
+	        _reactDom.default.unstable_renderSubtreeIntoContainer(parent, getComponent(props), _this.container, function callback() {
 	          if (ready) {
 	            ready.call(this);
 	          }
 	        });
 	      }
-	    }, _temp), (0, _possibleConstructorReturn3['default'])(_this, _ret);
+	    };
+	
+	    return _this;
 	  }
 	
-	  (0, _createClass3['default'])(ContainerRender, [{
-	    key: 'componentDidMount',
+	  _createClass(ContainerRender, [{
+	    key: "componentDidMount",
 	    value: function componentDidMount() {
 	      if (this.props.autoMount) {
 	        this.renderComponent();
 	      }
 	    }
 	  }, {
-	    key: 'componentDidUpdate',
+	    key: "componentDidUpdate",
 	    value: function componentDidUpdate() {
 	      if (this.props.autoMount) {
 	        this.renderComponent();
 	      }
 	    }
 	  }, {
-	    key: 'componentWillUnmount',
+	    key: "componentWillUnmount",
 	    value: function componentWillUnmount() {
 	      if (this.props.autoDestroy) {
 	        this.removeContainer();
 	      }
 	    }
 	  }, {
-	    key: 'render',
+	    key: "render",
 	    value: function render() {
 	      return this.props.children({
 	        renderComponent: this.renderComponent,
@@ -34666,82 +34910,82 @@
 	      });
 	    }
 	  }]);
-	  return ContainerRender;
-	}(_react2['default'].Component);
 	
+	  return ContainerRender;
+	}(_react.default.Component);
+	
+	exports.default = ContainerRender;
 	ContainerRender.propTypes = {
-	  autoMount: _propTypes2['default'].bool,
-	  autoDestroy: _propTypes2['default'].bool,
-	  visible: _propTypes2['default'].bool,
-	  forceRender: _propTypes2['default'].bool,
-	  parent: _propTypes2['default'].any,
-	  getComponent: _propTypes2['default'].func.isRequired,
-	  getContainer: _propTypes2['default'].func.isRequired,
-	  children: _propTypes2['default'].func.isRequired
+	  autoMount: _propTypes.default.bool,
+	  autoDestroy: _propTypes.default.bool,
+	  visible: _propTypes.default.bool,
+	  forceRender: _propTypes.default.bool,
+	  parent: _propTypes.default.any,
+	  getComponent: _propTypes.default.func.isRequired,
+	  getContainer: _propTypes.default.func.isRequired,
+	  children: _propTypes.default.func.isRequired
 	};
 	ContainerRender.defaultProps = {
 	  autoMount: true,
 	  autoDestroy: true,
 	  forceRender: false
 	};
-	exports['default'] = ContainerRender;
-	module.exports = exports['default'];
 
 /***/ }),
 /* 392 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
+	exports.default = void 0;
 	
-	var _classCallCheck2 = __webpack_require__(340);
+	var _react = _interopRequireDefault(__webpack_require__(1));
 	
-	var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+	var _reactDom = _interopRequireDefault(__webpack_require__(2));
 	
-	var _createClass2 = __webpack_require__(341);
+	var _propTypes = _interopRequireDefault(__webpack_require__(6));
 	
-	var _createClass3 = _interopRequireDefault(_createClass2);
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	var _possibleConstructorReturn2 = __webpack_require__(365);
+	function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 	
-	var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
-	var _inherits2 = __webpack_require__(366);
+	function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 	
-	var _inherits3 = _interopRequireDefault(_inherits2);
+	function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 	
-	var _react = __webpack_require__(1);
+	function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 	
-	var _react2 = _interopRequireDefault(_react);
+	function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 	
-	var _reactDom = __webpack_require__(2);
+	function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 	
-	var _reactDom2 = _interopRequireDefault(_reactDom);
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 	
-	var _propTypes = __webpack_require__(6);
+	function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 	
-	var _propTypes2 = _interopRequireDefault(_propTypes);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-	
-	var Portal = function (_React$Component) {
-	  (0, _inherits3['default'])(Portal, _React$Component);
+	var Portal =
+	/*#__PURE__*/
+	function (_React$Component) {
+	  _inherits(Portal, _React$Component);
 	
 	  function Portal() {
-	    (0, _classCallCheck3['default'])(this, Portal);
-	    return (0, _possibleConstructorReturn3['default'])(this, (Portal.__proto__ || Object.getPrototypeOf(Portal)).apply(this, arguments));
+	    _classCallCheck(this, Portal);
+	
+	    return _possibleConstructorReturn(this, _getPrototypeOf(Portal).apply(this, arguments));
 	  }
 	
-	  (0, _createClass3['default'])(Portal, [{
-	    key: 'componentDidMount',
+	  _createClass(Portal, [{
+	    key: "componentDidMount",
 	    value: function componentDidMount() {
 	      this.createContainer();
 	    }
 	  }, {
-	    key: 'componentDidUpdate',
+	    key: "componentDidUpdate",
 	    value: function componentDidUpdate(prevProps) {
 	      var didUpdate = this.props.didUpdate;
 	
@@ -34750,42 +34994,43 @@
 	      }
 	    }
 	  }, {
-	    key: 'componentWillUnmount',
+	    key: "componentWillUnmount",
 	    value: function componentWillUnmount() {
 	      this.removeContainer();
 	    }
 	  }, {
-	    key: 'createContainer',
+	    key: "createContainer",
 	    value: function createContainer() {
 	      this._container = this.props.getContainer();
 	      this.forceUpdate();
 	    }
 	  }, {
-	    key: 'removeContainer',
+	    key: "removeContainer",
 	    value: function removeContainer() {
 	      if (this._container) {
 	        this._container.parentNode.removeChild(this._container);
 	      }
 	    }
 	  }, {
-	    key: 'render',
+	    key: "render",
 	    value: function render() {
 	      if (this._container) {
-	        return _reactDom2['default'].createPortal(this.props.children, this._container);
+	        return _reactDom.default.createPortal(this.props.children, this._container);
 	      }
+	
 	      return null;
 	    }
 	  }]);
-	  return Portal;
-	}(_react2['default'].Component);
 	
+	  return Portal;
+	}(_react.default.Component);
+	
+	exports.default = Portal;
 	Portal.propTypes = {
-	  getContainer: _propTypes2['default'].func.isRequired,
-	  children: _propTypes2['default'].node.isRequired,
-	  didUpdate: _propTypes2['default'].func
+	  getContainer: _propTypes.default.func.isRequired,
+	  children: _propTypes.default.node.isRequired,
+	  didUpdate: _propTypes.default.func
 	};
-	exports['default'] = Portal;
-	module.exports = exports['default'];
 
 /***/ }),
 /* 393 */
@@ -35835,6 +36080,8 @@
 	
 	Animate.isAnimate = true;
 	Animate.propTypes = {
+	  className: _propTypes2['default'].string,
+	  style: _propTypes2['default'].object,
 	  component: _propTypes2['default'].any,
 	  componentProps: _propTypes2['default'].object,
 	  animation: _propTypes2['default'].object,
@@ -36209,7 +36456,9 @@
 	}(_react2['default'].Component);
 	
 	AnimateChild.propTypes = {
-	  children: _propTypes2['default'].any
+	  children: _propTypes2['default'].any,
+	  animation: _propTypes2['default'].any,
+	  transitionName: _propTypes2['default'].any
 	};
 	exports['default'] = AnimateChild;
 	module.exports = exports['default'];
@@ -36923,6 +37172,10 @@
 	      }
 	    };
 	
+	    _this.saveNode = function (node) {
+	      _this.node = node;
+	    };
+	
 	    return _this;
 	  }
 	
@@ -36931,11 +37184,23 @@
 	    this.callRef();
 	  };
 	
-	  MenuItem.prototype.componentDidUpdate = function componentDidUpdate() {
-	    if (this.props.active) {
-	      (0, _domScrollIntoView2['default'])(_reactDom2['default'].findDOMNode(this), _reactDom2['default'].findDOMNode(this.props.parentMenu), {
-	        onlyScrollIfNeeded: true
-	      });
+	  MenuItem.prototype.componentDidUpdate = function componentDidUpdate(prevProps) {
+	    var _props = this.props,
+	        active = _props.active,
+	        parentMenu = _props.parentMenu,
+	        eventKey = _props.eventKey;
+	    // 在 parentMenu 上层保存滚动状态，避免重复的 MenuItem key 导致滚动跳动
+	    // https://github.com/ant-design/ant-design/issues/16181
+	
+	    if (!prevProps.active && active && (!parentMenu || !parentMenu['scrolled-' + eventKey])) {
+	      if (this.node) {
+	        (0, _domScrollIntoView2['default'])(this.node, _reactDom2['default'].findDOMNode(parentMenu), {
+	          onlyScrollIfNeeded: true
+	        });
+	        parentMenu['scrolled-' + eventKey] = true;
+	      }
+	    } else if (parentMenu && parentMenu['scrolled-' + eventKey]) {
+	      delete parentMenu['scrolled-' + eventKey];
 	    }
 	    this.callRef();
 	  };
@@ -37015,9 +37280,7 @@
 	    }
 	    return _react2['default'].createElement(
 	      'li',
-	      (0, _extends3['default'])({}, props, attrs, mouseEvent, {
-	        style: style
-	      }),
+	      (0, _extends3['default'])({}, props, attrs, mouseEvent, { style: style, ref: this.saveNode }),
 	      props.children,
 	      icon
 	    );
@@ -37897,6 +38160,34 @@
 /* 415 */
 /***/ (function(module, exports, __webpack_require__) {
 
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _extends2 = __webpack_require__(184);
+	
+	var _extends3 = _interopRequireDefault(_extends2);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+	
+	function omit(obj, fields) {
+	  var shallowCopy = (0, _extends3["default"])({}, obj);
+	  for (var i = 0; i < fields.length; i++) {
+	    var key = fields[i];
+	    delete shallowCopy[key];
+	  }
+	  return shallowCopy;
+	}
+	
+	exports["default"] = omit;
+	module.exports = exports['default'];
+
+/***/ }),
+/* 416 */
+/***/ (function(module, exports, __webpack_require__) {
+
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
@@ -38109,7 +38400,7 @@
 	}
 
 /***/ }),
-/* 416 */
+/* 417 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38120,7 +38411,7 @@
 	
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 	
-	var _trigger = __webpack_require__(417);
+	var _trigger = __webpack_require__(418);
 	
 	var _trigger2 = _interopRequireDefault(_trigger);
 	
@@ -38140,9 +38431,9 @@
 	
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 	
-	var _util = __webpack_require__(415);
+	var _util = __webpack_require__(416);
 	
-	var _DropdownMenu = __webpack_require__(423);
+	var _DropdownMenu = __webpack_require__(424);
 	
 	var _DropdownMenu2 = _interopRequireDefault(_DropdownMenu);
 	
@@ -38363,15 +38654,15 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 417 */
+/* 418 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	module.exports = __webpack_require__(418);
+	module.exports = __webpack_require__(419);
 
 /***/ }),
-/* 418 */
+/* 419 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38400,11 +38691,11 @@
 	
 	var _tinperBeeCore = __webpack_require__(27);
 	
-	var _Popup = __webpack_require__(419);
+	var _Popup = __webpack_require__(420);
 	
 	var _Popup2 = _interopRequireDefault(_Popup);
 	
-	var _utils = __webpack_require__(422);
+	var _utils = __webpack_require__(423);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 	
@@ -38964,7 +39255,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 419 */
+/* 420 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38995,11 +39286,11 @@
 	
 	var _beeAnimate2 = _interopRequireDefault(_beeAnimate);
 	
-	var _PopupInner = __webpack_require__(420);
+	var _PopupInner = __webpack_require__(421);
 	
 	var _PopupInner2 = _interopRequireDefault(_PopupInner);
 	
-	var _LazyRenderBox = __webpack_require__(421);
+	var _LazyRenderBox = __webpack_require__(422);
 	
 	var _LazyRenderBox2 = _interopRequireDefault(_LazyRenderBox);
 	
@@ -39239,7 +39530,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 420 */
+/* 421 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39256,7 +39547,7 @@
 	
 	var _propTypes2 = _interopRequireDefault(_propTypes);
 	
-	var _LazyRenderBox = __webpack_require__(421);
+	var _LazyRenderBox = __webpack_require__(422);
 	
 	var _LazyRenderBox2 = _interopRequireDefault(_LazyRenderBox);
 	
@@ -39320,7 +39611,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 421 */
+/* 422 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39395,7 +39686,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 422 */
+/* 423 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -39430,7 +39721,7 @@
 	}
 
 /***/ }),
-/* 423 */
+/* 424 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39461,11 +39752,11 @@
 	
 	var _domScrollIntoView2 = _interopRequireDefault(_domScrollIntoView);
 	
-	var _raf = __webpack_require__(424);
+	var _raf = __webpack_require__(425);
 	
 	var _raf2 = _interopRequireDefault(_raf);
 	
-	var _util = __webpack_require__(415);
+	var _util = __webpack_require__(416);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 	
@@ -39676,10 +39967,10 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 424 */
+/* 425 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(global) {var now = __webpack_require__(425)
+	/* WEBPACK VAR INJECTION */(function(global) {var now = __webpack_require__(426)
 	  , root = typeof window === 'undefined' ? global : window
 	  , vendors = ['moz', 'webkit']
 	  , suffix = 'AnimationFrame'
@@ -39758,7 +40049,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ }),
-/* 425 */
+/* 426 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {// Generated by CoffeeScript 1.12.2
@@ -39801,7 +40092,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(33)))
 
 /***/ }),
-/* 426 */
+/* 427 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39888,7 +40179,7 @@
 	};
 
 /***/ }),
-/* 427 */
+/* 428 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39928,7 +40219,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 428 */
+/* 429 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39937,15 +40228,15 @@
 	  value: true
 	});
 	
-	var _RadioGroup = __webpack_require__(429);
+	var _RadioGroup = __webpack_require__(430);
 	
 	var _RadioGroup2 = _interopRequireDefault(_RadioGroup);
 	
-	var _Radio = __webpack_require__(430);
+	var _Radio = __webpack_require__(431);
 	
 	var _Radio2 = _interopRequireDefault(_Radio);
 	
-	var _RadioButton = __webpack_require__(431);
+	var _RadioButton = __webpack_require__(432);
 	
 	var _RadioButton2 = _interopRequireDefault(_RadioButton);
 	
@@ -39958,7 +40249,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 429 */
+/* 430 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -40152,7 +40443,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 430 */
+/* 431 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -40322,7 +40613,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 431 */
+/* 432 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -40335,7 +40626,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _Radio = __webpack_require__(430);
+	var _Radio = __webpack_require__(431);
 	
 	var _Radio2 = _interopRequireDefault(_Radio);
 	
@@ -40383,7 +40674,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 432 */
+/* 433 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -40396,23 +40687,23 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _DatePicker = __webpack_require__(433);
+	var _DatePicker = __webpack_require__(434);
 	
 	var _DatePicker2 = _interopRequireDefault(_DatePicker);
 	
-	var _MonthPicker = __webpack_require__(597);
+	var _MonthPicker = __webpack_require__(598);
 	
 	var _MonthPicker2 = _interopRequireDefault(_MonthPicker);
 	
-	var _RangePicker = __webpack_require__(599);
+	var _RangePicker = __webpack_require__(600);
 	
 	var _RangePicker2 = _interopRequireDefault(_RangePicker);
 	
-	var _WeekPicker = __webpack_require__(602);
+	var _WeekPicker = __webpack_require__(603);
 	
 	var _WeekPicker2 = _interopRequireDefault(_WeekPicker);
 	
-	var _YearPicker = __webpack_require__(603);
+	var _YearPicker = __webpack_require__(604);
 	
 	var _YearPicker2 = _interopRequireDefault(_YearPicker);
 	
@@ -40427,7 +40718,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 433 */
+/* 434 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -40438,7 +40729,7 @@
 	
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 	
-	var _rcCalendar = __webpack_require__(434);
+	var _rcCalendar = __webpack_require__(435);
 	
 	var _rcCalendar2 = _interopRequireDefault(_rcCalendar);
 	
@@ -40452,7 +40743,7 @@
 	
 	var _tinperBeeCore = __webpack_require__(27);
 	
-	var _Picker = __webpack_require__(585);
+	var _Picker = __webpack_require__(586);
 	
 	var _Picker2 = _interopRequireDefault(_Picker);
 	
@@ -40460,11 +40751,11 @@
 	
 	var _beeFormControl2 = _interopRequireDefault(_beeFormControl);
 	
-	var _Panel = __webpack_require__(587);
+	var _Panel = __webpack_require__(588);
 	
 	var _Panel2 = _interopRequireDefault(_Panel);
 	
-	var _moment = __webpack_require__(439);
+	var _moment = __webpack_require__(440);
 	
 	var _moment2 = _interopRequireDefault(_moment);
 	
@@ -40476,17 +40767,23 @@
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
-	var _beeInputGroup = __webpack_require__(591);
+	var _beeInputGroup = __webpack_require__(592);
 	
 	var _beeInputGroup2 = _interopRequireDefault(_beeInputGroup);
 	
-	var _zh_CN = __webpack_require__(596);
+	var _zh_CN = __webpack_require__(597);
 	
 	var _zh_CN2 = _interopRequireDefault(_zh_CN);
+	
+	var _omit = __webpack_require__(415);
+	
+	var _omit2 = _interopRequireDefault(_omit);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 	
 	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
+	
+	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
@@ -40542,6 +40839,8 @@
 	  };
 	  //日期面板中输入框的失焦事件
 	
+	  //fix:更改系统时区后，日期框需要触发 onChange 事件
+	
 	  //阻止组件内部事件冒泡到组件外部容器
 	
 	
@@ -40550,8 +40849,10 @@
 	
 	    var state = this.state;
 	    var props = this.props;
+	
 	    var showClose = props.showClose,
-	        defaultPanelShown = props.defaultPanelShown;
+	        defaultPanelShown = props.defaultPanelShown,
+	        others = _objectWithoutProperties(props, ["showClose", "defaultPanelShown"]);
 	
 	    var value = state.value;
 	    var pickerChangeHandler = {};
@@ -40588,60 +40889,58 @@
 	      keyboardInputProps.value = value && this.getValue(value) || "";
 	    }
 	    var classes = (0, _classnames2["default"])(props.className, "datepicker-container");
-	    return (
-	      // <div className={classes} onMouseEnter={this.onBlur}>
+	    return _react2["default"].createElement(
+	      "div",
+	      _extends({ className: classes, onMouseEnter: this.onDateHover, onClick: this.stopPropagation, onMouseOver: this.stopPropagation
+	      }, (0, _omit2["default"])(others, ['onDateInputBlur', 'disabledDate', 'getCalendarContainer', 'showToday', 'renderFooter', 'keyboardInput', 'showDateInput', 'showTime', 'closeIcon', 'renderIcon', 'focusOnOpen', 'defultSelect', 'onOpenChange', 'onChange', 'locale', 'showMonthInput', 'onKeyDown', 'renderError', 'format', 'placeholder'])),
 	      _react2["default"].createElement(
-	        "div",
-	        { className: classes, onMouseEnter: this.onBlur, onClick: this.stopPropagation, onMouseOver: this.stopPropagation },
-	        _react2["default"].createElement(
-	          _Picker2["default"],
-	          _extends({
-	            animation: "slide-up"
-	          }, props, pickerChangeHandler, {
-	            onOpenChange: this.onOpenChange,
-	            calendar: calendar,
-	            mode: 'year',
-	            open: 'defaultPanelShown' in props ? defaultPanelShown : this.state.open,
-	            value: state.value
-	          }),
-	          function () {
-	            return _react2["default"].createElement(
-	              _beeInputGroup2["default"],
-	              { simple: true, className: "datepicker-input-group",
-	                onMouseEnter: _this2.onMouseEnter,
-	                onMouseLeave: _this2.onMouseLeave
+	        _Picker2["default"],
+	        _extends({
+	          animation: "slide-up"
+	        }, props, pickerChangeHandler, {
+	          onOpenChange: this.onOpenChange,
+	          calendar: calendar,
+	          mode: 'year',
+	          open: 'defaultPanelShown' in props ? defaultPanelShown : this.state.open,
+	          value: state.value
+	        }),
+	        function () {
+	          return _react2["default"].createElement(
+	            _beeInputGroup2["default"],
+	            { simple: true, className: "datepicker-input-group",
+	              onMouseEnter: _this2.onMouseEnter,
+	              onMouseLeave: _this2.onMouseLeave
+	            },
+	            _react2["default"].createElement(_beeFormControl2["default"], _extends({
+	              ref: function ref(_ref) {
+	                return _this2.outInput = _ref;
 	              },
-	              _react2["default"].createElement(_beeFormControl2["default"], _extends({
-	                ref: function ref(_ref) {
-	                  return _this2.outInput = _ref;
-	                },
-	                disabled: props.disabled,
-	                placeholder: _this2.props.placeholder,
-	                onClick: function onClick(event) {
-	                  _this2.onClick(event);
-	                },
-	                focusSelect: props.defaultSelected,
-	                onFocus: function onFocus(v, e) {
-	                  _this2.outInputFocus(e);
-	                },
-	                onKeyDown: _this2.outInputKeydown
-	              }, keyboardInputProps, autofocus)),
-	              showClose && _this2.state.value && _this2.state.showClose && !props.disabled ? _react2["default"].createElement(
-	                _beeInputGroup2["default"].Button,
-	                { shape: "border",
-	                  onClick: _this2.clear },
-	                props.closeIcon()
-	              ) : _react2["default"].createElement(
-	                _beeInputGroup2["default"].Button,
-	                { shape: "border",
-	                  onClick: function onClick(e) {
-	                    props.keyboardInput ? _this2.iconClick(e) : '';
-	                  } },
-	                props.renderIcon()
-	              )
-	            );
-	          }
-	        )
+	              disabled: props.disabled,
+	              placeholder: _this2.props.placeholder,
+	              onClick: function onClick(event) {
+	                _this2.onClick(event);
+	              },
+	              focusSelect: props.defaultSelected,
+	              onFocus: function onFocus(v, e) {
+	                _this2.outInputFocus(e);
+	              },
+	              onKeyDown: _this2.outInputKeydown
+	            }, keyboardInputProps, autofocus)),
+	            showClose && _this2.state.value && _this2.state.showClose && !props.disabled ? _react2["default"].createElement(
+	              _beeInputGroup2["default"].Button,
+	              { shape: "border",
+	                onClick: _this2.clear },
+	              props.closeIcon()
+	            ) : _react2["default"].createElement(
+	              _beeInputGroup2["default"].Button,
+	              { shape: "border",
+	                onClick: function onClick(e) {
+	                  props.keyboardInput ? _this2.iconClick(e) : '';
+	                } },
+	              props.renderIcon()
+	            )
+	          );
+	        }
 	      )
 	    );
 	  };
@@ -40846,9 +41145,18 @@
 	    _this3.props.onDateInputBlur && _this3.props.onDateInputBlur(e, value);
 	  };
 	
-	  this.onBlur = function () {
-	    var value = _this3.state.value;
-	    _this3.props.onChange && _this3.props.onChange(value, value && _this3.getValue(value) || '');
+	  this.onDateHover = function () {
+	    var format = _this3.props.format;
+	    var value = _this3.state.value,
+	        newValue = value && _this3.getValue(value);
+	
+	
+	    var inputValue = _this3.outInput.state.value;
+	    inputValue = format ? inputValue : inputValue && _this3.getValue((0, _moment2["default"])(inputValue));
+	
+	    if (newValue && inputValue !== newValue) {
+	      _this3.props.onChange && _this3.props.onChange(value, newValue || '');
+	    }
 	  };
 	
 	  this.stopPropagation = function (e) {
@@ -40871,14 +41179,15 @@
 	  showMonthInput: false,
 	  onKeyDown: function onKeyDown() {},
 	  renderError: function renderError() {},
-	  showClose: true
+	  showClose: true,
+	  format: "YYYY-MM-DD"
 	};
 	
 	exports["default"] = DatePicker;
 	module.exports = exports["default"];
 
 /***/ }),
-/* 434 */
+/* 435 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -40887,7 +41196,7 @@
 	  value: true
 	});
 	
-	var _Calendar = __webpack_require__(435);
+	var _Calendar = __webpack_require__(436);
 	
 	var _Calendar2 = _interopRequireDefault(_Calendar);
 	
@@ -40897,7 +41206,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 435 */
+/* 436 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -40926,31 +41235,31 @@
 	
 	var _reactLifecyclesCompat = __webpack_require__(93);
 	
-	var _DateTable = __webpack_require__(436);
+	var _DateTable = __webpack_require__(437);
 	
 	var _DateTable2 = _interopRequireDefault(_DateTable);
 	
-	var _CalendarHeader = __webpack_require__(570);
+	var _CalendarHeader = __webpack_require__(571);
 	
 	var _CalendarHeader2 = _interopRequireDefault(_CalendarHeader);
 	
-	var _CalendarFooter = __webpack_require__(577);
+	var _CalendarFooter = __webpack_require__(578);
 	
 	var _CalendarFooter2 = _interopRequireDefault(_CalendarFooter);
 	
-	var _CalendarMixin = __webpack_require__(581);
+	var _CalendarMixin = __webpack_require__(582);
 	
-	var _CommonMixin = __webpack_require__(582);
+	var _CommonMixin = __webpack_require__(583);
 	
-	var _DateInput = __webpack_require__(574);
+	var _DateInput = __webpack_require__(575);
 	
 	var _DateInput2 = _interopRequireDefault(_DateInput);
 	
-	var _util = __webpack_require__(569);
+	var _util = __webpack_require__(570);
 	
-	var _toTime = __webpack_require__(584);
+	var _toTime = __webpack_require__(585);
 	
-	var _moment = __webpack_require__(439);
+	var _moment = __webpack_require__(440);
 	
 	var _moment2 = _interopRequireDefault(_moment);
 	
@@ -41340,7 +41649,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 436 */
+/* 437 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -41353,11 +41662,11 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _DateTHead = __webpack_require__(437);
+	var _DateTHead = __webpack_require__(438);
 	
 	var _DateTHead2 = _interopRequireDefault(_DateTHead);
 	
-	var _DateTBody = __webpack_require__(568);
+	var _DateTBody = __webpack_require__(569);
 	
 	var _DateTBody2 = _interopRequireDefault(_DateTBody);
 	
@@ -41398,7 +41707,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 437 */
+/* 438 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -41411,11 +41720,11 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _DateConstants = __webpack_require__(438);
+	var _DateConstants = __webpack_require__(439);
 	
 	var _DateConstants2 = _interopRequireDefault(_DateConstants);
 	
-	var _moment = __webpack_require__(439);
+	var _moment = __webpack_require__(440);
 	
 	var _moment2 = _interopRequireDefault(_moment);
 	
@@ -41504,7 +41813,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 438 */
+/* 439 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -41519,7 +41828,7 @@
 	module.exports = exports["default"];
 
 /***/ }),
-/* 439 */
+/* 440 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var require;/* WEBPACK VAR INJECTION */(function(module) {//! moment.js
@@ -43374,7 +43683,7 @@
 	            try {
 	                oldLocale = globalLocale._abbr;
 	                var aliasedRequire = require;
-	                __webpack_require__(440)("./" + name);
+	                __webpack_require__(441)("./" + name);
 	                getSetGlobalLocale(oldLocale);
 	            } catch (e) {}
 	        }
@@ -46128,264 +46437,264 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(358)(module)))
 
 /***/ }),
-/* 440 */
+/* 441 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var map = {
-		"./af": 441,
-		"./af.js": 441,
-		"./ar": 442,
-		"./ar-dz": 443,
-		"./ar-dz.js": 443,
-		"./ar-kw": 444,
-		"./ar-kw.js": 444,
-		"./ar-ly": 445,
-		"./ar-ly.js": 445,
-		"./ar-ma": 446,
-		"./ar-ma.js": 446,
-		"./ar-sa": 447,
-		"./ar-sa.js": 447,
-		"./ar-tn": 448,
-		"./ar-tn.js": 448,
-		"./ar.js": 442,
-		"./az": 449,
-		"./az.js": 449,
-		"./be": 450,
-		"./be.js": 450,
-		"./bg": 451,
-		"./bg.js": 451,
-		"./bm": 452,
-		"./bm.js": 452,
-		"./bn": 453,
-		"./bn.js": 453,
-		"./bo": 454,
-		"./bo.js": 454,
-		"./br": 455,
-		"./br.js": 455,
-		"./bs": 456,
-		"./bs.js": 456,
-		"./ca": 457,
-		"./ca.js": 457,
-		"./cs": 458,
-		"./cs.js": 458,
-		"./cv": 459,
-		"./cv.js": 459,
-		"./cy": 460,
-		"./cy.js": 460,
-		"./da": 461,
-		"./da.js": 461,
-		"./de": 462,
-		"./de-at": 463,
-		"./de-at.js": 463,
-		"./de-ch": 464,
-		"./de-ch.js": 464,
-		"./de.js": 462,
-		"./dv": 465,
-		"./dv.js": 465,
-		"./el": 466,
-		"./el.js": 466,
-		"./en-SG": 467,
-		"./en-SG.js": 467,
-		"./en-au": 468,
-		"./en-au.js": 468,
-		"./en-ca": 469,
-		"./en-ca.js": 469,
-		"./en-gb": 470,
-		"./en-gb.js": 470,
-		"./en-ie": 471,
-		"./en-ie.js": 471,
-		"./en-il": 472,
-		"./en-il.js": 472,
-		"./en-nz": 473,
-		"./en-nz.js": 473,
-		"./eo": 474,
-		"./eo.js": 474,
-		"./es": 475,
-		"./es-do": 476,
-		"./es-do.js": 476,
-		"./es-us": 477,
-		"./es-us.js": 477,
-		"./es.js": 475,
-		"./et": 478,
-		"./et.js": 478,
-		"./eu": 479,
-		"./eu.js": 479,
-		"./fa": 480,
-		"./fa.js": 480,
-		"./fi": 481,
-		"./fi.js": 481,
-		"./fo": 482,
-		"./fo.js": 482,
-		"./fr": 483,
-		"./fr-ca": 484,
-		"./fr-ca.js": 484,
-		"./fr-ch": 485,
-		"./fr-ch.js": 485,
-		"./fr.js": 483,
-		"./fy": 486,
-		"./fy.js": 486,
-		"./ga": 487,
-		"./ga.js": 487,
-		"./gd": 488,
-		"./gd.js": 488,
-		"./gl": 489,
-		"./gl.js": 489,
-		"./gom-latn": 490,
-		"./gom-latn.js": 490,
-		"./gu": 491,
-		"./gu.js": 491,
-		"./he": 492,
-		"./he.js": 492,
-		"./hi": 493,
-		"./hi.js": 493,
-		"./hr": 494,
-		"./hr.js": 494,
-		"./hu": 495,
-		"./hu.js": 495,
-		"./hy-am": 496,
-		"./hy-am.js": 496,
-		"./id": 497,
-		"./id.js": 497,
-		"./is": 498,
-		"./is.js": 498,
-		"./it": 499,
-		"./it-ch": 500,
-		"./it-ch.js": 500,
-		"./it.js": 499,
-		"./ja": 501,
-		"./ja.js": 501,
-		"./jv": 502,
-		"./jv.js": 502,
-		"./ka": 503,
-		"./ka.js": 503,
-		"./kk": 504,
-		"./kk.js": 504,
-		"./km": 505,
-		"./km.js": 505,
-		"./kn": 506,
-		"./kn.js": 506,
-		"./ko": 507,
-		"./ko.js": 507,
-		"./ku": 508,
-		"./ku.js": 508,
-		"./ky": 509,
-		"./ky.js": 509,
-		"./lb": 510,
-		"./lb.js": 510,
-		"./lo": 511,
-		"./lo.js": 511,
-		"./lt": 512,
-		"./lt.js": 512,
-		"./lv": 513,
-		"./lv.js": 513,
-		"./me": 514,
-		"./me.js": 514,
-		"./mi": 515,
-		"./mi.js": 515,
-		"./mk": 516,
-		"./mk.js": 516,
-		"./ml": 517,
-		"./ml.js": 517,
-		"./mn": 518,
-		"./mn.js": 518,
-		"./mr": 519,
-		"./mr.js": 519,
-		"./ms": 520,
-		"./ms-my": 521,
-		"./ms-my.js": 521,
-		"./ms.js": 520,
-		"./mt": 522,
-		"./mt.js": 522,
-		"./my": 523,
-		"./my.js": 523,
-		"./nb": 524,
-		"./nb.js": 524,
-		"./ne": 525,
-		"./ne.js": 525,
-		"./nl": 526,
-		"./nl-be": 527,
-		"./nl-be.js": 527,
-		"./nl.js": 526,
-		"./nn": 528,
-		"./nn.js": 528,
-		"./pa-in": 529,
-		"./pa-in.js": 529,
-		"./pl": 530,
-		"./pl.js": 530,
-		"./pt": 531,
-		"./pt-br": 532,
-		"./pt-br.js": 532,
-		"./pt.js": 531,
-		"./ro": 533,
-		"./ro.js": 533,
-		"./ru": 534,
-		"./ru.js": 534,
-		"./sd": 535,
-		"./sd.js": 535,
-		"./se": 536,
-		"./se.js": 536,
-		"./si": 537,
-		"./si.js": 537,
-		"./sk": 538,
-		"./sk.js": 538,
-		"./sl": 539,
-		"./sl.js": 539,
-		"./sq": 540,
-		"./sq.js": 540,
-		"./sr": 541,
-		"./sr-cyrl": 542,
-		"./sr-cyrl.js": 542,
-		"./sr.js": 541,
-		"./ss": 543,
-		"./ss.js": 543,
-		"./sv": 544,
-		"./sv.js": 544,
-		"./sw": 545,
-		"./sw.js": 545,
-		"./ta": 546,
-		"./ta.js": 546,
-		"./te": 547,
-		"./te.js": 547,
-		"./tet": 548,
-		"./tet.js": 548,
-		"./tg": 549,
-		"./tg.js": 549,
-		"./th": 550,
-		"./th.js": 550,
-		"./tl-ph": 551,
-		"./tl-ph.js": 551,
-		"./tlh": 552,
-		"./tlh.js": 552,
-		"./tr": 553,
-		"./tr.js": 553,
-		"./tzl": 554,
-		"./tzl.js": 554,
-		"./tzm": 555,
-		"./tzm-latn": 556,
-		"./tzm-latn.js": 556,
-		"./tzm.js": 555,
-		"./ug-cn": 557,
-		"./ug-cn.js": 557,
-		"./uk": 558,
-		"./uk.js": 558,
-		"./ur": 559,
-		"./ur.js": 559,
-		"./uz": 560,
-		"./uz-latn": 561,
-		"./uz-latn.js": 561,
-		"./uz.js": 560,
-		"./vi": 562,
-		"./vi.js": 562,
-		"./x-pseudo": 563,
-		"./x-pseudo.js": 563,
-		"./yo": 564,
-		"./yo.js": 564,
-		"./zh-cn": 565,
-		"./zh-cn.js": 565,
-		"./zh-hk": 566,
-		"./zh-hk.js": 566,
-		"./zh-tw": 567,
-		"./zh-tw.js": 567
+		"./af": 442,
+		"./af.js": 442,
+		"./ar": 443,
+		"./ar-dz": 444,
+		"./ar-dz.js": 444,
+		"./ar-kw": 445,
+		"./ar-kw.js": 445,
+		"./ar-ly": 446,
+		"./ar-ly.js": 446,
+		"./ar-ma": 447,
+		"./ar-ma.js": 447,
+		"./ar-sa": 448,
+		"./ar-sa.js": 448,
+		"./ar-tn": 449,
+		"./ar-tn.js": 449,
+		"./ar.js": 443,
+		"./az": 450,
+		"./az.js": 450,
+		"./be": 451,
+		"./be.js": 451,
+		"./bg": 452,
+		"./bg.js": 452,
+		"./bm": 453,
+		"./bm.js": 453,
+		"./bn": 454,
+		"./bn.js": 454,
+		"./bo": 455,
+		"./bo.js": 455,
+		"./br": 456,
+		"./br.js": 456,
+		"./bs": 457,
+		"./bs.js": 457,
+		"./ca": 458,
+		"./ca.js": 458,
+		"./cs": 459,
+		"./cs.js": 459,
+		"./cv": 460,
+		"./cv.js": 460,
+		"./cy": 461,
+		"./cy.js": 461,
+		"./da": 462,
+		"./da.js": 462,
+		"./de": 463,
+		"./de-at": 464,
+		"./de-at.js": 464,
+		"./de-ch": 465,
+		"./de-ch.js": 465,
+		"./de.js": 463,
+		"./dv": 466,
+		"./dv.js": 466,
+		"./el": 467,
+		"./el.js": 467,
+		"./en-SG": 468,
+		"./en-SG.js": 468,
+		"./en-au": 469,
+		"./en-au.js": 469,
+		"./en-ca": 470,
+		"./en-ca.js": 470,
+		"./en-gb": 471,
+		"./en-gb.js": 471,
+		"./en-ie": 472,
+		"./en-ie.js": 472,
+		"./en-il": 473,
+		"./en-il.js": 473,
+		"./en-nz": 474,
+		"./en-nz.js": 474,
+		"./eo": 475,
+		"./eo.js": 475,
+		"./es": 476,
+		"./es-do": 477,
+		"./es-do.js": 477,
+		"./es-us": 478,
+		"./es-us.js": 478,
+		"./es.js": 476,
+		"./et": 479,
+		"./et.js": 479,
+		"./eu": 480,
+		"./eu.js": 480,
+		"./fa": 481,
+		"./fa.js": 481,
+		"./fi": 482,
+		"./fi.js": 482,
+		"./fo": 483,
+		"./fo.js": 483,
+		"./fr": 484,
+		"./fr-ca": 485,
+		"./fr-ca.js": 485,
+		"./fr-ch": 486,
+		"./fr-ch.js": 486,
+		"./fr.js": 484,
+		"./fy": 487,
+		"./fy.js": 487,
+		"./ga": 488,
+		"./ga.js": 488,
+		"./gd": 489,
+		"./gd.js": 489,
+		"./gl": 490,
+		"./gl.js": 490,
+		"./gom-latn": 491,
+		"./gom-latn.js": 491,
+		"./gu": 492,
+		"./gu.js": 492,
+		"./he": 493,
+		"./he.js": 493,
+		"./hi": 494,
+		"./hi.js": 494,
+		"./hr": 495,
+		"./hr.js": 495,
+		"./hu": 496,
+		"./hu.js": 496,
+		"./hy-am": 497,
+		"./hy-am.js": 497,
+		"./id": 498,
+		"./id.js": 498,
+		"./is": 499,
+		"./is.js": 499,
+		"./it": 500,
+		"./it-ch": 501,
+		"./it-ch.js": 501,
+		"./it.js": 500,
+		"./ja": 502,
+		"./ja.js": 502,
+		"./jv": 503,
+		"./jv.js": 503,
+		"./ka": 504,
+		"./ka.js": 504,
+		"./kk": 505,
+		"./kk.js": 505,
+		"./km": 506,
+		"./km.js": 506,
+		"./kn": 507,
+		"./kn.js": 507,
+		"./ko": 508,
+		"./ko.js": 508,
+		"./ku": 509,
+		"./ku.js": 509,
+		"./ky": 510,
+		"./ky.js": 510,
+		"./lb": 511,
+		"./lb.js": 511,
+		"./lo": 512,
+		"./lo.js": 512,
+		"./lt": 513,
+		"./lt.js": 513,
+		"./lv": 514,
+		"./lv.js": 514,
+		"./me": 515,
+		"./me.js": 515,
+		"./mi": 516,
+		"./mi.js": 516,
+		"./mk": 517,
+		"./mk.js": 517,
+		"./ml": 518,
+		"./ml.js": 518,
+		"./mn": 519,
+		"./mn.js": 519,
+		"./mr": 520,
+		"./mr.js": 520,
+		"./ms": 521,
+		"./ms-my": 522,
+		"./ms-my.js": 522,
+		"./ms.js": 521,
+		"./mt": 523,
+		"./mt.js": 523,
+		"./my": 524,
+		"./my.js": 524,
+		"./nb": 525,
+		"./nb.js": 525,
+		"./ne": 526,
+		"./ne.js": 526,
+		"./nl": 527,
+		"./nl-be": 528,
+		"./nl-be.js": 528,
+		"./nl.js": 527,
+		"./nn": 529,
+		"./nn.js": 529,
+		"./pa-in": 530,
+		"./pa-in.js": 530,
+		"./pl": 531,
+		"./pl.js": 531,
+		"./pt": 532,
+		"./pt-br": 533,
+		"./pt-br.js": 533,
+		"./pt.js": 532,
+		"./ro": 534,
+		"./ro.js": 534,
+		"./ru": 535,
+		"./ru.js": 535,
+		"./sd": 536,
+		"./sd.js": 536,
+		"./se": 537,
+		"./se.js": 537,
+		"./si": 538,
+		"./si.js": 538,
+		"./sk": 539,
+		"./sk.js": 539,
+		"./sl": 540,
+		"./sl.js": 540,
+		"./sq": 541,
+		"./sq.js": 541,
+		"./sr": 542,
+		"./sr-cyrl": 543,
+		"./sr-cyrl.js": 543,
+		"./sr.js": 542,
+		"./ss": 544,
+		"./ss.js": 544,
+		"./sv": 545,
+		"./sv.js": 545,
+		"./sw": 546,
+		"./sw.js": 546,
+		"./ta": 547,
+		"./ta.js": 547,
+		"./te": 548,
+		"./te.js": 548,
+		"./tet": 549,
+		"./tet.js": 549,
+		"./tg": 550,
+		"./tg.js": 550,
+		"./th": 551,
+		"./th.js": 551,
+		"./tl-ph": 552,
+		"./tl-ph.js": 552,
+		"./tlh": 553,
+		"./tlh.js": 553,
+		"./tr": 554,
+		"./tr.js": 554,
+		"./tzl": 555,
+		"./tzl.js": 555,
+		"./tzm": 556,
+		"./tzm-latn": 557,
+		"./tzm-latn.js": 557,
+		"./tzm.js": 556,
+		"./ug-cn": 558,
+		"./ug-cn.js": 558,
+		"./uk": 559,
+		"./uk.js": 559,
+		"./ur": 560,
+		"./ur.js": 560,
+		"./uz": 561,
+		"./uz-latn": 562,
+		"./uz-latn.js": 562,
+		"./uz.js": 561,
+		"./vi": 563,
+		"./vi.js": 563,
+		"./x-pseudo": 564,
+		"./x-pseudo.js": 564,
+		"./yo": 565,
+		"./yo.js": 565,
+		"./zh-cn": 566,
+		"./zh-cn.js": 566,
+		"./zh-hk": 567,
+		"./zh-hk.js": 567,
+		"./zh-tw": 568,
+		"./zh-tw.js": 568
 	};
 	function webpackContext(req) {
 		return __webpack_require__(webpackContextResolve(req));
@@ -46398,17 +46707,17 @@
 	};
 	webpackContext.resolve = webpackContextResolve;
 	module.exports = webpackContext;
-	webpackContext.id = 440;
+	webpackContext.id = 441;
 
 
 /***/ }),
-/* 441 */
+/* 442 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -46479,13 +46788,13 @@
 
 
 /***/ }),
-/* 442 */
+/* 443 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -46618,13 +46927,13 @@
 
 
 /***/ }),
-/* 443 */
+/* 444 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -46681,13 +46990,13 @@
 
 
 /***/ }),
-/* 444 */
+/* 445 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -46744,13 +47053,13 @@
 
 
 /***/ }),
-/* 445 */
+/* 446 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -46870,13 +47179,13 @@
 
 
 /***/ }),
-/* 446 */
+/* 447 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -46933,13 +47242,13 @@
 
 
 /***/ }),
-/* 447 */
+/* 448 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -47041,13 +47350,13 @@
 
 
 /***/ }),
-/* 448 */
+/* 449 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -47104,13 +47413,13 @@
 
 
 /***/ }),
-/* 449 */
+/* 450 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -47213,13 +47522,13 @@
 
 
 /***/ }),
-/* 450 */
+/* 451 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -47349,13 +47658,13 @@
 
 
 /***/ }),
-/* 451 */
+/* 452 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -47443,13 +47752,13 @@
 
 
 /***/ }),
-/* 452 */
+/* 453 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -47505,13 +47814,13 @@
 
 
 /***/ }),
-/* 453 */
+/* 454 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -47628,13 +47937,13 @@
 
 
 /***/ }),
-/* 454 */
+/* 455 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -47751,13 +48060,13 @@
 
 
 /***/ }),
-/* 455 */
+/* 456 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -47863,13 +48172,13 @@
 
 
 /***/ }),
-/* 456 */
+/* 457 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -48018,13 +48327,13 @@
 
 
 /***/ }),
-/* 457 */
+/* 458 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -48110,13 +48419,13 @@
 
 
 /***/ }),
-/* 458 */
+/* 459 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -48286,13 +48595,13 @@
 
 
 /***/ }),
-/* 459 */
+/* 460 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -48353,13 +48662,13 @@
 
 
 /***/ }),
-/* 460 */
+/* 461 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -48437,13 +48746,13 @@
 
 
 /***/ }),
-/* 461 */
+/* 462 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -48501,13 +48810,13 @@
 
 
 /***/ }),
-/* 462 */
+/* 463 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -48581,13 +48890,13 @@
 
 
 /***/ }),
-/* 463 */
+/* 464 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -48661,13 +48970,13 @@
 
 
 /***/ }),
-/* 464 */
+/* 465 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -48741,13 +49050,13 @@
 
 
 /***/ }),
-/* 465 */
+/* 466 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -48844,13 +49153,13 @@
 
 
 /***/ }),
-/* 466 */
+/* 467 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -48948,13 +49257,13 @@
 
 
 /***/ }),
-/* 467 */
+/* 468 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -49019,13 +49328,13 @@
 
 
 /***/ }),
-/* 468 */
+/* 469 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -49090,13 +49399,13 @@
 
 
 /***/ }),
-/* 469 */
+/* 470 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -49157,13 +49466,13 @@
 
 
 /***/ }),
-/* 470 */
+/* 471 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -49228,13 +49537,13 @@
 
 
 /***/ }),
-/* 471 */
+/* 472 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -49299,13 +49608,13 @@
 
 
 /***/ }),
-/* 472 */
+/* 473 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -49365,13 +49674,13 @@
 
 
 /***/ }),
-/* 473 */
+/* 474 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -49436,13 +49745,13 @@
 
 
 /***/ }),
-/* 474 */
+/* 475 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -49511,13 +49820,13 @@
 
 
 /***/ }),
-/* 475 */
+/* 476 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -49607,13 +49916,13 @@
 
 
 /***/ }),
-/* 476 */
+/* 477 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -49703,13 +50012,13 @@
 
 
 /***/ }),
-/* 477 */
+/* 478 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -49799,13 +50108,13 @@
 
 
 /***/ }),
-/* 478 */
+/* 479 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -49883,13 +50192,13 @@
 
 
 /***/ }),
-/* 479 */
+/* 480 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -49953,13 +50262,13 @@
 
 
 /***/ }),
-/* 480 */
+/* 481 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -50063,13 +50372,13 @@
 
 
 /***/ }),
-/* 481 */
+/* 482 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -50176,13 +50485,13 @@
 
 
 /***/ }),
-/* 482 */
+/* 483 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -50240,13 +50549,13 @@
 
 
 /***/ }),
-/* 483 */
+/* 484 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -50327,13 +50636,13 @@
 
 
 /***/ }),
-/* 484 */
+/* 485 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -50405,13 +50714,13 @@
 
 
 /***/ }),
-/* 485 */
+/* 486 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -50487,13 +50796,13 @@
 
 
 /***/ }),
-/* 486 */
+/* 487 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -50566,13 +50875,13 @@
 
 
 /***/ }),
-/* 487 */
+/* 488 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -50647,13 +50956,13 @@
 
 
 /***/ }),
-/* 488 */
+/* 489 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -50727,13 +51036,13 @@
 
 
 /***/ }),
-/* 489 */
+/* 490 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -50808,13 +51117,13 @@
 
 
 /***/ }),
-/* 490 */
+/* 491 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -50935,13 +51244,13 @@
 
 
 /***/ }),
-/* 491 */
+/* 492 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -51063,13 +51372,13 @@
 
 
 /***/ }),
-/* 492 */
+/* 493 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -51164,13 +51473,13 @@
 
 
 /***/ }),
-/* 493 */
+/* 494 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -51292,13 +51601,13 @@
 
 
 /***/ }),
-/* 494 */
+/* 495 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -51450,13 +51759,13 @@
 
 
 /***/ }),
-/* 495 */
+/* 496 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -51564,13 +51873,13 @@
 
 
 /***/ }),
-/* 496 */
+/* 497 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -51663,13 +51972,13 @@
 
 
 /***/ }),
-/* 497 */
+/* 498 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -51749,13 +52058,13 @@
 
 
 /***/ }),
-/* 498 */
+/* 499 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -51885,13 +52194,13 @@
 
 
 /***/ }),
-/* 499 */
+/* 500 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -51958,13 +52267,13 @@
 
 
 /***/ }),
-/* 500 */
+/* 501 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -52031,13 +52340,13 @@
 
 
 /***/ }),
-/* 501 */
+/* 502 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -52127,13 +52436,13 @@
 
 
 /***/ }),
-/* 502 */
+/* 503 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -52213,13 +52522,13 @@
 
 
 /***/ }),
-/* 503 */
+/* 504 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -52306,13 +52615,13 @@
 
 
 /***/ }),
-/* 504 */
+/* 505 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -52397,13 +52706,13 @@
 
 
 /***/ }),
-/* 505 */
+/* 506 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -52511,13 +52820,13 @@
 
 
 /***/ }),
-/* 506 */
+/* 507 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -52641,13 +52950,13 @@
 
 
 /***/ }),
-/* 507 */
+/* 508 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -52726,13 +53035,13 @@
 
 
 /***/ }),
-/* 508 */
+/* 509 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -52849,13 +53158,13 @@
 
 
 /***/ }),
-/* 509 */
+/* 510 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -52940,13 +53249,13 @@
 
 
 /***/ }),
-/* 510 */
+/* 511 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -53080,13 +53389,13 @@
 
 
 /***/ }),
-/* 511 */
+/* 512 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -53154,13 +53463,13 @@
 
 
 /***/ }),
-/* 512 */
+/* 513 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -53276,13 +53585,13 @@
 
 
 /***/ }),
-/* 513 */
+/* 514 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -53377,13 +53686,13 @@
 
 
 /***/ }),
-/* 514 */
+/* 515 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -53493,13 +53802,13 @@
 
 
 /***/ }),
-/* 515 */
+/* 516 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -53561,13 +53870,13 @@
 
 
 /***/ }),
-/* 516 */
+/* 517 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -53655,13 +53964,13 @@
 
 
 /***/ }),
-/* 517 */
+/* 518 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -53740,13 +54049,13 @@
 
 
 /***/ }),
-/* 518 */
+/* 519 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -53848,13 +54157,13 @@
 
 
 /***/ }),
-/* 519 */
+/* 520 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -54012,13 +54321,13 @@
 
 
 /***/ }),
-/* 520 */
+/* 521 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -54098,13 +54407,13 @@
 
 
 /***/ }),
-/* 521 */
+/* 522 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -54184,13 +54493,13 @@
 
 
 /***/ }),
-/* 522 */
+/* 523 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -54248,13 +54557,13 @@
 
 
 /***/ }),
-/* 523 */
+/* 524 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -54345,13 +54654,13 @@
 
 
 /***/ }),
-/* 524 */
+/* 525 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -54411,13 +54720,13 @@
 
 
 /***/ }),
-/* 525 */
+/* 526 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -54538,13 +54847,13 @@
 
 
 /***/ }),
-/* 526 */
+/* 527 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -54629,13 +54938,13 @@
 
 
 /***/ }),
-/* 527 */
+/* 528 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -54720,13 +55029,13 @@
 
 
 /***/ }),
-/* 528 */
+/* 529 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -54784,13 +55093,13 @@
 
 
 /***/ }),
-/* 529 */
+/* 530 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -54912,13 +55221,13 @@
 
 
 /***/ }),
-/* 530 */
+/* 531 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -55042,13 +55351,13 @@
 
 
 /***/ }),
-/* 531 */
+/* 532 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -55111,13 +55420,13 @@
 
 
 /***/ }),
-/* 532 */
+/* 533 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -55176,13 +55485,13 @@
 
 
 /***/ }),
-/* 533 */
+/* 534 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -55255,13 +55564,13 @@
 
 
 /***/ }),
-/* 534 */
+/* 535 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -55441,13 +55750,13 @@
 
 
 /***/ }),
-/* 535 */
+/* 536 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -55543,13 +55852,13 @@
 
 
 /***/ }),
-/* 536 */
+/* 537 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -55607,13 +55916,13 @@
 
 
 /***/ }),
-/* 537 */
+/* 538 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -55682,13 +55991,13 @@
 
 
 /***/ }),
-/* 538 */
+/* 539 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -55842,13 +56151,13 @@
 
 
 /***/ }),
-/* 539 */
+/* 540 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -56019,13 +56328,13 @@
 
 
 /***/ }),
-/* 540 */
+/* 541 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -56091,13 +56400,13 @@
 
 
 /***/ }),
-/* 541 */
+/* 542 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -56206,13 +56515,13 @@
 
 
 /***/ }),
-/* 542 */
+/* 543 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -56321,13 +56630,13 @@
 
 
 /***/ }),
-/* 543 */
+/* 544 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -56413,13 +56722,13 @@
 
 
 /***/ }),
-/* 544 */
+/* 545 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -56486,13 +56795,13 @@
 
 
 /***/ }),
-/* 545 */
+/* 546 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -56549,13 +56858,13 @@
 
 
 /***/ }),
-/* 546 */
+/* 547 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -56682,13 +56991,13 @@
 
 
 /***/ }),
-/* 547 */
+/* 548 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -56775,13 +57084,13 @@
 
 
 /***/ }),
-/* 548 */
+/* 549 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -56846,13 +57155,13 @@
 
 
 /***/ }),
-/* 549 */
+/* 550 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -56966,13 +57275,13 @@
 
 
 /***/ }),
-/* 550 */
+/* 551 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -57037,13 +57346,13 @@
 
 
 /***/ }),
-/* 551 */
+/* 552 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -57103,13 +57412,13 @@
 
 
 /***/ }),
-/* 552 */
+/* 553 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -57229,12 +57538,12 @@
 
 
 /***/ }),
-/* 553 */
+/* 554 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -57327,13 +57636,13 @@
 
 
 /***/ }),
-/* 554 */
+/* 555 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -57422,13 +57731,13 @@
 
 
 /***/ }),
-/* 555 */
+/* 556 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -57484,13 +57793,13 @@
 
 
 /***/ }),
-/* 556 */
+/* 557 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -57546,13 +57855,13 @@
 
 
 /***/ }),
-/* 557 */
+/* 558 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js language configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -57669,13 +57978,13 @@
 
 
 /***/ }),
-/* 558 */
+/* 559 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -57827,13 +58136,13 @@
 
 
 /***/ }),
-/* 559 */
+/* 560 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -57929,13 +58238,13 @@
 
 
 /***/ }),
-/* 560 */
+/* 561 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -57991,13 +58300,13 @@
 
 
 /***/ }),
-/* 561 */
+/* 562 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -58053,13 +58362,13 @@
 
 
 /***/ }),
-/* 562 */
+/* 563 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -58136,13 +58445,13 @@
 
 
 /***/ }),
-/* 563 */
+/* 564 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -58208,13 +58517,13 @@
 
 
 /***/ }),
-/* 564 */
+/* 565 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -58272,13 +58581,13 @@
 
 
 /***/ }),
-/* 565 */
+/* 566 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -58386,13 +58695,13 @@
 
 
 /***/ }),
-/* 566 */
+/* 567 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -58493,13 +58802,13 @@
 
 
 /***/ }),
-/* 567 */
+/* 568 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(439)) :
+	    true ? factory(__webpack_require__(440)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -58600,7 +58909,7 @@
 
 
 /***/ }),
-/* 568 */
+/* 569 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -58621,11 +58930,11 @@
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
-	var _DateConstants = __webpack_require__(438);
+	var _DateConstants = __webpack_require__(439);
 	
 	var _DateConstants2 = _interopRequireDefault(_DateConstants);
 	
-	var _util = __webpack_require__(569);
+	var _util = __webpack_require__(570);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 	
@@ -58901,7 +59210,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 569 */
+/* 570 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -58923,7 +59232,7 @@
 	exports.isAllowedDate = isAllowedDate;
 	exports.formatDate = formatDate;
 	
-	var _moment = __webpack_require__(439);
+	var _moment = __webpack_require__(440);
 	
 	var _moment2 = _interopRequireDefault(_moment);
 	
@@ -59031,7 +59340,7 @@
 	}
 
 /***/ }),
-/* 570 */
+/* 571 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -59048,19 +59357,19 @@
 	
 	var _propTypes2 = _interopRequireDefault(_propTypes);
 	
-	var _mapSelf = __webpack_require__(571);
+	var _mapSelf = __webpack_require__(572);
 	
 	var _mapSelf2 = _interopRequireDefault(_mapSelf);
 	
-	var _MonthPanel = __webpack_require__(572);
+	var _MonthPanel = __webpack_require__(573);
 	
 	var _MonthPanel2 = _interopRequireDefault(_MonthPanel);
 	
-	var _YearPanel = __webpack_require__(575);
+	var _YearPanel = __webpack_require__(576);
 	
 	var _YearPanel2 = _interopRequireDefault(_YearPanel);
 	
-	var _DecadePanel = __webpack_require__(576);
+	var _DecadePanel = __webpack_require__(577);
 	
 	var _DecadePanel2 = _interopRequireDefault(_DecadePanel);
 	
@@ -59323,21 +59632,19 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 571 */
+/* 572 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports['default'] = mapSelf;
+	exports.default = mapSelf;
 	
-	var _react = __webpack_require__(1);
+	var _react = _interopRequireDefault(__webpack_require__(1));
 	
-	var _react2 = _interopRequireDefault(_react);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function mirror(o) {
 	  return o;
@@ -59345,12 +59652,11 @@
 	
 	function mapSelf(children) {
 	  // return ReactFragment
-	  return _react2['default'].Children.map(children, mirror);
+	  return _react.default.Children.map(children, mirror);
 	}
-	module.exports = exports['default'];
 
 /***/ }),
-/* 572 */
+/* 573 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -59369,15 +59675,15 @@
 	
 	var _reactLifecyclesCompat = __webpack_require__(93);
 	
-	var _MonthTable = __webpack_require__(573);
+	var _MonthTable = __webpack_require__(574);
 	
 	var _MonthTable2 = _interopRequireDefault(_MonthTable);
 	
-	var _DateInput = __webpack_require__(574);
+	var _DateInput = __webpack_require__(575);
 	
 	var _DateInput2 = _interopRequireDefault(_DateInput);
 	
-	var _moment = __webpack_require__(439);
+	var _moment = __webpack_require__(440);
 	
 	var _moment2 = _interopRequireDefault(_moment);
 	
@@ -59548,7 +59854,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 573 */
+/* 574 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -59569,7 +59875,7 @@
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
-	var _index = __webpack_require__(569);
+	var _index = __webpack_require__(570);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 	
@@ -59734,7 +60040,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 574 */
+/* 575 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -59759,11 +60065,11 @@
 	
 	var _reactLifecyclesCompat = __webpack_require__(93);
 	
-	var _moment = __webpack_require__(439);
+	var _moment = __webpack_require__(440);
 	
 	var _moment2 = _interopRequireDefault(_moment);
 	
-	var _util = __webpack_require__(569);
+	var _util = __webpack_require__(570);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 	
@@ -60062,7 +60368,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 575 */
+/* 576 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -60083,15 +60389,15 @@
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
-	var _DecadePanel = __webpack_require__(576);
+	var _DecadePanel = __webpack_require__(577);
 	
 	var _DecadePanel2 = _interopRequireDefault(_DecadePanel);
 	
-	var _DateInput = __webpack_require__(574);
+	var _DateInput = __webpack_require__(575);
 	
 	var _DateInput2 = _interopRequireDefault(_DateInput);
 	
-	var _moment = __webpack_require__(439);
+	var _moment = __webpack_require__(440);
 	
 	var _moment2 = _interopRequireDefault(_moment);
 	
@@ -60369,7 +60675,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 576 */
+/* 577 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -60581,7 +60887,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 577 */
+/* 578 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -60604,7 +60910,7 @@
 	
 	var _propTypes2 = _interopRequireDefault(_propTypes);
 	
-	var _mapSelf = __webpack_require__(571);
+	var _mapSelf = __webpack_require__(572);
 	
 	var _mapSelf2 = _interopRequireDefault(_mapSelf);
 	
@@ -60612,15 +60918,15 @@
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
-	var _TodayButton = __webpack_require__(578);
+	var _TodayButton = __webpack_require__(579);
 	
 	var _TodayButton2 = _interopRequireDefault(_TodayButton);
 	
-	var _OkButton = __webpack_require__(579);
+	var _OkButton = __webpack_require__(580);
 	
 	var _OkButton2 = _interopRequireDefault(_OkButton);
 	
-	var _TimePickerButton = __webpack_require__(580);
+	var _TimePickerButton = __webpack_require__(581);
 	
 	var _TimePickerButton2 = _interopRequireDefault(_TimePickerButton);
 	
@@ -60683,7 +60989,11 @@
 	        footerBtn = _react2["default"].createElement(
 	          'span',
 	          { className: prefixCls + '-footer-btn' },
-	          extraFooter,
+	          extraFooter ? _react2["default"].createElement(
+	            'div',
+	            { className: prefixCls + '-footer-extra' },
+	            extraFooter
+	          ) : null,
 	          (0, _mapSelf2["default"])([nowEl, timePickerBtn, okBtn])
 	        );
 	      }
@@ -60717,7 +61027,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 578 */
+/* 579 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -60731,7 +61041,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _util = __webpack_require__(569);
+	var _util = __webpack_require__(570);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 	
@@ -60763,7 +61073,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 579 */
+/* 580 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -60798,7 +61108,7 @@
 	    {
 	      className: className,
 	      size: 'sm', colors: 'primary',
-	      disabled: okDisabled,
+	      disabled: !!okDisabled,
 	      onClick: okDisabled ? null : onOk
 	    },
 	    locale.ok
@@ -60807,7 +61117,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 580 */
+/* 581 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -60857,7 +61167,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 581 */
+/* 582 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -60880,11 +61190,11 @@
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
-	var _moment = __webpack_require__(439);
+	var _moment = __webpack_require__(440);
 	
 	var _moment2 = _interopRequireDefault(_moment);
 	
-	var _index = __webpack_require__(569);
+	var _index = __webpack_require__(570);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 	
@@ -61013,7 +61323,7 @@
 	};
 
 /***/ }),
-/* 582 */
+/* 583 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -61027,7 +61337,7 @@
 	
 	var _propTypes2 = _interopRequireDefault(_propTypes);
 	
-	var _en_US = __webpack_require__(583);
+	var _en_US = __webpack_require__(584);
 	
 	var _en_US2 = _interopRequireDefault(_en_US);
 	
@@ -61122,7 +61432,7 @@
 	};
 
 /***/ }),
-/* 583 */
+/* 584 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -61164,7 +61474,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 584 */
+/* 585 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -61199,7 +61509,7 @@
 	}
 
 /***/ }),
-/* 585 */
+/* 586 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -61230,7 +61540,7 @@
 	
 	var _KeyCode2 = _interopRequireDefault(_KeyCode);
 	
-	var _placements = __webpack_require__(586);
+	var _placements = __webpack_require__(587);
 	
 	var _placements2 = _interopRequireDefault(_placements);
 	
@@ -61478,7 +61788,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 586 */
+/* 587 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -61524,7 +61834,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 587 */
+/* 588 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -61538,17 +61848,23 @@
 	
 	var _propTypes = _interopRequireDefault(__webpack_require__(6));
 	
-	var _moment = _interopRequireDefault(__webpack_require__(439));
+	var _moment = _interopRequireDefault(__webpack_require__(440));
 	
 	var _classnames = _interopRequireDefault(__webpack_require__(5));
 	
-	var _Header = _interopRequireDefault(__webpack_require__(588));
+	var _reactLifecyclesCompat = __webpack_require__(93);
 	
-	var _Combobox = _interopRequireDefault(__webpack_require__(589));
+	var _Header = _interopRequireDefault(__webpack_require__(589));
+	
+	var _Combobox = _interopRequireDefault(__webpack_require__(590));
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 	
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj["default"] = obj; return newObj; } }
+	
+	function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+	
+	function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
@@ -61560,11 +61876,11 @@
 	
 	function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 	
+	function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 	
 	function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-	
-	function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 	
 	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 	
@@ -61601,14 +61917,22 @@
 	function (_Component) {
 	  _inherits(Panel, _Component);
 	
-	  function Panel(props) {
+	  function Panel() {
+	    var _getPrototypeOf2;
+	
 	    var _this;
 	
 	    _classCallCheck(this, Panel);
 	
-	    _this = _possibleConstructorReturn(this, _getPrototypeOf(Panel).call(this, props));
+	    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+	      args[_key] = arguments[_key];
+	    }
 	
-	    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onChange", function (newValue) {
+	    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Panel)).call.apply(_getPrototypeOf2, [this].concat(args)));
+	
+	    _defineProperty(_assertThisInitialized(_this), "state", {});
+	
+	    _defineProperty(_assertThisInitialized(_this), "onChange", function (newValue) {
 	      var onChange = _this.props.onChange;
 	
 	      _this.setState({
@@ -61618,18 +61942,18 @@
 	      onChange(newValue);
 	    });
 	
-	    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onAmPmChange", function (ampm) {
+	    _defineProperty(_assertThisInitialized(_this), "onAmPmChange", function (ampm) {
 	      var onAmPmChange = _this.props.onAmPmChange;
 	      onAmPmChange(ampm);
 	    });
 	
-	    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onCurrentSelectPanelChange", function (currentSelectPanel) {
+	    _defineProperty(_assertThisInitialized(_this), "onCurrentSelectPanelChange", function (currentSelectPanel) {
 	      _this.setState({
 	        currentSelectPanel: currentSelectPanel
 	      });
 	    });
 	
-	    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "disabledHours", function () {
+	    _defineProperty(_assertThisInitialized(_this), "disabledHours", function () {
 	      var _this$props = _this.props,
 	          use12Hours = _this$props.use12Hours,
 	          disabledHours = _this$props.disabledHours;
@@ -61652,24 +61976,10 @@
 	      return disabledOptions;
 	    });
 	
-	    _this.state = {
-	      value: props.value
-	    };
 	    return _this;
 	  }
 	
 	  _createClass(Panel, [{
-	    key: "componentWillReceiveProps",
-	    value: function componentWillReceiveProps(nextProps) {
-	      var value = nextProps.value;
-	
-	      if (value) {
-	        this.setState({
-	          value: value
-	        });
-	      }
-	    }
-	  }, {
 	    key: "close",
 	    // https://github.com/ant-design/ant-design/issues/5829
 	    value: function close() {
@@ -61687,8 +61997,6 @@
 	  }, {
 	    key: "render",
 	    value: function render() {
-	      var _classNames;
-	
 	      var _this$props2 = this.props,
 	          prefixCls = _this$props2.prefixCls,
 	          className = _this$props2.className,
@@ -61696,7 +62004,6 @@
 	          disabledMinutes = _this$props2.disabledMinutes,
 	          disabledSeconds = _this$props2.disabledSeconds,
 	          hideDisabledOptions = _this$props2.hideDisabledOptions,
-	          allowEmpty = _this$props2.allowEmpty,
 	          showHour = _this$props2.showHour,
 	          showMinute = _this$props2.showMinute,
 	          showSecond = _this$props2.showSecond,
@@ -61724,7 +62031,7 @@
 	      var secondOptions = generateOptions(60, disabledSecondOptions, hideDisabledOptions, secondStep);
 	      var validDefaultOpenValue = toNearestValidTime(defaultOpenValue, hourOptions, minuteOptions, secondOptions);
 	      return _react["default"].createElement("div", {
-	        className: (0, _classnames["default"])((_classNames = {}, _defineProperty(_classNames, "".concat(prefixCls, "-inner"), true), _defineProperty(_classNames, className, !!className), _classNames))
+	        className: (0, _classnames["default"])(className, "".concat(prefixCls, "-inner"))
 	      }, _react["default"].createElement(_Header["default"], {
 	        clearText: clearText,
 	        prefixCls: prefixCls,
@@ -61741,7 +62048,6 @@
 	        disabledMinutes: disabledMinutes,
 	        disabledSeconds: disabledSeconds,
 	        onChange: this.onChange,
-	        allowEmpty: allowEmpty,
 	        focusOnOpen: focusOnOpen,
 	        onKeyDown: onKeyDown,
 	        inputReadOnly: inputReadOnly,
@@ -61764,8 +62070,20 @@
 	        disabledSeconds: disabledSeconds,
 	        onCurrentSelectPanelChange: this.onCurrentSelectPanelChange,
 	        use12Hours: use12Hours,
+	        onEsc: onEsc,
 	        isAM: this.isAM()
 	      }), addon(this));
+	    }
+	  }], [{
+	    key: "getDerivedStateFromProps",
+	    value: function getDerivedStateFromProps(props, state) {
+	      if ('value' in props) {
+	        return _objectSpread({}, state, {
+	          value: props.value
+	        });
+	      }
+	
+	      return null;
 	    }
 	  }]);
 	
@@ -61788,7 +62106,6 @@
 	  onChange: _propTypes["default"].func,
 	  onAmPmChange: _propTypes["default"].func,
 	  onEsc: _propTypes["default"].func,
-	  allowEmpty: _propTypes["default"].bool,
 	  showHour: _propTypes["default"].bool,
 	  showMinute: _propTypes["default"].bool,
 	  showSecond: _propTypes["default"].bool,
@@ -61816,11 +62133,12 @@
 	  inputReadOnly: false
 	});
 	
+	(0, _reactLifecyclesCompat.polyfill)(Panel);
 	var _default = Panel;
 	exports["default"] = _default;
 
 /***/ }),
-/* 588 */
+/* 589 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -61834,7 +62152,9 @@
 	
 	var _propTypes = _interopRequireDefault(__webpack_require__(6));
 	
-	var _moment = _interopRequireDefault(__webpack_require__(439));
+	var _moment = _interopRequireDefault(__webpack_require__(440));
+	
+	var _classnames = _interopRequireDefault(__webpack_require__(5));
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 	
@@ -61850,11 +62170,11 @@
 	
 	function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 	
+	function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 	
 	function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-	
-	function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 	
 	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 	
@@ -61870,7 +62190,7 @@
 	
 	    _this = _possibleConstructorReturn(this, _getPrototypeOf(Header).call(this, props));
 	
-	    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onInputChange", function (event) {
+	    _defineProperty(_assertThisInitialized(_this), "onInputChange", function (event) {
 	      var str = event.target.value;
 	
 	      _this.setState({
@@ -61885,8 +62205,7 @@
 	          disabledHours = _this$props.disabledHours,
 	          disabledMinutes = _this$props.disabledMinutes,
 	          disabledSeconds = _this$props.disabledSeconds,
-	          onChange = _this$props.onChange,
-	          allowEmpty = _this$props.allowEmpty;
+	          onChange = _this$props.onChange;
 	
 	      if (str) {
 	        var originalValue = _this.props.value;
@@ -61938,14 +62257,8 @@
 	        } else if (originalValue !== value) {
 	          onChange(value);
 	        }
-	      } else if (allowEmpty) {
-	        onChange(null);
 	      } else {
-	        _this.setState({
-	          invalid: true
-	        });
-	
-	        return;
+	        onChange(null);
 	      }
 	
 	      _this.setState({
@@ -61953,7 +62266,7 @@
 	      });
 	    });
 	
-	    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onKeyDown", function (e) {
+	    _defineProperty(_assertThisInitialized(_this), "onKeyDown", function (e) {
 	      var _this$props2 = _this.props,
 	          onEsc = _this$props2.onEsc,
 	          onKeyDown = _this$props2.onKeyDown;
@@ -61992,21 +62305,26 @@
 	      }
 	    }
 	  }, {
-	    key: "componentWillReceiveProps",
-	    value: function componentWillReceiveProps(nextProps) {
-	      var value = nextProps.value,
-	          format = nextProps.format;
-	      this.setState({
-	        str: value && value.format(format) || '',
-	        invalid: false
-	      });
+	    key: "componentDidUpdate",
+	    value: function componentDidUpdate(prevProps) {
+	      var _this$props3 = this.props,
+	          value = _this$props3.value,
+	          format = _this$props3.format;
+	
+	      if (value !== prevProps.value) {
+	        // eslint-disable-next-line react/no-did-update-set-state
+	        this.setState({
+	          str: value && value.format(format) || '',
+	          invalid: false
+	        });
+	      }
 	    }
 	  }, {
 	    key: "getProtoValue",
 	    value: function getProtoValue() {
-	      var _this$props3 = this.props,
-	          value = _this$props3.value,
-	          defaultOpenValue = _this$props3.defaultOpenValue;
+	      var _this$props4 = this.props,
+	          value = _this$props4.value,
+	          defaultOpenValue = _this$props4.defaultOpenValue;
 	      return value || defaultOpenValue;
 	    }
 	  }, {
@@ -62014,16 +62332,16 @@
 	    value: function getInput() {
 	      var _this3 = this;
 	
-	      var _this$props4 = this.props,
-	          prefixCls = _this$props4.prefixCls,
-	          placeholder = _this$props4.placeholder,
-	          inputReadOnly = _this$props4.inputReadOnly;
+	      var _this$props5 = this.props,
+	          prefixCls = _this$props5.prefixCls,
+	          placeholder = _this$props5.placeholder,
+	          inputReadOnly = _this$props5.inputReadOnly;
 	      var _this$state = this.state,
 	          invalid = _this$state.invalid,
 	          str = _this$state.str;
 	      var invalidClass = invalid ? "".concat(prefixCls, "-input-invalid") : '';
 	      return _react["default"].createElement("input", {
-	        className: "".concat(prefixCls, "-input  ").concat(invalidClass),
+	        className: (0, _classnames["default"])("".concat(prefixCls, "-input"), invalidClass),
 	        ref: function ref(_ref) {
 	          _this3.refInput = _ref;
 	        },
@@ -62063,7 +62381,6 @@
 	  disabledSeconds: _propTypes["default"].func,
 	  onChange: _propTypes["default"].func,
 	  onEsc: _propTypes["default"].func,
-	  allowEmpty: _propTypes["default"].bool,
 	  defaultOpenValue: _propTypes["default"].object,
 	  currentSelectPanel: _propTypes["default"].string,
 	  focusOnOpen: _propTypes["default"].bool,
@@ -62079,7 +62396,7 @@
 	exports["default"] = _default;
 
 /***/ }),
-/* 589 */
+/* 590 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -62093,7 +62410,7 @@
 	
 	var _propTypes = _interopRequireDefault(__webpack_require__(6));
 	
-	var _Select = _interopRequireDefault(__webpack_require__(590));
+	var _Select = _interopRequireDefault(__webpack_require__(591));
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 	
@@ -62109,11 +62426,11 @@
 	
 	function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 	
+	function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 	
 	function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-	
-	function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 	
 	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 	
@@ -62154,7 +62471,7 @@
 	
 	    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Combobox)).call.apply(_getPrototypeOf2, [this].concat(args)));
 	
-	    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onItemChange", function (type, itemValue) {
+	    _defineProperty(_assertThisInitialized(_this), "onItemChange", function (type, itemValue) {
 	      var _this$props = _this.props,
 	          onChange = _this$props.onChange,
 	          defaultOpenValue = _this$props.defaultOpenValue,
@@ -62199,7 +62516,7 @@
 	      onChange(value);
 	    });
 	
-	    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onEnterSelectPanel", function (range) {
+	    _defineProperty(_assertThisInitialized(_this), "onEnterSelectPanel", function (range) {
 	      var onCurrentSelectPanelChange = _this.props.onCurrentSelectPanelChange;
 	      onCurrentSelectPanelChange(range);
 	    });
@@ -62217,7 +62534,8 @@
 	          hourOptions = _this$props2.hourOptions,
 	          disabledHours = _this$props2.disabledHours,
 	          showHour = _this$props2.showHour,
-	          use12Hours = _this$props2.use12Hours;
+	          use12Hours = _this$props2.use12Hours,
+	          onEsc = _this$props2.onEsc;
 	
 	      if (!showHour) {
 	        return null;
@@ -62247,7 +62565,8 @@
 	        onSelect: this.onItemChange,
 	        onMouseEnter: function onMouseEnter() {
 	          return _this2.onEnterSelectPanel('hour');
-	        }
+	        },
+	        onEsc: onEsc
 	      });
 	    }
 	  }, {
@@ -62261,7 +62580,8 @@
 	          disabledMinutes = _this$props3.disabledMinutes,
 	          defaultOpenValue = _this$props3.defaultOpenValue,
 	          showMinute = _this$props3.showMinute,
-	          propValue = _this$props3.value;
+	          propValue = _this$props3.value,
+	          onEsc = _this$props3.onEsc;
 	
 	      if (!showMinute) {
 	        return null;
@@ -62279,7 +62599,8 @@
 	        onSelect: this.onItemChange,
 	        onMouseEnter: function onMouseEnter() {
 	          return _this3.onEnterSelectPanel('minute');
-	        }
+	        },
+	        onEsc: onEsc
 	      });
 	    }
 	  }, {
@@ -62293,7 +62614,8 @@
 	          disabledSeconds = _this$props4.disabledSeconds,
 	          showSecond = _this$props4.showSecond,
 	          defaultOpenValue = _this$props4.defaultOpenValue,
-	          propValue = _this$props4.value;
+	          propValue = _this$props4.value,
+	          onEsc = _this$props4.onEsc;
 	
 	      if (!showSecond) {
 	        return null;
@@ -62311,7 +62633,8 @@
 	        onSelect: this.onItemChange,
 	        onMouseEnter: function onMouseEnter() {
 	          return _this4.onEnterSelectPanel('second');
-	        }
+	        },
+	        onEsc: onEsc
 	      });
 	    }
 	  }, {
@@ -62323,7 +62646,8 @@
 	          prefixCls = _this$props5.prefixCls,
 	          use12Hours = _this$props5.use12Hours,
 	          format = _this$props5.format,
-	          isAM = _this$props5.isAM;
+	          isAM = _this$props5.isAM,
+	          onEsc = _this$props5.onEsc;
 	
 	      if (!use12Hours) {
 	        return null;
@@ -62346,7 +62670,8 @@
 	        onSelect: this.onItemChange,
 	        onMouseEnter: function onMouseEnter() {
 	          return _this5.onEnterSelectPanel('ampm');
-	        }
+	        },
+	        onEsc: onEsc
 	      });
 	    }
 	  }, {
@@ -62384,6 +62709,7 @@
 	  disabledSeconds: _propTypes["default"].func,
 	  onCurrentSelectPanelChange: _propTypes["default"].func,
 	  use12Hours: _propTypes["default"].bool,
+	  onEsc: _propTypes["default"].func,
 	  isAM: _propTypes["default"].bool
 	});
 	
@@ -62391,7 +62717,7 @@
 	exports["default"] = _default;
 
 /***/ }),
-/* 590 */
+/* 591 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -62407,7 +62733,9 @@
 	
 	var _reactDom = _interopRequireDefault(__webpack_require__(2));
 	
-	var _classnames3 = _interopRequireDefault(__webpack_require__(5));
+	var _classnames = _interopRequireDefault(__webpack_require__(5));
+	
+	var _raf = _interopRequireDefault(__webpack_require__(425));
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 	
@@ -62423,28 +62751,26 @@
 	
 	function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 	
+	function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 	
 	function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 	
-	function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-	
 	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 	
 	var scrollTo = function scrollTo(element, to, duration) {
-	  var requestAnimationFrame = window.requestAnimationFrame || function requestAnimationFrameTimeout() {
-	    return setTimeout(arguments[0], 10); // eslint-disable-line
-	  }; // jump to target if duration zero
-	
-	
+	  // jump to target if duration zero
 	  if (duration <= 0) {
-	    element.scrollTop = to;
+	    (0, _raf["default"])(function () {
+	      element.scrollTop = to;
+	    });
 	    return;
 	  }
 	
 	  var difference = to - element.scrollTop;
 	  var perTick = difference / duration * 10;
-	  requestAnimationFrame(function () {
+	  (0, _raf["default"])(function () {
 	    element.scrollTop += perTick;
 	    if (element.scrollTop === to) return;
 	    scrollTo(element, to, duration - 10);
@@ -62469,18 +62795,18 @@
 	
 	    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Select)).call.apply(_getPrototypeOf2, [this].concat(args)));
 	
-	    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
+	    _defineProperty(_assertThisInitialized(_this), "state", {
 	      active: false
 	    });
 	
-	    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onSelect", function (value) {
+	    _defineProperty(_assertThisInitialized(_this), "onSelect", function (value) {
 	      var _this$props = _this.props,
 	          onSelect = _this$props.onSelect,
 	          type = _this$props.type;
 	      onSelect(type, value);
 	    });
 	
-	    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleMouseEnter", function (e) {
+	    _defineProperty(_assertThisInitialized(_this), "handleMouseEnter", function (e) {
 	      var onMouseEnter = _this.props.onMouseEnter;
 	
 	      _this.setState({
@@ -62490,13 +62816,13 @@
 	      onMouseEnter(e);
 	    });
 	
-	    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleMouseLeave", function () {
+	    _defineProperty(_assertThisInitialized(_this), "handleMouseLeave", function () {
 	      _this.setState({
 	        active: false
 	      });
 	    });
 	
-	    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "saveList", function (node) {
+	    _defineProperty(_assertThisInitialized(_this), "saveList", function (node) {
 	      _this.list = node;
 	    });
 	
@@ -62526,20 +62852,28 @@
 	      var _this$props2 = this.props,
 	          options = _this$props2.options,
 	          selectedIndex = _this$props2.selectedIndex,
-	          prefixCls = _this$props2.prefixCls;
+	          prefixCls = _this$props2.prefixCls,
+	          onEsc = _this$props2.onEsc;
 	      return options.map(function (item, index) {
-	        var _classnames;
+	        var _classNames;
 	
-	        var cls = (0, _classnames3["default"])((_classnames = {}, _defineProperty(_classnames, "".concat(prefixCls, "-select-option-selected"), selectedIndex === index), _defineProperty(_classnames, "".concat(prefixCls, "-select-option-disabled"), item.disabled), _classnames));
+	        var cls = (0, _classnames["default"])((_classNames = {}, _defineProperty(_classNames, "".concat(prefixCls, "-select-option-selected"), selectedIndex === index), _defineProperty(_classNames, "".concat(prefixCls, "-select-option-disabled"), item.disabled), _classNames));
 	        var onClick = item.disabled ? undefined : function () {
 	          _this2.onSelect(item.value);
 	        };
+	
+	        var onKeyDown = function onKeyDown(e) {
+	          if (e.keyCode === 13) onClick();else if (e.keyCode === 27) onEsc();
+	        };
+	
 	        return _react["default"].createElement("li", {
 	          role: "button",
 	          onClick: onClick,
 	          className: cls,
 	          key: index,
-	          disabled: item.disabled
+	          disabled: item.disabled,
+	          tabIndex: "0",
+	          onKeyDown: onKeyDown
 	        }, item.value);
 	      });
 	    }
@@ -62579,7 +62913,7 @@
 	        return null;
 	      }
 	
-	      var cls = (0, _classnames3["default"])("".concat(prefixCls, "-select"), _defineProperty({}, "".concat(prefixCls, "-select-active"), active));
+	      var cls = (0, _classnames["default"])("".concat(prefixCls, "-select"), _defineProperty({}, "".concat(prefixCls, "-select-active"), active));
 	      return _react["default"].createElement("div", {
 	        className: cls,
 	        onMouseEnter: this.handleMouseEnter,
@@ -62599,22 +62933,23 @@
 	  selectedIndex: _propTypes["default"].number,
 	  type: _propTypes["default"].string,
 	  onSelect: _propTypes["default"].func,
-	  onMouseEnter: _propTypes["default"].func
+	  onMouseEnter: _propTypes["default"].func,
+	  onEsc: _propTypes["default"].func
 	});
 	
 	var _default = Select;
 	exports["default"] = _default;
 
 /***/ }),
-/* 591 */
+/* 592 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	module.exports = __webpack_require__(592);
+	module.exports = __webpack_require__(593);
 
 /***/ }),
-/* 592 */
+/* 593 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -62633,11 +62968,11 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _beeInputGroupAddon = __webpack_require__(593);
+	var _beeInputGroupAddon = __webpack_require__(594);
 	
 	var _beeInputGroupAddon2 = _interopRequireDefault(_beeInputGroupAddon);
 	
-	var _InputGroupButton = __webpack_require__(595);
+	var _InputGroupButton = __webpack_require__(596);
 	
 	var _InputGroupButton2 = _interopRequireDefault(_InputGroupButton);
 	
@@ -62694,7 +63029,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 593 */
+/* 594 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -62703,7 +63038,7 @@
 	  value: true
 	});
 	
-	var _InputGroupAddon = __webpack_require__(594);
+	var _InputGroupAddon = __webpack_require__(595);
 	
 	var _InputGroupAddon2 = _interopRequireDefault(_InputGroupAddon);
 	
@@ -62713,7 +63048,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 594 */
+/* 595 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -62776,7 +63111,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 595 */
+/* 596 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -62839,7 +63174,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 596 */
+/* 597 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -62880,7 +63215,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 597 */
+/* 598 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -62891,7 +63226,7 @@
 	
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 	
-	var _MonthCalendar = __webpack_require__(598);
+	var _MonthCalendar = __webpack_require__(599);
 	
 	var _MonthCalendar2 = _interopRequireDefault(_MonthCalendar);
 	
@@ -62905,7 +63240,7 @@
 	
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 	
-	var _Picker = __webpack_require__(585);
+	var _Picker = __webpack_require__(586);
 	
 	var _Picker2 = _interopRequireDefault(_Picker);
 	
@@ -62917,7 +63252,7 @@
 	
 	var _beeIcon2 = _interopRequireDefault(_beeIcon);
 	
-	var _beeInputGroup = __webpack_require__(591);
+	var _beeInputGroup = __webpack_require__(592);
 	
 	var _beeInputGroup2 = _interopRequireDefault(_beeInputGroup);
 	
@@ -62925,17 +63260,19 @@
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
-	var _zh_CN = __webpack_require__(596);
+	var _zh_CN = __webpack_require__(597);
 	
 	var _zh_CN2 = _interopRequireDefault(_zh_CN);
 	
-	var _moment = __webpack_require__(439);
+	var _omit = __webpack_require__(415);
 	
-	var _moment2 = _interopRequireDefault(_moment);
+	var _omit2 = _interopRequireDefault(_omit);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 	
 	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
+	
+	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
@@ -62953,94 +63290,7 @@
 	
 	    var _this = _possibleConstructorReturn(this, _Component.call(this, props, context));
 	
-	    _this.onChange = function (value) {
-	      var _this$props = _this.props,
-	          onChange = _this$props.onChange,
-	          onClear = _this$props.onClear,
-	          onSelect = _this$props.onSelect,
-	          format = _this$props.format;
-	      // if(value){
-	      //   this.setState({
-	      //     value:value
-	      //   });
-	      // }else{
-	      //   this.setState({
-	      //     value:moment()
-	      //   })
-	      // }
-	
-	      _this.setState({
-	        value: value && _extends(value, { _type: 'month' }) || value
-	      });
-	      onChange && onChange(value, value ? value.format(format) : '');
-	    };
-	
-	    _this.inputFocus = function () {
-	      var self = _this;
-	      var input = document.querySelector('.rc-calendar-input');
-	      if (input) {
-	        if (input.value) {
-	          input.select();
-	        } else {
-	          input.focus();
-	        }
-	        input.onkeydown = function (e) {
-	          if (e.keyCode == _tinperBeeCore.KeyCode.DELETE) {
-	            input.value = '';
-	            self.props.onChange && self.props.onChange('', '');
-	          } else if (e.keyCode == _tinperBeeCore.KeyCode.ESC) {
-	            self.setState({
-	              open: false
-	            });
-	            var v = self.state.value;
-	            self.props.onOpenChange && self.props.onOpenChange(false, v, v && v.format(self.props.format) || '');
-	            _reactDom2["default"].findDOMNode(self.outInput).focus(); // 按esc时候焦点回到input输入框
-	          }
-	        };
-	      }
-	    };
-	
-	    _this.onOpenChange = function (open) {
-	      var self = _this;
-	      _this.setState({
-	        open: open
-	      });
-	      if (open) {
-	        setTimeout(function () {
-	          self.inputFocus();
-	        }, 200);
-	      }
-	    };
-	
-	    _this.onTypeChange = function (type) {
-	      _this.setState({
-	        type: type
-	      });
-	    };
-	
-	    _this.onMouseLeave = function (e) {
-	      _this.setState({
-	        showClose: false
-	      });
-	    };
-	
-	    _this.onMouseEnter = function (e) {
-	      _this.setState({
-	        showClose: true
-	      });
-	    };
-	
-	    _this.clear = function (e) {
-	      e.stopPropagation();
-	      _this.setState({
-	        value: ''
-	      });
-	      _this.props.onChange && _this.props.onChange('', '');
-	    };
-	
-	    _this.stopPropagation = function (e) {
-	      e.stopPropagation();
-	    };
+	    _initialiseProps.call(_this);
 	
 	    _this.state = {
 	      type: "month",
@@ -63059,7 +63309,9 @@
 	    var state = this.state;
 	
 	    var props = this.props;
-	    var showClose = props.showClose;
+	
+	    var showClose = props.showClose,
+	        others = _objectWithoutProperties(props, ["showClose"]);
 	
 	    var monthCalendar = _react2["default"].createElement(_MonthCalendar2["default"], _extends({}, props, {
 	      onChange: this.onChange
@@ -63067,7 +63319,8 @@
 	    var classes = (0, _classnames2["default"])(props.className, "datepicker-container");
 	    return _react2["default"].createElement(
 	      "div",
-	      { className: classes, onClick: this.stopPropagation, onMouseOver: this.stopPropagation },
+	      _extends({ className: classes, onClick: this.stopPropagation, onMouseOver: this.stopPropagation
+	      }, (0, _omit2["default"])(others, ['closeIcon', 'renderIcon', 'format', 'showDateInput', 'showMonthInput', 'locale', 'placeholder', 'onClear', 'renderFooter'])),
 	      _react2["default"].createElement(
 	        _Picker2["default"],
 	        {
@@ -63116,6 +63369,108 @@
 	  return MonthPicker;
 	}(_react.Component);
 	
+	var _initialiseProps = function _initialiseProps() {
+	  var _this3 = this;
+	
+	  this.onChange = function (value) {
+	    var _props = _this3.props,
+	        onChange = _props.onChange,
+	        onClear = _props.onClear,
+	        onSelect = _props.onSelect,
+	        format = _props.format;
+	    // if(value){
+	    //   this.setState({
+	    //     value:value
+	    //   });
+	    // }else{
+	    //   this.setState({
+	    //     value:moment()
+	    //   })
+	    // }
+	
+	    _this3.setState({
+	      value: value && _extends(value, { _type: 'month' }) || value
+	    });
+	    onChange && onChange(value, value ? value.format(format) : '');
+	  };
+	
+	  this.inputFocus = function () {
+	    var self = _this3;
+	    var input = document.querySelector('.rc-calendar-input');
+	    if (input) {
+	      if (input.value) {
+	        input.select();
+	      } else {
+	        input.focus();
+	      }
+	      input.onkeydown = function (e) {
+	        if (e.keyCode == _tinperBeeCore.KeyCode.DELETE) {
+	          input.value = '';
+	          self.props.onChange && self.props.onChange('', '');
+	        } else if (e.keyCode == _tinperBeeCore.KeyCode.ESC) {
+	          self.setState({
+	            open: false
+	          });
+	          var v = self.state.value;
+	          self.props.onOpenChange && self.props.onOpenChange(false, v, v && v.format(self.props.format) || '');
+	          _reactDom2["default"].findDOMNode(self.outInput).focus(); // 按esc时候焦点回到input输入框
+	        }
+	      };
+	    }
+	  };
+	
+	  this.onOpenChange = function (open) {
+	    var props = _this3.props;
+	    var self = _this3;
+	    _this3.setState({
+	      open: open
+	    }, function () {
+	      if (open) {
+	        setTimeout(function () {
+	          self.inputFocus();
+	        }, 0);
+	      }
+	    });
+	    var value = self.state.value;
+	    props.onOpenChange && props.onOpenChange(open, value, value && value.format(self.props.format) || '');
+	    if (open) {
+	      setTimeout(function () {
+	        self.inputFocus();
+	      }, 200);
+	    }
+	  };
+	
+	  this.onTypeChange = function (type) {
+	    _this3.setState({
+	      type: type
+	    });
+	  };
+	
+	  this.onMouseLeave = function (e) {
+	    _this3.setState({
+	      showClose: false
+	    });
+	  };
+	
+	  this.onMouseEnter = function (e) {
+	    _this3.setState({
+	      showClose: true
+	    });
+	  };
+	
+	  this.clear = function (e) {
+	    e.stopPropagation();
+	    _this3.setState({
+	      value: ''
+	    });
+	    _this3.props.onChange && _this3.props.onChange('', '');
+	  };
+	
+	  this.stopPropagation = function (e) {
+	    e.stopPropagation();
+	  };
+	};
+	
 	MonthPicker.defaultProps = {
 	  closeIcon: function closeIcon() {
 	    return _react2["default"].createElement(_beeIcon2["default"], { type: "uf-close-c" });
@@ -63134,7 +63489,7 @@
 	module.exports = exports["default"];
 
 /***/ }),
-/* 598 */
+/* 599 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -63157,23 +63512,23 @@
 	
 	var _KeyCode2 = _interopRequireDefault(_KeyCode);
 	
-	var _CalendarHeader = __webpack_require__(570);
+	var _CalendarHeader = __webpack_require__(571);
 	
 	var _CalendarHeader2 = _interopRequireDefault(_CalendarHeader);
 	
-	var _CalendarFooter = __webpack_require__(577);
+	var _CalendarFooter = __webpack_require__(578);
 	
 	var _CalendarFooter2 = _interopRequireDefault(_CalendarFooter);
 	
-	var _CalendarMixin = __webpack_require__(581);
+	var _CalendarMixin = __webpack_require__(582);
 	
-	var _CommonMixin = __webpack_require__(582);
+	var _CommonMixin = __webpack_require__(583);
 	
-	var _DateInput = __webpack_require__(574);
+	var _DateInput = __webpack_require__(575);
 	
 	var _DateInput2 = _interopRequireDefault(_DateInput);
 	
-	var _moment = __webpack_require__(439);
+	var _moment = __webpack_require__(440);
 	
 	var _moment2 = _interopRequireDefault(_moment);
 	
@@ -63360,7 +63715,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 599 */
+/* 600 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -63369,15 +63724,17 @@
 	    value: true
 	});
 	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
 	var _react = __webpack_require__(1);
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _RangeCalendar = __webpack_require__(600);
+	var _RangeCalendar = __webpack_require__(601);
 	
 	var _RangeCalendar2 = _interopRequireDefault(_RangeCalendar);
 	
-	var _Panel = __webpack_require__(587);
+	var _Panel = __webpack_require__(588);
 	
 	var _Panel2 = _interopRequireDefault(_Panel);
 	
@@ -63385,11 +63742,11 @@
 	
 	var _beeFormControl2 = _interopRequireDefault(_beeFormControl);
 	
-	var _Picker = __webpack_require__(585);
+	var _Picker = __webpack_require__(586);
 	
 	var _Picker2 = _interopRequireDefault(_Picker);
 	
-	var _beeInputGroup = __webpack_require__(591);
+	var _beeInputGroup = __webpack_require__(592);
 	
 	var _beeInputGroup2 = _interopRequireDefault(_beeInputGroup);
 	
@@ -63403,23 +63760,29 @@
 	
 	var _tinperBeeCore = __webpack_require__(27);
 	
-	var _util = __webpack_require__(569);
+	var _util = __webpack_require__(570);
 	
-	var _zh_CN = __webpack_require__(596);
+	var _zh_CN = __webpack_require__(597);
 	
 	var _zh_CN2 = _interopRequireDefault(_zh_CN);
 	
-	var _moment = __webpack_require__(439);
+	var _omit = __webpack_require__(415);
+	
+	var _omit2 = _interopRequireDefault(_omit);
+	
+	var _moment = __webpack_require__(440);
 	
 	var _moment2 = _interopRequireDefault(_moment);
 	
-	__webpack_require__(565);
+	__webpack_require__(566);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 	
 	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
 	
 	function _objectDestructuringEmpty(obj) { if (obj == null) throw new TypeError("Cannot destructure undefined"); }
+	
+	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
@@ -63444,7 +63807,7 @@
 	
 	var fullFormat = "YYYY-MM-DD";
 	
-	var cn = location.search.indexOf("cn") !== -1;
+	var cn = typeof window !== 'undefined' ? location.search.indexOf("cn") !== -1 : true;
 	
 	var now = (0, _moment2["default"])();
 	
@@ -63502,7 +63865,10 @@
 	        var _this2 = this;
 	
 	        var props = this.props;
-	        var showClose = props.showClose;
+	
+	        var showClose = props.showClose,
+	            others = _objectWithoutProperties(props, ["showClose"]);
+	
 	        var _state = this.state,
 	            value = _state.value,
 	            open = _state.open;
@@ -63526,12 +63892,14 @@
 	            renderError: props.renderError,
 	            onStartInputBlur: this.onStartInputBlur,
 	            onEndInputBlur: this.onEndInputBlur,
-	            onClear: this.clear
+	            onClear: this.clear,
+	            onOk: this.onOk
 	        });
 	
 	        return _react2["default"].createElement(
 	            "div",
-	            { onClick: this.stopPropagation, onMouseOver: this.stopPropagation },
+	            _extends({ onClick: this.stopPropagation, onMouseOver: this.stopPropagation
+	            }, (0, _omit2["default"])(others, ['closeIcon', 'renderIcon', 'showClear', 'showToday', 'locale', 'placeholder', 'showOk', 'dateInputPlaceholder', 'onPanelChange', 'onStartInputBlur', 'onEndInputBlur', 'renderFooter', 'showTime'])),
 	            _react2["default"].createElement(
 	                _Picker2["default"],
 	                {
@@ -63738,6 +64106,10 @@
 	    this.stopPropagation = function (e) {
 	        e.stopPropagation();
 	    };
+	
+	    this.onOk = function (value) {
+	        _this3.props.onOk && _this3.props.onOk(value);
+	    };
 	};
 	
 	RangePicker.defaultProps = {
@@ -63758,7 +64130,7 @@
 	module.exports = exports["default"];
 
 /***/ }),
-/* 600 */
+/* 601 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -63779,7 +64151,7 @@
 	
 	var _propTypes2 = _interopRequireDefault(_propTypes);
 	
-	var _moment = __webpack_require__(439);
+	var _moment = __webpack_require__(440);
 	
 	var _moment2 = _interopRequireDefault(_moment);
 	
@@ -63793,27 +64165,27 @@
 	
 	var _KeyCode2 = _interopRequireDefault(_KeyCode);
 	
-	var _CalendarPart = __webpack_require__(601);
+	var _CalendarPart = __webpack_require__(602);
 	
 	var _CalendarPart2 = _interopRequireDefault(_CalendarPart);
 	
-	var _TodayButton = __webpack_require__(578);
+	var _TodayButton = __webpack_require__(579);
 	
 	var _TodayButton2 = _interopRequireDefault(_TodayButton);
 	
-	var _OkButton = __webpack_require__(579);
+	var _OkButton = __webpack_require__(580);
 	
 	var _OkButton2 = _interopRequireDefault(_OkButton);
 	
-	var _TimePickerButton = __webpack_require__(580);
+	var _TimePickerButton = __webpack_require__(581);
 	
 	var _TimePickerButton2 = _interopRequireDefault(_TimePickerButton);
 	
-	var _CommonMixin = __webpack_require__(582);
+	var _CommonMixin = __webpack_require__(583);
 	
-	var _util = __webpack_require__(569);
+	var _util = __webpack_require__(570);
 	
-	var _toTime = __webpack_require__(584);
+	var _toTime = __webpack_require__(585);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 	
@@ -64086,7 +64458,11 @@
 	          showToday || props.timePicker || showOkButton || extraFooter ? _react2["default"].createElement(
 	            'div',
 	            { className: prefixCls + '-footer-btn' },
-	            extraFooter,
+	            extraFooter ? _react2["default"].createElement(
+	              'div',
+	              { className: prefixCls + '-footer-extra' },
+	              extraFooter
+	            ) : null,
 	            showToday ? _react2["default"].createElement(_TodayButton2["default"], _extends({}, props, {
 	              disabled: isTodayInView,
 	              value: state.value[0],
@@ -64684,7 +65060,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 601 */
+/* 602 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -64703,19 +65079,19 @@
 	
 	var _propTypes2 = _interopRequireDefault(_propTypes);
 	
-	var _CalendarHeader = __webpack_require__(570);
+	var _CalendarHeader = __webpack_require__(571);
 	
 	var _CalendarHeader2 = _interopRequireDefault(_CalendarHeader);
 	
-	var _DateTable = __webpack_require__(436);
+	var _DateTable = __webpack_require__(437);
 	
 	var _DateTable2 = _interopRequireDefault(_DateTable);
 	
-	var _DateInput = __webpack_require__(574);
+	var _DateInput = __webpack_require__(575);
 	
 	var _DateInput2 = _interopRequireDefault(_DateInput);
 	
-	var _index = __webpack_require__(569);
+	var _index = __webpack_require__(570);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 	
@@ -64872,7 +65248,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 602 */
+/* 603 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -64883,7 +65259,7 @@
 	
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 	
-	var _rcCalendar = __webpack_require__(434);
+	var _rcCalendar = __webpack_require__(435);
 	
 	var _rcCalendar2 = _interopRequireDefault(_rcCalendar);
 	
@@ -64899,7 +65275,7 @@
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
-	var _Picker = __webpack_require__(585);
+	var _Picker = __webpack_require__(586);
 	
 	var _Picker2 = _interopRequireDefault(_Picker);
 	
@@ -64907,11 +65283,11 @@
 	
 	var _beeFormControl2 = _interopRequireDefault(_beeFormControl);
 	
-	var _zh_CN = __webpack_require__(596);
+	var _zh_CN = __webpack_require__(597);
 	
 	var _zh_CN2 = _interopRequireDefault(_zh_CN);
 	
-	var _en_US = __webpack_require__(583);
+	var _en_US = __webpack_require__(584);
 	
 	var _en_US2 = _interopRequireDefault(_en_US);
 	
@@ -64919,23 +65295,29 @@
 	
 	var _beeIcon2 = _interopRequireDefault(_beeIcon);
 	
-	var _beeInputGroup = __webpack_require__(591);
+	var _beeInputGroup = __webpack_require__(592);
 	
 	var _beeInputGroup2 = _interopRequireDefault(_beeInputGroup);
 	
-	var _moment = __webpack_require__(439);
+	var _moment = __webpack_require__(440);
 	
 	var _moment2 = _interopRequireDefault(_moment);
 	
-	__webpack_require__(565);
+	__webpack_require__(566);
 	
-	__webpack_require__(470);
+	__webpack_require__(471);
+	
+	var _omit = __webpack_require__(415);
+	
+	var _omit2 = _interopRequireDefault(_omit);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 	
 	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
 	
 	function _objectDestructuringEmpty(obj) { if (obj == null) throw new TypeError("Cannot destructure undefined"); }
+	
+	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
@@ -64945,7 +65327,7 @@
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Created by chief on 17/4/6.
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
 	
-	var cn = location.search.indexOf("cn") !== -1;
+	var cn = typeof window !== 'undefined' ? location.search.indexOf("cn") !== -1 : true;
 	
 	var now = (0, _moment2["default"])();
 	if (cn) {
@@ -65108,7 +65490,9 @@
 	
 	    var state = this.state;
 	    var props = this.props;
-	    var showClose = props.showClose;
+	
+	    var showClose = props.showClose,
+	        others = _objectWithoutProperties(props, ["showClose"]);
 	
 	    var value = state.value;
 	    var calendar = _react2["default"].createElement(_rcCalendar2["default"], {
@@ -65129,7 +65513,8 @@
 	    var classes = (0, _classnames2["default"])(props.className, "datepicker-container");
 	    return _react2["default"].createElement(
 	      "div",
-	      { className: classes, onClick: this.stopPropagation, onMouseOver: this.stopPropagation },
+	      _extends({ className: classes, onClick: this.stopPropagation, onMouseOver: this.stopPropagation
+	      }, (0, _omit2["default"])(others, ['closeIcon', 'renderIcon', 'format', 'locale', 'placeholder'])),
 	      _react2["default"].createElement(
 	        _Picker2["default"],
 	        _extends({
@@ -65191,7 +65576,7 @@
 	module.exports = exports["default"];
 
 /***/ }),
-/* 603 */
+/* 604 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -65202,7 +65587,7 @@
 	
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 	
-	var _YearPanel = __webpack_require__(575);
+	var _YearPanel = __webpack_require__(576);
 	
 	var _YearPanel2 = _interopRequireDefault(_YearPanel);
 	
@@ -65216,7 +65601,7 @@
 	
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 	
-	var _Picker = __webpack_require__(585);
+	var _Picker = __webpack_require__(586);
 	
 	var _Picker2 = _interopRequireDefault(_Picker);
 	
@@ -65224,7 +65609,7 @@
 	
 	var _beeFormControl2 = _interopRequireDefault(_beeFormControl);
 	
-	var _beeInputGroup = __webpack_require__(591);
+	var _beeInputGroup = __webpack_require__(592);
 	
 	var _beeInputGroup2 = _interopRequireDefault(_beeInputGroup);
 	
@@ -65236,15 +65621,21 @@
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
-	var _moment = __webpack_require__(439);
+	var _moment = __webpack_require__(440);
 	
 	var _moment2 = _interopRequireDefault(_moment);
+	
+	var _omit = __webpack_require__(415);
+	
+	var _omit2 = _interopRequireDefault(_omit);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 	
 	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
 	
 	function _objectDestructuringEmpty(obj) { if (obj == null) throw new TypeError("Cannot destructure undefined"); }
+	
+	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
@@ -65302,7 +65693,9 @@
 	
 	        var state = this.state;
 	        var props = this.props;
-	        var showClose = props.showClose;
+	
+	        var showClose = props.showClose,
+	            others = _objectWithoutProperties(props, ["showClose"]);
 	
 	        var value = state.value;
 	
@@ -65316,7 +65709,8 @@
 	        var classes = (0, _classnames2["default"])(props.className, "datepicker-container");
 	        return _react2["default"].createElement(
 	            "div",
-	            { className: classes, onClick: this.stopPropagation, onMouseOver: this.stopPropagation },
+	            _extends({ className: classes, onClick: this.stopPropagation, onMouseOver: this.stopPropagation
+	            }, (0, _omit2["default"])(others, ['closeIcon', 'renderIcon', 'disabled', 'format', 'locale', 'placeholder'])),
 	            _react2["default"].createElement(
 	                _Picker2["default"],
 	                _extends({
@@ -65466,14 +65860,15 @@
 	        return _react2["default"].createElement(_beeIcon2["default"], { type: "uf-calendar" });
 	    },
 	    disabled: false,
-	    showClose: true
+	    showClose: true,
+	    format: 'YYYY'
 	};
 	
 	exports["default"] = YearPicker;
 	module.exports = exports["default"];
 
 /***/ }),
-/* 604 */
+/* 605 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -65482,7 +65877,7 @@
 	  value: true
 	});
 	
-	var _Switch = __webpack_require__(605);
+	var _Switch = __webpack_require__(606);
 	
 	var _Switch2 = _interopRequireDefault(_Switch);
 	
@@ -65492,7 +65887,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 605 */
+/* 606 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -65705,7 +66100,7 @@
 	module.exports = exports["default"];
 
 /***/ }),
-/* 606 */
+/* 607 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -65714,19 +66109,19 @@
 	  value: true
 	});
 	
-	var _Slider = __webpack_require__(607);
+	var _Slider = __webpack_require__(608);
 	
 	var _Slider2 = _interopRequireDefault(_Slider);
 	
-	var _Range = __webpack_require__(615);
+	var _Range = __webpack_require__(616);
 	
 	var _Range2 = _interopRequireDefault(_Range);
 	
-	var _Handle = __webpack_require__(613);
+	var _Handle = __webpack_require__(614);
 	
 	var _Handle2 = _interopRequireDefault(_Handle);
 	
-	var _createSliderWithTooltip = __webpack_require__(617);
+	var _createSliderWithTooltip = __webpack_require__(618);
 	
 	var _createSliderWithTooltip2 = _interopRequireDefault(_createSliderWithTooltip);
 	
@@ -65740,7 +66135,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 607 */
+/* 608 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -65763,15 +66158,15 @@
 	
 	var _warning2 = _interopRequireDefault(_warning);
 	
-	var _Track = __webpack_require__(608);
+	var _Track = __webpack_require__(609);
 	
 	var _Track2 = _interopRequireDefault(_Track);
 	
-	var _createSlider = __webpack_require__(609);
+	var _createSlider = __webpack_require__(610);
 	
 	var _createSlider2 = _interopRequireDefault(_createSlider);
 	
-	var _utils = __webpack_require__(614);
+	var _utils = __webpack_require__(615);
 	
 	var utils = _interopRequireWildcard(_utils);
 	
@@ -65976,7 +66371,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(33)))
 
 /***/ }),
-/* 608 */
+/* 609 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -66026,7 +66421,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 609 */
+/* 610 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -66047,7 +66442,7 @@
 	
 	var _propTypes2 = _interopRequireDefault(_propTypes);
 	
-	var _addEventListener = __webpack_require__(610);
+	var _addEventListener = __webpack_require__(611);
 	
 	var _addEventListener2 = _interopRequireDefault(_addEventListener);
 	
@@ -66059,19 +66454,19 @@
 	
 	var _warning2 = _interopRequireDefault(_warning);
 	
-	var _Steps = __webpack_require__(611);
+	var _Steps = __webpack_require__(612);
 	
 	var _Steps2 = _interopRequireDefault(_Steps);
 	
-	var _Marks = __webpack_require__(612);
+	var _Marks = __webpack_require__(613);
 	
 	var _Marks2 = _interopRequireDefault(_Marks);
 	
-	var _Handle = __webpack_require__(613);
+	var _Handle = __webpack_require__(614);
 	
 	var _Handle2 = _interopRequireDefault(_Handle);
 	
-	var _utils = __webpack_require__(614);
+	var _utils = __webpack_require__(615);
 	
 	var utils = _interopRequireWildcard(_utils);
 	
@@ -66439,7 +66834,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(33)))
 
 /***/ }),
-/* 610 */
+/* 611 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
@@ -66475,7 +66870,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 611 */
+/* 612 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -66561,7 +66956,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 612 */
+/* 613 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -66657,7 +67052,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 613 */
+/* 614 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -66753,7 +67148,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 614 */
+/* 615 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -66906,7 +67301,7 @@
 	}
 
 /***/ }),
-/* 615 */
+/* 616 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -66929,7 +67324,7 @@
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
-	var _shallowequal = __webpack_require__(616);
+	var _shallowequal = __webpack_require__(617);
 	
 	var _shallowequal2 = _interopRequireDefault(_shallowequal);
 	
@@ -66937,15 +67332,15 @@
 	
 	var _warning2 = _interopRequireDefault(_warning);
 	
-	var _Track = __webpack_require__(608);
+	var _Track = __webpack_require__(609);
 	
 	var _Track2 = _interopRequireDefault(_Track);
 	
-	var _createSlider = __webpack_require__(609);
+	var _createSlider = __webpack_require__(610);
 	
 	var _createSlider2 = _interopRequireDefault(_createSlider);
 	
-	var _utils = __webpack_require__(614);
+	var _utils = __webpack_require__(615);
 	
 	var utils = _interopRequireWildcard(_utils);
 	
@@ -67370,7 +67765,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 616 */
+/* 617 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -67429,7 +67824,7 @@
 	};
 
 /***/ }),
-/* 617 */
+/* 618 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -67454,7 +67849,7 @@
 	
 	var _beeTooltip2 = _interopRequireDefault(_beeTooltip);
 	
-	var _Handle = __webpack_require__(613);
+	var _Handle = __webpack_require__(614);
 	
 	var _Handle2 = _interopRequireDefault(_Handle);
 	
@@ -67565,7 +67960,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 618 */
+/* 619 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -67574,11 +67969,11 @@
 	  value: true
 	});
 	
-	var _InputNumber = __webpack_require__(619);
+	var _InputNumber = __webpack_require__(620);
 	
 	var _InputNumber2 = _interopRequireDefault(_InputNumber);
 	
-	var _InputNumberGroup = __webpack_require__(620);
+	var _InputNumberGroup = __webpack_require__(621);
 	
 	var _InputNumberGroup2 = _interopRequireDefault(_InputNumberGroup);
 	
@@ -67590,7 +67985,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 619 */
+/* 620 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -67609,7 +68004,7 @@
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
-	var _beeInputGroup = __webpack_require__(591);
+	var _beeInputGroup = __webpack_require__(592);
 	
 	var _beeInputGroup2 = _interopRequireDefault(_beeInputGroup);
 	
@@ -68197,7 +68592,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 620 */
+/* 621 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -68216,7 +68611,7 @@
 	
 	var _propTypes2 = _interopRequireDefault(_propTypes);
 	
-	var _InputNumber = __webpack_require__(619);
+	var _InputNumber = __webpack_require__(620);
 	
 	var _InputNumber2 = _interopRequireDefault(_InputNumber);
 	
@@ -68388,7 +68783,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 621 */
+/* 622 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -68397,7 +68792,7 @@
 	  value: true
 	});
 	
-	var _Rate = __webpack_require__(622);
+	var _Rate = __webpack_require__(623);
 	
 	var _Rate2 = _interopRequireDefault(_Rate);
 	
@@ -68407,7 +68802,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 622 */
+/* 623 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -68420,7 +68815,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _rcRate = __webpack_require__(623);
+	var _rcRate = __webpack_require__(624);
 	
 	var _rcRate2 = _interopRequireDefault(_rcRate);
 	
@@ -68507,7 +68902,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 623 */
+/* 624 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -68517,7 +68912,7 @@
 	});
 	exports["default"] = void 0;
 	
-	var _Rate = _interopRequireDefault(__webpack_require__(624));
+	var _Rate = _interopRequireDefault(__webpack_require__(625));
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 	
@@ -68525,7 +68920,7 @@
 	exports["default"] = _default;
 
 /***/ }),
-/* 624 */
+/* 625 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -68547,9 +68942,9 @@
 	
 	var _KeyCode = _interopRequireDefault(__webpack_require__(381));
 	
-	var _util = __webpack_require__(625);
+	var _util = __webpack_require__(626);
 	
-	var _Star = _interopRequireDefault(__webpack_require__(626));
+	var _Star = _interopRequireDefault(__webpack_require__(627));
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 	
@@ -68890,7 +69285,7 @@
 	exports["default"] = _default;
 
 /***/ }),
-/* 625 */
+/* 626 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -68945,7 +69340,7 @@
 	}
 
 /***/ }),
-/* 626 */
+/* 627 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -69114,7 +69509,7 @@
 	});
 
 /***/ }),
-/* 627 */
+/* 628 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -69123,7 +69518,7 @@
 	  value: true
 	});
 	
-	var _CitySelect = __webpack_require__(628);
+	var _CitySelect = __webpack_require__(629);
 	
 	var _CitySelect2 = _interopRequireDefault(_CitySelect);
 	
@@ -69133,7 +69528,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 628 */
+/* 629 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -69158,11 +69553,11 @@
 	
 	var _beeSelect2 = _interopRequireDefault(_beeSelect);
 	
-	var _lodash = __webpack_require__(629);
+	var _lodash = __webpack_require__(630);
 	
 	var _lodash2 = _interopRequireDefault(_lodash);
 	
-	var _provinceData = __webpack_require__(630);
+	var _provinceData = __webpack_require__(631);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 	
@@ -69396,7 +69791,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 629 */
+/* 630 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global, module) {/**
@@ -71797,7 +72192,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(358)(module)))
 
 /***/ }),
-/* 630 */
+/* 631 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -71807,15 +72202,15 @@
 	});
 	exports.en = exports.tw = exports.zh = undefined;
 	
-	var _citys = __webpack_require__(631);
+	var _citys = __webpack_require__(632);
 	
 	var _citys2 = _interopRequireDefault(_citys);
 	
-	var _citysTw = __webpack_require__(632);
+	var _citysTw = __webpack_require__(633);
 	
 	var _citysTw2 = _interopRequireDefault(_citysTw);
 	
-	var _citysEn = __webpack_require__(633);
+	var _citysEn = __webpack_require__(634);
 	
 	var _citysEn2 = _interopRequireDefault(_citysEn);
 	
@@ -71837,7 +72232,7 @@
 	};
 
 /***/ }),
-/* 631 */
+/* 632 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -73112,7 +73507,7 @@
 	module.exports = exports["default"];
 
 /***/ }),
-/* 632 */
+/* 633 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -74387,7 +74782,7 @@
 	module.exports = exports["default"];
 
 /***/ }),
-/* 633 */
+/* 634 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -74464,7 +74859,7 @@
 	module.exports = exports["default"];
 
 /***/ }),
-/* 634 */
+/* 635 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -74479,15 +74874,15 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _Upload = __webpack_require__(635);
+	var _Upload = __webpack_require__(636);
 	
 	var _Upload2 = _interopRequireDefault(_Upload);
 	
-	var _uploadList = __webpack_require__(640);
+	var _uploadList = __webpack_require__(641);
 	
 	var _uploadList2 = _interopRequireDefault(_uploadList);
 	
-	var _getFileItem = __webpack_require__(644);
+	var _getFileItem = __webpack_require__(645);
 	
 	var _getFileItem2 = _interopRequireDefault(_getFileItem);
 	
@@ -74882,7 +75277,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 635 */
+/* 636 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -74897,11 +75292,11 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _AjaxUploader = __webpack_require__(636);
+	var _AjaxUploader = __webpack_require__(637);
 	
 	var _AjaxUploader2 = _interopRequireDefault(_AjaxUploader);
 	
-	var _IframeUploader = __webpack_require__(639);
+	var _IframeUploader = __webpack_require__(640);
 	
 	var _IframeUploader2 = _interopRequireDefault(_IframeUploader);
 	
@@ -75023,7 +75418,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 636 */
+/* 637 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -75042,11 +75437,11 @@
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
-	var _request = __webpack_require__(637);
+	var _request = __webpack_require__(638);
 	
 	var _request2 = _interopRequireDefault(_request);
 	
-	var _uid = __webpack_require__(638);
+	var _uid = __webpack_require__(639);
 	
 	var _uid2 = _interopRequireDefault(_uid);
 	
@@ -75307,7 +75702,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 637 */
+/* 638 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -75419,7 +75814,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 638 */
+/* 639 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -75437,7 +75832,7 @@
 	module.exports = exports["default"];
 
 /***/ }),
-/* 639 */
+/* 640 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -75460,7 +75855,7 @@
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
-	var _uid = __webpack_require__(638);
+	var _uid = __webpack_require__(639);
 	
 	var _uid2 = _interopRequireDefault(_uid);
 	
@@ -75770,7 +76165,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 640 */
+/* 641 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -75791,7 +76186,7 @@
 	
 	var _beeIcon2 = _interopRequireDefault(_beeIcon);
 	
-	var _beeProgressBar = __webpack_require__(641);
+	var _beeProgressBar = __webpack_require__(642);
 	
 	var _beeProgressBar2 = _interopRequireDefault(_beeProgressBar);
 	
@@ -76027,7 +76422,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 641 */
+/* 642 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -76036,7 +76431,7 @@
 	  value: true
 	});
 	
-	var _ProgressBar = __webpack_require__(642);
+	var _ProgressBar = __webpack_require__(643);
 	
 	var _ProgressBar2 = _interopRequireDefault(_ProgressBar);
 	
@@ -76046,7 +76441,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 642 */
+/* 643 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -76069,7 +76464,7 @@
 	
 	var _propTypes2 = _interopRequireDefault(_propTypes);
 	
-	var _nprogress = __webpack_require__(643);
+	var _nprogress = __webpack_require__(644);
 	
 	var _nprogress2 = _interopRequireDefault(_nprogress);
 	
@@ -76326,7 +76721,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 643 */
+/* 644 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/* NProgress, (c) 2013, 2014 Rico Sta. Cruz - http://ricostacruz.com/nprogress
@@ -76808,7 +77203,7 @@
 
 
 /***/ }),
-/* 644 */
+/* 645 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -76834,7 +77229,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 645 */
+/* 646 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -76848,10 +77243,6 @@
 	var _react = __webpack_require__(1);
 	
 	var _react2 = _interopRequireDefault(_react);
-	
-	var _reactDom = __webpack_require__(2);
-	
-	var _reactDom2 = _interopRequireDefault(_reactDom);
 	
 	var _src = __webpack_require__(158);
 	
@@ -76867,11 +77258,11 @@
 	
 	var _beeSelect2 = _interopRequireDefault(_beeSelect);
 	
-	var _beeRadio = __webpack_require__(428);
+	var _beeRadio = __webpack_require__(429);
 	
 	var _beeRadio2 = _interopRequireDefault(_beeRadio);
 	
-	var _beeDatepicker = __webpack_require__(432);
+	var _beeDatepicker = __webpack_require__(433);
 	
 	var _beeDatepicker2 = _interopRequireDefault(_beeDatepicker);
 	
@@ -76879,29 +77270,17 @@
 	
 	var _beeCheckbox2 = _interopRequireDefault(_beeCheckbox);
 	
-	var _beeSwitch = __webpack_require__(604);
-	
-	var _beeSwitch2 = _interopRequireDefault(_beeSwitch);
-	
 	var _beeLabel = __webpack_require__(350);
 	
 	var _beeLabel2 = _interopRequireDefault(_beeLabel);
-	
-	var _beeButton = __webpack_require__(155);
-	
-	var _beeButton2 = _interopRequireDefault(_beeButton);
 	
 	var _beeIcon = __webpack_require__(79);
 	
 	var _beeIcon2 = _interopRequireDefault(_beeIcon);
 	
-	var _beeSearchPanel = __webpack_require__(646);
+	var _beeSearchPanel = __webpack_require__(647);
 	
 	var _beeSearchPanel2 = _interopRequireDefault(_beeSearchPanel);
-	
-	var _moment = __webpack_require__(439);
-	
-	var _moment2 = _interopRequireDefault(_moment);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
@@ -76920,9 +77299,8 @@
 	
 	var FormItem = _src2['default'].FormItem;
 	var Option = _beeSelect2['default'].Option;
-	var RangePicker = _beeDatepicker2['default'].RangePicker;
-	
 	var CheckboxGroup = _beeCheckbox2['default'].CheckboxGroup;
+	var AdvancedContainer = _beeSearchPanel2['default'].AdvancedContainer;
 	
 	var Demo5 = _src2['default'].createForm()(function (_Component) {
 	    _inherits(Demo, _Component);
@@ -76996,341 +77374,345 @@
 	                    onChange: this.onChange
 	                },
 	                _react2['default'].createElement(
-	                    _src2['default'],
-	                    { className: 'demo5' },
+	                    AdvancedContainer,
+	                    null,
 	                    _react2['default'].createElement(
-	                        _beeLayout.Row,
-	                        null,
+	                        _src2['default'],
+	                        { className: 'demo5' },
 	                        _react2['default'].createElement(
-	                            _beeLayout.Col,
-	                            { lg: 4, md: 6, xs: 12 },
+	                            _beeLayout.Row,
+	                            null,
 	                            _react2['default'].createElement(
-	                                FormItem,
-	                                null,
+	                                _beeLayout.Col,
+	                                { lg: 4, md: 6, xs: 12 },
 	                                _react2['default'].createElement(
-	                                    _beeLayout.Col,
-	                                    { lg: 4, md: 4, xs: 4 },
+	                                    FormItem,
+	                                    null,
 	                                    _react2['default'].createElement(
-	                                        _beeLabel2['default'],
-	                                        null,
-	                                        _react2['default'].createElement(_beeIcon2['default'], { type: 'uf-mi', className: 'mast' }),
-	                                        '\u8BA2\u5355\u7F16\u53F7'
-	                                    )
-	                                ),
-	                                _react2['default'].createElement(
-	                                    _beeLayout.Col,
-	                                    { lg: 8, md: 8, xs: 8 },
-	                                    _react2['default'].createElement(_beeFormControl2['default'], _extends({ size: 'sm'
-	                                    }, getFieldProps('orderCode', {
-	                                        initialValue: '',
-	                                        validateTrigger: 'onBlur',
-	                                        rules: [{
-	                                            required: true, message: _react2['default'].createElement(
-	                                                'span',
-	                                                null,
-	                                                _react2['default'].createElement(_beeIcon2['default'], { type: 'uf-exc-t' }),
-	                                                _react2['default'].createElement(
-	                                                    'span',
-	                                                    null,
-	                                                    '\u8BF7\u8F93\u5165\u8BA2\u5355\u7F16\u53F7'
-	                                                )
-	                                            )
-	                                        }]
-	                                    }))),
-	                                    _react2['default'].createElement(
-	                                        'span',
-	                                        { className: 'error' },
-	                                        getFieldError('orderCode')
-	                                    )
-	                                )
-	                            )
-	                        ),
-	                        _react2['default'].createElement(
-	                            _beeLayout.Col,
-	                            { lg: 4, md: 6, xs: 12 },
-	                            _react2['default'].createElement(
-	                                FormItem,
-	                                null,
-	                                _react2['default'].createElement(
-	                                    _beeLayout.Col,
-	                                    { lg: 4, md: 4, xs: 4 },
-	                                    _react2['default'].createElement(
-	                                        _beeLabel2['default'],
-	                                        null,
-	                                        _react2['default'].createElement(_beeIcon2['default'], { type: 'uf-mi', className: 'mast' }),
-	                                        '\u4F9B\u5E94\u5546\u540D\u79F0'
-	                                    )
-	                                ),
-	                                _react2['default'].createElement(
-	                                    _beeLayout.Col,
-	                                    { lg: 8, md: 8, xs: 8 },
-	                                    _react2['default'].createElement(_beeFormControl2['default'], _extends({ size: 'sm'
-	                                    }, getFieldProps('supplierName', {
-	                                        initialValue: '',
-	                                        validateTrigger: 'onBlur',
-	                                        rules: [{
-	                                            required: true, message: _react2['default'].createElement(
-	                                                'span',
-	                                                null,
-	                                                _react2['default'].createElement(_beeIcon2['default'], { type: 'uf-exc-t' }),
-	                                                _react2['default'].createElement(
-	                                                    'span',
-	                                                    null,
-	                                                    '\u8BF7\u8F93\u5165\u4F9B\u5E94\u5546\u540D\u79F0'
-	                                                )
-	                                            )
-	                                        }]
-	                                    }))),
-	                                    _react2['default'].createElement(
-	                                        'span',
-	                                        { className: 'error' },
-	                                        getFieldError('supplierName')
-	                                    )
-	                                )
-	                            )
-	                        ),
-	                        _react2['default'].createElement(
-	                            _beeLayout.Col,
-	                            { lg: 4, md: 6, xs: 12 },
-	                            _react2['default'].createElement(
-	                                FormItem,
-	                                null,
-	                                _react2['default'].createElement(
-	                                    _beeLayout.Col,
-	                                    { lg: 4, md: 4, xs: 4 },
-	                                    _react2['default'].createElement(
-	                                        _beeLabel2['default'],
-	                                        null,
-	                                        _react2['default'].createElement(_beeIcon2['default'], { type: 'uf-mi', className: 'mast' }),
-	                                        '\u51ED\u8BC1\u540D\u79F0'
-	                                    )
-	                                ),
-	                                _react2['default'].createElement(
-	                                    _beeLayout.Col,
-	                                    { lg: 8, md: 8, xs: 8 },
-	                                    _react2['default'].createElement(_beeFormControl2['default'], _extends({ size: 'sm'
-	                                    }, getFieldProps('voucherName1', {
-	                                        initialValue: '',
-	                                        validateTrigger: 'onBlur',
-	                                        rules: [{
-	                                            required: true, message: _react2['default'].createElement(
-	                                                'span',
-	                                                null,
-	                                                _react2['default'].createElement(_beeIcon2['default'], { type: 'uf-exc-t' }),
-	                                                _react2['default'].createElement(
-	                                                    'span',
-	                                                    null,
-	                                                    '\u8BF7\u8F93\u5165\u51ED\u8BC1\u540D\u79F0'
-	                                                )
-	                                            )
-	                                        }]
-	                                    }))),
-	                                    _react2['default'].createElement(
-	                                        'span',
-	                                        { className: 'error' },
-	                                        getFieldError('voucherName1')
-	                                    )
-	                                )
-	                            )
-	                        ),
-	                        _react2['default'].createElement(
-	                            _beeLayout.Col,
-	                            { lg: 4, md: 6, xs: 12 },
-	                            _react2['default'].createElement(
-	                                FormItem,
-	                                null,
-	                                _react2['default'].createElement(
-	                                    _beeLayout.Col,
-	                                    { lg: 4, md: 4, xs: 4 },
-	                                    _react2['default'].createElement(
-	                                        _beeLabel2['default'],
-	                                        null,
-	                                        '\u8BA2\u5355\u7C7B\u578B'
-	                                    )
-	                                ),
-	                                _react2['default'].createElement(
-	                                    _beeLayout.Col,
-	                                    { lg: 8, md: 8, xs: 8 },
-	                                    _react2['default'].createElement(
-	                                        _beeSelect2['default'],
-	                                        _extends({ size: 'sm'
-	                                        }, getFieldProps('type', {
-	                                            initialValue: ''
-	                                        })),
+	                                        _beeLayout.Col,
+	                                        { lg: 4, md: 4, xs: 4 },
 	                                        _react2['default'].createElement(
-	                                            Option,
-	                                            { value: '' },
-	                                            '\u8BF7\u9009\u62E9'
-	                                        ),
-	                                        self.state.orderTypes.map(function (item, index) {
-	                                            return _react2['default'].createElement(
+	                                            _beeLabel2['default'],
+	                                            null,
+	                                            _react2['default'].createElement(_beeIcon2['default'], { type: 'uf-mi', className: 'mast' }),
+	                                            '\u8BA2\u5355\u7F16\u53F7'
+	                                        )
+	                                    ),
+	                                    _react2['default'].createElement(
+	                                        _beeLayout.Col,
+	                                        { lg: 8, md: 8, xs: 8 },
+	                                        _react2['default'].createElement(_beeFormControl2['default'], _extends({ size: 'sm'
+	                                        }, getFieldProps('orderCode', {
+	                                            initialValue: '',
+	                                            validateTrigger: 'onBlur',
+	                                            rules: [{
+	                                                required: true, message: _react2['default'].createElement(
+	                                                    'span',
+	                                                    null,
+	                                                    _react2['default'].createElement(_beeIcon2['default'], { type: 'uf-exc-t' }),
+	                                                    _react2['default'].createElement(
+	                                                        'span',
+	                                                        null,
+	                                                        '\u8BF7\u8F93\u5165\u8BA2\u5355\u7F16\u53F7'
+	                                                    )
+	                                                )
+	                                            }]
+	                                        }))),
+	                                        _react2['default'].createElement(
+	                                            'span',
+	                                            { className: 'error' },
+	                                            getFieldError('orderCode')
+	                                        )
+	                                    )
+	                                )
+	                            ),
+	                            _react2['default'].createElement(
+	                                _beeLayout.Col,
+	                                { lg: 4, md: 6, xs: 12 },
+	                                _react2['default'].createElement(
+	                                    FormItem,
+	                                    null,
+	                                    _react2['default'].createElement(
+	                                        _beeLayout.Col,
+	                                        { lg: 4, md: 4, xs: 4 },
+	                                        _react2['default'].createElement(
+	                                            _beeLabel2['default'],
+	                                            null,
+	                                            _react2['default'].createElement(_beeIcon2['default'], { type: 'uf-mi', className: 'mast' }),
+	                                            '\u4F9B\u5E94\u5546\u540D\u79F0'
+	                                        )
+	                                    ),
+	                                    _react2['default'].createElement(
+	                                        _beeLayout.Col,
+	                                        { lg: 8, md: 8, xs: 8 },
+	                                        _react2['default'].createElement(_beeFormControl2['default'], _extends({ size: 'sm'
+	                                        }, getFieldProps('supplierName', {
+	                                            initialValue: '',
+	                                            validateTrigger: 'onBlur',
+	                                            rules: [{
+	                                                required: true, message: _react2['default'].createElement(
+	                                                    'span',
+	                                                    null,
+	                                                    _react2['default'].createElement(_beeIcon2['default'], { type: 'uf-exc-t' }),
+	                                                    _react2['default'].createElement(
+	                                                        'span',
+	                                                        null,
+	                                                        '\u8BF7\u8F93\u5165\u4F9B\u5E94\u5546\u540D\u79F0'
+	                                                    )
+	                                                )
+	                                            }]
+	                                        }))),
+	                                        _react2['default'].createElement(
+	                                            'span',
+	                                            { className: 'error' },
+	                                            getFieldError('supplierName')
+	                                        )
+	                                    )
+	                                )
+	                            ),
+	                            _react2['default'].createElement(
+	                                _beeLayout.Col,
+	                                { lg: 4, md: 6, xs: 12 },
+	                                _react2['default'].createElement(
+	                                    FormItem,
+	                                    null,
+	                                    _react2['default'].createElement(
+	                                        _beeLayout.Col,
+	                                        { lg: 4, md: 4, xs: 4 },
+	                                        _react2['default'].createElement(
+	                                            _beeLabel2['default'],
+	                                            null,
+	                                            _react2['default'].createElement(_beeIcon2['default'], { type: 'uf-mi', className: 'mast' }),
+	                                            '\u51ED\u8BC1\u540D\u79F0'
+	                                        )
+	                                    ),
+	                                    _react2['default'].createElement(
+	                                        _beeLayout.Col,
+	                                        { lg: 8, md: 8, xs: 8 },
+	                                        _react2['default'].createElement(_beeFormControl2['default'], _extends({ size: 'sm'
+	                                        }, getFieldProps('voucherName1', {
+	                                            initialValue: '',
+	                                            validateTrigger: 'onBlur',
+	                                            rules: [{
+	                                                required: true, message: _react2['default'].createElement(
+	                                                    'span',
+	                                                    null,
+	                                                    _react2['default'].createElement(_beeIcon2['default'], { type: 'uf-exc-t' }),
+	                                                    _react2['default'].createElement(
+	                                                        'span',
+	                                                        null,
+	                                                        '\u8BF7\u8F93\u5165\u51ED\u8BC1\u540D\u79F0'
+	                                                    )
+	                                                )
+	                                            }]
+	                                        }))),
+	                                        _react2['default'].createElement(
+	                                            'span',
+	                                            { className: 'error' },
+	                                            getFieldError('voucherName1')
+	                                        )
+	                                    )
+	                                )
+	                            ),
+	                            _react2['default'].createElement(
+	                                _beeLayout.Col,
+	                                { lg: 4, md: 6, xs: 12 },
+	                                _react2['default'].createElement(
+	                                    FormItem,
+	                                    null,
+	                                    _react2['default'].createElement(
+	                                        _beeLayout.Col,
+	                                        { lg: 4, md: 4, xs: 4 },
+	                                        _react2['default'].createElement(
+	                                            _beeLabel2['default'],
+	                                            null,
+	                                            '\u8BA2\u5355\u7C7B\u578B'
+	                                        )
+	                                    ),
+	                                    _react2['default'].createElement(
+	                                        _beeLayout.Col,
+	                                        { lg: 8, md: 8, xs: 8 },
+	                                        _react2['default'].createElement(
+	                                            _beeSelect2['default'],
+	                                            _extends({ size: 'sm'
+	                                            }, getFieldProps('type', {
+	                                                initialValue: ''
+	                                            })),
+	                                            _react2['default'].createElement(
 	                                                Option,
-	                                                { key: index, value: item.code },
-	                                                item.name
-	                                            );
-	                                        })
-	                                    )
-	                                )
-	                            )
-	                        ),
-	                        _react2['default'].createElement(
-	                            _beeLayout.Col,
-	                            { lg: 4, md: 6, xs: 12 },
-	                            _react2['default'].createElement(
-	                                FormItem,
-	                                null,
-	                                _react2['default'].createElement(
-	                                    _beeLayout.Col,
-	                                    { lg: 4, md: 4, xs: 4 },
-	                                    _react2['default'].createElement(
-	                                        _beeLabel2['default'],
-	                                        null,
-	                                        '\u91C7\u8D2D\u7EC4'
-	                                    )
-	                                ),
-	                                _react2['default'].createElement(
-	                                    _beeLayout.Col,
-	                                    { lg: 8, md: 8, xs: 8 },
-	                                    _react2['default'].createElement(
-	                                        CheckboxGroup,
-	                                        getFieldProps('purchasingGroup', {
-	                                            initialValue: ['2']
-	                                        }),
-	                                        _react2['default'].createElement(
-	                                            _beeCheckbox2['default'],
-	                                            { value: '1' },
-	                                            '\u4EBA\u529B'
-	                                        ),
-	                                        _react2['default'].createElement(
-	                                            _beeCheckbox2['default'],
-	                                            { value: '2' },
-	                                            '\u8D22\u52A1'
+	                                                { value: '' },
+	                                                '\u8BF7\u9009\u62E9'
+	                                            ),
+	                                            self.state.orderTypes.map(function (item, index) {
+	                                                return _react2['default'].createElement(
+	                                                    Option,
+	                                                    { key: index, value: item.code },
+	                                                    item.name
+	                                                );
+	                                            })
 	                                        )
 	                                    )
 	                                )
-	                            )
-	                        ),
-	                        _react2['default'].createElement(
-	                            _beeLayout.Col,
-	                            { lg: 4, md: 6, xs: 12 },
+	                            ),
 	                            _react2['default'].createElement(
-	                                FormItem,
-	                                null,
+	                                _beeLayout.Col,
+	                                { lg: 4, md: 6, xs: 12 },
 	                                _react2['default'].createElement(
-	                                    _beeLayout.Col,
-	                                    { lg: 4, md: 4, xs: 4 },
+	                                    FormItem,
+	                                    null,
 	                                    _react2['default'].createElement(
-	                                        _beeLabel2['default'],
-	                                        null,
-	                                        '\u5BA1\u6279\u72B6\u6001'
-	                                    )
-	                                ),
-	                                _react2['default'].createElement(
-	                                    _beeLayout.Col,
-	                                    { lg: 8, md: 8, xs: 8 },
+	                                        _beeLayout.Col,
+	                                        { lg: 4, md: 4, xs: 4 },
+	                                        _react2['default'].createElement(
+	                                            _beeLabel2['default'],
+	                                            null,
+	                                            '\u91C7\u8D2D\u7EC4'
+	                                        )
+	                                    ),
 	                                    _react2['default'].createElement(
-	                                        _beeRadio2['default'].RadioGroup,
-	                                        _extends({
-	                                            selectedValue: this.state.approvalState
-	                                        }, getFieldProps('approvalState', {
-	                                            initialValue: '1',
-	                                            onChange: function onChange(value) {
-	                                                self.setState({ approvalState: value });
-	                                            }
-	                                        })),
+	                                        _beeLayout.Col,
+	                                        { lg: 8, md: 8, xs: 8 },
 	                                        _react2['default'].createElement(
-	                                            _beeRadio2['default'],
-	                                            { value: '0' },
-	                                            '\u672A\u5BA1\u6279'
-	                                        ),
-	                                        _react2['default'].createElement(
-	                                            _beeRadio2['default'],
-	                                            { value: '1' },
-	                                            '\u5DF2\u5BA1\u6279'
+	                                            CheckboxGroup,
+	                                            getFieldProps('purchasingGroup', {
+	                                                initialValue: ['2']
+	                                            }),
+	                                            _react2['default'].createElement(
+	                                                _beeCheckbox2['default'],
+	                                                { value: '1' },
+	                                                '\u4EBA\u529B'
+	                                            ),
+	                                            _react2['default'].createElement(
+	                                                _beeCheckbox2['default'],
+	                                                { value: '2' },
+	                                                '\u8D22\u52A1'
+	                                            )
 	                                        )
 	                                    )
 	                                )
-	                            )
-	                        ),
-	                        _react2['default'].createElement(
-	                            _beeLayout.Col,
-	                            { lg: 4, md: 6, xs: 12 },
+	                            ),
 	                            _react2['default'].createElement(
-	                                FormItem,
-	                                null,
+	                                _beeLayout.Col,
+	                                { lg: 4, md: 6, xs: 12 },
 	                                _react2['default'].createElement(
-	                                    _beeLayout.Col,
-	                                    { lg: 4, md: 4, xs: 4 },
+	                                    FormItem,
+	                                    null,
 	                                    _react2['default'].createElement(
-	                                        _beeLabel2['default'],
-	                                        null,
-	                                        '\u5173\u95ED\u72B6\u6001'
-	                                    )
-	                                ),
-	                                _react2['default'].createElement(
-	                                    _beeLayout.Col,
-	                                    { lg: 8, md: 8, xs: 8 },
+	                                        _beeLayout.Col,
+	                                        { lg: 4, md: 4, xs: 4 },
+	                                        _react2['default'].createElement(
+	                                            _beeLabel2['default'],
+	                                            null,
+	                                            '\u5BA1\u6279\u72B6\u6001'
+	                                        )
+	                                    ),
 	                                    _react2['default'].createElement(
-	                                        _beeRadio2['default'].RadioGroup,
-	                                        _extends({
-	                                            selectedValue: this.state.closeState
-	                                        }, getFieldProps('closeState', {
-	                                            initialValue: '1',
-	                                            onChange: function onChange(value) {
-	                                                self.setState({ closeState: value });
-	                                            }
-	                                        })),
+	                                        _beeLayout.Col,
+	                                        { lg: 8, md: 8, xs: 8 },
 	                                        _react2['default'].createElement(
-	                                            _beeRadio2['default'],
-	                                            { value: '0' },
-	                                            '\u672A\u5173\u95ED'
-	                                        ),
-	                                        _react2['default'].createElement(
-	                                            _beeRadio2['default'],
-	                                            { value: '1' },
-	                                            '\u5DF2\u5173\u95ED'
+	                                            _beeRadio2['default'].RadioGroup,
+	                                            _extends({
+	                                                selectedValue: this.state.approvalState
+	                                            }, getFieldProps('approvalState', {
+	                                                initialValue: '1',
+	                                                onChange: function onChange(value) {
+	                                                    self.setState({ approvalState: value });
+	                                                }
+	                                            })),
+	                                            _react2['default'].createElement(
+	                                                _beeRadio2['default'],
+	                                                { value: '0' },
+	                                                '\u672A\u5BA1\u6279'
+	                                            ),
+	                                            _react2['default'].createElement(
+	                                                _beeRadio2['default'],
+	                                                { value: '1' },
+	                                                '\u5DF2\u5BA1\u6279'
+	                                            )
 	                                        )
 	                                    )
 	                                )
-	                            )
-	                        ),
-	                        _react2['default'].createElement(
-	                            _beeLayout.Col,
-	                            { lg: 4, md: 6, xs: 12 },
+	                            ),
 	                            _react2['default'].createElement(
-	                                FormItem,
-	                                null,
+	                                _beeLayout.Col,
+	                                { lg: 4, md: 6, xs: 12 },
 	                                _react2['default'].createElement(
-	                                    _beeLayout.Col,
-	                                    { lg: 4, md: 4, xs: 4 },
+	                                    FormItem,
+	                                    null,
 	                                    _react2['default'].createElement(
-	                                        _beeLabel2['default'],
-	                                        null,
-	                                        '\u786E\u8BA4\u72B6\u6001'
+	                                        _beeLayout.Col,
+	                                        { lg: 4, md: 4, xs: 4 },
+	                                        _react2['default'].createElement(
+	                                            _beeLabel2['default'],
+	                                            null,
+	                                            '\u5173\u95ED\u72B6\u6001'
+	                                        )
+	                                    ),
+	                                    _react2['default'].createElement(
+	                                        _beeLayout.Col,
+	                                        { lg: 8, md: 8, xs: 8 },
+	                                        _react2['default'].createElement(
+	                                            _beeRadio2['default'].RadioGroup,
+	                                            _extends({
+	                                                selectedValue: this.state.closeState
+	                                            }, getFieldProps('closeState', {
+	                                                initialValue: '1',
+	                                                onChange: function onChange(value) {
+	                                                    self.setState({ closeState: value });
+	                                                }
+	                                            })),
+	                                            _react2['default'].createElement(
+	                                                _beeRadio2['default'],
+	                                                { value: '0' },
+	                                                '\u672A\u5173\u95ED'
+	                                            ),
+	                                            _react2['default'].createElement(
+	                                                _beeRadio2['default'],
+	                                                { value: '1' },
+	                                                '\u5DF2\u5173\u95ED'
+	                                            )
+	                                        )
 	                                    )
-	                                ),
+	                                )
+	                            ),
+	                            _react2['default'].createElement(
+	                                _beeLayout.Col,
+	                                { lg: 4, md: 6, xs: 12 },
 	                                _react2['default'].createElement(
-	                                    _beeLayout.Col,
-	                                    { lg: 8, md: 8, xs: 8 },
+	                                    FormItem,
+	                                    null,
 	                                    _react2['default'].createElement(
-	                                        _beeRadio2['default'].RadioGroup,
-	                                        _extends({
-	                                            selectedValue: this.state.confirmState
-	                                        }, getFieldProps('confirmState', {
-	                                            initialValue: '1',
-	                                            onChange: function onChange(value) {
-	                                                self.setState({ confirmState: value });
-	                                            }
-	                                        })),
+	                                        _beeLayout.Col,
+	                                        { lg: 4, md: 4, xs: 4 },
 	                                        _react2['default'].createElement(
-	                                            _beeRadio2['default'],
-	                                            { value: '0' },
-	                                            '\u672A\u786E\u8BA4'
-	                                        ),
+	                                            _beeLabel2['default'],
+	                                            null,
+	                                            '\u786E\u8BA4\u72B6\u6001'
+	                                        )
+	                                    ),
+	                                    _react2['default'].createElement(
+	                                        _beeLayout.Col,
+	                                        { lg: 8, md: 8, xs: 8 },
 	                                        _react2['default'].createElement(
-	                                            _beeRadio2['default'],
-	                                            { value: '1' },
-	                                            '\u5DF2\u786E\u8BA4'
+	                                            _beeRadio2['default'].RadioGroup,
+	                                            _extends({
+	                                                selectedValue: this.state.confirmState
+	                                            }, getFieldProps('confirmState', {
+	                                                initialValue: '1',
+	                                                onChange: function onChange(value) {
+	                                                    self.setState({ confirmState: value });
+	                                                }
+	                                            })),
+	                                            _react2['default'].createElement(
+	                                                _beeRadio2['default'],
+	                                                { value: '0' },
+	                                                '\u672A\u786E\u8BA4'
+	                                            ),
+	                                            _react2['default'].createElement(
+	                                                _beeRadio2['default'],
+	                                                { value: '1' },
+	                                                '\u5DF2\u786E\u8BA4'
+	                                            )
 	                                        )
 	                                    )
 	                                )
@@ -77348,7 +77730,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 646 */
+/* 647 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -77357,15 +77739,15 @@
 	  value: true
 	});
 	
-	var _SearchPanel = __webpack_require__(647);
+	var _SearchPanel = __webpack_require__(648);
 	
 	var _SearchPanel2 = _interopRequireDefault(_SearchPanel);
 	
-	var _AdvancedContainer = __webpack_require__(648);
+	var _AdvancedContainer = __webpack_require__(649);
 	
 	var _AdvancedContainer2 = _interopRequireDefault(_AdvancedContainer);
 	
-	var _HeadContainer = __webpack_require__(649);
+	var _HeadContainer = __webpack_require__(650);
 	
 	var _HeadContainer2 = _interopRequireDefault(_HeadContainer);
 	
@@ -77378,7 +77760,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 647 */
+/* 648 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -77403,15 +77785,15 @@
 	
 	var _propTypes2 = _interopRequireDefault(_propTypes);
 	
-	var _AdvancedContainer = __webpack_require__(648);
+	var _AdvancedContainer = __webpack_require__(649);
 	
 	var _AdvancedContainer2 = _interopRequireDefault(_AdvancedContainer);
 	
-	var _HeadContainer = __webpack_require__(649);
+	var _HeadContainer = __webpack_require__(650);
 	
 	var _HeadContainer2 = _interopRequireDefault(_HeadContainer);
 	
-	var _i18n = __webpack_require__(650);
+	var _i18n = __webpack_require__(651);
 	
 	var _i18n2 = _interopRequireDefault(_i18n);
 	
@@ -77658,7 +78040,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 648 */
+/* 649 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -77702,7 +78084,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 649 */
+/* 650 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -77755,7 +78137,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 650 */
+/* 651 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -77784,7 +78166,7 @@
 	};
 
 /***/ }),
-/* 651 */
+/* 652 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -77817,11 +78199,11 @@
 	
 	var _beeSelect2 = _interopRequireDefault(_beeSelect);
 	
-	var _beeRadio = __webpack_require__(428);
+	var _beeRadio = __webpack_require__(429);
 	
 	var _beeRadio2 = _interopRequireDefault(_beeRadio);
 	
-	var _beeDatepicker = __webpack_require__(432);
+	var _beeDatepicker = __webpack_require__(433);
 	
 	var _beeDatepicker2 = _interopRequireDefault(_beeDatepicker);
 	
@@ -77829,7 +78211,7 @@
 	
 	var _beeCheckbox2 = _interopRequireDefault(_beeCheckbox);
 	
-	var _beeSwitch = __webpack_require__(604);
+	var _beeSwitch = __webpack_require__(605);
 	
 	var _beeSwitch2 = _interopRequireDefault(_beeSwitch);
 	
@@ -77845,7 +78227,7 @@
 	
 	var _beeIcon2 = _interopRequireDefault(_beeIcon);
 	
-	var _moment = __webpack_require__(439);
+	var _moment = __webpack_require__(440);
 	
 	var _moment2 = _interopRequireDefault(_moment);
 	

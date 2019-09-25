@@ -168,6 +168,8 @@ const Tabs = createClass({
   render() {
     const props = this.props;
     const {
+      activeKey,
+      defaultActiveKey,
       clsPrefix,
       tabBarPosition,
       className,
@@ -179,6 +181,15 @@ const Tabs = createClass({
       tabIndex,
       children,
       hideAdd,
+      scrollAnimated,
+      inkBarAnimated,
+      useTransform3d,
+      destroyInactiveTabPane,
+      onTabClick,
+      onEdit,
+      onNextClick,
+      onPrevClick,
+      ...others
     } = props;
 
     const cls = classnames({
@@ -259,7 +270,7 @@ const Tabs = createClass({
       contents.reverse();
     }
     return (
-      <div className={cls} style={props.style} >
+      <div className={cls} style={props.style} {...others}>
         {contents}
       </div>
     );

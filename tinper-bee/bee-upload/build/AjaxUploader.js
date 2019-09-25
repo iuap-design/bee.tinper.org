@@ -32,6 +32,8 @@ function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaul
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -240,7 +242,27 @@ var AjaxUploader = function (_Component) {
         style = _props.style,
         multiple = _props.multiple,
         accept = _props.accept,
-        children = _props.children;
+        children = _props.children,
+        name = _props.name,
+        action = _props.action,
+        headers = _props.headers,
+        data = _props.data,
+        type = _props.type,
+        listType = _props.listType,
+        fileList = _props.fileList,
+        defaultFileList = _props.defaultFileList,
+        size = _props.size,
+        beforeUpload = _props.beforeUpload,
+        showUploadList = _props.showUploadList,
+        supportServerRender = _props.supportServerRender,
+        onStart = _props.onStart,
+        onSuccess = _props.onSuccess,
+        multipart = _props.multipart,
+        onReady = _props.onReady,
+        customRequest = _props.customRequest,
+        withCredentials = _props.withCredentials,
+        onChange = _props.onChange,
+        others = _objectWithoutProperties(_props, ['component', 'clsPrefix', 'className', 'disabled', 'style', 'multiple', 'accept', 'children', 'name', 'action', 'headers', 'data', 'type', 'listType', 'fileList', 'defaultFileList', 'size', 'beforeUpload', 'showUploadList', 'supportServerRender', 'onStart', 'onSuccess', 'multipart', 'onReady', 'customRequest', 'withCredentials', 'onChange']);
 
     var cls = (0, _classnames2["default"])((_classNames = {}, _defineProperty(_classNames, clsPrefix, true), _defineProperty(_classNames, clsPrefix + '-disabled', disabled), _defineProperty(_classNames, className, className), _classNames));
     var events = disabled ? {} : {
@@ -256,7 +278,7 @@ var AjaxUploader = function (_Component) {
         className: cls,
         role: 'button',
         style: style
-      }),
+      }, others),
       _react2["default"].createElement('input', {
         type: 'file',
         ref: 'file',

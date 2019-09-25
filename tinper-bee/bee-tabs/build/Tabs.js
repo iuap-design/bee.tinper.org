@@ -5,6 +5,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.Tabs = undefined;
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _react = require("react");
 
 var _react2 = _interopRequireDefault(_react);
@@ -43,10 +45,12 @@ var _beeIcon2 = _interopRequireDefault(_beeIcon);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; } /**
-                                                                                                                                                                                                                  * This source code is quoted from rc-tabs.
-                                                                                                                                                                                                                  * homepage: https://github.com/react-component/tabs
-                                                                                                                                                                                                                  */
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; } /**
+                                                                                                                                                                                                                             * This source code is quoted from rc-tabs.
+                                                                                                                                                                                                                             * homepage: https://github.com/react-component/tabs
+                                                                                                                                                                                                                             */
 
 
 function noop() {}
@@ -197,7 +201,10 @@ var Tabs = (0, _createReactClass2["default"])({
         _this = this;
 
     var props = this.props;
-    var clsPrefix = props.clsPrefix,
+
+    var activeKey = props.activeKey,
+        defaultActiveKey = props.defaultActiveKey,
+        clsPrefix = props.clsPrefix,
         tabBarPosition = props.tabBarPosition,
         className = props.className,
         renderTabContent = props.renderTabContent,
@@ -207,8 +214,16 @@ var Tabs = (0, _createReactClass2["default"])({
         animated = props.animated,
         tabIndex = props.tabIndex,
         children = props.children,
-        hideAdd = props.hideAdd;
-
+        hideAdd = props.hideAdd,
+        scrollAnimated = props.scrollAnimated,
+        inkBarAnimated = props.inkBarAnimated,
+        useTransform3d = props.useTransform3d,
+        destroyInactiveTabPane = props.destroyInactiveTabPane,
+        onTabClick = props.onTabClick,
+        onEdit = props.onEdit,
+        onNextClick = props.onNextClick,
+        onPrevClick = props.onPrevClick,
+        others = _objectWithoutProperties(props, ["activeKey", "defaultActiveKey", "clsPrefix", "tabBarPosition", "className", "renderTabContent", "renderTabBar", "tabBarStyle", "extraContent", "animated", "tabIndex", "children", "hideAdd", "scrollAnimated", "inkBarAnimated", "useTransform3d", "destroyInactiveTabPane", "onTabClick", "onEdit", "onNextClick", "onPrevClick"]);
 
     var cls = (0, _classnames3["default"])((_classnames = {}, _defineProperty(_classnames, clsPrefix, true), _defineProperty(_classnames, clsPrefix + "-" + tabBarPosition, true), _defineProperty(_classnames, className, !!className), _defineProperty(_classnames, clsPrefix + "-" + tabBarStyle, true), _classnames));
 
@@ -280,7 +295,7 @@ var Tabs = (0, _createReactClass2["default"])({
     }
     return _react2["default"].createElement(
       "div",
-      { className: cls, style: props.style },
+      _extends({ className: cls, style: props.style }, others),
       contents
     );
   }

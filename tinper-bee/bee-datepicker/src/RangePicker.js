@@ -12,6 +12,7 @@ import classNames from 'classnames';
 import { KeyCode } from 'tinper-bee-core';
 import { formatDate } from './rc-calendar/util';
 import zhCN from "./locale/zh_CN";
+import omit from 'omit.js';
 
 import moment from "moment";
 import "moment/locale/zh-cn";
@@ -226,7 +227,7 @@ class RangePicker extends Component {
     }
     render() {
     const props = this.props;
-    const { showClose } = props;
+    const { showClose , ...others } = props;
     const {value,open} = this.state;
     let formatStr = props.format || 'YYYY-MM-DD';
 
@@ -254,7 +255,23 @@ class RangePicker extends Component {
     );
 
       return (
-          <div onClick={this.stopPropagation} onMouseOver={this.stopPropagation}>
+          <div onClick={this.stopPropagation} onMouseOver={this.stopPropagation} 
+          {...omit(others, [
+            'closeIcon',
+            'renderIcon',
+            'showClear',
+            'showToday',
+            'locale',
+            'placeholder',
+            'showOk',
+            'dateInputPlaceholder',
+            'onPanelChange',
+            'onStartInputBlur',
+            'onEndInputBlur',
+            'renderFooter',
+            'showTime'
+          ])}
+          >
           <Picker
               value = {value}
               animation={'animation' in props ? props.animation : "slide-up"}

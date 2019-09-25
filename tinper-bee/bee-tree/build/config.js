@@ -9,7 +9,6 @@ Object.defineProperty(exports, "__esModule", {
 
 // 树懒加载功能，需要用到的变量
 exports["default"] = {
-    defaultHeight: 24, //树节点行高
     loadBuffer: 5, //懒加载时缓冲区数据量
     defaultRowsInView: 20, //可视区数据量
     rowDiff: 3 //行差值，需要重新截取数据的阈值

@@ -12,6 +12,7 @@ import InputGroup from 'bee-input-group';
 import Icon from "bee-icon";
 import classnames from 'classnames';
 import moment from "moment";
+import omit from 'omit.js';
 
 //去掉focus报错
 Picker.prototype.componentDidUpdate = ()=>{}
@@ -131,7 +132,7 @@ class YearPicker extends Component {
     render() {
         let state = this.state;
         let props = this.props;
-        const { showClose } = props;
+        const { showClose, ...others } = props;
         let value = state.value;
 
         const Calendar = <YearPanel 
@@ -143,7 +144,16 @@ class YearPicker extends Component {
         />;
         let classes = classnames(props.className, "datepicker-container");
         return (
-            <div className={classes} onClick={this.stopPropagation} onMouseOver={this.stopPropagation}>
+            <div className={classes} onClick={this.stopPropagation} onMouseOver={this.stopPropagation} 
+            {...omit(others, [
+                'closeIcon',
+                'renderIcon',
+                'disabled',
+                'format',
+                'locale',
+                'placeholder'
+            ])}
+            >
                 <Picker
                     animation="slide-up"
                     {...props}
@@ -192,7 +202,8 @@ YearPicker.defaultProps = {
     closeIcon:()=><Icon type="uf-close-c"/>,
     renderIcon: () => <Icon type="uf-calendar" />,
     disabled:false,
-    showClose:true
+    showClose:true,
+    format:'YYYY',
 }
 
 export default YearPicker;

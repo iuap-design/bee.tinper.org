@@ -14,6 +14,7 @@ import Icon from "bee-icon";
 import classnames from 'classnames';
 import InputGroup from 'bee-input-group';
 import zhCN from "./locale/zh_CN";
+import omit from 'omit.js';
 
 const timePickerElement = (
   <TimePickerPanel defaultValue={moment(moment().format("HH:mm:ss"), "HH:mm:ss")} />
@@ -254,7 +255,7 @@ class DatePicker extends Component {
   render() {
     let state = this.state;
     let props = this.props;
-    const { showClose,defaultPanelShown } = props;
+    const {showClose, defaultPanelShown,...others} = props;
     let value = state.value;
     let pickerChangeHandler = {};
     let calendarHandler = {};
@@ -293,7 +294,30 @@ class DatePicker extends Component {
     }
     let classes = classnames(props.className, "datepicker-container");
     return (
-      <div className={classes} onMouseEnter={this.onDateHover} onClick={this.stopPropagation} onMouseOver={this.stopPropagation}>
+      <div className={classes} onMouseEnter={this.onDateHover} onClick={this.stopPropagation} onMouseOver={this.stopPropagation} 
+      {...omit(others, [
+        'onDateInputBlur',
+        'disabledDate',
+        'getCalendarContainer',
+        'showToday',
+        'renderFooter',
+        'keyboardInput',
+        'showDateInput',
+        'showTime',
+        'closeIcon',
+        'renderIcon',
+        'focusOnOpen',
+        'defultSelect',
+        'onOpenChange',
+        'onChange',
+        'locale',
+        'showMonthInput',
+        'onKeyDown',
+        'renderError',
+        'format',
+        'placeholder'
+      ])}
+      >
         <Picker
           animation="slide-up"
           {...props}
@@ -353,7 +377,8 @@ DatePicker.defaultProps = {
   showMonthInput:false,
   onKeyDown:()=>{},
   renderError:()=>{},
-  showClose:true
+  showClose:true,
+  format: "YYYY-MM-DD"	
 }
 
 export default DatePicker;

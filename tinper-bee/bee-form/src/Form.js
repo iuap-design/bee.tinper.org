@@ -15,10 +15,10 @@ class Form extends Component {
         super(props);
     }
     render() {
-        const { prefixCls, className = '', children, style, onSubmit } = this.props;
+        const { prefixCls, className = '', children, style, onSubmit, ...others } = this.props;
         const formClassName = classNames(prefixCls, className);
         return (
-            <form className={prefixCls+' '+className} style={style} onSubmit={onSubmit}>
+            <form className={prefixCls+' '+className} style={style} onSubmit={onSubmit} {...others}>
                 {children}
             </form>
         )

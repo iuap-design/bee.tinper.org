@@ -4,6 +4,8 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
@@ -15,6 +17,8 @@ var _propTypes2 = _interopRequireDefault(_propTypes);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -56,7 +60,7 @@ var SearchTabs = function (_Component) {
                     if (index < children.length - 1) {
                         childs.push(_react2["default"].createElement(
                             'span',
-                            { className: clsfix + '-split' },
+                            { className: clsfix + '-split', key: 'split-' + index },
                             '|'
                         ));
                     }
@@ -95,12 +99,14 @@ var SearchTabs = function (_Component) {
     SearchTabs.prototype.render = function render() {
         var _props = this.props,
             clsfix = _props.clsfix,
-            children = _props.children;
-
+            children = _props.children,
+            onChange = _props.onChange,
+            value = _props.value,
+            others = _objectWithoutProperties(_props, ['clsfix', 'children', 'onChange', 'value']);
 
         return _react2["default"].createElement(
             'div',
-            { className: '' + clsfix },
+            _extends({ className: '' + clsfix }, others),
             this.getChildren()
         );
     };

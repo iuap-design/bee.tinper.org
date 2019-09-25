@@ -293,6 +293,7 @@ class Pagination extends React.Component {
                         key="ellipsisFirst"
                         disabled
                         componentClass={buttonProps.componentClass}
+                        className={`${this.props.clsPrefix}-item-ellipsis`}
                     >
                         <span aria-label="More">
                             {ellipsis === true ? "\u2026" : ellipsis}
@@ -315,6 +316,7 @@ class Pagination extends React.Component {
                         key="ellipsis"
                         disabled
                         componentClass={buttonProps.componentClass}
+                        className={`${this.props.clsPrefix}-item-ellipsis`}
                     >
                         <span aria-label="More">
                             {ellipsis === true ? "\u2026" : ellipsis}
@@ -422,7 +424,7 @@ class Pagination extends React.Component {
                             eventKey={1}
                             disabled={activePageState === 1}
                             iconBtn={true}
-
+                            className={`${clsPrefix}-first`}
                         >
                             <Icon type="uf-2arrow-left"></Icon>
                             {/* <span aria-label="First">{first === true ? "\u00ab" : first}</span> */}
@@ -434,7 +436,7 @@ class Pagination extends React.Component {
                             eventKey={activePageState - 1}
                             disabled={activePageState === 1}
                             iconBtn={true}
-
+                            className={`${clsPrefix}-prev`}
                         >
                             <Icon type="uf-arrow-left"></Icon>
                             {/* <span aria-label="Previous">{prev === true ? "\u2039" : prev}</span> */}
@@ -456,6 +458,7 @@ class Pagination extends React.Component {
                             eventKey={activePageState + 1}
                             disabled={activePageState >= this.state.items}
                             iconBtn={true}
+                            className={`${clsPrefix}-next`}
                             >
                             <Icon type="uf-arrow-right"></Icon>
                             {/* <span aria-label="Next">{next === true ? "\u203a" : next}</span> */}
@@ -467,6 +470,7 @@ class Pagination extends React.Component {
                             eventKey={this.state.items}
                             disabled={activePageState >= this.state.items}
                             iconBtn={true}
+                            className={`${clsPrefix}-last`}
                             >
                             <Icon type="uf-2arrow-right"></Icon>
                             {/* <span aria-label="Last">{last === true ? "\u00bb" : last}</span> */}

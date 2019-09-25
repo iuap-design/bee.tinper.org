@@ -12,7 +12,7 @@ import Icon from "bee-icon";
 import InputGroup from 'bee-input-group';
 import classnames from 'classnames';
 import zhCN from "./locale/zh_CN";
-import moment from "moment";
+import omit from 'omit.js';
 
 class MonthPicker extends Component {
   constructor(props, context) {
@@ -117,13 +117,25 @@ class MonthPicker extends Component {
     let state = this.state;
 
     let props = this.props;
-    const { showClose } = props;
+    const { showClose, ...others } = props;
     const monthCalendar = <MonthCalendar {...props}
       onChange={this.onChange} 
     />;
     let classes = classnames(props.className, "datepicker-container");
     return (
-      <div className={classes} onClick={this.stopPropagation} onMouseOver={this.stopPropagation}>
+      <div className={classes} onClick={this.stopPropagation} onMouseOver={this.stopPropagation} 
+      {...omit(others, [
+        'closeIcon',
+        'renderIcon',
+        'format',
+        'showDateInput',
+        'showMonthInput',
+        'locale',
+        'placeholder',
+        'onClear',
+        'renderFooter'
+      ])}
+      >
         <Picker
           onOpenChange={this.onOpenChange}
           animation={'animation' in props ? props.animation : "slide-up"}

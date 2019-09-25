@@ -182,7 +182,11 @@ class AjaxUploader extends Component{
   render() {
     const {
       component: Tag, clsPrefix, className, disabled,
-      style, multiple, accept, children,
+      style, multiple, accept, children, 
+      name, action, headers, data, type, listType, fileList, defaultFileList, size, 
+      beforeUpload, showUploadList, supportServerRender, onStart, onSuccess, multipart, 
+      onReady, customRequest, withCredentials, onChange,
+      ...others
     } = this.props;
     const cls = classNames({
       [clsPrefix]: true,
@@ -202,6 +206,7 @@ class AjaxUploader extends Component{
         className={cls}
         role="button"
         style={style}
+        {...others}
       >
         <input
           type="file"

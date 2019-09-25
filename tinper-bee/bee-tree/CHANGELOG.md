@@ -1,3 +1,23 @@
+<a name="2.1.8"></a>
+## [2.1.8](https://github.com/tinper-bee/bee-tree/compare/v2.1.7...v2.1.8) (2019-09-24)
+
+
+
+<a name="2.1.7"></a>
+## [2.1.7](https://github.com/tinper-bee/bee-tree/compare/v2.1.6...v2.1.7) (2019-09-21)
+
+
+
+<a name="2.1.6"></a>
+## [2.1.6](https://github.com/tinper-bee/bee-tree/compare/v2.1.5...v2.1.6) (2019-09-19)
+
+
+
+<a name="2.1.5"></a>
+## [2.1.5](https://github.com/tinper-bee/bee-tree/compare/v2.1.4...v2.1.5) (2019-09-16)
+
+
+
 <a name="2.1.4"></a>
 ## [2.1.4](https://github.com/tinper-bee/bee-tree/compare/v2.1.3...v2.1.4) (2019-09-12)
 

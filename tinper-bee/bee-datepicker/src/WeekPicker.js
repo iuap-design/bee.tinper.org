@@ -15,6 +15,7 @@ import InputGroup from 'bee-input-group';
 import moment from "moment";
 import "moment/locale/zh-cn";
 import "moment/locale/en-gb";
+import omit from 'omit.js';
 
 const cn = typeof window !== 'undefined' ? location.search.indexOf("cn") !== -1 : true;
 
@@ -172,7 +173,7 @@ class WeekPicker extends Component {
   render() {
     const state = this.state;
     const props = this.props;
-    const { showClose } = props;
+    const { showClose, ...others } = props;
     const value = state.value;
     const calendar = (
       <Calendar
@@ -193,7 +194,15 @@ class WeekPicker extends Component {
     );
     let classes = classnames(props.className, "datepicker-container");
     return (
-      <div className={classes} onClick={this.stopPropagation} onMouseOver={this.stopPropagation}>
+      <div className={classes} onClick={this.stopPropagation} onMouseOver={this.stopPropagation} 
+      {...omit(others, [
+        'closeIcon',
+        'renderIcon',
+        'format',
+        'locale',
+        'placeholder'
+      ])}
+      >
         {/* <style dangerouslySetInnerHTML={{ __html: style }} /> */}
         <Picker
           animation="slide-up"

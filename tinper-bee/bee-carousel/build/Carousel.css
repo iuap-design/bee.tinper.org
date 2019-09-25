@@ -175,10 +175,10 @@
     height: 100%;
     pointer-events: none;
     z-index: 10;
-    background-image: -webkit-gradient(linear, right top, left top, from(rgba(0, 0, 0, 0.5)), to(transparent));
-    background-image: -webkit-linear-gradient(right, rgba(0, 0, 0, 0.5), transparent);
-    background-image: -o-linear-gradient(right, rgba(0, 0, 0, 0.5), transparent);
-    background-image: linear-gradient(to left, rgba(0, 0, 0, 0.5), transparent); }
+    background-image: -webkit-gradient(linear, right top, left top, from(rgba(0, 0, 0, 0.5)), to(rgba(0, 0, 0, 0)));
+    background-image: -webkit-linear-gradient(right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+    background-image: -o-linear-gradient(right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+    background-image: linear-gradient(to left, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0)); }
   .swiper-container-3d .swiper-slide-shadow-right {
     -webkit-transform-style: preserve-3d;
     transform-style: preserve-3d;
@@ -189,10 +189,10 @@
     height: 100%;
     pointer-events: none;
     z-index: 10;
-    background-image: -webkit-gradient(linear, left top, right top, from(rgba(0, 0, 0, 0.5)), to(transparent));
-    background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.5), transparent);
-    background-image: -o-linear-gradient(left, rgba(0, 0, 0, 0.5), transparent);
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.5), transparent); }
+    background-image: -webkit-gradient(linear, left top, right top, from(rgba(0, 0, 0, 0.5)), to(rgba(0, 0, 0, 0)));
+    background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+    background-image: -o-linear-gradient(left, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0)); }
   .swiper-container-3d .swiper-slide-shadow-top {
     -webkit-transform-style: preserve-3d;
     transform-style: preserve-3d;
@@ -203,10 +203,10 @@
     height: 100%;
     pointer-events: none;
     z-index: 10;
-    background-image: -webkit-gradient(linear, left bottom, left top, from(rgba(0, 0, 0, 0.5)), to(transparent));
-    background-image: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.5), transparent);
-    background-image: -o-linear-gradient(bottom, rgba(0, 0, 0, 0.5), transparent);
-    background-image: linear-gradient(to top, rgba(0, 0, 0, 0.5), transparent); }
+    background-image: -webkit-gradient(linear, left bottom, left top, from(rgba(0, 0, 0, 0.5)), to(rgba(0, 0, 0, 0)));
+    background-image: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+    background-image: -o-linear-gradient(bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+    background-image: linear-gradient(to top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0)); }
   .swiper-container-3d .swiper-slide-shadow-bottom {
     -webkit-transform-style: preserve-3d;
     transform-style: preserve-3d;
@@ -217,10 +217,10 @@
     height: 100%;
     pointer-events: none;
     z-index: 10;
-    background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.5)), to(transparent));
-    background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.5), transparent);
-    background-image: -o-linear-gradient(top, rgba(0, 0, 0, 0.5), transparent);
-    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), transparent); }
+    background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.5)), to(rgba(0, 0, 0, 0)));
+    background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+    background-image: -o-linear-gradient(top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0)); }
   .swiper-container-3d .swiper-cube-shadow {
     -webkit-transform-style: preserve-3d;
     transform-style: preserve-3d; }

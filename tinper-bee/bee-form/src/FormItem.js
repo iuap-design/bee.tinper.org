@@ -13,9 +13,9 @@ class FormItem extends Component {
         super(props);
     }
     render() {
-        const {children,className = '',prefixCls,style} = this.props;
+        const {children,className = '',prefixCls,style , ...others} = this.props;
         return (
-            <div className={`${prefixCls}-item`+' '+className } style={style}>
+            <div className={`${prefixCls}-item`+' '+className } style={style} {...others}>
                {children}
             </div>
             )

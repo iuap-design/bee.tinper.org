@@ -231,6 +231,7 @@ class ModalDialog extends React.Component {
       minHeight,
       minWidth,
       bounds,
+      clearCenteredCls,
       ...props
     } = this.props;
     

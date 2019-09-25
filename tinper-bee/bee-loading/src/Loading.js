@@ -61,6 +61,7 @@ class Loading extends Component {
   render() {
     const {
       clsPrefix,
+      clsLoadBack,
       loadingType,
       size,
       color,
@@ -96,25 +97,27 @@ class Loading extends Component {
     if (loadingType === "custom" && !!indicator) {
       dom = (
         <div>
-          <div className={classes}>
+          <div className={classes} {...others}>
             <div className={`${clsPrefix}-spin`}>{indicator}</div>
             {tip ? <div className={`${clsPrefix}-desc`}>{tip}</div> : null}
           </div>
+          {!tip && children && <div className={`${clsPrefix}-desc`}>{children}</div>}
         </div>
       );
     } else if (loadingType === "rotate") {
       dom = (
         <div>
-          <div className={classes}>
+          <div className={classes} {...others}>
             <div className={`${clsPrefix}-spin`}><img src={loadImg}/></div>
             {tip ? <p className={`${clsPrefix}-desc`}>{tip}</p> : null}
           </div>
+          {!tip && children && <div className={`${clsPrefix}-desc`}>{children}</div>}
         </div>
       );
     } else if (loadingType === "line") {
       dom = (
         <div>
-          <div className={classes}>
+          <div className={classes} {...others}>
             <div />
             <div />
             <div />

@@ -323,7 +323,11 @@ var RangeCalendar = function (_React$Component) {
           showToday || props.timePicker || showOkButton || extraFooter ? _react2["default"].createElement(
             'div',
             { className: prefixCls + '-footer-btn' },
-            extraFooter,
+            extraFooter ? _react2["default"].createElement(
+              'div',
+              { className: prefixCls + '-footer-extra' },
+              extraFooter
+            ) : null,
             showToday ? _react2["default"].createElement(_TodayButton2["default"], _extends({}, props, {
               disabled: isTodayInView,
               value: state.value[0],

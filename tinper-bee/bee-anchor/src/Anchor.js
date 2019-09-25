@@ -71,8 +71,20 @@ class Anchor extends Component {
         this.anchor.destroy()
     }
     render(){
+        const {
+            navClass,
+            contentClass,
+            nested, 
+            nestedClass, 
+            offset, 
+            reflow, 
+            events, 
+            activeHandle,
+            deactiveHandle,
+            ...others
+        } = this.props;
         return (
-            <div className='u-anchor' ref={ref=>{this.anchorDOM=ref}}>
+            <div className='u-anchor' ref={ref=>{this.anchorDOM=ref}} {...others}>
                 {this.props.children}    
             </div>
         )

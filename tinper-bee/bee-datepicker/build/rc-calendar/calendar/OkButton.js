@@ -30,7 +30,7 @@ function OkButton(_ref) {
     {
       className: className,
       size: 'sm', colors: 'primary',
-      disabled: okDisabled,
+      disabled: !!okDisabled,
       onClick: okDisabled ? null : onOk
     },
     locale.ok

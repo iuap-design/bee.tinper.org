@@ -23,17 +23,22 @@ const defaultProps = {
     clsPrefix: 'u-form-control',
     type: 'text',
     size: 'md',
-    debounceDelay:0
 };
 
-
+function fixControlledValue(value) {
+    if (typeof value === 'undefined' || value === null) {
+      return '';
+    }
+    return value;
+}
 class FormControl extends React.Component {
 
     constructor(props) {
         super(props);
+        const value = typeof props.value === 'undefined' ? props.defaultValue : props.value;
         this.state = {
             showSearch: !props.value,
-            value: props.value == null ? "" : props.value,
+            value: value,
         }
         this.input = {};
     }
@@ -57,13 +62,16 @@ class FormControl extends React.Component {
     }
 
     handleChange = (e) => {
+        let { debounceDelay=0 } = this.props;
         const now = new Date().getTime()
-        if (now - this.lastScrollCall < this.props.debounceDelay) return
+        if (now - this.lastScrollCall < debounceDelay) return
         this.lastScrollCall = now
 
         const {onChange} = this.props;
         let value = this.input.value;
-
+        if (!('value' in this.props)) {
+            this.setState({ value });
+        }
         if (onChange) {
             onChange(value,e);
         }
@@ -121,7 +129,7 @@ class FormControl extends React.Component {
             className,
             size,
             clsPrefix,
-            value,
+            // value,
             onChange,
             onSearch,
             onBlur,
@@ -130,6 +138,7 @@ class FormControl extends React.Component {
             ...others
         } = this.props;
         // input[type="file"] 不应该有类名 .form-control.
+        const {value} = this.state;
         let classes = {};
         if (size) {
             classes[`${size}`] = true;
@@ -147,7 +156,7 @@ class FormControl extends React.Component {
                         {...others}
                         type={type}
                         ref={(el) => this.input = el }
-                        value={value}
+                        value={fixControlledValue(value)}
                         onChange={this.handleChange}
                         onBlur={this.handleBlur}
                         onFocus={this.handleFocus}
@@ -164,7 +173,7 @@ class FormControl extends React.Component {
                     {...others}
                     type={type}
                     ref={(el) => this.input = el }
-                    value={value}
+                    value={fixControlledValue(value)}
                     onChange={this.handleChange}
                     onBlur={this.handleBlur}
                     onFocus={this.handleFocus}
@@ -181,13 +190,14 @@ class FormControl extends React.Component {
             className,
             size,
             clsPrefix,
-            value,
+            // value,
             onChange,
             onSearch,
             onBlur,
             ...others
         } = this.props;
         // input[type="file"] 不应该有类名 .form-control.
+        const {value} = this.state;
         let classes = {};
         if (size) {
             classes[`${size}`] = true;
@@ -202,7 +212,7 @@ class FormControl extends React.Component {
                         type={type}
                         ref={(el) => this.input = el }
                         onChange={this.handleSearchChange}
-                        value={value}
+                        value={fixControlledValue(value)}
                         onKeyDown={this.handleKeyDown}
                         onBlur={this.handleBlur}
                         onFocus={this.handleFocus}

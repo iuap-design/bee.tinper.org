@@ -97,7 +97,11 @@ var CalendarFooter = function (_React$Component) {
         footerBtn = _react2["default"].createElement(
           'span',
           { className: prefixCls + '-footer-btn' },
-          extraFooter,
+          extraFooter ? _react2["default"].createElement(
+            'div',
+            { className: prefixCls + '-footer-extra' },
+            extraFooter
+          ) : null,
           (0, _mapSelf2["default"])([nowEl, timePickerBtn, okBtn])
         );
       }

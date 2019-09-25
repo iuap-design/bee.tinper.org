@@ -133,7 +133,7 @@ function getMessageInstance(position = 'top', callback, keyboard, onEscapeKeyUp)
 
 
 
-function notice(content, duration_arg, type, onClose, position, style, keyboard, onEscapeKeyUp, showIcon, icon) {
+function notice(content, duration_arg, type, onClose, position, style, keyboard, onEscapeKeyUp, showIcon, icon, props) {
     if( positionType.findIndex((item) => item === position)<0 ){
         warning(
             false,
@@ -163,6 +163,7 @@ function notice(content, duration_arg, type, onClose, position, style, keyboard,
     defaultStyle = Object.assign({}, positionStyle, style);
     getMessageInstance(position, instance => {
         instance.notice({
+            ...props,
             key,
             duration,
             color: type,
@@ -205,7 +206,7 @@ export default {
       let style = obj.style || {};
       let showIcon = obj.hasOwnProperty('showIcon') ? obj.showIcon : true;
       let icon = obj.hasOwnProperty('icon') ? obj.icon : false;
-    return notice(content, duration, color, onClose, position, style, obj.keyboard, obj.onEscapeKeyUp, showIcon, icon);
+    return notice(content, duration, color, onClose, position, style, obj.keyboard, obj.onEscapeKeyUp, showIcon, icon, obj);
   },
   config(options) {
     if (options.top !== undefined) {

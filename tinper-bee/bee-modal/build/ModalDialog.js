@@ -299,7 +299,8 @@ var ModalDialog = function (_React$Component) {
         minHeight = _props.minHeight,
         minWidth = _props.minWidth,
         bounds = _props.bounds,
-        props = _objectWithoutProperties(_props, ['dialogClassName', 'className', 'clsPrefix', 'size', 'style', 'contentStyle', 'children', 'draggable', 'resizable', 'resizeClassName', 'minHeight', 'minWidth', 'bounds']);
+        clearCenteredCls = _props.clearCenteredCls,
+        props = _objectWithoutProperties(_props, ['dialogClassName', 'className', 'clsPrefix', 'size', 'style', 'contentStyle', 'children', 'draggable', 'resizable', 'resizeClassName', 'minHeight', 'minWidth', 'bounds', 'clearCenteredCls']);
 
     var _state = this.state,
         original = _state.original,

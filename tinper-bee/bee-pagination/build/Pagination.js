@@ -355,7 +355,8 @@ var Pagination = function (_React$Component) {
                     {
                         key: "ellipsisFirst",
                         disabled: true,
-                        componentClass: buttonProps.componentClass
+                        componentClass: buttonProps.componentClass,
+                        className: this.props.clsPrefix + "-item-ellipsis"
                     },
                     _react2["default"].createElement(
                         "span",
@@ -379,7 +380,8 @@ var Pagination = function (_React$Component) {
                     {
                         key: "ellipsis",
                         disabled: true,
-                        componentClass: buttonProps.componentClass
+                        componentClass: buttonProps.componentClass,
+                        className: this.props.clsPrefix + "-item-ellipsis"
                     },
                     _react2["default"].createElement(
                         "span",
@@ -484,8 +486,8 @@ var Pagination = function (_React$Component) {
                     _extends({}, buttonProps, {
                         eventKey: 1,
                         disabled: activePageState === 1,
-                        iconBtn: true
-
+                        iconBtn: true,
+                        className: clsPrefix + "-first"
                     }),
                     _react2["default"].createElement(_beeIcon2["default"], { type: "uf-2arrow-left" })
                 ),
@@ -494,8 +496,8 @@ var Pagination = function (_React$Component) {
                     _extends({}, buttonProps, {
                         eventKey: activePageState - 1,
                         disabled: activePageState === 1,
-                        iconBtn: true
-
+                        iconBtn: true,
+                        className: clsPrefix + "-prev"
                     }),
                     _react2["default"].createElement(_beeIcon2["default"], { type: "uf-arrow-left" })
                 ),
@@ -505,7 +507,8 @@ var Pagination = function (_React$Component) {
                     _extends({}, buttonProps, {
                         eventKey: activePageState + 1,
                         disabled: activePageState >= this.state.items,
-                        iconBtn: true
+                        iconBtn: true,
+                        className: clsPrefix + "-next"
                     }),
                     _react2["default"].createElement(_beeIcon2["default"], { type: "uf-arrow-right" })
                 ),
@@ -514,7 +517,8 @@ var Pagination = function (_React$Component) {
                     _extends({}, buttonProps, {
                         eventKey: this.state.items,
                         disabled: activePageState >= this.state.items,
-                        iconBtn: true
+                        iconBtn: true,
+                        className: clsPrefix + "-last"
                     }),
                     _react2["default"].createElement(_beeIcon2["default"], { type: "uf-2arrow-right" })
                 )
