@@ -2394,7 +2394,8 @@
   .u-upload-list .u-upload-list-item {
     overflow: hidden;
     margin-top: 8px;
-    font-size: 12px; }
+    font-size: 12px;
+    box-sizing: border-box; }
   .u-upload-list .u-upload-list-item:hover .u-upload-list-item-info {
     background-color: #e7f4fd; }
   .u-upload-list .u-upload-list-item:hover .uf {
@@ -2408,7 +2409,7 @@
       margin-right: 4px;
       font-size: 12px;
       color: #999; }
-    .u-upload-list .u-upload-list-item-info .uf-del {
+    .u-upload-list .u-upload-list-item-info .uf-close, .u-upload-list .u-upload-list-item-info .uf-del {
       display: inline-block;
       font-size: 12px;
       font-size: 10px \9;
@@ -2425,7 +2426,7 @@
       z-index: 2; }
     .u-upload-list .u-upload-list-item-info .uf-eye-o {
       position: absolute;
-      left: 8px;
+      left: 14px;
       top: 50%;
       transform: translateY(-50%);
       color: gainsboro;
@@ -2434,13 +2435,13 @@
       zoom: 1;
       transition: all 0.3s ease;
       opacity: 0; }
-    .u-upload-list .u-upload-list-item-info .uf-del:hover {
-      color: white; }
-    .u-upload-list .u-upload-list-item-info .uf-eye-o:hover {
+    .u-upload-list .u-upload-list-item-info .uf-close:hover {
+      color: #666; }
+    .u-upload-list .u-upload-list-item-info .uf-eye-o:hover, .u-upload-list .u-upload-list-item-info .uf-del:hover {
       color: white; }
   .u-upload-list .u-upload-list-item-error .anticon-paper-clip {
     color: #f50; }
-  .u-upload-list .u-upload-list-item-error .uf-del {
+  .u-upload-list .u-upload-list-item-error .uf-close, .u-upload-list .u-upload-list-item-error .uf-del {
     opacity: 1; }
   .u-upload-list .u-upload-list-item-progress {
     padding: 0 8px 0 20px;
@@ -2620,7 +2621,7 @@
     padding-left: 0; }
   .u-upload-list-picture-card .uf-del {
     position: absolute;
-    right: 8px;
+    right: 14px;
     top: 50%;
     transform: translateY(-50%);
     line-height: 1; }

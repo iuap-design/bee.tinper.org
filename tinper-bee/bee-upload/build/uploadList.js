@@ -220,7 +220,7 @@ var UploadList = function (_Component) {
         } }) : null;
       var actions = listType === 'picture-card' && file.status !== 'uploading' ? _react2["default"].createElement(
         'span',
-        null,
+        { className: clsPrefix + '-list-item-actions' },
         previewIcon,
         removeIcon
       ) : removeIconClose;

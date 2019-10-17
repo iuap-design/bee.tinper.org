@@ -340,17 +340,41 @@ var Upload = function (_Component) {
   };
 
   Upload.prototype.handleRemove = function handleRemove(file) {
+    var _this3 = this;
+
     var onRemove = this.props.onRemove;
-    if (onRemove) {
-      onRemove(file);
+    var fileList = this.state.fileList;
+    var status = file.status;
+
+
+    file.status = 'removed'; // eslint-disable-line
+
+    Promise.resolve(typeof onRemove === 'function' ? onRemove(file) : onRemove).then(function (ret) {
+      // Prevent removing file
+      if (ret === false) {
+        file.status = status;
+        return;
+      }
+
+      var removedFileList = _this3.removeFileItem(file, fileList);
+      if (removedFileList) {
+        _this3.onChange({
+          file: file,
+          fileList: removedFileList
+        });
+      }
+    });
+  };
+
+  Upload.prototype.removeFileItem = function removeFileItem(file, fileList) {
+    var matchKey = file.uid !== undefined ? 'uid' : 'name';
+    var removed = fileList.filter(function (item) {
+      return item[matchKey] !== file[matchKey];
+    });
+    if (removed.length === fileList.length) {
+      return null;
     }
-    var fileList = this.removeFile(file);
-    if (fileList) {
-      this.onChange({
-        file: file,
-        fileList: fileList
-      });
-    }
+    return removed;
   };
 
   Upload.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
