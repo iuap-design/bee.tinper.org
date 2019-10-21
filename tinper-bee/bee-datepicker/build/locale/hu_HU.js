@@ -14,6 +14,7 @@ exports["default"] = {
   timeSelect: 'Időpont kiválasztása', // 'Select time',
   dateSelect: 'Dátum kiválasztása', // 'Select date',
   monthSelect: 'Hónap kiválasztása', // 'Choose a month',
+  monthFormat: 'MM',
   yearSelect: 'Év kiválasztása', // 'Choose a year',
   decadeSelect: 'Évtized kiválasztása', // 'Choose a decade',
   yearFormat: 'YYYY',

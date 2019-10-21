@@ -230,6 +230,7 @@ class DateInput extends React.Component {
     const props = this.props;
     const { invalid, str } = this.state;
     const { locale, prefixCls, placeholder, clearIcon, renderError,inputTabIndex } = props;
+    console.log('=========', str, formatDate(props.selectedValue, props.format))
     const invalidClass = invalid ? `${prefixCls}-input-invalid` : '';
     return (
       <div className={`${prefixCls}-input-wrap`}>
@@ -237,7 +238,7 @@ class DateInput extends React.Component {
           <input
             ref={this.saveDateInput}
             className={`${prefixCls}-input ${invalidClass}`}
-            value={str}
+            value={str ? str : formatDate(props.selectedValue, props.format)}
             disabled={props.disabled}
             placeholder={placeholder}
             onChange={this.onInputChange}

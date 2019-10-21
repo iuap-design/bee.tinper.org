@@ -10,7 +10,7 @@ class Demo1 extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            activePage: 1
+            activePage: 1,
         }
     }
     handleSelect(eventKey) {
@@ -24,7 +24,6 @@ class Demo1 extends React.Component {
         console.log(index, value);
 
     }
-
     render() {
         return (
             <div>
@@ -40,7 +39,7 @@ class Demo1 extends React.Component {
                     onDataNumSelect={this.dataNumSelect}
                     showJump={true}
                     total={100}
-                    dataNum={2}
+                    dataNum={1}
                 />
 
             </div>

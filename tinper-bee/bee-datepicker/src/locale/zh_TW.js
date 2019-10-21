@@ -11,6 +11,7 @@ export default {
   previousMonth: '上個月 (翻頁上鍵)',
   nextMonth: '下個月 (翻頁下鍵)',
   monthSelect: '選擇月份',
+  monthFormat: 'M月',
   yearSelect: '選擇年份',
   decadeSelect: '選擇年代',
   yearFormat: 'YYYY年',

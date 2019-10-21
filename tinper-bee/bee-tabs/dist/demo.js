@@ -34827,6 +34827,24 @@
 	      activeKey: activeKey
 	    };
 	  },
+	  componentDidMount: function componentDidMount() {
+	    var _this = this;
+	
+	    ReactDOM.findDOMNode(this).addEventListener('DNDclick', function (e) {
+	      if (e && e.detail && e.detail.key) {
+	        _this.onTabClick.call(_this, e.detail.key);
+	      }
+	    });
+	  },
+	  componentWillUnmount: function componentWillUnmount() {
+	    var _this2 = this;
+	
+	    ReactDOM.findDOMNode(this).removeEventListener('DNDclick', function (e) {
+	      if (e && e.detail && e.detail.key) {
+	        _this2.onTabClick.call(_this2, e.detail.key);
+	      }
+	    });
+	  },
 	  componentWillReceiveProps: function componentWillReceiveProps(nextProps) {
 	    if ("activeKey" in nextProps) {
 	      this.setState({
@@ -34915,7 +34933,7 @@
 	  },
 	  render: function render() {
 	    var _classnames,
-	        _this = this;
+	        _this3 = this;
 	
 	    var props = this.props;
 	
@@ -34932,7 +34950,15 @@
 	        tabIndex = props.tabIndex,
 	        children = props.children,
 	        hideAdd = props.hideAdd,
-	        others = _objectWithoutProperties(props, ["activeKey", "defaultActiveKey", "clsPrefix", "tabBarPosition", "className", "renderTabContent", "renderTabBar", "tabBarStyle", "extraContent", "animated", "tabIndex", "children", "hideAdd"]);
+	        scrollAnimated = props.scrollAnimated,
+	        inkBarAnimated = props.inkBarAnimated,
+	        useTransform3d = props.useTransform3d,
+	        destroyInactiveTabPane = props.destroyInactiveTabPane,
+	        onTabClick = props.onTabClick,
+	        onEdit = props.onEdit,
+	        onNextClick = props.onNextClick,
+	        onPrevClick = props.onPrevClick,
+	        others = _objectWithoutProperties(props, ["activeKey", "defaultActiveKey", "clsPrefix", "tabBarPosition", "className", "renderTabContent", "renderTabBar", "tabBarStyle", "extraContent", "animated", "tabIndex", "children", "hideAdd", "scrollAnimated", "inkBarAnimated", "useTransform3d", "destroyInactiveTabPane", "onTabClick", "onEdit", "onNextClick", "onPrevClick"]);
 	
 	    var cls = (0, _classnames3["default"])((_classnames = {}, _defineProperty(_classnames, clsPrefix, true), _defineProperty(_classnames, clsPrefix + "-" + tabBarPosition, true), _defineProperty(_classnames, className, !!className), _defineProperty(_classnames, clsPrefix + "-" + tabBarStyle, true), _classnames));
 	
@@ -34952,7 +34978,7 @@
 	          type: "uf-close",
 	          className: clsPrefix + "-close-x",
 	          onClick: function onClick(e) {
-	            return _this.removeTab(child.key, e);
+	            return _this3.removeTab(child.key, e);
 	          }
 	        }) : null;
 	        childrenWithClose.push(_react2["default"].cloneElement(child, {
@@ -35376,6 +35402,10 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
+	var _reactDom = __webpack_require__(2);
+	
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+	
 	var _InkTabBarMixin = __webpack_require__(250);
 	
 	var _InkTabBarMixin2 = _interopRequireDefault(_InkTabBarMixin);
@@ -35394,19 +35424,38 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
+	/**
+	* This source code is quoted from rc-tabs.
+	* homepage: https://github.com/react-component/tabs
+	*/
 	var ScrollableInkTabBar = (0, _createReactClass2['default'])({
 	  mixins: [_TabBarMixin2['default'], _InkTabBarMixin2['default'], _ScrollableTabBarMixin2['default']],
+	  componentDidMount: function componentDidMount() {
+	    var _this = this;
 	
+	    _reactDom2['default'].findDOMNode(this).addEventListener('DNDclick', function (e) {
+	      if (e && e.detail && e.detail.key) {
+	        _this.onTabClick.call(_this, e.detail.key);
+	      }
+	    });
+	  },
+	  componentWillUnmount: function componentWillUnmount() {
+	    var _this2 = this;
+	
+	    _reactDom2['default'].findDOMNode(this).removeEventListener('DNDclick', function (e) {
+	      if (e && e.detail && e.detail.key) {
+	        _this2.onTabClick.call(_this2, e.detail.key);
+	      }
+	    });
+	  },
 	  render: function render() {
 	    var inkBarNode = this.getInkBarNode();
 	    var tabs = this.getTabs();
 	    var scrollbarNode = this.getScrollBarNode([inkBarNode, tabs]);
 	    return this.getRootNode(scrollbarNode);
 	  }
-	}); /**
-	    * This source code is quoted from rc-tabs.
-	    * homepage: https://github.com/react-component/tabs
-	    */
+	});
+	
 	exports['default'] = ScrollableInkTabBar;
 	module.exports = exports['default'];
 
@@ -35910,7 +35959,11 @@
 	        }, events, {
 	          className: cls,
 	          key: key
-	        }, ref),
+	        }, ref, {
+	          nid: child.props.nid,
+	          uitype: child.props.uitype,
+	          nodekey: key
+	        }),
 	        child.props.tab
 	      ));
 	    });
@@ -35971,6 +36024,8 @@
 	    value: true
 	});
 	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
 	var _react = __webpack_require__(1);
 	
 	var _react2 = _interopRequireDefault(_react);
@@ -35982,6 +36037,8 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
 	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
+	
+	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
@@ -36023,7 +36080,7 @@
 	                    if (index < children.length - 1) {
 	                        childs.push(_react2['default'].createElement(
 	                            'span',
-	                            { className: clsfix + '-split' },
+	                            { className: clsfix + '-split', key: 'split-' + index },
 	                            '|'
 	                        ));
 	                    }
@@ -36062,12 +36119,14 @@
 	    SearchTabs.prototype.render = function render() {
 	        var _props = this.props,
 	            clsfix = _props.clsfix,
-	            children = _props.children;
-	
+	            children = _props.children,
+	            onChange = _props.onChange,
+	            value = _props.value,
+	            others = _objectWithoutProperties(_props, ['clsfix', 'children', 'onChange', 'value']);
 	
 	        return _react2['default'].createElement(
 	            'div',
-	            { className: '' + clsfix },
+	            _extends({ className: '' + clsfix }, others),
 	            this.getChildren()
 	        );
 	    };

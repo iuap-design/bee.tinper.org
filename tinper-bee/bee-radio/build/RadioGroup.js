@@ -107,9 +107,10 @@ var RadioGroup = function (_React$Component) {
       onChange && onChange(value);
     };
 
+    var initValue = 'value' in props ? props.value : 'selectedValue' in props ? props.selectedValue : props.defaultValue;
     _this.state = {
       focusvalue: '',
-      selectedValue: props.value ? props.value : props.selectedValue ? props.selectedValue : props.defaultValue
+      selectedValue: initValue
     };
     return _this;
   }

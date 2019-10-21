@@ -248,17 +248,36 @@ class Upload extends Component {
   }
 
   handleRemove(file) {
-    const onRemove = this.props.onRemove;
-    if (onRemove) {
-      onRemove(file);
+    const { onRemove } = this.props;
+    const { fileList } = this.state;
+    const { status } = file;
+
+    file.status = 'removed'; // eslint-disable-line
+
+    Promise.resolve(typeof onRemove === 'function' ? onRemove(file) : onRemove).then(ret => {
+      // Prevent removing file
+      if (ret === false) {
+        file.status = status;
+        return;
+      }
+
+      const removedFileList = this.removeFileItem(file, fileList);
+      if (removedFileList) {
+        this.onChange({
+          file,
+          fileList: removedFileList,
+        });
+      }
+    });
+  }
+  
+  removeFileItem(file, fileList) {
+    const matchKey = file.uid !== undefined ? 'uid' : 'name';
+    const removed = fileList.filter(item => item[matchKey] !== file[matchKey]);
+    if (removed.length === fileList.length) {
+      return null;
     }
-    let fileList = this.removeFile(file);
-    if (fileList) {
-      this.onChange({
-        file,
-        fileList,
-      });
-    }
+    return removed;
   }
 
   handleManualRemove = (file) => {

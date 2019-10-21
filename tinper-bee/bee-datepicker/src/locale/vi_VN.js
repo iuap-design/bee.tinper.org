@@ -10,6 +10,7 @@ export default {
   dateSelect: 'Chọn ngày',
   weekSelect: 'Chọn tuần',
   monthSelect: 'Chọn tháng',
+  monthFormat: 'M',
   yearSelect: 'Chọn năm',
   decadeSelect: 'Chọn thập kỷ',
   yearFormat: 'YYYY',

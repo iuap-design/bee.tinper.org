@@ -124,7 +124,7 @@ const defaultProps = {
         '15',
         '20'
     ],
-    dataNum: 1,
+    // dataNum: 1,
     showJump: false,
     locale: {},
     disabled: false,
@@ -138,7 +138,7 @@ class Pagination extends React.Component {
     constructor(props, context) {
         super(props, context);
         let size = props.dataNumSelect.findIndex(item=>String(item) === String(cookie.load(props.sizeWithCookie)));
-        let dataNum = size === -1 ? props.dataNum : size;
+        let dataNum = size === -1 ? (props.dataNum!=undefined?props.dataNum:1) : size;
         this.state = {
             activePage: this.props.activePage,//当前的页码
             dataNum: dataNum,
@@ -362,7 +362,7 @@ class Pagination extends React.Component {
             gap,
             onDataNumSelect,
             dataNumSelect,
-            dataNum,
+            // dataNum,
             activePage,
             showJump,
             total,

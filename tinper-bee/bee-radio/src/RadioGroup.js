@@ -64,10 +64,10 @@ class RadioGroup extends React.Component {
 
   constructor(props, context) {
     super(props, context);
-
+    let initValue = 'value' in props ? props.value : ( 'selectedValue' in props ? props.selectedValue : props.defaultValue);
     this.state={
       focusvalue:'',
-      selectedValue: props.value?props.value:(props.selectedValue ? props.selectedValue : props.defaultValue)
+      selectedValue: initValue
     }
   }
   

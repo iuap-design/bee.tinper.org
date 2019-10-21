@@ -142,7 +142,7 @@ class MonthCalendar extends React.Component {
             onMonthSelect={this.onSelect}
             onValueChange={this.setValue}
             onPanelChange={this.handlePanelChange}
-            // onChange={onChange}
+            onChange={onChange}
             onClear={onClear}
           />
         </div>

@@ -11,6 +11,7 @@ export default {
   previousMonth: 'ئالدىنقى ئاي(ئالدىنقى بەت )',
   nextMonth: 'كېلەركى ئاي (كېلەركى بەت)',
   monthSelect: 'ئاي تاللاش',
+  monthFormat: 'M—ئاينىڭ',
   yearSelect: 'يىل تاللاش',
   decadeSelect: 'يىللارنى تاللاش',
   yearFormat: 'YYYY-يىلى',

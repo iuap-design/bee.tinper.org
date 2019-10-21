@@ -9,6 +9,7 @@ export default {
   timeSelect: 'Velja tíma',
   dateSelect: 'Velja dag',
   monthSelect: 'Velja mánuð',
+  monthFormat: 'M',
   yearSelect: 'Velja ár',
   decadeSelect: 'Velja áratug',
   yearFormat: 'YYYY',

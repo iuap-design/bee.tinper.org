@@ -9,6 +9,7 @@ export default {
   timeSelect: 'Избор на час',
   dateSelect: 'Избор на дата',
   monthSelect: 'Избор на месец',
+  monthFormat: 'M',
   yearSelect: 'Избор на година',
   decadeSelect: 'Десетилетие',
   yearFormat: 'YYYY',

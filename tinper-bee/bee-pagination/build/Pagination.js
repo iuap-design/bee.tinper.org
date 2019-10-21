@@ -166,7 +166,7 @@ var defaultProps = {
     gap: false,
     noBorder: false,
     dataNumSelect: ['5', '10', '15', '20'],
-    dataNum: 1,
+    // dataNum: 1,
     showJump: false,
     locale: {},
     disabled: false,
@@ -245,7 +245,7 @@ var Pagination = function (_React$Component) {
         var size = props.dataNumSelect.findIndex(function (item) {
             return String(item) === String(_reactCookies2["default"].load(props.sizeWithCookie));
         });
-        var dataNum = size === -1 ? props.dataNum : size;
+        var dataNum = size === -1 ? props.dataNum != undefined ? props.dataNum : 1 : size;
         _this.state = {
             activePage: _this.props.activePage, //当前的页码
             dataNum: dataNum,
@@ -430,14 +430,13 @@ var Pagination = function (_React$Component) {
             gap = _props.gap,
             onDataNumSelect = _props.onDataNumSelect,
             dataNumSelect = _props.dataNumSelect,
-            dataNum = _props.dataNum,
             activePage = _props.activePage,
             showJump = _props.showJump,
             total = _props.total,
             disabled = _props.disabled,
             btnType = _props.btnType,
             confirmBtn = _props.confirmBtn,
-            others = _objectWithoutProperties(_props, ["items", "maxButtons", "boundaryLinks", "ellipsis", "first", "last", "prev", "next", "onSelect", "buttonComponentClass", "noBorder", "className", "clsPrefix", "size", "gap", "onDataNumSelect", "dataNumSelect", "dataNum", "activePage", "showJump", "total", "disabled", "btnType", "confirmBtn"]);
+            others = _objectWithoutProperties(_props, ["items", "maxButtons", "boundaryLinks", "ellipsis", "first", "last", "prev", "next", "onSelect", "buttonComponentClass", "noBorder", "className", "clsPrefix", "size", "gap", "onDataNumSelect", "dataNumSelect", "activePage", "showJump", "total", "disabled", "btnType", "confirmBtn"]);
 
         var activePageState = this.state.activePage;
         var jumpPageState = this.state.jumpPageState;

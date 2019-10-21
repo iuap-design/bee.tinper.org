@@ -129,7 +129,7 @@ class DatePicker extends Component {
   handleCalendarChange = (value) => {
       const props = this.props;
       this.setState({ value: value,inputValue:(value && this.getValue(value)) || '' });
-      //props.onChange(value, (value && this.getValue(value)) || '');
+      props.onChange(value, (value && this.getValue(value)) || '');
   }
   handleChange = value => {
     const props = this.props;

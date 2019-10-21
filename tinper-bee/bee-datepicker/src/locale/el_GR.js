@@ -9,6 +9,7 @@ export default {
   timeSelect: 'Επιλογή ώρας',
   dateSelect: 'Επιλογή ημερομηνίας',
   monthSelect: 'Επιλογή μήνα',
+  monthFormat: 'M',
   yearSelect: 'Επιλογή έτους',
   decadeSelect: 'Επιλογή δεκαετίας',
   yearFormat: 'YYYY',

@@ -10,6 +10,7 @@ export default {
   dateSelect: 'select date',
   weekSelect: 'Choose a week',
   monthSelect: 'Choose a month',
+  monthFormat: 'M',
   yearSelect: 'Choose a year',
   decadeSelect: 'Choose a decade',
   yearFormat: 'YYYY',

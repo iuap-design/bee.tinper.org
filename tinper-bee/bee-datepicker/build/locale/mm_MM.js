@@ -15,6 +15,7 @@ exports["default"] = {
   dateSelect: 'နေ့ကို ရွေး',
   weekSelect: 'အပတ်ကို ရွေး',
   monthSelect: 'လကို ရွေး',
+  monthFormat: 'M',
   yearSelect: 'နှစ်ကို ရွေး',
   decadeSelect: 'ဆယ်စုနှစ်ကို ရွေး',
   yearFormat: 'YYYY',

@@ -1326,7 +1326,7 @@ ul {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  content: "\E62E"; }
+  content: "\e66b"; }
 
 .u-select-selection-clear:hover {
   color: #999; }
@@ -1345,11 +1345,12 @@ ul {
 
 .u-select-disabled {
   color: #909090; }
-  .u-select-disabled .u-select-selection {
-    background: #f7f7f7;
+  .u-select-disabled.u-select .u-select-selection {
+    background: #F7F9FB;
+    border-color: #DFE1E6;
     cursor: not-allowed; }
   .u-select-disabled .u-select-selection:hover, .u-select-disabled .u-select-selection:focus, .u-select-disabled .u-select-selection:active {
-    border-color: #d9d9d9;
+    border-color: #DFE1E6;
     box-shadow: none; }
   .u-select-disabled .u-select-selection-clear {
     display: none;
@@ -1592,7 +1593,8 @@ ul {
   position: absolute;
   outline: none;
   overflow: hidden;
-  font-size: 12px; }
+  font-size: 12px;
+  margin-bottom: 20px; }
   .u-select-dropdown.slide-up-enter.slide-up-enter-active.u-select-dropdown-placement-bottomLeft, .u-select-dropdown.slide-up-appear.slide-up-appear-active.u-select-dropdown-placement-bottomLeft {
     animation-name: uSlideUpIn; }
   .u-select-dropdown.slide-up-enter.slide-up-enter-active.u-select-dropdown-placement-topLeft, .u-select-dropdown.slide-up-appear.slide-up-appear-active.u-select-dropdown-placement-topLeft {
@@ -1683,7 +1685,7 @@ ul {
   display: none; }
 
 .u-select-dropdown.u-select-dropdown--multiple .u-select-dropdown-menu-item-selected:after, .u-select-dropdown.u-select-dropdown--multiple .u-select-dropdown-menu-item-selected:hover:after {
-  color: #108ee9;
+  color: rgb(245, 60, 50);
   display: inline-block; }
 
 :root .u-select-dropdown.u-select-dropdown--multiple .u-select-dropdown-menu-item:after {

@@ -14,6 +14,7 @@ exports["default"] = {
   timeSelect: 'Sélectionner l\'heure',
   dateSelect: 'Sélectionner l\'heure',
   monthSelect: 'Choisissez un mois',
+  monthFormat: 'M',
   yearSelect: 'Choisissez une année',
   decadeSelect: 'Choisissez une décennie',
   yearFormat: 'YYYY',

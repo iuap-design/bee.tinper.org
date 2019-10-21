@@ -27,7 +27,7 @@ class CheckboxGroup extends React.Component {
         }
     }
     componentWillReceiveProps(nextProps){
-        if(!isEqual(nextProps.value,this.state.values)){
+        if(nextProps.value && !isEqual(nextProps.value,this.state.values)){
             this.setState({
                 values:nextProps.value
             })
@@ -76,6 +76,7 @@ class CheckboxGroup extends React.Component {
         let props = this.props;
         let { clsPrefix, className, disabled, children, options } = props;
         let classes = clsPrefix;
+        console.log('state.values: ',state.values)
         if(className)classes += ' '+className;
         if (options && options.length > 0) {
             children = this.getOptions().map(option => (

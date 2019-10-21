@@ -1,3 +1,13 @@
+<a name="2.0.5"></a>
+## [2.0.5](https://github.com/tinper-bee/upload/compare/v2.0.4...v2.0.5) (2019-10-17)
+
+
+
+<a name="2.0.4"></a>
+## [2.0.4](https://github.com/tinper-bee/upload/compare/v2.0.3...v2.0.4) (2019-10-11)
+
+
+
 <a name="2.0.3"></a>
 ## [2.0.3](https://github.com/tinper-bee/upload/compare/v2.0.2...v2.0.3) (2019-09-24)
 

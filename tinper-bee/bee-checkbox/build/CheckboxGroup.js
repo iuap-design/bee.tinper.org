@@ -89,7 +89,7 @@ var CheckboxGroup = function (_React$Component) {
     }
 
     CheckboxGroup.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
-        if (!(0, _lodash2["default"])(nextProps.value, this.state.values)) {
+        if (nextProps.value && !(0, _lodash2["default"])(nextProps.value, this.state.values)) {
             this.setState({
                 values: nextProps.value
             });
@@ -122,6 +122,7 @@ var CheckboxGroup = function (_React$Component) {
             options = props.options;
 
         var classes = clsPrefix;
+        console.log('state.values: ', state.values);
         if (className) classes += ' ' + className;
         if (options && options.length > 0) {
             children = this.getOptions().map(function (option) {

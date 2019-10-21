@@ -10,6 +10,7 @@ export default {
   dateSelect: 'pilih tanggal',
   weekSelect: 'Pilih satu minggu',
   monthSelect: 'Pilih satu bulan',
+  monthFormat: 'M',
   yearSelect: 'Pilih satu tahun',
   decadeSelect: 'Pilih satu dekade',
   yearFormat: 'YYYY',

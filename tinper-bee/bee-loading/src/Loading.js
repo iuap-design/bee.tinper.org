@@ -124,7 +124,8 @@ class Loading extends Component {
             <div />
             <div />
           </div>
-          {children && <div className={`${clsPrefix}-desc`}>{children}</div>}
+          {tip ? <p className={`${clsPrefix}-desc`}>{tip}</p> : null}
+          {!tip &&children && <div className={`${clsPrefix}-desc`}>{children}</div>}
         </div>
       );
     }

@@ -1,3 +1,13 @@
+<a name="2.0.18"></a>
+## [2.0.18](https://github.com/tinper-bee/bee-radio/compare/v2.0.17...v2.0.18) (2019-10-17)
+
+
+
+<a name="2.0.17"></a>
+## [2.0.17](https://github.com/tinper-bee/bee-radio/compare/v2.0.16...v2.0.17) (2019-09-30)
+
+
+
 <a name="2.0.16"></a>
 ## [2.0.16](https://github.com/tinper-bee/bee-radio/compare/v2.0.15...v2.0.16) (2019-08-23)
 

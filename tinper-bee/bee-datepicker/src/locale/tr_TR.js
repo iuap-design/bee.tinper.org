@@ -9,6 +9,7 @@ export default {
   timeSelect: 'Zaman Seç',
   dateSelect: 'Tarih Seç',
   monthSelect: 'Ay Seç',
+  monthFormat: 'M',
   yearSelect: 'Yıl Seç',
   decadeSelect: 'On Yıl Seç',
   yearFormat: 'YYYY',

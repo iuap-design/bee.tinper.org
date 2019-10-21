@@ -27,17 +27,6 @@ const demo2props = {
     status: 'done',
     url: 'http://www.baidu.com/yyy.png',
   }],
-  fileList: [{
-    uid: -1,
-    name: 'xxx.png',
-    status: 'done',
-    url: 'http://www.baidu.com/xxx.png',
-  }, {
-    uid: -2,
-    name: 'yyy.png',
-    status: 'done',
-    url: 'http://www.baidu.com/yyy.png',
-  }]
 };
 class Demo2 extends Component {
   render(){

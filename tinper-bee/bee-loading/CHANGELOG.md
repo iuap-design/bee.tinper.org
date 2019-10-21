@@ -1,3 +1,13 @@
+<a name="2.0.3"></a>
+## [2.0.3](https://github.com/tinper-bee/bee-loading/compare/v2.0.2...v2.0.3) (2019-10-15)
+
+
+### Bug Fixes
+
+* **bee-loading:** loadingType='line' 时不显示tip的bug ([6728527](https://github.com/tinper-bee/bee-loading/commit/6728527))
+
+
+
 <a name="2.0.2"></a>
 ## [2.0.2](https://github.com/tinper-bee/bee-loading/compare/v2.0.1...v2.0.2) (2019-09-21)
 

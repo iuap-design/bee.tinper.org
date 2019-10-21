@@ -70,41 +70,62 @@ var Radio = function (_React$Component) {
 
     var _this = _possibleConstructorReturn(this, _React$Component.call(this, props, context));
 
+    var initChecked = typeof props.checked !== 'undefined' ? props.checked : props.defaultChecked;
+    _this.state = {
+      checked: initChecked
+    };
     _this.handleClick = _this.handleClick.bind(_this);
 
     return _this;
   }
 
   Radio.prototype.handleClick = function handleClick(event) {
-    var onChange = this.context.radioGroup.onChange;
-
     if (this.props.disabled) {
       return;
     }
-    if (onChange) {
-      onChange(this.props.value);
+
+    if (this.context.radioGroup && this.context.radioGroup.onChange) {
+      this.context.radioGroup.onChange(this.props.value);
+    } else {
+      this.setState({
+        checked: true
+      });
     }
   };
 
   Radio.prototype.render = function render() {
-    var _context$radioGroup = this.context.radioGroup,
-        name = _context$radioGroup.name,
-        selectedValue = _context$radioGroup.selectedValue,
-        size = _context$radioGroup.size,
-        focusvalue = _context$radioGroup.focusvalue;
+    var state = this.state,
+        props = this.props,
+        context = this.context;
+    var checked = state.checked;
     /**
      * 自身的属性
      */
 
-    var _props = this.props,
-        inverse = _props.inverse,
-        disabled = _props.disabled,
-        colors = _props.colors,
-        className = _props.className,
-        children = _props.children,
-        clsPrefix = _props.clsPrefix,
-        style = _props.style,
-        others = _objectWithoutProperties(_props, ['inverse', 'disabled', 'colors', 'className', 'children', 'clsPrefix', 'style']);
+    var inverse = props.inverse,
+        disabled = props.disabled,
+        colors = props.colors,
+        className = props.className,
+        children = props.children,
+        clsPrefix = props.clsPrefix,
+        style = props.style,
+        others = _objectWithoutProperties(props, ['inverse', 'disabled', 'colors', 'className', 'children', 'clsPrefix', 'style']);
+
+    var radioGroup = context.radioGroup;
+
+    var radioProps = _extends({}, others);
+    // 包裹 radioGroup
+    if (radioGroup) {
+      radioProps.name = radioGroup.name;
+      radioProps.selectedValue = radioGroup.selectedValue;
+      radioProps.size = radioGroup.size;
+      radioProps.focusvalue = radioGroup.focusvalue;
+    }
+    var name = radioProps.name,
+        selectedValue = radioProps.selectedValue,
+        size = radioProps.size,
+        focusvalue = radioProps.focusvalue;
+
 
     var optional = {};
     /**
@@ -115,7 +136,7 @@ var Radio = function (_React$Component) {
     }
 
     var classes = {
-      'is-checked': optional.checked,
+      'is-checked': typeof optional.checked !== 'undefined' ? optional.checked : checked,
       disabled: disabled
     };
 
@@ -136,7 +157,7 @@ var Radio = function (_React$Component) {
     if (focusvalue && focusvalue == this.props.value) {
       tabIndex = 0;
     }
-    var input = _react2["default"].createElement('input', _extends({}, others, {
+    var input = _react2["default"].createElement('input', _extends({}, radioProps, {
       type: 'radio',
       name: name,
       disabled: this.props.disabled,

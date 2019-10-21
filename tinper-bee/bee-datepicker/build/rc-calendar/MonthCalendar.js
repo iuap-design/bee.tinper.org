@@ -186,9 +186,9 @@ var MonthCalendar = function (_React$Component) {
           monthCellContentRender: props.monthCellContentRender,
           onMonthSelect: this.onSelect,
           onValueChange: this.setValue,
-          onPanelChange: this.handlePanelChange
-          // onChange={onChange}
-          , onClear: onClear
+          onPanelChange: this.handlePanelChange,
+          onChange: onChange,
+          onClear: onClear
         })
       ),
       _react2["default"].createElement(_CalendarFooter2["default"], {

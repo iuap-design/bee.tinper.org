@@ -220,10 +220,10 @@ var InputNumber = function (_Component) {
                 min = _this$props2.min,
                 max = _this$props2.max;
 
-            onFocus && onFocus(value);
+            onFocus && onFocus(value, e);
         };
 
-        _this.handleBlur = function (v) {
+        _this.handleBlur = function (v, e) {
             _this.focus = false;
             var _this$props3 = _this.props,
                 onBlur = _this$props3.onBlur,
@@ -235,7 +235,7 @@ var InputNumber = function (_Component) {
                 _this.setState({
                     value: v
                 });
-                onBlur && onBlur(v);
+                onBlur && onBlur(v, e);
                 onChange && onChange(v);
                 return;
             }
@@ -250,10 +250,10 @@ var InputNumber = function (_Component) {
             });
             _this.detailDisable(value);
             if (toNumber) {
-                onBlur && onBlur(Number(value));
+                onBlur && onBlur(Number(value), e);
                 onChange && onChange(Number(value));
             } else {
-                onBlur && onBlur(value);
+                onBlur && onBlur(value, e);
                 onChange && onChange(value);
             }
         };
@@ -390,6 +390,7 @@ var InputNumber = function (_Component) {
         };
 
         _this.handlePlusMouseDown = function (e) {
+            e.preventDefault();
             var _this$props7 = _this.props,
                 delay = _this$props7.delay,
                 disabled = _this$props7.disabled;
@@ -405,6 +406,7 @@ var InputNumber = function (_Component) {
         };
 
         _this.handleReduceMouseDown = function (e) {
+            e.preventDefault();
             var _this$props8 = _this.props,
                 delay = _this$props8.delay,
                 disabled = _this$props8.disabled;

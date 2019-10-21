@@ -38,25 +38,32 @@ const contextTypes = {
 
 class Radio extends React.Component {
   constructor(props, context) {
-
     super(props, context);
-    
+    let initChecked = typeof props.checked !== 'undefined' ? props.checked : props.defaultChecked;
+    this.state = {
+      checked: initChecked
+    }
     this.handleClick = this.handleClick.bind(this);
     
   }
 
   handleClick(event) {
-    const {onChange } = this.context.radioGroup;
     if (this.props.disabled) {
       return;
     }
-    if (onChange) {
-      onChange(this.props.value);
+
+    if (this.context.radioGroup && this.context.radioGroup.onChange) {
+      this.context.radioGroup.onChange(this.props.value);
+    }else {
+      this.setState({
+        checked: true
+      })
     }
   }
  
   render() {
-      const {name, selectedValue,size,focusvalue} = this.context.radioGroup;
+    const { state, props, context } = this;
+    let { checked } = state;
       /**
        * 自身的属性
        */
@@ -69,7 +76,17 @@ class Radio extends React.Component {
           clsPrefix,
           style,
           ...others
-        } = this.props;
+        } = props;
+      const { radioGroup } = context;
+      const radioProps = { ...others };
+      // 包裹 radioGroup
+      if (radioGroup) {
+        radioProps.name = radioGroup.name;
+        radioProps.selectedValue = radioGroup.selectedValue;
+        radioProps.size = radioGroup.size;
+        radioProps.focusvalue = radioGroup.focusvalue;
+      } 
+      const {name, selectedValue,size,focusvalue} = radioProps;
 
       let optional = {};
       /**
@@ -80,7 +97,7 @@ class Radio extends React.Component {
       }
 
       let classes = {
-        'is-checked':optional.checked,
+        'is-checked': typeof optional.checked !== 'undefined' ? optional.checked : checked,
         disabled
       };
 
@@ -103,7 +120,7 @@ class Radio extends React.Component {
       }
       const input = (
           <input
-          {...others}
+          {...radioProps}
           type="radio"
           name={name}
           disabled={this.props.disabled}

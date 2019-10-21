@@ -247,7 +247,7 @@ var _initialiseProps = function _initialiseProps() {
         //传入value和dateString
         if (props.onChange && isValidRange(value) || value.length == 0) {
             if (value.length > 0) {
-                props.onChange(value, "[\"" + (0, _util.formatDate)(value[0], formatStr) + "\" , \"" + (0, _util.formatDate)(value[1], formatStr) + "\"]");
+                props.onChange(value, "[\"" + (0, _util.formatDate)(value[0], formatStr) + "\" , \"" + (0, _util.formatDate)(value[1], formatStr) + "\"]", ["" + (0, _util.formatDate)(value[0], formatStr), "" + (0, _util.formatDate)(value[1], formatStr)]);
             } else {
                 props.onChange(null);
             }

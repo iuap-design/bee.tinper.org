@@ -212,17 +212,17 @@ class InputNumber extends Component {
     handleFocus = (value,e) => {
         this.focus = true;
         let { onFocus, min, max } = this.props;
-        onFocus && onFocus(value);
+        onFocus && onFocus(value, e);
     }
 
-    handleBlur = (v) => {
+    handleBlur = (v,e) => {
         this.focus = false;        
         const { onBlur,precision,onChange,toNumber } = this.props;
         if(v===''){
             this.setState({
                 value:v
             })
-            onBlur && onBlur(v);
+            onBlur && onBlur(v,e);
             onChange && onChange(v);
             return;
         }
@@ -237,10 +237,10 @@ class InputNumber extends Component {
         });
         this.detailDisable(value);
         if(toNumber){
-            onBlur && onBlur(Number(value));
+            onBlur && onBlur(Number(value),e);
             onChange && onChange(Number(value));
         }else{
-            onBlur && onBlur(value);
+            onBlur && onBlur(value,e);
             onChange && onChange(value);
         }
         
@@ -377,6 +377,7 @@ class InputNumber extends Component {
     }
 
     handlePlusMouseDown = (e) => {
+        e.preventDefault();
         let {delay,disabled} = this.props;
         if(disabled)return;
         let {value} = this.state;
@@ -388,6 +389,7 @@ class InputNumber extends Component {
     }
 
     handleReduceMouseDown = (e) => {
+        e.preventDefault();
         let {delay,disabled} = this.props;
         if(disabled)return;
         let {value} = this.state;

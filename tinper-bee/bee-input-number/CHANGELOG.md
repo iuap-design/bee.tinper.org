@@ -1,3 +1,13 @@
+<a name="2.1.6"></a>
+## [2.1.6](https://github.com/tinper-bee/bee-input-number/compare/v2.1.5...v2.1.6) (2019-10-21)
+
+
+
+<a name="2.1.5"></a>
+## [2.1.5](https://github.com/tinper-bee/bee-input-number/compare/v2.1.4...v2.1.5) (2019-10-19)
+
+
+
 <a name="2.1.4"></a>
 ## [2.1.4](https://github.com/tinper-bee/bee-input-number/compare/v2.1.3...v2.1.4) (2019-08-09)
 
@@ -64,12 +74,7 @@
 
 
 <a name="2.0.9"></a>
-## [2.0.9](https://github.com/tinper-bee/bee-input-number/compare/v2.0.7...v2.0.9) (2019-05-08)
-
-
-
-<a name="2.0.7"></a>
-## [2.0.7](https://github.com/tinper-bee/bee-input-number/compare/v2.0.6...v2.0.7) (2019-05-08)
+## [2.0.9](https://github.com/tinper-bee/bee-input-number/compare/v2.0.6...v2.0.9) (2019-05-08)
 
 
 

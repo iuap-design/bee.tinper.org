@@ -51,6 +51,7 @@ export class MenuItem extends React.Component {
   componentDidMount() {
     // invoke customized ref to expose component to mixin
     this.callRef();
+    ReactDOM.findDOMNode(this).addEventListener('DNDclick', this.onClick);
   }
 
   componentDidUpdate() {
@@ -64,6 +65,7 @@ export class MenuItem extends React.Component {
 
   componentWillUnmount() {
     const props = this.props;
+    ReactDOM.findDOMNode(this).removeEventListener('DNDclick', this.onClick);
     if (props.onDestroy) {
       props.onDestroy(props.eventKey);
     }

@@ -25,15 +25,19 @@ class Demo7 extends Component {
         return (
             <div className="demo-checkbox">
                 <Checkbox
+                    disabled
                     inverse
-                    ref="test"
+                    checked={true}>
+                    禁用
+                </Checkbox>
+                <Checkbox
+                    inverse
                     checked={this.state.checkedFlag}
                     onChange={this.onChange}>
                     全选
                 </Checkbox>
                 <Checkbox
                     inverse
-                    ref="test"
                     indeterminate>
                     半选
                 </Checkbox>

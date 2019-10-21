@@ -47,9 +47,12 @@ export default {
         aria-disabled={child.props.disabled ? 'true' : 'false'}
         aria-selected={activeKey === key ? 'true' : 'false'}
         {...events}
-        className={cls}
+        className={cls+' '+'cardtabs-tabitem'}
         key={key}
         {...ref}
+        nid={child.props.nid}
+        uitype={child.props.uitype}
+        nodekey={key}
       >
         {child.props.tab}
       </div>);

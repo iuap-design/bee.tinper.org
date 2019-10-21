@@ -154,7 +154,7 @@ class UploadList extends Component{
         <Icon type="uf-close" title="移除文件" onClick={() => this.handleClose(file)} />
       ) : null;
       const actions = (listType === 'picture-card' && file.status !== 'uploading') ? (
-        <span>
+        <span className={`${clsPrefix}-list-item-actions`}>
           {previewIcon}
           {removeIcon}
         </span>

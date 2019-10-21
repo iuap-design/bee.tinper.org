@@ -10,6 +10,7 @@ export default {
   dateSelect: 'ದಿನಾಂಕವನ್ನು ಆಯ್ಕೆ ಮಾಡಿ',
   weekSelect: 'ಒಂದು ವಾರದ ಆರಿಸಿ',
   monthSelect: 'ಒಂದು ತಿಂಗಳು ಆಯ್ಕೆಮಾಡಿ',
+  monthFormat: 'M',
   yearSelect: 'ಒಂದು ವರ್ಷ ಆರಿಸಿ',
   decadeSelect: 'ಒಂದು ದಶಕದ ಆಯ್ಕೆಮಾಡಿ',
   yearFormat: 'YYYY',

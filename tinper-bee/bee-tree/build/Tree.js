@@ -144,8 +144,7 @@ var Tree = function (_React$Component) {
     var startIndex = this.startIndex,
         endIndex = this.endIndex;
 
-    var expandAll = nextProps.defaultExpandAll;
-    var expandedKeys = this.getDefaultExpandedKeys(nextProps, !expandAll);
+    var expandedKeys = this.getDefaultExpandedKeys(nextProps, true);
     var checkedKeys = this.getDefaultCheckedKeys(nextProps, true);
     var selectedKeys = this.getDefaultSelectedKeys(nextProps, true);
     var st = {};

@@ -132,6 +132,7 @@ var MenuItem = exports.MenuItem = function (_React$Component) {
   MenuItem.prototype.componentDidMount = function componentDidMount() {
     // invoke customized ref to expose component to mixin
     this.callRef();
+    _reactDom2["default"].findDOMNode(this).addEventListener('DNDclick', this.onClick);
   };
 
   MenuItem.prototype.componentDidUpdate = function componentDidUpdate() {
@@ -145,6 +146,7 @@ var MenuItem = exports.MenuItem = function (_React$Component) {
 
   MenuItem.prototype.componentWillUnmount = function componentWillUnmount() {
     var props = this.props;
+    _reactDom2["default"].findDOMNode(this).removeEventListener('DNDclick', this.onClick);
     if (props.onDestroy) {
       props.onDestroy(props.eventKey);
     }

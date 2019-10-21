@@ -15,6 +15,7 @@ exports["default"] = {
   dateSelect: 'Огноо сонгох',
   weekSelect: '7 хоног сонгох',
   monthSelect: 'Сар сонгох',
+  monthFormat: 'MM',
   yearSelect: 'Жил сонгох',
   decadeSelect: 'Арван сонгох',
   yearFormat: 'YYYY',

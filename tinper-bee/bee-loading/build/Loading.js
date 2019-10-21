@@ -194,7 +194,12 @@ var Loading = function (_Component) {
           _react2["default"].createElement("div", null),
           _react2["default"].createElement("div", null)
         ),
-        children && _react2["default"].createElement(
+        tip ? _react2["default"].createElement(
+          "p",
+          { className: clsPrefix + "-desc" },
+          tip
+        ) : null,
+        !tip && children && _react2["default"].createElement(
           "div",
           { className: clsPrefix + "-desc" },
           children

@@ -9,6 +9,7 @@ export default {
   timeSelect: 'Valise aika',
   dateSelect: 'Valitse päivä',
   monthSelect: 'Valitse kuukausi',
+  monthFormat: 'M',
   yearSelect: 'Valitse vuosi',
   decadeSelect: 'Valitse vuosikymmen',
   yearFormat: 'YYYY',

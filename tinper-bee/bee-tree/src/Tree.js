@@ -90,8 +90,7 @@ class Tree extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     const {startIndex,endIndex} = this;
-    let expandAll = nextProps.defaultExpandAll;
-    const expandedKeys = this.getDefaultExpandedKeys(nextProps, !expandAll);
+    const expandedKeys = this.getDefaultExpandedKeys(nextProps, true);
     const checkedKeys = this.getDefaultCheckedKeys(nextProps, true);
     const selectedKeys = this.getDefaultSelectedKeys(nextProps, true);
     const st = {};

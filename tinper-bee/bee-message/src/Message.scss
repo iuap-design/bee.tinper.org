@@ -71,6 +71,9 @@ $message-content-padding: 11px 64px 11px 4px;
           font-size: 12px;
           padding: 0;
         }
+        &-x:after {
+          content: "";
+        }
 
         &:hover {
           opacity: 1;

@@ -80,7 +80,7 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
 	
-	var Demo1 = __webpack_require__(276);var Demo2 = __webpack_require__(404);var Demo3 = __webpack_require__(405);var Demo4 = __webpack_require__(406);var Demo5 = __webpack_require__(407);var Demo6 = __webpack_require__(408);var Demo7 = __webpack_require__(409);var Demo8 = __webpack_require__(410);var Demo9 = __webpack_require__(411);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 基础示例 ", "code": "/**\n *\n* @title 基础示例 \n * @description 最简单输入控制\n *\n */\n\n\nimport React, {Component} from 'react';\nimport { Form, InputNumber } from 'tinper-bee';\n\n\nclass Demo1 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            value: 0\n        }\n    }\n\n    handleChange = (value) => {\n        console.log(value);\n        this.setState({\n            value: value\n        })\n    }\n\n    render() {\n        let {getFieldProps} = this.props.form;\n        return (\n            <div>\n                {/* <InputNumber precision={2} min={0}  value={this.state.value} onChange={ this.handleChange }/> */}\n                <InputNumber\n                iconStyle=\"one\"\n                min={0}\n                max={999999}\n                {...getFieldProps(\"valueStd\", {\n                    initialValue: 0\n                })}\n                />\n            </div>\n        )\n    }\n}\n\nexport default Form.createForm()(Demo1);", "desc": " 最简单输入控制" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 默认 iconStyle", "code": "/**\n*\n* @title 默认 iconStyle\n* @description 自定义 最大值 max=12,min=5,step=1\n*\n*/\n\nimport React, { Component } from 'react';\nimport { InputNumber } from 'tinper-bee';\n\n\nclass Demo2 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            value: 0\n        }\n    }\n    handleChange = (value) => {\n        this.setState({\n            value: value\n        })\n    }\n\trender () {\n\t\treturn (\n\t\t\t<InputNumber\n\t\t\t\tmax={12}\n\t\t\t\tmin={5}\n\t\t\t\tstep={1}\n\t\t\t\tvalue={this.state.value}\n\t\t\t\tonChange={ this.handleChange }\n\t\t\t/>\n\t\t)\n\t}\n}\n\nexport default Demo2;", "desc": " 自定义 最大值 max=12,min=5,step=1" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 第二种iconStyle", "code": "/**\n*\n* @title 第二种iconStyle\n* @description 自定义max=12,min=5,step=2\n*\n*/\n\nimport React, { Component } from 'react';\nimport { InputNumber } from 'tinper-bee';\n \n\nclass Demo3 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            value: 0\n        }\n    }\n    handleChange = (value) => {\n        this.setState({\n            value: value\n        })\n    }\n\trender () {\n\t\treturn (\n\t\t\t<InputNumber\n\t\t\t\ticonStyle=\"one\"\n\t\t\t\tmax={12}\n\t\t\t\tmin={5}\n\t\t\t\tstep={2}\n\t\t\t\tvalue={this.state.value}\n\t\t\t\tonChange={ this.handleChange }\n\t\t\t/>\n\t\t)\n\t}\n}\n\nexport default Demo3;", "desc": " 自定义max=12,min=5,step=2" }, { "example": _react2['default'].createElement(Demo4, null), "title": " 默认iconStyle不可用状态", "code": "/**\n *\n * @title 默认iconStyle不可用状态\n * @description disabled 的单输入控制\n *\n */\n\n\nimport React, {Component} from 'react';\nimport { InputNumber } from 'tinper-bee';\n\n\nclass Demo4 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            value: 0\n        }\n    }\n\n    handleChange = (value) => {\n        this.setState({\n            value: value\n        })\n    }\n\n    render() {\n        return (\n            <div>\n                <InputNumber disabled precision={2} min={0} value={this.state.value} onChange={ this.handleChange }/>\n            </div>\n        )\n    }\n}\n\nexport default Demo4;", "desc": " disabled 的单输入控制" }, { "example": _react2['default'].createElement(Demo5, null), "title": " 第二种iconStyle不可用状态", "code": "/**\n*\n* @title 第二种iconStyle不可用状态\n* @description 自定义max=12,min=5,step=2 且设置 disabled 处理\n*\n*/\n\nimport React, { Component } from 'react';\nimport { InputNumber } from 'tinper-bee';\n \n\nclass Demo5 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            value: 8\n        }\n    }\n    handleChange = (value) => {\n        this.setState({\n            value: value\n        })\n    }\n\trender () {\n\t\treturn (\n\t\t\t<InputNumber\n\t\t\t\tdisabled\n\t\t\t\ticonStyle=\"one\"\n\t\t\t\tmax={12}\n\t\t\t\tmin={5}\n\t\t\t\tstep={2}\n\t\t\t\tvalue={this.state.value}\n\t\t\t\tonChange={ this.handleChange }\n\t\t\t/>\n\t\t)\n\t}\n}\n\nexport default Demo5;", "desc": " 自定义max=12,min=5,step=2 且设置 disabled 处理" }, { "example": _react2['default'].createElement(Demo6, null), "title": " 保留两位小数", "code": "/**\n*\n* @title 保留两位小数\n* @description precision={2} 设置小数点后保留两位，失去焦点时数据会格式化为两位小数\n*\n*/\n\nimport React, { Component } from 'react';\nimport { InputNumber } from 'tinper-bee';\n \n\nclass Demo6 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            value: 0\n        }\n    }\n    handleChange = (value) => {\n\t\tconsole.log(value)\n        this.setState({\n            value: value\n        })\n    }\n\trender () {\n\t\treturn (\n\t\t\t<InputNumber\n\t\t\t\ticonStyle=\"one\"\n\t\t\t\tprecision={2}\n\t\t\t\tvalue={this.state.value}\n\t\t\t\tonChange={ this.handleChange }\n\t\t\t/>\n\t\t)\n\t}\n}\n\nexport default Demo6;", "desc": " precision={2} 设置小数点后保留两位，失去焦点时数据会格式化为两位小数" }, { "example": _react2['default'].createElement(Demo7, null), "title": " 显示千分符示例", "code": "/**\n *\n* @title 显示千分符示例\n * @description 设置toThousands={true}  只会在显示的时候带有千分符，onChange里的回调还是原来不带千分符的值\n *\n */\n\n\nimport React, {Component} from 'react';\nimport { InputNumber } from 'tinper-bee';\n\n\nclass Demo1 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            value: 0\n        }\n    }\n\n    handleChange = (value) => {\n        console.log('onChange:   '+value)\n        this.setState({\n            value: value\n        })\n    }\n\n    render() {\n        return (\n            <div>\n                <InputNumber toThousands={true} precision={2} min={0} value={this.state.value} onChange={ this.handleChange }/>\n            </div>\n        )\n    }\n}\n\nexport default Demo1;", "desc": " 设置toThousands={true}  只会在显示的时候带有千分符，onChange里的回调还是原来不带千分符的值" }, { "example": _react2['default'].createElement(Demo8, null), "title": " 基础示例 ", "code": "/**\n *\n* @title 基础示例 \n * @description 最简单输入控制\n *\n */\n\n\nimport React, {Component} from 'react';\nimport { InputNumber } from 'tinper-bee';\n\n\nclass Demo1 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            value: ''\n        }\n    }\n\n    handleChange = (value) => {\n        console.log(value);\n        this.setState({\n            value: value\n        })\n    }\n\n    render() {\n        return (\n            <div>\n                <InputNumber  precision={2} min={0} value={this.state.value} onChange={ this.handleChange }/>\n            </div>\n        )\n    }\n}\n\nexport default Demo1;", "desc": " 最简单输入控制" }, { "example": _react2['default'].createElement(Demo9, null), "title": " 日期区间基础示例 ", "code": "/**\n *\n* @title 日期区间基础示例 \n * @description 使用 InputNumberGroup\n *\n */\n\n\nimport React, {Component} from 'react';\nimport { InputNumber } from 'tinper-bee';\n\n\nconst InputNumberGroup = InputNumber.InputNumberGroup;\n\nclass Demo9 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            value: [10,12]\n        }\n    }\n\n    handleChange = (value) => {\n        console.log(value);\n        this.setState({\n            value\n        })\n    }\n\n    render() {\n        return (\n            <div className='demo9'>\n                <InputNumberGroup \n                iconStyle='two'\n                onChange={this.handleChange} \n                placeholder={['请输入最小值','请输入最大值']}/>\n            </div>\n        )\n    }\n}\n\nexport default Demo9;", "desc": " 使用 InputNumberGroup" }];
+	var Demo1 = __webpack_require__(276);var Demo2 = __webpack_require__(404);var Demo3 = __webpack_require__(405);var Demo4 = __webpack_require__(406);var Demo5 = __webpack_require__(407);var Demo6 = __webpack_require__(408);var Demo7 = __webpack_require__(409);var Demo8 = __webpack_require__(410);var Demo9 = __webpack_require__(411);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 基础示例 ", "code": "/**\n *\n* @title 基础示例 \n * @description 最简单输入控制\n *\n */\n\n\nimport React, {Component} from 'react';\nimport { Form, InputNumber } from 'tinper-bee';\n\n\nclass Demo1 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            value: 0\n        }\n    }\n\n    handleChange = (value) => {\n        console.log(value);\n        this.setState({\n            value: value\n        })\n    }\n\n    render() {\n        let {getFieldProps} = this.props.form;\n        return (\n            <div>\n                {/* <InputNumber precision={2} min={0}  value={this.state.value} onChange={ this.handleChange }/> */}\n                <InputNumber\n                iconStyle=\"one\"\n                min={0}\n                max={999999}\n                {...getFieldProps(\"valueStd\", {\n                    initialValue: 0\n                })}\n                />\n            </div>\n        )\n    }\n}\n\nexport default Form.createForm()(Demo1);", "desc": " 最简单输入控制" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 默认 iconStyle", "code": "/**\n*\n* @title 默认 iconStyle\n* @description 自定义 最大值 max=12,min=5,step=1\n*\n*/\n\nimport React, { Component } from 'react';\nimport { InputNumber } from 'tinper-bee';\n\n\nclass Demo2 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            value: 0\n        }\n    }\n    handleChange = (value) => {\n        this.setState({\n            value: value\n        })\n    }\n   \n\trender () {\n\t\treturn (\n\t\t\t<InputNumber\n\t\t\t\tmax={12}\n\t\t\t\tmin={5}\n\t\t\t\tstep={1}\n\t\t\t\tvalue={this.state.value}\n                onChange={ this.handleChange }\n\t\t\t/>\n\t\t)\n\t}\n}\n\nexport default Demo2;", "desc": " 自定义 最大值 max=12,min=5,step=1" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 第二种iconStyle", "code": "/**\n*\n* @title 第二种iconStyle\n* @description 自定义max=12,min=5,step=2\n*\n*/\n\nimport React, { Component } from 'react';\nimport { InputNumber } from 'tinper-bee';\n \n\nclass Demo3 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            value: 0\n        }\n    }\n    handleChange = (value) => {\n        this.setState({\n            value: value\n        })\n\t}\n\t /**\n     * 事件处理\n     * @param {*} val\n     * @param {*} e  事件对象\n     * @param {*} propEvent eg: onBlur | onFocus\n     */\n    handleEvent = (val, e, propEvent) => {\n        console.log('propEvent', propEvent, 'val', val, 'e', e)\n        // const fn = this.props[propEvent];\n        // fn && fn(e);\n    }\n\trender () {\n\t\treturn (\n\t\t\t<InputNumber\n\t\t\t\ticonStyle=\"one\"\n\t\t\t\tmax={12}\n\t\t\t\tmin={5}\n\t\t\t\tstep={2}\n\t\t\t\tvalue={this.state.value}\n\t\t\t\tonChange={ this.handleChange }\n\t\t\t\tonBlur={(val, e) => { this.handleEvent(val, e, 'onBlur') }}\n                onFocus={(val, e) => { this.handleEvent(val, e, 'onFocus') }}\n\t\t\t/>\n\t\t)\n\t}\n}\n\nexport default Demo3;", "desc": " 自定义max=12,min=5,step=2" }, { "example": _react2['default'].createElement(Demo4, null), "title": " 默认iconStyle不可用状态", "code": "/**\n *\n * @title 默认iconStyle不可用状态\n * @description disabled 的单输入控制\n *\n */\n\n\nimport React, {Component} from 'react';\nimport { InputNumber } from 'tinper-bee';\n\n\nclass Demo4 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            value: 0\n        }\n    }\n\n    handleChange = (value) => {\n        this.setState({\n            value: value\n        })\n    }\n\n    render() {\n        return (\n            <div>\n                <InputNumber disabled precision={2} min={0} value={this.state.value} onChange={ this.handleChange }/>\n            </div>\n        )\n    }\n}\n\nexport default Demo4;", "desc": " disabled 的单输入控制" }, { "example": _react2['default'].createElement(Demo5, null), "title": " 第二种iconStyle不可用状态", "code": "/**\n*\n* @title 第二种iconStyle不可用状态\n* @description 自定义max=12,min=5,step=2 且设置 disabled 处理\n*\n*/\n\nimport React, { Component } from 'react';\nimport { InputNumber } from 'tinper-bee';\n \n\nclass Demo5 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            value: 8\n        }\n    }\n    handleChange = (value) => {\n        this.setState({\n            value: value\n        })\n    }\n\trender () {\n\t\treturn (\n\t\t\t<InputNumber\n\t\t\t\tdisabled\n\t\t\t\ticonStyle=\"one\"\n\t\t\t\tmax={12}\n\t\t\t\tmin={5}\n\t\t\t\tstep={2}\n\t\t\t\tvalue={this.state.value}\n\t\t\t\tonChange={ this.handleChange }\n\t\t\t/>\n\t\t)\n\t}\n}\n\nexport default Demo5;", "desc": " 自定义max=12,min=5,step=2 且设置 disabled 处理" }, { "example": _react2['default'].createElement(Demo6, null), "title": " 保留两位小数", "code": "/**\n*\n* @title 保留两位小数\n* @description precision={2} 设置小数点后保留两位，失去焦点时数据会格式化为两位小数\n*\n*/\n\nimport React, { Component } from 'react';\nimport { InputNumber } from 'tinper-bee';\n \n\nclass Demo6 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            value: 0\n        }\n    }\n    handleChange = (value) => {\n\t\tconsole.log(value)\n        this.setState({\n            value: value\n        })\n    }\n\trender () {\n\t\treturn (\n\t\t\t<InputNumber\n\t\t\t\ticonStyle=\"one\"\n\t\t\t\tprecision={2}\n\t\t\t\tvalue={this.state.value}\n\t\t\t\tonChange={ this.handleChange }\n\t\t\t/>\n\t\t)\n\t}\n}\n\nexport default Demo6;", "desc": " precision={2} 设置小数点后保留两位，失去焦点时数据会格式化为两位小数" }, { "example": _react2['default'].createElement(Demo7, null), "title": " 显示千分符示例", "code": "/**\n *\n* @title 显示千分符示例\n * @description 设置toThousands={true}  只会在显示的时候带有千分符，onChange里的回调还是原来不带千分符的值\n *\n */\n\n\nimport React, {Component} from 'react';\nimport { InputNumber } from 'tinper-bee';\n\n\nclass Demo1 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            value: 0\n        }\n    }\n\n    handleChange = (value) => {\n        console.log('onChange:   '+value)\n        this.setState({\n            value: value\n        })\n    }\n\n    render() {\n        return (\n            <div>\n                <InputNumber toThousands={true} precision={2} min={0} value={this.state.value} onChange={ this.handleChange }/>\n            </div>\n        )\n    }\n}\n\nexport default Demo1;", "desc": " 设置toThousands={true}  只会在显示的时候带有千分符，onChange里的回调还是原来不带千分符的值" }, { "example": _react2['default'].createElement(Demo8, null), "title": " 基础示例 ", "code": "/**\n *\n* @title 基础示例 \n * @description 最简单输入控制\n *\n */\n\n\nimport React, {Component} from 'react';\nimport { InputNumber } from 'tinper-bee';\n\n\nclass Demo1 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            value: ''\n        }\n    }\n\n    handleChange = (value) => {\n        console.log(value);\n        this.setState({\n            value: value\n        })\n    }\n\n    render() {\n        return (\n            <div>\n                <InputNumber  precision={2} min={0} value={this.state.value} onChange={ this.handleChange }/>\n            </div>\n        )\n    }\n}\n\nexport default Demo1;", "desc": " 最简单输入控制" }, { "example": _react2['default'].createElement(Demo9, null), "title": " 日期区间基础示例 ", "code": "/**\n *\n* @title 日期区间基础示例 \n * @description 使用 InputNumberGroup\n *\n */\n\n\nimport React, {Component} from 'react';\nimport { InputNumber } from 'tinper-bee';\n\n\nconst InputNumberGroup = InputNumber.InputNumberGroup;\n\nclass Demo9 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            value: [10,12]\n        }\n    }\n\n    handleChange = (value) => {\n        console.log(value);\n        this.setState({\n            value\n        })\n    }\n\n    render() {\n        return (\n            <div className='demo9'>\n                <InputNumberGroup \n                iconStyle='two'\n                onChange={this.handleChange} \n                placeholder={['请输入最小值','请输入最大值']}/>\n            </div>\n        )\n    }\n}\n\nexport default Demo9;", "desc": " 使用 InputNumberGroup" }];
 	
 	var Demo = function (_Component) {
 	    _inherits(Demo, _Component);
@@ -34532,10 +34532,10 @@
 	                min = _this$props2.min,
 	                max = _this$props2.max;
 	
-	            onFocus && onFocus(value);
+	            onFocus && onFocus(value, e);
 	        };
 	
-	        _this.handleBlur = function (v) {
+	        _this.handleBlur = function (v, e) {
 	            _this.focus = false;
 	            var _this$props3 = _this.props,
 	                onBlur = _this$props3.onBlur,
@@ -34547,7 +34547,7 @@
 	                _this.setState({
 	                    value: v
 	                });
-	                onBlur && onBlur(v);
+	                onBlur && onBlur(v, e);
 	                onChange && onChange(v);
 	                return;
 	            }
@@ -34562,10 +34562,10 @@
 	            });
 	            _this.detailDisable(value);
 	            if (toNumber) {
-	                onBlur && onBlur(Number(value));
+	                onBlur && onBlur(Number(value), e);
 	                onChange && onChange(Number(value));
 	            } else {
-	                onBlur && onBlur(value);
+	                onBlur && onBlur(value, e);
 	                onChange && onChange(value);
 	            }
 	        };
@@ -34702,6 +34702,7 @@
 	        };
 	
 	        _this.handlePlusMouseDown = function (e) {
+	            e.preventDefault();
 	            var _this$props7 = _this.props,
 	                delay = _this$props7.delay,
 	                disabled = _this$props7.disabled;
@@ -34717,6 +34718,7 @@
 	        };
 	
 	        _this.handleReduceMouseDown = function (e) {
+	            e.preventDefault();
 	            var _this$props8 = _this.props,
 	                delay = _this$props8.delay,
 	                disabled = _this$props8.disabled;
@@ -42159,7 +42161,7 @@
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-					value: true
+	    value: true
 	});
 	
 	var _react = __webpack_require__(1);
@@ -42186,37 +42188,58 @@
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               */
 	
 	var Demo3 = function (_Component) {
-					_inherits(Demo3, _Component);
+	    _inherits(Demo3, _Component);
 	
-					function Demo3(props) {
-									_classCallCheck(this, Demo3);
+	    function Demo3(props) {
+	        _classCallCheck(this, Demo3);
 	
-									var _this = _possibleConstructorReturn(this, _Component.call(this, props));
+	        var _this = _possibleConstructorReturn(this, _Component.call(this, props));
 	
-									_this.handleChange = function (value) {
-													_this.setState({
-																	value: value
-													});
-									};
+	        _this.handleChange = function (value) {
+	            _this.setState({
+	                value: value
+	            });
+	        };
 	
-									_this.state = {
-													value: 0
-									};
-									return _this;
-					}
+	        _this.handleEvent = function (val, e, propEvent) {
+	            console.log('propEvent', propEvent, 'val', val, 'e', e);
+	            // const fn = this.props[propEvent];
+	            // fn && fn(e);
+	        };
 	
-					Demo3.prototype.render = function render() {
-									return _react2['default'].createElement(_src2['default'], {
-													iconStyle: 'one',
-													max: 12,
-													min: 5,
-													step: 2,
-													value: this.state.value,
-													onChange: this.handleChange
-									});
-					};
+	        _this.state = {
+	            value: 0
+	        };
+	        return _this;
+	    }
+	    /**
+	       * 事件处理
+	       * @param {*} val
+	       * @param {*} e  事件对象
+	       * @param {*} propEvent eg: onBlur | onFocus
+	       */
 	
-					return Demo3;
+	
+	    Demo3.prototype.render = function render() {
+	        var _this2 = this;
+	
+	        return _react2['default'].createElement(_src2['default'], {
+	            iconStyle: 'one',
+	            max: 12,
+	            min: 5,
+	            step: 2,
+	            value: this.state.value,
+	            onChange: this.handleChange,
+	            onBlur: function onBlur(val, e) {
+	                _this2.handleEvent(val, e, 'onBlur');
+	            },
+	            onFocus: function onFocus(val, e) {
+	                _this2.handleEvent(val, e, 'onFocus');
+	            }
+	        });
+	    };
+	
+	    return Demo3;
 	}(_react.Component);
 	
 	exports['default'] = Demo3;

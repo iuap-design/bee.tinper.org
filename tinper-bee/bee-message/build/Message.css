@@ -1048,6 +1048,8 @@
       .u-message-notice-close-x .uf {
         font-size: 12px;
         padding: 0; }
+      .u-message-notice-close-x:after {
+        content: ""; }
       .u-message-notice-close:hover {
         opacity: 1;
         filter: alpha(opacity=100);
