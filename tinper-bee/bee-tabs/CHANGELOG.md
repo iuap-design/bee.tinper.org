@@ -1,3 +1,13 @@
+<a name="2.1.6"></a>
+## [2.1.6](https://github.com/tinper-bee/bee-tabs/compare/v2.1.5...v2.1.6) (2019-10-30)
+
+
+### Bug Fixes
+
+* 修复Tabs中checkbox点击自动触发Tabs的onChange ([8478d80](https://github.com/tinper-bee/bee-tabs/commit/8478d80))
+
+
+
 <a name="2.1.5"></a>
 ## [2.1.5](https://github.com/tinper-bee/bee-tabs/compare/v2.1.4...v2.1.5) (2019-10-10)
 

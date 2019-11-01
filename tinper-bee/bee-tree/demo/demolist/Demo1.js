@@ -41,19 +41,23 @@ class Demo1 extends Component {
 	}
 
 	onDoubleClick=(key,treeNode)=>{
-		console.log('---onDblClick---'+key+'--treeNode--'+treeNode);
+		console.log('---onDblClick---',key,'--treeNode--',treeNode);
 	}
 	render() {
 	
 		return (
-			<Tree className="myCls" showLine checkable
+			<Tree 
+					className="myCls" 
+					showLine 
+					checkable
 	        defaultExpandedKeys={this.state.defaultExpandedKeys}
 					defaultSelectedKeys={this.state.defaultSelectedKeys}
 					defaultCheckedKeys = {this.state.defaultCheckedKeys}
 					checkStrictly
 					showIcon
 					cancelUnSelect={true}
-					onSelect={this.onSelect} onCheck={this.onCheck}
+					onSelect={this.onSelect} 
+					onCheck={this.onCheck}
 					onDoubleClick={this.onDoubleClick}
 	      >
 	        <TreeNode title="parent 1" key="0-0"  icon={<Icon type="uf-treefolder"  />}>

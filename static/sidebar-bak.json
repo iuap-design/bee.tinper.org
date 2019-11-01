@@ -445,6 +445,10 @@
                 "图标 Icon": {
                     "version": "0.1.0",
                     "component": "bee-icon"
+                },
+                "svg图标 SvgIcon": {
+                    "version": "0.0.1",
+                    "component": "bee-svgicon"
                 }
             },
             "布局 Layout": {

@@ -11,6 +11,12 @@
 
         ]
     },
+    "bee-svgicon": {
+        "name": "svg图标",
+        "versions": [
+
+        ]
+    },
     "bee-layout": {
         "name": "栅格布局",
         "versions": [

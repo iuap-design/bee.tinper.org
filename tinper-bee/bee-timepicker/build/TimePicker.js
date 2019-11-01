@@ -18,9 +18,15 @@ var _propTypes = require('prop-types');
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
+var _moment = require('moment');
+
+var _moment2 = _interopRequireDefault(_moment);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -38,15 +44,56 @@ var defaultProps = {
 var Timepicker = function (_Component) {
     _inherits(Timepicker, _Component);
 
-    function Timepicker() {
+    function Timepicker(props) {
         _classCallCheck(this, Timepicker);
 
-        return _possibleConstructorReturn(this, _Component.apply(this, arguments));
+        var _this = _possibleConstructorReturn(this, _Component.call(this, props));
+
+        _this.state = {
+            value: props.value
+        };
+        return _this;
     }
 
+    Timepicker.prototype.componentDidMount = function componentDidMount() {
+        //判断初始值是否合法，不合法则格式化，并触发onChange回调
+        var value = this.props.value;
+        if (value) {
+            if (value.format) {
+                if (!value.isValid()) {
+                    value = (0, _moment2["default"])((0, _moment2["default"])().format('YYYY-MM-DD') + ' ' + value._i);
+                }
+            } else {
+                value = (0, _moment2["default"])((0, _moment2["default"])().format('YYYY-MM-DD') + ' ' + value);
+            }
+        } else {
+            value = null;
+        }
+        this.props.onChange && this.props.onChange(value);
+    };
+
+    Timepicker.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
+        if ('value' in nextProps) {
+            var value = nextProps.value;
+            if (value) {
+                if (value.format) {} else {
+                    value = (0, _moment2["default"])((0, _moment2["default"])().format('YYYY-MM-DD') + ' ' + value);
+                }
+            } else {
+                value = null;
+            }
+            this.setState({
+                value: value
+            });
+        }
+    };
+
     Timepicker.prototype.render = function render() {
-        var props = this.props;
-        return _react2["default"].createElement(_index2["default"], _extends({ prefixCls: 'u-time-picker' }, props));
+        var _props = this.props,
+            value = _props.value,
+            other = _objectWithoutProperties(_props, ['value']);
+
+        return _react2["default"].createElement(_index2["default"], _extends({ prefixCls: 'u-time-picker', value: this.state.value }, other));
     };
 
     return Timepicker;

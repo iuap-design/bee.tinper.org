@@ -193,11 +193,14 @@ class InputNumber extends Component {
         value = unThousands(value);
         if(Number(value)>max)return;
         if(Number(value)<min)return;
-        if(isNaN(value)&&(value!='.'))return;
+        if(isNaN(value)&&(value!=='.')&&(value!=='-'))return;
         this.setState({
             value,
             showValue:toThousands(value),
         });
+        if(value==='-'){
+            onChange && onChange(value);
+        }
         if(value=='.'||value.indexOf('.')==value.length-1){//当输入小数点的时候
             onChange && onChange(value);
         }else if(value[value.indexOf('.')+1]==0){//当输入 d.0 的时候，不转换Number
@@ -276,7 +279,7 @@ class InputNumber extends Component {
      */
     minus = (value) => {
         const {min, max, step, onChange, toNumber} = this.props;
-
+        value = (value === '-') ? 0 : value;
         if(typeof min === "undefined"){
             value = this.detail(value, step, 'reduce');
         }else{
@@ -306,6 +309,7 @@ class InputNumber extends Component {
      */
     plus = (value) => {
         const {max, min, step, onChange, toNumber} = this.props;
+        value = (value === '-') ? 0 : value;
         if(typeof max === "undefined"){
             value = this.detail(value, step, 'add');
         }else{

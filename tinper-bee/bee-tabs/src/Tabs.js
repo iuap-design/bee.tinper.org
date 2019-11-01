@@ -189,6 +189,7 @@ const Tabs = createClass({
       onEdit,
       onNextClick,
       onPrevClick,
+      onChange,
       ...others
     } = props;
 

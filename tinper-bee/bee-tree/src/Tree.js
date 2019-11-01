@@ -1038,7 +1038,8 @@ onExpand(treeNode,keyType) {
       'renderTreeNodes',
       'mustExpandable',
       'onMouseEnter',
-      'onMouseLeave'
+      'onMouseLeave',
+      'onDoubleClick'
     ])}
     const { treeData,flatTreeData } = this.state;
     let { startIndex, endIndex } = this, //数据截取的开始位置和结束位置

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import TimePicker from './rc/index';
 import PropTypes from 'prop-types';
+import moment from 'moment';
 
 const propTypes = {};
 const defaultProps = {
@@ -10,10 +11,53 @@ const defaultProps = {
 };
 class Timepicker extends Component {
 
+    constructor(props){
+        super(props);
+        this.state={
+            value:props.value
+        }
+    }
+
+    componentDidMount(){
+        //判断初始值是否合法，不合法则格式化，并触发onChange回调
+        let value = this.props.value;
+        if(value){
+            if(value.format){
+                if(!value.isValid()){
+                    value = moment(`${moment().format('YYYY-MM-DD')} ${value._i}`)
+                }
+            }else{
+                value = moment(`${moment().format('YYYY-MM-DD')} ${value}`);
+            }
+        }else{
+            value = null
+        }
+        this.props.onChange&&this.props.onChange(value)
+    }
+
+    componentWillReceiveProps(nextProps){
+        if('value' in nextProps){
+            let value = nextProps.value;
+            if(value){
+                if(value.format){
+                    
+                }else{
+                    value = moment(`${moment().format('YYYY-MM-DD')} ${value}`)
+                }
+            }else{
+                value=null;
+            }
+            this.setState({
+                value
+            })
+        }
+    }
+
     render() {
-        let props = this.props;
+        let {value,...other} = this.props;
+        
         return (
-            <TimePicker prefixCls='u-time-picker' {...props} />
+            <TimePicker  prefixCls='u-time-picker' value={this.state.value}  {...other} />
         )
     }
 };

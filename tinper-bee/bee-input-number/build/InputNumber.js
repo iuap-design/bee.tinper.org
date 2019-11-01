@@ -197,11 +197,14 @@ var InputNumber = function (_Component) {
             value = unThousands(value);
             if (Number(value) > max) return;
             if (Number(value) < min) return;
-            if (isNaN(value) && value != '.') return;
+            if (isNaN(value) && value !== '.' && value !== '-') return;
             _this.setState({
                 value: value,
                 showValue: toThousands(value)
             });
+            if (value === '-') {
+                onChange && onChange(value);
+            }
             if (value == '.' || value.indexOf('.') == value.length - 1) {
                 //当输入小数点的时候
                 onChange && onChange(value);
@@ -293,7 +296,7 @@ var InputNumber = function (_Component) {
                 onChange = _this$props5.onChange,
                 toNumber = _this$props5.toNumber;
 
-
+            value = value === '-' ? 0 : value;
             if (typeof min === "undefined") {
                 value = _this.detail(value, step, 'reduce');
             } else {
@@ -327,6 +330,7 @@ var InputNumber = function (_Component) {
                 onChange = _this$props6.onChange,
                 toNumber = _this$props6.toNumber;
 
+            value = value === '-' ? 0 : value;
             if (typeof max === "undefined") {
                 value = _this.detail(value, step, 'add');
             } else {

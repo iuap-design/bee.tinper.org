@@ -1017,7 +1017,7 @@ var Tree = function (_React$Component) {
         draggable = _props3.draggable,
         others = _objectWithoutProperties(_props3, ['showLine', 'prefixCls', 'className', 'focusable', 'checkable', 'loadData', 'checkStrictly', 'tabIndexValue', 'lazyLoad', 'getScrollContainer', 'defaultExpandedKeys', 'defaultSelectedKeys', 'defaultCheckedKeys', 'openAnimation', 'draggable']);
 
-    var customProps = _extends({}, (0, _omit2["default"])(others, ['showIcon', 'cancelUnSelect', 'onCheck', 'selectable', 'autoExpandParent', 'defaultExpandAll', 'onExpand', 'autoSelectWhenFocus', 'expandWhenDoubleClick', 'expandedKeys', 'keyFun', 'openIcon', 'closeIcon', 'treeData', 'checkedKeys', 'selectedKeys', 'renderTreeNodes', 'mustExpandable', 'onMouseEnter', 'onMouseLeave']));
+    var customProps = _extends({}, (0, _omit2["default"])(others, ['showIcon', 'cancelUnSelect', 'onCheck', 'selectable', 'autoExpandParent', 'defaultExpandAll', 'onExpand', 'autoSelectWhenFocus', 'expandWhenDoubleClick', 'expandedKeys', 'keyFun', 'openIcon', 'closeIcon', 'treeData', 'checkedKeys', 'selectedKeys', 'renderTreeNodes', 'mustExpandable', 'onMouseEnter', 'onMouseLeave', 'onDoubleClick']));
     var _state = this.state,
         treeData = _state.treeData,
         flatTreeData = _state.flatTreeData;
