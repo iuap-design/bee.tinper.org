@@ -20,7 +20,7 @@ function SvgIconItem (props) {
         <li>
             <SvgIcon type={type} />
             <div className="name">{type}</div>
-            <div className="usage" id={classString}>{`<SvgIcon type=${type} />`}</div>
+            <div className="usage" id={classString}>{`<SvgIcon type="${type}" />`}</div>
             <Clipboard action="copy" target={`#${classString}`} success={() => success(content)} />
         </li>
     )
