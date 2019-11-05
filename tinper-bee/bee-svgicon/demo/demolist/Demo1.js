@@ -15,13 +15,14 @@ function success (content) {
 
 function SvgIconItem (props) {
     let { type, classString } = props;
-    let content = <code>{`<SvgIcon type=${type} />  copied `}</code>;
+    let content = `<SvgIcon type="${type}" />  copied `;
+    let id = classString.replace("-", "_");
     return (
         <li>
             <SvgIcon type={type} />
             <div className="name">{type}</div>
-            <div className="usage" id={classString}>{`<SvgIcon type="${type}" />`}</div>
-            <Clipboard action="copy" target={`#${classString}`} success={() => success(content)} />
+            <div className="usage" id={id}>{`<SvgIcon type="${type}" />`}</div>
+            <Clipboard action="copy" target={`#${id}`} success={() => success(content)} />
         </li>
     )
 }

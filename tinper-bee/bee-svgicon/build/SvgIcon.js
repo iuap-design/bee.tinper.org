@@ -4,8 +4,6 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
@@ -18,19 +16,13 @@ var _classnames = require('classnames');
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _svg = require('./svg');
-
-var _svg2 = _interopRequireDefault(_svg);
-
-var _utils = require('./utils');
+require('./iconfont.js');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -40,98 +32,60 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 var propTypes = {
     className: _propTypes2["default"].string,
-    type: _propTypes2["default"].string,
-    theme: _propTypes2["default"].oneOf(['pure', 'colour'])
+    type: _propTypes2["default"].string
 };
 var defaultProps = {
-    viewBox: "64 64 896 896",
-    width: '1em',
-    height: '1em',
-    clsPrefix: 'uftype',
-    theme: 'colour'
+    viewBox: "0 0 1024 1024",
+    clsPrefix: 'u-svgicon'
 };
 
 var SvgIcon = function (_Component) {
     _inherits(SvgIcon, _Component);
 
-    function SvgIcon(props) {
+    function SvgIcon() {
         _classCallCheck(this, SvgIcon);
 
-        var _this = _possibleConstructorReturn(this, _Component.call(this));
-
-        _initialiseProps.call(_this);
-
-        var children = _this.getStartChildren(props);
-        _this.state = {
-            children: children
-        };
-        return _this;
+        return _possibleConstructorReturn(this, _Component.apply(this, arguments));
     }
 
     SvgIcon.prototype.render = function render() {
-        var _classNames,
-            _this2 = this;
+        var _this2 = this;
 
         var _props = this.props,
             className = _props.className,
             type = _props.type,
             Component = _props.component,
             viewBox = _props.viewBox,
-            tabIndex = _props.tabIndex,
-            onClick = _props.onClick,
-            width = _props.width,
-            height = _props.height,
             clsPrefix = _props.clsPrefix,
-            theme = _props.theme,
-            restProps = _objectWithoutProperties(_props, ['className', 'type', 'component', 'viewBox', 'tabIndex', 'onClick', 'width', 'height', 'clsPrefix', 'theme']);
+            children = _props.children;
 
-        var children = this.state.children;
 
-        var classString = (0, _classnames2["default"])((_classNames = {}, _defineProperty(_classNames, '' + clsPrefix, true), _defineProperty(_classNames, clsPrefix + '-' + type, theme === 'pure'), _classNames));
+        var classString = (0, _classnames2["default"])(_defineProperty({}, '' + clsPrefix, true));
         var renderInnerNode = function renderInnerNode() {
-            // component > children > type
+            // component > type
             if (Component) {
                 return _react2["default"].createElement(
-                    Component,
+                    'i',
                     _this2.props,
-                    children
+                    _react2["default"].createElement(
+                        Component,
+                        null,
+                        children
+                    )
                 );
             }
 
-            if (children) {
-                return _react2["default"].createElement(
-                    'svg',
-                    _extends({}, _this2.props, { viewBox: viewBox }),
-                    children
-                );
-            }
+            return _react2["default"].createElement(
+                'svg',
+                { className: (0, _classnames2["default"])(className, classString), 'aria-hidden': 'true', viewBox: viewBox },
+                _react2["default"].createElement('use', { xlinkHref: '#uftype-' + type })
+            );
         };
-        var iconTabIndex = tabIndex;
-        if (iconTabIndex === undefined && onClick) {
-            iconTabIndex = -1;
-        }
-        return _react2["default"].createElement(
-            'i',
-            _extends({}, restProps, {
-                tabIndex: iconTabIndex,
-                onClick: onClick,
-                className: classString
-            }),
-            theme === 'colour' && renderInnerNode()
-        );
+        return renderInnerNode();
     };
 
     return SvgIcon;
 }(_react.Component);
-
-var _initialiseProps = function _initialiseProps() {
-    this.getStartChildren = function (props) {
-        var svg = props.children || _svg2["default"][props.type];
-        return (0, _utils.toArrayChildren)(svg).map(function (item, i) {
-            return _react2["default"].cloneElement(item, { key: item.key || i });
-        });
-    };
-};
 
 ;
 

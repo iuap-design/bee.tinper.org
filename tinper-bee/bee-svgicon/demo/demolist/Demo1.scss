@@ -1,14 +1,15 @@
-.tinper-icon-demo .uftype{
-    font-size: 42px;
-    line-height: 100px;
-    margin: 10px 0;
+.tinper-icon-demo .u-svgicon{
+    width: 40px;
+    height: 40px;
+    margin: 24px 0 8px 0;
     color: #333;
-    -webkit-transition: font-size 0.25s ease-out 0s;
-    -moz-transition: font-size 0.25s ease-out 0s;
-    transition: font-size 0.25s ease-out 0s;
+    -webkit-transition: font-size 0.8s ease-out 0s;
+    -moz-transition: font-size 0.8s ease-out 0s;
+    transition: font-size 0.8s ease-out 0s;
 }
-.tinper-icon-demo .uftype:hover{
-    font-size: 48px;
+.tinper-icon-demo li:hover .u-svgicon{
+    width: 48px;
+    height: 48px;
 }
 .icon_lists:after {
     clear:both;
@@ -20,7 +21,7 @@
     position: relative;
     float: left;
     width: 100px;
-    height: 150px;
+    height: 120px;
     text-align: center;
     list-style: none !important;
     cursor: pointer;
@@ -35,10 +36,7 @@
         opacity: 0;
     }
     &:hover{
-        background: #d1d1d1;
-        .uftype{
-            font-size: 48px;
-        }
+        background: #e6e6e6;
         .u-clipboard{
             opacity: 1;
         }

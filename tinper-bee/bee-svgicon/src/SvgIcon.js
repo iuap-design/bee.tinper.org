@@ -1,87 +1,46 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import svgType from './svg';
-import { toArrayChildren } from './utils';
+import './iconfont.js';
 
 const propTypes = {
     className: PropTypes.string,
     type: PropTypes.string,
-    theme: PropTypes.oneOf(['pure', 'colour']),
 };
 const defaultProps = {
-    viewBox: "64 64 896 896",
-    width: '1em',
-    height: '1em',
-    clsPrefix: 'uftype',
-    theme: 'colour'
+    viewBox: "0 0 1024 1024",
+    clsPrefix: 'u-svgicon',
 };
 
 class SvgIcon extends Component {
-    constructor(props) {
-        super();
-        const children = this.getStartChildren(props);
-        this.state = {
-            children
-        };
-    }
-
-    getStartChildren = (props) => {
-        const svg = props.children || svgType[props.type];
-        return toArrayChildren(svg).map((item, i) => {
-            return React.cloneElement(item, { key: item.key || i });
-        });
-    }
 
     render () {
         const {
-            // affect outter <i>...</i>
             className,
-            // affect inner <svg>...</svg>
-            type,
+            type, //图标类型
             component: Component,
             viewBox,
-            tabIndex,
-            onClick,
-            width,
-            height,
             clsPrefix,
-            theme,
-            ...restProps
+            children,
         } = this.props;
 
-        const { children } = this.state;
         const classString = classNames({
             [`${clsPrefix}`]: true,
-            [`${clsPrefix}-${type}`]: theme === 'pure',
         })
         const renderInnerNode = () => {
-            // component > children > type
+            // component > type
             if (Component) {
-                return <Component {...this.props}>{children}</Component>;
+                return <i {...this.props}><Component>{children}</Component></i>;
             }
 
-            if (children) {
-                return (
-                    <svg {...this.props} viewBox={viewBox}>
-                        {children}
-                    </svg>
-                );
-            }
+            return (
+                <svg className={classNames(className, classString)} aria-hidden="true" viewBox={viewBox}>
+                    <use xlinkHref={`#uftype-${type}`}></use>
+                </svg >
+            )
         };
-        let iconTabIndex = tabIndex;
-        if (iconTabIndex === undefined && onClick) {
-            iconTabIndex = -1;
-        }
         return (
-            <i
-                {...restProps}
-                tabIndex={iconTabIndex}
-                onClick={onClick}
-                className={classString}
-            >
-                {theme === 'colour' && renderInnerNode()}
-            </i>
+            renderInnerNode()
         )
     }
 };
