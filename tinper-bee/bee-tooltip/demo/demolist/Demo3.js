@@ -6,67 +6,71 @@
 
 import React, { Component } from 'react';
 import Tooltip from '../../src';
-import classnames from "classnames";
-
-
+import FormControl from 'bee-form-control';
 
 class Demo3 extends Component {
-	state = {
-		visible: false
-	}
+    state = {
+        visible: false,
+        value: ''
+    }
 
-	handleChange = (e) => {
-		let value = e.target.value;
-		if (Number(value) > 5) {
-			this.setState({
-				visible: false
-			})
-		} else {
-			this.setState({
-				visible: true
-			})
-		}
-	}
+    handleChange = (value) => {
+        let newState = {
+            value: value
+        }
+        if (Number(value) > 5) {
+            newState.visible = false
+        } else {
+            newState.visible = true
+        }
+        this.setState(newState)
+    }
 
-	onFocus = (e) => {
-		let value = e.target.value;
-		if (Number(value) < 5) {
-			this.setState({
-				visible: true
-			})
-		}
-	}
-	//使用控制弹出层显示时的钩子函数
-	onVisibleChange = () => {
-		console.log('visible changed.')
-	}
+    onFocus = () => {
+        let { value } = this.state;
+        if (Number(value) < 5) {
+            this.setState({
+                visible: true
+            })
+        }
+    }
 
-	render () {
-		let { visible } = this.state;
-		let tip = (
-			<div>
-				输入的值必须大于5
+    onBlur = () => {
+        this.setState({
+            visible: false
+        })
+    }
+
+    //使用控制弹出层显示时的钩子函数
+    onVisibleChange = () => {
+        console.log('visible changed.')
+    }
+
+    render () {
+        let { visible, value } = this.state;
+        let tip = (
+            <div>
+                输入的值必须大于5
 			</div>
-		)
+        )
 
-		return (
-			<div className="demo-tooltip">
-				<Tooltip
-					visible={visible}
-					onVisibleChange={this.onVisibleChange}
-					inverse
-					placement="right"
-					overlay={tip}>
-					<input
-						className={classnames("input", { err: visible })}
-						type="text"
-						onChange={this.handleChange}
-						onFocus={this.onFocus}
-					/>
-				</Tooltip>
-			</div>
-		)
-	}
+        return (
+            <div className="demo-tooltip">
+                <Tooltip
+                    visible={visible}
+                    onVisibleChange={this.onVisibleChange}
+                    placement="top"
+                    overlay={tip}>
+                    <FormControl
+                        value={value}
+                        onChange={this.handleChange}
+                        onFocus={this.onFocus}
+                        onBlur={this.onBlur}
+                    />
+                </Tooltip>
+            </div>
+        )
+    }
 }
 
 export default Demo3;

@@ -6,7 +6,7 @@
  */
 
 
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import InputNumber from '../../src';
 import Form from 'bee-form';
 
@@ -25,18 +25,17 @@ class Demo1 extends Component {
         })
     }
 
-    render() {
-        let {getFieldProps} = this.props.form;
+    render () {
+        let { getFieldProps } = this.props.form;
         return (
             <div>
-                {/* <InputNumber precision={2} min={0}  value={this.state.value} onChange={ this.handleChange }/> */}
                 <InputNumber
-                iconStyle="one"
-                min={-9}
-                max={999999}
-                {...getFieldProps("valueStd", {
-                    initialValue: 0
-                })}
+                    iconStyle="one"
+                    min={-9}
+                    max={999999}
+                    {...getFieldProps("valueStd", {
+                        initialValue: 0
+                    })}
                 />
             </div>
         )

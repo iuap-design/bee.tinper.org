@@ -80,7 +80,7 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
 	
-	var Demo1 = __webpack_require__(159);var Demo2 = __webpack_require__(160);var Demo3 = __webpack_require__(161);var Demo4 = __webpack_require__(162);var Demo5 = __webpack_require__(163);var Demo6 = __webpack_require__(540);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 基本Tooltip", "code": "/**\r\n * @title 基本Tooltip\r\n * @description trigger 设置显示方式。\r\n */\r\n\r\n\r\nimport React, { Component } from 'react';\nimport { Button, Tooltip } from 'tinper-bee';\r\n\r\n\n\r\n\r\nclass Demo1 extends Component {\r\n\tstate={\r\n\t\tvisible:false\r\n\t}\r\n\r\n\tonHide = (visible) => {\r\n\t\tconsole.log('onHide',visible);\r\n\t\tthis.setState({\r\n\t\t\tvisible:visible\r\n\t\t})\r\n\t}\r\n\r\n\tshow = () => {\r\n\t\tthis.setState({\r\n\t\t\tvisible:!this.state.visible\r\n\t\t})\r\n\t}\r\n\r\n\trender () {\r\n\t\tlet tip = (\r\n\t\t\t<div>\r\n\t\t\t\t这是一个很强的提醒！\r\n\t\t\t</div>\r\n\t\t)\r\n\r\n\t\treturn (\r\n\t\t\t<div className=\"demo-tooltip\">\r\n\t\t\t\t<Tooltip inverse overlay={tip}>\r\n\t\t\t\t\t<Button colors=\"primary\">\r\n\t\t\t\t\t\t鼠标滑过显示\r\n\t\t\t\t\t</Button>\r\n\t\t\t\t</Tooltip>\r\n\t\t\t\t<Tooltip trigger=\"click\" rootClose placement=\"bottom\" overlay={tip} visible={this.state.visible} onHide={this.onHide}>\r\n\t\t\t\t\t<Button style={{ marginLeft: 100 }} colors=\"primary\" onClick={this.show}>\r\n\t\t\t\t\t点击显示\r\n\t\t\t\t\t</Button>\r\n\t\t\t\t</Tooltip>\r\n\t\t\t</div>\r\n\t\t)\r\n\t}\r\n}\r\n\r\nexport default Demo1;", "desc": " trigger 设置显示方式。" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 延时显示Tooltip", "code": "/**\r\n * @title 延时显示Tooltip\r\n * @description `delay`参数设置延时显示和隐藏，以下示例为 鼠标悬停两秒后显示\r\n */\r\n\r\n\r\nimport React, { Component } from 'react';\nimport { Button, Tooltip } from 'tinper-bee';\r\n\r\n\n\r\n\r\nclass Demo2 extends Component {\r\n    render () {\r\n        let tip = (\r\n            <div>\r\n                这是一个很强的提醒！\r\n            </div>\r\n        )\r\n\r\n        return (\r\n            <div className=\"demo-tooltip\">\r\n                <Tooltip delay={2000} inverse overlay={tip}>\r\n                    <Button colors=\"primary\">\r\n                        延时显示\r\n                    </Button>\r\n                </Tooltip>\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\nexport default Demo2;", "desc": " `delay`参数设置延时显示和隐藏，以下示例为 鼠标悬停两秒后显示" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 受控显示和隐藏", "code": "/**\r\n * @title 受控显示和隐藏\r\n * @description `visible`属性控制\r\n */\r\n\r\n\r\nimport React, { Component } from 'react';\nimport { Tooltip } from 'tinper-bee';\r\n\r\nimport classnames from \"classnames\";\r\n\r\n\r\n\r\nclass Demo3 extends Component {\r\n\tstate = {\r\n\t\tvisible: false\r\n\t}\r\n\r\n\thandleChange = (e) => {\r\n\t\tlet value = e.target.value;\r\n\t\tif (Number(value) > 5) {\r\n\t\t\tthis.setState({\r\n\t\t\t\tvisible: false\r\n\t\t\t})\r\n\t\t} else {\r\n\t\t\tthis.setState({\r\n\t\t\t\tvisible: true\r\n\t\t\t})\r\n\t\t}\r\n\t}\r\n\r\n\tonFocus = (e) => {\r\n\t\tlet value = e.target.value;\r\n\t\tif (Number(value) < 5) {\r\n\t\t\tthis.setState({\r\n\t\t\t\tvisible: true\r\n\t\t\t})\r\n\t\t}\r\n\t}\r\n\t//使用控制弹出层显示时的钩子函数\r\n\tonVisibleChange = () => {\r\n\t\tconsole.log('visible changed.')\r\n\t}\r\n\r\n\trender () {\r\n\t\tlet { visible } = this.state;\r\n\t\tlet tip = (\r\n\t\t\t<div>\r\n\t\t\t\t输入的值必须大于5\r\n\t\t\t</div>\r\n\t\t)\r\n\r\n\t\treturn (\r\n\t\t\t<div className=\"demo-tooltip\">\r\n\t\t\t\t<Tooltip\r\n\t\t\t\t\tvisible={visible}\r\n\t\t\t\t\tonVisibleChange={this.onVisibleChange}\r\n\t\t\t\t\tinverse\r\n\t\t\t\t\tplacement=\"right\"\r\n\t\t\t\t\toverlay={tip}>\r\n\t\t\t\t\t<input\r\n\t\t\t\t\t\tclassName={classnames(\"input\", { err: visible })}\r\n\t\t\t\t\t\ttype=\"text\"\r\n\t\t\t\t\t\tonChange={this.handleChange}\r\n\t\t\t\t\t\tonFocus={this.onFocus}\r\n\t\t\t\t\t/>\r\n\t\t\t\t</Tooltip>\r\n\t\t\t</div>\r\n\t\t)\r\n\t}\r\n}\r\n\r\nexport default Demo3;", "desc": " `visible`属性控制", "scss_code": ".demo-tooltip{\r\n  .input{\r\n    border: 1px solid #a5adba;\r\n    border-radius: 3px; \r\n    &:focus{\r\n    \tborder-color: #66afe9;\r\n\t    outline: 0;\r\n    }\r\n  }\r\n  .err{\r\n    border-color: red;\r\n    &:focus{\r\n    \tborder-color:red;\r\n\t    outline: 0;\r\n    }\r\n  }\r\n} " }, { "example": _react2['default'].createElement(Demo4, null), "title": " 提示类组件支持出现在可配置的container中", "code": "/**\r\n * @title 提示类组件支持出现在可配置的container中\r\n * @description \"container\"可以是DOM元素/React组件/或者返回React组件的函数，注意，容器需要设置position\r\n */\r\n\r\nimport React, { Component } from 'react';\nimport { Button, Tooltip } from 'tinper-bee';\r\n\n\r\n\r\nclass Demo4 extends Component {\r\n\tstate = {\r\n\t\tvisible: false\r\n\t}\r\n\r\n\thandleChange = () => {\r\n\t\tthis.setState(prevState => ({\r\n\t\t\tvisible: !prevState.visible\r\n\t\t}));\r\n\t}\r\n\r\n\trender () {\r\n\t\tlet { visible } = this.state;\r\n\t\treturn (\r\n\t\t\t<div className=\"demo-tooltip\">\r\n\t\t\t\t<div className=\"demo-tooltip-box\">\r\n\t\t\t\t\t<div className=\"demo-tooltip-wrapper\" ref={ref => this.container = ref}>\r\n\t\t\t\t\t\t<Button colors=\"primary\" onClick={this.handleChange} style={{marginRight: 20}}>\r\n\t\t\t\t\t\t\t{visible ? \"隐藏\" : \"显示\"}tooltip\r\n\t\t\t\t\t\t</Button>\r\n\t\t\t\t\t\t<Tooltip\r\n\t\t\t\t\t\t\ttrigger=\"click\"\r\n\t\t\t\t\t\t\toverlay=\"我会跟着移动\"\r\n\t\t\t\t\t\t\tvisible={visible}\r\n\t\t\t\t\t\t\tcontainer={this.container ? this.container : null}\r\n\t\t\t\t\t\t\tplacement=\"right\"\r\n\t\t\t\t\t\t>\r\n\t\t\t\t\t\t\t<Button shape=\"border\">\r\n\t\t\t\t\t\t\t\ttooltip会跟随我移动\r\n\t\t\t\t\t\t\t</Button>\r\n\t\t\t\t\t\t</Tooltip>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t);\r\n\t}\r\n}\r\n\r\nexport default Demo4;", "desc": " \"container\"可以是DOM元素/React组件/或者返回React组件的函数，注意，容器需要设置position", "scss_code": ".demo-tooltip {\r\n  &-box {\r\n    width: 500px;\r\n    height: 200px;\r\n    line-height: 100px;\r\n    overflow: auto;\r\n    border: 1px solid #ccc;\r\n    border-radius: 5px;\r\n  }\r\n\r\n  &-wrapper {\r\n    width: 900px;\r\n    position: relative;\r\n  }\r\n}" }, { "example": _react2['default'].createElement(Demo5, null), "title": " 提示类组件支持出现在可配置的container中", "code": "/**\r\n * @title 提示类组件支持出现在可配置的container中\r\n * @description \"container\"可以是DOM元素/React组件/或者返回React组件的函数，注意，容器需要设置定位\r\n */\r\n\r\nimport React, { Component } from 'react';\nimport { Table, Tooltip } from 'tinper-bee';\r\n\r\n\n\r\nclass Demo5 extends Component {\r\n\tconstructor(props) {\r\n\t\tsuper(props);\r\n\t\tthis.columns = [\r\n\t\t\t{\r\n\t\t\t\ttitle: \"名字\",\r\n\t\t\t\tdataIndex: \"a\",\r\n\t\t\t\tkey: \"a\",\r\n\t\t\t\twidth: 500,\r\n\t\t\t\trender: (text, record, index) => {\r\n\t\t\t\t\treturn (\r\n\t\t\t\t\t\t<Tooltip\r\n\t\t\t\t\t\t\toverlay={text}\r\n\t\t\t\t\t\t\tcontainer={this.container ? ReactDOM.findDOMNode(this.container).querySelector(\".u-table-body\") : null}\r\n\t\t\t\t\t\t\tplacement=\"right\"\r\n\t\t\t\t\t\t>\r\n\t\t\t\t\t\t\t<span className=\"source\">{text}</span>\r\n\t\t\t\t\t\t</Tooltip>\r\n\t\t\t\t\t)\r\n\t\t\t\t}\r\n\t\t\t}, {\r\n\t\t\t\ttitle: \"出处\",\r\n\t\t\t\tdataIndex: \"e\",\r\n\t\t\t\tkey: \"e\",\r\n\t\t\t\twidth: 500,\r\n\t\t\t\trender: (text, record, index) => {\r\n\t\t\t\t\treturn (\r\n\t\t\t\t\t\t<Tooltip\r\n\t\t\t\t\t\t\toverlay={text}\r\n\t\t\t\t\t\t\tcontainer={this.container ? ReactDOM.findDOMNode(this.container).querySelector(\".u-table-body\") : null}\r\n\t\t\t\t\t\t\tplacement=\"right\"\r\n\t\t\t\t\t\t>\r\n\t\t\t\t\t\t\t<span className=\"source\">{text}</span>\r\n\t\t\t\t\t\t</Tooltip>\r\n\t\t\t\t\t)\r\n\t\t\t\t}\r\n\t\t\t},\r\n\t\t\t{\r\n\t\t\t\ttitle: \"性别\",\r\n\t\t\t\tdataIndex: \"b\",\r\n\t\t\t\tkey: \"b\",\r\n\t\t\t\twidth: 500,\r\n\t\t\t\trender: (text, record, index) => {\r\n\t\t\t\t\treturn (\r\n\t\t\t\t\t\t<Tooltip\r\n\t\t\t\t\t\t\toverlay={text}\r\n\t\t\t\t\t\t\tcontainer={this.container ? ReactDOM.findDOMNode(this.container).querySelector(\".u-table-body\") : null}\r\n\t\t\t\t\t\t\tplacement=\"right\"\r\n\t\t\t\t\t\t>\r\n\t\t\t\t\t\t\t<span className=\"source\">{text}</span>\r\n\t\t\t\t\t\t</Tooltip>\r\n\t\t\t\t\t)\r\n\t\t\t\t}\r\n\t\t\t},\r\n\t\t\t{\r\n\t\t\t\ttitle: \"年龄\",\r\n\t\t\t\tdataIndex: \"c\",\r\n\t\t\t\tkey: \"c\",\r\n\t\t\t\twidth: 500,\r\n\t\t\t\trender: (text, record, index) => {\r\n\t\t\t\t\treturn (\r\n\t\t\t\t\t\t<Tooltip\r\n\t\t\t\t\t\t\toverlay={text}\r\n\t\t\t\t\t\t\tcontainer={this.container ? ReactDOM.findDOMNode(this.container).querySelector(\".u-table-body\") : null}\r\n\t\t\t\t\t\t\tplacement=\"right\"\r\n\t\t\t\t\t\t>\r\n\t\t\t\t\t\t\t<span className=\"source\">{text}</span>\r\n\t\t\t\t\t\t</Tooltip>\r\n\t\t\t\t\t)\r\n\t\t\t\t}\r\n\t\t\t},\r\n\t\t\t{\r\n\t\t\t\ttitle: \"武功级别\",\r\n\t\t\t\tdataIndex: \"d\",\r\n\t\t\t\twidth: 500,\r\n\t\t\t\tkey: \"d\",\r\n\t\t\t\trender: (text, record, index) => {\r\n\t\t\t\t\treturn (\r\n\t\t\t\t\t\t<Tooltip\r\n\t\t\t\t\t\t\toverlay={text}\r\n\t\t\t\t\t\t\tcontainer={this.container ? ReactDOM.findDOMNode(this.container).querySelector(\".u-table-body\") : null}\r\n\t\t\t\t\t\t\tplacement=\"right\"\r\n\t\t\t\t\t\t>\r\n\t\t\t\t\t\t\t<span className=\"source\">{text}</span>\r\n\t\t\t\t\t\t</Tooltip>\r\n\t\t\t\t\t)\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t];\r\n\r\n\t\tthis.state = {\r\n\t\t\tdata: []\r\n\t\t};\r\n\r\n\t}\r\n\r\n\tcomponentDidMount () {\r\n\t\tthis.getData();\r\n\t}\r\n\r\n\tgetData = () => {\r\n\t\tsetTimeout(() => {\r\n\t\t\tlet data = [\r\n\t\t\t\t{\r\n\t\t\t\t\ta: \"杨过\",\r\n\t\t\t\t\tb: \"男\",\r\n\t\t\t\t\tc: 30,\r\n\t\t\t\t\td: '内行',\r\n\t\t\t\t\te: \"神雕侠侣\",\r\n\t\t\t\t\tkey: \"2\"\r\n\t\t\t\t},\r\n\t\t\t\t{\r\n\t\t\t\t\ta: \"令狐冲\",\r\n\t\t\t\t\tb: \"男\",\r\n\t\t\t\t\tc: 41,\r\n\t\t\t\t\td: '大侠',\r\n\t\t\t\t\te: \"笑傲江湖\",\r\n\t\t\t\t\tkey: \"1\"\r\n\t\t\t\t},\r\n\t\t\t\t{\r\n\t\t\t\t\ta: \"郭靖\",\r\n\t\t\t\t\tb: \"男\",\r\n\t\t\t\t\tc: 25,\r\n\t\t\t\t\td: '大侠',\r\n\t\t\t\t\te: \"射雕英雄传\",\r\n\t\t\t\t\tkey: \"3\"\r\n\t\t\t\t}\r\n\t\t\t];\r\n\t\t\tthis.setState({\r\n\t\t\t\tdata\r\n\t\t\t})\r\n\t\t}, 50);\r\n\t}\r\n\r\n\trender () {\r\n\t\treturn (\r\n\t\t\t<div className=\"demo-tooltip\">\r\n\t\t\t\t<Table\r\n\t\t\t\t\tcolumns={this.columns}\r\n\t\t\t\t\tdata={this.state.data}\r\n\t\t\t\t\tref={ref => this.container = ref}\r\n\t\t\t\t/>\r\n\t\t\t</div>\r\n\t\t);\r\n\t}\r\n}\r\n\r\nexport default Demo5;", "desc": " \"container\"可以是DOM元素/React组件/或者返回React组件的函数，注意，容器需要设置定位", "scss_code": ".demo-tooltip{\r\n .source{\r\n   cursor: pointer;\r\n }\r\n} " }, { "example": _react2['default'].createElement(Demo6, null), "title": " 位置", "code": "/**\r\n *\r\n * @title 位置\r\n * @description placement 参数控制显示位置。位置有 12 个方向。\r\n */\r\n\r\nimport {Component} from 'react';\nimport { Button, Tooltip } from 'tinper-bee';\r\n\r\n\n\r\n\r\nclass Demo6 extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n    }\r\n\r\n    render() {\r\n        const tip = (\r\n            <div>\r\n                <p>这是一个很强的提醒！</p>\r\n\t\t\t\t<p>这是一个很强的提醒！</p>\r\n\t\t\t\t<p>这是一个很强的提醒！</p>\r\n            </div>\r\n        );\r\n        const buttonWidth = 72;\r\n        return (\r\n            <div className=\"demo6\">\r\n                <div style={{ marginLeft: buttonWidth, whiteSpace: 'nowrap' }}>\r\n                    <Tooltip inverse placement=\"topLeft\" overlay={tip}>\r\n                        <Button colors=\"primary\">左上</Button>\r\n                    </Tooltip>\r\n                    <Tooltip inverse placement=\"top\" overlay={tip}>\r\n                        <Button colors=\"primary\">上</Button>\r\n                    </Tooltip>\r\n                    <Tooltip inverse placement=\"topRight\" overlay={tip}>\r\n                        <Button colors=\"primary\">上右</Button>\r\n                    </Tooltip>\r\n                    </div>\r\n                    <div style={{ width: buttonWidth, float: 'left' }}>\r\n                    <Tooltip inverse placement=\"leftTop\" overlay={tip}>\r\n                        <Button colors=\"primary\">左上</Button>\r\n                    </Tooltip>\r\n                    <Tooltip inverse placement=\"left\" overlay={tip}>\r\n                        <Button colors=\"primary\">左</Button>\r\n                    </Tooltip>\r\n                    <Tooltip inverse placement=\"leftBottom\" overlay={tip}>\r\n                        <Button colors=\"primary\">左下</Button>\r\n                    </Tooltip>\r\n                    </div>\r\n                    <div style={{ width: buttonWidth, marginLeft: buttonWidth * 4 + 24 }}>\r\n                    <Tooltip inverse placement=\"rightTop\" overlay={tip}>\r\n                        <Button colors=\"primary\">右上</Button>\r\n                    </Tooltip>\r\n                    <Tooltip inverse placement=\"right\" overlay={tip}>\r\n                        <Button colors=\"primary\">右</Button>\r\n                    </Tooltip>\r\n                    <Tooltip inverse placement=\"rightBottom\" overlay={tip}>\r\n                        <Button colors=\"primary\">右下</Button>\r\n                    </Tooltip>\r\n                    </div>\r\n                    <div style={{ marginLeft: buttonWidth, clear: 'both', whiteSpace: 'nowrap' }}>\r\n                    <Tooltip inverse placement=\"bottomLeft\" overlay={tip}>\r\n                        <Button colors=\"primary\">下左</Button>\r\n                    </Tooltip>\r\n                    <Tooltip inverse placement=\"bottom\" overlay={tip}>\r\n                        <Button colors=\"primary\">下</Button>\r\n                    </Tooltip>\r\n                    <Tooltip inverse placement=\"bottomRight\" overlay={tip}>\r\n                        <Button colors=\"primary\">下右</Button>\r\n                    </Tooltip>\r\n                </div>\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\nexport default Demo6;", "desc": " placement 参数控制显示位置。位置有 12 个方向。", "scss_code": ".demo6 {\r\n    margin-left: 250px;\r\n    .u-button {\r\n        margin-right: 8px;\r\n        margin-bottom: 8px;\r\n    }\r\n    .u-tooltip .tooltip-inner {\r\n        h3 {\r\n            margin: 16px 0;\r\n        }\r\n    }\r\n}" }];
+	var Demo1 = __webpack_require__(159);var Demo2 = __webpack_require__(160);var Demo3 = __webpack_require__(161);var Demo4 = __webpack_require__(162);var Demo5 = __webpack_require__(163);var Demo6 = __webpack_require__(540);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 基本Tooltip", "code": "/**\r\n * @title 基本Tooltip\r\n * @description trigger 设置显示方式。\r\n */\r\n\r\n\r\nimport React, { Component } from 'react';\nimport { Button, Tooltip } from 'tinper-bee';\r\n\r\n\n\r\n\r\nclass Demo1 extends Component {\r\n\tstate={\r\n\t\tvisible:false\r\n\t}\r\n\r\n\tonHide = (visible) => {\r\n\t\tconsole.log('onHide',visible);\r\n\t\tthis.setState({\r\n\t\t\tvisible:visible\r\n\t\t})\r\n\t}\r\n\r\n\tshow = () => {\r\n\t\tthis.setState({\r\n\t\t\tvisible:!this.state.visible\r\n\t\t})\r\n\t}\r\n\r\n\trender () {\r\n\t\tlet tip = (\r\n\t\t\t<div>\r\n\t\t\t\t这是一个很强的提醒！\r\n\t\t\t</div>\r\n\t\t)\r\n\r\n\t\treturn (\r\n\t\t\t<div className=\"demo-tooltip\">\r\n\t\t\t\t<Tooltip inverse overlay={tip}>\r\n\t\t\t\t\t<Button colors=\"primary\">\r\n\t\t\t\t\t\t鼠标滑过显示\r\n\t\t\t\t\t</Button>\r\n\t\t\t\t</Tooltip>\r\n\t\t\t\t<Tooltip trigger=\"click\" rootClose placement=\"bottom\" overlay={tip} visible={this.state.visible} onHide={this.onHide}>\r\n\t\t\t\t\t<Button style={{ marginLeft: 100 }} colors=\"primary\" onClick={this.show}>\r\n\t\t\t\t\t点击显示\r\n\t\t\t\t\t</Button>\r\n\t\t\t\t</Tooltip>\r\n\t\t\t</div>\r\n\t\t)\r\n\t}\r\n}\r\n\r\nexport default Demo1;", "desc": " trigger 设置显示方式。" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 延时显示Tooltip", "code": "/**\r\n * @title 延时显示Tooltip\r\n * @description `delay`参数设置延时显示和隐藏，以下示例为 鼠标悬停两秒后显示\r\n */\r\n\r\n\r\nimport React, { Component } from 'react';\nimport { Button, Tooltip } from 'tinper-bee';\r\n\r\n\n\r\n\r\nclass Demo2 extends Component {\r\n    render () {\r\n        let tip = (\r\n            <div>\r\n                这是一个很强的提醒！\r\n            </div>\r\n        )\r\n\r\n        return (\r\n            <div className=\"demo-tooltip\">\r\n                <Tooltip delay={2000} inverse overlay={tip}>\r\n                    <Button colors=\"primary\">\r\n                        延时显示\r\n                    </Button>\r\n                </Tooltip>\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\nexport default Demo2;", "desc": " `delay`参数设置延时显示和隐藏，以下示例为 鼠标悬停两秒后显示" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 受控显示和隐藏", "code": "/**\r\n * @title 受控显示和隐藏\r\n * @description `visible`属性控制\r\n */\r\n\r\n\r\nimport React, { Component } from 'react';\nimport { FormControl, Tooltip } from 'tinper-bee';\r\n\r\n\n\r\nclass Demo3 extends Component {\r\n    state = {\r\n        visible: false,\r\n        value: ''\r\n    }\r\n\r\n    handleChange = (value) => {\r\n        let newState = {\r\n            value: value\r\n        }\r\n        if (Number(value) > 5) {\r\n            newState.visible = false\r\n        } else {\r\n            newState.visible = true\r\n        }\r\n        this.setState(newState)\r\n    }\r\n\r\n    onFocus = () => {\r\n        let { value } = this.state;\r\n        if (Number(value) < 5) {\r\n            this.setState({\r\n                visible: true\r\n            })\r\n        }\r\n    }\r\n\r\n    onBlur = () => {\r\n        this.setState({\r\n            visible: false\r\n        })\r\n    }\r\n\r\n    //使用控制弹出层显示时的钩子函数\r\n    onVisibleChange = () => {\r\n        console.log('visible changed.')\r\n    }\r\n\r\n    render () {\r\n        let { visible, value } = this.state;\r\n        let tip = (\r\n            <div>\r\n                输入的值必须大于5\r\n\t\t\t</div>\r\n        )\r\n\r\n        return (\r\n            <div className=\"demo-tooltip\">\r\n                <Tooltip\r\n                    visible={visible}\r\n                    onVisibleChange={this.onVisibleChange}\r\n                    placement=\"top\"\r\n                    overlay={tip}>\r\n                    <FormControl\r\n                        value={value}\r\n                        onChange={this.handleChange}\r\n                        onFocus={this.onFocus}\r\n                        onBlur={this.onBlur}\r\n                    />\r\n                </Tooltip>\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\nexport default Demo3;", "desc": " `visible`属性控制", "scss_code": ".demo-tooltip{\r\n  .u-form-control{\r\n      width: 200px;\r\n  }\r\n} " }, { "example": _react2['default'].createElement(Demo4, null), "title": " 提示类组件支持出现在可配置的container中", "code": "/**\r\n * @title 提示类组件支持出现在可配置的container中\r\n * @description \"container\"可以是DOM元素/React组件/或者返回React组件的函数，注意，容器需要设置position\r\n */\r\n\r\nimport React, { Component } from 'react';\nimport { Button, Tooltip } from 'tinper-bee';\r\n\n\r\n\r\nclass Demo4 extends Component {\r\n\tstate = {\r\n\t\tvisible: false\r\n\t}\r\n\r\n\thandleChange = () => {\r\n\t\tthis.setState(prevState => ({\r\n\t\t\tvisible: !prevState.visible\r\n\t\t}));\r\n\t}\r\n\r\n\trender () {\r\n\t\tlet { visible } = this.state;\r\n\t\treturn (\r\n\t\t\t<div className=\"demo-tooltip\">\r\n\t\t\t\t<div className=\"demo-tooltip-box\">\r\n\t\t\t\t\t<div className=\"demo-tooltip-wrapper\" ref={ref => this.container = ref}>\r\n\t\t\t\t\t\t<Button colors=\"primary\" onClick={this.handleChange} style={{marginRight: 20}}>\r\n\t\t\t\t\t\t\t{visible ? \"隐藏\" : \"显示\"}tooltip\r\n\t\t\t\t\t\t</Button>\r\n\t\t\t\t\t\t<Tooltip\r\n\t\t\t\t\t\t\ttrigger=\"click\"\r\n\t\t\t\t\t\t\toverlay=\"我会跟着移动\"\r\n\t\t\t\t\t\t\tvisible={visible}\r\n\t\t\t\t\t\t\tcontainer={this.container ? this.container : null}\r\n\t\t\t\t\t\t\tplacement=\"right\"\r\n\t\t\t\t\t\t>\r\n\t\t\t\t\t\t\t<Button shape=\"border\">\r\n\t\t\t\t\t\t\t\ttooltip会跟随我移动\r\n\t\t\t\t\t\t\t</Button>\r\n\t\t\t\t\t\t</Tooltip>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t);\r\n\t}\r\n}\r\n\r\nexport default Demo4;", "desc": " \"container\"可以是DOM元素/React组件/或者返回React组件的函数，注意，容器需要设置position", "scss_code": ".demo-tooltip {\r\n  &-box {\r\n    width: 500px;\r\n    height: 200px;\r\n    line-height: 100px;\r\n    overflow: auto;\r\n    border: 1px solid #ccc;\r\n    border-radius: 5px;\r\n  }\r\n\r\n  &-wrapper {\r\n    width: 900px;\r\n    position: relative;\r\n  }\r\n}" }, { "example": _react2['default'].createElement(Demo5, null), "title": " 提示类组件支持出现在可配置的container中", "code": "/**\r\n * @title 提示类组件支持出现在可配置的container中\r\n * @description \"container\"可以是DOM元素/React组件/或者返回React组件的函数，注意，容器需要设置定位\r\n */\r\n\r\nimport React, { Component } from 'react';\nimport { Table, Tooltip } from 'tinper-bee';\r\n\r\n\n\r\nclass Demo5 extends Component {\r\n\tconstructor(props) {\r\n\t\tsuper(props);\r\n\t\tthis.columns = [\r\n\t\t\t{\r\n\t\t\t\ttitle: \"名字\",\r\n\t\t\t\tdataIndex: \"a\",\r\n\t\t\t\tkey: \"a\",\r\n\t\t\t\twidth: 500,\r\n\t\t\t\trender: (text, record, index) => {\r\n\t\t\t\t\treturn (\r\n\t\t\t\t\t\t<Tooltip\r\n\t\t\t\t\t\t\toverlay={text}\r\n\t\t\t\t\t\t\tcontainer={this.container ? ReactDOM.findDOMNode(this.container).querySelector(\".u-table-body\") : null}\r\n\t\t\t\t\t\t\tplacement=\"right\"\r\n\t\t\t\t\t\t>\r\n\t\t\t\t\t\t\t<span className=\"source\">{text}</span>\r\n\t\t\t\t\t\t</Tooltip>\r\n\t\t\t\t\t)\r\n\t\t\t\t}\r\n\t\t\t}, {\r\n\t\t\t\ttitle: \"出处\",\r\n\t\t\t\tdataIndex: \"e\",\r\n\t\t\t\tkey: \"e\",\r\n\t\t\t\twidth: 500,\r\n\t\t\t\trender: (text, record, index) => {\r\n\t\t\t\t\treturn (\r\n\t\t\t\t\t\t<Tooltip\r\n\t\t\t\t\t\t\toverlay={text}\r\n\t\t\t\t\t\t\tcontainer={this.container ? ReactDOM.findDOMNode(this.container).querySelector(\".u-table-body\") : null}\r\n\t\t\t\t\t\t\tplacement=\"right\"\r\n\t\t\t\t\t\t>\r\n\t\t\t\t\t\t\t<span className=\"source\">{text}</span>\r\n\t\t\t\t\t\t</Tooltip>\r\n\t\t\t\t\t)\r\n\t\t\t\t}\r\n\t\t\t},\r\n\t\t\t{\r\n\t\t\t\ttitle: \"性别\",\r\n\t\t\t\tdataIndex: \"b\",\r\n\t\t\t\tkey: \"b\",\r\n\t\t\t\twidth: 500,\r\n\t\t\t\trender: (text, record, index) => {\r\n\t\t\t\t\treturn (\r\n\t\t\t\t\t\t<Tooltip\r\n\t\t\t\t\t\t\toverlay={text}\r\n\t\t\t\t\t\t\tcontainer={this.container ? ReactDOM.findDOMNode(this.container).querySelector(\".u-table-body\") : null}\r\n\t\t\t\t\t\t\tplacement=\"right\"\r\n\t\t\t\t\t\t>\r\n\t\t\t\t\t\t\t<span className=\"source\">{text}</span>\r\n\t\t\t\t\t\t</Tooltip>\r\n\t\t\t\t\t)\r\n\t\t\t\t}\r\n\t\t\t},\r\n\t\t\t{\r\n\t\t\t\ttitle: \"年龄\",\r\n\t\t\t\tdataIndex: \"c\",\r\n\t\t\t\tkey: \"c\",\r\n\t\t\t\twidth: 500,\r\n\t\t\t\trender: (text, record, index) => {\r\n\t\t\t\t\treturn (\r\n\t\t\t\t\t\t<Tooltip\r\n\t\t\t\t\t\t\toverlay={text}\r\n\t\t\t\t\t\t\tcontainer={this.container ? ReactDOM.findDOMNode(this.container).querySelector(\".u-table-body\") : null}\r\n\t\t\t\t\t\t\tplacement=\"right\"\r\n\t\t\t\t\t\t>\r\n\t\t\t\t\t\t\t<span className=\"source\">{text}</span>\r\n\t\t\t\t\t\t</Tooltip>\r\n\t\t\t\t\t)\r\n\t\t\t\t}\r\n\t\t\t},\r\n\t\t\t{\r\n\t\t\t\ttitle: \"武功级别\",\r\n\t\t\t\tdataIndex: \"d\",\r\n\t\t\t\twidth: 500,\r\n\t\t\t\tkey: \"d\",\r\n\t\t\t\trender: (text, record, index) => {\r\n\t\t\t\t\treturn (\r\n\t\t\t\t\t\t<Tooltip\r\n\t\t\t\t\t\t\toverlay={text}\r\n\t\t\t\t\t\t\tcontainer={this.container ? ReactDOM.findDOMNode(this.container).querySelector(\".u-table-body\") : null}\r\n\t\t\t\t\t\t\tplacement=\"right\"\r\n\t\t\t\t\t\t>\r\n\t\t\t\t\t\t\t<span className=\"source\">{text}</span>\r\n\t\t\t\t\t\t</Tooltip>\r\n\t\t\t\t\t)\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t];\r\n\r\n\t\tthis.state = {\r\n\t\t\tdata: []\r\n\t\t};\r\n\r\n\t}\r\n\r\n\tcomponentDidMount () {\r\n\t\tthis.getData();\r\n\t}\r\n\r\n\tgetData = () => {\r\n\t\tsetTimeout(() => {\r\n\t\t\tlet data = [\r\n\t\t\t\t{\r\n\t\t\t\t\ta: \"杨过\",\r\n\t\t\t\t\tb: \"男\",\r\n\t\t\t\t\tc: 30,\r\n\t\t\t\t\td: '内行',\r\n\t\t\t\t\te: \"神雕侠侣\",\r\n\t\t\t\t\tkey: \"2\"\r\n\t\t\t\t},\r\n\t\t\t\t{\r\n\t\t\t\t\ta: \"令狐冲\",\r\n\t\t\t\t\tb: \"男\",\r\n\t\t\t\t\tc: 41,\r\n\t\t\t\t\td: '大侠',\r\n\t\t\t\t\te: \"笑傲江湖\",\r\n\t\t\t\t\tkey: \"1\"\r\n\t\t\t\t},\r\n\t\t\t\t{\r\n\t\t\t\t\ta: \"郭靖\",\r\n\t\t\t\t\tb: \"男\",\r\n\t\t\t\t\tc: 25,\r\n\t\t\t\t\td: '大侠',\r\n\t\t\t\t\te: \"射雕英雄传\",\r\n\t\t\t\t\tkey: \"3\"\r\n\t\t\t\t}\r\n\t\t\t];\r\n\t\t\tthis.setState({\r\n\t\t\t\tdata\r\n\t\t\t})\r\n\t\t}, 50);\r\n\t}\r\n\r\n\trender () {\r\n\t\treturn (\r\n\t\t\t<div className=\"demo-tooltip\">\r\n\t\t\t\t<Table\r\n\t\t\t\t\tcolumns={this.columns}\r\n\t\t\t\t\tdata={this.state.data}\r\n\t\t\t\t\tref={ref => this.container = ref}\r\n\t\t\t\t/>\r\n\t\t\t</div>\r\n\t\t);\r\n\t}\r\n}\r\n\r\nexport default Demo5;", "desc": " \"container\"可以是DOM元素/React组件/或者返回React组件的函数，注意，容器需要设置定位", "scss_code": ".demo-tooltip{\r\n .source{\r\n   cursor: pointer;\r\n }\r\n} " }, { "example": _react2['default'].createElement(Demo6, null), "title": " 位置", "code": "/**\r\n *\r\n * @title 位置\r\n * @description placement 参数控制显示位置。位置有 12 个方向。\r\n */\r\n\r\nimport {Component} from 'react';\nimport { Button, Tooltip } from 'tinper-bee';\r\n\r\n\n\r\n\r\nclass Demo6 extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n    }\r\n\r\n    render() {\r\n        const tip = (\r\n            <div>\r\n                <p>这是一个很强的提醒！</p>\r\n\t\t\t\t<p>这是一个很强的提醒！</p>\r\n\t\t\t\t<p>这是一个很强的提醒！</p>\r\n            </div>\r\n        );\r\n        const buttonWidth = 72;\r\n        return (\r\n            <div className=\"demo6\">\r\n                <div style={{ marginLeft: buttonWidth, whiteSpace: 'nowrap' }}>\r\n                    <Tooltip inverse placement=\"topLeft\" overlay={tip}>\r\n                        <Button colors=\"primary\">左上</Button>\r\n                    </Tooltip>\r\n                    <Tooltip inverse placement=\"top\" overlay={tip}>\r\n                        <Button colors=\"primary\">上</Button>\r\n                    </Tooltip>\r\n                    <Tooltip inverse placement=\"topRight\" overlay={tip}>\r\n                        <Button colors=\"primary\">上右</Button>\r\n                    </Tooltip>\r\n                    </div>\r\n                    <div style={{ width: buttonWidth, float: 'left' }}>\r\n                    <Tooltip inverse placement=\"leftTop\" overlay={tip}>\r\n                        <Button colors=\"primary\">左上</Button>\r\n                    </Tooltip>\r\n                    <Tooltip inverse placement=\"left\" overlay={tip}>\r\n                        <Button colors=\"primary\">左</Button>\r\n                    </Tooltip>\r\n                    <Tooltip inverse placement=\"leftBottom\" overlay={tip}>\r\n                        <Button colors=\"primary\">左下</Button>\r\n                    </Tooltip>\r\n                    </div>\r\n                    <div style={{ width: buttonWidth, marginLeft: buttonWidth * 4 + 24 }}>\r\n                    <Tooltip inverse placement=\"rightTop\" overlay={tip}>\r\n                        <Button colors=\"primary\">右上</Button>\r\n                    </Tooltip>\r\n                    <Tooltip inverse placement=\"right\" overlay={tip}>\r\n                        <Button colors=\"primary\">右</Button>\r\n                    </Tooltip>\r\n                    <Tooltip inverse placement=\"rightBottom\" overlay={tip}>\r\n                        <Button colors=\"primary\">右下</Button>\r\n                    </Tooltip>\r\n                    </div>\r\n                    <div style={{ marginLeft: buttonWidth, clear: 'both', whiteSpace: 'nowrap' }}>\r\n                    <Tooltip inverse placement=\"bottomLeft\" overlay={tip}>\r\n                        <Button colors=\"primary\">下左</Button>\r\n                    </Tooltip>\r\n                    <Tooltip inverse placement=\"bottom\" overlay={tip}>\r\n                        <Button colors=\"primary\">下</Button>\r\n                    </Tooltip>\r\n                    <Tooltip inverse placement=\"bottomRight\" overlay={tip}>\r\n                        <Button colors=\"primary\">下右</Button>\r\n                    </Tooltip>\r\n                </div>\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\nexport default Demo6;", "desc": " placement 参数控制显示位置。位置有 12 个方向。", "scss_code": ".demo6 {\r\n    margin-left: 250px;\r\n    .u-button {\r\n        margin-right: 8px;\r\n        margin-bottom: 8px;\r\n    }\r\n    .u-tooltip .tooltip-inner {\r\n        h3 {\r\n            margin: 16px 0;\r\n        }\r\n    }\r\n}" }];
 	
 	var Demo = function (_Component) {
 	    _inherits(Demo, _Component);
@@ -15983,9 +15983,9 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 	
-	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
-	
 	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+	
+	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
@@ -16001,7 +16001,8 @@
 	    onChange: _propTypes2["default"].func,
 	    onBlur: _propTypes2["default"].func,
 	    showClose: _propTypes2["default"].bool,
-	    focusSelect: _propTypes2["default"].bool
+	    focusSelect: _propTypes2["default"].bool,
+	    debounceDelay: _propTypes2["default"].number
 	};
 	
 	var defaultProps = {
@@ -16011,6 +16012,13 @@
 	    size: 'md'
 	};
 	
+	function fixControlledValue(value) {
+	    if (typeof value === 'undefined' || value === null) {
+	        return '';
+	    }
+	    return value;
+	}
+	
 	var FormControl = function (_React$Component) {
 	    _inherits(FormControl, _React$Component);
 	
@@ -16019,194 +16027,12 @@
 	
 	        var _this = _possibleConstructorReturn(this, _React$Component.call(this, props));
 	
-	        _this.handleSearchChange = function (e) {
-	            var onChange = _this.props.onChange;
+	        _initialiseProps.call(_this);
 	
-	            var value = _this.input.value;
-	            _this.setState({
-	                value: value,
-	                showSearch: value == null || value === ""
-	            });
-	            if (onChange) {
-	                onChange(value, e);
-	            }
-	        };
-	
-	        _this.handleChange = function (e) {
-	            var onChange = _this.props.onChange;
-	
-	            var value = _this.input.value;
-	            _this.setState({
-	                showClose: true
-	            });
-	            if (onChange) {
-	                onChange(value, e);
-	            }
-	        };
-	
-	        _this.clearValue = function () {
-	            var onChange = _this.props.onChange;
-	
-	            _this.setState({
-	                showSearch: true,
-	                value: "",
-	                showClose: false
-	            });
-	            if (onChange) {
-	                onChange("");
-	            }
-	            _this.input.focus();
-	        };
-	
-	        _this.handleKeyDown = function (e) {
-	            var _this$props = _this.props,
-	                onSearch = _this$props.onSearch,
-	                type = _this$props.type;
-	
-	            if (e.keyCode === 13 && type === "search") {
-	                if (onSearch) {
-	                    onSearch(_this.input.value);
-	                }
-	            }
-	        };
-	
-	        _this.handleSearch = function (e) {
-	            var onSearch = _this.props.onSearch;
-	
-	            if (onSearch) onSearch(_this.input.value);
-	        };
-	
-	        _this.handleBlur = function (e) {
-	            var value = _this.state.value;
-	            var onBlur = _this.props.onBlur;
-	
-	
-	            if (onBlur) {
-	                onBlur(value, e);
-	            }
-	        };
-	
-	        _this.handleFocus = function (e) {
-	            var value = _this.state.value;
-	            var onFocus = _this.props.onFocus;
-	
-	            if (_this.props.focusSelect) {
-	                _this.input.select();
-	            }
-	            if (onFocus) {
-	                onFocus(value, e);
-	            }
-	        };
-	
-	        _this.renderInput = function () {
-	            var _this$props2 = _this.props,
-	                Component = _this$props2.componentClass,
-	                type = _this$props2.type,
-	                className = _this$props2.className,
-	                size = _this$props2.size,
-	                clsPrefix = _this$props2.clsPrefix,
-	                value = _this$props2.value,
-	                onChange = _this$props2.onChange,
-	                onSearch = _this$props2.onSearch,
-	                onBlur = _this$props2.onBlur,
-	                showClose = _this$props2.showClose,
-	                focusSelect = _this$props2.focusSelect,
-	                others = _objectWithoutProperties(_this$props2, ['componentClass', 'type', 'className', 'size', 'clsPrefix', 'value', 'onChange', 'onSearch', 'onBlur', 'showClose', 'focusSelect']);
-	            // input[type="file"] 不应该有类名 .form-control.
-	
-	
-	            var classes = {};
-	            if (size) {
-	                classes['' + size] = true;
-	            }
-	
-	            var classNames = void 0;
-	            if (type !== 'file') {
-	                classNames = (0, _classnames2["default"])(clsPrefix, classes);
-	            }
-	
-	            return showClose ? _react2["default"].createElement(
-	                'div',
-	                { className: (0, _classnames2["default"])(clsPrefix + '-close', clsPrefix + '-affix-wrapper', className) },
-	                _react2["default"].createElement(Component, _extends({}, others, {
-	                    type: type,
-	                    ref: function ref(el) {
-	                        return _this.input = el;
-	                    },
-	                    value: value,
-	                    onChange: _this.handleChange,
-	                    onBlur: _this.handleBlur,
-	                    onFocus: _this.handleFocus,
-	                    className: (0, _classnames2["default"])(className, classNames)
-	                })),
-	                _react2["default"].createElement(
-	                    'div',
-	                    { className: clsPrefix + '-suffix' },
-	                    _this.state.showClose ? _react2["default"].createElement(_beeIcon2["default"], { onClick: _this.clearValue, type: 'uf-close-c' }) : ''
-	                )
-	            ) : _react2["default"].createElement(Component, _extends({}, others, {
-	                type: type,
-	                ref: function ref(el) {
-	                    return _this.input = el;
-	                },
-	                value: value,
-	                onChange: _this.handleChange,
-	                onBlur: _this.handleBlur,
-	                onFocus: _this.handleFocus,
-	                className: (0, _classnames2["default"])(className, classNames)
-	            }));
-	        };
-	
-	        _this.renderSearch = function () {
-	            var _this$props3 = _this.props,
-	                Component = _this$props3.componentClass,
-	                type = _this$props3.type,
-	                className = _this$props3.className,
-	                size = _this$props3.size,
-	                clsPrefix = _this$props3.clsPrefix,
-	                value = _this$props3.value,
-	                onChange = _this$props3.onChange,
-	                onSearch = _this$props3.onSearch,
-	                onBlur = _this$props3.onBlur,
-	                others = _objectWithoutProperties(_this$props3, ['componentClass', 'type', 'className', 'size', 'clsPrefix', 'value', 'onChange', 'onSearch', 'onBlur']);
-	            // input[type="file"] 不应该有类名 .form-control.
-	
-	
-	            var classes = {};
-	            if (size) {
-	                classes['' + size] = true;
-	            }
-	            classes[clsPrefix + '-search'] = true;
-	
-	            if (type === "search") {
-	                return _react2["default"].createElement(
-	                    'div',
-	                    { className: (0, _classnames2["default"])(clsPrefix + '-search', clsPrefix + '-affix-wrapper', className) },
-	                    _react2["default"].createElement(Component, _extends({}, others, {
-	                        type: type,
-	                        ref: function ref(el) {
-	                            return _this.input = el;
-	                        },
-	                        onChange: _this.handleSearchChange,
-	                        value: value,
-	                        onKeyDown: _this.handleKeyDown,
-	                        onBlur: _this.handleBlur,
-	                        onFocus: _this.handleFocus,
-	                        className: (0, _classnames2["default"])(className, clsPrefix, classes)
-	                    })),
-	                    _react2["default"].createElement(
-	                        'div',
-	                        { className: clsPrefix + '-suffix' },
-	                        _react2["default"].createElement(_beeIcon2["default"], { type: 'uf-search', onClick: _this.handleSearch })
-	                    )
-	                );
-	            }
-	        };
-	
+	        var value = typeof props.value === 'undefined' ? props.defaultValue : props.value;
 	        _this.state = {
 	            showSearch: !props.value,
-	            value: props.value == null ? "" : props.value,
-	            showClose: false
+	            value: value
 	        };
 	        _this.input = {};
 	        return _this;
@@ -16229,6 +16055,204 @@
 	
 	    return FormControl;
 	}(_react2["default"].Component);
+	
+	var _initialiseProps = function _initialiseProps() {
+	    var _this2 = this;
+	
+	    this.handleSearchChange = function (e) {
+	        var onChange = _this2.props.onChange;
+	
+	        var value = _this2.input.value;
+	        _this2.setState({
+	            value: value,
+	            showSearch: value == null || value === ""
+	        });
+	        if (onChange) {
+	            onChange(value, e);
+	        }
+	    };
+	
+	    this.handleChange = function (e) {
+	        var _props$debounceDelay = _this2.props.debounceDelay,
+	            debounceDelay = _props$debounceDelay === undefined ? 0 : _props$debounceDelay;
+	
+	        var now = new Date().getTime();
+	        if (now - _this2.lastScrollCall < debounceDelay) return;
+	        _this2.lastScrollCall = now;
+	
+	        var onChange = _this2.props.onChange;
+	
+	        var value = _this2.input.value;
+	        if (!('value' in _this2.props)) {
+	            _this2.setState({ value: value });
+	        }
+	        if (onChange) {
+	            onChange(value, e);
+	        }
+	    };
+	
+	    this.clearValue = function () {
+	        var onChange = _this2.props.onChange;
+	
+	        _this2.setState({
+	            showSearch: true,
+	            value: ""
+	        });
+	        if (onChange) {
+	            onChange("");
+	        }
+	        _this2.input.focus();
+	    };
+	
+	    this.handleKeyDown = function (e) {
+	        var _props = _this2.props,
+	            onSearch = _props.onSearch,
+	            type = _props.type,
+	            onKeyDown = _props.onKeyDown;
+	
+	        if (e.keyCode === 13 && type === "search") {
+	            if (onSearch) {
+	                onSearch(_this2.input.value);
+	            }
+	        }
+	        onKeyDown && onKeyDown(e);
+	    };
+	
+	    this.handleSearch = function (e) {
+	        var onSearch = _this2.props.onSearch;
+	
+	        if (onSearch) onSearch(_this2.input.value);
+	    };
+	
+	    this.handleBlur = function (e) {
+	        var value = _this2.state.value;
+	        var onBlur = _this2.props.onBlur;
+	
+	
+	        if (onBlur) {
+	            onBlur(value, e);
+	        }
+	    };
+	
+	    this.handleFocus = function (e) {
+	        var value = _this2.state.value;
+	        var onFocus = _this2.props.onFocus;
+	
+	        if (_this2.props.focusSelect) {
+	            _this2.input.select();
+	        }
+	        if (onFocus) {
+	            onFocus(value, e);
+	        }
+	    };
+	
+	    this.renderInput = function () {
+	        var _props2 = _this2.props,
+	            Component = _props2.componentClass,
+	            type = _props2.type,
+	            className = _props2.className,
+	            size = _props2.size,
+	            clsPrefix = _props2.clsPrefix,
+	            onChange = _props2.onChange,
+	            onSearch = _props2.onSearch,
+	            onBlur = _props2.onBlur,
+	            showClose = _props2.showClose,
+	            focusSelect = _props2.focusSelect,
+	            others = _objectWithoutProperties(_props2, ['componentClass', 'type', 'className', 'size', 'clsPrefix', 'onChange', 'onSearch', 'onBlur', 'showClose', 'focusSelect']);
+	        // input[type="file"] 不应该有类名 .form-control.
+	
+	
+	        var value = _this2.state.value;
+	
+	        var classes = {};
+	        if (size) {
+	            classes['' + size] = true;
+	        }
+	
+	        var classNames = void 0;
+	        if (type !== 'file') {
+	            classNames = (0, _classnames2["default"])(clsPrefix, classes);
+	        }
+	
+	        return showClose ? _react2["default"].createElement(
+	            'div',
+	            { className: (0, _classnames2["default"])(clsPrefix + '-close', clsPrefix + '-affix-wrapper', className) },
+	            _react2["default"].createElement(Component, _extends({}, others, {
+	                type: type,
+	                ref: function ref(el) {
+	                    return _this2.input = el;
+	                },
+	                value: fixControlledValue(value),
+	                onChange: _this2.handleChange,
+	                onBlur: _this2.handleBlur,
+	                onFocus: _this2.handleFocus,
+	                className: (0, _classnames2["default"])(classNames)
+	            })),
+	            _react2["default"].createElement(
+	                'div',
+	                { className: clsPrefix + '-suffix' },
+	                value ? _react2["default"].createElement(_beeIcon2["default"], { onClick: _this2.clearValue, type: 'uf-close-c' }) : ''
+	            )
+	        ) : _react2["default"].createElement(Component, _extends({}, others, {
+	            type: type,
+	            ref: function ref(el) {
+	                return _this2.input = el;
+	            },
+	            value: fixControlledValue(value),
+	            onChange: _this2.handleChange,
+	            onBlur: _this2.handleBlur,
+	            onFocus: _this2.handleFocus,
+	            className: (0, _classnames2["default"])(className, classNames)
+	        }));
+	    };
+	
+	    this.renderSearch = function () {
+	        var _props3 = _this2.props,
+	            Component = _props3.componentClass,
+	            type = _props3.type,
+	            className = _props3.className,
+	            size = _props3.size,
+	            clsPrefix = _props3.clsPrefix,
+	            onChange = _props3.onChange,
+	            onSearch = _props3.onSearch,
+	            onBlur = _props3.onBlur,
+	            others = _objectWithoutProperties(_props3, ['componentClass', 'type', 'className', 'size', 'clsPrefix', 'onChange', 'onSearch', 'onBlur']);
+	        // input[type="file"] 不应该有类名 .form-control.
+	
+	
+	        var value = _this2.state.value;
+	
+	        var classes = {};
+	        if (size) {
+	            classes['' + size] = true;
+	        }
+	        classes[clsPrefix + '-search'] = true;
+	
+	        if (type === "search") {
+	            return _react2["default"].createElement(
+	                'div',
+	                { className: (0, _classnames2["default"])(clsPrefix + '-search', clsPrefix + '-affix-wrapper', className) },
+	                _react2["default"].createElement(Component, _extends({}, others, {
+	                    type: type,
+	                    ref: function ref(el) {
+	                        return _this2.input = el;
+	                    },
+	                    onChange: _this2.handleSearchChange,
+	                    value: fixControlledValue(value),
+	                    onKeyDown: _this2.handleKeyDown,
+	                    onBlur: _this2.handleBlur,
+	                    onFocus: _this2.handleFocus,
+	                    className: (0, _classnames2["default"])(clsPrefix, classes)
+	                })),
+	                _react2["default"].createElement(
+	                    'div',
+	                    { className: clsPrefix + '-suffix' },
+	                    _react2["default"].createElement(_beeIcon2["default"], { type: 'uf-search', onClick: _this2.handleSearch })
+	                )
+	            );
+	        }
+	    };
+	};
 	
 	FormControl.propTypes = propTypes;
 	FormControl.defaultProps = defaultProps;
@@ -16892,7 +16916,7 @@
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-		value: true
+	    value: true
 	});
 	
 	var _react = __webpack_require__(1);
@@ -16903,9 +16927,9 @@
 	
 	var _src2 = _interopRequireDefault(_src);
 	
-	var _classnames = __webpack_require__(5);
+	var _beeFormControl = __webpack_require__(153);
 	
-	var _classnames2 = _interopRequireDefault(_classnames);
+	var _beeFormControl2 = _interopRequireDefault(_beeFormControl);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
@@ -16921,75 +16945,82 @@
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
 	
 	var Demo3 = function (_Component) {
-		_inherits(Demo3, _Component);
+	    _inherits(Demo3, _Component);
 	
-		function Demo3() {
-			var _temp, _this, _ret;
+	    function Demo3() {
+	        var _temp, _this, _ret;
 	
-			_classCallCheck(this, Demo3);
+	        _classCallCheck(this, Demo3);
 	
-			for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-				args[_key] = arguments[_key];
-			}
+	        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+	            args[_key] = arguments[_key];
+	        }
 	
-			return _ret = (_temp = (_this = _possibleConstructorReturn(this, _Component.call.apply(_Component, [this].concat(args))), _this), _this.state = {
-				visible: false
-			}, _this.handleChange = function (e) {
-				var value = e.target.value;
-				if (Number(value) > 5) {
-					_this.setState({
-						visible: false
-					});
-				} else {
-					_this.setState({
-						visible: true
-					});
-				}
-			}, _this.onFocus = function (e) {
-				var value = e.target.value;
-				if (Number(value) < 5) {
-					_this.setState({
-						visible: true
-					});
-				}
-			}, _this.onVisibleChange = function () {
-				console.log('visible changed.');
-			}, _temp), _possibleConstructorReturn(_this, _ret);
-		}
-		//使用控制弹出层显示时的钩子函数
+	        return _ret = (_temp = (_this = _possibleConstructorReturn(this, _Component.call.apply(_Component, [this].concat(args))), _this), _this.state = {
+	            visible: false,
+	            value: ''
+	        }, _this.handleChange = function (value) {
+	            var newState = {
+	                value: value
+	            };
+	            if (Number(value) > 5) {
+	                newState.visible = false;
+	            } else {
+	                newState.visible = true;
+	            }
+	            _this.setState(newState);
+	        }, _this.onFocus = function () {
+	            var value = _this.state.value;
+	
+	            if (Number(value) < 5) {
+	                _this.setState({
+	                    visible: true
+	                });
+	            }
+	        }, _this.onBlur = function () {
+	            _this.setState({
+	                visible: false
+	            });
+	        }, _this.onVisibleChange = function () {
+	            console.log('visible changed.');
+	        }, _temp), _possibleConstructorReturn(_this, _ret);
+	    }
+	
+	    //使用控制弹出层显示时的钩子函数
 	
 	
-		Demo3.prototype.render = function render() {
-			var visible = this.state.visible;
+	    Demo3.prototype.render = function render() {
+	        var _state = this.state,
+	            visible = _state.visible,
+	            value = _state.value;
 	
-			var tip = _react2['default'].createElement(
-				'div',
-				null,
-				'\u8F93\u5165\u7684\u503C\u5FC5\u987B\u5927\u4E8E5'
-			);
+	        var tip = _react2['default'].createElement(
+	            'div',
+	            null,
+	            '\u8F93\u5165\u7684\u503C\u5FC5\u987B\u5927\u4E8E5'
+	        );
 	
-			return _react2['default'].createElement(
-				'div',
-				{ className: 'demo-tooltip' },
-				_react2['default'].createElement(
-					_src2['default'],
-					{
-						visible: visible,
-						onVisibleChange: this.onVisibleChange,
-						inverse: true,
-						placement: 'right',
-						overlay: tip },
-					_react2['default'].createElement('input', {
-						className: (0, _classnames2['default'])("input", { err: visible }),
-						type: 'text',
-						onChange: this.handleChange,
-						onFocus: this.onFocus
-					})
-				)
-			);
-		};
+	        return _react2['default'].createElement(
+	            'div',
+	            { className: 'demo-tooltip' },
+	            _react2['default'].createElement(
+	                _src2['default'],
+	                {
+	                    visible: visible,
+	                    onVisibleChange: this.onVisibleChange,
+	                    placement: 'top',
+	                    overlay: tip },
+	                _react2['default'].createElement(_beeFormControl2['default'], {
+	                    value: value,
+	                    onChange: this.handleChange,
+	                    onFocus: this.onFocus,
+	                    onBlur: this.onBlur
+	                })
+	            )
+	        );
+	    };
 	
-		return Demo3;
+	    return Demo3;
 	}(_react.Component);
 	
 	exports['default'] = Demo3;
@@ -33953,6 +33984,55 @@
 	      return doc;
 	    };
 	
+	    _this.bindDocument = function () {
+	      var doc = document;
+	      if (_this.props.getDocument) {
+	        doc = _this.props.getDocument();
+	      }
+	      if (Array.isArray(doc)) {
+	        var doc1 = doc[0];
+	        var doc2 = doc[1];
+	        _this.clickOutsideHandler = (0, _tinperBeeCore.addEventListener)(doc1, 'mousedown', _this.onDocumentClick);
+	        _this.touchOutsideHandler = (0, _tinperBeeCore.addEventListener)(doc1, 'touchstart', _this.onDocumentClick);
+	        _this.mouseWheelOutsideHandler = (0, _tinperBeeCore.addEventListener)(doc1, 'mousewheel', _this.onDocumentClick);
+	        _this.clickOutsideHandlerIframe = (0, _tinperBeeCore.addEventListener)(doc2, 'mousedown', _this.onDocumentClick);
+	        _this.touchOutsideHandlerIframe = (0, _tinperBeeCore.addEventListener)(doc2, 'touchstart', _this.onDocumentClick);
+	        _this.mouseWheelOutsideHandlerIframe = (0, _tinperBeeCore.addEventListener)(doc2, 'mousewheel', _this.onDocumentClick);
+	      } else {
+	        _this.clickOutsideHandler = (0, _tinperBeeCore.addEventListener)(doc, 'mousedown', _this.onDocumentClick);
+	        _this.touchOutsideHandler = (0, _tinperBeeCore.addEventListener)(doc, 'touchstart', _this.onDocumentClick);
+	        _this.mouseWheelOutsideHandler = (0, _tinperBeeCore.addEventListener)(doc, 'mousewheel', _this.onDocumentClick);
+	      }
+	    };
+	
+	    _this.removeDocument = function () {
+	      var doc = document;
+	      if (_this.props.getDocument) {
+	        doc = _this.props.getDocument();
+	      }
+	      if (Array.isArray(doc)) {
+	        _this.clickOutsideHandler.remove();
+	        _this.touchOutsideHandler.remove();
+	        _this.mouseWheelOutsideHandler.remove();
+	        _this.clickOutsideHandlerIframe.remove();
+	        _this.touchOutsideHandlerIframe.remove();
+	        _this.mouseWheelOutsideHandlerIframe.remove();
+	        _this.clickOutsideHandler = null;
+	        _this.touchOutsideHandler = null;
+	        _this.mouseWheelOutsideHandler = null;
+	        _this.clickOutsideHandlerIframe = null;
+	        _this.touchOutsideHandlerIframe = null;
+	        _this.mouseWheelOutsideHandlerIframe = null;
+	      } else {
+	        _this.clickOutsideHandler.remove();
+	        _this.touchOutsideHandler.remove();
+	        _this.mouseWheelOutsideHandler.remove();
+	        _this.clickOutsideHandler = null;
+	        _this.touchOutsideHandler = null;
+	        _this.mouseWheelOutsideHandler = null;
+	      }
+	    };
+	
 	    _this.state = {
 	      popupVisible: !!_this.props.popupVisible || _this.props.defaultPopupVisible
 	      //this.removeContainer = this.removeContainer.bind(this);
@@ -34061,32 +34141,20 @@
 	    if (this.isClickToHide()) {
 	      if (state.popupVisible) {
 	        if (!this.clickOutsideHandler) {
-	          this.clickOutsideHandler = (0, _tinperBeeCore.addEventListener)(this.getDocument(), 'mousedown', this.onDocumentClick);
-	          this.touchOutsideHandler = (0, _tinperBeeCore.addEventListener)(this.getDocument(), 'touchstart', this.onDocumentClick);
-	          this.mouseWheelOutsideHandler = (0, _tinperBeeCore.addEventListener)(this.getDocument(), 'mousewheel', this.onDocumentClick);
+	          this.bindDocument();
 	        }
 	        return;
 	      }
 	    }
 	    if (this.clickOutsideHandler) {
-	      this.clickOutsideHandler.remove();
-	      this.touchOutsideHandler.remove();
-	      this.mouseWheelOutsideHandler.remove();
-	      this.clickOutsideHandler = null;
-	      this.touchOutsideHandler = null;
-	      this.mouseWheelOutsideHandler = null;
+	      this.removeDocument();
 	    }
 	  };
 	
 	  Trigger.prototype.componentWillUnmount = function componentWillUnmount() {
 	    this.clearDelayTimer();
 	    if (this.clickOutsideHandler) {
-	      this.clickOutsideHandler.remove();
-	      this.touchOutsideHandler.remove();
-	      this.mouseWheelOutsideHandler.remove();
-	      this.clickOutsideHandler = null;
-	      this.touchOutsideHandler = null;
-	      this.mouseWheelOutsideHandler = null;
+	      this.removeDocument();
 	    }
 	    if (this._container) {
 	      _reactDom2["default"].unmountComponentAtNode(this._container);
