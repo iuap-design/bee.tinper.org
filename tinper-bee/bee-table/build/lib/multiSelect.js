@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -8,15 +8,11 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 exports["default"] = multiSelect;
 
-var _react = require('react');
+var _react = require("react");
 
 var _react2 = _interopRequireDefault(_react);
 
-var _propTypes = require('prop-types');
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
-var _util = require('./util');
+var _util = require("./util");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -57,7 +53,7 @@ function multiSelect(Table, Checkbox) {
     }
 
     MultiSelect.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
-      if ('data' in nextProps) {
+      if (this.props.data != nextProps.data) {
         var obj = this.getCheckedOrIndeter(nextProps.data);
         this.setState(_extends({}, obj, {
           data: (0, _util.ObjectAssign)(nextProps.data)
@@ -72,7 +68,7 @@ function multiSelect(Table, Checkbox) {
 
     MultiSelect.prototype.getCheckedOrIndeter = function getCheckedOrIndeter(data) {
       var obj = {};
-      var checkStatus = this.checkAllSelected(data);
+      var checkStatus = this.setChecked(data);
       if (!checkStatus) {
         obj.checkedAll = false;
         obj.indeterminate = false;
@@ -91,7 +87,7 @@ function multiSelect(Table, Checkbox) {
     /**
      * 判断数据是否全部选中
      * @param {*} data 
-     * return  string  all(全选)、indeter(半选)
+     * reutnr  string  all(全选)、indeter(半选)
      */
 
 
@@ -101,7 +97,7 @@ function multiSelect(Table, Checkbox) {
       var count = 0;
       var disabledCount = 0;
       data.forEach(function (da) {
-        if (da._checked && !da._disabled) {
+        if (da._checked) {
           count++;
         }
         if (da._disabled) {
@@ -109,89 +105,35 @@ function multiSelect(Table, Checkbox) {
         }
       });
 
-      if (data.length == count + disabledCount && count > 0) {
+      if (data.length == count + disabledCount) {
         return "all";
       }
       return count == 0 ? false : "indeter";
     };
-
-    /**
-     * 重写：判断数据是否全部选中
-     */
-
 
     /**
      * 判断是否是数组
      * @param {*} o 
      */
+
+
     MultiSelect.prototype.isArray = function isArray(o) {
       return Object.prototype.toString.call(o) == '[object Array]';
     };
 
-    /**
-     * 遍历树节点和它的子孙节点，设置_checked
-     */
-
-
-    /**
-     * 遍历树节点和它的子孙节点，获取对应状态的节点数组
-     */
-
-
-    // 实现行点击时触发多选框勾选的需求
-
-
     MultiSelect.prototype.render = function render() {
-      var _props = this.props,
-          columns = _props.columns,
-          expandIconColumnIndex = _props.expandIconColumnIndex;
+      var columns = this.props.columns;
       var data = this.state.data;
 
-      return _react2["default"].createElement(Table, _extends({}, this.props, {
-        columns: this.getDefaultColumns(columns),
-        data: data,
-        onRowClick: this.onRowClick,
-        expandIconColumnIndex: expandIconColumnIndex ? expandIconColumnIndex + 1 : 1
-      }));
+      return _react2["default"].createElement(Table, _extends({}, this.props, { columns: this.getDefaultColumns(columns), data: data }));
     };
 
     return MultiSelect;
-  }(_react.Component), _class.propTypes = {
-    autoCheckedByClickRows: _propTypes2["default"].bool //行点击时，是否自动勾选复选框
-  }, _class.defaultProps = {
+  }(_react.Component), _class.defaultProps = {
     prefixCls: "u-table-mult-select",
-    getSelectedDataFunc: function getSelectedDataFunc() {},
-    autoSelect: false,
-    autoCheckedByClickRows: true,
-    multiSelectConfig: {}
+    getSelectedDataFunc: function getSelectedDataFunc() {}
   }, _initialiseProps = function _initialiseProps() {
     var _this2 = this;
-
-    this.checkAllSelected = function (data) {
-      if (!_this2.isArray(data)) return false;
-      if (data.length == 0) return false;
-      var count = 0;
-      var disabledCount = 0;
-      var length = 0;
-      var getTree = function getTree(arr) {
-        arr.forEach(function (item) {
-          length++;
-          if (item._checked && !item._disabled) {
-            count++;
-          } else if (item._disabled) {
-            disabledCount++;
-          }
-          if (item.children) {
-            getTree(item.children);
-          }
-        });
-      };
-      getTree(data);
-      if (length == count + disabledCount && count > 0) {
-        return "all";
-      }
-      return count == 0 ? false : "indeter";
-    };
 
     this.onAllCheckChange = function () {
       var _state = _this2.state,
@@ -213,17 +155,12 @@ function multiSelect(Table, Checkbox) {
       var selectList = [];
 
       data.forEach(function (item) {
-        if (item.children) {
-          var res = _this2.setTree(item, check, true);
-          selectList = selectList.concat(res);
-        } else {
-          if (!item._disabled) {
-            item._checked = check;
-          }
+        if (!item._disabled) {
+          item._checked = check;
+        }
 
-          if (item._checked) {
-            selectList.push(item);
-          }
+        if (item._checked) {
+          selectList.push(item);
         }
       });
       if (selectList.length > 0) {
@@ -235,42 +172,7 @@ function multiSelect(Table, Checkbox) {
         indeterminate: indeterminate,
         checkedAll: check
       });
-      _this2.props.getSelectedDataFunc(selectList, undefined, undefined, data);
-    };
-
-    this.setTree = function (node, flag, autoSelect) {
-      var res = [];
-      var setTreeNodeFlag = function setTreeNodeFlag(node, flag) {
-        if (!node._disabled) {
-          node._checked = flag;
-        }
-        if (flag) {
-          res.push(node);
-        }
-        if (node.children && autoSelect) {
-          node.children.forEach(function (item) {
-            setTreeNodeFlag(item, flag);
-          });
-        }
-      };
-      setTreeNodeFlag(node, flag);
-      return res;
-    };
-
-    this.getTree = function (node, key, value) {
-      var res = [];
-      var getTreeNodeByFlag = function getTreeNodeByFlag(node) {
-        if (node[key] === value) {
-          res.push(node);
-        }
-        if (node.children) {
-          node.children.forEach(function (item) {
-            getTreeNodeByFlag(item);
-          });
-        }
-      };
-      getTreeNodeByFlag(node);
-      return res;
+      _this2.props.getSelectedDataFunc(selectList);
     };
 
     this.handleClick = function () {};
@@ -280,30 +182,21 @@ function multiSelect(Table, Checkbox) {
         var data = _this2.state.data;
 
         var selectList = [];
-        // record._checked = record._checked?false:true;
-        var flag = record._checked ? false : true;
-        if (record.children) {
-          _this2.setTree(record, flag, _this2.props.autoSelect);
-        } else {
-          record._checked = flag;
-        }
+        record._checked = record._checked ? false : true;
         var obj = _this2.getCheckedOrIndeter(data);
         _this2.setState(_extends({
           data: data
         }, obj));
         data.forEach(function (da) {
-          if (da.children) {
-            selectList = selectList.concat(_this2.getTree(da, '_checked', true));
-          } else if (da._checked) {
+          if (da._checked) {
             selectList.push(da);
           }
         });
-        _this2.props.getSelectedDataFunc(selectList, record, index, data);
+        _this2.props.getSelectedDataFunc(selectList, record, index);
       };
     };
 
     this.getDefaultColumns = function (columns) {
-      var multiSelectConfig = _this2.props.multiSelectConfig;
       var _state2 = _this2.state,
           checkedAll = _state2.checkedAll,
           indeterminate = _state2.indeterminate;
@@ -321,24 +214,23 @@ function multiSelect(Table, Checkbox) {
       });
 
       var _defaultColumns = [{
-        className: 'u-table-multiSelect-column',
         title: _react2["default"].createElement(Checkbox, _extends({
-          className: 'table-checkbox'
-        }, checkAttr, multiSelectConfig, {
+          className: "table-checkbox"
+        }, checkAttr, {
           disabled: disabledCount == dataLength ? true : false,
           onChange: _this2.onAllCheckChange
         })),
         key: "checkbox",
         dataIndex: "checkbox",
         fixed: "left",
-        width: 49,
+        width: 50,
         render: function render(text, record, index) {
           var attr = {};
           record._disabled ? attr.disabled = record._disabled : "";
           return _react2["default"].createElement(Checkbox, _extends({
             key: index,
-            className: 'table-checkbox'
-          }, attr, multiSelectConfig, {
+            className: "table-checkbox"
+          }, attr, {
             checked: record._checked,
             onClick: _this2.handleClick,
             onChange: _this2.onCheckboxChange(text, record, index)
@@ -347,18 +239,6 @@ function multiSelect(Table, Checkbox) {
       }];
       return _defaultColumns.concat(columns);
     };
-
-    this.onRowClick = function (record, index, event) {
-      if (record._disabled) return;
-      var _props2 = _this2.props,
-          autoCheckedByClickRows = _props2.autoCheckedByClickRows,
-          onRowClick = _props2.onRowClick;
-
-      if (autoCheckedByClickRows) {
-        _this2.onCheckboxChange('', record, index)();
-      }
-      onRowClick && onRowClick(record, index, event);
-    };
   }, _temp;
 }
-module.exports = exports['default'];
+module.exports = exports["default"];

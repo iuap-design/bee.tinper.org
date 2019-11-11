@@ -17,8 +17,7 @@ const propTypes = {
     ]),
     render: PropTypes.func,
     onCellClick: PropTypes.func,
-    ifshow:PropTypes.bool,
-    fieldType: PropTypes.string, // 类型
+    ifshow:PropTypes.bool
 }
 
 class Column extends Component {

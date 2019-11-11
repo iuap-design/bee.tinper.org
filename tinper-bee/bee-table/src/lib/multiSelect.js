@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import PropTypes from 'prop-types';
 import {ObjectAssign} from './util';
 /**
  * 参数: 过滤表头
@@ -12,15 +11,9 @@ import {ObjectAssign} from './util';
 export default function multiSelect(Table, Checkbox) {
 
   return class MultiSelect extends Component {
-    static propTypes = {
-      autoCheckedByClickRows: PropTypes.bool, //行点击时，是否自动勾选复选框
-    };
     static defaultProps = {
       prefixCls: "u-table-mult-select",
-      getSelectedDataFunc:()=>{},
-      autoSelect: false,
-      autoCheckedByClickRows: true,
-      multiSelectConfig: {}
+      getSelectedDataFunc:()=>{}
     }
 
     constructor(props) {
@@ -33,7 +26,7 @@ export default function multiSelect(Table, Checkbox) {
     }
 
     componentWillReceiveProps(nextProps){
-      if('data' in nextProps){
+      if(this.props.data != nextProps.data){
         let obj = this.getCheckedOrIndeter(nextProps.data);
         this.setState({
           ...obj,
@@ -47,7 +40,7 @@ export default function multiSelect(Table, Checkbox) {
      */
     getCheckedOrIndeter(data){
       let obj = {};
-      let checkStatus = this.checkAllSelected(data);
+      let checkStatus = this.setChecked(data);
       if(!checkStatus){
         obj.checkedAll = false;
         obj.indeterminate = false;
@@ -66,7 +59,7 @@ export default function multiSelect(Table, Checkbox) {
     /**
      * 判断数据是否全部选中
      * @param {*} data 
-     * return  string  all(全选)、indeter(半选)
+     * reutnr  string  all(全选)、indeter(半选)
      */
     setChecked(data){
       if(!this.isArray(data))return false;
@@ -74,7 +67,7 @@ export default function multiSelect(Table, Checkbox) {
       let count = 0;
       let disabledCount = 0;
       data.forEach(da=>{
-        if(da._checked && !da._disabled){
+        if(da._checked){
           count ++;
         }
         if(da._disabled){
@@ -82,37 +75,7 @@ export default function multiSelect(Table, Checkbox) {
         }
       })
 
-      if(data.length == count + disabledCount && count>0){
-        return "all";
-      }
-      return count == 0?false:"indeter";
-    }
-
-    /**
-     * 重写：判断数据是否全部选中
-     */
-    checkAllSelected = ( data ) => {
-      if(!this.isArray(data))return false;
-      if(data.length == 0)return false;
-      let count = 0;
-      let disabledCount = 0;
-      let length = 0;
-      let getTree = ( arr ) => {
-        arr.forEach( item  => {
-          length++;
-          if(item._checked && !item._disabled){
-            count ++;
-          }
-          else if(item._disabled){
-            disabledCount ++;
-          }
-          if(item.children){
-            getTree(item.children);
-          }
-        })
-      }
-      getTree(data);
-      if(length == count + disabledCount && count>0){
+      if(data.length == count + disabledCount){
         return "all";
       }
       return count == 0?false:"indeter";
@@ -143,18 +106,12 @@ export default function multiSelect(Table, Checkbox) {
       let selectList = [];
       
       data.forEach(item => {
-        if( item.children ){
-          let res = this.setTree(item,check, true);
-          selectList = selectList.concat(res);
+        if(!item._disabled){
+          item._checked = check;
         }
-        else {
-          if(!item._disabled){
-            item._checked = check;
-          }
-         
-          if(item._checked){
-            selectList.push(item);
-          }
+       
+        if(item._checked){
+          selectList.push(item);
         }
       });
       if(selectList.length > 0){
@@ -166,48 +123,7 @@ export default function multiSelect(Table, Checkbox) {
         indeterminate:indeterminate,
         checkedAll:check
       });
-      this.props.getSelectedDataFunc(selectList,undefined,undefined,data);
-    }
-
-    /**
-     * 遍历树节点和它的子孙节点，设置_checked
-     */
-    setTree = ( node, flag, autoSelect) => {
-      let res = [];
-      let setTreeNodeFlag = ( node, flag) => {
-        if(!node._disabled){
-          node._checked = flag;
-        }
-        if(flag){
-          res.push(node);
-        }
-        if(node.children && autoSelect){
-          node.children.forEach( item => {
-            setTreeNodeFlag(item, flag);
-          })
-        }
-      }
-      setTreeNodeFlag(node, flag);
-      return res;
-    }
-
-    /**
-     * 遍历树节点和它的子孙节点，获取对应状态的节点数组
-     */
-    getTree = ( node, key, value ) => {
-      let res = [];
-      let getTreeNodeByFlag = ( node) => {
-        if(node[key] === value){
-          res.push(node);
-        }
-        if(node.children){
-          node.children.forEach( item => {
-            getTreeNodeByFlag(item);
-          })
-        }
-      }
-      getTreeNodeByFlag(node);
-      return res;
+      this.props.getSelectedDataFunc(selectList);
     }
 
     handleClick=()=>{
@@ -217,34 +133,23 @@ export default function multiSelect(Table, Checkbox) {
     onCheckboxChange = (text, record, index) => () => {
       let {data} = this.state;
       let selectList = [];
-      // record._checked = record._checked?false:true;
-      let flag = record._checked ? false : true;
-      if (record.children) {
-        this.setTree(record, flag, this.props.autoSelect);
-      }
-      else {
-        record._checked = flag;
-      }
+      record._checked = record._checked?false:true;
       let obj = this.getCheckedOrIndeter(data);
       this.setState({
         data:data,
         ...obj
       })
       data.forEach((da)=>{
-        if(da.children){
-          selectList = selectList.concat(this.getTree(da,'_checked',true))
-        }
-        else if(da._checked){
+        if(da._checked){
           selectList.push(da);
         }
       })
-      this.props.getSelectedDataFunc(selectList,record,index,data);
+      this.props.getSelectedDataFunc(selectList,record,index);
     };
 
     
 
     getDefaultColumns=(columns)=>{
-      let {multiSelectConfig} = this.props;
       let {checkedAll,indeterminate} = this.state;
       let checkAttr = {checked:checkedAll?true:false};
       const data = this.props.data;
@@ -259,20 +164,18 @@ export default function multiSelect(Table, Checkbox) {
       })
 
       let _defaultColumns =[{
-          className: 'u-table-multiSelect-column',
           title: (
             <Checkbox
               className="table-checkbox"
               {...checkAttr}
-              {...multiSelectConfig}
               disabled={disabledCount==dataLength?true:false}
               onChange={this.onAllCheckChange}
             />
           ),
           key: "checkbox",
           dataIndex: "checkbox",
-          fixed:"left",
-          width: 49, 
+         fixed:"left",
+          width: 50, 
           render: (text, record, index) => {
             let attr = {};
             record._disabled?attr.disabled = record._disabled:"";
@@ -280,7 +183,6 @@ export default function multiSelect(Table, Checkbox) {
                 key={index}
                 className="table-checkbox"
                 {...attr}
-                {...multiSelectConfig}
                 checked={record._checked}
                 onClick={this.handleClick}
                 onChange={this.onCheckboxChange(text, record, index)}
@@ -290,25 +192,10 @@ export default function multiSelect(Table, Checkbox) {
         return _defaultColumns.concat(columns);
     }
 
-    // 实现行点击时触发多选框勾选的需求
-    onRowClick = (record,index,event) =>{
-      if(record._disabled) return;
-      let { autoCheckedByClickRows, onRowClick } = this.props;
-      if(autoCheckedByClickRows) {
-        this.onCheckboxChange('',record, index)();
-      }
-      onRowClick && onRowClick(record,index,event);
-    }
-
     render() {
-      const {columns, expandIconColumnIndex} = this.props;
+      const {columns} = this.props;
       const {data} = this.state;
-      return <Table {...this.props} 
-        columns={this.getDefaultColumns(columns)} 
-        data={data} 
-        onRowClick={this.onRowClick}
-        expandIconColumnIndex={expandIconColumnIndex ? expandIconColumnIndex+1 : 1}
-        />
+      return <Table {...this.props} columns={this.getDefaultColumns(columns)} data={data} />
     }
   };
 }

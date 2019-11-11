@@ -41,16 +41,7 @@ var ExpandIcon = function (_Component) {
   function ExpandIcon(props) {
     _classCallCheck(this, ExpandIcon);
 
-    var _this = _possibleConstructorReturn(this, _Component.call(this, props));
-
-    _this.onExpand = function (status, record, e) {
-      var onExpand = _this.props.onExpand;
-
-      e.stopPropagation();
-      onExpand(status, record, e);
-    };
-
-    return _this;
+    return _possibleConstructorReturn(this, _Component.call(this, props));
   }
 
   ExpandIcon.prototype.shouldComponentUpdate = function shouldComponentUpdate(nextProps) {
@@ -58,8 +49,6 @@ var ExpandIcon = function (_Component) {
   };
 
   ExpandIcon.prototype.render = function render() {
-    var _this2 = this;
-
     var _props = this.props,
         expandable = _props.expandable,
         clsPrefix = _props.clsPrefix,
@@ -67,27 +56,16 @@ var ExpandIcon = function (_Component) {
         needIndentSpaced = _props.needIndentSpaced,
         expanded = _props.expanded,
         record = _props.record,
-        isHiddenExpandIcon = _props.isHiddenExpandIcon,
-        expandedIcon = _props.expandedIcon,
-        collapsedIcon = _props.collapsedIcon;
+        isHiddenExpandIcon = _props.isHiddenExpandIcon;
 
     if (expandable && !isHiddenExpandIcon) {
       var expandClassName = expanded ? 'expanded' : 'collapsed';
-      var currentIcon = _react2["default"].createElement('span', {
-        className: clsPrefix + '-expand-icon ' + clsPrefix + '-' + expandClassName
+      return _react2["default"].createElement('span', {
+        className: clsPrefix + '-expand-icon ' + clsPrefix + '-' + expandClassName,
+        onClick: function onClick(e) {
+          return onExpand(!expanded, record, e);
+        }
       });
-      if (expanded && expandedIcon) {
-        currentIcon = expandedIcon;
-      } else if (!expanded && collapsedIcon) {
-        currentIcon = collapsedIcon;
-      }
-      return _react2["default"].createElement(
-        'span',
-        { onClick: function onClick(e) {
-            return _this2.onExpand(!expanded, record, e);
-          }, className: 'expand-icon-con' },
-        currentIcon
-      );
     } else if (needIndentSpaced || isHiddenExpandIcon) {
       return _react2["default"].createElement('span', { className: clsPrefix + '-expand-icon ' + clsPrefix + '-spaced' });
     }

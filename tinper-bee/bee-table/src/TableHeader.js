@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import ReactDOM from 'react-dom';
 import PropTypes from "prop-types";
 import { debounce } from "throttle-debounce";
-import { Event,EventUtil} from "./lib/utils";
+import { Event,EventUtil} from "./utils";
 import FilterType from "./FilterType";
 
 const propTypes = {
@@ -22,17 +22,16 @@ function getDiv(id){
 class TableHeader extends Component {
   constructor(props) {
     super(props);
-    this.currentObj = null;
+    this.currentObj = null; 
     this.theadKey = new Date().getTime();
     this.drag = {
       option:''
     };
-    this.minWidth = 80;//确定最小宽度就是80
+    this.minWidth = props.minColumnWidth?props.minColumnWidth:80;//确定最小宽度就是80
     this.table = null;
     this._thead = null;//当前对象
     this.event = false;//避免多次绑定问题
     this.lastColumWidth = null;//非固定列最后一列的初始化宽度
-    this.fixedTable = {};
   }
 
   static defaultProps = {
@@ -52,7 +51,6 @@ class TableHeader extends Component {
   }
 
   componentWillUnmount(){
-    this.fixedTable = null;
     if(!this.table)return;
     if (this.props.draggable){
       this.removeDragAbleEvent();
@@ -61,7 +59,6 @@ class TableHeader extends Component {
       this.removeDragBorderEvent();
     }
     this.eventListen([{key:'mousedown',fun:this.onTrMouseDown}],'remove',this.table.tr[0]);
-    this.eventListen([{key:'mouseup',fun:this.bodyonLineMouseUp}],'remove',document.body);
   }
 
   /**
@@ -79,8 +76,9 @@ class TableHeader extends Component {
       table.cols = tableDome.getElementsByTagName("col");
       table.ths = tableDome.getElementsByTagName("th");
       table.tr = tableDome.getElementsByTagName("tr");
-      table.tableBody = contentTable.querySelector('.u-table-scroll .u-table-body') && contentTable.querySelector('.u-table-scroll .u-table-body');
-      table.tableBodyCols = contentTable.querySelector('.u-table-scroll .u-table-body') && contentTable.querySelector('.u-table-scroll .u-table-body').getElementsByTagName("col");
+      if(contentTable.querySelector('.u-table-scroll .u-table-body')){
+        table.tableBodyCols = contentTable.querySelector('.u-table-scroll .u-table-body') && contentTable.querySelector('.u-table-scroll .u-table-body').getElementsByTagName("col");
+      }
     }
 
     table.fixedLeftHeaderTable = contentTable.querySelector('.u-table-fixed-left .u-table-header') ;
@@ -89,7 +87,7 @@ class TableHeader extends Component {
     table.fixedLeftBodyTable = contentTable.querySelector('.u-table-fixed-left .u-table-body-outer') ;
     table.fixedRightBodyTable = contentTable.querySelector('.u-table-fixed-right .u-table-body-outer') ;
     table.innerTableBody= contentTable.querySelector('.u-table-scroll .u-table-body table');
-
+    
     this.table = table;
 
     if(!this.props.dragborder)return;
@@ -98,7 +96,7 @@ class TableHeader extends Component {
       let _fixedParentContext =  document.getElementById("u-table-drag-thead-" + this.theadKey).parentNode;
       let siblingDom = _fixedParentContext.parentNode.nextElementSibling;
       if (siblingDom) {
-        let fixedTable = siblingDom.querySelector("table");
+        let fixedTable = siblingDom.querySelector("table"); 
         this.fixedTable.table = fixedTable
         this.fixedTable.cols = fixedTable.getElementsByTagName("col");
         // this.fixedTable.ths = fixedTable.tableDome.getElementsByTagName("th");
@@ -110,17 +108,13 @@ class TableHeader extends Component {
    * 事件初始化
    */
   initEvent(){
-    let {dragborder,draggable,rows} = this.props;
-    // 当传入的 columns 为空时，不绑定拖拽事件
-    if(Object.prototype.toString.call(rows) === '[object Array]' && rows.length === 0){
-      return;
-    }
+    let {dragborder,draggable} = this.props;
     if(!this.event){ //避免多次绑定问题。
       this.event = true;
       if(dragborder){
         this.dragBorderEventInit();//列宽
       }
-      if(draggable){
+      if(dragborder){
         this.dragAbleEventInit();//交换列
       }
       if(this.table && this.table.tr){
@@ -194,12 +188,11 @@ class TableHeader extends Component {
    * @memberof TableHeader
    */
   onTrMouseDown = (e) => {
-    Event.stopPropagation(e);
+    Event.stopPropagation(e); 
     let event = Event.getEvent(e) ,
     targetEvent = Event.getTarget(event);
     const { clsPrefix, contentTable,lastShowIndex } = this.props;
-    // let currentElement = this.getOnLineObject(targetEvent);
-    let currentElement = this.getTargetToType(targetEvent);
+    let currentElement = this.getOnLineObject(targetEvent);
     if(!currentElement)return;
     let type = currentElement.getAttribute('data-type');
     if(!this.props.dragborder && !this.props.draggable)return;
@@ -224,9 +217,9 @@ class TableHeader extends Component {
         this.lastColumWidth = parseInt(this.table.cols[lastShowIndex].style.width);
       }
     }else if(type != 'online' &&  this.props.draggable){
-        // if (!this.props.draggable || targetEvent.nodeName.toUpperCase() != "TH") return;
-        if (!this.props.draggable) return;
-        let th = this.getTargetToType(targetEvent);
+        // if (!this.props.draggable || targetEvent.nodeName.toUpperCase() != "TH") return; 
+        if (!this.props.draggable) return; 
+        let th = this.getTargetToTh(targetEvent);
         th.setAttribute('draggable',true);//添加交换列效果
         this.drag.option = 'dragAble';
         this.currentDome = th;
@@ -237,7 +230,7 @@ class TableHeader extends Component {
       return ;
     }
   };
-
+ 
   getTableWidth = ()=>{
     let tableWidth = 0,offWidth = 0;//this.table.cols.length;
     for (let index = 0; index < this.table.cols.length; index++) {
@@ -246,20 +239,7 @@ class TableHeader extends Component {
     }
     return (tableWidth-offWidth);
   }
-
-  /**
-   * 根据当前节点查找到有data-type类型的容器返回。
-   * @memberof TableHeader
-   */
-  getTargetToType = (targetEvent) => {
-    let tag = targetEvent;
-    if(targetEvent && !targetEvent.getAttribute("data-type")){
-      tag = this.getTargetToType(targetEvent.parentElement);
-    }
-    return tag;
-  }
-
-
+ 
   /**
    * 判断当前的target 是否是 th，如果不是，直接递归查找。
    * @memberof TableHeader
@@ -278,13 +258,13 @@ class TableHeader extends Component {
    */
   onTrMouseMove = (e) => {
     if(!this.props.dragborder && !this.props.draggable)return;
-    const { clsPrefix ,dragborder,contentDomWidth,scrollbarWidth,contentTable,headerScroll,lastShowIndex,onDraggingBorder, leftFixedWidth, rightFixedWidth} = this.props;
-    Event.stopPropagation(e);
-    let event = Event.getEvent(e);
+    const { clsPrefix ,dragborder,contentDomWidth,scrollbarWidth,contentTable,headerScroll,lastShowIndex} = this.props;
+    Event.stopPropagation(e); 
+    let event = Event.getEvent(e);  
     if(this.props.dragborder && this.drag.option == "border"){
       //移动改变宽度
       let currentCols = this.table.cols[this.drag.currIndex];
-      let diff = (event.x - this.drag.oldLeft);
+      let diff = (event.x - this.drag.oldLeft); 
       let newWidth = this.drag.oldWidth + diff;
       this.drag.newWidth = newWidth > 0 ? newWidth : this.minWidth;
        // if(newWidth > this.drag.minWidth){
@@ -299,19 +279,20 @@ class TableHeader extends Component {
         // this.table.table.style.width  = newTableWidth+'px';;//改变table的width
         // if(this.table.innerTableBody){//TODO 后续需要处理此处
         //   this.table.innerTableBody.style.width  = newTableWidth+'px';
-
+         
         // }
 
         let newDiff = (parseInt(currentCols.style.minWidth) - parseInt(currentCols.style.width));
-        if(newDiff > 0){//缩小
+        if(newDiff > 0){//缩小 
           let lastWidth = this.lastColumWidth + newDiff;
           this.table.cols[lastShowIndex].style.width = lastWidth +"px";//同步表头
           this.table.tableBodyCols[lastShowIndex].style.width = lastWidth + "px";//同步表体
         }
-        let showScroll =  contentDomWidth - (leftFixedWidth + rightFixedWidth) - (this.drag.tableWidth + diff) - scrollbarWidth ;
+
+        let showScroll =  contentDomWidth - (this.drag.tableWidth + diff) - scrollbarWidth ;
         //表头滚动条处理
         if(headerScroll){
-            if(showScroll < 0){ //小于 0 出现滚动条
+            if(showScroll < 0){
                 //找到固定列表格，设置表头的marginBottom值为scrollbarWidth;
                 this.table.contentTableHeader.style.overflowX = 'scroll';
                 this.optTableMargin( this.table.fixedLeftHeaderTable,scrollbarWidth);
@@ -319,20 +300,18 @@ class TableHeader extends Component {
                 // fixedLeftHeaderTable && (fixedLeftHeaderTable.style.marginBottom = scrollbarWidth + "px");
                 // fixedRighHeadertTable && (fixedRighHeadertTable.style.marginBottom = scrollbarWidth + "px");
               //todo inner scroll-x去掉；outer marginbottom 设置成-15px】
-              }else{ //大于 0 不显示滚动条
+              }else{
                 this.table.contentTableHeader.style.overflowX = 'hidden';
                 this.optTableMargin( this.table.fixedLeftHeaderTable,0);
                 this.optTableMargin( this.table.fixedRighHeadertTable,0);
             }
         }else{
           if(showScroll < 0){
-                this.table.tableBody.style.overflowX = 'auto';
                 this.optTableMargin( this.table.fixedLeftBodyTable,'-'+scrollbarWidth);
                 this.optTableMargin( this.table.fixedRightBodyTable,'-'+scrollbarWidth);
                 this.optTableScroll( this.table.fixedLeftBodyTable,{x:'scroll'});
                 this.optTableScroll( this.table.fixedRightBodyTable,{x:'scroll'});
           }else{
-            this.table.tableBody.style.overflowX = 'hidden';
             this.optTableMargin( this.table.fixedLeftBodyTable,0);
             this.optTableMargin( this.table.fixedRightBodyTable,0);
             this.optTableScroll( this.table.fixedLeftBodyTable,{x:'auto'});
@@ -347,8 +326,6 @@ class TableHeader extends Component {
     }else{
       // console.log("onTrMouseMove dragborder or draggable is all false !");
     }
-    // 增加拖拽列宽动作的回调函数
-    this.drag.newWidth && onDraggingBorder && onDraggingBorder(event, this.drag.newWidth);
   }
 
     /**
@@ -356,14 +333,14 @@ class TableHeader extends Component {
    * @memberof TableHeader
    */
   onTrMouseUp = (e) => {
-    let event = Event.getEvent(e);
+    let event = Event.getEvent(e);  
     let width = this.drag.newWidth;
     this.mouseClear();
     this.props.onDropBorder && this.props.onDropBorder(event,width);
   };
 
 
-  mouseClear(){
+  mouseClear(){ 
     if(!this.drag || !this.drag.option)return;
     let {rows} = this.props;
     let data = {rows:rows[0],cols:this.table.cols,currIndex:this.drag.currIndex};
@@ -408,11 +385,10 @@ class TableHeader extends Component {
     if(table){
       const innerTable = table.querySelector('.u-table-body-inner');
       if(innerTable){
-        //fixbug: 拖拽列宽后，滚动条滚到表格底部，会导致固定列和非固定列错行
         overflow.x && (innerTable.style.overflowX = overflow.x);
         overflow.y && (innerTable.style.overflowY = overflow.y);
       }
-
+     
     }
   }
 
@@ -425,9 +401,9 @@ class TableHeader extends Component {
     let  events = [
       {key:'dragstart',fun:this.onDragStart},//用户开始拖动元素时触发
       {key:'dragover', fun:this.onDragOver},//当某被拖动的对象在另一对象容器范围内拖动时触发此事件
-      {key:'drop', fun:this.onDrop},        //在一个拖动过程中，释放鼠标键时触发此事件
+      {key:'drop', fun:this.onDrop},        //在一个拖动过程中，释放鼠标键时触发此事件 
 
-      {key:'dragenter', fun:this.onDragEnter},
+      {key:'dragenter', fun:this.onDragEnter},  
       {key:'dragend', fun:this.onDragEnd},
       {key:'dragleave', fun:this.onDragLeave},
     ];
@@ -442,7 +418,7 @@ class TableHeader extends Component {
       {key:'dragstart',fun:this.onDragStart},
       {key:'dragover', fun:this.onDragOver},
       {key:'drop', fun:this.onDrop},
-      {key:'dragenter', fun:this.onDragEnter},
+      {key:'dragenter', fun:this.onDragEnter},  
       {key:'dragend', fun:this.onDragEnd},
       {key:'dragleave', fun:this.onDragLeave},
     ];
@@ -454,7 +430,7 @@ class TableHeader extends Component {
    */
   onDragStart = (e) => {
     if (!this.props.draggable) return;
-    if(this.drag && this.drag.option != 'dragAble'){return;}
+    if(this.drag && this.drag.option != 'dragAble'){return;} 
     let event = Event.getEvent(e) ,
     // target = Event.getTarget(event);
     target = this.getTargetToTh(Event.getTarget(event));
@@ -488,23 +464,10 @@ class TableHeader extends Component {
    */
   onDrop = (e) => {
     if (!this.props.draggable) return;
-    let props = this.getCurrentEventData(this._dragCurrent)
-    e.column = {props};
-    if(this.drag && this.drag.option != 'dragAble'){
-      this.props.onDrop(e);
-      return;
-    }
+    if(this.drag && this.drag.option != 'dragAble'){return;}
     let event = Event.getEvent(e) ,
     target = Event.getTarget(event);
     this.currentDome.setAttribute('draggable',false);//添加交换列效果
-    // let data = this.getCurrentEventData(this._dragCurrent);
-    // if(!data){
-    //   this.props.onDrop(e);
-    //   return;
-    // }
-    if(!this.props.onDrop)return;
-    // this.props.onDrop(event,target);
-    this.props.onDrop(event,{dragSource:this.currentObj,dragTarg:e.column});
   };
 
 
@@ -516,7 +479,7 @@ class TableHeader extends Component {
     if(!currentIndex || parseInt(currentIndex) === this.drag.currIndex)return;
     if(target.nodeName.toUpperCase() === "TH"){
       // target.style.border = "2px dashed rgba(5,0,0,0.25)";
-      target.setAttribute("style","border-right:2px dashed rgb(30, 136, 229)");
+      target.setAttribute("style","border-right:2px dashed rgba(5,0,0,0.25)");
       // target.style.backgroundColor = 'rgb(235, 236, 240)';
     }
   }
@@ -527,12 +490,12 @@ class TableHeader extends Component {
     this._dragCurrent.setAttribute("style","");
     // this._dragCurrent.style = "";
     document.getElementById(this._table_none_cont_id).innerHTML = "";
-
+    
     let data = this.getCurrentEventData(this._dragCurrent);
     if(!data)return;
     if (!this.currentObj || this.currentObj.key == data.key) return;
-    if(!this.props.onDragEnd)return;
-    this.props.onDragEnd(event,{dragSource:this.currentObj,dragTarg:data});
+    if(!this.props.onDrop)return;
+    this.props.onDrop(event,{dragSource:this.currentObj,dragTarg:data});
   }
 
 
@@ -546,9 +509,9 @@ class TableHeader extends Component {
       // this._dragCurrent.style = "";
     }
   }
+  
 
-
-
+ 
   /**
    * 获取当前th上的对象数据
    * @param {*} e
@@ -587,8 +550,8 @@ class TableHeader extends Component {
     }
   }
 
-
-//---拖拽列交换----end-----
+  
+//---拖拽列交换----end----- 
 
   /**
    * 过滤输入后或下拉条件的回调函数
@@ -725,7 +688,7 @@ class TableHeader extends Component {
   };
 
 
-  render() {
+  render() { 
     const { clsPrefix, rowStyle,draggable,
         dragborder, rows,filterable,fixed,lastShowIndex,
     } = this.props;
@@ -747,26 +710,21 @@ class TableHeader extends Component {
               if (!fixed && (da.fixed || (filterable && index == rows.length - 1 && rows[0][columIndex].fixed)) ) {
                 fixedStyle = ` ${clsPrefix}-row-fixed-columns-in-body`;
               }
-
+           
               if (lastShowIndex == columIndex) {
                 canDotDrag = "th-can-not-drag";
               }
               let thClassName = `${da.className}`?`${da.className}`:'';
-              if(da.titleAlign){
-                thClassName += ` text-${da.titleAlign} `;
-              }
-              else if(da.textAlign){
+              if(da.textAlign){
                 thClassName += ` text-${da.textAlign} `;
               }
-              
               delete da.textAlign;
-              delete da.titleAlign;
               const keyTemp = {};
               //避免key为undefined
               // if(da.dataindex && da.key ===undefined ){
                 keyTemp.key = da.key || da.dataindex || index+'-'+columIndex
-
-              // }
+                
+              // } 
               if (filterable && index == rows.length - 1) {
                 da.children = this.filterRenderType(
                   da["filtertype"],
@@ -780,7 +738,7 @@ class TableHeader extends Component {
               }
 
               let thDefaultObj = {};
-
+              
               if(draggable){
                 thClassName += ` ${clsPrefix}-thead th-drag ${thHover} `;
               }
@@ -789,9 +747,8 @@ class TableHeader extends Component {
               }
               thClassName += ` ${fixedStyle}`;
               if(!da.fixed ){
-                  return (<th {...da}  {...keyTemp} className={thClassName} data-th-fixed={da.fixed} data-line-key={da.key}
+                  return (<th {...da}  {...keyTemp} className={thClassName} data-th-fixed={da.fixed} data-line-key={da.key} 
                   data-line-index={columIndex} data-th-width={da.width} data-type="draggable">
-                      {da.required ? <span className='required'>*</span>:''}
                       {da.children}
                       {
                         dragborder && columIndex != _rowLeng? <div ref={el => (this.gap = el)} data-line-key={da.key}

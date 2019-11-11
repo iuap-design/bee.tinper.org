@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import {compare,ObjectAssign} from './util'; 
+import {compare,ObjectAssign} from './util';
+let cloneDeep = require('lodash.clonedeep');
 /**
  * 参数: 列拖拽
  * @param {*} Table
@@ -32,6 +33,14 @@ export default function dragColumn(Table) {
       return _column; 
     }
 
+   cloneDeep(obj){
+        if( typeof obj !== 'object' || Object.keys(obj).length === 0 ){
+            return obj
+        }
+        let resultData = {}
+        return this.recursion(obj, resultData)
+    }
+
     recursion(obj, data={}){
         for(key in obj){
             if( typeof obj[key] == 'object' && Object.keys(obj[key].length>0 )){
@@ -43,13 +52,22 @@ export default function dragColumn(Table) {
         return data
     }
 
-    onDragEnd=(event,data)=>{
+    onDrop=(event,data)=>{
       let {dragSource,dragTarg} = data;
       let {columns} = this.state; 
       let sourceIndex = -1,targetIndex = -1;
        
       sourceIndex =  columns.findIndex((da,i)=>da.key == dragSource.key);
       targetIndex = columns.findIndex((da,i)=>da.key == dragTarg.key);
+      // for (let index = 0; index < columns.length; index++) {
+      //   const da = columns[index];
+      //   if(da.key === dragSource.key){
+      //     columns[index] = dragTargColum; 
+      //   }
+      //   if(da.key === dragTarg.key){
+      //     columns[index] = dragSourceColum;
+      //   }
+      // }
       // 向前移动
      if(targetIndex < sourceIndex){
       targetIndex = targetIndex + 1;
@@ -59,17 +77,11 @@ export default function dragColumn(Table) {
         0,
        columns.splice(sourceIndex, 1)[0]
       );
-      let _newColumns = [];
-      columns.forEach((da,i)=>{
-        let newDate = Object.assign(da,{});
-        newDate.title = da.title;
-        _newColumns.push(newDate);
-      });
       this.setState({
-        columns:_newColumns//cloneDeep(columns)
+        columns:cloneDeep(columns)
       });
-      if(this.props.onDragEnd){
-        this.props.onDragEnd(event,data,columns);
+      if(this.props.onDrop){
+        this.props.onDrop(event,data,columns);
       }
     }
  
@@ -83,17 +95,28 @@ export default function dragColumn(Table) {
           dragborder,
           draggable,
           className,
+          columns,
+          onDragStart,
+          onDragEnter,
+          onDragOver,
+          onDrop,
           ...others
       } = this.props;
+      let key = new Date().getTime();
       return (
           <Table
               {...others}
               columns={this.state.columns}
               data={data}
               className={`${className} u-table-drag-border`}
-              onDragEnd={this.onDragEnd}
+              onDragStart={this.onDragStart}
+              onDragOver={this.onDragOver}
+              onDrop={this.onDrop}
+              onDragEnter={this.onDragEnter}
               draggable={draggable}
               dragborder={dragborder}
+              // dragborder={false}
+              dragborderKey={key}
           />)
     }
   };
