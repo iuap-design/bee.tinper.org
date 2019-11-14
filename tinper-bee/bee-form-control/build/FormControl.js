@@ -199,7 +199,9 @@ var _initialiseProps = function _initialiseProps() {
             onBlur = _props2.onBlur,
             showClose = _props2.showClose,
             focusSelect = _props2.focusSelect,
-            others = _objectWithoutProperties(_props2, ['componentClass', 'type', 'className', 'size', 'clsPrefix', 'onChange', 'onSearch', 'onBlur', 'showClose', 'focusSelect']);
+            prefix = _props2.prefix,
+            suffix = _props2.suffix,
+            others = _objectWithoutProperties(_props2, ['componentClass', 'type', 'className', 'size', 'clsPrefix', 'onChange', 'onSearch', 'onBlur', 'showClose', 'focusSelect', 'prefix', 'suffix']);
         // input[type="file"] 不应该有类名 .form-control.
 
 
@@ -214,11 +216,42 @@ var _initialiseProps = function _initialiseProps() {
         if (type !== 'file') {
             classNames = (0, _classnames2["default"])(clsPrefix, classes);
         }
-
-        return showClose ? _react2["default"].createElement(
-            'div',
-            { className: (0, _classnames2["default"])(clsPrefix + '-close', clsPrefix + '-affix-wrapper', className) },
-            _react2["default"].createElement(Component, _extends({}, others, {
+        if (prefix || suffix) classNames += ' ' + clsPrefix + '-prefix-suffix';
+        if (className) classNames += ' ' + className;
+        // 加判断，是否有 前后缀，是否加 wrapper
+        if (showClose || suffix || prefix) {
+            return _react2["default"].createElement(
+                'div',
+                { className: (0, _classnames2["default"])(clsPrefix + '-close', clsPrefix + '-affix-wrapper ' + clsPrefix + '-affix-wrapper-' + size, className) },
+                prefix ? _react2["default"].createElement(
+                    'span',
+                    { className: clsPrefix + '-simple-prefix' },
+                    prefix
+                ) : '',
+                _react2["default"].createElement(Component, _extends({}, others, {
+                    type: type,
+                    ref: function ref(el) {
+                        return _this2.input = el;
+                    },
+                    value: fixControlledValue(value),
+                    onChange: _this2.handleChange,
+                    onBlur: _this2.handleBlur,
+                    onFocus: _this2.handleFocus,
+                    className: (0, _classnames2["default"])(classNames)
+                })),
+                showClose ? _react2["default"].createElement(
+                    'div',
+                    { className: clsPrefix + '-suffix' },
+                    value ? _react2["default"].createElement(_beeIcon2["default"], { onClick: _this2.clearValue, type: 'uf-close-c' }) : ''
+                ) : '',
+                suffix ? _react2["default"].createElement(
+                    'span',
+                    { className: clsPrefix + '-simple-suffix' },
+                    suffix
+                ) : ''
+            );
+        } else {
+            return _react2["default"].createElement(Component, _extends({}, others, {
                 type: type,
                 ref: function ref(el) {
                     return _this2.input = el;
@@ -228,23 +261,8 @@ var _initialiseProps = function _initialiseProps() {
                 onBlur: _this2.handleBlur,
                 onFocus: _this2.handleFocus,
                 className: (0, _classnames2["default"])(classNames)
-            })),
-            _react2["default"].createElement(
-                'div',
-                { className: clsPrefix + '-suffix' },
-                value ? _react2["default"].createElement(_beeIcon2["default"], { onClick: _this2.clearValue, type: 'uf-close-c' }) : ''
-            )
-        ) : _react2["default"].createElement(Component, _extends({}, others, {
-            type: type,
-            ref: function ref(el) {
-                return _this2.input = el;
-            },
-            value: fixControlledValue(value),
-            onChange: _this2.handleChange,
-            onBlur: _this2.handleBlur,
-            onFocus: _this2.handleFocus,
-            className: (0, _classnames2["default"])(className, classNames)
-        }));
+            }));
+        }
     };
 
     this.renderSearch = function () {

@@ -129,7 +129,8 @@ var DatePicker = function (_Component) {
 
     var showClose = props.showClose,
         defaultPanelShown = props.defaultPanelShown,
-        others = _objectWithoutProperties(props, ["showClose", "defaultPanelShown"]);
+        onBlur = props.onBlur,
+        others = _objectWithoutProperties(props, ["showClose", "defaultPanelShown", "onBlur"]);
 
     var value = state.value;
     var pickerChangeHandler = {};

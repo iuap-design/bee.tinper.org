@@ -251,7 +251,8 @@ class InputNumber extends Component {
 
     handleBlur = (v,e) => {
         this.focus = false;        
-        const { onBlur,precision,onChange,toNumber } = this.props;
+        const { onBlur,precision,onChange,toNumber,max,min,displayCheckPrompt } = this.props;
+        const local = getComponentLocale(this.props, this.context, 'InputNumber', () => i18n);
         if(v===''){
             this.setState({
                 value:v
@@ -262,10 +263,17 @@ class InputNumber extends Component {
         }
         v = unThousands(v)
         let value = Number(v);
-        value = this.judgeValue(this.props,value).value;
-        // if(this.props.hasOwnProperty('precision')){
-        //     value = value.toFixed(precision);
-        // }
+        if(value>max){
+            if(displayCheckPrompt)prompt(local['msgMax']);
+            value = max;
+        }
+        if(value<min){
+            if(displayCheckPrompt)prompt(local['msgMin']);
+            value = min;
+        }
+        if(this.props.hasOwnProperty('precision')){
+            value = value.toFixed(precision);
+        }
         this.setState({
             value,
             showValue:toThousands(value)

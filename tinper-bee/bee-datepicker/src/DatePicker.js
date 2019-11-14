@@ -255,7 +255,7 @@ class DatePicker extends Component {
   render() {
     let state = this.state;
     let props = this.props;
-    const {showClose, defaultPanelShown,...others} = props;
+    const {showClose, defaultPanelShown,onBlur,...others} = props;
     let value = state.value;
     let pickerChangeHandler = {};
     let calendarHandler = {};

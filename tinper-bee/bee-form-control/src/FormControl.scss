@@ -23,6 +23,10 @@
 	    outline: 0;
     }
     &::-ms-clear,::-ms-reveal{display:none;}
+
+    &-prefix-suffix{
+        padding: 0 30px;
+    }
 }
 .u-form-control[disabled] {
     background: $form-control-disable-bg-color;
@@ -71,6 +75,16 @@
     position: relative;
     display: inline-block;
     width: 100%;
+    // &-sm{
+    //     height: $form-control-sm-height;
+    // }
+    // &-md{
+    //     height: $form-control-default-height;
+    // }
+    // &-lg{
+    //     height: $form-control-lg-height;
+    //     font-size: $form-control-lg-font-size;
+    // }
     .u-form-control-prefix,  .u-form-control-suffix {
         position: absolute;
         top: 50%;
@@ -81,6 +95,25 @@
         line-height: 0;
         right: 7px;
         color: rgba(0,0,0,.65);
+    }
+    .u-form-control-simple-prefix,.u-form-control-simple-suffix{
+        position: absolute;
+        top: 60%;
+        -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+        z-index: 2;
+        line-height: 0;
+        color: rgba(0,0,0,.65);
+        width: 30px;
+        text-align: center;
+        font-size: 12px;
+    }
+    .u-form-control-simple-prefix{
+        left: 0;
+    }
+    .u-form-control-simple-suffix{
+        right: 0;
     }
 }
 

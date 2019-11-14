@@ -135,6 +135,8 @@ class FormControl extends React.Component {
             onBlur,
             showClose,
             focusSelect,
+            prefix,
+            suffix,
             ...others
         } = this.props;
         // input[type="file"] 不应该有类名 .form-control.
@@ -143,15 +145,22 @@ class FormControl extends React.Component {
         if (size) {
             classes[`${size}`] = true;
         }
+        
 
         let classNames;
         if (type !== 'file') {
             classNames = classnames(clsPrefix, classes);
         }
-
-        return (
-            showClose?(
-                <div className={classnames(`${clsPrefix}-close`,`${clsPrefix}-affix-wrapper`, className)}>
+        if(prefix||suffix)classNames+=` ${clsPrefix}-prefix-suffix`;
+        if(className)classNames+= ' '+className;
+        // 加判断，是否有 前后缀，是否加 wrapper
+        if(showClose||suffix||prefix){
+            return (
+                <div className={classnames(`${clsPrefix}-close`,`${clsPrefix}-affix-wrapper ${clsPrefix}-affix-wrapper-${size}`, className)}>
+                    {
+                        prefix?<span className={`${clsPrefix}-simple-prefix`}>{prefix}</span>
+                                :''
+                    }
                     <Component
                         {...others}
                         type={type}
@@ -162,14 +171,21 @@ class FormControl extends React.Component {
                         onFocus={this.handleFocus}
                         className={classnames(classNames)}
                     />
-                    <div className={`${clsPrefix}-suffix`}>
-                        {
-                            value ? <Icon onClick={this.clearValue} type="uf-close-c"/>:''
-                        }
-                    </div>
+                    {
+                        showClose?<div className={`${clsPrefix}-suffix`}>
+                                        {
+                                            value ? <Icon onClick={this.clearValue} type="uf-close-c"/>:''
+                                        }
+                                    </div>:''
+                    }
+                    {
+                        suffix?<span className={`${clsPrefix}-simple-suffix`}>{suffix}</span>
+                                :''
+                    }
                 </div>
-            ):(
-                <Component
+            )
+        }else{
+            return <Component
                     {...others}
                     type={type}
                     ref={(el) => this.input = el }
@@ -177,10 +193,10 @@ class FormControl extends React.Component {
                     onChange={this.handleChange}
                     onBlur={this.handleBlur}
                     onFocus={this.handleFocus}
-                    className={classnames(className, classNames)}
+                    className={classnames(classNames)}
                 />
-            )
-        );
+        }
+        
     }
 
     renderSearch = () => {

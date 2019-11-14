@@ -34513,7 +34513,8 @@
 	
 	    var showClose = props.showClose,
 	        defaultPanelShown = props.defaultPanelShown,
-	        others = _objectWithoutProperties(props, ["showClose", "defaultPanelShown"]);
+	        onBlur = props.onBlur,
+	        others = _objectWithoutProperties(props, ["showClose", "defaultPanelShown", "onBlur"]);
 	
 	    var value = state.value;
 	    var pickerChangeHandler = {};
@@ -62633,7 +62634,6 @@
 	  var selectedValue = originalValue.concat();
 	  var index = direction === 'left' ? 0 : 1;
 	  selectedValue[index] = value;
-	  // console.log(selectedValue[0], selectedValue[1], this.compare(selectedValue[0], selectedValue[1]))
 	  if (selectedValue[0] && this.compare(selectedValue[0], selectedValue[1]) > 0) {
 	    selectedValue[1] = this.state.showTimePicker ? selectedValue[index] : undefined;
 	  }
@@ -62743,10 +62743,6 @@
 	    var isTodayInView = startValue.year() === thisYear && startValue.month() === thisMonth || endValue.year() === thisYear && endValue.month() === thisMonth;
 	    var nextMonthOfStart = startValue.clone().add(1, 'months');
 	    var isClosestMonths = nextMonthOfStart.year() === endValue.year() && nextMonthOfStart.month() === endValue.month();
-	
-	    // console.warn('Render:', selectedValue.map(t => t.format('YYYY-MM-DD')).join(', '));
-	    // console.log('start:', startValue.format('YYYY-MM-DD'));
-	    // console.log('end:', endValue.format('YYYY-MM-DD'));
 	
 	    var extraFooter = props.renderFooter();
 	    return _react2['default'].createElement(

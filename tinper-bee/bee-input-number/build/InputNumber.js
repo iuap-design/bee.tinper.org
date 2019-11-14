@@ -452,8 +452,14 @@ var _initialiseProps = function _initialiseProps() {
             onBlur = _props4.onBlur,
             precision = _props4.precision,
             onChange = _props4.onChange,
-            toNumber = _props4.toNumber;
+            toNumber = _props4.toNumber,
+            max = _props4.max,
+            min = _props4.min,
+            displayCheckPrompt = _props4.displayCheckPrompt;
 
+        var local = (0, _tool.getComponentLocale)(_this2.props, _this2.context, 'InputNumber', function () {
+            return _i18n2["default"];
+        });
         if (v === '') {
             _this2.setState({
                 value: v
@@ -464,10 +470,17 @@ var _initialiseProps = function _initialiseProps() {
         }
         v = unThousands(v);
         var value = Number(v);
-        value = _this2.judgeValue(_this2.props, value).value;
-        // if(this.props.hasOwnProperty('precision')){
-        //     value = value.toFixed(precision);
-        // }
+        if (value > max) {
+            if (displayCheckPrompt) prompt(local['msgMax']);
+            value = max;
+        }
+        if (value < min) {
+            if (displayCheckPrompt) prompt(local['msgMin']);
+            value = min;
+        }
+        if (_this2.props.hasOwnProperty('precision')) {
+            value = value.toFixed(precision);
+        }
         _this2.setState({
             value: value,
             showValue: toThousands(value)
