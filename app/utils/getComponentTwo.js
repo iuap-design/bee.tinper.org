@@ -8,7 +8,7 @@ const oldLength = Object.keys(componentsSource).length;
 function consoleItem(length){
     if(length<=3){
         for(let i = 0;i<length;i++){
-            let it = oldLength - i -1;
+            let it = oldLength - length - i -1;
             console.log(`剩下：${Object.keys(componentsSource)[it]}`)
         }
     }
