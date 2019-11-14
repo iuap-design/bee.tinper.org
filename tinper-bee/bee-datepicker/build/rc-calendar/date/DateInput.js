@@ -101,7 +101,6 @@ var DateInput = function (_React$Component) {
         renderError = props.renderError,
         inputTabIndex = props.inputTabIndex;
 
-    console.log('=========', str, (0, _util.formatDate)(props.selectedValue, props.format));
     var invalidClass = invalid ? prefixCls + '-input-invalid' : '';
     return _react2["default"].createElement(
       'div',

@@ -47,19 +47,19 @@ class Demo1 extends Component {
 	
 		return (
 			<Tree 
-					className="myCls" 
-					showLine 
-					checkable
-	        defaultExpandedKeys={this.state.defaultExpandedKeys}
-					defaultSelectedKeys={this.state.defaultSelectedKeys}
-					defaultCheckedKeys = {this.state.defaultCheckedKeys}
-					checkStrictly
-					showIcon
-					cancelUnSelect={true}
-					onSelect={this.onSelect} 
-					onCheck={this.onCheck}
-					onDoubleClick={this.onDoubleClick}
-	      >
+                className="myCls" 
+                showLine 
+                checkable
+                defaultExpandedKeys={this.state.defaultExpandedKeys}
+                defaultSelectedKeys={this.state.defaultSelectedKeys}
+                defaultCheckedKeys = {this.state.defaultCheckedKeys}
+                checkStrictly
+                showIcon
+                cancelUnSelect={true}
+                onSelect={this.onSelect} 
+                onCheck={this.onCheck}
+                onDoubleClick={this.onDoubleClick}
+	        >
 	        <TreeNode title="parent 1" key="0-0"  icon={<Icon type="uf-treefolder"  />}>
 	          <TreeNode title="parent 1-0" key="0-0-0" disabled  icon={<Icon type="uf-treefolder" />}>
 	            <TreeNode title="leaf" key="0-0-0-0" disableCheckbox icon={<Icon type="uf-list-s-o" />}/>

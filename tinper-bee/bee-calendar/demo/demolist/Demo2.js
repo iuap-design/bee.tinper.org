@@ -7,7 +7,7 @@
  */
 
 import React, { Component } from 'react';
-import Calendar from '../../src/index';
+import Calendar from '../../src';
 
 
 function onSelect(value) {

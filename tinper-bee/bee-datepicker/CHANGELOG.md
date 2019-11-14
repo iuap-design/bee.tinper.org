@@ -1,3 +1,53 @@
+<a name="2.2.17"></a>
+## [2.2.17](https://github.com/tinper-bee/bee-datepicker/compare/v2.2.16...v2.2.17) (2019-11-13)
+
+
+### Features
+
+* **bee-datepicker:** MonthPicker Enter和tab键快捷键需求根据ncc修改 ([4019594](https://github.com/tinper-bee/bee-datepicker/commit/4019594))
+
+
+
+<a name="2.2.16"></a>
+## [2.2.16](https://github.com/tinper-bee/bee-datepicker/compare/v2.2.15...v2.2.16) (2019-11-12)
+
+
+### Features
+
+* **bee-datepicker:** Monthpicker 下键打开面板，直接录入，再tab切换，可以上下左右选择日期( 当前打开面板, 直接可以上下左右, 要加一层tab 操作隔离) ([4e336cd](https://github.com/tinper-bee/bee-datepicker/commit/4e336cd))
+
+
+
+<a name="2.2.15"></a>
+## [2.2.15](https://github.com/tinper-bee/bee-datepicker/compare/v2.2.14...v2.2.15) (2019-11-12)
+
+
+### Features
+
+* **bee-datepicker:** MontherPicker支持renderError ([d4542b6](https://github.com/tinper-bee/bee-datepicker/commit/d4542b6))
+
+
+
+<a name="2.2.14"></a>
+## [2.2.14](https://github.com/tinper-bee/bee-datepicker/compare/v2.2.13...v2.2.14) (2019-11-12)
+
+
+### Features
+
+* **bee-datepicker:** MonthPicker支持传数组 ([3488133](https://github.com/tinper-bee/bee-datepicker/commit/3488133))
+
+
+
+<a name="2.2.13"></a>
+## [2.2.13](https://github.com/tinper-bee/bee-datepicker/compare/v2.2.12...v2.2.13) (2019-11-05)
+
+
+### Bug Fixes
+
+* **bee-datepicker:** monthpicker 使用 form报错bug,并新增normal示例 ([4ff86c6](https://github.com/tinper-bee/bee-datepicker/commit/4ff86c6))
+
+
+
 <a name="2.2.12"></a>
 ## [2.2.12](https://github.com/tinper-bee/bee-datepicker/compare/v2.2.11...v2.2.12) (2019-10-21)
 

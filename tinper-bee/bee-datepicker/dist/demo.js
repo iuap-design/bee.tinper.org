@@ -80,7 +80,7 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
 	
-	var Demo1 = __webpack_require__(507);var Demo2 = __webpack_require__(508);var Demo3 = __webpack_require__(509);var Demo4 = __webpack_require__(510);var Demo5 = __webpack_require__(511);var Demo6 = __webpack_require__(512);var Demo7 = __webpack_require__(513);var Demo8 = __webpack_require__(514);var Demo9 = __webpack_require__(624);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 选择日期", "code": "/**\r\n *\r\n * @title 选择日期\r\n * @description 以「日期」为基本单位，基础的日期选择控件\r\n */\r\n\r\nimport React, {Component} from \"react\";\nimport { Row, Col } from 'tinper-bee';\r\n\nimport DatePicker from \"bee-datepicker/index\";\r\n\r\nconst format = \"YYYY-MM-DD dddd\";\r\nconst dateInputPlaceholder = \"选择日期\";\r\n\r\nclass Demo1 extends Component {\r\n    onSelect = (d, dataString)  => {\r\n        console.log('select')\r\n        console.log(d, dataString);\r\n    }\r\n    onClick = d => {\r\n        console.log('click')\r\n    }\r\n    onChange = (d, dataString) => {\r\n        console.log('change')\r\n        console.log(d, dataString)\r\n    };\r\n    onDateInputBlur = (e,v) => {\r\n        console.log(e,v);\r\n    }\r\n    render() {\r\n        var self = this;\r\n        return (\r\n            <div>\r\n                <Row>\r\n                    <Col md={6}>\r\n                        <DatePicker\r\n                            format={format}\r\n                            onSelect={this.onSelect}\r\n                            onChange={this.onChange}\r\n                            onClick={this.onClick}\r\n                            onDateInputBlur={this.onDateInputBlur}\r\n                        />\r\n                    </Col>\r\n                </Row>\r\n            </div>\r\n        );\r\n    }\r\n}\r\n\r\nexport default Demo1;\r\n", "desc": " 以「日期」为基本单位，基础的日期选择控件" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 禁用日期", "code": "/**\n *\n * @title 禁用日期\n * @description 设置 disabled\n */\n\nimport React, {Component} from \"react\";\nimport { Row, Col } from 'tinper-bee';\nimport DatePicker from \"bee-datepicker/index\";\nimport moment from \"moment\";\n\nconst format = \"YYYY-MM-DD dddd\";\nconst dateInputPlaceholder = \"选择日期\";\n\nclass Demo2 extends Component {\n    onSelect = d => {\n        console.log(d);\n    }\n    onChange = (d, dataString) => {\n        console.log(dataString);\n    };\n    render() {\n        var self = this;\n        return (\n            <div>\n                <Row>\n                    <Col md={6}>\n                        <DatePicker\n                            format={format}\n                            onSelect={this.onSelect}\n                            onChange={this.onChange}\n                            disabled\n                            defaultValue={moment()}\n                        />\n                    </Col>\n                </Row>\n            </div>\n        );\n    }\n}\n\nexport default Demo2;\n", "desc": " 设置 disabled" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 不可选择日期和时间", "code": "/**\r\n *\r\n * @title 不可选择日期和时间\r\n * @description 可用 disabledDate 和 disabledTime 分别禁止选择部分日期和时间，其中 disabledTime 需要和 showTime 一起使用。\r\n */\r\n\r\nimport React, { Component } from \"react\";\nimport {  Row, Col  } from 'tinper-bee';\r\n\nimport DatePicker from \"bee-datepicker/index\";\r\n\r\nimport zhCN from \"../../src/locale/zh_CN\";\r\nimport moment from \"moment\";\r\n\r\nconst format = \"YYYY-MM-DD\";\r\n\r\nconst dateInputPlaceholder = \"选择日期\";\r\n\r\n\r\nfunction disabledDate(current) {\r\n  return current && current.valueOf() < Date.now();\r\n}\r\n\r\nclass Demo3 extends Component {\r\n  onSelect = d => {\r\n    console.log(d);\r\n  }\r\n  \r\n  onChange = d => {\r\n    console.log(d);\r\n  }\r\n  render() {\r\n    return (\r\n      <div>\r\n        <Row>\r\n          <Col md={6}>\r\n            <DatePicker\r\n              format={format}\r\n              onSelect={this.onSelect}\r\n              onChange={this.onChange}\r\n              locale={zhCN}\r\n              disabledDate={disabledDate}\r\n              defaultValue={moment()}\r\n              placeholder={dateInputPlaceholder}\r\n            />\r\n          </Col>\r\n        </Row>\r\n      </div>\r\n    );\r\n  }\r\n}\r\n\r\nexport default Demo3;\r\n", "desc": " 可用 disabledDate 和 disabledTime 分别禁止选择部分日期和时间，其中 disabledTime 需要和 showTime 一起使用。" }, { "example": _react2['default'].createElement(Demo4, null), "title": " 选择年，年月，周，日期范围", "code": "/**\n *\n * @title 选择年，年月，周，日期范围\n * @description 选择年，年月，周，日期范围基本示例\n */\n\nimport React, { Component } from \"react\";\nimport {  Row, Col  } from 'tinper-bee';\nimport DatePicker from \"bee-datepicker/index\";\nimport moment from \"moment\";\nimport zhCN from \"../../src/locale/zh_CN\";\nconst { YearPicker,MonthPicker,WeekPicker,RangePicker } = DatePicker;\n\n\nclass Demo4 extends Component {\n    onChange = (d, dataString) => {\n        console.log('change')\n        console.log(d);\n        console.log(dataString);\n    };\n    onSelect = d => {\n        console.log('select')\n        console.log(d);\n    }\n    onClear = () => {\n        console.log('clear')\n    }\n    /**\n     *@param e 事件对象\n     *@param startValue 开始时间\n     *@param array 包含开始时间和结束时间的数组\n     */\n    onStartInputBlur = (e,startValue,array) => {\n        console.log('RangePicker面板 左输入框的失焦事件',startValue,array)\n    }\n    /**\n     *@param e 事件对象\n     *@param endValue 结束时间\n     *@param array 包含开始时间和结束时间的数组\n     */\n    onEndInputBlur = (e,endValue,array) => {\n        console.log('RangePicker面板 右输入框的失焦事件',endValue,array)\n    }\n    render() {\n        return (\n            <div>\n                <Row style={{'marginBottom':'10px'}}>\n                    <Col md={6}>\n                        <YearPicker\n                            format=\"YYYY\"\n                            onChange={this.onChange}\n                            onSelect={this.onSelect}\n                            locale={zhCN}\n                            placeholder=\"选择年\"\n                            defaultValue={moment()}\n                            showClose={false}\n                        />\n                    </Col>\n                    <Col md={6} style={{'marginBottom':'10px'}}>\n                        <MonthPicker\n                            format=\"YYYY-MM\"\n                            onSelect={this.onSelect}\n                            onChange={this.onChange}\n                            locale={zhCN}\n                            defaultValue={moment()}\n                            placeholder=\"选择年月\"\n                            onClear={this.onClear} \n                            showClose={false}\n                        />\n                    </Col>\n                    <Col md={6} style={{'marginBottom':'10px'}}>\n                        <WeekPicker \n                        defaultValue={moment()}\n                        onSelect={this.onSelect}\n                        onChange={this.onChange}\n                        placeholder=\"选择周\" \n                        showClose={false}\n                        />\n                    </Col>\n                    <Col md={6} style={{'marginBottom':'10px'}}>\n                        <RangePicker\n                            placeholder={'开始 ~ 结束'}\n                            dateInputPlaceholder={['开始', '结束']}\n                            showClear={true}\n                            onChange={this.onChange}\n                            onPanelChange={(v)=>{console.log('onPanelChange',v)}}\n                            showClose={true}\n                            onStartInputBlur={this.onStartInputBlur}\n                            onEndInputBlur={this.onEndInputBlur}\n                        />\n                    </Col>\n                </Row>\n            </div>\n        );\n    }\n}\n\nexport default Demo4;\n", "desc": " 选择年，年月，周，日期范围基本示例" }, { "example": _react2['default'].createElement(Demo5, null), "title": " 动态的改变时间", "code": "/**\n *\n * @title 动态的改变时间\n * @description 以「日期时间」为基本单位，基础的日期时间选择控件\n */\n\nimport React, { Component } from \"react\";\nimport { Button,  Row, Col  } from 'tinper-bee';\nimport DatePicker from \"bee-datepicker/index\";\nimport moment from \"moment\";\nimport zhCN from \"../../src/locale/zh_CN\";\nconst format = \"YYYY-MM-DD HH:mm:ss\";\nconst dateInputPlaceholder = \"选择日期\";\n\nclass Demo5 extends Component {\n  constructor(props) {\n    super(props);\n    this.state = {\n      value: moment()\n    };\n  }\n\n  handleChange = value => {\n    this.setState({\n      value: value\n    });\n  };\n  onSelect = d => {\n    console.log(d);\n  };\n\n  handlerChangeDate = () => {\n    this.setState({\n      value: moment(\"2011-11-11 11:11:11\")\n    });\n    console.log(\"click\");\n  };\n  render() {\n    return (\n      <div>\n        <Row>\n          <Col md={6}>\n            <DatePicker\n              format={format}\n              locale={zhCN}\n              onSelect={this.onSelect}\n              onChange={this.handleChange}\n              value={this.state.value}\n              placeholder={dateInputPlaceholder}\n            />\n          </Col>\n          <Col md={3}>\n            <Button onClick={this.handlerChangeDate}>变</Button>\n          </Col>\n        </Row>\n      </div>\n    );\n  }\n}\n\nexport default Demo5;\n", "desc": " 以「日期时间」为基本单位，基础的日期时间选择控件" }, { "example": _react2['default'].createElement(Demo6, null), "title": " 自定义日期渲染父级容器，扩展底边栏\t", "code": "/**\r\n *\r\n * @title 自定义日期渲染父级容器，扩展底边栏\t\r\n * @description getCalendarContainer自定义日期渲染父级容器，renderFooter扩展底边栏\r\n */\r\n\r\nimport React, { Component } from \"react\";\nimport {  Row, Col  } from 'tinper-bee';\r\n\nimport DatePicker from \"bee-datepicker/index\";\r\n\r\nimport zhCN from \"../../src/locale/zh_CN\";\r\nimport enUS from \"../../src/locale/en_US\";\r\nimport moment from \"moment\";\r\n\r\nconst format = \"YYYY-MM-DD\";\r\n\r\nconst dateInputPlaceholder = \"选择日期\";\r\n\r\nclass Demo6 extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n    }\r\n    getCalendarContainer() {\r\n        return this.d || document.getElementById('d');\r\n    }\r\n    onChange = d => {\r\n        console.log(d);\r\n    };\r\n    render() {\r\n        return (\r\n            <div id=\"d\" >\r\n                <Row>\r\n                    <Col md={6}>\r\n                        <DatePicker\r\n                            format={format}\r\n                            onChange={this.onChange}\r\n                            locale={zhCN}\r\n                            defaultValue={moment()}\r\n                            placeholder={dateInputPlaceholder}\r\n                            getCalendarContainer={this.getCalendarContainer}\r\n                            showToday={false}//是否显示今天\r\n                            renderFooter={()=>{\r\n                                return (\r\n                                    <span> 我是底部 </span>\r\n                                )\r\n                            }}\r\n                        />\r\n                    </Col>\r\n                </Row>\r\n            </div>\r\n        );\r\n    }\r\n}\r\n\r\nexport default Demo6;\r\n", "desc": " getCalendarContainer自定义日期渲染父级容器，renderFooter扩展底边栏" }, { "example": _react2['default'].createElement(Demo7, null), "title": " 自定义展示日期面板，外层输入框可输入", "code": "/**\n *\n * @title 自定义展示日期面板，外层输入框可输入\n * @description open设置面板展开收起，keyboardInput外层input是否可输入，showDateInput是否显示内层input\n */\n\nimport React, {Component} from \"react\";\nimport { Icon, Row, Col } from 'tinper-bee';\nimport DatePicker from \"bee-datepicker/index\";\nimport zhCN from \"../../src/locale/zh_CN\";\nimport enUS from \"../../src/locale/en_US\";\nimport moment from \"moment\";\nimport 'moment/locale/zh-cn';\n\nmoment.locale('zh-cn');\n\nconst format = \"YYYY-MM-DD\";\n\nconst dateInputPlaceholder = \"选择日期\";\n\nclass Demo7 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            value: '',\n            open: false\n        };\n    }\n    onSelect = d=> {\n        console.log(d);\n    }\n    onChange = (d, dataString) => {\n        this.setState({\n            value:d\n        })\n        console.log('onChange',dataString)\n    };\n    onOpenChange = open => {\n        console.log(open)\n    }\n    open = d => {\n        this.setState({\n            open: !this.state.open\n        })\n    }\n    onClick = (e,d,str) => {\n        console.log(d);\n    }\n    outInputKeydown = ()=>{\n        console.log('keydown')\n    }\n    render() {\n        return (\n            <div>\n                <Row>\n                    <Col md={6}>\n                        <DatePicker\n                            format={format}\n                            onSelect={this.onSelect}\n                            onChange={this.onChange}\n                            locale={zhCN}\n                            open={this.state.open}\n                            defaultValue={moment('2018-01-01')}\n                            value={this.state.value}\n                            onOpenChange={this.onOpenChange}\n                            placeholder={dateInputPlaceholder}\n                            className={\"Demo7\"}\n                            onClick={this.onClick}\n                            keyboardInput={true}\n                            showDateInput={false}\n                        />\n                    </Col>\n                    <Col md={3}>\n                        <button className=\"u-button\" onClick={this.open}>展开面板</button>\n                    </Col>\n                </Row>\n            </div>\n        );\n    }\n}\n\nexport default Demo7;\n", "desc": " open设置面板展开收起，keyboardInput外层input是否可输入，showDateInput是否显示内层input" }, { "example": _react2['default'].createElement(Demo8, null), "title": " 自定义展示日期面板，外层输入框可输入，配合form使用", "code": "/**\r\n *\r\n * @title 自定义展示日期面板，外层输入框可输入，配合form使用\r\n * @description open设置面板展开收起，keyboardInput外层input是否可输入，showDateInput是否显示内层input\r\n */\r\n\r\nimport React, {Component} from \"react\";\nimport { Form, Row, Col } from 'tinper-bee';\r\n\nimport DatePicker from \"bee-datepicker/index\";\r\nimport zhCN from \"../../src/locale/zh_CN\";\r\nimport enUS from \"../../src/locale/en_US\";\r\nimport moment from \"moment\";\r\nimport 'moment/locale/zh-cn';\r\n\n\r\nmoment.locale('zh-cn');\r\n\r\nconst format = \"YYYY-MM-DD\";\r\n\r\nconst dateInputPlaceholder = \"选择日期\";\r\n\r\n\r\nclass Demo8 extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            value: '',\r\n            open: false\r\n        };\r\n    }\r\n    onOpenChange = open => {\r\n        console.log(open)\r\n    }\r\n    open = d => {\r\n        this.setState({\r\n            open: !this.state.open\r\n        })\r\n    }\r\n    onClick = (e,d,str) => {\r\n        console.log(d);\r\n    }\r\n    onSelect(d) {\r\n        console.log(\"select:\"+d);\r\n    }\r\n    outInputKeydown = ()=>{\r\n        console.log('keydown')\r\n    }\r\n    submit = (e) => {\r\n        this.props.form.validateFields((err, values) => {\r\n            if (err) {\r\n                console.log('校验失败', values);\r\n            } else {\r\n                console.log('提交成功', values, moment(values.date).format('YYYY-MM-DD'));\r\n            }\r\n        });\r\n    }\r\n    render() {\r\n        var self = this; \r\n        const { getFieldProps, getFieldError } = this.props.form;\r\n        return (\r\n            <div>\r\n                <Row>\r\n                    <Col md={6}>\r\n                        <DatePicker\r\n                            format={format}\r\n                            onSelect={this.onSelect}\r\n                            onChange={this.onChange}\r\n                            locale={zhCN}\r\n                            open={this.state.open}\r\n                            onOpenChange={this.onOpenChange.bind(this)}\r\n                            placeholder={dateInputPlaceholder}\r\n                            className={\"demo11\"}\r\n                            onClick={this.onClick}\r\n                            keyboardInput={true}\r\n                            showDateInput={false}\r\n                            iconClick={this.open}\r\n                            outInputKeydown={this.outInputKeydown}\r\n                            {...getFieldProps('date', {\r\n                                validateTrigger: 'onBlur',\r\n                                initialValue:moment('2018-01-01'),\r\n                                rules: [{\r\n                                    required: true, message: '请输入日期',\r\n                                }],\r\n                            }) }\r\n                        />\r\n                    </Col>\r\n                    <Col md={3}>\r\n                        <button className=\"u-button\" onClick={this.open}>展开/收起面板</button>\r\n                        <button className=\"u-button\" onClick={this.submit}>获得值</button>\r\n                    </Col>\r\n                </Row>\r\n            </div>\r\n        );\r\n    }\r\n}\r\n\r\nexport default Form.createForm()(Demo8);\r\n", "desc": " open设置面板展开收起，keyboardInput外层input是否可输入，showDateInput是否显示内层input" }, { "example": _react2['default'].createElement(Demo9, null), "title": " 额外的页脚", "code": "/**\r\n *\r\n * @title 额外的页脚\r\n * @description 在浮层中加入额外的页脚，以满足某些定制信息的需求。\r\n */\r\n\r\nimport React, {Component} from \"react\";\nimport { Row, Col } from 'tinper-bee';\r\n\nimport DatePicker from \"bee-datepicker/index\";\r\n\r\nconst { RangePicker, MonthPicker } = DatePicker;\r\n\r\nclass Demo9 extends Component {\r\n    render() {\r\n        return (\r\n            <div className=\"demo9\">\r\n                <Row>\r\n                    <Col md={6}>\r\n                        <DatePicker renderFooter={() => '额外页脚'} placeholder=\"选择日期\"/>\r\n                    </Col>\r\n                    \r\n                    <Col md={6}>\r\n                        <DatePicker renderFooter={() => '额外页脚'} showTime placeholder=\"选择日期\"/>\r\n                    </Col>\r\n                    \r\n                    <Col md={6}>\r\n                        <RangePicker renderFooter={() => '额外页脚'} placeholder={'开始 ~ 结束'}/>\r\n                    </Col>\r\n                    \r\n                    <Col md={6}>\r\n                        <RangePicker renderFooter={() => '额外页脚'} showTime placeholder={'开始 ~ 结束'}/>\r\n                    </Col>\r\n                    \r\n                    <Col md={6}>\r\n                        <MonthPicker renderFooter={() => '额外页脚'} placeholder=\"选择月\" />\r\n                    </Col>\r\n                </Row>\r\n            </div>\r\n        );\r\n    }\r\n}\r\n\r\nexport default Demo9;\r\n", "desc": " 在浮层中加入额外的页脚，以满足某些定制信息的需求。", "scss_code": ".demo9 {\r\n    .u-row .u-col-md-6 {\r\n        margin-bottom: 10px;\r\n    }\r\n}" }];
+	var Demo1 = __webpack_require__(507);var Demo2 = __webpack_require__(508);var Demo3 = __webpack_require__(509);var Demo4 = __webpack_require__(510);var Demo5 = __webpack_require__(511);var Demo6 = __webpack_require__(512);var Demo7 = __webpack_require__(513);var Demo8 = __webpack_require__(514);var Demo9 = __webpack_require__(625);var Demo10 = __webpack_require__(626);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 选择日期", "code": "/**\r\n *\r\n * @title 选择日期\r\n * @description 以「日期」为基本单位，基础的日期选择控件\r\n */\r\n\r\nimport React, {Component} from \"react\";\nimport { Row, Col } from 'tinper-bee';\r\n\nimport DatePicker from \"bee-datepicker/index\";\r\n\r\nconst format = \"YYYY-MM-DD dddd\";\r\nconst dateInputPlaceholder = \"选择日期\";\r\n\r\nclass Demo1 extends Component {\r\n    onSelect = (d, dataString)  => {\r\n        console.log('select')\r\n        console.log(d, dataString);\r\n    }\r\n    onClick = d => {\r\n        console.log('click')\r\n    }\r\n    onChange = (d, dataString) => {\r\n        console.log('change')\r\n        console.log(d, dataString)\r\n    };\r\n    onDateInputBlur = (e,v) => {\r\n        console.log(e,v);\r\n    }\r\n    render() {\r\n        var self = this;\r\n        return (\r\n            <div>\r\n                <Row>\r\n                    <Col md={6}>\r\n                        <DatePicker\r\n                            format={format}\r\n                            onSelect={this.onSelect}\r\n                            onChange={this.onChange}\r\n                            onClick={this.onClick}\r\n                            onDateInputBlur={this.onDateInputBlur}\r\n                        />\r\n                    </Col>\r\n                </Row>\r\n            </div>\r\n        );\r\n    }\r\n}\r\n\r\nexport default Demo1;\r\n", "desc": " 以「日期」为基本单位，基础的日期选择控件" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 禁用日期", "code": "/**\n *\n * @title 禁用日期\n * @description 设置 disabled\n */\n\nimport React, {Component} from \"react\";\nimport { Row, Col } from 'tinper-bee';\nimport DatePicker from \"bee-datepicker/index\";\nimport moment from \"moment\";\n\nconst format = \"YYYY-MM-DD dddd\";\nconst dateInputPlaceholder = \"选择日期\";\n\nclass Demo2 extends Component {\n    onSelect = d => {\n        console.log(d);\n    }\n    onChange = (d, dataString) => {\n        console.log(dataString);\n    };\n    render() {\n        var self = this;\n        return (\n            <div>\n                <Row>\n                    <Col md={6}>\n                        <DatePicker\n                            format={format}\n                            onSelect={this.onSelect}\n                            onChange={this.onChange}\n                            disabled\n                            defaultValue={moment()}\n                        />\n                    </Col>\n                </Row>\n            </div>\n        );\n    }\n}\n\nexport default Demo2;\n", "desc": " 设置 disabled" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 不可选择日期和时间", "code": "/**\r\n *\r\n * @title 不可选择日期和时间\r\n * @description 可用 disabledDate 和 disabledTime 分别禁止选择部分日期和时间，其中 disabledTime 需要和 showTime 一起使用。\r\n */\r\n\r\nimport React, { Component } from \"react\";\nimport {  Row, Col  } from 'tinper-bee';\r\n\nimport DatePicker from \"bee-datepicker/index\";\r\n\r\nimport zhCN from \"../../src/locale/zh_CN\";\r\nimport moment from \"moment\";\r\n\r\nconst format = \"YYYY-MM-DD\";\r\n\r\nconst dateInputPlaceholder = \"选择日期\";\r\n\r\n\r\nfunction disabledDate(current) {\r\n  return current && current.valueOf() < Date.now();\r\n}\r\n\r\nclass Demo3 extends Component {\r\n  onSelect = d => {\r\n    console.log(d);\r\n  }\r\n  \r\n  onChange = d => {\r\n    console.log(d);\r\n  }\r\n  render() {\r\n    return (\r\n      <div>\r\n        <Row>\r\n          <Col md={6}>\r\n            <DatePicker\r\n              format={format}\r\n              onSelect={this.onSelect}\r\n              onChange={this.onChange}\r\n              locale={zhCN}\r\n              disabledDate={disabledDate}\r\n              defaultValue={moment()}\r\n              placeholder={dateInputPlaceholder}\r\n            />\r\n          </Col>\r\n        </Row>\r\n      </div>\r\n    );\r\n  }\r\n}\r\n\r\nexport default Demo3;\r\n", "desc": " 可用 disabledDate 和 disabledTime 分别禁止选择部分日期和时间，其中 disabledTime 需要和 showTime 一起使用。" }, { "example": _react2['default'].createElement(Demo4, null), "title": " 选择年，年月，周，日期范围", "code": "/**\n *\n * @title 选择年，年月，周，日期范围\n * @description 选择年，年月，周，日期范围基本示例\n */\n\nimport React, { Component } from \"react\";\nimport {  Row, Col  } from 'tinper-bee';\nimport DatePicker from \"bee-datepicker/index\";\nimport moment from \"moment\";\nimport zhCN from \"../../src/locale/zh_CN\";\nconst { YearPicker,MonthPicker,WeekPicker,RangePicker } = DatePicker;\n\n\nclass Demo4 extends Component {\n    onChange = (d, dataString) => {\n        console.log('change')\n        console.log(d);\n        console.log(dataString);\n    };\n    onSelect = d => {\n        console.log('select')\n        console.log(d);\n    }\n    onClear = () => {\n        console.log('clear')\n    }\n    /**\n     *@param e 事件对象\n     *@param startValue 开始时间\n     *@param array 包含开始时间和结束时间的数组\n     */\n    onStartInputBlur = (e,startValue,array) => {\n        console.log('RangePicker面板 左输入框的失焦事件',startValue,array)\n    }\n    /**\n     *@param e 事件对象\n     *@param endValue 结束时间\n     *@param array 包含开始时间和结束时间的数组\n     */\n    onEndInputBlur = (e,endValue,array) => {\n        console.log('RangePicker面板 右输入框的失焦事件',endValue,array)\n    }\n    render() {\n        return (\n            <div>\n                <Row style={{'marginBottom':'10px'}}>\n                    <Col md={6}>\n                        <YearPicker\n                            format=\"YYYY\"\n                            onChange={this.onChange}\n                            onSelect={this.onSelect}\n                            locale={zhCN}\n                            placeholder=\"选择年\"\n                            defaultValue={moment()}\n                            showClose={false}\n                        />\n                    </Col>\n                    <Col md={6} style={{'marginBottom':'10px'}}>\n                        <MonthPicker\n                            format='YYYY-MM'\n                            onSelect={this.onSelect}\n                            onChange={this.onChange}\n                            locale={zhCN}\n                            defaultValue={moment()}\n                            placeholder=\"选择年月\"\n                            onClear={this.onClear} \n                            showClose={false}\n                        />\n                    </Col>\n                    <Col md={6} style={{'marginBottom':'10px'}}>\n                        <WeekPicker \n                        defaultValue={moment()}\n                        onSelect={this.onSelect}\n                        onChange={this.onChange}\n                        placeholder=\"选择周\" \n                        showClose={false}\n                        />\n                    </Col>\n                    <Col md={6} style={{'marginBottom':'10px'}}>\n                        <RangePicker\n                            placeholder={'开始 ~ 结束'}\n                            dateInputPlaceholder={['开始', '结束']}\n                            showClear={true}\n                            onChange={this.onChange}\n                            onPanelChange={(v)=>{console.log('onPanelChange',v)}}\n                            showClose={true}\n                            onStartInputBlur={this.onStartInputBlur}\n                            onEndInputBlur={this.onEndInputBlur}\n                        />\n                    </Col>\n                </Row>\n            </div>\n        );\n    }\n}\n\nexport default Demo4;\n", "desc": " 选择年，年月，周，日期范围基本示例" }, { "example": _react2['default'].createElement(Demo5, null), "title": " 动态的改变时间", "code": "/**\n *\n * @title 动态的改变时间\n * @description 以「日期时间」为基本单位，基础的日期时间选择控件\n */\n\nimport React, { Component } from \"react\";\nimport { Button,  Row, Col  } from 'tinper-bee';\nimport DatePicker from \"bee-datepicker/index\";\nimport moment from \"moment\";\nimport zhCN from \"../../src/locale/zh_CN\";\nconst format = \"YYYY-MM-DD HH:mm:ss\";\nconst dateInputPlaceholder = \"选择日期\";\n\nclass Demo5 extends Component {\n  constructor(props) {\n    super(props);\n    this.state = {\n      value: moment()\n    };\n  }\n\n  handleChange = value => {\n    this.setState({\n      value: value\n    });\n  };\n  onSelect = d => {\n    console.log(d);\n  };\n\n  handlerChangeDate = () => {\n    this.setState({\n      value: moment(\"2011-11-11 11:11:11\")\n    });\n    console.log(\"click\");\n  };\n  render() {\n    return (\n      <div>\n        <Row>\n          <Col md={6}>\n            <DatePicker\n              format={format}\n              locale={zhCN}\n              onSelect={this.onSelect}\n              onChange={this.handleChange}\n              value={this.state.value}\n              placeholder={dateInputPlaceholder}\n            />\n          </Col>\n          <Col md={3}>\n            <Button onClick={this.handlerChangeDate}>变</Button>\n          </Col>\n        </Row>\n      </div>\n    );\n  }\n}\n\nexport default Demo5;\n", "desc": " 以「日期时间」为基本单位，基础的日期时间选择控件" }, { "example": _react2['default'].createElement(Demo6, null), "title": " 自定义日期渲染父级容器，扩展底边栏\t", "code": "/**\n *\n * @title 自定义日期渲染父级容器，扩展底边栏\t\n * @description getCalendarContainer自定义日期渲染父级容器，renderFooter扩展底边栏\n */\n\nimport React, { Component } from \"react\";\nimport {  Row, Col  } from 'tinper-bee';\nimport DatePicker from \"bee-datepicker/index\";\n\nimport zhCN from \"../../src/locale/zh_CN\";\nimport enUS from \"../../src/locale/en_US\";\nimport moment from \"moment\";\n\nconst format = \"YYYY-MM-DD\";\n\nconst dateInputPlaceholder = \"选择日期\";\n\nclass Demo6 extends Component {\n    constructor(props) {\n        super(props);\n    }\n    getCalendarContainer() {\n        return this.d || document.getElementById('d');\n    }\n    onChange = d => {\n        console.log(d);\n    };\n    render() {\n        return (\n            <div id=\"d\" >\n                <Row>\n                    <Col md={6}>\n                        <DatePicker\n                            format={format}\n                            onChange={this.onChange}\n                            locale={zhCN}\n                            defaultValue={moment()}\n                            placeholder={dateInputPlaceholder}\n                            getCalendarContainer={this.getCalendarContainer}\n                            showToday={false}//是否显示今天\n                            renderFooter={()=>{\n                                return (\n                                    <span> 我是底部 </span>\n                                )\n                            }}\n                        />\n                    </Col>\n                </Row>\n            </div>\n        );\n    }\n}\n\nexport default Demo6;\n", "desc": " getCalendarContainer自定义日期渲染父级容器，renderFooter扩展底边栏" }, { "example": _react2['default'].createElement(Demo7, null), "title": " 自定义展示日期面板，外层输入框可输入", "code": "/**\n *\n * @title 自定义展示日期面板，外层输入框可输入\n * @description open设置面板展开收起，keyboardInput外层input是否可输入，showDateInput是否显示内层input\n */\n\nimport React, {Component} from \"react\";\nimport { Icon, Row, Col } from 'tinper-bee';\nimport DatePicker from \"bee-datepicker/index\";\nimport zhCN from \"../../src/locale/zh_CN\";\nimport enUS from \"../../src/locale/en_US\";\nimport moment from \"moment\";\nimport 'moment/locale/zh-cn';\n\nmoment.locale('zh-cn');\n\nconst format = \"YYYY-MM-DD\";\n\nconst dateInputPlaceholder = \"选择日期\";\n\nclass Demo7 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            value: '',\n            open: false\n        };\n    }\n    onSelect = d=> {\n        console.log(d);\n    }\n    onChange = (d, dataString) => {\n        this.setState({\n            value:d\n        })\n        console.log('onChange',dataString)\n    };\n    onOpenChange = open => {\n        console.log(open)\n    }\n    open = d => {\n        this.setState({\n            open: !this.state.open\n        })\n    }\n    onClick = (e,d,str) => {\n        console.log(d);\n    }\n    outInputKeydown = ()=>{\n        console.log('keydown')\n    }\n    render() {\n        return (\n            <div>\n                <Row>\n                    <Col md={6}>\n                        <DatePicker\n                            format={format}\n                            onSelect={this.onSelect}\n                            onChange={this.onChange}\n                            locale={zhCN}\n                            open={this.state.open}\n                            defaultValue={moment('2018-01-01')}\n                            value={this.state.value}\n                            onOpenChange={this.onOpenChange}\n                            placeholder={dateInputPlaceholder}\n                            className={\"Demo7\"}\n                            onClick={this.onClick}\n                            keyboardInput={true}\n                            showDateInput={false}\n                        />\n                    </Col>\n                    <Col md={3}>\n                        <button className=\"u-button\" onClick={this.open}>展开面板</button>\n                    </Col>\n                </Row>\n            </div>\n        );\n    }\n}\n\nexport default Demo7;\n", "desc": " open设置面板展开收起，keyboardInput外层input是否可输入，showDateInput是否显示内层input" }, { "example": _react2['default'].createElement(Demo8, null), "title": " 自定义展示日期面板，外层输入框可输入，配合form使用", "code": "/**\r\n *\r\n * @title 自定义展示日期面板，外层输入框可输入，配合form使用\r\n * @description open设置面板展开收起，keyboardInput外层input是否可输入，showDateInput是否显示内层input\r\n */\r\n\r\nimport React, {Component} from \"react\";\nimport { Form, Row, Col } from 'tinper-bee';\r\n\nimport DatePicker from \"bee-datepicker/index\";\r\nimport zhCN from \"../../src/locale/zh_CN\";\r\nimport enUS from \"../../src/locale/en_US\";\r\nimport moment from \"moment\";\r\nimport 'moment/locale/zh-cn';\r\n\n\r\nmoment.locale('zh-cn');\r\n\r\nconst format = \"YYYY-MM-DD\";\r\n\r\nconst dateInputPlaceholder = \"选择日期\";\r\n\r\n\r\nclass Demo8 extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            value: '',\r\n            open: false\r\n        };\r\n    }\r\n    onOpenChange = open => {\r\n        console.log(open)\r\n    }\r\n    open = d => {\r\n        this.setState({\r\n            open: !this.state.open\r\n        })\r\n    }\r\n    onClick = (e,d,str) => {\r\n        console.log(d);\r\n    }\r\n    onSelect(d) {\r\n        console.log(\"select:\"+d);\r\n    }\r\n    outInputKeydown = ()=>{\r\n        console.log('keydown')\r\n    }\r\n    submit = (e) => {\r\n        this.props.form.validateFields((err, values) => {\r\n            if (err) {\r\n                console.log('校验失败', values);\r\n            } else {\r\n                console.log('提交成功', values, moment(values.date).format('YYYY-MM-DD'));\r\n            }\r\n        });\r\n    }\r\n    render() {\r\n        var self = this; \r\n        const { getFieldProps, getFieldError } = this.props.form;\r\n        return (\r\n            <div>\r\n                <Row>\r\n                    <Col md={6}>\r\n                        <DatePicker\r\n                            format={format}\r\n                            onSelect={this.onSelect}\r\n                            onChange={this.onChange}\r\n                            locale={zhCN}\r\n                            open={this.state.open}\r\n                            onOpenChange={this.onOpenChange.bind(this)}\r\n                            placeholder={dateInputPlaceholder}\r\n                            className={\"demo11\"}\r\n                            onClick={this.onClick}\r\n                            keyboardInput={true}\r\n                            showDateInput={false}\r\n                            iconClick={this.open}\r\n                            outInputKeydown={this.outInputKeydown}\r\n                            {...getFieldProps('date', {\r\n                                validateTrigger: 'onBlur',\r\n                                initialValue:moment('2018-01-01'),\r\n                                rules: [{\r\n                                    required: true, message: '请输入日期',\r\n                                }],\r\n                            }) }\r\n                        />\r\n                    </Col>\r\n                    <Col md={3}>\r\n                        <button className=\"u-button\" onClick={this.open}>展开/收起面板</button>\r\n                        <button className=\"u-button\" onClick={this.submit}>获得值</button>\r\n                    </Col>\r\n                </Row>\r\n            </div>\r\n        );\r\n    }\r\n}\r\n\r\nexport default Form.createForm()(Demo8);\r\n", "desc": " open设置面板展开收起，keyboardInput外层input是否可输入，showDateInput是否显示内层input" }, { "example": _react2['default'].createElement(Demo9, null), "title": " 额外的页脚", "code": "/**\r\n *\r\n * @title 额外的页脚\r\n * @description 在浮层中加入额外的页脚，以满足某些定制信息的需求。\r\n */\r\n\r\nimport React, {Component} from \"react\";\nimport { Row, Col } from 'tinper-bee';\r\n\nimport DatePicker from \"bee-datepicker/index\";\r\n\r\nconst { RangePicker, MonthPicker } = DatePicker;\r\n\r\nclass Demo9 extends Component {\r\n    render() {\r\n        return (\r\n            <div className=\"demo9\">\r\n                <Row>\r\n                    <Col md={6}>\r\n                        <DatePicker renderFooter={() => '额外页脚'} placeholder=\"选择日期\"/>\r\n                    </Col>\r\n                    \r\n                    <Col md={6}>\r\n                        <DatePicker renderFooter={() => '额外页脚'} showTime placeholder=\"选择日期\"/>\r\n                    </Col>\r\n                    \r\n                    <Col md={6}>\r\n                        <RangePicker renderFooter={() => '额外页脚'} placeholder={'开始 ~ 结束'}/>\r\n                    </Col>\r\n                    \r\n                    <Col md={6}>\r\n                        <RangePicker renderFooter={() => '额外页脚'} showTime placeholder={'开始 ~ 结束'}/>\r\n                    </Col>\r\n                    \r\n                    <Col md={6}>\r\n                        <MonthPicker renderFooter={() => '额外页脚'} placeholder=\"选择月\" />\r\n                    </Col>\r\n                </Row>\r\n            </div>\r\n        );\r\n    }\r\n}\r\n\r\nexport default Demo9;\r\n", "desc": " 在浮层中加入额外的页脚，以满足某些定制信息的需求。", "scss_code": ".demo9 {\r\n    .u-row .u-col-md-6 {\r\n        margin-bottom: 10px;\r\n    }\r\n}" }, { "example": _react2['default'].createElement(Demo10, null), "title": " 使用normal格式化", "code": "/**\n *\n * @title 使用normal格式化\n * @description 配合form 使用normal格式化，已 MothPicker 为例\n */\n\nimport React, { Component } from \"react\";\nimport { Form,  Row, Col  } from 'tinper-bee';\nimport DatePicker from \"bee-datepicker/index\";\n\nconst { MonthPicker } = DatePicker;\n\n\nclass Demo4 extends Component {\n    submit = (e) => {\n        this.props.form.validateFields((err, values) => {\n            if (err) {\n                console.log('校验失败', values);\n            } else {\n                console.log('提交成功', values);\n            }\n        });\n    }\n    render() {\n        const { getFieldProps, getFieldError } = this.props.form;\n        return (\n            <div>\n                <Row style={{'marginBottom':'10px'}}>\n                    <Col md={6} style={{'marginBottom':'10px'}}>\n                        <MonthPicker\n                            format=\"YYYY-MM\"\n                            {...getFieldProps('date', {\n                                validateTrigger: 'onBlur',\n                                initialValue:null,\n                                normalize:(value)=>{\n                                    if(value&&value.format){\n                                        return value.format('YYYY-MM')\n                                    }else{\n                                        return value\n                                    }\n                                },\n                                rules: [{\n                                    required: true, message: '请输入日期',\n                                }],\n                            }) }\n                        />\n                    </Col>\n                    <button className=\"u-button\" onClick={this.submit}>获得值</button>\n                </Row>\n            </div>\n        );\n    }\n}\n\nexport default Form.createForm()(Demo4);\n", "desc": " 配合form 使用normal格式化，已 MothPicker 为例" }];
 	
 	var Demo = function (_Component) {
 	    _inherits(Demo, _Component);
@@ -6273,7 +6273,7 @@
 	    });
 	}
 	
-	function notice(content, duration_arg, type, onClose, position, style, keyboard, onEscapeKeyUp, showIcon) {
+	function notice(content, duration_arg, type, onClose, position, style, keyboard, onEscapeKeyUp, showIcon, icon, props) {
 	    if (positionType.findIndex(function (item) {
 	        return item === position;
 	    }) < 0) {
@@ -6301,7 +6301,7 @@
 	    var positionStyle = JSON.stringify(messageStyle_copy) == "{}" ? positionObj[position].messageStyle : messageStyle_copy;
 	    defaultStyle = _extends({}, positionStyle, style);
 	    getMessageInstance(position, function (instance) {
-	        instance.notice({
+	        instance.notice(_extends({}, props, {
 	            key: key,
 	            duration: duration,
 	            color: type,
@@ -6312,7 +6312,7 @@
 	                showIcon ? _react2["default"].createElement(
 	                    'div',
 	                    { className: clsPrefix + '-notice-description-icon' },
-	                    _react2["default"].createElement('i', { className: (0, _classnames2["default"])(iconType) })
+	                    icon ? _react2["default"].createElement('i', { className: (0, _classnames2["default"])('' + icon) }) : _react2["default"].createElement('i', { className: (0, _classnames2["default"])(iconType) })
 	                ) : null,
 	                _react2["default"].createElement(
 	                    'div',
@@ -6321,7 +6321,7 @@
 	                )
 	            ),
 	            onClose: onClose
-	        });
+	        }));
 	    }, keyboard, onEscapeKeyUp);
 	    return function () {
 	        var target = key++;
@@ -6346,7 +6346,8 @@
 	        var position = obj.position || "top";
 	        var style = obj.style || {};
 	        var showIcon = obj.hasOwnProperty('showIcon') ? obj.showIcon : true;
-	        return notice(content, duration, color, onClose, position, style, obj.keyboard, obj.onEscapeKeyUp, showIcon);
+	        var icon = obj.hasOwnProperty('icon') ? obj.icon : false;
+	        return notice(content, duration, color, onClose, position, style, obj.keyboard, obj.onEscapeKeyUp, showIcon, icon, obj);
 	    },
 	    config: function config(options) {
 	        if (options.top !== undefined) {
@@ -7462,6 +7463,8 @@
 	  value: true
 	});
 	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
 	var _react = __webpack_require__(1);
 	
 	var _react2 = _interopRequireDefault(_react);
@@ -7483,6 +7486,8 @@
 	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
 	
 	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+	
+	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
@@ -7556,7 +7561,12 @@
 	        style = _props.style,
 	        children = _props.children,
 	        color = _props.color,
-	        title = _props.title;
+	        title = _props.title,
+	        content = _props.content,
+	        onEnd = _props.onEnd,
+	        onClose = _props.onClose,
+	        duration = _props.duration,
+	        others = _objectWithoutProperties(_props, ['closable', 'clsPrefix', 'className', 'style', 'children', 'color', 'title', 'content', 'onEnd', 'onClose', 'duration']);
 	
 	    var componentClass = clsPrefix + '-notice';
 	    var classes = (_classes = {}, _defineProperty(_classes, '' + componentClass, 1), _defineProperty(_classes, componentClass + '-closable', closable), _defineProperty(_classes, className, !!className), _classes);
@@ -7565,7 +7575,7 @@
 	    }
 	    return _react2["default"].createElement(
 	      'div',
-	      { className: (0, _classnames2["default"])(classes), style: style, onClick: this.close },
+	      _extends({ className: (0, _classnames2["default"])(classes), style: style, onClick: this.close }, others),
 	      _react2["default"].createElement(
 	        'div',
 	        { className: componentClass + '-content' },
@@ -11616,11 +11626,11 @@
 	    /**
 	     * @private
 	     */
-	    onHide: _propTypes2["default"].oneOf([null]),
+	    onHide: _propTypes2["default"].func,
 	    /**
 	     * @private
 	     */
-	    show: _propTypes2["default"].oneOf([null])
+	    show: _propTypes2["default"].bool
 	});
 	
 	var defaultProps = {
@@ -11776,6 +11786,7 @@
 	
 	    OverlayTrigger.prototype.hide = function hide() {
 	        this.setState({ show: false });
+	        this.props.onHide && this.props.onHide();
 	    };
 	
 	    OverlayTrigger.prototype.makeOverlay = function makeOverlay(overlay, props) {
@@ -11827,7 +11838,12 @@
 	        }
 	
 	        if (isOneOf('hover', trigger) && !('visible' in this.props)) {
-	            (0, _warning2["default"])(!(trigger === 'hover'), '[react-bootstrap] Specifying only the `"hover"` trigger limits the ' + 'visibility of the overlay to just mouse users. Consider also ' + 'including the `"focus"` trigger so that touch and keyboard only ' + 'users can see the overlay as well.');
+	            // warning(!(trigger === 'hover'),
+	            //     '[react-bootstrap] Specifying only the `"hover"` trigger limits the ' +
+	            //     'visibility of the overlay to just mouse users. Consider also ' +
+	            //     'including the `"focus"` trigger so that touch and keyboard only ' +
+	            //     'users can see the overlay as well.'
+	            // );
 	
 	            triggerProps.onMouseOver = (0, _createChainedFunction2["default"])(childProps.onMouseOver, onMouseOver, this.handleMouseOver);
 	            triggerProps.onMouseOut = (0, _createChainedFunction2["default"])(childProps.onMouseOut, onMouseOut, this.handleMouseOut);
@@ -12280,7 +12296,8 @@
 	    return _react2["default"].createElement(
 	      _BaseOverlay2["default"],
 	      _extends({}, props, {
-	        transition: transition
+	        transition: transition,
+	        onHide: props.onHide
 	      }),
 	      child
 	    );
@@ -14540,7 +14557,7 @@
 	        onEntering: (0, _tinperBeeCore.createChainedFunction)(onEntering, this.handleEntering),
 	        onExited: (0, _tinperBeeCore.createChainedFunction)(onExited, this.handleExited),
 	        backdrop: backdrop,
-	        backdropClassName: (0, _classnames2["default"])(backdropClasses, inClassName),
+	        backdropClassName: (0, _classnames2["default"])(backdropClasses, inClassName, backdropClassName),
 	        containerClassName: (0, _classnames2["default"])(containerClasses, containerClassName),
 	        transition: animation ? _beeTransition.Fade : undefined,
 	        dialogTransitionTimeout: Modal.TRANSITION_DURATION,
@@ -23856,7 +23873,7 @@
 	  var calledOnce = false;
 	
 	  var isNewArgEqualToLast = function isNewArgEqualToLast(newArg, index) {
-	    return isEqual(newArg, lastArgs[index]);
+	    return isEqual(newArg, lastArgs[index], index);
 	  };
 	
 	  var result = function result() {
@@ -24620,12 +24637,12 @@
 
 	'use strict';
 	
-	var index = (function (fn) {
+	var rafSchd = function rafSchd(fn) {
 	  var lastArgs = [];
 	  var frameId = null;
 	
 	  var wrapperFn = function wrapperFn() {
-	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+	    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
 	      args[_key] = arguments[_key];
 	    }
 	
@@ -24637,7 +24654,7 @@
 	
 	    frameId = requestAnimationFrame(function () {
 	      frameId = null;
-	      fn.apply(undefined, lastArgs);
+	      fn.apply(void 0, lastArgs);
 	    });
 	  };
 	
@@ -24650,12 +24667,10 @@
 	    frameId = null;
 	  };
 	
-	  var resultFn = wrapperFn;
+	  return wrapperFn;
+	};
 	
-	  return resultFn;
-	});
-	
-	module.exports = index;
+	module.exports = rafSchd;
 
 
 /***/ }),
@@ -34042,9 +34057,9 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 	
-	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
-	
 	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+	
+	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
@@ -34068,9 +34083,15 @@
 	    componentClass: 'input',
 	    clsPrefix: 'u-form-control',
 	    type: 'text',
-	    size: 'md',
-	    debounceDelay: 0
+	    size: 'md'
 	};
+	
+	function fixControlledValue(value) {
+	    if (typeof value === 'undefined' || value === null) {
+	        return '';
+	    }
+	    return value;
+	}
 	
 	var FormControl = function (_React$Component) {
 	    _inherits(FormControl, _React$Component);
@@ -34080,200 +34101,12 @@
 	
 	        var _this = _possibleConstructorReturn(this, _React$Component.call(this, props));
 	
-	        _this.handleSearchChange = function (e) {
-	            var onChange = _this.props.onChange;
+	        _initialiseProps.call(_this);
 	
-	            var value = _this.input.value;
-	            _this.setState({
-	                value: value,
-	                showSearch: value == null || value === ""
-	            });
-	            if (onChange) {
-	                onChange(value, e);
-	            }
-	        };
-	
-	        _this.handleChange = function (e) {
-	            var now = new Date().getTime();
-	            if (now - _this.lastScrollCall < _this.props.debounceDelay) return;
-	            _this.lastScrollCall = now;
-	
-	            var onChange = _this.props.onChange;
-	
-	            var value = _this.input.value;
-	            _this.setState({
-	                showClose: true
-	            });
-	            if (onChange) {
-	                onChange(value, e);
-	            }
-	        };
-	
-	        _this.clearValue = function () {
-	            var onChange = _this.props.onChange;
-	
-	            _this.setState({
-	                showSearch: true,
-	                value: "",
-	                showClose: false
-	            });
-	            if (onChange) {
-	                onChange("");
-	            }
-	            _this.input.focus();
-	        };
-	
-	        _this.handleKeyDown = function (e) {
-	            var _this$props = _this.props,
-	                onSearch = _this$props.onSearch,
-	                type = _this$props.type,
-	                onKeyDown = _this$props.onKeyDown;
-	
-	            if (e.keyCode === 13 && type === "search") {
-	                if (onSearch) {
-	                    onSearch(_this.input.value);
-	                }
-	            }
-	            onKeyDown && onKeyDown(e);
-	        };
-	
-	        _this.handleSearch = function (e) {
-	            var onSearch = _this.props.onSearch;
-	
-	            if (onSearch) onSearch(_this.input.value);
-	        };
-	
-	        _this.handleBlur = function (e) {
-	            var value = _this.state.value;
-	            var onBlur = _this.props.onBlur;
-	
-	
-	            if (onBlur) {
-	                onBlur(value, e);
-	            }
-	        };
-	
-	        _this.handleFocus = function (e) {
-	            var value = _this.state.value;
-	            var onFocus = _this.props.onFocus;
-	
-	            if (_this.props.focusSelect) {
-	                _this.input.select();
-	            }
-	            if (onFocus) {
-	                onFocus(value, e);
-	            }
-	        };
-	
-	        _this.renderInput = function () {
-	            var _this$props2 = _this.props,
-	                Component = _this$props2.componentClass,
-	                type = _this$props2.type,
-	                className = _this$props2.className,
-	                size = _this$props2.size,
-	                clsPrefix = _this$props2.clsPrefix,
-	                value = _this$props2.value,
-	                onChange = _this$props2.onChange,
-	                onSearch = _this$props2.onSearch,
-	                onBlur = _this$props2.onBlur,
-	                showClose = _this$props2.showClose,
-	                focusSelect = _this$props2.focusSelect,
-	                others = _objectWithoutProperties(_this$props2, ['componentClass', 'type', 'className', 'size', 'clsPrefix', 'value', 'onChange', 'onSearch', 'onBlur', 'showClose', 'focusSelect']);
-	            // input[type="file"] 不应该有类名 .form-control.
-	
-	
-	            var classes = {};
-	            if (size) {
-	                classes['' + size] = true;
-	            }
-	
-	            var classNames = void 0;
-	            if (type !== 'file') {
-	                classNames = (0, _classnames2["default"])(clsPrefix, classes);
-	            }
-	
-	            return showClose ? _react2["default"].createElement(
-	                'div',
-	                { className: (0, _classnames2["default"])(clsPrefix + '-close', clsPrefix + '-affix-wrapper', className) },
-	                _react2["default"].createElement(Component, _extends({}, others, {
-	                    type: type,
-	                    ref: function ref(el) {
-	                        return _this.input = el;
-	                    },
-	                    value: value,
-	                    onChange: _this.handleChange,
-	                    onBlur: _this.handleBlur,
-	                    onFocus: _this.handleFocus,
-	                    className: (0, _classnames2["default"])(classNames)
-	                })),
-	                _react2["default"].createElement(
-	                    'div',
-	                    { className: clsPrefix + '-suffix' },
-	                    _this.state.showClose ? _react2["default"].createElement(_beeIcon2["default"], { onClick: _this.clearValue, type: 'uf-close-c' }) : ''
-	                )
-	            ) : _react2["default"].createElement(Component, _extends({}, others, {
-	                type: type,
-	                ref: function ref(el) {
-	                    return _this.input = el;
-	                },
-	                value: value,
-	                onChange: _this.handleChange,
-	                onBlur: _this.handleBlur,
-	                onFocus: _this.handleFocus,
-	                className: (0, _classnames2["default"])(className, classNames)
-	            }));
-	        };
-	
-	        _this.renderSearch = function () {
-	            var _this$props3 = _this.props,
-	                Component = _this$props3.componentClass,
-	                type = _this$props3.type,
-	                className = _this$props3.className,
-	                size = _this$props3.size,
-	                clsPrefix = _this$props3.clsPrefix,
-	                value = _this$props3.value,
-	                onChange = _this$props3.onChange,
-	                onSearch = _this$props3.onSearch,
-	                onBlur = _this$props3.onBlur,
-	                others = _objectWithoutProperties(_this$props3, ['componentClass', 'type', 'className', 'size', 'clsPrefix', 'value', 'onChange', 'onSearch', 'onBlur']);
-	            // input[type="file"] 不应该有类名 .form-control.
-	
-	
-	            var classes = {};
-	            if (size) {
-	                classes['' + size] = true;
-	            }
-	            classes[clsPrefix + '-search'] = true;
-	
-	            if (type === "search") {
-	                return _react2["default"].createElement(
-	                    'div',
-	                    { className: (0, _classnames2["default"])(clsPrefix + '-search', clsPrefix + '-affix-wrapper', className) },
-	                    _react2["default"].createElement(Component, _extends({}, others, {
-	                        type: type,
-	                        ref: function ref(el) {
-	                            return _this.input = el;
-	                        },
-	                        onChange: _this.handleSearchChange,
-	                        value: value,
-	                        onKeyDown: _this.handleKeyDown,
-	                        onBlur: _this.handleBlur,
-	                        onFocus: _this.handleFocus,
-	                        className: (0, _classnames2["default"])(clsPrefix, classes)
-	                    })),
-	                    _react2["default"].createElement(
-	                        'div',
-	                        { className: clsPrefix + '-suffix' },
-	                        _react2["default"].createElement(_beeIcon2["default"], { type: 'uf-search', onClick: _this.handleSearch })
-	                    )
-	                );
-	            }
-	        };
-	
+	        var value = typeof props.value === 'undefined' ? props.defaultValue : props.value;
 	        _this.state = {
 	            showSearch: !props.value,
-	            value: props.value == null ? "" : props.value,
-	            showClose: false
+	            value: value
 	        };
 	        _this.input = {};
 	        return _this;
@@ -34296,6 +34129,204 @@
 	
 	    return FormControl;
 	}(_react2["default"].Component);
+	
+	var _initialiseProps = function _initialiseProps() {
+	    var _this2 = this;
+	
+	    this.handleSearchChange = function (e) {
+	        var onChange = _this2.props.onChange;
+	
+	        var value = _this2.input.value;
+	        _this2.setState({
+	            value: value,
+	            showSearch: value == null || value === ""
+	        });
+	        if (onChange) {
+	            onChange(value, e);
+	        }
+	    };
+	
+	    this.handleChange = function (e) {
+	        var _props$debounceDelay = _this2.props.debounceDelay,
+	            debounceDelay = _props$debounceDelay === undefined ? 0 : _props$debounceDelay;
+	
+	        var now = new Date().getTime();
+	        if (now - _this2.lastScrollCall < debounceDelay) return;
+	        _this2.lastScrollCall = now;
+	
+	        var onChange = _this2.props.onChange;
+	
+	        var value = _this2.input.value;
+	        if (!('value' in _this2.props)) {
+	            _this2.setState({ value: value });
+	        }
+	        if (onChange) {
+	            onChange(value, e);
+	        }
+	    };
+	
+	    this.clearValue = function () {
+	        var onChange = _this2.props.onChange;
+	
+	        _this2.setState({
+	            showSearch: true,
+	            value: ""
+	        });
+	        if (onChange) {
+	            onChange("");
+	        }
+	        _this2.input.focus();
+	    };
+	
+	    this.handleKeyDown = function (e) {
+	        var _props = _this2.props,
+	            onSearch = _props.onSearch,
+	            type = _props.type,
+	            onKeyDown = _props.onKeyDown;
+	
+	        if (e.keyCode === 13 && type === "search") {
+	            if (onSearch) {
+	                onSearch(_this2.input.value);
+	            }
+	        }
+	        onKeyDown && onKeyDown(e);
+	    };
+	
+	    this.handleSearch = function (e) {
+	        var onSearch = _this2.props.onSearch;
+	
+	        if (onSearch) onSearch(_this2.input.value);
+	    };
+	
+	    this.handleBlur = function (e) {
+	        var value = _this2.state.value;
+	        var onBlur = _this2.props.onBlur;
+	
+	
+	        if (onBlur) {
+	            onBlur(value, e);
+	        }
+	    };
+	
+	    this.handleFocus = function (e) {
+	        var value = _this2.state.value;
+	        var onFocus = _this2.props.onFocus;
+	
+	        if (_this2.props.focusSelect) {
+	            _this2.input.select();
+	        }
+	        if (onFocus) {
+	            onFocus(value, e);
+	        }
+	    };
+	
+	    this.renderInput = function () {
+	        var _props2 = _this2.props,
+	            Component = _props2.componentClass,
+	            type = _props2.type,
+	            className = _props2.className,
+	            size = _props2.size,
+	            clsPrefix = _props2.clsPrefix,
+	            onChange = _props2.onChange,
+	            onSearch = _props2.onSearch,
+	            onBlur = _props2.onBlur,
+	            showClose = _props2.showClose,
+	            focusSelect = _props2.focusSelect,
+	            others = _objectWithoutProperties(_props2, ['componentClass', 'type', 'className', 'size', 'clsPrefix', 'onChange', 'onSearch', 'onBlur', 'showClose', 'focusSelect']);
+	        // input[type="file"] 不应该有类名 .form-control.
+	
+	
+	        var value = _this2.state.value;
+	
+	        var classes = {};
+	        if (size) {
+	            classes['' + size] = true;
+	        }
+	
+	        var classNames = void 0;
+	        if (type !== 'file') {
+	            classNames = (0, _classnames2["default"])(clsPrefix, classes);
+	        }
+	
+	        return showClose ? _react2["default"].createElement(
+	            'div',
+	            { className: (0, _classnames2["default"])(clsPrefix + '-close', clsPrefix + '-affix-wrapper', className) },
+	            _react2["default"].createElement(Component, _extends({}, others, {
+	                type: type,
+	                ref: function ref(el) {
+	                    return _this2.input = el;
+	                },
+	                value: fixControlledValue(value),
+	                onChange: _this2.handleChange,
+	                onBlur: _this2.handleBlur,
+	                onFocus: _this2.handleFocus,
+	                className: (0, _classnames2["default"])(classNames)
+	            })),
+	            _react2["default"].createElement(
+	                'div',
+	                { className: clsPrefix + '-suffix' },
+	                value ? _react2["default"].createElement(_beeIcon2["default"], { onClick: _this2.clearValue, type: 'uf-close-c' }) : ''
+	            )
+	        ) : _react2["default"].createElement(Component, _extends({}, others, {
+	            type: type,
+	            ref: function ref(el) {
+	                return _this2.input = el;
+	            },
+	            value: fixControlledValue(value),
+	            onChange: _this2.handleChange,
+	            onBlur: _this2.handleBlur,
+	            onFocus: _this2.handleFocus,
+	            className: (0, _classnames2["default"])(className, classNames)
+	        }));
+	    };
+	
+	    this.renderSearch = function () {
+	        var _props3 = _this2.props,
+	            Component = _props3.componentClass,
+	            type = _props3.type,
+	            className = _props3.className,
+	            size = _props3.size,
+	            clsPrefix = _props3.clsPrefix,
+	            onChange = _props3.onChange,
+	            onSearch = _props3.onSearch,
+	            onBlur = _props3.onBlur,
+	            others = _objectWithoutProperties(_props3, ['componentClass', 'type', 'className', 'size', 'clsPrefix', 'onChange', 'onSearch', 'onBlur']);
+	        // input[type="file"] 不应该有类名 .form-control.
+	
+	
+	        var value = _this2.state.value;
+	
+	        var classes = {};
+	        if (size) {
+	            classes['' + size] = true;
+	        }
+	        classes[clsPrefix + '-search'] = true;
+	
+	        if (type === "search") {
+	            return _react2["default"].createElement(
+	                'div',
+	                { className: (0, _classnames2["default"])(clsPrefix + '-search', clsPrefix + '-affix-wrapper', className) },
+	                _react2["default"].createElement(Component, _extends({}, others, {
+	                    type: type,
+	                    ref: function ref(el) {
+	                        return _this2.input = el;
+	                    },
+	                    onChange: _this2.handleSearchChange,
+	                    value: fixControlledValue(value),
+	                    onKeyDown: _this2.handleKeyDown,
+	                    onBlur: _this2.handleBlur,
+	                    onFocus: _this2.handleFocus,
+	                    className: (0, _classnames2["default"])(clsPrefix, classes)
+	                })),
+	                _react2["default"].createElement(
+	                    'div',
+	                    { className: clsPrefix + '-suffix' },
+	                    _react2["default"].createElement(_beeIcon2["default"], { type: 'uf-search', onClick: _this2.handleSearch })
+	                )
+	            );
+	        }
+	    };
+	};
 	
 	FormControl.propTypes = propTypes;
 	FormControl.defaultProps = defaultProps;
@@ -53931,7 +53962,7 @@
 	
 	    return _react2['default'].createElement(
 	      'div',
-	      { className: prefixCls, style: props.style },
+	      { className: prefixCls, style: props.style, tabIndex: '0' },
 	      _react2['default'].createElement(
 	        'div',
 	        null,
@@ -54308,7 +54339,6 @@
 	        renderError = props.renderError,
 	        inputTabIndex = props.inputTabIndex;
 	
-	    console.log('=========', str, (0, _util.formatDate)(props.selectedValue, props.format));
 	    var invalidClass = invalid ? prefixCls + '-input-invalid' : '';
 	    return _react2['default'].createElement(
 	      'div',
@@ -56645,7 +56675,10 @@
 	    }
 	    _this5.preClickTime = 0;
 	    _this5.preTouchTime = 0;
-	    if (event && event.preventDefault) {
+	
+	    // Only prevent default when all the action is click.
+	    // https://github.com/ant-design/ant-design/issues/17043
+	    if (_this5.isClickToShow() && _this5.isClickToHide() && event && event.preventDefault) {
 	      event.preventDefault();
 	    }
 	    var nextVisible = !_this5.state.popupVisible;
@@ -60345,6 +60378,7 @@
 	        disabledSeconds: disabledSeconds,
 	        onCurrentSelectPanelChange: this.onCurrentSelectPanelChange,
 	        use12Hours: use12Hours,
+	        onEsc: onEsc,
 	        isAM: this.isAM()
 	      }), addon(this));
 	    }
@@ -60791,7 +60825,8 @@
 	          hourOptions = _this$props2.hourOptions,
 	          disabledHours = _this$props2.disabledHours,
 	          showHour = _this$props2.showHour,
-	          use12Hours = _this$props2.use12Hours;
+	          use12Hours = _this$props2.use12Hours,
+	          onEsc = _this$props2.onEsc;
 	
 	      if (!showHour) {
 	        return null;
@@ -60821,7 +60856,8 @@
 	        onSelect: this.onItemChange,
 	        onMouseEnter: function onMouseEnter() {
 	          return _this2.onEnterSelectPanel('hour');
-	        }
+	        },
+	        onEsc: onEsc
 	      });
 	    }
 	  }, {
@@ -60835,7 +60871,8 @@
 	          disabledMinutes = _this$props3.disabledMinutes,
 	          defaultOpenValue = _this$props3.defaultOpenValue,
 	          showMinute = _this$props3.showMinute,
-	          propValue = _this$props3.value;
+	          propValue = _this$props3.value,
+	          onEsc = _this$props3.onEsc;
 	
 	      if (!showMinute) {
 	        return null;
@@ -60853,7 +60890,8 @@
 	        onSelect: this.onItemChange,
 	        onMouseEnter: function onMouseEnter() {
 	          return _this3.onEnterSelectPanel('minute');
-	        }
+	        },
+	        onEsc: onEsc
 	      });
 	    }
 	  }, {
@@ -60867,7 +60905,8 @@
 	          disabledSeconds = _this$props4.disabledSeconds,
 	          showSecond = _this$props4.showSecond,
 	          defaultOpenValue = _this$props4.defaultOpenValue,
-	          propValue = _this$props4.value;
+	          propValue = _this$props4.value,
+	          onEsc = _this$props4.onEsc;
 	
 	      if (!showSecond) {
 	        return null;
@@ -60885,7 +60924,8 @@
 	        onSelect: this.onItemChange,
 	        onMouseEnter: function onMouseEnter() {
 	          return _this4.onEnterSelectPanel('second');
-	        }
+	        },
+	        onEsc: onEsc
 	      });
 	    }
 	  }, {
@@ -60897,7 +60937,8 @@
 	          prefixCls = _this$props5.prefixCls,
 	          use12Hours = _this$props5.use12Hours,
 	          format = _this$props5.format,
-	          isAM = _this$props5.isAM;
+	          isAM = _this$props5.isAM,
+	          onEsc = _this$props5.onEsc;
 	
 	      if (!use12Hours) {
 	        return null;
@@ -60920,7 +60961,8 @@
 	        onSelect: this.onItemChange,
 	        onMouseEnter: function onMouseEnter() {
 	          return _this5.onEnterSelectPanel('ampm');
-	        }
+	        },
+	        onEsc: onEsc
 	      });
 	    }
 	  }, {
@@ -60958,6 +61000,7 @@
 	  disabledSeconds: _propTypes["default"].func,
 	  onCurrentSelectPanelChange: _propTypes["default"].func,
 	  use12Hours: _propTypes["default"].bool,
+	  onEsc: _propTypes["default"].func,
 	  isAM: _propTypes["default"].bool
 	});
 	
@@ -61100,7 +61143,8 @@
 	      var _this$props2 = this.props,
 	          options = _this$props2.options,
 	          selectedIndex = _this$props2.selectedIndex,
-	          prefixCls = _this$props2.prefixCls;
+	          prefixCls = _this$props2.prefixCls,
+	          onEsc = _this$props2.onEsc;
 	      return options.map(function (item, index) {
 	        var _classNames;
 	
@@ -61108,12 +61152,19 @@
 	        var onClick = item.disabled ? undefined : function () {
 	          _this2.onSelect(item.value);
 	        };
+	
+	        var onKeyDown = function onKeyDown(e) {
+	          if (e.keyCode === 13) onClick();else if (e.keyCode === 27) onEsc();
+	        };
+	
 	        return _react["default"].createElement("li", {
 	          role: "button",
 	          onClick: onClick,
 	          className: cls,
 	          key: index,
-	          disabled: item.disabled
+	          disabled: item.disabled,
+	          tabIndex: "0",
+	          onKeyDown: onKeyDown
 	        }, item.value);
 	      });
 	    }
@@ -61173,7 +61224,8 @@
 	  selectedIndex: _propTypes["default"].number,
 	  type: _propTypes["default"].string,
 	  onSelect: _propTypes["default"].func,
-	  onMouseEnter: _propTypes["default"].func
+	  onMouseEnter: _propTypes["default"].func,
+	  onEsc: _propTypes["default"].func
 	});
 	
 	var _default = Select;
@@ -61536,6 +61588,12 @@
 	
 	var _omit2 = _interopRequireDefault(_omit);
 	
+	var _moment = __webpack_require__(276);
+	
+	var _moment2 = _interopRequireDefault(_moment);
+	
+	var _util = __webpack_require__(406);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 	
 	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
@@ -61568,6 +61626,41 @@
 	    };
 	    return _this;
 	  }
+	
+	  MonthPicker.prototype.componentDidMount = function componentDidMount() {
+	    var value = this.props.value || this.props.defaultValue;
+	    if (value) {
+	      if (value.format) {
+	        value = value;
+	      } else {
+	        if ((0, _moment2["default"])(value).isValid()) {
+	          value = (0, _moment2["default"])(value);
+	        } else {
+	          console.error('value is not in the correct format');
+	          value = null;
+	        }
+	      }
+	    }
+	    this.setState({
+	      value: value
+	    });
+	  };
+	
+	  MonthPicker.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
+	    if ('value' in nextProps) {
+	      var value = nextProps.value;
+	      if (value) {
+	        if (value.format) {} else {
+	          value = (0, _moment2["default"])(value);
+	        }
+	      } else {
+	        value = null;
+	      }
+	      this.setState({
+	        value: value
+	      });
+	    }
+	  };
 	  //阻止组件内部事件冒泡到组件外部容器
 	
 	
@@ -61575,20 +61668,21 @@
 	    var _this2 = this;
 	
 	    var state = this.state;
-	
 	    var props = this.props;
 	
 	    var showClose = props.showClose,
-	        others = _objectWithoutProperties(props, ["showClose"]);
+	        value = props.value,
+	        others = _objectWithoutProperties(props, ["showClose", "value"]);
 	
 	    var monthCalendar = _react2["default"].createElement(_MonthCalendar2["default"], _extends({}, props, {
+	      value: state.value,
 	      onChange: this.onChange
 	    }));
 	    var classes = (0, _classnames2["default"])(props.className, "datepicker-container");
 	    return _react2["default"].createElement(
 	      "div",
 	      _extends({ className: classes, onClick: this.stopPropagation, onMouseOver: this.stopPropagation
-	      }, (0, _omit2["default"])(others, ['closeIcon', 'renderIcon', 'format', 'showDateInput', 'showMonthInput', 'locale', 'placeholder', 'onClear', 'renderFooter'])),
+	      }, (0, _omit2["default"])(others, ['closeIcon', 'renderIcon', 'format', 'showDateInput', 'showMonthInput', 'locale', 'placeholder', 'onClear', 'renderFooter', 'renderError'])),
 	      _react2["default"].createElement(
 	        _Picker2["default"],
 	        {
@@ -61598,11 +61692,14 @@
 	          open: this.state.open,
 	          value: state.value,
 	          onChange: this.onChange,
-	          dropdownClassName: props.dropdownClassName
+	          dropdownClassName: props.dropdownClassName,
+	          selectedValue: state.value,
+	          renderError: props.renderError
 	        },
 	        function (_ref) {
 	          var value = _ref.value;
 	
+	          if (value && value.format) value = (0, _util.formatDate)(value, props.format);
 	          return _react2["default"].createElement(
 	            _beeInputGroup2["default"],
 	            { simple: true, className: "datepicker-input-group",
@@ -61615,7 +61712,7 @@
 	              },
 	              placeholder: _this2.props.placeholder,
 	              className: _this2.props.className,
-	              value: value && value.format(props.format) || "",
+	              value: value,
 	              disabled: props.disabled
 	            }),
 	            showClose && _this2.state.value && _this2.state.showClose && !props.disabled ? _react2["default"].createElement(
@@ -61646,24 +61743,18 @@
 	        onClear = _props.onClear,
 	        onSelect = _props.onSelect,
 	        format = _props.format;
-	    // if(value){
-	    //   this.setState({
-	    //     value:value
-	    //   });
-	    // }else{
-	    //   this.setState({
-	    //     value:moment()
-	    //   })
-	    // }
+	
 	
 	    _this3.setState({
 	      value: value && _extends(value, { _type: 'month' }) || value
 	    });
-	    onChange && onChange(value, value ? value.format(format) : '');
+	    onChange && onChange(value, value ? (0, _util.formatDate)(value, format) : '');
 	  };
 	
 	  this.inputFocus = function () {
 	    var self = _this3;
+	    var format = self.props.format;
+	
 	    var input = document.querySelector('.rc-calendar-input');
 	    if (input) {
 	      if (input.value) {
@@ -61680,8 +61771,18 @@
 	            open: false
 	          });
 	          var v = self.state.value;
-	          self.props.onOpenChange && self.props.onOpenChange(false, v, v && v.format(self.props.format) || '');
+	          self.props.onOpenChange && self.props.onOpenChange(false, v, v && (0, _util.formatDate)(v, self.props.format) || '');
 	          _reactDom2["default"].findDOMNode(self.outInput).focus(); // 按esc时候焦点回到input输入框
+	        } else if (e.keyCode == _tinperBeeCore.KeyCode.ENTER) {
+	          var parsed = (0, _moment2["default"])(input.value, format, true);
+	          if (parsed.isValid()) {
+	            self.setState({
+	              open: false
+	            });
+	            var _v = self.state.value;
+	            self.props.onOpenChange && self.props.onOpenChange(false, _v, _v && (0, _util.formatDate)(_v, format) || '');
+	            _reactDom2["default"].findDOMNode(self.outInput).focus();
+	          }
 	        }
 	      };
 	    }
@@ -61700,7 +61801,7 @@
 	      }
 	    });
 	    var value = self.state.value;
-	    props.onOpenChange && props.onOpenChange(open, value, value && value.format(self.props.format) || '');
+	    props.onOpenChange && props.onOpenChange(open, value, value && (0, _util.formatDate)(value, self.props.format) || '');
 	    if (open) {
 	      setTimeout(function () {
 	        self.inputFocus();
@@ -61747,6 +61848,7 @@
 	    return _react2["default"].createElement(_beeIcon2["default"], { type: "uf-calendar" });
 	  },
 	  format: 'YYYY-MM',
+	  renderError: function renderError() {},
 	  showDateInput: true,
 	  showMonthInput: true,
 	  locale: _zh_CN2["default"],
@@ -61819,6 +61921,11 @@
 	    var _this = _possibleConstructorReturn(this, _React$Component.call(this, props));
 	
 	    _this.onKeyDown = function (event) {
+	      if (event.target.nodeName.toLowerCase() === 'input') {
+	        return undefined;
+	      } else {
+	        _this.props.onKeyDown && _this.props.onKeyDown(event);
+	      }
 	      var keyCode = event.keyCode;
 	      var ctrlKey = event.ctrlKey || event.metaKey;
 	      var stateValue = _this.state.value;
@@ -61920,7 +62027,8 @@
 	        onChange = props.onChange,
 	        onSelect = props.onSelect,
 	        onClear = props.onClear,
-	        showMonthInput = props.showMonthInput;
+	        showMonthInput = props.showMonthInput,
+	        renderError = props.renderError;
 	
 	    var children = _react2['default'].createElement(
 	      'div',
@@ -61936,7 +62044,8 @@
 	          format: format,
 	          onChange: this.onInputChange,
 	          selectedValue: value,
-	          onClear: this.onClear
+	          onClear: this.onClear,
+	          renderError: renderError
 	        }) : '',
 	        _react2['default'].createElement(_CalendarHeader2['default'], {
 	          prefixCls: props.prefixCls,
@@ -65125,7 +65234,7 @@
 	
 	var _Form2 = _interopRequireDefault(_Form);
 	
-	var _FormItem = __webpack_require__(623);
+	var _FormItem = __webpack_require__(624);
 	
 	var _FormItem2 = _interopRequireDefault(_FormItem);
 	
@@ -65145,6 +65254,8 @@
 	    value: true
 	});
 	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
 	var _react = __webpack_require__(1);
 	
 	var _react2 = _interopRequireDefault(_react);
@@ -65162,6 +65273,8 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 	
 	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
+	
+	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
@@ -65194,12 +65307,13 @@
 	            className = _props$className === undefined ? '' : _props$className,
 	            children = _props.children,
 	            style = _props.style,
-	            onSubmit = _props.onSubmit;
+	            onSubmit = _props.onSubmit,
+	            others = _objectWithoutProperties(_props, ['prefixCls', 'className', 'children', 'style', 'onSubmit']);
 	
 	        var formClassName = (0, _classnames2["default"])(prefixCls, className);
 	        return _react2["default"].createElement(
 	            'form',
-	            { className: prefixCls + ' ' + className, style: style, onSubmit: onSubmit },
+	            _extends({ className: prefixCls + ' ' + className, style: style, onSubmit: onSubmit }, others),
 	            children
 	        );
 	    };
@@ -65230,11 +65344,11 @@
 	
 	var _createForm2 = _interopRequireDefault(_createForm);
 	
-	var _createFormField = __webpack_require__(620);
+	var _createFormField = __webpack_require__(621);
 	
 	var _createFormField2 = _interopRequireDefault(_createFormField);
 	
-	var _propTypes = __webpack_require__(622);
+	var _propTypes = __webpack_require__(623);
 	
 	var _propTypes2 = _interopRequireDefault(_propTypes);
 	
@@ -65326,7 +65440,11 @@
 	
 	var _createReactClass2 = _interopRequireDefault(_createReactClass);
 	
-	var _asyncValidator = __webpack_require__(536);
+	var _unsafeLifecyclesPolyfill = __webpack_require__(536);
+	
+	var _unsafeLifecyclesPolyfill2 = _interopRequireDefault(_unsafeLifecyclesPolyfill);
+	
+	var _asyncValidator = __webpack_require__(537);
 	
 	var _asyncValidator2 = _interopRequireDefault(_asyncValidator);
 	
@@ -65334,28 +65452,30 @@
 	
 	var _warning2 = _interopRequireDefault(_warning);
 	
-	var _get = __webpack_require__(561);
+	var _get = __webpack_require__(562);
 	
 	var _get2 = _interopRequireDefault(_get);
 	
-	var _set = __webpack_require__(613);
+	var _set = __webpack_require__(614);
 	
 	var _set2 = _interopRequireDefault(_set);
 	
-	var _eq = __webpack_require__(598);
+	var _eq = __webpack_require__(599);
 	
 	var _eq2 = _interopRequireDefault(_eq);
 	
-	var _createFieldsStore = __webpack_require__(619);
+	var _createFieldsStore = __webpack_require__(620);
 	
 	var _createFieldsStore2 = _interopRequireDefault(_createFieldsStore);
 	
-	var _utils = __webpack_require__(621);
+	var _utils = __webpack_require__(622);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
-	var DEFAULT_TRIGGER = 'onChange'; /* eslint-disable react/prefer-es6-class */
+	/* eslint-disable react/prefer-es6-class */
 	/* eslint-disable prefer-promise-reject-errors */
+	
+	var DEFAULT_TRIGGER = 'onChange';
 	
 	function createBaseForm() {
 	  var option = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
@@ -65849,7 +65969,8 @@
 	            callback = function callback(errors, values) {
 	              if (oldCb) {
 	                oldCb(errors, values);
-	              } else if (errors) {
+	              }
+	              if (errors) {
 	                reject({ errors: errors, values: values });
 	              } else {
 	                resolve(values);
@@ -65881,7 +66002,9 @@
 	          }, callback);
 	        });
 	        pending['catch'](function (e) {
+	          // eslint-disable-next-line no-console
 	          if (console.error && process.env.NODE_ENV !== 'production') {
+	            // eslint-disable-next-line no-console
 	            console.error(e);
 	          }
 	          return e;
@@ -65929,7 +66052,7 @@
 	      }
 	    });
 	
-	    return (0, _utils.argumentContainer)(Form, WrappedComponent);
+	    return (0, _utils.argumentContainer)((0, _unsafeLifecyclesPolyfill2['default'])(Form), WrappedComponent);
 	  };
 	}
 	
@@ -67300,6 +67423,48 @@
 /* 536 */
 /***/ (function(module, exports, __webpack_require__) {
 
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.default = void 0;
+	
+	var _react = _interopRequireDefault(__webpack_require__(1));
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var unsafeLifecyclesPolyfill = function unsafeLifecyclesPolyfill(Component) {
+	  var prototype = Component.prototype;
+	
+	  if (!prototype || !prototype.isReactComponent) {
+	    throw new Error('Can only polyfill class components');
+	  } // only handle componentWillReceiveProps
+	
+	
+	  if (typeof prototype.componentWillReceiveProps !== 'function') {
+	    return Component;
+	  } // In React 16.9, React.Profiler was introduced together with UNSAFE_componentWillReceiveProps
+	  // https://reactjs.org/blog/2019/08/08/react-v16.9.0.html#performance-measurements-with-reactprofiler
+	
+	
+	  if (!_react.default.Profiler) {
+	    return Component;
+	  } // Here polyfill get started
+	
+	
+	  prototype.UNSAFE_componentWillReceiveProps = prototype.componentWillReceiveProps;
+	  delete prototype.componentWillReceiveProps;
+	  return Component;
+	};
+	
+	var _default = unsafeLifecyclesPolyfill;
+	exports.default = _default;
+
+/***/ }),
+/* 537 */
+/***/ (function(module, exports, __webpack_require__) {
+
 	'use strict';
 	
 	exports.__esModule = true;
@@ -67308,13 +67473,13 @@
 	
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 	
-	var _util = __webpack_require__(537);
+	var _util = __webpack_require__(538);
 	
-	var _validator = __webpack_require__(538);
+	var _validator = __webpack_require__(539);
 	
 	var _validator2 = _interopRequireDefault(_validator);
 	
-	var _messages2 = __webpack_require__(560);
+	var _messages2 = __webpack_require__(561);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
@@ -67599,7 +67764,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 537 */
+/* 538 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -67826,66 +67991,66 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(32)))
 
 /***/ }),
-/* 538 */
+/* 539 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	exports.__esModule = true;
 	
-	var _string = __webpack_require__(539);
+	var _string = __webpack_require__(540);
 	
 	var _string2 = _interopRequireDefault(_string);
 	
-	var _method = __webpack_require__(547);
+	var _method = __webpack_require__(548);
 	
 	var _method2 = _interopRequireDefault(_method);
 	
-	var _number = __webpack_require__(548);
+	var _number = __webpack_require__(549);
 	
 	var _number2 = _interopRequireDefault(_number);
 	
-	var _boolean = __webpack_require__(549);
+	var _boolean = __webpack_require__(550);
 	
 	var _boolean2 = _interopRequireDefault(_boolean);
 	
-	var _regexp = __webpack_require__(550);
+	var _regexp = __webpack_require__(551);
 	
 	var _regexp2 = _interopRequireDefault(_regexp);
 	
-	var _integer = __webpack_require__(551);
+	var _integer = __webpack_require__(552);
 	
 	var _integer2 = _interopRequireDefault(_integer);
 	
-	var _float = __webpack_require__(552);
+	var _float = __webpack_require__(553);
 	
 	var _float2 = _interopRequireDefault(_float);
 	
-	var _array = __webpack_require__(553);
+	var _array = __webpack_require__(554);
 	
 	var _array2 = _interopRequireDefault(_array);
 	
-	var _object = __webpack_require__(554);
+	var _object = __webpack_require__(555);
 	
 	var _object2 = _interopRequireDefault(_object);
 	
-	var _enum = __webpack_require__(555);
+	var _enum = __webpack_require__(556);
 	
 	var _enum2 = _interopRequireDefault(_enum);
 	
-	var _pattern = __webpack_require__(556);
+	var _pattern = __webpack_require__(557);
 	
 	var _pattern2 = _interopRequireDefault(_pattern);
 	
-	var _date = __webpack_require__(557);
+	var _date = __webpack_require__(558);
 	
 	var _date2 = _interopRequireDefault(_date);
 	
-	var _required = __webpack_require__(558);
+	var _required = __webpack_require__(559);
 	
 	var _required2 = _interopRequireDefault(_required);
 	
-	var _type = __webpack_require__(559);
+	var _type = __webpack_require__(560);
 	
 	var _type2 = _interopRequireDefault(_type);
 	
@@ -67912,18 +68077,18 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 539 */
+/* 540 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	exports.__esModule = true;
 	
-	var _rule = __webpack_require__(540);
+	var _rule = __webpack_require__(541);
 	
 	var _rule2 = _interopRequireDefault(_rule);
 	
-	var _util = __webpack_require__(537);
+	var _util = __webpack_require__(538);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
@@ -67961,34 +68126,34 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 540 */
+/* 541 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	exports.__esModule = true;
 	
-	var _required = __webpack_require__(541);
+	var _required = __webpack_require__(542);
 	
 	var _required2 = _interopRequireDefault(_required);
 	
-	var _whitespace = __webpack_require__(542);
+	var _whitespace = __webpack_require__(543);
 	
 	var _whitespace2 = _interopRequireDefault(_whitespace);
 	
-	var _type = __webpack_require__(543);
+	var _type = __webpack_require__(544);
 	
 	var _type2 = _interopRequireDefault(_type);
 	
-	var _range = __webpack_require__(544);
+	var _range = __webpack_require__(545);
 	
 	var _range2 = _interopRequireDefault(_range);
 	
-	var _enum = __webpack_require__(545);
+	var _enum = __webpack_require__(546);
 	
 	var _enum2 = _interopRequireDefault(_enum);
 	
-	var _pattern = __webpack_require__(546);
+	var _pattern = __webpack_require__(547);
 	
 	var _pattern2 = _interopRequireDefault(_pattern);
 	
@@ -68005,14 +68170,14 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 541 */
+/* 542 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	exports.__esModule = true;
 	
-	var _util = __webpack_require__(537);
+	var _util = __webpack_require__(538);
 	
 	var util = _interopRequireWildcard(_util);
 	
@@ -68039,14 +68204,14 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 542 */
+/* 543 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	exports.__esModule = true;
 	
-	var _util = __webpack_require__(537);
+	var _util = __webpack_require__(538);
 	
 	var util = _interopRequireWildcard(_util);
 	
@@ -68073,7 +68238,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 543 */
+/* 544 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -68082,11 +68247,11 @@
 	
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 	
-	var _util = __webpack_require__(537);
+	var _util = __webpack_require__(538);
 	
 	var util = _interopRequireWildcard(_util);
 	
-	var _required = __webpack_require__(541);
+	var _required = __webpack_require__(542);
 	
 	var _required2 = _interopRequireDefault(_required);
 	
@@ -68181,14 +68346,14 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 544 */
+/* 545 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	exports.__esModule = true;
 	
-	var _util = __webpack_require__(537);
+	var _util = __webpack_require__(538);
 	
 	var util = _interopRequireWildcard(_util);
 	
@@ -68253,14 +68418,14 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 545 */
+/* 546 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	exports.__esModule = true;
 	
-	var _util = __webpack_require__(537);
+	var _util = __webpack_require__(538);
 	
 	var util = _interopRequireWildcard(_util);
 	
@@ -68290,14 +68455,14 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 546 */
+/* 547 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	exports.__esModule = true;
 	
-	var _util = __webpack_require__(537);
+	var _util = __webpack_require__(538);
 	
 	var util = _interopRequireWildcard(_util);
 	
@@ -68337,18 +68502,18 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 547 */
+/* 548 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	exports.__esModule = true;
 	
-	var _rule = __webpack_require__(540);
+	var _rule = __webpack_require__(541);
 	
 	var _rule2 = _interopRequireDefault(_rule);
 	
-	var _util = __webpack_require__(537);
+	var _util = __webpack_require__(538);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
@@ -68381,18 +68546,18 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 548 */
+/* 549 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	exports.__esModule = true;
 	
-	var _rule = __webpack_require__(540);
+	var _rule = __webpack_require__(541);
 	
 	var _rule2 = _interopRequireDefault(_rule);
 	
-	var _util = __webpack_require__(537);
+	var _util = __webpack_require__(538);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
@@ -68429,16 +68594,16 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 549 */
+/* 550 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	exports.__esModule = true;
 	
-	var _util = __webpack_require__(537);
+	var _util = __webpack_require__(538);
 	
-	var _rule = __webpack_require__(540);
+	var _rule = __webpack_require__(541);
 	
 	var _rule2 = _interopRequireDefault(_rule);
 	
@@ -68473,18 +68638,18 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 550 */
+/* 551 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	exports.__esModule = true;
 	
-	var _rule = __webpack_require__(540);
+	var _rule = __webpack_require__(541);
 	
 	var _rule2 = _interopRequireDefault(_rule);
 	
-	var _util = __webpack_require__(537);
+	var _util = __webpack_require__(538);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
@@ -68517,18 +68682,18 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 551 */
+/* 552 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	exports.__esModule = true;
 	
-	var _rule = __webpack_require__(540);
+	var _rule = __webpack_require__(541);
 	
 	var _rule2 = _interopRequireDefault(_rule);
 	
-	var _util = __webpack_require__(537);
+	var _util = __webpack_require__(538);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
@@ -68562,18 +68727,18 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 552 */
+/* 553 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	exports.__esModule = true;
 	
-	var _rule = __webpack_require__(540);
+	var _rule = __webpack_require__(541);
 	
 	var _rule2 = _interopRequireDefault(_rule);
 	
-	var _util = __webpack_require__(537);
+	var _util = __webpack_require__(538);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
@@ -68607,18 +68772,18 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 553 */
+/* 554 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	exports.__esModule = true;
 	
-	var _rule = __webpack_require__(540);
+	var _rule = __webpack_require__(541);
 	
 	var _rule2 = _interopRequireDefault(_rule);
 	
-	var _util = __webpack_require__(537);
+	var _util = __webpack_require__(538);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
@@ -68652,18 +68817,18 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 554 */
+/* 555 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	exports.__esModule = true;
 	
-	var _rule = __webpack_require__(540);
+	var _rule = __webpack_require__(541);
 	
 	var _rule2 = _interopRequireDefault(_rule);
 	
-	var _util = __webpack_require__(537);
+	var _util = __webpack_require__(538);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
@@ -68696,18 +68861,18 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 555 */
+/* 556 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	exports.__esModule = true;
 	
-	var _rule = __webpack_require__(540);
+	var _rule = __webpack_require__(541);
 	
 	var _rule2 = _interopRequireDefault(_rule);
 	
-	var _util = __webpack_require__(537);
+	var _util = __webpack_require__(538);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
@@ -68742,18 +68907,18 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 556 */
+/* 557 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	exports.__esModule = true;
 	
-	var _rule = __webpack_require__(540);
+	var _rule = __webpack_require__(541);
 	
 	var _rule2 = _interopRequireDefault(_rule);
 	
-	var _util = __webpack_require__(537);
+	var _util = __webpack_require__(538);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
@@ -68789,18 +68954,18 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 557 */
+/* 558 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	exports.__esModule = true;
 	
-	var _rule = __webpack_require__(540);
+	var _rule = __webpack_require__(541);
 	
 	var _rule2 = _interopRequireDefault(_rule);
 	
-	var _util = __webpack_require__(537);
+	var _util = __webpack_require__(538);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
@@ -68836,7 +69001,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 558 */
+/* 559 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -68845,7 +69010,7 @@
 	
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 	
-	var _rule = __webpack_require__(540);
+	var _rule = __webpack_require__(541);
 	
 	var _rule2 = _interopRequireDefault(_rule);
 	
@@ -68862,18 +69027,18 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 559 */
+/* 560 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	exports.__esModule = true;
 	
-	var _rule = __webpack_require__(540);
+	var _rule = __webpack_require__(541);
 	
 	var _rule2 = _interopRequireDefault(_rule);
 	
-	var _util = __webpack_require__(537);
+	var _util = __webpack_require__(538);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
@@ -68897,7 +69062,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 560 */
+/* 561 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -68962,10 +69127,10 @@
 	var messages = exports.messages = newMessages();
 
 /***/ }),
-/* 561 */
+/* 562 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var baseGet = __webpack_require__(562);
+	var baseGet = __webpack_require__(563);
 	
 	/**
 	 * Gets the value at `path` of `object`. If the resolved value is
@@ -69001,11 +69166,11 @@
 
 
 /***/ }),
-/* 562 */
+/* 563 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var castPath = __webpack_require__(563),
-	    toKey = __webpack_require__(612);
+	var castPath = __webpack_require__(564),
+	    toKey = __webpack_require__(613);
 	
 	/**
 	 * The base implementation of `_.get` without support for default values.
@@ -69031,13 +69196,13 @@
 
 
 /***/ }),
-/* 563 */
+/* 564 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var isArray = __webpack_require__(564),
-	    isKey = __webpack_require__(565),
-	    stringToPath = __webpack_require__(574),
-	    toString = __webpack_require__(609);
+	var isArray = __webpack_require__(565),
+	    isKey = __webpack_require__(566),
+	    stringToPath = __webpack_require__(575),
+	    toString = __webpack_require__(610);
 	
 	/**
 	 * Casts `value` to a path array if it's not one.
@@ -69058,7 +69223,7 @@
 
 
 /***/ }),
-/* 564 */
+/* 565 */
 /***/ (function(module, exports) {
 
 	/**
@@ -69090,11 +69255,11 @@
 
 
 /***/ }),
-/* 565 */
+/* 566 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var isArray = __webpack_require__(564),
-	    isSymbol = __webpack_require__(566);
+	var isArray = __webpack_require__(565),
+	    isSymbol = __webpack_require__(567);
 	
 	/** Used to match property names within property paths. */
 	var reIsDeepProp = /\.|\[(?:[^[\]]*|(["'])(?:(?!\1)[^\\]|\\.)*?\1)\]/,
@@ -69125,11 +69290,11 @@
 
 
 /***/ }),
-/* 566 */
+/* 567 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var baseGetTag = __webpack_require__(567),
-	    isObjectLike = __webpack_require__(573);
+	var baseGetTag = __webpack_require__(568),
+	    isObjectLike = __webpack_require__(574);
 	
 	/** `Object#toString` result references. */
 	var symbolTag = '[object Symbol]';
@@ -69160,12 +69325,12 @@
 
 
 /***/ }),
-/* 567 */
+/* 568 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var Symbol = __webpack_require__(568),
-	    getRawTag = __webpack_require__(571),
-	    objectToString = __webpack_require__(572);
+	var Symbol = __webpack_require__(569),
+	    getRawTag = __webpack_require__(572),
+	    objectToString = __webpack_require__(573);
 	
 	/** `Object#toString` result references. */
 	var nullTag = '[object Null]',
@@ -69194,10 +69359,10 @@
 
 
 /***/ }),
-/* 568 */
+/* 569 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var root = __webpack_require__(569);
+	var root = __webpack_require__(570);
 	
 	/** Built-in value references. */
 	var Symbol = root.Symbol;
@@ -69206,10 +69371,10 @@
 
 
 /***/ }),
-/* 569 */
+/* 570 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var freeGlobal = __webpack_require__(570);
+	var freeGlobal = __webpack_require__(571);
 	
 	/** Detect free variable `self`. */
 	var freeSelf = typeof self == 'object' && self && self.Object === Object && self;
@@ -69221,7 +69386,7 @@
 
 
 /***/ }),
-/* 570 */
+/* 571 */
 /***/ (function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/** Detect free variable `global` from Node.js. */
@@ -69232,10 +69397,10 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ }),
-/* 571 */
+/* 572 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var Symbol = __webpack_require__(568);
+	var Symbol = __webpack_require__(569);
 	
 	/** Used for built-in method references. */
 	var objectProto = Object.prototype;
@@ -69284,7 +69449,7 @@
 
 
 /***/ }),
-/* 572 */
+/* 573 */
 /***/ (function(module, exports) {
 
 	/** Used for built-in method references. */
@@ -69312,7 +69477,7 @@
 
 
 /***/ }),
-/* 573 */
+/* 574 */
 /***/ (function(module, exports) {
 
 	/**
@@ -69347,10 +69512,10 @@
 
 
 /***/ }),
-/* 574 */
+/* 575 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var memoizeCapped = __webpack_require__(575);
+	var memoizeCapped = __webpack_require__(576);
 	
 	/** Used to match property names within property paths. */
 	var rePropName = /[^.[\]]+|\[(?:(-?\d+(?:\.\d+)?)|(["'])((?:(?!\2)[^\\]|\\.)*?)\2)\]|(?=(?:\.|\[\])(?:\.|\[\]|$))/g;
@@ -69380,10 +69545,10 @@
 
 
 /***/ }),
-/* 575 */
+/* 576 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var memoize = __webpack_require__(576);
+	var memoize = __webpack_require__(577);
 	
 	/** Used as the maximum memoize cache size. */
 	var MAX_MEMOIZE_SIZE = 500;
@@ -69412,10 +69577,10 @@
 
 
 /***/ }),
-/* 576 */
+/* 577 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var MapCache = __webpack_require__(577);
+	var MapCache = __webpack_require__(578);
 	
 	/** Error message constants. */
 	var FUNC_ERROR_TEXT = 'Expected a function';
@@ -69491,14 +69656,14 @@
 
 
 /***/ }),
-/* 577 */
+/* 578 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var mapCacheClear = __webpack_require__(578),
-	    mapCacheDelete = __webpack_require__(603),
-	    mapCacheGet = __webpack_require__(606),
-	    mapCacheHas = __webpack_require__(607),
-	    mapCacheSet = __webpack_require__(608);
+	var mapCacheClear = __webpack_require__(579),
+	    mapCacheDelete = __webpack_require__(604),
+	    mapCacheGet = __webpack_require__(607),
+	    mapCacheHas = __webpack_require__(608),
+	    mapCacheSet = __webpack_require__(609);
 	
 	/**
 	 * Creates a map cache object to store key-value pairs.
@@ -69529,12 +69694,12 @@
 
 
 /***/ }),
-/* 578 */
+/* 579 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var Hash = __webpack_require__(579),
-	    ListCache = __webpack_require__(594),
-	    Map = __webpack_require__(602);
+	var Hash = __webpack_require__(580),
+	    ListCache = __webpack_require__(595),
+	    Map = __webpack_require__(603);
 	
 	/**
 	 * Removes all key-value entries from the map.
@@ -69556,14 +69721,14 @@
 
 
 /***/ }),
-/* 579 */
+/* 580 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var hashClear = __webpack_require__(580),
-	    hashDelete = __webpack_require__(590),
-	    hashGet = __webpack_require__(591),
-	    hashHas = __webpack_require__(592),
-	    hashSet = __webpack_require__(593);
+	var hashClear = __webpack_require__(581),
+	    hashDelete = __webpack_require__(591),
+	    hashGet = __webpack_require__(592),
+	    hashHas = __webpack_require__(593),
+	    hashSet = __webpack_require__(594);
 	
 	/**
 	 * Creates a hash object.
@@ -69594,10 +69759,10 @@
 
 
 /***/ }),
-/* 580 */
+/* 581 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var nativeCreate = __webpack_require__(581);
+	var nativeCreate = __webpack_require__(582);
 	
 	/**
 	 * Removes all key-value entries from the hash.
@@ -69615,10 +69780,10 @@
 
 
 /***/ }),
-/* 581 */
+/* 582 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var getNative = __webpack_require__(582);
+	var getNative = __webpack_require__(583);
 	
 	/* Built-in method references that are verified to be native. */
 	var nativeCreate = getNative(Object, 'create');
@@ -69627,11 +69792,11 @@
 
 
 /***/ }),
-/* 582 */
+/* 583 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var baseIsNative = __webpack_require__(583),
-	    getValue = __webpack_require__(589);
+	var baseIsNative = __webpack_require__(584),
+	    getValue = __webpack_require__(590);
 	
 	/**
 	 * Gets the native function at `key` of `object`.
@@ -69650,13 +69815,13 @@
 
 
 /***/ }),
-/* 583 */
+/* 584 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var isFunction = __webpack_require__(584),
-	    isMasked = __webpack_require__(586),
-	    isObject = __webpack_require__(585),
-	    toSource = __webpack_require__(588);
+	var isFunction = __webpack_require__(585),
+	    isMasked = __webpack_require__(587),
+	    isObject = __webpack_require__(586),
+	    toSource = __webpack_require__(589);
 	
 	/**
 	 * Used to match `RegExp`
@@ -69703,11 +69868,11 @@
 
 
 /***/ }),
-/* 584 */
+/* 585 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var baseGetTag = __webpack_require__(567),
-	    isObject = __webpack_require__(585);
+	var baseGetTag = __webpack_require__(568),
+	    isObject = __webpack_require__(586);
 	
 	/** `Object#toString` result references. */
 	var asyncTag = '[object AsyncFunction]',
@@ -69746,7 +69911,7 @@
 
 
 /***/ }),
-/* 585 */
+/* 586 */
 /***/ (function(module, exports) {
 
 	/**
@@ -69783,10 +69948,10 @@
 
 
 /***/ }),
-/* 586 */
+/* 587 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var coreJsData = __webpack_require__(587);
+	var coreJsData = __webpack_require__(588);
 	
 	/** Used to detect methods masquerading as native. */
 	var maskSrcKey = (function() {
@@ -69809,10 +69974,10 @@
 
 
 /***/ }),
-/* 587 */
+/* 588 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var root = __webpack_require__(569);
+	var root = __webpack_require__(570);
 	
 	/** Used to detect overreaching core-js shims. */
 	var coreJsData = root['__core-js_shared__'];
@@ -69821,7 +69986,7 @@
 
 
 /***/ }),
-/* 588 */
+/* 589 */
 /***/ (function(module, exports) {
 
 	/** Used for built-in method references. */
@@ -69853,7 +70018,7 @@
 
 
 /***/ }),
-/* 589 */
+/* 590 */
 /***/ (function(module, exports) {
 
 	/**
@@ -69872,7 +70037,7 @@
 
 
 /***/ }),
-/* 590 */
+/* 591 */
 /***/ (function(module, exports) {
 
 	/**
@@ -69895,10 +70060,10 @@
 
 
 /***/ }),
-/* 591 */
+/* 592 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var nativeCreate = __webpack_require__(581);
+	var nativeCreate = __webpack_require__(582);
 	
 	/** Used to stand-in for `undefined` hash values. */
 	var HASH_UNDEFINED = '__lodash_hash_undefined__';
@@ -69931,10 +70096,10 @@
 
 
 /***/ }),
-/* 592 */
+/* 593 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var nativeCreate = __webpack_require__(581);
+	var nativeCreate = __webpack_require__(582);
 	
 	/** Used for built-in method references. */
 	var objectProto = Object.prototype;
@@ -69960,10 +70125,10 @@
 
 
 /***/ }),
-/* 593 */
+/* 594 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var nativeCreate = __webpack_require__(581);
+	var nativeCreate = __webpack_require__(582);
 	
 	/** Used to stand-in for `undefined` hash values. */
 	var HASH_UNDEFINED = '__lodash_hash_undefined__';
@@ -69989,14 +70154,14 @@
 
 
 /***/ }),
-/* 594 */
+/* 595 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var listCacheClear = __webpack_require__(595),
-	    listCacheDelete = __webpack_require__(596),
-	    listCacheGet = __webpack_require__(599),
-	    listCacheHas = __webpack_require__(600),
-	    listCacheSet = __webpack_require__(601);
+	var listCacheClear = __webpack_require__(596),
+	    listCacheDelete = __webpack_require__(597),
+	    listCacheGet = __webpack_require__(600),
+	    listCacheHas = __webpack_require__(601),
+	    listCacheSet = __webpack_require__(602);
 	
 	/**
 	 * Creates an list cache object.
@@ -70027,7 +70192,7 @@
 
 
 /***/ }),
-/* 595 */
+/* 596 */
 /***/ (function(module, exports) {
 
 	/**
@@ -70046,10 +70211,10 @@
 
 
 /***/ }),
-/* 596 */
+/* 597 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var assocIndexOf = __webpack_require__(597);
+	var assocIndexOf = __webpack_require__(598);
 	
 	/** Used for built-in method references. */
 	var arrayProto = Array.prototype;
@@ -70087,10 +70252,10 @@
 
 
 /***/ }),
-/* 597 */
+/* 598 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var eq = __webpack_require__(598);
+	var eq = __webpack_require__(599);
 	
 	/**
 	 * Gets the index at which the `key` is found in `array` of key-value pairs.
@@ -70114,7 +70279,7 @@
 
 
 /***/ }),
-/* 598 */
+/* 599 */
 /***/ (function(module, exports) {
 
 	/**
@@ -70157,10 +70322,10 @@
 
 
 /***/ }),
-/* 599 */
+/* 600 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var assocIndexOf = __webpack_require__(597);
+	var assocIndexOf = __webpack_require__(598);
 	
 	/**
 	 * Gets the list cache value for `key`.
@@ -70182,10 +70347,10 @@
 
 
 /***/ }),
-/* 600 */
+/* 601 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var assocIndexOf = __webpack_require__(597);
+	var assocIndexOf = __webpack_require__(598);
 	
 	/**
 	 * Checks if a list cache value for `key` exists.
@@ -70204,10 +70369,10 @@
 
 
 /***/ }),
-/* 601 */
+/* 602 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var assocIndexOf = __webpack_require__(597);
+	var assocIndexOf = __webpack_require__(598);
 	
 	/**
 	 * Sets the list cache `key` to `value`.
@@ -70236,11 +70401,11 @@
 
 
 /***/ }),
-/* 602 */
+/* 603 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var getNative = __webpack_require__(582),
-	    root = __webpack_require__(569);
+	var getNative = __webpack_require__(583),
+	    root = __webpack_require__(570);
 	
 	/* Built-in method references that are verified to be native. */
 	var Map = getNative(root, 'Map');
@@ -70249,10 +70414,10 @@
 
 
 /***/ }),
-/* 603 */
+/* 604 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var getMapData = __webpack_require__(604);
+	var getMapData = __webpack_require__(605);
 	
 	/**
 	 * Removes `key` and its value from the map.
@@ -70273,10 +70438,10 @@
 
 
 /***/ }),
-/* 604 */
+/* 605 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var isKeyable = __webpack_require__(605);
+	var isKeyable = __webpack_require__(606);
 	
 	/**
 	 * Gets the data for `map`.
@@ -70297,7 +70462,7 @@
 
 
 /***/ }),
-/* 605 */
+/* 606 */
 /***/ (function(module, exports) {
 
 	/**
@@ -70318,10 +70483,10 @@
 
 
 /***/ }),
-/* 606 */
+/* 607 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var getMapData = __webpack_require__(604);
+	var getMapData = __webpack_require__(605);
 	
 	/**
 	 * Gets the map value for `key`.
@@ -70340,10 +70505,10 @@
 
 
 /***/ }),
-/* 607 */
+/* 608 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var getMapData = __webpack_require__(604);
+	var getMapData = __webpack_require__(605);
 	
 	/**
 	 * Checks if a map value for `key` exists.
@@ -70362,10 +70527,10 @@
 
 
 /***/ }),
-/* 608 */
+/* 609 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var getMapData = __webpack_require__(604);
+	var getMapData = __webpack_require__(605);
 	
 	/**
 	 * Sets the map `key` to `value`.
@@ -70390,10 +70555,10 @@
 
 
 /***/ }),
-/* 609 */
+/* 610 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var baseToString = __webpack_require__(610);
+	var baseToString = __webpack_require__(611);
 	
 	/**
 	 * Converts `value` to a string. An empty string is returned for `null`
@@ -70424,13 +70589,13 @@
 
 
 /***/ }),
-/* 610 */
+/* 611 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var Symbol = __webpack_require__(568),
-	    arrayMap = __webpack_require__(611),
-	    isArray = __webpack_require__(564),
-	    isSymbol = __webpack_require__(566);
+	var Symbol = __webpack_require__(569),
+	    arrayMap = __webpack_require__(612),
+	    isArray = __webpack_require__(565),
+	    isSymbol = __webpack_require__(567);
 	
 	/** Used as references for various `Number` constants. */
 	var INFINITY = 1 / 0;
@@ -70467,7 +70632,7 @@
 
 
 /***/ }),
-/* 611 */
+/* 612 */
 /***/ (function(module, exports) {
 
 	/**
@@ -70494,10 +70659,10 @@
 
 
 /***/ }),
-/* 612 */
+/* 613 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var isSymbol = __webpack_require__(566);
+	var isSymbol = __webpack_require__(567);
 	
 	/** Used as references for various `Number` constants. */
 	var INFINITY = 1 / 0;
@@ -70521,10 +70686,10 @@
 
 
 /***/ }),
-/* 613 */
+/* 614 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var baseSet = __webpack_require__(614);
+	var baseSet = __webpack_require__(615);
 	
 	/**
 	 * Sets the value at `path` of `object`. If a portion of `path` doesn't exist,
@@ -70562,14 +70727,14 @@
 
 
 /***/ }),
-/* 614 */
+/* 615 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var assignValue = __webpack_require__(615),
-	    castPath = __webpack_require__(563),
-	    isIndex = __webpack_require__(618),
-	    isObject = __webpack_require__(585),
-	    toKey = __webpack_require__(612);
+	var assignValue = __webpack_require__(616),
+	    castPath = __webpack_require__(564),
+	    isIndex = __webpack_require__(619),
+	    isObject = __webpack_require__(586),
+	    toKey = __webpack_require__(613);
 	
 	/**
 	 * The base implementation of `_.set`.
@@ -70615,11 +70780,11 @@
 
 
 /***/ }),
-/* 615 */
+/* 616 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var baseAssignValue = __webpack_require__(616),
-	    eq = __webpack_require__(598);
+	var baseAssignValue = __webpack_require__(617),
+	    eq = __webpack_require__(599);
 	
 	/** Used for built-in method references. */
 	var objectProto = Object.prototype;
@@ -70649,10 +70814,10 @@
 
 
 /***/ }),
-/* 616 */
+/* 617 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var defineProperty = __webpack_require__(617);
+	var defineProperty = __webpack_require__(618);
 	
 	/**
 	 * The base implementation of `assignValue` and `assignMergeValue` without
@@ -70680,10 +70845,10 @@
 
 
 /***/ }),
-/* 617 */
+/* 618 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var getNative = __webpack_require__(582);
+	var getNative = __webpack_require__(583);
 	
 	var defineProperty = (function() {
 	  try {
@@ -70697,7 +70862,7 @@
 
 
 /***/ }),
-/* 618 */
+/* 619 */
 /***/ (function(module, exports) {
 
 	/** Used as references for various `Number` constants. */
@@ -70728,7 +70893,7 @@
 
 
 /***/ }),
-/* 619 */
+/* 620 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -70755,15 +70920,15 @@
 	
 	exports['default'] = createFieldsStore;
 	
-	var _set = __webpack_require__(613);
+	var _set = __webpack_require__(614);
 	
 	var _set2 = _interopRequireDefault(_set);
 	
-	var _createFormField = __webpack_require__(620);
+	var _createFormField = __webpack_require__(621);
 	
 	var _createFormField2 = _interopRequireDefault(_createFormField);
 	
-	var _utils = __webpack_require__(621);
+	var _utils = __webpack_require__(622);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
@@ -71076,7 +71241,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 620 */
+/* 621 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -71116,7 +71281,7 @@
 	}
 
 /***/ }),
-/* 621 */
+/* 622 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -71306,7 +71471,7 @@
 	}
 
 /***/ }),
-/* 622 */
+/* 623 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -71346,7 +71511,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 623 */
+/* 624 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -71354,6 +71519,8 @@
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
+	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 	
 	var _react = __webpack_require__(1);
 	
@@ -71370,6 +71537,8 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 	
 	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
+	
+	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
@@ -71399,11 +71568,12 @@
 	            _props$className = _props.className,
 	            className = _props$className === undefined ? '' : _props$className,
 	            prefixCls = _props.prefixCls,
-	            style = _props.style;
+	            style = _props.style,
+	            others = _objectWithoutProperties(_props, ['children', 'className', 'prefixCls', 'style']);
 	
 	        return _react2["default"].createElement(
 	            'div',
-	            { className: prefixCls + '-item' + ' ' + className, style: style },
+	            _extends({ className: prefixCls + '-item' + ' ' + className, style: style }, others),
 	            children
 	        );
 	    };
@@ -71418,7 +71588,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 624 */
+/* 625 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -71513,6 +71683,117 @@
 	}(_react.Component);
 	
 	exports["default"] = Demo9;
+	module.exports = exports["default"];
+
+/***/ }),
+/* 626 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _beeLayout = __webpack_require__(3);
+	
+	var _index = __webpack_require__(268);
+	
+	var _index2 = _interopRequireDefault(_index);
+	
+	var _beeForm = __webpack_require__(515);
+	
+	var _beeForm2 = _interopRequireDefault(_beeForm);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+	
+	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); } /**
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @title 使用normal格式化
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @description 配合form 使用normal格式化，已 MothPicker 为例
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
+	
+	var MonthPicker = _index2["default"].MonthPicker;
+	
+	var Demo4 = function (_Component) {
+	    _inherits(Demo4, _Component);
+	
+	    function Demo4() {
+	        var _temp, _this, _ret;
+	
+	        _classCallCheck(this, Demo4);
+	
+	        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+	            args[_key] = arguments[_key];
+	        }
+	
+	        return _ret = (_temp = (_this = _possibleConstructorReturn(this, _Component.call.apply(_Component, [this].concat(args))), _this), _this.submit = function (e) {
+	            _this.props.form.validateFields(function (err, values) {
+	                if (err) {
+	                    console.log('校验失败', values);
+	                } else {
+	                    console.log('提交成功', values);
+	                }
+	            });
+	        }, _temp), _possibleConstructorReturn(_this, _ret);
+	    }
+	
+	    Demo4.prototype.render = function render() {
+	        var _props$form = this.props.form,
+	            getFieldProps = _props$form.getFieldProps,
+	            getFieldError = _props$form.getFieldError;
+	
+	        return _react2["default"].createElement(
+	            "div",
+	            null,
+	            _react2["default"].createElement(
+	                _beeLayout.Row,
+	                { style: { 'marginBottom': '10px' } },
+	                _react2["default"].createElement(
+	                    _beeLayout.Col,
+	                    { md: 6, style: { 'marginBottom': '10px' } },
+	                    _react2["default"].createElement(MonthPicker, _extends({
+	                        format: "YYYY-MM"
+	                    }, getFieldProps('date', {
+	                        validateTrigger: 'onBlur',
+	                        initialValue: null,
+	                        normalize: function normalize(value) {
+	                            if (value && value.format) {
+	                                return value.format('YYYY-MM');
+	                            } else {
+	                                return value;
+	                            }
+	                        },
+	                        rules: [{
+	                            required: true, message: '请输入日期'
+	                        }]
+	                    })))
+	                ),
+	                _react2["default"].createElement(
+	                    "button",
+	                    { className: "u-button", onClick: this.submit },
+	                    "\u83B7\u5F97\u503C"
+	                )
+	            )
+	        );
+	    };
+	
+	    return Demo4;
+	}(_react.Component);
+	
+	exports["default"] = _beeForm2["default"].createForm()(Demo4);
 	module.exports = exports["default"];
 
 /***/ })

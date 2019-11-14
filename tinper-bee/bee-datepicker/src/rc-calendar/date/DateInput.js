@@ -230,7 +230,6 @@ class DateInput extends React.Component {
     const props = this.props;
     const { invalid, str } = this.state;
     const { locale, prefixCls, placeholder, clearIcon, renderError,inputTabIndex } = props;
-    console.log('=========', str, formatDate(props.selectedValue, props.format))
     const invalidClass = invalid ? `${prefixCls}-input-invalid` : '';
     return (
       <div className={`${prefixCls}-input-wrap`}>

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { convertListToTree } from "./utils";
 const defaultHeight = 30;
 const rowDiff = 2; //行差值
 let treeTypeIndex = 0;
@@ -42,11 +43,14 @@ export default function bigData(Table) {
       this.endIndex = this.currentIndex + this.loadCount; //数据结束位置
       this.setRowHeight = this.setRowHeight.bind(this);
       this.setRowParentIndex = this.setRowParentIndex.bind(this);
-      this.expandedRowKeys = [];
+      this.expandedRowKeys = props.expandedRowKeys || [];
+      this.flatTreeKeysMap = {}; //树表，扁平结构数据的 Map 映射，方便获取各节点信息
+      this.flatTreeData = []; //深度遍历处理后的data数组
+      this.treeData = []; //树表的data数据
     }
     componentWillReceiveProps(nextProps) {
       const props = this.props;
-      const {currentIndex ,data} = nextProps;
+      const {currentIndex ,data, expandedRowKeys:newExpandedKeys} = nextProps;
       const _this = this,dataLen = data.length;
       if (nextProps.scroll.y !== props.scroll.y) {
         const rowHeight = nextProps.height ? nextProps.height : defaultHeight;
@@ -60,24 +64,119 @@ export default function bigData(Table) {
           _this.endIndex = _this.currentIndex + _this.loadCount; //数据结束位置
         
       }
-      if (nextProps.data !== props.data) {
+      if (nextProps.data.toString() !== props.data.toString()) {
+        const isTreeType = nextProps.isTree ? true : _this.checkIsTreeType(nextProps.data);
+        _this.treeType = isTreeType;
+        //fix: 滚动加载场景中,数据动态改变下占位计算错误的问题(26 Jun)
         _this.cachedRowHeight = []; //缓存每行的高度
         _this.cachedRowParentIndex = [];
         _this.computeCachedRowParentIndex(nextProps.data);
+        _this.treeData = [];
+        _this.flatTreeData = [];
         if(nextProps.data.length>0){
           _this.endIndex = _this.currentIndex - nextProps.loadBuffer + _this.loadCount; //数据结束位置
+        }
+        if(isTreeType){
+          _this.getTreeData();
         }
       }
       //如果传currentIndex，会判断该条数据是否在可视区域，如果没有的话，则重新计算startIndex和endIndex
       if(currentIndex!==-1 && currentIndex !== this.currentIndex){
         _this.setStartAndEndIndex(currentIndex,dataLen);
       }
+      if(newExpandedKeys !== props.expandedRowKeys){
+        _this.cacheExpandedKeys = newExpandedKeys;
+        //重新递归数据
+        let flatTreeData = _this.deepTraversal(data);
+        let sliceTreeList = flatTreeData.slice(_this.startIndex, _this.endIndex);
+        _this.flatTreeData = flatTreeData;
+        _this.handleTreeListChange(sliceTreeList);
+        _this.cacheExpandedKeys = null;
+      }
 
     }
 
-    componentDidMount() {
-      const { data } = this.props;
+    componentWillMount() {
+      const { data,isTree } = this.props;
+      const isTreeType = isTree?true:this.checkIsTreeType();
+      //设置data中每个元素的parentIndex
       this.computeCachedRowParentIndex(data);
+      //如果是树表，递归data
+      if(isTreeType){
+        this.treeType = isTreeType;
+        this.getTreeData();
+      } 
+    }
+
+    /**
+     * 如果是树形表，需要对传入的 data 进行处理
+     */
+    getTreeData = () => {
+      let { startIndex, endIndex } = this; 
+      const { data } = this.props;
+      let sliceTreeList = [];
+      let flatTreeData = this.deepTraversal(data);
+          sliceTreeList = flatTreeData.slice(startIndex, endIndex);
+      this.flatTreeData = flatTreeData;
+      this.handleTreeListChange(sliceTreeList);
+    }
+
+    /**
+     * 深度遍历树形 data，把数据拍平，变为一维数组
+     * @param {*} data 
+     * @param {*} parentKey 标识父节点
+     * @param {*} isShown 该节点是否显示在页面中，当节点的父节点是展开状态 或 该节点是根节点时，该值为 true
+     */
+    deepTraversal = (treeData, parentKey=null, isShown) => {
+      const _this = this;
+      let {cacheExpandedKeys, expandedRowKeys = [], flatTreeKeysMap} = _this,
+          flatTreeData = [],
+          dataCopy = treeData;
+      if(Array.isArray(dataCopy)){
+        for (let i=0, l=dataCopy.length; i<l; i++) {
+          let { key, children, ...props } = dataCopy[i];
+          let dataCopyI = new Object();
+          let isLeaf = children ? false : true,
+              isExpanded = cacheExpandedKeys ? cacheExpandedKeys.indexOf(key) !== -1 : expandedRowKeys.indexOf(key) !== -1;
+          dataCopyI = Object.assign(dataCopyI,{
+            key,
+            isExpanded,
+            parentKey : parentKey,
+            isShown,
+            isLeaf,
+            index: flatTreeData.length
+          },{...props});
+          //该节点的父节点是展开状态 或 该节点是根节点
+          if(isShown || parentKey === null){
+            flatTreeData.push(dataCopyI); // 取每项数据放入一个新数组
+            flatTreeKeysMap[key] = dataCopyI;
+          }
+          if (Array.isArray(children) && children.length > 0){
+            // 若存在children则递归调用，把数据拼接到新数组中，并且删除该children
+            flatTreeData = flatTreeData.concat(this.deepTraversal(children, key, isExpanded));
+          }
+        }
+      }
+      return flatTreeData;
+    }
+
+    /**
+     * 将截取后的 List 数组转换为 Tree 结构，并更新 state
+     */
+    handleTreeListChange = (treeList, startIndex, endIndex) => {
+      // 属性配置设置
+      let attr = {
+        id: 'key',
+        parendId: 'parentKey',
+        rootId: null,
+        isLeaf: 'isLeaf'
+      };
+      let treeData = convertListToTree(treeList, attr, this.flatTreeKeysMap);
+
+      this.startIndex = typeof(startIndex) !== "undefined" ? startIndex : this.startIndex;
+      this.endIndex = typeof(endIndex) !== "undefined" ? endIndex : this.endIndex;
+
+      this.treeData = treeData;
     }
 
     /**
@@ -143,8 +242,8 @@ export default function bigData(Table) {
      *判断是否是树形结构
      *
      */
-    checkIsTreeType() {
-      const { data } = this.props;
+    checkIsTreeType(newData) {
+      const data = newData ? newData : this.props.data;
       let rs = false;
       const len = data.length > 30 ? 30 : data.length;
       //取前三十个看看是否有children属性，有则为树形结构
@@ -190,11 +289,11 @@ export default function bigData(Table) {
       for (let i = start; i < end; i++) {
         if (this.cachedRowHeight[i] == undefined) {
           if (this.treeType) {
-            currentKey = this.keys[i];
+            // currentKey = this.keys[i];
+            currentKey = this.flatTreeData[i].key;
             currentRowHeight = 0;
             if (
-              this.firstLevelKey.indexOf(currentKey) >= 0 ||
-              this.expandChildRowKeys.indexOf(currentKey) >= 0
+              this.flatTreeKeysMap.hasOwnProperty(currentKey)
             ) {
               currentRowHeight = rowHeight;
             }
@@ -211,8 +310,9 @@ export default function bigData(Table) {
      *@description  根据返回的scrollTop计算当前的索引。此处做了两次缓存一个是根据上一次的currentIndex计算当前currentIndex。另一个是根据当前内容区的数据是否在缓存中如果在则不重新render页面
      *@param 最新一次滚动的scrollTop
      *@param treeType是否是树状表
+     *@param callback表体滚动过程中触发的回调
      */
-    handleScrollY = (nextScrollTop, treeType) => {
+    handleScrollY = (nextScrollTop, treeType, callback) => {
       //树表逻辑
       // 关键点是动态的获取startIndex和endIndex
       // 法子一：子节点也看成普通tr，最开始需要设置一共有多少行，哪行显示哪行不显示如何确定
@@ -224,7 +324,8 @@ export default function bigData(Table) {
         currentIndex = 0,
         loadCount,
         scrollTop,
-        currentScrollTop
+        currentScrollTop,
+        flatTreeData
       } = _this;
       let { endIndex, startIndex } = _this;
       const { needRender } = _this.state;
@@ -238,11 +339,11 @@ export default function bigData(Table) {
         let currentRowHeight = this.cachedRowHeight[index];
         if (currentRowHeight === undefined) {
           if (this.treeType) {
-            currentKey = this.keys[index];
+            // currentKey = this.keys[index];
+            currentKey = this.flatTreeData[index].key;
             currentRowHeight = 0;
             if (
-              this.firstLevelKey.indexOf(currentKey) >= 0 ||
-              this.expandChildRowKeys.indexOf(currentKey) >= 0
+              this.flatTreeKeysMap.hasOwnProperty(currentKey)
             ) {
               currentRowHeight = rowHeight;
             }
@@ -274,25 +375,25 @@ export default function bigData(Table) {
           ) {
             if (this.cachedRowHeight[tempIndex]) {
               rowsHeight += this.cachedRowHeight[tempIndex];
-              if (
-                (treeType &&
-                  _this.cachedRowParentIndex[tempIndex] !== tempIndex) ||
-                !treeType
-              ) {
+              // if (
+              //   (treeType &&
+              //     _this.cachedRowParentIndex[tempIndex] !== tempIndex) ||
+              //   !treeType
+              // ) {
                 rowsInView++;
-              }
+              // }
             }
             tempIndex++;
           }
-          if (treeType) {
-            const treeIndex = index;
-            index = _this.cachedRowParentIndex[treeIndex];
-            if (index === undefined) {
-              // console.log('index is undefined********'+treeIndex);
-              index = this.getParentIndex(treeIndex);
-              // console.log("getParentIndex****"+index);
-            }
-          }
+          // if (treeType) {
+          //   const treeIndex = index;
+          //   index = _this.cachedRowParentIndex[treeIndex];
+          //   if (index === undefined) {
+          //     // console.log('index is undefined********'+treeIndex);
+          //     index = this.getParentIndex(treeIndex);
+          //     // console.log("getParentIndex****"+index);
+          //   }
+          // }
           // console.log('parentIndex*********',index);
           // 如果rowsInView 小于 缓存的数据则重新render
           // 向下滚动 下临界值超出缓存的endIndex则重新渲染
@@ -300,13 +401,17 @@ export default function bigData(Table) {
             startIndex = index - loadBuffer > 0 ? index - loadBuffer : 0;
             // endIndex = startIndex + rowsInView + loadBuffer*2;
             endIndex = startIndex + loadCount;
-            if (endIndex > data.length) {
-              endIndex = data.length;
+            if (treeType && endIndex > flatTreeData.length || !treeType && endIndex > data.length) {
+              endIndex = treeType ? flatTreeData.length : data.length;
             }
             if (endIndex > this.endIndex ) {
               this.startIndex = startIndex;
               this.endIndex = endIndex;
+              if(treeType) {
+                this.handleTreeListChange(flatTreeData.slice(startIndex,endIndex), startIndex, endIndex)
+              }
               this.setState({ needRender: !needRender });
+              callback(parseInt(currentIndex + rowsInView));
             }
           }
           // 向上滚动，当前的index是否已经加载（currentIndex），若干上临界值小于startIndex则重新渲染
@@ -318,7 +423,11 @@ export default function bigData(Table) {
             if (startIndex < this.startIndex) {
               this.startIndex = startIndex;
               this.endIndex = this.startIndex + loadCount;
+              if(treeType) {
+                this.handleTreeListChange(flatTreeData.slice(startIndex,this.endIndex), startIndex, this.endIndex)
+              }
               this.setState({ needRender: !needRender });
+              callback(parseInt(currentIndex + rowsInView));
             }
             // console.log(
             //   "**index**" + index,
@@ -369,6 +478,7 @@ export default function bigData(Table) {
       const _this = this;
       let {expandedRowKeys = []} =  _this;
       const {needRender} = _this.state;
+      const { data } = _this.props;
       const rowKey = _this.getRowKey(record, index);
       // 记录展开子表行的key
       // 展开
@@ -395,7 +505,7 @@ export default function bigData(Table) {
         if(expandState){
           expandedRowKeys.push(rowKey);
           this.setState({ needRender: !needRender });
-         }else{
+        }else{
            let index = -1;
            expandedRowKeys.forEach((r, i) => {
              if (r === rowKey) {
@@ -406,11 +516,20 @@ export default function bigData(Table) {
              expandedRowKeys.splice(index, 1);
              this.setState({ needRender: !needRender });
            }
-         }
+        }
+        if(this.treeType) {
+            //收起和展开时，缓存 expandedKeys
+            _this.cacheExpandedKeys = expandedRowKeys;
+            //重新递归数据
+            let flatTreeData = _this.deepTraversal(data);
+            let sliceTreeList = flatTreeData.slice(_this.startIndex, _this.endIndex);
+            _this.flatTreeData = flatTreeData;
+            _this.handleTreeListChange(sliceTreeList);
+            _this.cacheExpandedKeys = null;
+        }
       }
       
-      
-    // expandState为true时，记录下
+      // expandState为true时，记录下
       _this.props.onExpand(expandState, record);
     };
 
@@ -418,7 +537,7 @@ export default function bigData(Table) {
     render() {
       const { data } = this.props;
       const { scrollTop } = this;
-      let { endIndex, startIndex } = this;
+      let { endIndex, startIndex, treeData, treeType, flatTreeData } = this;
       let expandedRowKeys = this.props.expandedRowKeys?this.props.expandedRowKeys: this.expandedRowKeys;
       if(startIndex < 0){
         startIndex = 0;
@@ -426,50 +545,34 @@ export default function bigData(Table) {
       if(endIndex < 0 ){
         endIndex = 0;
       }
-      if(endIndex > data.length){
-        endIndex = data.length;
+      if (treeType && endIndex > flatTreeData.length || !treeType && endIndex > data.length) {
+        endIndex = treeType ? flatTreeData.length : data.length;
       }
       const lazyLoad = {
         startIndex: startIndex,
+        endIndex:endIndex,
         startParentIndex: startIndex //为树状节点做准备
       };
-      if (this.treeType) {
-        const preSubCounts = this.cachedRowParentIndex.findIndex(item => {
-          return item == startIndex;
-        });
-        const sufSubCounts = this.cachedRowParentIndex.findIndex(item => {
-          return item == endIndex;
-        });
-        lazyLoad.preHeight = this.getSumHeight(
-          0,
-          preSubCounts > -1 ? preSubCounts : 0
-        );
-        lazyLoad.sufHeight = this.getSumHeight(
-          sufSubCounts + 1 > 0
-            ? sufSubCounts + 1
-            : this.cachedRowParentIndex.length,
-          this.cachedRowParentIndex.length
-        );
-
-        if (preSubCounts > 0) {
-          lazyLoad.startIndex = preSubCounts;
-        }
+      if (treeType) {
+        lazyLoad.preHeight = this.getSumHeight(0, startIndex);
+        lazyLoad.sufHeight = this.getSumHeight(endIndex, flatTreeData.length);
       } else {
         lazyLoad.preHeight = this.getSumHeight(0, startIndex);
         lazyLoad.sufHeight = this.getSumHeight(endIndex, data.length);
       }
       // console.log('*******expandedRowKeys*****'+expandedRowKeys);
+      const dataSource = treeType && Array.isArray(treeData) && treeData.length > 0 ? treeData : data.slice(startIndex, endIndex);
       return (
         <Table
           {...this.props}
-          data={data.slice(startIndex, endIndex)}
+          data={dataSource}
           lazyLoad={lazyLoad}
           handleScrollY={this.handleScrollY}
           scrollTop={scrollTop}
           setRowHeight={this.setRowHeight}
           setRowParentIndex={this.setRowParentIndex}
           onExpand={this.onExpand}
-          onExpandedRowsChange={this.onExpandedRowsChange}
+          onExpandedRowsChange={this.props.onExpandedRowsChange}
           expandedRowKeys={expandedRowKeys}
           //   className={'lazy-table'}
         />

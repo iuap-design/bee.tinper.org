@@ -94,7 +94,7 @@ function sort(Table, Icon) {
         children = item.children;
         flatColumns.push(item);
         if (children) {
-          item.children = [];
+          // item.children = [];
           _this._toFlatColumn(children, flatColumns.length - 1, flatColumns);
         }
       });
@@ -123,6 +123,14 @@ function sort(Table, Icon) {
     //每个column上添加orderNum属性，不排序时为“”。
     //点击时orderNum有值则不重新赋值，如果没有值，则取当前column下的有oderNum的length值。并排序
     //点击置为“”时，动态的设置相关column的orderNum值。并排序
+
+
+    // 默认的比较函数,即字符串比较函数
+
+    // 数值比较函数
+
+
+    // 中文比较函数，按拼音排序
 
 
     SortTable.prototype._flatToColumn = function _flatToColumn(flatColumns) {
@@ -198,15 +206,22 @@ function sort(Table, Icon) {
     };
 
     this._sortBy = function (pre, after, orderCols, orderColslen, currentIndex) {
-      var preKey = pre[orderCols[currentIndex].key];
-      var afterKey = after[orderCols[currentIndex].key];
+      var currentCol = orderCols[currentIndex];
+      var preKey = pre[currentCol.key];
+      var afterKey = after[currentCol.key];
+      var colSortFun = currentCol.sorter;
+      if (typeof colSortFun !== 'function') {
+        colSortFun = function colSortFun() {
+          return preKey - afterKey;
+        };
+      }
       if (preKey == afterKey && currentIndex + 1 <= orderColslen) {
         return _this3._sortBy(pre, after, orderCols, orderColslen, currentIndex + 1);
       }
-      if (orderCols[currentIndex].order == "ascend") {
-        return preKey - afterKey;
+      if (currentCol.order == "ascend") {
+        return colSortFun(pre, after);
       } else {
-        return afterKey - preKey;
+        return -colSortFun(pre, after);
       }
     };
 
@@ -328,8 +343,29 @@ function sort(Table, Icon) {
       }
 
       var sortButton = void 0;
-      if (column.sorter) {
+
+      // sorter和sortEnable均可触发排序,且sorter优先级更高
+      if (column.sorter || column.sortEnable) {
         //大于0说明不是升序就是降序，判断orderNum有没有值，没有值赋值
+        if (column.sortEnable && !column.sorter) {
+          switch (column.fieldType) {
+            case 'number':
+              {
+                column.sorter = _this3.numberSortFn(column.dataIndex);
+                break;
+              }
+            case 'stringChinese':
+              {
+                column.sorter = _this3.chineseSortFn(column.dataIndex);
+                break;
+              }
+            default:
+              {
+                column.sorter = _this3.defaultSortFn(column.dataIndex);
+                break;
+              }
+          }
+        }
         if (iconTypeIndex > 0 && !column.orderNum && mode == "multiple") {
           column.orderNum = _this3.getOrderNum();
         }
@@ -361,6 +397,26 @@ function sort(Table, Icon) {
         sortButton
       );
       return column;
+    };
+
+    this.defaultSortFn = function (key) {
+      return function (a, b) {
+        return a[key] >= b[key] ? 1 : -1;
+      };
+    };
+
+    this.numberSortFn = function (key) {
+      return function (a, b) {
+        var numberA = parseFloat(a[key]);
+        var numberB = parseFloat(b[key]);
+        return numberA >= numberB ? 1 : -1;
+      };
+    };
+
+    this.chineseSortFn = function (key) {
+      return function (a, b) {
+        return a[key].localeCompare(b[key], 'zh-Hans-CN', { sensitivity: 'accent' });
+      };
     };
   }, _temp;
 }

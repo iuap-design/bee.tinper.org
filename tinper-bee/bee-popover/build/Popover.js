@@ -291,16 +291,18 @@ var _initialiseProps = function _initialiseProps() {
     this.onVisibleChange = function (visible) {
         var onVisibleChange = _this3.props.onVisibleChange;
 
-        if (!visible) {
-            _this3.hide(visible);
-        }
         onVisibleChange && onVisibleChange(visible);
     };
 
     this.hide = function (visible) {
         var onHide = _this3.props.onHide;
 
-        onHide && onHide(visible);
+        if (typeof onHide !== 'undefined') {
+            //向下兼容
+            onHide(visible);
+        } else {
+            _this3.setState({ show: visible });
+        }
     };
 };
 

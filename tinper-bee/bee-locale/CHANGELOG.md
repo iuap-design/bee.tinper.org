@@ -1,3 +1,18 @@
+<a name="1.0.1"></a>
+## [1.0.1](https://github.com/tinper-bee/bee-locale/compare/v1.0.0...v1.0.1) (2019-11-13)
+
+
+### Features
+
+* **bee-locale:** 新增inputNumber多语内容 ([50273b0](https://github.com/tinper-bee/bee-locale/commit/50273b0))
+
+
+
+<a name="1.0.0"></a>
+# [1.0.0](https://github.com/tinper-bee/bee-locale/compare/v0.0.14...v1.0.0) (2019-11-05)
+
+
+
 <a name="0.0.14"></a>
 ## [0.0.14](https://github.com/tinper-bee/bee-locale/compare/v0.0.13...v0.0.14) (2019-05-21)
 

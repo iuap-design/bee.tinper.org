@@ -31,7 +31,7 @@ class Demo1 extends Component {
             <div>
                 <InputNumber
                     iconStyle="one"
-                    min={-9}
+                    min={-999999}
                     max={999999}
                     {...getFieldProps("valueStd", {
                         initialValue: 0

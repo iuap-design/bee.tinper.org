@@ -108,7 +108,7 @@ var MonthPanel = function (_React$Component) {
 
     return _react2["default"].createElement(
       'div',
-      { className: prefixCls, style: props.style },
+      { className: prefixCls, style: props.style, tabIndex: '0' },
       _react2["default"].createElement(
         'div',
         null,

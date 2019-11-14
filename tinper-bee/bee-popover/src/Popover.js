@@ -156,15 +156,16 @@ class Popover extends Component{
 
     onVisibleChange = (visible) => {
         let { onVisibleChange } = this.props;
-        if(!visible){
-            this.hide(visible);
-        }
         onVisibleChange && onVisibleChange(visible);
     }
 
     hide = (visible) => {
         let { onHide } = this.props;
-        onHide && onHide(visible);
+        if(typeof onHide !== 'undefined'){ //向下兼容
+            onHide(visible);
+        } else {
+            this.setState({show:visible});
+        }
     }
 
     render() {

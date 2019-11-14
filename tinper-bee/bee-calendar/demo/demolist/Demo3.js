@@ -7,7 +7,7 @@
  */
 
 import React, { Component } from 'react';
-import Calendar from '../../src/index';
+import Calendar from '../../src';
 import zhCN from 'rc-calendar/lib/locale/zh_CN';
 
 // 1、设置moment语言

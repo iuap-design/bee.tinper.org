@@ -58,7 +58,7 @@ export default function sort(Table, Icon) {
         children = item.children;
         flatColumns.push(item);
         if(children){
-          item.children = [];
+          // item.children = [];
           _this._toFlatColumn(children,flatColumns.length - 1,flatColumns);
         }
       });
@@ -115,15 +115,20 @@ export default function sort(Table, Icon) {
      * orderType:升序、降序
      */
     _sortBy = (pre, after, orderCols, orderColslen, currentIndex) => {
-      const preKey = pre[orderCols[currentIndex].key];
-      const afterKey = after[orderCols[currentIndex].key];
+      const currentCol = orderCols[currentIndex];
+      const preKey = pre[currentCol.key];
+      const afterKey = after[currentCol.key];
+      let colSortFun = currentCol.sorter;
+      if(typeof colSortFun !== 'function'){
+        colSortFun = () => preKey - afterKey;
+      }
       if (preKey == afterKey && currentIndex + 1 <= orderColslen) {
         return this._sortBy(pre, after, orderCols, orderColslen, currentIndex + 1);
       }
-      if (orderCols[currentIndex].order == "ascend") {
-        return preKey - afterKey;
-      } else {
-        return afterKey - preKey;
+      if (currentCol.order == "ascend") {
+       return colSortFun(pre,after);
+      } else { 
+        return -colSortFun(pre,after);
       }
     };
     /**
@@ -239,8 +244,26 @@ export default function sort(Table, Icon) {
       }
 
       let sortButton;
-      if (column.sorter) {
+
+      // sorter和sortEnable均可触发排序,且sorter优先级更高
+      if (column.sorter || column.sortEnable ) {
         //大于0说明不是升序就是降序，判断orderNum有没有值，没有值赋值
+        if ( column.sortEnable && !column.sorter) {
+          switch(column.fieldType){
+            case 'number':{
+              column.sorter = this.numberSortFn(column.dataIndex);
+              break;
+            }
+            case 'stringChinese':{
+              column.sorter = this.chineseSortFn(column.dataIndex);
+              break;
+            }
+            default:{
+              column.sorter = this.defaultSortFn(column.dataIndex);
+              break;
+            }
+          }
+        }
         if (iconTypeIndex > 0 && !column.orderNum && mode == "multiple") {
           column.orderNum = this.getOrderNum();
         }
@@ -264,6 +287,22 @@ export default function sort(Table, Icon) {
         </span>;
       return column;
     };
+
+    // 默认的比较函数,即字符串比较函数
+    defaultSortFn = (key) => (a, b)=> {
+      return a[key] >= b[key] ? 1 : -1;
+    }
+    // 数值比较函数
+    numberSortFn = (key) => (a, b)=> {
+        let numberA = parseFloat(a[key]);
+        let numberB = parseFloat(b[key]);
+        return numberA >= numberB ? 1 : -1;
+    }
+
+    // 中文比较函数，按拼音排序
+    chineseSortFn = (key) => (a, b)=>{
+      return a[key].localeCompare(b[key], 'zh-Hans-CN',{sensitivity: 'accent'});
+    } 
 
     _flatToColumn(flatColumns){
       const colLen = flatColumns.length;

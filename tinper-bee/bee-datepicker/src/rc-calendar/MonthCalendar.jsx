@@ -40,6 +40,11 @@ class MonthCalendar extends React.Component {
   }
 
   onKeyDown = (event) => {
+    if (event.target.nodeName.toLowerCase() === 'input') {
+      return undefined;
+    }else{
+      this.props.onKeyDown&&this.props.onKeyDown(event);
+    }
     const keyCode = event.keyCode;
     const ctrlKey = event.ctrlKey || event.metaKey;
     const stateValue = this.state.value;
@@ -115,7 +120,7 @@ class MonthCalendar extends React.Component {
     let { mode, value } = state;
     value = value?value:moment()
     const { prefixCls,locale,format,showDateInput,onChange,onSelect,
-      onClear,showMonthInput } = props;
+      onClear,showMonthInput,renderError } = props;
     const children = (
       <div className={`${props.prefixCls}-month-calendar-content`}>
         <div className={`${props.prefixCls}-month-header-wrap`}>
@@ -129,6 +134,7 @@ class MonthCalendar extends React.Component {
             onChange={this.onInputChange}
             selectedValue={value}
             onClear={this.onClear}
+            renderError={renderError}
           />:''
         }
           <CalendarHeader

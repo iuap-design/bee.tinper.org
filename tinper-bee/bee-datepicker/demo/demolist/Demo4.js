@@ -58,7 +58,7 @@ class Demo4 extends Component {
                     </Col>
                     <Col md={6} style={{'marginBottom':'10px'}}>
                         <MonthPicker
-                            format="YYYY-MM"
+                            format='YYYY-MM'
                             onSelect={this.onSelect}
                             onChange={this.onChange}
                             locale={zhCN}

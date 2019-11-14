@@ -18,6 +18,10 @@ var _ColumnGroup = require('./ColumnGroup');
 
 var _ColumnGroup2 = _interopRequireDefault(_ColumnGroup);
 
+var _beeIcon = require('bee-icon');
+
+var _beeIcon2 = _interopRequireDefault(_beeIcon);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
@@ -25,16 +29,39 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 //行控制管理
-
 var ColumnManager = function () {
-  function ColumnManager(columns, elements, originWidth) {
+  function ColumnManager(columns, elements, originWidth, rowDraggAble, showRowNum) {
     _classCallCheck(this, ColumnManager);
 
-    this._cached = {};
+    _initialiseProps.call(this);
 
+    //判断是否使用行拖拽
+    if (rowDraggAble) {
+      var dragHandleColumn = [{
+        className: "drag-handle-column",
+        title: "",
+        key: "dragHandle",
+        dataIndex: "dragHandle",
+        // fixed:"left",
+        width: 49,
+        render: function render() {
+          return _react2["default"].createElement(_beeIcon2["default"], { type: 'uf-navmenu' });
+        }
+      }];
+      columns = dragHandleColumn.concat(columns);
+    }
+    columns = this.addOrderColumn(columns, showRowNum);
+    columns = this.deleteColumnNotShow(columns);
     this.columns = columns || this.normalize(elements);
+
     this.originWidth = originWidth;
   }
+
+  // delete the column which does not show
+
+
+  // 向数据列中添加一列:序号
+
 
   ColumnManager.prototype.isAnyColumnsFixed = function isAnyColumnsFixed() {
     var _this = this;
@@ -208,7 +235,9 @@ var ColumnManager = function () {
     return element && (element.type === _Column2["default"] || element.type === _ColumnGroup2["default"]);
   };
 
-  ColumnManager.prototype.reset = function reset(columns, elements) {
+  ColumnManager.prototype.reset = function reset(columns, elements, showRowNum) {
+    columns = this.addOrderColumn(columns, showRowNum);
+    columns = this.deleteColumnNotShow(columns);
     this.columns = columns || this.normalize(elements);
     this._cached = {};
   };
@@ -308,6 +337,61 @@ var ColumnManager = function () {
 
   return ColumnManager;
 }();
+
+var _initialiseProps = function _initialiseProps() {
+  this._cached = {};
+
+  this.deleteColumnNotShow = function (columns) {
+    var len = columns.length;
+    for (var i = 0; i < len; i++) {
+      if (columns && columns[i] && columns[i].isShow === false) {
+        columns.splice(i, 1);
+        i--;
+      }
+    }
+    return columns;
+  };
+
+  this.addOrderColumn = function (columns, showRowNum) {
+    if (!showRowNum) {
+      return columns;
+    }
+    var key = showRowNum.key,
+        fixed = showRowNum.fixed,
+        width = showRowNum.width,
+        name = showRowNum.name,
+        type = showRowNum.type,
+        base = showRowNum.base;
+
+    var order = {
+      dataIndex: key || '_index',
+      key: '_index',
+      fixed: fixed || 'left',
+      width: width || 50,
+      title: name || '序号',
+      render: function render(text, record, index) {
+        switch (type) {
+          case 'ascii':
+            {
+              return String.fromCharCode((base || 'a').charCodeAt() + index);
+            }
+          case 'number':
+          default:
+            {
+              return (base || 0) + index;
+            }
+        }
+      }
+    };
+    if (columns.length > 0 && columns[0].dataIndex !== 'checkbox' && columns[0].dataIndex !== 'radio') {
+      // 多选表格/单选表格时放在第二列,其他情况放到第一列
+      columns = [order].concat(columns);
+    } else {
+      columns.splice(1, 0, order); // splice方法改变原数组,返回切割出的数组,此处为[]
+    }
+    return columns;
+  };
+};
 
 exports["default"] = ColumnManager;
 module.exports = exports['default'];

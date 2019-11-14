@@ -55,6 +55,10 @@ exports["default"] = {
         'searchName': '查詢',
         'down': '展開',
         'up': '收起'
+    },
+    InputNumber: {
+        'msgMax': '值不能大於最大值',
+        'msgMin': '值不能小於最小值'
     }
 };
 module.exports = exports['default'];

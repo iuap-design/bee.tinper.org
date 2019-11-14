@@ -48,6 +48,12 @@ var _omit = require("omit.js");
 
 var _omit2 = _interopRequireDefault(_omit);
 
+var _moment = require("moment");
+
+var _moment2 = _interopRequireDefault(_moment);
+
+var _util = require("./rc-calendar/util");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
@@ -80,6 +86,41 @@ var MonthPicker = function (_Component) {
     };
     return _this;
   }
+
+  MonthPicker.prototype.componentDidMount = function componentDidMount() {
+    var value = this.props.value || this.props.defaultValue;
+    if (value) {
+      if (value.format) {
+        value = value;
+      } else {
+        if ((0, _moment2["default"])(value).isValid()) {
+          value = (0, _moment2["default"])(value);
+        } else {
+          console.error('value is not in the correct format');
+          value = null;
+        }
+      }
+    }
+    this.setState({
+      value: value
+    });
+  };
+
+  MonthPicker.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
+    if ('value' in nextProps) {
+      var value = nextProps.value;
+      if (value) {
+        if (value.format) {} else {
+          value = (0, _moment2["default"])(value);
+        }
+      } else {
+        value = null;
+      }
+      this.setState({
+        value: value
+      });
+    }
+  };
   //阻止组件内部事件冒泡到组件外部容器
 
 
@@ -87,20 +128,21 @@ var MonthPicker = function (_Component) {
     var _this2 = this;
 
     var state = this.state;
-
     var props = this.props;
 
     var showClose = props.showClose,
-        others = _objectWithoutProperties(props, ["showClose"]);
+        value = props.value,
+        others = _objectWithoutProperties(props, ["showClose", "value"]);
 
     var monthCalendar = _react2["default"].createElement(_MonthCalendar2["default"], _extends({}, props, {
+      value: state.value,
       onChange: this.onChange
     }));
     var classes = (0, _classnames2["default"])(props.className, "datepicker-container");
     return _react2["default"].createElement(
       "div",
       _extends({ className: classes, onClick: this.stopPropagation, onMouseOver: this.stopPropagation
-      }, (0, _omit2["default"])(others, ['closeIcon', 'renderIcon', 'format', 'showDateInput', 'showMonthInput', 'locale', 'placeholder', 'onClear', 'renderFooter'])),
+      }, (0, _omit2["default"])(others, ['closeIcon', 'renderIcon', 'format', 'showDateInput', 'showMonthInput', 'locale', 'placeholder', 'onClear', 'renderFooter', 'renderError'])),
       _react2["default"].createElement(
         _Picker2["default"],
         {
@@ -110,11 +152,14 @@ var MonthPicker = function (_Component) {
           open: this.state.open,
           value: state.value,
           onChange: this.onChange,
-          dropdownClassName: props.dropdownClassName
+          dropdownClassName: props.dropdownClassName,
+          selectedValue: state.value,
+          renderError: props.renderError
         },
         function (_ref) {
           var value = _ref.value;
 
+          if (value && value.format) value = (0, _util.formatDate)(value, props.format);
           return _react2["default"].createElement(
             _beeInputGroup2["default"],
             { simple: true, className: "datepicker-input-group",
@@ -127,7 +172,7 @@ var MonthPicker = function (_Component) {
               },
               placeholder: _this2.props.placeholder,
               className: _this2.props.className,
-              value: value && value.format(props.format) || "",
+              value: value,
               disabled: props.disabled
             }),
             showClose && _this2.state.value && _this2.state.showClose && !props.disabled ? _react2["default"].createElement(
@@ -158,24 +203,18 @@ var _initialiseProps = function _initialiseProps() {
         onClear = _props.onClear,
         onSelect = _props.onSelect,
         format = _props.format;
-    // if(value){
-    //   this.setState({
-    //     value:value
-    //   });
-    // }else{
-    //   this.setState({
-    //     value:moment()
-    //   })
-    // }
+
 
     _this3.setState({
       value: value && _extends(value, { _type: 'month' }) || value
     });
-    onChange && onChange(value, value ? value.format(format) : '');
+    onChange && onChange(value, value ? (0, _util.formatDate)(value, format) : '');
   };
 
   this.inputFocus = function () {
     var self = _this3;
+    var format = self.props.format;
+
     var input = document.querySelector('.rc-calendar-input');
     if (input) {
       if (input.value) {
@@ -192,8 +231,18 @@ var _initialiseProps = function _initialiseProps() {
             open: false
           });
           var v = self.state.value;
-          self.props.onOpenChange && self.props.onOpenChange(false, v, v && v.format(self.props.format) || '');
+          self.props.onOpenChange && self.props.onOpenChange(false, v, v && (0, _util.formatDate)(v, self.props.format) || '');
           _reactDom2["default"].findDOMNode(self.outInput).focus(); // 按esc时候焦点回到input输入框
+        } else if (e.keyCode == _tinperBeeCore.KeyCode.ENTER) {
+          var parsed = (0, _moment2["default"])(input.value, format, true);
+          if (parsed.isValid()) {
+            self.setState({
+              open: false
+            });
+            var _v = self.state.value;
+            self.props.onOpenChange && self.props.onOpenChange(false, _v, _v && (0, _util.formatDate)(_v, format) || '');
+            _reactDom2["default"].findDOMNode(self.outInput).focus();
+          }
         }
       };
     }
@@ -212,7 +261,7 @@ var _initialiseProps = function _initialiseProps() {
       }
     });
     var value = self.state.value;
-    props.onOpenChange && props.onOpenChange(open, value, value && value.format(self.props.format) || '');
+    props.onOpenChange && props.onOpenChange(open, value, value && (0, _util.formatDate)(value, self.props.format) || '');
     if (open) {
       setTimeout(function () {
         self.inputFocus();
@@ -259,6 +308,7 @@ MonthPicker.defaultProps = {
     return _react2["default"].createElement(_beeIcon2["default"], { type: "uf-calendar" });
   },
   format: 'YYYY-MM',
+  renderError: function renderError() {},
   showDateInput: true,
   showMonthInput: true,
   locale: _zh_CN2["default"],

@@ -175,7 +175,7 @@ class AutoComplete extends React.Component {
     }
 
     handLeBlur() {
-        this.props.onBlur();
+        this.props.onBlur(this.state.value)
         setTimeout(() => {
             this.setState({
                 show: false

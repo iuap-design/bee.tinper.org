@@ -83,7 +83,7 @@ class MonthPanel extends React.Component {
     const footer = renderFooter && renderFooter('month');
 
     return (
-      <div className={prefixCls} style={props.style}>
+      <div className={prefixCls} style={props.style} tabIndex='0'>
         <div>
           <div className={`${prefixCls}-header`}>
             <a

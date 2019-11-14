@@ -1,36 +1,25 @@
 /**
  *
 * @title 输入时校验提示 
- * @description 结合 Tooltip 组件，实现确定超出限制之后的提示。
+ * @description 设置 displayCheckPrompt={true}，显示超出限制范围之后的提示。
  *
  */
 
 
 import React, { Component } from 'react';
 import InputNumber from '../../src';
-import Form from 'bee-form';
-import Tooltip from 'bee-tooltip';
 
 class Demo10 extends Component {
     render () {
-        let { getFieldProps } = this.props.form;
         return (
-            <Tooltip
-                trigger={'focus'}
-                overlay={"请输入 0-100 之间的整数"}
-                placement="topLeft"
-            >
-                <InputNumber
-                    iconStyle="one"
-                    min={0}
-                    max={100}
-                    {...getFieldProps("num", {
-                        initialValue: ""
-                    })}
-                />
-            </Tooltip>
+            <InputNumber
+                iconStyle="one"
+                min={-100}
+                max={100}
+                displayCheckPrompt={true}
+            />
         )
     }
 }
 
-export default Form.createForm()(Demo10);
+export default Demo10;

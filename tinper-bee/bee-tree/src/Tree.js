@@ -42,6 +42,7 @@ class Tree extends React.Component {
       focusKey: '', //上下箭头选择树节点时，用于标识focus状态
       treeData: [], //Tree结构数组(全量)
       flatTreeData: [], //一维数组(全量)
+      prevProps: null
     };
     //默认显示20条，rowsInView根据定高算的。在非固定高下，这个只是一个大概的值。
     this.rowsInView = CONFIG.defaultRowsInView;
@@ -59,12 +60,26 @@ class Tree extends React.Component {
    */
   componentDidMount() {
     const { lazyLoad } = this.props;
+    // 此处为了区分数据是不是异步渲染的，prevProps 作为标识
+    if(this.hasTreeNode()){
+        this.setState({
+            prevProps: this.props
+        })
+    }
+    // 启用懒加载，计算树节点真实高度
     if(!lazyLoad) return;
     const treenodes = this.tree.querySelectorAll('.u-tree-treenode-close')[0];
     let rowHeight = treenodes.getBoundingClientRect().height;
     this.store.setState({
       rowHeight: rowHeight
     });
+  }
+  
+  // 判断初始化挂载时，有没有渲染树节点
+  hasTreeNode = () => {
+    const { children, treeData } = this.props;
+    let noTreeNode = typeof children === 'undefined' || (typeof children === 'object' && children.length === 0) || (typeof treeData === 'object' && treeData.length === 0);
+    return !noTreeNode;
   }
 
   componentWillMount() {
@@ -89,25 +104,39 @@ class Tree extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const {startIndex,endIndex} = this;
+    const {startIndex,endIndex,props,state} = this;
+    const {prevProps} = state;
     const expandedKeys = this.getDefaultExpandedKeys(nextProps, true);
     const checkedKeys = this.getDefaultCheckedKeys(nextProps, true);
     const selectedKeys = this.getDefaultSelectedKeys(nextProps, true);
-    const st = {};
+    const st = {
+        prevProps:nextProps
+    };
     // 用于记录这次data内容有没有变化
     this.dataChange = false;
-    if (expandedKeys) {
-      st.expandedKeys = expandedKeys;
-      //缓存 expandedKeys
-      this.cacheExpandedKeys = new Set(expandedKeys);
-      if(nextProps.lazyLoad) {
-        let flatTreeData = this.deepTraversal(nextProps.treeData);
-        this.cacheExpandedKeys = null;
-        st.flatTreeData = flatTreeData;
-        let newTreeList = flatTreeData.slice(startIndex,endIndex);
-        this.handleTreeListChange(newTreeList, startIndex, endIndex);
-      }
+    function needSync(name) {
+        return (!prevProps && name in nextProps) || (prevProps && prevProps[name] !== nextProps[name]);
     }
+    // ================ expandedKeys =================
+    // if (needSync('expandedKeys') || (prevProps && needSync('autoExpandParent'))) {
+    if (needSync('expandedKeys')) {
+        st.expandedKeys = expandedKeys;
+    } else if ((!prevProps && props.defaultExpandAll) || (!prevProps && props.defaultExpandedKeys)) {
+        st.expandedKeys = this.getDefaultExpandedKeys(nextProps);
+    } 
+    if(st.expandedKeys){
+        //缓存 expandedKeys
+        this.cacheExpandedKeys = new Set(expandedKeys);
+        if(nextProps.lazyLoad) {
+            let flatTreeData = this.deepTraversal(nextProps.treeData);
+            this.cacheExpandedKeys = null;
+            st.flatTreeData = flatTreeData;
+            let newTreeList = flatTreeData.slice(startIndex,endIndex);
+            this.handleTreeListChange(newTreeList, startIndex, endIndex);
+        }
+    }
+
+    // ================ checkedKeys =================
     if (checkedKeys) {
       if (nextProps.checkedKeys === this.props.checkedKeys) {
         this.checkedKeysChange = false;
@@ -116,9 +145,13 @@ class Tree extends React.Component {
       }
       st.checkedKeys = checkedKeys;
     }
+
+    // ================ selectedKeys =================
     if (selectedKeys) {
       st.selectedKeys = selectedKeys;
     }
+
+    // ================ treeData =================
     if(nextProps.hasOwnProperty('treeData') && nextProps.treeData !== this.props.treeData){
       this.dataChange = true;
       //treeData更新时，需要重新处理一次数据
@@ -131,6 +164,8 @@ class Tree extends React.Component {
         st.treeData = nextProps.treeData;
       }
     }
+
+    // ================ children =================
     if(nextProps.children !== this.props.children){
       this.dataChange = true;
     }

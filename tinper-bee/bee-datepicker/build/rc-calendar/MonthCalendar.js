@@ -57,6 +57,11 @@ var MonthCalendar = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, _React$Component.call(this, props));
 
     _this.onKeyDown = function (event) {
+      if (event.target.nodeName.toLowerCase() === 'input') {
+        return undefined;
+      } else {
+        _this.props.onKeyDown && _this.props.onKeyDown(event);
+      }
       var keyCode = event.keyCode;
       var ctrlKey = event.ctrlKey || event.metaKey;
       var stateValue = _this.state.value;
@@ -158,7 +163,8 @@ var MonthCalendar = function (_React$Component) {
         onChange = props.onChange,
         onSelect = props.onSelect,
         onClear = props.onClear,
-        showMonthInput = props.showMonthInput;
+        showMonthInput = props.showMonthInput,
+        renderError = props.renderError;
 
     var children = _react2["default"].createElement(
       'div',
@@ -174,7 +180,8 @@ var MonthCalendar = function (_React$Component) {
           format: format,
           onChange: this.onInputChange,
           selectedValue: value,
-          onClear: this.onClear
+          onClear: this.onClear,
+          renderError: renderError
         }) : '',
         _react2["default"].createElement(_CalendarHeader2["default"], {
           prefixCls: props.prefixCls,

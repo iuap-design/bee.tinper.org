@@ -1,9 +1,10 @@
 /**
  *
- * @title 多列表头
+ * @title 多列表头、多列表头的拖拽表头宽度
  * @parent 列渲染 Custom Render
  * @description columns[n] 可以内嵌 children，以渲染分组表头。
  * 自定义表头高度需要传headerHeight，注：修改th的padding top和bottom置为0，否则会有影响
+ * 多列表头拖拽的时候,原则只拖拽叶子节点的表头。
  * demo0402
  */
 
@@ -11,7 +12,7 @@ import React, { Component } from "react";
 import Table from "../../src";
 import {Button} from "tinper-bee";
 
-const { ColumnGroup, Column } = Table;
+import dragColumn from '../../src/lib/dragColumn';
 
 const columns = [
   {
@@ -103,15 +104,21 @@ for (let i = 0; i < 20; i++) {
   });
 }
 
+const DragColumnTable = dragColumn(Table);
+
 class Demo32 extends Component {
   render() {
     return (
-      <Table
+      <DragColumnTable
         className={'demo32'}
         columns={columns}
         data={data}
         headerHeight={40} //自定义表头高度
         bordered
+        dragborder={true} 
+        onDropBorder ={(e,width)=>{
+          console.log(width+"--调整列宽后触发事件",e.target);
+        }}
         scroll={{ y: 240 }}
       />
     );

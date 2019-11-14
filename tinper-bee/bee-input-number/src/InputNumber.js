@@ -2,7 +2,10 @@ import React, {Component} from 'react';
 import classnames from 'classnames';
 import InputGroup from 'bee-input-group';
 import FormControl from 'bee-form-control';
+import Message from 'bee-message';
 import PropTypes from 'prop-types';
+import i18n from './i18n';
+import { getComponentLocale } from 'bee-locale/build/tool';
 
 const propTypes = {
     max: PropTypes.number,
@@ -14,7 +17,9 @@ const propTypes = {
     delay: PropTypes.number,
     disabled:PropTypes.bool,
     toThousands:PropTypes.bool,
-    toNumber:PropTypes.bool //回调函数内的值是否转换为数值类型
+    locale:PropTypes.object,
+    toNumber:PropTypes.bool, //回调函数内的值是否转换为数值类型
+    displayCheckPrompt:PropTypes.bool, //是否显示超出限制范围之后的检验提示
 };
 
 const defaultProps = {
@@ -24,78 +29,20 @@ const defaultProps = {
     iconStyle: 'double',
     autoWidth: false,
     delay: 300,
-    toNumber:false
+    toNumber:false,
+    displayCheckPrompt:false,
+    locale:{}
 };
 
-/**
- * 校验value
- * @param {*} props 
- * @param {原来的值} oldValue 
- */
-function judgeValue(props,oldValue) {
-    let currentValue;
-    let currentMinusDisabled = false;
-    let currentPlusDisabled = false;
-    let { value,min,max,precision,onChange } = props;
-    if (value!=undefined) {
-        if(value===''){
-            currentValue='';
-            return {
-                value: '',
-                minusDisabled: false,
-                plusDisabled: false
-            }
-        }else{
-            currentValue = Number(value) ||0;
-        }
-    } else if (min&&(value!='')) {
-        currentValue = min;
-    } else if(value==='0'||value===0){
-        currentValue = 0;
-    }else{//NaN
-        if(oldValue||(oldValue===0)||(oldValue==='0')){
-            currentValue = oldValue;
-        }else{//value为空
-            return {
-                value: '',
-                minusDisabled: false,
-                plusDisabled: false
-            }
-        }
-    }
-    if(currentValue==-Infinity){
-        return {
-            value: min,
-            minusDisabled: true,
-            plusDisabled: false
-        }
-    }
-    if(currentValue==Infinity){
-        return {
-            value: max,
-            minusDisabled: false,
-            plusDisabled: true
-        }
-    }
-    if (currentValue <= min) {
-        currentMinusDisabled = true;
-        currentValue=min;
-    }
-    if (currentValue >= max) {
-        currentPlusDisabled = true;
-        currentValue=max;
-    }
 
-    if(props.hasOwnProperty('precision')){
-        currentValue = Number(currentValue).toFixed(precision);
-    }
-
-    return {
-        value: currentValue,
-        minusDisabled: currentMinusDisabled,
-        plusDisabled: currentPlusDisabled
-    }
+//校验提示
+function prompt (content)  {
+    Message.destroy();
+    Message.create({content: content, color: 'warninglight'});
 }
+
+
+
 /**
  * 千分符
  * @param {要转换的数据} num 
@@ -119,6 +66,9 @@ function toThousands(number) {
             result = result + '.'+decimal;
         }
      }
+     if(result[0]=='-'){
+        result = result.replace('-,','-')
+    }
     return result;
 }
 
@@ -136,7 +86,7 @@ class InputNumber extends Component {
         super(props);
         // 初始化状态，加减按钮是否可用，根据当前值判断
 
-        let data = judgeValue(props);
+        let data = this.judgeValue(props);
 
         this.state = {
             value: data.value,
@@ -147,6 +97,78 @@ class InputNumber extends Component {
 
         this.timer = null;
         this.focus = false;
+    }
+    /**
+     * 校验value
+     * @param {*} props 
+     * @param {原来的值} oldValue 
+     */
+    judgeValue = (props,oldValue)=> {
+        let currentValue;
+        let currentMinusDisabled = false;
+        let currentPlusDisabled = false;
+        let { value,min,max,precision,onChange,displayCheckPrompt } = props;
+        if (value!=undefined) {
+            if(value===''){
+                currentValue='';
+                return {
+                    value: '',
+                    minusDisabled: false,
+                    plusDisabled: false
+                }
+            }else{
+                currentValue = Number(value) ||0;
+            }
+        } else if (min&&(value!='')) {
+            currentValue = min;
+        } else if(value==='0'||value===0){
+            currentValue = 0;
+        }else{//NaN
+            if(oldValue||(oldValue===0)||(oldValue==='0')){
+                currentValue = oldValue;
+            }else{//value为空
+                return {
+                    value: '',
+                    minusDisabled: false,
+                    plusDisabled: false
+                }
+            }
+        }
+        if(currentValue==-Infinity){
+            return {
+                value: min,
+                minusDisabled: true,
+                plusDisabled: false
+            }
+        }
+        if(currentValue==Infinity){
+            return {
+                value: max,
+                minusDisabled: false,
+                plusDisabled: true
+            }
+        }
+        const local = getComponentLocale(props, this.context, 'InputNumber', () => i18n);
+        if (currentValue <= min) {
+            if(displayCheckPrompt)prompt(local['msgMin']);
+            currentMinusDisabled = true;
+            currentValue=min;
+        }
+        if (currentValue >= max) {
+            if(displayCheckPrompt)prompt(local['msgMax']);
+            currentPlusDisabled = true;
+            currentValue=max;
+        }
+
+        if(props.hasOwnProperty('precision')){
+            currentValue = Number(currentValue).toFixed(precision);
+        }
+
+        return {
+            value: currentValue,
+            minusDisabled: currentMinusDisabled,
+            plusDisabled: currentPlusDisabled
+        }
     }
 
     componentDidMount(){
@@ -167,7 +189,7 @@ class InputNumber extends Component {
             }
             
         }else{
-            let data = judgeValue(nextProps,this.state.value);
+            let data = this.judgeValue(nextProps,this.state.value);
             this.setState({
                 value: data.value,
                 showValue:toThousands(data.value),
@@ -182,7 +204,7 @@ class InputNumber extends Component {
     }
 
     handleChange = (value) => {
-        const { onChange,toNumber,max,min } = this.props;
+        const { onChange,toNumber,max,min,displayCheckPrompt } = this.props;
         if(value===''){
             onChange && onChange(value);
             this.setState({
@@ -191,8 +213,16 @@ class InputNumber extends Component {
             return;
         }
         value = unThousands(value);
-        if(Number(value)>max)return;
-        if(Number(value)<min)return;
+        // if(Number(value)>max){
+        //     if(!displayCheckPrompt) return;
+        //     this.prompt(`输入的数字不能大于 ${max}`);
+        //     return;
+        // }
+        // if(Number(value)<min){
+        //     if(!displayCheckPrompt) return;
+        //     this.prompt(`输入的数字不能小于 ${min}`);
+        //     return;
+        // }
         if(isNaN(value)&&(value!=='.')&&(value!=='-'))return;
         this.setState({
             value,
@@ -211,6 +241,7 @@ class InputNumber extends Component {
         
         
     }
+    
 
     handleFocus = (value,e) => {
         this.focus = true;
@@ -231,9 +262,10 @@ class InputNumber extends Component {
         }
         v = unThousands(v)
         let value = Number(v);
-        if(this.props.hasOwnProperty('precision')){
-            value = value.toFixed(precision);
-        }
+        value = this.judgeValue(this.props,value).value;
+        // if(this.props.hasOwnProperty('precision')){
+        //     value = value.toFixed(precision);
+        // }
         this.setState({
             value,
             showValue:toThousands(value)
@@ -488,4 +520,7 @@ class InputNumber extends Component {
 
 InputNumber.defaultProps = defaultProps;
 InputNumber.propTypes = propTypes;
+InputNumber.contextTypes = {
+    beeLocale: PropTypes.object
+};
 export default InputNumber;

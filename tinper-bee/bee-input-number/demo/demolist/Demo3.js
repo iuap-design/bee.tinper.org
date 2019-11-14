@@ -25,7 +25,7 @@ class Demo3 extends Component {
 			<InputNumber
 				iconStyle="one"
 				max={12}
-				min={5}
+				min={-9}
 				step={2}
 				value={this.state.value}
 				onChange={ this.handleChange }

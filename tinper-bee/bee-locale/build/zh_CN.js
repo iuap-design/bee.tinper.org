@@ -56,6 +56,10 @@ exports["default"] = {
         'searchName': '查询',
         'down': '展开',
         'up': '收起'
+    },
+    InputNumber: {
+        'msgMax': '值不能大于最大值',
+        'msgMin': '值不能小于最小值'
     }
 };
 module.exports = exports['default'];

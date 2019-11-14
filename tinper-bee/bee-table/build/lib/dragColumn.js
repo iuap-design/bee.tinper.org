@@ -4,9 +4,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 exports["default"] = dragColumn;
 
@@ -28,7 +28,6 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
 
-var cloneDeep = require('lodash.clonedeep');
 /**
  * 参数: 列拖拽
  * @param {*} Table
@@ -52,7 +51,7 @@ function dragColumn(Table) {
         return _column;
       };
 
-      _this.onDrop = function (event, data) {
+      _this.onDragEnd = function (event, data) {
         var dragSource = data.dragSource,
             dragTarg = data.dragTarg;
         var columns = _this.state.columns;
@@ -66,25 +65,22 @@ function dragColumn(Table) {
         targetIndex = columns.findIndex(function (da, i) {
           return da.key == dragTarg.key;
         });
-        // for (let index = 0; index < columns.length; index++) {
-        //   const da = columns[index];
-        //   if(da.key === dragSource.key){
-        //     columns[index] = dragTargColum; 
-        //   }
-        //   if(da.key === dragTarg.key){
-        //     columns[index] = dragSourceColum;
-        //   }
-        // }
         // 向前移动
         if (targetIndex < sourceIndex) {
           targetIndex = targetIndex + 1;
         }
         columns.splice(targetIndex, 0, columns.splice(sourceIndex, 1)[0]);
-        _this.setState({
-          columns: cloneDeep(columns)
+        var _newColumns = [];
+        columns.forEach(function (da, i) {
+          var newDate = _extends(da, {});
+          newDate.title = da.title;
+          _newColumns.push(newDate);
         });
-        if (_this.props.onDrop) {
-          _this.props.onDrop(event, data, columns);
+        _this.setState({
+          columns: _newColumns //cloneDeep(columns)
+        });
+        if (_this.props.onDragEnd) {
+          _this.props.onDragEnd(event, data, columns);
         }
       };
 
@@ -104,14 +100,6 @@ function dragColumn(Table) {
           columns: this.setColumOrderByIndex(nextProps.columns)
         });
       }
-    };
-
-    DragColumn.prototype.cloneDeep = function cloneDeep(obj) {
-      if ((typeof obj === 'undefined' ? 'undefined' : _typeof(obj)) !== 'object' || Object.keys(obj).length === 0) {
-        return obj;
-      }
-      var resultData = {};
-      return this.recursion(obj, resultData);
     };
 
     DragColumn.prototype.recursion = function (_recursion) {
@@ -143,26 +131,15 @@ function dragColumn(Table) {
           dragborder = _props.dragborder,
           draggable = _props.draggable,
           className = _props.className,
-          columns = _props.columns,
-          onDragStart = _props.onDragStart,
-          onDragEnter = _props.onDragEnter,
-          onDragOver = _props.onDragOver,
-          onDrop = _props.onDrop,
-          others = _objectWithoutProperties(_props, ['data', 'dragborder', 'draggable', 'className', 'columns', 'onDragStart', 'onDragEnter', 'onDragOver', 'onDrop']);
+          others = _objectWithoutProperties(_props, ['data', 'dragborder', 'draggable', 'className']);
 
-      var key = new Date().getTime();
       return _react2["default"].createElement(Table, _extends({}, others, {
         columns: this.state.columns,
         data: data,
         className: className + ' u-table-drag-border',
-        onDragStart: this.onDragStart,
-        onDragOver: this.onDragOver,
-        onDrop: this.onDrop,
-        onDragEnter: this.onDragEnter,
+        onDragEnd: this.onDragEnd,
         draggable: draggable,
         dragborder: dragborder
-        // dragborder={false}
-        , dragborderKey: key
       }));
     };
 

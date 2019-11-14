@@ -146,7 +146,8 @@ function filterColumn(Table, Popover) {
               id: "filter_column_popover",
               placement: "left",
               content: content,
-              show: showModal
+              show: showModal,
+              onHide: this.onHide
             },
             _react2["default"].createElement(
               "div",
@@ -213,6 +214,12 @@ function filterColumn(Table, Popover) {
       });
     };
 
+    this.onHide = function () {
+      _this2.setState({
+        showModal: false
+      });
+    };
+
     this.getCloumItem = function () {
       var prefixCls = _this2.props.prefixCls;
       var columns = _this2.state.columns;
@@ -229,17 +236,16 @@ function filterColumn(Table, Popover) {
             _this2.checkedColumItemClick(da);
           };
         }
-
         return _react2["default"].createElement(
           "div",
           {
             key: da.key + "_" + i,
-            className: prefixCls + "-pop-cont-item"
+            className: prefixCls + "-pop-cont-item",
+            onClick: paramObj.onClick ? paramObj.onClick : null
           },
-          _react2["default"].createElement(_beeCheckbox2["default"], paramObj),
           _react2["default"].createElement(
-            "span",
-            null,
+            _beeCheckbox2["default"],
+            paramObj,
             da.title
           )
         );

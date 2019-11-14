@@ -50,5 +50,9 @@ export default {
         'searchName': 'submit',
         'down':'open',
         'up':'close',
+    },
+    InputNumber:{
+        'msgMax':'value cannot be greater than the maximum',
+        'msgMin':'value cannot be less than minimum'
     }
 }

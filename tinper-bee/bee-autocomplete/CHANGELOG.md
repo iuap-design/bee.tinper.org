@@ -1,3 +1,13 @@
+<a name="2.0.4"></a>
+## [2.0.4](https://github.com/tinper-bee/bee-auto-complete/compare/v2.0.3...v2.0.4) (2019-11-11)
+
+
+### Bug Fixes
+
+* **bee-autocomplete:** 使用form校验bug修改 ([34a18c8](https://github.com/tinper-bee/bee-auto-complete/commit/34a18c8))
+
+
+
 <a name="2.0.3"></a>
 ## [2.0.3](https://github.com/tinper-bee/bee-auto-complete/compare/v2.0.2...v2.0.3) (2019-05-16)
 

@@ -26,7 +26,7 @@ class Demo4 extends Component {
     render() {
         return (
             <div>
-                <InputNumber disabled precision={2} min={0} value={this.state.value} onChange={ this.handleChange }/>
+                <InputNumber disabled precision={2} value={this.state.value} onChange={ this.handleChange }/>
             </div>
         )
     }

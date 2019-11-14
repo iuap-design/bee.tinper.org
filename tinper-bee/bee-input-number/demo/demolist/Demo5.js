@@ -26,7 +26,7 @@ class Demo5 extends Component {
 				disabled
 				iconStyle="one"
 				max={12}
-				min={5}
+				min={-10}
 				step={2}
 				value={this.state.value}
 				onChange={ this.handleChange }

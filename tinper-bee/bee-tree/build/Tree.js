@@ -4,6 +4,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var _react = require('react');
@@ -84,7 +86,8 @@ var Tree = function (_React$Component) {
       dropNodeKey: '',
       focusKey: '', //上下箭头选择树节点时，用于标识focus状态
       treeData: [], //Tree结构数组(全量)
-      flatTreeData: [] //一维数组(全量)
+      flatTreeData: [], //一维数组(全量)
+      prevProps: null
     };
     //默认显示20条，rowsInView根据定高算的。在非固定高下，这个只是一个大概的值。
     _this.rowsInView = _config2["default"].defaultRowsInView;
@@ -105,7 +108,14 @@ var Tree = function (_React$Component) {
 
   Tree.prototype.componentDidMount = function componentDidMount() {
     var lazyLoad = this.props.lazyLoad;
+    // 此处为了区分数据是不是异步渲染的，prevProps 作为标识
 
+    if (this.hasTreeNode()) {
+      this.setState({
+        prevProps: this.props
+      });
+    }
+    // 启用懒加载，计算树节点真实高度
     if (!lazyLoad) return;
     var treenodes = this.tree.querySelectorAll('.u-tree-treenode-close')[0];
     var rowHeight = treenodes.getBoundingClientRect().height;
@@ -113,6 +123,9 @@ var Tree = function (_React$Component) {
       rowHeight: rowHeight
     });
   };
+
+  // 判断初始化挂载时，有没有渲染树节点
+
 
   Tree.prototype.componentWillMount = function componentWillMount() {
     var _this2 = this;
@@ -142,16 +155,30 @@ var Tree = function (_React$Component) {
 
   Tree.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
     var startIndex = this.startIndex,
-        endIndex = this.endIndex;
+        endIndex = this.endIndex,
+        props = this.props,
+        state = this.state;
+    var prevProps = state.prevProps;
 
     var expandedKeys = this.getDefaultExpandedKeys(nextProps, true);
     var checkedKeys = this.getDefaultCheckedKeys(nextProps, true);
     var selectedKeys = this.getDefaultSelectedKeys(nextProps, true);
-    var st = {};
+    var st = {
+      prevProps: nextProps
+    };
     // 用于记录这次data内容有没有变化
     this.dataChange = false;
-    if (expandedKeys) {
+    function needSync(name) {
+      return !prevProps && name in nextProps || prevProps && prevProps[name] !== nextProps[name];
+    }
+    // ================ expandedKeys =================
+    // if (needSync('expandedKeys') || (prevProps && needSync('autoExpandParent'))) {
+    if (needSync('expandedKeys')) {
       st.expandedKeys = expandedKeys;
+    } else if (!prevProps && props.defaultExpandAll || !prevProps && props.defaultExpandedKeys) {
+      st.expandedKeys = this.getDefaultExpandedKeys(nextProps);
+    }
+    if (st.expandedKeys) {
       //缓存 expandedKeys
       this.cacheExpandedKeys = new Set(expandedKeys);
       if (nextProps.lazyLoad) {
@@ -162,6 +189,8 @@ var Tree = function (_React$Component) {
         this.handleTreeListChange(newTreeList, startIndex, endIndex);
       }
     }
+
+    // ================ checkedKeys =================
     if (checkedKeys) {
       if (nextProps.checkedKeys === this.props.checkedKeys) {
         this.checkedKeysChange = false;
@@ -170,9 +199,13 @@ var Tree = function (_React$Component) {
       }
       st.checkedKeys = checkedKeys;
     }
+
+    // ================ selectedKeys =================
     if (selectedKeys) {
       st.selectedKeys = selectedKeys;
     }
+
+    // ================ treeData =================
     if (nextProps.hasOwnProperty('treeData') && nextProps.treeData !== this.props.treeData) {
       this.dataChange = true;
       //treeData更新时，需要重新处理一次数据
@@ -185,6 +218,8 @@ var Tree = function (_React$Component) {
         st.treeData = nextProps.treeData;
       }
     }
+
+    // ================ children =================
     if (nextProps.children !== this.props.children) {
       this.dataChange = true;
     }
@@ -1139,6 +1174,15 @@ var Tree = function (_React$Component) {
 var _initialiseProps = function _initialiseProps() {
   var _this7 = this;
 
+  this.hasTreeNode = function () {
+    var _props4 = _this7.props,
+        children = _props4.children,
+        treeData = _props4.treeData;
+
+    var noTreeNode = typeof children === 'undefined' || (typeof children === 'undefined' ? 'undefined' : _typeof(children)) === 'object' && children.length === 0 || (typeof treeData === 'undefined' ? 'undefined' : _typeof(treeData)) === 'object' && treeData.length === 0;
+    return !noTreeNode;
+  };
+
   this.handleTreeListChange = function (treeList, startIndex, endIndex) {
     // 属性配置设置
     var attr = {
@@ -1202,9 +1246,9 @@ var _initialiseProps = function _initialiseProps() {
   };
 
   this.renderTreefromData = function (data) {
-    var _props4 = _this7.props,
-        renderTitle = _props4.renderTitle,
-        renderTreeNodes = _props4.renderTreeNodes;
+    var _props5 = _this7.props,
+        renderTitle = _props5.renderTitle,
+        renderTreeNodes = _props5.renderTreeNodes;
 
     if (renderTreeNodes) {
       return renderTreeNodes(data);

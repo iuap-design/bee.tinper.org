@@ -22,9 +22,19 @@ var _beeFormControl = require('bee-form-control');
 
 var _beeFormControl2 = _interopRequireDefault(_beeFormControl);
 
+var _beeMessage = require('bee-message');
+
+var _beeMessage2 = _interopRequireDefault(_beeMessage);
+
 var _propTypes = require('prop-types');
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _i18n = require('./i18n');
+
+var _i18n2 = _interopRequireDefault(_i18n);
+
+var _tool = require('bee-locale/build/tool');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -50,7 +60,9 @@ var propTypes = {
     delay: _propTypes2["default"].number,
     disabled: _propTypes2["default"].bool,
     toThousands: _propTypes2["default"].bool,
-    toNumber: _propTypes2["default"].bool //回调函数内的值是否转换为数值类型
+    locale: _propTypes2["default"].object,
+    toNumber: _propTypes2["default"].bool, //回调函数内的值是否转换为数值类型
+    displayCheckPrompt: _propTypes2["default"].bool //是否显示超出限制范围之后的检验提示
 };
 
 var defaultProps = {
@@ -60,85 +72,17 @@ var defaultProps = {
     iconStyle: 'double',
     autoWidth: false,
     delay: 300,
-    toNumber: false
+    toNumber: false,
+    displayCheckPrompt: false,
+    locale: {}
 };
 
-/**
- * 校验value
- * @param {*} props 
- * @param {原来的值} oldValue 
- */
-function judgeValue(props, oldValue) {
-    var currentValue = void 0;
-    var currentMinusDisabled = false;
-    var currentPlusDisabled = false;
-    var value = props.value,
-        min = props.min,
-        max = props.max,
-        precision = props.precision,
-        onChange = props.onChange;
-
-    if (value != undefined) {
-        if (value === '') {
-            currentValue = '';
-            return {
-                value: '',
-                minusDisabled: false,
-                plusDisabled: false
-            };
-        } else {
-            currentValue = Number(value) || 0;
-        }
-    } else if (min && value != '') {
-        currentValue = min;
-    } else if (value === '0' || value === 0) {
-        currentValue = 0;
-    } else {
-        //NaN
-        if (oldValue || oldValue === 0 || oldValue === '0') {
-            currentValue = oldValue;
-        } else {
-            //value为空
-            return {
-                value: '',
-                minusDisabled: false,
-                plusDisabled: false
-            };
-        }
-    }
-    if (currentValue == -Infinity) {
-        return {
-            value: min,
-            minusDisabled: true,
-            plusDisabled: false
-        };
-    }
-    if (currentValue == Infinity) {
-        return {
-            value: max,
-            minusDisabled: false,
-            plusDisabled: true
-        };
-    }
-    if (currentValue <= min) {
-        currentMinusDisabled = true;
-        currentValue = min;
-    }
-    if (currentValue >= max) {
-        currentPlusDisabled = true;
-        currentValue = max;
-    }
-
-    if (props.hasOwnProperty('precision')) {
-        currentValue = Number(currentValue).toFixed(precision);
-    }
-
-    return {
-        value: currentValue,
-        minusDisabled: currentMinusDisabled,
-        plusDisabled: currentPlusDisabled
-    };
+//校验提示
+function prompt(content) {
+    _beeMessage2["default"].destroy();
+    _beeMessage2["default"].create({ content: content, color: 'warninglight' });
 }
+
 /**
  * 千分符
  * @param {要转换的数据} num 
@@ -162,6 +106,9 @@ function toThousands(number) {
             result = result + '.' + decimal;
         }
     }
+    if (result[0] == '-') {
+        result = result.replace('-,', '-');
+    }
     return result;
 }
 
@@ -180,252 +127,9 @@ var InputNumber = function (_Component) {
 
         var _this = _possibleConstructorReturn(this, _Component.call(this, props));
 
-        _this.handleChange = function (value) {
-            var _this$props = _this.props,
-                onChange = _this$props.onChange,
-                toNumber = _this$props.toNumber,
-                max = _this$props.max,
-                min = _this$props.min;
+        _initialiseProps.call(_this);
 
-            if (value === '') {
-                onChange && onChange(value);
-                _this.setState({
-                    value: value
-                });
-                return;
-            }
-            value = unThousands(value);
-            if (Number(value) > max) return;
-            if (Number(value) < min) return;
-            if (isNaN(value) && value !== '.' && value !== '-') return;
-            _this.setState({
-                value: value,
-                showValue: toThousands(value)
-            });
-            if (value === '-') {
-                onChange && onChange(value);
-            }
-            if (value == '.' || value.indexOf('.') == value.length - 1) {
-                //当输入小数点的时候
-                onChange && onChange(value);
-            } else if (value[value.indexOf('.') + 1] == 0) {
-                //当输入 d.0 的时候，不转换Number
-                onChange && onChange(value);
-            } else {
-                toNumber ? onChange && onChange(Number(value)) : onChange && onChange(value);
-            }
-        };
-
-        _this.handleFocus = function (value, e) {
-            _this.focus = true;
-            var _this$props2 = _this.props,
-                onFocus = _this$props2.onFocus,
-                min = _this$props2.min,
-                max = _this$props2.max;
-
-            onFocus && onFocus(value, e);
-        };
-
-        _this.handleBlur = function (v, e) {
-            _this.focus = false;
-            var _this$props3 = _this.props,
-                onBlur = _this$props3.onBlur,
-                precision = _this$props3.precision,
-                onChange = _this$props3.onChange,
-                toNumber = _this$props3.toNumber;
-
-            if (v === '') {
-                _this.setState({
-                    value: v
-                });
-                onBlur && onBlur(v, e);
-                onChange && onChange(v);
-                return;
-            }
-            v = unThousands(v);
-            var value = Number(v);
-            if (_this.props.hasOwnProperty('precision')) {
-                value = value.toFixed(precision);
-            }
-            _this.setState({
-                value: value,
-                showValue: toThousands(value)
-            });
-            _this.detailDisable(value);
-            if (toNumber) {
-                onBlur && onBlur(Number(value), e);
-                onChange && onChange(Number(value));
-            } else {
-                onBlur && onBlur(value, e);
-                onChange && onChange(value);
-            }
-        };
-
-        _this.detailDisable = function (value) {
-            var _this$props4 = _this.props,
-                max = _this$props4.max,
-                min = _this$props4.min,
-                step = _this$props4.step;
-
-
-            if (value >= max || Number(value) + Number(step) > max) {
-                _this.setState({
-                    plusDisabled: true
-                });
-            } else {
-                _this.setState({
-                    plusDisabled: false
-                });
-            }
-            if (value <= min || value - step < min) {
-                _this.setState({
-                    minusDisabled: true
-                });
-            } else {
-                _this.setState({
-                    minusDisabled: false
-                });
-            }
-        };
-
-        _this.minus = function (value) {
-            var _this$props5 = _this.props,
-                min = _this$props5.min,
-                max = _this$props5.max,
-                step = _this$props5.step,
-                onChange = _this$props5.onChange,
-                toNumber = _this$props5.toNumber;
-
-            value = value === '-' ? 0 : value;
-            if (typeof min === "undefined") {
-                value = _this.detail(value, step, 'reduce');
-            } else {
-                if (value < min) {
-                    value = min;
-                } else {
-                    var reducedValue = _this.detail(value, step, 'reduce');
-                    if (reducedValue >= min) {
-                        value = reducedValue;
-                    }
-                }
-            }
-
-            if (value > max) {
-                value = max;
-            }
-
-            _this.setState({
-                value: value,
-                showValue: toThousands(value)
-            });
-            toNumber ? onChange && onChange(Number(value)) : onChange && onChange(value);
-            _this.detailDisable(value);
-        };
-
-        _this.plus = function (value) {
-            var _this$props6 = _this.props,
-                max = _this$props6.max,
-                min = _this$props6.min,
-                step = _this$props6.step,
-                onChange = _this$props6.onChange,
-                toNumber = _this$props6.toNumber;
-
-            value = value === '-' ? 0 : value;
-            if (typeof max === "undefined") {
-                value = _this.detail(value, step, 'add');
-            } else {
-                if (value > max) {
-                    value = max;
-                } else {
-                    var addedValue = _this.detail(value, step, 'add');
-                    if (addedValue <= max) {
-                        value = addedValue;
-                    }
-                }
-            }
-            if (value < min) {
-                value = min;
-            }
-            _this.setState({
-                value: value,
-                showValue: toThousands(value)
-            });
-            toNumber ? onChange && onChange(Number(value)) : onChange && onChange(value);
-            _this.detailDisable(value);
-        };
-
-        _this.detail = function (value, step, type) {
-            var precision = _this.props.precision;
-
-
-            var valueFloat = _this.separate(value);
-            var stepFloat = _this.separate(step);
-
-            var ans = void 0;
-            var stepFloatLength = stepFloat.toString().length;
-            var valueFloatLength = valueFloat.toString().length;
-
-            if (typeof precision === 'undefined') {
-                precision = Math.max(stepFloatLength, valueFloatLength);
-            }
-            var coefficient = Math.pow(10, Math.abs(stepFloatLength - valueFloatLength));
-            if (type === 'add') {
-                ans = (value * coefficient + step * coefficient) / coefficient;
-            } else {
-                ans = (value * coefficient - step * coefficient) / coefficient;
-            }
-
-            return ans.toFixed(precision);
-        };
-
-        _this.separate = function (value) {
-            value = value !== null && value.toString();
-            if (value.indexOf('.') > -1) {
-                return value.split('.')[1];
-            } else {
-                return "";
-            }
-        };
-
-        _this.clear = function () {
-            if (_this.timer) {
-                clearTimeout(_this.timer);
-            }
-        };
-
-        _this.handlePlusMouseDown = function (e) {
-            e.preventDefault();
-            var _this$props7 = _this.props,
-                delay = _this$props7.delay,
-                disabled = _this$props7.disabled;
-
-            if (disabled) return;
-            var value = _this.state.value;
-
-            _this.plus(value);
-            _this.clear();
-            _this.timer = setTimeout(function () {
-                _this.handlePlusMouseDown();
-            }, delay);
-        };
-
-        _this.handleReduceMouseDown = function (e) {
-            e.preventDefault();
-            var _this$props8 = _this.props,
-                delay = _this$props8.delay,
-                disabled = _this$props8.disabled;
-
-            if (disabled) return;
-            var value = _this.state.value;
-
-            _this.minus(value);
-            _this.clear();
-            _this.timer = setTimeout(function () {
-                _this.handleReduceMouseDown();
-            }, delay);
-        };
-
-        var data = judgeValue(props);
+        var data = _this.judgeValue(props);
 
         _this.state = {
             value: data.value,
@@ -438,6 +142,12 @@ var InputNumber = function (_Component) {
         _this.focus = false;
         return _this;
     }
+    /**
+     * 校验value
+     * @param {*} props 
+     * @param {原来的值} oldValue 
+     */
+
 
     InputNumber.prototype.componentDidMount = function componentDidMount() {
         this.setState({
@@ -455,7 +165,7 @@ var InputNumber = function (_Component) {
                 });
             }
         } else {
-            var data = judgeValue(nextProps, this.state.value);
+            var data = this.judgeValue(nextProps, this.state.value);
             this.setState({
                 value: data.value,
                 showValue: toThousands(data.value),
@@ -600,9 +310,349 @@ var InputNumber = function (_Component) {
     return InputNumber;
 }(_react.Component);
 
+var _initialiseProps = function _initialiseProps() {
+    var _this2 = this;
+
+    this.judgeValue = function (props, oldValue) {
+        var currentValue = void 0;
+        var currentMinusDisabled = false;
+        var currentPlusDisabled = false;
+        var value = props.value,
+            min = props.min,
+            max = props.max,
+            precision = props.precision,
+            onChange = props.onChange,
+            displayCheckPrompt = props.displayCheckPrompt;
+
+        if (value != undefined) {
+            if (value === '') {
+                currentValue = '';
+                return {
+                    value: '',
+                    minusDisabled: false,
+                    plusDisabled: false
+                };
+            } else {
+                currentValue = Number(value) || 0;
+            }
+        } else if (min && value != '') {
+            currentValue = min;
+        } else if (value === '0' || value === 0) {
+            currentValue = 0;
+        } else {
+            //NaN
+            if (oldValue || oldValue === 0 || oldValue === '0') {
+                currentValue = oldValue;
+            } else {
+                //value为空
+                return {
+                    value: '',
+                    minusDisabled: false,
+                    plusDisabled: false
+                };
+            }
+        }
+        if (currentValue == -Infinity) {
+            return {
+                value: min,
+                minusDisabled: true,
+                plusDisabled: false
+            };
+        }
+        if (currentValue == Infinity) {
+            return {
+                value: max,
+                minusDisabled: false,
+                plusDisabled: true
+            };
+        }
+        var local = (0, _tool.getComponentLocale)(props, _this2.context, 'InputNumber', function () {
+            return _i18n2["default"];
+        });
+        if (currentValue <= min) {
+            if (displayCheckPrompt) prompt(local['msgMin']);
+            currentMinusDisabled = true;
+            currentValue = min;
+        }
+        if (currentValue >= max) {
+            if (displayCheckPrompt) prompt(local['msgMax']);
+            currentPlusDisabled = true;
+            currentValue = max;
+        }
+
+        if (props.hasOwnProperty('precision')) {
+            currentValue = Number(currentValue).toFixed(precision);
+        }
+
+        return {
+            value: currentValue,
+            minusDisabled: currentMinusDisabled,
+            plusDisabled: currentPlusDisabled
+        };
+    };
+
+    this.handleChange = function (value) {
+        var _props2 = _this2.props,
+            onChange = _props2.onChange,
+            toNumber = _props2.toNumber,
+            max = _props2.max,
+            min = _props2.min,
+            displayCheckPrompt = _props2.displayCheckPrompt;
+
+        if (value === '') {
+            onChange && onChange(value);
+            _this2.setState({
+                value: value
+            });
+            return;
+        }
+        value = unThousands(value);
+        // if(Number(value)>max){
+        //     if(!displayCheckPrompt) return;
+        //     this.prompt(`输入的数字不能大于 ${max}`);
+        //     return;
+        // }
+        // if(Number(value)<min){
+        //     if(!displayCheckPrompt) return;
+        //     this.prompt(`输入的数字不能小于 ${min}`);
+        //     return;
+        // }
+        if (isNaN(value) && value !== '.' && value !== '-') return;
+        _this2.setState({
+            value: value,
+            showValue: toThousands(value)
+        });
+        if (value === '-') {
+            onChange && onChange(value);
+        }
+        if (value == '.' || value.indexOf('.') == value.length - 1) {
+            //当输入小数点的时候
+            onChange && onChange(value);
+        } else if (value[value.indexOf('.') + 1] == 0) {
+            //当输入 d.0 的时候，不转换Number
+            onChange && onChange(value);
+        } else {
+            toNumber ? onChange && onChange(Number(value)) : onChange && onChange(value);
+        }
+    };
+
+    this.handleFocus = function (value, e) {
+        _this2.focus = true;
+        var _props3 = _this2.props,
+            onFocus = _props3.onFocus,
+            min = _props3.min,
+            max = _props3.max;
+
+        onFocus && onFocus(value, e);
+    };
+
+    this.handleBlur = function (v, e) {
+        _this2.focus = false;
+        var _props4 = _this2.props,
+            onBlur = _props4.onBlur,
+            precision = _props4.precision,
+            onChange = _props4.onChange,
+            toNumber = _props4.toNumber;
+
+        if (v === '') {
+            _this2.setState({
+                value: v
+            });
+            onBlur && onBlur(v, e);
+            onChange && onChange(v);
+            return;
+        }
+        v = unThousands(v);
+        var value = Number(v);
+        value = _this2.judgeValue(_this2.props, value).value;
+        // if(this.props.hasOwnProperty('precision')){
+        //     value = value.toFixed(precision);
+        // }
+        _this2.setState({
+            value: value,
+            showValue: toThousands(value)
+        });
+        _this2.detailDisable(value);
+        if (toNumber) {
+            onBlur && onBlur(Number(value), e);
+            onChange && onChange(Number(value));
+        } else {
+            onBlur && onBlur(value, e);
+            onChange && onChange(value);
+        }
+    };
+
+    this.detailDisable = function (value) {
+        var _props5 = _this2.props,
+            max = _props5.max,
+            min = _props5.min,
+            step = _props5.step;
+
+
+        if (value >= max || Number(value) + Number(step) > max) {
+            _this2.setState({
+                plusDisabled: true
+            });
+        } else {
+            _this2.setState({
+                plusDisabled: false
+            });
+        }
+        if (value <= min || value - step < min) {
+            _this2.setState({
+                minusDisabled: true
+            });
+        } else {
+            _this2.setState({
+                minusDisabled: false
+            });
+        }
+    };
+
+    this.minus = function (value) {
+        var _props6 = _this2.props,
+            min = _props6.min,
+            max = _props6.max,
+            step = _props6.step,
+            onChange = _props6.onChange,
+            toNumber = _props6.toNumber;
+
+        value = value === '-' ? 0 : value;
+        if (typeof min === "undefined") {
+            value = _this2.detail(value, step, 'reduce');
+        } else {
+            if (value < min) {
+                value = min;
+            } else {
+                var reducedValue = _this2.detail(value, step, 'reduce');
+                if (reducedValue >= min) {
+                    value = reducedValue;
+                }
+            }
+        }
+
+        if (value > max) {
+            value = max;
+        }
+
+        _this2.setState({
+            value: value,
+            showValue: toThousands(value)
+        });
+        toNumber ? onChange && onChange(Number(value)) : onChange && onChange(value);
+        _this2.detailDisable(value);
+    };
+
+    this.plus = function (value) {
+        var _props7 = _this2.props,
+            max = _props7.max,
+            min = _props7.min,
+            step = _props7.step,
+            onChange = _props7.onChange,
+            toNumber = _props7.toNumber;
+
+        value = value === '-' ? 0 : value;
+        if (typeof max === "undefined") {
+            value = _this2.detail(value, step, 'add');
+        } else {
+            if (value > max) {
+                value = max;
+            } else {
+                var addedValue = _this2.detail(value, step, 'add');
+                if (addedValue <= max) {
+                    value = addedValue;
+                }
+            }
+        }
+        if (value < min) {
+            value = min;
+        }
+        _this2.setState({
+            value: value,
+            showValue: toThousands(value)
+        });
+        toNumber ? onChange && onChange(Number(value)) : onChange && onChange(value);
+        _this2.detailDisable(value);
+    };
+
+    this.detail = function (value, step, type) {
+        var precision = _this2.props.precision;
+
+
+        var valueFloat = _this2.separate(value);
+        var stepFloat = _this2.separate(step);
+
+        var ans = void 0;
+        var stepFloatLength = stepFloat.toString().length;
+        var valueFloatLength = valueFloat.toString().length;
+
+        if (typeof precision === 'undefined') {
+            precision = Math.max(stepFloatLength, valueFloatLength);
+        }
+        var coefficient = Math.pow(10, Math.abs(stepFloatLength - valueFloatLength));
+        if (type === 'add') {
+            ans = (value * coefficient + step * coefficient) / coefficient;
+        } else {
+            ans = (value * coefficient - step * coefficient) / coefficient;
+        }
+
+        return ans.toFixed(precision);
+    };
+
+    this.separate = function (value) {
+        value = value !== null && value.toString();
+        if (value.indexOf('.') > -1) {
+            return value.split('.')[1];
+        } else {
+            return "";
+        }
+    };
+
+    this.clear = function () {
+        if (_this2.timer) {
+            clearTimeout(_this2.timer);
+        }
+    };
+
+    this.handlePlusMouseDown = function (e) {
+        e.preventDefault();
+        var _props8 = _this2.props,
+            delay = _props8.delay,
+            disabled = _props8.disabled;
+
+        if (disabled) return;
+        var value = _this2.state.value;
+
+        _this2.plus(value);
+        _this2.clear();
+        _this2.timer = setTimeout(function () {
+            _this2.handlePlusMouseDown();
+        }, delay);
+    };
+
+    this.handleReduceMouseDown = function (e) {
+        e.preventDefault();
+        var _props9 = _this2.props,
+            delay = _props9.delay,
+            disabled = _props9.disabled;
+
+        if (disabled) return;
+        var value = _this2.state.value;
+
+        _this2.minus(value);
+        _this2.clear();
+        _this2.timer = setTimeout(function () {
+            _this2.handleReduceMouseDown();
+        }, delay);
+    };
+};
+
 ;
 
 InputNumber.defaultProps = defaultProps;
 InputNumber.propTypes = propTypes;
+InputNumber.contextTypes = {
+    beeLocale: _propTypes2["default"].object
+};
 exports["default"] = InputNumber;
 module.exports = exports['default'];

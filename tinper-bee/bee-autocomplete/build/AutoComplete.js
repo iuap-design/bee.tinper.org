@@ -227,7 +227,7 @@ var AutoComplete = function (_React$Component) {
     AutoComplete.prototype.handLeBlur = function handLeBlur() {
         var _this2 = this;
 
-        this.props.onBlur();
+        this.props.onBlur(this.state.value);
         setTimeout(function () {
             _this2.setState({
                 show: false

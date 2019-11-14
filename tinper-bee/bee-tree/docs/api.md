@@ -54,7 +54,7 @@ import 'bee-tree/build/Tree.css';
 |focusable|是否开启快捷键功能，使用Tab 键导航获取焦点↓↑选中下、上一个节点，→←展开或者收起一个节点,enter键为节点双击事件|bool|-
 |tabIndexValue|节点获取焦点时，自定义tabIndex的值|Number|0
 |children|必填，TreeNode组件|node|-
-|mustExpandable|支持disabled的节点可以自定义展开收起，默认disabled的节点不可以展开收起|bool|false
+|mustExpandable|支持disabled的节点可以自定义展开收起，默认disabled的节点不可以展开收起。【tinper-bee@2.1.1 新增】|bool|false
 |autoSelectWhenFocus|使用“↑、↓”快捷键切换焦点时，是否自动选中树节点|bool|false
 |expandWhenDoubleClick|双击树节点的时候，是否触发收起/展开动作|bool|false
 |treeData|treeNodes 数据，如果设置则不需要手动构造 TreeNode 节点（key 在整个树范围内唯一）|array\<{key, title, children, [disabled, selectable]}>|-

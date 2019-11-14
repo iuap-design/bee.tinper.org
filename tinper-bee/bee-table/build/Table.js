@@ -26,7 +26,7 @@ var _TableHeader = require('./TableHeader');
 
 var _TableHeader2 = _interopRequireDefault(_TableHeader);
 
-var _utils = require('./utils');
+var _utils = require('./lib/utils');
 
 var _shallowequal = require('shallowequal');
 
@@ -48,29 +48,15 @@ var _beeLoading = require('bee-loading');
 
 var _beeLoading2 = _interopRequireDefault(_beeLoading);
 
-var _beeDropdown = require('bee-dropdown');
-
-var _beeDropdown2 = _interopRequireDefault(_beeDropdown);
-
-var _beeMenus = require('bee-menus');
-
-var _beeMenus2 = _interopRequireDefault(_beeMenus);
-
-var _beeButton = require('bee-button');
-
-var _beeButton2 = _interopRequireDefault(_beeButton);
-
 var _beeIcon = require('bee-icon');
 
 var _beeIcon2 = _interopRequireDefault(_beeIcon);
 
-var _svg = require('./svg');
+var _i18n = require('./lib/i18n');
 
-var _svg2 = _interopRequireDefault(_svg);
+var _i18n2 = _interopRequireDefault(_i18n);
 
-var _Portal = require('bee-overlay/build/Portal');
-
-var _Portal2 = _interopRequireDefault(_Portal);
+var _tool = require('bee-locale/build/tool');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -125,8 +111,14 @@ var propTypes = {
   syncHover: _propTypes2["default"].bool,
   tabIndex: _propTypes2["default"].string,
   hoverContent: _propTypes2["default"].func,
-  canConfigureTableSize: _propTypes2["default"].bool,
-  getToolbarContainer: _propTypes2["default"].func
+  size: _propTypes2["default"].oneOf(['sm', 'md', 'lg']),
+  rowDraggAble: _propTypes2["default"].bool,
+  onDropRow: _propTypes2["default"].func,
+  onDragRowStart: _propTypes2["default"].func,
+  onBodyScroll: _propTypes2["default"].func,
+  bodyDisplayInRow: _propTypes2["default"].bool, // 表格内容超出列宽度时进行换行 or 以...形式展现
+  headerDisplayInRow: _propTypes2["default"].bool, // 表头内容超出列宽度时进行换行 or 以...形式展现
+  showRowNum: _propTypes2["default"].oneOfType([_propTypes2["default"].bool, _propTypes2["default"].object]) // 表格是否自动生成序号,格式为{base:number || 0,defaultKey:string || '_index',defaultName:string || '序号'}
 };
 
 var defaultProps = {
@@ -161,24 +153,23 @@ var defaultProps = {
   getBodyWrapper: function getBodyWrapper(body) {
     return body;
   },
-  emptyText: function emptyText() {
-    return 'No Data';
-  },
+  // emptyText: () => <div><Icon type="uf-nodata" className="table-nodata"></Icon><span>{locale["no_data"]}</span></div>,
   columns: [],
-  minColumnWidth: 80, //设置Column列最小宽度
+  minColumnWidth: 80,
   locale: {},
   syncHover: true,
   setRowHeight: function setRowHeight() {},
   setRowParentIndex: function setRowParentIndex() {},
   tabIndex: '0',
   heightConsistent: false,
-  canConfigureTableSize: false
-};
-
-var tableSizeIcons = {
-  'sm': _svg2["default"].compact,
-  'md': _svg2["default"].moderate,
-  'lg': _svg2["default"].easy
+  size: 'md',
+  rowDraggAble: false,
+  onDropRow: function onDropRow() {},
+  onDragRowStart: function onDragRowStart() {},
+  onBodyScroll: function onBodyScroll() {},
+  bodyDisplayInRow: true,
+  headerDisplayInRow: true,
+  showRowNum: false
 };
 
 var Table = function (_Component) {
@@ -188,6 +179,81 @@ var Table = function (_Component) {
     _classCallCheck(this, Table);
 
     var _this = _possibleConstructorReturn(this, _Component.call(this, props));
+
+    _this.resize = function () {
+      (0, _utils.debounce)(_this.syncFixedTableRowHeight, 150);
+      _this.computeTableWidth();
+      var renderFlag = _this.state.renderFlag;
+      _this.setState({
+        renderFlag: !renderFlag
+      });
+    };
+
+    _this.getTableUID = function () {
+      var uid = "_table_uid_" + new Date().getTime();
+      _this.tableUid = uid;
+      var div = document.createElement("div");
+      // div.className = "u-table-drag-hidden-cont";
+      div.className = "u-table-drag-hidden-cont";
+      div.id = uid;
+      _this.contentTable.appendChild(div);
+    };
+
+    _this.getColumnsChildrenList = function (columns) {
+      columns.forEach(function (da) {
+        da.children ? _this.getColumnsChildrenList(da.children) : _this.columnsChildrenList.push(da);
+      });
+    };
+
+    _this.onDragRowStart = function (currentKey) {
+      var data = _this.state.data,
+          currentIndex = void 0,
+          record = void 0;
+      data.forEach(function (da, i) {
+        // tr 的唯一标识通过 data.key 或 rowKey 两种方式传进来
+        var trKey = da.key ? da.key : _this.getRowKey(da, i);
+        if (trKey == currentKey) {
+          currentIndex = i;
+          record = da;
+        }
+      });
+      _this.props.onDragRowStart && _this.props.onDragRowStart(record, currentIndex);
+    };
+
+    _this.onDragRow = function (currentKey, targetKey) {
+      var data = _this.state.data,
+          currentIndex = void 0,
+          targetIndex = void 0,
+          record = void 0;
+      data.forEach(function (da, i) {
+        // tr 的唯一标识通过 data.key 或 rowKey 两种方式传进来
+        var trKey = da.key ? da.key : _this.getRowKey(da, i);
+        if (trKey == currentKey) {
+          currentIndex = i;
+          record = da;
+        }
+        if (trKey == targetKey) {
+          targetIndex = i;
+        }
+      });
+      data = _this.swapArray(data, currentIndex, targetIndex);
+      _this.props.onDropRow && _this.props.onDropRow(data, record);
+      _this.setState({
+        data: data
+      });
+    };
+
+    _this.swapArray = function (arr, index1, index2) {
+      var value1 = arr[index1];
+      arr.splice(index1, 1);
+      if (index1 < index2) {
+        arr.splice(index2, 0, value1);
+      } else {
+        arr.splice(index2 + 1, 0, value1);
+      }
+
+      return arr;
+    };
 
     _this.renderDragHideTable = function () {
       var _this$props = _this.props,
@@ -236,85 +302,9 @@ var Table = function (_Component) {
       _this.props.onTableKeyDown && _this.props.onTableKeyDown();
     };
 
-    _this.getTableToolbar = function () {
-      var clsPrefix = _this.props.clsPrefix;
-      var tableSize = _this.state.tableSize;
-
-      var menu = _react2["default"].createElement(
-        _beeMenus2["default"],
-        { className: clsPrefix + '-adjustSize-menus', onSelect: _this.onConfigMenuSelect },
-        _react2["default"].createElement(
-          _beeMenus2["default"].Item,
-          { key: 'sm' },
-          _svg2["default"].compact,
-          '\u7D27\u51D1\u578B'
-        ),
-        _react2["default"].createElement(
-          _beeMenus2["default"].Item,
-          { key: 'md' },
-          _svg2["default"].moderate,
-          '\u9002\u4E2D'
-        ),
-        _react2["default"].createElement(
-          _beeMenus2["default"].Item,
-          { key: 'lg' },
-          _svg2["default"].easy,
-          '\u5BBD\u677E\u578B'
-        )
-      );
-      return _react2["default"].createElement(
-        _beeDropdown2["default"],
-        {
-          trigger: ['hover'],
-          overlay: menu,
-          placement: 'bottomRight',
-          animation: 'slide-up' },
-        _react2["default"].createElement(
-          _beeButton2["default"],
-          { bordered: true, className: clsPrefix + '-adjustSize-btn' },
-          tableSizeIcons[tableSize],
-          _react2["default"].createElement(_beeIcon2["default"], { type: 'uf-arrow-down' })
-        )
-      );
-    };
-
-    _this.onConfigMenuSelect = function (_ref) {
-      var key = _ref.key;
-      var _this$state = _this.state,
-          tableSizeConf = _this$state.tableSizeConf,
-          tableSize = _this$state.tableSize;
-
-      if (key === 'sm') {
-        tableSizeConf = {
-          height: 30,
-          headerHeight: 35,
-          fontSize: 12
-        };
-        tableSize = 'sm';
-      } else if (key === 'lg') {
-        tableSizeConf = {
-          height: 50,
-          headerHeight: 50,
-          fontSize: 14
-        };
-        tableSize = 'lg';
-      } else if (key === 'md') {
-        tableSizeConf = {
-          height: 40,
-          headerHeight: 40,
-          fontSize: 12
-        };
-        tableSize = 'md';
-      }
-      _this.setState({
-        tableSizeConf: tableSizeConf,
-        tableSize: tableSize
-      });
-    };
-
     var expandedRowKeys = [];
     var rows = [].concat(_toConsumableArray(props.data));
-    _this.columnManager = new _ColumnManager2["default"](props.columns, props.children, props.originWidth);
+    _this.columnManager = new _ColumnManager2["default"](props.columns, props.children, props.originWidth, props.rowDraggAble, props.showRowNum); // 加入props.showRowNum参数
     _this.store = (0, _createStore2["default"])({ currentHoverKey: null });
     _this.firstDid = true;
     if (props.defaultExpandAllRows) {
@@ -326,6 +316,10 @@ var Table = function (_Component) {
     } else {
       expandedRowKeys = props.expandedRowKeys || props.defaultExpandedRowKeys;
     }
+
+    _this.columnsChildrenList = []; //复杂表头、所有叶子节点
+    _this.getColumnsChildrenList(props.columns); //复杂表头、所有叶子节点
+
     _this.state = {
       expandedRowKeys: expandedRowKeys,
       data: props.data,
@@ -333,8 +327,7 @@ var Table = function (_Component) {
       scrollPosition: 'left',
       fixedColumnsHeadRowsHeight: [],
       fixedColumnsBodyRowsHeight: [],
-      tableSizeConf: null, //实现表格动态缩放
-      tableSize: 'md'
+      fixedColumnsExpandedRowsHeight: {} //扩展行的高度
     };
 
     _this.onExpandedRowsChange = _this.onExpandedRowsChange.bind(_this);
@@ -364,10 +357,20 @@ var Table = function (_Component) {
     _this.handleRowHover = _this.handleRowHover.bind(_this);
     _this.computeTableWidth = _this.computeTableWidth.bind(_this);
     _this.onBodyMouseLeave = _this.onBodyMouseLeave.bind(_this);
+    _this.tableUid = null;
+    _this.contentTable = null;
+    _this.leftColumnsLength; //左侧固定列的长度
+    _this.centerColumnsLength; //非固定列的长度 
     return _this;
   }
 
+  Table.prototype.componentWillMount = function componentWillMount() {
+    this.centerColumnsLength = this.columnManager.centerColumns().length;
+    this.leftColumnsLength = this.columnManager.leftColumns().length;
+  };
+
   Table.prototype.componentDidMount = function componentDidMount() {
+    this.getTableUID();
     _utils.EventUtil.addHandler(this.contentTable, 'keydown', this.onKeyDown);
     _utils.EventUtil.addHandler(this.contentTable, 'focus', this.onFocus);
     setTimeout(this.resetScrollX, 300);
@@ -381,7 +384,7 @@ var Table = function (_Component) {
     }
     if (this.columnManager.isAnyColumnsFixed()) {
       this.syncFixedTableRowHeight();
-      this.resizeEvent = (0, _addEventListener2["default"])(window, 'resize', (0, _utils.debounce)(this.syncFixedTableRowHeight, 150));
+      this.resizeEvent = (0, _addEventListener2["default"])(window, 'resize', this.resize);
     }
   };
 
@@ -397,16 +400,16 @@ var Table = function (_Component) {
       });
     }
     if (nextProps.columns && nextProps.columns !== this.props.columns) {
-      this.columnManager.reset(nextProps.columns);
-      if (nextProps.columns.length !== this.props.columns.length && this.refs && this.refs.bodyTable) {
-        this.scrollTop = this.refs.bodyTable.scrollTop;
+      this.columnManager.reset(nextProps.columns, null, this.props.showRowNum); // 加入this.props.showRowNum参数
+      if (nextProps.columns.length !== this.props.columns.length && this.refs && this.bodyTable) {
+        this.scrollTop = this.bodyTable.scrollTop;
       }
     } else if (nextProps.children !== this.props.children) {
-      this.columnManager.reset(null, nextProps.children);
+      this.columnManager.reset(null, nextProps.children, this.props.showRowNum); // 加入this.props.showRowNum参数
     }
     //适配lazyload
     if (nextProps.scrollTop > -1) {
-      // this.refs.bodyTable.scrollTop = nextProps.scrollTop;
+      // this.bodyTable.scrollTop = nextProps.scrollTop;
       this.scrollTop = nextProps.scrollTop;
     }
     if (!nextProps.originWidth) {
@@ -415,6 +418,11 @@ var Table = function (_Component) {
     }
     if (nextProps.resetScroll) {
       this.resetScrollX();
+    }
+    // fix:模态框中使用table，计算的滚动条宽度为0的bug
+    // fix:表格首次渲染时 display:none，再显示时，未重新计算，导致表行出现错位的bug
+    if (this.scrollbarWidth <= 0 && this.props.scroll.y) {
+      this.scrollbarWidth = (0, _utils.measureScrollbar)();
     }
 
     // console.log('this.scrollTop**********',this.scrollTop);
@@ -433,17 +441,20 @@ var Table = function (_Component) {
     if (this.scrollTop > -1) {
       this.refs.fixedColumnsBodyLeft && (this.refs.fixedColumnsBodyLeft.scrollTop = this.scrollTop);
       this.refs.fixedColumnsBodyRight && (this.refs.fixedColumnsBodyRight.scrollTop = this.scrollTop);
-      this.refs.bodyTable.scrollTop = this.scrollTop;
+      this.bodyTable.scrollTop = this.scrollTop;
       this.scrollTop = -1;
     }
     if (prevProps.data.length === 0 || this.props.data.length === 0) {
       this.resetScrollX();
     }
+
     // 是否传入 scroll中的y属性，如果传入判断是否是整数，如果是则进行比较 。bodyTable 的clientHeight进行判断
     this.isShowScrollY();
   };
 
   Table.prototype.componentWillUnmount = function componentWillUnmount() {
+    // 移除绑定事件,避免内存泄漏
+    this.contentTable = null;
     _utils.EventUtil.removeHandler(this.contentTable, 'keydown', this.onKeyDown);
     _utils.EventUtil.removeHandler(this.contentTable, 'focus', this.onFocus);
     if (this.resizeEvent) {
@@ -495,14 +506,22 @@ var Table = function (_Component) {
     var props = this.props;
     var y = props.scroll && props.scroll.y;
     if (y) {
-      var bodyH = this.refs.bodyTable.clientHeight;
-      var bodyContentH = this.refs.bodyTable.querySelector('table').clientHeight;
+      var bodyH = this.bodyTable.clientHeight;
+      var bodyContentH = this.bodyTable.querySelector('table').clientHeight;
       var rightBodyTable = this.refs.fixedColumnsBodyRight;
-      if (bodyContentH <= bodyH) {
-        this.refs.bodyTable.style.overflowY = 'auto';
-        this.refs.headTable.style.overflowY = 'auto';
-        rightBodyTable && (rightBodyTable.style.overflowY = 'auto');
-      }
+      // const leftBodyTable = this.refs.fixedColumnsBodyLeft;
+      var overflowy = bodyContentH <= bodyH ? 'auto' : 'scroll';
+      this.bodyTable.style.overflowY = overflowy;
+
+      this.headTable.style.overflowY = overflowy;
+      rightBodyTable && (rightBodyTable.style.overflowY = overflowy);
+      // 没有纵向滚动条时，表头横向滚动条根据内容动态显示 待验证
+      // if(overflowy == 'auto'){
+      //   this.fixedHeadTable && (this.fixedHeadTable.style.overflowX = 'auto');
+      //   rightBodyTable && (rightBodyTable.style.overflowX = 'auto');
+      //   leftBodyTable && (leftBodyTable.style.overflowX = 'auto');
+      // }
+
     }
   };
 
@@ -520,7 +539,7 @@ var Table = function (_Component) {
     }
     var info = this.findExpandedRow(record);
     if (typeof info !== 'undefined' && !expanded) {
-      this.onRowDestroy(record, index);
+      this.onRowDestroy(record, index, true);
     } else if (!info && expanded) {
       var expandedRows = this.getExpandedRows().concat();
       expandedRows.push(this.getRowKey(record, index));
@@ -529,7 +548,7 @@ var Table = function (_Component) {
     this.props.onExpand(expanded, record, index);
   };
 
-  Table.prototype.onRowDestroy = function onRowDestroy(record, rowIndex) {
+  Table.prototype.onRowDestroy = function onRowDestroy(record, rowIndex, isExpandOperation) {
     var expandedRows = this.getExpandedRows().concat();
     var rowKey = this.getRowKey(record, rowIndex);
     var index = -1;
@@ -545,7 +564,15 @@ var Table = function (_Component) {
     if (this.currentHoverKey == rowKey && this.hoverDom) {
       this.hoverDom.style.display = 'none';
     }
-    this.onExpandedRowsChange(expandedRows);
+    // todo:如果是TableRow组件卸载触发的该方法，需要加判断，解决懒加载时，持续触发onExpandedRowsChange的问题
+    if (isExpandOperation) {
+      this.onExpandedRowsChange(expandedRows);
+    } else {
+      var info = this.findExpandedRow(record);
+      if (typeof info === 'undefined') {
+        this.onExpandedRowsChange(expandedRows);
+      }
+    }
   };
 
   Table.prototype.getRowKey = function getRowKey(record, index) {
@@ -559,8 +586,10 @@ var Table = function (_Component) {
     return this.props.expandedRowKeys || this.state.expandedRowKeys;
   };
 
-  Table.prototype.getHeader = function getHeader(columns, fixed) {
-    var tableSizeConf = this.state.tableSizeConf;
+  //todo 后续改进
+
+
+  Table.prototype.getHeader = function getHeader(columns, fixed, leftFixedWidth, rightFixedWidth) {
     var _props = this.props,
         filterDelay = _props.filterDelay,
         onFilterChange = _props.onFilterChange,
@@ -573,6 +602,7 @@ var Table = function (_Component) {
         onDragEnter = _props.onDragEnter,
         onDragOver = _props.onDragOver,
         onDrop = _props.onDrop,
+        onDragEnd = _props.onDragEnd,
         draggable = _props.draggable,
         onMouseDown = _props.onMouseDown,
         onMouseMove = _props.onMouseMove,
@@ -585,7 +615,8 @@ var Table = function (_Component) {
         afterDragColWidth = _props.afterDragColWidth,
         headerScroll = _props.headerScroll,
         bordered = _props.bordered,
-        onDropBorder = _props.onDropBorder;
+        onDropBorder = _props.onDropBorder,
+        onDraggingBorder = _props.onDraggingBorder;
 
     var rows = this.getHeaderRows(columns);
     if (expandIconAsCell && fixed !== 'right') {
@@ -596,23 +627,16 @@ var Table = function (_Component) {
         rowSpan: rows.length
       });
     }
-
-    // const trStyle = headerHeight&&!fixed ? { height: headerHeight } : (fixed ? this.getHeaderRowStyle(columns, rows) : null);
-    var trStyle = fixed ? this.getHeaderRowStyle(columns, rows) : headerHeight ? { height: headerHeight } : null;
-    if (!fixed && tableSizeConf && tableSizeConf.headerHeight) {
-      trStyle = {
-        height: tableSizeConf.headerHeight,
-        fontSize: tableSizeConf.fontSize
-      };
-    }
-    var drop = draggable ? { onDragStart: onDragStart, onDragOver: onDragOver, onDrop: onDrop, onDragEnter: onDragEnter, draggable: draggable } : {};
-    var dragBorder = dragborder ? { onMouseDown: onMouseDown, onMouseMove: onMouseMove, onMouseUp: onMouseUp, dragborder: dragborder, onThMouseMove: onThMouseMove, dragborderKey: dragborderKey, onDropBorder: onDropBorder } : {};
+    var trStyle = headerHeight && !fixed ? { height: headerHeight } : fixed ? this.getHeaderRowStyle(columns, rows) : null;
+    var drop = draggable ? { onDragStart: onDragStart, onDragOver: onDragOver, onDrop: onDrop, onDragEnd: onDragEnd, onDragEnter: onDragEnter, draggable: draggable } : {};
+    var dragBorder = dragborder ? { onMouseDown: onMouseDown, onMouseMove: onMouseMove, onMouseUp: onMouseUp, dragborder: dragborder, onThMouseMove: onThMouseMove, dragborderKey: dragborderKey, onDropBorder: onDropBorder, onDraggingBorder: onDraggingBorder } : {};
     var contentWidthDiff = 0;
     //非固定表格,宽度不够时自动扩充
     if (!fixed) {
       contentWidthDiff = this.state.contentWidthDiff;
     }
     return showHeader ? _react2["default"].createElement(_TableHeader2["default"], _extends({}, drop, dragBorder, {
+      columnsChildrenList: this.columnsChildrenList,
       locale: this.props.locale,
       minColumnWidth: minColumnWidth,
       contentWidthDiff: contentWidthDiff,
@@ -631,7 +655,9 @@ var Table = function (_Component) {
       contentDomWidth: this.contentDomWidth,
       scrollbarWidth: this.scrollbarWidth,
       headerScroll: headerScroll,
-      bordered: bordered
+      bordered: bordered,
+      leftFixedWidth: leftFixedWidth,
+      rightFixedWidth: rightFixedWidth
     })) : null;
   };
 
@@ -673,7 +699,9 @@ var Table = function (_Component) {
         fixed: column.fixed,
         width: width,
         dataindex: column.dataIndex,
-        textAlign: column.textAlign
+        textAlign: column.textAlign,
+        titleAlign: column.titleAlign, // 标题水平对齐方式
+        required: column.required // 标题是否展示必填标志
       };
       if (column.onHeadCellClick) {
         cell.onClick = column.onHeadCellClick;
@@ -730,9 +758,10 @@ var Table = function (_Component) {
     } else if (fixed === 'right') {
       colCount = this.columnManager.rightLeafColumns().length;
     } else {
-      colCount = this.columnManager.leafColumns().length;
+      colCount = this.columnManager.centerColumns().length; //计算非固定列的个数，fix: 嵌套表格场景，右侧列断开的问题
     }
 
+    var expandedRowHeight = this.state.fixedColumnsExpandedRowsHeight[key] || 'auto';
     function contentContainer() {
       if (content && content.props && content.props.style) {
         return _react2["default"].createElement('div', { style: { height: content.props.style.height } });
@@ -769,9 +798,34 @@ var Table = function (_Component) {
       indent: 1,
       expandable: false,
       store: this.store,
-      dragborderKey: this.props.dragborderKey
+      dragborderKey: this.props.dragborderKey,
+      rowDraggAble: this.props.rowDraggAble,
+      onDragRow: this.onDragRow,
+      onDragRowStart: this.onDragRowStart,
+      height: expandedRowHeight
     });
   };
+
+  /**
+   * 行拖拽开始时触发
+   * @param currentKey 当前拖拽目标的key
+   */
+
+
+  /**
+   * 行拖拽结束时触发
+   * @param currentKey 当前拖拽目标的key
+   * @param targetKey 拖拽结束时，目标位置的key
+   */
+
+  /**
+  * 数组元素交换位置
+  * @param {array} arr 数组
+  * @param {number} index1 添加项目的位置
+  * @param {number} index2 删除项目的位置
+  */
+
+
   /**
    *
    *
@@ -784,8 +838,6 @@ var Table = function (_Component) {
    * @returns
    * @memberof Table
    */
-
-
   Table.prototype.getRowsByData = function getRowsByData(data, visible, indent, columns, fixed) {
     var rootIndex = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : -1;
 
@@ -793,12 +845,9 @@ var Table = function (_Component) {
     var childrenColumnName = props.childrenColumnName;
     var expandedRowRender = props.expandedRowRender;
     var expandRowByClick = props.expandRowByClick;
-    var _state2 = this.state,
-        fixedColumnsBodyRowsHeight = _state2.fixedColumnsBodyRowsHeight,
-        tableSizeConf = _state2.tableSizeConf;
+    var fixedColumnsBodyRowsHeight = this.state.fixedColumnsBodyRowsHeight;
 
     var rst = [];
-
     var height = void 0;
     var rowClassName = props.rowClassName;
     var rowRef = props.rowRef;
@@ -810,17 +859,36 @@ var Table = function (_Component) {
     var onRowDoubleClick = props.onRowDoubleClick;
 
     var expandIconAsCell = fixed !== 'right' ? props.expandIconAsCell : false;
-    var expandIconColumnIndex = fixed !== 'right' ? props.expandIconColumnIndex : -1;
+    var expandIconColumnIndex = props.expandIconColumnIndex;
     if (props.lazyLoad && props.lazyLoad.preHeight && indent == 0) {
       rst.push(_react2["default"].createElement(_TableRow2["default"], { height: props.lazyLoad.preHeight, columns: [], className: '', key: 'table_row_first', store: this.store, visible: true }));
     }
     var lazyCurrentIndex = props.lazyLoad && props.lazyLoad.startIndex ? props.lazyLoad.startIndex : 0;
     var lazyParentIndex = props.lazyLoad && props.lazyLoad.startParentIndex ? props.lazyLoad.startParentIndex : 0;
+    var lazyEndIndex = props.lazyLoad && props.lazyLoad.endIndex ? props.lazyLoad.endIndex : -1;
     for (var i = 0; i < data.length; i++) {
       var isHiddenExpandIcon = void 0;
+      // if ( props.showRowNum ){
+      //   switch(props.showRowNum.type){
+      //     case 'number':{
+      //       data[i][props.showRowNum.key || '_index'] = (props.showRowNum.base || 0) + i;
+      //       break;
+      //     }
+      //     case 'ascii': {
+      //       data[i][props.showRowNum.key || '_index'] = String.fromCharCode(i + (props.showRowNum.base || '0').charCodeAt());
+      //       break;
+      //     }
+      //     default: {
+      //       data[i][props.showRowNum.key || '_index'] = (props.showRowNum.base || 0) + i;
+      //       break;
+      //     }
+      //   }
+
+      // } 
       var record = data[i];
       var key = this.getRowKey(record, i);
-      var childrenColumn = record[childrenColumnName];
+      var isLeaf = typeof record['isLeaf'] === 'boolean' && record['isLeaf'] || false;
+      var childrenColumn = isLeaf ? false : record[childrenColumnName];
       var isRowExpanded = this.isRowExpanded(record, i);
       var expandedRowContent = void 0;
       var expandedContentHeight = 0;
@@ -843,14 +911,10 @@ var Table = function (_Component) {
 
       onHoverProps.onHover = this.handleRowHover;
 
-      if (props.height) {
+      if (props.bodyDisplayInRow && props.height) {
         height = props.height;
       } else if (fixed || props.heightConsistent) {
         height = fixedColumnsBodyRowsHeight[fixedIndex];
-      }
-      // 如果切换了配置，以自定义配置的高度为准
-      if (!fixed && !props.heightConsistent && tableSizeConf && tableSizeConf.headerHeight) {
-        height = tableSizeConf.height;
       }
 
       var leafColumns = void 0;
@@ -881,7 +945,7 @@ var Table = function (_Component) {
         indent: indent,
         indentSize: props.indentSize,
         needIndentSpaced: needIndentSpaced,
-        className: className,
+        className: className + ' ' + (this.props.rowDraggAble ? ' row-dragg-able ' : ''),
         record: record,
         expandIconAsCell: expandIconAsCell,
         onDestroy: this.onRowDestroy,
@@ -912,7 +976,18 @@ var Table = function (_Component) {
         fixedIndex: fixedIndex + lazyCurrentIndex,
         rootIndex: rootIndex,
         syncHover: props.syncHover,
-        tableSizeConf: tableSizeConf
+        bodyDisplayInRow: props.bodyDisplayInRow,
+        rowDraggAble: this.props.rowDraggAble,
+        onDragRow: this.onDragRow,
+        onDragRowStart: this.onDragRowStart,
+        contentTable: this.contentTable,
+        tableUid: this.tableUid,
+        expandedIcon: props.expandedIcon,
+        collapsedIcon: props.collapsedIcon,
+        lazyStartIndex: lazyCurrentIndex,
+        lazyEndIndex: lazyEndIndex,
+        centerColumnsLength: this.centerColumnsLength,
+        leftColumnsLength: this.leftColumnsLength
       })));
       this.treeRowIndex++;
       var subVisible = visible && isRowExpanded;
@@ -921,6 +996,7 @@ var Table = function (_Component) {
         rst.push(this.getExpandedRow(key, expandedRowContent, subVisible, expandedRowClassName(record, i, indent), fixed));
       }
       if (childrenColumn) {
+        this.isTreeType = true; //增加该标志位，为了兼容老版本，不修改以前的 `this.treeType` 的相关逻辑
         this.treeType = true; //证明是tree表形式visible = {true}
         rst = rst.concat(this.getRowsByData(childrenColumn, subVisible, indent + 1, columns, fixed, paramRootIndex));
       }
@@ -929,12 +1005,17 @@ var Table = function (_Component) {
     if (props.lazyLoad && props.lazyLoad.sufHeight && indent == 0) {
       rst.push(_react2["default"].createElement(_TableRow2["default"], { height: props.lazyLoad.sufHeight, key: 'table_row_end', columns: [], className: '', store: this.store, visible: true }));
     }
+    if (!this.isTreeType) {
+      this.treeType = false;
+    }
     return rst;
   };
 
   Table.prototype.getRows = function getRows(columns, fixed) {
-    //统计index，只有含有鼠表结构才有用，因为数表结构时，固定列的索引取值有问题
+    //统计index，只有含有树表结构才有用，因为树表结构时，固定列的索引取值有问题
     this.treeRowIndex = 0;
+    //每次遍历 data 前，将this.isTreeType置为 false，若遍历完 data，此变量仍为 false，说明是普通表格
+    this.isTreeType = false;
     var rs = this.getRowsByData(this.state.data, true, 0, columns, fixed);
     return rs;
   };
@@ -945,11 +1026,11 @@ var Table = function (_Component) {
     var cols = [];
     var self = this;
 
-    var _state3 = this.state,
-        _state3$contentWidthD = _state3.contentWidthDiff,
-        contentWidthDiff = _state3$contentWidthD === undefined ? 0 : _state3$contentWidthD,
-        _state3$lastShowIndex = _state3.lastShowIndex,
-        lastShowIndex = _state3$lastShowIndex === undefined ? 0 : _state3$lastShowIndex;
+    var _state2 = this.state,
+        _state2$contentWidthD = _state2.contentWidthDiff,
+        contentWidthDiff = _state2$contentWidthD === undefined ? 0 : _state2$contentWidthD,
+        _state2$lastShowIndex = _state2.lastShowIndex,
+        lastShowIndex = _state2$lastShowIndex === undefined ? 0 : _state2$lastShowIndex;
 
     if (this.props.expandIconAsCell && fixed !== 'right') {
       cols.push(_react2["default"].createElement('col', {
@@ -981,7 +1062,7 @@ var Table = function (_Component) {
       if (!fixed && c.fixed) {
         fixedClass = ' ' + _this3.props.clsPrefix + '-row-fixed-columns-in-body';
       }
-      return _react2["default"].createElement('col', { key: c.key, style: { width: width, minWidth: _this3.props.minColumnWidth }, className: fixedClass });
+      return _react2["default"].createElement('col', { key: c.key, style: { width: width, minWidth: c.width }, className: fixedClass });
     }));
     return _react2["default"].createElement(
       'colgroup',
@@ -1016,12 +1097,19 @@ var Table = function (_Component) {
         scroll = _props3$scroll === undefined ? {} : _props3$scroll,
         getBodyWrapper = _props3.getBodyWrapper,
         footerScroll = _props3.footerScroll,
-        headerScroll = _props3.headerScroll;
-    var useFixedHeader = this.props.useFixedHeader;
+        headerScroll = _props3.headerScroll,
+        _props3$hideHeaderScr = _props3.hideHeaderScroll,
+        hideHeaderScroll = _props3$hideHeaderScr === undefined ? false : _props3$hideHeaderScr,
+        expandIconAsCell = _props3.expandIconAsCell;
+    var _props4 = this.props,
+        useFixedHeader = _props4.useFixedHeader,
+        data = _props4.data;
 
-    var bodyStyle = _extends({}, this.props.bodyStyle);
+    var bodyStyle = _extends({}, this.props.bodyStyle); // 这里为什么不写在上面?
     var headStyle = {};
     var innerBodyStyle = {};
+    var leftFixedWidth = this.columnManager.getLeftColumnsWidth(this.contentWidth);
+    var rightFixedWidth = this.columnManager.getRightColumnsWidth(this.contentWidth);
 
     var tableClassName = '';
     //表格元素的宽度大于容器的宽度也显示滚动条
@@ -1079,10 +1167,20 @@ var Table = function (_Component) {
               bodyStyle.marginBottom = '-' + scrollbarWidth + 'px';
             }
           } else {
-            headStyle.marginBottom = '-' + scrollbarWidth + 'px';
+            // 没有数据时，表头滚动条隐藏问题
+            if (data.length == 0 && this.domWidthDiff < 0) {
+              headStyle.marginBottom = '0px';
+            } else {
+              headStyle.marginBottom = '-' + scrollbarWidth + 'px';
+            }
           }
         }
       }
+    }
+
+    if (data.length == 0 && hideHeaderScroll) {
+      //支持 NCC 需求:表格无数据时，去掉表头滚动条 (https://github.com/iuap-design/tinper-bee/issues/207)
+      headStyle.marginBottom = '-' + this.scrollbarWidth + 'px';
     }
 
     var renderTable = function renderTable() {
@@ -1110,9 +1208,9 @@ var Table = function (_Component) {
       var _drag_class = _this4.props.dragborder ? "table-drag-bordered" : "";
       return _react2["default"].createElement(
         'table',
-        { id: 'bee-table-uid', className: ' ' + tableClassName + '  table-bordered ' + _drag_class + ' ', style: tableStyle },
+        { className: ' ' + tableClassName + '  table-bordered ' + _drag_class + ' ', style: tableStyle },
         _this4.getColGroup(columns, fixed),
-        hasHead ? _this4.getHeader(columns, fixed) : null,
+        hasHead ? _this4.getHeader(columns, fixed, leftFixedWidth, rightFixedWidth) : null,
         tableBody
       );
     };
@@ -1124,7 +1222,9 @@ var Table = function (_Component) {
         'div',
         {
           className: clsPrefix + '-header',
-          ref: fixed ? null : 'headTable',
+          ref: function ref(el) {
+            fixed ? _this4.fixedHeadTable = el : _this4.headTable = el;
+          },
           style: headStyle,
           onMouseOver: this.detectScrollTarget,
           onTouchStart: this.detectScrollTarget,
@@ -1138,7 +1238,9 @@ var Table = function (_Component) {
       {
         className: clsPrefix + '-body',
         style: bodyStyle,
-        ref: 'bodyTable',
+        ref: function ref(el) {
+          _this4.bodyTable = el;
+        },
         onMouseOver: this.detectScrollTarget,
         onTouchStart: this.detectScrollTarget,
         onScroll: this.handleBodyScroll,
@@ -1177,11 +1279,12 @@ var Table = function (_Component) {
         )
       );
     }
-    var leftFixedWidth = this.columnManager.getLeftColumnsWidth(this.contentWidth);
-    var rightFixedWidth = this.columnManager.getRightColumnsWidth(this.contentWidth);
+    // const leftFixedWidth = this.columnManager.getLeftColumnsWidth(this.contentWidth);
+    // const rightFixedWidth = this.columnManager.getRightColumnsWidth(this.contentWidth);
+    var expandIconWidth = expandIconAsCell ? 33 : 0;
     var parStyle = {};
     if (!fixed) {
-      parStyle = { 'marginLeft': leftFixedWidth, 'marginRight': rightFixedWidth };
+      parStyle = { 'marginLeft': leftFixedWidth + expandIconWidth, 'marginRight': rightFixedWidth };
     }
     return _react2["default"].createElement(
       'div',
@@ -1192,9 +1295,9 @@ var Table = function (_Component) {
   };
 
   Table.prototype.getTitle = function getTitle() {
-    var _props4 = this.props,
-        title = _props4.title,
-        clsPrefix = _props4.clsPrefix;
+    var _props5 = this.props,
+        title = _props5.title,
+        clsPrefix = _props5.clsPrefix;
 
     return title ? _react2["default"].createElement(
       'div',
@@ -1204,9 +1307,9 @@ var Table = function (_Component) {
   };
 
   Table.prototype.getFooter = function getFooter() {
-    var _props5 = this.props,
-        footer = _props5.footer,
-        clsPrefix = _props5.clsPrefix;
+    var _props6 = this.props,
+        footer = _props6.footer,
+        clsPrefix = _props6.clsPrefix;
 
     return footer ? _react2["default"].createElement(
       'div',
@@ -1216,10 +1319,26 @@ var Table = function (_Component) {
   };
 
   Table.prototype.getEmptyText = function getEmptyText() {
-    var _props6 = this.props,
-        emptyText = _props6.emptyText,
-        clsPrefix = _props6.clsPrefix,
-        data = _props6.data;
+    var _props7 = this.props,
+        defaultEmptyText = _props7.emptyText,
+        clsPrefix = _props7.clsPrefix,
+        data = _props7.data;
+
+    var locale = (0, _tool.getComponentLocale)(this.props, this.context, 'Table', function () {
+      return _i18n2["default"];
+    });
+    var emptyText = defaultEmptyText !== undefined ? defaultEmptyText : function () {
+      return _react2["default"].createElement(
+        'div',
+        null,
+        _react2["default"].createElement(_beeIcon2["default"], { type: 'uf-nodata', className: 'table-nodata' }),
+        _react2["default"].createElement(
+          'span',
+          null,
+          locale["no_data"]
+        )
+      );
+    };
 
     return !data.length ? _react2["default"].createElement(
       'div',
@@ -1244,15 +1363,17 @@ var Table = function (_Component) {
 
   Table.prototype.syncFixedTableRowHeight = function syncFixedTableRowHeight() {
     //this.props.height、headerHeight分别为用户传入的行高和表头高度，如果有值，所有行的高度都是固定的，主要为了避免在千行数据中有固定列时获取行高度有问题
-    var _props7 = this.props,
-        clsPrefix = _props7.clsPrefix,
-        height = _props7.height,
-        headerHeight = _props7.headerHeight,
-        columns = _props7.columns,
-        heightConsistent = _props7.heightConsistent;
+    var _props8 = this.props,
+        clsPrefix = _props8.clsPrefix,
+        height = _props8.height,
+        headerHeight = _props8.headerHeight,
+        columns = _props8.columns,
+        heightConsistent = _props8.heightConsistent,
+        bodyDisplayInRow = _props8.bodyDisplayInRow;
 
-    var headRows = this.refs.headTable ? this.refs.headTable.querySelectorAll('thead') : this.refs.bodyTable.querySelectorAll('thead');
-    var bodyRows = this.refs.bodyTable.querySelectorAll('.' + clsPrefix + '-row') || [];
+    var headRows = this.headTable ? this.headTable.querySelectorAll('thead') : this.bodyTable.querySelectorAll('thead');
+    var expandedRows = this.bodyTable.querySelectorAll('.' + clsPrefix + '-expanded-row') || [];
+    var bodyRows = this.bodyTable.querySelectorAll('.' + clsPrefix + '-row') || [];
     var leftBodyRows = this.refs.fixedColumnsBodyLeft && this.refs.fixedColumnsBodyLeft.querySelectorAll('.' + clsPrefix + '-row') || [];
     var rightBodyRows = this.refs.fixedColumnsBodyRight && this.refs.fixedColumnsBodyRight.querySelectorAll('.' + clsPrefix + '-row') || [];
     var fixedColumnsHeadRowsHeight = [].map.call(headRows, function (row) {
@@ -1264,11 +1385,12 @@ var Table = function (_Component) {
     });
     var fixedColumnsBodyRowsHeight = [].map.call(bodyRows, function (row, index) {
       var rsHeight = height;
-      if (rsHeight) {
+      if (bodyDisplayInRow && rsHeight) {
         return rsHeight;
       } else {
         // 为了提高性能，默认获取主表的高度，但是有的场景中固定列的高度比主表的高度高，所以提供此属性，会统计所有列的高度取最大的，设置
-        if (heightConsistent) {
+        // 内容折行显示，并又设置了 height 的情况下，也要获取主表高度
+        if (heightConsistent || !bodyDisplayInRow && rsHeight) {
           var leftHeight = void 0,
               rightHeight = void 0,
               currentHeight = void 0,
@@ -1283,22 +1405,28 @@ var Table = function (_Component) {
         }
       }
     });
-
-    if ((0, _shallowequal2["default"])(this.state.fixedColumnsHeadRowsHeight, fixedColumnsHeadRowsHeight) && (0, _shallowequal2["default"])(this.state.fixedColumnsBodyRowsHeight, fixedColumnsBodyRowsHeight)) {
+    var fixedColumnsExpandedRowsHeight = {};
+    expandedRows.length > 0 && expandedRows.forEach(function (row) {
+      var parentRowKey = row && row.previousSibling && row.previousSibling.getAttribute("data-row-key"),
+          height = row && row.getBoundingClientRect().height || 'auto';
+      fixedColumnsExpandedRowsHeight[parentRowKey] = height;
+    });
+    if ((0, _shallowequal2["default"])(this.state.fixedColumnsHeadRowsHeight, fixedColumnsHeadRowsHeight) && (0, _shallowequal2["default"])(this.state.fixedColumnsBodyRowsHeight, fixedColumnsBodyRowsHeight) && (0, _shallowequal2["default"])(this.state.fixedColumnsExpandedRowsHeight, fixedColumnsExpandedRowsHeight)) {
       return;
     }
     this.setState({
       fixedColumnsHeadRowsHeight: fixedColumnsHeadRowsHeight,
-      fixedColumnsBodyRowsHeight: fixedColumnsBodyRowsHeight
+      fixedColumnsBodyRowsHeight: fixedColumnsBodyRowsHeight,
+      fixedColumnsExpandedRowsHeight: fixedColumnsExpandedRowsHeight
     });
   };
 
   Table.prototype.resetScrollX = function resetScrollX() {
-    if (this.refs.headTable) {
-      this.refs.headTable.scrollLeft = 0;
+    if (this.headTable) {
+      this.headTable.scrollLeft = 0;
     }
-    if (this.refs.bodyTable) {
-      this.refs.bodyTable.scrollLeft = 0;
+    if (this.bodyTable) {
+      this.bodyTable.scrollLeft = 0;
     }
   };
 
@@ -1332,15 +1460,15 @@ var Table = function (_Component) {
   };
 
   Table.prototype.handleBodyScroll = function handleBodyScroll(e) {
-    var _props8 = this.props,
-        _props8$scroll = _props8.scroll,
-        scroll = _props8$scroll === undefined ? {} : _props8$scroll,
-        clsPrefix = _props8.clsPrefix,
-        handleScrollY = _props8.handleScrollY,
-        handleScrollX = _props8.handleScrollX;
+    var headTable = this.headTable;
+    var _props9 = this.props,
+        _props9$scroll = _props9.scroll,
+        scroll = _props9$scroll === undefined ? {} : _props9$scroll,
+        clsPrefix = _props9.clsPrefix,
+        handleScrollY = _props9.handleScrollY,
+        handleScrollX = _props9.handleScrollX,
+        onBodyScroll = _props9.onBodyScroll;
     var _refs = this.refs,
-        headTable = _refs.headTable,
-        bodyTable = _refs.bodyTable,
         fixedColumnsBodyLeft = _refs.fixedColumnsBodyLeft,
         fixedColumnsBodyRight = _refs.fixedColumnsBodyRight;
     // Prevent scrollTop setter trigger onScroll event
@@ -1351,10 +1479,10 @@ var Table = function (_Component) {
     }
     if (e.target.scrollLeft !== this.lastScrollLeft) {
       var position = '';
-      if (e.target === bodyTable && headTable) {
+      if (e.target === this.bodyTable && headTable) {
         headTable.scrollLeft = e.target.scrollLeft;
-      } else if (e.target === headTable && bodyTable) {
-        bodyTable.scrollLeft = e.target.scrollLeft;
+      } else if (e.target === headTable && this.bodyTable) {
+        this.bodyTable.scrollLeft = e.target.scrollLeft;
       }
       if (e.target.scrollLeft === 0) {
         position = 'left';
@@ -1378,15 +1506,15 @@ var Table = function (_Component) {
       if (fixedColumnsBodyRight && e.target !== fixedColumnsBodyRight) {
         fixedColumnsBodyRight.scrollTop = e.target.scrollTop;
       }
-      if (bodyTable && e.target !== bodyTable) {
-        bodyTable.scrollTop = e.target.scrollTop;
+      if (this.bodyTable && e.target !== this.bodyTable) {
+        this.bodyTable.scrollTop = e.target.scrollTop;
       }
       if (this.hoverDom) {
         this.hoverDom.style.display = 'none';
       }
       this.lastScrollTop = e.target.scrollTop;
       if (handleScrollY) {
-        (0, _utils.debounce)(handleScrollY(this.lastScrollTop, this.treeType), 300);
+        (0, _utils.debounce)(handleScrollY(this.lastScrollTop, this.treeType, onBodyScroll), 300);
       }
     }
 
@@ -1394,14 +1522,17 @@ var Table = function (_Component) {
     this.lastScrollLeft = e.target.scrollLeft;
   };
 
-  Table.prototype.handleRowHover = function handleRowHover(isHover, key, event, currentIndex) {
+  Table.prototype.handleRowHover = function handleRowHover(isHover, key, event, currentIndex, propsRecord) {
     //增加新的API，设置是否同步Hover状态，提高性能，避免无关的渲染
-    var _props9 = this.props,
-        syncHover = _props9.syncHover,
-        onRowHover = _props9.onRowHover,
-        data = _props9.data;
+    var _props10 = this.props,
+        syncHover = _props10.syncHover,
+        onRowHover = _props10.onRowHover,
+        data = _props10.data;
+    //fix:树形表，onRowHover返回参数异常
 
-    var record = data[currentIndex];
+    var isTreeType = this.isTreeType;
+
+    var record = isTreeType ? propsRecord : data[currentIndex];
     // 固定列、或者含有hoverdom时情况下同步hover状态
     if (this.columnManager.isAnyColumnsFixed() && syncHover) {
       this.hoverKey = key;
@@ -1416,8 +1547,8 @@ var Table = function (_Component) {
         if (td) {
           var scrollTop = this.lastScrollTop ? this.lastScrollTop : 0;
           var top = td.offsetTop - scrollTop;
-          if (this.refs.headTable) {
-            top = top + this.refs.headTable.clientHeight;
+          if (this.headTable) {
+            top = top + this.headTable.clientHeight;
           }
           this.hoverDom.style.top = top + 'px';
           this.hoverDom.style.height = td.offsetHeight + 'px';
@@ -1430,19 +1561,12 @@ var Table = function (_Component) {
     onRowHover && onRowHover(currentIndex, record);
   };
 
-  /**
-   * 自定义设置表格行高、字体大小
-   */
-
-
   Table.prototype.render = function render() {
     var _this6 = this;
 
-    var tableSizeConf = this.state.tableSizeConf;
-
     var props = this.props;
     var clsPrefix = props.clsPrefix;
-
+    var hasFixedLeft = this.columnManager.isAnyColumnsLeftFixed();
     var className = props.clsPrefix;
     if (props.className) {
       className += ' ' + props.className;
@@ -1450,13 +1574,23 @@ var Table = function (_Component) {
     if (props.useFixedHeader || props.scroll && props.scroll.y) {
       className += ' ' + clsPrefix + '-fixed-header';
     }
+    if (!props.showHeader) {
+      className += ' ' + clsPrefix + '-hide-header';
+    }
     if (props.bordered) {
       className += ' ' + clsPrefix + '-bordered';
     }
     className += ' ' + clsPrefix + '-scroll-position-' + this.state.scrollPosition;
     //如果传入height说明是固定高度
-    if (props.height || tableSizeConf) {
+    //内容过多折行显示时，height 属性会失效，为了避免产生错行
+    if (props.bodyDisplayInRow && props.height) {
       className += ' fixed-height';
+    }
+    if (props.bodyDisplayInRow) {
+      className += ' body-dispaly-in-row';
+    }
+    if (props.headerDisplayInRow) {
+      className += ' header-dispaly-in-row';
     }
     var isTableScroll = this.columnManager.isAnyColumnsFixed() || props.scroll.x || props.scroll.y;
     var loading = props.loading;
@@ -1465,22 +1599,19 @@ var Table = function (_Component) {
         show: loading
       };
     }
-    var portal = props.canConfigureTableSize && typeof window !== 'undefined' && props.getToolbarContainer ? _react2["default"].createElement(
-      _Portal2["default"],
-      { container: props.getToolbarContainer },
-      this.getTableToolbar()
-    ) : this.getTableToolbar();
+    if (props.size) {
+      className += ' ' + clsPrefix + '-' + props.size;
+    }
+    if (hasFixedLeft) {
+      className += ' has-fixed-left';
+    }
+
     return _react2["default"].createElement(
       'div',
       { className: className, style: props.style, ref: function ref(el) {
           return _this6.contentTable = el;
         },
         tabIndex: props.focusable && (props.tabIndex ? props.tabIndex : '0') },
-      props.canConfigureTableSize && _react2["default"].createElement(
-        'div',
-        { className: clsPrefix + '-toolbar' },
-        portal
-      ),
       this.getTitle(),
       _react2["default"].createElement(
         'div',
@@ -1492,7 +1623,7 @@ var Table = function (_Component) {
           this.getEmptyText(),
           this.getFooter()
         ),
-        this.columnManager.isAnyColumnsLeftFixed() && _react2["default"].createElement(
+        hasFixedLeft && _react2["default"].createElement(
           'div',
           { className: clsPrefix + '-fixed-left' },
           this.getLeftFixedTable()
@@ -1524,6 +1655,9 @@ var Table = function (_Component) {
 
 Table.propTypes = propTypes;
 Table.defaultProps = defaultProps;
+Table.contextTypes = {
+  beeLocale: _propTypes2["default"].object
+};
 
 exports["default"] = Table;
 module.exports = exports['default'];

@@ -1,7 +1,7 @@
 /**
  *
  * @title 受控制的气泡卡片
- * @description 通过设置show，来控制气泡卡片的显示和隐藏。注意：需要和 onHide 事件结合使用
+ * @description 通过设置show，来控制气泡卡片的显示和隐藏。
  */
 
 import {Component} from 'react';
@@ -29,14 +29,11 @@ class Demo2 extends Component {
         })
     }
 
-    onHide = (visible) => {
+    onVisibleChange = (visible) => {
+        console.log('显示状态改变时触发的回调: ',visible);
         this.setState({
             show: visible
         })
-    }
-
-    onVisibleChange = (visible) => {
-        console.log('显示状态改变时触发的回调: ',visible);
     }
 
     render() {
@@ -58,7 +55,6 @@ class Demo2 extends Component {
                     title={<h3>请确认您的包裹已签收！</h3>}
                     content={content}
                     show={this.state.show}
-                    onHide={this.onHide}
                     onVisibleChange={this.onVisibleChange}
                 >
                     <Button

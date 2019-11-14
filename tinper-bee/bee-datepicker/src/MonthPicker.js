@@ -13,6 +13,8 @@ import InputGroup from 'bee-input-group';
 import classnames from 'classnames';
 import zhCN from "./locale/zh_CN";
 import omit from 'omit.js';
+import moment from "moment";
+import { formatDate } from './rc-calendar/util';
 
 class MonthPicker extends Component {
   constructor(props, context) {
@@ -26,24 +28,54 @@ class MonthPicker extends Component {
     };
   }
 
+  componentDidMount(){
+    let value = this.props.value || this.props.defaultValue;
+    if(value){
+      if(value.format){
+        value = value;
+      }else{
+        if(moment(value).isValid()){
+          value = moment(value);
+        }else{
+          console.error('value is not in the correct format');
+          value = null
+        }
+      }
+    }
+    this.setState({
+      value
+    })
+  }
+
+  componentWillReceiveProps(nextProps){
+    if('value' in nextProps){
+        let value = nextProps.value;
+        if(value){
+            if(value.format){
+                
+            }else{
+                value = moment(value)
+            }
+        }else{
+            value=null;
+        }
+        this.setState({
+            value
+        })
+    }
+}
+
   onChange = (value) => {
     let { onChange,onClear,onSelect,format } = this.props;
-    // if(value){
-    //   this.setState({
-    //     value:value
-    //   });
-    // }else{
-    //   this.setState({
-    //     value:moment()
-    //   })
-    // }
+
     this.setState({
       value: value && Object.assign(value, {_type:'month'}) || value
     });
-    onChange&&onChange(value,value?value.format(format):'');
+    onChange&&onChange(value,value?formatDate(value,format):'');
   };
   inputFocus=()=>{
     const self = this;
+    const { format } = self.props;
     let input = document.querySelector('.rc-calendar-input');
     if(input){
       if(input.value){
@@ -60,8 +92,18 @@ class MonthPicker extends Component {
                 open:false
             });
           let v = self.state.value;
-          self.props.onOpenChange&&self.props.onOpenChange(false,v, (v && v.format(self.props.format)) || '');
+          self.props.onOpenChange&&self.props.onOpenChange(false,v, (v && formatDate(v,self.props.format)) || '');
           ReactDOM.findDOMNode(self.outInput).focus();// 按esc时候焦点回到input输入框
+        }else if(e.keyCode == KeyCode.ENTER){
+          let parsed = moment(input.value, format, true);
+          if(parsed.isValid()){
+              self.setState({
+                open:false
+              });
+              let v = self.state.value;
+              self.props.onOpenChange&&self.props.onOpenChange(false,v, (v && formatDate(v,format)) || '');
+              ReactDOM.findDOMNode(self.outInput).focus();
+          }
         }
       }
     }
@@ -79,7 +121,7 @@ class MonthPicker extends Component {
       }
     }); 
     const value = self.state.value;
-    props.onOpenChange && props.onOpenChange(open,value, (value && value.format(self.props.format)) || '');
+    props.onOpenChange && props.onOpenChange(open,value, (value && formatDate(value,self.props.format)) || '');
     if(open){
       setTimeout(()=>{
         self.inputFocus()
@@ -115,10 +157,10 @@ class MonthPicker extends Component {
   }
   render() {
     let state = this.state;
-
     let props = this.props;
-    const { showClose, ...others } = props;
+    const { showClose,value, ...others } = props;
     const monthCalendar = <MonthCalendar {...props}
+      value = {state.value}
       onChange={this.onChange} 
     />;
     let classes = classnames(props.className, "datepicker-container");
@@ -133,7 +175,8 @@ class MonthPicker extends Component {
         'locale',
         'placeholder',
         'onClear',
-        'renderFooter'
+        'renderFooter',
+        'renderError',
       ])}
       >
         <Picker
@@ -144,8 +187,11 @@ class MonthPicker extends Component {
           value={state.value}
           onChange={this.onChange} 
           dropdownClassName={props.dropdownClassName}
+          selectedValue={state.value}
+          renderError={props.renderError}
         >
           {({ value }) => {
+            if(value&&value.format)value=formatDate(value,props.format);
             return (
                 <InputGroup simple className="datepicker-input-group"
                   onMouseEnter={this.onMouseEnter}
@@ -155,7 +201,7 @@ class MonthPicker extends Component {
                     ref = { ref => this.outInput = ref }
                     placeholder={this.props.placeholder}
                     className={this.props.className}
-                    value={(value && value.format(props.format)) || ""}
+                    value={value}
                     disabled={props.disabled}
                   />
                   {
@@ -182,6 +228,7 @@ MonthPicker.defaultProps = {
     closeIcon:()=><Icon type="uf-close-c"/>,
     renderIcon: () => <Icon type="uf-calendar" />,
     format:'YYYY-MM',
+    renderError:()=>{},
     showDateInput:true,
     showMonthInput:true,
     locale:zhCN,

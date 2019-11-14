@@ -1,15 +1,78 @@
 import React from 'react';
 import Column from './Column';
 import ColumnGroup from './ColumnGroup';
+import Icon from 'bee-icon';
 
 //行控制管理
-
 export default class ColumnManager {
   _cached = {}
 
-  constructor(columns, elements,originWidth) {
+  constructor(columns, elements,originWidth,rowDraggAble,showRowNum) {
+    //判断是否使用行拖拽
+    if(rowDraggAble) {
+      let dragHandleColumn =[{
+        className: "drag-handle-column",
+        title: "",
+        key: "dragHandle",
+        dataIndex: "dragHandle",
+        // fixed:"left",
+        width: 49,
+        render: () => {
+          return <Icon type="uf-navmenu" />
+        }
+      }]
+      columns = dragHandleColumn.concat(columns);
+    }
+    columns = this.addOrderColumn(columns,showRowNum);
+    columns = this.deleteColumnNotShow(columns);
     this.columns = columns || this.normalize(elements);
+
     this.originWidth = originWidth;
+  }
+
+  // delete the column which does not show
+  deleteColumnNotShow = (columns) => {
+    let len = columns.length;
+    for(let i=0; i < len; i++) {
+      if(columns && columns[i] && columns[i].isShow === false){
+        columns.splice(i,1);
+        i--;
+      }
+    }
+    return columns;
+  }
+
+  // 向数据列中添加一列:序号
+  addOrderColumn = (columns, showRowNum) => {
+    if(!showRowNum){
+      return columns
+    }
+    let { key, fixed, width, name, type, base } = showRowNum;
+    let order = {
+      dataIndex: key || '_index',
+      key:'_index',
+      fixed:fixed || 'left',
+      width:width || 50,
+      title: name || '序号',
+      render:(text, record, index)=>{
+        switch( type ){
+          case 'ascii':{
+            return (String.fromCharCode((base || 'a').charCodeAt() + index));
+          }
+          case 'number':
+          default:{
+            return ( (base || 0) + index);
+          }
+        }
+      }
+    }
+    if(columns.length > 0 && columns[0].dataIndex !== 'checkbox' && columns[0].dataIndex !== 'radio'){ // 多选表格/单选表格时放在第二列,其他情况放到第一列
+      columns = [order].concat(columns);
+    }
+    else{
+      columns.splice(1,0,order); // splice方法改变原数组,返回切割出的数组,此处为[]
+    }
+    return columns;
   }
 
   isAnyColumnsFixed() {
@@ -49,11 +112,11 @@ export default class ColumnManager {
       );
     });
   }
-  
+
   centerColumns() {
     return this._cache('centerColumns', () => {
       return this.groupedColumns().filter(
-        column => !column.fixed 
+        column => !column.fixed
       );
     });
   }
@@ -154,7 +217,9 @@ export default class ColumnManager {
     return element && (element.type === Column || element.type === ColumnGroup);
   }
 
-  reset(columns, elements) {
+  reset(columns, elements, showRowNum) {
+    columns = this.addOrderColumn(columns,showRowNum);
+    columns = this.deleteColumnNotShow(columns);
     this.columns = columns || this.normalize(elements);
     this._cached = {};
   }
@@ -220,7 +285,7 @@ export default class ColumnManager {
   //todo 含有children的宽度计算
   _leafColumns(columns) {
     const leafColumns = [];
- 
+
     columns.forEach(column => {
       if (!column.children) {
 
