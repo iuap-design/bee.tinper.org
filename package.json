@@ -5,11 +5,13 @@
   "main": "server/index.js",
   "scripts": {
     "init": "node app/utils/getComponent.js",
+    "init2": "node app/utils/getComponentTwo.js",
     "getTag": "node app/utils/getTag.js",
     "createFile": "node app/utils/createFile.js",
     "getMenu": "node app/utils/getRightMenu.js",
     "getRelease": "node app/utils/getRelease.js",
     "writeFile": "node app/utils/getComponent.js && node app/utils/getTag.js && node app/utils/createFile.js && node app/utils/getRightMenu.js && node app/utils/getRelease.js",
+    "writeFile2": "node app/utils/getComponentTwo.js && node app/utils/getTag.js && node app/utils/createFile.js && node app/utils/getRightMenu.js && node app/utils/getRelease.js",
     "dev": "node --inspect app/app.js",
     "start": "node app/app.js",
     "tinper": "node app/utils/tinper.js"
