@@ -13,7 +13,7 @@ function consoleItem(length){
 
 
 Object.keys(componentsSource).forEach((item,index)=>{
-    if(fs.pathExistsSync(`tinper-acs/${item}`)){
+    if(fs.pathExistsSync(`tinper-bee/${item}`)){
         delete components[item]
         console.log(`😀 ${item} 已存在,还剩  ${--length}  个`);
         consoleItem(length);   
