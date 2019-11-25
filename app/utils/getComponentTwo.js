@@ -11,12 +11,13 @@ function consoleItem(length){
     }
 }
 
-if(fs.pathExistsSync(`tinper-acs/${item}`)){
-    delete components[item]
-    console.log(`😀 ${item} 已存在,还剩  ${--length}  个`);
-    consoleItem(length);   
-}else{
-    Object.keys(componentsSource).forEach((item,index)=>{
+
+Object.keys(componentsSource).forEach((item,index)=>{
+    if(fs.pathExistsSync(`tinper-acs/${item}`)){
+        delete components[item]
+        console.log(`😀 ${item} 已存在,还剩  ${--length}  个`);
+        consoleItem(length);   
+    }else{
         console.log(`download ${item} tinper-bee/${item}`)
         download(`tinper-bee/${item}`,`tinper-bee/${item}`,
         function (error) {
@@ -28,8 +29,10 @@ if(fs.pathExistsSync(`tinper-acs/${item}`)){
                 consoleItem(length)
             }
         })
-    })
-}
+    }
+})
+
+
 
 
 
