@@ -9,11 +9,9 @@
 import React, { Component } from 'react';
 import Calendar from '../../src';
 
-
-function onSelect(value) {
-    console.log(value);
+function  onSelect(value) {
+    console.log('onSelect',value);
 }
-
 class Demo2 extends Component {
 
     constructor(props, context) {
@@ -23,11 +21,14 @@ class Demo2 extends Component {
             type:'month',
         }
     }
-
     onTypeChange(type) {
         this.setState({
             type,
         });
+    }
+
+    onChange(value){
+        console.log('onChange',value)
     }
 
     render() {
@@ -40,7 +41,7 @@ class Demo2 extends Component {
                    onSelect={onSelect}
                    type={this.state.type}
                    onTypeChange={this.onTypeChange.bind(this)}
-
+                   onChange={this.onChange.bind(this)}
                />
             </div>
         )

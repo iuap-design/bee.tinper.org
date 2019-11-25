@@ -122,7 +122,7 @@ const propTypes = {
   maxWidth: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   maxHeight: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   bounds:PropTypes.oneOfType([
-    PropTypes.string,PropTypes.Object
+    PropTypes.string,PropTypes.object
   ]),
   className: PropTypes.string,
   /* 模态框是否居中显示 */

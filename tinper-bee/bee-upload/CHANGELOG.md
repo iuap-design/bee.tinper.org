@@ -1,3 +1,13 @@
+<a name="2.0.6"></a>
+## [2.0.6](https://github.com/tinper-bee/upload/compare/v2.0.5...v2.0.6) (2019-11-22)
+
+
+### Features
+
+* **bee-ipload:** beforeUpload 第二个参数不对bug ([d93bb5f](https://github.com/tinper-bee/upload/commit/d93bb5f))
+
+
+
 <a name="2.0.5"></a>
 ## [2.0.5](https://github.com/tinper-bee/upload/compare/v2.0.4...v2.0.5) (2019-10-17)
 

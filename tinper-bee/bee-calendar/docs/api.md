@@ -33,6 +33,8 @@ import bee-calendar/build/Calendar.css;
 |monthCellContentRender|月份内容渲染回调函数|function||
 |dateCellContentRender|日期内容渲染回调函数|function||
 |onSelect|日期选中回调函数|Function(date: moment)||
+|onChange|日期更改回调函数|Function(date: moment)||
+
 
 ## 注意事项
 

@@ -20,7 +20,6 @@
     height: 32px;
     cursor: text;
     font-size: 14px;
-    line-height: 32;
     color: #212121;
     background-color: #fff;
     background-image: none;
@@ -132,7 +131,6 @@
     cursor: pointer;
     font-size: 14px;
     -webkit-user-select: none;
-    -moz-user-select: none;
     -ms-user-select: none;
     user-select: none; }
   .u-time-picker-panel .u-time-picker-panel-select li:hover {

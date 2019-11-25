@@ -1388,7 +1388,6 @@
   height: 34px;
   line-height: 30px;
   text-align: center;
-  -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
   -webkit-user-select: none;
@@ -1676,7 +1675,6 @@
   line-height: 34px;
   position: relative;
   text-align: center;
-  -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
   -webkit-user-select: none;
@@ -1751,7 +1749,6 @@
   line-height: 30px;
   position: relative;
   text-align: center;
-  -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
   -webkit-user-select: none;
@@ -1776,7 +1773,6 @@
 
 .rc-calendar-month-panel-prev-year-btn {
   -webkit-user-select: none;
-  -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
   left: 0; }
@@ -1792,7 +1788,6 @@
 
 .rc-calendar-month-panel-next-year-btn {
   -webkit-user-select: none;
-  -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
   right: 0; }
@@ -1876,7 +1871,6 @@
   line-height: 30px;
   position: relative;
   text-align: center;
-  -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
   -webkit-user-select: none;
@@ -1902,7 +1896,6 @@
 
 .rc-calendar-year-panel-prev-decade-btn {
   -webkit-user-select: none;
-  -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
   left: 0; }
@@ -1918,7 +1911,6 @@
 
 .rc-calendar-year-panel-next-decade-btn {
   -webkit-user-select: none;
-  -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
   right: 0; }
@@ -1968,7 +1960,6 @@
 
 .rc-calendar-year-panel-last-decade-cell .rc-calendar-year-panel-year,
 .rc-calendar-year-panel-next-decade-cell .rc-calendar-year-panel-year {
-  -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
   -webkit-user-select: none;
@@ -1997,7 +1988,6 @@
   line-height: 34px;
   position: relative;
   text-align: center;
-  -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
   -webkit-user-select: none;
@@ -2023,7 +2013,6 @@
 
 .rc-calendar-decade-panel-prev-century-btn {
   -webkit-user-select: none;
-  -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
   left: 0; }
@@ -2033,7 +2022,6 @@
 
 .rc-calendar-decade-panel-next-century-btn {
   -webkit-user-select: none;
-  -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
   right: 0; }
@@ -2081,7 +2069,6 @@
 
 .rc-calendar-decade-panel-last-century-cell .rc-calendar-decade-panel-decade,
 .rc-calendar-decade-panel-next-century-cell .rc-calendar-decade-panel-decade {
-  -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
   -webkit-user-select: none;
@@ -2203,7 +2190,6 @@
 .rc-calendar-full-header {
   padding: 5px 10px;
   text-align: center;
-  -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
   -webkit-user-select: none;
@@ -2421,7 +2407,6 @@
   text-align: left;
   cursor: pointer;
   -webkit-user-select: none;
-  -moz-user-select: none;
   -ms-user-select: none;
   user-select: none; }
 
@@ -2527,6 +2512,12 @@ li.rc-time-picker-panel-select-option-disabled:hover {
 
 .u-input-group {
   width: 100%; }
+
+.demo11 .u-row {
+  margin: 0;
+  margin-bottom: 20px; }
+  .demo11 .u-row .u-button {
+    margin-right: 20px; }
 
 .demo9 .u-row .u-col-md-6 {
   margin-bottom: 10px; }

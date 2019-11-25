@@ -4,6 +4,7 @@
 
 import YearPanel from "./rc-calendar/year/YearPanel";
 import { KeyCode } from 'tinper-bee-core';
+import zhCN from "./locale/zh_CN";
 import React, { Component } from "react";
 import ReactDOM from 'react-dom';
 import Picker from "./rc-calendar/Picker";
@@ -23,16 +24,35 @@ class YearPicker extends Component {
 
         this.state = {
             type: "year",
-            value: props.value || props.defaultValue || '' ,
+            value: this.initValue(props) ,
             open: props.open||false,
             showClose: false
         };
     }
 
+    initValue=(props)=>{
+        let value = props.value || props.defaultValue;
+        if(value){
+          if(typeof value == 'string'){
+            if(moment(value).isValid()){
+                value = moment(value);
+            }else{
+                console.error('value is not in the correct format');
+                value = ''
+            }
+          }else if(value.format&&value.isValid()){
+            value = value;
+          }else{
+            console.error('value is not in the correct format');
+            value = ''
+          }
+        }
+        return value;
+    }
     componentWillReceiveProps(nextProps) {
         if ("value" in nextProps) {
             this.setState({
-                value: nextProps.value
+                value: this.initValue(nextProps)
             });
         }
         if ("open" in nextProps) {
@@ -139,6 +159,7 @@ class YearPicker extends Component {
         prefixCls={'rc-calendar-picker'} 
         rootPrefixCls={'rc-calendar'}  
         {...props} focus={()=>{}} 
+        value={this.state.value}
         onSelect={this.onSelect}
         showDateInput={true}
         />;
@@ -161,7 +182,7 @@ class YearPicker extends Component {
                     onChange={this.handleChange}
                     calendar={Calendar}
                     prefixCls={'rc-calendar'}
-                    value={state.value||moment()}
+                    value={state.value}
                     open={this.state.open}
                 >
                     {({  }) => {
@@ -203,6 +224,7 @@ YearPicker.defaultProps = {
     renderIcon: () => <Icon type="uf-calendar" />,
     disabled:false,
     showClose:true,
+    locale:zhCN,
     format:'YYYY',
 }
 

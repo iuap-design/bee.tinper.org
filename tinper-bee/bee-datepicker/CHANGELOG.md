@@ -1,3 +1,43 @@
+<a name="2.3.2"></a>
+## [2.3.2](https://github.com/tinper-bee/bee-datepicker/compare/v2.3.1...v2.3.2) (2019-11-25)
+
+
+### Bug Fixes
+
+* **bee-datepicker:** initValue string类型判断更改 ([6e4ae1a](https://github.com/tinper-bee/bee-datepicker/commit/6e4ae1a))
+
+
+
+<a name="2.3.1"></a>
+## [2.3.1](https://github.com/tinper-bee/bee-datepicker/compare/v2.3.0...v2.3.1) (2019-11-22)
+
+
+### Features
+
+* **bee-datepicker:** datepicker showTime时,面板初始时间为打开面板时的时间 ([72bfa18](https://github.com/tinper-bee/bee-datepicker/commit/72bfa18))
+
+
+
+<a name="2.3.0"></a>
+# [2.3.0](https://github.com/tinper-bee/bee-datepicker/compare/v2.2.19...v2.3.0) (2019-11-18)
+
+
+### Features
+
+* **bee-datepicker:** 所有类型日期都可传字符串,新增form使用示例 ([3d9a382](https://github.com/tinper-bee/bee-datepicker/commit/3d9a382))
+
+
+
+<a name="2.2.19"></a>
+## [2.2.19](https://github.com/tinper-bee/bee-datepicker/compare/v2.2.18...v2.2.19) (2019-11-14)
+
+
+### Bug Fixes
+
+* **bee-datepicker:** form表单的时间范围控件，手动输入一个值，页面变成空白页，报错 ([dcf8a17](https://github.com/tinper-bee/bee-datepicker/commit/dcf8a17))
+
+
+
 <a name="2.2.18"></a>
 ## [2.2.18](https://github.com/tinper-bee/bee-datepicker/compare/v2.2.17...v2.2.18) (2019-11-14)
 

@@ -90,15 +90,18 @@ var MonthPicker = function (_Component) {
   MonthPicker.prototype.componentDidMount = function componentDidMount() {
     var value = this.props.value || this.props.defaultValue;
     if (value) {
-      if (value.format) {
-        value = value;
-      } else {
+      if (typeof value == 'string') {
         if ((0, _moment2["default"])(value).isValid()) {
           value = (0, _moment2["default"])(value);
         } else {
           console.error('value is not in the correct format');
-          value = null;
+          value = '';
         }
+      } else if (value.format && value.isValid()) {
+        value = value;
+      } else {
+        console.error('value is not in the correct format');
+        value = '';
       }
     }
     this.setState({
@@ -110,11 +113,11 @@ var MonthPicker = function (_Component) {
     if ('value' in nextProps) {
       var value = nextProps.value;
       if (value) {
-        if (value.format) {} else {
+        if (value.format && value.isValid()) {} else {
           value = (0, _moment2["default"])(value);
         }
       } else {
-        value = null;
+        value = '';
       }
       this.setState({
         value: value

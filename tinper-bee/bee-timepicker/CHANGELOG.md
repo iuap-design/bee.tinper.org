@@ -1,3 +1,13 @@
+<a name="2.0.10"></a>
+## [2.0.10](https://github.com/tinper-bee/bee-timepicker/compare/v2.0.9...v2.0.10) (2019-11-25)
+
+
+
+<a name="2.0.9"></a>
+## [2.0.9](https://github.com/tinper-bee/bee-timepicker/compare/v2.0.8...v2.0.9) (2019-11-25)
+
+
+
 <a name="2.0.8"></a>
 ## [2.0.8](https://github.com/tinper-bee/bee-timepicker/compare/v2.0.7...v2.0.8) (2019-11-14)
 

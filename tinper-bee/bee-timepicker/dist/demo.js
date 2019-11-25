@@ -37093,27 +37093,36 @@
 	
 	        var _this = _possibleConstructorReturn(this, _Component.call(this, props));
 	
+	        _this.initValue = function () {};
+	
 	        _this.state = {
 	            value: props.value
 	        };
 	        return _this;
 	    }
 	
-	    Timepicker.prototype.componentDidMount = function componentDidMount() {
+	    Timepicker.prototype.componentWillMount = function componentWillMount() {
 	        //判断初始值是否合法，不合法则格式化，并触发onChange回调
 	        var value = this.props.value;
 	        if (value) {
 	            if (typeof value == 'string') {
 	                value = (0, _moment2['default'])((0, _moment2['default'])().format('YYYY-MM-DD') + ' ' + value);
+	                this.setState({
+	                    value: value
+	                });
+	                this.props.onChange && this.props.onChange(value);
 	            } else if (value.format) {
 	                if (!value.isValid()) {
 	                    value = (0, _moment2['default'])((0, _moment2['default'])().format('YYYY-MM-DD') + ' ' + value._i);
+	                    this.setState({
+	                        value: value
+	                    });
+	                    this.props.onChange && this.props.onChange(value);
 	                }
 	            }
 	        } else {
 	            value = null;
 	        }
-	        this.props.onChange && this.props.onChange(value);
 	    };
 	
 	    Timepicker.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {

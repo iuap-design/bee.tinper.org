@@ -88,9 +88,9 @@ var DatePicker = function (_Component) {
         defaultValue = props.defaultValue && (0, _moment2["default"])(props.defaultValue);
     _this.state = {
       type: "month",
-      value: value || defaultValue || _moment2["default"].Moment,
+      value: _this.initValue(props),
       open: props.open || false,
-      inputValue: props.value && _this.getValue(props.value) || props.defaultValue && _this.getValue(props.defaultValue) || '',
+      inputValue: _this.initValue(props),
       showClose: false
     };
 
@@ -100,7 +100,7 @@ var DatePicker = function (_Component) {
   DatePicker.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
     if ("value" in nextProps) {
       this.setState({
-        value: nextProps.value && (0, _moment2["default"])(nextProps.value)
+        value: this.initValue(nextProps)
       });
     }
     if ("open" in nextProps) {
@@ -149,7 +149,7 @@ var DatePicker = function (_Component) {
     }
 
     var calendar = _react2["default"].createElement(_rcCalendar2["default"], _extends({
-      timePicker: props.showTime ? timePickerElement : null
+      timePicker: props.showTime ? _react2["default"].createElement(_Panel2["default"], { defaultValue: (0, _moment2["default"])((0, _moment2["default"])().format("HH:mm:ss"), "HH:mm:ss") }) : null
     }, props, {
       onSelect: this.handleSelect,
       onChange: this.handleCalendarChange,
@@ -228,6 +228,23 @@ var DatePicker = function (_Component) {
 
 var _initialiseProps = function _initialiseProps() {
   var _this3 = this;
+
+  this.initValue = function (props) {
+    var value = props.value || props.defaultValue;
+    if (value) {
+      if (value.format) {
+        value = value;
+      } else {
+        if ((0, _moment2["default"])(value).isValid()) {
+          value = (0, _moment2["default"])(value);
+        } else {
+          console.error('value is not in the correct format');
+          value = '';
+        }
+      }
+    }
+    return value;
+  };
 
   this.getValue = function (value) {
     var format = _this3.props.format;

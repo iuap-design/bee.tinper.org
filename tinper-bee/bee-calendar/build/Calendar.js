@@ -67,7 +67,12 @@ var Calendar = function (_Component) {
     //     this.setState({
     //         type,
     //     });
+
     // }
+
+    Calendar.prototype.onChange = function onChange(value) {
+        this.props.onChange && this.props.onChange(value);
+    };
 
     Calendar.prototype.render = function render() {
         return _react2["default"].createElement(_FullCalendar2["default"], _extends({
@@ -75,7 +80,10 @@ var Calendar = function (_Component) {
             Select: _rcSelect2["default"]
             // defaultValue={now}
             // locale={zhCN}
-        }, this.props));
+        }, this.props, {
+            onChange: this.onChange.bind(this)
+
+        }));
     };
 
     return Calendar;

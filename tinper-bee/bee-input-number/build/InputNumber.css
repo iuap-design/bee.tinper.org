@@ -167,6 +167,8 @@
   width: 100%;
   border: 1px solid rgb(165, 173, 186);
   border-radius: 3px; }
+  .u-input-number.u-input-number-sm {
+    height: 26px; }
   .u-input-number.u-input-group {
     border-spacing: 0; }
   .u-input-number.u-input-group > span:first-child {
@@ -184,7 +186,7 @@
     background: #ebecf0; }
   .u-input-number.u-input-group.simple .u-input-group-btn {
     position: relative;
-    top: 0;
+    top: 0px;
     z-index: 2;
     right: 0;
     width: 22px; }
@@ -300,6 +302,15 @@
     -webkit-appearance: none; }
   .u-input-number input[type="number"] {
     -moz-appearance: textfield; }
+
+.u-input-number.u-input-number-sm.u-input-group.simple .u-input-group-btn .icon-group {
+  height: 26px; }
+
+.u-input-number-out .u-input-number.u-input-number-sm.u-input-group.simple .u-input-group-btn {
+  top: 0px; }
+
+.u-input-number-out .u-input-number.u-input-number-lg.u-input-group.simple .u-input-group-btn {
+  top: 0px; }
 
 .u-input-number-group .u-input-number-out {
   width: calc( 50% - 10px);

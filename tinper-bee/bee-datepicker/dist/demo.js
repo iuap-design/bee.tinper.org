@@ -80,7 +80,7 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
 	
-	var Demo1 = __webpack_require__(507);var Demo2 = __webpack_require__(508);var Demo3 = __webpack_require__(509);var Demo4 = __webpack_require__(510);var Demo5 = __webpack_require__(511);var Demo6 = __webpack_require__(512);var Demo7 = __webpack_require__(513);var Demo8 = __webpack_require__(514);var Demo9 = __webpack_require__(625);var Demo10 = __webpack_require__(626);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 选择日期", "code": "/**\r\n *\r\n * @title 选择日期\r\n * @description 以「日期」为基本单位，基础的日期选择控件\r\n */\r\n\r\nimport React, {Component} from \"react\";\nimport { Row, Col } from 'tinper-bee';\r\n\nimport DatePicker from \"bee-datepicker/index\";\r\n\r\nconst format = \"YYYY-MM-DD dddd\";\r\nconst dateInputPlaceholder = \"选择日期\";\r\n\r\nclass Demo1 extends Component {\r\n    onSelect = (d, dataString)  => {\r\n        console.log('select')\r\n        console.log(d, dataString);\r\n    }\r\n    onClick = d => {\r\n        console.log('click')\r\n    }\r\n    onChange = (d, dataString) => {\r\n        console.log('change')\r\n        console.log(d, dataString)\r\n    };\r\n    onDateInputBlur = (e,v) => {\r\n        console.log(e,v);\r\n    }\r\n    render() {\r\n        var self = this;\r\n        return (\r\n            <div>\r\n                <Row>\r\n                    <Col md={6}>\r\n                        <DatePicker\r\n                            format={format}\r\n                            onSelect={this.onSelect}\r\n                            onChange={this.onChange}\r\n                            onClick={this.onClick}\r\n                            onDateInputBlur={this.onDateInputBlur}\r\n                        />\r\n                    </Col>\r\n                </Row>\r\n            </div>\r\n        );\r\n    }\r\n}\r\n\r\nexport default Demo1;\r\n", "desc": " 以「日期」为基本单位，基础的日期选择控件" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 禁用日期", "code": "/**\n *\n * @title 禁用日期\n * @description 设置 disabled\n */\n\nimport React, {Component} from \"react\";\nimport { Row, Col } from 'tinper-bee';\nimport DatePicker from \"bee-datepicker/index\";\nimport moment from \"moment\";\n\nconst format = \"YYYY-MM-DD dddd\";\nconst dateInputPlaceholder = \"选择日期\";\n\nclass Demo2 extends Component {\n    onSelect = d => {\n        console.log(d);\n    }\n    onChange = (d, dataString) => {\n        console.log(dataString);\n    };\n    render() {\n        var self = this;\n        return (\n            <div>\n                <Row>\n                    <Col md={6}>\n                        <DatePicker\n                            format={format}\n                            onSelect={this.onSelect}\n                            onChange={this.onChange}\n                            disabled\n                            defaultValue={moment()}\n                        />\n                    </Col>\n                </Row>\n            </div>\n        );\n    }\n}\n\nexport default Demo2;\n", "desc": " 设置 disabled" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 不可选择日期和时间", "code": "/**\r\n *\r\n * @title 不可选择日期和时间\r\n * @description 可用 disabledDate 和 disabledTime 分别禁止选择部分日期和时间，其中 disabledTime 需要和 showTime 一起使用。\r\n */\r\n\r\nimport React, { Component } from \"react\";\nimport {  Row, Col  } from 'tinper-bee';\r\n\nimport DatePicker from \"bee-datepicker/index\";\r\n\r\nimport zhCN from \"../../src/locale/zh_CN\";\r\nimport moment from \"moment\";\r\n\r\nconst format = \"YYYY-MM-DD\";\r\n\r\nconst dateInputPlaceholder = \"选择日期\";\r\n\r\n\r\nfunction disabledDate(current) {\r\n  return current && current.valueOf() < Date.now();\r\n}\r\n\r\nclass Demo3 extends Component {\r\n  onSelect = d => {\r\n    console.log(d);\r\n  }\r\n  \r\n  onChange = d => {\r\n    console.log(d);\r\n  }\r\n  render() {\r\n    return (\r\n      <div>\r\n        <Row>\r\n          <Col md={6}>\r\n            <DatePicker\r\n              format={format}\r\n              onSelect={this.onSelect}\r\n              onChange={this.onChange}\r\n              locale={zhCN}\r\n              disabledDate={disabledDate}\r\n              defaultValue={moment()}\r\n              placeholder={dateInputPlaceholder}\r\n            />\r\n          </Col>\r\n        </Row>\r\n      </div>\r\n    );\r\n  }\r\n}\r\n\r\nexport default Demo3;\r\n", "desc": " 可用 disabledDate 和 disabledTime 分别禁止选择部分日期和时间，其中 disabledTime 需要和 showTime 一起使用。" }, { "example": _react2['default'].createElement(Demo4, null), "title": " 选择年，年月，周，日期范围", "code": "/**\n *\n * @title 选择年，年月，周，日期范围\n * @description 选择年，年月，周，日期范围基本示例\n */\n\nimport React, { Component } from \"react\";\nimport {  Row, Col  } from 'tinper-bee';\nimport DatePicker from \"bee-datepicker/index\";\nimport moment from \"moment\";\nimport zhCN from \"../../src/locale/zh_CN\";\nconst { YearPicker,MonthPicker,WeekPicker,RangePicker } = DatePicker;\n\n\nclass Demo4 extends Component {\n    onChange = (d, dataString) => {\n        console.log('change')\n        console.log(d);\n        console.log(dataString);\n    };\n    onSelect = d => {\n        console.log('select')\n        console.log(d);\n    }\n    onClear = () => {\n        console.log('clear')\n    }\n    /**\n     *@param e 事件对象\n     *@param startValue 开始时间\n     *@param array 包含开始时间和结束时间的数组\n     */\n    onStartInputBlur = (e,startValue,array) => {\n        console.log('RangePicker面板 左输入框的失焦事件',startValue,array)\n    }\n    /**\n     *@param e 事件对象\n     *@param endValue 结束时间\n     *@param array 包含开始时间和结束时间的数组\n     */\n    onEndInputBlur = (e,endValue,array) => {\n        console.log('RangePicker面板 右输入框的失焦事件',endValue,array)\n    }\n    render() {\n        return (\n            <div>\n                <Row style={{'marginBottom':'10px'}}>\n                    <Col md={6}>\n                        <YearPicker\n                            format=\"YYYY\"\n                            onChange={this.onChange}\n                            onSelect={this.onSelect}\n                            locale={zhCN}\n                            placeholder=\"选择年\"\n                            defaultValue={moment()}\n                            showClose={false}\n                        />\n                    </Col>\n                    <Col md={6} style={{'marginBottom':'10px'}}>\n                        <MonthPicker\n                            format='YYYY-MM'\n                            onSelect={this.onSelect}\n                            onChange={this.onChange}\n                            locale={zhCN}\n                            defaultValue={moment()}\n                            placeholder=\"选择年月\"\n                            onClear={this.onClear} \n                            showClose={false}\n                        />\n                    </Col>\n                    <Col md={6} style={{'marginBottom':'10px'}}>\n                        <WeekPicker \n                        defaultValue={moment()}\n                        onSelect={this.onSelect}\n                        onChange={this.onChange}\n                        placeholder=\"选择周\" \n                        showClose={false}\n                        />\n                    </Col>\n                    <Col md={6} style={{'marginBottom':'10px'}}>\n                        <RangePicker\n                            placeholder={'开始 ~ 结束'}\n                            dateInputPlaceholder={['开始', '结束']}\n                            showClear={true}\n                            onChange={this.onChange}\n                            onPanelChange={(v)=>{console.log('onPanelChange',v)}}\n                            showClose={true}\n                            onStartInputBlur={this.onStartInputBlur}\n                            onEndInputBlur={this.onEndInputBlur}\n                        />\n                    </Col>\n                </Row>\n            </div>\n        );\n    }\n}\n\nexport default Demo4;\n", "desc": " 选择年，年月，周，日期范围基本示例" }, { "example": _react2['default'].createElement(Demo5, null), "title": " 动态的改变时间", "code": "/**\n *\n * @title 动态的改变时间\n * @description 以「日期时间」为基本单位，基础的日期时间选择控件\n */\n\nimport React, { Component } from \"react\";\nimport { Button,  Row, Col  } from 'tinper-bee';\nimport DatePicker from \"bee-datepicker/index\";\nimport moment from \"moment\";\nimport zhCN from \"../../src/locale/zh_CN\";\nconst format = \"YYYY-MM-DD HH:mm:ss\";\nconst dateInputPlaceholder = \"选择日期\";\n\nclass Demo5 extends Component {\n  constructor(props) {\n    super(props);\n    this.state = {\n      value: moment()\n    };\n  }\n\n  handleChange = value => {\n    this.setState({\n      value: value\n    });\n  };\n  onSelect = d => {\n    console.log(d);\n  };\n\n  handlerChangeDate = () => {\n    this.setState({\n      value: moment(\"2011-11-11 11:11:11\")\n    });\n    console.log(\"click\");\n  };\n  render() {\n    return (\n      <div>\n        <Row>\n          <Col md={6}>\n            <DatePicker\n              format={format}\n              locale={zhCN}\n              onSelect={this.onSelect}\n              onChange={this.handleChange}\n              value={this.state.value}\n              placeholder={dateInputPlaceholder}\n            />\n          </Col>\n          <Col md={3}>\n            <Button onClick={this.handlerChangeDate}>变</Button>\n          </Col>\n        </Row>\n      </div>\n    );\n  }\n}\n\nexport default Demo5;\n", "desc": " 以「日期时间」为基本单位，基础的日期时间选择控件" }, { "example": _react2['default'].createElement(Demo6, null), "title": " 自定义日期渲染父级容器，扩展底边栏\t", "code": "/**\n *\n * @title 自定义日期渲染父级容器，扩展底边栏\t\n * @description getCalendarContainer自定义日期渲染父级容器，renderFooter扩展底边栏\n */\n\nimport React, { Component } from \"react\";\nimport {  Row, Col  } from 'tinper-bee';\nimport DatePicker from \"bee-datepicker/index\";\n\nimport zhCN from \"../../src/locale/zh_CN\";\nimport enUS from \"../../src/locale/en_US\";\nimport moment from \"moment\";\n\nconst format = \"YYYY-MM-DD\";\n\nconst dateInputPlaceholder = \"选择日期\";\n\nclass Demo6 extends Component {\n    constructor(props) {\n        super(props);\n    }\n    getCalendarContainer() {\n        return this.d || document.getElementById('d');\n    }\n    onChange = d => {\n        console.log(d);\n    };\n    render() {\n        return (\n            <div id=\"d\" >\n                <Row>\n                    <Col md={6}>\n                        <DatePicker\n                            format={format}\n                            onChange={this.onChange}\n                            locale={zhCN}\n                            defaultValue={moment()}\n                            placeholder={dateInputPlaceholder}\n                            getCalendarContainer={this.getCalendarContainer}\n                            showToday={false}//是否显示今天\n                            renderFooter={()=>{\n                                return (\n                                    <span> 我是底部 </span>\n                                )\n                            }}\n                        />\n                    </Col>\n                </Row>\n            </div>\n        );\n    }\n}\n\nexport default Demo6;\n", "desc": " getCalendarContainer自定义日期渲染父级容器，renderFooter扩展底边栏" }, { "example": _react2['default'].createElement(Demo7, null), "title": " 自定义展示日期面板，外层输入框可输入", "code": "/**\n *\n * @title 自定义展示日期面板，外层输入框可输入\n * @description open设置面板展开收起，keyboardInput外层input是否可输入，showDateInput是否显示内层input\n */\n\nimport React, {Component} from \"react\";\nimport { Icon, Row, Col } from 'tinper-bee';\nimport DatePicker from \"bee-datepicker/index\";\nimport zhCN from \"../../src/locale/zh_CN\";\nimport enUS from \"../../src/locale/en_US\";\nimport moment from \"moment\";\nimport 'moment/locale/zh-cn';\n\nmoment.locale('zh-cn');\n\nconst format = \"YYYY-MM-DD\";\n\nconst dateInputPlaceholder = \"选择日期\";\n\nclass Demo7 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            value: '',\n            open: false\n        };\n    }\n    onSelect = d=> {\n        console.log(d);\n    }\n    onChange = (d, dataString) => {\n        this.setState({\n            value:d\n        })\n        console.log('onChange',dataString)\n    };\n    onOpenChange = open => {\n        console.log(open)\n    }\n    open = d => {\n        this.setState({\n            open: !this.state.open\n        })\n    }\n    onClick = (e,d,str) => {\n        console.log(d);\n    }\n    outInputKeydown = ()=>{\n        console.log('keydown')\n    }\n    render() {\n        return (\n            <div>\n                <Row>\n                    <Col md={6}>\n                        <DatePicker\n                            format={format}\n                            onSelect={this.onSelect}\n                            onChange={this.onChange}\n                            locale={zhCN}\n                            open={this.state.open}\n                            defaultValue={moment('2018-01-01')}\n                            value={this.state.value}\n                            onOpenChange={this.onOpenChange}\n                            placeholder={dateInputPlaceholder}\n                            className={\"Demo7\"}\n                            onClick={this.onClick}\n                            keyboardInput={true}\n                            showDateInput={false}\n                        />\n                    </Col>\n                    <Col md={3}>\n                        <button className=\"u-button\" onClick={this.open}>展开面板</button>\n                    </Col>\n                </Row>\n            </div>\n        );\n    }\n}\n\nexport default Demo7;\n", "desc": " open设置面板展开收起，keyboardInput外层input是否可输入，showDateInput是否显示内层input" }, { "example": _react2['default'].createElement(Demo8, null), "title": " 自定义展示日期面板，外层输入框可输入，配合form使用", "code": "/**\r\n *\r\n * @title 自定义展示日期面板，外层输入框可输入，配合form使用\r\n * @description open设置面板展开收起，keyboardInput外层input是否可输入，showDateInput是否显示内层input\r\n */\r\n\r\nimport React, {Component} from \"react\";\nimport { Form, Row, Col } from 'tinper-bee';\r\n\nimport DatePicker from \"bee-datepicker/index\";\r\nimport zhCN from \"../../src/locale/zh_CN\";\r\nimport enUS from \"../../src/locale/en_US\";\r\nimport moment from \"moment\";\r\nimport 'moment/locale/zh-cn';\r\n\n\r\nmoment.locale('zh-cn');\r\n\r\nconst format = \"YYYY-MM-DD\";\r\n\r\nconst dateInputPlaceholder = \"选择日期\";\r\n\r\n\r\nclass Demo8 extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            value: '',\r\n            open: false\r\n        };\r\n    }\r\n    onOpenChange = open => {\r\n        console.log(open)\r\n    }\r\n    open = d => {\r\n        this.setState({\r\n            open: !this.state.open\r\n        })\r\n    }\r\n    onClick = (e,d,str) => {\r\n        console.log(d);\r\n    }\r\n    onSelect(d) {\r\n        console.log(\"select:\"+d);\r\n    }\r\n    outInputKeydown = ()=>{\r\n        console.log('keydown')\r\n    }\r\n    submit = (e) => {\r\n        this.props.form.validateFields((err, values) => {\r\n            if (err) {\r\n                console.log('校验失败', values);\r\n            } else {\r\n                console.log('提交成功', values, moment(values.date).format('YYYY-MM-DD'));\r\n            }\r\n        });\r\n    }\r\n    render() {\r\n        var self = this; \r\n        const { getFieldProps, getFieldError } = this.props.form;\r\n        return (\r\n            <div>\r\n                <Row>\r\n                    <Col md={6}>\r\n                        <DatePicker\r\n                            format={format}\r\n                            onSelect={this.onSelect}\r\n                            onChange={this.onChange}\r\n                            locale={zhCN}\r\n                            open={this.state.open}\r\n                            onOpenChange={this.onOpenChange.bind(this)}\r\n                            placeholder={dateInputPlaceholder}\r\n                            className={\"demo11\"}\r\n                            onClick={this.onClick}\r\n                            keyboardInput={true}\r\n                            showDateInput={false}\r\n                            iconClick={this.open}\r\n                            outInputKeydown={this.outInputKeydown}\r\n                            {...getFieldProps('date', {\r\n                                validateTrigger: 'onBlur',\r\n                                initialValue:moment('2018-01-01'),\r\n                                rules: [{\r\n                                    required: true, message: '请输入日期',\r\n                                }],\r\n                            }) }\r\n                        />\r\n                    </Col>\r\n                    <Col md={3}>\r\n                        <button className=\"u-button\" onClick={this.open}>展开/收起面板</button>\r\n                        <button className=\"u-button\" onClick={this.submit}>获得值</button>\r\n                    </Col>\r\n                </Row>\r\n            </div>\r\n        );\r\n    }\r\n}\r\n\r\nexport default Form.createForm()(Demo8);\r\n", "desc": " open设置面板展开收起，keyboardInput外层input是否可输入，showDateInput是否显示内层input" }, { "example": _react2['default'].createElement(Demo9, null), "title": " 额外的页脚", "code": "/**\r\n *\r\n * @title 额外的页脚\r\n * @description 在浮层中加入额外的页脚，以满足某些定制信息的需求。\r\n */\r\n\r\nimport React, {Component} from \"react\";\nimport { Row, Col } from 'tinper-bee';\r\n\nimport DatePicker from \"bee-datepicker/index\";\r\n\r\nconst { RangePicker, MonthPicker } = DatePicker;\r\n\r\nclass Demo9 extends Component {\r\n    render() {\r\n        return (\r\n            <div className=\"demo9\">\r\n                <Row>\r\n                    <Col md={6}>\r\n                        <DatePicker renderFooter={() => '额外页脚'} placeholder=\"选择日期\"/>\r\n                    </Col>\r\n                    \r\n                    <Col md={6}>\r\n                        <DatePicker renderFooter={() => '额外页脚'} showTime placeholder=\"选择日期\"/>\r\n                    </Col>\r\n                    \r\n                    <Col md={6}>\r\n                        <RangePicker renderFooter={() => '额外页脚'} placeholder={'开始 ~ 结束'}/>\r\n                    </Col>\r\n                    \r\n                    <Col md={6}>\r\n                        <RangePicker renderFooter={() => '额外页脚'} showTime placeholder={'开始 ~ 结束'}/>\r\n                    </Col>\r\n                    \r\n                    <Col md={6}>\r\n                        <MonthPicker renderFooter={() => '额外页脚'} placeholder=\"选择月\" />\r\n                    </Col>\r\n                </Row>\r\n            </div>\r\n        );\r\n    }\r\n}\r\n\r\nexport default Demo9;\r\n", "desc": " 在浮层中加入额外的页脚，以满足某些定制信息的需求。", "scss_code": ".demo9 {\r\n    .u-row .u-col-md-6 {\r\n        margin-bottom: 10px;\r\n    }\r\n}" }, { "example": _react2['default'].createElement(Demo10, null), "title": " 使用normal格式化", "code": "/**\n *\n * @title 使用normal格式化\n * @description 配合form 使用normal格式化，已 MothPicker 为例\n */\n\nimport React, { Component } from \"react\";\nimport { Form,  Row, Col  } from 'tinper-bee';\nimport DatePicker from \"bee-datepicker/index\";\n\nconst { MonthPicker } = DatePicker;\n\n\nclass Demo4 extends Component {\n    submit = (e) => {\n        this.props.form.validateFields((err, values) => {\n            if (err) {\n                console.log('校验失败', values);\n            } else {\n                console.log('提交成功', values);\n            }\n        });\n    }\n    render() {\n        const { getFieldProps, getFieldError } = this.props.form;\n        return (\n            <div>\n                <Row style={{'marginBottom':'10px'}}>\n                    <Col md={6} style={{'marginBottom':'10px'}}>\n                        <MonthPicker\n                            format=\"YYYY-MM\"\n                            {...getFieldProps('date', {\n                                validateTrigger: 'onBlur',\n                                initialValue:null,\n                                normalize:(value)=>{\n                                    if(value&&value.format){\n                                        return value.format('YYYY-MM')\n                                    }else{\n                                        return value\n                                    }\n                                },\n                                rules: [{\n                                    required: true, message: '请输入日期',\n                                }],\n                            }) }\n                        />\n                    </Col>\n                    <button className=\"u-button\" onClick={this.submit}>获得值</button>\n                </Row>\n            </div>\n        );\n    }\n}\n\nexport default Form.createForm()(Demo4);\n", "desc": " 配合form 使用normal格式化，已 MothPicker 为例" }];
+	var Demo1 = __webpack_require__(507);var Demo2 = __webpack_require__(508);var Demo3 = __webpack_require__(509);var Demo4 = __webpack_require__(510);var Demo5 = __webpack_require__(511);var Demo6 = __webpack_require__(512);var Demo7 = __webpack_require__(513);var Demo8 = __webpack_require__(514);var Demo9 = __webpack_require__(625);var Demo10 = __webpack_require__(626);var Demo11 = __webpack_require__(627);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 选择日期", "code": "/**\r\n *\r\n * @title 选择日期\r\n * @description 以「日期」为基本单位，基础的日期选择控件\r\n */\r\n\r\nimport React, {Component} from \"react\";\nimport { Row, Col } from 'tinper-bee';\r\n\nimport DatePicker from \"bee-datepicker/index\";\r\n\r\nconst format = \"YYYY-MM-DD dddd\";\r\nconst dateInputPlaceholder = \"选择日期\";\r\n\r\nclass Demo1 extends Component {\r\n    onSelect = (d, dataString)  => {\r\n        console.log('select')\r\n        console.log(d, dataString);\r\n    }\r\n    onClick = d => {\r\n        console.log('click')\r\n    }\r\n    onChange = (d, dataString) => {\r\n        console.log('change')\r\n        console.log(d, dataString)\r\n    };\r\n    onDateInputBlur = (e,v) => {\r\n        console.log(e,v);\r\n    }\r\n    render() {\r\n        var self = this;\r\n        return (\r\n            <div>\r\n                <Row>\r\n                    <Col md={6}>\r\n                        <DatePicker\r\n                            format={format}\r\n                            onSelect={this.onSelect}\r\n                            onChange={this.onChange}\r\n                            onClick={this.onClick}\r\n                            onDateInputBlur={this.onDateInputBlur}\r\n                        />\r\n                    </Col>\r\n                </Row>\r\n            </div>\r\n        );\r\n    }\r\n}\r\n\r\nexport default Demo1;\r\n", "desc": " 以「日期」为基本单位，基础的日期选择控件" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 禁用日期", "code": "/**\n *\n * @title 禁用日期\n * @description 设置 disabled\n */\n\nimport React, {Component} from \"react\";\nimport { Row, Col } from 'tinper-bee';\nimport DatePicker from \"bee-datepicker/index\";\nimport moment from \"moment\";\n\nconst format = \"YYYY-MM-DD dddd\";\nconst dateInputPlaceholder = \"选择日期\";\n\nclass Demo2 extends Component {\n    onSelect = d => {\n        console.log(d);\n    }\n    onChange = (d, dataString) => {\n        console.log(dataString);\n    };\n    render() {\n        var self = this;\n        return (\n            <div>\n                <Row>\n                    <Col md={6}>\n                        <DatePicker\n                            format={format}\n                            onSelect={this.onSelect}\n                            onChange={this.onChange}\n                            disabled\n                            defaultValue={moment()}\n                        />\n                    </Col>\n                </Row>\n            </div>\n        );\n    }\n}\n\nexport default Demo2;\n", "desc": " 设置 disabled" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 不可选择日期和时间", "code": "/**\r\n *\r\n * @title 不可选择日期和时间\r\n * @description 可用 disabledDate 和 disabledTime 分别禁止选择部分日期和时间，其中 disabledTime 需要和 showTime 一起使用。\r\n */\r\n\r\nimport React, { Component } from \"react\";\nimport {  Row, Col  } from 'tinper-bee';\r\n\nimport DatePicker from \"bee-datepicker/index\";\r\n\r\nimport zhCN from \"bee-datepicker/bulid/locale/zh_CN\";\r\nimport moment from \"moment\";\r\n\r\nconst format = \"YYYY-MM-DD\";\r\n\r\nconst dateInputPlaceholder = \"选择日期\";\r\n\r\n\r\nfunction disabledDate(current) {\r\n  return current && current.valueOf() < Date.now();\r\n}\r\n\r\nclass Demo3 extends Component {\r\n  onSelect = d => {\r\n    console.log(d);\r\n  }\r\n  \r\n  onChange = d => {\r\n    console.log(d);\r\n  }\r\n  render() {\r\n    return (\r\n      <div>\r\n        <Row>\r\n          <Col md={6}>\r\n            <DatePicker\r\n              format={format}\r\n              onSelect={this.onSelect}\r\n              onChange={this.onChange}\r\n              locale={zhCN}\r\n              disabledDate={disabledDate}\r\n              defaultValue={moment()}\r\n              placeholder={dateInputPlaceholder}\r\n            />\r\n          </Col>\r\n        </Row>\r\n      </div>\r\n    );\r\n  }\r\n}\r\n\r\nexport default Demo3;\r\n", "desc": " 可用 disabledDate 和 disabledTime 分别禁止选择部分日期和时间，其中 disabledTime 需要和 showTime 一起使用。" }, { "example": _react2['default'].createElement(Demo4, null), "title": " 选择年，年月，周，日期范围", "code": "/**\n *\n * @title 选择年，年月，周，日期范围\n * @description 选择年，年月，周，日期范围基本示例\n */\n\nimport React, { Component } from \"react\";\nimport {  Row, Col  } from 'tinper-bee';\nimport DatePicker from \"bee-datepicker/index\";\nimport moment from \"moment\";\nimport zhCN from \"bee-datepicker/bulid/locale/zh_CN\";\nconst { YearPicker,MonthPicker,WeekPicker,RangePicker } = DatePicker;\n\n\nclass Demo4 extends Component {\n    onChange = (d, dataString) => {\n        console.log('change')\n        console.log(d);\n        console.log(dataString);\n    };\n    onSelect = d => {\n        console.log('select')\n        console.log(d);\n    }\n    onClear = () => {\n        console.log('clear')\n    }\n    /**\n     *@param e 事件对象\n     *@param startValue 开始时间\n     *@param array 包含开始时间和结束时间的数组\n     */\n    onStartInputBlur = (e,startValue,array) => {\n        console.log('RangePicker面板 左输入框的失焦事件',startValue,array)\n    }\n    /**\n     *@param e 事件对象\n     *@param endValue 结束时间\n     *@param array 包含开始时间和结束时间的数组\n     */\n    onEndInputBlur = (e,endValue,array) => {\n        console.log('RangePicker面板 右输入框的失焦事件',endValue,array)\n    }\n    render() {\n        return (\n            <div>\n                <Row style={{'marginBottom':'10px'}}>\n                    <Col md={6}>\n                        <YearPicker\n                            format=\"YYYY\"\n                            onChange={this.onChange}\n                            onSelect={this.onSelect}\n                            locale={zhCN}\n                            placeholder=\"选择年\"\n                            defaultValue={moment()}\n                            showClose={false}\n                        />\n                    </Col>\n                    <Col md={6} style={{'marginBottom':'10px'}}>\n                        <MonthPicker\n                            format='YYYY-MM'\n                            onSelect={this.onSelect}\n                            onChange={this.onChange}\n                            locale={zhCN}\n                            defaultValue={moment()}\n                            placeholder=\"选择年月\"\n                            onClear={this.onClear} \n                            showClose={false}\n                        />\n                    </Col>\n                    <Col md={6} style={{'marginBottom':'10px'}}>\n                        <WeekPicker \n                        defaultValue={moment()}\n                        onSelect={this.onSelect}\n                        onChange={this.onChange}\n                        placeholder=\"选择周\" \n                        showClose={false}\n                        />\n                    </Col>\n                    <Col md={6} style={{'marginBottom':'10px'}}>\n                        <RangePicker\n                            placeholder={'开始 ~ 结束'}\n                            dateInputPlaceholder={['开始', '结束']}\n                            showClear={true}\n                            onChange={this.onChange}\n                            onPanelChange={(v)=>{console.log('onPanelChange',v)}}\n                            showClose={true}\n                            onStartInputBlur={this.onStartInputBlur}\n                            onEndInputBlur={this.onEndInputBlur}\n                        />\n                    </Col>\n                </Row>\n            </div>\n        );\n    }\n}\n\nexport default Demo4;\n", "desc": " 选择年，年月，周，日期范围基本示例" }, { "example": _react2['default'].createElement(Demo5, null), "title": " 动态的改变时间", "code": "/**\n *\n * @title 动态的改变时间\n * @description 以「日期时间」为基本单位，基础的日期时间选择控件\n */\n\nimport React, { Component } from \"react\";\nimport { Button,  Row, Col  } from 'tinper-bee';\nimport DatePicker from \"bee-datepicker/index\";\nimport moment from \"moment\";\nimport zhCN from \"bee-datepicker/bulid/locale/zh_CN\";\nconst format = \"YYYY-MM-DD HH:mm:ss\";\nconst dateInputPlaceholder = \"选择日期\";\n\nclass Demo5 extends Component {\n  constructor(props) {\n    super(props);\n    this.state = {\n      value: moment()\n    };\n  }\n\n  handleChange = value => {\n    this.setState({\n      value: value\n    });\n  };\n  onSelect = d => {\n    console.log(d);\n  };\n\n  handlerChangeDate = () => {\n    this.setState({\n      value: moment(\"2011-11-11 11:11:11\")\n    });\n    console.log(\"click\");\n  };\n  render() {\n    return (\n      <div>\n        <Row>\n          <Col md={6}>\n            <DatePicker\n              format={format}\n              locale={zhCN}\n              onSelect={this.onSelect}\n              onChange={this.handleChange}\n              value={this.state.value}\n              placeholder={dateInputPlaceholder}\n            />\n          </Col>\n          <Col md={3}>\n            <Button onClick={this.handlerChangeDate}>变</Button>\n          </Col>\n        </Row>\n      </div>\n    );\n  }\n}\n\nexport default Demo5;\n", "desc": " 以「日期时间」为基本单位，基础的日期时间选择控件" }, { "example": _react2['default'].createElement(Demo6, null), "title": " 自定义日期渲染父级容器，扩展底边栏\t", "code": "/**\n *\n * @title 自定义日期渲染父级容器，扩展底边栏\t\n * @description getCalendarContainer自定义日期渲染父级容器，renderFooter扩展底边栏\n */\n\nimport React, { Component } from \"react\";\nimport {  Row, Col  } from 'tinper-bee';\nimport DatePicker from \"bee-datepicker/index\";\n\nimport zhCN from \"bee-datepicker/bulid/locale/zh_CN\";\nimport enUS from \"bee-datepicker/bulid/locale/en_US\";\nimport moment from \"moment\";\n\nconst format = \"YYYY-MM-DD\";\n\nconst dateInputPlaceholder = \"选择日期\";\n\nclass Demo6 extends Component {\n    constructor(props) {\n        super(props);\n    }\n    getCalendarContainer() {\n        return this.d || document.getElementById('d');\n    }\n    onChange = d => {\n        console.log(d);\n    };\n    render() {\n        return (\n            <div id=\"d\" >\n                <Row>\n                    <Col md={6}>\n                        <DatePicker\n                            format={format}\n                            onChange={this.onChange}\n                            locale={zhCN}\n                            defaultValue={moment()}\n                            placeholder={dateInputPlaceholder}\n                            getCalendarContainer={this.getCalendarContainer}\n                            showToday={false}//是否显示今天\n                            renderFooter={()=>{\n                                return (\n                                    <span> 我是底部 </span>\n                                )\n                            }}\n                        />\n                    </Col>\n                </Row>\n            </div>\n        );\n    }\n}\n\nexport default Demo6;\n", "desc": " getCalendarContainer自定义日期渲染父级容器，renderFooter扩展底边栏" }, { "example": _react2['default'].createElement(Demo7, null), "title": " 自定义展示日期面板，外层输入框可输入", "code": "/**\n *\n * @title 自定义展示日期面板，外层输入框可输入\n * @description open设置面板展开收起，keyboardInput外层input是否可输入，showDateInput是否显示内层input\n */\n\nimport React, {Component} from \"react\";\nimport { Icon, Row, Col } from 'tinper-bee';\nimport DatePicker from \"bee-datepicker/index\";\nimport zhCN from \"bee-datepicker/bulid/locale/zh_CN\";\nimport enUS from \"bee-datepicker/bulid/locale/en_US\";\nimport moment from \"moment\";\nimport 'moment/locale/zh-cn';\n\nmoment.locale('zh-cn');\n\nconst format = \"YYYY-MM-DD\";\n\nconst dateInputPlaceholder = \"选择日期\";\n\nclass Demo7 extends Component {\n    constructor(props) {\n        super(props);\n        this.state = {\n            value: '',\n            open: false\n        };\n    }\n    onSelect = d=> {\n        console.log(d);\n    }\n    onChange = (d, dataString) => {\n        this.setState({\n            value:d\n        })\n        console.log('onChange',dataString)\n    };\n    onOpenChange = open => {\n        console.log(open)\n    }\n    open = d => {\n        this.setState({\n            open: !this.state.open\n        })\n    }\n    onClick = (e,d,str) => {\n        console.log(d);\n    }\n    outInputKeydown = ()=>{\n        console.log('keydown')\n    }\n    render() {\n        return (\n            <div>\n                <Row>\n                    <Col md={6}>\n                        <DatePicker\n                            format={format}\n                            onSelect={this.onSelect}\n                            onChange={this.onChange}\n                            locale={zhCN}\n                            open={this.state.open}\n                            defaultValue={moment('2018-01-01')}\n                            value={this.state.value}\n                            onOpenChange={this.onOpenChange}\n                            placeholder={dateInputPlaceholder}\n                            className={\"Demo7\"}\n                            onClick={this.onClick}\n                            keyboardInput={true}\n                            showDateInput={false}\n                        />\n                    </Col>\n                    <Col md={3}>\n                        <button className=\"u-button\" onClick={this.open}>展开面板</button>\n                    </Col>\n                </Row>\n            </div>\n        );\n    }\n}\n\nexport default Demo7;\n", "desc": " open设置面板展开收起，keyboardInput外层input是否可输入，showDateInput是否显示内层input" }, { "example": _react2['default'].createElement(Demo8, null), "title": " 自定义展示日期面板，外层输入框可输入，配合form使用", "code": "/**\r\n *\r\n * @title 自定义展示日期面板，外层输入框可输入，配合form使用\r\n * @description open设置面板展开收起，keyboardInput外层input是否可输入，showDateInput是否显示内层input\r\n */\r\n\r\nimport React, {Component} from \"react\";\nimport { Form, Row, Col } from 'tinper-bee';\r\n\nimport DatePicker from \"bee-datepicker/index\";\r\nimport zhCN from \"bee-datepicker/bulid/locale/zh_CN\";\r\nimport enUS from \"bee-datepicker/bulid/locale/en_US\";\r\nimport moment from \"moment\";\r\nimport 'moment/locale/zh-cn';\r\n\n\r\nmoment.locale('zh-cn');\r\n\r\nconst format = \"YYYY-MM-DD\";\r\n\r\nconst dateInputPlaceholder = \"选择日期\";\r\n\r\n\r\nclass Demo8 extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        this.state = {\r\n            value: '',\r\n            open: false\r\n        };\r\n    }\r\n    onOpenChange = open => {\r\n        console.log(open)\r\n    }\r\n    open = d => {\r\n        this.setState({\r\n            open: !this.state.open\r\n        })\r\n    }\r\n    onClick = (e,d,str) => {\r\n        console.log(d);\r\n    }\r\n    onSelect(d) {\r\n        console.log(\"select:\"+d);\r\n    }\r\n    outInputKeydown = ()=>{\r\n        console.log('keydown')\r\n    }\r\n    submit = (e) => {\r\n        this.props.form.validateFields((err, values) => {\r\n            if (err) {\r\n                console.log('校验失败', values);\r\n            } else {\r\n                console.log('提交成功', values, moment(values.date).format('YYYY-MM-DD'));\r\n            }\r\n        });\r\n    }\r\n    render() {\r\n        var self = this; \r\n        const { getFieldProps, getFieldError } = this.props.form;\r\n        return (\r\n            <div>\r\n                <Row>\r\n                    <Col md={6}>\r\n                        <DatePicker\r\n                            format={format}\r\n                            onSelect={this.onSelect}\r\n                            onChange={this.onChange}\r\n                            locale={zhCN}\r\n                            open={this.state.open}\r\n                            onOpenChange={this.onOpenChange.bind(this)}\r\n                            placeholder={dateInputPlaceholder}\r\n                            className={\"demo11\"}\r\n                            onClick={this.onClick}\r\n                            keyboardInput={true}\r\n                            showDateInput={false}\r\n                            iconClick={this.open}\r\n                            outInputKeydown={this.outInputKeydown}\r\n                            {...getFieldProps('date', {\r\n                                validateTrigger: 'onBlur',\r\n                                initialValue:moment('2018-01-01'),\r\n                                rules: [{\r\n                                    required: true, message: '请输入日期',\r\n                                }],\r\n                            }) }\r\n                        />\r\n                    </Col>\r\n                    <Col md={3}>\r\n                        <button className=\"u-button\" onClick={this.open}>展开/收起面板</button>\r\n                        <button className=\"u-button\" onClick={this.submit}>获得值</button>\r\n                    </Col>\r\n                </Row>\r\n            </div>\r\n        );\r\n    }\r\n}\r\n\r\nexport default Form.createForm()(Demo8);\r\n", "desc": " open设置面板展开收起，keyboardInput外层input是否可输入，showDateInput是否显示内层input" }, { "example": _react2['default'].createElement(Demo9, null), "title": " 额外的页脚", "code": "/**\r\n *\r\n * @title 额外的页脚\r\n * @description 在浮层中加入额外的页脚，以满足某些定制信息的需求。\r\n */\r\n\r\nimport React, {Component} from \"react\";\nimport { Row, Col } from 'tinper-bee';\r\n\nimport DatePicker from \"bee-datepicker/index\";\r\n\r\nconst { RangePicker, MonthPicker } = DatePicker;\r\n\r\nclass Demo9 extends Component {\r\n    render() {\r\n        return (\r\n            <div className=\"demo9\">\r\n                <Row>\r\n                    <Col md={6}>\r\n                        <DatePicker renderFooter={() => '额外页脚'} placeholder=\"选择日期\"/>\r\n                    </Col>\r\n                    \r\n                    <Col md={6}>\r\n                        <DatePicker renderFooter={() => '额外页脚'} showTime placeholder=\"选择日期\"/>\r\n                    </Col>\r\n                    \r\n                    <Col md={6}>\r\n                        <RangePicker renderFooter={() => '额外页脚'} placeholder={'开始 ~ 结束'}/>\r\n                    </Col>\r\n                    \r\n                    <Col md={6}>\r\n                        <RangePicker renderFooter={() => '额外页脚'} showTime placeholder={'开始 ~ 结束'}/>\r\n                    </Col>\r\n                    \r\n                    <Col md={6}>\r\n                        <MonthPicker renderFooter={() => '额外页脚'} placeholder=\"选择月\" />\r\n                    </Col>\r\n                </Row>\r\n            </div>\r\n        );\r\n    }\r\n}\r\n\r\nexport default Demo9;\r\n", "desc": " 在浮层中加入额外的页脚，以满足某些定制信息的需求。", "scss_code": ".demo9 {\r\n    .u-row .u-col-md-6 {\r\n        margin-bottom: 10px;\r\n    }\r\n}" }, { "example": _react2['default'].createElement(Demo10, null), "title": " 使用normal格式化", "code": "/**\n *\n * @title 使用normal格式化\n * @description 配合form 使用normal格式化，已 MothPicker 为例\n */\n\nimport React, { Component } from \"react\";\nimport { Form,  Row, Col  } from 'tinper-bee';\nimport DatePicker from \"bee-datepicker/index\";\n\nconst { MonthPicker } = DatePicker;\n\n\nclass Demo4 extends Component {\n    submit = (e) => {\n        this.props.form.validateFields((err, values) => {\n            if (err) {\n                console.log('校验失败', values);\n            } else {\n                console.log('提交成功', values);\n            }\n        });\n    }\n    render() {\n        const { getFieldProps, getFieldError } = this.props.form;\n        return (\n            <div>\n                <Row style={{'marginBottom':'10px'}}>\n                    <Col md={6} style={{'marginBottom':'10px'}}>\n                        <MonthPicker\n                            format=\"YYYY-MM\"\n                            {...getFieldProps('date', {\n                                validateTrigger: 'onBlur',\n                                initialValue:null,\n                                normalize:(value)=>{\n                                    if(value&&value.format){\n                                        return value.format('YYYY-MM')\n                                    }else{\n                                        return value\n                                    }\n                                },\n                                rules: [{\n                                    required: true, message: '请输入日期',\n                                }],\n                            }) }\n                        />\n                    </Col>\n                    <button className=\"u-button\" onClick={this.submit}>获得值</button>\n                </Row>\n            </div>\n        );\n    }\n}\n\nexport default Form.createForm()(Demo4);\n", "desc": " 配合form 使用normal格式化，已 MothPicker 为例" }, { "example": _react2['default'].createElement(Demo11, null), "title": " 配合form使用", "code": "/**\n *\n * @title 配合form使用\n * @description 各类型组件配合form使用，注意事项\n */\n\nimport React, { Component } from \"react\";\nimport { Button, Form,  Row  } from 'tinper-bee';\nimport DatePicker from \"bee-datepicker/index\";\n\nconst { YearPicker,MonthPicker,WeekPicker,RangePicker } = DatePicker;\n\nclass Demo11 extends Component {\n    constructor(props){\n        super(props);\n        this.state={\n          initialValues:{\n            \n          }  \n        }\n    }\n\n    componentWillMount(){\n        //如果初始值需要接口返回，则需要在组件初始化之前，获得初始值。 这里模拟设置初始值\n        this.setState({\n            initialValues:{\n                date:'2019-02-03',\n                dateTime:'2009-10-11 12:13:14',\n                month:'2019-12',\n                year:'2019',\n                week:'2019-45',\n                range:['2019-11-12','2019-12-13']\n            }\n        })\n    }\n\n\n    submit = (e) => {\n        this.props.form.validateFields((err, values) => {\n            if (err) {\n                console.log('校验失败', values);\n            } else {\n                console.log('提交成功', values);\n            }\n        });\n    }\n\n    change=()=>{\n        this.setState({\n            initialValues:{\n                date:'2020-10-10',\n                dateTime:'2020-10-10 10:10:10',\n                month:'2020-10',\n                year:'2020',\n                week:'2020-20',\n                range:['2020-10-10','2020-12-12']\n            }\n        })\n    }\n    reset=()=>{\n        //此方法将所有元素还原到初始值。即还原到 componentWillMount 设置的值。\n        // 注意：this.props.form.resetFields() 并不是清空值，而是还原到 initialValue 的值\n        this.props.form.resetFields()\n    }\n\n    render() {\n        const { getFieldProps, getFieldError } = this.props.form;\n        return (\n            <div className='demo11'>\n                <Row>\n                    <DatePicker\n                        format='YYYY-MM-DD'\n                        {\n                            ...getFieldProps('date',{\n                                initialValue:this.state.initialValues.date,\n                                normalize:(value)=>{\n                                    if(value&&value.format){\n                                        return value.format('YYYY-MM-DD')\n                                    }else{\n                                        return value\n                                    }\n                                },\n                            })\n                        }\n                    />\n                </Row>\n                <Row>\n                    <DatePicker\n                        format='YYYY-MM-DD hh:mm:ss'\n                        showTime={true}\n                        {\n                            ...getFieldProps('dateTime',{\n                                initialValue:this.state.initialValues.dateTime,\n                                normalize:(value)=>{\n                                    if(value&&value.format){\n                                        return value.format('YYYY-MM-DD hh:mm:ss')\n                                    }else{\n                                        return value\n                                    }\n                                },\n                            })\n                        }\n                    />\n                </Row>\n                <Row>\n                    <MonthPicker\n                        format='YYYY-MM'\n                        {\n                            ...getFieldProps('month',{\n                                initialValue:this.state.initialValues.month,\n                                normalize:(value)=>{\n                                    if(value&&value.format){\n                                        return value.format('YYYY-MM')\n                                    }else{\n                                        return value\n                                    }\n                                },\n                            })\n                        }\n                    />\n                </Row>\n                <Row>\n                    <YearPicker\n                        format='YYYY'\n                        {\n                            ...getFieldProps('year',{\n                                initialValue:this.state.initialValues.year,\n                                normalize:(value)=>{\n                                    if(value&&value.format){\n                                        return value.format('YYYY')\n                                    }else{\n                                        return value\n                                    }\n                                },\n                            })\n                        }\n                    />\n                </Row>\n                <Row>\n                    <WeekPicker\n                        format='YYYY-WW'\n                        {\n                            ...getFieldProps('week',{\n                                initialValue:this.state.initialValues.week,\n                                normalize:(value)=>{\n                                    if(value&&value.format){\n                                        return value.format('YYYY-WW')\n                                    }else{\n                                        return value\n                                    }\n                                },\n                            })\n                        }\n                    />\n                </Row>\n                <Row>\n                    <RangePicker\n                        format='YYYY-MM-DD'\n                        {\n                            ...getFieldProps('range',{\n                                initialValue:this.state.initialValues.range,\n                                normalize:(value)=>{\n                                    let values = [];\n                                    if(value[0]&&value[0].format){\n                                        values.push(value[0].format('YYYY-MM-DD')||'')\n                                    }else{\n                                        values.push(value[0]||'')\n                                    }\n                                    if(value[1]&&value[1].format){\n                                        values.push(value[1].format('YYYY-MM-DD')||'')\n                                    }else{\n                                        values.push(value[1]||'')\n                                    }\n                                    return values;\n                                },\n                            })\n                        }\n                    />\n                </Row>\n                <Row>\n                    <Button className='options-btns' colors='primary' onClick={this.change}>改变初始值</Button>\n                    <Button className='options-btns' colors='primary' onClick={this.submit}>获得所有值</Button>\n                    <Button className='options-btns' colors='primary' onClick={this.reset}>还原所有值</Button>\n                </Row>\n                \n            </div>\n        );\n    }\n}\n\nexport default Form.createForm()(Demo11);\n", "desc": " 各类型组件配合form使用，注意事项", "scss_code": ".demo11{\n   .u-row{\n        margin: 0;\n        margin-bottom: 20px;\n        .u-button{\n            margin-right: 20px;\n        }\n   }\n}" }];
 	
 	var Demo = function (_Component) {
 	    _inherits(Demo, _Component);
@@ -34472,9 +34472,9 @@
 	        defaultValue = props.defaultValue && (0, _moment2["default"])(props.defaultValue);
 	    _this.state = {
 	      type: "month",
-	      value: value || defaultValue || _moment2["default"].Moment,
+	      value: _this.initValue(props),
 	      open: props.open || false,
-	      inputValue: props.value && _this.getValue(props.value) || props.defaultValue && _this.getValue(props.defaultValue) || '',
+	      inputValue: _this.initValue(props),
 	      showClose: false
 	    };
 	
@@ -34484,7 +34484,7 @@
 	  DatePicker.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
 	    if ("value" in nextProps) {
 	      this.setState({
-	        value: nextProps.value && (0, _moment2["default"])(nextProps.value)
+	        value: this.initValue(nextProps)
 	      });
 	    }
 	    if ("open" in nextProps) {
@@ -34533,7 +34533,7 @@
 	    }
 	
 	    var calendar = _react2["default"].createElement(_rcCalendar2["default"], _extends({
-	      timePicker: props.showTime ? timePickerElement : null
+	      timePicker: props.showTime ? _react2["default"].createElement(_Panel2["default"], { defaultValue: (0, _moment2["default"])((0, _moment2["default"])().format("HH:mm:ss"), "HH:mm:ss") }) : null
 	    }, props, {
 	      onSelect: this.handleSelect,
 	      onChange: this.handleCalendarChange,
@@ -34612,6 +34612,23 @@
 	
 	var _initialiseProps = function _initialiseProps() {
 	  var _this3 = this;
+	
+	  this.initValue = function (props) {
+	    var value = props.value || props.defaultValue;
+	    if (value) {
+	      if (value.format) {
+	        value = value;
+	      } else {
+	        if ((0, _moment2["default"])(value).isValid()) {
+	          value = (0, _moment2["default"])(value);
+	        } else {
+	          console.error('value is not in the correct format');
+	          value = '';
+	        }
+	      }
+	    }
+	    return value;
+	  };
 	
 	  this.getValue = function (value) {
 	    var format = _this3.props.format;
@@ -61631,15 +61648,18 @@
 	  MonthPicker.prototype.componentDidMount = function componentDidMount() {
 	    var value = this.props.value || this.props.defaultValue;
 	    if (value) {
-	      if (value.format) {
-	        value = value;
-	      } else {
+	      if (typeof value == 'string') {
 	        if ((0, _moment2["default"])(value).isValid()) {
 	          value = (0, _moment2["default"])(value);
 	        } else {
 	          console.error('value is not in the correct format');
-	          value = null;
+	          value = '';
 	        }
+	      } else if (value.format && value.isValid()) {
+	        value = value;
+	      } else {
+	        console.error('value is not in the correct format');
+	        value = '';
 	      }
 	    }
 	    this.setState({
@@ -61651,11 +61671,11 @@
 	    if ('value' in nextProps) {
 	      var value = nextProps.value;
 	      if (value) {
-	        if (value.format) {} else {
+	        if (value.format && value.isValid()) {} else {
 	          value = (0, _moment2["default"])(value);
 	        }
 	      } else {
-	        value = null;
+	        value = '';
 	      }
 	      this.setState({
 	        value: value
@@ -62213,7 +62233,7 @@
 	
 	        _this.state = {
 	            hoverValue: [],
-	            value: props.value || props.defaultValue || [],
+	            value: _this.initValue(props),
 	            open: props.open || false
 	        };
 	        return _this;
@@ -62222,7 +62242,7 @@
 	    RangePicker.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
 	        if ("value" in nextProps) {
 	            this.setState({
-	                value: nextProps.value
+	                value: this.initValue(nextProps)
 	            });
 	        }
 	        if ("open" in nextProps) {
@@ -62245,7 +62265,8 @@
 	        var props = this.props;
 	
 	        var showClose = props.showClose,
-	            others = _objectWithoutProperties(props, ["showClose"]);
+	            onChange = props.onChange,
+	            others = _objectWithoutProperties(props, ["showClose", "onChange"]);
 	
 	        var _state = this.state,
 	            value = _state.value,
@@ -62327,6 +62348,32 @@
 	
 	var _initialiseProps = function _initialiseProps() {
 	    var _this3 = this;
+	
+	    this.initValue = function (props) {
+	        var valueProp = props.value || props.defaultValue || [];
+	        var values = [];
+	        for (var i = 0; i < 2; i++) {
+	            var value = valueProp[i] || '';
+	            if (value) {
+	                if (typeof value == 'string') {
+	                    if ((0, _moment2["default"])(value).isValid()) {
+	                        values.push((0, _moment2["default"])(value));
+	                    } else {
+	                        console.error('value is not in the correct format');
+	                        values.push('');
+	                    }
+	                } else if (value.format && value.isValid()) {
+	                    values.push(value);
+	                } else {
+	                    console.error('value is not in the correct format');
+	                    values = [];
+	                }
+	            } else {
+	                values.push('');
+	            }
+	        }
+	        return values;
+	    };
 	
 	    this.clearHoverValue = function () {
 	        return _this3.setState({ hoverValue: [] });
@@ -63721,140 +63768,23 @@
 	
 	    var _this = _possibleConstructorReturn(this, _Component.call(this, props, context));
 	
-	    _this.onChange = function (value) {
-	      _this.setState({
-	        value: value
-	      });
-	    };
-	
-	    _this.onOpenChange = function (open) {
-	      _this.setState({
-	        open: open
-	      });
-	    };
-	
-	    _this.dateRender = function (current) {
-	      var selectedValue = _this.state.value;
-	      if (selectedValue && current.year() === selectedValue.year() && current.week() === selectedValue.week()) {
-	        return _react2["default"].createElement(
-	          "div",
-	          { className: "rc-calendar-selected-day" },
-	          _react2["default"].createElement(
-	            "div",
-	            { className: "rc-calendar-date" },
-	            current.date()
-	          )
-	        );
-	      }
-	      return _react2["default"].createElement(
-	        "div",
-	        { className: "rc-calendar-date" },
-	        current.date()
-	      );
-	    };
-	
-	    _this.lastWeek = function () {
-	      var value = _this.props.value || now;
-	      value.add(-1, "weeks");
-	      _this.setState({
-	        value: value,
-	        open: false
-	      });
-	    };
-	
-	    _this.nextWeek = function () {
-	      var value = _this.props.value || now;
-	      value.add(+1, "weeks");
-	      _this.setState({
-	        value: value,
-	        open: false
-	      });
-	    };
-	
-	    _this.nowWeek = function () {
-	      var value = now;
-	      _this.setState({
-	        value: value,
-	        open: false
-	      });
-	    };
-	
-	    _this.renderFooter = function () {
-	      return _react2["default"].createElement(
-	        "div",
-	        { className: "week-calendar-footer", key: "footer" },
-	        _react2["default"].createElement(
-	          "span",
-	          {
-	            className: "week-calendar-footer-button",
-	            onClick: _this.lastWeek.bind(_this),
-	            style: { 'float': 'left' }
-	          },
-	          _this.props.locale.lastWeek
-	        ),
-	        _react2["default"].createElement(
-	          "span",
-	          {
-	            className: "week-calendar-footer-button",
-	            onClick: _this.nowWeek.bind(_this)
-	          },
-	          _this.props.locale.nowWeek
-	        ),
-	        _react2["default"].createElement(
-	          "span",
-	          {
-	            className: "week-calendar-footer-button",
-	            onClick: _this.nextWeek.bind(_this),
-	            style: { 'float': 'right' }
-	          },
-	          _this.props.locale.nextWeek
-	        )
-	      );
-	    };
-	
-	    _this.onTypeChange = function (type) {
-	      _this.setState({
-	        type: type
-	      });
-	    };
-	
-	    _this.handleCalendarChange = function (value) {
-	      _this.setState({
-	        value: value && _extends(value, { _type: 'week' }) || value
-	      });
-	    };
-	
-	    _this.onMouseLeave = function (e) {
-	      _this.setState({
-	        showClose: false
-	      });
-	    };
-	
-	    _this.onMouseEnter = function (e) {
-	      _this.setState({
-	        showClose: true
-	      });
-	    };
-	
-	    _this.onClear = function (e) {
-	      e && e.stopPropagation && e.stopPropagation();
-	      _this.setState({
-	        value: ''
-	      });
-	      _this.props.onChange && _this.props.onChange('', '');
-	    };
-	
-	    _this.stopPropagation = function (e) {
-	      e.stopPropagation();
-	    };
+	    _initialiseProps.call(_this);
 	
 	    _this.state = {
-	      value: props.value || props.defaultValue,
+	      value: _this.initValue(props),
 	      open: false,
 	      showClose: false
 	    };
 	    return _this;
 	  }
+	
+	  WeekPicker.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
+	    if ("value" in nextProps) {
+	      this.setState({
+	        value: this.initValue(nextProps)
+	      });
+	    }
+	  };
 	  //阻止组件内部事件冒泡到组件外部容器
 	
 	
@@ -63934,6 +63864,159 @@
 	  return WeekPicker;
 	}(_react.Component);
 	
+	var _initialiseProps = function _initialiseProps() {
+	  var _this3 = this;
+	
+	  this.initValue = function (props) {
+	    var value = props.value || props.defaultValue || '';
+	    var format = props.format;
+	    if (value) {
+	      if (typeof value == 'string') {
+	        if ((0, _moment2["default"])(value, format).isValid()) {
+	          value = (0, _moment2["default"])(value, format);
+	        } else {
+	          console.error('value is not in the correct format');
+	          value = '';
+	        }
+	      } else if (value.format && value.isValid()) {
+	        value = value;
+	      } else {
+	        console.error('value is not in the correct format');
+	        value = '';
+	      }
+	    }
+	
+	    return value;
+	  };
+	
+	  this.onChange = function (value) {
+	    _this3.setState({
+	      value: value
+	    });
+	  };
+	
+	  this.onOpenChange = function (open) {
+	    _this3.setState({
+	      open: open
+	    });
+	  };
+	
+	  this.dateRender = function (current) {
+	    var selectedValue = _this3.state.value;
+	    if (selectedValue && current.year() === selectedValue.year() && current.week() === selectedValue.week()) {
+	      return _react2["default"].createElement(
+	        "div",
+	        { className: "rc-calendar-selected-day" },
+	        _react2["default"].createElement(
+	          "div",
+	          { className: "rc-calendar-date" },
+	          current.date()
+	        )
+	      );
+	    }
+	    return _react2["default"].createElement(
+	      "div",
+	      { className: "rc-calendar-date" },
+	      current.date()
+	    );
+	  };
+	
+	  this.lastWeek = function () {
+	    var value = _this3.props.value || now;
+	    value.add(-1, "weeks");
+	    _this3.setState({
+	      value: value,
+	      open: false
+	    });
+	  };
+	
+	  this.nextWeek = function () {
+	    var value = _this3.props.value || now;
+	    value.add(+1, "weeks");
+	    _this3.setState({
+	      value: value,
+	      open: false
+	    });
+	  };
+	
+	  this.nowWeek = function () {
+	    var value = now;
+	    _this3.setState({
+	      value: value,
+	      open: false
+	    });
+	  };
+	
+	  this.renderFooter = function () {
+	    return _react2["default"].createElement(
+	      "div",
+	      { className: "week-calendar-footer", key: "footer" },
+	      _react2["default"].createElement(
+	        "span",
+	        {
+	          className: "week-calendar-footer-button",
+	          onClick: _this3.lastWeek.bind(_this3),
+	          style: { 'float': 'left' }
+	        },
+	        _this3.props.locale.lastWeek
+	      ),
+	      _react2["default"].createElement(
+	        "span",
+	        {
+	          className: "week-calendar-footer-button",
+	          onClick: _this3.nowWeek.bind(_this3)
+	        },
+	        _this3.props.locale.nowWeek
+	      ),
+	      _react2["default"].createElement(
+	        "span",
+	        {
+	          className: "week-calendar-footer-button",
+	          onClick: _this3.nextWeek.bind(_this3),
+	          style: { 'float': 'right' }
+	        },
+	        _this3.props.locale.nextWeek
+	      )
+	    );
+	  };
+	
+	  this.onTypeChange = function (type) {
+	    _this3.setState({
+	      type: type
+	    });
+	  };
+	
+	  this.handleCalendarChange = function (value) {
+	    _this3.setState({
+	      value: value && _extends(value, { _type: 'week' }) || value
+	    });
+	  };
+	
+	  this.onMouseLeave = function (e) {
+	    _this3.setState({
+	      showClose: false
+	    });
+	  };
+	
+	  this.onMouseEnter = function (e) {
+	    _this3.setState({
+	      showClose: true
+	    });
+	  };
+	
+	  this.onClear = function (e) {
+	    e && e.stopPropagation && e.stopPropagation();
+	    _this3.setState({
+	      value: ''
+	    });
+	    _this3.props.onChange && _this3.props.onChange('', '');
+	  };
+	
+	  this.stopPropagation = function (e) {
+	    e.stopPropagation();
+	  };
+	};
+	
 	WeekPicker.defaultProps = {
 	  closeIcon: function closeIcon() {
 	    return _react2["default"].createElement(_beeIcon2["default"], { type: "uf-close-c" });
@@ -63942,7 +64025,8 @@
 	    return _react2["default"].createElement(_beeIcon2["default"], { type: "uf-calendar" });
 	  },
 	  locale: _zh_CN2["default"],
-	  showClose: true
+	  showClose: true,
+	  format: "YYYY-Wo"
 	};
 	
 	exports["default"] = WeekPicker;
@@ -63965,6 +64049,10 @@
 	var _YearPanel2 = _interopRequireDefault(_YearPanel);
 	
 	var _tinperBeeCore = __webpack_require__(26);
+	
+	var _zh_CN = __webpack_require__(498);
+	
+	var _zh_CN2 = _interopRequireDefault(_zh_CN);
 	
 	var _react = __webpack_require__(1);
 	
@@ -64033,7 +64121,7 @@
 	
 	        _this.state = {
 	            type: "year",
-	            value: props.value || props.defaultValue || '',
+	            value: _this.initValue(props),
 	            open: props.open || false,
 	            showClose: false
 	        };
@@ -64043,7 +64131,7 @@
 	    YearPicker.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
 	        if ("value" in nextProps) {
 	            this.setState({
-	                value: nextProps.value
+	                value: this.initValue(nextProps)
 	            });
 	        }
 	        if ("open" in nextProps) {
@@ -64076,6 +64164,7 @@
 	            prefixCls: 'rc-calendar-picker',
 	            rootPrefixCls: 'rc-calendar'
 	        }, props, { focus: function focus() {},
+	            value: this.state.value,
 	            onSelect: this.onSelect,
 	            showDateInput: true
 	        }));
@@ -64093,7 +64182,7 @@
 	                    onChange: this.handleChange,
 	                    calendar: Calendar,
 	                    prefixCls: 'rc-calendar',
-	                    value: state.value || (0, _moment2["default"])(),
+	                    value: state.value,
 	                    open: this.state.open
 	                }),
 	                function (_ref) {
@@ -64136,6 +64225,26 @@
 	
 	var _initialiseProps = function _initialiseProps() {
 	    var _this3 = this;
+	
+	    this.initValue = function (props) {
+	        var value = props.value || props.defaultValue;
+	        if (value) {
+	            if (typeof value == 'string') {
+	                if ((0, _moment2["default"])(value).isValid()) {
+	                    value = (0, _moment2["default"])(value);
+	                } else {
+	                    console.error('value is not in the correct format');
+	                    value = '';
+	                }
+	            } else if (value.format && value.isValid()) {
+	                value = value;
+	            } else {
+	                console.error('value is not in the correct format');
+	                value = '';
+	            }
+	        }
+	        return value;
+	    };
 	
 	    this.onChange = function (value) {
 	        _this3.setState({
@@ -64234,6 +64343,7 @@
 	    },
 	    disabled: false,
 	    showClose: true,
+	    locale: _zh_CN2["default"],
 	    format: 'YYYY'
 	};
 	
@@ -71790,6 +71900,252 @@
 	}(_react.Component);
 	
 	exports["default"] = _beeForm2["default"].createForm()(Demo4);
+	module.exports = exports["default"];
+
+/***/ }),
+/* 627 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _beeLayout = __webpack_require__(3);
+	
+	var _index = __webpack_require__(268);
+	
+	var _index2 = _interopRequireDefault(_index);
+	
+	var _beeForm = __webpack_require__(515);
+	
+	var _beeForm2 = _interopRequireDefault(_beeForm);
+	
+	var _beeButton = __webpack_require__(264);
+	
+	var _beeButton2 = _interopRequireDefault(_beeButton);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+	
+	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); } /**
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @title 配合form使用
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @description 各类型组件配合form使用，注意事项
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
+	
+	var YearPicker = _index2["default"].YearPicker,
+	    MonthPicker = _index2["default"].MonthPicker,
+	    WeekPicker = _index2["default"].WeekPicker,
+	    RangePicker = _index2["default"].RangePicker;
+	
+	var Demo11 = function (_Component) {
+	    _inherits(Demo11, _Component);
+	
+	    function Demo11(props) {
+	        _classCallCheck(this, Demo11);
+	
+	        var _this = _possibleConstructorReturn(this, _Component.call(this, props));
+	
+	        _this.submit = function (e) {
+	            _this.props.form.validateFields(function (err, values) {
+	                if (err) {
+	                    console.log('校验失败', values);
+	                } else {
+	                    console.log('提交成功', values);
+	                }
+	            });
+	        };
+	
+	        _this.change = function () {
+	            _this.setState({
+	                initialValues: {
+	                    date: '2020-10-10',
+	                    dateTime: '2020-10-10 10:10:10',
+	                    month: '2020-10',
+	                    year: '2020',
+	                    week: '2020-20',
+	                    range: ['2020-10-10', '2020-12-12']
+	                }
+	            });
+	        };
+	
+	        _this.reset = function () {
+	            //此方法将所有元素还原到初始值。即还原到 componentWillMount 设置的值。
+	            // 注意：this.props.form.resetFields() 并不是清空值，而是还原到 initialValue 的值
+	            _this.props.form.resetFields();
+	        };
+	
+	        _this.state = {
+	            initialValues: {}
+	        };
+	        return _this;
+	    }
+	
+	    Demo11.prototype.componentWillMount = function componentWillMount() {
+	        //如果初始值需要接口返回，则需要在组件初始化之前，获得初始值。 这里模拟设置初始值
+	        this.setState({
+	            initialValues: {
+	                date: '2019-02-03',
+	                dateTime: '2009-10-11 12:13:14',
+	                month: '2019-12',
+	                year: '2019',
+	                week: '2019-45',
+	                range: ['2019-11-12', '2019-12-13']
+	            }
+	        });
+	    };
+	
+	    Demo11.prototype.render = function render() {
+	        var _props$form = this.props.form,
+	            getFieldProps = _props$form.getFieldProps,
+	            getFieldError = _props$form.getFieldError;
+	
+	        return _react2["default"].createElement(
+	            "div",
+	            { className: "demo11" },
+	            _react2["default"].createElement(
+	                _beeLayout.Row,
+	                null,
+	                _react2["default"].createElement(_index2["default"], _extends({
+	                    format: "YYYY-MM-DD"
+	                }, getFieldProps('date', {
+	                    initialValue: this.state.initialValues.date,
+	                    normalize: function normalize(value) {
+	                        if (value && value.format) {
+	                            return value.format('YYYY-MM-DD');
+	                        } else {
+	                            return value;
+	                        }
+	                    }
+	                })))
+	            ),
+	            _react2["default"].createElement(
+	                _beeLayout.Row,
+	                null,
+	                _react2["default"].createElement(_index2["default"], _extends({
+	                    format: "YYYY-MM-DD hh:mm:ss",
+	                    showTime: true
+	                }, getFieldProps('dateTime', {
+	                    initialValue: this.state.initialValues.dateTime,
+	                    normalize: function normalize(value) {
+	                        if (value && value.format) {
+	                            return value.format('YYYY-MM-DD hh:mm:ss');
+	                        } else {
+	                            return value;
+	                        }
+	                    }
+	                })))
+	            ),
+	            _react2["default"].createElement(
+	                _beeLayout.Row,
+	                null,
+	                _react2["default"].createElement(MonthPicker, _extends({
+	                    format: "YYYY-MM"
+	                }, getFieldProps('month', {
+	                    initialValue: this.state.initialValues.month,
+	                    normalize: function normalize(value) {
+	                        if (value && value.format) {
+	                            return value.format('YYYY-MM');
+	                        } else {
+	                            return value;
+	                        }
+	                    }
+	                })))
+	            ),
+	            _react2["default"].createElement(
+	                _beeLayout.Row,
+	                null,
+	                _react2["default"].createElement(YearPicker, _extends({
+	                    format: "YYYY"
+	                }, getFieldProps('year', {
+	                    initialValue: this.state.initialValues.year,
+	                    normalize: function normalize(value) {
+	                        if (value && value.format) {
+	                            return value.format('YYYY');
+	                        } else {
+	                            return value;
+	                        }
+	                    }
+	                })))
+	            ),
+	            _react2["default"].createElement(
+	                _beeLayout.Row,
+	                null,
+	                _react2["default"].createElement(WeekPicker, _extends({
+	                    format: "YYYY-WW"
+	                }, getFieldProps('week', {
+	                    initialValue: this.state.initialValues.week,
+	                    normalize: function normalize(value) {
+	                        if (value && value.format) {
+	                            return value.format('YYYY-WW');
+	                        } else {
+	                            return value;
+	                        }
+	                    }
+	                })))
+	            ),
+	            _react2["default"].createElement(
+	                _beeLayout.Row,
+	                null,
+	                _react2["default"].createElement(RangePicker, _extends({
+	                    format: "YYYY-MM-DD"
+	                }, getFieldProps('range', {
+	                    initialValue: this.state.initialValues.range,
+	                    normalize: function normalize(value) {
+	                        var values = [];
+	                        if (value[0] && value[0].format) {
+	                            values.push(value[0].format('YYYY-MM-DD') || '');
+	                        } else {
+	                            values.push(value[0] || '');
+	                        }
+	                        if (value[1] && value[1].format) {
+	                            values.push(value[1].format('YYYY-MM-DD') || '');
+	                        } else {
+	                            values.push(value[1] || '');
+	                        }
+	                        return values;
+	                    }
+	                })))
+	            ),
+	            _react2["default"].createElement(
+	                _beeLayout.Row,
+	                null,
+	                _react2["default"].createElement(
+	                    _beeButton2["default"],
+	                    { className: "options-btns", colors: "primary", onClick: this.change },
+	                    "\u6539\u53D8\u521D\u59CB\u503C"
+	                ),
+	                _react2["default"].createElement(
+	                    _beeButton2["default"],
+	                    { className: "options-btns", colors: "primary", onClick: this.submit },
+	                    "\u83B7\u5F97\u6240\u6709\u503C"
+	                ),
+	                _react2["default"].createElement(
+	                    _beeButton2["default"],
+	                    { className: "options-btns", colors: "primary", onClick: this.reset },
+	                    "\u8FD8\u539F\u6240\u6709\u503C"
+	                )
+	            )
+	        );
+	    };
+	
+	    return Demo11;
+	}(_react.Component);
+	
+	exports["default"] = _beeForm2["default"].createForm()(Demo11);
 	module.exports = exports["default"];
 
 /***/ })

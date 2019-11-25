@@ -446,10 +446,11 @@ class InputNumber extends Component {
 
     render() {
         const {toThousands, max, min, step,disabled, clsPrefix, className, delay, onBlur, onFocus, iconStyle, autoWidth, onChange, format, precision,toNumber, ...others} = this.props;
-
         let classes = {
             [`${clsPrefix}-auto`]: autoWidth,
             [`${clsPrefix}`]: true,
+            [`${clsPrefix}-lg`]: others.size === "lg",
+            [`${clsPrefix}-sm`]: others.size === "sm",
         };
 
         let {value, minusDisabled, plusDisabled, showValue} = this.state;
@@ -500,7 +501,7 @@ class InputNumber extends Component {
                                 onChange={ this.handleChange }
                             />
                             <InputGroup.Button>
-                                <div className="icon-group">
+                                <div className={classnames("icon-group")}>
                                 <span
                                     onMouseDown={ this.handlePlusMouseDown}
                                     onMouseLeave={ this.clear }

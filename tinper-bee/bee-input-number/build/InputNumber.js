@@ -220,7 +220,7 @@ var InputNumber = function (_Component) {
             toNumber = _props.toNumber,
             others = _objectWithoutProperties(_props, ['toThousands', 'max', 'min', 'step', 'disabled', 'clsPrefix', 'className', 'delay', 'onBlur', 'onFocus', 'iconStyle', 'autoWidth', 'onChange', 'format', 'precision', 'toNumber']);
 
-        var classes = (_classes = {}, _defineProperty(_classes, clsPrefix + '-auto', autoWidth), _defineProperty(_classes, '' + clsPrefix, true), _classes);
+        var classes = (_classes = {}, _defineProperty(_classes, clsPrefix + '-auto', autoWidth), _defineProperty(_classes, '' + clsPrefix, true), _defineProperty(_classes, clsPrefix + '-lg', others.size === "lg"), _defineProperty(_classes, clsPrefix + '-sm', others.size === "sm"), _classes);
 
         var _state = this.state,
             value = _state.value,
@@ -282,7 +282,7 @@ var InputNumber = function (_Component) {
                     null,
                     _react2["default"].createElement(
                         'div',
-                        { className: 'icon-group' },
+                        { className: (0, _classnames2["default"])("icon-group") },
                         _react2["default"].createElement(
                             'span',
                             {

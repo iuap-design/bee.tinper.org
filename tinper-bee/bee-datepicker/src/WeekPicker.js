@@ -53,10 +53,39 @@ class WeekPicker extends Component {
     super(props, context);
 
     this.state = {
-      value: props.value || props.defaultValue,
+      value: this.initValue(props),
       open: false,
       showClose: false
     };
+  }
+
+  initValue=(props)=>{
+    let value = props.value || props.defaultValue||'';
+    let format = props.format;
+    if(value){
+      if(typeof value == 'string'){
+        if(moment(value,format).isValid()){
+          value = moment(value,format);
+        }else{
+          console.error('value is not in the correct format');
+          value = ''
+        }
+      }else if(value.format&&value.isValid()){
+        value = value;
+      }else{
+        console.error('value is not in the correct format');
+        value = ''
+      }
+    }
+    
+    return value;
+  }
+  componentWillReceiveProps(nextProps) {
+    if ("value" in nextProps) {
+      this.setState({
+        value: this.initValue(nextProps)
+      });
+    }
   }
 
   onChange = value => {
@@ -249,7 +278,8 @@ WeekPicker.defaultProps = {
     closeIcon:()=><Icon type="uf-close-c"/>,
     renderIcon: () => <Icon type="uf-calendar" />,
     locale:zhCN,
-    showClose:true
+    showClose:true,
+    format : "YYYY-Wo"
 }
 
 export default WeekPicker;

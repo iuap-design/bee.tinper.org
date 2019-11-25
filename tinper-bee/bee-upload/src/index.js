@@ -148,6 +148,11 @@ class Upload extends Component {
     previewVisible: false,
     previewImage: '',
   }
+
+  beforeUpload=(file,fileList)=>{
+    this.props.beforeUpload(file,this.state.fileList)
+  }
+
   onStart = (file) => {
     let targetItem;
     let nextFileList = this.state.fileList.concat();
@@ -341,6 +346,7 @@ class Upload extends Component {
       onError: this.onError,
       onProgress: this.onProgress,
       onSuccess: this.onSuccess,
+      beforeUpload:this.beforeUpload
     });
     delete rcUploadProps.className;
 

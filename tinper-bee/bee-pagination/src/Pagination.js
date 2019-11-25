@@ -9,6 +9,7 @@ import cookie from 'react-cookies';
 import PropTypes from "prop-types";
 import i18n from './i18n';
 import { getComponentLocale } from 'bee-locale/build/tool';
+import omit from 'omit.js';
 
 
 const Option = Select.Option;
@@ -417,7 +418,7 @@ class Pagination extends React.Component {
                     disabled && <div className={`${clsPrefix}-disabled-mask`}>
                     </div>
                 }
-                <ul {...others} className={classNames}>
+                <ul {...omit(others, ['dataNum','sizeWithCookie'])} className={classNames}>
                     {first && (
                         <PaginationButton
                             {...buttonProps}
@@ -503,6 +504,7 @@ class Pagination extends React.Component {
                                 </select> */}
                             <Select
                                 // className="data_select"
+                                dropdownClassName={`${clsPrefix}-data_per_select`}
                                 value={this.state.dataNum}
                                 onChange={this.dataNumSelect}>
                                 {dataNumSelect.length > 0 &&

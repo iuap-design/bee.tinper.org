@@ -208,7 +208,6 @@
   height: 34px;
   line-height: 30px;
   text-align: center;
-  -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
   -webkit-user-select: none;
@@ -472,7 +471,6 @@
   line-height: 34px;
   position: relative;
   text-align: center;
-  -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
   -webkit-user-select: none;
@@ -540,7 +538,6 @@
   line-height: 30px;
   position: relative;
   text-align: center;
-  -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
   -webkit-user-select: none;
@@ -567,7 +564,6 @@
 
 .u-calendar-month-panel-prev-year-btn {
   -webkit-user-select: none;
-  -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
   left: 0; }
@@ -583,7 +579,6 @@
 
 .u-calendar-month-panel-next-year-btn {
   -webkit-user-select: none;
-  -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
   right: 0; }
@@ -646,7 +641,6 @@
   line-height: 30px;
   position: relative;
   text-align: center;
-  -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
   -webkit-user-select: none;
@@ -673,7 +667,6 @@
 
 .u-calendar-year-panel-prev-decade-btn {
   -webkit-user-select: none;
-  -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
   left: 0; }
@@ -689,7 +682,6 @@
 
 .u-calendar-year-panel-next-decade-btn {
   -webkit-user-select: none;
-  -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
   right: 0; }
@@ -732,7 +724,6 @@
 
 .u-calendar-year-panel-last-decade-cell .u-calendar-year-panel-year,
 .u-calendar-year-panel-next-decade-cell .u-calendar-year-panel-year {
-  -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
   -webkit-user-select: none;
@@ -755,7 +746,6 @@
     line-height: 34px;
     position: relative;
     text-align: center;
-    -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
     -webkit-user-select: none;
@@ -777,7 +767,6 @@
     content: '»'; }
   .u-calendar-decade-panel .u-calendar-decade-panel-prev-century-btn {
     -webkit-user-select: none;
-    -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
     left: 0; }
@@ -785,7 +774,6 @@
     content: '«'; }
   .u-calendar-decade-panel .u-calendar-decade-panel-next-century-btn {
     -webkit-user-select: none;
-    -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
     right: 0; }
@@ -819,7 +807,6 @@
     color: #fff; }
   .u-calendar-decade-panel .u-calendar-decade-panel-last-century-cell .u-calendar-decade-panel-decade,
   .u-calendar-decade-panel .u-calendar-decade-panel-next-century-cell .u-calendar-decade-panel-decade {
-    -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
     -webkit-user-select: none;
@@ -913,7 +900,6 @@
 .u-calendar-full-header {
   padding: 5px 10px;
   text-align: center;
-  -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
   -webkit-user-select: none;
@@ -1016,7 +1002,6 @@
     left: 50%; }
   .rc-select .rc-select-selection {
     outline: none;
-    -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
     -webkit-user-select: none;

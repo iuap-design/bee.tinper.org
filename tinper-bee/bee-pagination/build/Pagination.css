@@ -1910,8 +1910,7 @@ ul {
     content: "\e602"; }
 
 .u-select-open .u-select-arrow {
-  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=2)";
-  -ms-transform: rotate(180deg); }
+  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=2)"; }
 
 .u-select-open .u-select-arrow:before {
   -webkit-transform: rotate(180deg);
@@ -1958,7 +1957,9 @@ ul {
   outline: none;
   overflow: hidden;
   font-size: 12px;
-  margin-bottom: 20px; }
+  margin-bottom: 20px;
+  animation: none;
+  -webkit-animation: none; }
   .u-select-dropdown.slide-up-enter.slide-up-enter-active.u-select-dropdown-placement-bottomLeft, .u-select-dropdown.slide-up-appear.slide-up-appear-active.u-select-dropdown-placement-bottomLeft {
     -webkit-animation-name: uSlideUpIn;
     animation-name: uSlideUpIn; }

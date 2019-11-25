@@ -34,8 +34,13 @@ class Calendar extends Component {
     //     this.setState({
     //         type,
     //     });
+
     // }
 
+    onChange(value){
+        this.props.onChange && this.props.onChange(value)
+    }
+       
     render() {
         return (
             <FullCalendar
@@ -44,6 +49,8 @@ class Calendar extends Component {
                 // defaultValue={now}
                 // locale={zhCN}
                 {...this.props}
+                onChange={this.onChange.bind(this)}
+
             />
         )
     }

@@ -115,7 +115,7 @@ var RangePicker = function (_Component) {
 
         _this.state = {
             hoverValue: [],
-            value: props.value || props.defaultValue || [],
+            value: _this.initValue(props),
             open: props.open || false
         };
         return _this;
@@ -124,7 +124,7 @@ var RangePicker = function (_Component) {
     RangePicker.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
         if ("value" in nextProps) {
             this.setState({
-                value: nextProps.value
+                value: this.initValue(nextProps)
             });
         }
         if ("open" in nextProps) {
@@ -147,7 +147,8 @@ var RangePicker = function (_Component) {
         var props = this.props;
 
         var showClose = props.showClose,
-            others = _objectWithoutProperties(props, ["showClose"]);
+            onChange = props.onChange,
+            others = _objectWithoutProperties(props, ["showClose", "onChange"]);
 
         var _state = this.state,
             value = _state.value,
@@ -229,6 +230,32 @@ var RangePicker = function (_Component) {
 
 var _initialiseProps = function _initialiseProps() {
     var _this3 = this;
+
+    this.initValue = function (props) {
+        var valueProp = props.value || props.defaultValue || [];
+        var values = [];
+        for (var i = 0; i < 2; i++) {
+            var value = valueProp[i] || '';
+            if (value) {
+                if (typeof value == 'string') {
+                    if ((0, _moment2["default"])(value).isValid()) {
+                        values.push((0, _moment2["default"])(value));
+                    } else {
+                        console.error('value is not in the correct format');
+                        values.push('');
+                    }
+                } else if (value.format && value.isValid()) {
+                    values.push(value);
+                } else {
+                    console.error('value is not in the correct format');
+                    values = [];
+                }
+            } else {
+                values.push('');
+            }
+        }
+        return values;
+    };
 
     this.clearHoverValue = function () {
         return _this3.setState({ hoverValue: [] });

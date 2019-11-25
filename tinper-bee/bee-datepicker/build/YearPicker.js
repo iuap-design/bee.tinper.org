@@ -12,6 +12,10 @@ var _YearPanel2 = _interopRequireDefault(_YearPanel);
 
 var _tinperBeeCore = require("tinper-bee-core");
 
+var _zh_CN = require("./locale/zh_CN");
+
+var _zh_CN2 = _interopRequireDefault(_zh_CN);
+
 var _react = require("react");
 
 var _react2 = _interopRequireDefault(_react);
@@ -79,7 +83,7 @@ var YearPicker = function (_Component) {
 
         _this.state = {
             type: "year",
-            value: props.value || props.defaultValue || '',
+            value: _this.initValue(props),
             open: props.open || false,
             showClose: false
         };
@@ -89,7 +93,7 @@ var YearPicker = function (_Component) {
     YearPicker.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
         if ("value" in nextProps) {
             this.setState({
-                value: nextProps.value
+                value: this.initValue(nextProps)
             });
         }
         if ("open" in nextProps) {
@@ -122,6 +126,7 @@ var YearPicker = function (_Component) {
             prefixCls: 'rc-calendar-picker',
             rootPrefixCls: 'rc-calendar'
         }, props, { focus: function focus() {},
+            value: this.state.value,
             onSelect: this.onSelect,
             showDateInput: true
         }));
@@ -139,7 +144,7 @@ var YearPicker = function (_Component) {
                     onChange: this.handleChange,
                     calendar: Calendar,
                     prefixCls: 'rc-calendar',
-                    value: state.value || (0, _moment2["default"])(),
+                    value: state.value,
                     open: this.state.open
                 }),
                 function (_ref) {
@@ -182,6 +187,26 @@ var YearPicker = function (_Component) {
 
 var _initialiseProps = function _initialiseProps() {
     var _this3 = this;
+
+    this.initValue = function (props) {
+        var value = props.value || props.defaultValue;
+        if (value) {
+            if (typeof value == 'string') {
+                if ((0, _moment2["default"])(value).isValid()) {
+                    value = (0, _moment2["default"])(value);
+                } else {
+                    console.error('value is not in the correct format');
+                    value = '';
+                }
+            } else if (value.format && value.isValid()) {
+                value = value;
+            } else {
+                console.error('value is not in the correct format');
+                value = '';
+            }
+        }
+        return value;
+    };
 
     this.onChange = function (value) {
         _this3.setState({
@@ -280,6 +305,7 @@ YearPicker.defaultProps = {
     },
     disabled: false,
     showClose: true,
+    locale: _zh_CN2["default"],
     format: 'YYYY'
 };
 

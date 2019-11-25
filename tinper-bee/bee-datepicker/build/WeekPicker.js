@@ -95,140 +95,23 @@ var WeekPicker = function (_Component) {
 
     var _this = _possibleConstructorReturn(this, _Component.call(this, props, context));
 
-    _this.onChange = function (value) {
-      _this.setState({
-        value: value
-      });
-    };
-
-    _this.onOpenChange = function (open) {
-      _this.setState({
-        open: open
-      });
-    };
-
-    _this.dateRender = function (current) {
-      var selectedValue = _this.state.value;
-      if (selectedValue && current.year() === selectedValue.year() && current.week() === selectedValue.week()) {
-        return _react2["default"].createElement(
-          "div",
-          { className: "rc-calendar-selected-day" },
-          _react2["default"].createElement(
-            "div",
-            { className: "rc-calendar-date" },
-            current.date()
-          )
-        );
-      }
-      return _react2["default"].createElement(
-        "div",
-        { className: "rc-calendar-date" },
-        current.date()
-      );
-    };
-
-    _this.lastWeek = function () {
-      var value = _this.props.value || now;
-      value.add(-1, "weeks");
-      _this.setState({
-        value: value,
-        open: false
-      });
-    };
-
-    _this.nextWeek = function () {
-      var value = _this.props.value || now;
-      value.add(+1, "weeks");
-      _this.setState({
-        value: value,
-        open: false
-      });
-    };
-
-    _this.nowWeek = function () {
-      var value = now;
-      _this.setState({
-        value: value,
-        open: false
-      });
-    };
-
-    _this.renderFooter = function () {
-      return _react2["default"].createElement(
-        "div",
-        { className: "week-calendar-footer", key: "footer" },
-        _react2["default"].createElement(
-          "span",
-          {
-            className: "week-calendar-footer-button",
-            onClick: _this.lastWeek.bind(_this),
-            style: { 'float': 'left' }
-          },
-          _this.props.locale.lastWeek
-        ),
-        _react2["default"].createElement(
-          "span",
-          {
-            className: "week-calendar-footer-button",
-            onClick: _this.nowWeek.bind(_this)
-          },
-          _this.props.locale.nowWeek
-        ),
-        _react2["default"].createElement(
-          "span",
-          {
-            className: "week-calendar-footer-button",
-            onClick: _this.nextWeek.bind(_this),
-            style: { 'float': 'right' }
-          },
-          _this.props.locale.nextWeek
-        )
-      );
-    };
-
-    _this.onTypeChange = function (type) {
-      _this.setState({
-        type: type
-      });
-    };
-
-    _this.handleCalendarChange = function (value) {
-      _this.setState({
-        value: value && _extends(value, { _type: 'week' }) || value
-      });
-    };
-
-    _this.onMouseLeave = function (e) {
-      _this.setState({
-        showClose: false
-      });
-    };
-
-    _this.onMouseEnter = function (e) {
-      _this.setState({
-        showClose: true
-      });
-    };
-
-    _this.onClear = function (e) {
-      e && e.stopPropagation && e.stopPropagation();
-      _this.setState({
-        value: ''
-      });
-      _this.props.onChange && _this.props.onChange('', '');
-    };
-
-    _this.stopPropagation = function (e) {
-      e.stopPropagation();
-    };
+    _initialiseProps.call(_this);
 
     _this.state = {
-      value: props.value || props.defaultValue,
+      value: _this.initValue(props),
       open: false,
       showClose: false
     };
     return _this;
   }
+
+  WeekPicker.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
+    if ("value" in nextProps) {
+      this.setState({
+        value: this.initValue(nextProps)
+      });
+    }
+  };
   //阻止组件内部事件冒泡到组件外部容器
 
 
@@ -308,6 +191,159 @@ var WeekPicker = function (_Component) {
   return WeekPicker;
 }(_react.Component);
 
+var _initialiseProps = function _initialiseProps() {
+  var _this3 = this;
+
+  this.initValue = function (props) {
+    var value = props.value || props.defaultValue || '';
+    var format = props.format;
+    if (value) {
+      if (typeof value == 'string') {
+        if ((0, _moment2["default"])(value, format).isValid()) {
+          value = (0, _moment2["default"])(value, format);
+        } else {
+          console.error('value is not in the correct format');
+          value = '';
+        }
+      } else if (value.format && value.isValid()) {
+        value = value;
+      } else {
+        console.error('value is not in the correct format');
+        value = '';
+      }
+    }
+
+    return value;
+  };
+
+  this.onChange = function (value) {
+    _this3.setState({
+      value: value
+    });
+  };
+
+  this.onOpenChange = function (open) {
+    _this3.setState({
+      open: open
+    });
+  };
+
+  this.dateRender = function (current) {
+    var selectedValue = _this3.state.value;
+    if (selectedValue && current.year() === selectedValue.year() && current.week() === selectedValue.week()) {
+      return _react2["default"].createElement(
+        "div",
+        { className: "rc-calendar-selected-day" },
+        _react2["default"].createElement(
+          "div",
+          { className: "rc-calendar-date" },
+          current.date()
+        )
+      );
+    }
+    return _react2["default"].createElement(
+      "div",
+      { className: "rc-calendar-date" },
+      current.date()
+    );
+  };
+
+  this.lastWeek = function () {
+    var value = _this3.props.value || now;
+    value.add(-1, "weeks");
+    _this3.setState({
+      value: value,
+      open: false
+    });
+  };
+
+  this.nextWeek = function () {
+    var value = _this3.props.value || now;
+    value.add(+1, "weeks");
+    _this3.setState({
+      value: value,
+      open: false
+    });
+  };
+
+  this.nowWeek = function () {
+    var value = now;
+    _this3.setState({
+      value: value,
+      open: false
+    });
+  };
+
+  this.renderFooter = function () {
+    return _react2["default"].createElement(
+      "div",
+      { className: "week-calendar-footer", key: "footer" },
+      _react2["default"].createElement(
+        "span",
+        {
+          className: "week-calendar-footer-button",
+          onClick: _this3.lastWeek.bind(_this3),
+          style: { 'float': 'left' }
+        },
+        _this3.props.locale.lastWeek
+      ),
+      _react2["default"].createElement(
+        "span",
+        {
+          className: "week-calendar-footer-button",
+          onClick: _this3.nowWeek.bind(_this3)
+        },
+        _this3.props.locale.nowWeek
+      ),
+      _react2["default"].createElement(
+        "span",
+        {
+          className: "week-calendar-footer-button",
+          onClick: _this3.nextWeek.bind(_this3),
+          style: { 'float': 'right' }
+        },
+        _this3.props.locale.nextWeek
+      )
+    );
+  };
+
+  this.onTypeChange = function (type) {
+    _this3.setState({
+      type: type
+    });
+  };
+
+  this.handleCalendarChange = function (value) {
+    _this3.setState({
+      value: value && _extends(value, { _type: 'week' }) || value
+    });
+  };
+
+  this.onMouseLeave = function (e) {
+    _this3.setState({
+      showClose: false
+    });
+  };
+
+  this.onMouseEnter = function (e) {
+    _this3.setState({
+      showClose: true
+    });
+  };
+
+  this.onClear = function (e) {
+    e && e.stopPropagation && e.stopPropagation();
+    _this3.setState({
+      value: ''
+    });
+    _this3.props.onChange && _this3.props.onChange('', '');
+  };
+
+  this.stopPropagation = function (e) {
+    e.stopPropagation();
+  };
+};
+
 WeekPicker.defaultProps = {
   closeIcon: function closeIcon() {
     return _react2["default"].createElement(_beeIcon2["default"], { type: "uf-close-c" });
@@ -316,7 +352,8 @@ WeekPicker.defaultProps = {
     return _react2["default"].createElement(_beeIcon2["default"], { type: "uf-calendar" });
   },
   locale: _zh_CN2["default"],
-  showClose: true
+  showClose: true,
+  format: "YYYY-Wo"
 };
 
 exports["default"] = WeekPicker;

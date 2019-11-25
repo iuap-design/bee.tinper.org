@@ -48,6 +48,10 @@ var _i18n2 = _interopRequireDefault(_i18n);
 
 var _tool = require("bee-locale/build/tool");
 
+var _omit = require("omit.js");
+
+var _omit2 = _interopRequireDefault(_omit);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
@@ -479,7 +483,7 @@ var Pagination = function (_React$Component) {
             disabled && _react2["default"].createElement("div", { className: clsPrefix + "-disabled-mask" }),
             _react2["default"].createElement(
                 "ul",
-                _extends({}, others, { className: classNames }),
+                _extends({}, (0, _omit2["default"])(others, ['dataNum', 'sizeWithCookie']), { className: classNames }),
                 first && _react2["default"].createElement(
                     _PaginationButton2["default"],
                     _extends({}, buttonProps, {
@@ -545,7 +549,8 @@ var Pagination = function (_React$Component) {
                     _beeSelect2["default"]
                     // className="data_select"
                     ,
-                    { value: this.state.dataNum,
+                    { dropdownClassName: clsPrefix + "-data_per_select",
+                        value: this.state.dataNum,
                         onChange: this.dataNumSelect },
                     dataNumSelect.length > 0 && dataNumSelect.map(function (item, i) {
                         return _react2["default"].createElement(

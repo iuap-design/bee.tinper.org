@@ -31,15 +31,18 @@ class MonthPicker extends Component {
   componentDidMount(){
     let value = this.props.value || this.props.defaultValue;
     if(value){
-      if(value.format){
-        value = value;
-      }else{
+      if(typeof value == 'string'){
         if(moment(value).isValid()){
           value = moment(value);
         }else{
           console.error('value is not in the correct format');
-          value = null
+          value = ''
         }
+      }else if(value.format&&value.isValid()){
+        value = value;
+      }else{
+        console.error('value is not in the correct format');
+        value = ''
       }
     }
     this.setState({
@@ -51,13 +54,13 @@ class MonthPicker extends Component {
     if('value' in nextProps){
         let value = nextProps.value;
         if(value){
-            if(value.format){
+            if(value.format&&value.isValid()){
                 
             }else{
                 value = moment(value)
             }
         }else{
-            value=null;
+            value='';
         }
         this.setState({
             value
