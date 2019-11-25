@@ -399,7 +399,7 @@ ul {
   .u-select-open {
       .u-select-arrow {
           -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=2)";
-          -ms-transform: rotate(180deg);
+        //   -ms-transform: rotate(180deg);
       }
       .u-select-arrow:before {
           -webkit-transform: rotate(180deg);

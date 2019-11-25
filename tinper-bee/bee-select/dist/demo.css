@@ -279,7 +279,6 @@ ul {
   .u-select .u-select-selection {
     outline: none;
     -webkit-user-select: none;
-    -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
     box-sizing: border-box;
@@ -553,8 +552,7 @@ ul {
     content: "\e602"; }
 
 .u-select-open .u-select-arrow {
-  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=2)";
-  -ms-transform: rotate(180deg); }
+  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=2)"; }
 
 .u-select-open .u-select-arrow:before {
   transform: rotate(180deg); }
