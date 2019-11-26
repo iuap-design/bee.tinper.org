@@ -2513,10 +2513,10 @@ li.rc-time-picker-panel-select-option-disabled:hover {
 .u-input-group {
   width: 100%; }
 
-.demo11 .u-row {
+.demo11 > .demo11-item {
   margin: 0;
-  margin-bottom: 20px; }
-  .demo11 .u-row .u-button {
+  margin-bottom: 20px !important; }
+  .demo11 > .demo11-item .u-button {
     margin-right: 20px; }
 
 .demo9 .u-row .u-col-md-6 {
