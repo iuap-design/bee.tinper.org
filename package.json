@@ -12,6 +12,7 @@
     "getRelease": "node app/utils/getRelease.js",
     "writeFile": "node app/utils/getComponent.js && node app/utils/getTag.js && node app/utils/createFile.js && node app/utils/getRightMenu.js && node app/utils/getRelease.js",
     "writeFile2": "node app/utils/getComponentTwo.js && node app/utils/getTag.js && node app/utils/createFile.js && node app/utils/getRightMenu.js && node app/utils/getRelease.js",
+    "putCDN": "node app/utils/cdnCreateFile.js",
     "dev": "node --inspect app/app.js",
     "start": "node app/app.js",
     "tinper": "node app/utils/tinper.js"
@@ -40,6 +41,7 @@
   "homepage": "https://github.com/iuap-design/bee.tinper.org#readme",
   "devDependencies": {},
   "dependencies": {
+    "ali-oss": "^6.2.1",
     "axios": "^0.18.0",
     "download": "^7.1.0",
     "download-git-repo": "^1.1.0",
@@ -57,6 +59,7 @@
     "latest-version": "^5.1.0",
     "log4js": "^3.0.6",
     "marked": "^0.6.1",
+    "minify": "^4.1.3",
     "moment": "^2.24.0",
     "node-fetch": "^2.3.0",
     "nunjucks": "^3.1.6"

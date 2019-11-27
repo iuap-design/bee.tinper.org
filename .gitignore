@@ -25,3 +25,6 @@ spm_modules
 .cache
 package-lock.json
 getRelease.js
+ossConfig.json
+demo.js
+demo.css
