@@ -9,16 +9,23 @@
 
 2、执行 `npm run writeFile` 更新组件相关文件
 
-3、下载 https://github.com/tinper-bee/tinper-bee-components 项目,server/createFile.js 文件中填写 oss 配置，运行如下命令，更新demo.js，demo.css
+3、在 `bee.tinper.org/app/utils` 下新建 `ossConfig.json` 文件，填写 oss 配置信息，格式如下
 
     ```
-    npm run getTag 
-
-    npm run createFile 
+    {
+        "accessKeyId": "xxxxxxx",
+        "accessKeySecret": "xxxxx",
+        "bucket": "xxxxx",
+        "region": "xxxxx"
+    }
     ```
+5、执行 `npm run putCDN` 将各版本文件上传到cdn上
 
-4、执行 `npm start ` 本地运行
+6、执行 `npm start ` 本地运行
 
+
+注意：
+步骤 2、3 需要 本机 github网络较好。 如果步骤 2 中途中断，可使用 `npm run writeFile2 `命令，增量下载组件。
 
 
 
