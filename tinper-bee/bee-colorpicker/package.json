@@ -1,6 +1,6 @@
 {
  "name": "bee-colorpicker",
- "version": "0.0.13",
+ "version": "0.0.14",
  "description": "ColorPicker ui component for react",
  "keywords": [
   "react",
@@ -59,7 +59,6 @@
   "cz-conventional-changelog": "^2.1.0",
   "enzyme": "^2.4.1",
   "es5-shim": "~4.1.10",
-  "node-sass": "^4.11.0",
   "react": "15.3.2",
   "react-addons-test-utils": "15.3.2",
   "react-dom": "15.3.2"

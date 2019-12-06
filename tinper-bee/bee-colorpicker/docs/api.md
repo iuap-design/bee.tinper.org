@@ -27,6 +27,7 @@ import 'bee-colorpicker/build/ColorPicker.css';
 |required|是否是必输项|bool|false|
 |disabled|是否禁用|bool|false|
 |disabledAlpha|是否禁用透明度|bool|false|
+|disabledModal|是否禁用弹框|bool|false|
 |isParameterArea|是否显示参数区域|bool|true|
 |placeholder|input中的提示信息|string|-|
 |onChange|input值发生改变触发的回调|func|-|
@@ -35,6 +36,8 @@ import 'bee-colorpicker/build/ColorPicker.css';
 |cacelBtn|自定义取消按钮文字|string|-|
 |confirmBtn|自定义确认按钮提示|string|-|
 |modalProps|传给内部modal子组件的属性|object|-|
+
+
 ## 注意事项
 
 暂无

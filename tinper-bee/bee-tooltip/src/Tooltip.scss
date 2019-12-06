@@ -28,7 +28,7 @@ $tooltip-arrow-width: 5px;
     &.in{
     	opacity: 1 !important;
     }
-    &-arrow{
+    .tooltip-arrow{
         position: absolute;
         display: block;
         width: 0;
@@ -37,7 +37,7 @@ $tooltip-arrow-width: 5px;
         border-style: solid;
     }
     // Wrapper for the tooltip content
-    &-inner{
+    .tooltip-inner{
     	max-width: $tooltip-max-width;
 	    padding: 3px 8px;
 	    color: #fff;

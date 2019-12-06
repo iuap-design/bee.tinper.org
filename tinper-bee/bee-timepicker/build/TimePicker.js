@@ -66,14 +66,14 @@ var Timepicker = function (_Component) {
                 this.setState({
                     value: value
                 });
-                this.props.onChange && this.props.onChange(value);
+                // this.props.onChange&&this.props.onChange(value)
             } else if (value.format) {
                 if (!value.isValid()) {
                     value = (0, _moment2["default"])((0, _moment2["default"])().format('YYYY-MM-DD') + ' ' + value._i);
                     this.setState({
                         value: value
                     });
-                    this.props.onChange && this.props.onChange(value);
+                    // this.props.onChange&&this.props.onChange(value)
                 }
             }
         } else {

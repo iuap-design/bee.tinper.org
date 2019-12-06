@@ -1016,6 +1016,8 @@
     outline: 0; }
   .u-form-control::-ms-clear, .u-form-control ::-ms-reveal {
     display: none; }
+  .u-form-control-prefix-suffix {
+    padding: 0 30px; }
 
 .u-form-control[disabled] {
   background: #F7F9FB;
@@ -1068,6 +1070,20 @@
     line-height: 0;
     right: 7px;
     color: rgba(0, 0, 0, 0.65); }
+  .u-form-control-affix-wrapper .u-form-control-simple-prefix, .u-form-control-affix-wrapper .u-form-control-simple-suffix {
+    position: absolute;
+    top: 60%;
+    transform: translateY(-50%);
+    z-index: 2;
+    line-height: 0;
+    color: rgba(0, 0, 0, 0.65);
+    width: 30px;
+    text-align: center;
+    font-size: 12px; }
+  .u-form-control-affix-wrapper .u-form-control-simple-prefix {
+    left: 0; }
+  .u-form-control-affix-wrapper .u-form-control-simple-suffix {
+    right: 0; }
 
 .u-form-control-close .uf-close-c {
   opacity: 0;
@@ -1208,7 +1224,8 @@
 
 .rc-calendar-time-picker-panel .rc-time-picker-panel-select li {
   text-align: center;
-  padding: 0; }
+  padding: 0;
+  outline: none; }
 
 .rc-calendar-time-picker-wrap {
   float: left;
@@ -1529,7 +1546,7 @@
   background: rgb(235, 236, 240);
   cursor: pointer; }
 
-.rc-calendar-selected-day .rc-calendar-date {
+.rc-calendar-selected-day:not(.rc-calendar-disabled-cell) .rc-calendar-date {
   background: rgb(245, 60, 50);
   color: #fff !important; }
 
@@ -2084,6 +2101,10 @@
 
 .rc-calendar-range-part .rc-calendar-time-picker {
   top: 69px; }
+  .rc-calendar-range-part .rc-calendar-time-picker .rc-calendar-time-picker-panel {
+    margin-top: -35px;
+    height: 218px;
+    border-bottom: 1px solid #e9e9e9; }
 
 .rc-calendar-range-part .rc-calendar-time-picker-panel-select {
   width: 77px; }
@@ -2091,14 +2112,20 @@
 .rc-calendar-range-left {
   float: left; }
 
-.rc-calendar-range-left .rc-calendar-time-picker-panel-select:last-child {
-  border-right: 1px solid #e9e9e9; }
+.rc-calendar-show-time-picker .rc-calendar-range-left .rc-calendar-header {
+  border-right: 1px solid #DFE1E6; }
+
+.rc-calendar-range-left .rc-calendar-time-picker-panel {
+  border-right: 1px solid #DFE1E6; }
 
 .rc-calendar-range-right {
   float: right; }
 
 .rc-calendar-range-right .rc-calendar-time-picker-panel {
-  left: 21px; }
+  border-left: 1px solid #DFE1E6; }
+
+.rc-calendar-show-time-picker .rc-calendar-range-right .rc-calendar-header {
+  border-left: 1px solid #DFE1E6; }
 
 .rc-calendar-range-right .rc-calendar-time-picker-panel-select:first-child {
   border-left: 1px solid #e9e9e9; }
@@ -2150,11 +2177,14 @@
 .rc-calendar-range .rc-calendar-year-panel,
 .rc-calendar-range .rc-calendar-month-panel,
 .rc-calendar-range .rc-calendar-decade-panel {
-  top: 36px; }
+  top: 0; }
   .rc-calendar-range .rc-calendar-year-panel > .rc-calendar-decade-panel-header,
   .rc-calendar-range .rc-calendar-month-panel > .rc-calendar-decade-panel-header,
   .rc-calendar-range .rc-calendar-decade-panel > .rc-calendar-decade-panel-header {
-    display: none; }
+    display: block; }
+
+.rc-calendar-range .rc-calendar-panel .rc-calendar-date-panel .rc-calendar-range-part .rc-calendar-range-out {
+  position: relative; }
 
 .rc-calendar-range .rc-calendar-month-panel .rc-calendar-year-panel {
   top: 0; }
@@ -2411,14 +2441,14 @@
   user-select: none; }
 
 .rc-time-picker-panel-select li:hover {
-  background: #edfaff; }
+  background: rgb(235, 236, 240); }
 
-li.rc-time-picker-panel-select-option-selected {
-  background: #f7f7f7;
-  font-weight: bold; }
+li.rc-time-picker-panel-select-option-selected, li.rc-time-picker-panel-select-option-selected:hover {
+  background: rgb(255, 247, 231);
+  color: rgb(245, 60, 50); }
 
 li.rc-time-picker-panel-select-option-disabled {
-  color: #ccc; }
+  color: #909090; }
 
 li.rc-time-picker-panel-select-option-disabled:hover {
   background: transparent;
@@ -2518,6 +2548,10 @@ li.rc-time-picker-panel-select-option-disabled:hover {
   margin-bottom: 20px !important; }
   .demo11 > .demo11-item .u-button {
     margin-right: 20px; }
+
+.demo3 > .demo3-item {
+  margin: 0;
+  margin-bottom: 20px !important; }
 
 .demo9 .u-row .u-col-md-6 {
   margin-bottom: 10px; }

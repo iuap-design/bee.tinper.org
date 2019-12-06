@@ -86,7 +86,8 @@ var propTypes = {
     cacelBtn: _propTypes2["default"].string,
     confirmBtn: _propTypes2["default"].string,
     isParameterArea: _propTypes2["default"].bool,
-    modalProps: _propTypes2["default"].object
+    modalProps: _propTypes2["default"].object,
+    disabledModal: _propTypes2["default"].bool
 };
 var defaultProps = {
     clsPrefix: "u-colorpicker",
@@ -101,7 +102,8 @@ var defaultProps = {
     title: '取色板',
     cacelBtn: '取消',
     confirmBtn: '确认',
-    isParameterArea: true
+    isParameterArea: true,
+    disabledModal: false
 };
 
 var initRgb = _colors2["default"]['red'].rgbArr[6] ? 'rgb(' + _colors2["default"]['red'].rgbArr[6] + ')' : '';
@@ -469,7 +471,8 @@ var ColorPicker = function (_Component) {
             disabled = _props.disabled,
             disabledAlpha = _props.disabledAlpha,
             isParameterArea = _props.isParameterArea,
-            others = _objectWithoutProperties(_props, ['clsPrefix', 'onChange', 'value', 'label', 'required', 'placeholder', 'className', 'disabled', 'disabledAlpha', 'isParameterArea']);
+            disabledModal = _props.disabledModal,
+            others = _objectWithoutProperties(_props, ['clsPrefix', 'onChange', 'value', 'label', 'required', 'placeholder', 'className', 'disabled', 'disabledAlpha', 'isParameterArea', 'disabledModal']);
 
         var _state = this.state,
             selectedColor = _state.selectedColor,
@@ -515,8 +518,8 @@ var ColorPicker = function (_Component) {
                         onChange: this.handleChange
                     }),
                     _react2["default"].createElement('div', { style: { backgroundColor: formValue },
-                        className: clsPrefix + '-form-color-demo',
-                        onClick: !disabled ? this.handleClick : null })
+                        className: clsPrefix + '-form-color-demo ' + (disabledModal ? "disabled" : ''),
+                        onClick: !disabled && !disabledModal ? this.handleClick : null })
                 )
             ),
             _react2["default"].createElement(

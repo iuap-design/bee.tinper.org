@@ -1,3 +1,28 @@
+<a name="2.3.5"></a>
+## [2.3.5](https://github.com/tinper-bee/bee-datepicker/compare/v2.3.4...v2.3.5) (2019-11-27)
+
+
+### Bug Fixes
+
+* **bee-datepicker:** rangerpicker 选择年左右键区间不变bug ([95964fe](https://github.com/tinper-bee/bee-datepicker/commit/95964fe))
+
+
+
+<a name="2.3.4"></a>
+## [2.3.4](https://github.com/tinper-bee/bee-datepicker/compare/v2.3.3...v2.3.4) (2019-11-27)
+
+
+### Bug Fixes
+
+* **bee-datepicker:** yearpanel bug fix ([3853447](https://github.com/tinper-bee/bee-datepicker/commit/3853447))
+
+
+
+<a name="2.3.3"></a>
+## [2.3.3](https://github.com/tinper-bee/bee-datepicker/compare/v2.3.2...v2.3.3) (2019-11-25)
+
+
+
 <a name="2.3.2"></a>
 ## [2.3.2](https://github.com/tinper-bee/bee-datepicker/compare/v2.3.1...v2.3.2) (2019-11-25)
 

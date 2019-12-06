@@ -78,6 +78,25 @@ function unThousands(number){
 }
 
 
+function setCaretPosition(ctrl,pos,need) {
+    
+    if(ctrl&&need){
+        if(ctrl.setSelectionRange) {
+            ctrl.focus();
+            ctrl.setSelectionRange(pos,pos);
+            // IE8 and below
+        } else if(ctrl.createTextRange) {
+            var range = ctrl.createTextRange();
+            range.collapse(true);
+            range.moveEnd('character', pos);
+            range.moveStart('character', pos);
+            range.select();
+        }
+        
+    }
+    
+}
+
 
 
 class InputNumber extends Component {
@@ -97,6 +116,7 @@ class InputNumber extends Component {
 
         this.timer = null;
         this.focus = false;
+        this.selectionStart = 0;
     }
     /**
      * 校验value
@@ -204,25 +224,18 @@ class InputNumber extends Component {
     }
 
     handleChange = (value) => {
-        const { onChange,toNumber,max,min,displayCheckPrompt } = this.props;
+        let selectionStart = this.input.selectionStart==undefined?this.input.input.selectionStart:this.input.selectionStart;
+        this.selectionStart = selectionStart;
+        const { onChange,toNumber } = this.props;
         if(value===''){
             onChange && onChange(value);
             this.setState({
-                value
+                value,
+                showValue:''
             })
             return;
         }
         value = unThousands(value);
-        // if(Number(value)>max){
-        //     if(!displayCheckPrompt) return;
-        //     this.prompt(`输入的数字不能大于 ${max}`);
-        //     return;
-        // }
-        // if(Number(value)<min){
-        //     if(!displayCheckPrompt) return;
-        //     this.prompt(`输入的数字不能小于 ${min}`);
-        //     return;
-        // }
         if(isNaN(value)&&(value!=='.')&&(value!=='-'))return;
         this.setState({
             value,
@@ -238,8 +251,23 @@ class InputNumber extends Component {
         }else{
             toNumber?onChange && onChange(Number(value)):onChange && onChange(value);
         }
-        
-        
+        if(this.props.toThousands){
+            let stateShowValue = toThousands(this.state.value);
+            let showValue = toThousands(value)
+            let addNumber = 0;
+            let delNumber = 0;
+            let reg = /[0-9]/
+            for(let i =0;i<selectionStart;i++){
+                if(!reg.test(showValue[i]))addNumber+=1;
+            }
+            for(let j= 0;j<selectionStart;j++){
+                if(stateShowValue[j]){
+                    if(!reg.test(stateShowValue[j]))delNumber+=1;
+                }
+            }
+            let position = selectionStart+addNumber-delNumber;
+            setCaretPosition(this.input&&this.input.input,position,true)
+        }
     }
     
 
@@ -478,6 +506,7 @@ class InputNumber extends Component {
                                 onBlur={ this.handleBlur }
                                 onFocus={this.handleFocus}
                                 onChange={ this.handleChange }
+                                ref={ref=>this.input = ref}
                             />
                             <InputGroup.Addon
                                 className={(plusDisabled && 'disabled' ) + disabledCursor}
@@ -499,6 +528,7 @@ class InputNumber extends Component {
                                 onBlur={ this.handleBlur }
                                 onFocus={this.handleFocus}
                                 onChange={ this.handleChange }
+                                ref={ref=>this.input = ref}
                             />
                             <InputGroup.Button>
                                 <div className={classnames("icon-group")}>

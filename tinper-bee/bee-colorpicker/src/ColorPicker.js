@@ -31,6 +31,7 @@ const propTypes = {
     confirmBtn:PropTypes.string,
     isParameterArea:PropTypes.bool,
     modalProps:PropTypes.object,
+    disabledModal:PropTypes.bool,
 };
 const defaultProps = {
     clsPrefix: "u-colorpicker",
@@ -46,6 +47,7 @@ const defaultProps = {
     cacelBtn:'取消',
     confirmBtn:'确认',
     isParameterArea:true,
+    disabledModal:false
 };
 
 const initRgb = colors['red'].rgbArr[6] ? `rgb(${colors['red'].rgbArr[6]})` : '';
@@ -349,6 +351,7 @@ class ColorPicker extends Component {
             disabled,
             disabledAlpha,
             isParameterArea,
+            disabledModal,
             ...others
         } = this.props;
         const {
@@ -391,8 +394,8 @@ class ColorPicker extends Component {
                             onChange={this.handleChange}
                         />
                         <div style={{backgroundColor:formValue}}
-                            className={`${clsPrefix}-form-color-demo`}
-                            onClick={ !disabled ? this.handleClick : null }>
+                            className={`${clsPrefix}-form-color-demo ${disabledModal ? "disabled" : ''}`}
+                            onClick={ !disabled && !disabledModal ? this.handleClick : null }>
                         </div>
                     </span>
                 </FormItem>

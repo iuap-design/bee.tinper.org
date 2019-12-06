@@ -117,6 +117,23 @@ function unThousands(number) {
     return number.replace(/\,/g, '');
 }
 
+function setCaretPosition(ctrl, pos, need) {
+
+    if (ctrl && need) {
+        if (ctrl.setSelectionRange) {
+            ctrl.focus();
+            ctrl.setSelectionRange(pos, pos);
+            // IE8 and below
+        } else if (ctrl.createTextRange) {
+            var range = ctrl.createTextRange();
+            range.collapse(true);
+            range.moveEnd('character', pos);
+            range.moveStart('character', pos);
+            range.select();
+        }
+    }
+}
+
 var InputNumber = function (_Component) {
     _inherits(InputNumber, _Component);
 
@@ -140,6 +157,7 @@ var InputNumber = function (_Component) {
 
         _this.timer = null;
         _this.focus = false;
+        _this.selectionStart = 0;
         return _this;
     }
     /**
@@ -199,7 +217,8 @@ var InputNumber = function (_Component) {
 
 
     InputNumber.prototype.render = function render() {
-        var _classes;
+        var _classes,
+            _this2 = this;
 
         var _props = this.props,
             toThousands = _props.toThousands,
@@ -253,7 +272,10 @@ var InputNumber = function (_Component) {
                     disabled: disabled,
                     onBlur: this.handleBlur,
                     onFocus: this.handleFocus,
-                    onChange: this.handleChange
+                    onChange: this.handleChange,
+                    ref: function ref(_ref) {
+                        return _this2.input = _ref;
+                    }
                 })),
                 _react2["default"].createElement(
                     _beeInputGroup2["default"].Addon,
@@ -275,7 +297,10 @@ var InputNumber = function (_Component) {
                     disabled: disabled,
                     onBlur: this.handleBlur,
                     onFocus: this.handleFocus,
-                    onChange: this.handleChange
+                    onChange: this.handleChange,
+                    ref: function ref(_ref2) {
+                        return _this2.input = _ref2;
+                    }
                 })),
                 _react2["default"].createElement(
                     _beeInputGroup2["default"].Button,
@@ -311,7 +336,7 @@ var InputNumber = function (_Component) {
 }(_react.Component);
 
 var _initialiseProps = function _initialiseProps() {
-    var _this2 = this;
+    var _this3 = this;
 
     this.judgeValue = function (props, oldValue) {
         var currentValue = void 0;
@@ -366,7 +391,7 @@ var _initialiseProps = function _initialiseProps() {
                 plusDisabled: true
             };
         }
-        var local = (0, _tool.getComponentLocale)(props, _this2.context, 'InputNumber', function () {
+        var local = (0, _tool.getComponentLocale)(props, _this3.context, 'InputNumber', function () {
             return _i18n2["default"];
         });
         if (currentValue <= min) {
@@ -392,33 +417,23 @@ var _initialiseProps = function _initialiseProps() {
     };
 
     this.handleChange = function (value) {
-        var _props2 = _this2.props,
+        var selectionStart = _this3.input.selectionStart == undefined ? _this3.input.input.selectionStart : _this3.input.selectionStart;
+        _this3.selectionStart = selectionStart;
+        var _props2 = _this3.props,
             onChange = _props2.onChange,
-            toNumber = _props2.toNumber,
-            max = _props2.max,
-            min = _props2.min,
-            displayCheckPrompt = _props2.displayCheckPrompt;
+            toNumber = _props2.toNumber;
 
         if (value === '') {
             onChange && onChange(value);
-            _this2.setState({
-                value: value
+            _this3.setState({
+                value: value,
+                showValue: ''
             });
             return;
         }
         value = unThousands(value);
-        // if(Number(value)>max){
-        //     if(!displayCheckPrompt) return;
-        //     this.prompt(`输入的数字不能大于 ${max}`);
-        //     return;
-        // }
-        // if(Number(value)<min){
-        //     if(!displayCheckPrompt) return;
-        //     this.prompt(`输入的数字不能小于 ${min}`);
-        //     return;
-        // }
         if (isNaN(value) && value !== '.' && value !== '-') return;
-        _this2.setState({
+        _this3.setState({
             value: value,
             showValue: toThousands(value)
         });
@@ -434,11 +449,28 @@ var _initialiseProps = function _initialiseProps() {
         } else {
             toNumber ? onChange && onChange(Number(value)) : onChange && onChange(value);
         }
+        if (_this3.props.toThousands) {
+            var stateShowValue = toThousands(_this3.state.value);
+            var showValue = toThousands(value);
+            var addNumber = 0;
+            var delNumber = 0;
+            var reg = /[0-9]/;
+            for (var i = 0; i < selectionStart; i++) {
+                if (!reg.test(showValue[i])) addNumber += 1;
+            }
+            for (var j = 0; j < selectionStart; j++) {
+                if (stateShowValue[j]) {
+                    if (!reg.test(stateShowValue[j])) delNumber += 1;
+                }
+            }
+            var position = selectionStart + addNumber - delNumber;
+            setCaretPosition(_this3.input && _this3.input.input, position, true);
+        }
     };
 
     this.handleFocus = function (value, e) {
-        _this2.focus = true;
-        var _props3 = _this2.props,
+        _this3.focus = true;
+        var _props3 = _this3.props,
             onFocus = _props3.onFocus,
             min = _props3.min,
             max = _props3.max;
@@ -447,8 +479,8 @@ var _initialiseProps = function _initialiseProps() {
     };
 
     this.handleBlur = function (v, e) {
-        _this2.focus = false;
-        var _props4 = _this2.props,
+        _this3.focus = false;
+        var _props4 = _this3.props,
             onBlur = _props4.onBlur,
             precision = _props4.precision,
             onChange = _props4.onChange,
@@ -457,11 +489,11 @@ var _initialiseProps = function _initialiseProps() {
             min = _props4.min,
             displayCheckPrompt = _props4.displayCheckPrompt;
 
-        var local = (0, _tool.getComponentLocale)(_this2.props, _this2.context, 'InputNumber', function () {
+        var local = (0, _tool.getComponentLocale)(_this3.props, _this3.context, 'InputNumber', function () {
             return _i18n2["default"];
         });
         if (v === '') {
-            _this2.setState({
+            _this3.setState({
                 value: v
             });
             onBlur && onBlur(v, e);
@@ -478,14 +510,14 @@ var _initialiseProps = function _initialiseProps() {
             if (displayCheckPrompt) prompt(local['msgMin']);
             value = min;
         }
-        if (_this2.props.hasOwnProperty('precision')) {
+        if (_this3.props.hasOwnProperty('precision')) {
             value = value.toFixed(precision);
         }
-        _this2.setState({
+        _this3.setState({
             value: value,
             showValue: toThousands(value)
         });
-        _this2.detailDisable(value);
+        _this3.detailDisable(value);
         if (toNumber) {
             onBlur && onBlur(Number(value), e);
             onChange && onChange(Number(value));
@@ -496,34 +528,34 @@ var _initialiseProps = function _initialiseProps() {
     };
 
     this.detailDisable = function (value) {
-        var _props5 = _this2.props,
+        var _props5 = _this3.props,
             max = _props5.max,
             min = _props5.min,
             step = _props5.step;
 
 
         if (value >= max || Number(value) + Number(step) > max) {
-            _this2.setState({
+            _this3.setState({
                 plusDisabled: true
             });
         } else {
-            _this2.setState({
+            _this3.setState({
                 plusDisabled: false
             });
         }
         if (value <= min || value - step < min) {
-            _this2.setState({
+            _this3.setState({
                 minusDisabled: true
             });
         } else {
-            _this2.setState({
+            _this3.setState({
                 minusDisabled: false
             });
         }
     };
 
     this.minus = function (value) {
-        var _props6 = _this2.props,
+        var _props6 = _this3.props,
             min = _props6.min,
             max = _props6.max,
             step = _props6.step,
@@ -532,12 +564,12 @@ var _initialiseProps = function _initialiseProps() {
 
         value = value === '-' ? 0 : value;
         if (typeof min === "undefined") {
-            value = _this2.detail(value, step, 'reduce');
+            value = _this3.detail(value, step, 'reduce');
         } else {
             if (value < min) {
                 value = min;
             } else {
-                var reducedValue = _this2.detail(value, step, 'reduce');
+                var reducedValue = _this3.detail(value, step, 'reduce');
                 if (reducedValue >= min) {
                     value = reducedValue;
                 }
@@ -548,16 +580,16 @@ var _initialiseProps = function _initialiseProps() {
             value = max;
         }
 
-        _this2.setState({
+        _this3.setState({
             value: value,
             showValue: toThousands(value)
         });
         toNumber ? onChange && onChange(Number(value)) : onChange && onChange(value);
-        _this2.detailDisable(value);
+        _this3.detailDisable(value);
     };
 
     this.plus = function (value) {
-        var _props7 = _this2.props,
+        var _props7 = _this3.props,
             max = _props7.max,
             min = _props7.min,
             step = _props7.step,
@@ -566,12 +598,12 @@ var _initialiseProps = function _initialiseProps() {
 
         value = value === '-' ? 0 : value;
         if (typeof max === "undefined") {
-            value = _this2.detail(value, step, 'add');
+            value = _this3.detail(value, step, 'add');
         } else {
             if (value > max) {
                 value = max;
             } else {
-                var addedValue = _this2.detail(value, step, 'add');
+                var addedValue = _this3.detail(value, step, 'add');
                 if (addedValue <= max) {
                     value = addedValue;
                 }
@@ -580,20 +612,20 @@ var _initialiseProps = function _initialiseProps() {
         if (value < min) {
             value = min;
         }
-        _this2.setState({
+        _this3.setState({
             value: value,
             showValue: toThousands(value)
         });
         toNumber ? onChange && onChange(Number(value)) : onChange && onChange(value);
-        _this2.detailDisable(value);
+        _this3.detailDisable(value);
     };
 
     this.detail = function (value, step, type) {
-        var precision = _this2.props.precision;
+        var precision = _this3.props.precision;
 
 
-        var valueFloat = _this2.separate(value);
-        var stepFloat = _this2.separate(step);
+        var valueFloat = _this3.separate(value);
+        var stepFloat = _this3.separate(step);
 
         var ans = void 0;
         var stepFloatLength = stepFloat.toString().length;
@@ -622,40 +654,40 @@ var _initialiseProps = function _initialiseProps() {
     };
 
     this.clear = function () {
-        if (_this2.timer) {
-            clearTimeout(_this2.timer);
+        if (_this3.timer) {
+            clearTimeout(_this3.timer);
         }
     };
 
     this.handlePlusMouseDown = function (e) {
         e.preventDefault();
-        var _props8 = _this2.props,
+        var _props8 = _this3.props,
             delay = _props8.delay,
             disabled = _props8.disabled;
 
         if (disabled) return;
-        var value = _this2.state.value;
+        var value = _this3.state.value;
 
-        _this2.plus(value);
-        _this2.clear();
-        _this2.timer = setTimeout(function () {
-            _this2.handlePlusMouseDown();
+        _this3.plus(value);
+        _this3.clear();
+        _this3.timer = setTimeout(function () {
+            _this3.handlePlusMouseDown();
         }, delay);
     };
 
     this.handleReduceMouseDown = function (e) {
         e.preventDefault();
-        var _props9 = _this2.props,
+        var _props9 = _this3.props,
             delay = _props9.delay,
             disabled = _props9.disabled;
 
         if (disabled) return;
-        var value = _this2.state.value;
+        var value = _this3.state.value;
 
-        _this2.minus(value);
-        _this2.clear();
-        _this2.timer = setTimeout(function () {
-            _this2.handleReduceMouseDown();
+        _this3.minus(value);
+        _this3.clear();
+        _this3.timer = setTimeout(function () {
+            _this3.handleReduceMouseDown();
         }, delay);
     };
 };

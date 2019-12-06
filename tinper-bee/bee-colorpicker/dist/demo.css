@@ -2198,6 +2198,9 @@
 .u-colorpicker-form .u-form-control[disabled] + .u-colorpicker-form-color-demo {
   cursor: not-allowed; }
 
+.u-colorpicker-form .disabled.u-colorpicker-form-color-demo {
+  cursor: default; }
+
 .u-colorpicker .error {
   color: red;
   padding-left: 112px; }

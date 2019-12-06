@@ -22,6 +22,9 @@
         .u-form-control[disabled] + .u-colorpicker-form-color-demo{
             cursor: not-allowed;
         }
+        .disabled.u-colorpicker-form-color-demo{
+            cursor: default;
+        }
     }
     .error{
         color: red;

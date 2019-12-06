@@ -1,6 +1,6 @@
 /**
  *
-* @title 日期区间基础示例 
+* @title 数字区间基础示例 
  * @description 使用 InputNumberGroup
  *
  */

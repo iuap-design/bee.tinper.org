@@ -7,42 +7,73 @@
 import React, { Component } from "react";
 import { Row, Col } from "bee-layout";
 import DatePicker from "../../src/index";
-
-import zhCN from "../../src/locale/zh_CN";
 import moment from "moment";
 
-const format = "YYYY-MM-DD";
+const { MonthPicker, RangePicker } = DatePicker;
 
-const dateInputPlaceholder = "选择日期";
-
+function range(start, end) {
+  const result = [];
+  for (let i = start; i < end; i++) {
+    result.push(i);
+  }
+  return result;
+}
 
 function disabledDate(current) {
-  return current && current.valueOf() < Date.now();
+  // Can not select days before today and today
+  return current && current < moment().endOf('day');
+}
+
+function disabledDateTime() {
+  return {
+    disabledHours: () => range(0, 24).splice(4, 20),
+    disabledMinutes: () => range(30, 60),
+    disabledSeconds: () => [55, 56],
+  };
+}
+
+function disabledRangeTime(_, type) {
+  if (type === 'start') {
+    return {
+      disabledHours: () => range(0, 60).splice(4, 20),
+      disabledMinutes: () => range(30, 60),
+      disabledSeconds: () => [55, 56],
+    };
+  }
+  return {
+    disabledHours: () => range(0, 60).splice(20, 4),
+    disabledMinutes: () => range(0, 31),
+    disabledSeconds: () => [55, 56],
+  };
 }
 
 class Demo3 extends Component {
-  onSelect = d => {
-    console.log(d);
-  }
-  
-  onChange = d => {
-    console.log(d);
-  }
   render() {
     return (
-      <div>
-        <Row>
-          <Col md={6}>
+      <div className='demo3'>
+        <Row className='demo3-item'>
             <DatePicker
-              format={format}
-              onSelect={this.onSelect}
-              onChange={this.onChange}
-              locale={zhCN}
+              placeholder="选择日期"
+              format="YYYY-MM-DD HH:mm:ss"
               disabledDate={disabledDate}
-              defaultValue={moment()}
-              placeholder={dateInputPlaceholder}
+              disabledTime={disabledDateTime}
+              showTime={{ defaultValue: moment('00:00:00', 'HH:mm:ss') }}
             />
-          </Col>
+        </Row>
+        <Row className='demo3-item'>
+            <MonthPicker disabledDate={disabledDate} placeholder="选择月份" />
+        </Row>
+        <Row className='demo3-item'>
+            <RangePicker
+              placeholder={'开始 ~ 结束'}
+              disabledDate={disabledDate}
+              disabledTime={disabledRangeTime}
+              showTime={{
+                hideDisabledOptions: true,
+                defaultValue: [moment('00:00:00', 'HH:mm:ss'), moment('11:59:59', 'HH:mm:ss')],
+              }}
+              format="YYYY-MM-DD HH:mm:ss"
+            />
         </Row>
       </div>
     );

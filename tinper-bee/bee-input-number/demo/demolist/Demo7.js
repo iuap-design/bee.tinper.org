@@ -27,7 +27,12 @@ class Demo1 extends Component {
     render() {
         return (
             <div>
-                <InputNumber toThousands={true} precision={2}  value={this.state.value} onChange={ this.handleChange }/>
+                <InputNumber 
+                    toThousands={true} 
+                    precision={2}  
+                    value={this.state.value} 
+                    onChange={ this.handleChange }
+                />
             </div>
         )
     }

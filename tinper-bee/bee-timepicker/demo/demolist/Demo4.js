@@ -29,7 +29,7 @@ class Demo3 extends Component {
                             format={'HH:mm:ss'}
                             {...getFieldProps('date', {
                                 validateTrigger: 'onBlur',
-                                initialValue:moment(`${moment().format('YYYY-MM-DD')} 12:13:14`),
+                                initialValue:'12:13:14',
                                 normalize:(value)=>{
                                     if(value&&value.format){
                                         return value.format('HH:mm:ss')

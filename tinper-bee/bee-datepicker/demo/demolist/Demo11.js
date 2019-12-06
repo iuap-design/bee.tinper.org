@@ -69,7 +69,7 @@ class Demo11 extends Component {
         const { getFieldProps, getFieldError } = this.props.form;
         return (
             <div className='demo11'>
-                <Row>
+                <Row className='demo11-item'>
                     <DatePicker
                         format='YYYY-MM-DD'
                         {
@@ -86,7 +86,7 @@ class Demo11 extends Component {
                         }
                     />
                 </Row>
-                <Row>
+                <Row className='demo11-item'>
                     <DatePicker
                         format='YYYY-MM-DD hh:mm:ss'
                         showTime={true}
@@ -104,7 +104,7 @@ class Demo11 extends Component {
                         }
                     />
                 </Row>
-                <Row>
+                <Row className='demo11-item'>
                     <MonthPicker
                         format='YYYY-MM'
                         {
@@ -121,7 +121,7 @@ class Demo11 extends Component {
                         }
                     />
                 </Row>
-                <Row>
+                <Row className='demo11-item'>
                     <YearPicker
                         format='YYYY'
                         {
@@ -138,7 +138,7 @@ class Demo11 extends Component {
                         }
                     />
                 </Row>
-                <Row>
+                <Row className='demo11-item'>
                     <WeekPicker
                         format='YYYY-WW'
                         {
@@ -155,7 +155,7 @@ class Demo11 extends Component {
                         }
                     />
                 </Row>
-                <Row>
+                <Row className='demo11-item'>
                     <RangePicker
                         format='YYYY-MM-DD'
                         {
@@ -179,7 +179,7 @@ class Demo11 extends Component {
                         }
                     />
                 </Row>
-                <Row>
+                <Row className='demo11-item'>
                     <Button className='options-btns' colors='primary' onClick={this.change}>改变初始值</Button>
                     <Button className='options-btns' colors='primary' onClick={this.submit}>获得所有值</Button>
                     <Button className='options-btns' colors='primary' onClick={this.reset}>还原所有值</Button>

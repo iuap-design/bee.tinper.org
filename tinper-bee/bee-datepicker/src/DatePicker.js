@@ -40,15 +40,18 @@ class DatePicker extends Component {
   initValue=(props)=>{
     let value = props.value || props.defaultValue;
     if(value){
-      if(value.format){
-        value = value;
-      }else{
+      if(typeof value == 'string'){
         if(moment(value).isValid()){
           value = moment(value);
         }else{
           console.error('value is not in the correct format');
           value = ''
         }
+      }else if(value.format&&value.isValid()){
+        value = value;
+      }else{
+        console.error('value is not in the correct format');
+        value = ''
       }
     }
     return value;
@@ -295,7 +298,7 @@ class DatePicker extends Component {
         {...props}
         onSelect={this.handleSelect}
         onChange={this.handleCalendarChange}
-        value={this.state.value}
+        value={value}
         onInputBlur={this.onDateInputBlur}
       />
     );
@@ -304,7 +307,7 @@ class DatePicker extends Component {
     if(props.keyboardInput){
       keyboardInputProps.readOnly=false;
       keyboardInputProps.onChange=this.inputChange;
-      keyboardInputProps.value=state.inputValue;
+      keyboardInputProps.value=state.inputValue.format&&state.inputValue.isValid()?state.inputValue.format(props.format):state.inputValue;
     }else{
       keyboardInputProps.readOnly=true;
       keyboardInputProps.value=(value && this.getValue(value)) || ""
@@ -359,6 +362,7 @@ class DatePicker extends Component {
                     focusSelect={props.defaultSelected}
                     onFocus={(v,e)=>{this.outInputFocus(e)}}
                     onKeyDown={this.outInputKeydown}
+                    // value={(value && value.format(props.format)) || ""}
                     {...keyboardInputProps}
                     {...autofocus}
                   />

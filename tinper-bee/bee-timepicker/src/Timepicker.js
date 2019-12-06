@@ -23,7 +23,7 @@ class Timepicker extends Component {
     }
 
     componentWillMount(){
-        //判断初始值是否合法，不合法则格式化，并触发onChange回调
+        //判断初始值是否合法，不合法则格式化
         let value = this.props.value;
         if(value){
             if(typeof value == 'string'){
@@ -31,14 +31,14 @@ class Timepicker extends Component {
                 this.setState({
                     value
                 })
-                this.props.onChange&&this.props.onChange(value)
+                // this.props.onChange&&this.props.onChange(value)
             }else if(value.format){
                 if(!value.isValid()){
                     value = moment(`${moment().format('YYYY-MM-DD')} ${value._i}`);
                     this.setState({
                         value
                     })
-                    this.props.onChange&&this.props.onChange(value)
+                    // this.props.onChange&&this.props.onChange(value)
                 }
             }
         }else{

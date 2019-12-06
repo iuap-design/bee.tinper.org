@@ -233,17 +233,19 @@ class Table extends Component {
     if(this.scrollbarWidth<=0 && this.props.scroll.y){
       this.scrollbarWidth = measureScrollbar();
     }
-
+    if (this.columnManager.isAnyColumnsFixed()) {
+      this.syncFixedTableRowHeight();
+    }
 
     // console.log('this.scrollTop**********',this.scrollTop);
 
   }
 
   componentDidUpdate(prevProps) {
-
-    if (this.columnManager.isAnyColumnsFixed()) {
-      this.syncFixedTableRowHeight();
-    }
+    // fix: 挪到 componentWillReceiveProps 中处理，解决 ie11 滚动加载，导致浏览器崩溃的问题
+    // if (this.columnManager.isAnyColumnsFixed()) {
+    //   this.syncFixedTableRowHeight();
+    // }
     //适应模态框中表格、以及父容器宽度变化的情况
     if (typeof (this.props.scroll.x) !== 'number' && this.contentTable.getBoundingClientRect().width !== this.contentDomWidth && this.firstDid) {
       this.computeTableWidth();
@@ -424,12 +426,20 @@ class Table extends Component {
 
   //todo 后续改进
   getColumnsChildrenList = (columns)=>{ 
+    const { expandIconAsCell } = this.props;
+    if(expandIconAsCell){
+      this.columnsChildrenList.push({
+        className: "u-table-expand-icon-column",
+        key: "expand-icon"
+      })
+    }
     columns.forEach(da=>{
       da.children?this.getColumnsChildrenList(da.children):this.columnsChildrenList.push(da);
     })
   }
 
   getHeader(columns, fixed, leftFixedWidth, rightFixedWidth) {
+    const { lastShowIndex } = this.state;
     const { filterDelay, onFilterChange, onFilterClear, filterable, showHeader, expandIconAsCell, clsPrefix, onDragStart, onDragEnter, onDragOver, onDrop,onDragEnd, draggable,
       onMouseDown, onMouseMove, onMouseUp, dragborder, onThMouseMove, dragborderKey, minColumnWidth, headerHeight,afterDragColWidth,headerScroll ,bordered,onDropBorder,onDraggingBorder} = this.props;
     const rows = this.getHeaderRows(columns);
@@ -458,7 +468,7 @@ class Table extends Component {
         minColumnWidth={minColumnWidth}
         contentWidthDiff={contentWidthDiff}
         contentWidth={this.contentWidth}
-        lastShowIndex={this.state.lastShowIndex}
+        lastShowIndex={expandIconAsCell ? parseInt(lastShowIndex) + 1 : lastShowIndex}
         clsPrefix={clsPrefix}
         rows={rows}
         contentTable={this.contentTable}
@@ -709,26 +719,11 @@ class Table extends Component {
     const lazyEndIndex =  props.lazyLoad && props.lazyLoad.endIndex ?props.lazyLoad.endIndex :-1;
     for (let i = 0; i < data.length; i++) {
       let isHiddenExpandIcon;
-      // if ( props.showRowNum ){
-      //   switch(props.showRowNum.type){
-      //     case 'number':{
-      //       data[i][props.showRowNum.key || '_index'] = (props.showRowNum.base || 0) + i;
-      //       break;
-      //     }
-      //     case 'ascii': {
-      //       data[i][props.showRowNum.key || '_index'] = String.fromCharCode(i + (props.showRowNum.base || '0').charCodeAt());
-      //       break;
-      //     }
-      //     default: {
-      //       data[i][props.showRowNum.key || '_index'] = (props.showRowNum.base || 0) + i;
-      //       break;
-      //     }
-      //   }
-        
-      // } 
       const record = data[i];
       const key = this.getRowKey(record, i);
-      const isLeaf = typeof record['isLeaf'] === 'boolean' && record['isLeaf'] || false;
+      // isLeaf 字段是在 bigData 里添加的，只有层级树大数据场景需要该字段
+      // isLeaf 有三种取值情况：true / false / null
+      const isLeaf = typeof record['isLeaf'] === 'boolean' ? record['isLeaf'] : null;
       const childrenColumn = isLeaf ? false : record[childrenColumnName];
       const isRowExpanded = this.isRowExpanded(record, i);
       let expandedRowContent;
@@ -797,7 +792,7 @@ class Table extends Component {
           visible={visible}
           expandRowByClick={expandRowByClick}
           onExpand={this.onExpanded}
-          expandable={childrenColumn || expandedRowRender}
+          expandable={expandedRowRender || ((childrenColumn && childrenColumn.length > 0) ? true : isLeaf === false)}
           expanded={isRowExpanded}
           clsPrefix={`${props.clsPrefix}-row`}
           childrenColumnName={childrenColumnName}

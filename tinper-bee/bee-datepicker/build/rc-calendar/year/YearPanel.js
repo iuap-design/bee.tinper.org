@@ -100,7 +100,7 @@ var YearPanel = function (_React$Component) {
 
     _this.prefixCls = props.rootPrefixCls + '-year-panel';
     _this.state = {
-      value: props.value || props.defaultValue
+      value: props.value || props.defaultValue || (0, _moment2["default"])()
     };
     _this.nextDecade = goYear.bind(_this, 10);
     _this.previousDecade = goYear.bind(_this, -10);
