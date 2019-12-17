@@ -26,5 +26,3 @@ spm_modules
 package-lock.json
 getRelease.js
 ossConfig.json
-demo.js
-demo.css
