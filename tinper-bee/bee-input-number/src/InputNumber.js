@@ -290,7 +290,7 @@ class InputNumber extends Component {
             return;
         }
         v = unThousands(v)
-        let value = Number(v);
+        let value = isNaN(Number(v)) ? 0 : Number(v);
         if(value>max){
             if(displayCheckPrompt)prompt(local['msgMax']);
             value = max;

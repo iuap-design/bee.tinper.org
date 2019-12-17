@@ -104,30 +104,3 @@ class Example extends Component{
 
 export default Example；
 ```
-
-
-## 五、注意事项
-
-另外，有几个组件因为使用的第三方的包比较大，所以我们没有将它们打包进tinper-bee.js，只是对他进行了转码，引入方式略有变化，包含组件如下。
-
-Datepicker日期选择组件、Timepicker时间选择组件、Dnd拖拽组件、Calendar日历组件。
-
-
-这些组件使用如下方式引入，不需要单独引入样式。
-css的引入方式不变
-
-```js
-
-import Datepicker from 'bee-datepicker';
-
-import Timepicker from 'bee-timepicker';
-
-import Dnd from 'bee-dnd';
-
-import Calendar from 'bee-calendar';
-
-import Carousel from 'bee-carousel';
-
-import Viewer from 'bee-viewer';
-
-```

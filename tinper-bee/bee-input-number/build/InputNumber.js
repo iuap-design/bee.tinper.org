@@ -501,7 +501,7 @@ var _initialiseProps = function _initialiseProps() {
             return;
         }
         v = unThousands(v);
-        var value = Number(v);
+        var value = isNaN(Number(v)) ? 0 : Number(v);
         if (value > max) {
             if (displayCheckPrompt) prompt(local['msgMax']);
             value = max;

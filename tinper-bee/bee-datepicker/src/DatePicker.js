@@ -16,18 +16,11 @@ import InputGroup from 'bee-input-group';
 import zhCN from "./locale/zh_CN";
 import omit from 'omit.js';
 
-const timePickerElement = (
-  <TimePickerPanel defaultValue={moment(moment().format("HH:mm:ss"), "HH:mm:ss")} />
-);
 
 let timerDatePicker = true;
-
-
 class DatePicker extends Component {
   constructor(props, context) {
     super(props, context);
-    let value = props.value && moment(props.value),
-        defaultValue = props.defaultValue && moment(props.defaultValue);
     this.state = {
       type: "month",
       value: this.initValue(props),
@@ -35,6 +28,7 @@ class DatePicker extends Component {
       inputValue:this.initValue(props),
       showClose:false
     };
+    this.fileChange = true;
 
   }
   initValue=(props)=>{
@@ -84,8 +78,6 @@ class DatePicker extends Component {
   }
 
   onChange = value => {
-    const props = this.props;
-
     this.setState({ value:value });
   };
 
@@ -101,7 +93,7 @@ class DatePicker extends Component {
       input.onkeydown=(e)=>{
         if(e.keyCode == KeyCode.DELETE){
           input.value = '';
-          this.props.onChange('','');
+          this.fireChange('','');
         }else if(e.keyCode == KeyCode.ESC){
           this.setState({
             open:false
@@ -149,7 +141,7 @@ class DatePicker extends Component {
   handleCalendarChange = (value) => {
       const props = this.props;
       this.setState({ value: value,inputValue:(value && this.getValue(value)) || '' });
-      props.onChange(value, (value && this.getValue(value)) || '');
+      this.fireChange(value, (value && this.getValue(value)) || '');
   }
   handleChange = value => {
     const props = this.props;
@@ -159,7 +151,7 @@ class DatePicker extends Component {
     });
     if(timerDatePicker){
       clearTimeout(this.timerout);
-      props.onChange(value, (value && this.getValue(value)) || '');
+      this.fireChange(value, (value && this.getValue(value)) || '');
       timerDatePicker=false;
       this.timerout = window.setTimeout(()=>{
         timerDatePicker=true
@@ -186,9 +178,9 @@ class DatePicker extends Component {
         value:moment(value,this.props.format)
       });
       value = moment(value,this.props.format);
-      this.props.onChange(value, (value && this.getValue(value)) || '');
+      this.fireChange(value, (value && this.getValue(value)) || '');
     }else{
-      this.props.onChange(null,value);
+      this.fireChange(null,value);
     }
   }
   outInputFocus = (e)=>{
@@ -203,7 +195,7 @@ class DatePicker extends Component {
       this.setState({
         inputValue:''
       });
-      this.props.onChange('','');
+      this.fireChange('','');
     }else if(e.keyCode == KeyCode.ESC){
       this.setState({
         open:false
@@ -214,9 +206,9 @@ class DatePicker extends Component {
           value:moment(value,this.props.format)
         });
         value = moment(value,this.props.format);
-        this.props.onChange(value, (value && this.getValue(value)) || '');
+        this.fireChange(value, (value && this.getValue(value)) || '');
       }else{
-        this.props.onChange(null,value);
+        this.fireChange(null,value);
       }
     }
     this.props.outInputKeydown&&this.props.outInputKeydown(e);
@@ -237,7 +229,7 @@ class DatePicker extends Component {
       inputValue:'',
       value:''
     })
-    this.props.onChange&&this.props.onChange('','');
+    this.fireChange('','');
   }
   handleSelect=(value)=>{
     this.setState({
@@ -265,17 +257,26 @@ class DatePicker extends Component {
     inputValue = format ? inputValue : ( inputValue && this.getValue(moment(inputValue)) );
     
     if(newValue && inputValue !== newValue) {
-      this.props.onChange && this.props.onChange(value, newValue || '')
+      this.fireChange(value, newValue || '')
     }
   }
   //阻止组件内部事件冒泡到组件外部容器
   stopPropagation = (e) => {
     e.stopPropagation();
   }
+
+  fireChange = (value,stringValue)=>{
+    this.fileChange&&this.props.onChange(value,stringValue);
+    this.fileChange = false;
+    this.fileChangeTimer = window.setTimeout(()=>{
+      this.fileChange = true;
+    },10)
+  }
   render() {
     let state = this.state;
     let props = this.props;
-    const {showClose, defaultPanelShown,onBlur,...others} = props;
+    const { showClose, defaultPanelShown,onBlur,disabledTime,onChange,
+           disabledDate,iconClick,outInputKeydown,...others} = props;
     let value = state.value;
     let pickerChangeHandler = {};
     let calendarHandler = {};
@@ -317,7 +318,6 @@ class DatePicker extends Component {
       <div className={classes} onMouseEnter={this.onDateHover} onClick={this.stopPropagation} onMouseOver={this.stopPropagation} 
       {...omit(others, [
         'onDateInputBlur',
-        'disabledDate',
         'getCalendarContainer',
         'showToday',
         'renderFooter',
@@ -329,7 +329,6 @@ class DatePicker extends Component {
         'focusOnOpen',
         'defultSelect',
         'onOpenChange',
-        'onChange',
         'locale',
         'showMonthInput',
         'onKeyDown',

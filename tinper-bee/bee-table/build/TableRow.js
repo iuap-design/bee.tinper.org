@@ -64,7 +64,8 @@ var propTypes = {
 
 var defaultProps = {
   onRowClick: function onRowClick() {},
-  onRowDoubleClick: function onRowDoubleClick() {},
+
+  // onRowDoubleClick() {},
   onDestroy: function onDestroy() {},
 
   expandIconColumnIndex: 0,
@@ -497,10 +498,15 @@ var TableRow = function (_Component) {
         expandRowByClick = _props5.expandRowByClick,
         expanded = _props5.expanded,
         onExpand = _props5.onExpand,
-        fixedIndex = _props5.fixedIndex;
+        fixedIndex = _props5.fixedIndex,
+        onRowDoubleClick = _props5.onRowDoubleClick;
 
     if (expandable && expandRowByClick) {
       onExpand(!expanded, record, fixedIndex, event);
+    }
+    if (!onRowDoubleClick) {
+      onRowClick(record, fixedIndex, event);
+      return;
     }
     this.set(function (e) {
       onRowClick(record, fixedIndex, event);
@@ -515,7 +521,7 @@ var TableRow = function (_Component) {
         fixedIndex = _props6.fixedIndex;
 
     this.clear();
-    onRowDoubleClick(record, fixedIndex, event);
+    onRowDoubleClick && onRowDoubleClick(record, fixedIndex, event);
   };
 
   TableRow.prototype.onMouseEnter = function onMouseEnter(e) {
@@ -571,7 +577,8 @@ var TableRow = function (_Component) {
         collapsedIcon = _props9.collapsedIcon,
         hoverKey = _props9.hoverKey,
         lazyStartIndex = _props9.lazyStartIndex,
-        lazyEndIndex = _props9.lazyEndIndex;
+        lazyEndIndex = _props9.lazyEndIndex,
+        expandIconCellWidth = _props9.expandIconCellWidth;
 
     var showSum = false;
     var className = this.props.className;
@@ -609,7 +616,8 @@ var TableRow = function (_Component) {
           'td',
           {
             className: clsPrefix + '-expand-icon-cell ' + isExpandIconAsCell,
-            key: 'rc-table-expand-icon-cell-' + i
+            key: 'rc-table-expand-icon-cell-' + i,
+            width: expandIconCellWidth
           },
           expandIcon
         ));

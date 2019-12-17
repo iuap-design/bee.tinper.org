@@ -37,7 +37,7 @@ const propTypes = {
 
 const defaultProps = {
     onRowClick() {},
-    onRowDoubleClick() {},
+    // onRowDoubleClick() {},
     onDestroy() {},
     expandIconColumnIndex: 0,
     expandRowByClick: false,
@@ -396,10 +396,15 @@ class TableRow extends Component{
       expandRowByClick,
       expanded,
       onExpand,
-      fixedIndex
+      fixedIndex,
+      onRowDoubleClick
     } = this.props;
     if (expandable && expandRowByClick) {
       onExpand(!expanded, record, fixedIndex,event);
+    }
+    if(!onRowDoubleClick){
+      onRowClick(record, fixedIndex, event);
+      return;
     }
     this.set((e)=> {
       onRowClick(record, fixedIndex, event);
@@ -409,7 +414,7 @@ class TableRow extends Component{
   onRowDoubleClick(event) {
     const { record, index, onRowDoubleClick,fixedIndex } = this.props;
     this.clear();
-    onRowDoubleClick(record, fixedIndex, event);
+    onRowDoubleClick && onRowDoubleClick(record, fixedIndex, event);
   }
 
   onMouseEnter(e) {
@@ -449,7 +454,7 @@ class TableRow extends Component{
       clsPrefix, columns, record, height, visible, index,
       expandIconColumnIndex, expandIconAsCell, expanded, expandRowByClick,rowDraggAble,
       expandable, onExpand, needIndentSpaced, indent, indentSize,isHiddenExpandIcon,fixed,bodyDisplayInRow
-      ,expandedIcon,collapsedIcon, hoverKey,lazyStartIndex,lazyEndIndex
+      ,expandedIcon,collapsedIcon, hoverKey,lazyStartIndex,lazyEndIndex, expandIconCellWidth
     } = this.props;
     let showSum = false;
     let { className } = this.props;
@@ -488,6 +493,7 @@ class TableRow extends Component{
           <td
             className={`${clsPrefix}-expand-icon-cell ${isExpandIconAsCell}`}
             key={`rc-table-expand-icon-cell-${i}`}
+            width={expandIconCellWidth}
           >
             {expandIcon}
           </td>

@@ -1,8 +1,8 @@
 ## 需要单独引入的组件
 
-有几个组件因为使用的第三方的包比较大，所以我们没有将它们打包进tinper-bee.js，只是对他进行了转码，引入方式略有变化，包含组件如下。
+有 7 个组件因为使用的第三方的包比较大，所以我们没有将它们打包进tinper-bee.js，只是对他进行了转码，引入方式略有变化，包含组件如下。
 
-Datepicker日期选择组件、Timepicker时间选择组件、Dnd拖拽组件、Calendar日历组件。
+Datepicker日期选择组件、Timepicker时间选择组件、Dnd拖拽组件、Calendar日历组件、Carousel轮播图、CarouselFigure走马灯、Viewer图片查看器。
 
 
 这些组件使用如下方式引入，不需要单独引入样式。
@@ -19,6 +19,10 @@ import Dnd from 'tinper-bee/lib/Dnd';
 import Calendar from 'tinper-bee/lib/Calendar';
 
 import Carousel from 'tinper-bee/lib/Carousel';
+
+import CarouselFigure from 'bee-carousel-figure';
+
+import Viewer from 'bee-viewer';
 
 ```
 

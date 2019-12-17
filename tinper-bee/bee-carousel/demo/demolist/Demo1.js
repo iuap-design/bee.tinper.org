@@ -4,7 +4,7 @@
  * @description 可定制页码
  */
 import React from 'react';
-import Carousel from '../../src/index';
+import Carousel from '../../src';
 
 class Demo1 extends React.Component {
   render() {

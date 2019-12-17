@@ -70,8 +70,6 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 * Created by chief on 17/4/6.
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 */
 
-var timePickerElement = _react2["default"].createElement(_Panel2["default"], { defaultValue: (0, _moment2["default"])((0, _moment2["default"])().format("HH:mm:ss"), "HH:mm:ss") });
-
 var timerDatePicker = true;
 
 var DatePicker = function (_Component) {
@@ -84,8 +82,6 @@ var DatePicker = function (_Component) {
 
     _initialiseProps.call(_this);
 
-    var value = props.value && (0, _moment2["default"])(props.value),
-        defaultValue = props.defaultValue && (0, _moment2["default"])(props.defaultValue);
     _this.state = {
       type: "month",
       value: _this.initValue(props),
@@ -93,6 +89,7 @@ var DatePicker = function (_Component) {
       inputValue: _this.initValue(props),
       showClose: false
     };
+    _this.fileChange = true;
 
     return _this;
   }
@@ -130,7 +127,12 @@ var DatePicker = function (_Component) {
     var showClose = props.showClose,
         defaultPanelShown = props.defaultPanelShown,
         onBlur = props.onBlur,
-        others = _objectWithoutProperties(props, ["showClose", "defaultPanelShown", "onBlur"]);
+        disabledTime = props.disabledTime,
+        onChange = props.onChange,
+        disabledDate = props.disabledDate,
+        iconClick = props.iconClick,
+        outInputKeydown = props.outInputKeydown,
+        others = _objectWithoutProperties(props, ["showClose", "defaultPanelShown", "onBlur", "disabledTime", "onChange", "disabledDate", "iconClick", "outInputKeydown"]);
 
     var value = state.value;
     var pickerChangeHandler = {};
@@ -170,7 +172,7 @@ var DatePicker = function (_Component) {
     return _react2["default"].createElement(
       "div",
       _extends({ className: classes, onMouseEnter: this.onDateHover, onClick: this.stopPropagation, onMouseOver: this.stopPropagation
-      }, (0, _omit2["default"])(others, ['onDateInputBlur', 'disabledDate', 'getCalendarContainer', 'showToday', 'renderFooter', 'keyboardInput', 'showDateInput', 'showTime', 'closeIcon', 'renderIcon', 'focusOnOpen', 'defultSelect', 'onOpenChange', 'onChange', 'locale', 'showMonthInput', 'onKeyDown', 'renderError', 'format', 'placeholder'])),
+      }, (0, _omit2["default"])(others, ['onDateInputBlur', 'getCalendarContainer', 'showToday', 'renderFooter', 'keyboardInput', 'showDateInput', 'showTime', 'closeIcon', 'renderIcon', 'focusOnOpen', 'defultSelect', 'onOpenChange', 'locale', 'showMonthInput', 'onKeyDown', 'renderError', 'format', 'placeholder'])),
       _react2["default"].createElement(
         _Picker2["default"],
         _extends({
@@ -261,8 +263,6 @@ var _initialiseProps = function _initialiseProps() {
   };
 
   this.onChange = function (value) {
-    var props = _this3.props;
-
     _this3.setState({ value: value });
   };
 
@@ -279,7 +279,7 @@ var _initialiseProps = function _initialiseProps() {
       input.onkeydown = function (e) {
         if (e.keyCode == _tinperBeeCore.KeyCode.DELETE) {
           input.value = '';
-          _this3.props.onChange('', '');
+          _this3.fireChange('', '');
         } else if (e.keyCode == _tinperBeeCore.KeyCode.ESC) {
           _this3.setState({
             open: false
@@ -327,7 +327,7 @@ var _initialiseProps = function _initialiseProps() {
   this.handleCalendarChange = function (value) {
     var props = _this3.props;
     _this3.setState({ value: value, inputValue: value && _this3.getValue(value) || '' });
-    props.onChange(value, value && _this3.getValue(value) || '');
+    _this3.fireChange(value, value && _this3.getValue(value) || '');
   };
 
   this.handleChange = function (value) {
@@ -338,7 +338,7 @@ var _initialiseProps = function _initialiseProps() {
     });
     if (timerDatePicker) {
       clearTimeout(_this3.timerout);
-      props.onChange(value, value && _this3.getValue(value) || '');
+      _this3.fireChange(value, value && _this3.getValue(value) || '');
       timerDatePicker = false;
       _this3.timerout = window.setTimeout(function () {
         timerDatePicker = true;
@@ -367,9 +367,9 @@ var _initialiseProps = function _initialiseProps() {
         value: (0, _moment2["default"])(value, _this3.props.format)
       });
       value = (0, _moment2["default"])(value, _this3.props.format);
-      _this3.props.onChange(value, value && _this3.getValue(value) || '');
+      _this3.fireChange(value, value && _this3.getValue(value) || '');
     } else {
-      _this3.props.onChange(null, value);
+      _this3.fireChange(null, value);
     }
   };
 
@@ -387,7 +387,7 @@ var _initialiseProps = function _initialiseProps() {
       _this3.setState({
         inputValue: ''
       });
-      _this3.props.onChange('', '');
+      _this3.fireChange('', '');
     } else if (e.keyCode == _tinperBeeCore.KeyCode.ESC) {
       _this3.setState({
         open: false
@@ -398,9 +398,9 @@ var _initialiseProps = function _initialiseProps() {
           value: (0, _moment2["default"])(value, _this3.props.format)
         });
         value = (0, _moment2["default"])(value, _this3.props.format);
-        _this3.props.onChange(value, value && _this3.getValue(value) || '');
+        _this3.fireChange(value, value && _this3.getValue(value) || '');
       } else {
-        _this3.props.onChange(null, value);
+        _this3.fireChange(null, value);
       }
     }
     _this3.props.outInputKeydown && _this3.props.outInputKeydown(e);
@@ -424,7 +424,7 @@ var _initialiseProps = function _initialiseProps() {
       inputValue: '',
       value: ''
     });
-    _this3.props.onChange && _this3.props.onChange('', '');
+    _this3.fireChange('', '');
   };
 
   this.handleSelect = function (value) {
@@ -454,12 +454,20 @@ var _initialiseProps = function _initialiseProps() {
     inputValue = format ? inputValue : inputValue && _this3.getValue((0, _moment2["default"])(inputValue));
 
     if (newValue && inputValue !== newValue) {
-      _this3.props.onChange && _this3.props.onChange(value, newValue || '');
+      _this3.fireChange(value, newValue || '');
     }
   };
 
   this.stopPropagation = function (e) {
     e.stopPropagation();
+  };
+
+  this.fireChange = function (value, stringValue) {
+    _this3.fileChange && _this3.props.onChange(value, stringValue);
+    _this3.fileChange = false;
+    _this3.fileChangeTimer = window.setTimeout(function () {
+      _this3.fileChange = true;
+    }, 10);
   };
 };
 

@@ -77,7 +77,7 @@ const defaultProps = {
   onExpand() { },
   onExpandedRowsChange() { },
   onRowClick() { },
-  onRowDoubleClick() { },
+  // onRowDoubleClick() { },
   clsPrefix: 'u-table',
   bodyStyle: {},
   style: {},
@@ -106,6 +106,8 @@ const defaultProps = {
   headerDisplayInRow: true,
   showRowNum: false,
 };
+
+const expandIconCellWidth = Number(43);
 
 class Table extends Component {
   constructor(props) {
@@ -233,19 +235,18 @@ class Table extends Component {
     if(this.scrollbarWidth<=0 && this.props.scroll.y){
       this.scrollbarWidth = measureScrollbar();
     }
-    if (this.columnManager.isAnyColumnsFixed()) {
-      this.syncFixedTableRowHeight();
-    }
 
     // console.log('this.scrollTop**********',this.scrollTop);
 
   }
 
-  componentDidUpdate(prevProps) {
-    // fix: 挪到 componentWillReceiveProps 中处理，解决 ie11 滚动加载，导致浏览器崩溃的问题
-    // if (this.columnManager.isAnyColumnsFixed()) {
-    //   this.syncFixedTableRowHeight();
-    // }
+  componentDidUpdate(prevProps, prevState) {
+    // todo: IE 大数据渲染，行高不固定，且设置了 heightConsistent={true} 时，滚动加载操作会导致 ie11 浏览器崩溃
+    // https://github.com/tinper-bee/bee-table/commit/bd2092cdbaad236ff89477304e58dea93325bf09
+    if(this.columnManager.isAnyColumnsFixed()) {
+      this.syncFixedTableRowHeight();
+    }
+
     //适应模态框中表格、以及父容器宽度变化的情况
     if (typeof (this.props.scroll.x) !== 'number' && this.contentTable.getBoundingClientRect().width !== this.contentDomWidth && this.firstDid) {
       this.computeTableWidth();
@@ -295,7 +296,7 @@ class Table extends Component {
   }
 
   computeTableWidth() {
-
+    let {expandIconAsCell} = this.props;
     //如果用户传了scroll.x按用户传的为主
     let setWidthParam = this.props.scroll.x
 
@@ -311,8 +312,9 @@ class Table extends Component {
 
     }
     const computeObj = this.columnManager.getColumnWidth(this.contentWidth);
+    const expandColWidth = expandIconAsCell ? expandIconCellWidth : 0;
     let lastShowIndex = computeObj.lastShowIndex;
-    this.computeWidth = computeObj.computeWidth;
+    this.computeWidth = computeObj.computeWidth + expandColWidth;
 
     this.domWidthDiff = this.contentDomWidth - this.computeWidth;
     if (typeof (setWidthParam) == 'string' && setWidthParam.indexOf('%')) {
@@ -449,6 +451,7 @@ class Table extends Component {
         className: `${clsPrefix}-expand-icon-th`,
         title: '',
         rowSpan: rows.length,
+        width: expandIconCellWidth
       });
     }
     const trStyle = headerHeight&&!fixed ? { height: headerHeight } : (fixed ? this.getHeaderRowStyle(columns, rows) : null);
@@ -827,6 +830,7 @@ class Table extends Component {
           lazyEndIndex = {lazyEndIndex}
           centerColumnsLength={this.centerColumnsLength}
           leftColumnsLength={this.leftColumnsLength}
+          expandIconCellWidth={expandIconCellWidth}
         />
       );
       this.treeRowIndex++;

@@ -1,3 +1,13 @@
+<a name="2.3.6"></a>
+## [2.3.6](https://github.com/tinper-bee/bee-datepicker/compare/v2.3.5...v2.3.6) (2019-12-17)
+
+
+### Bug Fixes
+
+* **bee-datepicker:** onChange触发两次 bug ([a25527a](https://github.com/tinper-bee/bee-datepicker/commit/a25527a))
+
+
+
 <a name="2.3.5"></a>
 ## [2.3.5](https://github.com/tinper-bee/bee-datepicker/compare/v2.3.4...v2.3.5) (2019-11-27)
 

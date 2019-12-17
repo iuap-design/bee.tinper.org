@@ -4,11 +4,19 @@
 Locale组件，在使用时，需要将你的App跟组件包裹起来。这样才能影响到所有使用的tinper-bee组件。
 
 ## 如何使用
-```
+
+```js
 import { Locale } from 'tinper-bee';
 import ZhCn from "tinper-bee/lib/zh_CN";
 import ZhTw from "tinper-bee/lib/zh_TW";
 import EnUS from "tinper-bee/lib/en_US";
+
+or
+
+import Locale from 'bee-locale';
+import ZhCn from "bee-locale/build/zh_CN";
+import ZhTw from "bee-locale/build/zh_TW";
+import EnUS from "bee-locale/build/en_US";
 
 ```
 

@@ -1,5 +1,6 @@
 # 轮播图 Carousel
-轮播图组件
+
+一个基于 swiper 的轮播图组件。
 
 ## 何时使用
 
@@ -30,7 +31,8 @@ import 'bee-carousel/build/Carousel.css';
 |noSwiping|根据条件是否禁用滑动|Boolean|false|
 |activeSlideKey|定义最初的激活态slide|String or Number|''|
 
-你也可以直接用swiper.js的原始参数 点击[这里](http://idangero.us/swiper/api/)api/
+
+更多参数可参考：https://swiperjs.com/api/
 
 
 ## 注意事项
