@@ -64,28 +64,36 @@ export default function bigData(Table) {
           _this.endIndex = _this.currentIndex + _this.loadCount; //数据结束位置
         
       }
-      if('data' in nextProps){
+      if (nextProps.data.toString() !== props.data.toString()) {
         const isTreeType = nextProps.isTree ? true : _this.checkIsTreeType(nextProps.data);
         _this.treeType = isTreeType;
         //fix: 滚动加载场景中,数据动态改变下占位计算错误的问题(26 Jun)
-        if (nextProps.data.toString() !== props.data.toString()) {
-          _this.cachedRowHeight = []; //缓存每行的高度
-          _this.cachedRowParentIndex = [];
-          _this.computeCachedRowParentIndex(nextProps.data);
-        }
+        _this.cachedRowHeight = []; //缓存每行的高度
+        _this.cachedRowParentIndex = [];
+        _this.computeCachedRowParentIndex(nextProps.data);
         _this.treeData = [];
         _this.flatTreeData = [];
         if(nextProps.data.length>0){
           _this.endIndex = _this.currentIndex - nextProps.loadBuffer + _this.loadCount; //数据结束位置
         }
         if(isTreeType){
-          _this.getTreeData(newExpandedKeys);
+          _this.getTreeData();
         }
       }
       //如果传currentIndex，会判断该条数据是否在可视区域，如果没有的话，则重新计算startIndex和endIndex
       if(currentIndex!==-1 && currentIndex !== this.currentIndex){
         _this.setStartAndEndIndex(currentIndex,dataLen);
       }
+      if(newExpandedKeys !== props.expandedRowKeys){
+        _this.cacheExpandedKeys = newExpandedKeys;
+        //重新递归数据
+        let flatTreeData = _this.deepTraversal(data);
+        let sliceTreeList = flatTreeData.slice(_this.startIndex, _this.endIndex);
+        _this.flatTreeData = flatTreeData;
+        _this.handleTreeListChange(sliceTreeList);
+        _this.cacheExpandedKeys = null;
+      }
+
     }
 
     componentWillMount() {
@@ -102,54 +110,50 @@ export default function bigData(Table) {
 
     /**
      * 如果是树形表，需要对传入的 data 进行处理
-     * @param expandedKeys: props 中传入的新 expandedRowKeys 属性值
      */
-    getTreeData = (expandedKeys) => {
+    getTreeData = () => {
       let { startIndex, endIndex } = this; 
       const { data } = this.props;
-      this.cacheExpandedKeys = expandedKeys && new Set(expandedKeys);
-      // 深递归 data，截取可视区 data 数组，再将扁平结构转换成嵌套结构
       let sliceTreeList = [];
       let flatTreeData = this.deepTraversal(data);
+          sliceTreeList = flatTreeData.slice(startIndex, endIndex);
       this.flatTreeData = flatTreeData;
-      sliceTreeList = flatTreeData.slice(startIndex, endIndex);
       this.handleTreeListChange(sliceTreeList);
-
-      this.cacheExpandedKeys = expandedKeys && null;
     }
 
     /**
      * 深度遍历树形 data，把数据拍平，变为一维数组
      * @param {*} data 
      * @param {*} parentKey 标识父节点
+     * @param {*} isShown 该节点是否显示在页面中，当节点的父节点是展开状态 或 该节点是根节点时，该值为 true
      */
-    deepTraversal = (treeData, parentKey=null) => {
+    deepTraversal = (treeData, parentKey=null, isShown) => {
       const _this = this;
       let {cacheExpandedKeys, expandedRowKeys = [], flatTreeKeysMap} = _this,
-          expandedKeysSet = cacheExpandedKeys ? cacheExpandedKeys : new Set(expandedRowKeys),
           flatTreeData = [],
           dataCopy = treeData;
       if(Array.isArray(dataCopy)){
         for (let i=0, l=dataCopy.length; i<l; i++) {
-          let { key, children, ...props } = dataCopy[i],
-              dataCopyI = new Object(),
-              isLeaf = (children && children.length > 0) ? false : true,
-              //如果父节点是收起状态，则子节点的展开状态无意义。（一级节点或根节点直接判断自身状态即可）
-              isExpanded = (parentKey === null || expandedKeysSet.has(parentKey)) ? expandedKeysSet.has(key) : false;
+          let { key, children, ...props } = dataCopy[i];
+          let dataCopyI = new Object();
+          let isLeaf = children ? false : true,
+              isExpanded = cacheExpandedKeys ? cacheExpandedKeys.indexOf(key) !== -1 : expandedRowKeys.indexOf(key) !== -1;
           dataCopyI = Object.assign(dataCopyI,{
             key,
             isExpanded,
             parentKey : parentKey,
+            isShown,
             isLeaf,
             index: flatTreeData.length
           },{...props});
-
-          flatTreeData.push(dataCopyI); // 取每项数据放入一个新数组
-          flatTreeKeysMap[key] = dataCopyI;
-
-          // 优化递归逻辑，如果当前节点是收起状态，则不遍历其子节点
-          if (Array.isArray(children) && children.length > 0 && isExpanded){
-            flatTreeData = flatTreeData.concat(this.deepTraversal(children, key));
+          //该节点的父节点是展开状态 或 该节点是根节点
+          if(isShown || parentKey === null){
+            flatTreeData.push(dataCopyI); // 取每项数据放入一个新数组
+            flatTreeKeysMap[key] = dataCopyI;
+          }
+          if (Array.isArray(children) && children.length > 0){
+            // 若存在children则递归调用，把数据拼接到新数组中，并且删除该children
+            flatTreeData = flatTreeData.concat(this.deepTraversal(children, key, isExpanded));
           }
         }
       }
@@ -513,21 +517,20 @@ export default function bigData(Table) {
              this.setState({ needRender: !needRender });
            }
         }
+        if(this.treeType) {
+            //收起和展开时，缓存 expandedKeys
+            _this.cacheExpandedKeys = expandedRowKeys;
+            //重新递归数据
+            let flatTreeData = _this.deepTraversal(data);
+            let sliceTreeList = flatTreeData.slice(_this.startIndex, _this.endIndex);
+            _this.flatTreeData = flatTreeData;
+            _this.handleTreeListChange(sliceTreeList);
+            _this.cacheExpandedKeys = null;
+        }
       }
       
       // expandState为true时，记录下
       _this.props.onExpand(expandState, record);
-
-      if(this.treeType) {
-        //收起和展开时，缓存 expandedKeys
-        _this.cacheExpandedKeys = new Set(expandedRowKeys);
-        //重新递归数据
-        let flatTreeData = _this.deepTraversal(data);
-        let sliceTreeList = flatTreeData.slice(_this.startIndex, _this.endIndex);
-        _this.flatTreeData = flatTreeData;
-        _this.handleTreeListChange(sliceTreeList);
-        _this.cacheExpandedKeys = null;
-      }
     };
 
     
@@ -558,7 +561,7 @@ export default function bigData(Table) {
         lazyLoad.sufHeight = this.getSumHeight(endIndex, data.length);
       }
       // console.log('*******expandedRowKeys*****'+expandedRowKeys);
-      const dataSource = (treeType && Array.isArray(treeData) && treeData.length > 0) ? treeData : data.slice(startIndex, endIndex);
+      const dataSource = treeType && Array.isArray(treeData) && treeData.length > 0 ? treeData : data.slice(startIndex, endIndex);
       return (
         <Table
           {...this.props}

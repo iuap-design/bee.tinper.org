@@ -203,6 +203,11 @@ function multiSelect(Table, Checkbox) {
       if (checkedAll) {
         check = false;
       } else {
+        // if(indeterminate){
+        //   check = true;
+        // }else{
+        //   check = true;
+        // }
         check = true;
       }
       var selectList = [];
@@ -267,6 +272,8 @@ function multiSelect(Table, Checkbox) {
       getTreeNodeByFlag(node);
       return res;
     };
+
+    this.handleClick = function () {};
 
     this.onCheckboxChange = function (text, record, index) {
       return function () {
@@ -333,6 +340,7 @@ function multiSelect(Table, Checkbox) {
             className: 'table-checkbox'
           }, attr, multiSelectConfig, {
             checked: record._checked,
+            onClick: _this2.handleClick,
             onChange: _this2.onCheckboxChange(text, record, index)
           }));
         }
