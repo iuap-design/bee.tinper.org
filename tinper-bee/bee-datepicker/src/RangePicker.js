@@ -294,7 +294,9 @@ class RangePicker extends Component {
             'onStartInputBlur',
             'onEndInputBlur',
             'renderFooter',
-            'showTime'
+            'showTime',
+            'disabledDate',
+            'disabledTime'
           ])}
           >
           <Picker

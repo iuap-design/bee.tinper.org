@@ -275,8 +275,7 @@ class DatePicker extends Component {
   render() {
     let state = this.state;
     let props = this.props;
-    const { showClose, defaultPanelShown,onBlur,disabledTime,onChange,
-           disabledDate,iconClick,outInputKeydown,...others} = props;
+    const { showClose, defaultPanelShown,onBlur,...others} = props;
     let value = state.value;
     let pickerChangeHandler = {};
     let calendarHandler = {};
@@ -334,7 +333,12 @@ class DatePicker extends Component {
         'onKeyDown',
         'renderError',
         'format',
-        'placeholder'
+        'placeholder',
+        'disabledTime',
+        'onChange',
+        'disabledDate',
+        'iconClick',
+        'outInputKeydown'
       ])}
       >
         <Picker

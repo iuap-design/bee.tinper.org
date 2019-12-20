@@ -137,8 +137,8 @@ var defaultProps = {
   onExpand: function onExpand() {},
   onExpandedRowsChange: function onExpandedRowsChange() {},
   onRowClick: function onRowClick() {},
-  onRowDoubleClick: function onRowDoubleClick() {},
 
+  // onRowDoubleClick() { },
   clsPrefix: 'u-table',
   bodyStyle: {},
   style: {},
@@ -169,9 +169,10 @@ var defaultProps = {
   onBodyScroll: function onBodyScroll() {},
   bodyDisplayInRow: true,
   headerDisplayInRow: true,
-  showRowNum: false,
-  invalidRowId: "invalid_blank_row"
+  showRowNum: false
 };
+
+var expandIconCellWidth = Number(43);
 
 var Table = function (_Component) {
   _inherits(Table, _Component);
@@ -201,6 +202,14 @@ var Table = function (_Component) {
     };
 
     _this.getColumnsChildrenList = function (columns) {
+      var expandIconAsCell = _this.props.expandIconAsCell;
+
+      if (expandIconAsCell) {
+        _this.columnsChildrenList.push({
+          className: "u-table-expand-icon-column",
+          key: "expand-icon"
+        });
+      }
       columns.forEach(function (da) {
         da.children ? _this.getColumnsChildrenList(da.children) : _this.columnsChildrenList.push(da);
       });
@@ -213,93 +222,30 @@ var Table = function (_Component) {
       data.forEach(function (da, i) {
         // tr 的唯一标识通过 data.key 或 rowKey 两种方式传进来
         var trKey = da.key ? da.key : _this.getRowKey(da, i);
-        var row = {};
         if (trKey == currentKey) {
           currentIndex = i;
           record = da;
         }
-        row[trKey] = { index: i, record: da };
-        _this.tableRowsMap = _extends({}, _this.tableRowsMap, row);
       });
-      _this.tableRowsMap['currentIndex'] = currentIndex;
       _this.props.onDragRowStart && _this.props.onDragRowStart(record, currentIndex);
     };
 
-    _this.onDragRowEnter = function (targetKey) {
-      var invalidRowId = _this.props.invalidRowId;
-      var tableRowsMap = _this.tableRowsMap;
-      var data = _this.state.data,
-          currentIndex = void 0,
-          targetIndex = void 0,
-          invalidRowIndex = void 0;
-      var invalidRowInfo = {}; //为了占位插入的空行信息
-
-      currentIndex = tableRowsMap && tableRowsMap["currentIndex"];
-      targetIndex = tableRowsMap && tableRowsMap[targetKey] && tableRowsMap[targetKey]['index'];
-      invalidRowIndex = tableRowsMap && tableRowsMap[invalidRowId] && tableRowsMap[invalidRowId]['index'];
-
-      // 如果已存在空行，需要先把空行删掉
-      if (invalidRowIndex && invalidRowIndex > -1) {
-        data.splice(invalidRowIndex, 1);
-      }
-      data.splice(parseInt(targetIndex) + 1, 0, { key: invalidRowId }); //加空行
-      invalidRowInfo[invalidRowId] = { index: parseInt(targetIndex) + 1, record: { key: invalidRowId } };
-      _this.tableRowsMap = _extends(tableRowsMap, invalidRowInfo);
-      _this.setState({
-        data: data
-      });
-    };
-
-    _this.onDragRowLeave = function (targetKey) {
-      var invalidRowId = _this.props.invalidRowId;
-      var tableRowsMap = _this.tableRowsMap;
-      var data = _this.state.data,
-          currentIndex = void 0,
-          invalidRowIndex = void 0;
-
-      currentIndex = tableRowsMap && tableRowsMap["currentIndex"];
-      invalidRowIndex = tableRowsMap && tableRowsMap[invalidRowId] && tableRowsMap[invalidRowId]['index'];
-
-      if (currentIndex !== invalidRowIndex) {
-        data.splice(invalidRowIndex, 1); //删空行
-        delete _this.tableRowsMap[invalidRowId];
-        _this.setState({
-          data: data
-        });
-      }
-    };
-
     _this.onDragRow = function (currentKey, targetKey) {
-      var invalidRowId = _this.props.invalidRowId;
-      var tableRowsMap = _this.tableRowsMap;
       var data = _this.state.data,
-          record = void 0,
           currentIndex = void 0,
           targetIndex = void 0,
-          invalidRowIndex = void 0;
-
-      // 改用 Map 获取行序号，一次遍历多处使用
-      record = tableRowsMap && tableRowsMap[currentKey] && tableRowsMap[currentKey]['record'];
-      currentIndex = tableRowsMap && tableRowsMap[currentKey] && tableRowsMap[currentKey]['index'];
-      targetIndex = tableRowsMap && tableRowsMap[targetKey] && tableRowsMap[targetKey]['index'];
-      invalidRowIndex = tableRowsMap && tableRowsMap[invalidRowId] && tableRowsMap[invalidRowId]['index'];
-
-      // 如果存在空行，需要把空行清空
-      if (invalidRowIndex && invalidRowIndex > -1) {
-        data.splice(invalidRowIndex, 1);
-        delete _this.tableRowsMap[invalidRowId];
-      }
-      // data.forEach((da,i)=>{
-      //   // tr 的唯一标识通过 data.key 或 rowKey 两种方式传进来
-      //   let trKey = da.key ? da.key : this.getRowKey(da, i);
-      //   if(trKey == currentKey){
-      //     currentIndex = i;
-      //     record = da;
-      //   }
-      //   if(trKey == targetKey){
-      //     targetIndex = i;
-      //   }
-      // });
+          record = void 0;
+      data.forEach(function (da, i) {
+        // tr 的唯一标识通过 data.key 或 rowKey 两种方式传进来
+        var trKey = da.key ? da.key : _this.getRowKey(da, i);
+        if (trKey == currentKey) {
+          currentIndex = i;
+          record = da;
+        }
+        if (trKey == targetKey) {
+          targetIndex = i;
+        }
+      });
       data = _this.swapArray(data, currentIndex, targetIndex);
       _this.props.onDropRow && _this.props.onDropRow(data, record);
       _this.setState({
@@ -425,7 +371,6 @@ var Table = function (_Component) {
     _this.contentTable = null;
     _this.leftColumnsLength; //左侧固定列的长度
     _this.centerColumnsLength; //非固定列的长度 
-    _this.tableRowsMap = null;
     return _this;
   }
 
@@ -493,11 +438,13 @@ var Table = function (_Component) {
     // console.log('this.scrollTop**********',this.scrollTop);
   };
 
-  Table.prototype.componentDidUpdate = function componentDidUpdate(prevProps) {
-
+  Table.prototype.componentDidUpdate = function componentDidUpdate(prevProps, prevState) {
+    // todo: IE 大数据渲染，行高不固定，且设置了 heightConsistent={true} 时，滚动加载操作会导致 ie11 浏览器崩溃
+    // https://github.com/tinper-bee/bee-table/commit/bd2092cdbaad236ff89477304e58dea93325bf09
     if (this.columnManager.isAnyColumnsFixed()) {
       this.syncFixedTableRowHeight();
     }
+
     //适应模态框中表格、以及父容器宽度变化的情况
     if (typeof this.props.scroll.x !== 'number' && this.contentTable.getBoundingClientRect().width !== this.contentDomWidth && this.firstDid) {
       this.computeTableWidth();
@@ -528,8 +475,9 @@ var Table = function (_Component) {
   };
 
   Table.prototype.computeTableWidth = function computeTableWidth() {
-
+    var expandIconAsCell = this.props.expandIconAsCell;
     //如果用户传了scroll.x按用户传的为主
+
     var setWidthParam = this.props.scroll.x;
 
     if (typeof setWidthParam == 'number') {
@@ -543,8 +491,9 @@ var Table = function (_Component) {
       this.contentWidth = this.contentDomWidth; //默认与容器宽度一样
     }
     var computeObj = this.columnManager.getColumnWidth(this.contentWidth);
+    var expandColWidth = expandIconAsCell ? expandIconCellWidth : 0;
     var lastShowIndex = computeObj.lastShowIndex;
-    this.computeWidth = computeObj.computeWidth;
+    this.computeWidth = computeObj.computeWidth + expandColWidth;
 
     this.domWidthDiff = this.contentDomWidth - this.computeWidth;
     if (typeof setWidthParam == 'string' && setWidthParam.indexOf('%')) {
@@ -655,6 +604,7 @@ var Table = function (_Component) {
 
 
   Table.prototype.getHeader = function getHeader(columns, fixed, leftFixedWidth, rightFixedWidth) {
+    var lastShowIndex = this.state.lastShowIndex;
     var _props = this.props,
         filterDelay = _props.filterDelay,
         onFilterChange = _props.onFilterChange,
@@ -689,7 +639,8 @@ var Table = function (_Component) {
         key: 'u-table-expandIconAsCell',
         className: clsPrefix + '-expand-icon-th',
         title: '',
-        rowSpan: rows.length
+        rowSpan: rows.length,
+        width: expandIconCellWidth
       });
     }
     var trStyle = headerHeight && !fixed ? { height: headerHeight } : fixed ? this.getHeaderRowStyle(columns, rows) : null;
@@ -706,7 +657,7 @@ var Table = function (_Component) {
       minColumnWidth: minColumnWidth,
       contentWidthDiff: contentWidthDiff,
       contentWidth: this.contentWidth,
-      lastShowIndex: this.state.lastShowIndex,
+      lastShowIndex: expandIconAsCell ? parseInt(lastShowIndex) + 1 : lastShowIndex,
       clsPrefix: clsPrefix,
       rows: rows,
       contentTable: this.contentTable,
@@ -867,8 +818,6 @@ var Table = function (_Component) {
       rowDraggAble: this.props.rowDraggAble,
       onDragRow: this.onDragRow,
       onDragRowStart: this.onDragRowStart,
-      onDragRowEnter: this.onDragRowEnter,
-      onDragRowLeave: this.onDragRowLeave,
       height: expandedRowHeight
     });
   };
@@ -876,18 +825,6 @@ var Table = function (_Component) {
   /**
    * 行拖拽开始时触发
    * @param currentKey 当前拖拽目标的key
-   */
-
-
-  /**
-   * 当被鼠标拖动的行进入其它行范围内时触发
-   * @param targetKey 鼠标进入的目标行序号
-   */
-
-
-  /**
-   * 当被鼠标拖动的行离开其它行范围时触发，和 onDragRowEnter 对应
-   * @param targetKey 鼠标离开的目标行序号
    */
 
 
@@ -948,8 +885,10 @@ var Table = function (_Component) {
     for (var i = 0; i < data.length; i++) {
       var isHiddenExpandIcon = void 0;
       var record = data[i];
-      var key = data.key ? data.key : this.getRowKey(record, i);
-      var isLeaf = typeof record['isLeaf'] === 'boolean' && record['isLeaf'] || false;
+      var key = this.getRowKey(record, i);
+      // isLeaf 字段是在 bigData 里添加的，只有层级树大数据场景需要该字段
+      // isLeaf 有三种取值情况：true / false / null
+      var isLeaf = typeof record['isLeaf'] === 'boolean' ? record['isLeaf'] : null;
       var childrenColumn = isLeaf ? false : record[childrenColumnName];
       var isRowExpanded = this.isRowExpanded(record, i);
       var expandedRowContent = void 0;
@@ -1003,69 +942,55 @@ var Table = function (_Component) {
       if (rootIndex == -1) {
         index = i + lazyParentIndex;
       }
-      // 行拖拽交互优化
-      if (props.rowDraggAble && key === props.invalidRowId) {
-        rst.push(_react2["default"].createElement(_TableRow2["default"], {
-          height: props.height || 40,
-          columns: leafColumns,
-          className: props.clsPrefix + '-invalid-row',
-          key: props.invalidRowId,
-          store: this.store,
-          visible: true,
-          style: { border: '2px dashed rgb(30, 136, 229)' }
-        }));
-      } else {
-        rst.push(_react2["default"].createElement(_TableRow2["default"], _extends({
-          indent: indent,
-          indentSize: props.indentSize,
-          needIndentSpaced: needIndentSpaced,
-          className: className + ' ' + (props.rowDraggAble ? ' row-dragg-able ' : ''),
-          record: record,
-          expandIconAsCell: expandIconAsCell,
-          onDestroy: this.onRowDestroy,
-          index: index,
-          visible: visible,
-          expandRowByClick: expandRowByClick,
-          onExpand: this.onExpanded,
-          expandable: childrenColumn || expandedRowRender,
-          expanded: isRowExpanded,
-          clsPrefix: props.clsPrefix + '-row',
-          childrenColumnName: childrenColumnName,
-          columns: leafColumns,
-          expandIconColumnIndex: expandIconColumnIndex,
-          onRowClick: onRowClick,
-          onRowDoubleClick: onRowDoubleClick,
-          height: height,
-          isHiddenExpandIcon: isHiddenExpandIcon
-        }, onHoverProps, {
-          key: "table_row_" + key + "_" + index,
-          hoverKey: key,
-          ref: rowRef,
-          store: this.store,
-          fixed: fixed,
-          expandedContentHeight: expandedContentHeight,
-          setRowHeight: props.setRowHeight,
-          setRowParentIndex: props.setRowParentIndex,
-          treeType: childrenColumn || this.treeType ? true : false,
-          fixedIndex: fixedIndex + lazyCurrentIndex,
-          rootIndex: rootIndex,
-          syncHover: props.syncHover,
-          bodyDisplayInRow: props.bodyDisplayInRow,
-          rowDraggAble: this.props.rowDraggAble,
-          onDragRow: this.onDragRow,
-          onDragRowStart: this.onDragRowStart,
-          onDragRowEnter: this.onDragRowEnter,
-          onDragRowLeave: this.onDragRowLeave,
-          contentTable: this.contentTable,
-          tableUid: this.tableUid,
-          expandedIcon: props.expandedIcon,
-          collapsedIcon: props.collapsedIcon,
-          lazyStartIndex: lazyCurrentIndex,
-          lazyEndIndex: lazyEndIndex,
-          centerColumnsLength: this.centerColumnsLength,
-          leftColumnsLength: this.leftColumnsLength
-        })));
-      }
+      rst.push(_react2["default"].createElement(_TableRow2["default"], _extends({
+        indent: indent,
+        indentSize: props.indentSize,
+        needIndentSpaced: needIndentSpaced,
+        className: className + ' ' + (this.props.rowDraggAble ? ' row-dragg-able ' : ''),
+        record: record,
+        expandIconAsCell: expandIconAsCell,
+        onDestroy: this.onRowDestroy,
+        index: index,
+        visible: visible,
+        expandRowByClick: expandRowByClick,
+        onExpand: this.onExpanded,
+        expandable: expandedRowRender || (childrenColumn && childrenColumn.length > 0 ? true : isLeaf === false),
+        expanded: isRowExpanded,
+        clsPrefix: props.clsPrefix + '-row',
+        childrenColumnName: childrenColumnName,
+        columns: leafColumns,
+        expandIconColumnIndex: expandIconColumnIndex,
+        onRowClick: onRowClick,
+        onRowDoubleClick: onRowDoubleClick,
+        height: height,
+        isHiddenExpandIcon: isHiddenExpandIcon
+      }, onHoverProps, {
+        key: "table_row_" + key + "_" + index,
+        hoverKey: key,
+        ref: rowRef,
+        store: this.store,
+        fixed: fixed,
+        expandedContentHeight: expandedContentHeight,
+        setRowHeight: props.setRowHeight,
+        setRowParentIndex: props.setRowParentIndex,
+        treeType: childrenColumn || this.treeType ? true : false,
+        fixedIndex: fixedIndex + lazyCurrentIndex,
+        rootIndex: rootIndex,
+        syncHover: props.syncHover,
+        bodyDisplayInRow: props.bodyDisplayInRow,
+        rowDraggAble: this.props.rowDraggAble,
+        onDragRow: this.onDragRow,
+        onDragRowStart: this.onDragRowStart,
+        contentTable: this.contentTable,
+        tableUid: this.tableUid,
+        expandedIcon: props.expandedIcon,
+        collapsedIcon: props.collapsedIcon,
+        lazyStartIndex: lazyCurrentIndex,
+        lazyEndIndex: lazyEndIndex,
+        centerColumnsLength: this.centerColumnsLength,
+        leftColumnsLength: this.leftColumnsLength,
+        expandIconCellWidth: expandIconCellWidth
+      })));
       this.treeRowIndex++;
       var subVisible = visible && isRowExpanded;
 

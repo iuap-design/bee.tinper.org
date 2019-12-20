@@ -188,10 +188,11 @@ var Upload = function (_Component) {
     _this.state = {
       previewVisible: false,
       previewImage: ''
-    };
 
-    _this.beforeUpload = function (file, fileList) {
-      _this.props.beforeUpload(file, _this.state.fileList);
+      // beforeUpload=(file,fileList)=>{
+      //   this.props.beforeUpload(file,this.state.fileList)
+      // }
+
     };
 
     _this.onStart = function (file) {
@@ -416,8 +417,8 @@ var Upload = function (_Component) {
       onStart: this.onStart,
       onError: this.onError,
       onProgress: this.onProgress,
-      onSuccess: this.onSuccess,
-      beforeUpload: this.beforeUpload
+      onSuccess: this.onSuccess
+      // beforeUpload:this.beforeUpload
     });
     delete rcUploadProps.className;
 

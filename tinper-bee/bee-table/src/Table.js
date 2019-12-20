@@ -77,7 +77,7 @@ const defaultProps = {
   onExpand() { },
   onExpandedRowsChange() { },
   onRowClick() { },
-  onRowDoubleClick() { },
+  // onRowDoubleClick() { },
   clsPrefix: 'u-table',
   bodyStyle: {},
   style: {},
@@ -105,8 +105,9 @@ const defaultProps = {
   bodyDisplayInRow: true,
   headerDisplayInRow: true,
   showRowNum: false,
-  invalidRowId: "invalid_blank_row"
 };
+
+const expandIconCellWidth = Number(43);
 
 class Table extends Component {
   constructor(props) {
@@ -168,9 +169,8 @@ class Table extends Component {
     this.onBodyMouseLeave = this.onBodyMouseLeave.bind(this);
     this.tableUid = null;
     this.contentTable = null;
-    this.leftColumnsLength;  //左侧固定列的长度
-    this.centerColumnsLength;  //非固定列的长度 
-    this.tableRowsMap = null;
+    this.leftColumnsLength  //左侧固定列的长度
+    this.centerColumnsLength  //非固定列的长度 
   }
   componentWillMount() {
     this.centerColumnsLength = this.columnManager.centerColumns().length
@@ -236,16 +236,17 @@ class Table extends Component {
       this.scrollbarWidth = measureScrollbar();
     }
 
-
     // console.log('this.scrollTop**********',this.scrollTop);
 
   }
 
-  componentDidUpdate(prevProps) {
-
-    if (this.columnManager.isAnyColumnsFixed()) {
+  componentDidUpdate(prevProps, prevState) {
+    // todo: IE 大数据渲染，行高不固定，且设置了 heightConsistent={true} 时，滚动加载操作会导致 ie11 浏览器崩溃
+    // https://github.com/tinper-bee/bee-table/commit/bd2092cdbaad236ff89477304e58dea93325bf09
+    if(this.columnManager.isAnyColumnsFixed()) {
       this.syncFixedTableRowHeight();
     }
+
     //适应模态框中表格、以及父容器宽度变化的情况
     if (typeof (this.props.scroll.x) !== 'number' && this.contentTable.getBoundingClientRect().width !== this.contentDomWidth && this.firstDid) {
       this.computeTableWidth();
@@ -295,7 +296,7 @@ class Table extends Component {
   }
 
   computeTableWidth() {
-
+    let {expandIconAsCell} = this.props;
     //如果用户传了scroll.x按用户传的为主
     let setWidthParam = this.props.scroll.x
 
@@ -311,8 +312,9 @@ class Table extends Component {
 
     }
     const computeObj = this.columnManager.getColumnWidth(this.contentWidth);
+    const expandColWidth = expandIconAsCell ? expandIconCellWidth : 0;
     let lastShowIndex = computeObj.lastShowIndex;
-    this.computeWidth = computeObj.computeWidth;
+    this.computeWidth = computeObj.computeWidth + expandColWidth;
 
     this.domWidthDiff = this.contentDomWidth - this.computeWidth;
     if (typeof (setWidthParam) == 'string' && setWidthParam.indexOf('%')) {
@@ -426,12 +428,20 @@ class Table extends Component {
 
   //todo 后续改进
   getColumnsChildrenList = (columns)=>{ 
+    const { expandIconAsCell } = this.props;
+    if(expandIconAsCell){
+      this.columnsChildrenList.push({
+        className: "u-table-expand-icon-column",
+        key: "expand-icon"
+      })
+    }
     columns.forEach(da=>{
       da.children?this.getColumnsChildrenList(da.children):this.columnsChildrenList.push(da);
     })
   }
 
   getHeader(columns, fixed, leftFixedWidth, rightFixedWidth) {
+    const { lastShowIndex } = this.state;
     const { filterDelay, onFilterChange, onFilterClear, filterable, showHeader, expandIconAsCell, clsPrefix, onDragStart, onDragEnter, onDragOver, onDrop,onDragEnd, draggable,
       onMouseDown, onMouseMove, onMouseUp, dragborder, onThMouseMove, dragborderKey, minColumnWidth, headerHeight,afterDragColWidth,headerScroll ,bordered,onDropBorder,onDraggingBorder} = this.props;
     const rows = this.getHeaderRows(columns);
@@ -441,6 +451,7 @@ class Table extends Component {
         className: `${clsPrefix}-expand-icon-th`,
         title: '',
         rowSpan: rows.length,
+        width: expandIconCellWidth
       });
     }
     const trStyle = headerHeight&&!fixed ? { height: headerHeight } : (fixed ? this.getHeaderRowStyle(columns, rows) : null);
@@ -460,7 +471,7 @@ class Table extends Component {
         minColumnWidth={minColumnWidth}
         contentWidthDiff={contentWidthDiff}
         contentWidth={this.contentWidth}
-        lastShowIndex={this.state.lastShowIndex}
+        lastShowIndex={expandIconAsCell ? parseInt(lastShowIndex) + 1 : lastShowIndex}
         clsPrefix={clsPrefix}
         rows={rows}
         contentTable={this.contentTable}
@@ -607,8 +618,6 @@ class Table extends Component {
         rowDraggAble={this.props.rowDraggAble}
         onDragRow={this.onDragRow}
         onDragRowStart={this.onDragRowStart}
-        onDragRowEnter={this.onDragRowEnter}
-        onDragRowLeave={this.onDragRowLeave}
         height={expandedRowHeight}
       />
     );
@@ -623,63 +632,12 @@ class Table extends Component {
     data.forEach((da,i)=>{
       // tr 的唯一标识通过 data.key 或 rowKey 两种方式传进来
       let trKey = da.key ? da.key : this.getRowKey(da, i);
-      let row = {};
       if(trKey == currentKey){
         currentIndex = i;
         record = da;
       }
-      row[trKey] = { index:i, record:da };
-      this.tableRowsMap = Object.assign({}, this.tableRowsMap, row);
     });
-    this.tableRowsMap['currentIndex'] = currentIndex;
     this.props.onDragRowStart && this.props.onDragRowStart(record,currentIndex);
-  }
-
-  /**
-   * 当被鼠标拖动的行进入其它行范围内时触发
-   * @param targetKey 鼠标进入的目标行序号
-   */
-  onDragRowEnter = (targetKey) => {
-    let {invalidRowId} = this.props;
-    let {tableRowsMap} = this;
-    let {data} = this.state,currentIndex,targetIndex,invalidRowIndex;
-    let invalidRowInfo = {}; //为了占位插入的空行信息
-
-    currentIndex = tableRowsMap && tableRowsMap["currentIndex"];
-    targetIndex = tableRowsMap && tableRowsMap[targetKey] && tableRowsMap[targetKey]['index'];
-    invalidRowIndex = tableRowsMap && tableRowsMap[invalidRowId] && tableRowsMap[invalidRowId]['index'];
-
-    // 如果已存在空行，需要先把空行删掉
-    if(invalidRowIndex && invalidRowIndex > -1){
-      data.splice(invalidRowIndex, 1);
-    }
-    data.splice(parseInt(targetIndex) + 1, 0, { key: invalidRowId }); //加空行
-    invalidRowInfo[invalidRowId] = { index:parseInt(targetIndex) + 1, record:{ key: invalidRowId } };
-    this.tableRowsMap = Object.assign(tableRowsMap, invalidRowInfo);
-    this.setState({
-      data
-    });
-  }
-
-  /**
-   * 当被鼠标拖动的行离开其它行范围时触发，和 onDragRowEnter 对应
-   * @param targetKey 鼠标离开的目标行序号
-   */
-  onDragRowLeave = (targetKey) => {
-    let {invalidRowId} = this.props;
-    let {tableRowsMap} = this;
-    let {data} = this.state,currentIndex,invalidRowIndex;
-
-    currentIndex = tableRowsMap && tableRowsMap["currentIndex"];
-    invalidRowIndex = tableRowsMap && tableRowsMap[invalidRowId] && tableRowsMap[invalidRowId]['index'];
-
-    if(currentIndex !== invalidRowIndex){
-      data.splice(invalidRowIndex, 1); //删空行
-      delete this.tableRowsMap[invalidRowId];
-      this.setState({
-        data
-      });
-    }
   }
 
   /**
@@ -688,32 +646,18 @@ class Table extends Component {
    * @param targetKey 拖拽结束时，目标位置的key
    */
   onDragRow = (currentKey,targetKey)=>{
-    let {invalidRowId} = this.props;
-    let {tableRowsMap} = this;
-    let {data} = this.state,record,currentIndex,targetIndex,invalidRowIndex;
-    
-    // 改用 Map 获取行序号，一次遍历多处使用
-    record = tableRowsMap && tableRowsMap[currentKey] && tableRowsMap[currentKey]['record'];
-    currentIndex = tableRowsMap && tableRowsMap[currentKey] && tableRowsMap[currentKey]['index'];
-    targetIndex = tableRowsMap && tableRowsMap[targetKey] && tableRowsMap[targetKey]['index'];
-    invalidRowIndex = tableRowsMap && tableRowsMap[invalidRowId] && tableRowsMap[invalidRowId]['index']
-
-    // 如果存在空行，需要把空行清空
-    if(invalidRowIndex && invalidRowIndex > -1){
-      data.splice(invalidRowIndex, 1);
-      delete this.tableRowsMap[invalidRowId];
-    }
-    // data.forEach((da,i)=>{
-    //   // tr 的唯一标识通过 data.key 或 rowKey 两种方式传进来
-    //   let trKey = da.key ? da.key : this.getRowKey(da, i);
-    //   if(trKey == currentKey){
-    //     currentIndex = i;
-    //     record = da;
-    //   }
-    //   if(trKey == targetKey){
-    //     targetIndex = i;
-    //   }
-    // });
+    let {data} = this.state,currentIndex,targetIndex,record;
+    data.forEach((da,i)=>{
+      // tr 的唯一标识通过 data.key 或 rowKey 两种方式传进来
+      let trKey = da.key ? da.key : this.getRowKey(da, i);
+      if(trKey == currentKey){
+        currentIndex = i;
+        record = da;
+      }
+      if(trKey == targetKey){
+        targetIndex = i;
+      }
+    });
     data = this.swapArray(data,currentIndex,targetIndex);
     this.props.onDropRow && this.props.onDropRow(data,record);
     this.setState({
@@ -779,8 +723,10 @@ class Table extends Component {
     for (let i = 0; i < data.length; i++) {
       let isHiddenExpandIcon;
       const record = data[i];
-      const key = data.key ? data.key : this.getRowKey(record, i);
-      const isLeaf = typeof record['isLeaf'] === 'boolean' && record['isLeaf'] || false;
+      const key = this.getRowKey(record, i);
+      // isLeaf 字段是在 bigData 里添加的，只有层级树大数据场景需要该字段
+      // isLeaf 有三种取值情况：true / false / null
+      const isLeaf = typeof record['isLeaf'] === 'boolean' ? record['isLeaf'] : null;
       const childrenColumn = isLeaf ? false : record[childrenColumnName];
       const isRowExpanded = this.isRowExpanded(record, i);
       let expandedRowContent;
@@ -836,73 +782,57 @@ class Table extends Component {
       if(rootIndex ==-1){
         index = i+lazyParentIndex
       }
-      // 行拖拽交互优化
-      if(props.rowDraggAble && key === props.invalidRowId){
-        rst.push(
-          <TableRow 
-            height={props.height || 40} 
-            columns={leafColumns} 
-            className={`${props.clsPrefix}-invalid-row`} 
-            key={props.invalidRowId} 
-            store={this.store} 
-            visible={true}
-            style={{border:'2px dashed rgb(30, 136, 229)'}}
-            />
-        );
-      } else {
-        rst.push(
-          <TableRow
-            indent={indent}
-            indentSize={props.indentSize}
-            needIndentSpaced={needIndentSpaced}
-            className={`${className} ${props.rowDraggAble?' row-dragg-able ':''}`}
-            record={record}
-            expandIconAsCell={expandIconAsCell}
-            onDestroy={this.onRowDestroy}
-            index={index}
-            visible={visible}
-            expandRowByClick={expandRowByClick}
-            onExpand={this.onExpanded}
-            expandable={childrenColumn || expandedRowRender}
-            expanded={isRowExpanded}
-            clsPrefix={`${props.clsPrefix}-row`}
-            childrenColumnName={childrenColumnName}
-            columns={leafColumns}
-            expandIconColumnIndex={expandIconColumnIndex}
-            onRowClick={onRowClick}
-            onRowDoubleClick={onRowDoubleClick}
-            height={height}
-            isHiddenExpandIcon={isHiddenExpandIcon}
-            {...onHoverProps}
-            key={"table_row_"+key+"_"+index}
-            hoverKey={key}
-            ref={rowRef}
-            store={this.store}
-            fixed={fixed}
-            expandedContentHeight={expandedContentHeight}
-            setRowHeight={props.setRowHeight}
-            setRowParentIndex={props.setRowParentIndex}
-            treeType={childrenColumn||this.treeType?true:false}
-            fixedIndex={fixedIndex+lazyCurrentIndex}
-            rootIndex = {rootIndex}
-            syncHover = {props.syncHover}
-            bodyDisplayInRow = {props.bodyDisplayInRow}
-            rowDraggAble={this.props.rowDraggAble}
-            onDragRow={this.onDragRow}
-            onDragRowStart={this.onDragRowStart}
-            onDragRowEnter={this.onDragRowEnter}
-            onDragRowLeave={this.onDragRowLeave}
-            contentTable={this.contentTable}
-            tableUid = {this.tableUid}
-            expandedIcon={props.expandedIcon}
-            collapsedIcon={props.collapsedIcon}
-            lazyStartIndex = {lazyCurrentIndex}
-            lazyEndIndex = {lazyEndIndex}
-            centerColumnsLength={this.centerColumnsLength}
-            leftColumnsLength={this.leftColumnsLength}
-          />
-        );
-      }
+      rst.push(
+        <TableRow
+          indent={indent}
+          indentSize={props.indentSize}
+          needIndentSpaced={needIndentSpaced}
+          className={`${className} ${this.props.rowDraggAble?' row-dragg-able ':''}`}
+          record={record}
+          expandIconAsCell={expandIconAsCell}
+          onDestroy={this.onRowDestroy}
+          index={index}
+          visible={visible}
+          expandRowByClick={expandRowByClick}
+          onExpand={this.onExpanded}
+          expandable={expandedRowRender || ((childrenColumn && childrenColumn.length > 0) ? true : isLeaf === false)}
+          expanded={isRowExpanded}
+          clsPrefix={`${props.clsPrefix}-row`}
+          childrenColumnName={childrenColumnName}
+          columns={leafColumns}
+          expandIconColumnIndex={expandIconColumnIndex}
+          onRowClick={onRowClick}
+          onRowDoubleClick={onRowDoubleClick}
+          height={height}
+          isHiddenExpandIcon={isHiddenExpandIcon}
+          {...onHoverProps}
+          key={"table_row_"+key+"_"+index}
+          hoverKey={key}
+          ref={rowRef}
+          store={this.store}
+          fixed={fixed}
+          expandedContentHeight={expandedContentHeight}
+          setRowHeight={props.setRowHeight}
+          setRowParentIndex={props.setRowParentIndex}
+          treeType={childrenColumn||this.treeType?true:false}
+          fixedIndex={fixedIndex+lazyCurrentIndex}
+          rootIndex = {rootIndex}
+          syncHover = {props.syncHover}
+          bodyDisplayInRow = {props.bodyDisplayInRow}
+          rowDraggAble={this.props.rowDraggAble}
+          onDragRow={this.onDragRow}
+          onDragRowStart={this.onDragRowStart}
+          contentTable={this.contentTable}
+          tableUid = {this.tableUid}
+          expandedIcon={props.expandedIcon}
+          collapsedIcon={props.collapsedIcon}
+          lazyStartIndex = {lazyCurrentIndex}
+          lazyEndIndex = {lazyEndIndex}
+          centerColumnsLength={this.centerColumnsLength}
+          leftColumnsLength={this.leftColumnsLength}
+          expandIconCellWidth={expandIconCellWidth}
+        />
+      );
       this.treeRowIndex++;
       const subVisible = visible && isRowExpanded;
 

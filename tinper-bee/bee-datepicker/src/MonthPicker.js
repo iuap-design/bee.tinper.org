@@ -180,6 +180,8 @@ class MonthPicker extends Component {
         'onClear',
         'renderFooter',
         'renderError',
+        'disabledDate',
+        'disabledTime'
       ])}
       >
         <Picker

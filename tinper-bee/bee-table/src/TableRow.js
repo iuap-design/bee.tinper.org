@@ -37,7 +37,7 @@ const propTypes = {
 
 const defaultProps = {
     onRowClick() {},
-    onRowDoubleClick() {},
+    // onRowDoubleClick() {},
     onDestroy() {},
     expandIconColumnIndex: 0,
     expandRowByClick: false,
@@ -67,7 +67,7 @@ class TableRow extends Component{
 
 
   componentDidMount() {
-    const { store, hoverKey,treeType } = this.props;
+    const { store, hoverKey,treeType,rowDraggAble } = this.props;
     this.unsubscribe = store.subscribe(() => {
       if (store.getState().currentHoverKey === hoverKey) {
         this.setState({ hovered: true });
@@ -324,28 +324,24 @@ class TableRow extends Component{
   }
 
   onDragEnter = (e) => {
-    let { onDragRowEnter } = this.props;
     let event = Event.getEvent(e) ,
-        _target = Event.getTarget(event),
-        target = _target.parentNode;
-        let currentIndex = target.getAttribute("data-row-key");
+    _target = Event.getTarget(event),target = _target.parentNode;
+    let currentIndex = target.getAttribute("data-row-key");
     if(!currentIndex || currentIndex === this.currentIndex)return;
     if(target.nodeName.toUpperCase() === "TR"){
       this.synchronizeTableTr(currentIndex,true);
-      onDragRowEnter && onDragRowEnter(currentIndex);
+      // target.setAttribute("style","border-bottom:2px dashed rgba(5,0,0,0.25)");
+      // // target.style.backgroundColor = 'rgb(235, 236, 240)';
     }
   }
 
   onDragLeave = (e) => {
-    let { onDragRowLeave } = this.props;
     let event = Event.getEvent(e) ,
-        _target = Event.getTarget(event),
-        target = _target.parentNode;
-        let currentIndex = target.getAttribute("data-row-key");
+    _target = Event.getTarget(event),target = _target.parentNode;
+    let currentIndex = target.getAttribute("data-row-key");
     if(!currentIndex || currentIndex === this.currentIndex)return;
     if(target.nodeName.toUpperCase() === "TR"){
       this.synchronizeTableTr(currentIndex,null);
-      onDragRowLeave && onDragRowLeave(currentIndex);
     }
   }
 
@@ -400,10 +396,15 @@ class TableRow extends Component{
       expandRowByClick,
       expanded,
       onExpand,
-      fixedIndex
+      fixedIndex,
+      onRowDoubleClick
     } = this.props;
     if (expandable && expandRowByClick) {
       onExpand(!expanded, record, fixedIndex,event);
+    }
+    if(!onRowDoubleClick){
+      onRowClick(record, fixedIndex, event);
+      return;
     }
     this.set((e)=> {
       onRowClick(record, fixedIndex, event);
@@ -413,7 +414,7 @@ class TableRow extends Component{
   onRowDoubleClick(event) {
     const { record, index, onRowDoubleClick,fixedIndex } = this.props;
     this.clear();
-    onRowDoubleClick(record, fixedIndex, event);
+    onRowDoubleClick && onRowDoubleClick(record, fixedIndex, event);
   }
 
   onMouseEnter(e) {
@@ -453,7 +454,7 @@ class TableRow extends Component{
       clsPrefix, columns, record, height, visible, index,
       expandIconColumnIndex, expandIconAsCell, expanded, expandRowByClick,rowDraggAble,
       expandable, onExpand, needIndentSpaced, indent, indentSize,isHiddenExpandIcon,fixed,bodyDisplayInRow
-      ,expandedIcon,collapsedIcon, hoverKey,lazyStartIndex,lazyEndIndex, style:propsStyle
+      ,expandedIcon,collapsedIcon, hoverKey,lazyStartIndex,lazyEndIndex, expandIconCellWidth
     } = this.props;
     let showSum = false;
     let { className } = this.props;
@@ -492,6 +493,7 @@ class TableRow extends Component{
           <td
             className={`${clsPrefix}-expand-icon-cell ${isExpandIconAsCell}`}
             key={`rc-table-expand-icon-cell-${i}`}
+            width={expandIconCellWidth}
           >
             {expandIcon}
           </td>
@@ -517,7 +519,7 @@ class TableRow extends Component{
         />
       );
     }
-    const style = { height , ...propsStyle, ...record?record.style:undefined};
+    const style = { height ,...record?record.style:undefined};
     if (!visible) {
       style.display = 'none';
     }

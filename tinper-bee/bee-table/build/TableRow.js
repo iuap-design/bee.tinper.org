@@ -64,7 +64,8 @@ var propTypes = {
 
 var defaultProps = {
   onRowClick: function onRowClick() {},
-  onRowDoubleClick: function onRowDoubleClick() {},
+
+  // onRowDoubleClick() {},
   onDestroy: function onDestroy() {},
 
   expandIconColumnIndex: 0,
@@ -288,8 +289,6 @@ var TableRow = function (_Component) {
     };
 
     _this.onDragEnter = function (e) {
-      var onDragRowEnter = _this.props.onDragRowEnter;
-
       var event = _utils.Event.getEvent(e),
           _target = _utils.Event.getTarget(event),
           target = _target.parentNode;
@@ -297,13 +296,12 @@ var TableRow = function (_Component) {
       if (!currentIndex || currentIndex === _this.currentIndex) return;
       if (target.nodeName.toUpperCase() === "TR") {
         _this.synchronizeTableTr(currentIndex, true);
-        onDragRowEnter && onDragRowEnter(currentIndex);
+        // target.setAttribute("style","border-bottom:2px dashed rgba(5,0,0,0.25)");
+        // // target.style.backgroundColor = 'rgb(235, 236, 240)';
       }
     };
 
     _this.onDragLeave = function (e) {
-      var onDragRowLeave = _this.props.onDragRowLeave;
-
       var event = _utils.Event.getEvent(e),
           _target = _utils.Event.getTarget(event),
           target = _target.parentNode;
@@ -311,7 +309,6 @@ var TableRow = function (_Component) {
       if (!currentIndex || currentIndex === _this.currentIndex) return;
       if (target.nodeName.toUpperCase() === "TR") {
         _this.synchronizeTableTr(currentIndex, null);
-        onDragRowLeave && onDragRowLeave(currentIndex);
       }
     };
 
@@ -351,7 +348,8 @@ var TableRow = function (_Component) {
     var _props = this.props,
         store = _props.store,
         hoverKey = _props.hoverKey,
-        treeType = _props.treeType;
+        treeType = _props.treeType,
+        rowDraggAble = _props.rowDraggAble;
 
     this.unsubscribe = store.subscribe(function () {
       if (store.getState().currentHoverKey === hoverKey) {
@@ -500,10 +498,15 @@ var TableRow = function (_Component) {
         expandRowByClick = _props5.expandRowByClick,
         expanded = _props5.expanded,
         onExpand = _props5.onExpand,
-        fixedIndex = _props5.fixedIndex;
+        fixedIndex = _props5.fixedIndex,
+        onRowDoubleClick = _props5.onRowDoubleClick;
 
     if (expandable && expandRowByClick) {
       onExpand(!expanded, record, fixedIndex, event);
+    }
+    if (!onRowDoubleClick) {
+      onRowClick(record, fixedIndex, event);
+      return;
     }
     this.set(function (e) {
       onRowClick(record, fixedIndex, event);
@@ -518,7 +521,7 @@ var TableRow = function (_Component) {
         fixedIndex = _props6.fixedIndex;
 
     this.clear();
-    onRowDoubleClick(record, fixedIndex, event);
+    onRowDoubleClick && onRowDoubleClick(record, fixedIndex, event);
   };
 
   TableRow.prototype.onMouseEnter = function onMouseEnter(e) {
@@ -575,7 +578,7 @@ var TableRow = function (_Component) {
         hoverKey = _props9.hoverKey,
         lazyStartIndex = _props9.lazyStartIndex,
         lazyEndIndex = _props9.lazyEndIndex,
-        propsStyle = _props9.style;
+        expandIconCellWidth = _props9.expandIconCellWidth;
 
     var showSum = false;
     var className = this.props.className;
@@ -613,7 +616,8 @@ var TableRow = function (_Component) {
           'td',
           {
             className: clsPrefix + '-expand-icon-cell ' + isExpandIconAsCell,
-            key: 'rc-table-expand-icon-cell-' + i
+            key: 'rc-table-expand-icon-cell-' + i,
+            width: expandIconCellWidth
           },
           expandIcon
         ));
@@ -635,7 +639,7 @@ var TableRow = function (_Component) {
         lazyEndIndex: lazyEndIndex
       }));
     }
-    var style = _extends({ height: height }, propsStyle, record ? record.style : undefined);
+    var style = _extends({ height: height }, record ? record.style : undefined);
     if (!visible) {
       style.display = 'none';
     }

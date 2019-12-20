@@ -145,7 +145,7 @@ var MonthPicker = function (_Component) {
     return _react2["default"].createElement(
       "div",
       _extends({ className: classes, onClick: this.stopPropagation, onMouseOver: this.stopPropagation
-      }, (0, _omit2["default"])(others, ['closeIcon', 'renderIcon', 'format', 'showDateInput', 'showMonthInput', 'locale', 'placeholder', 'onClear', 'renderFooter', 'renderError'])),
+      }, (0, _omit2["default"])(others, ['closeIcon', 'renderIcon', 'format', 'showDateInput', 'showMonthInput', 'locale', 'placeholder', 'onClear', 'renderFooter', 'renderError', 'disabledDate', 'disabledTime'])),
       _react2["default"].createElement(
         _Picker2["default"],
         {

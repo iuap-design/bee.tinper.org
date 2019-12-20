@@ -37492,8 +37492,8 @@
 	            _this3.setState({
 	                value: v
 	            });
-	            onBlur && onBlur(v, e);
 	            onChange && onChange(v);
+	            onBlur && onBlur(v, e);
 	            return;
 	        }
 	        v = unThousands(v);
@@ -37515,11 +37515,11 @@
 	        });
 	        _this3.detailDisable(value);
 	        if (toNumber) {
-	            onBlur && onBlur(Number(value), e);
 	            onChange && onChange(Number(value));
+	            onBlur && onBlur(Number(value), e);
 	        } else {
-	            onBlur && onBlur(value, e);
 	            onChange && onChange(value);
+	            onBlur && onBlur(value, e);
 	        }
 	    };
 	

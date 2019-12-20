@@ -285,8 +285,8 @@ class InputNumber extends Component {
             this.setState({
                 value:v
             })
-            onBlur && onBlur(v,e);
             onChange && onChange(v);
+            onBlur && onBlur(v,e);
             return;
         }
         v = unThousands(v)
@@ -308,11 +308,11 @@ class InputNumber extends Component {
         });
         this.detailDisable(value);
         if(toNumber){
-            onBlur && onBlur(Number(value),e);
             onChange && onChange(Number(value));
+            onBlur && onBlur(Number(value),e);
         }else{
-            onBlur && onBlur(value,e);
             onChange && onChange(value);
+            onBlur && onBlur(value,e);
         }
         
     }

@@ -42,7 +42,7 @@ class Demo1 extends Component {
             <Modal
             show = { this.state.showModal }
             onHide = { this.close } >
-                <Modal.Header closeButton>
+                <Modal.Header closeButton closeButtonProps={{fieldId:'closeBtn'}}>
                     <Modal.Title>标题</Modal.Title>
                 </Modal.Header>
 

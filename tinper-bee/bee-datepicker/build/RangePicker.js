@@ -180,7 +180,7 @@ var RangePicker = function (_Component) {
         return _react2["default"].createElement(
             "div",
             _extends({ onClick: this.stopPropagation, onMouseOver: this.stopPropagation
-            }, (0, _omit2["default"])(others, ['closeIcon', 'renderIcon', 'showClear', 'showToday', 'locale', 'placeholder', 'showOk', 'dateInputPlaceholder', 'onPanelChange', 'onStartInputBlur', 'onEndInputBlur', 'renderFooter', 'showTime'])),
+            }, (0, _omit2["default"])(others, ['closeIcon', 'renderIcon', 'showClear', 'showToday', 'locale', 'placeholder', 'showOk', 'dateInputPlaceholder', 'onPanelChange', 'onStartInputBlur', 'onEndInputBlur', 'renderFooter', 'showTime', 'disabledDate', 'disabledTime'])),
             _react2["default"].createElement(
                 _Picker2["default"],
                 {

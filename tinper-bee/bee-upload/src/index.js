@@ -149,9 +149,9 @@ class Upload extends Component {
     previewImage: '',
   }
 
-  beforeUpload=(file,fileList)=>{
-    this.props.beforeUpload(file,this.state.fileList)
-  }
+  // beforeUpload=(file,fileList)=>{
+  //   this.props.beforeUpload(file,this.state.fileList)
+  // }
 
   onStart = (file) => {
     let targetItem;
@@ -346,7 +346,7 @@ class Upload extends Component {
       onError: this.onError,
       onProgress: this.onProgress,
       onSuccess: this.onSuccess,
-      beforeUpload:this.beforeUpload
+      // beforeUpload:this.beforeUpload
     });
     delete rcUploadProps.className;
 

@@ -87,6 +87,6 @@ export default {
 
 ## 注意事项
 
-暂无
+`bee-datepicker`犹豫没有打包到 `tinper-bee` 包里，多语需要单独设置。[参考Datepicker示例](http://bee.tinper.org/tinper-bee/bee-datepicker)
 
 ## 更新日志

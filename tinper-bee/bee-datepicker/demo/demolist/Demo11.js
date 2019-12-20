@@ -6,7 +6,7 @@
 
 import React, { Component } from "react";
 import { Row } from "bee-layout";
-import DatePicker from "../../src/index";
+import DatePicker from "../../src";
 import Form from 'bee-form';
 import Button from 'bee-button';
 

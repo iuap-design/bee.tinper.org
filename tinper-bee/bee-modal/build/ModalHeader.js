@@ -42,7 +42,15 @@ var propTypes = {
   /**
    * 关闭时的钩子函数
    */
-  onHide: _propTypes2["default"].func
+  onHide: _propTypes2["default"].func,
+  /**
+   * 自定义关闭按钮的钩子函数
+   */
+  renderCloseButton: _propTypes2["default"].func,
+  /**
+   * 自定义关闭按钮的 props
+   */
+  closeButtonProps: _propTypes2["default"].object
 };
 
 var defaultProps = {
@@ -74,32 +82,35 @@ var ModalHeader = function (_React$Component) {
         className = _props.className,
         clsPrefix = _props.clsPrefix,
         children = _props.children,
-        props = _objectWithoutProperties(_props, ['aria-label', 'closeButton', 'onHide', 'className', 'clsPrefix', 'children']);
+        renderCloseButton = _props.renderCloseButton,
+        closeButtonProps = _props.closeButtonProps,
+        props = _objectWithoutProperties(_props, ['aria-label', 'closeButton', 'onHide', 'className', 'clsPrefix', 'children', 'renderCloseButton', 'closeButtonProps']);
 
     var modal = this.context.$u_modal;
-
     var classes = {};
     classes['' + clsPrefix] = true;
     classes['dnd-handle'] = true;
+
+    var closeBtnDom = _react2["default"].createElement(
+      'button',
+      _extends({}, closeButtonProps, {
+        type: 'button',
+        className: 'u-close dnd-cancel',
+        'aria-label': label,
+        onClick: (0, _tinperBeeCore.createChainedFunction)(modal.onHide, onHide)
+      }),
+      renderCloseButton ? renderCloseButton() : _react2["default"].createElement(
+        'span',
+        { 'aria-hidden': 'true' },
+        _react2["default"].createElement('i', { className: 'uf uf-close' })
+      )
+    );
     return _react2["default"].createElement(
       'div',
       _extends({}, props, {
         className: (0, _classnames2["default"])(className, classes)
       }),
-      closeButton && _react2["default"].createElement(
-        'button',
-        {
-          type: 'button',
-          className: 'u-close dnd-cancel',
-          'aria-label': label,
-          onClick: (0, _tinperBeeCore.createChainedFunction)(modal.onHide, onHide)
-        },
-        _react2["default"].createElement(
-          'span',
-          { 'aria-hidden': 'true' },
-          _react2["default"].createElement('i', { className: 'uf uf-close' })
-        )
-      ),
+      closeButton && closeBtnDom,
       children
     );
   };

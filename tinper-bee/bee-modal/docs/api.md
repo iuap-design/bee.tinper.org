@@ -72,6 +72,8 @@ import 'bee-modal/build/Modal.css';
 |参数|说明|类型|默认值|
 |:---|:-----|:----|:------|
 |closeButton|是否显示关闭按钮|boolean|false|
+|renderCloseButton|自定义关闭按钮的钩子函数，closeButton设置为 true 时有效|() => React.Node|-|
+|closeButtonProps|自定义关闭按钮的 props|object|-|
 
 ### Modal.method()
 
