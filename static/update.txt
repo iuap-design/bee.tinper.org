@@ -704,3 +704,5 @@ static/tinper-bee/components/bee-clipboard/dist/v2.0.2/demo.js
 static/tinper-bee/components/bee-modal/dist/v2.0.22/demo.js 
 static/tinper-bee/components/bee-table/dist/v2.2.19/demo.js 
 static/tinper-bee/components/bee-table/dist/v2.2.25/demo.js 
+static/tinper-bee/components/bee-datepicker/dist/v2.0.34/demo.css 
+static/tinper-bee/components/bee-table/dist/v1.6.31/demo.js 
