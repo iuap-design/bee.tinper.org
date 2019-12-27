@@ -67,7 +67,11 @@ class MonthPicker extends Component {
         })
     }
 }
-
+  handleCalendarChange = (value) => {
+    this.setState({
+      value: value && Object.assign(value, {_type:'month'}) || value
+    });
+  }
   onChange = (value) => {
     let { onChange,onClear,onSelect,format } = this.props;
 
@@ -164,7 +168,7 @@ class MonthPicker extends Component {
     const { showClose,value, ...others } = props;
     const monthCalendar = <MonthCalendar {...props}
       value = {state.value}
-      onChange={this.onChange} 
+      onChange={this.handleCalendarChange} 
     />;
     let classes = classnames(props.className, "datepicker-container");
     return (
@@ -181,10 +185,11 @@ class MonthPicker extends Component {
         'renderFooter',
         'renderError',
         'disabledDate',
-        'disabledTime'
+        'disabledTime',
       ])}
       >
         <Picker
+          {...props}
           onOpenChange={this.onOpenChange}
           animation={'animation' in props ? props.animation : "slide-up"}
           calendar={monthCalendar}

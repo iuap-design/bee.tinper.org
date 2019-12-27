@@ -334,7 +334,7 @@ var SubMenu = exports.SubMenu = function (_React$Component) {
           popupClassName: prefixCls + '-popup ' + popupClassName,
           getPopupContainer: getPopupContainer,
           builtinPlacements: _extends({}, _placements2["default"], builtinPlacements),
-          popupPlacement: popupPlacement,
+          popupPlacement: this.props.mode == 'vertical' ? this.props.position || popupPlacement : popupPlacement,
           popupVisible: isOpen,
           popupAlign: popupAlign,
           popup: children,
@@ -380,7 +380,8 @@ SubMenu.propTypes = {
   mode: _propTypes2["default"].oneOf(['horizontal', 'vertical', 'vertical-left', 'vertical-right', 'inline']),
   manualRef: _propTypes2["default"].func,
   itemIcon: _propTypes2["default"].oneOfType([_propTypes2["default"].func, _propTypes2["default"].node]),
-  expandIcon: _propTypes2["default"].oneOfType([_propTypes2["default"].func, _propTypes2["default"].node])
+  expandIcon: _propTypes2["default"].oneOfType([_propTypes2["default"].func, _propTypes2["default"].node]),
+  position: _propTypes2["default"].oneOf(['bottomLeft', 'topLeft', 'leftTop', 'rightTop'])
 };
 SubMenu.defaultProps = {
   onMouseEnter: _util.noop,

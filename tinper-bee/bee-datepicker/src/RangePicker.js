@@ -300,6 +300,7 @@ class RangePicker extends Component {
           ])}
           >
           <Picker
+              {...props}
               value = {value}
               animation={'animation' in props ? props.animation : "slide-up"}
               calendar={calendar}
@@ -307,6 +308,7 @@ class RangePicker extends Component {
               dropdownClassName={props.dropdownClassName}
               onOpenChange={this.onOpenChange}
               open={open}
+              
           >
               {
                   ({}) => {

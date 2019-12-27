@@ -37,7 +37,8 @@ import 'bee-input-number/build/InputNumber.css';
 |toThousands|是否显示千分符|bool|false|
 |split|InputNumberGroup自定义分隔符|node|~|
 |displayCheckPrompt|是否显示超出限制范围之后的检验提示|bool|false|
-|size|选择框大小，可选 lg sm|string|default
+|size|选择框大小，可选 lg sm|string|default|
+|minusRight|负号是否在右边，针对特殊场景使用|bool|false|
 
 ## 注意事项
 

@@ -183,7 +183,7 @@ var RangePicker = function (_Component) {
             }, (0, _omit2["default"])(others, ['closeIcon', 'renderIcon', 'showClear', 'showToday', 'locale', 'placeholder', 'showOk', 'dateInputPlaceholder', 'onPanelChange', 'onStartInputBlur', 'onEndInputBlur', 'renderFooter', 'showTime', 'disabledDate', 'disabledTime'])),
             _react2["default"].createElement(
                 _Picker2["default"],
-                {
+                _extends({}, props, {
                     value: value,
                     animation: 'animation' in props ? props.animation : "slide-up",
                     calendar: calendar,
@@ -191,7 +191,8 @@ var RangePicker = function (_Component) {
                     dropdownClassName: props.dropdownClassName,
                     onOpenChange: this.onOpenChange,
                     open: open
-                },
+
+                }),
                 function (_ref) {
                     _objectDestructuringEmpty(_ref);
 

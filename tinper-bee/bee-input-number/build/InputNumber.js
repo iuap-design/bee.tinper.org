@@ -62,7 +62,8 @@ var propTypes = {
     toThousands: _propTypes2["default"].bool,
     locale: _propTypes2["default"].object,
     toNumber: _propTypes2["default"].bool, //回调函数内的值是否转换为数值类型
-    displayCheckPrompt: _propTypes2["default"].bool //是否显示超出限制范围之后的检验提示
+    displayCheckPrompt: _propTypes2["default"].bool, //是否显示超出限制范围之后的检验提示
+    minusRight: _propTypes2["default"].bool //负号是否在右边
 };
 
 var defaultProps = {
@@ -349,6 +350,15 @@ var _initialiseProps = function _initialiseProps() {
             onChange = props.onChange,
             displayCheckPrompt = props.displayCheckPrompt;
 
+        if (props.minusRight) {
+            value = value.toString();
+            if (value.indexOf('-') != -1) {
+                //所有位置的负号转到前边
+                value = value.replace('-', '');
+                value = '-' + value;
+            }
+            value = Number(value);
+        }
         if (value != undefined) {
             if (value === '') {
                 currentValue = '';
@@ -408,6 +418,14 @@ var _initialiseProps = function _initialiseProps() {
         if (props.hasOwnProperty('precision')) {
             currentValue = Number(currentValue).toFixed(precision);
         }
+        if (props.minusRight) {
+            currentValue = currentValue.toString();
+            if (currentValue.indexOf('-') != -1) {
+                //负号转到后边
+                currentValue = currentValue.replace('-', '');
+                currentValue = currentValue + '-';
+            }
+        }
 
         return {
             value: currentValue,
@@ -421,7 +439,8 @@ var _initialiseProps = function _initialiseProps() {
         _this3.selectionStart = selectionStart;
         var _props2 = _this3.props,
             onChange = _props2.onChange,
-            toNumber = _props2.toNumber;
+            toNumber = _props2.toNumber,
+            minusRight = _props2.minusRight;
 
         if (value === '') {
             onChange && onChange(value);
@@ -432,7 +451,11 @@ var _initialiseProps = function _initialiseProps() {
             return;
         }
         value = unThousands(value);
-        if (isNaN(value) && value !== '.' && value !== '-') return;
+        if (minusRight) {
+            if (value.match(/-/g) && value.match(/-/g).length > 1) return;
+        } else {
+            if (isNaN(value) && value !== '.' && value !== '-') return;
+        }
         _this3.setState({
             value: value,
             showValue: toThousands(value)
@@ -487,7 +510,8 @@ var _initialiseProps = function _initialiseProps() {
             toNumber = _props4.toNumber,
             max = _props4.max,
             min = _props4.min,
-            displayCheckPrompt = _props4.displayCheckPrompt;
+            displayCheckPrompt = _props4.displayCheckPrompt,
+            minusRight = _props4.minusRight;
 
         var local = (0, _tool.getComponentLocale)(_this3.props, _this3.context, 'InputNumber', function () {
             return _i18n2["default"];
@@ -500,8 +524,16 @@ var _initialiseProps = function _initialiseProps() {
             onBlur && onBlur(v, e);
             return;
         }
-        v = unThousands(v);
-        var value = isNaN(Number(v)) ? 0 : Number(v);
+        var value = unThousands(v);
+        if (minusRight) {
+            if (value.indexOf('-') != -1) {
+                //所有位置的负号转到前边
+                value = value.replace('-', '');
+                value = '-' + value;
+            }
+        }
+
+        value = isNaN(Number(value)) ? 0 : Number(value);
         if (value > max) {
             if (displayCheckPrompt) prompt(local['msgMax']);
             value = max;
@@ -513,12 +545,18 @@ var _initialiseProps = function _initialiseProps() {
         if (_this3.props.hasOwnProperty('precision')) {
             value = value.toFixed(precision);
         }
+        value = value.toString();
+        if (minusRight && value.indexOf('-') != -1) {
+            //负号转到后边
+            value = value.replace('-', '');
+            value = value + '-';
+        }
         _this3.setState({
             value: value,
             showValue: toThousands(value)
         });
         _this3.detailDisable(value);
-        if (toNumber) {
+        if (toNumber && !minusRight) {
             onChange && onChange(Number(value));
             onBlur && onBlur(Number(value), e);
         } else {

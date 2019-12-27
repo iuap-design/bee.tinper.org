@@ -20,6 +20,7 @@ const propTypes = {
     locale:PropTypes.object,
     toNumber:PropTypes.bool, //回调函数内的值是否转换为数值类型
     displayCheckPrompt:PropTypes.bool, //是否显示超出限制范围之后的检验提示
+    minusRight:PropTypes.bool,//负号是否在右边
 };
 
 const defaultProps = {
@@ -128,6 +129,14 @@ class InputNumber extends Component {
         let currentMinusDisabled = false;
         let currentPlusDisabled = false;
         let { value,min,max,precision,onChange,displayCheckPrompt } = props;
+        if(props.minusRight){
+            value = value.toString();
+            if(value.indexOf('-')!=-1){//所有位置的负号转到前边
+                value = value.replace('-','');
+                value = '-'+value;
+            }
+            value = Number(value);
+        }
         if (value!=undefined) {
             if(value===''){
                 currentValue='';
@@ -183,7 +192,14 @@ class InputNumber extends Component {
         if(props.hasOwnProperty('precision')){
             currentValue = Number(currentValue).toFixed(precision);
         }
-
+        if(props.minusRight){
+            currentValue = currentValue.toString();
+            if(currentValue.indexOf('-')!=-1){//负号转到后边
+                currentValue = currentValue.replace('-','');
+                currentValue = currentValue+'-';
+            }
+        }
+        
         return {
             value: currentValue,
             minusDisabled: currentMinusDisabled,
@@ -226,7 +242,7 @@ class InputNumber extends Component {
     handleChange = (value) => {
         let selectionStart = this.input.selectionStart==undefined?this.input.input.selectionStart:this.input.selectionStart;
         this.selectionStart = selectionStart;
-        const { onChange,toNumber } = this.props;
+        const { onChange,toNumber,minusRight } = this.props;
         if(value===''){
             onChange && onChange(value);
             this.setState({
@@ -236,7 +252,11 @@ class InputNumber extends Component {
             return;
         }
         value = unThousands(value);
-        if(isNaN(value)&&(value!=='.')&&(value!=='-'))return;
+        if(minusRight){
+            if(value.match(/-/g)&&value.match(/-/g).length>1)return
+        }else{
+            if(isNaN(value)&&(value!=='.')&&(value!=='-'))return;
+        }
         this.setState({
             value,
             showValue:toThousands(value),
@@ -279,7 +299,7 @@ class InputNumber extends Component {
 
     handleBlur = (v,e) => {
         this.focus = false;        
-        const { onBlur,precision,onChange,toNumber,max,min,displayCheckPrompt } = this.props;
+        const { onBlur,precision,onChange,toNumber,max,min,displayCheckPrompt,minusRight } = this.props;
         const local = getComponentLocale(this.props, this.context, 'InputNumber', () => i18n);
         if(v===''){
             this.setState({
@@ -289,8 +309,15 @@ class InputNumber extends Component {
             onBlur && onBlur(v,e);
             return;
         }
-        v = unThousands(v)
-        let value = isNaN(Number(v)) ? 0 : Number(v);
+        let value = unThousands(v);
+        if(minusRight){
+            if(value.indexOf('-')!=-1){//所有位置的负号转到前边
+                value = value.replace('-','');
+                value = '-'+value;
+            }
+        }
+        
+        value = isNaN(Number(value)) ? 0 : Number(value);
         if(value>max){
             if(displayCheckPrompt)prompt(local['msgMax']);
             value = max;
@@ -302,19 +329,23 @@ class InputNumber extends Component {
         if(this.props.hasOwnProperty('precision')){
             value = value.toFixed(precision);
         }
+        value = value.toString();
+        if(minusRight&&(value.indexOf('-')!=-1)){//负号转到后边
+            value = value.replace('-','');
+            value = value+'-';
+        }
         this.setState({
             value,
             showValue:toThousands(value)
         });
         this.detailDisable(value);
-        if(toNumber){
+        if(toNumber&&(!minusRight)){
             onChange && onChange(Number(value));
             onBlur && onBlur(Number(value),e);
         }else{
             onChange && onChange(value);
             onBlur && onBlur(value,e);
         }
-        
     }
     /**
      * 设置增加减少按钮是否可用

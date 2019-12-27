@@ -62,6 +62,7 @@ import 'bee-menus/build/Menu.css';
 |disabled|是否禁用|Boolean|false|
 |key|item 的唯一标志|String|-|
 |Children|MenuItem组件/SubMenu组件/MenuItemGroup组件|node|-|
+|position|`mode=='vertical'` 条件下，菜单显示位置，可选 `'horizontal', 'vertical', 'vertical-left', 'vertical-right', 'inline'`|string|-|
 
 
 ## 已支持的键盘操作

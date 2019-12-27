@@ -322,7 +322,7 @@ var _initialiseProps = function _initialiseProps() {
   this.handleCalendarChange = function (value) {
     var props = _this3.props;
     _this3.setState({ value: value, inputValue: value && _this3.getValue(value) || '' });
-    _this3.fireChange(value, value && _this3.getValue(value) || '');
+    // this.fireChange(value, (value && this.getValue(value)) || '');
   };
 
   this.handleChange = function (value) {

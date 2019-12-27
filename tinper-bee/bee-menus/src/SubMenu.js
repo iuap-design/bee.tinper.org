@@ -69,6 +69,7 @@ export class SubMenu extends React.Component {
     manualRef: PropTypes.func,
     itemIcon: PropTypes.oneOfType([PropTypes.func, PropTypes.node]),
     expandIcon: PropTypes.oneOfType([PropTypes.func, PropTypes.node]),
+    position:PropTypes.oneOf(['bottomLeft','topLeft','leftTop','rightTop'])
   };
 
   static defaultProps = {
@@ -536,7 +537,7 @@ export class SubMenu extends React.Component {
             popupClassName={`${prefixCls}-popup ${popupClassName}`}
             getPopupContainer={getPopupContainer}
             builtinPlacements={Object.assign({}, placements, builtinPlacements)}
-            popupPlacement={popupPlacement}
+            popupPlacement={this.props.mode=='vertical'?(this.props.position||popupPlacement):popupPlacement}
             popupVisible={isOpen}
             popupAlign={popupAlign}
             popup={children}
