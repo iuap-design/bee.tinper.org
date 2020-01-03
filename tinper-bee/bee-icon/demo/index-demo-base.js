@@ -33,7 +33,7 @@ class Demo extends Component {
             <div>
                 <p className='component-title'>{ title }</p>
                 <p>{ desc }</p>
-                <span className='component-code' onClick={this.handleClick}> 查看源码 <i className='uf uf-arrow-right'/> </span>
+                {/* <span className='component-code' onClick={this.handleClick}> 查看源码 <i className='uf uf-arrow-right'/> </span> */}
             </div>
         );
         return (

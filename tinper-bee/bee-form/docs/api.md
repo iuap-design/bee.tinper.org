@@ -2,7 +2,10 @@
 
 基于 [rc-form](http://react-component.github.io/form/)。
 
+**!!!使用前，强烈建议先查看[注意事项](http://bee.tinper.org/tinper-bee/bee-form#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9)**
+
 ## 何时使用
+
 需要校验表单数据，提交表单数据时
 
 ## 如何使用
@@ -30,7 +33,6 @@ const FormItem = Form.FormItem;
 ## 代码演示
 
 ## API
-
 
 ### Form 
 
@@ -143,7 +145,16 @@ const FormItem = Form.FormItem;
 ## 注意事项
 
 - 同一个表单中，表单元素不能设置相同的name
+
 - 使用 `getFieldProps` 后，不能使用 ref 。 可以使用 ` this.props.form.getFieldInstance('ref') `
+
+- 使用 `getFieldProps` 后，`onChange` 要写到 `getFieldProps` 里边
+
+- 使用 `getFieldProps` 后，`onChange` 里不要使用 `setFieldsValue` 
+
+- 使用 `getFieldProps` 后，尽量不要使用 `onChange` 处理 `value` ，如果需要格式化，使用 `normalize` 
+
+- 使用 `validator` 自定义校验时，callback 必须被调用
 
 
 ## 更新日志

@@ -1,16 +1,44 @@
 /**
- * @title Icon
- * @description 在iuap字符库，`type`参数值均以-分隔。
+ * @title Icon 图标
+ * @description 使用 <Icon /> 标签声明组件，指定图标对应的 type 属性。
  */
 
 import React, { Component } from 'react';
 import Icon from '../../src';
+import copy from 'copy-to-clipboard';
+import Message from 'bee-message';
 
 class Demo1 extends Component {
+	constructor(props){
+		super(props);
+	}
+
+	componentDidMount(){
+		document.getElementById('icon_lists').addEventListener('click', this.copyCode);
+	}
+	copyCode = (e) => {
+		let iconCls = e.target && this.findIconCls(e.target);
+		if(!iconCls) return;
+		let code = `<Icon type="${iconCls}" />`;
+		copy(code);
+		Message.create({ content: <div><span className="code-cont">{code}</span>  copied</div>, color: "successlight" });
+	}
+	findIconCls = (target) => {
+		target.nodeName.toLowerCase() == "li" || target.parentNode.nodeName.toLowerCase() == "li"
+		let iconCls = "";
+		if(target.nodeName.toLowerCase() == "li"){
+			iconCls = target.lastElementChild.innerText;
+			return iconCls && iconCls.substr(1);
+		}else if(target.parentNode.nodeName.toLowerCase() == "li") {
+			iconCls = target.parentNode.lastElementChild.innerText;
+			return iconCls && iconCls.substr(1);
+		}
+		return iconCls;
+	}
 	render() {
 		return (
 			<div className="tinper-icon-demo">
-				<ul className="icon_lists">
+				<ul id="icon_lists" className="icon_lists">
 
 					<li>
 						<Icon type="uf-wechat"></Icon>
@@ -1934,6 +1962,26 @@ class Demo1 extends Component {
 						<Icon type="uf-globe"></Icon>
 						<div class="name">多语言</div>
 						<div class="fontclass">.uf-globe</div>
+					</li>
+					<li>
+						<Icon type="uf-yybs"></Icon>
+						<div class="name">用友企业云服务</div>
+						<div class="fontclass">.uf-yybs</div>
+					</li>
+					<li>
+						<Icon type="uf-iuap5"></Icon>
+						<div class="name">iuap-5标准-黑白</div>
+						<div class="fontclass">.uf-iuap5</div>
+					</li>
+					<li>
+						<Icon type="uf-iuap5c"></Icon>
+						<div class="name">iuap-5标准-全彩</div>
+						<div class="fontclass">.uf-iuap5c</div>
+					</li>
+					<li>
+						<Icon type="uf-qingkong"></Icon>
+						<div class="name">清空</div>
+						<div class="fontclass">.uf-qingkong</div>
 					</li>
 				</ul>
 			</div>

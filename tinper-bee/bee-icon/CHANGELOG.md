@@ -1,3 +1,8 @@
+<a name="1.0.13"></a>
+## [1.0.13](https://github.com/tinper-bee/icon/compare/v1.0.12...v1.0.13) (2020-01-02)
+
+
+
 <a name="1.0.12"></a>
 ## [1.0.12](https://github.com/tinper-bee/icon/compare/v1.0.10...v1.0.12) (2019-06-24)
 

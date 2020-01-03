@@ -992,18 +992,20 @@
 .uf-globe:before {
   content: "\e9db"; }
 
+.uf-yybs:before {
+  content: "\e9dc"; }
+
+.uf-iuap5:before {
+  content: "\e9dd"; }
+
+.uf-iuap5c:before {
+  content: "\e9ff"; }
+
+.uf-qingkong:before {
+  content: "\e666"; }
+
 .u-panel .u-panel-title {
   font-size: 14px; }
-
-.tinper-icon-demo .uf {
-  font-size: 42px;
-  line-height: 100px;
-  margin: 10px 0;
-  color: #333;
-  transition: font-size 0.25s ease-out 0s; }
-
-.tinper-icon-demo .uf:hover {
-  font-size: 80px; }
 
 .icon_lists:after {
   clear: both;
@@ -1012,10 +1014,46 @@
   content: '.'; }
 
 .icon_lists li {
+  position: relative;
   float: left;
-  width: 100px;
-  height: 180px;
+  width: 10.66%;
+  height: 108px;
+  margin: 4px 0;
+  padding: 10px 0 0;
+  overflow: hidden;
+  color: #555;
   text-align: center;
-  list-style: none !important; }
+  list-style: none;
+  background-color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out; }
+  .icon_lists li .uf {
+    display: block;
+    font-size: 36px;
+    line-height: 36px;
+    margin: 12px 0 8px;
+    color: #555;
+    transition: color 0.3s ease-in-out, transform 0.3s ease-in-out; }
+  .icon_lists li:hover {
+    color: #fff;
+    background-color: #1890ff; }
+    .icon_lists li:hover .uf {
+      color: #fff;
+      transform: scale(1.4); }
+  .icon_lists li .name, .icon_lists li .fontclass {
+    white-space: nowrap;
+    text-align: center;
+    line-height: 18px;
+    transform: scale(0.83); }
+
+.u-message-notice {
+  margin-bottom: 12px;
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace; }
+  .u-message-notice .code-cont {
+    background: #ddd;
+    display: inline-block;
+    border-radius: 3px;
+    line-height: 18px; }
 
 /*# sourceMappingURL=demo.css.map */

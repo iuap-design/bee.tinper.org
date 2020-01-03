@@ -58,15 +58,15 @@
 	
 	var _beePanel = __webpack_require__(9);
 	
-	var _beeDrawer = __webpack_require__(82);
+	var _beeDrawer = __webpack_require__(84);
 	
 	var _beeDrawer2 = _interopRequireDefault(_beeDrawer);
 	
-	var _beeClipboard = __webpack_require__(96);
+	var _beeClipboard = __webpack_require__(98);
 	
 	var _beeClipboard2 = _interopRequireDefault(_beeClipboard);
 	
-	var _src = __webpack_require__(264);
+	var _src = __webpack_require__(269);
 	
 	var _src2 = _interopRequireDefault(_src);
 	
@@ -80,7 +80,7 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
 	
-	var Demo1 = __webpack_require__(266);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " Icon", "code": "/**\n * @title Icon\n * @description 在iuap字符库，`type`参数值均以-分隔。\n */\n\nimport React, { Component } from 'react';\nimport { Icon } from 'tinper-bee';\n\n\nclass Demo1 extends Component {\n\trender() {\n\t\treturn (\n\t\t\t<div className=\"tinper-icon-demo\">\n\t\t\t\t<ul className=\"icon_lists\">\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-wechat\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">微信</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-wechat</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-add-c-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">加</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-add-c-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-search\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">搜索</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-search</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-histogram-arrow-up\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">图表 折线图</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-histogram-arrow-up</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-close-bold\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">关闭</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-close-bold</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-umbrella\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">雨伞</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-umbrella</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-qq\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">QQ</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-qq</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-4square-3\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">分类</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-4square-3</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-send\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">发送</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-send</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-map\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">地图</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-map</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-9square-2\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">标定</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-9square-2</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-navmenu\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">汉堡包</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-navmenu</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-pc-2\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">显示器</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-pc-2</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-search-light-2\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">zoom</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-search-light-2</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-check-s-2\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">任务</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-check-s-2</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-pencil\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">编辑</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-pencil</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-repeat\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">撤销</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-repeat</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-security-2\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">安全</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-security-2</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-lexi\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">女</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-lexi</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-pencil-s\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">编辑</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-pencil-s</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-del\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">删除</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-del</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-bi-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">比价</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-bi-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-pencil-c\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">编辑</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-pencil-c</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-qrcode\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">二维码</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-qrcode</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-rmb-c-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">免费报价</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-rmb-c-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-search-c-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">搜索</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-search-c-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-bell\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">铃铛</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-bell</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-pass-3\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">机检通过</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-pass-3</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-treearrow-down\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">树形线</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-treearrow-down</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-training\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">培训</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-training</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-group-2\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">组织架构</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-group-2</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-zoom-in\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">zoom-in</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-zoom-in</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-security-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">安全</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-security-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-baojia-c\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">报价</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-baojia-c</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-rulerpen\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">定制</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-rulerpen</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-erpsearch\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">erp</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-erpsearch</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-group-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">组织机构</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-group-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-cloud-o-updown\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">同步中2-同步</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-cloud-o-updown</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-close-c-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">关闭</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-close-c-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-add-s\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">加</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-add-s</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-pc\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">工作台</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-pc</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-rain\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">空气_雨天</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-rain</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-nodata\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">无数据</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-nodata</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-close-c\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">关闭</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-close-c</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-bohui-s-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">审批-驳回</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-bohui-s-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-cloud\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">天气</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-cloud</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-bag-s\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">商品</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-bag-s</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-table-2\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">made</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-table-2</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-anglearrowpointingtoright\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">箭头</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-anglearrowpointingtoright</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-exc-c-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">叹号</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-exc-c-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-group\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">组织机构</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-group</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-personin-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">认证激活</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-personin-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-calendar\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">gm_日历</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-calendar</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-add-s-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">加</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-add-s-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-sync-c-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">同步</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-sync-c-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-grid\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">grid</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-grid</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-anglepointingtoleft\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">箭头</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-anglepointingtoleft</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-activate-3\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">激活</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-activate-3</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-caven\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">男</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-caven</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-back\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">返回</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-back</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-pass-2\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">授权</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-pass-2</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-reduce-s-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">显示树</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-reduce-s-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-area\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">图表图标-面积图</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-area</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-flag\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">旗帜</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-flag</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-box-o-2\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">购买盒子</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-box-o-2</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-arrow-s-o-down\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">下架</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-arrow-s-o-down</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-arrow-s-o-up\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">上架</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-arrow-s-o-up</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-building\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">企业信息</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-building</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-tapp\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">天气</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-tapp</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-treefolder\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">搜索</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-treefolder</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-advice\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">咨询</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-advice</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-2collayout\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">序列布局</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-2collayout</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-check-s\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">审批</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-check-s</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-sign\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">采购合同</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-sign</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-listsearch\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">查看详情</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-listsearch</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-gridcaretarrowup\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">必填</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-gridcaretarrowup</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-eye-c-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">查看</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-eye-c-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-check-c-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">许可</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-check-c-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-seal\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">审批</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-seal</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-erpbox\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">erp</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-erpbox</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-rulerpen-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">定制</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-rulerpen-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-role\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">角色</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-role</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-exc-c-2\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">提示叹号</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-exc-c-2</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-pad\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">pad</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-pad</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-treefolder-closed\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">tree-new-sbling-node</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-treefolder-closed</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-reduce-c-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">减号</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-reduce-c-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-pass-s-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">通过</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-pass-s-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-setting\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">维护</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-setting</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-close-s\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">ZSX号</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-close-s</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-map-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">地图</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-map-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-move\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">移动</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-move</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-2arrow-down\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">箭头</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-2arrow-down</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-2arrow-right\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">箭头</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-2arrow-right</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-arrow-c-o-left\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">箭头</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-arrow-c-o-left</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-plus\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">plus</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-plus</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-arrow-c-o-right\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">箭头</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-arrow-c-o-right</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-arrow-c-o-down\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">箭头</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-arrow-c-o-down</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-list-s-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">暂无数据</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-list-s-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-cloud-o-down\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">云下载</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-cloud-o-down</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-nodata-2\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">无效数据</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-nodata-2</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-file-s\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">文档文件-01</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-file-s</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-2arrow-up\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">箭头</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-2arrow-up</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-notification\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">消息喇叭</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-notification</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-piechart\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">图表_饼</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-piechart</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-cloud-o-up\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">云_上传</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-cloud-o-up</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-close\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">取消</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-close</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-correct\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">对号</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-correct</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-histogram-s-o-2\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">图表切换</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-histogram-s-o-2</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-4square-2\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">应用中心</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-4square-2</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-sunny\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">天气 </div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-sunny</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-link\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">复制链接</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-link</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-eye\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">查看</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-eye</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-eye-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">查看</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-eye-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-qian\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">签</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-qian</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-widgetab\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">小部件授权</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-widgetab</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-rmb-s\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">报价</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-rmb-s</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-link-off\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">断开链接</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-link-off</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-shang-s\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">上架</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-shang-s</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-xia-s\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">下架</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-xia-s</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-box-2\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">盒子full</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-box-2</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-pass-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">授权</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-pass-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-arrow-down\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">angle-arrow-down</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-arrow-down</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-arrow-right\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">angle-arrow-pointing-to-right</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-arrow-right</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-arrow-left\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">angle-pointing-to-left</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-arrow-left</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-box\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">archive-black-box</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-box</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-triangle-right\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">arrowhead-pointing-to-the-right</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-triangle-right</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-histogram-s-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">bar-graph-on-a-rectangle</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-histogram-s-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-book\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">book</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-book</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-bookmark-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">bookmark-white</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-bookmark-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-leaf\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">branch-with-leaves-black-shape</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-leaf</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-bullseye\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">bullseye</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-bullseye</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-gridcaretdown\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">camera-retro</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-gridcaretdown</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-triangle-up\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">caret-arrow-up</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-triangle-up</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-triangle-down\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">caret-down</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-triangle-down</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-cloud-down\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">cloud-storage-download</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-cloud-down</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-cloud-up\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">cloud-storage-uploading-option</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-cloud-up</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-bubble\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">comment-black-oval-bubble-shape</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-bubble</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-bubble-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">comment-white-oval-bubble</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-bubble-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-copy\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">copy-document</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-copy</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-correct-2\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">correct-symbol</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-correct-2</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-2arrow-left\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">double-left-chevron</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-2arrow-left</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-arrow-down-2\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">down-arrow</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-arrow-down-2</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-download\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">download-to-storage-drive</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-download</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-earth\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">earth-globe</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-earth</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-mail-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">envelope-of-white-paper</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-mail-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-mail\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">envelope</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-mail</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-exc\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">exclamation</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-exc</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-externallink\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">external-link-symbol</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-externallink</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-video\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">facetime-button</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-video</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-films\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">film-strip-with-two-photograms</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-films</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-folder\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">folder-closed-black-shape</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-folder</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-folder-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">folder-white-shape</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-folder-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-4square\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">four-black-squares</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-4square</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-gift\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">gift-box</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-gift</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-github-c\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">github-logo</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-github-c</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-github-s\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">github-sign</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-github-s</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-heart-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">heart-shape-outline</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-heart-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-heart\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">heart-shape-silhouette</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-heart</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-home\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">home</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-home</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-i-c-2\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">information-button</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-i-c-2</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-i\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">information-symbol</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-i</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-triangle-left\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">left-arrow</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-triangle-left</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-symlist\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">listing-option</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-symlist</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-arrow-left-2\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">long-arrow-pointing-to-left</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-arrow-left-2</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-arrow-right-2\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">long-arrow-pointing-to-the-right</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-arrow-right-2</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-arrow-up-2\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">long-arrow-pointing-up</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-arrow-up-2</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-reduce-c\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">minus-sign-inside-a-black-circle</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-reduce-c</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-reduce-s\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">minus-sign-inside-a-black-rounded-square-shape</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-reduce-s</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-minus\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">minus-symbol</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-minus</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-mobile\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">mobile-phone</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-mobile</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-bell-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">musical-bell-outline</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-bell-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-9square\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">nine-black-tiles</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-9square</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-numlist\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">numbered-list</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-numlist</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-folderopen-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">open-folder-outline</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-folderopen-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-treefolderopen\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">open-folder</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-treefolderopen</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-mac\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">open-laptop-computer</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-mac</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-camera\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">photo-camera</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-camera</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-picture\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">picture</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-picture</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-play\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">play-sign</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-play</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-play-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">play-video-button</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-play-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-qm-c\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">question-mark-on-a-circular-black-background</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-qm-c</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-qm\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">question-sign</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-qm</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-navmenu-light\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">reorder-option</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-navmenu-light</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-settings\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">settings</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-settings</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-cart\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">shopping-cart-black-shape</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-cart</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-histogram\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">signal-bars</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-histogram</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-finetune\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">sort-arrows-couple-pointing-up-and-down</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-finetune</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-sortup\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">sort-by-attributes-interface-button-option</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-sortup</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-sortdown\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">sort-by-attributes</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-sortdown</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-sort19\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">sort-by-numeric-order</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-sort19</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-sort91\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">sort-by-order</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-sort91</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-za\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">sort-reverse-alphabetical-order</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-za</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-star-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">star-1</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-star-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-star-2\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">star-half-empty</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-star-2</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-star\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">star</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-star</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-luggage\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">suitcase-with-white-details</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-luggage</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-table\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">table-grid</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-table</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-tel\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">telephone-handle-silhouette</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-tel</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-tel-s\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">telephone-symbol-button</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-tel-s</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-terminal\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">terminal</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-terminal</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-file\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">text-file-1</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-file</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-file-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">text-file</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-file-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-3dot-h\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">three-small-square-shapes</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-3dot-h</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-time-c-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">time</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-time-c-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-upload\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">upload</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-upload</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-3dot-v\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">vertical-ellipsis</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-3dot-v</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-rmb\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">yen-symbol</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-rmb</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-arrow-c-o-up\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">箭头</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-arrow-c-o-up</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-reject-2\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">驳回</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-reject-2</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-barcode\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">barcode-1</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-barcode</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-zoom-out\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">zoom-out</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-zoom-out</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-exc-t-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">三角叹号</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-exc-t-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-pass\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">通过</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-pass</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-flow\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">关系网络</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-flow</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-add-c\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">加</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-add-c</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-arrow-c-o-right-2\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">箭头</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-arrow-c-o-right-2</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-shelf-on\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">上架</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-shelf-on</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-shelf-off\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">下架</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-shelf-off</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-file-o-2\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">文件</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-file-o-2</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-truck-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">到货确认</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-truck-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-super\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">功能强大</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-super</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-equipment\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">设备</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-equipment</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-arrow-c-o-left-2\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">箭头</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-arrow-c-o-left-2</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-files-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">资源文件</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-files-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-cloud-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">云</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-cloud-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-rmb-s-o-2\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">对账</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-rmb-s-o-2</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-3dot-c-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">管理中心</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-3dot-c-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-dafeng\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">天气_大风</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-dafeng</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-baoxue\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">天气_暴雪</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-baoxue</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-bingbao\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">天气_冰雹</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-bingbao</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-fengbao\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">天气_风暴</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-fengbao</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-xiaoyu\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">天气_小雨</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-xiaoyu</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-zhenxue\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">天气_阵雪</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-zhenxue</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-zhongyu\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">天气_中雨</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-zhongyu</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-es\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">ES</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-es</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-flow-o-2\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">流程</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-flow-o-2</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-activate-2\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">激活-01</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-activate-2</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-flow-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">流程</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-flow-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-bulb-2\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">技术支持</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-bulb-2</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-mi-c\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">必填</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-mi-c</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-top-up\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">返回顶部</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-top-up</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-creditcard\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">credit-card</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-creditcard</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-align-center\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">align-center</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-align-center</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-align-justify\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">align-justify</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-align-justify</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-align-left\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">align-left</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-align-left</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-align-right\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">align-right</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-align-right</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-ju-c-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">拒</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-ju-c-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-truck\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">货到付款</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-truck</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-setting-c-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">流程</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-setting-c-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-users-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">楼宇图标_用户组</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-users-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-bag-s-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">商品</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-bag-s-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-cai-s\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">采购</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-cai-s</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-listcheck\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">定标</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-listcheck</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-users\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">群</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-users</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-i-c\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">查看详情</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-i-c</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-building-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">企业信息</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-building-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-rmb-s-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">报价管理</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-rmb-s-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-reject\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">已驳回</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-reject</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-9dot\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">菜单</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-9dot</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-loadingstate\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">loading</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-loadingstate</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-gateway\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">网关</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-gateway</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-ticket-s-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">发票</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-ticket-s-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-userset\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">管理中心</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-userset</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-puzzle-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">组件</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-puzzle-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-box-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">物料管理</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-box-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-bulb\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">激活</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-bulb</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-exc-t\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">感叹号_icon</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-exc-t</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-rmb-c\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">报价</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-rmb-c</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-table-s-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">发票</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-table-s-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-umbrella-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">伞</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-umbrella-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-dropbox\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">dropbox</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-dropbox</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-search-light\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">搜索-搜索</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-search-light</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-cart-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">shopping-cart-black-shape</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-cart-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-kero-col\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">kero</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-kero-col</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-uba-col\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">uba</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-uba-col</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-tinperzc-col\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">tinperzc</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-tinperzc-col</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-tinperzch-col\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">tinperzch</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-tinperzch-col</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-iuap-col\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">iuap</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-iuap-col</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-iuapdesign-col\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">iuapdesignz</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-iuapdesign-col</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-bee-col\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">bee</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-bee-col</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-neoui-col\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">neoui</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-neoui-col</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-sparrow-col\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">sparrow</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-sparrow-col</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-tinpercn-col\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">tinpercn</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-tinpercn-col</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-tinperen-col\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">tinperen</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-tinperen-col</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-arrow-up\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">angle-arrow-down</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-arrow-up</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-mailsym\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">webmail</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-mailsym</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-print\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">办公用品</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-print</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-ticket-3\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">报销</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-ticket-3</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-loan\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">借款</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-loan</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-ticket-2\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">凭证中心</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-ticket-2</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-offwork\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">请假</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-offwork</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-todolist\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">待办</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-todolist</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-personin\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">员工入职</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-personin</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-ticket\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">票务</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-ticket</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-linechart\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">小icon-图表</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-linechart</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-4leaf\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">应用中心</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-4leaf</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-listset\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">信息维护</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-listset</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-qi-c-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">企业认证</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-qi-c-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-exc-c\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">叹号</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-exc-c</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-code\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">集成开发</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-code</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-plug-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">热拔插</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-plug-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-search-s\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">搜索</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-search-s</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-treeadd\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">tree-new-sbling-node</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-treeadd</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-mi\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">必填</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-mi</div>\n\t\t\t\t\t</li>\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-treeline-copy\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">树形线</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-treeline-copy</div>\n\t\t\t\t\t</li>\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-listwithdots\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">列表项</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-listwithdots</div>\n\t\t\t\t\t</li>\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-gridlogo\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">Grid</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-gridlogo</div>\n\t\t\t\t\t</li>\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-magnifyingglass\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">搜索</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-magnifyingglass</div>\n\t\t\t\t\t</li>\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-anglearrowdown\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">向下箭头</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-anglearrowdown</div>\n\t\t\t\t\t</li>\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-yongyouyunchnen\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">用友云（小）</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-yongyouyunchnen</div>\n\t\t\t\t\t</li>\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-yycloud\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">用友云</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-yycloud</div>\n\t\t\t\t\t</li>\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-funnel-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">筛选</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-funnel-o</div>\n\t\t\t\t\t</li>\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-filter\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">过滤</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-filter</div>\n\t\t\t\t\t</li>\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-filterno\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">取消过滤</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-filterno</div>\n\t\t\t\t\t</li>\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-clean\"></Icon>\n\t\t\t\t\t\t<div class=\"name\">橡皮擦</div>\n\t\t\t\t\t\t<div class=\"fontclass\">.uf-clean</div>\n\t\t\t\t\t</li>\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-save\"></Icon>\n\t\t\t\t\t\t<div class=\"name\">保存</div>\n\t\t\t\t\t\t<div class=\"fontclass\">.uf-save</div>\n\t\t\t\t\t</li>\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-export\"></Icon>\n\t\t\t\t\t\t<div class=\"name\">导出</div>\n\t\t\t\t\t\t<div class=\"fontclass\">.uf-export</div>\n\t\t\t\t\t</li>\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-import\"></Icon>\n\t\t\t\t\t\t<div class=\"name\">导入</div>\n\t\t\t\t\t\t<div class=\"fontclass\">.uf-import</div>\n\t\t\t\t\t</li>\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-stop-c\"></Icon>\n\t\t\t\t\t\t<div class=\"name\">stop-c</div>\n\t\t\t\t\t\t<div class=\"fontclass\">.uf-stop-c</div>\n\t\t\t\t\t</li>\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-rubber\"></Icon>\n\t\t\t\t\t\t<div class=\"name\">橡皮擦</div>\n\t\t\t\t\t\t<div class=\"fontclass\">.uf-rubber</div>\n\t\t\t\t\t</li>\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-bediting\"></Icon>\n\t\t\t\t\t\t<div class=\"name\">批次编辑</div>\n\t\t\t\t\t\t<div class=\"fontclass\">.uf-bediting</div>\n\t\t\t\t\t</li>\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-maxmize\"></Icon>\n\t\t\t\t\t\t<div class=\"name\">最大化</div>\n\t\t\t\t\t\t<div class=\"fontclass\">.uf-maxmize</div>\n\t\t\t\t\t</li>\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-minimize\"></Icon>\n\t\t\t\t\t\t<div class=\"name\">最小化</div>\n\t\t\t\t\t\t<div class=\"fontclass\">.uf-minimize</div>\n\t\t\t\t\t</li>\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-globe\"></Icon>\n\t\t\t\t\t\t<div class=\"name\">多语言</div>\n\t\t\t\t\t\t<div class=\"fontclass\">.uf-globe</div>\n\t\t\t\t\t</li>\n\t\t\t\t</ul>\n\t\t\t</div>\n\t\t)\n\t}\n}\n\nexport default Demo1;", "desc": " 在iuap字符库，`type`参数值均以-分隔。", "scss_code": ".tinper-icon-demo .uf{\n  font-size: 42px;\n  line-height: 100px;\n  margin: 10px 0;\n  color: #333;\n  -webkit-transition: font-size 0.25s ease-out 0s;\n  -moz-transition: font-size 0.25s ease-out 0s;\n  transition: font-size 0.25s ease-out 0s;\n}\n.tinper-icon-demo .uf:hover{\n  font-size: 80px;\n}\n.icon_lists:after {\n  clear:both;\n  display:block;\n  visibility: hidden;\n  content:'.';\n}\n.icon_lists li {\n  float: left;\n  width: 100px;\n  height: 180px;\n  text-align: center;\n  list-style: none !important;\n}" }];
+	var Demo1 = __webpack_require__(271);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " Icon 图标", "code": "/**\n * @title Icon 图标\n * @description 使用 <Icon /> 标签声明组件，指定图标对应的 type 属性。\n */\n\nimport React, { Component } from 'react';\nimport { Message, Icon } from 'tinper-bee';\n\nimport copy from 'copy-to-clipboard';\n\nclass Demo1 extends Component {\n\tconstructor(props){\n\t\tsuper(props);\n\t}\n\n\tcomponentDidMount(){\n\t\tdocument.getElementById('icon_lists').addEventListener('click', this.copyCode);\n\t}\n\tcopyCode = (e) => {\n\t\tlet iconCls = e.target && this.findIconCls(e.target);\n\t\tif(!iconCls) return;\n\t\tlet code = `<Icon type=\"${iconCls}\" />`;\n\t\tcopy(code);\n\t\tMessage.create({ content: <div><span className=\"code-cont\">{code}</span>  copied</div>, color: \"successlight\" });\n\t}\n\tfindIconCls = (target) => {\n\t\ttarget.nodeName.toLowerCase() == \"li\" || target.parentNode.nodeName.toLowerCase() == \"li\"\n\t\tlet iconCls = \"\";\n\t\tif(target.nodeName.toLowerCase() == \"li\"){\n\t\t\ticonCls = target.lastElementChild.innerText;\n\t\t\treturn iconCls && iconCls.substr(1);\n\t\t}else if(target.parentNode.nodeName.toLowerCase() == \"li\") {\n\t\t\ticonCls = target.parentNode.lastElementChild.innerText;\n\t\t\treturn iconCls && iconCls.substr(1);\n\t\t}\n\t\treturn iconCls;\n\t}\n\trender() {\n\t\treturn (\n\t\t\t<div className=\"tinper-icon-demo\">\n\t\t\t\t<ul id=\"icon_lists\" className=\"icon_lists\">\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-wechat\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">微信</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-wechat</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-add-c-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">加</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-add-c-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-search\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">搜索</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-search</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-histogram-arrow-up\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">图表 折线图</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-histogram-arrow-up</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-close-bold\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">关闭</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-close-bold</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-umbrella\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">雨伞</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-umbrella</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-qq\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">QQ</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-qq</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-4square-3\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">分类</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-4square-3</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-send\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">发送</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-send</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-map\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">地图</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-map</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-9square-2\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">标定</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-9square-2</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-navmenu\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">汉堡包</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-navmenu</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-pc-2\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">显示器</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-pc-2</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-search-light-2\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">zoom</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-search-light-2</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-check-s-2\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">任务</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-check-s-2</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-pencil\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">编辑</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-pencil</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-repeat\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">撤销</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-repeat</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-security-2\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">安全</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-security-2</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-lexi\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">女</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-lexi</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-pencil-s\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">编辑</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-pencil-s</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-del\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">删除</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-del</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-bi-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">比价</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-bi-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-pencil-c\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">编辑</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-pencil-c</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-qrcode\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">二维码</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-qrcode</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-rmb-c-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">免费报价</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-rmb-c-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-search-c-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">搜索</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-search-c-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-bell\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">铃铛</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-bell</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-pass-3\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">机检通过</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-pass-3</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-treearrow-down\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">树形线</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-treearrow-down</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-training\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">培训</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-training</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-group-2\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">组织架构</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-group-2</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-zoom-in\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">zoom-in</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-zoom-in</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-security-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">安全</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-security-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-baojia-c\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">报价</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-baojia-c</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-rulerpen\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">定制</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-rulerpen</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-erpsearch\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">erp</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-erpsearch</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-group-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">组织机构</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-group-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-cloud-o-updown\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">同步中2-同步</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-cloud-o-updown</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-close-c-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">关闭</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-close-c-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-add-s\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">加</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-add-s</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-pc\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">工作台</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-pc</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-rain\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">空气_雨天</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-rain</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-nodata\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">无数据</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-nodata</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-close-c\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">关闭</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-close-c</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-bohui-s-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">审批-驳回</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-bohui-s-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-cloud\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">天气</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-cloud</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-bag-s\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">商品</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-bag-s</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-table-2\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">made</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-table-2</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-anglearrowpointingtoright\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">箭头</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-anglearrowpointingtoright</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-exc-c-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">叹号</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-exc-c-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-group\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">组织机构</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-group</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-personin-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">认证激活</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-personin-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-calendar\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">gm_日历</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-calendar</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-add-s-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">加</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-add-s-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-sync-c-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">同步</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-sync-c-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-grid\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">grid</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-grid</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-anglepointingtoleft\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">箭头</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-anglepointingtoleft</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-activate-3\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">激活</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-activate-3</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-caven\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">男</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-caven</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-back\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">返回</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-back</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-pass-2\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">授权</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-pass-2</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-reduce-s-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">显示树</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-reduce-s-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-area\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">图表图标-面积图</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-area</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-flag\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">旗帜</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-flag</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-box-o-2\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">购买盒子</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-box-o-2</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-arrow-s-o-down\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">下架</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-arrow-s-o-down</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-arrow-s-o-up\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">上架</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-arrow-s-o-up</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-building\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">企业信息</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-building</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-tapp\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">天气</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-tapp</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-treefolder\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">搜索</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-treefolder</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-advice\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">咨询</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-advice</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-2collayout\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">序列布局</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-2collayout</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-check-s\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">审批</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-check-s</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-sign\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">采购合同</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-sign</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-listsearch\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">查看详情</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-listsearch</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-gridcaretarrowup\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">必填</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-gridcaretarrowup</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-eye-c-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">查看</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-eye-c-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-check-c-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">许可</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-check-c-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-seal\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">审批</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-seal</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-erpbox\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">erp</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-erpbox</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-rulerpen-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">定制</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-rulerpen-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-role\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">角色</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-role</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-exc-c-2\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">提示叹号</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-exc-c-2</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-pad\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">pad</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-pad</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-treefolder-closed\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">tree-new-sbling-node</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-treefolder-closed</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-reduce-c-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">减号</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-reduce-c-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-pass-s-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">通过</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-pass-s-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-setting\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">维护</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-setting</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-close-s\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">ZSX号</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-close-s</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-map-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">地图</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-map-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-move\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">移动</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-move</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-2arrow-down\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">箭头</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-2arrow-down</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-2arrow-right\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">箭头</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-2arrow-right</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-arrow-c-o-left\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">箭头</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-arrow-c-o-left</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-plus\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">plus</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-plus</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-arrow-c-o-right\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">箭头</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-arrow-c-o-right</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-arrow-c-o-down\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">箭头</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-arrow-c-o-down</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-list-s-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">暂无数据</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-list-s-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-cloud-o-down\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">云下载</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-cloud-o-down</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-nodata-2\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">无效数据</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-nodata-2</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-file-s\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">文档文件-01</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-file-s</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-2arrow-up\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">箭头</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-2arrow-up</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-notification\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">消息喇叭</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-notification</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-piechart\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">图表_饼</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-piechart</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-cloud-o-up\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">云_上传</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-cloud-o-up</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-close\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">取消</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-close</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-correct\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">对号</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-correct</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-histogram-s-o-2\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">图表切换</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-histogram-s-o-2</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-4square-2\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">应用中心</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-4square-2</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-sunny\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">天气 </div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-sunny</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-link\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">复制链接</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-link</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-eye\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">查看</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-eye</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-eye-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">查看</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-eye-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-qian\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">签</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-qian</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-widgetab\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">小部件授权</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-widgetab</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-rmb-s\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">报价</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-rmb-s</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-link-off\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">断开链接</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-link-off</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-shang-s\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">上架</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-shang-s</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-xia-s\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">下架</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-xia-s</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-box-2\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">盒子full</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-box-2</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-pass-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">授权</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-pass-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-arrow-down\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">angle-arrow-down</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-arrow-down</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-arrow-right\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">angle-arrow-pointing-to-right</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-arrow-right</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-arrow-left\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">angle-pointing-to-left</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-arrow-left</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-box\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">archive-black-box</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-box</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-triangle-right\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">arrowhead-pointing-to-the-right</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-triangle-right</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-histogram-s-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">bar-graph-on-a-rectangle</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-histogram-s-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-book\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">book</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-book</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-bookmark-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">bookmark-white</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-bookmark-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-leaf\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">branch-with-leaves-black-shape</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-leaf</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-bullseye\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">bullseye</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-bullseye</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-gridcaretdown\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">camera-retro</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-gridcaretdown</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-triangle-up\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">caret-arrow-up</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-triangle-up</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-triangle-down\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">caret-down</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-triangle-down</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-cloud-down\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">cloud-storage-download</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-cloud-down</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-cloud-up\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">cloud-storage-uploading-option</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-cloud-up</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-bubble\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">comment-black-oval-bubble-shape</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-bubble</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-bubble-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">comment-white-oval-bubble</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-bubble-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-copy\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">copy-document</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-copy</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-correct-2\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">correct-symbol</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-correct-2</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-2arrow-left\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">double-left-chevron</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-2arrow-left</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-arrow-down-2\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">down-arrow</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-arrow-down-2</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-download\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">download-to-storage-drive</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-download</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-earth\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">earth-globe</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-earth</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-mail-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">envelope-of-white-paper</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-mail-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-mail\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">envelope</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-mail</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-exc\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">exclamation</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-exc</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-externallink\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">external-link-symbol</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-externallink</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-video\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">facetime-button</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-video</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-films\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">film-strip-with-two-photograms</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-films</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-folder\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">folder-closed-black-shape</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-folder</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-folder-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">folder-white-shape</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-folder-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-4square\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">four-black-squares</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-4square</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-gift\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">gift-box</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-gift</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-github-c\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">github-logo</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-github-c</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-github-s\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">github-sign</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-github-s</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-heart-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">heart-shape-outline</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-heart-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-heart\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">heart-shape-silhouette</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-heart</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-home\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">home</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-home</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-i-c-2\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">information-button</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-i-c-2</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-i\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">information-symbol</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-i</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-triangle-left\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">left-arrow</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-triangle-left</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-symlist\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">listing-option</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-symlist</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-arrow-left-2\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">long-arrow-pointing-to-left</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-arrow-left-2</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-arrow-right-2\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">long-arrow-pointing-to-the-right</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-arrow-right-2</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-arrow-up-2\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">long-arrow-pointing-up</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-arrow-up-2</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-reduce-c\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">minus-sign-inside-a-black-circle</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-reduce-c</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-reduce-s\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">minus-sign-inside-a-black-rounded-square-shape</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-reduce-s</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-minus\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">minus-symbol</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-minus</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-mobile\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">mobile-phone</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-mobile</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-bell-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">musical-bell-outline</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-bell-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-9square\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">nine-black-tiles</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-9square</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-numlist\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">numbered-list</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-numlist</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-folderopen-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">open-folder-outline</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-folderopen-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-treefolderopen\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">open-folder</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-treefolderopen</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-mac\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">open-laptop-computer</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-mac</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-camera\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">photo-camera</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-camera</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-picture\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">picture</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-picture</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-play\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">play-sign</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-play</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-play-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">play-video-button</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-play-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-qm-c\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">question-mark-on-a-circular-black-background</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-qm-c</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-qm\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">question-sign</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-qm</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-navmenu-light\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">reorder-option</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-navmenu-light</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-settings\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">settings</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-settings</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-cart\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">shopping-cart-black-shape</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-cart</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-histogram\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">signal-bars</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-histogram</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-finetune\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">sort-arrows-couple-pointing-up-and-down</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-finetune</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-sortup\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">sort-by-attributes-interface-button-option</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-sortup</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-sortdown\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">sort-by-attributes</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-sortdown</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-sort19\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">sort-by-numeric-order</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-sort19</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-sort91\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">sort-by-order</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-sort91</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-za\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">sort-reverse-alphabetical-order</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-za</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-star-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">star-1</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-star-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-star-2\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">star-half-empty</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-star-2</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-star\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">star</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-star</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-luggage\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">suitcase-with-white-details</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-luggage</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-table\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">table-grid</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-table</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-tel\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">telephone-handle-silhouette</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-tel</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-tel-s\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">telephone-symbol-button</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-tel-s</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-terminal\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">terminal</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-terminal</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-file\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">text-file-1</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-file</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-file-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">text-file</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-file-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-3dot-h\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">three-small-square-shapes</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-3dot-h</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-time-c-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">time</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-time-c-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-upload\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">upload</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-upload</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-3dot-v\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">vertical-ellipsis</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-3dot-v</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-rmb\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">yen-symbol</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-rmb</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-arrow-c-o-up\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">箭头</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-arrow-c-o-up</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-reject-2\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">驳回</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-reject-2</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-barcode\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">barcode-1</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-barcode</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-zoom-out\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">zoom-out</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-zoom-out</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-exc-t-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">三角叹号</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-exc-t-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-pass\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">通过</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-pass</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-flow\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">关系网络</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-flow</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-add-c\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">加</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-add-c</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-arrow-c-o-right-2\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">箭头</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-arrow-c-o-right-2</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-shelf-on\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">上架</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-shelf-on</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-shelf-off\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">下架</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-shelf-off</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-file-o-2\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">文件</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-file-o-2</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-truck-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">到货确认</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-truck-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-super\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">功能强大</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-super</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-equipment\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">设备</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-equipment</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-arrow-c-o-left-2\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">箭头</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-arrow-c-o-left-2</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-files-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">资源文件</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-files-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-cloud-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">云</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-cloud-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-rmb-s-o-2\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">对账</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-rmb-s-o-2</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-3dot-c-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">管理中心</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-3dot-c-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-dafeng\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">天气_大风</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-dafeng</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-baoxue\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">天气_暴雪</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-baoxue</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-bingbao\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">天气_冰雹</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-bingbao</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-fengbao\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">天气_风暴</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-fengbao</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-xiaoyu\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">天气_小雨</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-xiaoyu</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-zhenxue\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">天气_阵雪</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-zhenxue</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-zhongyu\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">天气_中雨</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-zhongyu</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-es\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">ES</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-es</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-flow-o-2\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">流程</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-flow-o-2</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-activate-2\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">激活-01</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-activate-2</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-flow-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">流程</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-flow-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-bulb-2\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">技术支持</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-bulb-2</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-mi-c\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">必填</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-mi-c</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-top-up\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">返回顶部</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-top-up</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-creditcard\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">credit-card</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-creditcard</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-align-center\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">align-center</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-align-center</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-align-justify\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">align-justify</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-align-justify</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-align-left\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">align-left</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-align-left</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-align-right\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">align-right</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-align-right</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-ju-c-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">拒</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-ju-c-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-truck\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">货到付款</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-truck</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-setting-c-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">流程</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-setting-c-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-users-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">楼宇图标_用户组</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-users-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-bag-s-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">商品</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-bag-s-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-cai-s\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">采购</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-cai-s</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-listcheck\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">定标</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-listcheck</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-users\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">群</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-users</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-i-c\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">查看详情</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-i-c</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-building-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">企业信息</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-building-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-rmb-s-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">报价管理</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-rmb-s-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-reject\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">已驳回</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-reject</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-9dot\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">菜单</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-9dot</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-loadingstate\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">loading</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-loadingstate</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-gateway\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">网关</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-gateway</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-ticket-s-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">发票</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-ticket-s-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-userset\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">管理中心</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-userset</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-puzzle-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">组件</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-puzzle-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-box-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">物料管理</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-box-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-bulb\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">激活</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-bulb</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-exc-t\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">感叹号_icon</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-exc-t</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-rmb-c\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">报价</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-rmb-c</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-table-s-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">发票</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-table-s-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-umbrella-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">伞</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-umbrella-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-dropbox\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">dropbox</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-dropbox</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-search-light\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">搜索-搜索</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-search-light</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-cart-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">shopping-cart-black-shape</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-cart-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-kero-col\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">kero</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-kero-col</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-uba-col\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">uba</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-uba-col</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-tinperzc-col\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">tinperzc</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-tinperzc-col</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-tinperzch-col\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">tinperzch</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-tinperzch-col</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-iuap-col\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">iuap</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-iuap-col</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-iuapdesign-col\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">iuapdesignz</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-iuapdesign-col</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-bee-col\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">bee</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-bee-col</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-neoui-col\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">neoui</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-neoui-col</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-sparrow-col\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">sparrow</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-sparrow-col</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-tinpercn-col\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">tinpercn</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-tinpercn-col</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-tinperen-col\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">tinperen</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-tinperen-col</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-arrow-up\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">angle-arrow-down</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-arrow-up</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-mailsym\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">webmail</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-mailsym</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-print\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">办公用品</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-print</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-ticket-3\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">报销</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-ticket-3</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-loan\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">借款</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-loan</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-ticket-2\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">凭证中心</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-ticket-2</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-offwork\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">请假</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-offwork</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-todolist\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">待办</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-todolist</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-personin\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">员工入职</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-personin</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-ticket\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">票务</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-ticket</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-linechart\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">小icon-图表</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-linechart</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-4leaf\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">应用中心</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-4leaf</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-listset\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">信息维护</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-listset</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-qi-c-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">企业认证</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-qi-c-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-exc-c\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">叹号</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-exc-c</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-code\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">集成开发</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-code</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-plug-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">热拔插</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-plug-o</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-search-s\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">搜索</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-search-s</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-treeadd\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">tree-new-sbling-node</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-treeadd</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-mi\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">必填</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-mi</div>\n\t\t\t\t\t</li>\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-treeline-copy\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">树形线</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-treeline-copy</div>\n\t\t\t\t\t</li>\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-listwithdots\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">列表项</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-listwithdots</div>\n\t\t\t\t\t</li>\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-gridlogo\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">Grid</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-gridlogo</div>\n\t\t\t\t\t</li>\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-magnifyingglass\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">搜索</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-magnifyingglass</div>\n\t\t\t\t\t</li>\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-anglearrowdown\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">向下箭头</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-anglearrowdown</div>\n\t\t\t\t\t</li>\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-yongyouyunchnen\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">用友云（小）</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-yongyouyunchnen</div>\n\t\t\t\t\t</li>\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-yycloud\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">用友云</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-yycloud</div>\n\t\t\t\t\t</li>\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-funnel-o\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">筛选</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-funnel-o</div>\n\t\t\t\t\t</li>\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-filter\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">过滤</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-filter</div>\n\t\t\t\t\t</li>\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-filterno\"></Icon>\n\t\t\t\t\t\t<div className=\"name\">取消过滤</div>\n\t\t\t\t\t\t<div className=\"fontclass\">.uf-filterno</div>\n\t\t\t\t\t</li>\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-clean\"></Icon>\n\t\t\t\t\t\t<div class=\"name\">橡皮擦</div>\n\t\t\t\t\t\t<div class=\"fontclass\">.uf-clean</div>\n\t\t\t\t\t</li>\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-save\"></Icon>\n\t\t\t\t\t\t<div class=\"name\">保存</div>\n\t\t\t\t\t\t<div class=\"fontclass\">.uf-save</div>\n\t\t\t\t\t</li>\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-export\"></Icon>\n\t\t\t\t\t\t<div class=\"name\">导出</div>\n\t\t\t\t\t\t<div class=\"fontclass\">.uf-export</div>\n\t\t\t\t\t</li>\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-import\"></Icon>\n\t\t\t\t\t\t<div class=\"name\">导入</div>\n\t\t\t\t\t\t<div class=\"fontclass\">.uf-import</div>\n\t\t\t\t\t</li>\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-stop-c\"></Icon>\n\t\t\t\t\t\t<div class=\"name\">stop-c</div>\n\t\t\t\t\t\t<div class=\"fontclass\">.uf-stop-c</div>\n\t\t\t\t\t</li>\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-rubber\"></Icon>\n\t\t\t\t\t\t<div class=\"name\">橡皮擦</div>\n\t\t\t\t\t\t<div class=\"fontclass\">.uf-rubber</div>\n\t\t\t\t\t</li>\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-bediting\"></Icon>\n\t\t\t\t\t\t<div class=\"name\">批次编辑</div>\n\t\t\t\t\t\t<div class=\"fontclass\">.uf-bediting</div>\n\t\t\t\t\t</li>\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-maxmize\"></Icon>\n\t\t\t\t\t\t<div class=\"name\">最大化</div>\n\t\t\t\t\t\t<div class=\"fontclass\">.uf-maxmize</div>\n\t\t\t\t\t</li>\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-minimize\"></Icon>\n\t\t\t\t\t\t<div class=\"name\">最小化</div>\n\t\t\t\t\t\t<div class=\"fontclass\">.uf-minimize</div>\n\t\t\t\t\t</li>\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-globe\"></Icon>\n\t\t\t\t\t\t<div class=\"name\">多语言</div>\n\t\t\t\t\t\t<div class=\"fontclass\">.uf-globe</div>\n\t\t\t\t\t</li>\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-yybs\"></Icon>\n\t\t\t\t\t\t<div class=\"name\">用友企业云服务</div>\n\t\t\t\t\t\t<div class=\"fontclass\">.uf-yybs</div>\n\t\t\t\t\t</li>\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-iuap5\"></Icon>\n\t\t\t\t\t\t<div class=\"name\">iuap-5标准-黑白</div>\n\t\t\t\t\t\t<div class=\"fontclass\">.uf-iuap5</div>\n\t\t\t\t\t</li>\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-iuap5c\"></Icon>\n\t\t\t\t\t\t<div class=\"name\">iuap-5标准-全彩</div>\n\t\t\t\t\t\t<div class=\"fontclass\">.uf-iuap5c</div>\n\t\t\t\t\t</li>\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<Icon type=\"uf-qingkong\"></Icon>\n\t\t\t\t\t\t<div class=\"name\">清空</div>\n\t\t\t\t\t\t<div class=\"fontclass\">.uf-qingkong</div>\n\t\t\t\t\t</li>\n\t\t\t\t</ul>\n\t\t\t</div>\n\t\t)\n\t}\n}\n\nexport default Demo1;", "desc": " 使用 <Icon /> 标签声明组件，指定图标对应的 type 属性。", "scss_code": ".icon_lists:after {\n  clear:both;\n  display:block;\n  visibility: hidden;\n  content:'.';\n}\n.icon_lists li {\n  position: relative;\n  float: left;\n  width: 10.66%;\n  height: 108px;\n  margin: 4px 0;\n  padding: 10px 0 0;\n  overflow: hidden;\n  color: #555;\n  text-align: center;\n  list-style: none;\n  background-color: #fff;\n  border-radius: 4px;\n  cursor: pointer;\n  -webkit-transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;\n  transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;\n  .uf{\n    display: block;\n    font-size: 36px;\n    line-height: 36px;\n    margin: 12px 0 8px;\n    color: #555;\n    -webkit-transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;\n    -moz-transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;\n    transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;\n  }\n  &:hover {\n    color: #fff;\n    background-color: #1890ff;\n    .uf {\n      color: #fff;\n      -webkit-transform: scale(1.4);\n      -ms-transform: scale(1.4);\n      transform: scale(1.4);\n    }\n  }\n  .name, .fontclass {\n    white-space: nowrap;\n    text-align: center;\n    line-height: 18px;\n    -webkit-transform: scale(0.83);\n    -ms-transform: scale(0.83);\n    transform: scale(0.83);\n  }\n}\n.u-message-notice {\n  margin-bottom: 12px;\n  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;\n  .code-cont {\n    background: #ddd;\n    display: inline-block;\n    border-radius: 3px;\n    line-height: 18px;\n  }\n}" }];
 	
 	var Demo = function (_Component) {
 	    _inherits(Demo, _Component);
@@ -127,13 +127,6 @@
 	                'p',
 	                null,
 	                desc
-	            ),
-	            _react2['default'].createElement(
-	                'span',
-	                { className: 'component-code', onClick: this.handleClick },
-	                ' \u67E5\u770B\u6E90\u7801 ',
-	                _react2['default'].createElement('i', { className: 'uf uf-arrow-right' }),
-	                ' '
 	            )
 	        );
 	        return _react2['default'].createElement(
@@ -673,7 +666,7 @@
 	
 	var _Panel3 = _interopRequireDefault(_Panel2);
 	
-	var _PanelGroup2 = __webpack_require__(81);
+	var _PanelGroup2 = __webpack_require__(83);
 	
 	var _PanelGroup3 = _interopRequireDefault(_PanelGroup2);
 	
@@ -712,7 +705,7 @@
 	
 	var _propTypes2 = _interopRequireDefault(_propTypes);
 	
-	var _copyToClipboard = __webpack_require__(79);
+	var _copyToClipboard = __webpack_require__(81);
 	
 	var _copyToClipboard2 = _interopRequireDefault(_copyToClipboard);
 	
@@ -6133,38 +6126,44 @@
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
+	var _warning = __webpack_require__(32);
+	
+	var _warning2 = _interopRequireDefault(_warning);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 	
 	var defaultDuration = 1.5;
 	var newDuration = void 0;
-	var defaultTop = 0;
+	var defaultTop = 24;
 	var defaultBottom = 48;
 	var bottom = 90;
 	var padding = 30;
-	var width = 200;
+	var width = 240;
 	var messageInstance = void 0;
 	var key = 1;
 	var clsPrefix = 'u-message';
 	var noop = function noop() {};
+	var notificationStyle_copy = {};
+	var messageStyle_copy = {};
+	var positionType = ['topRight', 'bottomRight', 'top', 'bottom', 'topLeft', 'bottomLeft', ''];
+	var defaultStyle = {};
 	
 	var positionObj = {
 	    "top": {
-	        messageStyle: {
-	            width: "100%"
-	        },
+	        messageStyle: {},
 	        notificationStyle: {
 	            top: defaultTop,
-	            width: "100%"
+	            left: '50%',
+	            transform: 'translateX( -50%)'
 	        },
 	        transitionName: 'top'
 	    },
 	    "bottom": {
-	        messageStyle: {
-	            width: "100%"
-	        },
+	        messageStyle: {},
 	        notificationStyle: {
 	            bottom: defaultBottom,
-	            width: "100%"
+	            left: '50%',
+	            transform: 'translateX( -50%)'
 	        },
 	        transitionName: 'bottom'
 	    },
@@ -6226,29 +6225,29 @@
 	    }
 	    switch (position) {
 	        case 'top':
-	            positionObj[position].notificationStyle.top = defaultTop;
+	            notificationStyle_copy.top = defaultTop;
 	            break;
 	        case 'bottom':
-	            positionObj[position].notificationStyle.bottom = defaultBottom;
+	            notificationStyle_copy.bottom = defaultBottom;
 	            break;
 	        case 'bottomRight':
-	            positionObj[position].notificationStyle.bottom = bottom;
+	            notificationStyle_copy.bottom = bottom;
 	            break;
 	        case 'bottomLeft':
-	            positionObj[position].notificationStyle.bottom = bottom;
+	            notificationStyle_copy.bottom = bottom;
 	            break;
 	        default:
 	            break;
 	    }
 	    if (position !== 'top' && position !== 'bottom') {
-	        positionObj[position].messageStyle.width = width;
+	        messageStyle_copy.width = width;
 	    }
-	    var style = positionObj[position].notificationStyle;
+	    var style = JSON.stringify(notificationStyle_copy) == "{}" ? positionObj[position].notificationStyle : notificationStyle_copy;
 	    var instanceObj = {
 	        clsPrefix: clsPrefix,
 	        transitionName: clsPrefix + '-' + positionObj[position].transitionName,
-	        style: style, // 覆盖原来的样式
-	        position: ''
+	        style: _extends({}, style, defaultStyle), // 覆盖原来的样式
+	        position: position
 	    };
 	    if (typeof keyboard === 'boolean') {
 	        instanceObj.keyboard = keyboard;
@@ -6262,24 +6261,35 @@
 	    });
 	}
 	
-	function notice(content, duration, type, onClose, position, style, keyboard, onEscapeKeyUp, showIcon) {
+	function notice(content, duration_arg, type, onClose, position, style, keyboard, onEscapeKeyUp, showIcon, icon, props) {
+	    if (positionType.findIndex(function (item) {
+	        return item === position;
+	    }) < 0) {
+	        (0, _warning2["default"])(false, 'Failed prop type: Invalid prop `position` supplied to `Message`, expected one of ["top","bottom","topRight","topLeft","bottomRight","bottomLeft"].');
+	        return;
+	    }
+	    var duration = duration_arg !== undefined ? duration_arg : defaultDuration;
+	    notificationStyle_copy = _extends({}, positionObj[position].notificationStyle);
+	    messageStyle_copy = _extends({}, positionObj[position].messageStyle);
+	
 	    var iconType = {
 	        info: 'uf uf-i-c-2',
 	        success: 'uf uf-correct',
-	        danger: 'uf uf-close-c',
+	        danger: 'uf uf-exc-c',
 	        warning: 'uf uf-exc-t',
 	        light: 'uf uf-notification',
-	        dark: 'uf uf-bubble',
+	        dark: 'uf uf-notification',
 	        news: 'uf uf-bell',
 	        infolight: 'uf uf-i-c-2',
 	        successlight: 'uf uf-correct',
-	        dangerlight: 'uf uf-close-c',
+	        dangerlight: 'uf uf-exc-c',
 	        warninglight: 'uf uf-exc-t'
 	    }[type];
 	
-	    var positionStyle = positionObj[position].messageStyle;
+	    var positionStyle = JSON.stringify(messageStyle_copy) == "{}" ? positionObj[position].messageStyle : messageStyle_copy;
+	    defaultStyle = _extends({}, positionStyle, style);
 	    getMessageInstance(position, function (instance) {
-	        instance.notice({
+	        instance.notice(_extends({}, props, {
 	            key: key,
 	            duration: duration,
 	            color: type,
@@ -6290,7 +6300,7 @@
 	                showIcon ? _react2["default"].createElement(
 	                    'div',
 	                    { className: clsPrefix + '-notice-description-icon' },
-	                    _react2["default"].createElement('i', { className: (0, _classnames2["default"])(iconType) })
+	                    icon ? _react2["default"].createElement('i', { className: (0, _classnames2["default"])('' + icon) }) : _react2["default"].createElement('i', { className: (0, _classnames2["default"])(iconType) })
 	                ) : null,
 	                _react2["default"].createElement(
 	                    'div',
@@ -6299,7 +6309,7 @@
 	                )
 	            ),
 	            onClose: onClose
-	        });
+	        }));
 	    }, keyboard, onEscapeKeyUp);
 	    return function () {
 	        var target = key++;
@@ -6319,12 +6329,13 @@
 	        }
 	        var content = obj.content || '';
 	        var duration = typeof obj.duration == 'undefined' ? defaultDuration : obj.duration;
-	        var color = obj.color || 'dark';
+	        var color = obj.color || 'light';
 	        var onClose = obj.onClose || noop;
 	        var position = obj.position || "top";
 	        var style = obj.style || {};
-	        var showIcon = obj.showIcon || false;
-	        return notice(content, duration, color, onClose, position, style, obj.keyboard, obj.onEscapeKeyUp, showIcon);
+	        var showIcon = obj.hasOwnProperty('showIcon') ? obj.showIcon : true;
+	        var icon = obj.hasOwnProperty('icon') ? obj.icon : false;
+	        return notice(content, duration, color, onClose, position, style, obj.keyboard, obj.onEscapeKeyUp, showIcon, icon, obj);
 	    },
 	    config: function config(options) {
 	        if (options.top !== undefined) {
@@ -6351,6 +6362,16 @@
 	        if (messageInstance) {
 	            messageInstance.destroy();
 	            messageInstance = null;
+	            defaultDuration = 1.5;
+	            newDuration = undefined;
+	            defaultTop = 24;
+	            defaultBottom = 48;
+	            bottom = 90;
+	            padding = 30;
+	            width = 240;
+	            notificationStyle_copy = null;
+	            messageStyle_copy = null;
+	            defaultStyle = null;
 	        }
 	    }
 	};
@@ -6446,7 +6467,7 @@
 	  show: _propTypes2["default"].bool,
 	  clsPrefix: _propTypes2["default"].string,
 	  style: _propTypes2["default"].object,
-	  position: _propTypes2["default"].oneOf(['topRight', 'bottomRight', '']),
+	  position: _propTypes2["default"].oneOf(['topRight', 'bottomRight', 'top', 'bottom', 'topLeft', 'bottomLeft', '']),
 	  transitionName: _propTypes2["default"].string,
 	  keyboard: _propTypes2["default"].bool, // 按esc键是否关闭notice
 	  onEscapeKeyUp: _propTypes2["default"].func, // 设置esc键特殊钩子函数
@@ -7429,6 +7450,8 @@
 	  value: true
 	});
 	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
 	var _react = __webpack_require__(1);
 	
 	var _react2 = _interopRequireDefault(_react);
@@ -7441,11 +7464,17 @@
 	
 	var _propTypes2 = _interopRequireDefault(_propTypes);
 	
+	var _beeIcon = __webpack_require__(79);
+	
+	var _beeIcon2 = _interopRequireDefault(_beeIcon);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 	
 	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
 	
 	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+	
+	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
@@ -7519,7 +7548,12 @@
 	        style = _props.style,
 	        children = _props.children,
 	        color = _props.color,
-	        title = _props.title;
+	        title = _props.title,
+	        content = _props.content,
+	        onEnd = _props.onEnd,
+	        onClose = _props.onClose,
+	        duration = _props.duration,
+	        others = _objectWithoutProperties(_props, ['closable', 'clsPrefix', 'className', 'style', 'children', 'color', 'title', 'content', 'onEnd', 'onClose', 'duration']);
 	
 	    var componentClass = clsPrefix + '-notice';
 	    var classes = (_classes = {}, _defineProperty(_classes, '' + componentClass, 1), _defineProperty(_classes, componentClass + '-closable', closable), _defineProperty(_classes, className, !!className), _classes);
@@ -7528,7 +7562,7 @@
 	    }
 	    return _react2["default"].createElement(
 	      'div',
-	      { className: (0, _classnames2["default"])(classes), style: style, onClick: this.close },
+	      _extends({ className: (0, _classnames2["default"])(classes), style: style, onClick: this.close }, others),
 	      _react2["default"].createElement(
 	        'div',
 	        { className: componentClass + '-content' },
@@ -7546,7 +7580,11 @@
 	      closable ? _react2["default"].createElement(
 	        'a',
 	        { tabIndex: '0', onClick: this.close, className: componentClass + '-close' },
-	        _react2["default"].createElement('span', { className: componentClass + '-close-x' })
+	        _react2["default"].createElement(
+	          'span',
+	          { className: componentClass + '-close-x' },
+	          _react2["default"].createElement(_beeIcon2["default"], { type: 'uf-close' })
+	        )
 	      ) : null
 	    );
 	  };
@@ -7566,9 +7604,107 @@
 /* 79 */
 /***/ (function(module, exports, __webpack_require__) {
 
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _Icon = __webpack_require__(80);
+	
+	var _Icon2 = _interopRequireDefault(_Icon);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+	
+	exports["default"] = _Icon2["default"];
+	module.exports = exports['default'];
+
+/***/ }),
+/* 80 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _classnames = __webpack_require__(5);
+	
+	var _classnames2 = _interopRequireDefault(_classnames);
+	
+	var _propTypes = __webpack_require__(6);
+	
+	var _propTypes2 = _interopRequireDefault(_propTypes);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+	
+	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
+	
+	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
+	
+	var propTypes = {
+		type: _propTypes2["default"].string
+	
+	};
+	/**
+	 *  badge 默认显示内容1
+	 */
+	var defaultProps = {
+		clsPrefix: 'uf'
+	};
+	
+	var Icon = function (_Component) {
+		_inherits(Icon, _Component);
+	
+		function Icon(props) {
+			_classCallCheck(this, Icon);
+	
+			return _possibleConstructorReturn(this, _Component.call(this, props));
+		}
+	
+		Icon.prototype.render = function render() {
+			var _props = this.props,
+			    type = _props.type,
+			    className = _props.className,
+			    clsPrefix = _props.clsPrefix,
+			    others = _objectWithoutProperties(_props, ['type', 'className', 'clsPrefix']);
+	
+			var clsObj = {};
+	
+			var classNames = (0, _classnames2["default"])(clsPrefix, type);
+	
+			return _react2["default"].createElement('i', _extends({}, others, { className: (0, _classnames2["default"])(classNames, className) }));
+		};
+	
+		return Icon;
+	}(_react.Component);
+	
+	Icon.defaultProps = defaultProps;
+	Icon.propTypes = propTypes;
+	
+	exports["default"] = Icon;
+	module.exports = exports['default'];
+
+/***/ }),
+/* 81 */
+/***/ (function(module, exports, __webpack_require__) {
+
 	"use strict";
 	
-	var deselectCurrent = __webpack_require__(80);
+	var deselectCurrent = __webpack_require__(82);
 	
 	var defaultMessage = "Copy to clipboard: #{key}, Enter";
 	
@@ -7612,6 +7748,11 @@
 	    mark.style.userSelect = "text";
 	    mark.addEventListener("copy", function(e) {
 	      e.stopPropagation();
+	      if (options.format) {
+	        e.preventDefault();
+	        e.clipboardData.clearData();
+	        e.clipboardData.setData(options.format, text);
+	      }
 	    });
 	
 	    document.body.appendChild(mark);
@@ -7628,7 +7769,7 @@
 	    debug && console.error("unable to copy using execCommand: ", err);
 	    debug && console.warn("trying IE specific stuff");
 	    try {
-	      window.clipboardData.setData("text", text);
+	      window.clipboardData.setData(options.format || "text", text);
 	      success = true;
 	    } catch (err) {
 	      debug && console.error("unable to copy using clipboardData: ", err);
@@ -7658,7 +7799,7 @@
 
 
 /***/ }),
-/* 80 */
+/* 82 */
 /***/ (function(module, exports) {
 
 	
@@ -7703,7 +7844,7 @@
 
 
 /***/ }),
-/* 81 */
+/* 83 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -7850,7 +7991,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 82 */
+/* 84 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -7859,7 +8000,7 @@
 	  value: true
 	});
 	
-	var _Drawer = __webpack_require__(83);
+	var _Drawer = __webpack_require__(85);
 	
 	var _Drawer2 = _interopRequireDefault(_Drawer);
 	
@@ -7869,7 +8010,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 83 */
+/* 85 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -7894,9 +8035,9 @@
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
-	var _common = __webpack_require__(84);
+	var _common = __webpack_require__(86);
 	
-	var _reactTransitionGroup = __webpack_require__(85);
+	var _reactTransitionGroup = __webpack_require__(87);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 	
@@ -8172,7 +8313,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 84 */
+/* 86 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -8199,18 +8340,18 @@
 	}
 
 /***/ }),
-/* 85 */
+/* 87 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var _CSSTransition = _interopRequireDefault(__webpack_require__(86));
+	var _CSSTransition = _interopRequireDefault(__webpack_require__(88));
 	
-	var _ReplaceTransition = _interopRequireDefault(__webpack_require__(93));
+	var _ReplaceTransition = _interopRequireDefault(__webpack_require__(95));
 	
-	var _TransitionGroup = _interopRequireDefault(__webpack_require__(94));
+	var _TransitionGroup = _interopRequireDefault(__webpack_require__(96));
 	
-	var _Transition = _interopRequireDefault(__webpack_require__(90));
+	var _Transition = _interopRequireDefault(__webpack_require__(92));
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -8222,7 +8363,7 @@
 	};
 
 /***/ }),
-/* 86 */
+/* 88 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {"use strict";
@@ -8232,15 +8373,15 @@
 	
 	var PropTypes = _interopRequireWildcard(__webpack_require__(6));
 	
-	var _addClass = _interopRequireDefault(__webpack_require__(87));
+	var _addClass = _interopRequireDefault(__webpack_require__(89));
 	
-	var _removeClass = _interopRequireDefault(__webpack_require__(89));
+	var _removeClass = _interopRequireDefault(__webpack_require__(91));
 	
 	var _react = _interopRequireDefault(__webpack_require__(1));
 	
-	var _Transition = _interopRequireDefault(__webpack_require__(90));
+	var _Transition = _interopRequireDefault(__webpack_require__(92));
 	
-	var _PropTypes = __webpack_require__(92);
+	var _PropTypes = __webpack_require__(94);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -8592,7 +8733,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(33)))
 
 /***/ }),
-/* 87 */
+/* 89 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -8602,7 +8743,7 @@
 	exports.__esModule = true;
 	exports.default = addClass;
 	
-	var _hasClass = _interopRequireDefault(__webpack_require__(88));
+	var _hasClass = _interopRequireDefault(__webpack_require__(90));
 	
 	function addClass(element, className) {
 	  if (element.classList) element.classList.add(className);else if (!(0, _hasClass.default)(element, className)) if (typeof element.className === 'string') element.className = element.className + ' ' + className;else element.setAttribute('class', (element.className && element.className.baseVal || '') + ' ' + className);
@@ -8611,7 +8752,7 @@
 	module.exports = exports["default"];
 
 /***/ }),
-/* 88 */
+/* 90 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -8626,7 +8767,7 @@
 	module.exports = exports["default"];
 
 /***/ }),
-/* 89 */
+/* 91 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -8640,7 +8781,7 @@
 	};
 
 /***/ }),
-/* 90 */
+/* 92 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {"use strict";
@@ -8654,9 +8795,9 @@
 	
 	var _reactDom = _interopRequireDefault(__webpack_require__(2));
 	
-	var _reactLifecyclesCompat = __webpack_require__(91);
+	var _reactLifecyclesCompat = __webpack_require__(93);
 	
-	var _PropTypes = __webpack_require__(92);
+	var _PropTypes = __webpack_require__(94);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -9255,7 +9396,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(33)))
 
 /***/ }),
-/* 91 */
+/* 93 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -9423,7 +9564,7 @@
 
 
 /***/ }),
-/* 92 */
+/* 94 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {"use strict";
@@ -9457,7 +9598,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(33)))
 
 /***/ }),
-/* 93 */
+/* 95 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {"use strict";
@@ -9471,7 +9612,7 @@
 	
 	var _reactDom = __webpack_require__(2);
 	
-	var _TransitionGroup = _interopRequireDefault(__webpack_require__(94));
+	var _TransitionGroup = _interopRequireDefault(__webpack_require__(96));
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -9613,7 +9754,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(33)))
 
 /***/ }),
-/* 94 */
+/* 96 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {"use strict";
@@ -9625,9 +9766,9 @@
 	
 	var _react = _interopRequireDefault(__webpack_require__(1));
 	
-	var _reactLifecyclesCompat = __webpack_require__(91);
+	var _reactLifecyclesCompat = __webpack_require__(93);
 	
-	var _ChildMapping = __webpack_require__(95);
+	var _ChildMapping = __webpack_require__(97);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -9827,7 +9968,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(33)))
 
 /***/ }),
-/* 95 */
+/* 97 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -9982,7 +10123,7 @@
 	}
 
 /***/ }),
-/* 96 */
+/* 98 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -9991,7 +10132,7 @@
 	  value: true
 	});
 	
-	var _Clipboard = __webpack_require__(97);
+	var _Clipboard = __webpack_require__(99);
 	
 	var _Clipboard2 = _interopRequireDefault(_Clipboard);
 	
@@ -10001,7 +10142,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 97 */
+/* 99 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -10014,7 +10155,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _clipboard = __webpack_require__(98);
+	var _clipboard = __webpack_require__(100);
 	
 	var _clipboard2 = _interopRequireDefault(_clipboard);
 	
@@ -10022,7 +10163,7 @@
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
-	var _beeIcon = __webpack_require__(106);
+	var _beeIcon = __webpack_require__(79);
 	
 	var _beeIcon2 = _interopRequireDefault(_beeIcon);
 	
@@ -10048,11 +10189,11 @@
 	
 	var _beeModal2 = _interopRequireDefault(_beeModal);
 	
-	var _beeFormControl = __webpack_require__(262);
+	var _beeFormControl = __webpack_require__(267);
 	
 	var _beeFormControl2 = _interopRequireDefault(_beeFormControl);
 	
-	var _beeButton = __webpack_require__(260);
+	var _beeButton = __webpack_require__(265);
 	
 	var _beeButton2 = _interopRequireDefault(_beeButton);
 	
@@ -10224,12 +10365,12 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 98 */
+/* 100 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function (global, factory) {
 	    if (true) {
-	        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [module, __webpack_require__(99), __webpack_require__(101), __webpack_require__(102)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [module, __webpack_require__(101), __webpack_require__(103), __webpack_require__(104)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 	    } else if (typeof exports !== "undefined") {
 	        factory(module, require('./clipboard-action'), require('tiny-emitter'), require('good-listener'));
 	    } else {
@@ -10436,12 +10577,12 @@
 	});
 
 /***/ }),
-/* 99 */
+/* 101 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function (global, factory) {
 	    if (true) {
-	        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [module, __webpack_require__(100)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [module, __webpack_require__(102)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 	    } else if (typeof exports !== "undefined") {
 	        factory(module, require('select'));
 	    } else {
@@ -10670,7 +10811,7 @@
 	});
 
 /***/ }),
-/* 100 */
+/* 102 */
 /***/ (function(module, exports) {
 
 	function select(element) {
@@ -10719,7 +10860,7 @@
 
 
 /***/ }),
-/* 101 */
+/* 103 */
 /***/ (function(module, exports) {
 
 	function E () {
@@ -10792,11 +10933,11 @@
 
 
 /***/ }),
-/* 102 */
+/* 104 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var is = __webpack_require__(103);
-	var delegate = __webpack_require__(104);
+	var is = __webpack_require__(105);
+	var delegate = __webpack_require__(106);
 	
 	/**
 	 * Validates all params and calls the right
@@ -10893,7 +11034,7 @@
 
 
 /***/ }),
-/* 103 */
+/* 105 */
 /***/ (function(module, exports) {
 
 	/**
@@ -10948,10 +11089,10 @@
 
 
 /***/ }),
-/* 104 */
+/* 106 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var closest = __webpack_require__(105);
+	var closest = __webpack_require__(107);
 	
 	/**
 	 * Delegates event to a selector.
@@ -11032,7 +11173,7 @@
 
 
 /***/ }),
-/* 105 */
+/* 107 */
 /***/ (function(module, exports) {
 
 	var DOCUMENT_NODE_TYPE = 9;
@@ -11069,104 +11210,6 @@
 	
 	module.exports = closest;
 
-
-/***/ }),
-/* 106 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _Icon = __webpack_require__(107);
-	
-	var _Icon2 = _interopRequireDefault(_Icon);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-	
-	exports["default"] = _Icon2["default"];
-	module.exports = exports['default'];
-
-/***/ }),
-/* 107 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _classnames = __webpack_require__(5);
-	
-	var _classnames2 = _interopRequireDefault(_classnames);
-	
-	var _propTypes = __webpack_require__(6);
-	
-	var _propTypes2 = _interopRequireDefault(_propTypes);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-	
-	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
-	
-	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
-	
-	var propTypes = {
-		type: _propTypes2["default"].string
-	
-	};
-	/**
-	 *  badge 默认显示内容1
-	 */
-	var defaultProps = {
-		clsPrefix: 'uf'
-	};
-	
-	var Icon = function (_Component) {
-		_inherits(Icon, _Component);
-	
-		function Icon(props) {
-			_classCallCheck(this, Icon);
-	
-			return _possibleConstructorReturn(this, _Component.call(this, props));
-		}
-	
-		Icon.prototype.render = function render() {
-			var _props = this.props,
-			    type = _props.type,
-			    className = _props.className,
-			    clsPrefix = _props.clsPrefix,
-			    others = _objectWithoutProperties(_props, ['type', 'className', 'clsPrefix']);
-	
-			var clsObj = {};
-	
-			var classNames = (0, _classnames2["default"])(clsPrefix, type);
-	
-			return _react2["default"].createElement('i', _extends({}, others, { className: (0, _classnames2["default"])(classNames, className) }));
-		};
-	
-		return Icon;
-	}(_react.Component);
-	
-	Icon.defaultProps = defaultProps;
-	Icon.propTypes = propTypes;
-	
-	exports["default"] = Icon;
-	module.exports = exports['default'];
 
 /***/ }),
 /* 108 */
@@ -14051,11 +14094,11 @@
 	
 	var _Modal2 = _interopRequireDefault(_Modal);
 	
-	var _confirm = __webpack_require__(259);
+	var _confirm = __webpack_require__(264);
 	
 	var _confirm2 = _interopRequireDefault(_confirm);
 	
-	var _beeIcon = __webpack_require__(106);
+	var _beeIcon = __webpack_require__(79);
 	
 	var _beeIcon2 = _interopRequireDefault(_beeIcon);
 	
@@ -14171,25 +14214,25 @@
 	
 	var _tinperBeeCore = __webpack_require__(27);
 	
-	var _beeTransition = __webpack_require__(11);
+	var _beeTransition = __webpack_require__(148);
 	
-	var _ModalBody = __webpack_require__(148);
+	var _ModalBody = __webpack_require__(153);
 	
 	var _ModalBody2 = _interopRequireDefault(_ModalBody);
 	
-	var _ModalDialog = __webpack_require__(149);
+	var _ModalDialog = __webpack_require__(154);
 	
 	var _ModalDialog2 = _interopRequireDefault(_ModalDialog);
 	
-	var _ModalFooter = __webpack_require__(256);
+	var _ModalFooter = __webpack_require__(261);
 	
 	var _ModalFooter2 = _interopRequireDefault(_ModalFooter);
 	
-	var _ModalHeader = __webpack_require__(257);
+	var _ModalHeader = __webpack_require__(262);
 	
 	var _ModalHeader2 = _interopRequireDefault(_ModalHeader);
 	
-	var _ModalTitle = __webpack_require__(258);
+	var _ModalTitle = __webpack_require__(263);
 	
 	var _ModalTitle2 = _interopRequireDefault(_ModalTitle);
 	
@@ -15384,15 +15427,15 @@
 	exports.__esModule = true;
 	exports.default = void 0;
 	
-	var _addClass = _interopRequireDefault(__webpack_require__(87));
+	var _addClass = _interopRequireDefault(__webpack_require__(89));
 	
 	exports.addClass = _addClass.default;
 	
-	var _removeClass = _interopRequireDefault(__webpack_require__(89));
+	var _removeClass = _interopRequireDefault(__webpack_require__(91));
 	
 	exports.removeClass = _removeClass.default;
 	
-	var _hasClass = _interopRequireDefault(__webpack_require__(88));
+	var _hasClass = _interopRequireDefault(__webpack_require__(90));
 	
 	exports.hasClass = _hasClass.default;
 	var _default = {
@@ -15574,6 +15617,773 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
+	exports.Fade = exports.Collapse = exports.Transition = undefined;
+	
+	var _Transition2 = __webpack_require__(149);
+	
+	var _Transition3 = _interopRequireDefault(_Transition2);
+	
+	var _Collapse2 = __webpack_require__(150);
+	
+	var _Collapse3 = _interopRequireDefault(_Collapse2);
+	
+	var _Fade2 = __webpack_require__(152);
+	
+	var _Fade3 = _interopRequireDefault(_Fade2);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+	
+	exports.Transition = _Transition3["default"];
+	exports.Collapse = _Collapse3["default"];
+	exports.Fade = _Fade3["default"];
+
+/***/ }),
+/* 149 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.EXITING = exports.ENTERED = exports.ENTERING = exports.EXITED = exports.UNMOUNTED = undefined;
+	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactDom = __webpack_require__(2);
+	
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+	
+	var _properties = __webpack_require__(13);
+	
+	var _properties2 = _interopRequireDefault(_properties);
+	
+	var _on = __webpack_require__(16);
+	
+	var _on2 = _interopRequireDefault(_on);
+	
+	var _classnames = __webpack_require__(5);
+	
+	var _classnames2 = _interopRequireDefault(_classnames);
+	
+	var _propTypes = __webpack_require__(6);
+	
+	var _propTypes2 = _interopRequireDefault(_propTypes);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+	
+	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
+	
+	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
+	
+	var transitionEndEvent = _properties2["default"].end;
+	
+	//设置状态码
+	var UNMOUNTED = exports.UNMOUNTED = 0;
+	var EXITED = exports.EXITED = 1;
+	var ENTERING = exports.ENTERING = 2;
+	var ENTERED = exports.ENTERED = 3;
+	var EXITING = exports.EXITING = 4;
+	
+	var propTypes = {
+	  /**
+	   * 是否触发动画
+	   */
+	  "in": _propTypes2["default"].bool,
+	
+	  /**
+	   * 不显示的时候是否移除组件
+	   */
+	  unmountOnExit: _propTypes2["default"].bool,
+	
+	  /**
+	   * 如果设置为默认显示，挂载时显示动画
+	   */
+	  transitionAppear: _propTypes2["default"].bool,
+	
+	  /**
+	   * 设置超时时间，防止出现问题，可设置为>=动画时间
+	   */
+	  timeout: _propTypes2["default"].number,
+	
+	  /**
+	   * 退出组件时添加的class
+	   */
+	  exitedClassName: _propTypes2["default"].string,
+	  /**
+	   * 退出组件中添加的class
+	   */
+	  exitingClassName: _propTypes2["default"].string,
+	  /**
+	   * 进入动画后添加的class
+	   */
+	  enteredClassName: _propTypes2["default"].string,
+	  /**
+	   * 进入动画时添加的class
+	   */
+	  enteringClassName: _propTypes2["default"].string,
+	
+	  /**
+	   * 进入动画开始时的钩子函数
+	   */
+	  onEnter: _propTypes2["default"].func,
+	  /**
+	   * 进入动画中的钩子函数
+	   */
+	  onEntering: _propTypes2["default"].func,
+	  /**
+	   * 进入动画后的钩子函数
+	   */
+	  onEntered: _propTypes2["default"].func,
+	  /**
+	   * 退出动画开始时的钩子函数
+	   */
+	  onExit: _propTypes2["default"].func,
+	  /**
+	   * 退出动画中的钩子函数
+	   */
+	  onExiting: _propTypes2["default"].func,
+	  /**
+	   * 退出动画后的钩子函数
+	   */
+	  onExited: _propTypes2["default"].func
+	};
+	
+	function noop() {}
+	
+	var defaultProps = {
+	  "in": false,
+	  unmountOnExit: false,
+	  transitionAppear: false,
+	  timeout: 5000,
+	  onEnter: noop,
+	  onEntering: noop,
+	  onEntered: noop,
+	  onExit: noop,
+	  onExiting: noop,
+	  onExited: noop
+	};
+	
+	/**
+	 * 动画组件
+	 */
+	
+	var Transition = function (_Component) {
+	  _inherits(Transition, _Component);
+	
+	  function Transition(props, context) {
+	    _classCallCheck(this, Transition);
+	
+	    var _this = _possibleConstructorReturn(this, _Component.call(this, props, context));
+	
+	    var initialStatus = void 0;
+	    if (props["in"]) {
+	      // 在componentdidmount时开始执行动画
+	      initialStatus = props.transitionAppear ? EXITED : ENTERED;
+	    } else {
+	      initialStatus = props.unmountOnExit ? UNMOUNTED : EXITED;
+	    }
+	    _this.state = { status: initialStatus };
+	
+	    _this.nextCallback = null;
+	    return _this;
+	  }
+	
+	  Transition.prototype.componentDidMount = function componentDidMount() {
+	    if (this.props.transitionAppear && this.props["in"]) {
+	      this.performEnter(this.props);
+	    }
+	  };
+	
+	  Transition.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
+	    if (nextProps["in"] && this.props.unmountOnExit) {
+	      if (this.state.status === UNMOUNTED) {
+	        // 在componentDidUpdate执行动画.
+	        this.setState({ status: EXITED });
+	      }
+	    } else {
+	      this._needsUpdate = true;
+	    }
+	  };
+	
+	  Transition.prototype.componentDidUpdate = function componentDidUpdate() {
+	    var status = this.state.status;
+	
+	    if (this.props.unmountOnExit && status === EXITED) {
+	      // 当使用unmountOnExit时，exited为exiting和unmont的过渡状态
+	      if (this.props["in"]) {
+	        this.performEnter(this.props);
+	      } else {
+	        this.setState({ status: UNMOUNTED });
+	      }
+	
+	      return;
+	    }
+	
+	    // 确保只响应prop变化
+	    if (this._needsUpdate) {
+	      this._needsUpdate = false;
+	
+	      if (this.props["in"]) {
+	        if (status === EXITING) {
+	          this.performEnter(this.props);
+	        } else if (status === EXITED) {
+	          this.performEnter(this.props);
+	        }
+	        // 其他，当我们已经输入或输出
+	      } else {
+	        if (status === ENTERING || status === ENTERED) {
+	          this.performExit(this.props);
+	        }
+	        // 我们已经输入或输出完成
+	      }
+	    }
+	  };
+	
+	  Transition.prototype.componentWillUnmount = function componentWillUnmount() {
+	    this.cancelNextCallback();
+	  };
+	
+	  Transition.prototype.performEnter = function performEnter(props) {
+	    var _this2 = this;
+	
+	    this.cancelNextCallback();
+	    var node = _reactDom2["default"].findDOMNode(this);
+	
+	    // 这里接收新props
+	    props.onEnter(node);
+	
+	    this.safeSetState({ status: ENTERING }, function () {
+	      _this2.props.onEntering(node);
+	
+	      _this2.onTransitionEnd(node, function () {
+	        _this2.safeSetState({ status: ENTERED }, function () {
+	          _this2.props.onEntered(node);
+	        });
+	      });
+	    });
+	  };
+	
+	  Transition.prototype.performExit = function performExit(props) {
+	    var _this3 = this;
+	
+	    this.cancelNextCallback();
+	    var node = _reactDom2["default"].findDOMNode(this);
+	
+	    props.onExit(node);
+	
+	    this.safeSetState({ status: EXITING }, function () {
+	      _this3.props.onExiting(node);
+	
+	      _this3.onTransitionEnd(node, function () {
+	        _this3.safeSetState({ status: EXITED }, function () {
+	          _this3.props.onExited(node);
+	        });
+	      });
+	    });
+	  };
+	
+	  Transition.prototype.cancelNextCallback = function cancelNextCallback() {
+	    if (this.nextCallback !== null) {
+	      this.nextCallback.cancel();
+	      this.nextCallback = null;
+	    }
+	  };
+	
+	  Transition.prototype.safeSetState = function safeSetState(nextState, callback) {
+	    // 确保在组件销毁后挂起的setState被消除
+	    this.setState(nextState, this.setNextCallback(callback));
+	  };
+	
+	  Transition.prototype.setNextCallback = function setNextCallback(callback) {
+	    var _this4 = this;
+	
+	    var active = true;
+	
+	    this.nextCallback = function (event) {
+	      if (active) {
+	        active = false;
+	        _this4.nextCallback = null;
+	
+	        callback(event);
+	      }
+	    };
+	
+	    this.nextCallback.cancel = function () {
+	      active = false;
+	    };
+	
+	    return this.nextCallback;
+	  };
+	
+	  Transition.prototype.onTransitionEnd = function onTransitionEnd(node, handler) {
+	    this.setNextCallback(handler);
+	
+	    if (node) {
+	      if (transitionEndEvent == undefined) {
+	        this.nextCallback();
+	      } else {
+	        (0, _on2["default"])(node, transitionEndEvent, this.nextCallback);
+	      }
+	      setTimeout(this.nextCallback, this.props.timeout);
+	    } else {
+	      setTimeout(this.nextCallback, 0);
+	    }
+	  };
+	
+	  Transition.prototype.render = function render() {
+	    var status = this.state.status;
+	    if (status === UNMOUNTED) {
+	      return null;
+	    }
+	
+	    var _props = this.props,
+	        children = _props.children,
+	        className = _props.className,
+	        childProps = _objectWithoutProperties(_props, ['children', 'className']);
+	
+	    Object.keys(Transition.propTypes).forEach(function (key) {
+	      return delete childProps[key];
+	    });
+	
+	    var transitionClassName = void 0;
+	    if (status === EXITED) {
+	      transitionClassName = this.props.exitedClassName;
+	    } else if (status === ENTERING) {
+	      transitionClassName = this.props.enteringClassName;
+	    } else if (status === ENTERED) {
+	      transitionClassName = this.props.enteredClassName;
+	    } else if (status === EXITING) {
+	      transitionClassName = this.props.exitingClassName;
+	    }
+	
+	    var child = _react2["default"].Children.only(children);
+	    return _react2["default"].cloneElement(child, _extends({}, childProps, {
+	      className: (0, _classnames2["default"])(child.props.className, className, transitionClassName)
+	    }));
+	  };
+	
+	  return Transition;
+	}(_react.Component);
+	
+	Transition.propTypes = propTypes;
+	
+	Transition.defaultProps = defaultProps;
+	
+	exports["default"] = Transition;
+
+/***/ }),
+/* 150 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
+	var _classnames = __webpack_require__(5);
+	
+	var _classnames2 = _interopRequireDefault(_classnames);
+	
+	var _style = __webpack_require__(18);
+	
+	var _style2 = _interopRequireDefault(_style);
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _propTypes = __webpack_require__(6);
+	
+	var _propTypes2 = _interopRequireDefault(_propTypes);
+	
+	var _Transition = __webpack_require__(149);
+	
+	var _Transition2 = _interopRequireDefault(_Transition);
+	
+	var _capitalize = __webpack_require__(151);
+	
+	var _capitalize2 = _interopRequireDefault(_capitalize);
+	
+	var _tinperBeeCore = __webpack_require__(27);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+	
+	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
+	
+	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
+	
+	var MARGINS = {
+	  height: ['marginTop', 'marginBottom'],
+	  width: ['marginLeft', 'marginRight']
+	};
+	
+	// reading a dimension prop will cause the browser to recalculate,
+	// which will let our animations work
+	function triggerBrowserReflow(node) {
+	  node.offsetHeight; // eslint-disable-line no-unused-expressions
+	}
+	
+	function getDimensionValue(dimension, elem) {
+	  var value = elem['offset' + (0, _capitalize2["default"])(dimension)];
+	  var margins = MARGINS[dimension];
+	
+	  return value + parseInt((0, _style2["default"])(elem, margins[0]), 10) + parseInt((0, _style2["default"])(elem, margins[1]), 10);
+	}
+	
+	var propTypes = {
+	  /**
+	   * Show the component; triggers the expand or collapse animation
+	   */
+	  "in": _propTypes2["default"].bool,
+	
+	  /**
+	   * Unmount the component (remove it from the DOM) when it is collapsed
+	   */
+	  unmountOnExit: _propTypes2["default"].bool,
+	
+	  /**
+	   * Run the expand animation when the component mounts, if it is initially
+	   * shown
+	   */
+	  transitionAppear: _propTypes2["default"].bool,
+	
+	  /**
+	   * Duration of the collapse animation in milliseconds, to ensure that
+	   * finishing callbacks are fired even if the original browser transition end
+	   * events are canceled
+	   */
+	  timeout: _propTypes2["default"].number,
+	
+	  /**
+	   * Callback fired before the component expands
+	   */
+	  onEnter: _propTypes2["default"].func,
+	  /**
+	   * Callback fired after the component starts to expand
+	   */
+	  onEntering: _propTypes2["default"].func,
+	  /**
+	   * Callback fired after the component has expanded
+	   */
+	  onEntered: _propTypes2["default"].func,
+	  /**
+	   * Callback fired before the component collapses
+	   */
+	  onExit: _propTypes2["default"].func,
+	  /**
+	   * Callback fired after the component starts to collapse
+	   */
+	  onExiting: _propTypes2["default"].func,
+	  /**
+	   * Callback fired after the component has collapsed
+	   */
+	  onExited: _propTypes2["default"].func,
+	
+	  /**
+	   * The dimension used when collapsing, or a function that returns the
+	   * dimension
+	   *
+	   * _Note: Bootstrap only partially supports 'width'!
+	   * You will need to supply your own CSS animation for the `.width` CSS class._
+	   */
+	  dimension: _propTypes2["default"].oneOfType([_propTypes2["default"].oneOf(['height', 'width']), _propTypes2["default"].func]),
+	
+	  /**
+	   * Function that returns the height or width of the animating DOM node
+	   *
+	   * Allows for providing some custom logic for how much the Collapse component
+	   * should animate in its specified dimension. Called with the current
+	   * dimension prop value and the DOM node.
+	   */
+	  getDimensionValue: _propTypes2["default"].func,
+	
+	  /**
+	   * ARIA role of collapsible element
+	   */
+	  role: _propTypes2["default"].string
+	};
+	
+	var defaultProps = {
+	  "in": false,
+	  timeout: 300,
+	  unmountOnExit: false,
+	  transitionAppear: false,
+	
+	  dimension: 'height',
+	  getDimensionValue: getDimensionValue
+	};
+	
+	var Collapse = function (_React$Component) {
+	  _inherits(Collapse, _React$Component);
+	
+	  function Collapse(props, context) {
+	    _classCallCheck(this, Collapse);
+	
+	    var _this = _possibleConstructorReturn(this, _React$Component.call(this, props, context));
+	
+	    _this.handleEnter = _this.handleEnter.bind(_this);
+	    _this.handleEntering = _this.handleEntering.bind(_this);
+	    _this.handleEntered = _this.handleEntered.bind(_this);
+	    _this.handleExit = _this.handleExit.bind(_this);
+	    _this.handleExiting = _this.handleExiting.bind(_this);
+	    return _this;
+	  }
+	
+	  /* -- Expanding -- */
+	
+	
+	  Collapse.prototype.handleEnter = function handleEnter(elem) {
+	    var dimension = this._dimension();
+	    elem.style[dimension] = '0';
+	  };
+	
+	  Collapse.prototype.handleEntering = function handleEntering(elem) {
+	    var dimension = this._dimension();
+	    elem.style[dimension] = this._getScrollDimensionValue(elem, dimension);
+	  };
+	
+	  Collapse.prototype.handleEntered = function handleEntered(elem) {
+	    var dimension = this._dimension();
+	    elem.style[dimension] = null;
+	  };
+	
+	  /* -- Collapsing -- */
+	
+	
+	  Collapse.prototype.handleExit = function handleExit(elem) {
+	    var dimension = this._dimension();
+	    elem.style[dimension] = this.props.getDimensionValue(dimension, elem) + 'px';
+	    triggerBrowserReflow(elem);
+	  };
+	
+	  Collapse.prototype.handleExiting = function handleExiting(elem) {
+	    var dimension = this._dimension();
+	    elem.style[dimension] = '0';
+	  };
+	
+	  Collapse.prototype._dimension = function _dimension() {
+	    return typeof this.props.dimension === 'function' ? this.props.dimension() : this.props.dimension;
+	  };
+	
+	  // for testing
+	
+	
+	  Collapse.prototype._getScrollDimensionValue = function _getScrollDimensionValue(elem, dimension) {
+	    return elem['scroll' + (0, _capitalize2["default"])(dimension)] + 'px';
+	  };
+	
+	  Collapse.prototype.render = function render() {
+	    var _props = this.props,
+	        onEnter = _props.onEnter,
+	        onEntering = _props.onEntering,
+	        onEntered = _props.onEntered,
+	        onExit = _props.onExit,
+	        onExiting = _props.onExiting,
+	        className = _props.className,
+	        props = _objectWithoutProperties(_props, ['onEnter', 'onEntering', 'onEntered', 'onExit', 'onExiting', 'className']);
+	
+	    delete props.dimension;
+	    delete props.getDimensionValue;
+	
+	    var handleEnter = (0, _tinperBeeCore.createChainedFunction)(this.handleEnter, onEnter);
+	    var handleEntering = (0, _tinperBeeCore.createChainedFunction)(this.handleEntering, onEntering);
+	    var handleEntered = (0, _tinperBeeCore.createChainedFunction)(this.handleEntered, onEntered);
+	    var handleExit = (0, _tinperBeeCore.createChainedFunction)(this.handleExit, onExit);
+	    var handleExiting = (0, _tinperBeeCore.createChainedFunction)(this.handleExiting, onExiting);
+	
+	    var classes = {
+	      width: this._dimension() === 'width'
+	    };
+	
+	    return _react2["default"].createElement(_Transition2["default"], _extends({}, props, {
+	      'aria-expanded': props.role ? props["in"] : null,
+	      className: (0, _classnames2["default"])(className, classes),
+	      exitedClassName: 'collapse',
+	      exitingClassName: 'collapsing',
+	      enteredClassName: 'collapse in',
+	      enteringClassName: 'collapsing',
+	      onEnter: handleEnter,
+	      onEntering: handleEntering,
+	      onEntered: handleEntered,
+	      onExit: handleExit,
+	      onExiting: handleExiting
+	    }));
+	  };
+	
+	  return Collapse;
+	}(_react2["default"].Component);
+	
+	Collapse.propTypes = propTypes;
+	Collapse.defaultProps = defaultProps;
+	
+	exports["default"] = Collapse;
+	module.exports = exports['default'];
+
+/***/ }),
+/* 151 */
+/***/ (function(module, exports) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports["default"] = capitalize;
+	function capitalize(string) {
+	  return "" + string.charAt(0).toUpperCase() + string.slice(1);
+	}
+	module.exports = exports["default"];
+
+/***/ }),
+/* 152 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
+	var _classnames = __webpack_require__(5);
+	
+	var _classnames2 = _interopRequireDefault(_classnames);
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _propTypes = __webpack_require__(6);
+	
+	var _propTypes2 = _interopRequireDefault(_propTypes);
+	
+	var _Transition = __webpack_require__(149);
+	
+	var _Transition2 = _interopRequireDefault(_Transition);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+	
+	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
+	
+	var propTypes = {
+	  /**
+	   * Show the component; triggers the fade in or fade out animation
+	   */
+	  "in": _propTypes2["default"].bool,
+	
+	  /**
+	   * Unmount the component (remove it from the DOM) when it is faded out
+	   */
+	  unmountOnExit: _propTypes2["default"].bool,
+	
+	  /**
+	   * Run the fade in animation when the component mounts, if it is initially
+	   * shown
+	   */
+	  transitionAppear: _propTypes2["default"].bool,
+	
+	  /**
+	   * Duration of the fade animation in milliseconds, to ensure that finishing
+	   * callbacks are fired even if the original browser transition end events are
+	   * canceled
+	   */
+	  timeout: _propTypes2["default"].number,
+	
+	  /**
+	   * Callback fired before the component fades in
+	   */
+	  onEnter: _propTypes2["default"].func,
+	  /**
+	   * Callback fired after the component starts to fade in
+	   */
+	  onEntering: _propTypes2["default"].func,
+	  /**
+	   * Callback fired after the has component faded in
+	   */
+	  onEntered: _propTypes2["default"].func,
+	  /**
+	   * Callback fired before the component fades out
+	   */
+	  onExit: _propTypes2["default"].func,
+	  /**
+	   * Callback fired after the component starts to fade out
+	   */
+	  onExiting: _propTypes2["default"].func,
+	  /**
+	   * Callback fired after the component has faded out
+	   */
+	  onExited: _propTypes2["default"].func
+	};
+	
+	var defaultProps = {
+	  "in": false,
+	  timeout: 300,
+	  unmountOnExit: false,
+	  transitionAppear: false
+	};
+	
+	var Fade = function (_React$Component) {
+	  _inherits(Fade, _React$Component);
+	
+	  function Fade() {
+	    _classCallCheck(this, Fade);
+	
+	    return _possibleConstructorReturn(this, _React$Component.apply(this, arguments));
+	  }
+	
+	  Fade.prototype.render = function render() {
+	    return _react2["default"].createElement(_Transition2["default"], _extends({}, this.props, {
+	      className: (0, _classnames2["default"])(this.props.className, 'fade'),
+	      enteredClassName: 'in',
+	      enteringClassName: 'in'
+	    }));
+	  };
+	
+	  return Fade;
+	}(_react2["default"].Component);
+	
+	Fade.propTypes = propTypes;
+	Fade.defaultProps = defaultProps;
+	
+	exports["default"] = Fade;
+	module.exports = exports['default'];
+
+/***/ }),
+/* 153 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
 	
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 	
@@ -15642,7 +16452,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 149 */
+/* 154 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -15669,11 +16479,11 @@
 	
 	var _propTypes2 = _interopRequireDefault(_propTypes);
 	
-	var _beeDnd = __webpack_require__(150);
+	var _beeDnd = __webpack_require__(155);
 	
 	var _beeDnd2 = _interopRequireDefault(_beeDnd);
 	
-	var _reResizable = __webpack_require__(255);
+	var _reResizable = __webpack_require__(260);
 	
 	var _reResizable2 = _interopRequireDefault(_reResizable);
 	
@@ -15962,7 +16772,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 150 */
+/* 155 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -15971,7 +16781,7 @@
 	  value: true
 	});
 	
-	var _Dnd = __webpack_require__(151);
+	var _Dnd = __webpack_require__(156);
 	
 	var _Dnd2 = _interopRequireDefault(_Dnd);
 	
@@ -15981,7 +16791,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 151 */
+/* 156 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -15996,9 +16806,9 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _reactBeautifulDnd = __webpack_require__(152);
+	var _reactBeautifulDnd = __webpack_require__(157);
 	
-	var _reactDraggable = __webpack_require__(250);
+	var _reactDraggable = __webpack_require__(255);
 	
 	var _reactDraggable2 = _interopRequireDefault(_reactDraggable);
 	
@@ -16006,15 +16816,15 @@
 	
 	var _propTypes2 = _interopRequireDefault(_propTypes);
 	
-	var _lodash = __webpack_require__(251);
+	var _lodash = __webpack_require__(256);
 	
 	var _lodash2 = _interopRequireDefault(_lodash);
 	
-	var _SortList = __webpack_require__(252);
+	var _SortList = __webpack_require__(257);
 	
 	var _SortList2 = _interopRequireDefault(_SortList);
 	
-	var _Between = __webpack_require__(254);
+	var _Between = __webpack_require__(259);
 	
 	var _Between2 = _interopRequireDefault(_Between);
 	
@@ -16133,7 +16943,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 152 */
+/* 157 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -16142,20 +16952,20 @@
 	
 	function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
 	
-	var _extends = _interopDefault(__webpack_require__(153));
-	var invariant = _interopDefault(__webpack_require__(192));
-	var cssBoxModel = __webpack_require__(193);
-	var _Object$keys = _interopDefault(__webpack_require__(194));
-	var memoizeOne = _interopDefault(__webpack_require__(198));
-	var redux = __webpack_require__(199);
-	var _Object$assign = _interopDefault(__webpack_require__(154));
-	var rafSchd = _interopDefault(__webpack_require__(203));
-	var _inheritsLoose = _interopDefault(__webpack_require__(204));
+	var _extends = _interopDefault(__webpack_require__(158));
+	var invariant = _interopDefault(__webpack_require__(197));
+	var cssBoxModel = __webpack_require__(198);
+	var _Object$keys = _interopDefault(__webpack_require__(199));
+	var memoizeOne = _interopDefault(__webpack_require__(203));
+	var redux = __webpack_require__(204);
+	var _Object$assign = _interopDefault(__webpack_require__(159));
+	var rafSchd = _interopDefault(__webpack_require__(208));
+	var _inheritsLoose = _interopDefault(__webpack_require__(209));
 	var React = __webpack_require__(1);
 	var React__default = _interopDefault(React);
 	var PropTypes = _interopDefault(__webpack_require__(6));
-	var reactRedux = __webpack_require__(211);
-	var reactMotion = __webpack_require__(236);
+	var reactRedux = __webpack_require__(216);
+	var reactMotion = __webpack_require__(241);
 	
 	var vertical = {
 	  direction: 'vertical',
@@ -22577,10 +23387,10 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(33)))
 
 /***/ }),
-/* 153 */
+/* 158 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var _Object$assign = __webpack_require__(154);
+	var _Object$assign = __webpack_require__(159);
 	
 	function _extends() {
 	  module.exports = _extends = _Object$assign || function (target) {
@@ -22603,38 +23413,38 @@
 	module.exports = _extends;
 
 /***/ }),
-/* 154 */
+/* 159 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(155);
+	module.exports = __webpack_require__(160);
 
 /***/ }),
-/* 155 */
+/* 160 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	__webpack_require__(156);
-	module.exports = __webpack_require__(159).Object.assign;
+	__webpack_require__(161);
+	module.exports = __webpack_require__(164).Object.assign;
 
 
 /***/ }),
-/* 156 */
+/* 161 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// 19.1.3.1 Object.assign(target, source)
-	var $export = __webpack_require__(157);
+	var $export = __webpack_require__(162);
 	
-	$export($export.S + $export.F, 'Object', { assign: __webpack_require__(173) });
+	$export($export.S + $export.F, 'Object', { assign: __webpack_require__(178) });
 
 
 /***/ }),
-/* 157 */
+/* 162 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var global = __webpack_require__(158);
-	var core = __webpack_require__(159);
-	var ctx = __webpack_require__(160);
-	var hide = __webpack_require__(162);
-	var has = __webpack_require__(172);
+	var global = __webpack_require__(163);
+	var core = __webpack_require__(164);
+	var ctx = __webpack_require__(165);
+	var hide = __webpack_require__(167);
+	var has = __webpack_require__(177);
 	var PROTOTYPE = 'prototype';
 	
 	var $export = function (type, name, source) {
@@ -22695,7 +23505,7 @@
 
 
 /***/ }),
-/* 158 */
+/* 163 */
 /***/ (function(module, exports) {
 
 	// https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
@@ -22707,7 +23517,7 @@
 
 
 /***/ }),
-/* 159 */
+/* 164 */
 /***/ (function(module, exports) {
 
 	var core = module.exports = { version: '2.6.2' };
@@ -22715,11 +23525,11 @@
 
 
 /***/ }),
-/* 160 */
+/* 165 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// optional / simple context binding
-	var aFunction = __webpack_require__(161);
+	var aFunction = __webpack_require__(166);
 	module.exports = function (fn, that, length) {
 	  aFunction(fn);
 	  if (that === undefined) return fn;
@@ -22741,7 +23551,7 @@
 
 
 /***/ }),
-/* 161 */
+/* 166 */
 /***/ (function(module, exports) {
 
 	module.exports = function (it) {
@@ -22751,12 +23561,12 @@
 
 
 /***/ }),
-/* 162 */
+/* 167 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var dP = __webpack_require__(163);
-	var createDesc = __webpack_require__(171);
-	module.exports = __webpack_require__(167) ? function (object, key, value) {
+	var dP = __webpack_require__(168);
+	var createDesc = __webpack_require__(176);
+	module.exports = __webpack_require__(172) ? function (object, key, value) {
 	  return dP.f(object, key, createDesc(1, value));
 	} : function (object, key, value) {
 	  object[key] = value;
@@ -22765,15 +23575,15 @@
 
 
 /***/ }),
-/* 163 */
+/* 168 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var anObject = __webpack_require__(164);
-	var IE8_DOM_DEFINE = __webpack_require__(166);
-	var toPrimitive = __webpack_require__(170);
+	var anObject = __webpack_require__(169);
+	var IE8_DOM_DEFINE = __webpack_require__(171);
+	var toPrimitive = __webpack_require__(175);
 	var dP = Object.defineProperty;
 	
-	exports.f = __webpack_require__(167) ? Object.defineProperty : function defineProperty(O, P, Attributes) {
+	exports.f = __webpack_require__(172) ? Object.defineProperty : function defineProperty(O, P, Attributes) {
 	  anObject(O);
 	  P = toPrimitive(P, true);
 	  anObject(Attributes);
@@ -22787,10 +23597,10 @@
 
 
 /***/ }),
-/* 164 */
+/* 169 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var isObject = __webpack_require__(165);
+	var isObject = __webpack_require__(170);
 	module.exports = function (it) {
 	  if (!isObject(it)) throw TypeError(it + ' is not an object!');
 	  return it;
@@ -22798,7 +23608,7 @@
 
 
 /***/ }),
-/* 165 */
+/* 170 */
 /***/ (function(module, exports) {
 
 	module.exports = function (it) {
@@ -22807,26 +23617,26 @@
 
 
 /***/ }),
-/* 166 */
+/* 171 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	module.exports = !__webpack_require__(167) && !__webpack_require__(168)(function () {
-	  return Object.defineProperty(__webpack_require__(169)('div'), 'a', { get: function () { return 7; } }).a != 7;
+	module.exports = !__webpack_require__(172) && !__webpack_require__(173)(function () {
+	  return Object.defineProperty(__webpack_require__(174)('div'), 'a', { get: function () { return 7; } }).a != 7;
 	});
 
 
 /***/ }),
-/* 167 */
+/* 172 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Thank's IE8 for his funny defineProperty
-	module.exports = !__webpack_require__(168)(function () {
+	module.exports = !__webpack_require__(173)(function () {
 	  return Object.defineProperty({}, 'a', { get: function () { return 7; } }).a != 7;
 	});
 
 
 /***/ }),
-/* 168 */
+/* 173 */
 /***/ (function(module, exports) {
 
 	module.exports = function (exec) {
@@ -22839,11 +23649,11 @@
 
 
 /***/ }),
-/* 169 */
+/* 174 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var isObject = __webpack_require__(165);
-	var document = __webpack_require__(158).document;
+	var isObject = __webpack_require__(170);
+	var document = __webpack_require__(163).document;
 	// typeof document.createElement is 'object' in old IE
 	var is = isObject(document) && isObject(document.createElement);
 	module.exports = function (it) {
@@ -22852,11 +23662,11 @@
 
 
 /***/ }),
-/* 170 */
+/* 175 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// 7.1.1 ToPrimitive(input [, PreferredType])
-	var isObject = __webpack_require__(165);
+	var isObject = __webpack_require__(170);
 	// instead of the ES6 spec version, we didn't implement @@toPrimitive case
 	// and the second argument - flag - preferred type is a string
 	module.exports = function (it, S) {
@@ -22870,7 +23680,7 @@
 
 
 /***/ }),
-/* 171 */
+/* 176 */
 /***/ (function(module, exports) {
 
 	module.exports = function (bitmap, value) {
@@ -22884,7 +23694,7 @@
 
 
 /***/ }),
-/* 172 */
+/* 177 */
 /***/ (function(module, exports) {
 
 	var hasOwnProperty = {}.hasOwnProperty;
@@ -22894,20 +23704,20 @@
 
 
 /***/ }),
-/* 173 */
+/* 178 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	// 19.1.2.1 Object.assign(target, source, ...)
-	var getKeys = __webpack_require__(174);
-	var gOPS = __webpack_require__(189);
-	var pIE = __webpack_require__(190);
-	var toObject = __webpack_require__(191);
-	var IObject = __webpack_require__(177);
+	var getKeys = __webpack_require__(179);
+	var gOPS = __webpack_require__(194);
+	var pIE = __webpack_require__(195);
+	var toObject = __webpack_require__(196);
+	var IObject = __webpack_require__(182);
 	var $assign = Object.assign;
 	
 	// should work with symbols and should have deterministic property order (V8 bug)
-	module.exports = !$assign || __webpack_require__(168)(function () {
+	module.exports = !$assign || __webpack_require__(173)(function () {
 	  var A = {};
 	  var B = {};
 	  // eslint-disable-next-line no-undef
@@ -22934,12 +23744,12 @@
 
 
 /***/ }),
-/* 174 */
+/* 179 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// 19.1.2.14 / 15.2.3.14 Object.keys(O)
-	var $keys = __webpack_require__(175);
-	var enumBugKeys = __webpack_require__(188);
+	var $keys = __webpack_require__(180);
+	var enumBugKeys = __webpack_require__(193);
 	
 	module.exports = Object.keys || function keys(O) {
 	  return $keys(O, enumBugKeys);
@@ -22947,13 +23757,13 @@
 
 
 /***/ }),
-/* 175 */
+/* 180 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var has = __webpack_require__(172);
-	var toIObject = __webpack_require__(176);
-	var arrayIndexOf = __webpack_require__(180)(false);
-	var IE_PROTO = __webpack_require__(184)('IE_PROTO');
+	var has = __webpack_require__(177);
+	var toIObject = __webpack_require__(181);
+	var arrayIndexOf = __webpack_require__(185)(false);
+	var IE_PROTO = __webpack_require__(189)('IE_PROTO');
 	
 	module.exports = function (object, names) {
 	  var O = toIObject(object);
@@ -22970,23 +23780,23 @@
 
 
 /***/ }),
-/* 176 */
+/* 181 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// to indexed object, toObject with fallback for non-array-like ES3 strings
-	var IObject = __webpack_require__(177);
-	var defined = __webpack_require__(179);
+	var IObject = __webpack_require__(182);
+	var defined = __webpack_require__(184);
 	module.exports = function (it) {
 	  return IObject(defined(it));
 	};
 
 
 /***/ }),
-/* 177 */
+/* 182 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// fallback for non-array-like ES3 and non-enumerable old V8 strings
-	var cof = __webpack_require__(178);
+	var cof = __webpack_require__(183);
 	// eslint-disable-next-line no-prototype-builtins
 	module.exports = Object('z').propertyIsEnumerable(0) ? Object : function (it) {
 	  return cof(it) == 'String' ? it.split('') : Object(it);
@@ -22994,7 +23804,7 @@
 
 
 /***/ }),
-/* 178 */
+/* 183 */
 /***/ (function(module, exports) {
 
 	var toString = {}.toString;
@@ -23005,7 +23815,7 @@
 
 
 /***/ }),
-/* 179 */
+/* 184 */
 /***/ (function(module, exports) {
 
 	// 7.2.1 RequireObjectCoercible(argument)
@@ -23016,14 +23826,14 @@
 
 
 /***/ }),
-/* 180 */
+/* 185 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// false -> Array#indexOf
 	// true  -> Array#includes
-	var toIObject = __webpack_require__(176);
-	var toLength = __webpack_require__(181);
-	var toAbsoluteIndex = __webpack_require__(183);
+	var toIObject = __webpack_require__(181);
+	var toLength = __webpack_require__(186);
+	var toAbsoluteIndex = __webpack_require__(188);
 	module.exports = function (IS_INCLUDES) {
 	  return function ($this, el, fromIndex) {
 	    var O = toIObject($this);
@@ -23045,11 +23855,11 @@
 
 
 /***/ }),
-/* 181 */
+/* 186 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// 7.1.15 ToLength
-	var toInteger = __webpack_require__(182);
+	var toInteger = __webpack_require__(187);
 	var min = Math.min;
 	module.exports = function (it) {
 	  return it > 0 ? min(toInteger(it), 0x1fffffffffffff) : 0; // pow(2, 53) - 1 == 9007199254740991
@@ -23057,7 +23867,7 @@
 
 
 /***/ }),
-/* 182 */
+/* 187 */
 /***/ (function(module, exports) {
 
 	// 7.1.4 ToInteger
@@ -23069,10 +23879,10 @@
 
 
 /***/ }),
-/* 183 */
+/* 188 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var toInteger = __webpack_require__(182);
+	var toInteger = __webpack_require__(187);
 	var max = Math.max;
 	var min = Math.min;
 	module.exports = function (index, length) {
@@ -23082,22 +23892,22 @@
 
 
 /***/ }),
-/* 184 */
+/* 189 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var shared = __webpack_require__(185)('keys');
-	var uid = __webpack_require__(187);
+	var shared = __webpack_require__(190)('keys');
+	var uid = __webpack_require__(192);
 	module.exports = function (key) {
 	  return shared[key] || (shared[key] = uid(key));
 	};
 
 
 /***/ }),
-/* 185 */
+/* 190 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var core = __webpack_require__(159);
-	var global = __webpack_require__(158);
+	var core = __webpack_require__(164);
+	var global = __webpack_require__(163);
 	var SHARED = '__core-js_shared__';
 	var store = global[SHARED] || (global[SHARED] = {});
 	
@@ -23105,20 +23915,20 @@
 	  return store[key] || (store[key] = value !== undefined ? value : {});
 	})('versions', []).push({
 	  version: core.version,
-	  mode: __webpack_require__(186) ? 'pure' : 'global',
+	  mode: __webpack_require__(191) ? 'pure' : 'global',
 	  copyright: '© 2019 Denis Pushkarev (zloirock.ru)'
 	});
 
 
 /***/ }),
-/* 186 */
+/* 191 */
 /***/ (function(module, exports) {
 
 	module.exports = true;
 
 
 /***/ }),
-/* 187 */
+/* 192 */
 /***/ (function(module, exports) {
 
 	var id = 0;
@@ -23129,7 +23939,7 @@
 
 
 /***/ }),
-/* 188 */
+/* 193 */
 /***/ (function(module, exports) {
 
 	// IE 8- don't enum bug keys
@@ -23139,32 +23949,32 @@
 
 
 /***/ }),
-/* 189 */
+/* 194 */
 /***/ (function(module, exports) {
 
 	exports.f = Object.getOwnPropertySymbols;
 
 
 /***/ }),
-/* 190 */
+/* 195 */
 /***/ (function(module, exports) {
 
 	exports.f = {}.propertyIsEnumerable;
 
 
 /***/ }),
-/* 191 */
+/* 196 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// 7.1.13 ToObject(argument)
-	var defined = __webpack_require__(179);
+	var defined = __webpack_require__(184);
 	module.exports = function (it) {
 	  return Object(defined(it));
 	};
 
 
 /***/ }),
-/* 192 */
+/* 197 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -23188,7 +23998,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(33)))
 
 /***/ }),
-/* 193 */
+/* 198 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -23197,7 +24007,7 @@
 	
 	function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
 	
-	var invariant = _interopDefault(__webpack_require__(192));
+	var invariant = _interopDefault(__webpack_require__(197));
 	
 	var getRect = function getRect(_ref) {
 	  var top = _ref.top,
@@ -23356,28 +24166,28 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(33)))
 
 /***/ }),
-/* 194 */
+/* 199 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(195);
+	module.exports = __webpack_require__(200);
 
 /***/ }),
-/* 195 */
+/* 200 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	__webpack_require__(196);
-	module.exports = __webpack_require__(159).Object.keys;
+	__webpack_require__(201);
+	module.exports = __webpack_require__(164).Object.keys;
 
 
 /***/ }),
-/* 196 */
+/* 201 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// 19.1.2.14 Object.keys(O)
-	var toObject = __webpack_require__(191);
-	var $keys = __webpack_require__(174);
+	var toObject = __webpack_require__(196);
+	var $keys = __webpack_require__(179);
 	
-	__webpack_require__(197)('keys', function () {
+	__webpack_require__(202)('keys', function () {
 	  return function keys(it) {
 	    return $keys(toObject(it));
 	  };
@@ -23385,13 +24195,13 @@
 
 
 /***/ }),
-/* 197 */
+/* 202 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// most Object methods by ES6 should accept primitives
-	var $export = __webpack_require__(157);
-	var core = __webpack_require__(159);
-	var fails = __webpack_require__(168);
+	var $export = __webpack_require__(162);
+	var core = __webpack_require__(164);
+	var fails = __webpack_require__(173);
 	module.exports = function (KEY, exec) {
 	  var fn = (core.Object || {})[KEY] || Object[KEY];
 	  var exp = {};
@@ -23401,7 +24211,7 @@
 
 
 /***/ }),
-/* 198 */
+/* 203 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -23447,7 +24257,7 @@
 
 
 /***/ }),
-/* 199 */
+/* 204 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -23456,7 +24266,7 @@
 	
 	function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
 	
-	var $$observable = _interopDefault(__webpack_require__(200));
+	var $$observable = _interopDefault(__webpack_require__(205));
 	
 	/**
 	 * These are private action types reserved by Redux.
@@ -24101,7 +24911,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(33)))
 
 /***/ }),
-/* 200 */
+/* 205 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global, module) {'use strict';
@@ -24110,7 +24920,7 @@
 	  value: true
 	});
 	
-	var _ponyfill = __webpack_require__(202);
+	var _ponyfill = __webpack_require__(207);
 	
 	var _ponyfill2 = _interopRequireDefault(_ponyfill);
 	
@@ -24133,10 +24943,10 @@
 	
 	var result = (0, _ponyfill2['default'])(root);
 	exports['default'] = result;
-	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(201)(module)))
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(206)(module)))
 
 /***/ }),
-/* 201 */
+/* 206 */
 /***/ (function(module, exports) {
 
 	module.exports = function(module) {
@@ -24152,7 +24962,7 @@
 
 
 /***/ }),
-/* 202 */
+/* 207 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -24180,7 +24990,7 @@
 	};
 
 /***/ }),
-/* 203 */
+/* 208 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -24224,10 +25034,10 @@
 
 
 /***/ }),
-/* 204 */
+/* 209 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var _Object$create = __webpack_require__(205);
+	var _Object$create = __webpack_require__(210);
 	
 	function _inheritsLoose(subClass, superClass) {
 	  subClass.prototype = _Object$create(superClass.prototype);
@@ -24238,53 +25048,53 @@
 	module.exports = _inheritsLoose;
 
 /***/ }),
-/* 205 */
+/* 210 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(206);
+	module.exports = __webpack_require__(211);
 
 /***/ }),
-/* 206 */
+/* 211 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	__webpack_require__(207);
-	var $Object = __webpack_require__(159).Object;
+	__webpack_require__(212);
+	var $Object = __webpack_require__(164).Object;
 	module.exports = function create(P, D) {
 	  return $Object.create(P, D);
 	};
 
 
 /***/ }),
-/* 207 */
+/* 212 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var $export = __webpack_require__(157);
+	var $export = __webpack_require__(162);
 	// 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
-	$export($export.S, 'Object', { create: __webpack_require__(208) });
+	$export($export.S, 'Object', { create: __webpack_require__(213) });
 
 
 /***/ }),
-/* 208 */
+/* 213 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
-	var anObject = __webpack_require__(164);
-	var dPs = __webpack_require__(209);
-	var enumBugKeys = __webpack_require__(188);
-	var IE_PROTO = __webpack_require__(184)('IE_PROTO');
+	var anObject = __webpack_require__(169);
+	var dPs = __webpack_require__(214);
+	var enumBugKeys = __webpack_require__(193);
+	var IE_PROTO = __webpack_require__(189)('IE_PROTO');
 	var Empty = function () { /* empty */ };
 	var PROTOTYPE = 'prototype';
 	
 	// Create object with fake `null` prototype: use iframe Object with cleared prototype
 	var createDict = function () {
 	  // Thrash, waste and sodomy: IE GC bug
-	  var iframe = __webpack_require__(169)('iframe');
+	  var iframe = __webpack_require__(174)('iframe');
 	  var i = enumBugKeys.length;
 	  var lt = '<';
 	  var gt = '>';
 	  var iframeDocument;
 	  iframe.style.display = 'none';
-	  __webpack_require__(210).appendChild(iframe);
+	  __webpack_require__(215).appendChild(iframe);
 	  iframe.src = 'javascript:'; // eslint-disable-line no-script-url
 	  // createDict = iframe.contentWindow.Object;
 	  // html.removeChild(iframe);
@@ -24311,14 +25121,14 @@
 
 
 /***/ }),
-/* 209 */
+/* 214 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var dP = __webpack_require__(163);
-	var anObject = __webpack_require__(164);
-	var getKeys = __webpack_require__(174);
+	var dP = __webpack_require__(168);
+	var anObject = __webpack_require__(169);
+	var getKeys = __webpack_require__(179);
 	
-	module.exports = __webpack_require__(167) ? Object.defineProperties : function defineProperties(O, Properties) {
+	module.exports = __webpack_require__(172) ? Object.defineProperties : function defineProperties(O, Properties) {
 	  anObject(O);
 	  var keys = getKeys(Properties);
 	  var length = keys.length;
@@ -24330,40 +25140,40 @@
 
 
 /***/ }),
-/* 210 */
+/* 215 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var document = __webpack_require__(158).document;
+	var document = __webpack_require__(163).document;
 	module.exports = document && document.documentElement;
 
 
 /***/ }),
-/* 211 */
+/* 216 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
 	var _interopRequireDefault = __webpack_require__(14);
 	
-	var _interopRequireWildcard = __webpack_require__(212);
+	var _interopRequireWildcard = __webpack_require__(217);
 	
 	exports.__esModule = true;
 	
-	var _Provider = _interopRequireWildcard(__webpack_require__(213));
+	var _Provider = _interopRequireWildcard(__webpack_require__(218));
 	
 	exports.Provider = _Provider.default;
 	exports.createProvider = _Provider.createProvider;
 	
-	var _connectAdvanced = _interopRequireDefault(__webpack_require__(217));
+	var _connectAdvanced = _interopRequireDefault(__webpack_require__(222));
 	
 	exports.connectAdvanced = _connectAdvanced.default;
 	
-	var _connect = _interopRequireDefault(__webpack_require__(226));
+	var _connect = _interopRequireDefault(__webpack_require__(231));
 	
 	exports.connect = _connect.default;
 
 /***/ }),
-/* 212 */
+/* 217 */
 /***/ (function(module, exports) {
 
 	function _interopRequireWildcard(obj) {
@@ -24394,7 +25204,7 @@
 	module.exports = _interopRequireWildcard;
 
 /***/ }),
-/* 213 */
+/* 218 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {"use strict";
@@ -24405,15 +25215,15 @@
 	exports.createProvider = createProvider;
 	exports.default = void 0;
 	
-	var _inheritsLoose2 = _interopRequireDefault(__webpack_require__(214));
+	var _inheritsLoose2 = _interopRequireDefault(__webpack_require__(219));
 	
 	var _react = __webpack_require__(1);
 	
 	var _propTypes = _interopRequireDefault(__webpack_require__(6));
 	
-	var _PropTypes = __webpack_require__(215);
+	var _PropTypes = __webpack_require__(220);
 	
-	var _warning = _interopRequireDefault(__webpack_require__(216));
+	var _warning = _interopRequireDefault(__webpack_require__(221));
 	
 	var didWarnAboutReceivingStore = false;
 	
@@ -24484,7 +25294,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(33)))
 
 /***/ }),
-/* 214 */
+/* 219 */
 /***/ (function(module, exports) {
 
 	function _inheritsLoose(subClass, superClass) {
@@ -24496,7 +25306,7 @@
 	module.exports = _inheritsLoose;
 
 /***/ }),
-/* 215 */
+/* 220 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -24526,7 +25336,7 @@
 	exports.storeShape = storeShape;
 
 /***/ }),
-/* 216 */
+/* 221 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -24560,7 +25370,7 @@
 	}
 
 /***/ }),
-/* 217 */
+/* 222 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {"use strict";
@@ -24570,25 +25380,25 @@
 	exports.__esModule = true;
 	exports.default = connectAdvanced;
 	
-	var _inheritsLoose2 = _interopRequireDefault(__webpack_require__(214));
+	var _inheritsLoose2 = _interopRequireDefault(__webpack_require__(219));
 	
-	var _assertThisInitialized2 = _interopRequireDefault(__webpack_require__(218));
+	var _assertThisInitialized2 = _interopRequireDefault(__webpack_require__(223));
 	
 	var _extends2 = _interopRequireDefault(__webpack_require__(122));
 	
-	var _objectWithoutPropertiesLoose2 = _interopRequireDefault(__webpack_require__(219));
+	var _objectWithoutPropertiesLoose2 = _interopRequireDefault(__webpack_require__(224));
 	
-	var _hoistNonReactStatics = _interopRequireDefault(__webpack_require__(220));
+	var _hoistNonReactStatics = _interopRequireDefault(__webpack_require__(225));
 	
-	var _invariant = _interopRequireDefault(__webpack_require__(224));
+	var _invariant = _interopRequireDefault(__webpack_require__(229));
 	
 	var _react = __webpack_require__(1);
 	
-	var _reactIs = __webpack_require__(221);
+	var _reactIs = __webpack_require__(226);
 	
-	var _Subscription = _interopRequireDefault(__webpack_require__(225));
+	var _Subscription = _interopRequireDefault(__webpack_require__(230));
 	
-	var _PropTypes = __webpack_require__(215);
+	var _PropTypes = __webpack_require__(220);
 	
 	var hotReloadingVersion = 0;
 	var dummyState = {};
@@ -24873,7 +25683,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(33)))
 
 /***/ }),
-/* 218 */
+/* 223 */
 /***/ (function(module, exports) {
 
 	function _assertThisInitialized(self) {
@@ -24887,7 +25697,7 @@
 	module.exports = _assertThisInitialized;
 
 /***/ }),
-/* 219 */
+/* 224 */
 /***/ (function(module, exports) {
 
 	function _objectWithoutPropertiesLoose(source, excluded) {
@@ -24908,7 +25718,7 @@
 	module.exports = _objectWithoutPropertiesLoose;
 
 /***/ }),
-/* 220 */
+/* 225 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -24917,7 +25727,7 @@
 	 * Copyright 2015, Yahoo! Inc.
 	 * Copyrights licensed under the New BSD License. See the accompanying LICENSE file for terms.
 	 */
-	var ReactIs = __webpack_require__(221);
+	var ReactIs = __webpack_require__(226);
 	var REACT_STATICS = {
 	    childContextTypes: true,
 	    contextType: true,
@@ -25017,21 +25827,21 @@
 
 
 /***/ }),
-/* 221 */
+/* 226 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 	
 	if (process.env.NODE_ENV === 'production') {
-	  module.exports = __webpack_require__(222);
+	  module.exports = __webpack_require__(227);
 	} else {
-	  module.exports = __webpack_require__(223);
+	  module.exports = __webpack_require__(228);
 	}
 	
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(33)))
 
 /***/ }),
-/* 222 */
+/* 227 */
 /***/ (function(module, exports) {
 
 	/** @license React v16.8.6
@@ -25052,7 +25862,7 @@
 
 
 /***/ }),
-/* 223 */
+/* 228 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/** @license React v16.8.6
@@ -25286,7 +26096,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(33)))
 
 /***/ }),
-/* 224 */
+/* 229 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -25342,7 +26152,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(33)))
 
 /***/ }),
-/* 225 */
+/* 230 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -25439,7 +26249,7 @@
 	exports.default = Subscription;
 
 /***/ }),
-/* 226 */
+/* 231 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -25452,19 +26262,19 @@
 	
 	var _extends2 = _interopRequireDefault(__webpack_require__(122));
 	
-	var _objectWithoutPropertiesLoose2 = _interopRequireDefault(__webpack_require__(219));
+	var _objectWithoutPropertiesLoose2 = _interopRequireDefault(__webpack_require__(224));
 	
-	var _connectAdvanced = _interopRequireDefault(__webpack_require__(217));
+	var _connectAdvanced = _interopRequireDefault(__webpack_require__(222));
 	
-	var _shallowEqual = _interopRequireDefault(__webpack_require__(227));
+	var _shallowEqual = _interopRequireDefault(__webpack_require__(232));
 	
-	var _mapDispatchToProps = _interopRequireDefault(__webpack_require__(228));
+	var _mapDispatchToProps = _interopRequireDefault(__webpack_require__(233));
 	
-	var _mapStateToProps = _interopRequireDefault(__webpack_require__(232));
+	var _mapStateToProps = _interopRequireDefault(__webpack_require__(237));
 	
-	var _mergeProps = _interopRequireDefault(__webpack_require__(233));
+	var _mergeProps = _interopRequireDefault(__webpack_require__(238));
 	
-	var _selectorFactory = _interopRequireDefault(__webpack_require__(234));
+	var _selectorFactory = _interopRequireDefault(__webpack_require__(239));
 	
 	/*
 	  connect is a facade over connectAdvanced. It turns its args into a compatible
@@ -25559,7 +26369,7 @@
 	exports.default = _default;
 
 /***/ }),
-/* 227 */
+/* 232 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -25597,7 +26407,7 @@
 	}
 
 /***/ }),
-/* 228 */
+/* 233 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -25608,9 +26418,9 @@
 	exports.whenMapDispatchToPropsIsObject = whenMapDispatchToPropsIsObject;
 	exports.default = void 0;
 	
-	var _redux = __webpack_require__(199);
+	var _redux = __webpack_require__(204);
 	
-	var _wrapMapToProps = __webpack_require__(229);
+	var _wrapMapToProps = __webpack_require__(234);
 	
 	function whenMapDispatchToPropsIsFunction(mapDispatchToProps) {
 	  return typeof mapDispatchToProps === 'function' ? (0, _wrapMapToProps.wrapMapToPropsFunc)(mapDispatchToProps, 'mapDispatchToProps') : undefined;
@@ -25634,7 +26444,7 @@
 	exports.default = _default;
 
 /***/ }),
-/* 229 */
+/* 234 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {"use strict";
@@ -25646,7 +26456,7 @@
 	exports.getDependsOnOwnProps = getDependsOnOwnProps;
 	exports.wrapMapToPropsFunc = wrapMapToPropsFunc;
 	
-	var _verifyPlainObject = _interopRequireDefault(__webpack_require__(230));
+	var _verifyPlainObject = _interopRequireDefault(__webpack_require__(235));
 	
 	function wrapMapToPropsConstant(getConstant) {
 	  return function initConstantSelector(dispatch, options) {
@@ -25716,7 +26526,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(33)))
 
 /***/ }),
-/* 230 */
+/* 235 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -25726,9 +26536,9 @@
 	exports.__esModule = true;
 	exports.default = verifyPlainObject;
 	
-	var _isPlainObject = _interopRequireDefault(__webpack_require__(231));
+	var _isPlainObject = _interopRequireDefault(__webpack_require__(236));
 	
-	var _warning = _interopRequireDefault(__webpack_require__(216));
+	var _warning = _interopRequireDefault(__webpack_require__(221));
 	
 	function verifyPlainObject(value, displayName, methodName) {
 	  if (!(0, _isPlainObject.default)(value)) {
@@ -25737,7 +26547,7 @@
 	}
 
 /***/ }),
-/* 231 */
+/* 236 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -25763,7 +26573,7 @@
 	}
 
 /***/ }),
-/* 232 */
+/* 237 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -25773,7 +26583,7 @@
 	exports.whenMapStateToPropsIsMissing = whenMapStateToPropsIsMissing;
 	exports.default = void 0;
 	
-	var _wrapMapToProps = __webpack_require__(229);
+	var _wrapMapToProps = __webpack_require__(234);
 	
 	function whenMapStateToPropsIsFunction(mapStateToProps) {
 	  return typeof mapStateToProps === 'function' ? (0, _wrapMapToProps.wrapMapToPropsFunc)(mapStateToProps, 'mapStateToProps') : undefined;
@@ -25789,7 +26599,7 @@
 	exports.default = _default;
 
 /***/ }),
-/* 233 */
+/* 238 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {"use strict";
@@ -25805,7 +26615,7 @@
 	
 	var _extends2 = _interopRequireDefault(__webpack_require__(122));
 	
-	var _verifyPlainObject = _interopRequireDefault(__webpack_require__(230));
+	var _verifyPlainObject = _interopRequireDefault(__webpack_require__(235));
 	
 	function defaultMergeProps(stateProps, dispatchProps, ownProps) {
 	  return (0, _extends2.default)({}, ownProps, stateProps, dispatchProps);
@@ -25849,7 +26659,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(33)))
 
 /***/ }),
-/* 234 */
+/* 239 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {"use strict";
@@ -25861,9 +26671,9 @@
 	exports.pureFinalPropsSelectorFactory = pureFinalPropsSelectorFactory;
 	exports.default = finalPropsSelectorFactory;
 	
-	var _objectWithoutPropertiesLoose2 = _interopRequireDefault(__webpack_require__(219));
+	var _objectWithoutPropertiesLoose2 = _interopRequireDefault(__webpack_require__(224));
 	
-	var _verifySubselectors = _interopRequireDefault(__webpack_require__(235));
+	var _verifySubselectors = _interopRequireDefault(__webpack_require__(240));
 	
 	function impureFinalPropsSelectorFactory(mapStateToProps, mapDispatchToProps, mergeProps, dispatch) {
 	  return function impureFinalPropsSelector(state, ownProps) {
@@ -25954,7 +26764,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(33)))
 
 /***/ }),
-/* 235 */
+/* 240 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -25964,7 +26774,7 @@
 	exports.__esModule = true;
 	exports.default = verifySubselectors;
 	
-	var _warning = _interopRequireDefault(__webpack_require__(216));
+	var _warning = _interopRequireDefault(__webpack_require__(221));
 	
 	function verify(selector, methodName, displayName) {
 	  if (!selector) {
@@ -25983,7 +26793,7 @@
 	}
 
 /***/ }),
-/* 236 */
+/* 241 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -25992,38 +26802,38 @@
 	
 	function _interopRequire(obj) { return obj && obj.__esModule ? obj['default'] : obj; }
 	
-	var _Motion = __webpack_require__(237);
+	var _Motion = __webpack_require__(242);
 	
 	exports.Motion = _interopRequire(_Motion);
 	
-	var _StaggeredMotion = __webpack_require__(244);
+	var _StaggeredMotion = __webpack_require__(249);
 	
 	exports.StaggeredMotion = _interopRequire(_StaggeredMotion);
 	
-	var _TransitionMotion = __webpack_require__(245);
+	var _TransitionMotion = __webpack_require__(250);
 	
 	exports.TransitionMotion = _interopRequire(_TransitionMotion);
 	
-	var _spring = __webpack_require__(247);
+	var _spring = __webpack_require__(252);
 	
 	exports.spring = _interopRequire(_spring);
 	
-	var _presets = __webpack_require__(248);
+	var _presets = __webpack_require__(253);
 	
 	exports.presets = _interopRequire(_presets);
 	
-	var _stripStyle = __webpack_require__(239);
+	var _stripStyle = __webpack_require__(244);
 	
 	exports.stripStyle = _interopRequire(_stripStyle);
 	
 	// deprecated, dummy warning function
 	
-	var _reorderKeys = __webpack_require__(249);
+	var _reorderKeys = __webpack_require__(254);
 	
 	exports.reorderKeys = _interopRequire(_reorderKeys);
 
 /***/ }),
-/* 237 */
+/* 242 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -26040,27 +26850,27 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	var _mapToZero = __webpack_require__(238);
+	var _mapToZero = __webpack_require__(243);
 	
 	var _mapToZero2 = _interopRequireDefault(_mapToZero);
 	
-	var _stripStyle = __webpack_require__(239);
+	var _stripStyle = __webpack_require__(244);
 	
 	var _stripStyle2 = _interopRequireDefault(_stripStyle);
 	
-	var _stepper3 = __webpack_require__(240);
+	var _stepper3 = __webpack_require__(245);
 	
 	var _stepper4 = _interopRequireDefault(_stepper3);
 	
-	var _performanceNow = __webpack_require__(241);
+	var _performanceNow = __webpack_require__(246);
 	
 	var _performanceNow2 = _interopRequireDefault(_performanceNow);
 	
-	var _raf = __webpack_require__(242);
+	var _raf = __webpack_require__(247);
 	
 	var _raf2 = _interopRequireDefault(_raf);
 	
-	var _shouldStopAnimation = __webpack_require__(243);
+	var _shouldStopAnimation = __webpack_require__(248);
 	
 	var _shouldStopAnimation2 = _interopRequireDefault(_shouldStopAnimation);
 	
@@ -26295,7 +27105,7 @@
 	// config)
 
 /***/ }),
-/* 238 */
+/* 243 */
 /***/ (function(module, exports) {
 
 	
@@ -26319,7 +27129,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 239 */
+/* 244 */
 /***/ (function(module, exports) {
 
 	
@@ -26345,7 +27155,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 240 */
+/* 245 */
 /***/ (function(module, exports) {
 
 	
@@ -26393,7 +27203,7 @@
 	// array reference around.
 
 /***/ }),
-/* 241 */
+/* 246 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {// Generated by CoffeeScript 1.12.2
@@ -26436,10 +27246,10 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(33)))
 
 /***/ }),
-/* 242 */
+/* 247 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(global) {var now = __webpack_require__(241)
+	/* WEBPACK VAR INJECTION */(function(global) {var now = __webpack_require__(246)
 	  , root = typeof window === 'undefined' ? global : window
 	  , vendors = ['moz', 'webkit']
 	  , suffix = 'AnimationFrame'
@@ -26518,7 +27328,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ }),
-/* 243 */
+/* 248 */
 /***/ (function(module, exports) {
 
 	
@@ -26554,7 +27364,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 244 */
+/* 249 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -26571,27 +27381,27 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	var _mapToZero = __webpack_require__(238);
+	var _mapToZero = __webpack_require__(243);
 	
 	var _mapToZero2 = _interopRequireDefault(_mapToZero);
 	
-	var _stripStyle = __webpack_require__(239);
+	var _stripStyle = __webpack_require__(244);
 	
 	var _stripStyle2 = _interopRequireDefault(_stripStyle);
 	
-	var _stepper3 = __webpack_require__(240);
+	var _stepper3 = __webpack_require__(245);
 	
 	var _stepper4 = _interopRequireDefault(_stepper3);
 	
-	var _performanceNow = __webpack_require__(241);
+	var _performanceNow = __webpack_require__(246);
 	
 	var _performanceNow2 = _interopRequireDefault(_performanceNow);
 	
-	var _raf = __webpack_require__(242);
+	var _raf = __webpack_require__(247);
 	
 	var _raf2 = _interopRequireDefault(_raf);
 	
-	var _shouldStopAnimation = __webpack_require__(243);
+	var _shouldStopAnimation = __webpack_require__(248);
 	
 	var _shouldStopAnimation2 = _interopRequireDefault(_shouldStopAnimation);
 	
@@ -26847,7 +27657,7 @@
 	// config)
 
 /***/ }),
-/* 245 */
+/* 250 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -26864,31 +27674,31 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	var _mapToZero = __webpack_require__(238);
+	var _mapToZero = __webpack_require__(243);
 	
 	var _mapToZero2 = _interopRequireDefault(_mapToZero);
 	
-	var _stripStyle = __webpack_require__(239);
+	var _stripStyle = __webpack_require__(244);
 	
 	var _stripStyle2 = _interopRequireDefault(_stripStyle);
 	
-	var _stepper3 = __webpack_require__(240);
+	var _stepper3 = __webpack_require__(245);
 	
 	var _stepper4 = _interopRequireDefault(_stepper3);
 	
-	var _mergeDiff = __webpack_require__(246);
+	var _mergeDiff = __webpack_require__(251);
 	
 	var _mergeDiff2 = _interopRequireDefault(_mergeDiff);
 	
-	var _performanceNow = __webpack_require__(241);
+	var _performanceNow = __webpack_require__(246);
 	
 	var _performanceNow2 = _interopRequireDefault(_performanceNow);
 	
-	var _raf = __webpack_require__(242);
+	var _raf = __webpack_require__(247);
 	
 	var _raf2 = _interopRequireDefault(_raf);
 	
-	var _shouldStopAnimation = __webpack_require__(243);
+	var _shouldStopAnimation = __webpack_require__(248);
 	
 	var _shouldStopAnimation2 = _interopRequireDefault(_shouldStopAnimation);
 	
@@ -27374,7 +28184,7 @@
 	// In reality currentStyle should be 400
 
 /***/ }),
-/* 246 */
+/* 251 */
 /***/ (function(module, exports) {
 
 	
@@ -27487,7 +28297,7 @@
 	// to loop through and find a key's index each time), but I no longer care
 
 /***/ }),
-/* 247 */
+/* 252 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27500,7 +28310,7 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
-	var _presets = __webpack_require__(248);
+	var _presets = __webpack_require__(253);
 	
 	var _presets2 = _interopRequireDefault(_presets);
 	
@@ -27515,7 +28325,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 248 */
+/* 253 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -27530,7 +28340,7 @@
 	module.exports = exports["default"];
 
 /***/ }),
-/* 249 */
+/* 254 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -27553,7 +28363,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(33)))
 
 /***/ }),
-/* 250 */
+/* 255 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	(function (global, factory) {
@@ -29776,7 +30586,7 @@
 
 
 /***/ }),
-/* 251 */
+/* 256 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global, module) {/**
@@ -31628,10 +32438,10 @@
 	
 	module.exports = isEqual;
 	
-	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(201)(module)))
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(206)(module)))
 
 /***/ }),
-/* 252 */
+/* 257 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31652,15 +32462,15 @@
 	
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 	
-	var _reactBeautifulDnd = __webpack_require__(152);
+	var _reactBeautifulDnd = __webpack_require__(157);
 	
-	var _util = __webpack_require__(253);
+	var _util = __webpack_require__(258);
 	
 	var _classnames = __webpack_require__(5);
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
-	var _lodash = __webpack_require__(251);
+	var _lodash = __webpack_require__(256);
 	
 	var _lodash2 = _interopRequireDefault(_lodash);
 	
@@ -31785,7 +32595,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 253 */
+/* 258 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -31834,7 +32644,7 @@
 	};
 
 /***/ }),
-/* 254 */
+/* 259 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31855,15 +32665,15 @@
 	
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 	
-	var _reactBeautifulDnd = __webpack_require__(152);
+	var _reactBeautifulDnd = __webpack_require__(157);
 	
-	var _util = __webpack_require__(253);
+	var _util = __webpack_require__(258);
 	
 	var _classnames = __webpack_require__(5);
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
-	var _lodash = __webpack_require__(251);
+	var _lodash = __webpack_require__(256);
 	
 	var _lodash2 = _interopRequireDefault(_lodash);
 	
@@ -32097,7 +32907,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 255 */
+/* 260 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32845,7 +33655,7 @@
 
 
 /***/ }),
-/* 256 */
+/* 261 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32921,7 +33731,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 257 */
+/* 262 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33041,7 +33851,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 258 */
+/* 263 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33118,7 +33928,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 259 */
+/* 264 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33147,11 +33957,11 @@
 	
 	var _Modal2 = _interopRequireDefault(_Modal);
 	
-	var _beeButton = __webpack_require__(260);
+	var _beeButton = __webpack_require__(265);
 	
 	var _beeButton2 = _interopRequireDefault(_beeButton);
 	
-	var _beeIcon = __webpack_require__(106);
+	var _beeIcon = __webpack_require__(79);
 	
 	var _beeIcon2 = _interopRequireDefault(_beeIcon);
 	
@@ -33329,7 +34139,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 260 */
+/* 265 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33338,7 +34148,7 @@
 	  value: true
 	});
 	
-	var _Button = __webpack_require__(261);
+	var _Button = __webpack_require__(266);
 	
 	var _Button2 = _interopRequireDefault(_Button);
 	
@@ -33348,7 +34158,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 261 */
+/* 266 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33523,7 +34333,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 262 */
+/* 267 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33532,7 +34342,7 @@
 	  value: true
 	});
 	
-	var _FormControl = __webpack_require__(263);
+	var _FormControl = __webpack_require__(268);
 	
 	var _FormControl2 = _interopRequireDefault(_FormControl);
 	
@@ -33542,7 +34352,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 263 */
+/* 268 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33561,7 +34371,7 @@
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
-	var _beeIcon = __webpack_require__(106);
+	var _beeIcon = __webpack_require__(79);
 	
 	var _beeIcon2 = _interopRequireDefault(_beeIcon);
 	
@@ -33827,7 +34637,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 264 */
+/* 269 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33836,7 +34646,7 @@
 	  value: true
 	});
 	
-	var _Icon = __webpack_require__(265);
+	var _Icon = __webpack_require__(270);
 	
 	var _Icon2 = _interopRequireDefault(_Icon);
 	
@@ -33846,7 +34656,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 265 */
+/* 270 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33925,7 +34735,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 266 */
+/* 271 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33938,9 +34748,17 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _src = __webpack_require__(264);
+	var _src = __webpack_require__(269);
 	
 	var _src2 = _interopRequireDefault(_src);
+	
+	var _copyToClipboard = __webpack_require__(81);
+	
+	var _copyToClipboard2 = _interopRequireDefault(_copyToClipboard);
+	
+	var _beeMessage = __webpack_require__(65);
+	
+	var _beeMessage2 = _interopRequireDefault(_beeMessage);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
@@ -33951,18 +34769,54 @@
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); } /**
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @title Icon
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @description 在iuap字符库，`type`参数值均以-分隔。
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @title Icon 图标
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @description 使用 <Icon /> 标签声明组件，指定图标对应的 type 属性。
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
 	
 	var Demo1 = function (_Component) {
 		_inherits(Demo1, _Component);
 	
-		function Demo1() {
+		function Demo1(props) {
 			_classCallCheck(this, Demo1);
 	
-			return _possibleConstructorReturn(this, _Component.apply(this, arguments));
+			var _this = _possibleConstructorReturn(this, _Component.call(this, props));
+	
+			_this.copyCode = function (e) {
+				var iconCls = e.target && _this.findIconCls(e.target);
+				if (!iconCls) return;
+				var code = '<Icon type="' + iconCls + '" />';
+				(0, _copyToClipboard2['default'])(code);
+				_beeMessage2['default'].create({ content: _react2['default'].createElement(
+						'div',
+						null,
+						_react2['default'].createElement(
+							'span',
+							{ className: 'code-cont' },
+							code
+						),
+						'  copied'
+					), color: "successlight" });
+			};
+	
+			_this.findIconCls = function (target) {
+				target.nodeName.toLowerCase() == "li" || target.parentNode.nodeName.toLowerCase() == "li";
+				var iconCls = "";
+				if (target.nodeName.toLowerCase() == "li") {
+					iconCls = target.lastElementChild.innerText;
+					return iconCls && iconCls.substr(1);
+				} else if (target.parentNode.nodeName.toLowerCase() == "li") {
+					iconCls = target.parentNode.lastElementChild.innerText;
+					return iconCls && iconCls.substr(1);
+				}
+				return iconCls;
+			};
+	
+			return _this;
 		}
+	
+		Demo1.prototype.componentDidMount = function componentDidMount() {
+			document.getElementById('icon_lists').addEventListener('click', this.copyCode);
+		};
 	
 		Demo1.prototype.render = function render() {
 			return _react2['default'].createElement(
@@ -33970,7 +34824,7 @@
 				{ className: 'tinper-icon-demo' },
 				_react2['default'].createElement(
 					'ul',
-					{ className: 'icon_lists' },
+					{ id: 'icon_lists', className: 'icon_lists' },
 					_react2['default'].createElement(
 						'li',
 						null,
@@ -38829,6 +39683,66 @@
 							'div',
 							{ 'class': 'fontclass' },
 							'.uf-globe'
+						)
+					),
+					_react2['default'].createElement(
+						'li',
+						null,
+						_react2['default'].createElement(_src2['default'], { type: 'uf-yybs' }),
+						_react2['default'].createElement(
+							'div',
+							{ 'class': 'name' },
+							'\u7528\u53CB\u4F01\u4E1A\u4E91\u670D\u52A1'
+						),
+						_react2['default'].createElement(
+							'div',
+							{ 'class': 'fontclass' },
+							'.uf-yybs'
+						)
+					),
+					_react2['default'].createElement(
+						'li',
+						null,
+						_react2['default'].createElement(_src2['default'], { type: 'uf-iuap5' }),
+						_react2['default'].createElement(
+							'div',
+							{ 'class': 'name' },
+							'iuap-5\u6807\u51C6-\u9ED1\u767D'
+						),
+						_react2['default'].createElement(
+							'div',
+							{ 'class': 'fontclass' },
+							'.uf-iuap5'
+						)
+					),
+					_react2['default'].createElement(
+						'li',
+						null,
+						_react2['default'].createElement(_src2['default'], { type: 'uf-iuap5c' }),
+						_react2['default'].createElement(
+							'div',
+							{ 'class': 'name' },
+							'iuap-5\u6807\u51C6-\u5168\u5F69'
+						),
+						_react2['default'].createElement(
+							'div',
+							{ 'class': 'fontclass' },
+							'.uf-iuap5c'
+						)
+					),
+					_react2['default'].createElement(
+						'li',
+						null,
+						_react2['default'].createElement(_src2['default'], { type: 'uf-qingkong' }),
+						_react2['default'].createElement(
+							'div',
+							{ 'class': 'name' },
+							'\u6E05\u7A7A'
+						),
+						_react2['default'].createElement(
+							'div',
+							{ 'class': 'fontclass' },
+							'.uf-qingkong'
 						)
 					)
 				)
