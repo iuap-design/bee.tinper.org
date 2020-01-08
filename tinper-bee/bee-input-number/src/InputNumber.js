@@ -301,6 +301,7 @@ class InputNumber extends Component {
         this.focus = false;        
         const { onBlur,precision,onChange,toNumber,max,min,displayCheckPrompt,minusRight } = this.props;
         const local = getComponentLocale(this.props, this.context, 'InputNumber', () => i18n);
+        v = this.state.value;//在onBlur的时候不需要活输入框的只，而是要获取state中的值，因为有format的时候就会有问题。
         if(v===''){
             this.setState({
                 value:v

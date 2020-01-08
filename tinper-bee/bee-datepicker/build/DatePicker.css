@@ -2558,3 +2558,37 @@ li.rc-time-picker-panel-select-option-disabled:hover {
 
 .calendar-picker.u-input-group:hover > .u-form-control[disabled] {
   border-color: #DFE1E6; }
+
+.u-table-tbody th.rc-calendar-column-header {
+  padding: 6px 0;
+  text-align: center; }
+
+.u-table-tbody td.rc-calendar-cell {
+  padding: 1px 0; }
+  .u-table-tbody td.rc-calendar-cell .rc-calendar-date {
+    margin: 0 3.5px; }
+
+.u-table-tbody .rc-calendar-year-select, .u-table-tbody .rc-calendar-month-select, .u-table-tbody .rc-calendar-today-btn, .u-table-tbody .rc-calendar-next-month-btn, .u-table-tbody .rc-calendar-next-year-btn, .u-table-tbody .rc-calendar-prev-month-btn, .u-table-tbody .rc-calendar-prev-year-btn,
+.u-table-tbody .rc-calendar-year-panel-decade-select, .u-table-tbody .rc-calendar-year-panel-prev-decade-btn, .u-table-tbody .rc-calendar-year-panel-next-decade-btn,
+.u-table-tbody .rc-calendar-decade-panel-prev-century-btn, .u-table-tbody .rc-calendar-decade-panel-next-century-btn,
+.u-table-tbody .rc-calendar-month-panel-year-select, .u-table-tbody .rc-calendar-month-panel-prev-year-btn, .u-table-tbody .rc-calendar-month-panel-next-year-btn {
+  color: #212121; }
+  .u-table-tbody .rc-calendar-year-select:hover, .u-table-tbody .rc-calendar-month-select:hover, .u-table-tbody .rc-calendar-today-btn:hover, .u-table-tbody .rc-calendar-next-month-btn:hover, .u-table-tbody .rc-calendar-next-year-btn:hover, .u-table-tbody .rc-calendar-prev-month-btn:hover, .u-table-tbody .rc-calendar-prev-year-btn:hover,
+  .u-table-tbody .rc-calendar-year-panel-decade-select:hover, .u-table-tbody .rc-calendar-year-panel-prev-decade-btn:hover, .u-table-tbody .rc-calendar-year-panel-next-decade-btn:hover,
+  .u-table-tbody .rc-calendar-decade-panel-prev-century-btn:hover, .u-table-tbody .rc-calendar-decade-panel-next-century-btn:hover,
+  .u-table-tbody .rc-calendar-month-panel-year-select:hover, .u-table-tbody .rc-calendar-month-panel-prev-year-btn:hover, .u-table-tbody .rc-calendar-month-panel-next-year-btn:hover {
+    color: #e60012; }
+
+.u-table-tbody .rc-calendar-year-panel-year, .u-table-tbody .rc-calendar-decade-panel-decade, .u-table-tbody .rc-calendar-month-panel-month {
+  color: #212121; }
+
+.u-table-tbody .rc-calendar-year-panel-selected-cell .rc-calendar-year-panel-year,
+.u-table-tbody .rc-calendar-decade-panel-selected-cell .rc-calendar-decade-panel-decade,
+.u-table-tbody .rc-calendar-month-panel-selected-cell .rc-calendar-month-panel-month {
+  color: #fff; }
+
+.u-table .u-table-scroll tr td.rc-calendar-cell:first-child, .u-table .u-table-scroll tr th.rc-calendar-column-header:first-child {
+  padding-left: 0; }
+
+.u-table .rc-calendar-table thead tr:last-child {
+  border-bottom: none; }

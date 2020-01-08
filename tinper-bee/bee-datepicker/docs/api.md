@@ -53,7 +53,7 @@ import 'bee-datepicker/build/DatePicker.css';
 | showTime | 是否显示时间选择面板 | Boolean | - |
 | renderIcon |更改默认的图标|Function| () => <Icon type="uf-calendar" />|
 | closeIcon |鼠标划过清空内容的icon|Function| () => <Icon type="uf-close-c" />|
-| getCalendarContainer |更改默认渲染位置|Function| - |
+| getCalendarContainer |定义浮层的容器，默认为 body 上新建 div|function(trigger)| - |
 | keyboardInput |外层输入框是否支持键盘输入|Boolean|false|
 | iconClick |日期按钮点击的回调|Function|-|
 | outInputFocus |外层输入框获得焦点的回调|Function|-|
@@ -86,7 +86,7 @@ import 'bee-datepicker/build/DatePicker.css';
 | monthCellRender |月份的渲染方法| function | - |
 | dateCellRender|日期的渲染方法|function| - |
 | monthCellContentRender|自定义月份的渲染方法，将被添加渲染内容中| function| - |
-| getCalendarContainer |更改默认渲染位置|Function| - |
+| getCalendarContainer |定义浮层的容器，默认为 body 上新建 div|function(trigger)| - |
 | locale| 语言包 | Object |zh_CN |
 | closeIcon |鼠标划过清空内容的icon|Function| () => <Icon type="uf-close-c" />|
 | showClose |外层输入框是否显示清空按钮|Boolean|true|
@@ -123,7 +123,7 @@ import 'bee-datepicker/build/DatePicker.css';
 | onHoverChange|日期被选中的回调|Function(date: moment)| - |
 | dateInputPlaceholder|日期的placeholder| String | - |
 | type|是否固定开始或结束选定的值|enum('both','start', 'end')| - |
-| getCalendarContainer |更改默认渲染位置|Function| - |
+| getCalendarContainer |定义浮层的容器，默认为 body 上新建 div|function(trigger)| - |
 | locale| 语言包 | Object |zh_CN |
 | closeIcon |鼠标划过清空内容的icon|Function| () => <Icon type="uf-close-c" />|
 | showTime | 是否显示时间选择面板 | Boolean | - |
@@ -141,7 +141,7 @@ import 'bee-datepicker/build/DatePicker.css';
 |:---|:-----|:----|:------|
 | placeholder|输入框placeholder|String| - |
 | defaultValue|默认值|moment| - |
-| getCalendarContainer |更改默认渲染位置|Function| - |
+| getCalendarContainer |定义浮层的容器，默认为 body 上新建 div|function(trigger)| - |
 | locale| 语言包 | Object |zh_CN |
 | closeIcon |鼠标划过清空内容的icon|Function| () => <Icon type="uf-close-c" />|
 | showClose |外层输入框是否显示清空按钮|Boolean|true|
@@ -152,7 +152,7 @@ import 'bee-datepicker/build/DatePicker.css';
 |:---|:-----|:----|:------|
 | placeholder |输入框placeholder|String| - |
 | defaultValue|默认值|moment| 当前年 |
-| getCalendarContainer |更改默认渲染位置|Function| - |
+| getCalendarContainer |定义浮层的容器，默认为 body 上新建 div|function(trigger)| - |
 | format|日期格式化| String | "YYYY" |
 | disabled|是否禁用功能|Boolean| false |
 | locale| 语言包 | Object |zh_CN |

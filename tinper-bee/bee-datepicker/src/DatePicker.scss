@@ -97,18 +97,6 @@ $disabled-border-color: #DFE1E6;
   top: 6px;
   margin: 0;
 }
-// .rc-calendar-clear-btn:after {
-//   content: "x";
-//   font-size: 12px;
-//   color: #aaa;
-//   display: inline-block;
-//   line-height: 1;
-//   width: 20px;
-//   transition: color 0.3s ease;
-// }
-// .rc-calendar-clear-btn:hover:after {
-//   color: #212121;
-// }
 .rc-calendar-clear-btn.uf{
     color: #424242;
     opacity: .7;
@@ -1416,14 +1404,6 @@ li.rc-time-picker-panel-select-option-disabled:hover {
 .rc-calendar-selected-day .rc-calendar-date {
     background: $brand-primary;
 }
-// .week-calendar .week-calendar-footer {
-//   position:absolute;
-//   top:0;
-//   left:0;
-//   bottom:0;
-//   width:100%;
-//   border-right: 1px solid #ccc;
-// }
 .week-calendar{
   .rc-calendar-footer{
     padding: 0;
@@ -1451,4 +1431,42 @@ li.rc-time-picker-panel-select-option-disabled:hover {
   & > .u-form-control[disabled]{
     border-color: $form-control-disable-border-color;
   }
+}
+// u-table 单元格中的 DatePicker
+.u-table-tbody {
+  th.rc-calendar-column-header {
+    padding: 6px 0;
+    text-align: center;
+  }
+  td.rc-calendar-cell {
+    padding: 1px 0;
+    .rc-calendar-date {
+      margin: 0 3.5px;
+    }
+  }
+  .rc-calendar-year-select, .rc-calendar-month-select, .rc-calendar-today-btn, .rc-calendar-next-month-btn, .rc-calendar-next-year-btn, .rc-calendar-prev-month-btn, .rc-calendar-prev-year-btn,
+  .rc-calendar-year-panel-decade-select, .rc-calendar-year-panel-prev-decade-btn, .rc-calendar-year-panel-next-decade-btn, 
+  .rc-calendar-decade-panel-prev-century-btn, .rc-calendar-decade-panel-next-century-btn,
+  .rc-calendar-month-panel-year-select, .rc-calendar-month-panel-prev-year-btn, .rc-calendar-month-panel-next-year-btn {
+    color: #212121;
+    &:hover {
+      color: #e60012;
+    }
+  }
+  .rc-calendar-year-panel-year, .rc-calendar-decade-panel-decade, .rc-calendar-month-panel-month {
+    color: #212121;
+  }
+  .rc-calendar-year-panel-selected-cell .rc-calendar-year-panel-year,
+  .rc-calendar-decade-panel-selected-cell .rc-calendar-decade-panel-decade,
+  .rc-calendar-month-panel-selected-cell .rc-calendar-month-panel-month {
+    color: #fff;
+  }
+}
+.u-table .u-table-scroll tr {
+  td.rc-calendar-cell:first-child, th.rc-calendar-column-header:first-child {
+    padding-left: 0;
+  }
+}
+.u-table .rc-calendar-table thead tr:last-child {
+  border-bottom: none;
 }

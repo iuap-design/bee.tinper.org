@@ -516,6 +516,7 @@ var _initialiseProps = function _initialiseProps() {
         var local = (0, _tool.getComponentLocale)(_this3.props, _this3.context, 'InputNumber', function () {
             return _i18n2["default"];
         });
+        v = _this3.state.value; //在onBlur的时候不需要活输入框的只，而是要获取state中的值，因为有format的时候就会有问题。
         if (v === '') {
             _this3.setState({
                 value: v

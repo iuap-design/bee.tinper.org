@@ -1,3 +1,13 @@
+<a name="2.3.10"></a>
+## [2.3.10](https://github.com/tinper-bee/bee-datepicker/compare/v2.3.9...v2.3.10) (2020-01-08)
+
+
+### Bug Fixes
+
+* 日期容器指定为表格时的样式问题 ([85a75a6](https://github.com/tinper-bee/bee-datepicker/commit/85a75a6))
+
+
+
 <a name="2.3.9"></a>
 ## [2.3.9](https://github.com/tinper-bee/bee-datepicker/compare/v2.3.8...v2.3.9) (2019-12-27)
 
