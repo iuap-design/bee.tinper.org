@@ -35,7 +35,7 @@ class Demo6 extends Component {
                 <DatePicker 
                 placeholder="选择日期"
                 showToday={false}
-                getCalendarContainer={trigger => trigger.parentNode.parentNode} 
+                getCalendarContainer={trigger => trigger.parentNode} 
                 />
             )
         }},
