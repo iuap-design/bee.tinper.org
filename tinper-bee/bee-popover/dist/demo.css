@@ -201,6 +201,11 @@
 .u-popover.u-popover-tooltip.u-tooltip .tooltip-inner {
   padding: 8px; }
 
+.u-popover {
+  background-color: transparent;
+  border: none;
+  box-shadow: none; }
+
 .u-popover .tooltip-inner h3 {
   margin: 15px 0; }
 

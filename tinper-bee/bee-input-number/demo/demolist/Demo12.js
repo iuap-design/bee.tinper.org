@@ -12,7 +12,7 @@ class Demo12 extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            value:'100000.031416'
+            value:'-100000.031416'
         }
     }
 
@@ -29,19 +29,32 @@ class Demo12 extends Component {
                 <InputNumber
                     iconStyle="one"
                     // precision={2}
-                    // min={-9007199254740990}
-                    // max={9007199254740990}
-                    // step={1} 
-                    format={value => `$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                    min={-10}
+                    max={10}
+                    onFocus={(value,e)=>{
+                        console.log(value+"  ==== ",e);
+                        this.setState({
+                            value
+                        })
+                    }}
+                    onBlur={(value,e)=>{
+                        console.log("  ==== ",e);
+                        // this.setState({
+                        //     value
+                        // })
+                    }}
+                    // precision={8}
+                    step={1} 
+                    format={value => ` ${value} 千克`.replace(/\B(?=(\d{3})+(?!\d))/g, ':')}
                     value={this.state.value}
                 />
 
-                销售占比:
+                {/* 销售占比:
                 <InputNumber
                     iconStyle="one" 
                     format={value => `${value} %`}
                     value={this.state.value}
-                />
+                /> */}
             </div>
         )
     }

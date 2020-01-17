@@ -127,7 +127,10 @@ var DatePicker = function (_Component) {
     var showClose = props.showClose,
         defaultPanelShown = props.defaultPanelShown,
         onBlur = props.onBlur,
-        others = _objectWithoutProperties(props, ["showClose", "defaultPanelShown", "onBlur"]);
+        showHour = props.showHour,
+        showMinute = props.showMinute,
+        showSecond = props.showSecond,
+        others = _objectWithoutProperties(props, ["showClose", "defaultPanelShown", "onBlur", "showHour", "showMinute", "showSecond"]);
 
     var value = state.value;
     var pickerChangeHandler = {};
@@ -145,8 +148,16 @@ var DatePicker = function (_Component) {
       };
     }
 
+    var splitNumber = '3';
+    if (!showHour) splitNumber -= 1;
+    if (!showMinute) splitNumber -= 1;
+    if (!showSecond) splitNumber -= 1;
+
     var calendar = _react2["default"].createElement(_rcCalendar2["default"], _extends({
-      timePicker: props.showTime ? _react2["default"].createElement(_Panel2["default"], { defaultValue: (0, _moment2["default"])((0, _moment2["default"])().format("HH:mm:ss"), "HH:mm:ss") }) : null
+      timePicker: props.showTime ? _react2["default"].createElement(_Panel2["default"], {
+        className: 'time-split-' + splitNumber,
+        showHour: showHour, showMinute: showMinute, showSecond: showSecond,
+        defaultValue: (0, _moment2["default"])((0, _moment2["default"])().format("HH:mm:ss"), "HH:mm:ss") }) : null
     }, props, {
       onSelect: this.handleSelect,
       onChange: this.handleCalendarChange,
@@ -482,7 +493,10 @@ DatePicker.defaultProps = {
   onKeyDown: function onKeyDown() {},
   renderError: function renderError() {},
   showClose: true,
-  format: "YYYY-MM-DD"
+  format: "YYYY-MM-DD",
+  showSecond: true,
+  showHour: true,
+  showMinute: true
 };
 
 exports["default"] = DatePicker;

@@ -111,7 +111,9 @@ const propTypes = {
   supportServerRender: PropTypes.bool,
   style: PropTypes.object,
   disabled: PropTypes.bool,
-  clsPrefix: PropTypes.string
+  clsPrefix: PropTypes.string,
+  enterDragger: PropTypes.func,
+  leaveDragger: PropTypes.func
 }
 
 const defaultProps = {
@@ -127,6 +129,8 @@ const defaultProps = {
   className: '',
   disabled: false,
   supportServerRender: true,
+  enterDragger: ()=>{},
+  leaveDragger: ()=>{}
 };
 
 class Upload extends Component {
@@ -143,6 +147,7 @@ class Upload extends Component {
       fileList: this.props.fileList || this.props.defaultFileList || [],
       dragState: 'drop',
     };
+    this.lastenter = null;
   }
   state = {
     previewVisible: false,
@@ -151,7 +156,7 @@ class Upload extends Component {
 
   // beforeUpload=(file,fileList)=>{
   //   this.props.beforeUpload(file,this.state.fileList)
-  // }
+  // }  
 
   onStart = (file) => {
     let targetItem;
@@ -310,10 +315,31 @@ class Upload extends Component {
     }
   }
 
+  onDragEnter = (e) => {
+    this.lastenter = e.target; // 记录最后进入的元素
+    this.setState({
+      dragState: 'dragover'
+    })
+    this.props.enterDragger()
+  }
+
+  onDragLeave = (e) => {
+    // 如果此时退的元素是最后进入的元素，说明是真正退出了`drag-zone`元素
+    if(this.lastenter === e.target){ 
+      this.setState({
+        dragState: e.type
+      })
+      e.stopPropagation();
+      e.preventDefault();
+      this.props.leaveDragger()
+    }
+  }
+
   onFileDrop = (e) => {
     this.setState({
-      dragState: e.type,
-    });
+      dragState: e.type
+    })
+    this.props.leaveDragger()
   }
 
   clearProgressTimer() {
@@ -373,8 +399,9 @@ class Upload extends Component {
           <div
             className={dragCls}
             onDrop={this.onFileDrop}
-            onDragOver={this.onFileDrop}
-            onDragLeave={this.onFileDrop}
+            // onDragOver={this.onFileDrop}
+            onDragLeave={this.onDragLeave}
+            onDragEnter={this.onDragEnter}
           >
             <RcUpload {...rcUploadProps} ref="upload" className={`${clsPrefix}-btn`}>
               <div className={`${clsPrefix}-drag-container`}>

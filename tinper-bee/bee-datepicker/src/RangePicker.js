@@ -47,11 +47,7 @@ if (cn) {
   now.locale("en-gb").utcOffset(0);
 }
 
-const timePickerElement = (
-    <TimePickerPanel defaultValue={moment(moment().format("HH:mm:ss"), "HH:mm:ss")} />
-  );
   
-
 class RangePicker extends Component {
     constructor(props, context) {
         super(props, context);
@@ -252,10 +248,14 @@ class RangePicker extends Component {
     }
     render() {
     const props = this.props;
-    const { showClose ,onChange, ...others } = props;
+    const { showClose ,onChange, showHour,showMinute,showSecond,...others } = props;
     const {value,open} = this.state;
     let formatStr = props.format || 'YYYY-MM-DD';
-
+    const timePickerElement = (
+        <TimePickerPanel  
+        showHour={showHour} showMinute={showMinute} showSecond={showSecond}
+        defaultValue={moment(moment().format("HH:mm:ss"), "HH:mm:ss")} />
+      );
     const calendar = (
         <RangeCalendar
             hoverValue={this.state.hoverValue}
@@ -349,7 +349,10 @@ RangePicker.defaultProps = {
     showClear:true,
     showToday:true,
     showOk:true,
-    showClose:true
+    showClose:true,
+    showSecond:true,
+    showHour:true,
+    showMinute:true
 }
 
 export default RangePicker;

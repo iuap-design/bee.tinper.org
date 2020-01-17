@@ -68,10 +68,20 @@ class Timepicker extends Component {
     }
 
     render() {
-        let {value,...other} = this.props;
+        let {value,onChange,...other} = this.props;
         
         return (
-            <TimePicker  prefixCls='u-time-picker' value={this.state.value}  {...other} />
+            <TimePicker  
+            prefixCls='u-time-picker' 
+            value={this.state.value}  
+            {...other} 
+            onChange={value=>{
+                this.setState({
+                    value
+                })
+                onChange(value);
+            }}
+            />
         )
     }
 };

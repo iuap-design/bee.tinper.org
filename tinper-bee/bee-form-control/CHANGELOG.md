@@ -1,3 +1,13 @@
+<a name="2.0.11"></a>
+## [2.0.11](https://github.com/tinper-bee/form-control/compare/v2.0.10...v2.0.11) (2020-01-14)
+
+
+### Bug Fixes
+
+* **bee-form-control:** componentWillReceiveProps value判断 ([bfa183f](https://github.com/tinper-bee/form-control/commit/bfa183f))
+
+
+
 <a name="2.0.10"></a>
 ## [2.0.10](https://github.com/tinper-bee/form-control/compare/v2.0.9...v2.0.10) (2019-11-14)
 

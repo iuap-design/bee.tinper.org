@@ -30,7 +30,7 @@ import 'bee-dropdown/build/Dropdown.css';
 |animation|触发时的动画|string|-|
 |overlayClassName|传递给弹出菜单的className|string|''|
 |align|对齐方式|object|{}|
-|overlayStyle|传递给弹出菜单的style|object|{}|
+|overlayStyle|传递给弹出菜单的style。注：设置`top`,`left`无效|object|{}|
 |onVisibleChange|下拉菜单显示与否的钩子函数|function|() => {}|
 |showAction|显示时的钩子函数数组|array|[]|
 |hideAction|隐藏时的钩子函数数组|array|[]|
@@ -44,6 +44,6 @@ import 'bee-dropdown/build/Dropdown.css';
 
 ## 注意事项
 
-暂无
+- `overlayStyle` 设置`top`,`left`无效。 如需要自定义，可使用`align`属性，参考[这里](https://github.com/yiminghe/dom-align#usage)
 
 ## 更新日志

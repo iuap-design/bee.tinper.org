@@ -19,7 +19,12 @@ $popover-fallback-border-color: #fff;
         padding: 8px;
     }
 }
-
+// fix: 覆盖老版本 tinper-bee 中 popover 的 css 样式
+.u-popover {
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+}
 // .u-popover {
 //     position: absolute;
 //     top: 0;

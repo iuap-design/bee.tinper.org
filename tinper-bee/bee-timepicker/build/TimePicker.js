@@ -58,7 +58,7 @@ var Timepicker = function (_Component) {
     }
 
     Timepicker.prototype.componentWillMount = function componentWillMount() {
-        //判断初始值是否合法，不合法则格式化，并触发onChange回调
+        //判断初始值是否合法，不合法则格式化
         var value = this.props.value;
         if (value) {
             if (typeof value == 'string') {
@@ -102,11 +102,24 @@ var Timepicker = function (_Component) {
     };
 
     Timepicker.prototype.render = function render() {
+        var _this2 = this;
+
         var _props = this.props,
             value = _props.value,
-            other = _objectWithoutProperties(_props, ['value']);
+            _onChange = _props.onChange,
+            other = _objectWithoutProperties(_props, ['value', 'onChange']);
 
-        return _react2["default"].createElement(_index2["default"], _extends({ prefixCls: 'u-time-picker', value: this.state.value }, other));
+        return _react2["default"].createElement(_index2["default"], _extends({
+            prefixCls: 'u-time-picker',
+            value: this.state.value
+        }, other, {
+            onChange: function onChange(value) {
+                _this2.setState({
+                    value: value
+                });
+                _onChange(value);
+            }
+        }));
     };
 
     return Timepicker;

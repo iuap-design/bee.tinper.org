@@ -101,8 +101,6 @@ if (cn) {
     now.locale("en-gb").utcOffset(0);
 }
 
-var timePickerElement = _react2["default"].createElement(_Panel2["default"], { defaultValue: (0, _moment2["default"])((0, _moment2["default"])().format("HH:mm:ss"), "HH:mm:ss") });
-
 var RangePicker = function (_Component) {
     _inherits(RangePicker, _Component);
 
@@ -148,14 +146,19 @@ var RangePicker = function (_Component) {
 
         var showClose = props.showClose,
             onChange = props.onChange,
-            others = _objectWithoutProperties(props, ["showClose", "onChange"]);
+            showHour = props.showHour,
+            showMinute = props.showMinute,
+            showSecond = props.showSecond,
+            others = _objectWithoutProperties(props, ["showClose", "onChange", "showHour", "showMinute", "showSecond"]);
 
         var _state = this.state,
             value = _state.value,
             open = _state.open;
 
         var formatStr = props.format || 'YYYY-MM-DD';
-
+        var timePickerElement = _react2["default"].createElement(_Panel2["default"], {
+            showHour: showHour, showMinute: showMinute, showSecond: showSecond,
+            defaultValue: (0, _moment2["default"])((0, _moment2["default"])().format("HH:mm:ss"), "HH:mm:ss") });
         var calendar = _react2["default"].createElement(_RangeCalendar2["default"], {
             hoverValue: this.state.hoverValue,
             onHoverChange: this.onHoverChange,
@@ -431,7 +434,10 @@ RangePicker.defaultProps = {
     showClear: true,
     showToday: true,
     showOk: true,
-    showClose: true
+    showClose: true,
+    showSecond: true,
+    showHour: true,
+    showMinute: true
 };
 
 exports["default"] = RangePicker;

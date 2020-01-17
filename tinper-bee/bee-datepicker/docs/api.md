@@ -35,7 +35,7 @@ import 'bee-datepicker/build/DatePicker.css';
 | defaultValue|默认值，输入框的默认值| moment| - |
 | value|日期| moment| - |
 | locale| 语言包 | Object |zh_CN |
-| format|日期格式化| String | "YYYY-MM-DD" |
+| format| 设置日期格式，为数组时支持多格式匹配，展示以第一个为准。配置参考 [moment.js](https://momentjs.com/) | string / string[] | "YYYY-MM-DD" |
 | open|日期组件显示/隐藏，该值可动态改变| Boolean | false |
 | defaultPanelShown |设置日期组件显示/隐藏的默认状态，该值不可更改|Boolean|false|
 | disabled|是否禁用功能|Boolean| false |
@@ -61,7 +61,10 @@ import 'bee-datepicker/build/DatePicker.css';
 | onOpenChange |日期面板收起/展开状态改变时的回调|Function|-|
 | showClose |外层输入框是否显示清空按钮|Boolean|true|
 | onDateInputBlur |日期面板中输入框失去焦点的回调|Function|-|
-| placement | 日期面板弹出位置，可选 `bottomLeft/bottomRight/topRight/topLeft` | string | bottomLeft | 
+| placement | 日期面板弹出位置，可选 `bottomLeft/bottomRight/topRight/topLeft` | string | bottomLeft |
+| showHour | 设置`showTime={true}`时候，是否显示小时 |Boolean|true|
+| showMinute | 设置`showTime={true}`时候，是否显示分钟 |Boolean|true|
+| showSecond | 设置`showTime={true}`时候，是否显示秒 |Boolean|true|
 
 
 
@@ -134,6 +137,9 @@ import 'bee-datepicker/build/DatePicker.css';
 | onStartInputBlur |日期面板中 左输入框失去焦点的回调|Function|`e` : 事件对象<br>`startValue` :  开始时间<br>`[startValue,endValue]` : 包含开始时间和结束时间的数组|
 | onEndInputBlur |日期面板中 右输入框失去焦点的回调|Function|`e` : 事件对象<br>`endValue` :  结束时间<br>`[startValue,endValue]` : 包含开始时间和结束时间的数组|
 | placement | 日期面板弹出位置，可选 `bottomLeft/bottomRight/topRight/topLeft` | string | bottomLeft | 
+| showHour | 设置`showTime={true}`时候，是否显示小时 |Boolean|true|
+| showMinute | 设置`showTime={true}`时候，是否显示分钟 |Boolean|true|
+| showSecond | 设置`showTime={true}`时候，是否显示秒 |Boolean|true|
 
 ### WeekPicker
 

@@ -80,8 +80,10 @@ var FormControl = function (_React$Component) {
     }
 
     FormControl.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProp) {
-        if (nextProp.value !== this.state.value) {
-            this.setState({ value: nextProp.value });
+        if ("value" in nextProp) {
+            if (nextProp.value !== this.state.value) {
+                this.setState({ value: nextProp.value });
+            }
         }
     };
 

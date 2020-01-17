@@ -249,7 +249,8 @@ var InputNumber = function (_Component) {
             showValue = _state.showValue;
 
 
-        value = format ? format(value) : value;
+        value = precision != null ? Number(value).toFixed(precision) : value;
+        value = format && !this.focus ? format(value) : value;
 
         var disabledCursor = disabled ? ' disabled-cursor' : '';
         var disabledCon = disabled ? ' disabled-con' : '';
@@ -498,7 +499,7 @@ var _initialiseProps = function _initialiseProps() {
             min = _props3.min,
             max = _props3.max;
 
-        onFocus && onFocus(value, e);
+        onFocus && onFocus(unThousands(_this3.state.showValue), e);
     };
 
     this.handleBlur = function (v, e) {

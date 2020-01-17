@@ -294,7 +294,7 @@ class InputNumber extends Component {
     handleFocus = (value,e) => {
         this.focus = true;
         let { onFocus, min, max } = this.props;
-        onFocus && onFocus(value, e);
+        onFocus && onFocus(unThousands(this.state.showValue), e);
     }
 
     handleBlur = (v,e) => {
@@ -515,8 +515,9 @@ class InputNumber extends Component {
 
         let {value, minusDisabled, plusDisabled, showValue} = this.state;
 
-        value = format ? format(value) : value;
-
+        value = precision != null?Number(value).toFixed(precision):value;
+        value = format && !this.focus? format(value) : value;
+    
         let disabledCursor = disabled? ' disabled-cursor':'';
         let disabledCon = disabled? ' disabled-con':'';
         return (

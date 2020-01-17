@@ -275,7 +275,7 @@ class DatePicker extends Component {
   render() {
     let state = this.state;
     let props = this.props;
-    const { showClose, defaultPanelShown,onBlur,...others} = props;
+    const { showClose, defaultPanelShown,onBlur,showHour,showMinute,showSecond,...others} = props;
     let value = state.value;
     let pickerChangeHandler = {};
     let calendarHandler = {};
@@ -292,9 +292,18 @@ class DatePicker extends Component {
       };
     }
 
+
+    let splitNumber = '3';
+    if(!showHour)splitNumber-=1;
+    if(!showMinute)splitNumber-=1;
+    if(!showSecond)splitNumber-=1;
+
     const calendar = (
       <Calendar
-        timePicker={props.showTime ? <TimePickerPanel defaultValue={moment(moment().format("HH:mm:ss"), "HH:mm:ss")} /> : null}
+        timePicker={props.showTime ? <TimePickerPanel 
+          className={'time-split-'+splitNumber}
+          showHour={showHour} showMinute={showMinute} showSecond={showSecond}
+          defaultValue={moment(moment().format("HH:mm:ss"), "HH:mm:ss")} /> : null}
         {...props}
         onSelect={this.handleSelect}
         onChange={this.handleCalendarChange}
@@ -402,7 +411,10 @@ DatePicker.defaultProps = {
   onKeyDown:()=>{},
   renderError:()=>{},
   showClose:true,
-  format: "YYYY-MM-DD"	
+  format: "YYYY-MM-DD",
+  showSecond:true,
+  showHour:true,
+  showMinute:true
 }
 
 export default DatePicker;
