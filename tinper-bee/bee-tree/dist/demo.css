@@ -83,7 +83,6 @@
   .u-tree li a[draggable],
   .u-tree li a[draggable="true"] {
     -webkit-user-select: none;
-    -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
     /* Required to make elements draggable in old WebKit */
