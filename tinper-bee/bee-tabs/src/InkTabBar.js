@@ -2,19 +2,33 @@
 * This source code is quoted from rc-tabs.
 * homepage: https://github.com/react-component/tabs
 */
-import React,{Component} from 'react';
-import InkTabBarMixin from './InkTabBarMixin';
-import TabBarMixin from './TabBarMixin';
-import createClass from 'create-react-class';
 
-const InkTabBar = createClass({
-  mixins: [TabBarMixin, InkTabBarMixin], 
+import React from 'react';
+import PropTypes from 'prop-types';
+import InkTabBarNode from './InkTabBarNode';
+import TabBarTabsNode from './TabBarTabsNode';
+import TabBarRootNode from './TabBarRootNode';
+import SaveRef from './SaveRef';
+
+export default class InkTabBar extends React.Component {
   render() {
-    const inkBarNode = this.getInkBarNode();
-    const tabs = this.getTabs();
-    return this.getRootNode([inkBarNode, tabs]);
+    return (
+      <SaveRef>
+        {(saveRef, getRef) => (
+          <TabBarRootNode saveRef={saveRef} {...this.props}>
+            <TabBarTabsNode onTabClick={this.props.onTabClick} saveRef={saveRef} {...this.props} />
+            <InkTabBarNode saveRef={saveRef} getRef={getRef} {...this.props} />
+          </TabBarRootNode>
+        )}
+      </SaveRef>
+    );
   }
-  
-});
+}
 
-export default InkTabBar;
+InkTabBar.propTypes = {
+  onTabClick: PropTypes.func,
+};
+
+InkTabBar.defaultProps = {
+  onTabClick: () => {},
+};

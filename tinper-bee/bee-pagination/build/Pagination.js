@@ -280,7 +280,7 @@ var Pagination = function (_React$Component) {
             this.setState({
                 dataNum: dataNum,
                 // 20181210因为dataNumSelect的某项不是数字或者数字字符串
-                items: Number.isNaN(parseInt(dataNumSelect[dataNum])) ? 1 : Math.ceil(total / dataNumSelect[dataNum])
+                items: Number.isNaN(parseInt(dataNumSelect[dataNum])) ? 1 : Math.ceil(total / parseInt(dataNumSelect[dataNum]))
             });
         }
         if ('items' in nextProps && this.props.items !== items) {

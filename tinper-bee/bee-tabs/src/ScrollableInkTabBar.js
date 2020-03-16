@@ -2,36 +2,47 @@
 * This source code is quoted from rc-tabs.
 * homepage: https://github.com/react-component/tabs
 */
-import React,{Component} from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
-import InkTabBarMixin from './InkTabBarMixin';
-import ScrollableTabBarMixin from './ScrollableTabBarMixin';
-import TabBarMixin from './TabBarMixin';
-import createClass from 'create-react-class';
+import PropTypes from 'prop-types';
+import InkTabBarNode from './InkTabBarNode';
+import TabBarTabsNode from './TabBarTabsNode';
+import TabBarRootNode from './TabBarRootNode';
+import ScrollableTabBarNode from './ScrollableTabBarNode';
+import SaveRef from './SaveRef';
 
-const ScrollableInkTabBar = createClass({
-  mixins: [TabBarMixin, InkTabBarMixin, ScrollableTabBarMixin],
+export default class ScrollableInkTabBar extends React.Component {
   componentDidMount(){
     ReactDOM.findDOMNode(this).addEventListener('DNDclick', (e) => {
       if(e && e.detail && e.detail.key){
         this.onTabClick.call(this, e.detail.key)
       }
     });
-  },
+  }
   componentWillUnmount(){
     ReactDOM.findDOMNode(this).removeEventListener('DNDclick',(e) => {
       if(e && e.detail && e.detail.key){
         this.onTabClick.call(this, e.detail.key)
       }
     });
-  },
-  render() {
-    const inkBarNode = this.getInkBarNode();
-    const tabs = this.getTabs();
-    const scrollbarNode = this.getScrollBarNode([inkBarNode, tabs]);
-    return this.getRootNode(scrollbarNode);
   }
+  render() {
+    const { children: renderTabBarNode, ...restProps } = this.props;
+    return (
+      <SaveRef>
+        {(saveRef, getRef) => (
+          <TabBarRootNode saveRef={saveRef} {...restProps}>
+            <ScrollableTabBarNode saveRef={saveRef} getRef={getRef} {...restProps}>
+              <TabBarTabsNode saveRef={saveRef} renderTabBarNode={renderTabBarNode} {...restProps} />
+              <InkTabBarNode saveRef={saveRef} getRef={getRef} {...restProps} />
+            </ScrollableTabBarNode>
+          </TabBarRootNode>
+        )}
+      </SaveRef>
+    );
+  }
+}
 
-});
-
-export default ScrollableInkTabBar;
+ScrollableInkTabBar.propTypes = {
+  children: PropTypes.func,
+};

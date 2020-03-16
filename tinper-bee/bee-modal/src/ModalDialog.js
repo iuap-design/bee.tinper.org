@@ -193,6 +193,8 @@ class ModalDialog extends React.Component {
         </div>
       )
     }
+    const _minWidth = this.handleWH(minWidth);
+    const _minHeight = this.handleWH(minHeight);
     return (
       <Resizable
         className={resizeClassName}
@@ -204,12 +206,12 @@ class ModalDialog extends React.Component {
         onResizeStart={this.onResizeStart}
         onResize={this.onResize}
         onResizeStop={this.onResizeStop}
-        minWidth={this.handleWH(minWidth)}
-        minHeight={this.handleWH(minHeight)}
+        minWidth={_minWidth}
+        minHeight={_minHeight}
         maxWidth={this.handleWH(maxWidth)}
         maxHeight={this.handleWH(maxHeight)}
       >
-        <div style={{...contentStyle, height: "100%"}} className={classNames([`${clsPrefix}-content`])} role="document" ref={ref => this.resize = ref}>
+        <div style={{...contentStyle, minHeight: _minHeight, height: "100%"}} className={classNames([`${clsPrefix}-content`])} role="document" ref={ref => this.resize = ref}>
           {children}
         </div>
       </Resizable>

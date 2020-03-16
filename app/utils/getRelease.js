@@ -8,8 +8,8 @@ let sidebar = require('../../static/sidebar.json');
 const newComReg = /- (.*)@/g;
 
 const auth = {
-    token: 'cb5d0991a65edb2a81c7709e696ad0d9d80306e2',
-    user: 'yangchch6'
+    token: '4575c0e0dd412d9e48b34a976a027faa2634f6ba',
+    user: 'liushaozhen'
 }
 
 /**

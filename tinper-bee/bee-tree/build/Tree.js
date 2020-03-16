@@ -118,6 +118,7 @@ var Tree = function (_React$Component) {
     // 启用懒加载，计算树节点真实高度
     if (!lazyLoad) return;
     var treenodes = this.tree.querySelectorAll('.u-tree-treenode-close')[0];
+    if (!treenodes) return;
     var rowHeight = treenodes.getBoundingClientRect().height;
     this.store.setState({
       rowHeight: rowHeight
@@ -172,8 +173,7 @@ var Tree = function (_React$Component) {
       return !prevProps && name in nextProps || prevProps && prevProps[name] !== nextProps[name];
     }
     // ================ expandedKeys =================
-    // if (needSync('expandedKeys') || (prevProps && needSync('autoExpandParent'))) {
-    if (needSync('expandedKeys')) {
+    if (needSync('expandedKeys') || prevProps && needSync('autoExpandParent') || prevProps && prevProps['expandedKeys'] !== expandedKeys) {
       st.expandedKeys = expandedKeys;
     } else if (!prevProps && props.defaultExpandAll || !prevProps && props.defaultExpandedKeys) {
       st.expandedKeys = this.getDefaultExpandedKeys(nextProps);
@@ -731,7 +731,12 @@ var Tree = function (_React$Component) {
       // 如果是多选tree则进行选中或者反选该节点
       props.checkable && this.onCheck(treeNode);
     } else if (e.keyCode == _tinperBeeCore.KeyCode.ENTER) {
-      this.onDoubleClick(treeNode);
+      if (props.onDoubleClick) {
+        this.onDoubleClick(treeNode);
+      } else {
+        this.onSelect(treeNode);
+        props.checkable && this.onCheck(treeNode);
+      }
     }
     this.props.keyFun && this.props.keyFun(e, treeNode);
     // e.preventDefault();
@@ -759,18 +764,26 @@ var Tree = function (_React$Component) {
 
     // 如果当前tree节点不包括上一个焦点节点会触发此方法
     if (this.tree == targetDom && !this.isIn && !this.tree.contains(e.relatedTarget)) {
-      var onFocus = this.props.onFocus;
+      var _props3 = this.props,
+          onFocus = _props3.onFocus,
+          children = _props3.children;
       var _state$selectedKeys = this.state.selectedKeys,
           selectedKeys = _state$selectedKeys === undefined ? [] : _state$selectedKeys;
 
       var tabIndexKey = selectedKeys[0];
       var isExist = false;
+      var treeNode = children.length && children[0];
+      var eventKey = treeNode.props.eventKey || treeNode.key;
       if (this.selectKeyDomExist && tabIndexKey || !tabIndexKey) {
         isExist = true;
         var queryInfo = 'a[pos="' + this.selectKeyDomPos + '"]';
         var parentEle = (0, _util.closest)(e.target, ".u-tree");
         var focusEle = parentEle ? parentEle.querySelector(queryInfo) : null;
         focusEle && focusEle.focus();
+        // TAB键选中树后，默认聚焦在第一个（已选中）节点，并显示 focus 状态。
+        this.setState({
+          focusKey: tabIndexKey || eventKey
+        });
       }
       var onFocusRes = onFocus && onFocus(isExist);
       if (onFocusRes instanceof Promise) {
@@ -1034,23 +1047,23 @@ var Tree = function (_React$Component) {
 
     var props = this.props;
 
-    var _props3 = this.props,
-        showLine = _props3.showLine,
-        prefixCls = _props3.prefixCls,
-        className = _props3.className,
-        focusable = _props3.focusable,
-        checkable = _props3.checkable,
-        loadData = _props3.loadData,
-        checkStrictly = _props3.checkStrictly,
-        tabIndexValue = _props3.tabIndexValue,
-        lazyLoad = _props3.lazyLoad,
-        getScrollContainer = _props3.getScrollContainer,
-        defaultExpandedKeys = _props3.defaultExpandedKeys,
-        defaultSelectedKeys = _props3.defaultSelectedKeys,
-        defaultCheckedKeys = _props3.defaultCheckedKeys,
-        openAnimation = _props3.openAnimation,
-        draggable = _props3.draggable,
-        others = _objectWithoutProperties(_props3, ['showLine', 'prefixCls', 'className', 'focusable', 'checkable', 'loadData', 'checkStrictly', 'tabIndexValue', 'lazyLoad', 'getScrollContainer', 'defaultExpandedKeys', 'defaultSelectedKeys', 'defaultCheckedKeys', 'openAnimation', 'draggable']);
+    var _props4 = this.props,
+        showLine = _props4.showLine,
+        prefixCls = _props4.prefixCls,
+        className = _props4.className,
+        focusable = _props4.focusable,
+        checkable = _props4.checkable,
+        loadData = _props4.loadData,
+        checkStrictly = _props4.checkStrictly,
+        tabIndexValue = _props4.tabIndexValue,
+        lazyLoad = _props4.lazyLoad,
+        getScrollContainer = _props4.getScrollContainer,
+        defaultExpandedKeys = _props4.defaultExpandedKeys,
+        defaultSelectedKeys = _props4.defaultSelectedKeys,
+        defaultCheckedKeys = _props4.defaultCheckedKeys,
+        openAnimation = _props4.openAnimation,
+        draggable = _props4.draggable,
+        others = _objectWithoutProperties(_props4, ['showLine', 'prefixCls', 'className', 'focusable', 'checkable', 'loadData', 'checkStrictly', 'tabIndexValue', 'lazyLoad', 'getScrollContainer', 'defaultExpandedKeys', 'defaultSelectedKeys', 'defaultCheckedKeys', 'openAnimation', 'draggable']);
 
     var customProps = _extends({}, (0, _omit2["default"])(others, ['showIcon', 'cancelUnSelect', 'onCheck', 'selectable', 'autoExpandParent', 'defaultExpandAll', 'onExpand', 'autoSelectWhenFocus', 'expandWhenDoubleClick', 'expandedKeys', 'keyFun', 'openIcon', 'closeIcon', 'treeData', 'checkedKeys', 'selectedKeys', 'renderTreeNodes', 'mustExpandable', 'onMouseEnter', 'onMouseLeave', 'onDoubleClick']));
     var _state = this.state,
@@ -1175,9 +1188,9 @@ var _initialiseProps = function _initialiseProps() {
   var _this7 = this;
 
   this.hasTreeNode = function () {
-    var _props4 = _this7.props,
-        children = _props4.children,
-        treeData = _props4.treeData;
+    var _props5 = _this7.props,
+        children = _props5.children,
+        treeData = _props5.treeData;
 
     var noTreeNode = typeof children === 'undefined' || (typeof children === 'undefined' ? 'undefined' : _typeof(children)) === 'object' && children.length === 0 || (typeof treeData === 'undefined' ? 'undefined' : _typeof(treeData)) === 'object' && treeData.length === 0;
     return !noTreeNode;
@@ -1246,9 +1259,9 @@ var _initialiseProps = function _initialiseProps() {
   };
 
   this.renderTreefromData = function (data) {
-    var _props5 = _this7.props,
-        renderTitle = _props5.renderTitle,
-        renderTreeNodes = _props5.renderTreeNodes;
+    var _props6 = _this7.props,
+        renderTitle = _props6.renderTitle,
+        renderTreeNodes = _props6.renderTreeNodes;
 
     if (renderTreeNodes) {
       return renderTreeNodes(data);

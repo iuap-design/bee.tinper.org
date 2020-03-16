@@ -38,12 +38,12 @@ export default {
     },
     Grid:{
         'lang': 'zh-cn',
-    'fixTitle': '锁定',
-    'noFixTitle': '解锁',
-    'hideTitle': '隐藏',
-    'rowFilter':'行过滤',
-    'openRowFilter':'打开行过滤',
-    'closeRowFilter':'关闭行过滤', 
+        'fixTitle': '锁定',
+        'noFixTitle': '解锁',
+        'hideTitle': '隐藏',
+        'rowFilter':'行过滤',
+        'openRowFilter':'打开行过滤',
+        'closeRowFilter':'关闭行过滤', 
     },
     SearchPanel:{
         'title': '默认筛选',
@@ -55,5 +55,10 @@ export default {
     InputNumber:{
         'msgMax':'值不能大于最大值',
         'msgMin':'值不能小于最小值'
+    },
+    Modal:{
+        'ok':'确定',
+        'gotit':'知道了',
+        'cancel':'取消',
     }
 }

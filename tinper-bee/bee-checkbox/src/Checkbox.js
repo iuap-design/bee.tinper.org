@@ -26,7 +26,8 @@ class Checkbox extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            checked: 'checked' in props ? props.checked : props.defaultChecked
+            checked: 'checked' in props ? props.checked : props.defaultChecked,
+            focused: false
         }
         this.doubleClickFlag = null;
     }
@@ -81,6 +82,22 @@ class Checkbox extends React.Component {
         onDoubleClick && onDoubleClick(this.state.checked, e);
     }
 
+    handleFocus = (e) => {
+        if(e.target && e.target.type == 'checkbox'){
+            this.setState({
+                focused: true
+            });
+        }
+    }
+
+    handleBlur = (e) => {
+        if(e.target && e.target.type == 'checkbox'){
+            this.setState({
+                focused: false
+            });
+        }
+    }
+
     render() {
         const {
             disabled,
@@ -104,10 +121,13 @@ class Checkbox extends React.Component {
                 {...others}
                 type="checkbox"
                 disabled={this.props.disabled}
+                onFocus={this.handleFocus}
+                onBlur={this.handleBlur}
             />
         );
 
         let classes = {
+            [`${clsPrefix}-focused`]: this.state.focused,
             'is-checked': this.state.checked,
             disabled
         };

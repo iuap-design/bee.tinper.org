@@ -3,11 +3,17 @@ import ReactDOM from 'react-dom';
 import classNames from 'classnames';
 import Modal,{ destroyFns } from './Modal';
 import Button from 'bee-button';
+import ConfirmModal from './ConfirmModal'
 import Icon from 'bee-icon';
 
 const IS_REACT_16 = !!ReactDOM.createPortal;
+class ConfirmDialog extends React.Component{
+  constructor(props){
+    super(props)
+  }
 
-const ConfirmDialog = (props) => {
+  render(){
+    const props = this.props;
     const {
       onCancel,
       onOk,
@@ -21,8 +27,13 @@ const ConfirmDialog = (props) => {
       okButtonProps,
       cancelButtonProps,
       iconType = 'uf-qm-c',
+      locale = {
+        'ok':'确定',
+        'gotit':'知道了',
+        'cancel':'取消',
+      }
     } = props;
-  
+    
     // 支持传入{ icon: null }来隐藏`Modal.confirm`默认的Icon
     const icon = props.icon === undefined ? iconType : props.icon;
     const okType = props.okType || 'primary';
@@ -36,8 +47,8 @@ const ConfirmDialog = (props) => {
     // 默认为 false，保持旧版默认行为
     const backdropClosable = props.backdropClosable === undefined ? true : props.backdropClosable;
     // const runtimeLocale = getConfirmLocale();
-    const okText = props.okText || (okCancel ? "确定" : "知道了");
-    const cancelText = props.cancelText || "取消";
+    const okText = props.okText || (okCancel ? locale.ok : locale.gotit);
+    const cancelText = props.cancelText || locale.cancel;
     const autoFocusButton = props.autoFocusButton === null ? false : props.autoFocusButton || 'ok';
     const transitionName = props.transitionName || 'zoom';
     const maskTransitionName = props.maskTransitionName || 'fade';
@@ -88,7 +99,9 @@ const ConfirmDialog = (props) => {
           </Modal.Footer>
       </Modal>
     );
+  }
 }
+
 
 export default function confirm(config) {
     const div = document.createElement('div');
@@ -135,7 +148,7 @@ export default function confirm(config) {
     }
   
     function render(props) {
-      ReactDOM.render(<ConfirmDialog {...props} />, div);
+      ReactDOM.render(props.confirmType=='one'?<ConfirmDialog {...props} />:<ConfirmModal {...props}/>, div);
     }
   
     render(currentConfig);

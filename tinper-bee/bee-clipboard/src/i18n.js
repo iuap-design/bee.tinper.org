@@ -8,12 +8,12 @@ module.exports = {
     'close':'关闭',
 
     'en-us': {
-        'copy': 'copy',
-        'cut': 'cut',
-        'copyReady': 'copied',
-        'cutReady': 'cut',
-        'copyToClipboard':'copy to clipboard',
-        'close':'close'
+        'copy': 'Copy',
+        'cut': 'Cut',
+        'copyReady': 'Copied',
+        'cutReady': 'Cut',
+        'copyToClipboard':'Copy to Clipboard',
+        'close':'Close',
     },
     'zh-tw': {
         'copy': '複製',

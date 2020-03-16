@@ -542,7 +542,7 @@ var Rcascader = function (_Component) {
           _beeInputGroup2["default"].Button,
           { shape: 'border',
             onClick: function onClick(e) {
-              props.keyboardInput ? _this4.iconClick(e) : '';
+              _this4.props.keyboardInput ? _this4.iconClick(e) : '';
             } },
           _react2["default"].createElement('i', { className: 'uf ' + iconClass })
         )

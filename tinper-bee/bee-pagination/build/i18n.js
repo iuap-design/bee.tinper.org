@@ -9,11 +9,12 @@ module.exports = {
     'page': '页',
     'ok': '确认',
     'en-us': {
-        'total': 'total',
-        'items': 'items',
-        'show': 'page',
-        'goto': 'goto',
-        'ok': 'ok'
+        'total': 'Total ',
+        'items': ' items',
+        'show': 'Show ',
+        'goto': 'Go to page ',
+        'page': ' ',
+        'ok': 'OK'
     },
     'zh-tw': {
         'total': '共',

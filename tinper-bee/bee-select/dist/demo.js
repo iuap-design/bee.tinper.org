@@ -76,7 +76,7 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
 	
-	var Demo1 = __webpack_require__(242);var Demo2 = __webpack_require__(356);var Demo3 = __webpack_require__(357);var Demo4 = __webpack_require__(358);var Demo5 = __webpack_require__(359);var Demo6 = __webpack_require__(360);var Demo7 = __webpack_require__(361);var Demo8 = __webpack_require__(362);var Demo9 = __webpack_require__(363);var Demo10 = __webpack_require__(364);var Demo11 = __webpack_require__(365);var Demo12 = __webpack_require__(366);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 基本使用", "code": "/**\n * @title 基本使用\n * @description `disabled`参数设置是否禁用，`size`参数控制大小\n */\n\nimport React, { Component } from \"react\";\nimport { Select } from 'tinper-bee';\n\n\nconst Option = Select.Option;\n\nclass Demo1 extends Component {\n  handleChange = value => {\n    console.log(`selected ${value}`);\n  };  \n\n  render() {\n    return (\n      <div>\n        <Select\n          defaultValue=\"all\"\n          style={{ width: 200, marginRight: 6 }}\n          onChange={this.handleChange}\n          showSearch={true}\n          allowClear={true}\n        >\n          <Option value=\"all\">全部</Option>\n          <Option value=\"confirming\">待确认</Option>\n          <Option value=\"executing\">执行中</Option>\n          <Option value=\"completed\" disabled>\n            已办结\n          </Option>\n          <Option value=\"termination\">终止</Option>\n        </Select>\n      </div>\n    );\n  }\n}\n\nexport default Demo1;\n", "desc": " `disabled`参数设置是否禁用，`size`参数控制大小" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 常用多选", "code": "/**\n * @title 常用多选\n * @description Children自定义数据列表,注意：Children已经定义到全局，此处显示为注释例子，其他例子用到Children变量均以此方式定义。\n */\n\nimport React, { Component } from \"react\";\nimport { Select } from 'tinper-bee';\n\n\nconst Option = Select.Option;\nconst OptGroup = Select.OptGroup;\n\nconst Children = [];\nfor (let i = 10; i < 36; i++) {\n  Children.push(<Option key={i.toString(36) + i}>{i.toString(36) + i}</Option>);\n}\n\nclass Demo2 extends Component {\n  handleChange = value => {\n    console.log(`selected ${value}`);\n  };\n  render() {\n    return (\n      <Select\n        multiple\n        style={{ width: '97%' }}\n        searchPlaceholder=\"标签模式\"\n        onChange={this.handleChange}\n      >\n        {Children}\n      </Select>\n    );\n  }\n}\n\nexport default Demo2;\n", "desc": " Children自定义数据列表,注意：Children已经定义到全局，此处显示为注释例子，其他例子用到Children变量均以此方式定义。" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 自定义选项多选`Select`", "code": "/**\r\n * @title 自定义选项多选`Select`\r\n * @description 用户在框内输入自定义内容，Select将输入的内容自动纳入下拉选项中一员。\r\n */\r\n\r\nimport React, { Component } from \"react\";\nimport { Select } from 'tinper-bee';\r\n\r\n\r\nconst Option = Select.Option;\r\n\r\nconst Children = [];\r\nfor (let i = 10; i < 36; i++) {\r\n  Children.push(<Option key={i.toString(36) + i}>{i.toString(36) + i}</Option>);\r\n}\r\n\r\nclass Demo3 extends Component {\r\n  handleChange = value => {\r\n    console.log(`selected ${value}`);\r\n  };\r\n  scrollToEnd = () => {\r\n    console.log(\"软加载\");\r\n  };\r\n  render() {\r\n    return (\r\n      <Select\r\n        tags\r\n        style={{ width: \"97%\" }}\r\n        searchPlaceholder=\"标签模式\"\r\n        scrollToEnd={this.scrollToEnd}\r\n        onChange={this.handleChange}\r\n      >\r\n        {Children}\r\n      </Select>\r\n    );\r\n  }\r\n}\r\n\r\nexport default Demo3;\r\n", "desc": " 用户在框内输入自定义内容，Select将输入的内容自动纳入下拉选项中一员。" }, { "example": _react2['default'].createElement(Demo4, null), "title": " 简易级联单选`Select`", "code": "/**\r\n * @title 简易级联单选`Select`\r\n * @description 常用语城市级联的选择。\r\n */\r\n\r\nimport React, { Component } from \"react\";\nimport { Select } from 'tinper-bee';\r\n\r\n\r\nconst Option = Select.Option;\r\n\r\nconst provinceData = [\"Zhejiang\", \"Jiangsu\"];\r\nconst cityData = {\r\n  Zhejiang: [\"Hangzhou\", \"Ningbo\", \"Wenzhou\"],\r\n  Jiangsu: [\"Nanjing\", \"Suzhou\", \"Zhenjiang\"]\r\n};\r\n\r\nclass Demo4 extends Component {\r\n  constructor(props) {\r\n    super(props);\r\n    this.state = {\r\n      cities: cityData[provinceData[0]],\r\n      secondCity: cityData[provinceData[0]][0]\r\n    };\r\n  }\r\n  handleProvinceChange = value => {\r\n    this.setState({\r\n      cities: cityData[value],\r\n      secondCity: cityData[value][0]\r\n    });\r\n  };\r\n  onSecondCityChange = value => {\r\n    this.setState({\r\n      secondCity: value\r\n    });\r\n  };\r\n  render() {\r\n    const provinceOptions = provinceData.map(province => (\r\n      <Option key={province}>{province}</Option>\r\n    ));\r\n    const cityOptions = this.state.cities.map(city => (\r\n      <Option key={city}>{city}</Option>\r\n    ));\r\n    return (\r\n      <div>\r\n        <Select\r\n          defaultValue={provinceData[0]}\r\n          style={{ width: 90, marginRight: 6 }}\r\n          onChange={this.handleProvinceChange}\r\n        >\r\n          {provinceOptions}\r\n        </Select>\r\n        <Select\r\n          value={this.state.secondCity}\r\n          style={{ width: 90 }}\r\n          onChange={this.onSecondCityChange}\r\n        >\r\n          {cityOptions}\r\n        </Select>\r\n      </div>\r\n    );\r\n  }\r\n}\r\n\r\nexport default Demo4;\r\n", "desc": " 常用语城市级联的选择。" }, { "example": _react2['default'].createElement(Demo5, null), "title": " 自定义自动填充单选`Select`", "code": "/**\n * @title 自定义自动填充单选`Select`\n * @description 常用邮箱后缀自动填充。\n */\n\nimport React, { Component } from \"react\";\nimport { Select } from 'tinper-bee';\n\n\nconst Option = Select.Option;\n\nclass Demo5 extends Component {\n  constructor(props) {\n    super(props);\n    this.state = {\n      options: []\n    };\n  }\n  handleChange = value => {\n    let options;\n    if (!value || value.indexOf(\"@\") >= 0) {\n      options = [];\n    } else {\n      options = [\"gmail.com\", \"163.com\", \"qq.com\"].map(domain => {\n        const email = `${value}@${domain}`;\n        return <Option key={email}>{email}</Option>;\n      });\n    }\n    this.setState({ options });\n  };\n\n  render() {\n    return (\n      <Select\n        combobox\n        style={{ width: 200 }}\n        onChange={this.handleChange}\n        filterOption={false}\n        placeholder=\"Enter the account name\"\n      >\n        {this.state.options}\n      </Select>\n    );\n  }\n}\n\nexport default Demo5;\n", "desc": " 常用邮箱后缀自动填充。" }, { "example": _react2['default'].createElement(Demo6, null), "title": " 搜索单选`Select`", "code": "/**\n * @title 搜索单选`Select`\n * @description 从下拉选中，获取当前选中自定义对象item data\n */\nimport React, { Component } from \"react\";\nimport { Select } from 'tinper-bee';\n\n\nconst Option = Select.Option;\n\nconst dataList = [\n  {key:\"1\",value:\"Jack\",label:\"Jack\"},\n  {key:\"2\",value:\"lucy\",label:\"lucy\"},\n  {key:\"3\",value:\"tom\",label:\"tom\"}\n]\n\nclass Demo6 extends Component {\n\n  constructor(props) {\n    super(props);\n  }\n\n  /**\n   * 获取选中对象数据\n   */\n  onSelect = (value,{props:{item}}) => {\n    console.log(`selected ${value}`);\n    console.log(`selected item `,item);\n  };\n\n  render() {\n    return (\n      <Select\n        showSearch\n        style={{ width: 200 }}\n        placeholder=\"Select a person\"\n        optionFilterProp=\"children\"\n        onSelect={this.onSelect}\n        onChange={this.handleChange}\n      >\n        {\n          dataList.map(da=><Option key={da.key} value={da.value} item={da} >{da.label}</Option>)\n        }\n      </Select>\n    );\n  }\n}\n\nexport default Demo6;\n", "desc": " 从下拉选中，获取当前选中自定义对象item data" }, { "example": _react2['default'].createElement(Demo7, null), "title": " 设置data数组对象来自动生成option", "code": "/**\r\n * @title 设置data数组对象来自动生成option\r\n * @description 必须设置key，value。根据需要设置disabed\r\n */\r\n\r\nimport React, { Component } from \"react\";\nimport { Select } from 'tinper-bee';\r\n\r\n\r\nconst Option = Select.Option;\r\n\r\nlet selectDataSource = [\r\n  {\r\n    key: \"张三\",\r\n    value: \"zhangsan\"\r\n  },\r\n  {\r\n    key: \"李四\",\r\n    value: \"lisi\"\r\n  },\r\n  {\r\n    key: \"王五\",\r\n    value: \"wangwu\"\r\n  }\r\n];\r\n\r\nclass Demo7 extends Component {\r\n  constructor(props) {\r\n    super(props);\r\n    this.state = {\r\n      DataSource: [\r\n        {\r\n          key: \"其他数据\",\r\n          value: \"qita\"\r\n        }\r\n      ]\r\n    };\r\n  }\r\n  handleChange = value => {\r\n    if (value) {\r\n      this.setState({\r\n        DataSource: [\r\n          {\r\n            key: \"张三三\",\r\n            value: \"zhangsansan\",\r\n            disabled: true\r\n          },\r\n          {\r\n            key: \"李四四\",\r\n            value: \"lisisi\"\r\n          },\r\n          {\r\n            key: \"王五五\",\r\n            value: \"wangwuwu\"\r\n          }\r\n        ]\r\n      });\r\n    }\r\n  };\r\n\r\n  render() {\r\n    return (\r\n      <div>\r\n        <Select\r\n          style={{ width: 200 }}\r\n          placeholder=\"Select a person\"\r\n          onChange={this.handleChange}\r\n          data={selectDataSource}\r\n        />\r\n        <Select\r\n          style={{ width: 200, marginLeft: \"5px\" }}\r\n          placeholder=\"Select a person\"\r\n          data={this.state.DataSource}\r\n        />\r\n      </div>\r\n    );\r\n  }\r\n}\r\n\r\nexport default Demo7;\r\n", "desc": " 必须设置key，value。根据需要设置disabed" }, { "example": _react2['default'].createElement(Demo8, null), "title": " 默认设置下拉框获取焦点事件 `默认获取焦点autofocu", "code": "/**\r\n * @title 默认设置下拉框获取焦点事件 `默认获取焦点autofocus`\r\n * @description `autofocus`参数控制是否需要获取焦点。\r\n * 同时暴露两个api  onFocus、onBlur 返回当前选中的数据\r\n */\r\n\r\nimport React, { Component } from \"react\";\nimport { Select } from 'tinper-bee';\r\n\r\nimport ReactDOM from \"react-dom\";\r\nconst Option = Select.Option;\r\nconst OptGroup = Select.OptGroup;\r\n\r\nclass Demo8 extends Component {\r\n  handleChange = value => {\r\n    console.log(`selected ${value}`);\r\n  };  \r\n  handFocus = value => {\r\n    console.log(`获取焦点事件`);\r\n  };\r\n  onBlur = value => {\r\n    console.log(`onBlur`);\r\n  };\r\n\r\n  render() {\r\n    return (\r\n      <div>\r\n        <Select\r\n          defaultValue=\"all\"\r\n          style={{ width: 200, marginRight: 6 }}\r\n          onChange={this.handleChange}\r\n          onFocus={this.handFocus}\r\n          onBlur={this.onBlur}\r\n          autofocus\r\n        >\r\n          <Option value=\"all\">全部</Option>\r\n          <Option value=\"confirming\">待确认</Option>\r\n          <Option value=\"executing\">执行中</Option>\r\n          <Option value=\"completed\" disabled>\r\n            已办结\r\n          </Option>\r\n          <Option value=\"termination\">终止</Option>\r\n        </Select>\r\n        <Select\r\n          defaultValue=\"confirming\"\r\n          style={{ width: 200, marginRight: 6 }}\r\n          onChange={this.handleChange}\r\n        >\r\n          <Option value=\"all\">全部</Option>\r\n          <Option value=\"confirming\">待确认</Option>\r\n          <Option value=\"executing\">执行中</Option>\r\n          <Option value=\"completed\" disabled>\r\n            已办结\r\n          </Option>\r\n          <Option value=\"termination\">终止</Option>\r\n        </Select>\r\n        \r\n      </div>\r\n    );\r\n  }\r\n}\r\n\r\nexport default Demo8;\r\n", "desc": " `autofocus`参数控制是否需要获取焦点。" }, { "example": _react2['default'].createElement(Demo9, null), "title": " 动态渲染Option的多选", "code": "/**\r\n * @title 动态渲染Option的多选\r\n * @description Option标签与Children自定义数据列表组合的渲染方式\r\n */\r\n\r\nimport React, { Component } from \"react\";\nimport { Select } from 'tinper-bee';\r\n\r\n\r\nconst Option = Select.Option;\r\nconst OptGroup = Select.OptGroup;\r\n\r\nconst Children = ['a10','b11','c12','d13','e14','f15'];\r\n\r\nclass Demo9 extends Component {\r\n  handleChange = value => {\r\n    console.log(`selected ${value}`);\r\n  };\r\n  render() {\r\n    return (\r\n      <Select\r\n        multiple\r\n        style={{ width: \"97%\" }}\r\n        searchPlaceholder=\"标签模式\"\r\n        onChange={this.handleChange}\r\n      >\r\n        <Option key='first'>first</Option>\r\n        {Children.map((value) => {\r\n          return <Option key={value}>{value}</Option>\r\n        })}\r\n      </Select>\r\n    );\r\n  }\r\n}\r\n\r\nexport default Demo9;\r\n", "desc": " Option标签与Children自定义数据列表组合的渲染方式" }, { "example": _react2['default'].createElement(Demo10, null), "title": " 受控的`Select`", "code": "/**\n * @title 受控的`Select`\n * @description `open`参数控制下拉框展开收起\n */\n\nimport React, { Component } from \"react\";\nimport { Button, Select } from 'tinper-bee';\n\nimport ReactDOM from \"react-dom\";\nconst Option = Select.Option;\nconst OptGroup = Select.OptGroup;\n\nclass Demo10 extends Component {\n    constructor(props) {\n\t\tsuper(props);\n\t\tthis.state = {\n      open: true\n\t\t}\n\t}\n\tchangeOpen=()=> {\n    this.setState({open:!this.state.open});\n\t}\n\n  render() {\n    return (\n      <div>\n        <Button onClick={this.changeOpen.bind(this)} style={{marginRight:20 + 'px'}}>change select</Button>\n        <Select\n          defaultValue=\"all\"\n          style={{ width: 200, marginRight: 6 }}\n          onChange={this.changeOpen}\n          open={this.state.open}\n        >\n          <Option value=\"all\">全部</Option>\n          <Option value=\"confirming\">待确认</Option>\n          <Option value=\"executing\">执行中</Option>\n          <Option value=\"completed\" disabled>\n            已办结\n          </Option>\n          <Option value=\"termination\">终止</Option>\n        </Select>\n      </div>\n    );\n  }\n}\n\nexport default Demo10;\n", "desc": " `open`参数控制下拉框展开收起" }, { "example": _react2['default'].createElement(Demo11, null), "title": " 输入搜索查询时支持自定义输入", "code": "/**\n * @title 输入搜索查询时支持自定义输入\n * @description 设置showSearch supportWrite属性\n */\nimport React, { Component } from \"react\";\nimport { Select } from 'tinper-bee';\n\n\nconst Option = Select.Option;\n\nconst dataList = [\n  {key:\"1\",value:\"Jack\",label:\"Jack\"},\n  {key:\"2\",value:\"lucy\",label:\"lucy\"},\n  {key:\"3\",value:\"tom\",label:\"tom\"}\n]\n\nclass Demo11 extends Component {\n\n  constructor(props) {\n    super(props);\n  }\n\n  /**\n   * 获取选中对象数据\n   */\n  onSelect = (value,{props:{item}}) => {\n    console.log(`selected ${value}`);\n    console.log(`selected item `,item);\n  };\n  handleChange = (value) => {\n    console.log(`handleChange ${value}`);\n  };\n\n  render() {\n    return (\n      <Select\n        showSearch supportWrite\n        style={{ width: 200 }}\n        placeholder=\"Select a person\"\n        optionFilterProp=\"children\"\n        onSelect={this.onSelect}\n        onChange={this.handleChange}\n      >\n        {\n          dataList.map(da=><Option key={da.key} value={da.value} item={da} >{da.label}</Option>)\n        }\n      </Select>\n    );\n  }\n}\n\nexport default Demo11;\n", "desc": " 设置showSearch supportWrite属性" }, { "example": _react2['default'].createElement(Demo12, null), "title": " 获取选项的 name 和 value", "code": "/**\r\n * @title 获取选项的 name 和 value\r\n * @description 获取 Option 标签的值及展示的\r\n */\r\n\r\nimport React, { Component } from \"react\";\nimport { Select } from 'tinper-bee';\r\n\r\nconst Option = Select.Option;\r\n\r\nclass Demo12 extends Component {\r\n  handleChange = (value, _props) => {\r\n    console.log(`value: ${value}`);\r\n    console.log(`name: ${_props.props.children}`)\r\n  };  \r\n\r\n  render() {\r\n    return (\r\n      <div>\r\n        <Select\r\n          defaultValue=\"all\"\r\n          style={{ width: 200, marginRight: 6 }}\r\n          onChange={this.handleChange}\r\n          showSearch={true}\r\n          allowClear={true}\r\n        >\r\n          <Option value=\"all\">全部</Option>\r\n          <Option value=\"confirming\">待确认</Option>\r\n          <Option value=\"executing\">执行中</Option>\r\n          <Option value=\"completed\">已办结</Option>\r\n          <Option value=\"termination\">终止</Option>\r\n        </Select>\r\n      </div>\r\n    );\r\n  }\r\n}\r\n\r\nexport default Demo12;\r\n", "desc": " 获取 Option 标签的值及展示的" }];
+	var Demo1 = __webpack_require__(242);var Demo2 = __webpack_require__(356);var Demo3 = __webpack_require__(357);var Demo4 = __webpack_require__(358);var Demo5 = __webpack_require__(359);var Demo6 = __webpack_require__(360);var Demo7 = __webpack_require__(361);var Demo8 = __webpack_require__(362);var Demo9 = __webpack_require__(363);var Demo10 = __webpack_require__(364);var Demo11 = __webpack_require__(365);var Demo12 = __webpack_require__(366);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 基本使用", "code": "/**\n * @title 基本使用\n * @description `disabled`参数设置是否禁用，`size`参数控制大小\n */\n\nimport React, { Component } from \"react\";\nimport { Select } from 'tinper-bee';\n\n\nconst Option = Select.Option;\n\nclass Demo1 extends Component {\n  handleChange = value => {\n    console.log(`selected ${value}`);\n  };  \n\n  render() {\n    return (\n      <div>\n        <Select\n          defaultValue=\"all\"\n          style={{ width: 200, marginRight: 6 }}\n          onChange={this.handleChange}\n          showSearch={true}\n          allowClear={true}\n        >\n          <Option value=\"all\">全部</Option>\n          <Option value=\"confirming\">待确认</Option>\n          <Option value=\"executing\">执行中</Option>\n          <Option value=\"completed\" disabled>\n            已办结\n          </Option>\n          <Option value=\"termination\">终止</Option>\n        </Select>\n      </div>\n    );\n  }\n}\n\nexport default Demo1;\n", "desc": " `disabled`参数设置是否禁用，`size`参数控制大小" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 常用多选", "code": "/**\n * @title 常用多选\n * @description Children自定义数据列表,注意：Children已经定义到全局，此处显示为注释例子，其他例子用到Children变量均以此方式定义。\n */\n\nimport React, { Component } from \"react\";\nimport { Select } from 'tinper-bee';\n\n\nconst Option = Select.Option;\nconst OptGroup = Select.OptGroup;\n\nconst Children = [];\nfor (let i = 10; i < 36; i++) {\n  Children.push(<Option key={i.toString(36) + i}>{i.toString(36) + i}</Option>);\n}\n\nclass Demo2 extends Component {\n  handleChange = value => {\n    console.log(`selected ${value}`);\n  };\n  render() {\n    return (\n      <Select\n        multiple\n        style={{ width: '97%' }}\n        searchPlaceholder=\"标签模式\"\n        onChange={this.handleChange}\n      >\n        {Children}\n      </Select>\n    );\n  }\n}\n\nexport default Demo2;\n", "desc": " Children自定义数据列表,注意：Children已经定义到全局，此处显示为注释例子，其他例子用到Children变量均以此方式定义。" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 自定义选项多选`Select`", "code": "/**\n * @title 自定义选项多选`Select`\n * @description 用户在框内输入自定义内容，Select将输入的内容自动纳入下拉选项中一员。\n */\n\nimport React, { Component } from \"react\";\nimport { Select } from 'tinper-bee';\n\n\nconst Option = Select.Option;\n\nconst Children = [];\nfor (let i = 10; i < 36; i++) {\n  Children.push(<Option key={i.toString(36) + i}>{i.toString(36) + i}</Option>);\n}\n\nclass Demo3 extends Component {\n  handleChange = value => {\n    console.log(`selected ${value}`);\n  };\n  scrollToEnd = () => {\n    console.log(\"软加载\");\n  };\n  render() {\n    return (\n      <Select\n        tags\n        style={{ width: \"97%\" }}\n        searchPlaceholder=\"标签模式\"\n        scrollToEnd={this.scrollToEnd}\n        onChange={this.handleChange}\n      >\n        {Children}\n      </Select>\n    );\n  }\n}\n\nexport default Demo3;\n", "desc": " 用户在框内输入自定义内容，Select将输入的内容自动纳入下拉选项中一员。" }, { "example": _react2['default'].createElement(Demo4, null), "title": " 简易级联单选`Select`", "code": "/**\n * @title 简易级联单选`Select`\n * @description 常用语城市级联的选择。\n */\n\nimport React, { Component } from \"react\";\nimport { Select } from 'tinper-bee';\n\n\nconst Option = Select.Option;\n\nconst provinceData = [\"Zhejiang\", \"Jiangsu\"];\nconst cityData = {\n  Zhejiang: [\"Hangzhou\", \"Ningbo\", \"Wenzhou\"],\n  Jiangsu: [\"Nanjing\", \"Suzhou\", \"Zhenjiang\"]\n};\n\nclass Demo4 extends Component {\n  constructor(props) {\n    super(props);\n    this.state = {\n      cities: cityData[provinceData[0]],\n      secondCity: cityData[provinceData[0]][0]\n    };\n  }\n  handleProvinceChange = value => {\n    this.setState({\n      cities: cityData[value],\n      secondCity: cityData[value][0]\n    });\n  };\n  onSecondCityChange = value => {\n    this.setState({\n      secondCity: value\n    });\n  };\n  render() {\n    const provinceOptions = provinceData.map(province => (\n      <Option key={province}>{province}</Option>\n    ));\n    const cityOptions = this.state.cities.map(city => (\n      <Option key={city}>{city}</Option>\n    ));\n    return (\n      <div>\n        <Select\n          defaultValue={provinceData[0]}\n          style={{ width: 90, marginRight: 6 }}\n          onChange={this.handleProvinceChange}\n        >\n          {provinceOptions}\n        </Select>\n        <Select\n          value={this.state.secondCity}\n          style={{ width: 90 }}\n          onChange={this.onSecondCityChange}\n        >\n          {cityOptions}\n        </Select>\n      </div>\n    );\n  }\n}\n\nexport default Demo4;\n", "desc": " 常用语城市级联的选择。" }, { "example": _react2['default'].createElement(Demo5, null), "title": " 自定义自动填充单选`Select`", "code": "/**\n * @title 自定义自动填充单选`Select`\n * @description 常用邮箱后缀自动填充。\n */\n\nimport React, { Component } from \"react\";\nimport { Select } from 'tinper-bee';\n\n\nconst Option = Select.Option;\n\nclass Demo5 extends Component {\n  constructor(props) {\n    super(props);\n    this.state = {\n      options: []\n    };\n  }\n  handleChange = value => {\n    let options;\n    if (!value || value.indexOf(\"@\") >= 0) {\n      options = [];\n    } else {\n      options = [\"gmail.com\", \"163.com\", \"qq.com\"].map(domain => {\n        const email = `${value}@${domain}`;\n        return <Option key={email}>{email}</Option>;\n      });\n    }\n    this.setState({ options });\n  };\n\n  render() {\n    return (\n      <Select\n        combobox\n        style={{ width: 200 }}\n        onChange={this.handleChange}\n        filterOption={false}\n        placeholder=\"Enter the account name\"\n      >\n        {this.state.options}\n      </Select>\n    );\n  }\n}\n\nexport default Demo5;\n", "desc": " 常用邮箱后缀自动填充。" }, { "example": _react2['default'].createElement(Demo6, null), "title": " 搜索单选`Select`", "code": "/**\n * @title 搜索单选`Select`\n * @description 从下拉选中，获取当前选中自定义对象item data\n */\nimport React, { Component } from \"react\";\nimport { Select } from 'tinper-bee';\n\n\nconst Option = Select.Option;\n\nconst dataList = [\n  {key:\"1\",value:\"Jack\",label:\"Jack\"},\n  {key:\"2\",value:\"lucy\",label:\"lucy\"},\n  {key:\"3\",value:\"tom\",label:\"tom\"}\n]\n\nclass Demo6 extends Component {\n\n  constructor(props) {\n    super(props);\n  }\n\n  /**\n   * 获取选中对象数据\n   */\n  onSelect = (value,{props:{item}}) => {\n    console.log(`selected ${value}`);\n    console.log(`selected item `,item);\n  };\n\n  render() {\n    return (\n      <Select\n        showSearch\n        style={{ width: 200 }}\n        placeholder=\"Select a person\"\n        optionFilterProp=\"children\"\n        onSelect={this.onSelect}\n        onChange={this.handleChange}\n      >\n        {\n          dataList.map(da=><Option key={da.key} value={da.value} item={da} >{da.label}</Option>)\n        }\n      </Select>\n    );\n  }\n}\n\nexport default Demo6;\n", "desc": " 从下拉选中，获取当前选中自定义对象item data" }, { "example": _react2['default'].createElement(Demo7, null), "title": " 设置data数组对象来自动生成option", "code": "/**\n * @title 设置data数组对象来自动生成option\n * @description 必须设置key，value。根据需要设置disabed\n */\n\nimport React, { Component } from \"react\";\nimport { Select } from 'tinper-bee';\n\n\nconst Option = Select.Option;\n\nlet selectDataSource = [\n  {\n    key: \"张三\",\n    value: \"zhangsan\"\n  },\n  {\n    key: \"李四\",\n    value: \"lisi\"\n  },\n  {\n    key: \"王五\",\n    value: \"wangwu\"\n  }\n];\n\nclass Demo7 extends Component {\n  constructor(props) {\n    super(props);\n    this.state = {\n      DataSource: [\n        {\n          key: \"其他数据\",\n          value: \"qita\"\n        }\n      ]\n    };\n  }\n  handleChange = value => {\n    if (value) {\n      this.setState({\n        DataSource: [\n          {\n            key: \"张三三\",\n            value: \"zhangsansan\",\n            disabled: true\n          },\n          {\n            key: \"李四四\",\n            value: \"lisisi\"\n          },\n          {\n            key: \"王五五\",\n            value: \"wangwuwu\"\n          }\n        ]\n      });\n    }\n  };\n\n  render() {\n    return (\n      <div>\n        <Select\n          style={{ width: 200 }}\n          placeholder=\"Select a person\"\n          onChange={this.handleChange}\n          data={selectDataSource}\n        />\n        <Select\n          style={{ width: 200, marginLeft: \"5px\" }}\n          placeholder=\"Select a person\"\n          data={this.state.DataSource}\n        />\n      </div>\n    );\n  }\n}\n\nexport default Demo7;\n", "desc": " 必须设置key，value。根据需要设置disabed" }, { "example": _react2['default'].createElement(Demo8, null), "title": " 默认设置下拉框获取焦点事件 `默认获取焦点autofocu", "code": "/**\n * @title 默认设置下拉框获取焦点事件 `默认获取焦点autofocus`\n * @description `autofocus`参数控制是否需要获取焦点。\n * 同时暴露两个api  onFocus、onBlur 返回当前选中的数据\n */\n\nimport React, { Component } from \"react\";\nimport { Select } from 'tinper-bee';\n\nimport ReactDOM from \"react-dom\";\nconst Option = Select.Option;\nconst OptGroup = Select.OptGroup;\n\nclass Demo8 extends Component {\n  handleChange = value => {\n    console.log(`selected ${value}`);\n  };  \n  handFocus = value => {\n    console.log(`获取焦点事件`);\n  };\n  onBlur = value => {\n    console.log(`onBlur`);\n  };\n\n  render() {\n    return (\n      <div>\n        <Select\n          defaultValue=\"all\"\n          style={{ width: 200, marginRight: 6 }}\n          onChange={this.handleChange}\n          onFocus={this.handFocus}\n          onBlur={this.onBlur}\n          autofocus\n        >\n          <Option value=\"all\">全部</Option>\n          <Option value=\"confirming\">待确认</Option>\n          <Option value=\"executing\">执行中</Option>\n          <Option value=\"completed\" disabled>\n            已办结\n          </Option>\n          <Option value=\"termination\">终止</Option>\n        </Select>\n        <Select\n          defaultValue=\"confirming\"\n          style={{ width: 200, marginRight: 6 }}\n          onChange={this.handleChange}\n        >\n          <Option value=\"all\">全部</Option>\n          <Option value=\"confirming\">待确认</Option>\n          <Option value=\"executing\">执行中</Option>\n          <Option value=\"completed\" disabled>\n            已办结\n          </Option>\n          <Option value=\"termination\">终止</Option>\n        </Select>\n        \n      </div>\n    );\n  }\n}\n\nexport default Demo8;\n", "desc": " `autofocus`参数控制是否需要获取焦点。" }, { "example": _react2['default'].createElement(Demo9, null), "title": " 动态渲染Option的多选", "code": "/**\n * @title 动态渲染Option的多选\n * @description Option标签与Children自定义数据列表组合的渲染方式\n */\n\nimport React, { Component } from \"react\";\nimport { Select } from 'tinper-bee';\n\n\nconst Option = Select.Option;\nconst OptGroup = Select.OptGroup;\n\nconst Children = ['a10','b11','c12','d13','e14','f15'];\n\nclass Demo9 extends Component {\n  handleChange = value => {\n    console.log(`selected ${value}`);\n  };\n  render() {\n    return (\n      <Select\n        multiple\n        style={{ width: \"97%\" }}\n        searchPlaceholder=\"标签模式\"\n        onChange={this.handleChange}\n      >\n        <Option key='first'>first</Option>\n        {Children.map((value) => {\n          return <Option key={value}>{value}</Option>\n        })}\n      </Select>\n    );\n  }\n}\n\nexport default Demo9;\n", "desc": " Option标签与Children自定义数据列表组合的渲染方式" }, { "example": _react2['default'].createElement(Demo10, null), "title": " 受控的`Select`", "code": "/**\n * @title 受控的`Select`\n * @description `open`参数控制下拉框展开收起\n */\n\nimport React, { Component } from \"react\";\nimport { Button, Select } from 'tinper-bee';\n\nimport ReactDOM from \"react-dom\";\nconst Option = Select.Option;\nconst OptGroup = Select.OptGroup;\n\nclass Demo10 extends Component {\n    constructor(props) {\n\t\tsuper(props);\n\t\tthis.state = {\n      open: true\n\t\t}\n\t}\n\tchangeOpen=()=> {\n    this.setState({open:!this.state.open});\n\t}\n\n  render() {\n    return (\n      <div>\n        <Button onClick={this.changeOpen.bind(this)} style={{marginRight:20 + 'px'}}>change select</Button>\n        <Select\n          defaultValue=\"all\"\n          style={{ width: 200, marginRight: 6 }}\n          onChange={this.changeOpen}\n          open={this.state.open}\n        >\n          <Option value=\"all\">全部</Option>\n          <Option value=\"confirming\">待确认</Option>\n          <Option value=\"executing\">执行中</Option>\n          <Option value=\"completed\" disabled>\n            已办结\n          </Option>\n          <Option value=\"termination\">终止</Option>\n        </Select>\n      </div>\n    );\n  }\n}\n\nexport default Demo10;\n", "desc": " `open`参数控制下拉框展开收起" }, { "example": _react2['default'].createElement(Demo11, null), "title": " 输入搜索查询时支持自定义输入", "code": "/**\n * @title 输入搜索查询时支持自定义输入\n * @description 设置showSearch supportWrite属性\n */\nimport React, { Component } from \"react\";\nimport { Select } from 'tinper-bee';\n\n\nconst Option = Select.Option;\n\nconst dataList = [\n  {key:\"1\",value:\"Jack\",label:\"Jack\"},\n  {key:\"2\",value:\"lucy\",label:\"lucy\"},\n  {key:\"3\",value:\"tom\",label:\"tom\"}\n]\n\nclass Demo11 extends Component {\n\n  constructor(props) {\n    super(props);\n  }\n\n  /**\n   * 获取选中对象数据\n   */\n  onSelect = (value,{props:{item}}) => {\n    console.log(`selected ${value}`);\n    console.log(`selected item `,item);\n  };\n  handleChange = (value) => {\n    console.log(`handleChange ${value}`);\n  };\n\n  render() {\n    return (\n      <Select\n        showSearch supportWrite\n        style={{ width: 200 }}\n        placeholder=\"Select a person\"\n        optionFilterProp=\"children\"\n        onSelect={this.onSelect}\n        onChange={this.handleChange}\n      >\n        {\n          dataList.map(da=><Option key={da.key} value={da.value} item={da} >{da.label}</Option>)\n        }\n      </Select>\n    );\n  }\n}\n\nexport default Demo11;\n", "desc": " 设置showSearch supportWrite属性" }, { "example": _react2['default'].createElement(Demo12, null), "title": " 获取选项的 name 和 value", "code": "/**\r\n * @title 获取选项的 name 和 value\r\n * @description 获取 Option 标签的值及展示的\r\n */\r\n\r\nimport React, { Component } from \"react\";\nimport { Select } from 'tinper-bee';\r\n\r\nconst Option = Select.Option;\r\n\r\nclass Demo12 extends Component {\r\n  handleChange = (value, _props) => {\r\n    console.log(`value: ${value}`);\r\n    console.log(`name: ${_props.props.children}`)\r\n  };  \r\n\r\n  render() {\r\n    return (\r\n      <div>\r\n        <Select\r\n          defaultValue=\"all\"\r\n          style={{ width: 200, marginRight: 6 }}\r\n          onChange={this.handleChange}\r\n          showSearch={true}\r\n          allowClear={true}\r\n        >\r\n          <Option value=\"all\">全部</Option>\r\n          <Option value=\"confirming\">待确认</Option>\r\n          <Option value=\"executing\">执行中</Option>\r\n          <Option value=\"completed\">已办结</Option>\r\n          <Option value=\"termination\">终止</Option>\r\n        </Select>\r\n      </div>\r\n    );\r\n  }\r\n}\r\n\r\nexport default Demo12;\r\n", "desc": " 获取 Option 标签的值及展示的" }];
 	
 	var Demo = function (_Component) {
 	    _inherits(Demo, _Component);
@@ -5303,7 +5303,7 @@
 	    return element.nodeName.toLowerCase() === 'html' ? null : getParent(element);
 	  }
 	
-	  for (parent = getParent(element); parent && parent !== body; parent = getParent(parent)) {
+	  for (parent = getParent(element); parent && parent !== body && parent.nodeType !== 9; parent = getParent(parent)) {
 	    positionStyle = utils.css(parent, 'position');
 	
 	    if (positionStyle !== 'static') {
@@ -14262,7 +14262,7 @@
 	  onExited: _propTypes2["default"].func,
 	
 	  containerClassName: _propTypes2["default"].string
-	}, _defineProperty(_extends2, 'containerClassName', _propTypes2["default"].string), _defineProperty(_extends2, 'container', _Modal2["default"].propTypes.container), _defineProperty(_extends2, 'size', _propTypes2["default"].oneOf(["sm", "lg", "xlg", ""])), _defineProperty(_extends2, 'width', _propTypes2["default"].oneOfType([_propTypes2["default"].number, _propTypes2["default"].string])), _defineProperty(_extends2, 'draggable', _propTypes2["default"].bool), _defineProperty(_extends2, 'resizable', _propTypes2["default"].bool), _defineProperty(_extends2, 'resizeClassName', _propTypes2["default"].string), _defineProperty(_extends2, 'onResizeStart', _propTypes2["default"].func), _defineProperty(_extends2, 'onResize', _propTypes2["default"].func), _defineProperty(_extends2, 'onResizeStop', _propTypes2["default"].func), _defineProperty(_extends2, 'minWidth', _propTypes2["default"].oneOfType([_propTypes2["default"].number, _propTypes2["default"].string])), _defineProperty(_extends2, 'minHeight', _propTypes2["default"].oneOfType([_propTypes2["default"].number, _propTypes2["default"].string])), _defineProperty(_extends2, 'maxWidth', _propTypes2["default"].oneOfType([_propTypes2["default"].number, _propTypes2["default"].string])), _defineProperty(_extends2, 'maxHeight', _propTypes2["default"].oneOfType([_propTypes2["default"].number, _propTypes2["default"].string])), _defineProperty(_extends2, 'bounds', _propTypes2["default"].oneOfType([_propTypes2["default"].string, _propTypes2["default"].Object])), _defineProperty(_extends2, 'className', _propTypes2["default"].string), _defineProperty(_extends2, 'centered', _propTypes2["default"].bool), _extends2));
+	}, _defineProperty(_extends2, 'containerClassName', _propTypes2["default"].string), _defineProperty(_extends2, 'container', _Modal2["default"].propTypes.container), _defineProperty(_extends2, 'size', _propTypes2["default"].oneOf(["sm", "lg", "xlg", ""])), _defineProperty(_extends2, 'width', _propTypes2["default"].oneOfType([_propTypes2["default"].number, _propTypes2["default"].string])), _defineProperty(_extends2, 'draggable', _propTypes2["default"].bool), _defineProperty(_extends2, 'resizable', _propTypes2["default"].bool), _defineProperty(_extends2, 'resizeClassName', _propTypes2["default"].string), _defineProperty(_extends2, 'onResizeStart', _propTypes2["default"].func), _defineProperty(_extends2, 'onResize', _propTypes2["default"].func), _defineProperty(_extends2, 'onResizeStop', _propTypes2["default"].func), _defineProperty(_extends2, 'minWidth', _propTypes2["default"].oneOfType([_propTypes2["default"].number, _propTypes2["default"].string])), _defineProperty(_extends2, 'minHeight', _propTypes2["default"].oneOfType([_propTypes2["default"].number, _propTypes2["default"].string])), _defineProperty(_extends2, 'maxWidth', _propTypes2["default"].oneOfType([_propTypes2["default"].number, _propTypes2["default"].string])), _defineProperty(_extends2, 'maxHeight', _propTypes2["default"].oneOfType([_propTypes2["default"].number, _propTypes2["default"].string])), _defineProperty(_extends2, 'bounds', _propTypes2["default"].oneOfType([_propTypes2["default"].string, _propTypes2["default"].object])), _defineProperty(_extends2, 'className', _propTypes2["default"].string), _defineProperty(_extends2, 'centered', _propTypes2["default"].bool), _extends2));
 	
 	var defaultProps = _extends({}, _Modal2["default"].defaultProps, {
 	  backdropClosable: true,
@@ -23225,21 +23225,19 @@
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 	
+	Object.defineProperty(exports, "__esModule", { value: true });
 	var isProduction = process.env.NODE_ENV === 'production';
 	var prefix = 'Invariant failed';
 	function invariant(condition, message) {
-	  if (condition) {
-	    return;
-	  }
-	
-	  if (isProduction) {
-	    throw new Error(prefix);
-	  } else {
+	    if (condition) {
+	        return;
+	    }
+	    if (isProduction) {
+	        throw new Error(prefix);
+	    }
 	    throw new Error(prefix + ": " + (message || ''));
-	  }
 	}
-	
-	module.exports = invariant;
+	exports.default = invariant;
 	
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(33)))
 
@@ -23477,7 +23475,7 @@
 	  var calledOnce = false;
 	
 	  var isNewArgEqualToLast = function isNewArgEqualToLast(newArg, index) {
-	    return isEqual(newArg, lastArgs[index]);
+	    return isEqual(newArg, lastArgs[index], index);
 	  };
 	
 	  var result = function result() {
@@ -23660,7 +23658,7 @@
 	    }
 	
 	    if (isDispatching) {
-	      throw new Error('You may not call store.subscribe() while the reducer is executing. ' + 'If you would like to be notified after the store has been updated, subscribe from a ' + 'component and invoke store.getState() in the callback to access the latest state. ' + 'See https://redux.js.org/api-reference/store#subscribe(listener) for more details.');
+	      throw new Error('You may not call store.subscribe() while the reducer is executing. ' + 'If you would like to be notified after the store has been updated, subscribe from a ' + 'component and invoke store.getState() in the callback to access the latest state. ' + 'See https://redux.js.org/api-reference/store#subscribelistener for more details.');
 	    }
 	
 	    var isSubscribed = true;
@@ -23672,13 +23670,14 @@
 	      }
 	
 	      if (isDispatching) {
-	        throw new Error('You may not unsubscribe from a store listener while the reducer is executing. ' + 'See https://redux.js.org/api-reference/store#subscribe(listener) for more details.');
+	        throw new Error('You may not unsubscribe from a store listener while the reducer is executing. ' + 'See https://redux.js.org/api-reference/store#subscribelistener for more details.');
 	      }
 	
 	      isSubscribed = false;
 	      ensureCanMutateNextListeners();
 	      var index = nextListeners.indexOf(listener);
 	      nextListeners.splice(index, 1);
+	      currentListeners = null;
 	    };
 	  }
 	  /**
@@ -23980,6 +23979,7 @@
 	      hasChanged = hasChanged || nextStateForKey !== previousStateForKey;
 	    }
 	
+	    hasChanged = hasChanged || finalReducerKeys.length !== Object.keys(state).length;
 	    return hasChanged ? nextState : state;
 	  };
 	}
@@ -24420,16 +24420,16 @@
 /* 178 */
 /***/ (function(module, exports) {
 
-	function _typeof2(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof2 = function _typeof2(obj) { return typeof obj; }; } else { _typeof2 = function _typeof2(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof2(obj); }
-	
 	function _typeof(obj) {
-	  if (typeof Symbol === "function" && _typeof2(Symbol.iterator) === "symbol") {
+	  "@babel/helpers - typeof";
+	
+	  if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
 	    module.exports = _typeof = function _typeof(obj) {
-	      return _typeof2(obj);
+	      return typeof obj;
 	    };
 	  } else {
 	    module.exports = _typeof = function _typeof(obj) {
-	      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : _typeof2(obj);
+	      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
 	    };
 	  }
 	
@@ -34001,7 +34001,9 @@
 	      var node = _ref2.node,
 	          deltaX = _ref2.deltaX,
 	          deltaY = _ref2.deltaY;
-	      // Axis restrictions
+	      deltaX /= _this2.props.transformScale;
+	      deltaY /= _this2.props.transformScale; // Axis restrictions
+	
 	      var canDragX = (_this2.props.axis === 'both' || _this2.props.axis === 'x') && ['n', 's'].indexOf(axis) === -1;
 	      var canDragY = (_this2.props.axis === 'both' || _this2.props.axis === 'y') && ['e', 'w'].indexOf(axis) === -1; // reverse delta if using top or left drag handles
 	
@@ -34092,7 +34094,8 @@
 	        onResizeStop = _this$props.onResizeStop,
 	        onResizeStart = _this$props.onResizeStart,
 	        resizeHandles = _this$props.resizeHandles,
-	        p = _objectWithoutPropertiesLoose(_this$props, ["children", "draggableOpts", "width", "height", "handleSize", "lockAspectRatio", "axis", "minConstraints", "maxConstraints", "onResize", "onResizeStop", "onResizeStart", "resizeHandles"]);
+	        transformScale = _this$props.transformScale,
+	        p = _objectWithoutPropertiesLoose(_this$props, ["children", "draggableOpts", "width", "height", "handleSize", "lockAspectRatio", "axis", "minConstraints", "maxConstraints", "onResize", "onResizeStop", "onResizeStart", "resizeHandles", "transformScale"]);
 	
 	    var className = p.className ? p.className + " react-resizable" : 'react-resizable'; // What we're doing here is getting the child of this element, and cloning it with this element's props.
 	    // We are then defining its children as:
@@ -34144,6 +34147,7 @@
 	  // 'se' - Southeast handle (bottom-right)
 	  // 'ne' - Northeast handle (top-center)
 	  resizeHandles: _propTypes.default.arrayOf(_propTypes.default.oneOf(['s', 'w', 'e', 'n', 'sw', 'nw', 'se', 'ne'])),
+	  transformScale: _propTypes.default.number,
 	  // If true, will only allow width/height to move in lockstep
 	  lockAspectRatio: _propTypes.default.bool,
 	  // Restricts resizing to a particular axis (default: 'both')
@@ -34169,7 +34173,8 @@
 	  axis: 'both',
 	  minConstraints: [20, 20],
 	  maxConstraints: [Infinity, Infinity],
-	  resizeHandles: ['se']
+	  resizeHandles: ['se'],
+	  transformScale: 1
 	});
 
 /***/ }),
@@ -34282,6 +34287,8 @@
 	        propsHeight: props.height
 	      };
 	    }
+	
+	    return null;
 	  };
 	
 	  var _proto = ResizableBox.prototype;
@@ -35637,7 +35644,15 @@
 	  /**
 	   * 关闭时的钩子函数
 	   */
-	  onHide: _propTypes2["default"].func
+	  onHide: _propTypes2["default"].func,
+	  /**
+	   * 自定义关闭按钮的钩子函数
+	   */
+	  renderCloseButton: _propTypes2["default"].func,
+	  /**
+	   * 自定义关闭按钮的 props
+	   */
+	  closeButtonProps: _propTypes2["default"].object
 	};
 	
 	var defaultProps = {
@@ -35669,32 +35684,35 @@
 	        className = _props.className,
 	        clsPrefix = _props.clsPrefix,
 	        children = _props.children,
-	        props = _objectWithoutProperties(_props, ['aria-label', 'closeButton', 'onHide', 'className', 'clsPrefix', 'children']);
+	        renderCloseButton = _props.renderCloseButton,
+	        closeButtonProps = _props.closeButtonProps,
+	        props = _objectWithoutProperties(_props, ['aria-label', 'closeButton', 'onHide', 'className', 'clsPrefix', 'children', 'renderCloseButton', 'closeButtonProps']);
 	
 	    var modal = this.context.$u_modal;
-	
 	    var classes = {};
 	    classes['' + clsPrefix] = true;
 	    classes['dnd-handle'] = true;
+	
+	    var closeBtnDom = _react2["default"].createElement(
+	      'button',
+	      _extends({}, closeButtonProps, {
+	        type: 'button',
+	        className: 'u-close dnd-cancel',
+	        'aria-label': label,
+	        onClick: (0, _tinperBeeCore.createChainedFunction)(modal.onHide, onHide)
+	      }),
+	      renderCloseButton ? renderCloseButton() : _react2["default"].createElement(
+	        'span',
+	        { 'aria-hidden': 'true' },
+	        _react2["default"].createElement('i', { className: 'uf uf-close' })
+	      )
+	    );
 	    return _react2["default"].createElement(
 	      'div',
 	      _extends({}, props, {
 	        className: (0, _classnames2["default"])(className, classes)
 	      }),
-	      closeButton && _react2["default"].createElement(
-	        'button',
-	        {
-	          type: 'button',
-	          className: 'u-close dnd-cancel',
-	          'aria-label': label,
-	          onClick: (0, _tinperBeeCore.createChainedFunction)(modal.onHide, onHide)
-	        },
-	        _react2["default"].createElement(
-	          'span',
-	          { 'aria-hidden': 'true' },
-	          _react2["default"].createElement('i', { className: 'uf uf-close' })
-	        )
-	      ),
+	      closeButton && closeBtnDom,
 	      children
 	    );
 	  };
@@ -36300,8 +36318,10 @@
 	    }
 	
 	    FormControl.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProp) {
-	        if (nextProp.value !== this.state.value) {
-	            this.setState({ value: nextProp.value });
+	        if ("value" in nextProp) {
+	            if (nextProp.value !== this.state.value) {
+	                this.setState({ value: nextProp.value });
+	            }
 	        }
 	    };
 	
@@ -38456,13 +38476,13 @@
 	
 	function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 	
-	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; if (obj != null) { var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 	
 	function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 	
 	function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 	
-	function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+	function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 	
 	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 	
@@ -39130,7 +39150,7 @@
 	
 	function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 	
-	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; if (obj != null) { var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 	
 	function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 	
@@ -39154,7 +39174,7 @@
 	
 	function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 	
-	function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+	function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 	
 	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 	
@@ -39573,7 +39593,6 @@
 	   * NUMLOCK on FF/Safari Mac
 	   */
 	  NUM_CENTER: 12,
-	  // NUMLOCK on FF/Safari Mac
 	
 	  /**
 	   * ENTER
@@ -39619,49 +39638,41 @@
 	   * PAGE_UP
 	   */
 	  PAGE_UP: 33,
-	  // also NUM_NORTH_EAST
 	
 	  /**
 	   * PAGE_DOWN
 	   */
 	  PAGE_DOWN: 34,
-	  // also NUM_SOUTH_EAST
 	
 	  /**
 	   * END
 	   */
 	  END: 35,
-	  // also NUM_SOUTH_WEST
 	
 	  /**
 	   * HOME
 	   */
 	  HOME: 36,
-	  // also NUM_NORTH_WEST
 	
 	  /**
 	   * LEFT
 	   */
 	  LEFT: 37,
-	  // also NUM_WEST
 	
 	  /**
 	   * UP
 	   */
 	  UP: 38,
-	  // also NUM_NORTH
 	
 	  /**
 	   * RIGHT
 	   */
 	  RIGHT: 39,
-	  // also NUM_EAST
 	
 	  /**
 	   * DOWN
 	   */
 	  DOWN: 40,
-	  // also NUM_SOUTH
 	
 	  /**
 	   * PRINT_SCREEN
@@ -39672,13 +39683,11 @@
 	   * INSERT
 	   */
 	  INSERT: 45,
-	  // also NUM_INSERT
 	
 	  /**
 	   * DELETE
 	   */
 	  DELETE: 46,
-	  // also NUM_DELETE
 	
 	  /**
 	   * ZERO
@@ -39734,7 +39743,6 @@
 	   * QUESTION_MARK
 	   */
 	  QUESTION_MARK: 63,
-	  // needs localization
 	
 	  /**
 	   * A
@@ -39870,7 +39878,6 @@
 	   * META
 	   */
 	  META: 91,
-	  // WIN_KEY_LEFT
 	
 	  /**
 	   * WIN_KEY_RIGHT
@@ -40026,67 +40033,56 @@
 	   * SEMICOLON
 	   */
 	  SEMICOLON: 186,
-	  // needs localization
 	
 	  /**
 	   * DASH
 	   */
 	  DASH: 189,
-	  // needs localization
 	
 	  /**
 	   * EQUALS
 	   */
 	  EQUALS: 187,
-	  // needs localization
 	
 	  /**
 	   * COMMA
 	   */
 	  COMMA: 188,
-	  // needs localization
 	
 	  /**
 	   * PERIOD
 	   */
 	  PERIOD: 190,
-	  // needs localization
 	
 	  /**
 	   * SLASH
 	   */
 	  SLASH: 191,
-	  // needs localization
 	
 	  /**
 	   * APOSTROPHE
 	   */
 	  APOSTROPHE: 192,
-	  // needs localization
 	
 	  /**
 	   * SINGLE_QUOTE
 	   */
 	  SINGLE_QUOTE: 222,
-	  // needs localization
 	
 	  /**
 	   * OPEN_SQUARE_BRACKET
 	   */
 	  OPEN_SQUARE_BRACKET: 219,
-	  // needs localization
 	
 	  /**
 	   * BACKSLASH
 	   */
 	  BACKSLASH: 220,
-	  // needs localization
 	
 	  /**
 	   * CLOSE_SQUARE_BRACKET
 	   */
 	  CLOSE_SQUARE_BRACKET: 221,
-	  // needs localization
 	
 	  /**
 	   * WIN_KEY
@@ -40097,105 +40093,103 @@
 	   * MAC_FF_META
 	   */
 	  MAC_FF_META: 224,
-	  // Firefox (Gecko) fires this for the meta key instead of 91
 	
 	  /**
 	   * WIN_IME
 	   */
-	  WIN_IME: 229
-	};
-	/*
-	 whether text and modified key is entered at the same time.
-	 */
+	  WIN_IME: 229,
+	  // ======================== Function ========================
 	
-	KeyCode.isTextModifyingKeyEvent = function isTextModifyingKeyEvent(e) {
-	  var keyCode = e.keyCode;
+	  /**
+	   * whether text and modified key is entered at the same time.
+	   */
+	  isTextModifyingKeyEvent: function isTextModifyingKeyEvent(e) {
+	    var keyCode = e.keyCode;
 	
-	  if (e.altKey && !e.ctrlKey || e.metaKey || // Function keys don't generate text
-	  keyCode >= KeyCode.F1 && keyCode <= KeyCode.F12) {
-	    return false;
-	  } // The following keys are quite harmless, even in combination with
-	  // CTRL, ALT or SHIFT.
-	
-	
-	  switch (keyCode) {
-	    case KeyCode.ALT:
-	    case KeyCode.CAPS_LOCK:
-	    case KeyCode.CONTEXT_MENU:
-	    case KeyCode.CTRL:
-	    case KeyCode.DOWN:
-	    case KeyCode.END:
-	    case KeyCode.ESC:
-	    case KeyCode.HOME:
-	    case KeyCode.INSERT:
-	    case KeyCode.LEFT:
-	    case KeyCode.MAC_FF_META:
-	    case KeyCode.META:
-	    case KeyCode.NUMLOCK:
-	    case KeyCode.NUM_CENTER:
-	    case KeyCode.PAGE_DOWN:
-	    case KeyCode.PAGE_UP:
-	    case KeyCode.PAUSE:
-	    case KeyCode.PRINT_SCREEN:
-	    case KeyCode.RIGHT:
-	    case KeyCode.SHIFT:
-	    case KeyCode.UP:
-	    case KeyCode.WIN_KEY:
-	    case KeyCode.WIN_KEY_RIGHT:
+	    if (e.altKey && !e.ctrlKey || e.metaKey || // Function keys don't generate text
+	    keyCode >= KeyCode.F1 && keyCode <= KeyCode.F12) {
 	      return false;
+	    } // The following keys are quite harmless, even in combination with
+	    // CTRL, ALT or SHIFT.
 	
-	    default:
+	
+	    switch (keyCode) {
+	      case KeyCode.ALT:
+	      case KeyCode.CAPS_LOCK:
+	      case KeyCode.CONTEXT_MENU:
+	      case KeyCode.CTRL:
+	      case KeyCode.DOWN:
+	      case KeyCode.END:
+	      case KeyCode.ESC:
+	      case KeyCode.HOME:
+	      case KeyCode.INSERT:
+	      case KeyCode.LEFT:
+	      case KeyCode.MAC_FF_META:
+	      case KeyCode.META:
+	      case KeyCode.NUMLOCK:
+	      case KeyCode.NUM_CENTER:
+	      case KeyCode.PAGE_DOWN:
+	      case KeyCode.PAGE_UP:
+	      case KeyCode.PAUSE:
+	      case KeyCode.PRINT_SCREEN:
+	      case KeyCode.RIGHT:
+	      case KeyCode.SHIFT:
+	      case KeyCode.UP:
+	      case KeyCode.WIN_KEY:
+	      case KeyCode.WIN_KEY_RIGHT:
+	        return false;
+	
+	      default:
+	        return true;
+	    }
+	  },
+	
+	  /**
+	   * whether character is entered.
+	   */
+	  isCharacterKey: function isCharacterKey(keyCode) {
+	    if (keyCode >= KeyCode.ZERO && keyCode <= KeyCode.NINE) {
 	      return true;
+	    }
+	
+	    if (keyCode >= KeyCode.NUM_ZERO && keyCode <= KeyCode.NUM_MULTIPLY) {
+	      return true;
+	    }
+	
+	    if (keyCode >= KeyCode.A && keyCode <= KeyCode.Z) {
+	      return true;
+	    } // Safari sends zero key code for non-latin characters.
+	
+	
+	    if (window.navigator.userAgent.indexOf('WebKit') !== -1 && keyCode === 0) {
+	      return true;
+	    }
+	
+	    switch (keyCode) {
+	      case KeyCode.SPACE:
+	      case KeyCode.QUESTION_MARK:
+	      case KeyCode.NUM_PLUS:
+	      case KeyCode.NUM_MINUS:
+	      case KeyCode.NUM_PERIOD:
+	      case KeyCode.NUM_DIVISION:
+	      case KeyCode.SEMICOLON:
+	      case KeyCode.DASH:
+	      case KeyCode.EQUALS:
+	      case KeyCode.COMMA:
+	      case KeyCode.PERIOD:
+	      case KeyCode.SLASH:
+	      case KeyCode.APOSTROPHE:
+	      case KeyCode.SINGLE_QUOTE:
+	      case KeyCode.OPEN_SQUARE_BRACKET:
+	      case KeyCode.BACKSLASH:
+	      case KeyCode.CLOSE_SQUARE_BRACKET:
+	        return true;
+	
+	      default:
+	        return false;
+	    }
 	  }
 	};
-	/*
-	 whether character is entered.
-	 */
-	
-	
-	KeyCode.isCharacterKey = function isCharacterKey(keyCode) {
-	  if (keyCode >= KeyCode.ZERO && keyCode <= KeyCode.NINE) {
-	    return true;
-	  }
-	
-	  if (keyCode >= KeyCode.NUM_ZERO && keyCode <= KeyCode.NUM_MULTIPLY) {
-	    return true;
-	  }
-	
-	  if (keyCode >= KeyCode.A && keyCode <= KeyCode.Z) {
-	    return true;
-	  } // Safari sends zero key code for non-latin characters.
-	
-	
-	  if (window.navigation.userAgent.indexOf('WebKit') !== -1 && keyCode === 0) {
-	    return true;
-	  }
-	
-	  switch (keyCode) {
-	    case KeyCode.SPACE:
-	    case KeyCode.QUESTION_MARK:
-	    case KeyCode.NUM_PLUS:
-	    case KeyCode.NUM_MINUS:
-	    case KeyCode.NUM_PERIOD:
-	    case KeyCode.NUM_DIVISION:
-	    case KeyCode.SEMICOLON:
-	    case KeyCode.DASH:
-	    case KeyCode.EQUALS:
-	    case KeyCode.COMMA:
-	    case KeyCode.PERIOD:
-	    case KeyCode.SLASH:
-	    case KeyCode.APOSTROPHE:
-	    case KeyCode.SINGLE_QUOTE:
-	    case KeyCode.OPEN_SQUARE_BRACKET:
-	    case KeyCode.BACKSLASH:
-	    case KeyCode.CLOSE_SQUARE_BRACKET:
-	      return true;
-	
-	    default:
-	      return false;
-	  }
-	};
-	
 	var _default = KeyCode;
 	exports.default = _default;
 
@@ -40258,7 +40252,7 @@
 	
 	function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 	
-	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; if (obj != null) { var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 	
 	function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 	
@@ -40360,7 +40354,7 @@
 	
 	function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 	
-	function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+	function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 	
 	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 	
@@ -40495,7 +40489,7 @@
 	
 	function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 	
-	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; if (obj != null) { var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 	
 	function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 	
@@ -40509,7 +40503,7 @@
 	
 	function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 	
-	function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+	function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 	
 	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 	
@@ -40776,7 +40770,7 @@
 	      }
 	
 	      if (this.mutationObserver) {
-	        this.resizeObserver.disconnect();
+	        this.mutationObserver.disconnect();
 	      }
 	    }
 	  }, {
@@ -41842,7 +41836,7 @@
 	
 	function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 	
-	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; if (obj != null) { var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 	
 	function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 	
@@ -41864,7 +41858,7 @@
 	
 	function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 	
-	function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+	function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 	
 	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 	
@@ -47164,13 +47158,13 @@
 	
 	function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 	
-	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; if (obj != null) { var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 	
 	function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 	
 	function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 	
-	function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+	function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 	
 	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 	
@@ -48032,7 +48026,7 @@
 	
 	function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 	
-	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; if (obj != null) { var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 	
 	function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 	
@@ -48122,6 +48116,8 @@
 
 	"use strict";
 	
+	function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
@@ -48131,7 +48127,7 @@
 	
 	function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 	
-	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; if (obj != null) { var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 	
 	var Divider = function Divider(_ref) {
 	  var className = _ref.className,

@@ -228,7 +228,17 @@ var Tabs = (0, _createReactClass2["default"])({
 
     var cls = (0, _classnames3["default"])((_classnames = {}, _defineProperty(_classnames, clsPrefix, true), _defineProperty(_classnames, clsPrefix + "-" + tabBarPosition, true), _defineProperty(_classnames, className, !!className), _defineProperty(_classnames, clsPrefix + "-" + tabBarStyle, true), _classnames));
 
-    this.tabBar = renderTabBar();
+    var renderProps = _extends({}, this.props, {
+      children: null,
+      inkBarAnimated: inkBarAnimated,
+      extraContent: extraContent,
+      className: cls
+    });
+    if (renderTabBar) {
+      this.tabBar = renderTabBar(renderProps, _ScrollableInkTabBar2["default"]);
+    } else {
+      this.tabBar = _react2["default"].createElement(_ScrollableInkTabBar2["default"], renderProps);
+    }
 
     // only card type tabs can be added and closed
     var childrenWithClose = [],

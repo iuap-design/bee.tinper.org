@@ -3,8 +3,8 @@ module.exports = {
     'msgMax':'值不能大于最大值',
     'msgMin':'值不能小于最小值',
     'en-us': {
-        'msgMax':'value cannot be greater than the maximum',
-        'msgMin':'value cannot be less than minimum'
+        'msgMax':'Cannot be greater than the Max value',
+        'msgMin':'Cannot be less than the Min value'
     },
     'zh-tw': {
         'msgMax':'值不能大於最大值',

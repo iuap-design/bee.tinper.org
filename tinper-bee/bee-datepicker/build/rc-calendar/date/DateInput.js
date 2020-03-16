@@ -183,7 +183,7 @@ var _initialiseProps = function _initialiseProps() {
     }
 
     // 不合法直接退出
-    var parsed = (0, _moment2["default"])(str, format, true);
+    var parsed = (0, _moment2["default"])(str, format) || (0, _moment2["default"])(str);
     if (!parsed.isValid()) {
       _this2.setState({
         // invalid: true,
@@ -234,7 +234,7 @@ var _initialiseProps = function _initialiseProps() {
     }
 
     // 不合法直接退出
-    var parsed = (0, _moment2["default"])(str, format, true);
+    var parsed = (0, _moment2["default"])(str, format) || (0, _moment2["default"])(str);
     if (!parsed.isValid()) {
       _this2.setState({
         invalid: true
@@ -276,7 +276,7 @@ var _initialiseProps = function _initialiseProps() {
         isRange = _props3.isRange;
 
     var str = e.target.value;
-    var parsed = (0, _moment2["default"])(str, format, true);
+    var parsed = (0, _moment2["default"])(str, format) || (0, _moment2["default"])(str);
     if (e.keyCode === _tinperBeeCore.KeyCode.ENTER) {
       if (parsed.isValid() && onSelect) {
         isRange ? onSelect(parsed.clone()) : onSelect(value.clone()); //FIX https://github.com/iuap-design/tinper-bee/issues/183

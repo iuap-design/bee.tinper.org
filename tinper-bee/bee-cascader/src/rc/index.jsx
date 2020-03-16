@@ -423,7 +423,7 @@ class Rcascader extends Component {
               <i className="uf uf-close-c"></i>
             </InputGroup.Button>
             ):<InputGroup.Button shape="border"
-              onClick={(e)=>{props.keyboardInput?this.iconClick(e):''}}>
+              onClick={(e)=>{this.props.keyboardInput?this.iconClick(e):''}}>
               <i className={`uf ${iconClass}`}></i>
             </InputGroup.Button>
           }

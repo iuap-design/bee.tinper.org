@@ -22,6 +22,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 
 function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -70,9 +72,26 @@ var Radio = function (_React$Component) {
 
     var _this = _possibleConstructorReturn(this, _React$Component.call(this, props, context));
 
+    _this.handleFocus = function (e) {
+      if (e.target && e.target.type == 'radio') {
+        _this.setState({
+          focused: true
+        });
+      }
+    };
+
+    _this.handleBlur = function (e) {
+      if (e.target && e.target.type == 'radio') {
+        _this.setState({
+          focused: false
+        });
+      }
+    };
+
     var initChecked = typeof props.checked !== 'undefined' ? props.checked : props.defaultChecked;
     _this.state = {
-      checked: initChecked
+      checked: initChecked,
+      focused: false
     };
     _this.handleClick = _this.handleClick.bind(_this);
 
@@ -94,6 +113,8 @@ var Radio = function (_React$Component) {
   };
 
   Radio.prototype.render = function render() {
+    var _classes;
+
     var state = this.state,
         props = this.props,
         context = this.context;
@@ -135,10 +156,7 @@ var Radio = function (_React$Component) {
       optional.checked = this.props.value === selectedValue;
     }
 
-    var classes = {
-      'is-checked': typeof optional.checked !== 'undefined' ? optional.checked : checked,
-      disabled: disabled
-    };
+    var classes = (_classes = {}, _defineProperty(_classes, clsPrefix + '-focused', this.state.focused), _defineProperty(_classes, 'is-checked', typeof optional.checked !== 'undefined' ? optional.checked : checked), _defineProperty(_classes, 'disabled', disabled), _classes);
 
     if (colors) {
       classes[clsPrefix + '-' + colors] = true;
@@ -161,7 +179,9 @@ var Radio = function (_React$Component) {
       type: 'radio',
       name: name,
       disabled: this.props.disabled,
-      tabIndex: tabIndex
+      tabIndex: tabIndex,
+      onFocus: this.handleFocus,
+      onBlur: this.handleBlur
     }));
     return _react2["default"].createElement(
       'label',

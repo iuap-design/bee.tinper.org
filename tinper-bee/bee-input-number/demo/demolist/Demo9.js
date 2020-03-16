@@ -31,6 +31,7 @@ class Demo9 extends Component {
             <div className='demo9'>
                 <InputNumberGroup 
                 iconStyle='two'
+                value={this.state.value}
                 onChange={this.handleChange} 
                 placeholder={['请输入最小值','请输入最大值']}/>
             </div>

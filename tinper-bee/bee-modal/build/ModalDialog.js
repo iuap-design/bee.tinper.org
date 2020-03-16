@@ -217,6 +217,8 @@ var ModalDialog = function (_React$Component) {
           children
         );
       }
+      var _minWidth = _this.handleWH(minWidth);
+      var _minHeight = _this.handleWH(minHeight);
       return _react2["default"].createElement(
         _reResizable2["default"],
         {
@@ -229,14 +231,14 @@ var ModalDialog = function (_React$Component) {
           onResizeStart: _this.onResizeStart,
           onResize: _this.onResize,
           onResizeStop: _this.onResizeStop,
-          minWidth: _this.handleWH(minWidth),
-          minHeight: _this.handleWH(minHeight),
+          minWidth: _minWidth,
+          minHeight: _minHeight,
           maxWidth: _this.handleWH(maxWidth),
           maxHeight: _this.handleWH(maxHeight)
         },
         _react2["default"].createElement(
           'div',
-          { style: _extends({}, contentStyle, { height: "100%" }), className: (0, _classnames2["default"])([clsPrefix + '-content']), role: 'document', ref: function ref(_ref2) {
+          { style: _extends({}, contentStyle, { minHeight: _minHeight, height: "100%" }), className: (0, _classnames2["default"])([clsPrefix + '-content']), role: 'document', ref: function ref(_ref2) {
               return _this.resize = _ref2;
             } },
           children

@@ -1,3 +1,13 @@
+<a name="2.0.10"></a>
+## [2.0.10](https://github.com/tinper-bee/checkbox/compare/v2.0.8...v2.0.10) (2020-03-06)
+
+
+### Features
+
+* 增加focus标识 ([ce41076](https://github.com/tinper-bee/checkbox/commit/ce41076))
+
+
+
 <a name="2.0.8"></a>
 ## [2.0.8](https://github.com/tinper-bee/checkbox/compare/v2.0.7...v2.0.8) (2019-10-10)
 

@@ -63,10 +63,21 @@ _Modal2["default"].warning = function (props) {
 _Modal2["default"].confirm = function (props) {
     var config = _extends({
         type: 'confirm',
-        okCancel: true
+        okCancel: true,
+        confirmType: 'one'
     }, props);
     return (0, _confirm2["default"])(config);
 };
+
+// onOk: ()=>{
+//     console.log('onOk')
+// },
+// onCancel:()=>{
+//     console.log('onCancel')
+// },
+// title:'提示信息',
+// keyword:'删除',
+// content:"确定要删除吗?",
 
 _Modal2["default"].destroyAll = function () {
     while (_Modal.destroyFns.length) {
@@ -76,5 +87,6 @@ _Modal2["default"].destroyAll = function () {
         }
     }
 };
+
 exports["default"] = _Modal2["default"];
 module.exports = exports['default'];

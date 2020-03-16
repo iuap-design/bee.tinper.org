@@ -67,7 +67,7 @@ class DateInput extends React.Component {
     }
 
     // 不合法直接退出
-    const parsed = moment(str, format, true);
+    const parsed = moment(str,format)||moment(str);
     if (!parsed.isValid()) {
       this.setState({
         // invalid: true,
@@ -121,7 +121,7 @@ class DateInput extends React.Component {
     }
 
     // 不合法直接退出
-    const parsed = moment(str, format, true);
+    const parsed = moment(str,format)||moment(str);
     if (!parsed.isValid()) {
       this.setState({
         invalid: true
@@ -163,7 +163,7 @@ class DateInput extends React.Component {
   onKeyDown = (e) => {
     const { onSelect, value,onKeyDown,format, isRange } = this.props;
     const str = e.target.value;
-    const parsed = moment(str, format, true);
+    const parsed = moment(str,format)||moment(str);
     if (e.keyCode === KeyCode.ENTER){
       if(parsed.isValid()&& onSelect){
         isRange?onSelect(parsed.clone()):onSelect(value.clone());//FIX https://github.com/iuap-design/tinper-bee/issues/183

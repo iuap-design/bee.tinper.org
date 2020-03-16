@@ -50,7 +50,14 @@ const defaultProps = {
     clsPrefix: 'u-tooltip'
 };
 function OverlayNode(props){
-    let { id, className, classNames, style, overlay, otherProps } = props;
+    let { id, className, classNames, style, overlay, overlayStyle, otherProps } = props;
+    // style 包含用户传入的自定义样式，以及 bee-overlay 计算返回的样式。
+    // overlayStyle 是用户传入的自定义样式。
+    if(overlayStyle && overlayStyle.width) {
+        style.width = overlayStyle.width;
+    } else {
+        delete style.width;
+    }
     return (
         <div
             id={id}
@@ -153,7 +160,7 @@ class Tooltip extends React.Component {
             ...others
         } = this.props;
 
-
+        
         let classes = {
             [placement]: true,
             'inverse': inverse
@@ -174,6 +181,7 @@ class Tooltip extends React.Component {
             onMouseEnter={this.onMouseEnter}
             onMouseLeave={this.onMouseLeave}
             style={style}
+            overlayStyle={style} // 用户自定义样式
             arrowOffsetTop={arrowOffsetTop}
             arrowOffsetLeft={arrowOffsetLeft}
             otherProps={others}

@@ -41,7 +41,8 @@ class Radio extends React.Component {
     super(props, context);
     let initChecked = typeof props.checked !== 'undefined' ? props.checked : props.defaultChecked;
     this.state = {
-      checked: initChecked
+      checked: initChecked,
+      focused: false
     }
     this.handleClick = this.handleClick.bind(this);
     
@@ -58,6 +59,22 @@ class Radio extends React.Component {
       this.setState({
         checked: true
       })
+    }
+  }
+
+  handleFocus = (e) => {
+    if(e.target && e.target.type == 'radio'){
+      this.setState({
+        focused: true
+      });
+    }
+  }
+
+  handleBlur = (e) => {
+    if(e.target && e.target.type == 'radio'){
+      this.setState({
+        focused: false
+      });
     }
   }
  
@@ -97,6 +114,7 @@ class Radio extends React.Component {
       }
 
       let classes = {
+        [`${clsPrefix}-focused`]: this.state.focused,
         'is-checked': typeof optional.checked !== 'undefined' ? optional.checked : checked,
         disabled
       };
@@ -125,6 +143,8 @@ class Radio extends React.Component {
           name={name}
           disabled={this.props.disabled}
           tabIndex={tabIndex}
+          onFocus={this.handleFocus}
+          onBlur={this.handleBlur}
           />
       );
        return (

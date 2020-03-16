@@ -17334,8 +17334,16 @@
 	        classNames = props.classNames,
 	        style = props.style,
 	        overlay = props.overlay,
+	        overlayStyle = props.overlayStyle,
 	        otherProps = props.otherProps;
+	    // style 包含用户传入的自定义样式，以及 bee-overlay 计算返回的样式。
+	    // overlayStyle 是用户传入的自定义样式。
 	
+	    if (overlayStyle && overlayStyle.width) {
+	        style.width = overlayStyle.width;
+	    } else {
+	        delete style.width;
+	    }
 	    return _react2['default'].createElement(
 	        'div',
 	        _extends({
@@ -17464,7 +17472,8 @@
 	            onMouseEnter: this.onMouseEnter,
 	            onMouseLeave: this.onMouseLeave,
 	            style: style,
-	            arrowOffsetTop: arrowOffsetTop,
+	            overlayStyle: style // 用户自定义样式
+	            , arrowOffsetTop: arrowOffsetTop,
 	            arrowOffsetLeft: arrowOffsetLeft,
 	            otherProps: others
 	        });

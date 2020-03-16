@@ -36,7 +36,8 @@
     cursor: pointer;
     border: none;
     background-color: transparent;
-    position: absolute; }
+    position: absolute;
+    opacity: 0; }
   .u-tabs .u-tabs-tab-prev-icon,
   .u-tabs .u-tabs-tab-next-icon {
     position: relative;
@@ -57,6 +58,11 @@
   .u-tabs .u-tabs-tab-btn-disabled {
     cursor: default;
     color: #ccc; }
+  .u-tabs-top .u-tabs-tab-arrow-show,
+  .u-tabs-left .u-tabs-tab-arrow-show,
+  .u-tabs-bottom .u-tabs-tab-arrow-show,
+  .u-tabs-right .u-tabs-tab-arrow-show {
+    opacity: 1; }
   .u-tabs .u-tabs-nav-wrap {
     overflow: hidden; }
   .u-tabs .u-tabs-nav {

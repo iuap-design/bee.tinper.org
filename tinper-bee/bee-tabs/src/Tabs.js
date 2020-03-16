@@ -200,7 +200,18 @@ const Tabs = createClass({
       [`${clsPrefix}-${tabBarStyle}`]: true
     });
 
-    this.tabBar = renderTabBar();
+    const renderProps = {
+      ...this.props,
+      children: null,
+      inkBarAnimated,
+      extraContent: extraContent,
+      className: cls,
+    };
+    if (renderTabBar) {
+      this.tabBar = renderTabBar(renderProps, ScrollableInkTabBar);
+    } else {
+      this.tabBar = <ScrollableInkTabBar {...renderProps} />;
+    }
 
     // only card type tabs can be added and closed
     let childrenWithClose = [],

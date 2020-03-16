@@ -25,6 +25,7 @@ $tooltip-arrow-width: 5px;
     word-wrap: normal;
     font-size: 12px;
     opacity: 0;
+    max-width: $tooltip-max-width;
     &.in{
     	opacity: 1 !important;
     }
@@ -38,7 +39,6 @@ $tooltip-arrow-width: 5px;
     }
     // Wrapper for the tooltip content
     .tooltip-inner{
-    	max-width: $tooltip-max-width;
 	    padding: 3px 8px;
 	    color: #fff;
 	    background-color: #42526E;

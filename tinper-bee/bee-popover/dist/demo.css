@@ -21,18 +21,18 @@
   word-spacing: normal;
   word-wrap: normal;
   font-size: 12px;
-  opacity: 0; }
+  opacity: 0;
+  max-width: 200px; }
   .u-tooltip.in {
     opacity: 1 !important; }
-  .u-tooltip-arrow {
+  .u-tooltip .tooltip-arrow {
     position: absolute;
     display: block;
     width: 0;
     height: 0;
     border-color: transparent;
     border-style: solid; }
-  .u-tooltip-inner {
-    max-width: 200px;
+  .u-tooltip .tooltip-inner {
     padding: 3px 8px;
     color: #fff;
     background-color: #42526E;
@@ -198,8 +198,11 @@
     border: 5px solid transparent;
     content: " "; }
 
-.u-popover.u-popover-tooltip.u-tooltip .tooltip-inner {
-  padding: 8px; }
+.u-popover.u-popover-tooltip {
+  max-width: initial; }
+  .u-popover.u-popover-tooltip.u-tooltip .tooltip-inner {
+    padding: 8px;
+    max-width: initial; }
 
 .u-popover {
   background-color: transparent;

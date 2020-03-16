@@ -21,6 +21,7 @@ const propTypes = {
     toNumber:PropTypes.bool, //回调函数内的值是否转换为数值类型
     displayCheckPrompt:PropTypes.bool, //是否显示超出限制范围之后的检验提示
     minusRight:PropTypes.bool,//负号是否在右边
+    handleBtnClick:PropTypes.func,//加减按钮点击回调
 };
 
 const defaultProps = {
@@ -32,7 +33,8 @@ const defaultProps = {
     delay: 300,
     toNumber:false,
     displayCheckPrompt:false,
-    locale:{}
+    locale:{},
+    handleBtnClick:()=>{}
 };
 
 
@@ -73,11 +75,6 @@ function toThousands(number) {
     return result;
 }
 
-function unThousands(number){
-    number = (number || 0).toString();
-    return number.replace(/\,/g,'');
-}
-
 
 function setCaretPosition(ctrl,pos,need) {
     
@@ -107,9 +104,8 @@ class InputNumber extends Component {
         // 初始化状态，加减按钮是否可用，根据当前值判断
 
         let data = this.judgeValue(props);
-
         this.state = {
-            value: data.value,
+            value:data.value,
             minusDisabled: data.minusDisabled,
             plusDisabled: data.plusDisabled,
             showValue:toThousands(data.value)
@@ -119,6 +115,14 @@ class InputNumber extends Component {
         this.focus = false;
         this.selectionStart = 0;
     }
+
+    // unThousands = (number) =>{
+    //     if(!number || number === "")return number;
+    //     number = number.toString();
+    //     return number.replace(new RegExp(this.props.formatSymbol,'g'),'');
+    //     // return number.replace(/\,/g,'');
+    // }
+
     /**
      * 校验value
      * @param {*} props 
@@ -148,9 +152,10 @@ class InputNumber extends Component {
             }else{
                 currentValue = Number(value) ||0;
             }
-        } else if (min&&(value!='')) {
-            currentValue = min;
-        } else if(value==='0'||value===0){
+        } //lse if (min&&(value!='')) {//mdd中提出bug
+            //currentValue = min;
+        //} 
+        else if(value==='0'||value===0){
             currentValue = 0;
         }else{//NaN
             if(oldValue||(oldValue===0)||(oldValue==='0')){
@@ -190,7 +195,8 @@ class InputNumber extends Component {
         }
 
         if(props.hasOwnProperty('precision')){
-            currentValue = Number(currentValue).toFixed(precision);
+            // currentValue = Number(currentValue).toFixed(precision);
+            currentValue = this.getPrecision(currentValue);
         }
         if(props.minusRight){
             currentValue = currentValue.toString();
@@ -239,10 +245,29 @@ class InputNumber extends Component {
         this.clear();
     }
 
+    /**
+     *  @memberof InputNumber
+     * type 是否要四舍五入(此参数无效,超长不让输入)
+     */
+    numToFixed = (value,fixed,type) => {
+        value = String(value);
+        if(!value && value !== "0")return value;
+        if(!fixed && String(fixed) !== "0")return value;
+        let preIndex = value.indexOf(".");
+        if(value.indexOf(".") === -1)return value;
+        preIndex++;
+        let endIndex = (preIndex+fixed);
+        let precValue = value.substr(preIndex,endIndex)+"0000000000";
+        if(type){
+            return Number(value).toFixed(fixed);
+        }
+        return value.split(".")[0] +"."+ precValue.substr(0,fixed);
+    }
+
     handleChange = (value) => {
         let selectionStart = this.input.selectionStart==undefined?this.input.input.selectionStart:this.input.selectionStart;
         this.selectionStart = selectionStart;
-        const { onChange,toNumber,minusRight } = this.props;
+        const { onChange,toNumber,minusRight} = this.props;
         if(value===''){
             onChange && onChange(value);
             this.setState({
@@ -251,11 +276,16 @@ class InputNumber extends Component {
             })
             return;
         }
-        value = unThousands(value);
+        // value = this.unThousands(value);
         if(minusRight){
             if(value.match(/-/g)&&value.match(/-/g).length>1)return
-        }else{
-            if(isNaN(value)&&(value!=='.')&&(value!=='-'))return;
+        }
+        if(isNaN(value)&&(value!=='.')&&(value!=='-'))return;
+        if(value.indexOf(".") !== -1){//小数最大值处理
+            let prec = String(value.split(".")[1]).replace("-","");
+            if(this.props.precision === 0 && (prec ==="" || prec !=""))return;
+            if(this.props.precision && prec.length > this.props.precision)return;
+            if(prec.length > 8)return;
         }
         this.setState({
             value,
@@ -293,16 +323,16 @@ class InputNumber extends Component {
 
     handleFocus = (value,e) => {
         this.focus = true;
-        let { onFocus, min, max } = this.props;
-        onFocus && onFocus(unThousands(this.state.showValue), e);
+        let {onFocus, min, max } = this.props;
+        onFocus && onFocus(this.getPrecision(this.state.value), e);
     }
 
     handleBlur = (v,e) => {
         this.focus = false;        
-        const { onBlur,precision,onChange,toNumber,max,min,displayCheckPrompt,minusRight } = this.props;
+        const {onBlur,precision,onChange,toNumber,max,min,displayCheckPrompt,minusRight,round } = this.props;
         const local = getComponentLocale(this.props, this.context, 'InputNumber', () => i18n);
         v = this.state.value;//在onBlur的时候不需要活输入框的只，而是要获取state中的值，因为有format的时候就会有问题。
-        if(v===''){
+        if(v==='' || !v){
             this.setState({
                 value:v
             })
@@ -310,14 +340,14 @@ class InputNumber extends Component {
             onBlur && onBlur(v,e);
             return;
         }
-        let value = unThousands(v);
+        // let value = this.unThousands(v); 
+        let value = this.numToFixed(v,precision,round);
         if(minusRight){
             if(value.indexOf('-')!=-1){//所有位置的负号转到前边
                 value = value.replace('-','');
                 value = '-'+value;
             }
         }
-        
         value = isNaN(Number(value)) ? 0 : Number(value);
         if(value>max){
             if(displayCheckPrompt)prompt(local['msgMax']);
@@ -328,7 +358,8 @@ class InputNumber extends Component {
             value = min;
         }
         if(this.props.hasOwnProperty('precision')){
-            value = value.toFixed(precision);
+            // value = value.toFixed(precision);
+            value = this.getPrecision(value);
         }
         value = value.toString();
         if(minusRight&&(value.indexOf('-')!=-1)){//负号转到后边
@@ -341,8 +372,8 @@ class InputNumber extends Component {
         });
         this.detailDisable(value);
         if(toNumber&&(!minusRight)){
-            onChange && onChange(Number(value));
-            onBlur && onBlur(Number(value),e);
+            onChange && onChange(value);
+            onBlur && onBlur(value,e);
         }else{
             onChange && onChange(value);
             onBlur && onBlur(value,e);
@@ -402,6 +433,7 @@ class InputNumber extends Component {
             showValue:toThousands(value)
         });
         toNumber?onChange && onChange(Number(value)):onChange && onChange(value);
+        this.handleBtnClick('down',value);
         this.detailDisable(value);
     }
     /**
@@ -430,6 +462,7 @@ class InputNumber extends Component {
             showValue:toThousands(value)
         });
         toNumber?onChange && onChange(Number(value)):onChange && onChange(value);
+        this.handleBtnClick('up',value);
         this.detailDisable(value);
     }
 
@@ -464,12 +497,16 @@ class InputNumber extends Component {
      * @returns {*}
      */
     separate = (value) => {
-        value = value !== null && value.toString();
-        if (value.indexOf('.') > -1) {
-            return value.split('.')[1];
-        } else {
-            return "";
-        }
+        if(value==null||value==undefined){
+            return ""
+        }else{
+            value = value.toString();
+            if(value.indexOf('.') > -1){
+                return value.split('.')[1];
+            }else{
+                return ""
+            }
+        } 
     }
 
     
@@ -481,31 +518,57 @@ class InputNumber extends Component {
     }
 
     handlePlusMouseDown = (e) => {
-        e.preventDefault();
+        e.preventDefault && e.preventDefault();
         let {delay,disabled} = this.props;
-        if(disabled)return;
         let {value} = this.state;
+        if(disabled)return;
         this.plus(value);
         this.clear();
         this.timer = setTimeout(() => {
-            this.handlePlusMouseDown();
+            this.handlePlusMouseDown(e);
         }, delay);
     }
 
     handleReduceMouseDown = (e) => {
-        e.preventDefault();
+        e.preventDefault && e.preventDefault();
         let {delay,disabled} = this.props;
-        if(disabled)return;
         let {value} = this.state;
+        if(disabled)return;
         this.minus(value);
-        this.clear();
+        this.clear(); 
         this.timer = setTimeout(() => {
             this.handleReduceMouseDown();
         }, delay);
     }
 
+    getPrecision = (value)=>{
+        if(!value && value === "")return value;
+        value = String(value);
+        const {precision} = this.props;
+        if(precision === 0)return value;
+        if (precision == undefined || (value.indexOf(".") !== -1 && String(value.split(".")[1]).length === precision)) {
+            return value;
+        }
+        let before = value.substring(0,1),len = value.length,
+        after = value.substring(len-1,len);
+        before = before === "-"?before:"";
+        after = after === "-"?after:"";
+        value = value.replace("-",'');
+        let precV = "000000000000";
+        if(value.indexOf(".") === -1){
+            precV = precV.substr(0,precision);
+            precV = precV?"."+precV:precV;
+            value = value + precV;
+        }
+        return before+Number(value).toFixed(precision)+after;
+    }
+
+    handleBtnClick = (type,value)=>{
+        this.props.handleBtnClick(type,value)
+    }
+
     render() {
-        const {toThousands, max, min, step,disabled, clsPrefix, className, delay, onBlur, onFocus, iconStyle, autoWidth, onChange, format, precision,toNumber, ...others} = this.props;
+        const {toThousands,minusRight, max, min, step,disabled, clsPrefix, className, delay, onBlur, onFocus, iconStyle, autoWidth, onChange, format, precision,toNumber, ...others} = this.props;
         let classes = {
             [`${clsPrefix}-auto`]: autoWidth,
             [`${clsPrefix}`]: true,
@@ -514,10 +577,11 @@ class InputNumber extends Component {
         };
 
         let {value, minusDisabled, plusDisabled, showValue} = this.state;
-
-        value = precision != null?Number(value).toFixed(precision):value;
+        value = precision != null && !this.focus?this.getPrecision(value):value;
         value = format && !this.focus? format(value) : value;
-    
+        if(minusRight && String(value).indexOf('-')!=-1){
+            value = String(value).replace("-","")+"-";
+        }
         let disabledCursor = disabled? ' disabled-cursor':'';
         let disabledCon = disabled? ' disabled-con':'';
         return (
@@ -526,6 +590,7 @@ class InputNumber extends Component {
                     iconStyle === 'double' ? (
                         <InputGroup className={classnames(className, classes,disabledCon)}>
                             <InputGroup.Addon
+                                // onClick={()=>{minusDisabled?'':this.handleBtnClick('down')}}
                                 className={(minusDisabled && 'disabled' ) + disabledCursor}
                                 onMouseDown={ this.handleReduceMouseDown}
                                 onMouseLeave={ this.clear }
@@ -542,6 +607,7 @@ class InputNumber extends Component {
                                 ref={ref=>this.input = ref}
                             />
                             <InputGroup.Addon
+                                // onClick={()=>{plusDisabled?'':this.handleBtnClick('up')}}
                                 className={(plusDisabled && 'disabled' ) + disabledCursor}
                                 onMouseDown={ this.handlePlusMouseDown}
                                 onMouseLeave={ this.clear }
@@ -566,6 +632,7 @@ class InputNumber extends Component {
                             <InputGroup.Button>
                                 <div className={classnames("icon-group")}>
                                 <span
+                                    // onClick={()=>{plusDisabled?'':this.handleBtnClick('up')}}
                                     onMouseDown={ this.handlePlusMouseDown}
                                     onMouseLeave={ this.clear }
                                     onMouseUp={ this.clear }
@@ -573,6 +640,7 @@ class InputNumber extends Component {
                                     <span className="uf uf-arrow-up"/>
                                 </span>
                                     <span
+                                        // onClick={()=> minusDisabled?'':this.handleBtnClick('down')}
                                         onMouseDown={ this.handleReduceMouseDown}
                                         onMouseLeave={ this.clear }
                                         onMouseUp={ this.clear }

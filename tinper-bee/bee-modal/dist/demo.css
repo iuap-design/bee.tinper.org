@@ -994,6 +994,18 @@
 .uf-globe:before {
   content: "\e9db"; }
 
+.uf-yybs:before {
+  content: "\e9dc"; }
+
+.uf-iuap5:before {
+  content: "\e9dd"; }
+
+.uf-iuap5c:before {
+  content: "\e9ff"; }
+
+.uf-qingkong:before {
+  content: "\e666"; }
+
 .u-modal {
   display: none;
   position: fixed;
@@ -1039,7 +1051,11 @@
     border-radius: 3px;
     box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
     background-clip: padding-box;
-    outline: 0; }
+    outline: 0;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column; }
   .u-modal .u-modal-dialog {
     position: relative;
     width: auto;
@@ -1071,7 +1087,9 @@
     position: relative;
     padding: 16px;
     font-size: 12px;
-    color: #212121; }
+    color: #212121;
+    -ms-flex: 1;
+    flex: 1; }
   .u-modal .u-modal-footer {
     padding: 16px;
     text-align: right;
@@ -1146,6 +1164,68 @@
 
 .react-draggable-transparent-selection * {
   pointer-events: none !important; }
+
+.ac-confirm .u-modal-dialog {
+  width: 410px;
+  height: 201px; }
+  .ac-confirm .u-modal-dialog .ac-confirm-footer {
+    height: 48px;
+    padding: 8px 16px;
+    border-top: #d0d0d0 solid 1px; }
+    .ac-confirm .u-modal-dialog .ac-confirm-footer .u-button {
+      min-width: 60px;
+      min-height: 28px;
+      line-height: 28px;
+      padding: 0 10px; }
+    .ac-confirm .u-modal-dialog .ac-confirm-footer .u-button.u-button-primary {
+      margin-right: 8px;
+      background-color: #e14c46;
+      color: #fff;
+      border: 1px solid #f53c32;
+      box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2); }
+    .ac-confirm .u-modal-dialog .ac-confirm-footer .u-button.u-button-primary:hover {
+      background-color: #d7332c;
+      color: #fff; }
+    .ac-confirm .u-modal-dialog .ac-confirm-footer .u-button-border {
+      box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2);
+      border-color: #d0d0d0;
+      color: #111;
+      background-color: #fff; }
+    .ac-confirm .u-modal-dialog .ac-confirm-footer .u-button-border:hover {
+      color: #e14c46;
+      border-color: #e14c46;
+      background: #fff; }
+
+.ac-confirm .u-modal-content .ac-confirm-header.u-modal-header {
+  background-color: #f3f3f3;
+  padding: 10px 20px;
+  height: 40px; }
+  .ac-confirm .u-modal-content .ac-confirm-header.u-modal-header .ac-confirm-header-title {
+    color: #111111;
+    font-size: 14px;
+    font-weight: 700; }
+  .ac-confirm .u-modal-content .ac-confirm-header.u-modal-header .u-close.dnd-cancel {
+    display: none; }
+
+.ac-confirm .ac-confirm-body.u-modal-body {
+  padding: 16px 33px;
+  min-height: 124px; }
+  .ac-confirm .ac-confirm-body.u-modal-body .ac-confirm-body-title {
+    display: block; }
+    .ac-confirm .ac-confirm-body.u-modal-body .ac-confirm-body-title .ac-confirm-body-title-icon {
+      color: #ffbf00;
+      font-size: 25px;
+      vertical-align: sub; }
+    .ac-confirm .ac-confirm-body.u-modal-body .ac-confirm-body-title .ac-confirm-body-title-keyword {
+      font-size: 18px;
+      color: #111111;
+      display: inline-block;
+      margin-left: 15px; }
+  .ac-confirm .ac-confirm-body.u-modal-body .ac-confirm-body-content {
+    display: block;
+    font-size: 13px;
+    color: #555555;
+    margin: 8px 48px; }
 
 .demo-margin {
   margin: 5px 15px; }

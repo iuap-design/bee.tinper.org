@@ -12,7 +12,7 @@ class Demo12 extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            value:'-100000.031416'
+            value:0
         }
     }
 
@@ -29,8 +29,8 @@ class Demo12 extends Component {
                 <InputNumber
                     iconStyle="one"
                     // precision={2}
-                    min={-10}
-                    max={10}
+                    // min={-10}
+                    // max={10}
                     onFocus={(value,e)=>{
                         console.log(value+"  ==== ",e);
                         this.setState({

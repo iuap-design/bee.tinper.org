@@ -1,3 +1,28 @@
+<a name="2.1.2"></a>
+## [2.1.2](https://github.com/tinper-bee/bee-radio/compare/v2.1.1...v2.1.2) (2020-03-06)
+
+
+### Features
+
+* 增加focus标识 ([4429753](https://github.com/tinper-bee/bee-radio/commit/4429753))
+
+
+
+<a name="2.1.1"></a>
+## [2.1.1](https://github.com/tinper-bee/bee-radio/compare/v2.1.0...v2.1.1) (2020-02-24)
+
+
+### Features
+
+* radioGroup 增加disabled属性 ([570d7d0](https://github.com/tinper-bee/bee-radio/commit/570d7d0))
+
+
+
+<a name="2.1.0"></a>
+# [2.1.0](https://github.com/tinper-bee/bee-radio/compare/v2.0.18...v2.1.0) (2020-02-21)
+
+
+
 <a name="2.0.18"></a>
 ## [2.0.18](https://github.com/tinper-bee/bee-radio/compare/v2.0.17...v2.0.18) (2019-10-17)
 

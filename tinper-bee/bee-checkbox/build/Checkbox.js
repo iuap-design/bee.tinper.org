@@ -22,6 +22,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 
 function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -61,7 +63,8 @@ var Checkbox = function (_React$Component) {
         _initialiseProps.call(_this);
 
         _this.state = {
-            checked: 'checked' in props ? props.checked : props.defaultChecked
+            checked: 'checked' in props ? props.checked : props.defaultChecked,
+            focused: false
         };
         _this.doubleClickFlag = null;
         return _this;
@@ -76,6 +79,8 @@ var Checkbox = function (_React$Component) {
     };
 
     Checkbox.prototype.render = function render() {
+        var _classes;
+
         var _props = this.props,
             disabled = _props.disabled,
             inverse = _props.inverse,
@@ -93,13 +98,12 @@ var Checkbox = function (_React$Component) {
 
         var input = _react2["default"].createElement('input', _extends({}, others, {
             type: 'checkbox',
-            disabled: this.props.disabled
+            disabled: this.props.disabled,
+            onFocus: this.handleFocus,
+            onBlur: this.handleBlur
         }));
 
-        var classes = {
-            'is-checked': this.state.checked,
-            disabled: disabled
-        };
+        var classes = (_classes = {}, _defineProperty(_classes, clsPrefix + '-focused', this.state.focused), _defineProperty(_classes, 'is-checked', this.state.checked), _defineProperty(_classes, 'disabled', disabled), _classes);
 
         if (inverse) {
             classes[clsPrefix + '-inverse'] = true;
@@ -181,6 +185,22 @@ var _initialiseProps = function _initialiseProps() {
 
         clearTimeout(_this2.doubleClickFlag);
         onDoubleClick && onDoubleClick(_this2.state.checked, e);
+    };
+
+    this.handleFocus = function (e) {
+        if (e.target && e.target.type == 'checkbox') {
+            _this2.setState({
+                focused: true
+            });
+        }
+    };
+
+    this.handleBlur = function (e) {
+        if (e.target && e.target.type == 'checkbox') {
+            _this2.setState({
+                focused: false
+            });
+        }
     };
 };
 

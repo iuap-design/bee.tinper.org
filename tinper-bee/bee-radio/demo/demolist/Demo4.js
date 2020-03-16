@@ -45,10 +45,10 @@ class Demo4 extends Component{
         </div>
 
         <div style={{ marginTop: 16 }}>
-          <Radio.RadioGroup selectedValue="apple">
-            <Radio.RadioButton value="apple" disabled>apple</Radio.RadioButton>
-            <Radio.RadioButton value="banana" disabled>banana</Radio.RadioButton>
-            <Radio.RadioButton value="orange" disabled>orange</Radio.RadioButton>
+          <Radio.RadioGroup selectedValue="apple" disabled>
+            <Radio.RadioButton value="apple">apple</Radio.RadioButton>
+            <Radio.RadioButton value="banana">banana</Radio.RadioButton>
+            <Radio.RadioButton value="orange">orange</Radio.RadioButton>
           </Radio.RadioGroup>
         </div>
       </div>

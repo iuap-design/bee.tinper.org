@@ -15,8 +15,10 @@ $popover-arrow-outer-color: #999;
 $popover-fallback-border-color: #fff;
 
 .u-popover.u-popover-tooltip{
+    max-width: initial;
     &.u-tooltip .tooltip-inner{
         padding: 8px;
+        max-width: initial;
     }
 }
 // fix: 覆盖老版本 tinper-bee 中 popover 的 css 样式

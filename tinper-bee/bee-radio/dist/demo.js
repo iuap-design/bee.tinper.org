@@ -66,7 +66,7 @@
 	
 	var _beeClipboard2 = _interopRequireDefault(_beeClipboard);
 	
-	var _src = __webpack_require__(162);
+	var _src = __webpack_require__(157);
 	
 	var _src2 = _interopRequireDefault(_src);
 	
@@ -80,7 +80,7 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
 	
-	var Demo1 = __webpack_require__(166);var Demo2 = __webpack_require__(167);var Demo3 = __webpack_require__(168);var Demo4 = __webpack_require__(169);var Demo5 = __webpack_require__(170);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " Radio 基本用法", "code": "/**\n * @title Radio 基本用法\n * @description `defaultValue`设置默认被选中的radio值，`disabled`参数设置是否可用，`onChange`是值改变的回调\n */\n\nimport React, { Component } from 'react'\nimport { Radio } from 'tinper-bee';\n\n\nclass Demo1 extends Component{\n  constructor(props) {\n    super(props);\n  }\n  handleChange = (value) => {\n    console.log('onChange：',value)\n  }\n  render() {\n    return (\n      <Radio.RadioGroup\n        name=\"fruits\"\n        defaultValue=\"1\"\n        onChange={this.handleChange}\n        >\n          <Radio value=\"1\" disabled>苹果</Radio>\n          <Radio value=\"2\" disabled>香蕉</Radio>\n          <Radio value=\"3\" >葡萄</Radio>\n          <Radio value=\"4\" >菠萝</Radio>\n          <Radio value=\"5\" >梨</Radio>\n          <Radio value=\"6\" >石榴</Radio>\n      </Radio.RadioGroup>   \n    )\n  }\n};\n\nexport default Demo1;", "desc": " `defaultValue`设置默认被选中的radio值，`disabled`参数设置是否可用，`onChange`是值改变的回调" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 不同颜色的radio", "code": "/**\r\n * @title 不同颜色的radio\r\n * @description `colors`参数控制背景色\r\n */\r\n\r\nimport React, { Component } from 'react'\nimport { Radio } from 'tinper-bee';\r\n\r\n\r\n\r\n\r\nclass Demo2 extends Component{\r\n  constructor(props) {\r\n  \tsuper(props);\r\n  \tthis.state = {\r\n    \tselectedValue: '3'\r\n    };\r\n  }\r\n  handleChange(value) {\r\n    this.setState({selectedValue: value});\r\n  }\r\n  render() {\r\n    return (\r\n      <Radio.RadioGroup\r\n        name=\"color\"\r\n        selectedValue={this.state.selectedValue}\r\n        onChange={this.handleChange.bind(this)}>\r\n          <Radio colors=\"primary\" value=\"1\" >苹果</Radio>\r\n          <Radio colors=\"success\" value=\"2\" >香蕉</Radio>\r\n          <Radio colors=\"info\" value=\"3\" >葡萄</Radio>\r\n          <Radio colors=\"warning\" value=\"4\" >菠萝</Radio>\r\n          <Radio colors=\"danger\" value=\"5\" >梨</Radio>\r\n          <Radio colors=\"dark\" value=\"6\" >石榴</Radio>\r\n      </Radio.RadioGroup>\r\n    )\r\n  }\r\n};\r\n\r\nexport default Demo2;", "desc": " `colors`参数控制背景色" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 竖方向Radio", "code": "/**\n * @title 竖方向Radio\n * @description 可以通过style来设置radio样式\n */\n\nimport React, { Component } from 'react'\nimport { Radio } from 'tinper-bee';\n\n\n\n\nclass Demo3 extends Component{\n  constructor(props) {\n  \tsuper(props);\n  \tthis.state = {\n    \tselectedValue: '1'\n    };\n  }\n  handleChange(value) {\n    this.setState({selectedValue: value});\n  }\n  render() {\n    const radioStyle = {\n      display: 'block'\n    };\n    return (\n      <div className=\"demo3\">\n        <Radio.RadioGroup\n          name=\"team\"\n          selectedValue={this.state.selectedValue}\n          onChange={this.handleChange.bind(this)}>\n            <Radio style={radioStyle} value=\"1\" >苹果</Radio>\n            <Radio style={radioStyle} value=\"2\" >香蕉</Radio>\n            <Radio style={radioStyle} value=\"3\" >葡萄</Radio>\n            <Radio style={radioStyle} value=\"4\" >菠萝</Radio>\n            <Radio style={radioStyle} value=\"5\" >梨</Radio>\n            <Radio style={radioStyle} value=\"6\" >石榴</Radio>\n        </Radio.RadioGroup>\n      </div>\n    )\n  }\n};\n\nexport default Demo3;", "desc": " 可以通过style来设置radio样式", "scss_code": ".demo3 .u-radio-group .u-radio{\r\n    margin-bottom: 8px;\r\n}" }, { "example": _react2['default'].createElement(Demo4, null), "title": " RadioButton 基本使用", "code": "/**\r\n * @title RadioButton 基本使用\r\n * @description `selectedValue`参数设置被选中的radio值，`onChange`设置值改变的回调\r\n */\r\n\r\nimport React, { Component } from 'react'\nimport { Radio } from 'tinper-bee';\r\n\r\n\r\nconst  RadioGroup = Radio.RadioGroup;\r\n\r\nclass Demo4 extends Component{\r\n  constructor(props) {\r\n  \tsuper(props);\r\n  \tthis.state = {\r\n      selectedValue: 'orange',\r\n      selectedValue2: 'apple'\r\n    };\r\n  }\r\n  handleChange(value) {\r\n    this.setState({selectedValue: value});\r\n  }\r\n  handleChange2(value) {\r\n    this.setState({selectedValue2: value});\r\n  }\r\n  render() {\r\n    return (\r\n      <div>\r\n        <Radio.RadioGroup\r\n          name=\"fruit\"\r\n          selectedValue={this.state.selectedValue}\r\n          onChange={this.handleChange.bind(this)}>\r\n            <Radio.RadioButton value=\"apple\">apple</Radio.RadioButton>\r\n            <Radio.RadioButton value=\"banana\">banana</Radio.RadioButton>\r\n            <Radio.RadioButton value=\"orange\">orange</Radio.RadioButton>\r\n        </Radio.RadioGroup>\r\n\r\n        <div style={{ marginTop: 16 }}>\r\n          <Radio.RadioGroup \r\n            selectedValue={this.state.selectedValue2}\r\n            onChange={this.handleChange2.bind(this)}>\r\n            <Radio.RadioButton value=\"apple\">apple</Radio.RadioButton>\r\n            <Radio.RadioButton value=\"banana\" disabled>banana</Radio.RadioButton>\r\n            <Radio.RadioButton value=\"orange\">orange</Radio.RadioButton>\r\n          </Radio.RadioGroup>\r\n        </div>\r\n\r\n        <div style={{ marginTop: 16 }}>\r\n          <Radio.RadioGroup selectedValue=\"apple\">\r\n            <Radio.RadioButton value=\"apple\" disabled>apple</Radio.RadioButton>\r\n            <Radio.RadioButton value=\"banana\" disabled>banana</Radio.RadioButton>\r\n            <Radio.RadioButton value=\"orange\" disabled>orange</Radio.RadioButton>\r\n          </Radio.RadioGroup>\r\n        </div>\r\n      </div>\r\n\r\n    )\r\n  }\r\n};\r\n\r\nexport default Demo4;", "desc": " `selectedValue`参数设置被选中的radio值，`onChange`设置值改变的回调" }, { "example": _react2['default'].createElement(Demo5, null), "title": " 红色填充的 Radio", "code": "/**\r\n * @title 红色填充的 Radio\r\n * @description `inverse` 参数设置选中为红色填充。\r\n */\r\n\r\nimport React, { Component } from 'react'\nimport { Radio } from 'tinper-bee';\r\n\r\n\r\n\r\n\r\nclass Demo1 extends Component{\r\n  constructor(props) {\r\n  \tsuper(props);\r\n  \tthis.state = {\r\n    \tselectedValue: '1'\r\n    };\r\n  }\r\n  handleChange(value) {\r\n    this.setState({selectedValue: value});\r\n  }\r\n  render() {\r\n    return (\r\n      <Radio.RadioGroup\r\n        name=\"fruits\"\r\n        selectedValue={this.state.selectedValue}\r\n        onChange={this.handleChange.bind(this)}>\r\n          <Radio value=\"1\" inverse>苹果</Radio>\r\n          <Radio value=\"2\" inverse>香蕉</Radio>\r\n          <Radio value=\"3\" inverse>葡萄</Radio>\r\n      </Radio.RadioGroup>   \r\n    )\r\n  }\r\n};\r\n\r\nexport default Demo1;", "desc": " `inverse` 参数设置选中为红色填充。" }];
+	var Demo1 = __webpack_require__(161);var Demo2 = __webpack_require__(162);var Demo3 = __webpack_require__(163);var Demo4 = __webpack_require__(164);var Demo5 = __webpack_require__(165);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " Radio 基本用法", "code": "/**\n * @title Radio 基本用法\n * @description `defaultValue`设置默认被选中的radio值，`disabled`参数设置是否可用，`onChange`是值改变的回调\n */\n\nimport React, { Component } from 'react'\nimport { Radio } from 'tinper-bee';\n\n\nclass Demo1 extends Component{\n  constructor(props) {\n    super(props);\n  }\n  handleChange = (value) => {\n    console.log('onChange：',value)\n  }\n  render() {\n    return (\n      <Radio.RadioGroup\n        name=\"fruits\"\n        defaultValue=\"1\"\n        onChange={this.handleChange}\n        >\n          <Radio value=\"1\" disabled>苹果</Radio>\n          <Radio value=\"2\" disabled>香蕉</Radio>\n          <Radio value=\"3\" >葡萄</Radio>\n          <Radio value=\"4\" >菠萝</Radio>\n          <Radio value=\"5\" >梨</Radio>\n          <Radio value=\"6\" >石榴</Radio>\n      </Radio.RadioGroup>   \n    )\n  }\n};\n\nexport default Demo1;", "desc": " `defaultValue`设置默认被选中的radio值，`disabled`参数设置是否可用，`onChange`是值改变的回调" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 不同颜色的radio", "code": "/**\n * @title 不同颜色的radio\n * @description `colors`参数控制背景色\n */\n\nimport React, { Component } from 'react'\nimport { Radio } from 'tinper-bee';\n\n\n\n\nclass Demo2 extends Component{\n  constructor(props) {\n  \tsuper(props);\n  \tthis.state = {\n    \tselectedValue: '3'\n    };\n  }\n  handleChange(value) {\n    this.setState({selectedValue: value});\n  }\n  render() {\n    return (\n      <Radio.RadioGroup\n        name=\"color\"\n        selectedValue={this.state.selectedValue}\n        onChange={this.handleChange.bind(this)}>\n          <Radio colors=\"primary\" value=\"1\" >苹果</Radio>\n          <Radio colors=\"success\" value=\"2\" >香蕉</Radio>\n          <Radio colors=\"info\" value=\"3\" >葡萄</Radio>\n          <Radio colors=\"warning\" value=\"4\" >菠萝</Radio>\n          <Radio colors=\"danger\" value=\"5\" >梨</Radio>\n          <Radio colors=\"dark\" value=\"6\" >石榴</Radio>\n      </Radio.RadioGroup>\n    )\n  }\n};\n\nexport default Demo2;", "desc": " `colors`参数控制背景色" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 竖方向Radio", "code": "/**\n * @title 竖方向Radio\n * @description 可以通过style来设置radio样式\n */\n\nimport React, { Component } from 'react'\nimport { Radio } from 'tinper-bee';\n\n\n\n\nclass Demo3 extends Component{\n  constructor(props) {\n  \tsuper(props);\n  \tthis.state = {\n    \tselectedValue: '1'\n    };\n  }\n  handleChange(value) {\n    this.setState({selectedValue: value});\n  }\n  render() {\n    const radioStyle = {\n      display: 'block'\n    };\n    return (\n      <div className=\"demo3\">\n        <Radio.RadioGroup\n          name=\"team\"\n          selectedValue={this.state.selectedValue}\n          onChange={this.handleChange.bind(this)}>\n            <Radio style={radioStyle} value=\"1\" >苹果</Radio>\n            <Radio style={radioStyle} value=\"2\" >香蕉</Radio>\n            <Radio style={radioStyle} value=\"3\" >葡萄</Radio>\n            <Radio style={radioStyle} value=\"4\" >菠萝</Radio>\n            <Radio style={radioStyle} value=\"5\" >梨</Radio>\n            <Radio style={radioStyle} value=\"6\" >石榴</Radio>\n        </Radio.RadioGroup>\n      </div>\n    )\n  }\n};\n\nexport default Demo3;", "desc": " 可以通过style来设置radio样式", "scss_code": ".demo3 .u-radio-group .u-radio{\n    margin-bottom: 8px;\n}" }, { "example": _react2['default'].createElement(Demo4, null), "title": " RadioButton 基本使用", "code": "/**\n * @title RadioButton 基本使用\n * @description `selectedValue`参数设置被选中的radio值，`onChange`设置值改变的回调\n */\n\nimport React, { Component } from 'react'\nimport { Radio } from 'tinper-bee';\n\n\nconst  RadioGroup = Radio.RadioGroup;\n\nclass Demo4 extends Component{\n  constructor(props) {\n  \tsuper(props);\n  \tthis.state = {\n      selectedValue: 'orange',\n      selectedValue2: 'apple'\n    };\n  }\n  handleChange(value) {\n    this.setState({selectedValue: value});\n  }\n  handleChange2(value) {\n    this.setState({selectedValue2: value});\n  }\n  render() {\n    return (\n      <div>\n        <Radio.RadioGroup\n          name=\"fruit\"\n          selectedValue={this.state.selectedValue}\n          onChange={this.handleChange.bind(this)}>\n            <Radio.RadioButton value=\"apple\">apple</Radio.RadioButton>\n            <Radio.RadioButton value=\"banana\">banana</Radio.RadioButton>\n            <Radio.RadioButton value=\"orange\">orange</Radio.RadioButton>\n        </Radio.RadioGroup>\n\n        <div style={{ marginTop: 16 }}>\n          <Radio.RadioGroup \n            selectedValue={this.state.selectedValue2}\n            onChange={this.handleChange2.bind(this)}>\n            <Radio.RadioButton value=\"apple\">apple</Radio.RadioButton>\n            <Radio.RadioButton value=\"banana\" disabled>banana</Radio.RadioButton>\n            <Radio.RadioButton value=\"orange\">orange</Radio.RadioButton>\n          </Radio.RadioGroup>\n        </div>\n\n        <div style={{ marginTop: 16 }}>\n          <Radio.RadioGroup selectedValue=\"apple\" disabled>\n            <Radio.RadioButton value=\"apple\">apple</Radio.RadioButton>\n            <Radio.RadioButton value=\"banana\">banana</Radio.RadioButton>\n            <Radio.RadioButton value=\"orange\">orange</Radio.RadioButton>\n          </Radio.RadioGroup>\n        </div>\n      </div>\n\n    )\n  }\n};\n\nexport default Demo4;", "desc": " `selectedValue`参数设置被选中的radio值，`onChange`设置值改变的回调" }, { "example": _react2['default'].createElement(Demo5, null), "title": " 红色填充的 Radio", "code": "/**\n * @title 红色填充的 Radio\n * @description `inverse` 参数设置选中为红色填充。\n */\n\nimport React, { Component } from 'react'\nimport { Radio } from 'tinper-bee';\n\n\n\n\nclass Demo1 extends Component{\n  constructor(props) {\n  \tsuper(props);\n  \tthis.state = {\n    \tselectedValue: '1'\n    };\n  }\n  handleChange(value) {\n    this.setState({selectedValue: value});\n  }\n  render() {\n    return (\n      <Radio.RadioGroup\n        name=\"fruits\"\n        selectedValue={this.state.selectedValue}\n        onChange={this.handleChange.bind(this)}>\n          <Radio value=\"1\" inverse>苹果</Radio>\n          <Radio value=\"2\" inverse>香蕉</Radio>\n          <Radio value=\"3\" inverse>葡萄</Radio>\n      </Radio.RadioGroup>   \n    )\n  }\n};\n\nexport default Demo1;", "desc": " `inverse` 参数设置选中为红色填充。" }];
 	
 	var Demo = function (_Component) {
 	    _inherits(Demo, _Component);
@@ -6268,7 +6268,7 @@
 	    });
 	}
 	
-	function notice(content, duration_arg, type, onClose, position, style, keyboard, onEscapeKeyUp, showIcon, icon) {
+	function notice(content, duration_arg, type, onClose, position, style, keyboard, onEscapeKeyUp, showIcon, icon, props) {
 	    if (positionType.findIndex(function (item) {
 	        return item === position;
 	    }) < 0) {
@@ -6296,7 +6296,7 @@
 	    var positionStyle = JSON.stringify(messageStyle_copy) == "{}" ? positionObj[position].messageStyle : messageStyle_copy;
 	    defaultStyle = _extends({}, positionStyle, style);
 	    getMessageInstance(position, function (instance) {
-	        instance.notice({
+	        instance.notice(_extends({}, props, {
 	            key: key,
 	            duration: duration,
 	            color: type,
@@ -6316,7 +6316,7 @@
 	                )
 	            ),
 	            onClose: onClose
-	        });
+	        }));
 	    }, keyboard, onEscapeKeyUp);
 	    return function () {
 	        var target = key++;
@@ -6342,7 +6342,7 @@
 	        var style = obj.style || {};
 	        var showIcon = obj.hasOwnProperty('showIcon') ? obj.showIcon : true;
 	        var icon = obj.hasOwnProperty('icon') ? obj.icon : false;
-	        return notice(content, duration, color, onClose, position, style, obj.keyboard, obj.onEscapeKeyUp, showIcon, icon);
+	        return notice(content, duration, color, onClose, position, style, obj.keyboard, obj.onEscapeKeyUp, showIcon, icon, obj);
 	    },
 	    config: function config(options) {
 	        if (options.top !== undefined) {
@@ -7457,6 +7457,8 @@
 	  value: true
 	});
 	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
 	var _react = __webpack_require__(1);
 	
 	var _react2 = _interopRequireDefault(_react);
@@ -7478,6 +7480,8 @@
 	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
 	
 	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+	
+	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
@@ -7551,7 +7555,12 @@
 	        style = _props.style,
 	        children = _props.children,
 	        color = _props.color,
-	        title = _props.title;
+	        title = _props.title,
+	        content = _props.content,
+	        onEnd = _props.onEnd,
+	        onClose = _props.onClose,
+	        duration = _props.duration,
+	        others = _objectWithoutProperties(_props, ['closable', 'clsPrefix', 'className', 'style', 'children', 'color', 'title', 'content', 'onEnd', 'onClose', 'duration']);
 	
 	    var componentClass = clsPrefix + '-notice';
 	    var classes = (_classes = {}, _defineProperty(_classes, '' + componentClass, 1), _defineProperty(_classes, componentClass + '-closable', closable), _defineProperty(_classes, className, !!className), _classes);
@@ -7560,7 +7569,7 @@
 	    }
 	    return _react2["default"].createElement(
 	      'div',
-	      { className: (0, _classnames2["default"])(classes), style: style, onClick: this.close },
+	      _extends({ className: (0, _classnames2["default"])(classes), style: style, onClick: this.close }, others),
 	      _react2["default"].createElement(
 	        'div',
 	        { className: componentClass + '-content' },
@@ -7700,20 +7709,34 @@
 /* 81 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 	
 	var deselectCurrent = __webpack_require__(82);
 	
-	var defaultMessage = 'Copy to clipboard: #{key}, Enter';
+	var clipboardToIE11Formatting = {
+	  "text/plain": "Text",
+	  "text/html": "Url",
+	  "default": "Text"
+	}
+	
+	var defaultMessage = "Copy to clipboard: #{key}, Enter";
 	
 	function format(message) {
-	  var copyKey = (/mac os x/i.test(navigator.userAgent) ? '⌘' : 'Ctrl') + '+C';
+	  var copyKey = (/mac os x/i.test(navigator.userAgent) ? "⌘" : "Ctrl") + "+C";
 	  return message.replace(/#{\s*key\s*}/g, copyKey);
 	}
 	
 	function copy(text, options) {
-	  var debug, message, reselectPrevious, range, selection, mark, success = false;
-	  if (!options) { options = {}; }
+	  var debug,
+	    message,
+	    reselectPrevious,
+	    range,
+	    selection,
+	    mark,
+	    success = false;
+	  if (!options) {
+	    options = {};
+	  }
 	  debug = options.debug || false;
 	  try {
 	    reselectPrevious = deselectCurrent();
@@ -7721,47 +7744,57 @@
 	    range = document.createRange();
 	    selection = document.getSelection();
 	
-	    mark = document.createElement('span');
+	    mark = document.createElement("span");
 	    mark.textContent = text;
 	    // reset user styles for span element
-	    mark.style.all = 'unset';
+	    mark.style.all = "unset";
 	    // prevents scrolling to the end of the page
-	    mark.style.position = 'fixed';
+	    mark.style.position = "fixed";
 	    mark.style.top = 0;
-	    mark.style.clip = 'rect(0, 0, 0, 0)';
+	    mark.style.clip = "rect(0, 0, 0, 0)";
 	    // used to preserve spaces and line breaks
-	    mark.style.whiteSpace = 'pre';
+	    mark.style.whiteSpace = "pre";
 	    // do not inherit user-select (it may be `none`)
-	    mark.style.webkitUserSelect = 'text';
-	    mark.style.MozUserSelect = 'text';
-	    mark.style.msUserSelect = 'text';
-	    mark.style.userSelect = 'text';
+	    mark.style.webkitUserSelect = "text";
+	    mark.style.MozUserSelect = "text";
+	    mark.style.msUserSelect = "text";
+	    mark.style.userSelect = "text";
+	    mark.addEventListener("copy", function(e) {
+	      e.stopPropagation();
+	      if (options.format) {
+	        e.preventDefault();
+	        if (typeof e.clipboardData === "undefined") { // IE 11
+	          debug && console.warn("unable to use e.clipboardData");
+	          debug && console.warn("trying IE specific stuff");
+	          window.clipboardData.clearData();
+	          var format = clipboardToIE11Formatting[options.format] || clipboardToIE11Formatting["default"]
+	          window.clipboardData.setData(format, text);
+	        } else { // all other browsers
+	          e.clipboardData.clearData();
+	          e.clipboardData.setData(options.format, text);
+	        }
+	      }
+	    });
 	
 	    document.body.appendChild(mark);
 	
-	    range.selectNode(mark);
+	    range.selectNodeContents(mark);
 	    selection.addRange(range);
 	
-	    var successful = document.execCommand('copy');
+	    var successful = document.execCommand("copy");
 	    if (!successful) {
-	      throw new Error('copy command was unsuccessful');
+	      throw new Error("copy command was unsuccessful");
 	    }
 	    success = true;
 	  } catch (err) {
-	    debug && console.error('unable to copy using execCommand: ', err);
-	    debug && console.warn('trying IE specific stuff');
-	    try {
-	      window.clipboardData.setData('text', text);
-	      success = true;
-	    } catch (err) {
-	      debug && console.error('unable to copy using clipboardData: ', err);
-	      debug && console.error('falling back to prompt');
-	      message = format('message' in options ? options.message : defaultMessage);
-	      window.prompt(message, text);
-	    }
+	    debug && console.error("unable to copy using execCommand: ", err);
+	    debug && console.error("unable to copy using clipboardData: ", err);
+	    debug && console.error("falling back to prompt");
+	    message = format("message" in options ? options.message : defaultMessage);
+	    window.prompt(message, text);
 	  } finally {
 	    if (selection) {
-	      if (typeof selection.removeRange == 'function') {
+	      if (typeof selection.removeRange == "function") {
 	        selection.removeRange(range);
 	      } else {
 	        selection.removeAllRanges();
@@ -10150,11 +10183,11 @@
 	
 	var _beeModal2 = _interopRequireDefault(_beeModal);
 	
-	var _beeFormControl = __webpack_require__(158);
+	var _beeFormControl = __webpack_require__(153);
 	
 	var _beeFormControl2 = _interopRequireDefault(_beeFormControl);
 	
-	var _beeButton = __webpack_require__(160);
+	var _beeButton = __webpack_require__(155);
 	
 	var _beeButton2 = _interopRequireDefault(_beeButton);
 	
@@ -14106,25 +14139,25 @@
 	
 	var _tinperBeeCore = __webpack_require__(27);
 	
-	var _beeTransition = __webpack_require__(148);
+	var _beeTransition = __webpack_require__(11);
 	
-	var _ModalBody = __webpack_require__(153);
+	var _ModalBody = __webpack_require__(148);
 	
 	var _ModalBody2 = _interopRequireDefault(_ModalBody);
 	
-	var _ModalDialog = __webpack_require__(154);
+	var _ModalDialog = __webpack_require__(149);
 	
 	var _ModalDialog2 = _interopRequireDefault(_ModalDialog);
 	
-	var _ModalFooter = __webpack_require__(155);
+	var _ModalFooter = __webpack_require__(150);
 	
 	var _ModalFooter2 = _interopRequireDefault(_ModalFooter);
 	
-	var _ModalHeader = __webpack_require__(156);
+	var _ModalHeader = __webpack_require__(151);
 	
 	var _ModalHeader2 = _interopRequireDefault(_ModalHeader);
 	
-	var _ModalTitle = __webpack_require__(157);
+	var _ModalTitle = __webpack_require__(152);
 	
 	var _ModalTitle2 = _interopRequireDefault(_ModalTitle);
 	
@@ -15482,773 +15515,6 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.Fade = exports.Collapse = exports.Transition = undefined;
-	
-	var _Transition2 = __webpack_require__(149);
-	
-	var _Transition3 = _interopRequireDefault(_Transition2);
-	
-	var _Collapse2 = __webpack_require__(150);
-	
-	var _Collapse3 = _interopRequireDefault(_Collapse2);
-	
-	var _Fade2 = __webpack_require__(152);
-	
-	var _Fade3 = _interopRequireDefault(_Fade2);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-	
-	exports.Transition = _Transition3["default"];
-	exports.Collapse = _Collapse3["default"];
-	exports.Fade = _Fade3["default"];
-
-/***/ }),
-/* 149 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.EXITING = exports.ENTERED = exports.ENTERING = exports.EXITED = exports.UNMOUNTED = undefined;
-	
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _reactDom = __webpack_require__(2);
-	
-	var _reactDom2 = _interopRequireDefault(_reactDom);
-	
-	var _properties = __webpack_require__(13);
-	
-	var _properties2 = _interopRequireDefault(_properties);
-	
-	var _on = __webpack_require__(16);
-	
-	var _on2 = _interopRequireDefault(_on);
-	
-	var _classnames = __webpack_require__(5);
-	
-	var _classnames2 = _interopRequireDefault(_classnames);
-	
-	var _propTypes = __webpack_require__(6);
-	
-	var _propTypes2 = _interopRequireDefault(_propTypes);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-	
-	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
-	
-	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
-	
-	var transitionEndEvent = _properties2["default"].end;
-	
-	//设置状态码
-	var UNMOUNTED = exports.UNMOUNTED = 0;
-	var EXITED = exports.EXITED = 1;
-	var ENTERING = exports.ENTERING = 2;
-	var ENTERED = exports.ENTERED = 3;
-	var EXITING = exports.EXITING = 4;
-	
-	var propTypes = {
-	  /**
-	   * 是否触发动画
-	   */
-	  "in": _propTypes2["default"].bool,
-	
-	  /**
-	   * 不显示的时候是否移除组件
-	   */
-	  unmountOnExit: _propTypes2["default"].bool,
-	
-	  /**
-	   * 如果设置为默认显示，挂载时显示动画
-	   */
-	  transitionAppear: _propTypes2["default"].bool,
-	
-	  /**
-	   * 设置超时时间，防止出现问题，可设置为>=动画时间
-	   */
-	  timeout: _propTypes2["default"].number,
-	
-	  /**
-	   * 退出组件时添加的class
-	   */
-	  exitedClassName: _propTypes2["default"].string,
-	  /**
-	   * 退出组件中添加的class
-	   */
-	  exitingClassName: _propTypes2["default"].string,
-	  /**
-	   * 进入动画后添加的class
-	   */
-	  enteredClassName: _propTypes2["default"].string,
-	  /**
-	   * 进入动画时添加的class
-	   */
-	  enteringClassName: _propTypes2["default"].string,
-	
-	  /**
-	   * 进入动画开始时的钩子函数
-	   */
-	  onEnter: _propTypes2["default"].func,
-	  /**
-	   * 进入动画中的钩子函数
-	   */
-	  onEntering: _propTypes2["default"].func,
-	  /**
-	   * 进入动画后的钩子函数
-	   */
-	  onEntered: _propTypes2["default"].func,
-	  /**
-	   * 退出动画开始时的钩子函数
-	   */
-	  onExit: _propTypes2["default"].func,
-	  /**
-	   * 退出动画中的钩子函数
-	   */
-	  onExiting: _propTypes2["default"].func,
-	  /**
-	   * 退出动画后的钩子函数
-	   */
-	  onExited: _propTypes2["default"].func
-	};
-	
-	function noop() {}
-	
-	var defaultProps = {
-	  "in": false,
-	  unmountOnExit: false,
-	  transitionAppear: false,
-	  timeout: 5000,
-	  onEnter: noop,
-	  onEntering: noop,
-	  onEntered: noop,
-	  onExit: noop,
-	  onExiting: noop,
-	  onExited: noop
-	};
-	
-	/**
-	 * 动画组件
-	 */
-	
-	var Transition = function (_Component) {
-	  _inherits(Transition, _Component);
-	
-	  function Transition(props, context) {
-	    _classCallCheck(this, Transition);
-	
-	    var _this = _possibleConstructorReturn(this, _Component.call(this, props, context));
-	
-	    var initialStatus = void 0;
-	    if (props["in"]) {
-	      // 在componentdidmount时开始执行动画
-	      initialStatus = props.transitionAppear ? EXITED : ENTERED;
-	    } else {
-	      initialStatus = props.unmountOnExit ? UNMOUNTED : EXITED;
-	    }
-	    _this.state = { status: initialStatus };
-	
-	    _this.nextCallback = null;
-	    return _this;
-	  }
-	
-	  Transition.prototype.componentDidMount = function componentDidMount() {
-	    if (this.props.transitionAppear && this.props["in"]) {
-	      this.performEnter(this.props);
-	    }
-	  };
-	
-	  Transition.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
-	    if (nextProps["in"] && this.props.unmountOnExit) {
-	      if (this.state.status === UNMOUNTED) {
-	        // 在componentDidUpdate执行动画.
-	        this.setState({ status: EXITED });
-	      }
-	    } else {
-	      this._needsUpdate = true;
-	    }
-	  };
-	
-	  Transition.prototype.componentDidUpdate = function componentDidUpdate() {
-	    var status = this.state.status;
-	
-	    if (this.props.unmountOnExit && status === EXITED) {
-	      // 当使用unmountOnExit时，exited为exiting和unmont的过渡状态
-	      if (this.props["in"]) {
-	        this.performEnter(this.props);
-	      } else {
-	        this.setState({ status: UNMOUNTED });
-	      }
-	
-	      return;
-	    }
-	
-	    // 确保只响应prop变化
-	    if (this._needsUpdate) {
-	      this._needsUpdate = false;
-	
-	      if (this.props["in"]) {
-	        if (status === EXITING) {
-	          this.performEnter(this.props);
-	        } else if (status === EXITED) {
-	          this.performEnter(this.props);
-	        }
-	        // 其他，当我们已经输入或输出
-	      } else {
-	        if (status === ENTERING || status === ENTERED) {
-	          this.performExit(this.props);
-	        }
-	        // 我们已经输入或输出完成
-	      }
-	    }
-	  };
-	
-	  Transition.prototype.componentWillUnmount = function componentWillUnmount() {
-	    this.cancelNextCallback();
-	  };
-	
-	  Transition.prototype.performEnter = function performEnter(props) {
-	    var _this2 = this;
-	
-	    this.cancelNextCallback();
-	    var node = _reactDom2["default"].findDOMNode(this);
-	
-	    // 这里接收新props
-	    props.onEnter(node);
-	
-	    this.safeSetState({ status: ENTERING }, function () {
-	      _this2.props.onEntering(node);
-	
-	      _this2.onTransitionEnd(node, function () {
-	        _this2.safeSetState({ status: ENTERED }, function () {
-	          _this2.props.onEntered(node);
-	        });
-	      });
-	    });
-	  };
-	
-	  Transition.prototype.performExit = function performExit(props) {
-	    var _this3 = this;
-	
-	    this.cancelNextCallback();
-	    var node = _reactDom2["default"].findDOMNode(this);
-	
-	    props.onExit(node);
-	
-	    this.safeSetState({ status: EXITING }, function () {
-	      _this3.props.onExiting(node);
-	
-	      _this3.onTransitionEnd(node, function () {
-	        _this3.safeSetState({ status: EXITED }, function () {
-	          _this3.props.onExited(node);
-	        });
-	      });
-	    });
-	  };
-	
-	  Transition.prototype.cancelNextCallback = function cancelNextCallback() {
-	    if (this.nextCallback !== null) {
-	      this.nextCallback.cancel();
-	      this.nextCallback = null;
-	    }
-	  };
-	
-	  Transition.prototype.safeSetState = function safeSetState(nextState, callback) {
-	    // 确保在组件销毁后挂起的setState被消除
-	    this.setState(nextState, this.setNextCallback(callback));
-	  };
-	
-	  Transition.prototype.setNextCallback = function setNextCallback(callback) {
-	    var _this4 = this;
-	
-	    var active = true;
-	
-	    this.nextCallback = function (event) {
-	      if (active) {
-	        active = false;
-	        _this4.nextCallback = null;
-	
-	        callback(event);
-	      }
-	    };
-	
-	    this.nextCallback.cancel = function () {
-	      active = false;
-	    };
-	
-	    return this.nextCallback;
-	  };
-	
-	  Transition.prototype.onTransitionEnd = function onTransitionEnd(node, handler) {
-	    this.setNextCallback(handler);
-	
-	    if (node) {
-	      if (transitionEndEvent == undefined) {
-	        this.nextCallback();
-	      } else {
-	        (0, _on2["default"])(node, transitionEndEvent, this.nextCallback);
-	      }
-	      setTimeout(this.nextCallback, this.props.timeout);
-	    } else {
-	      setTimeout(this.nextCallback, 0);
-	    }
-	  };
-	
-	  Transition.prototype.render = function render() {
-	    var status = this.state.status;
-	    if (status === UNMOUNTED) {
-	      return null;
-	    }
-	
-	    var _props = this.props,
-	        children = _props.children,
-	        className = _props.className,
-	        childProps = _objectWithoutProperties(_props, ['children', 'className']);
-	
-	    Object.keys(Transition.propTypes).forEach(function (key) {
-	      return delete childProps[key];
-	    });
-	
-	    var transitionClassName = void 0;
-	    if (status === EXITED) {
-	      transitionClassName = this.props.exitedClassName;
-	    } else if (status === ENTERING) {
-	      transitionClassName = this.props.enteringClassName;
-	    } else if (status === ENTERED) {
-	      transitionClassName = this.props.enteredClassName;
-	    } else if (status === EXITING) {
-	      transitionClassName = this.props.exitingClassName;
-	    }
-	
-	    var child = _react2["default"].Children.only(children);
-	    return _react2["default"].cloneElement(child, _extends({}, childProps, {
-	      className: (0, _classnames2["default"])(child.props.className, className, transitionClassName)
-	    }));
-	  };
-	
-	  return Transition;
-	}(_react.Component);
-	
-	Transition.propTypes = propTypes;
-	
-	Transition.defaultProps = defaultProps;
-	
-	exports["default"] = Transition;
-
-/***/ }),
-/* 150 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-	
-	var _classnames = __webpack_require__(5);
-	
-	var _classnames2 = _interopRequireDefault(_classnames);
-	
-	var _style = __webpack_require__(18);
-	
-	var _style2 = _interopRequireDefault(_style);
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _propTypes = __webpack_require__(6);
-	
-	var _propTypes2 = _interopRequireDefault(_propTypes);
-	
-	var _Transition = __webpack_require__(149);
-	
-	var _Transition2 = _interopRequireDefault(_Transition);
-	
-	var _capitalize = __webpack_require__(151);
-	
-	var _capitalize2 = _interopRequireDefault(_capitalize);
-	
-	var _tinperBeeCore = __webpack_require__(27);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-	
-	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
-	
-	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
-	
-	var MARGINS = {
-	  height: ['marginTop', 'marginBottom'],
-	  width: ['marginLeft', 'marginRight']
-	};
-	
-	// reading a dimension prop will cause the browser to recalculate,
-	// which will let our animations work
-	function triggerBrowserReflow(node) {
-	  node.offsetHeight; // eslint-disable-line no-unused-expressions
-	}
-	
-	function getDimensionValue(dimension, elem) {
-	  var value = elem['offset' + (0, _capitalize2["default"])(dimension)];
-	  var margins = MARGINS[dimension];
-	
-	  return value + parseInt((0, _style2["default"])(elem, margins[0]), 10) + parseInt((0, _style2["default"])(elem, margins[1]), 10);
-	}
-	
-	var propTypes = {
-	  /**
-	   * Show the component; triggers the expand or collapse animation
-	   */
-	  "in": _propTypes2["default"].bool,
-	
-	  /**
-	   * Unmount the component (remove it from the DOM) when it is collapsed
-	   */
-	  unmountOnExit: _propTypes2["default"].bool,
-	
-	  /**
-	   * Run the expand animation when the component mounts, if it is initially
-	   * shown
-	   */
-	  transitionAppear: _propTypes2["default"].bool,
-	
-	  /**
-	   * Duration of the collapse animation in milliseconds, to ensure that
-	   * finishing callbacks are fired even if the original browser transition end
-	   * events are canceled
-	   */
-	  timeout: _propTypes2["default"].number,
-	
-	  /**
-	   * Callback fired before the component expands
-	   */
-	  onEnter: _propTypes2["default"].func,
-	  /**
-	   * Callback fired after the component starts to expand
-	   */
-	  onEntering: _propTypes2["default"].func,
-	  /**
-	   * Callback fired after the component has expanded
-	   */
-	  onEntered: _propTypes2["default"].func,
-	  /**
-	   * Callback fired before the component collapses
-	   */
-	  onExit: _propTypes2["default"].func,
-	  /**
-	   * Callback fired after the component starts to collapse
-	   */
-	  onExiting: _propTypes2["default"].func,
-	  /**
-	   * Callback fired after the component has collapsed
-	   */
-	  onExited: _propTypes2["default"].func,
-	
-	  /**
-	   * The dimension used when collapsing, or a function that returns the
-	   * dimension
-	   *
-	   * _Note: Bootstrap only partially supports 'width'!
-	   * You will need to supply your own CSS animation for the `.width` CSS class._
-	   */
-	  dimension: _propTypes2["default"].oneOfType([_propTypes2["default"].oneOf(['height', 'width']), _propTypes2["default"].func]),
-	
-	  /**
-	   * Function that returns the height or width of the animating DOM node
-	   *
-	   * Allows for providing some custom logic for how much the Collapse component
-	   * should animate in its specified dimension. Called with the current
-	   * dimension prop value and the DOM node.
-	   */
-	  getDimensionValue: _propTypes2["default"].func,
-	
-	  /**
-	   * ARIA role of collapsible element
-	   */
-	  role: _propTypes2["default"].string
-	};
-	
-	var defaultProps = {
-	  "in": false,
-	  timeout: 300,
-	  unmountOnExit: false,
-	  transitionAppear: false,
-	
-	  dimension: 'height',
-	  getDimensionValue: getDimensionValue
-	};
-	
-	var Collapse = function (_React$Component) {
-	  _inherits(Collapse, _React$Component);
-	
-	  function Collapse(props, context) {
-	    _classCallCheck(this, Collapse);
-	
-	    var _this = _possibleConstructorReturn(this, _React$Component.call(this, props, context));
-	
-	    _this.handleEnter = _this.handleEnter.bind(_this);
-	    _this.handleEntering = _this.handleEntering.bind(_this);
-	    _this.handleEntered = _this.handleEntered.bind(_this);
-	    _this.handleExit = _this.handleExit.bind(_this);
-	    _this.handleExiting = _this.handleExiting.bind(_this);
-	    return _this;
-	  }
-	
-	  /* -- Expanding -- */
-	
-	
-	  Collapse.prototype.handleEnter = function handleEnter(elem) {
-	    var dimension = this._dimension();
-	    elem.style[dimension] = '0';
-	  };
-	
-	  Collapse.prototype.handleEntering = function handleEntering(elem) {
-	    var dimension = this._dimension();
-	    elem.style[dimension] = this._getScrollDimensionValue(elem, dimension);
-	  };
-	
-	  Collapse.prototype.handleEntered = function handleEntered(elem) {
-	    var dimension = this._dimension();
-	    elem.style[dimension] = null;
-	  };
-	
-	  /* -- Collapsing -- */
-	
-	
-	  Collapse.prototype.handleExit = function handleExit(elem) {
-	    var dimension = this._dimension();
-	    elem.style[dimension] = this.props.getDimensionValue(dimension, elem) + 'px';
-	    triggerBrowserReflow(elem);
-	  };
-	
-	  Collapse.prototype.handleExiting = function handleExiting(elem) {
-	    var dimension = this._dimension();
-	    elem.style[dimension] = '0';
-	  };
-	
-	  Collapse.prototype._dimension = function _dimension() {
-	    return typeof this.props.dimension === 'function' ? this.props.dimension() : this.props.dimension;
-	  };
-	
-	  // for testing
-	
-	
-	  Collapse.prototype._getScrollDimensionValue = function _getScrollDimensionValue(elem, dimension) {
-	    return elem['scroll' + (0, _capitalize2["default"])(dimension)] + 'px';
-	  };
-	
-	  Collapse.prototype.render = function render() {
-	    var _props = this.props,
-	        onEnter = _props.onEnter,
-	        onEntering = _props.onEntering,
-	        onEntered = _props.onEntered,
-	        onExit = _props.onExit,
-	        onExiting = _props.onExiting,
-	        className = _props.className,
-	        props = _objectWithoutProperties(_props, ['onEnter', 'onEntering', 'onEntered', 'onExit', 'onExiting', 'className']);
-	
-	    delete props.dimension;
-	    delete props.getDimensionValue;
-	
-	    var handleEnter = (0, _tinperBeeCore.createChainedFunction)(this.handleEnter, onEnter);
-	    var handleEntering = (0, _tinperBeeCore.createChainedFunction)(this.handleEntering, onEntering);
-	    var handleEntered = (0, _tinperBeeCore.createChainedFunction)(this.handleEntered, onEntered);
-	    var handleExit = (0, _tinperBeeCore.createChainedFunction)(this.handleExit, onExit);
-	    var handleExiting = (0, _tinperBeeCore.createChainedFunction)(this.handleExiting, onExiting);
-	
-	    var classes = {
-	      width: this._dimension() === 'width'
-	    };
-	
-	    return _react2["default"].createElement(_Transition2["default"], _extends({}, props, {
-	      'aria-expanded': props.role ? props["in"] : null,
-	      className: (0, _classnames2["default"])(className, classes),
-	      exitedClassName: 'collapse',
-	      exitingClassName: 'collapsing',
-	      enteredClassName: 'collapse in',
-	      enteringClassName: 'collapsing',
-	      onEnter: handleEnter,
-	      onEntering: handleEntering,
-	      onEntered: handleEntered,
-	      onExit: handleExit,
-	      onExiting: handleExiting
-	    }));
-	  };
-	
-	  return Collapse;
-	}(_react2["default"].Component);
-	
-	Collapse.propTypes = propTypes;
-	Collapse.defaultProps = defaultProps;
-	
-	exports["default"] = Collapse;
-	module.exports = exports['default'];
-
-/***/ }),
-/* 151 */
-/***/ (function(module, exports) {
-
-	"use strict";
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports["default"] = capitalize;
-	function capitalize(string) {
-	  return "" + string.charAt(0).toUpperCase() + string.slice(1);
-	}
-	module.exports = exports["default"];
-
-/***/ }),
-/* 152 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-	
-	var _classnames = __webpack_require__(5);
-	
-	var _classnames2 = _interopRequireDefault(_classnames);
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _propTypes = __webpack_require__(6);
-	
-	var _propTypes2 = _interopRequireDefault(_propTypes);
-	
-	var _Transition = __webpack_require__(149);
-	
-	var _Transition2 = _interopRequireDefault(_Transition);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-	
-	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
-	
-	var propTypes = {
-	  /**
-	   * Show the component; triggers the fade in or fade out animation
-	   */
-	  "in": _propTypes2["default"].bool,
-	
-	  /**
-	   * Unmount the component (remove it from the DOM) when it is faded out
-	   */
-	  unmountOnExit: _propTypes2["default"].bool,
-	
-	  /**
-	   * Run the fade in animation when the component mounts, if it is initially
-	   * shown
-	   */
-	  transitionAppear: _propTypes2["default"].bool,
-	
-	  /**
-	   * Duration of the fade animation in milliseconds, to ensure that finishing
-	   * callbacks are fired even if the original browser transition end events are
-	   * canceled
-	   */
-	  timeout: _propTypes2["default"].number,
-	
-	  /**
-	   * Callback fired before the component fades in
-	   */
-	  onEnter: _propTypes2["default"].func,
-	  /**
-	   * Callback fired after the component starts to fade in
-	   */
-	  onEntering: _propTypes2["default"].func,
-	  /**
-	   * Callback fired after the has component faded in
-	   */
-	  onEntered: _propTypes2["default"].func,
-	  /**
-	   * Callback fired before the component fades out
-	   */
-	  onExit: _propTypes2["default"].func,
-	  /**
-	   * Callback fired after the component starts to fade out
-	   */
-	  onExiting: _propTypes2["default"].func,
-	  /**
-	   * Callback fired after the component has faded out
-	   */
-	  onExited: _propTypes2["default"].func
-	};
-	
-	var defaultProps = {
-	  "in": false,
-	  timeout: 300,
-	  unmountOnExit: false,
-	  transitionAppear: false
-	};
-	
-	var Fade = function (_React$Component) {
-	  _inherits(Fade, _React$Component);
-	
-	  function Fade() {
-	    _classCallCheck(this, Fade);
-	
-	    return _possibleConstructorReturn(this, _React$Component.apply(this, arguments));
-	  }
-	
-	  Fade.prototype.render = function render() {
-	    return _react2["default"].createElement(_Transition2["default"], _extends({}, this.props, {
-	      className: (0, _classnames2["default"])(this.props.className, 'fade'),
-	      enteredClassName: 'in',
-	      enteringClassName: 'in'
-	    }));
-	  };
-	
-	  return Fade;
-	}(_react2["default"].Component);
-	
-	Fade.propTypes = propTypes;
-	Fade.defaultProps = defaultProps;
-	
-	exports["default"] = Fade;
-	module.exports = exports['default'];
-
-/***/ }),
-/* 153 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
 	
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 	
@@ -16317,7 +15583,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 154 */
+/* 149 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -16431,7 +15697,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 155 */
+/* 150 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -16507,7 +15773,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 156 */
+/* 151 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -16627,7 +15893,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 157 */
+/* 152 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -16703,7 +15969,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 158 */
+/* 153 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -16712,7 +15978,7 @@
 	  value: true
 	});
 	
-	var _FormControl = __webpack_require__(159);
+	var _FormControl = __webpack_require__(154);
 	
 	var _FormControl2 = _interopRequireDefault(_FormControl);
 	
@@ -16722,7 +15988,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 159 */
+/* 154 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -17005,7 +16271,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 160 */
+/* 155 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -17014,7 +16280,7 @@
 	  value: true
 	});
 	
-	var _Button = __webpack_require__(161);
+	var _Button = __webpack_require__(156);
 	
 	var _Button2 = _interopRequireDefault(_Button);
 	
@@ -17024,7 +16290,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 161 */
+/* 156 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -17199,7 +16465,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 162 */
+/* 157 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -17208,15 +16474,15 @@
 	  value: true
 	});
 	
-	var _RadioGroup = __webpack_require__(163);
+	var _RadioGroup = __webpack_require__(158);
 	
 	var _RadioGroup2 = _interopRequireDefault(_RadioGroup);
 	
-	var _Radio = __webpack_require__(164);
+	var _Radio = __webpack_require__(159);
 	
 	var _Radio2 = _interopRequireDefault(_Radio);
 	
-	var _RadioButton = __webpack_require__(165);
+	var _RadioButton = __webpack_require__(160);
 	
 	var _RadioButton2 = _interopRequireDefault(_RadioButton);
 	
@@ -17229,7 +16495,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 163 */
+/* 158 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -17289,7 +16555,8 @@
 	
 	  children: _propTypes2['default'].node.isRequired,
 	
-	  Component: _propTypes2['default'].oneOfType([_propTypes2['default'].string, _propTypes2['default'].func, _propTypes2['default'].object])
+	  Component: _propTypes2['default'].oneOfType([_propTypes2['default'].string, _propTypes2['default'].func, _propTypes2['default'].object]),
+	  disabled: _propTypes2['default'].bool
 	};
 	
 	var defaultProps = {
@@ -17335,9 +16602,11 @@
 	    _this.handleChange = function (value) {
 	      var onChange = _this.props.onChange;
 	
-	      _this.setState({
-	        selectedValue: value
-	      });
+	      if (!('selectedValue' in _this.props)) {
+	        _this.setState({
+	          selectedValue: value
+	        });
+	      }
 	      onChange && onChange(value);
 	    };
 	
@@ -17405,12 +16674,17 @@
 	        clsPrefix = _props2.clsPrefix,
 	        className = _props2.className,
 	        focusvalue = _props2.focusvalue,
-	        others = _objectWithoutProperties(_props2, ['Component', 'name', 'selectedValue', 'onChange', 'children', 'size', 'clsPrefix', 'className', 'focusvalue']);
+	        disabled = _props2.disabled,
+	        others = _objectWithoutProperties(_props2, ['Component', 'name', 'selectedValue', 'onChange', 'children', 'size', 'clsPrefix', 'className', 'focusvalue', 'disabled']);
 	
 	    return _react2['default'].createElement(
 	      Component,
 	      _extends({ className: (0, _classnames2['default'])(clsPrefix, className) }, others, { focusvalue: this.state.focusvalue }),
-	      children
+	      _react2['default'].Children.map(children, function (child) {
+	        return _react2['default'].cloneElement(child, {
+	          disabled: child.props.disabled || disabled
+	        });
+	      })
 	    );
 	  };
 	
@@ -17424,7 +16698,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 164 */
+/* 159 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -17450,6 +16724,8 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
 	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
+	
+	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 	
 	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 	
@@ -17499,9 +16775,26 @@
 	
 	    var _this = _possibleConstructorReturn(this, _React$Component.call(this, props, context));
 	
+	    _this.handleFocus = function (e) {
+	      if (e.target && e.target.type == 'radio') {
+	        _this.setState({
+	          focused: true
+	        });
+	      }
+	    };
+	
+	    _this.handleBlur = function (e) {
+	      if (e.target && e.target.type == 'radio') {
+	        _this.setState({
+	          focused: false
+	        });
+	      }
+	    };
+	
 	    var initChecked = typeof props.checked !== 'undefined' ? props.checked : props.defaultChecked;
 	    _this.state = {
-	      checked: initChecked
+	      checked: initChecked,
+	      focused: false
 	    };
 	    _this.handleClick = _this.handleClick.bind(_this);
 	
@@ -17523,6 +16816,8 @@
 	  };
 	
 	  Radio.prototype.render = function render() {
+	    var _classes;
+	
 	    var state = this.state,
 	        props = this.props,
 	        context = this.context;
@@ -17564,10 +16859,7 @@
 	      optional.checked = this.props.value === selectedValue;
 	    }
 	
-	    var classes = {
-	      'is-checked': typeof optional.checked !== 'undefined' ? optional.checked : checked,
-	      disabled: disabled
-	    };
+	    var classes = (_classes = {}, _defineProperty(_classes, clsPrefix + '-focused', this.state.focused), _defineProperty(_classes, 'is-checked', typeof optional.checked !== 'undefined' ? optional.checked : checked), _defineProperty(_classes, 'disabled', disabled), _classes);
 	
 	    if (colors) {
 	      classes[clsPrefix + '-' + colors] = true;
@@ -17590,7 +16882,9 @@
 	      type: 'radio',
 	      name: name,
 	      disabled: this.props.disabled,
-	      tabIndex: tabIndex
+	      tabIndex: tabIndex,
+	      onFocus: this.handleFocus,
+	      onBlur: this.handleBlur
 	    }));
 	    return _react2['default'].createElement(
 	      'label',
@@ -17615,7 +16909,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 165 */
+/* 160 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -17628,7 +16922,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _Radio = __webpack_require__(164);
+	var _Radio = __webpack_require__(159);
 	
 	var _Radio2 = _interopRequireDefault(_Radio);
 	
@@ -17676,7 +16970,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 166 */
+/* 161 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -17689,7 +16983,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _src = __webpack_require__(162);
+	var _src = __webpack_require__(157);
 	
 	var _src2 = _interopRequireDefault(_src);
 	
@@ -17771,7 +17065,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 167 */
+/* 162 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -17784,7 +17078,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _src = __webpack_require__(162);
+	var _src = __webpack_require__(157);
 	
 	var _src2 = _interopRequireDefault(_src);
 	
@@ -17868,7 +17162,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 168 */
+/* 163 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -17881,7 +17175,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _src = __webpack_require__(162);
+	var _src = __webpack_require__(157);
 	
 	var _src2 = _interopRequireDefault(_src);
 	
@@ -17972,7 +17266,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 169 */
+/* 164 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -17985,7 +17279,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _src = __webpack_require__(162);
+	var _src = __webpack_require__(157);
 	
 	var _src2 = _interopRequireDefault(_src);
 	
@@ -18083,20 +17377,20 @@
 	        { style: { marginTop: 16 } },
 	        _react2['default'].createElement(
 	          _src2['default'].RadioGroup,
-	          { selectedValue: 'apple' },
+	          { selectedValue: 'apple', disabled: true },
 	          _react2['default'].createElement(
 	            _src2['default'].RadioButton,
-	            { value: 'apple', disabled: true },
+	            { value: 'apple' },
 	            'apple'
 	          ),
 	          _react2['default'].createElement(
 	            _src2['default'].RadioButton,
-	            { value: 'banana', disabled: true },
+	            { value: 'banana' },
 	            'banana'
 	          ),
 	          _react2['default'].createElement(
 	            _src2['default'].RadioButton,
-	            { value: 'orange', disabled: true },
+	            { value: 'orange' },
 	            'orange'
 	          )
 	        )
@@ -18113,7 +17407,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 170 */
+/* 165 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -18126,7 +17420,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _src = __webpack_require__(162);
+	var _src = __webpack_require__(157);
 	
 	var _src2 = _interopRequireDefault(_src);
 	

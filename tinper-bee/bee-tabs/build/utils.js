@@ -15,6 +15,9 @@ exports.getTransformByIndex = getTransformByIndex;
 exports.getMarginStyle = getMarginStyle;
 exports.getStyle = getStyle;
 exports.setPxStyle = setPxStyle;
+exports.getLeft = getLeft;
+exports.getTop = getTop;
+exports.getDataAttr = getDataAttr;
 
 var _react = require('react');
 
@@ -97,4 +100,57 @@ function getStyle(el, property) {
 
 function setPxStyle(el, property, value) {
   el.style[property] = value + 'px';
+}
+
+function toNum(style, property) {
+  return +style.getPropertyValue(property).replace('px', '');
+}
+
+function getTypeValue(start, current, end, tabNode, wrapperNode) {
+  var total = getStyle(wrapperNode, 'padding-' + start);
+  if (!tabNode || !tabNode.parentNode) {
+    return total;
+  }
+
+  var childNodes = tabNode.parentNode.childNodes;
+
+  Array.prototype.some.call(childNodes, function (node) {
+    var style = window.getComputedStyle(node);
+
+    if (node !== tabNode) {
+      total += toNum(style, 'margin-' + start);
+      total += node[current];
+      total += toNum(style, 'margin-' + end);
+
+      if (style.boxSizing === 'content-box') {
+        total += toNum(style, 'border-' + start + '-width') + toNum(style, 'border-' + end + '-width');
+      }
+      return false;
+    }
+
+    // We need count current node margin
+    // ref: https://github.com/react-component/tabs/pull/139#issuecomment-431005262
+    total += toNum(style, 'margin-' + start);
+
+    return true;
+  });
+
+  return total;
+}
+
+function getLeft(tabNode, wrapperNode) {
+  return getTypeValue('left', 'offsetWidth', 'right', tabNode, wrapperNode);
+}
+
+function getTop(tabNode, wrapperNode) {
+  return getTypeValue('top', 'offsetHeight', 'bottom', tabNode, wrapperNode);
+}
+
+function getDataAttr(props) {
+  return Object.keys(props).reduce(function (prev, key) {
+    if (key.substr(0, 5) === 'aria-' || key.substr(0, 5) === 'data-' || key === 'role') {
+      prev[key] = props[key];
+    }
+    return prev;
+  }, {});
 }

@@ -2,16 +2,23 @@
 * This source code is quoted from rc-tabs.
 * homepage: https://github.com/react-component/tabs
 */
+/* eslint-disable react/prefer-stateless-function */
 import React from 'react';
-import TabBarMixin from './TabBarMixin';
-import createClass from 'create-react-class';
+import TabBarRootNode from './TabBarRootNode';
+import TabBarTabsNode from './TabBarTabsNode';
+import SaveRef from './SaveRef';
 
-const TabBar = createClass({
-  mixins: [TabBarMixin],
+export default class TabBar extends React.Component {
   render() {
-    const tabs = this.getTabs();
-    return this.getRootNode(tabs);
-  },
-});
+    return (
+      <SaveRef>
+        {(saveRef) => (
+          <TabBarRootNode saveRef={saveRef} {...this.props}>
+            <TabBarTabsNode saveRef={saveRef} {...this.props} />
+          </TabBarRootNode>
+        )}
+      </SaveRef>
+    );
+  }
+}
 
-export default TabBar;

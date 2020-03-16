@@ -38,6 +38,7 @@ class Picker extends React.Component {
       PropTypes.array,
     ]),
     align: PropTypes.object,
+    enterKeyDown: PropTypes.bool, //enter 键是否打开日期面板
   }
 
   static defaultProps = {
@@ -48,6 +49,7 @@ class Picker extends React.Component {
     defaultOpen: false,
     onChange: noop,
     onOpenChange: noop,
+    enterKeyDown:true,
   }
 
   constructor(props) {
@@ -105,8 +107,9 @@ class Picker extends React.Component {
   }
 
   onKeyDown = (event) => {
-    if (!this.state.open && (event.keyCode === KeyCode.DOWN || event.keyCode === KeyCode.ENTER)) {
-      this.open();
+    const { enterKeyDown } = this.props;
+    if (event.keyCode === KeyCode.DOWN || (enterKeyDown && event.keyCode === KeyCode.ENTER) ) {
+      if(!this.state.open) this.open();
       event.preventDefault();
     }
     this.props.onKeyDown&&this.props.onKeyDown(event);

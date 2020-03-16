@@ -1,3 +1,13 @@
+<a name="3.1.0"></a>
+# [3.1.0](https://github.com/tinper-bee/bee-popover/compare/v3.0.7...v3.1.0) (2020-02-08)
+
+
+### Bug Fixes
+
+* 支持弹框根据内容宽度自动撑开 ([405e478](https://github.com/tinper-bee/bee-popover/commit/405e478))
+
+
+
 <a name="3.0.7"></a>
 ## [3.0.7](https://github.com/tinper-bee/bee-popover/compare/v3.0.6...v3.0.7) (2020-01-14)
 

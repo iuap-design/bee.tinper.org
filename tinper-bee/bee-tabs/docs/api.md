@@ -33,13 +33,13 @@ import 'bee-tabs/build/Tabs.css';
 | renderTabContent       | 怎样去渲染tab的内容区域                            | ():React.Node     | -       |
 | onChange               | tabPanel改变的时候的回调函数                       | (key:string):void | -       |
 | destroyInactiveTabPane | 是否在更改选项卡时销毁无效标签                          | Boolean           | false   |
-| style                  | 添加到table上的style                          | String            | u-tabs  |
+| style                  | 添加到tab上的style                          | String            | u-tabs  |
 | onTabClick             | tab 被点击的回调                               | fun               | -       |
 | className              | 在tab组件上添加className                       | String               | -       |
 | extraContent           | 在导航上添加扩展元素                       |  ():React.Node                | -       |
 | onPrevClick            | 当出现滚动时，点击上一个时的回调函数                       | Function               | -       |
 | onNextClick            | 当出现滚动时，点击下一个时的回调函数                       | Function               | -       |
-| animated               | tab切换时，是否使用动画(1.0.8版本及其以后弃用，动画全部去掉) | bool               | true       |
+| animated               | tab切换时，是否使用动画(1.0.8版本及其以后弃用，动画全部去掉) | bool               | false       |
 | tabBarStyle            | tabBar样式选择，可以是['primary','simple','upborder','editable-card']中选择| String | 'simple'|
 | [v2.1.2新增]hideAdd | 是否隐藏加号图标，在 `type="editable-card"` 时有效 | boolean | false |
 | [v2.1.2新增]onEdit | 新增和删除页签的回调，在 `type="editable-card"` 时有效 | (targetKey, action): void | - |

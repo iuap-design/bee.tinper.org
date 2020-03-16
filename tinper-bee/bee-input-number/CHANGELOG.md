@@ -1,3 +1,88 @@
+<a name="2.2.25"></a>
+## [2.2.25](https://github.com/tinper-bee/bee-input-number/compare/v2.2.24...v2.2.25) (2020-03-16)
+
+
+
+<a name="2.2.24"></a>
+## [2.2.24](https://github.com/tinper-bee/bee-input-number/compare/v2.2.23...v2.2.24) (2020-03-09)
+
+
+
+<a name="2.2.23"></a>
+## [2.2.23](https://github.com/tinper-bee/bee-input-number/compare/v2.2.22...v2.2.23) (2020-03-08)
+
+
+
+<a name="2.2.22"></a>
+## [2.2.22](https://github.com/tinper-bee/bee-input-number/compare/v2.2.21...v2.2.22) (2020-03-08)
+
+
+
+<a name="2.2.21"></a>
+## [2.2.21](https://github.com/tinper-bee/bee-input-number/compare/v2.2.20...v2.2.21) (2020-03-04)
+
+
+
+<a name="2.2.20"></a>
+## [2.2.20](https://github.com/tinper-bee/bee-input-number/compare/v2.2.19...v2.2.20) (2020-03-02)
+
+
+
+<a name="2.2.19"></a>
+## [2.2.19](https://github.com/tinper-bee/bee-input-number/compare/v2.2.18...v2.2.19) (2020-02-18)
+
+
+
+<a name="2.2.18"></a>
+## [2.2.18](https://github.com/tinper-bee/bee-input-number/compare/v2.2.17...v2.2.18) (2020-02-16)
+
+
+
+<a name="2.2.17"></a>
+## [2.2.17](https://github.com/tinper-bee/bee-input-number/compare/v2.2.16...v2.2.17) (2020-02-16)
+
+
+
+<a name="2.2.16"></a>
+## [2.2.16](https://github.com/tinper-bee/bee-input-number/compare/v2.2.15...v2.2.16) (2020-02-14)
+
+
+
+<a name="2.2.15"></a>
+## [2.2.15](https://github.com/tinper-bee/bee-input-number/compare/v2.2.14...v2.2.15) (2020-02-14)
+
+
+
+<a name="2.2.14"></a>
+## [2.2.14](https://github.com/tinper-bee/bee-input-number/compare/v2.2.13...v2.2.14) (2020-02-12)
+
+
+
+<a name="2.2.13"></a>
+## [2.2.13](https://github.com/tinper-bee/bee-input-number/compare/v2.2.12...v2.2.13) (2020-02-11)
+
+
+
+<a name="2.2.12"></a>
+## [2.2.12](https://github.com/tinper-bee/bee-input-number/compare/v2.2.11...v2.2.12) (2020-02-10)
+
+
+
+<a name="2.2.11"></a>
+## [2.2.11](https://github.com/tinper-bee/bee-input-number/compare/v2.2.10...v2.2.11) (2020-01-14)
+
+
+
+<a name="2.2.10"></a>
+## [2.2.10](https://github.com/tinper-bee/bee-input-number/compare/v2.2.9...v2.2.10) (2020-01-13)
+
+
+
+<a name="2.2.9"></a>
+## [2.2.9](https://github.com/tinper-bee/bee-input-number/compare/v2.2.8...v2.2.9) (2020-01-08)
+
+
+
 <a name="2.2.8"></a>
 ## [2.2.8](https://github.com/tinper-bee/bee-input-number/compare/v2.2.7...v2.2.8) (2019-12-25)
 

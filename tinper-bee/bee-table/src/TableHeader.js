@@ -27,7 +27,7 @@ class TableHeader extends Component {
     this.drag = {
       option:''
     };
-    this.minWidth = 80;//确定最小宽度就是80
+    this.minWidth = parseInt(props.minColumnWidth);
     this.table = null;
     this._thead = null;//当前对象
     this.event = false;//避免多次绑定问题
@@ -38,6 +38,24 @@ class TableHeader extends Component {
   static defaultProps = {
     contentWidthDiff: 0
   };
+
+  componentWillReceiveProps(nextProps) {
+    // 表格column改变时，要重新绑定拖拽事件，否则拖拽不生效
+    const { columnsChildrenList:oldCols } = this.props;
+    const { columnsChildrenList:newCols } = nextProps;
+    if (this._thead) {
+      if(newCols.length !== oldCols.length){
+        this.event = false;
+        return;
+      } 
+      oldCols.some((item, index) => {
+        if (newCols[index] && newCols[index].dataIndex !== item.dataIndex) {
+          this.event = false;
+          return true;
+        }
+      });
+    }
+  }
 
   componentDidUpdate(){
     this.initTable();
@@ -234,7 +252,10 @@ class TableHeader extends Component {
           currentIndex = columnsChildrenList.findIndex(da=> (da.key && da.key.toLowerCase()) === columnKey.toLowerCase());
         }
       }
-      // console.log("currentIndex :",currentIndex);
+      if(currentIndex < 0){
+        console.log('Key must be set for column!')
+        return;
+      }
       let currentObj = this.table.cols[currentIndex];
       this.drag.currIndex = currentIndex;
       this.drag.oldLeft = event.x;
@@ -704,6 +725,57 @@ class TableHeader extends Component {
             className={`filter-date`}
             onClick={() => { }}
             format={rows[1][index]["format"] || "YYYY-MM-DD"}
+            dataIndex={dataIndex}//字段
+            onFilterChange={this.handlerFilterChange}//输入框回调
+            onFilterClear={this.handlerFilterClear}//清除回调
+            filterDropdown={rows[1][index]["filterdropdown"]}
+            filterDropdownType={rows[1][index]["filterdropdowntype"]}//下拉的条件类型为string,number
+            filterDropdownIncludeKeys={rows[1][index]["filterdropdownincludekeys"]}//下拉条件按照指定的keys去显示
+          />
+        );
+      //日期 年
+      case "dateyear":
+        return (
+          <FilterType
+            locale={locale}
+            rendertype={type}
+            className={`filter-date`}
+            onClick={() => { }}
+            format={rows[1][index]["format"] || "YYYY"}
+            dataIndex={dataIndex}//字段
+            onFilterChange={this.handlerFilterChange}//输入框回调
+            onFilterClear={this.handlerFilterClear}//清除回调
+            filterDropdown={rows[1][index]["filterdropdown"]}
+            filterDropdownType={rows[1][index]["filterdropdowntype"]}//下拉的条件类型为string,number
+            filterDropdownIncludeKeys={rows[1][index]["filterdropdownincludekeys"]}//下拉条件按照指定的keys去显示
+          />
+        );
+      //日期 月
+      case "datemonth":
+        return (
+          <FilterType
+            locale={locale}
+            rendertype={type}
+            className={`filter-date`}
+            onClick={() => { }}
+            format={rows[1][index]["format"] || "YYYY-MM"}
+            dataIndex={dataIndex}//字段
+            onFilterChange={this.handlerFilterChange}//输入框回调
+            onFilterClear={this.handlerFilterClear}//清除回调
+            filterDropdown={rows[1][index]["filterdropdown"]}
+            filterDropdownType={rows[1][index]["filterdropdowntype"]}//下拉的条件类型为string,number
+            filterDropdownIncludeKeys={rows[1][index]["filterdropdownincludekeys"]}//下拉条件按照指定的keys去显示
+          />
+        );
+      //日期 周
+      case "dateweek":
+        return (
+          <FilterType
+            locale={locale}
+            rendertype={type}
+            className={`filter-date`}
+            onClick={() => { }}
+            format={rows[1][index]["format"] || "YYYY-Wo"}
             dataIndex={dataIndex}//字段
             onFilterChange={this.handlerFilterChange}//输入框回调
             onFilterClear={this.handlerFilterClear}//清除回调

@@ -16,6 +16,7 @@ class Demo10 extends Component {
                 iconStyle="one"
                 min={-100}
                 max={100}
+                value={0}
                 displayCheckPrompt={true}
             />
         )

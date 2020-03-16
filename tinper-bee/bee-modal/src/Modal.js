@@ -180,7 +180,7 @@ class Modal extends React.Component {
     this.handleEntering = this.handleEntering.bind(this);
     this.handleExited = this.handleExited.bind(this);
     this.handleWindowResize = this.handleWindowResize.bind(this);
-    this.handleDialogClick = this.handleDialogClick.bind(this);
+    this.handleDialogClick = this.handleDialogClick.bind(this); 
   }
   static info =  ModalFunc;
   static success =  ModalFunc;
@@ -331,6 +331,7 @@ class Modal extends React.Component {
         transition={animation ? Fade : undefined}
         dialogTransitionTimeout={Modal.TRANSITION_DURATION}
         backdropTransitionTimeout={Modal.BACKDROP_TRANSITION_DURATION}
+        container={container}
       >
         <Dialog
           {...dialogProps}

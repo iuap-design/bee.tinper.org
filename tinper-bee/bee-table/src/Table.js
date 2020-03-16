@@ -222,17 +222,17 @@ class Table extends Component {
       // this.bodyTable.scrollTop = nextProps.scrollTop;
       this.scrollTop = nextProps.scrollTop;
     }
+    // fix:模态框中使用table，计算的滚动条宽度为0的bug
+    // fix:表格首次渲染时 display:none，再显示时，未重新计算，导致表行出现错位的bug
+    if(this.scrollbarWidth<=0 && this.props.scroll.y){
+      this.scrollbarWidth = measureScrollbar();
+    }
     if (!nextProps.originWidth) {
       this.computeTableWidth();
       this.firstDid = true;//避免重复update
     }
     if(nextProps.resetScroll){
       this.resetScrollX();
-    }
-    // fix:模态框中使用table，计算的滚动条宽度为0的bug
-    // fix:表格首次渲染时 display:none，再显示时，未重新计算，导致表行出现错位的bug
-    if(this.scrollbarWidth<=0 && this.props.scroll.y){
-      this.scrollbarWidth = measureScrollbar();
     }
 
     // console.log('this.scrollTop**********',this.scrollTop);
@@ -245,7 +245,7 @@ class Table extends Component {
     if(this.columnManager.isAnyColumnsFixed()) {
       this.syncFixedTableRowHeight();
     }
-
+  
     //适应模态框中表格、以及父容器宽度变化的情况
     if (typeof (this.props.scroll.x) !== 'number' && this.contentTable.getBoundingClientRect().width !== this.contentDomWidth && this.firstDid) {
       this.computeTableWidth();
@@ -500,7 +500,7 @@ class Table extends Component {
       } else if (width) {
         width = parseInt(width);
       }
-      if (lastShowIndex == i && width) {
+      if (!column.fixed && lastShowIndex == i && width) {
         width = width + contentWidthDiff;
       }
       const cell = {
@@ -717,11 +717,11 @@ class Table extends Component {
       const record = data[i];
       const key = this.getRowKey(record, i);
       // 兼容 NCC 以前的业务逻辑，支持外部通过 record 中的 isleaf 字段，判断是否为叶子节点
-      record['isLeaf'] = typeof record['isleaf'] === 'boolean' ? record['isleaf'] : record['isLeaf'];
-      // isLeaf 字段是在 bigData 里添加的，只有层级树大数据场景需要该字段
-      // isLeaf 有三种取值情况：true / false / null。（Table内部字段）
-      const isLeaf = typeof record['isLeaf'] === 'boolean' ? record['isLeaf'] : null;
-      const childrenColumn = isLeaf ? false : record[childrenColumnName];
+      record['_isLeaf'] = typeof record['isleaf'] === 'boolean' ? record['isleaf'] : record['_isLeaf'];
+      // _isLeaf 字段是在 bigData 里添加的，只有层级树大数据场景需要该字段
+      // _isLeaf 有三种取值情况：true / false / null。（Table内部字段）
+      const _isLeaf = typeof record['_isLeaf'] === 'boolean' ? record['_isLeaf'] : null;
+      const childrenColumn = _isLeaf ? false : record[childrenColumnName];
       const isRowExpanded = this.isRowExpanded(record, i);
       let expandedRowContent;
       let expandedContentHeight = 0;
@@ -789,7 +789,7 @@ class Table extends Component {
           visible={visible}
           expandRowByClick={expandRowByClick}
           onExpand={this.onExpanded}
-          expandable={expandedRowRender || ((childrenColumn && childrenColumn.length > 0) ? true : isLeaf === false)}
+          expandable={expandedRowRender || ((childrenColumn && childrenColumn.length > 0) ? true : _isLeaf === false)}
           expanded={isRowExpanded}
           clsPrefix={`${props.clsPrefix}-row`}
           childrenColumnName={childrenColumnName}

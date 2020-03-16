@@ -1,3 +1,18 @@
+<a name="2.0.16"></a>
+## [2.0.16](https://github.com/tinper-bee/bee-pagination/compare/v2.0.15...v2.0.16) (2020-03-09)
+
+
+
+<a name="2.0.15"></a>
+## [2.0.15](https://github.com/tinper-bee/bee-pagination/compare/v2.0.14...v2.0.15) (2020-02-05)
+
+
+### Bug Fixes
+
+* 只有一页的情况下，仍然可以上下翻页 ([94a8cd8](https://github.com/tinper-bee/bee-pagination/commit/94a8cd8))
+
+
+
 <a name="2.0.14"></a>
 ## [2.0.14](https://github.com/tinper-bee/bee-pagination/compare/v2.0.13...v2.0.14) (2019-11-21)
 

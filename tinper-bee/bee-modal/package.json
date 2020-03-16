@@ -1,6 +1,6 @@
 {
  "name": "bee-modal",
- "version": "2.1.5",
+ "version": "2.1.11",
  "description": "ModalDialogl ui component for react",
  "keywords": [
   "react",
@@ -44,7 +44,8 @@
   "classnames": "^2.2.5",
   "dom-helpers": "3.0.0",
   "re-resizable": "^4.11.0",
-  "tinper-bee-core": "latest"
+  "tinper-bee-core": "latest",
+  "bee-button": "latest"
  },
  "peerDependencies": {
   "react": "^15.3.0 || ^16.0",
@@ -52,7 +53,6 @@
   "prop-types": "15.6.0"
  },
  "devDependencies": {
-  "bee-button": "latest",
   "bee-checkbox": "latest",
   "bee-clipboard": "^2.0.0",
   "bee-datepicker": "^2.0.6",

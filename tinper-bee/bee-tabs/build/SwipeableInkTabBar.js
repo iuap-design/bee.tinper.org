@@ -4,94 +4,75 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; /**
-                                                                                                                                                                                                                                                                  * This source code is quoted from rc-tabs.
-                                                                                                                                                                                                                                                                  * homepage: https://github.com/react-component/tabs
-                                                                                                                                                                                                                                                                  */
-
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _InkTabBarMixin = require('./InkTabBarMixin');
+var _SwipeableTabBarNode = require('./SwipeableTabBarNode');
 
-var _InkTabBarMixin2 = _interopRequireDefault(_InkTabBarMixin);
+var _SwipeableTabBarNode2 = _interopRequireDefault(_SwipeableTabBarNode);
 
-var _SwipeableTabBarMixin = require('./SwipeableTabBarMixin');
+var _TabBarSwipeableTabs = require('./TabBarSwipeableTabs');
 
-var _SwipeableTabBarMixin2 = _interopRequireDefault(_SwipeableTabBarMixin);
+var _TabBarSwipeableTabs2 = _interopRequireDefault(_TabBarSwipeableTabs);
 
-var _TabBarMixin = require('./TabBarMixin');
+var _TabBarRootNode = require('./TabBarRootNode');
 
-var _TabBarMixin2 = _interopRequireDefault(_TabBarMixin);
+var _TabBarRootNode2 = _interopRequireDefault(_TabBarRootNode);
 
-var _createReactClass = require('create-react-class');
+var _InkTabBarNode = require('./InkTabBarNode');
 
-var _createReactClass2 = _interopRequireDefault(_createReactClass);
+var _InkTabBarNode2 = _interopRequireDefault(_InkTabBarNode);
+
+var _SaveRef = require('./SaveRef');
+
+var _SaveRef2 = _interopRequireDefault(_SaveRef);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-var SwipeableInkTabBar = (0, _createReactClass2["default"])({
-  mixins: [_TabBarMixin2["default"], _InkTabBarMixin2["default"], _SwipeableTabBarMixin2["default"]],
+function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
 
-  getSwipeableTabs: function getSwipeableTabs() {
-    var _this = this;
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-    var props = this.props;
-    var children = props.panels;
-    var activeKey = props.activeKey;
-    var rst = [];
-    var clsPrefix = props.clsPrefix;
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-    var tabStyle = {
-      display: 'flex',
-      flex: '0 0 ' + 1 / props.pageSize * 100 + '%'
-    };
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); } /* eslint-disable react/prefer-stateless-function */
 
-    _react2["default"].Children.forEach(children, function (child) {
-      if (!child) {
-        return;
-      }
-      var key = child.key;
-      var cls = activeKey === key ? clsPrefix + '-tab-active' : '';
-      cls += ' ' + clsPrefix + '-tab';
-      var events = {};
-      if (child.props.disabled) {
-        cls += ' ' + clsPrefix + '-tab-disabled';
-      } else {
-        events = {
-          onClick: _this.onTabClick.bind(_this, key)
-        };
-      }
-      var ref = {};
-      if (activeKey === key) {
-        ref.ref = 'activeTab';
-      }
-      rst.push(_react2["default"].createElement(
-        'div',
-        _extends({
-          role: 'tab',
-          style: tabStyle,
-          'aria-disabled': child.props.disabled ? 'true' : 'false',
-          'aria-selected': activeKey === key ? 'true' : 'false'
-        }, events, {
-          className: cls,
-          key: key
-        }, ref),
-        child.props.tab
-      ));
-    });
 
-    return rst;
-  },
-  render: function render() {
-    var inkBarNode = this.getInkBarNode();
-    var tabs = this.getSwipeableTabs();
-    var scrollbarNode = this.getSwipeBarNode([inkBarNode, tabs]);
-    return this.getRootNode(scrollbarNode);
+var SwipeableInkTabBar = function (_React$Component) {
+  _inherits(SwipeableInkTabBar, _React$Component);
+
+  function SwipeableInkTabBar() {
+    _classCallCheck(this, SwipeableInkTabBar);
+
+    return _possibleConstructorReturn(this, _React$Component.apply(this, arguments));
   }
-});
+
+  SwipeableInkTabBar.prototype.render = function render() {
+    var _this2 = this;
+
+    return _react2["default"].createElement(
+      _SaveRef2["default"],
+      null,
+      function (saveRef, getRef) {
+        return _react2["default"].createElement(
+          _TabBarRootNode2["default"],
+          _extends({ saveRef: saveRef }, _this2.props),
+          _react2["default"].createElement(
+            _SwipeableTabBarNode2["default"],
+            _extends({ saveRef: saveRef, getRef: getRef }, _this2.props),
+            _react2["default"].createElement(_TabBarSwipeableTabs2["default"], _extends({ saveRef: saveRef }, _this2.props)),
+            _react2["default"].createElement(_InkTabBarNode2["default"], _extends({ saveRef: saveRef, getRef: getRef }, _this2.props))
+          )
+        );
+      }
+    );
+  };
+
+  return SwipeableInkTabBar;
+}(_react2["default"].Component);
 
 exports["default"] = SwipeableInkTabBar;
 module.exports = exports['default'];

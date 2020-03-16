@@ -156,7 +156,8 @@ Picker.propTypes = {
   placement: _propTypes2["default"].any,
   value: _propTypes2["default"].oneOfType([_propTypes2["default"].object, _propTypes2["default"].array]),
   defaultValue: _propTypes2["default"].oneOfType([_propTypes2["default"].object, _propTypes2["default"].array]),
-  align: _propTypes2["default"].object
+  align: _propTypes2["default"].object,
+  enterKeyDown: _propTypes2["default"].bool //enter 键是否打开日期面板
 };
 Picker.defaultProps = {
   prefixCls: 'rc-calendar-picker',
@@ -165,7 +166,8 @@ Picker.defaultProps = {
   placement: 'bottomLeft',
   defaultOpen: false,
   onChange: noop,
-  onOpenChange: noop
+  onOpenChange: noop,
+  enterKeyDown: true
 };
 
 var _initialiseProps = function _initialiseProps() {
@@ -195,8 +197,10 @@ var _initialiseProps = function _initialiseProps() {
   };
 
   this.onKeyDown = function (event) {
-    if (!_this2.state.open && (event.keyCode === _KeyCode2["default"].DOWN || event.keyCode === _KeyCode2["default"].ENTER)) {
-      _this2.open();
+    var enterKeyDown = _this2.props.enterKeyDown;
+
+    if (event.keyCode === _KeyCode2["default"].DOWN || enterKeyDown && event.keyCode === _KeyCode2["default"].ENTER) {
+      if (!_this2.state.open) _this2.open();
       event.preventDefault();
     }
     _this2.props.onKeyDown && _this2.props.onKeyDown(event);

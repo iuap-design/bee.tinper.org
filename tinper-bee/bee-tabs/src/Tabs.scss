@@ -50,6 +50,7 @@ $tabs-border-color: rgb(233,233,233);
     border: none;
     background-color: transparent;
     position: absolute;
+    opacity: 0;
   }
 
   .u-tabs-tab-prev-icon,
@@ -76,6 +77,12 @@ $tabs-border-color: rgb(233,233,233);
   .u-tabs-tab-btn-disabled {
     cursor: default;
     color: #ccc;
+  }
+  &-top &-tab-arrow-show,
+  &-left &-tab-arrow-show,
+  &-bottom &-tab-arrow-show,
+  &-right &-tab-arrow-show {
+    opacity: 1;
   }
 
   .u-tabs-nav-wrap {

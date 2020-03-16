@@ -8,11 +8,11 @@ module.exports = {
     'down': '展开',
     'up': '收起',
     'en-us': {
-        'title': 'screening conditions',
-        'resetName': 'reset',
-        'searchName': 'submit',
-        'down': 'open',
-        'up': 'close'
+        'title': 'Default Filter',
+        'resetName': 'Clear',
+        'searchName': 'Query',
+        'down': 'Expand',
+        'up': 'Collapse'
     },
     'zh-tw': {
         'title': '默認篩選',

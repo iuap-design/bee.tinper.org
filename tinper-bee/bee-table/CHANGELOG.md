@@ -1,3 +1,69 @@
+<a name="2.2.41"></a>
+## [2.2.41](https://github.com/tinper-bee/bee-table/compare/v2.2.40...v2.2.41) (2020-03-13)
+
+
+
+<a name="2.2.40"></a>
+## [2.2.40](https://github.com/tinper-bee/bee-table/compare/v2.2.39...v2.2.40) (2020-03-11)
+
+
+### Features
+
+* **bee-table:** en_us.js默认翻译修改 ([1fe5f57](https://github.com/tinper-bee/bee-table/commit/1fe5f57))
+* **bee-table:** tableCell colSpan==0 return null & isLeaf 改为 _isLeaf ([4452dc6](https://github.com/tinper-bee/bee-table/commit/4452dc6))
+
+
+
+<a name="2.2.39"></a>
+## [2.2.39](https://github.com/tinper-bee/bee-table/compare/v2.2.38...v2.2.39) (2020-03-09)
+
+
+### Bug Fixes
+
+* **bee-table:** 过滤行多语设置bug ([99c0289](https://github.com/tinper-bee/bee-table/commit/99c0289))
+
+
+
+<a name="2.2.38"></a>
+## [2.2.38](https://github.com/tinper-bee/bee-table/compare/v2.2.37...v2.2.38) (2020-03-02)
+
+
+### Features
+
+* **bee-table:** 列过滤 filterType新增 dateyear(日期-年)、datemonth(日期-月)、dateweek(日期-周) 类型 ([f892ba3](https://github.com/tinper-bee/bee-table/commit/f892ba3))
+
+
+
+<a name="2.2.37"></a>
+## [2.2.37](https://github.com/tinper-bee/bee-table/compare/v2.2.36...v2.2.37) (2020-02-28)
+
+
+
+<a name="2.2.36"></a>
+## [2.2.36](https://github.com/tinper-bee/bee-table/compare/v2.2.35...v2.2.36) (2020-02-12)
+
+
+
+<a name="2.2.35"></a>
+## [2.2.35](https://github.com/tinper-bee/bee-table/compare/v2.2.34...v2.2.35) (2020-02-11)
+
+
+### Bug Fixes
+
+* **bee-table:** bugfix 设置expandRowByClick，无法显示箭头，去掉 expandRowByClick 判断 ([7a27bc5](https://github.com/tinper-bee/bee-table/commit/7a27bc5))
+
+
+
+<a name="2.2.34"></a>
+## [2.2.34](https://github.com/tinper-bee/bee-table/compare/v2.2.33...v2.2.34) (2020-02-10)
+
+
+### Bug Fixes
+
+* 解决treetable右侧出现空白的问题 ([41a51ce](https://github.com/tinper-bee/bee-table/commit/41a51ce))
+
+
+
 <a name="2.2.33"></a>
 ## [2.2.33](https://github.com/tinper-bee/bee-table/compare/v2.2.31...v2.2.33) (2020-01-10)
 
