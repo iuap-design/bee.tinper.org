@@ -6,6 +6,12 @@ const exec = require('child_process').exec;
 const path = require('path')
 let componentsSource = require('../../static/componentsSource.json');
 
+componentsSource['bee-complex-grid']={}
+componentsSource['bee-label']={}
+componentsSource['bee-progress']={}
+componentsSource['bee-city-select']={}
+componentsSource['bee-city-select']={}
+delete componentsSource['bee-affix']
 
 /**
  * 还原
@@ -77,9 +83,10 @@ function installD(item){
 /**
  * git push
  * @param {*} item 
+ * @param {*} msg commit信息
  */
-function push(item){
-    let cmd = `cd ../../../tinper-bee/${item}/ && git add . && git commit -m"demo修改" && git push ` ;
+function push(item,msg){
+    let cmd = `cd ../../../tinper-bee/${item}/ && git add . && git commit -m"${msg}" && git push ` ;
     exec(cmd,(error)=>{
         if(error){
             console.log(`❌❌❌❌❌❌❌❌ ${item} 出错了！`)
@@ -90,6 +97,7 @@ function push(item){
     })
 }
 
+//批量替换 index.html
 function cp(item){
     let cmd = `cp ../../../tinper-bee/bee-button/demo/index-demo-base.js  ../../../tinper-bee/${item}/demo && cp ../../../tinper-bee/bee-button/demo/atom-one-dark.css  ../../../tinper-bee/${item}/demo && cp ../../../tinper-bee/bee-button/index.html ../../../tinper-bee/${item}/index.html`;
     exec(cmd,(error)=>{
@@ -102,6 +110,17 @@ function cp(item){
     })
 }
 
+function cpNpmIgnore(item){
+    let cmd = `cp ../../../tinper-bee/bee-affix/.npmignore  ../../../tinper-bee/${item} && cp ../../../tinper-bee/bee-affix/index.html ../../../tinper-bee/${item}/index.html`;
+    exec(cmd,(error)=>{
+        if(error){
+            console.log(`❌❌❌❌❌❌❌❌ ${item} 出错了！`)
+            console.log(error);
+        }else{
+            console.log(`😀😀😀 ${item} 成功了！`)
+        }
+    })
+}
 
 async function rename(item){
     let filePath = path.join(__dirname, `../../../../../tinper-bee/${item}/docs/api.md`);
@@ -127,9 +146,10 @@ async function rename(item){
 Object.keys(componentsSource).forEach(item=>{
     // reset(item)
     // install(item)
-    // push(item)
+    // push(item,'react改为development npm发包忽略 demo,docs,test,dist目录')
     // runDev(item)
     // installD(item)
     // runDev(item)
     // rename(item)
+    // cpNpmIgnore(item)
 })
