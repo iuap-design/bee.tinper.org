@@ -1,4 +1,7 @@
-export default {
+'use strict';
+
+exports.__esModule = true;
+exports['default'] = {
   today: '오늘',
   now: '현재 시각',
   backToToday: '오늘로 돌아가기',
@@ -9,7 +12,6 @@ export default {
   timeSelect: '시간 선택',
   dateSelect: '날짜 선택',
   monthSelect: '달 선택',
-  monthFormat: 'MM',
   yearSelect: '연 선택',
   decadeSelect: '연대 선택',
   yearFormat: 'YYYY년',
@@ -24,5 +26,6 @@ export default {
   previousDecade: '이전 연대',
   nextDecade: '다음 연대',
   previousCentury: '이전 세기',
-  nextCentury: '다음 세기',
+  nextCentury: '다음 세기'
 };
+module.exports = exports['default'];

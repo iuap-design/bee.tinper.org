@@ -208,6 +208,10 @@ var InputNumber = function (_Component) {
      */
 
     /**
+     * 恢复科学技术法的问题
+     */
+
+    /**
      * 设置增加减少按钮是否可用
      */
 
@@ -261,6 +265,7 @@ var InputNumber = function (_Component) {
 
         value = precision != null && !this.focus ? this.getPrecision(value) : value;
         value = format && !this.focus ? format(value) : value;
+        value = String(value).indexOf("e") !== -1 ? this.getFullNum(value) : value;
         if (minusRight && String(value).indexOf('-') != -1) {
             value = String(value).replace("-", "") + "-";
         }
@@ -376,7 +381,7 @@ var _initialiseProps = function _initialiseProps() {
             }
             value = Number(value);
         }
-        if (value != undefined) {
+        if (value != undefined && value != null) {
             if (value === '') {
                 currentValue = '';
                 return {
@@ -502,8 +507,7 @@ var _initialiseProps = function _initialiseProps() {
         });
         if (value === '-') {
             onChange && onChange(value);
-        }
-        if (value == '.' || value.indexOf('.') == value.length - 1) {
+        } else if (value == '.' || value.indexOf('.') == value.length - 1) {
             //当输入小数点的时候
             onChange && onChange(value);
         } else if (value[value.indexOf('.') + 1] == 0) {
@@ -539,6 +543,21 @@ var _initialiseProps = function _initialiseProps() {
             max = _props3.max;
 
         onFocus && onFocus(_this3.getPrecision(_this3.state.value), e);
+    };
+
+    this.getFullNum = function (num) {
+        //处理非数字
+        if (isNaN(num)) {
+            return num;
+        };
+
+        //处理不需要转换的数字
+        var str = '' + num;
+        if (!/e/i.test(str)) {
+            return num;
+        };
+        var _precision = _this3.props.precision ? _this3.props.precision : 18;
+        return Number(num).toFixed(_precision).replace(/\.?0+$/, "");
     };
 
     this.handleBlur = function (v, e) {
@@ -664,6 +683,8 @@ var _initialiseProps = function _initialiseProps() {
         _this3.setState({
             value: value,
             showValue: toThousands(value)
+        }, function () {
+            _this3.input.input.focus && _this3.input.input.focus();
         });
         toNumber ? onChange && onChange(Number(value)) : onChange && onChange(value);
         _this3.handleBtnClick('down', value);
@@ -697,6 +718,8 @@ var _initialiseProps = function _initialiseProps() {
         _this3.setState({
             value: value,
             showValue: toThousands(value)
+        }, function () {
+            _this3.input.input.focus && _this3.input.input.focus();
         });
         toNumber ? onChange && onChange(Number(value)) : onChange && onChange(value);
         _this3.handleBtnClick('up', value);
@@ -772,13 +795,15 @@ var _initialiseProps = function _initialiseProps() {
         _this3.minus(value);
         _this3.clear();
         _this3.timer = setTimeout(function () {
-            _this3.handleReduceMouseDown();
+            _this3.handleReduceMouseDown(e);
         }, delay);
     };
 
     this.getPrecision = function (value) {
+        if (value == null || value == undefined) return value;
         if (!value && value === "") return value;
         value = String(value);
+        value = value.indexOf("e") !== -1 ? _this3.getFullNum(value) : value;
         var precision = _this3.props.precision;
 
         if (precision === 0) return value;
@@ -790,12 +815,19 @@ var _initialiseProps = function _initialiseProps() {
             after = value.substring(len - 1, len);
         before = before === "-" ? before : "";
         after = after === "-" ? after : "";
-        value = value.replace("-", '');
-        var precV = "000000000000";
+        //是科学计数法，不replace - 
+        if (before) value = value.substring(1, len - 1);
+        if (after) value = value.substring(0, len - 1);
+        // value = value.replace("-",'');
+        var precV = "000000000000000000000000000000000000000000000000000000000000000000000000";
         if (value.indexOf(".") === -1) {
             precV = precV.substr(0, precision);
             precV = precV ? "." + precV : precV;
-            value = value + precV;
+            if (!isNaN(value) && (value.indexOf('-') != -1 || value.indexOf('+') != -1) && value.indexOf('e') != -1) {//是科学计数法，不拼接0000000
+
+            } else {
+                value = value + precV;
+            }
         }
         return before + Number(value).toFixed(precision) + after;
     };

@@ -39684,17 +39684,15 @@
 	
 	var _propTypes2 = _interopRequireDefault(_propTypes);
 	
-	var _classnames2 = __webpack_require__(5);
+	var _classnames = __webpack_require__(5);
 	
-	var _classnames3 = _interopRequireDefault(_classnames2);
+	var _classnames2 = _interopRequireDefault(_classnames);
 	
 	var _utils = __webpack_require__(281);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
 	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
-	
-	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 	
 	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 	
@@ -39741,7 +39739,9 @@
 	        direction = _props.direction,
 	        restProps = _objectWithoutProperties(_props, ['clsPrefix', 'onKeyDown', 'className', 'extraContent', 'style', 'tabBarPosition', 'children', 'direction']);
 	
-	    var cls = (0, _classnames3['default'])(clsPrefix + '-bar', _defineProperty({}, className, !!className));
+	    var cls = (0, _classnames2['default'])(clsPrefix + '-bar', {
+	      // [className]: !!className,
+	    });
 	    var topOrBottom = tabBarPosition === 'top' || tabBarPosition === 'bottom';
 	    var extraContentStyle = extraContent && extraContent.props ? extraContent.props.style : {};
 	    var newChildren = children;
@@ -39759,8 +39759,8 @@
 	        className: cls,
 	        tabIndex: '0',
 	        ref: this.props.saveRef('root'),
-	        onKeyDown: onKeyDown,
-	        style: style
+	        onKeyDown: onKeyDown
+	        // style={style}
 	      }, (0, _utils.getDataAttr)(restProps)),
 	      newChildren
 	    );

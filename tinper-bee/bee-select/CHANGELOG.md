@@ -1,3 +1,18 @@
+<a name="2.0.19"></a>
+## [2.0.19](https://github.com/tinper-bee/bee-select/compare/v2.0.18...v2.0.19) (2020-04-14)
+
+
+### Bug Fixes
+
+* **bee-select:** forcePopupAlign方法加合法校验 ([9e9ba03](https://github.com/tinper-bee/bee-select/commit/9e9ba03))
+
+
+### Features
+
+* 增加参数openDropdownWhenFocus，支持聚焦时自动展开下拉面板 ([0fbad97](https://github.com/tinper-bee/bee-select/commit/0fbad97))
+
+
+
 <a name="2.0.18"></a>
 ## [2.0.18](https://github.com/tinper-bee/bee-select/compare/v2.0.17...v2.0.18) (2019-11-19)
 

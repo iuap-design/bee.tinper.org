@@ -1,3 +1,13 @@
+<a name="2.0.13"></a>
+## [2.0.13](https://github.com/tinper-bee/bee-timepicker/compare/v2.0.12...v2.0.13) (2020-04-01)
+
+
+### Features
+
+* 回车收起面板 ([5ee5ed3](https://github.com/tinper-bee/bee-timepicker/commit/5ee5ed3))
+
+
+
 <a name="2.0.12"></a>
 ## [2.0.12](https://github.com/tinper-bee/bee-timepicker/compare/v2.0.11...v2.0.12) (2020-01-09)
 

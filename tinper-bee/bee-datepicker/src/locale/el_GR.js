@@ -1,4 +1,7 @@
-export default {
+'use strict';
+
+exports.__esModule = true;
+exports['default'] = {
   today: 'Σήμερα',
   now: 'Τώρα',
   backToToday: 'Πίσω στη σημερινή μέρα',
@@ -9,7 +12,6 @@ export default {
   timeSelect: 'Επιλογή ώρας',
   dateSelect: 'Επιλογή ημερομηνίας',
   monthSelect: 'Επιλογή μήνα',
-  monthFormat: 'M',
   yearSelect: 'Επιλογή έτους',
   decadeSelect: 'Επιλογή δεκαετίας',
   yearFormat: 'YYYY',
@@ -24,5 +26,6 @@ export default {
   previousDecade: 'Προηγούμενη δεκαετία',
   nextDecade: 'Επόμενη δεκαετία',
   previousCentury: 'Προηγούμενος αιώνας',
-  nextCentury: 'Επόμενος αιώνας',
+  nextCentury: 'Επόμενος αιώνας'
 };
+module.exports = exports['default'];

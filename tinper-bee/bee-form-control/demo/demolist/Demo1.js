@@ -18,7 +18,7 @@ export default class Demo1 extends Component {
     onChange = (v) => {
         this.setState({value: v});
     }
-    onBlur = (v) => {
+    onBlur = (v,e) => {
         console.log(v);
     }
 
@@ -32,6 +32,7 @@ export default class Demo1 extends Component {
                     onBlur={this.onBlur}
                     size="sm"
                     focusSelect={true}
+                    showClose={true}
                 />
                 <FormControl
                     className="demo1-input"

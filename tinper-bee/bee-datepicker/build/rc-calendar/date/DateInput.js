@@ -169,7 +169,8 @@ var _initialiseProps = function _initialiseProps() {
         disabledDate = _props.disabledDate,
         format = _props.format,
         onChange = _props.onChange,
-        selectedValue = _props.selectedValue;
+        selectedValue = _props.selectedValue,
+        validatorFunc = _props.validatorFunc;
 
     // 没有内容，合法并直接退出
 
@@ -183,7 +184,7 @@ var _initialiseProps = function _initialiseProps() {
     }
 
     // 不合法直接退出
-    var parsed = (0, _moment2["default"])(str, format) || (0, _moment2["default"])(str);
+    var parsed = (0, _moment2["default"])(str, format, true);
     if (!parsed.isValid()) {
       _this2.setState({
         // invalid: true,
@@ -191,6 +192,12 @@ var _initialiseProps = function _initialiseProps() {
       });
       return;
     }
+    if (!_this2.props.validatorFunc(str)) {
+      _this2.setState({
+        str: str
+      });
+      return;
+    };
 
     var value = _this2.props.value.clone();
     value.year(parsed.year()).month(parsed.month()).date(parsed.date()).hour(parsed.hour()).minute(parsed.minute()).second(parsed.second());
@@ -234,13 +241,19 @@ var _initialiseProps = function _initialiseProps() {
     }
 
     // 不合法直接退出
-    var parsed = (0, _moment2["default"])(str, format) || (0, _moment2["default"])(str);
+    var parsed = (0, _moment2["default"])(str, format, true);
     if (!parsed.isValid()) {
       _this2.setState({
         invalid: true
       });
       return;
     }
+    if (!_this2.props.validatorFunc(str)) {
+      _this2.setState({
+        invalid: true
+      });
+      return;
+    };
 
     var value = _this2.props.value.clone();
     value.year(parsed.year()).month(parsed.month()).date(parsed.date()).hour(parsed.hour()).minute(parsed.minute()).second(parsed.second());
@@ -273,10 +286,11 @@ var _initialiseProps = function _initialiseProps() {
         value = _props3.value,
         onKeyDown = _props3.onKeyDown,
         format = _props3.format,
-        isRange = _props3.isRange;
+        isRange = _props3.isRange,
+        validatorFunc = _props3.validatorFunc;
 
     var str = e.target.value;
-    var parsed = (0, _moment2["default"])(str, format) || (0, _moment2["default"])(str);
+    var parsed = (0, _moment2["default"])(str, format, true);
     if (e.keyCode === _tinperBeeCore.KeyCode.ENTER) {
       if (parsed.isValid() && onSelect) {
         isRange ? onSelect(parsed.clone()) : onSelect(value.clone()); //FIX https://github.com/iuap-design/tinper-bee/issues/183
@@ -291,6 +305,11 @@ var _initialiseProps = function _initialiseProps() {
       }
       // 有内容，判断是否合法
       if (!parsed.isValid()) {
+        _this2.setState({
+          invalid: true
+        });
+      }
+      if (!validatorFunc(str)) {
         _this2.setState({
           invalid: true
         });

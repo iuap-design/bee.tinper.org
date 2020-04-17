@@ -1,9 +1,7 @@
 'use strict';
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports["default"] = {
+exports.__esModule = true;
+exports['default'] = {
   today: 'Hari ini',
   now: 'Sekarang',
   backToToday: 'Kembali ke hari ini',
@@ -15,18 +13,17 @@ exports["default"] = {
   dateSelect: 'pilih tanggal',
   weekSelect: 'Pilih satu minggu',
   monthSelect: 'Pilih satu bulan',
-  monthFormat: 'M',
   yearSelect: 'Pilih satu tahun',
   decadeSelect: 'Pilih satu dekade',
   yearFormat: 'YYYY',
-  dateFormat: 'M/D/YYYY',
+  dateFormat: 'D/M/YYYY',
   dayFormat: 'D',
-  dateTimeFormat: 'M/D/YYYY HH:mm:ss',
+  dateTimeFormat: 'D/M/YYYY HH:mm:ss',
   monthBeforeYear: true,
   previousMonth: 'Bulan sebelumnya (PageUp)',
-  nextMonth: 'Bulan depan (PageDown)',
+  nextMonth: 'Bulan selanjutnya (PageDown)',
   previousYear: 'Tahun lalu (Control + kiri)',
-  nextYear: 'Tahun depan (Kontrol + kanan)',
+  nextYear: 'Tahun selanjutnya (Kontrol + kanan)',
   previousDecade: 'Dekade terakhir',
   nextDecade: 'Dekade berikutnya',
   previousCentury: 'Abad terakhir',

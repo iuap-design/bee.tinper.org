@@ -72,6 +72,10 @@ export default function bigData(Table) {
           _this.cachedRowHeight = []; //缓存每行的高度
           _this.cachedRowParentIndex = [];
           _this.computeCachedRowParentIndex(newData);
+          // fix：切换数据源，startIndex、endIndex错误
+          _this.currentIndex = 0;
+          _this.startIndex = _this.currentIndex; //数据开始位置
+          _this.endIndex = _this.currentIndex + _this.loadCount; 
         }
         _this.treeData = [];
         _this.flatTreeData = [];
@@ -132,7 +136,8 @@ export default function bigData(Table) {
           dataCopy = treeData;
       if(Array.isArray(dataCopy)){
         for (let i=0, l=dataCopy.length; i<l; i++) {
-          let { key, children, ...props } = dataCopy[i],
+          let { children, ...props } = dataCopy[i],
+              key = this.getRowKey(dataCopy[i],i),//bugfix生成key字段，否则树无法展开
               dataCopyI = new Object(),
               _isLeaf = (children && children.length > 0) ? false : true,
               //如果父节点是收起状态，则子节点的展开状态无意义。（一级节点或根节点直接判断自身状态即可）

@@ -66,6 +66,10 @@ class Tree extends React.Component {
             prevProps: this.props
         })
     }
+    // ncc制造，树参照包含下级需求，checkStrictly 动态改变后，拿到组件内部属性 this.checkedKeys
+    if(this.props._getTreeObj){
+      this.props._getTreeObj(this);
+    }
     // 启用懒加载，计算树节点真实高度
     if(!lazyLoad) return;
     const treenodes = this.tree.querySelectorAll('.u-tree-treenode-close')[0];
@@ -79,7 +83,7 @@ class Tree extends React.Component {
   // 判断初始化挂载时，有没有渲染树节点
   hasTreeNode = () => {
     const { children, treeData } = this.props;
-    let noTreeNode = typeof children === 'undefined' || (typeof children === 'object' && children.length === 0) || (typeof treeData === 'object' && treeData.length === 0);
+    let noTreeNode = children === null || typeof children === 'undefined' || (typeof children === 'object' && children.length === 0) || (typeof treeData === 'object' && treeData.length === 0);
     return !noTreeNode;
   }
 

@@ -1,4 +1,7 @@
-export default {
+'use strict';
+
+exports.__esModule = true;
+exports['default'] = {
   today: 'Vandaag',
   now: 'Nu',
   backToToday: 'Terug naar vandaag',
@@ -9,7 +12,6 @@ export default {
   timeSelect: 'Selecteer tijd',
   dateSelect: 'Selecteer datum',
   monthSelect: 'Kies een maand',
-  monthFormat: 'M',
   yearSelect: 'Kies een jaar',
   decadeSelect: 'Kies een decennium',
   yearFormat: 'YYYY',
@@ -24,5 +26,6 @@ export default {
   previousDecade: 'Vorig decennium',
   nextDecade: 'Volgend decennium',
   previousCentury: 'Vorige eeuw',
-  nextCentury: 'Volgende eeuw',
+  nextCentury: 'Volgende eeuw'
 };
+module.exports = exports['default'];

@@ -74,7 +74,7 @@ class ConfirmDialog extends React.Component{
         width={width}
         className={classString}
         show = {show}
-        onHide = {close}
+        onHide = { ()=>{ close(); onCancel? onCancel() : ()=>{return} } } 
         backdrop = {backdrop} 
         backdropClosable = {backdropClosable}
         centered = {centered}

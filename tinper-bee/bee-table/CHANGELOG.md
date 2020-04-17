@@ -1,3 +1,68 @@
+<a name="2.2.48"></a>
+## [2.2.48](https://github.com/tinper-bee/bee-table/compare/v2.2.47...v2.2.48) (2020-04-16)
+
+
+### Features
+
+* **bee-table:** column render方法新增第四个参数为column设置的属性 ([b4b0c95](https://github.com/tinper-bee/bee-table/commit/b4b0c95))
+
+
+
+<a name="2.2.47"></a>
+## [2.2.47](https://github.com/tinper-bee/bee-table/compare/v2.2.46...v2.2.47) (2020-04-16)
+
+
+### Features
+
+* **bee-table:** 子表数据减少时，动态计算高度 ([a4df9ce](https://github.com/tinper-bee/bee-table/commit/a4df9ce))
+
+
+
+<a name="2.2.46"></a>
+## [2.2.46](https://github.com/tinper-bee/bee-table/compare/v2.2.45...v2.2.46) (2020-04-10)
+
+
+### Bug Fixes
+
+* **bee-table:** bug修复：ie 下报错 对象不支持 “forEach” 方法、切换数据源，startIndex、endIndex错误 ([ead7706](https://github.com/tinper-bee/bee-table/commit/ead7706))
+
+
+
+<a name="2.2.45"></a>
+## [2.2.45](https://github.com/tinper-bee/bee-table/compare/v2.2.44...v2.2.45) (2020-04-01)
+
+
+### Bug Fixes
+
+* **bee-table:** 树形表格数据没有key无法展开bug ([a24a865](https://github.com/tinper-bee/bee-table/commit/a24a865))
+
+
+
+<a name="2.2.44"></a>
+## [2.2.44](https://github.com/tinper-bee/bee-table/compare/v2.2.43...v2.2.44) (2020-03-30)
+
+
+
+<a name="2.2.43"></a>
+## [2.2.43](https://github.com/tinper-bee/bee-table/compare/v2.2.42...v2.2.43) (2020-03-24)
+
+
+### Bug Fixes
+
+* **bee-table:** TableCell去掉Frament ([606ed5d](https://github.com/tinper-bee/bee-table/commit/606ed5d))
+
+
+
+<a name="2.2.42"></a>
+## [2.2.42](https://github.com/tinper-bee/bee-table/compare/v2.2.41...v2.2.42) (2020-03-22)
+
+
+### Features
+
+* 增加columnKey属性，column[columnKey]可作为主键 ([da2414b](https://github.com/tinper-bee/bee-table/commit/da2414b))
+
+
+
 <a name="2.2.41"></a>
 ## [2.2.41](https://github.com/tinper-bee/bee-table/compare/v2.2.40...v2.2.41) (2020-03-13)
 
@@ -438,17 +503,17 @@
 
 
 <a name="2.0.9"></a>
-## [2.0.9](https://github.com/tinper-bee/bee-table/compare/v2.0.8...v2.0.9) (2019-03-27)
-
-
-
-<a name="2.0.8"></a>
-## [2.0.8](https://github.com/tinper-bee/bee-table/compare/v2.0.7...v2.0.8) (2019-03-25)
+## [2.0.9](https://github.com/tinper-bee/bee-table/compare/v2.0.7...v2.0.9) (2019-03-27)
 
 
 
 <a name="2.0.7"></a>
-## [2.0.7](https://github.com/tinper-bee/bee-table/compare/v2.0.6...v2.0.7) (2019-03-20)
+## [2.0.7](https://github.com/tinper-bee/bee-table/compare/v2.0.8...v2.0.7) (2019-03-20)
+
+
+
+<a name="2.0.8"></a>
+## [2.0.8](https://github.com/tinper-bee/bee-table/compare/v2.0.6...v2.0.8) (2019-03-20)
 
 
 ### Bug Fixes

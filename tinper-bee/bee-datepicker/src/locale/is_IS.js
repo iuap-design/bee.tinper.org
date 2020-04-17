@@ -1,4 +1,7 @@
-export default {
+'use strict';
+
+exports.__esModule = true;
+exports['default'] = {
   today: 'Í dag',
   now: 'Núna',
   backToToday: 'Til baka til dagsins í dag',
@@ -9,7 +12,6 @@ export default {
   timeSelect: 'Velja tíma',
   dateSelect: 'Velja dag',
   monthSelect: 'Velja mánuð',
-  monthFormat: 'M',
   yearSelect: 'Velja ár',
   decadeSelect: 'Velja áratug',
   yearFormat: 'YYYY',
@@ -24,5 +26,6 @@ export default {
   previousDecade: 'Fyrri áratugur',
   nextDecade: 'Næsti áratugur',
   previousCentury: 'Fyrri öld',
-  nextCentury: 'Næsta öld',
+  nextCentury: 'Næsta öld'
 };
+module.exports = exports['default'];

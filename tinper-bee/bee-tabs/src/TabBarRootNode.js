@@ -20,7 +20,7 @@ export default class TabBarRootNode extends React.Component {
       ...restProps
     } = this.props;
     const cls = classnames(`${clsPrefix}-bar`, {
-      [className]: !!className,
+      // [className]: !!className,
     });
     const topOrBottom = (tabBarPosition === 'top' || tabBarPosition === 'bottom');
     const extraContentStyle = (extraContent && extraContent.props) ? extraContent.props.style : {};
@@ -45,7 +45,7 @@ export default class TabBarRootNode extends React.Component {
         tabIndex="0"
         ref={this.props.saveRef('root')}
         onKeyDown={onKeyDown}
-        style={style}
+        // style={style}
         {...getDataAttr(restProps)}
       >
         {newChildren}

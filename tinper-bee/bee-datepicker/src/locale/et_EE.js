@@ -1,4 +1,7 @@
-export default {
+'use strict';
+
+exports.__esModule = true;
+exports['default'] = {
   today: 'Täna',
   now: 'Praegu',
   backToToday: 'Tagasi tänase juurde',
@@ -9,7 +12,6 @@ export default {
   timeSelect: 'Vali aeg',
   dateSelect: 'Vali kuupäev',
   monthSelect: 'Vali kuu',
-  monthFormat: 'M',
   yearSelect: 'Vali aasta',
   decadeSelect: 'Vali dekaad',
   yearFormat: 'YYYY',
@@ -24,5 +26,6 @@ export default {
   previousDecade: 'Eelmine dekaad',
   nextDecade: 'Järgmine dekaad',
   previousCentury: 'Eelmine sajand',
-  nextCentury: 'Järgmine sajand',
+  nextCentury: 'Järgmine sajand'
 };
+module.exports = exports['default'];

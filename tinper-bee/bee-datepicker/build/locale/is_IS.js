@@ -1,9 +1,7 @@
 'use strict';
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports["default"] = {
+exports.__esModule = true;
+exports['default'] = {
   today: 'Í dag',
   now: 'Núna',
   backToToday: 'Til baka til dagsins í dag',
@@ -14,7 +12,6 @@ exports["default"] = {
   timeSelect: 'Velja tíma',
   dateSelect: 'Velja dag',
   monthSelect: 'Velja mánuð',
-  monthFormat: 'M',
   yearSelect: 'Velja ár',
   decadeSelect: 'Velja áratug',
   yearFormat: 'YYYY',

@@ -1,4 +1,7 @@
-export default {
+'use strict';
+
+exports.__esModule = true;
+exports['default'] = {
   today: 'Danes',
   now: 'Trenutno',
   backToToday: 'Nazaj na danes',
@@ -9,7 +12,6 @@ export default {
   timeSelect: 'Izberite čas',
   dateSelect: 'Izberite datum',
   monthSelect: 'Izberite mesec',
-  monthFormat: 'MM',
   yearSelect: 'Izberite leto',
   decadeSelect: 'Izberite desetletje',
   yearFormat: 'YYYY',
@@ -24,5 +26,6 @@ export default {
   previousDecade: 'Prejšnje desetletje',
   nextDecade: 'Naslednje desetletje',
   previousCentury: 'Prejšnje stoletje',
-  nextCentury: 'Naslednje stoletje',
+  nextCentury: 'Naslednje stoletje'
 };
+module.exports = exports['default'];

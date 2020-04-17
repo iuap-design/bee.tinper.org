@@ -71,7 +71,7 @@ import "./node_modules/build/bee-upload.css"
 |defaultFileList|默认已上传的文件列表|array|-|
 |fileList|已上传的文件列表,多用于onChange事件里|array|-|
 |action|上传的服务器地址|array|-|
-|data|上传参数或者函数	|Object or function|-|
+|data|上传参数或者函数|Object or function|-|
 |size|上传文件的大小限制单位是byte|number|1024000|
 |headers|设置请求的头部信息 兼容ie10以上|object|-|
 |showUploadList|是否显示上传列表|bool|true|
@@ -80,6 +80,8 @@ import "./node_modules/build/bee-upload.css"
 |beforeUpload|在上传之前执行的函数，当Promise返回false或者被拒绝，函数被中指。不兼容老ie|func|-|
 |customRequest|覆盖默认的XHR,可定制自己的XMLHttpRequest|func|-|
 |onChange|当上传状态改变之后执行的回调函数|func|-|
+|onPreview|点击预览时执行的回调方法，参数为当前点击的上传文件对象，若要阻止默认预览需return false|func|-|
+|preventDefaultPreview|点击预览时，如果要阻止默认预览请设置为true，默认值为false|func|-|
 |listType|内置的样式，支持text和picture|string|'text'|
 |onRemove|当删除按钮点击后触发的回调函数|func|-|
 |supportServerRender|当服务器正在渲染时，是否需要打开|bool|false|

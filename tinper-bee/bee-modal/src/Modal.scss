@@ -36,6 +36,18 @@ $modal-footer-padding : 16px;
       vertical-align: middle;
     }
   }
+  &-centered.draging{
+    text-align: unset;
+    &::before{
+      display: none;
+    }
+  }
+  &-centered.draged{
+    text-align: unset;
+    &::before{
+      display: none;
+    }
+  }
   &.fade {
     opacity: 0;
     transition: opacity 0.15s linear;

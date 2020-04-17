@@ -1,3 +1,54 @@
+<a name="2.3.20"></a>
+## [2.3.20](https://github.com/tinper-bee/bee-datepicker/compare/v2.3.19...v2.3.20) (2020-04-13)
+
+
+### Features
+
+* **bee-datepickr:** Rangepicker 新增空值判断，当值为空的时候hover不显示close按钮 ([846f5b6](https://github.com/tinper-bee/bee-datepicker/commit/846f5b6))
+
+
+
+<a name="2.3.19"></a>
+## [2.3.19](https://github.com/tinper-bee/bee-datepicker/compare/v2.3.18...v2.3.19) (2020-04-13)
+
+
+### Features
+
+* **bee-datepicker:** MonthPicker YearPicker RangePicker 新增validatorFunc校验回调 ([5ef27cc](https://github.com/tinper-bee/bee-datepicker/commit/5ef27cc))
+
+
+
+<a name="2.3.18"></a>
+## [2.3.18](https://github.com/tinper-bee/bee-datepicker/compare/v2.3.17...v2.3.18) (2020-04-08)
+
+
+
+<a name="2.3.17"></a>
+## [2.3.17](https://github.com/tinper-bee/bee-datepicker/compare/v2.3.16...v2.3.17) (2020-04-08)
+
+
+### Bug Fixes
+
+* 切换年月触发onChange ([4085b83](https://github.com/tinper-bee/bee-datepicker/commit/4085b83))
+* 组件不能阻止onMouseOver事件冒泡 ([5acd4f5](https://github.com/tinper-bee/bee-datepicker/commit/5acd4f5))
+
+
+### Features
+
+* **bee-datepicker:** 更新多语资源 ([e261890](https://github.com/tinper-bee/bee-datepicker/commit/e261890))
+
+
+
+<a name="2.3.16"></a>
+## [2.3.16](https://github.com/tinper-bee/bee-datepicker/compare/v2.3.15...v2.3.16) (2020-03-21)
+
+
+### Features
+
+* **bee-datepicker:** 多次触发onChange问题 ([8d18951](https://github.com/tinper-bee/bee-datepicker/commit/8d18951))
+
+
+
 <a name="2.3.15"></a>
 ## [2.3.15](https://github.com/tinper-bee/bee-datepicker/compare/v2.3.14...v2.3.15) (2020-03-16)
 

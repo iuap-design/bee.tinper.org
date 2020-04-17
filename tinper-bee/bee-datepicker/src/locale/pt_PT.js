@@ -1,4 +1,7 @@
-export default {
+'use strict';
+
+exports.__esModule = true;
+exports['default'] = {
   today: 'Hoje',
   now: 'Agora',
   backToToday: 'Hoje',
@@ -9,7 +12,6 @@ export default {
   timeSelect: 'Selecionar hora',
   dateSelect: 'Selecionar data',
   monthSelect: 'Selecionar mês',
-  monthFormat: 'M',
   yearSelect: 'Selecionar ano',
   decadeSelect: 'Selecionar década',
   yearFormat: 'YYYY',
@@ -24,5 +26,6 @@ export default {
   previousDecade: 'Década anterior',
   nextDecade: 'Década seguinte',
   previousCentury: 'Século anterior',
-  nextCentury: 'Século seguinte',
+  nextCentury: 'Século seguinte'
 };
+module.exports = exports['default'];

@@ -28,6 +28,8 @@ const propTypes = {
   //特殊的渲染规则的key值
   rowKey: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
   rowClassName: PropTypes.func,
+  //column的主键，和 column.key 作用相同
+  columnKey: PropTypes.string,
   expandedRowClassName: PropTypes.func,
   childrenColumnName: PropTypes.string,
   onExpand: PropTypes.func,
@@ -71,6 +73,7 @@ const defaultProps = {
   expandIconAsCell: false,
   defaultExpandAllRows: false,
   defaultExpandedRowKeys: [],
+  columnKey: 'key',
   rowKey: 'key',
   rowClassName: () => '',
   expandedRowClassName: () => '',
@@ -483,12 +486,16 @@ class Table extends Component {
   }
 
   getHeaderRows(columns, currentRow = 0, rows) {
+    const { columnKey } = this.props;
     let { contentWidthDiff = 0, lastShowIndex = -1 } = this.state;
     let filterCol = [];
     rows = rows || [];
     rows[currentRow] = rows[currentRow] || [];
 
     columns.forEach((column,i) => {
+      if (!column.key) {
+        column.key = column[columnKey];
+      }
       if (column.rowSpan && rows.length < column.rowSpan) {
         while (rows.length < column.rowSpan) {
           rows.push([]);
@@ -1160,6 +1167,20 @@ class Table extends Component {
     }
     return null;
   }
+  getStyle(obj,attr){
+    if(obj.currentStyle){
+        return obj.currentStyle[attr];
+    }
+    else{
+        return document.defaultView.getComputedStyle(obj,null)[attr];
+    }
+  }
+  getTdPadding=(td)=>{
+    let tdPaddingTop = this.getStyle(td,'paddingTop'),tdPaddingBottom = this.getStyle(td,'paddingBottom'),
+    tdBorderTop = this.getStyle(td,'borderTopWidth'),tdBorderBottom = this.getStyle(td,'borderBottomWidth');
+    return Number(tdPaddingTop.replace('px',''))+Number(tdPaddingBottom.replace('px',''))+Number(tdBorderTop.replace('px',''))+Number(tdBorderBottom.replace('px',''))
+    
+  }
 
   syncFixedTableRowHeight() {
     //this.props.height、headerHeight分别为用户传入的行高和表头高度，如果有值，所有行的高度都是固定的，主要为了避免在千行数据中有固定列时获取行高度有问题
@@ -1201,9 +1222,18 @@ class Table extends Component {
       }
     );
     const fixedColumnsExpandedRowsHeight = {};
-    expandedRows.length > 0 && expandedRows.forEach(row => {
+    // expandedRows为NodeList  Array.prototype.forEach ie 下报错 对象不支持 “forEach” 方法
+    expandedRows.length > 0 && Array.prototype.forEach.call(expandedRows,row => {
       let parentRowKey = row && row.previousSibling && row.previousSibling.getAttribute("data-row-key"),
           height = row && row.getBoundingClientRect().height || 'auto';
+          try {//子表数据减少时，动态计算高度
+            let td = row.querySelector('td');
+            let tdPadding = this.getTdPadding(td);
+            let trueheight = row.querySelectorAll('.u-table')[0].getBoundingClientRect().height;
+            height = trueheight+tdPadding;
+          } catch (error) {
+            
+          }
       fixedColumnsExpandedRowsHeight[parentRowKey] = height;
     })
     if (shallowequal(this.state.fixedColumnsHeadRowsHeight, fixedColumnsHeadRowsHeight) &&

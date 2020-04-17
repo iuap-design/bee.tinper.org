@@ -1,4 +1,7 @@
-export default {
+'use strict';
+
+exports.__esModule = true;
+exports['default'] = {
   today: 'Îro',
   now: 'Niha',
   backToToday: 'Vegere îro',
@@ -9,7 +12,6 @@ export default {
   timeSelect: 'Demê hilbijêre',
   dateSelect: 'Dîrok hilbijêre',
   monthSelect: 'Meh hilbijêre',
-  monthFormat: 'M',
   yearSelect: 'Sal hilbijêre',
   decadeSelect: 'Dehsal hilbijêre',
   yearFormat: 'YYYY',
@@ -24,5 +26,6 @@ export default {
   previousDecade: 'Dehsalen peş',
   nextDecade: 'Dehsalen paş',
   previousCentury: 'Sedsalen peş',
-  nextCentury: 'Sedsalen paş',
+  nextCentury: 'Sedsalen paş'
 };
+module.exports = exports['default'];

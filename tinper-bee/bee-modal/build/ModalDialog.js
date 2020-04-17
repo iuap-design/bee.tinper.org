@@ -49,15 +49,18 @@ var propTypes = {
    * 传给dialog的classname
    */
   dialogClassName: _propTypes2["default"].string,
-  contentStyle: _propTypes2["default"].object
-
+  contentStyle: _propTypes2["default"].object,
+  onStart: _propTypes2["default"].func,
+  onStop: _propTypes2["default"].func
 };
 
 var defaultProps = {
   minHeight: 150,
   minWidth: 200,
   clsPrefix: 'u-modal',
-  bounds: null
+  bounds: null,
+  onStart: function onStart() {},
+  onStop: function onStop() {}
 };
 
 var ModalDialog = function (_React$Component) {
@@ -87,6 +90,7 @@ var ModalDialog = function (_React$Component) {
       _this.setState({
         draging: true
       });
+      _this.props.onStart();
       return draggable;
     }, _this.onStop = function (e, delta) {
       var dialogWidth = _this.modalDialog && _this.modalDialog.offsetWidth;
@@ -108,6 +112,7 @@ var ModalDialog = function (_React$Component) {
           y: delta.y
         }
       });
+      _this.props.onStop();
     }, _this.onResizeStart = function (e, dir, elementRef) {
       var onResizeStart = _this.props.onResizeStart;
 

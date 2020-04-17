@@ -1,4 +1,4 @@
-import React, { Component,Fragment } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import objectPath from 'object-path';
 import i18n from './lib/i18n';
@@ -177,7 +177,7 @@ class TableCell extends Component{
   render() {
     const { record, indentSize, clsPrefix, indent,
             index, expandIcon, column ,fixed,showSum, bodyDisplayInRow,lazyStartIndex,lazyEndIndex} = this.props;
-    const { dataIndex, render, fieldType, linkConfig, fontColor, bgColor } = column;
+    const { dataIndex, render, fieldType, linkConfig, fontColor, bgColor,...other } = column;
     let {className = ''} = column;
 
     let text = objectPath.get(record, dataIndex);
@@ -186,7 +186,9 @@ class TableCell extends Component{
     let rowSpan,title;
 
     if (render && !showSum) {
-      text = render(text, record, index);
+      text = render(text, record, index,{
+        dataIndex, render, fieldType, linkConfig, fontColor, bgColor,...other
+      });
       if (this.isInvalidRenderCellText(text)) {
         tdProps = text.props || {};
         rowSpan = (tdProps.rowSpan>lazyEndIndex && lazyEndIndex>5)?lazyEndIndex-index:tdProps.rowSpan;
@@ -280,24 +282,19 @@ class TableCell extends Component{
     if(colMenu){
       className += ' u-table-inline-icon'
     }
-    return (
-      <Fragment>
-        {
-          colSpan==0?null:<td
-                            colSpan={colSpan}
-                            rowSpan={rowSpan}
-                            className={className}
-                            onClick={this.handleClick}
-                            title={title}
-                            style={{maxWidth:column.width, color:fontColor, backgroundColor:bgColor, ...column.style}}>
-                            {indentText}
-                            {expandIcon}
-                            {text}
-                            {colMenu}
-                          </td>
-        }
-      </Fragment>
-    );
+    if(colSpan==0)return null;
+    return <td
+            colSpan={colSpan}
+            rowSpan={rowSpan}
+            className={className}
+            onClick={this.handleClick}
+            title={title}
+            style={{maxWidth:column.width, color:fontColor, backgroundColor:bgColor, ...column.style}}>
+            {indentText}
+            {expandIcon}
+            {text}
+            {colMenu}
+        </td>
   }
 };
 

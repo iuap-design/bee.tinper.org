@@ -17,7 +17,8 @@ const defaultProps = {
   notFoundContent: 'Not Found',
   showCheckbox: true,
   draggable: false,
-  appendToBottom: false
+  appendToBottom: false,
+  renderOperation:()=>'',//自定义操作
 };
 
 const propTypes = {
@@ -41,7 +42,8 @@ const propTypes = {
     lazy: PropTypes.object,
     showCheckbox: PropTypes.bool,
     draggable: PropTypes.bool,
-    appendToBottom: PropTypes.bool
+    appendToBottom: PropTypes.bool,
+    renderOperation:PropTypes.func
 };
 
 const defaultTitles = ['', ''];
@@ -415,7 +417,7 @@ class Transfer extends React.Component{
     const {
       prefixCls = 'u-transfer', operations = [], showSearch, notFoundContent,
       searchPlaceholder, body, footer, listStyle, className = '',
-      filterOption, render, lazy, showCheckbox, draggable
+      filterOption, render, lazy, showCheckbox, draggable,renderOperation
     } = this.props;
     const { leftFilter, rightFilter, sourceSelectedKeys, targetSelectedKeys, leftDataSource, rightDataSource, droppableId } = this.state;
 
@@ -462,6 +464,7 @@ class Transfer extends React.Component{
               leftArrowText={operations[1]}
               moveToLeft={this.moveToLeft}
               className={`${prefixCls}-operation`}
+              renderOperation={renderOperation}
             />
             : ''
           }

@@ -1,9 +1,7 @@
 'use strict';
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports["default"] = {
+exports.__esModule = true;
+exports['default'] = {
   today: '今日',
   now: '現在時刻',
   backToToday: '今日に戻る',
@@ -16,7 +14,6 @@ exports["default"] = {
   previousMonth: '前月 (ページアップキー)',
   nextMonth: '翌月 (ページダウンキー)',
   monthSelect: '月を選択',
-  monthFormat: 'M月',
   yearSelect: '年を選択',
   decadeSelect: '年代を選択',
   yearFormat: 'YYYY年',

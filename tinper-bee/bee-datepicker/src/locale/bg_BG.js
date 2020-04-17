@@ -1,4 +1,7 @@
-export default {
+'use strict';
+
+exports.__esModule = true;
+exports['default'] = {
   today: 'Днес',
   now: 'Сега',
   backToToday: 'Към днес',
@@ -9,7 +12,6 @@ export default {
   timeSelect: 'Избор на час',
   dateSelect: 'Избор на дата',
   monthSelect: 'Избор на месец',
-  monthFormat: 'M',
   yearSelect: 'Избор на година',
   decadeSelect: 'Десетилетие',
   yearFormat: 'YYYY',
@@ -24,5 +26,6 @@ export default {
   previousDecade: 'Предишно десетилетие',
   nextDecade: 'Следващо десетилетие',
   previousCentury: 'Последен век',
-  nextCentury: 'Следващ век',
+  nextCentury: 'Следващ век'
 };
+module.exports = exports['default'];

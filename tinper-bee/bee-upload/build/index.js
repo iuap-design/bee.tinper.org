@@ -147,8 +147,9 @@ var propTypes = {
   onChange: _propTypes2["default"].func,
   listType: _propTypes2["default"].oneOf(['text', 'picture', 'picture-card']),
   className: _propTypes2["default"].string,
-  // onPreview: PropTypes.func,
+  onPreview: _propTypes2["default"].func,
   onRemove: _propTypes2["default"].func,
+  preventDefaultPreview: _propTypes2["default"].bool,
   supportServerRender: _propTypes2["default"].bool,
   style: _propTypes2["default"].object,
   disabled: _propTypes2["default"].bool,
@@ -170,6 +171,7 @@ var defaultProps = {
   className: '',
   disabled: false,
   supportServerRender: true,
+  preventDefaultPreview: false,
   enterDragger: function enterDragger() {},
   leaveDragger: function leaveDragger() {}
 };
@@ -321,16 +323,27 @@ var Upload = function (_Component) {
     };
 
     _this.handlePreview = function (file) {
+      var _this$props = _this.props,
+          onPreview = _this$props.onPreview,
+          preventDefaultPreview = _this$props.preventDefaultPreview;
+
       var displayPreview = function displayPreview() {
         _this.setState({
           previewImage: file.url || file.thumbUrl,
           previewVisible: true
         });
       };
-      if (!file.url && !file.thumbUrl) {
-        getBase64(file.originFileObj).then(displayPreview);
-      } else {
-        displayPreview();
+
+      if (preventDefaultPreview === false) {
+        if (!file.url && !file.thumbUrl) {
+          getBase64(file.originFileObj).then(displayPreview);
+        } else {
+          displayPreview();
+        }
+      }
+
+      if (onPreview && Object.prototype.toString.call(onPreview) === "[object Function]") {
+        onPreview(file);
       }
     };
 

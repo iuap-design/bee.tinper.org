@@ -1,4 +1,7 @@
-export default {
+'use strict';
+
+exports.__esModule = true;
+exports['default'] = {
   today: 'आज',
   now: 'अभी',
   backToToday: 'आज तक',
@@ -10,7 +13,6 @@ export default {
   dateSelect: 'तारीख़ चुनें',
   weekSelect: 'एक सप्ताह चुनें',
   monthSelect: 'एक महीना चुनें',
-  monthFormat: 'M',
   yearSelect: 'एक वर्ष चुनें',
   decadeSelect: 'एक दशक चुनें',
   yearFormat: 'YYYY',
@@ -25,5 +27,6 @@ export default {
   previousDecade: 'पिछला दशक',
   nextDecade: 'अगले दशक',
   previousCentury: 'पीछ्ली शताब्दी',
-  nextCentury: 'अगली सदी',
+  nextCentury: 'अगली सदी'
 };
+module.exports = exports['default'];

@@ -84,6 +84,8 @@ var propTypes = {
   //特殊的渲染规则的key值
   rowKey: _propTypes2["default"].oneOfType([_propTypes2["default"].string, _propTypes2["default"].func]),
   rowClassName: _propTypes2["default"].func,
+  //column的主键，和 column.key 作用相同
+  columnKey: _propTypes2["default"].string,
   expandedRowClassName: _propTypes2["default"].func,
   childrenColumnName: _propTypes2["default"].string,
   onExpand: _propTypes2["default"].func,
@@ -127,6 +129,7 @@ var defaultProps = {
   expandIconAsCell: false,
   defaultExpandAllRows: false,
   defaultExpandedRowKeys: [],
+  columnKey: 'key',
   rowKey: 'key',
   rowClassName: function rowClassName() {
     return '';
@@ -267,6 +270,14 @@ var Table = function (_Component) {
           return _react2["default"].createElement('div', { className: _this.props.clsPrefix + '-hiden-drag-li', key: da + "_hiden_" + i, style: { left: sum + "px" } });
         })
       );
+    };
+
+    _this.getTdPadding = function (td) {
+      var tdPaddingTop = _this.getStyle(td, 'paddingTop'),
+          tdPaddingBottom = _this.getStyle(td, 'paddingBottom'),
+          tdBorderTop = _this.getStyle(td, 'borderTopWidth'),
+          tdBorderBottom = _this.getStyle(td, 'borderBottomWidth');
+      return Number(tdPaddingTop.replace('px', '')) + Number(tdPaddingBottom.replace('px', '')) + Number(tdBorderTop.replace('px', '')) + Number(tdBorderBottom.replace('px', ''));
     };
 
     _this.onRowHoverMouseEnter = function () {
@@ -672,6 +683,7 @@ var Table = function (_Component) {
 
     var currentRow = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
     var rows = arguments[2];
+    var columnKey = this.props.columnKey;
     var _state = this.state,
         _state$contentWidthDi = _state.contentWidthDiff,
         contentWidthDiff = _state$contentWidthDi === undefined ? 0 : _state$contentWidthDi,
@@ -683,6 +695,9 @@ var Table = function (_Component) {
     rows[currentRow] = rows[currentRow] || [];
 
     columns.forEach(function (column, i) {
+      if (!column.key) {
+        column.key = column[columnKey];
+      }
       if (column.rowSpan && rows.length < column.rowSpan) {
         while (rows.length < column.rowSpan) {
           rows.push([]);
@@ -1357,7 +1372,17 @@ var Table = function (_Component) {
     return null;
   };
 
+  Table.prototype.getStyle = function getStyle(obj, attr) {
+    if (obj.currentStyle) {
+      return obj.currentStyle[attr];
+    } else {
+      return document.defaultView.getComputedStyle(obj, null)[attr];
+    }
+  };
+
   Table.prototype.syncFixedTableRowHeight = function syncFixedTableRowHeight() {
+    var _this5 = this;
+
     //this.props.height、headerHeight分别为用户传入的行高和表头高度，如果有值，所有行的高度都是固定的，主要为了避免在千行数据中有固定列时获取行高度有问题
     var _props9 = this.props,
         clsPrefix = _props9.clsPrefix,
@@ -1402,9 +1427,17 @@ var Table = function (_Component) {
       }
     });
     var fixedColumnsExpandedRowsHeight = {};
-    expandedRows.length > 0 && expandedRows.forEach(function (row) {
+    // expandedRows为NodeList  Array.prototype.forEach ie 下报错 对象不支持 “forEach” 方法
+    expandedRows.length > 0 && Array.prototype.forEach.call(expandedRows, function (row) {
       var parentRowKey = row && row.previousSibling && row.previousSibling.getAttribute("data-row-key"),
           height = row && row.getBoundingClientRect().height || 'auto';
+      try {
+        //子表数据减少时，动态计算高度
+        var td = row.querySelector('td');
+        var tdPadding = _this5.getTdPadding(td);
+        var trueheight = row.querySelectorAll('.u-table')[0].getBoundingClientRect().height;
+        height = trueheight + tdPadding;
+      } catch (error) {}
       fixedColumnsExpandedRowsHeight[parentRowKey] = height;
     });
     if ((0, _shallowequal2["default"])(this.state.fixedColumnsHeadRowsHeight, fixedColumnsHeadRowsHeight) && (0, _shallowequal2["default"])(this.state.fixedColumnsBodyRowsHeight, fixedColumnsBodyRowsHeight) && (0, _shallowequal2["default"])(this.state.fixedColumnsExpandedRowsHeight, fixedColumnsExpandedRowsHeight)) {
@@ -1427,10 +1460,10 @@ var Table = function (_Component) {
   };
 
   Table.prototype.findExpandedRow = function findExpandedRow(record, index) {
-    var _this5 = this;
+    var _this6 = this;
 
     var rows = this.getExpandedRows().filter(function (i) {
-      return i === _this5.getRowKey(record, index);
+      return i === _this6.getRowKey(record, index);
     });
     return rows[0];
   };
@@ -1558,7 +1591,7 @@ var Table = function (_Component) {
   };
 
   Table.prototype.render = function render() {
-    var _this6 = this;
+    var _this7 = this;
 
     var props = this.props;
     var clsPrefix = props.clsPrefix;
@@ -1605,7 +1638,7 @@ var Table = function (_Component) {
     return _react2["default"].createElement(
       'div',
       { className: className, style: props.style, ref: function ref(el) {
-          return _this6.contentTable = el;
+          return _this7.contentTable = el;
         },
         tabIndex: props.focusable && (props.tabIndex ? props.tabIndex : '0') },
       this.getTitle(),
@@ -1637,7 +1670,7 @@ var Table = function (_Component) {
         'div',
         { className: 'u-row-hover',
           onMouseEnter: this.onRowHoverMouseEnter, onMouseLeave: this.onRowHoverMouseLeave, ref: function ref(el) {
-            return _this6.hoverDom = el;
+            return _this7.hoverDom = el;
           } },
         props.hoverContent()
       )

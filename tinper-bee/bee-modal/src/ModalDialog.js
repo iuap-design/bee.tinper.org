@@ -11,14 +11,17 @@ const propTypes = {
    */
   dialogClassName: PropTypes.string,
   contentStyle: PropTypes.object,
-
+  onStart:PropTypes.func,
+  onStop:PropTypes.func
 };
 
 const defaultProps = {
     minHeight: 150,
     minWidth: 200,
     clsPrefix: 'u-modal',
-    bounds:null
+    bounds:null,
+    onStart:()=>{},
+    onStop:()=>{}
 };
 
 class ModalDialog extends React.Component {
@@ -51,6 +54,7 @@ class ModalDialog extends React.Component {
     this.setState({
       draging:true
     })
+    this.props.onStart()
     return draggable;
   }
   // 当ModalDialog留在可视区的宽度 < 50px 时，拖拽不生效
@@ -74,6 +78,7 @@ class ModalDialog extends React.Component {
         y: delta.y
       }
     })
+    this.props.onStop()
   }
 
   /* 开始resize */

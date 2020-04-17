@@ -1,4 +1,7 @@
-export default {
+'use strict';
+
+exports.__esModule = true;
+exports['default'] = {
   today: 'I dag',
   now: 'Nu',
   backToToday: 'Till idag',
@@ -9,7 +12,6 @@ export default {
   timeSelect: 'Välj tidpunkt',
   dateSelect: 'Välj datum',
   monthSelect: 'Välj månad',
-  monthFormat: 'MM',
   yearSelect: 'Välj år',
   decadeSelect: 'Välj årtionde',
   yearFormat: 'YYYY',
@@ -24,5 +26,6 @@ export default {
   previousDecade: 'Föreg årtionde',
   nextDecade: 'Nästa årtionde',
   previousCentury: 'Föreg århundrade',
-  nextCentury: 'Nästa århundrade',
+  nextCentury: 'Nästa århundrade'
 };
+module.exports = exports['default'];

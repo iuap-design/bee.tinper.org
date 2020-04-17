@@ -245,7 +245,7 @@ class Calendar extends React.Component {
   render() {
     const { props, state } = this;
     const {
-      locale, prefixCls, disabledDate,
+      locale, prefixCls, disabledDate,validatorFunc,format,
       dateInputPlaceholder, timePicker,
       disabledTime, clearIcon, renderFooter,showMonthInput, renderError, onInputBlur
     } = props;
@@ -288,10 +288,15 @@ class Calendar extends React.Component {
         prefixCls={prefixCls}
         selectedValue={selectedValue}
         onChange={this.onDateInputChange}
-        onSelect={this.onDateInputSelect}
+        onSelect={(value)=>{
+          if(moment(value,format,true)&&validatorFunc(value)){
+            this.onDateInputSelect(value)
+          }
+        }}
         clearIcon={clearIcon}
         renderError={renderError}
         onBlur={onInputBlur}
+        validatorFunc={validatorFunc}
       />
     ) : null;
 

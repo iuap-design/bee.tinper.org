@@ -1,3 +1,33 @@
+<a name="2.1.14"></a>
+## [2.1.14](https://github.com/tinper-bee/bee-modal/compare/v2.1.13...v2.1.14) (2020-04-10)
+
+
+### Features
+
+* **bee-modal:** 关闭后 还原draging draged 属性 ([1f54e74](https://github.com/tinper-bee/bee-modal/commit/1f54e74))
+
+
+
+<a name="2.1.13"></a>
+## [2.1.13](https://github.com/tinper-bee/bee-modal/compare/v2.1.12...v2.1.13) (2020-04-07)
+
+
+### Bug Fixes
+
+* **bee-modal:** centered属性影响模态框无法向上拖动 ([6db1311](https://github.com/tinper-bee/bee-modal/commit/6db1311))
+
+
+
+<a name="2.1.12"></a>
+## [2.1.12](https://github.com/tinper-bee/bee-modal/compare/v2.1.11...v2.1.12) (2020-03-26)
+
+
+### Bug Fixes
+
+* Confirm 按esc不触发close事件 ([7e70b13](https://github.com/tinper-bee/bee-modal/commit/7e70b13))
+
+
+
 <a name="2.1.11"></a>
 ## [2.1.11](https://github.com/tinper-bee/bee-modal/compare/v2.1.10...v2.1.11) (2020-03-12)
 

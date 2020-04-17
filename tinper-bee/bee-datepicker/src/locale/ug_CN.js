@@ -1,4 +1,7 @@
-export default {
+'use strict';
+
+exports.__esModule = true;
+exports['default'] = {
   today: 'بۈگۈن',
   now: 'ھازىر',
   backToToday: 'بۈگۈنگە قايتىش',
@@ -11,7 +14,6 @@ export default {
   previousMonth: 'ئالدىنقى ئاي(ئالدىنقى بەت )',
   nextMonth: 'كېلەركى ئاي (كېلەركى بەت)',
   monthSelect: 'ئاي تاللاش',
-  monthFormat: 'M—ئاينىڭ',
   yearSelect: 'يىل تاللاش',
   decadeSelect: 'يىللارنى تاللاش',
   yearFormat: 'YYYY-يىلى',
@@ -23,5 +25,6 @@ export default {
   previousDecade: 'ئالدىنقى يىللار',
   nextDecade: 'كېيىنكى يىللار',
   previousCentury: 'ئالدىنقى ئەسىر',
-  nextCentury: 'كېيىنكى ئەسىر',
+  nextCentury: 'كېيىنكى ئەسىر'
 };
+module.exports = exports['default'];

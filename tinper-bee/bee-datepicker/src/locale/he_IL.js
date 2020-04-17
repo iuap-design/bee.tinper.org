@@ -1,4 +1,7 @@
-export default {
+'use strict';
+
+exports.__esModule = true;
+exports['default'] = {
   today: 'היום',
   now: 'עכשיו',
   backToToday: 'חזור להיום',
@@ -10,7 +13,6 @@ export default {
   dateSelect: 'בחר תאריך',
   weekSelect: 'בחר שבוע',
   monthSelect: 'בחר חודש',
-  monthFormat: 'M',
   yearSelect: 'בחר שנה',
   decadeSelect: 'בחר עשור',
   yearFormat: 'YYYY',
@@ -25,5 +27,6 @@ export default {
   previousDecade: 'העשור הקודם',
   nextDecade: 'העשור הבא',
   previousCentury: 'המאה הקודמת',
-  nextCentury: 'המאה הבאה',
+  nextCentury: 'המאה הבאה'
 };
+module.exports = exports['default'];

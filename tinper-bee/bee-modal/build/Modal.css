@@ -1032,6 +1032,14 @@
       display: inline-block;
       text-align: left;
       vertical-align: middle; }
+  .u-modal-centered.draging {
+    text-align: unset; }
+    .u-modal-centered.draging::before {
+      display: none; }
+  .u-modal-centered.draged {
+    text-align: unset; }
+    .u-modal-centered.draged::before {
+      display: none; }
   .u-modal.fade {
     opacity: 0;
     transition: opacity 0.15s linear; }

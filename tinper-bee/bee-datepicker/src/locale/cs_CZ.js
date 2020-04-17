@@ -1,4 +1,7 @@
-export default {
+'use strict';
+
+exports.__esModule = true;
+exports['default'] = {
   today: 'Dnes',
   now: 'Nyní',
   backToToday: 'Zpět na dnešek',
@@ -9,7 +12,6 @@ export default {
   timeSelect: 'Vybrat čas',
   dateSelect: 'Vybrat datum',
   monthSelect: 'Vyberte měsíc',
-  monthFormat: 'M',
   yearSelect: 'Vyberte rok',
   decadeSelect: 'Vyberte dekádu',
   yearFormat: 'YYYY',
@@ -24,5 +26,6 @@ export default {
   previousDecade: 'Předchozí dekáda',
   nextDecade: 'Následující dekáda',
   previousCentury: 'Předchozí století',
-  nextCentury: 'Následující století',
+  nextCentury: 'Následující století'
 };
+module.exports = exports['default'];

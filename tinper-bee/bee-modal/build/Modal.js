@@ -215,7 +215,9 @@ var Modal = function (_React$Component) {
 
     _this.state = {
       style: {},
-      centered: props.centered
+      centered: props.centered,
+      draging: false,
+      draged: false
     };
     _this.offsetTop = 0;
     _this.handleEntering = _this.handleEntering.bind(_this);
@@ -245,6 +247,10 @@ var Modal = function (_React$Component) {
   };
 
   Modal.prototype.handleExited = function handleExited() {
+    this.setState({
+      draging: false,
+      draged: false
+    });
     // FIXME: This should work even when animation is disabled.
     _events2["default"].off(window, 'resize', this.handleWindowResize);
   };
@@ -318,9 +324,14 @@ var Modal = function (_React$Component) {
         resizeClassName = _props.resizeClassName,
         bounds = _props.bounds,
         container = _props.container,
-        props = _objectWithoutProperties(_props, ['backdrop', 'backdropClosable', 'animation', 'show', 'dialogComponentClass', 'className', 'clsPrefix', 'style', 'size', 'width', 'children', 'onEntering', 'onExited', 'backdropClassName', 'containerClassName', 'draggable', 'resizeClassName', 'bounds', 'container']);
+        onStart = _props.onStart,
+        onStop = _props.onStop,
+        props = _objectWithoutProperties(_props, ['backdrop', 'backdropClosable', 'animation', 'show', 'dialogComponentClass', 'className', 'clsPrefix', 'style', 'size', 'width', 'children', 'onEntering', 'onExited', 'backdropClassName', 'containerClassName', 'draggable', 'resizeClassName', 'bounds', 'container', 'onStart', 'onStop']);
 
-    var centered = this.state.centered;
+    var _state = this.state,
+        centered = _state.centered,
+        draging = _state.draging,
+        draged = _state.draged;
 
     var dialogMarginTop = 30;
     //ResizeStart 时，计算 ModalDialog 的 offsetTop
@@ -337,6 +348,12 @@ var Modal = function (_React$Component) {
     var containerClasses = _defineProperty({}, clsPrefix + '-open', true);
     if (!!centered) {
       className += ' ' + clsPrefix + '-centered';
+    }
+    if (draging) {
+      className += ' draging';
+    }
+    if (draged) {
+      className += ' draged';
     }
     if (Number(width)) width += 'px';
 
@@ -371,7 +388,19 @@ var Modal = function (_React$Component) {
           draggable: draggable,
           bounds: bounds,
           resizeClassName: resizeClassName,
-          clearCenteredCls: this.clearCenteredCls
+          clearCenteredCls: this.clearCenteredCls,
+          onStart: function onStart() {
+            _this2.setState({
+              draging: true,
+              draged: false
+            });
+          },
+          onStop: function onStop() {
+            _this2.setState({
+              draging: false,
+              draged: true
+            });
+          }
         }),
         children
       )

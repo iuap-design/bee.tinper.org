@@ -41,6 +41,7 @@ class FormControl extends React.Component {
             value: value,
         }
         this.input = {};
+        this.clickClearBtn = false;
     }
 
     componentWillReceiveProps(nextProp) {
@@ -80,13 +81,18 @@ class FormControl extends React.Component {
     }
 
     clearValue = () => {
-        const {onChange} = this.props;
+        const { onChange,showClose } = this.props;
         this.setState({
             showSearch: true,
             value: "",
         });
+        if(this.e&&this.e.target)this.e.target.value = "";
         if (onChange) {
-            onChange("");
+            onChange("",this.e);
+        }
+        if(showClose){
+            this.blurTime&&clearTimeout(this.blurTime);
+            this.blurTime=null;
         }
         this.input.focus();
     }
@@ -106,10 +112,16 @@ class FormControl extends React.Component {
     }
     handleBlur = (e) => {
         const { value } = this.state;
-        const { onBlur } = this.props;
-
+        const { onBlur,showClose } = this.props;
+        let _e = Object.assign({}, e);
+        this.e = _e;
         if(onBlur){
-            onBlur(value, e);
+            if(showClose && this.clickClearBtn){
+                this.clickClearBtn = false;
+                onBlur(value, _e, true);
+            }else{
+                 onBlur(value, _e);
+            }
         }
     }
 
@@ -122,6 +134,10 @@ class FormControl extends React.Component {
         if(onFocus){
             onFocus(value, e);
         }
+    }
+
+    onClearBtnMouseDown = () => {
+        this.clickClearBtn = true;
     }
 
     renderInput = () => {
@@ -174,10 +190,8 @@ class FormControl extends React.Component {
                         className={classnames(classNames)}
                     />
                     {
-                        showClose?<div className={`${clsPrefix}-suffix`}>
-                                        {
-                                            value ? <Icon onClick={this.clearValue} type="uf-close-c"/>:''
-                                        }
+                        showClose&&value?<div className={`${clsPrefix}-suffix has-close`} onMouseDown={this.onClearBtnMouseDown} onClick={this.clearValue}>
+                                         <Icon type="uf-close-c"/>
                                     </div>:''
                     }
                     {

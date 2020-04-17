@@ -1,4 +1,7 @@
-export default {
+'use strict';
+
+exports.__esModule = true;
+exports['default'] = {
   today: 'ယနေ့',
   now: 'ယခု',
   backToToday: 'ယနေ့ မတိုင်ခင် သို့',
@@ -10,7 +13,6 @@ export default {
   dateSelect: 'နေ့ကို ရွေး',
   weekSelect: 'အပတ်ကို ရွေး',
   monthSelect: 'လကို ရွေး',
-  monthFormat: 'M',
   yearSelect: 'နှစ်ကို ရွေး',
   decadeSelect: 'ဆယ်စုနှစ်ကို ရွေး',
   yearFormat: 'YYYY',
@@ -25,5 +27,6 @@ export default {
   previousDecade: 'ယခင် ဆယ်စုနှစ်',
   nextDecade: 'နောက် ဆယ်စုနှစ်',
   previousCentury: 'ယခင် ရာစုနှစ်',
-  nextCentury: 'နောက် ရာစုနှစ်',
+  nextCentury: 'နောက် ရာစုနှစ်'
 };
+module.exports = exports['default'];

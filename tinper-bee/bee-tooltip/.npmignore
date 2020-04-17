@@ -25,3 +25,9 @@ _site
 sea-modules
 spm_modules
 .cache
+coverage
+demo
+docs
+test
+dist
+.npmignore

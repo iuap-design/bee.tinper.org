@@ -1,4 +1,7 @@
-export default {
+'use strict';
+
+exports.__esModule = true;
+exports['default'] = {
   today: 'امروز',
   now: 'اکنون',
   backToToday: 'بازگشت به روز',
@@ -9,7 +12,6 @@ export default {
   timeSelect: 'انتخاب زمان',
   dateSelect: 'انتخاب تاریخ',
   monthSelect: 'یک ماه را انتخاب کنید',
-  monthFormat: 'M',
   yearSelect: 'یک سال را انتخاب کنید',
   decadeSelect: 'یک دهه را انتخاب کنید',
   yearFormat: 'YYYY',
@@ -24,5 +26,6 @@ export default {
   previousDecade: 'دهه قبل',
   nextDecade: 'دهه بعد',
   previousCentury: 'قرن قبل',
-  nextCentury: 'قرن بعد',
+  nextCentury: 'قرن بعد'
 };
+module.exports = exports['default'];

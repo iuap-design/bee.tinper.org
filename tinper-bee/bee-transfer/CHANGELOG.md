@@ -1,3 +1,13 @@
+<a name="2.0.13"></a>
+## [2.0.13](https://github.com/tinper-bee/bee-transfer/compare/v2.0.12...v2.0.13) (2020-04-14)
+
+
+### Features
+
+* **bee-transfer:** 自定义扩展操作栏 ([9fc42d9](https://github.com/tinper-bee/bee-transfer/commit/9fc42d9))
+
+
+
 <a name="2.0.12"></a>
 ## [2.0.12](https://github.com/tinper-bee/bee-transfer/compare/v2.0.11...v2.0.12) (2019-05-08)
 

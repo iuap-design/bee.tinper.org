@@ -1,4 +1,7 @@
-export default {
+'use strict';
+
+exports.__esModule = true;
+exports['default'] = {
   today: 'Bugün',
   now: 'Şimdi',
   backToToday: 'Bugüne Geri Dön',
@@ -9,7 +12,6 @@ export default {
   timeSelect: 'Zaman Seç',
   dateSelect: 'Tarih Seç',
   monthSelect: 'Ay Seç',
-  monthFormat: 'M',
   yearSelect: 'Yıl Seç',
   decadeSelect: 'On Yıl Seç',
   yearFormat: 'YYYY',
@@ -24,5 +26,6 @@ export default {
   previousDecade: 'Önceki On Yıl',
   nextDecade: 'Sonraki On Yıl',
   previousCentury: 'Önceki Yüzyıl',
-  nextCentury: 'Sonraki Yüzyıl',
+  nextCentury: 'Sonraki Yüzyıl'
 };
+module.exports = exports['default'];

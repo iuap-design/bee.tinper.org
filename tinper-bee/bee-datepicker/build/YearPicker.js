@@ -306,7 +306,10 @@ YearPicker.defaultProps = {
     disabled: false,
     showClose: true,
     locale: _zh_CN2["default"],
-    format: 'YYYY'
+    format: 'YYYY',
+    validatorFunc: function validatorFunc() {
+        return true;
+    }
 };
 
 exports["default"] = YearPicker;

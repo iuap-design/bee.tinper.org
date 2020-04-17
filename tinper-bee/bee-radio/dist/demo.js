@@ -7774,6 +7774,10 @@
 	          e.clipboardData.setData(options.format, text);
 	        }
 	      }
+	      if (options.onCopy) {
+	        e.preventDefault();
+	        options.onCopy(e.clipboardData);
+	      }
 	    });
 	
 	    document.body.appendChild(mark);
@@ -7788,10 +7792,17 @@
 	    success = true;
 	  } catch (err) {
 	    debug && console.error("unable to copy using execCommand: ", err);
-	    debug && console.error("unable to copy using clipboardData: ", err);
-	    debug && console.error("falling back to prompt");
-	    message = format("message" in options ? options.message : defaultMessage);
-	    window.prompt(message, text);
+	    debug && console.warn("trying IE specific stuff");
+	    try {
+	      window.clipboardData.setData(options.format || "text", text);
+	      options.onCopy && options.onCopy(window.clipboardData);
+	      success = true;
+	    } catch (err) {
+	      debug && console.error("unable to copy using clipboardData: ", err);
+	      debug && console.error("falling back to prompt");
+	      message = format("message" in options ? options.message : defaultMessage);
+	      window.prompt(message, text);
+	    }
 	  } finally {
 	    if (selection) {
 	      if (typeof selection.removeRange == "function") {
@@ -16751,7 +16762,9 @@
 	  /**
 	    * radio 样式 是否使用红色填充
 	    */
-	  inverse: _propTypes2['default'].bool
+	  inverse: _propTypes2['default'].bool,
+	  checked: _propTypes2['default'].bool,
+	  onChange: _propTypes2['default'].func
 	};
 	
 	var defaultProps = {
@@ -16775,6 +16788,23 @@
 	
 	    var _this = _possibleConstructorReturn(this, _React$Component.call(this, props, context));
 	
+	    _this.handleClick = function (event) {
+	      if (_this.props.disabled) {
+	        return;
+	      }
+	      if (_this.context.radioGroup && _this.context.radioGroup.onChange) {
+	        _this.context.radioGroup.onChange(_this.props.value);
+	      } else {
+	        if (!('checked' in _this.props)) {
+	          _this.setState({
+	            checked: !_this.state.checked
+	          });
+	        }
+	        event.target.checked = !_this.state.checked;
+	        _this.props.onChange && _this.props.onChange(event, !_this.state.checked);
+	      }
+	    };
+	
 	    _this.handleFocus = function (e) {
 	      if (e.target && e.target.type == 'radio') {
 	        _this.setState({
@@ -16796,21 +16826,13 @@
 	      checked: initChecked,
 	      focused: false
 	    };
-	    _this.handleClick = _this.handleClick.bind(_this);
-	
 	    return _this;
 	  }
 	
-	  Radio.prototype.handleClick = function handleClick(event) {
-	    if (this.props.disabled) {
-	      return;
-	    }
-	
-	    if (this.context.radioGroup && this.context.radioGroup.onChange) {
-	      this.context.radioGroup.onChange(this.props.value);
-	    } else {
+	  Radio.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
+	    if ('checked' in nextProps) {
 	      this.setState({
-	        checked: true
+	        checked: nextProps.checked
 	      });
 	    }
 	  };
@@ -16833,7 +16855,8 @@
 	        children = props.children,
 	        clsPrefix = props.clsPrefix,
 	        style = props.style,
-	        others = _objectWithoutProperties(props, ['inverse', 'disabled', 'colors', 'className', 'children', 'clsPrefix', 'style']);
+	        onChange = props.onChange,
+	        others = _objectWithoutProperties(props, ['inverse', 'disabled', 'colors', 'className', 'children', 'clsPrefix', 'style', 'onChange']);
 	
 	    var radioGroup = context.radioGroup;
 	

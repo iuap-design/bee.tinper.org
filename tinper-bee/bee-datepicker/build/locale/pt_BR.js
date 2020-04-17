@@ -1,9 +1,7 @@
 'use strict';
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports["default"] = {
+exports.__esModule = true;
+exports['default'] = {
   today: 'Hoje',
   now: 'Agora',
   backToToday: 'Voltar para hoje',
@@ -14,7 +12,6 @@ exports["default"] = {
   timeSelect: 'Selecionar tempo',
   dateSelect: 'Selecionar data',
   monthSelect: 'Escolher mês',
-  monthFormat: 'M',
   yearSelect: 'Escolher ano',
   decadeSelect: 'Escolher década',
   yearFormat: 'YYYY',

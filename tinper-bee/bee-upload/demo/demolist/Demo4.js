@@ -23,6 +23,7 @@ const demo4props = {
     url: 'https://p0.ssl.qhimgs4.com/t010e11ecf2cbfe5fd2.png',
     thumbUrl: 'https://p0.ssl.qhimgs4.com/t010e11ecf2cbfe5fd2.png',
   }],
+  // preventDefaultPreview:true//阻止默认预览
 };
 
 class Demo4 extends Component {

@@ -1,4 +1,7 @@
-export default {
+'use strict';
+
+exports.__esModule = true;
+exports['default'] = {
   today: '今天',
   now: '此刻',
   backToToday: '返回今天',
@@ -12,7 +15,6 @@ export default {
   previousMonth: '上个月 (翻页上键)',
   nextMonth: '下个月 (翻页下键)',
   monthSelect: '选择月份',
-  monthFormat: 'M月',
   yearSelect: '选择年份',
   decadeSelect: '选择年代',
   yearFormat: 'YYYY年',
@@ -24,8 +26,6 @@ export default {
   previousDecade: '上一年代',
   nextDecade: '下一年代',
   previousCentury: '上一世纪',
-  nextCentury: '下一世纪',
-  lastWeek: '上一周',
-  nowWeek: '本周',
-  nextWeek: '下一周',
+  nextCentury: '下一世纪'
 };
+module.exports = exports['default'];

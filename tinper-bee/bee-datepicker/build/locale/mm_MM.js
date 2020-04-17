@@ -1,9 +1,7 @@
 'use strict';
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports["default"] = {
+exports.__esModule = true;
+exports['default'] = {
   today: 'ယနေ့',
   now: 'ယခု',
   backToToday: 'ယနေ့ မတိုင်ခင် သို့',
@@ -15,7 +13,6 @@ exports["default"] = {
   dateSelect: 'နေ့ကို ရွေး',
   weekSelect: 'အပတ်ကို ရွေး',
   monthSelect: 'လကို ရွေး',
-  monthFormat: 'M',
   yearSelect: 'နှစ်ကို ရွေး',
   decadeSelect: 'ဆယ်စုနှစ်ကို ရွေး',
   yearFormat: 'YYYY',

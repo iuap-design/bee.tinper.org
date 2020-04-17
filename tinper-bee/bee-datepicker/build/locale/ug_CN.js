@@ -1,9 +1,7 @@
 'use strict';
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports["default"] = {
+exports.__esModule = true;
+exports['default'] = {
   today: 'بۈگۈن',
   now: 'ھازىر',
   backToToday: 'بۈگۈنگە قايتىش',
@@ -16,7 +14,6 @@ exports["default"] = {
   previousMonth: 'ئالدىنقى ئاي(ئالدىنقى بەت )',
   nextMonth: 'كېلەركى ئاي (كېلەركى بەت)',
   monthSelect: 'ئاي تاللاش',
-  monthFormat: 'M—ئاينىڭ',
   yearSelect: 'يىل تاللاش',
   decadeSelect: 'يىللارنى تاللاش',
   yearFormat: 'YYYY-يىلى',

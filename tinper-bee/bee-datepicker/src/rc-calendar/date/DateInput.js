@@ -54,7 +54,7 @@ class DateInput extends React.Component {
 
   onInputChange = (event) => {
     const str = event.target.value;
-    const { disabledDate, format, onChange, selectedValue } = this.props;
+    const { disabledDate, format, onChange, selectedValue,validatorFunc } = this.props;
 
     // 没有内容，合法并直接退出
     if (!str) {
@@ -67,7 +67,7 @@ class DateInput extends React.Component {
     }
 
     // 不合法直接退出
-    const parsed = moment(str,format)||moment(str);
+    const parsed = moment(str,format,true);
     if (!parsed.isValid()) {
       this.setState({
         // invalid: true,
@@ -75,6 +75,12 @@ class DateInput extends React.Component {
       });
       return;
     }
+    if(!this.props.validatorFunc(str)){
+      this.setState({
+        str,
+      });
+      return;
+    };
 
     const value = this.props.value.clone();
     value
@@ -121,13 +127,19 @@ class DateInput extends React.Component {
     }
 
     // 不合法直接退出
-    const parsed = moment(str,format)||moment(str);
+    const parsed = moment(str,format,true);
     if (!parsed.isValid()) {
       this.setState({
         invalid: true
       });
       return;
     }
+    if(!this.props.validatorFunc(str)){
+      this.setState({
+        invalid: true
+      });
+      return;
+    };
 
     const value = this.props.value.clone();
     value
@@ -161,9 +173,9 @@ class DateInput extends React.Component {
   }
 
   onKeyDown = (e) => {
-    const { onSelect, value,onKeyDown,format, isRange } = this.props;
+    const { onSelect, value,onKeyDown,format, isRange,validatorFunc } = this.props;
     const str = e.target.value;
-    const parsed = moment(str,format)||moment(str);
+    const parsed = moment(str,format,true);
     if (e.keyCode === KeyCode.ENTER){
       if(parsed.isValid()&& onSelect){
         isRange?onSelect(parsed.clone()):onSelect(value.clone());//FIX https://github.com/iuap-design/tinper-bee/issues/183
@@ -178,6 +190,11 @@ class DateInput extends React.Component {
       }
       // 有内容，判断是否合法
       if (!parsed.isValid()) {
+        this.setState({
+          invalid: true
+        });
+      }
+      if(!validatorFunc(str)){
         this.setState({
           invalid: true
         });

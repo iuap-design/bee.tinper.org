@@ -1,4 +1,7 @@
-export default {
+'use strict';
+
+exports.__esModule = true;
+exports['default'] = {
   today: 'Hôm nay',
   now: 'Bây giờ',
   backToToday: 'Trở về hôm nay',
@@ -10,7 +13,6 @@ export default {
   dateSelect: 'Chọn ngày',
   weekSelect: 'Chọn tuần',
   monthSelect: 'Chọn tháng',
-  monthFormat: 'M',
   yearSelect: 'Chọn năm',
   decadeSelect: 'Chọn thập kỷ',
   yearFormat: 'YYYY',
@@ -25,5 +27,6 @@ export default {
   previousDecade: 'Thập kỷ trước',
   nextDecade: 'Thập kỷ sau',
   previousCentury: 'Thế kỷ trước',
-  nextCentury: 'Thế kỷ sau',
+  nextCentury: 'Thế kỷ sau'
 };
+module.exports = exports['default'];

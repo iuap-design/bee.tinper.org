@@ -1184,7 +1184,11 @@ var _initialiseProps = function _initialiseProps() {
     if (!_this2.state.open) {
       return;
     }
-    _this2.selectTriggerRef.triggerRef.forcePopupAlign();
+    if (_this2.selectTriggerRef && _this2.selectTriggerRef.triggerRef && _this2.selectTriggerRef.triggerRef.forcePopupAlign) {
+      if (typeof _this2.selectTriggerRef.triggerRef.forcePopupAlign == 'function') {
+        _this2.selectTriggerRef.triggerRef.forcePopupAlign();
+      }
+    }
   };
 
   this.renderFilterOptions = function () {

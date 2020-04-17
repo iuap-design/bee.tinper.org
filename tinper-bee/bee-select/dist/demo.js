@@ -5303,7 +5303,7 @@
 	    return element.nodeName.toLowerCase() === 'html' ? null : getParent(element);
 	  }
 	
-	  for (parent = getParent(element); parent && parent !== body && parent.nodeType !== 9; parent = getParent(parent)) {
+	  for (parent = getParent(element); parent && parent !== body; parent = getParent(parent)) {
 	    positionStyle = utils.css(parent, 'position');
 	
 	    if (positionStyle !== 'static') {
@@ -7580,6 +7580,12 @@
 	
 	var deselectCurrent = __webpack_require__(70);
 	
+	var clipboardToIE11Formatting = {
+	  "text/plain": "Text",
+	  "text/html": "Url",
+	  "default": "Text"
+	}
+	
 	var defaultMessage = "Copy to clipboard: #{key}, Enter";
 	
 	function format(message) {
@@ -7624,8 +7630,20 @@
 	      e.stopPropagation();
 	      if (options.format) {
 	        e.preventDefault();
-	        e.clipboardData.clearData();
-	        e.clipboardData.setData(options.format, text);
+	        if (typeof e.clipboardData === "undefined") { // IE 11
+	          debug && console.warn("unable to use e.clipboardData");
+	          debug && console.warn("trying IE specific stuff");
+	          window.clipboardData.clearData();
+	          var format = clipboardToIE11Formatting[options.format] || clipboardToIE11Formatting["default"]
+	          window.clipboardData.setData(format, text);
+	        } else { // all other browsers
+	          e.clipboardData.clearData();
+	          e.clipboardData.setData(options.format, text);
+	        }
+	      }
+	      if (options.onCopy) {
+	        e.preventDefault();
+	        options.onCopy(e.clipboardData);
 	      }
 	    });
 	
@@ -7644,6 +7662,7 @@
 	    debug && console.warn("trying IE specific stuff");
 	    try {
 	      window.clipboardData.setData(options.format || "text", text);
+	      options.onCopy && options.onCopy(window.clipboardData);
 	      success = true;
 	    } catch (err) {
 	      debug && console.error("unable to copy using clipboardData: ", err);
@@ -14262,7 +14281,7 @@
 	  onExited: _propTypes2["default"].func,
 	
 	  containerClassName: _propTypes2["default"].string
-	}, _defineProperty(_extends2, 'containerClassName', _propTypes2["default"].string), _defineProperty(_extends2, 'container', _Modal2["default"].propTypes.container), _defineProperty(_extends2, 'size', _propTypes2["default"].oneOf(["sm", "lg", "xlg", ""])), _defineProperty(_extends2, 'width', _propTypes2["default"].oneOfType([_propTypes2["default"].number, _propTypes2["default"].string])), _defineProperty(_extends2, 'draggable', _propTypes2["default"].bool), _defineProperty(_extends2, 'resizable', _propTypes2["default"].bool), _defineProperty(_extends2, 'resizeClassName', _propTypes2["default"].string), _defineProperty(_extends2, 'onResizeStart', _propTypes2["default"].func), _defineProperty(_extends2, 'onResize', _propTypes2["default"].func), _defineProperty(_extends2, 'onResizeStop', _propTypes2["default"].func), _defineProperty(_extends2, 'minWidth', _propTypes2["default"].oneOfType([_propTypes2["default"].number, _propTypes2["default"].string])), _defineProperty(_extends2, 'minHeight', _propTypes2["default"].oneOfType([_propTypes2["default"].number, _propTypes2["default"].string])), _defineProperty(_extends2, 'maxWidth', _propTypes2["default"].oneOfType([_propTypes2["default"].number, _propTypes2["default"].string])), _defineProperty(_extends2, 'maxHeight', _propTypes2["default"].oneOfType([_propTypes2["default"].number, _propTypes2["default"].string])), _defineProperty(_extends2, 'bounds', _propTypes2["default"].oneOfType([_propTypes2["default"].string, _propTypes2["default"].object])), _defineProperty(_extends2, 'className', _propTypes2["default"].string), _defineProperty(_extends2, 'centered', _propTypes2["default"].bool), _extends2));
+	}, _defineProperty(_extends2, 'containerClassName', _propTypes2["default"].string), _defineProperty(_extends2, 'container', _Modal2["default"].propTypes.container), _defineProperty(_extends2, 'size', _propTypes2["default"].oneOf(["sm", "lg", "xlg", ""])), _defineProperty(_extends2, 'width', _propTypes2["default"].oneOfType([_propTypes2["default"].number, _propTypes2["default"].string])), _defineProperty(_extends2, 'draggable', _propTypes2["default"].bool), _defineProperty(_extends2, 'resizable', _propTypes2["default"].bool), _defineProperty(_extends2, 'resizeClassName', _propTypes2["default"].string), _defineProperty(_extends2, 'onResizeStart', _propTypes2["default"].func), _defineProperty(_extends2, 'onResize', _propTypes2["default"].func), _defineProperty(_extends2, 'onResizeStop', _propTypes2["default"].func), _defineProperty(_extends2, 'minWidth', _propTypes2["default"].oneOfType([_propTypes2["default"].number, _propTypes2["default"].string])), _defineProperty(_extends2, 'minHeight', _propTypes2["default"].oneOfType([_propTypes2["default"].number, _propTypes2["default"].string])), _defineProperty(_extends2, 'maxWidth', _propTypes2["default"].oneOfType([_propTypes2["default"].number, _propTypes2["default"].string])), _defineProperty(_extends2, 'maxHeight', _propTypes2["default"].oneOfType([_propTypes2["default"].number, _propTypes2["default"].string])), _defineProperty(_extends2, 'bounds', _propTypes2["default"].oneOfType([_propTypes2["default"].string, _propTypes2["default"].Object])), _defineProperty(_extends2, 'className', _propTypes2["default"].string), _defineProperty(_extends2, 'centered', _propTypes2["default"].bool), _extends2));
 	
 	var defaultProps = _extends({}, _Modal2["default"].defaultProps, {
 	  backdropClosable: true,
@@ -23225,19 +23244,21 @@
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 	
-	Object.defineProperty(exports, "__esModule", { value: true });
 	var isProduction = process.env.NODE_ENV === 'production';
 	var prefix = 'Invariant failed';
 	function invariant(condition, message) {
-	    if (condition) {
-	        return;
-	    }
-	    if (isProduction) {
-	        throw new Error(prefix);
-	    }
+	  if (condition) {
+	    return;
+	  }
+	
+	  if (isProduction) {
+	    throw new Error(prefix);
+	  } else {
 	    throw new Error(prefix + ": " + (message || ''));
+	  }
 	}
-	exports.default = invariant;
+	
+	module.exports = invariant;
 	
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(33)))
 
@@ -23475,7 +23496,7 @@
 	  var calledOnce = false;
 	
 	  var isNewArgEqualToLast = function isNewArgEqualToLast(newArg, index) {
-	    return isEqual(newArg, lastArgs[index], index);
+	    return isEqual(newArg, lastArgs[index]);
 	  };
 	
 	  var result = function result() {
@@ -23658,7 +23679,7 @@
 	    }
 	
 	    if (isDispatching) {
-	      throw new Error('You may not call store.subscribe() while the reducer is executing. ' + 'If you would like to be notified after the store has been updated, subscribe from a ' + 'component and invoke store.getState() in the callback to access the latest state. ' + 'See https://redux.js.org/api-reference/store#subscribelistener for more details.');
+	      throw new Error('You may not call store.subscribe() while the reducer is executing. ' + 'If you would like to be notified after the store has been updated, subscribe from a ' + 'component and invoke store.getState() in the callback to access the latest state. ' + 'See https://redux.js.org/api-reference/store#subscribe(listener) for more details.');
 	    }
 	
 	    var isSubscribed = true;
@@ -23670,14 +23691,13 @@
 	      }
 	
 	      if (isDispatching) {
-	        throw new Error('You may not unsubscribe from a store listener while the reducer is executing. ' + 'See https://redux.js.org/api-reference/store#subscribelistener for more details.');
+	        throw new Error('You may not unsubscribe from a store listener while the reducer is executing. ' + 'See https://redux.js.org/api-reference/store#subscribe(listener) for more details.');
 	      }
 	
 	      isSubscribed = false;
 	      ensureCanMutateNextListeners();
 	      var index = nextListeners.indexOf(listener);
 	      nextListeners.splice(index, 1);
-	      currentListeners = null;
 	    };
 	  }
 	  /**
@@ -23979,7 +23999,6 @@
 	      hasChanged = hasChanged || nextStateForKey !== previousStateForKey;
 	    }
 	
-	    hasChanged = hasChanged || finalReducerKeys.length !== Object.keys(state).length;
 	    return hasChanged ? nextState : state;
 	  };
 	}
@@ -24420,16 +24439,16 @@
 /* 178 */
 /***/ (function(module, exports) {
 
-	function _typeof(obj) {
-	  "@babel/helpers - typeof";
+	function _typeof2(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof2 = function _typeof2(obj) { return typeof obj; }; } else { _typeof2 = function _typeof2(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof2(obj); }
 	
-	  if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
+	function _typeof(obj) {
+	  if (typeof Symbol === "function" && _typeof2(Symbol.iterator) === "symbol") {
 	    module.exports = _typeof = function _typeof(obj) {
-	      return typeof obj;
+	      return _typeof2(obj);
 	    };
 	  } else {
 	    module.exports = _typeof = function _typeof(obj) {
-	      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+	      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : _typeof2(obj);
 	    };
 	  }
 	
@@ -34001,9 +34020,7 @@
 	      var node = _ref2.node,
 	          deltaX = _ref2.deltaX,
 	          deltaY = _ref2.deltaY;
-	      deltaX /= _this2.props.transformScale;
-	      deltaY /= _this2.props.transformScale; // Axis restrictions
-	
+	      // Axis restrictions
 	      var canDragX = (_this2.props.axis === 'both' || _this2.props.axis === 'x') && ['n', 's'].indexOf(axis) === -1;
 	      var canDragY = (_this2.props.axis === 'both' || _this2.props.axis === 'y') && ['e', 'w'].indexOf(axis) === -1; // reverse delta if using top or left drag handles
 	
@@ -34094,8 +34111,7 @@
 	        onResizeStop = _this$props.onResizeStop,
 	        onResizeStart = _this$props.onResizeStart,
 	        resizeHandles = _this$props.resizeHandles,
-	        transformScale = _this$props.transformScale,
-	        p = _objectWithoutPropertiesLoose(_this$props, ["children", "draggableOpts", "width", "height", "handleSize", "lockAspectRatio", "axis", "minConstraints", "maxConstraints", "onResize", "onResizeStop", "onResizeStart", "resizeHandles", "transformScale"]);
+	        p = _objectWithoutPropertiesLoose(_this$props, ["children", "draggableOpts", "width", "height", "handleSize", "lockAspectRatio", "axis", "minConstraints", "maxConstraints", "onResize", "onResizeStop", "onResizeStart", "resizeHandles"]);
 	
 	    var className = p.className ? p.className + " react-resizable" : 'react-resizable'; // What we're doing here is getting the child of this element, and cloning it with this element's props.
 	    // We are then defining its children as:
@@ -34147,7 +34163,6 @@
 	  // 'se' - Southeast handle (bottom-right)
 	  // 'ne' - Northeast handle (top-center)
 	  resizeHandles: _propTypes.default.arrayOf(_propTypes.default.oneOf(['s', 'w', 'e', 'n', 'sw', 'nw', 'se', 'ne'])),
-	  transformScale: _propTypes.default.number,
 	  // If true, will only allow width/height to move in lockstep
 	  lockAspectRatio: _propTypes.default.bool,
 	  // Restricts resizing to a particular axis (default: 'both')
@@ -34173,8 +34188,7 @@
 	  axis: 'both',
 	  minConstraints: [20, 20],
 	  maxConstraints: [Infinity, Infinity],
-	  resizeHandles: ['se'],
-	  transformScale: 1
+	  resizeHandles: ['se']
 	});
 
 /***/ }),
@@ -34287,8 +34301,6 @@
 	        propsHeight: props.height
 	      };
 	    }
-	
-	    return null;
 	  };
 	
 	  var _proto = ResizableBox.prototype;
@@ -35644,15 +35656,7 @@
 	  /**
 	   * 关闭时的钩子函数
 	   */
-	  onHide: _propTypes2["default"].func,
-	  /**
-	   * 自定义关闭按钮的钩子函数
-	   */
-	  renderCloseButton: _propTypes2["default"].func,
-	  /**
-	   * 自定义关闭按钮的 props
-	   */
-	  closeButtonProps: _propTypes2["default"].object
+	  onHide: _propTypes2["default"].func
 	};
 	
 	var defaultProps = {
@@ -35684,35 +35688,32 @@
 	        className = _props.className,
 	        clsPrefix = _props.clsPrefix,
 	        children = _props.children,
-	        renderCloseButton = _props.renderCloseButton,
-	        closeButtonProps = _props.closeButtonProps,
-	        props = _objectWithoutProperties(_props, ['aria-label', 'closeButton', 'onHide', 'className', 'clsPrefix', 'children', 'renderCloseButton', 'closeButtonProps']);
+	        props = _objectWithoutProperties(_props, ['aria-label', 'closeButton', 'onHide', 'className', 'clsPrefix', 'children']);
 	
 	    var modal = this.context.$u_modal;
+	
 	    var classes = {};
 	    classes['' + clsPrefix] = true;
 	    classes['dnd-handle'] = true;
-	
-	    var closeBtnDom = _react2["default"].createElement(
-	      'button',
-	      _extends({}, closeButtonProps, {
-	        type: 'button',
-	        className: 'u-close dnd-cancel',
-	        'aria-label': label,
-	        onClick: (0, _tinperBeeCore.createChainedFunction)(modal.onHide, onHide)
-	      }),
-	      renderCloseButton ? renderCloseButton() : _react2["default"].createElement(
-	        'span',
-	        { 'aria-hidden': 'true' },
-	        _react2["default"].createElement('i', { className: 'uf uf-close' })
-	      )
-	    );
 	    return _react2["default"].createElement(
 	      'div',
 	      _extends({}, props, {
 	        className: (0, _classnames2["default"])(className, classes)
 	      }),
-	      closeButton && closeBtnDom,
+	      closeButton && _react2["default"].createElement(
+	        'button',
+	        {
+	          type: 'button',
+	          className: 'u-close dnd-cancel',
+	          'aria-label': label,
+	          onClick: (0, _tinperBeeCore.createChainedFunction)(modal.onHide, onHide)
+	        },
+	        _react2["default"].createElement(
+	          'span',
+	          { 'aria-hidden': 'true' },
+	          _react2["default"].createElement('i', { className: 'uf uf-close' })
+	        )
+	      ),
 	      children
 	    );
 	  };
@@ -36318,10 +36319,8 @@
 	    }
 	
 	    FormControl.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProp) {
-	        if ("value" in nextProp) {
-	            if (nextProp.value !== this.state.value) {
-	                this.setState({ value: nextProp.value });
-	            }
+	        if (nextProp.value !== this.state.value) {
+	            this.setState({ value: nextProp.value });
 	        }
 	    };
 	
@@ -38061,7 +38060,11 @@
 	    if (!_this2.state.open) {
 	      return;
 	    }
-	    _this2.selectTriggerRef.triggerRef.forcePopupAlign();
+	    if (_this2.selectTriggerRef && _this2.selectTriggerRef.triggerRef && _this2.selectTriggerRef.triggerRef.forcePopupAlign) {
+	      if (typeof _this2.selectTriggerRef.triggerRef.forcePopupAlign == 'function') {
+	        _this2.selectTriggerRef.triggerRef.forcePopupAlign();
+	      }
+	    }
 	  };
 	
 	  this.renderFilterOptions = function () {
@@ -38476,13 +38479,13 @@
 	
 	function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 	
-	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; if (obj != null) { var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 	
 	function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 	
 	function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 	
-	function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+	function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 	
 	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 	
@@ -39150,7 +39153,7 @@
 	
 	function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 	
-	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; if (obj != null) { var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 	
 	function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 	
@@ -39174,7 +39177,7 @@
 	
 	function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 	
-	function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+	function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 	
 	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 	
@@ -39593,6 +39596,7 @@
 	   * NUMLOCK on FF/Safari Mac
 	   */
 	  NUM_CENTER: 12,
+	  // NUMLOCK on FF/Safari Mac
 	
 	  /**
 	   * ENTER
@@ -39638,41 +39642,49 @@
 	   * PAGE_UP
 	   */
 	  PAGE_UP: 33,
+	  // also NUM_NORTH_EAST
 	
 	  /**
 	   * PAGE_DOWN
 	   */
 	  PAGE_DOWN: 34,
+	  // also NUM_SOUTH_EAST
 	
 	  /**
 	   * END
 	   */
 	  END: 35,
+	  // also NUM_SOUTH_WEST
 	
 	  /**
 	   * HOME
 	   */
 	  HOME: 36,
+	  // also NUM_NORTH_WEST
 	
 	  /**
 	   * LEFT
 	   */
 	  LEFT: 37,
+	  // also NUM_WEST
 	
 	  /**
 	   * UP
 	   */
 	  UP: 38,
+	  // also NUM_NORTH
 	
 	  /**
 	   * RIGHT
 	   */
 	  RIGHT: 39,
+	  // also NUM_EAST
 	
 	  /**
 	   * DOWN
 	   */
 	  DOWN: 40,
+	  // also NUM_SOUTH
 	
 	  /**
 	   * PRINT_SCREEN
@@ -39683,11 +39695,13 @@
 	   * INSERT
 	   */
 	  INSERT: 45,
+	  // also NUM_INSERT
 	
 	  /**
 	   * DELETE
 	   */
 	  DELETE: 46,
+	  // also NUM_DELETE
 	
 	  /**
 	   * ZERO
@@ -39743,6 +39757,7 @@
 	   * QUESTION_MARK
 	   */
 	  QUESTION_MARK: 63,
+	  // needs localization
 	
 	  /**
 	   * A
@@ -39878,6 +39893,7 @@
 	   * META
 	   */
 	  META: 91,
+	  // WIN_KEY_LEFT
 	
 	  /**
 	   * WIN_KEY_RIGHT
@@ -40033,56 +40049,67 @@
 	   * SEMICOLON
 	   */
 	  SEMICOLON: 186,
+	  // needs localization
 	
 	  /**
 	   * DASH
 	   */
 	  DASH: 189,
+	  // needs localization
 	
 	  /**
 	   * EQUALS
 	   */
 	  EQUALS: 187,
+	  // needs localization
 	
 	  /**
 	   * COMMA
 	   */
 	  COMMA: 188,
+	  // needs localization
 	
 	  /**
 	   * PERIOD
 	   */
 	  PERIOD: 190,
+	  // needs localization
 	
 	  /**
 	   * SLASH
 	   */
 	  SLASH: 191,
+	  // needs localization
 	
 	  /**
 	   * APOSTROPHE
 	   */
 	  APOSTROPHE: 192,
+	  // needs localization
 	
 	  /**
 	   * SINGLE_QUOTE
 	   */
 	  SINGLE_QUOTE: 222,
+	  // needs localization
 	
 	  /**
 	   * OPEN_SQUARE_BRACKET
 	   */
 	  OPEN_SQUARE_BRACKET: 219,
+	  // needs localization
 	
 	  /**
 	   * BACKSLASH
 	   */
 	  BACKSLASH: 220,
+	  // needs localization
 	
 	  /**
 	   * CLOSE_SQUARE_BRACKET
 	   */
 	  CLOSE_SQUARE_BRACKET: 221,
+	  // needs localization
 	
 	  /**
 	   * WIN_KEY
@@ -40093,103 +40120,105 @@
 	   * MAC_FF_META
 	   */
 	  MAC_FF_META: 224,
+	  // Firefox (Gecko) fires this for the meta key instead of 91
 	
 	  /**
 	   * WIN_IME
 	   */
-	  WIN_IME: 229,
-	  // ======================== Function ========================
+	  WIN_IME: 229
+	};
+	/*
+	 whether text and modified key is entered at the same time.
+	 */
 	
-	  /**
-	   * whether text and modified key is entered at the same time.
-	   */
-	  isTextModifyingKeyEvent: function isTextModifyingKeyEvent(e) {
-	    var keyCode = e.keyCode;
+	KeyCode.isTextModifyingKeyEvent = function isTextModifyingKeyEvent(e) {
+	  var keyCode = e.keyCode;
 	
-	    if (e.altKey && !e.ctrlKey || e.metaKey || // Function keys don't generate text
-	    keyCode >= KeyCode.F1 && keyCode <= KeyCode.F12) {
+	  if (e.altKey && !e.ctrlKey || e.metaKey || // Function keys don't generate text
+	  keyCode >= KeyCode.F1 && keyCode <= KeyCode.F12) {
+	    return false;
+	  } // The following keys are quite harmless, even in combination with
+	  // CTRL, ALT or SHIFT.
+	
+	
+	  switch (keyCode) {
+	    case KeyCode.ALT:
+	    case KeyCode.CAPS_LOCK:
+	    case KeyCode.CONTEXT_MENU:
+	    case KeyCode.CTRL:
+	    case KeyCode.DOWN:
+	    case KeyCode.END:
+	    case KeyCode.ESC:
+	    case KeyCode.HOME:
+	    case KeyCode.INSERT:
+	    case KeyCode.LEFT:
+	    case KeyCode.MAC_FF_META:
+	    case KeyCode.META:
+	    case KeyCode.NUMLOCK:
+	    case KeyCode.NUM_CENTER:
+	    case KeyCode.PAGE_DOWN:
+	    case KeyCode.PAGE_UP:
+	    case KeyCode.PAUSE:
+	    case KeyCode.PRINT_SCREEN:
+	    case KeyCode.RIGHT:
+	    case KeyCode.SHIFT:
+	    case KeyCode.UP:
+	    case KeyCode.WIN_KEY:
+	    case KeyCode.WIN_KEY_RIGHT:
 	      return false;
-	    } // The following keys are quite harmless, even in combination with
-	    // CTRL, ALT or SHIFT.
 	
-	
-	    switch (keyCode) {
-	      case KeyCode.ALT:
-	      case KeyCode.CAPS_LOCK:
-	      case KeyCode.CONTEXT_MENU:
-	      case KeyCode.CTRL:
-	      case KeyCode.DOWN:
-	      case KeyCode.END:
-	      case KeyCode.ESC:
-	      case KeyCode.HOME:
-	      case KeyCode.INSERT:
-	      case KeyCode.LEFT:
-	      case KeyCode.MAC_FF_META:
-	      case KeyCode.META:
-	      case KeyCode.NUMLOCK:
-	      case KeyCode.NUM_CENTER:
-	      case KeyCode.PAGE_DOWN:
-	      case KeyCode.PAGE_UP:
-	      case KeyCode.PAUSE:
-	      case KeyCode.PRINT_SCREEN:
-	      case KeyCode.RIGHT:
-	      case KeyCode.SHIFT:
-	      case KeyCode.UP:
-	      case KeyCode.WIN_KEY:
-	      case KeyCode.WIN_KEY_RIGHT:
-	        return false;
-	
-	      default:
-	        return true;
-	    }
-	  },
-	
-	  /**
-	   * whether character is entered.
-	   */
-	  isCharacterKey: function isCharacterKey(keyCode) {
-	    if (keyCode >= KeyCode.ZERO && keyCode <= KeyCode.NINE) {
+	    default:
 	      return true;
-	    }
-	
-	    if (keyCode >= KeyCode.NUM_ZERO && keyCode <= KeyCode.NUM_MULTIPLY) {
-	      return true;
-	    }
-	
-	    if (keyCode >= KeyCode.A && keyCode <= KeyCode.Z) {
-	      return true;
-	    } // Safari sends zero key code for non-latin characters.
-	
-	
-	    if (window.navigator.userAgent.indexOf('WebKit') !== -1 && keyCode === 0) {
-	      return true;
-	    }
-	
-	    switch (keyCode) {
-	      case KeyCode.SPACE:
-	      case KeyCode.QUESTION_MARK:
-	      case KeyCode.NUM_PLUS:
-	      case KeyCode.NUM_MINUS:
-	      case KeyCode.NUM_PERIOD:
-	      case KeyCode.NUM_DIVISION:
-	      case KeyCode.SEMICOLON:
-	      case KeyCode.DASH:
-	      case KeyCode.EQUALS:
-	      case KeyCode.COMMA:
-	      case KeyCode.PERIOD:
-	      case KeyCode.SLASH:
-	      case KeyCode.APOSTROPHE:
-	      case KeyCode.SINGLE_QUOTE:
-	      case KeyCode.OPEN_SQUARE_BRACKET:
-	      case KeyCode.BACKSLASH:
-	      case KeyCode.CLOSE_SQUARE_BRACKET:
-	        return true;
-	
-	      default:
-	        return false;
-	    }
 	  }
 	};
+	/*
+	 whether character is entered.
+	 */
+	
+	
+	KeyCode.isCharacterKey = function isCharacterKey(keyCode) {
+	  if (keyCode >= KeyCode.ZERO && keyCode <= KeyCode.NINE) {
+	    return true;
+	  }
+	
+	  if (keyCode >= KeyCode.NUM_ZERO && keyCode <= KeyCode.NUM_MULTIPLY) {
+	    return true;
+	  }
+	
+	  if (keyCode >= KeyCode.A && keyCode <= KeyCode.Z) {
+	    return true;
+	  } // Safari sends zero key code for non-latin characters.
+	
+	
+	  if (window.navigation.userAgent.indexOf('WebKit') !== -1 && keyCode === 0) {
+	    return true;
+	  }
+	
+	  switch (keyCode) {
+	    case KeyCode.SPACE:
+	    case KeyCode.QUESTION_MARK:
+	    case KeyCode.NUM_PLUS:
+	    case KeyCode.NUM_MINUS:
+	    case KeyCode.NUM_PERIOD:
+	    case KeyCode.NUM_DIVISION:
+	    case KeyCode.SEMICOLON:
+	    case KeyCode.DASH:
+	    case KeyCode.EQUALS:
+	    case KeyCode.COMMA:
+	    case KeyCode.PERIOD:
+	    case KeyCode.SLASH:
+	    case KeyCode.APOSTROPHE:
+	    case KeyCode.SINGLE_QUOTE:
+	    case KeyCode.OPEN_SQUARE_BRACKET:
+	    case KeyCode.BACKSLASH:
+	    case KeyCode.CLOSE_SQUARE_BRACKET:
+	      return true;
+	
+	    default:
+	      return false;
+	  }
+	};
+	
 	var _default = KeyCode;
 	exports.default = _default;
 
@@ -40252,7 +40281,7 @@
 	
 	function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 	
-	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; if (obj != null) { var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 	
 	function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 	
@@ -40354,7 +40383,7 @@
 	
 	function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 	
-	function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+	function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 	
 	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 	
@@ -40489,7 +40518,7 @@
 	
 	function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 	
-	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; if (obj != null) { var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 	
 	function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 	
@@ -40503,7 +40532,7 @@
 	
 	function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 	
-	function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+	function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 	
 	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 	
@@ -40770,7 +40799,7 @@
 	      }
 	
 	      if (this.mutationObserver) {
-	        this.mutationObserver.disconnect();
+	        this.resizeObserver.disconnect();
 	      }
 	    }
 	  }, {
@@ -41836,7 +41865,7 @@
 	
 	function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 	
-	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; if (obj != null) { var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 	
 	function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 	
@@ -41858,7 +41887,7 @@
 	
 	function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 	
-	function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+	function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 	
 	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 	
@@ -47158,13 +47187,13 @@
 	
 	function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 	
-	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; if (obj != null) { var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 	
 	function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 	
 	function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 	
-	function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+	function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 	
 	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 	
@@ -48026,7 +48055,7 @@
 	
 	function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 	
-	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; if (obj != null) { var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 	
 	function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 	
@@ -48116,8 +48145,6 @@
 
 	"use strict";
 	
-	function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
@@ -48127,7 +48154,7 @@
 	
 	function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 	
-	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; if (obj != null) { var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 	
 	var Divider = function Divider(_ref) {
 	  var className = _ref.className,

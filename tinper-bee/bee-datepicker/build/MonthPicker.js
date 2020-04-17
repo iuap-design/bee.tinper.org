@@ -321,7 +321,10 @@ MonthPicker.defaultProps = {
   showDateInput: true,
   showMonthInput: true,
   locale: _zh_CN2["default"],
-  showClose: true
+  showClose: true,
+  validatorFunc: function validatorFunc() {
+    return true;
+  }
 };
 
 exports["default"] = MonthPicker;

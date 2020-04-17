@@ -1,4 +1,7 @@
-export default {
+'use strict';
+
+exports.__esModule = true;
+exports['default'] = {
   today: 'Ma', // 'Today',
   now: 'Most', // 'Now',
   backToToday: 'Vissza a mai napra', // 'Back to today',
@@ -9,7 +12,6 @@ export default {
   timeSelect: 'Időpont kiválasztása', // 'Select time',
   dateSelect: 'Dátum kiválasztása', // 'Select date',
   monthSelect: 'Hónap kiválasztása', // 'Choose a month',
-  monthFormat: 'MM',
   yearSelect: 'Év kiválasztása', // 'Choose a year',
   decadeSelect: 'Évtized kiválasztása', // 'Choose a decade',
   yearFormat: 'YYYY',
@@ -24,5 +26,6 @@ export default {
   previousDecade: 'Előző évtized', // 'Last decade',
   nextDecade: 'Következő évtized', // 'Next decade',
   previousCentury: 'Múlt évszázad', // 'Last century',
-  nextCentury: 'Jövő évszázad', // 'Next century',
+  nextCentury: 'Jövő évszázad' // 'Next century',
 };
+module.exports = exports['default'];

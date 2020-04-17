@@ -1,4 +1,7 @@
-export default {
+'use strict';
+
+exports.__esModule = true;
+exports['default'] = {
   today: 'ಇಂದು',
   now: 'ಈಗ',
   backToToday: 'ಇಂದು ಹಿಂದಿರುಗಿ',
@@ -10,7 +13,6 @@ export default {
   dateSelect: 'ದಿನಾಂಕವನ್ನು ಆಯ್ಕೆ ಮಾಡಿ',
   weekSelect: 'ಒಂದು ವಾರದ ಆರಿಸಿ',
   monthSelect: 'ಒಂದು ತಿಂಗಳು ಆಯ್ಕೆಮಾಡಿ',
-  monthFormat: 'M',
   yearSelect: 'ಒಂದು ವರ್ಷ ಆರಿಸಿ',
   decadeSelect: 'ಒಂದು ದಶಕದ ಆಯ್ಕೆಮಾಡಿ',
   yearFormat: 'YYYY',
@@ -25,5 +27,6 @@ export default {
   previousDecade: 'ಕಳೆದ ದಶಕ',
   nextDecade: 'ಮುಂದಿನ ದಶಕ',
   previousCentury: 'ಕಳೆದ ಶತಮಾನ',
-  nextCentury: 'ಮುಂದಿನ ಶತಮಾನ',
+  nextCentury: 'ಮುಂದಿನ ಶತಮಾನ'
 };
+module.exports = exports['default'];

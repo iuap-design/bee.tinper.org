@@ -207,7 +207,8 @@ var YearPanel = function (_React$Component) {
     }
     var showDateInput = props.showDateInput,
         rootPrefixCls = props.rootPrefixCls,
-        format = props.format;
+        format = props.format,
+        validatorFunc = props.validatorFunc;
 
     return _react2["default"].createElement(
       'div',
@@ -224,7 +225,8 @@ var YearPanel = function (_React$Component) {
           onChange: this.onInputChange,
           selectedValue: value,
           onClear: this.onClear,
-          onSelect: this.yearSelect
+          onSelect: this.yearSelect,
+          validatorFunc: validatorFunc
         }) : '',
         _react2["default"].createElement(
           'div',

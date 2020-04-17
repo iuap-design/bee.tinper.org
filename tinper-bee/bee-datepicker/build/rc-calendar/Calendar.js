@@ -108,11 +108,15 @@ var Calendar = function (_React$Component) {
   };
 
   Calendar.prototype.render = function render() {
+    var _this2 = this;
+
     var props = this.props,
         state = this.state;
     var locale = props.locale,
         prefixCls = props.prefixCls,
         disabledDate = props.disabledDate,
+        validatorFunc = props.validatorFunc,
+        format = props.format,
         dateInputPlaceholder = props.dateInputPlaceholder,
         timePicker = props.timePicker,
         disabledTime = props.disabledTime,
@@ -160,10 +164,15 @@ var Calendar = function (_React$Component) {
       prefixCls: prefixCls,
       selectedValue: selectedValue,
       onChange: this.onDateInputChange,
-      onSelect: this.onDateInputSelect,
+      onSelect: function onSelect(value) {
+        if ((0, _moment2["default"])(value, format, true) && validatorFunc(value)) {
+          _this2.onDateInputSelect(value);
+        }
+      },
       clearIcon: clearIcon,
       renderError: renderError,
-      onBlur: onInputBlur
+      onBlur: onInputBlur,
+      validatorFunc: validatorFunc
     }) : null;
 
     var children = [];
@@ -288,14 +297,14 @@ Calendar.defaultProps = _extends({}, _CalendarMixin.calendarMixinDefaultProps, _
 });
 
 var _initialiseProps = function _initialiseProps() {
-  var _this2 = this;
+  var _this3 = this;
 
   this.onPanelChange = function (value, mode) {
-    var props = _this2.props,
-        state = _this2.state;
+    var props = _this3.props,
+        state = _this3.state;
 
     if (!('mode' in props)) {
-      _this2.setState({ mode: mode });
+      _this3.setState({ mode: mode });
     }
     props.onPanelChange(value || state.value, mode);
   };
@@ -304,58 +313,58 @@ var _initialiseProps = function _initialiseProps() {
     if (event.target.nodeName.toLowerCase() === 'input') {
       return undefined;
     } else {
-      _this2.props.onKeyDown && _this2.props.onKeyDown(event);
+      _this3.props.onKeyDown && _this3.props.onKeyDown(event);
     }
     var keyCode = event.keyCode;
     // mac
     var ctrlKey = event.ctrlKey || event.metaKey;
-    var disabledDate = _this2.props.disabledDate;
-    var value = _this2.state.value;
+    var disabledDate = _this3.props.disabledDate;
+    var value = _this3.state.value;
 
     switch (keyCode) {
       case _KeyCode2["default"].DOWN:
-        _this2.goTime(1, 'weeks');
+        _this3.goTime(1, 'weeks');
         event.preventDefault();
         return 1;
       case _KeyCode2["default"].UP:
-        _this2.goTime(-1, 'weeks');
+        _this3.goTime(-1, 'weeks');
         event.preventDefault();
         return 1;
       case _KeyCode2["default"].LEFT:
         if (ctrlKey) {
-          _this2.goTime(-1, 'years');
+          _this3.goTime(-1, 'years');
         } else {
-          _this2.goTime(-1, 'days');
+          _this3.goTime(-1, 'days');
         }
         event.preventDefault();
         return 1;
       case _KeyCode2["default"].RIGHT:
         if (ctrlKey) {
-          _this2.goTime(1, 'years');
+          _this3.goTime(1, 'years');
         } else {
-          _this2.goTime(1, 'days');
+          _this3.goTime(1, 'days');
         }
         event.preventDefault();
         return 1;
       case _KeyCode2["default"].HOME:
-        _this2.setValue((0, _toTime.goStartMonth)(_this2.state.value));
+        _this3.setValue((0, _toTime.goStartMonth)(_this3.state.value));
         event.preventDefault();
         return 1;
       case _KeyCode2["default"].END:
-        _this2.setValue((0, _toTime.goEndMonth)(_this2.state.value));
+        _this3.setValue((0, _toTime.goEndMonth)(_this3.state.value));
         event.preventDefault();
         return 1;
       case _KeyCode2["default"].PAGE_DOWN:
-        _this2.goTime(1, 'month');
+        _this3.goTime(1, 'month');
         event.preventDefault();
         return 1;
       case _KeyCode2["default"].PAGE_UP:
-        _this2.goTime(-1, 'month');
+        _this3.goTime(-1, 'month');
         event.preventDefault();
         return 1;
       case _KeyCode2["default"].ENTER:
         if (!disabledDate || !disabledDate(value)) {
-          _this2.onSelect(value, {
+          _this3.onSelect(value, {
             source: 'keyboard'
           });
         }
@@ -365,33 +374,33 @@ var _initialiseProps = function _initialiseProps() {
   };
 
   this.onClear = function () {
-    _this2.onSelect(null);
-    _this2.props.onClear();
+    _this3.onSelect(null);
+    _this3.props.onClear();
   };
 
   this.onOk = function () {
-    var selectedValue = _this2.state.selectedValue;
+    var selectedValue = _this3.state.selectedValue;
 
-    if (_this2.isAllowedDate(selectedValue)) {
-      _this2.props.onOk(selectedValue);
+    if (_this3.isAllowedDate(selectedValue)) {
+      _this3.props.onOk(selectedValue);
     }
   };
 
   this.onDateInputChange = function (value) {
-    _this2.onSelect(value, {
+    _this3.onSelect(value, {
       source: 'dateInput'
     });
   };
 
   this.onDateInputSelect = function (value) {
-    _this2.onSelect(value, {
+    _this3.onSelect(value, {
       source: 'dateInputSelect'
     });
   };
 
   this.onDateTableSelect = function (value) {
-    var timePicker = _this2.props.timePicker;
-    var selectedValue = _this2.state.selectedValue;
+    var timePicker = _this3.props.timePicker;
+    var selectedValue = _this3.state.selectedValue;
 
     if (!selectedValue && timePicker) {
       var timePickerDefaultValue = timePicker.props.defaultValue;
@@ -399,32 +408,32 @@ var _initialiseProps = function _initialiseProps() {
         (0, _util.syncTime)(timePickerDefaultValue, value);
       }
     }
-    _this2.onSelect(value);
+    _this3.onSelect(value);
   };
 
   this.onToday = function () {
-    var value = _this2.state.value;
+    var value = _this3.state.value;
 
     var now = (0, _util.getTodayTime)(value);
-    _this2.onSelect(now, {
+    _this3.onSelect(now, {
       source: 'todayButton'
     });
   };
 
   this.getRootDOMNode = function () {
-    return _reactDom2["default"].findDOMNode(_this2);
+    return _reactDom2["default"].findDOMNode(_this3);
   };
 
   this.openTimePicker = function () {
-    _this2.onPanelChange(null, 'time');
+    _this3.onPanelChange(null, 'time');
   };
 
   this.closeTimePicker = function () {
-    _this2.onPanelChange(null, 'date');
+    _this3.onPanelChange(null, 'date');
   };
 
   this.goTime = function (direction, unit) {
-    _this2.setValue((0, _toTime.goTime)(_this2.state.value, direction, unit));
+    _this3.setValue((0, _toTime.goTime)(_this3.state.value, direction, unit));
   };
 
   this.onMouseOver = function (e) {

@@ -1,4 +1,7 @@
-export default {
+'use strict';
+
+exports.__esModule = true;
+exports['default'] = {
   today: 'Dnes',
   now: 'Teraz',
   backToToday: 'Späť na dnes',
@@ -8,8 +11,8 @@ export default {
   year: 'Rok',
   timeSelect: 'Vybrať čas',
   dateSelect: 'Vybrať dátum',
+  weekSelect: 'Vybrať týždeň',
   monthSelect: 'Vybrať mesiac',
-  monthFormat: 'M',
   yearSelect: 'Vybrať rok',
   decadeSelect: 'Vybrať dekádu',
   yearFormat: 'YYYY',
@@ -24,5 +27,6 @@ export default {
   previousDecade: 'Predchádzajúca dekáda',
   nextDecade: 'Nasledujúca dekáda',
   previousCentury: 'Predchádzajúce storočie',
-  nextCentury: 'Nasledujúce storočie',
+  nextCentury: 'Nasledujúce storočie'
 };
+module.exports = exports['default'];

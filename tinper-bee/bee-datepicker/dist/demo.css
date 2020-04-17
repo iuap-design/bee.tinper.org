@@ -996,6 +996,18 @@
 .uf-globe:before {
   content: "\e9db"; }
 
+.uf-yybs:before {
+  content: "\e9dc"; }
+
+.uf-iuap5:before {
+  content: "\e9dd"; }
+
+.uf-iuap5c:before {
+  content: "\e9ff"; }
+
+.uf-qingkong:before {
+  content: "\e666"; }
+
 .u-form-control {
   position: relative;
   display: inline-block;
@@ -1070,6 +1082,10 @@
     line-height: 0;
     right: 7px;
     color: rgba(0, 0, 0, 0.65); }
+  .u-form-control-affix-wrapper .u-form-control-suffix.has-close {
+    cursor: pointer;
+    right: 0;
+    padding-right: 7px; }
   .u-form-control-affix-wrapper .u-form-control-simple-prefix, .u-form-control-affix-wrapper .u-form-control-simple-suffix {
     position: absolute;
     top: 60%;

@@ -8,7 +8,7 @@ import React, {Component} from "react";
 import {Row, Col} from "bee-layout";
 import DatePicker from "../../src";
 
-const format = "YYYY-MM-DD dddd";
+const format = ["YYYY.MM.DD","DD.MM.YYYY","YYYYMMDD","DDMMYYYY"];
 const dateInputPlaceholder = "选择日期";
 
 class Demo1 extends Component {
@@ -16,16 +16,11 @@ class Demo1 extends Component {
         console.log('select')
         console.log(d, dataString);
     }
-    onClick = d => {
-        console.log('click')
-    }
     onChange = (d, dataString) => {
         console.log('change')
         console.log(d, dataString)
     };
-    onDateInputBlur = (e,v) => {
-        console.log(e,v);
-    }
+
     render() {
         var self = this;
         return (
@@ -34,10 +29,7 @@ class Demo1 extends Component {
                     <Col md={6}>
                         <DatePicker
                             format={format}
-                            onSelect={this.onSelect}
                             onChange={this.onChange}
-                            onClick={this.onClick}
-                            onDateInputBlur={this.onDateInputBlur}
                         />
                     </Col>
                 </Row>

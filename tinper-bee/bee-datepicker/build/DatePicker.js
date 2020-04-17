@@ -169,7 +169,7 @@ var DatePicker = function (_Component) {
     if (props.keyboardInput) {
       keyboardInputProps.readOnly = false;
       keyboardInputProps.onChange = this.inputChange;
-      keyboardInputProps.value = state.inputValue.format && state.inputValue.isValid() ? state.inputValue.format(props.format) : state.inputValue;
+      keyboardInputProps.value = state.inputValue.format && state.inputValue.isValid() && this.props.validatorFunc(state.inputValue) ? state.inputValue.format(props.format) : state.inputValue;
     } else {
       keyboardInputProps.readOnly = true;
       keyboardInputProps.value = value && this.getValue(value) || "";
@@ -177,7 +177,7 @@ var DatePicker = function (_Component) {
     var classes = (0, _classnames2["default"])(props.className, "datepicker-container");
     return _react2["default"].createElement(
       "div",
-      _extends({ className: classes, onMouseEnter: this.onDateHover, onClick: this.stopPropagation, onMouseOver: this.stopPropagation
+      _extends({ className: classes, onMouseEnter: this.onDateHover, onClick: this.stopPropagation
       }, (0, _omit2["default"])(others, ['onDateInputBlur', 'getCalendarContainer', 'showToday', 'renderFooter', 'keyboardInput', 'showDateInput', 'showTime', 'closeIcon', 'renderIcon', 'focusOnOpen', 'defultSelect', 'onOpenChange', 'locale', 'showMonthInput', 'onKeyDown', 'renderError', 'format', 'placeholder', 'disabledTime', 'onChange', 'disabledDate', 'iconClick', 'outInputKeydown'])),
       _react2["default"].createElement(
         _Picker2["default"],
@@ -273,7 +273,9 @@ var _initialiseProps = function _initialiseProps() {
   };
 
   this.inputFocus = function () {
-    var format = _this3.props.format;
+    var _props = _this3.props,
+        format = _props.format,
+        validatorFunc = _props.validatorFunc;
 
     var input = document.querySelector('.rc-calendar-input');
     if (input) {
@@ -295,7 +297,7 @@ var _initialiseProps = function _initialiseProps() {
           _reactDom2["default"].findDOMNode(_this3.outInput).focus(); // 按esc时候焦点回到input输入框
         } else if (e.keyCode == _tinperBeeCore.KeyCode.ENTER) {
           var parsed = (0, _moment2["default"])(input.value, format, true);
-          if (parsed.isValid()) {
+          if (parsed.isValid() && validatorFunc(input.value)) {
             _this3.setState({
               open: false
             });
@@ -333,7 +335,7 @@ var _initialiseProps = function _initialiseProps() {
   this.handleCalendarChange = function (value) {
     var props = _this3.props;
     _this3.setState({ value: value, inputValue: value && _this3.getValue(value) || '' });
-    // this.fireChange(value, (value && this.getValue(value)) || '');
+    _this3.fireChange(value, value && _this3.getValue(value) || '');
   };
 
   this.handleChange = function (value) {
@@ -368,7 +370,7 @@ var _initialiseProps = function _initialiseProps() {
     _this3.setState({
       inputValue: value
     });
-    if ((0, _moment2["default"])(value, _this3.props.format).isValid()) {
+    if ((0, _moment2["default"])(value, _this3.props.format).isValid() && _this3.props.validatorFunc(value)) {
       _this3.setState({
         value: (0, _moment2["default"])(value, _this3.props.format)
       });
@@ -399,7 +401,7 @@ var _initialiseProps = function _initialiseProps() {
         open: false
       });
       var value = _this3.state.inputValue;
-      if ((0, _moment2["default"])(value, _this3.props.format).isValid()) {
+      if ((0, _moment2["default"])(value, _this3.props.format).isValid() && _this3.props.validatorFunc(value)) {
         _this3.setState({
           value: (0, _moment2["default"])(value, _this3.props.format)
         });
@@ -496,7 +498,10 @@ DatePicker.defaultProps = {
   format: "YYYY-MM-DD",
   showSecond: true,
   showHour: true,
-  showMinute: true
+  showMinute: true,
+  validatorFunc: function validatorFunc() {
+    return true;
+  }
 };
 
 exports["default"] = DatePicker;

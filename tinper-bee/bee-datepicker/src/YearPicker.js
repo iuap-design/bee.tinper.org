@@ -226,6 +226,9 @@ YearPicker.defaultProps = {
     showClose:true,
     locale:zhCN,
     format:'YYYY',
+    validatorFunc:()=>{
+        return true;
+      }
 }
 
 export default YearPicker;

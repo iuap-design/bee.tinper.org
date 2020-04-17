@@ -1983,6 +1983,11 @@ class Demo1 extends Component {
 						<div class="name">清空</div>
 						<div class="fontclass">.uf-qingkong</div>
 					</li>
+					<li>
+						<Icon type="uf-location"></Icon>
+						<div class="name">地图</div>
+						<div class="fontclass">.uf-location</div>
+					</li>
 				</ul>
 			</div>
 		)

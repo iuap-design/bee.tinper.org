@@ -174,7 +174,9 @@ class Modal extends React.Component {
     super(props, context);
     this.state = {
       style: {},
-      centered: props.centered
+      centered: props.centered,
+      draging:false,
+      draged:false
     }
     this.offsetTop = 0;
     this.handleEntering = this.handleEntering.bind(this);
@@ -197,7 +199,6 @@ class Modal extends React.Component {
       },
     };
   }
-
   componentWillUnmount() {
     // Clean up the listener if we need to.
     this.handleExited();
@@ -210,6 +211,10 @@ class Modal extends React.Component {
   }
 
   handleExited() {
+    this.setState({
+      draging:false,
+      draged:false
+    })
     // FIXME: This should work even when animation is disabled.
     events.off(window, 'resize', this.handleWindowResize);
   }
@@ -291,9 +296,11 @@ class Modal extends React.Component {
       resizeClassName,
       bounds,
       container,
+      onStart,
+      onStop,
       ...props
     } = this.props;
-    let { centered } = this.state;
+    let { centered,draging,draged } = this.state;
     const dialogMarginTop = 30;
     //ResizeStart 时，计算 ModalDialog 的 offsetTop
     let topPosStyle = this.offsetTop > 0 ? {top: this.offsetTop - dialogMarginTop} : null;
@@ -311,6 +318,12 @@ class Modal extends React.Component {
     };
     if(!!centered){
       className += ` ${clsPrefix}-centered`
+    }
+    if(draging){
+      className += ' draging'
+    }
+    if(draged){
+      className += ' draged'
     }
     if(Number(width))width += 'px';
 
@@ -343,6 +356,16 @@ class Modal extends React.Component {
           bounds={bounds}
           resizeClassName={resizeClassName}
           clearCenteredCls={this.clearCenteredCls}
+          onStart={()=>{
+            this.setState({
+              draging:true,
+              draged:false
+            })
+          }}
+          onStop={()=>{this.setState({
+            draging:false,
+            draged:true
+          })}}
         >
           {children}
         </Dialog>

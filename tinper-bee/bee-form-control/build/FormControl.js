@@ -76,6 +76,7 @@ var FormControl = function (_React$Component) {
             value: value
         };
         _this.input = {};
+        _this.clickClearBtn = false;
         return _this;
     }
 
@@ -135,23 +136,30 @@ var _initialiseProps = function _initialiseProps() {
     };
 
     this.clearValue = function () {
-        var onChange = _this2.props.onChange;
+        var _props = _this2.props,
+            onChange = _props.onChange,
+            showClose = _props.showClose;
 
         _this2.setState({
             showSearch: true,
             value: ""
         });
+        if (_this2.e && _this2.e.target) _this2.e.target.value = "";
         if (onChange) {
-            onChange("");
+            onChange("", _this2.e);
+        }
+        if (showClose) {
+            _this2.blurTime && clearTimeout(_this2.blurTime);
+            _this2.blurTime = null;
         }
         _this2.input.focus();
     };
 
     this.handleKeyDown = function (e) {
-        var _props = _this2.props,
-            onSearch = _props.onSearch,
-            type = _props.type,
-            onKeyDown = _props.onKeyDown;
+        var _props2 = _this2.props,
+            onSearch = _props2.onSearch,
+            type = _props2.type,
+            onKeyDown = _props2.onKeyDown;
 
         if (e.keyCode === 13 && type === "search") {
             if (onSearch) {
@@ -169,11 +177,19 @@ var _initialiseProps = function _initialiseProps() {
 
     this.handleBlur = function (e) {
         var value = _this2.state.value;
-        var onBlur = _this2.props.onBlur;
+        var _props3 = _this2.props,
+            onBlur = _props3.onBlur,
+            showClose = _props3.showClose;
 
-
+        var _e = _extends({}, e);
+        _this2.e = _e;
         if (onBlur) {
-            onBlur(value, e);
+            if (showClose && _this2.clickClearBtn) {
+                _this2.clickClearBtn = false;
+                onBlur(value, _e, true);
+            } else {
+                onBlur(value, _e);
+            }
         }
     };
 
@@ -189,21 +205,25 @@ var _initialiseProps = function _initialiseProps() {
         }
     };
 
+    this.onClearBtnMouseDown = function () {
+        _this2.clickClearBtn = true;
+    };
+
     this.renderInput = function () {
-        var _props2 = _this2.props,
-            Component = _props2.componentClass,
-            type = _props2.type,
-            className = _props2.className,
-            size = _props2.size,
-            clsPrefix = _props2.clsPrefix,
-            onChange = _props2.onChange,
-            onSearch = _props2.onSearch,
-            onBlur = _props2.onBlur,
-            showClose = _props2.showClose,
-            focusSelect = _props2.focusSelect,
-            prefix = _props2.prefix,
-            suffix = _props2.suffix,
-            others = _objectWithoutProperties(_props2, ['componentClass', 'type', 'className', 'size', 'clsPrefix', 'onChange', 'onSearch', 'onBlur', 'showClose', 'focusSelect', 'prefix', 'suffix']);
+        var _props4 = _this2.props,
+            Component = _props4.componentClass,
+            type = _props4.type,
+            className = _props4.className,
+            size = _props4.size,
+            clsPrefix = _props4.clsPrefix,
+            onChange = _props4.onChange,
+            onSearch = _props4.onSearch,
+            onBlur = _props4.onBlur,
+            showClose = _props4.showClose,
+            focusSelect = _props4.focusSelect,
+            prefix = _props4.prefix,
+            suffix = _props4.suffix,
+            others = _objectWithoutProperties(_props4, ['componentClass', 'type', 'className', 'size', 'clsPrefix', 'onChange', 'onSearch', 'onBlur', 'showClose', 'focusSelect', 'prefix', 'suffix']);
         // input[type="file"] 不应该有类名 .form-control.
 
 
@@ -241,10 +261,10 @@ var _initialiseProps = function _initialiseProps() {
                     onFocus: _this2.handleFocus,
                     className: (0, _classnames2["default"])(classNames)
                 })),
-                showClose ? _react2["default"].createElement(
+                showClose && value ? _react2["default"].createElement(
                     'div',
-                    { className: clsPrefix + '-suffix' },
-                    value ? _react2["default"].createElement(_beeIcon2["default"], { onClick: _this2.clearValue, type: 'uf-close-c' }) : ''
+                    { className: clsPrefix + '-suffix has-close', onMouseDown: _this2.onClearBtnMouseDown, onClick: _this2.clearValue },
+                    _react2["default"].createElement(_beeIcon2["default"], { type: 'uf-close-c' })
                 ) : '',
                 suffix ? _react2["default"].createElement(
                     'span',
@@ -268,16 +288,16 @@ var _initialiseProps = function _initialiseProps() {
     };
 
     this.renderSearch = function () {
-        var _props3 = _this2.props,
-            Component = _props3.componentClass,
-            type = _props3.type,
-            className = _props3.className,
-            size = _props3.size,
-            clsPrefix = _props3.clsPrefix,
-            onChange = _props3.onChange,
-            onSearch = _props3.onSearch,
-            onBlur = _props3.onBlur,
-            others = _objectWithoutProperties(_props3, ['componentClass', 'type', 'className', 'size', 'clsPrefix', 'onChange', 'onSearch', 'onBlur']);
+        var _props5 = _this2.props,
+            Component = _props5.componentClass,
+            type = _props5.type,
+            className = _props5.className,
+            size = _props5.size,
+            clsPrefix = _props5.clsPrefix,
+            onChange = _props5.onChange,
+            onSearch = _props5.onSearch,
+            onBlur = _props5.onBlur,
+            others = _objectWithoutProperties(_props5, ['componentClass', 'type', 'className', 'size', 'clsPrefix', 'onChange', 'onSearch', 'onBlur']);
         // input[type="file"] 不应该有类名 .form-control.
 
 

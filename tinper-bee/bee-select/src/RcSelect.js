@@ -966,7 +966,11 @@ class Select extends React.Component {
     if (!this.state.open) {
       return;
     }
-    this.selectTriggerRef.triggerRef.forcePopupAlign();
+    if(this.selectTriggerRef&&this.selectTriggerRef.triggerRef&&this.selectTriggerRef.triggerRef.forcePopupAlign){
+      if(typeof this.selectTriggerRef.triggerRef.forcePopupAlign =='function'){
+        this.selectTriggerRef.triggerRef.forcePopupAlign()
+      }
+    }
   };
 
   renderFilterOptions = () => {

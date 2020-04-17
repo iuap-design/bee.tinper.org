@@ -1,4 +1,7 @@
-export default {
+'use strict';
+
+exports.__esModule = true;
+exports['default'] = {
   today: 'Tänään',
   now: 'Nyt',
   backToToday: 'Tämä päivä',
@@ -9,7 +12,6 @@ export default {
   timeSelect: 'Valise aika',
   dateSelect: 'Valitse päivä',
   monthSelect: 'Valitse kuukausi',
-  monthFormat: 'M',
   yearSelect: 'Valitse vuosi',
   decadeSelect: 'Valitse vuosikymmen',
   yearFormat: 'YYYY',
@@ -24,5 +26,6 @@ export default {
   previousDecade: 'Edellinen vuosikymmen',
   nextDecade: 'Seuraava vuosikymmen',
   previousCentury: 'Edellinen vuosisata',
-  nextCentury: 'Seuraava vuosisata',
+  nextCentury: 'Seuraava vuosisata'
 };
+module.exports = exports['default'];

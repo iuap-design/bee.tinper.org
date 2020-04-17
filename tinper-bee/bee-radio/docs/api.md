@@ -33,6 +33,7 @@ import 'bee-radio/build/Radio.css';
 |inverse|设置选中为红色填充|bool|false|
 |checked|指定当前是否选中|bool|false|
 |defaultChecked|初始是否选中|bool|false|
+|onChange|单个radio改变回调，建议使用`RadioGroup`的onChange|func|-|
 
 ### RadioButton
 

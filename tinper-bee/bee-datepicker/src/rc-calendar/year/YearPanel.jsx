@@ -143,7 +143,7 @@ class YearPanel extends React.Component {
         onSelect={this.onDecadePanelSelect}
       />);
     }
-    let { showDateInput,rootPrefixCls,format } = props;
+    let { showDateInput,rootPrefixCls,format,validatorFunc } = props;
     return (
       <div className={this.prefixCls}>
         <div>
@@ -158,6 +158,7 @@ class YearPanel extends React.Component {
             selectedValue={value}
             onClear={this.onClear}
             onSelect={this.yearSelect}
+            validatorFunc={validatorFunc}
           />:''
         }  
           <div className={`${prefixCls}-header`}>

@@ -1004,6 +1004,9 @@
 .uf-qingkong:before {
   content: "\e666"; }
 
+.uf-location:before {
+  content: "\e78b"; }
+
 .u-panel .u-panel-title {
   font-size: 14px; }
 

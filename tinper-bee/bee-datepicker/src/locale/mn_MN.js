@@ -1,4 +1,7 @@
-export default {
+'use strict';
+
+exports.__esModule = true;
+exports['default'] = {
   today: 'Өнөөдөр',
   now: 'Одоо',
   backToToday: 'Өнөөдөрлүү буцах',
@@ -10,7 +13,6 @@ export default {
   dateSelect: 'Огноо сонгох',
   weekSelect: '7 хоног сонгох',
   monthSelect: 'Сар сонгох',
-  monthFormat: 'MM',
   yearSelect: 'Жил сонгох',
   decadeSelect: 'Арван сонгох',
   yearFormat: 'YYYY',
@@ -25,5 +27,6 @@ export default {
   previousDecade: 'Өмнөх арван',
   nextDecade: 'Дараа арван',
   previousCentury: 'Өмнөх зуун',
-  nextCentury: 'Дараа зуун',
+  nextCentury: 'Дараа зуун'
 };
+module.exports = exports['default'];

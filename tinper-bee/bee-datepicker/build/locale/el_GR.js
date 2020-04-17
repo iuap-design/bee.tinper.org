@@ -1,9 +1,7 @@
 'use strict';
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports["default"] = {
+exports.__esModule = true;
+exports['default'] = {
   today: 'Σήμερα',
   now: 'Τώρα',
   backToToday: 'Πίσω στη σημερινή μέρα',
@@ -14,7 +12,6 @@ exports["default"] = {
   timeSelect: 'Επιλογή ώρας',
   dateSelect: 'Επιλογή ημερομηνίας',
   monthSelect: 'Επιλογή μήνα',
-  monthFormat: 'M',
   yearSelect: 'Επιλογή έτους',
   decadeSelect: 'Επιλογή δεκαετίας',
   yearFormat: 'YYYY',

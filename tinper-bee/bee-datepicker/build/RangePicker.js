@@ -134,6 +134,8 @@ var RangePicker = function (_Component) {
             renderIcon: nextProps.renderIcon
         });
     };
+    //判断value是否为空
+
     //日期面板中输入框的失焦事件
 
     //阻止组件内部事件冒泡到组件外部容器
@@ -177,9 +179,9 @@ var RangePicker = function (_Component) {
             onStartInputBlur: this.onStartInputBlur,
             onEndInputBlur: this.onEndInputBlur,
             onClear: this.clear,
-            onOk: this.onOk
+            onOk: this.onOk,
+            validatorFunc: props.validatorFunc
         });
-
         return _react2["default"].createElement(
             "div",
             _extends({ onClick: this.stopPropagation, onMouseOver: this.stopPropagation
@@ -213,7 +215,7 @@ var RangePicker = function (_Component) {
                                 _this2.outInputFocus(e);
                             }
                         }),
-                        showClose && _this2.state.value && _this2.state.value.length > 0 && _this2.state.showClose && !props.disabled ? _react2["default"].createElement(
+                        showClose && !_this2.valueIsEmpty(value) && _this2.state.showClose && !props.disabled ? _react2["default"].createElement(
                             _beeInputGroup2["default"].Button,
                             { shape: "border",
                                 onClick: _this2.clear },
@@ -305,9 +307,26 @@ var _initialiseProps = function _initialiseProps() {
     };
 
     this.onMouseEnter = function (e) {
-        _this3.setState({
-            showClose: true
-        });
+        if (!_this3.valueIsEmpty(_this3.state.value)) {
+            _this3.setState({
+                showClose: true
+            });
+        }
+    };
+
+    this.valueIsEmpty = function (value) {
+        if (value) {
+            if (value.length == 0) {
+                return true;
+            } else {
+                //value.length>0
+                var flag = true;
+                if (value[0] || value[1]) flag = false;
+                return flag;
+            }
+        } else {
+            return true;
+        }
     };
 
     this.clear = function (e) {
@@ -437,7 +456,10 @@ RangePicker.defaultProps = {
     showClose: true,
     showSecond: true,
     showHour: true,
-    showMinute: true
+    showMinute: true,
+    validatorFunc: function validatorFunc() {
+        return true;
+    }
 };
 
 exports["default"] = RangePicker;

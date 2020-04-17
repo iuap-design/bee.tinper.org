@@ -1,4 +1,7 @@
-export default {
+'use strict';
+
+exports.__esModule = true;
+exports['default'] = {
   today: '今日',
   now: '現在時刻',
   backToToday: '今日に戻る',
@@ -11,7 +14,6 @@ export default {
   previousMonth: '前月 (ページアップキー)',
   nextMonth: '翌月 (ページダウンキー)',
   monthSelect: '月を選択',
-  monthFormat: 'M月',
   yearSelect: '年を選択',
   decadeSelect: '年代を選択',
   yearFormat: 'YYYY年',
@@ -23,5 +25,6 @@ export default {
   previousDecade: '前の年代',
   nextDecade: '次の年代',
   previousCentury: '前の世紀',
-  nextCentury: '次の世紀',
+  nextCentury: '次の世紀'
 };
+module.exports = exports['default'];

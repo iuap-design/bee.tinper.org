@@ -38,11 +38,12 @@ import 'bee-table/build/Table.css';
 | :--------------------- | :--------------------------------------- | :------------------------------------- | :-------------- |
 | data                   | 传入的表格数据（key值必需，否则会导致部分功能出现问题。建议使用唯一的值，如id）   | array                                  | []              |
 | columns                | 列的配置表，具体配置见下表                            | array                                  | -               |
+| columnKey    |    如果columnKey是字符串，`column [columnKey]`将被作为主键。    | string                                  | 'key'               |
 | bordered                | 是否展示外边框和列边框                            | boolean                                  | false               |
 | defaultExpandAllRows   | 默认是否展开所有行                                | bool                                   | false           |
 | defaultExpandedRowKeys | 初始扩展行键                                   | array                                  | []              |
 | rowRef                 | 获取行的ref                                  | Function(record, index, indent):string | () => null      |
-| rowKey                 | 如果rowKey是字符串，`record [rowKey]`将被用作键。如果rowKey是function，`rowKey（record, index）`的返回值将被用作键。 | string or Function(record, index):string      | 'key'           |
+| rowKey                 | 如果rowKey是字符串，`record [rowKey]`将被用作键。如果rowKey是function，`rowKey（record, index）`的返回值将被用作键。树形表格时作为每条数据的唯一标示，如果唯一标示不是"key"键的值，则必须传入，例如 `rowKey='id'` | string or Function(record, index):string      | 'key'           |
 | expandedRowKeys        | 展开的行，控制属性                                | array                                  | -               |
 | rowClassName | 获取行的classname | Function(record, index, indent):string | () => '' |
 | expandedRowClassName | 获取展开行的className | Function(recode, index, indent):string | () => '' |
@@ -121,7 +122,7 @@ import 'bee-table/build/Table.css';
 |fixed|	当表水平滚动时，此列将被固定：true或'left'或'right'| true/'left'/'right'|-|
 |sorter|前端列排序方法，只要列上有此属性就说明这列可排序。**注：默认是前端排序,排序方法书写时注意有些字段的值可能是undefined的情况，需要转换成0**| function|-|
 |sorterClick|排序的回调函数|function|-|
-|render|cell的render函数有三个参数：这个单元格的文本，这行的记录，这行的索引，它返回一个对象：{children：value，props：{colSpan：1，rowSpan：1}} ==>'children'是这个单元格的文本，props是这个单元格的一些设置，可以设置单元格行/列合并|-|
+|render|cell的render函数有三个参数：这个单元格的文本，这行的记录，这行的索引，它返回一个对象：{children：value，props：{colSpan：1，rowSpan：1}} ==>'children'是这个单元格的文本，props是这个单元格的一些设置，可以设置单元格行/列合并。2.2.48及以后版本新增第四个参数options为column设置的属性|-|
 |onCellClick|单击列的单元格时调用|Function(row, event)|-|
 |onHeadCellClick|单击表头的单元格时调用|Function(row, event)|row 当前行的数据|
 | order | 设置排序 | string（"descend"、"ascend"） | -|

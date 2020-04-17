@@ -106,8 +106,9 @@ const propTypes = {
   onChange: PropTypes.func,
   listType: PropTypes.oneOf(['text', 'picture', 'picture-card']),
   className: PropTypes.string,
-  // onPreview: PropTypes.func,
+  onPreview: PropTypes.func,
   onRemove: PropTypes.func,
+  preventDefaultPreview:PropTypes.bool,
   supportServerRender: PropTypes.bool,
   style: PropTypes.object,
   disabled: PropTypes.bool,
@@ -129,6 +130,7 @@ const defaultProps = {
   className: '',
   disabled: false,
   supportServerRender: true,
+  preventDefaultPreview:false,
   enterDragger: ()=>{},
   leaveDragger: ()=>{}
 };
@@ -346,17 +348,27 @@ class Upload extends Component {
     clearInterval(this.progressTimer);
   }
   handlePreview = file => {
+    const { onPreview, preventDefaultPreview } = this.props;
     var displayPreview = ()=>{
       this.setState({
         previewImage: file.url || file.thumbUrl,
         previewVisible: true,
       });
     }
-    if (!file.url && !file.thumbUrl) {
-      getBase64(file.originFileObj).then(displayPreview)
-    }else {
-      displayPreview()
+
+    if(preventDefaultPreview === false){
+      if (!file.url && !file.thumbUrl) {
+        getBase64(file.originFileObj).then(displayPreview)
+      }else {
+        displayPreview()
+      }
     }
+    
+    if(onPreview &&  Object.prototype.toString.call(onPreview) === "[object Function]"){
+      onPreview(file);
+    }
+    
+   
   }
   handleCancel = () => this.setState({ previewVisible: false })
   render() {

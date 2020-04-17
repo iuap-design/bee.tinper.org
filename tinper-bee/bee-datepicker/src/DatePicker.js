@@ -82,7 +82,7 @@ class DatePicker extends Component {
   };
 
   inputFocus=()=>{
-    const { format } = this.props;
+    const { format,validatorFunc } = this.props;
     let input = document.querySelector('.rc-calendar-input');
     if(input){
       if(input.value){
@@ -103,7 +103,7 @@ class DatePicker extends Component {
           ReactDOM.findDOMNode(this.outInput).focus();// 按esc时候焦点回到input输入框
         }else if(e.keyCode == KeyCode.ENTER){
           let parsed = moment(input.value, format, true);
-          if(parsed.isValid()){
+          if(parsed.isValid()&&validatorFunc(input.value)){
             this.setState({
               open:false
             });
@@ -141,7 +141,7 @@ class DatePicker extends Component {
   handleCalendarChange = (value) => {
       const props = this.props;
       this.setState({ value: value,inputValue:(value && this.getValue(value)) || '' });
-      // this.fireChange(value, (value && this.getValue(value)) || '');
+      this.fireChange(value, (value && this.getValue(value)) || '');
   }
   handleChange = value => {
     const props = this.props;
@@ -173,7 +173,7 @@ class DatePicker extends Component {
     this.setState({
       inputValue:value
     });
-    if(moment(value,this.props.format).isValid()){
+    if(moment(value,this.props.format).isValid()&&this.props.validatorFunc(value)){
       this.setState({
         value:moment(value,this.props.format)
       });
@@ -201,7 +201,7 @@ class DatePicker extends Component {
         open:false
       });
       let value = this.state.inputValue;
-      if(moment(value,this.props.format).isValid()){
+      if(moment(value,this.props.format).isValid()&&this.props.validatorFunc(value)){
         this.setState({
           value:moment(value,this.props.format)
         });
@@ -316,14 +316,14 @@ class DatePicker extends Component {
     if(props.keyboardInput){
       keyboardInputProps.readOnly=false;
       keyboardInputProps.onChange=this.inputChange;
-      keyboardInputProps.value=state.inputValue.format&&state.inputValue.isValid()?state.inputValue.format(props.format):state.inputValue;
+      keyboardInputProps.value=state.inputValue.format&&(state.inputValue.isValid()&&this.props.validatorFunc(state.inputValue))?state.inputValue.format(props.format):state.inputValue;
     }else{
       keyboardInputProps.readOnly=true;
       keyboardInputProps.value=(value && this.getValue(value)) || ""
     }
     let classes = classnames(props.className, "datepicker-container");
     return (
-      <div className={classes} onMouseEnter={this.onDateHover} onClick={this.stopPropagation} onMouseOver={this.stopPropagation} 
+      <div className={classes} onMouseEnter={this.onDateHover} onClick={this.stopPropagation} 
       {...omit(others, [
         'onDateInputBlur',
         'getCalendarContainer',
@@ -414,7 +414,10 @@ DatePicker.defaultProps = {
   format: "YYYY-MM-DD",
   showSecond:true,
   showHour:true,
-  showMinute:true
+  showMinute:true,
+  validatorFunc:()=>{
+    return true;
+  }
 }
 
 export default DatePicker;

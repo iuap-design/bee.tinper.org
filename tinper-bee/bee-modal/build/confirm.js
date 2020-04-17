@@ -122,7 +122,11 @@ var ConfirmDialog = function (_React$Component) {
         width: width,
         className: classString,
         show: show,
-        onHide: close,
+        onHide: function onHide() {
+          close();onCancel ? onCancel() : function () {
+            return;
+          };
+        },
         backdrop: backdrop,
         backdropClosable: backdropClosable,
         centered: centered,

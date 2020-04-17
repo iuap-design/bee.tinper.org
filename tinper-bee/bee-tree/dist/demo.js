@@ -34397,6 +34397,10 @@
 	        prevProps: this.props
 	      });
 	    }
+	    // ncc制造，树参照包含下级需求，checkStrictly 动态改变后，拿到组件内部属性 this.checkedKeys
+	    if (this.props._getTreeObj) {
+	      this.props._getTreeObj(this);
+	    }
 	    // 启用懒加载，计算树节点真实高度
 	    if (!lazyLoad) return;
 	    var treenodes = this.tree.querySelectorAll('.u-tree-treenode-close')[0];
@@ -35474,7 +35478,7 @@
 	        children = _props5.children,
 	        treeData = _props5.treeData;
 	
-	    var noTreeNode = typeof children === 'undefined' || (typeof children === 'undefined' ? 'undefined' : _typeof(children)) === 'object' && children.length === 0 || (typeof treeData === 'undefined' ? 'undefined' : _typeof(treeData)) === 'object' && treeData.length === 0;
+	    var noTreeNode = children === null || typeof children === 'undefined' || (typeof children === 'undefined' ? 'undefined' : _typeof(children)) === 'object' && children.length === 0 || (typeof treeData === 'undefined' ? 'undefined' : _typeof(treeData)) === 'object' && treeData.length === 0;
 	    return !noTreeNode;
 	  };
 	

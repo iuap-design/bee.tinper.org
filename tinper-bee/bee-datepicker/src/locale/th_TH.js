@@ -1,4 +1,7 @@
-export default {
+'use strict';
+
+exports.__esModule = true;
+exports['default'] = {
   today: 'วันนี้',
   now: 'ตอนนี้',
   backToToday: 'กลับไปยังวันนี้',
@@ -9,7 +12,6 @@ export default {
   timeSelect: 'เลือกเวลา',
   dateSelect: 'เลือกวัน',
   monthSelect: 'เลือกเดือน',
-  monthFormat: 'M',
   yearSelect: 'เลือกปี',
   decadeSelect: 'เลือกทศวรรษ',
   yearFormat: 'YYYY',
@@ -24,5 +26,6 @@ export default {
   previousDecade: 'ทศวรรษก่อนหน้า',
   nextDecade: 'ทศวรรษถัดไป',
   previousCentury: 'ศตวรรษก่อนหน้า',
-  nextCentury: 'ศตวรรษถัดไป',
+  nextCentury: 'ศตวรรษถัดไป'
 };
+module.exports = exports['default'];

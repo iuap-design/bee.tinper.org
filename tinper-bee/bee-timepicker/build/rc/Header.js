@@ -227,7 +227,7 @@ var _initialiseProps = function _initialiseProps() {
         onEsc = _props4.onEsc,
         onKeyDown = _props4.onKeyDown;
 
-    if (e.keyCode === 27) {
+    if (e.keyCode === 27 || e.keyCode === 13) {
       onEsc();
     }
 

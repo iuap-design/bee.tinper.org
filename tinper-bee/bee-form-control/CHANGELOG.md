@@ -1,3 +1,68 @@
+<a name="2.0.18"></a>
+## [2.0.18](https://github.com/tinper-bee/form-control/compare/v2.0.16...v2.0.18) (2020-03-28)
+
+
+### Bug Fixes
+
+* blur回调增加参数，判断是否为清空操作 ([62ed3f3](https://github.com/tinper-bee/form-control/commit/62ed3f3))
+
+
+### Features
+
+* **bee-form-control:** 清空按钮放大,有可能会点不到 ([ae4a423](https://github.com/tinper-bee/form-control/commit/ae4a423))
+
+
+
+<a name="2.0.16"></a>
+## [2.0.16](https://github.com/tinper-bee/form-control/compare/v2.0.15...v2.0.16) (2020-03-27)
+
+
+
+<a name="2.0.15"></a>
+## [2.0.15](https://github.com/tinper-bee/form-control/compare/v2.0.14...v2.0.15) (2020-03-26)
+
+
+### Features
+
+* **bee-form-control:** 在showClose时候加onBlur的延迟 ([c42dbd6](https://github.com/tinper-bee/form-control/commit/c42dbd6))
+
+
+
+<a name="2.0.14"></a>
+## [2.0.14](https://github.com/tinper-bee/form-control/compare/v2.0.13...v2.0.14) (2020-03-23)
+
+
+### Bug Fixes
+
+* **bee-form-control:** 清空按钮触发onChange时,没有事件对象 ([ce35509](https://github.com/tinper-bee/form-control/commit/ce35509))
+
+
+
+<a name="2.0.13"></a>
+## [2.0.13](https://github.com/tinper-bee/form-control/compare/v2.0.12...v2.0.13) (2020-03-21)
+
+
+### Bug Fixes
+
+* **bee-form-control:** onBlur e对象 ([3d25082](https://github.com/tinper-bee/form-control/commit/3d25082))
+
+
+
+<a name="2.0.12"></a>
+## [2.0.12](https://github.com/tinper-bee/form-control/compare/v2.0.11...v2.0.12) (2020-03-20)
+
+
+### Bug Fixes
+
+* **bee-form-control:** componentWillReceiveProps value判断 ([5574583](https://github.com/tinper-bee/form-control/commit/5574583))
+
+
+### Features
+
+* **bee-form-control:** 清空按钮不触发blur ([3257de9](https://github.com/tinper-bee/form-control/commit/3257de9))
+
+
+
 <a name="2.0.11"></a>
 ## [2.0.11](https://github.com/tinper-bee/form-control/compare/v2.0.10...v2.0.11) (2020-01-14)
 

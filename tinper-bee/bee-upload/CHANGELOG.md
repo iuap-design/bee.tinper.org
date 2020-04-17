@@ -1,3 +1,8 @@
+<a name="2.1.2"></a>
+## [2.1.2](https://github.com/tinper-bee/upload/compare/v2.1.1...v2.1.2) (2020-04-08)
+
+
+
 <a name="2.1.1"></a>
 ## [2.1.1](https://github.com/tinper-bee/upload/compare/v2.1.0...v2.1.1) (2020-01-17)
 
