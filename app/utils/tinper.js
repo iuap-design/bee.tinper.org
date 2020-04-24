@@ -10,7 +10,16 @@ componentsSource['bee-complex-grid']={}
 componentsSource['bee-label']={}
 componentsSource['bee-progress']={}
 componentsSource['bee-city-select']={}
-componentsSource['bee-city-select']={}
+// delete componentsSource['bee-locale']
+// delete componentsSource['bee-pagination']
+// delete componentsSource['bee-select']
+// delete componentsSource['bee-dnd']
+// delete componentsSource['bee-button']
+// delete componentsSource['bee-table']
+// delete componentsSource['bee-datepicker']
+// delete componentsSource['bee-transfer']
+// delete componentsSource['bee-tree']
+// delete componentsSource['bee-complex-grid']
 // delete componentsSource['bee-affix']
 
 /**
@@ -51,7 +60,7 @@ function runDev(item){
  * @param {*} item 
  */
 function install(item){
-    let cmd = `cd ../../../tinper-bee/${item}/ && rm -rf node_module && ynpm i ` ;
+    let cmd = `cd ../../../tinper-bee/${item}/ && rm -rf node_module && cnpm i ` ;
     exec(cmd,(error)=>{
         if(error){
             console.log(`❌❌❌❌❌❌❌❌ ${item} 出错了！`)
@@ -164,6 +173,19 @@ async function changePackageJson(item){
 
 // changePackageJson('bee-dnd')
 
+async function npmVersion(item){
+    let cmd = `cd ../../../tinper-bee/${item}/ && npm version patch` ;
+    exec(cmd,(error)=>{
+        if(error){
+            console.log(`❌❌❌❌❌❌❌❌ ${item} 出错了！`)
+            console.log(error);
+        }else{
+            console.log(`😀😀😀 ${item} 成功了！`)
+        }
+    })
+}
+
+
 
 Object.keys(componentsSource).forEach(item=>{
     // reset(item)
@@ -175,4 +197,5 @@ Object.keys(componentsSource).forEach(item=>{
     // rename(item)
     // cpNpmIgnore(item)
     // changePackageJson(item)
+    // npmVersion(item)
 })
