@@ -706,3 +706,13 @@ static/tinper-bee/components/bee-table/dist/v2.2.19/demo.js
 static/tinper-bee/components/bee-table/dist/v2.2.25/demo.js 
 static/tinper-bee/components/bee-datepicker/dist/v2.0.34/demo.css 
 static/tinper-bee/components/bee-table/dist/v1.6.31/demo.js 
+static/tinper-bee/components/bee-datepicker/dist/v2.3.17/demo.css 
+static/tinper-bee/components/bee-tree/dist/v2.1.16/demo.js 
+static/tinper-bee/components/bee-table/dist/v2.2.39/demo.js 
+static/tinper-bee/components/bee-input-number/dist/v2.2.27/demo.css 
+static/tinper-bee/components/bee-modal/dist/v2.1.12/demo.js 
+static/tinper-bee/components/bee-upload/dist/v2.1.2/demo.css 
+static/tinper-bee/components/bee-table/dist/v2.2.34/demo.js 
+static/tinper-bee/components/bee-transfer/dist/v2.0.13/demo.js 
+static/tinper-bee/components/bee-table/dist/v2.2.41/demo.js 
+static/tinper-bee/components/bee-table/dist/v2.2.37/demo.js 

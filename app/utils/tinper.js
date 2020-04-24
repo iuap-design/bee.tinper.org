@@ -11,14 +11,14 @@ componentsSource['bee-label']={}
 componentsSource['bee-progress']={}
 componentsSource['bee-city-select']={}
 componentsSource['bee-city-select']={}
-delete componentsSource['bee-affix']
+// delete componentsSource['bee-affix']
 
 /**
  * 还原
  * @param {*} item 组件名称
  */
 function reset(item){
-    let cmd = `cd ../../../tinper-bee/${item}/ && git ck . && git pull ` ;
+    let cmd = `cd ../../../tinper-bee/${item}/ && git ck master && git ck . && git pull ` ;
     exec(cmd,(error)=>{
         if(error){
             console.log(`❌❌❌❌❌❌❌❌ ${item} 出错了！`)
@@ -138,18 +138,41 @@ async function rename(item){
     })
 }
 
+async function changePackageJson(item){
+    let filePath = path.join(__dirname, `../../../../../tinper-bee/${item}/package.json`);
+    let packageJson = fs.readJSONSync(filePath)
+    packageJson.devDependencies['husky']="^4.2.5";
+    packageJson.scripts['version'] = "conventional-changelog -p angular -i CHANGELOG.md -s && git add CHANGELOG.md";
+    packageJson.scripts['postversion'] = "git push --follow-tags";
+    packageJson.scripts['prepublishOnly'] = "npm run build";
+    fs.writeJSON(filePath,packageJson).then(()=>{
+        console.log(`😀😀😀 ${item} packageJson 成功了！`)
+    }).catch((error)=>{
+        console.log(`❌❌❌❌❌❌❌❌ ${item} packageJson出错了！`)
+        console.log(error);
+    })
+    let cmd = `cp ../../../tinper-bee/bee-button/.huskyrc  ../../../tinper-bee/${item} && cp ../../../tinper-bee/bee-button/commitlint.config.js  ../../../tinper-bee/${item} && cp -r ../../../tinper-bee/bee-button/.github ../../../tinper-bee/${item}/`;
+    exec(cmd,(error)=>{
+        if(error){
+            console.log(`❌❌❌❌❌❌❌❌ ${item} cp出错了！`)
+            console.log(error);
+        }else{
+            console.log(`😀😀😀 ${item} cp成功了！`)
+        }
+    })
+}
 
-
-
+// changePackageJson('bee-dnd')
 
 
 Object.keys(componentsSource).forEach(item=>{
     // reset(item)
     // install(item)
-    // push(item,'react改为development npm发包忽略 demo,docs,test,dist目录')
+    // push(item,'fix: 自动化')
     // runDev(item)
     // installD(item)
     // runDev(item)
     // rename(item)
     // cpNpmIgnore(item)
+    // changePackageJson(item)
 })
