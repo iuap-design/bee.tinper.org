@@ -32,7 +32,7 @@
 <script src="//design.yonyoucloud.com/static/react/16.8.4/umd/react-dom.production.min.js"></script>
 <script src="//design.yonyoucloud.com/static/prop-types/15.6.0/prop-types.min.js"></script>
 <script src="//design.yonyoucloud.com/static/gumshoe/gumshoe.polyfills.min.js"></script>
-
+<script src="//design.yonyoucloud.com/static/smooth-scroll/smooth-scroll.polyfills.min.js"></script>
 <body>
     <div class="navbar" id="navbar">
         <% include navbar.html %>
@@ -43,6 +43,15 @@
     <div id="closebtn" class="uf uf-close"></div>
     <div id="upbtn" class="uf uf-top-up"></div>
     <% if(isComponent){ %>
+    <div class="tabs" id='tabs'>
+        <ul>
+            <li class="rm-list-item active"><a href="#">基本信息</a></li>
+            <li class="rm-list-item"><a href="#能力特性">示例</a></li>
+            <li class="rm-list-item"><a href="#API">API文档</a></li>
+            <li class="rm-list-item"><a href="#更新日志">更新日志</a></li>
+            <li class="rm-list-item"><a href="#注意事项">更多</a></li>
+        </ul>
+    </div>
     <div class="doc-content component">
         <% } else { %>
         <div class="doc-content">
@@ -58,6 +67,8 @@
             <div class="footer-out">
                 <% include footer.html %>
             </div>
+        </div>
+    </div>
 </body>
 <script type="text/javascript" src="//design.yonyoucloud.com/static/docSearch/docsearch.min.js"></script>
 <% if(active=='theme'){ %>
@@ -82,31 +93,44 @@
     });
 
 
-    var header = document.querySelector('#navbar');
+    let header = document.querySelector('#navbar');
+    let tabs = document.querySelector('#tabs');
     try {
-        new Gumshoe('#rightMenusId a', {
-            nested: true,
-            nestedClass: 'active-parent',
-            offset: function () {
-                return header.getBoundingClientRect().height;
+        let logScrollEvent = function (event) {
+            let lists = document.querySelectorAll('li.rm-list-item');
+            [].forEach.call(lists,(item)=>{
+                item.setAttribute('class','rm-list-item')
+            })
+            let parent = event.detail.toggle.parentNode;
+            let parentClass = parent.className;
+            parent.setAttribute('class','rm-list-item active');
+
+            console.log(event)
+        };
+        document.addEventListener('scrollStart', logScrollEvent, false);
+        new Gumshoe('li.rm-list-item a')
+        const Scroll = new SmoothScroll('li.rm-list-item a',{
+            offset:()=>{
+                return header.clientHeight+tabs.clientHeight+20
             }
         });
+        
     } catch (error) {
-
+        
     }
 
 
-    let lists = document.querySelectorAll('.rm-list-item');
-    if (lists.length > 0) {
-        if (window.scrollY <= 160) {
-            lists[0].setAttribute('class', 'rm-list-item active');
-        }
-        window.onscroll = function () {
-            if (window.scrollY <= 160) {
-                lists[0].setAttribute('class', 'rm-list-item active');
-            }
-        }
-    }
+    // let lists = document.querySelectorAll('.rm-list-item');
+    // if (lists.length > 0) {
+    //     if (window.scrollY <= 160) {
+    //         lists[0].setAttribute('class', 'rm-list-item active');
+    //     }
+    //     window.onscroll = function () {
+    //         if (window.scrollY <= 160) {
+    //             lists[0].setAttribute('class', 'rm-list-item active');
+    //         }
+    //     }
+    // }
 
 
 
