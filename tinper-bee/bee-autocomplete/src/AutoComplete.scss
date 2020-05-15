@@ -1,0 +1,41 @@
+@import "../node_modules/tinper-bee-core/scss/minxin-variables";
+@import "../node_modules/tinper-bee-core/scss/minxin-mixins";
+@import "../node_modules/bee-form-control/src/FormControl.scss";
+
+.u-autocomplete {
+  display: inline-block;
+  position: relative;
+  font-size: 14px;
+  &-options {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    top: 110%;
+    left: 0;
+    right: 0;
+    position: absolute;
+    border-radius: $border-radius-base;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2);
+    background: #fff;
+    z-index: 1800;
+
+    > li {
+      padding: 3px 6px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      &:hover{
+        cursor: pointer;
+      }
+      &.active {
+        background-color: $select-dropdown-hover-bg;
+      }
+    }
+  }
+  // .u-form-control{
+  //   height: 32px;
+  //   border-color: $border-color-base;
+  // }
+}
+
+

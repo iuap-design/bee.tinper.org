@@ -1,0 +1,46 @@
+.u-svgicon {
+  width: 20px;
+  height: 20px;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden; }
+
+.tinper-icon-demo .u-svgicon {
+  width: 40px;
+  height: 40px;
+  margin: 24px 0 8px 0;
+  color: #333;
+  transition: font-size 0.8s ease-out 0s; }
+
+.tinper-icon-demo li:hover .u-svgicon {
+  width: 48px;
+  height: 48px; }
+
+.icon_lists:after {
+  clear: both;
+  display: block;
+  visibility: hidden;
+  content: '.'; }
+
+.icon_lists li {
+  position: relative;
+  float: left;
+  width: 100px;
+  height: 120px;
+  text-align: center;
+  list-style: none !important;
+  cursor: pointer;
+  border-radius: 3px; }
+  .icon_lists li .u-clipboard {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    opacity: 0; }
+  .icon_lists li .usage {
+    opacity: 0; }
+  .icon_lists li:hover {
+    background: #e6e6e6; }
+    .icon_lists li:hover .u-clipboard {
+      opacity: 1; }
+
+/*# sourceMappingURL=demo.css.map */

@@ -1,0 +1,19 @@
+.demo5{
+    height: 100px;
+    width: 500px;
+    overflow: hidden;
+    font-size: 14px;
+    .u-loading-backdrop{
+      z-index:1029;
+      background: rgba(255,255,255,0);
+    }
+    .u-loading.u-loading-rotate.u-loading-rotate-sm>div{
+        left: 20%;
+    }
+    .u-loading.u-loading-rotate>div{
+        left: 40%;
+    }
+    .u-loading.u-loading-rotate.u-loading-rotate-lg>div{
+        left: 65%;
+    }
+}

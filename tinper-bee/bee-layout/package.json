@@ -1,0 +1,60 @@
+{
+  "name": "bee-layout",
+  "version": "1.2.8",
+  "keywords": [
+    "react",
+    "react-component",
+    "react-layout",
+    "iuap-design",
+    "neoui-react",
+    "layout"
+  ],
+  "engines": {
+    "node": ">=4.0.0"
+  },
+  "homepage": "https://github.com/tinper-bee/bee-layout",
+  "author": "zhouboyu",
+  "repository": "http://github.com/tinper-bee/bee-layout",
+  "bugs": "https://github.com/tinper-bee/bee-layout/issues",
+  "license": "MIT",
+  "main": "./build/index",
+  "config": {
+    "port": 8000
+  },
+  "scripts": {
+    "dev": "bee-tools run start",
+    "build": "bee-tools run build",
+    "lint": "bee-tools run lint",
+    "test": "bee-tools run test",
+    "coveralls": "bee-tools run coverage",
+    "chrome": "bee-tools run chrome",
+    "browsers": "bee-tools run browsers",
+    "pub": "bee-tools run pub",
+    "version": "conventional-changelog -p angular -i CHANGELOG.md -s && git add CHANGELOG.md",
+    "postversion": "git push --follow-tags",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {
+    "classnames": "^2.2.5",
+    "tinper-bee-core": "latest"
+  },
+  "peerDependencies": {
+    "react": "^15.3.0 || ^16.0",
+    "react-dom": "^15.3.0 || ^16.0",
+    "prop-types": "15.6.0"
+  },
+  "devDependencies": {
+    "bee-button": "latest",
+    "bee-clipboard": "^2.0.0",
+    "bee-drawer": "0.0.2",
+    "bee-panel": "1.2.12",
+    "chai": "^3.5.0",
+    "console-polyfill": "~0.2.1",
+    "enzyme": "^2.4.1",
+    "es5-shim": "~4.1.10",
+    "react": "~15.3.0",
+    "react-addons-test-utils": "15.3.2",
+    "react-dom": "~15.3.0",
+    "husky": "^4.2.5"
+  }
+}

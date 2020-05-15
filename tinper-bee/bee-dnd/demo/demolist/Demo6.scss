@@ -1,0 +1,27 @@
+.demo {
+  width:167px;
+  height:32px;
+  background:rgba(247,249,251,1);
+  border-radius:3px;
+  border:1px solid rgba(165,173,186,1);
+  line-height: 32px;
+  font-size: 12px;
+  color: #212121;
+  text-align: center;
+  cursor: grab;
+  &:hover{
+    background:rgba(235,236,240,1);
+    border-radius:3px;
+  }
+}
+/*拖动状态*/
+.react-draggable-transparent-selection{
+  .demo{
+      box-shadow:0px 2px 4px 0px rgba(31,37,52,0.3);
+      opacity:0.8;
+      cursor: grabbing;
+  }
+}
+.demo6{
+  height: 100px;
+}

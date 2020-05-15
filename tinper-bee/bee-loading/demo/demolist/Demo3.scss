@@ -1,0 +1,10 @@
+.demo4{
+  height: 100px;
+  width: 500px;
+  background: rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  font-size: 14px;
+  .u-loading-backdrop{
+    z-index:1029;
+  }
+}

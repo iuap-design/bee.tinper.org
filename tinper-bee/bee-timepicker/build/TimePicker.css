@@ -1,0 +1,146 @@
+/* FormGroup */
+/*  Navlayout  */
+.u-time-picker {
+  display: inline-block;
+  box-sizing: border-box;
+  position: relative; }
+  .u-time-picker i.uf {
+    position: absolute;
+    right: 0;
+    top: 4px;
+    opacity: .2;
+    cursor: pointer; }
+  .u-time-picker * {
+    box-sizing: border-box; }
+  .u-time-picker .u-time-picker-input {
+    width: 100%;
+    position: relative;
+    display: inline-block;
+    padding: 4px 7px;
+    height: 32px;
+    cursor: text;
+    font-size: 14px;
+    color: #212121;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid rgb(165, 173, 186);
+    border-radius: 3px;
+    transition: border 0.2s cubic-bezier(0.645, 0.045, 0.355, 1), background 0.2s cubic-bezier(0.645, 0.045, 0.355, 1), box-shadow 0.2s cubic-bezier(0.645, 0.045, 0.355, 1); }
+    .u-time-picker .u-time-picker-input[disabled] {
+      background: #f7f9fb;
+      border-color: #dfe1e6;
+      color: #909090;
+      cursor: not-allowed; }
+      .u-time-picker .u-time-picker-input[disabled]::-webkit-input-placeholder {
+        color: #909090; }
+
+.u-time-picker-panel {
+  z-index: 1070;
+  width: 170px;
+  position: absolute;
+  box-sizing: border-box; }
+  .u-time-picker-panel * {
+    box-sizing: border-box; }
+  .u-time-picker-panel.u-time-picker-panel-column-4 {
+    width: auto;
+    min-width: 170px; }
+  .u-time-picker-panel .u-time-picker-panel-inner {
+    display: inline-block;
+    position: relative;
+    outline: none;
+    list-style: none;
+    font-size: 14px;
+    text-align: left;
+    background-color: #fff;
+    border-radius: 3px;
+    box-shadow: 0 1px 5px #ccc;
+    background-clip: padding-box;
+    border: 1px solid #ccc;
+    line-height: 1.5; }
+  .u-time-picker-panel .u-time-picker-panel-input {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    cursor: auto;
+    line-height: 1.5;
+    outline: 0;
+    border: 1px solid transparent;
+    font-size: 14px; }
+  .u-time-picker-panel .u-time-picker-panel-input-wrap {
+    box-sizing: border-box;
+    position: relative;
+    padding: 6px;
+    border-bottom: 1px solid #ccc; }
+  .u-time-picker-panel .u-time-picker-panel-input-invalid {
+    border-color: red; }
+  .u-time-picker-panel .u-time-picker-panel-clear-btn {
+    position: absolute;
+    right: 6px;
+    cursor: pointer;
+    overflow: hidden;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    line-height: 20px;
+    top: 6px;
+    margin: 0; }
+  .u-time-picker-panel .u-time-picker-panel-clear-btn:after {
+    content: "x";
+    font-size: 14px;
+    color: #aaa;
+    display: inline-block;
+    line-height: 1;
+    width: 20px;
+    transition: color 0.3s ease; }
+  .u-time-picker-panel .u-time-picker-panel-clear-btn:hover:after {
+    color: #666; }
+  .u-time-picker-panel .u-time-picker-panel-select {
+    float: left;
+    font-size: 12px;
+    border: 1px solid #ccc;
+    border-width: 0 1px;
+    margin-left: -1px;
+    box-sizing: border-box;
+    width: 56px;
+    overflow: hidden;
+    position: relative; }
+  .u-time-picker-panel .u-time-picker-panel-select-active {
+    overflow-y: auto; }
+  .u-time-picker-panel .u-time-picker-panel-select:first-child {
+    border-left: 0;
+    margin-left: 0; }
+  .u-time-picker-panel .u-time-picker-panel-select:last-child {
+    border-right: 0; }
+  .u-time-picker-panel .u-time-picker-panel-select ul {
+    list-style: none;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    max-height: 144px; }
+  .u-time-picker-panel .u-time-picker-panel-select li {
+    list-style: none;
+    box-sizing: content-box;
+    margin: 0;
+    padding: 0 0 0 16px;
+    width: 100%;
+    height: 24px;
+    color: #212121;
+    line-height: 24px;
+    text-align: left;
+    cursor: pointer;
+    font-size: 14px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none; }
+  .u-time-picker-panel .u-time-picker-panel-select li:hover {
+    background: rgb(235, 236, 240); }
+  .u-time-picker-panel li.u-time-picker-panel-select-option-selected {
+    background: rgb(255, 247, 231);
+    color: rgb(245, 60, 50); }
+  .u-time-picker-panel li.u-time-picker-panel-select-option-disabled {
+    color: #909090; }
+  .u-time-picker-panel li.u-time-picker-panel-select-option-disabled:hover {
+    background: transparent;
+    cursor: not-allowed; }

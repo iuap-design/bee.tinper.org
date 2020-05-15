@@ -1,0 +1,201 @@
+/* FormGroup */
+/*  Navlayout  */
+.u-transfer {
+  position: relative;
+  line-height: 1.5; }
+  .u-transfer-list {
+    position: relative;
+    font-size: 12px;
+    border: 1px solid #d9d9d9;
+    display: inline-block;
+    border-radius: 3px;
+    vertical-align: middle;
+    position: relative;
+    width: 180px;
+    height: 200px;
+    padding-top: 33px; }
+    .u-transfer-list.u-transfer-list-draggable:first-child {
+      margin-right: 16px; }
+    .u-transfer-list-with-footer {
+      padding-bottom: 33px; }
+    .u-transfer-list-search-action {
+      color: #505F79;
+      position: absolute;
+      top: 2px;
+      right: 2px;
+      width: 26px;
+      height: 26px;
+      line-height: 26px;
+      text-align: center;
+      font-size: 16px;
+      text-decoration: none; }
+      .u-transfer-list-search-action .uf {
+        transition: all .3s;
+        font-size: 16px;
+        color: #505F79; }
+        .u-transfer-list-search-action .uf:hover {
+          color: rgba(0, 0, 0, 0.43); }
+    .u-transfer-list-header {
+      padding: 7px 15px;
+      border-radius: 3px 3px 0 0;
+      background: #fff;
+      color: #212121;
+      border-bottom: 1px solid #e9e9e9;
+      overflow: hidden;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%; }
+      .u-transfer-list-header .u-checkbox {
+        margin-right: 0; }
+      .u-transfer-list-header-title {
+        position: absolute;
+        right: 15px; }
+    .u-transfer-list-body {
+      font-size: 12px;
+      position: relative;
+      height: 100%; }
+      .u-transfer-list-body-search-wrapper {
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 4px;
+        width: 100%; }
+    .u-transfer-list-body-with-search {
+      padding-top: 34px; }
+    .u-transfer-list-content {
+      height: 100%;
+      overflow: auto;
+      margin: 0;
+      padding: 0; }
+      .u-transfer-list-content.delbtn-backdrop {
+        background: #505F79;
+        opacity: 0.65; }
+        .u-transfer-list-content.delbtn-backdrop.uf-del {
+          color: #fff; }
+      .u-transfer-list-content-item {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        padding: 7px 15px;
+        min-height: 32px;
+        transition: all 0.3s ease;
+        color: #212121; }
+        .u-transfer-list-content-item .u-checkbox {
+          margin-right: 0; }
+      .u-transfer-list-content-item:not(.u-transfer-list-content-item-disabled):hover {
+        cursor: pointer;
+        background-color: rgb(235, 236, 240); }
+      .u-transfer-list-content-item-selected {
+        background: rgb(255, 247, 231); }
+        .u-transfer-list-content-item-selected:not(.u-transfer-list-content-item-selected-item-disabled):hover {
+          background: rgb(255, 247, 231); }
+      .u-transfer-list-content-item-disabled {
+        cursor: not-allowed;
+        color: #909090; }
+      .u-transfer-list-content-item-highlight-enter {
+        animation: transferHighlightIn 1s ease;
+        transition: none; }
+    .u-transfer-list-delete-selected {
+      display: none;
+      width: 100%;
+      height: 100%;
+      background: rgba(52, 69, 99, 0.2);
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: #fff; }
+      .u-transfer-list-delete-selected.show {
+        display: block; }
+      .u-transfer-list-delete-selected .u-transfer-list-del-btn {
+        width: 78px;
+        height: 78px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin-top: -39px;
+        margin-left: -39px;
+        padding: 13px;
+        background: #5e6c84;
+        border-radius: 3px;
+        text-align: center;
+        vertical-align: middle; }
+        .u-transfer-list-delete-selected .u-transfer-list-del-btn span {
+          display: block; }
+    .u-transfer-list-body-not-found {
+      padding-top: 0;
+      color: #ccc;
+      text-align: center;
+      display: none;
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      margin-top: -10px; }
+      .u-transfer-list-body-not-found.show {
+        display: block; }
+    .u-transfer-list-content:empty + .u-transfer-list-body-not-found {
+      display: block; }
+    .u-transfer-list-footer {
+      border-top: 1px solid #e9e9e9;
+      border-radius: 0 0 3px 3px;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%; }
+  .u-transfer-operation {
+    display: inline-block;
+    overflow: hidden;
+    margin: 0 8px;
+    vertical-align: middle; }
+    .u-transfer-operation button {
+      display: block; }
+      .u-transfer-operation button:first-child {
+        margin-bottom: 4px; }
+      .u-transfer-operation button .uf {
+        font-size: 12px; }
+  .u-transfer .u-checkbox + span, .u-transfer .u-checkbox-wrapper + span {
+    padding-left: 8px;
+    padding-right: 8px; }
+  .u-transfer .u-checkbox.u-checkbox-indeterminate .u-checkbox-label:after {
+    color: #fff;
+    content: "\e6ce";
+    line-height: 18px;
+    font-size: 14px; }
+  .u-transfer .u-checkbox .u-checkbox-label:before, .u-transfer .u-checkbox .u-checkbox-label:after {
+    top: 0; }
+  .u-transfer .u-button.disabled, .u-transfer .u-button[disabled]:hover {
+    background: #fff;
+    color: #9a9898;
+    border-color: #e0e0e0; }
+
+.u-transfer-operation .u-button-sm {
+  padding: 0;
+  font-size: 1.2rem;
+  border: 1px solid;
+  color: #6d6b6b;
+  min-width: 3rem; }
+
+.u-transfer-operation .u-button-sm {
+  background: rgb(245, 60, 50);
+  color: #fff;
+  border-color: rgb(245, 60, 50); }
+
+.u-transfer-operation .u-button-sm:hover {
+  background: rgb(245, 60, 50);
+  border-color: rgb(245, 60, 50); }
+
+.u-transfer-operation .u-button-sm[disabled] {
+  background: #fff;
+  color: #9a9898;
+  border-color: #e0e0e0; }
+
+.u-transfer-list-search {
+  font-size: 1.2rem;
+  border-color: #d9d9d9;
+  height: 26px; }
+
+@keyframes transferHighlightIn {
+  0% {
+    background: rgb(255, 247, 231); }
+  100% {
+    background: transparent; } }

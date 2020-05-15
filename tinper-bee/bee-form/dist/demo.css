@@ -1,0 +1,136 @@
+/* FormGroup */
+/*  Navlayout  */
+.u-form-item {
+  padding: 4px 10px;
+  min-height: 52px; }
+  .u-form-item.flex {
+    display: -ms-flexbox;
+    display: flex; }
+  .u-form-item .u-label {
+    display: inline-block;
+    text-align: right;
+    padding-right: 12px;
+    color: #212121;
+    font-size: 12px;
+    min-width: 96px; }
+    .u-form-item .u-label.line-height-32 {
+      line-height: 32px; }
+  .u-form-item .mast {
+    color: #f44336;
+    font-size: 12px;
+    padding: 0; }
+  .u-form-item .error {
+    color: #f44336;
+    font-size: 12px;
+    padding-left: 12px; }
+    .u-form-item .error.line-height-32 {
+      line-height: 32px; }
+    .u-form-item .error .uf {
+      font-size: 12px;
+      padding: 0;
+      margin-right: 4px; }
+  .u-form-item .u-form-control, .u-form-item .u-input-group .u-form-control, .u-form-item .u-select, .u-form-item .u-checkbox-group {
+    display: inline-block;
+    width: auto; }
+  .u-form-item .datepicker-container, .u-form-item .calendar-picker {
+    display: inline-block; }
+  .u-form-item textarea {
+    min-height: 80px; }
+  .u-form-item .u-col-1, .u-form-item .u-col-2, .u-form-item .u-col-3, .u-form-item .u-col-4, .u-form-item .u-col-5, .u-form-item .u-col-6, .u-form-item .u-col-7, .u-form-item .u-col-8, .u-form-item .u-col-9, .u-form-item .u-col-10, .u-form-item .u-col-11, .u-form-item .u-col-12, .u-form-item .u-col-lg-1, .u-form-item .u-col-lg-2, .u-form-item .u-col-lg-3, .u-form-item .u-col-lg-4, .u-form-item .u-col-lg-5, .u-form-item .u-col-lg-6, .u-form-item .u-col-lg-7, .u-form-item .u-col-lg-8, .u-form-item .u-col-lg-9, .u-form-item .u-col-lg-10, .u-form-item .u-col-lg-11, .u-form-item .u-col-lg-12, .u-form-item .u-col-md-1, .u-form-item .u-col-md-2, .u-form-item .u-col-md-3, .u-form-item .u-col-md-4, .u-form-item .u-col-md-5, .u-form-item .u-col-md-6, .u-form-item .u-col-md-7, .u-form-item .u-col-md-8, .u-form-item .u-col-md-9, .u-form-item .u-col-md-10, .u-form-item .u-col-md-11, .u-form-item .u-col-md-12, .u-form-item .u-col-sm-1, .u-form-item .u-col-sm-2, .u-form-item .u-col-sm-3, .u-form-item .u-col-sm-4, .u-form-item .u-col-sm-5, .u-form-item .u-col-sm-6, .u-form-item .u-col-sm-7, .u-form-item .u-col-sm-8, .u-form-item .u-col-sm-9, .u-form-item .u-col-sm-10, .u-form-item .u-col-sm-11, .u-form-item .u-col-sm-12, .u-form-item .u-col-xs-1, .u-form-item .u-col-xs-2, .u-form-item .u-col-xs-3, .u-form-item .u-col-xs-4, .u-form-item .u-col-xs-5, .u-form-item .u-col-xs-6, .u-form-item .u-col-xs-7, .u-form-item .u-col-xs-8, .u-form-item .u-col-xs-9, .u-form-item .u-col-xs-10, .u-form-item .u-col-xs-11, .u-form-item .u-col-xs-12 {
+    padding: 0; }
+    .u-form-item .u-col-1 .u-label, .u-form-item .u-col-2 .u-label, .u-form-item .u-col-3 .u-label, .u-form-item .u-col-4 .u-label, .u-form-item .u-col-5 .u-label, .u-form-item .u-col-6 .u-label, .u-form-item .u-col-7 .u-label, .u-form-item .u-col-8 .u-label, .u-form-item .u-col-9 .u-label, .u-form-item .u-col-10 .u-label, .u-form-item .u-col-11 .u-label, .u-form-item .u-col-12 .u-label, .u-form-item .u-col-lg-1 .u-label, .u-form-item .u-col-lg-2 .u-label, .u-form-item .u-col-lg-3 .u-label, .u-form-item .u-col-lg-4 .u-label, .u-form-item .u-col-lg-5 .u-label, .u-form-item .u-col-lg-6 .u-label, .u-form-item .u-col-lg-7 .u-label, .u-form-item .u-col-lg-8 .u-label, .u-form-item .u-col-lg-9 .u-label, .u-form-item .u-col-lg-10 .u-label, .u-form-item .u-col-lg-11 .u-label, .u-form-item .u-col-lg-12 .u-label, .u-form-item .u-col-md-1 .u-label, .u-form-item .u-col-md-2 .u-label, .u-form-item .u-col-md-3 .u-label, .u-form-item .u-col-md-4 .u-label, .u-form-item .u-col-md-5 .u-label, .u-form-item .u-col-md-6 .u-label, .u-form-item .u-col-md-7 .u-label, .u-form-item .u-col-md-8 .u-label, .u-form-item .u-col-md-9 .u-label, .u-form-item .u-col-md-10 .u-label, .u-form-item .u-col-md-11 .u-label, .u-form-item .u-col-md-12 .u-label, .u-form-item .u-col-sm-1 .u-label, .u-form-item .u-col-sm-2 .u-label, .u-form-item .u-col-sm-3 .u-label, .u-form-item .u-col-sm-4 .u-label, .u-form-item .u-col-sm-5 .u-label, .u-form-item .u-col-sm-6 .u-label, .u-form-item .u-col-sm-7 .u-label, .u-form-item .u-col-sm-8 .u-label, .u-form-item .u-col-sm-9 .u-label, .u-form-item .u-col-sm-10 .u-label, .u-form-item .u-col-sm-11 .u-label, .u-form-item .u-col-sm-12 .u-label, .u-form-item .u-col-xs-1 .u-label, .u-form-item .u-col-xs-2 .u-label, .u-form-item .u-col-xs-3 .u-label, .u-form-item .u-col-xs-4 .u-label, .u-form-item .u-col-xs-5 .u-label, .u-form-item .u-col-xs-6 .u-label, .u-form-item .u-col-xs-7 .u-label, .u-form-item .u-col-xs-8 .u-label, .u-form-item .u-col-xs-9 .u-label, .u-form-item .u-col-xs-10 .u-label, .u-form-item .u-col-xs-11 .u-label, .u-form-item .u-col-xs-12 .u-label {
+      width: 100%; }
+    .u-form-item .u-col-1 .u-form-control, .u-form-item .u-col-1 .u-input-group .u-form-control, .u-form-item .u-col-1 .u-select, .u-form-item .u-col-1 .u-checkbox-group, .u-form-item .u-col-2 .u-form-control, .u-form-item .u-col-2 .u-input-group .u-form-control, .u-form-item .u-col-2 .u-select, .u-form-item .u-col-2 .u-checkbox-group, .u-form-item .u-col-3 .u-form-control, .u-form-item .u-col-3 .u-input-group .u-form-control, .u-form-item .u-col-3 .u-select, .u-form-item .u-col-3 .u-checkbox-group, .u-form-item .u-col-4 .u-form-control, .u-form-item .u-col-4 .u-input-group .u-form-control, .u-form-item .u-col-4 .u-select, .u-form-item .u-col-4 .u-checkbox-group, .u-form-item .u-col-5 .u-form-control, .u-form-item .u-col-5 .u-input-group .u-form-control, .u-form-item .u-col-5 .u-select, .u-form-item .u-col-5 .u-checkbox-group, .u-form-item .u-col-6 .u-form-control, .u-form-item .u-col-6 .u-input-group .u-form-control, .u-form-item .u-col-6 .u-select, .u-form-item .u-col-6 .u-checkbox-group, .u-form-item .u-col-7 .u-form-control, .u-form-item .u-col-7 .u-input-group .u-form-control, .u-form-item .u-col-7 .u-select, .u-form-item .u-col-7 .u-checkbox-group, .u-form-item .u-col-8 .u-form-control, .u-form-item .u-col-8 .u-input-group .u-form-control, .u-form-item .u-col-8 .u-select, .u-form-item .u-col-8 .u-checkbox-group, .u-form-item .u-col-9 .u-form-control, .u-form-item .u-col-9 .u-input-group .u-form-control, .u-form-item .u-col-9 .u-select, .u-form-item .u-col-9 .u-checkbox-group, .u-form-item .u-col-10 .u-form-control, .u-form-item .u-col-10 .u-input-group .u-form-control, .u-form-item .u-col-10 .u-select, .u-form-item .u-col-10 .u-checkbox-group, .u-form-item .u-col-11 .u-form-control, .u-form-item .u-col-11 .u-input-group .u-form-control, .u-form-item .u-col-11 .u-select, .u-form-item .u-col-11 .u-checkbox-group, .u-form-item .u-col-12 .u-form-control, .u-form-item .u-col-12 .u-input-group .u-form-control, .u-form-item .u-col-12 .u-select, .u-form-item .u-col-12 .u-checkbox-group, .u-form-item .u-col-lg-1 .u-form-control, .u-form-item .u-col-lg-1 .u-input-group .u-form-control, .u-form-item .u-col-lg-1 .u-select, .u-form-item .u-col-lg-1 .u-checkbox-group, .u-form-item .u-col-lg-2 .u-form-control, .u-form-item .u-col-lg-2 .u-input-group .u-form-control, .u-form-item .u-col-lg-2 .u-select, .u-form-item .u-col-lg-2 .u-checkbox-group, .u-form-item .u-col-lg-3 .u-form-control, .u-form-item .u-col-lg-3 .u-input-group .u-form-control, .u-form-item .u-col-lg-3 .u-select, .u-form-item .u-col-lg-3 .u-checkbox-group, .u-form-item .u-col-lg-4 .u-form-control, .u-form-item .u-col-lg-4 .u-input-group .u-form-control, .u-form-item .u-col-lg-4 .u-select, .u-form-item .u-col-lg-4 .u-checkbox-group, .u-form-item .u-col-lg-5 .u-form-control, .u-form-item .u-col-lg-5 .u-input-group .u-form-control, .u-form-item .u-col-lg-5 .u-select, .u-form-item .u-col-lg-5 .u-checkbox-group, .u-form-item .u-col-lg-6 .u-form-control, .u-form-item .u-col-lg-6 .u-input-group .u-form-control, .u-form-item .u-col-lg-6 .u-select, .u-form-item .u-col-lg-6 .u-checkbox-group, .u-form-item .u-col-lg-7 .u-form-control, .u-form-item .u-col-lg-7 .u-input-group .u-form-control, .u-form-item .u-col-lg-7 .u-select, .u-form-item .u-col-lg-7 .u-checkbox-group, .u-form-item .u-col-lg-8 .u-form-control, .u-form-item .u-col-lg-8 .u-input-group .u-form-control, .u-form-item .u-col-lg-8 .u-select, .u-form-item .u-col-lg-8 .u-checkbox-group, .u-form-item .u-col-lg-9 .u-form-control, .u-form-item .u-col-lg-9 .u-input-group .u-form-control, .u-form-item .u-col-lg-9 .u-select, .u-form-item .u-col-lg-9 .u-checkbox-group, .u-form-item .u-col-lg-10 .u-form-control, .u-form-item .u-col-lg-10 .u-input-group .u-form-control, .u-form-item .u-col-lg-10 .u-select, .u-form-item .u-col-lg-10 .u-checkbox-group, .u-form-item .u-col-lg-11 .u-form-control, .u-form-item .u-col-lg-11 .u-input-group .u-form-control, .u-form-item .u-col-lg-11 .u-select, .u-form-item .u-col-lg-11 .u-checkbox-group, .u-form-item .u-col-lg-12 .u-form-control, .u-form-item .u-col-lg-12 .u-input-group .u-form-control, .u-form-item .u-col-lg-12 .u-select, .u-form-item .u-col-lg-12 .u-checkbox-group, .u-form-item .u-col-md-1 .u-form-control, .u-form-item .u-col-md-1 .u-input-group .u-form-control, .u-form-item .u-col-md-1 .u-select, .u-form-item .u-col-md-1 .u-checkbox-group, .u-form-item .u-col-md-2 .u-form-control, .u-form-item .u-col-md-2 .u-input-group .u-form-control, .u-form-item .u-col-md-2 .u-select, .u-form-item .u-col-md-2 .u-checkbox-group, .u-form-item .u-col-md-3 .u-form-control, .u-form-item .u-col-md-3 .u-input-group .u-form-control, .u-form-item .u-col-md-3 .u-select, .u-form-item .u-col-md-3 .u-checkbox-group, .u-form-item .u-col-md-4 .u-form-control, .u-form-item .u-col-md-4 .u-input-group .u-form-control, .u-form-item .u-col-md-4 .u-select, .u-form-item .u-col-md-4 .u-checkbox-group, .u-form-item .u-col-md-5 .u-form-control, .u-form-item .u-col-md-5 .u-input-group .u-form-control, .u-form-item .u-col-md-5 .u-select, .u-form-item .u-col-md-5 .u-checkbox-group, .u-form-item .u-col-md-6 .u-form-control, .u-form-item .u-col-md-6 .u-input-group .u-form-control, .u-form-item .u-col-md-6 .u-select, .u-form-item .u-col-md-6 .u-checkbox-group, .u-form-item .u-col-md-7 .u-form-control, .u-form-item .u-col-md-7 .u-input-group .u-form-control, .u-form-item .u-col-md-7 .u-select, .u-form-item .u-col-md-7 .u-checkbox-group, .u-form-item .u-col-md-8 .u-form-control, .u-form-item .u-col-md-8 .u-input-group .u-form-control, .u-form-item .u-col-md-8 .u-select, .u-form-item .u-col-md-8 .u-checkbox-group, .u-form-item .u-col-md-9 .u-form-control, .u-form-item .u-col-md-9 .u-input-group .u-form-control, .u-form-item .u-col-md-9 .u-select, .u-form-item .u-col-md-9 .u-checkbox-group, .u-form-item .u-col-md-10 .u-form-control, .u-form-item .u-col-md-10 .u-input-group .u-form-control, .u-form-item .u-col-md-10 .u-select, .u-form-item .u-col-md-10 .u-checkbox-group, .u-form-item .u-col-md-11 .u-form-control, .u-form-item .u-col-md-11 .u-input-group .u-form-control, .u-form-item .u-col-md-11 .u-select, .u-form-item .u-col-md-11 .u-checkbox-group, .u-form-item .u-col-md-12 .u-form-control, .u-form-item .u-col-md-12 .u-input-group .u-form-control, .u-form-item .u-col-md-12 .u-select, .u-form-item .u-col-md-12 .u-checkbox-group, .u-form-item .u-col-sm-1 .u-form-control, .u-form-item .u-col-sm-1 .u-input-group .u-form-control, .u-form-item .u-col-sm-1 .u-select, .u-form-item .u-col-sm-1 .u-checkbox-group, .u-form-item .u-col-sm-2 .u-form-control, .u-form-item .u-col-sm-2 .u-input-group .u-form-control, .u-form-item .u-col-sm-2 .u-select, .u-form-item .u-col-sm-2 .u-checkbox-group, .u-form-item .u-col-sm-3 .u-form-control, .u-form-item .u-col-sm-3 .u-input-group .u-form-control, .u-form-item .u-col-sm-3 .u-select, .u-form-item .u-col-sm-3 .u-checkbox-group, .u-form-item .u-col-sm-4 .u-form-control, .u-form-item .u-col-sm-4 .u-input-group .u-form-control, .u-form-item .u-col-sm-4 .u-select, .u-form-item .u-col-sm-4 .u-checkbox-group, .u-form-item .u-col-sm-5 .u-form-control, .u-form-item .u-col-sm-5 .u-input-group .u-form-control, .u-form-item .u-col-sm-5 .u-select, .u-form-item .u-col-sm-5 .u-checkbox-group, .u-form-item .u-col-sm-6 .u-form-control, .u-form-item .u-col-sm-6 .u-input-group .u-form-control, .u-form-item .u-col-sm-6 .u-select, .u-form-item .u-col-sm-6 .u-checkbox-group, .u-form-item .u-col-sm-7 .u-form-control, .u-form-item .u-col-sm-7 .u-input-group .u-form-control, .u-form-item .u-col-sm-7 .u-select, .u-form-item .u-col-sm-7 .u-checkbox-group, .u-form-item .u-col-sm-8 .u-form-control, .u-form-item .u-col-sm-8 .u-input-group .u-form-control, .u-form-item .u-col-sm-8 .u-select, .u-form-item .u-col-sm-8 .u-checkbox-group, .u-form-item .u-col-sm-9 .u-form-control, .u-form-item .u-col-sm-9 .u-input-group .u-form-control, .u-form-item .u-col-sm-9 .u-select, .u-form-item .u-col-sm-9 .u-checkbox-group, .u-form-item .u-col-sm-10 .u-form-control, .u-form-item .u-col-sm-10 .u-input-group .u-form-control, .u-form-item .u-col-sm-10 .u-select, .u-form-item .u-col-sm-10 .u-checkbox-group, .u-form-item .u-col-sm-11 .u-form-control, .u-form-item .u-col-sm-11 .u-input-group .u-form-control, .u-form-item .u-col-sm-11 .u-select, .u-form-item .u-col-sm-11 .u-checkbox-group, .u-form-item .u-col-sm-12 .u-form-control, .u-form-item .u-col-sm-12 .u-input-group .u-form-control, .u-form-item .u-col-sm-12 .u-select, .u-form-item .u-col-sm-12 .u-checkbox-group, .u-form-item .u-col-xs-1 .u-form-control, .u-form-item .u-col-xs-1 .u-input-group .u-form-control, .u-form-item .u-col-xs-1 .u-select, .u-form-item .u-col-xs-1 .u-checkbox-group, .u-form-item .u-col-xs-2 .u-form-control, .u-form-item .u-col-xs-2 .u-input-group .u-form-control, .u-form-item .u-col-xs-2 .u-select, .u-form-item .u-col-xs-2 .u-checkbox-group, .u-form-item .u-col-xs-3 .u-form-control, .u-form-item .u-col-xs-3 .u-input-group .u-form-control, .u-form-item .u-col-xs-3 .u-select, .u-form-item .u-col-xs-3 .u-checkbox-group, .u-form-item .u-col-xs-4 .u-form-control, .u-form-item .u-col-xs-4 .u-input-group .u-form-control, .u-form-item .u-col-xs-4 .u-select, .u-form-item .u-col-xs-4 .u-checkbox-group, .u-form-item .u-col-xs-5 .u-form-control, .u-form-item .u-col-xs-5 .u-input-group .u-form-control, .u-form-item .u-col-xs-5 .u-select, .u-form-item .u-col-xs-5 .u-checkbox-group, .u-form-item .u-col-xs-6 .u-form-control, .u-form-item .u-col-xs-6 .u-input-group .u-form-control, .u-form-item .u-col-xs-6 .u-select, .u-form-item .u-col-xs-6 .u-checkbox-group, .u-form-item .u-col-xs-7 .u-form-control, .u-form-item .u-col-xs-7 .u-input-group .u-form-control, .u-form-item .u-col-xs-7 .u-select, .u-form-item .u-col-xs-7 .u-checkbox-group, .u-form-item .u-col-xs-8 .u-form-control, .u-form-item .u-col-xs-8 .u-input-group .u-form-control, .u-form-item .u-col-xs-8 .u-select, .u-form-item .u-col-xs-8 .u-checkbox-group, .u-form-item .u-col-xs-9 .u-form-control, .u-form-item .u-col-xs-9 .u-input-group .u-form-control, .u-form-item .u-col-xs-9 .u-select, .u-form-item .u-col-xs-9 .u-checkbox-group, .u-form-item .u-col-xs-10 .u-form-control, .u-form-item .u-col-xs-10 .u-input-group .u-form-control, .u-form-item .u-col-xs-10 .u-select, .u-form-item .u-col-xs-10 .u-checkbox-group, .u-form-item .u-col-xs-11 .u-form-control, .u-form-item .u-col-xs-11 .u-input-group .u-form-control, .u-form-item .u-col-xs-11 .u-select, .u-form-item .u-col-xs-11 .u-checkbox-group, .u-form-item .u-col-xs-12 .u-form-control, .u-form-item .u-col-xs-12 .u-input-group .u-form-control, .u-form-item .u-col-xs-12 .u-select, .u-form-item .u-col-xs-12 .u-checkbox-group {
+      width: 100%; }
+
+.u-form-control::-webkit-input-placeholder {
+  font-size: 12px; }
+
+.u-form-control:-moz-placeholder {
+  font-size: 12px; }
+
+.u-form-control::-moz-placeholder {
+  font-size: 12px; }
+
+.u-form-control:-ms-input-placeholder {
+  font-size: 12px; }
+
+.text-algin-center {
+  text-align: center; }
+
+/* FormGroup */
+/*  Navlayout  */
+.u-search {
+  background: #F7F9FB; }
+  .u-search-header {
+    color: #424242;
+    overflow: hidden;
+    height: 48px;
+    padding: 11px 24px; }
+    .u-search-header > a {
+      overflow: hidden; }
+  .u-search-header-title {
+    float: left;
+    color: #434A54;
+    line-height: 26px;
+    font-size: 14px;
+    font-weight: 500; }
+    .u-search-header-title > i {
+      font-weight: 600; }
+  .u-search-header-oper {
+    float: right;
+    vertical-align: center;
+    line-height: 0; }
+    .u-search-header-oper .header-oper-btn {
+      display: inline-block;
+      width: 64px;
+      height: 26px;
+      text-align: center;
+      font-size: 12px;
+      line-height: 26px;
+      border-radius: 3px;
+      margin-left: 8px;
+      cursor: pointer;
+      vertical-align: middle; }
+      .u-search-header-oper .header-oper-btn:hover {
+        background: #EBECF0; }
+      .u-search-header-oper .header-oper-btn > i {
+        font-size: 12px;
+        padding-right: 0; }
+      .u-search-header-oper .header-oper-btn.primary {
+        background: #5E6C84;
+        color: #ffffff; }
+        .u-search-header-oper .header-oper-btn.primary:hover {
+          background: #344563; }
+  .u-search-resident {
+    padding: 0 24px 10px; }
+  .u-search .u-panel {
+    border-radius: 0;
+    border: none;
+    margin-bottom: 0;
+    background: transparent;
+    box-shadow: none; }
+    .u-search .u-panel .u-panel-heading {
+      height: 48px;
+      padding: 11px 24px;
+      border: none;
+      background: transparent; }
+    .u-search .u-panel .u-panel-body {
+      background: transparent;
+      padding: 0 24px 10px; }
+    .u-search .u-panel .u-panel-collapse.collapsing {
+      width: 100%; }
+
+
+
+
+.demo4 .u-form-item .u-form-control, .demo4 .u-form-item .datepicker-container {
+  min-width: 300px; }
+
+.demo5 .u-form-item .error {
+  padding-left: 0; }
+
+.demo6 .remark textarea {
+  width: 100%; }
+
+/*# sourceMappingURL=demo.css.map */

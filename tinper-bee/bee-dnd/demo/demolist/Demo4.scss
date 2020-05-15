@@ -1,0 +1,31 @@
+
+.demo-4 .demo4 {
+  position: relative;
+  cursor: default;
+  &:hover{
+    background:rgba(247,249,251,1);
+    cursor: default;
+  }
+}
+
+.demo4 .handle {
+  position: absolute;
+  right: -1px;
+  top: -1px;
+  height: 32px;
+  line-height: 30px;
+  background:rgba(223,225,230,1);
+  border-radius:0px 3px 3px 0px;
+  border:1px solid rgba(165,173,186,1);
+  cursor: grab;
+  &:hover{
+    background:rgba(179,186,197,1);
+  }
+}
+/*拖动状态*/
+.react-draggable-transparent-selection{
+  .demo4 .handle{
+    background:rgba(179,186,197,1);
+    cursor: grabbing;
+  }
+}

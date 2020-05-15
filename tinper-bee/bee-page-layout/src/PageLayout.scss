@@ -1,0 +1,41 @@
+@import "../node_modules/tinper-bee-core/scss/minxin-variables";
+@import "../node_modules/tinper-bee-core/scss/minxin-mixins";
+
+.bee-page-layout {
+
+    // Header
+    .header {
+        height:48px;
+        border-bottom:1px solid #C1C7D0;
+    }
+
+    // searchArea
+    .search-area {
+        border-bottom:1px solid #C1C7D0;
+        height:40px;
+        width:100%;
+    }
+
+    //table展示区域
+    .table-container{
+        
+    }
+
+    .content{
+        margin:0;
+        .u-col-1, .u-col-2, .u-col-3, .u-col-4, .u-col-5, .u-col-6, .u-col-7, .u-col-8, .u-col-9, .u-col-10, .u-col-11, .u-col-12, .u-col-lg-1, .u-col-lg-2, .u-col-lg-3, .u-col-lg-4, .u-col-lg-5, .u-col-lg-6, .u-col-lg-7, .u-col-lg-8, .u-col-lg-9, .u-col-lg-10, .u-col-lg-11, .u-col-lg-12, .u-col-md-1, .u-col-md-2, .u-col-md-3, .u-col-md-4, .u-col-md-5, .u-col-md-6, .u-col-md-7, .u-col-md-8, .u-col-md-9, .u-col-md-10, .u-col-md-11, .u-col-md-12, .u-col-sm-1, .u-col-sm-2, .u-col-sm-3, .u-col-sm-4, .u-col-sm-5, .u-col-sm-6, .u-col-sm-7, .u-col-sm-8, .u-col-sm-9, .u-col-sm-10, .u-col-sm-11, .u-col-sm-12, .u-col-xs-1, .u-col-xs-2, .u-col-xs-3, .u-col-xs-4, .u-col-xs-5, .u-col-xs-6, .u-col-xs-7, .u-col-xs-8, .u-col-xs-9, .u-col-xs-10, .u-col-xs-11, .u-col-xs-12{
+            padding:0;
+        }
+    }
+
+    //tree展示区域
+    .left-content{
+        display:inline-block;
+        vertical-align: top;
+        border-right:1px solid #C1C7D0;
+    }
+
+    .right-content{ 
+        display:inline-block;
+    }
+}

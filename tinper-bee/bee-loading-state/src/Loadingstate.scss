@@ -1,0 +1,37 @@
+@import "../node_modules/tinper-bee-core/scss/minxin-variables";
+@import "../node_modules/tinper-bee-core/scss/minxin-mixins";
+@import "../node_modules/bee-button/src/Button.scss";
+@import "../node_modules/bee-loading/src/Loading.scss";
+
+$loadingState-icon-color: #fff;
+
+.u-loading-state{
+    position: relative;
+    & > :not(.u-loading-backdrop){
+        .u-loading.u-loading-custom > div , .u-loading.u-loading-rotate > div{
+            left: 20px;
+            > .rotate-icon-container {
+                width: 22px;
+                height: 22px;
+                -webkit-animation: rotate 1s 0s linear infinite;
+                animation: rotate 1s 0s linear infinite;
+                > .uf {
+                    padding: 0;
+                    line-height: 22px;
+                    color: $loadingState-icon-color;
+                }
+            }
+        }
+    }
+    .u-loading-desc {
+        position: absolute;
+        left: 30px;
+        top: 2px;
+        font-size: 16px;
+        color: #000;
+        text-align: center;
+    }
+    &-label{
+        margin-left: 20px;
+    }
+}

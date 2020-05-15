@@ -1,0 +1,48 @@
+@import "../node_modules/tinper-bee-core/scss/minxin-variables";
+@import "../node_modules/tinper-bee-core/scss/minxin-mixins";
+@import "../node_modules/bee-input-group-addon/src/InputGroupAddon.scss";
+@import "./InputGroupButton.scss";
+
+.u-input-group {
+	position: relative;
+    display: table;
+    border-collapse: separate;
+    .u-input-group-btn .u-button{
+    	border: 1px solid $border-color-base;
+    	height: 32px;
+    	line-height: 1.3;
+    }
+	.u-form-control {
+		position: relative;
+	    float: left;
+	    width: 100%;
+	    margin-bottom: 0;
+	    display: table-cell;
+	    &:first-child {
+	    	border-bottom-right-radius: 0;
+    		border-top-right-radius: 0;
+	    }
+	    &:last-child {
+	    	border-bottom-left-radius: 0;
+    		border-top-left-radius: 0;
+	    }
+	    &:not(:first-child):not(:last-child) {
+	    	border-radius: 0;
+	    }
+	}
+	&.simple{
+		.u-form-control {
+			border-radius: 3px;
+		}
+		.u-input-group-btn{
+			position: absolute;
+		    top: 4px;
+		    bottom: 0;
+			right: 6px;
+			min-width: 20px;
+		}
+		.u-form-control:not(:last-child) {
+		    padding-right: 23px;
+		}
+	}
+}

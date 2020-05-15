@@ -1,0 +1,16 @@
+@import "../src/Pagination.scss";
+
+.clickBtn{
+    font-size: 13px;
+    width: 120px;
+    height: 38px;
+    line-height: 38px;
+    border: 1px solid #ddd;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 4px;
+    margin: 10px 0;
+}
+.component-demo .u-panel{
+    min-height: 150px;
+}

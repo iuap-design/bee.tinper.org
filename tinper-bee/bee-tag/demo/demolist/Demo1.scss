@@ -1,0 +1,18 @@
+.demoPadding{
+  .u-tag{
+    margin: auto 5px;
+    padding-top:0;
+  }
+  .divider{
+    margin: 6px 0;
+    height: 1px;
+    overflow: hidden;
+    background-color: #fff;
+  }
+  input::-webkit-input-placeholder {
+    width: 83px;
+    height: 20px;
+    color: #909090;
+    font-size: 12px;
+  }
+}

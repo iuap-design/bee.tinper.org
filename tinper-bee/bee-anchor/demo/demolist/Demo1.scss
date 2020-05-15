@@ -1,0 +1,29 @@
+.demo1{
+    .content{
+        p{
+            height: 500px;
+        }
+        display: inline-block
+    }
+    .u-anchor{
+        display: inline-block;
+    }
+    #my-awesome-nav {
+        position: fixed;
+        top: 200px;
+        right: 300px;
+        li{
+            padding: 0 10px 0 12px;
+            line-height: 30px;
+            height: 30px;
+            background: #FFF;
+            a{
+                color:#424242;
+            }
+        }
+    }
+    #my-awesome-nav li.active {
+        border-left: 2px solid #E14C46;
+        padding: 0 10px;
+    }
+}

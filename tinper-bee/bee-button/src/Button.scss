@@ -1,0 +1,280 @@
+@import "../node_modules/tinper-bee-core/scss/minxin-variables";
+@import "../node_modules/tinper-bee-core/scss/minxin-mixins";
+
+$button-padding-y-md: 4px;
+$button-padding-x-md: 13px;
+$font-size-md: 14px;
+$button-border-hover-bg-color: #EBECF0;
+$button-text-color: #fff;
+
+//默认 flat 样式.
+.u-button {
+  background: $button-default-color;
+  // border: none;
+  border: $button-border-width $button-border-style $button-default-border-color;
+  border-radius: $border-radius-base;
+  color: $button-default-text-color;
+  position: relative;
+  min-width: $button-min-width;
+  padding: $button-padding;
+  display: inline-block;
+  @include typo-button();
+  overflow: hidden;
+  will-change: box-shadow, transform;
+  outline: none;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  line-height: $button-line-height;
+  vertical-align: middle;
+  &::-moz-focus-inner {
+    border: 0;
+  }
+
+  &:hover {
+    background-color: $button-hover-color;
+    border-color: $button-hover-border-color;
+  }
+
+  &:active {
+    background-color: $button-active-color;
+    border-color: $button-active-border-color;
+  }
+
+  &.colored {
+    color: $button-primary-color;
+
+    &:focus:not(:active) {
+      background-color: $button-focus-color;
+      border-color: $button-focus-border-color;
+    }
+  }
+  &.disable,&.u-button[disabled]{
+    cursor: not-allowed;
+      background-color: #DFE1E6;
+      border-color: #DFE1E6;
+      color: #fff;
+    &:hover,&:active,&:focus{
+      background-color: #DFE1E6;
+      border-color: #DFE1E6;
+      color: #fff;
+    }
+    // -webkit-box-shadow: none;
+    // filter: alpha(opacity=35);
+    // box-shadow: none;
+    // opacity: .35;
+  }
+  &:not(.u-button-icon) i.uf{
+    // padding-left: 0;
+    line-height: normal;
+  }
+}
+
+input.u-button[type="submit"] {
+  -webkit-appearance:none;
+}
+
+//Floating bottons
+.u-button-floating {
+  border-radius: 50%;
+  font-size: $button-fab-font-size;
+  height: $button-fab-size;
+  margin: auto;
+  min-width: $button-fab-size;
+  width: $button-fab-size;
+  padding: 0;
+  line-height: normal;
+  border: 1px solid $button-border-color;
+
+  &.colored {
+    background: $button-fab-color-alt;
+    color: $button-fab-text-color-alt;
+
+    &:hover {
+      background-color: $button-fab-hover-color-alt;
+    }
+
+    &:focus:not(:active) {
+      background-color: $button-fab-active-color-alt;
+    }
+
+    &:active {
+      background-color: $button-fab-active-color-alt;
+    }
+    background: $button-fab-ripple-color-alt;
+  }
+}
+
+.u-button.disabled, .u-button[disabled] {
+    cursor: not-allowed;
+    background-color: #DFE1E6;
+    border-color: #DFE1E6;
+    color: #fff;
+    // opacity: .35;
+    // filter: alpha(opacity=35);
+    // box-shadow: none;
+}
+
+.u-button-default {
+    color: #333;
+    background-color: #fff;
+    border-color: #ccc;
+    &:hover,&:active {
+        background-color: #e6e6e6;
+        border-color: #adadad;
+    }
+}
+
+.u-button-border{
+  color: $button-default-text-color;
+  border: $button-border-width $button-border-style $button-border-color;
+  background: $button-border-bg-color;
+  &:hover {
+    color: $button-default-text-color;
+    background-color: $button-border-hover-bg-color;
+    border-color: $button-border-color;
+  }
+
+  &:active {
+    color: $button-default-text-color;
+    background-color: $button-border-hover-bg-color;
+    border-color: $button-border-color;
+  }
+
+  // &:focus:not(:active) {
+  //   color: $button-default-text-color;
+  //   background-color: $button-focus-color;
+  //   border-color: $button-border-color;
+  // }
+}
+
+.u-button.u-button-primary{
+    @include button-styles-variant( $button-text-color,
+                                    $button-primary-color,
+                                    $button-primary-active-color,
+                                    $button-primary-active-color);
+}
+.u-button.u-button-secondary{
+  @include button-styles-variant( $button-second-text-color,
+                                  $button-secondary-color,
+                                  $button-secondary-active-color,
+                                  $button-secondary-active-color);
+}
+.u-button.u-button-danger{
+    @include button-styles-variant( $button-text-color,
+                                    $button-danger-color,
+                                    $button-danger-active-color,
+                                    $button-danger-active-color);
+}
+.u-button.u-button-info{
+    @include button-styles-variant( $button-text-color,
+                                    $button-info-color,
+                                    $button-info-active-color,
+                                    $button-info-active-color);
+}
+.u-button.u-button-warning{
+    @include button-styles-variant( $button-text-color,
+                                    $button-warning-color,
+                                    $button-warning-active-color,
+                                    $button-warning-active-color);
+}
+.u-button.u-button-success{
+    @include button-styles-variant( $button-text-color,
+                                    $button-success-color,
+                                    $button-success-active-color,
+                                    $button-success-active-color);
+}
+.u-button.u-button-dark{
+  @include button-styles-variant( $button-text-color,
+                                  $button-dark-color,
+                                  $button-dark-active-color,
+                                  $button-dark-active-color);
+}
+.u-button.u-button-light{
+  @include button-styles-variant( $color-light,
+                                  $button-light-color,
+                                  $button-light-active-color,
+                                  $button-light-active-color);
+}
+
+.u-button-border.u-button-success{
+    @include border-button-styles-variant($button-success-color,$button-success-color,$button-success-active-color,$button-success-active-color);
+}
+.u-button-border.u-button-warning{
+    @include border-button-styles-variant($button-warning-color,$button-warning-color,$button-warning-active-color,$button-warning-active-color);
+}
+.u-button-border.u-button-danger{
+    @include border-button-styles-variant($button-danger-color,$button-danger-color,$button-danger-active-color,$button-danger-active-color);
+}
+.u-button-border.u-button-info{
+    @include border-button-styles-variant($button-info-color,$button-info-color,$button-info-active-color,$button-info-active-color);
+}
+
+.u-button-border.u-button-primary{
+    @include border-button-styles-variant($button-primary-color,$button-primary-color,$button-primary-active-color,$button-primary-active-color);
+}
+.u-button-border.u-button-secondary{
+  @include border-button-styles-variant($button-secondary-color,$button-secondary-color,$button-secondary-active-color,$button-secondary-active-color);
+}
+.u-button-border.u-button-dark{
+  @include border-button-styles-variant($button-dark-color,$button-dark-color,$button-dark-active-color,$button-dark-active-color);
+}
+.u-button-border.u-button-light{
+  @include border-button-styles-variant($button-dark-color,$button-light-color,$button-light-active-color,$button-light-active-color);
+}
+
+.u-button-icon {
+    border-radius: 50%;
+    font-size: $button-fab-font-size;
+    height:$button-icon-size;
+    margin: auto;
+    min-width:$button-icon-size;
+    width: $button-icon-size;
+    padding: 0;
+    line-height: normal;
+    border: 1px solid $button-border-color;
+}
+
+//大型
+.u-button-lg {
+    @include button-size($button-padding-y-lg, $button-padding-x-lg, $font-size-lg);
+}
+//特大型
+.u-button-xg {
+
+  @include button-size($button-padding-y-xg, $button-padding-x-xg, $font-size-xg);
+}
+//中型（默认）
+.u-button-md {
+  @include button-size($button-padding-y-md, $button-padding-x-md, $font-size-md);
+}
+//小型
+.u-button-sm {
+   @include button-size($button-padding-y-sm, $button-padding-x-sm, $font-size-sm);
+}
+//方形按钮
+.u-button-squared {
+  border-radius: 0;
+}
+
+// 圆形按钮
+
+.u-button-round {
+  border-radius: 1000px;
+}
+
+//按钮充满整行
+.u-button-block{
+  white-space: normal;
+  display: block;
+  width: 100%;
+}
+
+//与.u-button-round连用创建左半圆
+.u-button-pill-left {
+  border-radius: 500px 0 0 500px;
+}
+//与.u-button-round连用创建右半圆
+.u-button-pill-right {
+  border-radius: 0 500px 500px 0;
+}

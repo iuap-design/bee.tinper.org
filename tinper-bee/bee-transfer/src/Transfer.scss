@@ -1,0 +1,291 @@
+@import "../node_modules/tinper-bee-core/scss/minxin-variables";
+@import "../node_modules/tinper-bee-core/scss/minxin-mixins";
+// @import '../node_modules/bee-button/src/Button.scss';
+// @import '../node_modules/bee-form-control/src/FormControl.scss';
+// @import '../node_modules/bee-checkbox/src/Checkbox.scss';
+// @import "../node_modules/bee-icon/src/Icon.scss";
+// @import "../node_modules/bee-panel/src/Panel.scss";
+
+
+
+.u-transfer {
+  position: relative;
+  line-height: 1.5;
+
+  &-list {
+    position: relative;
+    font-size: 12px;
+    border: 1px solid $transfer-border-gap-color;
+    display: inline-block;
+    border-radius: $border-radius-base;
+    vertical-align: middle;
+    position: relative;
+    width: 180px;
+    height: 200px;
+    padding-top: 33px;
+    &.u-transfer-list-draggable:first-child{
+      margin-right: 16px;
+    }
+
+    &-with-footer {
+      padding-bottom: 33px;
+    }
+
+    &-search {
+      &-action {
+        color: #505F79;
+        position: absolute;
+        top: 2px;
+        right: 2px;
+        width: 26px;
+        height: 26px;
+        line-height: 26px;
+        text-align: center;
+        font-size: 16px;
+        text-decoration: none;
+        .uf {
+          transition: all .3s;
+          font-size: 16px;
+          color: #505F79;
+          &:hover {
+            color: rgba(0,0,0,.43);
+          }
+        }
+      }
+    }
+
+    &-header {
+      padding: 7px 15px;
+      border-radius: $border-radius-base $border-radius 0 0;
+      background: #fff;
+      color: $font-color-base;
+      border-bottom: 1px solid #e9e9e9;//$transfer-border-gap-color;
+      overflow: hidden;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      .u-checkbox{ 
+        margin-right:0;
+      }
+      &-title {
+        position: absolute;
+        right: 15px;
+      }
+    }
+
+    &-body {
+      font-size: 12px;
+      position: relative;
+      height: 100%;
+
+      &-search-wrapper {
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 4px;
+        width: 100%;
+      }
+    }
+
+    &-body-with-search {
+      padding-top: 34px;
+    }
+
+    &-content {
+      height: 100%;
+      overflow: auto;
+      margin: 0;
+      padding: 0;
+      &.delbtn-backdrop{
+        background: #505F79;
+        opacity: 0.65;
+        &.uf-del{
+          color: #fff;
+        }
+      }
+      &-item {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        padding: 7px 15px;
+        min-height: 32px;
+        transition: all 0.3s ease;
+        color: $font-color-base;
+        .u-checkbox{ 
+          margin-right:0;
+        }
+      }
+      &-item:not(&-item-disabled):hover {
+        cursor: pointer;
+        background-color: $hover-bg-color-base;
+      }
+      
+      &-item-selected{
+        background: $selected-bg-color-base;
+        &:not(&-item-disabled):hover{
+          background: $selected-bg-color-base;
+        }
+      }
+
+      &-item-disabled {
+        cursor: not-allowed;
+        color: $disabled-color-base;
+      }
+
+      &-item-highlight-enter {
+        animation: transferHighlightIn 1s ease;
+        transition: none;
+      }
+    }
+    &-delete-selected{
+      display: none;
+      width: 100%;
+      height: 100%;
+      background: rgba(52, 69, 99, 0.2);
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: #fff;
+      &.show{
+        display: block;
+      }
+      .u-transfer-list-del-btn{
+        width:78px;
+        height:78px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin-top: -39px;
+        margin-left: -39px;
+        padding: 13px;
+        background:rgba(94,108,132,1);
+        border-radius:$border-radius-base;
+        text-align: center;
+        vertical-align: middle;
+        span{
+          display: block;
+        }
+      }
+    }
+
+    &-body-not-found {
+      padding-top: 0;
+      color: #ccc;
+      text-align: center;
+      display: none;
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      margin-top: -10px;
+      &.show{
+        display: block;
+      }
+    }
+
+    &-content:empty + &-body-not-found {
+      display: block;
+    }
+
+    &-footer {
+      border-top: 1px solid #e9e9e9;
+      border-radius: 0 0 $select-border-radius $select-border-radius;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+    }
+  }
+
+  &-operation {
+    display: inline-block;
+    overflow: hidden;
+    margin: 0 8px;
+    vertical-align: middle;
+
+    button {
+      display: block;
+
+      &:first-child {
+        margin-bottom: 4px;
+      }
+
+      .uf {
+        font-size: 12px;
+      }
+    }
+  }
+
+  .u-checkbox+span, .u-checkbox-wrapper+span {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+  // .u-checkbox-checked .u-checkbox-label, .u-checkbox-indeterminate .u-checkbox-label {
+    // background-color: #108ee9;
+    // border-color: #108ee9;
+  // }
+  .u-checkbox.u-checkbox-indeterminate  .u-checkbox-label:after {
+    color: #fff;
+    content: "\e6ce";
+    line-height: 18px;
+    font-size: 14px;
+  }
+
+  .u-checkbox .u-checkbox-label:before, .u-checkbox .u-checkbox-label:after{
+    top: 0;
+  }
+
+  // .u-checkbox.u-checkbox-indeterminate .u-checkbox-label:before {
+    // box-shadow: inset 0 0 0 10px rgb(30,136,229);
+    // border-color: rgb(30,136,229);
+  // }
+  .u-button.disabled, .u-button[disabled]:hover {
+    background: #fff;
+    color:#9a9898;
+    border-color: rgb(224,224,224);
+  }
+}
+
+.u-transfer-operation .u-button-sm {
+	padding: 0;
+    font-size: 1.2rem;
+    border: 1px solid;
+    color: rgb(109, 107, 107);
+    min-width: 3rem;
+}
+
+.u-transfer-operation .u-button-sm{
+    background: $checkbox-color;
+    color: #fff;
+    border-color: $checkbox-color;
+}
+.u-transfer-operation .u-button-sm:hover{
+    background: $checkbox-color;
+    border-color: $checkbox-color;
+}
+
+
+
+.u-transfer-operation .u-button-sm[disabled]{
+    background: #fff;
+    color:#9a9898;
+    border-color: rgb(224,224,224);
+}
+
+
+
+
+.u-transfer-list-search {
+	font-size: 1.2rem;
+	border-color: $transfer-border-gap-color;
+    height: 26px;
+}
+
+@keyframes transferHighlightIn {
+  0% {
+    background: $selected-bg-color-base;
+  }
+  100% {
+    background: transparent;
+  }
+}

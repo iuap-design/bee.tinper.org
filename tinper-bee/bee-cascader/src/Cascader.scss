@@ -1,0 +1,223 @@
+@import "../node_modules/tinper-bee-core/scss/minxin-variables";
+@import "../node_modules/tinper-bee-core/scss/minxin-mixins";
+@import "../node_modules/bee-form-control/src/FormControl.scss";
+@import "../node_modules/bee-input-group/src/InputGroup.scss";
+
+.u-cascader{
+	font-size: 12px;
+	&-menus {
+		font-size: 12px;
+		overflow: hidden;
+		background: #fff;
+		position: absolute;
+		border-radius: $select-border-radius;
+		box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2);
+		white-space: nowrap;
+		z-index: 10;
+		vertical-align: top;
+		&-hidden {
+			display: none;
+		}
+
+		&.slide-up-enter, &.slide-up-appear {
+			opacity: 0;
+			animation-timing-function: cubic-bezier(0.08, 0.82, 0.17, 1);
+			animation-play-state: paused;
+		}
+
+		&.slide-up-leave {
+			opacity: 1;
+			animation-timing-function: cubic-bezier(0.6, 0.04, 0.98, 0.34);
+			animation-play-state: paused;
+		}
+
+		&.slide-up-enter.slide-up-enter-active{
+			&-placement-bottomLeft{
+				animation-name: SlideUpIn;
+				animation-play-state: running;
+			}
+		}
+		&.slide-up-appear.slide-up-appear-active{
+			&-placement-bottomLeft{
+				animation-name: SlideUpIn;
+				animation-play-state: running;
+			}
+		}
+
+		&.slide-up-enter.slide-up-enter-active{
+			&-placement-topLeft{
+				animation-name: SlideDownIn;
+				animation-play-state: running;
+			}
+		}
+		&.slide-up-appear.slide-up-appear-active {
+			&-placement-topLeft{
+				animation-name: SlideDownIn;
+				animation-play-state: running;
+			}
+		}
+
+		&.slide-up-leave.slide-up-leave-active {
+			&-placement-bottomLeft{
+				animation-name: SlideUpOut;
+				animation-play-state: running;
+			}
+		}
+
+		&.slide-up-leave.slide-up-leave-active {
+			&-placement-topLeft{
+				animation-name: SlideDownOut;
+				animation-play-state: running;
+			}
+		}
+	}
+	&-menu {
+		display: inline-block;
+		width: 100px;
+		height: 192px;
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		border-right: 1px solid #e9e9e9;
+		overflow: auto;
+		vertical-align: top;
+		&:last-child {
+			border-right: 0;
+		}
+	}
+	&-menu-item {
+		height: 32px;
+		line-height: 32px;
+		padding: 0 8px 0 20px;
+		cursor: pointer;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		transition: all 0.3s ease;
+		position: relative;
+		&:hover {
+			background-color: $hover-bg-color-base;
+		}
+		&-disabled {
+			cursor: not-allowed;
+			color: #909090;
+		&:hover {
+			background: transparent;
+		}
+		}
+		&-loading:after {
+			position: absolute;
+			right: 12px;
+			content: 'loading';
+			color: #aaa;
+			font-style: italic;
+		}
+		&-active {
+			background-color: $selected-bg-color-base;
+			color: $brand-primary;
+		}
+		&-expand {
+			position: relative;
+			&-icon {
+				.uf{
+					font-size: 14px;
+					color: #999;
+				}
+				position: absolute;
+				right: 8px;
+				line-height: 32px;
+			}
+		}
+	}
+	&-input-group{
+		.u-form-control{
+			font-size: 12px;
+			color: #212121;
+			&:not(.u-form-control[disabled]):hover{
+				border-color: #66afe9;
+			}
+			&::-webkit-input-placeholder {
+				font-size: 12px;
+			}
+			&:-moz-placeholder {
+				font-size: 12px;
+			}
+			&::-moz-placeholder{
+				font-size: 12px;
+			}
+			&:-ms-input-placeholder{
+				font-size: 12px;
+			}
+		}
+		.u-form-control[disabled] + .u-input-group-btn > .uf{
+			color: #c1c7d0;
+		}
+		.u-input-group-btn{
+			.uf{
+				color: #505F79;
+				font-size: 14px;
+				&.uf-close-c{
+					cursor: pointer;
+					color: #C0C4CC;
+				}
+			}
+		}
+	}
+}
+.u-input-group.simple {
+	.u-form-control.sm + .u-input-group-btn{
+		top: 2px;
+	}
+	.u-form-control.lg + .u-input-group-btn{
+		top: 10px;
+	}
+}
+@keyframes SlideUpIn {
+	0% {
+	  opacity: 0;
+	  transform-origin: 0% 0%;
+	  transform: scaleY(.8);
+	}
+	100% {
+	  opacity: 1;
+	  transform-origin: 0% 0%;
+	  transform: scaleY(1);
+	}
+  }
+  @keyframes SlideUpOut {
+	0% {
+	  opacity: 1;
+	  transform-origin: 0% 0%;
+	  transform: scaleY(1);
+	}
+	100% {
+	  opacity: 0;
+	  transform-origin: 0% 0%;
+	  transform: scaleY(0.8);
+	}
+  }
+  
+  @keyframes SlideDownIn {
+	0% {
+	  opacity: 0;
+	  transform-origin: 0% 100%;
+	  transform: scaleY(0.8);
+	}
+	100% {
+	  opacity: 1;
+	  transform-origin: 0% 100%;
+	  transform: scaleY(1);
+	}
+  }
+  @keyframes SlideDownOut {
+	0% {
+	  opacity: 1;
+	  transform-origin: 0% 100%;
+	  transform: scaleY(1);
+	}
+	100% {
+	  opacity: 0;
+	  transform-origin: 0% 100%;
+	  transform: scaleY(0.8);
+	}
+  }

@@ -1,0 +1,85 @@
+/* FormGroup */
+/*  Navlayout  */
+/* FormGroup */
+/*  Navlayout  */
+.u-input-group-addon {
+  padding: 6px 12px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1;
+  color: #505F79;
+  text-align: center;
+  background-color: #eee;
+  border: 1px solid rgb(165, 173, 186);
+  border-radius: 3px;
+  width: 1%;
+  white-space: nowrap;
+  vertical-align: middle;
+  display: table-cell; }
+  .u-input-group-addon:last-child {
+    border-left: 0;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0; }
+  .u-input-group-addon:first-child {
+    border-right: 0;
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0; }
+
+/* FormGroup */
+/*  Navlayout  */
+.u-input-group-btn {
+  font-size: 0;
+  white-space: nowrap;
+  position: relative;
+  width: 1%;
+  vertical-align: middle;
+  display: table-cell; }
+  .u-input-group-btn .u-button {
+    position: relative; }
+
+.u-input-group-btn:first-child > button, .u-input-group-btn:first-child > .btn-group > button, .u-input-group-btn:first-child > .dropdown-toggle, .u-input-group-btn:last-child > .btn-group:not(:last-child) > button, .u-input-group-btn:last-child > button:not(:last-child):not(.dropdown-toggle) {
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0; }
+
+.u-input-group-btn:first-child > .btn-group:not(:first-child) > button, .u-input-group-btn:first-child > button:not(:first-child), .u-input-group-btn:last-child > button, .u-input-group-btn:last-child > .btn-group > button, .u-input-group-btn:last-child > .dropdown-toggle {
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0; }
+
+.u-input-group-btn:last-child > button, .u-input-group-btn:last-child > .btn-group {
+  margin-left: -1px; }
+
+.u-input-group-btn:first-child > button, .u-input-group-btn:first-child > .btn-group {
+  margin-right: -1px; }
+
+.u-input-group {
+  position: relative;
+  display: table;
+  border-collapse: separate; }
+  .u-input-group .u-input-group-btn .u-button {
+    border: 1px solid rgb(165, 173, 186);
+    height: 32px;
+    line-height: 1.3; }
+  .u-input-group .u-form-control {
+    position: relative;
+    float: left;
+    width: 100%;
+    margin-bottom: 0;
+    display: table-cell; }
+    .u-input-group .u-form-control:first-child {
+      border-bottom-right-radius: 0;
+      border-top-right-radius: 0; }
+    .u-input-group .u-form-control:last-child {
+      border-bottom-left-radius: 0;
+      border-top-left-radius: 0; }
+    .u-input-group .u-form-control:not(:first-child):not(:last-child) {
+      border-radius: 0; }
+  .u-input-group.simple .u-form-control {
+    border-radius: 3px; }
+  .u-input-group.simple .u-input-group-btn {
+    position: absolute;
+    top: 4px;
+    bottom: 0;
+    right: 6px;
+    min-width: 20px; }
+  .u-input-group.simple .u-form-control:not(:last-child) {
+    padding-right: 23px; }

@@ -1,0 +1,29 @@
+@import "../node_modules/tinper-bee-core/scss/minxin-variables";
+@import "../node_modules/tinper-bee-core/scss/minxin-mixins";
+.u-input-group-btn {
+    font-size: 0;
+    white-space: nowrap;
+    position: relative;
+    width: 1%;
+    vertical-align: middle;
+    display: table-cell;
+    .u-button{
+    	position: relative;
+    }
+}
+
+.u-input-group-btn:first-child>button, .u-input-group-btn:first-child>.btn-group>button, .u-input-group-btn:first-child>.dropdown-toggle, .u-input-group-btn:last-child>.btn-group:not(:last-child)>button, .u-input-group-btn:last-child>button:not(:last-child):not(.dropdown-toggle) {
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.u-input-group-btn:first-child>.btn-group:not(:first-child)>button, .u-input-group-btn:first-child>button:not(:first-child), .u-input-group-btn:last-child>button, .u-input-group-btn:last-child>.btn-group>button, .u-input-group-btn:last-child>.dropdown-toggle{
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+}
+.u-input-group-btn:last-child>button, .u-input-group-btn:last-child>.btn-group {
+    margin-left: -1px;
+}
+.u-input-group-btn:first-child>button, .u-input-group-btn:first-child>.btn-group {
+    margin-right: -1px;
+}

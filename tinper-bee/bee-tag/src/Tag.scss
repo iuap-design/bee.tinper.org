@@ -1,0 +1,177 @@
+@import "../node_modules/tinper-bee-core/scss/minxin-variables";
+@import "../node_modules/tinper-bee-core/scss/minxin-mixins";
+
+$tag-line-height: 20px;
+$tag-padding-x: 8px;
+$tag-font-size: 12px;
+$tag-font-weight: 400;
+$tag-border-radius: 3px;
+$tag-max-width: 150px; 
+$tag-default-text-color: white;
+
+$tag-border-width: 1px; 
+$tag-border-style: solid;
+$tag-border-color: #A5ADBA;
+$tag-border-bg-color: #F7F9FB;
+
+
+$tag-text-color:#FFFFFF;
+$tag-dark-color: $brand-dark;
+$tag-primary-color: $brand-primary;
+$tag-success-color: $brand-success;
+$tag-warning-color: $brand-warning;
+$tag-danger-color: $brand-danger;
+$tag-info-color: $brand-info;
+
+$tag-dark-background-color:#DADEE4;;
+$tag-primary-background-color:#f0c8c8;
+$tag-success-background-color:#F1F8E9;
+$tag-warning-background-color:#FFF8E1;
+$tag-danger-background-color:#FFEBEE;
+$tag-info-background-color:#E0F7FA;
+
+//标签颜色
+@mixin tag-styles-variant($text-color,$bg-color) {
+    color: $text-color;
+    background-color: $bg-color;
+    border:1px  $bg-color solid;
+}
+
+@mixin border-tag-styles-variant($text-color,$bg-color) {  
+    color: $text-color;
+    background-color: $bg-color;
+    border:1px  $text-color solid;
+} 
+
+.u-tag{
+    position:relative;
+    display:inline-block;
+    cursor:default;
+    text-align:center;
+    line-height: $tag-line-height;
+    vertical-align: middle;
+    max-width: $tag-max-width;
+    overflow: hidden;
+    outline: none;
+    cursor: default;
+    text-decoration: none;
+    text-align: center;
+    padding-top:0;
+    padding-left: $tag-padding-x;
+    padding-right: $tag-padding-x;
+    border-radius: $tag-border-radius;
+    font-weight:400;
+    font-size:12px;
+    margin-right:23px;
+    &.u-tag[disabled]{
+      cursor: not-allowed;
+      background-color: #EBECF0;
+      color: #909090;
+      &:hover,&:active,&:focus{
+      background-color: #EBECF0;
+      color: #909090;
+      }
+    }
+}
+
+// 边框
+.u-tag-border{
+    color: $tag-default-text-color;
+    border: $tag-border-width $tag-border-style $tag-border-color;
+}
+
+// 默认标签
+.u-tag-dark {
+    color: #FFFFFF;
+    background-color: #505F79;
+}
+
+.u-tag-light {
+    color: #212121;
+    background-color:#F7F9FB;;
+    border: 1px solid #A5ADBA;
+}
+
+// 语义色标签
+.u-tag.u-tag-success{
+    @include tag-styles-variant($tag-text-color,$tag-success-color);
+}
+.u-tag.u-tag-warning{
+    @include tag-styles-variant($tag-text-color,$tag-warning-color);
+}
+.u-tag.u-tag-danger{
+    @include tag-styles-variant($tag-text-color,$tag-danger-color);
+}
+.u-tag.u-tag-info{
+    @include tag-styles-variant($tag-text-color,$tag-info-color);
+}
+// 禁用标签
+.u-tag-disabled, .u-tag[disabled]{
+    cursor: not-allowed;
+    background-color: #EBECF0;
+    color: #909090;
+}
+
+// 可删除标签
+.u-tag-delete{
+    color: #212121;
+    border: 1px solid #A5ADBA;
+    background-color: #F7F9FB;
+    cursor:pointer;
+    .uf{
+        font-size:12px;
+        padding-right:0;
+    }
+    .uf:hover{
+        color: #E60012;
+    }
+}
+
+
+// 可选标签
+.u-tag-select{
+    background: #FFFFFF;
+    color:#212121;
+    cursor: pointer;
+    &:hover{
+        background: #EBECF0;
+    }
+}
+
+.u-tag-selected{
+    background: #505F79;
+    color: white;
+    cursor: pointer;
+    &:hover{
+        background: #505F79;
+        color: white;
+    }
+}
+
+// 多彩标签
+.u-tag.u-tag-success{
+    @include tag-styles-variant($tag-text-color,$tag-success-color);
+}
+.u-tag.u-tag-warning{
+    @include tag-styles-variant($tag-text-color,$tag-warning-color);
+}
+.u-tag.u-tag-danger{
+    @include tag-styles-variant($tag-text-color,$tag-danger-color);
+}
+.u-tag.u-tag-info{
+    @include tag-styles-variant($tag-text-color,$tag-info-color);
+}
+
+// 多彩标签带边框
+.u-tag-border.u-tag-success{
+    @include border-tag-styles-variant($tag-success-color,$tag-success-background-color);
+}
+.u-tag-border.u-tag-warning{
+    @include border-tag-styles-variant($tag-warning-color,$tag-warning-background-color);
+}
+.u-tag-border.u-tag-danger{
+    @include border-tag-styles-variant($tag-danger-color,$tag-danger-background-color);
+}
+.u-tag-border.u-tag-info{
+    @include border-tag-styles-variant($tag-info-color,$tag-info-background-color);
+}

@@ -1,0 +1,75 @@
+@import "../node_modules/tinper-bee-core/scss/minxin-variables";
+@import "../node_modules/tinper-bee-core/scss/minxin-mixins";
+.u-form-item{
+    padding: 4px 10px;
+    min-height: 52px;
+    &.flex{
+        display: flex;
+    }
+    .u-label{
+        display: inline-block;
+        text-align: right;
+        padding-right: 12px;
+        color: $font-color-base;
+        font-size: 12px;
+        min-width: 96px;
+        &.line-height-32{
+            line-height: 32px;
+        }
+    }
+    .mast{
+        color: #f44336;
+        font-size: 12px;
+        padding: 0;
+    }
+    .error{
+        color: #f44336;
+        font-size: 12px;
+        padding-left: 12px;
+        &.line-height-32{
+            line-height: 32px;
+        }
+        .uf{
+            font-size: 12px;
+            padding: 0;
+            margin-right: 4px;
+        }
+    }
+    .u-form-control,.u-input-group .u-form-control,.u-select,.u-checkbox-group{
+        display: inline-block;
+        width: auto;
+        // min-width: 210px;
+    }
+    .datepicker-container,.calendar-picker{
+        display: inline-block;
+    }
+    textarea{
+        min-height: 80px;
+    }
+    .u-col-1, .u-col-2, .u-col-3, .u-col-4, .u-col-5, .u-col-6, .u-col-7, .u-col-8, .u-col-9, .u-col-10, .u-col-11, .u-col-12, .u-col-lg-1, .u-col-lg-2, .u-col-lg-3, .u-col-lg-4, .u-col-lg-5, .u-col-lg-6, .u-col-lg-7, .u-col-lg-8, .u-col-lg-9, .u-col-lg-10, .u-col-lg-11, .u-col-lg-12, .u-col-md-1, .u-col-md-2, .u-col-md-3, .u-col-md-4, .u-col-md-5, .u-col-md-6, .u-col-md-7, .u-col-md-8, .u-col-md-9, .u-col-md-10, .u-col-md-11, .u-col-md-12, .u-col-sm-1, .u-col-sm-2, .u-col-sm-3, .u-col-sm-4, .u-col-sm-5, .u-col-sm-6, .u-col-sm-7, .u-col-sm-8, .u-col-sm-9, .u-col-sm-10, .u-col-sm-11, .u-col-sm-12, .u-col-xs-1, .u-col-xs-2, .u-col-xs-3, .u-col-xs-4, .u-col-xs-5, .u-col-xs-6, .u-col-xs-7, .u-col-xs-8, .u-col-xs-9, .u-col-xs-10, .u-col-xs-11, .u-col-xs-12{
+        padding: 0;
+        .u-label{
+            width: 100%;
+        }
+        .u-form-control,.u-input-group .u-form-control,.u-select,.u-checkbox-group{
+            width: 100%;
+        }
+    }
+}
+.u-form-control{
+    &::-webkit-input-placeholder {
+        font-size: 12px;
+    }
+    &:-moz-placeholder {
+        font-size: 12px;
+    }
+    &::-moz-placeholder{
+        font-size: 12px;
+    }
+    &:-ms-input-placeholder{
+        font-size: 12px;
+    }
+}
+.text-algin-center{
+    text-align: center;
+}

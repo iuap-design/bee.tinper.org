@@ -1,0 +1,98 @@
+@import "../node_modules/tinper-bee-core/scss/minxin-variables";
+@import "../node_modules/tinper-bee-core/scss/minxin-mixins";
+
+// .u-drag-list{
+//   background: $dnd-list-background;
+//   padding: $dnd-list-padding;
+// }
+// .u-list-dragging{
+//   background: $dnd-list-dragging-background;
+// }
+// .u-drag-item{
+//   user-select: none;
+//   padding: $dnd-item-padding;
+//   color: $dnd-item-color;
+//   margin: $dnd-item-margin;
+//   background: $dnd-item-background;
+// }
+// .u-dragging{
+//   background: $dnd-item-dragging-background;
+// }
+
+// drop
+.u-drop{
+  background:rgba(247,249,251,1);
+  border:1px solid rgba(235,236,240,1);
+  padding: 12px;
+  color: #212121;
+}
+
+// dragover
+// .u-droping{
+//   background: $dnd-list-dragging-background;
+// }
+
+.u-drop.u-drop-horizontal{
+  display: flex;
+  width: 100%;
+}
+
+.u-droping-horizontal{
+  // width: 72px;
+  // height: 72px;
+  // line-height: 72px;
+}
+
+// drag
+.u-drag{
+  user-select: none;
+  margin: $dnd-item-margin;
+  min-width: 100px;
+  background:rgba(255,255,255,1);
+  border-radius:3px;
+  border:1px solid rgba(165,173,186,1);
+  padding: 6px 0;
+  font-size: 12px;
+  &:hover{
+    background:rgba(235,236,240,1);
+    border:1px solid rgba(165,173,186,1);
+  }
+  &:focus{
+    outline: none;
+  }
+}
+/*拖动状态*/
+.u-droping{
+  .u-draging{
+    background:rgba(235,236,240,1);
+    box-shadow:0px 2px 4px 0px rgba(31,37,52,0.3);
+    opacity:0.8;
+  }
+}
+.u-draging{
+  background:rgba(235,236,240,1);
+  box-shadow:0px 2px 4px 0px rgba(31,37,52,0.3);
+  opacity:0.8;
+}
+
+// drag 横向
+.u-drag.u-drag-horizontal{
+  display: inline-block;
+  width: 72px;
+  height: 72px;
+  line-height: 72px;
+  padding: 0;
+}
+
+// draging 横向
+.u-draging-horizontal{
+
+}
+
+// between
+.u-drag-between{
+  display: flex;
+}
+.u-drag-between-horizontal{
+  flex-wrap: wrap;
+}

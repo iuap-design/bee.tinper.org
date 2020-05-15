@@ -1,0 +1,20 @@
+.demo8{
+    .u-tree{
+        max-width: 220px;
+        display: inline-block;
+        vertical-align: top;
+        width: 220px;
+        max-height: 525px;
+        box-sizing: border-box;
+        text-align: left;
+    }
+    .u-transfer{
+        display: inline-block;
+        vertical-align: top;
+        width: calc(100% - 235px);
+        max-height: 525px;
+        box-sizing: border-box;
+        text-align: left;
+        overflow: auto;
+    }
+}

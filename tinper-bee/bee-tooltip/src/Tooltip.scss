@@ -1,0 +1,311 @@
+@import "../node_modules/tinper-bee-core/scss/minxin-variables";
+@import "../node_modules/tinper-bee-core/scss/minxin-mixins";
+
+$tooltip-bg: #42526E;
+$tooltip-arrow-color: #42526E;
+$tooltip-distance: 5px;
+$tooltip-arrow-width: 5px;
+.u-tooltip{
+    position: absolute;
+    z-index: 1070;
+    display: block;
+    font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: normal;
+    line-break: auto;
+    line-height: 1.42857143;
+    text-align: left;
+    text-decoration: none;
+    text-shadow: none;
+    text-transform: none;
+    white-space: normal;
+    word-break: normal;
+    word-spacing: normal;
+    word-wrap: normal;
+    font-size: 12px;
+    opacity: 0;
+    max-width: $tooltip-max-width;
+    &.in{
+    	opacity: 1 !important;
+    }
+    .tooltip-arrow{
+        position: absolute;
+        display: block;
+        width: 0;
+        height: 0;
+        border-color: transparent;
+        border-style: solid;
+    }
+    // Wrapper for the tooltip content
+    .tooltip-inner{
+	    padding: 3px 8px;
+	    color: #fff;
+	    background-color: #42526E;
+        border-radius: $border-radius;
+        word-wrap:break-word;
+    }
+    &.top,
+    &.topLeft,
+    &.topRight {
+        padding: $tooltip-distance 0;
+    }
+    &.right,
+    &.rightTop,
+    &.rightBottom {
+        padding: 0 $tooltip-distance;
+    }
+    &.bottom,
+    &.bottomLeft,
+    &.bottomRight {
+        padding: $tooltip-distance 0;
+    }
+    &.left,
+    &.leftTop,
+    &.leftBottom {
+        padding: 0 $tooltip-distance;
+    }
+
+    &.top .tooltip-arrow,
+    &.topLeft .tooltip-arrow,
+    &.topRight .tooltip-arrow {
+      bottom: $tooltip-distance - $tooltip-arrow-width;
+      border-width: $tooltip-arrow-width $tooltip-arrow-width 0;
+      border-top-color: $tooltip-arrow-color;
+    }
+  
+    &.top .tooltip-arrow {
+      left: 50%;
+      margin-left: -$tooltip-arrow-width;
+    }
+  
+    &.topLeft .tooltip-arrow {
+      left: 16px;
+    }
+  
+    &.topRight .tooltip-arrow {
+      right: 16px;
+    }
+  
+    &.right .tooltip-arrow,
+    &.rightTop .tooltip-arrow,
+    &.rightBottom .tooltip-arrow {
+      left: $tooltip-distance - $tooltip-arrow-width;
+      border-width: $tooltip-arrow-width $tooltip-arrow-width $tooltip-arrow-width 0;
+      border-right-color: $tooltip-arrow-color;
+    }
+  
+    &.right .tooltip-arrow {
+      top: 50%;
+      margin-top: -$tooltip-arrow-width;
+    }
+  
+    &.rightTop .tooltip-arrow {
+      top: 8px;
+    }
+  
+    &.rightBottom .tooltip-arrow {
+      bottom: 8px;
+    }
+  
+    &.left .tooltip-arrow,
+    &.leftTop .tooltip-arrow,
+    &.leftBottom .tooltip-arrow {
+      right: $tooltip-distance - $tooltip-arrow-width;
+      border-width: $tooltip-arrow-width 0 $tooltip-arrow-width $tooltip-arrow-width;
+      border-left-color: $tooltip-arrow-color;
+    }
+  
+    &.left .tooltip-arrow {
+      top: 50%;
+      margin-top: -$tooltip-arrow-width;
+    }
+  
+    &.leftTop .tooltip-arrow {
+      top: 8px;
+    }
+  
+    &.leftBottom .tooltip-arrow {
+      bottom: 8px;
+    }
+  
+    &.bottom .tooltip-arrow,
+    &.bottomLeft .tooltip-arrow,
+    &.bottomRight .tooltip-arrow {
+      top: $tooltip-distance - $tooltip-arrow-width;
+      border-width: 0 $tooltip-arrow-width $tooltip-arrow-width;
+      border-bottom-color: $tooltip-arrow-color;
+    }
+  
+    &.bottom .tooltip-arrow {
+      left: 50%;
+      margin-left: -$tooltip-arrow-width;
+    }
+  
+    &.bottomLeft .tooltip-arrow {
+      left: 16px;
+    }
+  
+    &.bottomRight .tooltip-arrow {
+      right: 16px;
+    }
+
+    &.inverse-arrow.right, &.inverse-arrow.rightTop, &.inverse-arrow.rightBottom{
+        margin-right: -6px;
+        .tooltip-arrow{
+            // top: 50%;
+            left: auto;
+		    right: 0;
+		    // margin-top: -5px;
+		    border-width: $tooltip-arrow-width 0 $tooltip-arrow-width $tooltip-arrow-width;
+		    border-left-color: $tooltip-arrow-color;
+        }
+    }
+    &.inverse-arrow.left, &.inverse-arrow.leftTop, &.inverse-arrow.leftBottom{
+        margin-left: -6px;
+        .tooltip-arrow{
+            // top: 50%;
+		    left: 0;
+		    // margin-top: -5px;
+		    border-width: $tooltip-arrow-width $tooltip-arrow-width $tooltip-arrow-width 0;
+		    border-right-color: $tooltip-arrow-color;
+        }
+    }
+    &.inverse-arrow.top, &.inverse-arrow.topLeft, &.inverse-arrow.topRight{
+        margin-top: -6px;
+        .tooltip-arrow{
+            top: 0;
+		    // left: 50%;
+		    // margin-left: -5px;
+		    border-width: 0 $tooltip-arrow-width $tooltip-arrow-width;
+		    border-bottom-color: $tooltip-arrow-color;
+        }
+    }
+    &.inverse-arrow.bottom{
+        margin-bottom: -6px;
+        .tooltip-arrow{
+            top: auto;
+            bottom: 0;
+            // left: 50%;
+            // margin-left: -5px;
+            border-width: $tooltip-arrow-width $tooltip-arrow-width 0;
+            border-top-color: $tooltip-arrow-color;
+        }
+    }
+    // &.inverse-arrow.inverse{
+    //     .tooltip-arrow:after{
+    //         border-color:#fff;
+    //     }
+    // }
+    &.inverse.bottom, &.inverse.bottomLeft, &.inverse.bottomRight{
+        .tooltip-arrow::after{
+            top:1px;
+            margin-left: -5px;
+            border-top-width:0;
+            border-bottom-color:#fff;
+        }
+        .tooltip-arrow {
+            border-bottom-color:$border-color-base;
+        }
+    }
+    &.inverse-arrow.inverse.top, &.inverse-arrow.inverse.topLeft, &.inverse-arrow.inverse.topRight {
+        .tooltip-arrow::after{
+            top:1px;
+            margin-left: -5px;
+            border-top-width:0;
+            border-bottom-color:#fff;
+            border-bottom-width: inherit;
+        }
+        .tooltip-arrow {
+            border-bottom-color:$border-color-base;
+        }
+    }
+    &.inverse.left, &.inverse.leftTop, &.inverse.leftBottom{
+        .tooltip-arrow::after{
+            border-right-width: 0;
+            top: -5px;
+            margin-left: -6px;
+            border-left-color: #fff;
+        }
+        .tooltip-arrow {
+            border-left-color:$border-color-base;
+        }
+    }
+    &.inverse-arrow.inverse.right, &.inverse-arrow.inverse.rightTop, &.inverse-arrow.inverse.rightBottom{
+        .tooltip-arrow::after{
+            border-right-width: 0;
+            top: -5px;
+            margin-left: -6px;
+            border-left-color: #fff;
+            border-left-width: inherit;
+        }
+        .tooltip-arrow {
+            border-left-color:$border-color-base;
+        }
+    }
+    &.inverse.right, &.inverse.rightTop, &.inverse.rightBottom{
+        .tooltip-arrow::after{
+            border-left-width: 0;
+            top: -5px;
+            margin-left: 1px;
+            border-right-color: #fff;
+        }
+        .tooltip-arrow {
+            border-right-color:$border-color-base;
+        }
+    }
+    &.inverse-arrow.inverse.left, &.inverse-arrow.inverse.leftTop, &.inverse-arrow.inverse.leftBottom{
+        .tooltip-arrow::after{
+            border-left-width: 0;
+            top: -5px;
+            margin-left: 1px;
+            border-right-color: #fff;
+            border-right-width: inherit;
+        }
+        .tooltip-arrow {
+            border-right-color:$border-color-base;
+        }
+    }
+    &.inverse.top, &.inverse.topLeft, &.inverse.topRight{
+        .tooltip-arrow::after{
+            top: -6px;
+            margin-left: -5px;
+            border-bottom-width: 0;
+            border-bottom-color: #d9d9d9;
+            border-top-color: #fff;
+        }
+        .tooltip-arrow {
+            border-top-color:$border-color-base;
+        }
+    }
+    &.inverse-arrow.inverse.bottom, &.inverse-arrow.inverse.bottomLeft, &.inverse-arrow.inverse.bottomRight {
+        .tooltip-arrow::after{
+            top: -6px;
+            margin-left: -5px;
+            border-bottom-width: 0;
+            border-bottom-color: #d9d9d9;
+            border-top-color: #fff;
+            border-top-width: inherit;
+        }
+        .tooltip-arrow {
+            border-top-color:$border-color-base;
+        }
+    }
+    &.inverse {
+        .tooltip-inner{
+            background-color: #fff;
+            color: $tooltip-inverse-color;
+            border: 1px solid $border-color-base;
+        }
+
+        .tooltip-arrow::after{
+            position:absolute;
+            display:block;
+            width:0;
+            height:0;
+            border: 5px solid transparent;
+            content:" ";
+        }
+
+    }
+}

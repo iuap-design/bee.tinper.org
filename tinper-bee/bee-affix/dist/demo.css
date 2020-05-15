@@ -1,0 +1,27 @@
+/* FormGroup */
+/*  Navlayout  */
+
+@charset "UTF-8";
+.stripes {
+  width: 500px;
+  height: 400px !important;
+  margin: 10px;
+  background-size: 16px 16px;
+  /* 控制条纹的大小 */
+  box-shadow: 1px 1px 8px #ccc; }
+
+.checkered {
+  background-image: linear-gradient(45deg, #ccc 25%, transparent 25%, transparent), linear-gradient(-45deg, #ccc 25%, transparent 25%, transparent), linear-gradient(45deg, transparent 75%, #ccc 75%), linear-gradient(-45deg, transparent 75%, #ccc 75%); }
+
+
+.demo3 {
+  height: 400px; }
+  .demo3 .affix-container {
+    width: 200px;
+    margin-left: 100px;
+    margin-top: 300px; }
+
+.navbar-container {
+  margin: 10px 15px; }
+
+/*# sourceMappingURL=demo.css.map */

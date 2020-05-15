@@ -1,0 +1,15 @@
+.demo-tooltip {
+  &-box {
+    width: 500px;
+    height: 200px;
+    line-height: 100px;
+    overflow: auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+
+  &-wrapper {
+    width: 900px;
+    position: relative;
+  }
+}

@@ -1,0 +1,13 @@
+.demo3{
+    .drawer-body{
+        min-width: 600px;
+        text-align: center;
+        padding-top: 40px;
+        .u-form-item .error{
+            display: block;
+        }
+        .u-form-item .u-checkbox-group, .u-form-item .u-form-control, .u-form-item .u-input-group .u-form-control, .u-form-item .u-select{
+            min-width: 60%;
+        }
+    }
+}

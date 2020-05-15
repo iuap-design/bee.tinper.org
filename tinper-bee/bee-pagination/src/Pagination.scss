@@ -1,0 +1,363 @@
+@import "../node_modules/tinper-bee-core/scss/minxin-variables";
+@import "../node_modules/tinper-bee-core/scss/minxin-mixins";
+@import "../node_modules/bee-icon/src/Icon";
+@import "../node_modules/bee-select/src/Select.scss";
+// @import "../node_modules/bee-button/src/Button";
+
+$border-radius-base:3px;
+$pagination-lg-size:40px;
+$pagination-sm-size:26px;
+.u-pagination {
+  font-size: 14px;
+  position: relative;
+  &-list {
+    float: left;
+    margin: 5px;
+    &:after {
+      clear: both;
+      display: table;
+      content: '';
+    }
+    & > li.iconBtn > a{
+      padding: 5px 9px;
+      line-height: 1.57142857;
+    }
+   
+    & > li > a, & > li > span {
+      display: inline-block;
+      text-decoration: none;
+      border-top: 1px solid $border-color-base;
+      border-bottom: 1px solid $border-color-base;
+      border-left: 1px solid $border-color-base;
+      background-color: transparent;
+      text-align: center;
+      color: $pag-color;
+      padding: 5px 12px;
+      line-height: 1.57142857;
+    }
+    &.u-pagination-no-border > li > a, & > li > span{
+        border-radius: $border-radius-base;
+    }
+    & > li:first-child > a, & > li:first-child > span {
+      margin-left: 0;
+      border-top-left-radius: 4px;
+      border-bottom-left-radius: 4px;
+    }
+    & > li:last-child > a, & > li:last-child > span {
+      border-top-right-radius: 4px;
+      border-bottom-right-radius: 4px;
+    }
+    & > li[role="next"] > a {
+      border-top-right-radius: 4px;
+      border-bottom-right-radius: 4px;
+      border-right: 1px solid $border-color-base;
+    }
+    & > li {
+      float: left;
+      list-style-type: none;
+      > a:hover, > span:hover, > a:focus, > span:focus {
+        color: $pag-hover-color;
+        background-color: $pag-hover-bg-color;
+        border-color: $border-color-base;
+        cursor: pointer;
+      }
+      > a > i {
+        color: #7a869a;
+      }
+    }
+    & > .active {
+      > a, > span, > a:hover, > span:hover, > a:focus, > span:focus {
+        z-index: 2;
+        color: $pag-active-color;
+        cursor: default;
+        background-color: $pag-active-bg-color;
+        border-color: $pag-active-border-color;
+      }
+    }
+    & > .disabled {
+      > a, > span, > a:hover, > span:hover, > a:focus, > span:focus {
+        color: $pag-disabled-color;
+        cursor: not-allowed;
+        background-color: transparent;
+        border-color: $border-color-base;
+      }
+      > a > i {
+        color: #C1C7D0;
+      }
+    }
+    & > li[role="gap"] > a {
+      background-color: transparent;
+      border-bottom: 0 solid $border-color-base;
+      border-top: 0 solid $border-color-base;
+      padding: 7px 11px;
+      line-height: 1.57142857;
+    }
+    & > li[role="gap"] {
+      > a:hover, > a:focus {
+        background-color: transparent;
+      }
+    }
+    input {
+      box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+    }
+    li, a {
+      box-sizing: content-box;
+    }
+    i.uf, i.fa {
+      padding: 0px;
+      font-size: 14px;
+    }
+    & > li:last-child > a, & > li:last-child > span {
+      border-right: 1px solid $border-color-base;
+    }
+  }
+
+  .temp-main {
+    width: 100px;
+    height: 100px;
+    border: 1px solid #000;
+  }
+  .enhanced_pagination {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: nowrap;
+    min-width: 700px;
+    overflow: auto;
+    -webkit-box-pack: center;
+    justify-content: center;
+  }
+  .enhanced_pagination .u_float_pagination {
+    float: left;
+  }
+  .data_per_select {
+    margin: 5px;
+    float: left;
+    min-width: 120px;
+    &>span{
+      display: inline-block;
+      line-height: 32px;
+      float: left;
+    }
+    .u-select {
+      width: 50px;
+      margin: 0 8px;
+      height: 32px;
+      float: left;
+      .u-select-selection {
+        height: 32px;
+        .u-select-selection-rendered {
+          line-height: 32px;
+        }
+      }
+    }
+  }
+  .data_select {
+    outline: none;
+    -webkit-appearance: none;
+    height: 36px;
+    background: #fff;;
+    border-color: #d7d7d7;
+    border-radius: 4px;
+    line-height: 28px;
+    padding: 0 15px;
+    text-align: center;
+    font-size: 14px;
+    margin: 0 6px;
+  }
+  .page_jump {
+    float: left;
+    margin: 5px;
+    &>span{
+      display: inline-block;
+      line-height: 32px;
+      float: left;
+    }
+  }
+  .page_jump_value {
+    outline: none;
+    -webkit-appearance: none;
+    background: #fff;
+    border-radius: $border-radius-base;
+    width: 50px;
+    text-align: center;
+    border: 1px solid $border-color-base;
+
+  }
+  .page_jump_btn, 
+  .page_jump_value {
+    margin: 0 8px;
+    padding: 0;
+    height: 32px;
+    line-height: 30px;
+    box-sizing: border-box;
+    float: left;
+  }
+  &-total{
+    float: left;
+    height: 32px;
+    line-height: 32px;
+    margin: 5px;
+    span {
+      padding:0 5px;
+    }
+  }
+  &.u-pagination-disabled{
+    .u-pagination-disabled-mask{
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 46px;
+      background: rgba(2655,255,255,0.6);
+      z-index: 2;
+      cursor: not-allowed;
+    }
+  }
+}
+
+.pagination-state {
+  float: left;
+  height: 34px;
+  line-height: 34px;
+  text-align: center;
+  font-size: 12px;
+  color: $pag-hover-color;
+  margin-left: 10px;
+  & > .page_j {
+    margin: 0 4px;
+    width: 40px;
+    border: 1px solid #ddd;
+    padding-left: 2px;
+    height: 35px;
+    line-height: 35px;
+    color: #333333;
+  }
+  & > .page_z {
+    margin: 0 4px;
+    width: 50px;
+    border: 1px solid #ddd;
+    padding-left: 2px;
+    height: 35px;
+    line-height: 35px;
+    color: #333333;
+  }
+  & > .pagination-jump {
+    margin: 0 10px;
+    width: 50px;
+    line-height: 30px;
+    border: 1px solid #ddd;
+    background-color: white;
+    font-size: 14px;
+    cursor: pointer;
+    color: #333333;
+    height: 35px;
+  }
+  & > .pagination-jump:hover {
+    background-color: #eee;
+  }
+}
+
+//Size Modifier
+.u-pagination-lg {
+  @include pagination-size( $pagination-lg-padding-vertical, 
+                            $pagination-lg-padding-horizontal, 
+                            $pagination-lg-font-size, 
+                            $line-height-large, 
+                            $border-radius-large,
+                            $pagination-lg-size);
+}
+
+.u-pagination-sm {
+  @include pagination-size( $pagination-small-padding-vertical, 
+                            $pagination-small-padding-horizontal, 
+                            $pagination-small-font-size, 
+                            $line-height-small, 
+                            $border-radius-small,
+                            $pagination-sm-size);
+}
+.u-pagination-lg {
+  & > li.iconBtn > a {
+    padding: 7.5px 12px;
+  }
+  & + .u-pagination-total + .data_per_select {
+    .u-select{
+      height: $pagination-lg-size;
+      .u-select-selection{
+        height: $pagination-lg-size;
+        .u-select-selection-rendered{
+          line-height: $pagination-lg-size;
+        }
+      }
+    }
+    & + .page_jump > .page_jump_value{
+      height: $pagination-lg-size;
+      line-height: $pagination-lg-size;
+    }
+  } 
+}
+.u-pagination-sm {
+  & > li.iconBtn > a {
+    padding: 4px 7px;
+  }
+  & + .u-pagination-total + .data_per_select{
+    .u-select{
+      height: $pagination-sm-size;
+      .u-select-selection{
+        height: $pagination-sm-size;
+        .u-select-selection-rendered{
+          line-height: $pagination-sm-size;
+        }
+      }
+    }
+    & + .page_jump > .page_jump_value{
+      height: $pagination-sm-size;
+      line-height: $pagination-sm-size;
+    }
+  }
+}
+//无边框
+.u-pagination-no-border:not(.u-pagination-gap){
+  > li > a, > li[role="next"] > a {
+    border: none;
+  }
+  > li:last-child > a, > li:last-child > span {
+    border: none;
+  }
+}
+
+// 有间距的分页
+.u-pagination-gap > li:first-child > a,
+.u-pagination-gap > li:last-child > a {
+  border-radius: 5px;
+}
+
+.u-pagination-gap {
+  > li {
+    > a {
+      margin: 0 5px;
+      border-radius: 5px;
+      border: 1px solid $border-color-base;
+      &:hover {
+        background-color: $pag-hover-bg-color;
+        border-color: $border-color-base;
+      }
+    }
+    &:first-child,
+    &:last-child {
+      > a {
+        border-radius: 5px;
+      }
+    }
+  }
+  > li[role="gap"] {
+    > a {
+      border: 0 solid $border-color-base;
+    }
+  }
+}
+
+
+

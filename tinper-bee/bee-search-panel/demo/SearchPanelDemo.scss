@@ -1,0 +1,30 @@
+@import "../src/SearchPanel.scss";
+
+.demo{
+  .u-label {
+    min-width: 80px;
+    white-space: nowrap;
+    text-align: right;
+  }
+  .u-checkbox-group,
+  .col{
+    display: inline-flex;
+  }
+  .u-form-item{
+    min-height: 42px;
+  }
+  .u-form-item,
+  .u-row >div{
+    padding: 0;
+  }
+  .u-search .u-panel{
+    padding-top: 0px;
+    padding-bottom: 0;
+  }
+  .u-search-resident{
+    padding-bottom: 0px;
+    padding-top: 0px;
+  }
+}
+
+

@@ -1,0 +1,13 @@
+.demo10-modal{
+  .clear-btn{
+    float: left;
+    background: transparent !important;
+    border-color: transparent !important;
+    &:hover{
+      background: #EBECF0 !important;
+    }
+    &:active{
+      background: #EBECF0 !important;
+    }
+  }
+}

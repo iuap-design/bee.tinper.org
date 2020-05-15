@@ -166,7 +166,7 @@ module.exports = {
 
 
       
-    let latestVersion = sidebar['更新日志']['version'];
+    let latestVersion = sidebar['更新日志']['version'].replace('v','');
 
     await ctx.render('index', {
       sidebar: sidebar,
