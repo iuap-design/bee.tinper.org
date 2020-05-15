@@ -1,0 +1,704 @@
+{
+    "概述": {
+        "version": "0.1.3",
+        "component": "summarize",
+        "menus": {
+            "特性": {},
+            "谁在使用": {}
+        }
+    },
+    "快速开始": {
+        "version": "0.1.3",
+        "component": "quickStart",
+        "menus": {
+            "一、安装 tinper-bee": {},
+            "二、项目中使用 tinper-bee": {},
+            "三、使用CDN": {},
+            "四、单个使用个别组件": {},
+            "五、注意事项": {}
+        }
+    },
+    "项目实战": {
+        "version": "0.1.3",
+        "component": "project",
+        "menus": {
+            "安装cli工具": {},
+            "快速初始化": {
+                "children": ["创建项目", "依赖安装", "运行", "如何访问", ""]
+            },
+            "安装组件库": {},
+            "使用组件库": {
+                "children": ["创建微应用", "修改结构"]
+            }
+        }
+    },
+    "参与贡献": {
+        "version": "0.1.3",
+        "component": "participation",
+        "menus": {
+            "参与讨论和开发": {},
+            "开发及构建": {}
+        }
+    },
+    "更新日志": {
+        "version": "0.1.3",
+        "component": "changelog",
+        "menus": {
+            "2.0.5": {},
+            "2.0.4": {},
+            "2.0.3": {},
+            "2.0.2": {},
+            "2.0.1": {},
+            "2.0.0": {},
+            "1.6.10-alpha.6": {},
+            "1.6.10-alpha.5": {},
+            "1.6.10-alpha.4": {},
+            "1.6.10-alpha.3": {},
+            "1.6.10-alpha.2": {},
+            "1.6.10": {},
+            "v1.6.9": {},
+            "1.6.8": {},
+            "v1.6.7": {},
+            "v1.6.4": {},
+            "v1.6.3": {},
+            "v1.6.2": {},
+            "v1.6.1": {},
+            "1.6.0": {},
+            "1.5.9": {},
+            "1.5.8": {},
+            "1.5.7": {},
+            "1.5.6": {},
+            "1.5.5": {},
+            "1.5.4": {},
+            "1.5.3": {},
+            "v1.5.2": {},
+            "v1.5.1": {},
+            "v1.5.0": {},
+            "v1.4.2": {},
+            "v1.4.0": {},
+            "v1.3.7": {},
+            "v1.3.6": {},
+            "v1.3.5": {},
+            "v1.3.2": {},
+            "v1.3.1": {},
+            "v1.3.0": {},
+            "v1.2.10": {},
+            "v1.2.9": {},
+            "v1.2.8": {},
+            "v1.2.7": {},
+            "v1.2.6": {},
+            "v1.2.5": {},
+            "v1.2.4": {},
+            "1.2.3": {},
+            "1.2.0": {},
+            "1.1.1": {},
+            "1.1.0": {},
+            "v1.0.2": {}
+        },
+        "changeLog": [{
+            "published_at": "2019-03-22",
+            "html_url": "https://github.com/iuap-design/tinper-bee/releases/tag/2.0.5",
+            "tag_name": "2.0.5",
+            "body": "<p> tinper-bee 2.0.5</p>\n<ul>\n<li>[Feature]bee-tabs @2.0.2，优化 bee-tabs 组件交互体验及对应示例</li>\n<li>[Feature]bee-menus @2.0.4，统一选中色、文字色、图标色、禁用文字色规范</li>\n<li>[Feature]bee-cascader @2.1.1，统一选中色、边框规范，修改示例数据</li>\n<li>[Feature]bee-dropdown @2.0.4，统一选中色、文字色规范</li>\n<li>[Feature]bee-select @2.0.8<ul>\n<li>统一选中色、文字色、禁用文字色规范。</li>\n<li>多选设置默认值为字符串时报错加适配</li>\n</ul>\n</li>\n<li>[Feature]bee-calendar @2.0.4，统一选中色、hover背景色、禁用文字色规范</li>\n<li>[Feature]bee-timepicker @2.0.2，统一选中色、文字色、禁用文字色规范</li>\n<li>[Feature]bee-tree @2.0.6，统一选中色、文字色、禁用文字色规范</li>\n<li>[Feature]bee-datepicker @2.0.10，<ul>\n<li>统一选中色、文字色、禁用文字色规范</li>\n<li>解决双击触发两次change的bug</li>\n<li>解决ie11下背景透明bug</li>\n</ul>\n</li>\n<li>[Feature]bee-city-select @2.0.1，统一选中色、边框颜色规范</li>\n<li>[Fixbug]bee-pagination @2.0.4，解决dataNum值为0时，数据没有更新的Bug</li>\n<li>bee-dnd @1.1.1<ul>\n<li>[Feature]按UI规范优化组件交互效果</li>\n<li>[Fixbug]解决拖动到不同容器时，样式未保持在拖动样式的问题</li>\n</ul>\n</li>\n<li>[Fixbug]bee-table @2.0.7<ul>\n<li>package.json中的文件，在组件代码中的使用情况。</li>\n<li>所有示例中的依赖，全部换成tinper-bee的依赖。</li>\n<li>排查key错误，修改table的源码进行处理，2个地方。</li>\n<li>去掉lib中多选中的checkbox的引用</li>\n<li>修改checkbox样式</li>\n<li>行过滤点击已选的无效</li>\n<li>table拖拽后，表格宽度没有同步bug</li>\n</ul>\n</li>\n<li>[Fixbug]bee-input-group-addon @2.0.0、bee-input-group @2.0.2<ul>\n<li>去掉边框处理，影响到input-number组件问题，且要依赖升级。</li>\n</ul>\n</li>\n<li>bee-input-number @2.0.7 <ul>\n<li>[Fixbug]依赖组件升级、以及样式修改。</li>\n<li>[Fixbug]解决外边框与输入框有空隙问题</li>\n</ul>\n</li>\n<li>[Feature]tinper-bee-core @2.0.26<ul>\n<li>规范bee-modal不同尺寸的宽度</li>\n<li>修改表头背景色和表格分割线颜色的默认值</li>\n</ul>\n</li>\n</ul>\n"
+        }, {
+            "published_at": "2019-03-15",
+            "html_url": "https://github.com/iuap-design/tinper-bee/releases/tag/2.0.4",
+            "tag_name": "2.0.4",
+            "body": "<p> tinper-bee 2.0.4</p>\n<ul>\n<li>[Fixbug]bee-button @2.0.8，解决按钮active态错误问题</li>\n<li>[Bugfix]bee-dropdown @2.0.3，解决部分下拉菜单缺失hover状态的问题</li>\n<li>[Feature]bee-checkbox @2.0.3<ul>\n<li>按新UI规范优化组件</li>\n<li>CheckboxGroup增加disabled参数</li>\n<li>Checkbox增加inverse参数，提供两种样式的复选框</li>\n</ul>\n</li>\n<li>[Feature]bee-radio @2.0.3<ul>\n<li>按UI规范更新组件</li>\n<li>增加inverse参数，提供两种样式的单选框</li>\n</ul>\n</li>\n<li>[Feature]bee-rate @2.0.3，去掉focus样式</li>\n<li>bee-cascader @2.1.0，组件整体重构，按UI规范更新组件<ul>\n<li>[Fixbug]解决选择后，下拉面板中没有保留已选信息的问题</li>\n<li>[Fixbug]解决选择一级选项并清空，再次选择同一选项时，值选不上的问题</li>\n<li>[Feature]增加清空已选功能</li>\n<li>[Feature]增加指定默认值</li>\n<li>[Feature]增加expandTrigger参数，鼠标hover时展开菜单功能</li>\n<li>[Feature]增加disabled禁用状态</li>\n<li>[Feature]增加changeOnSelect属性，点选每级菜单选项值都会发生变化</li>\n<li>[Feature]增加size属性，设置不同尺寸的级联菜单</li>\n</ul>\n</li>\n<li>bee-table @2.0.6<ul>\n<li>[Fixbug]升级checkbox</li>\n<li>[Fixbug]链接文字样式修改</li>\n<li>[Fixbug]去掉lib中多选中的checkbox的引用</li>\n<li>[Fixbug]修改checkbox样式</li>\n<li>[Fixbug]行过滤点击已选的无效</li>\n</ul>\n</li>\n<li>[Feature]bee-datepicker @2.0.8<ul>\n<li>[Fixbug]Datapicker 输入框右侧图标没有居中。</li>\n<li>[Fixbug]日历卡片没有使用最新的form-control、选中日历</li>\n</ul>\n</li>\n<li>[Feature]bee-autocomplete @2.0.1 相关2.0主题依赖组件升级,bee-form-control 需要升级</li>\n</ul>\n"
+        }, {
+            "published_at": "2019-03-11",
+            "html_url": "https://github.com/iuap-design/tinper-bee/releases/tag/2.0.3",
+            "tag_name": "2.0.3",
+            "body": "<p> tinper-bee 2.0.3</p>\n<ul>\n<li><p>[Feature]bee-input-group @2.0.1</p>\n<ul>\n<li>输入框行高统一为32px</li>\n<li>依赖组件升级</li>\n</ul>\n</li>\n<li><p>[Feature]bee-datepicker @2.0.8</p>\n<ul>\n<li>Datapicker 输入框右侧图标没有居中。</li>\n<li>日历卡片没有使用最新的form-control、选中日历</li>\n</ul>\n</li>\n<li><p>[Feature]bee-input-number @2.0.2</p>\n<ul>\n<li>按UE规范优化组件样式</li>\n<li>组件样式重构,按照最新的UE规范进行调整组件。</li>\n</ul>\n</li>\n<li><p>[Feature]bee-complex-grid @2.0.1</p>\n<ul>\n<li>增加表格行hover背景色变量</li>\n</ul>\n</li>\n<li><p>[Feature]bee-input-group @2.0.1</p>\n<ul>\n<li>输入框行高统一为32px</li>\n<li>依赖组件升级</li>\n</ul>\n</li>\n<li><p>bee-datepicker @2.0.8</p>\n<ul>\n<li>[Fix]Datapicker 输入框右侧图标没有居中。 \n[Fix] bee-datepicker  修复rangepicker的disabled功能\n[Fix]Datapicker 输入框右侧图标没有居中。\n[Fix]p日历卡片没有使用最新的form-control、选中日历</li>\n</ul>\n</li>\n<li><p>[Feature]bee-input-number @2.0.2</p>\n<ul>\n<li>按UE规范优化组件样式</li>\n<li>组件样式重构</li>\n</ul>\n</li>\n<li><p>[Feature]bee-table @2.0.4</p>\n<ul>\n<li>增加表格行hover背景色变量</li>\n</ul>\n</li>\n<li><p>[Feature]bee-complex-grid @2.0.1</p>\n<ul>\n<li>增加表格行hover背景色变量</li>\n</ul>\n</li>\n<li><p>[Feature] bee-cascader 新增动态options功能</p>\n</li>\n<li><p>Table</p>\n<ul>\n<li>[Fixbug]数据过少不撑满整个容器时，解决滚动条占位问题</li>\n<li>[Feature]滚动条样式封装，使不同浏览器显示一致</li>\n<li>[Feature]增加heightConsistent属性，解决固定列内容过长导致行高度不统一问题</li>\n<li>[Fixbug] hover出现操作列时，当这行的焦点消失时，对应的操作列隐藏，与该行的动作同步。</li>\n<li>[Fixbug] Table、gride 增加hover 背景色，单独抽取变量控制。（颜色暂时不变）斑马线推荐颜色 （#F7F9FB）</li>\n</ul>\n</li>\n<li><p>Tree</p>\n<ul>\n<li>[Feature]优化onFocus事件，提供异步、同步两种回调方式</li>\n<li>[Fixbug]解决子节点点击时也会触发onFocus问题</li>\n<li>[Fixbug] 解决点击事件onSelect 延迟触发问题</li>\n</ul>\n</li>\n<li><p>bee-autocomplete 导出为AutoComplete，大写。单个组件示例调整为大写。</p>\n</li>\n</ul>\n"
+        }, {
+            "published_at": "2019-03-05",
+            "html_url": "https://github.com/iuap-design/tinper-bee/releases/tag/2.0.2",
+            "tag_name": "2.0.2",
+            "body": "<p> tinper-bee 2.0.2</p>\n<ul>\n<li>[Fixbug] 修复bee-select 警告问题。</li>\n<li>[Fixbug] 统一单独引用组件和从tinper-bee中引用组件中的大小写bee-autocomplete 统一为大小驼峰。</li>\n<li>[Fixbug] bee-button-group 带背景色的按钮之间加1px的白色分割线</li>\n<li>[Feature]bee-button @2.0.5<ul>\n<li>按钮点击后的focus状态和默认样式保持一致</li>\n<li>所有按钮的disable状态，去掉hover和active样式</li>\n</ul>\n</li>\n<li>[Feature]bee-tree @2.0.2<ul>\n<li>去掉树节点hover时的描边</li>\n<li>disable态的树节点去掉hover样式</li>\n</ul>\n</li>\n<li>bee-dropdown @2.0.2<ul>\n<li>[Feature]下拉菜单去掉边框</li>\n<li>[Fixbug]多级下拉示例的下拉面板错位了</li>\n</ul>\n</li>\n<li>[Fixbug]下组件为组件相互依赖的版本不对问题的修改，所有均更新为2.0.x版本。影响组件包括如下【bee-select、bee-modal、bee-transfer、bee-cascader、bee-button-group、bee-table、bee-autocomplete、bee-panel】\n  bee-form, bee-menus 1.1.0 升级</li>\n</ul>\n"
+        }, {
+            "published_at": "2019-03-04",
+            "html_url": "https://github.com/iuap-design/tinper-bee/releases/tag/2.0.1",
+            "tag_name": "2.0.1",
+            "body": "<p> tinper-bee 2.0.1升级内容【主题定制、组件优化】</p>\n<blockquote>\n<p> primary 默认样式\n 主题颜色[#F53C32 — rgb(245, 60, 50)]\n 边框色引用(#a5adba)\n圆角引用 3px\n白色背景下的hover色[#ebecf0 / rgb(235, 236, 240)]</p>\n</blockquote>\n<ul>\n<li><p>[Feature] 所有的基础组件由之前的蓝色(#2db7f5)改为红色(#F53C32)，影响范围-(80%组件)。</p>\n</li>\n<li><p>[Feature] 下拉式组件，影响范围-[select、autocomplete、datepicker、calendar、dropdown、table、tree、menu]</p>\n<ul>\n<li>hover背景色变为灰色，hover文字色变为蓝色。</li>\n<li>下拉背景色变为深蓝，选中的文字色变为白色。</li>\n<li>底部按钮文字色由红色变为蓝色</li>\n</ul>\n</li>\n<li><p>[Feature] 在tinper-bee.css 中增加 Datepicker、Calendar 组件的样式。</p>\n</li>\n<li><p>[Feature] timepicker</p>\n<ul>\n<li>选中的文字色变为主题蓝色</li>\n<li>bee-timepicker 外层输入框加清空功能</li>\n</ul>\n</li>\n<li><p>[Update、Feature]bee-datepicker</p>\n<ul>\n<li>底部按钮文字色变为蓝色、所有类型默认增加输入框。</li>\n<li>新增快捷键功能：f2打开面板，enter关闭面板</li>\n</ul>\n</li>\n<li><p>[Fixbug] 去掉组件中^的版本号，改成具体版本号</p>\n</li>\n<li><p>[Fixbug] 修改component中大小写问题。</p>\n</li>\n<li><p>[Feature] bee-button</p>\n<ul>\n<li>文字颜色由黑色变为主题蓝色 、带边框按钮的文字颜色改为黑色。</li>\n<li>&quot;size&quot;API 增加取值默认大小“md”</li>\n</ul>\n</li>\n<li><p>[Feature] bee-calendar</p>\n<ul>\n<li>选中日期的文字色由黑色变为白色</li>\n</ul>\n</li>\n<li><p>bee-slider</p>\n<ul>\n<li>[Feature]锚点色和滑动条色由&quot;info&quot;浅蓝变为&quot;primary&quot;主题蓝色。</li>\n</ul>\n</li>\n<li><p>[Feature] bee-pagination</p>\n<ul>\n<li>默认页码按钮 由带边框变为无边框、背景色由蓝色变为深灰色、分页去掉确认按钮(可自定义)</li>\n</ul>\n</li>\n<li><p>[Feature]bee-menus</p>\n<ul>\n<li>bee-menus 最外层暴露 tabIndex属性</li>\n</ul>\n</li>\n<li><p>bee-table @1.6.41</p>\n<ul>\n<li>[Feature]Table组件hover某行，动态渲染菜单</li>\n<li>[Feature]Table组件固定列滚动时显示阴影</li>\n<li>[Fixbug]Table 拖拽场景下className连到一起的问题 </li>\n<li>[Feature]表格行内链接文字色由默认的超链接色变为主题蓝色</li>\n<li>[Fixbug]Table 新增行数达到一定数量会有一个断层</li>\n<li>[Fixbug]Table 动态控制表格外层显示隐藏，第一次加载的数据渲染不出来</li>\n<li>[Feature]嵌套表格两个都是bigData场景，动态控制某行是否可以展开</li>\n<li>[Feature] 前端排序增加回调，返回排序后的数据</li>\n<li>[Fixbug] 表格行内编辑时，单元格获取焦点时，表格会增加2px问题</li>\n</ul>\n</li>\n<li><p>[Fixbug] bee-message</p>\n<ul>\n<li>解决使用时报错的问题</li>\n</ul>\n</li>\n<li><p>[Fixbug] bee-input-number</p>\n<ul>\n<li>解决小数点后无法输入 0 的Bug</li>\n</ul>\n</li>\n<li><p>[Fixbug] bee-dropdown</p>\n<ul>\n<li>第一个宽度小于按钮，第二个太宽不撑开bug</li>\n<li>解决下拉背景色透明问题</li>\n</ul>\n</li>\n<li><p>[Feature] bee-loading</p>\n<ul>\n<li>修改loading图标</li>\n</ul>\n</li>\n<li><p>[Feature] bee-loading-state</p>\n<ul>\n<li>显示loading时，默认不给button显示遮罩层、用loadingText替换button的文字</li>\n</ul>\n</li>\n<li><p>[Feature]bee-autocomplete</p>\n<ul>\n<li>hover背景色和文字色关联主题，支持定制</li>\n</ul>\n</li>\n<li><p>[Feature] 所有的组件圆角为3px。</p>\n</li>\n<li><p>[Feature] 输入框、下拉框 size 统一为40(大)、32(中)、26(小)。</p>\n</li>\n<li><p>[Feature] 边框色由之前的(#d9d9d9)调整为(#a5adba)，影响范围-[be-button、be-select、be-form-control、be-cascader、be-timepicker、be-datepicker、be-upload、be-badge、be-autocomplete、be-pagination、be-tooltip、be-input-number、be-city-select]</p>\n</li>\n<li><p>[Feature] 主题色由之前的蓝色变为红色(#E60012)，影响范围-(80%组件)。</p>\n</li>\n<li><p>[Feature] input 示例中，所有输入框行高32px，，影响范围-组件中带有输入框的组件。</p>\n</li>\n<li><p>[Fixbug] be-menus 组件bug修复，缺少部分依赖组件。</p>\n</li>\n<li><p>[Fixbug] bee-input-number 组件本身多边框重叠bug修复。</p>\n<p>组件升级风险组件 </p>\n</li>\n<li><p>[Risk] bee-button 不提倡使用button的默认颜色，默认颜色即为primary色。</p>\n</li>\n<li><p>[Risk] bee-cascader、bee-timepicker、bee-datepicker 在单独使用时，需要手动引入css样式。</p>\n</li>\n<li><p>[Risk] bee-pagination</p>\n<ul>\n<li>默认页码按钮变为无边框</li>\n<li>选中的页码背景色变为深灰色</li>\n<li>默认分页去掉确认按钮，支持自定义传入</li>\n</ul>\n</li>\n<li><p>[Risk] bee-select、bee-autocomplete、bee-datepicker、bee-calendar选项的hover背景色变为灰色</p>\n</li>\n<li><p>[Risk] &quot;primary&quot;主题色变更，影响的组价如下:</p>\n<ol>\n<li>bee-rate 文字和图标的填充色，变为&quot;primary&quot;主题色。</li>\n<li>bee-timeline 、bee-slider 的&quot;info&quot;色，变为&quot;primary&quot;主题色。</li>\n<li>bee-breadcrumb、bee-tree 文字颜色，变为&quot;primary&quot;主题色。</li>\n<li>bee-timepicker 选中的文字色，变为&quot;primary&quot;主题色。</li>\n<li>bee-tabs hover状态标签文字颜、选中竖线，变为&quot;primary&quot;主题色。</li>\n<li>bee-datepicker hover背景色由浅蓝变为灰色、select背景色、按钮文字色 变为&quot;primary&quot;主题色。选中的文字色由黑色变为白色。</li>\n<li>bee-table  行内链接文字色，变为&quot;primary&quot;主题色。</li>\n</ol>\n</li>\n<li><p>[Risk] Autocomplete 在tinper-bee的应用改为AutoComplete。</p>\n</li>\n</ul>\n"
+        }, {
+            "published_at": "2019-02-25",
+            "html_url": "https://github.com/iuap-design/tinper-bee/releases/tag/2.0.0",
+            "tag_name": "2.0.0",
+            "body": "<ul>\n<li>废弃版本，统一使用2.0.1稳定版</li>\n</ul>\n"
+        }, {
+            "published_at": "2019-02-25",
+            "html_url": "https://github.com/iuap-design/tinper-bee/releases/tag/1.6.10-alpha.6",
+            "tag_name": "1.6.10-alpha.6",
+            "body": "<ul>\n<li>[Feature] 在tinper-bee.css 中增加 Datepicker。</li>\n</ul>\n"
+        }, {
+            "published_at": "2019-02-25",
+            "html_url": "https://github.com/iuap-design/tinper-bee/releases/tag/1.6.10-alpha.5",
+            "tag_name": "1.6.10-alpha.5",
+            "body": "<ul>\n<li>[Feature] 在tinper-bee.css 中增加 Datepicker、Calendar 组件的样式。</li>\n</ul>\n"
+        }, {
+            "published_at": "2019-02-25",
+            "html_url": "https://github.com/iuap-design/tinper-bee/releases/tag/1.6.10-alpha.4",
+            "tag_name": "1.6.10-alpha.4",
+            "body": "<ul>\n<li>[Feature] bee-autocomplete  1.0.4 --&gt; 1.1.0</li>\n<li>[Feature] ee-badge 1.0.3 --&gt; 1.1.3</li>\n<li>[Feature] form-control 1.1.8 --&gt; 1.1.10 </li>\n<li>[Feature] bee-datepicker V2.0.1  --&gt; 2.0.2</li>\n<li>[Feature] bee-calendar V2.0.0 --&gt; 2.0.1</li>\n</ul>\n"
+        }, {
+            "published_at": "2019-02-22",
+            "html_url": "https://github.com/iuap-design/tinper-bee/releases/tag/1.6.10-alpha.3",
+            "tag_name": "1.6.10-alpha.3",
+            "body": "<ul>\n<li>[Fix] timepicker、datepicker 版本更新</li>\n<li>[Fix] bee-cascader 2.0.0</li>\n</ul>\n"
+        }, {
+            "published_at": "2019-02-21",
+            "html_url": "https://github.com/iuap-design/tinper-bee/releases/tag/1.6.10-alpha.2",
+            "tag_name": "1.6.10-alpha.2",
+            "body": "<p> 内部测试包</p>\n<ul>\n<li>[Fix] 去掉组件中^的版本号，改成具体版本号</li>\n<li>[Fix] 修改component中大小写问题</li>\n<li>[Feature] 2.0主题内容</li>\n</ul>\n"
+        }, {
+            "published_at": "2019-01-27",
+            "html_url": "https://github.com/iuap-design/tinper-bee/releases/tag/1.6.10",
+            "tag_name": "1.6.10",
+            "body": "<ul>\n<li>[Fix] bee-popconfirm @1.0.15 添加第二优先级渲染方向功能、添加onRootClose的API、添加自定义确定取消按钮</li>\n<li>[Fix] bee-tooltip @1.0.14 添加可配置container的API</li>\n<li>[Fix] bee-popover @1.0.6 添加可配置container的API</li>\n<li>[Fix] bee-grid @1.0.11 增加是否有分页的api(上个版本0.2.44)</li>\n<li>bee-table @1.6.35(上个版本1.6.35)<ol>\n<li>[Feature] 支持多表头列的排序功能、增加是否开启快捷键功能、自定义列对齐方式、修改表格交换列逻辑修复city-select 组件内部select警告。</li>\n<li>[Feature]  增加获取拖拽列宽的colgroup的id、以及table 的id。</li>\n</ol>\n</li>\n<li>[Fix] bee-select @1.1.8 下拉item高度改为30px</li>\n<li>[Fix] bee-slider @1.0.3 竖直方向的slider重叠问题 V1.0.3</li>\n<li>[Fix] bee-datepicker @1.3.12 新增外层输入框可输入功能</li>\n<li>[Fix] bee-input-number @1.2.2 新增显示千分符的功能</li>\n</ul>\n"
+        }, {
+            "published_at": "2019-01-05",
+            "html_url": "https://github.com/iuap-design/tinper-bee/releases/tag/v1.6.9",
+            "tag_name": "v1.6.9",
+            "body": "<ul>\n<li>[Fix] bee-table @1.6.26 快捷键修复</li>\n<li>[Fix] bee-tabs @1.0.10 快捷键修复。</li>\n<li>[Fix] bee-menu @0.1.9 快捷键修复。</li>\n<li>[Fix] bee-tree @1.1.12 快捷键修复。</li>\n<li>[Fix] bee-dropdown @1.0.4 快捷键修复。</li>\n</ul>\n"
+        }, {
+            "published_at": "2018-12-29",
+            "html_url": "https://github.com/iuap-design/tinper-bee/releases/tag/1.6.8",
+            "tag_name": "1.6.8",
+            "body": "<ul>\n<li><p>bee-table @1.6.21</p>\n<ol>\n<li>[Feature] 支持快捷键 ↑ ，↓ ，tab 快捷键操作，以及新增快捷键的api。</li>\n<li>[Feature]  增加懒加载功能 ，支持大数据量加载。</li>\n</ol>\n</li>\n<li><p>[Feature] bee-tabs @1.0.9 增加tabIndex api。</p>\n</li>\n<li><p>[Feature] bee-menu @0.1.9 支持快捷键操作。</p>\n</li>\n<li><p>[Feature] bee-tree 支持快捷键操作， ↑ ，↓  选中功能。</p>\n</li>\n<li><p>[Feature] bee-dropdown @1.0.3 新增快捷键。</p>\n</li>\n<li><p>[Feature] bee-tooltip @1.0.14 增加鼠标滑过API。</p>\n</li>\n<li><p>[Feature] bee-message @1.0.13 将icon改为默认不显示</p>\n</li>\n<li><p>应用组件部分 \n[Fix] ac-attachment 添加disabled按钮禁用选项</p>\n</li>\n</ul>\n"
+        }, {
+            "published_at": "2018-12-21",
+            "html_url": "https://github.com/iuap-design/tinper-bee/releases/tag/v1.6.7",
+            "tag_name": "v1.6.7",
+            "body": "<ul>\n<li>[Fix] bee-pagination @1.1.14 添加dataNumSelect数组中有不是数字的容错处理，选中此项将items设置为1即只显示1页(上一个版本是1.0.2)</li>\n<li>[Fix] bee-overlay @1.0.19 添加window.resize触发更新窗口位置的功能 </li>\n<li>[Fix] bee-tooltip @1.0.13  添加window.resize触发更新窗口位置的功能 </li>\n<li>[Fix] bee-popover @1.0.4  添加window.resize触发更新窗口位置的功能  </li>\n<li>[Fix] bee-popconfirm @1.0.11  添加window.resize触发更新窗口位置的功能  </li>\n<li>[Fix] bee-table @1.6.18(上个版本1.5.18)<ol>\n<li>交换列在ie上报错的问题</li>\n<li>合计逻辑重构、合计浮点数，精确到2位小数</li>\n<li>过滤行没有数据的时候不执行回调、清除值只清空存在的值，不多次回调</li>\n<li>增加 Hover状态是否同步到左侧Checkbox属性syncHover</li>\n<li>优化tableheader代码、注释、文档补全</li>\n<li>过滤行新功能，增加 filterDropdownIncludeKeys API。</li>\n<li>去掉过滤的一些限制</li>\n<li>固定列滚动条不可拖拽</li>\n<li>解决行过滤能拖拽问题、解决行过滤事件丢失问题</li>\n<li>标题无数据情况下全选问题。</li>\n<li>拖拽时横向滚动条兼容固定列。</li>\n<li>Table组件增加了指定的下拉条件设置API:filterDropdownIncludeKeys</li>\n<li>交换列和拖拽改变列宽共存问题。</li>\n<li>拖拽激活区宽度超长导致滚动条显示bug.</li>\n</ol>\n<ul>\n<li>[Fix,Feature] bee-complex-grid @1.0.8(上个版本是0.2.44)<ol>\n<li>增加导出excel功能。</li>\n<li>增加模板示例功能</li>\n<li>最后一个非固定列不可以fix</li>\n<li>动态设置是否显示列过滤bug。</li>\n<li>增加导出示例、导出单独设置数据源、是否要在导出中隐藏某列、修改demo 示例以及文档</li>\n</ol>\n</li>\n</ul>\n</li>\n</ul>\n"
+        }, {
+            "published_at": "2018-11-27",
+            "html_url": "https://github.com/iuap-design/tinper-bee/releases/tag/v1.6.4",
+            "tag_name": "v1.6.4",
+            "body": "<p> 1.6.4</p>\n<ul>\n<li>[Feature] bee-checkbox 新增group功能、支持全键盘操作</li>\n<li>[Fix] bee-modal 修改width适配 、number警告、 修复无法在style中设置width的问题</li>\n<li>[Feature] bee-radio 支持全键盘操作</li>\n<li>[Feature] bee-datepicker 全键盘操作</li>\n<li>[Fix] bee-popover 修复箭头指向的bug </li>\n<li>bee-table \n [Fix]1. 拖拽动态显示滚动条 * table warning 宽度NAN警告处理。\n [Feature]2. 交换列、拖拽列宽共存问题。\n [Fix]3. 交换列有阴影错误问题。\n [Feature]4. bee-table 增加过滤行数值型输入、数值型条件选择</li>\n</ul>\n"
+        }, {
+            "published_at": "2018-11-16",
+            "html_url": "https://github.com/iuap-design/tinper-bee/releases/tag/v1.6.3",
+            "tag_name": "v1.6.3",
+            "body": "<p> 1.6.3</p>\n<ul>\n<li>bee-select 计算宽度性能问题，键盘快捷键</li>\n<li>bee-step 升级，1px抖动 </li>\n<li>bee-menu srcollIntoView 报错</li>\n<li>bee-form-control 示例无法输入</li>\n<li>bee-city-select更新语言包</li>\n<li>bee-modal 关闭图标改为uf-close</li>\n<li>bee-input-number样式更改，无法输入小数</li>\n<li>bee-notification 添加键盘esc关闭功能</li>\n<li>bee-message 添加键盘esc关闭功能</li>\n<li>bee-popconfirm 修复浏览器边界箭头指向的bug</li>\n<li>bee-tooltip 添加visible API </li>\n<li>bee-overlay 添加visible API</li>\n<li>ac-input-locale加了form表单校验</li>\n<li>bee-table<ol>\n<li>把newmultiSelect和multiSelect代码合并。</li>\n<li>修复表头全选进入选中问题。</li>\n<li>拖拽列和交换列在通一个示例中使用。</li>\n</ol>\n</li>\n</ul>\n"
+        }, {
+            "published_at": "2018-10-31",
+            "html_url": "https://github.com/iuap-design/tinper-bee/releases/tag/v1.6.2",
+            "tag_name": "v1.6.2",
+            "body": "<p> 1.6.2</p>\n<ul>\n<li>bee-select  多选的下拉框闪、配合form在onBlur校验时报错</li>\n<li>bee-overlay 加判断去掉 clearTimeout</li>\n<li>bee-affix affix容器动态宽高时，减少affix位置的计算次数</li>\n<li>bee-input-number 在form下传string改number警告</li>\n<li>bee-viewer  新增组件图片查看器</li>\n<li>bee-locale   新增繁体语言</li>\n<li>bee-table <ol>\n<li>过滤行为空条件删除.</li>\n<li>过滤行失去焦点事件还原。npm install -S bee-s</li>\n<li>支持表头出现滚动条。</li>\n<li>grid封装了推拽、交换列、过滤列、合计、多选、排序、等复杂table功能，提供过去列属性和table属性API</li>\n</ol>\n</li>\n</ul>\n"
+        }, {
+            "published_at": "2018-10-08",
+            "html_url": "https://github.com/iuap-design/tinper-bee/releases/tag/v1.6.1",
+            "tag_name": "v1.6.1",
+            "body": "<p> 1.6.1</p>\n<ul>\n<li>bee-message 修复在生命周期函数中调用报错的问题</li>\n<li>bee-notification react16的兼容</li>\n<li>bee-dnd：升级依赖组件；新增横向排序、多列排序示例；增加多个api </li>\n<li>bee-affix修改container传值为null的容错处理</li>\n<li>bee-select：解决输入框失焦后仍保持聚焦状态的问题；增加 open 参数控制下拉框的展开收起</li>\n<li>bee-table：锁定加个边界线；按条件和值进行过滤；拖拽改变列宽；修改表头th添加className问题；safair下checkbox无法选中问题；动态设置固定列交互修改；内容超出当前dom宽度时，自动出现滚动条</li>\n</ul>\n"
+        }, {
+            "published_at": "2018-09-10",
+            "html_url": "https://github.com/iuap-design/tinper-bee/releases/tag/1.6.0",
+            "tag_name": "1.6.0",
+            "body": "<ul>\n<li>bee-table\n1.动态设置固定列，固定列关联的列自动固定，增加回调函数<ol start=\"2\">\n<li>bee-table排序功能，去掉列筛选功能后，排序上下箭头类名改变，样式丢失</li>\n<li>bee-table 过滤组件通过tinper-bee引入路径问题</li>\n</ol>\n</li>\n<li>bee-select dropdownMatchSelectWidth属性，为false时，下拉框的内容不取决于输入框</li>\n</ul>\n"
+        }, {
+            "published_at": "2018-09-01",
+            "html_url": "https://github.com/iuap-design/tinper-bee/releases/tag/1.5.9",
+            "tag_name": "1.5.9",
+            "body": "<p> 1.5.9</p>\n<ul>\n<li>bee-input-number disabled后仍然可以点击bug</li>\n<li>bee-locale文件名规范化修改</li>\n<li>bee-form-control 去掉 showClose showPop 警告</li>\n<li>bee-select 增加示例。</li>\n<li>bee-modal 里面加了三个demo</li>\n<li>bee-table <ol>\n<li>优化上千条数据渲染性能</li>\n<li>数表结构中使用固定列时，固定列的高度取值问题</li>\n<li>table有纵向滚动条，列过多时，滚动下不对齐</li>\n<li>bee-table重新验证示例，修改4个示例的Bug</li>\n</ol>\n</li>\n<li>bee-transfer </li>\n<li>bee-menus 增加选中获取自定义data对象的示例</li>\n<li>bee-panel增加代码复制功能，增加代码示例展示板Demo</li>\n<li>bee-tooltip加判断，无overlay不渲染tooltip-arrow,tooltip-inner</li>\n<li>bee-locale文件名规范化</li>\n</ul>\n"
+        }, {
+            "published_at": "2018-08-18",
+            "html_url": "https://github.com/iuap-design/tinper-bee/releases/tag/1.5.8",
+            "tag_name": "1.5.8",
+            "body": "<ul>\n<li>bee-input-number 增加了disabled属性，新增2个demo示例</li>\n</ul>\n"
+        }, {
+            "published_at": "2018-08-18",
+            "html_url": "https://github.com/iuap-design/tinper-bee/releases/tag/1.5.7",
+            "tag_name": "1.5.7",
+            "body": "<ul>\n<li>bee-affix horizontal的无效果问题、以及demo 修改。</li>\n<li>bee-input-number 增加了disabled属性，新增2个demo示例</li>\n</ul>\n"
+        }, {
+            "published_at": "2018-08-18",
+            "html_url": "https://github.com/iuap-design/tinper-bee/releases/tag/1.5.6",
+            "tag_name": "1.5.6",
+            "body": "<ul>\n<li>去掉components/Con/index.js </li>\n</ul>\n"
+        }, {
+            "published_at": "2018-08-18",
+            "html_url": "https://github.com/iuap-design/tinper-bee/releases/tag/1.5.5",
+            "tag_name": "1.5.5",
+            "body": "<ul>\n<li><p>bee-table </p>\n<ol>\n<li>newMuleteSelct 设置 disable 属性。</li>\n<li>多列进行排序，某一列点击，会影响到其他列的排的默认箭头的颜色</li>\n<li>排序默认选中箭头。</li>\n<li>表格中tree结构，点+-号时也会触发onRowClick事件，希望不触发。</li>\n<li>增加demo，文档。</li>\n</ol>\n</li>\n<li><p>bee-inputnumber 组件，当disabled设成true时，仍可点击左右的+-号改变数据</p>\n</li>\n<li><p>bee-tooltip组件，希望能根据内容来自动往上浮动或者往下浮动（上方没有空间时往下浮动，下方没有空间时往上浮动</p>\n</li>\n<li><p>bee-affix组件，改浏览器视口宽度以后，Affix的宽度没有重算</p>\n</li>\n<li><p>bee-select、bee-menus 当组件width 小于正常width的时候，文字和下拉框需要做省略处理。</p>\n</li>\n<li><p>bee-form-control   新增清空功能</p>\n</li>\n<li><p>bee-form 新增demo和文档</p>\n</li>\n<li><p>bee-tooltip、bee-overlay 内容查出边界时，内容会自动切换弹出方位。</p>\n</li>\n</ul>\n"
+        }, {
+            "published_at": "2018-07-09",
+            "html_url": "https://github.com/iuap-design/tinper-bee/releases/tag/1.5.4",
+            "tag_name": "1.5.4",
+            "body": "<ul>\n<li>bee-table 列过滤bug修复。</li>\n<li>撤下拖拽表格列宽的功能。</li>\n</ul>\n"
+        }, {
+            "published_at": "2018-07-09",
+            "html_url": "https://github.com/iuap-design/tinper-bee/releases/tag/1.5.3",
+            "tag_name": "1.5.3",
+            "body": "<ul>\n<li>bee-table 列过滤bug修复。</li>\n<li>bee-table 新增综合示例。</li>\n<li>撤下拖拽表格列宽的功能。</li>\n</ul>\n"
+        }, {
+            "published_at": "2018-07-05",
+            "html_url": "https://github.com/iuap-design/tinper-bee/releases/tag/v1.5.2",
+            "tag_name": "v1.5.2",
+            "body": "<p> 1.5.2</p>\n<ul>\n<li>Modal组件在React16中更新报错。</li>\n</ul>\n"
+        }, {
+            "published_at": "2018-06-22",
+            "html_url": "https://github.com/iuap-design/tinper-bee/releases/tag/v1.5.1",
+            "tag_name": "v1.5.1",
+            "body": "<ul>\n<li>InputNumber组件在Table中样式受影响</li>\n<li>FromControl组件search状态disabled时，clear icon 仍可用</li>\n<li>FromControl组件增加onBlur事件</li>\n</ul>\n"
+        }, {
+            "published_at": "2018-06-08",
+            "html_url": "https://github.com/iuap-design/tinper-bee/releases/tag/v1.5.0",
+            "tag_name": "v1.5.0",
+            "body": "<ul>\n<li>Table组件重构mixin和render增强功能，修改用法。</li>\n<li>Table修复固定列滚动错行问题</li>\n<li>FromControl的ie9兼容问题</li>\n<li>Transfer的Modal渲染不加载问题</li>\n<li>Checkbox组件优化非双击不延迟</li>\n<li>Tree组件优化非双击事件不延迟</li>\n</ul>\n"
+        }, {
+            "published_at": "2018-05-21",
+            "html_url": "https://github.com/iuap-design/tinper-bee/releases/tag/v1.4.2",
+            "tag_name": "v1.4.2",
+            "body": "<p> 1.4.2</p>\n<ul>\n<li>修复Table组件显示错误bug</li>\n</ul>\n"
+        }, {
+            "published_at": "2018-05-11",
+            "html_url": "https://github.com/iuap-design/tinper-bee/releases/tag/v1.4.0",
+            "tag_name": "v1.4.0",
+            "body": "<p> 1.4.0</p>\n<ul>\n<li>Datepicker组件的日期范围添加className</li>\n<li>Dnd组件内部没有根据新的state重新渲染bug</li>\n<li>Table组件可动态设置固定列</li>\n<li>Table组件表头可动态设置</li>\n<li>Table组件表头支持拖拽</li>\n<li>Table组件表头可拖拽修改列宽度</li>\n</ul>\n"
+        }, {
+            "published_at": "2018-04-16",
+            "html_url": "https://github.com/iuap-design/tinper-bee/releases/tag/v1.3.7",
+            "tag_name": "v1.3.7",
+            "body": "<ul>\n<li>Table组件展开行和固定列同时使用时，固定列展开高度与行展开高度不一致。</li>\n</ul>\n"
+        }, {
+            "published_at": "2018-04-11",
+            "html_url": "https://github.com/iuap-design/tinper-bee/releases/tag/v1.3.6",
+            "tag_name": "v1.3.6",
+            "body": "<ul>\n<li>Checkbox单击事件增加默认props</li>\n<li>Table组件全选功能组件透传给table</li>\n</ul>\n"
+        }, {
+            "published_at": "2018-04-10",
+            "html_url": "https://github.com/iuap-design/tinper-bee/releases/tag/v1.3.5",
+            "tag_name": "v1.3.5",
+            "body": "<p> 1.3.5</p>\n<ul>\n<li><p>Checkbox增加单击事件</p>\n<p>1.3.4</p>\n</li>\n<li><p>Tree组件增加双击事件</p>\n</li>\n<li><p>Checkbox组件增加双击事件</p>\n<p>1.3.3</p>\n</li>\n<li><p>Transfer组件搜索的返回值由e修改为value</p>\n</li>\n</ul>\n"
+        }, {
+            "published_at": "2018-02-28",
+            "html_url": "https://github.com/iuap-design/tinper-bee/releases/tag/v1.3.2",
+            "tag_name": "v1.3.2",
+            "body": "<ul>\n<li>FormControl组件修复搜索功能报错问题</li>\n</ul>\n"
+        }, {
+            "published_at": "2018-02-07",
+            "html_url": "https://github.com/iuap-design/tinper-bee/releases/tag/v1.3.1",
+            "tag_name": "v1.3.1",
+            "body": "<p> 1.3.1</p>\n<ul>\n<li>Tree组件新增treeNode的title（叶子的名称）支持修改Class，style;switcher(树前边的空span)支持修改Class，style。</li>\n</ul>\n"
+        }, {
+            "published_at": "2018-02-02",
+            "html_url": "https://github.com/iuap-design/tinper-bee/releases/tag/v1.3.0",
+            "tag_name": "v1.3.0",
+            "body": "<ul>\n<li>Popover组件解决受控制时，显示bug</li>\n<li>Message组件增加style参数，让用户修改样式</li>\n<li>ForItem组件，className传递位置错误</li>\n<li>Table组件，新增haveExpandIcon,控制是都显示展开行Icon，这个参数只在使用了expandedRowRender时才有效</li>\n<li>Datepicker组件修复onChange事件重复触发问题，增加getCalendarContainer支持自定义渲染容器节点</li>\n</ul>\n"
+        }, {
+            "published_at": "2018-02-02",
+            "html_url": "https://github.com/iuap-design/tinper-bee/releases/tag/v1.2.10",
+            "tag_name": "v1.2.10",
+            "body": "<ul>\n<li>修复Tab组件，多页签展示时，箭头不是垂直居中问题</li>\n</ul>\n"
+        }, {
+            "published_at": "2018-01-25",
+            "html_url": "https://github.com/iuap-design/tinper-bee/releases/tag/v1.2.9",
+            "tag_name": "v1.2.9",
+            "body": "<ul>\n<li>Tree组件异步加载增加loading图片</li>\n</ul>\n"
+        }, {
+            "published_at": "2018-01-22",
+            "html_url": "https://github.com/iuap-design/tinper-bee/releases/tag/v1.2.8",
+            "tag_name": "v1.2.8",
+            "body": "<ul>\n<li>修复Button、FormControl、ProgressBar组件按需加载，样式问题。</li>\n</ul>\n"
+        }, {
+            "published_at": "2018-01-22",
+            "html_url": "https://github.com/iuap-design/tinper-bee/releases/tag/v1.2.7",
+            "tag_name": "v1.2.7",
+            "body": "<ul>\n<li>Radio: 修复disabled时，无法设置默认值</li>\n</ul>\n"
+        }, {
+            "published_at": "2018-01-19",
+            "html_url": "https://github.com/iuap-design/tinper-bee/releases/tag/v1.2.6",
+            "tag_name": "v1.2.6",
+            "body": "<ul>\n<li>Menus: 修改dark主题下选中样式变蓝bug</li>\n<li>ProgressBar: 增加顶部进度条(feat)</li>\n<li>Checkbox: 与Radio组件统一样式</li>\n<li>FormControl: 修复onChange控制value显示时，显示滞后bug</li>\n<li>Table: 修复全选功能中使用rowKey参数bug</li>\n</ul>\n"
+        }, {
+            "published_at": "2018-01-10",
+            "html_url": "https://github.com/iuap-design/tinper-bee/releases/tag/v1.2.5",
+            "tag_name": "v1.2.5",
+            "body": "<p>fix：补全Rate评分组件样式不全。</p>\n"
+        }, {
+            "published_at": "2018-01-03",
+            "html_url": "https://github.com/iuap-design/tinper-bee/releases/tag/v1.2.4",
+            "tag_name": "v1.2.4",
+            "body": "<p>fix: 修改轮播图组件不打包进tinper-bee,改为依赖，需单独引用。\nupdate: table 新增selectedRow参数来控制某一行数据是否选中</p>\n"
+        }, {
+            "published_at": "2017-12-27",
+            "html_url": "https://github.com/iuap-design/tinper-bee/releases/tag/1.2.3",
+            "tag_name": "1.2.3",
+            "body": ""
+        }, {
+            "published_at": "2017-12-08",
+            "html_url": "https://github.com/iuap-design/tinper-bee/releases/tag/1.2.0",
+            "tag_name": "1.2.0",
+            "body": "<ul>\n<li>新增轮播图组件</li>\n<li>日期选择组件增加图标及自定义图标</li>\n<li>Select组件修复下拉框展示宽度不足bug</li>\n<li>Form修复校验bug</li>\n</ul>\n"
+        }, {
+            "published_at": "2017-11-23",
+            "html_url": "https://github.com/iuap-design/tinper-bee/releases/tag/1.1.1",
+            "tag_name": "1.1.1",
+            "body": "<ul>\n<li>去除ProgressBar,Alert的warning</li>\n<li>Select样式问题修复</li>\n<li>Table修复功能问题</li>\n<li>Dropdown修复父组件销毁，下拉菜单未销毁bug</li>\n<li>Datepicker修正range bug</li>\n</ul>\n"
+        }, {
+            "published_at": "2017-11-09",
+            "html_url": "https://github.com/iuap-design/tinper-bee/releases/tag/1.1.0",
+            "tag_name": "1.1.0",
+            "body": "<p>新增Locale Popover LoadingState组件，修复InputNumber,Form，Datepicker组件bug</p>\n"
+        }, {
+            "published_at": "2017-11-06",
+            "html_url": "https://github.com/iuap-design/tinper-bee/releases/tag/v1.0.2",
+            "tag_name": "v1.0.2",
+            "body": "<ul>\n<li>support react v16</li>\n</ul>\n"
+        }]
+    },
+    "关键特性": {
+        "version": "",
+        "component": "gjtx",
+        "children": {
+            "": {
+                "浏览器兼容性": {
+                    "version": "",
+                    "component": "compatibility",
+                    "menus": {
+                        "react 15": {},
+                        "react 16": {},
+                        "兼容 IE8": {},
+                        "使用 CommonJS": {},
+                        "其他问题": {}
+                    }
+                },
+                "全键盘操作": {
+                    "version": "0.1.3",
+                    "component": "keyboard",
+                    "menus": {
+                        "tinper-bee(V1.6.9)快捷键规范定义": {},
+                        "快捷键示例操作说明": {},
+                        "示例点击": {},
+                        "自定义组件键盘操作解决方案": {},
+                        "问题反馈": {}
+                    }
+                },
+                "多端适配": {
+                    "version": "0.1.3",
+                    "component": "multiport",
+                    "menus": {
+                        "PC端": {},
+                        "移动端": {}
+                    }
+                },
+                "国际化": {
+                    "version": "0.1.3",
+                    "component": "international",
+                    "menus": {
+                        "组件库多语设置": {},
+                        "项目国际化 方案一": {},
+                        "项目国际化 方案二": {}
+                    }
+                },
+                "主题定制cli工具": {
+                    "version": "0.1.3",
+                    "component": "theme-cli",
+                    "menus": {
+                        "介绍": {},
+                        "安装、使用": {},
+                        "api": {},
+                        "tinper-bee 主题样式文件注解(themeColor.json)": {},
+                        "help": {}
+                    }
+                },
+                "可视化主题定制": {
+                    "version": "0.1.3",
+                    "component": "theme",
+                    "menus": {}
+                },
+                "企业级UI交互能力": {
+                    "version": "",
+                    "component": "interact",
+                    "menus": {
+                        "1、简单单表+查询+导出": {},
+                        "2、表格行内编辑": {},
+                        "3、表格弹窗编辑": {},
+                        "4、左树右表": {},
+                        "5、主子表（一主一子）": {},
+                        "6、主子表（一主多子）": {},
+                        "7、多种参照": {},
+                        "8、附件管理": {},
+                        "9、流程": {}
+                    }
+                },
+                "按需打包": {
+                    "version": "",
+                    "component": "pakage",
+                    "menus": {
+                        "说明": {},
+                        "安装": {}
+                    }
+                }
+            }
+        }
+    },
+    "组件": {
+        "version": "",
+        "component": "zj",
+        "children": {
+            "基础 General": {
+                "按钮 Button": {
+                    "version": "0.1.3",
+                    "component": "bee-button"
+                },
+                "图标 Icon": {
+                    "version": "0.1.0",
+                    "component": "bee-icon"
+                },
+                "svg图标 SvgIcon": {
+                    "version": "0.0.1",
+                    "component": "bee-svgicon"
+                }
+            },
+            "布局 Layout": {
+                "栅格布局 Layout": {
+                    "version": "0.1.3",
+                    "component": "bee-layout"
+                },
+                "页面布局 PageLayout": {
+                    "version": "1.0.0",
+                    "component": "bee-page-layout"
+                }
+            },
+            "工具 Tool": {
+                "拖拽 Dnd": {
+                    "version": "0.1.3",
+                    "component": "bee-dnd"
+                },
+                "多语 Locale": {
+                    "version": "1.1.1",
+                    "component": "bee-locale"
+                }
+            },
+            "视图 View": {
+                "标记 Badge": {
+                    "version": "0.1.3",
+                    "component": "bee-badge"
+                },
+                "按钮组 ButtonGroup": {
+                    "version": "0.1.3",
+                    "component": "bee-button-group"
+                },
+                "进度条 ProgressBar": {
+                    "version": "0.1.3",
+                    "component": "bee-progress-bar"
+                },
+                "状态按钮 LoadingState": {
+                    "version": "0.1.3",
+                    "component": "bee-loading-state"
+                },
+                "展示板 Panel": {
+                    "version": "0.1.3",
+                    "component": "bee-panel"
+                },
+                "查询面板 SearchPanel": {
+                    "version": "0.1.3",
+                    "component": "bee-search-panel"
+                },
+                "磁贴 Tile": {
+                    "version": "0.1.3",
+                    "component": "bee-tile"
+                },
+                "时间轴 Timeline": {
+                    "version": "0.0.1",
+                    "component": "bee-timeline"
+                },
+                "轮播图 Carousel": {
+                    "version": "0.1.3",
+                    "component": "bee-carousel"
+                },
+                "日历 Calendar": {
+                    "version": "0.1.3",
+                    "component": "bee-calendar"
+                },
+                "表格 Table": {
+                    "version": "0.2.0",
+                    "component": "bee-table"
+                },
+                "复杂表格 ComplexGrid": {
+                    "version": "0.2.0",
+                    "component": "bee-complex-grid"
+                },
+                "树形控件 Tree": {
+                    "version": "0.1.0",
+                    "component": "bee-tree"
+                },
+                "折叠 Collapse": {
+                    "version": "0.1.0",
+                    "component": "bee-collapse"
+                },
+                "图片查看器 Viewer": {
+                    "version": "0.1.3",
+                    "component": "bee-viewer"
+                },
+                "锚点 Anchor": {
+                    "version": "0.1.3",
+                    "component": "bee-anchor"
+                }
+            },
+            "导航 Navigation": {
+                "面包屑 Breadcrumb": {
+                    "version": "0.1.3",
+                    "component": "bee-breadcrumb"
+                },
+                "分页 Pagination": {
+                    "version": "0.1.3",
+                    "component": "bee-pagination"
+                },
+                "页签 Tabs": {
+                    "version": "0.1.3",
+                    "component": "bee-tabs"
+                },
+                "下拉按钮 Dropdown": {
+                    "version": "0.1.3",
+                    "component": "bee-dropdown"
+                },
+                "导航栏 Navbar": {
+                    "version": "0.2.8",
+                    "component": "bee-navbar"
+                },
+                "菜单 Menus": {
+                    "version": "0.1.10",
+                    "component": "bee-menus"
+                },
+                "步骤条 Steps": {
+                    "version": "0.0.4",
+                    "component": "bee-step"
+                },
+                "固钉 Affix": {
+                    "version": "0.1.3",
+                    "component": "bee-affix"
+                },
+                "回到顶部 BackTop": {
+                    "version": "0.1.7",
+                    "component": "bee-backtop"
+                }
+            },
+            "反馈 Feedback": {
+                "模态框 Modal": {
+                    "version": "0.1.3",
+                    "component": "bee-modal"
+                },
+                "通知 Notification": {
+                    "version": "0.1.3",
+                    "component": "bee-notification"
+                },
+                "警告提示 Alert": {
+                    "version": "0.1.3",
+                    "component": "bee-alert"
+                },
+                "气泡弹窗 Popconfirm": {
+                    "version": "0.0.2",
+                    "component": "bee-popconfirm"
+                },
+                "消息提醒 Message": {
+                    "version": "0.0.2",
+                    "component": "bee-message"
+                },
+                "文字提示 Tooltip": {
+                    "version": "0.1.3",
+                    "component": "bee-tooltip"
+                },
+                "加载提示 Loading": {
+                    "version": "0.1.3",
+                    "component": "bee-loading"
+                },
+                "气泡卡片 Popover": {
+                    "version": "0.1.3",
+                    "component": "bee-popover"
+                },
+                "抽屉 Drawer": {
+                    "version": "0.1.3",
+                    "component": "bee-drawer"
+                }
+            },
+            "表单 Form": {
+                "表单 Form": {
+                    "version": "0.1.3",
+                    "component": "bee-form"
+                },
+                "单选 Radio": {
+                    "version": "0.1.3",
+                    "component": "bee-radio"
+                },
+                "多选 Checkbox": {
+                    "version": "0.1.3",
+                    "component": "bee-checkbox"
+                },
+                "输入框 Input": {
+                    "version": "0.1.3",
+                    "component": "bee-form-control"
+                },
+                "输入框组 InputGroup": {
+                    "version": "0.1.3",
+                    "component": "bee-input-group"
+                },
+                "表单容器 FormGroup": {
+                    "version": "0.1.3",
+                    "component": "bee-form-group"
+                },
+                "开关 Switch": {
+                    "version": "0.1.3",
+                    "component": "bee-switch"
+                },
+                "下拉框 Select": {
+                    "version": "0.1.3",
+                    "component": "bee-select"
+                },
+                "树选择 TreeSelect": {
+                    "version": "0.0.3",
+                    "component": "bee-tree-select"
+                },
+                "级联菜单 Cascader": {
+                    "version": "0.1.3",
+                    "component": "bee-cascader"
+                },
+                "城市选择 CitySelect": {
+                    "version": "0.0.3",
+                    "component": "bee-city-select"
+                },
+                "上传 Upload": {
+                    "version": "0.1.3",
+                    "component": "bee-upload"
+                },
+                "滑块 Slider": {
+                    "version": "0.1.3",
+                    "component": "bee-slider"
+                },
+                "穿梭框 Transfer": {
+                    "version": "0.0.3",
+                    "component": "bee-transfer"
+                },
+                "数字框 InputNumber": {
+                    "version": "0.0.8",
+                    "component": "bee-input-number"
+                },
+                "时间 TimePicker": {
+                    "version": "0.1.3",
+                    "component": "bee-timepicker"
+                },
+                "日期 DatePicker": {
+                    "version": "0.1.2",
+                    "component": "bee-datepicker"
+                },
+                "评分 Rate": {
+                    "version": "0.1.3",
+                    "component": "bee-rate"
+                },
+                "剪贴板 Clipboard": {
+                    "version": "0.1.5",
+                    "component": "bee-clipboard"
+                },
+                "自动完成 AutoComplete": {
+                    "version": "0.1.5",
+                    "component": "bee-autocomplete"
+                },
+                "拾色器 ColorPicker": {
+                    "version": "0.1.5",
+                    "component": "bee-colorpicker"
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,140 @@
+<div class="u-row nav">
+    <div class="u-col-md-5 nav-left">
+        <span class="nav-logo ">
+            <a href="/">
+                <img src="//iuap-design-cdn.oss-cn-beijing.aliyuncs.com/static/tinper-bee/logo/iuapdesign.svg">
+                <span class='version'>V<%= latestVersion %></span>
+            </a>
+        </span>
+        <span class="nav-split">|</span>
+        <span class="nav-search">
+            <div class="u-form-control-search u-form-control-affix-wrapper">
+                <input id="componentSearch" placeholder="在iuap design 中搜索" class="u-form-control " />
+                <div class="u-form-control-suffix">
+                    <i class="uf uf-search"></i>
+                </div>
+            </div>
+        </span>
+    </div>
+    <div class="u-col-md-7 nav-right">
+        <ul class="nav-options">
+            <li>
+                <a  href="/">首页</a>
+            </li>
+            <li class="language">设计语言</li>
+            <li>
+                <a class="first-show" href="#">基础组件</a>
+            </li>
+            <li>
+                <a href="/tinper-acs">应用组件</a>
+            </li>
+            <li>
+                <a href="/ecology">社区精选</a>
+            </li>
+            <li>
+                <a  href="/prepaper">典型案例</a>
+            </li>
+            <li class="lang-select">
+                <div class="u-select u-select-focused u-select-enabled" id="selectLang">
+                    <div class="u-select-selection 
+        u-select-selection--single" role="combobox" aria-autocomplete="list" aria-haspopup="true" aria-expanded="false"
+                        tabindex="0">
+                        <div class="u-select-selection-rendered" name="input">
+                            <div class="u-select-selection-selected-value" title="简体中文" style="display: block; opacity: 1;">简体中文</div>
+                        </div>
+                        <span class="u-select-arrow" unselectable="unselectable" style="user-select: none;">
+                            <b></b>
+                        </span>
+                    </div>
+                </div>
+                <div id="selectList" class="select-list">
+                        <div>
+                            <div class="u-select-dropdown nav-lang-select u-select-dropdown--single u-select-dropdown-placement-bottomLeft " style="width: 100px; ">
+                                <div style="overflow: auto;">
+                                    <ul class="u-select-dropdown-menu u-select-dropdown-menu-vertical  u-menu-light u-select-dropdown-menu-root" role="menu"
+                                        aria-activedescendant="">
+                                        <li unselectable="unselectable" title="简体中文" class="u-select-dropdown-menu-item-selected u-select-dropdown-menu-item select-list" role="menuitem"
+                                            aria-selected="true" style="user-select: none;">简体中文</li>
+                                        <li unselectable="unselectable" title="繁体中文" class="u-select-dropdown-menu-item-disabled u-select-dropdown-menu-item select-list" role="menuitem"
+                                            aria-selected="false" aria-disabled="true" style="user-select: none;">繁体中文</li>
+                                        <li unselectable="unselectable" title="英文" class="u-select-dropdown-menu-item-disabled u-select-dropdown-menu-item select-list" role="menuitem"
+                                            aria-selected="false" aria-disabled="true" style="user-select: none;">英文</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="mob-nav">
+    <a href="/">
+        <img src='//design.yonyoucloud.com/static/tinper-bee/logo/iuapdesign.svg' />
+        <span class='version'>当前 <%= latestVersion %></span>
+    </a>
+    <span class="uf uf-navmenu" onclick="displayOrHide()"> 
+        <ul id="itemList0">
+            <li><a href="/" >首页</a></li>
+            <li class="lang">设计语言</li>
+            <li class="basecomp"><a href="#">基础组件</a></li>
+            <li><a href="/tinper-acs">应用组件</a></li>
+            <li><a href="/ecology">社区精选</a></li>
+            <li><a href="/prepaper">典型案例</a></li>
+        </ul>
+    </span>
+</div>
+
+<script>
+    
+    var select = document.querySelector('#selectLang');
+    var selectList = document.querySelector('#selectList');
+    var selectOptions = selectList.querySelectorAll('.u-select-dropdown-menu-item');
+
+    function langShowHide(hide) {
+        var select = document.querySelector('#selectLang');
+        var selectList = document.querySelector('#selectList');
+        try {
+            var cls = selectList.getAttribute('class');
+            if (hide) {
+                selectList.setAttribute('class', 'select-list');
+                select.setAttribute('class', 'u-select u-select-focused u-select-enabled');
+            } else {
+                if (cls.indexOf('open') != -1) { //打开状态
+                    selectList.setAttribute('class', 'select-list');
+                    select.setAttribute('class', 'u-select u-select-focused u-select-enabled');
+                } else { //关闭状态
+                    selectList.setAttribute('class', 'select-list open');
+                    select.setAttribute('class', 'u-select u-select-open u-select-focused u-select-enabled');
+                }
+            }
+        } catch (error) {
+            
+        }
+        
+    }
+    select.onclick = function() {
+        langShowHide()
+    };
+    selectOptions.forEach(item => {
+        item.onclick = () => {
+            langShowHide(true)
+        };
+    })
+    
+    //移动端适配
+    var hide=true;
+    function displayOrHide(){
+        var itemList=document.getElementById("itemList0");
+        if(hide){
+            //显示
+            itemList.style.display="block";
+            hide=false;
+        }else{
+            //隐藏
+            itemList.style.display="none";
+            hide=true;
+        }
+    }
+</script>

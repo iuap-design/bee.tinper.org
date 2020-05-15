@@ -24,3 +24,5 @@ sea-modules
 spm_modules
 .cache
 package-lock.json
+getRelease.js
+ossConfig.json

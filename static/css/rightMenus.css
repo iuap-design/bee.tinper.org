@@ -1,0 +1,63 @@
+.right-menus a{
+    line-height: 20px;
+    height: 20px;
+    font-size: 12px;
+    padding: 0 10px;
+    text-decoration: #424242;
+    color: #424242;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: inline-block;
+}
+.right-menus a:hover,.right-menus a:active{
+    color: #E14C46;
+}
+.right-menus .rm-child-list li{
+    /* padding-left: 10px; */
+}
+.right-menus .rm-child-list a{
+    padding-left: 20px;
+}
+.right-menus .rm-child-list .rm-list-item .rm-list-item-two a{
+    padding-left: 30px;
+}
+.right-menus .rm-list{
+    border-left: 1px solid #E8EAEC;
+}
+.right-menus .rm-list .rm-list-item.active{
+    border-left: 1px solid #E14C46;
+}
+.right-menus .rm-list .rm-list-item.active a{
+    color: #E14C46;
+}
+.right-menus .rm-list .rm-list-item-two.active{
+    border-left: 1px solid #E14C46;
+}
+.right-menus .rm-list .rm-list-item-two.active a{
+    color: #E14C46;
+}
+
+.right-menus::-webkit-scrollbar {
+    width: 0!important;
+    height: 0!important;
+}
+
+/* 滚动槽 */
+
+.right-menus::-webkit-scrollbar-track {
+    background: #fff;
+    border-radius: 10px;
+}
+
+/* 滚动条滑块 */
+
+.right-menus::-webkit-scrollbar-thumb {
+    background: #DFDFDF;
+    border-radius: 10px;
+}
+/* 失去焦点颜色 */
+.right-menus::-webkit-scrollbar-thumb:window-inactive {
+    background: #DFDFDF;
+}

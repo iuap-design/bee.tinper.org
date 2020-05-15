@@ -1,0 +1,21 @@
+<% if(changeLog.length ){ %>
+    <ul class="u-timeline">
+            <% changeLog.forEach(function(item){ %>
+                <li class="u-timeline-item">
+                    <div class="u-timeline-item-tail"></div>
+                    <div class="u-timeline-item-head u-timeline-item-head-danger"></div>
+                    <div class="u-timeline-item-content">
+                        <p id="<%= item.tag_name %>"><%= item.tag_name %> 
+                            <span class="time"> <%= item.published_at %></span>
+                            <span style="font-size:14px">(</span>
+                                <a href="<%= item.html_url %>" target="_blank">release地址</a>
+                            <span style="font-size:14px">)</span>
+                        </p>
+                        <pre><%- item.body %></pre>
+                    </div>
+                </li>
+            <% }) %>
+        </ul>
+<% } else if(isComponent==true) { %>
+    暂无
+<% } %>

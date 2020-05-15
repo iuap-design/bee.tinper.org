@@ -1,6 +1,6 @@
-## 使用注意
+# 使用注意
 
-### 组件引入问题
+## 组件引入问题
 
 由于一些历史原因，我们的示例上，组件的引入方式描述不正确，统一使用如下方式：
 
@@ -28,7 +28,7 @@ import Carousel from 'tinper-bee/lib/Carousel';
 
 ```
 
-### 样式引入问题
+## 样式引入问题
 
 为了方便用户单独处理样式和js文件，所以我们对js和css进行了单独的打包。
 
@@ -73,7 +73,7 @@ css
 <link href="//design.yonyoucloud.com/static/tinper-bee/[版本号]/assets/tinper-bee.css">
 ```
 
-### 按需加载
+## 按需加载
 
 当你的项目只用到了部分组件，你想要更小的打包体积的时候，我们提供了按需加载的能力。
 

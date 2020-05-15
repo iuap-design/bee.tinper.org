@@ -1,45 +1,26 @@
-## 国际化
+# 国际化
 
-### 组件库多语设置
+国际化解决方案，包含了多语言（内容多语和数据多语）、多时区、多币种、多语言录入、国际化手机号录入、多语翻译平台、本地化等相关内容。
 
-tinper-bee组件库提供了 `Locale` 组件来修改组件内写死的文字的语言。使用 `Locale` 组件将你的组件包裹起来，并将语言包传给 `Locale` 组件的 `locale` 属性，即可实现组件库多语。目前组件库提供两种语言包，中文 `tinper-bee/locale/zh_CN.js` 英文 `tinper-bee/locale/en_US.js`。
-示例代码如下：
+## 概述：组件库支持的多语言能力
 
-```
-import React, {Component} from 'react';
-import PropTypes from 'prop-types';
-import ReactDOM from 'react-dom';
-import { Locale } from 'tinper-bee';
-import zhCn from 'tinper-bee/locale/zh_CN.js';
+- 组件库的多语工具组件：[bee-locale](http://bee.tinper.org/tinper-bee/bee-locale)
 
-class App extends Component {
-    render() {
+- 多语言录入组件：[ac-input-locale](http://bee.tinper.org/tinper-acs/ac-input-locale)
 
-        return (
-            <div>
-                我是App
-            </div>
-        )
-    }
-}
+- 国际化手机号录入组件：[ac-mobile-locale](http://bee.tinper.org/tinper-acs/ac-mobile-locale)
+
+- 项目级批量多语翻译工具：[lanbuild](https://www.npmjs.com/package/lanbuild)
 
 
-ReactDOM.render( (
-        <Locale locale={zhCn}>
-            <App />
-        </Locale>
-    )
-}
+## 多语言切换和多语言构建
 
-```
-
-
-### 项目国际化 方案一
-
-[示例](https://github.com/tinper-bee/bee-international-intl)
+### 多语言切换，以及批量替换工具
 
 对于项目的多语设置，我们推荐使用[react-intl](https://github.com/yahoo/react-intl)。
 简要说明如下：假设项目的入口为 App 组件，需要根据cookie判断语言
+
+[示例](https://github.com/tinper-bee/bee-international-intl)
 
 1、配置语言包，`en_US.json`,`zh_CN.json`
 
@@ -154,8 +135,58 @@ class App extends Component {
 <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
 ```
 
-### 项目国际化 方案二
 
-[示例](https://github.com/tinper-bee/bee-international-lanbuild)
+### 多语言构建
 
-使用 [lanbuild](https://www.npmjs.com/package/lanbuild) 组件，产出多种语言版本代码。 目前只支持，中文，英文，繁体中文。 后续支持多种语言以及简化配置，开发正在努力中。。。
+指通过工具将一份代码翻译成多份静态资源，如：webpack-plugin-i18n，以及自研的 [lanbuild](https://www.npmjs.com/package/lanbuild) 工具。
+
+[lanbuild 示例](https://github.com/tinper-bee/bee-international-lanbuild)
+使用 lanbuild 组件产出多种语言版本代码。 目前只支持，中文，英文，繁体中文。 后续支持多种语言以及简化配置，开发正在努力中。。。
+
+
+## 多语文件包 json格式示例
+
+```
+{ 
+  "js.sin.src.0003": "更新成功EN",
+  "js.com.Ind1.0001": "员工编号EN",
+  "js.com.Ind1.0002": "员工姓名EN",
+  "js.com.Ind1.0003": "员工性别EN",
+  "js.com.Ind1.0004": "所属部门EN",
+  "js.com.Ind1.0005": "职级EN",
+  "js.com.Ind1.0006": "工龄EN",
+  "js.com.Ind1.0007": "司龄EN",
+  "js.com.Ind1.0008": "年份EN",
+  "js.com.Ind1.0009": "月份EN",
+  "js.com.Ind1.0010": "补贴类别EN",
+  "js.com.Ind1.0011": "补贴标准EN",
+  "js.com.Ind1.0012": "实际补贴EN",
+  "js.com.Ind1.0013": "是否超标EN",
+  "js.com.Ind1.0014": "申请时间EN",
+  "js.com.Ind1.0015": "领取方式EN",
+  "js.com.Ind1.0016": "领取时间EN",
+  "js.com.Ind1.0017": "备注EN",
+  "js.com.Ind1.0018": "请勾选数据后再新增EN",
+  "js.com.Ind1.0019": "请勾选数据后再更新EN",
+  "js.com.Ind1.0020": "数据填写不完整EN",
+  "js.com.Ind1.0021": "请勾选数据后再删除EN",
+  "js.com.Ind1.0022": "A2单表行内编辑示例EN",
+  "js.com.Ind1.0023": "按钮权限加载完成EN",
+  "js.com.Ind1.0024": "新增EN",
+  "js.com.Ind1.0025": "修改EN",
+  "js.com.Ind1.0026": "删除EN",
+  "js.com.Ind1.0027": "导出EN",
+  "js.com.Ind1.0028": "保存EN",
+  "js.com.Ind1.0029": "取消EN",
+  "js.com.Ind1.0030": "数据未保存，确定离开 ?EN",
+  "js.com.Ind1.0031": "是否要删除 ?EN",
+  "js.com.Ind2.0001": "请选择EN",
+  "js.com.Ind2.0002": "男EN",
+  "js.com.Ind2.0003": "女EN",
+  "js.com.Ind2.0004": "一月EN",
+  "js.com.Ind2.0005": "二月EN",
+  "js.com.Ind2.0006": "三月EN",
+  "js.com.Ind2.0007": "四月EN",
+}
+
+```

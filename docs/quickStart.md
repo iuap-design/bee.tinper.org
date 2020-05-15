@@ -1,66 +1,106 @@
-## 快速上手
+# 快速开始
 
-tinper-bee组件库 致力于提供给程序员愉悦快速的开发体验
-
-在开始之前，推荐学习 <a href="http://facebook.github.io/react">React</a> 和 <a href="http://www.nodeclass.com/api/ECMAScript6.html">ES2016</a> 
-
-项目脚手架可以使用uba工具来初始化项目 [详情点击](https://github.com/iuap-design/tinper-uba/blob/master/README.md)
+&nbsp;&nbsp;tinper-bee 组件库 致力于提供给程序员愉悦快速的开发体验。
 
 
 
-### 一、安装tinper-bee
-
-#### 使用npm安装
-
-推荐使用npm安装。不仅可在开发环境轻松调试，也可放心地在生产环境打包部署使用，享受整个生态圈和工具链带来的诸多好处。
-可以通过 npm 直接安装到项目中，使用 import 或 require 进行引用。
+## 一、安装 tinper-bee 
+可使用 npm、cnpm、yarn 以及 ynpm 来安装组件库以及组件。
 
 ```
-npm install --save tinper-bee
+  npm install --save tinper-bee
 ```
 
-#### 使用CDN
+## 二、项目中使用 tinper-bee
 
-- css样式
-
-```
-<link href="//design.yonyoucloud.com/static/tinper-bee/[版本号]/assets/tinper-bee.css">
-
-```
-
-- js
-
-```
-<script src="//design.yonyoucloud.com/static/tinper-bee/[版本号]/build/tinper-bee.js"></script>
-
-```
-
-[更多CDN服务](http://tinper.org/dist/cdn/index.html)
-
-
-
-
-### 二、在项目中使用tinper-bee组件库
-
-例如：
+为了方便用户单独处理样式和js文件，所以我们对js和css进行了单独的打包。
 
 ```
 import React,{ Component } from 'react';
+
+//tinper-bee 组件库js引用
 import { Button,Panel } from 'tinper-bee';
+
+//tinper-bee 组件库 css 引用
+import 'tinper-bee/assets/tinper-bee.css';
+
+//项目样式
 import './index.less';
 
-export default class Example extends Component{
+class Example extends Component{
   constructor(props) {
    super(props);
  }
+
   render(){
     return (
     <Panel>
       hello world
-      <Button>click me</Button>
     </Panel>)
   }
 }
 
+export default Example；
+
 ```
 
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;~~~~~~  o(￣▽￣)ｄ ~~~~~~  
+<br/><br/>
+
+
+## 三、使用CDN
+
+[版本号查阅](http://bee.tinper.org/tinper-bee/changelog)
+
+- css样式
+
+```js
+//引入指定版本号
+<link href="//design.yonyoucloud.com/static/tinper-bee/[版本号]/assets/tinper-bee.css">
+
+//始终引入最新版本
+<link href="//design.yonyoucloud.com/static/tinper-bee/latest/assets/tinper-bee.css">
+```
+
+- js
+
+```js
+//始终引入最新版本
+<script src="//design.yonyoucloud.com/static/tinper-bee/[版本号]/build/tinper-bee.js"></script>
+
+//引入指定版本号
+<script src="//design.yonyoucloud.com/static/tinper-bee/latest/build/tinper-bee.js"></script>
+
+```
+
+并且，在你的webpack处，配置
+
+```
+externals: {
+   'tinper-bee': 'TinperBee'
+}
+```
+
+## 四、单个使用个别组件
+无法使用主题定制
+
+```js
+import React,{ Component } from 'react';
+
+//Button  组件库js引用
+import Button from 'bee-button';
+
+//Button 组件库 css 引用
+import 'bee-button/build/Button.css';
+
+class Example extends Component{
+ 
+  render(){
+    return (
+    <Button >Button</Button>)
+  }
+}
+
+export default Example；
+```

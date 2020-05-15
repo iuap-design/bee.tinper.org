@@ -1,0 +1,107 @@
+<% if(isComponent){ %>
+    <% if(tag) { %>
+        <link href="//design.yonyoucloud.com/static/tinper-bee/components/<%= active %>/dist/<%= tag %>/demo.css" type="text/css" rel="stylesheet" />
+    <% } else { %>
+        <link href="./<%= active %>/dist/demo.css" type="text/css" rel="stylesheet" />
+    <% } %> 
+<% } %>
+<div class="doc-content">
+    <%- docs %>
+    <div id="theme-app"></div>
+    
+    <div class="changelog">
+        <% include changelog.html %>
+    </div>
+</div>
+
+<div class="right-menus">
+    <% include rightMenus.html %>
+</div>
+
+
+
+<% if(isComponent){ %>
+    <% if(tag) { %>
+        <script src="//design.yonyoucloud.com/static/tinper-bee/components/<%= active %>/dist/<%= tag %>/demo.js"></script>
+    <% } else { %>
+        <script src="./<%= active %>/dist/demo.js"></script>
+    <% } %>     
+<% } %>
+
+<script src="//iuap-design-cdn.oss-cn-beijing.aliyuncs.com/static/tinper-bee/theme/config.js"></script>
+<script async src="//www.googletagmanager.com/gtag/js?id=UA-109836800-1"></script>
+<script>
+    function getCookie(name){ 
+        var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+        if(arr=document.cookie.match(reg))
+            return unescape(arr[2]); 
+        else 
+            return null; 
+    }
+    let cookie = this.getCookie(window.tinperCookieId);
+    if(cookie){
+        // document.getElementById("tinper-bee-csslink").href = (window.tinperCdnUrl+cookie);
+    }
+    window.addEventListener("message", function( event ) {
+        console.log("tinper.bee.org message: ",event.data);
+        // document.getElementById("tinper-bee-csslink").href = (window.tinperCdnUrl+event.data);
+    }, false );
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-109836800-1');
+</script>
+
+<script>
+        var select = document.querySelector('#tagSelect');
+        if(select){
+            var selectList = document.querySelector('#tagList');
+            var selectOptions = selectList.querySelectorAll('.u-select-dropdown-menu-item');
+            select.onclick = function() {
+                showHide()
+            };
+            let nowTag = selectOptions[0].innerHTML;
+            selectOptions.forEach((item,index) => {
+                item.onclick = (e) => {
+                    showHide(true);
+                    let selectTag = e.target.innerHTML;
+                    if(selectTag==nowTag){
+                        window.location.search='';
+                        return
+                    }
+                    window.location.search='?tag='+selectTag;
+                };
+            })
+        }
+        function showHide(hide) {
+            var select = document.querySelector('#tagSelect');
+            var selectList = document.querySelector('#tagList');
+            try {
+                var cls = selectList.getAttribute('class');
+                if (hide) {
+                    selectList.setAttribute('class', 'select-list');
+                    select.setAttribute('class', 'u-select u-select-focused u-select-enabled');
+                } else {
+                    if (cls.indexOf('open') != -1) { //打开状态
+                        selectList.setAttribute('class', 'select-list');
+                        select.setAttribute('class', 'u-select u-select-focused u-select-enabled');
+                    } else { //关闭状态
+                        selectList.setAttribute('class', 'select-list open');
+                        select.setAttribute('class', 'u-select u-select-open u-select-focused u-select-enabled');
+                    }
+                }
+            } catch (error) {
+                
+            }
+            
+        }
+
+        document.addEventListener('click',function(e){
+            let className = e.target.getAttribute('class');
+            if((!className)||(className&&className.indexOf('u-select')==-1)){
+                showHide(true);
+                langShowHide(true);
+            }
+        })
+</script>

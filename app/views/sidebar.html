@@ -1,0 +1,153 @@
+<div>
+    <ul class="menu-components">
+        <% for (key in sidebar){ var title = sidebar[key]; %>
+            <li class="menu-group">
+                <% if(title.children){ var child = title.children; %>
+                    <div class="menu-item menu-item-components open" data-isComponent="<%= title.component %>">
+                        <span class="menu-item-components-text <%= title.component %>" name="<%= title.component %>">
+                            <%= key %>
+                        </span>
+                        <% for (heard in child) { var acs = child[heard]; %>
+                            <div class="menu-item-heard">
+                                <%= heard %>
+                                    <% for (com in acs) { %>
+                                        <% if(acs[com].component == active) {%>
+                                            <div class="menu-item-com active" id="<%= acs[com].component %>">
+                                                <% if(newComponent.indexOf(acs[com].component)!=-1) {%>
+                                                    <a href="./<%= acs[com].component %>" class="doit-before" comp="<%= acs[com].component %>" title="<%= com %>">
+                                                        <%= com %>
+                                                    </a>
+                                                    <%} else {%>
+                                                        <a href="./<%= acs[com].component %>" title="<%= com %>">
+                                                            <%= com %>
+                                                        </a>
+                                                        <% } %>
+                                            </div>
+                                            <%} else {%>
+                                                <div class="menu-item-com" id="<%= acs[com].component %>">
+                                                    <% if(newComponent.indexOf(acs[com].component)!=-1) {%>
+                                                        <a href="./<%= acs[com].component %>" class="doit-before" comp="<%= acs[com].component %>" title="<%= com %>">
+                                                            <%= com %>
+                                                        </a>
+                                                        <%} else {%>
+                                                            <a href="./<%= acs[com].component %>" title="<%= com %>">
+                                                                <%= com %>
+                                                            </a>
+                                                            <% } %>
+                                                </div>
+                                                <% } %>
+                                                    <% } %>
+                            </div>
+                            <% } %>
+                    </div>
+                    <% } else { %>
+                        <% if(sidebar[key].component==active){ %>
+                            <div class="menu-item active" id="<%= sidebar[key].component %>">
+                                <a href="./<%= sidebar[key].component %>" title="<%= key %>">
+                                    <%= key %>
+                                </a>
+                            </div>
+                            <% } else { %>
+                                <div class="menu-item" id="<%= sidebar[key].component %>">
+                                    <a href="./<%= sidebar[key].component %>" title="<%= key %>">
+                                        <%= key %>
+                                    </a>
+                                </div>
+                                <% } %>
+                                    <% } %>
+            </li>
+            <% } %>
+    </ul>
+</div>
+
+
+<script>
+    // 展开关闭事件
+    let nodeList = document.querySelectorAll('.menu-item-components-text');
+    nodeList.forEach((item, index) => {
+        let name = item.getAttribute('name');
+        item.onclick = (e) => {
+            let outDiv = document.querySelectorAll('.menu-item-components')[index]
+            let cls = outDiv.getAttribute('class');
+            if (cls.indexOf('open') != -1) { //打开状态
+                outDiv.setAttribute('class', 'menu-item menu-item-components');
+                sessionStorage.setItem(`${name}Open`, 'false');
+            } else { //关闭状态
+                outDiv.setAttribute('class', 'menu-item menu-item-components open');
+                sessionStorage.setItem(`${name}Open`, 'true');
+            }
+        }
+    })
+
+    //初始化展开关闭
+    let gjtxOpen = sessionStorage.getItem('gjtxOpen'); //关键特性
+    let zjOpen = sessionStorage.getItem('zjOpen'); //组件
+    let titls = document.querySelectorAll('.menu-item-components')
+    if (gjtxOpen == 'false') { //
+        titls[0].setAttribute('class', 'menu-item menu-item-components')
+    }
+    if (zjOpen == 'false') {
+        titls[1].setAttribute('class', 'menu-item menu-item-components')
+    }
+
+
+
+    //左侧滚动条定位
+    let sidebar = document.querySelector('#sidebar');
+    sidebar.onscroll = function () {
+        sessionStorage.setItem('scrollTop', sidebar.scrollTop);
+    }
+    let sessionScrollTop = sessionStorage.getItem('scrollTop');
+    if (sessionScrollTop) {
+        sidebar.scrollTop = sessionScrollTop;
+    }
+
+
+    // 点击红点
+    function localStorageSet(key, value) {
+        var curTime = new Date().getTime();
+        localStorage.setItem(key,JSON.stringify({data:value,time:curTime}));
+    }
+    /*
+     * get 获取方法
+     * @ param {String} 	key 键
+     */
+    function localStorageGet(key,expired) {
+        var data = localStorage.getItem(key);
+        if(!data){
+            return false;
+        }
+        var dataObj = JSON.parse(data);
+        if (new Date().getTime() - dataObj.time>1000*60*60*24*7) {
+            localStorage.setItem(key,'')
+        }else{
+            return dataObj.data;
+        }
+    }
+
+
+
+
+    let week = new Date().getDay();
+    let doits = document.querySelectorAll('.doit-before');
+    let doitClicked = []
+
+    if (localStorageGet('doitClicked')) {
+        doitClicked = localStorageGet('doitClicked');
+    }
+
+    doits.forEach(item => {
+        let com = item.getAttribute('comp');
+        if (doitClicked.indexOf(com) != -1) {
+            item.setAttribute('class', '');
+        } else {
+            item.onclick = e => {
+                item.setAttribute('class', '');
+                if (doitClicked.indexOf(com) == -1) {
+                    doitClicked.push(com)
+                    localStorageSet('doitClicked',doitClicked);
+                }
+            }
+        }
+    })
+</script>

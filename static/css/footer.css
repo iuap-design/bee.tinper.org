@@ -1,0 +1,135 @@
+.footer {
+    background: #424242;
+    color: #ffffff;
+}
+
+.footer .footer-top {
+    padding: 50px 50px 40px 50px;
+}
+
+.footer .footer-top-item {
+    height: 290px;
+    line-height: 30px;
+    padding: 0;
+}
+
+.footer .footer-middle{
+    padding: 0;
+}
+
+.footer .footer-top-item p {
+    margin-top: 0;
+    font: 16px;
+}
+
+.footer .footer-top-item a {
+    color: #ffffff;
+}
+
+.footer .footer-top-item a:hover {
+    color: #E14C46;
+}
+
+.footer .footer-top-item img {
+    width: 15px;
+    height: 15px;
+}
+
+.footer .footer-middle .footer-line {
+    height: 1px;
+    background: #666666;
+}
+
+.footer .footer-base {
+    display: table;
+    height: 80px;
+}
+
+.footer .footer-base .footer-base-font {
+    display: table-cell;
+    font-size: 14px;
+    color: #ffffff;
+    vertical-align: middle;
+    text-align: center;
+    line-height: 1;
+}
+
+.footer .footer-base .footer-base-font p {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+@media screen and (max-width: 800px) {
+    .footer {
+        display: inline-block;
+        text-align: center;
+    }
+    .footer .footer-middle .footer-line {
+        height: 1px;
+        background: #666666;
+    }
+    .footer .footer-top-item {
+        min-height: 110px;
+        margin-bottom: 40px;
+        height: auto;
+    }
+    .footer .footer-top-item p {
+        margin-bottom: 20px;
+    }
+    .footer .footer-base {
+        margin-bottom: 60px;
+        margin-top: 30px;
+    }
+    .footer .footer-base .footer-base-font{
+        padding-left:25px;
+        padding-right:25px;
+    }
+    .footer .footer-base .footer-base-font p {
+        line-height: 20px;
+        text-align: center;
+    }
+    .footer .footer-base .footer-base-font .copy-right {
+        margin-bottom: 0;
+    }
+    .footer .footer-base .footer-base-font .produ {
+        margin-top: 0;
+    }
+}
+
+/* 适配 */
+
+#footer p {
+    color: #fff;
+}
+#footer .footer>.footer-top{
+    margin-left: 9%;
+    margin-right: 9%;
+}
+#footer .footer .footer-middle{
+    padding: 0;
+}
+#footer .footer .footer-middle .footer-line{
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+}
+#footer .u-col-md-12>h3,
+#footer .u-col-md-12>p,
+#footer .u-panel-footer,
+#footer .u-panel-collapse {
+    display: none;
+}
+#footer .u-panel {
+    margin-bottom: 0;
+}
+#footer .u-panel-heading{
+    padding: 0;
+}
+#footer .footer-middle .footer-line {
+    margin-left: -11%;
+    margin-right: -11%;
+    width: 122%;
+}
+#footer>.u-row>.u-col-md-12{
+    padding: 0;
+}

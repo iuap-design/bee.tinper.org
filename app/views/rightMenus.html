@@ -1,0 +1,36 @@
+<div id="rightMenusId">
+    <ul class="rm-list">
+        <% for(key in rightMenus) { var item = rightMenus[key]; %>
+            <li class="rm-list-item" name="#<%= key %>"> 
+                <a class="rm-list-item-a" href="#<%= key %>" title="<%= key %>"><%= key %></a></li>
+                <% if(item.children){ %>  <!--文档右侧标题-->
+                    <ul class="rm-child-list">
+                        <% item.children.forEach(function(it){ %>
+                            <li class="rm-list-item" name="#<%= it %>"> 
+                                <a class="rm-list-item-a" href="#<%= it %>" title="<%= it %>"><%= it %> </a>
+                            </li>
+                        <% }) %>
+                    </ul>
+                <% }else { %> <!--组件右侧标题-->
+                    <ul class="rm-child-list">
+                        <% for(it in item) {  var child = item[it]; %>
+                            <li class="rm-list-item" name="#<%= it %>"> 
+                                <% if(Object.keys(child).length){ %>
+                                    <ul class='rm-child-list-two'>
+                                        <a class="rm-list-item-a" href="#<%= Object.keys(child)[0] %>" title="<%= it %>"><%= it %> </a>
+                                        <% for(i in child) { %>
+                                            <li class="rm-list-item-two" name="#<%= i %>">
+                                                <a class="rm-list-item-two-a" href="#<%= i %>" title="<%= i %>"><%= i %> </a>
+                                            </li>
+                                        <% } %>
+                                    </ul>
+                                <% }else { %>
+                                    <a class="rm-list-item-a" href="#<%= it %>" title="<%= it %>"><%= it %> </a>
+                                <% } %>
+                            </li>
+                        <% } %>
+                    </ul>
+                <% } %>
+        <% } %>
+    </ul>
+</div>
