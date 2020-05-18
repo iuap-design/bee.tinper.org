@@ -110,6 +110,7 @@
         document.addEventListener('scrollStart', logScrollEvent, false);
         new Gumshoe('li.rm-list-item a')
         const Scroll = new SmoothScroll('li.rm-list-item a',{
+            speed:100,
             offset:()=>{
                 return header.clientHeight+tabs.clientHeight+20
             }
