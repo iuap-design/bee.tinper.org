@@ -296,6 +296,13 @@ select::-ms-expand {
 .docs .doc-content .changelog .u-timeline-item{
     padding: 0
 }
+.docs .doc-content .changelog .u-timeline-item h1{
+    margin: 0;
+    font-size: 18px;
+    line-height: 20px;
+    margin-left: -15px;
+    display: inline-block;
+}
 .docs .doc-content .changelog .u-timeline-item:last-of-type .u-timeline-item-tail{
     display: none;
 }
