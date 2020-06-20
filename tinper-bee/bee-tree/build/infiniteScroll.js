@@ -64,11 +64,9 @@ var InfiniteScroll = function (_Component) {
 
     _this.scrollListener = function () {
       var el = _this.scrollComponent;
-
       var parentNode = _this.getParentElement(el);
-
       _this.scrollTop = parentNode.scrollTop;
-      (0, _util.throttle)(_this.handleScrollY, 500)();
+      _this.handleScrollY();
     };
 
     _this.handleScrollY = function () {
@@ -130,12 +128,7 @@ var InfiniteScroll = function (_Component) {
 
     _this.sliceTreeList = function (startIndex, endIndex) {
       var newTreeList = []; //存储截取后的新数据
-      // console.log(
-      //   "**startIndex**" + startIndex,
-      //   "**endIndex**" + endIndex
-      // );
       newTreeList = _this.treeList.slice(startIndex, endIndex);
-      // console.log(JSON.stringify(newTreeList))
       _this.props.handleTreeListChange && _this.props.handleTreeListChange(newTreeList, startIndex, endIndex);
     };
 
@@ -165,6 +158,12 @@ var InfiniteScroll = function (_Component) {
       this.handleScrollY();
     }
   };
+
+  // componentDidUpdate() {
+  //   const el = this.scrollComponent;
+  //   const parentNode = this.getParentElement(el);
+  //   parentNode.scrollTop = this.scrollTop;
+  // };
 
   InfiniteScroll.prototype.componentWillUnmount = function componentWillUnmount() {
     this.detachScrollListener();
@@ -247,11 +246,11 @@ var InfiniteScroll = function (_Component) {
     var scrollY = scrollEl && scrollEl.clientHeight;
 
     var rowHeight = store.getState().rowHeight;
-    //默认显示20条，rowsInView根据定高算的。在非固定高下，这个只是一个大概的值。
+    //默认显示20条，rowsInView根据定高算的。
     this.rowsInView = scrollY ? Math.floor(scrollY / rowHeight) : _config2["default"].defaultRowsInView;
 
-    scrollEl.addEventListener('scroll', this.scrollListener, this.options ? this.options : this.props.useCapture);
-    scrollEl.addEventListener('resize', this.scrollListener, this.options ? this.options : this.props.useCapture);
+    scrollEl.addEventListener('scroll', (0, _util.throttle)(this.scrollListener, 150), this.options ? this.options : this.props.useCapture);
+    scrollEl.addEventListener('resize', (0, _util.throttle)(this.scrollListener, 150), this.options ? this.options : this.props.useCapture);
   };
   /**
    * 滚动事件监听

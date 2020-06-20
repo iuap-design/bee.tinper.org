@@ -101,15 +101,8 @@ var Tree = function (_React$Component) {
     return _this;
   }
 
-  /**
-   * 在 lazyload 情况下，需要获取树节点的真实高度
-   */
-
-
   Tree.prototype.componentDidMount = function componentDidMount() {
-    var lazyLoad = this.props.lazyLoad;
     // 此处为了区分数据是不是异步渲染的，prevProps 作为标识
-
     if (this.hasTreeNode()) {
       this.setState({
         prevProps: this.props
@@ -119,14 +112,7 @@ var Tree = function (_React$Component) {
     if (this.props._getTreeObj) {
       this.props._getTreeObj(this);
     }
-    // 启用懒加载，计算树节点真实高度
-    if (!lazyLoad) return;
-    var treenodes = this.tree.querySelectorAll('.u-tree-treenode-close')[0];
-    if (!treenodes) return;
-    var rowHeight = treenodes.getBoundingClientRect().height;
-    this.store.setState({
-      rowHeight: rowHeight
-    });
+    this.calculateRowHeight();
   };
 
   // 判断初始化挂载时，有没有渲染树节点
@@ -228,6 +214,12 @@ var Tree = function (_React$Component) {
       this.dataChange = true;
     }
     this.setState(st);
+  };
+
+  Tree.prototype.componentDidUpdate = function componentDidUpdate() {
+    if (!this.hasCalculateRowHeight) {
+      this.calculateRowHeight();
+    }
   };
 
   Tree.prototype.onDragStart = function onDragStart(e, treeNode) {
@@ -431,7 +423,7 @@ var Tree = function (_React$Component) {
       var rsCheckedKeys = [];
       if (checked && index === -1) {
         checkedKeys.push(key);
-        rsCheckedKeys.push(key);
+        // rsCheckedKeys.push(key);//onCheck第一个参数的key不对
       }
       if (!checked && index > -1) {
         checkedKeys.splice(index, 1);
@@ -963,7 +955,9 @@ var Tree = function (_React$Component) {
   Tree.prototype.renderTreeNode = function renderTreeNode(child, index) {
     var level = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
 
-    var pos = level + '-' + index;
+    // fix: 懒加载场景，index 计算错误
+    var actualIndex = index + parseInt(this.startIndex);
+    var pos = level + '-' + actualIndex;
     var key = child.key || pos;
 
     var state = this.state;
@@ -1117,7 +1111,7 @@ var Tree = function (_React$Component) {
         _this6.treeNodesStates[pos] = {
           siblingPosition: siblingPosition
         };
-      });
+      }, undefined, startIndex);
     };
     if (showLine && !checkable) {
       getTreeNodesStates();
@@ -1150,7 +1144,7 @@ var Tree = function (_React$Component) {
               _this6.treeNodesStates[pos].checked = true;
               checkedPositions.push(pos);
             }
-          });
+          }, undefined, startIndex);
           // if the parent node's key exists, it all children node will be checked
           (0, _util.handleCheckState)(this.treeNodesStates, (0, _util.filterParentPosition)(checkedPositions), true);
           checkKeys = (0, _util.getCheck)(this.treeNodesStates);
@@ -1202,6 +1196,20 @@ var _initialiseProps = function _initialiseProps() {
     return !noTreeNode;
   };
 
+  this.calculateRowHeight = function () {
+    var lazyLoad = _this7.props.lazyLoad;
+    // 启用懒加载，计算树节点真实高度
+
+    if (!lazyLoad) return;
+    var treenodes = _this7.tree.querySelectorAll('.u-tree-treenode-close')[0];
+    if (!treenodes) return;
+    _this7.hasCalculateRowHeight = true;
+    var rowHeight = treenodes.getBoundingClientRect().height;
+    _this7.store.setState({
+      rowHeight: rowHeight
+    });
+  };
+
   this.handleTreeListChange = function (treeList, startIndex, endIndex) {
     // 属性配置设置
     var attr = {
@@ -1218,6 +1226,7 @@ var _initialiseProps = function _initialiseProps() {
     _this7.setState({
       treeData: treeData
     });
+    _this7.dataChange = true;
   };
 
   this.deepTraversal = function (treeData) {

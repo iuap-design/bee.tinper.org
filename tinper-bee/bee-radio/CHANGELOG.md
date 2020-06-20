@@ -1,3 +1,12 @@
+## [2.1.6](https://github.com/tinper-bee/bee-radio/compare/v2.1.5...v2.1.6) (2020-05-22)
+
+
+### Bug Fixes
+
+* 解决warning ([4e68bf8](https://github.com/tinper-bee/bee-radio/commit/4e68bf8b998e316f8a30b803758e864e143c18b0))
+
+
+
 ## [2.1.5](https://github.com/tinper-bee/bee-radio/compare/v2.1.4...v2.1.5) (2020-04-24)
 
 

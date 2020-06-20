@@ -16,6 +16,7 @@ const propTypes = {
     showClose: PropTypes.bool,
     focusSelect:PropTypes.bool,
     debounceDelay:PropTypes.number,
+    maxLength:PropTypes.number
 };
 
 const defaultProps = {
@@ -31,11 +32,17 @@ function fixControlledValue(value) {
     }
     return value;
 }
+let cutValue=(value,maxLength)=>{
+    if(maxLength&&value){
+        value=value.toString().substring(0,maxLength);
+    }
+    return value;
+}
 class FormControl extends React.Component {
 
     constructor(props) {
         super(props);
-        const value = typeof props.value === 'undefined' ? props.defaultValue : props.value;
+        const value = typeof props.value === 'undefined' ? cutValue(props.defaultValue,props.maxLength) : cutValue(props.value,props.maxLength);
         this.state = {
             showSearch: !props.value,
             value: value,
@@ -44,10 +51,14 @@ class FormControl extends React.Component {
         this.clickClearBtn = false;
     }
 
+    
+
     componentWillReceiveProps(nextProp) {
         if ("value" in nextProp) {
             if (nextProp.value !== this.state.value) {
-                this.setState({value: nextProp.value});
+                this.setState({
+                    value: cutValue(nextProp.value,nextProp.maxLength)
+                });
             }
         }
     }

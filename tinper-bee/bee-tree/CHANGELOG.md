@@ -1,3 +1,14 @@
+## [2.1.20](https://github.com/tinper-bee/bee-tree/compare/v2.1.19...v2.1.20) (2020-06-12)
+
+
+### Bug Fixes
+
+* scrollY未定义 ([00da551](https://github.com/tinper-bee/bee-tree/commit/00da5516d58da1c6ef0ac54ff4561cd1cf5ee573))
+* scrollY未定义 ([b08ee80](https://github.com/tinper-bee/bee-tree/commit/b08ee805bc292cffb13c22eb126247da06d0fe24))
+* 懒加载滚动后，复选框不能勾选[IFNC-1116] ([4554f26](https://github.com/tinper-bee/bee-tree/commit/4554f26ff7b599f7e4faeb0c20bd2f70fbaef6cf))
+
+
+
 ## [2.1.19](https://github.com/tinper-bee/bee-tree/compare/v2.1.18...v2.1.19) (2020-05-08)
 
 

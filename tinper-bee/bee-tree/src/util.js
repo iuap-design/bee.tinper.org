@@ -94,11 +94,11 @@ function getSiblingPosition(index, len, siblingPosition) {
   return siblingPosition;
 }
 
-export function loopAllChildren(childs, callback, parent) {
+export function loopAllChildren(childs, callback, parent, baseNum=0) {
   const loop = (children, level, _parent) => {
     const len = getChildrenlength(children);
     React.Children.forEach(children, (item, index) => {
-      const pos = `${level}-${index}`;
+      const pos = `${level}-${index+parseInt(baseNum)}`;
       if (item.props.children && item.type && item.type.isTreeNode) {
         loop(item.props.children, pos, { node: item, pos });
       }
@@ -415,56 +415,23 @@ function isObject(value) {
 }
 
 /**
- * 函数防抖
- * @param {*} func 
- * @param {*} wait 
- * @param {*} immediate 
- */
-export function debounce(func, wait, immediate) {
-  let timeout;
-  return function debounceFunc() {
-    const context = this;
-    const args = arguments;
-    // https://fb.me/react-event-pooling
-    if (args[0] && args[0].persist) {
-      args[0].persist();
-    }
-    const later = () => {
-      timeout = null;
-      if (!immediate) {
-        func.apply(context, args);
-      }
-    };
-    const callNow = immediate && !timeout;
-    clearTimeout(timeout);
-    timeout = setTimeout(later, wait);
-    if (callNow) {
-      func.apply(context, args);
-    }
-  };
-}
-
-/**
  * 函数节流
  * @param {*} func 延时调用函数
  * @param {*} wait 延迟多长时间
- * @param {*} options 至少多长时间触发一次
  * @return Function 延迟执行的方法
  */
-export function throttle(func, wait, options) {
-  let leading = true
-  let trailing = true
-
-  if (typeof func !== 'function') {
-    throw new TypeError('Expected a function')
+export function throttle(fn, wait){
+  let last;
+  return function() {
+    let now = Date.now();
+    if (!last) {
+      fn.apply(this, arguments);
+      last = now;
+      return;
+    }
+    if(now - last >= wait) {
+      fn.apply(this, arguments);
+      last = now;
+    }
   }
-  if (isObject(options)) {
-    leading = 'leading' in options ? !!options.leading : leading
-    trailing = 'trailing' in options ? !!options.trailing : trailing
-  }
-  return debounce(func, wait, {
-    leading,
-    trailing,
-    'maxWait': wait,
-  })
 }

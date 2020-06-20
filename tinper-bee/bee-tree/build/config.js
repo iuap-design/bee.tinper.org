@@ -9,8 +9,8 @@ Object.defineProperty(exports, "__esModule", {
 
 // 树懒加载功能，需要用到的变量
 exports["default"] = {
-    loadBuffer: 5, //懒加载时缓冲区数据量
+    loadBuffer: 20, //懒加载时缓冲区数据量
     defaultRowsInView: 20, //可视区数据量
-    rowDiff: 3 //行差值，需要重新截取数据的阈值
+    rowDiff: 10 //行差值，需要重新截取数据的阈值
 };
 module.exports = exports["default"];

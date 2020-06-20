@@ -33,6 +33,7 @@ export default class Demo1 extends Component {
                     size="sm"
                     focusSelect={true}
                     showClose={true}
+                    maxLength="3"
                 />
                 <FormControl
                     className="demo1-input"

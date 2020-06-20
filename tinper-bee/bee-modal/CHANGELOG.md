@@ -1,3 +1,12 @@
+## [2.1.16](https://github.com/tinper-bee/bee-modal/compare/v2.1.15...v2.1.16) (2020-05-28)
+
+
+### Bug Fixes
+
+* 去掉 pointer-events 影响 ([f086dd8](https://github.com/tinper-bee/bee-modal/commit/f086dd8b5c20868219fd13403812dddafb45e1a3))
+
+
+
 ## [2.1.15](https://github.com/tinper-bee/bee-modal/compare/v2.1.14...v2.1.15) (2020-04-24)
 
 

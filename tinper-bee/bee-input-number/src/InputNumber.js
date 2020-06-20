@@ -183,12 +183,12 @@ class InputNumber extends Component {
             }
         }
         const local = getComponentLocale(props, this.context, 'InputNumber', () => i18n);
-        if (currentValue <= min) {
+        if (min&&currentValue <= min) {
             if(displayCheckPrompt)prompt(local['msgMin']);
             currentMinusDisabled = true;
             currentValue=min;
         }
-        if (currentValue >= max) {
+        if (max&&currentValue >= max) {
             if(displayCheckPrompt)prompt(local['msgMax']);
             currentPlusDisabled = true;
             currentValue=max;
@@ -361,11 +361,11 @@ class InputNumber extends Component {
             }
         }
         value = isNaN(Number(value)) ? 0 : Number(value);
-        if(value>max){
+        if(max&&value>max){
             if(displayCheckPrompt)prompt(local['msgMax']);
             value = max;
         }
-        if(value<min){
+        if(min&&value<min){
             if(displayCheckPrompt)prompt(local['msgMin']);
             value = min;
         }
@@ -396,8 +396,7 @@ class InputNumber extends Component {
      */
     detailDisable = (value) => {
         const { max, min, step } = this.props;
-
-        if(value >= max || Number(value) + Number(step) > max){
+        if(max&&(value >= max || Number(value) + Number(step) > max)){
             this.setState({
                 plusDisabled: true
             })
@@ -406,7 +405,7 @@ class InputNumber extends Component {
                 plusDisabled: false
             })
         }
-        if(value <= min || value -step < min){
+        if(min&&(value <= min || value -step < min)){
             this.setState({
                 minusDisabled: true
             })
@@ -436,7 +435,7 @@ class InputNumber extends Component {
             }
         }
 
-        if(value > max){
+        if(max&&value > max){
             value = max;
         }
 
@@ -459,16 +458,16 @@ class InputNumber extends Component {
         if(typeof max === "undefined"){
             value = this.detail(value, step, 'add');
         }else{
-            if(value > max){
+            if(max&&value > max){
                 value = max;
             }else{
                 let addedValue = this.detail(value, step, 'add');
-                if(addedValue <= max){
+                if(max&&addedValue <= max){
                     value = addedValue;
                 }
             }
         }
-        if(value < min){
+        if(min&&value < min){
             value = min;
         }
         this.setState({

@@ -150,12 +150,12 @@ var Radio = function (_React$Component) {
     // 包裹 radioGroup
     if (radioGroup) {
       radioProps.name = radioGroup.name;
-      radioProps.selectedValue = radioGroup.selectedValue;
+      radioProps.selectedvalue = radioGroup.selectedValue;
       radioProps.size = radioGroup.size;
       radioProps.focusvalue = radioGroup.focusvalue;
     }
     var name = radioProps.name,
-        selectedValue = radioProps.selectedValue,
+        selectedvalue = radioProps.selectedvalue,
         size = radioProps.size,
         focusvalue = radioProps.focusvalue;
 
@@ -164,8 +164,8 @@ var Radio = function (_React$Component) {
     /**
      * 若父级selectedValue与本身的value值相同，则改radio被选中
      */
-    if (selectedValue !== undefined) {
-      optional.checked = this.props.value === selectedValue;
+    if (selectedvalue !== undefined) {
+      optional.checked = this.props.value === selectedvalue;
     }
 
     var classes = (_classes = {}, _defineProperty(_classes, clsPrefix + '-focused', this.state.focused), _defineProperty(_classes, 'is-checked', typeof optional.checked !== 'undefined' ? optional.checked : checked), _defineProperty(_classes, 'disabled', disabled), _classes);
