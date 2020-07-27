@@ -26,7 +26,7 @@
 
 注意：
 - 步骤 2 需要 本机 github网络较好，读取需要更新的组件下载并覆盖本地文件
-- 如有新增组件，可以使用 `npm run writeFile1`命令，增量下载组件
+- 如有新增组件，可以使用 `npm run writeFile2`命令，增量下载组件
 - `npm run writeFile`命令，移除所有已下载的tinper-bee组件，重新下载，由于网络原因不建议使用此命令
 
 
