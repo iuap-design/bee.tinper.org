@@ -13,7 +13,7 @@
                                     <% for (com in acs) { %>
                                         <% if(acs[com].component == active) {%>
                                             <div class="menu-item-com active" id="<%= acs[com].component %>">
-                                                <% if(newComponent.indexOf(acs[com].component)!=-1) {%>
+                                                <% if(newComponent[acs[com].component]) {%>
                                                     <a href="./<%= acs[com].component %>" class="doit-before" comp="<%= acs[com].component %>" title="<%= com %>">
                                                         <%= com %>
                                                     </a>
@@ -25,7 +25,7 @@
                                             </div>
                                             <%} else {%>
                                                 <div class="menu-item-com" id="<%= acs[com].component %>">
-                                                    <% if(newComponent.indexOf(acs[com].component)!=-1) {%>
+                                                    <% if(newComponent[acs[com].component]) {%>
                                                         <a href="./<%= acs[com].component %>" class="doit-before" comp="<%= acs[com].component %>" title="<%= com %>">
                                                             <%= com %>
                                                         </a>

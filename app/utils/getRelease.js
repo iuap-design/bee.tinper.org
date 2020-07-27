@@ -54,7 +54,7 @@ Object.keys(componentsSource).forEach(item=>{
 
 gh.list(auth, 'iuap-design', 'tinper-bee', (err,list)=>{
     if (err) {
-        console.log(`❌❌ 读取release失败！${component} `)
+        console.log(`❌❌ 读取release失败！tinper-bee `)
         console.log(err);
     } else {
         let changesArray = [];
@@ -89,9 +89,9 @@ gh.list(auth, 'iuap-design', 'tinper-bee', (err,list)=>{
 
         let latestRelease = list[0].body;
         let newAry=latestRelease.match(newComReg);
-        let newJsonAry = []
+        let newJsonAry = {}
         newAry.forEach(item=>{
-            newJsonAry.push(item.replace('- ','').replace('@',''))
+            newJsonAry[`${item.replace('- ','').replace('@','')}`]={}
         })
         fs.writeJson('./static/new.json', newJsonAry)
             .then(() => {

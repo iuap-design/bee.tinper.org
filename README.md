@@ -7,7 +7,7 @@
 
 1、在 `app/utils/getRelease.js` 配置 github token和user
 
-2、执行 `npm run writeFile` 更新组件相关文件
+2、执行 `npm run writeNew` 更新组件相关文件
 
 3、在 `bee.tinper.org/app/utils` 下新建 `ossConfig.json` 文件，填写 oss 配置信息，格式如下
 
@@ -25,8 +25,9 @@
 
 
 注意：
-步骤 2、3 需要 本机 github网络较好。 如果步骤 2 中途中断，可使用 `npm run writeFile2 `命令，增量下载组件。
-
+- 步骤 2 需要 本机 github网络较好，读取需要更新的组件下载并覆盖本地文件
+- 如有新增组件，可以使用 `npm run writeFile1`命令，增量下载组件
+- `npm run writeFile`命令，移除所有已下载的tinper-bee组件，重新下载，由于网络原因不建议使用此命令
 
 
 ## 新增组件步骤
