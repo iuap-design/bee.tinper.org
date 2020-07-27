@@ -1,7 +1,7 @@
 /**
  *
  * @title 基本用法
- * @description 设置`loadingType`来修改Loading样式。默认是'rotate'。
+ * @description 设置`loadingType`来修改Loading样式。默认是'default'。
  *
  */
 
@@ -13,12 +13,24 @@ class Demo1 extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      showDefault:false,
       showRotate: false,
         showLine: false
     }
   }
 
   handleShow = () => {
+      this.setState({
+        showDefault: true
+      })
+      setTimeout(() => {
+          this.setState({
+            showDefault: false
+          })
+      }, 3000)
+
+  }
+  handleShowRotate = () => {
       this.setState({
           showRotate: true
       })
@@ -53,7 +65,19 @@ class Demo1 extends Component {
         <Loading
             fullScreen
             showBackDrop={true}
+            show={this.state.showDefault}
+        />
+        <Button
+            colors="primary"
+            style={{ marginLeft: 50 }}
+            onClick={this.handleShowRotate}>
+          点击显示 rotate loading
+        </Button>
+        <Loading
+            fullScreen
+            showBackDrop={true}
             show={this.state.showRotate}
+            loadingType="rotate"
         />
         <Button
             colors="primary"

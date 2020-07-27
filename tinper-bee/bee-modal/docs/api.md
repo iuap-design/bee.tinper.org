@@ -66,6 +66,7 @@ import 'bee-modal/build/Modal.css';
 |maxWidth|resize时模态框的最大宽度|number/string|-|
 |maxHeight|resize时模态框的最大高度|number/string|-|
 |bounds|设置拖拽范围,可输入{top:xxx,bottom:xxx,left:xxx,right:xxx}或者选择器(例如 "#app")|object/string|null|
+|needScroll|是否需要记录scrollY的位置并在关闭时滚动到指定位置，适用于不设置`container`且出现打开模态框滚动到最顶部的问题时|bool/number|false|
 
 ### Modal.Header
 

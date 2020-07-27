@@ -59,5 +59,8 @@ export default {
         'gotit':'知道了',
         'cancel':'取消',
         'ok':'確認'
+    },
+    Loading:{
+        'loading': '加載中...',
     }
 }

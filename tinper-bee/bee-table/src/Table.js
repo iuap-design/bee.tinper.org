@@ -59,12 +59,14 @@ const propTypes = {
   hoverContent:PropTypes.func,
   size: PropTypes.oneOf(['sm', 'md', 'lg']),
   rowDraggAble: PropTypes.bool,
+  hideDragHandle: PropTypes.bool, // 隐藏行拖拽把手
   onDropRow: PropTypes.func,
   onDragRowStart: PropTypes.func,
   onBodyScroll: PropTypes.func,
   bodyDisplayInRow: PropTypes.bool, // 表格内容超出列宽度时进行换行 or 以...形式展现
   headerDisplayInRow: PropTypes.bool, // 表头内容超出列宽度时进行换行 or 以...形式展现
   showRowNum: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]), // 表格是否自动生成序号,格式为{base:number || 0,defaultKey:string || '_index',defaultName:string || '序号'}
+  onPaste:PropTypes.func,
 };
 
 const defaultProps = {
@@ -96,18 +98,20 @@ const defaultProps = {
   minColumnWidth: 80,
   locale:{},
   syncHover: true,
-  setRowHeight:()=>{},
+  // setRowHeight:()=>{},
   setRowParentIndex:()=>{},
   tabIndex:'0',
   heightConsistent:false,
   size: 'md',
   rowDraggAble:false,
+  hideDragHandle:false,
   onDropRow: ()=>{},
   onDragRowStart: ()=>{},
   onBodyScroll: ()=>{},
   bodyDisplayInRow: true,
   headerDisplayInRow: true,
   showRowNum: false,
+  onPaste:()=>{}
 };
 
 const expandIconCellWidth = Number(43);
@@ -117,7 +121,8 @@ class Table extends Component {
     super(props);
     let expandedRowKeys = [];
     let rows = [...props.data];
-    this.columnManager = new ColumnManager(props.columns, props.children, props.originWidth, props.rowDraggAble, props.showRowNum); // 加入props.showRowNum参数
+    const showDragHandle = !props.hideDragHandle && props.rowDraggAble;
+    this.columnManager = new ColumnManager(props.columns, props.children, props.originWidth, showDragHandle, props.showRowNum); // 加入props.showRowNum参数
     this.store = createStore({ currentHoverKey: null });
     this.firstDid = true;
     if (props.defaultExpandAllRows) {
@@ -201,7 +206,7 @@ class Table extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    let { rowDraggAble, showRowNum } = this.props;
+    let { hideDragHandle, rowDraggAble, showRowNum } = this.props;
     if ('data' in nextProps) {
       this.setState({
         data: nextProps.data,
@@ -213,12 +218,12 @@ class Table extends Component {
       });
     }
     if (nextProps.columns && nextProps.columns !== this.props.columns) {
-      this.columnManager.reset(nextProps.columns, null, showRowNum, rowDraggAble); // 加入this.props.showRowNum参数
+      this.columnManager.reset(nextProps.columns, null, showRowNum, !hideDragHandle && rowDraggAble); // 加入this.props.showRowNum参数
       if(nextProps.columns.length !== this.props.columns.length && this.refs && this.bodyTable){
          this.scrollTop = this.bodyTable.scrollTop;
       }
     } else if (nextProps.children !== this.props.children) {
-      this.columnManager.reset(null, nextProps.children, showRowNum, rowDraggAble); // 加入this.props.showRowNum参数
+      this.columnManager.reset(null, nextProps.children, showRowNum, !hideDragHandle && rowDraggAble); // 加入this.props.showRowNum参数
     }
     //适配lazyload
     if(nextProps.scrollTop > -1){
@@ -567,7 +572,7 @@ class Table extends Component {
   }
 
   getExpandedRow(key, content, visible, className, fixed) {
-    const { clsPrefix, expandIconAsCell } = this.props;
+    const { clsPrefix, expandIconAsCell,onPaste } = this.props;
     let colCount;
     if (fixed === 'left') {
       colCount = this.columnManager.leftLeafColumns().length;
@@ -605,6 +610,7 @@ class Table extends Component {
     }
     return (
       <TableRow
+        onPaste={onPaste}
         columns={columns}
         visible={visible}
         className={className}
@@ -615,6 +621,7 @@ class Table extends Component {
         store={this.store}
         dragborderKey={this.props.dragborderKey}
         rowDraggAble={this.props.rowDraggAble}
+        useDragHandle={this.props.useDragHandle}
         onDragRow={this.onDragRow}
         onDragRowStart={this.onDragRowStart}
         height={expandedRowHeight}
@@ -699,6 +706,7 @@ class Table extends Component {
     const childrenColumnName = props.childrenColumnName;
     const expandedRowRender = props.expandedRowRender;
     const expandRowByClick = props.expandRowByClick;
+    const onPaste = props.onPaste;
     const { fixedColumnsBodyRowsHeight } = this.state;
     let rst = [];
     let height;
@@ -713,7 +721,7 @@ class Table extends Component {
     const expandIconColumnIndex = props.expandIconColumnIndex
     if(props.lazyLoad && props.lazyLoad.preHeight && indent == 0){
       rst.push(
-        <TableRow height={props.lazyLoad.preHeight} columns={[]} className='' key={'table_row_first'} store={this.store} visible = {true}/>
+        <TableRow onPaste={onPaste} height={props.lazyLoad.preHeight} columns={[]} className='' key={'table_row_first'} store={this.store} visible = {true}/>
       )
     }
     const lazyCurrentIndex =  props.lazyLoad && props.lazyLoad.startIndex ?props.lazyLoad.startIndex :0;
@@ -785,10 +793,11 @@ class Table extends Component {
       }
       rst.push(
         <TableRow
+          onPaste={onPaste}
           indent={indent}
           indentSize={props.indentSize}
           needIndentSpaced={needIndentSpaced}
-          className={`${className} ${this.props.rowDraggAble?' row-dragg-able ':''}`}
+          className={`${className} ${props.rowDraggAble && !props.useDragHandle?'row-dragg-able ':''}`}
           record={record}
           expandIconAsCell={expandIconAsCell}
           onDestroy={this.onRowDestroy}
@@ -820,7 +829,8 @@ class Table extends Component {
           rootIndex = {rootIndex}
           syncHover = {props.syncHover}
           bodyDisplayInRow = {props.bodyDisplayInRow}
-          rowDraggAble={this.props.rowDraggAble}
+          rowDraggAble={props.rowDraggAble}
+          useDragHandle={props.useDragHandle}
           onDragRow={this.onDragRow}
           onDragRowStart={this.onDragRowStart}
           contentTable={this.contentTable}
@@ -853,7 +863,7 @@ class Table extends Component {
 
     if(props.lazyLoad && props.lazyLoad.sufHeight && indent == 0){
       rst.push(
-        <TableRow height={props.lazyLoad.sufHeight} key={'table_row_end'} columns={[]} className='' store={this.store} visible = {true}/>
+        <TableRow onPaste={onPaste} height={props.lazyLoad.sufHeight} key={'table_row_end'} columns={[]} className='' store={this.store} visible = {true}/>
       )
     }
     if (!this.isTreeType) {
@@ -1117,7 +1127,7 @@ class Table extends Component {
     }
     // const leftFixedWidth = this.columnManager.getLeftColumnsWidth(this.contentWidth);
     // const rightFixedWidth = this.columnManager.getRightColumnsWidth(this.contentWidth);
-    let expandIconWidth = expandIconAsCell ? 33 : 0;
+    let expandIconWidth = expandIconAsCell ? 32 : 0;
     let parStyle = {}
     if(!fixed){
       parStyle = {'marginLeft':leftFixedWidth + expandIconWidth,'marginRight':rightFixedWidth}
@@ -1337,6 +1347,9 @@ class Table extends Component {
         debounce(
           handleScrollY(this.lastScrollTop,this.treeType,onBodyScroll),
         300)
+      }else{
+        //滚动回调
+        onBodyScroll(this.lastScrollTop)
       }
 
     }
@@ -1373,8 +1386,11 @@ class Table extends Component {
           this.hoverDom.style.lineHeight = td.offsetHeight + 'px';
           this.hoverDom.style.display = 'block';
         }
+        this.setState({
+          currentHoverIndex: currentIndex,
+          currentHoverRecord: record
+        })
       }
-
     }
 
     onRowHover && onRowHover(currentIndex,record);
@@ -1410,6 +1426,7 @@ class Table extends Component {
   }
 
   render() {
+    const { currentHoverRecord, currentHoverIndex } = this.state;
     const props = this.props;
     const clsPrefix = props.clsPrefix;
     const hasFixedLeft = this.columnManager.isAnyColumnsLeftFixed();
@@ -1479,7 +1496,7 @@ class Table extends Component {
           container={this}
           {...loading} />
         { props.hoverContent && <div className="u-row-hover"
-                                     onMouseEnter={this.onRowHoverMouseEnter} onMouseLeave={this.onRowHoverMouseLeave} ref={el=> this.hoverDom = el }>{props.hoverContent()}</div>}
+                                     onMouseEnter={this.onRowHoverMouseEnter} onMouseLeave={this.onRowHoverMouseLeave} ref={el=> this.hoverDom = el }>{props.hoverContent(currentHoverRecord, currentHoverIndex)}</div>}
       </div>
     );
   }

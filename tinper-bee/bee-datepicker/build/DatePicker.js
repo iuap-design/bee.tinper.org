@@ -115,8 +115,6 @@ var DatePicker = function (_Component) {
 
   //fix:更改系统时区后，日期框需要触发 onChange 事件
 
-  //阻止组件内部事件冒泡到组件外部容器
-
 
   DatePicker.prototype.render = function render() {
     var _this2 = this;
@@ -169,7 +167,7 @@ var DatePicker = function (_Component) {
     if (props.keyboardInput) {
       keyboardInputProps.readOnly = false;
       keyboardInputProps.onChange = this.inputChange;
-      keyboardInputProps.value = state.inputValue.format && state.inputValue.isValid() && this.props.validatorFunc(state.inputValue) ? state.inputValue.format(props.format) : state.inputValue;
+      keyboardInputProps.value = state.inputValue && state.inputValue.format && state.inputValue.isValid() && this.props.validatorFunc(state.inputValue) ? state.inputValue.format(props.format) : state.inputValue;
     } else {
       keyboardInputProps.readOnly = true;
       keyboardInputProps.value = value && this.getValue(value) || "";
@@ -177,7 +175,7 @@ var DatePicker = function (_Component) {
     var classes = (0, _classnames2["default"])(props.className, "datepicker-container");
     return _react2["default"].createElement(
       "div",
-      _extends({ className: classes, onMouseEnter: this.onDateHover, onClick: this.stopPropagation
+      _extends({ className: classes, onMouseEnter: this.onDateHover
       }, (0, _omit2["default"])(others, ['onDateInputBlur', 'getCalendarContainer', 'showToday', 'renderFooter', 'keyboardInput', 'showDateInput', 'showTime', 'closeIcon', 'renderIcon', 'focusOnOpen', 'defultSelect', 'onOpenChange', 'locale', 'showMonthInput', 'onKeyDown', 'renderError', 'format', 'placeholder', 'disabledTime', 'onChange', 'disabledDate', 'iconClick', 'outInputKeydown'])),
       _react2["default"].createElement(
         _Picker2["default"],
@@ -471,10 +469,6 @@ var _initialiseProps = function _initialiseProps() {
     if (newValue && inputValue !== newValue) {
       _this3.fireChange(value, newValue || '');
     }
-  };
-
-  this.stopPropagation = function (e) {
-    e.stopPropagation();
   };
 
   this.fireChange = function (value, stringValue) {

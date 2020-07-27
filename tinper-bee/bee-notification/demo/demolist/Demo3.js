@@ -10,7 +10,7 @@ import Button from 'bee-button';
 import Notification from '../../src';
 
 let notification = null;
-Notification.newInstance({position: 'bottomRight'}, n => notification = n);
+Notification.newInstance({position: 'bottomRight', className: 'manual-close'}, n => notification = n);
 
 class Demo3 extends Component {
     constructor(props){

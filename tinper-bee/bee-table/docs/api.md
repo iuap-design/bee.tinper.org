@@ -56,6 +56,7 @@ import 'bee-table/build/Table.css';
 |collapsedIcon|嵌套表格场景中关闭子表时的关闭图标|||
 | expandRowByClick       | 设置展开行是否通过点击行触发，此参数需要与上面参数搭配使用（默认是通过点击行前面的加号展开行 | bool                                   | false           |
 | rowDraggAble  | 是否增加行交换顺序功能 | boolean| false |
+| useDragHandle  | 通过行手柄进行拖拽排序，在 `rowDraggAble` 为 `true` 时有效 | boolean| false |
 | showHeader             | 是否显示表头                                   | bool                                   | true            |
 | title                  | 表格标题                                     | Function                               | -               |
 | footer                 | 表格尾部                                     | Function                               | -               |
@@ -84,6 +85,9 @@ import 'bee-table/build/Table.css';
 | [v2.2.2新增]showRowNum | 展示序号功能，false时不展示，true时展示默认情况，可传入自定义配置信息 | bool / obj:{name: '序号', key: '_index', // 在数据中存储的key值width: 50,base: 0,// 排序的基准值,为数字或者字母type:'number', // 排序类型,默认为number类型,支持单字母排序(type='ascii')} | false |
 | [v2.2.8新增]autoCheckedByClickRows | 设置为 false 时，表格行点击事件，不会自动勾选复选框 | bool | true |
 | [v2.2.8新增]autoSelect | 树型表格勾选时，是否开启子节点的联动 | bool | false |
+| onPaste | 粘贴的回调函数 | func(event,positon) | - |
+| onBodyScroll | table body 滚动的回调 | func(scrollTop) | - |
+| syncRowHeight | 滚动是否同步高度,关闭此功能有利于提高性能，注：树表和主子表不允许关闭 | true | - |
 
 > 快捷键部分参考示例 (快捷键在table中的简单使用应用)
 
@@ -148,6 +152,7 @@ import 'bee-table/build/Table.css';
 | isShow | 是否展示该列数据 | bool | true |
 | cellMenu | 渲染单元格内操作按钮 | object | - |
 | style | 该列的样式，严格按照react的样式书写规则，即对象内每一个属性的键为小写驼峰式，值为字符串 | object | - |
+| sumRender | 自定义合计render函数 | func(value) | - |
 
 #### [v2.2.x新增] cellMenu
 

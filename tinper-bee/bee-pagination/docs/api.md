@@ -38,7 +38,7 @@ import 'bee-pagination/build/Pagination.css';
 |showJump|是否显示跳页选择|bool|false(为了兼容老版本)|
 |onDataNumSelect|选择每页多少条的回调函数|func|() => {}|
 |dataNumSelect|每页多少条的下拉选择Option内容|array|['5','10','15','20']|
-|dataNum|下拉选择的设定值的index|num|1|
+|dataNum|每页显示条数在 dataNumSelect 数组中的下标 index。例如每页显示 15 条，那么 dataNum 的值应为 '15' 在 ['5','10','15','20'] 中的下标：2 |num|1|
 |total|一共多少条|num|1|
 |disabled|pagination不可用，不可点击|bool|false|
 |confirmBtn|渲染确认按钮dom的方法|func|() => {}|

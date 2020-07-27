@@ -60,5 +60,8 @@ export default {
         'ok':'确定',
         'gotit':'知道了',
         'cancel':'取消',
+    },
+    Loading:{
+        'loading': '加载中...',
     }
 }

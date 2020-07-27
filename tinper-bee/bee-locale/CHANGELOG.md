@@ -1,3 +1,17 @@
+## [1.0.6](https://github.com/tinper-bee/bee-locale/compare/v1.0.5...v1.0.6) (2020-06-29)
+
+
+### Bug Fixes
+
+* demo修改 ([994660a](https://github.com/tinper-bee/bee-locale/commit/994660a5e9992c25d97b06d323547b52a9ae9f7d))
+
+
+### Features
+
+* 新增loading多语 ([b8bd5f6](https://github.com/tinper-bee/bee-locale/commit/b8bd5f6a23ad42dfae62db7c10e411a7a7517c06))
+
+
+
 ## [1.0.5](https://github.com/tinper-bee/bee-locale/compare/v1.0.4...v1.0.5) (2020-04-24)
 
 

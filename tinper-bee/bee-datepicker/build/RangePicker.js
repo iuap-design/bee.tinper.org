@@ -138,8 +138,6 @@ var RangePicker = function (_Component) {
 
     //日期面板中输入框的失焦事件
 
-    //阻止组件内部事件冒泡到组件外部容器
-
 
     RangePicker.prototype.render = function render() {
         var _this2 = this;
@@ -184,8 +182,7 @@ var RangePicker = function (_Component) {
         });
         return _react2["default"].createElement(
             "div",
-            _extends({ onClick: this.stopPropagation, onMouseOver: this.stopPropagation
-            }, (0, _omit2["default"])(others, ['closeIcon', 'renderIcon', 'showClear', 'showToday', 'locale', 'placeholder', 'showOk', 'dateInputPlaceholder', 'onPanelChange', 'onStartInputBlur', 'onEndInputBlur', 'renderFooter', 'showTime', 'disabledDate', 'disabledTime'])),
+            (0, _omit2["default"])(others, ['closeIcon', 'renderIcon', 'showClear', 'showToday', 'locale', 'placeholder', 'showOk', 'dateInputPlaceholder', 'onPanelChange', 'onStartInputBlur', 'onEndInputBlur', 'renderFooter', 'showTime', 'disabledDate', 'disabledTime']),
             _react2["default"].createElement(
                 _Picker2["default"],
                 _extends({}, props, {
@@ -431,10 +428,6 @@ var _initialiseProps = function _initialiseProps() {
             endValue = inputs[1].value ? inputs[1].value : '';
         }
         _this3.props.onEndInputBlur && _this3.props.onEndInputBlur(e, endValue, "[\"" + startValue + "\" , \"" + endValue + "\"]");
-    };
-
-    this.stopPropagation = function (e) {
-        e.stopPropagation();
     };
 
     this.onOk = function (value) {

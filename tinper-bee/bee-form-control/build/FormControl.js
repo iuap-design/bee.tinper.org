@@ -22,6 +22,10 @@ var _propTypes = require('prop-types');
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
+var _rcTextarea = require('rc-textarea');
+
+var _rcTextarea2 = _interopRequireDefault(_rcTextarea);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
@@ -43,7 +47,8 @@ var propTypes = {
     onBlur: _propTypes2["default"].func,
     showClose: _propTypes2["default"].bool,
     focusSelect: _propTypes2["default"].bool,
-    debounceDelay: _propTypes2["default"].number
+    debounceDelay: _propTypes2["default"].number,
+    maxLength: _propTypes2["default"].number
 };
 
 var defaultProps = {
@@ -59,6 +64,12 @@ function fixControlledValue(value) {
     }
     return value;
 }
+var cutValue = function cutValue(value, maxLength) {
+    if (maxLength && value) {
+        value = value.toString().substring(0, maxLength);
+    }
+    return value;
+};
 
 var FormControl = function (_React$Component) {
     _inherits(FormControl, _React$Component);
@@ -70,7 +81,7 @@ var FormControl = function (_React$Component) {
 
         _initialiseProps.call(_this);
 
-        var value = typeof props.value === 'undefined' ? props.defaultValue : props.value;
+        var value = typeof props.value === 'undefined' ? cutValue(props.defaultValue, props.maxLength) : cutValue(props.value, props.maxLength);
         _this.state = {
             showSearch: !props.value,
             value: value
@@ -83,7 +94,9 @@ var FormControl = function (_React$Component) {
     FormControl.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProp) {
         if ("value" in nextProp) {
             if (nextProp.value !== this.state.value) {
-                this.setState({ value: nextProp.value });
+                this.setState({
+                    value: nextProp.value
+                });
             }
         }
     };
@@ -126,7 +139,7 @@ var _initialiseProps = function _initialiseProps() {
 
         var onChange = _this2.props.onChange;
 
-        var value = _this2.input.value;
+        var value = _this2.input.value || e.target.value;
         if (!('value' in _this2.props)) {
             _this2.setState({ value: value });
         }
@@ -210,8 +223,9 @@ var _initialiseProps = function _initialiseProps() {
     };
 
     this.renderInput = function () {
+        var Component = _this2.props.componentClass;
+
         var _props4 = _this2.props,
-            Component = _props4.componentClass,
             type = _props4.type,
             className = _props4.className,
             size = _props4.size,
@@ -223,7 +237,7 @@ var _initialiseProps = function _initialiseProps() {
             focusSelect = _props4.focusSelect,
             prefix = _props4.prefix,
             suffix = _props4.suffix,
-            others = _objectWithoutProperties(_props4, ['componentClass', 'type', 'className', 'size', 'clsPrefix', 'onChange', 'onSearch', 'onBlur', 'showClose', 'focusSelect', 'prefix', 'suffix']);
+            others = _objectWithoutProperties(_props4, ['type', 'className', 'size', 'clsPrefix', 'onChange', 'onSearch', 'onBlur', 'showClose', 'focusSelect', 'prefix', 'suffix']);
         // input[type="file"] 不应该有类名 .form-control.
 
 
@@ -232,6 +246,9 @@ var _initialiseProps = function _initialiseProps() {
         var classes = {};
         if (size) {
             classes['' + size] = true;
+        }
+        if (Component === 'textarea') {
+            Component = _rcTextarea2["default"];
         }
 
         var classNames = void 0;
@@ -259,7 +276,8 @@ var _initialiseProps = function _initialiseProps() {
                     onChange: _this2.handleChange,
                     onBlur: _this2.handleBlur,
                     onFocus: _this2.handleFocus,
-                    className: (0, _classnames2["default"])(classNames)
+                    className: (0, _classnames2["default"])(classNames),
+                    maxLength: _this2.props.maxLength
                 })),
                 showClose && value ? _react2["default"].createElement(
                     'div',
@@ -282,7 +300,8 @@ var _initialiseProps = function _initialiseProps() {
                 onChange: _this2.handleChange,
                 onBlur: _this2.handleBlur,
                 onFocus: _this2.handleFocus,
-                className: (0, _classnames2["default"])(classNames)
+                className: (0, _classnames2["default"])(classNames),
+                maxLength: _this2.props.maxLength
             }));
         }
     };
@@ -323,7 +342,8 @@ var _initialiseProps = function _initialiseProps() {
                     onKeyDown: _this2.handleKeyDown,
                     onBlur: _this2.handleBlur,
                     onFocus: _this2.handleFocus,
-                    className: (0, _classnames2["default"])(clsPrefix, classes)
+                    className: (0, _classnames2["default"])(clsPrefix, classes),
+                    maxLength: _this2.props.maxLength
                 })),
                 _react2["default"].createElement(
                     'div',

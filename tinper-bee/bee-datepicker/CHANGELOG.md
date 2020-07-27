@@ -1,3 +1,13 @@
+## [2.3.25](https://github.com/tinper-bee/bee-datepicker/compare/v2.3.24...v2.3.25) (2020-07-24)
+
+
+### Bug Fixes
+
+* DatePicker组件，开启属性keyboardInput={true}，需要兼容值为空的情况 ([7d7ceef](https://github.com/tinper-bee/bee-datepicker/commit/7d7ceef3676c6c99cb4e7540998181120ab63e27))
+* 删除阻止冒泡代码 ([4672af7](https://github.com/tinper-bee/bee-datepicker/commit/4672af78e45349a6c15f9387cd0a2d5f5cd6dd9b))
+
+
+
 ## [2.3.24](https://github.com/tinper-bee/bee-datepicker/compare/v2.3.23...v2.3.24) (2020-05-14)
 
 

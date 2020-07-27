@@ -1,3 +1,21 @@
+## [2.1.22](https://github.com/tinper-bee/bee-tree/compare/v2.1.21...v2.1.22) (2020-07-25)
+
+
+### Features
+
+* treeData支持自定义属性[JCJS-2535] ([0f4819b](https://github.com/tinper-bee/bee-tree/commit/0f4819bef7a009b5431a2ff0819a29992ccee22b))
+
+
+
+## [2.1.21](https://github.com/tinper-bee/bee-tree/compare/v2.1.20...v2.1.21) (2020-07-15)
+
+
+### Bug Fixes
+
+* 懒加载无法打开问题修复 ([35e9ff6](https://github.com/tinper-bee/bee-tree/commit/35e9ff65e8a42218248147f5867b1285290e807e))
+
+
+
 ## [2.1.20](https://github.com/tinper-bee/bee-tree/compare/v2.1.19...v2.1.20) (2020-06-12)
 
 

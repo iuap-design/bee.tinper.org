@@ -1094,6 +1094,10 @@
 .u-form-control-close:hover .uf-close-c {
   opacity: 1; }
 
+.u-form-control.rc-textarea {
+  min-height: 32px;
+  transition: all .3s,height 0s; }
+
 .demo1 {
   padding-bottom: 20px;
   display: block; }
@@ -1138,14 +1142,6 @@
   padding-bottom: 20px;
   display: block; }
   .demo6 .demo6-input {
-    margin-top: 10px;
-    width: 200px;
-    display: block; }
-
-.demo8 {
-  padding-bottom: 20px;
-  display: block; }
-  .demo8 .demo8-input {
     margin-top: 10px;
     width: 200px;
     display: block; }

@@ -427,12 +427,12 @@ var _initialiseProps = function _initialiseProps() {
         var local = (0, _tool.getComponentLocale)(props, _this3.context, 'InputNumber', function () {
             return _i18n2["default"];
         });
-        if (currentValue <= min) {
+        if (min && currentValue <= min) {
             if (displayCheckPrompt) prompt(local['msgMin']);
             currentMinusDisabled = true;
             currentValue = min;
         }
-        if (currentValue >= max) {
+        if (max && currentValue >= max) {
             if (displayCheckPrompt) prompt(local['msgMax']);
             currentPlusDisabled = true;
             currentValue = max;
@@ -595,11 +595,11 @@ var _initialiseProps = function _initialiseProps() {
             }
         }
         value = isNaN(Number(value)) ? 0 : Number(value);
-        if (value > max) {
+        if (max && value > max) {
             if (displayCheckPrompt) prompt(local['msgMax']);
             value = max;
         }
-        if (value < min) {
+        if (min && value < min) {
             if (displayCheckPrompt) prompt(local['msgMin']);
             value = min;
         }
@@ -633,8 +633,7 @@ var _initialiseProps = function _initialiseProps() {
             min = _props5.min,
             step = _props5.step;
 
-
-        if (value >= max || Number(value) + Number(step) > max) {
+        if (max && (value >= max || Number(value) + Number(step) > max)) {
             _this3.setState({
                 plusDisabled: true
             });
@@ -643,7 +642,7 @@ var _initialiseProps = function _initialiseProps() {
                 plusDisabled: false
             });
         }
-        if (value <= min || value - step < min) {
+        if (min && (value <= min || value - step < min)) {
             _this3.setState({
                 minusDisabled: true
             });
@@ -666,6 +665,7 @@ var _initialiseProps = function _initialiseProps() {
         if (typeof min === "undefined") {
             value = _this3.detail(value, step, 'reduce');
         } else {
+            min = Number(min);
             if (value < min) {
                 value = min;
             } else {
@@ -675,9 +675,11 @@ var _initialiseProps = function _initialiseProps() {
                 }
             }
         }
-
-        if (value > max) {
-            value = max;
+        if (max) {
+            max = Number(max);
+            if (value > max) {
+                value = max;
+            }
         }
 
         _this3.setState({
@@ -703,18 +705,23 @@ var _initialiseProps = function _initialiseProps() {
         if (typeof max === "undefined") {
             value = _this3.detail(value, step, 'add');
         } else {
-            if (value > max) {
+            max = Number(max);
+            if (max && value > max) {
                 value = max;
             } else {
                 var addedValue = _this3.detail(value, step, 'add');
-                if (addedValue <= max) {
+                if (max && addedValue <= max) {
                     value = addedValue;
                 }
             }
         }
-        if (value < min) {
-            value = min;
+        if (min) {
+            min = Number(min);
+            if (value < min) {
+                value = min;
+            }
         }
+
         _this3.setState({
             value: value,
             showValue: toThousands(value)

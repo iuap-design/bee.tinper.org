@@ -1,3 +1,39 @@
+## [2.2.38](https://github.com/tinper-bee/bee-input-number/compare/v2.2.37...v2.2.38) (2020-07-20)
+
+
+### Bug Fixes
+
+* 修复IE placeholder兼容问题 ([3a9a13b](https://github.com/tinper-bee/bee-input-number/commit/3a9a13b76e6ffd2b660171838128534187cf7287))
+
+
+
+## [2.2.37](https://github.com/tinper-bee/bee-input-number/compare/v2.2.36...v2.2.37) (2020-07-11)
+
+
+### Features
+
+* 兼容IE11 placeholder ([b7063ec](https://github.com/tinper-bee/bee-input-number/commit/b7063eca47aafe7cd3589bab8074225a3d648cd1))
+
+
+
+## [2.2.36](https://github.com/tinper-bee/bee-input-number/compare/v2.2.35...v2.2.36) (2020-06-29)
+
+
+### Bug Fixes
+
+* 负数失焦问题 ([eb1ca6f](https://github.com/tinper-bee/bee-input-number/commit/eb1ca6f6a983de9f9929ae55d782915fe2451b86))
+
+
+
+## [2.2.35](https://github.com/tinper-bee/bee-input-number/compare/v2.2.34...v2.2.35) (2020-06-28)
+
+
+### Bug Fixes
+
+* 适配max min传字符串 ([6bc2bd4](https://github.com/tinper-bee/bee-input-number/commit/6bc2bd437b0f0b3118685257c1db5663d65b99ab))
+
+
+
 ## [2.2.34](https://github.com/tinper-bee/bee-input-number/compare/v2.2.33...v2.2.34) (2020-06-18)
 
 

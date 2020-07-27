@@ -1006,6 +1006,9 @@
 .uf-qingkong:before {
   content: "\e666"; }
 
+.uf-location:before {
+  content: "\e78b"; }
+
 .u-modal {
   display: none;
   position: fixed;
@@ -1169,9 +1172,6 @@
     position: absolute; }
   .u-modal-container .u-modal, .u-modal-container .u-modal-backdrop {
     position: absolute; }
-
-.react-draggable-transparent-selection * {
-  pointer-events: none !important; }
 
 .ac-confirm .u-modal-dialog {
   width: 410px;

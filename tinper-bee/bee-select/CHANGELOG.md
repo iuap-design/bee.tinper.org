@@ -1,3 +1,12 @@
+## [2.0.26](https://github.com/tinper-bee/bee-select/compare/v2.0.25...v2.0.26) (2020-07-17)
+
+
+### Bug Fixes
+
+* Select下拉组件的placeHolder不显示[[#536](https://github.com/tinper-bee/bee-select/issues/536)] ([b0edb85](https://github.com/tinper-bee/bee-select/commit/b0edb85be6575716cb95499266a0e189ff9e4341))
+
+
+
 ## [2.0.25](https://github.com/tinper-bee/bee-select/compare/v2.0.24...v2.0.25) (2020-05-08)
 
 

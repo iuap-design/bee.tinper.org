@@ -1,7 +1,7 @@
 /**
  *
 * @title 基础示例 
- * @description 最简单输入控制
+ * @description 最简单输入控制。最小值为5，最大值为10000
  *
  */
 

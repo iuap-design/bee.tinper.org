@@ -17,19 +17,20 @@ class Demo1 extends Component {
     return (
       <div>
         <Select
-          defaultValue="all"
+          placeholder="请选择"
+          defaultValue="全部"
           style={{ width: 200, marginRight: 6 }}
           onChange={this.handleChange}
           showSearch={true}
           allowClear={true}
         >
-          <Option value="all">全部</Option>
-          <Option value="confirming">待确认</Option>
-          <Option value="executing">执行中</Option>
-          <Option value="completed" disabled>
+          <Option value="全部">全部</Option>
+          <Option value="待确认">待确认</Option>
+          <Option value="执行中">执行中</Option>
+          <Option value="已办结" disabled>
             已办结
           </Option>
-          <Option value="termination">终止</Option>
+          <Option value="终止">终止</Option>
         </Select>
       </div>
     );

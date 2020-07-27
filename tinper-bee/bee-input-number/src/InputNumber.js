@@ -108,7 +108,8 @@ class InputNumber extends Component {
             value:data.value,
             minusDisabled: data.minusDisabled,
             plusDisabled: data.plusDisabled,
-            showValue:toThousands(data.value)
+            showValue:toThousands(data.value),
+            placeholderShow:true
         }
 
         this.timer = null;
@@ -380,7 +381,8 @@ class InputNumber extends Component {
         }
         this.setState({
             value,
-            showValue:toThousands(value)
+            showValue:toThousands(value),
+            placeholderShow:true
         });
         this.detailDisable(value);
         if(toNumber&&(!minusRight)){
@@ -420,11 +422,12 @@ class InputNumber extends Component {
      * 减法
      */
     minus = (value) => {
-        const {min, max, step, onChange, toNumber} = this.props;
+        let {min, max, step, onChange, toNumber} = this.props;
         value = (value === '-') ? 0 : value;
         if(typeof min === "undefined"){
             value = this.detail(value, step, 'reduce');
         }else{
+            min = Number(min)
             if(value < min){
                 value = min;
             }else{
@@ -434,10 +437,13 @@ class InputNumber extends Component {
                 }
             }
         }
-
-        if(max&&value > max){
-            value = max;
+        if(max){
+            max = Number(max)
+            if(value > max){
+                value = max;
+            }
         }
+        
 
         this.setState({
             value,
@@ -453,11 +459,12 @@ class InputNumber extends Component {
      * 加法
      */
     plus = (value) => {
-        const {max, min, step, onChange, toNumber} = this.props;
+        let {max, min, step, onChange, toNumber} = this.props;
         value = (value === '-') ? 0 : value;
         if(typeof max === "undefined"){
             value = this.detail(value, step, 'add');
         }else{
+            max = Number(max)
             if(max&&value > max){
                 value = max;
             }else{
@@ -467,9 +474,13 @@ class InputNumber extends Component {
                 }
             }
         }
-        if(min&&value < min){
-            value = min;
+        if(min){
+            min = Number(min)
+            if(value < min){
+                value = min;
+            }
         }
+        
         this.setState({
             value,
             showValue:toThousands(value)
@@ -571,7 +582,7 @@ class InputNumber extends Component {
         before = before === "-"?before:"";
         after = after === "-"?after:"";
         //是科学计数法，不replace - 
-        if(before)value = value.substring(1,len-1);
+        if(before)value = value.substring(1,len);
         if(after)value = value.substring(0,len-1);
         // value = value.replace("-",'');
         let precV = "000000000000000000000000000000000000000000000000000000000000000000000000";
@@ -589,6 +600,18 @@ class InputNumber extends Component {
 
     handleBtnClick = (type,value)=>{
         this.props.handleBtnClick(type,value)
+    }
+    isIE = ()=>{
+        if(window){
+            if (!!window.ActiveXObject || "ActiveXObject" in window)return true;
+        }
+        return false;
+    }
+    placeholderClick=()=>{
+        this.input.input.focus()
+        this.setState({
+            placeholderShow:false
+        })
     }
 
     render() {
@@ -614,6 +637,9 @@ class InputNumber extends Component {
                 {
                     iconStyle === 'double' ? (
                         <InputGroup className={classnames(className, classes,disabledCon)}>
+                            {
+                                this.isIE()&&(!value)?<div onClick={this.placeholderClick} style={{'display':this.state.placeholderShow?'block':'none'}} className={`${clsPrefix}-placeholder`}>{this.props.placeholder}</div>:''
+                            }
                             <InputGroup.Addon
                                 // onClick={()=>{minusDisabled?'':this.handleBtnClick('down')}}
                                 className={(minusDisabled && 'disabled' ) + disabledCursor}
@@ -645,6 +671,9 @@ class InputNumber extends Component {
                             className={classnames(className, classes,disabledCon)}
                             simple
                         > 
+                            {
+                                this.isIE()&&(!value)?<div onClick={this.placeholderClick} style={{'display':this.state.placeholderShow?'block':'none'}} className={`${clsPrefix}-placeholder`}>{this.props.placeholder}</div>:''
+                            }
                             <FormControl 
                                 {...others}
                                 value={toThousands?showValue:value}

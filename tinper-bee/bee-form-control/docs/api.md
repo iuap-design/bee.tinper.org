@@ -22,6 +22,8 @@ import 'bee-form-control/build/FormControl.css';
 
 ## API
 
+### FormControl
+
 |参数|说明|类型|默认值|
 |:--|:---|:--|:---|
 |className|类名|string|-|
@@ -37,7 +39,17 @@ import 'bee-form-control/build/FormControl.css';
 |focusSelect|设置当focus的时候是否选择内容|bool|false|
 |prefix|设置前缀。默认宽度 30px，可通过复写样式更改|node/string|-|
 |suffix|设置后缀。默认宽度 30px，可通过复写样式更改|node/string|-|
-|maxLength|设置最大长度|number|-|
+|maxLength|设置最大长度；注：如果非首次渲染更新input的value的时候，不会自动截断value，需在设置value之前将value值手动截断|number|-|
+
+### TextArea
+
+配置 componentClass="textarea" 使用文本域组件
+
+|参数|说明|类型|默认值|
+|:--|:---|:--|:---|
+|autoSize|自适应内容高度，可设置为 true | false 或对象：{ minRows: 2, maxRows: 6 }|boolean | object|false|
+|onPressEnter|	按下回车的回调	|	function(e)	|-|
+|onResize|	resize 回调	|	function({ width, height })	|-|
 
 ## 注意事项
 

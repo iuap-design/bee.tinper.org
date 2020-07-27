@@ -505,7 +505,8 @@ var Tree = function (_React$Component) {
 
     var selectedNodes = [];
     if (selectedKeys.length) {
-      (0, _util.loopAllChildren)(this.props.children, function (item) {
+      var treeNodes = this.props.children || treeNode.props.root.cacheTreeNodes;
+      (0, _util.loopAllChildren)(treeNodes, function (item) {
         if (selectedKeys.indexOf(item.key) !== -1) {
           selectedNodes.push(item);
         }
@@ -1283,14 +1284,20 @@ var _initialiseProps = function _initialiseProps() {
     }
     var loop = function loop(data) {
       return data.map(function (item) {
+        var key = item.key,
+            title = item.title,
+            children = item.children,
+            isLeaf = item.isLeaf,
+            others = _objectWithoutProperties(item, ['key', 'title', 'children', 'isLeaf']);
+
         if (item.children) {
           return _react2["default"].createElement(
             _TreeNode2["default"],
-            { key: item.key, title: renderTitle ? renderTitle(item) : item.key, isLeaf: item.isLeaf },
+            _extends({}, others, { key: key, title: renderTitle ? renderTitle(item) : key, isLeaf: isLeaf }),
             loop(item.children)
           );
         }
-        return _react2["default"].createElement(_TreeNode2["default"], { key: item.key, title: renderTitle ? renderTitle(item) : item.key, isLeaf: true });
+        return _react2["default"].createElement(_TreeNode2["default"], _extends({}, others, { key: key, title: renderTitle ? renderTitle(item) : key, isLeaf: true }));
       });
     };
     return loop(data);

@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import classnames from 'classnames';
 import Icon from 'bee-icon';
 import PropTypes from  'prop-types';
+import TextArea from 'rc-textarea'
 
 const propTypes = {
     componentClass: PropTypes.oneOfType([
@@ -57,7 +58,7 @@ class FormControl extends React.Component {
         if ("value" in nextProp) {
             if (nextProp.value !== this.state.value) {
                 this.setState({
-                    value: cutValue(nextProp.value,nextProp.maxLength)
+                    value: nextProp.value
                 });
             }
         }
@@ -82,7 +83,7 @@ class FormControl extends React.Component {
         this.lastScrollCall = now
 
         const {onChange} = this.props;
-        let value = this.input.value;
+        let value = this.input.value || e.target.value;
         if (!('value' in this.props)) {
             this.setState({ value });
         }
@@ -152,8 +153,8 @@ class FormControl extends React.Component {
     }
 
     renderInput = () => {
+        let { componentClass: Component } = this.props;
         const {
-            componentClass: Component,
             type,
             className,
             size,
@@ -173,6 +174,9 @@ class FormControl extends React.Component {
         let classes = {};
         if (size) {
             classes[`${size}`] = true;
+        }
+        if (Component === 'textarea') {
+            Component = TextArea
         }
         
 
@@ -199,6 +203,7 @@ class FormControl extends React.Component {
                         onBlur={this.handleBlur}
                         onFocus={this.handleFocus}
                         className={classnames(classNames)}
+                        maxLength={this.props.maxLength}
                     />
                     {
                         showClose&&value?<div className={`${clsPrefix}-suffix has-close`} onMouseDown={this.onClearBtnMouseDown} onClick={this.clearValue}>
@@ -221,6 +226,7 @@ class FormControl extends React.Component {
                     onBlur={this.handleBlur}
                     onFocus={this.handleFocus}
                     className={classnames(classNames)}
+                    maxLength={this.props.maxLength}
                 />
         }
         
@@ -260,6 +266,7 @@ class FormControl extends React.Component {
                         onBlur={this.handleBlur}
                         onFocus={this.handleFocus}
                         className={classnames(clsPrefix, classes)}
+                        maxLength={this.props.maxLength}
                     />
                     <div className={`${clsPrefix}-suffix`}>
                         <Icon type="uf-search" onClick={this.handleSearch}/>

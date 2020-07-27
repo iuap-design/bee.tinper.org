@@ -59,5 +59,8 @@ export default {
         'ok':'OK',
         'gotit':'OK',
         'cancel':'Cancel',
+    },
+    Loading:{
+        'loading': 'Loading...',
     }
 }

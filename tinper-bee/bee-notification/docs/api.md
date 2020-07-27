@@ -49,6 +49,7 @@ import 'bee-notification/build/Notification.css';
 |style|样式|object|-|
 |keyboard|esc触发关闭|boolean|true|
 |onEscapeKeyUp|响应ESC键时的钩子函数|function|-|
+|container|设置容器，需要在`newInstance`设置，参考第四个示例|function/node| document.body |
 
 
 ### 已支持的键盘操作
