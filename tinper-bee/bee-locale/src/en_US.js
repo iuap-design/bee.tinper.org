@@ -29,11 +29,11 @@ export default {
         'close':'Close',
     },
     Pagination:{
-        'total': 'Total ',
-        'items': ' items',
-        'show': 'Show ',
-        'goto': 'Go to page ',
-        'page': ' ',
+        'total': 'Total',
+        'items': 'items',
+        'show': 'Show',
+        'goto': 'Goto',
+        'page': '',
         'ok': 'OK'
     },
     Grid:{
@@ -59,5 +59,8 @@ export default {
         'ok':'OK',
         'gotit':'OK',
         'cancel':'Cancel',
+    },
+    Loading:{
+        'loading': 'Loading...',
     }
 }

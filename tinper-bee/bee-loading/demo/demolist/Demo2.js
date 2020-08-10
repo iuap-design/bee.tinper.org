@@ -12,7 +12,8 @@ class Demo2 extends Component {
     render() {
         return (
             <div className="demo2">
-                <Loading container={this} show={true}/>
+                <Loading container={this} show={true} >
+                </Loading>
             </div>
         )
     }

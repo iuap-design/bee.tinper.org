@@ -1006,6 +1006,9 @@
 .uf-qingkong:before {
   content: "\e666"; }
 
+.uf-location:before {
+  content: "\e78b"; }
+
 .u-modal {
   display: none;
   position: fixed;
@@ -1088,6 +1091,8 @@
       .u-modal .u-modal-header .u-close .uf-close {
         font-size: 12px;
         color: #505F79; }
+        .u-modal .u-modal-header .u-close .uf-close:hover {
+          color: #e23; }
   .u-modal .u-modal-title {
     margin: 0;
     line-height: 1.42857143; }
@@ -1170,39 +1175,32 @@
   .u-modal-container .u-modal, .u-modal-container .u-modal-backdrop {
     position: absolute; }
 
-.react-draggable-transparent-selection * {
-  pointer-events: none !important; }
-
 .ac-confirm .u-modal-dialog {
   width: 410px;
   height: 201px; }
   .ac-confirm .u-modal-dialog .ac-confirm-footer {
     height: 48px;
     padding: 8px 16px;
-    border-top: #d0d0d0 solid 1px; }
+    border-top: none; }
     .ac-confirm .u-modal-dialog .ac-confirm-footer .u-button {
       min-width: 60px;
       min-height: 28px;
       line-height: 28px;
       padding: 0 10px; }
+    .ac-confirm .u-modal-dialog .ac-confirm-footer .u-button.u-button-secondary {
+      background: #dbe0e5;
+      border: none; }
+      .ac-confirm .u-modal-dialog .ac-confirm-footer .u-button.u-button-secondary:hover {
+        background: #e5e9ec; }
     .ac-confirm .u-modal-dialog .ac-confirm-footer .u-button.u-button-primary {
-      margin-right: 8px;
-      background-color: #e14c46;
+      margin-left: 8px;
+      background: linear-gradient(-45deg, #fc4c2f, #ee2223);
       color: #fff;
-      border: 1px solid #f53c32;
-      box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2); }
+      border: none;
+      box-shadow: none; }
     .ac-confirm .u-modal-dialog .ac-confirm-footer .u-button.u-button-primary:hover {
-      background-color: #d7332c;
+      background: linear-gradient(-225deg, #fc4c2f, #ee2223);
       color: #fff; }
-    .ac-confirm .u-modal-dialog .ac-confirm-footer .u-button-border {
-      box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2);
-      border-color: #d0d0d0;
-      color: #111;
-      background-color: #fff; }
-    .ac-confirm .u-modal-dialog .ac-confirm-footer .u-button-border:hover {
-      color: #e14c46;
-      border-color: #e14c46;
-      background: #fff; }
 
 .ac-confirm .u-modal-content .ac-confirm-header.u-modal-header {
   background-color: #f3f3f3;
@@ -1217,13 +1215,15 @@
 
 .ac-confirm .ac-confirm-body.u-modal-body {
   padding: 16px 33px;
-  min-height: 124px; }
+  min-height: 0; }
   .ac-confirm .ac-confirm-body.u-modal-body .ac-confirm-body-title {
     display: block; }
     .ac-confirm .ac-confirm-body.u-modal-body .ac-confirm-body-title .ac-confirm-body-title-icon {
       color: #ffbf00;
       font-size: 25px;
-      vertical-align: sub; }
+      vertical-align: sub;
+      display: inline-block;
+      transform: scale(1.5); }
     .ac-confirm .ac-confirm-body.u-modal-body .ac-confirm-body-title .ac-confirm-body-title-keyword {
       font-size: 18px;
       color: #111111;

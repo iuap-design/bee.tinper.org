@@ -33,6 +33,7 @@ const propTypes = {
     rowDraggAble: PropTypes.bool,
     onDragRow: PropTypes.func,
     onDragRowStart: PropTypes.func,
+    syncRowHeight:PropTypes.bool
 };
 
 const defaultProps = {
@@ -46,6 +47,7 @@ const defaultProps = {
     setRowParentIndex:()=>{},
     rowDraggAble:false,
     // onDragRow:()=>{}
+    syncRowHeight:false
 };
 
 class TableRow extends Component{
@@ -141,17 +143,14 @@ class TableRow extends Component{
     if (!this.props.rowDraggAble) return;
     let event = Event.getEvent(e) ,
     target = Event.getTarget(event);
-     this.currentIndex = target.getAttribute("data-row-key");
-     this._dragCurrent = target;
-
-    //TODO 自定义图像后续需要增加。
-    //  let crt = this.synchronizeTableTrShadow();
-    //  document.getElementById(this.props.tableUid).appendChild(crt);
-    // event.dataTransfer.setDragImage(crt, 0, 0);
-     event.dataTransfer.effectAllowed = "move";
-     event.dataTransfer.setData("Text", this.currentIndex);
-
-     onDragRowStart && onDragRowStart(this.currentIndex);
+    if (target.tagName === 'TD') {
+      target = target.parentNode;
+    }
+    this.currentIndex = target.getAttribute("data-row-key");
+    this._dragCurrent = target;
+    event.dataTransfer.effectAllowed = "move";
+    event.dataTransfer.setData("Text", this.currentIndex);
+    onDragRowStart && onDragRowStart(this.currentIndex);
   }
 
   onDragOver = (e) => {
@@ -164,7 +163,7 @@ class TableRow extends Component{
    * @memberof TableHeader
    */
   onDrop = (e) => {
-    let {rowDraggAble,onDragRow} = this.props;
+    let {onDragRow} = this.props;
     let event = Event.getEvent(e) ,
         _target = Event.getTarget(event),
         target = _target.parentNode;
@@ -176,8 +175,6 @@ class TableRow extends Component{
     if(target.nodeName.toUpperCase() === "TR"){
       this.synchronizeTableTr(currentKey,null);
       this.synchronizeTableTr(targetKey,null);
-      // target.setAttribute("style","");
-      // this.synchronizeTrStyle(this.currentIndex,false);
     }
     onDragRow && onDragRow(currentKey,targetKey);
   };
@@ -317,7 +314,7 @@ class TableRow extends Component{
       }
     }
     if(type){
-      currentObj && currentObj.setAttribute("style","border-bottom:2px dashed rgb(30, 136, 229)");
+      currentObj && currentObj.setAttribute("style","border-bottom:2px solid #02B1FD");
     }else{
       currentObj && currentObj.setAttribute("style","");
     }
@@ -330,8 +327,6 @@ class TableRow extends Component{
     if(!currentIndex || currentIndex === this.currentIndex)return;
     if(target.nodeName.toUpperCase() === "TR"){
       this.synchronizeTableTr(currentIndex,true);
-      // target.setAttribute("style","border-bottom:2px dashed rgba(5,0,0,0.25)");
-      // // target.style.backgroundColor = 'rgb(235, 236, 240)';
     }
   }
 
@@ -346,18 +341,19 @@ class TableRow extends Component{
   }
 
   componentDidUpdate(prevProps) {
-    const { rowDraggAble } = this.props;
+    const { rowDraggAble,syncRowHeight } = this.props;
     if(!this.event){
       this.event = true;
       if(rowDraggAble){
         this.initEvent();
       }
     }
-
     if(this.props.treeType){
       this.setRowParentIndex();
     }
-    this.setRowHeight()
+    if(syncRowHeight){
+      this.setRowHeight()
+    }
   }
 
   componentWillUnmount() {
@@ -451,8 +447,8 @@ class TableRow extends Component{
 
   render() {
     const {
-      clsPrefix, columns, record, height, visible, index,
-      expandIconColumnIndex, expandIconAsCell, expanded, expandRowByClick,rowDraggAble,
+      clsPrefix, columns, record, height, visible, index,onPaste,
+      expandIconColumnIndex, expandIconAsCell, expanded, useDragHandle,rowDraggAble,
       expandable, onExpand, needIndentSpaced, indent, indentSize,isHiddenExpandIcon,fixed,bodyDisplayInRow
       ,expandedIcon,collapsedIcon, hoverKey,lazyStartIndex,lazyEndIndex, expandIconCellWidth
     } = this.props;
@@ -488,7 +484,8 @@ class TableRow extends Component{
       expandIndexInThisTable = expandIconColumnIndex
     }
     for (let i = 0; i < columns.length; i++) {
-      if (expandIconAsCell && i === 0 && !showSum ) {
+      if (expandIconAsCell && i === 0) {
+        showSum ? cells.push(<td width={expandIconCellWidth}></td>) :
         cells.push(
           <td
             className={`${clsPrefix}-expand-icon-cell ${isExpandIconAsCell}`}
@@ -517,6 +514,8 @@ class TableRow extends Component{
           bodyDisplayInRow =  {bodyDisplayInRow}
           lazyStartIndex={lazyStartIndex}
           lazyEndIndex={lazyEndIndex}
+          onPaste={onPaste}
+          col={i}
         />
       );
     }
@@ -529,7 +528,7 @@ class TableRow extends Component{
     }
     return (
       <tr
-        draggable={rowDraggAble}
+        draggable={rowDraggAble && !useDragHandle}
         onClick={this.onRowClick}
         onDoubleClick={this.onRowDoubleClick}
         onMouseEnter={this.onMouseEnter}

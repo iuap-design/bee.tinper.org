@@ -7,7 +7,6 @@ import SortList from './SortList';
 import Between from './Between';
 import GridLayout from './GridLayout';
 
-
 const propTypes = {
     onStart: PropTypes.func,
     onDrag: PropTypes.func,

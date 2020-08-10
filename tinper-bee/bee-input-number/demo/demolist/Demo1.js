@@ -1,7 +1,7 @@
 /**
  *
 * @title 基础示例 
- * @description 最简单输入控制
+ * @description 最简单输入控制。最小值为5，最大值为10000
  *
  */
 
@@ -34,7 +34,7 @@ class Demo1 extends Component {
             <div>
                 <InputNumber
                     iconStyle="one"
-                    min={5}
+                    min={0}
                     max={10000}
                     onChange={this.handleChange}
                     handleBtnClick={this.handleBtnClick}

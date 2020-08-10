@@ -1,3 +1,60 @@
+## [2.2.3](https://github.com/tinper-bee/bee-modal/compare/v2.2.2...v2.2.3) (2020-08-06)
+
+
+
+## [2.2.2](https://github.com/tinper-bee/bee-modal/compare/v2.2.1...v2.2.2) (2020-08-05)
+
+
+
+## [2.2.1](https://github.com/tinper-bee/bee-modal/compare/v2.2.0...v2.2.1) (2020-07-31)
+
+
+
+# [2.2.0](https://github.com/tinper-bee/bee-modal/compare/v2.1.18...v2.2.0) (2020-07-30)
+
+
+
+## [2.1.18](https://github.com/tinper-bee/bee-modal/compare/v2.1.17...v2.1.18) (2020-07-07)
+
+
+### Features
+
+* needScroll支持传入number类型的值 ([ad6c103](https://github.com/tinper-bee/bee-modal/commit/ad6c1032d64e24194a56ff019c02b60717af25b9))
+
+
+
+## [2.1.17](https://github.com/tinper-bee/bee-modal/compare/v2.1.15...v2.1.17) (2020-07-07)
+
+
+### Bug Fixes
+
+* 去掉 pointer-events 影响 ([f086dd8](https://github.com/tinper-bee/bee-modal/commit/f086dd8b5c20868219fd13403812dddafb45e1a3))
+
+
+### Features
+
+* 新增needScroll属性，解决打开模态框滚动到最顶部的问题 ([7589392](https://github.com/tinper-bee/bee-modal/commit/7589392e2678160ac03aed9b27004b5a8b363a5a))
+
+
+
+## [2.1.16](https://github.com/tinper-bee/bee-modal/compare/v2.1.15...v2.1.16) (2020-05-28)
+
+
+### Bug Fixes
+
+* 去掉 pointer-events 影响 ([f086dd8](https://github.com/tinper-bee/bee-modal/commit/f086dd8b5c20868219fd13403812dddafb45e1a3))
+
+
+
+## [2.1.15](https://github.com/tinper-bee/bee-modal/compare/v2.1.14...v2.1.15) (2020-04-24)
+
+
+### Bug Fixes
+
+* 自动化 ([4d3135f](https://github.com/tinper-bee/bee-modal/commit/4d3135fad1fcca164a84a697a61a51a00422e1ff))
+
+
+
 <a name="2.1.14"></a>
 ## [2.1.14](https://github.com/tinper-bee/bee-modal/compare/v2.1.13...v2.1.14) (2020-04-10)
 

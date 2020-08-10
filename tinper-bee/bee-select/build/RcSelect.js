@@ -391,7 +391,7 @@ Select.getOptionsFromChildren = function (children) {
     if (!child) {
       return;
     }
-    if (child.type.isSelectOptGroup) {
+    if (child && child.type && child.type.isSelectOptGroup) {
       Select.getOptionsFromChildren(child.props.children, options);
     } else {
       options.push(child);
@@ -854,7 +854,7 @@ var _initialiseProps = function _initialiseProps() {
     if (state.inputValue) {
       hidden = true;
     }
-    if (state.value.length) {
+    if (state.value[0]) {
       hidden = true;
     }
     if ((0, _util.isCombobox)(props) && state.value.length === 1 && !state.value[0]) {

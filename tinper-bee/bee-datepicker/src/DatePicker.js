@@ -53,7 +53,8 @@ class DatePicker extends Component {
   componentWillReceiveProps(nextProps) {
     if ("value" in nextProps) {
       this.setState({
-        value: this.initValue(nextProps)
+        value: this.initValue(nextProps),
+        inputValue: (nextProps.value && this.getValue(nextProps.value)) || ''
       });
     }
     if ("open" in nextProps) {
@@ -82,7 +83,7 @@ class DatePicker extends Component {
   };
 
   inputFocus=()=>{
-    const { format,validatorFunc } = this.props;
+    const { format,validatorFunc, disabledDate } = this.props;
     let input = document.querySelector('.rc-calendar-input');
     if(input){
       if(input.value){
@@ -103,13 +104,19 @@ class DatePicker extends Component {
           ReactDOM.findDOMNode(this.outInput).focus();// 按esc时候焦点回到input输入框
         }else if(e.keyCode == KeyCode.ENTER){
           let parsed = moment(input.value, format, true);
-          if(parsed.isValid()&&validatorFunc(input.value)){
+          let isDisabled = disabledDate && disabledDate(parsed);
+          if(parsed.isValid()&&validatorFunc(input.value) && !isDisabled){
             this.setState({
               open:false
             });
             let v = this.state.value;
             this.props.onOpenChange(false,v, (v && this.getValue(v)) || '');
             ReactDOM.findDOMNode(this.outInput).focus();
+          }
+          if (!input.value) {
+            this.setState({
+              open:false
+            });
           }
         }
         this.props.onKeyDown&&this.props.onKeyDown(e);
@@ -260,10 +267,6 @@ class DatePicker extends Component {
       this.fireChange(value, newValue || '')
     }
   }
-  //阻止组件内部事件冒泡到组件外部容器
-  stopPropagation = (e) => {
-    e.stopPropagation();
-  }
 
   fireChange = (value,stringValue)=>{
     this.fileChange&&this.props.onChange(value,stringValue);
@@ -316,14 +319,14 @@ class DatePicker extends Component {
     if(props.keyboardInput){
       keyboardInputProps.readOnly=false;
       keyboardInputProps.onChange=this.inputChange;
-      keyboardInputProps.value=state.inputValue.format&&(state.inputValue.isValid()&&this.props.validatorFunc(state.inputValue))?state.inputValue.format(props.format):state.inputValue;
+      keyboardInputProps.value=state.inputValue && state.inputValue.format&&(state.inputValue.isValid()&&this.props.validatorFunc(state.inputValue))?state.inputValue.format(props.format):state.inputValue;
     }else{
       keyboardInputProps.readOnly=true;
       keyboardInputProps.value=(value && this.getValue(value)) || ""
     }
     let classes = classnames(props.className, "datepicker-container");
     return (
-      <div className={classes} onMouseEnter={this.onDateHover} onClick={this.stopPropagation} 
+      <div className={classes} onMouseEnter={this.onDateHover} 
       {...omit(others, [
         'onDateInputBlur',
         'getCalendarContainer',

@@ -3,7 +3,7 @@
  * @description 所有页数均显示。默认无确认按钮。
  */
 
-import React, { Component } from 'react';
+import React from 'react';
 import Pagination from '../../src';
 
 class Demo1 extends React.Component {
@@ -28,8 +28,6 @@ class Demo1 extends React.Component {
         return (
             <div>
                 <Pagination
-                    first
-                    last
                     prev
                     next
                     maxButtons={5}
@@ -38,7 +36,7 @@ class Demo1 extends React.Component {
                     onSelect={this.handleSelect.bind(this)}
                     onDataNumSelect={this.dataNumSelect}
                     showJump={true}
-                    total={100}
+                    total={50}
                     dataNum={1}
                 />
 

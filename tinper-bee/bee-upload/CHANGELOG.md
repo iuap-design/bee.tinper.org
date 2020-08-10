@@ -1,3 +1,12 @@
+## [2.1.3](https://github.com/tinper-bee/upload/compare/v2.1.2...v2.1.3) (2020-04-24)
+
+
+### Bug Fixes
+
+* 自动化 ([6ac1ed1](https://github.com/tinper-bee/upload/commit/6ac1ed16e23b409c69da5aac069cd602643e2a8a))
+
+
+
 <a name="2.1.2"></a>
 ## [2.1.2](https://github.com/tinper-bee/upload/compare/v2.1.1...v2.1.2) (2020-04-08)
 

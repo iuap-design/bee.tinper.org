@@ -1,3 +1,12 @@
+## [0.0.6](https://github.com/tinper-bee/bee-anchor/compare/v0.0.5...v0.0.6) (2020-04-24)
+
+
+### Bug Fixes
+
+* 自动化 ([27ae1b3](https://github.com/tinper-bee/bee-anchor/commit/27ae1b3f59847bf2f3fbd510c2518785a7d326db))
+
+
+
 <a name="0.0.5"></a>
 ## [0.0.5](https://github.com/tinper-bee/bee-anchor/compare/v0.0.4...v0.0.5) (2019-09-23)
 

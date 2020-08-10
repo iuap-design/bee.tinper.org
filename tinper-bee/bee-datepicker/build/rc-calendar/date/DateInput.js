@@ -287,7 +287,8 @@ var _initialiseProps = function _initialiseProps() {
         onKeyDown = _props3.onKeyDown,
         format = _props3.format,
         isRange = _props3.isRange,
-        validatorFunc = _props3.validatorFunc;
+        validatorFunc = _props3.validatorFunc,
+        disabledDate = _props3.disabledDate;
 
     var str = e.target.value;
     var parsed = (0, _moment2["default"])(str, format, true);
@@ -310,6 +311,13 @@ var _initialiseProps = function _initialiseProps() {
         });
       }
       if (!validatorFunc(str)) {
+        _this2.setState({
+          invalid: true
+        });
+      }
+      value.year(parsed.year()).month(parsed.month()).date(parsed.date()).hour(parsed.hour()).minute(parsed.minute()).second(parsed.second());
+
+      if (!value || disabledDate && disabledDate(value)) {
         _this2.setState({
           invalid: true
         });

@@ -1,3 +1,12 @@
+## [2.0.11](https://github.com/tinper-bee/checkbox/compare/v2.0.10...v2.0.11) (2020-04-24)
+
+
+### Bug Fixes
+
+* 自动化 ([117305d](https://github.com/tinper-bee/checkbox/commit/117305d600c15c760801363f0f299e1ca3ecb4f3))
+
+
+
 <a name="2.0.10"></a>
 ## [2.0.10](https://github.com/tinper-bee/checkbox/compare/v2.0.8...v2.0.10) (2020-03-06)
 

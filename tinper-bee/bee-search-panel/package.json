@@ -1,58 +1,62 @@
 {
- "name": "bee-search-panel",
- "version": "3.0.2",
- "description": "SearchPanel ui component for react",
- "keywords": [
-  "react",
-  "react-component",
-  "bee-search-panel",
-  "iuap-design",
-  "tinper-bee",
-  "SearchPanel"
- ],
- "engines": {
-  "node": ">=4.0.0"
- },
- "homepage": "https://github.com/tinper-bee/bee-search-panel",
- "author": "liushaozhen",
- "repository": "http://github.com/tinper-bee/bee-search-panel",
- "bugs": "https://github.com/tinper-bee/bee-search-panel/issues",
- "license": "MIT",
- "main": "./build/index.js",
- "config": {
-  "port": 8000
- },
- "scripts": {
-  "dev": "bee-tools run start",
-  "build": "bee-tools run build",
-  "lint": "bee-tools-test run lint",
-  "test": "bee-tools-test run test",
-  "chrome": "bee-tools-test run chrome",
-  "coveralls": "bee-tools-test run coverage",
-  "browsers": "bee-tools-test run browsers",
-  "pub": "bee-tools run pub"
- },
- "dependencies": {
-  "babel-runtime": "^6.23.0",
-  "bee-locale": "^0.0.13",
-  "bee-panel": "latest",
-  "classnames": "^2.2.5",
-  "is-instance-of": "^1.0.1",
-  "tinper-bee-core": "latest"
- },
- "devDependencies": {
-  "bee-button": "latest",
-  "bee-clipboard": "^2.0.0",
-  "bee-datepicker": "latest",
-  "bee-drawer": "0.0.2",
-  "bee-layout": "latest",
-  "chai": "^3.5.0",
-  "console-polyfill": "~0.2.1",
-  "enzyme": "^2.4.1",
-  "es5-shim": "~4.1.10",
-  "react": "15.3.2",
-  "react-addons-test-utils": "15.3.2",
-  "react-dom": "15.3.2",
-  "tinper-bee": "latest"
- }
+  "name": "bee-search-panel",
+  "version": "3.0.3",
+  "description": "SearchPanel ui component for react",
+  "keywords": [
+    "react",
+    "react-component",
+    "bee-search-panel",
+    "iuap-design",
+    "tinper-bee",
+    "SearchPanel"
+  ],
+  "engines": {
+    "node": ">=4.0.0"
+  },
+  "homepage": "https://github.com/tinper-bee/bee-search-panel",
+  "author": "liushaozhen",
+  "repository": "http://github.com/tinper-bee/bee-search-panel",
+  "bugs": "https://github.com/tinper-bee/bee-search-panel/issues",
+  "license": "MIT",
+  "main": "./build/index.js",
+  "config": {
+    "port": 8000
+  },
+  "scripts": {
+    "dev": "bee-tools run start",
+    "build": "bee-tools run build",
+    "lint": "bee-tools-test run lint",
+    "test": "bee-tools-test run test",
+    "chrome": "bee-tools-test run chrome",
+    "coveralls": "bee-tools-test run coverage",
+    "browsers": "bee-tools-test run browsers",
+    "pub": "bee-tools run pub",
+    "version": "conventional-changelog -p angular -i CHANGELOG.md -s && git add CHANGELOG.md",
+    "postversion": "git push --follow-tags",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {
+    "babel-runtime": "^6.23.0",
+    "bee-locale": "^0.0.13",
+    "bee-panel": "latest",
+    "classnames": "^2.2.5",
+    "is-instance-of": "^1.0.1",
+    "tinper-bee-core": "latest"
+  },
+  "devDependencies": {
+    "bee-button": "latest",
+    "bee-clipboard": "^2.0.0",
+    "bee-datepicker": "latest",
+    "bee-drawer": "0.0.2",
+    "bee-layout": "latest",
+    "chai": "^3.5.0",
+    "console-polyfill": "~0.2.1",
+    "enzyme": "^2.4.1",
+    "es5-shim": "~4.1.10",
+    "react": "15.3.2",
+    "react-addons-test-utils": "15.3.2",
+    "react-dom": "15.3.2",
+    "tinper-bee": "latest",
+    "husky": "^4.2.5"
+  }
 }

@@ -1,3 +1,12 @@
+## [2.0.2](https://github.com/tinper-bee/progress-bar/compare/v2.0.1...v2.0.2) (2020-04-24)
+
+
+### Bug Fixes
+
+* 自动化 ([a7cce42](https://github.com/tinper-bee/progress-bar/commit/a7cce425714438163b992f47a528c6f3fa09bd43))
+
+
+
 <a name="2.0.1"></a>
 ## [2.0.1](https://github.com/tinper-bee/progress-bar/compare/v2.0.0...v2.0.1) (2019-05-16)
 

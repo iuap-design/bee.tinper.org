@@ -101,12 +101,11 @@ class Tooltip extends React.Component {
     
 
     componentDidUpdate(prevProps) {
-        let { visible, onVisibleChange } = this.props;
+        let { visible } = this.props;
         if ('visible' in this.props && prevProps.visible !== visible) {
             this.setState({
                 visible: visible
             })
-            onVisibleChange && onVisibleChange(visible)
         }
     }
 
@@ -190,6 +189,7 @@ class Tooltip extends React.Component {
             <OverlayTrigger 
             {...others} 
             visible={this.state.visible} 
+            onVisibleChange={onVisibleChange}
             ref={ref => this.trigger = ref} 
             shouldUpdatePosition 
             placement={placement} 
@@ -208,6 +208,7 @@ class Tooltip extends React.Component {
             <OverlayTrigger 
             {...others} 
             isHoverShow={this.state.isHoverShow} 
+            onVisibleChange={onVisibleChange}
             ref={ref => this.trigger = ref} 
             shouldUpdatePosition 
             placement={placement} 

@@ -97,7 +97,8 @@ var DatePicker = function (_Component) {
   DatePicker.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
     if ("value" in nextProps) {
       this.setState({
-        value: this.initValue(nextProps)
+        value: this.initValue(nextProps),
+        inputValue: nextProps.value && this.getValue(nextProps.value) || ''
       });
     }
     if ("open" in nextProps) {
@@ -114,8 +115,6 @@ var DatePicker = function (_Component) {
   //日期面板中输入框的失焦事件
 
   //fix:更改系统时区后，日期框需要触发 onChange 事件
-
-  //阻止组件内部事件冒泡到组件外部容器
 
 
   DatePicker.prototype.render = function render() {
@@ -169,7 +168,7 @@ var DatePicker = function (_Component) {
     if (props.keyboardInput) {
       keyboardInputProps.readOnly = false;
       keyboardInputProps.onChange = this.inputChange;
-      keyboardInputProps.value = state.inputValue.format && state.inputValue.isValid() && this.props.validatorFunc(state.inputValue) ? state.inputValue.format(props.format) : state.inputValue;
+      keyboardInputProps.value = state.inputValue && state.inputValue.format && state.inputValue.isValid() && this.props.validatorFunc(state.inputValue) ? state.inputValue.format(props.format) : state.inputValue;
     } else {
       keyboardInputProps.readOnly = true;
       keyboardInputProps.value = value && this.getValue(value) || "";
@@ -177,7 +176,7 @@ var DatePicker = function (_Component) {
     var classes = (0, _classnames2["default"])(props.className, "datepicker-container");
     return _react2["default"].createElement(
       "div",
-      _extends({ className: classes, onMouseEnter: this.onDateHover, onClick: this.stopPropagation
+      _extends({ className: classes, onMouseEnter: this.onDateHover
       }, (0, _omit2["default"])(others, ['onDateInputBlur', 'getCalendarContainer', 'showToday', 'renderFooter', 'keyboardInput', 'showDateInput', 'showTime', 'closeIcon', 'renderIcon', 'focusOnOpen', 'defultSelect', 'onOpenChange', 'locale', 'showMonthInput', 'onKeyDown', 'renderError', 'format', 'placeholder', 'disabledTime', 'onChange', 'disabledDate', 'iconClick', 'outInputKeydown'])),
       _react2["default"].createElement(
         _Picker2["default"],
@@ -275,7 +274,8 @@ var _initialiseProps = function _initialiseProps() {
   this.inputFocus = function () {
     var _props = _this3.props,
         format = _props.format,
-        validatorFunc = _props.validatorFunc;
+        validatorFunc = _props.validatorFunc,
+        disabledDate = _props.disabledDate;
 
     var input = document.querySelector('.rc-calendar-input');
     if (input) {
@@ -297,13 +297,19 @@ var _initialiseProps = function _initialiseProps() {
           _reactDom2["default"].findDOMNode(_this3.outInput).focus(); // 按esc时候焦点回到input输入框
         } else if (e.keyCode == _tinperBeeCore.KeyCode.ENTER) {
           var parsed = (0, _moment2["default"])(input.value, format, true);
-          if (parsed.isValid() && validatorFunc(input.value)) {
+          var isDisabled = disabledDate && disabledDate(parsed);
+          if (parsed.isValid() && validatorFunc(input.value) && !isDisabled) {
             _this3.setState({
               open: false
             });
             var _v = _this3.state.value;
             _this3.props.onOpenChange(false, _v, _v && _this3.getValue(_v) || '');
             _reactDom2["default"].findDOMNode(_this3.outInput).focus();
+          }
+          if (!input.value) {
+            _this3.setState({
+              open: false
+            });
           }
         }
         _this3.props.onKeyDown && _this3.props.onKeyDown(e);
@@ -464,10 +470,6 @@ var _initialiseProps = function _initialiseProps() {
     if (newValue && inputValue !== newValue) {
       _this3.fireChange(value, newValue || '');
     }
-  };
-
-  this.stopPropagation = function (e) {
-    e.stopPropagation();
   };
 
   this.fireChange = function (value, stringValue) {

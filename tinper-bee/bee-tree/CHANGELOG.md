@@ -1,3 +1,52 @@
+## [2.1.22](https://github.com/tinper-bee/bee-tree/compare/v2.1.21...v2.1.22) (2020-07-25)
+
+
+### Features
+
+* treeData支持自定义属性[JCJS-2535] ([0f4819b](https://github.com/tinper-bee/bee-tree/commit/0f4819bef7a009b5431a2ff0819a29992ccee22b))
+
+
+
+## [2.1.21](https://github.com/tinper-bee/bee-tree/compare/v2.1.20...v2.1.21) (2020-07-15)
+
+
+### Bug Fixes
+
+* 懒加载无法打开问题修复 ([35e9ff6](https://github.com/tinper-bee/bee-tree/commit/35e9ff65e8a42218248147f5867b1285290e807e))
+
+
+
+## [2.1.20](https://github.com/tinper-bee/bee-tree/compare/v2.1.19...v2.1.20) (2020-06-12)
+
+
+### Bug Fixes
+
+* scrollY未定义 ([00da551](https://github.com/tinper-bee/bee-tree/commit/00da5516d58da1c6ef0ac54ff4561cd1cf5ee573))
+* scrollY未定义 ([b08ee80](https://github.com/tinper-bee/bee-tree/commit/b08ee805bc292cffb13c22eb126247da06d0fe24))
+* 懒加载滚动后，复选框不能勾选[IFNC-1116] ([4554f26](https://github.com/tinper-bee/bee-tree/commit/4554f26ff7b599f7e4faeb0c20bd2f70fbaef6cf))
+
+
+
+## [2.1.19](https://github.com/tinper-bee/bee-tree/compare/v2.1.18...v2.1.19) (2020-05-08)
+
+
+### Bug Fixes
+
+* onCheck第一个参数的key不对 ([66996a1](https://github.com/tinper-bee/bee-tree/commit/66996a1653d4cb53cbc25bdebd429f20851615ee))
+* 自动化 ([2d96ad0](https://github.com/tinper-bee/bee-tree/commit/2d96ad07bc194ddd3bad1afc36e9b67e3808b17b))
+
+
+
+<a name="2.1.18"></a>
+## [2.1.18](https://github.com/tinper-bee/bee-tree/compare/v2.1.17...v2.1.18) (2020-04-19)
+
+
+### Bug Fixes
+
+* selectable为 false 时，回车不选中节点 ([c8f3a8d](https://github.com/tinper-bee/bee-tree/commit/c8f3a8d))
+
+
+
 <a name="2.1.17"></a>
 ## [2.1.17](https://github.com/tinper-bee/bee-tree/compare/v2.1.16...v2.1.17) (2020-04-16)
 

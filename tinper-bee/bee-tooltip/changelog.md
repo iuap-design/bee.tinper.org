@@ -1,3 +1,13 @@
+## [2.1.8](https://github.com/tinper-bee/bee-tooltip/compare/v2.1.6...v2.1.8) (2020-05-11)
+
+
+### Bug Fixes
+
+* Tooltip onVisibleChange单独使用不生效[#579](https://github.com/tinper-bee/bee-tooltip/issues/579) ([ca06afe](https://github.com/tinper-bee/bee-tooltip/commit/ca06afea97f861283118ba4d2417785c53ffd78e))
+* 自动化 ([a5f2175](https://github.com/tinper-bee/bee-tooltip/commit/a5f21759abf040d5130b47f605675320a3ce30e2))
+
+
+
 <a name="2.1.6"></a>
 ## [2.1.6](https://github.com/tinper-bee/bee-tooltip/compare/v2.1.5...v2.1.6) (2020-02-08)
 

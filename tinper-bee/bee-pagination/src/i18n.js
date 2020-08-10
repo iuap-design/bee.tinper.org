@@ -7,11 +7,11 @@ module.exports = {
     'page':'页',
     'ok':'确认',
     'en-us': {
-        'total': 'Total ',
-        'items': ' items',
-        'show': 'Show ',
-        'goto': 'Go to page ',
-        'page': ' ',
+        'total': 'Total',
+        'items': 'items',
+        'show': 'Show',
+        'goto': 'Goto',
+        'page': '',
         'ok': 'OK'
     },
     'zh-tw': {

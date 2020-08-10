@@ -1,3 +1,57 @@
+## [2.0.23](https://github.com/tinper-bee/form-control/compare/v2.0.18...v2.0.23) (2020-07-20)
+
+
+### Bug Fixes
+
+* value为空 ([d0b11f5](https://github.com/tinper-bee/form-control/commit/d0b11f5e29c73d72bba1a18f00d804be47af9830))
+* 最大长度无法输入中文bug ([3639189](https://github.com/tinper-bee/form-control/commit/3639189cbaf8e4109591d0bac99b58d5124c61cf))
+* 自动化 ([ae44701](https://github.com/tinper-bee/form-control/commit/ae44701c38d872c3f6991b525e9d9f28e63fc7be))
+
+
+### Features
+
+* maxLength ([e832e80](https://github.com/tinper-bee/form-control/commit/e832e80235b2d3d45d3e6862cdfbadc2b1fdbc92))
+* textarea支持自适应文本高度[JCJS-2437] ([4a40fb1](https://github.com/tinper-bee/form-control/commit/4a40fb16289832114e096d2f077d19cb68f161a3))
+
+
+
+## [2.0.22](https://github.com/tinper-bee/form-control/compare/v2.0.21...v2.0.22) (2020-07-02)
+
+
+### Bug Fixes
+
+* 最大长度无法输入中文bug ([3639189](https://github.com/tinper-bee/form-control/commit/3639189cbaf8e4109591d0bac99b58d5124c61cf))
+
+
+
+## [2.0.21](https://github.com/tinper-bee/form-control/compare/v2.0.20...v2.0.21) (2020-06-02)
+
+
+### Bug Fixes
+
+* value为空 ([d0b11f5](https://github.com/tinper-bee/form-control/commit/d0b11f5e29c73d72bba1a18f00d804be47af9830))
+
+
+
+## [2.0.20](https://github.com/tinper-bee/form-control/compare/v2.0.19...v2.0.20) (2020-05-29)
+
+
+### Features
+
+* maxLength ([e832e80](https://github.com/tinper-bee/form-control/commit/e832e80235b2d3d45d3e6862cdfbadc2b1fdbc92))
+
+
+
+## [2.0.19](https://github.com/tinper-bee/form-control/compare/v2.0.17...v2.0.19) (2020-04-24)
+
+
+### Bug Fixes
+
+* blur回调增加参数，判断是否为清空操作 ([62ed3f3](https://github.com/tinper-bee/form-control/commit/62ed3f3fec58010df1c1139417e70999935cfe5d))
+* 自动化 ([ae44701](https://github.com/tinper-bee/form-control/commit/ae44701c38d872c3f6991b525e9d9f28e63fc7be))
+
+
+
 <a name="2.0.18"></a>
 ## [2.0.18](https://github.com/tinper-bee/form-control/compare/v2.0.16...v2.0.18) (2020-03-28)
 

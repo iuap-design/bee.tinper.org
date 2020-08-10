@@ -1,3 +1,34 @@
+## [3.0.1](https://github.com/tinper-bee/bee-loading/compare/v3.0.0...v3.0.1) (2020-07-04)
+
+
+### Bug Fixes
+
+* 修复className覆盖自带class问题&container class重复问题 ([df46b4b](https://github.com/tinper-bee/bee-loading/commit/df46b4b7e220402056e08c59ddbf12e96c1c5fcb))
+
+
+
+# [3.0.0](https://github.com/tinper-bee/bee-loading/compare/v2.1.0...v3.0.0) (2020-06-29)
+
+
+
+# [2.1.0](https://github.com/tinper-bee/bee-loading/compare/v2.0.4...v2.1.0) (2020-06-29)
+
+
+### Features
+
+* 新增多语,默认loading修改 ([2e58041](https://github.com/tinper-bee/bee-loading/commit/2e58041ea847a379cec41a49a569218889371026))
+
+
+
+## [2.0.4](https://github.com/tinper-bee/bee-loading/compare/v2.0.3...v2.0.4) (2020-04-24)
+
+
+### Bug Fixes
+
+* 自动化 ([1983fd0](https://github.com/tinper-bee/bee-loading/commit/1983fd0aaadfcfeaeeb4f88fecac709449fab1c1))
+
+
+
 <a name="2.0.3"></a>
 ## [2.0.3](https://github.com/tinper-bee/bee-loading/compare/v2.0.2...v2.0.3) (2019-10-15)
 

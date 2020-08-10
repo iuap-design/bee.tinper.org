@@ -1,3 +1,12 @@
+## [2.0.13](https://github.com/tinper-bee/bee-form/compare/v2.0.12...v2.0.13) (2020-04-24)
+
+
+### Bug Fixes
+
+* 自动化 ([de9b1b9](https://github.com/tinper-bee/bee-form/commit/de9b1b91fa8a9be8812d58c6c9d7e907d15ed271))
+
+
+
 <a name="2.0.12"></a>
 ## [2.0.12](https://github.com/tinper-bee/bee-form/compare/v2.0.11...v2.0.12) (2019-09-24)
 

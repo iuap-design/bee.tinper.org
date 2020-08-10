@@ -1,3 +1,12 @@
+## [3.1.1](https://github.com/tinper-bee/bee-popover/compare/v3.1.0...v3.1.1) (2020-04-24)
+
+
+### Bug Fixes
+
+* 自动化 ([7024466](https://github.com/tinper-bee/bee-popover/commit/702446608414dff8b0241e147b4764810f0eeed6))
+
+
+
 <a name="3.1.0"></a>
 # [3.1.0](https://github.com/tinper-bee/bee-popover/compare/v3.0.7...v3.1.0) (2020-02-08)
 

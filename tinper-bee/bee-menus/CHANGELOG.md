@@ -1,3 +1,12 @@
+## [2.0.13](https://github.com/tinper-bee/bee-menus/compare/v2.0.12...v2.0.13) (2020-04-24)
+
+
+### Bug Fixes
+
+* 自动化 ([934b2f2](https://github.com/tinper-bee/bee-menus/commit/934b2f2fba480311c43563a979e733d4ef8912a8))
+
+
+
 <a name="2.0.12"></a>
 ## [2.0.12](https://github.com/tinper-bee/bee-menus/compare/v2.0.11...v2.0.12) (2019-12-24)
 

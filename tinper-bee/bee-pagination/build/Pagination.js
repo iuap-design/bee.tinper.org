@@ -167,7 +167,7 @@ var defaultProps = {
     ellipsis: true,
     boundaryLinks: false,
     clsPrefix: "u-pagination",
-    gap: false,
+    gap: true,
     noBorder: false,
     dataNumSelect: ['5', '10', '15', '20'],
     // dataNum: 1,
@@ -176,7 +176,8 @@ var defaultProps = {
     disabled: false,
     btnType: { shape: 'border' },
     confirmBtn: function confirmBtn() {},
-    sizeWithCookie: ''
+    sizeWithCookie: '',
+    size: 'sm'
 };
 
 var Pagination = function (_React$Component) {
@@ -287,6 +288,13 @@ var Pagination = function (_React$Component) {
             var newItems = items === 0 ? 1 : items;
             this.setState({
                 items: newItems
+            });
+        }
+        if ('total' in nextProps && this.props.total !== total) {
+            var pageSize = parseInt(dataNumSelect[dataNum]);
+            var defaultPageSize = parseInt(dataNumSelect[1]);
+            this.setState({
+                items: Number.isNaN(pageSize) ? Math.ceil(total / defaultPageSize) : Math.ceil(total / pageSize)
             });
         }
     };
@@ -454,7 +462,7 @@ var Pagination = function (_React$Component) {
         if (size) {
             classes[clsPrefix + "-" + size] = true;
         }
-        if (gap) {
+        if (!noBorder && gap) {
             classes[clsPrefix + "-gap"] = true;
         }
         if (!!btnDom) {
@@ -541,15 +549,9 @@ var Pagination = function (_React$Component) {
                 "div",
                 { className: "data_per_select" },
                 _react2["default"].createElement(
-                    "span",
-                    null,
-                    local['show']
-                ),
-                _react2["default"].createElement(
-                    _beeSelect2["default"]
-                    // className="data_select"
-                    ,
-                    { dropdownClassName: clsPrefix + "-data_per_select",
+                    _beeSelect2["default"],
+                    {
+                        dropdownClassName: clsPrefix + "-data_per_select",
                         value: this.state.dataNum,
                         onChange: this.dataNumSelect },
                     dataNumSelect.length > 0 && dataNumSelect.map(function (item, i) {

@@ -1,3 +1,76 @@
+## [2.2.39](https://github.com/tinper-bee/bee-input-number/compare/v2.2.38...v2.2.39) (2020-08-03)
+
+
+### Bug Fixes
+
+* 修复IEpalceholder ([505469f](https://github.com/tinper-bee/bee-input-number/commit/505469fed42cca1307d0d178e026c7df6af35e56))
+* 最小值控制（min属性）设置为0时，仍然可以输入负数[[#614](https://github.com/tinper-bee/bee-input-number/issues/614)] ([6de0e64](https://github.com/tinper-bee/bee-input-number/commit/6de0e64724cdb31d994238bd22c5fc293d71ae0e))
+
+
+
+## [2.2.38](https://github.com/tinper-bee/bee-input-number/compare/v2.2.37...v2.2.38) (2020-07-20)
+
+
+### Bug Fixes
+
+* 修复IE placeholder兼容问题 ([3a9a13b](https://github.com/tinper-bee/bee-input-number/commit/3a9a13b76e6ffd2b660171838128534187cf7287))
+
+
+
+## [2.2.37](https://github.com/tinper-bee/bee-input-number/compare/v2.2.36...v2.2.37) (2020-07-11)
+
+
+### Features
+
+* 兼容IE11 placeholder ([b7063ec](https://github.com/tinper-bee/bee-input-number/commit/b7063eca47aafe7cd3589bab8074225a3d648cd1))
+
+
+
+## [2.2.36](https://github.com/tinper-bee/bee-input-number/compare/v2.2.35...v2.2.36) (2020-06-29)
+
+
+### Bug Fixes
+
+* 负数失焦问题 ([eb1ca6f](https://github.com/tinper-bee/bee-input-number/commit/eb1ca6f6a983de9f9929ae55d782915fe2451b86))
+
+
+
+## [2.2.35](https://github.com/tinper-bee/bee-input-number/compare/v2.2.34...v2.2.35) (2020-06-28)
+
+
+### Bug Fixes
+
+* 适配max min传字符串 ([6bc2bd4](https://github.com/tinper-bee/bee-input-number/commit/6bc2bd437b0f0b3118685257c1db5663d65b99ab))
+
+
+
+## [2.2.34](https://github.com/tinper-bee/bee-input-number/compare/v2.2.33...v2.2.34) (2020-06-18)
+
+
+### Bug Fixes
+
+* 最小值传0,无法减小问题 ([c0609f6](https://github.com/tinper-bee/bee-input-number/commit/c0609f6fd6d47e7bc3dd2b9130c6ef51a59a16e7))
+
+
+
+## [2.2.33](https://github.com/tinper-bee/bee-input-number/compare/v2.2.32...v2.2.33) (2020-06-12)
+
+
+### Bug Fixes
+
+* 适配min和max传空字符串的情况 ([504a240](https://github.com/tinper-bee/bee-input-number/commit/504a24085807868a462fea07a1163d1975830001))
+
+
+
+## [2.2.32](https://github.com/tinper-bee/bee-input-number/compare/v2.2.31...v2.2.32) (2020-04-24)
+
+
+### Bug Fixes
+
+* 自动化 ([94af09e](https://github.com/tinper-bee/bee-input-number/commit/94af09e3f8c80b1491a2b42e83db3d01aa9b88f8))
+
+
+
 <a name="2.2.30"></a>
 ## [2.2.30](https://github.com/tinper-bee/bee-input-number/compare/v2.2.29...v2.2.30) (2020-04-01)
 

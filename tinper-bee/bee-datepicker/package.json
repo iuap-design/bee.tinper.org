@@ -1,75 +1,79 @@
 {
- "name": "bee-datepicker",
- "version": "2.3.20",
- "description": "DatePicker ui component for react",
- "keywords": [
-  "react",
-  "react-component",
-  "bee-datepicker",
-  "iuap-design",
-  "tinper-bee",
-  "DatePicker"
- ],
- "engines": {
-  "node": ">=4.0.0"
- },
- "homepage": "https://github.com/tinper-bee/bee-datepicker",
- "author": "Yonyou FED",
- "repository": "https://github.com/tinper-bee/bee-datepicker",
- "bugs": "https://github.com/tinper-bee/bee-datepicker/issues",
- "license": "MIT",
- "main": "./build/index.js",
- "config": {
-  "port": 3000,
-  "commitizen": {
-   "path": "./node_modules/cz-conventional-changelog"
+  "name": "bee-datepicker",
+  "version": "2.3.27",
+  "description": "DatePicker ui component for react",
+  "keywords": [
+    "react",
+    "react-component",
+    "bee-datepicker",
+    "iuap-design",
+    "tinper-bee",
+    "DatePicker"
+  ],
+  "engines": {
+    "node": ">=4.0.0"
+  },
+  "homepage": "https://github.com/tinper-bee/bee-datepicker",
+  "author": "Yonyou FED",
+  "repository": "https://github.com/tinper-bee/bee-datepicker",
+  "bugs": "https://github.com/tinper-bee/bee-datepicker/issues",
+  "license": "MIT",
+  "main": "./build/index.js",
+  "config": {
+    "port": 3000,
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "scripts": {
+    "dev": "bee-tools run start",
+    "build": "bee-tools run build",
+    "lint": "bee-tools run lint",
+    "test": "bee-tools run test",
+    "chrome": "bee-tools run chrome",
+    "coveralls": "bee-tools run coverage",
+    "browsers": "bee-tools run browsers",
+    "pub": "bee-tools run pub",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
+    "version": "conventional-changelog -p angular -i CHANGELOG.md -s && git add CHANGELOG.md",
+    "postversion": "git push --follow-tags",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {
+    "bee-button": "latest",
+    "bee-form-control": "latest",
+    "bee-input-group": "latest",
+    "classnames": "^2.2.5",
+    "moment": "^2.17.1",
+    "omit.js": "^1.0.2",
+    "rc-calendar": "^9.15.10",
+    "rc-time-picker": "^3.1.0",
+    "rc-trigger": "^2.2.0",
+    "rc-util": "^4.1.1",
+    "react-lifecycles-compat": "^3.0.4",
+    "tinper-bee-core": "latest"
+  },
+  "peerDependencies": {
+    "react": "^15.3.0 || ^16.0",
+    "react-dom": "^15.3.0 || ^16.0",
+    "prop-types": "15.6.0"
+  },
+  "devDependencies": {
+    "bee-clipboard": "^2.0.0",
+    "bee-drawer": "0.0.2",
+    "bee-form": "latest",
+    "bee-layout": "latest",
+    "bee-panel": "latest",
+    "bee-table": "latest",
+    "chai": "^3.5.0",
+    "console-polyfill": "~0.2.1",
+    "cz-conventional-changelog": "^2.1.0",
+    "enzyme": "^2.4.1",
+    "es5-shim": "~4.1.10",
+    "object-assign": "^4.1.0",
+    "react": "~15.3.0",
+    "react-addons-test-utils": "15.3.2",
+    "react-dom": "~15.3.0",
+    "husky": "^4.2.5"
   }
- },
- "scripts": {
-  "dev": "bee-tools run start",
-  "build": "bee-tools run build",
-  "lint": "bee-tools run lint",
-  "test": "bee-tools run test",
-  "chrome": "bee-tools run chrome",
-  "coveralls": "bee-tools run coverage",
-  "browsers": "bee-tools run browsers",
-  "pub": "bee-tools run pub",
-  "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0"
- },
- "dependencies": {
-  "bee-button": "latest",
-  "bee-form-control": "latest",
-  "bee-input-group": "latest",
-  "classnames": "^2.2.5",
-  "moment": "^2.17.1",
-  "omit.js": "^1.0.2",
-  "rc-calendar": "^9.15.10",
-  "rc-time-picker": "^3.1.0",
-  "rc-trigger": "^2.2.0",
-  "rc-util": "^4.1.1",
-  "react-lifecycles-compat": "^3.0.4",
-  "tinper-bee-core": "latest"
- },
- "peerDependencies": {
-  "react": "^15.3.0 || ^16.0",
-  "react-dom": "^15.3.0 || ^16.0",
-  "prop-types": "15.6.0"
- },
- "devDependencies": {
-  "bee-clipboard": "^2.0.0",
-  "bee-drawer": "0.0.2",
-  "bee-form": "latest",
-  "bee-layout": "latest",
-  "bee-panel": "latest",
-  "bee-table": "latest",
-  "chai": "^3.5.0",
-  "console-polyfill": "~0.2.1",
-  "cz-conventional-changelog": "^2.1.0",
-  "enzyme": "^2.4.1",
-  "es5-shim": "~4.1.10",
-  "object-assign": "^4.1.0",
-  "react": "~15.3.0",
-  "react-addons-test-utils": "15.3.2",
-  "react-dom": "~15.3.0"
- }
 }

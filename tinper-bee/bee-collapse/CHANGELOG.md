@@ -1,3 +1,12 @@
+## [1.0.3](https://github.com/tinper-bee/bee-collapse/compare/v1.0.2...v1.0.3) (2020-04-24)
+
+
+### Bug Fixes
+
+* 自动化 ([3cfc706](https://github.com/tinper-bee/bee-collapse/commit/3cfc7068dc8a16faa293b9033950aa90e819a3ea))
+
+
+
 <a name="1.0.2"></a>
 ## [1.0.2](https://github.com/tinper-bee/bee-collapse/compare/v1.0.1...v1.0.2) (2019-05-16)
 

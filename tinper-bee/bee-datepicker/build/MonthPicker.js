@@ -124,8 +124,6 @@ var MonthPicker = function (_Component) {
       });
     }
   };
-  //阻止组件内部事件冒泡到组件外部容器
-
 
   MonthPicker.prototype.render = function render() {
     var _this2 = this;
@@ -144,7 +142,7 @@ var MonthPicker = function (_Component) {
     var classes = (0, _classnames2["default"])(props.className, "datepicker-container");
     return _react2["default"].createElement(
       "div",
-      _extends({ className: classes, onClick: this.stopPropagation, onMouseOver: this.stopPropagation
+      _extends({ className: classes
       }, (0, _omit2["default"])(others, ['closeIcon', 'renderIcon', 'format', 'showDateInput', 'showMonthInput', 'locale', 'placeholder', 'onClear', 'renderFooter', 'renderError', 'disabledDate', 'disabledTime'])),
       _react2["default"].createElement(
         _Picker2["default"],
@@ -302,10 +300,6 @@ var _initialiseProps = function _initialiseProps() {
       value: ''
     });
     _this3.props.onChange && _this3.props.onChange('', '');
-  };
-
-  this.stopPropagation = function (e) {
-    e.stopPropagation();
   };
 };
 

@@ -1,3 +1,12 @@
+## [2.1.7](https://github.com/tinper-bee/bee-message/compare/v2.1.6...v2.1.7) (2020-04-24)
+
+
+### Bug Fixes
+
+* 自动化 ([e5057c8](https://github.com/tinper-bee/bee-message/commit/e5057c8f60efbd997b1ce427a42b4f9611a54565))
+
+
+
 <a name="2.1.6"></a>
 ## [2.1.6](https://github.com/tinper-bee/bee-message/compare/v2.1.5...v2.1.6) (2019-09-30)
 

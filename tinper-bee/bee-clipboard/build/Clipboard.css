@@ -1596,6 +1596,9 @@ input.u-button[type="submit"] {
 .uf-qingkong:before {
   content: "\e666"; }
 
+.uf-location:before {
+  content: "\e78b"; }
+
 /* FormGroup */
 /*  Navlayout  */
 /* FormGroup */
@@ -2604,6 +2607,9 @@ input.u-button[type="submit"] {
 .uf-qingkong:before {
   content: "\e666"; }
 
+.uf-location:before {
+  content: "\e78b"; }
+
 .u-modal {
   display: none;
   position: fixed;
@@ -2630,6 +2636,14 @@ input.u-button[type="submit"] {
       display: inline-block;
       text-align: left;
       vertical-align: middle; }
+  .u-modal-centered.draging {
+    text-align: unset; }
+    .u-modal-centered.draging::before {
+      display: none; }
+  .u-modal-centered.draged {
+    text-align: unset; }
+    .u-modal-centered.draged::before {
+      display: none; }
   .u-modal.fade {
     opacity: 0;
     transition: opacity 0.15s linear; }
@@ -2760,18 +2774,18 @@ input.u-button[type="submit"] {
   .u-modal-container .u-modal, .u-modal-container .u-modal-backdrop {
     position: absolute; }
 
-.react-draggable-transparent-selection * {
-  pointer-events: none !important; }
-
 .ac-confirm .u-modal-dialog {
   width: 410px;
   height: 201px; }
   .ac-confirm .u-modal-dialog .ac-confirm-footer {
-    height: 44px;
-    padding: 7px 20px;
+    height: 48px;
+    padding: 8px 16px;
     border-top: #d0d0d0 solid 1px; }
     .ac-confirm .u-modal-dialog .ac-confirm-footer .u-button {
-      min-width: auto; }
+      min-width: 60px;
+      min-height: 28px;
+      line-height: 28px;
+      padding: 0 10px; }
     .ac-confirm .u-modal-dialog .ac-confirm-footer .u-button.u-button-primary {
       margin-right: 8px;
       background-color: #e14c46;

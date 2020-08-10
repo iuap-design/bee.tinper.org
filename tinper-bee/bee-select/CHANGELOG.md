@@ -1,3 +1,71 @@
+## [2.0.26](https://github.com/tinper-bee/bee-select/compare/v2.0.25...v2.0.26) (2020-07-17)
+
+
+### Bug Fixes
+
+* Select下拉组件的placeHolder不显示[[#536](https://github.com/tinper-bee/bee-select/issues/536)] ([b0edb85](https://github.com/tinper-bee/bee-select/commit/b0edb85be6575716cb95499266a0e189ff9e4341))
+
+
+
+## [2.0.25](https://github.com/tinper-bee/bee-select/compare/v2.0.24...v2.0.25) (2020-05-08)
+
+
+### Features
+
+* noWarp时 宽度计算优化 ([0ceb5be](https://github.com/tinper-bee/bee-select/commit/0ceb5be64bb25547259222fc24956107970c4700))
+
+
+
+## [2.0.24](https://github.com/tinper-bee/bee-select/compare/v2.0.23...v2.0.24) (2020-05-07)
+
+
+### Bug Fixes
+
+* li宽度计算修改 ([b801e80](https://github.com/tinper-bee/bee-select/commit/b801e80bfdf9251738cfd4e616296a9017185206))
+
+
+
+## [2.0.23](https://github.com/tinper-bee/bee-select/compare/v2.0.22...v2.0.23) (2020-04-26)
+
+
+### Bug Fixes
+
+* 报错bug ([26533a8](https://github.com/tinper-bee/bee-select/commit/26533a88e21260dbb622d8c41ee981a13899c299))
+* 自动化 ([0aeeaae](https://github.com/tinper-bee/bee-select/commit/0aeeaae9d6aafc2c2120fa229169c13eeae139b0))
+
+
+
+<a name="2.0.22"></a>
+## [2.0.22](https://github.com/tinper-bee/bee-select/compare/v2.0.21...v2.0.22) (2020-04-24)
+
+
+### Bug Fixes
+
+* 去掉console ([9c8d5bd](https://github.com/tinper-bee/bee-select/commit/9c8d5bd))
+* **bee-select:** 去掉 console ([3c78323](https://github.com/tinper-bee/bee-select/commit/3c78323))
+
+
+
+<a name="2.0.21"></a>
+## [2.0.21](https://github.com/tinper-bee/bee-select/compare/v2.0.20...v2.0.21) (2020-04-23)
+
+
+### Features
+
+* **bee-select:** 新增noWarp属性,多选超过宽度显示+n... ([590946d](https://github.com/tinper-bee/bee-select/commit/590946d))
+
+
+
+<a name="2.0.20"></a>
+## [2.0.20](https://github.com/tinper-bee/bee-select/compare/v2.0.19...v2.0.20) (2020-04-20)
+
+
+### Bug Fixes
+
+* **bee-select:** child type 适配 ([24a0810](https://github.com/tinper-bee/bee-select/commit/24a0810))
+
+
+
 <a name="2.0.19"></a>
 ## [2.0.19](https://github.com/tinper-bee/bee-select/compare/v2.0.18...v2.0.19) (2020-04-14)
 

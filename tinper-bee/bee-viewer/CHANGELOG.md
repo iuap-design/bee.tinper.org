@@ -1,3 +1,12 @@
+## [0.1.7](https://github.com/tinper-bee/bee-viewer/compare/v0.1.6...v0.1.7) (2020-04-24)
+
+
+### Bug Fixes
+
+* 自动化 ([6cbbd4f](https://github.com/tinper-bee/bee-viewer/commit/6cbbd4f6d62f679bf0c633c11896ad2188938b03))
+
+
+
 <a name="0.1.6"></a>
 ## [0.1.6](https://github.com/tinper-bee/bee-viewer/compare/v0.1.5...v0.1.6) (2019-05-21)
 

@@ -185,6 +185,8 @@ var _initialiseProps = function _initialiseProps() {
     var cause = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
     var props = _this2.props;
+    var isDisabled = props.disabledDate && props.disabledDate(value);
+    if (isDisabled) return;
     if (!('value' in props)) {
       _this2.setState({
         value: value

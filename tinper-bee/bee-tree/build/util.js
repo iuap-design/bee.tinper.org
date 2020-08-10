@@ -23,7 +23,6 @@ exports.toArray = toArray;
 exports.getNodeChildren = getNodeChildren;
 exports.warnOnlyTreeNode = warnOnlyTreeNode;
 exports.convertListToTree = convertListToTree;
-exports.debounce = debounce;
 exports.throttle = throttle;
 
 var _react = require('react');
@@ -130,10 +129,12 @@ function getSiblingPosition(index, len, siblingPosition) {
 }
 
 function loopAllChildren(childs, callback, parent) {
+  var baseNum = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 0;
+
   var loop = function loop(children, level, _parent) {
     var len = getChildrenlength(children);
     _react2["default"].Children.forEach(children, function (item, index) {
-      var pos = level + '-' + index;
+      var pos = level + '-' + (index + parseInt(baseNum));
       if (item.props.children && item.type && item.type.isTreeNode) {
         loop(item.props.children, pos, { node: item, pos: pos });
       }
@@ -486,56 +487,23 @@ function isObject(value) {
 }
 
 /**
- * 函数防抖
- * @param {*} func 
- * @param {*} wait 
- * @param {*} immediate 
- */
-function debounce(func, wait, immediate) {
-  var timeout = void 0;
-  return function debounceFunc() {
-    var context = this;
-    var args = arguments;
-    // https://fb.me/react-event-pooling
-    if (args[0] && args[0].persist) {
-      args[0].persist();
-    }
-    var later = function later() {
-      timeout = null;
-      if (!immediate) {
-        func.apply(context, args);
-      }
-    };
-    var callNow = immediate && !timeout;
-    clearTimeout(timeout);
-    timeout = setTimeout(later, wait);
-    if (callNow) {
-      func.apply(context, args);
-    }
-  };
-}
-
-/**
  * 函数节流
  * @param {*} func 延时调用函数
  * @param {*} wait 延迟多长时间
- * @param {*} options 至少多长时间触发一次
  * @return Function 延迟执行的方法
  */
-function throttle(func, wait, options) {
-  var leading = true;
-  var trailing = true;
-
-  if (typeof func !== 'function') {
-    throw new TypeError('Expected a function');
-  }
-  if (isObject(options)) {
-    leading = 'leading' in options ? !!options.leading : leading;
-    trailing = 'trailing' in options ? !!options.trailing : trailing;
-  }
-  return debounce(func, wait, {
-    leading: leading,
-    trailing: trailing,
-    'maxWait': wait
-  });
+function throttle(fn, wait) {
+  var last = void 0;
+  return function () {
+    var now = Date.now();
+    if (!last) {
+      fn.apply(this, arguments);
+      last = now;
+      return;
+    }
+    if (now - last >= wait) {
+      fn.apply(this, arguments);
+      last = now;
+    }
+  };
 }

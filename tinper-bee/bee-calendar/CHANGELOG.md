@@ -1,3 +1,12 @@
+## [2.1.3](https://github.com/tinper-bee/bee-calendar/compare/v2.1.2...v2.1.3) (2020-04-24)
+
+
+### Bug Fixes
+
+* 自动化 ([5c86ea7](https://github.com/tinper-bee/bee-calendar/commit/5c86ea795d07e74cfceeb990f555ed832577d158))
+
+
+
 <a name="2.1.2"></a>
 ## [2.1.2](https://github.com/tinper-bee/bee-calendar/compare/v2.1.1...v2.1.2) (2019-11-25)
 

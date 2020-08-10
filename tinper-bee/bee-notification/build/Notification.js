@@ -187,7 +187,7 @@ var Notification = function (_Component) {
 
     return _react2["default"].createElement(
       'div',
-      { className: (0, _classnames2["default"])(className, classes), style: style },
+      { className: (0, _classnames2["default"])(classes), style: style },
       _react2["default"].createElement(
         _beeAnimate2["default"],
         { transitionName: this.getTransitionName() },
@@ -205,13 +205,19 @@ Notification.propTypes = propTypes;
 Notification.defaultProps = defaultProps;
 
 Notification.newInstance = function newNotificationInstance(properties, callback) {
+
   if (typeof callback !== 'function') {
     console.error('You must introduce callback as the second parameter of Notification.newInstance().');
     return;
   }
   var props = properties || {};
+  var container = props.container || document.body;
+  if (typeof container == 'function') {
+    container = container();
+  }
+
   var div = document.createElement('div');
-  document.body.appendChild(div);
+  container.appendChild(div);
 
   var called = false;
   function ref(notification) {
@@ -230,7 +236,7 @@ Notification.newInstance = function newNotificationInstance(properties, callback
       component: notification,
       destroy: function destroy() {
         _reactDom2["default"].unmountComponentAtNode(div);
-        document.body.removeChild(div);
+        container.removeChild(div);
       }
     });
   }

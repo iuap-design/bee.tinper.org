@@ -1,3 +1,12 @@
+## [2.1.8](https://github.com/tinper-bee/bee-cascader/compare/v2.1.7...v2.1.8) (2020-04-24)
+
+
+### Bug Fixes
+
+* 自动化 ([6d94145](https://github.com/tinper-bee/bee-cascader/commit/6d941456f67b4ab475b405eba9821f3384d9365f))
+
+
+
 <a name="2.1.7"></a>
 ## [2.1.7](https://github.com/tinper-bee/bee-cascader/compare/v2.1.6...v2.1.7) (2020-03-03)
 

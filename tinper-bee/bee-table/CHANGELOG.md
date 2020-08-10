@@ -1,3 +1,132 @@
+## [2.2.61](https://github.com/tinper-bee/bee-table/compare/v2.2.60...v2.2.61) (2020-07-29)
+
+
+### Features
+
+* onDropRow增加参数targetIndex ([17bf7b9](https://github.com/tinper-bee/bee-table/commit/17bf7b9c49d7ec5d85160e587063c42968b77e4e))
+
+
+
+## [2.2.60](https://github.com/tinper-bee/bee-table/compare/v2.2.59...v2.2.60) (2020-07-23)
+
+
+### Features
+
+* setRowHeight性能优化 ([bc5aa63](https://github.com/tinper-bee/bee-table/commit/bc5aa63851e445fda47fb37534c5dc38451ea99b))
+
+
+
+## [2.2.59](https://github.com/tinper-bee/bee-table/compare/v2.2.57...v2.2.59) (2020-07-22)
+
+
+### Bug Fixes
+
+* 合计和固定列错位[[#540](https://github.com/tinper-bee/bee-table/issues/540)] ([f3541df](https://github.com/tinper-bee/bee-table/commit/f3541dfe034712751ca62c73f63d3874f8036d1f))
+
+
+## [2.2.58](https://github.com/tinper-bee/bee-table/compare/v2.2.57...v2.2.58) (2020-07-20)
+
+
+### Features
+
+* 普通表格新增onBodyScroll回调 ([b42d80b](https://github.com/tinper-bee/bee-table/commit/b42d80b02aafa9a67e9fafed95c40a5b9afd302f))
+
+
+
+## [2.2.57](https://github.com/tinper-bee/bee-table/compare/v2.2.56...v2.2.57) (2020-07-17)
+
+
+### Features
+
+* 条件过滤，输入框输入即查询[[#605](https://github.com/tinper-bee/bee-table/issues/605)] ([2a06e5f](https://github.com/tinper-bee/bee-table/commit/2a06e5fa8f28b955d69ccceae020139657eb3d1f))
+
+
+
+## [2.2.56](https://github.com/tinper-bee/bee-table/compare/v2.2.55...v2.2.56) (2020-07-16)
+
+
+### Features
+
+* 行拖拽样式修改[JCJS-2307] ([2cb8982](https://github.com/tinper-bee/bee-table/commit/2cb8982d677c28af4a17bd81b4c5736304d08a5f))
+
+
+
+## [2.2.55](https://github.com/tinper-bee/bee-table/compare/v2.2.54...v2.2.55) (2020-07-14)
+
+
+### Features
+
+* 增加 hideDragHandle 参数，隐藏行拖拽把手[[#609](https://github.com/tinper-bee/bee-table/issues/609)] ([b5eab50](https://github.com/tinper-bee/bee-table/commit/b5eab50b9a8b66c96a31b8f8c980ea9f9ea4d264))
+
+
+
+## [2.2.54](https://github.com/tinper-bee/bee-table/compare/v2.2.48...v2.2.54) (2020-07-14)
+
+
+### Bug Fixes
+
+* onPaste行列参数修改 ([3b8c65d](https://github.com/tinper-bee/bee-table/commit/3b8c65d02b8e9a6cbc0045f36e1e4567accdfa79))
+* 自动化 ([0977659](https://github.com/tinper-bee/bee-table/commit/0977659081eefe04b7d10446a10d608d7e726899))
+
+
+### Features
+
+* changelog ([ba31790](https://github.com/tinper-bee/bee-table/commit/ba317900d387a311b7489d7cd4285609e2ad739f))
+* 列合计新增精度 ([b80e703](https://github.com/tinper-bee/bee-table/commit/b80e703b77d1904094971a766445b998e1c03b41))
+* 列合计新增精度 ([532fbb4](https://github.com/tinper-bee/bee-table/commit/532fbb4851bd147de817abeec1234b977ef7a674))
+* 列合计新增精度 ([b9c99bb](https://github.com/tinper-bee/bee-table/commit/b9c99bb547a82466c20b777d3f504ce316ad7aea))
+* 增加useDragHandle参数，支持行手柄拖拽[[#607](https://github.com/tinper-bee/bee-table/issues/607)] ([ba52c43](https://github.com/tinper-bee/bee-table/commit/ba52c43140c1b2273420b66abe9e6238bed08ab9))
+* 增加useDragHandle参数，支持行手柄拖拽[[#607](https://github.com/tinper-bee/bee-table/issues/607)] ([02d9625](https://github.com/tinper-bee/bee-table/commit/02d962563b31bd34b0ced6b8f1bd0b68bc87971d))
+* 排序回调新增data参数 ([344e948](https://github.com/tinper-bee/bee-table/commit/344e94814141fc9da75af350f777ede7f3c132cd))
+* 新增sumRender自定义列合计render函数 ([4c6f69f](https://github.com/tinper-bee/bee-table/commit/4c6f69fcabd23a5f823cd37e34c38b6e4e9633e8))
+* 格式化 ([386af02](https://github.com/tinper-bee/bee-table/commit/386af02ce820f090a8b714f4158ffe6785ebcca9))
+
+
+
+## [2.2.53](https://github.com/tinper-bee/bee-table/compare/v2.2.52...v2.2.53) (2020-07-09)
+
+
+### Features
+
+* 新增sumRender自定义列合计render函数 ([4c6f69f](https://github.com/tinper-bee/bee-table/commit/4c6f69fcabd23a5f823cd37e34c38b6e4e9633e8))
+
+
+
+## [2.2.52](https://github.com/tinper-bee/bee-table/compare/v2.2.51...v2.2.52) (2020-07-09)
+
+
+### Bug Fixes
+
+* onPaste行列参数修改 ([3b8c65d](https://github.com/tinper-bee/bee-table/commit/3b8c65d02b8e9a6cbc0045f36e1e4567accdfa79))
+
+
+
+## [2.2.51](https://github.com/tinper-bee/bee-table/compare/v2.2.50...v2.2.51) (2020-07-09)
+
+
+
+## [2.2.50](https://github.com/tinper-bee/bee-table/compare/v2.2.49...v2.2.50) (2020-07-08)
+
+
+### Features
+
+* changelog ([ba31790](https://github.com/tinper-bee/bee-table/commit/ba317900d387a311b7489d7cd4285609e2ad739f))
+* 列合计新增精度 ([b80e703](https://github.com/tinper-bee/bee-table/commit/b80e703b77d1904094971a766445b998e1c03b41))
+* 列合计新增精度 ([532fbb4](https://github.com/tinper-bee/bee-table/commit/532fbb4851bd147de817abeec1234b977ef7a674))
+* 排序回调新增data参数 ([344e948](https://github.com/tinper-bee/bee-table/commit/344e94814141fc9da75af350f777ede7f3c132cd))
+
+
+
+## [2.2.49](https://github.com/tinper-bee/bee-table/compare/v2.2.48...v2.2.49) (2020-05-21)
+
+
+### Features
+
+* 列合计新增精度 ([b9c99bb](https://github.com/tinper-bee/bee-table/commit/b9c99bb547a82466c20b777d3f504ce316ad7aea))
+* 格式化 ([386af02](https://github.com/tinper-bee/bee-table/commit/386af02ce820f090a8b714f4158ffe6785ebcca9))
+
+
+
 <a name="2.2.48"></a>
 ## [2.2.48](https://github.com/tinper-bee/bee-table/compare/v2.2.47...v2.2.48) (2020-04-16)
 

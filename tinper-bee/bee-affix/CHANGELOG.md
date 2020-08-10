@@ -1,3 +1,12 @@
+## [1.0.18](https://github.com/tinper-bee/bee-affix/compare/v1.0.17...v1.0.18) (2020-04-24)
+
+
+### Bug Fixes
+
+* 自动化 ([ec7c187](https://github.com/tinper-bee/bee-affix/commit/ec7c1874320cc69384d510f3a55432f135deba23))
+
+
+
 <a name="1.0.17"></a>
 ## [1.0.17](https://github.com/tinper-bee/bee-affix/compare/v1.0.16...v1.0.17) (2019-09-23)
 

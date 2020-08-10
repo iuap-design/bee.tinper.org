@@ -1,3 +1,12 @@
+## [2.0.2](https://github.com/tinper-bee/bee-button-group/compare/v2.0.1...v2.0.2) (2020-04-24)
+
+
+### Bug Fixes
+
+* 自动化 ([86c936f](https://github.com/tinper-bee/bee-button-group/commit/86c936f91df5d0ae41d382bdfb79edcf7e6de778))
+
+
+
 <a name="2.0.1"></a>
 ## [2.0.1](https://github.com/tinper-bee/bee-button-group/compare/v1.2.0...v2.0.1) (2019-03-05)
 

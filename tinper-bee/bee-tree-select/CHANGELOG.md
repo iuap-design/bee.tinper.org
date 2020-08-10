@@ -1,3 +1,12 @@
+## [0.0.7](https://github.com/tinper-bee/bee-tree-select/compare/v0.0.6...v0.0.7) (2020-04-24)
+
+
+### Bug Fixes
+
+* 自动化 ([31f32c5](https://github.com/tinper-bee/bee-tree-select/commit/31f32c53d68d5f8c449b6c85f9bc2fa779f08b69))
+
+
+
 <a name="0.0.6"></a>
 ## [0.0.6](https://github.com/tinper-bee/bee-tree-select/compare/v0.0.5...v0.0.6) (2019-09-02)
 

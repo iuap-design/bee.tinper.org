@@ -1,3 +1,12 @@
+## [1.0.2](https://github.com/tinper-bee/bee-page-layout/compare/v1.0.1...v1.0.2) (2020-04-24)
+
+
+### Bug Fixes
+
+* 自动化 ([2afd3f4](https://github.com/tinper-bee/bee-page-layout/commit/2afd3f442d006f5240ba69e636651a8521537ebb))
+
+
+
 <a name="1.0.1"></a>
 ## [1.0.1](https://github.com/tinper-bee/bee-page-layout/compare/v1.0.0...v1.0.1) (2019-07-11)
 

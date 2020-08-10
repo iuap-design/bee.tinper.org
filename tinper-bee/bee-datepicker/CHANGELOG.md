@@ -1,3 +1,64 @@
+## [2.3.27](https://github.com/tinper-bee/bee-datepicker/compare/v2.3.26...v2.3.27) (2020-08-05)
+
+
+### Bug Fixes
+
+* inputValue没跟随value改变 ([a3a856e](https://github.com/tinper-bee/bee-datepicker/commit/a3a856e73ef82249a04887b5371d812c7d88f876))
+
+
+
+## [2.3.26](https://github.com/tinper-bee/bee-datepicker/compare/v2.3.25...v2.3.26) (2020-08-03)
+
+
+
+## [2.3.25](https://github.com/tinper-bee/bee-datepicker/compare/v2.3.24...v2.3.25) (2020-07-24)
+
+
+### Bug Fixes
+
+* DatePicker组件，开启属性keyboardInput={true}，需要兼容值为空的情况 ([7d7ceef](https://github.com/tinper-bee/bee-datepicker/commit/7d7ceef3676c6c99cb4e7540998181120ab63e27))
+* 删除阻止冒泡代码 ([4672af7](https://github.com/tinper-bee/bee-datepicker/commit/4672af78e45349a6c15f9387cd0a2d5f5cd6dd9b))
+
+
+
+## [2.3.24](https://github.com/tinper-bee/bee-datepicker/compare/v2.3.23...v2.3.24) (2020-05-14)
+
+
+### Bug Fixes
+
+* 日期范围不能选择bug，触发两次onChange，第二次为undefined ([a7b2b7c](https://github.com/tinper-bee/bee-datepicker/commit/a7b2b7cdc92f835e2221aadff482a42320194db0))
+
+
+
+## [2.3.23](https://github.com/tinper-bee/bee-datepicker/compare/v2.3.22...v2.3.23) (2020-04-27)
+
+
+### Bug Fixes
+
+* 回车如果没有值，回填默认时间，并关闭面板TINPER-2642 ([f53612f](https://github.com/tinper-bee/bee-datepicker/commit/f53612f7661cbe5f43d5c056fb8e3509ec9878e6))
+
+
+
+## [2.3.22](https://github.com/tinper-bee/bee-datepicker/compare/v2.3.21...v2.3.22) (2020-04-26)
+
+
+### Bug Fixes
+
+* 延迟calendar-input 聚焦 ([caa6f07](https://github.com/tinper-bee/bee-datepicker/commit/caa6f073f65ca2a24df54261cf729efac649563d))
+* 自动化 ([e3e54dc](https://github.com/tinper-bee/bee-datepicker/commit/e3e54dc388b974a32277f545befd0c31c916a69e))
+
+
+
+<a name="2.3.21"></a>
+## [2.3.21](https://github.com/tinper-bee/bee-datepicker/compare/v2.3.20...v2.3.21) (2020-04-21)
+
+
+### Bug Fixes
+
+* 禁用日期回车不做选择 ([b49a1c1](https://github.com/tinper-bee/bee-datepicker/commit/b49a1c1))
+
+
+
 <a name="2.3.20"></a>
 ## [2.3.20](https://github.com/tinper-bee/bee-datepicker/compare/v2.3.19...v2.3.20) (2020-04-13)
 
@@ -22,20 +83,20 @@
 ## [2.3.18](https://github.com/tinper-bee/bee-datepicker/compare/v2.3.17...v2.3.18) (2020-04-08)
 
 
+### Features
+
+* **bee-datepicker:** 更新多语资源 ([e261890](https://github.com/tinper-bee/bee-datepicker/commit/e261890))
+
+
 
 <a name="2.3.17"></a>
-## [2.3.17](https://github.com/tinper-bee/bee-datepicker/compare/v2.3.16...v2.3.17) (2020-04-08)
+## [2.3.17](https://github.com/tinper-bee/bee-datepicker/compare/v2.3.16...v2.3.17) (2020-04-03)
 
 
 ### Bug Fixes
 
 * 切换年月触发onChange ([4085b83](https://github.com/tinper-bee/bee-datepicker/commit/4085b83))
 * 组件不能阻止onMouseOver事件冒泡 ([5acd4f5](https://github.com/tinper-bee/bee-datepicker/commit/5acd4f5))
-
-
-### Features
-
-* **bee-datepicker:** 更新多语资源 ([e261890](https://github.com/tinper-bee/bee-datepicker/commit/e261890))
 
 
 

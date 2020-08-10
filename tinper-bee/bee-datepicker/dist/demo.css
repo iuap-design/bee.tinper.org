@@ -996,18 +996,6 @@
 .uf-globe:before {
   content: "\e9db"; }
 
-.uf-yybs:before {
-  content: "\e9dc"; }
-
-.uf-iuap5:before {
-  content: "\e9dd"; }
-
-.uf-iuap5c:before {
-  content: "\e9ff"; }
-
-.uf-qingkong:before {
-  content: "\e666"; }
-
 .u-form-control {
   position: relative;
   display: inline-block;

@@ -1,3 +1,12 @@
+## [2.0.4](https://github.com/tinper-bee/bee-rate/compare/v2.0.3...v2.0.4) (2020-04-24)
+
+
+### Bug Fixes
+
+* 自动化 ([27ad716](https://github.com/tinper-bee/bee-rate/commit/27ad71603f9b782d3ec373103560b93c9817c11c))
+
+
+
 <a name="2.0.3"></a>
 ## [2.0.3](https://github.com/tinper-bee/bee-rate/compare/v2.0.2...v2.0.3) (2019-03-14)
 

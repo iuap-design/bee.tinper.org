@@ -1,3 +1,12 @@
+## [0.0.7](https://github.com/tinper-bee/bee-drawer/compare/v0.0.6...v0.0.7) (2020-04-24)
+
+
+### Bug Fixes
+
+* 自动化 ([7fc29b7](https://github.com/tinper-bee/bee-drawer/commit/7fc29b7d61a0a8e340588db769044ed823ca2e0b))
+
+
+
 <a name="0.0.6"></a>
 ## [0.0.6](https://github.com/tinper-bee/bee-drawer/compare/v0.0.5...v0.0.6) (2019-08-06)
 

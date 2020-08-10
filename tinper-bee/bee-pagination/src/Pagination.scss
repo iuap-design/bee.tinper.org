@@ -6,13 +6,17 @@
 
 $border-radius-base:3px;
 $pagination-lg-size:40px;
-$pagination-sm-size:26px;
+$pagination-sm-size:28px;
+$pag-hover-border-color: #505766;
+// $pag-active-bg-color: #ADB4BC;
+// $pag-active-border-color: #ADB4BC;
 .u-pagination {
   font-size: 14px;
   position: relative;
+  display: flex;
   &-list {
     float: left;
-    margin: 5px;
+    margin: 4px;
     &:after {
       clear: both;
       display: table;
@@ -22,7 +26,10 @@ $pagination-sm-size:26px;
       padding: 5px 9px;
       line-height: 1.57142857;
     }
-   
+    &.u-pagination-gap > li.u-pagination-item-ellipsis > a {
+      border: none;
+      padding: 0;
+    }
     & > li > a, & > li > span {
       display: inline-block;
       text-decoration: none;
@@ -133,17 +140,17 @@ $pagination-sm-size:26px;
     float: left;
   }
   .data_per_select {
-    margin: 5px;
+    margin: 4px;
     float: left;
-    min-width: 120px;
+    min-width: 64px;
     &>span{
       display: inline-block;
       line-height: 32px;
       float: left;
     }
     .u-select {
-      width: 50px;
-      margin: 0 8px;
+      width: 64px;
+      margin: 0 8px 0 0;
       height: 32px;
       float: left;
       .u-select-selection {
@@ -169,7 +176,7 @@ $pagination-sm-size:26px;
   }
   .page_jump {
     float: left;
-    margin: 5px;
+    margin: 4px;
     &>span{
       display: inline-block;
       line-height: 32px;
@@ -199,10 +206,9 @@ $pagination-sm-size:26px;
     float: left;
     height: 32px;
     line-height: 32px;
-    margin: 5px;
-    span {
-      padding:0 5px;
-    }
+    margin: 4px;
+    order: -1;
+    span { padding:0 4px; }
   }
   &.u-pagination-disabled{
     .u-pagination-disabled-mask{
@@ -331,24 +337,27 @@ $pagination-sm-size:26px;
 // 有间距的分页
 .u-pagination-gap > li:first-child > a,
 .u-pagination-gap > li:last-child > a {
-  border-radius: 5px;
+  border-radius: 4px;
 }
 
 .u-pagination-gap {
   > li {
     > a {
-      margin: 0 5px;
-      border-radius: 5px;
+      margin: 0 4px;
+      border-radius: 4px;
       border: 1px solid $border-color-base;
       &:hover {
-        background-color: $pag-hover-bg-color;
-        border-color: $border-color-base;
+        background-color: #fff;
+        border-color: $pag-hover-border-color;
       }
+    }
+    &:last-child > a{
+      margin-right: 0;
     }
     &:first-child,
     &:last-child {
       > a {
-        border-radius: 5px;
+        border-radius: 4px;
       }
     }
   }

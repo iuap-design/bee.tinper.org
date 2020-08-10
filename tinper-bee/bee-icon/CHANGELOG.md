@@ -1,3 +1,12 @@
+## [1.0.15](https://github.com/tinper-bee/icon/compare/v1.0.14...v1.0.15) (2020-04-24)
+
+
+### Bug Fixes
+
+* 自动化 ([ccd80cb](https://github.com/tinper-bee/icon/commit/ccd80cbd5a1b6ed1fce6082b947f13169689b181))
+
+
+
 <a name="1.0.14"></a>
 ## [1.0.14](https://github.com/tinper-bee/icon/compare/v1.0.13...v1.0.14) (2020-03-18)
 

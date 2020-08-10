@@ -90,7 +90,6 @@ class Clipboard extends Component {
 
         return (
             <Tooltip className='u-clipboard-tooltip'
-                positionTop="20px"
                 overlay={tootipContent}
                 placement="top">
             <span

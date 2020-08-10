@@ -1,3 +1,12 @@
+## [2.0.3](https://github.com/tinper-bee/input-group/compare/v2.0.1...v2.0.3) (2020-04-24)
+
+
+### Bug Fixes
+
+* 自动化 ([bc8f0d5](https://github.com/tinper-bee/input-group/commit/bc8f0d59b852fdd8aeb3ab7fa084bef2a8d3fb93))
+
+
+
 <a name="2.0.2"></a>
 ## [2.0.2](https://github.com/tinper-bee/input-group/compare/v2.0.1...v2.0.2) (2019-05-31)
 

@@ -1,3 +1,12 @@
+## [2.0.2](https://github.com/tinper-bee/bee-step/compare/v2.0.1...v2.0.2) (2020-04-24)
+
+
+### Bug Fixes
+
+* 自动化 ([b449aac](https://github.com/tinper-bee/bee-step/commit/b449aac095c49a8eefae55dffb64713508ee5d5d))
+
+
+
 <a name="2.0.1"></a>
 ## [2.0.1](https://github.com/tinper-bee/bee-step/compare/v2.0.0...v2.0.1) (2019-05-10)
 

@@ -1,3 +1,12 @@
+## [2.0.7](https://github.com/tinper-bee/switch/compare/v2.0.6...v2.0.7) (2020-04-24)
+
+
+### Bug Fixes
+
+* 自动化 ([2c53eb6](https://github.com/tinper-bee/switch/commit/2c53eb64bf0998489c73f3a325bef40622b1dfc7))
+
+
+
 <a name="2.0.6"></a>
 ## [2.0.6](https://github.com/tinper-bee/switch/compare/v2.0.5...v2.0.6) (2019-08-06)
 

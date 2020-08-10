@@ -857,3 +857,14 @@ ul {
     }
   }
   
+  .u-select-nowarp{
+      overflow: hidden;
+      .u-select-selection-rendered{
+        display: flex;
+        white-space: nowrap;
+        ul{
+            display: flex;
+            white-space: nowrap;
+        }
+    }
+  }

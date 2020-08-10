@@ -127,7 +127,7 @@ class Notification extends Component {
     }
 
     return (
-        <div className={classnames(className,classes)} style={style}>
+        <div className={classnames(classes)} style={style}>
           <Animate transitionName={this.getTransitionName()}>{noticeNodes}</Animate>
         </div>
     );
@@ -138,13 +138,19 @@ Notification.propTypes = propTypes;
 Notification.defaultProps = defaultProps;
 
 Notification.newInstance = function newNotificationInstance(properties, callback) {
+
   if (typeof callback !==  'function') {
     console.error('You must introduce callback as the second parameter of Notification.newInstance().')
     return
   }
   const props = properties || {};
+  let container = props.container||document.body;
+  if(typeof container == 'function'){
+    container = container()
+  }
+  
   const div = document.createElement('div');
-  document.body.appendChild(div);
+  container.appendChild(div);
 
   let called = false;
   function ref(notification) {
@@ -162,7 +168,7 @@ Notification.newInstance = function newNotificationInstance(properties, callback
       component: notification,
       destroy() {
         ReactDOM.unmountComponentAtNode(div);
-        document.body.removeChild(div);
+        container.removeChild(div);
       },
     });
   }

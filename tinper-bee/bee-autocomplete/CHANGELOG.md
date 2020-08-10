@@ -1,3 +1,12 @@
+## [2.0.5](https://github.com/tinper-bee/bee-auto-complete/compare/v2.0.4...v2.0.5) (2020-04-24)
+
+
+### Bug Fixes
+
+* 自动化 ([2a468fa](https://github.com/tinper-bee/bee-auto-complete/commit/2a468fa216351cf0dc0089ecf359837cfa770239))
+
+
+
 <a name="2.0.4"></a>
 ## [2.0.4](https://github.com/tinper-bee/bee-auto-complete/compare/v2.0.3...v2.0.4) (2019-11-11)
 

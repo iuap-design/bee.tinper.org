@@ -1,3 +1,12 @@
+## [0.0.15](https://github.com/tinper-bee/bee-colorpicker/compare/v0.0.14...v0.0.15) (2020-04-24)
+
+
+### Bug Fixes
+
+* 自动化 ([aba26aa](https://github.com/tinper-bee/bee-colorpicker/commit/aba26aa233988580980fd8ac8713e0bac02f8a39))
+
+
+
 <a name="0.0.14"></a>
 ## [0.0.14](https://github.com/tinper-bee/bee-colorpicker/compare/v0.0.13...v0.0.14) (2019-11-26)
 

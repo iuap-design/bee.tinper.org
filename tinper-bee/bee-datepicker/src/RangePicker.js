@@ -256,10 +256,7 @@ class RangePicker extends Component {
         }
         this.props.onEndInputBlur && this.props.onEndInputBlur(e, endValue, `["${startValue}" , "${endValue}"]`);
     }
-    //阻止组件内部事件冒泡到组件外部容器
-    stopPropagation = (e) => {
-        e.stopPropagation();
-    }
+
     onOk = (value) => {
         this.props.onOk && this.props.onOk(value);
     }
@@ -281,7 +278,7 @@ class RangePicker extends Component {
             format={formatStr}
             dateInputPlaceholder={props.dateInputPlaceholder||['start', 'end']}
             locale={props.locale || zhCN }
-            onChange={this.onChange}
+            onChange={this.handleCalendarChange}
             disabledDate={props.disabledDate}
             showClear={ props.showClear }
             showOk={props.showOk}
@@ -297,7 +294,7 @@ class RangePicker extends Component {
         />
     );
       return (
-          <div onClick={this.stopPropagation} onMouseOver={this.stopPropagation} 
+          <div
           {...omit(others, [
             'closeIcon',
             'renderIcon',
@@ -325,7 +322,7 @@ class RangePicker extends Component {
               dropdownClassName={props.dropdownClassName}
               onOpenChange={this.onOpenChange}
               open={open}
-              
+              onChange={this.onChange}
           >
               {
                   ({}) => {

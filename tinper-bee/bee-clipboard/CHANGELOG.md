@@ -1,3 +1,21 @@
+## [2.0.5](https://github.com/tinper-bee/bee-clipboard/compare/v2.0.4...v2.0.5) (2020-07-15)
+
+
+### Bug Fixes
+
+* 复制提示文本位置显示错误[[#533](https://github.com/tinper-bee/bee-clipboard/issues/533)] ([ec1586d](https://github.com/tinper-bee/bee-clipboard/commit/ec1586d09edf432aa2c9497c1a5532a088ab76b3))
+
+
+
+## [2.0.4](https://github.com/tinper-bee/bee-clipboard/compare/v2.0.3...v2.0.4) (2020-04-24)
+
+
+### Bug Fixes
+
+* 自动化 ([e3c6d1a](https://github.com/tinper-bee/bee-clipboard/commit/e3c6d1a31efe7938a1145fafb2da5fae201d7b7e))
+
+
+
 <a name="2.0.3"></a>
 ## [2.0.3](https://github.com/tinper-bee/bee-clipboard/compare/v2.0.2...v2.0.3) (2020-03-09)
 

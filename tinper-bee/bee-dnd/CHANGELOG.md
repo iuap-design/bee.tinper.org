@@ -1,3 +1,14 @@
+## [2.0.1](https://github.com/tinper-bee/bee-dnd/compare/v3.0.1...v2.0.1) (2020-04-24)
+
+
+### Bug Fixes
+
+* 还原 ([2d40622](https://github.com/tinper-bee/bee-dnd/commit/2d40622d16e3b36eff332ae26a0ef1b54333bab9))
+* 还原 ([6ebcf38](https://github.com/tinper-bee/bee-dnd/commit/6ebcf38b91fa8e5811d7f4e44ac6e6ac3cb480e4))
+* 还原 ([f26dce8](https://github.com/tinper-bee/bee-dnd/commit/f26dce856897928c57cd9545726eabf8d29cf7fd))
+* 还原 ([d5adf2f](https://github.com/tinper-bee/bee-dnd/commit/d5adf2f1c5e393401e0c765b27ec31cd6773ff02))
+
+
 <a name="2.0.0"></a>
 # [2.0.0](https://github.com/tinper-bee/bee-dnd/compare/v1.1.5...v2.0.0) (2019-08-22)
 

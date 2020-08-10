@@ -1,3 +1,56 @@
+## [2.0.19](https://github.com/tinper-bee/button/compare/v2.0.18...v2.0.19) (2020-04-23)
+
+
+### Bug Fixes
+
+* attach changelog to github releases ([e9d3ecc](https://github.com/tinper-bee/button/commit/e9d3ecc27c5ba623bdb494959100206b1b72d7e2))
+
+
+
+## [2.0.18](https://github.com/tinper-bee/button/compare/v2.0.17...v2.0.18) (2020-04-23)
+
+
+### Features
+
+* support auto deploy with github actions ([d341aa6](https://github.com/tinper-bee/button/commit/d341aa6b8012de00612c7a86e32ba90fce9acf7a))
+
+
+
+## [2.0.17](https://github.com/tinper-bee/button/compare/v2.0.16...v2.0.17) (2020-04-23)
+
+
+### Bug Fixes
+
+* use GITHUB_TOKEN for CONVENTIONAL_GITHUB_RELEASER_TOKEN ([8194681](https://github.com/tinper-bee/button/commit/81946812f4e1e570cd0688d92a54f51e26515152))
+
+
+
+## [2.0.16](https://github.com/tinper-bee/button/compare/v2.0.15...v2.0.16) (2020-04-23)
+
+
+
+## [2.0.15](https://github.com/tinper-bee/button/compare/v2.0.14...v2.0.15) (2020-04-22)
+
+
+
+## [2.0.14](https://github.com/tinper-bee/button/compare/v2.0.12...v2.0.14) (2020-04-22)
+
+
+
+## [2.0.13](https://github.com/tinper-bee/button/compare/v2.0.12...v2.0.13) (2020-04-22)
+
+
+
+<a name="2.0.12"></a>
+## [2.0.12](https://github.com/tinper-bee/button/compare/v2.0.11...v2.0.12) (2020-04-22)
+
+
+### Features
+
+* **bee-button:** npmignore ([7f1a4b0](https://github.com/tinper-bee/button/commit/7f1a4b0))
+
+
+
 <a name="2.0.11"></a>
 ## [2.0.11](https://github.com/tinper-bee/button/compare/v2.0.10...v2.0.11) (2019-05-16)
 

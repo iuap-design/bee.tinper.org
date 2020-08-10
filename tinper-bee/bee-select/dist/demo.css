@@ -908,4 +908,15 @@ ul {
     right: 0;
     background: transparent; }
 
+.u-select-nowarp {
+  overflow: hidden; }
+  .u-select-nowarp .u-select-selection-rendered {
+    display: -ms-flexbox;
+    display: flex;
+    white-space: nowrap; }
+    .u-select-nowarp .u-select-selection-rendered ul {
+      display: -ms-flexbox;
+      display: flex;
+      white-space: nowrap; }
+
 /*# sourceMappingURL=demo.css.map */

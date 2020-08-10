@@ -27,7 +27,7 @@ $loading-icon-color: #0084ff;
   */
 
 .u-loading {
-  &.u-loading-rotate {
+  &.u-loading-rotate, &.u-loading-default {
     & > div {
       position: absolute;
       margin: 2px;
@@ -107,8 +107,23 @@ $loading-icon-color: #0084ff;
       }
     }
   }
-
+  &.u-loading-default{
+    &>div{
+      & > img{
+        width: 34px;
+        height: 34px;
+      }
+    }
+  }
 }
+.u-loading-default-container{
+  .u-loading-desc{
+    margin-top: -12px;
+    color: $button-primary-color;
+    font-size: 12px;
+  }
+}
+
 
 .u-loading-backdrop{
   position: absolute;

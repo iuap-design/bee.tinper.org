@@ -9,16 +9,62 @@ $disable-border-color:#dfe1e6;
     width: 100%;
     border: 1px solid $border-color-base;
     border-radius: $border-radius;
-
+    &-out{
+        position: relative;
+    }
+    &-placeholder{
+        color: #757575;
+        position: absolute;
+        z-index: 2;
+        font-size: 12px;
+        width: calc(100% - 34px);
+        white-space: nowrap;
+        overflow: hidden;
+    }
+    &.u-input-group.simple .u-input-number-placeholder{
+        left: 12px;
+        top: 8px;
+    }
     &.u-input-number-sm {
-        &.u-input-group.simple .u-input-group-btn .icon-group{
-            height: 26px;
+        .u-input-number-placeholder{
+            left: 31px;
+            top: 4px;
+            width: calc(100% - 63px);
+            text-align: center;
         }
+        &.u-input-group.simple {
+            .u-input-group-btn .icon-group{
+                height: 26px;
+            }
+            .u-input-number-placeholder{
+                top: 4px;
+                text-align: left;
+                width: auto;
+                max-width: calc(100% - 63px);
+            }
+        }
+        
+        
     }
     &.u-input-number-lg {
-        &.u-input-group.simple .u-input-group-btn .icon-group{
-            height: 40px;
+        .u-input-number-placeholder{
+            left: 31px;
+            top: 12px;
+            width: calc(100% - 63px);
+            text-align: center;
         }
+        &.u-input-group.simple{
+            .u-input-group-btn .icon-group{
+                height: 40px;
+            }
+            .u-input-number-placeholder{
+                top: 12px;
+                text-align: left;
+                width: auto;
+                max-width: calc(100% - 63px);
+            }
+        }
+        
     }
 
     &.u-input-group{
@@ -55,6 +101,11 @@ $disable-border-color:#dfe1e6;
     // }
     &.u-input-group>span{
         background: #fff;
+    }
+    &.u-input-group .u-input-group-addon:nth-of-type(1){
+        border-right: 1px solid $border-color-base;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
     }
     &.u-input-group>span:hover{
         background: $hover-bg-color-base;

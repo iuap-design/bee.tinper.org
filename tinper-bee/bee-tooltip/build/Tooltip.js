@@ -152,15 +152,12 @@ var Tooltip = function (_React$Component) {
     }
 
     Tooltip.prototype.componentDidUpdate = function componentDidUpdate(prevProps) {
-        var _props = this.props,
-            visible = _props.visible,
-            onVisibleChange = _props.onVisibleChange;
+        var visible = this.props.visible;
 
         if ('visible' in this.props && prevProps.visible !== visible) {
             this.setState({
                 visible: visible
             });
-            onVisibleChange && onVisibleChange(visible);
         }
     };
 
@@ -178,26 +175,26 @@ var Tooltip = function (_React$Component) {
         var _classes,
             _this2 = this;
 
-        var _props2 = this.props,
-            placement = _props2.placement,
-            id = _props2.id,
-            arrowOffsetTop = _props2.arrowOffsetTop,
-            arrowOffsetLeft = _props2.arrowOffsetLeft,
-            className = _props2.className,
-            style = _props2.style,
-            children = _props2.children,
-            clsPrefix = _props2.clsPrefix,
-            overlay = _props2.overlay,
-            inverse = _props2.inverse,
-            trigger = _props2.trigger,
-            onVisibleChange = _props2.onVisibleChange,
-            onHide = _props2.onHide,
-            rootClose = _props2.rootClose,
-            visible = _props2.visible,
-            defaultOverlayShown = _props2.defaultOverlayShown,
-            positionTop = _props2.positionTop,
-            positionLeft = _props2.positionLeft,
-            others = _objectWithoutProperties(_props2, ['placement', 'id', 'arrowOffsetTop', 'arrowOffsetLeft', 'className', 'style', 'children', 'clsPrefix', 'overlay', 'inverse', 'trigger', 'onVisibleChange', 'onHide', 'rootClose', 'visible', 'defaultOverlayShown', 'positionTop', 'positionLeft']);
+        var _props = this.props,
+            placement = _props.placement,
+            id = _props.id,
+            arrowOffsetTop = _props.arrowOffsetTop,
+            arrowOffsetLeft = _props.arrowOffsetLeft,
+            className = _props.className,
+            style = _props.style,
+            children = _props.children,
+            clsPrefix = _props.clsPrefix,
+            overlay = _props.overlay,
+            inverse = _props.inverse,
+            trigger = _props.trigger,
+            onVisibleChange = _props.onVisibleChange,
+            onHide = _props.onHide,
+            rootClose = _props.rootClose,
+            visible = _props.visible,
+            defaultOverlayShown = _props.defaultOverlayShown,
+            positionTop = _props.positionTop,
+            positionLeft = _props.positionLeft,
+            others = _objectWithoutProperties(_props, ['placement', 'id', 'arrowOffsetTop', 'arrowOffsetLeft', 'className', 'style', 'children', 'clsPrefix', 'overlay', 'inverse', 'trigger', 'onVisibleChange', 'onHide', 'rootClose', 'visible', 'defaultOverlayShown', 'positionTop', 'positionLeft']);
 
         var classes = (_classes = {}, _defineProperty(_classes, placement, true), _defineProperty(_classes, 'inverse', inverse), _classes);
 
@@ -225,6 +222,7 @@ var Tooltip = function (_React$Component) {
             _OverlayTrigger2["default"],
             _extends({}, others, {
                 visible: this.state.visible,
+                onVisibleChange: onVisibleChange,
                 ref: function ref(_ref) {
                     return _this2.trigger = _ref;
                 },
@@ -243,6 +241,7 @@ var Tooltip = function (_React$Component) {
             _OverlayTrigger2["default"],
             _extends({}, others, {
                 isHoverShow: this.state.isHoverShow,
+                onVisibleChange: onVisibleChange,
                 ref: function ref(_ref2) {
                     return _this2.trigger = _ref2;
                 },

@@ -1,3 +1,12 @@
+## [2.0.14](https://github.com/tinper-bee/bee-timepicker/compare/v2.0.13...v2.0.14) (2020-04-24)
+
+
+### Bug Fixes
+
+* 自动化 ([02da1ad](https://github.com/tinper-bee/bee-timepicker/commit/02da1adea1eb33bd58266cccf9456eb2257bb8a9))
+
+
+
 <a name="2.0.13"></a>
 ## [2.0.13](https://github.com/tinper-bee/bee-timepicker/compare/v2.0.12...v2.0.13) (2020-04-01)
 

@@ -11,6 +11,7 @@ const treeData = [
   {
     title: '0-0',
     key: '0-0',
+    ext: '自定义属性',
     children: [
       {
         title: '0-0-0',
@@ -48,6 +49,7 @@ const treeData = [
   {
     title: '0-2',
     key: '0-2',
+    ext: '自定义属性'
   },
 ];
 

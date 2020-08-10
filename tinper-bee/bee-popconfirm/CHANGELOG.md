@@ -1,3 +1,12 @@
+## [2.0.1](https://github.com/tinper-bee/bee-popconfirm/compare/v2.0.0...v2.0.1) (2020-04-24)
+
+
+### Bug Fixes
+
+* 自动化 ([5aece0d](https://github.com/tinper-bee/bee-popconfirm/commit/5aece0db954400cff89c270b93c1caaec0beef4c))
+
+
+
 <a name="2.0.0"></a>
 # [2.0.0](https://github.com/tinper-bee/bee-popconfirm/compare/v1.0.13...v2.0.0) (2019-02-28)
 

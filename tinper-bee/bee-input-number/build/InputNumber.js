@@ -149,7 +149,8 @@ var InputNumber = function (_Component) {
             value: data.value,
             minusDisabled: data.minusDisabled,
             plusDisabled: data.plusDisabled,
-            showValue: toThousands(data.value)
+            showValue: toThousands(data.value),
+            placeholderShow: true
         };
 
         _this.timer = null;
@@ -277,6 +278,11 @@ var InputNumber = function (_Component) {
             iconStyle === 'double' ? _react2["default"].createElement(
                 _beeInputGroup2["default"],
                 { className: (0, _classnames2["default"])(className, classes, disabledCon) },
+                this.isIE() && !value ? _react2["default"].createElement(
+                    'div',
+                    { onClick: this.placeholderClick, style: { 'display': this.state.placeholderShow ? 'block' : 'none' }, className: clsPrefix + '-placeholder' },
+                    this.props.placeholder
+                ) : '',
                 _react2["default"].createElement(
                     _beeInputGroup2["default"].Addon,
                     {
@@ -313,6 +319,11 @@ var InputNumber = function (_Component) {
                     className: (0, _classnames2["default"])(className, classes, disabledCon),
                     simple: true
                 },
+                this.isIE() && !value ? _react2["default"].createElement(
+                    'div',
+                    { onClick: this.placeholderClick, style: { 'display': this.state.placeholderShow ? 'block' : 'none' }, className: clsPrefix + '-placeholder' },
+                    this.props.placeholder
+                ) : '',
                 _react2["default"].createElement(_beeFormControl2["default"], _extends({}, others, {
                     value: toThousands ? showValue : value,
                     disabled: disabled,
@@ -427,12 +438,12 @@ var _initialiseProps = function _initialiseProps() {
         var local = (0, _tool.getComponentLocale)(props, _this3.context, 'InputNumber', function () {
             return _i18n2["default"];
         });
-        if (currentValue <= min) {
+        if (min && currentValue <= min) {
             if (displayCheckPrompt) prompt(local['msgMin']);
             currentMinusDisabled = true;
             currentValue = min;
         }
-        if (currentValue >= max) {
+        if (max && currentValue >= max) {
             if (displayCheckPrompt) prompt(local['msgMax']);
             currentPlusDisabled = true;
             currentValue = max;
@@ -595,11 +606,11 @@ var _initialiseProps = function _initialiseProps() {
             }
         }
         value = isNaN(Number(value)) ? 0 : Number(value);
-        if (value > max) {
+        if ((max || max === 0) && value > max) {
             if (displayCheckPrompt) prompt(local['msgMax']);
             value = max;
         }
-        if (value < min) {
+        if ((min || min === 0) && value < min) {
             if (displayCheckPrompt) prompt(local['msgMin']);
             value = min;
         }
@@ -615,7 +626,8 @@ var _initialiseProps = function _initialiseProps() {
         }
         _this3.setState({
             value: value,
-            showValue: toThousands(value)
+            showValue: toThousands(value),
+            placeholderShow: true
         });
         _this3.detailDisable(value);
         if (toNumber && !minusRight) {
@@ -633,8 +645,7 @@ var _initialiseProps = function _initialiseProps() {
             min = _props5.min,
             step = _props5.step;
 
-
-        if (value >= max || Number(value) + Number(step) > max) {
+        if (max && (value >= max || Number(value) + Number(step) > max)) {
             _this3.setState({
                 plusDisabled: true
             });
@@ -643,7 +654,7 @@ var _initialiseProps = function _initialiseProps() {
                 plusDisabled: false
             });
         }
-        if (value <= min || value - step < min) {
+        if (min && (value <= min || value - step < min)) {
             _this3.setState({
                 minusDisabled: true
             });
@@ -666,6 +677,7 @@ var _initialiseProps = function _initialiseProps() {
         if (typeof min === "undefined") {
             value = _this3.detail(value, step, 'reduce');
         } else {
+            min = Number(min);
             if (value < min) {
                 value = min;
             } else {
@@ -675,9 +687,11 @@ var _initialiseProps = function _initialiseProps() {
                 }
             }
         }
-
-        if (value > max) {
-            value = max;
+        if (max) {
+            max = Number(max);
+            if (value > max) {
+                value = max;
+            }
         }
 
         _this3.setState({
@@ -703,18 +717,23 @@ var _initialiseProps = function _initialiseProps() {
         if (typeof max === "undefined") {
             value = _this3.detail(value, step, 'add');
         } else {
-            if (value > max) {
+            max = Number(max);
+            if (max && value > max) {
                 value = max;
             } else {
                 var addedValue = _this3.detail(value, step, 'add');
-                if (addedValue <= max) {
+                if (max && addedValue <= max) {
                     value = addedValue;
                 }
             }
         }
-        if (value < min) {
-            value = min;
+        if (min) {
+            min = Number(min);
+            if (value < min) {
+                value = min;
+            }
         }
+
         _this3.setState({
             value: value,
             showValue: toThousands(value)
@@ -816,7 +835,7 @@ var _initialiseProps = function _initialiseProps() {
         before = before === "-" ? before : "";
         after = after === "-" ? after : "";
         //是科学计数法，不replace - 
-        if (before) value = value.substring(1, len - 1);
+        if (before) value = value.substring(1, len);
         if (after) value = value.substring(0, len - 1);
         // value = value.replace("-",'');
         var precV = "000000000000000000000000000000000000000000000000000000000000000000000000";
@@ -834,6 +853,20 @@ var _initialiseProps = function _initialiseProps() {
 
     this.handleBtnClick = function (type, value) {
         _this3.props.handleBtnClick(type, value);
+    };
+
+    this.isIE = function () {
+        if (window) {
+            if (!!window.ActiveXObject || "ActiveXObject" in window) return true;
+        }
+        return false;
+    };
+
+    this.placeholderClick = function () {
+        _this3.input.input.focus();
+        _this3.setState({
+            placeholderShow: false
+        });
     };
 };
 

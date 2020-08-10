@@ -173,7 +173,7 @@ class DateInput extends React.Component {
   }
 
   onKeyDown = (e) => {
-    const { onSelect, value,onKeyDown,format, isRange,validatorFunc } = this.props;
+    const { onSelect, value,onKeyDown,format, isRange,validatorFunc, disabledDate } = this.props;
     const str = e.target.value;
     const parsed = moment(str,format,true);
     if (e.keyCode === KeyCode.ENTER){
@@ -195,6 +195,19 @@ class DateInput extends React.Component {
         });
       }
       if(!validatorFunc(str)){
+        this.setState({
+          invalid: true
+        });
+      }
+      value
+        .year(parsed.year())
+        .month(parsed.month())
+        .date(parsed.date())
+        .hour(parsed.hour())
+        .minute(parsed.minute())
+        .second(parsed.second());
+
+      if (!value || (disabledDate && disabledDate(value))) {
         this.setState({
           invalid: true
         });

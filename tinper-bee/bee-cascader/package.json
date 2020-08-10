@@ -1,70 +1,74 @@
 {
- "name": "bee-cascader",
- "version": "2.1.7",
- "description": "Cascader ui component for react",
- "keywords": [
-  "react",
-  "react-component",
-  "bee-cascader",
-  "iuap-design",
-  "tinper-bee",
-  "Cascader"
- ],
- "engines": {
-  "node": ">=4.0.0"
- },
- "homepage": "https://github.com/tinper-bee/bee-cascader.git",
- "author": "supernever",
- "repository": "http://github.com/tinper-bee/bee-cascader",
- "bugs": "https://github.com/tinper-beebee-cascader.git/issues",
- "license": "MIT",
- "main": "./build/index.js",
- "config": {
-  "port": 3000,
-  "commitizen": {
-   "path": "./node_modules/cz-conventional-changelog"
+  "name": "bee-cascader",
+  "version": "2.1.8",
+  "description": "Cascader ui component for react",
+  "keywords": [
+    "react",
+    "react-component",
+    "bee-cascader",
+    "iuap-design",
+    "tinper-bee",
+    "Cascader"
+  ],
+  "engines": {
+    "node": ">=4.0.0"
+  },
+  "homepage": "https://github.com/tinper-bee/bee-cascader.git",
+  "author": "supernever",
+  "repository": "http://github.com/tinper-bee/bee-cascader",
+  "bugs": "https://github.com/tinper-beebee-cascader.git/issues",
+  "license": "MIT",
+  "main": "./build/index.js",
+  "config": {
+    "port": 3000,
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "scripts": {
+    "dev": "bee-tools run start",
+    "build": "bee-tools run build",
+    "lint": "bee-tools run lint",
+    "test": "bee-tools run test",
+    "chrome": "bee-tools run chrome",
+    "coveralls": "bee-tools run coverage",
+    "browsers": "bee-tools run browsers",
+    "pub": "bee-tools run pub",
+    "version": "conventional-changelog -p angular -i CHANGELOG.md -s && git add CHANGELOG.md",
+    "postversion": "git push --follow-tags",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {
+    "array-tree-filter": "^2.1.0",
+    "bee-form": "^2.0.11",
+    "bee-form-control": "latest",
+    "bee-icon": "latest",
+    "bee-input-group": "latest",
+    "classnames": "^2.2.5",
+    "rc-trigger": "^2.6.2",
+    "shallow-equal": "^1.1.0",
+    "tinper-bee-core": "latest",
+    "warning": "^4.0.3"
+  },
+  "peerDependencies": {
+    "react": "^15.3.0 || ^16.0",
+    "react-dom": "^15.3.0 || ^16.0",
+    "prop-types": "15.6.0"
+  },
+  "devDependencies": {
+    "bee-button": "latest",
+    "bee-clipboard": "^2.0.0",
+    "bee-drawer": "0.0.2",
+    "bee-layout": "latest",
+    "bee-panel": "latest",
+    "chai": "^3.5.0",
+    "console-polyfill": "~0.2.1",
+    "cz-conventional-changelog": "^2.1.0",
+    "enzyme": "^2.4.1",
+    "es5-shim": "~4.1.10",
+    "react": "15.3.2",
+    "react-addons-test-utils": "15.3.2",
+    "react-dom": "15.3.2",
+    "husky": "^4.2.5"
   }
- },
- "scripts": {
-  "dev": "bee-tools run start",
-  "build": "bee-tools run build",
-  "lint": "bee-tools run lint",
-  "test": "bee-tools run test",
-  "chrome": "bee-tools run chrome",
-  "coveralls": "bee-tools run coverage",
-  "browsers": "bee-tools run browsers",
-  "pub": "bee-tools run pub"
- },
- "dependencies": {
-  "array-tree-filter": "^2.1.0",
-  "bee-form": "^2.0.11",
-  "bee-form-control": "latest",
-  "bee-icon": "latest",
-  "bee-input-group": "latest",
-  "classnames": "^2.2.5",
-  "rc-trigger": "^2.6.2",
-  "shallow-equal": "^1.1.0",
-  "tinper-bee-core": "latest",
-  "warning": "^4.0.3"
- },
- "peerDependencies": {
-  "react": "^15.3.0 || ^16.0",
-  "react-dom": "^15.3.0 || ^16.0",
-  "prop-types": "15.6.0"
- },
- "devDependencies": {
-  "bee-button": "latest",
-  "bee-clipboard": "^2.0.0",
-  "bee-drawer": "0.0.2",
-  "bee-layout": "latest",
-  "bee-panel": "latest",
-  "chai": "^3.5.0",
-  "console-polyfill": "~0.2.1",
-  "cz-conventional-changelog": "^2.1.0",
-  "enzyme": "^2.4.1",
-  "es5-shim": "~4.1.10",
-  "react": "15.3.2",
-  "react-addons-test-utils": "15.3.2",
-  "react-dom": "15.3.2"
- }
 }

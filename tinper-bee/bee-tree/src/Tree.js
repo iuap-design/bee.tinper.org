@@ -55,11 +55,7 @@ class Tree extends React.Component {
     this.store = createStore({ rowHeight: 24 }); //rowHeight 树节点的高度，此变量在滚动加载场景很关键
   }
 
-  /**
-   * 在 lazyload 情况下，需要获取树节点的真实高度
-   */
   componentDidMount() {
-    const { lazyLoad } = this.props;
     // 此处为了区分数据是不是异步渲染的，prevProps 作为标识
     if(this.hasTreeNode()){
         this.setState({
@@ -70,14 +66,7 @@ class Tree extends React.Component {
     if(this.props._getTreeObj){
       this.props._getTreeObj(this);
     }
-    // 启用懒加载，计算树节点真实高度
-    if(!lazyLoad) return;
-    const treenodes = this.tree.querySelectorAll('.u-tree-treenode-close')[0];
-    if(!treenodes) return;
-    let rowHeight = treenodes.getBoundingClientRect().height;
-    this.store.setState({
-      rowHeight: rowHeight
-    });
+    this.calculateRowHeight();
   }
   
   // 判断初始化挂载时，有没有渲染树节点
@@ -109,6 +98,7 @@ class Tree extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    let flatTreeDataDone = false;//已经更新过flatTree
     const {startIndex,endIndex,props,state} = this;
     const {prevProps} = state;
     const expandedKeys = this.getDefaultExpandedKeys(nextProps, true);
@@ -137,6 +127,7 @@ class Tree extends React.Component {
             st.flatTreeData = flatTreeData;
             let newTreeList = flatTreeData.slice(startIndex,endIndex);
             this.handleTreeListChange(newTreeList, startIndex, endIndex);
+            flatTreeDataDone=true;
         }
     }
 
@@ -160,10 +151,13 @@ class Tree extends React.Component {
       this.dataChange = true;
       //treeData更新时，需要重新处理一次数据
       if(nextProps.lazyLoad) {
-        let flatTreeData = this.deepTraversal(nextProps.treeData);
-        st.flatTreeData = flatTreeData;
-        let newTreeList = flatTreeData.slice(startIndex,endIndex);
-        this.handleTreeListChange(newTreeList, startIndex, endIndex);
+        if(!flatTreeDataDone){
+          let flatTreeData = this.deepTraversal(nextProps.treeData);
+          st.flatTreeData = flatTreeData;
+          let newTreeList = flatTreeData.slice(startIndex,endIndex);
+          this.handleTreeListChange(newTreeList, startIndex, endIndex);
+        }
+        
       } else {
         st.treeData = nextProps.treeData;
       }
@@ -174,6 +168,25 @@ class Tree extends React.Component {
       this.dataChange = true;
     }
     this.setState(st);
+  }
+
+  componentDidUpdate(){
+    if(!this.hasCalculateRowHeight) {
+      this.calculateRowHeight();
+    }
+  }
+
+  calculateRowHeight = () => {
+    const { lazyLoad } = this.props;
+    // 启用懒加载，计算树节点真实高度
+    if(!lazyLoad) return;
+    const treenodes = this.tree.querySelectorAll('.u-tree-treenode-close')[0];
+    if(!treenodes) return;
+    this.hasCalculateRowHeight = true;
+    let rowHeight = treenodes.getBoundingClientRect().height;
+    this.store.setState({
+      rowHeight: rowHeight
+    });
   }
 
   onDragStart(e, treeNode) {
@@ -369,6 +382,7 @@ onExpand(treeNode,keyType) {
       let rsCheckedKeys = [];
       if (checked && index === -1) {
         checkedKeys.push(key);
+        // rsCheckedKeys.push(key);//onCheck第一个参数的key不对
       }
       if (!checked && index > -1) {
         checkedKeys.splice(index, 1);
@@ -450,7 +464,8 @@ onExpand(treeNode,keyType) {
     
     const selectedNodes = [];
     if (selectedKeys.length) {
-      loopAllChildren(this.props.children, (item) => {
+      const treeNodes = this.props.children || treeNode.props.root.cacheTreeNodes
+      loopAllChildren(treeNodes, (item) => {
         if (selectedKeys.indexOf(item.key) !== -1) {
           selectedNodes.push(item);
         }
@@ -660,6 +675,7 @@ onExpand(treeNode,keyType) {
    
     const props = this.props;
     const currentPos = treeNode.props.pos;
+    const selectable = treeNode.props.selectable;
     const currentIndex = currentPos.substr(currentPos.lastIndexOf('-')+1);
     //向下键down
     if(e.keyCode == KeyCode.DOWN){
@@ -680,7 +696,7 @@ onExpand(treeNode,keyType) {
       if(props.onDoubleClick) {
         this.onDoubleClick(treeNode);
       } else {
-        this.onSelect(treeNode);
+        selectable && this.onSelect(treeNode);
         props.checkable && this.onCheck(treeNode);
       }
     }
@@ -711,8 +727,8 @@ onExpand(treeNode,keyType) {
       const {selectedKeys=[]} = this.state;
       let tabIndexKey = selectedKeys[0]
       let isExist = false;
-      const treeNode = children.length && children[0];
-      let eventKey = treeNode.props.eventKey || treeNode.key;
+      const treeNode = children&&children.length && children[0];
+      let eventKey = treeNode&&treeNode.props.eventKey || treeNode.key;
       if((this.selectKeyDomExist && tabIndexKey) || !tabIndexKey){
         isExist = true;
         const queryInfo = `a[pos="${this.selectKeyDomPos}"]`;
@@ -888,6 +904,7 @@ onExpand(treeNode,keyType) {
     this.setState({
       treeData : treeData
     })
+    this.dataChange = true;
   }
   
   /**
@@ -943,14 +960,15 @@ onExpand(treeNode,keyType) {
       return renderTreeNodes(data);
     }
     const loop = data => data.map((item) => {
+      const { key, title, children, isLeaf , ...others } = item;
       if (item.children) {
         return (
-          <TreeNode key={item.key} title={renderTitle ? renderTitle(item) : item.key} isLeaf={item.isLeaf}>
+          <TreeNode {...others} key={key} title={renderTitle ? renderTitle(item) : key} isLeaf={isLeaf}>
             {loop(item.children)}
           </TreeNode>
         );
       }
-      return <TreeNode key={item.key} title={renderTitle ? renderTitle(item) : item.key} isLeaf={true}/>;
+      return <TreeNode {...others} key={key} title={renderTitle ? renderTitle(item) : key} isLeaf={true}/>;
     });
     return loop(data);
   }
@@ -974,7 +992,9 @@ onExpand(treeNode,keyType) {
   }
 
   renderTreeNode(child, index, level = 0) {
-    const pos = `${level}-${index}`;
+    // fix: 懒加载场景，index 计算错误
+    const actualIndex = index + parseInt(this.startIndex);
+    const pos = `${level}-${actualIndex}`;
     const key = child.key || pos;
     
     const state = this.state;
@@ -1127,7 +1147,7 @@ onExpand(treeNode,keyType) {
         this.treeNodesStates[pos] = {
           siblingPosition,
         };
-      });
+      }, undefined, startIndex);
     };
     if (showLine && !checkable ) {
       getTreeNodesStates();
@@ -1161,7 +1181,7 @@ onExpand(treeNode,keyType) {
               this.treeNodesStates[pos].checked = true;
               checkedPositions.push(pos);
             }
-          });
+          }, undefined, startIndex);
           // if the parent node's key exists, it all children node will be checked
           handleCheckState(this.treeNodesStates, filterParentPosition(checkedPositions), true);
           checkKeys = getCheck(this.treeNodesStates);

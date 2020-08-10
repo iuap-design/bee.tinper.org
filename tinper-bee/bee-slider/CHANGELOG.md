@@ -1,3 +1,12 @@
+## [2.0.2](https://github.com/tinper-bee/bee-slider/compare/v2.0.1...v2.0.2) (2020-04-24)
+
+
+### Bug Fixes
+
+* 自动化 ([df6730a](https://github.com/tinper-bee/bee-slider/commit/df6730a9933e84083d905f66e310b6dc41ad71cb))
+
+
+
 <a name="2.0.0"></a>
 # [2.0.0](https://github.com/tinper-bee/bee-slider/compare/v1.0.3...v2.0.0) (2019-01-23)
 

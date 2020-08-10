@@ -1,3 +1,12 @@
+## [3.0.3](https://github.com/tinper-bee/bee-search-panel/compare/v3.0.2...v3.0.3) (2020-04-24)
+
+
+### Bug Fixes
+
+* 自动化 ([2af7df8](https://github.com/tinper-bee/bee-search-panel/commit/2af7df8d17a31797ab8eaf73f3b42522879efddb))
+
+
+
 <a name="3.0.2"></a>
 ## [3.0.2](https://github.com/tinper-bee/bee-search-panel/compare/v3.0.1...v3.0.2) (2020-03-09)
 
