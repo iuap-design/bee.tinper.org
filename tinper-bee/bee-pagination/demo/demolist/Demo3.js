@@ -1,6 +1,6 @@
 /**
- * @title 有间隔Pagination
- * @description 有间隔Pagination
+ * @title 无间隔Pagination
+ * @description 无间隔Pagination
  */
 
 import React, { Component } from "react";
@@ -21,14 +21,17 @@ class Demo3 extends React.Component {
   render() {
     return (
       <Pagination
+        first
+        last
         prev
         next
-        size="sm"
-        gap={true}
-        items={5}
+        size="md"
+        gap={false}
         maxButtons={5}
         activePage={this.state.activePage}
         onSelect={this.handleSelect.bind(this)}
+        showJump={true}
+        total={100}
       />
     );
   }

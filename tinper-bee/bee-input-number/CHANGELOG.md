@@ -1,3 +1,13 @@
+## [2.2.39](https://github.com/tinper-bee/bee-input-number/compare/v2.2.38...v2.2.39) (2020-08-03)
+
+
+### Bug Fixes
+
+* 修复IEpalceholder ([505469f](https://github.com/tinper-bee/bee-input-number/commit/505469fed42cca1307d0d178e026c7df6af35e56))
+* 最小值控制（min属性）设置为0时，仍然可以输入负数[[#614](https://github.com/tinper-bee/bee-input-number/issues/614)] ([6de0e64](https://github.com/tinper-bee/bee-input-number/commit/6de0e64724cdb31d994238bd22c5fc293d71ae0e))
+
+
+
 ## [2.2.38](https://github.com/tinper-bee/bee-input-number/compare/v2.2.37...v2.2.38) (2020-07-20)
 
 

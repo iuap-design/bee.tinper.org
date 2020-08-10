@@ -117,7 +117,7 @@ const defaultProps = {
     ellipsis: true,
     boundaryLinks: false,
     clsPrefix: "u-pagination",
-    gap: false,
+    gap: true,
     noBorder: false,
     dataNumSelect: [
         '5',
@@ -132,6 +132,7 @@ const defaultProps = {
     btnType: { shape: 'border' },
     confirmBtn: () => {},
     sizeWithCookie: '',
+    size: 'sm',
 };
 
 
@@ -170,6 +171,13 @@ class Pagination extends React.Component {
             let newItems = items === 0 ? 1 : items;
             this.setState({
                 items: newItems,
+            })
+        }
+        if ('total' in nextProps && this.props.total !== total) {
+            let pageSize = parseInt(dataNumSelect[dataNum]);
+            let defaultPageSize = parseInt(dataNumSelect[1]);
+            this.setState({
+                items: Number.isNaN(pageSize) ? Math.ceil(total / defaultPageSize):Math.ceil(total / pageSize)
             })
         }
     }
@@ -385,7 +393,7 @@ class Pagination extends React.Component {
         if (size) {
             classes[`${clsPrefix}-${size}`] = true;
         }
-        if (gap) {
+        if (!noBorder && gap) {
             classes[`${clsPrefix}-gap`] = true;
         }
         if (!!btnDom) {
@@ -491,19 +499,7 @@ class Pagination extends React.Component {
                 {
                     showJump ? (
                         <div className="data_per_select">
-                            <span>{local['show']}</span>
-                            {/* <select
-                                    name="data-select"
-                                    className="data_select"
-                                    value={this.state.dataNum}
-                                    onChange={this.dataNumSelect}>
-                                    {dataNumSelect.length > 0 &&
-                                    dataNumSelect.map((item, i) => {
-                                        return <option key={i} value={i}>{item}</option>
-                                    })}
-                                </select> */}
                             <Select
-                                // className="data_select"
                                 dropdownClassName={`${clsPrefix}-data_per_select`}
                                 value={this.state.dataNum}
                                 onChange={this.dataNumSelect}>

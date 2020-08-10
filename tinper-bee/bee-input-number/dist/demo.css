@@ -172,7 +172,7 @@
     position: absolute;
     z-index: 2;
     font-size: 12px;
-    width: calc(100% - 44px);
+    width: calc(100% - 34px);
     white-space: nowrap;
     overflow: hidden; }
   .u-input-number.u-input-group.simple .u-input-number-placeholder {

@@ -1,3 +1,16 @@
+# [3.0.0](https://github.com/tinper-bee/bee-pagination/compare/v2.0.18...v3.0.0) (2020-08-06)
+
+
+
+## [2.0.18](https://github.com/tinper-bee/bee-pagination/compare/v2.0.17...v2.0.18) (2020-08-04)
+
+
+### Bug Fixes
+
+* 改变total参数，分页按钮不变 ([87ef965](https://github.com/tinper-bee/bee-pagination/commit/87ef9659314abdbcd24df900966be2444e239222))
+
+
+
 ## [2.0.17](https://github.com/tinper-bee/bee-pagination/compare/v2.0.16...v2.0.17) (2020-04-24)
 
 

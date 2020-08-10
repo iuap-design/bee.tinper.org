@@ -34,7 +34,7 @@ class Demo1 extends Component {
             <div>
                 <InputNumber
                     iconStyle="one"
-                    min={5}
+                    min={0}
                     max={10000}
                     onChange={this.handleChange}
                     handleBtnClick={this.handleBtnClick}

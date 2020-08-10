@@ -1906,10 +1906,12 @@ ul {
 
 .u-pagination {
   font-size: 14px;
-  position: relative; }
+  position: relative;
+  display: -ms-flexbox;
+  display: flex; }
   .u-pagination-list {
     float: left;
-    margin: 5px; }
+    margin: 4px; }
     .u-pagination-list:after {
       clear: both;
       display: table;
@@ -1917,6 +1919,9 @@ ul {
     .u-pagination-list > li.iconBtn > a {
       padding: 5px 9px;
       line-height: 1.57142857; }
+    .u-pagination-list.u-pagination-gap > li.u-pagination-item-ellipsis > a {
+      border: none;
+      padding: 0; }
     .u-pagination-list > li > a, .u-pagination-list > li > span {
       display: inline-block;
       text-decoration: none;
@@ -2003,16 +2008,16 @@ ul {
   .u-pagination .enhanced_pagination .u_float_pagination {
     float: left; }
   .u-pagination .data_per_select {
-    margin: 5px;
+    margin: 4px;
     float: left;
-    min-width: 120px; }
+    min-width: 64px; }
     .u-pagination .data_per_select > span {
       display: inline-block;
       line-height: 32px;
       float: left; }
     .u-pagination .data_per_select .u-select {
-      width: 50px;
-      margin: 0 8px;
+      width: 64px;
+      margin: 0 8px 0 0;
       height: 32px;
       float: left; }
       .u-pagination .data_per_select .u-select .u-select-selection {
@@ -2033,7 +2038,7 @@ ul {
     margin: 0 6px; }
   .u-pagination .page_jump {
     float: left;
-    margin: 5px; }
+    margin: 4px; }
     .u-pagination .page_jump > span {
       display: inline-block;
       line-height: 32px;
@@ -2058,9 +2063,11 @@ ul {
     float: left;
     height: 32px;
     line-height: 32px;
-    margin: 5px; }
+    margin: 4px;
+    -ms-flex-order: -1;
+    order: -1; }
     .u-pagination-total span {
-      padding: 0 5px; }
+      padding: 0 4px; }
   .u-pagination.u-pagination-disabled .u-pagination-disabled-mask {
     position: absolute;
     left: 0;
@@ -2159,12 +2166,12 @@ ul {
   font-size: 12px; }
 
 .u-pagination-sm + .u-pagination-total {
-  height: 26px;
-  line-height: 26px; }
+  height: 28px;
+  line-height: 28px; }
   .u-pagination-sm + .u-pagination-total + .data_per_select > span {
-    line-height: 26px; }
+    line-height: 28px; }
   .u-pagination-sm + .u-pagination-total + .data_per_select + .page_jump > span {
-    line-height: 26px; }
+    line-height: 28px; }
 
 .u-pagination-lg > li.iconBtn > a {
   padding: 7.5px 12px; }
@@ -2184,15 +2191,15 @@ ul {
   padding: 4px 7px; }
 
 .u-pagination-sm + .u-pagination-total + .data_per_select .u-select {
-  height: 26px; }
+  height: 28px; }
   .u-pagination-sm + .u-pagination-total + .data_per_select .u-select .u-select-selection {
-    height: 26px; }
+    height: 28px; }
     .u-pagination-sm + .u-pagination-total + .data_per_select .u-select .u-select-selection .u-select-selection-rendered {
-      line-height: 26px; }
+      line-height: 28px; }
 
 .u-pagination-sm + .u-pagination-total + .data_per_select + .page_jump > .page_jump_value {
-  height: 26px;
-  line-height: 26px; }
+  height: 28px;
+  line-height: 28px; }
 
 .u-pagination-no-border:not(.u-pagination-gap) > li > a, .u-pagination-no-border:not(.u-pagination-gap) > li[role="next"] > a {
   border: none; }
@@ -2202,18 +2209,21 @@ ul {
 
 .u-pagination-gap > li:first-child > a,
 .u-pagination-gap > li:last-child > a {
-  border-radius: 5px; }
+  border-radius: 4px; }
 
 .u-pagination-gap > li > a {
-  margin: 0 5px;
-  border-radius: 5px;
+  margin: 0 4px;
+  border-radius: 4px;
   border: 1px solid rgb(165, 173, 186); }
   .u-pagination-gap > li > a:hover {
-    background-color: rgb(235, 236, 240);
-    border-color: rgb(165, 173, 186); }
+    background-color: #fff;
+    border-color: #505766; }
+
+.u-pagination-gap > li:last-child > a {
+  margin-right: 0; }
 
 .u-pagination-gap > li:first-child > a, .u-pagination-gap > li:last-child > a {
-  border-radius: 5px; }
+  border-radius: 4px; }
 
 .u-pagination-gap > li[role="gap"] > a {
   border: 0 solid rgb(165, 173, 186); }

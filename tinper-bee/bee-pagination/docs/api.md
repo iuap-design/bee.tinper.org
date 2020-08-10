@@ -32,9 +32,9 @@ import 'bee-pagination/build/Pagination.css';
 |last|显示最后一页按钮|bool|last|
 |ellipsis|显示省略按钮|bool|false|
 |boundaryLinks|显示边界按钮|bool|false|
-|gap|按钮之间有间隔|bool|false|
+|gap|按钮之间有间隔|bool|true|
 |noBorder|不显示按钮边框|bool|false|
-|size|按钮大小oneOf:lg,sm,''|string|''|
+|size|分页按钮大小(lg md sm)|string|'sm'|
 |showJump|是否显示跳页选择|bool|false(为了兼容老版本)|
 |onDataNumSelect|选择每页多少条的回调函数|func|() => {}|
 |dataNumSelect|每页多少条的下拉选择Option内容|array|['5','10','15','20']|
@@ -43,3 +43,8 @@ import 'bee-pagination/build/Pagination.css';
 |disabled|pagination不可用，不可点击|bool|false|
 |confirmBtn|渲染确认按钮dom的方法|func|() => {}|
 |sizeWithCookie|分页的大小存储在cookie中,需保证其唯一性|string|''|
+
+## 注意事项
+bee-pagination@3.0.0 版本优化了分页交互，gap 默认值改为 true，size 默认值改为 'sm'
+
+## 更新日志

@@ -45,7 +45,7 @@ var propTypes = {
 };
 
 var defaultProps = {
-    title: "提示信息",
+    // title: "提示信息",
     onOk: function onOk() {},
     onCancel: function onCancel() {},
     content: "确认要删除吗 ?",
@@ -98,7 +98,7 @@ var AlertDialog = function (_Component) {
                     resizable: true,
                     width: 400
                 },
-                _react2["default"].createElement(
+                title ? _react2["default"].createElement(
                     _Modal2["default"].Header,
                     { closeButton: true, className: 'ac-confirm-header' },
                     _react2["default"].createElement(
@@ -106,7 +106,7 @@ var AlertDialog = function (_Component) {
                         { className: 'ac-confirm-header-title' },
                         title
                     )
-                ),
+                ) : null,
                 _react2["default"].createElement(
                     _Modal2["default"].Body,
                     { className: 'ac-confirm-body' },
@@ -131,6 +131,16 @@ var AlertDialog = function (_Component) {
                     { className: 'ac-confirm-footer' },
                     _react2["default"].createElement(
                         _beeButton2["default"],
+                        { colors: 'secondary', onClick: function onClick() {
+                                _this2.setState({
+                                    show: false
+                                });
+                                onCancel();
+                            } },
+                        locale.cancel
+                    ),
+                    _react2["default"].createElement(
+                        _beeButton2["default"],
                         { colors: 'primary', onClick: function onClick() {
                                 _this2.setState({
                                     show: false
@@ -138,16 +148,6 @@ var AlertDialog = function (_Component) {
                                 onOk();
                             } },
                         locale.ok
-                    ),
-                    _react2["default"].createElement(
-                        _beeButton2["default"],
-                        { bordered: true, onClick: function onClick() {
-                                _this2.setState({
-                                    show: false
-                                });
-                                onCancel();
-                            } },
-                        locale.cancel
                     )
                 )
             )

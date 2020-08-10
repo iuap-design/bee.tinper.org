@@ -53,7 +53,8 @@ class DatePicker extends Component {
   componentWillReceiveProps(nextProps) {
     if ("value" in nextProps) {
       this.setState({
-        value: this.initValue(nextProps)
+        value: this.initValue(nextProps),
+        inputValue: (nextProps.value && this.getValue(nextProps.value)) || ''
       });
     }
     if ("open" in nextProps) {

@@ -54,7 +54,7 @@ const confirm = function () {
 };
 const confirm2 = function () {
     Modal.confirm({
-        title:'提示信息',
+        // title:'提示信息',
         keyword:'删除',
         content:"确定要删除吗?",
         onOk() {

@@ -9,7 +9,7 @@ const newComReg = /- (.*)@/g;
 
 const auth = {
     token: '',
-    user: 'liushaozhen'
+    user: 'yangchch6'
 }
 
 /**

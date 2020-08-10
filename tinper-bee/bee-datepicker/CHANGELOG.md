@@ -1,3 +1,16 @@
+## [2.3.27](https://github.com/tinper-bee/bee-datepicker/compare/v2.3.26...v2.3.27) (2020-08-05)
+
+
+### Bug Fixes
+
+* inputValue没跟随value改变 ([a3a856e](https://github.com/tinper-bee/bee-datepicker/commit/a3a856e73ef82249a04887b5371d812c7d88f876))
+
+
+
+## [2.3.26](https://github.com/tinper-bee/bee-datepicker/compare/v2.3.25...v2.3.26) (2020-08-03)
+
+
+
 ## [2.3.25](https://github.com/tinper-bee/bee-datepicker/compare/v2.3.24...v2.3.25) (2020-07-24)
 
 

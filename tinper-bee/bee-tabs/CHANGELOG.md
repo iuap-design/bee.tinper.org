@@ -1,3 +1,12 @@
+## [3.0.2](https://github.com/tinper-bee/bee-tabs/compare/v3.0.1...v3.0.2) (2020-07-29)
+
+
+### Bug Fixes
+
+* activeKey判断 ([90fc720](https://github.com/tinper-bee/bee-tabs/commit/90fc720693fc5ae5a7ce5adc6a87564de89d04a3))
+
+
+
 ## [3.0.1](https://github.com/tinper-bee/bee-tabs/compare/v3.0.0...v3.0.1) (2020-04-24)
 
 

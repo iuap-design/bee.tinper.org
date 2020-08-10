@@ -152,7 +152,7 @@ var propTypes = _extends({}, _Modal2["default"].propTypes, _ModalDialog2["defaul
   onExited: _propTypes2["default"].func,
 
   containerClassName: _propTypes2["default"].string
-}, _defineProperty(_extends2, 'containerClassName', _propTypes2["default"].string), _defineProperty(_extends2, 'container', _Modal2["default"].propTypes.container), _defineProperty(_extends2, 'size', _propTypes2["default"].oneOf(["sm", "lg", "xlg", ""])), _defineProperty(_extends2, 'width', _propTypes2["default"].oneOfType([_propTypes2["default"].number, _propTypes2["default"].string])), _defineProperty(_extends2, 'draggable', _propTypes2["default"].bool), _defineProperty(_extends2, 'resizable', _propTypes2["default"].bool), _defineProperty(_extends2, 'resizeClassName', _propTypes2["default"].string), _defineProperty(_extends2, 'onResizeStart', _propTypes2["default"].func), _defineProperty(_extends2, 'onResize', _propTypes2["default"].func), _defineProperty(_extends2, 'onResizeStop', _propTypes2["default"].func), _defineProperty(_extends2, 'minWidth', _propTypes2["default"].oneOfType([_propTypes2["default"].number, _propTypes2["default"].string])), _defineProperty(_extends2, 'minHeight', _propTypes2["default"].oneOfType([_propTypes2["default"].number, _propTypes2["default"].string])), _defineProperty(_extends2, 'maxWidth', _propTypes2["default"].oneOfType([_propTypes2["default"].number, _propTypes2["default"].string])), _defineProperty(_extends2, 'maxHeight', _propTypes2["default"].oneOfType([_propTypes2["default"].number, _propTypes2["default"].string])), _defineProperty(_extends2, 'bounds', _propTypes2["default"].oneOfType([_propTypes2["default"].string, _propTypes2["default"].object])), _defineProperty(_extends2, 'className', _propTypes2["default"].string), _defineProperty(_extends2, 'centered', _propTypes2["default"].bool), _defineProperty(_extends2, 'needScroll', _propTypes2["default"].bool), _extends2));
+}, _defineProperty(_extends2, 'containerClassName', _propTypes2["default"].string), _defineProperty(_extends2, 'container', _Modal2["default"].propTypes.container), _defineProperty(_extends2, 'size', _propTypes2["default"].oneOf(["sm", "lg", "xlg", ""])), _defineProperty(_extends2, 'width', _propTypes2["default"].oneOfType([_propTypes2["default"].number, _propTypes2["default"].string])), _defineProperty(_extends2, 'draggable', _propTypes2["default"].bool), _defineProperty(_extends2, 'resizable', _propTypes2["default"].bool), _defineProperty(_extends2, 'resizeClassName', _propTypes2["default"].string), _defineProperty(_extends2, 'onResizeStart', _propTypes2["default"].func), _defineProperty(_extends2, 'onResize', _propTypes2["default"].func), _defineProperty(_extends2, 'onResizeStop', _propTypes2["default"].func), _defineProperty(_extends2, 'minWidth', _propTypes2["default"].oneOfType([_propTypes2["default"].number, _propTypes2["default"].string])), _defineProperty(_extends2, 'minHeight', _propTypes2["default"].oneOfType([_propTypes2["default"].number, _propTypes2["default"].string])), _defineProperty(_extends2, 'maxWidth', _propTypes2["default"].oneOfType([_propTypes2["default"].number, _propTypes2["default"].string])), _defineProperty(_extends2, 'maxHeight', _propTypes2["default"].oneOfType([_propTypes2["default"].number, _propTypes2["default"].string])), _defineProperty(_extends2, 'bounds', _propTypes2["default"].oneOfType([_propTypes2["default"].string, _propTypes2["default"].object])), _defineProperty(_extends2, 'className', _propTypes2["default"].string), _defineProperty(_extends2, 'centered', _propTypes2["default"].bool), _defineProperty(_extends2, 'needScroll', _propTypes2["default"].oneOfType([_propTypes2["default"].number, _propTypes2["default"].bool])), _extends2));
 
 var defaultProps = _extends({}, _Modal2["default"].defaultProps, {
   backdropClosable: true,
@@ -202,6 +202,34 @@ var Modal = function (_React$Component) {
 
     var _this = _possibleConstructorReturn(this, _React$Component.call(this, props, context));
 
+    _this.scrollTo = function () {
+      var needScroll = _this.props.needScroll;
+      if (needScroll) {
+        if (typeof needScroll == 'number') {
+          window.scrollTo(0, needScroll);
+        } else {
+          window.scrollTo(0, _this.scrollY);
+        }
+      }
+    };
+
+    _this.onEnter = function (param) {
+      if (_this.props.needScroll) {
+        _this.scrollY = window.scrollY;
+      }
+      _this.props.onEnter && _this.props.onEnter(param);
+    };
+
+    _this.onEntered = function (param) {
+      if (_this.props.needScroll) {
+        var scrollY = window.scrollY;
+        if (scrollY != _this.scrollY || typeof _this.props.needScroll == 'number') {
+          _this.scrollTo();
+        }
+      }
+      _this.props.onEntered && _this.props.onEntered(param);
+    };
+
     _this.clearCenteredCls = function () {
       var centered = _this.state.centered;
 
@@ -245,11 +273,10 @@ var Modal = function (_React$Component) {
     // FIXME: This should work even when animation is disabled.
     _events2["default"].on(window, 'resize', this.handleWindowResize);
     this.updateStyle();
-    if (this.props.needScroll) this.scrollY = window.scrollY;
   };
 
   Modal.prototype.handleExited = function handleExited() {
-    if (this.props.needScroll) window.scrollTo(0, this.scrollY);
+    this.scrollTo();
     this.setState({
       draging: false,
       draged: false
@@ -371,6 +398,8 @@ var Modal = function (_React$Component) {
           _this2._modal = c;
         },
         show: show,
+        onEnter: this.onEnter,
+        onEntered: this.onEntered,
         onEntering: (0, _tinperBeeCore.createChainedFunction)(onEntering, this.handleEntering),
         onExited: (0, _tinperBeeCore.createChainedFunction)(onExited, this.handleExited),
         backdrop: backdrop,

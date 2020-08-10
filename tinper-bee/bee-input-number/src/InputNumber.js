@@ -362,11 +362,11 @@ class InputNumber extends Component {
             }
         }
         value = isNaN(Number(value)) ? 0 : Number(value);
-        if(max&&value>max){
+        if((max || max===0) && value>max){
             if(displayCheckPrompt)prompt(local['msgMax']);
             value = max;
         }
-        if(min&&value<min){
+        if((min || min===0) && value<min){
             if(displayCheckPrompt)prompt(local['msgMin']);
             value = min;
         }

@@ -1,3 +1,19 @@
+## [2.2.3](https://github.com/tinper-bee/bee-modal/compare/v2.2.2...v2.2.3) (2020-08-06)
+
+
+
+## [2.2.2](https://github.com/tinper-bee/bee-modal/compare/v2.2.1...v2.2.2) (2020-08-05)
+
+
+
+## [2.2.1](https://github.com/tinper-bee/bee-modal/compare/v2.2.0...v2.2.1) (2020-07-31)
+
+
+
+# [2.2.0](https://github.com/tinper-bee/bee-modal/compare/v2.1.18...v2.2.0) (2020-07-30)
+
+
+
 ## [2.1.18](https://github.com/tinper-bee/bee-modal/compare/v2.1.17...v2.1.18) (2020-07-07)
 
 

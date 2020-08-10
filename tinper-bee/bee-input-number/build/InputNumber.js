@@ -149,7 +149,8 @@ var InputNumber = function (_Component) {
             value: data.value,
             minusDisabled: data.minusDisabled,
             plusDisabled: data.plusDisabled,
-            showValue: toThousands(data.value)
+            showValue: toThousands(data.value),
+            placeholderShow: true
         };
 
         _this.timer = null;
@@ -277,6 +278,11 @@ var InputNumber = function (_Component) {
             iconStyle === 'double' ? _react2["default"].createElement(
                 _beeInputGroup2["default"],
                 { className: (0, _classnames2["default"])(className, classes, disabledCon) },
+                this.isIE() && !value ? _react2["default"].createElement(
+                    'div',
+                    { onClick: this.placeholderClick, style: { 'display': this.state.placeholderShow ? 'block' : 'none' }, className: clsPrefix + '-placeholder' },
+                    this.props.placeholder
+                ) : '',
                 _react2["default"].createElement(
                     _beeInputGroup2["default"].Addon,
                     {
@@ -313,6 +319,11 @@ var InputNumber = function (_Component) {
                     className: (0, _classnames2["default"])(className, classes, disabledCon),
                     simple: true
                 },
+                this.isIE() && !value ? _react2["default"].createElement(
+                    'div',
+                    { onClick: this.placeholderClick, style: { 'display': this.state.placeholderShow ? 'block' : 'none' }, className: clsPrefix + '-placeholder' },
+                    this.props.placeholder
+                ) : '',
                 _react2["default"].createElement(_beeFormControl2["default"], _extends({}, others, {
                     value: toThousands ? showValue : value,
                     disabled: disabled,
@@ -595,11 +606,11 @@ var _initialiseProps = function _initialiseProps() {
             }
         }
         value = isNaN(Number(value)) ? 0 : Number(value);
-        if (max && value > max) {
+        if ((max || max === 0) && value > max) {
             if (displayCheckPrompt) prompt(local['msgMax']);
             value = max;
         }
-        if (min && value < min) {
+        if ((min || min === 0) && value < min) {
             if (displayCheckPrompt) prompt(local['msgMin']);
             value = min;
         }
@@ -615,7 +626,8 @@ var _initialiseProps = function _initialiseProps() {
         }
         _this3.setState({
             value: value,
-            showValue: toThousands(value)
+            showValue: toThousands(value),
+            placeholderShow: true
         });
         _this3.detailDisable(value);
         if (toNumber && !minusRight) {
@@ -823,7 +835,7 @@ var _initialiseProps = function _initialiseProps() {
         before = before === "-" ? before : "";
         after = after === "-" ? after : "";
         //是科学计数法，不replace - 
-        if (before) value = value.substring(1, len - 1);
+        if (before) value = value.substring(1, len);
         if (after) value = value.substring(0, len - 1);
         // value = value.replace("-",'');
         var precV = "000000000000000000000000000000000000000000000000000000000000000000000000";
@@ -841,6 +853,20 @@ var _initialiseProps = function _initialiseProps() {
 
     this.handleBtnClick = function (type, value) {
         _this3.props.handleBtnClick(type, value);
+    };
+
+    this.isIE = function () {
+        if (window) {
+            if (!!window.ActiveXObject || "ActiveXObject" in window) return true;
+        }
+        return false;
+    };
+
+    this.placeholderClick = function () {
+        _this3.input.input.focus();
+        _this3.setState({
+            placeholderShow: false
+        });
     };
 };
 

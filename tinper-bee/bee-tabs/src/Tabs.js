@@ -77,7 +77,7 @@ const Tabs = createClass({
   },
 
   componentWillReceiveProps(nextProps) {
-    if ("activeKey" in nextProps) {
+    if ("activeKey" in nextProps&&nextProps.activeKey!=this.state.activeKey) {
       this.setState({
         activeKey: nextProps.activeKey
       });
