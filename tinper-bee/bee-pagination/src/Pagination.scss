@@ -4,12 +4,14 @@
 @import "../node_modules/bee-select/src/Select.scss";
 // @import "../node_modules/bee-button/src/Button";
 
+// 分页新规范
+$border-color-base:#E4E4E4;
 $border-radius-base:3px;
 $pagination-lg-size:40px;
 $pagination-sm-size:28px;
-$pag-hover-border-color: #505766;
-// $pag-active-bg-color: #ADB4BC;
-// $pag-active-border-color: #ADB4BC;
+$pag-hover-border-color: #ADB4BC;
+$pag-active-bg-color: #ADB4BC;
+$pag-active-border-color: #ADB4BC;
 .u-pagination {
   font-size: 14px;
   position: relative;
@@ -155,10 +157,26 @@ $pag-hover-border-color: #505766;
       float: left;
       .u-select-selection {
         height: 32px;
+        border-color: $border-color-base;
+        color: #666;
+        &:hover{
+          border-color: $pag-hover-border-color;
+        }
         .u-select-selection-rendered {
           line-height: 32px;
         }
       }
+    }
+  }
+  &-data_per_select {
+    .u-select-dropdown-menu-item:not(.u-select-dropdown-menu-item-selected){
+      color: #666;
+      &:hover {
+        background-color: #F8F9FD;
+      }
+    }
+    .u-select-dropdown-menu-item-selected, .u-select-dropdown-menu-item-selected:hover{
+      color: #666;
     }
   }
   .data_select {
