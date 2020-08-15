@@ -70,6 +70,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 * Created by chief on 17/4/6.
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 */
 
+function noop() {}
 var timerDatePicker = true;
 
 var DatePicker = function (_Component) {
@@ -129,7 +130,8 @@ var DatePicker = function (_Component) {
         showHour = props.showHour,
         showMinute = props.showMinute,
         showSecond = props.showSecond,
-        others = _objectWithoutProperties(props, ["showClose", "defaultPanelShown", "onBlur", "showHour", "showMinute", "showSecond"]);
+        autoTriggerChange = props.autoTriggerChange,
+        others = _objectWithoutProperties(props, ["showClose", "defaultPanelShown", "onBlur", "showHour", "showMinute", "showSecond", "autoTriggerChange"]);
 
     var value = state.value;
     var pickerChangeHandler = {};
@@ -152,15 +154,21 @@ var DatePicker = function (_Component) {
     if (!showMinute) splitNumber -= 1;
     if (!showSecond) splitNumber -= 1;
 
+    var calendarProps = {};
+    if (autoTriggerChange) {
+      calendarProps.value = value;
+      calendarProps.onChange = this.handleCalendarChange;
+    } else {
+      calendarProps.onChange = noop;
+    }
+
     var calendar = _react2["default"].createElement(_rcCalendar2["default"], _extends({
       timePicker: props.showTime ? _react2["default"].createElement(_Panel2["default"], {
         className: 'time-split-' + splitNumber,
         showHour: showHour, showMinute: showMinute, showSecond: showSecond,
         defaultValue: (0, _moment2["default"])((0, _moment2["default"])().format("HH:mm:ss"), "HH:mm:ss") }) : null
-    }, props, {
+    }, props, calendarProps, {
       onSelect: this.handleSelect,
-      onChange: this.handleCalendarChange,
-      value: value,
       onInputBlur: this.onDateInputBlur
     }));
 
@@ -501,6 +509,7 @@ DatePicker.defaultProps = {
   showSecond: true,
   showHour: true,
   showMinute: true,
+  autoTriggerChange: true,
   validatorFunc: function validatorFunc() {
     return true;
   }

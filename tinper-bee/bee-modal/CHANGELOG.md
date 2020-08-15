@@ -1,3 +1,12 @@
+## [2.2.4](https://github.com/tinper-bee/bee-modal/compare/v2.2.3...v2.2.4) (2020-08-15)
+
+
+### Features
+
+* confirm字体改为12px ([476457b](https://github.com/tinper-bee/bee-modal/commit/476457b820b413036e4069c176182915322f2921))
+
+
+
 ## [2.2.3](https://github.com/tinper-bee/bee-modal/compare/v2.2.2...v2.2.3) (2020-08-06)
 
 

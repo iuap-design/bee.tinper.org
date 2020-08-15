@@ -1,3 +1,12 @@
+## [2.3.28](https://github.com/tinper-bee/bee-datepicker/compare/v2.3.27...v2.3.28) (2020-08-13)
+
+
+### Features
+
+* 增加autoTriggerChange参数，支持设置点击日期面板的切换年月按钮时，不触发onChange ([41d6c28](https://github.com/tinper-bee/bee-datepicker/commit/41d6c28e1e86eefc8f9759c62663fd4963bbb575))
+
+
+
 ## [2.3.27](https://github.com/tinper-bee/bee-datepicker/compare/v2.3.26...v2.3.27) (2020-08-05)
 
 

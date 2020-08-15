@@ -1,5 +1,8 @@
 @import "../node_modules/tinper-bee-core/scss/minxin-variables";
 @import "../node_modules/tinper-bee-core/scss/minxin-mixins";
+.u-input-group-addon {
+    font-size: $font-size-base;
+}
 .u-input-group-btn {
     font-size: 0;
     white-space: nowrap;

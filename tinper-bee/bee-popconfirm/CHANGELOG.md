@@ -1,3 +1,12 @@
+## [2.0.2](https://github.com/tinper-bee/bee-popconfirm/compare/v2.0.1...v2.0.2) (2020-08-13)
+
+
+### Features
+
+* 支持定制font-size ([1e19410](https://github.com/tinper-bee/bee-popconfirm/commit/1e1941034f21b134e424cfba14c50347ad0ec250))
+
+
+
 ## [2.0.1](https://github.com/tinper-bee/bee-popconfirm/compare/v2.0.0...v2.0.1) (2020-04-24)
 
 

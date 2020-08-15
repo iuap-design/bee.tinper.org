@@ -16,7 +16,8 @@ import InputGroup from 'bee-input-group';
 import zhCN from "./locale/zh_CN";
 import omit from 'omit.js';
 
-
+function noop() {
+}
 let timerDatePicker = true;
 class DatePicker extends Component {
   constructor(props, context) {
@@ -278,7 +279,7 @@ class DatePicker extends Component {
   render() {
     let state = this.state;
     let props = this.props;
-    const { showClose, defaultPanelShown,onBlur,showHour,showMinute,showSecond,...others} = props;
+    const { showClose, defaultPanelShown,onBlur,showHour,showMinute,showSecond,autoTriggerChange,...others} = props;
     let value = state.value;
     let pickerChangeHandler = {};
     let calendarHandler = {};
@@ -301,16 +302,23 @@ class DatePicker extends Component {
     if(!showMinute)splitNumber-=1;
     if(!showSecond)splitNumber-=1;
 
+    let calendarProps = {};
+    if(autoTriggerChange) {
+      calendarProps.value = value;
+      calendarProps.onChange = this.handleCalendarChange;
+    } else {
+      calendarProps.onChange = noop;
+    }
+
     const calendar = (
       <Calendar
         timePicker={props.showTime ? <TimePickerPanel 
-          className={'time-split-'+splitNumber}
-          showHour={showHour} showMinute={showMinute} showSecond={showSecond}
-          defaultValue={moment(moment().format("HH:mm:ss"), "HH:mm:ss")} /> : null}
+        className={'time-split-'+splitNumber}
+        showHour={showHour} showMinute={showMinute} showSecond={showSecond}
+        defaultValue={moment(moment().format("HH:mm:ss"), "HH:mm:ss")} /> : null}
         {...props}
+        {...calendarProps}
         onSelect={this.handleSelect}
-        onChange={this.handleCalendarChange}
-        value={value}
         onInputBlur={this.onDateInputBlur}
       />
     );
@@ -418,6 +426,7 @@ DatePicker.defaultProps = {
   showSecond:true,
   showHour:true,
   showMinute:true,
+  autoTriggerChange:true,
   validatorFunc:()=>{
     return true;
   }

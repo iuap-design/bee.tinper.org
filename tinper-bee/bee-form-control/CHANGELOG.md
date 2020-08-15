@@ -1,3 +1,12 @@
+## [2.0.24](https://github.com/tinper-bee/form-control/compare/v2.0.23...v2.0.24) (2020-08-13)
+
+
+### Features
+
+* 支持定制font-size ([fbdb19d](https://github.com/tinper-bee/form-control/commit/fbdb19dc9ab4d89db58a5b00270e1846e0fb0fe8))
+
+
+
 ## [2.0.23](https://github.com/tinper-bee/form-control/compare/v2.0.18...v2.0.23) (2020-07-20)
 
 

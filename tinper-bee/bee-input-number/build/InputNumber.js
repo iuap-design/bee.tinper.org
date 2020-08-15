@@ -64,7 +64,8 @@ var propTypes = {
     toNumber: _propTypes2["default"].bool, //回调函数内的值是否转换为数值类型
     displayCheckPrompt: _propTypes2["default"].bool, //是否显示超出限制范围之后的检验提示
     minusRight: _propTypes2["default"].bool, //负号是否在右边
-    handleBtnClick: _propTypes2["default"].func //加减按钮点击回调
+    handleBtnClick: _propTypes2["default"].func, //加减按钮点击回调
+    hideActionButton: _propTypes2["default"].bool //隐藏加减按钮
 };
 
 var defaultProps = {
@@ -254,7 +255,8 @@ var InputNumber = function (_Component) {
             format = _props.format,
             precision = _props.precision,
             toNumber = _props.toNumber,
-            others = _objectWithoutProperties(_props, ['toThousands', 'minusRight', 'max', 'min', 'step', 'disabled', 'clsPrefix', 'className', 'delay', 'onBlur', 'onFocus', 'iconStyle', 'autoWidth', 'onChange', 'format', 'precision', 'toNumber']);
+            hideActionButton = _props.hideActionButton,
+            others = _objectWithoutProperties(_props, ['toThousands', 'minusRight', 'max', 'min', 'step', 'disabled', 'clsPrefix', 'className', 'delay', 'onBlur', 'onFocus', 'iconStyle', 'autoWidth', 'onChange', 'format', 'precision', 'toNumber', 'hideActionButton']);
 
         var classes = (_classes = {}, _defineProperty(_classes, clsPrefix + '-auto', autoWidth), _defineProperty(_classes, '' + clsPrefix, true), _defineProperty(_classes, clsPrefix + '-lg', others.size === "lg"), _defineProperty(_classes, clsPrefix + '-sm', others.size === "sm"), _classes);
 
@@ -283,7 +285,7 @@ var InputNumber = function (_Component) {
                     { onClick: this.placeholderClick, style: { 'display': this.state.placeholderShow ? 'block' : 'none' }, className: clsPrefix + '-placeholder' },
                     this.props.placeholder
                 ) : '',
-                _react2["default"].createElement(
+                hideActionButton ? '' : _react2["default"].createElement(
                     _beeInputGroup2["default"].Addon,
                     {
                         // onClick={()=>{minusDisabled?'':this.handleBtnClick('down')}}
@@ -303,7 +305,7 @@ var InputNumber = function (_Component) {
                         return _this2.input = _ref;
                     }
                 })),
-                _react2["default"].createElement(
+                hideActionButton ? '' : _react2["default"].createElement(
                     _beeInputGroup2["default"].Addon,
                     {
                         // onClick={()=>{plusDisabled?'':this.handleBtnClick('up')}}
@@ -334,7 +336,7 @@ var InputNumber = function (_Component) {
                         return _this2.input = _ref2;
                     }
                 })),
-                _react2["default"].createElement(
+                hideActionButton ? '' : _react2["default"].createElement(
                     _beeInputGroup2["default"].Button,
                     null,
                     _react2["default"].createElement(

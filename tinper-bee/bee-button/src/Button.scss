@@ -19,6 +19,7 @@ $button-text-color: #fff;
   padding: $button-padding;
   display: inline-block;
   @include typo-button();
+  font-size: $font-size-base;
   overflow: hidden;
   will-change: box-shadow, transform;
   outline: none;

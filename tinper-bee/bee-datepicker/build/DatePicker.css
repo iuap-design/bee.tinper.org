@@ -1575,10 +1575,6 @@
   background: rgb(235, 236, 240);
   cursor: pointer; }
 
-.rc-calendar-selected-day:not(.rc-calendar-disabled-cell) .rc-calendar-date {
-  background: rgb(245, 60, 50);
-  color: #fff !important; }
-
 .rc-calendar-selected-date .rc-calendar-date {
   background: rgb(245, 60, 50);
   color: #fff !important; }

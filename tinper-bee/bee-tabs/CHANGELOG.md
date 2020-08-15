@@ -1,3 +1,12 @@
+## [3.0.3](https://github.com/tinper-bee/bee-tabs/compare/v3.0.2...v3.0.3) (2020-08-13)
+
+
+### Features
+
+* 支持定制font-size ([0284e64](https://github.com/tinper-bee/bee-tabs/commit/0284e64afb23a09f216510201e0de7081e5aba37))
+
+
+
 ## [3.0.2](https://github.com/tinper-bee/bee-tabs/compare/v3.0.1...v3.0.2) (2020-07-29)
 
 

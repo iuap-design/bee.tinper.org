@@ -7,7 +7,7 @@ $icon-color-dark-contrast: #fff;
 $text-color-base: #212121;
 $disabled-text-color-base: #909090;
 .u-menu {
-    font-size: 14px;
+    font-size: $font-size-base;
     font-variant: tabular-nums;
     line-height: 1.5;
     -webkit-box-sizing: border-box;
@@ -54,7 +54,7 @@ $disabled-text-color-base: #909090;
 
 .u-menu-item-group-title {
     color: $disabled-text-color-base;
-    font-size: 14px;
+    font-size: $font-size-base;
     line-height: 1.5;
     padding: 8px 16px;
     -webkit-transition: all 0.3s;
@@ -210,7 +210,7 @@ $disabled-text-color-base: #909090;
 .u-menu-submenu-title .anticon {
     min-width: 14px;
     margin-right: 10px;
-    font-size: 14px;
+    font-size: $font-size-base;
     -webkit-transition: font-size 0.15s cubic-bezier(0.215, 0.61, 0.355, 1), margin 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
     transition: font-size 0.15s cubic-bezier(0.215, 0.61, 0.355, 1), margin 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
@@ -481,7 +481,7 @@ $disabled-text-color-base: #909090;
 .u-menu-vertical-right .u-menu-submenu-title,
 .u-menu-inline .u-menu-submenu-title {
     padding: 0 16px;
-    font-size: 14px;
+    font-size: $font-size-base;
     line-height: 42px;
     height: 42px;
     margin-top: 4px;

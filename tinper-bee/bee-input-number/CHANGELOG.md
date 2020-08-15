@@ -1,3 +1,12 @@
+## [2.2.40](https://github.com/tinper-bee/bee-input-number/compare/v2.2.39...v2.2.40) (2020-08-13)
+
+
+### Features
+
+* 增加hideActionButton参数，支持隐藏加减按钮 ([da23c71](https://github.com/tinper-bee/bee-input-number/commit/da23c71ad4637ac19bcfbd4c569675b1a2534b0b))
+
+
+
 ## [2.2.39](https://github.com/tinper-bee/bee-input-number/compare/v2.2.38...v2.2.39) (2020-08-03)
 
 

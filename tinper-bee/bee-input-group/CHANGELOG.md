@@ -1,3 +1,17 @@
+## [2.0.4](https://github.com/tinper-bee/input-group/compare/v2.0.1...v2.0.4) (2020-08-13)
+
+
+### Bug Fixes
+
+* 自动化 ([bc8f0d5](https://github.com/tinper-bee/input-group/commit/bc8f0d59b852fdd8aeb3ab7fa084bef2a8d3fb93))
+
+
+### Features
+
+* 支持定制font-size ([9325589](https://github.com/tinper-bee/input-group/commit/932558995240a45332d872696dc3e33ce296cb2c))
+
+
+
 ## [2.0.3](https://github.com/tinper-bee/input-group/compare/v2.0.1...v2.0.3) (2020-04-24)
 
 

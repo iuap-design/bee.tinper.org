@@ -2452,8 +2452,8 @@ ul {
   .u-pagination .page_jump_value {
     margin: 0 8px;
     padding: 0;
-    height: 32px;
-    line-height: 30px;
+    height: 28px;
+    line-height: 26px;
     box-sizing: border-box;
     float: left; }
   .u-pagination-total {

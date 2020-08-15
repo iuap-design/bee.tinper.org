@@ -420,10 +420,10 @@ $disabled-border-color: #DFE1E6;
   background: $hover-bg-color-base;
   cursor: pointer;
 }
-.rc-calendar-selected-day:not(.rc-calendar-disabled-cell) .rc-calendar-date {
-  background: $brand-primary;
-  color: #fff!important;
-}
+// .rc-calendar-selected-day:not(.rc-calendar-disabled-cell) .rc-calendar-date {
+//   background: $brand-primary;
+//   color: #fff!important;
+// }
 .rc-calendar-selected-date .rc-calendar-date {
   background: $brand-primary;
   color: #fff!important;

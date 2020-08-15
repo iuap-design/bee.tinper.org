@@ -1,3 +1,7 @@
+## [2.0.14](https://github.com/tinper-bee/bee-menus/compare/v2.0.13...v2.0.14) (2020-08-13)
+
+
+
 ## [2.0.13](https://github.com/tinper-bee/bee-menus/compare/v2.0.12...v2.0.13) (2020-04-24)
 
 

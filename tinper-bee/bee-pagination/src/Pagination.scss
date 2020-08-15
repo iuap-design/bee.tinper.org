@@ -13,7 +13,7 @@ $pag-hover-border-color: #ADB4BC;
 $pag-active-bg-color: #ADB4BC;
 $pag-active-border-color: #ADB4BC;
 .u-pagination {
-  font-size: 14px;
+  font-size: $font-size-base;
   position: relative;
   display: flex;
   &-list {
@@ -116,7 +116,7 @@ $pag-active-border-color: #ADB4BC;
     }
     i.uf, i.fa {
       padding: 0px;
-      font-size: 14px;
+      font-size: $font-size-base;
     }
     & > li:last-child > a, & > li:last-child > span {
       border-right: 1px solid $border-color-base;
@@ -215,8 +215,8 @@ $pag-active-border-color: #ADB4BC;
   .page_jump_value {
     margin: 0 8px;
     padding: 0;
-    height: 32px;
-    line-height: 30px;
+    height: 28px;
+    line-height: 26px;
     box-sizing: border-box;
     float: left;
   }

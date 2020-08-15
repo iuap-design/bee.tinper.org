@@ -1,3 +1,17 @@
+## [2.0.20](https://github.com/tinper-bee/button/compare/v2.0.19...v2.0.20) (2020-08-13)
+
+
+### Bug Fixes
+
+* 自动化 ([a4ad458](https://github.com/tinper-bee/button/commit/a4ad4583d1564edaf2f6b190d7cca6bb55283560))
+
+
+### Features
+
+* 支持定制font-size ([6154a64](https://github.com/tinper-bee/button/commit/6154a6488b5ef08f56990f06b9d2e2b241c97434))
+
+
+
 ## [2.0.19](https://github.com/tinper-bee/button/compare/v2.0.18...v2.0.19) (2020-04-23)
 
 

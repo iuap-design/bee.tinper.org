@@ -22,6 +22,7 @@ const propTypes = {
     displayCheckPrompt:PropTypes.bool, //是否显示超出限制范围之后的检验提示
     minusRight:PropTypes.bool,//负号是否在右边
     handleBtnClick:PropTypes.func,//加减按钮点击回调
+    hideActionButton:PropTypes.bool,//隐藏加减按钮
 };
 
 const defaultProps = {
@@ -615,7 +616,7 @@ class InputNumber extends Component {
     }
 
     render() {
-        const {toThousands,minusRight, max, min, step,disabled, clsPrefix, className, delay, onBlur, onFocus, iconStyle, autoWidth, onChange, format, precision,toNumber, ...others} = this.props;
+        const {toThousands,minusRight, max, min, step,disabled, clsPrefix, className, delay, onBlur, onFocus, iconStyle, autoWidth, onChange, format, precision,toNumber, hideActionButton, ...others} = this.props;
         let classes = {
             [`${clsPrefix}-auto`]: autoWidth,
             [`${clsPrefix}`]: true,
@@ -640,14 +641,16 @@ class InputNumber extends Component {
                             {
                                 this.isIE()&&(!value)?<div onClick={this.placeholderClick} style={{'display':this.state.placeholderShow?'block':'none'}} className={`${clsPrefix}-placeholder`}>{this.props.placeholder}</div>:''
                             }
-                            <InputGroup.Addon
-                                // onClick={()=>{minusDisabled?'':this.handleBtnClick('down')}}
-                                className={(minusDisabled && 'disabled' ) + disabledCursor}
-                                onMouseDown={ this.handleReduceMouseDown}
-                                onMouseLeave={ this.clear }
-                                onMouseUp={ this.clear }>
-                                -
-                            </InputGroup.Addon>
+                            { hideActionButton ? '' : 
+                                <InputGroup.Addon
+                                    // onClick={()=>{minusDisabled?'':this.handleBtnClick('down')}}
+                                    className={(minusDisabled && 'disabled' ) + disabledCursor}
+                                    onMouseDown={ this.handleReduceMouseDown}
+                                    onMouseLeave={ this.clear }
+                                    onMouseUp={ this.clear }>
+                                    -
+                                </InputGroup.Addon>
+                            }
                             <FormControl
                                 {...others}
                                 value={toThousands?showValue:value}
@@ -657,14 +660,16 @@ class InputNumber extends Component {
                                 onChange={ this.handleChange }
                                 ref={ref=>this.input = ref}
                             />
-                            <InputGroup.Addon
-                                // onClick={()=>{plusDisabled?'':this.handleBtnClick('up')}}
-                                className={(plusDisabled && 'disabled' ) + disabledCursor}
-                                onMouseDown={ this.handlePlusMouseDown}
-                                onMouseLeave={ this.clear }
-                                onMouseUp={ this.clear }>
-                                +
-                            </InputGroup.Addon>
+                            { hideActionButton ? '' : 
+                                <InputGroup.Addon
+                                    // onClick={()=>{plusDisabled?'':this.handleBtnClick('up')}}
+                                    className={(plusDisabled && 'disabled' ) + disabledCursor}
+                                    onMouseDown={ this.handlePlusMouseDown}
+                                    onMouseLeave={ this.clear }
+                                    onMouseUp={ this.clear }>
+                                    +
+                                </InputGroup.Addon>
+                            }
                         </InputGroup>
                     ) : (
                         <InputGroup
@@ -683,6 +688,7 @@ class InputNumber extends Component {
                                 onChange={ this.handleChange }
                                 ref={ref=>this.input = ref}
                             />
+                            { hideActionButton ? '' : 
                             <InputGroup.Button>
                                 <div className={classnames("icon-group")}>
                                 <span
@@ -703,6 +709,7 @@ class InputNumber extends Component {
                                 </span>
                                 </div>
                             </InputGroup.Button>
+                            }
                         </InputGroup>
                     )
                 }

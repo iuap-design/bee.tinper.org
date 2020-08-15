@@ -8,7 +8,7 @@ $tabs-border-color: rgb(233,233,233);
   max-width: 1920px;
   .u-tabs-bar,
   .u-tabs-nav-container {
-    font-size: 14px;
+    font-size: $font-size-base;
     line-height: 1.5;
     box-sizing: border-box;
     overflow: hidden;
@@ -153,7 +153,7 @@ $tabs-border-color: rgb(233,233,233);
 
   .u-tabs-content {
     zoom: 1;
-    font-size: 14px;
+    font-size: $font-size-base;
   }
 
   .u-tabs-content .u-tabs-tabpane {
@@ -530,7 +530,7 @@ $tabs-border-color: rgb(233,233,233);
   overflow-x: hidden;
   .u-tabs-content {
     width: 100%;
-    font-size: 14px;
+    font-size: $font-size-base;
   }
   
   .u-tabs-bar {

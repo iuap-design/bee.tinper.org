@@ -1,3 +1,16 @@
+## [3.0.2](https://github.com/tinper-bee/bee-pagination/compare/v3.0.1...v3.0.2) (2020-08-13)
+
+
+### Features
+
+* 支持定制font-size ([f202fdb](https://github.com/tinper-bee/bee-pagination/commit/f202fdb7cb271fc18129a087bf24bb4ae4187676))
+
+
+
+## [3.0.1](https://github.com/tinper-bee/bee-pagination/compare/v3.0.0...v3.0.1) (2020-08-11)
+
+
+
 # [3.0.0](https://github.com/tinper-bee/bee-pagination/compare/v2.0.18...v3.0.0) (2020-08-06)
 
 
