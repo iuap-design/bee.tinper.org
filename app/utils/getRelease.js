@@ -8,7 +8,7 @@ let sidebar = require('../../static/sidebar.json');
 const newComReg = /- (.*)@/g;
 
 const auth = {
-    token: '',
+    token: '', //注意：token 仅在本地使用，不要提交到 git 仓库，以免造成安全问题
     user: 'yangchch6'
 }
 
